@@ -8,8 +8,28 @@
 </head>
 <body>
 
+    <div class="stars-bg">
+        <div class="star" style="--x:10%;--y:15%;--delay:0s;--size:3px"></div>
+        <div class="star" style="--x:25%;--y:8%;--delay:1.2s;--size:2px"></div>
+        <div class="star" style="--x:45%;--y:20%;--delay:0.5s;--size:4px"></div>
+        <div class="star" style="--x:65%;--y:5%;--delay:2s;--size:2px"></div>
+        <div class="star" style="--x:80%;--y:18%;--delay:0.8s;--size:3px"></div>
+        <div class="star" style="--x:90%;--y:12%;--delay:1.5s;--size:2px"></div>
+        <div class="star" style="--x:15%;--y:45%;--delay:2.5s;--size:2px"></div>
+        <div class="star" style="--x:35%;--y:55%;--delay:0.3s;--size:3px"></div>
+        <div class="star" style="--x:55%;--y:40%;--delay:1.8s;--size:2px"></div>
+        <div class="star" style="--x:75%;--y:50%;--delay:0.7s;--size:4px"></div>
+        <div class="star" style="--x:5%;--y:70%;--delay:1s;--size:2px"></div>
+        <div class="star" style="--x:50%;--y:75%;--delay:2.2s;--size:3px"></div>
+        <div class="star" style="--x:85%;--y:65%;--delay:0.4s;--size:2px"></div>
+        <div class="star" style="--x:20%;--y:85%;--delay:1.7s;--size:3px"></div>
+        <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
+    </div>
+
     <header>
-        <h1>hanabirn 的小天地</h1>
+        <div class="header-deco left">✿</div>
+        <div class="header-deco right">✿</div>
+        <h1>hanabirn の 小天地</h1>
         <nav class="main-nav">
             <button class="nav-btn active" onclick="switchPage('quiz')">單字測驗</button>
             <button class="nav-btn" onclick="switchPage('music')">音樂收藏</button>
@@ -21,8 +41,8 @@
             <div class="lang-card" id="lang-card">
                 <h3>選擇語言</h3>
                 <div class="lang-buttons">
-                    <button class="lang-btn" onclick="selectLanguage('jp')">日文單字測驗</button>
-                    <button class="lang-btn" onclick="selectLanguage('kr')">韓文單字測驗</button>
+                    <button class="lang-btn jp" onclick="selectLanguage('jp')">日文單字測驗</button>
+                    <button class="lang-btn kr" onclick="selectLanguage('kr')">韓文單字測驗</button>
                 </div>
             </div>
 
@@ -76,7 +96,7 @@
     </main>
 
     <footer>
-        <p>2026 hanabirn 的小天地</p>
+        <p>2026 hanabirn の 小天地</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
@@ -99,7 +119,6 @@
             btn.classList.add('active');
             document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
         }
-
 
         const SHEETS = {
             jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
@@ -150,7 +169,7 @@
             }
 
             statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
-            statusMsg.style.color = '#aaa';
+            statusMsg.style.color = '#c8a2e0';
 
             const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
 
@@ -170,7 +189,7 @@
 
                     if (vocabularyList.length >= 4) {
                         statusMsg.innerText = `成功讀取 ${vocabularyList.length} 個有效單字${readingList.length > 0 ? '（含讀法: ' + readingList.length + ' 個）' : ''}`;
-                        statusMsg.style.color = '#1db954';
+                        statusMsg.style.color = '#f472b6';
                         showModeSelection();
                     } else {
                         statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
@@ -331,7 +350,7 @@
             if (selectedText === correctAnswer) {
                 score += 10;
                 selectedBtn.classList.add('correct-choice');
-                feedback.innerText = '回答正確！';
+                feedback.innerText = '正解！';
                 feedback.className = 'feedback correct';
             } else {
                 selectedBtn.classList.add('wrong-choice');
@@ -340,7 +359,7 @@
                         btn.classList.add('correct-choice');
                     }
                 });
-                feedback.innerText = `答錯了！正確答案是：${correctAnswer}`;
+                feedback.innerText = `不正解... 正確答案は：${correctAnswer}`;
                 feedback.className = 'feedback wrong';
             }
 
