@@ -142,6 +142,11 @@
                     <input type="range" id="osu-volume" min="0" max="1" step="0.05" value="0.4" oninput="osuSetVolume(this.value)">
                     <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="重新整理所有 Beatmap">&#x21bb;</button>
                 </div>
+                <div class="osu-io-btns">
+                    <button class="osu-io-btn" onclick="exportOsuData()">&#x1F4E5; 匯出</button>
+                    <button class="osu-io-btn" onclick="document.getElementById('osu-import-file').click()">&#x1F4E4; 匯入</button>
+                    <input type="file" id="osu-import-file" accept=".json" style="display:none" onchange="importOsuData(event)">
+                </div>
             </div>
 
             <div class="osu-mode-tabs">
@@ -452,6 +457,45 @@
         function osuSetVolume(val) {
             osuVolume = parseFloat(val);
             if (osuCurrentAudio && !osuCurrentAudio.ended) osuCurrentAudio.volume = osuVolume;
+        }
+
+        function exportOsuData() {
+            const data = {
+                osu_collection: localStorage.getItem('osu_collection'),
+                osu_favorites: localStorage.getItem('osu_favorites')
+            };
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const a = document.createElement('a');
+            a.href = URL.createObjectURL(blob);
+            a.download = 'osu_backup.json';
+            a.click();
+            URL.revokeObjectURL(a.href);
+            const s = document.getElementById('osu-status');
+            s.innerText = '已匯出 osu_backup.json';
+            s.style.color = '#34d399';
+        }
+
+        function importOsuData(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = (e) => {
+                try {
+                    const data = JSON.parse(e.target.result);
+                    if (data.osu_collection) localStorage.setItem('osu_collection', data.osu_collection);
+                    if (data.osu_favorites) localStorage.setItem('osu_favorites', data.osu_favorites);
+                    renderOsuCollection();
+                    const s = document.getElementById('osu-status');
+                    s.innerText = '匯入成功！';
+                    s.style.color = '#34d399';
+                } catch (err) {
+                    const s = document.getElementById('osu-status');
+                    s.innerText = '匯入失敗，檔案格式不正確';
+                    s.style.color = '#ff5252';
+                }
+            };
+            reader.readAsText(file);
+            event.target.value = '';
         }
 
         function playOsuPreview(setId, event) {
