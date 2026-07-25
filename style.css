@@ -666,12 +666,13 @@ main {
 }
 
 .osu-collection {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
 }
 
 .osu-empty {
+    grid-column: 1 / -1;
     text-align: center;
     color: #c8a2e0;
     padding: 40px 20px;
@@ -683,118 +684,127 @@ main {
     color: rgba(200,162,224,0.6);
 }
 
-.osu-set-card {
-    background: rgba(25, 15, 45, 0.88);
-    border: 1px solid rgba(168,85,247,0.2);
-    border-radius: 14px;
+.osu-card {
+    position: relative;
+    border-radius: 12px;
     overflow: hidden;
-    transition: all 0.3s;
+    cursor: pointer;
+    aspect-ratio: 4 / 1.6;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-.osu-set-card:hover {
-    border-color: rgba(244,114,182,0.35);
-    box-shadow: 0 0 20px rgba(244,114,182,0.08);
-}
-
-.osu-set-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 16px 18px 10px;
-    gap: 10px;
+.osu-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
 }
 
-.osu-set-info {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    min-width: 0;
+.osu-card-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.4s;
+}
+.osu-card:hover .osu-card-bg {
+    transform: scale(1.05);
 }
 
-.osu-set-title {
-    color: #f9a8d4;
-    font-size: 1.1rem;
-    font-weight: bold;
-    text-decoration: none;
-    transition: color 0.2s;
-    word-break: break-word;
-}
-.osu-set-title:hover { color: #f472b6; text-decoration: underline; }
-
-.osu-set-artist {
-    color: #c084fc;
-    font-size: 0.9rem;
-}
-
-.osu-set-mapper {
-    color: rgba(200,162,224,0.5);
-    font-size: 0.8rem;
+.osu-card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.2) 40%,
+        rgba(0,0,0,0.8) 80%,
+        rgba(0,0,0,0.92) 100%
+    );
 }
 
 .osu-delete-btn {
-    background: transparent;
-    color: rgba(200,162,224,0.4);
-    border: 1px solid rgba(168,85,247,0.2);
-    width: 30px;
-    height: 30px;
-    border-radius: 8px;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.6);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s;
-    flex-shrink: 0;
+    z-index: 3;
+    opacity: 0;
 }
+.osu-card:hover .osu-delete-btn { opacity: 1; }
 .osu-delete-btn:hover {
     color: #f87171;
-    border-color: #f87171;
-    background: rgba(248,113,113,0.1);
+    background: rgba(248,113,113,0.3);
 }
 
-.osu-diff-list {
+.osu-card-diffs {
+    position: absolute;
+    top: 10px;
+    left: 10px;
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
-    padding: 0 18px 16px;
+    gap: 5px;
+    z-index: 2;
 }
 
-.osu-diff-item {
+.osu-diff-bubble {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
-    gap: 8px;
-    background: rgba(40, 25, 65, 0.7);
-    border: 1px solid rgba(168,85,247,0.15);
-    border-radius: 8px;
-    padding: 7px 12px;
-    text-decoration: none;
-    color: #e0d0f0;
-    font-size: 0.85rem;
-    transition: all 0.2s;
-}
-.osu-diff-item:hover {
-    border-color: #f472b6;
-    background: rgba(60, 30, 90, 0.7);
-    transform: translateY(-1px);
-}
-
-.osu-diff-name {
-    font-weight: 600;
+    justify-content: center;
     color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s;
+    border: 2px solid rgba(255,255,255,0.25);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+.osu-diff-bubble:hover {
+    transform: scale(1.2);
 }
 
-.osu-diff-stars {
-    color: #fbbf24;
-    font-size: 0.8rem;
+.osu-card-info {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 12px 14px;
+    z-index: 2;
 }
 
-.osu-diff-bpm {
-    color: #a78bfa;
-    font-size: 0.78rem;
+.osu-card-title {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.osu-diff-time {
-    color: rgba(200,162,224,0.5);
-    font-size: 0.78rem;
+.osu-card-artist {
+    color: rgba(255,255,255,0.75);
+    font-size: 0.82rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.osu-card-mapper {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.72rem;
+    margin-top: 2px;
 }
 
 /* ===== Footer ===== */
@@ -829,4 +839,5 @@ footer p {
     .deco-miku1 { width: 100px; }
     .deco-miku2 { width: 90px; }
     .deco-gif1, .deco-anime1 { display: none; }
+    .osu-collection { grid-template-columns: 1fr; }
 }

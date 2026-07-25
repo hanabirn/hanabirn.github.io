@@ -581,28 +581,31 @@
                 return;
             }
 
-            container.innerHTML = sets.map(set => `
-                <div class="osu-set-card">
-                    <div class="osu-set-header">
-                        <div class="osu-set-info">
-                            <a href="https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}" target="_blank" class="osu-set-title">${set.title}</a>
-                            <span class="osu-set-artist">${set.artist}</span>
-                            <span class="osu-set-mapper">mapped by ${set.creator}</span>
-                        </div>
-                        <button class="osu-delete-btn" onclick="removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
+            container.innerHTML = sets.map(set => {
+                const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
+                return `
+                <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
+                    <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
+                    <div class="osu-card-overlay"></div>
+                    <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
+                    <div class="osu-card-diffs">
+                        ${set.beatmaps.map(b => {
+                            const stars = parseFloat(b.difficultyrating);
+                            let color = '#5cb85c';
+                            if (stars >= 6.5) color = '#f44336';
+                            else if (stars >= 5) color = '#ff9800';
+                            else if (stars >= 3.5) color = '#a855f7';
+                            else if (stars >= 2) color = '#2196f3';
+                            return `<div class="osu-diff-bubble" style="background:${color}" title="${b.version}">${Math.round(stars * 10) / 10}</div>`;
+                        }).join('')}
                     </div>
-                    <div class="osu-diff-list">
-                        ${set.beatmaps.map(b => `
-                            <a href="https://osu.ppy.sh/b/${b.beatmap_id}" target="_blank" class="osu-diff-item">
-                                <span class="osu-diff-name">${b.version}</span>
-                                <span class="osu-diff-stars">${parseFloat(b.difficultyrating).toFixed(2)}&#x2605;</span>
-                                <span class="osu-diff-bpm">${Math.round(b.bpm)} BPM</span>
-                                <span class="osu-diff-time">${formatTime(b.hit_length)}</span>
-                            </a>
-                        `).join('')}
+                    <div class="osu-card-info">
+                        <div class="osu-card-title">${set.title}</div>
+                        <div class="osu-card-artist">${set.artist}</div>
+                        <div class="osu-card-mapper">mapped by ${set.creator}</div>
                     </div>
-                </div>
-            `).join('');
+                </div>`;
+            }).join('');
         }
     </script>
 </body>
