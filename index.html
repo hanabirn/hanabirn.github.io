@@ -459,9 +459,7 @@
         }
 
         async function osuFetch(params) {
-            const url = `https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&${params}`;
-            const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
-            const res = await fetch(proxyUrl);
+            const res = await fetch(`/.netlify/functions/osu?${params}`);
             return res.json();
         }
 
