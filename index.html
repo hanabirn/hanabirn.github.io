@@ -65,6 +65,10 @@
         </div>
 
         <div id="page-music" style="display: none;">
+            <div class="music-tabs">
+                <button class="music-tab active" onclick="switchMusicTab('all', this)">所有歌曲</button>
+                <button class="music-tab" onclick="switchMusicTab('cn', this)">中文 / 粵語歌</button>
+            </div>
             <div class="music-player">
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -79,7 +83,8 @@
 
     <script>
         const PLAYLISTS = {
-            all: '0QFBFg35lFuDvuYapAolHC'
+            all: '0QFBFg35lFuDvuYapAolHC',
+            cn: '5XQgwQcuRRBcyVaKMQbB88'
         };
 
         function switchPage(page) {
@@ -87,6 +92,12 @@
             event.target.classList.add('active');
             document.getElementById('page-quiz').style.display = page === 'quiz' ? 'block' : 'none';
             document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
+        }
+
+        function switchMusicTab(lang, btn) {
+            document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
         }
 
 
