@@ -441,6 +441,34 @@
         const OSU_MODES = ['standard', 'taiko', 'catch', 'mania'];
         const OSU_MODE_NAMES = { 0: 'standard', 1: 'taiko', 2: 'catch', 3: 'mania' };
         let osuCurrentTab = 'standard';
+        let osuCurrentAudio = null;
+
+        function playOsuPreview(setId, event) {
+            event.stopPropagation();
+            const previewUrl = `https://b.ppy.sh/preview/${setId}.mp3`;
+
+            if (osuCurrentAudio && !osuCurrentAudio.ended) {
+                osuCurrentAudio.pause();
+                document.querySelectorAll('.osu-play-btn').forEach(b => b.classList.remove('playing'));
+                if (osuCurrentAudio._setId === setId) { osuCurrentAudio = null; return; }
+            }
+
+            const audio = new Audio(previewUrl);
+            audio._setId = setId;
+            osuCurrentAudio = audio;
+
+            const btn = event.currentTarget;
+            btn.classList.add('playing');
+            audio.play().catch(() => {});
+            audio.onended = () => {
+                btn.classList.remove('playing');
+                osuCurrentAudio = null;
+            };
+            audio.onerror = () => {
+                btn.classList.remove('playing');
+                osuCurrentAudio = null;
+            };
+        }
 
         function getOsuFavorites() {
             try { return JSON.parse(localStorage.getItem('osu_favorites')) || []; }
@@ -635,6 +663,7 @@
                 <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
                     <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
                     <div class="osu-card-overlay"></div>
+                    <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
                     <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
                     <div class="osu-card-info">
