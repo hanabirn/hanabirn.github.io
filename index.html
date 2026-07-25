@@ -50,6 +50,7 @@
         <nav class="main-nav">
             <button class="nav-btn active" onclick="switchPage('quiz')">單字測驗</button>
             <button class="nav-btn" onclick="switchPage('music')">音樂收藏</button>
+            <button class="nav-btn" onclick="switchPage('osu')">osu! 收藏</button>
         </nav>
     </header>
 
@@ -126,6 +127,27 @@
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
+        <div id="page-osu" style="display: none;">
+            <div class="osu-add-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3>&#x266B; 新增 Beatmap &#x266B;</h3>
+                <div class="input-group">
+                    <input type="text" id="osuInput" placeholder="輸入 Beatmap ID 或 Beatmap Set ID" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
+                    <button onclick="addOsuBeatmap()">新增</button>
+                </div>
+                <p id="osu-status" class="status"></p>
+            </div>
+
+            <div class="osu-mode-tabs">
+                <button class="osu-tab active" onclick="switchOsuTab('standard', this)">Standard</button>
+                <button class="osu-tab" onclick="switchOsuTab('taiko', this)">Taiko</button>
+                <button class="osu-tab" onclick="switchOsuTab('catch', this)">Catch</button>
+                <button class="osu-tab" onclick="switchOsuTab('mania', this)">Mania</button>
+            </div>
+
+            <div id="osu-collection" class="osu-collection"></div>
+        </div>
     </main>
 
     <footer>
@@ -146,6 +168,8 @@
             event.target.classList.add('active');
             document.getElementById('page-quiz').style.display = page === 'quiz' ? 'block' : 'none';
             document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
+            document.getElementById('page-osu').style.display = page === 'osu' ? 'block' : 'none';
+            if (page === 'osu') renderOsuCollection();
         }
 
         function switchMusicTab(lang, btn) {
@@ -409,6 +433,151 @@
             document.getElementById('setup-card').style.display = 'none';
             document.getElementById('mode-card').style.display = 'none';
             document.getElementById('quiz-card').style.display = 'none';
+        }
+
+        /* ===== osu! Collection ===== */
+        const OSU_API_KEY = 'db6c7c60d8b9754364b2a8e225441f0f6f379452';
+        const OSU_MODES = ['standard', 'taiko', 'catch', 'mania'];
+        const OSU_MODE_NAMES = { 0: 'standard', 1: 'taiko', 2: 'catch', 3: 'mania' };
+        let osuCurrentTab = 'standard';
+
+        function getOsuCollection() {
+            try {
+                return JSON.parse(localStorage.getItem('osu_collection')) || { standard: [], taiko: [], catch: [], mania: [] };
+            } catch { return { standard: [], taiko: [], catch: [], mania: [] }; }
+        }
+
+        function saveOsuCollection(col) {
+            localStorage.setItem('osu_collection', JSON.stringify(col));
+        }
+
+        async function addOsuBeatmap() {
+            const input = document.getElementById('osuInput');
+            const status = document.getElementById('osu-status');
+            const id = input.value.trim();
+            if (!id) return;
+
+            status.innerText = '搜尋中...';
+            status.style.color = '#c8a2e0';
+
+            try {
+                let beatmaps = [];
+
+                const bySet = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&s=${id}`).then(r => r.json());
+                if (bySet.length > 0) {
+                    beatmaps = bySet;
+                } else {
+                    const byMap = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&b=${id}`).then(r => r.json());
+                    if (byMap.length > 0) {
+                        const setId = byMap[0].beatmapset_id;
+                        beatmaps = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&s=${setId}`).then(r => r.json());
+                    }
+                }
+
+                if (beatmaps.length === 0) {
+                    status.innerText = '找不到該 Beatmap，請確認 ID 是否正確';
+                    status.style.color = '#ff5252';
+                    return;
+                }
+
+                const modeNum = parseInt(beatmaps[0].mode);
+                const modeKey = OSU_MODE_NAMES[modeNum];
+                const col = getOsuCollection();
+
+                const alreadyExists = col[modeKey].some(s => s.beatmapset_id === beatmaps[0].beatmapset_id);
+                if (alreadyExists) {
+                    status.innerText = `「${beatmaps[0].artist} - ${beatmaps[0].title}」已在收藏庫中`;
+                    status.style.color = '#f59e0b';
+                    return;
+                }
+
+                const setInfo = {
+                    beatmapset_id: parseInt(beatmaps[0].beatmapset_id),
+                    title: beatmaps[0].title,
+                    artist: beatmaps[0].artist,
+                    creator: beatmaps[0].creator,
+                    mode: modeNum,
+                    beatmaps: beatmaps.map(b => ({
+                        beatmap_id: parseInt(b.beatmap_id),
+                        version: b.version,
+                        difficulty_rating: parseFloat(b.difficulty_rating),
+                        hit_length: parseInt(b.hit_length),
+                        total_length: parseInt(b.total_length),
+                        bpm: parseFloat(b.bpm)
+                    })).sort((a, b) => a.difficulty_rating - b.difficulty_rating)
+                };
+
+                col[modeKey].unshift(setInfo);
+                saveOsuCollection(col);
+
+                const modeNames = { standard: 'Standard', taiko: 'Taiko', catch: 'Catch', mania: 'Mania' };
+                status.innerText = `已新增「${setInfo.artist} - ${setInfo.title}」至 ${modeNames[modeKey]}（${setInfo.beatmaps.length} 個難度）`;
+                status.style.color = '#34d399';
+                input.value = '';
+
+                osuCurrentTab = modeKey;
+                document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.osu-tab')[modeNum].classList.add('active');
+                renderOsuCollection();
+            } catch (e) {
+                status.innerText = 'API 請求失敗，請稍後再試';
+                status.style.color = '#ff5252';
+                console.error(e);
+            }
+        }
+
+        function switchOsuTab(mode, btn) {
+            document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
+            btn.classList.add('active');
+            osuCurrentTab = mode;
+            renderOsuCollection();
+        }
+
+        function removeOsuSet(setId) {
+            const col = getOsuCollection();
+            col[osuCurrentTab] = col[osuCurrentTab].filter(s => s.beatmapset_id !== setId);
+            saveOsuCollection(col);
+            renderOsuCollection();
+        }
+
+        function formatTime(seconds) {
+            const m = Math.floor(seconds / 60);
+            const s = seconds % 60;
+            return `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function renderOsuCollection() {
+            const container = document.getElementById('osu-collection');
+            const col = getOsuCollection();
+            const sets = col[osuCurrentTab];
+
+            if (sets.length === 0) {
+                container.innerHTML = `<div class="osu-empty">還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span></div>`;
+                return;
+            }
+
+            container.innerHTML = sets.map(set => `
+                <div class="osu-set-card">
+                    <div class="osu-set-header">
+                        <div class="osu-set-info">
+                            <a href="https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}" target="_blank" class="osu-set-title">${set.title}</a>
+                            <span class="osu-set-artist">${set.artist}</span>
+                            <span class="osu-set-mapper">mapped by ${set.creator}</span>
+                        </div>
+                        <button class="osu-delete-btn" onclick="removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
+                    </div>
+                    <div class="osu-diff-list">
+                        ${set.beatmaps.map(b => `
+                            <a href="https://osu.ppy.sh/b/${b.beatmap_id}" target="_blank" class="osu-diff-item">
+                                <span class="osu-diff-name">${b.version}</span>
+                                <span class="osu-diff-stars">${b.difficulty_rating.toFixed(2)}&#x2605;</span>
+                                <span class="osu-diff-bpm">${Math.round(b.bpm)} BPM</span>
+                                <span class="osu-diff-time">${formatTime(b.hit_length)}</span>
+                            </a>
+                        `).join('')}
+                    </div>
+                </div>
+            `).join('');
         }
     </script>
 </body>
