@@ -72,7 +72,7 @@
                 <button class="music-tab" onclick="switchMusicTab('en', this)">英文歌</button>
             </div>
             <div class="music-player">
-                <iframe id="music-iframe" src="https://www.youtube.com/embed/videoseries?list=PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="music-iframe" src="https://www.youtube.com/embed?listType=playlist&list=PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </main>
@@ -101,7 +101,7 @@
         function switchMusicTab(lang, btn) {
             document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('music-iframe').src = `https://www.youtube.com/embed/videoseries?list=${PLAYLISTS[lang]}`;
+            document.getElementById('music-iframe').src = `https://www.youtube.com/embed?listType=playlist&list=${PLAYLISTS[lang]}`;
         }
 
         const SHEETS = {
