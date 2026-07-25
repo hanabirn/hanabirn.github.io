@@ -588,21 +588,9 @@
                     <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
                     <div class="osu-card-overlay"></div>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
-                    <div class="osu-card-diffs">
-                        ${set.beatmaps.map(b => {
-                            const stars = parseFloat(b.difficultyrating);
-                            let color = '#5cb85c';
-                            if (stars >= 6.5) color = '#f44336';
-                            else if (stars >= 5) color = '#ff9800';
-                            else if (stars >= 3.5) color = '#a855f7';
-                            else if (stars >= 2) color = '#2196f3';
-                            return `<div class="osu-diff-bubble" style="background:${color}" title="${b.version}">${Math.round(stars * 10) / 10}</div>`;
-                        }).join('')}
-                    </div>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
                         <div class="osu-card-artist">${set.artist}</div>
-                        <div class="osu-card-mapper">mapped by ${set.creator}</div>
                     </div>
                 </div>`;
             }).join('');
