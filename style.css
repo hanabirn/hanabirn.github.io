@@ -745,6 +745,36 @@ main {
     background: rgba(248,113,113,0.3);
 }
 
+.osu-fav-btn {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.5);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 3;
+    opacity: 0;
+}
+.osu-card:hover .osu-fav-btn { opacity: 1; }
+.osu-fav-btn.active {
+    opacity: 1;
+    color: #f43f5e;
+    text-shadow: 0 0 8px rgba(244,63,94,0.6);
+}
+.osu-fav-btn:hover {
+    color: #f43f5e;
+    transform: scale(1.15);
+}
+
 .osu-card-info {
     position: absolute;
     bottom: 0;

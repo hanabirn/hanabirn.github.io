@@ -140,6 +140,7 @@
             </div>
 
             <div class="osu-mode-tabs">
+                <button class="osu-tab" onclick="switchOsuTab('favorites', this)">♥ 最愛</button>
                 <button class="osu-tab active" onclick="switchOsuTab('standard', this)">Standard</button>
                 <button class="osu-tab" onclick="switchOsuTab('taiko', this)">Taiko</button>
                 <button class="osu-tab" onclick="switchOsuTab('catch', this)">Catch</button>
@@ -441,6 +442,29 @@
         const OSU_MODE_NAMES = { 0: 'standard', 1: 'taiko', 2: 'catch', 3: 'mania' };
         let osuCurrentTab = 'standard';
 
+        function getOsuFavorites() {
+            try { return JSON.parse(localStorage.getItem('osu_favorites')) || []; }
+            catch { return []; }
+        }
+
+        function saveOsuFavorites(favs) {
+            localStorage.setItem('osu_favorites', JSON.stringify(favs));
+        }
+
+        function isOsuFavorited(setId) {
+            return getOsuFavorites().includes(setId);
+        }
+
+        function toggleOsuFavorite(setId, event) {
+            event.stopPropagation();
+            const favs = getOsuFavorites();
+            const idx = favs.indexOf(setId);
+            if (idx >= 0) favs.splice(idx, 1);
+            else favs.push(setId);
+            saveOsuFavorites(favs);
+            renderOsuCollection();
+        }
+
         function getOsuCollection() {
             try {
                 return JSON.parse(localStorage.getItem('osu_collection')) || { standard: [], taiko: [], catch: [], mania: [] };
@@ -542,7 +566,7 @@
 
                 osuCurrentTab = modeKey;
                 document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.osu-tab')[modeNum].classList.add('active');
+                document.querySelectorAll('.osu-tab')[modeNum + 1].classList.add('active');
                 renderOsuCollection();
             } catch (e) {
                 console.error('osu! fetch error:', e);
@@ -574,24 +598,44 @@
         function renderOsuCollection() {
             const container = document.getElementById('osu-collection');
             const col = getOsuCollection();
-            const seen = new Set();
-            const sets = col[osuCurrentTab].filter(s => {
-                if (seen.has(s.beatmapset_id)) return false;
-                seen.add(s.beatmapset_id);
-                return true;
-            });
+            let sets;
+
+            if (osuCurrentTab === 'favorites') {
+                const favIds = getOsuFavorites();
+                const allSets = [...col.standard, ...col.taiko, ...col.catch, ...col.mania];
+                const seen = new Set();
+                sets = allSets.filter(s => {
+                    if (favIds.includes(s.beatmapset_id) && !seen.has(s.beatmapset_id)) {
+                        seen.add(s.beatmapset_id);
+                        return true;
+                    }
+                    return false;
+                });
+            } else {
+                const seen = new Set();
+                sets = col[osuCurrentTab].filter(s => {
+                    if (seen.has(s.beatmapset_id)) return false;
+                    seen.add(s.beatmapset_id);
+                    return true;
+                });
+            }
 
             if (sets.length === 0) {
-                container.innerHTML = `<div class="osu-empty">還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span></div>`;
+                const msg = osuCurrentTab === 'favorites'
+                    ? '還沒有最愛的歌曲<br><span>在其他分類中點擊 ♥ 加入最愛！</span>'
+                    : '還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span>';
+                container.innerHTML = `<div class="osu-empty">${msg}</div>`;
                 return;
             }
 
             container.innerHTML = sets.map(set => {
                 const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
+                const isFav = isOsuFavorited(set.beatmapset_id);
                 return `
                 <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
                     <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
                     <div class="osu-card-overlay"></div>
+                    <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
