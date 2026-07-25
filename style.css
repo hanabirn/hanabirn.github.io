@@ -43,6 +43,88 @@ body {
     50% { opacity: 1; transform: scale(1.6); }
 }
 
+/* === Decorative images === */
+.deco-img {
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.15;
+}
+
+.deco-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.deco-miku1 {
+    width: 160px;
+    bottom: 20px;
+    left: 10px;
+    animation: floatDeco 6s ease-in-out infinite;
+    opacity: 0.2;
+}
+
+.deco-miku2 {
+    width: 140px;
+    top: 120px;
+    right: 15px;
+    animation: floatDeco 7s ease-in-out infinite;
+    animation-delay: 1s;
+    opacity: 0.18;
+}
+
+.deco-anime1 {
+    width: 120px;
+    bottom: 160px;
+    right: 20px;
+    animation: floatDeco 8s ease-in-out infinite;
+    animation-delay: 2s;
+    opacity: 0.15;
+}
+
+.deco-anime2 {
+    width: 100px;
+    top: 250px;
+    left: 15px;
+    animation: floatDeco 5.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    opacity: 0.15;
+}
+
+.deco-gif1 {
+    width: 110px;
+    bottom: 300px;
+    left: 30px;
+    animation: floatDeco 6.5s ease-in-out infinite;
+    animation-delay: 3s;
+    opacity: 0.2;
+}
+
+.deco-gif2 {
+    width: 120px;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: floatDeco 7.5s ease-in-out infinite;
+    animation-delay: 1.5s;
+    opacity: 0.13;
+}
+
+@keyframes floatDeco {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+.deco-gif2 {
+    animation-name: floatDecoCenter;
+}
+
+@keyframes floatDecoCenter {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-15px); }
+}
+
 /* === Header === */
 header {
     position: relative;
