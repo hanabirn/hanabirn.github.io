@@ -668,6 +668,7 @@
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
+                        <div class="osu-card-stars">${Math.min(...set.beatmaps.map(b => b.difficulty_rating)).toFixed(2)}⭐ / ${Math.max(...set.beatmaps.map(b => b.difficulty_rating)).toFixed(2)}⭐</div>
                         <div class="osu-card-artist">${set.artist}</div>
                         <div class="osu-card-mapper">mapped by ${set.creator}</div>
                     </div>
