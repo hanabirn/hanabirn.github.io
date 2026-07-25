@@ -670,6 +670,9 @@
             container.innerHTML = sets.map(set => {
                 const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
                 const isFav = isOsuFavorited(set.beatmapset_id);
+                const starsMin = Math.min(...set.beatmaps.map(b => b.difficulty_rating));
+                const starsMax = Math.max(...set.beatmaps.map(b => b.difficulty_rating));
+                const starsText = (starsMin === 0 && starsMax === 0) ? '' : `<div class="osu-card-stars">${starsMin.toFixed(2)}⭐~${starsMax.toFixed(2)}⭐</div>`;
                 return `
                 <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
                     <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
@@ -679,7 +682,7 @@
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
-                        <div class="osu-card-stars">${Math.min(...set.beatmaps.map(b => b.difficulty_rating)).toFixed(2)}⭐~${Math.max(...set.beatmaps.map(b => b.difficulty_rating)).toFixed(2)}⭐</div>
+                        ${starsText}
                         <div class="osu-card-artist">${set.artist}</div>
                         <div class="osu-card-mapper">mapped by ${set.creator}</div>
                     </div>
