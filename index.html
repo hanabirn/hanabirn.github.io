@@ -525,7 +525,7 @@
                     beatmaps: beatmaps.map(b => ({
                         beatmap_id: parseInt(b.beatmap_id),
                         version: b.version,
-                        difficulty_rating: parseFloat(b.difficulty_rating),
+                        difficulty_rating: parseFloat(b.difficultyrating),
                         hit_length: parseInt(b.hit_length),
                         total_length: parseInt(b.total_length),
                         bpm: parseFloat(b.bpm)
@@ -595,7 +595,7 @@
                         ${set.beatmaps.map(b => `
                             <a href="https://osu.ppy.sh/b/${b.beatmap_id}" target="_blank" class="osu-diff-item">
                                 <span class="osu-diff-name">${b.version}</span>
-                                <span class="osu-diff-stars">${b.difficulty_rating.toFixed(2)}&#x2605;</span>
+                                <span class="osu-diff-stars">${parseFloat(b.difficultyrating).toFixed(2)}&#x2605;</span>
                                 <span class="osu-diff-bpm">${Math.round(b.bpm)} BPM</span>
                                 <span class="osu-diff-time">${formatTime(b.hit_length)}</span>
                             </a>
