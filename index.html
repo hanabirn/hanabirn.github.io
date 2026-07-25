@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外語單字複習測驗</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>外語單字複習與測驗系統</h1>
+        <p>自動讀取 Google 試算表，隨機抽題自我檢測！</p>
+    </header>
+
+    <main>
+        <div class="lang-card" id="lang-card">
+            <h3>選擇語言</h3>
+            <div class="lang-buttons">
+                <button class="lang-btn" onclick="selectLanguage('jp')">日文單字測驗</button>
+                <button class="lang-btn" onclick="selectLanguage('kr')">韓文單字測驗</button>
+            </div>
+        </div>
+
+        <div class="setup-card" id="setup-card" style="display: none;">
+            <h3>綁定 Google 試算表</h3>
+            <div class="input-group">
+                <input type="text" id="sheetUrlInput" placeholder="貼上 Google Sheet 網址">
+                <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())">載入單字庫</button>
+            </div>
+            <p id="status-msg" class="status"></p>
+        </div>
+
+        <div class="mode-card" id="mode-card" style="display: none;">
+            <h3>選擇測驗模式</h3>
+            <div class="mode-buttons" id="mode-buttons"></div>
+        </div>
+
+        <div id="quiz-card" class="quiz-card" style="display: none;">
+            <div class="quiz-header">
+                <span id="question-count">第 0 題</span>
+                <span id="quiz-mode-label"></span>
+                <span id="total-words">有效單字: 0</span>
+                <span id="score-count">得分: 0</span>
+            </div>
+
+            <div class="question-box">
+                <h2 id="word-question">—</h2>
+                <p id="word-hint" class="hint"></p>
+            </div>
+
+            <div id="options-container" class="options-container"></div>
+
+            <div id="feedback" class="feedback"></div>
+
+            <div class="action-buttons">
+                <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">下一題</button>
+                <button class="btn back-btn" onclick="backToLanguage()">返回選擇語言</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>2026 外語單字學習系統</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+
+    <script>
+        const SHEETS = {
+            jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
+            kr: 'https://docs.google.com/spreadsheets/d/1BsO7tpzFgO39AyBo2SV1RZFDWfPECB-LzWBGA87nbQA/export?format=csv&gid=0'
+        };
+
+        let currentLang = '';
+        let vocabularyList = [];
+        let readingList = [];
+        let currentWord = null;
+        let currentMode = 'meaning';
+        let score = 0;
+        let questionNum = 0;
+        let answered = false;
+
+        function extractSheetId(url) {
+            const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
+            return match ? match[1] : url;
+        }
+
+        function isValidWord(word, meaning) {
+            if (!word || !meaning) return false;
+            const w = word.trim();
+            const m = meaning.trim();
+            if (w.includes('動畫') || w.includes('動画') || w.includes('동영상') || w.includes('註') || w.includes('★') || w.includes('單字')) return false;
+            if (m.includes('動畫') || m.includes('動画') || m.includes('意思') || m.includes('註')) return false;
+            if (/^\d+$/.test(w)) return false;
+            if (w.length === 0 || m.length === 0) return false;
+            return true;
+        }
+
+        function selectLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('lang-card').style.display = 'none';
+            document.getElementById('sheetUrlInput').value = SHEETS[lang];
+            loadSheetData(SHEETS[lang]);
+        }
+
+        function loadSheetData(url) {
+            const statusMsg = document.getElementById('status-msg');
+            const setupCard = document.getElementById('setup-card');
+            setupCard.style.display = 'block';
+
+            const sheetId = extractSheetId(url);
+            if (!sheetId) {
+                alert('請輸入正確的 Google Sheet 網址！');
+                return;
+            }
+
+            statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
+            statusMsg.style.color = '#aaa';
+
+            const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
+
+            Papa.parse(csvUrl, {
+                download: true,
+                header: false,
+                complete: function(results) {
+                    const rows = results.data;
+                    vocabularyList = [];
+                    readingList = [];
+
+                    if (currentLang === 'jp') {
+                        parseJapanese(rows);
+                    } else {
+                        parseKorean(rows);
+                    }
+
+                    if (vocabularyList.length >= 4) {
+                        statusMsg.innerText = `成功讀取 ${vocabularyList.length} 個有效單字${readingList.length > 0 ? '（含讀法: ' + readingList.length + ' 個）' : ''}`;
+                        statusMsg.style.color = '#1db954';
+                        showModeSelection();
+                    } else {
+                        statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
+                        statusMsg.style.color = '#ff5252';
+                    }
+                },
+                error: function() {
+                    statusMsg.innerText = '讀取失敗，請確認試算表共用權限！';
+                    statusMsg.style.color = '#ff5252';
+                }
+            });
+        }
+
+        function parseJapanese(rows) {
+            rows.forEach((row) => {
+                if (row.length < 5) return;
+                addWord(row[2], row[3], row[4]);
+                if (row.length > 9)  addWord(row[7], row[8], row[9]);
+                if (row.length > 14) addWord(row[12], row[13], row[14]);
+                if (row.length > 19) addWord(row[17], row[18], row[19]);
+            });
+        }
+
+        function parseKorean(rows) {
+            rows.forEach((row) => {
+                if (row.length < 4) return;
+                addWord(row[2], '', row[3]);
+                if (row.length > 6)  addWord(row[6], '', row[7]);
+                if (row.length > 10) addWord(row[10], '', row[11]);
+                if (row.length > 14) addWord(row[14], '', row[15]);
+                if (row.length > 18) addWord(row[18], '', row[19]);
+            });
+        }
+
+        function addWord(word, kana, meaning) {
+            const w = word.trim();
+            const k = kana ? kana.trim() : '';
+            const m = meaning.trim();
+            if (!isValidWord(w, m)) return;
+            vocabularyList.push({ word: w, kana: k, meaning: m });
+            if (k.length > 0) {
+                readingList.push({ word: w, kana: k, meaning: m });
+            }
+        }
+
+        function showModeSelection() {
+            document.getElementById('setup-card').style.display = 'none';
+            document.getElementById('mode-card').style.display = 'block';
+            document.getElementById('quiz-card').style.display = 'none';
+
+            const container = document.getElementById('mode-buttons');
+            container.innerHTML = '';
+
+            const btnMeaning = document.createElement('button');
+            btnMeaning.className = 'mode-btn';
+            btnMeaning.innerText = currentLang === 'jp' ? '日文 → 選中文意思' : '韓文 → 選中文意思';
+            btnMeaning.onclick = () => startQuiz('meaning');
+            container.appendChild(btnMeaning);
+
+            if (readingList.length >= 4) {
+                const btnReading = document.createElement('button');
+                btnReading.className = 'mode-btn';
+                btnReading.innerText = '日文 → 選讀法';
+                btnReading.onclick = () => startQuiz('reading');
+                container.appendChild(btnReading);
+
+                const btnBoth = document.createElement('button');
+                btnBoth.className = 'mode-btn';
+                btnBoth.innerText = '混合隨機';
+                btnBoth.onclick = () => startQuiz('both');
+                container.appendChild(btnBoth);
+            }
+        }
+
+        function startQuiz(mode) {
+            currentMode = mode;
+            score = 0;
+            questionNum = 0;
+
+            document.getElementById('mode-card').style.display = 'none';
+            document.getElementById('quiz-card').style.display = 'block';
+
+            const modeNames = { meaning: currentLang === 'jp' ? '考意思' : '考意思', reading: '考讀法', both: '混合' };
+            document.getElementById('quiz-mode-label').innerText = modeNames[mode];
+            document.getElementById('total-words').innerText = `有效單字: ${vocabularyList.length}`;
+            nextQuestion();
+        }
+
+        function pickQuestionType() {
+            if (currentMode === 'meaning') return 'meaning';
+            if (currentMode === 'reading') return 'reading';
+            return Math.random() < 0.5 ? 'meaning' : 'reading';
+        }
+
+        function nextQuestion() {
+            answered = false;
+            questionNum++;
+            document.getElementById('question-count').innerText = `第 ${questionNum} 題`;
+            document.getElementById('score-count').innerText = `得分: ${score}`;
+            document.getElementById('nextBtn').style.display = 'none';
+            document.getElementById('feedback').innerText = '';
+            document.getElementById('feedback').className = 'feedback';
+
+            const questionType = pickQuestionType();
+
+            if (questionType === 'reading' && readingList.length >= 4) {
+                const pool = readingList;
+                currentWord = pool[Math.floor(Math.random() * pool.length)];
+
+                document.getElementById('word-question').innerText = currentWord.word;
+                document.getElementById('word-hint').innerText = `意思：${currentWord.meaning}`;
+
+                let options = [currentWord.kana];
+                while (options.length < 4) {
+                    const pick = pool[Math.floor(Math.random() * pool.length)].kana;
+                    if (!options.includes(pick)) options.push(pick);
+                }
+                options.sort(() => Math.random() - 0.5);
+                renderOptions(options, 'reading');
+            } else {
+                currentWord = vocabularyList[Math.floor(Math.random() * vocabularyList.length)];
+
+                document.getElementById('word-question').innerText = currentWord.word;
+                document.getElementById('word-hint').innerText = currentWord.kana ? `讀法：${currentWord.kana}` : '';
+
+                let options = [currentWord.meaning];
+                while (options.length < 4) {
+                    const pick = vocabularyList[Math.floor(Math.random() * vocabularyList.length)].meaning;
+                    if (!options.includes(pick)) options.push(pick);
+                }
+                options.sort(() => Math.random() - 0.5);
+                renderOptions(options, 'meaning');
+            }
+        }
+
+        function renderOptions(options, type) {
+            const container = document.getElementById('options-container');
+            container.innerHTML = '';
+            options.forEach((optText) => {
+                const btn = document.createElement('button');
+                btn.className = 'option-btn';
+                btn.innerText = optText;
+                btn.onclick = () => selectOption(btn, optText, type);
+                container.appendChild(btn);
+            });
+        }
+
+        function selectOption(selectedBtn, selectedText, type) {
+            if (answered) return;
+            answered = true;
+
+            const allBtns = document.querySelectorAll('.option-btn');
+            allBtns.forEach(btn => btn.disabled = true);
+
+            const feedback = document.getElementById('feedback');
+            const correctAnswer = type === 'reading' ? currentWord.kana : currentWord.meaning;
+
+            if (selectedText === correctAnswer) {
+                score += 10;
+                selectedBtn.classList.add('correct-choice');
+                feedback.innerText = '回答正確！';
+                feedback.className = 'feedback correct';
+            } else {
+                selectedBtn.classList.add('wrong-choice');
+                allBtns.forEach(btn => {
+                    if (btn.innerText === correctAnswer) {
+                        btn.classList.add('correct-choice');
+                    }
+                });
+                feedback.innerText = `答錯了！正確答案是：${correctAnswer}`;
+                feedback.className = 'feedback wrong';
+            }
+
+            document.getElementById('score-count').innerText = `得分: ${score}`;
+            document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+
+        function backToLanguage() {
+            currentLang = '';
+            vocabularyList = [];
+            readingList = [];
+            document.getElementById('lang-card').style.display = 'block';
+            document.getElementById('setup-card').style.display = 'none';
+            document.getElementById('mode-card').style.display = 'none';
+            document.getElementById('quiz-card').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
