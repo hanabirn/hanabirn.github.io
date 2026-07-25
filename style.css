@@ -9,12 +9,41 @@ body {
 header {
     background: linear-gradient(135deg, #1db954, #191414);
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 2rem 1rem 1rem;
 }
 
 header h1 {
-    margin: 0;
+    margin: 0 0 16px;
     font-size: 1.8rem;
+}
+
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.nav-btn {
+    background: transparent;
+    color: #aaa;
+    border: 1px solid rgba(255,255,255,0.3);
+    padding: 8px 24px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.nav-btn:hover {
+    color: #fff;
+    border-color: #fff;
+}
+
+.nav-btn.active {
+    background: #fff;
+    color: #000;
+    font-weight: bold;
+    border-color: #fff;
 }
 
 header p {
@@ -23,7 +52,7 @@ header p {
 }
 
 main {
-    max-width: 650px;
+    max-width: 720px;
     margin: 30px auto;
     padding: 0 20px;
 }
@@ -255,6 +284,58 @@ main {
 .back-btn:hover {
     color: #fff;
     border-color: #888;
+}
+
+.music-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.music-tab {
+    flex: 1;
+    min-width: 80px;
+    background-color: #1e1e1e;
+    color: #aaa;
+    border: 1px solid #333;
+    padding: 10px 8px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-align: center;
+}
+
+.music-tab:hover {
+    color: #fff;
+    border-color: #666;
+}
+
+.music-tab.active {
+    background-color: #1db954;
+    color: #000;
+    font-weight: bold;
+    border-color: #1db954;
+}
+
+.music-player {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.music-player iframe {
+    width: 100%;
+    height: 450px;
+    display: block;
+}
+
+@media (max-width: 500px) {
+    .music-player iframe {
+        height: 350px;
+    }
 }
 
 footer {

@@ -3,70 +3,107 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>外語單字複習測驗</title>
+    <title>hanabirn 的小天地</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
-        <h1>外語單字複習與測驗系統</h1>
-        <p>自動讀取 Google 試算表，隨機抽題自我檢測！</p>
+        <h1>hanabirn 的小天地</h1>
+        <nav class="main-nav">
+            <button class="nav-btn active" onclick="switchPage('quiz')">單字測驗</button>
+            <button class="nav-btn" onclick="switchPage('music')">音樂收藏</button>
+        </nav>
     </header>
 
     <main>
-        <div class="lang-card" id="lang-card">
-            <h3>選擇語言</h3>
-            <div class="lang-buttons">
-                <button class="lang-btn" onclick="selectLanguage('jp')">日文單字測驗</button>
-                <button class="lang-btn" onclick="selectLanguage('kr')">韓文單字測驗</button>
+        <div id="page-quiz">
+            <div class="lang-card" id="lang-card">
+                <h3>選擇語言</h3>
+                <div class="lang-buttons">
+                    <button class="lang-btn" onclick="selectLanguage('jp')">日文單字測驗</button>
+                    <button class="lang-btn" onclick="selectLanguage('kr')">韓文單字測驗</button>
+                </div>
+            </div>
+
+            <div class="setup-card" id="setup-card" style="display: none;">
+                <h3>綁定 Google 試算表</h3>
+                <div class="input-group">
+                    <input type="text" id="sheetUrlInput" placeholder="貼上 Google Sheet 網址">
+                    <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())">載入單字庫</button>
+                </div>
+                <p id="status-msg" class="status"></p>
+            </div>
+
+            <div class="mode-card" id="mode-card" style="display: none;">
+                <h3>選擇測驗模式</h3>
+                <div class="mode-buttons" id="mode-buttons"></div>
+            </div>
+
+            <div id="quiz-card" class="quiz-card" style="display: none;">
+                <div class="quiz-header">
+                    <span id="question-count">第 0 題</span>
+                    <span id="quiz-mode-label"></span>
+                    <span id="total-words">有效單字: 0</span>
+                    <span id="score-count">得分: 0</span>
+                </div>
+
+                <div class="question-box">
+                    <h2 id="word-question">—</h2>
+                    <p id="word-hint" class="hint"></p>
+                </div>
+
+                <div id="options-container" class="options-container"></div>
+
+                <div id="feedback" class="feedback"></div>
+
+                <div class="action-buttons">
+                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">下一題</button>
+                    <button class="btn back-btn" onclick="backToLanguage()">返回選擇語言</button>
+                </div>
             </div>
         </div>
 
-        <div class="setup-card" id="setup-card" style="display: none;">
-            <h3>綁定 Google 試算表</h3>
-            <div class="input-group">
-                <input type="text" id="sheetUrlInput" placeholder="貼上 Google Sheet 網址">
-                <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())">載入單字庫</button>
+        <div id="page-music" style="display: none;">
+            <div class="music-tabs">
+                <button class="music-tab active" onclick="switchMusicTab('cn', this)">中文歌</button>
+                <button class="music-tab" onclick="switchMusicTab('jp', this)">日文歌</button>
+                <button class="music-tab" onclick="switchMusicTab('kr', this)">韓文歌</button>
+                <button class="music-tab" onclick="switchMusicTab('en', this)">英文歌</button>
             </div>
-            <p id="status-msg" class="status"></p>
-        </div>
-
-        <div class="mode-card" id="mode-card" style="display: none;">
-            <h3>選擇測驗模式</h3>
-            <div class="mode-buttons" id="mode-buttons"></div>
-        </div>
-
-        <div id="quiz-card" class="quiz-card" style="display: none;">
-            <div class="quiz-header">
-                <span id="question-count">第 0 題</span>
-                <span id="quiz-mode-label"></span>
-                <span id="total-words">有效單字: 0</span>
-                <span id="score-count">得分: 0</span>
-            </div>
-
-            <div class="question-box">
-                <h2 id="word-question">—</h2>
-                <p id="word-hint" class="hint"></p>
-            </div>
-
-            <div id="options-container" class="options-container"></div>
-
-            <div id="feedback" class="feedback"></div>
-
-            <div class="action-buttons">
-                <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">下一題</button>
-                <button class="btn back-btn" onclick="backToLanguage()">返回選擇語言</button>
+            <div class="music-player">
+                <iframe id="music-iframe" src="https://www.youtube.com/embed/videoseries?list=PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
     </main>
 
     <footer>
-        <p>2026 外語單字學習系統</p>
+        <p>2026 hanabirn 的小天地</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
     <script>
+        const PLAYLISTS = {
+            cn: 'PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF',
+            jp: 'PLs9rsqnP5yAFgoAx0MQftLrdrvI4WdWCr',
+            kr: 'PLs9rsqnP5yAHlT22Re-LE45TMcLGOn7iQ',
+            en: 'PLs9rsqnP5yAGJ26HgYF00xjwA09GoF35A'
+        };
+
+        function switchPage(page) {
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+            document.getElementById('page-quiz').style.display = page === 'quiz' ? 'block' : 'none';
+            document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
+        }
+
+        function switchMusicTab(lang, btn) {
+            document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('music-iframe').src = `https://www.youtube.com/embed/videoseries?list=${PLAYLISTS[lang]}`;
+        }
+
         const SHEETS = {
             jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
             kr: 'https://docs.google.com/spreadsheets/d/1BsO7tpzFgO39AyBo2SV1RZFDWfPECB-LzWBGA87nbQA/export?format=csv&gid=0'
@@ -219,7 +256,7 @@
             document.getElementById('mode-card').style.display = 'none';
             document.getElementById('quiz-card').style.display = 'block';
 
-            const modeNames = { meaning: currentLang === 'jp' ? '考意思' : '考意思', reading: '考讀法', both: '混合' };
+            const modeNames = { meaning: '考意思', reading: '考讀法', both: '混合' };
             document.getElementById('quiz-mode-label').innerText = modeNames[mode];
             document.getElementById('total-words').innerText = `有效單字: ${vocabularyList.length}`;
             nextQuestion();
