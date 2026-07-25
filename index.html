@@ -460,7 +460,9 @@
 
         async function osuFetch(params) {
             const res = await fetch(`/.netlify/functions/osu?${params}`);
-            return res.json();
+            const text = await res.text();
+            try { return JSON.parse(text); }
+            catch { throw new Error(`Function 回傳非 JSON (HTTP ${res.status}): ${text.substring(0, 200)}`); }
         }
 
         async function addOsuBeatmap() {
@@ -543,9 +545,9 @@
                 document.querySelectorAll('.osu-tab')[modeNum].classList.add('active');
                 renderOsuCollection();
             } catch (e) {
-                status.innerText = 'API 請求失敗，請稍後再試';
+                console.error('osu! fetch error:', e);
+                status.innerText = `連線失敗: ${e.message}`;
                 status.style.color = '#ff5252';
-                console.error(e);
             }
         }
 
