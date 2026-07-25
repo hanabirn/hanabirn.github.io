@@ -3,10 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>hanabirn 的小天地</title>
+    <title>hanabirn の 小天地</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+    <div class="sakura-container" aria-hidden="true">
+        <div class="sakura s1"></div><div class="sakura s2"></div><div class="sakura s3"></div>
+        <div class="sakura s4"></div><div class="sakura s5"></div><div class="sakura s6"></div>
+        <div class="sakura s7"></div><div class="sakura s8"></div><div class="sakura s9"></div>
+        <div class="sakura s10"></div><div class="sakura s11"></div><div class="sakura s12"></div>
+        <div class="sakura s13"></div><div class="sakura s14"></div><div class="sakura s15"></div>
+    </div>
 
     <div class="stars-bg">
         <div class="star" style="--x:10%;--y:15%;--delay:0s;--size:3px"></div>
@@ -26,29 +34,19 @@
         <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
     </div>
 
-    <div class="deco-img deco-miku1">
-        <img src="images/miku1.png" alt="">
-    </div>
-    <div class="deco-img deco-miku2">
-        <img src="images/miku2.png" alt="">
-    </div>
-    <div class="deco-img deco-anime1">
-        <img src="images/anime1.jpg" alt="">
-    </div>
-    <div class="deco-img deco-anime2">
-        <img src="images/anime2.jpg" alt="">
-    </div>
-    <div class="deco-img deco-gif1">
-        <img src="images/gif1.gif" alt="">
-    </div>
-    <div class="deco-img deco-gif2">
-        <img src="images/gif2.gif" alt="">
-    </div>
+    <div class="deco-img deco-miku1"><img src="images/miku1.png" alt=""></div>
+    <div class="deco-img deco-miku2"><img src="images/miku2.png" alt=""></div>
+    <div class="deco-img deco-anime1"><img src="images/anime1.jpg" alt=""></div>
+    <div class="deco-img deco-anime2"><img src="images/anime2.jpg" alt=""></div>
+    <div class="deco-img deco-gif1"><img src="images/gif1.gif" alt=""></div>
+    <div class="deco-img deco-gif2"><img src="images/gif2.gif" alt=""></div>
 
     <header>
-        <div class="header-deco left">✿</div>
-        <div class="header-deco right">✿</div>
+        <div class="header-wave"></div>
+        <div class="header-sakura left">&#x273F;</div>
+        <div class="header-sakura right">&#x273F;</div>
         <h1>hanabirn の 小天地</h1>
+        <p class="subtitle">學習是一件快樂的事</p>
         <nav class="main-nav">
             <button class="nav-btn active" onclick="switchPage('quiz')">單字測驗</button>
             <button class="nav-btn" onclick="switchPage('music')">音樂收藏</button>
@@ -58,14 +56,24 @@
     <main>
         <div id="page-quiz">
             <div class="lang-card" id="lang-card">
-                <h3>選擇語言</h3>
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3>&#x2726; 選擇語言 &#x2726;</h3>
                 <div class="lang-buttons">
-                    <button class="lang-btn jp" onclick="selectLanguage('jp')"><img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本國旗" class="lang-flag">日文單字測驗</button>
-                    <button class="lang-btn kr" onclick="selectLanguage('kr')"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國國旗" class="lang-flag">韓文單字測驗</button>
+                    <button class="lang-btn jp" onclick="selectLanguage('jp')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本國旗" class="lang-flag">
+                        <span>日文單字測驗</span>
+                    </button>
+                    <button class="lang-btn kr" onclick="selectLanguage('kr')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國國旗" class="lang-flag">
+                        <span>韓文單字測驗</span>
+                    </button>
                 </div>
             </div>
 
             <div class="setup-card" id="setup-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3>綁定 Google 試算表</h3>
                 <div class="input-group">
                     <input type="text" id="sheetUrlInput" placeholder="貼上 Google Sheet 網址">
@@ -75,11 +83,15 @@
             </div>
 
             <div class="mode-card" id="mode-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3>選擇測驗模式</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
             </div>
 
             <div id="quiz-card" class="quiz-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <div class="quiz-header">
                     <span id="question-count">第 0 題</span>
                     <span id="quiz-mode-label"></span>
@@ -88,25 +100,27 @@
                 </div>
 
                 <div class="question-box">
+                    <div class="question-deco">&#x2726;</div>
                     <h2 id="word-question">—</h2>
                     <p id="word-hint" class="hint"></p>
                 </div>
 
+                <div class="options-divider"></div>
                 <div id="options-container" class="options-container"></div>
 
                 <div id="feedback" class="feedback"></div>
 
                 <div class="action-buttons">
-                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">下一題</button>
-                    <button class="btn back-btn" onclick="backToLanguage()">返回選擇語言</button>
+                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">次の問題 &#x2192;</button>
+                    <button class="btn back-btn" onclick="backToLanguage()">&#x2190; 返回選擇語言</button>
                 </div>
             </div>
         </div>
 
         <div id="page-music" style="display: none;">
             <div class="music-tabs">
-                <button class="music-tab active" onclick="switchMusicTab('all', this)">所有歌曲</button>
-                <button class="music-tab" onclick="switchMusicTab('cn', this)">中文 / 粵語歌</button>
+                <button class="music-tab active" onclick="switchMusicTab('all', this)">&#x266B; 所有歌曲</button>
+                <button class="music-tab" onclick="switchMusicTab('cn', this)">&#x266B; 中文 / 粵語歌</button>
             </div>
             <div class="music-player">
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -115,6 +129,7 @@
     </main>
 
     <footer>
+        <div class="footer-sakura">&#x273F;</div>
         <p>2026 hanabirn の 小天地</p>
     </footer>
 
