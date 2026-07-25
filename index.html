@@ -65,14 +65,8 @@
         </div>
 
         <div id="page-music" style="display: none;">
-            <div class="music-tabs">
-                <button class="music-tab active" onclick="switchMusicTab('cn', this)">中文歌</button>
-                <button class="music-tab" onclick="switchMusicTab('jp', this)">日文歌</button>
-                <button class="music-tab" onclick="switchMusicTab('kr', this)">韓文歌</button>
-                <button class="music-tab" onclick="switchMusicTab('en', this)">英文歌</button>
-            </div>
             <div class="music-player">
-                <iframe id="music-iframe" src="https://www.youtube.com/embed?listType=playlist&list=PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
     </main>
@@ -85,10 +79,7 @@
 
     <script>
         const PLAYLISTS = {
-            cn: 'PLs9rsqnP5yAGz9mIEPF5MLUhHpbjWUFaF',
-            jp: 'PLs9rsqnP5yAFgoAx0MQftLrdrvI4WdWCr',
-            kr: 'PLs9rsqnP5yAHlT22Re-LE45TMcLGOn7iQ',
-            en: 'PLs9rsqnP5yAGJ26HgYF00xjwA09GoF35A'
+            all: '0QFBFg35lFuDvuYapAolHC'
         };
 
         function switchPage(page) {
@@ -98,11 +89,6 @@
             document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
         }
 
-        function switchMusicTab(lang, btn) {
-            document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            document.getElementById('music-iframe').src = `https://www.youtube.com/embed?listType=playlist&list=${PLAYLISTS[lang]}`;
-        }
 
         const SHEETS = {
             jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
