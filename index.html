@@ -634,6 +634,37 @@
             return `${m}:${s.toString().padStart(2, '0')}`;
         }
 
+        async function refreshOsuSet(setId, event) {
+            event.stopPropagation();
+            const btn = event.currentTarget;
+            btn.classList.add('spinning');
+            try {
+                const beatmaps = await osuFetch(`s=${setId}`);
+                if (beatmaps.length === 0) return;
+                const col = getOsuCollection();
+                for (const mode of OSU_MODES) {
+                    const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
+                    if (idx >= 0) {
+                        col[mode][idx].beatmaps = beatmaps.map(b => ({
+                            beatmap_id: parseInt(b.beatmap_id),
+                            version: b.version,
+                            difficulty_rating: parseFloat(b.difficultyrating),
+                            hit_length: parseInt(b.hit_length),
+                            total_length: parseInt(b.total_length),
+                            bpm: parseFloat(b.bpm)
+                        })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
+                        saveOsuCollection(col);
+                        break;
+                    }
+                }
+                renderOsuCollection();
+            } catch (e) {
+                console.error('Refresh failed:', e);
+            } finally {
+                btn.classList.remove('spinning');
+            }
+        }
+
         function renderOsuCollection() {
             const container = document.getElementById('osu-collection');
             const col = getOsuCollection();
@@ -680,6 +711,7 @@
                     <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
                     <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
+                    <button class="osu-refresh-btn" onclick="refreshOsuSet(${set.beatmapset_id}, event)" title="重新整理資料">&#x21bb;</button>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
                         ${starsText}
