@@ -140,6 +140,7 @@
                 <div class="osu-volume">
                     <span>&#128264;</span>
                     <input type="range" id="osu-volume" min="0" max="1" step="0.05" value="0.4" oninput="osuSetVolume(this.value)">
+                    <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="重新整理所有 Beatmap">&#x21bb;</button>
                 </div>
             </div>
 
@@ -634,32 +635,46 @@
             return `${m}:${s.toString().padStart(2, '0')}`;
         }
 
-        async function refreshOsuSet(setId, event) {
-            event.stopPropagation();
-            const btn = event.currentTarget;
+        async function refreshAllOsuSets() {
+            const btn = document.querySelector('.osu-refresh-all');
+            const status = document.getElementById('osu-status');
             btn.classList.add('spinning');
+            status.innerText = '重新整理中...';
+            status.style.color = '#c8a2e0';
+
+            const col = getOsuCollection();
+            const allIds = new Set();
+            for (const mode of OSU_MODES) {
+                for (const s of col[mode]) allIds.add(s.beatmapset_id);
+            }
+
             try {
-                const beatmaps = await osuFetch(`s=${setId}`);
-                if (beatmaps.length === 0) return;
-                const col = getOsuCollection();
-                for (const mode of OSU_MODES) {
-                    const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
-                    if (idx >= 0) {
-                        col[mode][idx].beatmaps = beatmaps.map(b => ({
-                            beatmap_id: parseInt(b.beatmap_id),
-                            version: b.version,
-                            difficulty_rating: parseFloat(b.difficultyrating),
-                            hit_length: parseInt(b.hit_length),
-                            total_length: parseInt(b.total_length),
-                            bpm: parseFloat(b.bpm)
-                        })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
-                        saveOsuCollection(col);
-                        break;
+                for (const setId of allIds) {
+                    const beatmaps = await osuFetch(`s=${setId}`);
+                    if (beatmaps.length === 0) continue;
+                    for (const mode of OSU_MODES) {
+                        const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
+                        if (idx >= 0) {
+                            col[mode][idx].beatmaps = beatmaps.map(b => ({
+                                beatmap_id: parseInt(b.beatmap_id),
+                                version: b.version,
+                                difficulty_rating: parseFloat(b.difficultyrating),
+                                hit_length: parseInt(b.hit_length),
+                                total_length: parseInt(b.total_length),
+                                bpm: parseFloat(b.bpm)
+                            })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
+                            break;
+                        }
                     }
                 }
+                saveOsuCollection(col);
                 renderOsuCollection();
+                status.innerText = `已更新 ${allIds.size} 首 Beatmap`;
+                status.style.color = '#34d399';
             } catch (e) {
-                console.error('Refresh failed:', e);
+                console.error('Refresh all failed:', e);
+                status.innerText = '重新整理失敗';
+                status.style.color = '#ff5252';
             } finally {
                 btn.classList.remove('spinning');
             }
@@ -711,7 +726,6 @@
                     <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
                     <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
-                    <button class="osu-refresh-btn" onclick="refreshOsuSet(${set.beatmapset_id}, event)" title="重新整理資料">&#x21bb;</button>
                     <div class="osu-card-info">
                         <div class="osu-card-title">${set.title}</div>
                         ${starsText}

@@ -665,6 +665,33 @@ main {
     box-shadow: 0 0 6px rgba(244,114,182,0.4);
 }
 
+.osu-refresh-all {
+    background: rgba(168,85,247,0.2);
+    color: #c8a2e0;
+    border: 1px solid rgba(168,85,247,0.3);
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.85rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.osu-refresh-all:hover {
+    color: #fff;
+    background: rgba(168,85,247,0.4);
+    border-color: #a855f7;
+}
+.osu-refresh-all.spinning {
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .osu-mode-tabs {
     display: flex;
     gap: 8px;
@@ -771,39 +798,6 @@ main {
 .osu-delete-btn:hover {
     color: #f87171;
     background: rgba(248,113,113,0.3);
-}
-
-.osu-refresh-btn {
-    position: absolute;
-    top: 40px;
-    right: 8px;
-    background: rgba(0,0,0,0.5);
-    color: rgba(255,255,255,0.6);
-    border: none;
-    width: 28px;
-    height: 28px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 0.85rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.2s;
-    z-index: 3;
-    opacity: 0;
-}
-.osu-card:hover .osu-refresh-btn { opacity: 1; }
-.osu-refresh-btn:hover {
-    color: #fff;
-    background: rgba(168,85,247,0.5);
-}
-.osu-refresh-btn.spinning {
-    opacity: 1;
-    animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
 
 .osu-fav-btn {
