@@ -509,7 +509,7 @@
                 const modeKey = OSU_MODE_NAMES[modeNum];
                 const col = getOsuCollection();
 
-                const alreadyExists = col[modeKey].some(s => s.beatmapset_id === beatmaps[0].beatmapset_id);
+                const alreadyExists = col[modeKey].some(s => s.beatmapset_id === parseInt(beatmaps[0].beatmapset_id));
                 if (alreadyExists) {
                     status.innerText = `「${beatmaps[0].artist} - ${beatmaps[0].title}」已在收藏庫中`;
                     status.style.color = '#f59e0b';
@@ -574,7 +574,12 @@
         function renderOsuCollection() {
             const container = document.getElementById('osu-collection');
             const col = getOsuCollection();
-            const sets = col[osuCurrentTab];
+            const seen = new Set();
+            const sets = col[osuCurrentTab].filter(s => {
+                if (seen.has(s.beatmapset_id)) return false;
+                seen.add(s.beatmapset_id);
+                return true;
+            });
 
             if (sets.length === 0) {
                 container.innerHTML = `<div class="osu-empty">還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span></div>`;
