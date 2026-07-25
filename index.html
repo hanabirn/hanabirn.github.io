@@ -133,7 +133,7 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3>&#x266B; 新增 Beatmap &#x266B;</h3>
                 <div class="input-group">
-                    <input type="text" id="osuInput" placeholder="輸入 Beatmap ID 或 Beatmap Set ID" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
+                    <input type="text" id="osuInput" placeholder="輸入 ID 或貼上 osu! 網址" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
                     <button onclick="addOsuBeatmap()">新增</button>
                 </div>
                 <p id="osu-status" class="status"></p>
@@ -451,11 +451,32 @@
             localStorage.setItem('osu_collection', JSON.stringify(col));
         }
 
+        function parseOsuInput(input) {
+            const urlMatch = input.match(/osu\.ppy\.sh\/(?:beatmaps?|beatmapsets?)\/(\d+)/);
+            if (urlMatch) return { type: 'url', id: urlMatch[1], isSet: input.includes('beatmapsets') };
+            if (/^\d+$/.test(input.trim())) return { type: 'id', id: input.trim(), isSet: false };
+            return null;
+        }
+
+        async function osuFetch(params) {
+            const url = `https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&${params}`;
+            const proxyUrl = `https://corsproxy.io/?${encodeURIComponent(url)}`;
+            const res = await fetch(proxyUrl);
+            return res.json();
+        }
+
         async function addOsuBeatmap() {
             const input = document.getElementById('osuInput');
             const status = document.getElementById('osu-status');
-            const id = input.value.trim();
-            if (!id) return;
+            const raw = input.value.trim();
+            if (!raw) return;
+
+            const parsed = parseOsuInput(raw);
+            if (!parsed) {
+                status.innerText = '請輸入 Beatmap ID、Set ID 或 osu! 網址';
+                status.style.color = '#ff5252';
+                return;
+            }
 
             status.innerText = '搜尋中...';
             status.style.color = '#c8a2e0';
@@ -463,19 +484,23 @@
             try {
                 let beatmaps = [];
 
-                const bySet = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&s=${id}`).then(r => r.json());
-                if (bySet.length > 0) {
-                    beatmaps = bySet;
-                } else {
-                    const byMap = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&b=${id}`).then(r => r.json());
-                    if (byMap.length > 0) {
-                        const setId = byMap[0].beatmapset_id;
-                        beatmaps = await fetch(`https://osu.ppy.sh/api/get_beatmaps?k=${OSU_API_KEY}&s=${setId}`).then(r => r.json());
-                    }
+                if (parsed.isSet || parsed.type === 'url' && input.value.includes('beatmapsets')) {
+                    beatmaps = await osuFetch(`s=${parsed.id}`);
                 }
 
                 if (beatmaps.length === 0) {
-                    status.innerText = '找不到該 Beatmap，請確認 ID 是否正確';
+                    const byMap = await osuFetch(`b=${parsed.id}`);
+                    if (byMap.length > 0) {
+                        beatmaps = await osuFetch(`s=${byMap[0].beatmapset_id}`);
+                    }
+                }
+
+                if (beatmaps.length === 0 && !parsed.isSet) {
+                    beatmaps = await osuFetch(`s=${parsed.id}`);
+                }
+
+                if (beatmaps.length === 0) {
+                    status.innerText = '找不到該 Beatmap，請確認 ID 或網址是否正確';
                     status.style.color = '#ff5252';
                     return;
                 }
