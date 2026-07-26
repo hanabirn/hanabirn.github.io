@@ -96,6 +96,8 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="mode_title">選擇測驗模式</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
+                <h3 data-i18n="quiz_count_title">選擇題數</h3>
+                <div class="mode-buttons" id="quiz-count-buttons"></div>
             </div>
 
             <div id="quiz-card" class="quiz-card" style="display: none;">
@@ -121,6 +123,18 @@
 
                 <div class="action-buttons">
                     <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;" data-i18n="quiz_next">次の問題 &#x2192;</button>
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; 返回選擇語言</button>
+                </div>
+            </div>
+
+            <div id="result-card" class="quiz-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="result_title">測驗結果</h3>
+                <div id="result-summary" class="result-summary"></div>
+                <div id="result-detail" class="result-detail"></div>
+                <div class="action-buttons">
+                    <button class="btn next-btn" onclick="showModeSelection()" data-i18n="quiz_again">&#x2192; 再來一次</button>
                     <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; 返回選擇語言</button>
                 </div>
             </div>
@@ -207,6 +221,11 @@
                 correct: '正解！', wrong: '不正解... 正確答案是：',
                 load_success: '成功讀取 {n} 個有效單字', load_with_reading: '（含讀法: {n} 個）',
                 invalid_url: '請輸入正確的 Google Sheet 網址！',
+                quiz_count_title: '選擇題數', quiz_count_10: '10 題', quiz_count_20: '20 題', quiz_count_30: '30 題', quiz_count_all: '不限',
+                mode_title_label: '模式', count_label: '題數', result_title: '測驗結果',
+                result_correct: '答對', result_wrong: '答錯', result_score: '總分', result_out_of: '題',
+                quiz_again: '🔄 再來一次',
+                result_question: '第 {n} 題', result_your_answer: '你的答案', result_correct_answer: '正確答案',
             },
             en: {
                 title: "hanabirn's World", subtitle: 'Learning is a joy',
@@ -234,6 +253,11 @@
                 correct: 'Correct!', wrong: 'Wrong... The answer was: ',
                 load_success: 'Loaded {n} valid words', load_with_reading: ' (including {n} readings)',
                 invalid_url: 'Please enter a valid Google Sheet URL!',
+                quiz_count_title: 'Number of Questions', quiz_count_10: '10 Questions', quiz_count_20: '20 Questions', quiz_count_30: '30 Questions', quiz_count_all: 'No Limit',
+                mode_title_label: 'Mode', count_label: 'Count', result_title: 'Quiz Results',
+                result_correct: 'Correct', result_wrong: 'Wrong', result_score: 'Score', result_out_of: 'questions',
+                quiz_again: '🔄 Try Again',
+                result_question: 'Question {n}', result_your_answer: 'Your Answer', result_correct_answer: 'Correct Answer',
             },
             ja: {
                 title: 'hanabirn の 小天地', subtitle: '学ぶことは楽しい',
@@ -261,6 +285,11 @@
                 correct: '正解！', wrong: '不正解... 正解は：',
                 load_success: '{n}個の有効な単語を読み込みました', load_with_reading: '（読み方含む: {n}個）',
                 invalid_url: '正しいGoogle SheetのURLを入力してください！',
+                quiz_count_title: '問題数を選択', quiz_count_10: '10 問', quiz_count_20: '20 問', quiz_count_30: '30 問', quiz_count_all: '無制限',
+                mode_title_label: 'モード', count_label: '問題数', result_title: 'クイズ結果',
+                result_correct: '正解', result_wrong: '不正解', result_score: 'スコア', result_out_of: '問',
+                quiz_again: '🔄 もう一度',
+                result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
             },
             ko: {
                 title: 'hanabirn 의 작은 세계', subtitle: '배우는 것은 즐거운 일',
@@ -288,6 +317,11 @@
                 correct: '정답!', wrong: '오답... 정답은: ',
                 load_success: '{n}개의 유효한 단어를 불러왔습니다', load_with_reading: ' (읽기 포함: {n}개)',
                 invalid_url: '올바른 Google Sheet URL을 입력하세요!',
+                quiz_count_title: '문제 수 선택', quiz_count_10: '10 문제', quiz_count_20: '20 문제', quiz_count_30: '30 문제', quiz_count_all: '제한 없음',
+                mode_title_label: '모드', count_label: '문제 수', result_title: '퀴즈 결과',
+                result_correct: '정답', result_wrong: '오답', result_score: '점수', result_out_of: '문제',
+                quiz_again: '🔄 다시 하기',
+                result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
             },
             ru: {
                 title: 'hanabirn の 小天地', subtitle: 'Учиться — это радость',
@@ -315,6 +349,11 @@
                 correct: 'Правильно!', wrong: 'Неверно... Правильный ответ: ',
                 load_success: 'Загружено {n} слов', load_with_reading: ' (включая {n} чтений)',
                 invalid_url: 'Введите корректный URL Google Таблицы!',
+                quiz_count_title: 'Количество вопросов', quiz_count_10: '10 вопросов', quiz_count_20: '20 вопросов', quiz_count_30: '30 вопросов', quiz_count_all: 'Без ограничений',
+                mode_title_label: 'Режим', count_label: 'Кол-во', result_title: 'Результаты',
+                result_correct: 'Верно', result_wrong: 'Неверно', result_score: 'Очки', result_out_of: 'вопросов',
+                quiz_again: '🔄 Ещё раз',
+                result_question: 'Вопрос {n}', result_your_answer: 'Ваш ответ', result_correct_answer: 'Правильный ответ',
             },
             fr: {
                 title: "hanabirn の 小天地", subtitle: 'Apprendre est un plaisir',
@@ -342,6 +381,11 @@
                 correct: 'Correct !', wrong: 'Faux... La réponse était : ',
                 load_success: '{n} mots valides chargés', load_with_reading: ' (dont {n} lectures)',
                 invalid_url: 'Veuillez entrer une URL Google Sheet valide !',
+                quiz_count_title: 'Nombre de questions', quiz_count_10: '10 questions', quiz_count_20: '20 questions', quiz_count_30: '30 questions', quiz_count_all: 'Illimité',
+                mode_title_label: 'Mode', count_label: 'Nombre', result_title: 'Résultats',
+                result_correct: 'Correct', result_wrong: 'Faux', result_score: 'Score', result_out_of: 'questions',
+                quiz_again: '🔄 Réessayer',
+                result_question: 'Question {n}', result_your_answer: 'Votre réponse', result_correct_answer: 'Bonne réponse',
             },
             es: {
                 title: "hanabirn の 小天地", subtitle: 'Aprender es un placer',
@@ -369,6 +413,11 @@
                 correct: '¡Correcto!', wrong: 'Incorrecto... La respuesta era: ',
                 load_success: '{n} palabras válidas cargadas', load_with_reading: ' (incluyendo {n} lecturas)',
                 invalid_url: '¡Ingrese una URL válida de Google Sheet!',
+                quiz_count_title: 'Número de preguntas', quiz_count_10: '10 preguntas', quiz_count_20: '20 preguntas', quiz_count_30: '30 preguntas', quiz_count_all: 'Sin límite',
+                mode_title_label: 'Modo', count_label: 'Cantidad', result_title: 'Resultados',
+                result_correct: 'Correctas', result_wrong: 'Incorrectas', result_score: 'Puntos', result_out_of: 'preguntas',
+                quiz_again: '🔄 Intentar de nuevo',
+                result_question: 'Pregunta {n}', result_your_answer: 'Tu respuesta', result_correct_answer: 'Respuesta correcta',
             },
             de: {
                 title: "hanabirn の 小天地", subtitle: 'Lernen macht Freude',
@@ -396,6 +445,11 @@
                 correct: 'Richtig!', wrong: 'Falsch... Die richtige Antwort war: ',
                 load_success: '{n} gültige Wörter geladen', load_with_reading: ' (inkl. {n} Lesungen)',
                 invalid_url: 'Bitte geben Sie eine gültige Google Tabellen-URL ein!',
+                quiz_count_title: 'Anzahl der Fragen', quiz_count_10: '10 Fragen', quiz_count_20: '20 Fragen', quiz_count_30: '30 Fragen', quiz_count_all: 'Unbegrenzt',
+                mode_title_label: 'Modus', count_label: 'Anzahl', result_title: 'Ergebnisse',
+                result_correct: 'Richtig', result_wrong: 'Falsch', result_score: 'Punkte', result_out_of: 'Fragen',
+                quiz_again: '🔄 Nochmal',
+                result_question: 'Frage {n}', result_your_answer: 'Deine Antwort', result_correct_answer: 'Richtige Antwort',
             }
         };
 
@@ -474,6 +528,36 @@
         let score = 0;
         let questionNum = 0;
         let answered = false;
+        let totalQuestions = 0;
+        let quizHistory = [];
+
+        function playSound(correct) {
+            try {
+                const ctx = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = ctx.createOscillator();
+                const gain = ctx.createGain();
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                if (correct) {
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(523, ctx.currentTime);
+                    osc.frequency.setValueAtTime(659, ctx.currentTime + 0.08);
+                    osc.frequency.setValueAtTime(784, ctx.currentTime + 0.16);
+                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+                    osc.start(ctx.currentTime);
+                    osc.stop(ctx.currentTime + 0.4);
+                } else {
+                    osc.type = 'sawtooth';
+                    osc.frequency.setValueAtTime(220, ctx.currentTime);
+                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
+                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
+                    osc.start(ctx.currentTime);
+                    osc.stop(ctx.currentTime + 0.35);
+                }
+            } catch(e) {}
+        }
 
         function extractSheetId(url) {
             const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
@@ -580,6 +664,7 @@
             document.getElementById('setup-card').style.display = 'none';
             document.getElementById('mode-card').style.display = 'block';
             document.getElementById('quiz-card').style.display = 'none';
+            document.getElementById('result-card').style.display = 'none';
 
             const container = document.getElementById('mode-buttons');
             container.innerHTML = '';
@@ -587,21 +672,56 @@
             const btnMeaning = document.createElement('button');
             btnMeaning.className = 'mode-btn';
             btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : t('mode_kr_meaning');
-            btnMeaning.onclick = () => startQuiz('meaning');
+            btnMeaning.onclick = () => selectMode('meaning');
             container.appendChild(btnMeaning);
 
             if (readingList.length >= 4) {
                 const btnReading = document.createElement('button');
                 btnReading.className = 'mode-btn';
                 btnReading.innerText = t('mode_jp_reading');
-                btnReading.onclick = () => startQuiz('reading');
+                btnReading.onclick = () => selectMode('reading');
                 container.appendChild(btnReading);
 
                 const btnBoth = document.createElement('button');
                 btnBoth.className = 'mode-btn';
                 btnBoth.innerText = t('mode_both');
-                btnBoth.onclick = () => startQuiz('both');
+                btnBoth.onclick = () => selectMode('both');
                 container.appendChild(btnBoth);
+            }
+
+            const countContainer = document.getElementById('quiz-count-buttons');
+            countContainer.innerHTML = '';
+            const counts = [{n: 10, key: 'quiz_count_10'}, {n: 20, key: 'quiz_count_20'}, {n: 30, key: 'quiz_count_30'}, {n: 0, key: 'quiz_count_all'}];
+            counts.forEach(c => {
+                const btn = document.createElement('button');
+                btn.className = 'mode-btn count-btn';
+                btn.innerText = t(c.key);
+                btn.onclick = () => selectCount(c.n);
+                countContainer.appendChild(btn);
+            });
+        }
+
+        let selectedQuizMode = 'meaning';
+
+        function selectMode(mode) {
+            selectedQuizMode = mode;
+            document.querySelectorAll('#mode-buttons .mode-btn').forEach(b => b.style.border = '2px solid transparent');
+            event.target.style.border = '2px solid #e879a8';
+            checkStartQuiz();
+        }
+
+        function selectCount(n) {
+            totalQuestions = n;
+            document.querySelectorAll('#quiz-count-buttons .mode-btn').forEach(b => b.style.border = '2px solid transparent');
+            event.target.style.border = '2px solid #e879a8';
+            checkStartQuiz();
+        }
+
+        function checkStartQuiz() {
+            const modePicked = document.querySelector('#mode-buttons .mode-btn[style*="e879a8"]');
+            const countPicked = document.querySelector('#quiz-count-buttons .mode-btn[style*="e879a8"]');
+            if (modePicked && countPicked) {
+                startQuiz(selectedQuizMode);
             }
         }
 
@@ -609,11 +729,13 @@
             currentMode = mode;
             score = 0;
             questionNum = 0;
+            quizHistory = [];
 
             document.getElementById('mode-card').style.display = 'none';
             document.getElementById('quiz-card').style.display = 'block';
+            document.getElementById('result-card').style.display = 'none';
 
-            const modeNames = { meaning: '考意思', reading: '考讀法', both: '混合' };
+            const modeNames = { meaning: t('mode_title_label'), reading: t('mode_title_label'), both: t('mode_title_label') };
             document.getElementById('quiz-mode-label').innerText = modeNames[mode];
             document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
             nextQuestion();
@@ -687,13 +809,24 @@
 
             const feedback = document.getElementById('feedback');
             const correctAnswer = type === 'reading' ? currentWord.kana : currentWord.meaning;
+            const isCorrect = selectedText === correctAnswer;
 
-            if (selectedText === correctAnswer) {
+            quizHistory.push({
+                question: currentWord.word,
+                yourAnswer: selectedText,
+                correctAnswer: correctAnswer,
+                isCorrect: isCorrect,
+                type: type
+            });
+
+            if (isCorrect) {
                 score += 10;
                 selectedBtn.classList.add('correct-choice');
                 feedback.innerText = t('correct');
                 feedback.className = 'feedback correct';
+                playSound(true);
             } else {
+                score -= 3;
                 selectedBtn.classList.add('wrong-choice');
                 allBtns.forEach(btn => {
                     if (btn.innerText === correctAnswer) {
@@ -702,10 +835,53 @@
                 });
                 feedback.innerText = t('wrong') + correctAnswer;
                 feedback.className = 'feedback wrong';
+                playSound(false);
             }
 
             document.getElementById('score-count').innerText = `${t('quiz_score', {n: score})}`;
+
+            if (totalQuestions > 0 && questionNum >= totalQuestions) {
+                document.getElementById('nextBtn').innerText = t('quiz_next');
+                document.getElementById('nextBtn').onclick = () => showResults();
+            } else {
+                document.getElementById('nextBtn').innerText = t('quiz_next');
+                document.getElementById('nextBtn').onclick = () => nextQuestion();
+            }
             document.getElementById('nextBtn').style.display = 'inline-block';
+        }
+
+        function showResults() {
+            document.getElementById('quiz-card').style.display = 'none';
+            document.getElementById('result-card').style.display = 'block';
+
+            const correctCount = quizHistory.filter(h => h.isCorrect).length;
+            const wrongCount = quizHistory.filter(h => !h.isCorrect).length;
+            const total = quizHistory.length;
+            const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
+
+            document.getElementById('result-summary').innerHTML =
+                `<div class="result-stats">
+                    <div class="stat correct-stat">${t('result_correct')}: ${correctCount}</div>
+                    <div class="stat wrong-stat">${t('result_wrong')}: ${wrongCount}</div>
+                    <div class="stat score-stat">${t('result_score')}: ${score}</div>
+                    <div class="stat pct-stat">${percentage}%</div>
+                </div>`;
+
+            let detailHTML = '<table class="result-table"><thead><tr>';
+            detailHTML += `<th>${t('result_question', {n: ''})}</th>`;
+            detailHTML += `<th>${t('result_your_answer')}</th>`;
+            detailHTML += `<th>${t('result_correct_answer')}</th></tr></thead><tbody>`;
+
+            quizHistory.forEach((h, i) => {
+                const cls = h.isCorrect ? 'result-correct' : 'result-wrong';
+                detailHTML += `<tr class="${cls}">
+                    <td>${i + 1}. ${h.question}</td>
+                    <td>${h.yourAnswer}</td>
+                    <td>${h.correctAnswer}</td>
+                </tr>`;
+            });
+            detailHTML += '</tbody></table>';
+            document.getElementById('result-detail').innerHTML = detailHTML;
         }
 
         function backToLanguage() {
