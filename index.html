@@ -108,6 +108,7 @@
                     <span id="quiz-mode-label"></span>
                     <span id="total-words" data-i18n="quiz_words">有效單字: 0</span>
                     <span id="score-count" data-i18n="quiz_score">得分: 0</span>
+                    <button id="answerLangBtn" class="auto-speak-btn" onclick="toggleAnswerLang()">🇨🇳 中文答案</button>
                     <button id="autoSpeakBtn" class="auto-speak-btn speak-active" onclick="toggleAutoSpeak()" title="自動播放發音">&#x1f50a; 語音</button>
                 </div>
 
@@ -577,11 +578,21 @@
         }
 
         let autoSpeak = true;
+        let quizAnswerLang = 'zh';
 
         function toggleAutoSpeak() {
             autoSpeak = !autoSpeak;
             const btn = document.getElementById('autoSpeakBtn');
             if (btn) btn.classList.toggle('speak-active', autoSpeak);
+        }
+
+        function toggleAnswerLang() {
+            quizAnswerLang = quizAnswerLang === 'zh' ? 'en' : 'zh';
+            const btn = document.getElementById('answerLangBtn');
+            if (btn) {
+                btn.innerText = quizAnswerLang === 'zh' ? '🇨🇳 中文答案' : '🇺🇸 English';
+                btn.classList.toggle('speak-active', quizAnswerLang === 'en');
+            }
         }
 
         function extractSheetId(url) {
@@ -655,33 +666,33 @@
 
         function parseJapanese(rows) {
             rows.forEach((row) => {
-                if (row.length < 5) return;
-                addWord(row[2], row[3], row[4]);
-                if (row.length > 9)  addWord(row[7], row[8], row[9]);
-                if (row.length > 14) addWord(row[12], row[13], row[14]);
-                if (row.length > 19) addWord(row[17], row[18], row[19]);
+                if (row.length < 6) return;
+                addWord(row[2], row[3], row[4], row[5]);
+                if (row.length > 11) addWord(row[7], row[8], row[9], row[10]);
+                if (row.length > 16) addWord(row[12], row[13], row[14], row[15]);
+                if (row.length > 21) addWord(row[17], row[18], row[19], row[20]);
             });
         }
 
         function parseKorean(rows) {
             rows.forEach((row) => {
-                if (row.length < 4) return;
-                addWord(row[2], '', row[3]);
-                if (row.length > 6)  addWord(row[6], '', row[7]);
-                if (row.length > 10) addWord(row[10], '', row[11]);
-                if (row.length > 14) addWord(row[14], '', row[15]);
-                if (row.length > 18) addWord(row[18], '', row[19]);
+                if (row.length < 6) return;
+                addWord(row[2], '', row[4], row[5]);
+                if (row.length > 11) addWord(row[7], '', row[9], row[10]);
+                if (row.length > 16) addWord(row[12], '', row[14], row[15]);
+                if (row.length > 21) addWord(row[17], '', row[19], row[20]);
             });
         }
 
-        function addWord(word, kana, meaning) {
+        function addWord(word, kana, meaning, englishMeaning) {
             const w = word.trim();
             const k = kana ? kana.trim() : '';
             const m = meaning.trim();
+            const e = englishMeaning ? englishMeaning.trim() : '';
             if (!isValidWord(w, m)) return;
-            vocabularyList.push({ word: w, kana: k, meaning: m });
+            vocabularyList.push({ word: w, kana: k, meaning: m, english: e });
             if (k.length > 0) {
-                readingList.push({ word: w, kana: k, meaning: m });
+                readingList.push({ word: w, kana: k, meaning: m, english: e });
             }
         }
 
@@ -782,13 +793,16 @@
             document.getElementById('feedback').className = 'feedback';
 
             const questionType = pickQuestionType();
+            const useEn = quizAnswerLang === 'en';
 
             if (questionType === 'reading' && readingList.length >= 4) {
                 const pool = readingList;
                 currentWord = pool[Math.floor(Math.random() * pool.length)];
 
                 document.getElementById('word-question').innerText = currentWord.word;
-                document.getElementById('word-hint').innerText = `意思：${currentWord.meaning}`;
+                document.getElementById('word-hint').innerText = useEn
+                    ? currentWord.english || currentWord.meaning
+                    : currentWord.meaning;
 
                 let options = [currentWord.kana];
                 while (options.length < 4) {
@@ -803,10 +817,17 @@
                 document.getElementById('word-question').innerText = currentWord.word;
                 document.getElementById('word-hint').innerText = currentWord.kana ? `讀法：${currentWord.kana}` : '';
 
-                let options = [currentWord.meaning];
+                const answerPool = useEn
+                    ? vocabularyList.filter(w => w.english && w.english.length > 0)
+                    : vocabularyList;
+                if (answerPool.length < 4) { renderOptions([], 'meaning'); return; }
+
+                const correctAnswer = useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning;
+                let options = [correctAnswer];
                 while (options.length < 4) {
-                    const pick = vocabularyList[Math.floor(Math.random() * vocabularyList.length)].meaning;
-                    if (!options.includes(pick)) options.push(pick);
+                    const pick = answerPool[Math.floor(Math.random() * answerPool.length)];
+                    const val = useEn ? (pick.english || pick.meaning) : pick.meaning;
+                    if (!options.includes(val)) options.push(val);
                 }
                 options.sort(() => Math.random() - 0.5);
                 renderOptions(options, 'meaning');
@@ -837,7 +858,9 @@
             allBtns.forEach(btn => btn.disabled = true);
 
             const feedback = document.getElementById('feedback');
-            const correctAnswer = type === 'reading' ? currentWord.kana : currentWord.meaning;
+            const useEn = quizAnswerLang === 'en';
+            const correctAnswer = type === 'reading' ? currentWord.kana
+                : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
             const isCorrect = selectedText === correctAnswer;
 
             quizHistory.push({
