@@ -665,7 +665,7 @@
                         Papa.parse(csvUrl2, {
                             download: true,
                             header: false,
-                            complete: function(r2) { parseJapanese(r2.data); finalizeLoad(); },
+                            complete: function(r2) { parseJapanese2(r2.data); finalizeLoad(); },
                             error: function() { finalizeLoad(); }
                         });
                     } else if (currentLang === 'fr') {
@@ -693,6 +693,18 @@
                 if (row.length > 20) addWord(row[20], row[21], row[22], row[23]);
             });
             console.log('JP parsed vocabularyList sample:', vocabularyList.slice(0, 10));
+        }
+
+        function parseJapanese2(rows) {
+            rows.forEach((row, idx) => {
+                if (row.length < 5) return;
+                if (idx < 5) console.log(`JP2 row[${idx}] (len=${row.length}):`, row.slice(0, 24));
+                addWord(row[2], row[3], row[4], row[5]);
+                if (row.length > 9)  addWord(row[7], row[8], row[9], row[10]);
+                if (row.length > 14) addWord(row[12], row[13], row[14], row[15]);
+                if (row.length > 19) addWord(row[17], row[18], row[19], row[20]);
+            });
+            console.log('JP2 parsed vocabularyList total:', vocabularyList.length);
         }
 
         function parseKorean(rows) {
