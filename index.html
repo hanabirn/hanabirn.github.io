@@ -56,9 +56,9 @@
         <h1 data-i18n="title">hanabirn の 小天地</h1>
         <p class="subtitle" data-i18n="subtitle">學習是一件快樂的事</p>
         <nav class="main-nav">
-            <button class="nav-btn active" onclick="switchPage('quiz')" data-i18n="nav_quiz">單字測驗</button>
-            <button class="nav-btn" onclick="switchPage('music')" data-i18n="nav_music">音樂收藏</button>
-            <button class="nav-btn" onclick="switchPage('osu')" data-i18n="nav_osu">osu! 收藏</button>
+            <button class="nav-btn active" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">單字測驗</button>
+            <button class="nav-btn" onclick="switchPage('music', this)" data-i18n="nav_music">音樂收藏</button>
+            <button class="nav-btn" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! 收藏</button>
         </nav>
     </header>
 
@@ -502,9 +502,9 @@
             cn: '5XQgwQcuRRBcyVaKMQbB88'
         };
 
-        function switchPage(page) {
+        function switchPage(page, el) {
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            event.target.classList.add('active');
+            el.classList.add('active');
             document.getElementById('page-quiz').style.display = page === 'quiz' ? 'block' : 'none';
             document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
             document.getElementById('page-osu').style.display = page === 'osu' ? 'block' : 'none';
@@ -668,19 +668,19 @@
             rows.forEach((row) => {
                 if (row.length < 6) return;
                 addWord(row[2], row[3], row[4], row[5]);
-                if (row.length > 11) addWord(row[7], row[8], row[9], row[10]);
-                if (row.length > 16) addWord(row[12], row[13], row[14], row[15]);
-                if (row.length > 21) addWord(row[17], row[18], row[19], row[20]);
+                if (row.length > 8)  addWord(row[8], row[9], row[10], row[11]);
+                if (row.length > 14) addWord(row[14], row[15], row[16], row[17]);
+                if (row.length > 20) addWord(row[20], row[21], row[22], row[23]);
             });
         }
 
         function parseKorean(rows) {
             rows.forEach((row) => {
                 if (row.length < 6) return;
-                addWord(row[2], '', row[4], row[5]);
-                if (row.length > 11) addWord(row[7], '', row[9], row[10]);
-                if (row.length > 16) addWord(row[12], '', row[14], row[15]);
-                if (row.length > 21) addWord(row[17], '', row[19], row[20]);
+                addWord(row[2], '', row[3], row[4]);
+                if (row.length > 8)  addWord(row[8], '', row[9], row[10]);
+                if (row.length > 14) addWord(row[14], '', row[15], row[16]);
+                if (row.length > 20) addWord(row[20], '', row[21], row[22]);
             });
         }
 
