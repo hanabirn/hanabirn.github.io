@@ -34,17 +34,7 @@
         <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
     </div>
 
-    <div class="deco-img deco-miku1"><img src="images/miku1.png" alt=""></div>
-    <div class="deco-img deco-miku2"><img src="images/miku2.png" alt=""></div>
-    <div class="deco-img deco-miku3"><img src="images/miku3.webp" alt=""></div>
-    <div class="deco-img deco-miku4"><img src="images/miku4.jpg" alt=""></div>
-    <div class="deco-img deco-anime1"><img src="images/anime1.jpg" alt=""></div>
-    <div class="deco-img deco-anime2"><img src="images/anime2.jpg" alt=""></div>
-    <div class="deco-img deco-anime3"><img src="images/anime3.png" alt=""></div>
-    <div class="deco-img deco-gif1"><img src="images/gif1.gif" alt=""></div>
-    <div class="deco-img deco-gif2"><img src="images/gif2.gif" alt=""></div>
-    <div class="deco-img deco-gif3"><img src="images/gif3.gif" alt=""></div>
-    <div class="deco-img deco-gif4"><img src="images/gif4.gif" alt=""></div>
+    <div class="deco-img" style="display:none"></div>
 
     <header>
         <div class="header-wave"></div>
@@ -213,6 +203,10 @@
                 osu_confirm_password: '請再次輸入密碼確認：', osu_password_mismatch: '兩次密碼不一致，設定取消',
                 osu_password_set: '密碼設定成功！', osu_import_success: '匯入成功！', osu_import_fail: '匯入失敗，檔案格式不正確',
                 osu_export_done: '已匯出 osu_backup.json', osu_copied: '已複製！', mapped_by: 'mapped by {n}',
+                mode_jp_meaning: '日文 → 選中文意思', mode_kr_meaning: '韓文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
+                correct: '正解！', wrong: '不正解... 正確答案是：',
+                load_success: '成功讀取 {n} 個有效單字', load_with_reading: '（含讀法: {n} 個）',
+                invalid_url: '請輸入正確的 Google Sheet 網址！',
             },
             en: {
                 title: "hanabirn's World", subtitle: 'Learning is a joy',
@@ -236,6 +230,10 @@
                 osu_confirm_password: 'Confirm password:', osu_password_mismatch: 'Passwords do not match. Cancelled.',
                 osu_password_set: 'Password set successfully!', osu_import_success: 'Import successful!', osu_import_fail: 'Import failed. Invalid file format.',
                 osu_export_done: 'Exported osu_backup.json', osu_copied: 'Copied!', mapped_by: 'mapped by {n}',
+                mode_jp_meaning: 'Japanese → Choose Meaning', mode_kr_meaning: 'Korean → Choose Meaning', mode_jp_reading: 'Japanese → Choose Reading', mode_both: 'Mixed Random',
+                correct: 'Correct!', wrong: 'Wrong... The answer was: ',
+                load_success: 'Loaded {n} valid words', load_with_reading: ' (including {n} readings)',
+                invalid_url: 'Please enter a valid Google Sheet URL!',
             },
             ja: {
                 title: 'hanabirn の 小天地', subtitle: '学ぶことは楽しい',
@@ -259,6 +257,10 @@
                 osu_confirm_password: 'パスワードを再入力：', osu_password_mismatch: 'パスワードが一致しません',
                 osu_password_set: 'パスワード設定完了！', osu_import_success: 'インポート成功！', osu_import_fail: 'ファイル形式が正しくありません',
                 osu_export_done: 'osu_backup.jsonをエクスポート', osu_copied: 'コピーしました！', mapped_by: '譜面: {n}',
+                mode_jp_meaning: '日本語 → 意味を選択', mode_kr_meaning: '韓国語 → 意味を選択', mode_jp_reading: '日本語 → 読み方を選択', mode_both: 'ランダム混合',
+                correct: '正解！', wrong: '不正解... 正解は：',
+                load_success: '{n}個の有効な単語を読み込みました', load_with_reading: '（読み方含む: {n}個）',
+                invalid_url: '正しいGoogle SheetのURLを入力してください！',
             },
             ko: {
                 title: 'hanabirn 의 작은 세계', subtitle: '배우는 것은 즐거운 일',
@@ -282,6 +284,10 @@
                 osu_confirm_password: '비밀번호 확인:', osu_password_mismatch: '비밀번호가 일치하지 않습니다',
                 osu_password_set: '비밀번호 설정 완료!', osu_import_success: '가져오기 성공!', osu_import_fail: '파일 형식이 올바르지 않습니다',
                 osu_export_done: 'osu_backup.json 내보냄', osu_copied: '복사됨!', mapped_by: '매핑: {n}',
+                mode_jp_meaning: '일본어 → 뜻 선택', mode_kr_meaning: '한국어 → 뜻 선택', mode_jp_reading: '일본어 → 읽기 선택', mode_both: '랜덤 혼합',
+                correct: '정답!', wrong: '오답... 정답은: ',
+                load_success: '{n}개의 유효한 단어를 불러왔습니다', load_with_reading: ' (읽기 포함: {n}개)',
+                invalid_url: '올바른 Google Sheet URL을 입력하세요!',
             },
             ru: {
                 title: 'hanabirn の 小天地', subtitle: 'Учиться — это радость',
@@ -305,6 +311,10 @@
                 osu_confirm_password: 'Подтвердите пароль:', osu_password_mismatch: 'Пароли не совпадают',
                 osu_password_set: 'Пароль установлен!', osu_import_success: 'Импорт удался!', osu_import_fail: 'Неверный формат файла',
                 osu_export_done: 'osu_backup.json экспортирован', osu_copied: 'Скопировано!', mapped_by: 'автор: {n}',
+                mode_jp_meaning: 'Японский → Выбрать перевод', mode_kr_meaning: 'Корейский → Выбрать перевод', mode_jp_reading: 'Японский → Выбрать чтение', mode_both: 'Случайный микс',
+                correct: 'Правильно!', wrong: 'Неверно... Правильный ответ: ',
+                load_success: 'Загружено {n} слов', load_with_reading: ' (включая {n} чтений)',
+                invalid_url: 'Введите корректный URL Google Таблицы!',
             },
             fr: {
                 title: "hanabirn の 小天地", subtitle: 'Apprendre est un plaisir',
@@ -328,6 +338,10 @@
                 osu_confirm_password: 'Confirmez:', osu_password_mismatch: 'Les mots de passe ne correspondent pas',
                 osu_password_set: 'Mot de passe défini!', osu_import_success: 'Import réussi!', osu_import_fail: 'Format de fichier invalide',
                 osu_export_done: 'osu_backup.json exporté', osu_copied: 'Copié!', mapped_by: 'par {n}',
+                mode_jp_meaning: 'Japonais → Choisir la signification', mode_kr_meaning: 'Coréen → Choisir la signification', mode_jp_reading: 'Japonais → Choisir la lecture', mode_both: 'Mixte aléatoire',
+                correct: 'Correct !', wrong: 'Faux... La réponse était : ',
+                load_success: '{n} mots valides chargés', load_with_reading: ' (dont {n} lectures)',
+                invalid_url: 'Veuillez entrer une URL Google Sheet valide !',
             },
             es: {
                 title: "hanabirn の 小天地", subtitle: 'Aprender es un placer',
@@ -351,6 +365,10 @@
                 osu_confirm_password: 'Confirme:', osu_password_mismatch: 'Las contraseñas no coinciden',
                 osu_password_set: '¡Contraseña establecida!', osu_import_success: '¡Importación exitosa!', osu_import_fail: 'Formato de archivo inválido',
                 osu_export_done: 'osu_backup.json exportado', osu_copied: '¡Copiado!', mapped_by: 'por {n}',
+                mode_jp_meaning: 'Japonés → Elegir significado', mode_kr_meaning: 'Coreano → Elegir significado', mode_jp_reading: 'Japonés → Elegir lectura', mode_both: 'Mixto aleatorio',
+                correct: '¡Correcto!', wrong: 'Incorrecto... La respuesta era: ',
+                load_success: '{n} palabras válidas cargadas', load_with_reading: ' (incluyendo {n} lecturas)',
+                invalid_url: '¡Ingrese una URL válida de Google Sheet!',
             },
             de: {
                 title: "hanabirn の 小天地", subtitle: 'Lernen macht Freude',
@@ -374,6 +392,10 @@
                 osu_confirm_password: 'Bestätigen:', osu_password_mismatch: 'Passwörter stimmen nicht überein',
                 osu_password_set: 'Passwort gesetzt!', osu_import_success: 'Import erfolgreich!', osu_import_fail: 'Ungültiges Dateiformat',
                 osu_export_done: 'osu_backup.json exportiert', osu_copied: 'Kopiert!', mapped_by: 'von {n}',
+                mode_jp_meaning: 'Japanisch → Bedeutung wählen', mode_kr_meaning: 'Koreanisch → Bedeutung wählen', mode_jp_reading: 'Japanisch → Lesung wählen', mode_both: 'Zufälliger Mix',
+                correct: 'Richtig!', wrong: 'Falsch... Die richtige Antwort war: ',
+                load_success: '{n} gültige Wörter geladen', load_with_reading: ' (inkl. {n} Lesungen)',
+                invalid_url: 'Bitte geben Sie eine gültige Google Tabellen-URL ein!',
             }
         };
 
@@ -483,7 +505,7 @@
 
             const sheetId = extractSheetId(url);
             if (!sheetId) {
-                alert('請輸入正確的 Google Sheet 網址！');
+                    alert(t('invalid_url'));
                 return;
             }
 
@@ -507,7 +529,7 @@
                     }
 
                     if (vocabularyList.length >= 4) {
-                        statusMsg.innerText = `成功讀取 ${vocabularyList.length} 個有效單字${readingList.length > 0 ? '（含讀法: ' + readingList.length + ' 個）' : ''}`;
+                        statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
                         statusMsg.style.color = '#f472b6';
                         showModeSelection();
                     } else {
@@ -564,20 +586,20 @@
 
             const btnMeaning = document.createElement('button');
             btnMeaning.className = 'mode-btn';
-            btnMeaning.innerText = currentLang === 'jp' ? '日文 → 選中文意思' : '韓文 → 選中文意思';
+            btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : t('mode_kr_meaning');
             btnMeaning.onclick = () => startQuiz('meaning');
             container.appendChild(btnMeaning);
 
             if (readingList.length >= 4) {
                 const btnReading = document.createElement('button');
                 btnReading.className = 'mode-btn';
-                btnReading.innerText = '日文 → 選讀法';
+                btnReading.innerText = t('mode_jp_reading');
                 btnReading.onclick = () => startQuiz('reading');
                 container.appendChild(btnReading);
 
                 const btnBoth = document.createElement('button');
                 btnBoth.className = 'mode-btn';
-                btnBoth.innerText = '混合隨機';
+                btnBoth.innerText = t('mode_both');
                 btnBoth.onclick = () => startQuiz('both');
                 container.appendChild(btnBoth);
             }
@@ -593,7 +615,7 @@
 
             const modeNames = { meaning: '考意思', reading: '考讀法', both: '混合' };
             document.getElementById('quiz-mode-label').innerText = modeNames[mode];
-            document.getElementById('total-words').innerText = `有效單字: ${vocabularyList.length}`;
+            document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
             nextQuestion();
         }
 
@@ -606,8 +628,8 @@
         function nextQuestion() {
             answered = false;
             questionNum++;
-            document.getElementById('question-count').innerText = `第 ${questionNum} 題`;
-            document.getElementById('score-count').innerText = `得分: ${score}`;
+            document.getElementById('question-count').innerText = t('quiz_question', {n: questionNum});
+            document.getElementById('score-count').innerText = t('quiz_score', {n: score});
             document.getElementById('nextBtn').style.display = 'none';
             document.getElementById('feedback').innerText = '';
             document.getElementById('feedback').className = 'feedback';
@@ -669,7 +691,7 @@
             if (selectedText === correctAnswer) {
                 score += 10;
                 selectedBtn.classList.add('correct-choice');
-                feedback.innerText = '正解！';
+                feedback.innerText = t('correct');
                 feedback.className = 'feedback correct';
             } else {
                 selectedBtn.classList.add('wrong-choice');
@@ -678,11 +700,11 @@
                         btn.classList.add('correct-choice');
                     }
                 });
-                feedback.innerText = `不正解... 正確答案は：${correctAnswer}`;
+                feedback.innerText = t('wrong') + correctAnswer;
                 feedback.className = 'feedback wrong';
             }
 
-            document.getElementById('score-count').innerText = `得分: ${score}`;
+            document.getElementById('score-count').innerText = `${t('quiz_score', {n: score})}`;
             document.getElementById('nextBtn').style.display = 'inline-block';
         }
 

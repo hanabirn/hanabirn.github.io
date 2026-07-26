@@ -100,18 +100,6 @@ body {
 }
 .deco-img img { width: 100%; height: 100%; object-fit: contain; }
 
-.deco-miku1  { width: 160px; bottom: 20px; left: 10px; animation: floatDeco 6s ease-in-out infinite; opacity: 0.2; }
-.deco-miku2  { width: 140px; top: 120px; right: 15px; animation: floatDeco 7s ease-in-out infinite 1s; opacity: 0.18; }
-.deco-miku3  { width: 150px; bottom: 180px; right: 30px; animation: floatDeco 8s ease-in-out infinite 2.5s; opacity: 0.15; }
-.deco-miku4  { width: 130px; top: 280px; left: 20px; animation: floatDeco 6.5s ease-in-out infinite 3.5s; opacity: 0.16; }
-.deco-anime1 { width: 120px; bottom: 320px; right: 20px; animation: floatDeco 8s ease-in-out infinite 2s; opacity: 0.15; }
-.deco-anime2 { width: 100px; top: 250px; left: 15px; animation: floatDeco 5.5s ease-in-out infinite 0.5s; opacity: 0.15; }
-.deco-anime3 { width: 130px; bottom: 80px; left: 50%; transform: translateX(-50%); animation: floatDecoCenter 7s ease-in-out infinite 4s; opacity: 0.12; }
-.deco-gif1   { width: 110px; bottom: 400px; left: 30px; animation: floatDeco 6.5s ease-in-out infinite 3s; opacity: 0.2; }
-.deco-gif2   { width: 120px; top: 80px; left: 50%; transform: translateX(-50%); animation: floatDecoCenter 7.5s ease-in-out infinite 1.5s; opacity: 0.13; }
-.deco-gif3   { width: 100px; top: 400px; right: 10px; animation: floatDeco 7s ease-in-out infinite 4.5s; opacity: 0.18; }
-.deco-gif4   { width: 110px; bottom: 500px; right: 50px; animation: floatDeco 6s ease-in-out infinite 5s; opacity: 0.15; }
-
 @keyframes floatDeco {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-12px); }
@@ -130,7 +118,6 @@ header {
     border-bottom: 1px solid rgba(244,114,182,0.25);
     text-align: center;
     padding: 2.2rem 1rem 1.2rem;
-    overflow: hidden;
 }
 
 .header-wave {
@@ -1084,8 +1071,6 @@ footer p {
     .lang-btn { padding: 20px 12px; font-size: 1rem; }
     .question-box h2 { font-size: 2.4rem; }
     .music-player iframe { height: 400px; }
-    .deco-miku1 { width: 100px; }
-    .deco-miku2 { width: 90px; }
-    .deco-gif1, .deco-anime1 { display: none; }
+    .deco-img { display: none; }
     .osu-collection { grid-template-columns: repeat(2, 1fr); }
 }
