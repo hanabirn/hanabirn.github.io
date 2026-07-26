@@ -1032,7 +1032,7 @@
         let osuCurrentAudio = null;
         let osuVolume = 0.4;
         let osuPage = 0;
-        const OSU_PAGE_SIZE = 10;
+        const OSU_PAGE_SIZE = 8;
 
         async function sha256(str) {
             const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
