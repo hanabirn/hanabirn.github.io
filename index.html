@@ -34,23 +34,41 @@
         <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
     </div>
 
-    <div class="deco-img deco-miku1" style="display:none"><img src="images/miku1.png" alt=""></div>
-    <div class="deco-img deco-miku2" style="display:none"><img src="images/miku2.png" alt=""></div>
-    <div class="deco-img deco-anime1" style="display:none"><img src="images/anime1.jpg" alt=""></div>
-    <div class="deco-img deco-anime2" style="display:none"><img src="images/anime2.jpg" alt=""></div>
-    <div class="deco-img deco-gif1" style="display:none"><img src="images/gif1.gif" alt=""></div>
-    <div class="deco-img deco-gif2" style="display:none"><img src="images/gif2.gif" alt=""></div>
+    <div class="deco-img deco-miku1"><img src="images/miku1.png" alt=""></div>
+    <div class="deco-img deco-miku2"><img src="images/miku2.png" alt=""></div>
+    <div class="deco-img deco-miku3"><img src="images/miku3.webp" alt=""></div>
+    <div class="deco-img deco-miku4"><img src="images/miku4.jpg" alt=""></div>
+    <div class="deco-img deco-anime1"><img src="images/anime1.jpg" alt=""></div>
+    <div class="deco-img deco-anime2"><img src="images/anime2.jpg" alt=""></div>
+    <div class="deco-img deco-anime3"><img src="images/anime3.png" alt=""></div>
+    <div class="deco-img deco-gif1"><img src="images/gif1.gif" alt=""></div>
+    <div class="deco-img deco-gif2"><img src="images/gif2.gif" alt=""></div>
+    <div class="deco-img deco-gif3"><img src="images/gif3.gif" alt=""></div>
+    <div class="deco-img deco-gif4"><img src="images/gif4.gif" alt=""></div>
 
     <header>
         <div class="header-wave"></div>
         <div class="header-sakura left">&#x273F;</div>
         <div class="header-sakura right">&#x273F;</div>
-        <h1>hanabirn の 小天地</h1>
-        <p class="subtitle">學習是一件快樂的事</p>
+        <div class="lang-switcher">
+            <button class="lang-switch-btn" onclick="toggleLangMenu()" id="lang-switch-label">🌐 中文</button>
+            <div class="lang-switch-menu" id="lang-switch-menu">
+                <button onclick="setSiteLang('zh')">🇹🇼 中文</button>
+                <button onclick="setSiteLang('en')">🇬🇧 English</button>
+                <button onclick="setSiteLang('ja')">🇯🇵 日本語</button>
+                <button onclick="setSiteLang('ko')">🇰🇷 한국어</button>
+                <button onclick="setSiteLang('ru')">🇷🇺 Русский</button>
+                <button onclick="setSiteLang('fr')">🇫🇷 Français</button>
+                <button onclick="setSiteLang('es')">🇪🇸 Español</button>
+                <button onclick="setSiteLang('de')">🇩🇪 Deutsch</button>
+            </div>
+        </div>
+        <h1 data-i18n="title">hanabirn の 小天地</h1>
+        <p class="subtitle" data-i18n="subtitle">學習是一件快樂的事</p>
         <nav class="main-nav">
-            <button class="nav-btn active" onclick="switchPage('quiz')">單字測驗</button>
-            <button class="nav-btn" onclick="switchPage('music')">音樂收藏</button>
-            <button class="nav-btn" onclick="switchPage('osu')">osu! 收藏</button>
+            <button class="nav-btn active" onclick="switchPage('quiz')" data-i18n="nav_quiz">單字測驗</button>
+            <button class="nav-btn" onclick="switchPage('music')" data-i18n="nav_music">音樂收藏</button>
+            <button class="nav-btn" onclick="switchPage('osu')" data-i18n="nav_osu">osu! 收藏</button>
         </nav>
     </header>
 
@@ -59,15 +77,15 @@
             <div class="lang-card" id="lang-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3>&#x2726; 選擇語言 &#x2726;</h3>
+                <h3 data-i18n="select_lang">&#x2726; 選擇語言 &#x2726;</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn jp" onclick="selectLanguage('jp')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本國旗" class="lang-flag">
-                        <span>日文單字測驗</span>
+                        <span data-i18n="quiz_jp">日文單字測驗</span>
                     </button>
                     <button class="lang-btn kr" onclick="selectLanguage('kr')">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國國旗" class="lang-flag">
-                        <span>韓文單字測驗</span>
+                        <span data-i18n="quiz_kr">韓文單字測驗</span>
                     </button>
                 </div>
             </div>
@@ -75,10 +93,10 @@
             <div class="setup-card" id="setup-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3>綁定 Google 試算表</h3>
+                <h3 data-i18n="setup_title">綁定 Google 試算表</h3>
                 <div class="input-group">
-                    <input type="text" id="sheetUrlInput" placeholder="貼上 Google Sheet 網址">
-                    <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())">載入單字庫</button>
+                    <input type="text" id="sheetUrlInput" data-i18n-placeholder="setup_placeholder" placeholder="貼上 Google Sheet 網址">
+                    <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())" data-i18n="setup_load">載入單字庫</button>
                 </div>
                 <p id="status-msg" class="status"></p>
             </div>
@@ -86,7 +104,7 @@
             <div class="mode-card" id="mode-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3>選擇測驗模式</h3>
+                <h3 data-i18n="mode_title">選擇測驗模式</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
             </div>
 
@@ -94,10 +112,10 @@
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <div class="quiz-header">
-                    <span id="question-count">第 0 題</span>
+                    <span id="question-count" data-i18n="quiz_question">第 0 題</span>
                     <span id="quiz-mode-label"></span>
-                    <span id="total-words">有效單字: 0</span>
-                    <span id="score-count">得分: 0</span>
+                    <span id="total-words" data-i18n="quiz_words">有效單字: 0</span>
+                    <span id="score-count" data-i18n="quiz_score">得分: 0</span>
                 </div>
 
                 <div class="question-box">
@@ -112,22 +130,16 @@
                 <div id="feedback" class="feedback"></div>
 
                 <div class="action-buttons">
-                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;">次の問題 &#x2192;</button>
-                    <button class="btn back-btn" onclick="backToLanguage()">&#x2190; 返回選擇語言</button>
+                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;" data-i18n="quiz_next">次の問題 &#x2192;</button>
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; 返回選擇語言</button>
                 </div>
             </div>
         </div>
 
         <div id="page-music" style="display: none;">
             <div class="music-tabs">
-                <button class="music-tab active" onclick="switchMusicTab('all', this)">&#x266B; 所有歌曲</button>
-                <button class="music-tab" onclick="switchMusicTab('cn', this)">&#x266B; 中文 / 粵語歌</button>
-            </div>
-            <div class="music-controls">
-                <label class="music-shuffle-toggle">
-                    <input type="checkbox" id="spotify-shuffle" onchange="toggleSpotifyShuffle(this.checked)">
-                    <span>&#x1F500; 隨機播放</span>
-                </label>
+                <button class="music-tab active" onclick="switchMusicTab('all', this)" data-i18n="music_all">&#x266B; 所有歌曲</button>
+                <button class="music-tab" onclick="switchMusicTab('cn', this)" data-i18n="music_cn">&#x266B; 中文 / 粵語歌</button>
             </div>
             <div class="music-player">
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -137,10 +149,10 @@
             <div class="osu-add-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3>&#x266B; 新增 Beatmap &#x266B;</h3>
+                <h3 data-i18n="osu_title">&#x266B; 新增 Beatmap &#x266B;</h3>
                 <div class="input-group">
-                    <input type="text" id="osuInput" placeholder="輸入 ID 或貼上 osu! 網址" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
-                    <button onclick="addOsuBeatmap()">新增</button>
+                    <input type="text" id="osuInput" data-i18n-placeholder="osu_placeholder" placeholder="輸入 ID 或貼上 osu! 網址" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
+                    <button onclick="addOsuBeatmap()" data-i18n="osu_add">新增</button>
                 </div>
                 <p id="osu-status" class="status"></p>
                 <div class="osu-volume">
@@ -149,15 +161,15 @@
                     <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="重新整理所有 Beatmap">&#x21bb;</button>
                 </div>
                 <div class="osu-io-btns">
-                    <button class="osu-io-btn" onclick="exportOsuData()">&#x1F4E5; 匯出</button>
-                    <button class="osu-io-btn" onclick="document.getElementById('osu-import-file').click()">&#x1F4E4; 匯入</button>
-                    <button class="osu-io-btn" onclick="setupOsuPassword()">&#x1F512; 設定密碼</button>
+                    <button class="osu-io-btn" onclick="exportOsuData()" data-i18n="osu_export">&#x1F4E5; 匯出</button>
+                    <button class="osu-io-btn" onclick="document.getElementById('osu-import-file').click()" data-i18n="osu_import">&#x1F4E4; 匯入</button>
+                    <button class="osu-io-btn" onclick="setupOsuPassword()" data-i18n="osu_password">&#x1F512; 設定密碼</button>
                     <input type="file" id="osu-import-file" accept=".json" style="display:none" onchange="importOsuData(event)">
                 </div>
             </div>
 
             <div class="osu-mode-tabs">
-                <button class="osu-tab" onclick="switchOsuTab('favorites', this)">♥ 最愛</button>
+                <button class="osu-tab" onclick="switchOsuTab('favorites', this)" data-i18n="osu_fav">♥ 最愛</button>
                 <button class="osu-tab active" onclick="switchOsuTab('standard', this)">Standard</button>
                 <button class="osu-tab" onclick="switchOsuTab('taiko', this)">Taiko</button>
                 <button class="osu-tab" onclick="switchOsuTab('catch', this)">Catch</button>
@@ -177,6 +189,233 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
 
     <script>
+        /* ===== i18n ===== */
+        const I18N = {
+            zh: {
+                title: 'hanabirn の 小天地', subtitle: '學習是一件快樂的事',
+                nav_quiz: '單字測驗', nav_music: '音樂收藏', nav_osu: 'osu! 收藏',
+                select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗',
+                setup_title: '綁定 Google 試算表', setup_placeholder: '貼上 Google Sheet 網址', setup_load: '載入單字庫',
+                mode_title: '選擇測驗模式',
+                quiz_question: '第 {n} 題', quiz_words: '有效單字: {n}', quiz_score: '得分: {n}',
+                quiz_next: '次の問題 →', quiz_back: '← 返回選擇語言',
+                music_all: '♫ 所有歌曲', music_cn: '♫ 中文 / 粵語歌',
+                osu_title: '♫ 新增 Beatmap ♫', osu_placeholder: '輸入 ID 或貼上 osu! 網址', osu_add: '新增',
+                osu_export: '📥 匯出', osu_import: '📤 匯入', osu_password: '🔒 設定密碼',
+                osu_fav: '♥ 最愛', osu_empty_collection: '還沒有收藏的 Beatmap', osu_empty_hint: '在上方輸入 Beatmap ID 開始收藏！',
+                osu_empty_fav: '還沒有最愛的歌曲', osu_empty_fav_hint: '在其他分類中點擊 ♥ 加入最愛！',
+                osu_searching: '搜尋中...', osu_not_found: '找不到該 Beatmap，請確認 ID 或網址是否正確',
+                osu_input_error: '請輸入 Beatmap ID、Set ID 或 osu! 網址',
+                osu_already_exists: '「{n}」已在收藏庫中', osu_added: '已新增「{n}」至 {m}（{k} 個難度）',
+                osu_refreshing: '重新整理中...', osu_refresh_done: '已更新 {n} 首 Beatmap', osu_refresh_fail: '重新整理失敗',
+                osu_password_prompt: '請輸入密碼以進行修改：', osu_password_wrong: '密碼錯誤！',
+                osu_set_password: '請設定 osu! 收藏庫密碼（留空則不設定密碼保護）：',
+                osu_confirm_password: '請再次輸入密碼確認：', osu_password_mismatch: '兩次密碼不一致，設定取消',
+                osu_password_set: '密碼設定成功！', osu_import_success: '匯入成功！', osu_import_fail: '匯入失敗，檔案格式不正確',
+                osu_export_done: '已匯出 osu_backup.json', osu_copied: '已複製！', mapped_by: 'mapped by {n}',
+            },
+            en: {
+                title: "hanabirn's World", subtitle: 'Learning is a joy',
+                nav_quiz: 'Vocabulary Quiz', nav_music: 'Music Collection', nav_osu: 'osu! Collection',
+                select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz',
+                setup_title: 'Google Sheet Setup', setup_placeholder: 'Paste Google Sheet URL', setup_load: 'Load Vocabulary',
+                mode_title: 'Select Quiz Mode',
+                quiz_question: 'Question {n}', quiz_words: 'Words: {n}', quiz_score: 'Score: {n}',
+                quiz_next: 'Next →', quiz_back: '← Back',
+                music_all: '♫ All Songs', music_cn: '♫ Chinese / Cantonese',
+                osu_title: '♫ Add Beatmap ♫', osu_placeholder: 'Enter ID or paste osu! URL', osu_add: 'Add',
+                osu_export: '📥 Export', osu_import: '📤 Import', osu_password: '🔒 Set Password',
+                osu_fav: '♥ Favorites', osu_empty_collection: 'No beatmaps yet', osu_empty_hint: 'Enter a Beatmap ID above to start!',
+                osu_empty_fav: 'No favorites yet', osu_empty_fav_hint: 'Click ♥ on beatmaps to add favorites!',
+                osu_searching: 'Searching...', osu_not_found: 'Beatmap not found. Please check the ID or URL.',
+                osu_input_error: 'Enter a Beatmap ID, Set ID, or osu! URL',
+                osu_already_exists: '"{n}" is already in your collection', osu_added: 'Added "{n}" to {m} ({k} difficulties)',
+                osu_refreshing: 'Refreshing...', osu_refresh_done: 'Updated {n} beatmaps', osu_refresh_fail: 'Refresh failed',
+                osu_password_prompt: 'Enter password to modify:', osu_password_wrong: 'Wrong password!',
+                osu_set_password: 'Set osu! collection password (leave empty for no protection):',
+                osu_confirm_password: 'Confirm password:', osu_password_mismatch: 'Passwords do not match. Cancelled.',
+                osu_password_set: 'Password set successfully!', osu_import_success: 'Import successful!', osu_import_fail: 'Import failed. Invalid file format.',
+                osu_export_done: 'Exported osu_backup.json', osu_copied: 'Copied!', mapped_by: 'mapped by {n}',
+            },
+            ja: {
+                title: 'hanabirn の 小天地', subtitle: '学ぶことは楽しい',
+                nav_quiz: '単語テスト', nav_music: '音楽コレクション', nav_osu: 'osu! コレクション',
+                select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト',
+                setup_title: 'Googleスプレッドシート設定', setup_placeholder: 'Google Sheet URLを貼り付け', setup_load: '単語を読み込む',
+                mode_title: 'テストモードを選択',
+                quiz_question: '第{n}問', quiz_words: '単語数: {n}', quiz_score: 'スコア: {n}',
+                quiz_next: '次の問題 →', quiz_back: '← 戻る',
+                music_all: '♫ 全曲', music_cn: '♫ 中国語 / 広東語',
+                osu_title: '♫ ビートマップ追加 ♫', osu_placeholder: 'IDまたはURLを入力', osu_add: '追加',
+                osu_export: '📥 エクスポート', osu_import: '📤 インポート', osu_password: '🔒 パスワード設定',
+                osu_fav: '♥ お気に入り', osu_empty_collection: 'まだビートマップがありません', osu_empty_hint: '上にIDを入力して始めましょう！',
+                osu_empty_fav: 'お気に入りはまだありません', osu_empty_fav_hint: '♥をクリックしてお気に入りに追加！',
+                osu_searching: '検索中...', osu_not_found: 'ビートマップが見つかりません',
+                osu_input_error: 'IDまたはURLを入力してください',
+                osu_already_exists: '「{n}」は既にコレクションにあります', osu_added: '「{n}」を{m}に追加（{k}難易度）',
+                osu_refreshing: '更新中...', osu_refresh_done: '{n}曲を更新', osu_refresh_fail: '更新失敗',
+                osu_password_prompt: '変更するパスワードを入力：', osu_password_wrong: 'パスワードが間違っています！',
+                osu_set_password: 'パスワードを設定（空で保護なし）：',
+                osu_confirm_password: 'パスワードを再入力：', osu_password_mismatch: 'パスワードが一致しません',
+                osu_password_set: 'パスワード設定完了！', osu_import_success: 'インポート成功！', osu_import_fail: 'ファイル形式が正しくありません',
+                osu_export_done: 'osu_backup.jsonをエクスポート', osu_copied: 'コピーしました！', mapped_by: '譜面: {n}',
+            },
+            ko: {
+                title: 'hanabirn 의 작은 세계', subtitle: '배우는 것은 즐거운 일',
+                nav_quiz: '단어 퀴즈', nav_music: '음악 컬렉션', nav_osu: 'osu! 컬렉션',
+                select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈',
+                setup_title: 'Google 스프레드시트 설정', setup_placeholder: 'Google Sheet URL 붙여넣기', setup_load: '단어 로드',
+                mode_title: '퀴즈 모드 선택',
+                quiz_question: '제 {n}문제', quiz_words: '단어: {n}', quiz_score: '점수: {n}',
+                quiz_next: '다음 →', quiz_back: '← 뒤로',
+                music_all: '♫ 전체 곡', music_cn: '♫ 중국어 / 광동어',
+                osu_title: '♫ 비트맵 추가 ♫', osu_placeholder: 'ID 또는 URL 입력', osu_add: '추가',
+                osu_export: '📥 내보내기', osu_import: '📤 가져오기', osu_password: '🔒 비밀번호 설정',
+                osu_fav: '♥ 즐겨찾기', osu_empty_collection: '비트맵이 없습니다', osu_empty_hint: '위에 ID를 입력하세요!',
+                osu_empty_fav: '즐겨찾기가 없습니다', osu_empty_fav_hint: '♥를 눌러 즐겨찾기에 추가!',
+                osu_searching: '검색 중...', osu_not_found: '비트맵을 찾을 수 없습니다',
+                osu_input_error: 'ID 또는 URL을 입력하세요',
+                osu_already_exists: '"{n}"이(가) 이미 컬렉션에 있습니다', osu_added: '"{n}"을(를) {m}에 추가 ({k}개 난이도)',
+                osu_refreshing: '새로고침 중...', osu_refresh_done: '{n}개 비트맵 업데이트', osu_refresh_fail: '새로고침 실패',
+                osu_password_prompt: '수정하려면 비밀번호 입력:', osu_password_wrong: '비밀번호가 틀렸습니다!',
+                osu_set_password: '비밀번호 설정 (비워두면 보호 없음):',
+                osu_confirm_password: '비밀번호 확인:', osu_password_mismatch: '비밀번호가 일치하지 않습니다',
+                osu_password_set: '비밀번호 설정 완료!', osu_import_success: '가져오기 성공!', osu_import_fail: '파일 형식이 올바르지 않습니다',
+                osu_export_done: 'osu_backup.json 내보냄', osu_copied: '복사됨!', mapped_by: '매핑: {n}',
+            },
+            ru: {
+                title: 'hanabirn の 小天地', subtitle: 'Учиться — это радость',
+                nav_quiz: 'Тест на слова', nav_music: 'Музыка', nav_osu: 'osu! Коллекция',
+                select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест',
+                setup_title: 'Настройка Google Таблицы', setup_placeholder: 'Вставьте URL Google Sheet', setup_load: 'Загрузить слова',
+                mode_title: 'Режим теста',
+                quiz_question: 'Вопрос {n}', quiz_words: 'Слов: {n}', quiz_score: 'Счёт: {n}',
+                quiz_next: 'Далее →', quiz_back: '← Назад',
+                music_all: '♫ Все песни', music_cn: '♫ Китайский / Кантонский',
+                osu_title: '♫ Добавить битмап ♫', osu_placeholder: 'Введите ID или URL', osu_add: 'Добавить',
+                osu_export: '📥 Экспорт', osu_import: '📤 Импорт', osu_password: '🔒 Пароль',
+                osu_fav: '♥ Избранное', osu_empty_collection: 'Битмапов пока нет', osu_empty_hint: 'Введите ID выше!',
+                osu_empty_fav: 'Избранных пока нет', osu_empty_fav_hint: 'Нажмите ♥ чтобы добавить!',
+                osu_searching: 'Поиск...', osu_not_found: 'Битмап не найден',
+                osu_input_error: 'Введите ID или URL',
+                osu_already_exists: '"{n}" уже в коллекции', osu_added: 'Добавлен "{n}" в {m} ({k} сложностей)',
+                osu_refreshing: 'Обновление...', osu_refresh_done: 'Обновлено {n} битмапов', osu_refresh_fail: 'Ошибка обновления',
+                osu_password_prompt: 'Введите пароль:', osu_password_wrong: 'Неверный пароль!',
+                osu_set_password: 'Установите пароль (пусто = без защиты):',
+                osu_confirm_password: 'Подтвердите пароль:', osu_password_mismatch: 'Пароли не совпадают',
+                osu_password_set: 'Пароль установлен!', osu_import_success: 'Импорт удался!', osu_import_fail: 'Неверный формат файла',
+                osu_export_done: 'osu_backup.json экспортирован', osu_copied: 'Скопировано!', mapped_by: 'автор: {n}',
+            },
+            fr: {
+                title: "hanabirn の 小天地", subtitle: 'Apprendre est un plaisir',
+                nav_quiz: 'Quiz Vocabulaire', nav_music: 'Musique', nav_osu: 'Collection osu!',
+                select_lang: '✦ Langue ✦', quiz_jp: 'Quiz Japonais', quiz_kr: 'Quiz Coréen',
+                setup_title: 'Google Sheet', setup_placeholder: 'Collez l\'URL Google Sheet', setup_load: 'Charger',
+                mode_title: 'Mode de quiz',
+                quiz_question: 'Question {n}', quiz_words: 'Mots: {n}', quiz_score: 'Score: {n}',
+                quiz_next: 'Suivant →', quiz_back: '← Retour',
+                music_all: '♫ Toutes', music_cn: '♫ Chinois / Cantonais',
+                osu_title: '♫ Ajouter Beatmap ♫', osu_placeholder: 'Entrez ID ou URL', osu_add: 'Ajouter',
+                osu_export: '📥 Exporter', osu_import: '📤 Importer', osu_password: '🔒 Mot de passe',
+                osu_fav: '♥ Favoris', osu_empty_collection: 'Pas encore de beatmaps', osu_empty_hint: 'Entrez un ID ci-dessus!',
+                osu_empty_fav: 'Pas encore de favoris', osu_empty_fav_hint: 'Cliquez ♥ pour ajouter!',
+                osu_searching: 'Recherche...', osu_not_found: 'Beatmap introuvable',
+                osu_input_error: 'Entrez un ID ou URL',
+                osu_already_exists: '"{n}" est déjà dans la collection', osu_added: 'Ajouté "{n}" à {m} ({k} difficultés)',
+                osu_refreshing: 'Actualisation...', osu_refresh_done: '{n} beatmaps mis à jour', osu_refresh_fail: 'Échec',
+                osu_password_prompt: 'Mot de passe:', osu_password_wrong: 'Mot de passe incorrect!',
+                osu_set_password: 'Définir un mot de passe (vide = pas de protection):',
+                osu_confirm_password: 'Confirmez:', osu_password_mismatch: 'Les mots de passe ne correspondent pas',
+                osu_password_set: 'Mot de passe défini!', osu_import_success: 'Import réussi!', osu_import_fail: 'Format de fichier invalide',
+                osu_export_done: 'osu_backup.json exporté', osu_copied: 'Copié!', mapped_by: 'par {n}',
+            },
+            es: {
+                title: "hanabirn の 小天地", subtitle: 'Aprender es un placer',
+                nav_quiz: 'Quiz Vocabulario', nav_music: 'Música', nav_osu: 'Colección osu!',
+                select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano',
+                setup_title: 'Google Sheet', setup_placeholder: 'Pegue URL de Google Sheet', setup_load: 'Cargar',
+                mode_title: 'Modo de quiz',
+                quiz_question: 'Pregunta {n}', quiz_words: 'Palabras: {n}', quiz_score: 'Puntos: {n}',
+                quiz_next: 'Siguiente →', quiz_back: '← Volver',
+                music_all: '♫ Todas', music_cn: '♫ Chino / Cantón',
+                osu_title: '♫ Añadir Beatmap ♫', osu_placeholder: 'Ingrese ID o URL', osu_add: 'Añadir',
+                osu_export: '📥 Exportar', osu_import: '📤 Importar', osu_password: '🔒 Contraseña',
+                osu_fav: '♥ Favoritos', osu_empty_collection: 'Aún no hay beatmaps', osu_empty_hint: 'Ingrese un ID arriba!',
+                osu_empty_fav: 'Aún no hay favoritos', osu_empty_fav_hint: '¡Haga clic en ♥ para agregar!',
+                osu_searching: 'Buscando...', osu_not_found: 'Beatmap no encontrado',
+                osu_input_error: 'Ingrese un ID o URL',
+                osu_already_exists: '"{n}" ya está en la colección', osu_added: 'Añadido "{n}" a {m} ({k} dificultades)',
+                osu_refreshing: 'Actualizando...', osu_refresh_done: '{n} beatmaps actualizados', osu_refresh_fail: 'Error al actualizar',
+                osu_password_prompt: 'Contraseña:', osu_password_wrong: '¡Contraseña incorrecta!',
+                osu_set_password: 'Establecer contraseña (vacío = sin protección):',
+                osu_confirm_password: 'Confirme:', osu_password_mismatch: 'Las contraseñas no coinciden',
+                osu_password_set: '¡Contraseña establecida!', osu_import_success: '¡Importación exitosa!', osu_import_fail: 'Formato de archivo inválido',
+                osu_export_done: 'osu_backup.json exportado', osu_copied: '¡Copiado!', mapped_by: 'por {n}',
+            },
+            de: {
+                title: "hanabirn の 小天地", subtitle: 'Lernen macht Freude',
+                nav_quiz: 'Vokabel-Quiz', nav_music: 'Musik', nav_osu: 'osu! Sammlung',
+                select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz',
+                setup_title: 'Google Tabelle', setup_placeholder: 'Google Sheet URL einfügen', setup_load: 'Laden',
+                mode_title: 'Quiz-Modus',
+                quiz_question: 'Frage {n}', quiz_words: 'Wörter: {n}', quiz_score: 'Punkte: {n}',
+                quiz_next: 'Weiter →', quiz_back: '← Zurück',
+                music_all: '♫ Alle', music_cn: '♫ Chinesisch / Kantonesisch',
+                osu_title: '♫ Beatmap hinzufügen ♫', osu_placeholder: 'ID oder URL eingeben', osu_add: 'Hinzufügen',
+                osu_export: '📥 Exportieren', osu_import: '📤 Importieren', osu_password: '🔒 Passwort',
+                osu_fav: '♥ Favoriten', osu_empty_collection: 'Noch keine Beatmaps', osu_empty_hint: 'ID oben eingeben!',
+                osu_empty_fav: 'Noch keine Favoriten', osu_empty_fav_hint: 'Klicken Sie ♥ um hinzuzufügen!',
+                osu_searching: 'Suche...', osu_not_found: 'Beatmap nicht gefunden',
+                osu_input_error: 'ID oder URL eingeben',
+                osu_already_exists: '"{n}" ist bereits in der Sammlung', osu_added: '"{n}" zu {m} hinzugefügt ({k} Schwierigkeiten)',
+                osu_refreshing: 'Aktualisierung...', osu_refresh_done: '{n} Beatmaps aktualisiert', osu_refresh_fail: 'Aktualisierung fehlgeschlagen',
+                osu_password_prompt: 'Passwort eingeben:', osu_password_wrong: 'Falsches Passwort!',
+                osu_set_password: 'Passwort festlegen (leer = kein Schutz):',
+                osu_confirm_password: 'Bestätigen:', osu_password_mismatch: 'Passwörter stimmen nicht überein',
+                osu_password_set: 'Passwort gesetzt!', osu_import_success: 'Import erfolgreich!', osu_import_fail: 'Ungültiges Dateiformat',
+                osu_export_done: 'osu_backup.json exportiert', osu_copied: 'Kopiert!', mapped_by: 'von {n}',
+            }
+        };
+
+        let siteLang = localStorage.getItem('site_lang') || 'zh';
+
+        function applyLang(lang) {
+            siteLang = lang;
+            localStorage.setItem('site_lang', lang);
+            const t = I18N[lang] || I18N.zh;
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (t[key]) el.innerHTML = t[key];
+            });
+            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-i18n-placeholder');
+                if (t[key]) el.placeholder = t[key];
+            });
+            const labels = { zh:'🌐 中文', en:'🌐 English', ja:'🌐 日本語', ko:'🌐 한국어', ru:'🌐 Русский', fr:'🌐 Français', es:'🌐 Español', de:'🌐 Deutsch' };
+            document.getElementById('lang-switch-label').innerText = labels[lang] || labels.zh;
+        }
+
+        function toggleLangMenu() {
+            document.getElementById('lang-switch-menu').classList.toggle('show');
+        }
+
+        function setSiteLang(lang) {
+            applyLang(lang);
+            document.getElementById('lang-switch-menu').classList.remove('show');
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.lang-switcher')) {
+                document.getElementById('lang-switch-menu').classList.remove('show');
+            }
+        });
+
+        /* ===== i18n helpers for dynamic content ===== */
+        function t(key, params) {
+            const str = (I18N[siteLang] || I18N.zh)[key] || (I18N.zh)[key] || key;
+            if (!params) return str;
+            return Object.entries(params).reduce((s, [k, v]) => s.replace(`{${k}}`, v), str);
+        }
         const PLAYLISTS = {
             all: '0QFBFg35lFuDvuYapAolHC',
             cn: '5XQgwQcuRRBcyVaKMQbB88'
@@ -192,24 +431,12 @@
         }
 
         let currentSpotifyPlaylist = PLAYLISTS.all;
-        let spotifyShuffle = false;
 
         function switchMusicTab(lang, btn) {
             document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             currentSpotifyPlaylist = PLAYLISTS[lang];
-            updateSpotifyEmbed();
-        }
-
-        function toggleSpotifyShuffle(checked) {
-            spotifyShuffle = checked;
-            updateSpotifyEmbed();
-        }
-
-        function updateSpotifyEmbed() {
-            let url = `https://open.spotify.com/embed/playlist/${currentSpotifyPlaylist}?utm_source=generator&theme=0`;
-            if (spotifyShuffle) url += '&shuffle=1';
-            document.getElementById('music-iframe').src = url;
+            document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
         }
 
         const SHEETS = {
@@ -477,7 +704,7 @@
         let osuCurrentAudio = null;
         let osuVolume = 0.4;
         let osuPage = 0;
-        const OSU_PAGE_SIZE = 9;
+        const OSU_PAGE_SIZE = 10;
 
         async function sha256(str) {
             const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -494,21 +721,21 @@
 
         async function verifyOsuPassword() {
             if (!hasOsuPassword()) return true;
-            const pw = prompt('請輸入密碼以進行修改：');
+            const pw = prompt(t('osu_password_prompt'));
             if (pw === null) return false;
             const hash = await sha256(pw);
             if (hash === getOsuPassword()) return true;
-            alert('密碼錯誤！');
+            alert(t('osu_password_wrong'));
             return false;
         }
 
         async function setupOsuPassword() {
-            const pw = prompt('請設定 osu! 收藏庫密碼（留空則不設定密碼保護）：');
+            const pw = prompt(t('osu_set_password'));
             if (pw === null || pw === '') return;
-            const pw2 = prompt('請再次輸入密碼確認：');
-            if (pw !== pw2) { alert('兩次密碼不一致，設定取消'); return; }
+            const pw2 = prompt(t('osu_confirm_password'));
+            if (pw !== pw2) { alert(t('osu_password_mismatch')); return; }
             await setOsuPassword(pw);
-            alert('密碼設定成功！');
+            alert(t('osu_password_set'));
         }
 
         function copyBeatmapId(setId, event) {
@@ -539,7 +766,7 @@
             a.click();
             URL.revokeObjectURL(a.href);
             const s = document.getElementById('osu-status');
-            s.innerText = '已匯出 osu_backup.json';
+            s.innerText = t('osu_export_done');
             s.style.color = '#34d399';
         }
 
@@ -555,11 +782,11 @@
                     if (data.osu_favorites) localStorage.setItem('osu_favorites', data.osu_favorites);
                     renderOsuCollection();
                     const s = document.getElementById('osu-status');
-                    s.innerText = '匯入成功！';
+                    s.innerText = t('osu_import_success');
                     s.style.color = '#34d399';
                 } catch (err) {
                     const s = document.getElementById('osu-status');
-                    s.innerText = '匯入失敗，檔案格式不正確';
+                    s.innerText = t('osu_import_fail');
                     s.style.color = '#ff5252';
                 }
             };
@@ -652,12 +879,12 @@
 
             const parsed = parseOsuInput(raw);
             if (!parsed) {
-                status.innerText = '請輸入 Beatmap ID、Set ID 或 osu! 網址';
+                status.innerText = t('osu_input_error');
                 status.style.color = '#ff5252';
                 return;
             }
 
-            status.innerText = '搜尋中...';
+            status.innerText = t('osu_searching');
             status.style.color = '#c8a2e0';
 
             try {
@@ -679,7 +906,7 @@
                 }
 
                 if (beatmaps.length === 0) {
-                    status.innerText = '找不到該 Beatmap，請確認 ID 或網址是否正確';
+                    status.innerText = t('osu_not_found');
                     status.style.color = '#ff5252';
                     return;
                 }
@@ -690,7 +917,7 @@
 
                 const alreadyExists = col[modeKey].some(s => s.beatmapset_id === parseInt(beatmaps[0].beatmapset_id));
                 if (alreadyExists) {
-                    status.innerText = `「${beatmaps[0].artist} - ${beatmaps[0].title}」已在收藏庫中`;
+                    status.innerText = t('osu_already_exists', { n: `${beatmaps[0].artist} - ${beatmaps[0].title}` });
                     status.style.color = '#f59e0b';
                     return;
                 }
@@ -715,7 +942,7 @@
                 saveOsuCollection(col);
 
                 const modeNames = { standard: 'Standard', taiko: 'Taiko', catch: 'Catch', mania: 'Mania' };
-                status.innerText = `已新增「${setInfo.artist} - ${setInfo.title}」至 ${modeNames[modeKey]}（${setInfo.beatmaps.length} 個難度）`;
+                status.innerText = t('osu_added', { n: `${setInfo.artist} - ${setInfo.title}`, m: modeNames[modeKey], k: setInfo.beatmaps.length });
                 status.style.color = '#34d399';
                 input.value = '';
 
@@ -757,7 +984,7 @@
             const btn = document.querySelector('.osu-refresh-all');
             const status = document.getElementById('osu-status');
             btn.classList.add('spinning');
-            status.innerText = '重新整理中...';
+            status.innerText = t('osu_refreshing');
             status.style.color = '#c8a2e0';
 
             const col = getOsuCollection();
@@ -787,11 +1014,11 @@
                 }
                 saveOsuCollection(col);
                 renderOsuCollection();
-                status.innerText = `已更新 ${allIds.size} 首 Beatmap`;
+                status.innerText = t('osu_refresh_done', { n: allIds.size });
                 status.style.color = '#34d399';
             } catch (e) {
                 console.error('Refresh all failed:', e);
-                status.innerText = '重新整理失敗';
+                status.innerText = t('osu_refresh_fail');
                 status.style.color = '#ff5252';
             } finally {
                 btn.classList.remove('spinning');
@@ -826,8 +1053,8 @@
 
             if (sets.length === 0) {
                 const msg = osuCurrentTab === 'favorites'
-                    ? '還沒有最愛的歌曲<br><span>在其他分類中點擊 ♥ 加入最愛！</span>'
-                    : '還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span>';
+                    ? `${t('osu_empty_fav')}<br><span>${t('osu_empty_fav_hint')}</span>`
+                    : `${t('osu_empty_collection')}<br><span>${t('osu_empty_hint')}</span>`;
                 container.innerHTML = `<div class="osu-empty">${msg}</div>`;
                 paginationEl.innerHTML = '';
                 return;
@@ -856,7 +1083,7 @@
                         <div class="osu-card-title">${set.title}</div>
                         ${starsText}
                         <div class="osu-card-artist">${set.artist}</div>
-                        <div class="osu-card-mapper">mapped by ${set.creator}</div>
+                        <div class="osu-card-mapper">${t('mapped_by', { n: set.creator })}</div>
                     </div>
                 </div>`;
             }).join('');
@@ -875,6 +1102,7 @@
                 paginationEl.innerHTML = pages;
             }
         }
+        applyLang(siteLang);
     </script>
 </body>
 </html>

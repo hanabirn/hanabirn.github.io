@@ -102,10 +102,15 @@ body {
 
 .deco-miku1  { width: 160px; bottom: 20px; left: 10px; animation: floatDeco 6s ease-in-out infinite; opacity: 0.2; }
 .deco-miku2  { width: 140px; top: 120px; right: 15px; animation: floatDeco 7s ease-in-out infinite 1s; opacity: 0.18; }
-.deco-anime1 { width: 120px; bottom: 160px; right: 20px; animation: floatDeco 8s ease-in-out infinite 2s; opacity: 0.15; }
+.deco-miku3  { width: 150px; bottom: 180px; right: 30px; animation: floatDeco 8s ease-in-out infinite 2.5s; opacity: 0.15; }
+.deco-miku4  { width: 130px; top: 280px; left: 20px; animation: floatDeco 6.5s ease-in-out infinite 3.5s; opacity: 0.16; }
+.deco-anime1 { width: 120px; bottom: 320px; right: 20px; animation: floatDeco 8s ease-in-out infinite 2s; opacity: 0.15; }
 .deco-anime2 { width: 100px; top: 250px; left: 15px; animation: floatDeco 5.5s ease-in-out infinite 0.5s; opacity: 0.15; }
-.deco-gif1   { width: 110px; bottom: 300px; left: 30px; animation: floatDeco 6.5s ease-in-out infinite 3s; opacity: 0.2; }
+.deco-anime3 { width: 130px; bottom: 80px; left: 50%; transform: translateX(-50%); animation: floatDecoCenter 7s ease-in-out infinite 4s; opacity: 0.12; }
+.deco-gif1   { width: 110px; bottom: 400px; left: 30px; animation: floatDeco 6.5s ease-in-out infinite 3s; opacity: 0.2; }
 .deco-gif2   { width: 120px; top: 80px; left: 50%; transform: translateX(-50%); animation: floatDecoCenter 7.5s ease-in-out infinite 1.5s; opacity: 0.13; }
+.deco-gif3   { width: 100px; top: 400px; right: 10px; animation: floatDeco 7s ease-in-out infinite 4.5s; opacity: 0.18; }
+.deco-gif4   { width: 110px; bottom: 500px; right: 50px; animation: floatDeco 6s ease-in-out infinite 5s; opacity: 0.15; }
 
 @keyframes floatDeco {
     0%, 100% { transform: translateY(0); }
@@ -162,6 +167,59 @@ header h1 {
     background-clip: text;
     animation: shimmer 4s linear infinite;
     text-shadow: none;
+}
+
+.lang-switcher {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    z-index: 50;
+}
+.lang-switch-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: all 0.2s;
+    backdrop-filter: blur(6px);
+}
+.lang-switch-btn:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(244,114,182,0.5);
+}
+.lang-switch-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background: rgba(25,15,45,0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(168,85,247,0.3);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+    min-width: 140px;
+}
+.lang-switch-menu.show { display: block; }
+.lang-switch-menu button {
+    display: block;
+    width: 100%;
+    background: transparent;
+    border: none;
+    color: #c8a2e0;
+    padding: 8px 14px;
+    text-align: left;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.15s;
+}
+.lang-switch-menu button:hover {
+    background: rgba(168,85,247,0.2);
+    color: #fff;
 }
 
 .subtitle {
@@ -601,39 +659,6 @@ main {
     box-shadow: 0 0 18px rgba(244,114,182,0.3);
 }
 
-.music-controls {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 12px;
-}
-
-.music-shuffle-toggle {
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    color: #c8a2e0;
-    font-size: 0.85rem;
-    cursor: pointer;
-    transition: color 0.2s;
-    user-select: none;
-}
-.music-shuffle-toggle:hover { color: #fff; }
-.music-shuffle-toggle input[type="checkbox"] {
-    display: none;
-}
-.music-shuffle-toggle span {
-    background: rgba(25, 15, 45, 0.88);
-    border: 1px solid rgba(168,85,247,0.25);
-    padding: 6px 12px;
-    border-radius: 8px;
-    transition: all 0.2s;
-}
-.music-shuffle-toggle input:checked + span {
-    background: linear-gradient(135deg, rgba(244,114,182,0.3), rgba(168,85,247,0.3));
-    border-color: #a855f7;
-    color: #fff;
-}
-
 .music-player {
     background: rgba(25, 15, 45, 0.88);
     border-radius: 16px;
@@ -777,7 +802,7 @@ main {
 
 .osu-collection {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 16px;
 }
 
