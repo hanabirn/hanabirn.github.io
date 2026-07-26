@@ -108,11 +108,15 @@
                     <span id="quiz-mode-label"></span>
                     <span id="total-words" data-i18n="quiz_words">有效單字: 0</span>
                     <span id="score-count" data-i18n="quiz_score">得分: 0</span>
+                    <button id="autoSpeakBtn" class="auto-speak-btn speak-active" onclick="toggleAutoSpeak()" title="自動播放發音">&#x1f50a; 語音</button>
                 </div>
 
                 <div class="question-box">
                     <div class="question-deco">&#x2726;</div>
-                    <h2 id="word-question">—</h2>
+                    <div class="question-row">
+                        <h2 id="word-question">—</h2>
+                        <button id="speakBtn" class="speak-btn" onclick="speakWord()" title="播放發音">&#x1f50a;</button>
+                    </div>
                     <p id="word-hint" class="hint"></p>
                 </div>
 
@@ -559,6 +563,27 @@
             } catch(e) {}
         }
 
+        function speakWord() {
+            if (!currentWord || !currentWord.word) return;
+            window.speechSynthesis.cancel();
+            const utter = new SpeechSynthesisUtterance(currentWord.word);
+            utter.lang = currentLang === 'jp' ? 'ja-JP' : 'ko-KR';
+            utter.rate = 0.8;
+            const voices = window.speechSynthesis.getVoices();
+            const langPrefix = currentLang === 'jp' ? 'ja' : 'ko';
+            const match = voices.find(v => v.lang.startsWith(langPrefix));
+            if (match) utter.voice = match;
+            window.speechSynthesis.speak(utter);
+        }
+
+        let autoSpeak = true;
+
+        function toggleAutoSpeak() {
+            autoSpeak = !autoSpeak;
+            const btn = document.getElementById('autoSpeakBtn');
+            if (btn) btn.classList.toggle('speak-active', autoSpeak);
+        }
+
         function extractSheetId(url) {
             const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
             return match ? match[1] : url;
@@ -785,6 +810,10 @@
                 }
                 options.sort(() => Math.random() - 0.5);
                 renderOptions(options, 'meaning');
+            }
+
+            if (autoSpeak && currentWord && currentWord.word) {
+                setTimeout(() => speakWord(), 300);
             }
         }
 

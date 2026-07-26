@@ -525,6 +525,42 @@ main {
     gap: 4px;
 }
 
+.auto-speak-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(168,85,247,0.25);
+    color: #c8a2e0;
+    border-radius: 8px;
+    padding: 4px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.auto-speak-btn:hover { background: rgba(244,114,182,0.15); }
+.auto-speak-btn.speak-active { background: rgba(244,114,182,0.2); border-color: #e879a8; color: #f9a8d4; }
+
+.question-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+.speak-btn {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(168,85,247,0.25);
+    color: #c8a2e0;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.speak-btn:hover { background: rgba(244,114,182,0.2); border-color: #e879a8; transform: scale(1.1); }
+.speak-btn:active { transform: scale(0.95); }
+
 .question-box {
     margin: 20px 0 15px;
     position: relative;
