@@ -601,6 +601,39 @@ main {
     box-shadow: 0 0 18px rgba(244,114,182,0.3);
 }
 
+.music-controls {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 12px;
+}
+
+.music-shuffle-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: #c8a2e0;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: color 0.2s;
+    user-select: none;
+}
+.music-shuffle-toggle:hover { color: #fff; }
+.music-shuffle-toggle input[type="checkbox"] {
+    display: none;
+}
+.music-shuffle-toggle span {
+    background: rgba(25, 15, 45, 0.88);
+    border: 1px solid rgba(168,85,247,0.25);
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+.music-shuffle-toggle input:checked + span {
+    background: linear-gradient(135deg, rgba(244,114,182,0.3), rgba(168,85,247,0.3));
+    border-color: #a855f7;
+    color: #fff;
+}
+
 .music-player {
     background: rgba(25, 15, 45, 0.88);
     border-radius: 16px;
@@ -744,7 +777,7 @@ main {
 
 .osu-collection {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
 }
 

@@ -123,6 +123,12 @@
                 <button class="music-tab active" onclick="switchMusicTab('all', this)">&#x266B; 所有歌曲</button>
                 <button class="music-tab" onclick="switchMusicTab('cn', this)">&#x266B; 中文 / 粵語歌</button>
             </div>
+            <div class="music-controls">
+                <label class="music-shuffle-toggle">
+                    <input type="checkbox" id="spotify-shuffle" onchange="toggleSpotifyShuffle(this.checked)">
+                    <span>&#x1F500; 隨機播放</span>
+                </label>
+            </div>
             <div class="music-player">
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
@@ -185,10 +191,25 @@
             if (page === 'osu') renderOsuCollection();
         }
 
+        let currentSpotifyPlaylist = PLAYLISTS.all;
+        let spotifyShuffle = false;
+
         function switchMusicTab(lang, btn) {
             document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
+            currentSpotifyPlaylist = PLAYLISTS[lang];
+            updateSpotifyEmbed();
+        }
+
+        function toggleSpotifyShuffle(checked) {
+            spotifyShuffle = checked;
+            updateSpotifyEmbed();
+        }
+
+        function updateSpotifyEmbed() {
+            let url = `https://open.spotify.com/embed/playlist/${currentSpotifyPlaylist}?utm_source=generator&theme=0`;
+            if (spotifyShuffle) url += '&shuffle=1';
+            document.getElementById('music-iframe').src = url;
         }
 
         const SHEETS = {
@@ -456,7 +477,7 @@
         let osuCurrentAudio = null;
         let osuVolume = 0.4;
         let osuPage = 0;
-        const OSU_PAGE_SIZE = 16;
+        const OSU_PAGE_SIZE = 9;
 
         async function sha256(str) {
             const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
