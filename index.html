@@ -40,18 +40,15 @@
         <div class="header-wave"></div>
         <div class="header-sakura left">&#x273F;</div>
         <div class="header-sakura right">&#x273F;</div>
-        <div class="lang-switcher">
-            <button class="lang-switch-btn" onclick="toggleLangMenu()" id="lang-switch-label">🌐 中文</button>
-            <div class="lang-switch-menu" id="lang-switch-menu">
-                <button onclick="setSiteLang('zh')">🇹🇼 中文</button>
-                <button onclick="setSiteLang('en')">🇬🇧 English</button>
-                <button onclick="setSiteLang('ja')">🇯🇵 日本語</button>
-                <button onclick="setSiteLang('ko')">🇰🇷 한국어</button>
-                <button onclick="setSiteLang('ru')">🇷🇺 Русский</button>
-                <button onclick="setSiteLang('fr')">🇫🇷 Français</button>
-                <button onclick="setSiteLang('es')">🇪🇸 Español</button>
-                <button onclick="setSiteLang('de')">🇩🇪 Deutsch</button>
-            </div>
+        <div class="lang-bar">
+            <button class="lang-pill active" onclick="setSiteLang('zh')" data-lang="zh">🇹🇼 中文</button>
+            <button class="lang-pill" onclick="setSiteLang('en')" data-lang="en">🇬🇧 EN</button>
+            <button class="lang-pill" onclick="setSiteLang('ja')" data-lang="ja">🇯🇵 日本語</button>
+            <button class="lang-pill" onclick="setSiteLang('ko')" data-lang="ko">🇰🇷 한국어</button>
+            <button class="lang-pill" onclick="setSiteLang('ru')" data-lang="ru">🇷🇺 Русский</button>
+            <button class="lang-pill" onclick="setSiteLang('fr')" data-lang="fr">🇫🇷 Français</button>
+            <button class="lang-pill" onclick="setSiteLang('es')" data-lang="es">🇪🇸 Español</button>
+            <button class="lang-pill" onclick="setSiteLang('de')" data-lang="de">🇩🇪 Deutsch</button>
         </div>
         <h1 data-i18n="title">Hanabi的小天地</h1>
         <p class="subtitle" data-i18n="subtitle">持續學習朝著自己的夢想前進吧 !</p>
@@ -485,24 +482,14 @@
                 const key = el.getAttribute('data-i18n-placeholder');
                 if (t[key]) el.placeholder = t[key];
             });
-            const labels = { zh:'🌐 中文', en:'🌐 English', ja:'🌐 日本語', ko:'🌐 한국어', ru:'🌐 Русский', fr:'🌐 Français', es:'🌐 Español', de:'🌐 Deutsch' };
-            document.getElementById('lang-switch-label').innerText = labels[lang] || labels.zh;
-        }
-
-        function toggleLangMenu() {
-            document.getElementById('lang-switch-menu').classList.toggle('show');
+            document.querySelectorAll('.lang-pill').forEach(btn => {
+                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
+            });
         }
 
         function setSiteLang(lang) {
             applyLang(lang);
-            document.getElementById('lang-switch-menu').classList.remove('show');
         }
-
-        document.addEventListener('click', (e) => {
-            if (!e.target.closest('.lang-switcher')) {
-                document.getElementById('lang-switch-menu').classList.remove('show');
-            }
-        });
 
         /* ===== i18n helpers for dynamic content ===== */
         function t(key, params) {
