@@ -77,6 +77,10 @@
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國國旗" class="lang-flag">
                         <span data-i18n="quiz_kr">韓文單字測驗</span>
                     </button>
+                    <button class="lang-btn fr" onclick="selectLanguage('fr')">
+                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="法國國旗" class="lang-flag">
+                        <span data-i18n="quiz_fr">法文單字測驗</span>
+                    </button>
                 </div>
             </div>
 
@@ -204,7 +208,7 @@
             zh: {
                 title: 'hanabirn の 小天地', subtitle: '學習是一件快樂的事',
                 nav_quiz: '單字測驗', nav_music: '音樂收藏', nav_osu: 'osu! 收藏',
-                select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗',
+                select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗', quiz_fr: '法文單字測驗',
                 setup_title: '綁定 Google 試算表', setup_placeholder: '貼上 Google Sheet 網址', setup_load: '載入單字庫',
                 mode_title: '選擇測驗模式',
                 quiz_question: '第 {n} 題', quiz_words: '有效單字: {n}', quiz_score: '得分: {n}',
@@ -223,7 +227,7 @@
                 osu_confirm_password: '請再次輸入密碼確認：', osu_password_mismatch: '兩次密碼不一致，設定取消',
                 osu_password_set: '密碼設定成功！', osu_import_success: '匯入成功！', osu_import_fail: '匯入失敗，檔案格式不正確',
                 osu_export_done: '已匯出 osu_backup.json', osu_copied: '已複製！', mapped_by: 'mapped by {n}',
-                mode_jp_meaning: '日文 → 選中文意思', mode_kr_meaning: '韓文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
+                mode_jp_meaning: '日文 → 選中文意思', mode_kr_meaning: '韓文 → 選中文意思', mode_fr_meaning: '法文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
                 correct: '正解！', wrong: '不正解... 正確答案是：',
                 load_success: '成功讀取 {n} 個有效單字', load_with_reading: '（含讀法: {n} 個）',
                 invalid_url: '請輸入正確的 Google Sheet 網址！',
@@ -237,7 +241,7 @@
             en: {
                 title: "hanabirn's World", subtitle: 'Learning is a joy',
                 nav_quiz: 'Vocabulary Quiz', nav_music: 'Music Collection', nav_osu: 'osu! Collection',
-                select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz',
+                select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz',
                 setup_title: 'Google Sheet Setup', setup_placeholder: 'Paste Google Sheet URL', setup_load: 'Load Vocabulary',
                 mode_title: 'Select Quiz Mode',
                 quiz_question: 'Question {n}', quiz_words: 'Words: {n}', quiz_score: 'Score: {n}',
@@ -256,7 +260,7 @@
                 osu_confirm_password: 'Confirm password:', osu_password_mismatch: 'Passwords do not match. Cancelled.',
                 osu_password_set: 'Password set successfully!', osu_import_success: 'Import successful!', osu_import_fail: 'Import failed. Invalid file format.',
                 osu_export_done: 'Exported osu_backup.json', osu_copied: 'Copied!', mapped_by: 'mapped by {n}',
-                mode_jp_meaning: 'Japanese → Choose Meaning', mode_kr_meaning: 'Korean → Choose Meaning', mode_jp_reading: 'Japanese → Choose Reading', mode_both: 'Mixed Random',
+                mode_jp_meaning: 'Japanese → Choose Meaning', mode_kr_meaning: 'Korean → Choose Meaning', mode_fr_meaning: 'French → Choose Meaning', mode_jp_reading: 'Japanese → Choose Reading', mode_both: 'Mixed Random',
                 correct: 'Correct!', wrong: 'Wrong... The answer was: ',
                 load_success: 'Loaded {n} valid words', load_with_reading: ' (including {n} readings)',
                 invalid_url: 'Please enter a valid Google Sheet URL!',
@@ -270,7 +274,7 @@
             ja: {
                 title: 'hanabirn の 小天地', subtitle: '学ぶことは楽しい',
                 nav_quiz: '単語テスト', nav_music: '音楽コレクション', nav_osu: 'osu! コレクション',
-                select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト',
+                select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト', quiz_fr: 'フランス語テスト',
                 setup_title: 'Googleスプレッドシート設定', setup_placeholder: 'Google Sheet URLを貼り付け', setup_load: '単語を読み込む',
                 mode_title: 'テストモードを選択',
                 quiz_question: '第{n}問', quiz_words: '単語数: {n}', quiz_score: 'スコア: {n}',
@@ -289,7 +293,7 @@
                 osu_confirm_password: 'パスワードを再入力：', osu_password_mismatch: 'パスワードが一致しません',
                 osu_password_set: 'パスワード設定完了！', osu_import_success: 'インポート成功！', osu_import_fail: 'ファイル形式が正しくありません',
                 osu_export_done: 'osu_backup.jsonをエクスポート', osu_copied: 'コピーしました！', mapped_by: '譜面: {n}',
-                mode_jp_meaning: '日本語 → 意味を選択', mode_kr_meaning: '韓国語 → 意味を選択', mode_jp_reading: '日本語 → 読み方を選択', mode_both: 'ランダム混合',
+                mode_jp_meaning: '日本語 → 意味を選択', mode_kr_meaning: '韓国語 → 意味を選択', mode_fr_meaning: 'フランス語 → 意味を選択', mode_jp_reading: '日本語 → 読み方を選択', mode_both: 'ランダム混合',
                 correct: '正解！', wrong: '不正解... 正解は：',
                 load_success: '{n}個の有効な単語を読み込みました', load_with_reading: '（読み方含む: {n}個）',
                 invalid_url: '正しいGoogle SheetのURLを入力してください！',
@@ -303,7 +307,7 @@
             ko: {
                 title: 'hanabirn 의 작은 세계', subtitle: '배우는 것은 즐거운 일',
                 nav_quiz: '단어 퀴즈', nav_music: '음악 컬렉션', nav_osu: 'osu! 컬렉션',
-                select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈',
+                select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈',
                 setup_title: 'Google 스프레드시트 설정', setup_placeholder: 'Google Sheet URL 붙여넣기', setup_load: '단어 로드',
                 mode_title: '퀴즈 모드 선택',
                 quiz_question: '제 {n}문제', quiz_words: '단어: {n}', quiz_score: '점수: {n}',
@@ -322,7 +326,7 @@
                 osu_confirm_password: '비밀번호 확인:', osu_password_mismatch: '비밀번호가 일치하지 않습니다',
                 osu_password_set: '비밀번호 설정 완료!', osu_import_success: '가져오기 성공!', osu_import_fail: '파일 형식이 올바르지 않습니다',
                 osu_export_done: 'osu_backup.json 내보냄', osu_copied: '복사됨!', mapped_by: '매핑: {n}',
-                mode_jp_meaning: '일본어 → 뜻 선택', mode_kr_meaning: '한국어 → 뜻 선택', mode_jp_reading: '일본어 → 읽기 선택', mode_both: '랜덤 혼합',
+                mode_jp_meaning: '일본어 → 뜻 선택', mode_kr_meaning: '한국어 → 뜻 선택', mode_fr_meaning: '프랑스어 → 뜻 선택', mode_jp_reading: '일본어 → 읽기 선택', mode_both: '랜덤 혼합',
                 correct: '정답!', wrong: '오답... 정답은: ',
                 load_success: '{n}개의 유효한 단어를 불러왔습니다', load_with_reading: ' (읽기 포함: {n}개)',
                 invalid_url: '올바른 Google Sheet URL을 입력하세요!',
@@ -336,7 +340,7 @@
             ru: {
                 title: 'hanabirn の 小天地', subtitle: 'Учиться — это радость',
                 nav_quiz: 'Тест на слова', nav_music: 'Музыка', nav_osu: 'osu! Коллекция',
-                select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест',
+                select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест',
                 setup_title: 'Настройка Google Таблицы', setup_placeholder: 'Вставьте URL Google Sheet', setup_load: 'Загрузить слова',
                 mode_title: 'Режим теста',
                 quiz_question: 'Вопрос {n}', quiz_words: 'Слов: {n}', quiz_score: 'Счёт: {n}',
@@ -355,7 +359,7 @@
                 osu_confirm_password: 'Подтвердите пароль:', osu_password_mismatch: 'Пароли не совпадают',
                 osu_password_set: 'Пароль установлен!', osu_import_success: 'Импорт удался!', osu_import_fail: 'Неверный формат файла',
                 osu_export_done: 'osu_backup.json экспортирован', osu_copied: 'Скопировано!', mapped_by: 'автор: {n}',
-                mode_jp_meaning: 'Японский → Выбрать перевод', mode_kr_meaning: 'Корейский → Выбрать перевод', mode_jp_reading: 'Японский → Выбрать чтение', mode_both: 'Случайный микс',
+                mode_jp_meaning: 'Японский → Выбрать перевод', mode_kr_meaning: 'Корейский → Выбрать перевод', mode_fr_meaning: 'Французский → Выбрать перевод', mode_jp_reading: 'Японский → Выбрать чтение', mode_both: 'Случайный микс',
                 correct: 'Правильно!', wrong: 'Неверно... Правильный ответ: ',
                 load_success: 'Загружено {n} слов', load_with_reading: ' (включая {n} чтений)',
                 invalid_url: 'Введите корректный URL Google Таблицы!',
@@ -369,7 +373,7 @@
             fr: {
                 title: "hanabirn の 小天地", subtitle: 'Apprendre est un plaisir',
                 nav_quiz: 'Quiz Vocabulaire', nav_music: 'Musique', nav_osu: 'Collection osu!',
-                select_lang: '✦ Langue ✦', quiz_jp: 'Quiz Japonais', quiz_kr: 'Quiz Coréen',
+                select_lang: '✦ Langue ✦', quiz_jp: 'Quiz Japonais', quiz_kr: 'Quiz Coréen', quiz_fr: 'Quiz Français',
                 setup_title: 'Google Sheet', setup_placeholder: 'Collez l\'URL Google Sheet', setup_load: 'Charger',
                 mode_title: 'Mode de quiz',
                 quiz_question: 'Question {n}', quiz_words: 'Mots: {n}', quiz_score: 'Score: {n}',
@@ -388,7 +392,7 @@
                 osu_confirm_password: 'Confirmez:', osu_password_mismatch: 'Les mots de passe ne correspondent pas',
                 osu_password_set: 'Mot de passe défini!', osu_import_success: 'Import réussi!', osu_import_fail: 'Format de fichier invalide',
                 osu_export_done: 'osu_backup.json exporté', osu_copied: 'Copié!', mapped_by: 'par {n}',
-                mode_jp_meaning: 'Japonais → Choisir la signification', mode_kr_meaning: 'Coréen → Choisir la signification', mode_jp_reading: 'Japonais → Choisir la lecture', mode_both: 'Mixte aléatoire',
+                mode_jp_meaning: 'Japonais → Choisir la signification', mode_kr_meaning: 'Coréen → Choisir la signification', mode_fr_meaning: 'Français → Choisir la signification', mode_jp_reading: 'Japonais → Choisir la lecture', mode_both: 'Mixte aléatoire',
                 correct: 'Correct !', wrong: 'Faux... La réponse était : ',
                 load_success: '{n} mots valides chargés', load_with_reading: ' (dont {n} lectures)',
                 invalid_url: 'Veuillez entrer une URL Google Sheet valide !',
@@ -402,7 +406,7 @@
             es: {
                 title: "hanabirn の 小天地", subtitle: 'Aprender es un placer',
                 nav_quiz: 'Quiz Vocabulario', nav_music: 'Música', nav_osu: 'Colección osu!',
-                select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano',
+                select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés',
                 setup_title: 'Google Sheet', setup_placeholder: 'Pegue URL de Google Sheet', setup_load: 'Cargar',
                 mode_title: 'Modo de quiz',
                 quiz_question: 'Pregunta {n}', quiz_words: 'Palabras: {n}', quiz_score: 'Puntos: {n}',
@@ -421,7 +425,7 @@
                 osu_confirm_password: 'Confirme:', osu_password_mismatch: 'Las contraseñas no coinciden',
                 osu_password_set: '¡Contraseña establecida!', osu_import_success: '¡Importación exitosa!', osu_import_fail: 'Formato de archivo inválido',
                 osu_export_done: 'osu_backup.json exportado', osu_copied: '¡Copiado!', mapped_by: 'por {n}',
-                mode_jp_meaning: 'Japonés → Elegir significado', mode_kr_meaning: 'Coreano → Elegir significado', mode_jp_reading: 'Japonés → Elegir lectura', mode_both: 'Mixto aleatorio',
+                mode_jp_meaning: 'Japonés → Elegir significado', mode_kr_meaning: 'Coreano → Elegir significado', mode_fr_meaning: 'Francés → Elegir significado', mode_jp_reading: 'Japonés → Elegir lectura', mode_both: 'Mixto aleatorio',
                 correct: '¡Correcto!', wrong: 'Incorrecto... La respuesta era: ',
                 load_success: '{n} palabras válidas cargadas', load_with_reading: ' (incluyendo {n} lecturas)',
                 invalid_url: '¡Ingrese una URL válida de Google Sheet!',
@@ -435,7 +439,7 @@
             de: {
                 title: "hanabirn の 小天地", subtitle: 'Lernen macht Freude',
                 nav_quiz: 'Vokabel-Quiz', nav_music: 'Musik', nav_osu: 'osu! Sammlung',
-                select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz',
+                select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz',
                 setup_title: 'Google Tabelle', setup_placeholder: 'Google Sheet URL einfügen', setup_load: 'Laden',
                 mode_title: 'Quiz-Modus',
                 quiz_question: 'Frage {n}', quiz_words: 'Wörter: {n}', quiz_score: 'Punkte: {n}',
@@ -454,7 +458,7 @@
                 osu_confirm_password: 'Bestätigen:', osu_password_mismatch: 'Passwörter stimmen nicht überein',
                 osu_password_set: 'Passwort gesetzt!', osu_import_success: 'Import erfolgreich!', osu_import_fail: 'Ungültiges Dateiformat',
                 osu_export_done: 'osu_backup.json exportiert', osu_copied: 'Kopiert!', mapped_by: 'von {n}',
-                mode_jp_meaning: 'Japanisch → Bedeutung wählen', mode_kr_meaning: 'Koreanisch → Bedeutung wählen', mode_jp_reading: 'Japanisch → Lesung wählen', mode_both: 'Zufälliger Mix',
+                mode_jp_meaning: 'Japanisch → Bedeutung wählen', mode_kr_meaning: 'Koreanisch → Bedeutung wählen', mode_fr_meaning: 'Französisch → Bedeutung wählen', mode_jp_reading: 'Japanisch → Lesung wählen', mode_both: 'Zufälliger Mix',
                 correct: 'Richtig!', wrong: 'Falsch... Die richtige Antwort war: ',
                 load_success: '{n} gültige Wörter geladen', load_with_reading: ' (inkl. {n} Lesungen)',
                 invalid_url: 'Bitte geben Sie eine gültige Google Tabellen-URL ein!',
@@ -531,7 +535,8 @@
 
         const SHEETS = {
             jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
-            kr: 'https://docs.google.com/spreadsheets/d/1BsO7tpzFgO39AyBo2SV1RZFDWfPECB-LzWBGA87nbQA/export?format=csv&gid=0'
+            kr: 'https://docs.google.com/spreadsheets/d/1BsO7tpzFgO39AyBo2SV1RZFDWfPECB-LzWBGA87nbQA/export?format=csv&gid=0',
+            fr: 'https://docs.google.com/spreadsheets/d/1Ki0fuTZb1netmpSOBd8uJbZnYhgtD17aEtGQb3Ehb3Y/export?format=csv&gid=0'
         };
 
         let currentLang = '';
@@ -591,10 +596,10 @@
             if (!currentWord || !currentWord.word) return;
             window.speechSynthesis.cancel();
             const utter = new SpeechSynthesisUtterance(currentWord.word);
-            utter.lang = currentLang === 'jp' ? 'ja-JP' : 'ko-KR';
+            utter.lang = currentLang === 'jp' ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : 'ko-KR';
             utter.rate = 0.8;
             const voices = window.speechSynthesis.getVoices();
-            const langPrefix = currentLang === 'jp' ? 'ja' : 'ko';
+            const langPrefix = currentLang === 'jp' ? 'ja' : currentLang === 'fr' ? 'fr' : 'ko';
             const match = voices.find(v => v.lang.startsWith(langPrefix));
             if (match) utter.voice = match;
             window.speechSynthesis.speak(utter);
@@ -658,6 +663,8 @@
 
                     if (currentLang === 'jp') {
                         parseJapanese(rows);
+                    } else if (currentLang === 'fr') {
+                        parseFrench(rows);
                     } else {
                         parseKorean(rows);
                     }
@@ -702,6 +709,18 @@
             console.log('KR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
         }
 
+        function parseFrench(rows) {
+            rows.forEach((row, idx) => {
+                if (row.length < 5) return;
+                if (idx < 5) console.log(`FR row[${idx}] (len=${row.length}):`, row.slice(0, 24));
+                addWord(row[2], '', row[3], row[4]);
+                if (row.length > 9)  addWord(row[7], '', row[8], row[9]);
+                if (row.length > 14) addWord(row[12], '', row[13], row[14]);
+                if (row.length > 19) addWord(row[17], '', row[18], row[19]);
+            });
+            console.log('FR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
+        }
+
         function addWord(word, kana, meaning, englishMeaning) {
             const w = word.trim();
             const k = kana ? kana.trim() : '';
@@ -725,11 +744,11 @@
 
             const btnMeaning = document.createElement('button');
             btnMeaning.className = 'mode-btn';
-            btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : t('mode_kr_meaning');
+            btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : currentLang === 'fr' ? t('mode_fr_meaning') : t('mode_kr_meaning');
             btnMeaning.onclick = function() { selectMode('meaning', this); };
             container.appendChild(btnMeaning);
 
-            if (readingList.length >= 4) {
+            if (readingList.length >= 4 && currentLang !== 'fr') {
                 const btnReading = document.createElement('button');
                 btnReading.className = 'mode-btn';
                 btnReading.innerText = t('mode_jp_reading');
