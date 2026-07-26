@@ -672,20 +672,20 @@
             const btnMeaning = document.createElement('button');
             btnMeaning.className = 'mode-btn';
             btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : t('mode_kr_meaning');
-            btnMeaning.onclick = () => selectMode('meaning');
+            btnMeaning.onclick = function() { selectMode('meaning', this); };
             container.appendChild(btnMeaning);
 
             if (readingList.length >= 4) {
                 const btnReading = document.createElement('button');
                 btnReading.className = 'mode-btn';
                 btnReading.innerText = t('mode_jp_reading');
-                btnReading.onclick = () => selectMode('reading');
+                btnReading.onclick = function() { selectMode('reading', this); };
                 container.appendChild(btnReading);
 
                 const btnBoth = document.createElement('button');
                 btnBoth.className = 'mode-btn';
                 btnBoth.innerText = t('mode_both');
-                btnBoth.onclick = () => selectMode('both');
+                btnBoth.onclick = function() { selectMode('both', this); };
                 container.appendChild(btnBoth);
             }
 
@@ -696,30 +696,30 @@
                 const btn = document.createElement('button');
                 btn.className = 'mode-btn count-btn';
                 btn.innerText = t(c.key);
-                btn.onclick = () => selectCount(c.n);
+                btn.onclick = function() { selectCount(c.n, this); };
                 countContainer.appendChild(btn);
             });
         }
 
         let selectedQuizMode = 'meaning';
 
-        function selectMode(mode) {
+        function selectMode(mode, el) {
             selectedQuizMode = mode;
-            document.querySelectorAll('#mode-buttons .mode-btn').forEach(b => b.style.border = '2px solid transparent');
-            event.target.style.border = '2px solid #e879a8';
+            document.querySelectorAll('#mode-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
+            el.classList.add('mode-btn-active');
             checkStartQuiz();
         }
 
-        function selectCount(n) {
+        function selectCount(n, el) {
             totalQuestions = n;
-            document.querySelectorAll('#quiz-count-buttons .mode-btn').forEach(b => b.style.border = '2px solid transparent');
-            event.target.style.border = '2px solid #e879a8';
+            document.querySelectorAll('#quiz-count-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
+            el.classList.add('mode-btn-active');
             checkStartQuiz();
         }
 
         function checkStartQuiz() {
-            const modePicked = document.querySelector('#mode-buttons .mode-btn[style*="e879a8"]');
-            const countPicked = document.querySelector('#quiz-count-buttons .mode-btn[style*="e879a8"]');
+            const modePicked = document.querySelector('#mode-buttons .mode-btn-active');
+            const countPicked = document.querySelector('#quiz-count-buttons .mode-btn-active');
             if (modePicked && countPicked) {
                 startQuiz(selectedQuizMode);
             }
