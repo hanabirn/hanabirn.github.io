@@ -34,12 +34,12 @@
         <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
     </div>
 
-    <div class="deco-img deco-miku1"><img src="images/miku1.png" alt=""></div>
-    <div class="deco-img deco-miku2"><img src="images/miku2.png" alt=""></div>
-    <div class="deco-img deco-anime1"><img src="images/anime1.jpg" alt=""></div>
-    <div class="deco-img deco-anime2"><img src="images/anime2.jpg" alt=""></div>
-    <div class="deco-img deco-gif1"><img src="images/gif1.gif" alt=""></div>
-    <div class="deco-img deco-gif2"><img src="images/gif2.gif" alt=""></div>
+    <div class="deco-img deco-miku1" style="display:none"><img src="images/miku1.png" alt=""></div>
+    <div class="deco-img deco-miku2" style="display:none"><img src="images/miku2.png" alt=""></div>
+    <div class="deco-img deco-anime1" style="display:none"><img src="images/anime1.jpg" alt=""></div>
+    <div class="deco-img deco-anime2" style="display:none"><img src="images/anime2.jpg" alt=""></div>
+    <div class="deco-img deco-gif1" style="display:none"><img src="images/gif1.gif" alt=""></div>
+    <div class="deco-img deco-gif2" style="display:none"><img src="images/gif2.gif" alt=""></div>
 
     <header>
         <div class="header-wave"></div>
@@ -145,6 +145,7 @@
                 <div class="osu-io-btns">
                     <button class="osu-io-btn" onclick="exportOsuData()">&#x1F4E5; 匯出</button>
                     <button class="osu-io-btn" onclick="document.getElementById('osu-import-file').click()">&#x1F4E4; 匯入</button>
+                    <button class="osu-io-btn" onclick="setupOsuPassword()">&#x1F512; 設定密碼</button>
                     <input type="file" id="osu-import-file" accept=".json" style="display:none" onchange="importOsuData(event)">
                 </div>
             </div>
@@ -158,6 +159,7 @@
             </div>
 
             <div id="osu-collection" class="osu-collection"></div>
+            <div id="osu-pagination" class="osu-pagination"></div>
         </div>
     </main>
 
@@ -453,13 +455,58 @@
         let osuCurrentTab = 'standard';
         let osuCurrentAudio = null;
         let osuVolume = 0.4;
+        let osuPage = 0;
+        const OSU_PAGE_SIZE = 16;
+
+        async function sha256(str) {
+            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+        }
+
+        function getOsuPassword() { return localStorage.getItem('osu_password_hash'); }
+
+        async function setOsuPassword(pw) {
+            localStorage.setItem('osu_password_hash', await sha256(pw));
+        }
+
+        function hasOsuPassword() { return !!getOsuPassword(); }
+
+        async function verifyOsuPassword() {
+            if (!hasOsuPassword()) return true;
+            const pw = prompt('請輸入密碼以進行修改：');
+            if (pw === null) return false;
+            const hash = await sha256(pw);
+            if (hash === getOsuPassword()) return true;
+            alert('密碼錯誤！');
+            return false;
+        }
+
+        async function setupOsuPassword() {
+            const pw = prompt('請設定 osu! 收藏庫密碼（留空則不設定密碼保護）：');
+            if (pw === null || pw === '') return;
+            const pw2 = prompt('請再次輸入密碼確認：');
+            if (pw !== pw2) { alert('兩次密碼不一致，設定取消'); return; }
+            await setOsuPassword(pw);
+            alert('密碼設定成功！');
+        }
+
+        function copyBeatmapId(setId, event) {
+            event.stopPropagation();
+            navigator.clipboard.writeText(String(setId)).then(() => {
+                const btn = event.currentTarget;
+                btn.classList.add('copied');
+                btn.innerText = '✓';
+                setTimeout(() => { btn.classList.remove('copied'); btn.innerText = '📋'; }, 1200);
+            });
+        }
 
         function osuSetVolume(val) {
             osuVolume = parseFloat(val);
             if (osuCurrentAudio && !osuCurrentAudio.ended) osuCurrentAudio.volume = osuVolume;
         }
 
-        function exportOsuData() {
+        async function exportOsuData() {
+            if (!await verifyOsuPassword()) return;
             const data = {
                 osu_collection: localStorage.getItem('osu_collection'),
                 osu_favorites: localStorage.getItem('osu_favorites')
@@ -475,7 +522,8 @@
             s.style.color = '#34d399';
         }
 
-        function importOsuData(event) {
+        async function importOsuData(event) {
+            if (!await verifyOsuPassword()) { event.target.value = ''; return; }
             const file = event.target.files[0];
             if (!file) return;
             const reader = new FileReader();
@@ -539,8 +587,9 @@
             return getOsuFavorites().includes(setId);
         }
 
-        function toggleOsuFavorite(setId, event) {
+        async function toggleOsuFavorite(setId, event) {
             event.stopPropagation();
+            if (!await verifyOsuPassword()) return;
             const favs = getOsuFavorites();
             const idx = favs.indexOf(setId);
             if (idx >= 0) favs.splice(idx, 1);
@@ -574,6 +623,7 @@
         }
 
         async function addOsuBeatmap() {
+            if (!await verifyOsuPassword()) return;
             const input = document.getElementById('osuInput');
             const status = document.getElementById('osu-status');
             const raw = input.value.trim();
@@ -663,10 +713,12 @@
             document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
             btn.classList.add('active');
             osuCurrentTab = mode;
+            osuPage = 0;
             renderOsuCollection();
         }
 
-        function removeOsuSet(setId) {
+        async function removeOsuSet(setId) {
+            if (!await verifyOsuPassword()) return;
             const col = getOsuCollection();
             col[osuCurrentTab] = col[osuCurrentTab].filter(s => s.beatmapset_id !== setId);
             saveOsuCollection(col);
@@ -680,6 +732,7 @@
         }
 
         async function refreshAllOsuSets() {
+            if (!await verifyOsuPassword()) return;
             const btn = document.querySelector('.osu-refresh-all');
             const status = document.getElementById('osu-status');
             btn.classList.add('spinning');
@@ -726,6 +779,7 @@
 
         function renderOsuCollection() {
             const container = document.getElementById('osu-collection');
+            const paginationEl = document.getElementById('osu-pagination');
             const col = getOsuCollection();
             let sets;
 
@@ -754,10 +808,16 @@
                     ? '還沒有最愛的歌曲<br><span>在其他分類中點擊 ♥ 加入最愛！</span>'
                     : '還沒有收藏的 Beatmap<br><span>在上方輸入 Beatmap ID 開始收藏！</span>';
                 container.innerHTML = `<div class="osu-empty">${msg}</div>`;
+                paginationEl.innerHTML = '';
                 return;
             }
 
-            container.innerHTML = sets.map(set => {
+            const totalPages = Math.ceil(sets.length / OSU_PAGE_SIZE);
+            if (osuPage >= totalPages) osuPage = totalPages - 1;
+            if (osuPage < 0) osuPage = 0;
+            const pageSets = sets.slice(osuPage * OSU_PAGE_SIZE, (osuPage + 1) * OSU_PAGE_SIZE);
+
+            container.innerHTML = pageSets.map(set => {
                 const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
                 const isFav = isOsuFavorited(set.beatmapset_id);
                 const starsMin = Math.min(...set.beatmaps.map(b => b.difficulty_rating));
@@ -767,6 +827,7 @@
                 <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
                     <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
                     <div class="osu-card-overlay"></div>
+                    <button class="osu-copy-btn" onclick="copyBeatmapId(${set.beatmapset_id}, event)" title="複製 ID">📋</button>
                     <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
                     <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
                     <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
@@ -778,6 +839,20 @@
                     </div>
                 </div>`;
             }).join('');
+
+            if (totalPages <= 1) {
+                paginationEl.innerHTML = '';
+            } else {
+                let pages = '';
+                pages += `<button class="osu-page-btn" onclick="osuPage=0;renderOsuCollection()" ${osuPage===0?'disabled':''}>«</button>`;
+                pages += `<button class="osu-page-btn" onclick="osuPage=Math.max(0,osuPage-1);renderOsuCollection()" ${osuPage===0?'disabled':''}>‹</button>`;
+                for (let i = 0; i < totalPages; i++) {
+                    pages += `<button class="osu-page-btn ${i===osuPage?'active':''}" onclick="osuPage=${i};renderOsuCollection()">${i+1}</button>`;
+                }
+                pages += `<button class="osu-page-btn" onclick="osuPage=Math.min(${totalPages-1},osuPage+1);renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>›</button>`;
+                pages += `<button class="osu-page-btn" onclick="osuPage=${totalPages-1};renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>»</button>`;
+                paginationEl.innerHTML = pages;
+            }
         }
     </script>
 </body>
