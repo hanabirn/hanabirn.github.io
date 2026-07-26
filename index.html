@@ -640,6 +640,17 @@
 
             const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
 
+            function finalizeLoad() {
+                if (vocabularyList.length >= 4) {
+                    statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
+                    statusMsg.style.color = '#f472b6';
+                    showModeSelection();
+                } else {
+                    statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
+                    statusMsg.style.color = '#ff5252';
+                }
+            }
+
             Papa.parse(csvUrl, {
                 download: true,
                 header: false,
@@ -650,19 +661,19 @@
 
                     if (currentLang === 'jp') {
                         parseJapanese(rows);
+                        const csvUrl2 = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=1244107386`;
+                        Papa.parse(csvUrl2, {
+                            download: true,
+                            header: false,
+                            complete: function(r2) { parseJapanese(r2.data); finalizeLoad(); },
+                            error: function() { finalizeLoad(); }
+                        });
                     } else if (currentLang === 'fr') {
                         parseFrench(rows);
+                        finalizeLoad();
                     } else {
                         parseKorean(rows);
-                    }
-
-                    if (vocabularyList.length >= 4) {
-                        statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
-                        statusMsg.style.color = '#f472b6';
-                        showModeSelection();
-                    } else {
-                        statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
-                        statusMsg.style.color = '#ff5252';
+                        finalizeLoad();
                     }
                 },
                 error: function() {
