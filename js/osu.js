@@ -27,16 +27,29 @@ async function setOsuPassword(pw) {
 
 function hasOsuPassword() { return !!getOsuPassword(); }
 
+let osuPasswordVerifiedThisSession = false;
+
 async function verifyOsuPassword() {
+    if (!hasOsuPassword() || osuPasswordVerifiedThisSession) return true;
+    const pw = prompt(t('osu_password_prompt'));
+    if (pw === null) return false;
+    const hash = await sha256(pw);
+    if (hash !== getOsuPassword()) {
+        alert(t('osu_password_wrong'));
+        return false;
+    }
+    osuPasswordVerifiedThisSession = true;
     return true;
 }
 
 async function setupOsuPassword() {
+    if (!await verifyOsuPassword()) return;
     const pw = prompt(t('osu_set_password'));
     if (pw === null || pw === '') return;
     const pw2 = prompt(t('osu_confirm_password'));
     if (pw !== pw2) { alert(t('osu_password_mismatch')); return; }
     await setOsuPassword(pw);
+    osuPasswordVerifiedThisSession = true;
     alert(t('osu_password_set'));
 }
 

@@ -59,6 +59,16 @@ async function handleGuestbookSubmit(event) {
     const message = form.elements.message.value.trim();
     if (!name || !message) return false;
 
+    if (form.elements.website && form.elements.website.value) {
+        form.style.display = 'none';
+        document.getElementById('guestbook-success').style.display = 'block';
+        setTimeout(() => {
+            form.style.display = '';
+            form.reset();
+        }, 3000);
+        return false;
+    }
+
     const submitBtn = form.querySelector('.guestbook-submit');
     submitBtn.disabled = true;
 

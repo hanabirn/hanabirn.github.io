@@ -4,6 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hanabiの小天地</title>
+    <meta name="description" content="學習語言、玩音樂遊戲、聽音樂、看動漫">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hanabirn.netlify.app/">
+    <meta property="og:title" content="Hanabiの小天地">
+    <meta property="og:description" content="學習語言、玩音樂遊戲、聽音樂、看動漫">
+    <meta property="og:image" content="https://hanabirn.netlify.app/icons/web-app-manifest-512x512.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Hanabiの小天地">
+    <meta name="twitter:description" content="學習語言、玩音樂遊戲、聽音樂、看動漫">
+    <meta name="twitter:image" content="https://hanabirn.netlify.app/icons/web-app-manifest-512x512.png">
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#c084fc">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -333,6 +343,7 @@
                     <button class="osu-refresh-all" onclick="exportOsuCollection()" data-i18n-title="osu_export" title="&#x532F;&#x51FA;&#x6536;&#x85CF;">&#x1F4E4;</button>
                     <button class="osu-refresh-all" onclick="document.getElementById('osu-import-file').click()" data-i18n-title="osu_import" title="&#x532F;&#x5165;&#x6536;&#x85CF;">&#x1F4E5;</button>
                     <input type="file" id="osu-import-file" accept="application/json" style="display:none" onchange="importOsuCollection(event)">
+                    <button class="osu-refresh-all" onclick="setupOsuPassword()" data-i18n-title="osu_password" title="&#x1F512; &#x8A2D;&#x5B9A;&#x5BC6;&#x78BC;">&#x1F512;</button>
                 </div>
             </div>
 
@@ -486,6 +497,7 @@
                     <div class="guestbook-input-row">
                         <input type="text" name="name" data-i18n-placeholder="guestbook_name" placeholder="&#x4F60;&#x7684;&#x540D;&#x5B57;" required class="guestbook-input">
                         <input type="text" name="message" data-i18n-placeholder="guestbook_message" placeholder="&#x7559;&#x4E0B;&#x4F60;&#x7684;&#x8A00;&#x8A9E;..." required class="guestbook-input guestbook-msg">
+                        <input type="text" name="website" class="guestbook-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <button type="submit" class="btn next-btn guestbook-submit" data-i18n="guestbook_send">&#x9001;&#x51FA;</button>
                     </div>
                 </form>
