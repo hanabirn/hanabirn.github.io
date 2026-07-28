@@ -40,11 +40,6 @@ async function setupOsuPassword() {
     alert(t('osu_password_set'));
 }
 
-function openInOsuClient(setId, event) {
-    event.stopPropagation();
-    window.location.href = `osu://s/${setId}`;
-}
-
 function copyBeatmapId(setId, event) {
     event.stopPropagation();
     navigator.clipboard.writeText(String(setId)).then(() => {
@@ -390,7 +385,6 @@ function renderOsuCollection() {
         <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
             <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
             <div class="osu-card-overlay"></div>
-            <button class="osu-open-btn" onclick="openInOsuClient(${set.beatmapset_id}, event)" title="${t('osu_download_map')}">⬇️</button>
             <button class="osu-copy-btn" onclick="copyBeatmapId(${set.beatmapset_id}, event)" title="複製 ID">📋</button>
             <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
             <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
