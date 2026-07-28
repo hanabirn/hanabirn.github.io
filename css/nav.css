@@ -1,0 +1,45 @@
+/* ===== Navigation ===== */
+.main-nav {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.nav-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    border: 1px solid var(--nav-border);
+    padding: 8px 30px;
+    border-radius: 22px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    width: 0; height: 0;
+    background: rgba(244,114,182,0.15);
+    border-radius: 50%;
+    transition: all 0.4s;
+    transform: translate(-50%, -50%);
+}
+
+.nav-btn:hover::before { width: 200px; height: 200px; }
+
+.nav-btn:hover {
+    color: var(--text);
+    border-color: var(--accent-pink);
+}
+
+.nav-btn.active {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    color: #fff;
+    font-weight: bold;
+    border-color: transparent;
+    box-shadow: 0 0 20px rgba(244,114,182,0.35), 0 0 40px rgba(168,85,247,0.15);
+}

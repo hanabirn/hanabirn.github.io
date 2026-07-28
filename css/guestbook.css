@@ -1,0 +1,109 @@
+.guestbook-card {
+    position: relative;
+    background: var(--bg-card);
+    backdrop-filter: blur(10px);
+    padding: 28px 24px;
+    border-radius: 16px;
+    border: 1px solid var(--border-card);
+    box-shadow: var(--shadow-card), var(--shadow-card-inset);
+    margin-bottom: 20px;
+}
+
+.guestbook-card h3 {
+    margin: 0 0 18px;
+    text-align: center;
+    font-size: 1.1rem;
+    background: linear-gradient(90deg, var(--text-pink), var(--accent-light-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+}
+
+.guestbook-form {
+    margin-bottom: 16px;
+}
+
+.guestbook-input-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.guestbook-input {
+    flex: 1;
+    min-width: 120px;
+    padding: 11px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text);
+    font-size: 0.9rem;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+.guestbook-input:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+    box-shadow: 0 0 15px rgba(192,132,252,0.25);
+}
+.guestbook-msg {
+    flex: 2;
+}
+
+.guestbook-submit {
+    flex: 0 0 auto;
+    padding: 11px 24px;
+}
+
+.guestbook-success {
+    text-align: center;
+    color: var(--accent-pink);
+    font-size: 1rem;
+    padding: 12px;
+    animation: fadeSlideIn 0.4s ease;
+}
+
+@keyframes fadeSlideIn {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.guestbook-local {
+    margin-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+    padding-top: 12px;
+}
+
+.guestbook-msg-item {
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: var(--bg-msg-item);
+    border: 1px solid var(--border-subtle);
+    margin-bottom: 8px;
+    animation: fadeSlideIn 0.3s ease;
+}
+.guestbook-msg-name {
+    font-weight: bold;
+    color: var(--text-pink);
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+}
+.guestbook-msg-text {
+    color: var(--guestbook-msg-text);
+    font-size: 0.9rem;
+    word-break: break-word;
+}
+.guestbook-msg-time {
+    color: var(--guestbook-msg-time);
+    font-size: 0.75rem;
+    margin-top: 4px;
+}
+
+.guestbook-loading,
+.guestbook-empty {
+    text-align: center;
+    color: var(--guestbook-loading);
+    padding: 20px;
+    font-size: 0.9rem;
+}

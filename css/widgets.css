@@ -1,0 +1,233 @@
+/* ===================== 🎵 BGM Vinyl Player ===================== */
+.bgm-player {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 200;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.bgm-disc {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    border: 2px solid rgba(244,114,182,0.4);
+    cursor: pointer;
+    position: relative;
+    background:
+        radial-gradient(circle at center, #f472b6 0%, #f472b6 16%, #1a1030 17%, #1a1030 22%, #241640 23%, #241640 30%, #1a1030 31%, #1a1030 38%, #241640 39%, #241640 46%, #1a1030 47%, #1a1030 54%, #241640 55%, #241640 62%, #1a1030 63%, #1a1030 100%);
+    box-shadow: 0 0 15px rgba(168,85,247,0.25);
+    transition: box-shadow 0.3s, border-color 0.3s;
+    animation: discSpin 3s linear infinite;
+    animation-play-state: paused;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.85rem;
+    color: #fff;
+    padding: 0;
+}
+.bgm-disc::after {
+    content: '';
+    position: absolute;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #1a1030;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+.bgm-disc.spinning {
+    animation-play-state: running;
+    border-color: #f472b6;
+    box-shadow: 0 0 25px rgba(244,114,182,0.5);
+}
+.bgm-disc:hover {
+    border-color: #f472b6;
+    box-shadow: 0 0 25px rgba(244,114,182,0.45);
+}
+
+@keyframes discSpin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.bgm-panel {
+    background: var(--bg-widget-panel);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-card);
+    border-radius: 14px;
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 170px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-8px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+}
+.bgm-player:hover .bgm-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.bgm-track-name {
+    font-size: 0.78rem;
+    color: var(--text-pink);
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+}
+
+.bgm-controls {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+.bgm-controls button {
+    background: rgba(168,85,247,0.15);
+    border: 1px solid rgba(168,85,247,0.3);
+    color: var(--text);
+    width: 32px;
+    height: 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+}
+.bgm-controls button:hover {
+    background: rgba(244,114,182,0.25);
+    border-color: var(--accent-pink);
+    color: #fff;
+}
+
+#bgm-volume {
+    width: 100%;
+    height: 4px;
+    -webkit-appearance: none;
+    appearance: none;
+    background: rgba(168,85,247,0.25);
+    border-radius: 2px;
+    cursor: pointer;
+}
+#bgm-volume::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--accent-pink);
+    cursor: pointer;
+    box-shadow: 0 0 6px rgba(244,114,182,0.5);
+}
+
+/* ===================== ✨ Click Particles ===================== */
+.click-particle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9998;
+    transform: translate(-50%, -50%);
+    animation: particleBurst 0.85s ease-out forwards;
+}
+.click-particle.emoji {
+    font-size: 14px;
+}
+.click-particle.dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    box-shadow: 0 0 6px currentColor;
+}
+
+@keyframes particleBurst {
+    0% {
+        opacity: 1;
+        transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.4);
+    }
+}
+
+/* ===================== 🕐 Clock & Weather Widget ===================== */
+.clock-widget {
+    position: fixed;
+    bottom: 82px;
+    right: 20px;
+    z-index: 200;
+    background: var(--bg-widget);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--border-card);
+    border-radius: 14px;
+    padding: 10px 16px;
+    text-align: center;
+    box-shadow: 0 0 15px rgba(168,85,247,0.2);
+    transition: all 0.3s;
+}
+.clock-widget:hover {
+    border-color: rgba(244,114,182,0.5);
+    box-shadow: 0 0 25px rgba(244,114,182,0.3);
+}
+
+.clock-time {
+    font-size: 1.15rem;
+    font-weight: bold;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-light-purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+    font-variant-numeric: tabular-nums;
+}
+
+.clock-date {
+    font-size: 0.72rem;
+    color: var(--text-accent);
+    margin-top: 2px;
+}
+
+.clock-weather {
+    font-size: 0.8rem;
+    color: var(--text-pink);
+    margin-top: 3px;
+}
+.clock-weather:empty { display: none; }
+
+/* ===================== Theme Toggle Button ===================== */
+.theme-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 76px;
+    z-index: 200;
+    width: 48px;
+    height: 48px;
+    font-size: 1.4rem;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 768px) {
+    .clock-widget {
+        bottom: 78px;
+        right: 12px;
+        padding: 7px 12px;
+    }
+    .clock-time { font-size: 0.95rem; }
+    .bgm-player {
+        bottom: 14px;
+        left: 12px;
+    }
+    .bgm-disc {
+        width: 44px;
+        height: 44px;
+    }
+}

@@ -1,0 +1,135 @@
+/* ===== Stars ===== */
+.stars-bg {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.star {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    background: #fff;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite;
+    animation-delay: var(--delay);
+    box-shadow: 0 0 6px 2px rgba(255,255,255,0.3);
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.15; transform: scale(1); }
+    50% { opacity: 0.9; transform: scale(1.5); }
+}
+
+/* ===== Decorative Images ===== */
+.deco-img {
+    position: fixed;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.15;
+}
+.deco-img img { width: 100%; height: 100%; object-fit: contain; }
+
+@keyframes floatDeco {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+@keyframes floatDecoCenter {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-12px); }
+}
+
+/* ===== Japanese Decorative Elements ===== */
+.jp-deco {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.jp-torii {
+    position: absolute;
+    bottom: 40px;
+    right: 30px;
+    width: 70px;
+    height: 80px;
+    opacity: 0.07;
+}
+.jp-torii::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -8px;
+    width: 86px; height: 8px;
+    background: #f9a8d4;
+    border-radius: 4px 4px 0 0;
+    box-shadow: 0 6px 0 0 #f9a8d4;
+}
+.jp-torii::after {
+    content: '';
+    position: absolute;
+    top: 14px; left: 8px;
+    width: 8px; height: 66px;
+    background: #f9a8d4;
+    box-shadow: 46px 0 0 0 #f9a8d4;
+}
+
+.jp-wave {
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 200%; height: 30px;
+    opacity: 0.04;
+    background: repeating-linear-gradient(90deg,
+        transparent 0px, transparent 20px,
+        #f9a8d4 20px, #f9a8d4 22px,
+        transparent 22px, transparent 40px
+    );
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+    animation: waveScroll 20s linear infinite;
+}
+
+.jp-fan {
+    position: absolute;
+    width: 50px; height: 25px;
+    border-radius: 0 50px 0 0;
+    background: linear-gradient(135deg, rgba(249,168,212,0.08), rgba(192,132,252,0.05));
+    border: 1px solid rgba(249,168,212,0.06);
+}
+.jp-fan.f1 {
+    top: 15%; left: 5%;
+    transform: rotate(-20deg);
+    animation: floatDeco 6s ease-in-out infinite;
+}
+.jp-fan.f2 {
+    top: 60%; right: 8%;
+    width: 40px; height: 20px;
+    transform: rotate(15deg);
+    animation: floatDeco 8s ease-in-out infinite 1s;
+}
+
+.jp-cloud {
+    position: absolute;
+    background: radial-gradient(ellipse, rgba(249,168,212,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+}
+.jp-cloud.c1 {
+    width: 120px; height: 40px;
+    top: 20%; left: 15%;
+    animation: floatDeco 10s ease-in-out infinite;
+}
+.jp-cloud.c2 {
+    width: 90px; height: 30px;
+    top: 70%; right: 20%;
+    animation: floatDeco 12s ease-in-out infinite 2s;
+}
+
+@keyframes waveScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}

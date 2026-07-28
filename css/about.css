@@ -1,0 +1,296 @@
+/* ===== About Me ===== */
+.about-card {
+    max-width: 520px;
+    margin: 2rem auto;
+    background: var(--bg-card-alt);
+    border: 1px solid var(--border-light);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+.about-name {
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.3rem;
+}
+
+.about-tagline {
+    color: var(--about-tagline);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+}
+
+.about-section {
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--about-section-border);
+}
+
+.about-section h3 {
+    font-size: 1rem;
+    color: var(--text-label);
+    margin-bottom: 0.8rem;
+    letter-spacing: 1px;
+}
+
+.about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.about-tag {
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.about-tag.jp { background: linear-gradient(135deg, #ff4b5c, #ff6b81); }
+.about-tag.kr { background: linear-gradient(135deg, #3b5998, #5b7bd5); }
+.about-tag.fr { background: linear-gradient(135deg, #0055a4, #4169e1); }
+.about-tag.ru { background: linear-gradient(135deg, #d52b1e, #0039a6); }
+.about-tag.cantonese { background: linear-gradient(135deg, #e8b830, #c4972a); }
+
+.about-text {
+    color: var(--about-text);
+    line-height: 1.7;
+    font-size: 0.95rem;
+}
+
+/* Social Links */
+.about-socials {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+}
+
+.about-social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.08);
+}
+
+.about-social-link:hover {
+    transform: scale(1.05);
+}
+
+.about-social-link.osu { border-color: rgba(255,102,153,0.4); background: rgba(255,102,153,0.15); }
+.about-social-link.osu:hover { box-shadow: 0 4px 20px rgba(255,102,153,0.3); }
+.about-social-link.youtube { border-color: rgba(255,0,0,0.4); background: rgba(255,0,0,0.12); }
+.about-social-link.youtube:hover { box-shadow: 0 4px 20px rgba(255,0,0,0.3); }
+.about-social-link.twitch { border-color: rgba(145,70,255,0.4); background: rgba(145,70,255,0.12); }
+.about-social-link.twitch:hover { box-shadow: 0 4px 20px rgba(145,70,255,0.3); }
+.about-social-link.facebook { border-color: rgba(24,119,242,0.4); background: rgba(24,119,242,0.12); }
+.about-social-link.facebook:hover { box-shadow: 0 4px 20px rgba(24,119,242,0.3); }
+.about-social-link.instagram { border-color: rgba(225,48,108,0.4); background: rgba(225,48,108,0.12); }
+.about-social-link.instagram:hover { box-shadow: 0 4px 20px rgba(225,48,108,0.3); }
+
+.social-icon-osu {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.social-icon-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 5px;
+    font-size: 0.75rem;
+    font-weight: 900;
+    color: #fff;
+}
+.social-icon-text.yt { background: #ff0000; }
+.social-icon-text.tw { background: #9146ff; }
+.social-icon-text.fb { background: #1877f2; }
+.social-icon-text.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+
+/* ===== osu! Profile Card ===== */
+.osu-profile-card {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto 20px;
+    background: var(--bg-card-alt);
+    border: 1px solid rgba(255,102,153,0.2);
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+.osu-profile-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 1.2rem;
+}
+.osu-avatar {
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,102,153,0.5);
+    box-shadow: 0 0 15px rgba(255,102,153,0.3);
+    object-fit: cover;
+}
+.osu-profile-name {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: var(--text);
+    text-align: left;
+}
+.osu-profile-country {
+    font-size: 0.85rem;
+    color: var(--text-label);
+    text-align: left;
+}
+.osu-profile-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+.osu-stat {
+    background: var(--bg-stat);
+    border: 1px solid var(--border-light);
+    border-radius: 12px;
+    padding: 10px 6px;
+}
+.osu-stat-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text-pink);
+}
+.osu-stat-label {
+    font-size: 0.72rem;
+    color: var(--text-label);
+    margin-top: 3px;
+}
+.osu-mode-tabs {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+}
+.osu-mode-tab {
+    background: var(--bg-stat);
+    border: 1px solid rgba(255,102,153,0.15);
+    border-radius: 20px;
+    padding: 5px 14px;
+    color: var(--text-label);
+    font-size: 0.78rem;
+    cursor: pointer;
+    transition: all 0.25s;
+    font-family: inherit;
+}
+.osu-mode-tab:hover {
+    background: rgba(255,102,153,0.15);
+    color: var(--text-pink);
+}
+.osu-mode-tab.active {
+    background: rgba(255,102,153,0.25);
+    border-color: rgba(255,102,153,0.5);
+    color: var(--text-pink);
+}
+.osu-total-pp {
+    margin-top: 1rem;
+    padding: 10px;
+    background: var(--bg-stat);
+    border: 1px solid rgba(255,102,153,0.15);
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--text-label);
+}
+.osu-total-pp-value {
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--text-pink);
+}
+
+/* ===== Visitor Lookup ===== */
+.visitor-lookup-card {
+    position: relative;
+    max-width: 520px;
+    margin: 0 auto 20px;
+    background: var(--bg-card-alt);
+    border: 1px solid rgba(255,102,153,0.2);
+    border-radius: 20px;
+    padding: 1.8rem 1.5rem;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+.visitor-lookup-card h3 {
+    color: var(--text-pink);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+.visitor-lookup-input-row {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+.visitor-result-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 1rem;
+}
+.visitor-result-name {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--text);
+    text-align: left;
+}
+.visitor-result-country {
+    font-size: 0.8rem;
+    color: var(--text-label);
+    text-align: left;
+}
+.visitor-modes-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin-bottom: 0.8rem;
+}
+.visitor-mode-mini {
+    background: var(--bg-stat);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 8px 4px;
+}
+.visitor-mode-name {
+    font-size: 0.7rem;
+    color: var(--text-label);
+    margin-bottom: 4px;
+}
+.visitor-mode-pp {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: var(--text-pink);
+}

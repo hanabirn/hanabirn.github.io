@@ -1,20 +1,50 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hanabi的小天地</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Hanabiの小天地</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c084fc">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Hanabi">
+    <link rel="apple-touch-icon" href="icons/web-app-manifest-192x192.png">
+    <link rel="stylesheet" href="css/theme.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/sakura.css">
+    <link rel="stylesheet" href="css/seasons.css">
+    <link rel="stylesheet" href="css/stars.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/quiz.css">
+    <link rel="stylesheet" href="css/music.css">
+    <link rel="stylesheet" href="css/osu.css">
+    <link rel="stylesheet" href="css/about.css">
+    <link rel="stylesheet" href="css/guestbook.css">
+    <link rel="stylesheet" href="css/guide.css">
+    <link rel="stylesheet" href="css/widgets.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-    <div class="sakura-container" aria-hidden="true">
+    <div class="splash-overlay" id="splash-overlay">
+        <div class="splash-content">
+            <div class="splash-logo">✿</div>
+            <div class="splash-text">Hanabiの小天地</div>
+            <div class="splash-sub">Loading...</div>
+        </div>
+    </div>
+
+    <div class="sakura-container" id="sakura-container" aria-hidden="true">
         <div class="sakura s1"></div><div class="sakura s2"></div><div class="sakura s3"></div>
         <div class="sakura s4"></div><div class="sakura s5"></div><div class="sakura s6"></div>
         <div class="sakura s7"></div><div class="sakura s8"></div><div class="sakura s9"></div>
         <div class="sakura s10"></div><div class="sakura s11"></div><div class="sakura s12"></div>
         <div class="sakura s13"></div><div class="sakura s14"></div><div class="sakura s15"></div>
     </div>
+
+    <div class="season-particles" id="season-particles" aria-hidden="true"></div>
 
     <div class="stars-bg">
         <div class="star" style="--x:10%;--y:15%;--delay:0s;--size:3px"></div>
@@ -34,6 +64,15 @@
         <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
     </div>
 
+    <div class="jp-deco" aria-hidden="true">
+        <div class="jp-torii"></div>
+        <div class="jp-wave"></div>
+        <div class="jp-fan f1"></div>
+        <div class="jp-fan f2"></div>
+        <div class="jp-cloud c1"></div>
+        <div class="jp-cloud c2"></div>
+    </div>
+
     <div class="deco-img" style="display:none"></div>
 
     <header>
@@ -41,53 +80,136 @@
         <div class="header-sakura left">&#x273F;</div>
         <div class="header-sakura right">&#x273F;</div>
         <div class="lang-bar">
-            <button class="lang-pill active" onclick="setSiteLang('zh')" data-lang="zh">🇹🇼 中文</button>
-            <button class="lang-pill" onclick="setSiteLang('en')" data-lang="en">🇬🇧 EN</button>
-            <button class="lang-pill" onclick="setSiteLang('ja')" data-lang="ja">🇯🇵 日本語</button>
-            <button class="lang-pill" onclick="setSiteLang('ko')" data-lang="ko">🇰🇷 한국어</button>
-            <button class="lang-pill" onclick="setSiteLang('ru')" data-lang="ru">🇷🇺 Русский</button>
-            <button class="lang-pill" onclick="setSiteLang('fr')" data-lang="fr">🇫🇷 Français</button>
-            <button class="lang-pill" onclick="setSiteLang('es')" data-lang="es">🇪🇸 Español</button>
-            <button class="lang-pill" onclick="setSiteLang('de')" data-lang="de">🇩🇪 Deutsch</button>
+            <button class="lang-pill active" onclick="setSiteLang('zh')" data-lang="zh">&#x1F1E8;&#x1F1F3; &#x4E2D;&#x6587;</button>
+            <button class="lang-pill" onclick="setSiteLang('en')" data-lang="en">&#x1F1FA;&#x1F1F8; EN</button>
+            <button class="lang-pill" onclick="setSiteLang('ja')" data-lang="ja">&#x1F1EF;&#x1F1F5; &#x65E5;&#x672C;&#x8A9E;</button>
+            <button class="lang-pill" onclick="setSiteLang('ko')" data-lang="ko">&#x1F1F0;&#x1F1F7; &#xD55C;&#xAD6D;&#xC5B4;</button>
+            <button class="lang-pill" onclick="setSiteLang('ru')" data-lang="ru">&#x1F1F7;&#x1F1FA; &#x0420;&#x0443;&#x0441;&#x0441;&#x043A;&#x0438;&#x0439;</button>
+            <button class="lang-pill" onclick="setSiteLang('fr')" data-lang="fr">&#x1F1EB;&#x1F1F7; Fran&#xE7;ais</button>
+            <button class="lang-pill" onclick="setSiteLang('es')" data-lang="es">&#x1F1EA;&#x1F1F8; Espa&#xF1;ol</button>
+            <button class="lang-pill" onclick="setSiteLang('de')" data-lang="de">&#x1F1E9;&#x1F1EA; Deutsch</button>
         </div>
-        <h1 data-i18n="title">Hanabi的小天地</h1>
-        <p class="subtitle" data-i18n="subtitle">持續學習朝著自己的夢想前進吧 !</p>
+        <h1 data-i18n="title">Hanabiの小天地</h1>
+        <p class="subtitle" data-i18n="subtitle">&#x6301;&#x7E8C;&#x5B78;&#x7FD2;&#x671D;&#x8457;&#x81EA;&#x5DF1;&#x7684;&#x5922;&#x60F3;&#x524D;&#x9032;&#x5427; !</p>
         <nav class="main-nav">
-            <button class="nav-btn active" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">單字測驗</button>
-            <button class="nav-btn" onclick="switchPage('music', this)" data-i18n="nav_music">音樂收藏</button>
-            <button class="nav-btn" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! 收藏</button>
+            <button class="nav-btn active" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
+            <button class="nav-btn" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
+            <button class="nav-btn" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
+            <button class="nav-btn" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
+            <button class="nav-btn" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
+            <button class="nav-btn" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
     </header>
 
     <main>
-        <div id="page-quiz">
+        <div id="page-quiz" style="display: none;">
             <div class="lang-card" id="lang-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="select_lang">&#x2726; 選擇語言 &#x2726;</h3>
+                <h3 data-i18n="select_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn jp" onclick="selectLanguage('jp')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本國旗" class="lang-flag">
-                        <span data-i18n="quiz_jp">日文單字測驗</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="&#x65E5;&#x672C;" class="lang-flag">
+                        <span data-i18n="quiz_jp">&#x65E5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
                     <button class="lang-btn kr" onclick="selectLanguage('kr')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國國旗" class="lang-flag">
-                        <span data-i18n="quiz_kr">韓文單字測驗</span>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="&#x97D3;&#x570B;" class="lang-flag">
+                        <span data-i18n="quiz_kr">&#x97D3;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
                     <button class="lang-btn fr" onclick="selectLanguage('fr')">
-                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="法國國旗" class="lang-flag">
-                        <span data-i18n="quiz_fr">法文單字測驗</span>
+                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="&#x6CD5;&#x570B;" class="lang-flag">
+                        <span data-i18n="quiz_fr">&#x6CD5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
+                    <button class="lang-btn en" onclick="selectLanguage('en')">
+                        <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="&#x7F8E;&#x570B;" class="lang-flag">
+                        <span data-i18n="quiz_en">&#x82F1;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
+                    </button>
+                    <button class="lang-btn zh" onclick="selectLanguage('zh')">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/250px-Flag_of_the_Republic_of_China.svg.png" alt="&#x53F0;&#x7063;" class="lang-flag">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/960px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="&#x4E2D;&#x570B;" class="lang-flag">
+                        <span data-i18n="quiz_zh">&#x4E2D;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
+                    </button>
+                </div>
+                <div class="quiz-tools" id="quiz-tools">
+                    <button class="tool-btn" onclick="showMistakeBook()">&#x1F4D6; <span data-i18n="tool_mistakes">&#x932F;&#x984C;&#x672C;</span> <span id="mistake-badge" class="tool-badge" style="display:none">0</span></button>
+                    <button class="tool-btn" onclick="showQuizStats()">&#x1F4CA; <span data-i18n="tool_stats">&#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></button>
+                    <button class="tool-btn" onclick="showFlashcard()">&#x1F4D6; <span data-i18n="tool_flashcard">&#x55AE;&#x5B57;&#x958C;&#x5361;</span></button>
+                    <button class="tool-btn" onclick="startListeningQuiz()">&#x1F50A; <span data-i18n="tool_listening">&#x807C;&#x529B;&#x6E2C;&#x9A57;</span></button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="flashcard-setup-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 id="flashcard-setup-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
+                <h3 id="fc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
+                <div class="mode-buttons" id="fc-lang-buttons" style="display:none"></div>
+                <h3 id="fc-mode-title" data-i18n="flashcard_mode_title" style="display:none">&#x9078;&#x64C7;&#x986F;&#x793A;&#x6A21;&#x5F0F;</h3>
+                <div class="mode-buttons" id="fc-mode-buttons" style="display:none"></div>
+                <div id="fc-mastered-section" style="display:none; margin-top: 15px; text-align: center;">
+                    <p id="fc-mastered-count" style="margin-bottom: 8px; color: #6ee7b7; font-weight: bold;"></p>
+                    <button class="btn" onclick="showMasteredList()" data-i18n="fc_view_mastered" style="font-size: 0.9em; padding: 6px 16px; background: rgba(110,231,183,0.15); border: 1px solid #6ee7b7; color: #6ee7b7; border-radius: 20px; cursor: pointer;">&#x1F4CB; &#x67E5;&#x770B;&#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeFlashcardSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="mastered-list-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="fc_mastered_title">&#x1F4CB; &#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</h3>
+                <div id="mastered-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeMasteredList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+            </div>
+
+            <div class="mode-card" id="listening-setup-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 id="listening-setup-title" data-i18n="tool_listening">&#x1F50A; &#x807C;&#x529B;&#x6E2C;&#x9A57;</h3>
+                <h3 id="lc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
+                <div class="mode-buttons" id="lc-lang-buttons" style="display:none"></div>
+                <h3 id="lc-mode-title" data-i18n="lc_mode_title" style="display:none">&#x9078;&#x64C7;&#x6A21;&#x5F0F;</h3>
+                <div class="mode-buttons" id="lc-mode-buttons" style="display:none"></div>
+                <h3 data-i18n="answer_lang_title" id="lc-meaning-title" style="display:none">&#x9078;&#x64C7;&#x986F;&#x793A;&#x610F;&#x601D;</h3>
+                <div class="mode-buttons" id="lc-meaning-buttons" style="display:none"></div>
+                <h3 data-i18n="quiz_count_title" id="lc-count-title" style="display:none">&#x9078;&#x64C7;&#x984C;&#x6578;</h3>
+                <div class="mode-buttons" id="lc-count-buttons" style="display:none"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeListeningSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="mistake-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3><span data-i18n="mistake_title">&#x1F4D6; &#x932F;&#x984C;&#x672C;</span></h3>
+                <div id="mistake-content"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeQuizTools()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="stats-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3><span data-i18n="stats_title">&#x1F4CA; &#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></h3>
+                <div id="stats-content"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeQuizTools()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
 
             <div class="setup-card" id="setup-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="setup_title">綁定 Google 試算表</h3>
+                <h3 data-i18n="setup_title">&#x7D50;&#x5408; Google &#x8A66;&#x7B97;&#x8868;</h3>
                 <div class="input-group">
-                    <input type="text" id="sheetUrlInput" data-i18n-placeholder="setup_placeholder" placeholder="貼上 Google Sheet 網址">
-                    <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())" data-i18n="setup_load">載入單字庫</button>
+                    <input type="text" id="sheetUrlInput" data-i18n-placeholder="setup_placeholder" placeholder="&#x8CB6;&#x4E0A; Google Sheet &#x7DB2;&#x5740;">
+                    <button onclick="loadSheetData(document.getElementById('sheetUrlInput').value.trim())" data-i18n="setup_load">&#x8F09;&#x5165;&#x55AE;&#x5B57;&#x5EAB;</button>
                 </div>
                 <p id="status-msg" class="status"></p>
             </div>
@@ -95,30 +217,39 @@
             <div class="mode-card" id="mode-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="mode_title">選擇測驗模式</h3>
+                <h3 data-i18n="mode_title" id="mode-title">&#x9078;&#x64C7;&#x6E2C;&#x9A57;&#x6A21;&#x5F0F;</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
-                <h3 data-i18n="answer_lang_title" id="answer-lang-title" style="display:none">選擇答案語言</h3>
+                <h3 data-i18n="answer_lang_title" id="answer-lang-title" style="display:none">&#x9078;&#x64C7;&#x7B54;&#x6848;&#x8A9E;&#x8A00;</h3>
                 <div class="mode-buttons" id="answer-lang-buttons" style="display:none"></div>
-                <h3 data-i18n="quiz_count_title" id="quiz-count-title">選擇題數</h3>
+                <h3 data-i18n="quiz_count_title" id="quiz-count-title">&#x9078;&#x64C7;&#x984C;&#x6578;</h3>
                 <div class="mode-buttons" id="quiz-count-buttons"></div>
+                <h3 data-i18n="timer_title" id="timer-title" style="display:none">&#x23F1; &#x8A08;&#x6642;&#x6A21;&#x5F0F;</h3>
+                <div class="mode-buttons" id="timer-buttons" style="display:none"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
             </div>
 
             <div id="quiz-card" class="quiz-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <div class="quiz-header">
-                    <span id="question-count" data-i18n="quiz_question">第 0 題</span>
+                    <span id="question-count" data-i18n="quiz_question">&#x7B2C;0 &#x984C;</span>
                     <span id="quiz-mode-label"></span>
-                    <span id="total-words" data-i18n="quiz_words">有效單字: 0</span>
-                    <span id="score-count" data-i18n="quiz_score">得分: 0</span>
-                    <button id="autoSpeakBtn" class="auto-speak-btn speak-active" onclick="toggleAutoSpeak()" title="自動播放發音">&#x1f50a; 語音</button>
+                    <span id="total-words" data-i18n="quiz_words">&#x6709;&#x6548;&#x55AE;&#x5B57;: 0</span>
+                    <span id="score-count" data-i18n="quiz_score">&#x5F97;&#x5206;: 0</span>
+                    <span id="timer-display" class="timer-display" style="display:none;">&#x23F1; 30</span>
+                    <button id="autoSpeakBtn" class="auto-speak-btn speak-active" onclick="toggleAutoSpeak()" title="&#x81EA;&#x52D5;&#x64AD;&#x653E;">&#x1F50A; &#x807D;</button>
+                </div>
+                <div id="timer-bar-container" class="timer-bar-container" style="display:none;">
+                    <div id="timer-bar" class="timer-bar"></div>
                 </div>
 
                 <div class="question-box">
                     <div class="question-deco">&#x2726;</div>
                     <div class="question-row">
-                        <h2 id="word-question">—</h2>
-                        <button id="speakBtn" class="speak-btn" onclick="speakWord()" title="播放發音">&#x1f50a;</button>
+                        <h2 id="word-question"></h2>
+                        <button id="speakBtn" class="speak-btn" onclick="speakWord()" title="&#x64AD;&#x653E;">&#x1F50A;</button>
                     </div>
                     <p id="word-hint" class="hint"></p>
                 </div>
@@ -129,1318 +260,376 @@
                 <div id="feedback" class="feedback"></div>
 
                 <div class="action-buttons">
-                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;" data-i18n="quiz_next">次の問題 &#x2192;</button>
-                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; 返回選擇語言</button>
+                    <button id="nextBtn" class="btn next-btn" onclick="nextQuestion()" style="display: none;" data-i18n="quiz_next">&#x6B21;&#x306E;&#x554F;&#x984C; &#x2192;</button>
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; &#x8FD4;&#x56DE;&#x9078;&#x64C7;&#x8A9E;&#x8A00;</button>
                 </div>
             </div>
 
             <div id="result-card" class="quiz-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="result_title">測驗結果</h3>
+                <h3 data-i18n="result_title">&#x6E2C;&#x9A57;&#x7D50;&#x679C;</h3>
                 <div id="result-summary" class="result-summary"></div>
                 <div id="result-detail" class="result-detail"></div>
                 <div class="action-buttons">
-                    <button class="btn next-btn" onclick="showModeSelection()" data-i18n="quiz_again">&#x2192; 再來一次</button>
-                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; 返回選擇語言</button>
+                    <button class="btn next-btn" onclick="showModeSelection()" data-i18n="quiz_again">&#x1F504; &#x518D;&#x4F86;&#x4E00;&#x6B21;</button>
+                    <button class="btn share-btn" onclick="shareScoreCard()" data-i18n="share_score">&#x1F4F1; &#x5206;&#x4EAB;&#x6210;&#x7E93;</button>
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; &#x8FD4;&#x56DE;&#x9078;&#x64C7;&#x8A9E;&#x8A00;</button>
+                </div>
+            </div>
+
+            <div id="flashcard-card" class="quiz-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
+                <div class="flashcard-container">
+                    <div class="flashcard" id="flashcard" onclick="flipCard()">
+                        <div class="flashcard-front" id="flashcard-front"></div>
+                        <div class="flashcard-back" id="flashcard-back"></div>
+                    </div>
+                </div>
+                <p id="flashcard-hint" class="hint"></p>
+                <div class="flashcard-nav">
+                    <button class="btn back-btn" onclick="flashcardPrev()">&#x25C0;</button>
+                    <span id="flashcard-counter">1 / 1</span>
+                    <button class="btn next-btn" onclick="flashcardNext()">&#x25B6;</button>
+                </div>
+                <div class="flashcard-actions">
+                    <button class="btn flashcard-unknown" onclick="flashcardRate(false)" data-i18n="flashcard_unknown">&#x274C; &#x4E0D;&#x8A8D;&#x8B58;</button>
+                    <button class="btn flashcard-known" onclick="flashcardRate(true)" data-i18n="flashcard_known">&#x2705; &#x5DF2;&#x638C;&#x63E1;</button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="closeFlashcard()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
         </div>
 
         <div id="page-music" style="display: none;">
             <div class="music-tabs">
-                <button class="music-tab active" onclick="switchMusicTab('all', this)" data-i18n="music_all">&#x266B; 所有歌曲</button>
-                <button class="music-tab" onclick="switchMusicTab('cn', this)" data-i18n="music_cn">&#x266B; 中文 / 粵語歌</button>
+                <button class="music-tab active" onclick="switchMusicTab('all', this)" data-i18n="music_all">&#x266B; &#x6240;&#x6709;&#x6B4C;&#x66F2;</button>
+                <button class="music-tab" onclick="switchMusicTab('cn', this)" data-i18n="music_cn">&#x266B; &#x4E2D;&#x6587; / &#x7CA5;&#x8A9E;&#x6B4C;</button>
             </div>
             <div class="music-player">
                 <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
+
         <div id="page-osu" style="display: none;">
             <div class="osu-add-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="osu_title">&#x266B; 新增 Beatmap &#x266B;</h3>
+                <h3 data-i18n="osu_title">&#x266B; &#x65B0;&#x589E; Beatmap &#x266B;</h3>
                 <div class="input-group">
-                    <input type="text" id="osuInput" data-i18n-placeholder="osu_placeholder" placeholder="輸入 ID 或貼上 osu! 網址" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
-                    <button onclick="addOsuBeatmap()" data-i18n="osu_add">新增</button>
+                    <input type="text" id="osuInput" data-i18n-placeholder="osu_placeholder" placeholder="&#x8F38;&#x5165; ID &#x6216;&#x8CB6;&#x4E0A;osu! &#x7DB2;&#x5740;" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
+                    <button onclick="addOsuBeatmap()" data-i18n="osu_add">&#x65B0;&#x589E;</button>
                 </div>
                 <p id="osu-status" class="status"></p>
                 <div class="osu-volume">
                     <span>&#128264;</span>
                     <input type="range" id="osu-volume" min="0" max="1" step="0.05" value="0.4" oninput="osuSetVolume(this.value)">
-                    <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="重新整理所有 Beatmap">&#x21bb;</button>
-                </div>
-                <div class="osu-io-btns">
-                    <button class="osu-io-btn" onclick="exportOsuData()" data-i18n="osu_export">&#x1F4E5; 匯出</button>
-                    <button class="osu-io-btn" onclick="document.getElementById('osu-import-file').click()" data-i18n="osu_import">&#x1F4E4; 匯入</button>
-                    <button class="osu-io-btn" onclick="setupOsuPassword()" data-i18n="osu_password">&#x1F512; 設定密碼</button>
-                    <input type="file" id="osu-import-file" accept=".json" style="display:none" onchange="importOsuData(event)">
+                    <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="&#x66F4;&#x65B0;Beatmap">&#x21bb;</button>
                 </div>
             </div>
 
             <div class="osu-mode-tabs">
-                <button class="osu-tab" onclick="switchOsuTab('favorites', this)" data-i18n="osu_fav">♥ 最愛</button>
-                <button class="osu-tab active" onclick="switchOsuTab('standard', this)">Standard</button>
-                <button class="osu-tab" onclick="switchOsuTab('taiko', this)">Taiko</button>
-                <button class="osu-tab" onclick="switchOsuTab('catch', this)">Catch</button>
-                <button class="osu-tab" onclick="switchOsuTab('mania', this)">Mania</button>
+                <button class="osu-tab" onclick="switchOsuTab('favorites', this)" data-i18n="osu_fav">&#x2665; &#x6700;&#x611B;</button>
+                <button class="osu-tab active" onclick="switchOsuTab('standard', this)">&#x2B55; Standard</button>
+                <button class="osu-tab" onclick="switchOsuTab('taiko', this)">&#x1F941; Taiko</button>
+                <button class="osu-tab" onclick="switchOsuTab('catch', this)">&#x1F34E; Catch</button>
+                <button class="osu-tab" onclick="switchOsuTab('mania', this)">&#x1F3B9; Mania</button>
             </div>
 
             <div id="osu-collection" class="osu-collection"></div>
             <div id="osu-pagination" class="osu-pagination"></div>
         </div>
+
+        <div id="page-about" style="display: none;">
+            <div class="about-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                <h2 class="about-name">Hanabi</h2>
+                <p class="about-tagline" data-i18n="about_tagline"></p>
+
+                <div class="about-section">
+                    <h3 data-i18n="about_langs_title"></h3>
+                    <div class="about-tags">
+                        <span class="about-tag jp" data-i18n="lang_jp"></span>
+                        <span class="about-tag kr" data-i18n="lang_kr"></span>
+                        <span class="about-tag fr" data-i18n="lang_fr"></span>
+                        <span class="about-tag ru" data-i18n="lang_ru"></span>
+                        <span class="about-tag cantonese" data-i18n="lang_cantonese"></span>
+                    </div>
+                </div>
+
+                <div class="about-section">
+                    <h3 data-i18n="about_note_title"></h3>
+                    <p class="about-text" data-i18n="about_note"></p>
+                </div>
+
+                <div class="about-section">
+                    <h3 data-i18n="about_links_title"></h3>
+                    <div class="about-socials">
+                        <a class="about-social-link osu" href="https://osu.ppy.sh/users/26696007" target="_blank">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Osu%21_Logo_2016.svg/1280px-Osu%21_Logo_2016.svg.png" alt="osu!" class="social-icon-osu">
+                            <span>osu!</span>
+                        </a>
+                        <a class="about-social-link youtube" href="https://www.youtube.com/@Reon-sd9wq" target="_blank">
+                            <span class="social-icon-text yt">YT</span>
+                            <span>YouTube</span>
+                        </a>
+                        <a class="about-social-link twitch" href="https://www.twitch.tv/hanabirn" target="_blank">
+                            <span class="social-icon-text tw">TW</span>
+                            <span>Twitch</span>
+                        </a>
+                        <a class="about-social-link facebook" href="https://www.facebook.com/chen.shi.hen.2025" target="_blank">
+                            <span class="social-icon-text fb">f</span>
+                            <span>Facebook</span>
+                        </a>
+                        <a class="about-social-link instagram" href="https://www.instagram.com/hanabi_618771/" target="_blank">
+                            <span class="social-icon-text ig">IG</span>
+                            <span>Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="osu-profile-card" id="osu-profile-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="osu-profile-header">
+                    <img id="osu-avatar" class="osu-avatar" src="" alt="avatar">
+                    <div class="osu-profile-info">
+                        <div class="osu-profile-name" id="osu-profile-name"></div>
+                        <div class="osu-profile-country" id="osu-profile-country"></div>
+                    </div>
+                </div>
+                <div class="osu-mode-tabs" id="osu-mode-tabs">
+                    <button class="osu-mode-tab active" data-mode="0">&#x2B55; Standard</button>
+                    <button class="osu-mode-tab" data-mode="1">&#x1F941; Taiko</button>
+                    <button class="osu-mode-tab" data-mode="2">&#x1F34E; Catch</button>
+                    <button class="osu-mode-tab" data-mode="3">&#x1F3B9; Mania</button>
+                </div>
+                <div class="osu-profile-stats" id="osu-profile-stats">
+                    <div class="osu-stat">
+                        <div class="osu-stat-value" id="osu-rank">#—</div>
+                        <div class="osu-stat-label" data-i18n="osu_stat_global">&#x5168;&#x7403;&#x6392;&#x540D;</div>
+                    </div>
+                    <div class="osu-stat">
+                        <div class="osu-stat-value" id="osu-pp">—</div>
+                        <div class="osu-stat-label">pp</div>
+                    </div>
+                    <div class="osu-stat">
+                        <div class="osu-stat-value" id="osu-accuracy">—</div>
+                        <div class="osu-stat-label" data-i18n="osu_stat_accuracy">&#x6E96;&#x78BA;&#x7387;</div>
+                    </div>
+                    <div class="osu-stat">
+                        <div class="osu-stat-value" id="osu-playcount">—</div>
+                        <div class="osu-stat-label" data-i18n="osu_stat_playcount">&#x6E38;&#x620F;&#x6578;</div>
+                    </div>
+                </div>
+                <div class="osu-total-pp" id="osu-total-pp" style="display:none;">
+                    <span data-i18n="osu_total_pp">&#x5168;&#x6A21;&#x5F0F; PP</span>
+                    <span class="osu-total-pp-value" id="osu-total-pp-value">—</span>
+                </div>
+            </div>
+
+            <div class="visitor-lookup-card" id="visitor-lookup-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="visitor_lookup_title">✦ 查詢你的 osu! PP ✦</h3>
+                <div class="visitor-lookup-input-row">
+                    <input type="text" id="visitor-lookup-input" data-i18n-placeholder="visitor_lookup_placeholder" placeholder="輸入 osu! 用戶名或 ID" class="guestbook-input">
+                    <button class="btn next-btn" onclick="lookupVisitorProfile()" data-i18n="visitor_lookup_btn">查詢</button>
+                </div>
+                <div id="visitor-lookup-status" class="status"></div>
+                <div id="visitor-lookup-result" style="display:none;">
+                    <div class="visitor-result-header">
+                        <img id="visitor-avatar" class="osu-avatar" src="" alt="avatar" style="width:48px;height:48px;">
+                        <div>
+                            <div class="visitor-result-name" id="visitor-result-name"></div>
+                            <div class="visitor-result-country" id="visitor-result-country"></div>
+                        </div>
+                    </div>
+                    <div class="visitor-modes-grid" id="visitor-modes-grid"></div>
+                    <div class="osu-total-pp" id="visitor-total-pp">
+                        <span data-i18n="osu_total_pp">全模式 PP</span>
+                        <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-guestbook" style="display: none;">
+            <div class="guestbook-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="guestbook_title">&#x7559;&#x8A00;&#x677F;</h3>
+                <form class="guestbook-form" onsubmit="return handleGuestbookSubmit(event)">
+                    <div class="guestbook-input-row">
+                        <input type="text" name="name" data-i18n-placeholder="guestbook_name" placeholder="&#x4F60;&#x7684;&#x540D;&#x5B57;" required class="guestbook-input">
+                        <input type="text" name="message" data-i18n-placeholder="guestbook_message" placeholder="&#x7559;&#x4E0B;&#x4F60;&#x7684;&#x8A00;&#x8A9E;..." required class="guestbook-input guestbook-msg">
+                        <button type="submit" class="btn next-btn guestbook-submit" data-i18n="guestbook_send">&#x9001;&#x51FA;</button>
+                    </div>
+                </form>
+                <div id="guestbook-success" class="guestbook-success" style="display:none;" data-i18n="guestbook_success">&#x611F;&#x8B1D;&#x4F60;&#x7684;&#x7559;&#x8A00; &#x2726;</div>
+                <div id="guestbook-local" class="guestbook-local"></div>
+            </div>
+        </div>
+
+        <div id="page-guide">
+            <div class="guide-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="guide_title">✦ 教學手冊 ✦</h3>
+
+                <div class="guide-grid" id="guide-grid">
+                    <div class="guide-section" data-page="1">
+                        <div class="guide-icon">🌐</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_lang_title">切換語言</h4>
+                            <p data-i18n="guide_lang_desc">頁面頂部有8種語言的切換按鈕，可以隨時切換網站顯示語言。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="1">
+                        <div class="guide-icon">📝</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_quiz_title">單字測驗</h4>
+                            <p data-i18n="guide_quiz_desc">支援日文、韓文、法文、英文、中文五種單字測驗。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="1">
+                        <div class="guide-icon">📖</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_mistake_title">錯題本</h4>
+                            <p data-i18n="guide_mistake_desc">答錯的單字會自動記錄，可以專門複習。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="1">
+                        <div class="guide-icon">📊</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_stats_title">測驗統計</h4>
+                            <p data-i18n="guide_stats_desc">自動記錄每次測驗成績，顯示進步曲線。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="2">
+                        <div class="guide-icon">🎵</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_music_title">音樂收藏</h4>
+                            <p data-i18n="guide_music_desc">內嵌 Spotify 播放器，可切換「所有歌曲」和「中文/粵語歌」兩個播放清單。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="2">
+                        <div class="guide-icon">🎮</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_osu_title">osu! 收藏</h4>
+                            <p data-i18n="guide_osu_desc">輸入 Beatmap ID 或貼上 osu! 網址即可收藏。支援 Standard/Taiko/Catch/Mania 四種模式分類。點擊 ♡ 加入最愛，點擊 🎧 試聽，點擊 📋 複製 ID。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="2">
+                        <div class="guide-icon">👤</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_about_title">關於我 + PP 查詢</h4>
+                            <p data-i18n="guide_about_desc">顯示個人介紹和社群連結。底部的 osu! Profile Card 會自動載入個人數據。任何人也可以輸入自己的 osu! 用戶名或 ID 查詢四種模式的 PP 和總和。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="2">
+                        <div class="guide-icon">💬</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_guestbook_title">留言板</h4>
+                            <p data-i18n="guide_guestbook_desc">歡迎留下你的言語！留言會儲存在 Google 試算表中，所有訪客都能看到。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
+                        <div class="guide-icon">🌸</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_season_title">季節特效</h4>
+                            <p data-i18n="guide_season_desc">右下角的按鈕可以切換春（樱花）、夏（萤火虫）、秋（枫叶）、冬（雪花）四種背景特效。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
+                        <div class="guide-icon">💿</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_bgm_title">BGM 唱片機</h4>
+                            <p data-i18n="guide_bgm_desc">左下角的黑膠唱片可以播放 lo-fi 背景音樂。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
+                        <div class="guide-icon">🕐</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_clock_title">時鐘＆天氣</h4>
+                            <p data-i18n="guide_clock_desc">右下角顯示即時時間、日期和你所在地的天氣。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
+                        <div class="guide-icon">✨</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_fx_title">互動特效</h4>
+                            <p data-i18n="guide_fx_desc">點擊網頁任意處會爆出櫻花星星粒子特效。</p>
+                </div>
+            </div>
+
+        </div>
+
+                <div class="guide-pagination" id="guide-pagination">
+                    <button class="guide-page-btn" id="guide-prev" onclick="guidePage(-1)" data-i18n="guide_prev">◀ 上一頁</button>
+                    <span class="guide-page-info" id="guide-page-info">1 / 3</span>
+                    <button class="guide-page-btn" id="guide-next" onclick="guidePage(1)" data-i18n="guide_next">下一頁 ▶</button>
+                </div>
+            </div>
+        </div>
     </main>
+
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
+    <button class="season-btn" id="season-btn" onclick="cycleSeason()" title="&#x5207;&#x63DB;&#x5B63;&#x7BC0;"></button>
+
+    <div class="bgm-player" id="bgm-player">
+        <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="BGM"></button>
+        <div class="bgm-panel" id="bgm-panel">
+            <div class="bgm-track-name" id="bgm-track-name">&#x266A; BGM</div>
+            <div class="bgm-controls">
+                <button onclick="bgmPrev()" title="Prev">&#x23EE;</button>
+                <button onclick="toggleBgm()" id="bgm-play-btn" title="Play/Pause">&#x25B6;</button>
+                <button onclick="bgmNext()" title="Next">&#x23ED;</button>
+            </div>
+            <input type="range" id="bgm-volume" min="0" max="100" value="40" oninput="setBgmVolume(this.value)" title="Volume">
+        </div>
+    </div>
+
+    <div class="clock-widget" id="clock-widget">
+        <div class="clock-time" id="clock-time">--:--:--</div>
+        <div class="clock-date" id="clock-date"></div>
+        <div class="clock-weather" id="clock-weather"></div>
+    </div>
 
     <footer>
         <div class="footer-sakura">&#x273F;</div>
-        <p>2026 Hanabi的小天地</p>
+        <p>2026 Hanabi&#x306E;&#x5C0F;&#x5929;&#x5730; | &#x1F50D; <span id="visitor-count">...</span> &#x6B21;&#x8A2A;&#x554F;</p>
     </footer>
 
+    <script src="js/theme.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
-
+    <script src="js/i18n.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/osu.js"></script>
+    <script src="js/seasons.js"></script>
+    <script src="js/guestbook.js"></script>
+    <script src="js/widgets.js"></script>
     <script>
-        /* ===== i18n ===== */
-        const I18N = {
-            zh: {
-                title: 'Hanabi的小天地', subtitle: '持續學習朝著自己的夢想前進吧 !',
-                nav_quiz: '單字測驗', nav_music: '音樂收藏', nav_osu: 'osu! 收藏',
-                select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗', quiz_fr: '法文單字測驗',
-                setup_title: '綁定 Google 試算表', setup_placeholder: '貼上 Google Sheet 網址', setup_load: '載入單字庫',
-                mode_title: '選擇測驗模式',
-                quiz_question: '第 {n} 題', quiz_words: '有效單字: {n}', quiz_score: '得分: {n}',
-                quiz_next: '次の問題 →', quiz_back: '← 返回選擇語言',
-                music_all: '♫ 所有歌曲', music_cn: '♫ 中文 / 粵語歌',
-                osu_title: '♫ 新增 Beatmap ♫', osu_placeholder: '輸入 ID 或貼上 osu! 網址', osu_add: '新增',
-                osu_export: '📥 匯出', osu_import: '📤 匯入', osu_password: '🔒 設定密碼',
-                osu_fav: '♥ 最愛', osu_empty_collection: '還沒有收藏的 Beatmap', osu_empty_hint: '在上方輸入 Beatmap ID 開始收藏！',
-                osu_empty_fav: '還沒有最愛的歌曲', osu_empty_fav_hint: '在其他分類中點擊 ♥ 加入最愛！',
-                osu_searching: '搜尋中...', osu_not_found: '找不到該 Beatmap，請確認 ID 或網址是否正確',
-                osu_input_error: '請輸入 Beatmap ID、Set ID 或 osu! 網址',
-                osu_already_exists: '「{n}」已在收藏庫中', osu_added: '已新增「{n}」至 {m}（{k} 個難度）',
-                osu_refreshing: '重新整理中...', osu_refresh_done: '已更新 {n} 首 Beatmap', osu_refresh_fail: '重新整理失敗',
-                osu_password_prompt: '請輸入密碼以進行修改：', osu_password_wrong: '密碼錯誤！',
-                osu_set_password: '請設定 osu! 收藏庫密碼（留空則不設定密碼保護）：',
-                osu_confirm_password: '請再次輸入密碼確認：', osu_password_mismatch: '兩次密碼不一致，設定取消',
-                osu_password_set: '密碼設定成功！', osu_import_success: '匯入成功！', osu_import_fail: '匯入失敗，檔案格式不正確',
-                osu_export_done: '已匯出 osu_backup.json', osu_copied: '已複製！', mapped_by: 'mapped by {n}',
-                mode_jp_meaning: '日文 → 選中文意思', mode_kr_meaning: '韓文 → 選中文意思', mode_fr_meaning: '法文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
-                correct: '正解！', wrong: '不正解... 正確答案是：',
-                load_success: '成功讀取 {n} 個有效單字', load_with_reading: '（含讀法: {n} 個）',
-                invalid_url: '請輸入正確的 Google Sheet 網址！',
-                quiz_count_title: '選擇題數', quiz_count_10: '10 題', quiz_count_20: '20 題', quiz_count_30: '30 題', quiz_count_all: '不限',
-                mode_title_label: '模式', count_label: '題數', result_title: '測驗結果',
-                result_correct: '答對', result_wrong: '答錯', result_score: '總分', result_out_of: '題',
-                quiz_again: '🔄 再來一次',
-                result_question: '第 {n} 題', result_your_answer: '你的答案', result_correct_answer: '正確答案',
-                answer_lang_title: '選擇答案語言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
-            },
-            en: {
-                title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
-                nav_quiz: 'Vocabulary Quiz', nav_music: 'Music Collection', nav_osu: 'osu! Collection',
-                select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz',
-                setup_title: 'Google Sheet Setup', setup_placeholder: 'Paste Google Sheet URL', setup_load: 'Load Vocabulary',
-                mode_title: 'Select Quiz Mode',
-                quiz_question: 'Question {n}', quiz_words: 'Words: {n}', quiz_score: 'Score: {n}',
-                quiz_next: 'Next →', quiz_back: '← Back',
-                music_all: '♫ All Songs', music_cn: '♫ Chinese / Cantonese',
-                osu_title: '♫ Add Beatmap ♫', osu_placeholder: 'Enter ID or paste osu! URL', osu_add: 'Add',
-                osu_export: '📥 Export', osu_import: '📤 Import', osu_password: '🔒 Set Password',
-                osu_fav: '♥ Favorites', osu_empty_collection: 'No beatmaps yet', osu_empty_hint: 'Enter a Beatmap ID above to start!',
-                osu_empty_fav: 'No favorites yet', osu_empty_fav_hint: 'Click ♥ on beatmaps to add favorites!',
-                osu_searching: 'Searching...', osu_not_found: 'Beatmap not found. Please check the ID or URL.',
-                osu_input_error: 'Enter a Beatmap ID, Set ID, or osu! URL',
-                osu_already_exists: '"{n}" is already in your collection', osu_added: 'Added "{n}" to {m} ({k} difficulties)',
-                osu_refreshing: 'Refreshing...', osu_refresh_done: 'Updated {n} beatmaps', osu_refresh_fail: 'Refresh failed',
-                osu_password_prompt: 'Enter password to modify:', osu_password_wrong: 'Wrong password!',
-                osu_set_password: 'Set osu! collection password (leave empty for no protection):',
-                osu_confirm_password: 'Confirm password:', osu_password_mismatch: 'Passwords do not match. Cancelled.',
-                osu_password_set: 'Password set successfully!', osu_import_success: 'Import successful!', osu_import_fail: 'Import failed. Invalid file format.',
-                osu_export_done: 'Exported osu_backup.json', osu_copied: 'Copied!', mapped_by: 'mapped by {n}',
-                mode_jp_meaning: 'Japanese → Choose Meaning', mode_kr_meaning: 'Korean → Choose Meaning', mode_fr_meaning: 'French → Choose Meaning', mode_jp_reading: 'Japanese → Choose Reading', mode_both: 'Mixed Random',
-                correct: 'Correct!', wrong: 'Wrong... The answer was: ',
-                load_success: 'Loaded {n} valid words', load_with_reading: ' (including {n} readings)',
-                invalid_url: 'Please enter a valid Google Sheet URL!',
-                quiz_count_title: 'Number of Questions', quiz_count_10: '10 Questions', quiz_count_20: '20 Questions', quiz_count_30: '30 Questions', quiz_count_all: 'No Limit',
-                mode_title_label: 'Mode', count_label: 'Count', result_title: 'Quiz Results',
-                result_correct: 'Correct', result_wrong: 'Wrong', result_score: 'Score', result_out_of: 'questions',
-                quiz_again: '🔄 Try Again',
-                result_question: 'Question {n}', result_your_answer: 'Your Answer', result_correct_answer: 'Correct Answer',
-                answer_lang_title: 'Select Answer Language', answer_lang_zh: '🇨🇳 Chinese', answer_lang_en: '🇺🇸 English',
-            },
-            ja: {
-                title: 'Hanabi の 小天地', subtitle: '学び続け、自分の夢に向かって進もう！',
-                nav_quiz: '単語テスト', nav_music: '音楽コレクション', nav_osu: 'osu! コレクション',
-                select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト', quiz_fr: 'フランス語テスト',
-                setup_title: 'Googleスプレッドシート設定', setup_placeholder: 'Google Sheet URLを貼り付け', setup_load: '単語を読み込む',
-                mode_title: 'テストモードを選択',
-                quiz_question: '第{n}問', quiz_words: '単語数: {n}', quiz_score: 'スコア: {n}',
-                quiz_next: '次の問題 →', quiz_back: '← 戻る',
-                music_all: '♫ 全曲', music_cn: '♫ 中国語 / 広東語',
-                osu_title: '♫ ビートマップ追加 ♫', osu_placeholder: 'IDまたはURLを入力', osu_add: '追加',
-                osu_export: '📥 エクスポート', osu_import: '📤 インポート', osu_password: '🔒 パスワード設定',
-                osu_fav: '♥ お気に入り', osu_empty_collection: 'まだビートマップがありません', osu_empty_hint: '上にIDを入力して始めましょう！',
-                osu_empty_fav: 'お気に入りはまだありません', osu_empty_fav_hint: '♥をクリックしてお気に入りに追加！',
-                osu_searching: '検索中...', osu_not_found: 'ビートマップが見つかりません',
-                osu_input_error: 'IDまたはURLを入力してください',
-                osu_already_exists: '「{n}」は既にコレクションにあります', osu_added: '「{n}」を{m}に追加（{k}難易度）',
-                osu_refreshing: '更新中...', osu_refresh_done: '{n}曲を更新', osu_refresh_fail: '更新失敗',
-                osu_password_prompt: '変更するパスワードを入力：', osu_password_wrong: 'パスワードが間違っています！',
-                osu_set_password: 'パスワードを設定（空で保護なし）：',
-                osu_confirm_password: 'パスワードを再入力：', osu_password_mismatch: 'パスワードが一致しません',
-                osu_password_set: 'パスワード設定完了！', osu_import_success: 'インポート成功！', osu_import_fail: 'ファイル形式が正しくありません',
-                osu_export_done: 'osu_backup.jsonをエクスポート', osu_copied: 'コピーしました！', mapped_by: '譜面: {n}',
-                mode_jp_meaning: '日本語 → 意味を選択', mode_kr_meaning: '韓国語 → 意味を選択', mode_fr_meaning: 'フランス語 → 意味を選択', mode_jp_reading: '日本語 → 読み方を選択', mode_both: 'ランダム混合',
-                correct: '正解！', wrong: '不正解... 正解は：',
-                load_success: '{n}個の有効な単語を読み込みました', load_with_reading: '（読み方含む: {n}個）',
-                invalid_url: '正しいGoogle SheetのURLを入力してください！',
-                quiz_count_title: '問題数を選択', quiz_count_10: '10 問', quiz_count_20: '20 問', quiz_count_30: '30 問', quiz_count_all: '無制限',
-                mode_title_label: 'モード', count_label: '問題数', result_title: 'クイズ結果',
-                result_correct: '正解', result_wrong: '不正解', result_score: 'スコア', result_out_of: '問',
-                quiz_again: '🔄 もう一度',
-                result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
-                answer_lang_title: '回答言語を選択', answer_lang_zh: '🇨🇳 中国語', answer_lang_en: '🇺🇸 English',
-            },
-            ko: {
-                title: 'Hanabi 의 작은 세계', subtitle: '배우고 또 배워서 자신의 꿈을 향해 나아가자!',
-                nav_quiz: '단어 퀴즈', nav_music: '음악 컬렉션', nav_osu: 'osu! 컬렉션',
-                select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈',
-                setup_title: 'Google 스프레드시트 설정', setup_placeholder: 'Google Sheet URL 붙여넣기', setup_load: '단어 로드',
-                mode_title: '퀴즈 모드 선택',
-                quiz_question: '제 {n}문제', quiz_words: '단어: {n}', quiz_score: '점수: {n}',
-                quiz_next: '다음 →', quiz_back: '← 뒤로',
-                music_all: '♫ 전체 곡', music_cn: '♫ 중국어 / 광동어',
-                osu_title: '♫ 비트맵 추가 ♫', osu_placeholder: 'ID 또는 URL 입력', osu_add: '추가',
-                osu_export: '📥 내보내기', osu_import: '📤 가져오기', osu_password: '🔒 비밀번호 설정',
-                osu_fav: '♥ 즐겨찾기', osu_empty_collection: '비트맵이 없습니다', osu_empty_hint: '위에 ID를 입력하세요!',
-                osu_empty_fav: '즐겨찾기가 없습니다', osu_empty_fav_hint: '♥를 눌러 즐겨찾기에 추가!',
-                osu_searching: '검색 중...', osu_not_found: '비트맵을 찾을 수 없습니다',
-                osu_input_error: 'ID 또는 URL을 입력하세요',
-                osu_already_exists: '"{n}"이(가) 이미 컬렉션에 있습니다', osu_added: '"{n}"을(를) {m}에 추가 ({k}개 난이도)',
-                osu_refreshing: '새로고침 중...', osu_refresh_done: '{n}개 비트맵 업데이트', osu_refresh_fail: '새로고침 실패',
-                osu_password_prompt: '수정하려면 비밀번호 입력:', osu_password_wrong: '비밀번호가 틀렸습니다!',
-                osu_set_password: '비밀번호 설정 (비워두면 보호 없음):',
-                osu_confirm_password: '비밀번호 확인:', osu_password_mismatch: '비밀번호가 일치하지 않습니다',
-                osu_password_set: '비밀번호 설정 완료!', osu_import_success: '가져오기 성공!', osu_import_fail: '파일 형식이 올바르지 않습니다',
-                osu_export_done: 'osu_backup.json 내보냄', osu_copied: '복사됨!', mapped_by: '매핑: {n}',
-                mode_jp_meaning: '일본어 → 뜻 선택', mode_kr_meaning: '한국어 → 뜻 선택', mode_fr_meaning: '프랑스어 → 뜻 선택', mode_jp_reading: '일본어 → 읽기 선택', mode_both: '랜덤 혼합',
-                correct: '정답!', wrong: '오답... 정답은: ',
-                load_success: '{n}개의 유효한 단어를 불러왔습니다', load_with_reading: ' (읽기 포함: {n}개)',
-                invalid_url: '올바른 Google Sheet URL을 입력하세요!',
-                quiz_count_title: '문제 수 선택', quiz_count_10: '10 문제', quiz_count_20: '20 문제', quiz_count_30: '30 문제', quiz_count_all: '제한 없음',
-                mode_title_label: '모드', count_label: '문제 수', result_title: '퀴즈 결과',
-                result_correct: '정답', result_wrong: '오답', result_score: '점수', result_out_of: '문제',
-                quiz_again: '🔄 다시 하기',
-                result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
-                answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',
-            },
-            ru: {
-                title: 'Hanabi の 小天地', subtitle: 'Учись и иди к своей мечте!',
-                nav_quiz: 'Тест на слова', nav_music: 'Музыка', nav_osu: 'osu! Коллекция',
-                select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест',
-                setup_title: 'Настройка Google Таблицы', setup_placeholder: 'Вставьте URL Google Sheet', setup_load: 'Загрузить слова',
-                mode_title: 'Режим теста',
-                quiz_question: 'Вопрос {n}', quiz_words: 'Слов: {n}', quiz_score: 'Счёт: {n}',
-                quiz_next: 'Далее →', quiz_back: '← Назад',
-                music_all: '♫ Все песни', music_cn: '♫ Китайский / Кантонский',
-                osu_title: '♫ Добавить битмап ♫', osu_placeholder: 'Введите ID или URL', osu_add: 'Добавить',
-                osu_export: '📥 Экспорт', osu_import: '📤 Импорт', osu_password: '🔒 Пароль',
-                osu_fav: '♥ Избранное', osu_empty_collection: 'Битмапов пока нет', osu_empty_hint: 'Введите ID выше!',
-                osu_empty_fav: 'Избранных пока нет', osu_empty_fav_hint: 'Нажмите ♥ чтобы добавить!',
-                osu_searching: 'Поиск...', osu_not_found: 'Битмап не найден',
-                osu_input_error: 'Введите ID или URL',
-                osu_already_exists: '"{n}" уже в коллекции', osu_added: 'Добавлен "{n}" в {m} ({k} сложностей)',
-                osu_refreshing: 'Обновление...', osu_refresh_done: 'Обновлено {n} битмапов', osu_refresh_fail: 'Ошибка обновления',
-                osu_password_prompt: 'Введите пароль:', osu_password_wrong: 'Неверный пароль!',
-                osu_set_password: 'Установите пароль (пусто = без защиты):',
-                osu_confirm_password: 'Подтвердите пароль:', osu_password_mismatch: 'Пароли не совпадают',
-                osu_password_set: 'Пароль установлен!', osu_import_success: 'Импорт удался!', osu_import_fail: 'Неверный формат файла',
-                osu_export_done: 'osu_backup.json экспортирован', osu_copied: 'Скопировано!', mapped_by: 'автор: {n}',
-                mode_jp_meaning: 'Японский → Выбрать перевод', mode_kr_meaning: 'Корейский → Выбрать перевод', mode_fr_meaning: 'Французский → Выбрать перевод', mode_jp_reading: 'Японский → Выбрать чтение', mode_both: 'Случайный микс',
-                correct: 'Правильно!', wrong: 'Неверно... Правильный ответ: ',
-                load_success: 'Загружено {n} слов', load_with_reading: ' (включая {n} чтений)',
-                invalid_url: 'Введите корректный URL Google Таблицы!',
-                quiz_count_title: 'Количество вопросов', quiz_count_10: '10 вопросов', quiz_count_20: '20 вопросов', quiz_count_30: '30 вопросов', quiz_count_all: 'Без ограничений',
-                mode_title_label: 'Режим', count_label: 'Кол-во', result_title: 'Результаты',
-                result_correct: 'Верно', result_wrong: 'Неверно', result_score: 'Очки', result_out_of: 'вопросов',
-                quiz_again: '🔄 Ещё раз',
-                result_question: 'Вопрос {n}', result_your_answer: 'Ваш ответ', result_correct_answer: 'Правильный ответ',
-                answer_lang_title: 'Язык ответа', answer_lang_zh: '🇨🇳 Китайский', answer_lang_en: '🇺🇸 English',
-            },
-            fr: {
-                title: "Hanabi の 小天地", subtitle: 'Continue d\'apprendre et poursuis tes rêves !',
-                nav_quiz: 'Quiz Vocabulaire', nav_music: 'Musique', nav_osu: 'Collection osu!',
-                select_lang: '✦ Langue ✦', quiz_jp: 'Quiz Japonais', quiz_kr: 'Quiz Coréen', quiz_fr: 'Quiz Français',
-                setup_title: 'Google Sheet', setup_placeholder: 'Collez l\'URL Google Sheet', setup_load: 'Charger',
-                mode_title: 'Mode de quiz',
-                quiz_question: 'Question {n}', quiz_words: 'Mots: {n}', quiz_score: 'Score: {n}',
-                quiz_next: 'Suivant →', quiz_back: '← Retour',
-                music_all: '♫ Toutes', music_cn: '♫ Chinois / Cantonais',
-                osu_title: '♫ Ajouter Beatmap ♫', osu_placeholder: 'Entrez ID ou URL', osu_add: 'Ajouter',
-                osu_export: '📥 Exporter', osu_import: '📤 Importer', osu_password: '🔒 Mot de passe',
-                osu_fav: '♥ Favoris', osu_empty_collection: 'Pas encore de beatmaps', osu_empty_hint: 'Entrez un ID ci-dessus!',
-                osu_empty_fav: 'Pas encore de favoris', osu_empty_fav_hint: 'Cliquez ♥ pour ajouter!',
-                osu_searching: 'Recherche...', osu_not_found: 'Beatmap introuvable',
-                osu_input_error: 'Entrez un ID ou URL',
-                osu_already_exists: '"{n}" est déjà dans la collection', osu_added: 'Ajouté "{n}" à {m} ({k} difficultés)',
-                osu_refreshing: 'Actualisation...', osu_refresh_done: '{n} beatmaps mis à jour', osu_refresh_fail: 'Échec',
-                osu_password_prompt: 'Mot de passe:', osu_password_wrong: 'Mot de passe incorrect!',
-                osu_set_password: 'Définir un mot de passe (vide = pas de protection):',
-                osu_confirm_password: 'Confirmez:', osu_password_mismatch: 'Les mots de passe ne correspondent pas',
-                osu_password_set: 'Mot de passe défini!', osu_import_success: 'Import réussi!', osu_import_fail: 'Format de fichier invalide',
-                osu_export_done: 'osu_backup.json exporté', osu_copied: 'Copié!', mapped_by: 'par {n}',
-                mode_jp_meaning: 'Japonais → Choisir la signification', mode_kr_meaning: 'Coréen → Choisir la signification', mode_fr_meaning: 'Français → Choisir la signification', mode_jp_reading: 'Japonais → Choisir la lecture', mode_both: 'Mixte aléatoire',
-                correct: 'Correct !', wrong: 'Faux... La réponse était : ',
-                load_success: '{n} mots valides chargés', load_with_reading: ' (dont {n} lectures)',
-                invalid_url: 'Veuillez entrer une URL Google Sheet valide !',
-                quiz_count_title: 'Nombre de questions', quiz_count_10: '10 questions', quiz_count_20: '20 questions', quiz_count_30: '30 questions', quiz_count_all: 'Illimité',
-                mode_title_label: 'Mode', count_label: 'Nombre', result_title: 'Résultats',
-                result_correct: 'Correct', result_wrong: 'Faux', result_score: 'Score', result_out_of: 'questions',
-                quiz_again: '🔄 Réessayer',
-                result_question: 'Question {n}', result_your_answer: 'Votre réponse', result_correct_answer: 'Bonne réponse',
-                answer_lang_title: 'Langue de réponse', answer_lang_zh: '🇨🇳 Chinois', answer_lang_en: '🇺🇸 English',
-            },
-            es: {
-                title: "Hanabi の 小天地", subtitle: '¡Sigue aprendiendo y camina hacia tus sueños!',
-                nav_quiz: 'Quiz Vocabulario', nav_music: 'Música', nav_osu: 'Colección osu!',
-                select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés',
-                setup_title: 'Google Sheet', setup_placeholder: 'Pegue URL de Google Sheet', setup_load: 'Cargar',
-                mode_title: 'Modo de quiz',
-                quiz_question: 'Pregunta {n}', quiz_words: 'Palabras: {n}', quiz_score: 'Puntos: {n}',
-                quiz_next: 'Siguiente →', quiz_back: '← Volver',
-                music_all: '♫ Todas', music_cn: '♫ Chino / Cantón',
-                osu_title: '♫ Añadir Beatmap ♫', osu_placeholder: 'Ingrese ID o URL', osu_add: 'Añadir',
-                osu_export: '📥 Exportar', osu_import: '📤 Importar', osu_password: '🔒 Contraseña',
-                osu_fav: '♥ Favoritos', osu_empty_collection: 'Aún no hay beatmaps', osu_empty_hint: 'Ingrese un ID arriba!',
-                osu_empty_fav: 'Aún no hay favoritos', osu_empty_fav_hint: '¡Haga clic en ♥ para agregar!',
-                osu_searching: 'Buscando...', osu_not_found: 'Beatmap no encontrado',
-                osu_input_error: 'Ingrese un ID o URL',
-                osu_already_exists: '"{n}" ya está en la colección', osu_added: 'Añadido "{n}" a {m} ({k} dificultades)',
-                osu_refreshing: 'Actualizando...', osu_refresh_done: '{n} beatmaps actualizados', osu_refresh_fail: 'Error al actualizar',
-                osu_password_prompt: 'Contraseña:', osu_password_wrong: '¡Contraseña incorrecta!',
-                osu_set_password: 'Establecer contraseña (vacío = sin protección):',
-                osu_confirm_password: 'Confirme:', osu_password_mismatch: 'Las contraseñas no coinciden',
-                osu_password_set: '¡Contraseña establecida!', osu_import_success: '¡Importación exitosa!', osu_import_fail: 'Formato de archivo inválido',
-                osu_export_done: 'osu_backup.json exportado', osu_copied: '¡Copiado!', mapped_by: 'por {n}',
-                mode_jp_meaning: 'Japonés → Elegir significado', mode_kr_meaning: 'Coreano → Elegir significado', mode_fr_meaning: 'Francés → Elegir significado', mode_jp_reading: 'Japonés → Elegir lectura', mode_both: 'Mixto aleatorio',
-                correct: '¡Correcto!', wrong: 'Incorrecto... La respuesta era: ',
-                load_success: '{n} palabras válidas cargadas', load_with_reading: ' (incluyendo {n} lecturas)',
-                invalid_url: '¡Ingrese una URL válida de Google Sheet!',
-                quiz_count_title: 'Número de preguntas', quiz_count_10: '10 preguntas', quiz_count_20: '20 preguntas', quiz_count_30: '30 preguntas', quiz_count_all: 'Sin límite',
-                mode_title_label: 'Modo', count_label: 'Cantidad', result_title: 'Resultados',
-                result_correct: 'Correctas', result_wrong: 'Incorrectas', result_score: 'Puntos', result_out_of: 'preguntas',
-                quiz_again: '🔄 Intentar de nuevo',
-                result_question: 'Pregunta {n}', result_your_answer: 'Tu respuesta', result_correct_answer: 'Respuesta correcta',
-                answer_lang_title: 'Idioma de respuesta', answer_lang_zh: '🇨🇳 Chino', answer_lang_en: '🇺🇸 English',
-            },
-            de: {
-                title: "Hanabi の 小天地", subtitle: 'Lerne weiter und gehe auf deine Träume zu!',
-                nav_quiz: 'Vokabel-Quiz', nav_music: 'Musik', nav_osu: 'osu! Sammlung',
-                select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz',
-                setup_title: 'Google Tabelle', setup_placeholder: 'Google Sheet URL einfügen', setup_load: 'Laden',
-                mode_title: 'Quiz-Modus',
-                quiz_question: 'Frage {n}', quiz_words: 'Wörter: {n}', quiz_score: 'Punkte: {n}',
-                quiz_next: 'Weiter →', quiz_back: '← Zurück',
-                music_all: '♫ Alle', music_cn: '♫ Chinesisch / Kantonesisch',
-                osu_title: '♫ Beatmap hinzufügen ♫', osu_placeholder: 'ID oder URL eingeben', osu_add: 'Hinzufügen',
-                osu_export: '📥 Exportieren', osu_import: '📤 Importieren', osu_password: '🔒 Passwort',
-                osu_fav: '♥ Favoriten', osu_empty_collection: 'Noch keine Beatmaps', osu_empty_hint: 'ID oben eingeben!',
-                osu_empty_fav: 'Noch keine Favoriten', osu_empty_fav_hint: 'Klicken Sie ♥ um hinzuzufügen!',
-                osu_searching: 'Suche...', osu_not_found: 'Beatmap nicht gefunden',
-                osu_input_error: 'ID oder URL eingeben',
-                osu_already_exists: '"{n}" ist bereits in der Sammlung', osu_added: '"{n}" zu {m} hinzugefügt ({k} Schwierigkeiten)',
-                osu_refreshing: 'Aktualisierung...', osu_refresh_done: '{n} Beatmaps aktualisiert', osu_refresh_fail: 'Aktualisierung fehlgeschlagen',
-                osu_password_prompt: 'Passwort eingeben:', osu_password_wrong: 'Falsches Passwort!',
-                osu_set_password: 'Passwort festlegen (leer = kein Schutz):',
-                osu_confirm_password: 'Bestätigen:', osu_password_mismatch: 'Passwörter stimmen nicht überein',
-                osu_password_set: 'Passwort gesetzt!', osu_import_success: 'Import erfolgreich!', osu_import_fail: 'Ungültiges Dateiformat',
-                osu_export_done: 'osu_backup.json exportiert', osu_copied: 'Kopiert!', mapped_by: 'von {n}',
-                mode_jp_meaning: 'Japanisch → Bedeutung wählen', mode_kr_meaning: 'Koreanisch → Bedeutung wählen', mode_fr_meaning: 'Französisch → Bedeutung wählen', mode_jp_reading: 'Japanisch → Lesung wählen', mode_both: 'Zufälliger Mix',
-                correct: 'Richtig!', wrong: 'Falsch... Die richtige Antwort war: ',
-                load_success: '{n} gültige Wörter geladen', load_with_reading: ' (inkl. {n} Lesungen)',
-                invalid_url: 'Bitte geben Sie eine gültige Google Tabellen-URL ein!',
-                quiz_count_title: 'Anzahl der Fragen', quiz_count_10: '10 Fragen', quiz_count_20: '20 Fragen', quiz_count_30: '30 Fragen', quiz_count_all: 'Unbegrenzt',
-                mode_title_label: 'Modus', count_label: 'Anzahl', result_title: 'Ergebnisse',
-                result_correct: 'Richtig', result_wrong: 'Falsch', result_score: 'Punkte', result_out_of: 'Fragen',
-                quiz_again: '🔄 Nochmal',
-                result_question: 'Frage {n}', result_your_answer: 'Deine Antwort', result_correct_answer: 'Richtige Antwort',
-                answer_lang_title: 'Antwortsprache', answer_lang_zh: '🇨🇳 Chinesisch', answer_lang_en: '🇺🇸 English',
-            }
-        };
-
-        let siteLang = localStorage.getItem('site_lang') || 'zh';
-
-        function applyLang(lang) {
-            siteLang = lang;
-            localStorage.setItem('site_lang', lang);
-            const t = I18N[lang] || I18N.zh;
-            document.querySelectorAll('[data-i18n]').forEach(el => {
-                const key = el.getAttribute('data-i18n');
-                if (t[key]) el.innerHTML = t[key];
-            });
-            document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-                const key = el.getAttribute('data-i18n-placeholder');
-                if (t[key]) el.placeholder = t[key];
-            });
-            document.querySelectorAll('.lang-pill').forEach(btn => {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
-            });
-        }
-
-        function setSiteLang(lang) {
-            applyLang(lang);
-        }
-
-        /* ===== i18n helpers for dynamic content ===== */
-        function t(key, params) {
-            const str = (I18N[siteLang] || I18N.zh)[key] || (I18N.zh)[key] || key;
-            if (!params) return str;
-            return Object.entries(params).reduce((s, [k, v]) => s.replace(`{${k}}`, v), str);
-        }
-        const PLAYLISTS = {
-            all: '0QFBFg35lFuDvuYapAolHC',
-            cn: '5XQgwQcuRRBcyVaKMQbB88'
-        };
-
-        function switchPage(page, el) {
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            el.classList.add('active');
-            document.getElementById('page-quiz').style.display = page === 'quiz' ? 'block' : 'none';
-            document.getElementById('page-music').style.display = page === 'music' ? 'block' : 'none';
-            document.getElementById('page-osu').style.display = page === 'osu' ? 'block' : 'none';
-            if (page === 'osu') renderOsuCollection();
-        }
-
-        let currentSpotifyPlaylist = PLAYLISTS.all;
-
-        function switchMusicTab(lang, btn) {
-            document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            currentSpotifyPlaylist = PLAYLISTS[lang];
-            document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
-        }
-
-        const SHEETS = {
-            jp: 'https://docs.google.com/spreadsheets/d/134jLu-WAoCx7VK7aTsnEYbWJPQPA56Su2Vsez3jFRPw/export?format=csv&gid=0',
-            kr: 'https://docs.google.com/spreadsheets/d/1BsO7tpzFgO39AyBo2SV1RZFDWfPECB-LzWBGA87nbQA/export?format=csv&gid=0',
-            fr: 'https://docs.google.com/spreadsheets/d/1Ki0fuTZb1netmpSOBd8uJbZnYhgtD17aEtGQb3Ehb3Y/export?format=csv&gid=0'
-        };
-
-        let currentLang = '';
-        let vocabularyList = [];
-        let readingList = [];
-        let currentWord = null;
-        let currentMode = 'meaning';
-        let score = 0;
-        let questionNum = 0;
-        let answered = false;
-        let totalQuestions = 0;
-        let quizHistory = [];
-        let needAnswerLang = false;
-        let shuffledVocab = [];
-        let shuffledReading = [];
-        let vocabIdx = 0;
-        let readingIdx = 0;
-
-        function shuffleArray(arr) {
-            const a = [...arr];
-            for (let i = a.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [a[i], a[j]] = [a[j], a[i]];
-            }
-            return a;
-        }
-
-        function playSound(correct) {
-            try {
-                const ctx = new (window.AudioContext || window.webkitAudioContext)();
-                const osc = ctx.createOscillator();
-                const gain = ctx.createGain();
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                if (correct) {
-                    osc.type = 'sine';
-                    osc.frequency.setValueAtTime(523, ctx.currentTime);
-                    osc.frequency.setValueAtTime(659, ctx.currentTime + 0.08);
-                    osc.frequency.setValueAtTime(784, ctx.currentTime + 0.16);
-                    gain.gain.setValueAtTime(0.15, ctx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-                    osc.start(ctx.currentTime);
-                    osc.stop(ctx.currentTime + 0.4);
-                } else {
-                    osc.type = 'sawtooth';
-                    osc.frequency.setValueAtTime(220, ctx.currentTime);
-                    osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
-                    gain.gain.setValueAtTime(0.12, ctx.currentTime);
-                    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.35);
-                    osc.start(ctx.currentTime);
-                    osc.stop(ctx.currentTime + 0.35);
-                }
-            } catch(e) {}
-        }
-
-        function speakWord() {
-            if (!currentWord || !currentWord.word) return;
-            window.speechSynthesis.cancel();
-            const utter = new SpeechSynthesisUtterance(currentWord.word);
-            utter.lang = currentLang === 'jp' ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : 'ko-KR';
-            utter.rate = 0.8;
-            const voices = window.speechSynthesis.getVoices();
-            const langPrefix = currentLang === 'jp' ? 'ja' : currentLang === 'fr' ? 'fr' : 'ko';
-            const match = voices.find(v => v.lang.startsWith(langPrefix));
-            if (match) utter.voice = match;
-            window.speechSynthesis.speak(utter);
-        }
-
-        let autoSpeak = true;
-        let quizAnswerLang = 'zh';
-
-        function toggleAutoSpeak() {
-            autoSpeak = !autoSpeak;
-            const btn = document.getElementById('autoSpeakBtn');
-            if (btn) btn.classList.toggle('speak-active', autoSpeak);
-        }
-
-        function extractSheetId(url) {
-            const match = url.match(/\/d\/([a-zA-Z0-9-_]+)/);
-            return match ? match[1] : url;
-        }
-
-        function isValidWord(word, meaning) {
-            if (!word || !meaning) return false;
-            const w = word.trim();
-            const m = meaning.trim();
-            if (w.includes('動畫') || w.includes('動画') || w.includes('동영상') || w.includes('註') || w.includes('★') || w.includes('單字')) return false;
-            if (m.includes('動畫') || m.includes('動画') || m.includes('意思') || m.includes('註')) return false;
-            if (/^\d+$/.test(w)) return false;
-            if (w.length === 0 || m.length === 0) return false;
-            return true;
-        }
-
-        function selectLanguage(lang) {
-            currentLang = lang;
-            document.getElementById('lang-card').style.display = 'none';
-            document.getElementById('sheetUrlInput').value = SHEETS[lang];
-            loadSheetData(SHEETS[lang]);
-        }
-
-        function loadSheetData(url) {
-            const statusMsg = document.getElementById('status-msg');
-            const setupCard = document.getElementById('setup-card');
-            setupCard.style.display = 'block';
-
-            const sheetId = extractSheetId(url);
-            if (!sheetId) {
-                    alert(t('invalid_url'));
-                return;
-            }
-
-            statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
-            statusMsg.style.color = '#c8a2e0';
-
-            const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
-
-            function finalizeLoad() {
-                if (vocabularyList.length >= 4) {
-                    statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
-                    statusMsg.style.color = '#f472b6';
-                    showModeSelection();
-                } else {
-                    statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
-                    statusMsg.style.color = '#ff5252';
-                }
-            }
-
-            Papa.parse(csvUrl, {
-                download: true,
-                header: false,
-                complete: function(results) {
-                    const rows = results.data;
-                    vocabularyList = [];
-                    readingList = [];
-
-                    if (currentLang === 'jp') {
-                        parseJapanese(rows);
-                        const csvUrl2 = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=1244107386`;
-                        Papa.parse(csvUrl2, {
-                            download: true,
-                            header: false,
-                            complete: function(r2) { parseJapanese2(r2.data); finalizeLoad(); },
-                            error: function() { finalizeLoad(); }
-                        });
-                    } else if (currentLang === 'fr') {
-                        parseFrench(rows);
-                        finalizeLoad();
-                    } else {
-                        parseKorean(rows);
-                        finalizeLoad();
-                    }
-                },
-                error: function() {
-                    statusMsg.innerText = '讀取失敗，請確認試算表共用權限！';
-                    statusMsg.style.color = '#ff5252';
-                }
-            });
-        }
-
-        function parseJapanese(rows) {
-            rows.forEach((row, idx) => {
-                if (row.length < 6) return;
-                if (idx < 5) console.log(`JP row[${idx}] (len=${row.length}):`, row.slice(0, 24));
-                addWord(row[2], row[3], row[4], row[5]);
-                if (row.length > 8)  addWord(row[8], row[9], row[10], row[11]);
-                if (row.length > 14) addWord(row[14], row[15], row[16], row[17]);
-                if (row.length > 20) addWord(row[20], row[21], row[22], row[23]);
-            });
-            console.log('JP parsed vocabularyList sample:', vocabularyList.slice(0, 10));
-        }
-
-        function parseJapanese2(rows) {
-            rows.forEach((row, idx) => {
-                if (row.length < 5) return;
-                if (idx < 5) console.log(`JP2 row[${idx}] (len=${row.length}):`, row.slice(0, 24));
-                addWord(row[2], row[3], row[4], row[5]);
-                if (row.length > 9)  addWord(row[7], row[8], row[9], row[10]);
-                if (row.length > 14) addWord(row[12], row[13], row[14], row[15]);
-                if (row.length > 19) addWord(row[17], row[18], row[19], row[20]);
-            });
-            console.log('JP2 parsed vocabularyList total:', vocabularyList.length);
-        }
-
-        function parseKorean(rows) {
-            rows.forEach((row, idx) => {
-                if (row.length < 5) return;
-                if (idx < 5) console.log(`KR row[${idx}] (len=${row.length}):`, row.slice(0, 24));
-                addWord(row[2], '', row[3], row[4]);
-                if (row.length > 9)  addWord(row[7], '', row[8], row[9]);
-                if (row.length > 14) addWord(row[12], '', row[13], row[14]);
-                if (row.length > 19) addWord(row[17], '', row[18], row[19]);
-            });
-            console.log('KR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
-        }
-
-        function parseFrench(rows) {
-            rows.forEach((row, idx) => {
-                if (row.length < 5) return;
-                if (idx < 5) console.log(`FR row[${idx}] (len=${row.length}):`, row.slice(0, 24));
-                addWord(row[2], '', row[3], row[4]);
-                if (row.length > 9)  addWord(row[7], '', row[8], row[9]);
-                if (row.length > 14) addWord(row[12], '', row[13], row[14]);
-                if (row.length > 19) addWord(row[17], '', row[18], row[19]);
-            });
-            console.log('FR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
-        }
-
-        function addWord(word, kana, meaning, englishMeaning) {
-            const w = word.trim();
-            const k = kana ? kana.trim() : '';
-            const m = meaning.trim();
-            const e = englishMeaning ? englishMeaning.trim() : '';
-            if (!isValidWord(w, m)) return;
-            vocabularyList.push({ word: w, kana: k, meaning: m, english: e });
-            if (k.length > 0) {
-                readingList.push({ word: w, kana: k, meaning: m, english: e });
-            }
-        }
-
-        function showModeSelection() {
-            document.getElementById('setup-card').style.display = 'none';
-            document.getElementById('mode-card').style.display = 'block';
-            document.getElementById('quiz-card').style.display = 'none';
-            document.getElementById('result-card').style.display = 'none';
-
-            const container = document.getElementById('mode-buttons');
-            container.innerHTML = '';
-
-            const btnMeaning = document.createElement('button');
-            btnMeaning.className = 'mode-btn';
-            btnMeaning.innerText = currentLang === 'jp' ? t('mode_jp_meaning') : currentLang === 'fr' ? t('mode_fr_meaning') : t('mode_kr_meaning');
-            btnMeaning.onclick = function() { selectMode('meaning', this); };
-            container.appendChild(btnMeaning);
-
-            if (readingList.length >= 4 && currentLang !== 'fr') {
-                const btnReading = document.createElement('button');
-                btnReading.className = 'mode-btn';
-                btnReading.innerText = t('mode_jp_reading');
-                btnReading.onclick = function() { selectMode('reading', this); };
-                container.appendChild(btnReading);
-            }
-
-            const btnBoth = document.createElement('button');
-            btnBoth.className = 'mode-btn';
-            btnBoth.innerText = t('mode_both');
-            btnBoth.onclick = function() { selectMode('both', this); };
-            container.appendChild(btnBoth);
-
-            needAnswerLang = vocabularyList.some(w => w.english && w.english.length > 0);
-            document.getElementById('answer-lang-title').style.display = 'none';
-            document.getElementById('answer-lang-buttons').style.display = 'none';
-            document.getElementById('quiz-count-title').style.display = 'none';
-            document.getElementById('quiz-count-buttons').style.display = 'none';
-
-            const answerContainer = document.getElementById('answer-lang-buttons');
-            answerContainer.innerHTML = '';
-            const btnZh = document.createElement('button');
-            btnZh.className = 'mode-btn';
-            btnZh.innerText = t('answer_lang_zh');
-            btnZh.onclick = function() { selectAnswerLang('zh', this); };
-            answerContainer.appendChild(btnZh);
-            const btnEn = document.createElement('button');
-            btnEn.className = 'mode-btn';
-            btnEn.innerText = t('answer_lang_en');
-            btnEn.onclick = function() { selectAnswerLang('en', this); };
-            answerContainer.appendChild(btnEn);
-
-            const countContainer = document.getElementById('quiz-count-buttons');
-            countContainer.innerHTML = '';
-            const counts = [{n: 10, key: 'quiz_count_10'}, {n: 20, key: 'quiz_count_20'}, {n: 30, key: 'quiz_count_30'}, {n: 0, key: 'quiz_count_all'}];
-            counts.forEach(c => {
-                const btn = document.createElement('button');
-                btn.className = 'mode-btn count-btn';
-                btn.innerText = t(c.key);
-                btn.onclick = function() { selectCount(c.n, this); };
-                countContainer.appendChild(btn);
-            });
-        }
-
-        let selectedQuizMode = 'meaning';
-
-        function selectMode(mode, el) {
-            selectedQuizMode = mode;
-            document.querySelectorAll('#mode-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-            el.classList.add('mode-btn-active');
-            if (needAnswerLang) {
-                document.getElementById('answer-lang-title').style.display = '';
-                document.getElementById('answer-lang-buttons').style.display = '';
-            } else {
-                document.getElementById('quiz-count-title').style.display = '';
-                document.getElementById('quiz-count-buttons').style.display = '';
-            }
-            checkStartQuiz();
-        }
-
-        function selectAnswerLang(lang, el) {
-            quizAnswerLang = lang;
-            document.querySelectorAll('#answer-lang-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-            el.classList.add('mode-btn-active');
-            document.getElementById('quiz-count-title').style.display = '';
-            document.getElementById('quiz-count-buttons').style.display = '';
-            checkStartQuiz();
-        }
-
-        function selectCount(n, el) {
-            totalQuestions = n;
-            document.querySelectorAll('#quiz-count-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-            el.classList.add('mode-btn-active');
-            checkStartQuiz();
-        }
-
-        function checkStartQuiz() {
-            const modePicked = document.querySelector('#mode-buttons .mode-btn-active');
-            const countPicked = document.querySelector('#quiz-count-buttons .mode-btn-active');
-            const answerPicked = !needAnswerLang || document.querySelector('#answer-lang-buttons .mode-btn-active');
-            if (modePicked && countPicked && answerPicked) {
-                startQuiz(selectedQuizMode);
-            }
-        }
-
-        function startQuiz(mode) {
-            currentMode = mode;
-            score = 0;
-            questionNum = 0;
-            quizHistory = [];
-            shuffledVocab = shuffleArray(vocabularyList);
-            shuffledReading = shuffleArray(readingList);
-            vocabIdx = 0;
-            readingIdx = 0;
-
-            document.getElementById('mode-card').style.display = 'none';
-            document.getElementById('quiz-card').style.display = 'block';
-            document.getElementById('result-card').style.display = 'none';
-
-            const modeNames = { meaning: t('mode_title_label'), reading: t('mode_title_label'), both: t('mode_title_label') };
-            document.getElementById('quiz-mode-label').innerText = modeNames[mode];
-            document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
-            nextQuestion();
-        }
-
-        function pickQuestionType() {
-            if (currentMode === 'meaning') return 'meaning';
-            if (currentMode === 'reading') return 'reading';
-            return Math.random() < 0.5 ? 'meaning' : 'reading';
-        }
-
-        function nextQuestion() {
-            answered = false;
-            questionNum++;
-            document.getElementById('question-count').innerText = t('quiz_question', {n: questionNum});
-            document.getElementById('score-count').innerText = t('quiz_score', {n: score});
-            document.getElementById('nextBtn').style.display = 'none';
-            document.getElementById('feedback').innerText = '';
-            document.getElementById('feedback').className = 'feedback';
-
-            const questionType = pickQuestionType();
-            const useEn = quizAnswerLang === 'en';
-
-            if (questionType === 'reading' && shuffledReading.length >= 4) {
-                if (readingIdx >= shuffledReading.length) shuffledReading = shuffleArray(readingList);
-                currentWord = shuffledReading[readingIdx++];
-
-                document.getElementById('word-question').innerText = currentWord.word;
-                document.getElementById('word-hint').innerText = useEn
-                    ? currentWord.english || currentWord.meaning
-                    : currentWord.meaning;
-
-                let options = [currentWord.kana];
-                while (options.length < 4) {
-                    const pick = shuffledReading[Math.floor(Math.random() * shuffledReading.length)].kana;
-                    if (!options.includes(pick)) options.push(pick);
-                }
-                options.sort(() => Math.random() - 0.5);
-                renderOptions(options, 'reading');
-            } else {
-                if (vocabIdx >= shuffledVocab.length) shuffledVocab = shuffleArray(vocabularyList);
-                currentWord = shuffledVocab[vocabIdx++];
-
-                document.getElementById('word-question').innerText = currentWord.word;
-                document.getElementById('word-hint').innerText = currentWord.kana ? `讀法：${currentWord.kana}` : '';
-
-                const answerPool = useEn
-                    ? shuffledVocab.filter(w => w.english && w.english.length > 0)
-                    : shuffledVocab;
-                if (answerPool.length < 4) { renderOptions([], 'meaning'); return; }
-
-                const correctAnswer = useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning;
-                let options = [correctAnswer];
-                while (options.length < 4) {
-                    const pick = answerPool[Math.floor(Math.random() * answerPool.length)];
-                    const val = useEn ? (pick.english || pick.meaning) : pick.meaning;
-                    if (!options.includes(val)) options.push(val);
-                }
-                options.sort(() => Math.random() - 0.5);
-                renderOptions(options, 'meaning');
-            }
-
-            if (autoSpeak && currentWord && currentWord.word) {
-                setTimeout(() => speakWord(), 300);
-            }
-        }
-
-        function renderOptions(options, type) {
-            const container = document.getElementById('options-container');
-            container.innerHTML = '';
-            options.forEach((optText) => {
-                const btn = document.createElement('button');
-                btn.className = 'option-btn';
-                btn.innerText = optText;
-                btn.onclick = () => selectOption(btn, optText, type);
-                container.appendChild(btn);
-            });
-        }
-
-        function selectOption(selectedBtn, selectedText, type) {
-            if (answered) return;
-            answered = true;
-
-            const allBtns = document.querySelectorAll('.option-btn');
-            allBtns.forEach(btn => btn.disabled = true);
-
-            const feedback = document.getElementById('feedback');
-            const useEn = quizAnswerLang === 'en';
-            const correctAnswer = type === 'reading' ? currentWord.kana
-                : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
-            const isCorrect = selectedText === correctAnswer;
-
-            quizHistory.push({
-                question: currentWord.word,
-                yourAnswer: selectedText,
-                correctAnswer: correctAnswer,
-                isCorrect: isCorrect,
-                type: type
-            });
-
-            if (isCorrect) {
-                score += 10;
-                selectedBtn.classList.add('correct-choice');
-                feedback.innerText = t('correct');
-                feedback.className = 'feedback correct';
-                playSound(true);
-            } else {
-                score -= 3;
-                selectedBtn.classList.add('wrong-choice');
-                allBtns.forEach(btn => {
-                    if (btn.innerText === correctAnswer) {
-                        btn.classList.add('correct-choice');
-                    }
-                });
-                feedback.innerText = t('wrong') + correctAnswer;
-                feedback.className = 'feedback wrong';
-                playSound(false);
-            }
-
-            document.getElementById('score-count').innerText = `${t('quiz_score', {n: score})}`;
-
-            if (totalQuestions > 0 && questionNum >= totalQuestions) {
-                document.getElementById('nextBtn').innerText = t('quiz_next');
-                document.getElementById('nextBtn').onclick = () => showResults();
-            } else {
-                document.getElementById('nextBtn').innerText = t('quiz_next');
-                document.getElementById('nextBtn').onclick = () => nextQuestion();
-            }
-            document.getElementById('nextBtn').style.display = 'inline-block';
-        }
-
-        function showResults() {
-            document.getElementById('quiz-card').style.display = 'none';
-            document.getElementById('result-card').style.display = 'block';
-
-            const correctCount = quizHistory.filter(h => h.isCorrect).length;
-            const wrongCount = quizHistory.filter(h => !h.isCorrect).length;
-            const total = quizHistory.length;
-            const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
-
-            document.getElementById('result-summary').innerHTML =
-                `<div class="result-stats">
-                    <div class="stat correct-stat">${t('result_correct')}: ${correctCount}</div>
-                    <div class="stat wrong-stat">${t('result_wrong')}: ${wrongCount}</div>
-                    <div class="stat score-stat">${t('result_score')}: ${score}</div>
-                    <div class="stat pct-stat">${percentage}%</div>
-                </div>`;
-
-            let detailHTML = '<table class="result-table"><thead><tr>';
-            detailHTML += `<th>${t('result_question', {n: ''})}</th>`;
-            detailHTML += `<th>${t('result_your_answer')}</th>`;
-            detailHTML += `<th>${t('result_correct_answer')}</th></tr></thead><tbody>`;
-
-            quizHistory.forEach((h, i) => {
-                const cls = h.isCorrect ? 'result-correct' : 'result-wrong';
-                detailHTML += `<tr class="${cls}">
-                    <td>${i + 1}. ${h.question}</td>
-                    <td>${h.yourAnswer}</td>
-                    <td>${h.correctAnswer}</td>
-                </tr>`;
-            });
-            detailHTML += '</tbody></table>';
-            document.getElementById('result-detail').innerHTML = detailHTML;
-        }
-
-        function backToLanguage() {
-            currentLang = '';
-            vocabularyList = [];
-            readingList = [];
-            document.getElementById('lang-card').style.display = 'block';
-            document.getElementById('setup-card').style.display = 'none';
-            document.getElementById('mode-card').style.display = 'none';
-            document.getElementById('quiz-card').style.display = 'none';
-        }
-
-        /* ===== osu! Collection ===== */
-        const OSU_API_KEY = 'db6c7c60d8b9754364b2a8e225441f0f6f379452';
-        const OSU_MODES = ['standard', 'taiko', 'catch', 'mania'];
-        const OSU_MODE_NAMES = { 0: 'standard', 1: 'taiko', 2: 'catch', 3: 'mania' };
-        let osuCurrentTab = 'standard';
-        let osuCurrentAudio = null;
-        let osuVolume = 0.4;
-        let osuPage = 0;
-        const OSU_PAGE_SIZE = 8;
-
-        async function sha256(str) {
-            const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
-            return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-        }
-
-        function getOsuPassword() { return localStorage.getItem('osu_password_hash'); }
-
-        async function setOsuPassword(pw) {
-            localStorage.setItem('osu_password_hash', await sha256(pw));
-        }
-
-        function hasOsuPassword() { return !!getOsuPassword(); }
-
-        async function verifyOsuPassword() {
-            if (!hasOsuPassword()) return true;
-            const pw = prompt(t('osu_password_prompt'));
-            if (pw === null) return false;
-            const hash = await sha256(pw);
-            if (hash === getOsuPassword()) return true;
-            alert(t('osu_password_wrong'));
-            return false;
-        }
-
-        async function setupOsuPassword() {
-            const pw = prompt(t('osu_set_password'));
-            if (pw === null || pw === '') return;
-            const pw2 = prompt(t('osu_confirm_password'));
-            if (pw !== pw2) { alert(t('osu_password_mismatch')); return; }
-            await setOsuPassword(pw);
-            alert(t('osu_password_set'));
-        }
-
-        function copyBeatmapId(setId, event) {
-            event.stopPropagation();
-            navigator.clipboard.writeText(String(setId)).then(() => {
-                const btn = event.currentTarget;
-                btn.classList.add('copied');
-                btn.innerText = '✓';
-                setTimeout(() => { btn.classList.remove('copied'); btn.innerText = '📋'; }, 1200);
-            });
-        }
-
-        function osuSetVolume(val) {
-            osuVolume = parseFloat(val);
-            if (osuCurrentAudio && !osuCurrentAudio.ended) osuCurrentAudio.volume = osuVolume;
-        }
-
-        async function exportOsuData() {
-            if (!await verifyOsuPassword()) return;
-            const data = {
-                osu_collection: localStorage.getItem('osu_collection'),
-                osu_favorites: localStorage.getItem('osu_favorites')
-            };
-            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
-            const a = document.createElement('a');
-            a.href = URL.createObjectURL(blob);
-            a.download = 'osu_backup.json';
-            a.click();
-            URL.revokeObjectURL(a.href);
-            const s = document.getElementById('osu-status');
-            s.innerText = t('osu_export_done');
-            s.style.color = '#34d399';
-        }
-
-        async function importOsuData(event) {
-            if (!await verifyOsuPassword()) { event.target.value = ''; return; }
-            const file = event.target.files[0];
-            if (!file) return;
-            const reader = new FileReader();
-            reader.onload = (e) => {
-                try {
-                    const data = JSON.parse(e.target.result);
-                    if (data.osu_collection) localStorage.setItem('osu_collection', data.osu_collection);
-                    if (data.osu_favorites) localStorage.setItem('osu_favorites', data.osu_favorites);
-                    renderOsuCollection();
-                    const s = document.getElementById('osu-status');
-                    s.innerText = t('osu_import_success');
-                    s.style.color = '#34d399';
-                } catch (err) {
-                    const s = document.getElementById('osu-status');
-                    s.innerText = t('osu_import_fail');
-                    s.style.color = '#ff5252';
-                }
-            };
-            reader.readAsText(file);
-            event.target.value = '';
-        }
-
-        function playOsuPreview(setId, event) {
-            event.stopPropagation();
-            const previewUrl = `https://b.ppy.sh/preview/${setId}.mp3`;
-
-            if (osuCurrentAudio && !osuCurrentAudio.ended) {
-                osuCurrentAudio.pause();
-                document.querySelectorAll('.osu-play-btn').forEach(b => b.classList.remove('playing'));
-                if (osuCurrentAudio._setId === setId) { osuCurrentAudio = null; return; }
-            }
-
-            const audio = new Audio(previewUrl);
-            audio._setId = setId;
-            audio.volume = osuVolume;
-            osuCurrentAudio = audio;
-
-            const btn = event.currentTarget;
-            btn.classList.add('playing');
-            audio.play().catch(() => {});
-            audio.onended = () => {
-                btn.classList.remove('playing');
-                osuCurrentAudio = null;
-            };
-            audio.onerror = () => {
-                btn.classList.remove('playing');
-                osuCurrentAudio = null;
-            };
-        }
-
-        function getOsuFavorites() {
-            try { return JSON.parse(localStorage.getItem('osu_favorites')) || []; }
-            catch { return []; }
-        }
-
-        function saveOsuFavorites(favs) {
-            localStorage.setItem('osu_favorites', JSON.stringify(favs));
-        }
-
-        function isOsuFavorited(setId) {
-            return getOsuFavorites().includes(setId);
-        }
-
-        async function toggleOsuFavorite(setId, event) {
-            event.stopPropagation();
-            if (!await verifyOsuPassword()) return;
-            const favs = getOsuFavorites();
-            const idx = favs.indexOf(setId);
-            if (idx >= 0) favs.splice(idx, 1);
-            else favs.push(setId);
-            saveOsuFavorites(favs);
-            renderOsuCollection();
-        }
-
-        function getOsuCollection() {
-            try {
-                return JSON.parse(localStorage.getItem('osu_collection')) || { standard: [], taiko: [], catch: [], mania: [] };
-            } catch { return { standard: [], taiko: [], catch: [], mania: [] }; }
-        }
-
-        function saveOsuCollection(col) {
-            localStorage.setItem('osu_collection', JSON.stringify(col));
-        }
-
-        function parseOsuInput(input) {
-            const urlMatch = input.match(/osu\.ppy\.sh\/(?:beatmaps?|beatmapsets?)\/(\d+)/);
-            if (urlMatch) return { type: 'url', id: urlMatch[1], isSet: input.includes('beatmapsets') };
-            if (/^\d+$/.test(input.trim())) return { type: 'id', id: input.trim(), isSet: false };
-            return null;
-        }
-
-        async function osuFetch(params) {
-            const res = await fetch(`/.netlify/functions/osu?${params}`);
-            const text = await res.text();
-            try { return JSON.parse(text); }
-            catch { throw new Error(`Function 回傳非 JSON (HTTP ${res.status}): ${text.substring(0, 200)}`); }
-        }
-
-        async function addOsuBeatmap() {
-            if (!await verifyOsuPassword()) return;
-            const input = document.getElementById('osuInput');
-            const status = document.getElementById('osu-status');
-            const raw = input.value.trim();
-            if (!raw) return;
-
-            const parsed = parseOsuInput(raw);
-            if (!parsed) {
-                status.innerText = t('osu_input_error');
-                status.style.color = '#ff5252';
-                return;
-            }
-
-            status.innerText = t('osu_searching');
-            status.style.color = '#c8a2e0';
-
-            try {
-                let beatmaps = [];
-
-                if (parsed.isSet || parsed.type === 'url' && input.value.includes('beatmapsets')) {
-                    beatmaps = await osuFetch(`s=${parsed.id}`);
-                }
-
-                if (beatmaps.length === 0) {
-                    const byMap = await osuFetch(`b=${parsed.id}`);
-                    if (byMap.length > 0) {
-                        beatmaps = await osuFetch(`s=${byMap[0].beatmapset_id}`);
-                    }
-                }
-
-                if (beatmaps.length === 0 && !parsed.isSet) {
-                    beatmaps = await osuFetch(`s=${parsed.id}`);
-                }
-
-                if (beatmaps.length === 0) {
-                    status.innerText = t('osu_not_found');
-                    status.style.color = '#ff5252';
-                    return;
-                }
-
-                const modeNum = parseInt(beatmaps[0].mode);
-                const modeKey = OSU_MODE_NAMES[modeNum];
-                const col = getOsuCollection();
-
-                const alreadyExists = col[modeKey].some(s => s.beatmapset_id === parseInt(beatmaps[0].beatmapset_id));
-                if (alreadyExists) {
-                    status.innerText = t('osu_already_exists', { n: `${beatmaps[0].artist} - ${beatmaps[0].title}` });
-                    status.style.color = '#f59e0b';
-                    return;
-                }
-
-                const setInfo = {
-                    beatmapset_id: parseInt(beatmaps[0].beatmapset_id),
-                    title: beatmaps[0].title,
-                    artist: beatmaps[0].artist,
-                    creator: beatmaps[0].creator,
-                    mode: modeNum,
-                    beatmaps: beatmaps.map(b => ({
-                        beatmap_id: parseInt(b.beatmap_id),
-                        version: b.version,
-                        difficulty_rating: parseFloat(b.difficultyrating),
-                        hit_length: parseInt(b.hit_length),
-                        total_length: parseInt(b.total_length),
-                        bpm: parseFloat(b.bpm)
-                    })).sort((a, b) => a.difficulty_rating - b.difficulty_rating)
-                };
-
-                col[modeKey].unshift(setInfo);
-                saveOsuCollection(col);
-
-                const modeNames = { standard: 'Standard', taiko: 'Taiko', catch: 'Catch', mania: 'Mania' };
-                status.innerText = t('osu_added', { n: `${setInfo.artist} - ${setInfo.title}`, m: modeNames[modeKey], k: setInfo.beatmaps.length });
-                status.style.color = '#34d399';
-                input.value = '';
-
-                osuCurrentTab = modeKey;
-                document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.osu-tab')[modeNum + 1].classList.add('active');
-                renderOsuCollection();
-            } catch (e) {
-                console.error('osu! fetch error:', e);
-                status.innerText = `連線失敗: ${e.message}`;
-                status.style.color = '#ff5252';
-            }
-        }
-
-        function switchOsuTab(mode, btn) {
-            document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
-            btn.classList.add('active');
-            osuCurrentTab = mode;
-            osuPage = 0;
-            renderOsuCollection();
-        }
-
-        async function removeOsuSet(setId) {
-            if (!await verifyOsuPassword()) return;
-            const col = getOsuCollection();
-            col[osuCurrentTab] = col[osuCurrentTab].filter(s => s.beatmapset_id !== setId);
-            saveOsuCollection(col);
-            renderOsuCollection();
-        }
-
-        function formatTime(seconds) {
-            const m = Math.floor(seconds / 60);
-            const s = seconds % 60;
-            return `${m}:${s.toString().padStart(2, '0')}`;
-        }
-
-        async function refreshAllOsuSets() {
-            if (!await verifyOsuPassword()) return;
-            const btn = document.querySelector('.osu-refresh-all');
-            const status = document.getElementById('osu-status');
-            btn.classList.add('spinning');
-            status.innerText = t('osu_refreshing');
-            status.style.color = '#c8a2e0';
-
-            const col = getOsuCollection();
-            const allIds = new Set();
-            for (const mode of OSU_MODES) {
-                for (const s of col[mode]) allIds.add(s.beatmapset_id);
-            }
-
-            try {
-                for (const setId of allIds) {
-                    const beatmaps = await osuFetch(`s=${setId}`);
-                    if (beatmaps.length === 0) continue;
-                    for (const mode of OSU_MODES) {
-                        const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
-                        if (idx >= 0) {
-                            col[mode][idx].beatmaps = beatmaps.map(b => ({
-                                beatmap_id: parseInt(b.beatmap_id),
-                                version: b.version,
-                                difficulty_rating: parseFloat(b.difficultyrating),
-                                hit_length: parseInt(b.hit_length),
-                                total_length: parseInt(b.total_length),
-                                bpm: parseFloat(b.bpm)
-                            })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
-                            break;
-                        }
-                    }
-                }
-                saveOsuCollection(col);
-                renderOsuCollection();
-                status.innerText = t('osu_refresh_done', { n: allIds.size });
-                status.style.color = '#34d399';
-            } catch (e) {
-                console.error('Refresh all failed:', e);
-                status.innerText = t('osu_refresh_fail');
-                status.style.color = '#ff5252';
-            } finally {
-                btn.classList.remove('spinning');
-            }
-        }
-
-        function renderOsuCollection() {
-            const container = document.getElementById('osu-collection');
-            const paginationEl = document.getElementById('osu-pagination');
-            const col = getOsuCollection();
-            let sets;
-
-            if (osuCurrentTab === 'favorites') {
-                const favIds = getOsuFavorites();
-                const allSets = [...col.standard, ...col.taiko, ...col.catch, ...col.mania];
-                const seen = new Set();
-                sets = allSets.filter(s => {
-                    if (favIds.includes(s.beatmapset_id) && !seen.has(s.beatmapset_id)) {
-                        seen.add(s.beatmapset_id);
-                        return true;
-                    }
-                    return false;
-                });
-            } else {
-                const seen = new Set();
-                sets = col[osuCurrentTab].filter(s => {
-                    if (seen.has(s.beatmapset_id)) return false;
-                    seen.add(s.beatmapset_id);
-                    return true;
-                });
-            }
-
-            if (sets.length === 0) {
-                const msg = osuCurrentTab === 'favorites'
-                    ? `${t('osu_empty_fav')}<br><span>${t('osu_empty_fav_hint')}</span>`
-                    : `${t('osu_empty_collection')}<br><span>${t('osu_empty_hint')}</span>`;
-                container.innerHTML = `<div class="osu-empty">${msg}</div>`;
-                paginationEl.innerHTML = '';
-                return;
-            }
-
-            const totalPages = Math.ceil(sets.length / OSU_PAGE_SIZE);
-            if (osuPage >= totalPages) osuPage = totalPages - 1;
-            if (osuPage < 0) osuPage = 0;
-            const pageSets = sets.slice(osuPage * OSU_PAGE_SIZE, (osuPage + 1) * OSU_PAGE_SIZE);
-
-            container.innerHTML = pageSets.map(set => {
-                const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
-                const isFav = isOsuFavorited(set.beatmapset_id);
-                const starsMin = Math.min(...set.beatmaps.map(b => b.difficulty_rating));
-                const starsMax = Math.max(...set.beatmaps.map(b => b.difficulty_rating));
-                const starsText = (starsMin === 0 && starsMax === 0) ? '' : `<div class="osu-card-stars">${starsMin.toFixed(2)}⭐~${starsMax.toFixed(2)}⭐</div>`;
-                return `
-                <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
-                    <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
-                    <div class="osu-card-overlay"></div>
-                    <button class="osu-copy-btn" onclick="copyBeatmapId(${set.beatmapset_id}, event)" title="複製 ID">📋</button>
-                    <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
-                    <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
-                    <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
-                    <div class="osu-card-info">
-                        <div class="osu-card-title">${set.title}</div>
-                        ${starsText}
-                        <div class="osu-card-artist">${set.artist}</div>
-                        <div class="osu-card-mapper">${t('mapped_by', { n: set.creator })}</div>
-                    </div>
-                </div>`;
-            }).join('');
-
-            if (totalPages <= 1) {
-                paginationEl.innerHTML = '';
-            } else {
-                let pages = '';
-                pages += `<button class="osu-page-btn" onclick="osuPage=0;renderOsuCollection()" ${osuPage===0?'disabled':''}>«</button>`;
-                pages += `<button class="osu-page-btn" onclick="osuPage=Math.max(0,osuPage-1);renderOsuCollection()" ${osuPage===0?'disabled':''}>‹</button>`;
-                for (let i = 0; i < totalPages; i++) {
-                    pages += `<button class="osu-page-btn ${i===osuPage?'active':''}" onclick="osuPage=${i};renderOsuCollection()">${i+1}</button>`;
-                }
-                pages += `<button class="osu-page-btn" onclick="osuPage=Math.min(${totalPages-1},osuPage+1);renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>›</button>`;
-                pages += `<button class="osu-page-btn" onclick="osuPage=${totalPages-1};renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>»</button>`;
-                paginationEl.innerHTML = pages;
-            }
-        }
-        applyLang(siteLang);
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/service-worker.js').catch(function() {});
+      }
     </script>
 </body>
 </html>
