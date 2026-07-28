@@ -1,0 +1,456 @@
+/* ===== osu! Collection ===== */
+const OSU_MODES = ['standard', 'taiko', 'catch', 'mania'];
+const OSU_MODE_NAMES = { 0: 'standard', 1: 'taiko', 2: 'catch', 3: 'mania' };
+let osuCurrentTab = 'standard';
+let osuCurrentAudio = null;
+let osuVolume = 0.4;
+let osuPage = 0;
+const OSU_PAGE_SIZE = 8;
+
+async function sha256(str) {
+    const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+}
+
+function getOsuPassword() { return localStorage.getItem('osu_password_hash'); }
+
+async function setOsuPassword(pw) {
+    localStorage.setItem('osu_password_hash', await sha256(pw));
+}
+
+function hasOsuPassword() { return !!getOsuPassword(); }
+
+async function verifyOsuPassword() {
+    return true;
+}
+
+async function setupOsuPassword() {
+    const pw = prompt(t('osu_set_password'));
+    if (pw === null || pw === '') return;
+    const pw2 = prompt(t('osu_confirm_password'));
+    if (pw !== pw2) { alert(t('osu_password_mismatch')); return; }
+    await setOsuPassword(pw);
+    alert(t('osu_password_set'));
+}
+
+function copyBeatmapId(setId, event) {
+    event.stopPropagation();
+    navigator.clipboard.writeText(String(setId)).then(() => {
+        const btn = event.currentTarget;
+        btn.classList.add('copied');
+        btn.innerText = '✓';
+        setTimeout(() => { btn.classList.remove('copied'); btn.innerText = '📋'; }, 1200);
+    });
+}
+
+function osuSetVolume(val) {
+    osuVolume = parseFloat(val);
+    if (osuCurrentAudio && !osuCurrentAudio.ended) osuCurrentAudio.volume = osuVolume;
+}
+
+function playOsuPreview(setId, event) {
+    event.stopPropagation();
+    const previewUrl = `https://b.ppy.sh/preview/${setId}.mp3`;
+
+    if (osuCurrentAudio && !osuCurrentAudio.ended) {
+        osuCurrentAudio.pause();
+        document.querySelectorAll('.osu-play-btn').forEach(b => b.classList.remove('playing'));
+        if (osuCurrentAudio._setId === setId) { osuCurrentAudio = null; return; }
+    }
+
+    const audio = new Audio(previewUrl);
+    audio._setId = setId;
+    audio.volume = osuVolume;
+    osuCurrentAudio = audio;
+
+    const btn = event.currentTarget;
+    btn.classList.add('playing');
+    audio.play().catch(() => {});
+    audio.onended = () => {
+        btn.classList.remove('playing');
+        osuCurrentAudio = null;
+    };
+    audio.onerror = () => {
+        btn.classList.remove('playing');
+        osuCurrentAudio = null;
+    };
+}
+
+function getOsuFavorites() {
+    try { return JSON.parse(localStorage.getItem('osu_favorites')) || []; }
+    catch { return []; }
+}
+
+function saveOsuFavorites(favs) {
+    localStorage.setItem('osu_favorites', JSON.stringify(favs));
+}
+
+function isOsuFavorited(setId) {
+    return getOsuFavorites().includes(setId);
+}
+
+async function toggleOsuFavorite(setId, event) {
+    event.stopPropagation();
+    if (!await verifyOsuPassword()) return;
+    const favs = getOsuFavorites();
+    const idx = favs.indexOf(setId);
+    if (idx >= 0) favs.splice(idx, 1);
+    else favs.push(setId);
+    saveOsuFavorites(favs);
+    renderOsuCollection();
+}
+
+function getOsuCollection() {
+    try {
+        return JSON.parse(localStorage.getItem('osu_collection')) || { standard: [], taiko: [], catch: [], mania: [] };
+    } catch { return { standard: [], taiko: [], catch: [], mania: [] }; }
+}
+
+function saveOsuCollection(col) {
+    localStorage.setItem('osu_collection', JSON.stringify(col));
+}
+
+function parseOsuInput(input) {
+    const urlMatch = input.match(/osu\.ppy\.sh\/(?:beatmaps?|beatmapsets?)\/(\d+)/);
+    if (urlMatch) return { type: 'url', id: urlMatch[1], isSet: input.includes('beatmapsets') };
+    if (/^\d+$/.test(input.trim())) return { type: 'id', id: input.trim(), isSet: false };
+    return null;
+}
+
+async function osuFetch(params) {
+    const res = await fetch(`/.netlify/functions/osu?${params}`);
+    const text = await res.text();
+    try { return JSON.parse(text); }
+    catch { throw new Error(`Function 回傳非 JSON (HTTP ${res.status}): ${text.substring(0, 200)}`); }
+}
+
+async function addOsuBeatmap() {
+    if (!await verifyOsuPassword()) return;
+    const input = document.getElementById('osuInput');
+    const status = document.getElementById('osu-status');
+    const raw = input.value.trim();
+    if (!raw) return;
+
+    const parsed = parseOsuInput(raw);
+    if (!parsed) {
+        status.innerText = t('osu_input_error');
+        status.style.color = '#ff5252';
+        return;
+    }
+
+    status.innerText = t('osu_searching');
+    status.style.color = '#c8a2e0';
+
+    try {
+        let beatmaps = [];
+
+        if (parsed.isSet || parsed.type === 'url' && input.value.includes('beatmapsets')) {
+            beatmaps = await osuFetch(`s=${parsed.id}`);
+        }
+
+        if (beatmaps.length === 0) {
+            const byMap = await osuFetch(`b=${parsed.id}`);
+            if (byMap.length > 0) {
+                beatmaps = await osuFetch(`s=${byMap[0].beatmapset_id}`);
+            }
+        }
+
+        if (beatmaps.length === 0 && !parsed.isSet) {
+            beatmaps = await osuFetch(`s=${parsed.id}`);
+        }
+
+        if (beatmaps.length === 0) {
+            status.innerText = t('osu_not_found');
+            status.style.color = '#ff5252';
+            return;
+        }
+
+        const modeNum = parseInt(beatmaps[0].mode);
+        const modeKey = OSU_MODE_NAMES[modeNum];
+        const col = getOsuCollection();
+
+        const alreadyExists = col[modeKey].some(s => s.beatmapset_id === parseInt(beatmaps[0].beatmapset_id));
+        if (alreadyExists) {
+            status.innerText = t('osu_already_exists', { n: `${beatmaps[0].artist} - ${beatmaps[0].title}` });
+            status.style.color = '#f59e0b';
+            return;
+        }
+
+        const setInfo = {
+            beatmapset_id: parseInt(beatmaps[0].beatmapset_id),
+            title: beatmaps[0].title,
+            artist: beatmaps[0].artist,
+            creator: beatmaps[0].creator,
+            mode: modeNum,
+            beatmaps: beatmaps.map(b => ({
+                beatmap_id: parseInt(b.beatmap_id),
+                version: b.version,
+                difficulty_rating: parseFloat(b.difficultyrating),
+                hit_length: parseInt(b.hit_length),
+                total_length: parseInt(b.total_length),
+                bpm: parseFloat(b.bpm)
+            })).sort((a, b) => a.difficulty_rating - b.difficulty_rating)
+        };
+
+        col[modeKey].unshift(setInfo);
+        saveOsuCollection(col);
+
+        const modeNames = { standard: '⭕ Standard', taiko: '🥁 Taiko', catch: '🍎 Catch', mania: '🎹 Mania' };
+        status.innerText = t('osu_added', { n: `${setInfo.artist} - ${setInfo.title}`, m: modeNames[modeKey], k: setInfo.beatmaps.length });
+        status.style.color = '#34d399';
+        input.value = '';
+
+        osuCurrentTab = modeKey;
+        document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.osu-tab')[modeNum + 1].classList.add('active');
+        renderOsuCollection();
+    } catch (e) {
+        console.error('osu! fetch error:', e);
+        status.innerText = `連線失敗: ${e.message}`;
+        status.style.color = '#ff5252';
+    }
+}
+
+function switchOsuTab(mode, btn) {
+    document.querySelectorAll('.osu-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    osuCurrentTab = mode;
+    osuPage = 0;
+    renderOsuCollection();
+}
+
+async function removeOsuSet(setId) {
+    if (!await verifyOsuPassword()) return;
+    const col = getOsuCollection();
+    col[osuCurrentTab] = col[osuCurrentTab].filter(s => s.beatmapset_id !== setId);
+    saveOsuCollection(col);
+    renderOsuCollection();
+}
+
+function formatTime(seconds) {
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    return `${m}:${s.toString().padStart(2, '0')}`;
+}
+
+async function refreshAllOsuSets() {
+    if (!await verifyOsuPassword()) return;
+    const btn = document.querySelector('.osu-refresh-all');
+    const status = document.getElementById('osu-status');
+    btn.classList.add('spinning');
+    status.innerText = t('osu_refreshing');
+    status.style.color = '#c8a2e0';
+
+    const col = getOsuCollection();
+    const allIds = new Set();
+    for (const mode of OSU_MODES) {
+        for (const s of col[mode]) allIds.add(s.beatmapset_id);
+    }
+
+    try {
+        for (const setId of allIds) {
+            const beatmaps = await osuFetch(`s=${setId}`);
+            if (beatmaps.length === 0) continue;
+            for (const mode of OSU_MODES) {
+                const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
+                if (idx >= 0) {
+                    col[mode][idx].beatmaps = beatmaps.map(b => ({
+                        beatmap_id: parseInt(b.beatmap_id),
+                        version: b.version,
+                        difficulty_rating: parseFloat(b.difficultyrating),
+                        hit_length: parseInt(b.hit_length),
+                        total_length: parseInt(b.total_length),
+                        bpm: parseFloat(b.bpm)
+                    })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
+                    break;
+                }
+            }
+        }
+        saveOsuCollection(col);
+        renderOsuCollection();
+        status.innerText = t('osu_refresh_done', { n: allIds.size });
+        status.style.color = '#34d399';
+    } catch (e) {
+        console.error('Refresh all failed:', e);
+        status.innerText = t('osu_refresh_fail');
+        status.style.color = '#ff5252';
+    } finally {
+        btn.classList.remove('spinning');
+    }
+}
+
+function renderOsuCollection() {
+    const container = document.getElementById('osu-collection');
+    const paginationEl = document.getElementById('osu-pagination');
+    const col = getOsuCollection();
+    let sets;
+
+    if (osuCurrentTab === 'favorites') {
+        const favIds = getOsuFavorites();
+        const allSets = [...col.standard, ...col.taiko, ...col.catch, ...col.mania];
+        const seen = new Set();
+        sets = allSets.filter(s => {
+            if (favIds.includes(s.beatmapset_id) && !seen.has(s.beatmapset_id)) {
+                seen.add(s.beatmapset_id);
+                return true;
+            }
+            return false;
+        });
+    } else {
+        const seen = new Set();
+        sets = col[osuCurrentTab].filter(s => {
+            if (seen.has(s.beatmapset_id)) return false;
+            seen.add(s.beatmapset_id);
+            return true;
+        });
+    }
+
+    if (sets.length === 0) {
+        const msg = osuCurrentTab === 'favorites'
+            ? `${t('osu_empty_fav')}<br><span>${t('osu_empty_fav_hint')}</span>`
+            : `${t('osu_empty_collection')}<br><span>${t('osu_empty_hint')}</span>`;
+        container.innerHTML = `<div class="osu-empty">${msg}</div>`;
+        paginationEl.innerHTML = '';
+        return;
+    }
+
+    const totalPages = Math.ceil(sets.length / OSU_PAGE_SIZE);
+    if (osuPage >= totalPages) osuPage = totalPages - 1;
+    if (osuPage < 0) osuPage = 0;
+    const pageSets = sets.slice(osuPage * OSU_PAGE_SIZE, (osuPage + 1) * OSU_PAGE_SIZE);
+
+    container.innerHTML = pageSets.map(set => {
+        const coverUrl = `https://assets.ppy.sh/beatmaps/${set.beatmapset_id}/covers/card.jpg`;
+        const isFav = isOsuFavorited(set.beatmapset_id);
+        const starsMin = Math.min(...set.beatmaps.map(b => b.difficulty_rating));
+        const starsMax = Math.max(...set.beatmaps.map(b => b.difficulty_rating));
+        const starsText = (starsMin === 0 && starsMax === 0) ? '' : `<div class="osu-card-stars">${starsMin.toFixed(2)}⭐~${starsMax.toFixed(2)}⭐</div>`;
+        return `
+        <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
+            <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
+            <div class="osu-card-overlay"></div>
+            <button class="osu-copy-btn" onclick="copyBeatmapId(${set.beatmapset_id}, event)" title="複製 ID">📋</button>
+            <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
+            <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>
+            <button class="osu-delete-btn" onclick="event.stopPropagation();removeOsuSet(${set.beatmapset_id})" title="移除">&#x2715;</button>
+            <div class="osu-card-info">
+                <div class="osu-card-title">${set.title}</div>
+                ${starsText}
+                <div class="osu-card-artist">${set.artist}</div>
+                <div class="osu-card-mapper">${t('mapped_by', { n: set.creator })}</div>
+            </div>
+        </div>`;
+    }).join('');
+
+    if (totalPages <= 1) {
+        paginationEl.innerHTML = '';
+    } else {
+        let pages = '';
+        pages += `<button class="osu-page-btn" onclick="osuPage=0;renderOsuCollection()" ${osuPage===0?'disabled':''}>«</button>`;
+        pages += `<button class="osu-page-btn" onclick="osuPage=Math.max(0,osuPage-1);renderOsuCollection()" ${osuPage===0?'disabled':''}>‹</button>`;
+        for (let i = 0; i < totalPages; i++) {
+            pages += `<button class="osu-page-btn ${i===osuPage?'active':''}" onclick="osuPage=${i};renderOsuCollection()">${i+1}</button>`;
+        }
+        pages += `<button class="osu-page-btn" onclick="osuPage=Math.min(${totalPages-1},osuPage+1);renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>›</button>`;
+        pages += `<button class="osu-page-btn" onclick="osuPage=${totalPages-1};renderOsuCollection()" ${osuPage>=totalPages-1?'disabled':''}>»</button>`;
+        paginationEl.innerHTML = pages;
+    }
+}
+applyLang(siteLang);
+
+/* ===== osu! Profile ===== */
+const OSU_USER_ID = 26696007;
+let osuProfileLoaded = false;
+let osuModeData = [];
+let osuCurrentMode = 0;
+
+const COUNTRY_NAMES = {
+    TW: 'Taiwan', JP: 'Japan', KR: 'South Korea', US: 'United States',
+    CN: 'China', HK: 'Hong Kong', RU: 'Russia', FR: 'France',
+    DE: 'Germany', GB: 'United Kingdom', BR: 'Brazil', PH: 'Philippines',
+    ID: 'Indonesia', TH: 'Thailand', PL: 'Poland', AU: 'Australia',
+    CA: 'Canada', MX: 'Mexico', AR: 'Argentina', CL: 'Chile',
+};
+
+function renderOsuModeStats(mode) {
+    const u = osuModeData[mode];
+    if (!u) return;
+    document.getElementById('osu-rank').textContent = u.pp_rank != null ? '#' + parseInt(u.pp_rank).toLocaleString() : '#—';
+    document.getElementById('osu-pp').textContent = u.pp_raw != null ? Math.round(parseFloat(u.pp_raw)).toLocaleString() : '—';
+    document.getElementById('osu-accuracy').textContent = u.accuracy != null ? parseFloat(u.accuracy).toFixed(2) + '%' : '—';
+    document.getElementById('osu-playcount').textContent = u.playcount != null ? parseInt(u.playcount).toLocaleString() : '—';
+}
+
+async function fetchOsuProfile() {
+    if (osuProfileLoaded) return;
+    try {
+        const results = await Promise.all([0,1,2,3].map(m => osuFetch(`u=${OSU_USER_ID}&m=${m}`)));
+        osuModeData = results.map(r => (r && r.length > 0) ? r[0] : null);
+        const u = osuModeData[0];
+        if (!u) return;
+
+        document.getElementById('osu-avatar').src = `https://a.ppy.sh/${u.user_id}`;
+        document.getElementById('osu-profile-name').textContent = u.username;
+        document.getElementById('osu-profile-country').textContent = COUNTRY_NAMES[u.country] || u.country;
+
+        renderOsuModeStats(0);
+
+        const totalPP = osuModeData.reduce((sum, m) => sum + (m && m.pp_raw != null ? parseFloat(m.pp_raw) : 0), 0);
+        document.getElementById('osu-total-pp-value').textContent = Math.round(totalPP).toLocaleString();
+        document.getElementById('osu-total-pp').style.display = totalPP > 0 ? '' : 'none';
+
+        document.getElementById('osu-profile-card').style.display = 'block';
+        osuProfileLoaded = true;
+
+        document.querySelectorAll('.osu-mode-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelector('.osu-mode-tab.active').classList.remove('active');
+                this.classList.add('active');
+                renderOsuModeStats(parseInt(this.dataset.mode));
+            });
+        });
+    } catch (e) {
+        console.error('Failed to load osu! profile:', e);
+    }
+}
+
+/* ===== Visitor Profile Lookup ===== */
+async function lookupVisitorProfile() {
+    const input = document.getElementById('visitor-lookup-input').value.trim();
+    if (!input) return;
+    const status = document.getElementById('visitor-lookup-status');
+    const result = document.getElementById('visitor-lookup-result');
+    status.innerText = t('osu_searching') || 'Searching...';
+    status.style.color = '#f9a8d4';
+    result.style.display = 'none';
+
+    const isId = /^\d+$/.test(input);
+    const param = isId ? `u=${input}` : `u=${encodeURIComponent(input)}&type=string`;
+
+    try {
+        const results = await Promise.all([0,1,2,3].map(m => osuFetch(`${param}&m=${m}`)));
+        const modeData = results.map(r => (r && r.length > 0) ? r[0] : null);
+        const u = modeData[0];
+        if (!u) { status.innerText = t('osu_not_found') || 'Not found'; status.style.color = '#ff5252'; return; }
+
+        status.innerText = '';
+        document.getElementById('visitor-avatar').src = `https://a.ppy.sh/${u.user_id}`;
+        document.getElementById('visitor-result-name').textContent = u.username;
+        document.getElementById('visitor-result-country').textContent = COUNTRY_NAMES[u.country] || u.country;
+
+        const modeNames = ['⭕ Standard', '🥁 Taiko', '🍎 Catch', '🎹 Mania'];
+        const grid = document.getElementById('visitor-modes-grid');
+        grid.innerHTML = modeData.map((m, i) => {
+            if (!m || m.pp_raw == null) return `<div class="visitor-mode-mini"><div class="visitor-mode-name">${modeNames[i]}</div><div class="visitor-mode-pp">—</div></div>`;
+            return `<div class="visitor-mode-mini"><div class="visitor-mode-name">${modeNames[i]}</div><div class="visitor-mode-pp">${Math.round(parseFloat(m.pp_raw)).toLocaleString()}</div></div>`;
+        }).join('');
+
+        const totalPP = modeData.reduce((sum, m) => sum + (m && m.pp_raw != null ? parseFloat(m.pp_raw) : 0), 0);
+        document.getElementById('visitor-total-pp-value').textContent = Math.round(totalPP).toLocaleString();
+        result.style.display = 'block';
+    } catch (e) {
+        console.error('Visitor lookup failed:', e);
+        status.innerText = 'Error';
+        status.style.color = '#ff5252';
+    }
+}
