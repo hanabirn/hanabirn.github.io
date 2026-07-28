@@ -159,6 +159,58 @@
     }
 }
 
+/* ===================== 📲 PWA Install Banner ===================== */
+.pwa-install-banner {
+    position: fixed;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    z-index: 500;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-widget);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-card);
+    border-radius: 30px;
+    padding: 10px 14px 10px 18px;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+    max-width: 92vw;
+}
+.pwa-install-icon {
+    font-size: 1.2rem;
+}
+.pwa-install-text {
+    font-size: 0.85rem;
+    color: var(--text);
+    white-space: nowrap;
+}
+.pwa-install-btn {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-light-purple));
+    color: #fff;
+    border: none;
+    padding: 7px 16px;
+    border-radius: 18px;
+    font-size: 0.82rem;
+    font-weight: bold;
+    cursor: pointer;
+    white-space: nowrap;
+}
+.pwa-install-close {
+    background: none;
+    border: none;
+    color: var(--text-accent);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0 2px;
+    line-height: 1;
+}
+@media (max-width: 480px) {
+    .pwa-install-text {
+        display: none;
+    }
+}
+
 /* ===================== 🕐 Clock & Weather Widget ===================== */
 .clock-widget {
     position: fixed;

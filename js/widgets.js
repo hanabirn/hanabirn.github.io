@@ -201,6 +201,40 @@ function guidePage(dir) {
     showGuidePage(guideCurrentPage + dir, totalPages);
 }
 
+/* ===================== 📲 PWA Install Prompt ===================== */
+
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if (localStorage.getItem('pwa_install_dismissed')) return;
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.style.display = 'flex';
+});
+
+function installPwa() {
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.style.display = 'none';
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.finally(() => {
+        deferredInstallPrompt = null;
+    });
+}
+
+function dismissPwaInstall() {
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.style.display = 'none';
+    localStorage.setItem('pwa_install_dismissed', '1');
+}
+
+window.addEventListener('appinstalled', () => {
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.style.display = 'none';
+    deferredInstallPrompt = null;
+});
+
 /* ===================== Init ===================== */
 
 document.addEventListener('DOMContentLoaded', () => {

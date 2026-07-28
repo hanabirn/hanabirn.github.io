@@ -381,6 +381,68 @@ function renderOsuModeStats(mode) {
     document.getElementById('osu-playcount').textContent = u.playcount != null ? parseInt(u.playcount).toLocaleString() : '—';
 }
 
+function calcOsuAccuracy(r, mode) {
+    const c300 = parseInt(r.count300) || 0;
+    const c100 = parseInt(r.count100) || 0;
+    const c50 = parseInt(r.count50) || 0;
+    const cmiss = parseInt(r.countmiss) || 0;
+    const cgeki = parseInt(r.countgeki) || 0;
+    const ckatu = parseInt(r.countkatu) || 0;
+    let acc = 0;
+    if (mode === 1) {
+        const total = c300 + c100 + cmiss;
+        acc = total > 0 ? (c300 + c100 * 0.5) / total : 0;
+    } else if (mode === 2) {
+        const total = c300 + c100 + c50 + cmiss + ckatu;
+        acc = total > 0 ? (c300 + c100 + c50) / total : 0;
+    } else if (mode === 3) {
+        const total = cgeki + c300 + ckatu + c100 + c50 + cmiss;
+        acc = total > 0 ? (cgeki * 300 + c300 * 300 + ckatu * 200 + c100 * 100 + c50 * 50) / (total * 300) : 0;
+    } else {
+        const total = c300 + c100 + c50 + cmiss;
+        acc = total > 0 ? (c300 * 300 + c100 * 100 + c50 * 50) / (total * 300) : 0;
+    }
+    return (acc * 100).toFixed(2);
+}
+
+const OSU_RANK_CLASS = { XH: 'ss', X: 'ss', SH: 's', S: 's', A: 'a', B: 'b', C: 'c', D: 'd', F: 'f' };
+
+async function renderOsuRecentPlays(userId, mode, listId, wrapId) {
+    const container = document.getElementById(listId);
+    const wrap = document.getElementById(wrapId);
+    if (!container || !wrap) return;
+    wrap.style.display = 'none';
+    try {
+        const recent = await osuFetch(`recent=${userId}&limit=5&m=${mode}`);
+        if (!recent || recent.length === 0) return;
+        const beatmapIds = [...new Set(recent.map(r => r.beatmap_id))];
+        const beatmapResults = await Promise.all(beatmapIds.map(id => osuFetch(`b=${id}`)));
+        const beatmapMap = {};
+        beatmapIds.forEach((id, i) => {
+            const bm = beatmapResults[i] && beatmapResults[i][0];
+            if (bm) beatmapMap[id] = bm;
+        });
+        container.innerHTML = recent.map(r => {
+            const bm = beatmapMap[r.beatmap_id];
+            const title = bm ? `${bm.title} [${bm.version}]` : `Beatmap #${r.beatmap_id}`;
+            const acc = calcOsuAccuracy(r, mode);
+            const rankClass = OSU_RANK_CLASS[r.rank] || 'f';
+            const d = new Date(String(r.date).replace(' ', 'T') + 'Z');
+            const dateStr = isNaN(d) ? '' : `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+            return `<div class="osu-recent-item">
+                <span class="osu-recent-rank rank-${rankClass}">${r.rank || '—'}</span>
+                <div class="osu-recent-info">
+                    <div class="osu-recent-song">${escHtml(title)}</div>
+                    <div class="osu-recent-meta">${acc}% · ${r.maxcombo}x · ${dateStr}</div>
+                </div>
+            </div>`;
+        }).join('');
+        wrap.style.display = 'block';
+    } catch (e) {
+        console.error('Recent plays fetch failed:', e);
+    }
+}
+
 async function fetchOsuProfile() {
     if (osuProfileLoaded) return;
     try {
@@ -401,12 +463,15 @@ async function fetchOsuProfile() {
 
         document.getElementById('osu-profile-card').style.display = 'block';
         osuProfileLoaded = true;
+        renderOsuRecentPlays(OSU_USER_ID, 0, 'osu-recent-list', 'osu-recent-plays');
 
         document.querySelectorAll('.osu-mode-tab').forEach(tab => {
             tab.addEventListener('click', function() {
                 document.querySelector('.osu-mode-tab.active').classList.remove('active');
                 this.classList.add('active');
-                renderOsuModeStats(parseInt(this.dataset.mode));
+                const mode = parseInt(this.dataset.mode);
+                renderOsuModeStats(mode);
+                renderOsuRecentPlays(OSU_USER_ID, mode, 'osu-recent-list', 'osu-recent-plays');
             });
         });
     } catch (e) {
@@ -448,6 +513,7 @@ async function lookupVisitorProfile() {
         const totalPP = modeData.reduce((sum, m) => sum + (m && m.pp_raw != null ? parseFloat(m.pp_raw) : 0), 0);
         document.getElementById('visitor-total-pp-value').textContent = Math.round(totalPP).toLocaleString();
         result.style.display = 'block';
+        renderOsuRecentPlays(u.user_id, 0, 'visitor-recent-list', 'visitor-recent-plays');
     } catch (e) {
         console.error('Visitor lookup failed:', e);
         status.innerText = 'Error';

@@ -130,6 +130,9 @@
                         <span data-i18n="quiz_zh">&#x4E2D;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
                 </div>
+                <div class="streak-display" id="streak-display" style="display:none">
+                    &#x1F525; <span id="streak-count">0</span> <span data-i18n="streak_suffix">&#x5929;&#x9023;&#x7E8C;</span>
+                </div>
                 <div class="quiz-tools" id="quiz-tools">
                     <button class="tool-btn" onclick="showMistakeBook()">&#x1F4D6; <span data-i18n="tool_mistakes">&#x932F;&#x984C;&#x672C;</span> <span id="mistake-badge" class="tool-badge" style="display:none">0</span></button>
                     <button class="tool-btn" onclick="showQuizStats()">&#x1F4CA; <span data-i18n="tool_stats">&#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></button>
@@ -163,7 +166,6 @@
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="closeMasteredList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
-            </div>
             </div>
 
             <div class="mode-card" id="listening-setup-card" style="display: none;">
@@ -432,6 +434,10 @@
                     <span data-i18n="osu_total_pp">&#x5168;&#x6A21;&#x5F0F; PP</span>
                     <span class="osu-total-pp-value" id="osu-total-pp-value">—</span>
                 </div>
+                <div class="osu-recent-plays" id="osu-recent-plays" style="display:none;">
+                    <div class="osu-recent-title" data-i18n="osu_recent_title">&#x1F3AE; &#x6700;&#x8FD1;&#x904A;&#x73A9;</div>
+                    <div class="osu-recent-list" id="osu-recent-list"></div>
+                </div>
             </div>
 
             <div class="visitor-lookup-card" id="visitor-lookup-card">
@@ -455,6 +461,10 @@
                     <div class="osu-total-pp" id="visitor-total-pp">
                         <span data-i18n="osu_total_pp">全模式 PP</span>
                         <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
+                    </div>
+                    <div class="osu-recent-plays" id="visitor-recent-plays" style="display:none;">
+                        <div class="osu-recent-title" data-i18n="osu_recent_title">🎮 最近遊玩</div>
+                        <div class="osu-recent-list" id="visitor-recent-list"></div>
                     </div>
                 </div>
             </div>
@@ -605,6 +615,13 @@
             </div>
             <input type="range" id="bgm-volume" min="0" max="100" value="40" oninput="setBgmVolume(this.value)" title="Volume">
         </div>
+    </div>
+
+    <div class="pwa-install-banner" id="pwa-install-banner" style="display:none">
+        <span class="pwa-install-icon">&#x1F4F2;</span>
+        <span class="pwa-install-text" data-i18n="pwa_install_text">&#x52A0;&#x5230;&#x4E3B;&#x756B;&#x9762;&#xFF0C;&#x96A8;&#x6642;&#x958B;&#x555F;&#xFF01;</span>
+        <button class="pwa-install-btn" onclick="installPwa()" data-i18n="pwa_install_btn">&#x5B89;&#x88DD;</button>
+        <button class="pwa-install-close" onclick="dismissPwaInstall()" aria-label="close">&times;</button>
     </div>
 
     <div class="clock-widget" id="clock-widget">

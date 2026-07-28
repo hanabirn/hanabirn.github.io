@@ -829,6 +829,7 @@ function showResults() {
             score: score,
             pct: percentage
         });
+        checkAchievements();
     }
 
     document.getElementById('result-summary').innerHTML =
@@ -875,6 +876,7 @@ function backToLanguage() {
     document.getElementById('flashcard-setup-card').style.display = 'none';
     document.getElementById('listening-setup-card').style.display = 'none';
     updateMistakeBadge();
+    updateStreakBadge();
 }
 
 /* ===================== 錯題本 Mistake Notebook ===================== */
@@ -1052,6 +1054,35 @@ function saveQuizRecord(rec) {
     localStorage.setItem('quiz_records', JSON.stringify(list));
 }
 
+function calcStreak(recs) {
+    if (!recs || recs.length === 0) return 0;
+    const dayKey = ts => {
+        const d = new Date(ts);
+        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+    };
+    const days = new Set(recs.map(r => dayKey(r.date)));
+    const cursor = new Date();
+    cursor.setHours(0, 0, 0, 0);
+    if (!days.has(dayKey(cursor.getTime()))) {
+        cursor.setDate(cursor.getDate() - 1);
+    }
+    let streak = 0;
+    while (days.has(dayKey(cursor.getTime()))) {
+        streak++;
+        cursor.setDate(cursor.getDate() - 1);
+    }
+    return streak;
+}
+
+function updateStreakBadge() {
+    const wrap = document.getElementById('streak-display');
+    const countEl = document.getElementById('streak-count');
+    if (!wrap || !countEl) return;
+    const streak = calcStreak(getQuizRecords());
+    countEl.textContent = streak;
+    wrap.style.display = streak > 0 ? '' : 'none';
+}
+
 function showQuizStats() {
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('setup-card').style.display = 'none';
@@ -1075,13 +1106,17 @@ function renderQuizStats() {
     const avg = Math.round(recs.reduce((s, r) => s + r.pct, 0) / total);
     const best = Math.max(...recs.map(r => r.score));
     const totalQ = recs.reduce((s, r) => s + r.total, 0);
+    const streak = calcStreak(recs);
 
     let html = `<div class="stats-summary">
         <div class="stats-tile"><div class="stats-num">${total}</div><div class="stats-label">${t('stats_total')}</div></div>
         <div class="stats-tile"><div class="stats-num">${avg}%</div><div class="stats-label">${t('stats_avg')}</div></div>
         <div class="stats-tile"><div class="stats-num">${best}</div><div class="stats-label">${t('stats_best')}</div></div>
         <div class="stats-tile"><div class="stats-num">${totalQ}</div><div class="stats-label">${t('stats_questions')}</div></div>
+        <div class="stats-tile"><div class="stats-num">&#x1F525;${streak}</div><div class="stats-label">${t('stats_streak')}</div></div>
     </div>`;
+
+    html += renderAchievementsHTML();
 
     const last = recs.slice(-20);
     if (last.length >= 2) {
@@ -1122,6 +1157,65 @@ function renderQuizStats() {
     html += '</tbody></table>';
 
     container.innerHTML = html;
+}
+
+/* ===================== 成就系統 Achievements ===================== */
+
+const ACHIEVEMENTS = [
+    { id: 'first_quiz', icon: '🎉', titleKey: 'ach_first_quiz', descKey: 'ach_first_quiz_desc', check: d => d.total >= 1 },
+    { id: 'quiz_10', icon: '📚', titleKey: 'ach_quiz_10', descKey: 'ach_quiz_10_desc', check: d => d.total >= 10 },
+    { id: 'streak_3', icon: '🔥', titleKey: 'ach_streak_3', descKey: 'ach_streak_3_desc', check: d => d.streak >= 3 },
+    { id: 'streak_7', icon: '⚡', titleKey: 'ach_streak_7', descKey: 'ach_streak_7_desc', check: d => d.streak >= 7 },
+    { id: 'perfect', icon: '💯', titleKey: 'ach_perfect', descKey: 'ach_perfect_desc', check: d => d.hasPerfect },
+    { id: 'mastered_50', icon: '🏆', titleKey: 'ach_mastered_50', descKey: 'ach_mastered_50_desc', check: d => d.mastered >= 50 },
+];
+
+function getUnlockedAchievements() {
+    try { return JSON.parse(localStorage.getItem('quiz_achievements')) || []; }
+    catch { return []; }
+}
+
+function computeAchievementData() {
+    const recs = getQuizRecords();
+    return {
+        total: recs.length,
+        streak: calcStreak(recs),
+        hasPerfect: recs.some(r => r.pct === 100),
+        mastered: getFlashcardKnown().length
+    };
+}
+
+function checkAchievements() {
+    const data = computeAchievementData();
+    const unlocked = new Set(getUnlockedAchievements());
+    const newly = [];
+    ACHIEVEMENTS.forEach(a => {
+        if (!unlocked.has(a.id) && a.check(data)) {
+            unlocked.add(a.id);
+            newly.push(a);
+        }
+    });
+    if (newly.length) {
+        localStorage.setItem('quiz_achievements', JSON.stringify([...unlocked]));
+        newly.forEach((a, i) => {
+            setTimeout(() => showShareToast(`${a.icon} ${t('ach_unlocked')}: ${t(a.titleKey)}`), i * 1200);
+        });
+    }
+    return unlocked;
+}
+
+function renderAchievementsHTML() {
+    const unlocked = checkAchievements();
+    const items = ACHIEVEMENTS.map(a => {
+        const isUnlocked = unlocked.has(a.id);
+        return `<div class="achievement-badge${isUnlocked ? '' : ' locked'}">
+            <div class="achievement-icon">${a.icon}</div>
+            <div class="achievement-title">${t(a.titleKey)}</div>
+            <div class="achievement-desc">${t(a.descKey)}</div>
+        </div>`;
+    }).join('');
+    return `<div class="stats-chart-title">${t('achievements_title')}</div>
+    <div class="achievement-grid">${items}</div>`;
 }
 
 function closeQuizTools() {
@@ -1654,6 +1748,7 @@ function flashcardRate(known) {
     if (known) flashcardKnownSet.add(key);
     else flashcardKnownSet.delete(key);
     saveFlashcardKnown();
+    checkAchievements();
     renderFlashcard();
 }
 
@@ -2182,3 +2277,5 @@ function submitListeningAnswer() {
 }
 
 document.addEventListener('DOMContentLoaded', updateMistakeBadge);
+document.addEventListener('DOMContentLoaded', updateStreakBadge);
+document.addEventListener('DOMContentLoaded', checkAchievements);

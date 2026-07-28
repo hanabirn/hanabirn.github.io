@@ -3,9 +3,12 @@ const GUESTBOOK_API = 'https://script.google.com/macros/s/AKfycbx8V81ni-z8gCgLsV
 
 let guestbookMessages = [];
 let guestbookLoading = false;
+const GUESTBOOK_PAGE_SIZE = 10;
+let guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
 
 async function loadGuestbookMessages() {
     guestbookLoading = true;
+    guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
     const container = document.getElementById('guestbook-local');
     container.innerHTML = `<div class="guestbook-loading">${t('guestbook_loading') || 'Loading...'}</div>`;
     try {
@@ -26,7 +29,8 @@ function renderGuestbookMessages() {
         return;
     }
 
-    container.innerHTML = guestbookMessages.map(m => {
+    const visible = guestbookMessages.slice(0, guestbookVisibleCount);
+    let html = visible.map(m => {
         const d = new Date(m.time);
         const timeStr = d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
         return `<div class="guestbook-msg-item">
@@ -35,6 +39,17 @@ function renderGuestbookMessages() {
             <div class="guestbook-msg-time">${timeStr}</div>
         </div>`;
     }).join('');
+
+    if (guestbookMessages.length > guestbookVisibleCount) {
+        html += `<button class="guestbook-load-more" onclick="loadMoreGuestbookMessages()">${t('guestbook_load_more')}</button>`;
+    }
+
+    container.innerHTML = html;
+}
+
+function loadMoreGuestbookMessages() {
+    guestbookVisibleCount += GUESTBOOK_PAGE_SIZE;
+    renderGuestbookMessages();
 }
 
 async function handleGuestbookSubmit(event) {
