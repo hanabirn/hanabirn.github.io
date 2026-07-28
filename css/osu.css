@@ -126,6 +126,26 @@
     box-shadow: 0 0 18px rgba(244,114,182,0.3);
 }
 
+.osu-search-row {
+    margin-bottom: 16px;
+}
+#osu-search-input {
+    width: 100%;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text);
+    font-size: 0.9rem;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+#osu-search-input:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+    box-shadow: 0 0 15px rgba(192,132,252,0.25);
+}
+
 .osu-collection {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -228,6 +248,31 @@
 .osu-fav-btn:hover {
     color: #f43f5e;
     transform: scale(1.15);
+}
+
+.osu-open-btn {
+    position: absolute;
+    top: 8px;
+    right: 72px;
+    background: rgba(0,0,0,0.5);
+    color: rgba(255,255,255,0.6);
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    z-index: 3;
+    opacity: 0;
+}
+.osu-card:hover .osu-open-btn { opacity: 1; }
+.osu-open-btn:hover {
+    color: #fff;
+    background: rgba(52,211,153,0.5);
 }
 
 .osu-copy-btn {

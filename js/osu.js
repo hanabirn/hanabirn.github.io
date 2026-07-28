@@ -5,7 +5,14 @@ let osuCurrentTab = 'standard';
 let osuCurrentAudio = null;
 let osuVolume = 0.4;
 let osuPage = 0;
+let osuSearchQuery = '';
 const OSU_PAGE_SIZE = 8;
+
+function filterOsuCollection(query) {
+    osuSearchQuery = query.trim();
+    osuPage = 0;
+    renderOsuCollection();
+}
 
 async function sha256(str) {
     const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
@@ -31,6 +38,11 @@ async function setupOsuPassword() {
     if (pw !== pw2) { alert(t('osu_password_mismatch')); return; }
     await setOsuPassword(pw);
     alert(t('osu_password_set'));
+}
+
+function openInOsuClient(setId, event) {
+    event.stopPropagation();
+    window.location.href = `osu://s/${setId}`;
 }
 
 function copyBeatmapId(setId, event) {
@@ -108,6 +120,44 @@ function getOsuCollection() {
 
 function saveOsuCollection(col) {
     localStorage.setItem('osu_collection', JSON.stringify(col));
+}
+
+function exportOsuCollection() {
+    const data = {
+        collection: getOsuCollection(),
+        favorites: getOsuFavorites(),
+        exportedAt: new Date().toISOString()
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `osu-collection-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    showShareToast(t('osu_export_done'));
+}
+
+async function importOsuCollection(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    if (!await verifyOsuPassword()) { event.target.value = ''; return; }
+    try {
+        const text = await file.text();
+        const data = JSON.parse(text);
+        if (!data.collection || !OSU_MODES.every(m => Array.isArray(data.collection[m]))) {
+            throw new Error('invalid format');
+        }
+        saveOsuCollection(data.collection);
+        if (Array.isArray(data.favorites)) saveOsuFavorites(data.favorites);
+        renderOsuCollection();
+        showShareToast(t('osu_import_done'));
+    } catch (e) {
+        console.error('Import failed:', e);
+        alert(t('osu_import_fail'));
+    } finally {
+        event.target.value = '';
+    }
 }
 
 function parseOsuInput(input) {
@@ -305,10 +355,21 @@ function renderOsuCollection() {
         });
     }
 
+    if (osuSearchQuery) {
+        const q = osuSearchQuery.toLowerCase();
+        sets = sets.filter(s =>
+            s.title.toLowerCase().includes(q) ||
+            s.artist.toLowerCase().includes(q) ||
+            s.creator.toLowerCase().includes(q)
+        );
+    }
+
     if (sets.length === 0) {
-        const msg = osuCurrentTab === 'favorites'
-            ? `${t('osu_empty_fav')}<br><span>${t('osu_empty_fav_hint')}</span>`
-            : `${t('osu_empty_collection')}<br><span>${t('osu_empty_hint')}</span>`;
+        const msg = osuSearchQuery
+            ? t('osu_search_empty')
+            : osuCurrentTab === 'favorites'
+                ? `${t('osu_empty_fav')}<br><span>${t('osu_empty_fav_hint')}</span>`
+                : `${t('osu_empty_collection')}<br><span>${t('osu_empty_hint')}</span>`;
         container.innerHTML = `<div class="osu-empty">${msg}</div>`;
         paginationEl.innerHTML = '';
         return;
@@ -329,6 +390,7 @@ function renderOsuCollection() {
         <div class="osu-card" onclick="window.open('https://osu.ppy.sh/beatmapsets/${set.beatmapset_id}','_blank')">
             <div class="osu-card-bg" style="background-image:url('${coverUrl}')"></div>
             <div class="osu-card-overlay"></div>
+            <button class="osu-open-btn" onclick="openInOsuClient(${set.beatmapset_id}, event)" title="${t('osu_open_client')}">🎮</button>
             <button class="osu-copy-btn" onclick="copyBeatmapId(${set.beatmapset_id}, event)" title="複製 ID">📋</button>
             <button class="osu-play-btn" onclick="playOsuPreview(${set.beatmapset_id}, event)" title="播放預覽">&#9654;</button>
             <button class="osu-fav-btn ${isFav ? 'active' : ''}" onclick="toggleOsuFavorite(${set.beatmapset_id}, event)" title="${isFav ? '取消最愛' : '加入最愛'}">♥</button>

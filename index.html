@@ -330,6 +330,9 @@
                     <span>&#128264;</span>
                     <input type="range" id="osu-volume" min="0" max="1" step="0.05" value="0.4" oninput="osuSetVolume(this.value)">
                     <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="&#x66F4;&#x65B0;Beatmap">&#x21bb;</button>
+                    <button class="osu-refresh-all" onclick="exportOsuCollection()" data-i18n-title="osu_export" title="&#x532F;&#x51FA;&#x6536;&#x85CF;">&#x1F4E4;</button>
+                    <button class="osu-refresh-all" onclick="document.getElementById('osu-import-file').click()" data-i18n-title="osu_import" title="&#x532F;&#x5165;&#x6536;&#x85CF;">&#x1F4E5;</button>
+                    <input type="file" id="osu-import-file" accept="application/json" style="display:none" onchange="importOsuCollection(event)">
                 </div>
             </div>
 
@@ -339,6 +342,10 @@
                 <button class="osu-tab" onclick="switchOsuTab('taiko', this)">&#x1F941; Taiko</button>
                 <button class="osu-tab" onclick="switchOsuTab('catch', this)">&#x1F34E; Catch</button>
                 <button class="osu-tab" onclick="switchOsuTab('mania', this)">&#x1F3B9; Mania</button>
+            </div>
+
+            <div class="osu-search-row">
+                <input type="text" id="osu-search-input" data-i18n-placeholder="osu_search_placeholder" placeholder="&#x641C;&#x5C0B;&#x66F2;&#x540D;&#x6216;&#x4F5C;&#x8005;..." oninput="filterOsuCollection(this.value)">
             </div>
 
             <div id="osu-collection" class="osu-collection"></div>
