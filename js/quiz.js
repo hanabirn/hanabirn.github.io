@@ -142,6 +142,17 @@ function selectLanguage(lang) {
     loadSheetData(SHEETS[lang]);
 }
 
+function saveVocabCache(lang) {
+    try {
+        localStorage.setItem('quiz_cache_' + lang, JSON.stringify({ vocabularyList, readingList }));
+    } catch (e) {}
+}
+
+function getVocabCache(lang) {
+    try { return JSON.parse(localStorage.getItem('quiz_cache_' + lang)); }
+    catch { return null; }
+}
+
 function loadSheetData(url) {
     const statusMsg = document.getElementById('status-msg');
     const setupCard = document.getElementById('setup-card');
@@ -160,6 +171,7 @@ function loadSheetData(url) {
 
     function finalizeLoad() {
         if (vocabularyList.length >= 4) {
+            saveVocabCache(currentLang);
             statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
             statusMsg.style.color = '#f472b6';
             if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
@@ -201,8 +213,17 @@ function loadSheetData(url) {
             }
         },
         error: function() {
-            statusMsg.innerText = '讀取失敗，請確認試算表共用權限！';
-            statusMsg.style.color = '#ff5252';
+            const cached = getVocabCache(currentLang);
+            if (cached && cached.vocabularyList && cached.vocabularyList.length >= 4) {
+                vocabularyList = cached.vocabularyList;
+                readingList = cached.readingList || [];
+                statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
+                statusMsg.style.color = '#fbbf24';
+                if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
+            } else {
+                statusMsg.innerText = t('load_fail_no_cache');
+                statusMsg.style.color = '#ff5252';
+            }
         }
     });
 }
