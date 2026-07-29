@@ -93,12 +93,12 @@
         <h1 data-i18n="title">Hanabiの小天地</h1>
         <p class="subtitle" data-i18n="subtitle">&#x6301;&#x7E8C;&#x5B78;&#x7FD2;&#x671D;&#x8457;&#x81EA;&#x5DF1;&#x7684;&#x5922;&#x60F3;&#x524D;&#x9032;&#x5427; !</p>
         <nav class="main-nav">
-            <button class="nav-btn active" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
-            <button class="nav-btn" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
-            <button class="nav-btn" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
-            <button class="nav-btn" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
-            <button class="nav-btn" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
-            <button class="nav-btn" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
+            <button class="nav-btn active" data-tab="guide" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
+            <button class="nav-btn" data-tab="about" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
+            <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
+            <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
+            <button class="nav-btn" data-tab="osu" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
+            <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
     </header>
 
@@ -630,6 +630,20 @@
     <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
     <button class="reload-btn" id="reload-btn" onclick="location.reload()" data-i18n-title="reload_title" title="&#x91CD;&#x65B0;&#x6574;&#x7406;">&#x21bb;</button>
     <button class="season-btn" id="season-btn" onclick="cycleSeason()" title="&#x5207;&#x63DB;&#x5B63;&#x7BC0;"></button>
+    <button class="tab-settings-btn" id="tab-settings-btn" onclick="toggleTabSettings()" data-i18n-title="tab_settings_title" title="&#x2699;&#xFE0F; &#x986F;&#x793A;&#x8A2D;&#x5B9A;">&#x2699;&#xFE0F;</button>
+
+    <div class="tab-settings-overlay" id="tab-settings-overlay" style="display:none" onclick="if(event.target===this) toggleTabSettings()">
+        <div class="tab-settings-panel">
+            <h3 data-i18n="tab_settings_title">&#x2699;&#xFE0F; &#x986F;&#x793A;&#x8A2D;&#x5B9A;</h3>
+            <p class="tab-settings-desc" data-i18n="tab_settings_desc">&#x9078;&#x64C7;&#x8981;&#x5728;&#x5C0E;&#x89BD;&#x5217;&#x986F;&#x793A;&#x7684;&#x529F;&#x80FD;&#x9801;&#x9762;</p>
+            <div class="tab-settings-list" id="tab-settings-list"></div>
+            <div class="tab-settings-actions">
+                <button class="tab-settings-copy" onclick="copyTabSettingsLink()" data-i18n="tab_settings_copy">&#x1F517; &#x8907;&#x88FD;&#x76EE;&#x524D;&#x8A2D;&#x5B9A;&#x7684;&#x9023;&#x7D50;</button>
+                <button class="tab-settings-reset" onclick="resetTabSettings()" data-i18n="tab_settings_reset">&#x21BA; &#x5168;&#x90E8;&#x986F;&#x793A;</button>
+                <button class="tab-settings-close" onclick="toggleTabSettings()" data-i18n="tab_settings_done">&#x5B8C;&#x6210;</button>
+            </div>
+        </div>
+    </div>
 
     <div class="bgm-player" id="bgm-player">
         <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="BGM"></button>

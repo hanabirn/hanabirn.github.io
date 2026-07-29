@@ -24,6 +24,118 @@ function switchPage(page, el) {
     }, 200);
 }
 
+/* ===================== Tab Visibility Settings ===================== */
+
+const ALL_TABS = ['guide', 'about', 'quiz', 'music', 'osu', 'guestbook'];
+
+function getTabVisibility() {
+    const v = {};
+    ALL_TABS.forEach(k => v[k] = true);
+    try {
+        const saved = JSON.parse(localStorage.getItem('nav_tab_visibility'));
+        if (saved && typeof saved === 'object') {
+            ALL_TABS.forEach(k => { if (saved[k] === false) v[k] = false; });
+        }
+    } catch {}
+    return v;
+}
+
+function saveTabVisibility(v) {
+    localStorage.setItem('nav_tab_visibility', JSON.stringify(v));
+}
+
+function applyTabVisibility() {
+    const v = getTabVisibility();
+    if (!ALL_TABS.some(k => v[k])) v.guide = true;
+
+    ALL_TABS.forEach(key => {
+        const btn = document.querySelector(`.nav-btn[data-tab="${key}"]`);
+        if (btn) btn.style.display = v[key] ? '' : 'none';
+    });
+
+    const activeBtn = document.querySelector('.nav-btn.active');
+    const activeKey = activeBtn && activeBtn.dataset.tab;
+    if (activeKey && !v[activeKey]) {
+        const firstVisible = ALL_TABS.find(k => v[k]);
+        const btn = document.querySelector(`.nav-btn[data-tab="${firstVisible}"]`);
+        if (btn) switchPage(firstVisible, btn);
+    }
+}
+
+function renderTabSettingsList() {
+    const v = getTabVisibility();
+    const container = document.getElementById('tab-settings-list');
+    if (!container) return;
+    container.innerHTML = ALL_TABS.map(key => {
+        const label = t('nav_' + key) || key;
+        return `<label class="tab-settings-item">
+            <input type="checkbox" data-tab-key="${key}" ${v[key] ? 'checked' : ''} onchange="onTabSettingChange(this)">
+            <span>${label}</span>
+        </label>`;
+    }).join('');
+}
+
+function onTabSettingChange(input) {
+    const key = input.dataset.tabKey;
+    const v = getTabVisibility();
+    v[key] = input.checked;
+    if (!ALL_TABS.some(k => v[k])) {
+        input.checked = true;
+        alert(t('tab_settings_need_one'));
+        return;
+    }
+    saveTabVisibility(v);
+    applyTabVisibility();
+}
+
+function toggleTabSettings() {
+    const overlay = document.getElementById('tab-settings-overlay');
+    if (!overlay) return;
+    const show = overlay.style.display === 'none' || !overlay.style.display;
+    if (show) renderTabSettingsList();
+    overlay.style.display = show ? 'flex' : 'none';
+}
+
+function resetTabSettings() {
+    const v = {};
+    ALL_TABS.forEach(k => v[k] = true);
+    saveTabVisibility(v);
+    applyTabVisibility();
+    renderTabSettingsList();
+}
+
+function copyTabSettingsLink() {
+    const v = getTabVisibility();
+    const visible = ALL_TABS.filter(k => v[k]);
+    const url = new URL(location.href);
+    url.search = '';
+    url.searchParams.set('tabs', visible.join(','));
+    const link = url.toString();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(link)
+            .then(() => showShareToast(t('tab_settings_copied')))
+            .catch(() => prompt(t('tab_settings_copy'), link));
+    } else {
+        prompt(t('tab_settings_copy'), link);
+    }
+}
+
+function initTabVisibility() {
+    const params = new URLSearchParams(location.search);
+    const tabsParam = params.get('tabs');
+    if (tabsParam !== null) {
+        const requested = tabsParam.split(',').map(s => s.trim()).filter(k => ALL_TABS.includes(k));
+        const v = {};
+        ALL_TABS.forEach(k => v[k] = requested.includes(k));
+        if (!ALL_TABS.some(k => v[k])) v.guide = true;
+        saveTabVisibility(v);
+        params.delete('tabs');
+        const cleanUrl = location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash;
+        history.replaceState(null, '', cleanUrl);
+    }
+    applyTabVisibility();
+}
+
 let currentSpotifyPlaylist = PLAYLISTS.all;
 
 function switchMusicTab(lang, btn) {
@@ -2412,3 +2524,4 @@ function submitListeningAnswer() {
 document.addEventListener('DOMContentLoaded', updateMistakeBadge);
 document.addEventListener('DOMContentLoaded', updateStreakBadge);
 document.addEventListener('DOMContentLoaded', checkAchievements);
+document.addEventListener('DOMContentLoaded', initTabVisibility);
