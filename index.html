@@ -419,11 +419,6 @@
                         <div class="game-option-name" data-i18n="game_whack_name">&#x6253;&#x5730;&#x9F20;&#x5F0F;&#x55AE;&#x5B57;&#x904A;&#x6232;</div>
                         <div class="game-option-desc" data-i18n="game_whack_desc">&#x770B;&#x610F;&#x601D;&#x627E;&#x55AE;&#x5B57;&#xFF0C;&#x8003;&#x9A57;&#x4F60;&#x7684;&#x53CD;&#x61C9;&#x529B;&#xFF01;</div>
                     </div>
-                    <div class="game-option" onclick="openGame('rhythm')">
-                        <div class="game-option-icon">&#x1F3B5;</div>
-                        <div class="game-option-name" data-i18n="game_rhythm_name">&#x7BC0;&#x594F;&#x9EDE;&#x64CA;</div>
-                        <div class="game-option-desc" data-i18n="game_rhythm_desc">&#x8DDF;&#x8457;&#x97F3;&#x6A02;&#x7BC0;&#x594F;&#xFF0C;&#x5728;&#x5C0D;&#x7684;&#x6642;&#x6A5F;&#x6309; D F J K&#xFF01;</div>
-                    </div>
                 </div>
             </div>
 
@@ -484,42 +479,6 @@
                     <div class="whack-grid" id="whack-grid"></div>
                     <div class="game-overlay" id="whack-overlay">
                         <button class="btn next-btn" onclick="startWhackGame()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mode-card" id="rhythm-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-
-                <div id="rhythm-song-select">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <h3 data-i18n="game_rhythm_pick_song">&#x2726; &#x9078;&#x64C7;&#x6B4C;&#x66F2; &#x2726;</h3>
-                    <div class="rhythm-song-list" id="rhythm-song-list"></div>
-                    <p id="rhythm-song-status" class="status"></p>
-                </div>
-
-                <div id="rhythm-game" style="display:none;">
-                    <div class="game-header">
-                        <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                        <div class="game-score-row">
-                            <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="rhythm-score">0</span>
-                            <span class="game-timer">&#x1F525; <span id="rhythm-combo">0</span></span>
-                            <span class="game-highscore">&#x1F3C6; <span id="rhythm-highscore">0</span></span>
-                        </div>
-                    </div>
-                    <div class="rhythm-canvas-wrap">
-                        <canvas id="rhythm-canvas" width="320" height="420"></canvas>
-                        <div class="rhythm-judgement" id="rhythm-judgement"></div>
-                        <div class="game-overlay" id="rhythm-overlay">
-                            <button class="btn next-btn" onclick="startRhythmSong()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                        </div>
-                    </div>
-                    <div class="rhythm-lane-buttons" id="rhythm-lane-buttons">
-                        <button class="rhythm-lane-btn" data-lane="0" onclick="rhythmHitLane(0)">D</button>
-                        <button class="rhythm-lane-btn" data-lane="1" onclick="rhythmHitLane(1)">F</button>
-                        <button class="rhythm-lane-btn" data-lane="2" onclick="rhythmHitLane(2)">J</button>
-                        <button class="rhythm-lane-btn" data-lane="3" onclick="rhythmHitLane(3)">K</button>
                     </div>
                 </div>
             </div>
@@ -745,7 +704,7 @@
                         <div class="guide-icon">🎮</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_games_title">遊戲區</h4>
-                            <p data-i18n="guide_games_desc">離線也能玩的三個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）、🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒），以及 🎵 節奏點擊（跟著音樂節奏按 D F J K，重用 BGM 播放清單的歌曲）。打地鼠會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言；節奏點擊需要連線播放歌曲，暫時無法完全離線遊玩。</p>
+                            <p data-i18n="guide_games_desc">離線也能玩的兩個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）和 🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒）。後者會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
                         </div>
                     </div>
 

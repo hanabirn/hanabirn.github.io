@@ -4,7 +4,6 @@ function openGame(name) {
     document.getElementById('games-select-card').style.display = 'none';
     document.getElementById('snake-card').style.display = name === 'snake' ? 'block' : 'none';
     document.getElementById('whack-card').style.display = name === 'whack' ? 'block' : 'none';
-    document.getElementById('rhythm-card').style.display = name === 'rhythm' ? 'block' : 'none';
 
     if (name === 'snake') {
         initSnakeCanvas();
@@ -17,11 +16,6 @@ function openGame(name) {
         document.getElementById('whack-lang-select').style.display = 'block';
         document.getElementById('whack-game').style.display = 'none';
         document.getElementById('whack-lang-status').innerText = '';
-    } else if (name === 'rhythm') {
-        document.getElementById('rhythm-song-select').style.display = 'block';
-        document.getElementById('rhythm-game').style.display = 'none';
-        document.getElementById('rhythm-song-status').innerText = '';
-        renderRhythmSongList();
     }
 }
 
@@ -30,7 +24,6 @@ function closeGame() {
     document.getElementById('games-select-card').style.display = 'block';
     document.getElementById('snake-card').style.display = 'none';
     document.getElementById('whack-card').style.display = 'none';
-    document.getElementById('rhythm-card').style.display = 'none';
 }
 
 function stopAllGames() {
@@ -39,9 +32,6 @@ function stopAllGames() {
     whackRunning = false;
     clearInterval(whackTimerInterval);
     clearTimeout(whackMoleTimeout);
-    rhythmRunning = false;
-    cancelAnimationFrame(rhythmRAF);
-    if (rhythmAudio) rhythmAudio.pause();
 }
 
 /* ===================== 🐍 Snake ===================== */
@@ -340,259 +330,6 @@ function endWhackGame() {
         <p>${t('game_final_score', { n: whackScore })}</p>
         ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
         <button class="btn next-btn" onclick="startWhackGame()">${t('game_restart')}</button>
-    `;
-    overlay.style.display = 'flex';
-}
-
-/* ===================== 🎵 Rhythm Tap ===================== */
-
-const RHYTHM_LANES = 4;
-const RHYTHM_JUDGE_Y = 370;
-const RHYTHM_TRAVEL_MS = 1600;
-const RHYTHM_WINDOW_PERFECT = 70;
-const RHYTHM_WINDOW_GOOD = 150;
-const RHYTHM_DURATION_MS = 60000;
-const RHYTHM_BPM = [82, 76, 88, 94, 74, 78, 80, 72, 86];
-
-let rhythmCanvas = null;
-let rhythmCtx = null;
-let rhythmAudio = null;
-let rhythmSongIndex = 0;
-let rhythmNotes = [];
-let rhythmScore = 0;
-let rhythmCombo = 0;
-let rhythmMaxCombo = 0;
-let rhythmStartPerf = 0;
-let rhythmRunning = false;
-let rhythmRAF = null;
-
-function getRhythmHighScore(i) {
-    return parseInt(localStorage.getItem('rhythm_high_' + i) || '0', 10);
-}
-function saveRhythmHighScore(i, score) {
-    if (score > getRhythmHighScore(i)) localStorage.setItem('rhythm_high_' + i, String(score));
-}
-
-function renderRhythmSongList() {
-    const container = document.getElementById('rhythm-song-list');
-    if (!container || typeof BGM_TRACKS === 'undefined') return;
-    container.innerHTML = BGM_TRACKS.map((track, i) => {
-        const high = getRhythmHighScore(i);
-        return `<button class="rhythm-song-btn" onclick="startRhythmLoad(${i})">
-            <span class="rhythm-song-icon">🎵</span>
-            <span>${escQ(track.name)}</span>
-            <span class="rhythm-song-highscore">🏆 ${high}</span>
-        </button>`;
-    }).join('');
-}
-
-function initRhythmCanvas() {
-    rhythmCanvas = document.getElementById('rhythm-canvas');
-    if (!rhythmCanvas) return;
-    rhythmCtx = rhythmCanvas.getContext('2d');
-}
-
-function startRhythmLoad(index) {
-    rhythmSongIndex = index;
-    document.getElementById('rhythm-song-select').style.display = 'none';
-    document.getElementById('rhythm-game').style.display = 'block';
-    document.getElementById('rhythm-highscore').textContent = getRhythmHighScore(index);
-    document.getElementById('rhythm-score').textContent = '0';
-    document.getElementById('rhythm-combo').textContent = '0';
-    initRhythmCanvas();
-
-    const overlay = document.getElementById('rhythm-overlay');
-    overlay.innerHTML = `<p>${t('game_rhythm_loading')}</p>`;
-    overlay.style.display = 'flex';
-
-    if (rhythmAudio) rhythmAudio.pause();
-    rhythmAudio = new Audio();
-    rhythmAudio.preload = 'auto';
-
-    let resolved = false;
-    const showStart = () => {
-        if (resolved) return;
-        resolved = true;
-        overlay.innerHTML = `<button class="btn next-btn" onclick="startRhythmSong()">${t('game_start')}</button>`;
-    };
-    const showFail = () => {
-        if (resolved) return;
-        resolved = true;
-        overlay.innerHTML = `<p>${t('game_rhythm_load_fail')}</p>`;
-    };
-    rhythmAudio.addEventListener('canplay', showStart, { once: true });
-    rhythmAudio.addEventListener('error', showFail, { once: true });
-    setTimeout(() => { if (!resolved) showFail(); }, 8000);
-    rhythmAudio.src = BGM_TRACKS[index].url;
-    rhythmAudio.load();
-}
-
-function rhythmGenerateNotes(bpm, durationMs) {
-    const beatMs = 60000 / bpm;
-    const notes = [];
-    let t0 = 2500;
-    let lastLane = -1;
-    while (t0 < durationMs) {
-        if (Math.random() < 0.82) {
-            let lane = Math.floor(Math.random() * RHYTHM_LANES);
-            if (lane === lastLane && Math.random() < 0.5) {
-                lane = (lane + 1 + Math.floor(Math.random() * 3)) % RHYTHM_LANES;
-            }
-            notes.push({ lane, targetTime: t0, judged: false, hit: false });
-            lastLane = lane;
-            if (Math.random() < 0.12) {
-                const lane2 = Math.floor(Math.random() * RHYTHM_LANES);
-                if (lane2 !== lane) notes.push({ lane: lane2, targetTime: t0, judged: false, hit: false });
-            }
-        }
-        t0 += beatMs * (Math.random() < 0.25 ? 0.5 : 1);
-    }
-    return notes;
-}
-
-function startRhythmSong() {
-    document.getElementById('rhythm-overlay').style.display = 'none';
-    rhythmNotes = rhythmGenerateNotes(RHYTHM_BPM[rhythmSongIndex] || 84, RHYTHM_DURATION_MS);
-    rhythmScore = 0;
-    rhythmCombo = 0;
-    rhythmMaxCombo = 0;
-    document.getElementById('rhythm-score').textContent = '0';
-    document.getElementById('rhythm-combo').textContent = '0';
-    rhythmRunning = true;
-    rhythmAudio.currentTime = 0;
-    rhythmAudio.play().catch(() => {});
-    rhythmStartPerf = performance.now();
-    cancelAnimationFrame(rhythmRAF);
-    rhythmRAF = requestAnimationFrame(rhythmLoop);
-}
-
-function rhythmLoop() {
-    if (!rhythmRunning) return;
-    const elapsed = performance.now() - rhythmStartPerf;
-
-    rhythmNotes.forEach(n => {
-        if (!n.judged && elapsed > n.targetTime + RHYTHM_WINDOW_GOOD) {
-            n.judged = true;
-            rhythmCombo = 0;
-            document.getElementById('rhythm-combo').textContent = '0';
-            playSound(false);
-            showRhythmJudgement('miss', t('game_rhythm_miss'));
-        }
-    });
-
-    drawRhythm(elapsed);
-
-    if (elapsed >= RHYTHM_DURATION_MS || rhythmAudio.ended) {
-        endRhythm();
-        return;
-    }
-    rhythmRAF = requestAnimationFrame(rhythmLoop);
-}
-
-function drawRhythm(elapsed) {
-    if (!rhythmCtx) return;
-    const ctx = rhythmCtx;
-    const w = rhythmCanvas.width, h = rhythmCanvas.height;
-    const laneW = w / RHYTHM_LANES;
-    ctx.clearRect(0, 0, w, h);
-
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
-    for (let i = 1; i < RHYTHM_LANES; i++) {
-        ctx.beginPath();
-        ctx.moveTo(i * laneW, 0);
-        ctx.lineTo(i * laneW, h);
-        ctx.stroke();
-    }
-
-    ctx.strokeStyle = 'rgba(244,114,182,0.6)';
-    ctx.lineWidth = 2;
-    ctx.beginPath();
-    ctx.moveTo(0, RHYTHM_JUDGE_Y);
-    ctx.lineTo(w, RHYTHM_JUDGE_Y);
-    ctx.stroke();
-    ctx.lineWidth = 1;
-
-    rhythmNotes.forEach(n => {
-        if (n.judged) return;
-        const y = RHYTHM_JUDGE_Y - ((n.targetTime - elapsed) / RHYTHM_TRAVEL_MS) * RHYTHM_JUDGE_Y;
-        if (y < -30 || y > h + 30) return;
-        const x = n.lane * laneW + laneW / 2;
-        ctx.fillStyle = '#f472b6';
-        snakeRoundRectPath(ctx, x - laneW * 0.35, y - 11, laneW * 0.7, 22, 8);
-        ctx.fill();
-    });
-}
-
-function showRhythmJudgement(cls, text) {
-    const el = document.getElementById('rhythm-judgement');
-    if (!el) return;
-    el.textContent = text;
-    el.className = 'rhythm-judgement show ' + cls;
-    clearTimeout(el._timer);
-    el._timer = setTimeout(() => { el.className = 'rhythm-judgement'; }, 400);
-}
-
-function rhythmHitLane(lane) {
-    if (!rhythmRunning) return;
-    const btn = document.querySelector(`.rhythm-lane-btn[data-lane="${lane}"]`);
-    if (btn) { btn.classList.add('pressed'); setTimeout(() => btn.classList.remove('pressed'), 100); }
-
-    const elapsed = performance.now() - rhythmStartPerf;
-    let best = null, bestDelta = Infinity;
-    rhythmNotes.forEach(n => {
-        if (n.judged || n.lane !== lane) return;
-        const delta = Math.abs(elapsed - n.targetTime);
-        if (delta < bestDelta) { bestDelta = delta; best = n; }
-    });
-    if (!best || bestDelta > RHYTHM_WINDOW_GOOD) return;
-
-    best.judged = true;
-    best.hit = true;
-    playSound(true);
-    if (bestDelta <= RHYTHM_WINDOW_PERFECT) {
-        rhythmScore += 100;
-        showRhythmJudgement('perfect', t('game_rhythm_perfect'));
-    } else {
-        rhythmScore += 50;
-        showRhythmJudgement('good', t('game_rhythm_good'));
-    }
-    rhythmCombo++;
-    rhythmMaxCombo = Math.max(rhythmMaxCombo, rhythmCombo);
-
-    if (rhythmCanvas) {
-        const rect = rhythmCanvas.getBoundingClientRect();
-        const laneW = rect.width / RHYTHM_LANES;
-        spawnClickParticles(rect.left + (lane + 0.5) * laneW, rect.top + rect.height * (RHYTHM_JUDGE_Y / rhythmCanvas.height));
-    }
-
-    document.getElementById('rhythm-score').textContent = rhythmScore;
-    document.getElementById('rhythm-combo').textContent = rhythmCombo;
-}
-
-document.addEventListener('keydown', (e) => {
-    if (!rhythmRunning) return;
-    const map = { d: 0, f: 1, j: 2, k: 3 };
-    const key = e.key.toLowerCase();
-    if (key in map) rhythmHitLane(map[key]);
-});
-
-function endRhythm() {
-    rhythmRunning = false;
-    cancelAnimationFrame(rhythmRAF);
-    if (rhythmAudio) rhythmAudio.pause();
-    const totalNotes = rhythmNotes.length;
-    const hitNotes = rhythmNotes.filter(n => n.hit).length;
-    const accuracy = totalNotes > 0 ? Math.round((hitNotes / totalNotes) * 100) : 0;
-    saveRhythmHighScore(rhythmSongIndex, rhythmScore);
-    document.getElementById('rhythm-highscore').textContent = getRhythmHighScore(rhythmSongIndex);
-    const isNewBest = rhythmScore > 0 && rhythmScore === getRhythmHighScore(rhythmSongIndex);
-    const overlay = document.getElementById('rhythm-overlay');
-    overlay.innerHTML = `
-        <p>${t('game_over')}</p>
-        <p>${t('game_final_score', { n: rhythmScore })}</p>
-        <p>${t('game_rhythm_accuracy', { n: accuracy })} · ${t('game_rhythm_max_combo', { n: rhythmMaxCombo })}</p>
-        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
-        <button class="btn next-btn" onclick="startRhythmSong()">${t('game_restart')}</button>
     `;
     overlay.style.display = 'flex';
 }
