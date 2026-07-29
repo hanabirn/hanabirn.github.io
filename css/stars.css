@@ -6,6 +6,9 @@
     pointer-events: none;
     z-index: 0;
 }
+[data-theme="light"] .stars-bg {
+    display: none;
+}
 
 .star {
     position: absolute;
@@ -132,4 +135,19 @@
 @keyframes waveScroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
+}
+
+/* ===== Light theme: hidden decorations need more contrast to be findable ===== */
+[data-theme="light"] .jp-torii {
+    opacity: 0.14;
+}
+[data-theme="light"] .jp-wave {
+    opacity: 0.08;
+}
+[data-theme="light"] .jp-fan {
+    background: linear-gradient(135deg, rgba(190,24,101,0.12), rgba(147,51,234,0.08));
+    border-color: rgba(190,24,101,0.1);
+}
+[data-theme="light"] .jp-cloud {
+    background: radial-gradient(ellipse, rgba(190,24,101,0.1) 0%, transparent 70%);
 }
