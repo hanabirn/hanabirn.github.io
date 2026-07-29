@@ -100,6 +100,7 @@
             <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
             <button class="nav-btn" data-tab="osu" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
             <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">&#x904A;&#x6232;&#x5340;</button>
+            <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x5176;&#x4ED6;&#x97F3;&#x904A;&#x6210;&#x7E3E;&#x6536;&#x85CF;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
     </header>
@@ -651,6 +652,22 @@
                 </div>
             </div>
         </div>
+
+        <div id="page-rhythm" style="display: none;">
+            <div class="mode-card" id="rhythm-select-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="rhythm_title">&#x2726; &#x5176;&#x4ED6;&#x97F3;&#x904A;&#x6210;&#x7E3E;&#x6536;&#x85CF;&#x5340; &#x2726;</h3>
+                <div class="games-grid">
+                    <div class="game-option" onclick="window.open('https://pjsekai-hanabi.netlify.app/', '_blank', 'noopener')">
+                        <div class="game-option-icon">&#x1F3B5;</div>
+                        <div class="game-option-name" data-i18n="rhythm_pjsekai_name">&#x4E16;&#x754C;&#x8A08;&#x756B; &#x6210;&#x7E3E;&#x7C3F;</div>
+                        <div class="game-option-desc" data-i18n="rhythm_pjsekai_desc">&#x8A18;&#x9304;&#x6BCF;&#x9996;&#x6B4C;&#x5404;&#x96E3;&#x5EA6;&#x7684;&#x500B;&#x4EBA;&#x6210;&#x7E3E;&#xFF0C;&#x9084;&#x6709;&#x65E5;&#x53F0;&#x670D;&#x6700;&#x65B0;&#x60C5;&#x5831;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="page-guestbook" style="display: none;">
             <div class="guestbook-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
