@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/music.css">
     <link rel="stylesheet" href="css/osu.css">
+    <link rel="stylesheet" href="css/games.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/guestbook.css">
     <link rel="stylesheet" href="css/guide.css">
@@ -98,6 +99,7 @@
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
             <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
             <button class="nav-btn" data-tab="osu" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
+            <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
     </header>
@@ -401,6 +403,87 @@
             <div id="osu-pagination" class="osu-pagination"></div>
         </div>
 
+        <div id="page-games" style="display: none;">
+            <div class="mode-card" id="games-select-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="games_title">&#x2726; &#x904A;&#x6232;&#x5340; &#x2726;</h3>
+                <div class="games-grid">
+                    <div class="game-option" onclick="openGame('snake')">
+                        <div class="game-option-icon">&#x1F40D;</div>
+                        <div class="game-option-name" data-i18n="game_snake_name">&#x8CAA;&#x98DF;&#x86C7;</div>
+                        <div class="game-option-desc" data-i18n="game_snake_desc">&#x5403;&#x6AFB;&#x82B1;&#x8B93;&#x86C7;&#x8B8A;&#x9577;&#xFF0C;&#x770B;&#x4F60;&#x80FD;&#x6491;&#x591A;&#x4E45;&#xFF01;</div>
+                    </div>
+                    <div class="game-option" onclick="openGame('whack')">
+                        <div class="game-option-icon">&#x1F528;</div>
+                        <div class="game-option-name" data-i18n="game_whack_name">&#x6253;&#x5730;&#x9F20;&#x5F0F;&#x55AE;&#x5B57;&#x904A;&#x6232;</div>
+                        <div class="game-option-desc" data-i18n="game_whack_desc">&#x770B;&#x610F;&#x601D;&#x627E;&#x55AE;&#x5B57;&#xFF0C;&#x8003;&#x9A57;&#x4F60;&#x7684;&#x53CD;&#x61C9;&#x529B;&#xFF01;</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mode-card" id="snake-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="game-header">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <div class="game-score-row">
+                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="snake-score">0</span>
+                        <span class="game-highscore">&#x1F3C6; <span id="snake-highscore">0</span></span>
+                    </div>
+                </div>
+                <div class="snake-canvas-wrap">
+                    <canvas id="snake-canvas" width="360" height="360"></canvas>
+                    <div class="game-overlay" id="snake-overlay">
+                        <p data-i18n="game_snake_intro">&#x7528;&#x65B9;&#x5411;&#x9375;&#x6216;&#x6ED1;&#x52D5;&#x87A2;&#x5E55;&#x63A7;&#x5236;&#x65B9;&#x5411;&#xFF01;</p>
+                        <button class="btn next-btn" onclick="startSnake()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
+                </div>
+                <div class="snake-controls" id="snake-controls">
+                    <button class="snake-dpad-btn up" onclick="snakeSetDir(0,-1)" aria-label="up">&#x25B2;</button>
+                    <div class="snake-dpad-mid">
+                        <button class="snake-dpad-btn left" onclick="snakeSetDir(-1,0)" aria-label="left">&#x25C0;</button>
+                        <button class="snake-dpad-btn right" onclick="snakeSetDir(1,0)" aria-label="right">&#x25B6;</button>
+                    </div>
+                    <button class="snake-dpad-btn down" onclick="snakeSetDir(0,1)" aria-label="down">&#x25BC;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="whack-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                <div id="whack-lang-select">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <h3 data-i18n="game_whack_pick_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
+                    <div class="lang-buttons">
+                        <button class="lang-btn jp" onclick="startWhackLang('jp')"><span data-i18n="fc_lang_jp">&#x1F1EF;&#x1F1F5; &#x65E5;&#x6587;</span></button>
+                        <button class="lang-btn kr" onclick="startWhackLang('kr')"><span data-i18n="fc_lang_kr">&#x1F1F0;&#x1F1F7; &#x97D3;&#x6587;</span></button>
+                        <button class="lang-btn fr" onclick="startWhackLang('fr')"><span data-i18n="fc_lang_fr">&#x1F1EB;&#x1F1F7; &#x6CD5;&#x6587;</span></button>
+                        <button class="lang-btn en" onclick="startWhackLang('en')"><span data-i18n="fc_lang_en">&#x1F1FA;&#x1F1F8; &#x82F1;&#x6587;</span></button>
+                        <button class="lang-btn zh" onclick="startWhackLang('zh')"><span data-i18n="fc_lang_zh">&#x1F1E8;&#x1F1F3; &#x4E2D;&#x6587;</span></button>
+                    </div>
+                    <p id="whack-lang-status" class="status"></p>
+                </div>
+
+                <div id="whack-game" style="display:none;">
+                    <div class="game-header">
+                        <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                        <div class="game-score-row">
+                            <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="whack-score">0</span>
+                            <span class="game-timer">&#x23F1; <span id="whack-timer">60</span>s</span>
+                            <span class="game-highscore">&#x1F3C6; <span id="whack-highscore">0</span></span>
+                        </div>
+                    </div>
+                    <div class="whack-prompt" id="whack-prompt"></div>
+                    <div class="whack-grid" id="whack-grid"></div>
+                    <div class="game-overlay" id="whack-overlay">
+                        <button class="btn next-btn" onclick="startWhackGame()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <div id="page-about" style="display: none;">
             <div class="about-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -618,6 +701,14 @@
                     </div>
 
                     <div class="guide-section" data-page="3">
+                        <div class="guide-icon">🎮</div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_games_title">遊戲區</h4>
+                            <p data-i18n="guide_games_desc">離線也能玩的兩個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）和 🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒）。後者會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
                         <div class="guide-icon">✨</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_fx_title">互動特效</h4>
@@ -690,6 +781,7 @@
     <script src="js/i18n.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/osu.js"></script>
+    <script src="js/games.js"></script>
     <script src="js/seasons.js"></script>
     <script src="js/guestbook.js"></script>
     <script src="js/widgets.js"></script>

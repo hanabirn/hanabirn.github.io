@@ -1,0 +1,206 @@
+/* ===== 🎮 Games ===== */
+.games-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.game-option {
+    flex: 1;
+    min-width: 160px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.game-option:hover {
+    border-color: var(--accent-pink);
+    background: rgba(244,114,182,0.08);
+    transform: translateY(-4px);
+}
+.game-option-icon {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+}
+.game-option-name {
+    font-weight: bold;
+    color: var(--text-pink);
+    margin-bottom: 6px;
+    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
+}
+.game-option-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+}
+
+.game-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+.game-back-btn {
+    background: transparent;
+    border: 1px solid var(--nav-border);
+    color: var(--text-secondary);
+    padding: 6px 14px;
+    border-radius: 16px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+.game-back-btn:hover {
+    border-color: var(--accent-pink);
+    color: var(--text);
+}
+.game-score-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: bold;
+    color: var(--text);
+    font-size: 0.95rem;
+}
+.game-highscore, .game-timer {
+    color: var(--text-accent);
+    font-size: 0.85rem;
+    font-weight: normal;
+}
+
+.game-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(20,10,35,0.85);
+    backdrop-filter: blur(4px);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+    padding: 20px;
+    color: var(--text);
+    z-index: 5;
+}
+.game-overlay p { margin: 0; }
+.game-new-best {
+    color: #fbbf24;
+    font-weight: bold;
+}
+
+/* ---- Snake ---- */
+.snake-canvas-wrap {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+}
+#snake-canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    display: block;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    touch-action: none;
+}
+
+.snake-controls {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-top: 16px;
+}
+.snake-dpad-mid {
+    display: flex;
+    gap: 60px;
+}
+.snake-dpad-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--nav-border);
+    background: var(--theme-toggle-bg);
+    color: var(--text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.snake-dpad-btn:hover {
+    border-color: var(--accent-pink);
+    background: rgba(244,114,182,0.15);
+}
+
+/* ---- Whack-a-mole ---- */
+#whack-game {
+    position: relative;
+    min-height: 340px;
+}
+.whack-prompt {
+    text-align: center;
+    font-size: 1.05rem;
+    font-weight: bold;
+    color: var(--text-pink);
+    margin-bottom: 16px;
+    min-height: 1.4em;
+}
+.whack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+.whack-hole {
+    aspect-ratio: 1 / 1;
+    background: radial-gradient(ellipse at center, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    border-radius: 50% / 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+.whack-mole {
+    width: 88%;
+    height: 88%;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 0.95rem;
+    text-align: center;
+    padding: 6px;
+    transform: translateY(100%);
+    opacity: 0;
+    transition: transform 0.18s ease, opacity 0.18s ease;
+    cursor: pointer;
+    word-break: break-word;
+}
+.whack-mole.up {
+    transform: translateY(0);
+    opacity: 1;
+}
+.whack-mole.correct {
+    background: linear-gradient(135deg, #34d399, #6ee7b7);
+}
+.whack-mole.wrong {
+    background: linear-gradient(135deg, #f87171, #ef4444);
+}
+
+@media (max-width: 480px) {
+    .whack-grid { gap: 8px; }
+    .whack-mole { font-size: 0.78rem; }
+    .snake-dpad-mid { gap: 48px; }
+}
