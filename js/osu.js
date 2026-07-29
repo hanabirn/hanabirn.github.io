@@ -491,6 +491,20 @@ function calcOsuAccuracy(r, mode) {
 
 const OSU_RANK_CLASS = { XH: 'ss', X: 'ss', SH: 's', S: 's', A: 'a', B: 'b', C: 'c', D: 'd', F: 'f' };
 
+function decodeOsuMods(bitmask) {
+    bitmask = parseInt(bitmask) || 0;
+    if (!bitmask) return [];
+    const hasNC = !!(bitmask & 512);
+    const hasPF = !!(bitmask & 16384);
+    const table = [
+        [1, 'NF'], [2, 'EZ'], [8, 'HD'], [16, 'HR'],
+        [32, hasPF ? null : 'SD'], [64, hasNC ? null : 'DT'],
+        [128, 'RX'], [256, 'HT'], [512, 'NC'], [1024, 'FL'],
+        [4096, 'SO'], [8192, 'AP'], [16384, 'PF']
+    ];
+    return table.filter(([bit, name]) => name && (bitmask & bit)).map(([, name]) => name);
+}
+
 async function renderOsuRecentPlays(userId, mode, listId, wrapId) {
     const container = document.getElementById(listId);
     const wrap = document.getElementById(wrapId);
@@ -511,15 +525,17 @@ async function renderOsuRecentPlays(userId, mode, listId, wrapId) {
             const title = bm ? `${bm.title} [${bm.version}]` : `Beatmap #${r.beatmap_id}`;
             const acc = calcOsuAccuracy(r, mode);
             const rankClass = OSU_RANK_CLASS[r.rank] || 'f';
+            const mods = decodeOsuMods(r.enabled_mods);
+            const modsStr = mods.length > 0 ? ' · ' + mods.join(',') : '';
             const d = new Date(String(r.date).replace(' ', 'T') + 'Z');
             const dateStr = isNaN(d) ? '' : `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-            return `<div class="osu-recent-item">
+            return `<a class="osu-recent-item" href="https://osu.ppy.sh/b/${r.beatmap_id}" target="_blank" rel="noopener noreferrer">
                 <span class="osu-recent-rank rank-${rankClass}">${r.rank || '—'}</span>
                 <div class="osu-recent-info">
                     <div class="osu-recent-song">${escHtml(title)}</div>
-                    <div class="osu-recent-meta">${acc}% · ${r.maxcombo}x · ${dateStr}</div>
+                    <div class="osu-recent-meta">${acc}% · ${r.maxcombo}x${modsStr} · ${dateStr}</div>
                 </div>
-            </div>`;
+            </a>`;
         }).join('');
         wrap.style.display = 'block';
     } catch (e) {
