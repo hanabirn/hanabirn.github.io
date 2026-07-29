@@ -352,7 +352,7 @@ const RHYTHM_TRAVEL_MS = 1600;
 const RHYTHM_WINDOW_PERFECT = 70;
 const RHYTHM_WINDOW_GOOD = 150;
 const RHYTHM_DURATION_MS = 60000;
-const RHYTHM_BPM = [82, 76, 88, 94];
+const RHYTHM_BPM = [82, 76, 88, 94, 74, 78, 80, 72, 86];
 
 let rhythmCanvas = null;
 let rhythmCtx = null;

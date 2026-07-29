@@ -4,7 +4,12 @@ const BGM_TRACKS = [
     { name: 'Soft Vinyl Dreams', url: 'https://cdn.freesafemusic.com/audio/whjc.mp3' },
     { name: 'Chill Twilight Waves', url: 'https://cdn.freesafemusic.com/audio/jnk0.mp3' },
     { name: 'Cozy Snowfall Dream', url: 'https://cdn.freesafemusic.com/audio/5s59.mp3' },
-    { name: 'Coffee Clap', url: 'https://cdn.freesafemusic.com/audio/arh2.mp3' }
+    { name: 'Coffee Clap', url: 'https://cdn.freesafemusic.com/audio/arh2.mp3' },
+    { name: 'Celestial Dreamscapes', url: 'https://cdn.freesafemusic.com/audio/okxt.mp3' },
+    { name: 'Floating Home', url: 'https://cdn.freesafemusic.com/audio/qaw1.mp3' },
+    { name: 'Serene Echoes', url: 'https://cdn.freesafemusic.com/audio/ebw8.mp3' },
+    { name: 'Cider Pages', url: 'https://cdn.freesafemusic.com/audio/mepd.mp3' },
+    { name: 'Soft Saudade', url: 'https://cdn.freesafemusic.com/audio/f4rv.mp3' }
 ];
 
 let bgmAudio = null;
