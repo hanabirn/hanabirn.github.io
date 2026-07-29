@@ -564,6 +564,14 @@ async function fetchOsuProfile() {
 }
 
 /* ===== Visitor Profile Lookup ===== */
+let visitorLookupUserId = null;
+
+function switchVisitorRecentMode(mode, el) {
+    document.querySelectorAll('#visitor-recent-mode-tabs .osu-mode-tab').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    if (visitorLookupUserId) renderOsuRecentPlays(visitorLookupUserId, mode, 'visitor-recent-list', 'visitor-recent-plays');
+}
+
 async function lookupVisitorProfile() {
     const input = document.getElementById('visitor-lookup-input').value.trim();
     if (!input) return;
@@ -597,6 +605,10 @@ async function lookupVisitorProfile() {
         const totalPP = modeData.reduce((sum, m) => sum + (m && m.pp_raw != null ? parseFloat(m.pp_raw) : 0), 0);
         document.getElementById('visitor-total-pp-value').textContent = Math.round(totalPP).toLocaleString();
         result.style.display = 'block';
+
+        visitorLookupUserId = u.user_id;
+        document.querySelectorAll('#visitor-recent-mode-tabs .osu-mode-tab').forEach(t => t.classList.remove('active'));
+        document.querySelector('#visitor-recent-mode-tabs .osu-mode-tab[data-mode="0"]').classList.add('active');
         renderOsuRecentPlays(u.user_id, 0, 'visitor-recent-list', 'visitor-recent-plays');
     } catch (e) {
         console.error('Visitor lookup failed:', e);

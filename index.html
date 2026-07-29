@@ -380,6 +380,12 @@
                         <span data-i18n="osu_total_pp">全模式 PP</span>
                         <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
                     </div>
+                    <div class="osu-mode-tabs" id="visitor-recent-mode-tabs">
+                        <button class="osu-mode-tab active" data-mode="0" onclick="switchVisitorRecentMode(0,this)">&#x2B55; Standard</button>
+                        <button class="osu-mode-tab" data-mode="1" onclick="switchVisitorRecentMode(1,this)">&#x1F941; Taiko</button>
+                        <button class="osu-mode-tab" data-mode="2" onclick="switchVisitorRecentMode(2,this)">&#x1F34E; Catch</button>
+                        <button class="osu-mode-tab" data-mode="3" onclick="switchVisitorRecentMode(3,this)">&#x1F3B9; Mania</button>
+                    </div>
                     <div class="osu-recent-plays" id="visitor-recent-plays" style="display:none;">
                         <div class="osu-recent-title" data-i18n="osu_recent_title">🎮 最近遊玩</div>
                         <div class="osu-recent-list" id="visitor-recent-list"></div>
