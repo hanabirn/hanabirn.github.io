@@ -523,7 +523,7 @@ async function renderOsuRecentPlays(userId, mode, listId, wrapId) {
         container.innerHTML = recent.map(r => {
             const bm = beatmapMap[r.beatmap_id];
             const title = bm ? `${bm.title} [${bm.version}]` : `Beatmap #${r.beatmap_id}`;
-            const thumbUrl = bm ? `https://assets.ppy.sh/beatmaps/${bm.beatmapset_id}/covers/list.jpg` : '';
+            const coverUrl = bm ? `https://assets.ppy.sh/beatmaps/${bm.beatmapset_id}/covers/card.jpg` : '';
             const acc = calcOsuAccuracy(r, mode);
             const rankClass = OSU_RANK_CLASS[r.rank] || 'f';
             const mods = decodeOsuMods(r.enabled_mods);
@@ -531,7 +531,8 @@ async function renderOsuRecentPlays(userId, mode, listId, wrapId) {
             const d = new Date(String(r.date).replace(' ', 'T') + 'Z');
             const dateStr = isNaN(d) ? '' : `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
             return `<a class="osu-recent-item" href="https://osu.ppy.sh/b/${r.beatmap_id}" target="_blank" rel="noopener noreferrer">
-                ${thumbUrl ? `<img class="osu-recent-thumb" src="${thumbUrl}" alt="" loading="lazy" onerror="this.style.display='none'">` : ''}
+                <div class="osu-recent-bg" style="background-image:url('${coverUrl}')"></div>
+                <div class="osu-recent-overlay"></div>
                 <span class="osu-recent-rank rank-${rankClass}">${r.rank || '—'}</span>
                 <div class="osu-recent-info">
                     <div class="osu-recent-song">${escHtml(title)}</div>

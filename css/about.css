@@ -249,41 +249,46 @@
     gap: 6px;
 }
 .osu-recent-item {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    background: var(--bg-stat);
-    border: 1px solid var(--border-light);
-    border-radius: 10px;
-    padding: 8px 10px;
+    position: relative;
+    display: block;
+    aspect-ratio: 4 / 1.4;
+    border-radius: 12px;
+    overflow: hidden;
     text-align: left;
     color: inherit;
     text-decoration: none;
     cursor: pointer;
-    transition: border-color 0.15s, background 0.15s;
-}
-.osu-recent-thumb {
-    flex-shrink: 0;
-    width: 44px;
-    height: 44px;
-    border-radius: 8px;
-    object-fit: cover;
-    background: rgba(255,255,255,0.05);
+    background: var(--bg-stat);
+    transition: transform 0.25s, box-shadow 0.25s;
 }
 .osu-recent-item:hover {
-    border-color: rgba(255,102,153,0.4);
-    background: var(--bg-stat-hover, var(--bg-stat));
+    transform: translateY(-2px);
+    box-shadow: var(--osu-card-shadow);
+}
+.osu-recent-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+}
+.osu-recent-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--osu-overlay);
 }
 .osu-recent-rank {
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    border-radius: 8px;
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    z-index: 2;
+    width: 26px;
+    height: 26px;
+    border-radius: 7px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
     color: #fff;
 }
 .osu-recent-rank.rank-ss { background: linear-gradient(135deg, #f4d03f, #f7ecb5); color: #6b5900; }
@@ -294,19 +299,26 @@
 .osu-recent-rank.rank-d { background: #f87171; color: #7f1d1d; }
 .osu-recent-rank.rank-f { background: #94a3b8; color: #1e293b; }
 .osu-recent-info {
-    min-width: 0;
-    flex: 1;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    padding: 8px 10px;
 }
 .osu-recent-song {
     font-size: 0.82rem;
-    color: var(--text);
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 .osu-recent-meta {
     font-size: 0.72rem;
-    color: var(--text-label);
+    color: rgba(255,255,255,0.8);
+    text-shadow: 0 1px 3px rgba(0,0,0,0.5);
     margin-top: 2px;
 }
 
