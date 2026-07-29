@@ -403,6 +403,8 @@ function showModeSelection() {
     const container = document.getElementById('mode-buttons');
     container.innerHTML = '';
 
+    const skipModeSelection = currentLang === 'kr' || currentLang === 'fr' || currentLang === 'en';
+
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
     const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : currentLang === 'jp' ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
@@ -420,12 +422,17 @@ function showModeSelection() {
         container.appendChild(btnReading);
     }
 
-    const btnBoth = document.createElement('button');
-    btnBoth.className = 'mode-btn';
-    btnBoth.setAttribute('data-i18n', 'mode_both');
-    btnBoth.innerText = t('mode_both');
-    btnBoth.onclick = function() { selectMode('both', this); };
-    container.appendChild(btnBoth);
+    if (!skipModeSelection) {
+        const btnBoth = document.createElement('button');
+        btnBoth.className = 'mode-btn';
+        btnBoth.setAttribute('data-i18n', 'mode_both');
+        btnBoth.innerText = t('mode_both');
+        btnBoth.onclick = function() { selectMode('both', this); };
+        container.appendChild(btnBoth);
+    }
+
+    document.getElementById('mode-title').style.display = skipModeSelection ? 'none' : '';
+    container.style.display = skipModeSelection ? 'none' : '';
 
     needAnswerLang = vocabularyList.some(w => w.english && w.english.length > 0);
     document.getElementById('answer-lang-title').style.display = 'none';
@@ -461,6 +468,10 @@ function showModeSelection() {
         btn.onclick = function() { selectCount(c.n, this); };
         countContainer.appendChild(btn);
     });
+
+    if (skipModeSelection) {
+        selectMode('meaning', btnMeaning);
+    }
 }
 
 let selectedQuizMode = 'meaning';
