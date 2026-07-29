@@ -226,10 +226,10 @@ function endSnake() {
 
 document.addEventListener('keydown', (e) => {
     if (!snakeRunning) return;
-    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') snakeSetDir(0, -1);
-    else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') snakeSetDir(0, 1);
-    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') snakeSetDir(-1, 0);
-    else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') snakeSetDir(1, 0);
+    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') { e.preventDefault(); snakeSetDir(0, -1); }
+    else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { e.preventDefault(); snakeSetDir(0, 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { e.preventDefault(); snakeSetDir(-1, 0); }
+    else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { e.preventDefault(); snakeSetDir(1, 0); }
 });
 
 let snakeTouchStart = null;
