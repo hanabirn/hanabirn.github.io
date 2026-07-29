@@ -5,6 +5,7 @@ function openGame(name) {
     document.getElementById('snake-card').style.display = name === 'snake' ? 'block' : 'none';
     document.getElementById('whack-card').style.display = name === 'whack' ? 'block' : 'none';
     document.getElementById('game2048-card').style.display = name === '2048' ? 'block' : 'none';
+    document.getElementById('match3-card').style.display = name === 'match3' ? 'block' : 'none';
 
     if (name === 'snake') {
         initSnakeCanvas();
@@ -24,6 +25,11 @@ function openGame(name) {
         overlay.innerHTML = `<button class="btn next-btn" onclick="start2048()">${t('game_start')}</button>`;
         overlay.style.display = 'flex';
         render2048();
+    } else if (name === 'match3') {
+        document.getElementById('match3-highscore').textContent = getMatch3HighScore();
+        const overlay = document.getElementById('match3-overlay');
+        overlay.innerHTML = `<button class="btn next-btn" onclick="startMatch3()">${t('game_start')}</button>`;
+        overlay.style.display = 'flex';
     }
 }
 
@@ -33,6 +39,7 @@ function closeGame() {
     document.getElementById('snake-card').style.display = 'none';
     document.getElementById('whack-card').style.display = 'none';
     document.getElementById('game2048-card').style.display = 'none';
+    document.getElementById('match3-card').style.display = 'none';
 }
 
 function stopAllGames() {
@@ -42,6 +49,7 @@ function stopAllGames() {
     clearInterval(whackTimerInterval);
     clearTimeout(whackMoleTimeout);
     game2048Running = false;
+    match3Running = false;
 }
 
 /* ===================== 🐍 Snake ===================== */
@@ -532,6 +540,235 @@ function end2048() {
         <p>${t('game_final_score', { n: game2048Score })}</p>
         ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
         <button class="btn next-btn" onclick="start2048()">${t('game_restart')}</button>
+    `;
+    overlay.style.display = 'flex';
+}
+
+/* ===================== 🌸 Match-3 (六消樂) ===================== */
+
+const MATCH3_SIZE = 8;
+const MATCH3_SYMBOLS = ['🌸', '⭐', '🎵', '💜', '✨', '🌙'];
+const MATCH3_MOVES = 20;
+
+let match3Board = [];
+let match3Score = 0;
+let match3MovesLeft = MATCH3_MOVES;
+let match3Running = false;
+let match3Selected = null;
+let match3Busy = false;
+
+function getMatch3HighScore() {
+    return parseInt(localStorage.getItem('match3_high_score') || '0', 10);
+}
+function saveMatch3HighScore(score) {
+    if (score > getMatch3HighScore()) localStorage.setItem('match3_high_score', String(score));
+}
+
+function match3RandomSymbol() {
+    return MATCH3_SYMBOLS[Math.floor(Math.random() * MATCH3_SYMBOLS.length)];
+}
+
+function match3SwapCells(board, x1, y1, x2, y2) {
+    const tmp = board[y1][x1];
+    board[y1][x1] = board[y2][x2];
+    board[y2][x2] = tmp;
+}
+
+function match3FindMatches(board) {
+    const size = MATCH3_SIZE;
+    const matched = new Set();
+    for (let y = 0; y < size; y++) {
+        let runStart = 0;
+        for (let x = 1; x <= size; x++) {
+            if (x < size && board[y][x] === board[y][runStart]) continue;
+            if (x - runStart >= 3) {
+                for (let k = runStart; k < x; k++) matched.add(y + ',' + k);
+            }
+            runStart = x;
+        }
+    }
+    for (let x = 0; x < size; x++) {
+        let runStart = 0;
+        for (let y = 1; y <= size; y++) {
+            if (y < size && board[y][x] === board[runStart][x]) continue;
+            if (y - runStart >= 3) {
+                for (let k = runStart; k < y; k++) matched.add(k + ',' + x);
+            }
+            runStart = y;
+        }
+    }
+    return matched;
+}
+
+function match3GenerateBoard() {
+    let board;
+    let tries = 0;
+    do {
+        board = Array.from({ length: MATCH3_SIZE }, () => Array.from({ length: MATCH3_SIZE }, () => match3RandomSymbol()));
+        tries++;
+    } while (match3FindMatches(board).size > 0 && tries < 50);
+    return board;
+}
+
+function match3HasValidMove(board) {
+    const size = MATCH3_SIZE;
+    for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+            if (x < size - 1) {
+                match3SwapCells(board, x, y, x + 1, y);
+                const has = match3FindMatches(board).size > 0;
+                match3SwapCells(board, x, y, x + 1, y);
+                if (has) return true;
+            }
+            if (y < size - 1) {
+                match3SwapCells(board, x, y, x, y + 1);
+                const has = match3FindMatches(board).size > 0;
+                match3SwapCells(board, x, y, x, y + 1);
+                if (has) return true;
+            }
+        }
+    }
+    return false;
+}
+
+function match3ApplyGravity(board) {
+    const size = MATCH3_SIZE;
+    for (let x = 0; x < size; x++) {
+        let write = size - 1;
+        for (let y = size - 1; y >= 0; y--) {
+            if (board[y][x] !== null) {
+                board[write][x] = board[y][x];
+                if (write !== y) board[y][x] = null;
+                write--;
+            }
+        }
+        for (let y = write; y >= 0; y--) board[y][x] = match3RandomSymbol();
+    }
+}
+
+function match3Render() {
+    const container = document.getElementById('match3-grid');
+    if (!container) return;
+    container.innerHTML = '';
+    for (let y = 0; y < MATCH3_SIZE; y++) {
+        for (let x = 0; x < MATCH3_SIZE; x++) {
+            const cell = document.createElement('div');
+            cell.className = 'match3-cell';
+            cell.textContent = match3Board[y][x] || '';
+            cell.dataset.x = x;
+            cell.dataset.y = y;
+            cell.onclick = () => match3ClickCell(x, y);
+            if (match3Selected && match3Selected.x === x && match3Selected.y === y) {
+                cell.classList.add('selected');
+            }
+            container.appendChild(cell);
+        }
+    }
+}
+
+function match3RenderClearing(matchSet) {
+    document.querySelectorAll('.match3-cell').forEach(cell => {
+        const key = cell.dataset.y + ',' + cell.dataset.x;
+        if (matchSet.has(key)) cell.classList.add('clearing');
+    });
+}
+
+function startMatch3() {
+    document.getElementById('match3-overlay').style.display = 'none';
+    match3Board = match3GenerateBoard();
+    match3Score = 0;
+    match3MovesLeft = MATCH3_MOVES;
+    match3Selected = null;
+    match3Busy = false;
+    match3Running = true;
+    document.getElementById('match3-score').textContent = '0';
+    document.getElementById('match3-moves').textContent = match3MovesLeft;
+    match3Render();
+}
+
+function match3ClickCell(x, y) {
+    if (!match3Running || match3Busy) return;
+    if (!match3Selected) {
+        match3Selected = { x, y };
+        match3Render();
+        return;
+    }
+    if (match3Selected.x === x && match3Selected.y === y) {
+        match3Selected = null;
+        match3Render();
+        return;
+    }
+    const isAdjacent = (Math.abs(match3Selected.x - x) + Math.abs(match3Selected.y - y)) === 1;
+    if (!isAdjacent) {
+        match3Selected = { x, y };
+        match3Render();
+        return;
+    }
+    attemptMatch3Swap(match3Selected.x, match3Selected.y, x, y);
+}
+
+async function attemptMatch3Swap(x1, y1, x2, y2) {
+    match3Busy = true;
+    match3SwapCells(match3Board, x1, y1, x2, y2);
+    const matches = match3FindMatches(match3Board);
+    if (matches.size === 0) {
+        match3SwapCells(match3Board, x1, y1, x2, y2);
+        match3Selected = null;
+        match3Render();
+        playSound(false);
+        match3Busy = false;
+        return;
+    }
+
+    playSound(true);
+    match3Selected = null;
+    match3Render();
+    match3MovesLeft--;
+    document.getElementById('match3-moves').textContent = match3MovesLeft;
+
+    await match3ResolveCascade();
+    match3Busy = false;
+
+    if (!match3HasValidMove(match3Board)) {
+        match3Board = match3GenerateBoard();
+        match3Render();
+    }
+    if (match3MovesLeft <= 0) endMatch3();
+}
+
+async function match3ResolveCascade() {
+    let cascadeLevel = 0;
+    while (true) {
+        const matches = match3FindMatches(match3Board);
+        if (matches.size === 0) break;
+        cascadeLevel++;
+        match3Score += matches.size * 10 * cascadeLevel;
+        document.getElementById('match3-score').textContent = match3Score;
+
+        match3RenderClearing(matches);
+        await new Promise(r => setTimeout(r, 200));
+
+        matches.forEach(key => {
+            const [y, x] = key.split(',').map(Number);
+            match3Board[y][x] = null;
+        });
+        match3ApplyGravity(match3Board);
+        match3Render();
+        await new Promise(r => setTimeout(r, 150));
+    }
+}
+
+function endMatch3() {
+    match3Running = false;
+    saveMatch3HighScore(match3Score);
+    document.getElementById('match3-highscore').textContent = getMatch3HighScore();
+    const isNewBest = match3Score > 0 && match3Score === getMatch3HighScore();
+    const overlay = document.getElementById('match3-overlay');
+    overlay.innerHTML = `
+        <p>${t('game_over')}</p>
+        <p>${t('game_final_score', { n: match3Score })}</p>
+        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
+        <button class="btn next-btn" onclick="startMatch3()">${t('game_restart')}</button>
     `;
     overlay.style.display = 'flex';
 }

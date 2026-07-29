@@ -424,6 +424,11 @@
                         <div class="game-option-name" data-i18n="game_2048_name">2048 &#x6578;&#x5B57;&#x5408;&#x4F75;</div>
                         <div class="game-option-desc" data-i18n="game_2048_desc">&#x6ED1;&#x52D5;&#x65B9;&#x584A;&#x5408;&#x4F75;&#x76F8;&#x540C;&#x6578;&#x5B57;&#xFF0C;&#x6311;&#x6230;&#x6E4A;&#x51FA; 2048&#xFF01;</div>
                     </div>
+                    <div class="game-option" onclick="openGame('match3')">
+                        <div class="game-option-icon">&#x1F338;</div>
+                        <div class="game-option-name" data-i18n="game_match3_name">&#x516D;&#x6D88;&#x6A02;</div>
+                        <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
+                    </div>
                 </div>
             </div>
 
@@ -511,6 +516,25 @@
                         <button class="snake-dpad-btn right" onclick="move2048(1,0)" aria-label="right">&#x25B6;</button>
                     </div>
                     <button class="snake-dpad-btn down" onclick="move2048(0,1)" aria-label="down">&#x25BC;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="match3-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="game-header">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <div class="game-score-row">
+                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="match3-score">0</span>
+                        <span class="game-timer">&#x1F504; <span id="match3-moves">20</span></span>
+                        <span class="game-highscore">&#x1F3C6; <span id="match3-highscore">0</span></span>
+                    </div>
+                </div>
+                <div class="match3-wrap">
+                    <div class="match3-grid" id="match3-grid"></div>
+                    <div class="game-overlay" id="match3-overlay">
+                        <button class="btn next-btn" onclick="startMatch3()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -735,7 +759,7 @@
                         <div class="guide-icon">🎮</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_games_title">遊戲區</h4>
-                            <p data-i18n="guide_games_desc">離線也能玩的三個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）、🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒），以及 🔢 2048（滑動方塊合併相同數字）。打地鼠會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
+                            <p data-i18n="guide_games_desc">離線也能玩的四個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）、🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒）、🔢 2048（滑動方塊合併相同數字），以及 🌸 六消樂（交換方塊湊出三個以上相同圖案，限20步）。打地鼠會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
                         </div>
                     </div>
 
