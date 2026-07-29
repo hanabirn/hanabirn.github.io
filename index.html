@@ -154,6 +154,10 @@
                     <p id="fc-mastered-count" style="margin-bottom: 8px; color: #6ee7b7; font-weight: bold;"></p>
                     <button class="btn" onclick="showMasteredList()" data-i18n="fc_view_mastered" style="font-size: 0.9em; padding: 6px 16px; background: rgba(110,231,183,0.15); border: 1px solid #6ee7b7; color: #6ee7b7; border-radius: 20px; cursor: pointer;">&#x1F4CB; &#x67E5;&#x770B;&#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</button>
                 </div>
+                <div id="fc-unknown-section" style="display:none; margin-top: 10px; text-align: center;">
+                    <p id="fc-unknown-count" style="margin-bottom: 8px; color: #f87171; font-weight: bold;"></p>
+                    <button class="btn" onclick="showUnknownList()" data-i18n="fc_view_unknown" style="font-size: 0.9em; padding: 6px 16px; background: rgba(248,113,113,0.15); border: 1px solid #f87171; color: #f87171; border-radius: 20px; cursor: pointer;">&#x1F4CB; &#x67E5;&#x770B;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
+                </div>
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="closeFlashcardSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
@@ -166,6 +170,17 @@
                 <div id="mastered-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="closeMasteredList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+
+            <div class="mode-card" id="unknown-list-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="fc_unknown_title">&#x1F4CB; &#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</h3>
+                <div id="unknown-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
+                <div class="action-buttons">
+                    <button class="btn next-btn" onclick="reviewUnknownWords()" data-i18n="fc_review_unknown">&#x25B6; &#x8907;&#x7FD2;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
+                    <button class="btn back-btn" onclick="closeUnknownList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
 
@@ -290,6 +305,7 @@
                         <div class="flashcard-front" id="flashcard-front"></div>
                         <div class="flashcard-back" id="flashcard-back"></div>
                     </div>
+                    <button class="speak-btn flashcard-speak-btn" onclick="event.stopPropagation(); speakWord()" title="&#x64AD;&#x653E;&#x767C;&#x97F3;">&#x1F50A;</button>
                 </div>
                 <p id="flashcard-hint" class="hint"></p>
                 <div class="flashcard-nav">

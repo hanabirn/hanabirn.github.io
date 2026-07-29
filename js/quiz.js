@@ -1540,6 +1540,7 @@ function onTimerExpired() {
 let flashcardList = [];
 let flashcardIdx = 0;
 let flashcardKnownSet = new Set();
+let flashcardUnknownSet = new Set();
 let flashcardLang = '';
 let flashcardMode = '';
 
@@ -1549,6 +1550,14 @@ function getFlashcardKnown() {
 
 function saveFlashcardKnown() {
     localStorage.setItem('flashcard_known', JSON.stringify([...flashcardKnownSet]));
+}
+
+function getFlashcardUnknown() {
+    try { return JSON.parse(localStorage.getItem('flashcard_unknown')) || []; } catch { return []; }
+}
+
+function saveFlashcardUnknown() {
+    localStorage.setItem('flashcard_unknown', JSON.stringify([...flashcardUnknownSet]));
 }
 
 function showFlashcard() {
@@ -1633,6 +1642,7 @@ function startFlashcardWithMode(modeId) {
     if (!SHEETS[lang]) return;
 
     flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
+    flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
 
     document.getElementById('fc-lang-title').style.display = 'none';
     document.getElementById('fc-lang-buttons').style.display = 'none';
@@ -1640,6 +1650,7 @@ function startFlashcardWithMode(modeId) {
     document.getElementById('fc-mode-buttons').style.display = 'none';
 
     updateMasteredCount();
+    updateUnknownCount();
 
     const section = document.getElementById('fc-mastered-section');
     let startBtn = document.getElementById('fc-start-btn');
@@ -1726,8 +1737,13 @@ function renderFlashcard() {
     front.innerHTML = frontHTML;
     back.innerHTML = backHTML;
 
-    const isKnown = flashcardKnownSet.has(flashcardLang + '|' + flashcardMode + '|' + word.word);
-    hint.innerHTML = isKnown ? '<span style="color:#6ee7b7">\u2705 ' + (t('flashcard_known') || '已掌握') + '</span>' : '';
+    const cardKey = flashcardLang + '|' + flashcardMode + '|' + word.word;
+    const isKnown = flashcardKnownSet.has(cardKey);
+    const isUnknown = flashcardUnknownSet.has(cardKey);
+    hint.innerHTML = isKnown ? '<span style="color:#6ee7b7">' + t('flashcard_known') + '</span>' : '';
+    if (!isKnown && isUnknown) {
+        hint.innerHTML = '<span style="color:#f87171">' + t('flashcard_unknown') + '</span>';
+    }
     counter.textContent = (flashcardIdx + 1) + ' / ' + flashcardList.length;
 
     currentLang = flashcardLang;
@@ -1756,10 +1772,18 @@ function flashcardPrev() {
 function flashcardRate(known) {
     const word = flashcardList[flashcardIdx];
     const key = flashcardLang + '|' + flashcardMode + '|' + word.word;
-    if (known) flashcardKnownSet.add(key);
-    else flashcardKnownSet.delete(key);
+    if (known) {
+        flashcardKnownSet.add(key);
+        flashcardUnknownSet.delete(key);
+    } else {
+        flashcardKnownSet.delete(key);
+        flashcardUnknownSet.add(key);
+    }
     saveFlashcardKnown();
+    saveFlashcardUnknown();
     checkAchievements();
+    updateMasteredCount();
+    updateUnknownCount();
     renderFlashcard();
 }
 
@@ -1771,8 +1795,9 @@ function closeFlashcard() {
 function closeFlashcardSetup() {
     document.getElementById('flashcard-setup-card').style.display = 'none';
     document.getElementById('mastered-list-card').style.display = 'none';
-    const section = document.getElementById('fc-mastered-section');
-    section.style.display = 'none';
+    document.getElementById('unknown-list-card').style.display = 'none';
+    document.getElementById('fc-mastered-section').style.display = 'none';
+    document.getElementById('fc-unknown-section').style.display = 'none';
     const startBtn = document.getElementById('fc-start-btn');
     if (startBtn) startBtn.remove();
     document.getElementById('lang-card').style.display = 'block';
@@ -1823,6 +1848,82 @@ function closeMasteredList() {
     document.getElementById('mastered-list-card').style.display = 'none';
     document.getElementById('flashcard-setup-card').style.display = 'block';
     updateMasteredCount();
+}
+
+function updateUnknownCount() {
+    const set = new Set([...flashcardUnknownSet].filter(k => k.startsWith(flashcardLang + '|' + flashcardMode + '|')));
+    const count = set.size;
+    const el = document.getElementById('fc-unknown-count');
+    const section = document.getElementById('fc-unknown-section');
+    if (flashcardLang && flashcardMode) {
+        section.style.display = '';
+        el.innerText = t('fc_unknown_count', {n: count});
+    } else {
+        section.style.display = 'none';
+    }
+}
+
+function showUnknownList() {
+    const prefix = flashcardLang + '|' + flashcardMode + '|';
+    const unknown = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
+    const container = document.getElementById('unknown-list-content');
+    if (unknown.length === 0) {
+        container.innerHTML = '<p style="text-align:center; color:#aaa;">' + t('fc_unknown_empty') + '</p>';
+    } else {
+        let html = '';
+        unknown.forEach(word => {
+            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:rgba(248,113,113,0.08); border-radius:8px;">' +
+                '<span>' + escHtml(word) + '</span>' +
+                '<button onclick="removeFromUnknown(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:#f87171; cursor:pointer; font-size:0.9em;">&#10006;</button>' +
+                '</div>';
+        });
+        container.innerHTML = html;
+    }
+    document.getElementById('flashcard-setup-card').style.display = 'none';
+    document.getElementById('unknown-list-card').style.display = 'block';
+}
+
+function removeFromUnknown(word) {
+    const key = flashcardLang + '|' + flashcardMode + '|' + word;
+    flashcardUnknownSet.delete(key);
+    saveFlashcardUnknown();
+    showUnknownList();
+    updateUnknownCount();
+}
+
+function closeUnknownList() {
+    document.getElementById('unknown-list-card').style.display = 'none';
+    document.getElementById('flashcard-setup-card').style.display = 'block';
+    updateUnknownCount();
+}
+
+function reviewUnknownWords() {
+    const lang = flashcardLang;
+    const modeId = flashcardMode;
+    const prefix = lang + '|' + modeId + '|';
+    const unknownWords = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
+    if (unknownWords.length === 0) return;
+
+    const sheetUrl = SHEETS[lang];
+    vocabularyList = [];
+    readingList = [];
+    fetch(sheetUrl)
+        .then(r => r.text())
+        .then(csv => {
+            const rows = Papa.parse(csv, { header: false }).data;
+            if (lang === 'jp') parseJapanese(rows);
+            else if (lang === 'kr') parseKorean(rows);
+            else if (lang === 'fr') parseFrench(rows);
+            else if (lang === 'en') parseEnglish(rows);
+            else if (lang === 'zh') parseChinese(rows);
+
+            flashcardList = shuffleArray(vocabularyList.filter(w => unknownWords.includes(w.word)));
+            flashcardIdx = 0;
+            if (flashcardList.length === 0) return;
+            document.getElementById('unknown-list-card').style.display = 'none';
+            document.getElementById('flashcard-card').style.display = 'block';
+            renderFlashcard();
+        });
 }
 
 function escHtml(s) {

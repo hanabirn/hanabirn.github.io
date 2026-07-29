@@ -721,11 +721,21 @@
 
 /* ===== Flashcard ===== */
 .flashcard-container {
+    position: relative;
     perspective: 800px;
     width: 100%;
     max-width: 360px;
     height: 220px;
     margin: 20px auto;
+}
+.flashcard-speak-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 5;
+    width: 34px;
+    height: 34px;
+    font-size: 1rem;
 }
 .flashcard {
     width: 100%;
