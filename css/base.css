@@ -68,6 +68,12 @@ main {
     letter-spacing: 3px;
 }
 
+/* A heading that follows a button group (e.g. "選擇答案語言" after mode buttons
+   in a multi-step flow) needs breathing room above it, not just below. */
+.mode-buttons + h3 {
+    margin-top: 22px;
+}
+
 /* ===== Footer ===== */
 footer {
     position: relative;
