@@ -27,6 +27,7 @@ function switchPage(page, el) {
 /* ===================== Tab Visibility Settings ===================== */
 
 const ALL_TABS = ['guide', 'about', 'quiz', 'music', 'osu', 'guestbook'];
+const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {
     const v = {};
@@ -37,6 +38,7 @@ function getTabVisibility() {
             ALL_TABS.forEach(k => { if (saved[k] === false) v[k] = false; });
         }
     } catch {}
+    LOCKED_TABS.forEach(k => v[k] = true);
     return v;
 }
 
@@ -46,7 +48,6 @@ function saveTabVisibility(v) {
 
 function applyTabVisibility() {
     const v = getTabVisibility();
-    if (!ALL_TABS.some(k => v[k])) v.guide = true;
 
     ALL_TABS.forEach(key => {
         const btn = document.querySelector(`.nav-btn[data-tab="${key}"]`);
@@ -68,6 +69,13 @@ function renderTabSettingsList() {
     if (!container) return;
     container.innerHTML = ALL_TABS.map(key => {
         const label = t('nav_' + key) || key;
+        if (LOCKED_TABS.includes(key)) {
+            return `<label class="tab-settings-item locked" title="${t('tab_settings_locked')}">
+                <input type="checkbox" checked disabled>
+                <span>${label}</span>
+                <span class="tab-settings-lock">&#x1F512;</span>
+            </label>`;
+        }
         return `<label class="tab-settings-item">
             <input type="checkbox" data-tab-key="${key}" ${v[key] ? 'checked' : ''} onchange="onTabSettingChange(this)">
             <span>${label}</span>
@@ -79,11 +87,6 @@ function onTabSettingChange(input) {
     const key = input.dataset.tabKey;
     const v = getTabVisibility();
     v[key] = input.checked;
-    if (!ALL_TABS.some(k => v[k])) {
-        input.checked = true;
-        alert(t('tab_settings_need_one'));
-        return;
-    }
     saveTabVisibility(v);
     applyTabVisibility();
 }
@@ -127,7 +130,7 @@ function initTabVisibility() {
         const requested = tabsParam.split(',').map(s => s.trim()).filter(k => ALL_TABS.includes(k));
         const v = {};
         ALL_TABS.forEach(k => v[k] = requested.includes(k));
-        if (!ALL_TABS.some(k => v[k])) v.guide = true;
+        LOCKED_TABS.forEach(k => v[k] = true);
         saveTabVisibility(v);
         params.delete('tabs');
         const cleanUrl = location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash;

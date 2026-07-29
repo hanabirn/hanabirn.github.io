@@ -48,7 +48,7 @@
 /* ===== Tab Visibility Settings ===== */
 .tab-settings-btn {
     position: fixed;
-    bottom: 20px; right: 188px;
+    bottom: 188px; right: 20px;
     width: 48px; height: 48px;
     border-radius: 50%;
     border: 2px solid rgba(244,114,182,0.4);
@@ -130,6 +130,21 @@
     height: 18px;
     accent-color: var(--accent-pink);
     cursor: pointer;
+}
+.tab-settings-item.locked {
+    cursor: default;
+    opacity: 0.6;
+}
+.tab-settings-item.locked:hover {
+    border-color: var(--nav-border);
+    background: none;
+}
+.tab-settings-item.locked input[type="checkbox"] {
+    cursor: default;
+}
+.tab-settings-lock {
+    margin-left: auto;
+    font-size: 0.85rem;
 }
 .tab-settings-actions {
     display: flex;
