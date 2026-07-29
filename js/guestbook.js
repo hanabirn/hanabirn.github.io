@@ -4,19 +4,35 @@ const GUESTBOOK_API = 'https://script.google.com/macros/s/AKfycbx8V81ni-z8gCgLsV
 let guestbookMessages = [];
 let guestbookLoading = false;
 const GUESTBOOK_PAGE_SIZE = 10;
+const GUESTBOOK_CACHE_KEY = 'guestbook_cache';
 let guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
 
 async function loadGuestbookMessages() {
     guestbookLoading = true;
     guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
     const container = document.getElementById('guestbook-local');
-    container.innerHTML = `<div class="guestbook-loading">${t('guestbook_loading') || 'Loading...'}</div>`;
+
+    // Show cached messages instantly (if any) while the fresh copy loads in the background,
+    // since the Apps Script backend can take a few seconds to respond.
+    const cached = localStorage.getItem(GUESTBOOK_CACHE_KEY);
+    if (cached) {
+        try {
+            guestbookMessages = JSON.parse(cached);
+            renderGuestbookMessages();
+        } catch (e) {
+            guestbookMessages = [];
+        }
+    } else {
+        container.innerHTML = `<div class="guestbook-loading">${t('guestbook_loading') || 'Loading...'}</div>`;
+    }
+
     try {
         const res = await fetch(GUESTBOOK_API);
         guestbookMessages = await res.json();
+        localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages));
     } catch (e) {
         console.error('Guestbook load failed:', e);
-        guestbookMessages = [];
+        if (!cached) guestbookMessages = [];
     }
     guestbookLoading = false;
     renderGuestbookMessages();
@@ -83,6 +99,7 @@ async function handleGuestbookSubmit(event) {
         document.getElementById('guestbook-success').style.display = 'block';
 
         guestbookMessages.unshift({ name, message, time: new Date().toISOString() });
+        localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages));
         renderGuestbookMessages();
 
         setTimeout(() => {
