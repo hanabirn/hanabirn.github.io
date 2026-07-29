@@ -204,3 +204,40 @@
     .whack-mole { font-size: 0.78rem; }
     .snake-dpad-mid { gap: 48px; }
 }
+
+/* ---- 2048 ---- */
+.game2048-wrap {
+    position: relative;
+    max-width: 320px;
+    margin: 0 auto;
+}
+.game2048-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 8px;
+    aspect-ratio: 1 / 1;
+    background: rgba(0,0,0,0.25);
+    border: 1px solid var(--border-card);
+    border-radius: 12px;
+    padding: 8px;
+    touch-action: none;
+}
+.game2048-cell {
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: #fff;
+    animation: pop2048 0.15s ease;
+}
+@keyframes pop2048 {
+    from { transform: scale(0.7); opacity: 0.6; }
+    to { transform: scale(1); opacity: 1; }
+}
+@media (max-width: 480px) {
+    .game2048-cell { font-size: 1rem; }
+}

@@ -419,6 +419,11 @@
                         <div class="game-option-name" data-i18n="game_whack_name">&#x6253;&#x5730;&#x9F20;&#x5F0F;&#x55AE;&#x5B57;&#x904A;&#x6232;</div>
                         <div class="game-option-desc" data-i18n="game_whack_desc">&#x770B;&#x610F;&#x601D;&#x627E;&#x55AE;&#x5B57;&#xFF0C;&#x8003;&#x9A57;&#x4F60;&#x7684;&#x53CD;&#x61C9;&#x529B;&#xFF01;</div>
                     </div>
+                    <div class="game-option" onclick="openGame('2048')">
+                        <div class="game-option-icon">&#x1F522;</div>
+                        <div class="game-option-name" data-i18n="game_2048_name">2048 &#x6578;&#x5B57;&#x5408;&#x4F75;</div>
+                        <div class="game-option-desc" data-i18n="game_2048_desc">&#x6ED1;&#x52D5;&#x65B9;&#x584A;&#x5408;&#x4F75;&#x76F8;&#x540C;&#x6578;&#x5B57;&#xFF0C;&#x6311;&#x6230;&#x6E4A;&#x51FA; 2048&#xFF01;</div>
+                    </div>
                 </div>
             </div>
 
@@ -480,6 +485,32 @@
                     <div class="game-overlay" id="whack-overlay">
                         <button class="btn next-btn" onclick="startWhackGame()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
                     </div>
+                </div>
+            </div>
+
+            <div class="mode-card" id="game2048-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="game-header">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <div class="game-score-row">
+                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="game2048-score">0</span>
+                        <span class="game-highscore">&#x1F3C6; <span id="game2048-highscore">0</span></span>
+                    </div>
+                </div>
+                <div class="game2048-wrap">
+                    <div class="game2048-grid" id="game2048-grid"></div>
+                    <div class="game-overlay" id="game2048-overlay">
+                        <button class="btn next-btn" onclick="start2048()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
+                </div>
+                <div class="snake-controls" id="game2048-controls">
+                    <button class="snake-dpad-btn up" onclick="move2048(0,-1)" aria-label="up">&#x25B2;</button>
+                    <div class="snake-dpad-mid">
+                        <button class="snake-dpad-btn left" onclick="move2048(-1,0)" aria-label="left">&#x25C0;</button>
+                        <button class="snake-dpad-btn right" onclick="move2048(1,0)" aria-label="right">&#x25B6;</button>
+                    </div>
+                    <button class="snake-dpad-btn down" onclick="move2048(0,1)" aria-label="down">&#x25BC;</button>
                 </div>
             </div>
         </div>
@@ -704,7 +735,7 @@
                         <div class="guide-icon">🎮</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_games_title">遊戲區</h4>
-                            <p data-i18n="guide_games_desc">離線也能玩的兩個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）和 🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒）。後者會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
+                            <p data-i18n="guide_games_desc">離線也能玩的三個小遊戲：🐍 貪食蛇（方向鍵或滑動螢幕控制）、🔨 打地鼠式單字遊戲（看意思找出正確單字，限時60秒），以及 🔢 2048（滑動方塊合併相同數字）。打地鼠會用「單字測驗」快取過的單字庫，記得先讀取過一次想玩的語言。</p>
                         </div>
                     </div>
 

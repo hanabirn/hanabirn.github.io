@@ -4,6 +4,7 @@ function openGame(name) {
     document.getElementById('games-select-card').style.display = 'none';
     document.getElementById('snake-card').style.display = name === 'snake' ? 'block' : 'none';
     document.getElementById('whack-card').style.display = name === 'whack' ? 'block' : 'none';
+    document.getElementById('game2048-card').style.display = name === '2048' ? 'block' : 'none';
 
     if (name === 'snake') {
         initSnakeCanvas();
@@ -16,6 +17,13 @@ function openGame(name) {
         document.getElementById('whack-lang-select').style.display = 'block';
         document.getElementById('whack-game').style.display = 'none';
         document.getElementById('whack-lang-status').innerText = '';
+    } else if (name === '2048') {
+        document.getElementById('game2048-highscore').textContent = getGame2048HighScore();
+        init2048Swipe();
+        const overlay = document.getElementById('game2048-overlay');
+        overlay.innerHTML = `<button class="btn next-btn" onclick="start2048()">${t('game_start')}</button>`;
+        overlay.style.display = 'flex';
+        render2048();
     }
 }
 
@@ -24,6 +32,7 @@ function closeGame() {
     document.getElementById('games-select-card').style.display = 'block';
     document.getElementById('snake-card').style.display = 'none';
     document.getElementById('whack-card').style.display = 'none';
+    document.getElementById('game2048-card').style.display = 'none';
 }
 
 function stopAllGames() {
@@ -32,6 +41,7 @@ function stopAllGames() {
     whackRunning = false;
     clearInterval(whackTimerInterval);
     clearTimeout(whackMoleTimeout);
+    game2048Running = false;
 }
 
 /* ===================== 🐍 Snake ===================== */
@@ -330,6 +340,198 @@ function endWhackGame() {
         <p>${t('game_final_score', { n: whackScore })}</p>
         ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
         <button class="btn next-btn" onclick="startWhackGame()">${t('game_restart')}</button>
+    `;
+    overlay.style.display = 'flex';
+}
+
+/* ===================== 🔢 2048 ===================== */
+
+const GAME2048_SIZE = 4;
+const GAME2048_COLORS = {
+    2: 'linear-gradient(135deg, #f9a8d4, #f472b6)',
+    4: 'linear-gradient(135deg, #f472b6, #ec4899)',
+    8: 'linear-gradient(135deg, #e9d5ff, #c084fc)',
+    16: 'linear-gradient(135deg, #c084fc, #a855f7)',
+    32: 'linear-gradient(135deg, #a855f7, #9333ea)',
+    64: 'linear-gradient(135deg, #9333ea, #7e22ce)',
+    128: 'linear-gradient(135deg, #818cf8, #6366f1)',
+    256: 'linear-gradient(135deg, #6366f1, #4f46e5)',
+    512: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
+    1024: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
+    2048: 'linear-gradient(135deg, #fde047, #facc15)'
+};
+
+let game2048Grid = [];
+let game2048Score = 0;
+let game2048Running = false;
+let game2048Won = false;
+let game2048SwipeInit = false;
+
+function get2048Color(v) {
+    return GAME2048_COLORS[v] || 'linear-gradient(135deg, #34d399, #10b981)';
+}
+
+function getGame2048HighScore() {
+    return parseInt(localStorage.getItem('game2048_high_score') || '0', 10);
+}
+function saveGame2048HighScore(score) {
+    if (score > getGame2048HighScore()) localStorage.setItem('game2048_high_score', String(score));
+}
+
+function add2048Tile() {
+    const empty = [];
+    for (let y = 0; y < GAME2048_SIZE; y++) {
+        for (let x = 0; x < GAME2048_SIZE; x++) {
+            if (game2048Grid[y][x] === 0) empty.push({ x, y });
+        }
+    }
+    if (empty.length === 0) return;
+    const { x, y } = empty[Math.floor(Math.random() * empty.length)];
+    game2048Grid[y][x] = Math.random() < 0.9 ? 2 : 4;
+}
+
+function render2048() {
+    const container = document.getElementById('game2048-grid');
+    if (!container) return;
+    container.innerHTML = '';
+    for (let y = 0; y < GAME2048_SIZE; y++) {
+        for (let x = 0; x < GAME2048_SIZE; x++) {
+            const v = game2048Grid[y] ? game2048Grid[y][x] : 0;
+            const cell = document.createElement('div');
+            cell.className = 'game2048-cell';
+            if (v > 0) {
+                cell.textContent = v;
+                cell.style.background = get2048Color(v);
+                cell.style.color = v <= 4 ? '#3b0764' : '#fff';
+            }
+            container.appendChild(cell);
+        }
+    }
+}
+
+function start2048() {
+    document.getElementById('game2048-overlay').style.display = 'none';
+    game2048Grid = Array.from({ length: GAME2048_SIZE }, () => Array(GAME2048_SIZE).fill(0));
+    game2048Score = 0;
+    game2048Won = false;
+    document.getElementById('game2048-score').textContent = '0';
+    game2048Running = true;
+    add2048Tile();
+    add2048Tile();
+    render2048();
+}
+
+function is2048GameOver() {
+    const size = GAME2048_SIZE;
+    for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+            if (game2048Grid[y][x] === 0) return false;
+            if (x < size - 1 && game2048Grid[y][x] === game2048Grid[y][x + 1]) return false;
+            if (y < size - 1 && game2048Grid[y][x] === game2048Grid[y + 1][x]) return false;
+        }
+    }
+    return true;
+}
+
+function move2048(dx, dy) {
+    if (!game2048Running) return;
+    const size = GAME2048_SIZE;
+    const before = JSON.stringify(game2048Grid);
+    let scoreGain = 0;
+
+    function collapseLine(values) {
+        const nums = values.filter(v => v !== 0);
+        const result = [];
+        for (let i = 0; i < nums.length; i++) {
+            if (i < nums.length - 1 && nums[i] === nums[i + 1]) {
+                const merged = nums[i] * 2;
+                result.push(merged);
+                scoreGain += merged;
+                i++;
+            } else {
+                result.push(nums[i]);
+            }
+        }
+        while (result.length < size) result.push(0);
+        return result;
+    }
+
+    if (dx !== 0) {
+        for (let y = 0; y < size; y++) {
+            let line = game2048Grid[y];
+            if (dx === 1) line = line.slice().reverse();
+            let collapsed = collapseLine(line);
+            if (dx === 1) collapsed = collapsed.reverse();
+            game2048Grid[y] = collapsed;
+        }
+    } else if (dy !== 0) {
+        for (let x = 0; x < size; x++) {
+            let col = game2048Grid.map(row => row[x]);
+            if (dy === 1) col = col.reverse();
+            let collapsed = collapseLine(col);
+            if (dy === 1) collapsed = collapsed.reverse();
+            for (let y = 0; y < size; y++) game2048Grid[y][x] = collapsed[y];
+        }
+    }
+
+    if (JSON.stringify(game2048Grid) === before) return;
+
+    game2048Score += scoreGain;
+    document.getElementById('game2048-score').textContent = game2048Score;
+    if (scoreGain > 0) playSound(true);
+    add2048Tile();
+    render2048();
+
+    if (!game2048Won && game2048Grid.some(row => row.includes(2048))) {
+        game2048Won = true;
+        showShareToast(t('game_2048_win'));
+    }
+
+    if (is2048GameOver()) end2048();
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!game2048Running) return;
+    if (e.key === 'ArrowUp' || e.key === 'w' || e.key === 'W') { e.preventDefault(); move2048(0, -1); }
+    else if (e.key === 'ArrowDown' || e.key === 's' || e.key === 'S') { e.preventDefault(); move2048(0, 1); }
+    else if (e.key === 'ArrowLeft' || e.key === 'a' || e.key === 'A') { e.preventDefault(); move2048(-1, 0); }
+    else if (e.key === 'ArrowRight' || e.key === 'd' || e.key === 'D') { e.preventDefault(); move2048(1, 0); }
+});
+
+let game2048TouchStart = null;
+function init2048Swipe() {
+    if (game2048SwipeInit) return;
+    const grid = document.getElementById('game2048-grid');
+    if (!grid) return;
+    grid.addEventListener('touchstart', (e) => {
+        const t0 = e.touches[0];
+        game2048TouchStart = { x: t0.clientX, y: t0.clientY };
+    }, { passive: true });
+    grid.addEventListener('touchend', (e) => {
+        if (!game2048TouchStart) return;
+        const t0 = e.changedTouches[0];
+        const dx = t0.clientX - game2048TouchStart.x;
+        const dy = t0.clientY - game2048TouchStart.y;
+        if (Math.abs(dx) < 20 && Math.abs(dy) < 20) { game2048TouchStart = null; return; }
+        if (Math.abs(dx) > Math.abs(dy)) move2048(dx > 0 ? 1 : -1, 0);
+        else move2048(0, dy > 0 ? 1 : -1);
+        game2048TouchStart = null;
+    }, { passive: true });
+    game2048SwipeInit = true;
+}
+
+function end2048() {
+    game2048Running = false;
+    playSound(false);
+    saveGame2048HighScore(game2048Score);
+    document.getElementById('game2048-highscore').textContent = getGame2048HighScore();
+    const isNewBest = game2048Score > 0 && game2048Score === getGame2048HighScore();
+    const overlay = document.getElementById('game2048-overlay');
+    overlay.innerHTML = `
+        <p>${t('game_over')}</p>
+        <p>${t('game_final_score', { n: game2048Score })}</p>
+        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
+        <button class="btn next-btn" onclick="start2048()">${t('game_restart')}</button>
     `;
     overlay.style.display = 'flex';
 }
