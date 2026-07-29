@@ -175,8 +175,18 @@ function parseOsuInput(input) {
     return null;
 }
 
-async function osuFetch(params) {
-    const res = await fetch(`/.netlify/functions/osu?${params}`);
+async function osuFetch(params, timeoutMs = 12000) {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), timeoutMs);
+    let res;
+    try {
+        res = await fetch(`/.netlify/functions/osu?${params}`, { signal: controller.signal });
+    } catch (e) {
+        if (e.name === 'AbortError') throw new Error(`請求逾時（${timeoutMs / 1000}秒）`);
+        throw e;
+    } finally {
+        clearTimeout(timer);
+    }
     const text = await res.text();
     try { return JSON.parse(text); }
     catch { throw new Error(`Function 回傳非 JSON (HTTP ${res.status}): ${text.substring(0, 200)}`); }
@@ -300,33 +310,38 @@ async function refreshAllOsuSets() {
     status.style.color = '#c8a2e0';
 
     const col = getOsuCollection();
-    const allIds = new Set();
-    for (const mode of OSU_MODES) {
-        for (const s of col[mode]) allIds.add(s.beatmapset_id);
-    }
+    const allIds = [...new Set(OSU_MODES.flatMap(mode => col[mode].map(s => s.beatmapset_id)))];
+    const REFRESH_CONCURRENCY = 6;
 
     try {
-        for (const setId of allIds) {
-            const beatmaps = await osuFetch(`s=${setId}`);
-            if (beatmaps.length === 0) continue;
-            for (const mode of OSU_MODES) {
-                const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
-                if (idx >= 0) {
-                    col[mode][idx].beatmaps = beatmaps.map(b => ({
-                        beatmap_id: parseInt(b.beatmap_id),
-                        version: b.version,
-                        difficulty_rating: parseFloat(b.difficultyrating),
-                        hit_length: parseInt(b.hit_length),
-                        total_length: parseInt(b.total_length),
-                        bpm: parseFloat(b.bpm)
-                    })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
-                    break;
+        for (let i = 0; i < allIds.length; i += REFRESH_CONCURRENCY) {
+            const batch = allIds.slice(i, i + REFRESH_CONCURRENCY);
+            const results = await Promise.all(batch.map(setId =>
+                osuFetch(`s=${setId}`)
+                    .then(beatmaps => ({ setId, beatmaps }))
+                    .catch(() => ({ setId, beatmaps: [] }))
+            ));
+            for (const { setId, beatmaps } of results) {
+                if (beatmaps.length === 0) continue;
+                for (const mode of OSU_MODES) {
+                    const idx = col[mode].findIndex(s => s.beatmapset_id === setId);
+                    if (idx >= 0) {
+                        col[mode][idx].beatmaps = beatmaps.map(b => ({
+                            beatmap_id: parseInt(b.beatmap_id),
+                            version: b.version,
+                            difficulty_rating: parseFloat(b.difficultyrating),
+                            hit_length: parseInt(b.hit_length),
+                            total_length: parseInt(b.total_length),
+                            bpm: parseFloat(b.bpm)
+                        })).sort((a, b) => a.difficulty_rating - b.difficulty_rating);
+                        break;
+                    }
                 }
             }
         }
         saveOsuCollection(col);
         renderOsuCollection();
-        status.innerText = t('osu_refresh_done', { n: allIds.size });
+        status.innerText = t('osu_refresh_done', { n: allIds.length });
         status.style.color = '#34d399';
     } catch (e) {
         console.error('Refresh all failed:', e);
