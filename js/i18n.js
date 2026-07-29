@@ -2,7 +2,7 @@
 const I18N = {
     zh: {
         title: 'Hanabi的小天地', subtitle: '持續學習朝著自己的夢想前進吧 !',
-        nav_quiz: '單字測驗', nav_music: '音樂收藏', nav_osu: 'osu! 收藏', nav_about: '關於我',
+        nav_quiz: '單字測驗', nav_music: '花火的Spotify歌單', nav_osu: 'osu! 收藏', nav_about: '關於我',
         select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗', quiz_fr: '法文單字測驗', quiz_en: '英文單字測驗', quiz_zh: '中文單字測驗',
         fc_lang_jp: '🇯🇵 日文', fc_lang_kr: '🇰🇷 韓文', fc_lang_fr: '🇫🇷 法文', fc_lang_en: '🇺🇸 英文', fc_lang_zh: '🇨🇳 中文',
         lc_mode_title: '選擇模式',
@@ -55,7 +55,7 @@ const I18N = {
         result_question: '第 {n} 題', result_your_answer: '你的答案', result_correct_answer: '正確答案',
         answer_lang_title: '選擇答案語言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '留言板', guestbook_title: '✦ 留言板 ✦', guestbook_name: '你的名字', guestbook_message: '留下你的言語...', guestbook_send: '送出', guestbook_success: '感謝你的留言 ✦',
-        visitor_lookup_title: '✦ 查詢你的 osu! PP ✦', visitor_lookup_placeholder: '輸入 osu! 用戶名或 ID', visitor_lookup_btn: '查詢',
+        osu_page_title: '✦ osu!歌曲收藏+查詢個人總PP ✦', visitor_lookup_title: '✦ 查詢你的 osu! PP ✦', visitor_lookup_placeholder: '輸入 osu! 用戶名或 ID', visitor_lookup_btn: '查詢',
         nav_guide: '教學手冊', guide_title: '✦ 教學手冊 ✦', guide_prev: '◀ 上一頁', guide_next: '下一頁 ▶',
         guide_lang_title: '切換語言', guide_lang_desc: '頁面頂部有 8 種語言按鈕（中／EN／日／한／РУ／FR／ES／DE），點擊即可即時切換整個網站的顯示語言，選擇會自動記住，下次來訪不用重選。',
         guide_quiz_title: '單字測驗',         guide_quiz_desc: '支援日文、韓文、法文、英文、中文五種單字測驗，單字庫皆來自 Google 試算表即時載入。🇯🇵🇰🇷 日文／韓文：可選「考意思」、「考讀音」或混合模式，答案可選中文或英文；🇫🇷 法文：考意思，答案可選中文或英文；🇺🇸 英文：英翻中；🇨🇳 中文（給外國朋友）：先選題目顯示繁體或简体，繁體可考注音或英文意思、简体可考拼音或英文意思。題數可選 10／20／30 或無限題。計分方式：答對 +10 分、答錯 -3 分。每題會自動朗讀發音（右上角 🔊 可開關，題目旁的 🔊 可重聽）。測驗結束會顯示成績單：正確數、錯誤數、得分、正確率，以及每一題的作答詳情。按「📱 分享成績」可將成績卡片複製到剪貼簿或下載圖片分享給朋友！ 若中途離線，會自動改用上次成功載入的單字庫（若有）。',
@@ -102,7 +102,7 @@ const I18N = {
     },
     en: {
         title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
-        nav_quiz: 'Vocabulary Quiz', nav_music: 'Music Collection', nav_osu: 'osu! Collection', nav_about: 'About Me',
+        nav_quiz: 'Vocabulary Quiz', nav_music: "Hanabi's Spotify Playlist", nav_osu: 'osu! Collection', nav_about: 'About Me',
         select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz',
         fc_lang_jp: '🇯🇵 Japanese', fc_lang_kr: '🇰🇷 Korean', fc_lang_fr: '🇫🇷 French', fc_lang_en: '🇺🇸 English', fc_lang_zh: '🇨🇳 Chinese',
         lc_mode_title: 'Select Mode',
@@ -155,7 +155,7 @@ const I18N = {
         result_question: 'Question {n}', result_your_answer: 'Your Answer', result_correct_answer: 'Correct Answer',
         answer_lang_title: 'Select Answer Language', answer_lang_zh: '🇨🇳 Chinese', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Guestbook', guestbook_title: '✦ Guestbook ✦', guestbook_name: 'Your name', guestbook_message: 'Leave a message...', guestbook_send: 'Send', guestbook_success: 'Thanks for your message ✦',
-        visitor_lookup_title: '✦ Look Up Your osu! PP ✦', visitor_lookup_placeholder: 'Enter osu! username or ID', visitor_lookup_btn: 'Search',
+        osu_page_title: '✦ osu! Song Collection + Total PP Lookup ✦', visitor_lookup_title: '✦ Look Up Your osu! PP ✦', visitor_lookup_placeholder: 'Enter osu! username or ID', visitor_lookup_btn: 'Search',
         nav_guide: 'Guide', guide_title: '✦ User Guide ✦', guide_prev: '◀ Previous', guide_next: 'Next ▶',
         guide_lang_title: 'Switch Language', guide_lang_desc: '8 language buttons (中/EN/日/한/РУ/FR/ES/DE) at the top of the page — click to instantly switch the entire site\'s display language. Your choice is saved automatically so you won\'t need to pick again next visit.',
         guide_quiz_title: 'Vocabulary Quiz',         guide_quiz_desc: 'Vocabulary quizzes in 5 languages — all word banks are loaded live from Google Sheets. 🇯🇵🇰🇷 Japanese/Korean: choose "meaning mode", "reading mode", or mixed; answers can be Chinese or English. 🇫🇷 French: meaning mode with Chinese or English answers. 🇺🇸 English: English-to-Chinese. 🇨🇳 Chinese (for foreign friends): pick Traditional or Simplified display first — Traditional can test Bopomofo or English meaning, Simplified can test Pinyin or English meaning. Choose 10/20/30 questions or unlimited. Scoring: +10 per correct answer, -3 per wrong answer. Each question is read aloud (🔊 at top-right toggles auto-reading; 🔊 next to the question replays it). At the end, a result card shows your correct/wrong count, score, accuracy, and a full review of every question. Hit "📱 Share Score" to copy or download a beautiful score card to share with friends! If you go offline, it automatically falls back to the last successfully loaded word list, if one is available.',
@@ -202,7 +202,7 @@ const I18N = {
     },
     ja: {
         title: 'Hanabi の 小天地', subtitle: '学び続け、自分の夢に向かって進もう！',
-        nav_quiz: '単語テスト', nav_music: '音楽コレクション', nav_osu: 'osu! コレクション', nav_about: '自己紹介',
+        nav_quiz: '単語テスト', nav_music: 'HanabiのSpotifyプレイリスト', nav_osu: 'osu! コレクション', nav_about: '自己紹介',
         select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト', quiz_fr: 'フランス語テスト', quiz_en: '英語テスト', quiz_zh: '中国語テスト',
         fc_lang_jp: '🇯🇵 日本語', fc_lang_kr: '🇰🇷 韓国語', fc_lang_fr: '🇫🇷 フランス語', fc_lang_en: '🇺🇸 英語', fc_lang_zh: '🇨🇳 中国語',
         lc_mode_title: 'モードを選択',
@@ -255,7 +255,7 @@ const I18N = {
         result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
         answer_lang_title: '回答言語を選択', answer_lang_zh: '🇨🇳 中国語', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '掲示板', guestbook_title: '✦ 掲示板 ✦', guestbook_name: '名前', guestbook_message: 'メッセージを残す...', guestbook_send: '送信', guestbook_success: 'メッセージありがとう ✦',
-        visitor_lookup_title: '✦ osu! PPを照会 ✦', visitor_lookup_placeholder: 'osu! ユーザー名またはID', visitor_lookup_btn: '検索',
+        osu_page_title: '✦ osu!譜面コレクション＋合計PP検索 ✦', visitor_lookup_title: '✦ osu! PPを照会 ✦', visitor_lookup_placeholder: 'osu! ユーザー名またはID', visitor_lookup_btn: '検索',
         nav_guide: 'ガイド', guide_title: '✦ ユーザーガイド ✦', guide_prev: '◀ 前へ', guide_next: '次へ ▶',
         guide_lang_title: '言語切替', guide_lang_desc: 'ページ上部に8つの言語ボタン（中／EN／日／한／РУ／FR／ES／DE）があります。クリックするだけでサイト全体の表示言語を即座に切り替えられます。選択は自動保存されるので、次回访问してもう一度選ぶ必要はありません。',
         guide_quiz_title: '単語クイズ',         guide_quiz_desc: '日本語・韓国語・フランス語・英語・中国語の5言語に対応。単語データはGoogleスプレッドシートからリアルタイムで読み込みます。🇯🇵🇰🇷 日本語・韓国語：「意味」「読み」「混合」モードを選べ、答えは中国語または英語から選択。🇫🇷 フランス語：意味モード、答えは中国語または英語。🇺🇸 英語：英→中テスト。🇨🇳 中国語（外国の人のため）：最初に繁体字または简体字を選択。繁体字は注音または英語の意味をテスト、简体字はピンインまたは英語の意味をテスト。問題数は10/20/30問または無制限。得点方式：正解+10点、不正解-3点。各問題は自動で読み上げられます（右上の🔊で読み上げのON/OFF切替、問題横の🔊で再再生）。テスト終了後、正解数・不正解数・得点・正解率、全問題の詳細を確認できます。「📱 結果を共有」で成績カードをコピーまたはダウンロードして友達にシェアしよう！ オフラインになった場合、前回読み込んだ単語データ（あれば）に自動的に切り替わります。',
@@ -302,7 +302,7 @@ const I18N = {
     },
     ko: {
         title: 'Hanabi 의 작은 세계', subtitle: '배우고 또 배워서 자신의 꿈을 향해 나아가자!',
-        nav_quiz: '단어 퀴즈', nav_music: '음악 컬렉션', nav_osu: 'osu! 컬렉션', nav_about: '소개',
+        nav_quiz: '단어 퀴즈', nav_music: 'Hanabi의 Spotify 플레이리스트', nav_osu: 'osu! 컬렉션', nav_about: '소개',
         select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈', quiz_en: '영어 퀴즈', quiz_zh: '중국어 퀴즈',
         fc_lang_jp: '🇯🇵 일본어', fc_lang_kr: '🇰🇷 한국어', fc_lang_fr: '🇫🇷 프랑스어', fc_lang_en: '🇺🇸 영어', fc_lang_zh: '🇨🇳 중국어',
         lc_mode_title: '모드 선택',
@@ -355,7 +355,7 @@ const I18N = {
         result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
         answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '방명록', guestbook_title: '✦ 방명록 ✦', guestbook_name: '이름', guestbook_message: '메시지를 남기세요...', guestbook_send: '보내기', guestbook_success: '메시지 감사합니다 ✦',
-        visitor_lookup_title: '✦ osu! PP 조회 ✦', visitor_lookup_placeholder: 'osu! 사용자 이름 또는 ID', visitor_lookup_btn: '검색',
+        osu_page_title: '✦ osu! 비트맵 컬렉션 + 총 PP 조회 ✦', visitor_lookup_title: '✦ osu! PP 조회 ✦', visitor_lookup_placeholder: 'osu! 사용자 이름 또는 ID', visitor_lookup_btn: '검색',
         nav_guide: '가이드', guide_title: '✦ 사용자 가이드 ✦', guide_prev: '◀ 이전', guide_next: '다음 ▶',
         guide_lang_title: '언어 전환', guide_lang_desc: '페이지 상단에 8개 언어 버튼(중/EN/일/한/РУ/FR/ES/DE)이 있습니다. 클릭하면 사이트 전체 표시 언어가 즉시 전환됩니다. 선택은 자동 저장되므로 다음 방문 시 다시 선택할 필요가 없습니다.',
         guide_quiz_title: '단어 퀴즈',         guide_quiz_desc: '일본어, 한국어, 프랑스어, 영어, 중국어 5개 언어 단어 퀴즈를 지원합니다. 모든 단어 데이터는 Google 스프레드시트에서 실시간으로 로드됩니다. 🇯🇵🇰🇷 일본어/한국어: "뜻", "읽기", "혼합" 모드를 선택할 수 있으며 답은 중국어 또는 영어에서 선택. 🇫🇷 프랑스어: 뜻 모드, 답은 중국어 또는 영어. 🇺🇸 영어: 영→중 테스트. 🇨🇳 중국어(외국인용): 먼저 번체자 또는 간체자 선택. 번체자는 주음 또는 영어 뜻, 간체자는 병음 또는 영어 뜻을 테스트. 문제 수는 10/20/30문제 또는 무제한. 채점: 정답 +10점, 오답 -3점. 각 문제는 자동으로 읽어줍니다(오른쪽 🔊로 자동 읽기 ON/OFF, 문제 옆 🔊로 다시 듣기). 테스트 종료 후 정답수/오답수/점수/정답률과 전체 문제 상세를 확인할 수 있습니다. "📱 결과 공유"로 성적 카드를 복사하거나 다운로드해서 친구와 공유하세요! 오프라인 상태가 되면 마지막으로 불러온 단어 목록(있는 경우)으로 자동 전환됩니다.',
@@ -402,7 +402,7 @@ const I18N = {
     },
     ru: {
         title: 'Маленький мир Ханаби', subtitle: 'Учись и иди к своей мечте!',
-        nav_quiz: 'Тест на слова', nav_music: 'Музыка', nav_osu: 'osu! Коллекция', nav_about: 'Обо мне',
+        nav_quiz: 'Тест на слова', nav_music: 'Плейлист Hanabi в Spotify', nav_osu: 'osu! Коллекция', nav_about: 'Обо мне',
         select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест', quiz_en: 'Английский тест', quiz_zh: 'Китайский тест',
         fc_lang_jp: '🇯🇵 Японский', fc_lang_kr: '🇰🇷 Корейский', fc_lang_fr: '🇫🇷 Французский', fc_lang_en: '🇺🇸 Английский', fc_lang_zh: '🇨🇳 Китайский',
         lc_mode_title: 'Выберите режим',
@@ -455,7 +455,7 @@ const I18N = {
         result_question: 'Вопрос {n}', result_your_answer: 'Ваш ответ', result_correct_answer: 'Правильный ответ',
         answer_lang_title: 'Язык ответа', answer_lang_zh: '🇨🇳 Китайский', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Гостевая', guestbook_title: '✦ Гостевая ✦', guestbook_name: 'Ваше имя', guestbook_message: 'Оставьте сообщение...', guestbook_send: 'Отправить', guestbook_success: 'Спасибо за сообщение ✦',
-        visitor_lookup_title: '✦ Проверить свой osu! PP ✦', visitor_lookup_placeholder: 'Имя пользователя или ID', visitor_lookup_btn: 'Поиск',
+        osu_page_title: '✦ Коллекция битмапов osu! + поиск общего PP ✦', visitor_lookup_title: '✦ Проверить свой osu! PP ✦', visitor_lookup_placeholder: 'Имя пользователя или ID', visitor_lookup_btn: 'Поиск',
         nav_guide: 'Руководство', guide_title: '✦ Руководство пользователя ✦', guide_prev: '◀ Назад', guide_next: 'Далее ▶',
         guide_lang_title: 'Смена языка', guide_lang_desc: 'Вверху страницы 8 кнопок языков (中/EN/日/한/РУ/FR/ES/DE) — нажмите, чтобы мгновенно переключить язык всего сайта. Ваш выбор сохраняется автоматически.',
         guide_quiz_title: 'Викторина',         guide_quiz_desc: 'Викторина на 5 языках — все слова загружаются из Google Таблиц. 🇯🇵🇰🇷 Японский/Корейский: режим «значение», «чтение» или смешанный; ответы на китайском или английском. 🇫🇷 Французский: режим значения, ответы на китайском или английском. 🇺🇸 Английский: англо-китайский. 🇨🇳 Китайский (для иностранцев): выбор иероглифов — традиционные или упрощённые. Тест по Бопомофо или английскому значению. 10/20/30 вопросов или без ограничений. Начисление: +10 за правильный, -3 за неправильный. Автозачитывание вопросов (🔊 вверху включает/выключает, 🔊 у вопроса повторяет). В конце — результат с подробным разбором каждого вопроса. Нажмите «📱 Поделиться», чтобы скопировать или скачать красивую карточку результатов! Если вы окажетесь офлайн, сайт автоматически переключится на последний загруженный список слов, если он есть.',
@@ -502,7 +502,7 @@ const I18N = {
     },
     fr: {
         title: "Le Petit Monde de Hanabi", subtitle: 'Continue d\'apprendre et poursuis tes rêves !',
-        nav_quiz: 'Quiz Vocabulaire', nav_music: 'Musique', nav_osu: 'Collection osu!', nav_about: 'À propos',
+        nav_quiz: 'Quiz Vocabulaire', nav_music: 'Playlist Spotify de Hanabi', nav_osu: 'Collection osu!', nav_about: 'À propos',
         select_lang: '✦ Langue ✦', quiz_jp: 'Quiz Japonais', quiz_kr: 'Quiz Coréen', quiz_fr: 'Quiz Français', quiz_en: 'Quiz Anglais', quiz_zh: 'Quiz Chinois',
         fc_lang_jp: '🇯🇵 Japonais', fc_lang_kr: '🇰🇷 Coréen', fc_lang_fr: '🇫🇷 Français', fc_lang_en: '🇺🇸 Anglais', fc_lang_zh: '🇨🇳 Chinois',
         lc_mode_title: 'Choisir le mode',
@@ -555,7 +555,7 @@ const I18N = {
         result_question: 'Question {n}', result_your_answer: 'Votre réponse', result_correct_answer: 'Bonne réponse',
         answer_lang_title: 'Langue de réponse', answer_lang_zh: '🇨🇳 Chinois', answer_lang_en: '🇺🇸 English',
         nav_guestbook: "Livre d'or", guestbook_title: "✦ Livre d'or ✦", guestbook_name: 'Votre nom', guestbook_message: 'Laissez un message...', guestbook_send: 'Envoyer', guestbook_success: 'Merci pour votre message ✦',
-        visitor_lookup_title: '✦ Vérifier votre osu! PP ✦', visitor_lookup_placeholder: "Nom d'utilisateur ou ID", visitor_lookup_btn: 'Rechercher',
+        osu_page_title: '✦ Collection de beatmaps osu! + PP total ✦', visitor_lookup_title: '✦ Vérifier votre osu! PP ✦', visitor_lookup_placeholder: "Nom d'utilisateur ou ID", visitor_lookup_btn: 'Rechercher',
         nav_guide: 'Guide', guide_title: '✦ Guide utilisateur ✦', guide_prev: '◀ Précédent', guide_next: 'Suivant ▶',
         guide_lang_title: 'Changer de langue', guide_lang_desc: "8 boutons de langue (中/EN/日/한/РУ/FR/ES/DE) en haut de la page — cliquez pour basculer instantanément la langue du site. Votre choix est sauvegardé automatiquement.",
         guide_quiz_title: 'Quiz de vocabulaire',         guide_quiz_desc: "Quiz dans 5 langues — tous les mots sont chargés en direct depuis Google Sheets. 🇯🇵🇰🇷 Japonais/Coréen : mode « signification », « lecture » ou mixte ; réponses en chinois ou anglais. 🇫🇷 Français : mode signification, réponses en chinois ou anglais. 🇺🇸 Anglais : anglais → chinois. 🇨🇳 Chinois (pour étrangers) : choisissez traditionnel ou simplifié d'abord — traditionnel testez Bopomofo ou signification anglaise, simplifié testez Pinyin ou signification anglaise. 10/20/30 questions ou illimité. Notation : +10 par bonne réponse, -3 par mauvaise. Chaque question est lue à voix haute (🔊 en haut à droite active/désactive, 🔊 à côté relit). Résultat détaillé à la fin. Appuyez sur « 📱 Partager » pour copier ou télécharger une belle carte de score à envoyer à vos amis ! Si vous êtes hors ligne, le site utilise automatiquement la dernière liste de mots chargée, si elle est disponible.",
@@ -602,7 +602,7 @@ const I18N = {
     },
     es: {
         title: "El Pequeño Mundo de Hanabi", subtitle: '¡Sigue aprendiendo y camina hacia tus sueños!',
-        nav_quiz: 'Quiz Vocabulario', nav_music: 'Música', nav_osu: 'Colección osu!', nav_about: 'Sobre mí',
+        nav_quiz: 'Quiz Vocabulario', nav_music: 'Playlist de Spotify de Hanabi', nav_osu: 'Colección osu!', nav_about: 'Sobre mí',
         select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés', quiz_en: 'Quiz Inglés', quiz_zh: 'Quiz Chino',
         fc_lang_jp: '🇯🇵 Japonés', fc_lang_kr: '🇰🇷 Coreano', fc_lang_fr: '🇫🇷 Francés', fc_lang_en: '🇺🇸 Inglés', fc_lang_zh: '🇨🇳 Chino',
         lc_mode_title: 'Elegir modo',
@@ -655,7 +655,7 @@ const I18N = {
         result_question: 'Pregunta {n}', result_your_answer: 'Tu respuesta', result_correct_answer: 'Respuesta correcta',
         answer_lang_title: 'Idioma de respuesta', answer_lang_zh: '🇨🇳 Chino', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Libro de visitas', guestbook_title: '✦ Libro de visitas ✦', guestbook_name: 'Tu nombre', guestbook_message: 'Deja un mensaje...', guestbook_send: 'Enviar', guestbook_success: 'Gracias por tu mensaje ✦',
-        visitor_lookup_title: '✦ Consultar tu osu! PP ✦', visitor_lookup_placeholder: 'Nombre de usuario o ID', visitor_lookup_btn: 'Buscar',
+        osu_page_title: '✦ Colección de beatmaps osu! + PP total ✦', visitor_lookup_title: '✦ Consultar tu osu! PP ✦', visitor_lookup_placeholder: 'Nombre de usuario o ID', visitor_lookup_btn: 'Buscar',
         nav_guide: 'Guía', guide_title: '✦ Guía de usuario ✦', guide_prev: '◀ Anterior', guide_next: 'Siguiente ▶',
         guide_lang_title: 'Cambiar idioma', guide_lang_desc: '8 botones de idioma (中/EN/日/한/РУ/FR/ES/DE) en la parte superior — haz clic para cambiar instantáneamente el idioma de todo el sitio. Tu selección se guarda automáticamente.',
         guide_quiz_title: 'Quiz de vocabulario',         guide_quiz_desc: 'Cuestionarios en 5 idiomas — todas las palabras se cargan en tiempo real desde Google Sheets. 🇯🇵🇰🇷 Japonés/Coreano: modo "significado", "lectura" o mixto; respuestas en chino o inglés. 🇫🇷 Francés: modo significado, respuestas en chino o inglés. 🇺🇸 Inglés: inglés → chino. 🇨🇳 Chino (para extranjeros): elige tradicional o simplificado primero — tradicional prueba Bopomofo o significado en inglés, simplificado prueba Pinyin o significado en inglés. 10/20/30 preguntas o ilimitado. Puntuación: +10 por correcta, -3 por incorrecta. Cada pregunta se lee en voz alta (🔊 arriba a la derecha activa/desactiva, 🔊 al lado relee). Resultado detallado al final. ¡Pulsa « 📱 Compartir » para copiar o descargar una bonita tarjeta de resultado para compartir con tus amigos! Si te quedas sin conexión, se usará automáticamente la última lista de palabras cargada, si está disponible.',
@@ -702,7 +702,7 @@ const I18N = {
     },
     de: {
         title: "Hanabis kleine Welt", subtitle: 'Lerne weiter und gehe auf deine Träume zu!',
-        nav_quiz: 'Vokabel-Quiz', nav_music: 'Musik', nav_osu: 'osu! Sammlung', nav_about: 'Über mich',
+        nav_quiz: 'Vokabel-Quiz', nav_music: 'Hanabis Spotify-Playlist', nav_osu: 'osu! Sammlung', nav_about: 'Über mich',
         select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz', quiz_en: 'Englisch Quiz', quiz_zh: 'Chinesisch Quiz',
         fc_lang_jp: '🇯🇵 Japanisch', fc_lang_kr: '🇰🇷 Koreanisch', fc_lang_fr: '🇫🇷 Französisch', fc_lang_en: '🇺🇸 Englisch', fc_lang_zh: '🇨🇳 Chinesisch',
         lc_mode_title: 'Modus wählen',
@@ -755,7 +755,7 @@ const I18N = {
         result_question: 'Frage {n}', result_your_answer: 'Deine Antwort', result_correct_answer: 'Richtige Antwort',
         answer_lang_title: 'Antwortsprache', answer_lang_zh: '🇨🇳 Chinesisch', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Gästebuch', guestbook_title: '✦ Gästebuch ✦', guestbook_name: 'Dein Name', guestbook_message: 'Hinterlasse eine Nachricht...', guestbook_send: 'Senden', guestbook_success: 'Danke für deine Nachricht ✦',
-        visitor_lookup_title: '✦ Deinen osu! PP prüfen ✦', visitor_lookup_placeholder: 'osu! Benutzername oder ID', visitor_lookup_btn: 'Suchen',
+        osu_page_title: '✦ osu! Beatmap-Sammlung + Gesamt-PP-Suche ✦', visitor_lookup_title: '✦ Deinen osu! PP prüfen ✦', visitor_lookup_placeholder: 'osu! Benutzername oder ID', visitor_lookup_btn: 'Suchen',
         nav_guide: 'Anleitung', guide_title: '✦ Benutzeranleitung ✦', guide_prev: '◀ Zurück', guide_next: 'Weiter ▶',
         guide_lang_title: 'Sprache wechseln', guide_lang_desc: '8 Sprachschaltflächen (中/EN/日/한/РУ/FR/ES/DE) oben auf der Seite — klicke, um die Sprache der gesamten Seite sofort zu wechseln. Deine Auswahl wird automatisch gespeichert.',
         guide_quiz_title: 'Vokabelquiz',         guide_quiz_desc: 'Vokabelquizzes in 5 Sprachen — alle Wörter werden live aus Google Sheets geladen. 🇯🇵🇰🇷 Japanisch/Koreanisch: „Bedeutung", „Aussprache" oder gemischt; Antworten auf Chinesisch oder Englisch. 🇫🇷 Französisch: Bedeutungsmodus, Antworten auf Chinesisch oder Englisch. 🇺🇸 Englisch: Englisch → Chinesisch. 🇨🇳 Chinesisch (für Ausländer): zuerst Traditionell oder Vereinfacht wählen — Traditionell testet Bopomofo oder englische Bedeutung, Vereinfacht testet Pinyin oder englische Bedeutung. 10/20/30 Fragen oder unbegrenzt. Bewertung: +10 pro richtiger Antwort, -3 pro falscher. Jede Frage wird vorgelesen (🔊 oben rechts aktiviert/deaktiviert, 🔊 daneben liest vor). Detailliertes Ergebnis am Ende. Klicke auf „📱 Teilen", um eine schöne Ergebniskarte zu kopieren oder herunterzuladen und mit Freunden zu teilen! Bei fehlender Internetverbindung wird automatisch die zuletzt geladene Wortliste verwendet, falls vorhanden.',
@@ -807,6 +807,7 @@ let siteLang = localStorage.getItem('site_lang') || 'zh';
 function applyLang(lang) {
     siteLang = lang;
     localStorage.setItem('site_lang', lang);
+    document.documentElement.lang = lang;
     const t = I18N[lang] || I18N.zh;
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');

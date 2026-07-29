@@ -17,6 +17,11 @@ h1, h2, h3, h4,
     font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
 }
 
+/* ===== Cyrillic fallback (the decorative CJK fonts above have no Cyrillic glyphs) ===== */
+:lang(ru) {
+    font-family: Arial, "Helvetica Neue", sans-serif;
+}
+
 /* ===== Main ===== */
 main {
     position: relative;

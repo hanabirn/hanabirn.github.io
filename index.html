@@ -334,6 +334,8 @@
         </div>
 
         <div id="page-osu" style="display: none;">
+            <h2 class="osu-page-title" data-i18n="osu_page_title">&#x2726; osu!&#x6B4C;&#x66F2;&#x6536;&#x85CF;+&#x67E5;&#x8A62;&#x500B;&#x4EBA;&#x7E3D;PP &#x2726;</h2>
+
             <div class="osu-add-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
@@ -351,6 +353,35 @@
                     <button class="osu-refresh-all" onclick="document.getElementById('osu-import-file').click()" data-i18n-title="osu_import" title="&#x532F;&#x5165;&#x6536;&#x85CF;">&#x1F4E5;</button>
                     <input type="file" id="osu-import-file" accept="application/json" style="display:none" onchange="importOsuCollection(event)">
                     <button class="osu-refresh-all" onclick="setupOsuPassword()" data-i18n-title="osu_password" title="&#x1F512; &#x8A2D;&#x5B9A;&#x5BC6;&#x78BC;">&#x1F512;</button>
+                </div>
+            </div>
+
+            <div class="visitor-lookup-card" id="visitor-lookup-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="visitor_lookup_title">✦ 查詢你的 osu! PP ✦</h3>
+                <div class="visitor-lookup-input-row">
+                    <input type="text" id="visitor-lookup-input" data-i18n-placeholder="visitor_lookup_placeholder" placeholder="輸入 osu! 用戶名或 ID" class="guestbook-input">
+                    <button class="btn next-btn" onclick="lookupVisitorProfile()" data-i18n="visitor_lookup_btn">查詢</button>
+                </div>
+                <div id="visitor-lookup-status" class="status"></div>
+                <div id="visitor-lookup-result" style="display:none;">
+                    <div class="visitor-result-header">
+                        <img id="visitor-avatar" class="osu-avatar" src="" alt="avatar" style="width:48px;height:48px;">
+                        <div>
+                            <div class="visitor-result-name" id="visitor-result-name"></div>
+                            <div class="visitor-result-country" id="visitor-result-country"></div>
+                        </div>
+                    </div>
+                    <div class="visitor-modes-grid" id="visitor-modes-grid"></div>
+                    <div class="osu-total-pp" id="visitor-total-pp">
+                        <span data-i18n="osu_total_pp">全模式 PP</span>
+                        <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
+                    </div>
+                    <div class="osu-recent-plays" id="visitor-recent-plays" style="display:none;">
+                        <div class="osu-recent-title" data-i18n="osu_recent_title">🎮 最近遊玩</div>
+                        <div class="osu-recent-list" id="visitor-recent-list"></div>
+                    </div>
                 </div>
             </div>
 
@@ -464,37 +495,7 @@
                     <div class="osu-recent-list" id="osu-recent-list"></div>
                 </div>
             </div>
-
-            <div class="visitor-lookup-card" id="visitor-lookup-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="visitor_lookup_title">✦ 查詢你的 osu! PP ✦</h3>
-                <div class="visitor-lookup-input-row">
-                    <input type="text" id="visitor-lookup-input" data-i18n-placeholder="visitor_lookup_placeholder" placeholder="輸入 osu! 用戶名或 ID" class="guestbook-input">
-                    <button class="btn next-btn" onclick="lookupVisitorProfile()" data-i18n="visitor_lookup_btn">查詢</button>
-                </div>
-                <div id="visitor-lookup-status" class="status"></div>
-                <div id="visitor-lookup-result" style="display:none;">
-                    <div class="visitor-result-header">
-                        <img id="visitor-avatar" class="osu-avatar" src="" alt="avatar" style="width:48px;height:48px;">
-                        <div>
-                            <div class="visitor-result-name" id="visitor-result-name"></div>
-                            <div class="visitor-result-country" id="visitor-result-country"></div>
-                        </div>
-                    </div>
-                    <div class="visitor-modes-grid" id="visitor-modes-grid"></div>
-                    <div class="osu-total-pp" id="visitor-total-pp">
-                        <span data-i18n="osu_total_pp">全模式 PP</span>
-                        <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
-                    </div>
-                    <div class="osu-recent-plays" id="visitor-recent-plays" style="display:none;">
-                        <div class="osu-recent-title" data-i18n="osu_recent_title">🎮 最近遊玩</div>
-                        <div class="osu-recent-list" id="visitor-recent-list"></div>
-                    </div>
-                </div>
-            </div>
         </div>
-
         <div id="page-guestbook" style="display: none;">
             <div class="guestbook-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
