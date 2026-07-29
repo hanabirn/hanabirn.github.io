@@ -147,15 +147,50 @@ function snakeRoundRectPath(ctx, x, y, w, h, r) {
     ctx.closePath();
 }
 
+function drawSnakeBoard(ctx) {
+    for (let y = 0; y < SNAKE_GRID; y++) {
+        for (let x = 0; x < SNAKE_GRID; x++) {
+            ctx.fillStyle = (x + y) % 2 === 0 ? 'rgba(255,255,255,0.025)' : 'rgba(255,255,255,0.055)';
+            ctx.fillRect(x * snakeCellSize, y * snakeCellSize, snakeCellSize, snakeCellSize);
+        }
+    }
+}
+
+function drawSnakeEyes(ctx, head) {
+    const cs = snakeCellSize;
+    const cx = head.x * cs + cs / 2;
+    const cy = head.y * cs + cs / 2;
+    const off = cs * 0.22;
+    const r = cs * 0.09;
+    let e1, e2;
+    if (snakeDir.x === 1) { e1 = [cx + off * 0.3, cy - off]; e2 = [cx + off * 0.3, cy + off]; }
+    else if (snakeDir.x === -1) { e1 = [cx - off * 0.3, cy - off]; e2 = [cx - off * 0.3, cy + off]; }
+    else if (snakeDir.y === -1) { e1 = [cx - off, cy - off * 0.3]; e2 = [cx + off, cy - off * 0.3]; }
+    else { e1 = [cx - off, cy + off * 0.3]; e2 = [cx + off, cy + off * 0.3]; }
+    [e1, e2].forEach(([ex, ey]) => {
+        ctx.fillStyle = '#fff';
+        ctx.beginPath(); ctx.arc(ex, ey, r, 0, Math.PI * 2); ctx.fill();
+        ctx.fillStyle = '#3b0764';
+        ctx.beginPath(); ctx.arc(ex + snakeDir.x * r * 0.35, ey + snakeDir.y * r * 0.35, r * 0.55, 0, Math.PI * 2); ctx.fill();
+    });
+}
+
 function drawSnake() {
     if (!snakeCtx) return;
     const ctx = snakeCtx;
     ctx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height);
+    drawSnakeBoard(ctx);
 
-    ctx.font = Math.floor(snakeCellSize * 0.9) + 'px sans-serif';
+    const foodCx = (snakeFood.x + 0.5) * snakeCellSize;
+    const foodCy = (snakeFood.y + 0.5) * snakeCellSize;
+    ctx.fillStyle = 'rgba(0,0,0,0.3)';
+    ctx.beginPath();
+    ctx.ellipse(foodCx, foodCy + snakeCellSize * 0.28, snakeCellSize * 0.32, snakeCellSize * 0.12, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.font = Math.floor(snakeCellSize * 0.85) + 'px sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('🌸', (snakeFood.x + 0.5) * snakeCellSize, (snakeFood.y + 0.5) * snakeCellSize + 1);
+    ctx.fillText('🍎', foodCx, foodCy + 1);
 
     snakeBody.forEach((seg, i) => {
         const isHead = i === 0;
@@ -163,6 +198,13 @@ function drawSnake() {
         const pad = 1.5;
         snakeRoundRectPath(ctx, seg.x * snakeCellSize + pad, seg.y * snakeCellSize + pad, snakeCellSize - pad * 2, snakeCellSize - pad * 2, 5);
         ctx.fill();
+
+        const shineH = (snakeCellSize - pad * 2) * 0.35;
+        ctx.fillStyle = isHead ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.15)';
+        snakeRoundRectPath(ctx, seg.x * snakeCellSize + pad + 2, seg.y * snakeCellSize + pad + 2, snakeCellSize - pad * 2 - 4, shineH, 4);
+        ctx.fill();
+
+        if (isHead) drawSnakeEyes(ctx, seg);
     });
 }
 
@@ -547,8 +589,17 @@ function end2048() {
 /* ===================== 🌸 Match-3 (六消樂) ===================== */
 
 const MATCH3_SIZE = 8;
-const MATCH3_SYMBOLS = ['🌸', '⭐', '🎵', '💜', '✨', '🌙'];
+const MATCH3_SYMBOLS = ['🍬', '🍭', '🍫', '🍩', '🍪', '🧁'];
+const MATCH3_COLORS = {
+    '🍬': ['#fbcfe8', '#f472b6'],
+    '🍭': ['#fca5a5', '#ef4444'],
+    '🍫': ['#c39a6b', '#8a5a2b'],
+    '🍩': ['#fde68a', '#f59e0b'],
+    '🍪': ['#e7c496', '#b8813f'],
+    '🧁': ['#ddd6fe', '#a855f7'],
+};
 const MATCH3_MOVES = 20;
+const MATCH3_COMBO_TEXT = { 2: 'game_combo_2', 3: 'game_combo_3', 4: 'game_combo_4' };
 
 let match3Board = [];
 let match3Score = 0;
@@ -633,6 +684,7 @@ function match3HasValidMove(board) {
 
 function match3ApplyGravity(board) {
     const size = MATCH3_SIZE;
+    const newTiles = new Set();
     for (let x = 0; x < size; x++) {
         let write = size - 1;
         for (let y = size - 1; y >= 0; y--) {
@@ -642,11 +694,15 @@ function match3ApplyGravity(board) {
                 write--;
             }
         }
-        for (let y = write; y >= 0; y--) board[y][x] = match3RandomSymbol();
+        for (let y = write; y >= 0; y--) {
+            board[y][x] = match3RandomSymbol();
+            newTiles.add(y + ',' + x);
+        }
     }
+    return newTiles;
 }
 
-function match3Render() {
+function match3Render(newTiles) {
     const container = document.getElementById('match3-grid');
     if (!container) return;
     container.innerHTML = '';
@@ -654,9 +710,17 @@ function match3Render() {
         for (let x = 0; x < MATCH3_SIZE; x++) {
             const cell = document.createElement('div');
             cell.className = 'match3-cell';
-            cell.textContent = match3Board[y][x] || '';
             cell.dataset.x = x;
             cell.dataset.y = y;
+            const symbol = match3Board[y][x];
+            if (symbol) {
+                const colors = MATCH3_COLORS[symbol] || ['#e5e7eb', '#9ca3af'];
+                const candy = document.createElement('span');
+                candy.className = 'match3-candy' + (newTiles && newTiles.has(y + ',' + x) ? ' drop-in' : '');
+                candy.style.background = `radial-gradient(circle at 32% 28%, ${colors[0]}, ${colors[1]})`;
+                candy.textContent = symbol;
+                cell.appendChild(candy);
+            }
             cell.onclick = () => match3ClickCell(x, y);
             if (match3Selected && match3Selected.x === x && match3Selected.y === y) {
                 cell.classList.add('selected');
@@ -664,6 +728,24 @@ function match3Render() {
             container.appendChild(cell);
         }
     }
+}
+
+function match3ShowCombo(cascadeLevel) {
+    const key = MATCH3_COMBO_TEXT[Math.min(cascadeLevel, 4)];
+    if (!key) return;
+    const wrap = document.querySelector('.match3-wrap');
+    if (!wrap) return;
+    let el = document.getElementById('match3-combo');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'match3-combo';
+        el.className = 'match3-combo';
+        wrap.appendChild(el);
+    }
+    el.textContent = t(key);
+    el.classList.remove('show');
+    void el.offsetWidth;
+    el.classList.add('show');
 }
 
 function match3RenderClearing(matchSet) {
@@ -683,7 +765,12 @@ function startMatch3() {
     match3Running = true;
     document.getElementById('match3-score').textContent = '0';
     document.getElementById('match3-moves').textContent = match3MovesLeft;
-    match3Render();
+
+    const allTiles = new Set();
+    for (let y = 0; y < MATCH3_SIZE; y++) {
+        for (let x = 0; x < MATCH3_SIZE; x++) allTiles.add(y + ',' + x);
+    }
+    match3Render(allTiles);
 }
 
 function match3ClickCell(x, y) {
@@ -744,6 +831,7 @@ async function match3ResolveCascade() {
         cascadeLevel++;
         match3Score += matches.size * 10 * cascadeLevel;
         document.getElementById('match3-score').textContent = match3Score;
+        if (cascadeLevel >= 2) match3ShowCombo(cascadeLevel);
 
         match3RenderClearing(matches);
         await new Promise(r => setTimeout(r, 200));
@@ -752,8 +840,8 @@ async function match3ResolveCascade() {
             const [y, x] = key.split(',').map(Number);
             match3Board[y][x] = null;
         });
-        match3ApplyGravity(match3Board);
-        match3Render();
+        const newTiles = match3ApplyGravity(match3Board);
+        match3Render(newTiles);
         await new Promise(r => setTimeout(r, 150));
     }
 }

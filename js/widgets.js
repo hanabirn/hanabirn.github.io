@@ -240,6 +240,22 @@ window.addEventListener('appinstalled', () => {
     deferredInstallPrompt = null;
 });
 
+/* ===================== 🔄 New Version Banner ===================== */
+
+function showUpdateBanner() {
+    const banner = document.getElementById('update-banner');
+    if (banner) banner.style.display = 'flex';
+}
+
+function refreshForUpdate() {
+    location.reload();
+}
+
+function dismissUpdateBanner() {
+    const banner = document.getElementById('update-banner');
+    if (banner) banner.style.display = 'none';
+}
+
 /* ===================== Init ===================== */
 
 document.addEventListener('DOMContentLoaded', () => {

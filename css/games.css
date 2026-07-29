@@ -100,15 +100,18 @@
     position: relative;
     max-width: 360px;
     margin: 0 auto;
+    border-radius: 16px;
+    padding: 6px;
+    background: linear-gradient(135deg, rgba(244,114,182,0.25), rgba(168,85,247,0.25));
+    box-shadow: 0 0 0 1px var(--nav-border), 0 8px 24px rgba(0,0,0,0.25);
 }
 #snake-canvas {
     width: 100%;
     height: auto;
     aspect-ratio: 1 / 1;
     display: block;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid var(--border-card);
-    border-radius: 12px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
     touch-action: none;
 }
 
@@ -242,11 +245,15 @@
     .game2048-cell { font-size: 1rem; }
 }
 
-/* ---- Match-3 (六消樂) ---- */
+/* ---- Match-3 (糖果消消樂) ---- */
 .match3-wrap {
     position: relative;
     max-width: 340px;
     margin: 0 auto;
+    border-radius: 16px;
+    padding: 6px;
+    background: linear-gradient(135deg, rgba(244,114,182,0.25), rgba(168,85,247,0.25));
+    box-shadow: 0 0 0 1px var(--nav-border), 0 8px 24px rgba(0,0,0,0.25);
 }
 .match3-grid {
     display: grid;
@@ -254,36 +261,79 @@
     grid-template-rows: repeat(8, 1fr);
     gap: 3px;
     aspect-ratio: 1 / 1;
-    background: rgba(0,0,0,0.25);
-    border: 1px solid var(--border-card);
-    border-radius: 12px;
+    background: rgba(0,0,0,0.3);
+    border-radius: 10px;
     padding: 6px;
 }
 .match3-cell {
-    background: rgba(255,255,255,0.05);
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
     cursor: pointer;
     transition: background 0.15s, transform 0.15s;
     user-select: none;
 }
 .match3-cell:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
 }
 .match3-cell.selected {
-    background: rgba(244,114,182,0.35);
-    transform: scale(0.92);
+    background: rgba(244,114,182,0.25);
     box-shadow: 0 0 0 2px var(--accent-pink) inset;
 }
-.match3-cell.clearing {
-    animation: match3clear 0.2s ease forwards;
+.match3-cell.selected .match3-candy {
+    transform: scale(0.88);
+}
+.match3-candy {
+    width: 84%;
+    height: 84%;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 2px 3px rgba(0,0,0,0.25);
+    transition: transform 0.15s;
+}
+.match3-candy.drop-in {
+    animation: match3drop 0.28s ease-out;
+}
+@keyframes match3drop {
+    from { transform: translateY(-160%); opacity: 0.5; }
+    to { transform: translateY(0); opacity: 1; }
+}
+.match3-cell.clearing .match3-candy {
+    animation: match3clear 0.22s ease forwards;
 }
 @keyframes match3clear {
-    to { transform: scale(0); opacity: 0; }
+    to { transform: scale(0) rotate(30deg); opacity: 0; }
+}
+.match3-combo {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.4);
+    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fde047;
+    text-shadow: 0 0 8px rgba(0,0,0,0.6), 0 2px 4px rgba(0,0,0,0.4);
+    opacity: 0;
+    pointer-events: none;
+    z-index: 6;
+    white-space: nowrap;
+}
+.match3-combo.show {
+    animation: match3combo 0.9s ease-out;
+}
+@keyframes match3combo {
+    0% { opacity: 0; transform: translate(-50%, -50%) scale(0.4); }
+    20% { opacity: 1; transform: translate(-50%, -50%) scale(1.15); }
+    35% { transform: translate(-50%, -50%) scale(1); }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translate(-50%, -70%) scale(1); }
 }
 @media (max-width: 480px) {
-    .match3-cell { font-size: 0.95rem; }
+    .match3-candy { font-size: 0.9rem; }
+    .match3-combo { font-size: 1.2rem; }
 }

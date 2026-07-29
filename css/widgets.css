@@ -211,6 +211,30 @@
     }
 }
 
+/* ===================== 🔄 Update Available Banner ===================== */
+.update-banner {
+    position: fixed;
+    left: 50%;
+    top: 16px;
+    transform: translateX(-50%);
+    z-index: 500;
+    display: none;
+    align-items: center;
+    gap: 10px;
+    background: var(--bg-widget);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--border-card);
+    border-radius: 30px;
+    padding: 10px 14px 10px 18px;
+    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+    max-width: 92vw;
+}
+@media (max-width: 480px) {
+    .update-banner .pwa-install-text {
+        display: none;
+    }
+}
+
 /* ===================== 🕐 Clock & Weather Widget ===================== */
 .clock-widget {
     position: fixed;

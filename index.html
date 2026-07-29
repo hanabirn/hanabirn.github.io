@@ -431,8 +431,8 @@
                         <div class="game-option-desc" data-i18n="game_2048_desc">&#x6ED1;&#x52D5;&#x65B9;&#x584A;&#x5408;&#x4F75;&#x76F8;&#x540C;&#x6578;&#x5B57;&#xFF0C;&#x6311;&#x6230;&#x6E4A;&#x51FA; 2048&#xFF01;</div>
                     </div>
                     <div class="game-option" onclick="openGame('match3')">
-                        <div class="game-option-icon">&#x1F338;</div>
-                        <div class="game-option-name" data-i18n="game_match3_name">&#x516D;&#x6D88;&#x6A02;</div>
+                        <div class="game-option-icon">&#x1F36C;</div>
+                        <div class="game-option-name" data-i18n="game_match3_name">&#x7cd6;&#x679c;&#x6d88;&#x6d88;&#x6a02;</div>
                         <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
                     </div>
                 </div>
@@ -567,6 +567,17 @@
                 <div class="about-section">
                     <h3 data-i18n="about_note_title"></h3>
                     <p class="about-text" data-i18n="about_note"></p>
+                </div>
+
+                <div class="about-section">
+                    <h3 data-i18n="about_discord_title"></h3>
+                    <p class="about-text" data-i18n="about_discord_desc"></p>
+                    <div class="about-socials">
+                        <a class="about-social-link discord" href="https://discord.gg/MjN5UWrYT2" target="_blank">
+                            <span class="social-icon-text dc">DC</span>
+                            <span>Discord</span>
+                        </a>
+                    </div>
                 </div>
 
                 <div class="about-section">
@@ -826,6 +837,13 @@
         <button class="pwa-install-close" onclick="dismissPwaInstall()" aria-label="close">&times;</button>
     </div>
 
+    <div class="update-banner" id="update-banner" style="display:none">
+        <span class="pwa-install-icon">&#x1F504;</span>
+        <span class="pwa-install-text" data-i18n="update_banner_text">&#x6709;&#x65B0;&#x7248;&#x672C;&#x53EF;&#x7528;&#xFF0C;&#x91CD;&#x65B0;&#x6574;&#x7406;&#x5373;&#x53EF;&#x7372;&#x5F97;&#x6700;&#x65B0;&#x5167;&#x5BB9;&#xFF01;</span>
+        <button class="pwa-install-btn" onclick="refreshForUpdate()" data-i18n="update_banner_btn">&#x91CD;&#x65B0;&#x6574;&#x7406;</button>
+        <button class="pwa-install-close" onclick="dismissUpdateBanner()" aria-label="close">&times;</button>
+    </div>
+
     <div class="clock-widget" id="clock-widget">
         <div class="clock-time" id="clock-time">--:--:--</div>
         <div class="clock-date" id="clock-date"></div>
@@ -848,7 +866,18 @@
     <script src="js/widgets.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('/service-worker.js').catch(function() {});
+        navigator.serviceWorker.register('/service-worker.js').then(function(reg) {
+          reg.addEventListener('updatefound', function() {
+            const newWorker = reg.installing;
+            if (!newWorker) return;
+            newWorker.addEventListener('statechange', function() {
+              if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                showUpdateBanner();
+              }
+            });
+          });
+          setInterval(function() { reg.update(); }, 30 * 60 * 1000);
+        }).catch(function() {});
       }
     </script>
 </body>
