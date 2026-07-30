@@ -68,8 +68,10 @@ function setBgmVolume(v) {
 function updateBgmUI() {
     const disc = document.getElementById('bgm-disc');
     const playBtn = document.getElementById('bgm-play-btn');
+    const icon = document.getElementById('bgm-icon');
     if (disc) disc.classList.toggle('spinning', bgmPlaying);
     if (playBtn) playBtn.textContent = bgmPlaying ? '⏸' : '▶';
+    if (icon) icon.textContent = bgmPlaying ? '⏸' : '🎵';
 }
 
 /* ===================== ✨ 點擊特效 Click Particles ===================== */
@@ -149,26 +151,36 @@ async function fetchWeather(lat, lon) {
     }
 }
 
-function initWeather() {
-    const fallback = () => fetchWeather(25.03, 121.56); // Taipei
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            pos => fetchWeather(pos.coords.latitude, pos.coords.longitude),
-            fallback,
-            { timeout: 5000, maximumAge: 1800000 }
-        );
-    } else {
-        fallback();
+let weatherLat = 25.03, weatherLon = 121.56; // Taipei fallback
+
+async function initWeather() {
+    // IP-based geolocation (city-level, no permission prompt) instead of
+    // navigator.geolocation — showing weather doesn't need precise GPS.
+    try {
+        const res = await fetch('https://ipapi.co/json/');
+        const data = await res.json();
+        if (data.latitude && data.longitude) {
+            weatherLat = data.latitude;
+            weatherLon = data.longitude;
+        }
+    } catch (e) {
+        console.log('IP geolocation failed, using fallback:', e);
     }
-    setInterval(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                pos => fetchWeather(pos.coords.latitude, pos.coords.longitude),
-                fallback,
-                { timeout: 5000, maximumAge: 1800000 }
-            );
-        } else fallback();
-    }, 1800000);
+    fetchWeather(weatherLat, weatherLon);
+    setInterval(() => fetchWeather(weatherLat, weatherLon), 1800000);
+}
+
+/* ===================== 📱 Mobile "more options" FAB ===================== */
+function toggleMobileFab() {
+    document.body.classList.toggle('mobile-fab-open');
+    const btn = document.getElementById('mobile-fab-toggle');
+    if (btn) btn.classList.toggle('open');
+}
+
+function closeMobileFab() {
+    document.body.classList.remove('mobile-fab-open');
+    const btn = document.getElementById('mobile-fab-toggle');
+    if (btn) btn.classList.remove('open');
 }
 
 /* ===================== 📖 Guide Pagination ===================== */

@@ -693,14 +693,6 @@
 
                 <div class="guide-grid" id="guide-grid">
                     <div class="guide-section" data-page="1">
-                        <div class="guide-icon">🌐</div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_lang_title">切換語言</h4>
-                            <p data-i18n="guide_lang_desc">頁面頂部有8種語言的切換按鈕，可以隨時切換網站顯示語言。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="1">
                         <div class="guide-icon">📝</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_quiz_title">單字測驗</h4>
@@ -728,7 +720,7 @@
                         <div class="guide-icon">🎵</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_music_title">花火的Spotify歌單</h4>
-                            <p data-i18n="guide_music_desc">內嵌 Spotify 播放器，可切換「所有歌曲」和「中文/粵語歌」兩個播放清單。</p>
+                            <p data-i18n="guide_music_desc">可切換「所有歌曲」和「中文/粵語歌」兩個播放清單；登入 Spotify 可完整播放，未登入僅能試聽 30 秒。</p>
                         </div>
                     </div>
 
@@ -752,7 +744,7 @@
                         <div class="guide-icon">👤</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_about_title">關於我</h4>
-                            <p data-i18n="guide_about_desc">顯示個人介紹和社群連結。底部的 osu! Profile Card 會自動載入個人數據。</p>
+                            <p data-i18n="guide_about_desc">包含中文學習 Discord 伺服器連結。下方 osu! Profile Card 會自動顯示即時數據，可切換四種模式查看 PP、世界排名、準確率等。</p>
                         </div>
                     </div>
 
@@ -760,15 +752,7 @@
                         <div class="guide-icon">💬</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_guestbook_title">留言板</h4>
-                            <p data-i18n="guide_guestbook_desc">歡迎留下你的言語！留言會儲存在 Google 試算表中，所有訪客都能看到。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="3">
-                        <div class="guide-icon">🌸</div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_season_title">季節特效</h4>
-                            <p data-i18n="guide_season_desc">右下角的按鈕可以切換春（樱花）、夏（萤火虫）、秋（枫叶）、冬（雪花）四種背景特效。</p>
+                            <p data-i18n="guide_guestbook_desc">留言會公開顯示，所有訪客都能看到。</p>
                         </div>
                     </div>
 
@@ -776,15 +760,7 @@
                         <div class="guide-icon">💿</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_bgm_title">BGM 唱片機</h4>
-                            <p data-i18n="guide_bgm_desc">左下角的黑膠唱片可以播放 lo-fi 背景音樂。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="3">
-                        <div class="guide-icon">🕐</div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_clock_title">時鐘＆天氣</h4>
-                            <p data-i18n="guide_clock_desc">右下角顯示即時時間、日期和你所在地的天氣。</p>
+                            <p data-i18n="guide_bgm_desc">滑鼠移到唱片上可切換曲目、調整音量。</p>
                         </div>
                     </div>
 
@@ -800,19 +776,11 @@
                         <div class="guide-icon">🎮</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_games_title">遊戲區</h4>
-                            <p data-i18n="guide_games_desc">四個離線小遊戲：🐍貪食蛇、🔨打地鼠單字遊戲、🔢2048、🌸六消樂。打地鼠需先在單字測驗讀取過該語言的單字庫。</p>
+                            <p data-i18n="guide_games_desc">打地鼠單字遊戲需先在單字測驗讀取過該語言的單字庫，否則無法遊玩。</p>
                         </div>
                     </div>
 
-                    <div class="guide-section" data-page="3">
-                        <div class="guide-icon">✨</div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_fx_title">互動特效</h4>
-                            <p data-i18n="guide_fx_desc">點擊網頁任意處會爆出櫻花星星粒子特效。</p>
                 </div>
-            </div>
-
-        </div>
 
                 <div class="guide-pagination" id="guide-pagination">
                     <button class="guide-page-btn" id="guide-prev" onclick="guidePage(-1)" data-i18n="guide_prev">◀ 上一頁</button>
@@ -823,10 +791,11 @@
         </div>
     </main>
 
-    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()" title="Toggle theme">☀️</button>
-    <button class="reload-btn" id="reload-btn" onclick="location.reload()" data-i18n-title="reload_title" title="&#x91CD;&#x65B0;&#x6574;&#x7406;">&#x21bb;</button>
-    <button class="season-btn" id="season-btn" onclick="cycleSeason()" title="&#x5207;&#x63DB;&#x5B63;&#x7BC0;"></button>
-    <button class="tab-settings-btn" id="tab-settings-btn" onclick="toggleTabSettings()" data-i18n-title="tab_settings_title" title="&#x2699;&#xFE0F; &#x986F;&#x793A;&#x8A2D;&#x5B9A;">&#x2699;&#xFE0F;</button>
+    <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme(); closeMobileFab()" title="Toggle theme">☀️</button>
+    <button class="reload-btn" id="reload-btn" onclick="location.reload()" data-i18n-title="reload_title" title="&#x91CD;&#x65B0;&#x6574;&#x7406;">🔄</button>
+    <button class="season-btn" id="season-btn" onclick="cycleSeason(); closeMobileFab()" title="&#x5207;&#x63DB;&#x5B63;&#x7BC0;"></button>
+    <button class="tab-settings-btn" id="tab-settings-btn" onclick="toggleTabSettings(); closeMobileFab()" data-i18n-title="tab_settings_title" title="&#x2699;&#xFE0F; &#x986F;&#x793A;&#x8A2D;&#x5B9A;">&#x2699;&#xFE0F;</button>
+    <button class="mobile-fab-toggle" id="mobile-fab-toggle" onclick="toggleMobileFab()" title="More options">⋯</button>
 
     <div class="tab-settings-overlay" id="tab-settings-overlay" style="display:none" onclick="if(event.target===this) toggleTabSettings()">
         <div class="tab-settings-panel">
@@ -842,7 +811,7 @@
     </div>
 
     <div class="bgm-player" id="bgm-player">
-        <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="BGM"></button>
+        <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="BGM"><span class="bgm-icon" id="bgm-icon">🎵</span></button>
         <div class="bgm-panel" id="bgm-panel">
             <div class="bgm-track-name" id="bgm-track-name">&#x266A; BGM</div>
             <div class="bgm-controls">

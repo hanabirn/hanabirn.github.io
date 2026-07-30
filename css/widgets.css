@@ -316,6 +316,52 @@
     transform: scale(1.1) rotate(90deg);
 }
 
+/* ===================== Mobile "more options" FAB ===================== */
+.mobile-fab-toggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .mobile-fab-toggle {
+        display: flex;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 210;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 2px solid rgba(244,114,182,0.4);
+        background: var(--theme-toggle-bg);
+        backdrop-filter: blur(8px);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.4rem;
+        line-height: 1;
+        cursor: pointer;
+        color: var(--text);
+        transition: all 0.3s;
+    }
+    .mobile-fab-toggle.open {
+        transform: rotate(90deg);
+        border-color: #f472b6;
+    }
+
+    .theme-toggle, .reload-btn, .season-btn, .tab-settings-btn {
+        display: none;
+    }
+    body.mobile-fab-open .theme-toggle,
+    body.mobile-fab-open .reload-btn,
+    body.mobile-fab-open .season-btn,
+    body.mobile-fab-open .tab-settings-btn {
+        display: flex;
+    }
+    body.mobile-fab-open .season-btn { bottom: 76px; }
+    body.mobile-fab-open .theme-toggle { bottom: 132px; }
+    body.mobile-fab-open .reload-btn { bottom: 188px; }
+    body.mobile-fab-open .tab-settings-btn { bottom: 244px; }
+}
+
 /* ===================== Responsive ===================== */
 @media (max-width: 768px) {
     .clock-widget {
