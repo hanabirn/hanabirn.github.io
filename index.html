@@ -99,7 +99,7 @@
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
             <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
             <button class="nav-btn" data-tab="osu" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
-            <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">&#x904A;&#x6232;&#x5340;</button>
+            <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
             <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x5176;&#x4ED6;&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
@@ -414,7 +414,7 @@
             <div class="mode-card" id="games-select-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="games_title">&#x2726; &#x904A;&#x6232;&#x5340; &#x2726;</h3>
+                <h3 data-i18n="games_title">✦ 離線小遊戲區 ✦</h3>
                 <div class="games-grid">
                     <div class="game-option" onclick="openGame('snake')">
                         <div class="game-option-icon">&#x1F40D;</div>
@@ -659,9 +659,13 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="rhythm_title">&#x2726; &#x5176;&#x4ED6;&#x904A;&#x6232;&#x5340; &#x2726;</h3>
                 <div class="games-grid">
-                    <div class="game-option game-option-banner" onclick="window.open('https://pjsekai-hanabi.netlify.app/', '_blank', 'noopener')">
+                    <div class="game-option game-option-banner game-option-banner-pjsekai" onclick="window.open('https://pjsekai-hanabi.netlify.app/', '_blank', 'noopener')">
                         <div class="game-option-name" data-i18n="rhythm_pjsekai_name">&#x4E16;&#x754C;&#x8A08;&#x756B; &#x6210;&#x7E3E;&#x7C3F;</div>
                         <div class="game-option-desc" data-i18n="rhythm_pjsekai_desc">&#x8A18;&#x9304;&#x6BCF;&#x9996;&#x6B4C;&#x5404;&#x96E3;&#x5EA6;&#x7684;&#x500B;&#x4EBA;&#x6210;&#x7E3E;&#xFF0C;&#x9084;&#x6709;&#x65E5;&#x53F0;&#x670D;&#x6700;&#x65B0;&#x60C5;&#x5831;</div>
+                    </div>
+                    <div class="game-option game-option-banner game-option-banner-wuwa" onclick="window.open('https://wuwa-hanabi.netlify.app/', '_blank', 'noopener')">
+                        <div class="game-option-name" data-i18n="rhythm_wuwa_name">鳴潮圖鑑</div>
+                        <div class="game-option-desc" data-i18n="rhythm_wuwa_desc">收錄鳴潮所有角色、武器、聲骸資料，還有角色故事和語音</div>
                     </div>
                 </div>
             </div>
@@ -775,7 +779,7 @@
                     <div class="guide-section" data-page="3">
                         <div class="guide-icon">🎮</div>
                         <div class="guide-text">
-                            <h4 data-i18n="guide_games_title">遊戲區</h4>
+                            <h4 data-i18n="guide_games_title">離線小遊戲區</h4>
                             <p data-i18n="guide_games_desc">打地鼠單字遊戲需先在單字測驗讀取過該語言的單字庫，否則無法遊玩。</p>
                         </div>
                     </div>
