@@ -52,6 +52,39 @@
     to { transform: rotate(360deg); }
 }
 
+.bgm-hint {
+    position: absolute;
+    bottom: 62px;
+    left: 0;
+    background: var(--bg-widget-panel);
+    color: var(--text);
+    border: 1px solid rgba(244,114,182,0.4);
+    border-radius: 12px;
+    padding: 8px 12px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.35);
+    animation: bgmHintBounce 2s ease-in-out infinite;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+.bgm-hint.show {
+    opacity: 1;
+}
+.bgm-hint::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 20px;
+    border: 6px solid transparent;
+    border-top-color: rgba(244,114,182,0.4);
+}
+@keyframes bgmHintBounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
 .bgm-panel {
     background: var(--bg-widget-panel);
     backdrop-filter: blur(8px);

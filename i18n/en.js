@@ -64,6 +64,7 @@ I18N.en = {
         guide_about_title: 'About Me', guide_about_desc: 'Includes a Discord server for learning Chinese. The osu! Profile Card below auto-loads live stats — switch modes to see PP, world rank, accuracy, and more.',
         guide_guestbook_title: 'Guestbook', guide_guestbook_desc: 'Messages are public — visible to every visitor.',
         guide_bgm_title: 'BGM Vinyl Player', guide_bgm_desc: 'Hover over the record to switch tracks or adjust volume.',
+        bgm_hint: '🎵 Click to play background music',
         guide_settings_title: 'Display Settings', guide_settings_desc: 'The ⚙️ button lets you customize which pages show in the nav bar (the Guide always stays visible), saved in your browser — you can also copy a shareable customized link.', guide_games_title: 'Game Zone', guide_games_desc: 'Vocab Whack-a-Mole needs that language loaded in Vocabulary Quiz first, or it won\'t work.',
         guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!',
         osu_stat_global: 'Global Rank', osu_stat_accuracy: 'Accuracy', osu_stat_playcount: 'Play Count', osu_total_pp: 'Total PP (All Modes)',

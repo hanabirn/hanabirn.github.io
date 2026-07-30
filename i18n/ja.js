@@ -64,6 +64,7 @@ I18N.ja = {
         guide_about_title: '自己紹介', guide_about_desc: '中国語学習Discordサーバーも掲載。下部のosu! Profile Cardがリアルタイムデータを自動表示、モード切替でPPや世界ランクなどを確認できます。',
         guide_guestbook_title: '掲示板', guide_guestbook_desc: '投稿はすべての訪問者に公開されます。',
         guide_bgm_title: 'BGMレコードプレーヤー', guide_bgm_desc: 'レコードにホバーすると曲切替や音量調整ができます。',
+        bgm_hint: '🎵 クリックしてBGMを再生',
         guide_settings_title: '表示設定', guide_settings_desc: '右下の⚙️ボタンでナビゲーションバーに表示するページを選べます（ガイドは常に表示）。設定はブラウザに保存され、カスタムリンクの共有も可能です。', guide_games_title: 'ゲームコーナー', guide_games_desc: 'もぐらたたきは事前に単語テストでその言語を読み込んでおかないと遊べません。',
         guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
         osu_stat_global: '世界ランク', osu_stat_accuracy: '精度', osu_stat_playcount: 'プレイ数', osu_total_pp: '全モード合計PP',

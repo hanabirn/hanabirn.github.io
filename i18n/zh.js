@@ -64,6 +64,7 @@ I18N.zh = {
         guide_about_title: '關於我', guide_about_desc: '包含中文學習 Discord 伺服器連結。下方 osu! Profile Card 會自動顯示即時數據，可切換四種模式查看 PP、世界排名、準確率等。',
         guide_guestbook_title: '留言板', guide_guestbook_desc: '留言會公開顯示，所有訪客都能看到。',
         guide_bgm_title: 'BGM 唱片機', guide_bgm_desc: '滑鼠移到唱片上可切換曲目、調整音量。',
+        bgm_hint: '🎵 點擊播放背景音樂',
         guide_settings_title: '顯示設定', guide_settings_desc: '右下角 ⚙️ 按鈕可自訂導覽列顯示哪些頁面（教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。', guide_games_title: '遊戲區', guide_games_desc: '打地鼠單字遊戲需先在單字測驗讀取過該語言的單字庫，否則無法遊玩。',
         guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
         osu_stat_global: '全球排名', osu_stat_accuracy: '準確率', osu_stat_playcount: '遊戲數', osu_total_pp: '全模式 PP',

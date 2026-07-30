@@ -24,6 +24,29 @@ function initBgm() {
     if (volSlider) volSlider.value = Math.round(bgmAudio.volume * 100);
     bgmAudio.addEventListener('ended', () => bgmNext(true));
     bgmLoadTrack(0);
+    initBgmHint();
+}
+
+function initBgmHint() {
+    if (localStorage.getItem('bgm_hint_shown')) return;
+    const hint = document.getElementById('bgm-hint');
+    if (!hint) return;
+    setTimeout(() => {
+        hint.style.display = 'block';
+        requestAnimationFrame(() => hint.classList.add('show'));
+    }, 1500);
+    const dismiss = () => {
+        hint.classList.remove('show');
+        localStorage.setItem('bgm_hint_shown', '1');
+        setTimeout(() => { hint.style.display = 'none'; }, 400);
+        document.removeEventListener('click', onOutsideClick);
+    };
+    hint.addEventListener('click', dismiss);
+    setTimeout(dismiss, 8000);
+    const onOutsideClick = (e) => {
+        if (!e.target.closest('#bgm-player')) dismiss();
+    };
+    document.addEventListener('click', onOutsideClick);
 }
 
 function bgmLoadTrack(i) {
@@ -35,6 +58,12 @@ function bgmLoadTrack(i) {
 
 function toggleBgm() {
     if (!bgmAudio) return;
+    const hint = document.getElementById('bgm-hint');
+    if (hint && hint.classList.contains('show')) {
+        hint.classList.remove('show');
+        localStorage.setItem('bgm_hint_shown', '1');
+        setTimeout(() => { hint.style.display = 'none'; }, 400);
+    }
     if (bgmPlaying) {
         bgmAudio.pause();
         bgmPlaying = false;

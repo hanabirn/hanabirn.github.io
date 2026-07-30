@@ -64,6 +64,7 @@ I18N.fr = {
         guide_about_title: 'À propos', guide_about_desc: "Inclut un lien vers un serveur Discord pour apprendre le chinois. La carte osu! Profile Card ci-dessous affiche mes données en direct — changez de mode pour voir PP, rang mondial et précision.",
         guide_guestbook_title: "Livre d'or", guide_guestbook_desc: "Les messages sont visibles par tous les visiteurs.",
         guide_bgm_title: 'Lecteur BGM', guide_bgm_desc: "Survolez le vinyle pour changer de morceau ou régler le volume.",
+        bgm_hint: '🎵 Cliquez pour jouer la musique de fond',
         guide_settings_title: "Paramètres d'affichage", guide_settings_desc: "Le bouton ⚙️ permet de personnaliser les pages affichées dans la barre de navigation (le Guide reste toujours visible), sauvegardé dans le navigateur — vous pouvez aussi copier un lien personnalisé.", guide_games_title: 'Espace Jeux', guide_games_desc: "Chasse aux mots nécessite d'avoir chargé cette langue dans Quiz Vocabulaire au préalable, sinon le jeu ne fonctionnera pas.",
         guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !',
         osu_stat_global: 'Rang mondial', osu_stat_accuracy: 'Précision', osu_stat_playcount: 'Parties', osu_total_pp: 'PP total (tous modes)',
