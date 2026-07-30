@@ -8,6 +8,10 @@ let osuPage = 0;
 let osuSearchQuery = '';
 const OSU_PAGE_SIZE = 8;
 
+function osuAvatarUrl(userId) {
+    return `/.netlify/functions/osu-avatar?id=${userId}`;
+}
+
 function filterOsuCollection(query) {
     osuSearchQuery = query.trim();
     osuPage = 0;
@@ -554,7 +558,7 @@ async function fetchOsuProfile() {
         const u = osuModeData[0];
         if (!u) return;
 
-        document.getElementById('osu-avatar').src = `https://a.ppy.sh/${u.user_id}`;
+        document.getElementById('osu-avatar').src = osuAvatarUrl(u.user_id);
         document.getElementById('osu-profile-name').textContent = u.username;
         document.getElementById('osu-profile-country').textContent = COUNTRY_NAMES[u.country] || u.country;
 
@@ -610,7 +614,7 @@ async function lookupVisitorProfile() {
         if (!u) { status.innerText = t('osu_not_found') || 'Not found'; status.style.color = '#ff5252'; return; }
 
         status.innerText = '';
-        document.getElementById('visitor-avatar').src = `https://a.ppy.sh/${u.user_id}`;
+        document.getElementById('visitor-avatar').src = osuAvatarUrl(u.user_id);
         document.getElementById('visitor-result-name').textContent = u.username;
         document.getElementById('visitor-result-country').textContent = COUNTRY_NAMES[u.country] || u.country;
 
