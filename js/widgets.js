@@ -25,20 +25,7 @@ function initBgm() {
     bgmAudio.addEventListener('ended', () => bgmNext(true));
     bgmLoadTrack(0);
     updateBgmUI();
-    if (localStorage.getItem('bgm_muted') !== '1') bgmAutoStart();
     initBgmHint();
-}
-
-function bgmAutoStart() {
-    bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {
-        const startOnGesture = () => {
-            if (bgmPlaying || localStorage.getItem('bgm_muted') === '1') return;
-            bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {});
-        };
-        ['click', 'keydown', 'touchstart'].forEach(evt =>
-            document.addEventListener(evt, startOnGesture, { once: true })
-        );
-    });
 }
 
 function initBgmHint() {
@@ -70,7 +57,7 @@ function bgmLoadTrack(i) {
     if (label) label.textContent = '♪ ' + BGM_TRACKS[bgmIndex].name;
 }
 
-function toggleBgmMute() {
+function toggleBgm() {
     if (!bgmAudio) return;
     const hint = document.getElementById('bgm-hint');
     if (hint && hint.classList.contains('show')) {
@@ -81,9 +68,7 @@ function toggleBgmMute() {
     if (bgmPlaying) {
         bgmAudio.pause();
         bgmPlaying = false;
-        localStorage.setItem('bgm_muted', '1');
     } else {
-        localStorage.removeItem('bgm_muted');
         bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {});
     }
     updateBgmUI();

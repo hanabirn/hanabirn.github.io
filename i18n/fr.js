@@ -49,7 +49,7 @@ I18N.fr = {
         guide_about_title: 'À propos', guide_about_desc: "Inclut un lien vers un serveur Discord pour apprendre le chinois, ainsi que mes autres liens sociaux.",
         guide_guestbook_title: "Livre d'or", guide_guestbook_desc: "Les messages sont visibles par tous les visiteurs.",
         guide_bgm_title: 'Lecteur BGM', guide_bgm_desc: "Survolez le vinyle pour changer de morceau ou régler le volume.",
-        bgm_hint: 'Musique de fond en cours — cliquez pour couper le son',
+        bgm_hint: 'Cliquez pour jouer la musique de fond',
         guide_settings_title: "Paramètres d'affichage", guide_settings_desc: "Le bouton ⚙️ permet de personnaliser les pages affichées dans la barre de navigation (le Guide reste toujours visible), sauvegardé dans le navigateur — vous pouvez aussi copier un lien personnalisé.", guide_games_title: 'Mini-jeux hors ligne', guide_games_desc: "Chasse aux mots nécessite d'avoir chargé cette langue dans Quiz Vocabulaire au préalable, sinon le jeu ne fonctionnera pas.",
         guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !',
         fc_view_mastered: '📋 Voir les mots maîtrisés', fc_mastered_title: '📋 Mots maîtrisés', fc_start_flashcard: '📖 Commencer les flashcards',

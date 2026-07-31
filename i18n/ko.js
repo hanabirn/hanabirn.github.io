@@ -49,7 +49,7 @@ I18N.ko = {
         guide_about_title: '자기소개', guide_about_desc: '중국어 학습 디스코드 서버 링크와 그 외 소셜 링크가 있습니다.',
         guide_guestbook_title: '방명록', guide_guestbook_desc: '남긴 글은 모든 방문자에게 공개됩니다.',
         guide_bgm_title: 'BGM 레코드 플레이어', guide_bgm_desc: '레코드에 마우스를 올리면 곡 전환과 볼륨 조절이 가능합니다.',
-        bgm_hint: '배경음악 재생 중, 클릭하면 음소거',
+        bgm_hint: '클릭하면 배경음악이 재생됩니다',
         guide_settings_title: '표시 설정', guide_settings_desc: '오른쪽 아래 ⚙️ 버튼으로 내비게이션 바에 표시할 페이지를 선택할 수 있습니다(가이드는 항상 표시). 설정은 브라우저에 저장되며 맞춤 링크 공유도 가능합니다.', guide_games_title: '오프라인 미니게임', guide_games_desc: '두더지 잡기는 먼저 단어 퀴즈에서 해당 언어를 불러오지 않으면 플레이할 수 없습니다.',
         guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
         fc_view_mastered: '📋 숙달 단어 보기', fc_mastered_title: '📋 숙달된 단어', fc_start_flashcard: '📖 플래시카드 시작',

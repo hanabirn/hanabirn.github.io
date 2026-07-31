@@ -49,7 +49,7 @@ I18N.es = {
         guide_about_title: 'Sobre mí', guide_about_desc: 'Incluye un enlace a un servidor de Discord para aprender chino y mis otros enlaces sociales.',
         guide_guestbook_title: 'Libro de visitas', guide_guestbook_desc: 'Los mensajes son visibles para todos los visitantes.',
         guide_bgm_title: 'Reproductor BGM', guide_bgm_desc: 'Pasa el mouse sobre el vinilo para cambiar de canción o ajustar el volumen.',
-        bgm_hint: 'Música de fondo reproduciéndose — haz clic para silenciar',
+        bgm_hint: 'Haz clic para reproducir música de fondo',
         guide_settings_title: 'Ajustes de visualización', guide_settings_desc: 'El botón ⚙️ te permite personalizar qué páginas se muestran en la barra de navegación (la Guía siempre es visible), guardado en tu navegador — también puedes copiar un enlace personalizado.', guide_games_title: 'Minijuegos sin conexión', guide_games_desc: 'Atrapa la palabra necesita ese idioma cargado antes en Quiz Vocabulario, o no funcionará.',
         guestbook_loading: 'Cargando...', guestbook_empty: 'Aún no hay mensajes. ¡Sé el primero!',
         fc_view_mastered: '📋 Ver palabras dominadas', fc_mastered_title: '📋 Palabras dominadas', fc_start_flashcard: '📖 Empezar flashcards',

@@ -49,7 +49,7 @@ I18N.zh = {
         guide_about_title: '關於我', guide_about_desc: '包含中文學習 Discord 伺服器連結，以及我的社群連結。',
         guide_guestbook_title: '留言板', guide_guestbook_desc: '留言會公開顯示，所有訪客都能看到。',
         guide_bgm_title: 'BGM 唱片機', guide_bgm_desc: '滑鼠移到唱片上可切換曲目、調整音量。',
-        bgm_hint: '背景音樂播放中，點擊可靜音',
+        bgm_hint: '點擊播放背景音樂',
         guide_settings_title: '顯示設定', guide_settings_desc: '右下角 ⚙️ 按鈕可自訂導覽列顯示哪些頁面（教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。', guide_games_title: '離線小遊戲區', guide_games_desc: '打地鼠單字遊戲需先在單字測驗讀取過該語言的單字庫，否則無法遊玩。',
         guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
         fc_view_mastered: '📋 查看已掌握單字', fc_mastered_title: '📋 已掌握單字', fc_start_flashcard: '📖 開始閃卡',

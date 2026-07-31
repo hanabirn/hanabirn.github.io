@@ -1,17 +1,13 @@
-/* ===================== 🎵 BGM Vinyl Player ===================== */
+/* ===================== 🎵 BGM Toggle ===================== */
 .bgm-player {
-    position: fixed;
-    bottom: 90px;
-    left: 20px;
-    z-index: 200;
-    display: flex;
-    align-items: flex-end;
-    gap: 10px;
+    position: relative;
+    display: inline-flex;
+    align-items: center;
 }
 
 .bgm-disc {
-    width: 52px;
-    height: 52px;
+    width: 34px;
+    height: 34px;
     border-radius: 50%;
     border: 2px solid rgba(244,114,182,0.4);
     cursor: pointer;
@@ -25,20 +21,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.85rem;
     color: #fff;
     padding: 0;
 }
 .bgm-icon svg {
-    width: 15px;
-    height: 15px;
+    width: 14px;
+    height: 14px;
     position: relative;
     z-index: 1;
 }
 .bgm-disc::after {
     content: '';
     position: absolute;
-    width: 8px; height: 8px;
+    width: 6px; height: 6px;
     border-radius: 50%;
     background: #1a1030;
     border: 1px solid rgba(255,255,255,0.3);
@@ -60,8 +55,9 @@
 
 .bgm-hint {
     position: absolute;
-    bottom: 62px;
-    left: 0;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
     background: var(--bg-widget-panel);
     color: var(--text);
     border: 1px solid rgba(244,114,182,0.4);
@@ -74,6 +70,7 @@
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.4s ease;
+    z-index: 210;
 }
 .bgm-hint.show {
     opacity: 1;
@@ -81,17 +78,21 @@
 .bgm-hint::after {
     content: '';
     position: absolute;
-    top: 100%;
-    left: 20px;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: rgba(244,114,182,0.4);
+    border-bottom-color: rgba(244,114,182,0.4);
 }
 @keyframes bgmHintBounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); }
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(-4px); }
 }
 
 .bgm-panel {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
     background: var(--bg-widget-panel);
     backdrop-filter: blur(8px);
     border: 1px solid var(--border-card);
@@ -103,14 +104,15 @@
     min-width: 170px;
     opacity: 0;
     visibility: hidden;
-    transform: translateX(-8px);
+    transform: translateX(-50%) translateY(-8px);
     transition: all 0.3s ease;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    z-index: 200;
 }
 .bgm-player:hover .bgm-panel {
     opacity: 1;
     visibility: visible;
-    transform: translateX(0);
+    transform: translateX(-50%) translateY(0);
 }
 
 .bgm-track-name {
@@ -410,12 +412,4 @@
         padding: 7px 12px;
     }
     .clock-time { font-size: 0.95rem; }
-    .bgm-player {
-        bottom: 80px;
-        left: 12px;
-    }
-    .bgm-disc {
-        width: 44px;
-        height: 44px;
-    }
 }
