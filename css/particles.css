@@ -1,0 +1,9 @@
+/* ===== Ambient neon particle canvas =====
+   Sits behind page content, in front of the base body gradient —
+   pointer-events disabled so it never blocks clicks. */
+#particles-canvas {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}

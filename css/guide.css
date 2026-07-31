@@ -29,6 +29,7 @@
 }
 
 .guide-section {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -37,13 +38,28 @@
     border-radius: 12px;
     background: var(--guide-section-bg);
     border: 1px solid var(--border-subtle);
-    transition: background 0.2s, transform 0.2s;
+    overflow: hidden;
+    transition: transform 0.30s cubic-bezier(0.34,1.56,0.64,1),
+        border-color 0.30s, background 0.30s, box-shadow 0.30s;
     text-align: center;
+}
+.guide-section::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(244,114,182,0.14) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.30s;
+    pointer-events: none;
 }
 .guide-section:hover {
     background: var(--bg-section-hover);
-    transform: translateY(-2px);
+    border-color: var(--accent-pink);
+    transform: translateY(-6px);
+    box-shadow: 0 0 0 1px rgba(244,114,182,0.18), 0 0 18px rgba(244,114,182,0.18), 0 12px 28px rgba(0,0,0,0.25);
 }
+.guide-section:hover::after { opacity: 1; }
 
 .guide-icon {
     font-size: 1.5rem;

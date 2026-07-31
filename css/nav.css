@@ -48,12 +48,12 @@
 /* ===== Tab Visibility Settings ===== */
 .tab-settings-btn {
     position: fixed;
-    bottom: 188px; right: 20px;
+    bottom: 132px; right: 20px;
     width: 48px; height: 48px;
     border-radius: 50%;
-    border: 2px solid rgba(244,114,182,0.4);
+    border: 1px solid var(--theme-toggle-border);
     background: var(--theme-toggle-bg);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(var(--glass-blur));
     color: var(--text);
     cursor: pointer;
     z-index: 200;
@@ -61,13 +61,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
-    box-shadow: 0 0 15px rgba(168,85,247,0.2);
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
+        transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+    box-shadow: 0 0 15px rgba(168,85,247,0.15);
 }
 .tab-settings-btn:hover {
-    transform: scale(1.1) rotate(45deg);
-    border-color: #f472b6;
-    box-shadow: 0 0 25px rgba(244,114,182,0.4);
+    transform: scale(1.18) rotate(45deg);
+    border-color: var(--accent-pink);
+    color: var(--text-pink);
+    background: rgba(244,114,182,0.18);
+    box-shadow: 0 0 18px rgba(244,114,182,0.4);
 }
 
 .tab-settings-overlay {

@@ -315,7 +315,7 @@
 /* ===================== Theme Toggle Button ===================== */
 .theme-toggle {
     position: fixed;
-    bottom: 76px;
+    bottom: 20px;
     right: 20px;
     z-index: 200;
     width: 48px;
@@ -325,7 +325,7 @@
 
 .reload-btn {
     position: fixed;
-    bottom: 132px;
+    bottom: 76px;
     right: 20px;
     z-index: 200;
     width: 48px;
@@ -339,14 +339,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
+    backdrop-filter: blur(var(--glass-blur));
+    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
+        transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
     flex-shrink: 0;
 }
 .reload-btn:hover {
-    background: var(--accent-pink);
-    color: #fff;
+    background: rgba(244,114,182,0.18);
+    color: var(--text-pink);
     border-color: var(--accent-pink);
-    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 0 16px rgba(244,114,182,0.35);
+    transform: scale(1.18) rotate(90deg);
 }
 
 /* ===================== Mobile "more options" FAB ===================== */
@@ -380,19 +383,17 @@
         border-color: #f472b6;
     }
 
-    .theme-toggle, .reload-btn, .season-btn, .tab-settings-btn {
+    .theme-toggle, .reload-btn, .tab-settings-btn {
         display: none;
     }
     body.mobile-fab-open .theme-toggle,
     body.mobile-fab-open .reload-btn,
-    body.mobile-fab-open .season-btn,
     body.mobile-fab-open .tab-settings-btn {
         display: flex;
     }
-    body.mobile-fab-open .season-btn { bottom: 76px; }
-    body.mobile-fab-open .theme-toggle { bottom: 132px; }
-    body.mobile-fab-open .reload-btn { bottom: 188px; }
-    body.mobile-fab-open .tab-settings-btn { bottom: 244px; }
+    body.mobile-fab-open .theme-toggle { bottom: 76px; }
+    body.mobile-fab-open .reload-btn { bottom: 132px; }
+    body.mobile-fab-open .tab-settings-btn { bottom: 188px; }
 }
 
 /* ===================== Responsive ===================== */

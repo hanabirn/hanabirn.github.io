@@ -7,6 +7,7 @@
 }
 
 .game-option {
+    position: relative;
     flex: 1;
     min-width: 160px;
     background: rgba(255,255,255,0.03);
@@ -15,13 +16,27 @@
     padding: 24px 16px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.25s;
+    overflow: hidden;
+    transition: transform 0.30s cubic-bezier(0.34,1.56,0.64,1),
+        border-color 0.30s, background 0.30s, box-shadow 0.30s;
+}
+.game-option::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(244,114,182,0.14) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.30s;
+    pointer-events: none;
 }
 .game-option:hover {
     border-color: var(--accent-pink);
     background: rgba(244,114,182,0.08);
-    transform: translateY(-4px);
+    transform: translateY(-6px);
+    box-shadow: 0 0 0 1px rgba(244,114,182,0.20), 0 0 20px rgba(244,114,182,0.20), 0 16px 32px rgba(0,0,0,0.30);
 }
+.game-option:hover::after { opacity: 1; }
 .game-option-icon {
     font-size: 2.4rem;
     margin-bottom: 8px;

@@ -307,3 +307,16 @@ document.addEventListener('DOMContentLoaded', () => {
     initVisitorCounter();
     initGuidePagination();
 });
+
+/* ===================== Splash screen ===================== */
+(function() {
+    const splash = document.getElementById('splash-overlay');
+    if (!splash) return;
+    if (sessionStorage.getItem('splash_seen')) {
+        splash.style.display = 'none';
+    } else {
+        setTimeout(() => splash.classList.add('hide'), 1500);
+        setTimeout(() => { splash.style.display = 'none'; }, 2300);
+        sessionStorage.setItem('splash_seen', '1');
+    }
+})();

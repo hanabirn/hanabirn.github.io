@@ -47,8 +47,13 @@ header h1 {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: shimmer 4s linear infinite;
+    animation: shimmer 4s linear infinite, title-glow 4s ease-in-out infinite;
     text-shadow: none;
+}
+
+@keyframes title-glow {
+    0%, 100% { filter: drop-shadow(0 0 14px rgba(244,114,182,0.45)); }
+    50% { filter: drop-shadow(0 0 26px rgba(244,114,182,0.8)) drop-shadow(0 0 46px rgba(192,132,252,0.35)); }
 }
 
 .lang-bar {
@@ -66,19 +71,22 @@ header h1 {
     border-radius: 20px;
     cursor: pointer;
     font-size: 0.85rem;
-    transition: all 0.2s;
+    backdrop-filter: blur(var(--glass-blur));
+    transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
     white-space: nowrap;
 }
 .lang-pill:hover {
-    background: rgba(168,85,247,0.2);
-    border-color: rgba(168,85,247,0.4);
-    color: var(--text);
+    background: rgba(244,114,182,0.14);
+    border-color: var(--accent-pink);
+    color: var(--text-pink);
+    box-shadow: 0 0 10px rgba(244,114,182,0.30);
+    transform: translateY(-1px);
 }
 .lang-pill.active {
     background: linear-gradient(135deg, rgba(244,114,182,0.4), rgba(168,85,247,0.4));
     border-color: rgba(244,114,182,0.6);
     color: var(--text);
-    box-shadow: 0 0 12px rgba(244,114,182,0.25);
+    box-shadow: 0 0 14px rgba(244,114,182,0.40);
 }
 
 .subtitle {
