@@ -49,7 +49,7 @@ I18N.ja = {
         guide_about_title: '自己紹介', guide_about_desc: '中国語学習Discordサーバーや、その他のソーシャルリンクも掲載しています。',
         guide_guestbook_title: '掲示板', guide_guestbook_desc: '投稿はすべての訪問者に公開されます。',
         guide_bgm_title: 'BGMレコードプレーヤー', guide_bgm_desc: 'レコードにホバーすると曲切替や音量調整ができます。',
-        bgm_hint: '🎵 クリックしてBGMを再生',
+        bgm_hint: 'BGM再生中、クリックでミュート',
         guide_settings_title: '表示設定', guide_settings_desc: '右下の⚙️ボタンでナビゲーションバーに表示するページを選べます（ガイドは常に表示）。設定はブラウザに保存され、カスタムリンクの共有も可能です。', guide_games_title: 'オフラインミニゲーム', guide_games_desc: 'もぐらたたきは事前に単語テストでその言語を読み込んでおかないと遊べません。',
         guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
         fc_view_mastered: '📋 習得済み単語を見る', fc_mastered_title: '📋 習得済み単語', fc_start_flashcard: '📖 フラッシュカード開始',

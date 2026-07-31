@@ -24,7 +24,21 @@ function initBgm() {
     if (volSlider) volSlider.value = Math.round(bgmAudio.volume * 100);
     bgmAudio.addEventListener('ended', () => bgmNext(true));
     bgmLoadTrack(0);
+    updateBgmUI();
+    if (localStorage.getItem('bgm_muted') !== '1') bgmAutoStart();
     initBgmHint();
+}
+
+function bgmAutoStart() {
+    bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {
+        const startOnGesture = () => {
+            if (bgmPlaying || localStorage.getItem('bgm_muted') === '1') return;
+            bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {});
+        };
+        ['click', 'keydown', 'touchstart'].forEach(evt =>
+            document.addEventListener(evt, startOnGesture, { once: true })
+        );
+    });
 }
 
 function initBgmHint() {
@@ -56,7 +70,7 @@ function bgmLoadTrack(i) {
     if (label) label.textContent = '♪ ' + BGM_TRACKS[bgmIndex].name;
 }
 
-function toggleBgm() {
+function toggleBgmMute() {
     if (!bgmAudio) return;
     const hint = document.getElementById('bgm-hint');
     if (hint && hint.classList.contains('show')) {
@@ -67,9 +81,10 @@ function toggleBgm() {
     if (bgmPlaying) {
         bgmAudio.pause();
         bgmPlaying = false;
+        localStorage.setItem('bgm_muted', '1');
     } else {
+        localStorage.removeItem('bgm_muted');
         bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => {});
-        bgmPlaying = true;
     }
     updateBgmUI();
 }
@@ -77,14 +92,18 @@ function toggleBgm() {
 function bgmNext(autoplay) {
     const wasPlaying = bgmPlaying || autoplay === true;
     bgmLoadTrack(bgmIndex + 1);
-    if (wasPlaying) { bgmAudio.play().catch(() => {}); bgmPlaying = true; }
+    if (wasPlaying) {
+        bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => { bgmPlaying = false; updateBgmUI(); });
+    }
     updateBgmUI();
 }
 
 function bgmPrev() {
     const wasPlaying = bgmPlaying;
     bgmLoadTrack(bgmIndex - 1);
-    if (wasPlaying) { bgmAudio.play().catch(() => {}); bgmPlaying = true; }
+    if (wasPlaying) {
+        bgmAudio.play().then(() => { bgmPlaying = true; updateBgmUI(); }).catch(() => { bgmPlaying = false; updateBgmUI(); });
+    }
     updateBgmUI();
 }
 
@@ -96,11 +115,11 @@ function setBgmVolume(v) {
 
 function updateBgmUI() {
     const disc = document.getElementById('bgm-disc');
-    const playBtn = document.getElementById('bgm-play-btn');
-    const icon = document.getElementById('bgm-icon');
+    const waveIcon = document.getElementById('bgm-icon-wave');
+    const muteIcon = document.getElementById('bgm-icon-mute');
     if (disc) disc.classList.toggle('spinning', bgmPlaying);
-    if (playBtn) playBtn.textContent = bgmPlaying ? '⏸' : '▶';
-    if (icon) icon.textContent = bgmPlaying ? '⏸' : '🎵';
+    if (waveIcon) waveIcon.style.display = bgmPlaying ? '' : 'none';
+    if (muteIcon) muteIcon.style.display = bgmPlaying ? 'none' : '';
 }
 
 /* ===================== ✨ 點擊特效 Click Particles ===================== */

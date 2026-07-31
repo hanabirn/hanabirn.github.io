@@ -707,13 +707,12 @@
     </div>
 
     <div class="bgm-player" id="bgm-player">
-        <div class="bgm-hint" id="bgm-hint" style="display:none" data-i18n="bgm_hint">🎵 點擊播放背景音樂</div>
-        <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="BGM"><span class="bgm-icon" id="bgm-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"/></svg></span></button>
+        <div class="bgm-hint" id="bgm-hint" style="display:none" data-i18n="bgm_hint">背景音樂播放中，點擊可靜音</div>
+        <button class="bgm-disc" id="bgm-disc" onclick="toggleBgmMute()" title="靜音/取消靜音" aria-label="靜音/取消靜音"><span class="bgm-icon" id="bgm-icon-wave"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"/></svg></span><span class="bgm-icon" id="bgm-icon-mute" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"/></svg></span></button>
         <div class="bgm-panel" id="bgm-panel">
             <div class="bgm-track-name" id="bgm-track-name">&#x266A; BGM</div>
             <div class="bgm-controls">
                 <button onclick="bgmPrev()" title="Prev">&#x23EE;</button>
-                <button onclick="toggleBgm()" id="bgm-play-btn" title="Play/Pause">&#x25B6;</button>
                 <button onclick="bgmNext()" title="Next">&#x23ED;</button>
             </div>
             <input type="range" id="bgm-volume" min="0" max="100" value="40" oninput="setBgmVolume(this.value)" title="Volume">

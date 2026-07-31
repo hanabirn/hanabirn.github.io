@@ -49,7 +49,7 @@ I18N.en = {
         guide_about_title: 'About Me', guide_about_desc: 'Includes a Discord server for learning Chinese, plus my social links.',
         guide_guestbook_title: 'Guestbook', guide_guestbook_desc: 'Messages are public — visible to every visitor.',
         guide_bgm_title: 'BGM Vinyl Player', guide_bgm_desc: 'Hover over the record to switch tracks or adjust volume.',
-        bgm_hint: '🎵 Click to play background music',
+        bgm_hint: 'Background music is playing — click to mute',
         guide_settings_title: 'Display Settings', guide_settings_desc: 'The ⚙️ button lets you customize which pages show in the nav bar (the Guide always stays visible), saved in your browser — you can also copy a shareable customized link.', guide_games_title: 'Offline Mini Games', guide_games_desc: 'Vocab Whack-a-Mole needs that language loaded in Vocabulary Quiz first, or it won\'t work.',
         guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!',
         fc_view_mastered: '📋 View Mastered Words', fc_mastered_title: '📋 Mastered Words', fc_start_flashcard: '📖 Start Flashcards',
