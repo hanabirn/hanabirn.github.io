@@ -29,6 +29,12 @@
     color: #fff;
     padding: 0;
 }
+.bgm-icon svg {
+    width: 15px;
+    height: 15px;
+    position: relative;
+    z-index: 1;
+}
 .bgm-disc::after {
     content: '';
     position: absolute;
@@ -320,8 +326,8 @@
     z-index: 200;
     width: 48px;
     height: 48px;
-    font-size: 1.4rem;
 }
+.theme-toggle svg { width: 22px; height: 22px; }
 
 .reload-btn {
     position: fixed;
@@ -330,7 +336,6 @@
     z-index: 200;
     width: 48px;
     height: 48px;
-    font-size: 1.4rem;
     background: var(--theme-toggle-bg);
     border: 1px solid var(--theme-toggle-border);
     color: var(--text);
@@ -344,6 +349,7 @@
         transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
     flex-shrink: 0;
 }
+.reload-btn svg { width: 22px; height: 22px; }
 .reload-btn:hover {
     background: rgba(244,114,182,0.18);
     color: var(--text-pink);
