@@ -100,6 +100,7 @@
             <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
             <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
+            <button class="nav-btn" data-tab="feedback" onclick="switchPage('feedback', this)" data-i18n="nav_feedback">建議&amp;改進</button>
         </nav>
     </header>
 
@@ -574,6 +575,21 @@
             </div>
         </div>
 
+        <div id="page-feedback" style="display: none;">
+            <div class="guestbook-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="feedback_title">建議&amp;改進</h3>
+                <p class="feedback-hint" data-i18n="feedback_hint">覺得網站有哪裡可以做得更好嗎？在這裡告訴我，只有我看得到你的訊息，其他訪客不會看見。</p>
+                <form class="feedback-form" onsubmit="return handleFeedbackSubmit(event)">
+                    <textarea name="message" data-i18n-placeholder="feedback_placeholder" placeholder="寫下你的建議..." required class="feedback-textarea" rows="4"></textarea>
+                    <input type="text" name="website" class="guestbook-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <button type="submit" class="btn next-btn feedback-submit" data-i18n="feedback_submit">送出</button>
+                </form>
+                <div id="feedback-success" class="guestbook-success" style="display:none;" data-i18n="feedback_success">您的回覆訊息已傳送，感謝您的回饋！</div>
+            </div>
+        </div>
+
         <div id="page-guide">
             <div class="guide-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -744,6 +760,7 @@
     <script src="js/games.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/guestbook.js"></script>
+    <script src="js/feedback.js"></script>
     <script src="js/widgets.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
