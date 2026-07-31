@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/quiz.css">
     <link rel="stylesheet" href="css/music.css">
-    <link rel="stylesheet" href="css/osu.css">
     <link rel="stylesheet" href="css/games.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/guestbook.css">
@@ -97,10 +96,9 @@
             <button class="nav-btn active" data-tab="guide" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
             <button class="nav-btn" data-tab="about" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
-            <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x97F3;&#x6A02;&#x6536;&#x85CF;</button>
-            <button class="nav-btn" data-tab="osu" onclick="switchPage('osu', this)" data-i18n="nav_osu">osu! &#x6536;&#x85CF;</button>
+            <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x82B1;&#x706B;&#x7684;Spotify&#x6B4C;&#x55AE;</button>
             <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
-            <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x5176;&#x4ED6;&#x904A;&#x6232;&#x5340;</button>
+            <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
         </nav>
     </header>
@@ -336,80 +334,6 @@
             </div>
         </div>
 
-        <div id="page-osu" style="display: none;">
-            <h2 class="osu-page-title" data-i18n="osu_page_title">&#x2726; osu!&#x6B4C;&#x66F2;&#x6536;&#x85CF;+&#x67E5;&#x8A62;&#x500B;&#x4EBA;&#x7E3D;PP &#x2726;</h2>
-
-            <div class="osu-add-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="osu_title">&#x266B; &#x65B0;&#x589E; Beatmap &#x266B;</h3>
-                <div class="input-group">
-                    <input type="text" id="osuInput" data-i18n-placeholder="osu_placeholder" placeholder="&#x8F38;&#x5165; ID &#x6216;&#x8CB6;&#x4E0A;osu! &#x7DB2;&#x5740;" onkeydown="if(event.key==='Enter')addOsuBeatmap()">
-                    <button onclick="addOsuBeatmap()" data-i18n="osu_add">&#x65B0;&#x589E;</button>
-                </div>
-                <p id="osu-status" class="status"></p>
-                <div class="osu-volume">
-                    <span>&#128264;</span>
-                    <input type="range" id="osu-volume" min="0" max="1" step="0.05" value="0.4" oninput="osuSetVolume(this.value)">
-                    <button class="osu-refresh-all" onclick="refreshAllOsuSets()" title="&#x66F4;&#x65B0;Beatmap">&#x21bb;</button>
-                    <button class="osu-refresh-all" onclick="exportOsuCollection()" data-i18n-title="osu_export" title="&#x532F;&#x51FA;&#x6536;&#x85CF;">&#x1F4E4;</button>
-                    <button class="osu-refresh-all" onclick="document.getElementById('osu-import-file').click()" data-i18n-title="osu_import" title="&#x532F;&#x5165;&#x6536;&#x85CF;">&#x1F4E5;</button>
-                    <input type="file" id="osu-import-file" accept="application/json" style="display:none" onchange="importOsuCollection(event)">
-                    <button class="osu-refresh-all" onclick="setupOsuPassword()" data-i18n-title="osu_password" title="&#x1F512; &#x8A2D;&#x5B9A;&#x5BC6;&#x78BC;">&#x1F512;</button>
-                </div>
-            </div>
-
-            <div class="visitor-lookup-card" id="visitor-lookup-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="visitor_lookup_title">✦ 查詢你的 osu! PP ✦</h3>
-                <div class="visitor-lookup-input-row">
-                    <input type="text" id="visitor-lookup-input" data-i18n-placeholder="visitor_lookup_placeholder" placeholder="輸入 osu! 用戶名或 ID" class="guestbook-input">
-                    <button class="btn next-btn" onclick="lookupVisitorProfile()" data-i18n="visitor_lookup_btn">查詢</button>
-                </div>
-                <div id="visitor-lookup-status" class="status"></div>
-                <div id="visitor-lookup-result" style="display:none;">
-                    <div class="visitor-result-header">
-                        <img id="visitor-avatar" class="osu-avatar" src="" alt="avatar" style="width:48px;height:48px;" onerror="this.onerror=null; this.src='icons/icon-192.png';">
-                        <div>
-                            <div class="visitor-result-name" id="visitor-result-name"></div>
-                            <div class="visitor-result-country" id="visitor-result-country"></div>
-                        </div>
-                    </div>
-                    <div class="visitor-modes-grid" id="visitor-modes-grid"></div>
-                    <div class="osu-total-pp" id="visitor-total-pp">
-                        <span data-i18n="osu_total_pp">全模式 PP</span>
-                        <span class="osu-total-pp-value" id="visitor-total-pp-value">—</span>
-                    </div>
-                    <div class="osu-mode-tabs" id="visitor-recent-mode-tabs">
-                        <button class="osu-mode-tab active" data-mode="0" onclick="switchVisitorRecentMode(0,this)">&#x2B55; Standard</button>
-                        <button class="osu-mode-tab" data-mode="1" onclick="switchVisitorRecentMode(1,this)">&#x1F941; Taiko</button>
-                        <button class="osu-mode-tab" data-mode="2" onclick="switchVisitorRecentMode(2,this)">&#x1F34E; Catch</button>
-                        <button class="osu-mode-tab" data-mode="3" onclick="switchVisitorRecentMode(3,this)">&#x1F3B9; Mania</button>
-                    </div>
-                    <div class="osu-recent-plays" id="visitor-recent-plays" style="display:none;">
-                        <div class="osu-recent-title" data-i18n="osu_recent_title">🎮 最近遊玩</div>
-                        <div class="osu-recent-list" id="visitor-recent-list"></div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="osu-mode-tabs">
-                <button class="osu-tab" onclick="switchOsuTab('favorites', this)" data-i18n="osu_fav">&#x2665; &#x6700;&#x611B;</button>
-                <button class="osu-tab active" onclick="switchOsuTab('standard', this)">&#x2B55; Standard</button>
-                <button class="osu-tab" onclick="switchOsuTab('taiko', this)">&#x1F941; Taiko</button>
-                <button class="osu-tab" onclick="switchOsuTab('catch', this)">&#x1F34E; Catch</button>
-                <button class="osu-tab" onclick="switchOsuTab('mania', this)">&#x1F3B9; Mania</button>
-            </div>
-
-            <div class="osu-search-row">
-                <input type="text" id="osu-search-input" data-i18n-placeholder="osu_search_placeholder" placeholder="&#x641C;&#x5C0B;&#x66F2;&#x540D;&#x6216;&#x4F5C;&#x8005;..." oninput="filterOsuCollection(this.value)">
-            </div>
-
-            <div id="osu-collection" class="osu-collection"></div>
-            <div id="osu-pagination" class="osu-pagination"></div>
-        </div>
-
         <div id="page-games" style="display: none;">
             <div class="mode-card" id="games-select-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -608,56 +532,13 @@
                 </div>
             </div>
 
-            <div class="osu-profile-card" id="osu-profile-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="osu-profile-header">
-                    <img id="osu-avatar" class="osu-avatar" src="" alt="avatar" onerror="this.onerror=null; this.src='icons/icon-192.png';">
-                    <div class="osu-profile-info">
-                        <div class="osu-profile-name" id="osu-profile-name"></div>
-                        <div class="osu-profile-country" id="osu-profile-country"></div>
-                    </div>
-                </div>
-                <div class="osu-mode-tabs" id="osu-mode-tabs">
-                    <button class="osu-mode-tab active" data-mode="0">&#x2B55; Standard</button>
-                    <button class="osu-mode-tab" data-mode="1">&#x1F941; Taiko</button>
-                    <button class="osu-mode-tab" data-mode="2">&#x1F34E; Catch</button>
-                    <button class="osu-mode-tab" data-mode="3">&#x1F3B9; Mania</button>
-                </div>
-                <div class="osu-profile-stats" id="osu-profile-stats">
-                    <div class="osu-stat">
-                        <div class="osu-stat-value" id="osu-rank">#—</div>
-                        <div class="osu-stat-label" data-i18n="osu_stat_global">&#x5168;&#x7403;&#x6392;&#x540D;</div>
-                    </div>
-                    <div class="osu-stat">
-                        <div class="osu-stat-value" id="osu-pp">—</div>
-                        <div class="osu-stat-label">pp</div>
-                    </div>
-                    <div class="osu-stat">
-                        <div class="osu-stat-value" id="osu-accuracy">—</div>
-                        <div class="osu-stat-label" data-i18n="osu_stat_accuracy">&#x6E96;&#x78BA;&#x7387;</div>
-                    </div>
-                    <div class="osu-stat">
-                        <div class="osu-stat-value" id="osu-playcount">—</div>
-                        <div class="osu-stat-label" data-i18n="osu_stat_playcount">&#x6E38;&#x620F;&#x6578;</div>
-                    </div>
-                </div>
-                <div class="osu-total-pp" id="osu-total-pp" style="display:none;">
-                    <span data-i18n="osu_total_pp">&#x5168;&#x6A21;&#x5F0F; PP</span>
-                    <span class="osu-total-pp-value" id="osu-total-pp-value">—</span>
-                </div>
-                <div class="osu-recent-plays" id="osu-recent-plays" style="display:none;">
-                    <div class="osu-recent-title" data-i18n="osu_recent_title">&#x1F3AE; &#x6700;&#x8FD1;&#x904A;&#x73A9;</div>
-                    <div class="osu-recent-list" id="osu-recent-list"></div>
-                </div>
-            </div>
         </div>
 
         <div id="page-rhythm" style="display: none;">
             <div class="mode-card" id="rhythm-select-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="rhythm_title">&#x2726; &#x5176;&#x4ED6;&#x904A;&#x6232;&#x5340; &#x2726;</h3>
+                <h3 data-i18n="rhythm_title">&#x2726; &#x904A;&#x6232;&#x5340; &#x2726;</h3>
                 <div class="games-grid">
                     <div class="game-option game-option-banner game-option-banner-pjsekai" onclick="window.open('https://pjsekai-hanabi.netlify.app/', '_blank', 'noopener')">
                         <div class="game-option-name" data-i18n="rhythm_pjsekai_name">&#x4E16;&#x754C;&#x8A08;&#x756B; &#x6210;&#x7E3E;&#x7C3F;</div>
@@ -666,6 +547,10 @@
                     <div class="game-option game-option-banner game-option-banner-wuwa" onclick="window.open('https://wuwa-hanabi.netlify.app/', '_blank', 'noopener')">
                         <div class="game-option-name" data-i18n="rhythm_wuwa_name">鳴潮圖鑑</div>
                         <div class="game-option-desc" data-i18n="rhythm_wuwa_desc">收錄鳴潮所有角色、武器、聲骸資料，還有角色故事和語音</div>
+                    </div>
+                    <div class="game-option game-option-banner game-option-banner-osu" onclick="window.open('https://osu-collection-hanabi.netlify.app/', '_blank', 'noopener')">
+                        <div class="game-option-name" data-i18n="rhythm_osu_name">osu! 收藏</div>
+                        <div class="game-option-desc" data-i18n="rhythm_osu_desc">收藏 osu! Beatmap 並依模式分類，也能查詢任何人的四種模式 PP</div>
                     </div>
                 </div>
             </div>
@@ -729,18 +614,10 @@
                     </div>
 
                     <div class="guide-section" data-page="2">
-                        <div class="guide-icon">🎮</div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_osu_title">osu! 收藏</h4>
-                            <p data-i18n="guide_osu_desc">貼上 Beatmap ID 或網址即可收藏，自動抓取封面與難度並依模式分類。卡片可加最愛、試聽、複製 ID、點擊開啟官網；上方可搜尋曲名，也支援匯出／匯入備份。這裡也整合了「查詢 osu! PP」，任何人都能查詢四種模式的 PP。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="2">
                         <div class="guide-icon">🎼</div>
                         <div class="guide-text">
-                            <h4 data-i18n="guide_rhythm_title">其他遊戲區</h4>
-                            <p data-i18n="guide_rhythm_desc">收藏我做的其他遊戲相關網站，目前有「世界計畫」歌曲成績簿，點擊卡片會開啟獨立的網站。</p>
+                            <h4 data-i18n="guide_rhythm_title">遊戲區</h4>
+                            <p data-i18n="guide_rhythm_desc">收藏我做的其他遊戲相關網站，目前有「世界計畫」歌曲成績簿、「鳴潮圖鑑」和「osu! 收藏」，點擊卡片會開啟獨立的網站。</p>
                         </div>
                     </div>
 
@@ -748,7 +625,7 @@
                         <div class="guide-icon">👤</div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_about_title">關於我</h4>
-                            <p data-i18n="guide_about_desc">包含中文學習 Discord 伺服器連結。下方 osu! Profile Card 會自動顯示即時數據，可切換四種模式查看 PP、世界排名、準確率等。</p>
+                            <p data-i18n="guide_about_desc">包含中文學習 Discord 伺服器連結，以及我的社群連結。</p>
                         </div>
                     </div>
 
@@ -865,7 +742,6 @@
     <script src="i18n/es.js"></script>
     <script src="i18n/de.js"></script>
     <script src="js/quiz.js"></script>
-    <script src="js/osu.js"></script>
     <script src="js/games.js"></script>
     <script src="js/seasons.js"></script>
     <script src="js/guestbook.js"></script>

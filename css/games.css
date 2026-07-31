@@ -47,6 +47,12 @@
     background-size: cover;
     background-position: center top;
     padding-bottom: 16px;
+    flex: 0 0 calc(50% - 8px);
+}
+@media (max-width: 500px) {
+    .game-option-banner {
+        flex: 1 1 100%;
+    }
 }
 .game-option-banner .game-option-name,
 .game-option-banner .game-option-desc {
@@ -66,6 +72,14 @@
 }
 .game-option-banner-wuwa:hover {
     background-image: linear-gradient(rgba(10,5,20,0.25), rgba(10,5,20,0.7)), url('https://i.imgur.com/0FYd3JW.jpeg');
+    background-size: cover;
+    background-position: center top;
+}
+.game-option-banner-osu {
+    background-image: linear-gradient(rgba(10,5,20,0.35), rgba(10,5,20,0.8)), url('https://i.imgur.com/acXrYB2.png');
+}
+.game-option-banner-osu:hover {
+    background-image: linear-gradient(rgba(10,5,20,0.25), rgba(10,5,20,0.7)), url('https://i.imgur.com/acXrYB2.png');
     background-size: cover;
     background-position: center top;
 }

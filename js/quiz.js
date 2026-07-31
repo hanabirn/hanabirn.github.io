@@ -3,11 +3,13 @@ const PLAYLISTS = {
     cn: '5XQgwQcuRRBcyVaKMQbB88'
 };
 
+applyLang(siteLang);
+
 function switchPage(page, el) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
 
-    const pages = ['guide', 'about', 'quiz', 'music', 'osu', 'games', 'rhythm', 'guestbook'];
+    const pages = ['guide', 'about', 'quiz', 'music', 'games', 'rhythm', 'guestbook'];
     const main = document.querySelector('main');
     main.style.opacity = '0';
     main.style.transition = 'opacity 0.2s ease';
@@ -20,15 +22,13 @@ function switchPage(page, el) {
             if (el) el.style.display = p === page ? 'block' : 'none';
         });
         main.style.opacity = '1';
-        if (page === 'osu') renderOsuCollection();
-        if (page === 'about') fetchOsuProfile();
         if (page === 'guestbook') loadGuestbookMessages();
     }, 200);
 }
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'music', 'osu', 'games', 'rhythm', 'guestbook'];
+const ALL_TABS = ['guide', 'about', 'quiz', 'music', 'games', 'rhythm', 'guestbook'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {
