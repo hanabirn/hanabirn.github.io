@@ -1,8 +1,8 @@
 I18N.en = {
         title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
         nav_quiz: 'Vocabulary Quiz', nav_examquiz: 'Exam Prep', nav_music: "Hanabi's Spotify Playlist", nav_about: 'About Me',
-        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4',
-        examquiz_title: '✦ Exam Prep Vocabulary ✦', examquiz_hint: 'Vocabulary sets for language certification exams. Currently JLPT N5 and N4, with more levels and exams to come.', examquiz_jlpt_n5: 'JLPT N5 (~672 words)', examquiz_jlpt_n4: 'JLPT N4 (~580 words)',
+        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3',
+        examquiz_title: '✦ Exam Prep Vocabulary ✦', examquiz_hint: 'Vocabulary sets for language certification exams. Currently JLPT N5, N4 and N3, with more levels and exams to come.', examquiz_jlpt_n5: 'JLPT N5 (~672 words)', examquiz_jlpt_n4: 'JLPT N4 (~580 words)', examquiz_jlpt_n3: 'JLPT N3 (~1743 words)',
         fc_lang_jp: '🇯🇵 Japanese', fc_lang_kr: '🇰🇷 Korean', fc_lang_fr: '🇫🇷 French', fc_lang_en: '🇺🇸 English', fc_lang_zh: '🇨🇳 Chinese',
         lc_mode_title: 'Select Mode',
         zh_char_title: 'Choose Question Script', zh_char_trad: 'Traditional (繁體)', zh_char_simp: 'Simplified (简体)',

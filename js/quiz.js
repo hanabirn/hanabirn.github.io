@@ -1061,8 +1061,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

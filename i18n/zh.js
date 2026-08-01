@@ -1,8 +1,8 @@
 I18N.zh = {
         title: 'Hanabi的小天地', subtitle: '持續學習朝著自己的夢想前進吧 !',
         nav_quiz: '單字測驗', nav_examquiz: '檢定考試', nav_music: '花火的Spotify歌單', nav_about: '關於我',
-        select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗', quiz_fr: '法文單字測驗', quiz_en: '英文單字測驗', quiz_zh: '中文單字測驗', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4',
-        examquiz_title: '✦ 檢定考試單字 ✦', examquiz_hint: '這裡是各國語文檢定考試專用的單字庫，目前有 JLPT N5、N4，之後會陸續增加其他等級與考試。', examquiz_jlpt_n5: 'JLPT N5（約 672 字）', examquiz_jlpt_n4: 'JLPT N4（約 580 字）',
+        select_lang: '✦ 選擇語言 ✦', quiz_jp: '日文單字測驗', quiz_kr: '韓文單字測驗', quiz_fr: '法文單字測驗', quiz_en: '英文單字測驗', quiz_zh: '中文單字測驗', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3',
+        examquiz_title: '✦ 檢定考試單字 ✦', examquiz_hint: '這裡是各國語文檢定考試專用的單字庫，目前有 JLPT N5、N4、N3，之後會陸續增加其他等級與考試。', examquiz_jlpt_n5: 'JLPT N5（約 672 字）', examquiz_jlpt_n4: 'JLPT N4（約 580 字）', examquiz_jlpt_n3: 'JLPT N3（約 1743 字）',
         fc_lang_jp: '🇯🇵 日文', fc_lang_kr: '🇰🇷 韓文', fc_lang_fr: '🇫🇷 法文', fc_lang_en: '🇺🇸 英文', fc_lang_zh: '🇨🇳 中文',
         lc_mode_title: '選擇模式',
         zh_char_title: '選擇題目顯示字體', zh_char_trad: '單字（繁體）', zh_char_simp: '单字（简体）',
