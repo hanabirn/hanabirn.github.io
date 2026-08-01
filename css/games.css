@@ -193,6 +193,9 @@
     align-items: center;
     gap: 6px;
     margin-top: 16px;
+    /* stay above the fixed PWA install banner so taps always hit the dpad, not the banner */
+    position: relative;
+    z-index: 501;
 }
 .snake-dpad-mid {
     display: flex;

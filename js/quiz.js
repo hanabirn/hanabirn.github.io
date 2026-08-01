@@ -1091,6 +1091,7 @@ function showResults() {
 }
 
 function backToLanguage() {
+    const wasExamQuiz = currentLang.startsWith('jlpt_');
     currentLang = '';
     vocabularyList = [];
     readingList = [];
@@ -1110,6 +1111,14 @@ function backToLanguage() {
     document.getElementById('listening-setup-card').style.display = 'none';
     updateMistakeBadge();
     updateStreakBadge();
+
+    /* exam-quiz quizzes borrow #page-quiz's engine, so its "返回" should
+       land back on the JLPT level picker, not #page-quiz's own language card */
+    if (wasExamQuiz) {
+        document.getElementById('lang-card').style.display = 'none';
+        switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
+        showJlptLevels();
+    }
 }
 
 /* ===================== 錯題本 Mistake Notebook ===================== */
