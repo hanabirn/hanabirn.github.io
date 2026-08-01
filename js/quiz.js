@@ -158,6 +158,14 @@ const SHEETS = {
     zh: 'https://docs.google.com/spreadsheets/d/1dHIWN5lOINUzeLvTD7zsnpORSBLdlgsF_T8VMX8pTFA/export?format=csv&gid=0'
 };
 
+const JLPT_SHEETS = {
+    jlpt_n5: 'https://docs.google.com/spreadsheets/d/12B2ZV8eGUO7d1-YcWNLTlqDptkNrhsQvijyjed6Y_TE/export?format=csv&gid=0',
+    jlpt_n4: 'https://docs.google.com/spreadsheets/d/1unwngsmxA4_HoNMO9l0-mN4dkhrQF7vYbbHgdSDY4SQ/export?format=csv&gid=0',
+    jlpt_n3: 'https://docs.google.com/spreadsheets/d/1Tw8Ll29yjH-AkYlVWjTlWSY1Kh33Jxj_gqxWWcVs4NQ/export?format=csv&gid=0',
+    jlpt_n2: 'https://docs.google.com/spreadsheets/d/1GKE8uKb8mH8PSHYELErZbzrYAgU19u1eBLTJsy67S-4/export?format=csv&gid=0',
+    jlpt_n1: 'https://docs.google.com/spreadsheets/d/1zHezXxlkiSKsIzFCyUMBCLRNOxQV0zwvAgYnMFqnQ38/export?format=csv&gid=0'
+};
+
 let currentLang = '';
 let vocabularyList = [];
 let readingList = [];
@@ -266,11 +274,13 @@ function selectLanguage(lang) {
     loadSheetData(SHEETS[lang]);
 }
 
-/* Certification-exam vocab sets (e.g. JLPT N5) are hardcoded in EXAM_VOCAB
-   (js/exam-vocab.js) rather than pulled from a live Google Sheet, so this
-   skips loadSheetData()/parseX() entirely and feeds vocabularyList/
-   readingList directly — everything downstream (mode selection, scoring,
-   mistakes, records) only ever looks at currentLang + those two arrays. */
+/* Certification-exam vocab sets (e.g. JLPT N5) live in their own Google
+   Sheets (JLPT_SHEETS, one spreadsheet per level), fetched live via CSV
+   export just like the general-language sheets in SHEETS — but each row is
+   a single word (word/kana/meaning/english columns), so no stride parsing
+   is needed, just parseExamVocab() below. Only the specific level a visitor
+   picks is ever fetched, and it's cached to localStorage the same way as
+   the general languages (saveVocabCache/getVocabCache). */
 function showJlptLevels() {
     document.getElementById('examquiz-card').style.display = 'none';
     document.getElementById('examquiz-jlpt-level-card').style.display = 'block';
@@ -281,16 +291,56 @@ function hideJlptLevels() {
     document.getElementById('examquiz-card').style.display = 'block';
 }
 
+function parseExamVocab(rows) {
+    rows.forEach((row, idx) => {
+        if (idx === 0) return; // header row: word,kana,meaning,english
+        if (row.length < 4) return;
+        addWord(row[0], row[1], row[2], row[3]);
+    });
+}
+
 function selectExamSet(examId) {
-    const data = EXAM_VOCAB[examId];
-    if (!data || data.length === 0) return;
     currentLang = examId;
-    vocabularyList = data.slice();
-    readingList = data.filter(w => w.kana && w.kana.length > 0);
-    saveVocabCache(currentLang);
+    vocabularyList = [];
+    readingList = [];
     document.getElementById('lang-card').style.display = 'none';
     switchPage('quiz', document.querySelector('.nav-btn[data-tab="quiz"]'));
-    showModeSelection();
+
+    const setupCard = document.getElementById('setup-card');
+    const statusMsg = document.getElementById('status-msg');
+    setupCard.style.display = 'block';
+    statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
+    statusMsg.style.color = '#c8a2e0';
+
+    Papa.parse(JLPT_SHEETS[examId], {
+        download: true,
+        header: false,
+        complete: function(results) {
+            parseExamVocab(results.data);
+            if (vocabularyList.length >= 4) {
+                saveVocabCache(currentLang);
+                statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
+                statusMsg.style.color = '#f472b6';
+                showModeSelection();
+            } else {
+                statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
+                statusMsg.style.color = '#ff5252';
+            }
+        },
+        error: function() {
+            const cached = getVocabCache(currentLang);
+            if (cached && cached.vocabularyList && cached.vocabularyList.length >= 4) {
+                vocabularyList = cached.vocabularyList;
+                readingList = cached.readingList || [];
+                statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
+                statusMsg.style.color = '#fbbf24';
+                showModeSelection();
+            } else {
+                statusMsg.innerText = t('load_fail_no_cache');
+                statusMsg.style.color = '#ff5252';
+            }
+        }
+    });
 }
 
 function saveVocabCache(lang) {
