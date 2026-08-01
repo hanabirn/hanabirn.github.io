@@ -25,7 +25,7 @@ I18N.zh = {
         quiz_question: '第 {n} 題', quiz_words: '有效單字: {n}', quiz_score: '得分: {n}',
         quiz_next: '下一題 →', quiz_back: '← 返回選擇語言',
         music_all: '♫ 所有歌曲', music_cn: '♫ 中文 / 粵語歌',
-        mode_jp_meaning: '日文 → 選中文意思', mode_kr_meaning: '韓文 → 選中文意思', mode_fr_meaning: '法文 → 選中文意思', mode_en_meaning: '英文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
+        mode_jp_meaning: '日文 → 選意思', mode_kr_meaning: '韓文 → 選中文意思', mode_fr_meaning: '法文 → 選中文意思', mode_en_meaning: '英文 → 選中文意思', mode_jp_reading: '日文 → 選讀法', mode_both: '混合隨機',
         correct: '正解！', wrong: '不正解... 正確答案是：',
         load_success: '成功讀取 {n} 個有效單字', load_with_reading: '（含讀法: {n} 個）',
         invalid_url: '請輸入正確的 Google Sheet 網址！',
