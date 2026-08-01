@@ -1,8 +1,9 @@
 I18N.ko = {
         title: 'Hanabi 의 작은 세계', subtitle: '배우고 또 배워서 자신의 꿈을 향해 나아가자!',
         nav_quiz: '단어 퀴즈', nav_examquiz: '검정시험', nav_music: 'Hanabi의 Spotify 플레이리스트', nav_about: '소개',
-        select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈', quiz_en: '영어 퀴즈', quiz_zh: '중국어 퀴즈', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1',
-        examquiz_title: '✦ 검정시험 단어 ✦', examquiz_hint: '각종 어학 검정시험 전용 단어장입니다. 현재 JLPT 전 급수（N5～N1）가 있으며, 앞으로 다른 시험도 추가될 예정입니다.', examquiz_jlpt: 'JLPT（일본어 검정）', examquiz_jlpt_title: '✦ JLPT 급수 선택 ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈', quiz_en: '영어 퀴즈', quiz_zh: '중국어 퀴즈', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1', quiz_topik_1: 'TOPIK 1', quiz_topik_2: 'TOPIK 2', quiz_topik_3: 'TOPIK 3', quiz_topik_4: 'TOPIK 4',
+        examquiz_title: '✦ 검정시험 단어 ✦', examquiz_hint: '각종 어학 검정시험 전용 단어장입니다. 현재 JLPT 전 급수（N5～N1）와 TOPIK 전 등급（1～4）이 있으며, 앞으로 다른 시험도 추가될 예정입니다.', examquiz_jlpt: 'JLPT（일본어 검정）', examquiz_jlpt_title: '✦ JLPT 급수 선택 ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        examquiz_topik: 'TOPIK（한국어 검정）', examquiz_topik_title: '✦ TOPIK 등급 선택 ✦', examquiz_topik_1: 'TOPIK 1', examquiz_topik_2: 'TOPIK 2', examquiz_topik_3: 'TOPIK 3', examquiz_topik_4: 'TOPIK 4',
         fc_lang_jp: '🇯🇵 일본어', fc_lang_kr: '🇰🇷 한국어', fc_lang_fr: '🇫🇷 프랑스어', fc_lang_en: '🇺🇸 영어', fc_lang_zh: '🇨🇳 중국어',
         lc_mode_title: '모드 선택',
         zh_char_title: '문제 표시 문자 선택', zh_char_trad: '번체자（繁體）', zh_char_simp: '간체자（简体）',

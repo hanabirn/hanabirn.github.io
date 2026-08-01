@@ -1,8 +1,9 @@
 I18N.es = {
         title: "El Pequeño Mundo de Hanabi", subtitle: '¡Sigue aprendiendo y camina hacia tus sueños!',
         nav_quiz: 'Quiz Vocabulario', nav_examquiz: 'Exámenes', nav_music: 'Playlist de Spotify de Hanabi', nav_about: 'Sobre mí',
-        select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés', quiz_en: 'Quiz Inglés', quiz_zh: 'Quiz Chino', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1',
-        examquiz_title: '✦ Vocabulario para exámenes ✦', examquiz_hint: 'Listas de vocabulario para exámenes de certificación de idiomas. Ya está disponible todo el JLPT (N5 a N1), pronto llegarán más exámenes.', examquiz_jlpt: 'JLPT (japonés)', examquiz_jlpt_title: '✦ Elige un nivel de JLPT ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés', quiz_en: 'Quiz Inglés', quiz_zh: 'Quiz Chino', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1', quiz_topik_1: 'TOPIK 1', quiz_topik_2: 'TOPIK 2', quiz_topik_3: 'TOPIK 3', quiz_topik_4: 'TOPIK 4',
+        examquiz_title: '✦ Vocabulario para exámenes ✦', examquiz_hint: 'Listas de vocabulario para exámenes de certificación de idiomas. Ya está disponible todo el JLPT (N5 a N1) y todo el TOPIK (1 a 4), pronto llegarán más exámenes.', examquiz_jlpt: 'JLPT (japonés)', examquiz_jlpt_title: '✦ Elige un nivel de JLPT ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        examquiz_topik: 'TOPIK (coreano)', examquiz_topik_title: '✦ Elige un nivel de TOPIK ✦', examquiz_topik_1: 'TOPIK 1', examquiz_topik_2: 'TOPIK 2', examquiz_topik_3: 'TOPIK 3', examquiz_topik_4: 'TOPIK 4',
         fc_lang_jp: '🇯🇵 Japonés', fc_lang_kr: '🇰🇷 Coreano', fc_lang_fr: '🇫🇷 Francés', fc_lang_en: '🇺🇸 Inglés', fc_lang_zh: '🇨🇳 Chino',
         lc_mode_title: 'Elegir modo',
         zh_char_title: 'Elegir escritura', zh_char_trad: 'Tradicional (繁體)', zh_char_simp: 'Simplificado (简体)',

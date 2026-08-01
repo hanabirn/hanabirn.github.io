@@ -166,6 +166,13 @@ const JLPT_SHEETS = {
     jlpt_n1: 'https://docs.google.com/spreadsheets/d/1zHezXxlkiSKsIzFCyUMBCLRNOxQV0zwvAgYnMFqnQ38/export?format=csv&gid=0'
 };
 
+const TOPIK_SHEETS = {
+    topik_1: 'https://docs.google.com/spreadsheets/d/1XJTpFBly3hRNBBBnZoAzJneOXwJajbC4KqniSRfSPUg/export?format=csv&gid=0',
+    topik_2: 'https://docs.google.com/spreadsheets/d/1FBjH5ObsgShVevgMcXXJDmsmh0JQBzk6DDsJAyi6kaE/export?format=csv&gid=0',
+    topik_3: 'https://docs.google.com/spreadsheets/d/1pVOTCK3e2OgAhdktgVb29j4vUlKpmIULk2OnkiPeNA0/export?format=csv&gid=0',
+    topik_4: 'https://docs.google.com/spreadsheets/d/1UZJ29Jxl8pjM4eZREWKed8YRkPpjRIKkSfzfYFaAlig/export?format=csv&gid=0'
+};
+
 let currentLang = '';
 let vocabularyList = [];
 let readingList = [];
@@ -228,6 +235,13 @@ function isJapaneseQuizLang(lang) {
     return lang === 'jp' || lang.startsWith('jlpt_');
 }
 
+/* TOPIK levels (topik_1, topik_2, ...) are all Korean vocab, so treat them
+   the same as 'kr' anywhere quiz.js branches on currentLang for language
+   (not sheet-loading) purposes — see isKoreanQuizLang() call sites. */
+function isKoreanQuizLang(lang) {
+    return lang === 'kr' || lang.startsWith('topik_');
+}
+
 function speakWord() {
     if (!currentWord || !currentWord.word) return;
     window.speechSynthesis.cancel();
@@ -274,13 +288,13 @@ function selectLanguage(lang) {
     loadSheetData(SHEETS[lang]);
 }
 
-/* Certification-exam vocab sets (e.g. JLPT N5) live in their own Google
-   Sheets (JLPT_SHEETS, one spreadsheet per level), fetched live via CSV
-   export just like the general-language sheets in SHEETS — but each row is
-   a single word (word/kana/meaning/english columns), so no stride parsing
-   is needed, just parseExamVocab() below. Only the specific level a visitor
-   picks is ever fetched, and it's cached to localStorage the same way as
-   the general languages (saveVocabCache/getVocabCache). */
+/* Certification-exam vocab sets (e.g. JLPT N5, TOPIK 1) live in their own
+   Google Sheets (JLPT_SHEETS / TOPIK_SHEETS, one spreadsheet per level),
+   fetched live via CSV export just like the general-language sheets in
+   SHEETS — but each row is a single word, so no stride parsing is needed,
+   just parseExamVocab()/parseTopikVocab() below. Only the specific level a
+   visitor picks is ever fetched, and it's cached to localStorage the same
+   way as the general languages (saveVocabCache/getVocabCache). */
 function showJlptLevels() {
     document.getElementById('examquiz-card').style.display = 'none';
     document.getElementById('examquiz-jlpt-level-card').style.display = 'block';
@@ -291,11 +305,31 @@ function hideJlptLevels() {
     document.getElementById('examquiz-card').style.display = 'block';
 }
 
+function showTopikLevels() {
+    document.getElementById('examquiz-card').style.display = 'none';
+    document.getElementById('examquiz-topik-level-card').style.display = 'block';
+}
+
+function hideTopikLevels() {
+    document.getElementById('examquiz-topik-level-card').style.display = 'none';
+    document.getElementById('examquiz-card').style.display = 'block';
+}
+
 function parseExamVocab(rows) {
     rows.forEach((row, idx) => {
         if (idx === 0) return; // header row: word,kana,meaning,english
         if (row.length < 4) return;
         addWord(row[0], row[1], row[2], row[3]);
+    });
+}
+
+/* TOPIK sheets have no reading column (Korean is already written in hangul,
+   no furigana-like reading needed) — word,meaning,english. */
+function parseTopikVocab(rows) {
+    rows.forEach((row, idx) => {
+        if (idx === 0) return; // header row: 韓文單字,繁體中文翻譯,English
+        if (row.length < 3) return;
+        addWord(row[0], '', row[1], row[2]);
     });
 }
 
@@ -312,11 +346,15 @@ function selectExamSet(examId) {
     statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
     statusMsg.style.color = '#c8a2e0';
 
-    Papa.parse(JLPT_SHEETS[examId], {
+    const isTopik = examId.startsWith('topik_');
+    const sheetUrl = isTopik ? TOPIK_SHEETS[examId] : JLPT_SHEETS[examId];
+
+    Papa.parse(sheetUrl, {
         download: true,
         header: false,
         complete: function(results) {
-            parseExamVocab(results.data);
+            if (isTopik) parseTopikVocab(results.data);
+            else parseExamVocab(results.data);
             if (vocabularyList.length >= 4) {
                 saveVocabCache(currentLang);
                 statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
@@ -625,7 +663,7 @@ function showModeSelection() {
     const container = document.getElementById('mode-buttons');
     container.innerHTML = '';
 
-    const skipModeSelection = currentLang === 'kr' || currentLang === 'fr' || currentLang === 'en';
+    const skipModeSelection = isKoreanQuizLang(currentLang) || currentLang === 'fr' || currentLang === 'en';
 
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
@@ -1091,7 +1129,8 @@ function showResults() {
 }
 
 function backToLanguage() {
-    const wasExamQuiz = currentLang.startsWith('jlpt_');
+    const wasJlptQuiz = currentLang.startsWith('jlpt_');
+    const wasTopikQuiz = currentLang.startsWith('topik_');
     currentLang = '';
     vocabularyList = [];
     readingList = [];
@@ -1113,11 +1152,12 @@ function backToLanguage() {
     updateStreakBadge();
 
     /* exam-quiz quizzes borrow #page-quiz's engine, so its "返回" should
-       land back on the JLPT level picker, not #page-quiz's own language card */
-    if (wasExamQuiz) {
+       land back on the JLPT/TOPIK level picker, not #page-quiz's own language card */
+    if (wasJlptQuiz || wasTopikQuiz) {
         document.getElementById('lang-card').style.display = 'none';
         switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
-        showJlptLevels();
+        if (wasJlptQuiz) showJlptLevels();
+        else showTopikLevels();
     }
 }
 
@@ -1130,8 +1170,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'topik_1', 'topik_2', 'topik_3', 'topik_4'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

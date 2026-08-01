@@ -1,8 +1,9 @@
 I18N.ru = {
         title: 'Маленький мир Ханаби', subtitle: 'Учись и иди к своей мечте!',
         nav_quiz: 'Тест на слова', nav_examquiz: 'Подготовка к экзаменам', nav_music: 'Плейлист Hanabi в Spotify', nav_about: 'Обо мне',
-        select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест', quiz_en: 'Английский тест', quiz_zh: 'Китайский тест', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1',
-        examquiz_title: '✦ Лексика для экзаменов ✦', examquiz_hint: 'Наборы слов для языковых сертификационных экзаменов. Сейчас доступен весь JLPT (N5-N1), другие экзамены появятся позже.', examquiz_jlpt: 'JLPT (японский)', examquiz_jlpt_title: '✦ Выберите уровень JLPT ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест', quiz_en: 'Английский тест', quiz_zh: 'Китайский тест', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1', quiz_topik_1: 'TOPIK 1', quiz_topik_2: 'TOPIK 2', quiz_topik_3: 'TOPIK 3', quiz_topik_4: 'TOPIK 4',
+        examquiz_title: '✦ Лексика для экзаменов ✦', examquiz_hint: 'Наборы слов для языковых сертификационных экзаменов. Сейчас доступен весь JLPT (N5-N1) и весь TOPIK (1-4), другие экзамены появятся позже.', examquiz_jlpt: 'JLPT (японский)', examquiz_jlpt_title: '✦ Выберите уровень JLPT ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        examquiz_topik: 'TOPIK (корейский)', examquiz_topik_title: '✦ Выберите уровень TOPIK ✦', examquiz_topik_1: 'TOPIK 1', examquiz_topik_2: 'TOPIK 2', examquiz_topik_3: 'TOPIK 3', examquiz_topik_4: 'TOPIK 4',
         fc_lang_jp: '🇯🇵 Японский', fc_lang_kr: '🇰🇷 Корейский', fc_lang_fr: '🇫🇷 Французский', fc_lang_en: '🇺🇸 Английский', fc_lang_zh: '🇨🇳 Китайский',
         lc_mode_title: 'Выберите режим',
         zh_char_title: 'Выберите написание', zh_char_trad: 'Традиционные (繁體)', zh_char_simp: 'Упрощённые (简体)',

@@ -129,6 +129,10 @@
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本" class="lang-flag">
                         <span data-i18n="examquiz_jlpt">JLPT&#xFF08;&#x65E5;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
                     </button>
+                    <button class="lang-btn kr" onclick="showTopikLevels()">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國" class="lang-flag">
+                        <span data-i18n="examquiz_topik">TOPIK&#xFF08;&#x97D3;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
+                    </button>
                 </div>
             </div>
             <div class="lang-card" id="examquiz-jlpt-level-card" style="display: none;">
@@ -154,6 +158,28 @@
                 </div>
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="hideJlptLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+            <div class="lang-card" id="examquiz-topik-level-card" style="display: none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="examquiz_topik_title">&#x2726; &#x9078;&#x64C7; TOPIK &#x7B49;&#x7D1A; &#x2726;</h3>
+                <div class="lang-buttons">
+                    <button class="lang-btn kr" onclick="selectExamSet('topik_1')">
+                        <span data-i18n="examquiz_topik_1">TOPIK 1</span>
+                    </button>
+                    <button class="lang-btn kr" onclick="selectExamSet('topik_2')">
+                        <span data-i18n="examquiz_topik_2">TOPIK 2</span>
+                    </button>
+                    <button class="lang-btn kr" onclick="selectExamSet('topik_3')">
+                        <span data-i18n="examquiz_topik_3">TOPIK 3</span>
+                    </button>
+                    <button class="lang-btn kr" onclick="selectExamSet('topik_4')">
+                        <span data-i18n="examquiz_topik_4">TOPIK 4</span>
+                    </button>
+                </div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="hideTopikLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
         </div>

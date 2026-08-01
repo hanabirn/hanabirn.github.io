@@ -1,8 +1,9 @@
 I18N.en = {
         title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
         nav_quiz: 'Vocabulary Quiz', nav_examquiz: 'Exam Prep', nav_music: "Hanabi's Spotify Playlist", nav_about: 'About Me',
-        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1',
-        examquiz_title: '✦ Exam Prep Vocabulary ✦', examquiz_hint: 'Vocabulary sets for language certification exams. Currently the full JLPT range (N5-N1), with more exams to come.', examquiz_jlpt: 'JLPT (Japanese)', examquiz_jlpt_title: '✦ Choose a JLPT Level ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1', quiz_topik_1: 'TOPIK 1', quiz_topik_2: 'TOPIK 2', quiz_topik_3: 'TOPIK 3', quiz_topik_4: 'TOPIK 4',
+        examquiz_title: '✦ Exam Prep Vocabulary ✦', examquiz_hint: 'Vocabulary sets for language certification exams. Currently the full JLPT range (N5-N1) and full TOPIK range (1-4), with more exams to come.', examquiz_jlpt: 'JLPT (Japanese)', examquiz_jlpt_title: '✦ Choose a JLPT Level ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
+        examquiz_topik: 'TOPIK (Korean)', examquiz_topik_title: '✦ Choose a TOPIK Level ✦', examquiz_topik_1: 'TOPIK 1', examquiz_topik_2: 'TOPIK 2', examquiz_topik_3: 'TOPIK 3', examquiz_topik_4: 'TOPIK 4',
         fc_lang_jp: '🇯🇵 Japanese', fc_lang_kr: '🇰🇷 Korean', fc_lang_fr: '🇫🇷 French', fc_lang_en: '🇺🇸 English', fc_lang_zh: '🇨🇳 Chinese',
         lc_mode_title: 'Select Mode',
         zh_char_title: 'Choose Question Script', zh_char_trad: 'Traditional (繁體)', zh_char_simp: 'Simplified (简体)',
