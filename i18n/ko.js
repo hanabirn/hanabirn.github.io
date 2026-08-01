@@ -1,8 +1,8 @@
 I18N.ko = {
         title: 'Hanabi 의 작은 세계', subtitle: '배우고 또 배워서 자신의 꿈을 향해 나아가자!',
         nav_quiz: '단어 퀴즈', nav_examquiz: '검정시험', nav_music: 'Hanabi의 Spotify 플레이리스트', nav_about: '소개',
-        select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈', quiz_en: '영어 퀴즈', quiz_zh: '중국어 퀴즈', quiz_jlpt_n5: 'JLPT N5',
-        examquiz_title: '✦ 검정시험 단어 ✦', examquiz_hint: '각종 어학 검정시험 전용 단어장입니다. 우선 JLPT N5부터 시작하며, 앞으로 다른 급수와 시험도 추가될 예정입니다.', examquiz_jlpt_n5: 'JLPT N5（약 672단어）',
+        select_lang: '✦ 언어 선택 ✦', quiz_jp: '일본어 퀴즈', quiz_kr: '한국어 퀴즈', quiz_fr: '프랑스어 퀴즈', quiz_en: '영어 퀴즈', quiz_zh: '중국어 퀴즈', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4',
+        examquiz_title: '✦ 검정시험 단어 ✦', examquiz_hint: '각종 어학 검정시험 전용 단어장입니다. 현재 JLPT N5, N4가 있으며, 앞으로 다른 급수와 시험도 추가될 예정입니다.', examquiz_jlpt_n5: 'JLPT N5（약 672단어）', examquiz_jlpt_n4: 'JLPT N4（약 580단어）',
         fc_lang_jp: '🇯🇵 일본어', fc_lang_kr: '🇰🇷 한국어', fc_lang_fr: '🇫🇷 프랑스어', fc_lang_en: '🇺🇸 영어', fc_lang_zh: '🇨🇳 중국어',
         lc_mode_title: '모드 선택',
         zh_char_title: '문제 표시 문자 선택', zh_char_trad: '번체자（繁體）', zh_char_simp: '간체자（简体）',

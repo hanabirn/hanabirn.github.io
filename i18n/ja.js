@@ -1,8 +1,8 @@
 I18N.ja = {
         title: 'Hanabi の 小天地', subtitle: '学び続け、自分の夢に向かって進もう！',
         nav_quiz: '単語テスト', nav_examquiz: '検定試験', nav_music: 'HanabiのSpotifyプレイリスト', nav_about: '自己紹介',
-        select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト', quiz_fr: 'フランス語テスト', quiz_en: '英語テスト', quiz_zh: '中国語テスト', quiz_jlpt_n5: 'JLPT N5',
-        examquiz_title: '✦ 検定試験単語 ✦', examquiz_hint: '各種語学検定試験専用の単語集です。まずはJLPT N5から。今後、他の級や試験も追加予定です。', examquiz_jlpt_n5: 'JLPT N5（約672語）',
+        select_lang: '✦ 言語を選択 ✦', quiz_jp: '日本語テスト', quiz_kr: '韓国語テスト', quiz_fr: 'フランス語テスト', quiz_en: '英語テスト', quiz_zh: '中国語テスト', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4',
+        examquiz_title: '✦ 検定試験単語 ✦', examquiz_hint: '各種語学検定試験専用の単語集です。現在JLPT N5・N4があり、今後、他の級や試験も追加予定です。', examquiz_jlpt_n5: 'JLPT N5（約672語）', examquiz_jlpt_n4: 'JLPT N4（約580語）',
         fc_lang_jp: '🇯🇵 日本語', fc_lang_kr: '🇰🇷 韓国語', fc_lang_fr: '🇫🇷 フランス語', fc_lang_en: '🇺🇸 英語', fc_lang_zh: '🇨🇳 中国語',
         lc_mode_title: 'モードを選択',
         zh_char_title: '問題の文字を選択', zh_char_trad: '繁体字（繁體）', zh_char_simp: '简体字（简体）',

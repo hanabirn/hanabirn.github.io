@@ -213,15 +213,22 @@ function playSound(correct) {
     } catch(e) {}
 }
 
+/* JLPT levels (jlpt_n5, jlpt_n4, ...) are all Japanese vocab, so treat them
+   the same as 'jp' anywhere quiz.js branches on currentLang for language
+   (not sheet-loading) purposes — see isJapaneseQuizLang() call sites. */
+function isJapaneseQuizLang(lang) {
+    return lang === 'jp' || lang.startsWith('jlpt_');
+}
+
 function speakWord() {
     if (!currentWord || !currentWord.word) return;
     window.speechSynthesis.cancel();
     const speakText = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const utter = new SpeechSynthesisUtterance(speakText);
-    utter.lang = (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : currentLang === 'zh' ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : currentLang === 'zh' ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
     utter.rate = 0.8;
     const voices = window.speechSynthesis.getVoices();
-    const langPrefix = (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : currentLang === 'zh' ? 'zh' : 'ko';
+    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : currentLang === 'zh' ? 'zh' : 'ko';
     const match = voices.find(v => v.lang.startsWith(langPrefix));
     if (match) utter.voice = match;
     window.speechSynthesis.speak(utter);
@@ -562,7 +569,7 @@ function showModeSelection() {
 
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
-    const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
+    const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
     btnMeaning.setAttribute('data-i18n', meaningKey);
     btnMeaning.innerText = t(meaningKey);
     btnMeaning.onclick = function() { selectMode('meaning', this); };
@@ -1054,8 +1061,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
