@@ -271,6 +271,16 @@ function selectLanguage(lang) {
    skips loadSheetData()/parseX() entirely and feeds vocabularyList/
    readingList directly — everything downstream (mode selection, scoring,
    mistakes, records) only ever looks at currentLang + those two arrays. */
+function showJlptLevels() {
+    document.getElementById('examquiz-card').style.display = 'none';
+    document.getElementById('examquiz-jlpt-level-card').style.display = 'block';
+}
+
+function hideJlptLevels() {
+    document.getElementById('examquiz-jlpt-level-card').style.display = 'none';
+    document.getElementById('examquiz-card').style.display = 'block';
+}
+
 function selectExamSet(examId) {
     const data = EXAM_VOCAB[examId];
     if (!data || data.length === 0) return;
@@ -1061,8 +1071,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
