@@ -7,6 +7,7 @@
 (function () {
     const canvas = document.getElementById('particles-canvas');
     if (!canvas) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const ctx = canvas.getContext('2d');
     let W, H;
 
@@ -37,25 +38,42 @@
         };
     }
 
-    const COUNT = 110;
+    // Fewer particles on phones — same full-viewport canvas is proportionally
+    // more expensive to redraw 60x/sec on weaker mobile GPUs.
+    const COUNT = window.innerWidth <= 768 ? 45 : 110;
     const particles = Array.from({ length: COUNT }, makeParticle);
 
-    function draw() {
-        ctx.clearRect(0, 0, W, H);
-        for (const p of particles) {
-            p.x += p.vx;
-            p.y += p.vy;
-            p.a += p.da;
-            if (p.a <= 0.1 || p.a >= 0.7) p.da *= -1;
-            if (p.x < 0) p.x = W;
-            if (p.x > W) p.x = 0;
-            if (p.y < 0) p.y = H;
-            if (p.y > H) p.y = 0;
+    // The canvas redraws continuously behind several backdrop-filter glass
+    // cards, so every visible card recomputes its blur every frame just from
+    // this animating — pausing the redraw while the user is actively
+    // scrolling removes that cost exactly when it competes with scroll
+    // compositing, without changing how anything looks at rest.
+    let scrolling = false;
+    let scrollTimer = null;
+    window.addEventListener('scroll', () => {
+        scrolling = true;
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => { scrolling = false; }, 200);
+    }, { passive: true });
 
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-            ctx.fillStyle = p.color + p.a + ')';
-            ctx.fill();
+    function draw() {
+        if (!scrolling) {
+            ctx.clearRect(0, 0, W, H);
+            for (const p of particles) {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.a += p.da;
+                if (p.a <= 0.1 || p.a >= 0.7) p.da *= -1;
+                if (p.x < 0) p.x = W;
+                if (p.x > W) p.x = 0;
+                if (p.y < 0) p.y = H;
+                if (p.y > H) p.y = 0;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = p.color + p.a + ')';
+                ctx.fill();
+            }
         }
         requestAnimationFrame(draw);
     }

@@ -2,7 +2,7 @@ I18N.de = {
         title: "Hanabis kleine Welt", subtitle: 'Lerne weiter und gehe auf deine Träume zu!',
         nav_quiz: 'Vokabel-Quiz', nav_examquiz: 'Prüfungsvorbereitung', nav_music: 'Hanabis Spotify-Playlist', nav_about: 'Über mich',
         select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz', quiz_en: 'Englisch Quiz', quiz_zh: 'Chinesisch Quiz', quiz_jlpt_n5: 'JLPT N5', quiz_jlpt_n4: 'JLPT N4', quiz_jlpt_n3: 'JLPT N3', quiz_jlpt_n2: 'JLPT N2', quiz_jlpt_n1: 'JLPT N1',
-        examquiz_title: '✦ Prüfungsvokabeln ✦', examquiz_hint: 'Vokabellisten für Sprachzertifizierungsprüfungen. Der gesamte JLPT (N5-N1) ist bereits verfügbar, weitere Prüfungen folgen.', examquiz_jlpt: 'JLPT (Japanisch)', examquiz_jlpt_title: '✦ JLPT-Stufe wählen ✦', examquiz_jlpt_n5: 'JLPT N5 (ca. 672 Wörter)', examquiz_jlpt_n4: 'JLPT N4 (ca. 580 Wörter)', examquiz_jlpt_n3: 'JLPT N3 (ca. 1743 Wörter)', examquiz_jlpt_n2: 'JLPT N2 (ca. 1810 Wörter)', examquiz_jlpt_n1: 'JLPT N1 (ca. 3359 Wörter)',
+        examquiz_title: '✦ Prüfungsvokabeln ✦', examquiz_hint: 'Vokabellisten für Sprachzertifizierungsprüfungen. Der gesamte JLPT (N5-N1) ist bereits verfügbar, weitere Prüfungen folgen.', examquiz_jlpt: 'JLPT (Japanisch)', examquiz_jlpt_title: '✦ JLPT-Stufe wählen ✦', examquiz_jlpt_n5: 'N5', examquiz_jlpt_n4: 'N4', examquiz_jlpt_n3: 'N3', examquiz_jlpt_n2: 'N2', examquiz_jlpt_n1: 'N1',
         fc_lang_jp: '🇯🇵 Japanisch', fc_lang_kr: '🇰🇷 Koreanisch', fc_lang_fr: '🇫🇷 Französisch', fc_lang_en: '🇺🇸 Englisch', fc_lang_zh: '🇨🇳 Chinesisch',
         lc_mode_title: 'Modus wählen',
         zh_char_title: 'Schriftart wählen', zh_char_trad: 'Traditionell (繁體)', zh_char_simp: 'Vereinfacht (简体)',
