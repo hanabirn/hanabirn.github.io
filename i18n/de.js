@@ -1,7 +1,8 @@
 I18N.de = {
         title: "Hanabis kleine Welt", subtitle: 'Lerne weiter und gehe auf deine Träume zu!',
-        nav_quiz: 'Vokabel-Quiz', nav_music: 'Hanabis Spotify-Playlist', nav_about: 'Über mich',
-        select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz', quiz_en: 'Englisch Quiz', quiz_zh: 'Chinesisch Quiz',
+        nav_quiz: 'Vokabel-Quiz', nav_examquiz: 'Prüfungsvorbereitung', nav_music: 'Hanabis Spotify-Playlist', nav_about: 'Über mich',
+        select_lang: '✦ Sprache ✦', quiz_jp: 'Japanisch Quiz', quiz_kr: 'Koreanisch Quiz', quiz_fr: 'Französisch Quiz', quiz_en: 'Englisch Quiz', quiz_zh: 'Chinesisch Quiz', quiz_jlpt_n5: 'JLPT N5',
+        examquiz_title: '✦ Prüfungsvokabeln ✦', examquiz_hint: 'Vokabellisten für Sprachzertifizierungsprüfungen. Bisher nur JLPT N5, weitere Stufen und Prüfungen folgen.', examquiz_jlpt_n5: 'JLPT N5 (ca. 672 Wörter)',
         fc_lang_jp: '🇯🇵 Japanisch', fc_lang_kr: '🇰🇷 Koreanisch', fc_lang_fr: '🇫🇷 Französisch', fc_lang_en: '🇺🇸 Englisch', fc_lang_zh: '🇨🇳 Chinesisch',
         lc_mode_title: 'Modus wählen',
         zh_char_title: 'Schriftart wählen', zh_char_trad: 'Traditionell (繁體)', zh_char_simp: 'Vereinfacht (简体)',

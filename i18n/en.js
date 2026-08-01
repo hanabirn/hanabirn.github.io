@@ -1,7 +1,8 @@
 I18N.en = {
         title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
-        nav_quiz: 'Vocabulary Quiz', nav_music: "Hanabi's Spotify Playlist", nav_about: 'About Me',
-        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz',
+        nav_quiz: 'Vocabulary Quiz', nav_examquiz: 'Exam Prep', nav_music: "Hanabi's Spotify Playlist", nav_about: 'About Me',
+        select_lang: '✦ Select Language ✦', quiz_jp: 'Japanese Quiz', quiz_kr: 'Korean Quiz', quiz_fr: 'French Quiz', quiz_en: 'English Quiz', quiz_zh: 'Chinese Quiz', quiz_jlpt_n5: 'JLPT N5',
+        examquiz_title: '✦ Exam Prep Vocabulary ✦', examquiz_hint: 'Vocabulary sets for language certification exams. Starting with JLPT N5, with more levels and exams to come.', examquiz_jlpt_n5: 'JLPT N5 (~672 words)',
         fc_lang_jp: '🇯🇵 Japanese', fc_lang_kr: '🇰🇷 Korean', fc_lang_fr: '🇫🇷 French', fc_lang_en: '🇺🇸 English', fc_lang_zh: '🇨🇳 Chinese',
         lc_mode_title: 'Select Mode',
         zh_char_title: 'Choose Question Script', zh_char_trad: 'Traditional (繁體)', zh_char_simp: 'Simplified (简体)',

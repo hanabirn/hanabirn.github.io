@@ -1,7 +1,8 @@
 I18N.es = {
         title: "El Pequeño Mundo de Hanabi", subtitle: '¡Sigue aprendiendo y camina hacia tus sueños!',
-        nav_quiz: 'Quiz Vocabulario', nav_music: 'Playlist de Spotify de Hanabi', nav_about: 'Sobre mí',
-        select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés', quiz_en: 'Quiz Inglés', quiz_zh: 'Quiz Chino',
+        nav_quiz: 'Quiz Vocabulario', nav_examquiz: 'Exámenes', nav_music: 'Playlist de Spotify de Hanabi', nav_about: 'Sobre mí',
+        select_lang: '✦ Idioma ✦', quiz_jp: 'Quiz Japonés', quiz_kr: 'Quiz Coreano', quiz_fr: 'Quiz Francés', quiz_en: 'Quiz Inglés', quiz_zh: 'Quiz Chino', quiz_jlpt_n5: 'JLPT N5',
+        examquiz_title: '✦ Vocabulario para exámenes ✦', examquiz_hint: 'Listas de vocabulario para exámenes de certificación de idiomas. Por ahora solo JLPT N5, pronto se añadirán más niveles y exámenes.', examquiz_jlpt_n5: 'JLPT N5 (~672 palabras)',
         fc_lang_jp: '🇯🇵 Japonés', fc_lang_kr: '🇰🇷 Coreano', fc_lang_fr: '🇫🇷 Francés', fc_lang_en: '🇺🇸 Inglés', fc_lang_zh: '🇨🇳 Chino',
         lc_mode_title: 'Elegir modo',
         zh_char_title: 'Elegir escritura', zh_char_trad: 'Tradicional (繁體)', zh_char_simp: 'Simplificado (简体)',

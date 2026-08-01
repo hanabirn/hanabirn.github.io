@@ -9,7 +9,7 @@ function switchPage(page, el) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
 
-    const pages = ['guide', 'about', 'quiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+    const pages = ['guide', 'about', 'quiz', 'examquiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.opacity = '0';
     main.style.transition = 'opacity 0.2s ease';
@@ -28,7 +28,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {
@@ -218,10 +218,10 @@ function speakWord() {
     window.speechSynthesis.cancel();
     const speakText = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const utter = new SpeechSynthesisUtterance(speakText);
-    utter.lang = currentLang === 'jp' ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : currentLang === 'zh' ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    utter.lang = (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : currentLang === 'zh' ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
     utter.rate = 0.8;
     const voices = window.speechSynthesis.getVoices();
-    const langPrefix = currentLang === 'jp' ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : currentLang === 'zh' ? 'zh' : 'ko';
+    const langPrefix = (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : currentLang === 'zh' ? 'zh' : 'ko';
     const match = voices.find(v => v.lang.startsWith(langPrefix));
     if (match) utter.voice = match;
     window.speechSynthesis.speak(utter);
@@ -257,6 +257,23 @@ function selectLanguage(lang) {
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('sheetUrlInput').value = SHEETS[lang];
     loadSheetData(SHEETS[lang]);
+}
+
+/* Certification-exam vocab sets (e.g. JLPT N5) are hardcoded in EXAM_VOCAB
+   (js/exam-vocab.js) rather than pulled from a live Google Sheet, so this
+   skips loadSheetData()/parseX() entirely and feeds vocabularyList/
+   readingList directly — everything downstream (mode selection, scoring,
+   mistakes, records) only ever looks at currentLang + those two arrays. */
+function selectExamSet(examId) {
+    const data = EXAM_VOCAB[examId];
+    if (!data || data.length === 0) return;
+    currentLang = examId;
+    vocabularyList = data.slice();
+    readingList = data.filter(w => w.kana && w.kana.length > 0);
+    saveVocabCache(currentLang);
+    document.getElementById('lang-card').style.display = 'none';
+    switchPage('quiz', document.querySelector('.nav-btn[data-tab="quiz"]'));
+    showModeSelection();
 }
 
 function saveVocabCache(lang) {
@@ -545,7 +562,7 @@ function showModeSelection() {
 
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
-    const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : currentLang === 'jp' ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
+    const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : (currentLang === 'jp' || currentLang === 'jlpt_n5') ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
     btnMeaning.setAttribute('data-i18n', meaningKey);
     btnMeaning.innerText = t(meaningKey);
     btnMeaning.onclick = function() { selectMode('meaning', this); };
@@ -1037,8 +1054,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');

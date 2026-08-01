@@ -1,7 +1,8 @@
 I18N.ru = {
         title: 'Маленький мир Ханаби', subtitle: 'Учись и иди к своей мечте!',
-        nav_quiz: 'Тест на слова', nav_music: 'Плейлист Hanabi в Spotify', nav_about: 'Обо мне',
-        select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест', quiz_en: 'Английский тест', quiz_zh: 'Китайский тест',
+        nav_quiz: 'Тест на слова', nav_examquiz: 'Подготовка к экзаменам', nav_music: 'Плейлист Hanabi в Spotify', nav_about: 'Обо мне',
+        select_lang: '✦ Язык ✦', quiz_jp: 'Японский тест', quiz_kr: 'Корейский тест', quiz_fr: 'Французский тест', quiz_en: 'Английский тест', quiz_zh: 'Китайский тест', quiz_jlpt_n5: 'JLPT N5',
+        examquiz_title: '✦ Лексика для экзаменов ✦', examquiz_hint: 'Наборы слов для языковых сертификационных экзаменов. Пока доступен только JLPT N5, другие уровни и экзамены появятся позже.', examquiz_jlpt_n5: 'JLPT N5 (~672 слова)',
         fc_lang_jp: '🇯🇵 Японский', fc_lang_kr: '🇰🇷 Корейский', fc_lang_fr: '🇫🇷 Французский', fc_lang_en: '🇺🇸 Английский', fc_lang_zh: '🇨🇳 Китайский',
         lc_mode_title: 'Выберите режим',
         zh_char_title: 'Выберите написание', zh_char_trad: 'Традиционные (繁體)', zh_char_simp: 'Упрощённые (简体)',

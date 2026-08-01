@@ -108,6 +108,7 @@
             <button class="nav-btn active" data-tab="guide" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
             <button class="nav-btn" data-tab="about" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
+            <button class="nav-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)" data-i18n="nav_examquiz">&#x6AA2;&#x5B9A;&#x8003;&#x8A66;</button>
             <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x82B1;&#x706B;&#x7684;Spotify&#x6B4C;&#x55AE;</button>
             <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
             <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
@@ -117,6 +118,21 @@
     </header>
 
     <main>
+        <div id="page-examquiz" style="display: none;">
+            <div class="lang-card" id="examquiz-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="examquiz_title">&#x2726; &#x6AA2;&#x5B9A;&#x8003;&#x8A66;&#x55AE;&#x5B57; &#x2726;</h3>
+                <p class="examquiz-hint" data-i18n="examquiz_hint">&#x9019;&#x88E1;&#x662F;&#x5404;&#x570B;&#x8A9E;&#x6587;&#x6AA2;&#x5B9A;&#x8003;&#x8A66;&#x5C08;&#x7528;&#x7684;&#x55AE;&#x5B57;&#x5EAB;&#xFF0C;&#x76EE;&#x524D;&#x5148;&#x6709; JLPT N5&#xFF0C;&#x4E4B;&#x5F8C;&#x6703;&#x9678;&#x7E8C;&#x589E;&#x52A0;&#x5176;&#x4ED6;&#x7B49;&#x7D1A;&#x8207;&#x8003;&#x8A66;&#x3002;</p>
+                <div class="lang-buttons">
+                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n5')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本" class="lang-flag">
+                        <span data-i18n="examquiz_jlpt_n5">JLPT N5&#xFF08;&#x7D04; 672 &#x5B57;&#xFF09;</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div id="page-quiz" style="display: none;">
             <div class="lang-card" id="lang-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -755,6 +771,7 @@
     <script src="i18n/fr.js"></script>
     <script src="i18n/es.js"></script>
     <script src="i18n/de.js"></script>
+    <script src="js/exam-vocab.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/games.js"></script>
     <script src="js/particles.js"></script>
