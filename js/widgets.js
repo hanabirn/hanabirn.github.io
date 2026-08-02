@@ -216,6 +216,29 @@ function closeMobileFab() {
     if (btn) btn.classList.remove('open');
 }
 
+/* ===================== 🌐 Language Dropdown ===================== */
+function toggleLangMenu(forceOpen) {
+    const wrap = document.getElementById('lang-globe');
+    const btn = document.getElementById('lang-globe-btn');
+    if (!wrap || !btn) return;
+    const open = typeof forceOpen === 'boolean' ? forceOpen : !wrap.classList.contains('open');
+    wrap.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+    if (open) {
+        document.addEventListener('click', onLangMenuOutsideClick);
+        document.addEventListener('keydown', onLangMenuEscape);
+    } else {
+        document.removeEventListener('click', onLangMenuOutsideClick);
+        document.removeEventListener('keydown', onLangMenuEscape);
+    }
+}
+function onLangMenuOutsideClick(e) {
+    if (!e.target.closest('#lang-globe')) toggleLangMenu(false);
+}
+function onLangMenuEscape(e) {
+    if (e.key === 'Escape') toggleLangMenu(false);
+}
+
 /* ===================== 📖 Guide Pagination ===================== */
 
 let guideCurrentPage = 1;

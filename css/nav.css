@@ -24,7 +24,7 @@
     position: absolute;
     top: 50%; left: 50%;
     width: 0; height: 0;
-    background: rgba(244,114,182,0.15);
+    background: rgba(var(--accent-pink-rgb),0.15);
     border-radius: 50%;
     transition: all 0.4s;
     transform: translate(-50%, -50%);
@@ -69,7 +69,7 @@
     transform: scale(1.18) rotate(45deg);
     border-color: var(--accent-pink);
     color: var(--text-pink);
-    background: rgba(244,114,182,0.18);
+    background: rgba(var(--accent-pink-rgb),0.18);
     box-shadow: 0 0 18px rgba(244,114,182,0.4);
 }
 
@@ -126,7 +126,7 @@
 }
 .tab-settings-item:hover {
     border-color: var(--accent-pink);
-    background: rgba(244,114,182,0.08);
+    background: rgba(var(--accent-pink-rgb),0.08);
 }
 .tab-settings-item input[type="checkbox"] {
     width: 18px;

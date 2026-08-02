@@ -80,15 +80,21 @@
         <div class="header-wave"></div>
         <div class="header-sakura left">&#x273F;</div>
         <div class="header-sakura right">&#x273F;</div>
-        <div class="lang-bar">
-            <button class="lang-pill active" onclick="setSiteLang('zh')" data-lang="zh">&#x1F1E8;&#x1F1F3; &#x4E2D;&#x6587;</button>
-            <button class="lang-pill" onclick="setSiteLang('en')" data-lang="en">&#x1F1FA;&#x1F1F8; EN</button>
-            <button class="lang-pill" onclick="setSiteLang('ja')" data-lang="ja">&#x1F1EF;&#x1F1F5; &#x65E5;&#x672C;&#x8A9E;</button>
-            <button class="lang-pill" onclick="setSiteLang('ko')" data-lang="ko">&#x1F1F0;&#x1F1F7; &#xD55C;&#xAD6D;&#xC5B4;</button>
-            <button class="lang-pill" onclick="setSiteLang('ru')" data-lang="ru">&#x1F1F7;&#x1F1FA; &#x0420;&#x0443;&#x0441;&#x0441;&#x043A;&#x0438;&#x0439;</button>
-            <button class="lang-pill" onclick="setSiteLang('fr')" data-lang="fr">&#x1F1EB;&#x1F1F7; Fran&#xE7;ais</button>
-            <button class="lang-pill" onclick="setSiteLang('es')" data-lang="es">&#x1F1EA;&#x1F1F8; Espa&#xF1;ol</button>
-            <button class="lang-pill" onclick="setSiteLang('de')" data-lang="de">&#x1F1E9;&#x1F1EA; Deutsch</button>
+        <div class="title-row">
+            <h1 data-i18n="title">Hanabiの小天地</h1>
+            <div class="lang-globe" id="lang-globe">
+                <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu()" aria-haspopup="true" aria-expanded="false" aria-label="Select language" title="Select language">&#x1F310;</button>
+                <div class="lang-globe-menu" id="lang-globe-menu">
+                    <button class="lang-pill active" onclick="setSiteLang('zh'); toggleLangMenu(false)" data-lang="zh">&#x1F1E8;&#x1F1F3; &#x4E2D;&#x6587;</button>
+                    <button class="lang-pill" onclick="setSiteLang('en'); toggleLangMenu(false)" data-lang="en">&#x1F1FA;&#x1F1F8; EN</button>
+                    <button class="lang-pill" onclick="setSiteLang('ja'); toggleLangMenu(false)" data-lang="ja">&#x1F1EF;&#x1F1F5; &#x65E5;&#x672C;&#x8A9E;</button>
+                    <button class="lang-pill" onclick="setSiteLang('ko'); toggleLangMenu(false)" data-lang="ko">&#x1F1F0;&#x1F1F7; &#xD55C;&#xAD6D;&#xC5B4;</button>
+                    <button class="lang-pill" onclick="setSiteLang('ru'); toggleLangMenu(false)" data-lang="ru">&#x1F1F7;&#x1F1FA; &#x0420;&#x0443;&#x0441;&#x0441;&#x043A;&#x0438;&#x0439;</button>
+                    <button class="lang-pill" onclick="setSiteLang('fr'); toggleLangMenu(false)" data-lang="fr">&#x1F1EB;&#x1F1F7; Fran&#xE7;ais</button>
+                    <button class="lang-pill" onclick="setSiteLang('es'); toggleLangMenu(false)" data-lang="es">&#x1F1EA;&#x1F1F8; Espa&#xF1;ol</button>
+                    <button class="lang-pill" onclick="setSiteLang('de'); toggleLangMenu(false)" data-lang="de">&#x1F1E9;&#x1F1EA; Deutsch</button>
+                </div>
+            </div>
             <div class="bgm-player" id="bgm-player">
                 <div class="bgm-hint" id="bgm-hint" style="display:none" data-i18n="bgm_hint">點擊播放背景音樂</div>
                 <button class="bgm-disc" id="bgm-disc" onclick="toggleBgm()" title="背景音樂" aria-label="背景音樂"><span class="bgm-icon" id="bgm-icon-wave" style="display:none"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.114 5.636a9 9 0 0 1 0 12.728M16.463 8.288a5.25 5.25 0 0 1 0 7.424M6.75 8.25l4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"/></svg></span><span class="bgm-icon" id="bgm-icon-mute"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.25 9.75 19.5 12m0 0 2.25 2.25M19.5 12l2.25-2.25M19.5 12l-2.25 2.25m-10.5-6 4.72-4.72a.75.75 0 0 1 1.28.53v15.88a.75.75 0 0 1-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.009 9.009 0 0 1 2.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75Z"/></svg></span></button>
@@ -102,7 +108,6 @@
                 </div>
             </div>
         </div>
-        <h1 data-i18n="title">Hanabiの小天地</h1>
         <p class="subtitle" data-i18n="subtitle">&#x6301;&#x7E8C;&#x5B78;&#x7FD2;&#x671D;&#x8457;&#x81EA;&#x5DF1;&#x7684;&#x5922;&#x60F3;&#x524D;&#x9032;&#x5427; !</p>
         <nav class="main-nav">
             <button class="nav-btn active" data-tab="guide" onclick="switchPage('guide', this)" data-i18n="nav_guide">&#x6559;&#x5B78;&#x624B;&#x518A;</button>
@@ -822,6 +827,7 @@
     <script src="i18n/fr.js"></script>
     <script src="i18n/es.js"></script>
     <script src="i18n/de.js"></script>
+    <script src="js/header-anim.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/games.js"></script>
     <script src="js/particles.js"></script>

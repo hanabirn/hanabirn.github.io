@@ -1,7 +1,7 @@
 /* ===== Header ===== */
 header {
     position: relative;
-    z-index: 10;
+    z-index: 20;
     background: var(--header-bg);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--header-border);
@@ -33,22 +33,70 @@ header {
     50% { transform: translateY(-8px) rotate(10deg); }
 }
 
-@keyframes shimmer {
-    0% { background-position: 0% center; }
-    100% { background-position: 200% center; }
+.title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 0 0 6px;
 }
 
 header h1 {
-    margin: 0 0 6px;
-    font-size: 2.1rem;
+    margin: 0;
+    font-size: 2.4rem;
     font-family: 'Mochiy Pop One', 'Kosugi Maru', 'ZCOOL KuaiLe', cursive;
-    background: linear-gradient(90deg, #f472b6, #e879f9, #a78bfa, #60a5fa, #f472b6);
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    animation: shimmer 4s linear infinite, title-glow 4s ease-in-out infinite;
+    animation: title-glow 4s ease-in-out infinite;
     text-shadow: none;
+}
+
+.lang-globe {
+    position: relative;
+}
+.lang-globe-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--lang-pill-bg);
+    border: 1px solid var(--lang-pill-border);
+    color: var(--lang-pill-text);
+    font-size: 1.1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(var(--glass-blur));
+    transition: border-color 0.25s, background 0.25s, box-shadow 0.25s, transform 0.2s;
+}
+.lang-globe-btn:hover,
+.lang-globe.open .lang-globe-btn {
+    background: rgba(var(--accent-pink-rgb),0.14);
+    border-color: var(--accent-pink);
+    box-shadow: 0 0 10px rgba(var(--accent-pink-rgb),0.30);
+}
+.lang-globe-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    min-width: 160px;
+    padding: 8px;
+    border-radius: 14px;
+    background: var(--bg-widget-panel);
+    border: 1px solid var(--border-card);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+    z-index: 210;
+}
+.lang-globe.open .lang-globe-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 @keyframes title-glow {
@@ -56,13 +104,35 @@ header h1 {
     50% { filter: drop-shadow(0 0 26px rgba(244,114,182,0.8)) drop-shadow(0 0 46px rgba(192,132,252,0.35)); }
 }
 
-.lang-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 10px;
+/* Per-character bounce-in (js/header-anim.js splits the title into
+   .char spans on load and on every language switch). */
+header h1 .char {
+    display: inline-block;
+    background: linear-gradient(90deg, #f472b6, #e879f9, #a78bfa, #60a5fa, #f472b6);
+    background-size: 500% 100%;
+    background-position: calc(var(--char-index) * 8%) center;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    animation: title-char-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: calc(var(--char-index) * 0.045s);
 }
+
+@keyframes title-char-in {
+    0%   { opacity: 0; transform: translateY(-14px) scale(0.5) rotate(-8deg); }
+    60%  { opacity: 1; transform: translateY(3px) scale(1.05) rotate(2deg); }
+    100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    header h1 .char {
+        animation: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
 .lang-pill {
     background: var(--lang-pill-bg);
     border: 1px solid var(--lang-pill-border);
@@ -76,14 +146,14 @@ header h1 {
     white-space: nowrap;
 }
 .lang-pill:hover {
-    background: rgba(244,114,182,0.14);
+    background: rgba(var(--accent-pink-rgb),0.14);
     border-color: var(--accent-pink);
     color: var(--text-pink);
     box-shadow: 0 0 10px rgba(244,114,182,0.30);
     transform: translateY(-1px);
 }
 .lang-pill.active {
-    background: linear-gradient(135deg, rgba(244,114,182,0.4), rgba(168,85,247,0.4));
+    background: linear-gradient(135deg, rgba(var(--accent-pink-rgb),0.4), rgba(var(--accent-purple-rgb),0.4));
     border-color: rgba(244,114,182,0.6);
     color: var(--text);
     box-shadow: 0 0 14px rgba(244,114,182,0.40);
