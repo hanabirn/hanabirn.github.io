@@ -176,6 +176,7 @@ const TOPIK_SHEETS = {
 let currentLang = '';
 let vocabularyList = [];
 let readingList = [];
+let meaningList = [];
 let currentWord = null;
 let currentMode = 'meaning';
 let score = 0;
@@ -186,8 +187,10 @@ let quizHistory = [];
 let needAnswerLang = false;
 let shuffledVocab = [];
 let shuffledReading = [];
+let shuffledMeaning = [];
 let vocabIdx = 0;
 let readingIdx = 0;
+let meaningIdx = 0;
 let zhCharType = '';   // 'trad' | 'simp'
 let zhTestType = '';   // 'bopomofo' | 'roman' | 'meaning'
 
@@ -337,6 +340,7 @@ function selectExamSet(examId) {
     currentLang = examId;
     vocabularyList = [];
     readingList = [];
+    meaningList = [];
     document.getElementById('lang-card').style.display = 'none';
     switchPage('quiz', document.querySelector('.nav-btn[data-tab="quiz"]'));
 
@@ -427,6 +431,7 @@ function loadSheetData(url) {
             const rows = results.data;
             vocabularyList = [];
             readingList = [];
+            meaningList = [];
 
             if (currentLang === 'jp') {
                 parseJapanese(rows);
@@ -565,15 +570,23 @@ function addZhWord(trad, simp, bopomofo, roman, meaning) {
     vocabularyList.push({ word: tr, trad: tr, simp: si, bopomofo: bo, roman: ro, meaning: me, kana: '', english: '' });
 }
 
+/* Japanese/JLPT vocab splits into two disjoint quiz pools so no word can
+   leak its own answer: kanji words (hasKanji) only ever get asked as
+   "reading" questions (readingList), kana-only words only ever get asked
+   as "meaning" questions (meaningList). For non-Japanese languages
+   hasKanji() is always false, so meaningList just mirrors vocabularyList. */
 function addWord(word, kana, meaning, englishMeaning) {
     const w = word.trim();
     const k = kana ? kana.trim() : '';
     const m = meaning.trim();
     const e = englishMeaning ? englishMeaning.trim() : '';
     if (!isValidWord(w, m)) return;
-    vocabularyList.push({ word: w, kana: k, meaning: m, english: e });
-    if (k.length > 0) {
-        readingList.push({ word: w, kana: k, meaning: m, english: e });
+    const entry = { word: w, kana: k, meaning: m, english: e };
+    vocabularyList.push(entry);
+    if (hasKanji(w)) {
+        if (k.length > 0) readingList.push(entry);
+    } else {
+        meaningList.push(entry);
     }
 }
 
@@ -671,7 +684,9 @@ function showModeSelection() {
     btnMeaning.setAttribute('data-i18n', meaningKey);
     btnMeaning.innerText = t(meaningKey);
     btnMeaning.onclick = function() { selectMode('meaning', this); };
-    container.appendChild(btnMeaning);
+    if (!isJapaneseQuizLang(currentLang) || meaningList.length >= 4) {
+        container.appendChild(btnMeaning);
+    }
 
     if (readingList.length >= 4 && currentLang !== 'fr' && currentLang !== 'en') {
         const btnReading = document.createElement('button');
@@ -871,8 +886,10 @@ function startQuiz(mode) {
     quizHistory = [];
     shuffledVocab = shuffleArray(vocabularyList);
     shuffledReading = shuffleArray(readingList);
+    shuffledMeaning = shuffleArray(meaningList);
     vocabIdx = 0;
     readingIdx = 0;
+    meaningIdx = 0;
     currentListeningMode = false;
 
     document.getElementById('mode-card').style.display = 'none';
@@ -926,7 +943,7 @@ function nextQuestion() {
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'review');
 
-        if (autoSpeak && currentWord.word) setTimeout(() => speakWord(), 300);
+        if (autoSpeak && currentWord.word && !isJapaneseQuizLang(currentLang)) setTimeout(() => speakWord(), 300);
         return;
     }
 
@@ -958,8 +975,17 @@ function nextQuestion() {
         return;
     }
 
-    const questionType = pickQuestionType();
+    let questionType = pickQuestionType();
     const useEn = quizAnswerLang === 'en';
+    /* For Japanese/JLPT, kanji words only ever get asked via "reading" and
+       kana-only words only ever get asked via "meaning" (see addWord()) —
+       so the meaning-question pool must be meaningList, not the full
+       vocabularyList, otherwise a kanji word's meaning question would show
+       its own pronunciation-revealing kanji with no reading test at all. */
+    const jpSplit = isJapaneseQuizLang(currentLang);
+    if (jpSplit && questionType === 'meaning' && shuffledMeaning.length < 4 && shuffledReading.length >= 4) {
+        questionType = 'reading';
+    }
 
     if (questionType === 'reading' && shuffledReading.length >= 4) {
         if (readingIdx >= shuffledReading.length) shuffledReading = shuffleArray(readingList);
@@ -977,16 +1003,25 @@ function nextQuestion() {
         }
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'reading');
+    } else if (jpSplit && shuffledMeaning.length < 4) {
+        renderOptions([], 'meaning');
+        return;
     } else {
-        if (vocabIdx >= shuffledVocab.length) shuffledVocab = shuffleArray(vocabularyList);
-        currentWord = shuffledVocab[vocabIdx++];
+        const pool = jpSplit ? shuffledMeaning : shuffledVocab;
+        if (jpSplit) {
+            if (meaningIdx >= shuffledMeaning.length) shuffledMeaning = shuffleArray(meaningList);
+            currentWord = shuffledMeaning[meaningIdx++];
+        } else {
+            if (vocabIdx >= shuffledVocab.length) shuffledVocab = shuffleArray(vocabularyList);
+            currentWord = shuffledVocab[vocabIdx++];
+        }
 
         document.getElementById('word-question').innerText = currentWord.word;
         document.getElementById('word-hint').innerText = currentWord.kana ? `讀法：${currentWord.kana}` : '';
 
         const answerPool = useEn
-            ? shuffledVocab.filter(w => w.english && w.english.length > 0)
-            : shuffledVocab;
+            ? pool.filter(w => w.english && w.english.length > 0)
+            : pool;
         if (answerPool.length < 4) { renderOptions([], 'meaning'); return; }
 
         const correctAnswer = useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning;
@@ -1000,7 +1035,11 @@ function nextQuestion() {
         renderOptions(options, 'meaning');
     }
 
-    if (autoSpeak && currentWord && currentWord.word) {
+    /* Japanese/JLPT: never auto-speak when a question first appears (that
+       would hand over the reading to anyone who recognizes 50-on sounds) —
+       pronunciation only plays automatically after a wrong answer, in
+       selectOption(). Other languages keep the original entry auto-speak. */
+    if (autoSpeak && currentWord && currentWord.word && !jpSplit) {
         setTimeout(() => speakWord(), 300);
     }
 }
@@ -1065,6 +1104,12 @@ function selectOption(selectedBtn, selectedText, type) {
         feedback.innerText = t('wrong') + correctAnswer;
         feedback.className = 'feedback wrong';
         playSound(false);
+        /* Japanese/JLPT only auto-speaks after a wrong answer (never on
+           question entry, see nextQuestion()) so the pronunciation serves
+           as a learning aid instead of a giveaway. */
+        if (autoSpeak && isJapaneseQuizLang(currentLang) && currentWord && currentWord.word) {
+            setTimeout(() => speakWord(), 300);
+        }
     }
 
     document.getElementById('score-count').innerText = `${t('quiz_score', {n: score})}`;
@@ -1134,6 +1179,7 @@ function backToLanguage() {
     currentLang = '';
     vocabularyList = [];
     readingList = [];
+    meaningList = [];
     reviewMode = false;
     currentListeningMode = false;
     stopTimer();
@@ -1947,6 +1993,7 @@ function loadFlashcardVocab(lang, modeId) {
     const sheetUrl = SHEETS[lang];
     vocabularyList = [];
     readingList = [];
+    meaningList = [];
     fetch(sheetUrl)
         .then(r => r.text())
         .then(csv => {
@@ -2178,6 +2225,7 @@ function reviewUnknownWords() {
     const sheetUrl = SHEETS[lang];
     vocabularyList = [];
     readingList = [];
+    meaningList = [];
     fetch(sheetUrl)
         .then(r => r.text())
         .then(csv => {
@@ -2445,6 +2493,14 @@ function isKatakana(s) {
     for (let i = 0; i < s.length; i++) {
         const c = s.charCodeAt(i);
         if (c >= 0x30A0 && c <= 0x30FF) return true;
+    }
+    return false;
+}
+
+function hasKanji(s) {
+    for (let i = 0; i < s.length; i++) {
+        const c = s.charCodeAt(i);
+        if (c >= 0x4E00 && c <= 0x9FAF) return true;
     }
     return false;
 }
