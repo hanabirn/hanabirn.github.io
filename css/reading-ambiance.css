@@ -1,0 +1,106 @@
+/* ===== Reading Ambiance ("3D 溫馨讀書氛圍") =====
+   Adds a warm depth-of-field reading-nook layer on top of the existing
+   dark-violet night ambient (theme.css) without replacing it: a
+   desk-lamp glow pool, heavily-blurred abstract "book stack" bokeh
+   shapes for background depth, a soft window-light beam, and drifting
+   firefly motes for the foreground. Pure CSS + a tiny JS file for
+   cursor parallax (js/reading-ambiance.js) — no WebGL, kept
+   deliberately subtle so it never competes with quiz text. */
+
+.reading-glow-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translate3d(calc(var(--parallax-x, 0) * 8px), calc(var(--parallax-y, 0) * 6px), 0);
+    transition: transform 0.6s ease-out;
+}
+
+/* Far layer: abstract stacked-book silhouettes — plain gradient blocks
+   pushed heavily out of focus so they read as warm depth, not shapes;
+   no image asset needed. */
+.book-stack {
+    position: absolute;
+    bottom: -50px;
+    filter: blur(28px);
+    opacity: 0.16;
+    border-radius: 20px;
+}
+.book-stack.left {
+    left: -50px;
+    width: 260px;
+    height: 150px;
+    background: linear-gradient(100deg, #b9895a 0%, #7c5432 45%, #d9a86c 100%);
+}
+.book-stack.right {
+    right: -70px;
+    width: 320px;
+    height: 180px;
+    background: linear-gradient(100deg, #8a5a34 0%, #c98f52 55%, #6b4423 100%);
+}
+
+/* Mid layer: warm desk-lamp light pool + a soft diagonal window beam */
+.lamp-glow {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 70vw;
+    height: 70vh;
+    background: radial-gradient(ellipse 60% 55% at 85% 95%, rgba(251,191,110,0.16) 0%, rgba(251,191,110,0.05) 45%, transparent 70%);
+}
+.window-beam {
+    position: absolute;
+    top: -10%;
+    left: 8%;
+    width: 42%;
+    height: 130%;
+    background: linear-gradient(200deg, rgba(255,236,196,0.07) 0%, transparent 55%);
+    filter: blur(8px);
+    transform: rotate(8deg);
+}
+
+[data-theme="light"] .book-stack { opacity: 0.10; }
+[data-theme="light"] .lamp-glow { opacity: 0.55; }
+[data-theme="light"] .window-beam { opacity: 0.45; }
+
+/* Near layer: fireflies / floating light motes — a night-reading motif,
+   so (like css/stars.css's .stars-bg) it's hidden in light theme. */
+.firefly-container {
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    transform: translate3d(calc(var(--parallax-x, 0) * -14px), calc(var(--parallax-y, 0) * -10px), 0);
+    transition: transform 0.6s ease-out;
+}
+[data-theme="light"] .firefly-container { display: none; }
+
+.firefly {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size, 5px);
+    height: var(--size, 5px);
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(255,224,153,0.95) 0%, rgba(251,191,110,0.5) 45%, transparent 75%);
+    box-shadow: 0 0 8px 2px rgba(251,191,110,0.55);
+    filter: blur(0.4px);
+    opacity: 0;
+    animation: fireflyFloat var(--dur, 9s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+}
+
+@keyframes fireflyFloat {
+    0%   { transform: translate(0, 0) scale(0.8); opacity: 0; }
+    15%  { opacity: 0.9; }
+    50%  { transform: translate(var(--dx, 20px), -60px) scale(1.15); opacity: 0.7; }
+    85%  { opacity: 0.8; }
+    100% { transform: translate(calc(var(--dx, 20px) * -1), -120px) scale(0.8); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reading-glow-layer, .firefly-container { transform: none !important; transition: none !important; }
+    .firefly { animation: none; opacity: 0.35; }
+}
