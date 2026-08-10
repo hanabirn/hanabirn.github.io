@@ -637,8 +637,13 @@ const MATCH3_COLORS = {
 };
 const MATCH3_MOVES = 20;
 const MATCH3_COMBO_TEXT = { 2: 'game_combo_2', 3: 'game_combo_3', 4: 'game_combo_4' };
+/* Matching 4 in a line makes a striped candy (clears its row/column when
+   later matched); matching 5+ makes a rainbow candy — swap it with any
+   candy to clear every candy of that color from the board. */
+const MATCH3_BOMB_SYMBOL = '🌈';
 
 let match3Board = [];
+let match3Special = [];
 let match3Score = 0;
 let match3MovesLeft = MATCH3_MOVES;
 let match3Running = false;
@@ -698,8 +703,98 @@ function match3GenerateBoard() {
     return board;
 }
 
+function match3EmptySpecialGrid() {
+    return Array.from({ length: MATCH3_SIZE }, () => Array(MATCH3_SIZE).fill(null));
+}
+
+/* Same scan as match3FindMatches, but keeps each run's cells/orientation
+   intact so callers can tell a plain 3-match from a special-worthy 4/5-run. */
+function match3FindRuns(board) {
+    const size = MATCH3_SIZE;
+    const runs = [];
+    for (let y = 0; y < size; y++) {
+        let runStart = 0;
+        for (let x = 1; x <= size; x++) {
+            if (x < size && board[y][x] === board[y][runStart]) continue;
+            if (x - runStart >= 3 && board[y][runStart]) {
+                const cells = [];
+                for (let k = runStart; k < x; k++) cells.push([y, k]);
+                runs.push({ cells, symbol: board[y][runStart], orientation: 'h' });
+            }
+            runStart = x;
+        }
+    }
+    for (let x = 0; x < size; x++) {
+        let runStart = 0;
+        for (let y = 1; y <= size; y++) {
+            if (y < size && board[y][x] === board[runStart][x]) continue;
+            if (y - runStart >= 3 && board[runStart][x]) {
+                const cells = [];
+                for (let k = runStart; k < y; k++) cells.push([k, x]);
+                runs.push({ cells, symbol: board[runStart][x], orientation: 'v' });
+            }
+            runStart = y;
+        }
+    }
+    return runs;
+}
+
+/* Decides whether any run in this match is long enough to leave behind a
+   special candy, and where — preferring a cell the player actually swapped
+   into (so the special appears where they'd expect it), falling back to
+   the run's middle cell for cascade-formed matches. */
+function match3PlanSpecial(runs, preferCells) {
+    preferCells = preferCells || [];
+    let specialRun = preferCells.length
+        ? runs.find(r => r.cells.length >= 4 && r.cells.some(([y, x]) => preferCells.some(([py, px]) => py === y && px === x)))
+        : null;
+    if (!specialRun) specialRun = runs.find(r => r.cells.length >= 4);
+    if (!specialRun) return null;
+
+    let keepCell = preferCells.length
+        ? specialRun.cells.find(([y, x]) => preferCells.some(([py, px]) => py === y && px === x))
+        : null;
+    if (!keepCell) keepCell = specialRun.cells[Math.floor(specialRun.cells.length / 2)];
+
+    const type = specialRun.cells.length >= 5 ? 'bomb' : specialRun.orientation;
+    return { cell: keepCell, type };
+}
+
+/* A cleared cell that happens to hold a placed special chains into clearing
+   its whole row/column too, and so on for any further specials it catches. */
+function match3ExpandSpecials(matches) {
+    const expanded = new Set(matches);
+    let changed = true;
+    let guard = 0;
+    while (changed && guard < 20) {
+        changed = false;
+        guard++;
+        for (const key of Array.from(expanded)) {
+            const [y, x] = key.split(',').map(Number);
+            const special = match3Special[y][x];
+            if (special === 'h') {
+                for (let k = 0; k < MATCH3_SIZE; k++) {
+                    const nk = y + ',' + k;
+                    if (match3Board[y][k] !== null && !expanded.has(nk)) { expanded.add(nk); changed = true; }
+                }
+            } else if (special === 'v') {
+                for (let k = 0; k < MATCH3_SIZE; k++) {
+                    const nk = k + ',' + x;
+                    if (match3Board[k][x] !== null && !expanded.has(nk)) { expanded.add(nk); changed = true; }
+                }
+            }
+        }
+    }
+    return expanded;
+}
+
 function match3HasValidMove(board) {
     const size = MATCH3_SIZE;
+    for (let y = 0; y < size; y++) {
+        for (let x = 0; x < size; x++) {
+            if (match3Special[y][x] === 'bomb') return true;
+        }
+    }
     for (let y = 0; y < size; y++) {
         for (let x = 0; x < size; x++) {
             if (x < size - 1) {
@@ -719,7 +814,7 @@ function match3HasValidMove(board) {
     return false;
 }
 
-function match3ApplyGravity(board) {
+function match3ApplyGravity(board, special) {
     const size = MATCH3_SIZE;
     const newTiles = new Set();
     for (let x = 0; x < size; x++) {
@@ -727,12 +822,14 @@ function match3ApplyGravity(board) {
         for (let y = size - 1; y >= 0; y--) {
             if (board[y][x] !== null) {
                 board[write][x] = board[y][x];
-                if (write !== y) board[y][x] = null;
+                special[write][x] = special[y][x];
+                if (write !== y) { board[y][x] = null; special[y][x] = null; }
                 write--;
             }
         }
         for (let y = write; y >= 0; y--) {
             board[y][x] = match3RandomSymbol();
+            special[y][x] = null;
             newTiles.add(y + ',' + x);
         }
     }
@@ -751,10 +848,16 @@ function match3Render(newTiles) {
             cell.dataset.y = y;
             const symbol = match3Board[y][x];
             if (symbol) {
+                const special = match3Special[y][x];
                 const colors = MATCH3_COLORS[symbol] || ['#e5e7eb', '#9ca3af'];
                 const candy = document.createElement('span');
-                candy.className = 'match3-candy' + (newTiles && newTiles.has(y + ',' + x) ? ' drop-in' : '');
-                candy.style.background = `radial-gradient(circle at 32% 28%, ${colors[0]}, ${colors[1]})`;
+                let cls = 'match3-candy' + (newTiles && newTiles.has(y + ',' + x) ? ' drop-in' : '');
+                if (special === 'h' || special === 'v') cls += ' special-' + special;
+                else if (special === 'bomb') cls += ' special-bomb';
+                candy.className = cls;
+                candy.style.background = special === 'bomb'
+                    ? 'radial-gradient(circle at 32% 28%, #fff, #f472b6 35%, #a855f7 65%, #3b82f6)'
+                    : `radial-gradient(circle at 32% 28%, ${colors[0]}, ${colors[1]})`;
                 candy.textContent = symbol;
                 cell.appendChild(candy);
             }
@@ -795,6 +898,7 @@ function match3RenderClearing(matchSet) {
 function startMatch3() {
     document.getElementById('match3-overlay').style.display = 'none';
     match3Board = match3GenerateBoard();
+    match3Special = match3EmptySpecialGrid();
     match3Score = 0;
     match3MovesLeft = MATCH3_MOVES;
     match3Selected = null;
@@ -833,10 +937,29 @@ function match3ClickCell(x, y) {
 
 async function attemptMatch3Swap(x1, y1, x2, y2) {
     match3Busy = true;
+
+    const bombFirst = match3Special[y1][x1] === 'bomb';
+    const bombSecond = match3Special[y2][x2] === 'bomb';
+    if (bombFirst || bombSecond) {
+        const [by, bx] = bombFirst ? [y1, x1] : [y2, x2];
+        const [oy, ox] = bombFirst ? [y2, x2] : [y1, x1];
+        await match3DetonateBomb(by, bx, oy, ox);
+        match3Busy = false;
+        if (!match3HasValidMove(match3Board)) {
+            match3Board = match3GenerateBoard();
+            match3Special = match3EmptySpecialGrid();
+            match3Render();
+        }
+        if (match3MovesLeft <= 0) endMatch3();
+        return;
+    }
+
     match3SwapCells(match3Board, x1, y1, x2, y2);
-    const matches = match3FindMatches(match3Board);
-    if (matches.size === 0) {
+    match3SwapCells(match3Special, x1, y1, x2, y2);
+    const runs = match3FindRuns(match3Board);
+    if (runs.length === 0) {
         match3SwapCells(match3Board, x1, y1, x2, y2);
+        match3SwapCells(match3Special, x1, y1, x2, y2);
         match3Selected = null;
         match3Render();
         playSound(false);
@@ -846,40 +969,93 @@ async function attemptMatch3Swap(x1, y1, x2, y2) {
 
     playSound(true);
     match3Selected = null;
-    match3Render();
     match3MovesLeft--;
     document.getElementById('match3-moves').textContent = match3MovesLeft;
 
+    await match3ClearRuns(runs, [[y1, x1], [y2, x2]]);
     await match3ResolveCascade();
     match3Busy = false;
 
     if (!match3HasValidMove(match3Board)) {
         match3Board = match3GenerateBoard();
+        match3Special = match3EmptySpecialGrid();
         match3Render();
     }
     if (match3MovesLeft <= 0) endMatch3();
 }
 
+/* Detonating a rainbow candy: whatever it's swapped with decides the target
+   color, then every candy of that color (plus the rainbow candy itself)
+   clears, chaining into any specials caught in that clear. */
+async function match3DetonateBomb(by, bx, oy, ox) {
+    const targetSymbol = match3Board[oy][ox];
+    match3Selected = null;
+    playSound(true);
+    match3MovesLeft--;
+    document.getElementById('match3-moves').textContent = match3MovesLeft;
+
+    let clearSet = new Set([by + ',' + bx]);
+    for (let y = 0; y < MATCH3_SIZE; y++) {
+        for (let x = 0; x < MATCH3_SIZE; x++) {
+            if (match3Board[y][x] === targetSymbol) clearSet.add(y + ',' + x);
+        }
+    }
+    clearSet = match3ExpandSpecials(clearSet);
+
+    match3Score += clearSet.size * 15;
+    document.getElementById('match3-score').textContent = match3Score;
+    match3Render();
+    match3RenderClearing(clearSet);
+    await new Promise(r => setTimeout(r, 220));
+
+    clearSet.forEach(key => {
+        const [y, x] = key.split(',').map(Number);
+        match3Board[y][x] = null;
+        match3Special[y][x] = null;
+    });
+    const newTiles = match3ApplyGravity(match3Board, match3Special);
+    match3Render(newTiles);
+    await new Promise(r => setTimeout(r, 150));
+}
+
+/* Shared by the swap-triggered match and every cascade step: clears the
+   matched runs, planting a new special candy behind if a run was 4+ long. */
+async function match3ClearRuns(runs, preferCells, cascadeLevel) {
+    let matches = new Set(runs.flatMap(r => r.cells.map(([y, x]) => y + ',' + x)));
+    const special = match3PlanSpecial(runs, preferCells);
+    matches = match3ExpandSpecials(matches);
+    if (special) matches.delete(special.cell[0] + ',' + special.cell[1]);
+
+    match3Score += matches.size * 10 * (cascadeLevel || 1);
+    document.getElementById('match3-score').textContent = match3Score;
+    if (cascadeLevel >= 2) match3ShowCombo(cascadeLevel);
+
+    match3Render();
+    match3RenderClearing(matches);
+    await new Promise(r => setTimeout(r, 200));
+
+    matches.forEach(key => {
+        const [y, x] = key.split(',').map(Number);
+        match3Board[y][x] = null;
+        match3Special[y][x] = null;
+    });
+    if (special) {
+        const [ky, kx] = special.cell;
+        match3Special[ky][kx] = special.type;
+        if (special.type === 'bomb') match3Board[ky][kx] = MATCH3_BOMB_SYMBOL;
+    }
+    const newTiles = match3ApplyGravity(match3Board, match3Special);
+    match3Render(newTiles);
+    await new Promise(r => setTimeout(r, 150));
+}
+
 async function match3ResolveCascade() {
-    let cascadeLevel = 0;
+    let cascadeLevel = 1;
     while (true) {
-        const matches = match3FindMatches(match3Board);
-        if (matches.size === 0) break;
+        const runs = match3FindRuns(match3Board);
+        if (runs.length === 0) break;
         cascadeLevel++;
-        match3Score += matches.size * 10 * cascadeLevel;
-        document.getElementById('match3-score').textContent = match3Score;
-        if (cascadeLevel >= 2) match3ShowCombo(cascadeLevel);
-
-        match3RenderClearing(matches);
-        await new Promise(r => setTimeout(r, 200));
-
-        matches.forEach(key => {
-            const [y, x] = key.split(',').map(Number);
-            match3Board[y][x] = null;
-        });
-        const newTiles = match3ApplyGravity(match3Board);
-        match3Render(newTiles);
-        await new Promise(r => setTimeout(r, 150));
+        await match3ClearRuns(runs, [], cascadeLevel);
     }
 }
 

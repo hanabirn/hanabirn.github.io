@@ -69,16 +69,22 @@
 .game-option:hover .game-option-icon-badge {
     transform: scale(1.10) rotate(-4deg);
 }
-.game-option.snake .game-option-icon-badge {
+/* Photo covers read better as a rounded square than a tight circle crop. */
+.game-option-icon-badge.cover {
+    border-radius: 12px;
+    background-size: cover;
+    background-position: center;
+}
+.game-option.snake .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #4ade80, #16a34a);
 }
-.game-option.whack .game-option-icon-badge {
+.game-option.whack .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #fb923c, #ea580c);
 }
-.game-option.g2048 .game-option-icon-badge {
+.game-option.g2048 .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #a855f7, #7e22ce);
 }
-.game-option.match3 .game-option-icon-badge {
+.game-option.match3 .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #f472b6, #db2777);
 }
 
@@ -87,7 +93,7 @@
 .game-option.wordle {
     grid-column: 1 / -1;
 }
-.game-option.wordle .game-option-icon-badge {
+.game-option.wordle .game-option-icon-badge:not(.cover) {
     border-radius: 8px;
     font-weight: bold;
     font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
@@ -433,6 +439,7 @@
     transform: scale(0.88);
 }
 .match3-candy {
+    position: relative;
     width: 84%;
     height: 84%;
     border-radius: 50%;
@@ -442,6 +449,36 @@
     font-size: 1.1rem;
     box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 2px 3px rgba(0,0,0,0.25);
     transition: transform 0.15s;
+}
+
+/* Special candies (from a 4+/5+ match) glow so they read as upgraded at a
+   glance; the thin bar on striped candies hints which line they'll clear. */
+.match3-candy.special-h::after,
+.match3-candy.special-v::after {
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,0.85);
+    border-radius: 2px;
+    box-shadow: 0 0 4px rgba(255,255,255,0.9);
+}
+.match3-candy.special-h::after { left: 10%; right: 10%; top: 50%; height: 3px; transform: translateY(-50%); }
+.match3-candy.special-v::after { top: 10%; bottom: 10%; left: 50%; width: 3px; transform: translateX(-50%); }
+.match3-candy.special-h,
+.match3-candy.special-v,
+.match3-candy.special-bomb {
+    animation: match3SpecialPulse 1.3s ease-in-out infinite;
+}
+@keyframes match3SpecialPulse {
+    0%, 100% { box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 0 4px 1px rgba(255,255,255,0.4); }
+    50% { box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 0 12px 4px rgba(255,255,255,0.85); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .match3-candy.special-h,
+    .match3-candy.special-v,
+    .match3-candy.special-bomb {
+        animation: none;
+        box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 0 8px 2px rgba(255,255,255,0.6);
+    }
 }
 .match3-candy.drop-in {
     animation: match3drop 0.28s ease-out;
