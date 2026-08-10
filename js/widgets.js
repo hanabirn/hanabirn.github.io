@@ -331,6 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
     updateClock();
     setInterval(updateClock, 1000);
     initWeather();
+    initVisitorCounter();
     initGuidePagination();
 });
 
