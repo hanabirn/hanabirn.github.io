@@ -473,51 +473,43 @@ function loadSheetData(url) {
 }
 
 function parseJapanese(rows) {
-    rows.forEach((row, idx) => {
+    rows.forEach((row) => {
         if (row.length < 6) return;
-        if (idx < 5) console.log(`JP row[${idx}] (len=${row.length}):`, row.slice(0, 24));
         addWord(row[2], row[3], row[4], row[5]);
         if (row.length > 8)  addWord(row[8], row[9], row[10], row[11]);
         if (row.length > 14) addWord(row[14], row[15], row[16], row[17]);
         if (row.length > 20) addWord(row[20], row[21], row[22], row[23]);
     });
-    console.log('JP parsed vocabularyList sample:', vocabularyList.slice(0, 10));
 }
 
 function parseJapanese2(rows) {
-    rows.forEach((row, idx) => {
+    rows.forEach((row) => {
         if (row.length < 5) return;
-        if (idx < 5) console.log(`JP2 row[${idx}] (len=${row.length}):`, row.slice(0, 24));
         addWord(row[2], row[3], row[4], row[5]);
         if (row.length > 9)  addWord(row[7], row[8], row[9], row[10]);
         if (row.length > 14) addWord(row[12], row[13], row[14], row[15]);
         if (row.length > 19) addWord(row[17], row[18], row[19], row[20]);
     });
-    console.log('JP2 parsed vocabularyList total:', vocabularyList.length);
 }
 
 function parseKorean(rows) {
-    rows.forEach((row, idx) => {
+    rows.forEach((row) => {
         if (row.length < 5) return;
-        if (idx < 5) console.log(`KR row[${idx}] (len=${row.length}):`, row.slice(0, 24));
         addWord(row[2], '', row[3], row[4]);
         if (row.length > 9)  addWord(row[7], '', row[8], row[9]);
         if (row.length > 14) addWord(row[12], '', row[13], row[14]);
         if (row.length > 19) addWord(row[17], '', row[18], row[19]);
     });
-    console.log('KR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
 }
 
 function parseFrench(rows) {
-    rows.forEach((row, idx) => {
+    rows.forEach((row) => {
         if (row.length < 5) return;
-        if (idx < 5) console.log(`FR row[${idx}] (len=${row.length}):`, row.slice(0, 24));
         addWord(row[2], '', row[3], row[4]);
         if (row.length > 9)  addWord(row[7], '', row[8], row[9]);
         if (row.length > 14) addWord(row[12], '', row[13], row[14]);
         if (row.length > 19) addWord(row[17], '', row[18], row[19]);
     });
-    console.log('FR parsed vocabularyList sample:', vocabularyList.slice(0, 10));
 }
 
 function parseEnglish(rows) {
@@ -545,7 +537,6 @@ function parseEnglish(rows) {
             if (w5 && m5 && !/^\d+$/.test(w5) && !w5.includes('單字')) vocabularyList.push({ word: w5, kana: '', meaning: m5, english: '' });
         }
     });
-    console.log('EN parsed vocabularyList sample:', vocabularyList.slice(0, 10));
 }
 
 function parseChinese(rows) {
@@ -555,7 +546,6 @@ function parseChinese(rows) {
             addZhWord(row[c + 1], row[c + 2], row[c + 3], row[c + 4], row[c + 5]);
         });
     });
-    console.log('ZH parsed vocabularyList sample:', vocabularyList.slice(0, 10));
 }
 
 function addZhWord(trad, simp, bopomofo, roman, meaning) {

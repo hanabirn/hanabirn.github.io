@@ -57,6 +57,7 @@ self.addEventListener('activate', e => {
 
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
+  if (!e.request.url.startsWith('http')) return; // skip chrome-extension:// etc. — Cache API only supports http(s)
   e.respondWith(
     fetch(e.request).then(r => {
       const clone = r.clone();
