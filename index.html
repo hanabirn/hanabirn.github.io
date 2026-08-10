@@ -447,23 +447,23 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="games_title">✦ 離線小遊戲區 ✦</h3>
                 <div class="games-grid">
-                    <div class="game-option" onclick="openGame('snake')">
-                        <div class="game-option-icon">&#x1F40D;</div>
+                    <div class="game-option snake" onclick="openGame('snake')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F40D;</span></div>
                         <div class="game-option-name" data-i18n="game_snake_name">&#x8CAA;&#x98DF;&#x86C7;</div>
                         <div class="game-option-desc" data-i18n="game_snake_desc">&#x5403;&#x6AFB;&#x82B1;&#x8B93;&#x86C7;&#x8B8A;&#x9577;&#xFF0C;&#x770B;&#x4F60;&#x80FD;&#x6491;&#x591A;&#x4E45;&#xFF01;</div>
                     </div>
-                    <div class="game-option" onclick="openGame('whack')">
-                        <div class="game-option-icon">&#x1F528;</div>
+                    <div class="game-option whack" onclick="openGame('whack')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F528;</span></div>
                         <div class="game-option-name" data-i18n="game_whack_name">&#x6253;&#x5730;&#x9F20;&#x5F0F;&#x55AE;&#x5B57;&#x904A;&#x6232;</div>
                         <div class="game-option-desc" data-i18n="game_whack_desc">&#x770B;&#x610F;&#x601D;&#x627E;&#x55AE;&#x5B57;&#xFF0C;&#x8003;&#x9A57;&#x4F60;&#x7684;&#x53CD;&#x61C9;&#x529B;&#xFF01;</div>
                     </div>
-                    <div class="game-option" onclick="openGame('2048')">
-                        <div class="game-option-icon">&#x1F522;</div>
+                    <div class="game-option g2048" onclick="openGame('2048')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F522;</span></div>
                         <div class="game-option-name" data-i18n="game_2048_name">2048 &#x6578;&#x5B57;&#x5408;&#x4F75;</div>
                         <div class="game-option-desc" data-i18n="game_2048_desc">&#x6ED1;&#x52D5;&#x65B9;&#x584A;&#x5408;&#x4F75;&#x76F8;&#x540C;&#x6578;&#x5B57;&#xFF0C;&#x6311;&#x6230;&#x6E4A;&#x51FA; 2048&#xFF01;</div>
                     </div>
-                    <div class="game-option" onclick="openGame('match3')">
-                        <div class="game-option-icon">&#x1F36C;</div>
+                    <div class="game-option match3" onclick="openGame('match3')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F36C;</span></div>
                         <div class="game-option-name" data-i18n="game_match3_name">&#x7cd6;&#x679c;&#x6d88;&#x6d88;&#x6a02;</div>
                         <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
                     </div>
@@ -477,7 +477,7 @@
                     <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
                     <div class="game-score-row">
                         <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="snake-score">0</span>
-                        <span class="game-highscore">&#x1F3C6; <span id="snake-highscore">0</span></span>
+                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="snake-highscore">0</span></span>
                     </div>
                 </div>
                 <div class="snake-canvas-wrap">
@@ -520,7 +520,7 @@
                         <div class="game-score-row">
                             <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="whack-score">0</span>
                             <span class="game-timer">&#x23F1; <span id="whack-timer">60</span>s</span>
-                            <span class="game-highscore">&#x1F3C6; <span id="whack-highscore">0</span></span>
+                            <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="whack-highscore">0</span></span>
                         </div>
                     </div>
                     <div class="whack-prompt" id="whack-prompt"></div>
@@ -538,7 +538,7 @@
                     <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
                     <div class="game-score-row">
                         <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="game2048-score">0</span>
-                        <span class="game-highscore">&#x1F3C6; <span id="game2048-highscore">0</span></span>
+                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="game2048-highscore">0</span></span>
                     </div>
                 </div>
                 <div class="game2048-wrap">
@@ -565,7 +565,7 @@
                     <div class="game-score-row">
                         <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="match3-score">0</span>
                         <span class="game-timer">&#x1F504; <span id="match3-moves">20</span></span>
-                        <span class="game-highscore">&#x1F3C6; <span id="match3-highscore">0</span></span>
+                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="match3-highscore">0</span></span>
                     </div>
                 </div>
                 <div class="match3-wrap">

@@ -150,10 +150,44 @@ function snakeRoundRectPath(ctx, x, y, w, h, r) {
 function drawSnakeBoard(ctx) {
     for (let y = 0; y < SNAKE_GRID; y++) {
         for (let x = 0; x < SNAKE_GRID; x++) {
-            ctx.fillStyle = (x + y) % 2 === 0 ? 'rgba(255,255,255,0.025)' : 'rgba(255,255,255,0.055)';
+            ctx.fillStyle = (x + y) % 2 === 0 ? '#9bd35c' : '#8bc94e';
             ctx.fillRect(x * snakeCellSize, y * snakeCellSize, snakeCellSize, snakeCellSize);
         }
     }
+}
+
+function drawSnakeFood(ctx) {
+    const cs = snakeCellSize;
+    const cx = (snakeFood.x + 0.5) * cs;
+    const cy = (snakeFood.y + 0.5) * cs;
+    const r = cs * 0.34;
+
+    ctx.fillStyle = 'rgba(0,0,0,0.18)';
+    ctx.beginPath();
+    ctx.ellipse(cx, cy + r * 0.95, r, r * 0.35, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#e53935';
+    ctx.beginPath();
+    ctx.arc(cx, cy + r * 0.08, r, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.beginPath();
+    ctx.arc(cx - r * 0.35, cy - r * 0.2, r * 0.28, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.strokeStyle = '#6d4c2b';
+    ctx.lineWidth = Math.max(1.5, cs * 0.06);
+    ctx.beginPath();
+    ctx.moveTo(cx, cy - r * 0.85);
+    ctx.lineTo(cx + r * 0.2, cy - r * 1.3);
+    ctx.stroke();
+
+    ctx.fillStyle = '#4caf50';
+    ctx.beginPath();
+    ctx.ellipse(cx + r * 0.6, cy - r * 1.15, r * 0.34, r * 0.18, -0.5, 0, Math.PI * 2);
+    ctx.fill();
 }
 
 function drawSnakeEyes(ctx, head) {
@@ -181,26 +215,17 @@ function drawSnake() {
     ctx.clearRect(0, 0, snakeCanvas.width, snakeCanvas.height);
     drawSnakeBoard(ctx);
 
-    const foodCx = (snakeFood.x + 0.5) * snakeCellSize;
-    const foodCy = (snakeFood.y + 0.5) * snakeCellSize;
-    ctx.fillStyle = 'rgba(0,0,0,0.3)';
-    ctx.beginPath();
-    ctx.ellipse(foodCx, foodCy + snakeCellSize * 0.28, snakeCellSize * 0.32, snakeCellSize * 0.12, 0, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.font = Math.floor(snakeCellSize * 0.85) + 'px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    ctx.fillText('🍎', foodCx, foodCy + 1);
+    drawSnakeFood(ctx);
 
     snakeBody.forEach((seg, i) => {
         const isHead = i === 0;
-        ctx.fillStyle = isHead ? '#f472b6' : `rgba(168,85,247,${Math.max(0.5, 1 - i * 0.03)})`;
+        ctx.fillStyle = isHead ? '#2563eb' : '#3b82f6';
         const pad = 1.5;
-        snakeRoundRectPath(ctx, seg.x * snakeCellSize + pad, seg.y * snakeCellSize + pad, snakeCellSize - pad * 2, snakeCellSize - pad * 2, 5);
+        snakeRoundRectPath(ctx, seg.x * snakeCellSize + pad, seg.y * snakeCellSize + pad, snakeCellSize - pad * 2, snakeCellSize - pad * 2, 8);
         ctx.fill();
 
         const shineH = (snakeCellSize - pad * 2) * 0.35;
-        ctx.fillStyle = isHead ? 'rgba(255,255,255,0.4)' : 'rgba(255,255,255,0.15)';
+        ctx.fillStyle = isHead ? 'rgba(255,255,255,0.35)' : 'rgba(255,255,255,0.2)';
         snakeRoundRectPath(ctx, seg.x * snakeCellSize + pad + 2, seg.y * snakeCellSize + pad + 2, snakeCellSize - pad * 2 - 4, shineH, 4);
         ctx.fill();
 
@@ -398,17 +423,17 @@ function endWhackGame() {
 
 const GAME2048_SIZE = 4;
 const GAME2048_COLORS = {
-    2: 'linear-gradient(135deg, #f9a8d4, #f472b6)',
-    4: 'linear-gradient(135deg, #f472b6, #ec4899)',
-    8: 'linear-gradient(135deg, #e9d5ff, #c084fc)',
-    16: 'linear-gradient(135deg, #c084fc, #a855f7)',
-    32: 'linear-gradient(135deg, #a855f7, #9333ea)',
-    64: 'linear-gradient(135deg, #9333ea, #7e22ce)',
-    128: 'linear-gradient(135deg, #818cf8, #6366f1)',
-    256: 'linear-gradient(135deg, #6366f1, #4f46e5)',
-    512: 'linear-gradient(135deg, #60a5fa, #3b82f6)',
-    1024: 'linear-gradient(135deg, #fbbf24, #f59e0b)',
-    2048: 'linear-gradient(135deg, #fde047, #facc15)'
+    2: '#eee4da',
+    4: '#eee1c9',
+    8: '#f3b27a',
+    16: '#f69664',
+    32: '#f77c5f',
+    64: '#f65e3b',
+    128: '#edcf72',
+    256: '#edcc61',
+    512: '#edc850',
+    1024: '#edc53f',
+    2048: '#edc22e'
 };
 
 let game2048Grid = [];
@@ -418,7 +443,7 @@ let game2048Won = false;
 let game2048SwipeInit = false;
 
 function get2048Color(v) {
-    return GAME2048_COLORS[v] || 'linear-gradient(135deg, #34d399, #10b981)';
+    return GAME2048_COLORS[v] || '#3c3a32';
 }
 
 function getGame2048HighScore() {
@@ -452,7 +477,8 @@ function render2048() {
             if (v > 0) {
                 cell.textContent = v;
                 cell.style.background = get2048Color(v);
-                cell.style.color = v <= 4 ? '#3b0764' : '#fff';
+                cell.style.color = v <= 4 ? '#776e65' : '#f9f6f2';
+                if (v >= 1000) cell.style.fontSize = '0.95rem';
             }
             container.appendChild(cell);
         }
