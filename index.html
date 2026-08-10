@@ -467,6 +467,11 @@
                         <div class="game-option-name" data-i18n="game_match3_name">&#x7cd6;&#x679c;&#x6d88;&#x6d88;&#x6a02;</div>
                         <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
                     </div>
+                    <div class="game-option wordle" onclick="openGame('wordle')">
+                        <div class="game-option-icon-badge">W</div>
+                        <div class="game-option-name" data-i18n="game_wordle_name">Wordle</div>
+                        <div class="game-option-desc" data-i18n="game_wordle_desc">&#x516D;&#x6B21;&#x6A5F;&#x6703;&#x731C;&#x51FA;&#x4E94;&#x5B57;&#x6BCD;&#x82F1;&#x6587;&#x55AE;&#x5B57;&#xFF0C;&#x7DA0;&#x8272;&#x4F4D;&#x7F6E;&#x6B63;&#x78BA;&#xFF0C;&#x9EC3;&#x8272;&#x6709;&#x9019;&#x500B;&#x5B57;&#x6BCD;&#x4F46;&#x4F4D;&#x7F6E;&#x9319;&#xFF01;</div>
+                    </div>
                 </div>
             </div>
 
@@ -574,6 +579,26 @@
                         <button class="btn next-btn" onclick="startMatch3()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
                     </div>
                 </div>
+            </div>
+
+            <div class="mode-card" id="wordle-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="game-header">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <div class="game-score-row">
+                        <span data-i18n="game_wordle_attempt">猜測</span> <span id="wordle-attempt">0</span>/6
+                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="wordle-best">-</span></span>
+                    </div>
+                </div>
+                <div class="wordle-wrap">
+                    <p class="wordle-message" id="wordle-message"></p>
+                    <div class="wordle-grid" id="wordle-grid"></div>
+                    <div class="game-overlay" id="wordle-overlay">
+                        <button class="btn next-btn" onclick="startWordle()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
+                </div>
+                <div class="wordle-keyboard" id="wordle-keyboard"></div>
             </div>
         </div>
 
