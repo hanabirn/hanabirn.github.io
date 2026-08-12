@@ -137,6 +137,18 @@ async function renderNoteAttachments(noteId) {
 
 /* ----- Categories: visitors name their own, stored locally alongside the notes ----- */
 
+const NOTE_CATEGORY_COLORS = ['#f472b6', '#c084fc', '#60a5fa', '#34d399', '#fbbf24', '#fb7185', '#38bdf8', '#a78bfa'];
+
+function categoryColorForId(id) {
+    let hash = 0;
+    for (let i = 0; i < id.length; i++) hash = (hash * 31 + id.charCodeAt(i)) >>> 0;
+    return NOTE_CATEGORY_COLORS[hash % NOTE_CATEGORY_COLORS.length];
+}
+
+function categoryColor(cat) {
+    return cat.color || categoryColorForId(cat.id);
+}
+
 function getCategories() {
     try { return JSON.parse(localStorage.getItem(NOTES_CATEGORIES_KEY)) || []; } catch { return []; }
 }
@@ -150,7 +162,8 @@ function addNotesCategory(name) {
     if (!name) return;
     const cats = getCategories();
     if (cats.some(c => c.name === name)) return;
-    cats.push({ id: 'c' + Date.now() + Math.random().toString(36).slice(2, 6), name });
+    const id = 'c' + Date.now() + Math.random().toString(36).slice(2, 6);
+    cats.push({ id, name, color: categoryColorForId(id) });
     saveCategories(cats);
     initNotesCategorySelect();
     renderNotes();
@@ -290,7 +303,7 @@ function renderNotesFilters(allNotes) {
 
     html += cats.map(c => `
         <span class="notes-filter-chip${notesFilter === c.id ? ' active' : ''}">
-            <button type="button" class="notes-filter-chip-btn" onclick="setNotesFilter('${c.id}')">${escapeHtml(c.name)} <span class="notes-filter-count">${counts[c.id] || 0}</span></button>
+            <button type="button" class="notes-filter-chip-btn" onclick="setNotesFilter('${c.id}')"><span class="notes-cat-dot" style="background:${categoryColor(c)}"></span>${escapeHtml(c.name)} <span class="notes-filter-count">${counts[c.id] || 0}</span></button>
             <button type="button" class="notes-filter-chip-del" onclick="deleteNotesCategory('${c.id}')" title="${t('notes_cat_delete')}">&times;</button>
         </span>`).join('');
 
@@ -319,13 +332,22 @@ function renderNotes() {
         return;
     }
     notes = notes.slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
+    const catsById = {};
+    getCategories().forEach(c => { catsById[c.id] = c; });
 
-    list.innerHTML = notes.map(n => `
-        <div class="notes-item${n.pinned ? ' pinned' : ''}">
+    list.innerHTML = notes.map(n => {
+        const cat = n.category ? catsById[n.category] : null;
+        const accentStyle = cat ? ` style="border-left: 3px solid ${categoryColor(cat)};"` : '';
+        const catDot = cat ? `<span class="notes-cat-dot" style="background:${categoryColor(cat)}"></span>` : '';
+        return `
+        <div class="notes-item${n.pinned ? ' pinned' : ''}"${accentStyle}>
             <div class="notes-item-top">
-                <select class="notes-item-category" data-id="${n.id}" onchange="updateNoteCategory(${n.id}, this.value)">
-                    ${renderNoteCategoryOptions(n.category || '')}
-                </select>
+                <div class="notes-item-cat-group">
+                    ${catDot}
+                    <select class="notes-item-category" data-id="${n.id}" onchange="updateNoteCategory(${n.id}, this.value)">
+                        ${renderNoteCategoryOptions(n.category || '')}
+                    </select>
+                </div>
                 <div class="notes-item-actions">
                     <button type="button" class="notes-item-pin${n.pinned ? ' active' : ''}" onclick="togglePinNote(${n.id})" title="${t(n.pinned ? 'notes_unpin' : 'notes_pin')}">&#x1F4CC;</button>
                     <button type="button" class="notes-item-delete" onclick="deleteNote(${n.id})" title="${t('notes_delete')}">&#x1F5D1;&#xFE0F;</button>
@@ -340,8 +362,8 @@ function renderNotes() {
                 </label>
                 <span class="notes-item-time">${formatNoteTime(n.updatedAt)}</span>
             </div>
-        </div>
-    `).join('');
+        </div>`;
+    }).join('');
     list.querySelectorAll('.notes-item-text').forEach(ta => {
         const note = notes.find(n => n.id === Number(ta.dataset.id));
         ta.value = note.text;

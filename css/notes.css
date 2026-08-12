@@ -90,6 +90,9 @@
 }
 
 .notes-filter-chip-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
     background: none;
     border: none;
     color: var(--text-label);
@@ -175,6 +178,21 @@
     justify-content: space-between;
     gap: 8px;
     margin-bottom: 8px;
+}
+
+.notes-item-cat-group {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.notes-cat-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    border: 1px solid rgba(255,255,255,0.4);
 }
 
 .notes-item-actions {
