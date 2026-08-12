@@ -78,4 +78,12 @@ I18N.ru = {
         ach_mastered_50: 'Мастер слов', ach_mastered_50_desc: 'Освойте 50 слов',
         guestbook_load_more: 'Показать больше',
         pwa_install_text: 'Установите для быстрого доступа в любое время!', pwa_install_btn: 'Установить', update_banner_text: 'Доступна новая версия — обновите страницу, чтобы получить последний контент!', update_banner_btn: 'Обновить',
+        nav_notes: 'Заметки', notes_title: '✦ Заметки ✦', notes_hint: 'Эти заметки хранятся только в этом браузере — они исчезнут при смене устройства или очистке данных браузера.',
+        notes_placeholder: 'Напишите что-нибудь...', notes_add: 'Добавить заметку', notes_empty: 'Заметок пока нет — напишите первую!',
+        notes_delete: 'Удалить', notes_delete_confirm: 'Удалить эту заметку?',
+        guide_notes_title: 'Заметки', guide_notes_desc: 'Быстро запишите что-нибудь — заметки хранятся только в этом браузере и исчезают при смене устройства или очистке данных браузера.',
+        notes_cat_all: 'Все', notes_cat_none: 'Без категории',
+        notes_empty_filter: 'В этой категории пока нет заметок.',
+        notes_attach: 'Прикрепить фото/файл', notes_attach_remove: 'Удалить вложение', notes_file_too_large: 'Файл слишком большой (макс. {n}МБ)',
+        notes_cat_new_placeholder: 'Название новой категории...', notes_cat_new_add: '+ Добавить', notes_cat_delete: 'Удалить категорию', notes_cat_delete_confirm: 'Удалить эту категорию? Заметки в ней станут без категории.',
 };

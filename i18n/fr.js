@@ -78,4 +78,12 @@ I18N.fr = {
         ach_mastered_50: 'Maître du vocabulaire', ach_mastered_50_desc: 'Maîtriser 50 mots',
         guestbook_load_more: 'Voir plus de messages',
         pwa_install_text: 'Installez pour un accès rapide à tout moment !', pwa_install_btn: 'Installer', update_banner_text: "Une nouvelle version est disponible — actualisez pour obtenir le dernier contenu !", update_banner_btn: 'Actualiser',
+        nav_notes: 'Bloc-notes', notes_title: '✦ Bloc-notes ✦', notes_hint: "Ces notes ne sont enregistrées que dans ce navigateur — elles disparaissent si vous changez d'appareil ou effacez les données du navigateur.",
+        notes_placeholder: 'Écrivez quelque chose...', notes_add: 'Ajouter une note', notes_empty: 'Pas encore de notes — écrivez la première !',
+        notes_delete: 'Supprimer', notes_delete_confirm: 'Supprimer cette note ?',
+        guide_notes_title: 'Bloc-notes', guide_notes_desc: "Notez rapidement une idée — les notes ne sont enregistrées que dans ce navigateur et disparaissent si vous changez d'appareil ou effacez les données du navigateur.",
+        notes_cat_all: 'Toutes', notes_cat_none: 'Sans catégorie',
+        notes_empty_filter: "Pas encore de note dans cette catégorie.",
+        notes_attach: 'Joindre une photo/un fichier', notes_attach_remove: 'Supprimer la pièce jointe', notes_file_too_large: 'Fichier trop volumineux (max {n}Mo)',
+        notes_cat_new_placeholder: 'Nom de la nouvelle catégorie...', notes_cat_new_add: '+ Ajouter', notes_cat_delete: 'Supprimer la catégorie', notes_cat_delete_confirm: 'Supprimer cette catégorie ? Les notes qui l\'utilisent deviendront sans catégorie.',
 };

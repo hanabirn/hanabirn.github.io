@@ -78,4 +78,12 @@ I18N.ko = {
         ach_mastered_50: '단어 마스터', ach_mastered_50_desc: '50개 단어 마스터',
         guestbook_load_more: '더 보기',
         pwa_install_text: '홈 화면에 추가하고 언제든지 열어보세요!', pwa_install_btn: '설치', update_banner_text: '새 버전이 있습니다. 새로고침하면 최신 내용을 확인할 수 있어요!', update_banner_btn: '새로고침',
+        nav_notes: '메모장', notes_title: '✦ 메모장 ✦', notes_hint: '이 메모는 이 브라우저에만 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지우면 사라져요.',
+        notes_placeholder: '무언가 적어보세요...', notes_add: '메모 추가', notes_empty: '아직 메모가 없어요. 첫 메모를 남겨보세요!',
+        notes_delete: '삭제', notes_delete_confirm: '이 메모를 삭제할까요?',
+        guide_notes_title: '메모장', guide_notes_desc: '간단히 메모할 수 있어요. 메모는 이 브라우저에만 저장되며 기기를 바꾸거나 브라우저 데이터를 지우면 사라집니다.',
+        notes_cat_all: '전체', notes_cat_none: '미분류',
+        notes_empty_filter: '이 분류에는 아직 메모가 없어요.',
+        notes_attach: '사진/파일 첨부', notes_attach_remove: '첨부 삭제', notes_file_too_large: '파일이 너무 커요 (최대 {n}MB)',
+        notes_cat_new_placeholder: '새 분류 이름...', notes_cat_new_add: '＋ 추가', notes_cat_delete: '분류 삭제', notes_cat_delete_confirm: '이 분류를 삭제할까요? 사용 중이던 메모는 미분류가 됩니다.',
 };

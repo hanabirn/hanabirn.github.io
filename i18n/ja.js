@@ -78,4 +78,12 @@ I18N.ja = {
         ach_mastered_50: '単語マスター', ach_mastered_50_desc: '50個の単語を習得',
         guestbook_load_more: 'もっと見る',
         pwa_install_text: 'ホーム画面に追加していつでも開けます！', pwa_install_btn: 'インストール', update_banner_text: '新しいバージョンがあります。更新して最新の内容を取得してください！', update_banner_btn: '更新',
+        nav_notes: 'メモ帳', notes_title: '✦ メモ帳 ✦', notes_hint: 'このメモはこのブラウザにのみ保存されます。端末を変えたりブラウザのデータを消去すると消えてしまいます。',
+        notes_placeholder: '何か書いてみよう...', notes_add: 'メモを追加', notes_empty: 'まだメモがありません。最初の一つを書いてみましょう！',
+        notes_delete: '削除', notes_delete_confirm: 'このメモを削除しますか？',
+        guide_notes_title: 'メモ帳', guide_notes_desc: 'ちょっとしたことをメモできます。メモはこのブラウザにのみ保存され、端末を変えたりブラウザのデータを消去すると消えます。',
+        notes_cat_all: 'すべて', notes_cat_none: '未分類',
+        notes_empty_filter: 'このカテゴリにはまだメモがありません。',
+        notes_attach: '写真・ファイルを添付', notes_attach_remove: '添付を削除', notes_file_too_large: 'ファイルが大きすぎます（上限 {n}MB）',
+        notes_cat_new_placeholder: '新しいカテゴリ名...', notes_cat_new_add: '＋ 追加', notes_cat_delete: 'カテゴリを削除', notes_cat_delete_confirm: 'このカテゴリを削除しますか？使用中のメモは未分類になります。',
 };

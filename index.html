@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="css/games.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/guestbook.css">
+    <link rel="stylesheet" href="css/notes.css">
     <link rel="stylesheet" href="css/guide.css">
     <link rel="stylesheet" href="css/widgets.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -136,6 +137,7 @@
             <button class="nav-btn" data-tab="about" onclick="switchPage('about', this)" data-i18n="nav_about">&#x95DC;&#x65BC;&#x6211;</button>
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
             <button class="nav-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)" data-i18n="nav_examquiz">&#x6AA2;&#x5B9A;&#x8003;&#x8A66;</button>
+            <button class="nav-btn" data-tab="notes" onclick="switchPage('notes', this)" data-i18n="nav_notes">&#x8A18;&#x4E8B;&#x672C;</button>
             <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x82B1;&#x706B;&#x7684;Spotify&#x6B4C;&#x55AE;</button>
             <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
             <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
@@ -718,6 +720,28 @@
             </div>
         </div>
 
+        <div id="page-notes" style="display: none;">
+            <div class="guestbook-card">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <h3 data-i18n="notes_title">&#x2726; &#x8A18;&#x4E8B;&#x672C; &#x2726;</h3>
+                <p class="feedback-hint" data-i18n="notes_hint">&#x9019;&#x88E1;&#x7684;&#x7B46;&#x8A18;&#x53EA;&#x5B58;&#x5728;&#x9019;&#x500B;&#x700F;&#x89BD;&#x5668;&#x88E1;&#xFF0C;&#x63DB;&#x88DD;&#x7F6E;&#x6216;&#x6E05;&#x9664;&#x700F;&#x89BD;&#x5668;&#x8CC7;&#x6599;&#x6703;&#x6D88;&#x5931;&#x3002;</p>
+                <form class="feedback-form" onsubmit="return handleAddNote(event)">
+                    <textarea name="text" data-i18n-placeholder="notes_placeholder" placeholder="&#x5BEB;&#x9EDE;&#x4EC0;&#x9EBC;..." required class="feedback-textarea notes-textarea" rows="3"></textarea>
+                    <div class="notes-add-row">
+                        <select name="category" id="notes-add-category" class="notes-category-select"></select>
+                        <button type="submit" class="btn next-btn feedback-submit" data-i18n="notes_add">&#x65B0;&#x589E;&#x7B46;&#x8A18;</button>
+                    </div>
+                </form>
+                <form class="notes-category-form" onsubmit="return handleAddNotesCategory(event)">
+                    <input type="text" id="notes-new-category-input" data-i18n-placeholder="notes_cat_new_placeholder" placeholder="&#x65B0;&#x589E;&#x5206;&#x985E;&#x540D;&#x7A31;..." class="notes-category-input" maxlength="20">
+                    <button type="submit" class="notes-category-add-btn" data-i18n="notes_cat_new_add">&#xFF0B; &#x65B0;&#x589E;</button>
+                </form>
+                <div id="notes-filters" class="notes-filters"></div>
+                <div id="notes-list" class="notes-list"></div>
+            </div>
+        </div>
+
         <div id="page-feedback" style="display: none;">
             <div class="guestbook-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -793,6 +817,14 @@
                         <div class="guide-text">
                             <h4 data-i18n="guide_guestbook_title">留言板</h4>
                             <p data-i18n="guide_guestbook_desc">留言會公開顯示，所有訪客都能看到。</p>
+                        </div>
+                    </div>
+
+                    <div class="guide-section" data-page="3">
+                        <div class="guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg></div>
+                        <div class="guide-text">
+                            <h4 data-i18n="guide_notes_title">記事本</h4>
+                            <p data-i18n="guide_notes_desc">隨手記點東西，筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料就會消失。</p>
                         </div>
                     </div>
 
@@ -891,6 +923,7 @@
     <script src="js/particles.js"></script>
     <script src="js/reading-ambiance.js"></script>
     <script src="js/guestbook.js"></script>
+    <script src="js/notes.js"></script>
     <script src="js/feedback.js"></script>
     <script src="js/widgets.js"></script>
     <script>

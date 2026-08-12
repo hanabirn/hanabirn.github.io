@@ -78,4 +78,12 @@ I18N.de = {
         ach_mastered_50: 'Wortschatz-Meister', ach_mastered_50_desc: 'Beherrsche 50 Wörter',
         guestbook_load_more: 'Weitere Nachrichten laden',
         pwa_install_text: 'Installieren für schnellen Zugriff jederzeit!', pwa_install_btn: 'Installieren', update_banner_text: 'Eine neue Version ist verfügbar — aktualisiere die Seite für die neuesten Inhalte!', update_banner_btn: 'Aktualisieren',
+        nav_notes: 'Notizen', notes_title: '✦ Notizen ✦', notes_hint: 'Diese Notizen werden nur in diesem Browser gespeichert — sie verschwinden, wenn du das Gerät wechselst oder Browserdaten löschst.',
+        notes_placeholder: 'Schreib etwas...', notes_add: 'Notiz hinzufügen', notes_empty: 'Noch keine Notizen — schreib die erste!',
+        notes_delete: 'Löschen', notes_delete_confirm: 'Diese Notiz löschen?',
+        guide_notes_title: 'Notizen', guide_notes_desc: 'Schreib schnell etwas auf — Notizen werden nur in diesem Browser gespeichert und verschwinden bei Gerätewechsel oder Löschen der Browserdaten.',
+        notes_cat_all: 'Alle', notes_cat_none: 'Unkategorisiert',
+        notes_empty_filter: 'Noch keine Notizen in dieser Kategorie.',
+        notes_attach: 'Foto/Datei anhängen', notes_attach_remove: 'Anhang entfernen', notes_file_too_large: 'Datei ist zu groß (max. {n}MB)',
+        notes_cat_new_placeholder: 'Name der neuen Kategorie...', notes_cat_new_add: '+ Hinzufügen', notes_cat_delete: 'Kategorie löschen', notes_cat_delete_confirm: 'Diese Kategorie löschen? Notizen darin werden unkategorisiert.',
 };

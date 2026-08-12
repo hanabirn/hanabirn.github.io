@@ -1,0 +1,304 @@
+.notes-textarea {
+    min-height: 70px;
+}
+
+.notes-add-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.notes-category-select {
+    padding: 8px 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+.notes-category-select:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+}
+
+.notes-category-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.notes-category-input {
+    flex: 1;
+    min-width: 100px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text);
+    font-size: 0.82rem;
+    font-family: inherit;
+}
+.notes-category-input:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+}
+
+.notes-category-add-btn {
+    flex: 0 0 auto;
+    padding: 8px 16px;
+    border-radius: 20px;
+    border: 1px solid var(--border-card);
+    background: rgba(var(--accent-purple-rgb),0.08);
+    color: var(--text-accent);
+    font-size: 0.82rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.notes-category-add-btn:hover {
+    color: var(--text);
+    border-color: var(--accent-purple);
+    background: rgba(var(--accent-purple-rgb),0.18);
+}
+
+.notes-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.notes-filter-chip {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px 4px 3px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border-card);
+    background: rgba(var(--accent-purple-rgb),0.06);
+    transition: all 0.2s;
+}
+.notes-filter-chip:hover {
+    border-color: var(--accent-purple);
+}
+.notes-filter-chip.active {
+    background: linear-gradient(90deg, var(--accent-purple), var(--accent-light-purple));
+    border-color: transparent;
+}
+
+.notes-filter-chip-btn {
+    background: none;
+    border: none;
+    color: var(--text-label);
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 3px 0;
+}
+.notes-filter-chip:hover .notes-filter-chip-btn {
+    color: var(--text);
+}
+.notes-filter-chip.active .notes-filter-chip-btn {
+    color: #fff;
+}
+
+.notes-filter-count {
+    opacity: 0.75;
+    font-size: 0.75rem;
+}
+
+.notes-filter-chip-del {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-label);
+    font-size: 0.85rem;
+    line-height: 1;
+    padding: 3px 6px;
+    opacity: 0.6;
+}
+.notes-filter-chip-del:hover {
+    opacity: 1;
+    color: var(--accent-pink);
+}
+.notes-filter-chip.active .notes-filter-chip-del {
+    color: #fff;
+    opacity: 0.8;
+}
+.notes-filter-chip.active .notes-filter-chip-del:hover {
+    opacity: 1;
+}
+
+.notes-list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.notes-item {
+    background: var(--bg-msg-item);
+    border: 1px solid var(--border-subtle);
+    border-radius: 10px;
+    padding: 10px 14px;
+    animation: fadeSlideIn 0.3s ease;
+}
+
+.notes-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+
+.notes-item-category {
+    padding: 3px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border-subtle);
+    background: transparent;
+    color: var(--text-accent);
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+.notes-item-category:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+}
+
+.notes-item-text {
+    width: 100%;
+    display: block;
+    border: none;
+    background: transparent;
+    color: var(--text);
+    font-family: inherit;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    resize: none;
+    overflow: hidden;
+    padding: 0;
+}
+.notes-item-text:focus {
+    outline: none;
+}
+
+.notes-item-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 6px;
+    padding-top: 6px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+.notes-item-time {
+    color: var(--guestbook-msg-time);
+    font-size: 0.75rem;
+}
+
+.notes-item-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+.notes-item-attachments:empty {
+    margin-top: 0;
+}
+
+.notes-attach-chip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(var(--accent-purple-rgb),0.08);
+    border: 1px solid var(--border-subtle);
+    border-radius: 8px;
+    padding: 4px 8px 4px 4px;
+    max-width: 220px;
+}
+
+.notes-attach-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text);
+    text-decoration: none;
+    overflow: hidden;
+}
+.notes-attach-link:hover .notes-attach-name {
+    color: var(--text-accent);
+}
+
+.notes-attach-thumb {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.notes-attach-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.notes-attach-name {
+    font-size: 0.78rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 110px;
+}
+
+.notes-attach-size {
+    font-size: 0.7rem;
+    color: var(--text-label);
+    flex-shrink: 0;
+}
+
+.notes-attach-remove {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-label);
+    font-size: 0.9rem;
+    padding: 0 2px;
+    line-height: 1;
+    flex-shrink: 0;
+}
+.notes-attach-remove:hover {
+    color: var(--accent-pink);
+}
+
+.notes-item-attach-btn {
+    cursor: pointer;
+    font-size: 0.95rem;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.notes-item-attach-btn:hover {
+    opacity: 1;
+}
+.notes-item-attach-btn input[type="file"] {
+    display: none;
+}
+
+.notes-item-delete {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    opacity: 0.6;
+    transition: opacity 0.2s, transform 0.2s;
+    padding: 2px 6px;
+    line-height: 1;
+}
+.notes-item-delete:hover {
+    opacity: 1;
+    transform: scale(1.15);
+}

@@ -78,4 +78,12 @@ I18N.zh = {
         ach_mastered_50: '單字大師', ach_mastered_50_desc: '掌握 50 個單字',
         guestbook_load_more: '載入更多留言',
         pwa_install_text: '加到主畫面，隨時開啟！', pwa_install_btn: '安裝', update_banner_text: '目前有最新的更新版本，請重新整理以獲得最新內容！', update_banner_btn: '重新整理',
+        nav_notes: '記事本', notes_title: '✦ 記事本 ✦', notes_hint: '這裡的筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料會消失。',
+        notes_placeholder: '寫點什麼...', notes_add: '新增筆記', notes_empty: '還沒有筆記，寫下你的第一則吧！',
+        notes_delete: '刪除', notes_delete_confirm: '確定要刪除這則筆記嗎？',
+        guide_notes_title: '記事本', guide_notes_desc: '隨手記點東西，筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料就會消失。',
+        notes_cat_all: '全部', notes_cat_none: '未分類',
+        notes_empty_filter: '這個分類還沒有筆記。',
+        notes_attach: '附加照片/檔案', notes_attach_remove: '移除附件', notes_file_too_large: '檔案太大了（上限 {n}MB）',
+        notes_cat_new_placeholder: '新增分類名稱...', notes_cat_new_add: '＋ 新增', notes_cat_delete: '刪除分類', notes_cat_delete_confirm: '確定要刪除這個分類嗎？使用這個分類的筆記會變成未分類。',
 };

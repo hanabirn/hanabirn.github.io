@@ -9,7 +9,7 @@ function switchPage(page, el) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
 
-    const pages = ['guide', 'about', 'quiz', 'examquiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.opacity = '0';
     main.style.transition = 'opacity 0.2s ease';
@@ -23,12 +23,13 @@ function switchPage(page, el) {
         });
         main.style.opacity = '1';
         if (page === 'guestbook') loadGuestbookMessages();
+        if (page === 'notes') renderNotes();
     }, 200);
 }
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {

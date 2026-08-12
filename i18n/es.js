@@ -78,4 +78,12 @@ I18N.es = {
         ach_mastered_50: 'Maestro del vocabulario', ach_mastered_50_desc: 'Domina 50 palabras',
         guestbook_load_more: 'Cargar más mensajes',
         pwa_install_text: '¡Instala para acceso rápido en cualquier momento!', pwa_install_btn: 'Instalar', update_banner_text: '¡Hay una nueva versión disponible! Actualiza la página para ver el contenido más reciente.', update_banner_btn: 'Actualizar',
+        nav_notes: 'Bloc de notas', notes_title: '✦ Bloc de notas ✦', notes_hint: 'Estas notas solo se guardan en este navegador — desaparecerán si cambias de dispositivo o borras los datos del navegador.',
+        notes_placeholder: 'Escribe algo...', notes_add: 'Añadir nota', notes_empty: '¡Aún no hay notas — escribe la primera!',
+        notes_delete: 'Eliminar', notes_delete_confirm: '¿Eliminar esta nota?',
+        guide_notes_title: 'Bloc de notas', guide_notes_desc: 'Apunta algo rápido — las notas solo se guardan en este navegador y desaparecen si cambias de dispositivo o borras los datos del navegador.',
+        notes_cat_all: 'Todas', notes_cat_none: 'Sin categoría',
+        notes_empty_filter: 'Todavía no hay notas en esta categoría.',
+        notes_attach: 'Adjuntar foto/archivo', notes_attach_remove: 'Quitar adjunto', notes_file_too_large: 'El archivo es demasiado grande (máx. {n}MB)',
+        notes_cat_new_placeholder: 'Nombre de la nueva categoría...', notes_cat_new_add: '+ Añadir', notes_cat_delete: 'Eliminar categoría', notes_cat_delete_confirm: '¿Eliminar esta categoría? Las notas que la usen quedarán sin categoría.',
 };

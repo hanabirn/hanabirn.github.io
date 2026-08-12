@@ -78,4 +78,12 @@ I18N.en = {
         ach_mastered_50: 'Vocabulary Master', ach_mastered_50_desc: 'Master 50 words',
         guestbook_load_more: 'Load more messages',
         pwa_install_text: 'Install for quick access anytime!', pwa_install_btn: 'Install', update_banner_text: 'A new version is available — refresh to get the latest content!', update_banner_btn: 'Refresh',
+        nav_notes: 'Notepad', notes_title: '✦ Notepad ✦', notes_hint: 'These notes are stored only in this browser — they disappear if you switch devices or clear browser data.',
+        notes_placeholder: 'Write something...', notes_add: 'Add Note', notes_empty: 'No notes yet — write your first one!',
+        notes_delete: 'Delete', notes_delete_confirm: 'Delete this note?',
+        guide_notes_title: 'Notepad', guide_notes_desc: 'Jot things down quickly — notes are stored only in this browser and disappear if you switch devices or clear browser data.',
+        notes_cat_all: 'All', notes_cat_none: 'Uncategorized',
+        notes_empty_filter: 'No notes in this category yet.',
+        notes_attach: 'Attach photo/file', notes_attach_remove: 'Remove attachment', notes_file_too_large: 'File is too large (max {n}MB)',
+        notes_cat_new_placeholder: 'New category name...', notes_cat_new_add: '+ Add', notes_cat_delete: 'Delete category', notes_cat_delete_confirm: 'Delete this category? Notes using it will become uncategorized.',
 };
