@@ -580,17 +580,17 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <div class="game-header">
                     <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row">
+                    <div class="game-score-row" id="match3-score-row" style="display:none;">
                         <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="match3-score">0</span>
                         <span class="game-timer">&#x1F504; <span id="match3-moves">20</span></span>
-                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="match3-highscore">0</span></span>
+                        <span class="game-highscore" id="match3-level-label"></span>
                     </div>
                 </div>
-                <div class="match3-wrap">
+                <div id="match3-objectives" class="match3-objectives" style="display:none;"></div>
+                <div id="match3-level-select" class="match3-level-select" style="display:none;"></div>
+                <div class="match3-wrap" id="match3-wrap" style="display:none;">
                     <div class="match3-grid" id="match3-grid"></div>
-                    <div class="game-overlay" id="match3-overlay">
-                        <button class="btn next-btn" onclick="startMatch3()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
+                    <div class="game-overlay" id="match3-overlay" style="display:none;"></div>
                 </div>
             </div>
 

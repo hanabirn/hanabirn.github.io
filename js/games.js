@@ -27,10 +27,7 @@ function openGame(name) {
         overlay.style.display = 'flex';
         render2048();
     } else if (name === 'match3') {
-        document.getElementById('match3-highscore').textContent = getMatch3HighScore();
-        const overlay = document.getElementById('match3-overlay');
-        overlay.innerHTML = `<button class="btn next-btn" onclick="startMatch3()">${t('game_start')}</button>`;
-        overlay.style.display = 'flex';
+        showMatch3LevelSelect();
     } else if (name === 'wordle') {
         const best = getWordleBest();
         document.getElementById('wordle-best').textContent = best ? best : '-';
@@ -623,10 +620,11 @@ function end2048() {
     overlay.style.display = 'flex';
 }
 
-/* ===================== 🌸 Match-3 (六消樂) ===================== */
+/* ===================== 🌸 Match-3 (糖果消消樂) — Level Mode ===================== */
 
 const MATCH3_SIZE = 8;
 const MATCH3_SYMBOLS = ['🍬', '🍭', '🍫', '🍩', '🍪', '🧁'];
+const MATCH3_INGREDIENT_SYMBOL = '🍒';
 const MATCH3_COLORS = {
     '🍬': ['#fbcfe8', '#f472b6'],
     '🍭': ['#fca5a5', '#ef4444'],
@@ -634,27 +632,101 @@ const MATCH3_COLORS = {
     '🍩': ['#fde68a', '#f59e0b'],
     '🍪': ['#e7c496', '#b8813f'],
     '🧁': ['#ddd6fe', '#a855f7'],
+    '🍒': ['#fecaca', '#dc2626'],
 };
-const MATCH3_MOVES = 20;
 const MATCH3_COMBO_TEXT = { 2: 'game_combo_2', 3: 'game_combo_3', 4: 'game_combo_4' };
 /* Matching 4 in a line makes a striped candy (clears its row/column when
    later matched); matching 5+ makes a rainbow candy — swap it with any
    candy to clear every candy of that color from the board. */
 const MATCH3_BOMB_SYMBOL = '🌈';
+const MATCH3_OBJECTIVE_ICON = { score: '🎯', jelly: '🟪', chocolate: '🍫', ingredients: '🍒' };
+const MATCH3_CHOCOLATE_SPREAD_CHANCE = 0.4;
+
+/* Trims a fixed 8x8 grid down to a silhouette: each entry is the
+   [minX, maxX] of visible columns for that row (or null for a full row). */
+function rangeHoles(rowRanges) {
+    const holes = [];
+    rowRanges.forEach((range, y) => {
+        const [minX, maxX] = range || [0, MATCH3_SIZE - 1];
+        for (let x = 0; x < MATCH3_SIZE; x++) {
+            if (x < minX || x > maxX) holes.push([y, x]);
+        }
+    });
+    return holes;
+}
+
+/* Ten hand-designed levels that introduce one mechanic at a time: plain
+   board → shaped boards → jelly → chocolate → ingredients → combos. Every
+   level's objectives must all be met before moves run out to win; parScore
+   is only used to grade 1-3 stars on a win (1.3x/1.6x of it), not required
+   to clear the level. */
+const MATCH3_LEVELS = [
+    { id: 1, moves: 15,
+        objectives: [{ type: 'score', target: 2500 }], parScore: 2500 },
+    { id: 2, moves: 18,
+        holes: rangeHoles([[3,4],[2,5],[1,6],[0,7],[0,7],[1,6],[2,5],[3,4]]),
+        objectives: [{ type: 'score', target: 3500 }], parScore: 3500 },
+    { id: 3, moves: 16,
+        holes: rangeHoles([[3,4],[3,4],[3,4],[0,7],[0,7],[3,4],[3,4],[3,4]]),
+        objectives: [{ type: 'score', target: 3200 }], parScore: 3200 },
+    { id: 4, moves: 22,
+        jelly: [[2,2,1],[2,3,1],[2,4,1],[2,5,1],[3,2,1],[3,3,2],[3,4,2],[3,5,1],
+                [4,2,1],[4,3,2],[4,4,2],[4,5,1],[5,2,1],[5,3,1],[5,4,1],[5,5,1]],
+        objectives: [{ type: 'jelly' }], parScore: 4500 },
+    { id: 5, moves: 20,
+        holes: [[3,3],[3,4],[4,3],[4,4]],
+        jelly: [[2,3,1],[2,4,1],[5,3,1],[5,4,1],[3,2,1],[4,2,1],[3,5,1],[4,5,1]],
+        objectives: [{ type: 'jelly' }], parScore: 4200 },
+    { id: 6, moves: 20,
+        chocolate: [[1,1],[1,6],[6,1],[6,6]],
+        objectives: [{ type: 'chocolate' }], parScore: 4000 },
+    { id: 7, moves: 18,
+        holes: rangeHoles([[2,5],[1,6],[0,7],[0,7],[1,6],[2,5],[3,4],[3,4]]),
+        chocolate: [[3,3],[3,4],[4,4]],
+        objectives: [{ type: 'chocolate' }], parScore: 3800 },
+    { id: 8, moves: 20,
+        ingredients: [{ col: 1, count: 4 }, { col: 4, count: 3 }, { col: 6, count: 3 }],
+        objectives: [{ type: 'ingredients', target: 10 }], parScore: 4500 },
+    { id: 9, moves: 22,
+        holes: rangeHoles([[0,7],[1,6],[2,5],[3,4],[3,4],[2,5],[1,6],[0,7]]),
+        jelly: [[3,3,1],[3,4,1],[4,3,1],[4,4,1]],
+        ingredients: [{ col: 3, count: 3 }, { col: 4, count: 3 }],
+        objectives: [{ type: 'jelly' }, { type: 'ingredients', target: 6 }], parScore: 5000 },
+    { id: 10, moves: 25,
+        holes: rangeHoles([[2,5],[1,6],[0,7],[0,7],[0,7],[0,7],[1,6],[2,5]]),
+        jelly: [[3,2,1],[3,5,1],[4,2,1],[4,5,1]],
+        chocolate: [[2,3],[2,4],[5,3]],
+        ingredients: [{ col: 2, count: 3 }, { col: 5, count: 3 }],
+        objectives: [{ type: 'jelly' }, { type: 'chocolate' }, { type: 'ingredients', target: 6 }], parScore: 6000 },
+];
 
 let match3Board = [];
 let match3Special = [];
+let match3Hole = [];
+let match3Jelly = [];
+let match3Chocolate = [];
 let match3Score = 0;
-let match3MovesLeft = MATCH3_MOVES;
+let match3MovesLeft = 0;
 let match3Running = false;
 let match3Selected = null;
 let match3Busy = false;
+let match3CurrentLevel = null;
+let match3IngredientsCollected = 0;
 
-function getMatch3HighScore() {
-    return parseInt(localStorage.getItem('match3_high_score') || '0', 10);
+function getMatch3Progress() {
+    try {
+        const saved = JSON.parse(localStorage.getItem('match3_level_progress'));
+        if (saved && typeof saved === 'object') return { unlocked: saved.unlocked || 1, stars: saved.stars || {} };
+    } catch {}
+    return { unlocked: 1, stars: {} };
 }
-function saveMatch3HighScore(score) {
-    if (score > getMatch3HighScore()) localStorage.setItem('match3_high_score', String(score));
+function saveMatch3Progress(progress) {
+    localStorage.setItem('match3_level_progress', JSON.stringify(progress));
+}
+function match3StarsFor(level, score) {
+    if (score >= level.parScore * 1.6) return 3;
+    if (score >= level.parScore * 1.3) return 2;
+    return 1;
 }
 
 function match3RandomSymbol() {
@@ -667,14 +739,22 @@ function match3SwapCells(board, x1, y1, x2, y2) {
     board[y2][x2] = tmp;
 }
 
+/* Ingredients are candy-shaped but never form matches — treated the same
+   as an empty cell for match-finding purposes. */
+function match3IsMatchable(board, y, x) {
+    const v = board[y][x];
+    return v !== null && v !== MATCH3_INGREDIENT_SYMBOL;
+}
+
 function match3FindMatches(board) {
     const size = MATCH3_SIZE;
     const matched = new Set();
     for (let y = 0; y < size; y++) {
         let runStart = 0;
         for (let x = 1; x <= size; x++) {
-            if (x < size && board[y][x] === board[y][runStart]) continue;
-            if (x - runStart >= 3) {
+            const extend = x < size && board[y][x] === board[y][runStart] && match3IsMatchable(board, y, x);
+            if (extend) continue;
+            if (x - runStart >= 3 && match3IsMatchable(board, y, runStart)) {
                 for (let k = runStart; k < x; k++) matched.add(y + ',' + k);
             }
             runStart = x;
@@ -683,8 +763,9 @@ function match3FindMatches(board) {
     for (let x = 0; x < size; x++) {
         let runStart = 0;
         for (let y = 1; y <= size; y++) {
-            if (y < size && board[y][x] === board[runStart][x]) continue;
-            if (y - runStart >= 3) {
+            const extend = y < size && board[y][x] === board[runStart][x] && match3IsMatchable(board, y, x);
+            if (extend) continue;
+            if (y - runStart >= 3 && match3IsMatchable(board, runStart, x)) {
                 for (let k = runStart; k < y; k++) matched.add(k + ',' + x);
             }
             runStart = y;
@@ -693,18 +774,45 @@ function match3FindMatches(board) {
     return matched;
 }
 
-function match3GenerateBoard() {
-    let board;
-    let tries = 0;
-    do {
-        board = Array.from({ length: MATCH3_SIZE }, () => Array.from({ length: MATCH3_SIZE }, () => match3RandomSymbol()));
-        tries++;
-    } while (match3FindMatches(board).size > 0 && tries < 50);
-    return board;
-}
-
 function match3EmptySpecialGrid() {
     return Array.from({ length: MATCH3_SIZE }, () => Array(MATCH3_SIZE).fill(null));
+}
+
+/* Builds every per-level grid (holes/jelly/chocolate) and the starting
+   board: ingredients are stacked at the top of their designated columns,
+   the rest is filled with random candies, retrying if that leaves an
+   immediate match already on the board. */
+function match3GenerateBoardForLevel(level) {
+    const size = MATCH3_SIZE;
+    match3Hole = Array.from({ length: size }, () => Array(size).fill(false));
+    match3Jelly = Array.from({ length: size }, () => Array(size).fill(0));
+    match3Chocolate = Array.from({ length: size }, () => Array(size).fill(false));
+    match3Special = match3EmptySpecialGrid();
+
+    (level.holes || []).forEach(([y, x]) => { match3Hole[y][x] = true; });
+    (level.jelly || []).forEach(([y, x, layers]) => { match3Jelly[y][x] = layers; });
+    (level.chocolate || []).forEach(([y, x]) => { match3Chocolate[y][x] = true; });
+
+    match3Board = Array.from({ length: size }, () => Array(size).fill(null));
+    (level.ingredients || []).forEach(({ col, count }) => {
+        let placed = 0;
+        for (let y = 0; y < size && placed < count; y++) {
+            if (match3Hole[y][col] || match3Chocolate[y][col]) continue;
+            match3Board[y][col] = MATCH3_INGREDIENT_SYMBOL;
+            placed++;
+        }
+    });
+
+    let tries = 0;
+    do {
+        for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+                if (match3Hole[y][x] || match3Chocolate[y][x] || match3Board[y][x] === MATCH3_INGREDIENT_SYMBOL) continue;
+                match3Board[y][x] = match3RandomSymbol();
+            }
+        }
+        tries++;
+    } while (match3FindMatches(match3Board).size > 0 && tries < 50);
 }
 
 /* Same scan as match3FindMatches, but keeps each run's cells/orientation
@@ -715,8 +823,9 @@ function match3FindRuns(board) {
     for (let y = 0; y < size; y++) {
         let runStart = 0;
         for (let x = 1; x <= size; x++) {
-            if (x < size && board[y][x] === board[y][runStart]) continue;
-            if (x - runStart >= 3 && board[y][runStart]) {
+            const extend = x < size && board[y][x] === board[y][runStart] && match3IsMatchable(board, y, x);
+            if (extend) continue;
+            if (x - runStart >= 3 && match3IsMatchable(board, y, runStart)) {
                 const cells = [];
                 for (let k = runStart; k < x; k++) cells.push([y, k]);
                 runs.push({ cells, symbol: board[y][runStart], orientation: 'h' });
@@ -727,8 +836,9 @@ function match3FindRuns(board) {
     for (let x = 0; x < size; x++) {
         let runStart = 0;
         for (let y = 1; y <= size; y++) {
-            if (y < size && board[y][x] === board[runStart][x]) continue;
-            if (y - runStart >= 3 && board[runStart][x]) {
+            const extend = y < size && board[y][x] === board[runStart][x] && match3IsMatchable(board, y, x);
+            if (extend) continue;
+            if (y - runStart >= 3 && match3IsMatchable(board, runStart, x)) {
                 const cells = [];
                 for (let k = runStart; k < y; k++) cells.push([k, x]);
                 runs.push({ cells, symbol: board[runStart][x], orientation: 'v' });
@@ -788,6 +898,63 @@ function match3ExpandSpecials(matches) {
     return expanded;
 }
 
+function match3DamageJelly(y, x) {
+    if (match3Jelly[y][x] > 0) match3Jelly[y][x]--;
+}
+
+/* A candy clearing next to a chocolate tile chips it away too — chocolate
+   itself never sat under a candy, so this is a separate bonus, not part of
+   the main match score. */
+function match3ClearAdjacentChocolate(matches) {
+    const cleared = new Set();
+    matches.forEach(key => {
+        const [y, x] = key.split(',').map(Number);
+        [[y - 1, x], [y + 1, x], [y, x - 1], [y, x + 1]].forEach(([ny, nx]) => {
+            if (ny < 0 || ny >= MATCH3_SIZE || nx < 0 || nx >= MATCH3_SIZE) return;
+            if (match3Chocolate[ny][nx]) {
+                cleared.add(ny + ',' + nx);
+                match3Chocolate[ny][nx] = false;
+                match3Board[ny][nx] = null;
+            }
+        });
+    });
+    return cleared;
+}
+
+/* Uncleared chocolate creeps outward by one random open neighbor per move —
+   turn-based like the rest of the engine, no timers needed. */
+function match3SpreadChocolate() {
+    const size = MATCH3_SIZE;
+    const current = [];
+    for (let y = 0; y < size; y++) for (let x = 0; x < size; x++) if (match3Chocolate[y][x]) current.push([y, x]);
+    const newSpots = [];
+    current.forEach(([y, x]) => {
+        if (Math.random() > MATCH3_CHOCOLATE_SPREAD_CHANCE) return;
+        const options = [[y - 1, x], [y + 1, x], [y, x - 1], [y, x + 1]].filter(([ny, nx]) =>
+            ny >= 0 && ny < size && nx >= 0 && nx < size && !match3Hole[ny][nx] && !match3Chocolate[ny][nx]
+        );
+        if (!options.length) return;
+        newSpots.push(options[Math.floor(Math.random() * options.length)]);
+    });
+    newSpots.forEach(([y, x]) => {
+        match3Chocolate[y][x] = true;
+        match3Board[y][x] = null;
+        match3Special[y][x] = null;
+    });
+    return newSpots.length > 0;
+}
+
+function match3CountJelly() {
+    let n = 0;
+    for (let y = 0; y < MATCH3_SIZE; y++) for (let x = 0; x < MATCH3_SIZE; x++) if (match3Jelly[y][x] > 0) n++;
+    return n;
+}
+function match3CountChocolate() {
+    let n = 0;
+    for (let y = 0; y < MATCH3_SIZE; y++) for (let x = 0; x < MATCH3_SIZE; x++) if (match3Chocolate[y][x]) n++;
+    return n;
+}
+
 function match3HasValidMove(board) {
     const size = MATCH3_SIZE;
     for (let y = 0; y < size; y++) {
@@ -797,13 +964,14 @@ function match3HasValidMove(board) {
     }
     for (let y = 0; y < size; y++) {
         for (let x = 0; x < size; x++) {
-            if (x < size - 1) {
+            if (match3Hole[y][x] || match3Chocolate[y][x]) continue;
+            if (x < size - 1 && !match3Hole[y][x + 1] && !match3Chocolate[y][x + 1]) {
                 match3SwapCells(board, x, y, x + 1, y);
                 const has = match3FindMatches(board).size > 0;
                 match3SwapCells(board, x, y, x + 1, y);
                 if (has) return true;
             }
-            if (y < size - 1) {
+            if (y < size - 1 && !match3Hole[y + 1][x] && !match3Chocolate[y + 1][x]) {
                 match3SwapCells(board, x, y, x, y + 1);
                 const has = match3FindMatches(board).size > 0;
                 match3SwapCells(board, x, y, x, y + 1);
@@ -814,23 +982,75 @@ function match3HasValidMove(board) {
     return false;
 }
 
-function match3ApplyGravity(board, special) {
+/* Packs & refills one column between two hole/chocolate boundaries (a
+   "segment"): existing candies compact to the segment's bottom, empty
+   slots above refill with new random candies. Holes are transparent (never
+   part of any segment, so candies fall straight past them); chocolate is a
+   solid, immovable boundary that splits a column into independent segments. */
+function match3PackSegment(segRows, x, newTiles) {
+    let write = 0;
+    for (let i = 0; i < segRows.length; i++) {
+        const y = segRows[i];
+        if (match3Board[y][x] !== null) {
+            const wy = segRows[write];
+            match3Board[wy][x] = match3Board[y][x];
+            match3Special[wy][x] = match3Special[y][x];
+            if (wy !== y) { match3Board[y][x] = null; match3Special[y][x] = null; }
+            write++;
+        }
+    }
+    for (; write < segRows.length; write++) {
+        const y = segRows[write];
+        match3Board[y][x] = match3RandomSymbol();
+        match3Special[y][x] = null;
+        newTiles.add(y + ',' + x);
+    }
+}
+
+function match3ApplyGravity() {
     const size = MATCH3_SIZE;
     const newTiles = new Set();
     for (let x = 0; x < size; x++) {
-        let write = size - 1;
-        for (let y = size - 1; y >= 0; y--) {
-            if (board[y][x] !== null) {
-                board[write][x] = board[y][x];
-                special[write][x] = special[y][x];
-                if (write !== y) { board[y][x] = null; special[y][x] = null; }
-                write--;
+        const rows = [];
+        for (let y = size - 1; y >= 0; y--) if (!match3Hole[y][x]) rows.push(y);
+        let segStart = 0;
+        for (let i = 0; i <= rows.length; i++) {
+            const boundary = i === rows.length || match3Chocolate[rows[i]][x];
+            if (boundary) {
+                match3PackSegment(rows.slice(segStart, i), x, newTiles);
+                segStart = i + 1;
             }
         }
-        for (let y = write; y >= 0; y--) {
-            board[y][x] = match3RandomSymbol();
-            special[y][x] = null;
-            newTiles.add(y + ',' + x);
+    }
+
+    // Ingredients that settle into the very bottom of their column are collected;
+    // removing one opens a new gap, so keep resolving until nothing moves.
+    let collectedAny = true;
+    while (collectedAny) {
+        collectedAny = false;
+        for (let x = 0; x < size; x++) {
+            let bottomRow = -1;
+            for (let y = size - 1; y >= 0; y--) {
+                if (!match3Hole[y][x] && !match3Chocolate[y][x]) { bottomRow = y; break; }
+            }
+            if (bottomRow === -1 || match3Board[bottomRow][x] !== MATCH3_INGREDIENT_SYMBOL) continue;
+            match3Board[bottomRow][x] = null;
+            match3IngredientsCollected++;
+            collectedAny = true;
+        }
+        if (collectedAny) {
+            for (let x = 0; x < size; x++) {
+                const rows = [];
+                for (let y = size - 1; y >= 0; y--) if (!match3Hole[y][x]) rows.push(y);
+                let segStart = 0;
+                for (let i = 0; i <= rows.length; i++) {
+                    const boundary = i === rows.length || match3Chocolate[rows[i]][x];
+                    if (boundary) {
+                        match3PackSegment(rows.slice(segStart, i), x, newTiles);
+                        segStart = i + 1;
+                    }
+                }
+            }
         }
     }
     return newTiles;
@@ -846,22 +1066,42 @@ function match3Render(newTiles) {
             cell.className = 'match3-cell';
             cell.dataset.x = x;
             cell.dataset.y = y;
-            const symbol = match3Board[y][x];
-            if (symbol) {
-                const special = match3Special[y][x];
-                const colors = MATCH3_COLORS[symbol] || ['#e5e7eb', '#9ca3af'];
-                const candy = document.createElement('span');
-                let cls = 'match3-candy' + (newTiles && newTiles.has(y + ',' + x) ? ' drop-in' : '');
-                if (special === 'h' || special === 'v') cls += ' special-' + special;
-                else if (special === 'bomb') cls += ' special-bomb';
-                candy.className = cls;
-                candy.style.background = special === 'bomb'
-                    ? 'radial-gradient(circle at 32% 28%, #fff, #f472b6 35%, #a855f7 65%, #3b82f6)'
-                    : `radial-gradient(circle at 32% 28%, ${colors[0]}, ${colors[1]})`;
-                candy.textContent = symbol;
-                cell.appendChild(candy);
+            if (match3Hole[y][x]) {
+                cell.classList.add('hole');
+                container.appendChild(cell);
+                continue;
             }
-            cell.onclick = () => match3ClickCell(x, y);
+            const jelly = match3Jelly[y][x];
+            if (jelly > 0) {
+                const jellyEl = document.createElement('div');
+                jellyEl.className = 'match3-jelly';
+                if (jelly > 1) jellyEl.textContent = jelly;
+                cell.appendChild(jellyEl);
+            }
+            if (match3Chocolate[y][x]) {
+                cell.classList.add('chocolate');
+                const chocEl = document.createElement('span');
+                chocEl.className = 'match3-chocolate';
+                cell.appendChild(chocEl);
+            } else {
+                const symbol = match3Board[y][x];
+                if (symbol) {
+                    const special = match3Special[y][x];
+                    const colors = MATCH3_COLORS[symbol] || ['#e5e7eb', '#9ca3af'];
+                    const candy = document.createElement('span');
+                    let cls = 'match3-candy' + (newTiles && newTiles.has(y + ',' + x) ? ' drop-in' : '');
+                    if (special === 'h' || special === 'v') cls += ' special-' + special;
+                    else if (special === 'bomb') cls += ' special-bomb';
+                    if (symbol === MATCH3_INGREDIENT_SYMBOL) cls += ' ingredient';
+                    candy.className = cls;
+                    candy.style.background = special === 'bomb'
+                        ? 'radial-gradient(circle at 32% 28%, #fff, #f472b6 35%, #a855f7 65%, #3b82f6)'
+                        : `radial-gradient(circle at 32% 28%, ${colors[0]}, ${colors[1]})`;
+                    candy.textContent = symbol;
+                    cell.appendChild(candy);
+                }
+                cell.onclick = () => match3ClickCell(x, y);
+            }
             if (match3Selected && match3Selected.x === x && match3Selected.y === y) {
                 cell.classList.add('selected');
             }
@@ -895,27 +1135,132 @@ function match3RenderClearing(matchSet) {
     });
 }
 
-function startMatch3() {
+function match3ObjectivesMet() {
+    if (!match3CurrentLevel) return false;
+    return match3CurrentLevel.objectives.every(obj => {
+        if (obj.type === 'score') return match3Score >= obj.target;
+        if (obj.type === 'jelly') return match3CountJelly() === 0;
+        if (obj.type === 'chocolate') return match3CountChocolate() === 0;
+        if (obj.type === 'ingredients') return match3IngredientsCollected >= obj.target;
+        return true;
+    });
+}
+
+function renderMatch3Objectives() {
+    const container = document.getElementById('match3-objectives');
+    if (!container || !match3CurrentLevel) return;
+    container.innerHTML = match3CurrentLevel.objectives.map(obj => {
+        const icon = MATCH3_OBJECTIVE_ICON[obj.type];
+        let current, target, showTarget;
+        if (obj.type === 'score') { current = match3Score; target = obj.target; showTarget = true; }
+        else if (obj.type === 'jelly') { current = match3CountJelly(); showTarget = false; }
+        else if (obj.type === 'chocolate') { current = match3CountChocolate(); showTarget = false; }
+        else { current = match3IngredientsCollected; target = obj.target; showTarget = true; }
+        const done = obj.type === 'score' ? current >= target
+            : obj.type === 'ingredients' ? current >= target
+            : current === 0;
+        return `<span class="match3-objective${done ? ' done' : ''}">${icon} ${current}${showTarget ? '/' + target : ''}</span>`;
+    }).join('');
+}
+
+function match3CheckLevelState() {
+    if (match3ObjectivesMet()) { winMatch3Level(); return true; }
+    if (match3MovesLeft <= 0) { loseMatch3Level(); return true; }
+    return false;
+}
+
+function winMatch3Level() {
+    match3Running = false;
+    const level = match3CurrentLevel;
+    const stars = match3StarsFor(level, match3Score);
+    const progress = getMatch3Progress();
+    if ((progress.stars[level.id] || 0) < stars) progress.stars[level.id] = stars;
+    if (progress.unlocked <= level.id && level.id < MATCH3_LEVELS.length) progress.unlocked = level.id + 1;
+    saveMatch3Progress(progress);
+
+    const hasNext = level.id < MATCH3_LEVELS.length;
+    const overlay = document.getElementById('match3-overlay');
+    overlay.innerHTML = `
+        <p>${t('match3_win_title')}</p>
+        <p class="match3-stars-result">${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}</p>
+        <p>${t('game_final_score', { n: match3Score })}</p>
+        <div class="match3-overlay-actions">
+            ${hasNext ? `<button class="btn next-btn" onclick="startMatch3Level(${level.id + 1})">${t('match3_next_level')}</button>` : ''}
+            <button class="btn next-btn" onclick="showMatch3LevelSelect()">${t('match3_back_to_levels')}</button>
+        </div>
+    `;
+    overlay.style.display = 'flex';
+}
+
+function loseMatch3Level() {
+    match3Running = false;
+    const overlay = document.getElementById('match3-overlay');
+    overlay.innerHTML = `
+        <p>${t('game_over')}</p>
+        <p>${t('game_final_score', { n: match3Score })}</p>
+        <div class="match3-overlay-actions">
+            <button class="btn next-btn" onclick="startMatch3Level(${match3CurrentLevel.id})">${t('match3_retry')}</button>
+            <button class="btn next-btn" onclick="showMatch3LevelSelect()">${t('match3_back_to_levels')}</button>
+        </div>
+    `;
+    overlay.style.display = 'flex';
+}
+
+function showMatch3LevelSelect() {
+    match3Running = false;
+    match3CurrentLevel = null;
+    document.getElementById('match3-score-row').style.display = 'none';
+    document.getElementById('match3-objectives').style.display = 'none';
+    document.getElementById('match3-wrap').style.display = 'none';
     document.getElementById('match3-overlay').style.display = 'none';
-    match3Board = match3GenerateBoard();
-    match3Special = match3EmptySpecialGrid();
+
+    const container = document.getElementById('match3-level-select');
+    container.style.display = 'grid';
+    const progress = getMatch3Progress();
+    container.innerHTML = MATCH3_LEVELS.map(lv => {
+        const unlocked = lv.id <= progress.unlocked;
+        if (!unlocked) return `<div class="match3-level-node locked">&#x1F512;</div>`;
+        const stars = progress.stars[lv.id] || 0;
+        return `<button type="button" class="match3-level-node${stars ? ' cleared' : ''}" onclick="startMatch3Level(${lv.id})">
+            <span class="match3-level-num">${lv.id}</span>
+            <span class="match3-level-stars">${'★'.repeat(stars)}${'☆'.repeat(3 - stars)}</span>
+        </button>`;
+    }).join('');
+}
+
+function startMatch3Level(id) {
+    const level = MATCH3_LEVELS.find(l => l.id === id);
+    if (!level) return;
+    match3CurrentLevel = level;
+    match3IngredientsCollected = 0;
     match3Score = 0;
-    match3MovesLeft = MATCH3_MOVES;
+    match3MovesLeft = level.moves;
     match3Selected = null;
     match3Busy = false;
     match3Running = true;
+
+    match3GenerateBoardForLevel(level);
+
+    document.getElementById('match3-level-select').style.display = 'none';
+    document.getElementById('match3-score-row').style.display = 'flex';
+    document.getElementById('match3-objectives').style.display = 'flex';
+    document.getElementById('match3-wrap').style.display = 'block';
+    document.getElementById('match3-overlay').style.display = 'none';
     document.getElementById('match3-score').textContent = '0';
     document.getElementById('match3-moves').textContent = match3MovesLeft;
+    document.getElementById('match3-level-label').textContent = t('match3_level_n', { n: id });
 
+    renderMatch3Objectives();
     const allTiles = new Set();
     for (let y = 0; y < MATCH3_SIZE; y++) {
-        for (let x = 0; x < MATCH3_SIZE; x++) allTiles.add(y + ',' + x);
+        for (let x = 0; x < MATCH3_SIZE; x++) if (!match3Hole[y][x]) allTiles.add(y + ',' + x);
     }
     match3Render(allTiles);
 }
 
 function match3ClickCell(x, y) {
     if (!match3Running || match3Busy) return;
+    if (match3Hole[y][x] || match3Chocolate[y][x]) return;
     if (!match3Selected) {
         match3Selected = { x, y };
         match3Render();
@@ -935,6 +1280,45 @@ function match3ClickCell(x, y) {
     attemptMatch3Swap(match3Selected.x, match3Selected.y, x, y);
 }
 
+/* Re-rolls just the candy layout (any cell that isn't a hole, chocolate, or
+   an uncollected ingredient) — used when a board has no valid moves left.
+   Unlike match3GenerateBoardForLevel, this never touches jelly/chocolate/
+   hole state, since those represent progress the player has already made. */
+function match3ReshuffleCandies() {
+    const size = MATCH3_SIZE;
+    let tries = 0;
+    do {
+        for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+                if (match3Hole[y][x] || match3Chocolate[y][x] || match3Board[y][x] === MATCH3_INGREDIENT_SYMBOL) continue;
+                match3Board[y][x] = match3RandomSymbol();
+                match3Special[y][x] = null;
+            }
+        }
+        tries++;
+    } while (match3FindMatches(match3Board).size > 0 && tries < 50);
+}
+
+/* Runs after every resolved move: checks win/loss first (so clearing the
+   last objective on this move always wins, even if chocolate would
+   otherwise regrow right after), then lets chocolate creep, refreshes the
+   HUD, and reshuffles a dead board. Shared by the normal swap path and the
+   rainbow-bomb path. */
+async function match3FinishTurn() {
+    renderMatch3Objectives();
+    document.getElementById('match3-moves').textContent = match3MovesLeft;
+    if (match3CheckLevelState()) return;
+    if (match3SpreadChocolate()) {
+        match3Render();
+        renderMatch3Objectives();
+    }
+    if (match3CheckLevelState()) return;
+    if (!match3HasValidMove(match3Board)) {
+        match3ReshuffleCandies();
+        match3Render();
+    }
+}
+
 async function attemptMatch3Swap(x1, y1, x2, y2) {
     match3Busy = true;
 
@@ -944,13 +1328,8 @@ async function attemptMatch3Swap(x1, y1, x2, y2) {
         const [by, bx] = bombFirst ? [y1, x1] : [y2, x2];
         const [oy, ox] = bombFirst ? [y2, x2] : [y1, x1];
         await match3DetonateBomb(by, bx, oy, ox);
+        await match3FinishTurn();
         match3Busy = false;
-        if (!match3HasValidMove(match3Board)) {
-            match3Board = match3GenerateBoard();
-            match3Special = match3EmptySpecialGrid();
-            match3Render();
-        }
-        if (match3MovesLeft <= 0) endMatch3();
         return;
     }
 
@@ -970,29 +1349,21 @@ async function attemptMatch3Swap(x1, y1, x2, y2) {
     playSound(true);
     match3Selected = null;
     match3MovesLeft--;
-    document.getElementById('match3-moves').textContent = match3MovesLeft;
 
     await match3ClearRuns(runs, [[y1, x1], [y2, x2]]);
     await match3ResolveCascade();
+    await match3FinishTurn();
     match3Busy = false;
-
-    if (!match3HasValidMove(match3Board)) {
-        match3Board = match3GenerateBoard();
-        match3Special = match3EmptySpecialGrid();
-        match3Render();
-    }
-    if (match3MovesLeft <= 0) endMatch3();
 }
 
 /* Detonating a rainbow candy: whatever it's swapped with decides the target
    color, then every candy of that color (plus the rainbow candy itself)
-   clears, chaining into any specials caught in that clear. */
+   clears, chaining into any specials and adjacent chocolate it catches. */
 async function match3DetonateBomb(by, bx, oy, ox) {
     const targetSymbol = match3Board[oy][ox];
     match3Selected = null;
     playSound(true);
     match3MovesLeft--;
-    document.getElementById('match3-moves').textContent = match3MovesLeft;
 
     let clearSet = new Set([by + ',' + bx]);
     for (let y = 0; y < MATCH3_SIZE; y++) {
@@ -1001,11 +1372,14 @@ async function match3DetonateBomb(by, bx, oy, ox) {
         }
     }
     clearSet = match3ExpandSpecials(clearSet);
+    clearSet.forEach(key => { const [y, x] = key.split(',').map(Number); match3DamageJelly(y, x); });
+    const chocoCleared = match3ClearAdjacentChocolate(clearSet);
 
-    match3Score += clearSet.size * 15;
+    match3Score += clearSet.size * 15 + chocoCleared.size * 20;
     document.getElementById('match3-score').textContent = match3Score;
+    const renderSet = new Set([...clearSet, ...chocoCleared]);
     match3Render();
-    match3RenderClearing(clearSet);
+    match3RenderClearing(renderSet);
     await new Promise(r => setTimeout(r, 220));
 
     clearSet.forEach(key => {
@@ -1013,7 +1387,7 @@ async function match3DetonateBomb(by, bx, oy, ox) {
         match3Board[y][x] = null;
         match3Special[y][x] = null;
     });
-    const newTiles = match3ApplyGravity(match3Board, match3Special);
+    const newTiles = match3ApplyGravity();
     match3Render(newTiles);
     await new Promise(r => setTimeout(r, 150));
 }
@@ -1025,13 +1399,16 @@ async function match3ClearRuns(runs, preferCells, cascadeLevel) {
     const special = match3PlanSpecial(runs, preferCells);
     matches = match3ExpandSpecials(matches);
     if (special) matches.delete(special.cell[0] + ',' + special.cell[1]);
+    matches.forEach(key => { const [y, x] = key.split(',').map(Number); match3DamageJelly(y, x); });
+    const chocoCleared = match3ClearAdjacentChocolate(matches);
 
-    match3Score += matches.size * 10 * (cascadeLevel || 1);
+    match3Score += matches.size * 10 * (cascadeLevel || 1) + chocoCleared.size * 20;
     document.getElementById('match3-score').textContent = match3Score;
     if (cascadeLevel >= 2) match3ShowCombo(cascadeLevel);
 
+    const renderSet = new Set([...matches, ...chocoCleared]);
     match3Render();
-    match3RenderClearing(matches);
+    match3RenderClearing(renderSet);
     await new Promise(r => setTimeout(r, 200));
 
     matches.forEach(key => {
@@ -1044,8 +1421,9 @@ async function match3ClearRuns(runs, preferCells, cascadeLevel) {
         match3Special[ky][kx] = special.type;
         if (special.type === 'bomb') match3Board[ky][kx] = MATCH3_BOMB_SYMBOL;
     }
-    const newTiles = match3ApplyGravity(match3Board, match3Special);
+    const newTiles = match3ApplyGravity();
     match3Render(newTiles);
+    renderMatch3Objectives();
     await new Promise(r => setTimeout(r, 150));
 }
 
@@ -1057,21 +1435,6 @@ async function match3ResolveCascade() {
         cascadeLevel++;
         await match3ClearRuns(runs, [], cascadeLevel);
     }
-}
-
-function endMatch3() {
-    match3Running = false;
-    saveMatch3HighScore(match3Score);
-    document.getElementById('match3-highscore').textContent = getMatch3HighScore();
-    const isNewBest = match3Score > 0 && match3Score === getMatch3HighScore();
-    const overlay = document.getElementById('match3-overlay');
-    overlay.innerHTML = `
-        <p>${t('game_over')}</p>
-        <p>${t('game_final_score', { n: match3Score })}</p>
-        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
-        <button class="btn next-btn" onclick="startMatch3()">${t('game_restart')}</button>
-    `;
-    overlay.style.display = 'flex';
 }
 
 /* ===================== 🟩 Wordle ===================== */

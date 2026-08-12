@@ -384,6 +384,94 @@
 }
 
 /* ---- Match-3 (糖果消消樂) ---- */
+.match3-level-select {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    max-width: 360px;
+    margin: 8px auto 0;
+}
+.match3-level-node {
+    position: relative;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    background: linear-gradient(135deg, #f43f5e, #a21caf);
+    box-shadow: 0 0 0 1px var(--nav-border), 0 4px 12px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.match3-level-node:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 0 0 1px var(--accent-pink), 0 8px 18px rgba(0,0,0,0.35);
+}
+.match3-level-node.cleared {
+    background: linear-gradient(135deg, #fbbf24, #ea580c);
+}
+.match3-level-node.locked {
+    background: rgba(255,255,255,0.05);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    font-size: 1.3rem;
+    opacity: 0.5;
+    cursor: default;
+    color: var(--text-secondary);
+}
+.match3-level-num {
+    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.35);
+}
+.match3-level-stars {
+    font-size: 0.7rem;
+    color: #fde047;
+    letter-spacing: 1px;
+}
+
+.match3-objectives {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 4px 0 10px;
+}
+.match3-objective {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.06);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--text);
+}
+.match3-objective.done {
+    background: rgba(74,222,128,0.18);
+    box-shadow: inset 0 0 0 1px rgba(74,222,128,0.5);
+    color: #4ade80;
+}
+
+.match3-overlay-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+.match3-stars-result {
+    font-size: 1.8rem;
+    color: #fde047;
+    letter-spacing: 4px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
 .match3-wrap {
     position: relative;
     max-width: 340px;
@@ -438,6 +526,54 @@
 .match3-cell.selected .match3-candy {
     transform: scale(0.88);
 }
+.match3-cell.hole {
+    background: transparent;
+    box-shadow: none;
+    cursor: default;
+}
+.match3-cell.hole::before {
+    display: none;
+}
+
+.match3-jelly {
+    position: absolute;
+    inset: 8%;
+    border-radius: 6px;
+    background: rgba(168,85,247,0.4);
+    box-shadow: inset 0 0 0 2px rgba(216,180,254,0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
+    color: #fff;
+    z-index: 0;
+}
+
+.match3-cell.chocolate {
+    background: rgba(0,0,0,0.15);
+}
+.match3-chocolate {
+    position: relative;
+    width: 78%;
+    height: 78%;
+    border-radius: 8px;
+    background: linear-gradient(160deg, #6b4226, #3d2313);
+    box-shadow: inset 0 -3px 4px rgba(0,0,0,0.4), inset 0 2px 3px rgba(255,255,255,0.15), 0 2px 3px rgba(0,0,0,0.3);
+}
+.match3-chocolate::before,
+.match3-chocolate::after {
+    content: '';
+    position: absolute;
+    background: rgba(0,0,0,0.35);
+}
+.match3-chocolate::before { top: 20%; left: 15%; width: 55%; height: 10%; transform: rotate(-12deg); border-radius: 2px; }
+.match3-chocolate::after { top: 55%; left: 30%; width: 45%; height: 10%; transform: rotate(10deg); border-radius: 2px; }
+
+.match3-candy.ingredient {
+    box-shadow: inset 0 -3px 4px rgba(0,0,0,0.25), inset 0 2px 3px rgba(255,255,255,0.55), 0 0 6px 2px rgba(220,38,38,0.55);
+}
+
 .match3-candy {
     position: relative;
     width: 84%;
