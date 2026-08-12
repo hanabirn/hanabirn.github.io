@@ -86,4 +86,5 @@ I18N.zh = {
         notes_empty_filter: '這個分類還沒有筆記。',
         notes_attach: '附加照片/檔案', notes_attach_remove: '移除附件', notes_file_too_large: '檔案太大了（上限 {n}MB）',
         notes_cat_new_placeholder: '新增分類名稱...', notes_cat_new_add: '＋ 新增', notes_cat_delete: '刪除分類', notes_cat_delete_confirm: '確定要刪除這個分類嗎？使用這個分類的筆記會變成未分類。',
+        notes_search_placeholder: '搜尋筆記...', notes_empty_search: '找不到符合的筆記。', notes_pin: '釘選', notes_unpin: '取消釘選',
 };

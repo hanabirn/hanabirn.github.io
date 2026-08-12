@@ -4,6 +4,7 @@ const NOTES_KEY = 'notepad_notes';
 const NOTES_CATEGORIES_KEY = 'notepad_categories';
 const NOTE_ATTACHMENT_MAX_MB = 20;
 let notesFilter = 'all'; // 'all' | 'none' | a category id
+let notesSearch = '';
 
 function getNotes() {
     try { return JSON.parse(localStorage.getItem(NOTES_KEY)) || []; } catch { return []; }
@@ -230,6 +231,20 @@ function updateNoteCategory(id, category) {
     renderNotes();
 }
 
+function togglePinNote(id) {
+    const notes = getNotes();
+    const note = notes.find(n => n.id === id);
+    if (!note) return;
+    note.pinned = !note.pinned;
+    saveNotesData(notes);
+    renderNotes();
+}
+
+function handleNotesSearch(value) {
+    notesSearch = (value || '').trim().toLowerCase();
+    renderNotes();
+}
+
 function deleteNote(id) {
     if (!confirm(t('notes_delete_confirm'))) return;
     saveNotesData(getNotes().filter(n => n.id !== id));
@@ -293,21 +308,28 @@ function renderNotes() {
         return;
     }
 
-    const notes = notesFilter === 'all' ? allNotes
+    let notes = notesFilter === 'all' ? allNotes
         : notesFilter === 'none' ? allNotes.filter(n => !n.category)
         : allNotes.filter(n => n.category === notesFilter);
+    if (notesSearch) {
+        notes = notes.filter(n => n.text.toLowerCase().includes(notesSearch));
+    }
     if (!notes.length) {
-        list.innerHTML = `<div class="guestbook-empty">${t('notes_empty_filter')}</div>`;
+        list.innerHTML = `<div class="guestbook-empty">${t(notesSearch ? 'notes_empty_search' : 'notes_empty_filter')}</div>`;
         return;
     }
+    notes = notes.slice().sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0));
 
     list.innerHTML = notes.map(n => `
-        <div class="notes-item">
+        <div class="notes-item${n.pinned ? ' pinned' : ''}">
             <div class="notes-item-top">
                 <select class="notes-item-category" data-id="${n.id}" onchange="updateNoteCategory(${n.id}, this.value)">
                     ${renderNoteCategoryOptions(n.category || '')}
                 </select>
-                <button type="button" class="notes-item-delete" onclick="deleteNote(${n.id})" title="${t('notes_delete')}">&#x1F5D1;&#xFE0F;</button>
+                <div class="notes-item-actions">
+                    <button type="button" class="notes-item-pin${n.pinned ? ' active' : ''}" onclick="togglePinNote(${n.id})" title="${t(n.pinned ? 'notes_unpin' : 'notes_pin')}">&#x1F4CC;</button>
+                    <button type="button" class="notes-item-delete" onclick="deleteNote(${n.id})" title="${t('notes_delete')}">&#x1F5D1;&#xFE0F;</button>
+                </div>
             </div>
             <textarea class="notes-item-text" data-id="${n.id}" oninput="autoGrowNote(this)" onchange="updateNote(${n.id}, this.value)"></textarea>
             <div class="notes-item-attachments" data-note-id="${n.id}"></div>

@@ -86,4 +86,5 @@ I18N.fr = {
         notes_empty_filter: "Pas encore de note dans cette catégorie.",
         notes_attach: 'Joindre une photo/un fichier', notes_attach_remove: 'Supprimer la pièce jointe', notes_file_too_large: 'Fichier trop volumineux (max {n}Mo)',
         notes_cat_new_placeholder: 'Nom de la nouvelle catégorie...', notes_cat_new_add: '+ Ajouter', notes_cat_delete: 'Supprimer la catégorie', notes_cat_delete_confirm: 'Supprimer cette catégorie ? Les notes qui l\'utilisent deviendront sans catégorie.',
+        notes_search_placeholder: 'Rechercher des notes...', notes_empty_search: 'Aucune note ne correspond.', notes_pin: 'Épingler', notes_unpin: 'Désépingler',
 };

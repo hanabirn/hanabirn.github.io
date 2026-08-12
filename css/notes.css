@@ -132,6 +132,24 @@
     opacity: 1;
 }
 
+.notes-search-input {
+    display: block;
+    width: 100%;
+    margin-top: 12px;
+    padding: 9px 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border-input);
+    background-color: var(--bg-input);
+    color: var(--text);
+    font-size: 0.85rem;
+    font-family: inherit;
+}
+.notes-search-input:focus {
+    outline: none;
+    border-color: var(--accent-light-purple);
+    box-shadow: 0 0 15px rgba(192,132,252,0.25);
+}
+
 .notes-list {
     margin-top: 16px;
     display: flex;
@@ -146,6 +164,10 @@
     padding: 10px 14px;
     animation: fadeSlideIn 0.3s ease;
 }
+.notes-item.pinned {
+    border-color: var(--accent-purple);
+    background: rgba(var(--accent-purple-rgb),0.1);
+}
 
 .notes-item-top {
     display: flex;
@@ -153,6 +175,32 @@
     justify-content: space-between;
     gap: 8px;
     margin-bottom: 8px;
+}
+
+.notes-item-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+}
+
+.notes-item-pin {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 0.95rem;
+    opacity: 0.4;
+    transition: opacity 0.2s, transform 0.2s;
+    padding: 2px 4px;
+    line-height: 1;
+    transform: rotate(30deg);
+}
+.notes-item-pin:hover {
+    opacity: 0.8;
+}
+.notes-item-pin.active {
+    opacity: 1;
+    transform: rotate(0deg);
 }
 
 .notes-item-category {

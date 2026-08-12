@@ -86,4 +86,5 @@ I18N.es = {
         notes_empty_filter: 'Todavía no hay notas en esta categoría.',
         notes_attach: 'Adjuntar foto/archivo', notes_attach_remove: 'Quitar adjunto', notes_file_too_large: 'El archivo es demasiado grande (máx. {n}MB)',
         notes_cat_new_placeholder: 'Nombre de la nueva categoría...', notes_cat_new_add: '+ Añadir', notes_cat_delete: 'Eliminar categoría', notes_cat_delete_confirm: '¿Eliminar esta categoría? Las notas que la usen quedarán sin categoría.',
+        notes_search_placeholder: 'Buscar notas...', notes_empty_search: 'No hay notas que coincidan.', notes_pin: 'Fijar', notes_unpin: 'Dejar de fijar',
 };

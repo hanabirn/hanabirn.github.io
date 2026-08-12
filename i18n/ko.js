@@ -86,4 +86,5 @@ I18N.ko = {
         notes_empty_filter: '이 분류에는 아직 메모가 없어요.',
         notes_attach: '사진/파일 첨부', notes_attach_remove: '첨부 삭제', notes_file_too_large: '파일이 너무 커요 (최대 {n}MB)',
         notes_cat_new_placeholder: '새 분류 이름...', notes_cat_new_add: '＋ 추가', notes_cat_delete: '분류 삭제', notes_cat_delete_confirm: '이 분류를 삭제할까요? 사용 중이던 메모는 미분류가 됩니다.',
+        notes_search_placeholder: '메모 검색...', notes_empty_search: '일치하는 메모가 없어요.', notes_pin: '고정', notes_unpin: '고정 해제',
 };

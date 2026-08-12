@@ -86,4 +86,5 @@ I18N.ru = {
         notes_empty_filter: 'В этой категории пока нет заметок.',
         notes_attach: 'Прикрепить фото/файл', notes_attach_remove: 'Удалить вложение', notes_file_too_large: 'Файл слишком большой (макс. {n}МБ)',
         notes_cat_new_placeholder: 'Название новой категории...', notes_cat_new_add: '+ Добавить', notes_cat_delete: 'Удалить категорию', notes_cat_delete_confirm: 'Удалить эту категорию? Заметки в ней станут без категории.',
+        notes_search_placeholder: 'Поиск заметок...', notes_empty_search: 'Ничего не найдено.', notes_pin: 'Закрепить', notes_unpin: 'Открепить',
 };

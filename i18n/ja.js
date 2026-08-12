@@ -86,4 +86,5 @@ I18N.ja = {
         notes_empty_filter: 'このカテゴリにはまだメモがありません。',
         notes_attach: '写真・ファイルを添付', notes_attach_remove: '添付を削除', notes_file_too_large: 'ファイルが大きすぎます（上限 {n}MB）',
         notes_cat_new_placeholder: '新しいカテゴリ名...', notes_cat_new_add: '＋ 追加', notes_cat_delete: 'カテゴリを削除', notes_cat_delete_confirm: 'このカテゴリを削除しますか？使用中のメモは未分類になります。',
+        notes_search_placeholder: 'メモを検索...', notes_empty_search: '該当するメモが見つかりません。', notes_pin: 'ピン留め', notes_unpin: 'ピン留め解除',
 };

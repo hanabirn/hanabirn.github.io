@@ -86,4 +86,5 @@ I18N.en = {
         notes_empty_filter: 'No notes in this category yet.',
         notes_attach: 'Attach photo/file', notes_attach_remove: 'Remove attachment', notes_file_too_large: 'File is too large (max {n}MB)',
         notes_cat_new_placeholder: 'New category name...', notes_cat_new_add: '+ Add', notes_cat_delete: 'Delete category', notes_cat_delete_confirm: 'Delete this category? Notes using it will become uncategorized.',
+        notes_search_placeholder: 'Search notes...', notes_empty_search: 'No notes match your search.', notes_pin: 'Pin', notes_unpin: 'Unpin',
 };

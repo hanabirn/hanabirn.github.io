@@ -86,4 +86,5 @@ I18N.de = {
         notes_empty_filter: 'Noch keine Notizen in dieser Kategorie.',
         notes_attach: 'Foto/Datei anhängen', notes_attach_remove: 'Anhang entfernen', notes_file_too_large: 'Datei ist zu groß (max. {n}MB)',
         notes_cat_new_placeholder: 'Name der neuen Kategorie...', notes_cat_new_add: '+ Hinzufügen', notes_cat_delete: 'Kategorie löschen', notes_cat_delete_confirm: 'Diese Kategorie löschen? Notizen darin werden unkategorisiert.',
+        notes_search_placeholder: 'Notizen durchsuchen...', notes_empty_search: 'Keine passenden Notizen gefunden.', notes_pin: 'Anheften', notes_unpin: 'Loslösen',
 };
