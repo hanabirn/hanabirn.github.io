@@ -15,7 +15,7 @@ I18N.ja = {
         flashcard_title: '📖 単語カード', flashcard_known: '✅ 覚えた', flashcard_unknown: '❌ まだ',
         flashcard_mode_title: '表示方法を選択',
         listening_hint: '聞いてみよう...', listening_placeholder: '聞こえた単語を入力...', listening_submit: '送信',
-        mistake_title: '📖 間違いノート', mistake_empty: '間違えた単語はありません。その調子！✨', mistake_review: '間違いを復習', mistake_clear: 'クリア', mistake_need4: '復習には4個以上の間違いが必要です',
+        mistake_title: '📖 間違いノート', mistake_empty: '間違えた単語はありません。その調子！✨', mistake_review: '間違いを復習', mistake_clear: 'クリア', mistake_need4: '復習には4個以上の間違いが必要です', mistake_prev: '前へ', mistake_next: '次へ',
         review_label: '📖 間違い復習',
         tab_settings_title: '⚙️ 表示設定', tab_settings_desc: 'ナビゲーションバーに表示するページを選んでください', tab_settings_copy: '🔗 現在の設定のリンクをコピー', tab_settings_copied: 'リンクをコピーしました！', tab_settings_reset: '↺ すべて表示', tab_settings_done: '完了', tab_settings_need_one: '少なくとも1つのページを表示する必要があります', tab_settings_locked: 'このページは常に表示され、非表示にできません',
         stats_title: '📊 テスト統計', stats_empty: 'まだ記録がありません。テストに挑戦しよう！', stats_total: 'テスト回数', stats_avg: '平均正解率', stats_best: '最高得点', stats_questions: '総回答数',

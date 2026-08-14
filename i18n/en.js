@@ -15,7 +15,7 @@ I18N.en = {
         flashcard_title: '📖 Flashcards', flashcard_known: '✅ Known', flashcard_unknown: '❌ Unknown',
         flashcard_mode_title: 'Display Mode',
         listening_hint: 'Listen carefully...', listening_placeholder: 'Type the word you hear...', listening_submit: 'Submit',
-        mistake_title: '📖 Mistake Notebook', mistake_empty: 'No mistakes yet. Keep it up! ✨', mistake_review: 'Review Mistakes', mistake_clear: 'Clear', mistake_need4: 'Need at least 4 mistakes to review',
+        mistake_title: '📖 Mistake Notebook', mistake_empty: 'No mistakes yet. Keep it up! ✨', mistake_review: 'Review Mistakes', mistake_clear: 'Clear', mistake_need4: 'Need at least 4 mistakes to review', mistake_prev: 'Prev', mistake_next: 'Next',
         review_label: '📖 Mistake Review',
         tab_settings_title: '⚙️ Display Settings', tab_settings_desc: 'Choose which pages to show in the navigation bar', tab_settings_copy: '🔗 Copy link with current settings', tab_settings_copied: 'Link copied!', tab_settings_reset: '↺ Show all', tab_settings_done: 'Done', tab_settings_need_one: 'At least one page must stay visible', tab_settings_locked: 'This page is always shown and cannot be hidden',
         stats_title: '📊 Quiz Stats', stats_empty: 'No quiz records yet. Go take a quiz!', stats_total: 'Quizzes', stats_avg: 'Avg Accuracy', stats_best: 'Best Score', stats_questions: 'Total Questions',

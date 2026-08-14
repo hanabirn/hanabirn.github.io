@@ -15,7 +15,7 @@ I18N.es = {
         flashcard_title: '📖 Tarjetas', flashcard_known: '✅ Dominado', flashcard_unknown: '❌ Desconocido',
         flashcard_mode_title: 'Modo de visualización',
         listening_hint: 'Escucha bien...', listening_placeholder: 'Escribe la palabra...', listening_submit: 'Enviar',
-        mistake_title: '📖 Cuaderno de errores', mistake_empty: 'Sin errores. ¡Sigue así! ✨', mistake_review: 'Repasar errores', mistake_clear: 'Vaciar', mistake_need4: 'Se necesitan al menos 4 errores para repasar',
+        mistake_title: '📖 Cuaderno de errores', mistake_empty: 'Sin errores. ¡Sigue así! ✨', mistake_review: 'Repasar errores', mistake_clear: 'Vaciar', mistake_need4: 'Se necesitan al menos 4 errores para repasar', mistake_prev: 'Anterior', mistake_next: 'Siguiente',
         review_label: '📖 Repaso de errores',
         tab_settings_title: '⚙️ Ajustes de visualización', tab_settings_desc: 'Elige qué páginas mostrar en la barra de navegación', tab_settings_copy: '🔗 Copiar enlace con la configuración actual', tab_settings_copied: '¡Enlace copiado!', tab_settings_reset: '↺ Mostrar todo', tab_settings_done: 'Listo', tab_settings_need_one: 'Debe quedar al menos una página visible', tab_settings_locked: 'Esta página siempre se muestra y no se puede ocultar',
         stats_title: '📊 Estadísticas de quiz', stats_empty: '¡Sin registros aún. Haz un quiz!', stats_total: 'Quizzes', stats_avg: 'Precisión media', stats_best: 'Mejor puntuación', stats_questions: 'Preguntas totales',

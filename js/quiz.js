@@ -348,6 +348,8 @@ function selectExamSet(examId) {
     const setupCard = document.getElementById('setup-card');
     const statusMsg = document.getElementById('status-msg');
     setupCard.style.display = 'block';
+    document.getElementById('mistake-card').style.display = 'none';
+    document.getElementById('stats-card').style.display = 'none';
     statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
     statusMsg.style.color = '#c8a2e0';
 
@@ -401,6 +403,8 @@ function loadSheetData(url) {
     const statusMsg = document.getElementById('status-msg');
     const setupCard = document.getElementById('setup-card');
     setupCard.style.display = 'block';
+    document.getElementById('mistake-card').style.display = 'none';
+    document.getElementById('stats-card').style.display = 'none';
 
     const sheetId = extractSheetId(url);
     if (!sheetId) {
@@ -640,7 +644,7 @@ function refreshDynamicContent() {
             });
         }
     }
-    if (isVisible('mistake-card')) showMistakeBook();
+    if (isVisible('mistake-card')) renderMistakeBook();
     if (isVisible('stats-card')) showQuizStats();
 }
 
@@ -658,6 +662,8 @@ function showModeSelection() {
     document.getElementById('quiz-card').style.display = 'none';
     document.getElementById('result-card').style.display = 'none';
     document.getElementById('flashcard-card').style.display = 'none';
+    document.getElementById('mistake-card').style.display = 'none';
+    document.getElementById('stats-card').style.display = 'none';
     quizTimerSec = 0;
     stopTimer();
 
@@ -747,6 +753,8 @@ function showChineseSelection() {
     document.getElementById('mode-card').style.display = 'block';
     document.getElementById('quiz-card').style.display = 'none';
     document.getElementById('result-card').style.display = 'none';
+    document.getElementById('mistake-card').style.display = 'none';
+    document.getElementById('stats-card').style.display = 'none';
 
     zhCharType = '';
     zhTestType = '';
@@ -1289,8 +1297,12 @@ function updateMistakeBadge() {
     badge.style.display = n > 0 ? '' : 'none';
 }
 
+const MISTAKE_PAGE_SIZE = 8;
+let mistakePageByLang = {};
+
 function showMistakeBook() {
     reviewMode = false;
+    mistakePageByLang = {};
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('setup-card').style.display = 'none';
     document.getElementById('mode-card').style.display = 'none';
@@ -1298,6 +1310,11 @@ function showMistakeBook() {
     document.getElementById('result-card').style.display = 'none';
     document.getElementById('stats-card').style.display = 'none';
     document.getElementById('mistake-card').style.display = 'block';
+    renderMistakeBook();
+}
+
+function changeMistakePage(lang, dir) {
+    mistakePageByLang[lang] = (mistakePageByLang[lang] || 1) + dir;
     renderMistakeBook();
 }
 
@@ -1314,6 +1331,15 @@ function renderMistakeBook() {
         const items = list.map((m, i) => ({ m, i })).filter(x => x.m.lang === lg);
         if (items.length === 0) return;
         items.sort((a, b) => b.m.last - a.m.last);
+
+        const totalPages = Math.ceil(items.length / MISTAKE_PAGE_SIZE);
+        let page = mistakePageByLang[lg] || 1;
+        if (page < 1) page = 1;
+        if (page > totalPages) page = totalPages;
+        mistakePageByLang[lg] = page;
+        const start = (page - 1) * MISTAKE_PAGE_SIZE;
+        const pageItems = items.slice(start, start + MISTAKE_PAGE_SIZE);
+
         html += `<div class="mistake-group">
             <div class="mistake-group-header">
                 <span class="mistake-group-name">${QUIZ_LANG_FLAGS[lg] || ''} ${t('quiz_' + lg)}（${items.length}）</span>
@@ -1323,7 +1349,7 @@ function renderMistakeBook() {
                 </span>
             </div>
             <div class="mistake-items">`;
-        items.forEach(x => {
+        pageItems.forEach(x => {
             html += `<div class="mistake-item">
                 <span class="mistake-word">${escQ(x.m.word)}</span>
                 <span class="mistake-answer">${escQ(x.m.answer)}</span>
@@ -1331,7 +1357,15 @@ function renderMistakeBook() {
                 <button class="mistake-del" onclick="deleteMistakeAt(${x.i})" title="delete">✕</button>
             </div>`;
         });
-        html += `</div></div>`;
+        html += `</div>`;
+        if (totalPages > 1) {
+            html += `<div class="mistake-pagination">
+                <button class="mistake-page-btn" onclick="changeMistakePage('${lg}', -1)" ${page <= 1 ? 'disabled' : ''}>◀ ${t('mistake_prev')}</button>
+                <span class="mistake-page-info">${page} / ${totalPages}</span>
+                <button class="mistake-page-btn" onclick="changeMistakePage('${lg}', 1)" ${page >= totalPages ? 'disabled' : ''}>${t('mistake_next')} ▶</button>
+            </div>`;
+        }
+        html += `</div>`;
     });
     container.innerHTML = html;
 }

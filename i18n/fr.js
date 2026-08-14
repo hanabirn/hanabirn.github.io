@@ -15,7 +15,7 @@ I18N.fr = {
         flashcard_title: '📖 Cartes mémoire', flashcard_known: '✅ Maîtrisé', flashcard_unknown: '❌ Inconnu',
         flashcard_mode_title: "Choisir l'affichage",
         listening_hint: 'Écoutez bien...', listening_placeholder: 'Tapez le mot entendu...', listening_submit: 'Valider',
-        mistake_title: '📖 Carnet d\'erreurs', mistake_empty: 'Aucune erreur. Continue ! ✨', mistake_review: 'Réviser les erreurs', mistake_clear: 'Vider', mistake_need4: 'Au moins 4 erreurs nécessaires pour réviser',
+        mistake_title: '📖 Carnet d\'erreurs', mistake_empty: 'Aucune erreur. Continue ! ✨', mistake_review: 'Réviser les erreurs', mistake_clear: 'Vider', mistake_need4: 'Au moins 4 erreurs nécessaires pour réviser', mistake_prev: 'Précédent', mistake_next: 'Suivant',
         review_label: '📖 Révision des erreurs',
         tab_settings_title: '⚙️ Paramètres d\'affichage', tab_settings_desc: 'Choisissez les pages à afficher dans la barre de navigation', tab_settings_copy: '🔗 Copier le lien avec les réglages actuels', tab_settings_copied: 'Lien copié !', tab_settings_reset: '↺ Tout afficher', tab_settings_done: 'Terminé', tab_settings_need_one: 'Au moins une page doit rester visible', tab_settings_locked: 'Cette page est toujours affichée et ne peut pas être masquée',
         stats_title: '📊 Statistiques de quiz', stats_empty: 'Aucun enregistrement. Fais un quiz !', stats_total: 'Quiz', stats_avg: 'Précision moyenne', stats_best: 'Meilleur score', stats_questions: 'Questions totales',

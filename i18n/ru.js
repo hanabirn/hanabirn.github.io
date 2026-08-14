@@ -15,7 +15,7 @@ I18N.ru = {
         flashcard_title: '📖 Карточки', flashcard_known: '✅ Выучено', flashcard_unknown: '❌ Незнакомо',
         flashcard_mode_title: 'Выберите отображение',
         listening_hint: 'Послушайте...', listening_placeholder: 'Введите слово...', listening_submit: 'Отправить',
-        mistake_title: '📖 Тетрадь ошибок', mistake_empty: 'Ошибок пока нет. Так держать! ✨', mistake_review: 'Повторить ошибки', mistake_clear: 'Очистить', mistake_need4: 'Нужно минимум 4 ошибки для повторения',
+        mistake_title: '📖 Тетрадь ошибок', mistake_empty: 'Ошибок пока нет. Так держать! ✨', mistake_review: 'Повторить ошибки', mistake_clear: 'Очистить', mistake_need4: 'Нужно минимум 4 ошибки для повторения', mistake_prev: 'Назад', mistake_next: 'Вперёд',
         review_label: '📖 Повторение ошибок',
         tab_settings_title: '⚙️ Настройки отображения', tab_settings_desc: 'Выберите страницы для отображения в панели навигации', tab_settings_copy: '🔗 Скопировать ссылку с текущими настройками', tab_settings_copied: 'Ссылка скопирована!', tab_settings_reset: '↺ Показать всё', tab_settings_done: 'Готово', tab_settings_need_one: 'Должна остаться видимой хотя бы одна страница', tab_settings_locked: 'Эта страница всегда отображается и не может быть скрыта',
         stats_title: '📊 Статистика тестов', stats_empty: 'Записей пока нет. Пройдите тест!', stats_total: 'Тестов', stats_avg: 'Средняя точность', stats_best: 'Лучший счёт', stats_questions: 'Всего вопросов',

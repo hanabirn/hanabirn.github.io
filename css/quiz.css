@@ -574,6 +574,39 @@
     color: #ff5252;
     background: rgba(255,82,82,0.1);
 }
+.mistake-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    margin-top: 10px;
+}
+.mistake-page-btn {
+    background: rgba(var(--accent-purple-rgb),0.1);
+    color: var(--text-accent);
+    border: 1px solid var(--border-card);
+    padding: 6px 16px;
+    border-radius: 18px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+.mistake-page-btn:hover:not(:disabled) {
+    background: rgba(var(--accent-purple-rgb),0.25);
+    color: var(--text);
+    border-color: var(--accent-purple);
+    transform: translateY(-1px);
+}
+.mistake-page-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+}
+.mistake-page-info {
+    color: var(--text-dim2);
+    font-size: 0.82rem;
+    min-width: 40px;
+    text-align: center;
+}
 
 /* ===== Quiz Stats ===== */
 .stats-summary {

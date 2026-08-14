@@ -15,7 +15,7 @@ I18N.ko = {
         flashcard_title: '📖 단어 카드', flashcard_known: '✅ 암기 완료', flashcard_unknown: '❌ 모르는 것',
         flashcard_mode_title: '표시 방식 선택',
         listening_hint: '들어보세요...', listening_placeholder: '들리는 단어를 입력...', listening_submit: '제출',
-        mistake_title: '📖 오답 노트', mistake_empty: '오답이 없습니다. 계속 화이팅! ✨', mistake_review: '오답 복습', mistake_clear: '비우기', mistake_need4: '복습하려면 오답이 4개 이상 필요합니다',
+        mistake_title: '📖 오답 노트', mistake_empty: '오답이 없습니다. 계속 화이팅! ✨', mistake_review: '오답 복습', mistake_clear: '비우기', mistake_need4: '복습하려면 오답이 4개 이상 필요합니다', mistake_prev: '이전', mistake_next: '다음',
         review_label: '📖 오답 복습',
         tab_settings_title: '⚙️ 표시 설정', tab_settings_desc: '내비게이션 바에 표시할 페이지를 선택하세요', tab_settings_copy: '🔗 현재 설정 링크 복사', tab_settings_copied: '링크가 복사되었습니다!', tab_settings_reset: '↺ 모두 표시', tab_settings_done: '완료', tab_settings_need_one: '최소 하나의 페이지는 표시되어야 합니다', tab_settings_locked: '이 페이지는 항상 표시되며 숨길 수 없습니다',
         stats_title: '📊 퀴즈 통계', stats_empty: '아직 기록이 없습니다. 퀴즈에 도전하세요!', stats_total: '퀴즈 횟수', stats_avg: '평균 정답률', stats_best: '최고 점수', stats_questions: '총 문제 수',

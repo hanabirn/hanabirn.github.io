@@ -15,7 +15,7 @@ I18N.de = {
         flashcard_title: '📖 Karteikarten', flashcard_known: '✅ Gelernt', flashcard_unknown: '❌ Unbekannt',
         flashcard_mode_title: 'Anzeigemodus wählen',
         listening_hint: 'Hör gut zu...', listening_placeholder: 'Gib das gehört Wort ein...', listening_submit: 'Absenden',
-        mistake_title: '📖 Fehlerheft', mistake_empty: 'Keine Fehler. Weiter so! ✨', mistake_review: 'Fehler wiederholen', mistake_clear: 'Leeren', mistake_need4: 'Mindestens 4 Fehler zum Wiederholen nötig',
+        mistake_title: '📖 Fehlerheft', mistake_empty: 'Keine Fehler. Weiter so! ✨', mistake_review: 'Fehler wiederholen', mistake_clear: 'Leeren', mistake_need4: 'Mindestens 4 Fehler zum Wiederholen nötig', mistake_prev: 'Zurück', mistake_next: 'Weiter',
         review_label: '📖 Fehlerwiederholung',
         tab_settings_title: '⚙️ Anzeigeeinstellungen', tab_settings_desc: 'Wähle, welche Seiten in der Navigationsleiste angezeigt werden', tab_settings_copy: '🔗 Link mit aktuellen Einstellungen kopieren', tab_settings_copied: 'Link kopiert!', tab_settings_reset: '↺ Alle anzeigen', tab_settings_done: 'Fertig', tab_settings_need_one: 'Mindestens eine Seite muss sichtbar bleiben', tab_settings_locked: 'Diese Seite wird immer angezeigt und kann nicht ausgeblendet werden',
         stats_title: '📊 Quiz-Statistik', stats_empty: 'Noch keine Aufzeichnungen. Mach ein Quiz!', stats_total: 'Quizze', stats_avg: 'Ø Genauigkeit', stats_best: 'Bester Score', stats_questions: 'Fragen gesamt',

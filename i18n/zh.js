@@ -15,7 +15,7 @@ I18N.zh = {
         flashcard_title: '📖 單字閃卡', flashcard_known: '✅ 已掌握', flashcard_unknown: '❌ 不認識',
         flashcard_mode_title: '選擇顯示方式',
         listening_hint: '聽聽看...', listening_placeholder: '輸入你聽到的單字...', listening_submit: '送出',
-        mistake_title: '📖 錯題本', mistake_empty: '目前沒有錯題，繼續加油！✨', mistake_review: '複習錯題', mistake_clear: '清空', mistake_need4: '需要至少 4 個錯題才能複習',
+        mistake_title: '📖 錯題本', mistake_empty: '目前沒有錯題，繼續加油！✨', mistake_review: '複習錯題', mistake_clear: '清空', mistake_need4: '需要至少 4 個錯題才能複習', mistake_prev: '上一頁', mistake_next: '下一頁',
         review_label: '📖 錯題複習',
         tab_settings_title: '⚙️ 顯示設定', tab_settings_desc: '選擇要在導覽列顯示的功能頁面', tab_settings_copy: '🔗 複製目前設定的連結', tab_settings_copied: '連結已複製！', tab_settings_reset: '↺ 全部顯示', tab_settings_done: '完成', tab_settings_need_one: '至少需要保留一個頁面顯示', tab_settings_locked: '此頁面固定顯示，無法關閉',
         stats_title: '📊 測驗統計', stats_empty: '還沒有測驗紀錄，快去測驗吧！', stats_total: '測驗次數', stats_avg: '平均正確率', stats_best: '最高分', stats_questions: '總答題數',
