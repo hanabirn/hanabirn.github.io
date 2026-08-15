@@ -12,6 +12,7 @@
 }
 
 .about-avatar-wrap {
+    position: relative;
     width: 96px;
     height: 96px;
     margin: 0 auto 1rem;
@@ -32,6 +33,41 @@
 @keyframes about-avatar-float {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-6px); }
+}
+
+.about-avatar-edit, .about-avatar-reset {
+    position: absolute;
+    bottom: -2px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    border: 2px solid var(--bg-card-alt);
+    transition: transform 0.2s ease-out;
+}
+.about-avatar-edit svg, .about-avatar-reset svg {
+    width: 15px;
+    height: 15px;
+}
+.about-avatar-edit {
+    right: -2px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+}
+.about-avatar-reset {
+    left: -2px;
+    background: rgba(120,113,133,0.9);
+}
+.about-avatar-edit:active, .about-avatar-reset:active {
+    transform: scale(0.92);
+}
+@media (hover: hover) and (pointer: fine) {
+    .about-avatar-edit:hover, .about-avatar-reset:hover {
+        transform: scale(1.1);
+    }
 }
 @media (prefers-reduced-motion: reduce) {
     .about-avatar-wrap { animation: none; }
@@ -143,8 +179,6 @@
     }
 }
 
-.about-social-link.osu { border-color: rgba(255,102,153,0.4); background: rgba(255,102,153,0.15); }
-.about-social-link.osu:hover { box-shadow: 0 4px 20px rgba(255,102,153,0.3); }
 .about-social-link.youtube { border-color: rgba(255,0,0,0.4); background: rgba(255,0,0,0.12); }
 .about-social-link.youtube:hover { box-shadow: 0 4px 20px rgba(255,0,0,0.3); }
 .about-social-link.twitch { border-color: rgba(145,70,255,0.4); background: rgba(145,70,255,0.12); }
@@ -155,13 +189,6 @@
 .about-social-link.instagram:hover { box-shadow: 0 4px 20px rgba(225,48,108,0.3); }
 .about-social-link.discord { border-color: rgba(88,101,242,0.4); background: rgba(88,101,242,0.15); }
 .about-social-link.discord:hover { box-shadow: 0 4px 20px rgba(88,101,242,0.3); }
-
-.social-icon-osu {
-    width: 22px;
-    height: 22px;
-    object-fit: contain;
-    filter: brightness(0) invert(1);
-}
 
 .social-icon-svg {
     display: inline-flex;
@@ -178,4 +205,95 @@
 .about-social-link.facebook .social-icon-svg { color: #1877f2; }
 .about-social-link.instagram .social-icon-svg { color: #e6683c; }
 .about-social-link.discord .social-icon-svg { color: #5865f2; }
+
+/* ===== Avatar Crop Editor ===== */
+.avatar-editor-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 220ms ease-out, visibility 220ms ease-out;
+}
+.avatar-editor-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.avatar-editor-panel {
+    background: var(--bg-widget);
+    border: 1px solid var(--border-card);
+    border-radius: 20px;
+    padding: 24px;
+    max-width: 340px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    transform: scale(0.95);
+    transition: transform 220ms ease-out;
+}
+.avatar-editor-overlay.show .avatar-editor-panel {
+    transform: scale(1);
+}
+@media (prefers-reduced-motion: reduce) {
+    .avatar-editor-overlay, .avatar-editor-panel {
+        transition-duration: 0.1s;
+    }
+    .about-avatar-wrap { animation: none; }
+}
+.avatar-editor-panel h3 {
+    margin: 0 0 14px;
+    color: var(--text-pink);
+    font-size: 1.1rem;
+}
+.avatar-editor-canvas {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.2);
+    cursor: grab;
+    touch-action: none;
+    box-shadow: 0 0 0 3px rgba(244,114,182,0.4);
+}
+.avatar-editor-canvas:active { cursor: grabbing; }
+.avatar-editor-hint {
+    margin: 12px 0 6px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+.avatar-zoom-slider {
+    width: 100%;
+    accent-color: var(--accent-pink);
+    margin-bottom: 18px;
+}
+.avatar-editor-actions {
+    display: flex;
+    gap: 10px;
+}
+.avatar-editor-cancel, .avatar-editor-save {
+    flex: 1;
+    padding: 9px 12px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border: 1px solid var(--nav-border);
+    background: transparent;
+    color: var(--text-secondary);
+    transition: border-color 0.2s, color 0.2s;
+}
+.avatar-editor-cancel:hover {
+    border-color: var(--accent-pink);
+    color: var(--text);
+}
+.avatar-editor-save {
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    color: #fff;
+    border-color: transparent;
+    font-weight: bold;
+}
 

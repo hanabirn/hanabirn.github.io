@@ -2,6 +2,16 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Always reserve space for the vertical scrollbar. Without this, a page
+   whose height sits right at the viewport boundary can flicker: the
+   scrollbar appears -> shrinks available width -> content reflows taller
+   -> scrollbar stays; or the reverse -> looks like the scrollbar is
+   sliding/jittering on its own. */
+html {
+    scrollbar-gutter: stable;
+    overflow-x: hidden;
+}
+
 body {
     font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
     background: linear-gradient(160deg, var(--bg-body-1) 0%, var(--bg-body-2) 35%, var(--bg-body-1) 60%, var(--bg-body-3) 100%);

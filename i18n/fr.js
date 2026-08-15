@@ -38,6 +38,8 @@ I18N.fr = {
         about_langs_title: 'Langues en cours', about_note_title: 'À noter',
         about_note: 'Actuellement aux États-Unis (UTC-7), veuillez excuser le décalage horaire !',
         about_links_title: 'Liens sociaux', about_discord_title: 'Apprendre le chinois ensemble', about_discord_desc: "Pour les amis étrangers qui apprennent le chinois, ou pour ceux qui veulent juste discuter — rejoignez notre serveur Discord !",
+        avatar_edit_title: "Changer l'avatar", avatar_reset_title: "Réinitialiser l'avatar", avatar_editor_title: "✦ Ajuster l'avatar ✦",
+        avatar_editor_hint: 'Faites glisser la photo pour la repositionner, utilisez le curseur pour zoomer', avatar_cancel: 'Annuler', avatar_save: 'Enregistrer',
         lang_jp: '🇯🇵 Japonais', lang_kr: '🇰🇷 Coréen', lang_fr: '🇫🇷 Français', lang_ru: '🇷🇺 Russe', lang_cantonese: 'Cantonais',
         result_question: 'Question {n}', result_your_answer: 'Votre réponse', result_correct_answer: 'Bonne réponse',
         answer_lang_title: 'Langue de réponse', answer_lang_zh: '🇨🇳 Chinois', answer_lang_en: '🇺🇸 English',
