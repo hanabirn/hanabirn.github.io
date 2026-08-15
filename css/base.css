@@ -2,14 +2,17 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Always reserve space for the vertical scrollbar. Without this, a page
-   whose height sits right at the viewport boundary can flicker: the
-   scrollbar appears -> shrinks available width -> content reflows taller
-   -> scrollbar stays; or the reverse -> looks like the scrollbar is
-   sliding/jittering on its own. */
+/* Always reserve space for the vertical scrollbar, on every page, whether
+   or not that page actually needs to scroll. Without this, switching to a
+   taller tab pushes all content left by the scrollbar's width the instant
+   it appears (and back right when it disappears) - a jarring shift.
+   `scrollbar-gutter` only has an effect once `overflow-y` is something
+   other than its default `visible`, so it must be paired with `overflow-y:
+   auto` here (this doesn't change scroll behavior, just makes it explicit). */
 html {
     scrollbar-gutter: stable;
     overflow-x: hidden;
+    overflow-y: auto;
 }
 
 body {
