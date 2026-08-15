@@ -636,14 +636,7 @@
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
 
                 <div class="about-avatar-wrap">
-                    <img class="about-avatar" id="about-avatar-img" src="icons/web-app-manifest-512x512.png" alt="Hanabi" width="96" height="96">
-                    <button class="about-avatar-edit" onclick="document.getElementById('avatar-file-input').click()" data-i18n-title="avatar_edit_title" title="更換大頭貼" aria-label="更換大頭貼">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>
-                    </button>
-                    <button class="about-avatar-reset" id="about-avatar-reset-btn" onclick="resetAvatarToDefault()" data-i18n-title="avatar_reset_title" title="恢復預設大頭貼" aria-label="恢復預設大頭貼" style="display:none">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 5v4h4"/></svg>
-                    </button>
-                    <input type="file" id="avatar-file-input" accept="image/*" style="display:none" onchange="handleAvatarFileSelect(event)">
+                    <img class="about-avatar" src="images/avatar.webp" alt="Hanabi" width="96" height="96">
                 </div>
                 <h2 class="about-name">Hanabi</h2>
                 <p class="about-tagline" data-i18n="about_tagline"></p>
@@ -902,20 +895,7 @@
         </div>
     </div>
 
-    <div class="avatar-editor-overlay" id="avatar-editor-overlay" onclick="if(event.target===this) closeAvatarEditor()">
-        <div class="avatar-editor-panel">
-            <h3 data-i18n="avatar_editor_title">&#x2726; &#x8ABF;&#x6574;&#x5927;&#x982D;&#x8CBC; &#x2726;</h3>
-            <canvas id="avatar-editor-canvas" class="avatar-editor-canvas" width="200" height="200"></canvas>
-            <p class="avatar-editor-hint" data-i18n="avatar_editor_hint">&#x62D6;&#x66F3;&#x7167;&#x7247;&#x8ABF;&#x6574;&#x4F4D;&#x7F6E;&#xFF0C;&#x6ED1;&#x687F;&#x53EF;&#x7E2E;&#x653E;</p>
-            <input type="range" id="avatar-zoom-slider" class="avatar-zoom-slider" min="100" max="300" value="100" oninput="updateAvatarZoom(this.value)">
-            <div class="avatar-editor-actions">
-                <button class="avatar-editor-cancel" onclick="closeAvatarEditor()" data-i18n="avatar_cancel">&#x53D6;&#x6D88;</button>
-                <button class="avatar-editor-save" onclick="saveAvatarCrop()" data-i18n="avatar_save">&#x5132;&#x5B58;</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="pwa-install-banner" id="pwa-install-banner">
+<div class="pwa-install-banner" id="pwa-install-banner">
         <span class="pwa-install-icon">&#x1F4F2;</span>
         <span class="pwa-install-text" data-i18n="pwa_install_text">&#x52A0;&#x5230;&#x4E3B;&#x756B;&#x9762;&#xFF0C;&#x96A8;&#x6642;&#x958B;&#x555F;&#xFF01;</span>
         <button class="pwa-install-btn" onclick="installPwa()" data-i18n="pwa_install_btn">&#x5B89;&#x88DD;</button>
@@ -960,7 +940,6 @@
     <script src="js/notes.js"></script>
     <script src="js/feedback.js"></script>
     <script src="js/widgets.js"></script>
-    <script src="js/avatar.js"></script>
     <script>
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/service-worker.js').then(function(reg) {

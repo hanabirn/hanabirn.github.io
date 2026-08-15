@@ -38,8 +38,6 @@ I18N.ko = {
         about_langs_title: '공부 중인 언어', about_note_title: '참고',
         about_note: '현재 미국 (UTC-7)에 거주 중입니다. 시차 양해 부탁드립니다!',
         about_links_title: '소셜 링크', about_discord_title: '중국어 학습 커뮤니티', about_discord_desc: '중국어를 배우고 싶은 외국인 친구든, 그냥 수다 떨고 싶은 사람이든 환영해요! 이 디스코드 서버에 참여해보세요.',
-        avatar_edit_title: '프로필 사진 변경', avatar_reset_title: '기본 이미지로 되돌리기', avatar_editor_title: '✦ 프로필 사진 조정 ✦',
-        avatar_editor_hint: '사진을 드래그해 위치를 조정하고, 슬라이더로 확대/축소하세요', avatar_cancel: '취소', avatar_save: '저장',
         lang_jp: '🇯🇵 일본어', lang_kr: '🇰🇷 한국어', lang_fr: '🇫🇷 프랑스어', lang_ru: '🇷🇺 러시아어', lang_cantonese: '광둥어',
         result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
         answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',
