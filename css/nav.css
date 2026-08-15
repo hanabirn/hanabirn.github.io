@@ -48,7 +48,7 @@
 /* ===== Tab Visibility Settings ===== */
 .tab-settings-btn {
     position: fixed;
-    bottom: 132px; right: 20px;
+    bottom: 186px; right: 20px;
     width: 48px; height: 48px;
     border-radius: 50%;
     border: 1px solid var(--theme-toggle-border);
@@ -83,6 +83,13 @@
     align-items: center;
     justify-content: center;
     padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 220ms ease-out, visibility 220ms ease-out;
+}
+.tab-settings-overlay.show {
+    opacity: 1;
+    visibility: visible;
 }
 
 .tab-settings-panel {
@@ -95,6 +102,17 @@
     max-height: 85vh;
     overflow-y: auto;
     box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    transform: scale(0.95);
+    transition: transform 220ms ease-out;
+}
+.tab-settings-overlay.show .tab-settings-panel {
+    transform: scale(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tab-settings-overlay, .tab-settings-panel {
+        transition-duration: 0.1s;
+    }
 }
 .tab-settings-panel h3 {
     margin: 0 0 6px;

@@ -11,8 +11,8 @@ function switchPage(page, el) {
 
     const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
+    main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
-    main.style.transition = 'opacity 0.2s ease';
 
     if (page !== 'games' && typeof stopAllGames === 'function') stopAllGames();
 
@@ -24,7 +24,7 @@ function switchPage(page, el) {
         main.style.opacity = '1';
         if (page === 'guestbook') loadGuestbookMessages();
         if (page === 'notes') renderNotes();
-    }, 200);
+    }, 120);
 }
 
 /* ===================== Tab Visibility Settings ===================== */
@@ -97,9 +97,9 @@ function onTabSettingChange(input) {
 function toggleTabSettings() {
     const overlay = document.getElementById('tab-settings-overlay');
     if (!overlay) return;
-    const show = overlay.style.display === 'none' || !overlay.style.display;
+    const show = !overlay.classList.contains('show');
     if (show) renderTabSettingsList();
-    overlay.style.display = show ? 'flex' : 'none';
+    overlay.classList.toggle('show', show);
 }
 
 function resetTabSettings() {

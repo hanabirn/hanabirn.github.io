@@ -105,7 +105,7 @@
     opacity: 0;
     visibility: hidden;
     transform: translateX(-50%) translateY(-8px);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
     box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     z-index: 200;
 }
@@ -205,9 +205,12 @@
     position: fixed;
     left: 50%;
     bottom: 16px;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(16px);
     z-index: 500;
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     align-items: center;
     gap: 10px;
     background: var(--bg-widget);
@@ -217,6 +220,13 @@
     padding: 10px 14px 10px 18px;
     box-shadow: 0 4px 20px rgba(168,85,247,0.3);
     max-width: 92vw;
+    transition: opacity 250ms ease-out, transform 250ms ease-out, visibility 250ms ease-out;
+}
+.pwa-install-banner.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
 }
 .pwa-install-icon {
     font-size: 1.2rem;
@@ -257,9 +267,12 @@
     position: fixed;
     left: 50%;
     top: 16px;
-    transform: translateX(-50%);
+    transform: translateX(-50%) translateY(-16px);
     z-index: 500;
-    display: none;
+    display: flex;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
     align-items: center;
     gap: 10px;
     background: var(--bg-widget);
@@ -269,10 +282,22 @@
     padding: 10px 14px 10px 18px;
     box-shadow: 0 4px 20px rgba(168,85,247,0.3);
     max-width: 92vw;
+    transition: opacity 250ms ease-out, transform 250ms ease-out, visibility 250ms ease-out;
+}
+.update-banner.show {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
 }
 @media (max-width: 480px) {
     .update-banner .pwa-install-text {
         display: none;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .pwa-install-banner, .update-banner {
+        transition-duration: 0.1s;
     }
 }
 
@@ -280,7 +305,7 @@
 .clock-widget {
     position: fixed;
     bottom: 20px;
-    right: 80px;
+    right: 20px;
     z-index: 200;
     background: var(--bg-widget);
     backdrop-filter: blur(8px);
@@ -320,20 +345,9 @@
 }
 .clock-weather:empty { display: none; }
 
-/* ===================== Theme Toggle Button ===================== */
-.theme-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 200;
-    width: 48px;
-    height: 48px;
-}
-.theme-toggle svg { width: 22px; height: 22px; }
-
 .reload-btn {
     position: fixed;
-    bottom: 76px;
+    bottom: 130px;
     right: 20px;
     z-index: 200;
     width: 48px;
@@ -391,17 +405,13 @@
         border-color: #f472b6;
     }
 
-    .theme-toggle, .reload-btn, .tab-settings-btn {
+    .reload-btn, .tab-settings-btn {
         display: none;
     }
-    body.mobile-fab-open .theme-toggle,
     body.mobile-fab-open .reload-btn,
     body.mobile-fab-open .tab-settings-btn {
         display: flex;
     }
-    body.mobile-fab-open .theme-toggle { bottom: 76px; }
-    body.mobile-fab-open .reload-btn { bottom: 132px; }
-    body.mobile-fab-open .tab-settings-btn { bottom: 188px; }
 }
 
 /* ===================== Responsive ===================== */

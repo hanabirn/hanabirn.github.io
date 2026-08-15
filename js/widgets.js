@@ -283,12 +283,12 @@ window.addEventListener('beforeinstallprompt', (e) => {
     deferredInstallPrompt = e;
     if (localStorage.getItem('pwa_install_dismissed')) return;
     const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.style.display = 'flex';
+    if (banner) banner.classList.add('show');
 });
 
 function installPwa() {
     const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.style.display = 'none';
+    if (banner) banner.classList.remove('show');
     if (!deferredInstallPrompt) return;
     deferredInstallPrompt.prompt();
     deferredInstallPrompt.userChoice.finally(() => {
@@ -298,13 +298,13 @@ function installPwa() {
 
 function dismissPwaInstall() {
     const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.style.display = 'none';
+    if (banner) banner.classList.remove('show');
     localStorage.setItem('pwa_install_dismissed', '1');
 }
 
 window.addEventListener('appinstalled', () => {
     const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.style.display = 'none';
+    if (banner) banner.classList.remove('show');
     deferredInstallPrompt = null;
 });
 
@@ -312,7 +312,7 @@ window.addEventListener('appinstalled', () => {
 
 function showUpdateBanner() {
     const banner = document.getElementById('update-banner');
-    if (banner) banner.style.display = 'flex';
+    if (banner) banner.classList.add('show');
 }
 
 function refreshForUpdate() {
@@ -321,7 +321,7 @@ function refreshForUpdate() {
 
 function dismissUpdateBanner() {
     const banner = document.getElementById('update-banner');
-    if (banner) banner.style.display = 'none';
+    if (banner) banner.classList.remove('show');
 }
 
 /* ===================== Init ===================== */
