@@ -11,6 +11,32 @@
     backdrop-filter: blur(10px);
 }
 
+.about-avatar-wrap {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, #ff6b9d, #c44dff);
+    box-shadow: 0 0 24px rgba(244,114,182,0.35);
+    animation: about-avatar-float 5s ease-in-out infinite;
+}
+.about-avatar {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--bg-card-alt);
+}
+@keyframes about-avatar-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .about-avatar-wrap { animation: none; }
+}
+
 .about-name {
     font-family: 'Mochiy Pop One', 'Kosugi Maru', 'ZCOOL KuaiLe', cursive;
     font-size: 2rem;
@@ -27,16 +53,38 @@
 }
 
 .about-section {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--about-section-border);
+    margin-top: 1.2rem;
+    padding: 1.2rem 1.3rem;
+    border-radius: 16px;
+    background: var(--bg-about-section);
+    border: 1px solid var(--about-section-border);
+    text-align: left;
 }
 
 .about-section h3 {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
     font-size: 1rem;
     color: var(--text-label);
     margin-bottom: 0.8rem;
     letter-spacing: 1px;
+}
+
+.about-section-icon {
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-guide-icon);
+    border-radius: 8px;
+    color: var(--text-pink);
+}
+.about-section-icon svg {
+    width: 16px;
+    height: 16px;
 }
 
 .about-tags {
@@ -89,8 +137,10 @@
     background: rgba(255,255,255,0.08);
 }
 
-.about-social-link:hover {
-    transform: scale(1.05);
+@media (hover: hover) and (pointer: fine) {
+    .about-social-link:hover {
+        transform: scale(1.05);
+    }
 }
 
 .about-social-link.osu { border-color: rgba(255,102,153,0.4); background: rgba(255,102,153,0.15); }
@@ -113,20 +163,19 @@
     filter: brightness(0) invert(1);
 }
 
-.social-icon-text {
+.social-icon-svg {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     width: 22px;
     height: 22px;
-    border-radius: 5px;
-    font-size: 0.75rem;
-    font-weight: 900;
-    color: #fff;
+    flex-shrink: 0;
 }
-.social-icon-text.yt { background: #ff0000; }
-.social-icon-text.tw { background: #9146ff; }
-.social-icon-text.fb { background: #1877f2; }
-.social-icon-text.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-.social-icon-text.dc { background: #5865f2; font-size: 0.65rem; }
+.social-icon-svg svg { width: 100%; height: 100%; }
+
+.about-social-link.youtube .social-icon-svg { color: #ff0000; }
+.about-social-link.twitch .social-icon-svg { color: #9146ff; }
+.about-social-link.facebook .social-icon-svg { color: #1877f2; }
+.about-social-link.instagram .social-icon-svg { color: #e6683c; }
+.about-social-link.discord .social-icon-svg { color: #5865f2; }
 

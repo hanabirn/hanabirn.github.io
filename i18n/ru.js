@@ -35,7 +35,7 @@ I18N.ru = {
         quiz_again: '🔄 Ещё раз',
         share_score: '📱 Поделиться', share_copied: 'Скопировано!', share_downloaded: 'Изображение скачано!',
         about_tagline: 'Изучение языков, музыкальные игры, музыка, аниме и манга',
-        about_langs_title: 'Языки, которые я изучаю', about_note_title: 'Обо мне',
+        about_langs_title: 'Языки, которые я изучаю', about_note_title: 'На заметку',
         about_note: 'Сейчас живу в США (UTC-7), извините за разницу во времени!',
         about_links_title: 'Социальные ссылки', about_discord_title: 'Сообщество изучения китайского', about_discord_desc: 'Для иностранных друзей, изучающих китайский, или для тех, кто просто хочет поболтать — присоединяйтесь к нашему Discord-серверу!',
         lang_jp: '🇯🇵 Японский', lang_kr: '🇰🇷 Корейский', lang_fr: '🇫🇷 Французский', lang_ru: '🇷🇺 Русский', lang_cantonese: 'Кантонский',

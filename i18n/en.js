@@ -35,7 +35,7 @@ I18N.en = {
         quiz_again: '🔄 Try Again',
         share_score: '📱 Share Score', share_copied: 'Copied to clipboard!', share_downloaded: 'Image downloaded!',
         about_tagline: 'Learning languages, rhythm games, music, anime & manga',
-        about_langs_title: 'Languages I\'m Learning', about_note_title: 'About Me',
+        about_langs_title: 'Languages I\'m Learning', about_note_title: 'Heads Up',
         about_note: 'Currently living in the US (UTC-7), please bear with the time difference!',
         about_links_title: 'Social Links', about_discord_title: 'Learn Chinese with Us', about_discord_desc: 'For international friends learning Chinese, or anyone who just wants to hang out and chat — join our Discord server!',
         lang_jp: '🇯🇵 Japanese', lang_kr: '🇰🇷 Korean', lang_fr: '🇫🇷 French', lang_ru: '🇷🇺 Russian', lang_cantonese: 'Cantonese',

@@ -35,7 +35,7 @@ I18N.ja = {
         quiz_again: '🔄 もう一度',
         share_score: '📱 結果を共有', share_copied: 'クリップボードにコピーしました！', share_downloaded: '画像をダウンロードしました！',
         about_tagline: '言語学習、音楽ゲーム、音楽鑑賞、アニメ・漫画',
-        about_langs_title: '勉強中の言語', about_note_title: '自己紹介',
+        about_langs_title: '勉強中の言語', about_note_title: 'お知らせ',
         about_note: '現在アメリカ (UTC-7) に住んでいます。時差をご了承ください！',
         about_links_title: 'ソーシャルリンク', about_discord_title: '中国語学習コミュニティ', about_discord_desc: '中国語を学びたい海外の友達も、ただおしゃべりしたい人も大歓迎！このDiscordサーバーに参加してね。',
         lang_jp: '🇯🇵 日本語', lang_kr: '🇰🇷 韓国語', lang_fr: '🇫🇷 フランス語', lang_ru: '🇷🇺 ロシア語', lang_cantonese: '広東語',

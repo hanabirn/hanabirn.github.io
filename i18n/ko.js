@@ -35,7 +35,7 @@ I18N.ko = {
         quiz_again: '🔄 다시 하기',
         share_score: '📱 결과 공유', share_copied: '클립보드에 복사됨!', share_downloaded: '이미지가 다운로드됨!',
         about_tagline: '언어 학습, 리듬 게임, 음악 듣기, 애니메이션/만화',
-        about_langs_title: '공부 중인 언어', about_note_title: '소개',
+        about_langs_title: '공부 중인 언어', about_note_title: '참고',
         about_note: '현재 미국 (UTC-7)에 거주 중입니다. 시차 양해 부탁드립니다!',
         about_links_title: '소셜 링크', about_discord_title: '중국어 학습 커뮤니티', about_discord_desc: '중국어를 배우고 싶은 외국인 친구든, 그냥 수다 떨고 싶은 사람이든 환영해요! 이 디스코드 서버에 참여해보세요.',
         lang_jp: '🇯🇵 일본어', lang_kr: '🇰🇷 한국어', lang_fr: '🇫🇷 프랑스어', lang_ru: '🇷🇺 러시아어', lang_cantonese: '광둥어',

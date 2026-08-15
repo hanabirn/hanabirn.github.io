@@ -35,7 +35,7 @@ I18N.zh = {
         quiz_again: '🔄 再來一次',
         share_score: '📱 分享成績', share_copied: '已複製到剪貼簿！', share_downloaded: '已下載圖片！',
         about_tagline: '學習語言、玩音樂遊戲、聽音樂、看動漫 / 漫畫',
-        about_langs_title: '正在學習的語言', about_note_title: '關於我',
+        about_langs_title: '正在學習的語言', about_note_title: '小提醒',
         about_note: '本人目前居住在美國 (UTC-7)，有時差還請多多包涵 !',
         about_links_title: '社群連結', about_discord_title: '中文學習交流', about_discord_desc: '想學中文的外國朋友，或只是想找人一起打屁聊天？歡迎加入這個 Discord 伺服器！',
         lang_jp: '🇯🇵 日文', lang_kr: '🇰🇷 韓文', lang_fr: '🇫🇷 法文', lang_ru: '🇷🇺 俄文', lang_cantonese: '粵語',

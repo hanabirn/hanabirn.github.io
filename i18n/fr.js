@@ -35,7 +35,7 @@ I18N.fr = {
         quiz_again: '🔄 Réessayer',
         share_score: '📱 Partager', share_copied: 'Copié !', share_downloaded: 'Image téléchargée !',
         about_tagline: 'Apprendre des langues, jeux de rythme, musique, anime & manga',
-        about_langs_title: 'Langues en cours', about_note_title: 'À propos',
+        about_langs_title: 'Langues en cours', about_note_title: 'À noter',
         about_note: 'Actuellement aux États-Unis (UTC-7), veuillez excuser le décalage horaire !',
         about_links_title: 'Liens sociaux', about_discord_title: 'Apprendre le chinois ensemble', about_discord_desc: "Pour les amis étrangers qui apprennent le chinois, ou pour ceux qui veulent juste discuter — rejoignez notre serveur Discord !",
         lang_jp: '🇯🇵 Japonais', lang_kr: '🇰🇷 Coréen', lang_fr: '🇫🇷 Français', lang_ru: '🇷🇺 Russe', lang_cantonese: 'Cantonais',

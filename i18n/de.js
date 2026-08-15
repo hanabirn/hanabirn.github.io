@@ -35,7 +35,7 @@ I18N.de = {
         quiz_again: '🔄 Nochmal',
         share_score: '📱 Teilen', share_copied: 'Kopiert!', share_downloaded: 'Bild heruntergeladen!',
         about_tagline: 'Sprachen lernen, Rhythmusspiele, Musik, Anime & Manga',
-        about_langs_title: 'Sprachen, die ich lerne', about_note_title: 'Über mich',
+        about_langs_title: 'Sprachen, die ich lerne', about_note_title: 'Hinweis',
         about_note: 'Derzeit in den USA (UTC-7), bitte entschuldigt den Zeitunterschied!',
         about_links_title: 'Soziale Links', about_discord_title: 'Gemeinsam Chinesisch lernen', about_discord_desc: 'Für internationale Freunde, die Chinesisch lernen, oder für alle, die einfach nur plaudern möchten — tritt unserem Discord-Server bei!',
         lang_jp: '🇯🇵 Japanisch', lang_kr: '🇰🇷 Koreanisch', lang_fr: '🇫🇷 Französisch', lang_ru: '🇷🇺 Russisch', lang_cantonese: 'Kantonesisch',
