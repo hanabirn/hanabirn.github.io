@@ -22,6 +22,8 @@
     gap: 10px;
     position: relative;
     overflow: hidden;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    box-shadow: 0 4px 25px rgba(var(--accent-pink-rgb), 0.35);
 }
 
 .lang-btn::after {
@@ -35,26 +37,6 @@
 }
 .lang-btn:hover::after { opacity: 1; }
 
-.lang-btn.jp {
-    background: linear-gradient(135deg, #ec4899, #f43f5e, #fb7185);
-    box-shadow: 0 4px 25px rgba(236,72,153,0.35);
-}
-.lang-btn.kr {
-    background: linear-gradient(135deg, #a855f7, #6366f1, #818cf8);
-    box-shadow: 0 4px 25px rgba(168,85,247,0.35);
-}
-.lang-btn.fr {
-    background: linear-gradient(135deg, #2563eb, #6366f1, #dc2626);
-    box-shadow: 0 4px 25px rgba(37,99,235,0.35);
-}
-.lang-btn.en {
-    background: linear-gradient(135deg, #1e3a5f, #b91c1c, #1e3a5f);
-    box-shadow: 0 4px 25px rgba(30,58,95,0.45);
-}
-.lang-btn.zh {
-    background: linear-gradient(135deg, #991b1b, #ca8a04, #991b1b);
-    box-shadow: 0 4px 25px rgba(153,27,27,0.45);
-}
 @media (hover: hover) and (pointer: fine) {
     .lang-btn:hover {
         transform: translateY(-4px) scale(1.02);
