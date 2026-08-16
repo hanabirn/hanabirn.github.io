@@ -1125,8 +1125,19 @@ function selectOption(selectedBtn, selectedText, type) {
 
 function showResults() {
     stopTimer();
-    document.getElementById('quiz-card').style.display = 'none';
-    document.getElementById('result-card').style.display = 'block';
+    const quizCard = document.getElementById('quiz-card');
+    const resultCard = document.getElementById('result-card');
+    quizCard.style.transition = 'opacity 150ms ease-out';
+    quizCard.style.opacity = '0';
+    setTimeout(() => {
+        quizCard.style.display = 'none';
+        quizCard.style.opacity = '';
+        quizCard.style.transition = '';
+        resultCard.style.display = 'block';
+        resultCard.classList.remove('result-card-enter');
+        void resultCard.offsetWidth;
+        resultCard.classList.add('result-card-enter');
+    }, 150);
 
     const correctCount = quizHistory.filter(h => h.isCorrect).length;
     const wrongCount = quizHistory.filter(h => !h.isCorrect).length;

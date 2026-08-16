@@ -140,6 +140,17 @@
 }
 
 /* ===== Result Card ===== */
+.result-card-enter {
+    animation: resultCardIn 250ms cubic-bezier(0.77,0,0.175,1);
+}
+@keyframes resultCardIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+    .result-card-enter { animation-duration: 100ms; }
+}
+
 .result-summary {
     margin: 20px 0;
 }
