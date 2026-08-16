@@ -204,6 +204,87 @@ function shuffleArray(arr) {
     return a;
 }
 
+/* Distractors for kanji reading questions (JLPT + regular JP quiz): instead of
+   pulling other words' readings from the pool, mutate the correct kana by one
+   or two small edits (dakuten toggle, char insert/delete, adjacent swap) so
+   wrong options look like plausible near-misses of the real reading, the way
+   real JLPT reading-choice questions are written. */
+const KANA_DAKUTEN_MAP = (() => {
+    const pairs = [
+        ['か','が'], ['き','ぎ'], ['く','ぐ'], ['け','げ'], ['こ','ご'],
+        ['さ','ざ'], ['し','じ'], ['す','ず'], ['せ','ぜ'], ['そ','ぞ'],
+        ['た','だ'], ['ち','ぢ'], ['つ','づ'], ['て','で'], ['と','ど'],
+        ['は','ば'], ['ひ','び'], ['ふ','ぶ'], ['へ','べ'], ['ほ','ぼ'],
+        ['は','ぱ'], ['ひ','ぴ'], ['ふ','ぷ'], ['へ','ぺ'], ['ほ','ぽ'],
+        ['カ','ガ'], ['キ','ギ'], ['ク','グ'], ['ケ','ゲ'], ['コ','ゴ'],
+        ['サ','ザ'], ['シ','ジ'], ['ス','ズ'], ['セ','ゼ'], ['ソ','ゾ'],
+        ['タ','ダ'], ['チ','ヂ'], ['ツ','ヅ'], ['テ','デ'], ['ト','ド'],
+        ['ハ','バ'], ['ヒ','ビ'], ['フ','ブ'], ['ヘ','ベ'], ['ホ','ボ'],
+        ['ハ','パ'], ['ヒ','ピ'], ['フ','プ'], ['ヘ','ペ'], ['ホ','ポ']
+    ];
+    const map = {};
+    pairs.forEach(([base, voiced]) => {
+        (map[base] = map[base] || []).push(voiced);
+        (map[voiced] = map[voiced] || []).push(base);
+    });
+    return map;
+})();
+const KANA_INSERT_CHARS = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんっゃゅょー'.split('');
+
+function mutateKana(str) {
+    const chars = [...str];
+    const strategies = [];
+
+    strategies.push(() => {
+        const idxs = chars.map((c, i) => i).filter(i => KANA_DAKUTEN_MAP[chars[i]]);
+        if (!idxs.length) return null;
+        const i = idxs[Math.floor(Math.random() * idxs.length)];
+        const opts = KANA_DAKUTEN_MAP[chars[i]];
+        const rep = opts[Math.floor(Math.random() * opts.length)];
+        return chars.slice(0, i).join('') + rep + chars.slice(i + 1).join('');
+    });
+    strategies.push(() => {
+        const i = Math.floor(Math.random() * (chars.length + 1));
+        const c = KANA_INSERT_CHARS[Math.floor(Math.random() * KANA_INSERT_CHARS.length)];
+        return chars.slice(0, i).join('') + c + chars.slice(i).join('');
+    });
+    if (chars.length > 1) {
+        strategies.push(() => {
+            const i = Math.floor(Math.random() * chars.length);
+            return chars.slice(0, i).join('') + chars.slice(i + 1).join('');
+        });
+        strategies.push(() => {
+            const i = Math.floor(Math.random() * (chars.length - 1));
+            const a = [...chars];
+            [a[i], a[i + 1]] = [a[i + 1], a[i]];
+            return a.join('');
+        });
+    }
+
+    for (const fn of shuffleArray(strategies)) {
+        const res = fn();
+        if (res && res !== str) return res;
+    }
+    return null;
+}
+
+function generateSimilarReadings(correct, count) {
+    const results = new Set();
+    let attempts = 0;
+    while (results.size < count && attempts < 200) {
+        attempts++;
+        let variant = mutateKana(correct);
+        if (variant && Math.random() < 0.5) {
+            const second = mutateKana(variant);
+            if (second) variant = second;
+        }
+        if (variant && variant !== correct && !results.has(variant)) {
+            results.add(variant);
+        }
+    }
+    return [...results];
+}
+
 function playSound(correct) {
     try {
         const ctx = new (window.AudioContext || window.webkitAudioContext)();
@@ -995,7 +1076,7 @@ function nextQuestion() {
             ? currentWord.english || currentWord.meaning
             : currentWord.meaning;
 
-        let options = [currentWord.kana];
+        let options = [currentWord.kana, ...generateSimilarReadings(currentWord.kana, 3)];
         while (options.length < 4) {
             const pick = shuffledReading[Math.floor(Math.random() * shuffledReading.length)].kana;
             if (!options.includes(pick)) options.push(pick);
