@@ -88,4 +88,5 @@ I18N.fr = {
         notes_cat_new_placeholder: 'Nom de la nouvelle catégorie...', notes_cat_new_add: '+ Ajouter', notes_cat_delete: 'Supprimer la catégorie', notes_cat_delete_confirm: 'Supprimer cette catégorie ? Les notes qui l\'utilisent deviendront sans catégorie.',
         notes_search_placeholder: 'Rechercher des notes...', notes_empty_search: 'Aucune note ne correspond.', notes_pin: 'Épingler', notes_unpin: 'Désépingler',
         match3_level_n: 'Niveau {n}', match3_win_title: '🎉 Niveau terminé !', match3_next_level: 'Niveau suivant ▶', match3_back_to_levels: '↩ Retour aux niveaux', match3_retry: '🔄 Réessayer',
+        footer_support: '☕ Offrez-moi un café',
 };

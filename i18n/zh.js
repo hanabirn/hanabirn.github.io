@@ -88,4 +88,5 @@ I18N.zh = {
         notes_cat_new_placeholder: '新增分類名稱...', notes_cat_new_add: '＋ 新增', notes_cat_delete: '刪除分類', notes_cat_delete_confirm: '確定要刪除這個分類嗎？使用這個分類的筆記會變成未分類。',
         notes_search_placeholder: '搜尋筆記...', notes_empty_search: '找不到符合的筆記。', notes_pin: '釘選', notes_unpin: '取消釘選',
         match3_level_n: '第 {n} 關', match3_win_title: '🎉 過關！', match3_next_level: '下一關 ▶', match3_back_to_levels: '↩ 返回關卡選單', match3_retry: '🔄 重玩',
+        footer_support: '☕ 請我喝杯咖啡',
 };

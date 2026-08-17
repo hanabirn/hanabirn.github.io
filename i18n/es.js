@@ -88,4 +88,5 @@ I18N.es = {
         notes_cat_new_placeholder: 'Nombre de la nueva categoría...', notes_cat_new_add: '+ Añadir', notes_cat_delete: 'Eliminar categoría', notes_cat_delete_confirm: '¿Eliminar esta categoría? Las notas que la usen quedarán sin categoría.',
         notes_search_placeholder: 'Buscar notas...', notes_empty_search: 'No hay notas que coincidan.', notes_pin: 'Fijar', notes_unpin: 'Dejar de fijar',
         match3_level_n: 'Nivel {n}', match3_win_title: '🎉 ¡Nivel superado!', match3_next_level: 'Siguiente nivel ▶', match3_back_to_levels: '↩ Volver a niveles', match3_retry: '🔄 Reintentar',
+        footer_support: '☕ Invítame un café',
 };

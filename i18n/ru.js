@@ -88,4 +88,5 @@ I18N.ru = {
         notes_cat_new_placeholder: 'Название новой категории...', notes_cat_new_add: '+ Добавить', notes_cat_delete: 'Удалить категорию', notes_cat_delete_confirm: 'Удалить эту категорию? Заметки в ней станут без категории.',
         notes_search_placeholder: 'Поиск заметок...', notes_empty_search: 'Ничего не найдено.', notes_pin: 'Закрепить', notes_unpin: 'Открепить',
         match3_level_n: 'Уровень {n}', match3_win_title: '🎉 Уровень пройден!', match3_next_level: 'Следующий уровень ▶', match3_back_to_levels: '↩ К уровням', match3_retry: '🔄 Заново',
+        footer_support: '☕ Угостить кофе',
 };

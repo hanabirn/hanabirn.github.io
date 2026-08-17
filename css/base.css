@@ -122,6 +122,40 @@ footer p {
     letter-spacing: 2px;
 }
 
+.footer-support-btn {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 8px 20px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
+    color: #fff;
+    font-size: 0.85rem;
+    text-decoration: none;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 14px rgba(var(--accent-pink-rgb), 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-support-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(var(--accent-pink-rgb), 0.5);
+}
+
+.footer-links {
+    margin-top: 10px;
+    letter-spacing: normal;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-decoration: underline;
+}
+
+.footer-links a:hover {
+    color: var(--text-pink);
+}
+
 /* ===== Splash ===== */
 .splash-overlay {
     position: fixed;

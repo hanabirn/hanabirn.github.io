@@ -88,4 +88,5 @@ I18N.en = {
         notes_cat_new_placeholder: 'New category name...', notes_cat_new_add: '+ Add', notes_cat_delete: 'Delete category', notes_cat_delete_confirm: 'Delete this category? Notes using it will become uncategorized.',
         notes_search_placeholder: 'Search notes...', notes_empty_search: 'No notes match your search.', notes_pin: 'Pin', notes_unpin: 'Unpin',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level Clear!', match3_next_level: 'Next Level ▶', match3_back_to_levels: '↩ Back to Levels', match3_retry: '🔄 Retry',
+        footer_support: '☕ Buy me a coffee',
 };

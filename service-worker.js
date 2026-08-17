@@ -1,7 +1,8 @@
-const CACHE_NAME = 'hanabi-v18';
+const CACHE_NAME = 'hanabi-v19';
 const ASSETS = [
   '/',
   '/index.html',
+  '/privacy.html',
   '/manifest.json',
   '/css/base.css',
   '/css/sakura.css',

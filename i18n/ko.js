@@ -88,4 +88,5 @@ I18N.ko = {
         notes_cat_new_placeholder: '새 분류 이름...', notes_cat_new_add: '＋ 추가', notes_cat_delete: '분류 삭제', notes_cat_delete_confirm: '이 분류를 삭제할까요? 사용 중이던 메모는 미분류가 됩니다.',
         notes_search_placeholder: '메모 검색...', notes_empty_search: '일치하는 메모가 없어요.', notes_pin: '고정', notes_unpin: '고정 해제',
         match3_level_n: '{n} 레벨', match3_win_title: '🎉 레벨 클리어!', match3_next_level: '다음 레벨 ▶', match3_back_to_levels: '↩ 레벨 선택으로', match3_retry: '🔄 다시하기',
+        footer_support: '☕ 커피 한 잔 사주기',
 };

@@ -88,4 +88,5 @@ I18N.de = {
         notes_cat_new_placeholder: 'Name der neuen Kategorie...', notes_cat_new_add: '+ Hinzufügen', notes_cat_delete: 'Kategorie löschen', notes_cat_delete_confirm: 'Diese Kategorie löschen? Notizen darin werden unkategorisiert.',
         notes_search_placeholder: 'Notizen durchsuchen...', notes_empty_search: 'Keine passenden Notizen gefunden.', notes_pin: 'Anheften', notes_unpin: 'Loslösen',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level geschafft!', match3_next_level: 'Nächstes Level ▶', match3_back_to_levels: '↩ Zurück zur Levelauswahl', match3_retry: '🔄 Erneut versuchen',
+        footer_support: '☕ Spendier mir einen Kaffee',
 };

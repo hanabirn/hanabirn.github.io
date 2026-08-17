@@ -88,4 +88,5 @@ I18N.ja = {
         notes_cat_new_placeholder: '新しいカテゴリ名...', notes_cat_new_add: '＋ 追加', notes_cat_delete: 'カテゴリを削除', notes_cat_delete_confirm: 'このカテゴリを削除しますか？使用中のメモは未分類になります。',
         notes_search_placeholder: 'メモを検索...', notes_empty_search: '該当するメモが見つかりません。', notes_pin: 'ピン留め', notes_unpin: 'ピン留め解除',
         match3_level_n: 'ステージ {n}', match3_win_title: '🎉 クリア！', match3_next_level: '次のステージ ▶', match3_back_to_levels: '↩ ステージ選択に戻る', match3_retry: '🔄 もう一度',
+        footer_support: '☕ コーヒーをおごる',
 };
