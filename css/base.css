@@ -15,12 +15,16 @@ html {
     overflow-y: auto;
 }
 
+/* No overflow-x/overflow-y here: html already clips horizontal overflow as
+   the root scrolling element, and setting only overflow-x on body would
+   mismatch its unset (visible) overflow-y — the CSS spec force-converts
+   that visible side to auto, turning body into a second, redundant
+   scrollable box right next to html's (a "double scrollbar" bug). */
 body {
     font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
     background: linear-gradient(160deg, var(--bg-body-1) 0%, var(--bg-body-2) 35%, var(--bg-body-1) 60%, var(--bg-body-3) 100%);
     color: var(--text);
     min-height: 100vh;
-    overflow-x: hidden;
 }
 
 /* ===== Cute Japanese-style font for headings and buttons ===== */
