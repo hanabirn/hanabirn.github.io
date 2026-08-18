@@ -2106,28 +2106,34 @@ function drawAirhockey() {
 
 /* ===================== 🍄 Super Mario Adventure (endless runner) ===================== */
 
-const MARIO_CANVAS_W = 340;
-const MARIO_CANVAS_H = 170;
-const MARIO_GROUND_H = 24;
+const MARIO_CANVAS_W = 600;
+const MARIO_CANVAS_H = 300;
+const MARIO_GROUND_H = 39;
 const MARIO_GROUND_Y = MARIO_CANVAS_H - MARIO_GROUND_H;
-const MARIO_GRAVITY = 0.7;
-const MARIO_JUMP_V = -11.2;
-const MARIO_PLAYER_X = 46;
-const MARIO_PLAYER_W = 20;
-const MARIO_PLAYER_H = 26;
-const MARIO_MAX_SPEED = 7.5;
+const MARIO_GRAVITY = 0.78;
+const MARIO_JUMP_V = -14.3;
+const MARIO_PLAYER_START_X = 73;
+const MARIO_PLAYER_MIN_X = 20;
+const MARIO_PLAYER_MAX_X = 287;
+const MARIO_PLAYER_MOVE_SPEED = 5;
+const MARIO_PLAYER_W = 31;
+const MARIO_PLAYER_H = 39;
+const MARIO_BASE_SPEED = 3.1;
+const MARIO_MAX_SPEED = 7.3;
 
 let marioCanvas = null;
 let marioCtx = null;
 let marioRunning = false;
 let marioRAF = null;
 let marioControlsInit = false;
+let marioX = MARIO_PLAYER_START_X;
 let marioY = 0;
 let marioVY = 0;
 let marioJumping = false;
+let marioKeys = { left: false, right: false };
 let marioObstacles = [];
 let marioCoins = [];
-let marioSpeed = 3.4;
+let marioSpeed = MARIO_BASE_SPEED;
 let marioScore = 0;
 let marioDistance = 0;
 let marioNextSpawnDist = 0;
@@ -2141,15 +2147,18 @@ function saveMarioHighScore(score) {
 }
 
 function marioResetState() {
+    marioX = MARIO_PLAYER_START_X;
     marioY = MARIO_GROUND_Y - MARIO_PLAYER_H;
     marioVY = 0;
     marioJumping = false;
+    marioKeys.left = false;
+    marioKeys.right = false;
     marioObstacles = [];
     marioCoins = [];
-    marioSpeed = 3.4;
+    marioSpeed = MARIO_BASE_SPEED;
     marioScore = 0;
     marioDistance = 0;
-    marioNextSpawnDist = 140;
+    marioNextSpawnDist = 208;
     marioGroundOffset = 0;
 }
 
@@ -2175,7 +2184,17 @@ function initMarioControls() {
         if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp') {
             e.preventDefault();
             marioJump();
+        } else if (e.key === 'ArrowLeft') {
+            e.preventDefault();
+            marioKeys.left = true;
+        } else if (e.key === 'ArrowRight') {
+            e.preventDefault();
+            marioKeys.right = true;
         }
+    });
+    document.addEventListener('keyup', (e) => {
+        if (e.key === 'ArrowLeft') marioKeys.left = false;
+        else if (e.key === 'ArrowRight') marioKeys.right = false;
     });
     const canvas = document.getElementById('mario-canvas');
     canvas.addEventListener('mousedown', () => { if (marioRunning) marioJump(); });
@@ -2214,19 +2233,23 @@ function marioRectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
 
 function marioSpawnObstacle() {
     if (Math.random() < 0.55) {
-        const h = 16;
-        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 18, h, type: 'goomba' });
+        const h = 26;
+        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 29, h, type: 'goomba' });
     } else {
-        const h = 28;
-        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 22, h, type: 'pipe' });
+        const h = 44;
+        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 34, h, type: 'pipe' });
     }
     if (Math.random() < 0.5) {
-        const coinY = MARIO_GROUND_Y - 46 - Math.random() * 20;
-        marioCoins.push({ x: MARIO_CANVAS_W + 40, y: coinY, r: 5 });
+        const coinY = MARIO_GROUND_Y - 75 - Math.random() * 34;
+        marioCoins.push({ x: MARIO_CANVAS_W + 65, y: coinY, r: 8 });
     }
 }
 
 function updateMario() {
+    if (marioKeys.left) marioX -= MARIO_PLAYER_MOVE_SPEED;
+    if (marioKeys.right) marioX += MARIO_PLAYER_MOVE_SPEED;
+    marioX = Math.max(MARIO_PLAYER_MIN_X, Math.min(MARIO_PLAYER_MAX_X, marioX));
+
     marioVY += MARIO_GRAVITY;
     marioY += marioVY;
     if (marioY > MARIO_GROUND_Y - MARIO_PLAYER_H) {
@@ -2235,15 +2258,15 @@ function updateMario() {
         marioJumping = false;
     }
 
-    marioSpeed = Math.min(MARIO_MAX_SPEED, 3.4 + marioScore / 400);
+    marioSpeed = Math.min(MARIO_MAX_SPEED, MARIO_BASE_SPEED + marioScore / 700);
     marioDistance += marioSpeed;
-    marioGroundOffset = (marioGroundOffset + marioSpeed) % 20;
+    marioGroundOffset = (marioGroundOffset + marioSpeed) % 34;
     marioScore += marioSpeed * 0.12;
     document.getElementById('mario-score').textContent = Math.floor(marioScore);
 
     if (marioDistance >= marioNextSpawnDist) {
         marioSpawnObstacle();
-        marioNextSpawnDist = Math.max(marioDistance + 70, marioDistance + 110 + Math.random() * 90 - marioSpeed * 4);
+        marioNextSpawnDist = Math.max(marioDistance + 91, marioDistance + 143 + Math.random() * 117 - marioSpeed * 4);
     }
 
     for (let i = marioObstacles.length - 1; i >= 0; i--) {
@@ -2256,7 +2279,7 @@ function updateMario() {
         const c = marioCoins[i];
         c.x -= marioSpeed;
         if (c.x + c.r < 0) { marioCoins.splice(i, 1); continue; }
-        if (marioRectsOverlap(MARIO_PLAYER_X, marioY, MARIO_PLAYER_W, MARIO_PLAYER_H, c.x - c.r, c.y - c.r, c.r * 2, c.r * 2)) {
+        if (marioRectsOverlap(marioX, marioY, MARIO_PLAYER_W, MARIO_PLAYER_H, c.x - c.r, c.y - c.r, c.r * 2, c.r * 2)) {
             marioScore += 10;
             playSound(true);
             marioCoins.splice(i, 1);
@@ -2264,7 +2287,7 @@ function updateMario() {
     }
 
     for (const o of marioObstacles) {
-        if (marioRectsOverlap(MARIO_PLAYER_X + 4, marioY + 4, MARIO_PLAYER_W - 8, MARIO_PLAYER_H - 6, o.x + 3, o.y + 3, o.w - 6, o.h - 4)) {
+        if (marioRectsOverlap(marioX + 5, marioY + 5, MARIO_PLAYER_W - 10, MARIO_PLAYER_H - 8, o.x + 4, o.y + 4, o.w - 8, o.h - 6)) {
             return endMario();
         }
     }
@@ -2301,10 +2324,10 @@ function marioDrawCloud(ctx, x, y, s) {
 function drawMarioClouds(ctx, time) {
     ctx.save();
     ctx.fillStyle = 'rgba(255,255,255,0.9)';
-    const wrap = MARIO_CANVAS_W + 80;
+    const wrap = MARIO_CANVAS_W + 104;
     const drift = (time / 120) % wrap;
-    [{ x: 40, y: 24, s: 1 }, { x: 170, y: 18, s: 0.8 }, { x: 270, y: 30, s: 1.1 }].forEach((p) => {
-        const x = ((p.x - drift + wrap) % wrap) - 40;
+    [{ x: 70, y: 42, s: 1.7 }, { x: 300, y: 31, s: 1.37 }, { x: 476, y: 52, s: 1.82 }].forEach((p) => {
+        const x = ((p.x - drift + wrap) % wrap) - 70;
         marioDrawCloud(ctx, x, p.y, p.s);
     });
     ctx.restore();
@@ -2313,7 +2336,7 @@ function drawMarioClouds(ctx, time) {
 function drawMarioHills(ctx) {
     ctx.save();
     ctx.fillStyle = '#3d9c40';
-    [{ x: 60, r: 38 }, { x: 250, r: 46 }].forEach((h) => {
+    [{ x: 106, r: 66 }, { x: 440, r: 81 }].forEach((h) => {
         ctx.beginPath();
         ctx.arc(h.x, MARIO_GROUND_Y + 6, h.r, Math.PI, 0);
         ctx.fill();
@@ -2326,11 +2349,11 @@ function drawMarioGround(ctx) {
     ctx.fillRect(0, MARIO_GROUND_Y, MARIO_CANVAS_W, MARIO_GROUND_H);
     ctx.strokeStyle = 'rgba(0,0,0,0.25)';
     ctx.lineWidth = 1;
-    for (let x = -marioGroundOffset; x < MARIO_CANVAS_W; x += 20) {
-        ctx.strokeRect(x + 0.5, MARIO_GROUND_Y + 0.5, 20, MARIO_GROUND_H - 1);
+    for (let x = -marioGroundOffset; x < MARIO_CANVAS_W; x += 34) {
+        ctx.strokeRect(x + 0.5, MARIO_GROUND_Y + 0.5, 34, MARIO_GROUND_H - 1);
     }
     ctx.fillStyle = '#8a4a26';
-    ctx.fillRect(0, MARIO_GROUND_Y, MARIO_CANVAS_W, 4);
+    ctx.fillRect(0, MARIO_GROUND_Y, MARIO_CANVAS_W, 5);
 }
 
 function drawMarioGoomba(ctx, o) {
@@ -2339,27 +2362,27 @@ function drawMarioGoomba(ctx, o) {
     ctx.beginPath();
     ctx.ellipse(x + w / 2, y + h * 0.42, w / 2, h * 0.42, 0, Math.PI, 0);
     ctx.fill();
-    ctx.fillRect(x + 2, y + h * 0.5, w - 4, h * 0.4);
+    ctx.fillRect(x + 3, y + h * 0.5, w - 5, h * 0.4);
     ctx.fillStyle = '#3a2313';
-    ctx.fillRect(x + 1, y + h - 4, 6, 4);
-    ctx.fillRect(x + w - 7, y + h - 4, 6, 4);
+    ctx.fillRect(x + 1, y + h - 5, 8, 5);
+    ctx.fillRect(x + w - 9, y + h - 5, 8, 5);
     ctx.fillStyle = '#fff';
-    ctx.fillRect(x + 4, y + h * 0.32, 4, 4);
-    ctx.fillRect(x + w - 8, y + h * 0.32, 4, 4);
+    ctx.fillRect(x + 5, y + h * 0.32, 5, 5);
+    ctx.fillRect(x + w - 10, y + h * 0.32, 5, 5);
     ctx.fillStyle = '#000';
-    ctx.fillRect(x + 5, y + h * 0.34, 2, 2);
-    ctx.fillRect(x + w - 7, y + h * 0.34, 2, 2);
+    ctx.fillRect(x + 6, y + h * 0.34, 3, 3);
+    ctx.fillRect(x + w - 9, y + h * 0.34, 3, 3);
 }
 
 function drawMarioPipe(ctx, o) {
     const { x, y, w, h } = o;
     ctx.fillStyle = '#2ea043';
-    ctx.fillRect(x, y + 6, w, h - 6);
+    ctx.fillRect(x, y + 8, w, h - 8);
     ctx.fillStyle = '#3fc95f';
-    ctx.fillRect(x - 2, y, w + 4, 8);
+    ctx.fillRect(x - 3, y, w + 5, 10);
     ctx.strokeStyle = 'rgba(0,0,0,0.3)';
     ctx.lineWidth = 1;
-    ctx.strokeRect(x + 0.5, y + 6.5, w - 1, h - 7);
+    ctx.strokeRect(x + 0.5, y + 8.5, w - 1, h - 9);
 }
 
 function drawMarioCoin(ctx, c, time) {
@@ -2378,24 +2401,24 @@ function drawMarioCoin(ctx, c, time) {
 }
 
 function drawMarioPlayer(ctx) {
-    const x = MARIO_PLAYER_X, y = marioY, w = MARIO_PLAYER_W, h = MARIO_PLAYER_H;
+    const x = marioX, y = marioY, w = MARIO_PLAYER_W, h = MARIO_PLAYER_H;
     ctx.fillStyle = '#1e5fbf';
-    ctx.fillRect(x + 3, y + h - 10, w - 6, 10);
+    ctx.fillRect(x + 4, y + h - 13, w - 8, 13);
     ctx.fillStyle = '#5b3a1a';
-    ctx.fillRect(x + 2, y + h - 4, 6, 4);
-    ctx.fillRect(x + w - 8, y + h - 4, 6, 4);
+    ctx.fillRect(x + 3, y + h - 5, 8, 5);
+    ctx.fillRect(x + w - 11, y + h - 5, 8, 5);
     ctx.fillStyle = '#e0342a';
     ctx.fillRect(x + 1, y + h * 0.42, w - 2, h * 0.32);
     ctx.fillStyle = '#ffcf9e';
-    ctx.fillRect(x - 1, y + h * 0.46, 4, 8);
-    ctx.fillRect(x + w - 3, y + h * 0.46, 4, 8);
+    ctx.fillRect(x - 1, y + h * 0.46, 5, 10);
+    ctx.fillRect(x + w - 4, y + h * 0.46, 5, 10);
     ctx.fillStyle = '#ffcf9e';
-    ctx.fillRect(x + 4, y + 4, w - 8, 10);
+    ctx.fillRect(x + 5, y + 5, w - 10, 13);
     ctx.fillStyle = '#e0342a';
-    ctx.fillRect(x + 2, y, w - 4, 6);
-    ctx.fillRect(x + w - 6, y + 4, 6, 3);
+    ctx.fillRect(x + 3, y, w - 5, 8);
+    ctx.fillRect(x + w - 8, y + 5, 8, 4);
     ctx.fillStyle = '#3a2313';
-    ctx.fillRect(x + w - 7, y + 9, 4, 2);
+    ctx.fillRect(x + w - 9, y + 12, 5, 3);
 }
 
 function drawMario() {

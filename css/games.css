@@ -1,4 +1,14 @@
 /* ===== 🎮 Games ===== */
+/* Tighter than the shared .mode-card padding/title spacing — this card's
+   grid keeps growing as games get added, so it needs to stay compact to
+   avoid forcing a page scrollbar on typical viewport heights. */
+#games-select-card {
+    padding: 20px 18px;
+}
+#games-select-card h3 {
+    margin-bottom: 10px;
+}
+
 .rhythm-hint {
     text-align: center;
     color: var(--text-label);
@@ -10,8 +20,8 @@
 .games-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 16px;
+    gap: 10px;
+    margin-top: 12px;
 }
 @media (max-width: 480px) {
     .games-grid { grid-template-columns: 1fr; }
@@ -22,7 +32,7 @@
     background: rgba(255,255,255,0.03);
     border: 1px solid var(--nav-border);
     border-radius: 16px;
-    padding: 24px 16px;
+    padding: 14px 14px;
     text-align: center;
     cursor: pointer;
     overflow: hidden;
@@ -52,14 +62,14 @@
 /* Circular icon badge, tinted per game so the grid reads as 4 distinct
    activities at a glance instead of 4 identical pink cards. */
 .game-option-icon-badge {
-    width: 58px;
-    height: 58px;
-    margin: 0 auto 10px;
+    width: 42px;
+    height: 42px;
+    margin: 0 auto 6px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.7rem;
+    font-size: 1.3rem;
     background:
         radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%),
         linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
@@ -110,11 +120,13 @@
 .game-option-name {
     font-weight: bold;
     color: var(--text-pink);
-    margin-bottom: 6px;
+    margin-bottom: 3px;
+    font-size: 0.95rem;
     font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
 }
 .game-option-desc {
-    font-size: 0.82rem;
+    font-size: 0.76rem;
+    line-height: 1.35;
     color: var(--text-secondary);
 }
 
@@ -350,7 +362,7 @@
 /* ---- Super Mario Adventure ---- */
 .mario-canvas-wrap {
     position: relative;
-    max-width: 360px;
+    max-width: 640px;
     margin: 0 auto;
     border-radius: 16px;
     padding: 6px;
@@ -360,7 +372,7 @@
 #mario-canvas {
     width: 100%;
     height: auto;
-    aspect-ratio: 340 / 170;
+    aspect-ratio: 600 / 300;
     display: block;
     background: #5c94fc;
     border-radius: 10px;
