@@ -90,6 +90,9 @@
 .game-option.airhockey .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #38bdf8, #0369a1);
 }
+.game-option.mario .game-option-icon-badge:not(.cover) {
+    background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #e0342a, #a3241c);
+}
 
 /* Wordle spans the full row and uses a square tile badge instead of a
    circle, since the square letter-tile is Wordle's whole visual identity. */
@@ -343,6 +346,43 @@
     border-radius: 12px;
     touch-action: none;
 }
+
+/* ---- Super Mario Adventure ---- */
+.mario-canvas-wrap {
+    position: relative;
+    max-width: 360px;
+    margin: 0 auto;
+    border-radius: 16px;
+    padding: 6px;
+    background: linear-gradient(135deg, rgba(92,148,252,0.35), rgba(63,201,95,0.25));
+    box-shadow: 0 0 0 1px var(--nav-border), 0 8px 24px rgba(0,0,0,0.25);
+}
+#mario-canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 340 / 170;
+    display: block;
+    background: #5c94fc;
+    border-radius: 10px;
+    touch-action: none;
+    cursor: pointer;
+}
+.mario-jump-btn {
+    display: block;
+    margin: 16px auto 0;
+    padding: 12px 40px;
+    border: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #e0342a, #a3241c);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(224,52,42,0.4), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform 0.15s, filter 0.2s;
+}
+.mario-jump-btn:hover { filter: brightness(1.1); }
+.mario-jump-btn:active { transform: scale(0.95); }
 
 /* ---- Whack-a-mole ---- */
 #whack-game {

@@ -8,6 +8,7 @@ function openGame(name) {
     document.getElementById('match3-card').style.display = name === 'match3' ? 'block' : 'none';
     document.getElementById('wordle-card').style.display = name === 'wordle' ? 'block' : 'none';
     document.getElementById('airhockey-card').style.display = name === 'airhockey' ? 'block' : 'none';
+    document.getElementById('mario-card').style.display = name === 'mario' ? 'block' : 'none';
 
     if (name === 'snake') {
         initSnakeCanvas();
@@ -40,6 +41,12 @@ function openGame(name) {
     } else if (name === 'airhockey') {
         document.getElementById('airhockey-mode-select').style.display = 'block';
         document.getElementById('airhockey-game').style.display = 'none';
+    } else if (name === 'mario') {
+        initMarioCanvas();
+        document.getElementById('mario-highscore').textContent = getMarioHighScore();
+        const overlay = document.getElementById('mario-overlay');
+        overlay.innerHTML = `<p>${t('game_mario_intro')}</p><button class="btn next-btn" onclick="startMario()">${t('game_start')}</button>`;
+        overlay.style.display = 'flex';
     }
 }
 
@@ -54,6 +61,7 @@ function closeGame() {
     document.getElementById('airhockey-card').style.display = 'none';
     document.getElementById('airhockey-mode-select').style.display = 'block';
     document.getElementById('airhockey-game').style.display = 'none';
+    document.getElementById('mario-card').style.display = 'none';
 }
 
 function stopAllGames() {
@@ -69,6 +77,8 @@ function stopAllGames() {
     cancelAnimationFrame(airhockeyRAF);
     clearTimeout(airhockeyServeTimeout);
     airhockeyKeys.up = airhockeyKeys.down = airhockeyKeys.left = airhockeyKeys.right = false;
+    marioRunning = false;
+    cancelAnimationFrame(marioRAF);
 }
 
 /* ===================== 🐍 Snake ===================== */
@@ -2092,4 +2102,319 @@ function drawAirhockey() {
     drawAirhockeyPuck(ctx);
     drawAirhockeyPaddle(ctx, airhockeyPlayer, '#38bdf8', '#0369a1', time);
     drawAirhockeyPaddle(ctx, airhockeyCpu, '#f87171', '#b91c1c', time);
+}
+
+/* ===================== 🍄 Super Mario Adventure (endless runner) ===================== */
+
+const MARIO_CANVAS_W = 340;
+const MARIO_CANVAS_H = 170;
+const MARIO_GROUND_H = 24;
+const MARIO_GROUND_Y = MARIO_CANVAS_H - MARIO_GROUND_H;
+const MARIO_GRAVITY = 0.7;
+const MARIO_JUMP_V = -11.2;
+const MARIO_PLAYER_X = 46;
+const MARIO_PLAYER_W = 20;
+const MARIO_PLAYER_H = 26;
+const MARIO_MAX_SPEED = 7.5;
+
+let marioCanvas = null;
+let marioCtx = null;
+let marioRunning = false;
+let marioRAF = null;
+let marioControlsInit = false;
+let marioY = 0;
+let marioVY = 0;
+let marioJumping = false;
+let marioObstacles = [];
+let marioCoins = [];
+let marioSpeed = 3.4;
+let marioScore = 0;
+let marioDistance = 0;
+let marioNextSpawnDist = 0;
+let marioGroundOffset = 0;
+
+function getMarioHighScore() {
+    return parseInt(localStorage.getItem('mario_high_score') || '0', 10);
+}
+function saveMarioHighScore(score) {
+    if (score > getMarioHighScore()) localStorage.setItem('mario_high_score', String(Math.floor(score)));
+}
+
+function marioResetState() {
+    marioY = MARIO_GROUND_Y - MARIO_PLAYER_H;
+    marioVY = 0;
+    marioJumping = false;
+    marioObstacles = [];
+    marioCoins = [];
+    marioSpeed = 3.4;
+    marioScore = 0;
+    marioDistance = 0;
+    marioNextSpawnDist = 140;
+    marioGroundOffset = 0;
+}
+
+function initMarioCanvas() {
+    marioCanvas = document.getElementById('mario-canvas');
+    if (!marioCanvas) return;
+    marioCtx = marioCanvas.getContext('2d');
+    marioResetState();
+    initMarioControls();
+    drawMario();
+}
+
+function marioJump() {
+    if (marioJumping) return;
+    marioVY = MARIO_JUMP_V;
+    marioJumping = true;
+}
+
+function initMarioControls() {
+    if (marioControlsInit) return;
+    document.addEventListener('keydown', (e) => {
+        if (!marioRunning) return;
+        if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'ArrowUp') {
+            e.preventDefault();
+            marioJump();
+        }
+    });
+    const canvas = document.getElementById('mario-canvas');
+    canvas.addEventListener('mousedown', () => { if (marioRunning) marioJump(); });
+    canvas.addEventListener('touchstart', (e) => {
+        if (!marioRunning) return;
+        e.preventDefault();
+        marioJump();
+    }, { passive: false });
+    const jumpBtn = document.getElementById('mario-jump-btn');
+    jumpBtn.addEventListener('click', () => { if (marioRunning) marioJump(); });
+    jumpBtn.addEventListener('touchstart', (e) => {
+        e.preventDefault();
+        if (marioRunning) marioJump();
+    }, { passive: false });
+    marioControlsInit = true;
+}
+
+function startMario() {
+    document.getElementById('mario-overlay').style.display = 'none';
+    marioResetState();
+    marioRunning = true;
+    cancelAnimationFrame(marioRAF);
+    marioRAF = requestAnimationFrame(marioLoop);
+}
+
+function marioLoop() {
+    if (!marioRunning) return;
+    updateMario();
+    drawMario();
+    if (marioRunning) marioRAF = requestAnimationFrame(marioLoop);
+}
+
+function marioRectsOverlap(x1, y1, w1, h1, x2, y2, w2, h2) {
+    return x1 < x2 + w2 && x1 + w1 > x2 && y1 < y2 + h2 && y1 + h1 > y2;
+}
+
+function marioSpawnObstacle() {
+    if (Math.random() < 0.55) {
+        const h = 16;
+        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 18, h, type: 'goomba' });
+    } else {
+        const h = 28;
+        marioObstacles.push({ x: MARIO_CANVAS_W, y: MARIO_GROUND_Y - h, w: 22, h, type: 'pipe' });
+    }
+    if (Math.random() < 0.5) {
+        const coinY = MARIO_GROUND_Y - 46 - Math.random() * 20;
+        marioCoins.push({ x: MARIO_CANVAS_W + 40, y: coinY, r: 5 });
+    }
+}
+
+function updateMario() {
+    marioVY += MARIO_GRAVITY;
+    marioY += marioVY;
+    if (marioY > MARIO_GROUND_Y - MARIO_PLAYER_H) {
+        marioY = MARIO_GROUND_Y - MARIO_PLAYER_H;
+        marioVY = 0;
+        marioJumping = false;
+    }
+
+    marioSpeed = Math.min(MARIO_MAX_SPEED, 3.4 + marioScore / 400);
+    marioDistance += marioSpeed;
+    marioGroundOffset = (marioGroundOffset + marioSpeed) % 20;
+    marioScore += marioSpeed * 0.12;
+    document.getElementById('mario-score').textContent = Math.floor(marioScore);
+
+    if (marioDistance >= marioNextSpawnDist) {
+        marioSpawnObstacle();
+        marioNextSpawnDist = Math.max(marioDistance + 70, marioDistance + 110 + Math.random() * 90 - marioSpeed * 4);
+    }
+
+    for (let i = marioObstacles.length - 1; i >= 0; i--) {
+        const o = marioObstacles[i];
+        o.x -= marioSpeed;
+        if (o.x + o.w < 0) marioObstacles.splice(i, 1);
+    }
+
+    for (let i = marioCoins.length - 1; i >= 0; i--) {
+        const c = marioCoins[i];
+        c.x -= marioSpeed;
+        if (c.x + c.r < 0) { marioCoins.splice(i, 1); continue; }
+        if (marioRectsOverlap(MARIO_PLAYER_X, marioY, MARIO_PLAYER_W, MARIO_PLAYER_H, c.x - c.r, c.y - c.r, c.r * 2, c.r * 2)) {
+            marioScore += 10;
+            playSound(true);
+            marioCoins.splice(i, 1);
+        }
+    }
+
+    for (const o of marioObstacles) {
+        if (marioRectsOverlap(MARIO_PLAYER_X + 4, marioY + 4, MARIO_PLAYER_W - 8, MARIO_PLAYER_H - 6, o.x + 3, o.y + 3, o.w - 6, o.h - 4)) {
+            return endMario();
+        }
+    }
+}
+
+function endMario() {
+    marioRunning = false;
+    cancelAnimationFrame(marioRAF);
+    playSound(false);
+    const finalScore = Math.floor(marioScore);
+    saveMarioHighScore(finalScore);
+    document.getElementById('mario-highscore').textContent = getMarioHighScore();
+    const isNewBest = finalScore > 0 && finalScore === getMarioHighScore();
+
+    const overlay = document.getElementById('mario-overlay');
+    overlay.innerHTML = `
+        <p>${t('game_over')}</p>
+        <p>${t('game_final_score', { n: finalScore })}</p>
+        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
+        <button class="btn next-btn" onclick="startMario()">${t('game_restart')}</button>
+    `;
+    overlay.style.display = 'flex';
+    drawMario();
+}
+
+function marioDrawCloud(ctx, x, y, s) {
+    ctx.beginPath();
+    ctx.arc(x, y, 9 * s, 0, Math.PI * 2);
+    ctx.arc(x + 10 * s, y - 4 * s, 11 * s, 0, Math.PI * 2);
+    ctx.arc(x + 20 * s, y, 9 * s, 0, Math.PI * 2);
+    ctx.fill();
+}
+
+function drawMarioClouds(ctx, time) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    const wrap = MARIO_CANVAS_W + 80;
+    const drift = (time / 120) % wrap;
+    [{ x: 40, y: 24, s: 1 }, { x: 170, y: 18, s: 0.8 }, { x: 270, y: 30, s: 1.1 }].forEach((p) => {
+        const x = ((p.x - drift + wrap) % wrap) - 40;
+        marioDrawCloud(ctx, x, p.y, p.s);
+    });
+    ctx.restore();
+}
+
+function drawMarioHills(ctx) {
+    ctx.save();
+    ctx.fillStyle = '#3d9c40';
+    [{ x: 60, r: 38 }, { x: 250, r: 46 }].forEach((h) => {
+        ctx.beginPath();
+        ctx.arc(h.x, MARIO_GROUND_Y + 6, h.r, Math.PI, 0);
+        ctx.fill();
+    });
+    ctx.restore();
+}
+
+function drawMarioGround(ctx) {
+    ctx.fillStyle = '#c87137';
+    ctx.fillRect(0, MARIO_GROUND_Y, MARIO_CANVAS_W, MARIO_GROUND_H);
+    ctx.strokeStyle = 'rgba(0,0,0,0.25)';
+    ctx.lineWidth = 1;
+    for (let x = -marioGroundOffset; x < MARIO_CANVAS_W; x += 20) {
+        ctx.strokeRect(x + 0.5, MARIO_GROUND_Y + 0.5, 20, MARIO_GROUND_H - 1);
+    }
+    ctx.fillStyle = '#8a4a26';
+    ctx.fillRect(0, MARIO_GROUND_Y, MARIO_CANVAS_W, 4);
+}
+
+function drawMarioGoomba(ctx, o) {
+    const { x, y, w, h } = o;
+    ctx.fillStyle = '#8a4a26';
+    ctx.beginPath();
+    ctx.ellipse(x + w / 2, y + h * 0.42, w / 2, h * 0.42, 0, Math.PI, 0);
+    ctx.fill();
+    ctx.fillRect(x + 2, y + h * 0.5, w - 4, h * 0.4);
+    ctx.fillStyle = '#3a2313';
+    ctx.fillRect(x + 1, y + h - 4, 6, 4);
+    ctx.fillRect(x + w - 7, y + h - 4, 6, 4);
+    ctx.fillStyle = '#fff';
+    ctx.fillRect(x + 4, y + h * 0.32, 4, 4);
+    ctx.fillRect(x + w - 8, y + h * 0.32, 4, 4);
+    ctx.fillStyle = '#000';
+    ctx.fillRect(x + 5, y + h * 0.34, 2, 2);
+    ctx.fillRect(x + w - 7, y + h * 0.34, 2, 2);
+}
+
+function drawMarioPipe(ctx, o) {
+    const { x, y, w, h } = o;
+    ctx.fillStyle = '#2ea043';
+    ctx.fillRect(x, y + 6, w, h - 6);
+    ctx.fillStyle = '#3fc95f';
+    ctx.fillRect(x - 2, y, w + 4, 8);
+    ctx.strokeStyle = 'rgba(0,0,0,0.3)';
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x + 0.5, y + 6.5, w - 1, h - 7);
+}
+
+function drawMarioCoin(ctx, c, time) {
+    const wob = Math.abs(Math.sin(time / 150 + c.x));
+    ctx.save();
+    ctx.translate(c.x, c.y + Math.sin(time / 200 + c.x) * 2);
+    ctx.scale(0.4 + wob * 0.6, 1);
+    ctx.fillStyle = '#ffd43b';
+    ctx.beginPath();
+    ctx.arc(0, 0, c.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#e8a400';
+    ctx.lineWidth = 1.4;
+    ctx.stroke();
+    ctx.restore();
+}
+
+function drawMarioPlayer(ctx) {
+    const x = MARIO_PLAYER_X, y = marioY, w = MARIO_PLAYER_W, h = MARIO_PLAYER_H;
+    ctx.fillStyle = '#1e5fbf';
+    ctx.fillRect(x + 3, y + h - 10, w - 6, 10);
+    ctx.fillStyle = '#5b3a1a';
+    ctx.fillRect(x + 2, y + h - 4, 6, 4);
+    ctx.fillRect(x + w - 8, y + h - 4, 6, 4);
+    ctx.fillStyle = '#e0342a';
+    ctx.fillRect(x + 1, y + h * 0.42, w - 2, h * 0.32);
+    ctx.fillStyle = '#ffcf9e';
+    ctx.fillRect(x - 1, y + h * 0.46, 4, 8);
+    ctx.fillRect(x + w - 3, y + h * 0.46, 4, 8);
+    ctx.fillStyle = '#ffcf9e';
+    ctx.fillRect(x + 4, y + 4, w - 8, 10);
+    ctx.fillStyle = '#e0342a';
+    ctx.fillRect(x + 2, y, w - 4, 6);
+    ctx.fillRect(x + w - 6, y + 4, 6, 3);
+    ctx.fillStyle = '#3a2313';
+    ctx.fillRect(x + w - 7, y + 9, 4, 2);
+}
+
+function drawMario() {
+    const ctx = marioCtx;
+    if (!ctx) return;
+    const time = performance.now();
+    ctx.clearRect(0, 0, MARIO_CANVAS_W, MARIO_CANVAS_H);
+
+    const sky = ctx.createLinearGradient(0, 0, 0, MARIO_CANVAS_H);
+    sky.addColorStop(0, '#5c94fc');
+    sky.addColorStop(1, '#8fc0ff');
+    ctx.fillStyle = sky;
+    ctx.fillRect(0, 0, MARIO_CANVAS_W, MARIO_CANVAS_H);
+
+    drawMarioClouds(ctx, time);
+    drawMarioHills(ctx);
+    drawMarioGround(ctx);
+
+    marioCoins.forEach((c) => drawMarioCoin(ctx, c, time));
+    marioObstacles.forEach((o) => (o.type === 'goomba' ? drawMarioGoomba(ctx, o) : drawMarioPipe(ctx, o)));
+    drawMarioPlayer(ctx);
 }

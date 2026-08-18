@@ -502,6 +502,11 @@
                         <div class="game-option-name" data-i18n="game_airhockey_name">&#x7A7A;&#x6C23;&#x66F2;&#x68CD;&#x7403;</div>
                         <div class="game-option-desc" data-i18n="game_airhockey_desc">&#x62D6;&#x66F3;&#x7403;&#x62CD;&#x64CB;&#x7403;&#x9032;&#x653B;&#xFF0C;&#x641E;&#x5148;&#x5F97; 7 &#x5206;&#x64CA;&#x6557;&#x96FB;&#x8166;&#xFF01;</div>
                     </div>
+                    <div class="game-option mario" onclick="openGame('mario')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F344;</span></div>
+                        <div class="game-option-name" data-i18n="game_mario_name">&#x8D85;&#x7D1A;&#x746A;&#x5229;&#x6B50;&#x5192;&#x96AA;</div>
+                        <div class="game-option-desc" data-i18n="game_mario_desc">&#x6309;&#x7A7A;&#x767D;&#x9375;&#x6216;&#x9EDE;&#x64CA;&#x756B;&#x9762;&#x8DB3;&#x8DF3;&#xFF0C;&#x9583;&#x907F;&#x602A;&#x7269;&#x8207;&#x7BA1;&#x5B50;&#xFF0C;&#x770B;&#x4F60;&#x80FD;&#x8DD1;&#x591A;&#x9060;&#xFF01;</div>
+                    </div>
                     <div class="game-option wordle" onclick="openGame('wordle')">
                         <div class="game-option-icon-badge cover" style="background-image:url('https://static.brainbreakhub.com/media/activities/processed/wordle.webp')"></div>
                         <div class="game-option-name" data-i18n="game_wordle_name">Wordle</div>
@@ -670,6 +675,26 @@
                     </div>
                     <p class="airhockey-control-hint" id="airhockey-control-hint" style="display:none;"></p>
                 </div>
+            </div>
+
+            <div class="mode-card" id="mario-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+                <div class="game-header">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <div class="game-score-row">
+                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="mario-score">0</span>
+                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="mario-highscore">0</span></span>
+                    </div>
+                </div>
+                <div class="mario-canvas-wrap">
+                    <canvas id="mario-canvas" width="340" height="170"></canvas>
+                    <div class="game-overlay" id="mario-overlay">
+                        <p data-i18n="game_mario_intro">&#x6309;&#x7A7A;&#x767D;&#x9375;&#x6216;&#x9EDE;&#x64CA;&#x756B;&#x9762;&#x8DB3;&#x8DF3;&#xFF0C;&#x9583;&#x907F;&#x602A;&#x7269;&#x8207;&#x7BA1;&#x5B50;&#xFF01;</p>
+                        <button class="btn next-btn" onclick="startMario()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                    </div>
+                </div>
+                <button class="mario-jump-btn" id="mario-jump-btn" data-i18n="game_mario_jump">&#x8DF3;&#x8E8D;&#xFF01;</button>
             </div>
         </div>
 
