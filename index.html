@@ -497,6 +497,11 @@
                         <div class="game-option-name" data-i18n="game_match3_name">&#x7cd6;&#x679c;&#x6d88;&#x6d88;&#x6a02;</div>
                         <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
                     </div>
+                    <div class="game-option airhockey" onclick="openGame('airhockey')">
+                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F3D2;</span></div>
+                        <div class="game-option-name" data-i18n="game_airhockey_name">&#x7A7A;&#x6C23;&#x66F2;&#x68CD;&#x7403;</div>
+                        <div class="game-option-desc" data-i18n="game_airhockey_desc">&#x62D6;&#x66F3;&#x7403;&#x62CD;&#x64CB;&#x7403;&#x9032;&#x653B;&#xFF0C;&#x641E;&#x5148;&#x5F97; 7 &#x5206;&#x64CA;&#x6557;&#x96FB;&#x8166;&#xFF01;</div>
+                    </div>
                     <div class="game-option wordle" onclick="openGame('wordle')">
                         <div class="game-option-icon-badge cover" style="background-image:url('https://static.brainbreakhub.com/media/activities/processed/wordle.webp')"></div>
                         <div class="game-option-name" data-i18n="game_wordle_name">Wordle</div>
@@ -629,6 +634,42 @@
                     </div>
                 </div>
                 <div class="wordle-keyboard" id="wordle-keyboard"></div>
+            </div>
+
+            <div class="mode-card" id="airhockey-card" style="display:none;">
+                <div class="card-corner tl"></div><div class="card-corner tr"></div>
+                <div class="card-corner bl"></div><div class="card-corner br"></div>
+
+                <div id="airhockey-mode-select">
+                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                    <h3 data-i18n="game_airhockey_pick_mode">&#x2726; &#x9078;&#x64C7;&#x5C0D;&#x6230;&#x6A21;&#x5F0F; &#x2726;</h3>
+                    <div class="lang-buttons airhockey-mode-buttons">
+                        <button class="lang-btn airhockey-mode-cpu" onclick="selectAirhockeyMode('cpu')"><span data-i18n="game_airhockey_mode_cpu">&#x1F916; &#x8207;&#x96FB;&#x8166;&#x5C0D;&#x6230;</span></button>
+                        <button class="lang-btn airhockey-mode-2p" onclick="selectAirhockeyMode('2p')"><span data-i18n="game_airhockey_mode_2p">&#x1F3AE; &#x96D9;&#x4EBA;&#x5C0D;&#x6230;</span></button>
+                    </div>
+                </div>
+
+                <div id="airhockey-game" style="display:none;">
+                    <div class="game-header">
+                        <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
+                        <div class="game-score-row airhockey-score-row">
+                            <span class="airhockey-score-you"><span id="airhockey-left-label" data-i18n="game_airhockey_you">&#x4F60;</span> <span id="airhockey-score-you">0</span></span>
+                            <span class="airhockey-score-sep">:</span>
+                            <span class="airhockey-score-cpu"><span id="airhockey-score-cpu">0</span> <span id="airhockey-right-label" data-i18n="game_airhockey_cpu">&#x96FB;&#x8166;</span></span>
+                            <span class="game-highscore" id="airhockey-streak-chip">&#x1F3C6; <span data-i18n="game_airhockey_best_streak">&#x6700;&#x4F73;&#x9023;&#x52DD;</span> <span id="airhockey-highscore">0</span></span>
+                        </div>
+                    </div>
+                    <div class="airhockey-canvas-wrap">
+                        <span class="airhockey-corner tl"></span><span class="airhockey-corner tr"></span>
+                        <span class="airhockey-corner bl"></span><span class="airhockey-corner br"></span>
+                        <canvas id="airhockey-canvas" width="340" height="220"></canvas>
+                        <div class="game-overlay" id="airhockey-overlay">
+                            <p data-i18n="game_airhockey_intro">&#x62D6;&#x66F3;&#x6216;&#x7528;&#x6ED1;&#x9F20;&#x79FB;&#x52D5;&#x4F60;&#x7684;&#x7403;&#x62CD;&#x64CB;&#x7403;&#x3001;&#x9032;&#x653B;&#xFF0C;&#x641E;&#x5148;&#x5F97; 7 &#x5206;&#x64CA;&#x6557;&#x96FB;&#x8166;&#xFF01;</p>
+                            <button class="btn next-btn" onclick="startAirhockey()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
+                        </div>
+                    </div>
+                    <p class="airhockey-control-hint" id="airhockey-control-hint" style="display:none;"></p>
+                </div>
             </div>
         </div>
 

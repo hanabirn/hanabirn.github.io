@@ -87,6 +87,9 @@
 .game-option.match3 .game-option-icon-badge:not(.cover) {
     background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #f472b6, #db2777);
 }
+.game-option.airhockey .game-option-icon-badge:not(.cover) {
+    background: radial-gradient(circle at 35% 28%, rgba(255,255,255,0.35), transparent 55%), linear-gradient(135deg, #38bdf8, #0369a1);
+}
 
 /* Wordle spans the full row and uses a square tile badge instead of a
    circle, since the square letter-tile is Wordle's whole visual identity. */
@@ -275,6 +278,70 @@
 }
 .snake-dpad-btn:active {
     transform: scale(0.88);
+}
+
+/* ---- Air Hockey ---- */
+#airhockey-mode-select h3 { text-align: center; }
+.airhockey-mode-buttons { margin-top: 16px; }
+.lang-btn.airhockey-mode-cpu {
+    background: linear-gradient(135deg, #38bdf8, #0369a1);
+    box-shadow: 0 4px 25px rgba(56,189,248,0.35);
+}
+.lang-btn.airhockey-mode-2p {
+    background: linear-gradient(135deg, #fb7185, #be123c);
+    box-shadow: 0 4px 25px rgba(251,113,133,0.35);
+}
+
+.airhockey-control-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-accent);
+    margin: 10px 0 0;
+    letter-spacing: 0.02em;
+}
+
+.airhockey-score-row {
+    gap: 8px;
+    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
+}
+.airhockey-score-you { color: #38bdf8; text-shadow: 0 0 10px rgba(56,189,248,0.65); }
+.airhockey-score-cpu { color: #f87171; text-shadow: 0 0 10px rgba(248,113,113,0.65); }
+.airhockey-score-sep { color: var(--text-secondary); font-weight: normal; }
+
+.airhockey-canvas-wrap {
+    position: relative;
+    max-width: 380px;
+    margin: 0 auto;
+    border-radius: 18px;
+    padding: 10px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(56,189,248,0.16) 0%, transparent 60%),
+        linear-gradient(135deg, rgba(56,189,248,0.30), rgba(10,10,25,0.65) 45%, rgba(248,113,113,0.22));
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.35), 0 0 24px rgba(56,189,248,0.18), 0 8px 24px rgba(0,0,0,0.35);
+}
+.airhockey-corner {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    border-color: rgba(94,234,212,0.85);
+    border-style: solid;
+    z-index: 6;
+    pointer-events: none;
+    filter: drop-shadow(0 0 4px rgba(94,234,212,0.6));
+}
+.airhockey-corner.tl { top: 4px; left: 4px; border-width: 2px 0 0 2px; border-radius: 6px 0 0 0; }
+.airhockey-corner.tr { top: 4px; right: 4px; border-width: 2px 2px 0 0; border-radius: 0 6px 0 0; }
+.airhockey-corner.bl { bottom: 4px; left: 4px; border-width: 0 0 2px 2px; border-radius: 0 0 0 6px; }
+.airhockey-corner.br { bottom: 4px; right: 4px; border-width: 0 2px 2px 0; border-radius: 0 0 6px 0; }
+
+#airhockey-canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 340 / 220;
+    display: block;
+    background: #060a16;
+    border-radius: 12px;
+    touch-action: none;
 }
 
 /* ---- Whack-a-mole ---- */

@@ -7,6 +7,7 @@ function openGame(name) {
     document.getElementById('game2048-card').style.display = name === '2048' ? 'block' : 'none';
     document.getElementById('match3-card').style.display = name === 'match3' ? 'block' : 'none';
     document.getElementById('wordle-card').style.display = name === 'wordle' ? 'block' : 'none';
+    document.getElementById('airhockey-card').style.display = name === 'airhockey' ? 'block' : 'none';
 
     if (name === 'snake') {
         initSnakeCanvas();
@@ -36,6 +37,9 @@ function openGame(name) {
         overlay.style.display = 'flex';
         wordleRenderGrid();
         wordleRenderKeyboard();
+    } else if (name === 'airhockey') {
+        document.getElementById('airhockey-mode-select').style.display = 'block';
+        document.getElementById('airhockey-game').style.display = 'none';
     }
 }
 
@@ -47,6 +51,9 @@ function closeGame() {
     document.getElementById('game2048-card').style.display = 'none';
     document.getElementById('match3-card').style.display = 'none';
     document.getElementById('wordle-card').style.display = 'none';
+    document.getElementById('airhockey-card').style.display = 'none';
+    document.getElementById('airhockey-mode-select').style.display = 'block';
+    document.getElementById('airhockey-game').style.display = 'none';
 }
 
 function stopAllGames() {
@@ -58,6 +65,10 @@ function stopAllGames() {
     game2048Running = false;
     match3Running = false;
     wordleRunning = false;
+    airhockeyRunning = false;
+    cancelAnimationFrame(airhockeyRAF);
+    clearTimeout(airhockeyServeTimeout);
+    airhockeyKeys.up = airhockeyKeys.down = airhockeyKeys.left = airhockeyKeys.right = false;
 }
 
 /* ===================== 🐍 Snake ===================== */
@@ -1654,4 +1665,431 @@ function endWordle(won) {
         `;
     }
     overlay.style.display = 'flex';
+}
+
+/* ===================== 🏒 Air Hockey (vs CPU / 2-Player) ===================== */
+
+const AIRHOCKEY_W = 340;
+const AIRHOCKEY_H = 220;
+const AIRHOCKEY_PUCK_R = 9;
+const AIRHOCKEY_PADDLE_R = 18;
+const AIRHOCKEY_GOAL_HALF = 40;
+const AIRHOCKEY_WIN_SCORE = 7;
+const AIRHOCKEY_FRICTION = 0.995;
+const AIRHOCKEY_MAX_SPEED = 9;
+const AIRHOCKEY_CPU_SPEED = 2.6;
+const AIRHOCKEY_P2_KEY_SPEED = 4;
+const AIRHOCKEY_TRAIL_LEN = 10;
+
+let airhockeyCanvas = null;
+let airhockeyCtx = null;
+let airhockeyMode = 'cpu';
+let airhockeyRunning = false;
+let airhockeyServing = false;
+let airhockeyRAF = null;
+let airhockeyServeTimeout = null;
+let airhockeyPointerInit = false;
+let airhockeyPlayer = { x: 0, y: 0 };
+let airhockeyCpu = { x: 0, y: 0 };
+let airhockeyPuck = { x: 0, y: 0, vx: 0, vy: 0 };
+let airhockeyScoreYou = 0;
+let airhockeyScoreCpu = 0;
+let airhockeyTrail = [];
+let airhockeyKeys = { up: false, down: false, left: false, right: false };
+
+function airhockeyClamp(v, min, max) {
+    return Math.max(min, Math.min(max, v));
+}
+
+function getAirhockeyHighStreak() {
+    return parseInt(localStorage.getItem('airhockey_high_streak') || '0', 10);
+}
+function saveAirhockeyHighStreak(streak) {
+    if (streak > getAirhockeyHighStreak()) localStorage.setItem('airhockey_high_streak', String(streak));
+}
+
+function airhockeyResetPositions() {
+    airhockeyPlayer = { x: AIRHOCKEY_PADDLE_R + 20, y: AIRHOCKEY_H / 2 };
+    airhockeyCpu = { x: AIRHOCKEY_W - AIRHOCKEY_PADDLE_R - 20, y: AIRHOCKEY_H / 2 };
+    airhockeyPuck = { x: AIRHOCKEY_W / 2, y: AIRHOCKEY_H / 2, vx: 0, vy: 0 };
+    airhockeyTrail = [];
+}
+
+function initAirhockeyCanvas() {
+    airhockeyCanvas = document.getElementById('airhockey-canvas');
+    if (!airhockeyCanvas) return;
+    airhockeyCtx = airhockeyCanvas.getContext('2d');
+    airhockeyResetPositions();
+    initAirhockeyPointer();
+    drawAirhockey();
+}
+
+function initAirhockeyPointer() {
+    if (airhockeyPointerInit) return;
+    const canvas = airhockeyCanvas;
+
+    function pointerPos(e) {
+        const rect = canvas.getBoundingClientRect();
+        const src = e.touches ? e.touches[0] : e;
+        const cx = src.clientX - rect.left;
+        const cy = src.clientY - rect.top;
+        return { x: cx * (canvas.width / rect.width), y: cy * (canvas.height / rect.height) };
+    }
+
+    function move(e) {
+        if (!airhockeyRunning) return;
+        e.preventDefault();
+        const p = pointerPos(e);
+        airhockeyPlayer.x = airhockeyClamp(p.x, AIRHOCKEY_PADDLE_R, AIRHOCKEY_W / 2 - AIRHOCKEY_PADDLE_R);
+        airhockeyPlayer.y = airhockeyClamp(p.y, AIRHOCKEY_PADDLE_R, AIRHOCKEY_H - AIRHOCKEY_PADDLE_R);
+    }
+
+    canvas.addEventListener('mousemove', move);
+    canvas.addEventListener('touchmove', move, { passive: false });
+    airhockeyPointerInit = true;
+}
+
+document.addEventListener('keydown', (e) => {
+    if (!airhockeyRunning || airhockeyMode !== '2p') return;
+    if (!['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+    e.preventDefault();
+    if (e.key === 'ArrowUp') airhockeyKeys.up = true;
+    else if (e.key === 'ArrowDown') airhockeyKeys.down = true;
+    else if (e.key === 'ArrowLeft') airhockeyKeys.left = true;
+    else if (e.key === 'ArrowRight') airhockeyKeys.right = true;
+});
+document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowUp') airhockeyKeys.up = false;
+    else if (e.key === 'ArrowDown') airhockeyKeys.down = false;
+    else if (e.key === 'ArrowLeft') airhockeyKeys.left = false;
+    else if (e.key === 'ArrowRight') airhockeyKeys.right = false;
+});
+
+function selectAirhockeyMode(mode) {
+    airhockeyMode = mode;
+    document.getElementById('airhockey-mode-select').style.display = 'none';
+    document.getElementById('airhockey-game').style.display = 'block';
+    document.getElementById('airhockey-left-label').textContent = mode === '2p' ? t('game_airhockey_p1') : t('game_airhockey_you');
+    document.getElementById('airhockey-right-label').textContent = mode === '2p' ? t('game_airhockey_p2') : t('game_airhockey_cpu');
+    document.getElementById('airhockey-streak-chip').style.display = mode === '2p' ? 'none' : '';
+    const hint = document.getElementById('airhockey-control-hint');
+    if (mode === '2p') {
+        hint.textContent = t('game_airhockey_hint_2p');
+        hint.style.display = 'block';
+    } else {
+        hint.style.display = 'none';
+    }
+    document.getElementById('airhockey-highscore').textContent = getAirhockeyHighStreak();
+    airhockeyScoreYou = 0;
+    airhockeyScoreCpu = 0;
+    document.getElementById('airhockey-score-you').textContent = '0';
+    document.getElementById('airhockey-score-cpu').textContent = '0';
+    initAirhockeyCanvas();
+    const overlay = document.getElementById('airhockey-overlay');
+    overlay.innerHTML = `<p>${t(mode === '2p' ? 'game_airhockey_intro_2p' : 'game_airhockey_intro')}</p><button class="btn next-btn" onclick="startAirhockey()">${t('game_start')}</button>`;
+    overlay.style.display = 'flex';
+}
+
+function startAirhockey() {
+    document.getElementById('airhockey-overlay').style.display = 'none';
+    airhockeyScoreYou = 0;
+    airhockeyScoreCpu = 0;
+    document.getElementById('airhockey-score-you').textContent = '0';
+    document.getElementById('airhockey-score-cpu').textContent = '0';
+    airhockeyResetPositions();
+    airhockeyKeys.up = airhockeyKeys.down = airhockeyKeys.left = airhockeyKeys.right = false;
+    airhockeyRunning = true;
+    airhockeyServing = true;
+    clearTimeout(airhockeyServeTimeout);
+    airhockeyServeTimeout = setTimeout(() => {
+        serveAirhockeyPuck();
+        airhockeyServing = false;
+    }, 500);
+    cancelAnimationFrame(airhockeyRAF);
+    airhockeyRAF = requestAnimationFrame(airhockeyLoop);
+}
+
+function serveAirhockeyPuck() {
+    const angle = (Math.random() * 80 - 40) * Math.PI / 180;
+    const dir = Math.random() < 0.5 ? -1 : 1;
+    const speed = 4;
+    airhockeyPuck.vx = Math.cos(angle) * speed * dir;
+    airhockeyPuck.vy = Math.sin(angle) * speed;
+}
+
+function airhockeyLoop() {
+    if (!airhockeyRunning) return;
+    if (!airhockeyServing) updateAirhockeyPuck();
+    if (airhockeyMode === 'cpu') updateAirhockeyCpu();
+    else updateAirhockeyPlayer2Keyboard();
+    drawAirhockey();
+    if (airhockeyRunning) airhockeyRAF = requestAnimationFrame(airhockeyLoop);
+}
+
+function updateAirhockeyPlayer2Keyboard() {
+    const cpu = airhockeyCpu;
+    let dx = 0, dy = 0;
+    if (airhockeyKeys.up) dy -= AIRHOCKEY_P2_KEY_SPEED;
+    if (airhockeyKeys.down) dy += AIRHOCKEY_P2_KEY_SPEED;
+    if (airhockeyKeys.left) dx -= AIRHOCKEY_P2_KEY_SPEED;
+    if (airhockeyKeys.right) dx += AIRHOCKEY_P2_KEY_SPEED;
+    cpu.x = airhockeyClamp(cpu.x + dx, AIRHOCKEY_W / 2 + AIRHOCKEY_PADDLE_R, AIRHOCKEY_W - AIRHOCKEY_PADDLE_R);
+    cpu.y = airhockeyClamp(cpu.y + dy, AIRHOCKEY_PADDLE_R, AIRHOCKEY_H - AIRHOCKEY_PADDLE_R);
+}
+
+function airhockeyResolvePaddleCollision(p) {
+    const puck = airhockeyPuck;
+    const dx = puck.x - p.x, dy = puck.y - p.y;
+    const dist = Math.hypot(dx, dy);
+    const minDist = AIRHOCKEY_PUCK_R + AIRHOCKEY_PADDLE_R;
+    if (dist > 0 && dist < minDist) {
+        const nx = dx / dist, ny = dy / dist;
+        puck.x = p.x + nx * minDist;
+        puck.y = p.y + ny * minDist;
+        const speed = Math.max(Math.hypot(puck.vx, puck.vy), 5);
+        puck.vx = nx * speed;
+        puck.vy = ny * speed;
+    }
+}
+
+function updateAirhockeyPuck() {
+    const puck = airhockeyPuck;
+    airhockeyTrail.push({ x: puck.x, y: puck.y });
+    if (airhockeyTrail.length > AIRHOCKEY_TRAIL_LEN) airhockeyTrail.shift();
+
+    puck.x += puck.vx;
+    puck.y += puck.vy;
+    puck.vx *= AIRHOCKEY_FRICTION;
+    puck.vy *= AIRHOCKEY_FRICTION;
+
+    if (puck.y - AIRHOCKEY_PUCK_R < 0) { puck.y = AIRHOCKEY_PUCK_R; puck.vy = Math.abs(puck.vy); }
+    if (puck.y + AIRHOCKEY_PUCK_R > AIRHOCKEY_H) { puck.y = AIRHOCKEY_H - AIRHOCKEY_PUCK_R; puck.vy = -Math.abs(puck.vy); }
+
+    if (puck.x - AIRHOCKEY_PUCK_R < 0) {
+        if (Math.abs(puck.y - AIRHOCKEY_H / 2) < AIRHOCKEY_GOAL_HALF) { handleAirhockeyGoal('cpu'); return; }
+        puck.x = AIRHOCKEY_PUCK_R;
+        puck.vx = Math.abs(puck.vx);
+    }
+    if (puck.x + AIRHOCKEY_PUCK_R > AIRHOCKEY_W) {
+        if (Math.abs(puck.y - AIRHOCKEY_H / 2) < AIRHOCKEY_GOAL_HALF) { handleAirhockeyGoal('you'); return; }
+        puck.x = AIRHOCKEY_W - AIRHOCKEY_PUCK_R;
+        puck.vx = -Math.abs(puck.vx);
+    }
+
+    airhockeyResolvePaddleCollision(airhockeyPlayer);
+    airhockeyResolvePaddleCollision(airhockeyCpu);
+
+    const spd = Math.hypot(puck.vx, puck.vy);
+    if (spd > AIRHOCKEY_MAX_SPEED) {
+        puck.vx = puck.vx / spd * AIRHOCKEY_MAX_SPEED;
+        puck.vy = puck.vy / spd * AIRHOCKEY_MAX_SPEED;
+    }
+}
+
+function updateAirhockeyCpu() {
+    if (airhockeyServing) return;
+    const cpu = airhockeyCpu, puck = airhockeyPuck;
+    const targetY = airhockeyClamp(puck.y, AIRHOCKEY_PADDLE_R, AIRHOCKEY_H - AIRHOCKEY_PADDLE_R);
+    cpu.y += airhockeyClamp(targetY - cpu.y, -AIRHOCKEY_CPU_SPEED, AIRHOCKEY_CPU_SPEED);
+
+    let targetX = AIRHOCKEY_W - 40;
+    if (puck.x > AIRHOCKEY_W / 2 && puck.vx <= 0) {
+        targetX = airhockeyClamp(puck.x, AIRHOCKEY_W / 2 + AIRHOCKEY_PADDLE_R, AIRHOCKEY_W - AIRHOCKEY_PADDLE_R);
+    }
+    cpu.x += airhockeyClamp(targetX - cpu.x, -AIRHOCKEY_CPU_SPEED, AIRHOCKEY_CPU_SPEED);
+    cpu.x = airhockeyClamp(cpu.x, AIRHOCKEY_W / 2 + AIRHOCKEY_PADDLE_R, AIRHOCKEY_W - AIRHOCKEY_PADDLE_R);
+    cpu.y = airhockeyClamp(cpu.y, AIRHOCKEY_PADDLE_R, AIRHOCKEY_H - AIRHOCKEY_PADDLE_R);
+}
+
+function handleAirhockeyGoal(who) {
+    if (who === 'you') {
+        airhockeyScoreYou++;
+        playSound(true);
+    } else {
+        airhockeyScoreCpu++;
+        playSound(false);
+    }
+    document.getElementById('airhockey-score-you').textContent = airhockeyScoreYou;
+    document.getElementById('airhockey-score-cpu').textContent = airhockeyScoreCpu;
+
+    if (airhockeyScoreYou >= AIRHOCKEY_WIN_SCORE || airhockeyScoreCpu >= AIRHOCKEY_WIN_SCORE) {
+        endAirhockeyMatch(airhockeyScoreYou > airhockeyScoreCpu);
+        return;
+    }
+
+    airhockeyServing = true;
+    airhockeyPuck.x = AIRHOCKEY_W / 2;
+    airhockeyPuck.y = AIRHOCKEY_H / 2;
+    airhockeyPuck.vx = 0;
+    airhockeyPuck.vy = 0;
+    airhockeyTrail = [];
+    clearTimeout(airhockeyServeTimeout);
+    airhockeyServeTimeout = setTimeout(() => {
+        serveAirhockeyPuck();
+        airhockeyServing = false;
+    }, 700);
+}
+
+function endAirhockeyMatch(youWon) {
+    airhockeyRunning = false;
+    cancelAnimationFrame(airhockeyRAF);
+    clearTimeout(airhockeyServeTimeout);
+
+    let resultText, isNewBest = false;
+    if (airhockeyMode === '2p') {
+        resultText = youWon ? t('game_airhockey_p1_win') : t('game_airhockey_p2_win');
+    } else {
+        let streak = parseInt(localStorage.getItem('airhockey_streak') || '0', 10);
+        streak = youWon ? streak + 1 : 0;
+        localStorage.setItem('airhockey_streak', String(streak));
+        saveAirhockeyHighStreak(streak);
+        document.getElementById('airhockey-highscore').textContent = getAirhockeyHighStreak();
+        isNewBest = youWon && streak > 0 && streak === getAirhockeyHighStreak();
+        resultText = youWon ? t('game_airhockey_win') : t('game_airhockey_lose');
+    }
+
+    const overlay = document.getElementById('airhockey-overlay');
+    overlay.innerHTML = `
+        <p>${resultText}</p>
+        ${isNewBest ? `<p class="game-new-best">${t('game_new_best')}</p>` : ''}
+        <button class="btn next-btn" onclick="startAirhockey()">${t('game_restart')}</button>
+    `;
+    overlay.style.display = 'flex';
+    drawAirhockey();
+}
+
+function drawAirhockeyGrid(ctx) {
+    ctx.save();
+    ctx.strokeStyle = 'rgba(94,234,212,0.08)';
+    ctx.lineWidth = 1;
+    for (let x = 20; x < AIRHOCKEY_W; x += 20) {
+        ctx.beginPath();
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, AIRHOCKEY_H);
+        ctx.stroke();
+    }
+    for (let y = 20; y < AIRHOCKEY_H; y += 20) {
+        ctx.beginPath();
+        ctx.moveTo(0, y);
+        ctx.lineTo(AIRHOCKEY_W, y);
+        ctx.stroke();
+    }
+    ctx.restore();
+}
+
+function drawAirhockeyGoalArrow(ctx, x, dir, color) {
+    const y = AIRHOCKEY_H / 2;
+    ctx.save();
+    ctx.fillStyle = color;
+    ctx.shadowColor = color;
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.moveTo(x, y - 7);
+    ctx.lineTo(x + dir * 9, y);
+    ctx.lineTo(x, y + 7);
+    ctx.closePath();
+    ctx.fill();
+    ctx.restore();
+}
+
+function drawAirhockeyPaddle(ctx, p, c1, c2, time) {
+    const pulse = 0.5 + 0.5 * Math.sin(time / 260 + p.x);
+
+    ctx.save();
+    ctx.strokeStyle = c1;
+    ctx.globalAlpha = 0.25 + pulse * 0.25;
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, AIRHOCKEY_PADDLE_R + 5 + pulse * 2, 0, Math.PI * 2);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.save();
+    ctx.shadowColor = c1;
+    ctx.shadowBlur = 16;
+    const grad = ctx.createRadialGradient(p.x - 6, p.y - 6, 4, p.x, p.y, AIRHOCKEY_PADDLE_R);
+    grad.addColorStop(0, '#fff');
+    grad.addColorStop(0.25, c1);
+    grad.addColorStop(1, c2);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, AIRHOCKEY_PADDLE_R, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, AIRHOCKEY_PADDLE_R * 0.4, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(255,255,255,0.6)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
+
+function drawAirhockeyPuck(ctx) {
+    airhockeyTrail.forEach((pt, i) => {
+        const ratio = (i + 1) / airhockeyTrail.length;
+        ctx.save();
+        ctx.globalAlpha = ratio * 0.35;
+        ctx.fillStyle = '#5eead4';
+        ctx.beginPath();
+        ctx.arc(pt.x, pt.y, AIRHOCKEY_PUCK_R * 0.7 * ratio, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+    });
+
+    const p = airhockeyPuck;
+    ctx.save();
+    ctx.shadowColor = '#5eead4';
+    ctx.shadowBlur = 16;
+    ctx.fillStyle = '#fefce8';
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, AIRHOCKEY_PUCK_R, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+}
+
+function drawAirhockey() {
+    const ctx = airhockeyCtx;
+    if (!ctx) return;
+    const time = performance.now();
+    ctx.clearRect(0, 0, AIRHOCKEY_W, AIRHOCKEY_H);
+
+    const bg = ctx.createLinearGradient(0, 0, AIRHOCKEY_W, 0);
+    bg.addColorStop(0, '#071022');
+    bg.addColorStop(0.5, '#0a1830');
+    bg.addColorStop(1, '#180a28');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, AIRHOCKEY_W, AIRHOCKEY_H);
+
+    drawAirhockeyGrid(ctx);
+
+    ctx.strokeStyle = 'rgba(94,234,212,0.55)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(2, 2, AIRHOCKEY_W - 4, AIRHOCKEY_H - 4);
+
+    ctx.save();
+    ctx.setLineDash([7, 7]);
+    ctx.lineDashOffset = -(time / 40) % 14;
+    ctx.strokeStyle = 'rgba(94,234,212,0.45)';
+    ctx.shadowColor = 'rgba(94,234,212,0.6)';
+    ctx.shadowBlur = 6;
+    ctx.beginPath();
+    ctx.moveTo(AIRHOCKEY_W / 2, 0);
+    ctx.lineTo(AIRHOCKEY_W / 2, AIRHOCKEY_H);
+    ctx.stroke();
+    ctx.restore();
+
+    ctx.beginPath();
+    ctx.arc(AIRHOCKEY_W / 2, AIRHOCKEY_H / 2, 28, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(94,234,212,0.3)';
+    ctx.stroke();
+
+    ctx.fillStyle = 'rgba(56,189,248,0.22)';
+    ctx.fillRect(0, AIRHOCKEY_H / 2 - AIRHOCKEY_GOAL_HALF, 6, AIRHOCKEY_GOAL_HALF * 2);
+    ctx.fillStyle = 'rgba(248,113,113,0.22)';
+    ctx.fillRect(AIRHOCKEY_W - 6, AIRHOCKEY_H / 2 - AIRHOCKEY_GOAL_HALF, 6, AIRHOCKEY_GOAL_HALF * 2);
+    drawAirhockeyGoalArrow(ctx, 12, 1, '#38bdf8');
+    drawAirhockeyGoalArrow(ctx, AIRHOCKEY_W - 12, -1, '#f87171');
+
+    drawAirhockeyPuck(ctx);
+    drawAirhockeyPaddle(ctx, airhockeyPlayer, '#38bdf8', '#0369a1', time);
+    drawAirhockeyPaddle(ctx, airhockeyCpu, '#f87171', '#b91c1c', time);
 }
