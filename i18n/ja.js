@@ -38,6 +38,7 @@ I18N.ja = {
         about_langs_title: '勉強中の言語', about_note_title: 'お知らせ',
         about_note: '現在アメリカ (UTC-7) に住んでいます。時差をご了承ください！',
         about_links_title: 'ソーシャルリンク', about_discord_title: '中国語学習コミュニティ', about_discord_desc: '中国語を学びたい海外の友達も、ただおしゃべりしたい人も大歓迎！このDiscordサーバーに参加してね。',
+        about_contact_title: 'お問い合わせ', about_contact_desc: 'ご質問やご意見、直接連絡したいことがあれば、お気軽にメールしてください！',
         lang_jp: '🇯🇵 日本語', lang_kr: '🇰🇷 韓国語', lang_fr: '🇫🇷 フランス語', lang_ru: '🇷🇺 ロシア語', lang_cantonese: '広東語',
         result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
         answer_lang_title: '回答言語を選択', answer_lang_zh: '🇨🇳 中国語', answer_lang_en: '🇺🇸 English',

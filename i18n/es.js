@@ -38,6 +38,7 @@ I18N.es = {
         about_langs_title: 'Idiomas que estoy aprendiendo', about_note_title: 'Aviso',
         about_note: 'Actualmente vivo en EE.UU. (UTC-7), ¡por favor disculpen la diferencia horaria!',
         about_links_title: 'Enlaces sociales', about_discord_title: 'Aprende chino con nosotros', about_discord_desc: '¡Para amigos extranjeros que aprenden chino, o para quien solo quiera charlar — únete a nuestro servidor de Discord!',
+        about_contact_title: 'Contáctanos', about_contact_desc: '¿Tienes alguna pregunta, sugerencia o quieres contactarme directamente? ¡No dudes en escribirme un correo!',
         lang_jp: '🇯🇵 Japonés', lang_kr: '🇰🇷 Coreano', lang_fr: '🇫🇷 Francés', lang_ru: '🇷🇺 Ruso', lang_cantonese: 'Cantonés',
         result_question: 'Pregunta {n}', result_your_answer: 'Tu respuesta', result_correct_answer: 'Respuesta correcta',
         answer_lang_title: 'Idioma de respuesta', answer_lang_zh: '🇨🇳 Chino', answer_lang_en: '🇺🇸 English',

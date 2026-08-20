@@ -38,6 +38,7 @@ I18N.ru = {
         about_langs_title: 'Языки, которые я изучаю', about_note_title: 'На заметку',
         about_note: 'Сейчас живу в США (UTC-7), извините за разницу во времени!',
         about_links_title: 'Социальные ссылки', about_discord_title: 'Сообщество изучения китайского', about_discord_desc: 'Для иностранных друзей, изучающих китайский, или для тех, кто просто хочет поболтать — присоединяйтесь к нашему Discord-серверу!',
+        about_contact_title: 'Связаться с нами', about_contact_desc: 'Есть вопрос, предложение или хотите написать напрямую? Пишите мне на почту!',
         lang_jp: '🇯🇵 Японский', lang_kr: '🇰🇷 Корейский', lang_fr: '🇫🇷 Французский', lang_ru: '🇷🇺 Русский', lang_cantonese: 'Кантонский',
         result_question: 'Вопрос {n}', result_your_answer: 'Ваш ответ', result_correct_answer: 'Правильный ответ',
         answer_lang_title: 'Язык ответа', answer_lang_zh: '🇨🇳 Китайский', answer_lang_en: '🇺🇸 English',

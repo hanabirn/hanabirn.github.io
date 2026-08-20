@@ -38,6 +38,7 @@ I18N.ko = {
         about_langs_title: '공부 중인 언어', about_note_title: '참고',
         about_note: '현재 미국 (UTC-7)에 거주 중입니다. 시차 양해 부탁드립니다!',
         about_links_title: '소셜 링크', about_discord_title: '중국어 학습 커뮤니티', about_discord_desc: '중국어를 배우고 싶은 외국인 친구든, 그냥 수다 떨고 싶은 사람이든 환영해요! 이 디스코드 서버에 참여해보세요.',
+        about_contact_title: '문의하기', about_contact_desc: '질문이나 제안, 또는 직접 연락하고 싶으신가요? 편하게 이메일 주세요!',
         lang_jp: '🇯🇵 일본어', lang_kr: '🇰🇷 한국어', lang_fr: '🇫🇷 프랑스어', lang_ru: '🇷🇺 러시아어', lang_cantonese: '광둥어',
         result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
         answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',

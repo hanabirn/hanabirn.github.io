@@ -38,6 +38,7 @@ I18N.en = {
         about_langs_title: 'Languages I\'m Learning', about_note_title: 'Heads Up',
         about_note: 'Currently living in the US (UTC-7), please bear with the time difference!',
         about_links_title: 'Social Links', about_discord_title: 'Learn Chinese with Us', about_discord_desc: 'For international friends learning Chinese, or anyone who just wants to hang out and chat — join our Discord server!',
+        about_contact_title: 'Contact Us', about_contact_desc: 'Got a question, suggestion, or just want to reach out directly? Feel free to email me!',
         lang_jp: '🇯🇵 Japanese', lang_kr: '🇰🇷 Korean', lang_fr: '🇫🇷 French', lang_ru: '🇷🇺 Russian', lang_cantonese: 'Cantonese',
         result_question: 'Question {n}', result_your_answer: 'Your Answer', result_correct_answer: 'Correct Answer',
         answer_lang_title: 'Select Answer Language', answer_lang_zh: '🇨🇳 Chinese', answer_lang_en: '🇺🇸 English',
