@@ -84,10 +84,11 @@ I18N.zh = {
         notes_delete: '刪除', notes_delete_confirm: '確定要刪除這則筆記嗎？',
         guide_notes_title: '記事本', guide_notes_desc: '隨手記點東西，筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料就會消失。',
         notes_cat_all: '全部', notes_cat_none: '未分類',
-        notes_empty_filter: '這個分類還沒有筆記。',
+        notes_empty_filter: '這個資料夾還沒有筆記。',
         notes_attach: '附加照片/檔案', notes_attach_remove: '移除附件', notes_file_too_large: '檔案太大了（上限 {n}MB）',
-        notes_cat_new_placeholder: '新增分類名稱...', notes_cat_new_add: '＋ 新增', notes_cat_delete: '刪除分類', notes_cat_delete_confirm: '確定要刪除這個分類嗎？使用這個分類的筆記會變成未分類。',
+        notes_cat_new_placeholder: '新增子資料夾名稱...', notes_cat_new_add: '＋ 新增資料夾', notes_cat_delete: '刪除資料夾', notes_cat_delete_confirm: '確定要刪除這個資料夾嗎？裡面的子資料夾和筆記都會一併刪除，且無法復原。',
         notes_search_placeholder: '搜尋筆記...', notes_empty_search: '找不到符合的筆記。', notes_pin: '釘選', notes_unpin: '取消釘選',
+        notes_view_list: '筆記', notes_view_gallery: '圖庫', notes_gallery_empty: '這裡還沒有照片，去筆記裡新增附件吧！', notes_folder_note_count: '{n} 則筆記',
         match3_level_n: '第 {n} 關', match3_win_title: '🎉 過關！', match3_next_level: '下一關 ▶', match3_back_to_levels: '↩ 返回關卡選單', match3_retry: '🔄 重玩',
         footer_support: '☕ 請我喝杯咖啡',
 };

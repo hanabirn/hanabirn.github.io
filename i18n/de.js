@@ -84,10 +84,11 @@ I18N.de = {
         notes_delete: 'Löschen', notes_delete_confirm: 'Diese Notiz löschen?',
         guide_notes_title: 'Notizen', guide_notes_desc: 'Schreib schnell etwas auf — Notizen werden nur in diesem Browser gespeichert und verschwinden bei Gerätewechsel oder Löschen der Browserdaten.',
         notes_cat_all: 'Alle', notes_cat_none: 'Unkategorisiert',
-        notes_empty_filter: 'Noch keine Notizen in dieser Kategorie.',
+        notes_empty_filter: 'Noch keine Notizen in diesem Ordner.',
         notes_attach: 'Foto/Datei anhängen', notes_attach_remove: 'Anhang entfernen', notes_file_too_large: 'Datei ist zu groß (max. {n}MB)',
-        notes_cat_new_placeholder: 'Name der neuen Kategorie...', notes_cat_new_add: '+ Hinzufügen', notes_cat_delete: 'Kategorie löschen', notes_cat_delete_confirm: 'Diese Kategorie löschen? Notizen darin werden unkategorisiert.',
+        notes_cat_new_placeholder: 'Name des neuen Unterordners...', notes_cat_new_add: '+ Neuer Ordner', notes_cat_delete: 'Ordner löschen', notes_cat_delete_confirm: 'Diesen Ordner löschen? Alle Unterordner und Notizen darin werden dauerhaft gelöscht.',
         notes_search_placeholder: 'Notizen durchsuchen...', notes_empty_search: 'Keine passenden Notizen gefunden.', notes_pin: 'Anheften', notes_unpin: 'Loslösen',
+        notes_view_list: 'Notizen', notes_view_gallery: 'Galerie', notes_gallery_empty: 'Hier gibt es noch keine Fotos — füge eins zu einer Notiz hinzu!', notes_folder_note_count: '{n} Notizen',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level geschafft!', match3_next_level: 'Nächstes Level ▶', match3_back_to_levels: '↩ Zurück zur Levelauswahl', match3_retry: '🔄 Erneut versuchen',
         footer_support: '☕ Spendier mir einen Kaffee',
 };

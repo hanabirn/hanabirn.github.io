@@ -84,10 +84,11 @@ I18N.ja = {
         notes_delete: '削除', notes_delete_confirm: 'このメモを削除しますか？',
         guide_notes_title: 'メモ帳', guide_notes_desc: 'ちょっとしたことをメモできます。メモはこのブラウザにのみ保存され、端末を変えたりブラウザのデータを消去すると消えます。',
         notes_cat_all: 'すべて', notes_cat_none: '未分類',
-        notes_empty_filter: 'このカテゴリにはまだメモがありません。',
+        notes_empty_filter: 'このフォルダにはまだメモがありません。',
         notes_attach: '写真・ファイルを添付', notes_attach_remove: '添付を削除', notes_file_too_large: 'ファイルが大きすぎます（上限 {n}MB）',
-        notes_cat_new_placeholder: '新しいカテゴリ名...', notes_cat_new_add: '＋ 追加', notes_cat_delete: 'カテゴリを削除', notes_cat_delete_confirm: 'このカテゴリを削除しますか？使用中のメモは未分類になります。',
+        notes_cat_new_placeholder: '新しいサブフォルダ名...', notes_cat_new_add: '＋ フォルダを追加', notes_cat_delete: 'フォルダを削除', notes_cat_delete_confirm: 'このフォルダを削除しますか？中のサブフォルダとメモもすべて完全に削除されます。',
         notes_search_placeholder: 'メモを検索...', notes_empty_search: '該当するメモが見つかりません。', notes_pin: 'ピン留め', notes_unpin: 'ピン留め解除',
+        notes_view_list: 'メモ', notes_view_gallery: 'ギャラリー', notes_gallery_empty: 'まだ写真がありません。メモに添付してみましょう！', notes_folder_note_count: '{n} 件のメモ',
         match3_level_n: 'ステージ {n}', match3_win_title: '🎉 クリア！', match3_next_level: '次のステージ ▶', match3_back_to_levels: '↩ ステージ選択に戻る', match3_retry: '🔄 もう一度',
         footer_support: '☕ コーヒーをおごる',
 };

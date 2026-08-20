@@ -84,10 +84,11 @@ I18N.ru = {
         notes_delete: 'Удалить', notes_delete_confirm: 'Удалить эту заметку?',
         guide_notes_title: 'Заметки', guide_notes_desc: 'Быстро запишите что-нибудь — заметки хранятся только в этом браузере и исчезают при смене устройства или очистке данных браузера.',
         notes_cat_all: 'Все', notes_cat_none: 'Без категории',
-        notes_empty_filter: 'В этой категории пока нет заметок.',
+        notes_empty_filter: 'В этой папке пока нет заметок.',
         notes_attach: 'Прикрепить фото/файл', notes_attach_remove: 'Удалить вложение', notes_file_too_large: 'Файл слишком большой (макс. {n}МБ)',
-        notes_cat_new_placeholder: 'Название новой категории...', notes_cat_new_add: '+ Добавить', notes_cat_delete: 'Удалить категорию', notes_cat_delete_confirm: 'Удалить эту категорию? Заметки в ней станут без категории.',
+        notes_cat_new_placeholder: 'Название новой подпапки...', notes_cat_new_add: '+ Новая папка', notes_cat_delete: 'Удалить папку', notes_cat_delete_confirm: 'Удалить эту папку? Все вложенные папки и заметки будут удалены безвозвратно.',
         notes_search_placeholder: 'Поиск заметок...', notes_empty_search: 'Ничего не найдено.', notes_pin: 'Закрепить', notes_unpin: 'Открепить',
+        notes_view_list: 'Заметки', notes_view_gallery: 'Галерея', notes_gallery_empty: 'Здесь пока нет фото — прикрепите его к заметке!', notes_folder_note_count: '{n} заметок',
         match3_level_n: 'Уровень {n}', match3_win_title: '🎉 Уровень пройден!', match3_next_level: 'Следующий уровень ▶', match3_back_to_levels: '↩ К уровням', match3_retry: '🔄 Заново',
         footer_support: '☕ Угостить кофе',
 };

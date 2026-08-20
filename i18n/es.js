@@ -84,10 +84,11 @@ I18N.es = {
         notes_delete: 'Eliminar', notes_delete_confirm: '¿Eliminar esta nota?',
         guide_notes_title: 'Bloc de notas', guide_notes_desc: 'Apunta algo rápido — las notas solo se guardan en este navegador y desaparecen si cambias de dispositivo o borras los datos del navegador.',
         notes_cat_all: 'Todas', notes_cat_none: 'Sin categoría',
-        notes_empty_filter: 'Todavía no hay notas en esta categoría.',
+        notes_empty_filter: 'Todavía no hay notas en esta carpeta.',
         notes_attach: 'Adjuntar foto/archivo', notes_attach_remove: 'Quitar adjunto', notes_file_too_large: 'El archivo es demasiado grande (máx. {n}MB)',
-        notes_cat_new_placeholder: 'Nombre de la nueva categoría...', notes_cat_new_add: '+ Añadir', notes_cat_delete: 'Eliminar categoría', notes_cat_delete_confirm: '¿Eliminar esta categoría? Las notas que la usen quedarán sin categoría.',
+        notes_cat_new_placeholder: 'Nombre de la nueva subcarpeta...', notes_cat_new_add: '+ Nueva carpeta', notes_cat_delete: 'Eliminar carpeta', notes_cat_delete_confirm: '¿Eliminar esta carpeta? Sus subcarpetas y notas se eliminarán permanentemente.',
         notes_search_placeholder: 'Buscar notas...', notes_empty_search: 'No hay notas que coincidan.', notes_pin: 'Fijar', notes_unpin: 'Dejar de fijar',
+        notes_view_list: 'Notas', notes_view_gallery: 'Galería', notes_gallery_empty: '¡Todavía no hay fotos aquí — adjunta una a una nota!', notes_folder_note_count: '{n} notas',
         match3_level_n: 'Nivel {n}', match3_win_title: '🎉 ¡Nivel superado!', match3_next_level: 'Siguiente nivel ▶', match3_back_to_levels: '↩ Volver a niveles', match3_retry: '🔄 Reintentar',
         footer_support: '☕ Invítame un café',
 };

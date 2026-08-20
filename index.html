@@ -814,25 +814,36 @@
         </div>
 
         <div id="page-notes" style="display: none;">
-            <div class="guestbook-card">
+            <div class="guestbook-card notes-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="notes_title">&#x2726; &#x8A18;&#x4E8B;&#x672C; &#x2726;</h3>
                 <p class="feedback-hint" data-i18n="notes_hint">&#x9019;&#x88E1;&#x7684;&#x7B46;&#x8A18;&#x53EA;&#x5B58;&#x5728;&#x9019;&#x500B;&#x700F;&#x89BD;&#x5668;&#x88E1;&#xFF0C;&#x63DB;&#x88DD;&#x7F6E;&#x6216;&#x6E05;&#x9664;&#x700F;&#x89BD;&#x5668;&#x8CC7;&#x6599;&#x6703;&#x6D88;&#x5931;&#x3002;</p>
+
+                <div class="notes-toolbar">
+                    <div class="notes-breadcrumb" id="notes-breadcrumb"></div>
+                    <div class="notes-view-toggle">
+                        <button type="button" id="notes-view-list-btn" class="notes-view-btn active" onclick="setNotesView('list')">&#x1F4DD; <span data-i18n="notes_view_list">&#x7B46;&#x8A18;</span></button>
+                        <button type="button" id="notes-view-gallery-btn" class="notes-view-btn" onclick="setNotesView('gallery')">&#x1F5BC;&#xFE0F; <span data-i18n="notes_view_gallery">&#x5716;&#x5EAB;</span></button>
+                    </div>
+                </div>
+
+                <input type="text" id="notes-search-input" oninput="handleNotesSearch(this.value)" data-i18n-placeholder="notes_search_placeholder" placeholder="&#x641C;&#x5C0B;&#x7B46;&#x8A18;..." class="notes-search-input">
+
                 <form class="feedback-form" onsubmit="return handleAddNote(event)">
                     <textarea name="text" data-i18n-placeholder="notes_placeholder" placeholder="&#x5BEB;&#x9EDE;&#x4EC0;&#x9EBC;..." required class="feedback-textarea notes-textarea" rows="3"></textarea>
                     <div class="notes-add-row">
-                        <select name="category" id="notes-add-category" class="notes-category-select"></select>
                         <button type="submit" class="btn next-btn feedback-submit" data-i18n="notes_add">&#x65B0;&#x589E;&#x7B46;&#x8A18;</button>
                     </div>
                 </form>
                 <form class="notes-category-form" onsubmit="return handleAddNotesCategory(event)">
-                    <input type="text" id="notes-new-category-input" data-i18n-placeholder="notes_cat_new_placeholder" placeholder="&#x65B0;&#x589E;&#x5206;&#x985E;&#x540D;&#x7A31;..." class="notes-category-input" maxlength="20">
-                    <button type="submit" class="notes-category-add-btn" data-i18n="notes_cat_new_add">&#xFF0B; &#x65B0;&#x589E;</button>
+                    <input type="text" id="notes-new-category-input" data-i18n-placeholder="notes_cat_new_placeholder" placeholder="&#x65B0;&#x589E;&#x5B50;&#x8CC7;&#x6599;&#x593E;&#x540D;&#x7A31;..." class="notes-category-input" maxlength="20">
+                    <button type="submit" class="notes-category-add-btn" data-i18n="notes_cat_new_add">&#xFF0B; &#x65B0;&#x589E;&#x8CC7;&#x6599;&#x593E;</button>
                 </form>
-                <input type="text" id="notes-search-input" oninput="handleNotesSearch(this.value)" data-i18n-placeholder="notes_search_placeholder" placeholder="&#x641C;&#x5C0B;&#x7B46;&#x8A18;..." class="notes-search-input">
-                <div id="notes-filters" class="notes-filters"></div>
+
+                <div id="notes-folder-grid" class="notes-folder-grid"></div>
                 <div id="notes-list" class="notes-list"></div>
+                <div id="notes-gallery" class="notes-gallery" style="display:none"></div>
             </div>
         </div>
 

@@ -84,10 +84,11 @@ I18N.ko = {
         notes_delete: '삭제', notes_delete_confirm: '이 메모를 삭제할까요?',
         guide_notes_title: '메모장', guide_notes_desc: '간단히 메모할 수 있어요. 메모는 이 브라우저에만 저장되며 기기를 바꾸거나 브라우저 데이터를 지우면 사라집니다.',
         notes_cat_all: '전체', notes_cat_none: '미분류',
-        notes_empty_filter: '이 분류에는 아직 메모가 없어요.',
+        notes_empty_filter: '이 폴더에는 아직 메모가 없어요.',
         notes_attach: '사진/파일 첨부', notes_attach_remove: '첨부 삭제', notes_file_too_large: '파일이 너무 커요 (최대 {n}MB)',
-        notes_cat_new_placeholder: '새 분류 이름...', notes_cat_new_add: '＋ 추가', notes_cat_delete: '분류 삭제', notes_cat_delete_confirm: '이 분류를 삭제할까요? 사용 중이던 메모는 미분류가 됩니다.',
+        notes_cat_new_placeholder: '새 하위 폴더 이름...', notes_cat_new_add: '＋ 폴더 추가', notes_cat_delete: '폴더 삭제', notes_cat_delete_confirm: '이 폴더를 삭제할까요? 안의 하위 폴더와 메모가 모두 영구적으로 삭제됩니다.',
         notes_search_placeholder: '메모 검색...', notes_empty_search: '일치하는 메모가 없어요.', notes_pin: '고정', notes_unpin: '고정 해제',
+        notes_view_list: '메모', notes_view_gallery: '갤러리', notes_gallery_empty: '아직 사진이 없어요. 메모에 첨부해보세요!', notes_folder_note_count: '메모 {n}개',
         match3_level_n: '{n} 레벨', match3_win_title: '🎉 레벨 클리어!', match3_next_level: '다음 레벨 ▶', match3_back_to_levels: '↩ 레벨 선택으로', match3_retry: '🔄 다시하기',
         footer_support: '☕ 커피 한 잔 사주기',
 };

@@ -84,10 +84,11 @@ I18N.en = {
         notes_delete: 'Delete', notes_delete_confirm: 'Delete this note?',
         guide_notes_title: 'Notepad', guide_notes_desc: 'Jot things down quickly — notes are stored only in this browser and disappear if you switch devices or clear browser data.',
         notes_cat_all: 'All', notes_cat_none: 'Uncategorized',
-        notes_empty_filter: 'No notes in this category yet.',
+        notes_empty_filter: 'No notes in this folder yet.',
         notes_attach: 'Attach photo/file', notes_attach_remove: 'Remove attachment', notes_file_too_large: 'File is too large (max {n}MB)',
-        notes_cat_new_placeholder: 'New category name...', notes_cat_new_add: '+ Add', notes_cat_delete: 'Delete category', notes_cat_delete_confirm: 'Delete this category? Notes using it will become uncategorized.',
+        notes_cat_new_placeholder: 'New subfolder name...', notes_cat_new_add: '+ New Folder', notes_cat_delete: 'Delete folder', notes_cat_delete_confirm: 'Delete this folder? Its subfolders and notes will all be permanently deleted.',
         notes_search_placeholder: 'Search notes...', notes_empty_search: 'No notes match your search.', notes_pin: 'Pin', notes_unpin: 'Unpin',
+        notes_view_list: 'Notes', notes_view_gallery: 'Gallery', notes_gallery_empty: 'No photos here yet — attach one to a note!', notes_folder_note_count: '{n} notes',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level Clear!', match3_next_level: 'Next Level ▶', match3_back_to_levels: '↩ Back to Levels', match3_retry: '🔄 Retry',
         footer_support: '☕ Buy me a coffee',
 };
