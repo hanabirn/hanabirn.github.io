@@ -1978,9 +1978,106 @@ function saveFlashcardUnknown() {
     localStorage.setItem('flashcard_unknown', JSON.stringify([...flashcardUnknownSet]));
 }
 
-function showFlashcard() {
+/* ===================== Spaced Repetition (Leitner boxes, reuses the flashcard UI) =====================
+   Box 1-5, each with a re-show interval; a correct review advances a box (longer interval),
+   a miss drops straight back to box 1. A card that's never been reviewed has due=0, so it's
+   always due — that's what makes first-time words show up in a review session automatically. */
+let srsActive = false;
+const SRS_INTERVAL_DAYS = [0, 1, 3, 7, 14]; // index 0 = box 1
+const SRS_AGAIN_DELAY_MS = 10 * 60 * 1000; // so a missed card doesn't instantly reappear in the same session
+const SRS_SESSION_LIMIT = 30;
+
+function getSrsCards() {
+    try { return JSON.parse(localStorage.getItem('srs_cards')) || {}; } catch { return {}; }
+}
+
+function saveSrsCards(cards) {
+    localStorage.setItem('srs_cards', JSON.stringify(cards));
+}
+
+function getSrsCard(cards, id) {
+    return cards[id] || { box: 1, due: 0 };
+}
+
+function gradeSrsCard(id, good) {
+    const cards = getSrsCards();
+    const card = getSrsCard(cards, id);
+    if (good) {
+        card.box = Math.min(card.box + 1, SRS_INTERVAL_DAYS.length);
+        card.due = Date.now() + SRS_INTERVAL_DAYS[card.box - 1] * 24 * 60 * 60 * 1000;
+    } else {
+        card.box = 1;
+        card.due = Date.now() + SRS_AGAIN_DELAY_MS;
+    }
+    card.seen = Date.now();
+    cards[id] = card;
+    saveSrsCards(cards);
+}
+
+function showSrsReview() {
+    showFlashcard(true);
+}
+
+function launchSrsReview(lang, modeId) {
+    document.getElementById('flashcard-setup-card').style.display = 'none';
+    document.getElementById('mastered-list-card').style.display = 'none';
+    document.getElementById('flashcard-card').style.display = 'block';
+    loadSrsVocab(lang, modeId);
+}
+
+function loadSrsVocab(lang, modeId) {
+    const sheetUrl = SHEETS[lang];
+    vocabularyList = [];
+    readingList = [];
+    meaningList = [];
+    fetch(sheetUrl)
+        .then(r => r.text())
+        .then(csv => {
+            const rows = Papa.parse(csv, { header: false }).data;
+            if (lang === 'jp') parseJapanese(rows);
+            else if (lang === 'kr') parseKorean(rows);
+            else if (lang === 'fr') parseFrench(rows);
+            else if (lang === 'en') parseEnglish(rows);
+            else if (lang === 'zh') parseChinese(rows);
+
+            const cards = getSrsCards();
+            const now = Date.now();
+            const due = vocabularyList
+                .map(w => ({ w, due: getSrsCard(cards, lang + '|' + modeId + '|' + w.word).due }))
+                .filter(x => x.due <= now)
+                .sort((a, b) => a.due - b.due)
+                .slice(0, SRS_SESSION_LIMIT)
+                .map(x => x.w);
+
+            flashcardList = due;
+            flashcardIdx = 0;
+            if (flashcardList.length === 0) {
+                renderSrsEmpty();
+            } else {
+                renderFlashcard();
+            }
+        })
+        .catch(() => {
+            closeFlashcard();
+        });
+}
+
+function renderSrsEmpty() {
+    document.getElementById('flashcard-front').innerHTML = '<div class="flashcard-word">&#x1F389;</div>';
+    document.getElementById('flashcard-back').innerHTML = '';
+    document.getElementById('flashcard-hint').innerHTML = t('srs_all_done');
+    document.getElementById('flashcard-counter').textContent = '0 / 0';
+    const nav = document.querySelector('#flashcard-card .flashcard-nav');
+    const actions = document.querySelector('#flashcard-card .flashcard-actions');
+    if (nav) nav.style.display = 'none';
+    if (actions) actions.style.display = 'none';
+}
+
+function showFlashcard(srs) {
+    srsActive = !!srs;
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('flashcard-setup-card').style.display = 'block';
+    document.getElementById('flashcard-setup-title').textContent = srsActive ? t('srs_title') : t('flashcard_title');
     document.getElementById('fc-lang-title').style.display = '';
     document.getElementById('fc-lang-buttons').style.display = '';
     document.getElementById('fc-mode-title').style.display = 'none';
@@ -2059,28 +2156,37 @@ function startFlashcardWithMode(modeId) {
     const lang = flashcardLang;
     if (!SHEETS[lang]) return;
 
-    flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-    flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-
     document.getElementById('fc-lang-title').style.display = 'none';
     document.getElementById('fc-lang-buttons').style.display = 'none';
     document.getElementById('fc-mode-title').style.display = 'none';
     document.getElementById('fc-mode-buttons').style.display = 'none';
 
-    updateMasteredCount();
-    updateUnknownCount();
-
-    const section = document.getElementById('fc-mastered-section');
     let startBtn = document.getElementById('fc-start-btn');
     if (!startBtn) {
         startBtn = document.createElement('button');
         startBtn.id = 'fc-start-btn';
         startBtn.className = 'btn next-btn';
         startBtn.style.marginTop = '10px';
-        startBtn.onclick = function() { launchFlashcard(lang, modeId); };
-        section.appendChild(startBtn);
+        // Appended before the setup card's own back button (not inside fc-mastered-section) so it
+        // stays visible even when that section is hidden, e.g. in SRS mode.
+        const setupCard = document.getElementById('flashcard-setup-card');
+        const backRow = setupCard.querySelector('.action-buttons');
+        setupCard.insertBefore(startBtn, backRow);
     }
-    startBtn.innerText = t('fc_start_flashcard');
+
+    if (srsActive) {
+        document.getElementById('fc-mastered-section').style.display = 'none';
+        document.getElementById('fc-unknown-section').style.display = 'none';
+        startBtn.onclick = function() { launchSrsReview(lang, modeId); };
+        startBtn.innerText = t('srs_start');
+    } else {
+        flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
+        flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
+        updateMasteredCount();
+        updateUnknownCount();
+        startBtn.onclick = function() { launchFlashcard(lang, modeId); };
+        startBtn.innerText = t('fc_start_flashcard');
+    }
 }
 
 function launchFlashcard(lang, modeId) {
@@ -2122,6 +2228,10 @@ function renderFlashcard() {
     const hint = document.getElementById('flashcard-hint');
     const card = document.getElementById('flashcard');
     const counter = document.getElementById('flashcard-counter');
+    const nav = document.querySelector('#flashcard-card .flashcard-nav');
+    const actions = document.querySelector('#flashcard-card .flashcard-actions');
+    if (nav) nav.style.display = '';
+    if (actions) actions.style.display = '';
 
     card.classList.remove('flipped');
 
@@ -2157,13 +2267,20 @@ function renderFlashcard() {
     back.innerHTML = backHTML;
 
     const cardKey = flashcardLang + '|' + flashcardMode + '|' + word.word;
-    const isKnown = flashcardKnownSet.has(cardKey);
-    const isUnknown = flashcardUnknownSet.has(cardKey);
-    hint.innerHTML = isKnown ? '<span style="color:#6ee7b7">' + t('flashcard_known') + '</span>' : '';
-    if (!isKnown && isUnknown) {
-        hint.innerHTML = '<span style="color:#f87171">' + t('flashcard_unknown') + '</span>';
+    if (srsActive) {
+        const srsCard = getSrsCard(getSrsCards(), cardKey);
+        hint.innerHTML = '<span style="opacity:0.7">' + t('srs_box_label', { n: srsCard.box }) + '</span>';
+    } else {
+        const isKnown = flashcardKnownSet.has(cardKey);
+        const isUnknown = flashcardUnknownSet.has(cardKey);
+        hint.innerHTML = isKnown ? '<span style="color:#6ee7b7">' + t('flashcard_known') + '</span>' : '';
+        if (!isKnown && isUnknown) {
+            hint.innerHTML = '<span style="color:#f87171">' + t('flashcard_unknown') + '</span>';
+        }
     }
     counter.textContent = (flashcardIdx + 1) + ' / ' + flashcardList.length;
+    const reviewTitle = document.getElementById('flashcard-review-title');
+    if (reviewTitle) reviewTitle.textContent = srsActive ? t('srs_title') : t('flashcard_title');
 
     currentLang = flashcardLang;
     currentWord = word;
@@ -2190,7 +2307,21 @@ function flashcardPrev() {
 
 function flashcardRate(known) {
     const word = flashcardList[flashcardIdx];
+    if (!word) return;
     const key = flashcardLang + '|' + flashcardMode + '|' + word.word;
+
+    if (srsActive) {
+        gradeSrsCard(key, known);
+        checkAchievements();
+        if (flashcardIdx < flashcardList.length - 1) {
+            flashcardIdx++;
+            renderFlashcard();
+        } else {
+            renderSrsEmpty();
+        }
+        return;
+    }
+
     if (known) {
         flashcardKnownSet.add(key);
         flashcardUnknownSet.delete(key);
@@ -2209,6 +2340,7 @@ function flashcardRate(known) {
 function closeFlashcard() {
     document.getElementById('flashcard-card').style.display = 'none';
     document.getElementById('lang-card').style.display = 'block';
+    srsActive = false;
 }
 
 function closeFlashcardSetup() {

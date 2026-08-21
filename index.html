@@ -260,6 +260,7 @@
                     <button class="tool-btn" onclick="showMistakeBook()">&#x1F4D6; <span data-i18n="tool_mistakes">&#x932F;&#x984C;&#x672C;</span> <span id="mistake-badge" class="tool-badge" style="display:none">0</span></button>
                     <button class="tool-btn" onclick="showQuizStats()">&#x1F4CA; <span data-i18n="tool_stats">&#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></button>
                     <button class="tool-btn" onclick="showFlashcard()">&#x1F4D6; <span data-i18n="tool_flashcard">&#x55AE;&#x5B57;&#x958C;&#x5361;</span></button>
+                    <button class="tool-btn" onclick="showSrsReview()">&#x1F501; <span data-i18n="tool_srs">&#x9593;&#x9694;&#x8907;&#x7FD2;</span></button>
                     <button class="tool-btn" onclick="startListeningQuiz()">&#x1F50A; <span data-i18n="tool_listening">&#x807C;&#x529B;&#x6E2C;&#x9A57;</span></button>
                 </div>
             </div>
@@ -421,7 +422,7 @@
             <div id="flashcard-card" class="quiz-card" style="display: none;">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
                 <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
+                <h3 id="flashcard-review-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
                 <div class="flashcard-container">
                     <div class="flashcard" id="flashcard" onclick="flipCard()">
                         <div class="flashcard-front" id="flashcard-front"></div>
