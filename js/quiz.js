@@ -4,7 +4,7 @@ function switchPage(page, el) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
 
-    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'rhythm', 'guestbook', 'feedback'];
+    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -22,7 +22,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'rhythm', 'guestbook', 'feedback'];
+const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {

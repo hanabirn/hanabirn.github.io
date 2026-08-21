@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/guestbook.css">
     <link rel="stylesheet" href="css/notes.css">
-    <link rel="stylesheet" href="css/rhythm.css">
     <link rel="stylesheet" href="css/guide.css">
     <link rel="stylesheet" href="css/widgets.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -154,7 +153,6 @@
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
             <button class="nav-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)" data-i18n="nav_examquiz">&#x6AA2;&#x5B9A;&#x8003;&#x8A66;</button>
             <button class="nav-btn" data-tab="notes" onclick="switchPage('notes', this)" data-i18n="nav_notes">&#x8A18;&#x4E8B;&#x672C;</button>
-            <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
             <button class="nav-btn" data-tab="feedback" onclick="switchPage('feedback', this)" data-i18n="nav_feedback">建議&amp;改進</button>
         </nav>
@@ -521,29 +519,6 @@
 
         </div>
 
-        <div id="page-rhythm" style="display: none;">
-            <div class="mode-card" id="rhythm-select-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="rhythm_title">&#x2726; &#x904A;&#x6232;&#x5340; &#x2726;</h3>
-                <p class="rhythm-hint" data-i18n="rhythm_hint">點擊卡片會前往各自獨立的網站，你在那邊新增/修改的資料都會保存在裝置上，不會因為關閉畫面而不見。</p>
-                <div class="games-grid">
-                    <a class="game-option game-option-banner game-option-banner-pjsekai" href="https://pjsekai-hanabi.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <div class="game-option-name" data-i18n="rhythm_pjsekai_name">&#x4E16;&#x754C;&#x8A08;&#x756B; &#x6210;&#x7E3E;&#x7C3F;</div>
-                        <div class="game-option-desc" data-i18n="rhythm_pjsekai_desc">&#x8A18;&#x9304;&#x6BCF;&#x9996;&#x6B4C;&#x5404;&#x96E3;&#x5EA6;&#x7684;&#x500B;&#x4EBA;&#x6210;&#x7E3E;&#xFF0C;&#x9084;&#x6709;&#x65E5;&#x53F0;&#x670D;&#x6700;&#x65B0;&#x60C5;&#x5831;</div>
-                    </a>
-                    <a class="game-option game-option-banner game-option-banner-wuwa" href="https://wuwa-hanabi.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <div class="game-option-name" data-i18n="rhythm_wuwa_name">鳴潮圖鑑</div>
-                        <div class="game-option-desc" data-i18n="rhythm_wuwa_desc">收錄鳴潮所有角色、武器、聲骸資料，還有角色故事和語音</div>
-                    </a>
-                    <a class="game-option game-option-banner game-option-banner-osu" href="https://osu-collection-hanabi.netlify.app/" target="_blank" rel="noopener noreferrer">
-                        <div class="game-option-name" data-i18n="rhythm_osu_name">osu! 收藏</div>
-                        <div class="game-option-desc" data-i18n="rhythm_osu_desc">收藏 osu! Beatmap 並依模式分類，也能查詢任何人的四種模式 PP</div>
-                    </a>
-                </div>
-            </div>
-        </div>
-
         <div id="page-guestbook" style="display: none;">
             <div class="guestbook-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -647,14 +622,6 @@
                         <div class="guide-text">
                             <h4 data-i18n="guide_stats_title">測驗統計</h4>
                             <p data-i18n="guide_stats_desc">自動記錄每次測驗成績，顯示進步曲線。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="2">
-                        <div class="guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/></svg></div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_rhythm_title">遊戲區</h4>
-                            <p data-i18n="guide_rhythm_desc">收藏我做的其他遊戲相關網站，目前有「世界計畫」歌曲成績簿、「鳴潮圖鑑」和「osu! 收藏」，點擊卡片會開啟獨立的網站。</p>
                         </div>
                     </div>
 
