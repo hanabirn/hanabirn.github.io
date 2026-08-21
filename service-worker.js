@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v19';
+const CACHE_NAME = 'hanabi-v21';
 const ASSETS = [
   '/',
   '/index.html',
@@ -12,11 +12,10 @@ const ASSETS = [
   '/css/header.css',
   '/css/nav.css',
   '/css/quiz.css',
-  '/css/music.css',
-  '/css/games.css',
   '/css/about.css',
   '/css/guestbook.css',
   '/css/notes.css',
+  '/css/rhythm.css',
   '/css/guide.css',
   '/css/widgets.css',
   '/css/responsive.css',
@@ -31,7 +30,6 @@ const ASSETS = [
   '/i18n/es.js',
   '/i18n/de.js',
   '/js/quiz.js',
-  '/js/games.js',
   '/js/particles.js',
   '/js/reading-ambiance.js',
   '/js/guestbook.js',

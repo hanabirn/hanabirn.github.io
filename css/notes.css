@@ -10,6 +10,34 @@
     margin-top: 10px;
 }
 
+.notes-backup-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.notes-backup-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border-card);
+    background: transparent;
+    color: var(--text-label);
+    font-size: 0.78rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.notes-backup-btn:hover {
+    color: var(--text);
+    border-color: var(--accent-purple);
+}
+.notes-backup-btn input[type="file"] {
+    display: none;
+}
+
 .notes-toolbar {
     display: flex;
     align-items: center;

@@ -32,11 +32,10 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/quiz.css">
-    <link rel="stylesheet" href="css/music.css">
-    <link rel="stylesheet" href="css/games.css">
     <link rel="stylesheet" href="css/about.css">
     <link rel="stylesheet" href="css/guestbook.css">
     <link rel="stylesheet" href="css/notes.css">
+    <link rel="stylesheet" href="css/rhythm.css">
     <link rel="stylesheet" href="css/guide.css">
     <link rel="stylesheet" href="css/widgets.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -155,8 +154,6 @@
             <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
             <button class="nav-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)" data-i18n="nav_examquiz">&#x6AA2;&#x5B9A;&#x8003;&#x8A66;</button>
             <button class="nav-btn" data-tab="notes" onclick="switchPage('notes', this)" data-i18n="nav_notes">&#x8A18;&#x4E8B;&#x672C;</button>
-            <button class="nav-btn" data-tab="music" onclick="switchPage('music', this)" data-i18n="nav_music">&#x82B1;&#x706B;&#x7684;Spotify&#x6B4C;&#x55AE;</button>
-            <button class="nav-btn" data-tab="games" onclick="switchPage('games', this)" data-i18n="nav_games">離線小遊戲區</button>
             <button class="nav-btn" data-tab="rhythm" onclick="switchPage('rhythm', this)" data-i18n="nav_rhythm">&#x904A;&#x6232;&#x5340;</button>
             <button class="nav-btn" data-tab="guestbook" onclick="switchPage('guestbook', this)" data-i18n="nav_guestbook">&#x7559;&#x8A00;&#x677F;</button>
             <button class="nav-btn" data-tab="feedback" onclick="switchPage('feedback', this)" data-i18n="nav_feedback">建議&amp;改進</button>
@@ -450,254 +447,6 @@
             </div>
         </div>
 
-        <div id="page-music" style="display: none;">
-            <div class="music-tabs">
-                <button class="music-tab active" onclick="switchMusicTab('all', this)" data-i18n="music_all">&#x266B; &#x6240;&#x6709;&#x6B4C;&#x66F2;</button>
-                <button class="music-tab" onclick="switchMusicTab('cn', this)" data-i18n="music_cn">&#x266B; &#x4E2D;&#x6587; / &#x7CA5;&#x8A9E;&#x6B4C;</button>
-            </div>
-            <div class="music-player">
-                <iframe id="music-iframe" src="https://open.spotify.com/embed/playlist/0QFBFg35lFuDvuYapAolHC?utm_source=generator&theme=0" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-            </div>
-        </div>
-
-        <div id="page-games" style="display: none;">
-            <div class="mode-card" id="games-select-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <h3 data-i18n="games_title">✦ 離線小遊戲區 ✦</h3>
-                <div class="games-grid">
-                    <div class="game-option snake" onclick="openGame('snake')">
-                        <div class="game-option-icon-badge cover" style="background-image:url('https://play-lh.googleusercontent.com/aCQhuS02iMWWCFAuuIa_AQLBiCbAetDzHfjtadlouRC_zTRF3j-BzyeYYv9mzGTPyE5EQ23Ygq0WK1Ewwdzcsg=w240-h480-rw')"></div>
-                        <div class="game-option-name" data-i18n="game_snake_name">&#x8CAA;&#x98DF;&#x86C7;</div>
-                        <div class="game-option-desc" data-i18n="game_snake_desc">&#x5403;&#x6AFB;&#x82B1;&#x8B93;&#x86C7;&#x8B8A;&#x9577;&#xFF0C;&#x770B;&#x4F60;&#x80FD;&#x6491;&#x591A;&#x4E45;&#xFF01;</div>
-                    </div>
-                    <div class="game-option whack" onclick="openGame('whack')">
-                        <div class="game-option-icon-badge">
-                            <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true">
-                                <ellipse cx="32" cy="48" rx="26" ry="12" fill="#5c3a1e"/>
-                                <ellipse cx="32" cy="45" rx="22" ry="9" fill="#7a4f27"/>
-                                <circle cx="20" cy="20" r="6" fill="#a9713a"/>
-                                <circle cx="44" cy="20" r="6" fill="#a9713a"/>
-                                <path d="M14,46 Q14,14 32,14 Q50,14 50,46 Z" fill="#a9713a"/>
-                                <circle cx="24" cy="29" r="3" fill="#2b1a0f"/>
-                                <circle cx="40" cy="29" r="3" fill="#2b1a0f"/>
-                                <ellipse cx="32" cy="37" rx="5" ry="3.5" fill="#f4a7a7"/>
-                            </svg>
-                        </div>
-                        <div class="game-option-name" data-i18n="game_whack_name">&#x6253;&#x5730;&#x9F20;&#x5F0F;&#x55AE;&#x5B57;&#x904A;&#x6232;</div>
-                        <div class="game-option-desc" data-i18n="game_whack_desc">&#x770B;&#x610F;&#x601D;&#x627E;&#x55AE;&#x5B57;&#xFF0C;&#x8003;&#x9A57;&#x4F60;&#x7684;&#x53CD;&#x61C9;&#x529B;&#xFF01;</div>
-                    </div>
-                    <div class="game-option g2048" onclick="openGame('2048')">
-                        <div class="game-option-icon-badge cover" style="background-image:url('https://imgs.crazygames.com/games/2048/cover_1x1-1707828857318.png?format=auto&quality=100&metadata=none&width=1200')"></div>
-                        <div class="game-option-name" data-i18n="game_2048_name">2048 &#x6578;&#x5B57;&#x5408;&#x4F75;</div>
-                        <div class="game-option-desc" data-i18n="game_2048_desc">&#x6ED1;&#x52D5;&#x65B9;&#x584A;&#x5408;&#x4F75;&#x76F8;&#x540C;&#x6578;&#x5B57;&#xFF0C;&#x6311;&#x6230;&#x6E4A;&#x51FA; 2048&#xFF01;</div>
-                    </div>
-                    <div class="game-option match3" onclick="openGame('match3')">
-                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F36C;</span></div>
-                        <div class="game-option-name" data-i18n="game_match3_name">&#x7cd6;&#x679c;&#x6d88;&#x6d88;&#x6a02;</div>
-                        <div class="game-option-desc" data-i18n="game_match3_desc">&#x4EA4;&#x63DB;&#x65B9;&#x584A;&#x6E4A;&#x51FA;&#x4E09;&#x500B;&#x4EE5;&#x4E0A;&#x76F8;&#x540C;&#x5716;&#x6848;&#xFF0C;&#x6311;&#x6230;&#x6709;&#x9650;&#x6B65;&#x6578;&#x5167;&#x62FF;&#x9AD8;&#x5206;&#xFF01;</div>
-                    </div>
-                    <div class="game-option airhockey" onclick="openGame('airhockey')">
-                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F3D2;</span></div>
-                        <div class="game-option-name" data-i18n="game_airhockey_name">&#x7A7A;&#x6C23;&#x66F2;&#x68CD;&#x7403;</div>
-                        <div class="game-option-desc" data-i18n="game_airhockey_desc">&#x62D6;&#x66F3;&#x7403;&#x62CD;&#x64CB;&#x7403;&#x9032;&#x653B;&#xFF0C;&#x641E;&#x5148;&#x5F97; 7 &#x5206;&#x64CA;&#x6557;&#x96FB;&#x8166;&#xFF01;</div>
-                    </div>
-                    <div class="game-option mario" onclick="openGame('mario')">
-                        <div class="game-option-icon-badge"><span class="game-option-icon">&#x1F344;</span></div>
-                        <div class="game-option-name" data-i18n="game_mario_name">&#x8D85;&#x7D1A;&#x746A;&#x5229;&#x6B50;&#x5192;&#x96AA;</div>
-                        <div class="game-option-desc" data-i18n="game_mario_desc">&#x6309;&#x7A7A;&#x767D;&#x9375;&#x6216;&#x9EDE;&#x64CA;&#x756B;&#x9762;&#x8DB3;&#x8DF3;&#xFF0C;&#x9583;&#x907F;&#x602A;&#x7269;&#x8207;&#x7BA1;&#x5B50;&#xFF0C;&#x770B;&#x4F60;&#x80FD;&#x8DD1;&#x591A;&#x9060;&#xFF01;</div>
-                    </div>
-                    <div class="game-option wordle" onclick="openGame('wordle')">
-                        <div class="game-option-icon-badge cover" style="background-image:url('https://static.brainbreakhub.com/media/activities/processed/wordle.webp')"></div>
-                        <div class="game-option-name" data-i18n="game_wordle_name">Wordle</div>
-                        <div class="game-option-desc" data-i18n="game_wordle_desc">&#x516D;&#x6B21;&#x6A5F;&#x6703;&#x731C;&#x51FA;&#x4E94;&#x5B57;&#x6BCD;&#x82F1;&#x6587;&#x55AE;&#x5B57;&#xFF0C;&#x7DA0;&#x8272;&#x4F4D;&#x7F6E;&#x6B63;&#x78BA;&#xFF0C;&#x9EC3;&#x8272;&#x6709;&#x9019;&#x500B;&#x5B57;&#x6BCD;&#x4F46;&#x4F4D;&#x7F6E;&#x9319;&#xFF01;</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mode-card" id="snake-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="game-header">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row">
-                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="snake-score">0</span>
-                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="snake-highscore">0</span></span>
-                    </div>
-                </div>
-                <div class="snake-canvas-wrap">
-                    <canvas id="snake-canvas" width="360" height="360"></canvas>
-                    <div class="game-overlay" id="snake-overlay">
-                        <p data-i18n="game_snake_intro">&#x7528;&#x65B9;&#x5411;&#x9375;&#x6216;&#x6ED1;&#x52D5;&#x87A2;&#x5E55;&#x63A7;&#x5236;&#x65B9;&#x5411;&#xFF01;</p>
-                        <button class="btn next-btn" onclick="startSnake()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-                <div class="snake-controls" id="snake-controls">
-                    <button class="snake-dpad-btn up" onclick="snakeSetDir(0,-1)" aria-label="up">&#x25B2;</button>
-                    <div class="snake-dpad-mid">
-                        <button class="snake-dpad-btn left" onclick="snakeSetDir(-1,0)" aria-label="left">&#x25C0;</button>
-                        <button class="snake-dpad-btn right" onclick="snakeSetDir(1,0)" aria-label="right">&#x25B6;</button>
-                    </div>
-                    <button class="snake-dpad-btn down" onclick="snakeSetDir(0,1)" aria-label="down">&#x25BC;</button>
-                </div>
-            </div>
-
-            <div class="mode-card" id="whack-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-
-                <div id="whack-lang-select">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <h3 data-i18n="game_whack_pick_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
-                    <div class="lang-buttons">
-                        <button class="lang-btn jp" onclick="startWhackLang('jp')"><span data-i18n="fc_lang_jp">&#x1F1EF;&#x1F1F5; &#x65E5;&#x6587;</span></button>
-                        <button class="lang-btn kr" onclick="startWhackLang('kr')"><span data-i18n="fc_lang_kr">&#x1F1F0;&#x1F1F7; &#x97D3;&#x6587;</span></button>
-                        <button class="lang-btn fr" onclick="startWhackLang('fr')"><span data-i18n="fc_lang_fr">&#x1F1EB;&#x1F1F7; &#x6CD5;&#x6587;</span></button>
-                        <button class="lang-btn en" onclick="startWhackLang('en')"><span data-i18n="fc_lang_en">&#x1F1FA;&#x1F1F8; &#x82F1;&#x6587;</span></button>
-                        <button class="lang-btn zh" onclick="startWhackLang('zh')"><span data-i18n="fc_lang_zh">&#x1F1E8;&#x1F1F3; &#x4E2D;&#x6587;</span></button>
-                    </div>
-                    <p id="whack-lang-status" class="status"></p>
-                </div>
-
-                <div id="whack-game" style="display:none;">
-                    <div class="game-header">
-                        <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                        <div class="game-score-row">
-                            <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="whack-score">0</span>
-                            <span class="game-timer">&#x23F1; <span id="whack-timer">60</span>s</span>
-                            <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="whack-highscore">0</span></span>
-                        </div>
-                    </div>
-                    <div class="whack-prompt" id="whack-prompt"></div>
-                    <div class="whack-grid" id="whack-grid"></div>
-                    <div class="game-overlay" id="whack-overlay">
-                        <button class="btn next-btn" onclick="startWhackGame()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="mode-card" id="game2048-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="game-header">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row">
-                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="game2048-score">0</span>
-                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="game2048-highscore">0</span></span>
-                    </div>
-                </div>
-                <div class="game2048-wrap">
-                    <div class="game2048-grid" id="game2048-grid"></div>
-                    <div class="game-overlay" id="game2048-overlay">
-                        <button class="btn next-btn" onclick="start2048()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-                <div class="snake-controls" id="game2048-controls">
-                    <button class="snake-dpad-btn up" onclick="move2048(0,-1)" aria-label="up">&#x25B2;</button>
-                    <div class="snake-dpad-mid">
-                        <button class="snake-dpad-btn left" onclick="move2048(-1,0)" aria-label="left">&#x25C0;</button>
-                        <button class="snake-dpad-btn right" onclick="move2048(1,0)" aria-label="right">&#x25B6;</button>
-                    </div>
-                    <button class="snake-dpad-btn down" onclick="move2048(0,1)" aria-label="down">&#x25BC;</button>
-                </div>
-            </div>
-
-            <div class="mode-card" id="match3-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="game-header">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row" id="match3-score-row" style="display:none;">
-                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="match3-score">0</span>
-                        <span class="game-timer">&#x1F504; <span id="match3-moves">20</span></span>
-                        <span class="game-highscore" id="match3-level-label"></span>
-                    </div>
-                </div>
-                <div id="match3-objectives" class="match3-objectives" style="display:none;"></div>
-                <div id="match3-level-select" class="match3-level-select" style="display:none;"></div>
-                <div class="match3-wrap" id="match3-wrap" style="display:none;">
-                    <div class="match3-grid" id="match3-grid"></div>
-                    <div class="game-overlay" id="match3-overlay" style="display:none;"></div>
-                </div>
-            </div>
-
-            <div class="mode-card" id="wordle-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="game-header">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row">
-                        <span data-i18n="game_wordle_attempt">猜測</span> <span id="wordle-attempt">0</span>/6
-                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="wordle-best">-</span></span>
-                    </div>
-                </div>
-                <div class="wordle-wrap">
-                    <p class="wordle-message" id="wordle-message"></p>
-                    <div class="wordle-grid" id="wordle-grid"></div>
-                    <div class="game-overlay" id="wordle-overlay">
-                        <button class="btn next-btn" onclick="startWordle()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-                <div class="wordle-keyboard" id="wordle-keyboard"></div>
-            </div>
-
-            <div class="mode-card" id="airhockey-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-
-                <div id="airhockey-mode-select">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <h3 data-i18n="game_airhockey_pick_mode">&#x2726; &#x9078;&#x64C7;&#x5C0D;&#x6230;&#x6A21;&#x5F0F; &#x2726;</h3>
-                    <div class="lang-buttons airhockey-mode-buttons">
-                        <button class="lang-btn airhockey-mode-cpu" onclick="selectAirhockeyMode('cpu')"><span data-i18n="game_airhockey_mode_cpu">&#x1F916; &#x8207;&#x96FB;&#x8166;&#x5C0D;&#x6230;</span></button>
-                        <button class="lang-btn airhockey-mode-2p" onclick="selectAirhockeyMode('2p')"><span data-i18n="game_airhockey_mode_2p">&#x1F3AE; &#x96D9;&#x4EBA;&#x5C0D;&#x6230;</span></button>
-                    </div>
-                </div>
-
-                <div id="airhockey-game" style="display:none;">
-                    <div class="game-header">
-                        <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                        <div class="game-score-row airhockey-score-row">
-                            <span class="airhockey-score-you"><span id="airhockey-left-label" data-i18n="game_airhockey_you">&#x4F60;</span> <span id="airhockey-score-you">0</span></span>
-                            <span class="airhockey-score-sep">:</span>
-                            <span class="airhockey-score-cpu"><span id="airhockey-score-cpu">0</span> <span id="airhockey-right-label" data-i18n="game_airhockey_cpu">&#x96FB;&#x8166;</span></span>
-                            <span class="game-highscore" id="airhockey-streak-chip">&#x1F3C6; <span data-i18n="game_airhockey_best_streak">&#x6700;&#x4F73;&#x9023;&#x52DD;</span> <span id="airhockey-highscore">0</span></span>
-                        </div>
-                    </div>
-                    <div class="airhockey-canvas-wrap">
-                        <span class="airhockey-corner tl"></span><span class="airhockey-corner tr"></span>
-                        <span class="airhockey-corner bl"></span><span class="airhockey-corner br"></span>
-                        <canvas id="airhockey-canvas" width="340" height="220"></canvas>
-                        <div class="game-overlay" id="airhockey-overlay">
-                            <p data-i18n="game_airhockey_intro">&#x62D6;&#x66F3;&#x6216;&#x7528;&#x6ED1;&#x9F20;&#x79FB;&#x52D5;&#x4F60;&#x7684;&#x7403;&#x62CD;&#x64CB;&#x7403;&#x3001;&#x9032;&#x653B;&#xFF0C;&#x641E;&#x5148;&#x5F97; 7 &#x5206;&#x64CA;&#x6557;&#x96FB;&#x8166;&#xFF01;</p>
-                            <button class="btn next-btn" onclick="startAirhockey()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                        </div>
-                    </div>
-                    <p class="airhockey-control-hint" id="airhockey-control-hint" style="display:none;"></p>
-                </div>
-            </div>
-
-            <div class="mode-card" id="mario-card" style="display:none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
-                <div class="game-header">
-                    <button class="game-back-btn" onclick="closeGame()">&#x25C0; <span data-i18n="game_back">&#x8FD4;&#x56DE;</span></button>
-                    <div class="game-score-row">
-                        <span data-i18n="game_score">&#x5206;&#x6578;</span> <span id="mario-score">0</span>
-                        <span class="game-highscore">&#x1F3C6; <span data-i18n="stats_best">&#x6700;&#x9AD8;&#x5206;</span> <span id="mario-highscore">0</span></span>
-                    </div>
-                </div>
-                <div class="mario-canvas-wrap">
-                    <canvas id="mario-canvas" width="600" height="300"></canvas>
-                    <div class="game-overlay" id="mario-overlay">
-                        <p data-i18n="game_mario_intro">&#x6309;&#x7A7A;&#x767D;&#x9375;&#x6216;&#x9EDE;&#x64CA;&#x756B;&#x9762;&#x8DB3;&#x8DF3;&#xFF0C;&#x9583;&#x907F;&#x602A;&#x7269;&#x8207;&#x7BA1;&#x5B50;&#xFF01;</p>
-                        <button class="btn next-btn" onclick="startMario()" data-i18n="game_start">&#x958B;&#x59CB;&#x904A;&#x6232;</button>
-                    </div>
-                </div>
-                <button class="mario-jump-btn" id="mario-jump-btn" data-i18n="game_mario_jump">&#x8DF3;&#x8E8D;&#xFF01;</button>
-            </div>
-        </div>
-
         <div id="page-about" style="display: none;">
             <div class="about-card">
                 <div class="card-corner tl"></div><div class="card-corner tr"></div>
@@ -828,6 +577,14 @@
                     </div>
                 </div>
 
+                <div class="notes-backup-row">
+                    <button type="button" class="notes-backup-btn" onclick="exportNotesData()">&#x1F4E5; <span data-i18n="notes_export">&#x532F;&#x51FA;&#x5099;&#x4EFD;</span></button>
+                    <label class="notes-backup-btn">
+                        &#x1F4E4; <span data-i18n="notes_import">&#x532F;&#x5165;&#x5099;&#x4EFD;</span>
+                        <input type="file" accept="application/json" onchange="handleImportFile(this)">
+                    </label>
+                </div>
+
                 <input type="text" id="notes-search-input" oninput="handleNotesSearch(this.value)" data-i18n-placeholder="notes_search_placeholder" placeholder="&#x641C;&#x5C0B;&#x7B46;&#x8A18;..." class="notes-search-input">
 
                 <form class="feedback-form" onsubmit="return handleAddNote(event)">
@@ -894,14 +651,6 @@
                     </div>
 
                     <div class="guide-section" data-page="2">
-                        <div class="guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 9 10.5-3m0 6.553v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 1 1-.99-3.467l2.31-.66a2.25 2.25 0 0 0 1.632-2.163Zm0 0V2.25L9 5.25v10.303m0 0v3.75a2.25 2.25 0 0 1-1.632 2.163l-1.32.377a1.803 1.803 0 0 1-.99-3.467l2.31-.66A2.25 2.25 0 0 0 9 15.553Z"/></svg></div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_music_title">花火的Spotify歌單</h4>
-                            <p data-i18n="guide_music_desc">可切換「所有歌曲」和「中文/粵語歌」兩個播放清單；登入 Spotify 可完整播放，未登入僅能試聽 30 秒。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="2">
                         <div class="guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z"/></svg></div>
                         <div class="guide-text">
                             <h4 data-i18n="guide_rhythm_title">遊戲區</h4>
@@ -946,14 +695,6 @@
                         <div class="guide-text">
                             <h4 data-i18n="guide_settings_title">顯示設定</h4>
                             <p data-i18n="guide_settings_desc">右下角 ⚙️ 按鈕可自訂導覽列顯示哪些頁面（教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。</p>
-                        </div>
-                    </div>
-
-                    <div class="guide-section" data-page="3">
-                        <div class="guide-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 0 1-.657.643 48.39 48.39 0 0 1-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 0 1-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 0 0-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 0 1-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 0 0 .657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 0 1-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 0 0 5.427-.63 48.05 48.05 0 0 0 .582-4.717.532.532 0 0 0-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 0 0 .658-.663 48.422 48.422 0 0 0-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 0 1-.61-.58v0Z"/></svg></div>
-                        <div class="guide-text">
-                            <h4 data-i18n="guide_games_title">離線小遊戲區</h4>
-                            <p data-i18n="guide_games_desc">打地鼠單字遊戲需先在單字測驗讀取過該語言的單字庫，否則無法遊玩。</p>
                         </div>
                     </div>
 
@@ -1025,7 +766,6 @@
     <script src="i18n/de.js"></script>
     <script src="js/header-anim.js"></script>
     <script src="js/quiz.js"></script>
-    <script src="js/games.js"></script>
     <script src="js/particles.js"></script>
     <script src="js/reading-ambiance.js"></script>
     <script src="js/guestbook.js"></script>

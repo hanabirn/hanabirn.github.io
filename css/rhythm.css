@@ -1,0 +1,110 @@
+/* ===== 遊戲區 (outbound links to satellite game-tracker sites) ===== */
+.rhythm-hint {
+    text-align: center;
+    color: var(--text-label);
+    font-size: 0.82rem;
+    line-height: 1.5;
+    margin: 6px 0 0;
+}
+
+.games-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 12px;
+}
+@media (max-width: 480px) {
+    .games-grid { grid-template-columns: 1fr; }
+}
+
+.game-option {
+    position: relative;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--nav-border);
+    border-radius: 16px;
+    padding: 14px 14px;
+    text-align: center;
+    cursor: pointer;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.30s cubic-bezier(0.34,1.56,0.64,1),
+        border-color 0.30s, background 0.30s, box-shadow 0.30s;
+}
+.game-option::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle at 50% 0%, rgba(244,114,182,0.14) 0%, transparent 65%);
+    opacity: 0;
+    transition: opacity 0.30s;
+    pointer-events: none;
+}
+.game-option:hover {
+    border-color: var(--accent-pink);
+    background: rgba(244,114,182,0.08);
+    transform: translateY(-6px);
+    box-shadow: 0 0 0 1px rgba(244,114,182,0.20), 0 0 20px rgba(244,114,182,0.20), 0 16px 32px rgba(0,0,0,0.30);
+}
+.game-option:hover::after { opacity: 1; }
+
+.game-option-name {
+    font-weight: bold;
+    color: var(--text-pink);
+    margin-bottom: 3px;
+    font-size: 0.95rem;
+    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', sans-serif;
+}
+.game-option-desc {
+    font-size: 0.76rem;
+    line-height: 1.35;
+    color: var(--text-secondary);
+}
+
+.game-option-banner {
+    position: relative;
+    min-height: 260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    background-size: cover;
+    background-position: center top;
+    padding-bottom: 16px;
+    flex: 0 0 calc(50% - 8px);
+}
+@media (max-width: 500px) {
+    .game-option-banner {
+        flex: 1 1 100%;
+    }
+}
+.game-option-banner .game-option-name,
+.game-option-banner .game-option-desc {
+    color: #fff;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.7);
+}
+.game-option-banner-pjsekai {
+    background-image: linear-gradient(rgba(10,5,20,0.35), rgba(10,5,20,0.8)), url('https://cimg.kgl-systems.io/camion/files/famitsu/25065/a97e046ccb459565fab2da48d4ca14dce.jpg');
+}
+.game-option-banner-pjsekai:hover {
+    background-image: linear-gradient(rgba(10,5,20,0.25), rgba(10,5,20,0.7)), url('https://cimg.kgl-systems.io/camion/files/famitsu/25065/a97e046ccb459565fab2da48d4ca14dce.jpg');
+    background-size: cover;
+    background-position: center top;
+}
+.game-option-banner-wuwa {
+    background-image: linear-gradient(rgba(10,5,20,0.35), rgba(10,5,20,0.8)), url('https://i.imgur.com/0FYd3JW.jpeg');
+}
+.game-option-banner-wuwa:hover {
+    background-image: linear-gradient(rgba(10,5,20,0.25), rgba(10,5,20,0.7)), url('https://i.imgur.com/0FYd3JW.jpeg');
+    background-size: cover;
+    background-position: center top;
+}
+.game-option-banner-osu {
+    background-image: linear-gradient(rgba(10,5,20,0.35), rgba(10,5,20,0.8)), url('https://i.imgur.com/acXrYB2.png');
+}
+.game-option-banner-osu:hover {
+    background-image: linear-gradient(rgba(10,5,20,0.25), rgba(10,5,20,0.7)), url('https://i.imgur.com/acXrYB2.png');
+    background-size: cover;
+    background-position: center top;
+}

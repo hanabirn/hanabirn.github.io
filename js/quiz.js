@@ -1,20 +1,13 @@
-const PLAYLISTS = {
-    all: '0QFBFg35lFuDvuYapAolHC',
-    cn: '5XQgwQcuRRBcyVaKMQbB88'
-};
-
 applyLang(siteLang);
 
 function switchPage(page, el) {
     document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
     el.classList.add('active');
 
-    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'rhythm', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
-
-    if (page !== 'games' && typeof stopAllGames === 'function') stopAllGames();
 
     setTimeout(() => {
         pages.forEach(p => {
@@ -29,7 +22,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'music', 'games', 'rhythm', 'guestbook', 'feedback'];
+const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'rhythm', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {
@@ -140,15 +133,6 @@ function initTabVisibility() {
         history.replaceState(null, '', cleanUrl);
     }
     applyTabVisibility();
-}
-
-let currentSpotifyPlaylist = PLAYLISTS.all;
-
-function switchMusicTab(lang, btn) {
-    document.querySelectorAll('.music-tab').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    currentSpotifyPlaylist = PLAYLISTS[lang];
-    document.getElementById('music-iframe').src = `https://open.spotify.com/embed/playlist/${PLAYLISTS[lang]}?utm_source=generator&theme=0`;
 }
 
 const SHEETS = {

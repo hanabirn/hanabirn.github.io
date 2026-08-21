@@ -140,6 +140,111 @@ async function renderNoteAttachments(noteId) {
     }).join('');
 }
 
+/* ----- Backup: bundle everything (notes, folders, attachments) into one downloadable
+   JSON file, and merge one back in. Lets a visitor manually carry their notepad between
+   devices/browsers without a server. ----- */
+
+function blobToDataURL(blob) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+    });
+}
+
+async function exportNotesData() {
+    const notes = getNotes();
+    const categories = getCategories();
+    const attachments = [];
+    for (const n of notes) {
+        let atts = [];
+        try { atts = await idbGetAttachmentsForNote(n.id); } catch (e) { console.error('Failed to read attachments:', e); }
+        for (const a of atts) {
+            try {
+                attachments.push({ noteId: n.id, name: a.name, type: a.type, size: a.size, addedAt: a.addedAt, data: await blobToDataURL(a.blob) });
+            } catch (e) {
+                console.error('Failed to encode attachment:', e);
+            }
+        }
+    }
+
+    const payload = { app: 'hanabi-notepad', version: 1, exportedAt: new Date().toISOString(), notes, categories, attachments };
+    const blob = new Blob([JSON.stringify(payload)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `notepad-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    URL.revokeObjectURL(url);
+}
+
+async function handleImportFile(input) {
+    const file = input.files && input.files[0];
+    input.value = '';
+    if (!file) return;
+
+    let payload;
+    try {
+        payload = JSON.parse(await file.text());
+    } catch (e) {
+        alert(t('notes_import_invalid'));
+        return;
+    }
+    if (!payload || !Array.isArray(payload.notes) || !Array.isArray(payload.categories)) {
+        alert(t('notes_import_invalid'));
+        return;
+    }
+    if (!confirm(t('notes_import_confirm', { notes: payload.notes.length, folders: payload.categories.length }))) return;
+
+    // Every id is regenerated so an import can never collide with (or overwrite) existing data.
+    const catIdMap = {};
+    const newCats = payload.categories.map(c => {
+        const newId = 'c' + Date.now() + Math.random().toString(36).slice(2, 6);
+        catIdMap[c.id] = newId;
+        return { id: newId, name: c.name, color: c.color, parentId: null };
+    });
+    newCats.forEach((c, i) => {
+        const oldParent = payload.categories[i].parentId;
+        c.parentId = oldParent ? (catIdMap[oldParent] || null) : null;
+    });
+
+    const noteIdMap = {};
+    const baseId = Date.now();
+    const newNotes = payload.notes.map((n, i) => {
+        const newId = baseId + i;
+        noteIdMap[n.id] = newId;
+        return { id: newId, text: n.text, category: n.category ? (catIdMap[n.category] || '') : '', pinned: !!n.pinned, updatedAt: n.updatedAt || new Date().toISOString() };
+    });
+
+    saveCategories(getCategories().concat(newCats));
+    saveNotesData(getNotes().concat(newNotes));
+
+    for (const a of (payload.attachments || [])) {
+        const newNoteId = noteIdMap[a.noteId];
+        if (newNoteId == null) continue;
+        try {
+            const blob = await fetch(a.data).then(r => r.blob());
+            await idbAddAttachment({
+                id: 'a' + newNoteId + '_' + Date.now() + '_' + Math.random().toString(36).slice(2),
+                noteId: newNoteId,
+                name: a.name,
+                type: a.type,
+                size: a.size,
+                blob,
+                addedAt: a.addedAt || new Date().toISOString()
+            });
+        } catch (e) {
+            console.error('Failed to import attachment:', e);
+        }
+    }
+
+    renderNotes();
+    alert(t('notes_import_success', { n: newNotes.length }));
+}
+
 /* ----- Folders: visitors name their own, nested via parentId, stored locally ----- */
 
 const NOTE_CATEGORY_COLORS = ['#f472b6', '#c084fc', '#60a5fa', '#34d399', '#fbbf24', '#fb7185', '#38bdf8', '#a78bfa'];
