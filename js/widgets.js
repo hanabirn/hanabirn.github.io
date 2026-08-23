@@ -342,8 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sessionStorage.getItem('splash_seen')) {
         splash.style.display = 'none';
     } else {
-        setTimeout(() => splash.classList.add('hide'), 1500);
-        setTimeout(() => { splash.style.display = 'none'; }, 2300);
+        requestAnimationFrame(() => splash.classList.add('hide'));
+        setTimeout(() => { splash.style.display = 'none'; }, 800);
         sessionStorage.setItem('splash_seen', '1');
     }
 })();
