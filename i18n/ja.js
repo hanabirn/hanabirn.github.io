@@ -73,7 +73,7 @@ I18N.ja = {
         ach_streak_7: '7日連続', ach_streak_7_desc: '7日連続で練習',
         ach_perfect: '完璧', ach_perfect_desc: 'テストで100%正解',
         ach_mastered_50: '単語マスター', ach_mastered_50_desc: '50個の単語を習得',
-        guestbook_load_more: 'もっと見る',
+        guestbook_load_more: 'もっと見る', guestbook_blocked: '不適切な内容が含まれています。修正して再送信してください', weather_enable: '🌤️ 天気を表示',
         pwa_install_text: 'ホーム画面に追加していつでも開けます！', pwa_install_btn: 'インストール', update_banner_text: '新しいバージョンがあります。更新して最新の内容を取得してください！', update_banner_btn: '更新',
         nav_notes: 'メモ帳', notes_title: '✦ メモ帳 ✦', notes_hint: 'このメモはこのブラウザにのみ保存されます。端末を変えたりブラウザのデータを消去すると消えてしまいます。',
         notes_placeholder: '何か書いてみよう...', notes_add: 'メモを追加', notes_empty: 'まだメモがありません。最初の一つを書いてみましょう！',

@@ -187,8 +187,8 @@ async function fetchWeather(lat, lon) {
 let weatherLat = 25.03, weatherLon = 121.56; // Taipei fallback
 
 async function initWeather() {
-    // IP-based geolocation (city-level, no permission prompt) instead of
-    // navigator.geolocation — showing weather doesn't need precise GPS.
+    // Only runs after the user opts in via #weather-optin (see initWeatherOptin) —
+    // fetching IP-based location without consent isn't something we do silently.
     try {
         const res = await fetch('https://ipapi.co/json/');
         const data = await res.json();
@@ -201,6 +201,24 @@ async function initWeather() {
     }
     fetchWeather(weatherLat, weatherLon);
     setInterval(() => fetchWeather(weatherLat, weatherLon), 1800000);
+}
+
+function initWeatherOptin() {
+    const el = document.getElementById('clock-weather');
+    if (!el) return;
+    if (localStorage.getItem('weather_consent') === 'granted') {
+        initWeather();
+        return;
+    }
+    const btn = document.createElement('button');
+    btn.className = 'weather-optin-btn';
+    btn.textContent = t('weather_enable');
+    btn.onclick = () => {
+        localStorage.setItem('weather_consent', 'granted');
+        el.innerHTML = '';
+        initWeather();
+    };
+    el.appendChild(btn);
 }
 
 /* ===================== 📱 Mobile "more options" FAB ===================== */
@@ -330,7 +348,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initBgm();
     updateClock();
     setInterval(updateClock, 1000);
-    initWeather();
+    initWeatherOptin();
     initVisitorCounter();
     initGuidePagination();
 });

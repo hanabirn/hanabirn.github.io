@@ -73,7 +73,7 @@ I18N.ko = {
         ach_streak_7: '7일 연속', ach_streak_7_desc: '7일 연속 연습',
         ach_perfect: '완벽함', ach_perfect_desc: '퀴즈에서 100% 정답',
         ach_mastered_50: '단어 마스터', ach_mastered_50_desc: '50개 단어 마스터',
-        guestbook_load_more: '더 보기',
+        guestbook_load_more: '더 보기', guestbook_blocked: '부적절한 내용이 포함되어 있습니다. 수정 후 다시 보내주세요', weather_enable: '🌤️ 날씨 표시',
         pwa_install_text: '홈 화면에 추가하고 언제든지 열어보세요!', pwa_install_btn: '설치', update_banner_text: '새 버전이 있습니다. 새로고침하면 최신 내용을 확인할 수 있어요!', update_banner_btn: '새로고침',
         nav_notes: '메모장', notes_title: '✦ 메모장 ✦', notes_hint: '이 메모는 이 브라우저에만 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지우면 사라져요.',
         notes_placeholder: '무언가 적어보세요...', notes_add: '메모 추가', notes_empty: '아직 메모가 없어요. 첫 메모를 남겨보세요!',

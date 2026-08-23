@@ -73,7 +73,7 @@ I18N.es = {
         ach_streak_7: '7 días seguidos', ach_streak_7_desc: 'Practica 7 días seguidos',
         ach_perfect: 'Impecable', ach_perfect_desc: 'Obtén 100% en un cuestionario',
         ach_mastered_50: 'Maestro del vocabulario', ach_mastered_50_desc: 'Domina 50 palabras',
-        guestbook_load_more: 'Cargar más mensajes',
+        guestbook_load_more: 'Cargar más mensajes', guestbook_blocked: 'Tu mensaje contiene contenido inapropiado, edítalo y vuelve a intentarlo', weather_enable: '🌤️ Mostrar el clima',
         pwa_install_text: '¡Instala para acceso rápido en cualquier momento!', pwa_install_btn: 'Instalar', update_banner_text: '¡Hay una nueva versión disponible! Actualiza la página para ver el contenido más reciente.', update_banner_btn: 'Actualizar',
         nav_notes: 'Bloc de notas', notes_title: '✦ Bloc de notas ✦', notes_hint: 'Estas notas solo se guardan en este navegador — desaparecerán si cambias de dispositivo o borras los datos del navegador.',
         notes_placeholder: 'Escribe algo...', notes_add: 'Añadir nota', notes_empty: '¡Aún no hay notas — escribe la primera!',

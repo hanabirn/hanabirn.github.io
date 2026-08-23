@@ -73,7 +73,7 @@ I18N.fr = {
         ach_streak_7: "7 jours d'affilée", ach_streak_7_desc: "S'entraîner 7 jours d'affilée",
         ach_perfect: 'Sans faute', ach_perfect_desc: 'Obtenir 100% à un quiz',
         ach_mastered_50: 'Maître du vocabulaire', ach_mastered_50_desc: 'Maîtriser 50 mots',
-        guestbook_load_more: 'Voir plus de messages',
+        guestbook_load_more: 'Voir plus de messages', guestbook_blocked: 'Votre message contient un contenu inapproprié, veuillez le modifier et réessayer', weather_enable: '🌤️ Afficher la météo',
         pwa_install_text: 'Installez pour un accès rapide à tout moment !', pwa_install_btn: 'Installer', update_banner_text: "Une nouvelle version est disponible — actualisez pour obtenir le dernier contenu !", update_banner_btn: 'Actualiser',
         nav_notes: 'Bloc-notes', notes_title: '✦ Bloc-notes ✦', notes_hint: "Ces notes ne sont enregistrées que dans ce navigateur — elles disparaissent si vous changez d'appareil ou effacez les données du navigateur.",
         notes_placeholder: 'Écrivez quelque chose...', notes_add: 'Ajouter une note', notes_empty: 'Pas encore de notes — écrivez la première !',

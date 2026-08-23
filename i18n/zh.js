@@ -74,7 +74,7 @@ I18N.zh = {
         ach_streak_7: '一週習慣', ach_streak_7_desc: '連續練習 7 天',
         ach_perfect: '完美無瑕', ach_perfect_desc: '單次測驗全對',
         ach_mastered_50: '單字大師', ach_mastered_50_desc: '掌握 50 個單字',
-        guestbook_load_more: '載入更多留言',
+        guestbook_load_more: '載入更多留言', guestbook_blocked: '留言含有不當內容，請修改後再送出', weather_enable: '🌤️ 顯示天氣',
         pwa_install_text: '加到主畫面，隨時開啟！', pwa_install_btn: '安裝', update_banner_text: '目前有最新的更新版本，請重新整理以獲得最新內容！', update_banner_btn: '重新整理',
         nav_notes: '記事本', notes_title: '✦ 記事本 ✦', notes_hint: '這裡的筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料會消失。',
         notes_placeholder: '寫點什麼...', notes_add: '新增筆記', notes_empty: '還沒有筆記，寫下你的第一則吧！',

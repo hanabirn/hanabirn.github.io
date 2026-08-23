@@ -1,6 +1,21 @@
 /* ===== Guestbook — Google Sheets Backend ===== */
 const GUESTBOOK_API = 'https://script.google.com/macros/s/AKfycbx8V81ni-z8gCgLsV1vGGpJK--qcg1yqiLUJLjJYzfNl4F2D4VEMjFTyYtkncixfNUu/exec';
 
+// Client-side content filter: catches spam links and the more severe hate/explicit/
+// self-harm terms before a message ever reaches the public, unmoderated sheet.
+// Not bypass-proof (it's client-side), but blocks casual abuse and drive-by spam.
+const GUESTBOOK_BLOCKED_WORDS = [
+    'nigger', 'nigga', 'faggot', 'retard', 'kill yourself', 'kys',
+    'porn', 'onlyfans', 'nude pics',
+    '死全家', '去死', '賤人', '婊子', '智障', '支那',
+    'viagra', 'casino', 'forex signal', '博彩', '賭博網', '加賴',
+];
+function containsBlockedContent(text) {
+    if (/https?:\/\/|www\.[a-z0-9-]+\.[a-z]{2,}/i.test(text)) return true;
+    const normalized = text.toLowerCase().replace(/[\s._\-*]/g, '');
+    return GUESTBOOK_BLOCKED_WORDS.some(w => normalized.includes(w.toLowerCase().replace(/[\s._\-*]/g, '')));
+}
+
 let guestbookMessages = [];
 let guestbookLoading = false;
 const GUESTBOOK_PAGE_SIZE = 10;
@@ -74,6 +89,11 @@ async function handleGuestbookSubmit(event) {
     const name = form.elements.name.value.trim();
     const message = form.elements.message.value.trim();
     if (!name || !message) return false;
+
+    if (containsBlockedContent(name) || containsBlockedContent(message)) {
+        alert(t('guestbook_blocked'));
+        return false;
+    }
 
     if (form.elements.website && form.elements.website.value) {
         form.style.display = 'none';

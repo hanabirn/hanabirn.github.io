@@ -73,7 +73,7 @@ I18N.en = {
         ach_streak_7: '7-Day Streak', ach_streak_7_desc: 'Practice 7 days in a row',
         ach_perfect: 'Flawless', ach_perfect_desc: 'Score 100% on a quiz',
         ach_mastered_50: 'Vocabulary Master', ach_mastered_50_desc: 'Master 50 words',
-        guestbook_load_more: 'Load more messages',
+        guestbook_load_more: 'Load more messages', guestbook_blocked: 'Your message contains inappropriate content, please edit and try again', weather_enable: '🌤️ Show weather',
         pwa_install_text: 'Install for quick access anytime!', pwa_install_btn: 'Install', update_banner_text: 'A new version is available — refresh to get the latest content!', update_banner_btn: 'Refresh',
         nav_notes: 'Notepad', notes_title: '✦ Notepad ✦', notes_hint: 'These notes are stored only in this browser — they disappear if you switch devices or clear browser data.',
         notes_placeholder: 'Write something...', notes_add: 'Add Note', notes_empty: 'No notes yet — write your first one!',
