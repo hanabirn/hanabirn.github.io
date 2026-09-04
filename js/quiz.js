@@ -158,6 +158,14 @@ const TOPIK_SHEETS = {
     topik_4: 'https://docs.google.com/spreadsheets/d/1UZJ29Jxl8pjM4eZREWKed8YRkPpjRIKkSfzfYFaAlig/export?format=csv&gid=0'
 };
 
+/* HSK sheets use the same wide, multi-block column layout as the general
+   Chinese SHEETS.zh sheet (trad/simp/bopomofo/roman/meaning columns repeated
+   every 7 columns) — see parseChinese()/addZhWord() — not the simple
+   one-word-per-row layout JLPT_SHEETS/TOPIK_SHEETS use. */
+const HSK_SHEETS = {
+    hsk_1: 'https://docs.google.com/spreadsheets/d/1yGET_yX2M98C5mKyqkje9Jm-NXwUhhMMRrhiIOaL3XA/export?format=csv&gid=1793944762'
+};
+
 let currentLang = '';
 let vocabularyList = [];
 let readingList = [];
@@ -311,15 +319,22 @@ function isKoreanQuizLang(lang) {
     return lang === 'kr' || lang.startsWith('topik_');
 }
 
+/* HSK levels (hsk_1, ...) are all Chinese vocab, so treat them
+   the same as 'zh' anywhere quiz.js branches on currentLang for language
+   (not sheet-loading) purposes — see isChineseQuizLang() call sites. */
+function isChineseQuizLang(lang) {
+    return lang === 'zh' || lang.startsWith('hsk_');
+}
+
 function speakWord() {
     if (!currentWord || !currentWord.word) return;
     window.speechSynthesis.cancel();
     const speakText = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const utter = new SpeechSynthesisUtterance(speakText);
-    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : currentLang === 'zh' ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
     utter.rate = 0.8;
     const voices = window.speechSynthesis.getVoices();
-    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : currentLang === 'zh' ? 'zh' : 'ko';
+    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : isChineseQuizLang(currentLang) ? 'zh' : 'ko';
     const match = voices.find(v => v.lang.startsWith(langPrefix));
     if (match) utter.voice = match;
     window.speechSynthesis.speak(utter);
@@ -384,6 +399,16 @@ function hideTopikLevels() {
     document.getElementById('examquiz-card').style.display = 'block';
 }
 
+function showHskLevels() {
+    document.getElementById('examquiz-card').style.display = 'none';
+    document.getElementById('examquiz-hsk-level-card').style.display = 'block';
+}
+
+function hideHskLevels() {
+    document.getElementById('examquiz-hsk-level-card').style.display = 'none';
+    document.getElementById('examquiz-card').style.display = 'block';
+}
+
 function parseExamVocab(rows) {
     rows.forEach((row, idx) => {
         if (idx === 0) return; // header row: word,kana,meaning,english
@@ -419,19 +444,21 @@ function selectExamSet(examId) {
     statusMsg.style.color = '#c8a2e0';
 
     const isTopik = examId.startsWith('topik_');
-    const sheetUrl = isTopik ? TOPIK_SHEETS[examId] : JLPT_SHEETS[examId];
+    const isHsk = examId.startsWith('hsk_');
+    const sheetUrl = isTopik ? TOPIK_SHEETS[examId] : isHsk ? HSK_SHEETS[examId] : JLPT_SHEETS[examId];
 
     Papa.parse(sheetUrl, {
         download: true,
         header: false,
         complete: function(results) {
             if (isTopik) parseTopikVocab(results.data);
+            else if (isHsk) parseChinese(results.data);
             else parseExamVocab(results.data);
             if (vocabularyList.length >= 4) {
                 saveVocabCache(currentLang);
                 statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
                 statusMsg.style.color = '#f472b6';
-                showModeSelection();
+                if (isHsk) showChineseSelection(); else showModeSelection();
             } else {
                 statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
                 statusMsg.style.color = '#ff5252';
@@ -444,7 +471,7 @@ function selectExamSet(examId) {
                 readingList = cached.readingList || [];
                 statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
                 statusMsg.style.color = '#fbbf24';
-                showModeSelection();
+                if (isHsk) showChineseSelection(); else showModeSelection();
             } else {
                 statusMsg.innerText = t('load_fail_no_cache');
                 statusMsg.style.color = '#ff5252';
@@ -656,7 +683,7 @@ function refreshDynamicContent() {
         return el && el.style.display !== 'none';
     };
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
-        if (currentLang === 'zh' && selectedQuizMode === 'zh') {
+        if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();
         } else if (currentLang) {
             showModeSelection();
@@ -991,7 +1018,7 @@ function nextQuestion() {
     if (reviewMode) {
         currentReviewEntry = reviewList[reviewIdx++];
         currentWord = { word: currentReviewEntry.word, kana: '', meaning: currentReviewEntry.answer, english: '' };
-        if (currentReviewEntry.lang === 'zh' && currentReviewEntry.zct) zhCharType = currentReviewEntry.zct;
+        if (isChineseQuizLang(currentReviewEntry.lang) && currentReviewEntry.zct) zhCharType = currentReviewEntry.zct;
 
         document.getElementById('word-question').innerText = currentReviewEntry.word;
         document.getElementById('word-hint').innerText = currentReviewEntry.hint || '';
@@ -1011,7 +1038,7 @@ function nextQuestion() {
         return;
     }
 
-    if (currentLang === 'zh') {
+    if (isChineseQuizLang(currentLang)) {
         if (vocabIdx >= shuffledVocab.length) { shuffledVocab = shuffleArray(vocabularyList); vocabIdx = 0; }
         currentWord = shuffledVocab[vocabIdx++];
         const display = zhCharType === 'simp' ? currentWord.simp : currentWord.trad;
@@ -1251,6 +1278,7 @@ function showResults() {
 function backToLanguage() {
     const wasJlptQuiz = currentLang.startsWith('jlpt_');
     const wasTopikQuiz = currentLang.startsWith('topik_');
+    const wasHskQuiz = currentLang.startsWith('hsk_');
     currentLang = '';
     vocabularyList = [];
     readingList = [];
@@ -1274,11 +1302,12 @@ function backToLanguage() {
 
     /* exam-quiz quizzes borrow #page-quiz's engine, so its "返回" should
        land back on the JLPT/TOPIK level picker, not #page-quiz's own language card */
-    if (wasJlptQuiz || wasTopikQuiz) {
+    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz) {
         document.getElementById('lang-card').style.display = 'none';
         switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
         if (wasJlptQuiz) showJlptLevels();
-        else showTopikLevels();
+        else if (wasTopikQuiz) showTopikLevels();
+        else showHskLevels();
     }
 }
 
@@ -1291,8 +1320,8 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'topik_1', 'topik_2', 'topik_3', 'topik_4'];
+const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖', hsk_1: '📖' };
+const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'topik_1', 'topik_2', 'topik_3', 'topik_4', 'hsk_1'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1333,7 +1362,7 @@ function recordMistake(type, correctAnswer) {
             answer: correctAnswer,
             hint: hint,
             group: group,
-            zct: currentLang === 'zh' ? zhCharType : undefined,
+            zct: isChineseQuizLang(currentLang) ? zhCharType : undefined,
             count: 1,
             last: Date.now()
         });
@@ -1911,7 +1940,7 @@ function onTimerExpired() {
         correctAnswer = getListeningCorrectAnswer();
     } else {
         const useEn = quizAnswerLang === 'en';
-        const type = currentMode === 'reading' ? 'reading' : currentLang === 'zh' ? 'zh' : 'meaning';
+        const type = currentMode === 'reading' ? 'reading' : isChineseQuizLang(currentLang) ? 'zh' : 'meaning';
         correctAnswer = type === 'reading' ? currentWord.kana
             : type === 'zh' ? currentWord[zhTestType]
             : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
