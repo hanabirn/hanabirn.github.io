@@ -36,3 +36,12 @@ There is no build or test command — this is deployed as-is to Netlify.
 - No JS framework/module system — everything is global functions/variables attached via plain `<script>` tags, and `onclick="..."` attributes in HTML call these global functions directly.
 - Chinese (Traditional) is the default/fallback language throughout (`I18N.zh` is the fallback in `t()`).
 - HTML entities (`&#x...;`) are used for CJK/emoji text directly in `index.html` markup instead of raw UTF-8 characters in many places (legacy from earlier edits) — matching surrounding style when editing those sections is fine, but new text can be written as plain UTF-8.
+
+## Workflow for feature/dev requests
+
+For any non-trivial dev request, work through these stages in order:
+
+1. **UI/design pass** (only if the request touches the front end): match the existing "Dark Neon Cherry Blossom" theme — glassmorphism cards, the CSS custom properties in `css/theme.css` (don't hardcode colors), and the existing per-feature `css/*.css` split. There's no React/Tailwind/v0 in this project — new UI is plain HTML + CSS, written by hand.
+2. **Implementation**: wire up the HTML/CSS/JS following the conventions above (global functions, `onclick=` handlers, i18n keys added to all 8 `i18n/<lang>.js` files, new files registered in `index.html`'s script/link tags and `service-worker.js`'s `ASSETS`).
+3. **Verification** (this project has no test suite or build step, so "testing" means): check the changed files for obvious syntax errors, then actually load the change in a browser (e.g. `python -m http.server` from the repo root) and click through the affected feature before calling it done — per the top-level guidance to verify UI changes in a real browser rather than assuming they work.
+4. **Final report**: once verified, and after committing/pushing per the user's request, give a short summary of what changed — don't pad it with restated context.
