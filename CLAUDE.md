@@ -8,9 +8,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Running / deploying
 
-There is no build or test command — this is deployed as-is to Netlify.
+There is no build or test command — the repo root is served as-is by **GitHub Pages**.
 
-- `netlify.toml` publishes the repo root (`.`) and functions from `netlify/functions`, but the site is actually deployed via GitHub Pages, not Netlify — the `netlify/functions` directory is currently empty (the osu! beatmap collection feature that used to live here was split out into its own site, `osu-花火網頁`).
+- The remote is `github.com/hanabirn/hanabirn.github.io` (a GitHub Pages *user site*), served at `https://hanabirn.github.io/` straight from the `main` branch root. Pushing to `main` is the deploy — there is no CI workflow, no build step, and no `.github/` directory.
+- Because it is a user site served from the domain root, absolute paths (`/icons/...`, `manifest.json`'s `start_url: "/"`) work as-is; no base-path rewriting is needed.
+- The site used to be on Netlify (`hanabirn.netlify.app`), which is now paused for exceeding its free usage limits. All Netlify config (`netlify.toml`, the empty `netlify/functions` dir, the local `.netlify` CLI cache) was removed in the 2026-09-24 cleanup, along with the stale `hanabirn.netlify.app` URLs in `index.html`'s OG/Twitter meta tags. Don't reintroduce Netlify-specific files or URLs.
 - There is no linter or test suite configured.
 
 ## Architecture
