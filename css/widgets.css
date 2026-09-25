@@ -262,12 +262,14 @@
     }
 }
 
-/* ===================== 🔄 Update Available Banner ===================== */
+/* ===================== 🔄 Update Available Banner =====================
+   Bottom-centre like the install banner — pinned to the top it sat right
+   over the header title. */
 .update-banner {
     position: fixed;
     left: 50%;
-    top: 16px;
-    transform: translateX(-50%) translateY(-16px);
+    bottom: 16px;
+    transform: translateX(-50%) translateY(16px);
     z-index: 500;
     display: flex;
     opacity: 0;
@@ -289,6 +291,10 @@
     visibility: visible;
     pointer-events: auto;
     transform: translateX(-50%) translateY(0);
+}
+/* Both banners showing at once: stack the update banner above the install one. */
+.pwa-install-banner.show ~ .update-banner {
+    bottom: 76px;
 }
 @media (max-width: 480px) {
     .update-banner .pwa-install-text {
@@ -436,4 +442,9 @@
         padding: 7px 12px;
     }
     .clock-time { font-size: 0.95rem; }
+    /* The clock sits bottom-centre-right here (~82px tall), so lift both
+       bottom banners clear of it instead of covering it. */
+    .pwa-install-banner,
+    .update-banner { bottom: 108px; }
+    .pwa-install-banner.show ~ .update-banner { bottom: 168px; }
 }

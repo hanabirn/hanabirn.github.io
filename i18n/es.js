@@ -88,5 +88,5 @@ I18N.es = {
         notes_view_list: 'Notas', notes_view_gallery: 'Galería', notes_gallery_empty: '¡Todavía no hay fotos aquí — adjunta una a una nota!', notes_folder_note_count: '{n} notas',
         notes_export: 'Exportar copia de seguridad', notes_import: 'Importar copia de seguridad', notes_import_invalid: 'Este archivo no parece correcto — elige un archivo de copia de seguridad exportado desde aquí.', notes_import_confirm: 'Se importarán {notes} notas y {folders} carpetas (se añadirán a tus notas actuales, no se sobrescribirá nada). ¿Continuar?', notes_import_success: '¡Importación completa — se añadieron {n} notas!',
         match3_level_n: 'Nivel {n}', match3_win_title: '🎉 ¡Nivel superado!', match3_next_level: 'Siguiente nivel ▶', match3_back_to_levels: '↩ Volver a niveles', match3_retry: '🔄 Reintentar',
-        footer_support: '☕ Invítame un café',
+        footer_support: '☕ Invítame un café', footer_visits: '{n} visitas', footer_privacy: 'Política de privacidad',
 };

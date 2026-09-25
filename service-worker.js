@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v24';
+const CACHE_NAME = 'hanabi-v25';
 const ASSETS = [
   '/',
   '/index.html',
@@ -44,7 +44,7 @@ const ASSETS = [
 
 self.addEventListener('install', e => {
   e.waitUntil(
-    caches.open(CACHE_NAME).then(c => c.addAll(ASSETS)).then(() => self.skipWaiting())
+    caches.open(CACHE_NAME).then(c => c.addAll(ASSETS.map(u => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting())
   );
 });
 
@@ -59,8 +59,17 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   if (!e.request.url.startsWith('http')) return; // skip chrome-extension:// etc. — Cache API only supports http(s)
+  // Same-origin files are revalidated with the server (a cheap 304 when
+  // unchanged) instead of taken from the browser's HTTP cache, which GitHub
+  // Pages lets hold a file for 10 minutes — otherwise "reload for the new
+  // version" could still serve the old CSS/JS. Navigations keep their own
+  // request, and cross-origin requests (CDN, fonts, Sheets) are untouched.
+  const sameOrigin = new URL(e.request.url).origin === self.location.origin;
+  const req = sameOrigin && e.request.mode !== 'navigate'
+    ? new Request(e.request, { cache: 'no-cache' })
+    : e.request;
   e.respondWith(
-    fetch(e.request).then(r => {
+    fetch(req).then(r => {
       const clone = r.clone();
       caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
       return r;

@@ -212,6 +212,8 @@ function initWeatherOptin() {
     }
     const btn = document.createElement('button');
     btn.className = 'weather-optin-btn';
+    // data-i18n so applyLang() re-translates it on a language switch.
+    btn.setAttribute('data-i18n', 'weather_enable');
     btn.textContent = t('weather_enable');
     btn.onclick = () => {
         localStorage.setItem('weather_consent', 'granted');

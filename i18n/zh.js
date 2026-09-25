@@ -89,5 +89,5 @@ I18N.zh = {
         notes_view_list: '筆記', notes_view_gallery: '圖庫', notes_gallery_empty: '這裡還沒有照片，去筆記裡新增附件吧！', notes_folder_note_count: '{n} 則筆記',
         notes_export: '匯出備份', notes_import: '匯入備份', notes_import_invalid: '這個檔案格式不正確，請選擇之前匯出的備份檔。', notes_import_confirm: '即將匯入 {notes} 則筆記、{folders} 個資料夾（會加進現有的筆記裡，不會覆蓋），確定嗎？', notes_import_success: '匯入完成，新增了 {n} 則筆記！',
         match3_level_n: '第 {n} 關', match3_win_title: '🎉 過關！', match3_next_level: '下一關 ▶', match3_back_to_levels: '↩ 返回關卡選單', match3_retry: '🔄 重玩',
-        footer_support: '☕ 請我喝杯咖啡',
+        footer_support: '☕ 請我喝杯咖啡', footer_visits: '{n} 次訪問', footer_privacy: '隱私權政策',
 };

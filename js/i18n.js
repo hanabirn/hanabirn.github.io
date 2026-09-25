@@ -35,6 +35,7 @@ function applyLang(lang) {
         const code = currentPill.dataset.flag;
         if (/^[a-z]{2}$/.test(code || '')) currentLabel.innerHTML = `<span class="flag flag--${code}"></span>`;
     }
+    if (typeof renderVisitorCount === 'function') renderVisitorCount();
     if (t.title) document.title = t.title;
     if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
 }

@@ -88,5 +88,5 @@ I18N.de = {
         notes_view_list: 'Notizen', notes_view_gallery: 'Galerie', notes_gallery_empty: 'Hier gibt es noch keine Fotos — füge eins zu einer Notiz hinzu!', notes_folder_note_count: '{n} Notizen',
         notes_export: 'Backup exportieren', notes_import: 'Backup importieren', notes_import_invalid: 'Diese Datei sieht nicht richtig aus — bitte eine Backup-Datei wählen, die von hier exportiert wurde.', notes_import_confirm: '{notes} Notizen und {folders} Ordner werden importiert (zu deinen bestehenden Notizen hinzugefügt, nichts wird überschrieben). Fortfahren?', notes_import_success: 'Import abgeschlossen — {n} Notizen hinzugefügt!',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level geschafft!', match3_next_level: 'Nächstes Level ▶', match3_back_to_levels: '↩ Zurück zur Levelauswahl', match3_retry: '🔄 Erneut versuchen',
-        footer_support: '☕ Spendier mir einen Kaffee',
+        footer_support: '☕ Spendier mir einen Kaffee', footer_visits: '{n} Besuche', footer_privacy: 'Datenschutzerklärung',
 };
