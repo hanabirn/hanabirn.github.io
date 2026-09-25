@@ -27,6 +27,14 @@ function applyLang(lang) {
     document.querySelectorAll('.lang-pill').forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
     });
+    // Header button shows the active language's flag chip — mirror the
+    // matching pill's data-flag code (same as the osu! site).
+    const currentPill = document.querySelector(`.lang-pill[data-lang="${lang}"]`);
+    const currentLabel = document.getElementById('lang-globe-current');
+    if (currentPill && currentLabel) {
+        const code = currentPill.dataset.flag;
+        if (/^[a-z]{2}$/.test(code || '')) currentLabel.innerHTML = `<span class="flag flag--${code}"></span>`;
+    }
     if (t.title) document.title = t.title;
     if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
 }
