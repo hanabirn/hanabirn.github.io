@@ -164,9 +164,24 @@ function updateClock() {
         const s = String(now.getSeconds()).padStart(2, '0');
         timeEl.textContent = `${h}:${m}:${s}`;
     }
-    if (dateEl) {
-        const weekdays = ['日', '一', '二', '三', '四', '五', '六'];
-        dateEl.textContent = `${now.getMonth() + 1}/${now.getDate()}（${weekdays[now.getDay()]}）`;
+    if (dateEl) dateEl.textContent = formatClockDate(now);
+}
+
+/* Date + weekday in the site language: "9/25（五）", "9/25（金）",
+   "9/25 (Fri)", "25/09 (ven.)", "25.9. (Fr.)"… CJK keeps the one-character
+   weekday in full-width brackets; the rest use Intl's short weekday. */
+const CLOCK_LOCALES = { zh: 'zh-TW', 'zh-Hans': 'zh-CN' };
+function formatClockDate(d) {
+    const lang = typeof siteLang === 'string' ? siteLang : 'zh';
+    const locale = CLOCK_LOCALES[lang] || lang;
+    try {
+        const date = d.toLocaleDateString(locale, { month: 'numeric', day: 'numeric' });
+        if (/^(zh|ja|ko)/.test(lang)) {
+            return `${date}（${d.toLocaleDateString(locale, { weekday: 'narrow' })}）`;
+        }
+        return `${date} (${d.toLocaleDateString(locale, { weekday: 'short' })})`;
+    } catch (e) {
+        return `${d.getMonth() + 1}/${d.getDate()}`;
     }
 }
 

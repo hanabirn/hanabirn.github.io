@@ -36,6 +36,7 @@ function applyLang(lang) {
         if (/^[a-z]{2}$/.test(code || '')) currentLabel.innerHTML = `<span class="flag flag--${code}"></span>`;
     }
     if (typeof renderVisitorCount === 'function') renderVisitorCount();
+    if (typeof updateClock === 'function') updateClock();
     if (t.title) document.title = t.title;
     if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
 }
