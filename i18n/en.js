@@ -51,7 +51,7 @@ I18N.en = {
         guide_guestbook_title: 'Guestbook', guide_guestbook_desc: 'Messages are public — visible to every visitor.',
         guide_bgm_title: 'BGM Vinyl Player', guide_bgm_desc: 'Hover over the record to switch tracks or adjust volume.',
         bgm_hint: 'Click to play background music',
-        guide_settings_title: 'Display Settings', guide_settings_desc: 'The ⚙️ button lets you customize which pages show in the nav bar (the Guide always stays visible), saved in your browser — you can also copy a shareable customized link.',        guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!',
+        guide_settings_title: 'Display Settings', guide_settings_desc: 'The ⚙️ button (under "More" on phones) lets you customize which pages show in the nav bar (Home and the Guide always stay visible), saved in your browser — you can also copy a shareable customized link.',        guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!',
         fc_view_mastered: '📋 View Mastered Words', fc_mastered_title: '📋 Mastered Words', fc_start_flashcard: '📖 Start Flashcards',
         fc_mastered_count: '✅ {n} / {m} Mastered', fc_mastered_empty: 'No mastered words yet',
         fc_view_unknown: '📋 View Unknown Words', fc_unknown_title: '📋 Unknown Words',
@@ -91,4 +91,6 @@ I18N.en = {
         footer_support: '☕ Buy me a coffee', footer_visits: '{n} visits', footer_privacy: 'Privacy Policy',
         // phone tab bar + More sheet
         tab_quiz: 'Words', tab_exam: 'Exams', tab_notes: 'Notes', tab_more: 'More', more_settings: 'Display settings',
+        // home dashboard
+        nav_home: 'Home', home_greet_morning: 'Good morning!', home_greet_afternoon: 'Good afternoon!', home_greet_evening: 'Good evening!', home_msg_first: 'Let\'s learn your first word!', home_msg_left: 'Just {n} more to hit today\'s goal!', home_msg_keep: '{n}-day streak — keep it going today!', home_msg_done: 'Today\'s goal is done — great job!', home_goal_label: 'Today\'s goal', home_goal_left: '{n} to go', home_goal_done: 'Goal reached!', home_goal_change: 'Tap to change your daily goal', home_streak_title: 'Day streak', home_continue: 'Continue: {name}', home_start: 'Take your first quiz', home_srs_title: 'Spaced review', home_srs_count: 'Due for review: {n}', home_srs_hint: 'Review now, before they fade', home_srs_none: 'Nothing due right now', home_review_btn: 'Review', home_mistakes_title: 'Mistake notebook', home_mistakes_count: 'Missed words: {n}', home_mistakes_none: 'No mistakes yet — keep it up!', home_mistakes_btn: 'Open', home_recent: 'Recent practice', home_recent_empty: 'No practice yet — pick one below to start', home_exams: 'Exam prep',
 };

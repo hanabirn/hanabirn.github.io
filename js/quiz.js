@@ -16,7 +16,7 @@ function switchPage(page, el) {
     if (more) more.classList.toggle('active', MORE_TABS.includes(page));
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
-    const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
+    const pages = ['home', 'guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -28,6 +28,7 @@ function switchPage(page, el) {
         });
         main.style.opacity = '1';
         window.scrollTo(0, 0);
+        if (page === 'home' && typeof renderHome === 'function') renderHome();
         if (page === 'guestbook') loadGuestbookMessages();
         if (page === 'notes') renderNotes();
     }, 120);
@@ -35,8 +36,8 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['quiz', 'examquiz', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
-const LOCKED_TABS = ['guide'];
+const ALL_TABS = ['home', 'quiz', 'examquiz', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
+const LOCKED_TABS = ['home', 'guide'];
 
 function getTabVisibility() {
     const v = {};
@@ -692,6 +693,7 @@ function addWord(word, kana, meaning, englishMeaning) {
 }
 
 function refreshDynamicContent() {
+    if (typeof renderHome === 'function') renderHome();
     const isVisible = (id) => {
         const el = document.getElementById(id);
         return el && el.style.display !== 'none';
@@ -985,6 +987,9 @@ function checkStartQuiz() {
 }
 
 function startQuiz(mode) {
+    if (QUIZ_LANG_ORDER.includes(currentLang)) {
+        try { localStorage.setItem('last_quiz_set', currentLang); } catch {}
+    }
     currentMode = mode;
     score = 0;
     questionNum = 0;
@@ -1164,6 +1169,7 @@ function renderOptions(options, type) {
 function selectOption(selectedBtn, selectedText, type) {
     if (answered) return;
     answered = true;
+    logDailyActivity();
     stopTimer();
 
     const allBtns = document.querySelectorAll('.option-btn');
@@ -1526,13 +1532,42 @@ function saveQuizRecord(rec) {
     localStorage.setItem('quiz_records', JSON.stringify(list));
 }
 
+/* ===== Daily activity (home dashboard: daily goal + streak) =====
+   localStorage.daily_activity = { 'Y-M-D': words practised that day }, bumped
+   once per answered quiz / listening question and per rated flashcard. */
+function activityDayKey(ts) {
+    const d = new Date(ts);
+    return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
+}
+
+function getDailyActivity() {
+    try { return JSON.parse(localStorage.getItem('daily_activity')) || {}; }
+    catch { return {}; }
+}
+
+const DAILY_ACTIVITY_KEEP_DAYS = 120;
+
+function logDailyActivity() {
+    const act = getDailyActivity();
+    const today = activityDayKey(Date.now());
+    act[today] = (act[today] || 0) + 1;
+    const keys = Object.keys(act);
+    if (keys.length > DAILY_ACTIVITY_KEEP_DAYS) {
+        const toTime = k => new Date(k.replace(/-/g, '/')).getTime();
+        keys.sort((a, b) => toTime(a) - toTime(b))
+            .slice(0, keys.length - DAILY_ACTIVITY_KEEP_DAYS)
+            .forEach(k => delete act[k]);
+    }
+    try { localStorage.setItem('daily_activity', JSON.stringify(act)); } catch {}
+}
+
+/* A day counts toward the streak if a quiz was finished OR any word was
+   practised (daily_activity), so answering a few questions keeps it alive. */
 function calcStreak(recs) {
-    if (!recs || recs.length === 0) return 0;
-    const dayKey = ts => {
-        const d = new Date(ts);
-        return d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
-    };
-    const days = new Set(recs.map(r => dayKey(r.date)));
+    const dayKey = activityDayKey;
+    const days = new Set((recs || []).map(r => dayKey(r.date)));
+    Object.entries(getDailyActivity()).forEach(([k, n]) => { if (n > 0) days.add(k); });
+    if (days.size === 0) return 0;
     const cursor = new Date();
     cursor.setHours(0, 0, 0, 0);
     if (!days.has(dayKey(cursor.getTime()))) {
@@ -2343,6 +2378,7 @@ function flashcardPrev() {
 function flashcardRate(known) {
     const word = flashcardList[flashcardIdx];
     if (!word) return;
+    logDailyActivity();
     const key = flashcardLang + '|' + flashcardMode + '|' + word.word;
 
     if (srsActive) {
@@ -2933,6 +2969,7 @@ function submitListeningAnswer() {
     if (!userAnswer) return;
 
     answered = true;
+    logDailyActivity();
     input.disabled = true;
     document.getElementById('listening-submit').style.display = 'none';
 

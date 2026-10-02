@@ -51,7 +51,7 @@ I18N.de = {
         guide_guestbook_title: 'Gästebuch', guide_guestbook_desc: 'Nachrichten sind für alle Besucher sichtbar.',
         guide_bgm_title: 'BGM-Plattenspieler', guide_bgm_desc: 'Mit der Maus über die Schallplatte für Songwechsel oder Lautstärke.',
         bgm_hint: 'Klicken, um Hintergrundmusik abzuspielen',
-        guide_settings_title: 'Anzeigeeinstellungen', guide_settings_desc: 'Der ⚙️ Button lässt dich anpassen, welche Seiten in der Navigation erscheinen (die Anleitung bleibt immer sichtbar), gespeichert im Browser — du kannst auch einen individuellen Link teilen.',        guestbook_loading: 'Laden...', guestbook_empty: 'Noch keine Nachrichten. Sei der Erste!',
+        guide_settings_title: 'Anzeigeeinstellungen', guide_settings_desc: 'Der ⚙️ Button (am Handy unter „Mehr“) lässt dich anpassen, welche Seiten in der Navigation erscheinen (Start und die Anleitung bleiben immer sichtbar), gespeichert im Browser — du kannst auch einen individuellen Link teilen.',        guestbook_loading: 'Laden...', guestbook_empty: 'Noch keine Nachrichten. Sei der Erste!',
         fc_view_mastered: '📋 Erlernte Wörter anzeigen', fc_mastered_title: '📋 Erlernte Wörter', fc_start_flashcard: '📖 Flashcards starten',
         fc_mastered_count: '✅ {n} / {m} erlernt', fc_mastered_empty: 'Noch keine erlernten Wörter',
         fc_view_unknown: '📋 Unbekannte Wörter ansehen', fc_unknown_title: '📋 Unbekannte Wörter',
@@ -91,4 +91,6 @@ I18N.de = {
         footer_support: '☕ Spendier mir einen Kaffee', footer_visits: '{n} Besuche', footer_privacy: 'Datenschutzerklärung',
         // phone tab bar + More sheet
         tab_quiz: 'Vokabeln', tab_exam: 'Prüfungen', tab_notes: 'Notizen', tab_more: 'Mehr', more_settings: 'Anzeigeeinstellungen',
+        // home dashboard
+        nav_home: 'Start', home_greet_morning: 'Guten Morgen!', home_greet_afternoon: 'Guten Tag!', home_greet_evening: 'Guten Abend!', home_msg_first: 'Lass uns dein erstes Wort lernen!', home_msg_left: 'Nur noch {n} bis zum Tagesziel!', home_msg_keep: 'Serie: {n} – mach heute weiter!', home_msg_done: 'Tagesziel erreicht – super!', home_goal_label: 'Tagesziel', home_goal_left: 'Noch {n}', home_goal_done: 'Ziel erreicht!', home_goal_change: 'Tippen, um das Tagesziel zu ändern', home_streak_title: 'Tage in Folge', home_continue: 'Weiter: {name}', home_start: 'Mach dein erstes Quiz', home_srs_title: 'Wiederholung', home_srs_count: 'Fällig: {n}', home_srs_hint: 'Jetzt wiederholen, bevor sie verblassen', home_srs_none: 'Gerade ist nichts fällig', home_review_btn: 'Wiederholen', home_mistakes_title: 'Fehlerheft', home_mistakes_count: 'Falsche Wörter: {n}', home_mistakes_none: 'Noch keine Fehler – weiter so!', home_mistakes_btn: 'Öffnen', home_recent: 'Zuletzt geübt', home_recent_empty: 'Noch nichts geübt – wähle unten etwas aus', home_exams: 'Prüfungsvorbereitung',
 };

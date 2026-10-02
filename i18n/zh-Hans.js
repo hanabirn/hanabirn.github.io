@@ -52,7 +52,7 @@ I18N['zh-Hans'] = {
         guide_guestbook_title: '留言板', guide_guestbook_desc: '留言会公开显示，所有访客都能看到。',
         guide_bgm_title: 'BGM 唱片机', guide_bgm_desc: '鼠标移到唱片上可切换曲目、调整音量。',
         bgm_hint: '点击播放背景音乐',
-        guide_settings_title: '显示设置', guide_settings_desc: '右下角 ⚙️ 按钮可自定义导航栏显示哪些页面（教学手册固定显示），设置会存在浏览器，也能复制自定义链接分享。',        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！',
+        guide_settings_title: '显示设置', guide_settings_desc: '右下角 ⚙️ 按钮（手机版在“更多”里）可自定义导航栏显示哪些页面（首页和教学手册固定显示），设置会存在浏览器，也能复制自定义链接分享。',        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！',
         fc_view_mastered: '📋 查看已掌握单词', fc_mastered_title: '📋 已掌握单词', fc_start_flashcard: '📖 开始闪卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '目前没有已掌握的单词',
         fc_view_unknown: '📋 查看不认识单词', fc_unknown_title: '📋 不认识单词',
@@ -92,4 +92,6 @@ I18N['zh-Hans'] = {
         footer_support: '☕ 请我喝杯咖啡', footer_visits: '{n} 次访问', footer_privacy: '隐私政策',
         // phone tab bar + More sheet
         tab_quiz: '单词', tab_exam: '检定', tab_notes: '记事本', tab_more: '更多', more_settings: '显示设置',
+        // home dashboard
+        nav_home: '首页', home_greet_morning: '早上好！', home_greet_afternoon: '下午好！', home_greet_evening: '晚上好！', home_msg_first: '一起来背第一个单词吧！', home_msg_left: '今天再背 {n} 个单词就完成目标啦～', home_msg_keep: '已经连续 {n} 天了，今天也别中断哦！', home_msg_done: '今天的目标完成了，真厉害！', home_goal_label: '今日目标', home_goal_left: '还差 {n} 个单词', home_goal_done: '目标完成！', home_goal_change: '点一下更改每日目标', home_streak_title: '连续学习天数', home_continue: '继续学习：{name}', home_start: '开始第一次测验', home_srs_title: '间隔复习', home_srs_count: '{n} 个单词到期', home_srs_hint: '记忆快淡了，现在复习最划算', home_srs_none: '目前没有到期的单词', home_review_btn: '复习', home_mistakes_title: '错题本', home_mistakes_count: '{n} 个答错的单词', home_mistakes_none: '还没有错题，继续保持！', home_mistakes_btn: '查看', home_recent: '最近练习', home_recent_empty: '还没有练习记录，从下面选一个开始吧', home_exams: '检定考试',
 };

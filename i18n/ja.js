@@ -51,7 +51,7 @@ I18N.ja = {
         guide_guestbook_title: '掲示板', guide_guestbook_desc: '投稿はすべての訪問者に公開されます。',
         guide_bgm_title: 'BGMレコードプレーヤー', guide_bgm_desc: 'レコードにホバーすると曲切替や音量調整ができます。',
         bgm_hint: 'クリックしてBGMを再生',
-        guide_settings_title: '表示設定', guide_settings_desc: '右下の⚙️ボタンでナビゲーションバーに表示するページを選べます（ガイドは常に表示）。設定はブラウザに保存され、カスタムリンクの共有も可能です。',        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
+        guide_settings_title: '表示設定', guide_settings_desc: '右下の⚙️ボタン（スマホでは「その他」の中）でナビゲーションバーに表示するページを選べます（ホームとガイドは常に表示）。設定はブラウザに保存され、カスタムリンクの共有も可能です。',        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
         fc_view_mastered: '📋 習得済み単語を見る', fc_mastered_title: '📋 習得済み単語', fc_start_flashcard: '📖 フラッシュカード開始',
         fc_mastered_count: '✅ {n} / {m} 習得済み', fc_mastered_empty: '習得済みの単語はまだありません',
         fc_view_unknown: '📋 わからない単語を見る', fc_unknown_title: '📋 わからない単語',
@@ -91,4 +91,6 @@ I18N.ja = {
         footer_support: '☕ コーヒーをおごる', footer_visits: '訪問数 {n}', footer_privacy: 'プライバシーポリシー',
         // phone tab bar + More sheet
         tab_quiz: '単語', tab_exam: '検定', tab_notes: 'メモ', tab_more: 'その他', more_settings: '表示設定',
+        // home dashboard
+        nav_home: 'ホーム', home_greet_morning: 'おはよう！', home_greet_afternoon: 'こんにちは！', home_greet_evening: 'こんばんは！', home_msg_first: '最初の単語を覚えよう！', home_msg_left: 'あと {n} 語で今日の目標達成！', home_msg_keep: '{n} 日連続！今日も続けよう！', home_msg_done: '今日の目標達成！すごい！', home_goal_label: '今日の目標', home_goal_left: 'あと {n} 語', home_goal_done: '目標達成！', home_goal_change: 'タップで1日の目標を変更', home_streak_title: '連続学習日数', home_continue: '続きから：{name}', home_start: '最初のテストを始めよう', home_srs_title: '間隔復習', home_srs_count: '復習する単語 {n} 語', home_srs_hint: '忘れる前に、今が復習のチャンス', home_srs_none: '今は復習する単語がありません', home_review_btn: '復習', home_mistakes_title: '間違いノート', home_mistakes_count: '間違えた単語 {n} 語', home_mistakes_none: 'まだ間違いはありません。その調子！', home_mistakes_btn: '見る', home_recent: '最近の練習', home_recent_empty: 'まだ練習記録がありません。下から選んで始めよう', home_exams: '検定試験',
 };

@@ -51,7 +51,7 @@ I18N.fr = {
         guide_guestbook_title: "Livre d'or", guide_guestbook_desc: "Les messages sont visibles par tous les visiteurs.",
         guide_bgm_title: 'Lecteur BGM', guide_bgm_desc: "Survolez le vinyle pour changer de morceau ou régler le volume.",
         bgm_hint: 'Cliquez pour jouer la musique de fond',
-        guide_settings_title: "Paramètres d'affichage", guide_settings_desc: "Le bouton ⚙️ permet de personnaliser les pages affichées dans la barre de navigation (le Guide reste toujours visible), sauvegardé dans le navigateur — vous pouvez aussi copier un lien personnalisé.",        guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !',
+        guide_settings_title: "Paramètres d'affichage", guide_settings_desc: 'Le bouton ⚙️ (dans « Plus » sur mobile) permet de personnaliser les pages affichées dans la barre de navigation (l\'Accueil et le Guide restent toujours visibles), sauvegardé dans le navigateur — vous pouvez aussi copier un lien personnalisé.',        guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !',
         fc_view_mastered: '📋 Voir les mots maîtrisés', fc_mastered_title: '📋 Mots maîtrisés', fc_start_flashcard: '📖 Commencer les flashcards',
         fc_mastered_count: '✅ {n} / {m} maîtrisés', fc_mastered_empty: 'Aucun mot maîtrisé pour le moment',
         fc_view_unknown: '📋 Voir les mots inconnus', fc_unknown_title: '📋 Mots inconnus',
@@ -91,4 +91,6 @@ I18N.fr = {
         footer_support: '☕ Offrez-moi un café', footer_visits: '{n} visites', footer_privacy: 'Politique de confidentialité',
         // phone tab bar + More sheet
         tab_quiz: 'Mots', tab_exam: 'Examens', tab_notes: 'Notes', tab_more: 'Plus', more_settings: 'Paramètres d\'affichage',
+        // home dashboard
+        nav_home: 'Accueil', home_greet_morning: 'Bonjour !', home_greet_afternoon: 'Bon après-midi !', home_greet_evening: 'Bonsoir !', home_msg_first: 'Apprenons votre premier mot !', home_msg_left: 'Plus que {n} pour atteindre l\'objectif du jour !', home_msg_keep: 'Série en cours : {n} — continuez aujourd\'hui !', home_msg_done: 'Objectif du jour atteint, bravo !', home_goal_label: 'Objectif du jour', home_goal_left: 'Encore {n}', home_goal_done: 'Objectif atteint !', home_goal_change: 'Touchez pour changer l\'objectif quotidien', home_streak_title: 'Jours d\'affilée', home_continue: 'Continuer : {name}', home_start: 'Faire votre premier quiz', home_srs_title: 'Révision espacée', home_srs_count: 'À réviser : {n}', home_srs_hint: 'Révisez maintenant, avant d\'oublier', home_srs_none: 'Rien à réviser pour l\'instant', home_review_btn: 'Réviser', home_mistakes_title: 'Carnet d\'erreurs', home_mistakes_count: 'Mots ratés : {n}', home_mistakes_none: 'Pas encore d\'erreurs, continuez !', home_mistakes_btn: 'Ouvrir', home_recent: 'Pratique récente', home_recent_empty: 'Pas encore de pratique — choisissez ci-dessous', home_exams: 'Examens',
 };

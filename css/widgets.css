@@ -368,9 +368,12 @@
         padding: 7px 12px;
     }
     .clock-time { font-size: 0.95rem; }
+    /* let the page scroll its last lines (the footer) up past the clock */
+    footer { padding-bottom: 100px; }
     /* the bottom edge is taken by the tab bar and the clock, so the
-       install / update banners drop in from the top instead */
+       install / update banners drop in from the top instead, just under
+       the ~56px phone header so they don't cover its controls */
     .pwa-install-banner,
-    .update-banner { top: 12px; bottom: auto; }
-    .pwa-install-banner.show ~ .update-banner { top: 72px; bottom: auto; }
+    .update-banner { top: 64px; bottom: auto; }
+    .pwa-install-banner.show ~ .update-banner { top: 124px; bottom: auto; }
 }

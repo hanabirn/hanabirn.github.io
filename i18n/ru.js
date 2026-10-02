@@ -51,7 +51,7 @@ I18N.ru = {
         guide_guestbook_title: 'Гостевая', guide_guestbook_desc: 'Сообщения видны всем посетителям.',
         guide_bgm_title: 'BGM Плеер', guide_bgm_desc: 'Наведите курсор на пластинку, чтобы переключить трек или громкость.',
         bgm_hint: 'Нажмите, чтобы включить музыку',
-        guide_settings_title: 'Настройки отображения', guide_settings_desc: 'Кнопка ⚙️ внизу справа позволяет выбрать, какие страницы показывать (Руководство всегда видно), сохраняется в браузере — можно скопировать персональную ссылку.',        guestbook_loading: 'Загрузка...', guestbook_empty: 'Пока нет сообщений. Будьте первым!',
+        guide_settings_title: 'Настройки отображения', guide_settings_desc: 'Кнопка ⚙️ внизу справа (на телефоне — в разделе «Ещё») позволяет выбрать, какие страницы показывать (Главная и Руководство всегда видны), сохраняется в браузере — можно скопировать персональную ссылку.',        guestbook_loading: 'Загрузка...', guestbook_empty: 'Пока нет сообщений. Будьте первым!',
         fc_view_mastered: '📋 Изученные слова', fc_mastered_title: '📋 Изученные слова', fc_start_flashcard: '📖 Начать карточки',
         fc_mastered_count: '✅ {n} / {m} изучено', fc_mastered_empty: 'Пока нет изученных слов',
         fc_view_unknown: '📋 Посмотреть незнакомые слова', fc_unknown_title: '📋 Незнакомые слова',
@@ -91,4 +91,6 @@ I18N.ru = {
         footer_support: '☕ Угостить кофе', footer_visits: 'Посещений: {n}', footer_privacy: 'Политика конфиденциальности',
         // phone tab bar + More sheet
         tab_quiz: 'Слова', tab_exam: 'Экзамены', tab_notes: 'Заметки', tab_more: 'Ещё', more_settings: 'Настройки отображения',
+        // home dashboard
+        nav_home: 'Главная', home_greet_morning: 'Доброе утро!', home_greet_afternoon: 'Добрый день!', home_greet_evening: 'Добрый вечер!', home_msg_first: 'Давай выучим первое слово!', home_msg_left: 'Осталось слов до цели на сегодня: {n}', home_msg_keep: 'Дней подряд: {n} — не прерывай серию!', home_msg_done: 'Цель на сегодня выполнена — отлично!', home_goal_label: 'Цель на сегодня', home_goal_left: 'Осталось слов: {n}', home_goal_done: 'Цель выполнена!', home_goal_change: 'Нажми, чтобы изменить дневную цель', home_streak_title: 'Дней подряд', home_continue: 'Продолжить: {name}', home_start: 'Пройти первый тест', home_srs_title: 'Интервальное повторение', home_srs_count: 'Слов к повторению: {n}', home_srs_hint: 'Повтори сейчас, пока не забылось', home_srs_none: 'Сейчас нечего повторять', home_review_btn: 'Повторить', home_mistakes_title: 'Тетрадь ошибок', home_mistakes_count: 'Слов с ошибками: {n}', home_mistakes_none: 'Ошибок пока нет — так держать!', home_mistakes_btn: 'Открыть', home_recent: 'Недавняя практика', home_recent_empty: 'Пока нет практики — выбери тест ниже', home_exams: 'Подготовка к экзаменам',
 };

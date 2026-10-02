@@ -52,7 +52,7 @@ I18N.zh = {
         guide_guestbook_title: '留言板', guide_guestbook_desc: '留言會公開顯示，所有訪客都能看到。',
         guide_bgm_title: 'BGM 唱片機', guide_bgm_desc: '滑鼠移到唱片上可切換曲目、調整音量。',
         bgm_hint: '點擊播放背景音樂',
-        guide_settings_title: '顯示設定', guide_settings_desc: '右下角 ⚙️ 按鈕可自訂導覽列顯示哪些頁面（教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。',        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
+        guide_settings_title: '顯示設定', guide_settings_desc: '右下角 ⚙️ 按鈕（手機版在「更多」裡）可自訂導覽列顯示哪些頁面（首頁和教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。',        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
         fc_view_mastered: '📋 查看已掌握單字', fc_mastered_title: '📋 已掌握單字', fc_start_flashcard: '📖 開始閃卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '目前沒有已掌握的單字',
         fc_view_unknown: '📋 查看不認識單字', fc_unknown_title: '📋 不認識單字',
@@ -92,4 +92,6 @@ I18N.zh = {
         footer_support: '☕ 請我喝杯咖啡', footer_visits: '{n} 次訪問', footer_privacy: '隱私權政策',
         // phone tab bar + More sheet
         tab_quiz: '單字', tab_exam: '檢定', tab_notes: '記事本', tab_more: '更多', more_settings: '顯示設定',
+        // home dashboard
+        nav_home: '首頁', home_greet_morning: '早安！', home_greet_afternoon: '午安！', home_greet_evening: '晚安！', home_msg_first: '一起來背第一個單字吧！', home_msg_left: '今天再背 {n} 個字就達成目標囉～', home_msg_keep: '已經連續 {n} 天了，今天也別中斷喔！', home_msg_done: '今天的目標達成了，好厲害！', home_goal_label: '今日目標', home_goal_left: '還差 {n} 個單字', home_goal_done: '目標達成！', home_goal_change: '點一下更改每日目標', home_streak_title: '連續學習天數', home_continue: '繼續學習：{name}', home_start: '開始第一次測驗', home_srs_title: '間隔複習', home_srs_count: '{n} 個單字到期', home_srs_hint: '記憶快淡掉了，現在複習最划算', home_srs_none: '目前沒有到期的單字', home_review_btn: '複習', home_mistakes_title: '錯題本', home_mistakes_count: '{n} 個答錯的單字', home_mistakes_none: '還沒有錯題，繼續保持！', home_mistakes_btn: '查看', home_recent: '最近練習', home_recent_empty: '還沒有練習紀錄，從下面選一個開始吧', home_exams: '檢定考試',
 };

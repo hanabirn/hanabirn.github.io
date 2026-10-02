@@ -51,7 +51,7 @@ I18N.ko = {
         guide_guestbook_title: '방명록', guide_guestbook_desc: '남긴 글은 모든 방문자에게 공개됩니다.',
         guide_bgm_title: 'BGM 레코드 플레이어', guide_bgm_desc: '레코드에 마우스를 올리면 곡 전환과 볼륨 조절이 가능합니다.',
         bgm_hint: '클릭하면 배경음악이 재생됩니다',
-        guide_settings_title: '표시 설정', guide_settings_desc: '오른쪽 아래 ⚙️ 버튼으로 내비게이션 바에 표시할 페이지를 선택할 수 있습니다(가이드는 항상 표시). 설정은 브라우저에 저장되며 맞춤 링크 공유도 가능합니다.',        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
+        guide_settings_title: '표시 설정', guide_settings_desc: '오른쪽 아래 ⚙️ 버튼(휴대폰에서는 「더보기」 안)으로 내비게이션 바에 표시할 페이지를 선택할 수 있습니다(홈과 가이드는 항상 표시). 설정은 브라우저에 저장되며 맞춤 링크 공유도 가능합니다.',        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
         fc_view_mastered: '📋 숙달 단어 보기', fc_mastered_title: '📋 숙달된 단어', fc_start_flashcard: '📖 플래시카드 시작',
         fc_mastered_count: '✅ {n} / {m} 숙달됨', fc_mastered_empty: '숙달된 단어가 아직 없습니다',
         fc_view_unknown: '📋 모르는 단어 보기', fc_unknown_title: '📋 모르는 단어',
@@ -91,4 +91,6 @@ I18N.ko = {
         footer_support: '☕ 커피 한 잔 사주기', footer_visits: '방문 {n}회', footer_privacy: '개인정보 처리방침',
         // phone tab bar + More sheet
         tab_quiz: '단어', tab_exam: '검정', tab_notes: '메모', tab_more: '더보기', more_settings: '표시 설정',
+        // home dashboard
+        nav_home: '홈', home_greet_morning: '좋은 아침이에요!', home_greet_afternoon: '좋은 오후예요!', home_greet_evening: '좋은 저녁이에요!', home_msg_first: '첫 단어를 외워 봐요!', home_msg_left: '{n}개만 더 외우면 오늘 목표 달성!', home_msg_keep: '{n}일 연속이에요, 오늘도 이어가요!', home_msg_done: '오늘 목표 달성, 대단해요!', home_goal_label: '오늘의 목표', home_goal_left: '{n}개 남음', home_goal_done: '목표 달성!', home_goal_change: '눌러서 하루 목표 변경', home_streak_title: '연속 학습 일수', home_continue: '이어서 학습: {name}', home_start: '첫 퀴즈 시작하기', home_srs_title: '간격 복습', home_srs_count: '복습할 단어 {n}개', home_srs_hint: '잊기 전에 지금 복습하세요', home_srs_none: '지금은 복습할 단어가 없어요', home_review_btn: '복습', home_mistakes_title: '오답 노트', home_mistakes_count: '틀린 단어 {n}개', home_mistakes_none: '아직 틀린 단어가 없어요. 계속 화이팅!', home_mistakes_btn: '보기', home_recent: '최근 학습', home_recent_empty: '아직 학습 기록이 없어요. 아래에서 골라 시작해요', home_exams: '검정시험',
 };
