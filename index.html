@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="css/widgets.css">
     <link rel="stylesheet" href="css/mascot.css">
     <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/path.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
@@ -359,6 +360,33 @@
                 <p id="status-msg" class="status"></p>
             </div>
 
+            <!-- Learning path of the loaded word set (js/path.js) -->
+            <div class="mode-card path-card" id="path-card" style="display: none;">
+                <div class="path-head">
+                    <div class="path-head-text">
+                        <h3 id="path-title"></h3>
+                        <div class="path-sub" id="path-sub"></div>
+                    </div>
+                    <button class="back-btn path-free-btn" onclick="showFreePractice()" data-i18n="path_free_practice">自由練習</button>
+                </div>
+                <div class="path-bar"><i id="path-bar-fill"></i></div>
+                <div class="path-units" id="path-units"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+
+            <!-- A level's new words, shown before its quiz (js/path.js) -->
+            <div class="mode-card lesson-card" id="lesson-card" style="display: none;">
+                <h3 id="lesson-title"></h3>
+                <p class="lesson-hint" id="lesson-hint"></p>
+                <ol class="lesson-list" id="lesson-list"></ol>
+                <div class="action-buttons">
+                    <button class="btn next-btn" onclick="startLessonQuiz()" data-i18n="lesson_start_quiz">開始測驗 →</button>
+                    <button class="btn back-btn" onclick="lessonBack()" data-i18n="lesson_back_path">← 回到路徑</button>
+                </div>
+            </div>
+
             <div class="mode-card" id="mode-card" style="display: none;">
                 <h3 data-i18n="mode_title" id="mode-title">&#x9078;&#x64C7;&#x6E2C;&#x9A57;&#x6A21;&#x5F0F;</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
@@ -369,7 +397,7 @@
                 <h3 data-i18n="timer_title" id="timer-title" style="display:none">&#x23F1; &#x8A08;&#x6642;&#x6A21;&#x5F0F;</h3>
                 <div class="mode-buttons" id="timer-buttons" style="display:none"></div>
                 <div class="action-buttons">
-                    <button class="btn back-btn" onclick="backToLanguage()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                    <button class="btn back-btn" onclick="modeCardBack()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
 
@@ -734,6 +762,7 @@
     <script src="i18n/es.js"></script>
     <script src="i18n/de.js"></script>
     <script src="js/quiz.js"></script>
+    <script src="js/path.js"></script>
     <script src="js/home.js"></script>
     <script src="js/guestbook.js"></script>
     <script src="js/notes.js"></script>

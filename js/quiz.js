@@ -386,16 +386,26 @@ function endReviewState() {
     reviewMode = false;
     reviewSource = '';
     setQuizBackLabels(false);
+    setResultAgainLabel('quiz_again');
 }
 
-/* During an SRS review the "返回選擇語言" buttons lead back home, so they read "← 返回"
-   instead. Swapping data-i18n (not just the text) keeps a language switch consistent. */
-function setQuizBackLabels(srsReview) {
-    const key = srsReview ? 'tool_back' : 'quiz_back';
+/* The quiz/result "返回選擇語言" buttons don't lead to the language list during an SRS
+   review (→ home) or a lesson (→ the path), so they say so. Swapping data-i18n (not just
+   the text) keeps a language switch consistent. kind: false | 'srs' | 'lesson'. */
+function setQuizBackLabels(kind) {
+    const key = kind === 'srs' ? 'tool_back' : kind === 'lesson' ? 'lesson_back_path' : 'quiz_back';
     document.querySelectorAll('#quiz-card .back-btn, #result-card .back-btn').forEach(b => {
         b.setAttribute('data-i18n', key);
         b.innerHTML = t(key);
     });
+}
+
+/* The result card's "再來一次" (quizAgain) becomes "下一關" / "再試一次" after a lesson. */
+function setResultAgainLabel(key) {
+    const b = document.querySelector('#result-card .next-btn');
+    if (!b) return;
+    b.setAttribute('data-i18n', key);
+    b.innerHTML = t(key);
 }
 
 function selectLanguage(lang) {
@@ -493,7 +503,7 @@ function selectExamSet(examId) {
                 saveVocabCache(currentLang);
                 statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
                 statusMsg.style.color = 'var(--accent-green)';
-                if (isHsk) showChineseSelection(); else showModeSelection();
+                showSetStart();
             } else {
                 statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
                 statusMsg.style.color = 'var(--accent-red)';
@@ -506,7 +516,7 @@ function selectExamSet(examId) {
                 readingList = cached.readingList || [];
                 statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
                 statusMsg.style.color = 'var(--accent-yellow)';
-                if (isHsk) showChineseSelection(); else showModeSelection();
+                showSetStart();
             } else {
                 statusMsg.innerText = t('load_fail_no_cache');
                 statusMsg.style.color = 'var(--accent-red)';
@@ -549,7 +559,7 @@ function loadSheetData(url) {
             saveVocabCache(currentLang);
             statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
             statusMsg.style.color = 'var(--accent-green)';
-            if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
+            showSetStart();
         } else {
             statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
             statusMsg.style.color = 'var(--accent-red)';
@@ -595,7 +605,7 @@ function loadSheetData(url) {
                 readingList = cached.readingList || [];
                 statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
                 statusMsg.style.color = 'var(--accent-yellow)';
-                if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
+                showSetStart();
             } else {
                 statusMsg.innerText = t('load_fail_no_cache');
                 statusMsg.style.color = 'var(--accent-red)';
@@ -718,6 +728,8 @@ function refreshDynamicContent() {
         const el = document.getElementById(id);
         return el && el.style.display !== 'none';
     };
+    if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();
+    if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
         if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();
@@ -785,6 +797,7 @@ function setModeCardTitle(id, key) {
 
 function showModeSelection() {
     if (reviewMode) { reviewMode = false; showMistakeBook(); return; }
+    hidePathCards();
     document.getElementById('setup-card').style.display = 'none';
     document.getElementById('mode-card').style.display = 'block';
     document.getElementById('quiz-card').style.display = 'none';
@@ -877,6 +890,7 @@ function showModeSelection() {
 let selectedQuizMode = 'meaning';
 
 function showChineseSelection() {
+    hidePathCards();
     document.getElementById('setup-card').style.display = 'none';
     document.getElementById('mode-card').style.display = 'block';
     document.getElementById('quiz-card').style.display = 'none';
@@ -1241,7 +1255,7 @@ function selectOption(selectedBtn, selectedText, type) {
 
     if (type === 'review') {
         gradeSrsQuizCard(currentReviewEntry, isCorrect);
-        if (reviewSource === 'srs') {
+        if (reviewSource === 'srs' || reviewSource === 'lesson') {
             if (!isCorrect) addMistakeEntry(currentReviewEntry);
         } else if (isCorrect) {
             removeMistakeById(currentReviewEntry.id);
@@ -1334,6 +1348,7 @@ function showResults() {
     }
 
     document.getElementById('result-summary').innerHTML =
+        (reviewMode && reviewSource === 'lesson' ? lessonResultHtml(percentage) : '') +
         `<div class="result-stats">
             <div class="stat correct-stat">${t('result_correct')}: ${correctCount}</div>
             <div class="stat wrong-stat">${t('result_wrong')}: ${wrongCount}</div>
@@ -1359,6 +1374,10 @@ function showResults() {
 }
 
 function backToLanguage() {
+    if (reviewMode && reviewSource === 'lesson') {
+        lessonBack();
+        return;
+    }
     const wasSrsReview = reviewMode && reviewSource === 'srs';
     const wasJlptQuiz = currentLang.startsWith('jlpt_');
     const wasTopikQuiz = currentLang.startsWith('topik_');
@@ -1383,6 +1402,7 @@ function backToLanguage() {
     document.getElementById('flashcard-card').style.display = 'none';
     document.getElementById('flashcard-setup-card').style.display = 'none';
     document.getElementById('listening-setup-card').style.display = 'none';
+    hidePathCards();
     updateMistakeBadge();
     updateStreakBadge();
 
@@ -2232,12 +2252,13 @@ function startSrsQuizReview() {
     totalQuestions = reviewList.length;
 
     ['lang-card', 'setup-card', 'mode-card', 'result-card', 'mistake-card', 'stats-card',
-     'flashcard-card', 'flashcard-setup-card', 'listening-setup-card', 'mastered-list-card', 'unknown-list-card']
+     'flashcard-card', 'flashcard-setup-card', 'listening-setup-card', 'mastered-list-card', 'unknown-list-card',
+     'path-card', 'lesson-card']
         .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
     document.getElementById('quiz-card').style.display = 'block';
     document.getElementById('quiz-mode-label').innerText = t('srs_title');
     document.getElementById('total-words').innerText = t('quiz_words', {n: reviewList.length});
-    setQuizBackLabels(true);
+    setQuizBackLabels('srs');
     nextQuestion();
 }
 
@@ -2246,6 +2267,10 @@ function startSrsQuizReview() {
 function quizAgain() {
     if (reviewMode && reviewSource === 'srs') {
         startSrsQuizReview();
+        return;
+    }
+    if (reviewMode && reviewSource === 'lesson') {
+        lessonAgain();
         return;
     }
     showModeSelection();

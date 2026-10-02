@@ -1,0 +1,275 @@
+/* ===== Learning path + lesson preview (js/path.js) ===== */
+
+/* --- header --- */
+.path-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+.path-head-text {
+    min-width: 0;
+}
+.mode-card .path-head h3 {
+    text-align: left;
+    margin: 0 0 4px;
+}
+.path-sub {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.back-btn.path-free-btn {
+    flex: none;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+}
+.path-bar {
+    height: 10px;
+    margin: 14px 0 6px;
+    border-radius: 999px;
+    background: var(--track);
+    overflow: hidden;
+}
+.path-bar i {
+    display: block;
+    height: 100%;
+    width: 0;
+    background: var(--primary);
+    border-radius: inherit;
+    transition: width 0.4s ease;
+}
+
+/* --- units --- */
+.path-units {
+    margin-top: 14px;
+}
+.path-unit {
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin-bottom: 10px;
+    background: var(--surface);
+}
+html[data-theme="dark"] .path-unit {
+    background: var(--bg-card);
+}
+.path-unit-head {
+    list-style: none;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    padding: 12px 14px;
+    cursor: pointer;
+    user-select: none;
+}
+.path-unit-head::-webkit-details-marker {
+    display: none;
+}
+.path-unit-head::before {
+    content: '▸';
+    color: var(--text-muted);
+    transition: transform 0.15s ease;
+}
+.path-unit[open] > .path-unit-head::before {
+    transform: rotate(90deg);
+}
+.path-unit-name {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--text);
+}
+.path-unit-range {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+.path-unit-state {
+    margin-left: auto;
+    font-size: 0.8rem;
+    color: var(--accent-green);
+}
+.path-unit.locked .path-unit-name {
+    color: var(--text-muted);
+}
+
+/* --- nodes (zigzag, chunky like the buttons) --- */
+.path-nodes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    padding: 8px 0 18px;
+}
+.path-node-wrap {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateX(var(--x, 0));
+}
+.path-node {
+    width: 62px;
+    height: 58px;
+    border-radius: 50%;
+    border: none;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.08s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.path-node.done {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 0 5px 0 #000;
+}
+html[data-theme="dark"] .path-node.done {
+    box-shadow: 0 5px 0 #a99d86;
+}
+.path-node.current {
+    background: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0 5px 0 var(--primary-edge), 0 0 0 7px var(--primary-soft);
+}
+.path-node.locked {
+    background: var(--track);
+    color: var(--text-muted);
+    box-shadow: 0 5px 0 var(--edge);
+    font-size: 1.1rem;
+}
+.path-node:active {
+    transform: translateY(5px);
+    box-shadow: 0 0 0 transparent;
+}
+.path-node.current:active {
+    box-shadow: 0 0 0 7px var(--primary-soft);
+}
+.path-node-label {
+    margin-top: 9px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    white-space: nowrap;
+}
+.path-start {
+    position: absolute;
+    left: calc(100% + 10px);
+    top: 16px;
+    padding: 3px 10px;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.75rem;
+    font-weight: 800;
+    white-space: nowrap;
+    animation: path-start-bob 1.6s ease-in-out infinite;
+}
+@keyframes path-start-bob {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(3px); }
+}
+.path-chest {
+    font-size: 1.8rem;
+    filter: grayscale(1);
+    opacity: 0.55;
+}
+.path-chest.open {
+    filter: none;
+    opacity: 1;
+}
+
+/* --- lesson preview --- */
+.lesson-hint {
+    text-align: center;
+    margin: -8px 0 14px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.lesson-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: left;
+}
+.lesson-word {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+}
+html[data-theme="dark"] .lesson-word {
+    background: var(--bg-card);
+}
+.lesson-word-main {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+.lesson-word-text {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text);
+    word-break: break-word;
+}
+.lesson-word-reading {
+    font-size: 0.8rem;
+    color: var(--text-pink);
+}
+.lesson-word-meaning {
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+    word-break: break-word;
+}
+.speak-btn.lesson-speak {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+}
+
+/* --- lesson result banner (above the score) --- */
+.lesson-result {
+    margin: 0 auto 14px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-weight: 800;
+    text-align: center;
+}
+.lesson-result.pass {
+    background: var(--success-bg);
+    color: var(--success-text);
+    border: 2px solid var(--success);
+}
+.lesson-result.fail {
+    background: var(--danger-bg);
+    color: var(--danger-text);
+    border: 2px solid var(--danger);
+}
+
+@media (max-width: 560px) {
+    .lesson-word {
+        grid-template-columns: minmax(0, 1fr) auto;
+    }
+    .lesson-word-meaning {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    .speak-btn.lesson-speak {
+        grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+    /* the zigzag is narrower on phones so the "開始！" tag still fits */
+    .path-node-wrap {
+        transform: translateX(calc(var(--x, 0) * 0.6));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .path-start { animation: none; }
+}

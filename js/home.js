@@ -148,14 +148,21 @@ function renderHome() {
     if (recent.length === 0) {
         recentEl.innerHTML = `<p class="home-empty">${escHtml(t('home_recent_empty'))}</p>`;
     } else {
-        recentEl.innerHTML = recent.map(r => `
+        /* path progress when the set's word count is known (cached), else the last score */
+        recentEl.innerHTML = recent.map(r => {
+            const path = pathSummary(r.lang);
+            const fill = path ? Math.round(path.done / path.levels * 100) : r.pct;
+            const note = path ? t('home_path_progress', { n: path.done, m: path.levels })
+                : typeof r.pct === 'number' ? r.pct + '%' : '';
+            return `
             <button class="lang-btn home-course" onclick="homeOpenSet('${r.lang}')">
                 <span class="home-course-badge">${homeSetBadge(r.lang)}</span>
                 <span class="home-course-name">${escHtml(t('quiz_' + r.lang))}</span>
-                ${typeof r.pct === 'number' ? `
-                <span class="home-course-bar"><i style="width:${Math.max(0, Math.min(100, r.pct))}%"></i></span>
-                <small>${r.pct}%</small>` : ''}
-            </button>`).join('');
+                ${typeof fill === 'number' ? `
+                <span class="home-course-bar"><i style="width:${Math.max(0, Math.min(100, fill))}%"></i></span>` : ''}
+                ${note ? `<small>${escHtml(note)}</small>` : ''}
+            </button>`;
+        }).join('');
     }
 }
 
