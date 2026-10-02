@@ -19,30 +19,16 @@
     overflow: hidden;
 }
 
-.nav-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%; left: 50%;
-    width: 0; height: 0;
-    background: rgba(var(--accent-pink-rgb),0.15);
-    border-radius: 50%;
-    transition: all 0.4s;
-    transform: translate(-50%, -50%);
-}
-
-.nav-btn:hover::before { width: 200px; height: 200px; }
-
 .nav-btn:hover {
     color: var(--text);
-    border-color: var(--accent-pink);
+    border-color: var(--primary);
 }
 
 .nav-btn.active {
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-    color: #fff;
+    background: var(--primary);
+    color: var(--on-primary);
     font-weight: bold;
-    border-color: transparent;
-    box-shadow: 0 0 20px rgba(244,114,182,0.35), 0 0 40px rgba(168,85,247,0.15);
+    border-color: var(--primary);
 }
 
 /* ===== Tab Visibility Settings ===== */
@@ -53,7 +39,6 @@
     border-radius: 50%;
     border: 1px solid var(--theme-toggle-border);
     background: var(--theme-toggle-bg);
-    backdrop-filter: blur(var(--glass-blur));
     color: var(--text);
     cursor: pointer;
     z-index: 200;
@@ -63,21 +48,19 @@
     justify-content: center;
     transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
         transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
-    box-shadow: 0 0 15px rgba(168,85,247,0.15);
+    box-shadow: 0 2px 0 var(--edge);
 }
 .tab-settings-btn:hover {
-    transform: scale(1.18) rotate(45deg);
-    border-color: var(--accent-pink);
+    transform: scale(1.12) rotate(45deg);
+    border-color: var(--primary);
     color: var(--text-pink);
-    background: rgba(var(--accent-pink-rgb),0.18);
-    box-shadow: 0 0 18px rgba(244,114,182,0.4);
+    background: var(--primary-soft);
 }
 
 .tab-settings-overlay {
     position: fixed;
     inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
+    background: rgba(20,18,16,0.5);
     z-index: 900;
     display: flex;
     align-items: center;
@@ -101,7 +84,7 @@
     width: 100%;
     max-height: 85vh;
     overflow-y: auto;
-    box-shadow: 0 8px 40px rgba(0,0,0,0.4);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.2);
     transform: scale(0.95);
     transition: transform 220ms ease-out;
 }
@@ -197,8 +180,9 @@
     color: var(--text);
 }
 .tab-settings-close {
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-    color: #fff;
-    border-color: transparent;
+    background: var(--primary);
+    color: var(--on-primary);
+    border-color: var(--primary);
+    box-shadow: 0 3px 0 var(--primary-edge);
     font-weight: bold;
 }

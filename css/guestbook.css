@@ -1,9 +1,8 @@
 .guestbook-card {
     position: relative;
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     padding: 28px 24px;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid var(--border-card);
     box-shadow: var(--shadow-card), var(--shadow-card-inset);
     margin-bottom: 20px;
@@ -12,12 +11,10 @@
 .guestbook-card h3 {
     margin: 0 0 18px;
     text-align: center;
-    font-size: 1.1rem;
-    background: linear-gradient(90deg, var(--text-pink), var(--accent-light-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 3px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 2px;
 }
 
 .guestbook-form {
@@ -44,8 +41,8 @@
 }
 .guestbook-input:focus {
     outline: none;
-    border-color: var(--accent-light-purple);
-    box-shadow: 0 0 15px rgba(192,132,252,0.25);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
 }
 .guestbook-msg {
     flex: 2;
@@ -135,8 +132,8 @@
 }
 .feedback-textarea:focus {
     outline: none;
-    border-color: var(--accent-light-purple);
-    box-shadow: 0 0 15px rgba(192,132,252,0.25);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px var(--primary-soft);
 }
 
 .feedback-submit {

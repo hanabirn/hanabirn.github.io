@@ -3,34 +3,9 @@ header {
     position: relative;
     z-index: 20;
     background: var(--header-bg);
-    backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--header-border);
     text-align: center;
     padding: 1.2rem 1rem 1.2rem;
-}
-
-.header-wave {
-    position: absolute;
-    bottom: -1px; left: 0;
-    width: 100%; height: 30px;
-    background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 30'%3E%3Cpath d='M0,15 Q150,0 300,15 T600,15 T900,15 T1200,15 V30 H0Z' fill='var(--bg-body-1)' opacity='0.5'/%3E%3C/svg%3E") repeat-x;
-    background-size: 600px 30px;
-}
-
-.header-sakura {
-    position: absolute;
-    top: 8px;
-    font-size: 1.8rem;
-    color: var(--text-pink);
-    animation: float 4s ease-in-out infinite;
-    filter: drop-shadow(0 0 8px rgba(244,114,182,0.5));
-}
-.header-sakura.left  { left: 20px; }
-.header-sakura.right { right: 20px; animation-delay: 2s; }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0) rotate(0deg); }
-    50% { transform: translateY(-8px) rotate(10deg); }
 }
 
 .title-row {
@@ -44,10 +19,10 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 2.4rem;
-    font-family: 'Mochiy Pop One', 'Kosugi Maru', 'ZCOOL KuaiLe', cursive;
-    animation: title-glow 4s ease-in-out infinite;
-    text-shadow: none;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--text);
+    letter-spacing: 3px;
 }
 
 .lang-globe {
@@ -68,14 +43,12 @@ header h1 {
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(var(--glass-blur));
     transition: border-color 0.25s, background 0.25s, box-shadow 0.25s, transform 0.2s;
 }
 .lang-globe-btn:hover,
 .lang-globe.open .lang-globe-btn {
-    background: rgba(var(--accent-pink-rgb),0.14);
-    border-color: var(--accent-pink);
-    box-shadow: 0 0 10px rgba(var(--accent-pink-rgb),0.30);
+    background: var(--primary-soft);
+    border-color: var(--primary);
 }
 .lang-globe-menu {
     position: absolute;
@@ -89,7 +62,7 @@ header h1 {
     border-radius: 14px;
     background: var(--bg-widget-panel);
     border: 1px solid var(--border-card);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.35);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
     opacity: 0;
     visibility: hidden;
     transform: translateY(-8px);
@@ -102,40 +75,6 @@ header h1 {
     transform: translateY(0);
 }
 
-@keyframes title-glow {
-    0%, 100% { filter: drop-shadow(0 0 14px rgba(244,114,182,0.45)); }
-    50% { filter: drop-shadow(0 0 26px rgba(244,114,182,0.8)) drop-shadow(0 0 46px rgba(192,132,252,0.35)); }
-}
-
-/* Per-character bounce-in (js/header-anim.js splits the title into
-   .char spans on load and on every language switch). */
-header h1 .char {
-    display: inline-block;
-    background: linear-gradient(90deg, #f472b6, #e879f9, #a78bfa, #60a5fa, #f472b6);
-    background-size: 500% 100%;
-    background-position: calc(var(--char-index) * 8%) center;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    opacity: 0;
-    animation: title-char-in 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-    animation-delay: calc(var(--char-index) * 0.045s);
-}
-
-@keyframes title-char-in {
-    0%   { opacity: 0; transform: translateY(-14px) scale(0.5) rotate(-8deg); }
-    60%  { opacity: 1; transform: translateY(3px) scale(1.05) rotate(2deg); }
-    100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    header h1 .char {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-}
-
 .lang-pill {
     background: var(--lang-pill-bg);
     border: 1px solid var(--lang-pill-border);
@@ -145,28 +84,19 @@ header h1 .char {
     cursor: pointer;
     font-size: 0.85rem;
     text-align: left;
-    backdrop-filter: blur(var(--glass-blur));
     transition: border-color 0.25s, background 0.25s, color 0.25s, box-shadow 0.25s, transform 0.2s;
     white-space: nowrap;
 }
 .lang-pill:hover {
-    background: rgba(var(--accent-pink-rgb),0.14);
-    border-color: var(--accent-pink);
+    background: var(--primary-soft);
+    border-color: var(--primary);
     color: var(--text-pink);
-    box-shadow: 0 0 10px rgba(244,114,182,0.30);
-    transform: translateY(-1px);
 }
 .lang-pill.active {
-    background: linear-gradient(135deg, rgba(var(--accent-pink-rgb),0.4), rgba(var(--accent-purple-rgb),0.4));
-    border-color: rgba(244,114,182,0.6);
-    color: var(--text);
-    box-shadow: 0 0 14px rgba(244,114,182,0.40);
-}
-/* Kosugi Maru (the site's main font) draws Cyrillic as full-width glyphs,
-   so "Русский" came out twice as wide as the other names. Noto Sans TC is
-   already loaded and has normal proportional Cyrillic. */
-.lang-pill[data-lang="ru"] {
-    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--on-primary);
+    font-weight: 700;
 }
 
 /* Inline-SVG flags, copied from the osu! site (css/base.css) so both
@@ -208,8 +138,7 @@ header h1 .char {
 }
 
 .subtitle {
-    color: var(--text-pink);
-    opacity: 0.7;
+    color: var(--text-secondary);
     font-size: 0.88rem;
     letter-spacing: 3px;
     margin-bottom: 0;

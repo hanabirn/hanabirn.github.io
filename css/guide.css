@@ -2,9 +2,8 @@
 .guide-card {
     position: relative;
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     padding: 28px 24px;
-    border-radius: 16px;
+    border-radius: 14px;
     border: 1px solid var(--border-card);
     box-shadow: var(--shadow-card), var(--shadow-card-inset);
     margin-bottom: 20px;
@@ -12,12 +11,10 @@
 .guide-card h3 {
     margin: 0 0 20px;
     text-align: center;
-    font-size: 1.1rem;
-    background: linear-gradient(90deg, var(--text-pink), var(--accent-light-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 3px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 2px;
 }
 
 /* ===== Guide Grid ===== */
@@ -43,23 +40,11 @@
         border-color 0.30s, background 0.30s, box-shadow 0.30s;
     text-align: center;
 }
-.guide-section::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background: radial-gradient(circle at 50% 0%, rgba(244,114,182,0.14) 0%, transparent 65%);
-    opacity: 0;
-    transition: opacity 0.30s;
-    pointer-events: none;
-}
 .guide-section:hover {
     background: var(--bg-section-hover);
-    border-color: var(--accent-pink);
-    transform: translateY(-6px);
-    box-shadow: 0 0 0 1px rgba(244,114,182,0.18), 0 0 18px rgba(244,114,182,0.18), 0 12px 28px rgba(0,0,0,0.25);
+    border-color: var(--primary);
+    transform: translateY(-3px);
 }
-.guide-section:hover::after { opacity: 1; }
 
 .guide-icon {
     flex-shrink: 0;

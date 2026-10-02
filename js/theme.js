@@ -1,12 +1,20 @@
 /* ===== Theme Toggle ===== */
+/* New visitors follow their system setting; after that the toggle wins. */
 function getTheme() {
-    return localStorage.getItem('theme') || 'dark';
+    const saved = localStorage.getItem('theme');
+    if (saved === 'light' || saved === 'dark') return saved;
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 }
+
+/* Browser-chrome colour (address bar / PWA status bar) = the page's paper colour. */
+const THEME_CHROME_COLOR = { light: '#f6f1e6', dark: '#141210' };
 
 function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     const btn = document.getElementById('theme-toggle');
     if (btn) btn.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', THEME_CHROME_COLOR[theme] || THEME_CHROME_COLOR.light);
     localStorage.setItem('theme', theme);
 }
 

@@ -16,7 +16,7 @@
     <meta name="twitter:description" content="學習語言、玩音樂遊戲、聽音樂、看動漫">
     <meta name="twitter:image" content="https://hanabirn.xyz/icons/web-app-manifest-512x512.png">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#c084fc">
+    <meta name="theme-color" content="#f6f1e6">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Hanabi">
@@ -24,10 +24,6 @@
     <link rel="icon" type="image/png" href="icons/web-app-manifest-192x192.png">
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/sakura.css">
-    <link rel="stylesheet" href="css/particles.css">
-    <link rel="stylesheet" href="css/stars.css">
-    <link rel="stylesheet" href="css/reading-ambiance.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/quiz.css">
@@ -48,60 +44,8 @@
         </div>
     </div>
 
-    <div class="sakura-container" id="sakura-container" aria-hidden="true">
-        <div class="sakura s1"></div><div class="sakura s2"></div><div class="sakura s3"></div>
-        <div class="sakura s4"></div><div class="sakura s5"></div><div class="sakura s6"></div>
-        <div class="sakura s7"></div><div class="sakura s8"></div><div class="sakura s9"></div>
-        <div class="sakura s10"></div><div class="sakura s11"></div><div class="sakura s12"></div>
-        <div class="sakura s13"></div><div class="sakura s14"></div><div class="sakura s15"></div>
-    </div>
-
-    <canvas id="particles-canvas" aria-hidden="true"></canvas>
-
-    <div class="reading-glow-layer" aria-hidden="true">
-        <div class="book-stack left"></div>
-        <div class="book-stack right"></div>
-        <div class="lamp-glow"></div>
-        <div class="window-beam"></div>
-    </div>
-
-    <div class="firefly-container" aria-hidden="true">
-        <div class="firefly" style="--x:8%;--y:70%;--size:4px;--dur:11s;--delay:0s;--dx:24px"></div>
-        <div class="firefly" style="--x:18%;--y:82%;--size:6px;--dur:13s;--delay:2s;--dx:-18px"></div>
-        <div class="firefly" style="--x:30%;--y:60%;--size:3px;--dur:9s;--delay:4s;--dx:16px"></div>
-        <div class="firefly" style="--x:42%;--y:88%;--size:5px;--dur:14s;--delay:1s;--dx:-22px"></div>
-        <div class="firefly" style="--x:55%;--y:65%;--size:4px;--dur:10s;--delay:5s;--dx:20px"></div>
-        <div class="firefly" style="--x:68%;--y:78%;--size:6px;--dur:12s;--delay:3s;--dx:-16px"></div>
-        <div class="firefly" style="--x:78%;--y:55%;--size:3px;--dur:8s;--delay:6s;--dx:18px"></div>
-        <div class="firefly" style="--x:88%;--y:72%;--size:5px;--dur:15s;--delay:2.5s;--dx:-24px"></div>
-        <div class="firefly" style="--x:12%;--y:40%;--size:3px;--dur:11s;--delay:4.5s;--dx:14px"></div>
-        <div class="firefly" style="--x:92%;--y:35%;--size:4px;--dur:13s;--delay:1.5s;--dx:-20px"></div>
-    </div>
-
-    <div class="stars-bg">
-        <div class="star" style="--x:10%;--y:15%;--delay:0s;--size:3px"></div>
-        <div class="star" style="--x:25%;--y:8%;--delay:1.2s;--size:2px"></div>
-        <div class="star" style="--x:45%;--y:20%;--delay:0.5s;--size:4px"></div>
-        <div class="star" style="--x:65%;--y:5%;--delay:2s;--size:2px"></div>
-        <div class="star" style="--x:80%;--y:18%;--delay:0.8s;--size:3px"></div>
-        <div class="star" style="--x:90%;--y:12%;--delay:1.5s;--size:2px"></div>
-        <div class="star" style="--x:15%;--y:45%;--delay:2.5s;--size:2px"></div>
-        <div class="star" style="--x:35%;--y:55%;--delay:0.3s;--size:3px"></div>
-        <div class="star" style="--x:55%;--y:40%;--delay:1.8s;--size:2px"></div>
-        <div class="star" style="--x:75%;--y:50%;--delay:0.7s;--size:4px"></div>
-        <div class="star" style="--x:5%;--y:70%;--delay:1s;--size:2px"></div>
-        <div class="star" style="--x:50%;--y:75%;--delay:2.2s;--size:3px"></div>
-        <div class="star" style="--x:85%;--y:65%;--delay:0.4s;--size:2px"></div>
-        <div class="star" style="--x:20%;--y:85%;--delay:1.7s;--size:3px"></div>
-        <div class="star" style="--x:60%;--y:90%;--delay:2.8s;--size:2px"></div>
-    </div>
-
-<div class="deco-img" style="display:none"></div>
 
     <header>
-        <div class="header-wave"></div>
-        <div class="header-sakura left">&#x273F;</div>
-        <div class="header-sakura right">&#x273F;</div>
         <div class="title-row">
             <h1 data-i18n="title">Hanabiの小天地</h1>
         </div>
@@ -161,8 +105,6 @@
     <main>
         <div id="page-examquiz" style="display: none;">
             <div class="lang-card" id="examquiz-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="examquiz_title">&#x2726; &#x6AA2;&#x5B9A;&#x8003;&#x8A66;&#x55AE;&#x5B57; &#x2726;</h3>
                 <p class="examquiz-hint" data-i18n="examquiz_hint">這裡是各國語文檢定考試專用的單字庫，目前有 JLPT 全部等級（N5～N1）、TOPIK 全部等級（1～4）與 HSK 1，之後會陸續增加其他考試。</p>
                 <div class="lang-buttons">
@@ -181,8 +123,6 @@
                 </div>
             </div>
             <div class="lang-card" id="examquiz-jlpt-level-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="examquiz_jlpt_title">&#x2726; &#x9078;&#x64C7; JLPT &#x7B49;&#x7D1A; &#x2726;</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn jp" onclick="selectExamSet('jlpt_n5')">
@@ -206,8 +146,6 @@
                 </div>
             </div>
             <div class="lang-card" id="examquiz-topik-level-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="examquiz_topik_title">&#x2726; &#x9078;&#x64C7; TOPIK &#x7B49;&#x7D1A; &#x2726;</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn kr" onclick="selectExamSet('topik_1')">
@@ -228,8 +166,6 @@
                 </div>
             </div>
             <div class="lang-card" id="examquiz-hsk-level-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="examquiz_hsk_title">✦ 選擇 HSK 等級 ✦</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn zh" onclick="selectExamSet('hsk_1')">
@@ -244,8 +180,6 @@
 
         <div id="page-quiz" style="display: none;">
             <div class="lang-card" id="lang-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="select_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
                 <div class="lang-buttons">
                     <button class="lang-btn jp" onclick="selectLanguage('jp')">
@@ -283,20 +217,18 @@
             </div>
 
             <div class="mode-card" id="flashcard-setup-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 id="flashcard-setup-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
                 <h3 id="fc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
                 <div class="mode-buttons" id="fc-lang-buttons" style="display:none"></div>
                 <h3 id="fc-mode-title" data-i18n="flashcard_mode_title" style="display:none">&#x9078;&#x64C7;&#x986F;&#x793A;&#x6A21;&#x5F0F;</h3>
                 <div class="mode-buttons" id="fc-mode-buttons" style="display:none"></div>
                 <div id="fc-mastered-section" style="display:none; margin-top: 15px; text-align: center;">
-                    <p id="fc-mastered-count" style="margin-bottom: 8px; color: #6ee7b7; font-weight: bold;"></p>
-                    <button class="btn" onclick="showMasteredList()" data-i18n="fc_view_mastered" style="font-size: 0.9em; padding: 6px 16px; background: rgba(110,231,183,0.15); border: 1px solid #6ee7b7; color: #6ee7b7; border-radius: 20px; cursor: pointer;">&#x1F4CB; &#x67E5;&#x770B;&#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</button>
+                    <p id="fc-mastered-count" style="margin-bottom: 8px; color: var(--accent-green); font-weight: bold;"></p>
+                    <button class="btn flashcard-known" onclick="showMasteredList()" data-i18n="fc_view_mastered" style="font-size: 0.9em; padding: 6px 16px;">&#x1F4CB; &#x67E5;&#x770B;&#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</button>
                 </div>
                 <div id="fc-unknown-section" style="display:none; margin-top: 10px; text-align: center;">
-                    <p id="fc-unknown-count" style="margin-bottom: 8px; color: #f87171; font-weight: bold;"></p>
-                    <button class="btn" onclick="showUnknownList()" data-i18n="fc_view_unknown" style="font-size: 0.9em; padding: 6px 16px; background: rgba(248,113,113,0.15); border: 1px solid #f87171; color: #f87171; border-radius: 20px; cursor: pointer;">&#x1F4CB; &#x67E5;&#x770B;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
+                    <p id="fc-unknown-count" style="margin-bottom: 8px; color: var(--accent-red); font-weight: bold;"></p>
+                    <button class="btn flashcard-unknown" onclick="showUnknownList()" data-i18n="fc_view_unknown" style="font-size: 0.9em; padding: 6px 16px;">&#x1F4CB; &#x67E5;&#x770B;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
                 </div>
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="closeFlashcardSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
@@ -304,8 +236,6 @@
             </div>
 
             <div class="mode-card" id="mastered-list-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="fc_mastered_title">&#x1F4CB; &#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</h3>
                 <div id="mastered-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
                 <div class="action-buttons">
@@ -314,8 +244,6 @@
             </div>
 
             <div class="mode-card" id="unknown-list-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="fc_unknown_title">&#x1F4CB; &#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</h3>
                 <div id="unknown-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
                 <div class="action-buttons">
@@ -325,8 +253,6 @@
             </div>
 
             <div class="mode-card" id="listening-setup-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 id="listening-setup-title" data-i18n="tool_listening">&#x1F50A; &#x807C;&#x529B;&#x6E2C;&#x9A57;</h3>
                 <h3 id="lc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
                 <div class="mode-buttons" id="lc-lang-buttons" style="display:none"></div>
@@ -342,8 +268,6 @@
             </div>
 
             <div class="mode-card" id="mistake-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3><span data-i18n="mistake_title">&#x1F4D6; &#x932F;&#x984C;&#x672C;</span></h3>
                 <div id="mistake-content"></div>
                 <div class="action-buttons">
@@ -352,8 +276,6 @@
             </div>
 
             <div class="mode-card" id="stats-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3><span data-i18n="stats_title">&#x1F4CA; &#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></h3>
                 <div id="stats-content"></div>
                 <div class="action-buttons">
@@ -362,8 +284,6 @@
             </div>
 
             <div class="setup-card" id="setup-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="setup_title">&#x7D50;&#x5408; Google &#x8A66;&#x7B97;&#x8868;</h3>
                 <div class="input-group">
                     <input type="text" id="sheetUrlInput" data-i18n-placeholder="setup_placeholder" placeholder="&#x8CB6;&#x4E0A; Google Sheet &#x7DB2;&#x5740;">
@@ -373,8 +293,6 @@
             </div>
 
             <div class="mode-card" id="mode-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="mode_title" id="mode-title">&#x9078;&#x64C7;&#x6E2C;&#x9A57;&#x6A21;&#x5F0F;</h3>
                 <div class="mode-buttons" id="mode-buttons"></div>
                 <h3 data-i18n="answer_lang_title" id="answer-lang-title" style="display:none">&#x9078;&#x64C7;&#x7B54;&#x6848;&#x8A9E;&#x8A00;</h3>
@@ -389,8 +307,6 @@
             </div>
 
             <div id="quiz-card" class="quiz-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <div class="quiz-header">
                     <span id="question-count" data-i18n="quiz_question">&#x7B2C;0 &#x984C;</span>
                     <span id="quiz-mode-label"></span>
@@ -424,8 +340,6 @@
             </div>
 
             <div id="result-card" class="quiz-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="result_title">&#x6E2C;&#x9A57;&#x7D50;&#x679C;</h3>
                 <div id="result-summary" class="result-summary"></div>
                 <div id="result-detail" class="result-detail"></div>
@@ -437,8 +351,6 @@
             </div>
 
             <div id="flashcard-card" class="quiz-card" style="display: none;">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 id="flashcard-review-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
                 <div class="flashcard-container">
                     <div class="flashcard" id="flashcard" onclick="flipCard()">
@@ -465,8 +377,6 @@
 
         <div id="page-about" style="display: none;">
             <div class="about-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
 
                 <div class="about-avatar-wrap">
                     <img class="about-avatar" src="images/avatar.webp" alt="Hanabi" width="96" height="96">
@@ -539,8 +449,6 @@
 
         <div id="page-guestbook" style="display: none;">
             <div class="guestbook-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="guestbook_title">&#x7559;&#x8A00;&#x677F;</h3>
                 <form class="guestbook-form" onsubmit="return handleGuestbookSubmit(event)">
                     <div class="guestbook-input-row">
@@ -557,8 +465,6 @@
 
         <div id="page-notes" style="display: none;">
             <div class="guestbook-card notes-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="notes_title">&#x2726; &#x8A18;&#x4E8B;&#x672C; &#x2726;</h3>
                 <p class="feedback-hint" data-i18n="notes_hint">&#x9019;&#x88E1;&#x7684;&#x7B46;&#x8A18;&#x53EA;&#x5B58;&#x5728;&#x9019;&#x500B;&#x700F;&#x89BD;&#x5668;&#x88E1;&#xFF0C;&#x63DB;&#x88DD;&#x7F6E;&#x6216;&#x6E05;&#x9664;&#x700F;&#x89BD;&#x5668;&#x8CC7;&#x6599;&#x6703;&#x6D88;&#x5931;&#x3002;</p>
 
@@ -599,8 +505,6 @@
 
         <div id="page-feedback" style="display: none;">
             <div class="guestbook-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="feedback_title">建議&amp;改進</h3>
                 <p class="feedback-hint" data-i18n="feedback_hint">覺得網站有哪裡可以做得更好嗎？在這裡告訴我，只有我看得到你的訊息，其他訪客不會看見。</p>
                 <form class="feedback-form" onsubmit="return handleFeedbackSubmit(event)">
@@ -614,8 +518,6 @@
 
         <div id="page-guide">
             <div class="guide-card">
-                <div class="card-corner tl"></div><div class="card-corner tr"></div>
-                <div class="card-corner bl"></div><div class="card-corner br"></div>
                 <h3 data-i18n="guide_title">✦ 教學手冊 ✦</h3>
 
                 <div class="guide-grid" id="guide-grid">
@@ -732,7 +634,6 @@
     </div>
 
     <footer>
-        <div class="footer-sakura">&#x273F;</div>
         <p>2026 Hanabi&#x306E;&#x5C0F;&#x5929;&#x5730; | &#x1F50D; <span id="visitor-count">... &#x6B21;&#x8A2A;&#x554F;</span></p>
         <a class="footer-support-btn" href="https://ko-fi.com/hanabi687" target="_blank" rel="noopener noreferrer" data-i18n="footer_support">&#x2615; &#x8ACB;&#x6211;&#x559D;&#x676F;&#x5496;&#x5561;</a>
         <p class="footer-links"><a href="privacy.html" data-i18n="footer_privacy">&#x96B1;&#x79C1;&#x6B0A;&#x653F;&#x7B56;</a></p>
@@ -750,10 +651,7 @@
     <script src="i18n/fr.js"></script>
     <script src="i18n/es.js"></script>
     <script src="i18n/de.js"></script>
-    <script src="js/header-anim.js"></script>
     <script src="js/quiz.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/reading-ambiance.js"></script>
     <script src="js/guestbook.js"></script>
     <script src="js/notes.js"></script>
     <script src="js/feedback.js"></script>

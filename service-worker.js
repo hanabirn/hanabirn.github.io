@@ -1,14 +1,10 @@
-const CACHE_NAME = 'hanabi-v26';
+const CACHE_NAME = 'hanabi-v27';
 const ASSETS = [
   '/',
   '/index.html',
   '/privacy.html',
   '/manifest.json',
   '/css/base.css',
-  '/css/sakura.css',
-  '/css/particles.css',
-  '/css/stars.css',
-  '/css/reading-ambiance.css',
   '/css/header.css',
   '/css/nav.css',
   '/css/quiz.css',
@@ -30,14 +26,11 @@ const ASSETS = [
   '/i18n/es.js',
   '/i18n/de.js',
   '/js/quiz.js',
-  '/js/particles.js',
-  '/js/reading-ambiance.js',
   '/js/guestbook.js',
   '/js/notes.js',
   '/js/feedback.js',
   '/js/widgets.js',
   '/js/theme.js',
-  '/js/header-anim.js',
   '/js/privacy.js',
   '/icons/web-app-manifest-192x192.png',
   '/icons/web-app-manifest-512x512.png'

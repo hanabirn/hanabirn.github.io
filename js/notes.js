@@ -247,7 +247,7 @@ async function handleImportFile(input) {
 
 /* ----- Folders: visitors name their own, nested via parentId, stored locally ----- */
 
-const NOTE_CATEGORY_COLORS = ['#f472b6', '#c084fc', '#60a5fa', '#34d399', '#fbbf24', '#fb7185', '#38bdf8', '#a78bfa'];
+const NOTE_CATEGORY_COLORS = ['#c8432b', '#b8862b', '#3f5a8a', '#5b6b4e', '#8a3a3a', '#a8792a', '#2f6f73', '#6b4f7a'];
 
 function categoryColorForId(id) {
     let hash = 0;

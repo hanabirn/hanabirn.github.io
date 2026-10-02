@@ -107,38 +107,6 @@ function updateBgmUI() {
     if (muteIcon) muteIcon.style.display = bgmPlaying ? 'none' : '';
 }
 
-/* ===================== ✨ 點擊特效 Click Particles ===================== */
-
-const PARTICLE_EMOJIS = ['🌸', '✨', '💮', '⭐'];
-
-function spawnClickParticles(x, y) {
-    const count = 8;
-    for (let i = 0; i < count; i++) {
-        const p = document.createElement('span');
-        const useEmoji = Math.random() < 0.55;
-        if (useEmoji) {
-            p.className = 'click-particle emoji';
-            p.textContent = PARTICLE_EMOJIS[Math.floor(Math.random() * PARTICLE_EMOJIS.length)];
-        } else {
-            p.className = 'click-particle dot';
-            p.style.background = Math.random() < 0.5 ? '#f472b6' : '#c084fc';
-        }
-        const angle = (Math.PI * 2 * i) / count + Math.random() * 0.6;
-        const dist = 35 + Math.random() * 45;
-        p.style.left = x + 'px';
-        p.style.top = y + 'px';
-        p.style.setProperty('--dx', Math.cos(angle) * dist + 'px');
-        p.style.setProperty('--dy', Math.sin(angle) * dist - 20 + 'px');
-        p.style.setProperty('--rot', (Math.random() * 360 - 180) + 'deg');
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 900);
-    }
-}
-
-document.addEventListener('click', (e) => {
-    spawnClickParticles(e.clientX, e.clientY);
-});
-
 /* ===================== 🕐 時鐘 + 天氣 Clock & Weather ===================== */
 
 const WEATHER_EMOJI = {

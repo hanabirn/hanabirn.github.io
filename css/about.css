@@ -2,13 +2,12 @@
 .about-card {
     max-width: 520px;
     margin: 0 auto 20px;
-    background: var(--bg-card-alt);
-    border: 1px solid var(--border-light);
-    border-radius: 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-card);
+    border-radius: 14px;
     padding: 28px 24px;
     text-align: center;
     position: relative;
-    backdrop-filter: blur(10px);
 }
 
 .about-avatar-wrap {
@@ -18,9 +17,7 @@
     margin: 0 auto 0.6rem;
     border-radius: 50%;
     padding: 3px;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff);
-    box-shadow: 0 0 24px rgba(244,114,182,0.35);
-    animation: about-avatar-float 5s ease-in-out infinite;
+    background: var(--primary);
 }
 .about-avatar {
     display: block;
@@ -28,23 +25,14 @@
     height: 100%;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--bg-card-alt);
-}
-@keyframes about-avatar-float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    .about-avatar-wrap { animation: none; }
+    border: 3px solid var(--bg-card);
 }
 
 .about-name {
-    font-family: 'Mochiy Pop One', 'Kosugi Maru', 'ZCOOL KuaiLe', cursive;
+    font-family: var(--font-serif);
     font-size: 2rem;
-    background: linear-gradient(135deg, #ff6b9d, #c44dff);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+    color: var(--text);
     margin-bottom: 0.3rem;
 }
 
@@ -104,11 +92,11 @@
     color: #fff;
 }
 
-.about-tag.jp { background: linear-gradient(135deg, #ff4b5c, #ff6b81); }
-.about-tag.kr { background: linear-gradient(135deg, #3b5998, #5b7bd5); }
-.about-tag.fr { background: linear-gradient(135deg, #0055a4, #4169e1); }
-.about-tag.ru { background: linear-gradient(135deg, #d52b1e, #0039a6); }
-.about-tag.cantonese { background: linear-gradient(135deg, #e8b830, #c4972a); }
+.about-tag.jp { background: #c8432b; }
+.about-tag.kr { background: #3f5a8a; }
+.about-tag.fr { background: #2f4f86; }
+.about-tag.ru { background: #8a3a3a; }
+.about-tag.cantonese { background: #a8792a; }
 
 .about-text {
     color: var(--about-text);
@@ -155,8 +143,8 @@
 .about-social-link.instagram:hover { box-shadow: 0 4px 20px rgba(225,48,108,0.3); }
 .about-social-link.discord { border-color: rgba(88,101,242,0.4); background: rgba(88,101,242,0.15); }
 .about-social-link.discord:hover { box-shadow: 0 4px 20px rgba(88,101,242,0.3); }
-.about-social-link.email { border-color: rgba(244,114,182,0.4); background: rgba(244,114,182,0.12); }
-.about-social-link.email:hover { box-shadow: 0 4px 20px rgba(244,114,182,0.3); }
+.about-social-link.email { border-color: rgba(var(--accent-pink-rgb),0.4); background: rgba(var(--accent-pink-rgb),0.12); }
+.about-social-link.email:hover { box-shadow: 0 4px 20px rgba(var(--accent-pink-rgb),0.3); }
 
 .social-icon-svg {
     display: inline-flex;
@@ -173,6 +161,6 @@
 .about-social-link.facebook .social-icon-svg { color: #1877f2; }
 .about-social-link.instagram .social-icon-svg { color: #e6683c; }
 .about-social-link.discord .social-icon-svg { color: #5865f2; }
-.about-social-link.email .social-icon-svg { color: #f472b6; }
+.about-social-link.email .social-icon-svg { color: var(--accent-pink); }
 
 

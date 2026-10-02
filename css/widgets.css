@@ -9,12 +9,13 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    border: 2px solid rgba(244,114,182,0.4);
+    border: 2px solid var(--line);
     cursor: pointer;
     position: relative;
+    /* a vinyl record: vermilion label, ink grooves (same in both themes) */
     background:
-        radial-gradient(circle at center, #f472b6 0%, #f472b6 16%, #1a1030 17%, #1a1030 22%, #241640 23%, #241640 30%, #1a1030 31%, #1a1030 38%, #241640 39%, #241640 46%, #1a1030 47%, #1a1030 54%, #241640 55%, #241640 62%, #1a1030 63%, #1a1030 100%);
-    box-shadow: 0 0 15px rgba(168,85,247,0.25);
+        radial-gradient(circle at center, #c8432b 0%, #c8432b 16%, #2b2724 17%, #2b2724 22%, #3a3430 23%, #3a3430 30%, #2b2724 31%, #2b2724 38%, #3a3430 39%, #3a3430 46%, #2b2724 47%, #2b2724 54%, #3a3430 55%, #3a3430 62%, #2b2724 63%, #2b2724 100%);
+    box-shadow: 0 2px 0 var(--edge);
     transition: box-shadow 0.3s, border-color 0.3s;
     animation: discSpin 3s linear infinite;
     animation-play-state: paused;
@@ -35,17 +36,15 @@
     position: absolute;
     width: 6px; height: 6px;
     border-radius: 50%;
-    background: #1a1030;
+    background: #2b2724;
     border: 1px solid rgba(255,255,255,0.3);
 }
 .bgm-disc.spinning {
     animation-play-state: running;
-    border-color: #f472b6;
-    box-shadow: 0 0 25px rgba(244,114,182,0.5);
+    border-color: var(--primary);
 }
 .bgm-disc:hover {
-    border-color: #f472b6;
-    box-shadow: 0 0 25px rgba(244,114,182,0.45);
+    border-color: var(--primary);
 }
 
 @keyframes discSpin {
@@ -60,7 +59,7 @@
     transform: translateX(-50%);
     background: var(--bg-widget-panel);
     color: var(--text);
-    border: 1px solid rgba(244,114,182,0.4);
+    border: 1px solid rgba(var(--accent-pink-rgb),0.4);
     border-radius: 12px;
     padding: 8px 12px;
     font-size: 0.8rem;
@@ -82,7 +81,7 @@
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-bottom-color: rgba(244,114,182,0.4);
+    border-bottom-color: rgba(var(--accent-pink-rgb),0.4);
 }
 @keyframes bgmHintBounce {
     0%, 100% { transform: translateX(-50%) translateY(0); }
@@ -94,7 +93,6 @@
     top: calc(100% + 10px);
     left: 50%;
     background: var(--bg-widget-panel);
-    backdrop-filter: blur(8px);
     border: 1px solid var(--border-card);
     border-radius: 14px;
     padding: 10px 14px;
@@ -132,7 +130,7 @@
 }
 .bgm-controls button {
     background: rgba(var(--accent-purple-rgb),0.15);
-    border: 1px solid rgba(168,85,247,0.3);
+    border: 1px solid rgba(var(--accent-purple-rgb),0.3);
     color: var(--text);
     width: 32px;
     height: 28px;
@@ -156,7 +154,7 @@
     height: 4px;
     -webkit-appearance: none;
     appearance: none;
-    background: rgba(168,85,247,0.25);
+    background: rgba(var(--accent-purple-rgb),0.25);
     border-radius: 2px;
     cursor: pointer;
 }
@@ -166,38 +164,8 @@
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background: var(--accent-pink);
+    background: var(--primary);
     cursor: pointer;
-    box-shadow: 0 0 6px rgba(244,114,182,0.5);
-}
-
-/* ===================== ✨ Click Particles ===================== */
-.click-particle {
-    position: fixed;
-    pointer-events: none;
-    z-index: 9998;
-    transform: translate(-50%, -50%);
-    animation: particleBurst 0.85s ease-out forwards;
-}
-.click-particle.emoji {
-    font-size: 14px;
-}
-.click-particle.dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    box-shadow: 0 0 6px currentColor;
-}
-
-@keyframes particleBurst {
-    0% {
-        opacity: 1;
-        transform: translate(-50%, -50%) translate(0, 0) rotate(0deg) scale(1);
-    }
-    100% {
-        opacity: 0;
-        transform: translate(-50%, -50%) translate(var(--dx), var(--dy)) rotate(var(--rot)) scale(0.4);
-    }
 }
 
 /* ===================== 📲 PWA Install Banner ===================== */
@@ -214,11 +182,10 @@
     align-items: center;
     gap: 10px;
     background: var(--bg-widget);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-card);
     border-radius: 30px;
     padding: 10px 14px 10px 18px;
-    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+    box-shadow: 0 4px 20px rgba(var(--accent-purple-rgb),0.3);
     max-width: 92vw;
     transition: opacity 250ms ease-out, transform 250ms ease-out, visibility 250ms ease-out;
 }
@@ -237,11 +204,12 @@
     white-space: nowrap;
 }
 .pwa-install-btn {
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-light-purple));
-    color: #fff;
+    background: var(--primary);
+    color: var(--on-primary);
     border: none;
+    box-shadow: 0 3px 0 var(--primary-edge);
     padding: 7px 16px;
-    border-radius: 18px;
+    border-radius: 10px;
     font-size: 0.82rem;
     font-weight: bold;
     cursor: pointer;
@@ -278,11 +246,10 @@
     align-items: center;
     gap: 10px;
     background: var(--bg-widget);
-    backdrop-filter: blur(10px);
     border: 1px solid var(--border-card);
     border-radius: 30px;
     padding: 10px 14px 10px 18px;
-    box-shadow: 0 4px 20px rgba(168,85,247,0.3);
+    box-shadow: 0 4px 20px rgba(var(--accent-purple-rgb),0.3);
     max-width: 92vw;
     transition: opacity 250ms ease-out, transform 250ms ease-out, visibility 250ms ease-out;
 }
@@ -314,26 +281,21 @@
     right: 20px;
     z-index: 200;
     background: var(--bg-widget);
-    backdrop-filter: blur(8px);
     border: 1px solid var(--border-card);
     border-radius: 14px;
     padding: 10px 16px;
     text-align: center;
-    box-shadow: 0 0 15px rgba(168,85,247,0.2);
+    box-shadow: 0 2px 0 var(--edge);
     transition: all 0.3s;
 }
 .clock-widget:hover {
-    border-color: rgba(244,114,182,0.5);
-    box-shadow: 0 0 25px rgba(244,114,182,0.3);
+    border-color: var(--primary);
 }
 
 .clock-time {
     font-size: 1.15rem;
     font-weight: bold;
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-light-purple));
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: var(--text);
     letter-spacing: 1px;
     font-variant-numeric: tabular-nums;
 }
@@ -354,15 +316,15 @@
     font-size: 0.75rem;
     color: var(--text-pink);
     background: none;
-    border: 1px solid rgba(244,114,182,0.4);
+    border: 1px solid rgba(var(--accent-pink-rgb),0.4);
     border-radius: 10px;
     padding: 2px 8px;
     cursor: pointer;
     transition: all 0.2s;
 }
 .weather-optin-btn:hover {
-    background: rgba(244,114,182,0.15);
-    border-color: rgba(244,114,182,0.7);
+    background: rgba(var(--accent-pink-rgb),0.15);
+    border-color: rgba(var(--accent-pink-rgb),0.7);
 }
 
 .reload-btn {
@@ -380,18 +342,16 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    backdrop-filter: blur(var(--glass-blur));
     transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
         transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
     flex-shrink: 0;
 }
 .reload-btn svg { width: 22px; height: 22px; }
 .reload-btn:hover {
-    background: rgba(var(--accent-pink-rgb),0.18);
+    background: var(--primary-soft);
     color: var(--text-pink);
-    border-color: var(--accent-pink);
-    box-shadow: 0 0 16px rgba(244,114,182,0.35);
-    transform: scale(1.18) rotate(90deg);
+    border-color: var(--primary);
+    transform: scale(1.12) rotate(90deg);
 }
 
 /* ===================== Mobile "more options" FAB ===================== */
@@ -409,9 +369,8 @@
         width: 48px;
         height: 48px;
         border-radius: 50%;
-        border: 2px solid rgba(244,114,182,0.4);
+        border: 2px solid var(--line);
         background: var(--theme-toggle-bg);
-        backdrop-filter: blur(8px);
         align-items: center;
         justify-content: center;
         font-size: 1.4rem;
@@ -422,7 +381,7 @@
     }
     .mobile-fab-toggle.open {
         transform: rotate(90deg);
-        border-color: #f472b6;
+        border-color: var(--accent-pink);
     }
 
     .reload-btn, .tab-settings-btn {

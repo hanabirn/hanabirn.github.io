@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=ZCOOL+KuaiLe&family=Kosugi+Maru&family=Mochiy+Pop+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap');
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -21,21 +21,18 @@ html {
    that visible side to auto, turning body into a second, redundant
    scrollable box right next to html's (a "double scrollbar" bug). */
 body {
-    font-family: "Noto Sans TC", "Microsoft JhengHei", Arial, sans-serif;
-    background: linear-gradient(160deg, var(--bg-body-1) 0%, var(--bg-body-2) 35%, var(--bg-body-1) 60%, var(--bg-body-3) 100%);
+    font-family: var(--font-sans);
+    background: var(--paper);
     color: var(--text);
     min-height: 100vh;
 }
 
-/* ===== Cute Japanese-style font for headings and buttons ===== */
-h1, h2, h3, h4,
-.nav-btn, .lang-pill, .lang-btn, .mode-btn, .tool-btn, .btn {
-    font-family: 'Kosugi Maru', 'ZCOOL KuaiLe', 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+/* ===== Headings in Mincho (serif), controls in the body sans ===== */
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
 }
-
-/* ===== Cyrillic fallback (the decorative CJK fonts above have no Cyrillic glyphs) ===== */
-:lang(ru) {
-    font-family: Arial, "Helvetica Neue", sans-serif;
+button, input, textarea, select {
+    font-family: inherit;
 }
 
 /* ===== Main ===== */
@@ -48,27 +45,14 @@ main {
     transition: opacity 0.2s ease;
 }
 
-/* ===== Card Corners ===== */
-.card-corner {
-    position: absolute;
-    width: 20px; height: 20px;
-    border-color: rgba(244,114,182,0.4);
-    border-style: solid;
-}
-.card-corner.tl { top: 6px; left: 6px; border-width: 2px 0 0 2px; border-radius: 4px 0 0 0; }
-.card-corner.tr { top: 6px; right: 6px; border-width: 2px 2px 0 0; border-radius: 0 4px 0 0; }
-.card-corner.bl { bottom: 6px; left: 6px; border-width: 0 0 2px 2px; border-radius: 0 0 0 4px; }
-.card-corner.br { bottom: 6px; right: 6px; border-width: 0 2px 2px 0; border-radius: 0 0 4px 0; }
-
 /* ===== Cards ===== */
 .lang-card,
 .setup-card,
 .mode-card {
     position: relative;
     background: var(--bg-card);
-    backdrop-filter: blur(10px);
     padding: 28px 24px;
-    border-radius: 16px;
+    border-radius: 14px;
     margin-bottom: 20px;
     border: 1px solid var(--border-card);
     box-shadow:
@@ -81,12 +65,10 @@ main {
 .mode-card h3 {
     margin: 0 0 18px;
     text-align: center;
-    font-size: 1.1rem;
-    background: linear-gradient(90deg, var(--text-pink), var(--accent-light-purple));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    letter-spacing: 3px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 2px;
 }
 
 .examquiz-hint {
@@ -111,14 +93,6 @@ footer {
     padding: 25px 20px 20px;
 }
 
-.footer-sakura {
-    color: var(--text-pink);
-    font-size: 1.2rem;
-    margin-bottom: 6px;
-    animation: float 3s ease-in-out infinite;
-    filter: drop-shadow(0 0 6px rgba(244,114,182,0.4));
-}
-
 footer p {
     color: var(--text-muted);
     font-size: 0.8rem;
@@ -129,19 +103,21 @@ footer p {
     display: inline-block;
     margin-top: 12px;
     padding: 8px 20px;
-    border-radius: 999px;
-    background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-    color: #fff;
+    border-radius: var(--radius);
+    background: var(--surface);
+    color: var(--text);
+    border: 2px solid var(--line);
+    border-bottom: 4px solid var(--edge);
     font-size: 0.85rem;
+    font-weight: 700;
     text-decoration: none;
     letter-spacing: 1px;
-    box-shadow: 0 4px 14px rgba(var(--accent-pink-rgb), 0.35);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.08s ease, border-bottom-width 0.08s ease;
 }
 
-.footer-support-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(var(--accent-pink-rgb), 0.5);
+.footer-support-btn:active {
+    transform: translateY(2px);
+    border-bottom-width: 2px;
 }
 
 .footer-links {
@@ -186,7 +162,8 @@ footer p {
 .splash-text {
     font-size: 1.6rem;
     font-weight: bold;
-    color: var(--text-pink);
+    color: var(--text);
+    font-family: var(--font-serif);
     letter-spacing: 3px;
     margin-bottom: 10px;
 }

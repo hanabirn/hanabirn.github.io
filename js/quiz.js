@@ -441,7 +441,7 @@ function selectExamSet(examId) {
     document.getElementById('mistake-card').style.display = 'none';
     document.getElementById('stats-card').style.display = 'none';
     statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
-    statusMsg.style.color = '#c8a2e0';
+    statusMsg.style.color = 'var(--text-secondary)';
 
     const isTopik = examId.startsWith('topik_');
     const isHsk = examId.startsWith('hsk_');
@@ -457,11 +457,11 @@ function selectExamSet(examId) {
             if (vocabularyList.length >= 4) {
                 saveVocabCache(currentLang);
                 statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
-                statusMsg.style.color = '#f472b6';
+                statusMsg.style.color = 'var(--accent-green)';
                 if (isHsk) showChineseSelection(); else showModeSelection();
             } else {
                 statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
-                statusMsg.style.color = '#ff5252';
+                statusMsg.style.color = 'var(--accent-red)';
             }
         },
         error: function() {
@@ -470,11 +470,11 @@ function selectExamSet(examId) {
                 vocabularyList = cached.vocabularyList;
                 readingList = cached.readingList || [];
                 statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
-                statusMsg.style.color = '#fbbf24';
+                statusMsg.style.color = 'var(--accent-yellow)';
                 if (isHsk) showChineseSelection(); else showModeSelection();
             } else {
                 statusMsg.innerText = t('load_fail_no_cache');
-                statusMsg.style.color = '#ff5252';
+                statusMsg.style.color = 'var(--accent-red)';
             }
         }
     });
@@ -505,7 +505,7 @@ function loadSheetData(url) {
     }
 
     statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
-    statusMsg.style.color = '#c8a2e0';
+    statusMsg.style.color = 'var(--text-secondary)';
 
     const csvUrl = `https://docs.google.com/spreadsheets/d/${sheetId}/export?format=csv&gid=0`;
 
@@ -513,11 +513,11 @@ function loadSheetData(url) {
         if (vocabularyList.length >= 4) {
             saveVocabCache(currentLang);
             statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
-            statusMsg.style.color = '#f472b6';
+            statusMsg.style.color = 'var(--accent-green)';
             if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
         } else {
             statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
-            statusMsg.style.color = '#ff5252';
+            statusMsg.style.color = 'var(--accent-red)';
         }
     }
 
@@ -559,11 +559,11 @@ function loadSheetData(url) {
                 vocabularyList = cached.vocabularyList;
                 readingList = cached.readingList || [];
                 statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
-                statusMsg.style.color = '#fbbf24';
+                statusMsg.style.color = 'var(--accent-yellow)';
                 if (currentLang === 'zh') { showChineseSelection(); } else { showModeSelection(); }
             } else {
                 statusMsg.innerText = t('load_fail_no_cache');
-                statusMsg.style.color = '#ff5252';
+                statusMsg.style.color = 'var(--accent-red)';
             }
         }
     });
@@ -1584,17 +1584,17 @@ function renderQuizStats() {
             return { x, y, pct: r.pct };
         });
         const polyline = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-        const circles = pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" fill="#f472b6"><title>${p.pct}%</title></circle>`).join('');
+        const circles = pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" style="fill:var(--primary)"><title>${p.pct}%</title></circle>`).join('');
         html += `<div class="stats-chart-title">${t('stats_trend')}</div>
         <div class="stats-chart">
             <svg viewBox="0 0 300 110" preserveAspectRatio="none">
-                <line x1="10" y1="15" x2="290" y2="15" stroke="rgba(249,168,212,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-                <line x1="10" y1="55" x2="290" y2="55" stroke="rgba(249,168,212,0.15)" stroke-width="1" stroke-dasharray="4 3"/>
-                <line x1="10" y1="95" x2="290" y2="95" stroke="rgba(249,168,212,0.3)" stroke-width="1"/>
-                <text x="8" y="13" fill="rgba(249,168,212,0.5)" font-size="8" text-anchor="end">100</text>
-                <text x="8" y="58" fill="rgba(249,168,212,0.5)" font-size="8" text-anchor="end">50</text>
-                <text x="8" y="98" fill="rgba(249,168,212,0.5)" font-size="8" text-anchor="end">0</text>
-                <polyline points="${polyline}" fill="none" stroke="#c084fc" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+                <line x1="10" y1="15" x2="290" y2="15" style="stroke:var(--line)" stroke-width="1" stroke-dasharray="4 3"/>
+                <line x1="10" y1="55" x2="290" y2="55" style="stroke:var(--line)" stroke-width="1" stroke-dasharray="4 3"/>
+                <line x1="10" y1="95" x2="290" y2="95" style="stroke:var(--edge)" stroke-width="1"/>
+                <text x="8" y="13" style="fill:var(--text-muted)" font-size="8" text-anchor="end">100</text>
+                <text x="8" y="58" style="fill:var(--text-muted)" font-size="8" text-anchor="end">50</text>
+                <text x="8" y="98" style="fill:var(--text-muted)" font-size="8" text-anchor="end">0</text>
+                <polyline points="${polyline}" fill="none" style="stroke:var(--primary)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                 ${circles}
             </svg>
         </div>`;
@@ -1694,91 +1694,83 @@ function shareScoreCard() {
     const ctx = cvs.getContext('2d');
     ctx.scale(2, 2);
 
-    const g = ctx.createLinearGradient(0, 0, W, H);
-    g.addColorStop(0, '#1a1035');
-    g.addColorStop(0.5, '#2d1b69');
-    g.addColorStop(1, '#1a1035');
-    ctx.fillStyle = g;
+    /* An exported image, so it always uses the light 和紙 palette
+       (canvas can't read the page's CSS variables anyway). */
+    ctx.fillStyle = '#f6f1e6';
     roundRect(ctx, 0, 0, W, H, 20);
     ctx.fill();
 
-    const rg = ctx.createRadialGradient(W * 0.8, H * 0.2, 10, W * 0.8, H * 0.2, 200);
-    rg.addColorStop(0, 'rgba(244,114,182,0.18)');
-    rg.addColorStop(1, 'rgba(244,114,182,0)');
-    ctx.fillStyle = rg;
-    ctx.fillRect(0, 0, W, H);
+    ctx.fillStyle = '#c8432b';
+    ctx.fillRect(12, 28, 4, 34);
 
-    const rg2 = ctx.createRadialGradient(W * 0.15, H * 0.85, 10, W * 0.15, H * 0.85, 180);
-    rg2.addColorStop(0, 'rgba(168,85,247,0.15)');
-    rg2.addColorStop(1, 'rgba(168,85,247,0)');
-    ctx.fillStyle = rg2;
-    ctx.fillRect(0, 0, W, H);
-
-    ctx.strokeStyle = 'rgba(255,255,255,0.08)';
+    ctx.strokeStyle = '#d9cfbc';
     ctx.lineWidth = 1;
     roundRect(ctx, 12, 12, W - 24, H - 24, 16);
     ctx.stroke();
 
     const flag = QUIZ_LANG_FLAGS[currentLang] || '';
     const langLabel = flag + ' ' + (t('quiz_' + currentLang) || currentLang);
-    ctx.font = '600 18px "Noto Sans TC", "Noto Sans JP", sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.9)';
+    ctx.font = '700 18px "Noto Serif TC", "Noto Sans TC", "Noto Sans JP", serif';
+    ctx.fillStyle = '#2b2724';
     ctx.textAlign = 'left';
     ctx.fillText(langLabel, 36, 50);
 
     if (reviewMode) {
         ctx.font = '14px "Noto Sans TC", sans-serif';
-        ctx.fillStyle = 'rgba(200,162,224,0.8)';
+        ctx.fillStyle = '#93301d';
         ctx.fillText('📖 ' + (t('review_label') || 'Review'), 36, 74);
     }
 
     ctx.textAlign = 'right';
     ctx.font = '13px "Noto Sans TC", "Noto Sans JP", sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.4)';
+    ctx.fillStyle = 'rgba(43,39,36,0.45)';
     const now = new Date();
     const dateStr = `${now.getFullYear()}/${now.getMonth()+1}/${now.getDate()}`;
     ctx.fillText(dateStr, W - 36, 40);
 
     ctx.textAlign = 'center';
 
-    const pctColor = pct >= 80 ? '#6ee7b7' : pct >= 60 ? '#fbbf24' : '#f87171';
-    ctx.font = 'bold 72px "Noto Sans TC", "Noto Sans JP", sans-serif';
+    const pctColor = pct >= 80 ? '#5b6b4e' : pct >= 60 ? '#b8862b' : '#c8432b';
+    ctx.font = '900 72px "Noto Serif TC", "Noto Sans TC", serif';
     ctx.fillStyle = pctColor;
     ctx.fillText(pct + '%', W / 2, 145);
 
     ctx.font = '15px "Noto Sans TC", "Noto Sans JP", sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.5)';
+    ctx.fillStyle = 'rgba(43,39,36,0.6)';
     const pctLabel = (t('result_correct') || 'Correct') + ' ' + correctCount + ' / ' + total;
     ctx.fillText(pctLabel, W / 2, 172);
 
     const bx = 36, bw = (W - 72 - 24) / 3;
     const by = 195, bh = 70;
     const statsData = [
-        { label: t('result_correct') || 'Correct', value: correctCount, color: '#6ee7b7' },
-        { label: t('result_wrong') || 'Wrong', value: wrongCount, color: '#f87171' },
-        { label: t('result_score') || 'Score', value: score, color: '#c0a2e0' }
+        { label: t('result_correct') || 'Correct', value: correctCount, color: '#5b6b4e' },
+        { label: t('result_wrong') || 'Wrong', value: wrongCount, color: '#c8432b' },
+        { label: t('result_score') || 'Score', value: score, color: '#93301d' }
     ];
     statsData.forEach((s, i) => {
         const x = bx + i * (bw + 12);
-        ctx.fillStyle = 'rgba(255,255,255,0.06)';
+        ctx.fillStyle = '#cbbfa8';            // chunky bottom edge
+        roundRect(ctx, x, by + 4, bw, bh, 12);
+        ctx.fill();
+        ctx.fillStyle = '#fbf7ef';
         roundRect(ctx, x, by, bw, bh, 12);
         ctx.fill();
-        ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-        ctx.lineWidth = 1;
+        ctx.strokeStyle = '#d9cfbc';
+        ctx.lineWidth = 1.5;
         roundRect(ctx, x, by, bw, bh, 12);
         ctx.stroke();
         ctx.fillStyle = s.color;
         ctx.font = 'bold 28px "Noto Sans TC", "Noto Sans JP", sans-serif';
         ctx.textAlign = 'center';
         ctx.fillText(String(s.value), x + bw / 2, by + 35);
-        ctx.fillStyle = 'rgba(255,255,255,0.55)';
+        ctx.fillStyle = 'rgba(43,39,36,0.6)';
         ctx.font = '13px "Noto Sans TC", "Noto Sans JP", sans-serif';
         ctx.fillText(s.label, x + bw / 2, by + 56);
     });
 
     ctx.textAlign = 'right';
     ctx.font = '13px "Noto Sans TC", "Noto Sans JP", sans-serif';
-    ctx.fillStyle = 'rgba(255,255,255,0.25)';
+    ctx.fillStyle = 'rgba(43,39,36,0.4)';
     ctx.fillText('Hanabiの小天地 ✦', W - 36, H - 24);
 
     cvs.toBlob(function(blob) {
@@ -1897,16 +1889,16 @@ function startTimer() {
     void bar.offsetWidth;
     bar.style.transition = 'width ' + quizTimerSec + 's linear, background 0.3s';
     bar.style.width = '0%';
-    if (timeLeft <= 5) bar.style.background = '#f87171';
-    else if (timeLeft <= 10) bar.style.background = '#fbbf24';
-    else bar.style.background = '#6ee7b7';
+    if (timeLeft <= 5) bar.style.background = 'var(--accent-red)';
+    else if (timeLeft <= 10) bar.style.background = 'var(--accent-yellow)';
+    else bar.style.background = 'var(--success)';
 
     clearInterval(timerInterval);
     timerInterval = setInterval(function() {
         timeLeft--;
         display.textContent = '\u23F1 ' + timeLeft;
-        if (timeLeft <= 5) bar.style.background = '#f87171';
-        else if (timeLeft <= 10) bar.style.background = '#fbbf24';
+        if (timeLeft <= 5) bar.style.background = 'var(--accent-red)';
+        else if (timeLeft <= 10) bar.style.background = 'var(--accent-yellow)';
         if (timeLeft <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
@@ -2302,9 +2294,9 @@ function renderFlashcard() {
     } else {
         const isKnown = flashcardKnownSet.has(cardKey);
         const isUnknown = flashcardUnknownSet.has(cardKey);
-        hint.innerHTML = isKnown ? '<span style="color:#6ee7b7">' + t('flashcard_known') + '</span>' : '';
+        hint.innerHTML = isKnown ? '<span style="color:var(--accent-green)">' + t('flashcard_known') + '</span>' : '';
         if (!isKnown && isUnknown) {
-            hint.innerHTML = '<span style="color:#f87171">' + t('flashcard_unknown') + '</span>';
+            hint.innerHTML = '<span style="color:var(--accent-red)">' + t('flashcard_unknown') + '</span>';
         }
     }
     counter.textContent = (flashcardIdx + 1) + ' / ' + flashcardList.length;
@@ -2405,9 +2397,9 @@ function showMasteredList() {
     } else {
         let html = '';
         known.forEach(word => {
-            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:rgba(110,231,183,0.08); border-radius:8px;">' +
+            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:var(--success-bg); border-radius:8px;">' +
                 '<span>' + escHtml(word) + '</span>' +
-                '<button onclick="removeFromMastered(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:#f87171; cursor:pointer; font-size:0.9em;">\u2716</button>' +
+                '<button onclick="removeFromMastered(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:var(--accent-red); cursor:pointer; font-size:0.9em;">\u2716</button>' +
                 '</div>';
         });
         container.innerHTML = html;
@@ -2452,9 +2444,9 @@ function showUnknownList() {
     } else {
         let html = '';
         unknown.forEach(word => {
-            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:rgba(248,113,113,0.08); border-radius:8px;">' +
+            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:var(--danger-bg); border-radius:8px;">' +
                 '<span>' + escHtml(word) + '</span>' +
-                '<button onclick="removeFromUnknown(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:#f87171; cursor:pointer; font-size:0.9em;">&#10006;</button>' +
+                '<button onclick="removeFromUnknown(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:var(--accent-red); cursor:pointer; font-size:0.9em;">&#10006;</button>' +
                 '</div>';
         });
         container.innerHTML = html;
@@ -2956,13 +2948,13 @@ function submitListeningAnswer() {
         score += 10;
         feedback.innerText = t('correct');
         feedback.className = 'feedback correct';
-        input.style.borderColor = '#6ee7b7';
+        input.style.borderColor = 'var(--success)';
         playSound(true);
     } else {
         score -= 3;
         feedback.innerText = t('wrong') + correctAnswer;
         feedback.className = 'feedback wrong';
-        input.style.borderColor = '#f87171';
+        input.style.borderColor = 'var(--danger)';
         playSound(false);
     }
 
