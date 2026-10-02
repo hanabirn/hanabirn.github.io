@@ -89,4 +89,6 @@ I18N.ru = {
         notes_export: 'Экспорт резервной копии', notes_import: 'Импорт резервной копии', notes_import_invalid: 'Похоже, файл не тот — выберите файл резервной копии, экспортированный отсюда.', notes_import_confirm: 'Будет импортировано {notes} заметок и {folders} папок (добавятся к существующим, ничего не перезапишется). Продолжить?', notes_import_success: 'Импорт завершён — добавлено {n} заметок!',
         match3_level_n: 'Уровень {n}', match3_win_title: '🎉 Уровень пройден!', match3_next_level: 'Следующий уровень ▶', match3_back_to_levels: '↩ К уровням', match3_retry: '🔄 Заново',
         footer_support: '☕ Угостить кофе', footer_visits: 'Посещений: {n}', footer_privacy: 'Политика конфиденциальности',
+        // phone tab bar + More sheet
+        tab_quiz: 'Слова', tab_exam: 'Экзамены', tab_notes: 'Заметки', tab_more: 'Ещё', more_settings: 'Настройки отображения',
 };

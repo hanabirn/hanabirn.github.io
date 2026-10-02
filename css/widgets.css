@@ -354,56 +354,23 @@
     transform: scale(1.12) rotate(90deg);
 }
 
-/* ===================== Mobile "more options" FAB ===================== */
-.mobile-fab-toggle {
-    display: none;
-}
-
+/* ===================== Responsive ===================== */
 @media (max-width: 768px) {
-    .mobile-fab-toggle {
-        display: flex;
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        z-index: 210;
-        width: 48px;
-        height: 48px;
-        border-radius: 50%;
-        border: 2px solid var(--line);
-        background: var(--theme-toggle-bg);
-        align-items: center;
-        justify-content: center;
-        font-size: 1.4rem;
-        line-height: 1;
-        cursor: pointer;
-        color: var(--text);
-        transition: all 0.3s;
-    }
-    .mobile-fab-toggle.open {
-        transform: rotate(90deg);
-        border-color: var(--accent-pink);
-    }
-
+    /* settings + reload live in the tab bar's More sheet on phones
+       (this file loads after nav.css, so the hide has to live here) */
     .reload-btn, .tab-settings-btn {
         display: none;
     }
-    body.mobile-fab-open .reload-btn,
-    body.mobile-fab-open .tab-settings-btn {
-        display: flex;
-    }
-}
-
-/* ===================== Responsive ===================== */
-@media (max-width: 768px) {
+    /* the clock floats just above the bottom tab bar */
     .clock-widget {
-        bottom: 14px;
-        right: 72px;
+        bottom: calc(80px + env(safe-area-inset-bottom));
+        right: 12px;
         padding: 7px 12px;
     }
     .clock-time { font-size: 0.95rem; }
-    /* The clock sits bottom-centre-right here (~82px tall), so lift both
-       bottom banners clear of it instead of covering it. */
+    /* the bottom edge is taken by the tab bar and the clock, so the
+       install / update banners drop in from the top instead */
     .pwa-install-banner,
-    .update-banner { bottom: 108px; }
-    .pwa-install-banner.show ~ .update-banner { bottom: 168px; }
+    .update-banner { top: 12px; bottom: auto; }
+    .pwa-install-banner.show ~ .update-banner { top: 72px; bottom: auto; }
 }

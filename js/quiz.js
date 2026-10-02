@@ -1,8 +1,20 @@
 applyLang(siteLang);
 
+/* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
+const MORE_TABS = ['guide', 'about', 'guestbook', 'feedback'];
+
+/* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
+   active state is set by data-tab, because each page has a button in the desktop
+   nav AND in the phone tab bar / More sheet and both must stay in sync. */
 function switchPage(page, el) {
-    document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-    el.classList.add('active');
+    document.querySelectorAll('.nav-btn').forEach(b => {
+        const on = b.dataset.tab === page;
+        b.classList.toggle('active', on);
+        if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
+    const more = document.getElementById('tabbar-more');
+    if (more) more.classList.toggle('active', MORE_TABS.includes(page));
+    if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
     const pages = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
@@ -15,6 +27,7 @@ function switchPage(page, el) {
             if (el) el.style.display = p === page ? 'block' : 'none';
         });
         main.style.opacity = '1';
+        window.scrollTo(0, 0);
         if (page === 'guestbook') loadGuestbookMessages();
         if (page === 'notes') renderNotes();
     }, 120);
@@ -22,7 +35,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['guide', 'about', 'quiz', 'examquiz', 'notes', 'guestbook', 'feedback'];
+const ALL_TABS = ['quiz', 'examquiz', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['guide'];
 
 function getTabVisibility() {
@@ -46,8 +59,9 @@ function applyTabVisibility() {
     const v = getTabVisibility();
 
     ALL_TABS.forEach(key => {
-        const btn = document.querySelector(`.nav-btn[data-tab="${key}"]`);
-        if (btn) btn.style.display = v[key] ? '' : 'none';
+        document.querySelectorAll(`.nav-btn[data-tab="${key}"]`).forEach(btn => {
+            btn.style.display = v[key] ? '' : 'none';
+        });
     });
 
     const activeBtn = document.querySelector('.nav-btn.active');

@@ -4,25 +4,44 @@ header {
     z-index: 20;
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
-    text-align: center;
-    padding: 1.2rem 1rem 1.2rem;
+    padding: 0 0 14px;
 }
 
-.title-row {
+/* Brand (mascot + site name) on the left, language / BGM / theme on the right. */
+.header-bar {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 14px 20px 12px;
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin: 0 0 6px;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+.brand-mark {
+    width: 52px;
+    flex: none;
+}
+
+.brand-text {
+    min-width: 0;
 }
 
 header h1 {
     margin: 0;
-    font-size: 2rem;
+    font-size: 1.6rem;
     font-weight: 900;
+    line-height: 1.2;
     color: var(--text);
-    letter-spacing: 3px;
+    letter-spacing: 2px;
+    white-space: nowrap;
 }
 
 .lang-globe {
@@ -127,25 +146,35 @@ header h1 {
 .flag--es { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath fill='%23AA151B' d='M0 0h3v2H0z'/%3E%3Cpath fill='%23F1BF00' d='M0 .5h3v1H0z'/%3E%3C/svg%3E"); }
 .flag--de { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Cpath d='M0 0h3v2H0z'/%3E%3Cpath fill='%23D00' d='M0 .667h3v1.333H0z'/%3E%3Cpath fill='%23FFCE00' d='M0 1.333h3v.667H0z'/%3E%3C/svg%3E"); }
 
-.subtitle-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 14px;
-}
-
 .subtitle {
     color: var(--text-secondary);
-    font-size: 0.88rem;
-    letter-spacing: 3px;
-    margin-bottom: 0;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    margin: 2px 0 0;
 }
 
 .subtitle-controls {
     display: flex;
     align-items: center;
     gap: 12px;
+    flex: none;
+}
+
+@media (max-width: 768px) {
+    header { padding-bottom: 0; }
+    .header-bar { padding: 10px 14px; gap: 10px; }
+    /* the brand gives way to the controls: the title ellipsises rather
+       than running underneath the language button */
+    .brand { gap: 8px; flex: 1; }
+    .brand-mark { width: 32px; }
+    .brand-text { overflow: hidden; }
+    header h1 {
+        font-size: 1.05rem;
+        letter-spacing: 0.5px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .subtitle { display: none; }
+    .subtitle-controls { gap: 8px; }
+    .lang-globe-icon { display: none; }
 }

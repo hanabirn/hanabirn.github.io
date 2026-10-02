@@ -13,6 +13,7 @@ const ASSETS = [
   '/css/notes.css',
   '/css/guide.css',
   '/css/widgets.css',
+  '/css/mascot.css',
   '/css/responsive.css',
   '/css/theme.css',
   '/js/i18n.js',

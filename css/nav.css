@@ -1,12 +1,19 @@
-/* ===== Navigation ===== */
+/* ===== Navigation =====
+   Desktop: pill tabs under the header (.main-nav). Phones (<=768px): the
+   bottom .tabbar plus the "More" sheet. Buttons in all three carry
+   .nav-btn + data-tab so switchPage() keeps them in sync, so the pill look
+   below is scoped to .main-nav. */
 .main-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
 }
 
-.nav-btn {
+.main-nav .nav-btn {
     background: transparent;
     color: var(--text-secondary);
     border: 1px solid var(--nav-border);
@@ -19,12 +26,12 @@
     overflow: hidden;
 }
 
-.nav-btn:hover {
+.main-nav .nav-btn:hover {
     color: var(--text);
     border-color: var(--primary);
 }
 
-.nav-btn.active {
+.main-nav .nav-btn.active {
     background: var(--primary);
     color: var(--on-primary);
     font-weight: bold;
@@ -185,4 +192,147 @@
     border-color: var(--primary);
     box-shadow: 0 3px 0 var(--primary-edge);
     font-weight: bold;
+}
+
+/* ===== Phone tab bar ===== */
+.tabbar {
+    display: none;
+}
+
+/* ===== "More" sheet ===== */
+.more-sheet-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 950;
+    background: rgba(20,18,16,0.45);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-out, visibility 0.2s ease-out;
+}
+.more-sheet-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.more-sheet {
+    width: 100%;
+    max-width: 520px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    padding: 8px 14px calc(16px + env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    transition: transform 0.28s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.more-sheet-overlay.show .more-sheet {
+    transform: translateY(0);
+}
+.more-sheet-handle {
+    width: 40px;
+    height: 5px;
+    border-radius: 3px;
+    background: var(--line);
+    margin: 4px auto 10px;
+}
+.more-sheet-title {
+    font-size: 1rem;
+    margin: 0 10px 6px;
+    color: var(--text);
+}
+.more-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 13px 12px;
+    background: none;
+    border: none;
+    border-radius: 12px;
+    color: var(--text);
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.more-item svg {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    color: var(--text-secondary);
+}
+.more-item:hover,
+.more-item:active {
+    background: var(--bg-section-hover);
+}
+.more-item.active {
+    color: var(--primary);
+    background: var(--primary-soft);
+    font-weight: 700;
+}
+.more-item.active svg {
+    color: var(--primary);
+}
+.more-sep {
+    height: 1px;
+    background: var(--line);
+    margin: 6px 10px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .more-sheet, .more-sheet-overlay { transition-duration: 0.01s; }
+}
+
+@media (max-width: 768px) {
+    .main-nav { display: none; }
+
+    /* keep the last bit of the page clear of the fixed tab bar */
+    body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+
+    .tabbar {
+        display: flex;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 300;
+        background: var(--header-bg);
+        border-top: 1px solid var(--line);
+        padding: 6px 6px calc(6px + env(safe-area-inset-bottom));
+    }
+    .tabbar-btn {
+        flex: 1;
+        min-height: 52px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 3px;
+        background: none;
+        border: none;
+        border-radius: 12px;
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: color 0.15s, transform 0.1s;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .tabbar-btn svg {
+        width: 24px;
+        height: 24px;
+    }
+    .tabbar-btn.active {
+        color: var(--primary);
+    }
+    .tabbar-btn.active svg {
+        stroke-width: 2.2;
+    }
+    .tabbar-btn:active {
+        transform: scale(0.94);
+    }
+
 }

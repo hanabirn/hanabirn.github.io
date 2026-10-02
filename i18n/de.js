@@ -89,4 +89,6 @@ I18N.de = {
         notes_export: 'Backup exportieren', notes_import: 'Backup importieren', notes_import_invalid: 'Diese Datei sieht nicht richtig aus — bitte eine Backup-Datei wählen, die von hier exportiert wurde.', notes_import_confirm: '{notes} Notizen und {folders} Ordner werden importiert (zu deinen bestehenden Notizen hinzugefügt, nichts wird überschrieben). Fortfahren?', notes_import_success: 'Import abgeschlossen — {n} Notizen hinzugefügt!',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level geschafft!', match3_next_level: 'Nächstes Level ▶', match3_back_to_levels: '↩ Zurück zur Levelauswahl', match3_retry: '🔄 Erneut versuchen',
         footer_support: '☕ Spendier mir einen Kaffee', footer_visits: '{n} Besuche', footer_privacy: 'Datenschutzerklärung',
+        // phone tab bar + More sheet
+        tab_quiz: 'Vokabeln', tab_exam: 'Prüfungen', tab_notes: 'Notizen', tab_more: 'Mehr', more_settings: 'Anzeigeeinstellungen',
 };

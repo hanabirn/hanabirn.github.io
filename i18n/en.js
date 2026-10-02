@@ -89,4 +89,6 @@ I18N.en = {
         notes_export: 'Export backup', notes_import: 'Import backup', notes_import_invalid: "That file doesn't look right — please pick a backup file exported from here.", notes_import_confirm: "About to import {notes} notes and {folders} folders (added alongside your existing notes, nothing will be overwritten). Continue?", notes_import_success: 'Import complete — added {n} notes!',
         match3_level_n: 'Level {n}', match3_win_title: '🎉 Level Clear!', match3_next_level: 'Next Level ▶', match3_back_to_levels: '↩ Back to Levels', match3_retry: '🔄 Retry',
         footer_support: '☕ Buy me a coffee', footer_visits: '{n} visits', footer_privacy: 'Privacy Policy',
+        // phone tab bar + More sheet
+        tab_quiz: 'Words', tab_exam: 'Exams', tab_notes: 'Notes', tab_more: 'More', more_settings: 'Display settings',
 };

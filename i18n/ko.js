@@ -89,4 +89,6 @@ I18N.ko = {
         notes_export: '백업 내보내기', notes_import: '백업 가져오기', notes_import_invalid: '파일 형식이 올바르지 않아요. 여기서 내보낸 백업 파일을 선택해주세요.', notes_import_confirm: '메모 {notes}개, 폴더 {folders}개를 가져올게요 (기존 메모에 추가되며 덮어쓰지 않아요). 계속할까요?', notes_import_success: '가져오기 완료! {n}개의 메모가 추가됐어요.',
         match3_level_n: '{n} 레벨', match3_win_title: '🎉 레벨 클리어!', match3_next_level: '다음 레벨 ▶', match3_back_to_levels: '↩ 레벨 선택으로', match3_retry: '🔄 다시하기',
         footer_support: '☕ 커피 한 잔 사주기', footer_visits: '방문 {n}회', footer_privacy: '개인정보 처리방침',
+        // phone tab bar + More sheet
+        tab_quiz: '단어', tab_exam: '검정', tab_notes: '메모', tab_more: '더보기', more_settings: '표시 설정',
 };

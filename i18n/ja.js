@@ -89,4 +89,6 @@ I18N.ja = {
         notes_export: 'バックアップを書き出す', notes_import: 'バックアップを読み込む', notes_import_invalid: 'このファイルは正しくないようです。ここから書き出したバックアップファイルを選んでください。', notes_import_confirm: 'メモ {notes} 件、フォルダ {folders} 個を読み込みます（既存のメモに追加されるだけで、上書きはされません）。よろしいですか？', notes_import_success: '読み込み完了！メモを {n} 件追加しました。',
         match3_level_n: 'ステージ {n}', match3_win_title: '🎉 クリア！', match3_next_level: '次のステージ ▶', match3_back_to_levels: '↩ ステージ選択に戻る', match3_retry: '🔄 もう一度',
         footer_support: '☕ コーヒーをおごる', footer_visits: '訪問数 {n}', footer_privacy: 'プライバシーポリシー',
+        // phone tab bar + More sheet
+        tab_quiz: '単語', tab_exam: '検定', tab_notes: 'メモ', tab_more: 'その他', more_settings: '表示設定',
 };

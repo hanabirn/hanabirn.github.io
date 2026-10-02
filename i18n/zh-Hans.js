@@ -90,4 +90,6 @@ I18N['zh-Hans'] = {
         notes_export: '导出备份', notes_import: '导入备份', notes_import_invalid: '这个文件格式不正确，请选择之前导出的备份文件。', notes_import_confirm: '即将导入 {notes} 则笔记、{folders} 个文件夹（会加进现有的笔记里，不会覆盖），确定吗？', notes_import_success: '导入完成，添加了 {n} 则笔记！',
         match3_level_n: '第 {n} 关', match3_win_title: '🎉 过关！', match3_next_level: '下一关 ▶', match3_back_to_levels: '↩ 返回关卡菜单', match3_retry: '🔄 重玩',
         footer_support: '☕ 请我喝杯咖啡', footer_visits: '{n} 次访问', footer_privacy: '隐私政策',
+        // phone tab bar + More sheet
+        tab_quiz: '单词', tab_exam: '检定', tab_notes: '记事本', tab_more: '更多', more_settings: '显示设置',
 };

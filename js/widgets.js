@@ -207,17 +207,27 @@ function initWeatherOptin() {
 }
 
 /* ===================== 📱 Mobile "more options" FAB ===================== */
-function toggleMobileFab() {
-    document.body.classList.toggle('mobile-fab-open');
-    const btn = document.getElementById('mobile-fab-toggle');
-    if (btn) btn.classList.toggle('open');
+/* ===================== 📱 Tab bar "More" sheet (phones) ===================== */
+function setMoreSheet(open) {
+    const sheet = document.getElementById('more-sheet');
+    const btn = document.getElementById('tabbar-more');
+    if (!sheet) return;
+    sheet.classList.toggle('show', open);
+    if (btn) btn.setAttribute('aria-expanded', String(open));
 }
 
-function closeMobileFab() {
-    document.body.classList.remove('mobile-fab-open');
-    const btn = document.getElementById('mobile-fab-toggle');
-    if (btn) btn.classList.remove('open');
+function toggleMoreSheet() {
+    const sheet = document.getElementById('more-sheet');
+    setMoreSheet(!(sheet && sheet.classList.contains('show')));
 }
+
+function closeMoreSheet() {
+    setMoreSheet(false);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMoreSheet();
+});
 
 /* ===================== 🌐 Language Dropdown ===================== */
 function toggleLangMenu(forceOpen) {
