@@ -1,7 +1,7 @@
 /* ===== Home dashboard (#page-home) =====
    Everything here is derived from what js/quiz.js already stores locally:
    daily_activity (words practised per day) and calcStreak() for the goal ring,
-   week dots and streak; last_quiz_set for "continue"; srs_cards and
+   week dots and streak; last_quiz_set for "continue"; srs_quiz and
    quiz_mistakes for the review cards; quiz_records for "recent practice".
    The only new key is daily_goal. renderHome() runs on load, whenever the
    home page is opened, and on every language switch (refreshDynamicContent). */
@@ -25,11 +25,9 @@ function homeTodayCount() {
     return getDailyActivity()[activityDayKey(Date.now())] || 0;
 }
 
-/* Cards are written by the flashcard/SRS flow; one that has never been
-   reviewed isn't stored at all, so "due" only counts words already seen. */
+/* SRS cards are created by answering quiz questions (quiz.js gradeSrsQuizCard). */
 function homeSrsDueCount() {
-    const now = Date.now();
-    return Object.values(getSrsCards()).filter(c => c && c.seen && c.due <= now).length;
+    return srsQuizDueCount();
 }
 
 function homeGreetingKey() {
@@ -168,6 +166,7 @@ function renderHome() {
    first so backToLanguage() doesn't bounce to the exam picker. */
 function homeResetQuizPage() {
     currentLang = '';
+    reviewMode = false; // so backToLanguage() doesn't route an unfinished SRS review home
     backToLanguage();
     switchPage('quiz', null);
 }
@@ -186,8 +185,12 @@ function homeContinue() {
 }
 
 function homeOpenSrs() {
+    if (srsQuizDueCount() === 0) {
+        showShareToast(t('srs_all_done'));
+        return;
+    }
     homeResetQuizPage();
-    showSrsReview();
+    startSrsQuizReview();
 }
 
 function homeOpenMistakes() {

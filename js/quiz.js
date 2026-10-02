@@ -380,7 +380,26 @@ function isValidWord(word, meaning) {
     return true;
 }
 
+/* Starting a new word set ends any review that was left on screen; otherwise
+   showModeSelection() (still seeing reviewMode) would open the mistake book. */
+function endReviewState() {
+    reviewMode = false;
+    reviewSource = '';
+    setQuizBackLabels(false);
+}
+
+/* During an SRS review the "返回選擇語言" buttons lead back home, so they read "← 返回"
+   instead. Swapping data-i18n (not just the text) keeps a language switch consistent. */
+function setQuizBackLabels(srsReview) {
+    const key = srsReview ? 'tool_back' : 'quiz_back';
+    document.querySelectorAll('#quiz-card .back-btn, #result-card .back-btn').forEach(b => {
+        b.setAttribute('data-i18n', key);
+        b.innerHTML = t(key);
+    });
+}
+
 function selectLanguage(lang) {
+    endReviewState();
     currentLang = lang;
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('sheetUrlInput').value = SHEETS[lang];
@@ -443,6 +462,7 @@ function parseTopikVocab(rows) {
 }
 
 function selectExamSet(examId) {
+    endReviewState();
     currentLang = examId;
     vocabularyList = [];
     readingList = [];
@@ -1036,20 +1056,47 @@ function nextQuestion() {
 
     if (reviewMode) {
         currentReviewEntry = reviewList[reviewIdx++];
+        currentLang = currentReviewEntry.lang; // an SRS review mixes word sets
         currentWord = { word: currentReviewEntry.word, kana: '', meaning: currentReviewEntry.answer, english: '' };
         if (isChineseQuizLang(currentReviewEntry.lang) && currentReviewEntry.zct) zhCharType = currentReviewEntry.zct;
 
         document.getElementById('word-question').innerText = currentReviewEntry.word;
         document.getElementById('word-hint').innerText = currentReviewEntry.hint || '';
 
-        const sameGroup = reviewPool.filter(m => m.group === currentReviewEntry.group && m.answer !== currentReviewEntry.answer);
-        const others = reviewPool.filter(m => m.group !== currentReviewEntry.group && m.answer !== currentReviewEntry.answer);
-        const pool = shuffleArray(sameGroup).concat(shuffleArray(others));
-        let options = [currentReviewEntry.answer];
-        for (const p of pool) {
-            if (options.length >= 4) break;
-            if (!options.includes(p.answer)) options.push(p.answer);
+        /* Wrong options, best first: other cards of the same word set and question type;
+           the same set's cached word list (a new learner has only a few cards); near-miss
+           kana for readings; the same type from other sets (an SRS review mixes sets);
+           and only then answers of another type. */
+        const e = currentReviewEntry;
+        const notThis = m => m.answer && m.answer !== e.answer;
+        const sameSet = reviewPool.filter(m => notThis(m) && m.group === e.group && m.lang === e.lang);
+        const sameGroup = reviewPool.filter(m => notThis(m) && m.group === e.group && m.lang !== e.lang);
+        const others = reviewPool.filter(m => notThis(m) && m.group !== e.group);
+        let options = [e.answer];
+        const take = list => {
+            for (const p of list) {
+                if (options.length >= 4) break;
+                if (!options.includes(p.answer)) options.push(p.answer);
+            }
+        };
+        take(shuffleArray(sameSet));
+        if (options.length < 4) {
+            const cache = getVocabCache(e.lang);
+            const words = cache ? (cache.vocabularyList || []).concat(cache.readingList || []) : [];
+            const answerOf = e.group === 'reading' ? w => w.kana
+                : e.group.startsWith('zh-') ? w => w[e.group.slice(3)]
+                : e.group === 'meaning-en' ? w => (w.english || w.meaning)
+                : w => w.meaning;
+            take(shuffleArray(words.map(w => ({ answer: answerOf(w) })).filter(notThis)));
         }
+        if (options.length < 4 && e.group === 'reading') {
+            for (const r of generateSimilarReadings(e.answer, 4 - options.length)) {
+                if (options.length >= 4) break;
+                if (!options.includes(r)) options.push(r);
+            }
+        }
+        take(shuffleArray(sameGroup));
+        take(shuffleArray(others));
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'review');
 
@@ -1154,7 +1201,20 @@ function nextQuestion() {
     }
 }
 
+/* The type of the question on screen ('meaning' | 'reading' | 'zh' | 'review'); the
+   timer needs it because in mixed modes each question picks its own type. */
+let currentQType = '';
+
+function correctAnswerFor(type) {
+    const useEn = quizAnswerLang === 'en';
+    return type === 'reading' ? currentWord.kana
+        : type === 'zh' ? currentWord[zhTestType]
+        : type === 'review' ? currentReviewEntry.answer
+        : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
+}
+
 function renderOptions(options, type) {
+    currentQType = type;
     const container = document.getElementById('options-container');
     container.innerHTML = '';
     options.forEach((optText) => {
@@ -1176,18 +1236,21 @@ function selectOption(selectedBtn, selectedText, type) {
     allBtns.forEach(btn => btn.disabled = true);
 
     const feedback = document.getElementById('feedback');
-    const useEn = quizAnswerLang === 'en';
-    const correctAnswer = type === 'reading' ? currentWord.kana
-        : type === 'zh' ? currentWord[zhTestType]
-        : type === 'review' ? currentReviewEntry.answer
-        : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
+    const correctAnswer = correctAnswerFor(type);
     const isCorrect = selectedText === correctAnswer;
 
     if (type === 'review') {
-        if (isCorrect) { removeMistakeById(currentReviewEntry.id); }
-        else { bumpMistake(currentReviewEntry.id); }
-    } else if (!isCorrect) {
-        recordMistake(type, correctAnswer);
+        gradeSrsQuizCard(currentReviewEntry, isCorrect);
+        if (reviewSource === 'srs') {
+            if (!isCorrect) addMistakeEntry(currentReviewEntry);
+        } else if (isCorrect) {
+            removeMistakeById(currentReviewEntry.id);
+        } else {
+            bumpMistake(currentReviewEntry.id);
+        }
+    } else {
+        gradeSrsQuizCard(quizEntryFor(type, correctAnswer), isCorrect);
+        if (!isCorrect) recordMistake(type, correctAnswer);
     }
 
     quizHistory.push({
@@ -1259,7 +1322,7 @@ function showResults() {
     if (total > 0) {
         saveQuizRecord({
             date: Date.now(),
-            lang: currentLang,
+            lang: reviewMode && reviewSource === 'srs' ? 'srs' : currentLang,
             review: reviewMode,
             total: total,
             correct: correctCount,
@@ -1296,6 +1359,7 @@ function showResults() {
 }
 
 function backToLanguage() {
+    const wasSrsReview = reviewMode && reviewSource === 'srs';
     const wasJlptQuiz = currentLang.startsWith('jlpt_');
     const wasTopikQuiz = currentLang.startsWith('topik_');
     const wasHskQuiz = currentLang.startsWith('hsk_');
@@ -1304,6 +1368,8 @@ function backToLanguage() {
     readingList = [];
     meaningList = [];
     reviewMode = false;
+    reviewSource = '';
+    setQuizBackLabels(false);
     currentListeningMode = false;
     stopTimer();
     quizTimerSec = 0;
@@ -1319,6 +1385,12 @@ function backToLanguage() {
     document.getElementById('listening-setup-card').style.display = 'none';
     updateMistakeBadge();
     updateStreakBadge();
+
+    /* an SRS review mixes word sets, so "返回" goes back to the dashboard it came from */
+    if (wasSrsReview) {
+        switchPage('home', null);
+        return;
+    }
 
     /* exam-quiz quizzes borrow #page-quiz's engine, so its "返回" should
        land back on the JLPT/TOPIK level picker, not #page-quiz's own language card */
@@ -1340,7 +1412,7 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖', hsk_1: '📖' };
+const QUIZ_LANG_FLAGS = { srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖', hsk_1: '📖' };
 const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'topik_1', 'topik_2', 'topik_3', 'topik_4', 'hsk_1'];
 
 function escQ(s) {
@@ -1360,34 +1432,52 @@ function saveMistakes(list) {
     updateMistakeBadge();
 }
 
-function recordMistake(type, correctAnswer) {
-    if (!currentWord || !currentWord.word) return;
+/* The question on screen as a self-contained entry; mistake-book entries and SRS
+   cards share this shape (and id), so either can be replayed by the review engine. */
+function quizEntryFor(type, correctAnswer) {
+    if (!currentWord || !currentWord.word) return null;
     const group = type === 'zh' ? 'zh-' + zhTestType
         : type === 'reading' ? 'reading'
         : 'meaning-' + (quizAnswerLang || 'zh');
     const hint = type === 'reading' ? (currentWord.meaning || '')
         : (currentWord.kana || '');
-    const id = currentLang + '|' + currentWord.word + '|' + group;
+    return {
+        id: currentLang + '|' + currentWord.word + '|' + group,
+        lang: currentLang,
+        word: currentWord.word,
+        answer: correctAnswer,
+        hint: hint,
+        group: group,
+        zct: isChineseQuizLang(currentLang) ? zhCharType : undefined
+    };
+}
+
+function addMistakeEntry(entry) {
+    if (!entry) return;
     const list = getMistakes();
-    const existing = list.find(m => m.id === id);
+    const existing = list.find(m => m.id === entry.id);
     if (existing) {
         existing.count++;
         existing.last = Date.now();
-        existing.answer = correctAnswer;
+        existing.answer = entry.answer;
     } else {
         list.push({
-            id: id,
-            lang: currentLang,
-            word: currentWord.word,
-            answer: correctAnswer,
-            hint: hint,
-            group: group,
-            zct: isChineseQuizLang(currentLang) ? zhCharType : undefined,
+            id: entry.id,
+            lang: entry.lang,
+            word: entry.word,
+            answer: entry.answer,
+            hint: entry.hint,
+            group: entry.group,
+            zct: entry.zct,
             count: 1,
             last: Date.now()
         });
     }
     saveMistakes(list);
+}
+
+function recordMistake(type, correctAnswer) {
+    addMistakeEntry(quizEntryFor(type, correctAnswer));
 }
 
 function removeMistakeById(id) {
@@ -1500,6 +1590,7 @@ function startReviewQuiz(lang) {
     if (mistakes.length < 4) { alert(t('mistake_need4')); return; }
 
     reviewMode = true;
+    reviewSource = 'mistakes';
     currentLang = lang;
     reviewPool = mistakes;
     reviewList = shuffleArray(mistakes);
@@ -1757,17 +1848,19 @@ function shareScoreCard() {
     roundRect(ctx, 12, 12, W - 24, H - 24, 16);
     ctx.stroke();
 
+    /* an SRS review mixes word sets (currentLang is just the last question's set) */
+    const srsReview = reviewMode && reviewSource === 'srs';
     const flag = QUIZ_LANG_FLAGS[currentLang] || '';
-    const langLabel = flag + ' ' + (t('quiz_' + currentLang) || currentLang);
+    const langLabel = srsReview ? t('srs_title') : flag + ' ' + (t('quiz_' + currentLang) || currentLang);
     ctx.font = '700 18px "Noto Serif TC", "Noto Sans TC", "Noto Sans JP", serif';
     ctx.fillStyle = '#2b2724';
     ctx.textAlign = 'left';
     ctx.fillText(langLabel, 36, 50);
 
-    if (reviewMode) {
+    if (reviewMode && !srsReview) {
         ctx.font = '14px "Noto Sans TC", sans-serif';
         ctx.fillStyle = '#93301d';
-        ctx.fillText('📖 ' + (t('review_label') || 'Review'), 36, 74);
+        ctx.fillText(t('review_label') || '📖 Review', 36, 74); // the label already starts with 📖
     }
 
     ctx.textAlign = 'right';
@@ -1980,11 +2073,12 @@ function onTimerExpired() {
     if (currentListeningMode) {
         correctAnswer = getListeningCorrectAnswer();
     } else {
-        const useEn = quizAnswerLang === 'en';
-        const type = currentMode === 'reading' ? 'reading' : isChineseQuizLang(currentLang) ? 'zh' : 'meaning';
-        correctAnswer = type === 'reading' ? currentWord.kana
-            : type === 'zh' ? currentWord[zhTestType]
-            : (useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning);
+        /* currentQType is the type this question was actually asked as (mixed modes
+           decide per question); the mode-based guess is only a fallback. */
+        const type = currentQType || (currentMode === 'reading' ? 'reading' : isChineseQuizLang(currentLang) ? 'zh' : 'meaning');
+        correctAnswer = correctAnswerFor(type);
+        if (type === 'review') gradeSrsQuizCard(currentReviewEntry, false);
+        else gradeSrsQuizCard(quizEntryFor(type, correctAnswer), false);
     }
 
     score -= 3;
@@ -2048,106 +2142,119 @@ function saveFlashcardUnknown() {
     localStorage.setItem('flashcard_unknown', JSON.stringify([...flashcardUnknownSet]));
 }
 
-/* ===================== Spaced Repetition (Leitner boxes, reuses the flashcard UI) =====================
-   Box 1-5, each with a re-show interval; a correct review advances a box (longer interval),
-   a miss drops straight back to box 1. A card that's never been reviewed has due=0, so it's
-   always due — that's what makes first-time words show up in a review session automatically. */
-let srsActive = false;
-const SRS_INTERVAL_DAYS = [0, 1, 3, 7, 14]; // index 0 = box 1
-const SRS_AGAIN_DELAY_MS = 10 * 60 * 1000; // so a missed card doesn't instantly reappear in the same session
-const SRS_SESSION_LIMIT = 30;
+/* ===================== Spaced Repetition (quiz words, Leitner boxes) =====================
+   Every word answered in a normal quiz (and every mistake-review answer) becomes a card
+   in localStorage.srs_quiz, keyed and shaped exactly like a mistake-book entry
+   ({id, lang, word, answer, hint, group, zct}) plus Leitner state {box, due, seen}. That
+   shape lets the review session reuse the mistake-review question engine (reviewMode in
+   nextQuestion()). A correct answer moves a card up a box (longer wait); a miss drops it
+   to box 1 and brings it back in 10 minutes.
+   This replaced the older flashcard-only SRS (srs_cards), whose cards kept only the word,
+   not its answer, so they couldn't be carried over. */
+const SRS_INTERVAL_DAYS = [0, 1, 3, 7, 14, 30]; // index 0 = box 1
+const SRS_AGAIN_DELAY_MS = 10 * 60 * 1000; // so a missed card doesn't instantly reappear
+const SRS_REVIEW_LIMIT = 20;
+const SRS_QUIZ_MAX_CARDS = 4000;
+let reviewSource = ''; // 'mistakes' | 'srs' while reviewMode is on
 
-function getSrsCards() {
-    try { return JSON.parse(localStorage.getItem('srs_cards')) || {}; } catch { return {}; }
+function getSrsQuizCards() {
+    try { return JSON.parse(localStorage.getItem('srs_quiz')) || {}; } catch { return {}; }
 }
 
-function saveSrsCards(cards) {
-    localStorage.setItem('srs_cards', JSON.stringify(cards));
-}
-
-function getSrsCard(cards, id) {
-    return cards[id] || { box: 1, due: 0 };
-}
-
-function gradeSrsCard(id, good) {
-    const cards = getSrsCards();
-    const card = getSrsCard(cards, id);
-    if (good) {
-        card.box = Math.min(card.box + 1, SRS_INTERVAL_DAYS.length);
-        card.due = Date.now() + SRS_INTERVAL_DAYS[card.box - 1] * 24 * 60 * 60 * 1000;
-    } else {
-        card.box = 1;
-        card.due = Date.now() + SRS_AGAIN_DELAY_MS;
+function saveSrsQuizCards(cards) {
+    const ids = Object.keys(cards);
+    if (ids.length > SRS_QUIZ_MAX_CARDS) {
+        // keep the store bounded: drop the best-known cards first (highest box, latest due)
+        ids.sort((a, b) => (cards[b].box - cards[a].box) || (cards[b].due - cards[a].due))
+            .slice(0, ids.length - SRS_QUIZ_MAX_CARDS)
+            .forEach(id => delete cards[id]);
     }
-    card.seen = Date.now();
-    cards[id] = card;
-    saveSrsCards(cards);
+    try { localStorage.setItem('srs_quiz', JSON.stringify(cards)); } catch {}
 }
 
+function gradeSrsQuizCard(entry, good) {
+    if (!entry || !entry.id || !entry.answer) return;
+    const cards = getSrsQuizCards();
+    const prev = cards[entry.id];
+    const now = Date.now();
+    let box = prev ? prev.box : 1;
+    let due;
+    if (good) {
+        box = Math.min(box + 1, SRS_INTERVAL_DAYS.length);
+        due = now + SRS_INTERVAL_DAYS[box - 1] * 24 * 60 * 60 * 1000;
+    } else {
+        box = 1;
+        due = now + SRS_AGAIN_DELAY_MS;
+    }
+    cards[entry.id] = {
+        id: entry.id, lang: entry.lang, word: entry.word, answer: entry.answer,
+        hint: entry.hint || '', group: entry.group, zct: entry.zct,
+        box: box, due: due, seen: now
+    };
+    saveSrsQuizCards(cards);
+}
+
+function getDueSrsQuizCards() {
+    const now = Date.now();
+    return Object.values(getSrsQuizCards())
+        .filter(c => c && c.due <= now)
+        .sort((a, b) => a.due - b.due);
+}
+
+function srsQuizDueCount() {
+    return getDueSrsQuizCards().length;
+}
+
+/* The quiz page's "間隔複習" tool and the home dashboard both start here: one mixed
+   session of the (at most SRS_REVIEW_LIMIT) longest-overdue cards across all word sets. */
 function showSrsReview() {
-    showFlashcard(true);
+    startSrsQuizReview();
 }
 
-function launchSrsReview(lang, modeId) {
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('mastered-list-card').style.display = 'none';
-    document.getElementById('flashcard-card').style.display = 'block';
-    loadSrsVocab(lang, modeId);
+function startSrsQuizReview() {
+    const due = getDueSrsQuizCards().slice(0, SRS_REVIEW_LIMIT);
+    if (due.length === 0) {
+        showShareToast(t('srs_all_done'));
+        return;
+    }
+    stopTimer();
+    quizTimerSec = 0;
+    currentListeningMode = false;
+    reviewMode = true;
+    reviewSource = 'srs';
+    reviewPool = Object.values(getSrsQuizCards());
+    reviewList = shuffleArray(due);
+    reviewIdx = 0;
+    currentLang = reviewList[0].lang;
+    score = 0;
+    questionNum = 0;
+    quizHistory = [];
+    totalQuestions = reviewList.length;
+
+    ['lang-card', 'setup-card', 'mode-card', 'result-card', 'mistake-card', 'stats-card',
+     'flashcard-card', 'flashcard-setup-card', 'listening-setup-card', 'mastered-list-card', 'unknown-list-card']
+        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    document.getElementById('quiz-card').style.display = 'block';
+    document.getElementById('quiz-mode-label').innerText = t('srs_title');
+    document.getElementById('total-words').innerText = t('quiz_words', {n: reviewList.length});
+    setQuizBackLabels(true);
+    nextQuestion();
 }
 
-function loadSrsVocab(lang, modeId) {
-    const sheetUrl = SHEETS[lang];
-    vocabularyList = [];
-    readingList = [];
-    meaningList = [];
-    fetch(sheetUrl)
-        .then(r => r.text())
-        .then(csv => {
-            const rows = Papa.parse(csv, { header: false }).data;
-            if (lang === 'jp') parseJapanese(rows);
-            else if (lang === 'kr') parseKorean(rows);
-            else if (lang === 'fr') parseFrench(rows);
-            else if (lang === 'en') parseEnglish(rows);
-            else if (lang === 'zh') parseChinese(rows);
-
-            const cards = getSrsCards();
-            const now = Date.now();
-            const due = vocabularyList
-                .map(w => ({ w, due: getSrsCard(cards, lang + '|' + modeId + '|' + w.word).due }))
-                .filter(x => x.due <= now)
-                .sort((a, b) => a.due - b.due)
-                .slice(0, SRS_SESSION_LIMIT)
-                .map(x => x.w);
-
-            flashcardList = due;
-            flashcardIdx = 0;
-            if (flashcardList.length === 0) {
-                renderSrsEmpty();
-            } else {
-                renderFlashcard();
-            }
-        })
-        .catch(() => {
-            closeFlashcard();
-        });
+/* "再來一次" on the result card: another round of whatever is due after an SRS review,
+   the usual mode picker otherwise. */
+function quizAgain() {
+    if (reviewMode && reviewSource === 'srs') {
+        startSrsQuizReview();
+        return;
+    }
+    showModeSelection();
 }
 
-function renderSrsEmpty() {
-    document.getElementById('flashcard-front').innerHTML = '<div class="flashcard-word">&#x1F389;</div>';
-    document.getElementById('flashcard-back').innerHTML = '';
-    document.getElementById('flashcard-hint').innerHTML = t('srs_all_done');
-    document.getElementById('flashcard-counter').textContent = '0 / 0';
-    const nav = document.querySelector('#flashcard-card .flashcard-nav');
-    const actions = document.querySelector('#flashcard-card .flashcard-actions');
-    if (nav) nav.style.display = 'none';
-    if (actions) actions.style.display = 'none';
-}
-
-function showFlashcard(srs) {
-    srsActive = !!srs;
+function showFlashcard() {
     document.getElementById('lang-card').style.display = 'none';
     document.getElementById('flashcard-setup-card').style.display = 'block';
-    document.getElementById('flashcard-setup-title').textContent = srsActive ? t('srs_title') : t('flashcard_title');
+    document.getElementById('flashcard-setup-title').textContent = t('flashcard_title');
     document.getElementById('fc-lang-title').style.display = '';
     document.getElementById('fc-lang-buttons').style.display = '';
     document.getElementById('fc-mode-title').style.display = 'none';
@@ -2244,19 +2351,12 @@ function startFlashcardWithMode(modeId) {
         setupCard.insertBefore(startBtn, backRow);
     }
 
-    if (srsActive) {
-        document.getElementById('fc-mastered-section').style.display = 'none';
-        document.getElementById('fc-unknown-section').style.display = 'none';
-        startBtn.onclick = function() { launchSrsReview(lang, modeId); };
-        startBtn.innerText = t('srs_start');
-    } else {
-        flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-        flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-        updateMasteredCount();
-        updateUnknownCount();
-        startBtn.onclick = function() { launchFlashcard(lang, modeId); };
-        startBtn.innerText = t('fc_start_flashcard');
-    }
+    flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
+    flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
+    updateMasteredCount();
+    updateUnknownCount();
+    startBtn.onclick = function() { launchFlashcard(lang, modeId); };
+    startBtn.innerText = t('fc_start_flashcard');
 }
 
 function launchFlashcard(lang, modeId) {
@@ -2337,20 +2437,15 @@ function renderFlashcard() {
     back.innerHTML = backHTML;
 
     const cardKey = flashcardLang + '|' + flashcardMode + '|' + word.word;
-    if (srsActive) {
-        const srsCard = getSrsCard(getSrsCards(), cardKey);
-        hint.innerHTML = '<span style="opacity:0.7">' + t('srs_box_label', { n: srsCard.box }) + '</span>';
-    } else {
-        const isKnown = flashcardKnownSet.has(cardKey);
-        const isUnknown = flashcardUnknownSet.has(cardKey);
-        hint.innerHTML = isKnown ? '<span style="color:var(--accent-green)">' + t('flashcard_known') + '</span>' : '';
-        if (!isKnown && isUnknown) {
-            hint.innerHTML = '<span style="color:var(--accent-red)">' + t('flashcard_unknown') + '</span>';
-        }
+    const isKnown = flashcardKnownSet.has(cardKey);
+    const isUnknown = flashcardUnknownSet.has(cardKey);
+    hint.innerHTML = isKnown ? '<span style="color:var(--accent-green)">' + t('flashcard_known') + '</span>' : '';
+    if (!isKnown && isUnknown) {
+        hint.innerHTML = '<span style="color:var(--accent-red)">' + t('flashcard_unknown') + '</span>';
     }
     counter.textContent = (flashcardIdx + 1) + ' / ' + flashcardList.length;
     const reviewTitle = document.getElementById('flashcard-review-title');
-    if (reviewTitle) reviewTitle.textContent = srsActive ? t('srs_title') : t('flashcard_title');
+    if (reviewTitle) reviewTitle.textContent = t('flashcard_title');
 
     currentLang = flashcardLang;
     currentWord = word;
@@ -2381,18 +2476,6 @@ function flashcardRate(known) {
     logDailyActivity();
     const key = flashcardLang + '|' + flashcardMode + '|' + word.word;
 
-    if (srsActive) {
-        gradeSrsCard(key, known);
-        checkAchievements();
-        if (flashcardIdx < flashcardList.length - 1) {
-            flashcardIdx++;
-            renderFlashcard();
-        } else {
-            renderSrsEmpty();
-        }
-        return;
-    }
-
     if (known) {
         flashcardKnownSet.add(key);
         flashcardUnknownSet.delete(key);
@@ -2411,7 +2494,6 @@ function flashcardRate(known) {
 function closeFlashcard() {
     document.getElementById('flashcard-card').style.display = 'none';
     document.getElementById('lang-card').style.display = 'block';
-    srsActive = false;
 }
 
 function closeFlashcardSetup() {
