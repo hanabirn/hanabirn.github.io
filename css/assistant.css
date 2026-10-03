@@ -1,12 +1,14 @@
 /* ===== 小花火 AI assistant (js/assistant.js) ===== */
 
+/* desktop: right-hand column, just above the settings gear (bottom 186px,
+   48px tall, centred 44px from the edge); phones: bottom-left, see below */
 .assistant-fab {
     position: fixed;
-    left: 20px;
-    bottom: 20px;
+    right: 8px;
+    bottom: 248px;
     z-index: 600;
-    width: 64px;
-    height: 64px;
+    width: 72px;
+    height: 72px;
     padding: 0;
     border-radius: 50%;
     border: 2px solid var(--line);
@@ -25,8 +27,8 @@
 }
 .assistant-fab-face {
     display: block;
-    width: 52px;
-    height: 52px;
+    width: 60px;
+    height: 60px;
     margin: 0 auto;
     animation: assistant-bob 2.4s ease-in-out infinite;
 }
@@ -44,14 +46,14 @@ body:has(.tour) .assistant-hint {
     display: none;
 }
 
-/* first-visit nudge next to the button */
+/* first-visit nudge, to the left of the button */
 .assistant-hint {
     position: fixed;
-    left: 94px;
-    bottom: 36px;
+    right: 92px;
+    bottom: 270px;
     z-index: 600;
     padding: 7px 12px;
-    border-radius: 14px 14px 14px 4px;
+    border-radius: 14px 14px 4px 14px;
     background: var(--primary);
     color: var(--on-primary);
     font-size: 0.82rem;
@@ -66,19 +68,24 @@ body:has(.tour) .assistant-hint {
 }
 @keyframes assistant-hint {
     0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-4px); }
+}
+@keyframes assistant-hint-phone {
+    0%, 100% { transform: translateX(0); }
     50% { transform: translateX(4px); }
 }
 
-/* --- the chat panel --- */
+/* --- the chat panel: beside the right-hand column on desktop, its bottom
+   above the clock (which is wider than the column) --- */
 .assistant-panel {
     position: fixed;
-    left: 20px;
-    bottom: 96px;
+    right: 96px;
+    bottom: 124px;
     z-index: 650;
     display: flex;
     flex-direction: column;
-    width: min(380px, calc(100vw - 40px));
-    height: min(580px, calc(100vh - 140px));
+    width: min(390px, calc(100vw - 120px));
+    height: min(600px, calc(100vh - 144px));
     border-radius: 18px;
     background: var(--surface);
     border: 2px solid var(--line);
@@ -87,7 +94,7 @@ body:has(.tour) .assistant-hint {
     opacity: 0;
     visibility: hidden;
     transform: translateY(12px) scale(0.98);
-    transform-origin: bottom left;
+    transform-origin: bottom right;
     transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
 }
 .assistant-panel.show {
@@ -272,6 +279,7 @@ body:has(.tour) .assistant-hint {
 /* phones: above the tab bar, and the panel takes most of the screen */
 @media (max-width: 768px) {
     .assistant-fab {
+        right: auto;
         left: 12px;
         bottom: calc(80px + env(safe-area-inset-bottom));
         width: 54px;
@@ -282,12 +290,16 @@ body:has(.tour) .assistant-hint {
         height: 44px;
     }
     .assistant-hint {
+        right: auto;
         left: 76px;
         bottom: calc(92px + env(safe-area-inset-bottom));
+        border-radius: 14px 14px 14px 4px;
+        animation-name: assistant-hint-phone;
     }
     .assistant-panel {
         left: 12px;
         right: 12px;
+        transform-origin: bottom left;
         width: auto;
         top: 68px;
         bottom: calc(146px + env(safe-area-inset-bottom));

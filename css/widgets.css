@@ -383,3 +383,31 @@
     .update-banner { top: 64px; bottom: auto; }
     .pwa-install-banner.show ~ .update-banner { top: 124px; bottom: auto; }
 }
+
+
+/* ===================== Tooltips (js/widgets.js) ===================== */
+.site-tip {
+    position: fixed;
+    z-index: 2000;
+    width: max-content;     /* sized by its text, not squeezed near the edge */
+    max-width: 260px;
+    padding: 5px 10px;
+    border-radius: 8px;
+    background: var(--primary);
+    color: var(--on-primary);
+    box-shadow: 0 3px 0 var(--primary-edge), 0 4px 12px rgba(0, 0, 0, 0.18);
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.45;
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(3px);
+    transition: opacity 0.12s ease, transform 0.12s ease;
+}
+.site-tip.show {
+    opacity: 1;
+    transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+    .site-tip { transition: none; }
+}

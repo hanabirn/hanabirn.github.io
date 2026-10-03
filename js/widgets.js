@@ -324,3 +324,72 @@ document.addEventListener('DOMContentLoaded', () => {
         sessionStorage.setItem('splash_seen', '1');
     }
 })();
+
+
+/* ===================== Tooltips ===================== */
+/* The browser's own title tooltip is a white box with black text that CSS can't
+   touch, so on mouse hover an element's title moves into data-tip (before the
+   native one appears) and a themed bubble shows it instead. Icon-only buttons
+   that relied on the title for their name get it as aria-label. applyLang()
+   may write a fresh title later; the next hover simply takes it again. */
+(function () {
+    let tip = null, current = null, timer = 0;
+
+    function take(el) {
+        const t = el.getAttribute('title');
+        if (t) {
+            el.dataset.tip = t;
+            el.removeAttribute('title');
+            if (el.dataset.tipLabel || (!el.hasAttribute('aria-label') && !el.textContent.trim())) {
+                el.setAttribute('aria-label', t);
+                el.dataset.tipLabel = '1';
+            }
+        }
+        return el.dataset.tip || '';
+    }
+
+    function show(el) {
+        const text = el.dataset.tip;
+        if (!text) return;
+        if (!tip) {
+            tip = document.createElement('div');
+            tip.className = 'site-tip';
+            tip.setAttribute('role', 'tooltip');
+            document.body.appendChild(tip);
+        }
+        tip.textContent = text;
+        // measure at the top-left corner, where nothing squeezes it into wrapping
+        tip.style.left = '0px';
+        tip.style.top = '0px';
+        tip.classList.add('show');
+        const r = el.getBoundingClientRect();
+        const tw = tip.offsetWidth, th = tip.offsetHeight;
+        let top = r.top - th - 8;
+        if (top < 6) top = r.bottom + 8;
+        tip.style.top = top + 'px';
+        // clientWidth leaves out the scrollbar, which innerWidth would count
+        tip.style.left = Math.min(Math.max(6, r.left + r.width / 2 - tw / 2), document.documentElement.clientWidth - tw - 6) + 'px';
+    }
+
+    function hide() {
+        current = null;
+        clearTimeout(timer);
+        if (tip) tip.classList.remove('show');
+    }
+
+    document.addEventListener('pointerover', e => {
+        if (e.pointerType !== 'mouse') return;
+        const el = e.target.closest('[title], [data-tip]');
+        if (el === current) return;
+        hide();
+        if (!el || !take(el)) return;
+        current = el;
+        timer = setTimeout(() => { if (current === el && el.isConnected) show(el); }, 350);
+    });
+    document.addEventListener('pointerout', e => {
+        if (current && !current.contains(e.relatedTarget)) hide();
+    });
+    document.addEventListener('pointerdown', hide);
+    document.addEventListener('keydown', hide);
+    window.addEventListener('scroll', hide, true);
+})();
