@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-03',
+      zh: '教學手冊換成新手導覽：第一次來的時候，小花火會一步步帶你認識網站的每個功能（想再看一次可以到設定裡找）。',
+      'zh-Hans': '教学手册换成新手导览：第一次来的时候，小花火会一步步带你认识网站的每个功能（想再看一次可以到设置里找）。',
+      en: 'The guide page is now a site tour: on your first visit, 小花火 walks you through every feature step by step (replay it from the settings).',
+      ja: '使い方ページはサイトツアーに：初めて来たとき、小花火がひとつずつ機能を案内します（設定からもう一度見られます）。',
+      ko: '사용 안내 페이지가 사이트 둘러보기로 바뀌었어요: 처음 오면 小花火가 기능을 하나씩 안내해 줘요 (설정에서 다시 볼 수 있어요).',
+      ru: 'Вместо страницы-руководства — обзор сайта: при первом визите 小花火 шаг за шагом показывает все функции (повторить можно в настройках).',
+      fr: 'La page de guide devient une visite du site : à ta première visite, 小花火 te présente chaque fonction pas à pas (à revoir depuis les réglages).',
+      es: 'La guía ahora es un recorrido del sitio: en tu primera visita, 小花火 te enseña cada función paso a paso (puedes repetirlo desde los ajustes).',
+      de: 'Die Anleitungsseite ist jetzt eine Seitentour: Beim ersten Besuch zeigt dir 小花火 Schritt für Schritt alle Funktionen (wiederholbar in den Einstellungen).' },
+    { date: '2026-10-03',
       zh: '背景加上淡淡的青海波；修正：聽力測驗「聽简体」改用普通話發音、手機上時鐘擋住按鈕、成績表標題，測驗總分不再出現負分。',
       'zh-Hans': '背景加上淡淡的青海波；修复：听力测验“听简体”改用普通话发音、手机上时钟挡住按钮、成绩表标题，测验总分不再出现负分。',
       en: 'Faint seigaiha waves in the background. Fixes: the simplified-Chinese listening quiz now uses a Mainland voice, the clock no longer covers buttons on phones, the score table header is fixed, and quiz scores no longer go below zero.',

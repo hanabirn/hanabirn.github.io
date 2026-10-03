@@ -44,15 +44,8 @@ I18N.zh = {
         result_question: '第 {n} 題', result_your_answer: '你的答案', result_correct_answer: '正確答案',
         answer_lang_title: '選擇答案語言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '留言板', guestbook_title: '✦ 留言板 ✦', guestbook_name: '你的名字', guestbook_message: '留下你的言語...', guestbook_send: '送出', guestbook_success: '感謝你的留言 ✦', nav_feedback: '建議&改進', feedback_title: '✦ 建議&改進 ✦', feedback_hint: '覺得網站有哪裡可以做得更好嗎？在這裡告訴我，只有我看得到你的訊息，其他訪客不會看見。', feedback_placeholder: '寫下你的建議...', feedback_submit: '送出', feedback_success: '您的回覆訊息已傳送，感謝您的回饋！',
-        nav_guide: '教學手冊', guide_title: '✦ 教學手冊 ✦', guide_prev: '◀ 上一頁', guide_next: '下一頁 ▶',
-        guide_quiz_title: '單字測驗',         guide_quiz_desc: '英文（國中、高中、多益、托福）、日文 JLPT、韓文 TOPIK、中文 HSK 和法文單字測驗，單字依常用程度由簡單排到難。可選測驗模式、答案語言、題數（10/20/30/無限），並有自動發音。測驗後顯示成績單與逐題詳解，可分享成績卡片；離線時會自動改用上次讀取的單字庫。',
-        guide_mistake_title: '錯題本', guide_mistake_desc: '答錯的單字會自動存入錯題本（點 📖 查看，徽章顯示數量）。同一語言累積 4 個以上即可進行複習測驗，複習答對會自動移除、答錯則保留並累加次數。',
-        guide_stats_title: '測驗統計', guide_stats_desc: '點 📊 測驗統計可查看：總測驗次數、平均正確率、最高分、正確率趨勢圖，以及最近 10 筆詳細紀錄。',
-        guide_about_title: '關於我', guide_about_desc: '包含中文學習 Discord 伺服器連結，以及我的社群連結。',
-        guide_guestbook_title: '留言板', guide_guestbook_desc: '留言會公開顯示，所有訪客都能看到。',
-        guide_bgm_title: 'BGM 唱片機', guide_bgm_desc: '滑鼠移到唱片上可切換曲目、調整音量。',
         bgm_hint: '點擊播放背景音樂',
-        guide_settings_title: '顯示設定', guide_settings_desc: '右下角 ⚙️ 按鈕（手機版在「更多」裡）可自訂導覽列顯示哪些頁面（首頁和教學手冊固定顯示），設定會存在瀏覽器，也能複製客製化連結分享。',        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
+        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
         fc_view_mastered: '📋 查看已掌握單字', fc_mastered_title: '📋 已掌握單字', fc_start_flashcard: '📖 開始閃卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '目前沒有已掌握的單字',
         fc_view_unknown: '📋 查看不認識單字', fc_unknown_title: '📋 不認識單字',
@@ -80,7 +73,6 @@ I18N.zh = {
         nav_notes: '記事本', notes_title: '✦ 記事本 ✦', notes_hint: '這裡的筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料會消失。',
         notes_placeholder: '寫點什麼...', notes_add: '新增筆記', notes_empty: '還沒有筆記，寫下你的第一則吧！',
         notes_delete: '刪除', notes_delete_confirm: '確定要刪除這則筆記嗎？',
-        guide_notes_title: '記事本', guide_notes_desc: '隨手記點東西，筆記只存在這個瀏覽器裡，換裝置或清除瀏覽器資料就會消失。',
         notes_cat_all: '全部', notes_cat_none: '未分類',
         notes_empty_filter: '這個資料夾還沒有筆記。',
         notes_attach: '附加照片/檔案', notes_attach_remove: '移除附件', notes_file_too_large: '檔案太大了（上限 {n}MB）',
@@ -101,8 +93,7 @@ I18N.zh = {
         // graded word lists
         quiz_en_jh: '英文・國中單字', quiz_en_sh: '英文・高中單字', quiz_en_toeic: '多益 TOEIC', quiz_en_toefl: '托福 TOEFL', quiz_english_title: '✦ 選擇英文單字庫 ✦', examquiz_english: '英文檢定（多益／托福）', examquiz_english_title: '✦ 選擇英文檢定 ✦', fc_choose_set: '選擇單字庫', load_loading: '正在讀取單字庫…', path_source: '資料來源：{s}（{l}）', quiz_hsk_2: 'HSK 2', quiz_hsk_3: 'HSK 3', quiz_hsk_4: 'HSK 4', quiz_hsk_5: 'HSK 5', quiz_hsk_6: 'HSK 6', quiz_hsk_7: 'HSK 7–9', examquiz_hsk_2: 'HSK 2', examquiz_hsk_3: 'HSK 3', examquiz_hsk_4: 'HSK 4', examquiz_hsk_5: 'HSK 5', examquiz_hsk_6: 'HSK 6', examquiz_hsk_7: 'HSK 7–9',
         // alphabet chart
-        nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '給剛開始學的你：每個字母都有讀音和一個例字，點 🔊 就能聽發音。', alpha_tts_note: '發音使用裝置內建的語音；如果沒有聲音，請確認裝置有安裝該語言的語音。', alpha_play_letter: '播放字母讀音', alpha_play_word: '播放例字讀音', alpha_rare: '現代幾乎不用', alpha_tab_en: '英文', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韓文', alpha_tab_zh: '注音', alpha_tab_ru: '俄文', alpha_tab_fr: '法文', alpha_tab_de: '德文', alpha_tab_es: '西班牙文', alpha_sec_seion: '清音', alpha_sec_dakuon: '濁音', alpha_sec_handakuon: '半濁音', alpha_sec_ko_cons: '基本子音', alpha_sec_ko_double: '雙子音', alpha_sec_ko_vowel: '基本母音', alpha_sec_ko_compound: '複合母音', alpha_sec_zh_initial: '聲母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韻母', alpha_sec_special: '特殊字母', home_beginner: '剛開始學？', home_alphabet_btn: '字母表：從發音開始', guide_alphabet_title: '字母表', guide_alphabet_desc: '給初學者的字母表：英文、日文平假名與片假名、韓文、注音（附拼音）、俄文、法文、德文和西班牙文。每個字母都有讀音和一個例字，字母和例字都能點 🔊 播放發音。',
-        // voice picker
+        nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '給剛開始學的你：每個字母都有讀音和一個例字，點 🔊 就能聽發音。', alpha_tts_note: '發音使用裝置內建的語音；如果沒有聲音，請確認裝置有安裝該語言的語音。', alpha_play_letter: '播放字母讀音', alpha_play_word: '播放例字讀音', alpha_rare: '現代幾乎不用', alpha_tab_en: '英文', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韓文', alpha_tab_zh: '注音', alpha_tab_ru: '俄文', alpha_tab_fr: '法文', alpha_tab_de: '德文', alpha_tab_es: '西班牙文', alpha_sec_seion: '清音', alpha_sec_dakuon: '濁音', alpha_sec_handakuon: '半濁音', alpha_sec_ko_cons: '基本子音', alpha_sec_ko_double: '雙子音', alpha_sec_ko_vowel: '基本母音', alpha_sec_ko_compound: '複合母音', alpha_sec_zh_initial: '聲母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韻母', alpha_sec_special: '特殊字母', home_beginner: '剛開始學？', home_alphabet_btn: '字母表：從發音開始', // voice picker
         tts_title: '🔊 發音聲音', tts_desc: '「自動」會選這台裝置上聽起來最自然的聲音。也可以自己換，按 ▶ 試聽。', tts_auto: '自動：{v}', tts_none: '這台裝置沒有這個語言的聲音', tts_try: '試聽', tts_unsupported: '這個瀏覽器不支援語音播放。', tts_lang_zh_TW: '中文（台灣）', tts_lang_zh_CN: '中文（中國大陸）',
         // voice picker: recordings
         tts_auto_rec: '自動：預錄的自然語音（沒錄到的用 {v}）',
@@ -110,4 +101,6 @@ I18N.zh = {
         updates_btn: '更新內容', updates_title: '📢 更新內容', updates_close: '關閉',
         // result table header
         result_col_question: '題目',
+        // site tour
+        tour_skip: '跳過導覽', tour_prev: '上一步', tour_next: '下一步', tour_go: '出發！', tour_done: '開始學習！', tour_step: '{n} / {m}', tour_in_more: '（手機上在「更多」裡）', tour_replay: '新手導覽', tour_replay_btn: '✨ 重看新手導覽', tour_welcome_title: '嗨！我是小花火 🎆', tour_welcome_text: '歡迎來到 Hanabiの小天地！這裡是一起學語言的小天地。我帶你逛一圈，大概一分鐘就好～', tour_goal_title: '每日目標', tour_goal_text: '每天背了幾個字、連續學了幾天，都記在這裡。點一下圓圈就能改每天的目標。', tour_start_title: '從這裡開始', tour_start_text: '按這個按鈕就能開始第一次測驗，之後也會從上次學到的地方繼續。', tour_quiz_title: '單字測驗', tour_quiz_text: '選語言和單字庫，照關卡一關一關學：每關 10 個字，先看一遍再小考，答對 80% 就過關！', tour_exam_title: '檢定考試', tour_exam_text: '準備 JLPT、TOPIK、HSK、多益或托福嗎？這裡有依等級整理好的單字庫。', tour_review_title: '間隔複習和錯題本', tour_review_text: '答錯的字會自動收進錯題本；快要忘記的字，會在這裡提醒你複習。', tour_dict_title: '字典', tour_dict_text: '遇到不會的字就來查：翻譯、詞性、解釋和例句都有，還能聽發音。', tour_alphabet_title: '字母表', tour_alphabet_text: '剛開始學一個語言？先從字母和發音開始吧！8 種語言，每個字母都有例字。', tour_notes_title: '記事本', tour_notes_text: '隨手記下筆記和圖片，資料只會存在你自己的裝置上。', tour_settings_title: '設定', tour_settings_text: '可以選要顯示哪些頁面，也能幫每種語言挑選發音的聲音。', tour_lang_title: '語言和深色模式', tour_lang_text: '網站有 9 種語言可以切換，旁邊還能開關深色模式「墨夜」。', tour_done_title: '準備好了！', tour_done_text: '一起持續學習，朝著自己的夢想前進吧！之後想再看一次導覽，可以到設定裡找「新手導覽」。',
 };

@@ -1,0 +1,207 @@
+/* ===== First-visit tour (js/tour.js) ===== */
+
+.tour {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;          /* above every popup (more sheet 950), below the splash */
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+.tour.show {
+    opacity: 1;
+}
+.tour [hidden] {
+    display: none !important;
+}
+
+/* dims the page; with a target the spotlight's shadow does the dimming */
+.tour-shade {
+    position: absolute;
+    inset: 0;
+    background: rgba(20, 18, 16, 0.62);
+}
+.tour.has-target .tour-shade {
+    background: transparent;
+}
+
+.tour-spot {
+    display: none;
+    position: fixed;
+    border-radius: 14px;
+    box-shadow: 0 0 0 9999px rgba(20, 18, 16, 0.62);
+    outline: 3px solid var(--primary);
+    outline-offset: 2px;
+    pointer-events: none;
+    transition: left 0.3s ease, top 0.3s ease, width 0.3s ease, height 0.3s ease;
+    animation: tour-ring 1.6s ease-in-out infinite;
+}
+.tour.has-target .tour-spot {
+    display: block;
+}
+@keyframes tour-ring {
+    0%, 100% { outline-color: var(--primary); }
+    50% { outline-color: var(--gold); }
+}
+
+.tour-card {
+    position: fixed;
+    width: min(360px, calc(100vw - 24px));
+    padding: 18px 18px 16px 18px;
+    border-radius: 18px;
+    background: var(--surface);
+    border: 2px solid var(--line);
+    box-shadow: 0 5px 0 var(--edge), 0 12px 30px rgba(0, 0, 0, 0.25);
+    color: var(--text);
+    transition: left 0.3s ease, top 0.3s ease;
+}
+.tour-card.pop {
+    animation: tour-pop 0.32s ease;
+}
+@keyframes tour-pop {
+    0% { transform: scale(0.92); opacity: 0.4; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* 小花火 peeks over the card's top edge and bobs like it's talking */
+.tour-mascot {
+    position: absolute;
+    top: -38px;
+    left: 14px;
+    width: 64px;
+    height: 64px;
+    animation: tour-bob 1.8s ease-in-out infinite;
+}
+.tour-mascot svg {
+    width: 100%;
+    height: 100%;
+}
+@keyframes tour-bob {
+    0%, 100% { transform: translateY(0) rotate(-3deg); }
+    50% { transform: translateY(-5px) rotate(3deg); }
+}
+
+.tour-count {
+    text-align: right;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-height: 18px;
+}
+.tour-title {
+    margin: 10px 0 6px;
+    font-size: 1.12rem;
+    color: var(--text-pink);
+}
+.tour-text {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text);
+}
+
+/* progress as little sparks */
+.tour-dots {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin: 14px 0 12px;
+}
+.tour-dots i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--track);
+    transition: background 0.2s, transform 0.2s;
+}
+.tour-dots i.past {
+    background: var(--gold);
+}
+.tour-dots i.on {
+    background: var(--primary);
+    transform: scale(1.4);
+}
+
+.tour-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.tour-skip {
+    margin-right: auto;
+    padding: 6px 4px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    cursor: pointer;
+    text-decoration: underline;
+}
+.tour-skip:hover {
+    color: var(--text);
+}
+.back-btn.tour-prev,
+.next-btn.tour-next {
+    padding: 9px 16px;
+    font-size: 0.9rem;
+}
+.tour.finale .next-btn.tour-next {
+    flex: 1;
+}
+
+/* the last step: a little firework from 小花火 */
+.tour-burst {
+    position: absolute;
+    top: -6px;
+    left: 46px;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+}
+.tour.finale .tour-burst::before,
+.tour.finale .tour-burst::after {
+    content: '';
+    position: absolute;
+    left: -3px;
+    top: -3px;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    animation: tour-burst 1.4s ease-out infinite;
+}
+.tour.finale .tour-burst::before {
+    background: var(--primary);
+    box-shadow:
+        0 -40px 0 var(--primary), 28px -28px 0 var(--gold), 40px 0 0 var(--primary),
+        28px 28px 0 var(--gold), -28px 28px 0 var(--primary), -40px 0 0 var(--gold),
+        -28px -28px 0 var(--primary);
+}
+.tour.finale .tour-burst::after {
+    background: var(--gold);
+    animation-delay: 0.5s;
+    box-shadow:
+        0 -26px 0 var(--gold), 18px -18px 0 var(--primary), 26px 0 0 var(--gold),
+        18px 18px 0 var(--primary), -18px 18px 0 var(--gold), -26px 0 0 var(--primary),
+        -18px -18px 0 var(--gold);
+}
+@keyframes tour-burst {
+    0% { transform: scale(0.2); opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: scale(1.3); opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .tour-spot, .tour-mascot, .tour-card.pop,
+    .tour.finale .tour-burst::before, .tour.finale .tour-burst::after {
+        animation: none;
+    }
+    .tour-spot, .tour-card {
+        transition: none;
+    }
+}
+
+/* "✨ 重看新手導覽" in the settings panel */
+.tab-settings-copy.tour-replay-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 14px;
+}

@@ -1,7 +1,7 @@
 applyLang(siteLang);
 
 /* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
-const MORE_TABS = ['dict', 'alphabet', 'guide', 'guestbook', 'feedback', 'about'];
+const MORE_TABS = ['dict', 'alphabet', 'guestbook', 'feedback', 'about'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -16,7 +16,7 @@ function switchPage(page, el) {
     if (more) more.classList.toggle('active', MORE_TABS.includes(page));
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
-    const pages = ['home', 'guide', 'about', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
+    const pages = ['home', 'about', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -39,8 +39,8 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['home', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
-const LOCKED_TABS = ['home', 'guide'];
+const ALL_TABS = ['home', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
+const LOCKED_TABS = ['home'];
 
 function getTabVisibility() {
     const v = {};

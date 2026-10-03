@@ -44,15 +44,8 @@ I18N['zh-Hans'] = {
         result_question: '第 {n} 题', result_your_answer: '你的答案', result_correct_answer: '正确答案',
         answer_lang_title: '选择答案语言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '留言板', guestbook_title: '✦ 留言板 ✦', guestbook_name: '你的名字', guestbook_message: '留下你的言语...', guestbook_send: '送出', guestbook_success: '感谢你的留言 ✦', nav_feedback: '建议&改进', feedback_title: '✦ 建议&改进 ✦', feedback_hint: '觉得网站有哪里可以做得更好吗？在这里告诉我，只有我看得到你的消息，其他访客不会看见。', feedback_placeholder: '写下你的建议...', feedback_submit: '送出', feedback_success: '您的回复消息已发送，感谢您的反馈！',
-        nav_guide: '教学手册', guide_title: '✦ 教学手册 ✦', guide_prev: '◀ 上一页', guide_next: '下一页 ▶',
-        guide_quiz_title: '单词测验',         guide_quiz_desc: '英语（初中、高中、托业、托福）、日语 JLPT、韩语 TOPIK、中文 HSK 和法语单词测验，单词按常用程度由简单排到难。可选测验模式、答案语言、题数（10/20/30/无限），并有自动发音。测验后显示成绩单与逐题详解，可分享成绩卡片；离线时会自动改用上次读取的单词库。',
-        guide_mistake_title: '错题本', guide_mistake_desc: '答错的单词会自动存入错题本（点 📖 查看，徽章显示数量）。同一语言累积 4 个以上即可进行复习测验，复习答对会自动移除、答错则保留并累加次数。',
-        guide_stats_title: '测验统计', guide_stats_desc: '点 📊 测验统计可查看：总测验次数、平均正确率、最高分、正确率趋势图，以及最近 10 笔详细记录。',
-        guide_about_title: '关于我', guide_about_desc: '包含中文学习 Discord 服务器链接，以及我的社交链接。',
-        guide_guestbook_title: '留言板', guide_guestbook_desc: '留言会公开显示，所有访客都能看到。',
-        guide_bgm_title: 'BGM 唱片机', guide_bgm_desc: '鼠标移到唱片上可切换曲目、调整音量。',
         bgm_hint: '点击播放背景音乐',
-        guide_settings_title: '显示设置', guide_settings_desc: '右下角 ⚙️ 按钮（手机版在“更多”里）可自定义导航栏显示哪些页面（首页和教学手册固定显示），设置会存在浏览器，也能复制自定义链接分享。',        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！',
+        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！',
         fc_view_mastered: '📋 查看已掌握单词', fc_mastered_title: '📋 已掌握单词', fc_start_flashcard: '📖 开始闪卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '目前没有已掌握的单词',
         fc_view_unknown: '📋 查看不认识单词', fc_unknown_title: '📋 不认识单词',
@@ -80,7 +73,6 @@ I18N['zh-Hans'] = {
         nav_notes: '记事本', notes_title: '✦ 记事本 ✦', notes_hint: '这里的笔记只存在这个浏览器里，换设备或清除浏览器数据会消失。',
         notes_placeholder: '写点什么...', notes_add: '添加笔记', notes_empty: '还没有笔记，写下你的第一则吧！',
         notes_delete: '删除', notes_delete_confirm: '确定要删除这则笔记吗？',
-        guide_notes_title: '记事本', guide_notes_desc: '随手记点东西，笔记只存在这个浏览器里，换设备或清除浏览器数据就会消失。',
         notes_cat_all: '全部', notes_cat_none: '未分类',
         notes_empty_filter: '这个文件夹还没有笔记。',
         notes_attach: '附加照片/文件', notes_attach_remove: '移除附件', notes_file_too_large: '文件太大了（上限 {n}MB）',
@@ -101,8 +93,7 @@ I18N['zh-Hans'] = {
         // graded word lists
         quiz_en_jh: '英语・初中单词', quiz_en_sh: '英语・高中单词', quiz_en_toeic: '托业 TOEIC', quiz_en_toefl: '托福 TOEFL', quiz_english_title: '✦ 选择英语单词库 ✦', examquiz_english: '英语考试（托业／托福）', examquiz_english_title: '✦ 选择英语考试 ✦', fc_choose_set: '选择单词库', load_loading: '正在读取单词库…', path_source: '数据来源：{s}（{l}）', quiz_hsk_2: 'HSK 2', quiz_hsk_3: 'HSK 3', quiz_hsk_4: 'HSK 4', quiz_hsk_5: 'HSK 5', quiz_hsk_6: 'HSK 6', quiz_hsk_7: 'HSK 7–9', examquiz_hsk_2: 'HSK 2', examquiz_hsk_3: 'HSK 3', examquiz_hsk_4: 'HSK 4', examquiz_hsk_5: 'HSK 5', examquiz_hsk_6: 'HSK 6', examquiz_hsk_7: 'HSK 7–9',
         // alphabet chart
-        nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '给刚开始学的你：每个字母都有读音和一个例词，点 🔊 就能听发音。', alpha_tts_note: '发音使用设备自带的语音；如果没有声音，请确认设备已安装该语言的语音。', alpha_play_letter: '播放字母读音', alpha_play_word: '播放例词读音', alpha_rare: '现代几乎不用', alpha_tab_en: '英语', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韩语', alpha_tab_zh: '注音', alpha_tab_ru: '俄语', alpha_tab_fr: '法语', alpha_tab_de: '德语', alpha_tab_es: '西班牙语', alpha_sec_seion: '清音', alpha_sec_dakuon: '浊音', alpha_sec_handakuon: '半浊音', alpha_sec_ko_cons: '基本辅音', alpha_sec_ko_double: '双辅音', alpha_sec_ko_vowel: '基本元音', alpha_sec_ko_compound: '复合元音', alpha_sec_zh_initial: '声母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韵母', alpha_sec_special: '特殊字母', home_beginner: '刚开始学？', home_alphabet_btn: '字母表：从发音开始', guide_alphabet_title: '字母表', guide_alphabet_desc: '给初学者的字母表：英语、日语平假名和片假名、韩语、注音（附拼音）、俄语、法语、德语和西班牙语。每个字母都有读音和一个例词，字母和例词都能点 🔊 播放发音。',
-        // voice picker
+        nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '给刚开始学的你：每个字母都有读音和一个例词，点 🔊 就能听发音。', alpha_tts_note: '发音使用设备自带的语音；如果没有声音，请确认设备已安装该语言的语音。', alpha_play_letter: '播放字母读音', alpha_play_word: '播放例词读音', alpha_rare: '现代几乎不用', alpha_tab_en: '英语', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韩语', alpha_tab_zh: '注音', alpha_tab_ru: '俄语', alpha_tab_fr: '法语', alpha_tab_de: '德语', alpha_tab_es: '西班牙语', alpha_sec_seion: '清音', alpha_sec_dakuon: '浊音', alpha_sec_handakuon: '半浊音', alpha_sec_ko_cons: '基本辅音', alpha_sec_ko_double: '双辅音', alpha_sec_ko_vowel: '基本元音', alpha_sec_ko_compound: '复合元音', alpha_sec_zh_initial: '声母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韵母', alpha_sec_special: '特殊字母', home_beginner: '刚开始学？', home_alphabet_btn: '字母表：从发音开始', // voice picker
         tts_title: '🔊 发音声音', tts_desc: '“自动”会选这台设备上听起来最自然的声音。也可以自己换，点 ▶ 试听。', tts_auto: '自动：{v}', tts_none: '这台设备没有这种语言的声音', tts_try: '试听', tts_unsupported: '这个浏览器不支持语音播放。', tts_lang_zh_TW: '中文（台湾）', tts_lang_zh_CN: '中文（中国大陆）',
         // voice picker: recordings
         tts_auto_rec: '自动：预录的自然语音（没录到的用 {v}）',
@@ -110,4 +101,6 @@ I18N['zh-Hans'] = {
         updates_btn: '更新内容', updates_title: '📢 更新内容', updates_close: '关闭',
         // result table header
         result_col_question: '题目',
+        // site tour
+        tour_skip: '跳过导览', tour_prev: '上一步', tour_next: '下一步', tour_go: '出发！', tour_done: '开始学习！', tour_step: '{n} / {m}', tour_in_more: '（手机上在“更多”里）', tour_replay: '新手导览', tour_replay_btn: '✨ 重看新手导览', tour_welcome_title: '嗨！我是小花火 🎆', tour_welcome_text: '欢迎来到 Hanabiの小天地！这里是一起学语言的小天地。我带你逛一圈，大概一分钟就好～', tour_goal_title: '每日目标', tour_goal_text: '每天背了几个词、连续学了几天，都记在这里。点一下圆圈就能改每天的目标。', tour_start_title: '从这里开始', tour_start_text: '点这个按钮就能开始第一次测验，之后也会从上次学到的地方继续。', tour_quiz_title: '单词测验', tour_quiz_text: '选语言和单词库，按关卡一关一关学：每关 10 个词，先看一遍再小考，答对 80% 就过关！', tour_exam_title: '检定考试', tour_exam_text: '准备 JLPT、TOPIK、HSK、托业或托福吗？这里有按等级整理好的单词库。', tour_review_title: '间隔复习和错题本', tour_review_text: '答错的词会自动收进错题本；快要忘记的词，会在这里提醒你复习。', tour_dict_title: '词典', tour_dict_text: '遇到不会的词就来查：翻译、词性、解释和例句都有，还能听发音。', tour_alphabet_title: '字母表', tour_alphabet_text: '刚开始学一门语言？先从字母和发音开始吧！8 种语言，每个字母都有例词。', tour_notes_title: '记事本', tour_notes_text: '随手记下笔记和图片，数据只会存在你自己的设备上。', tour_settings_title: '设置', tour_settings_text: '可以选择要显示哪些页面，也能为每种语言挑选发音的声音。', tour_lang_title: '语言和深色模式', tour_lang_text: '网站有 9 种语言可以切换，旁边还能开关深色模式“墨夜”。', tour_done_title: '准备好了！', tour_done_text: '一起持续学习，朝着自己的梦想前进吧！之后想再看一次导览，可以到设置里找“新手导览”。',
 };

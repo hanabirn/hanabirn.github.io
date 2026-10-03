@@ -263,9 +263,19 @@
 .pwa-install-banner.show ~ .update-banner {
     bottom: 76px;
 }
+/* no icon any more, so phones keep the text and let it wrap */
 @media (max-width: 480px) {
+    .update-banner {
+        width: 92vw;
+        padding: 10px 12px 10px 16px;
+    }
     .update-banner .pwa-install-text {
-        display: none;
+        display: block;
+        flex: 1;
+        min-width: 0;
+        white-space: normal;
+        font-size: 0.78rem;
+        line-height: 1.45;
     }
 }
 @media (prefers-reduced-motion: reduce) {

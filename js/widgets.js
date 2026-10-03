@@ -252,41 +252,6 @@ function onLangMenuEscape(e) {
     if (e.key === 'Escape') toggleLangMenu(false);
 }
 
-/* ===================== 📖 Guide Pagination ===================== */
-
-let guideCurrentPage = 1;
-const guidePerPage = 4;
-
-function initGuidePagination() {
-    const sections = document.querySelectorAll('#guide-grid .guide-section');
-    const totalPages = Math.ceil(sections.length / guidePerPage);
-    showGuidePage(1, totalPages);
-}
-
-function showGuidePage(page, totalPages) {
-    guideCurrentPage = page;
-    const sections = document.querySelectorAll('#guide-grid .guide-section');
-    const start = (page - 1) * guidePerPage;
-    const end = start + guidePerPage;
-
-    sections.forEach((sec, i) => {
-        sec.style.display = (i >= start && i < end) ? '' : 'none';
-    });
-
-    const info = document.getElementById('guide-page-info');
-    const prev = document.getElementById('guide-prev');
-    const next = document.getElementById('guide-next');
-    if (info) info.textContent = `${page} / ${totalPages}`;
-    if (prev) prev.disabled = (page <= 1);
-    if (next) next.disabled = (page >= totalPages);
-}
-
-function guidePage(dir) {
-    const sections = document.querySelectorAll('#guide-grid .guide-section');
-    const totalPages = Math.ceil(sections.length / guidePerPage);
-    showGuidePage(guideCurrentPage + dir, totalPages);
-}
-
 /* ===================== 📲 PWA Install Prompt ===================== */
 
 let deferredInstallPrompt = null;
@@ -345,7 +310,6 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateClock, 1000);
     initWeatherOptin();
     initVisitorCounter();
-    initGuidePagination();
 });
 
 /* ===================== Splash screen ===================== */

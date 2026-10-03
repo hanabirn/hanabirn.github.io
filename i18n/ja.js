@@ -43,15 +43,8 @@ I18N.ja = {
         lang_jp: '🇯🇵 日本語', lang_kr: '🇰🇷 韓国語', lang_fr: '🇫🇷 フランス語', lang_ru: '🇷🇺 ロシア語', lang_cantonese: '広東語',
         result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
         answer_lang_title: '回答言語を選択', answer_lang_zh: '🇨🇳 中国語', answer_lang_en: '🇺🇸 English',
-        nav_guestbook: '掲示板', guestbook_title: '✦ 掲示板 ✦', guestbook_name: '名前', guestbook_message: 'メッセージを残す...', guestbook_send: '送信', guestbook_success: 'メッセージありがとう ✦', nav_feedback: 'ご意見&改善', feedback_title: '✦ ご意見&改善 ✦', feedback_hint: 'サイトで改善できそうな点があれば教えてください。あなたのメッセージは私だけが見ることができ、他の訪問者には表示されません。', feedback_placeholder: 'ご意見を書いてください...', feedback_submit: '送信', feedback_success: 'メッセージを送信しました。フィードバックありがとうございます！',        nav_guide: 'ガイド', guide_title: '✦ ユーザーガイド ✦', guide_prev: '◀ 前へ', guide_next: '次へ ▶',
-        guide_quiz_title: '単語クイズ',         guide_quiz_desc: '英語（中学・高校・TOEIC・TOEFL）、日本語 JLPT、韓国語 TOPIK、中国語 HSK、フランス語の単語テスト。単語はよく使う簡単なものから順に並んでいます。テストモード・答えの言語・問題数（10/20/30/無制限）を選べ、自動で発音も流れます。テスト後は成績と問題ごとの解説を表示し、成績カードも共有できます。オフラインでは前回読み込んだ単語リストを使います。',
-        guide_mistake_title: '間違いノート', guide_mistake_desc: '間違えた単語は自動的に「間違いノート」（📖）に記録されます。1言語につき4個以上たまると復習クイズを開始でき、正解した単語は自動削除、間違えた単語は残ってカウントされます。',
-        guide_stats_title: 'テスト統計', guide_stats_desc: '「📊 テスト統計」でテスト回数・平均正解率・最高得点・正解率の推移グラフ・直近10件の記録を確認できます。',
-        guide_about_title: '自己紹介', guide_about_desc: '中国語学習Discordサーバーや、その他のソーシャルリンクも掲載しています。',
-        guide_guestbook_title: '掲示板', guide_guestbook_desc: '投稿はすべての訪問者に公開されます。',
-        guide_bgm_title: 'BGMレコードプレーヤー', guide_bgm_desc: 'レコードにホバーすると曲切替や音量調整ができます。',
-        bgm_hint: 'クリックしてBGMを再生',
-        guide_settings_title: '表示設定', guide_settings_desc: '右下の⚙️ボタン（スマホでは「その他」の中）でナビゲーションバーに表示するページを選べます（ホームとガイドは常に表示）。設定はブラウザに保存され、カスタムリンクの共有も可能です。',        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
+        nav_guestbook: '掲示板', guestbook_title: '✦ 掲示板 ✦', guestbook_name: '名前', guestbook_message: 'メッセージを残す...', guestbook_send: '送信', guestbook_success: 'メッセージありがとう ✦', nav_feedback: 'ご意見&改善', feedback_title: '✦ ご意見&改善 ✦', feedback_hint: 'サイトで改善できそうな点があれば教えてください。あなたのメッセージは私だけが見ることができ、他の訪問者には表示されません。', feedback_placeholder: 'ご意見を書いてください...', feedback_submit: '送信', feedback_success: 'メッセージを送信しました。フィードバックありがとうございます！',        bgm_hint: 'クリックしてBGMを再生',
+        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
         fc_view_mastered: '📋 習得済み単語を見る', fc_mastered_title: '📋 習得済み単語', fc_start_flashcard: '📖 フラッシュカード開始',
         fc_mastered_count: '✅ {n} / {m} 習得済み', fc_mastered_empty: '習得済みの単語はまだありません',
         fc_view_unknown: '📋 わからない単語を見る', fc_unknown_title: '📋 わからない単語',
@@ -79,7 +72,6 @@ I18N.ja = {
         nav_notes: 'メモ帳', notes_title: '✦ メモ帳 ✦', notes_hint: 'このメモはこのブラウザにのみ保存されます。端末を変えたりブラウザのデータを消去すると消えてしまいます。',
         notes_placeholder: '何か書いてみよう...', notes_add: 'メモを追加', notes_empty: 'まだメモがありません。最初の一つを書いてみましょう！',
         notes_delete: '削除', notes_delete_confirm: 'このメモを削除しますか？',
-        guide_notes_title: 'メモ帳', guide_notes_desc: 'ちょっとしたことをメモできます。メモはこのブラウザにのみ保存され、端末を変えたりブラウザのデータを消去すると消えます。',
         notes_cat_all: 'すべて', notes_cat_none: '未分類',
         notes_empty_filter: 'このフォルダにはまだメモがありません。',
         notes_attach: '写真・ファイルを添付', notes_attach_remove: '添付を削除', notes_file_too_large: 'ファイルが大きすぎます（上限 {n}MB）',
@@ -100,8 +92,7 @@ I18N.ja = {
         // graded word lists
         quiz_en_jh: '英語・中学レベル', quiz_en_sh: '英語・高校レベル', quiz_en_toeic: 'TOEIC', quiz_en_toefl: 'TOEFL', quiz_english_title: '✦ 英単語リストを選択 ✦', examquiz_english: '英語の試験（TOEIC／TOEFL）', examquiz_english_title: '✦ 英語の試験を選択 ✦', fc_choose_set: '単語リストを選択', load_loading: '単語リストを読み込み中…', path_source: '出典：{s}（{l}）', quiz_hsk_2: 'HSK 2', quiz_hsk_3: 'HSK 3', quiz_hsk_4: 'HSK 4', quiz_hsk_5: 'HSK 5', quiz_hsk_6: 'HSK 6', quiz_hsk_7: 'HSK 7–9', examquiz_hsk_2: 'HSK 2', examquiz_hsk_3: 'HSK 3', examquiz_hsk_4: 'HSK 4', examquiz_hsk_5: 'HSK 5', examquiz_hsk_6: 'HSK 6', examquiz_hsk_7: 'HSK 7–9',
         // alphabet chart
-        nav_alphabet: '文字表', alpha_title: '✦ 文字表 ✦', alpha_hint: 'はじめての人へ：どの文字にも読み方と例の単語があり、🔊 を押すと発音が聞けます。', alpha_tts_note: '発音には端末に内蔵された音声を使います。音が出ない場合は、その言語の音声がインストールされているか確認してください。', alpha_play_letter: '文字の発音を再生', alpha_play_word: '単語の発音を再生', alpha_rare: '現在はほとんど使われない', alpha_tab_en: '英語', alpha_tab_hira: 'ひらがな', alpha_tab_kata: 'カタカナ', alpha_tab_ko: '韓国語', alpha_tab_zh: '注音', alpha_tab_ru: 'ロシア語', alpha_tab_fr: 'フランス語', alpha_tab_de: 'ドイツ語', alpha_tab_es: 'スペイン語', alpha_sec_seion: '清音', alpha_sec_dakuon: '濁音', alpha_sec_handakuon: '半濁音', alpha_sec_ko_cons: '基本子音', alpha_sec_ko_double: '濃音（双子音）', alpha_sec_ko_vowel: '基本母音', alpha_sec_ko_compound: '複合母音', alpha_sec_zh_initial: '声母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韻母', alpha_sec_special: '特殊文字', home_beginner: 'はじめたばかり？', home_alphabet_btn: '文字表：発音から始めよう', guide_alphabet_title: '文字表', guide_alphabet_desc: '初心者向けの文字表：英語、日本語のひらがな・カタカナ、韓国語、注音（ピンイン付き）、ロシア語、フランス語、ドイツ語、スペイン語。どの文字にも読み方と例の単語があり、文字も単語も 🔊 で発音を聞けます。',
-        // voice picker
+        nav_alphabet: '文字表', alpha_title: '✦ 文字表 ✦', alpha_hint: 'はじめての人へ：どの文字にも読み方と例の単語があり、🔊 を押すと発音が聞けます。', alpha_tts_note: '発音には端末に内蔵された音声を使います。音が出ない場合は、その言語の音声がインストールされているか確認してください。', alpha_play_letter: '文字の発音を再生', alpha_play_word: '単語の発音を再生', alpha_rare: '現在はほとんど使われない', alpha_tab_en: '英語', alpha_tab_hira: 'ひらがな', alpha_tab_kata: 'カタカナ', alpha_tab_ko: '韓国語', alpha_tab_zh: '注音', alpha_tab_ru: 'ロシア語', alpha_tab_fr: 'フランス語', alpha_tab_de: 'ドイツ語', alpha_tab_es: 'スペイン語', alpha_sec_seion: '清音', alpha_sec_dakuon: '濁音', alpha_sec_handakuon: '半濁音', alpha_sec_ko_cons: '基本子音', alpha_sec_ko_double: '濃音（双子音）', alpha_sec_ko_vowel: '基本母音', alpha_sec_ko_compound: '複合母音', alpha_sec_zh_initial: '声母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韻母', alpha_sec_special: '特殊文字', home_beginner: 'はじめたばかり？', home_alphabet_btn: '文字表：発音から始めよう', // voice picker
         tts_title: '🔊 音声', tts_desc: '「自動」はこの端末でいちばん自然に聞こえる音声を選びます。自分で変えることもでき、▶ で試聴できます。', tts_auto: '自動：{v}', tts_none: 'この端末にはこの言語の音声がありません', tts_try: '試聴', tts_unsupported: 'このブラウザは音声読み上げに対応していません。', tts_lang_zh_TW: '中国語（台湾）', tts_lang_zh_CN: '中国語（中国大陸）',
         // voice picker: recordings
         tts_auto_rec: '自動：収録済みの自然な音声（ないものは {v}）',
@@ -109,4 +100,6 @@ I18N.ja = {
         updates_btn: '更新情報', updates_title: '📢 更新情報', updates_close: '閉じる',
         // result table header
         result_col_question: '問題',
+        // site tour
+        tour_skip: 'スキップ', tour_prev: '戻る', tour_next: '次へ', tour_go: '出発！', tour_done: '学習を始める！', tour_step: '{n} / {m}', tour_in_more: '（スマホでは「その他」の中）', tour_replay: 'サイトツアー', tour_replay_btn: '✨ サイトツアーをもう一度', tour_welcome_title: 'やあ！小花火だよ 🎆', tour_welcome_text: 'Hanabiの小天地へようこそ！一緒に語学を学ぶ場所だよ。ぐるっと案内するね、1分くらいで終わるよ～', tour_goal_title: '毎日の目標', tour_goal_text: '今日覚えた単語の数や連続学習日数がここに表示されるよ。円をタップすると毎日の目標を変えられるよ。', tour_start_title: 'ここから始めよう', tour_start_text: 'このボタンで最初のテストを始められるよ。次からは前回の続きから再開できるよ。', tour_quiz_title: '単語テスト', tour_quiz_text: '言語と単語リストを選んで、ステージごとに学ぼう：1ステージ10語、まず見てから小テスト、80%正解でクリア！', tour_exam_title: '検定試験', tour_exam_text: 'JLPT、TOPIK、HSK、TOEIC、TOEFLの準備？レベル別の単語リストがあるよ。', tour_review_title: '間隔反復と間違いノート', tour_review_text: '間違えた単語は自動で間違いノートへ。忘れかけた単語はここで復習を知らせてくれるよ。', tour_dict_title: '辞書', tour_dict_text: 'わからない単語は辞書で調べよう：訳、品詞、意味、例文がそろっていて、発音も聞けるよ。', tour_alphabet_title: '文字表', tour_alphabet_text: '語学を始めたばかり？まずは文字と発音から！8言語、どの文字にも例の単語があるよ。', tour_notes_title: 'メモ帳', tour_notes_text: 'メモや画像を気軽に保存。データは自分の端末にだけ保存されるよ。', tour_settings_title: '設定', tour_settings_text: '表示するページを選んだり、言語ごとに発音の声を選んだりできるよ。', tour_lang_title: '言語とダークモード', tour_lang_text: 'サイトの言語は9種類から切り替えられて、隣ではダークモード「墨夜」をオン・オフできるよ。', tour_done_title: '準備OK！', tour_done_text: '夢に向かって、一緒に学び続けよう！ツアーをもう一度見たいときは、設定の「サイトツアー」からどうぞ。',
 };

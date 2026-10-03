@@ -43,15 +43,8 @@ I18N.ko = {
         lang_jp: '🇯🇵 일본어', lang_kr: '🇰🇷 한국어', lang_fr: '🇫🇷 프랑스어', lang_ru: '🇷🇺 러시아어', lang_cantonese: '광둥어',
         result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
         answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',
-        nav_guestbook: '방명록', guestbook_title: '✦ 방명록 ✦', guestbook_name: '이름', guestbook_message: '메시지를 남기세요...', guestbook_send: '보내기', guestbook_success: '메시지 감사합니다 ✦', nav_feedback: '제안&개선', feedback_title: '✦ 제안&개선 ✦', feedback_hint: '사이트에서 개선이 필요한 부분이 있나요? 여기에 알려주세요. 이 메시지는 저만 볼 수 있고 다른 방문자는 볼 수 없습니다.', feedback_placeholder: '제안 사항을 적어주세요...', feedback_submit: '보내기', feedback_success: '메시지가 전송되었습니다. 소중한 의견 감사합니다!',        nav_guide: '가이드', guide_title: '✦ 사용자 가이드 ✦', guide_prev: '◀ 이전', guide_next: '다음 ▶',
-        guide_quiz_title: '단어 퀴즈',         guide_quiz_desc: '영어(중학교·고등학교·토익·토플), 일본어 JLPT, 한국어 TOPIK, 중국어 HSK, 프랑스어 단어 퀴즈. 단어는 자주 쓰는 쉬운 것부터 어려운 순으로 정리되어 있어요. 퀴즈 모드, 답 언어, 문제 수(10/20/30/무제한)를 고를 수 있고 자동 발음도 지원해요. 퀴즈 후에는 성적표와 문제별 해설을 보여 주고 성적 카드를 공유할 수 있어요. 오프라인에서는 마지막으로 불러온 단어장을 사용해요.',
-        guide_mistake_title: '오답 노트', guide_mistake_desc: '오답은 자동으로 오답 노트(📖)에 기록됩니다. 한 언어에 오답이 4개 이상 쌓이면 복습 퀴즈를 시작할 수 있으며, 정답을 맞히면 자동 삭제되고 틀리면 남아서 카운트됩니다.',
-        guide_stats_title: '퀴즈 통계', guide_stats_desc: '📊 퀴즈 통계에서 총 테스트 횟수, 평균 정답률, 최고 점수, 정답률 추이 그래프, 최근 10건의 기록을 확인할 수 있습니다.',
-        guide_about_title: '자기소개', guide_about_desc: '중국어 학습 디스코드 서버 링크와 그 외 소셜 링크가 있습니다.',
-        guide_guestbook_title: '방명록', guide_guestbook_desc: '남긴 글은 모든 방문자에게 공개됩니다.',
-        guide_bgm_title: 'BGM 레코드 플레이어', guide_bgm_desc: '레코드에 마우스를 올리면 곡 전환과 볼륨 조절이 가능합니다.',
-        bgm_hint: '클릭하면 배경음악이 재생됩니다',
-        guide_settings_title: '표시 설정', guide_settings_desc: '오른쪽 아래 ⚙️ 버튼(휴대폰에서는 「더보기」 안)으로 내비게이션 바에 표시할 페이지를 선택할 수 있습니다(홈과 가이드는 항상 표시). 설정은 브라우저에 저장되며 맞춤 링크 공유도 가능합니다.',        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
+        nav_guestbook: '방명록', guestbook_title: '✦ 방명록 ✦', guestbook_name: '이름', guestbook_message: '메시지를 남기세요...', guestbook_send: '보내기', guestbook_success: '메시지 감사합니다 ✦', nav_feedback: '제안&개선', feedback_title: '✦ 제안&개선 ✦', feedback_hint: '사이트에서 개선이 필요한 부분이 있나요? 여기에 알려주세요. 이 메시지는 저만 볼 수 있고 다른 방문자는 볼 수 없습니다.', feedback_placeholder: '제안 사항을 적어주세요...', feedback_submit: '보내기', feedback_success: '메시지가 전송되었습니다. 소중한 의견 감사합니다!',        bgm_hint: '클릭하면 배경음악이 재생됩니다',
+        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
         fc_view_mastered: '📋 숙달 단어 보기', fc_mastered_title: '📋 숙달된 단어', fc_start_flashcard: '📖 플래시카드 시작',
         fc_mastered_count: '✅ {n} / {m} 숙달됨', fc_mastered_empty: '숙달된 단어가 아직 없습니다',
         fc_view_unknown: '📋 모르는 단어 보기', fc_unknown_title: '📋 모르는 단어',
@@ -79,7 +72,6 @@ I18N.ko = {
         nav_notes: '메모장', notes_title: '✦ 메모장 ✦', notes_hint: '이 메모는 이 브라우저에만 저장됩니다. 기기를 바꾸거나 브라우저 데이터를 지우면 사라져요.',
         notes_placeholder: '무언가 적어보세요...', notes_add: '메모 추가', notes_empty: '아직 메모가 없어요. 첫 메모를 남겨보세요!',
         notes_delete: '삭제', notes_delete_confirm: '이 메모를 삭제할까요?',
-        guide_notes_title: '메모장', guide_notes_desc: '간단히 메모할 수 있어요. 메모는 이 브라우저에만 저장되며 기기를 바꾸거나 브라우저 데이터를 지우면 사라집니다.',
         notes_cat_all: '전체', notes_cat_none: '미분류',
         notes_empty_filter: '이 폴더에는 아직 메모가 없어요.',
         notes_attach: '사진/파일 첨부', notes_attach_remove: '첨부 삭제', notes_file_too_large: '파일이 너무 커요 (최대 {n}MB)',
@@ -100,8 +92,7 @@ I18N.ko = {
         // graded word lists
         quiz_en_jh: '영어 · 중학교', quiz_en_sh: '영어 · 고등학교', quiz_en_toeic: '토익 TOEIC', quiz_en_toefl: '토플 TOEFL', quiz_english_title: '✦ 영어 단어장 선택 ✦', examquiz_english: '영어 시험 (토익/토플)', examquiz_english_title: '✦ 영어 시험 선택 ✦', fc_choose_set: '단어장 선택', load_loading: '단어장을 불러오는 중…', path_source: '출처: {s} ({l})', quiz_hsk_2: 'HSK 2', quiz_hsk_3: 'HSK 3', quiz_hsk_4: 'HSK 4', quiz_hsk_5: 'HSK 5', quiz_hsk_6: 'HSK 6', quiz_hsk_7: 'HSK 7–9', examquiz_hsk_2: 'HSK 2', examquiz_hsk_3: 'HSK 3', examquiz_hsk_4: 'HSK 4', examquiz_hsk_5: 'HSK 5', examquiz_hsk_6: 'HSK 6', examquiz_hsk_7: 'HSK 7–9',
         // alphabet chart
-        nav_alphabet: '문자표', alpha_title: '✦ 문자표 ✦', alpha_hint: '처음 배우는 분께: 모든 글자에 발음과 예시 단어가 있어요. 🔊 버튼을 누르면 발음을 들을 수 있어요.', alpha_tts_note: '발음은 기기에 내장된 음성을 사용해요. 소리가 나지 않으면 해당 언어의 음성이 설치되어 있는지 확인해 주세요.', alpha_play_letter: '글자 발음 듣기', alpha_play_word: '단어 발음 듣기', alpha_rare: '지금은 거의 쓰지 않음', alpha_tab_en: '영어', alpha_tab_hira: '히라가나', alpha_tab_kata: '가타카나', alpha_tab_ko: '한국어', alpha_tab_zh: '주음부호', alpha_tab_ru: '러시아어', alpha_tab_fr: '프랑스어', alpha_tab_de: '독일어', alpha_tab_es: '스페인어', alpha_sec_seion: '청음', alpha_sec_dakuon: '탁음', alpha_sec_handakuon: '반탁음', alpha_sec_ko_cons: '기본 자음', alpha_sec_ko_double: '쌍자음', alpha_sec_ko_vowel: '기본 모음', alpha_sec_ko_compound: '복합 모음', alpha_sec_zh_initial: '성모', alpha_sec_zh_medial: '개음', alpha_sec_zh_final: '운모', alpha_sec_special: '특수 문자', home_beginner: '이제 막 시작했나요?', home_alphabet_btn: '문자표: 발음부터 시작하기', guide_alphabet_title: '문자표', guide_alphabet_desc: '초보자를 위한 문자표: 영어, 일본어 히라가나·가타카나, 한국어, 주음부호(병음 포함), 러시아어, 프랑스어, 독일어, 스페인어. 모든 글자에 발음과 예시 단어가 있고, 글자와 단어 모두 🔊 버튼으로 발음을 들을 수 있어요.',
-        // voice picker
+        nav_alphabet: '문자표', alpha_title: '✦ 문자표 ✦', alpha_hint: '처음 배우는 분께: 모든 글자에 발음과 예시 단어가 있어요. 🔊 버튼을 누르면 발음을 들을 수 있어요.', alpha_tts_note: '발음은 기기에 내장된 음성을 사용해요. 소리가 나지 않으면 해당 언어의 음성이 설치되어 있는지 확인해 주세요.', alpha_play_letter: '글자 발음 듣기', alpha_play_word: '단어 발음 듣기', alpha_rare: '지금은 거의 쓰지 않음', alpha_tab_en: '영어', alpha_tab_hira: '히라가나', alpha_tab_kata: '가타카나', alpha_tab_ko: '한국어', alpha_tab_zh: '주음부호', alpha_tab_ru: '러시아어', alpha_tab_fr: '프랑스어', alpha_tab_de: '독일어', alpha_tab_es: '스페인어', alpha_sec_seion: '청음', alpha_sec_dakuon: '탁음', alpha_sec_handakuon: '반탁음', alpha_sec_ko_cons: '기본 자음', alpha_sec_ko_double: '쌍자음', alpha_sec_ko_vowel: '기본 모음', alpha_sec_ko_compound: '복합 모음', alpha_sec_zh_initial: '성모', alpha_sec_zh_medial: '개음', alpha_sec_zh_final: '운모', alpha_sec_special: '특수 문자', home_beginner: '이제 막 시작했나요?', home_alphabet_btn: '문자표: 발음부터 시작하기', // voice picker
         tts_title: '🔊 음성', tts_desc: '\'자동\'은 이 기기에서 가장 자연스럽게 들리는 음성을 골라요. 직접 바꿀 수도 있고, ▶ 버튼으로 미리 들을 수 있어요.', tts_auto: '자동: {v}', tts_none: '이 기기에는 이 언어의 음성이 없어요', tts_try: '미리 듣기', tts_unsupported: '이 브라우저는 음성 재생을 지원하지 않아요.', tts_lang_zh_TW: '중국어 (대만)', tts_lang_zh_CN: '중국어 (중국 본토)',
         // voice picker: recordings
         tts_auto_rec: '자동: 미리 녹음한 자연스러운 음성 (없으면 {v})',
@@ -109,4 +100,6 @@ I18N.ko = {
         updates_btn: '업데이트 내용', updates_title: '📢 업데이트 내용', updates_close: '닫기',
         // result table header
         result_col_question: '문제',
+        // site tour
+        tour_skip: '건너뛰기', tour_prev: '이전', tour_next: '다음', tour_go: '출발!', tour_done: '학습 시작!', tour_step: '{n} / {m}', tour_in_more: '(휴대폰에서는 "더보기" 안에 있어요)', tour_replay: '사이트 둘러보기', tour_replay_btn: '✨ 사이트 둘러보기 다시 보기', tour_welcome_title: '안녕! 나는 小花火야 🎆', tour_welcome_text: 'Hanabiの小天地에 온 걸 환영해! 함께 언어를 배우는 곳이야. 한 바퀴 안내해 줄게, 1분이면 돼~', tour_goal_title: '하루 목표', tour_goal_text: '오늘 외운 단어 수와 연속 학습일이 여기에 표시돼. 원을 누르면 하루 목표를 바꿀 수 있어.', tour_start_title: '여기서 시작', tour_start_text: '이 버튼으로 첫 퀴즈를 시작할 수 있어. 다음부터는 지난번에 하던 곳부터 이어서 해.', tour_quiz_title: '단어 퀴즈', tour_quiz_text: '언어와 단어장을 고르고 단계별로 배워 봐: 한 단계에 10단어, 먼저 보고 나서 미니 퀴즈, 80% 맞히면 통과!', tour_exam_title: '검정시험', tour_exam_text: 'JLPT, TOPIK, HSK, 토익, 토플을 준비 중이야? 등급별로 정리한 단어장이 있어.', tour_review_title: '간격 복습과 오답 노트', tour_review_text: '틀린 단어는 자동으로 오답 노트에 들어가고, 잊어버릴 것 같은 단어는 여기서 복습하라고 알려 줘.', tour_dict_title: '사전', tour_dict_text: '모르는 단어는 사전에서 찾아봐: 번역, 품사, 뜻, 예문이 다 있고 발음도 들을 수 있어.', tour_alphabet_title: '문자표', tour_alphabet_text: '이제 막 언어를 시작했어? 먼저 글자와 발음부터! 8개 언어, 모든 글자에 예시 단어가 있어.', tour_notes_title: '메모장', tour_notes_text: '메모와 사진을 편하게 남겨 둬. 데이터는 네 기기에만 저장돼.', tour_settings_title: '설정', tour_settings_text: '보여 줄 페이지를 고르고, 언어마다 발음 음성을 고를 수 있어.', tour_lang_title: '언어와 다크 모드', tour_lang_text: '사이트 언어는 9가지 중에서 바꿀 수 있고, 옆에서 다크 모드 "墨夜"를 켜고 끌 수 있어.', tour_done_title: '준비 완료!', tour_done_text: '꿈을 향해 함께 계속 배워 보자! 둘러보기를 다시 보고 싶으면 설정에서 "사이트 둘러보기"를 찾아봐.',
 };
