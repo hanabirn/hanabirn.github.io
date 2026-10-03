@@ -1,7 +1,7 @@
 applyLang(siteLang);
 
 /* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
-const MORE_TABS = ['dict', 'guide', 'about', 'guestbook', 'feedback'];
+const MORE_TABS = ['dict', 'alphabet', 'guide', 'about', 'guestbook', 'feedback'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -16,7 +16,7 @@ function switchPage(page, el) {
     if (more) more.classList.toggle('active', MORE_TABS.includes(page));
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
-    const pages = ['home', 'guide', 'about', 'quiz', 'examquiz', 'dict', 'notes', 'guestbook', 'feedback'];
+    const pages = ['home', 'guide', 'about', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -36,7 +36,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['home', 'quiz', 'examquiz', 'dict', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
+const ALL_TABS = ['home', 'quiz', 'examquiz', 'dict', 'alphabet', 'notes', 'guide', 'about', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['home', 'guide'];
 
 function getTabVisibility() {
@@ -832,6 +832,7 @@ function refreshDynamicContent() {
     if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();
     if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (typeof renderDictPage === 'function') renderDictPage();
+    if (typeof renderAlphabet === 'function') renderAlphabet();
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
         if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();
