@@ -27,6 +27,26 @@ body {
     min-height: 100vh;
 }
 
+/* 青海波: faint waves rising from the bottom of the screen, behind everything
+   (cards are opaque, so they only show in the margins and gaps) */
+body::before {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 45vh;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--wave-pattern);
+    background-position: center bottom;
+    -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 35%, transparent 100%);
+    mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 35%, transparent 100%);
+}
+@media print {
+    body::before { display: none; }
+}
+
 /* ===== Headings in Mincho (serif), controls in the body sans ===== */
 h1, h2, h3, h4 {
     font-family: var(--font-serif);

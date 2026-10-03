@@ -107,4 +107,6 @@ I18N.es = {
         tts_auto_rec: 'Auto: voz natural grabada (si no, {v})',
         // what's new
         updates_btn: 'Novedades', updates_title: '📢 Novedades', updates_close: 'Cerrar',
+        // result table header
+        result_col_question: 'Pregunta',
 };

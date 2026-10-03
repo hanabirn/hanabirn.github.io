@@ -107,4 +107,6 @@ I18N.ru = {
         tts_auto_rec: 'Авто: записанный естественный голос (иначе {v})',
         // what's new
         updates_btn: 'Что нового', updates_title: '📢 Что нового', updates_close: 'Закрыть',
+        // result table header
+        result_col_question: 'Вопрос',
 };

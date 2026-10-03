@@ -208,8 +208,13 @@ function setTtsVoice(lang, name) {
     speakText(TTS_SAMPLE[lang], lang);
 }
 
-// Chrome fills the voice list asynchronously; refresh the panel when it arrives
+// Chrome fills the voice list asynchronously; refresh the panel when it arrives.
+// The event can fire while the page is still loading — before quiz.js (escHtml)
+// exists — so only redraw a panel that is actually open.
 if (window.speechSynthesis) {
     speechSynthesis.getVoices();
-    speechSynthesis.addEventListener('voiceschanged', renderTtsSettings);
+    speechSynthesis.addEventListener('voiceschanged', () => {
+        const overlay = document.getElementById('tab-settings-overlay');
+        if (overlay && overlay.classList.contains('show')) renderTtsSettings();
+    });
 }

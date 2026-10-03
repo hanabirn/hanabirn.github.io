@@ -272,7 +272,7 @@ let readingList = [];
 let meaningList = [];
 let currentWord = null;
 let currentMode = 'meaning';
-let score = 0;
+let score = 0;   // +10 right, -3 wrong, never below 0 (a beginner shouldn't see -4)
 let questionNum = 0;
 let answered = false;
 let totalQuestions = 0;
@@ -1158,8 +1158,13 @@ function startQuiz(mode) {
     document.getElementById('quiz-card').style.display = 'block';
     document.getElementById('result-card').style.display = 'none';
 
-    const modeNames = { meaning: t('mode_title_label'), reading: t('mode_title_label'), both: t('mode_title_label') };
-    document.getElementById('quiz-mode-label').innerText = modeNames[mode] || t('mode_title_label');
+    // the picked mode, worded like its button (the same key logic as showModeSelection);
+    // otherwise (Chinese, custom sheets) the set's name
+    const meaningKey = isEnglishQuizLang(currentLang) ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
+    const modeKey = { meaning: meaningKey, reading: 'mode_jp_reading', both: 'mode_both' }[mode];
+    const setName = t('quiz_' + currentLang);
+    document.getElementById('quiz-mode-label').innerText = modeKey ? t(modeKey)
+        : setName !== 'quiz_' + currentLang ? setName : t('mode_title_label');
     document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
     nextQuestion();
 }
@@ -1400,7 +1405,7 @@ function selectOption(selectedBtn, selectedText, type) {
         feedback.className = 'feedback correct';
         playSound(true);
     } else {
-        score -= 3;
+        score = Math.max(0, score - 3);
         selectedBtn.classList.add('wrong-choice');
         allBtns.forEach(btn => {
             if (btn.innerText === correctAnswer) {
@@ -1475,7 +1480,7 @@ function showResults() {
         </div>`;
 
     let detailHTML = '<table class="result-table"><thead><tr>';
-    detailHTML += `<th>${t('result_question', {n: ''})}</th>`;
+    detailHTML += `<th>${t('result_col_question')}</th>`;
     detailHTML += `<th>${t('result_your_answer')}</th>`;
     detailHTML += `<th>${t('result_correct_answer')}</th></tr></thead><tbody>`;
 
@@ -2236,7 +2241,7 @@ function onTimerExpired() {
         else gradeSrsQuizCard(quizEntryFor(type, correctAnswer), false);
     }
 
-    score -= 3;
+    score = Math.max(0, score - 3);
     feedback.innerText = t('timer_expired') + correctAnswer;
     feedback.className = 'feedback wrong';
     playSound(false);
@@ -3013,6 +3018,8 @@ function startListeningWithConfig(count) {
 
     currentListeningMode = true;
     currentLang = listeningSetId;
+    // "聽简体" (pinyin) must be read by the mainland voice, "聽繁體" by the Taiwan one
+    if (listeningLang === 'zh') zhCharType = listeningMode === 'pinyin' ? 'simp' : 'trad';
     score = 0;
     questionNum = 0;
     totalQuestions = count;
@@ -3295,7 +3302,7 @@ function submitListeningAnswer() {
         input.style.borderColor = 'var(--success)';
         playSound(true);
     } else {
-        score -= 3;
+        score = Math.max(0, score - 3);
         feedback.innerText = t('wrong') + correctAnswer;
         feedback.className = 'feedback wrong';
         input.style.borderColor = 'var(--danger)';

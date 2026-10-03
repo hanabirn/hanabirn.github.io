@@ -107,4 +107,6 @@ I18N.en = {
         tts_auto_rec: 'Auto: recorded natural voice (else {v})',
         // what's new
         updates_btn: 'What\'s new', updates_title: '📢 What\'s new', updates_close: 'Close',
+        // result table header
+        result_col_question: 'Question',
 };

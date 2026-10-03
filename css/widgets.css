@@ -361,15 +361,11 @@
     .reload-btn, .tab-settings-btn {
         display: none;
     }
-    /* the clock floats just above the bottom tab bar */
+    /* no floating clock on phones: on a narrow screen it covered buttons
+       (a lesson word's 🔊, the quiz tools) whatever the page */
     .clock-widget {
-        bottom: calc(80px + env(safe-area-inset-bottom));
-        right: 12px;
-        padding: 7px 12px;
+        display: none;
     }
-    .clock-time { font-size: 0.95rem; }
-    /* let the page scroll its last lines (the footer) up past the clock */
-    footer { padding-bottom: 100px; }
     /* the bottom edge is taken by the tab bar and the clock, so the
        install / update banners drop in from the top instead, just under
        the ~56px phone header so they don't cover its controls */

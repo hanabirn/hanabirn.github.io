@@ -107,4 +107,6 @@ I18N.fr = {
         tts_auto_rec: 'Auto : voix naturelle enregistrée (sinon {v})',
         // what's new
         updates_btn: 'Nouveautés', updates_title: '📢 Nouveautés', updates_close: 'Fermer',
+        // result table header
+        result_col_question: 'Question',
 };

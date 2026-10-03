@@ -108,4 +108,6 @@ I18N['zh-Hans'] = {
         tts_auto_rec: '自动：预录的自然语音（没录到的用 {v}）',
         // what's new
         updates_btn: '更新内容', updates_title: '📢 更新内容', updates_close: '关闭',
+        // result table header
+        result_col_question: '题目',
 };

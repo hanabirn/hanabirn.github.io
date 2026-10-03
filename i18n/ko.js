@@ -107,4 +107,6 @@ I18N.ko = {
         tts_auto_rec: '자동: 미리 녹음한 자연스러운 음성 (없으면 {v})',
         // what's new
         updates_btn: '업데이트 내용', updates_title: '📢 업데이트 내용', updates_close: '닫기',
+        // result table header
+        result_col_question: '문제',
 };

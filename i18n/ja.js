@@ -107,4 +107,6 @@ I18N.ja = {
         tts_auto_rec: '自動：収録済みの自然な音声（ないものは {v}）',
         // what's new
         updates_btn: '更新情報', updates_title: '📢 更新情報', updates_close: '閉じる',
+        // result table header
+        result_col_question: '問題',
 };

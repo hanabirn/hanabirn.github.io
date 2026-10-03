@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-03',
+      zh: '背景加上淡淡的青海波；修正：聽力測驗「聽简体」改用普通話發音、手機上時鐘擋住按鈕、成績表標題，測驗總分不再出現負分。',
+      'zh-Hans': '背景加上淡淡的青海波；修复：听力测验“听简体”改用普通话发音、手机上时钟挡住按钮、成绩表标题，测验总分不再出现负分。',
+      en: 'Faint seigaiha waves in the background. Fixes: the simplified-Chinese listening quiz now uses a Mainland voice, the clock no longer covers buttons on phones, the score table header is fixed, and quiz scores no longer go below zero.',
+      ja: '背景に淡い青海波を追加。修正：リスニングの「簡体字」は普通話の発音に、スマホで時計がボタンを隠さないように、成績表の見出しを修正、合計点がマイナスにならないように。',
+      ko: '배경에 은은한 세이가이하 물결 무늬를 추가했어요. 수정: 듣기 퀴즈의 간체 모드는 보통화 발음으로, 휴대폰에서 시계가 버튼을 가리지 않게, 성적표 제목 수정, 총점이 마이너스가 되지 않게.',
+      ru: 'Лёгкий узор сэйгайха на фоне. Исправлено: упрощённый китайский в аудировании звучит с путунхуа, часы на телефоне больше не закрывают кнопки, заголовок таблицы результатов, счёт теста больше не уходит в минус.',
+      fr: 'Un léger motif de vagues seigaiha en arrière-plan. Corrigé : l\'écoute en chinois simplifié utilise une voix du continent, l\'horloge ne cache plus les boutons sur téléphone, l\'en-tête du tableau des résultats, et le score ne descend plus sous zéro.',
+      es: 'Un suave patrón de olas seigaiha en el fondo. Corregido: la escucha en chino simplificado usa una voz de China continental, el reloj ya no tapa botones en el móvil, el encabezado de la tabla de resultados y la puntuación ya no baja de cero.',
+      de: 'Ein dezentes Seigaiha-Wellenmuster im Hintergrund. Behoben: Das Hörquiz in vereinfachtem Chinesisch nutzt eine Festland-Stimme, die Uhr verdeckt auf dem Handy keine Buttons mehr, die Überschrift der Ergebnistabelle stimmt, und die Punktzahl wird nicht mehr negativ.' },
+    { date: '2026-10-03',
       zh: '電腦版排版加寬：字母表一列放更多字母，字典的例句移到右側，單字測驗的關卡和單元左右並排；頁首新增「關於我」和「更新內容」。',
       'zh-Hans': '电脑版排版加宽：字母表一行放更多字母，词典的例句移到右侧，单词测验的关卡和单元左右并排；页首新增“关于我”和“更新内容”。',
       en: 'Wider desktop layout: more letters per row in the alphabet chart, dictionary examples on the right, quiz levels and units side by side. "About me" and "What\'s new" are now in the header.',

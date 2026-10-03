@@ -107,4 +107,6 @@ I18N.de = {
         tts_auto_rec: 'Automatisch: aufgenommene natürliche Stimme (sonst {v})',
         // what's new
         updates_btn: 'Neuigkeiten', updates_title: '📢 Neuigkeiten', updates_close: 'Schließen',
+        // result table header
+        result_col_question: 'Frage',
 };

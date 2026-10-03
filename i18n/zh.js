@@ -108,4 +108,6 @@ I18N.zh = {
         tts_auto_rec: '自動：預錄的自然語音（沒錄到的用 {v}）',
         // what's new
         updates_btn: '更新內容', updates_title: '📢 更新內容', updates_close: '關閉',
+        // result table header
+        result_col_question: '題目',
 };
