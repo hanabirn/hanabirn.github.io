@@ -2,7 +2,7 @@
    Every built-in word set (QUIZ_LANG_ORDER) is cut, in sheet order, into levels of
    LESSON_SIZE words, grouped into units of LEVELS_PER_UNIT. A level is a preview of
    its words followed by a quiz that asks each of them once; LESSON_PASS_PCT unlocks
-   the next level. Progress is localStorage.path_progress = { setId: { done, best } }
+   the next level. Progress is localStorage.path_progress_v2 = { setId: { done, best } }
    where `done` = how many levels in a row are passed (so level index `done` is the
    one to play next) and best[i] = best % on level i.
 
@@ -24,8 +24,13 @@ let lessonSetId = '';
 let lessonLevel = 0;
 let lessonPassed = false;
 
+/* v2 since the word sets moved to data/vocab/ (2026-10): the old sheet-order levels
+   held different words, so their progress is not carried over. SRS cards and the
+   mistake book are keyed by word and are unaffected. */
+const PATH_PROGRESS_KEY = 'path_progress_v2';
+
 function getPathProgress() {
-    try { return JSON.parse(localStorage.getItem('path_progress')) || {}; } catch { return {}; }
+    try { return JSON.parse(localStorage.getItem(PATH_PROGRESS_KEY)) || {}; } catch { return {}; }
 }
 
 function getSetProgress(setId) {
@@ -36,7 +41,7 @@ function getSetProgress(setId) {
 function saveSetProgress(setId, prog) {
     const all = getPathProgress();
     all[setId] = prog;
-    try { localStorage.setItem('path_progress', JSON.stringify(all)); } catch {}
+    try { localStorage.setItem(PATH_PROGRESS_KEY, JSON.stringify(all)); } catch {}
 }
 
 function levelCountFor(wordCount) {
@@ -121,6 +126,13 @@ function renderLessonPath() {
         ? t('path_all_done')
         : t('path_progress', { n: done, m: levels });
     document.getElementById('path-bar-fill').style.width = (levels ? Math.round(done / levels * 100) : 0) + '%';
+    // credit the list's source (CC BY / BY-SA need it); unknown for a cached or sheet set
+    const src = document.getElementById('path-source');
+    if (src) {
+        src.textContent = currentSetMeta && currentSetMeta.source
+            ? t('path_source', { s: currentSetMeta.source, l: currentSetMeta.license })
+            : '';
+    }
 
     const currentUnit = Math.floor(Math.min(done, levels - 1) / LEVELS_PER_UNIT);
     const units = Math.ceil(levels / LEVELS_PER_UNIT);

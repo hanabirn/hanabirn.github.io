@@ -181,6 +181,82 @@ const HSK_SHEETS = {
     hsk_1: 'https://docs.google.com/spreadsheets/d/1yGET_yX2M98C5mKyqkje9Jm-NXwUhhMMRrhiIOaL3XA/export?format=csv&gid=1793944762'
 };
 
+/* ===== Bundled word sets =====
+   data/vocab/<id>.json, built by tools/build_vocab.py from graded lists and ordered
+   easy-first (most frequent words first). kind 'ja' | 'ko' | 'en' rows are
+   [word, reading, meaning, english]; kind 'zh' rows are [trad, simp, bopomofo,
+   pinyin, meaning]. Only French still comes from a Google Sheet (SHEETS.fr); the
+   other SHEETS / JLPT_SHEETS / TOPIK_SHEETS / HSK_SHEETS entries are kept for the
+   build script and pasted custom sheets, not loaded by the site any more. */
+const BUNDLED_SETS = {
+    en_jh: 'en', en_sh: 'en', en_toeic: 'en', en_toefl: 'en',
+    jlpt_n5: 'ja', jlpt_n4: 'ja', jlpt_n3: 'ja', jlpt_n2: 'ja', jlpt_n1: 'ja',
+    topik_1: 'ko', topik_2: 'ko', topik_3: 'ko', topik_4: 'ko',
+    hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
+};
+
+/* Word sets by language, in picker order (the flashcard / listening tools pick a
+   language, then one of these). */
+const WORD_SET_FAMILIES = {
+    en: ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'],
+    jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'],
+    kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'],
+    zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'],
+    fr: ['fr']
+};
+
+let currentSetMeta = null; // { source, license } of the loaded bundled set
+
+function resetWordLists() {
+    vocabularyList = [];
+    readingList = [];
+    meaningList = [];
+}
+
+/* Fills vocabularyList / readingList / meaningList with a word set and resolves to
+   its word count. Bundled sets come from data/vocab/; French from its sheet. */
+function loadWordSet(id) {
+    resetWordLists();
+    currentSetMeta = null;
+    if (BUNDLED_SETS[id]) {
+        return fetch('data/vocab/' + id + '.json')
+            .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+            .then(data => {
+                resetWordLists();
+                (data.words || []).forEach(row => {
+                    if (data.kind === 'zh') addZhWord(row[0], row[1], row[2], row[3], row[4]);
+                    else addWord(row[0], row[1], row[2], row[3]);
+                });
+                currentSetMeta = { source: data.source || '', license: data.license || '' };
+                return vocabularyList.length;
+            });
+    }
+    if (SHEETS[id]) {
+        return new Promise((resolve, reject) => Papa.parse(SHEETS[id], {
+            download: true,
+            header: false,
+            complete: results => {
+                resetWordLists();
+                if (id === 'fr') parseFrench(results.data);
+                resolve(vocabularyList.length);
+            },
+            error: reject
+        }));
+    }
+    return Promise.reject(new Error('unknown word set ' + id));
+}
+
+/* Offline fallback: the copy saveVocabCache() kept. meaningList isn't stored, so it is
+   rebuilt the way addWord() fills it (words without kanji; Chinese entries never). */
+function restoreVocabCache(id) {
+    const cached = getVocabCache(id);
+    if (!cached || !cached.vocabularyList || cached.vocabularyList.length < 4) return false;
+    vocabularyList = cached.vocabularyList;
+    readingList = cached.readingList || [];
+    meaningList = vocabularyList.filter(w => !w.trad && !hasKanji(w.word));
+    return true;
+}
+
 let currentLang = '';
 let vocabularyList = [];
 let readingList = [];
@@ -337,6 +413,11 @@ function isKoreanQuizLang(lang) {
 /* HSK levels (hsk_1, ...) are all Chinese vocab, so treat them
    the same as 'zh' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isChineseQuizLang() call sites. */
+/* English word sets (en_jh, en_toeic, ...) and the old general 'en' sheet */
+function isEnglishQuizLang(lang) {
+    return lang === 'en' || String(lang).startsWith('en_');
+}
+
 function isChineseQuizLang(lang) {
     return lang === 'zh' || lang.startsWith('hsk_');
 }
@@ -346,10 +427,10 @@ function speakWord() {
     window.speechSynthesis.cancel();
     const speakText = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const utter = new SpeechSynthesisUtterance(speakText);
-    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : currentLang === 'en' ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
     utter.rate = 0.8;
     const voices = window.speechSynthesis.getVoices();
-    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : currentLang === 'en' ? 'en' : isChineseQuizLang(currentLang) ? 'zh' : 'ko';
+    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : isEnglishQuizLang(currentLang) ? 'en' : isChineseQuizLang(currentLang) ? 'zh' : 'ko';
     const match = voices.find(v => v.lang.startsWith(langPrefix));
     if (match) utter.voice = match;
     window.speechSynthesis.speak(utter);
@@ -408,12 +489,41 @@ function setResultAgainLabel(key) {
     b.innerHTML = t(key);
 }
 
+/* The quiz page's language card: French loads straight away; the other languages
+   open their level picker (English on this page, the rest on the exam page). */
 function selectLanguage(lang) {
-    endReviewState();
-    currentLang = lang;
+    if (lang === 'fr') { selectWordSet('fr'); return; }
+    if (lang === 'en') { showEnglishLevels(); return; }
+    switchPage('examquiz', null);
+    hideExamLevelCards();
+    if (lang === 'jp') showJlptLevels();
+    else if (lang === 'kr') showTopikLevels();
+    else if (lang === 'zh') showHskLevels();
+}
+
+function showEnglishLevels() {
     document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('sheetUrlInput').value = SHEETS[lang];
-    loadSheetData(SHEETS[lang]);
+    document.getElementById('en-level-card').style.display = 'block';
+}
+
+function hideEnglishLevels() {
+    document.getElementById('en-level-card').style.display = 'none';
+    document.getElementById('lang-card').style.display = 'block';
+}
+
+function hideExamLevelCards() {
+    ['examquiz-jlpt-level-card', 'examquiz-topik-level-card', 'examquiz-hsk-level-card', 'examquiz-english-level-card']
+        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+}
+
+function showEnglishExamLevels() {
+    document.getElementById('examquiz-card').style.display = 'none';
+    document.getElementById('examquiz-english-level-card').style.display = 'block';
+}
+
+function hideEnglishExamLevels() {
+    document.getElementById('examquiz-english-level-card').style.display = 'none';
+    document.getElementById('examquiz-card').style.display = 'block';
 }
 
 /* Certification-exam vocab sets (e.g. JLPT N5, TOPIK 1) live in their own
@@ -472,55 +582,46 @@ function parseTopikVocab(rows) {
 }
 
 function selectExamSet(examId) {
+    selectWordSet(examId);
+}
+
+/* Loads a word set onto the quiz page and opens it (its path, see showSetStart). A
+   reply that arrives after the visitor picked another set is ignored. */
+function selectWordSet(id) {
     endReviewState();
-    currentLang = examId;
-    vocabularyList = [];
-    readingList = [];
-    meaningList = [];
-    document.getElementById('lang-card').style.display = 'none';
-    switchPage('quiz', document.querySelector('.nav-btn[data-tab="quiz"]'));
+    currentLang = id;
+    resetWordLists();
+    ['lang-card', 'en-level-card'].forEach(c => { const el = document.getElementById(c); if (el) el.style.display = 'none'; });
+    switchPage('quiz', null);
 
     const setupCard = document.getElementById('setup-card');
     const statusMsg = document.getElementById('status-msg');
     setupCard.style.display = 'block';
     document.getElementById('mistake-card').style.display = 'none';
     document.getElementById('stats-card').style.display = 'none';
-    statusMsg.innerText = '正在讀取 Google 試算表單字庫...';
+    statusMsg.innerText = t('load_loading');
     statusMsg.style.color = 'var(--text-secondary)';
 
-    const isTopik = examId.startsWith('topik_');
-    const isHsk = examId.startsWith('hsk_');
-    const sheetUrl = isTopik ? TOPIK_SHEETS[examId] : isHsk ? HSK_SHEETS[examId] : JLPT_SHEETS[examId];
-
-    Papa.parse(sheetUrl, {
-        download: true,
-        header: false,
-        complete: function(results) {
-            if (isTopik) parseTopikVocab(results.data);
-            else if (isHsk) parseChinese(results.data);
-            else parseExamVocab(results.data);
-            if (vocabularyList.length >= 4) {
-                saveVocabCache(currentLang);
-                statusMsg.innerText = t('load_success', {n: vocabularyList.length}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
-                statusMsg.style.color = 'var(--accent-green)';
-                showSetStart();
-            } else {
-                statusMsg.innerText = `讀取到的單字不足（僅 ${vocabularyList.length} 個），無法出題！`;
-                statusMsg.style.color = 'var(--accent-red)';
-            }
-        },
-        error: function() {
-            const cached = getVocabCache(currentLang);
-            if (cached && cached.vocabularyList && cached.vocabularyList.length >= 4) {
-                vocabularyList = cached.vocabularyList;
-                readingList = cached.readingList || [];
-                statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
-                statusMsg.style.color = 'var(--accent-yellow)';
-                showSetStart();
-            } else {
-                statusMsg.innerText = t('load_fail_no_cache');
-                statusMsg.style.color = 'var(--accent-red)';
-            }
+    loadWordSet(id).then(n => {
+        if (currentLang !== id) return;
+        if (n >= 4) {
+            saveVocabCache(id);
+            statusMsg.innerText = t('load_success', {n: n}) + (readingList.length > 0 ? t('load_with_reading', {n: readingList.length}) : '');
+            statusMsg.style.color = 'var(--accent-green)';
+            showSetStart();
+        } else {
+            statusMsg.innerText = t('load_fail_no_cache');
+            statusMsg.style.color = 'var(--accent-red)';
+        }
+    }).catch(() => {
+        if (currentLang !== id) return;
+        if (restoreVocabCache(id)) {
+            statusMsg.innerText = t('load_offline_cache', {n: vocabularyList.length});
+            statusMsg.style.color = 'var(--accent-yellow)';
+            showSetStart();
+        } else {
+            statusMsg.innerText = t('load_fail_no_cache');
+            statusMsg.style.color = 'var(--accent-red)';
         }
     });
 }
@@ -747,15 +848,23 @@ function refreshDynamicContent() {
                 if (key) b.innerText = t(key);
             });
         }
+        document.querySelectorAll('#fc-set-buttons .mode-btn').forEach(b => {
+            const key = b.getAttribute('data-i18n');
+            if (key) b.innerText = t(key);
+        });
         const modeBtns = document.getElementById('fc-mode-buttons');
-        if (modeBtns && modeBtns.children.length > 0 && flashcardLang) {
-            selectFlashcardLang(flashcardLang, document.querySelector('#fc-lang-buttons .mode-btn-active'));
+        if (modeBtns && modeBtns.children.length > 0 && flashcardLang && flashcardSetId) {
+            showFlashcardModes(flashcardLang);
         }
         updateMasteredCount();
         const startBtn = document.getElementById('fc-start-btn');
         if (startBtn) startBtn.innerText = t('fc_start_flashcard');
     }
     if (isVisible('listening-setup-card') && listeningLang) {
+        document.querySelectorAll('#lc-set-buttons .mode-btn').forEach(b => {
+            const key = b.getAttribute('data-i18n');
+            if (key) b.innerText = t(key);
+        });
         const langBtns = document.getElementById('lc-lang-buttons');
         if (langBtns && langBtns.children.length > 0) {
             document.querySelectorAll('#lc-lang-buttons .mode-btn').forEach(b => {
@@ -815,11 +924,11 @@ function showModeSelection() {
     const container = document.getElementById('mode-buttons');
     container.innerHTML = '';
 
-    const skipModeSelection = isKoreanQuizLang(currentLang) || currentLang === 'fr' || currentLang === 'en';
+    const skipModeSelection = isKoreanQuizLang(currentLang) || currentLang === 'fr' || isEnglishQuizLang(currentLang);
 
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
-    const meaningKey = currentLang === 'en' ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
+    const meaningKey = isEnglishQuizLang(currentLang) ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
     btnMeaning.setAttribute('data-i18n', meaningKey);
     btnMeaning.innerText = t(meaningKey);
     btnMeaning.onclick = function() { selectMode('meaning', this); };
@@ -1380,6 +1489,8 @@ function backToLanguage() {
         return;
     }
     const wasSrsReview = reviewMode && reviewSource === 'srs';
+    const wasEnglishSet = String(currentLang).startsWith('en_');
+    const wasEnglishExam = currentLang === 'en_toeic' || currentLang === 'en_toefl';
     const wasJlptQuiz = currentLang.startsWith('jlpt_');
     const wasTopikQuiz = currentLang.startsWith('topik_');
     const wasHskQuiz = currentLang.startsWith('hsk_');
@@ -1403,6 +1514,7 @@ function backToLanguage() {
     document.getElementById('flashcard-card').style.display = 'none';
     document.getElementById('flashcard-setup-card').style.display = 'none';
     document.getElementById('listening-setup-card').style.display = 'none';
+    document.getElementById('en-level-card').style.display = 'none';
     hidePathCards();
     updateMistakeBadge();
     updateStreakBadge();
@@ -1413,14 +1525,19 @@ function backToLanguage() {
         return;
     }
 
-    /* exam-quiz quizzes borrow #page-quiz's engine, so its "返回" should
-       land back on the JLPT/TOPIK level picker, not #page-quiz's own language card */
-    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz) {
+    /* a set's "返回" lands on the level picker it was chosen from */
+    if (wasEnglishSet && !wasEnglishExam) {
+        showEnglishLevels();
+        return;
+    }
+    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz || wasEnglishExam) {
         document.getElementById('lang-card').style.display = 'none';
         switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
+        hideExamLevelCards();
         if (wasJlptQuiz) showJlptLevels();
         else if (wasTopikQuiz) showTopikLevels();
-        else showHskLevels();
+        else if (wasHskQuiz) showHskLevels();
+        else showEnglishExamLevels();
     }
 }
 
@@ -1433,8 +1550,17 @@ let reviewPool = [];
 let currentReviewEntry = null;
 let _mistakeCache = [];
 
-const QUIZ_LANG_FLAGS = { srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳', jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖', topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖', hsk_1: '📖' };
-const QUIZ_LANG_ORDER = ['jp', 'kr', 'fr', 'en', 'zh', 'jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'topik_1', 'topik_2', 'topik_3', 'topik_4', 'hsk_1'];
+const QUIZ_LANG_FLAGS = {
+    srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳',
+    en_jh: '📘', en_sh: '📘', en_toeic: '📘', en_toefl: '📘',
+    jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖',
+    topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖',
+    hsk_1: '📖', hsk_2: '📖', hsk_3: '📖', hsk_4: '📖', hsk_5: '📖', hsk_6: '📖', hsk_7: '📖'
+};
+/* The sets a visitor can pick (paths, "continue", recent sets). */
+const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr);
+/* Retired general sheets; their mistake-book entries and SRS cards still exist. */
+const LEGACY_SET_IDS = ['jp', 'kr', 'en', 'zh'];
 
 function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -1563,7 +1689,7 @@ function renderMistakeBook() {
         return;
     }
     let html = '';
-    QUIZ_LANG_ORDER.forEach(lg => {
+    QUIZ_LANG_ORDER.concat(LEGACY_SET_IDS).forEach(lg => {
         const items = list.map((m, i) => ({ m, i })).filter(x => x.m.lang === lg);
         if (items.length === 0) return;
         items.sort((a, b) => b.m.last - a.m.last);
@@ -2283,6 +2409,9 @@ function showFlashcard() {
     document.getElementById('flashcard-setup-title').textContent = t('flashcard_title');
     document.getElementById('fc-lang-title').style.display = '';
     document.getElementById('fc-lang-buttons').style.display = '';
+    document.getElementById('fc-set-title').style.display = 'none';
+    document.getElementById('fc-set-buttons').style.display = 'none';
+    flashcardSetId = '';
     document.getElementById('fc-mode-title').style.display = 'none';
     document.getElementById('fc-mode-buttons').style.display = 'none';
     document.getElementById('fc-mode-buttons').innerHTML = '';
@@ -2306,11 +2435,53 @@ function showFlashcard() {
     });
 }
 
+let flashcardSetId = '';
+
+/* Flashcards: language -> word set (level) -> display mode. Known/unknown marks stay
+   keyed by language (flashcardLang), so they carry over between levels. */
 function selectFlashcardLang(lang, el) {
     flashcardLang = lang;
+    flashcardSetId = '';
     document.querySelectorAll('#fc-lang-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
     if (el) el.classList.add('mode-btn-active');
+    document.getElementById('fc-mode-title').style.display = 'none';
+    document.getElementById('fc-mode-buttons').style.display = 'none';
+    renderSetButtons('fc', lang, selectFlashcardSet);
+}
 
+function selectFlashcardSet(setId, el) {
+    flashcardSetId = setId;
+    document.querySelectorAll('#fc-set-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
+    if (el) el.classList.add('mode-btn-active');
+    showFlashcardModes(flashcardLang);
+}
+
+/* The level step shared by the flashcard ('fc') and listening ('lc') setups; a
+   language with a single set (French) skips it. */
+function renderSetButtons(prefix, lang, onPick) {
+    const title = document.getElementById(prefix + '-set-title');
+    const container = document.getElementById(prefix + '-set-buttons');
+    const sets = WORD_SET_FAMILIES[lang] || [];
+    container.innerHTML = '';
+    if (sets.length <= 1) {
+        title.style.display = 'none';
+        container.style.display = 'none';
+        if (sets.length === 1) onPick(sets[0], null);
+        return;
+    }
+    title.style.display = '';
+    container.style.display = '';
+    sets.forEach(id => {
+        const btn = document.createElement('button');
+        btn.className = 'mode-btn';
+        btn.setAttribute('data-i18n', 'quiz_' + id);
+        btn.innerText = t('quiz_' + id);
+        btn.onclick = function() { onPick(id, this); };
+        container.appendChild(btn);
+    });
+}
+
+function showFlashcardModes(lang) {
     const title = document.getElementById('fc-mode-title');
     const container = document.getElementById('fc-mode-buttons');
     title.style.display = '';
@@ -2357,7 +2528,9 @@ function selectFlashcardLang(lang, el) {
 function startFlashcardWithMode(modeId) {
     flashcardMode = modeId;
     const lang = flashcardLang;
-    if (!SHEETS[lang]) return;
+    if (!flashcardSetId) return;
+    document.getElementById('fc-set-title').style.display = 'none';
+    document.getElementById('fc-set-buttons').style.display = 'none';
 
     document.getElementById('fc-lang-title').style.display = 'none';
     document.getElementById('fc-lang-buttons').style.display = 'none';
@@ -2393,20 +2566,9 @@ function launchFlashcard(lang, modeId) {
 }
 
 function loadFlashcardVocab(lang, modeId) {
-    const sheetUrl = SHEETS[lang];
-    vocabularyList = [];
-    readingList = [];
-    meaningList = [];
-    fetch(sheetUrl)
-        .then(r => r.text())
-        .then(csv => {
-            const rows = Papa.parse(csv, { header: false }).data;
-            if (lang === 'jp') parseJapanese(rows);
-            else if (lang === 'kr') parseKorean(rows);
-            else if (lang === 'fr') parseFrench(rows);
-            else if (lang === 'en') parseEnglish(rows);
-            else if (lang === 'zh') parseChinese(rows);
-
+    loadWordSet(flashcardSetId)
+        .catch(() => { if (!restoreVocabCache(flashcardSetId)) throw new Error('no words'); })
+        .then(() => {
             flashcardList = shuffleArray([...vocabularyList]);
             flashcardIdx = 0;
             renderFlashcard();
@@ -2634,21 +2796,18 @@ function reviewUnknownWords() {
     const unknownWords = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
     if (unknownWords.length === 0) return;
 
-    const sheetUrl = SHEETS[lang];
-    vocabularyList = [];
-    readingList = [];
-    meaningList = [];
-    fetch(sheetUrl)
-        .then(r => r.text())
-        .then(csv => {
-            const rows = Papa.parse(csv, { header: false }).data;
-            if (lang === 'jp') parseJapanese(rows);
-            else if (lang === 'kr') parseKorean(rows);
-            else if (lang === 'fr') parseFrench(rows);
-            else if (lang === 'en') parseEnglish(rows);
-            else if (lang === 'zh') parseChinese(rows);
-
-            flashcardList = shuffleArray(vocabularyList.filter(w => unknownWords.includes(w.word)));
+    /* Unknown marks are kept per language, not per level, so every level of the
+       language is searched for them (one set after another). */
+    const found = [];
+    (WORD_SET_FAMILIES[lang] || []).reduce((chain, id) => chain
+        .then(() => loadWordSet(id).catch(() => restoreVocabCache(id)))
+        .then(() => {
+            vocabularyList.forEach(w => {
+                if (unknownWords.includes(w.word) && !found.some(f => f.word === w.word)) found.push(w);
+            });
+        }), Promise.resolve())
+        .then(() => {
+            flashcardList = shuffleArray(found);
             flashcardIdx = 0;
             if (flashcardList.length === 0) return;
             document.getElementById('unknown-list-card').style.display = 'none';
@@ -2676,6 +2835,9 @@ function startListeningQuiz() {
     document.getElementById('listening-setup-card').style.display = 'block';
     document.getElementById('lc-lang-title').style.display = '';
     document.getElementById('lc-lang-buttons').style.display = '';
+    document.getElementById('lc-set-title').style.display = 'none';
+    document.getElementById('lc-set-buttons').style.display = 'none';
+    listeningSetId = '';
     document.getElementById('lc-mode-title').style.display = 'none';
     document.getElementById('lc-mode-buttons').style.display = 'none';
     document.getElementById('lc-count-title').style.display = 'none';
@@ -2702,11 +2864,26 @@ function startListeningQuiz() {
     });
 }
 
+let listeningSetId = '';
+
 function selectListeningLang(lang, el) {
     listeningLang = lang;
+    listeningSetId = '';
     document.querySelectorAll('#lc-lang-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
     el.classList.add('mode-btn-active');
+    ['lc-mode-title', 'lc-mode-buttons', 'lc-meaning-title', 'lc-meaning-buttons', 'lc-count-title', 'lc-count-buttons']
+        .forEach(id => { document.getElementById(id).style.display = 'none'; });
+    renderSetButtons('lc', lang, selectListeningSet);
+}
 
+function selectListeningSet(setId, el) {
+    listeningSetId = setId;
+    document.querySelectorAll('#lc-set-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
+    if (el) el.classList.add('mode-btn-active');
+    showListeningModes(listeningLang);
+}
+
+function showListeningModes(lang) {
     const title = document.getElementById('lc-mode-title');
     const container = document.getElementById('lc-mode-buttons');
     title.style.display = '';
@@ -2822,28 +2999,20 @@ function showListeningCountSelection() {
 
 function startListeningWithConfig(count) {
     listeningCount = count;
-    if (!SHEETS[listeningLang]) return;
+    if (!listeningSetId) return;
 
     document.getElementById('listening-setup-card').style.display = 'none';
 
     currentListeningMode = true;
-    currentLang = listeningLang;
+    currentLang = listeningSetId;
     score = 0;
     questionNum = 0;
     totalQuestions = count;
     quizHistory = [];
 
-    const sheetUrl = SHEETS[listeningLang];
-    fetch(sheetUrl)
-        .then(r => r.text())
-        .then(csv => {
-            const rows = Papa.parse(csv, { header: false }).data;
-            if (listeningLang === 'jp') parseJapanese(rows);
-            else if (listeningLang === 'kr') parseKorean(rows);
-            else if (listeningLang === 'fr') parseFrench(rows);
-            else if (listeningLang === 'en') parseEnglish(rows);
-            else if (listeningLang === 'zh') parseChinese(rows);
-
+    loadWordSet(listeningSetId)
+        .catch(() => { if (!restoreVocabCache(listeningSetId)) throw new Error('no words'); })
+        .then(() => {
             shuffledVocab = shuffleArray(vocabularyList);
             vocabIdx = 0;
 
@@ -2854,6 +3023,12 @@ function startListeningWithConfig(count) {
             document.getElementById('timer-display').style.display = 'none';
             document.getElementById('timer-bar-container').style.display = 'none';
             nextListeningQuestion();
+        })
+        .catch(() => {
+            // offline with nothing cached: back to the language card rather than a blank page
+            currentListeningMode = false;
+            closeListeningSetup();
+            showShareToast(t('load_fail_no_cache'));
         });
 }
 

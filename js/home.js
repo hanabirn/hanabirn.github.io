@@ -85,7 +85,7 @@ function homeSetBadge(id) {
     if (id.startsWith('topik_') || id === 'kr') return '韓';
     if (id.startsWith('hsk_') || id === 'zh') return '中';
     if (id === 'fr') return 'Fr';
-    if (id === 'en') return 'En';
+    if (id === 'en' || id.startsWith('en_')) return 'En';
     return '・';
 }
 
@@ -181,8 +181,7 @@ function homeResetQuizPage() {
 function homeOpenSet(id) {
     if (!QUIZ_LANG_ORDER.includes(id)) return;
     homeResetQuizPage();
-    if (/^(jlpt|topik|hsk)_/.test(id)) selectExamSet(id);
-    else selectLanguage(id);
+    selectWordSet(id);
 }
 
 function homeContinue() {
@@ -209,11 +208,11 @@ function homeOpenMistakes() {
    earlier visit (say TOPIK) would stay up next to the one asked for. */
 function homeOpenExam(kind) {
     switchPage('examquiz', null);
-    ['examquiz-jlpt-level-card', 'examquiz-topik-level-card', 'examquiz-hsk-level-card']
-        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    hideExamLevelCards();
     if (kind === 'jlpt') showJlptLevels();
     else if (kind === 'topik') showTopikLevels();
     else if (kind === 'hsk') showHskLevels();
+    else if (kind === 'english') showEnglishExamLevels();
 }
 
 document.addEventListener('DOMContentLoaded', renderHome);
