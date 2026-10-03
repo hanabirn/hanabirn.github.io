@@ -78,6 +78,7 @@ function renderAlphabet() {
         `<button type="button" class="mode-btn alpha-tab ${id === alphaTab ? 'mode-btn-active' : ''}" onclick="setAlphaTab('${id}')" ${id === alphaTab ? 'aria-pressed="true"' : 'aria-pressed="false"'}>${escHtml(t('alpha_tab_' + id))}</button>`
     ).join('');
     body.setAttribute('lang', ALPHA_LANG[alphaTab]);
+    audioWarm(ALPHABETS[alphaTab].tts);
     body.innerHTML = ALPHABETS[alphaTab].sections.map(sec =>
         (sec.title ? `<h4 class="alpha-sec-title">${escHtml(t(sec.title))}</h4>` : '') +
         `<div class="alpha-grid">${sec.items.map(alphaCardHtml).join('')}</div>`

@@ -104,4 +104,6 @@ I18N.zh = {
         nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '給剛開始學的你：每個字母都有讀音和一個例字，點 🔊 就能聽發音。', alpha_tts_note: '發音使用裝置內建的語音；如果沒有聲音，請確認裝置有安裝該語言的語音。', alpha_play_letter: '播放字母讀音', alpha_play_word: '播放例字讀音', alpha_rare: '現代幾乎不用', alpha_tab_en: '英文', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韓文', alpha_tab_zh: '注音', alpha_tab_ru: '俄文', alpha_tab_fr: '法文', alpha_tab_de: '德文', alpha_tab_es: '西班牙文', alpha_sec_seion: '清音', alpha_sec_dakuon: '濁音', alpha_sec_handakuon: '半濁音', alpha_sec_ko_cons: '基本子音', alpha_sec_ko_double: '雙子音', alpha_sec_ko_vowel: '基本母音', alpha_sec_ko_compound: '複合母音', alpha_sec_zh_initial: '聲母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韻母', alpha_sec_special: '特殊字母', home_beginner: '剛開始學？', home_alphabet_btn: '字母表：從發音開始', guide_alphabet_title: '字母表', guide_alphabet_desc: '給初學者的字母表：英文、日文平假名與片假名、韓文、注音（附拼音）、俄文、法文、德文和西班牙文。每個字母都有讀音和一個例字，字母和例字都能點 🔊 播放發音。',
         // voice picker
         tts_title: '🔊 發音聲音', tts_desc: '「自動」會選這台裝置上聽起來最自然的聲音。也可以自己換，按 ▶ 試聽。', tts_auto: '自動：{v}', tts_none: '這台裝置沒有這個語言的聲音', tts_try: '試聽', tts_unsupported: '這個瀏覽器不支援語音播放。', tts_lang_zh_TW: '中文（台灣）', tts_lang_zh_CN: '中文（中國大陸）',
+        // voice picker: recordings
+        tts_auto_rec: '自動：預錄的自然語音（沒錄到的用 {v}）',
 };

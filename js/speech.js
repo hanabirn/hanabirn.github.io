@@ -8,7 +8,13 @@
    "Google …" voices, then any other online voice, then the built-in ones.
    Visitors can pick a voice per language in the settings panel; the choice is
    kept by voice name in localStorage['tts_voices'] and ignored on a device
-   that doesn't have that voice. */
+   that doesn't have that voice.
+
+   Japanese, Korean and Chinese words of the bundled sets, the alphabet chart
+   and the samples below also exist as pre-rendered neural recordings
+   (data/audio/, made by tools/build_audio.py). Unless the visitor picked a
+   browser voice for that language, those are played instead; anything without
+   a recording falls back to the browser voice. */
 
 const TTS_RATE = 0.9;
 const TTS_LANGS = ['ja-JP', 'ko-KR', 'en-US', 'fr-FR', 'es-ES', 'de-DE', 'ru-RU', 'zh-TW', 'zh-CN'];
@@ -23,6 +29,52 @@ const TTS_SAMPLE = {
     'zh-TW': '你好，很高興認識你。',
     'zh-CN': '你好，很高兴认识你。'
 };
+
+// recordings per language: directory under data/audio/
+const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW' };
+const audioIndexes = {};
+let audioPlaying = null;
+let speakSeq = 0;
+
+/* Must match cyrb53() / audio_id() in tools/build_audio.py: the file name of a
+   recording is this hash of the text, in base 36. */
+function audioId(text) {
+    const str = text.normalize('NFC').trim();
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0, ch; i < str.length; i++) {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+}
+
+// id -> file id for one language, loaded once (null while there is none)
+function audioIndex(dir) {
+    if (!audioIndexes[dir]) {
+        audioIndexes[dir] = fetch('data/audio/' + dir + '/index.json')
+            .then(r => r.ok ? r.json() : null)
+            .then(j => {
+                if (!j) return null;
+                const map = new Map();
+                (j.f || []).forEach(id => map.set(id, id));
+                Object.entries(j.a || {}).forEach(([alias, id]) => map.set(alias, id));
+                return map;
+            })
+            .catch(() => { delete audioIndexes[dir]; return null; });
+    }
+    return audioIndexes[dir];
+}
+
+// starts loading a language's index ahead of the first 🔊, so it plays at once
+function audioWarm(lang) {
+    const dir = AUDIO_DIRS[ttsNorm(lang)];
+    if (dir) audioIndex(dir);
+}
 
 function ttsNorm(lang) {
     return (lang || '').replace('_', '-');
@@ -68,12 +120,43 @@ function ttsVoiceFor(lang) {
     return (name && list.find(v => v.name === name)) || list[0] || null;
 }
 
-function speakText(text, lang, rate) {
-    if (!text || !window.speechSynthesis) return;
+function stopSpeech() {
+    speakSeq++;
+    if (audioPlaying) {
+        audioPlaying.pause();
+        audioPlaying = null;
+    }
+    if (window.speechSynthesis) speechSynthesis.cancel();
+}
+
+/* Says `text` in `lang`: a recording if there is one (opts.reading — the kana
+   of a Japanese word — picks the right one when a word has several readings),
+   else the browser voice. */
+function speakText(text, lang, opts) {
+    if (!text) return;
+    stopSpeech();
+    const seq = speakSeq;
+    const dir = AUDIO_DIRS[ttsNorm(lang)];
+    if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang);
+    audioIndex(dir).then(map => {
+        if (seq !== speakSeq) return;
+        const keys = opts && opts.reading ? [text + '|' + opts.reading, text] : [text];
+        const id = map && keys.map(k => map.get(audioId(k))).find(Boolean);
+        if (!id) return speakWithVoice(text, lang);
+        const a = new Audio('data/audio/' + dir + '/' + id + '.mp3');
+        audioPlaying = a;
+        a.addEventListener('ended', () => { if (audioPlaying === a) audioPlaying = null; });
+        // blocked autoplay or a missing file (offline): use the browser voice
+        a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang); });
+    });
+}
+
+function speakWithVoice(text, lang) {
+    if (!window.speechSynthesis) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = lang;
-    u.rate = rate || TTS_RATE;
+    u.rate = TTS_RATE;
     const voice = ttsVoiceFor(lang);
     if (voice) {
         u.voice = voice;
@@ -103,14 +186,17 @@ function renderTtsSettings() {
     const saved = ttsSaved();
     el.innerHTML = TTS_LANGS.map(lang => {
         const list = ttsCandidates(lang);
-        const opts = list.length
-            ? [`<option value="">${escHtml(t('tts_auto', { v: ttsShortName(list[0]) }))}</option>`]
+        const auto = AUDIO_DIRS[lang]
+            ? t('tts_auto_rec', { v: list.length ? ttsShortName(list[0]) : '—' })
+            : list.length ? t('tts_auto', { v: ttsShortName(list[0]) }) : '';
+        const opts = list.length || AUDIO_DIRS[lang]
+            ? [`<option value="">${escHtml(auto)}</option>`]
                 .concat(list.map(v => `<option value="${escHtml(v.name)}"${saved[lang] === v.name ? ' selected' : ''}>${escHtml(ttsShortName(v))}</option>`))
             : [`<option value="">${escHtml(t('tts_none'))}</option>`];
         return `<div class="tts-row">
             <label class="tts-lang" for="tts-${lang}">${escHtml(ttsLangLabel(lang))}</label>
             <select class="tts-select" id="tts-${lang}" onchange="setTtsVoice('${lang}', this.value)"${list.length ? '' : ' disabled'}>${opts.join('')}</select>
-            <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length ? '' : ' disabled'}>▶</button>
+            <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length || AUDIO_DIRS[lang] ? '' : ' disabled'}>▶</button>
         </div>`;
     }).join('');
 }

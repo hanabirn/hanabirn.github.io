@@ -104,4 +104,6 @@ I18N['zh-Hans'] = {
         nav_alphabet: '字母表', alpha_title: '✦ 字母表 ✦', alpha_hint: '给刚开始学的你：每个字母都有读音和一个例词，点 🔊 就能听发音。', alpha_tts_note: '发音使用设备自带的语音；如果没有声音，请确认设备已安装该语言的语音。', alpha_play_letter: '播放字母读音', alpha_play_word: '播放例词读音', alpha_rare: '现代几乎不用', alpha_tab_en: '英语', alpha_tab_hira: '平假名', alpha_tab_kata: '片假名', alpha_tab_ko: '韩语', alpha_tab_zh: '注音', alpha_tab_ru: '俄语', alpha_tab_fr: '法语', alpha_tab_de: '德语', alpha_tab_es: '西班牙语', alpha_sec_seion: '清音', alpha_sec_dakuon: '浊音', alpha_sec_handakuon: '半浊音', alpha_sec_ko_cons: '基本辅音', alpha_sec_ko_double: '双辅音', alpha_sec_ko_vowel: '基本元音', alpha_sec_ko_compound: '复合元音', alpha_sec_zh_initial: '声母', alpha_sec_zh_medial: '介音', alpha_sec_zh_final: '韵母', alpha_sec_special: '特殊字母', home_beginner: '刚开始学？', home_alphabet_btn: '字母表：从发音开始', guide_alphabet_title: '字母表', guide_alphabet_desc: '给初学者的字母表：英语、日语平假名和片假名、韩语、注音（附拼音）、俄语、法语、德语和西班牙语。每个字母都有读音和一个例词，字母和例词都能点 🔊 播放发音。',
         // voice picker
         tts_title: '🔊 发音声音', tts_desc: '“自动”会选这台设备上听起来最自然的声音。也可以自己换，点 ▶ 试听。', tts_auto: '自动：{v}', tts_none: '这台设备没有这种语言的声音', tts_try: '试听', tts_unsupported: '这个浏览器不支持语音播放。', tts_lang_zh_TW: '中文（台湾）', tts_lang_zh_CN: '中文（中国大陆）',
+        // voice picker: recordings
+        tts_auto_rec: '自动：预录的自然语音（没录到的用 {v}）',
 };

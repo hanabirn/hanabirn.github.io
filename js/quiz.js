@@ -231,6 +231,9 @@ function loadWordSet(id) {
                     else addWord(row[0], row[1], row[2], row[3]);
                 });
                 currentSetMeta = { source: data.source || '', license: data.license || '' };
+                const audioLang = isJapaneseQuizLang(id) ? 'ja-JP' : isKoreanQuizLang(id) ? 'ko-KR'
+                    : isChineseQuizLang(id) ? (siteLang === 'zh-Hans' ? 'zh-CN' : 'zh-TW') : '';
+                if (audioLang) audioWarm(audioLang);
                 return vocabularyList.length;
             });
     }
@@ -429,7 +432,11 @@ function speakWord() {
     if (!currentWord || !currentWord.word) return;
     const text = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
-    speakText(text, lang);
+    // the kana tells a recording of 一日 (ついたち) from 一日 (いちにち); a
+    // review question only has it as the answer of a reading question
+    const reading = currentWord.kana
+        || (reviewMode && currentReviewEntry && currentReviewEntry.group === 'reading' ? currentReviewEntry.answer : '');
+    speakText(text, lang, { reading });
 }
 
 let autoSpeak = true;
