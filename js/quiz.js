@@ -840,6 +840,7 @@ function refreshDynamicContent() {
     if (typeof renderDictPage === 'function') renderDictPage();
     if (typeof renderAlphabet === 'function') renderAlphabet();
     if (typeof renderUpdates === 'function') renderUpdates();
+    if (typeof renderAssistant === 'function') renderAssistant();
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
         if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();

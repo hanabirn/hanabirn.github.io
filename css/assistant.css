@@ -1,0 +1,307 @@
+/* ===== 小花火 AI assistant (js/assistant.js) ===== */
+
+.assistant-fab {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 600;
+    width: 64px;
+    height: 64px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 4px 0 var(--edge), 0 6px 16px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.2s;
+    -webkit-tap-highlight-color: transparent;
+}
+.assistant-fab:hover {
+    border-color: var(--primary);
+}
+.assistant-fab:active {
+    transform: translateY(4px);
+    box-shadow: 0 0 0 transparent;
+}
+.assistant-fab-face {
+    display: block;
+    width: 52px;
+    height: 52px;
+    margin: 0 auto;
+    animation: assistant-bob 2.4s ease-in-out infinite;
+}
+.assistant-fab-face svg {
+    width: 100%;
+    height: 100%;
+}
+@keyframes assistant-bob {
+    0%, 100% { transform: translateY(1px) rotate(-4deg); }
+    50% { transform: translateY(-2px) rotate(4deg); }
+}
+/* the tour already has 小花火 on screen */
+body:has(.tour) .assistant-fab,
+body:has(.tour) .assistant-hint {
+    display: none;
+}
+
+/* first-visit nudge next to the button */
+.assistant-hint {
+    position: fixed;
+    left: 94px;
+    bottom: 36px;
+    z-index: 600;
+    padding: 7px 12px;
+    border-radius: 14px 14px 14px 4px;
+    background: var(--primary);
+    color: var(--on-primary);
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 3px 0 var(--primary-edge);
+    pointer-events: none;
+    animation: assistant-hint 2.4s ease-in-out infinite;
+}
+.assistant-hint[hidden] {
+    display: none;
+}
+@keyframes assistant-hint {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(4px); }
+}
+
+/* --- the chat panel --- */
+.assistant-panel {
+    position: fixed;
+    left: 20px;
+    bottom: 96px;
+    z-index: 650;
+    display: flex;
+    flex-direction: column;
+    width: min(380px, calc(100vw - 40px));
+    height: min(580px, calc(100vh - 140px));
+    border-radius: 18px;
+    background: var(--surface);
+    border: 2px solid var(--line);
+    box-shadow: 0 5px 0 var(--edge), 0 14px 34px rgba(0, 0, 0, 0.22);
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px) scale(0.98);
+    transform-origin: bottom left;
+    transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+}
+.assistant-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+}
+
+.assistant-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface-2);
+}
+.assistant-head-face {
+    width: 38px;
+    height: 38px;
+    flex: none;
+}
+.assistant-head-face svg {
+    width: 100%;
+    height: 100%;
+}
+.assistant-head-text {
+    flex: 1;
+    min-width: 0;
+    line-height: 1.25;
+}
+.assistant-head-text b {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 1rem;
+    color: var(--text);
+}
+.assistant-head-text small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+.assistant-icon-btn {
+    flex: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+.assistant-icon-btn:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.assistant-log {
+    flex: 1;
+    overflow-y: auto;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.assistant-msg {
+    max-width: 85%;
+    padding: 9px 12px;
+    border-radius: 14px;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    overflow-wrap: break-word;
+}
+.assistant-msg.model {
+    align-self: flex-start;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+    border-bottom-left-radius: 4px;
+    color: var(--text);
+}
+.assistant-msg.user {
+    align-self: flex-end;
+    background: var(--primary);
+    color: var(--on-primary);
+    border-bottom-right-radius: 4px;
+}
+.assistant-msg code {
+    padding: 0 4px;
+    border-radius: 4px;
+    background: var(--primary-soft);
+    font-size: 0.85em;
+}
+.assistant-sub {
+    display: inline-block;
+    margin-left: 1.1em;
+    color: var(--text-muted);
+}
+.assistant-msg.typing {
+    display: flex;
+    gap: 4px;
+    padding: 12px 14px;
+}
+.assistant-msg.typing i {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--text-muted);
+    animation: assistant-dot 1s ease-in-out infinite;
+}
+.assistant-msg.typing i:nth-child(2) { animation-delay: 0.15s; }
+.assistant-msg.typing i:nth-child(3) { animation-delay: 0.3s; }
+@keyframes assistant-dot {
+    0%, 100% { transform: translateY(0); opacity: 0.5; }
+    50% { transform: translateY(-4px); opacity: 1; }
+}
+
+.assistant-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 0 12px 8px;
+}
+.assistant-chips:empty {
+    display: none;
+}
+.assistant-chip {
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    cursor: pointer;
+    text-align: left;
+}
+.assistant-chip:hover {
+    border-color: var(--primary);
+    color: var(--text);
+}
+
+.assistant-form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    padding: 10px 12px 6px;
+    border-top: 1px solid var(--line);
+}
+.assistant-input {
+    flex: 1;
+    min-width: 0;
+    resize: none;
+    max-height: 96px;
+    padding: 9px 12px;
+    border-radius: 12px;
+    border: 2px solid var(--border-input);
+    background: var(--bg-input);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+.assistant-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.next-btn.assistant-send {
+    flex: none;
+    padding: 9px 14px;
+    font-size: 0.88rem;
+}
+.next-btn.assistant-send:disabled {
+    opacity: 0.6;
+    cursor: default;
+}
+.assistant-note {
+    margin: 0;
+    padding: 0 12px 10px;
+    font-size: 0.7rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* phones: above the tab bar, and the panel takes most of the screen */
+@media (max-width: 768px) {
+    .assistant-fab {
+        left: 12px;
+        bottom: calc(80px + env(safe-area-inset-bottom));
+        width: 54px;
+        height: 54px;
+    }
+    .assistant-fab-face {
+        width: 44px;
+        height: 44px;
+    }
+    .assistant-hint {
+        left: 76px;
+        bottom: calc(92px + env(safe-area-inset-bottom));
+    }
+    .assistant-panel {
+        left: 12px;
+        right: 12px;
+        width: auto;
+        top: 68px;
+        bottom: calc(146px + env(safe-area-inset-bottom));
+        height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .assistant-fab-face, .assistant-hint, .assistant-msg.typing i {
+        animation: none;
+    }
+}
+@media print {
+    .assistant-fab, .assistant-hint, .assistant-panel {
+        display: none;
+    }
+}

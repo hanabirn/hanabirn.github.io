@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/dict.css">
     <link rel="stylesheet" href="css/alphabet.css">
     <link rel="stylesheet" href="css/tour.css">
+    <link rel="stylesheet" href="css/assistant.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body data-page="home">
@@ -722,6 +723,25 @@
 
     <!-- "More" sheet behind the tab bar's last button: the less-used pages plus the
          settings / reload actions that float bottom-right on desktop. -->
+    <!-- 小花火 AI assistant (js/assistant.js; the Worker is in worker/assistant/) -->
+    <button class="assistant-fab" id="assistant-fab" onclick="toggleAssistant()" aria-haspopup="dialog" aria-expanded="false" data-i18n-title="ai_open" title="問小花火"><span class="assistant-fab-face" aria-hidden="true"></span></button>
+    <div class="assistant-hint" id="assistant-hint" data-i18n="ai_hint" hidden>有問題問我！</div>
+    <div class="assistant-panel" id="assistant-panel" role="dialog" aria-labelledby="assistant-name">
+        <div class="assistant-head">
+            <span class="assistant-head-face" aria-hidden="true"></span>
+            <div class="assistant-head-text"><b id="assistant-name" data-i18n="ai_name">小花火</b><small data-i18n="ai_role">語言學習小幫手</small></div>
+            <button type="button" class="assistant-icon-btn" onclick="assistantClear()" data-i18n-title="ai_clear" title="清除對話">⟲</button>
+            <button type="button" class="assistant-icon-btn" onclick="toggleAssistant(false)" data-i18n-title="ai_close" title="關閉">✕</button>
+        </div>
+        <div class="assistant-log" id="assistant-log" aria-live="polite"></div>
+        <div class="assistant-chips" id="assistant-chips"></div>
+        <form class="assistant-form" id="assistant-form" onsubmit="return assistantSubmit(event)">
+            <textarea class="assistant-input" id="assistant-input" rows="1" maxlength="600" data-i18n-placeholder="ai_placeholder" placeholder="輸入問題…"></textarea>
+            <button type="submit" class="next-btn assistant-send" id="assistant-send" data-i18n="ai_send">送出</button>
+        </form>
+        <p class="assistant-note" data-i18n="ai_note">回答由 AI（Google Gemini）產生，可能會有錯；請不要輸入個人資料。</p>
+    </div>
+
     <!-- "更新內容" popup (js/updates.js) -->
     <div class="updates-overlay" id="updates-overlay" onclick="if(event.target===this) closeUpdates()">
         <div class="updates-panel" role="dialog" aria-modal="true" aria-labelledby="updates-title">
@@ -794,6 +814,7 @@
     <script src="js/alphabet.js"></script>
     <script src="js/updates.js"></script>
     <script src="js/tour.js"></script>
+    <script src="js/assistant.js"></script>
     <script src="js/guestbook.js"></script>
     <script src="js/notes.js"></script>
     <script src="js/feedback.js"></script>
