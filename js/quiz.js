@@ -106,7 +106,10 @@ function toggleTabSettings() {
     const overlay = document.getElementById('tab-settings-overlay');
     if (!overlay) return;
     const show = !overlay.classList.contains('show');
-    if (show) renderTabSettingsList();
+    if (show) {
+        renderTabSettingsList();
+        if (typeof renderTtsSettings === 'function') renderTtsSettings();
+    }
     overlay.classList.toggle('show', show);
 }
 
@@ -424,16 +427,9 @@ function isChineseQuizLang(lang) {
 
 function speakWord() {
     if (!currentWord || !currentWord.word) return;
-    window.speechSynthesis.cancel();
-    const speakText = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
-    const utter = new SpeechSynthesisUtterance(speakText);
-    utter.lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
-    utter.rate = 0.8;
-    const voices = window.speechSynthesis.getVoices();
-    const langPrefix = isJapaneseQuizLang(currentLang) ? 'ja' : currentLang === 'fr' ? 'fr' : isEnglishQuizLang(currentLang) ? 'en' : isChineseQuizLang(currentLang) ? 'zh' : 'ko';
-    const match = voices.find(v => v.lang.startsWith(langPrefix));
-    if (match) utter.voice = match;
-    window.speechSynthesis.speak(utter);
+    const text = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
+    const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    speakText(text, lang);
 }
 
 let autoSpeak = true;

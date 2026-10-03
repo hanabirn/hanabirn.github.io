@@ -334,11 +334,7 @@ async function dictExamples(word, lang, target, signal) {
 }
 
 function dictSpeak(text, langId) {
-    if (!text || !window.speechSynthesis) return;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = dictLangById(langId).tts;
-    speechSynthesis.speak(u);
+    speakText(text, dictLangById(langId).tts);
 }
 
 /* ----- page lifecycle ----- */

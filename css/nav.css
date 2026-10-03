@@ -153,6 +153,67 @@
 .tab-settings-item.locked input[type="checkbox"] {
     cursor: default;
 }
+/* --- voice picker (js/speech.js) --- */
+.tts-settings-title {
+    margin: 0 0 4px;
+    color: var(--text-pink);
+    font-size: 1rem;
+}
+.tts-settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+.tts-row {
+    display: grid;
+    grid-template-columns: 6.5em minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 8px;
+}
+.tts-lang {
+    font-size: 0.88rem;
+    color: var(--text);
+}
+.tts-select {
+    min-width: 0;
+    width: 100%;
+    padding: 7px 8px;
+    border: 1px solid var(--nav-border);
+    border-radius: 10px;
+    background: var(--bg-input);
+    color: var(--text);
+    font-size: 0.82rem;
+}
+.tts-select:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+.speak-btn.tts-try {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+}
+.speak-btn.tts-try:disabled {
+    opacity: 0.4;
+    cursor: default;
+    transform: none;
+}
+@media (max-width: 480px) {
+    .tts-row {
+        grid-template-columns: minmax(0, 1fr) auto;
+        row-gap: 4px;
+    }
+    .tts-lang {
+        grid-column: 1 / -1;
+    }
+}
+.tts-empty {
+    margin: 0;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
 .tab-settings-lock {
     margin-left: auto;
     font-size: 0.85rem;

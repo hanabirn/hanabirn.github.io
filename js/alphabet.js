@@ -92,17 +92,7 @@ function setAlphaTab(id) {
 }
 
 function alphaSay(btn) {
-    const text = btn.dataset.text;
-    if (!text || !window.speechSynthesis) return;
-    const lang = ALPHABETS[alphaTab].tts;
-    speechSynthesis.cancel();
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = lang;
-    u.rate = 0.8;
-    const voice = speechSynthesis.getVoices().find(v => v.lang.replace('_', '-') === lang)
-        || speechSynthesis.getVoices().find(v => v.lang.startsWith(lang.split('-')[0]));
-    if (voice) u.voice = voice;
-    speechSynthesis.speak(u);
+    speakText(btn.dataset.text, ALPHABETS[alphaTab].tts);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
