@@ -114,7 +114,10 @@ function showLessonPath() {
     if (current) setTimeout(() => current.scrollIntoView({ block: 'center', behavior: 'smooth' }), 150);
 }
 
-function renderLessonPath() {
+let pathViewUnit = 0;
+let pathViewSet = '';
+
+function renderLessonPath(keepView) {
     const card = document.getElementById('path-card');
     if (!card || !currentLang) return;
     const levels = levelCountFor(vocabularyList.length);
@@ -136,36 +139,76 @@ function renderLessonPath() {
 
     const currentUnit = Math.floor(Math.min(done, levels - 1) / LEVELS_PER_UNIT);
     const units = Math.ceil(levels / LEVELS_PER_UNIT);
-    let html = '';
-    for (let u = 0; u < units; u++) {
+    // the unit shown on the desktop stage: the one in progress, unless picked
+    if (!keepView || pathViewSet !== currentLang || pathViewUnit >= units) {
+        pathViewUnit = currentUnit;
+        pathViewSet = currentLang;
+    }
+    const unitInfo = u => {
         const first = u * LEVELS_PER_UNIT;
         const last = Math.min(first + LEVELS_PER_UNIT, levels) - 1;
         const unitDone = done > last;
         const unitLocked = done < first;
-        const state = unitDone ? 'done' : unitLocked ? 'locked' : 'current';
+        return { first, last, unitDone, unitLocked, state: unitDone ? 'done' : unitLocked ? 'locked' : 'current' };
+    };
+    const unitHead = (u, info) => `
+        <span class="path-unit-name">${escHtml(t('path_unit', { n: u + 1 }))}</span>
+        <span class="path-unit-range">${escHtml(t('path_unit_range', { a: info.first + 1, b: info.last + 1 }))}</span>
+        <span class="path-unit-state">${info.unitDone ? '✓ ' + escHtml(t('path_unit_done')) : info.unitLocked ? '🔒' : ''}</span>`;
+    const unitNodes = info => {
         let nodes = '';
-        for (let i = first; i <= last; i++) {
+        for (let i = info.first; i <= info.last; i++) {
             const st = i < done ? 'done' : i === done ? 'current' : 'locked';
             const icon = st === 'done' ? '✓' : st === 'current' ? '★' : '🔒';
             const best = prog.best[i];
-            const x = PATH_NODE_OFFSETS[(i - first) % PATH_NODE_OFFSETS.length];
+            const x = PATH_NODE_OFFSETS[(i - info.first) % PATH_NODE_OFFSETS.length];
             nodes += `<div class="path-node-wrap" style="--x:${x}px">
                 ${st === 'current' ? `<span class="path-start">${escHtml(t('path_start'))}</span>` : ''}
                 <button class="path-node ${st}" onclick="pathOpenLevel(${i})" aria-label="${escHtml(t('path_level', { n: i + 1 }))}"><span>${icon}</span></button>
                 <span class="path-node-label">${escHtml(t('path_level', { n: i + 1 }))}${typeof best === 'number' ? ` · ${best}%` : ''}</span>
             </div>`;
         }
-        nodes += `<div class="path-chest ${unitDone ? 'open' : ''}" aria-hidden="true">${unitDone ? '🏆' : '🎁'}</div>`;
-        html += `<details class="path-unit ${state}" ${u === currentUnit ? 'open' : ''}>
-            <summary class="path-unit-head">
-                <span class="path-unit-name">${escHtml(t('path_unit', { n: u + 1 }))}</span>
-                <span class="path-unit-range">${escHtml(t('path_unit_range', { a: first + 1, b: last + 1 }))}</span>
-                <span class="path-unit-state">${unitDone ? '✓ ' + escHtml(t('path_unit_done')) : unitLocked ? '🔒' : ''}</span>
-            </summary>
-            <div class="path-nodes">${nodes}</div>
+        return nodes + `<div class="path-chest ${info.unitDone ? 'open' : ''}" aria-hidden="true">${info.unitDone ? '🏆' : '🎁'}</div>`;
+    };
+
+    // phones: every unit as a collapsible section
+    let accordion = '';
+    // desktop: the picked unit's levels on the left, the list of units on the right
+    let list = '';
+    for (let u = 0; u < units; u++) {
+        const info = unitInfo(u);
+        accordion += `<details class="path-unit ${info.state}" ${u === currentUnit ? 'open' : ''}>
+            <summary class="path-unit-head">${unitHead(u, info)}</summary>
+            <div class="path-nodes">${unitNodes(info)}</div>
         </details>`;
+        const passed = Math.max(0, Math.min(done, info.last + 1) - info.first);
+        list += `<button type="button" class="path-unit-btn ${info.state} ${u === pathViewUnit ? 'selected' : ''}" onclick="pathShowUnit(${u})"${u === pathViewUnit ? ' aria-current="true"' : ''}>
+            ${unitHead(u, info)}
+            <span class="path-unit-count">${passed}/${info.last - info.first + 1}</span>
+        </button>`;
     }
-    document.getElementById('path-units').innerHTML = html;
+    const view = unitInfo(pathViewUnit);
+    document.getElementById('path-units').innerHTML =
+        `<div class="path-accordion">${accordion}</div>
+        <div class="path-wide">
+            <div class="path-stage path-unit ${view.state}">
+                <div class="path-unit-head">${unitHead(pathViewUnit, view)}</div>
+                <div class="path-nodes">${unitNodes(view)}</div>
+            </div>
+            <div class="path-unit-list">${list}</div>
+        </div>`;
+    const sel = document.querySelector('.path-unit-btn.selected');
+    if (sel && !keepView) sel.parentNode.scrollTop = Math.max(0, sel.offsetTop - sel.parentNode.offsetTop - 80);
+}
+
+// desktop unit list: show that unit's levels on the stage
+function pathShowUnit(u) {
+    const list = document.querySelector('.path-unit-list');
+    const top = list ? list.scrollTop : 0;
+    pathViewUnit = u;
+    renderLessonPath(true);
+    const again = document.querySelector('.path-unit-list');
+    if (again) again.scrollTop = top;
 }
 
 function pathOpenLevel(level) {

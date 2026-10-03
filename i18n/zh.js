@@ -106,4 +106,6 @@ I18N.zh = {
         tts_title: '🔊 發音聲音', tts_desc: '「自動」會選這台裝置上聽起來最自然的聲音。也可以自己換，按 ▶ 試聽。', tts_auto: '自動：{v}', tts_none: '這台裝置沒有這個語言的聲音', tts_try: '試聽', tts_unsupported: '這個瀏覽器不支援語音播放。', tts_lang_zh_TW: '中文（台灣）', tts_lang_zh_CN: '中文（中國大陸）',
         // voice picker: recordings
         tts_auto_rec: '自動：預錄的自然語音（沒錄到的用 {v}）',
+        // what's new
+        updates_btn: '更新內容', updates_title: '📢 更新內容', updates_close: '關閉',
 };

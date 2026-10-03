@@ -9,6 +9,13 @@ const ALPHA_TABS = ['en', 'hira', 'kata', 'ko', 'zh', 'ru', 'fr', 'de', 'es'];
 const ALPHA_LANG = { en: 'en', hira: 'ja', kata: 'ja', ko: 'ko', zh: 'zh-TW', ru: 'ru', fr: 'fr', de: 'de', es: 'es' };
 let alphaTab = 'en';
 
+// empty cells after these kana keep the chart's columns: や _ ゆ _ よ, わ _ _ _ を
+const ALPHA_BLANK = '<div class="alpha-blank" aria-hidden="true"></div>';
+const ALPHA_GOJUON_GAPS = {
+    'や': ALPHA_BLANK, 'ゆ': ALPHA_BLANK, 'わ': ALPHA_BLANK.repeat(3),
+    'ヤ': ALPHA_BLANK, 'ユ': ALPHA_BLANK, 'ワ': ALPHA_BLANK.repeat(3)
+};
+
 function alphaStore(v) {
     try { localStorage.setItem('alpha_tab', v); } catch {}
 }
@@ -79,10 +86,14 @@ function renderAlphabet() {
     ).join('');
     body.setAttribute('lang', ALPHA_LANG[alphaTab]);
     audioWarm(ALPHABETS[alphaTab].tts);
-    body.innerHTML = ALPHABETS[alphaTab].sections.map(sec =>
-        (sec.title ? `<h4 class="alpha-sec-title">${escHtml(t(sec.title))}</h4>` : '') +
-        `<div class="alpha-grid">${sec.items.map(alphaCardHtml).join('')}</div>`
-    ).join('');
+    body.innerHTML = ALPHABETS[alphaTab].sections.map(sec => {
+        // the basic kana as a 5-column 五十音 chart on desktop (CSS shows the gaps)
+        const gojuon = sec.title === 'alpha_sec_seion';
+        const cards = sec.items.map(item => alphaCardHtml(item) +
+            (gojuon ? ALPHA_GOJUON_GAPS[item[0]] || '' : '')).join('');
+        return (sec.title ? `<h4 class="alpha-sec-title">${escHtml(t(sec.title))}</h4>` : '') +
+            `<div class="alpha-grid${gojuon ? ' alpha-gojuon' : ''}">${cards}</div>`;
+    }).join('');
 }
 
 function setAlphaTab(id) {

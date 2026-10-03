@@ -105,4 +105,6 @@ I18N.ja = {
         tts_title: '🔊 音声', tts_desc: '「自動」はこの端末でいちばん自然に聞こえる音声を選びます。自分で変えることもでき、▶ で試聴できます。', tts_auto: '自動：{v}', tts_none: 'この端末にはこの言語の音声がありません', tts_try: '試聴', tts_unsupported: 'このブラウザは音声読み上げに対応していません。', tts_lang_zh_TW: '中国語（台湾）', tts_lang_zh_CN: '中国語（中国大陸）',
         // voice picker: recordings
         tts_auto_rec: '自動：収録済みの自然な音声（ないものは {v}）',
+        // what's new
+        updates_btn: '更新情報', updates_title: '📢 更新情報', updates_close: '閉じる',
 };

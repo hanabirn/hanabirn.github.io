@@ -36,6 +36,7 @@ const ASSETS = [
   '/js/dict.js',
   '/js/alphabet-data.js',
   '/js/alphabet.js',
+  '/js/updates.js',
   '/js/home.js',
   '/js/guestbook.js',
   '/js/notes.js',

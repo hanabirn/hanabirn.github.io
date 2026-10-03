@@ -106,4 +106,6 @@ I18N['zh-Hans'] = {
         tts_title: '🔊 发音声音', tts_desc: '“自动”会选这台设备上听起来最自然的声音。也可以自己换，点 ▶ 试听。', tts_auto: '自动：{v}', tts_none: '这台设备没有这种语言的声音', tts_try: '试听', tts_unsupported: '这个浏览器不支持语音播放。', tts_lang_zh_TW: '中文（台湾）', tts_lang_zh_CN: '中文（中国大陆）',
         // voice picker: recordings
         tts_auto_rec: '自动：预录的自然语音（没录到的用 {v}）',
+        // what's new
+        updates_btn: '更新内容', updates_title: '📢 更新内容', updates_close: '关闭',
 };

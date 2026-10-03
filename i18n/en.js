@@ -105,4 +105,6 @@ I18N.en = {
         tts_title: '🔊 Voices', tts_desc: '"Auto" picks the most natural-sounding voice on this device. You can choose another one — tap ▶ to hear it.', tts_auto: 'Auto: {v}', tts_none: 'No voice for this language on this device', tts_try: 'Listen', tts_unsupported: 'This browser can\'t play speech.', tts_lang_zh_TW: 'Chinese (Taiwan)', tts_lang_zh_CN: 'Chinese (Mainland)',
         // voice picker: recordings
         tts_auto_rec: 'Auto: recorded natural voice (else {v})',
+        // what's new
+        updates_btn: 'What\'s new', updates_title: '📢 What\'s new', updates_close: 'Close',
 };

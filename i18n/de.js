@@ -105,4 +105,6 @@ I18N.de = {
         tts_title: '🔊 Stimmen', tts_desc: '„Automatisch“ wählt die natürlichste Stimme auf diesem Gerät. Du kannst eine andere wählen – tippe auf ▶, um sie zu hören.', tts_auto: 'Automatisch: {v}', tts_none: 'Keine Stimme für diese Sprache auf diesem Gerät', tts_try: 'Anhören', tts_unsupported: 'Dieser Browser kann keine Sprache wiedergeben.', tts_lang_zh_TW: 'Chinesisch (Taiwan)', tts_lang_zh_CN: 'Chinesisch (Festland)',
         // voice picker: recordings
         tts_auto_rec: 'Automatisch: aufgenommene natürliche Stimme (sonst {v})',
+        // what's new
+        updates_btn: 'Neuigkeiten', updates_title: '📢 Neuigkeiten', updates_close: 'Schließen',
 };

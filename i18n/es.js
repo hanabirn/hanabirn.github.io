@@ -105,4 +105,6 @@ I18N.es = {
         tts_title: '🔊 Voces', tts_desc: '«Auto» elige la voz que suena más natural en este dispositivo. Puedes elegir otra; toca ▶ para escucharla.', tts_auto: 'Auto: {v}', tts_none: 'No hay voz para este idioma en este dispositivo', tts_try: 'Escuchar', tts_unsupported: 'Este navegador no puede reproducir voz.', tts_lang_zh_TW: 'Chino (Taiwán)', tts_lang_zh_CN: 'Chino (China continental)',
         // voice picker: recordings
         tts_auto_rec: 'Auto: voz natural grabada (si no, {v})',
+        // what's new
+        updates_btn: 'Novedades', updates_title: '📢 Novedades', updates_close: 'Cerrar',
 };

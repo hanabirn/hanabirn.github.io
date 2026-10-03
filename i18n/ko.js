@@ -105,4 +105,6 @@ I18N.ko = {
         tts_title: '🔊 음성', tts_desc: '\'자동\'은 이 기기에서 가장 자연스럽게 들리는 음성을 골라요. 직접 바꿀 수도 있고, ▶ 버튼으로 미리 들을 수 있어요.', tts_auto: '자동: {v}', tts_none: '이 기기에는 이 언어의 음성이 없어요', tts_try: '미리 듣기', tts_unsupported: '이 브라우저는 음성 재생을 지원하지 않아요.', tts_lang_zh_TW: '중국어 (대만)', tts_lang_zh_CN: '중국어 (중국 본토)',
         // voice picker: recordings
         tts_auto_rec: '자동: 미리 녹음한 자연스러운 음성 (없으면 {v})',
+        // what's new
+        updates_btn: '업데이트 내용', updates_title: '📢 업데이트 내용', updates_close: '닫기',
 };

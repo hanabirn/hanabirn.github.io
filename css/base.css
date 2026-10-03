@@ -45,6 +45,23 @@ main {
     transition: opacity 0.2s ease;
 }
 
+/* ===== Wide pages on desktop =====
+   switchPage() puts the open page on body[data-page]. The alphabet chart,
+   the dictionary and the quiz path use a wider column on big screens; on the
+   quiz page everything except the path keeps the usual width. */
+@media (min-width: 1024px) {
+    body[data-page="alphabet"] main,
+    body[data-page="dict"] main,
+    body[data-page="quiz"] main {
+        max-width: 1180px;
+    }
+    body[data-page="quiz"] #page-quiz > :not(#path-card) {
+        max-width: 680px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
 /* ===== Cards ===== */
 .lang-card,
 .setup-card,

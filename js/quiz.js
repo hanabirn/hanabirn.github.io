@@ -1,7 +1,7 @@
 applyLang(siteLang);
 
 /* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
-const MORE_TABS = ['dict', 'alphabet', 'guide', 'about', 'guestbook', 'feedback'];
+const MORE_TABS = ['dict', 'alphabet', 'guide', 'guestbook', 'feedback', 'about'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -22,10 +22,13 @@ function switchPage(page, el) {
     main.style.opacity = '0';
 
     setTimeout(() => {
+        // '' rather than 'block' so a page's own CSS can lay it out (the
+        // dictionary is a grid on desktop); body[data-page] lets CSS widen pages
         pages.forEach(p => {
             const el = document.getElementById('page-' + p);
-            if (el) el.style.display = p === page ? 'block' : 'none';
+            if (el) el.style.display = p === page ? '' : 'none';
         });
+        document.body.dataset.page = page;
         main.style.opacity = '1';
         window.scrollTo(0, 0);
         if (page === 'home' && typeof renderHome === 'function') renderHome();
@@ -836,6 +839,7 @@ function refreshDynamicContent() {
     if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (typeof renderDictPage === 'function') renderDictPage();
     if (typeof renderAlphabet === 'function') renderAlphabet();
+    if (typeof renderUpdates === 'function') renderUpdates();
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
         if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();

@@ -1,5 +1,37 @@
 /* ===== Dictionary (#page-dict, js/dict.js) ===== */
 
+/* desktop: search, translation and meanings on the left, examples on the
+   right (#dict-results steps aside so its sections join the page grid) */
+@media (min-width: 1024px) {
+    #page-dict {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        /* search, word, translation, meanings — then a flexible row that
+           soaks up the height of long examples so the left side stays packed */
+        grid-template-rows: auto auto auto auto 1fr;
+        column-gap: 20px;
+        align-items: start;
+    }
+    #dict-results {
+        display: contents;
+    }
+    #page-dict > *,
+    #dict-results > * {
+        grid-column: 1;
+    }
+    #page-dict #dict-ex {
+        grid-column: 2;
+        grid-row: 1 / 6;
+    }
+    #page-dict > .dict-sources {
+        grid-column: 1 / -1;
+    }
+    /* nothing looked up yet: the search box keeps the full width */
+    #page-dict:not(:has(#dict-ex)) > * {
+        grid-column: 1 / -1;
+    }
+}
+
 .dict-form {
     display: flex;
     gap: 10px;
