@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-03',
+      zh: '練習工具改版：練習中心會告訴你現在該做什麼；錯題本變成筆記本，連續答對 2 次就能把字趕出去；新的統計（學會了多少、練習日曆）、間隔複習預報、可以左右滑的單字閃卡、聽力加入點選模式和慢速播放，做完還有慶祝畫面。',
+      'zh-Hans': '练习工具改版：练习中心会告诉你现在该做什么；错题本变成笔记本，连续答对 2 次就能把词赶出去；新的统计（学会了多少、练习日历）、间隔复习预报、可以左右滑的单词闪卡、听力加入点选模式和慢速播放，做完还有庆祝画面。',
+      en: 'Practice tools redesigned: the practice hub shows what to do next; the mistake book is a notebook where two right answers in a row clear a word; new stats (how much you\'ve learned, a practice calendar), a review forecast, swipeable flashcards, a tap-to-answer listening mode with slow playback, and a celebration when you finish.',
+      ja: '練習ツールをリニューアル：練習センターが次にやることを教えてくれます。間違いノートは2回連続正解で卒業。新しい統計（どれだけ覚えたか・練習カレンダー）、復習の予報、スワイプできる単語カード、リスニングに「選ぶ」モードとゆっくり再生、終わったらお祝い画面も。',
+      ko: '연습 도구 개편: 연습 센터가 지금 할 일을 알려 줘요. 오답 노트는 두 번 연속 맞히면 빠지는 노트로, 새 통계(얼마나 익혔는지, 연습 달력), 복습 예보, 밀어서 넘기는 단어 카드, 듣기에 고르기 모드와 느린 재생, 끝나면 축하 화면도 있어요.',
+      ru: 'Обновлены инструменты практики: центр практики подсказывает, что делать дальше; тетрадь ошибок — слово уходит после двух верных ответов подряд; новая статистика (сколько выучено, календарь), прогноз повторений, карточки со смахиванием, аудирование с выбором ответа и медленным воспроизведением и праздничный экран в конце.',
+      fr: 'Outils d\'entraînement repensés : le centre te dit quoi faire ensuite ; le carnet d\'erreurs efface un mot après deux bonnes réponses d\'affilée ; nouvelles statistiques (ce que tu as appris, calendrier), prévisions de révision, cartes à faire glisser, écoute avec choix de réponse et lecture lente, et une petite fête à la fin.',
+      es: 'Herramientas de práctica renovadas: el centro de práctica te dice qué hacer; el cuaderno de errores borra una palabra tras dos aciertos seguidos; nuevas estadísticas (cuánto has aprendido, calendario), previsión de repasos, tarjetas que se deslizan, escucha con opciones y reproducción lenta, y una celebración al terminar.',
+      de: 'Übungswerkzeuge neu gestaltet: Die Übungszentrale zeigt, was als Nächstes dran ist; im Fehlerheft verschwindet ein Wort nach zwei richtigen Antworten in Folge; neue Statistiken (wie viel du gelernt hast, Übungskalender), Wiederholungsvorschau, wischbare Karteikarten, Hörquiz mit Antippen und langsamer Wiedergabe – und eine kleine Feier am Ende.' },
+    { date: '2026-10-03',
       zh: '教學手冊換成新手導覽：第一次來的時候，小花火會一步步帶你認識網站的每個功能（想再看一次可以到設定裡找）。',
       'zh-Hans': '教学手册换成新手导览：第一次来的时候，小花火会一步步带你认识网站的每个功能（想再看一次可以到设置里找）。',
       en: 'The guide page is now a site tour: on your first visit, 小花火 walks you through every feature step by step (replay it from the settings).',

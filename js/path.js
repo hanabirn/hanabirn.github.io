@@ -105,10 +105,7 @@ function modeCardBack() {
 }
 
 function showLessonPath() {
-    ['lang-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card', 'mistake-card', 'stats-card',
-     'flashcard-card', 'flashcard-setup-card', 'listening-setup-card', 'lesson-card']
-        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-    document.getElementById('path-card').style.display = 'block';
+    showOnlyQuizCard('path-card');
     renderLessonPath();
     const current = document.querySelector('#path-units .path-node.current');
     if (current) setTimeout(() => current.scrollIntoView({ block: 'center', behavior: 'smooth' }), 150);

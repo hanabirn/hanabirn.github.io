@@ -431,7 +431,7 @@ function isChineseQuizLang(lang) {
     return lang === 'zh' || lang.startsWith('hsk_');
 }
 
-function speakWord() {
+function speakWord(slow) {
     if (!currentWord || !currentWord.word) return;
     const text = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
     const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : currentLang === 'fr' ? 'fr-FR' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
@@ -439,7 +439,7 @@ function speakWord() {
     // review question only has it as the answer of a reading question
     const reading = currentWord.kana
         || (reviewMode && currentReviewEntry && currentReviewEntry.group === 'reading' ? currentReviewEntry.answer : '');
-    speakText(text, lang, { reading });
+    speakText(text, lang, { reading, slow: slow === true });
 }
 
 let autoSpeak = true;
@@ -467,6 +467,18 @@ function isValidWord(word, meaning) {
     return true;
 }
 
+/* Every card of #page-quiz; showOnlyQuizCard() shows one of them and hides the rest. */
+const QUIZ_PAGE_CARDS = ['lang-card', 'en-level-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card',
+    'mistake-card', 'stats-card', 'srs-card', 'flashcard-card', 'flashcard-setup-card', 'listening-setup-card',
+    'mastered-list-card', 'unknown-list-card', 'path-card', 'lesson-card'];
+
+function showOnlyQuizCard(id) {
+    QUIZ_PAGE_CARDS.forEach(c => {
+        const el = document.getElementById(c);
+        if (el) el.style.display = c === id ? 'block' : 'none';
+    });
+}
+
 /* Starting a new word set ends any review that was left on screen; otherwise
    showModeSelection() (still seeing reviewMode) would open the mistake book. */
 function endReviewState() {
@@ -478,9 +490,9 @@ function endReviewState() {
 
 /* The quiz/result "返回選擇語言" buttons don't lead to the language list during an SRS
    review (→ home) or a lesson (→ the path), so they say so. Swapping data-i18n (not just
-   the text) keeps a language switch consistent. kind: false | 'srs' | 'lesson'. */
+   the text) keeps a language switch consistent. kind: false | 'srs' | 'mistakes' | 'listening' | 'lesson'. */
 function setQuizBackLabels(kind) {
-    const key = kind === 'srs' ? 'tool_back' : kind === 'lesson' ? 'lesson_back_path' : 'quiz_back';
+    const key = kind === 'srs' || kind === 'mistakes' || kind === 'listening' ? 'tool_back' : kind === 'lesson' ? 'lesson_back_path' : 'quiz_back';
     document.querySelectorAll('#quiz-card .back-btn, #result-card .back-btn').forEach(b => {
         b.setAttribute('data-i18n', key);
         b.innerHTML = t(key);
@@ -489,7 +501,7 @@ function setQuizBackLabels(kind) {
 
 /* The result card's "再來一次" (quizAgain) becomes "下一關" / "再試一次" after a lesson. */
 function setResultAgainLabel(key) {
-    const b = document.querySelector('#result-card .next-btn');
+    const b = document.getElementById('quiz-again-btn');
     if (!b) return;
     b.setAttribute('data-i18n', key);
     b.innerHTML = t(key);
@@ -597,14 +609,9 @@ function selectWordSet(id) {
     endReviewState();
     currentLang = id;
     resetWordLists();
-    ['lang-card', 'en-level-card'].forEach(c => { const el = document.getElementById(c); if (el) el.style.display = 'none'; });
     switchPage('quiz', null);
-
-    const setupCard = document.getElementById('setup-card');
+    showOnlyQuizCard('setup-card');
     const statusMsg = document.getElementById('status-msg');
-    setupCard.style.display = 'block';
-    document.getElementById('mistake-card').style.display = 'none';
-    document.getElementById('stats-card').style.display = 'none';
     statusMsg.innerText = t('load_loading');
     statusMsg.style.color = 'var(--text-secondary)';
 
@@ -849,62 +856,13 @@ function refreshDynamicContent() {
         }
         if (isVisible('timer-buttons')) showTimerOptions();
     }
-    if (isVisible('flashcard-setup-card')) {
-        const langBtns = document.getElementById('fc-lang-buttons');
-        if (langBtns && langBtns.children.length > 0) {
-            document.querySelectorAll('#fc-lang-buttons .mode-btn').forEach(b => {
-                const key = b.getAttribute('data-i18n');
-                if (key) b.innerText = t(key);
-            });
-        }
-        document.querySelectorAll('#fc-set-buttons .mode-btn').forEach(b => {
-            const key = b.getAttribute('data-i18n');
-            if (key) b.innerText = t(key);
-        });
-        const modeBtns = document.getElementById('fc-mode-buttons');
-        if (modeBtns && modeBtns.children.length > 0 && flashcardLang && flashcardSetId) {
-            showFlashcardModes(flashcardLang);
-        }
-        updateMasteredCount();
-        const startBtn = document.getElementById('fc-start-btn');
-        if (startBtn) startBtn.innerText = t('fc_start_flashcard');
-    }
-    if (isVisible('listening-setup-card') && listeningLang) {
-        document.querySelectorAll('#lc-set-buttons .mode-btn').forEach(b => {
-            const key = b.getAttribute('data-i18n');
-            if (key) b.innerText = t(key);
-        });
-        const langBtns = document.getElementById('lc-lang-buttons');
-        if (langBtns && langBtns.children.length > 0) {
-            document.querySelectorAll('#lc-lang-buttons .mode-btn').forEach(b => {
-                const key = b.getAttribute('data-i18n');
-                if (key) b.innerText = t(key);
-            });
-        }
-        const modeBtns = document.getElementById('lc-mode-buttons');
-        if (modeBtns && modeBtns.children.length > 0) {
-            document.querySelectorAll('#lc-mode-buttons .mode-btn').forEach(b => {
-                const key = b.getAttribute('data-i18n');
-                if (key) b.innerText = t(key);
-            });
-        }
-        const meaningBtns = document.getElementById('lc-meaning-buttons');
-        if (meaningBtns && meaningBtns.children.length > 0) {
-            document.querySelectorAll('#lc-meaning-buttons .mode-btn').forEach(b => {
-                const key = b.getAttribute('data-i18n');
-                if (key) b.innerText = t(key);
-            });
-        }
-        const countBtns = document.getElementById('lc-count-buttons');
-        if (countBtns && countBtns.children.length > 0) {
-            document.querySelectorAll('#lc-count-buttons .mode-btn').forEach(b => {
-                const key = b.getAttribute('data-i18n');
-                if (key) b.innerText = t(key);
-            });
-        }
-    }
-    if (isVisible('mistake-card')) renderMistakeBook();
-    if (isVisible('stats-card')) showQuizStats();
+    if (isVisible('flashcard-setup-card') && typeof renderFlashcardDecks === 'function') renderFlashcardDecks();
+    if (isVisible('flashcard-card') && typeof renderFlashcard === 'function') renderFlashcard();
+    if (isVisible('listening-setup-card')) renderListeningSetup();
+    if (isVisible('mistake-card') && typeof renderMistakeBook === 'function') renderMistakeBook();
+    if (isVisible('stats-card') && typeof renderQuizStats === 'function') renderQuizStats();
+    if (isVisible('srs-card') && typeof renderSrsDashboard === 'function') renderSrsDashboard();
+    if (typeof renderPracticeHub === 'function') renderPracticeHub();
 }
 
 function setModeCardTitle(id, key) {
@@ -1179,11 +1137,14 @@ function pickQuestionType() {
 function nextQuestion() {
     answered = false;
     questionNum++;
+    if (questionNum === 1) startSessionStats();
     document.getElementById('question-count').innerText = t('quiz_question', {n: questionNum});
     document.getElementById('score-count').innerText = t('quiz_score', {n: score});
     document.getElementById('nextBtn').style.display = 'none';
     document.getElementById('feedback').innerText = '';
     document.getElementById('feedback').className = 'feedback';
+
+    setListeningStage(false);
 
     if (quizTimerSec > 0 && !currentListeningMode) {
         startTimer();
@@ -1364,6 +1325,44 @@ function renderOptions(options, type) {
     });
 }
 
+/* ----- per-session extras: answer streak ("連對"), time taken, repair re-asks -----
+   Reset when a session asks its first question (questionNum === 1), so every way of
+   starting a quiz / review / lesson / listening round gets them without its own code. */
+const COMBO_SHOW_FROM = 3;   // "連對 N 題" appears from the 3rd right answer in a row
+let comboNow = 0;
+let comboBest = 0;
+let sessionStartedAt = 0;
+let repairRequeued = new Set();
+
+function startSessionStats() {
+    comboNow = 0;
+    comboBest = 0;
+    sessionStartedAt = Date.now();
+    repairRequeued = new Set();
+}
+
+function noteCombo(correct) {
+    comboNow = correct ? comboNow + 1 : 0;
+    comboBest = Math.max(comboBest, comboNow);
+}
+
+function correctFeedbackText(repaired) {
+    let s = t('correct');
+    if (comboNow >= COMBO_SHOW_FROM) s += '  🔥 ' + t('combo_n', { n: comboNow });
+    if (repaired) s += '  🔧 ' + t('mistake_repaired', { w: repaired.word });
+    return s;
+}
+
+/* A mistake-repair session asks a word answered right once more, a few questions
+   later, so one session can take it the whole MISTAKE_FIX_STREAK. */
+function requeueForRepair(entry) {
+    if (!entry || repairRequeued.has(entry.id)) return;
+    repairRequeued.add(entry.id);
+    const at = Math.min(reviewIdx + 3, reviewList.length);
+    reviewList.splice(at, 0, entry);
+    totalQuestions = reviewList.length;
+}
+
 function selectOption(selectedBtn, selectedText, type) {
     if (answered) return;
     answered = true;
@@ -1377,32 +1376,33 @@ function selectOption(selectedBtn, selectedText, type) {
     const correctAnswer = correctAnswerFor(type);
     const isCorrect = selectedText === correctAnswer;
 
-    if (type === 'review') {
-        gradeSrsQuizCard(currentReviewEntry, isCorrect);
-        if (reviewSource === 'srs' || reviewSource === 'lesson') {
-            if (!isCorrect) addMistakeEntry(currentReviewEntry);
-        } else if (isCorrect) {
-            removeMistakeById(currentReviewEntry.id);
-        } else {
-            bumpMistake(currentReviewEntry.id);
-        }
+    /* Every answer grades the word's SRS card; a miss goes to the mistake book, and a
+       right answer is a step towards repairing it there (noteMistakeCorrect). */
+    const entry = type === 'review' ? currentReviewEntry : quizEntryFor(type, correctAnswer);
+    gradeSrsQuizCard(entry, isCorrect);
+    let repaired = null;
+    if (isCorrect) {
+        const m = entry && noteMistakeCorrect(entry.id);
+        if (m && m.fixedAt) repaired = m;
+        else if (m && reviewMode && reviewSource === 'mistakes') requeueForRepair(entry);
     } else {
-        gradeSrsQuizCard(quizEntryFor(type, correctAnswer), isCorrect);
-        if (!isCorrect) recordMistake(type, correctAnswer);
+        addMistakeEntry(entry);
     }
+    noteCombo(isCorrect);
 
     quizHistory.push({
         question: currentWord.word,
         yourAnswer: selectedText,
         correctAnswer: correctAnswer,
         isCorrect: isCorrect,
-        type: type
+        type: type,
+        entry: entry
     });
 
     if (isCorrect) {
         score += 10;
         selectedBtn.classList.add('correct-choice');
-        feedback.innerText = t('correct');
+        feedback.innerText = correctFeedbackText(repaired);
         feedback.className = 'feedback correct';
         playSound(true);
     } else {
@@ -1450,6 +1450,7 @@ function showResults() {
         resultCard.classList.remove('result-card-enter');
         void resultCard.offsetWidth;
         resultCard.classList.add('result-card-enter');
+        window.scrollTo(0, 0);
     }, 150);
 
     const correctCount = quizHistory.filter(h => h.isCorrect).length;
@@ -1458,7 +1459,7 @@ function showResults() {
     const percentage = total > 0 ? Math.round((correctCount / total) * 100) : 0;
 
     if (total > 0) {
-        saveQuizRecord({
+        const rec = {
             date: Date.now(),
             lang: reviewMode && reviewSource === 'srs' ? 'srs' : currentLang,
             review: reviewMode,
@@ -1467,20 +1468,26 @@ function showResults() {
             wrong: wrongCount,
             score: score,
             pct: percentage
-        });
+        };
+        if (currentListeningMode) rec.kind = 'listening';
+        saveQuizRecord(rec);
         checkAchievements();
     }
 
+    /* celebration, the three numbers, today's goal and the reason to come back
+       (resultHeroHtml & co. in js/practice.js) */
     document.getElementById('result-summary').innerHTML =
+        resultHeroHtml(percentage, [
+            { n: percentage + '%', label: t('result_accuracy'), cls: 'good' },
+            { n: comboBest, label: t('result_best_combo'), cls: 'gold' },
+            { n: practiceDuration(), label: t('result_time'), cls: 'time' }
+        ]) +
         (reviewMode && reviewSource === 'lesson' ? lessonResultHtml(percentage) : '') +
-        `<div class="result-stats">
-            <div class="stat correct-stat">${t('result_correct')}: ${correctCount}</div>
-            <div class="stat wrong-stat">${t('result_wrong')}: ${wrongCount}</div>
-            <div class="stat score-stat">${t('result_score')}: ${score}</div>
-            <div class="stat pct-stat">${percentage}%</div>
-        </div>`;
+        `<p class="rs-score">${escHtml(t('result_line', { c: correctCount, n: total, s: score }))}</p>` +
+        resultGoalHtml() +
+        resultHookHtml(reviewMode && reviewSource === 'srs');
 
-    let detailHTML = '<table class="result-table"><thead><tr>';
+    let detailHTML = `<details class="pc-details"><summary>${escHtml(t('result_each', { n: total }))}</summary><table class="result-table"><thead><tr>`;
     detailHTML += `<th>${t('result_col_question')}</th>`;
     detailHTML += `<th>${t('result_your_answer')}</th>`;
     detailHTML += `<th>${t('result_correct_answer')}</th></tr></thead><tbody>`;
@@ -1488,13 +1495,21 @@ function showResults() {
     quizHistory.forEach((h, i) => {
         const cls = h.isCorrect ? 'result-correct' : 'result-wrong';
         detailHTML += `<tr class="${cls}">
-            <td>${i + 1}. ${h.question}</td>
-            <td>${h.yourAnswer}</td>
-            <td>${h.correctAnswer}</td>
+            <td>${i + 1}. ${escHtml(h.question)}</td>
+            <td>${escHtml(h.yourAnswer)}</td>
+            <td>${escHtml(h.correctAnswer)}</td>
         </tr>`;
     });
-    detailHTML += '</tbody></table>';
+    detailHTML += '</tbody></table></details>';
     document.getElementById('result-detail').innerHTML = detailHTML;
+
+    // "再練錯的字": the words just missed, when the engine can ask them again
+    const wrongEntries = new Set(quizHistory.filter(h => !h.isCorrect && h.entry && h.entry.answer).map(h => h.entry.id));
+    const retry = document.getElementById('retry-wrong-btn');
+    if (retry) {
+        retry.style.display = wrongEntries.size ? '' : 'none';
+        retry.textContent = t('result_retry_wrong', { n: wrongEntries.size });
+    }
 }
 
 function backToLanguage() {
@@ -1502,6 +1517,8 @@ function backToLanguage() {
         lessonBack();
         return;
     }
+    const wasMistakeRepair = reviewMode && reviewSource === 'mistakes';
+    const wasListening = currentListeningMode;
     const wasSrsReview = reviewMode && reviewSource === 'srs';
     const wasEnglishSet = String(currentLang).startsWith('en_');
     const wasEnglishExam = currentLang === 'en_toeic' || currentLang === 'en_toefl';
@@ -1518,24 +1535,23 @@ function backToLanguage() {
     currentListeningMode = false;
     stopTimer();
     quizTimerSec = 0;
-    document.getElementById('lang-card').style.display = 'block';
-    document.getElementById('setup-card').style.display = 'none';
-    document.getElementById('mode-card').style.display = 'none';
-    document.getElementById('quiz-card').style.display = 'none';
-    document.getElementById('result-card').style.display = 'none';
-    document.getElementById('mistake-card').style.display = 'none';
-    document.getElementById('stats-card').style.display = 'none';
-    document.getElementById('flashcard-card').style.display = 'none';
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('listening-setup-card').style.display = 'none';
-    document.getElementById('en-level-card').style.display = 'none';
-    hidePathCards();
+    showOnlyQuizCard('lang-card');
     updateMistakeBadge();
     updateStreakBadge();
 
-    /* an SRS review mixes word sets, so "返回" goes back to the dashboard it came from */
+    /* a review mixes word sets, so "返回" goes back to where it was started from:
+       the mistake book, the 間隔複習 page or the home dashboard */
+    if (wasMistakeRepair) {
+        showMistakeBook();
+        return;
+    }
+    if (wasListening) {
+        startListeningQuiz();
+        return;
+    }
     if (wasSrsReview) {
-        switchPage('home', null);
+        if (srsReviewOrigin === 'tool') showSrsDashboard();
+        else switchPage('home', null);
         return;
     }
 
@@ -1562,7 +1578,6 @@ let reviewList = [];
 let reviewIdx = 0;
 let reviewPool = [];
 let currentReviewEntry = null;
-let _mistakeCache = [];
 
 const QUIZ_LANG_FLAGS = {
     srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳',
@@ -1585,12 +1600,52 @@ function getMistakes() {
     catch { return []; }
 }
 
+/* A mistake is "repaired" by answering it right MISTAKE_FIX_STREAK times in a row
+   (entry.fix counts them; a miss resets it). A repaired entry keeps its row, struck
+   through with a 「已修正」 stamp and fixedAt set, until it is MISTAKE_FIXED_KEEP_DAYS
+   old; missing it again puts it back on the list. */
+const MISTAKE_FIX_STREAK = 2;
+const MISTAKE_FIXED_KEEP_DAYS = 30;
+
+function isMistakeActive(m) {
+    return !m.fixedAt;
+}
+
+function getActiveMistakes() {
+    return getMistakes().filter(isMistakeActive);
+}
+
 function saveMistakes(list) {
+    const cutoff = Date.now() - MISTAKE_FIXED_KEEP_DAYS * 24 * 60 * 60 * 1000;
+    list = list.filter(m => !m.fixedAt || m.fixedAt > cutoff);
     if (list.length > 300) {
-        list = list.sort((a, b) => b.last - a.last).slice(0, 300);
+        // drop repaired rows before the ones still to fix, oldest first
+        list = list.sort((a, b) => (!!a.fixedAt - !!b.fixedAt) || (b.last - a.last)).slice(0, 300);
     }
-    localStorage.setItem('quiz_mistakes', JSON.stringify(list));
+    try { localStorage.setItem('quiz_mistakes', JSON.stringify(list)); } catch {}
     updateMistakeBadge();
+}
+
+/* A right answer to a word in the mistake book: one step towards repairing it.
+   Returns the entry after the step (null when the word isn't an open mistake). */
+function noteMistakeCorrect(id) {
+    if (!id) return null;
+    const list = getMistakes();
+    const m = list.find(x => x.id === id);
+    if (!m || m.fixedAt) return null;
+    m.fix = (m.fix || 0) + 1;
+    if (m.fix >= MISTAKE_FIX_STREAK) m.fixedAt = Date.now();
+    saveMistakes(list);
+    return m;
+}
+
+/* A timed-out answer: not a new mistake, but it does break a repair streak. */
+function breakMistakeStreak(id) {
+    const list = getMistakes();
+    const m = list.find(x => x.id === id);
+    if (!m || m.fixedAt || !m.fix) return;
+    m.fix = 0;
+    saveMistakes(list);
 }
 
 /* The question on screen as a self-contained entry; mistake-book entries and SRS
@@ -1621,6 +1676,8 @@ function addMistakeEntry(entry) {
         existing.count++;
         existing.last = Date.now();
         existing.answer = entry.answer;
+        existing.fix = 0;
+        delete existing.fixedAt;   // missed again: back on the list
     } else {
         list.push({
             id: entry.id,
@@ -1631,6 +1688,7 @@ function addMistakeEntry(entry) {
             group: entry.group,
             zct: entry.zct,
             count: 1,
+            fix: 0,
             last: Date.now()
         });
     }
@@ -1645,130 +1703,12 @@ function removeMistakeById(id) {
     saveMistakes(getMistakes().filter(m => m.id !== id));
 }
 
-function bumpMistake(id) {
-    const list = getMistakes();
-    const m = list.find(x => x.id === id);
-    if (m) { m.count++; m.last = Date.now(); }
-    saveMistakes(list);
-}
-
-function deleteMistakeAt(idx) {
-    const entry = _mistakeCache[idx];
-    if (!entry) return;
-    removeMistakeById(entry.id);
-    renderMistakeBook();
-}
-
-function clearMistakesLang(lang) {
-    if (!confirm(t('mistake_clear') + '?')) return;
-    saveMistakes(getMistakes().filter(m => m.lang !== lang));
-    renderMistakeBook();
-}
-
+/* The quiz page's tool hub shows the open mistakes (js/practice.js draws it). */
 function updateMistakeBadge() {
-    const badge = document.getElementById('mistake-badge');
-    if (!badge) return;
-    const n = getMistakes().length;
-    badge.innerText = n;
-    badge.style.display = n > 0 ? '' : 'none';
+    if (typeof renderPracticeHub === 'function') renderPracticeHub();
 }
 
-const MISTAKE_PAGE_SIZE = 8;
-let mistakePageByLang = {};
-
-function showMistakeBook() {
-    reviewMode = false;
-    mistakePageByLang = {};
-    document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('setup-card').style.display = 'none';
-    document.getElementById('mode-card').style.display = 'none';
-    document.getElementById('quiz-card').style.display = 'none';
-    document.getElementById('result-card').style.display = 'none';
-    document.getElementById('stats-card').style.display = 'none';
-    document.getElementById('mistake-card').style.display = 'block';
-    renderMistakeBook();
-}
-
-function changeMistakePage(lang, dir) {
-    mistakePageByLang[lang] = (mistakePageByLang[lang] || 1) + dir;
-    renderMistakeBook();
-}
-
-function renderMistakeBook() {
-    const list = getMistakes();
-    _mistakeCache = list;
-    const container = document.getElementById('mistake-content');
-    if (list.length === 0) {
-        container.innerHTML = `<p class="mistake-empty">${t('mistake_empty')}</p>`;
-        return;
-    }
-    let html = '';
-    QUIZ_LANG_ORDER.concat(LEGACY_SET_IDS).forEach(lg => {
-        const items = list.map((m, i) => ({ m, i })).filter(x => x.m.lang === lg);
-        if (items.length === 0) return;
-        items.sort((a, b) => b.m.last - a.m.last);
-
-        const totalPages = Math.ceil(items.length / MISTAKE_PAGE_SIZE);
-        let page = mistakePageByLang[lg] || 1;
-        if (page < 1) page = 1;
-        if (page > totalPages) page = totalPages;
-        mistakePageByLang[lg] = page;
-        const start = (page - 1) * MISTAKE_PAGE_SIZE;
-        const pageItems = items.slice(start, start + MISTAKE_PAGE_SIZE);
-
-        html += `<div class="mistake-group">
-            <div class="mistake-group-header">
-                <span class="mistake-group-name">${QUIZ_LANG_FLAGS[lg] || ''} ${t('quiz_' + lg)}（${items.length}）</span>
-                <span class="mistake-group-actions">
-                    ${items.length >= 4 ? `<button class="mistake-review-btn" onclick="startReviewQuiz('${lg}')">▶ ${t('mistake_review')}</button>` : `<span class="mistake-need4">${t('mistake_need4')}</span>`}
-                    <button class="mistake-clear-btn" onclick="clearMistakesLang('${lg}')">🗑 ${t('mistake_clear')}</button>
-                </span>
-            </div>
-            <div class="mistake-items">`;
-        pageItems.forEach(x => {
-            html += `<div class="mistake-item">
-                <span class="mistake-word">${escQ(x.m.word)}</span>
-                <span class="mistake-answer">${escQ(x.m.answer)}</span>
-                <span class="mistake-count">×${x.m.count}</span>
-                <button class="mistake-del" onclick="deleteMistakeAt(${x.i})" title="delete">✕</button>
-            </div>`;
-        });
-        html += `</div>`;
-        if (totalPages > 1) {
-            html += `<div class="mistake-pagination">
-                <button class="mistake-page-btn" onclick="changeMistakePage('${lg}', -1)" ${page <= 1 ? 'disabled' : ''}>◀ ${t('mistake_prev')}</button>
-                <span class="mistake-page-info">${page} / ${totalPages}</span>
-                <button class="mistake-page-btn" onclick="changeMistakePage('${lg}', 1)" ${page >= totalPages ? 'disabled' : ''}>${t('mistake_next')} ▶</button>
-            </div>`;
-        }
-        html += `</div>`;
-    });
-    container.innerHTML = html;
-}
-
-function startReviewQuiz(lang) {
-    const mistakes = getMistakes().filter(m => m.lang === lang);
-    if (mistakes.length < 4) { alert(t('mistake_need4')); return; }
-
-    reviewMode = true;
-    reviewSource = 'mistakes';
-    currentLang = lang;
-    reviewPool = mistakes;
-    reviewList = shuffleArray(mistakes);
-    reviewIdx = 0;
-    score = 0;
-    questionNum = 0;
-    quizHistory = [];
-    totalQuestions = reviewList.length;
-
-    document.getElementById('mistake-card').style.display = 'none';
-    document.getElementById('stats-card').style.display = 'none';
-    document.getElementById('quiz-card').style.display = 'block';
-    document.getElementById('result-card').style.display = 'none';
-    document.getElementById('quiz-mode-label').innerText = t('review_label');
-    document.getElementById('total-words').innerText = t('quiz_words', {n: reviewList.length});
-    nextQuestion();
-}
+/* The mistake book itself (#mistake-card) is drawn by js/practice.js. */
 
 /* ===================== 測驗統計 Quiz Stats ===================== */
 
@@ -1842,81 +1782,7 @@ function updateStreakBadge() {
     wrap.style.display = streak > 0 ? '' : 'none';
 }
 
-function showQuizStats() {
-    document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('setup-card').style.display = 'none';
-    document.getElementById('mode-card').style.display = 'none';
-    document.getElementById('quiz-card').style.display = 'none';
-    document.getElementById('result-card').style.display = 'none';
-    document.getElementById('mistake-card').style.display = 'none';
-    document.getElementById('stats-card').style.display = 'block';
-    renderQuizStats();
-}
-
-function renderQuizStats() {
-    const recs = getQuizRecords();
-    const container = document.getElementById('stats-content');
-    if (recs.length === 0) {
-        container.innerHTML = `<p class="mistake-empty">${t('stats_empty')}</p>`;
-        return;
-    }
-
-    const total = recs.length;
-    const avg = Math.round(recs.reduce((s, r) => s + r.pct, 0) / total);
-    const best = Math.max(...recs.map(r => r.score));
-    const totalQ = recs.reduce((s, r) => s + r.total, 0);
-    const streak = calcStreak(recs);
-
-    let html = `<div class="stats-summary">
-        <div class="stats-tile"><div class="stats-num">${total}</div><div class="stats-label">${t('stats_total')}</div></div>
-        <div class="stats-tile"><div class="stats-num">${avg}%</div><div class="stats-label">${t('stats_avg')}</div></div>
-        <div class="stats-tile"><div class="stats-num">${best}</div><div class="stats-label">${t('stats_best')}</div></div>
-        <div class="stats-tile"><div class="stats-num">${totalQ}</div><div class="stats-label">${t('stats_questions')}</div></div>
-        <div class="stats-tile"><div class="stats-num">&#x1F525;${streak}</div><div class="stats-label">${t('stats_streak')}</div></div>
-    </div>`;
-
-    html += renderAchievementsHTML();
-
-    const last = recs.slice(-20);
-    if (last.length >= 2) {
-        const pts = last.map((r, i) => {
-            const x = (i / (last.length - 1)) * 280 + 10;
-            const y = 95 - (r.pct / 100) * 80;
-            return { x, y, pct: r.pct };
-        });
-        const polyline = pts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ');
-        const circles = pts.map(p => `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3" style="fill:var(--primary)"><title>${p.pct}%</title></circle>`).join('');
-        html += `<div class="stats-chart-title">${t('stats_trend')}</div>
-        <div class="stats-chart">
-            <svg viewBox="0 0 300 110" preserveAspectRatio="none">
-                <line x1="10" y1="15" x2="290" y2="15" style="stroke:var(--line)" stroke-width="1" stroke-dasharray="4 3"/>
-                <line x1="10" y1="55" x2="290" y2="55" style="stroke:var(--line)" stroke-width="1" stroke-dasharray="4 3"/>
-                <line x1="10" y1="95" x2="290" y2="95" style="stroke:var(--edge)" stroke-width="1"/>
-                <text x="8" y="13" style="fill:var(--text-muted)" font-size="8" text-anchor="end">100</text>
-                <text x="8" y="58" style="fill:var(--text-muted)" font-size="8" text-anchor="end">50</text>
-                <text x="8" y="98" style="fill:var(--text-muted)" font-size="8" text-anchor="end">0</text>
-                <polyline points="${polyline}" fill="none" style="stroke:var(--primary)" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
-                ${circles}
-            </svg>
-        </div>`;
-    }
-
-    const recent = recs.slice(-10).reverse();
-    html += `<div class="stats-chart-title">${t('stats_recent')}</div>
-    <table class="result-table stats-table"><thead><tr>
-        <th>${t('stats_date')}</th><th>${t('stats_lang')}</th><th>${t('stats_score')}</th><th>${t('stats_accuracy')}</th>
-    </tr></thead><tbody>`;
-    recent.forEach(r => {
-        const d = new Date(r.date);
-        const dateStr = `${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
-        const langLabel = (QUIZ_LANG_FLAGS[r.lang] || '') + (r.review ? ' 📖' : '');
-        const cls = r.pct >= 60 ? 'result-correct' : 'result-wrong';
-        html += `<tr class="${cls}"><td>${dateStr}</td><td>${langLabel}</td><td>${r.score}</td><td>${r.pct}%（${r.correct}/${r.total}）</td></tr>`;
-    });
-    html += '</tbody></table>';
-
-    container.innerHTML = html;
-}
+/* The stats page (#stats-card) is drawn by js/practice.js. */
 
 /* ===================== 成就系統 Achievements ===================== */
 
@@ -2231,16 +2097,19 @@ function onTimerExpired() {
     allBtns.forEach(btn => btn.disabled = true);
 
     let correctAnswer = '';
+    let entry = null;
     if (currentListeningMode) {
-        correctAnswer = getListeningCorrectAnswer();
+        correctAnswer = listeningDisplayAnswer();
     } else {
         /* currentQType is the type this question was actually asked as (mixed modes
            decide per question); the mode-based guess is only a fallback. */
         const type = currentQType || (currentMode === 'reading' ? 'reading' : isChineseQuizLang(currentLang) ? 'zh' : 'meaning');
         correctAnswer = correctAnswerFor(type);
-        if (type === 'review') gradeSrsQuizCard(currentReviewEntry, false);
-        else gradeSrsQuizCard(quizEntryFor(type, correctAnswer), false);
+        entry = type === 'review' ? currentReviewEntry : quizEntryFor(type, correctAnswer);
+        gradeSrsQuizCard(entry, false);
+        if (entry) breakMistakeStreak(entry.id);
     }
+    noteCombo(false);
 
     score = Math.max(0, score - 3);
     feedback.innerText = t('timer_expired') + correctAnswer;
@@ -2258,7 +2127,8 @@ function onTimerExpired() {
         yourAnswer: '⏱ ' + (t('timer_expired_short') || '超時'),
         correctAnswer: correctAnswer,
         isCorrect: false,
-        type: currentListeningMode ? 'listening' : 'timed'
+        type: currentListeningMode ? 'listening' : 'timed',
+        entry: entry
     });
 
     document.getElementById('score-count').innerText = t('quiz_score', {n: score});
@@ -2369,10 +2239,14 @@ function srsQuizDueCount() {
 /* The quiz page's "間隔複習" tool and the home dashboard both start here: one mixed
    session of the (at most SRS_REVIEW_LIMIT) longest-overdue cards across all word sets. */
 function showSrsReview() {
-    startSrsQuizReview();
+    showSrsDashboard();
 }
 
-function startSrsQuizReview() {
+/* where "返回" leads after an SRS review: 'tool' = the 間隔複習 page, else home */
+let srsReviewOrigin = 'home';
+
+function startSrsQuizReview(origin) {
+    srsReviewOrigin = origin === 'tool' ? 'tool' : 'home';
     const due = getDueSrsQuizCards().slice(0, SRS_REVIEW_LIMIT);
     if (due.length === 0) {
         showShareToast(t('srs_all_done'));
@@ -2392,11 +2266,7 @@ function startSrsQuizReview() {
     quizHistory = [];
     totalQuestions = reviewList.length;
 
-    ['lang-card', 'setup-card', 'mode-card', 'result-card', 'mistake-card', 'stats-card',
-     'flashcard-card', 'flashcard-setup-card', 'listening-setup-card', 'mastered-list-card', 'unknown-list-card',
-     'path-card', 'lesson-card']
-        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-    document.getElementById('quiz-card').style.display = 'block';
+    showOnlyQuizCard('quiz-card');
     document.getElementById('quiz-mode-label').innerText = t('srs_title');
     document.getElementById('total-words').innerText = t('quiz_words', {n: reviewList.length});
     setQuizBackLabels('srs');
@@ -2406,6 +2276,10 @@ function startSrsQuizReview() {
 /* "再來一次" on the result card: another round of whatever is due after an SRS review,
    the usual mode picker otherwise. */
 function quizAgain() {
+    if (currentListeningMode) {
+        startListeningWithConfig();
+        return;
+    }
     if (reviewMode && reviewSource === 'srs') {
         startSrsQuizReview();
         return;
@@ -2414,421 +2288,15 @@ function quizAgain() {
         lessonAgain();
         return;
     }
+    if (reviewMode && reviewSource === 'mistakes') {
+        startMistakeRepair();
+        return;
+    }
     showModeSelection();
 }
 
-function showFlashcard() {
-    document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('flashcard-setup-card').style.display = 'block';
-    document.getElementById('flashcard-setup-title').textContent = t('flashcard_title');
-    document.getElementById('fc-lang-title').style.display = '';
-    document.getElementById('fc-lang-buttons').style.display = '';
-    document.getElementById('fc-set-title').style.display = 'none';
-    document.getElementById('fc-set-buttons').style.display = 'none';
-    flashcardSetId = '';
-    document.getElementById('fc-mode-title').style.display = 'none';
-    document.getElementById('fc-mode-buttons').style.display = 'none';
-    document.getElementById('fc-mode-buttons').innerHTML = '';
-
-    const container = document.getElementById('fc-lang-buttons');
-    container.innerHTML = '';
-    const langs = [
-        { id: 'jp', i18n: 'fc_lang_jp', fallback: '🇯🇵 日文' },
-        { id: 'kr', i18n: 'fc_lang_kr', fallback: '🇰🇷 韓文' },
-        { id: 'fr', i18n: 'fc_lang_fr', fallback: '🇫🇷 法文' },
-        { id: 'en', i18n: 'fc_lang_en', fallback: '🇺🇸 英文' },
-        { id: 'zh', i18n: 'fc_lang_zh', fallback: '🇨🇳 中文' }
-    ];
-    langs.forEach(l => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn';
-        btn.setAttribute('data-i18n', l.i18n);
-        btn.innerText = t(l.i18n) || l.fallback;
-        btn.onclick = function() { selectFlashcardLang(l.id, this); };
-        container.appendChild(btn);
-    });
-}
-
-let flashcardSetId = '';
-
-/* Flashcards: language -> word set (level) -> display mode. Known/unknown marks stay
-   keyed by language (flashcardLang), so they carry over between levels. */
-function selectFlashcardLang(lang, el) {
-    flashcardLang = lang;
-    flashcardSetId = '';
-    document.querySelectorAll('#fc-lang-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    if (el) el.classList.add('mode-btn-active');
-    document.getElementById('fc-mode-title').style.display = 'none';
-    document.getElementById('fc-mode-buttons').style.display = 'none';
-    renderSetButtons('fc', lang, selectFlashcardSet);
-}
-
-function selectFlashcardSet(setId, el) {
-    flashcardSetId = setId;
-    document.querySelectorAll('#fc-set-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    if (el) el.classList.add('mode-btn-active');
-    showFlashcardModes(flashcardLang);
-}
-
-/* The level step shared by the flashcard ('fc') and listening ('lc') setups; a
-   language with a single set (French) skips it. */
-function renderSetButtons(prefix, lang, onPick) {
-    const title = document.getElementById(prefix + '-set-title');
-    const container = document.getElementById(prefix + '-set-buttons');
-    const sets = WORD_SET_FAMILIES[lang] || [];
-    container.innerHTML = '';
-    if (sets.length <= 1) {
-        title.style.display = 'none';
-        container.style.display = 'none';
-        if (sets.length === 1) onPick(sets[0], null);
-        return;
-    }
-    title.style.display = '';
-    container.style.display = '';
-    sets.forEach(id => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn';
-        btn.setAttribute('data-i18n', 'quiz_' + id);
-        btn.innerText = t('quiz_' + id);
-        btn.onclick = function() { onPick(id, this); };
-        container.appendChild(btn);
-    });
-}
-
-function showFlashcardModes(lang) {
-    const title = document.getElementById('fc-mode-title');
-    const container = document.getElementById('fc-mode-buttons');
-    title.style.display = '';
-    container.style.display = '';
-    container.innerHTML = '';
-
-    const modeMap = {
-        jp: [
-            { id: 'zh-meaning', key: 'fc_mode_jp_zh' },
-            { id: 'en-meaning', key: 'fc_mode_jp_en' }
-        ],
-        kr: [
-            { id: 'zh-meaning', key: 'fc_mode_kr_zh' },
-            { id: 'en-meaning', key: 'fc_mode_kr_en' }
-        ],
-        fr: [
-            { id: 'zh-meaning', key: 'fc_mode_fr_zh' },
-            { id: 'en-meaning', key: 'fc_mode_fr_en' }
-        ],
-        en: [
-            { id: 'zh-meaning', key: 'fc_mode_en_zh' }
-        ],
-        zh: [
-            { id: 'trad-bopomofo', key: 'fc_mode_zh_trad' },
-            { id: 'simp-roman', key: 'fc_mode_zh_simp' }
-        ]
-    };
-
-    const modes = modeMap[lang] || [];
-    modes.forEach(m => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn';
-        btn.setAttribute('data-i18n', m.key);
-        btn.innerText = t(m.key);
-        btn.onclick = function() { startFlashcardWithMode(m.id, this); };
-        container.appendChild(btn);
-    });
-
-    if (modes.length === 1) {
-        setTimeout(() => startFlashcardWithMode(modes[0].id, container.firstChild), 100);
-    }
-}
-
-function startFlashcardWithMode(modeId) {
-    flashcardMode = modeId;
-    const lang = flashcardLang;
-    if (!flashcardSetId) return;
-    document.getElementById('fc-set-title').style.display = 'none';
-    document.getElementById('fc-set-buttons').style.display = 'none';
-
-    document.getElementById('fc-lang-title').style.display = 'none';
-    document.getElementById('fc-lang-buttons').style.display = 'none';
-    document.getElementById('fc-mode-title').style.display = 'none';
-    document.getElementById('fc-mode-buttons').style.display = 'none';
-
-    let startBtn = document.getElementById('fc-start-btn');
-    if (!startBtn) {
-        startBtn = document.createElement('button');
-        startBtn.id = 'fc-start-btn';
-        startBtn.className = 'btn next-btn';
-        startBtn.style.marginTop = '10px';
-        // Appended before the setup card's own back button (not inside fc-mastered-section) so it
-        // stays visible even when that section is hidden, e.g. in SRS mode.
-        const setupCard = document.getElementById('flashcard-setup-card');
-        const backRow = setupCard.querySelector('.action-buttons');
-        setupCard.insertBefore(startBtn, backRow);
-    }
-
-    flashcardKnownSet = new Set(getFlashcardKnown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-    flashcardUnknownSet = new Set(getFlashcardUnknown().filter(k => k.startsWith(lang + '|' + modeId + '|')));
-    updateMasteredCount();
-    updateUnknownCount();
-    startBtn.onclick = function() { launchFlashcard(lang, modeId); };
-    startBtn.innerText = t('fc_start_flashcard');
-}
-
-function launchFlashcard(lang, modeId) {
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('mastered-list-card').style.display = 'none';
-    document.getElementById('flashcard-card').style.display = 'block';
-    loadFlashcardVocab(lang, modeId);
-}
-
-function loadFlashcardVocab(lang, modeId) {
-    loadWordSet(flashcardSetId)
-        .catch(() => { if (!restoreVocabCache(flashcardSetId)) throw new Error('no words'); })
-        .then(() => {
-            flashcardList = shuffleArray([...vocabularyList]);
-            flashcardIdx = 0;
-            renderFlashcard();
-        })
-        .catch(() => {
-            closeFlashcard();
-        });
-}
-
-function renderFlashcard() {
-    if (flashcardList.length === 0) return;
-    const word = flashcardList[flashcardIdx];
-    const front = document.getElementById('flashcard-front');
-    const back = document.getElementById('flashcard-back');
-    const hint = document.getElementById('flashcard-hint');
-    const card = document.getElementById('flashcard');
-    const counter = document.getElementById('flashcard-counter');
-    const nav = document.querySelector('#flashcard-card .flashcard-nav');
-    const actions = document.querySelector('#flashcard-card .flashcard-actions');
-    if (nav) nav.style.display = '';
-    if (actions) actions.style.display = '';
-
-    card.classList.remove('flipped');
-
-    const m = flashcardMode;
-    let frontHTML = '';
-    let backHTML = '';
-
-    if (m === 'trad-bopomofo') {
-        frontHTML = '<div class="flashcard-word">' + escHtml(word.trad || word.word) + '</div>' +
-            (word.bopomofo ? '<div class="flashcard-sub">' + escHtml(word.bopomofo) + '</div>' : '');
-        backHTML = '<div class="flashcard-word">' + escHtml(word.meaning) + '</div>' +
-            (word.english ? '<div class="flashcard-sub">' + escHtml(word.english) + '</div>' : '');
-    } else if (m === 'simp-roman') {
-        frontHTML = '<div class="flashcard-word">' + escHtml(word.simp || word.word) + '</div>' +
-            (word.roman ? '<div class="flashcard-sub">' + escHtml(word.roman) + '</div>' : '');
-        backHTML = '<div class="flashcard-word">' + escHtml(word.meaning) + '</div>' +
-            (word.english ? '<div class="flashcard-sub">' + escHtml(word.english) + '</div>' : '');
-    } else if (m === 'zh-meaning') {
-        const wordText = word.word;
-        const readingText = word.kana || '';
-        frontHTML = '<div class="flashcard-word">' + escHtml(wordText) + '</div>' +
-            (readingText ? '<div class="flashcard-sub">' + escHtml(readingText) + '</div>' : '');
-        backHTML = '<div class="flashcard-word">' + escHtml(word.meaning) + '</div>';
-    } else if (m === 'en-meaning') {
-        const wordText = word.word;
-        const readingText = word.kana || '';
-        frontHTML = '<div class="flashcard-word">' + escHtml(wordText) + '</div>' +
-            (readingText ? '<div class="flashcard-sub">' + escHtml(readingText) + '</div>' : '');
-        backHTML = '<div class="flashcard-word">' + escHtml(word.english || word.meaning) + '</div>';
-    }
-
-    front.innerHTML = frontHTML;
-    back.innerHTML = backHTML;
-
-    const cardKey = flashcardLang + '|' + flashcardMode + '|' + word.word;
-    const isKnown = flashcardKnownSet.has(cardKey);
-    const isUnknown = flashcardUnknownSet.has(cardKey);
-    hint.innerHTML = isKnown ? '<span style="color:var(--accent-green)">' + t('flashcard_known') + '</span>' : '';
-    if (!isKnown && isUnknown) {
-        hint.innerHTML = '<span style="color:var(--accent-red)">' + t('flashcard_unknown') + '</span>';
-    }
-    counter.textContent = (flashcardIdx + 1) + ' / ' + flashcardList.length;
-    const reviewTitle = document.getElementById('flashcard-review-title');
-    if (reviewTitle) reviewTitle.textContent = t('flashcard_title');
-
-    currentLang = flashcardLang;
-    currentWord = word;
-    if (autoSpeak && word.word) setTimeout(() => speakWord(), 300);
-}
-
-function flipCard() {
-    document.getElementById('flashcard').classList.toggle('flipped');
-}
-
-function flashcardNext() {
-    if (flashcardIdx < flashcardList.length - 1) {
-        flashcardIdx++;
-        renderFlashcard();
-    }
-}
-
-function flashcardPrev() {
-    if (flashcardIdx > 0) {
-        flashcardIdx--;
-        renderFlashcard();
-    }
-}
-
-function flashcardRate(known) {
-    const word = flashcardList[flashcardIdx];
-    if (!word) return;
-    logDailyActivity();
-    const key = flashcardLang + '|' + flashcardMode + '|' + word.word;
-
-    if (known) {
-        flashcardKnownSet.add(key);
-        flashcardUnknownSet.delete(key);
-    } else {
-        flashcardKnownSet.delete(key);
-        flashcardUnknownSet.add(key);
-    }
-    saveFlashcardKnown();
-    saveFlashcardUnknown();
-    checkAchievements();
-    updateMasteredCount();
-    updateUnknownCount();
-    renderFlashcard();
-}
-
-function closeFlashcard() {
-    document.getElementById('flashcard-card').style.display = 'none';
-    document.getElementById('lang-card').style.display = 'block';
-}
-
-function closeFlashcardSetup() {
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('mastered-list-card').style.display = 'none';
-    document.getElementById('unknown-list-card').style.display = 'none';
-    document.getElementById('fc-mastered-section').style.display = 'none';
-    document.getElementById('fc-unknown-section').style.display = 'none';
-    const startBtn = document.getElementById('fc-start-btn');
-    if (startBtn) startBtn.remove();
-    document.getElementById('lang-card').style.display = 'block';
-}
-
-function updateMasteredCount() {
-    const set = new Set([...flashcardKnownSet].filter(k => k.startsWith(flashcardLang + '|' + flashcardMode + '|')));
-    const count = set.size;
-    const el = document.getElementById('fc-mastered-count');
-    const section = document.getElementById('fc-mastered-section');
-    if (flashcardLang && flashcardMode) {
-        section.style.display = '';
-        el.innerText = t('fc_mastered_count', {n: count, m: flashcardList.length});
-    } else {
-        section.style.display = 'none';
-    }
-}
-
-function showMasteredList() {
-    const prefix = flashcardLang + '|' + flashcardMode + '|';
-    const known = [...flashcardKnownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
-    const container = document.getElementById('mastered-list-content');
-    if (known.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#aaa;">' + t('fc_mastered_empty') + '</p>';
-    } else {
-        let html = '';
-        known.forEach(word => {
-            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:var(--success-bg); border-radius:8px;">' +
-                '<span>' + escHtml(word) + '</span>' +
-                '<button onclick="removeFromMastered(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:var(--accent-red); cursor:pointer; font-size:0.9em;">\u2716</button>' +
-                '</div>';
-        });
-        container.innerHTML = html;
-    }
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('mastered-list-card').style.display = 'block';
-}
-
-function removeFromMastered(word) {
-    const key = flashcardLang + '|' + flashcardMode + '|' + word;
-    flashcardKnownSet.delete(key);
-    saveFlashcardKnown();
-    showMasteredList();
-    updateMasteredCount();
-}
-
-function closeMasteredList() {
-    document.getElementById('mastered-list-card').style.display = 'none';
-    document.getElementById('flashcard-setup-card').style.display = 'block';
-    updateMasteredCount();
-}
-
-function updateUnknownCount() {
-    const set = new Set([...flashcardUnknownSet].filter(k => k.startsWith(flashcardLang + '|' + flashcardMode + '|')));
-    const count = set.size;
-    const el = document.getElementById('fc-unknown-count');
-    const section = document.getElementById('fc-unknown-section');
-    if (flashcardLang && flashcardMode) {
-        section.style.display = '';
-        el.innerText = t('fc_unknown_count', {n: count});
-    } else {
-        section.style.display = 'none';
-    }
-}
-
-function showUnknownList() {
-    const prefix = flashcardLang + '|' + flashcardMode + '|';
-    const unknown = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
-    const container = document.getElementById('unknown-list-content');
-    if (unknown.length === 0) {
-        container.innerHTML = '<p style="text-align:center; color:#aaa;">' + t('fc_unknown_empty') + '</p>';
-    } else {
-        let html = '';
-        unknown.forEach(word => {
-            html += '<div style="display:flex; justify-content:space-between; align-items:center; padding:6px 10px; margin:4px 0; background:var(--danger-bg); border-radius:8px;">' +
-                '<span>' + escHtml(word) + '</span>' +
-                '<button onclick="removeFromUnknown(\'' + escHtml(word).replace(/'/g, "\\'") + '\')" style="background:none; border:none; color:var(--accent-red); cursor:pointer; font-size:0.9em;">&#10006;</button>' +
-                '</div>';
-        });
-        container.innerHTML = html;
-    }
-    document.getElementById('flashcard-setup-card').style.display = 'none';
-    document.getElementById('unknown-list-card').style.display = 'block';
-}
-
-function removeFromUnknown(word) {
-    const key = flashcardLang + '|' + flashcardMode + '|' + word;
-    flashcardUnknownSet.delete(key);
-    saveFlashcardUnknown();
-    showUnknownList();
-    updateUnknownCount();
-}
-
-function closeUnknownList() {
-    document.getElementById('unknown-list-card').style.display = 'none';
-    document.getElementById('flashcard-setup-card').style.display = 'block';
-    updateUnknownCount();
-}
-
-function reviewUnknownWords() {
-    const lang = flashcardLang;
-    const modeId = flashcardMode;
-    const prefix = lang + '|' + modeId + '|';
-    const unknownWords = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).map(k => k.split('|')[2]);
-    if (unknownWords.length === 0) return;
-
-    /* Unknown marks are kept per language, not per level, so every level of the
-       language is searched for them (one set after another). */
-    const found = [];
-    (WORD_SET_FAMILIES[lang] || []).reduce((chain, id) => chain
-        .then(() => loadWordSet(id).catch(() => restoreVocabCache(id)))
-        .then(() => {
-            vocabularyList.forEach(w => {
-                if (unknownWords.includes(w.word) && !found.some(f => f.word === w.word)) found.push(w);
-            });
-        }), Promise.resolve())
-        .then(() => {
-            flashcardList = shuffleArray(found);
-            flashcardIdx = 0;
-            if (flashcardList.length === 0) return;
-            document.getElementById('unknown-list-card').style.display = 'none';
-            document.getElementById('flashcard-card').style.display = 'block';
-            renderFlashcard();
-        });
-}
+/* The flashcard decks and cards (#flashcard-setup-card, #flashcard-card) are drawn by
+   js/practice.js; the known / unknown marks above stay here for the achievements. */
 
 /* Also escapes " so the result is safe inside double-quoted attributes (data-*, aria-*).
    ' is left alone: two onclick handlers escape it themselves for their JS strings. */
@@ -2836,221 +2304,171 @@ function escHtml(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
-/* ===================== Listening Quiz ===================== */
+/* ===================== Listening Quiz =====================
+   One setup page (#listening-setup-card): language, word set, how to answer, which
+   meaning to show and how many questions, all on one screen and remembered in
+   localStorage.listening_prefs, so a returning visitor just presses start.
+   Answering is either 'choice' (tap the word you heard among four look-alikes) or
+   typing (the older modes: kana, romaji, hangul, spelling, zhuyin, pinyin). */
 
 let currentListeningMode = false;
 let listeningLang = '';
+let listeningSetId = '';
 let listeningMode = '';
-let listeningCount = 0;
+let listeningCount = 10;
 let listeningMeaningLang = 'zh';
+let listeningHintsUsed = 0;   // letters revealed on the current typing question
+
+const LISTENING_LANGS = ['jp', 'kr', 'en', 'zh', 'fr'];
+const LISTENING_MODES = {
+    jp: ['choice', 'hiragana', 'katakana', 'roman'],
+    kr: ['choice', 'korean'],
+    en: ['choice', 'english'],
+    fr: ['choice', 'french'],
+    zh: ['choice-trad', 'choice-simp', 'bopomofo', 'pinyin']
+};
+const LISTENING_MODE_KEYS = {
+    choice: 'lc_mode_choice', 'choice-trad': 'lc_mode_choice_trad', 'choice-simp': 'lc_mode_choice_simp',
+    hiragana: 'lc_mode_jp_hiragana', katakana: 'lc_mode_jp_katakana', roman: 'lc_mode_jp_roman',
+    korean: 'lc_mode_kr_korean', english: 'lc_mode_en_english', french: 'lc_mode_fr_french',
+    bopomofo: 'lc_mode_zh_bopomofo', pinyin: 'lc_mode_zh_pinyin'
+};
+const LISTENING_COUNTS = [10, 20, 30, 0];
+/* the language names in the pickers (shared with the flashcard decks) */
+const PRACTICE_LANG_NAME_KEYS = { jp: 'dict_lang_ja', kr: 'dict_lang_ko', en: 'dict_lang_en', zh: 'dict_lang_zh', fr: 'dict_lang_fr' };
+
+function isListeningChoice() {
+    return listeningMode.startsWith('choice');
+}
+
+/* Japanese / Korean / French hints can be the Chinese or the English meaning;
+   English words always show Chinese, Chinese words their English gloss. */
+function listeningHasMeaningChoice(lang) {
+    return lang !== 'en' && lang !== 'zh';
+}
+
+function getListeningPrefs() {
+    try { return JSON.parse(localStorage.getItem('listening_prefs')) || {}; } catch { return {}; }
+}
+
+function saveListeningPrefs() {
+    try {
+        localStorage.setItem('listening_prefs', JSON.stringify({
+            lang: listeningLang, set: listeningSetId, mode: listeningMode,
+            meaning: listeningMeaningLang, count: listeningCount
+        }));
+    } catch {}
+}
+
+/* Fills in whatever the saved choice doesn't settle (or no longer allows). */
+function normalizeListeningChoice() {
+    if (!LISTENING_LANGS.includes(listeningLang)) listeningLang = 'jp';
+    const sets = WORD_SET_FAMILIES[listeningLang] || [];
+    if (!sets.includes(listeningSetId)) listeningSetId = sets[0] || '';
+    const modes = LISTENING_MODES[listeningLang];
+    if (!modes.includes(listeningMode)) listeningMode = modes[0];
+    if (!listeningHasMeaningChoice(listeningLang)) listeningMeaningLang = listeningLang === 'en' ? 'zh' : 'en';
+    else if (listeningMeaningLang !== 'en') listeningMeaningLang = 'zh';
+    if (!LISTENING_COUNTS.includes(listeningCount)) listeningCount = 10;
+}
 
 function startListeningQuiz() {
-    document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('listening-setup-card').style.display = 'block';
-    document.getElementById('lc-lang-title').style.display = '';
-    document.getElementById('lc-lang-buttons').style.display = '';
-    document.getElementById('lc-set-title').style.display = 'none';
-    document.getElementById('lc-set-buttons').style.display = 'none';
-    listeningSetId = '';
-    document.getElementById('lc-mode-title').style.display = 'none';
-    document.getElementById('lc-mode-buttons').style.display = 'none';
-    document.getElementById('lc-count-title').style.display = 'none';
-    document.getElementById('lc-count-buttons').style.display = 'none';
-    document.getElementById('lc-mode-buttons').innerHTML = '';
-    document.getElementById('lc-count-buttons').innerHTML = '';
-
-    const container = document.getElementById('lc-lang-buttons');
-    container.innerHTML = '';
-    const langs = [
-        { id: 'jp', i18n: 'fc_lang_jp', fallback: '🇯🇵 日文' },
-        { id: 'kr', i18n: 'fc_lang_kr', fallback: '🇰🇷 韓文' },
-        { id: 'fr', i18n: 'fc_lang_fr', fallback: '🇫🇷 法文' },
-        { id: 'en', i18n: 'fc_lang_en', fallback: '🇺🇸 英文' },
-        { id: 'zh', i18n: 'fc_lang_zh', fallback: '🇨🇳 中文' }
-    ];
-    langs.forEach(l => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn';
-        btn.setAttribute('data-i18n', l.i18n);
-        btn.innerText = t(l.i18n) || l.fallback;
-        btn.onclick = function() { selectListeningLang(l.id, this); };
-        container.appendChild(btn);
-    });
+    const p = getListeningPrefs();
+    listeningLang = p.lang || '';
+    listeningSetId = p.set || '';
+    listeningMode = p.mode || '';
+    listeningMeaningLang = p.meaning || 'zh';
+    listeningCount = typeof p.count === 'number' ? p.count : 10;
+    normalizeListeningChoice();
+    showOnlyQuizCard('listening-setup-card');
+    renderListeningSetup();
+    window.scrollTo(0, 0);
 }
 
-let listeningSetId = '';
-
-function selectListeningLang(lang, el) {
-    listeningLang = lang;
-    listeningSetId = '';
-    document.querySelectorAll('#lc-lang-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    el.classList.add('mode-btn-active');
-    ['lc-mode-title', 'lc-mode-buttons', 'lc-meaning-title', 'lc-meaning-buttons', 'lc-count-title', 'lc-count-buttons']
-        .forEach(id => { document.getElementById(id).style.display = 'none'; });
-    renderSetButtons('lc', lang, selectListeningSet);
-}
-
-function selectListeningSet(setId, el) {
-    listeningSetId = setId;
-    document.querySelectorAll('#lc-set-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    if (el) el.classList.add('mode-btn-active');
-    showListeningModes(listeningLang);
-}
-
-function showListeningModes(lang) {
-    const title = document.getElementById('lc-mode-title');
-    const container = document.getElementById('lc-mode-buttons');
-    title.style.display = '';
-    container.style.display = '';
-    container.innerHTML = '';
-
-    const modeMap = {
-        jp: [
-            { id: 'roman', key: 'lc_mode_jp_roman' },
-            { id: 'hiragana', key: 'lc_mode_jp_hiragana' },
-            { id: 'katakana', key: 'lc_mode_jp_katakana' }
-        ],
-        kr: [
-            { id: 'korean', key: 'lc_mode_kr_korean' }
-        ],
-        fr: [
-            { id: 'french', key: 'lc_mode_fr_french' }
-        ],
-        en: [
-            { id: 'english', key: 'lc_mode_en_english' }
-        ],
-        zh: [
-            { id: 'bopomofo', key: 'lc_mode_zh_bopomofo' },
-            { id: 'pinyin', key: 'lc_mode_zh_pinyin' }
-        ]
-    };
-
-    const modes = modeMap[lang] || [];
-    modes.forEach(m => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn';
-        btn.setAttribute('data-i18n', m.key);
-        btn.innerText = t(m.key);
-        btn.onclick = function() { selectListeningMode(m.id, this); };
-        container.appendChild(btn);
-    });
-
-    document.getElementById('lc-count-title').style.display = 'none';
-    document.getElementById('lc-count-buttons').style.display = 'none';
-
-    if (modes.length === 1) {
-        setTimeout(() => selectListeningMode(modes[0].id, container.firstChild), 100);
+function lcPick(field, value) {
+    if (field === 'lang' && value !== listeningLang) {
+        listeningLang = value;
+        listeningSetId = '';
+        listeningMode = '';
     }
+    if (field === 'set') listeningSetId = value;
+    if (field === 'mode') listeningMode = value;
+    if (field === 'meaning') listeningMeaningLang = value;
+    if (field === 'count') listeningCount = value;
+    normalizeListeningChoice();
+    renderListeningSetup();
 }
 
-function selectListeningMode(modeId, el) {
-    listeningMode = modeId;
-    document.querySelectorAll('#lc-mode-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    el.classList.add('mode-btn-active');
+function renderListeningSetup() {
+    const box = document.getElementById('lc-setup');
+    if (!box) return;
+    const chip = (field, value, label, on) =>
+        `<button type="button" class="pc-chip${on ? ' on' : ''}" onclick="lcPick('${field}', ${typeof value === 'number' ? value : `'${value}'`})"${on ? ' aria-pressed="true"' : ' aria-pressed="false"'}>${escHtml(label)}</button>`;
+    const row = (titleKey, chips) => `<div class="pc-field"><div class="pc-label">${escHtml(t(titleKey))}</div><div class="pc-chips">${chips}</div></div>`;
 
-    document.getElementById('lc-count-title').style.display = 'none';
-    document.getElementById('lc-count-buttons').style.display = 'none';
-
-    const title = document.getElementById('lc-meaning-title');
-    const container = document.getElementById('lc-meaning-buttons');
-    title.style.display = '';
-    container.style.display = '';
-    container.innerHTML = '';
-
-    const needMeaningChoice = listeningLang !== 'en' && listeningLang !== 'zh';
-
-    if (needMeaningChoice) {
-        const btnZh = document.createElement('button');
-        btnZh.className = 'mode-btn';
-        btnZh.setAttribute('data-i18n', 'answer_lang_zh');
-        btnZh.innerText = t('answer_lang_zh') || '中文意思';
-        btnZh.onclick = function() { selectListeningMeaningLang('zh', this); };
-        container.appendChild(btnZh);
-        const btnEn = document.createElement('button');
-        btnEn.className = 'mode-btn';
-        btnEn.setAttribute('data-i18n', 'answer_lang_en');
-        btnEn.innerText = t('answer_lang_en') || '英文意思';
-        btnEn.onclick = function() { selectListeningMeaningLang('en', this); };
-        container.appendChild(btnEn);
-    } else {
-        listeningMeaningLang = listeningLang === 'en' ? 'zh' : 'en';
-        showListeningCountSelection();
+    let html = row('lc_field_lang', LISTENING_LANGS.map(l => chip('lang', l, t(PRACTICE_LANG_NAME_KEYS[l]), l === listeningLang)).join(''));
+    const sets = WORD_SET_FAMILIES[listeningLang] || [];
+    if (sets.length > 1) {
+        html += row('lc_field_set', sets.map(s => chip('set', s, t('quiz_' + s), s === listeningSetId)).join(''));
     }
+    html += row('lc_field_mode', LISTENING_MODES[listeningLang].map(m =>
+        chip('mode', m, (m.startsWith('choice') ? '👆 ' : '⌨️ ') + t(LISTENING_MODE_KEYS[m]), m === listeningMode)).join(''));
+    if (listeningHasMeaningChoice(listeningLang)) {
+        html += row('lc_field_meaning', chip('meaning', 'zh', t('lc_meaning_zh'), listeningMeaningLang === 'zh')
+            + chip('meaning', 'en', t('lc_meaning_en'), listeningMeaningLang === 'en'));
+    }
+    html += row('quiz_count_title', LISTENING_COUNTS.map(n =>
+        chip('count', n, n ? String(n) : t('lc_count_all'), n === listeningCount)).join(''));
+    box.innerHTML = html;
+
+    const start = document.getElementById('lc-start');
+    if (start) start.textContent = '▶ ' + t('lc_start');
 }
 
-function selectListeningMeaningLang(lang, el) {
-    listeningMeaningLang = lang;
-    document.querySelectorAll('#lc-meaning-buttons .mode-btn').forEach(b => b.classList.remove('mode-btn-active'));
-    el.classList.add('mode-btn-active');
-    showListeningCountSelection();
-}
-
-function showListeningCountSelection() {
-    document.getElementById('lc-meaning-title').style.display = 'none';
-    document.getElementById('lc-meaning-buttons').style.display = 'none';
-
-    const title = document.getElementById('lc-count-title');
-    const container = document.getElementById('lc-count-buttons');
-    title.style.display = '';
-    container.style.display = '';
-    container.innerHTML = '';
-
-    const counts = [
-        { n: 10, key: 'quiz_count_10' },
-        { n: 20, key: 'quiz_count_20' },
-        { n: 30, key: 'quiz_count_30' },
-        { n: 0, key: 'quiz_count_all' }
-    ];
-    counts.forEach(c => {
-        const btn = document.createElement('button');
-        btn.className = 'mode-btn count-btn';
-        btn.setAttribute('data-i18n', c.key);
-        btn.innerText = t(c.key);
-        btn.onclick = function() { startListeningWithConfig(c.n); };
-        container.appendChild(btn);
-    });
-}
-
-function startListeningWithConfig(count) {
-    listeningCount = count;
+function startListeningWithConfig() {
+    normalizeListeningChoice();
     if (!listeningSetId) return;
-
-    document.getElementById('listening-setup-card').style.display = 'none';
+    saveListeningPrefs();
 
     currentListeningMode = true;
     currentLang = listeningSetId;
-    // "聽简体" (pinyin) must be read by the mainland voice, "聽繁體" by the Taiwan one
-    if (listeningLang === 'zh') zhCharType = listeningMode === 'pinyin' ? 'simp' : 'trad';
+    // the simplified modes must be read by the mainland voice, the rest by the Taiwan one
+    if (listeningLang === 'zh') zhCharType = (listeningMode === 'pinyin' || listeningMode === 'choice-simp') ? 'simp' : 'trad';
     score = 0;
     questionNum = 0;
-    totalQuestions = count;
+    totalQuestions = listeningCount;
     quizHistory = [];
 
+    const startBtn = document.getElementById('lc-start');
+    if (startBtn) startBtn.disabled = true;
     loadWordSet(listeningSetId)
+        .then(n => { if (n >= 4) saveVocabCache(listeningSetId); })
         .catch(() => { if (!restoreVocabCache(listeningSetId)) throw new Error('no words'); })
         .then(() => {
+            if (startBtn) startBtn.disabled = false;
+            if (!currentListeningMode || vocabularyList.length < 4) throw new Error('no words');
             shuffledVocab = shuffleArray(vocabularyList);
             vocabIdx = 0;
-
-            document.getElementById('quiz-card').style.display = 'block';
-            document.getElementById('result-card').style.display = 'none';
-            document.getElementById('quiz-mode-label').innerText = t('tool_listening') || '\u{1F50A} 聽力測驗';
+            totalQuestions = listeningCount || vocabularyList.length;   // 全部 = every word once
+            showOnlyQuizCard('quiz-card');
+            document.getElementById('quiz-mode-label').innerText = t('tool_listening');
+            setQuizBackLabels('listening');
             document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
             document.getElementById('timer-display').style.display = 'none';
             document.getElementById('timer-bar-container').style.display = 'none';
             nextListeningQuestion();
         })
         .catch(() => {
-            // offline with nothing cached: back to the language card rather than a blank page
+            // offline with nothing cached: stay on the setup page
+            if (startBtn) startBtn.disabled = false;
             currentListeningMode = false;
-            closeListeningSetup();
             showShareToast(t('load_fail_no_cache'));
         });
 }
 
 function closeListeningSetup() {
-    document.getElementById('listening-setup-card').style.display = 'none';
-    document.getElementById('lang-card').style.display = 'block';
+    showOnlyQuizCard('lang-card');
+    renderPracticeHub();
 }
 
 function pinyinToToneNumber(str) {
@@ -3206,119 +2624,289 @@ function normalizeBopomofo(s) {
     return s.replace(/\s+/g, '');
 }
 
-function getListeningCorrectAnswer() {
+/* The answers a typing question accepts, normalised the way the visitor's input is
+   (a word can list variants as "a / b"; any of them counts). */
+function listeningAcceptedAnswers() {
     const w = currentWord;
+    const variants = s => String(s || '').split(' / ').map(v => v.trim()).filter(Boolean);
     const mode = listeningMode;
-    if (mode === 'bopomofo') return normalizeBopomofo(pickOneVariant(w.bopomofo || ''));
-    if (mode === 'pinyin') return normalizePinyin(pickOneVariant(w.roman || ''));
+    if (mode === 'bopomofo') return variants(w.bopomofo).map(normalizeBopomofo);
+    if (mode === 'pinyin') return variants(w.roman).map(normalizePinyin);
+    const jpReading = getJapaneseReading(w);
+    if (mode === 'roman') return [hiraganaToRomaji(jpReading)];
+    if (mode === 'hiragana') return [jpReading];
+    if (mode === 'katakana') return [hiraganaToKatakana(jpReading)];
+    if (mode === 'english') return variants(w.english || w.word).map(v => v.toLowerCase());
+    return variants(w.word).map(v => v.toLowerCase());
+}
+
+/* The answer as shown to the visitor (feedback, letter boxes, results). */
+function listeningDisplayAnswer() {
+    const w = currentWord;
+    if (!w) return '';
+    const first = s => String(s || '').split(' / ')[0].trim();
+    const mode = listeningMode;
+    if (mode === 'bopomofo') return first(w.bopomofo);
+    if (mode === 'pinyin') return first(w.roman);
+    if (mode === 'choice-trad' || mode === 'choice-simp') return w.word;
+    if (mode === 'choice' && isJapaneseQuizLang(listeningSetId)) return getJapaneseReading(w);
     const jpReading = getJapaneseReading(w);
     if (mode === 'roman') return hiraganaToRomaji(jpReading);
     if (mode === 'hiragana') return jpReading;
     if (mode === 'katakana') return hiraganaToKatakana(jpReading);
-    if (mode === 'korean') return w.word || '';
-    if (mode === 'french') return pickOneVariant(w.word || '');
-    if (mode === 'english') return pickOneVariant(w.english || w.word || '');
-    return pickOneVariant(w.word || '');
+    if (mode === 'english') return first(w.english || w.word);
+    return first(w.word);
+}
+
+function listeningMeaning() {
+    const w = currentWord;
+    return listeningMeaningLang === 'en' ? (w.english || w.meaning || '') : (w.meaning || w.english || '');
+}
+
+/* Three look-alike wrong options for the 'choice' modes: near-miss kana for Japanese
+   (the reading generator the reading quiz uses), otherwise other words of the set that
+   look most like the right one (same first letter, similar length). */
+function listeningChoiceOptions() {
+    const right = listeningDisplayAnswer();
+    const options = [right];
+    const add = s => { if (s && !options.includes(s) && options.length < 4) options.push(s); };
+    if (isJapaneseQuizLang(listeningSetId)) {
+        generateSimilarReadings(right, 3).forEach(add);
+        shuffleArray(vocabularyList).forEach(w => add(getJapaneseReading(w)));
+    } else {
+        const shown = w => listeningMode === 'choice-simp' ? (w.simp || w.word) : listeningMode === 'choice-trad' ? (w.trad || w.word) : String(w.word).split(' / ')[0].trim();
+        const len = [...right].length;
+        const scored = vocabularyList.map(w => {
+            const s = shown(w);
+            const n = [...s].length;
+            return { s, score: (s[0] === right[0] ? 2 : 0) + (Math.abs(n - len) <= 1 ? 1 : 0) + Math.random() };
+        }).filter(x => x.s !== right).sort((a, b) => b.score - a.score);
+        scored.slice(0, 12).sort(() => Math.random() - 0.5).forEach(x => add(x.s));
+        scored.forEach(x => add(x.s));
+    }
+    return shuffleArray(options);
+}
+
+/* The entry this word is reviewed as in the mistake book / SRS (the same one a lesson
+   asks), so a word missed by ear comes back as a normal question. */
+function listeningEntry() {
+    if (!currentWord || typeof lessonEntryFor !== 'function') return null;
+    const e = lessonEntryFor(listeningSetId, currentWord);
+    return e && e.answer ? e : null;
 }
 
 function nextListeningQuestion() {
     answered = false;
     questionNum++;
+    if (questionNum === 1) startSessionStats();
+    listeningHintsUsed = 0;
     document.getElementById('question-count').innerText = t('quiz_question', {n: questionNum});
     document.getElementById('score-count').innerText = t('quiz_score', {n: score});
     document.getElementById('nextBtn').style.display = 'none';
     document.getElementById('feedback').innerText = '';
     document.getElementById('feedback').className = 'feedback';
 
-    if (vocabIdx >= shuffledVocab.length) shuffledVocab = shuffleArray(vocabularyList);
-    currentWord = shuffledVocab[vocabIdx++];
+    if (vocabIdx >= shuffledVocab.length) { shuffledVocab = shuffleArray(vocabularyList); vocabIdx = 0; }
+    const w = shuffledVocab[vocabIdx++];
+    // Chinese: the characters (and voice) of the picked script
+    currentWord = isChineseQuizLang(listeningSetId)
+        ? Object.assign({}, w, { word: (zhCharType === 'simp' ? w.simp : w.trad) || w.word })
+        : w;
 
-    document.getElementById('word-question').innerHTML = '\u{1F50A} ' + (t('listening_hint') || '\u807C\u807C\u770B...');
-    document.getElementById('word-hint').innerText = listeningMeaningLang === 'en' ? (currentWord.english || currentWord.meaning || '') : (currentWord.meaning || currentWord.english || '');
+    const choice = isListeningChoice();
+    setListeningStage(true, choice);
+    document.getElementById('word-hint').innerText = choice ? '' : listeningMeaning();
 
     const container = document.getElementById('options-container');
     container.innerHTML = '';
-    const inputGroup = document.createElement('div');
-    inputGroup.className = 'listening-input-group';
-    const input = document.createElement('input');
-    input.type = 'text';
-    input.id = 'listening-input';
-    input.className = 'listening-input';
-    input.placeholder = t('listening_placeholder') || '\u8F38\u5165\u4F60\u807C\u5230\u7684\u55AE\u5B57...';
-    input.setAttribute('autocomplete', 'off');
-    const submitBtn = document.createElement('button');
-    submitBtn.id = 'listening-submit';
-    submitBtn.className = 'btn next-btn';
-    submitBtn.innerText = t('listening_submit') || '\u9001\u51FA';
-    submitBtn.onclick = function() { submitListeningAnswer(); };
-    input.addEventListener('keydown', function(e) {
-        if (e.key === 'Enter' && !answered) submitListeningAnswer();
-    });
-    inputGroup.appendChild(input);
-    inputGroup.appendChild(submitBtn);
-    container.appendChild(inputGroup);
+    if (choice) {
+        listeningChoiceOptions().forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'option-btn listening-option';
+            btn.innerText = opt;
+            btn.onclick = () => submitListeningAnswer(opt, btn);
+            container.appendChild(btn);
+        });
+    } else {
+        container.appendChild(buildListeningTyping());
+    }
 
-    setTimeout(() => { currentWord = currentWord; speakWord(); }, 300);
-    setTimeout(() => { input.focus(); }, 500);
+    setTimeout(() => speakWord(), 300);
+    if (!choice) setTimeout(() => { const i = document.getElementById('listening-input'); if (i) i.focus(); }, 500);
 }
 
-function submitListeningAnswer() {
-    if (answered) return;
+/* The big play button (and 🐢 slow / 💡 meaning) replaces the word in the question box. */
+function setListeningStage(on, choice) {
+    const stage = document.getElementById('listening-stage');
+    const row = document.querySelector('#quiz-card .question-row');
+    document.getElementById('quiz-card').classList.toggle('listening-on', !!on);
+    if (row) row.style.display = on ? 'none' : '';
+    if (!stage) return;
+    stage.style.display = on ? '' : 'none';
+    if (!on) return;
+    stage.innerHTML = `
+        <p class="ls-prompt">${escHtml(t(choice ? 'lc_prompt_choice' : 'lc_prompt_type'))}</p>
+        <button type="button" class="ls-play" onclick="speakWord()" aria-label="${escHtml(t('lc_play'))}">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 7.97v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+        <div class="ls-tools">
+            <button type="button" class="back-btn ls-tool" onclick="speakWord(true)">🐢 ${escHtml(t('lc_slow'))}</button>
+            ${choice ? `<button type="button" class="back-btn ls-tool" id="ls-meaning-btn" onclick="revealListeningMeaning()">💡 ${escHtml(t('lc_show_meaning'))}</button>` : ''}
+        </div>`;
+}
+
+function revealListeningMeaning() {
+    document.getElementById('word-hint').innerText = listeningMeaning();
+    const b = document.getElementById('ls-meaning-btn');
+    if (b) b.remove();
+}
+
+/* Typing: letter boxes (as many as the answer has characters), the input, a hint that
+   reveals the next character for HINT_COST points, and for kana a row of the small /
+   long-sound characters that are awkward to type. */
+const LISTENING_HINT_COST = 2;
+const LISTENING_BOXES_MAX = 14;   // longer answers (phrases) get no boxes
+
+function buildListeningTyping() {
+    const wrap = document.createElement('div');
+    wrap.className = 'listening-typing';
+    const answer = [...listeningDisplayAnswer()];
+    const boxes = answer.length <= LISTENING_BOXES_MAX
+        ? `<div class="ls-boxes" id="ls-boxes" aria-hidden="true">${answer.map(ch => ch === ' ' ? '<i class="gap"></i>' : '<i></i>').join('')}</div>`
+        : '';
+    const keys = listeningMode === 'hiragana' ? ['ー', 'っ', 'ゃ', 'ゅ', 'ょ', 'ん']
+        : listeningMode === 'katakana' ? ['ー', 'ッ', 'ャ', 'ュ', 'ョ', 'ン'] : [];
+    wrap.innerHTML = `${boxes}
+        <div class="listening-input-group">
+            <input type="text" id="listening-input" class="listening-input" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="${escHtml(t('listening_placeholder'))}">
+        </div>
+        ${keys.length ? `<div class="ls-keys">${keys.map(k => `<button type="button" class="back-btn ls-key" onclick="listeningInsert('${k}')">${k}</button>`).join('')}</div>` : ''}
+        <div class="ls-actions">
+            <button type="button" class="back-btn" id="listening-hint" onclick="listeningHint()">💡 ${escHtml(t('lc_hint', { n: LISTENING_HINT_COST }))}</button>
+            <button type="button" class="next-btn" id="listening-submit" onclick="submitListeningAnswer()">${escHtml(t('listening_submit'))}</button>
+        </div>`;
+    const input = wrap.querySelector('#listening-input');
+    input.addEventListener('keydown', e => { if (e.key === 'Enter' && !answered) submitListeningAnswer(); });
+    input.addEventListener('input', fillListeningBoxes);
+    return wrap;
+}
+
+function fillListeningBoxes() {
+    const boxes = document.querySelectorAll('#ls-boxes i:not(.gap)');
     const input = document.getElementById('listening-input');
-    if (!input) return;
-    const userAnswer = input.value.trim();
-    if (!userAnswer) return;
+    if (!boxes.length || !input) return;
+    const typed = [...input.value.replace(/\s+/g, '')];
+    boxes.forEach((b, i) => {
+        b.textContent = typed[i] || '';
+        b.classList.toggle('hinted', i < listeningHintsUsed);
+    });
+}
+
+function listeningInsert(ch) {
+    const input = document.getElementById('listening-input');
+    if (!input || answered) return;
+    const s = input.selectionStart ?? input.value.length, e = input.selectionEnd ?? input.value.length;
+    input.value = input.value.slice(0, s) + ch + input.value.slice(e);
+    input.focus();
+    input.setSelectionRange(s + ch.length, s + ch.length);
+    fillListeningBoxes();
+}
+
+function listeningHint() {
+    if (answered) return;
+    const answer = [...listeningDisplayAnswer()];
+    const input = document.getElementById('listening-input');
+    if (!input || listeningHintsUsed >= answer.length - 1) return;   // never give the whole word away
+    listeningHintsUsed++;
+    input.value = answer.slice(0, listeningHintsUsed).join('');
+    score = Math.max(0, score - LISTENING_HINT_COST);
+    document.getElementById('score-count').innerText = t('quiz_score', {n: score});
+    fillListeningBoxes();
+    input.focus();
+    if (listeningHintsUsed >= answer.length - 1) {
+        const b = document.getElementById('listening-hint');
+        if (b) b.disabled = true;
+    }
+}
+
+/* choiceText/btn: a tapped option ('choice' modes); without them, the typed answer. */
+function submitListeningAnswer(choiceText, btn) {
+    if (answered) return;
+    const choice = isListeningChoice();
+    let userAnswer, isCorrect;
+    if (choice) {
+        userAnswer = choiceText;
+        isCorrect = choiceText === listeningDisplayAnswer();
+    } else {
+        const input = document.getElementById('listening-input');
+        if (!input) return;
+        userAnswer = input.value.trim();
+        if (!userAnswer) return;
+        const norm = listeningMode === 'pinyin' ? normalizePinyin(userAnswer)
+            : listeningMode === 'bopomofo' ? normalizeBopomofo(userAnswer)
+            : userAnswer.toLowerCase();
+        isCorrect = listeningAcceptedAnswers().includes(norm);
+        input.disabled = true;
+        input.classList.add(isCorrect ? 'is-right' : 'is-wrong');
+        const hint = document.getElementById('listening-hint');
+        if (hint) hint.disabled = true;
+        const submit = document.getElementById('listening-submit');
+        if (submit) submit.style.display = 'none';
+    }
 
     answered = true;
     logDailyActivity();
-    input.disabled = true;
-    document.getElementById('listening-submit').style.display = 'none';
-
-    const feedback = document.getElementById('feedback');
-    const correctAnswer = getListeningCorrectAnswer();
-    let normalizedUserAnswer;
-    if (listeningMode === 'pinyin') {
-        normalizedUserAnswer = normalizePinyin(userAnswer);
-    } else if (listeningMode === 'bopomofo') {
-        normalizedUserAnswer = normalizeBopomofo(userAnswer);
-    } else {
-        normalizedUserAnswer = userAnswer.toLowerCase();
+    const correctAnswer = listeningDisplayAnswer();
+    const entry = listeningEntry();
+    let repaired = null;
+    if (isCorrect) {
+        const m = entry && noteMistakeCorrect(entry.id);
+        if (m && m.fixedAt) repaired = m;
+    } else if (entry) {
+        addMistakeEntry(entry);
     }
-    const isCorrect = normalizedUserAnswer === correctAnswer.toLowerCase();
+    noteCombo(isCorrect);
+
+    if (choice) {
+        document.querySelectorAll('#options-container .option-btn').forEach(b => {
+            b.disabled = true;
+            if (b.innerText === correctAnswer) b.classList.add('correct-choice');
+        });
+        if (!isCorrect && btn) btn.classList.add('wrong-choice');
+    }
+    const meaningBtn = document.getElementById('ls-meaning-btn');
+    if (meaningBtn) meaningBtn.remove();
+    // show the word itself (and its meaning) once answered
+    document.getElementById('word-hint').innerText = currentWord.word + (currentWord.kana && currentWord.kana !== currentWord.word ? '（' + currentWord.kana + '）' : '') + '　' + listeningMeaning();
 
     quizHistory.push({
         question: currentWord.word,
         yourAnswer: userAnswer,
         correctAnswer: correctAnswer,
         isCorrect: isCorrect,
-        type: 'listening'
+        type: 'listening',
+        entry: entry
     });
 
-    if (!isCorrect) recordMistake('meaning', correctAnswer);
-
+    const feedback = document.getElementById('feedback');
     if (isCorrect) {
         score += 10;
-        feedback.innerText = t('correct');
+        feedback.innerText = correctFeedbackText(repaired);
         feedback.className = 'feedback correct';
-        input.style.borderColor = 'var(--success)';
         playSound(true);
     } else {
         score = Math.max(0, score - 3);
         feedback.innerText = t('wrong') + correctAnswer;
         feedback.className = 'feedback wrong';
-        input.style.borderColor = 'var(--danger)';
         playSound(false);
+        setTimeout(() => speakWord(), 400);   // hear it again, now knowing the word
     }
 
     document.getElementById('score-count').innerText = t('quiz_score', {n: score});
-    if (totalQuestions > 0 && questionNum >= totalQuestions) {
-        document.getElementById('nextBtn').innerText = t('quiz_next');
-        document.getElementById('nextBtn').onclick = () => showResults();
-    } else {
-        document.getElementById('nextBtn').innerText = t('quiz_next');
-        document.getElementById('nextBtn').onclick = () => nextListeningQuestion();
-    }
-    document.getElementById('nextBtn').style.display = 'inline-block';
+    const nextBtn = document.getElementById('nextBtn');
+    nextBtn.innerText = t('quiz_next');
+    nextBtn.onclick = totalQuestions > 0 && questionNum >= totalQuestions ? () => showResults() : () => nextListeningQuestion();
+    nextBtn.style.display = 'inline-block';
 }
 
 document.addEventListener('DOMContentLoaded', updateMistakeBadge);

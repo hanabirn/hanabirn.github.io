@@ -137,7 +137,7 @@ function renderHome() {
     document.getElementById('home-srs-card').classList.toggle('quiet', due === 0);
 
     // mistakes
-    const mistakes = getMistakes().length;
+    const mistakes = getActiveMistakes().length;   // repaired ones don't count
     document.getElementById('home-mistakes-count').textContent =
         mistakes > 0 ? t('home_mistakes_count', { n: mistakes }) : t('home_mistakes_none');
     document.getElementById('home-mistakes-card').classList.toggle('quiet', mistakes === 0);
@@ -174,6 +174,7 @@ function renderHome() {
 function homeResetQuizPage() {
     currentLang = '';
     reviewMode = false; // so backToLanguage() doesn't route an unfinished SRS review home
+    currentListeningMode = false; // ... nor a listening round to its setup page
     backToLanguage();
     switchPage('quiz', null);
 }

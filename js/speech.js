@@ -131,32 +131,37 @@ function stopSpeech() {
 
 /* Says `text` in `lang`: a recording if there is one (opts.reading — the kana
    of a Japanese word — picks the right one when a word has several readings),
-   else the browser voice. */
+   else the browser voice. opts.slow plays it at TTS_SLOW_FACTOR of the usual speed
+   (the listening quiz's 🐢 button). */
+const TTS_SLOW_FACTOR = 0.65;
+
 function speakText(text, lang, opts) {
     if (!text) return;
     stopSpeech();
     const seq = speakSeq;
+    const slow = !!(opts && opts.slow);
     const dir = AUDIO_DIRS[ttsNorm(lang)];
-    if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang);
+    if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang, slow);
     audioIndex(dir).then(map => {
         if (seq !== speakSeq) return;
         const keys = opts && opts.reading ? [text + '|' + opts.reading, text] : [text];
         const id = map && keys.map(k => map.get(audioId(k))).find(Boolean);
-        if (!id) return speakWithVoice(text, lang);
+        if (!id) return speakWithVoice(text, lang, slow);
         const a = new Audio('data/audio/' + dir + '/' + id + '.mp3');
+        if (slow) a.playbackRate = TTS_SLOW_FACTOR;
         audioPlaying = a;
         a.addEventListener('ended', () => { if (audioPlaying === a) audioPlaying = null; });
         // blocked autoplay or a missing file (offline): use the browser voice
-        a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang); });
+        a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang, slow); });
     });
 }
 
-function speakWithVoice(text, lang) {
+function speakWithVoice(text, lang, slow) {
     if (!window.speechSynthesis) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
     u.lang = lang;
-    u.rate = TTS_RATE;
+    u.rate = slow ? TTS_RATE * TTS_SLOW_FACTOR : TTS_RATE;
     const voice = ttsVoiceFor(lang);
     if (voice) {
         u.voice = voice;

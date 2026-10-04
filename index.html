@@ -34,6 +34,7 @@
     <link rel="stylesheet" href="css/mascot.css">
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/path.css">
+    <link rel="stylesheet" href="css/practice.css">
     <link rel="stylesheet" href="css/dict.css">
     <link rel="stylesheet" href="css/alphabet.css">
     <link rel="stylesheet" href="css/tour.css">
@@ -332,84 +333,51 @@
                 <div class="streak-display" id="streak-display" style="display:none">
                     &#x1F525; <span id="streak-count">0</span> <span data-i18n="streak_suffix">&#x5929;&#x9023;&#x7E8C;</span>
                 </div>
-                <div class="quiz-tools" id="quiz-tools">
-                    <button class="tool-btn" onclick="showMistakeBook()">&#x1F4D6; <span data-i18n="tool_mistakes">&#x932F;&#x984C;&#x672C;</span> <span id="mistake-badge" class="tool-badge" style="display:none">0</span></button>
-                    <button class="tool-btn" onclick="showQuizStats()">&#x1F4CA; <span data-i18n="tool_stats">&#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></button>
-                    <button class="tool-btn" onclick="showFlashcard()">&#x1F4D6; <span data-i18n="tool_flashcard">&#x55AE;&#x5B57;&#x958C;&#x5361;</span></button>
-                    <button class="tool-btn" onclick="showSrsReview()">&#x1F501; <span data-i18n="tool_srs">&#x9593;&#x9694;&#x8907;&#x7FD2;</span></button>
-                    <button class="tool-btn" onclick="startListeningQuiz()">&#x1F50A; <span data-i18n="tool_listening">&#x807C;&#x529B;&#x6E2C;&#x9A57;</span></button>
-                </div>
+                <!-- 練習中心: drawn by renderPracticeHub() (js/practice.js) -->
+                <div class="quiz-tools" id="quiz-tools"></div>
             </div>
 
-            <div class="mode-card" id="flashcard-setup-card" style="display: none;">
-                <h3 id="flashcard-setup-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
-                <h3 id="fc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
-                <div class="mode-buttons" id="fc-lang-buttons" style="display:none"></div>
-                <h3 id="fc-set-title" data-i18n="fc_choose_set" style="display:none">選擇單字庫</h3>
-                <div class="mode-buttons" id="fc-set-buttons" style="display:none"></div>
-                <h3 id="fc-mode-title" data-i18n="flashcard_mode_title" style="display:none">&#x9078;&#x64C7;&#x986F;&#x793A;&#x6A21;&#x5F0F;</h3>
-                <div class="mode-buttons" id="fc-mode-buttons" style="display:none"></div>
-                <div id="fc-mastered-section" style="display:none; margin-top: 15px; text-align: center;">
-                    <p id="fc-mastered-count" style="margin-bottom: 8px; color: var(--accent-green); font-weight: bold;"></p>
-                    <button class="btn flashcard-known" onclick="showMasteredList()" data-i18n="fc_view_mastered" style="font-size: 0.9em; padding: 6px 16px;">&#x1F4CB; &#x67E5;&#x770B;&#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</button>
-                </div>
-                <div id="fc-unknown-section" style="display:none; margin-top: 10px; text-align: center;">
-                    <p id="fc-unknown-count" style="margin-bottom: 8px; color: var(--accent-red); font-weight: bold;"></p>
-                    <button class="btn flashcard-unknown" onclick="showUnknownList()" data-i18n="fc_view_unknown" style="font-size: 0.9em; padding: 6px 16px;">&#x1F4CB; &#x67E5;&#x770B;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeFlashcardSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
+            <!-- Practice tools (js/practice.js; the listening setup in js/quiz.js) -->
+            <div class="mode-card practice-card" id="flashcard-setup-card" style="display: none;">
+                <div id="fc-setup"></div>
             </div>
 
-            <div class="mode-card" id="mastered-list-card" style="display: none;">
-                <h3 data-i18n="fc_mastered_title">&#x1F4CB; &#x5DF2;&#x638C;&#x63E1;&#x55AE;&#x5B57;</h3>
-                <div id="mastered-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeMasteredList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+            <div class="mode-card practice-card" id="mastered-list-card" style="display: none;">
+                <div class="pc-head">
+                    <button type="button" class="back-btn pc-back" onclick="closeMasteredList()" data-i18n-title="tool_back" title="返回">←</button>
+                    <h3 data-i18n="fc_mastered_title">已會的字</h3>
                 </div>
+                <div id="mastered-list-content"></div>
             </div>
 
-            <div class="mode-card" id="unknown-list-card" style="display: none;">
-                <h3 data-i18n="fc_unknown_title">&#x1F4CB; &#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</h3>
-                <div id="unknown-list-content" style="max-height: 400px; overflow-y: auto; text-align: left; padding: 10px;"></div>
-                <div class="action-buttons">
-                    <button class="btn next-btn" onclick="reviewUnknownWords()" data-i18n="fc_review_unknown">&#x25B6; &#x8907;&#x7FD2;&#x4E0D;&#x8A8D;&#x8B58;&#x55AE;&#x5B57;</button>
-                    <button class="btn back-btn" onclick="closeUnknownList()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+            <div class="mode-card practice-card" id="unknown-list-card" style="display: none;">
+                <div class="pc-head">
+                    <button type="button" class="back-btn pc-back" onclick="closeUnknownList()" data-i18n-title="tool_back" title="返回">←</button>
+                    <h3 data-i18n="fc_unknown_title">還不熟的字</h3>
                 </div>
+                <div id="unknown-list-content"></div>
+                <button type="button" class="next-btn pc-wide" onclick="reviewUnknownWords()" data-i18n="fc_review_unknown">▶ 複習還不熟的字</button>
             </div>
 
-            <div class="mode-card" id="listening-setup-card" style="display: none;">
-                <h3 id="listening-setup-title" data-i18n="tool_listening">&#x1F50A; &#x807C;&#x529B;&#x6E2C;&#x9A57;</h3>
-                <h3 id="lc-lang-title" data-i18n="select_lang" style="display:none">&#x9078;&#x64C7;&#x8A9E;&#x8A00;</h3>
-                <div class="mode-buttons" id="lc-lang-buttons" style="display:none"></div>
-                <h3 id="lc-set-title" data-i18n="fc_choose_set" style="display:none">選擇單字庫</h3>
-                <div class="mode-buttons" id="lc-set-buttons" style="display:none"></div>
-                <h3 id="lc-mode-title" data-i18n="lc_mode_title" style="display:none">&#x9078;&#x64C7;&#x6A21;&#x5F0F;</h3>
-                <div class="mode-buttons" id="lc-mode-buttons" style="display:none"></div>
-                <h3 data-i18n="answer_lang_title" id="lc-meaning-title" style="display:none">&#x9078;&#x64C7;&#x986F;&#x793A;&#x610F;&#x601D;</h3>
-                <div class="mode-buttons" id="lc-meaning-buttons" style="display:none"></div>
-                <h3 data-i18n="quiz_count_title" id="lc-count-title" style="display:none">&#x9078;&#x64C7;&#x984C;&#x6578;</h3>
-                <div class="mode-buttons" id="lc-count-buttons" style="display:none"></div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeListeningSetup()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+            <div class="mode-card practice-card" id="listening-setup-card" style="display: none;">
+                <div class="pc-head">
+                    <button type="button" class="back-btn pc-back" onclick="closeListeningSetup()" data-i18n-title="tool_back" title="返回">←</button>
+                    <h3 data-i18n="tool_listening">聽力測驗</h3>
                 </div>
+                <div class="pc-panel" id="lc-setup"></div>
+                <button type="button" class="next-btn pc-wide" id="lc-start" onclick="startListeningWithConfig()">▶ 開始</button>
             </div>
 
-            <div class="mode-card" id="mistake-card" style="display: none;">
-                <h3><span data-i18n="mistake_title">&#x1F4D6; &#x932F;&#x984C;&#x672C;</span></h3>
+            <div class="mode-card practice-card" id="mistake-card" style="display: none;">
                 <div id="mistake-content"></div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeQuizTools()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
             </div>
 
-            <div class="mode-card" id="stats-card" style="display: none;">
-                <h3><span data-i18n="stats_title">&#x1F4CA; &#x6E2C;&#x9A57;&#x7D71;&#x8A08;</span></h3>
+            <div class="mode-card practice-card" id="stats-card" style="display: none;">
                 <div id="stats-content"></div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeQuizTools()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
+            </div>
+
+            <div class="mode-card practice-card" id="srs-card" style="display: none;">
+                <div id="srs-content"></div>
             </div>
 
             <div class="setup-card" id="setup-card" style="display: none;">
@@ -482,6 +450,8 @@
                         <h2 id="word-question"></h2>
                         <button id="speakBtn" class="speak-btn" onclick="speakWord()" title="&#x64AD;&#x653E;">&#x1F50A;</button>
                     </div>
+                    <!-- listening quiz: play button, 🐢 slow, 💡 meaning (setListeningStage in js/quiz.js) -->
+                    <div id="listening-stage" class="listening-stage" style="display:none"></div>
                     <p id="word-hint" class="hint"></p>
                 </div>
 
@@ -497,38 +467,18 @@
             </div>
 
             <div id="result-card" class="quiz-card" style="display: none;">
-                <h3 data-i18n="result_title">&#x6E2C;&#x9A57;&#x7D50;&#x679C;</h3>
                 <div id="result-summary" class="result-summary"></div>
                 <div id="result-detail" class="result-detail"></div>
-                <div class="action-buttons">
-                    <button class="btn next-btn" onclick="quizAgain()" data-i18n="quiz_again">&#x1F504; &#x518D;&#x4F86;&#x4E00;&#x6B21;</button>
+                <div class="action-buttons rs-actions">
+                    <button class="btn next-btn" id="retry-wrong-btn" onclick="retryWrongWords()" style="display:none">再練錯的字</button>
+                    <button class="btn next-btn" id="quiz-again-btn" onclick="quizAgain()" data-i18n="quiz_again">&#x1F504; &#x518D;&#x4F86;&#x4E00;&#x6B21;</button>
                     <button class="btn share-btn" onclick="shareScoreCard()" data-i18n="share_score">&#x1F4F1; &#x5206;&#x4EAB;&#x6210;&#x7E93;</button>
                     <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; &#x8FD4;&#x56DE;&#x9078;&#x64C7;&#x8A9E;&#x8A00;</button>
                 </div>
             </div>
 
-            <div id="flashcard-card" class="quiz-card" style="display: none;">
-                <h3 id="flashcard-review-title" data-i18n="flashcard_title">&#x1F4D6; &#x55AE;&#x5B57;&#x958C;&#x5361;</h3>
-                <div class="flashcard-container">
-                    <div class="flashcard" id="flashcard" onclick="flipCard()">
-                        <div class="flashcard-front" id="flashcard-front"></div>
-                        <div class="flashcard-back" id="flashcard-back"></div>
-                    </div>
-                    <button class="speak-btn flashcard-speak-btn" onclick="event.stopPropagation(); speakWord()" title="&#x64AD;&#x653E;&#x767C;&#x97F3;">&#x1F50A;</button>
-                </div>
-                <p id="flashcard-hint" class="hint"></p>
-                <div class="flashcard-nav">
-                    <button class="btn back-btn" onclick="flashcardPrev()">&#x25C0;</button>
-                    <span id="flashcard-counter">1 / 1</span>
-                    <button class="btn next-btn" onclick="flashcardNext()">&#x25B6;</button>
-                </div>
-                <div class="flashcard-actions">
-                    <button class="btn flashcard-unknown" onclick="flashcardRate(false)" data-i18n="flashcard_unknown">&#x274C; &#x4E0D;&#x8A8D;&#x8B58;</button>
-                    <button class="btn flashcard-known" onclick="flashcardRate(true)" data-i18n="flashcard_known">&#x2705; &#x5DF2;&#x638C;&#x63E1;</button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="closeFlashcard()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
+            <div id="flashcard-card" class="quiz-card practice-card" style="display: none;">
+                <div id="fc-session"></div>
             </div>
         </div>
 
@@ -809,6 +759,7 @@
     <script src="js/quiz.js"></script>
     <script src="js/path.js"></script>
     <script src="js/home.js"></script>
+    <script src="js/practice.js"></script>
     <script src="js/dict.js"></script>
     <script src="js/alphabet-data.js"></script>
     <script src="js/alphabet.js"></script>
