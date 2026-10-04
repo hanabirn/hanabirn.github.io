@@ -54,6 +54,7 @@ function switchPage(page, el) {
         if (page === 'home' && typeof renderHome === 'function') renderHome();
         if (page === 'guestbook') loadGuestbookMessages();
         if (page === 'notes') renderNotes();
+        if (typeof railsOnPage === 'function') railsOnPage(page);
     }, 120);
 }
 
@@ -924,6 +925,7 @@ function refreshDynamicContent() {
     if (typeof renderAlphabet === 'function') renderAlphabet();
     if (typeof renderUpdates === 'function') renderUpdates();
     if (typeof renderAssistant === 'function') renderAssistant();
+    if (typeof renderRails === 'function') renderRails();
     if (isVisible('mode-card') && !isVisible('quiz-card')) {
         if (isChineseQuizLang(currentLang) && selectedQuizMode === 'zh') {
             showChineseSelection();

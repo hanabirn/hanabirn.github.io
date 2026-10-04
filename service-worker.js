@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v37';
+const CACHE_NAME = 'hanabi-v38';
 const ASSETS = [
   '/',
   '/index.html',
@@ -20,6 +20,7 @@ const ASSETS = [
   '/css/dict.css',
   '/css/alphabet.css',
   '/css/tour.css',
+  '/css/rails.css',
   '/css/assistant.css',
   '/css/responsive.css',
   '/css/theme.css',
@@ -41,6 +42,7 @@ const ASSETS = [
   '/js/alphabet.js',
   '/js/updates.js',
   '/js/tour.js',
+  '/js/rails.js',
   '/js/assistant.js',
   '/js/home.js',
   '/js/practice.js',
@@ -52,6 +54,7 @@ const ASSETS = [
   '/js/theme.js',
   '/js/mascot.js',
   '/images/mascot/body.webp',
+  '/images/mascot/blush.webp',
   '/images/mascot/eyes_open.webp',
   '/images/mascot/eyes_closed.webp',
   '/images/mascot/mouth_smile.webp',

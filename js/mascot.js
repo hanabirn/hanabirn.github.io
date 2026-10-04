@@ -1,14 +1,17 @@
 /* ===================== 小花火 (the mascot) =====================
-   The owner's drawing, split by tools/split_mascot.py into five stacked layers in
-   images/mascot/: body, eyes open / closed, mouth smiling / closed. Two framings:
+   The owner's drawing, split by tools/split_mascot.py into stacked layers in
+   images/mascot/: body, extra blush (only shown on the shy face), eyes open /
+   closed, mouth smiling / closed. Two framings:
    'full' (the whole figure) and 'bust' (the head in a round frame, for spots of
    72px and smaller). Placeholders in the markup are <span class="mascot-slot"
    data-mascot="full|bust"></span>; scripts insert mascotHtml(kind) themselves.
 
    Every mascot on the page breathes (CSS), blinks every 2.5–6 s on its own clock,
-   and can talk (mascotTalk: the mouth flaps) or hop (mascotHop). */
+   and can talk (mascotTalk: the mouth flaps) or hop (mascotHop). Faces for the
+   poke reactions (js/rails.js) are classes on .mascot: mc-happy (eyes closed in a
+   smile), mc-shy (redder cheeks), mc-angry (mouth shut, shaking). */
 
-const MASCOT_PARTS = ['body', 'eyes_open', 'eyes_closed', 'mouth_smile', 'mouth_closed'];
+const MASCOT_PARTS = ['body', 'blush', 'eyes_open', 'eyes_closed', 'mouth_smile', 'mouth_closed'];
 
 function mascotHtml(kind) {
     const imgs = MASCOT_PARTS.map(p => `<img class="mc-${p}" src="images/mascot/${p}.webp" alt="" draggable="false" decoding="async">`).join('');

@@ -1,0 +1,307 @@
+/* ===== Wide-screen side rails (js/rails.js) =====
+   Fixed beside the 720px main column, below the header. The right rail keeps
+   clear of the fixed buttons on the right edge (AI chat, settings, reload,
+   clock), so it needs a wider screen than the left one. The alphabet,
+   dictionary and quiz pages widen to 1180px, so their rails wait for even
+   wider screens. */
+.side-rail { display: none; }
+
+@media (min-width: 1280px) {
+    .rail-left {
+        display: block;
+        position: fixed;
+        top: 140px;
+        left: calc(50% - 360px - 28px - var(--rail-left-w));
+        width: var(--rail-left-w);
+        padding-top: 92px;
+        z-index: 5;
+    }
+}
+@media (min-width: 1480px) {
+    .rail-right {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        position: fixed;
+        top: 140px;
+        right: max(112px, calc(50% - 360px - 28px - var(--rail-right-w)));
+        width: var(--rail-right-w);
+        max-height: calc(100vh - 140px - 120px);
+        overflow-y: auto;
+        padding: 2px 2px 6px;
+        z-index: 5;
+    }
+}
+:root {
+    --rail-left-w: 180px;
+    --rail-right-w: 232px;
+}
+
+/* the pages that are 1180px wide on desktop */
+@media (min-width: 1280px) and (max-width: 1699.98px) {
+    body[data-page="alphabet"] .rail-left,
+    body[data-page="dict"] .rail-left,
+    body[data-page="quiz"] .rail-left { display: none; }
+}
+@media (min-width: 1700px) {
+    body[data-page="alphabet"] .rail-left,
+    body[data-page="dict"] .rail-left,
+    body[data-page="quiz"] .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
+}
+@media (min-width: 1480px) and (max-width: 1939.98px) {
+    body[data-page="alphabet"] .rail-right,
+    body[data-page="dict"] .rail-right,
+    body[data-page="quiz"] .rail-right { display: none; }
+}
+@media (min-width: 1940px) {
+    body[data-page="alphabet"] .rail-right,
+    body[data-page="dict"] .rail-right,
+    body[data-page="quiz"] .rail-right { right: max(112px, calc(50% - 590px - 28px - var(--rail-right-w))); }
+}
+
+/* ----- left: 小花火 ----- */
+.poke-btn {
+    position: relative;
+    display: block;
+    width: min(100%, calc((100vh - 140px - 92px - 40px) * 244 / 491));
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    background: none;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.poke-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 6px;
+    border-radius: 16px;
+}
+/* a soft shadow to stand on */
+.poke-btn::after {
+    content: '';
+    position: absolute;
+    left: 18%;
+    right: 18%;
+    bottom: -6px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--ink);
+    opacity: 0.12;
+    z-index: -1;
+}
+.poke-bubble {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    max-width: calc(var(--rail-left-w) + 40px);
+    padding: 9px 13px;
+    border-radius: 14px;
+    border: 2px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: center;
+    box-shadow: 0 3px 0 var(--edge);
+}
+.poke-bubble::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -9px;
+    width: 14px;
+    height: 14px;
+    margin-left: -7px;
+    background: var(--surface);
+    border-right: 2px solid var(--line);
+    border-bottom: 2px solid var(--line);
+    transform: rotate(45deg);
+}
+.poke-bubble.show { animation: poke-bubble-in 0.22s cubic-bezier(0.3, 1.5, 0.5, 1); }
+@keyframes poke-bubble-in {
+    from { opacity: 0; transform: translateX(-50%) translateY(6px) scale(0.92); }
+    to { opacity: 1; transform: translateX(-50%); }
+}
+
+/* ♪ 💕 /// ! 💢 floating up beside her head */
+.poke-fx {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+}
+.poke-fx-item {
+    position: absolute;
+    top: 8%;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--primary);
+    animation: poke-float 0.9s ease-out both;
+}
+.poke-fx-item.shy { top: 30%; left: 66% !important; font-size: 1rem; color: var(--danger); }
+.poke-fx-item.startle { top: 4%; font-size: 1.6rem; }
+.poke-fx-item.cross { top: 6%; }
+@keyframes poke-float {
+    from { opacity: 0; transform: translateY(8px) scale(0.7); }
+    25% { opacity: 1; transform: translateY(0) scale(1.05); }
+    to { opacity: 0; transform: translateY(-26px) scale(1); }
+}
+
+/* ----- right: cards ----- */
+.rail-card {
+    padding: 14px 14px 12px;
+    border-radius: var(--radius);
+    border: 2px solid var(--line);
+    background: var(--surface);
+    box-shadow: 0 4px 0 var(--edge);
+}
+.rail-home-only { display: none; }
+body.rail-home .rail-home-only { display: block; }
+/* a laptop-height screen: the calendar gives way so the rail needs no scrollbar */
+@media (max-height: 819.98px) {
+    body.rail-home #rail-cal { display: none; }
+}
+.rail-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 8px;
+}
+.rail-title {
+    margin: 0;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--text);
+}
+.rail-date {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+.rail-chips {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+.rail-chip {
+    flex: 1;
+    padding: 3px 0;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+    background: none;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+.rail-chip.on {
+    border-color: var(--primary);
+    background: var(--primary);
+    color: var(--on-primary);
+    font-weight: 700;
+}
+.rail-word {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--text);
+    overflow-wrap: anywhere;
+}
+.rail-reading {
+    margin-top: 2px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+.rail-meaning {
+    margin-top: 6px;
+    font-size: 0.92rem;
+    color: var(--text);
+}
+.rail-word-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 10px;
+}
+.rail-topic {
+    font-size: 0.8rem;
+    text-align: right;
+}
+.rail-note {
+    margin: 0;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+/* two weeks, 7 a row */
+.rail-cal {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+.rail-day {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1;
+    border-radius: 6px;
+    background: var(--track);
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+}
+.rail-day.some { background: var(--primary-soft); color: var(--text); }
+.rail-day.full { background: var(--primary); color: var(--on-primary); font-weight: 700; }
+.rail-day.today { outline: 2px solid var(--primary); outline-offset: 1px; }
+
+.rail-tasks {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.rail-task {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    width: 100%;
+    padding: 6px 4px;
+    border: 0;
+    border-radius: 8px;
+    background: none;
+    color: var(--text);
+    font: inherit;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    text-align: left;
+    cursor: pointer;
+}
+.rail-task:hover { background: var(--bg-option-hover); }
+.rail-check {
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    margin-top: 1px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+.rail-task.done { color: var(--text-secondary); }
+.rail-task.done .rail-check {
+    border-color: var(--success);
+    background: var(--success);
+    color: var(--on-primary);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .poke-bubble.show, .poke-fx-item { animation: none; }
+    .poke-fx-item { display: none; }
+}

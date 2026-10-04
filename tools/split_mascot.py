@@ -9,6 +9,9 @@ Parts, by layer name in the PSD (clipped layers go with the layer they clip to):
     eyes_closed  眼睛閉起線搞
     mouth_smile  嘴巴
     mouth_closed 嘴巴閉線搞
+    blush        腮紅1 腮紅2 again, clipped to 皮膚: laid over the body (which
+                 already has them, and doubled) it makes the cheeks redder for
+                 the shy face
     body         everything else that is visible (not Paper / 草稿)
 The main line art (線搞) and 眉毛 still hold the open-eye lines, the upper eyelid
 arcs and the open-mouth outline, so the line pixels inside each eye box (found from
@@ -86,6 +89,22 @@ def main(path):
         'mouth_smile': over(masked(lines, mouth_mask), render(PARTS['mouth_smile'])),
         'mouth_closed': render(PARTS['mouth_closed']),
     }
+
+    # the blush layers on their own: a clipped layer composites to nothing by
+    # itself, so take its pixels (topil) and clip them to the skin here
+    blush = np.zeros((H, W, 4), np.float32)
+    for layer in layers:
+        if not (layer.name.startswith('腮紅') and layer.visible):
+            continue
+        x0, y0, x1, y1 = layer.bbox
+        px = np.array(layer.topil().convert('RGBA')).astype(np.float32)
+        px[..., 3] *= layer.opacity / 255
+        placed = np.zeros((H, W, 4), np.float32)
+        placed[max(y0, 0):min(y1, H), max(x0, 0):min(x1, W)] = \
+            px[max(-y0, 0):px.shape[0] - max(y1 - H, 0), max(-x0, 0):px.shape[1] - max(x1 - W, 0)]
+        blush = over(placed, blush)
+    blush = masked(blush, layer_alpha('皮膚'))
+    parts['blush'] = over(blush, blush)   # twice as strong, so the cheeks visibly redden
 
     # one crop box for all parts: the character plus a few pixels
     alpha = np.zeros((H, W), bool)

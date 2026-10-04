@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-04',
+      zh: '電腦寬螢幕的兩側不再空空的了：左邊的小花火可以戳戳看（摸頭、戳臉、戳身體的反應都不一樣，戳太多次她會生氣喔），右邊是每天換一個的「每日一字」，首頁還多了最近兩週的練習日曆和今日任務。',
+      'zh-Hans': '电脑宽屏幕的两侧不再空空的了：左边的小花火可以戳戳看（摸头、戳脸、戳身体的反应都不一样，戳太多次她会生气哦），右边是每天换一个的“每日一词”，首页还多了最近两周的练习日历和今日任务。',
+      en: 'The empty sides of wide desktop screens now have something in them: poke 小花火 on the left (head, face and body each get a different reaction — poke too much and she gets cross), and on the right a new word of the day, plus a two-week practice calendar and today\'s tasks on the home page.',
+      ja: 'パソコンの広い画面の両側がにぎやかになりました：左の小花火はつついてみて（頭・顔・体で反応が違って、つつきすぎると怒ります）。右には毎日変わる「今日の単語」、ホームにはこの2週間の練習カレンダーと今日のミッションも。',
+      ko: '컴퓨터 넓은 화면의 양옆이 더 이상 비어 있지 않아요: 왼쪽 小花火를 콕 찔러 보세요(머리·얼굴·몸마다 반응이 다르고, 너무 많이 찌르면 화내요). 오른쪽에는 매일 바뀌는 「오늘의 단어」, 홈에는 최근 2주 연습 달력과 오늘의 미션도 생겼어요.',
+      ru: 'Пустые края широкого экрана компьютера ожили: слева можно ткнуть 小花火 (голова, лицо и тело — разная реакция, а если тыкать слишком часто, она сердится), справа — новое слово дня, а на главной ещё календарь практики за две недели и задания на сегодня.',
+      fr: 'Les côtés vides des grands écrans d\'ordinateur ont maintenant du contenu : à gauche, taquine 小花火 (la tête, le visage et le corps donnent des réactions différentes — trop, et elle se fâche), à droite un mot du jour, et sur l\'accueil un calendrier de pratique sur deux semaines et les missions du jour.',
+      es: 'Los lados vacíos de las pantallas anchas del ordenador ya tienen algo: a la izquierda puedes tocar a 小花火 (cabeza, cara y cuerpo reaccionan distinto; si la tocas demasiado se enfada) y a la derecha hay una palabra del día, además de un calendario de práctica de dos semanas y las misiones de hoy en el inicio.',
+      de: 'Die leeren Seiten breiter Computerbildschirme sind jetzt gefüllt: Links kannst du 小花火 anstupsen (Kopf, Gesicht und Körper reagieren unterschiedlich — zu oft, und sie wird sauer), rechts gibt es ein Wort des Tages, und auf der Startseite einen Übungskalender für zwei Wochen und die heutigen Aufgaben.' },
+    { date: '2026-10-04',
       zh: '「單字」改成依主題學：日文、韓文、英文、中文各有 10 個生活主題（打招呼、吃飯、交通、旅行…），每個主題 40 個字、4 關，日文、韓文和中文都有真人般的錄音。依等級的單字庫都在「檢定」（英文的國中、高中也移到那裡）。另外，手機上的字母表不會再念出「capital」，更新內容也可以翻頁了。',
       'zh-Hans': '“单词”改成按主题学：日语、韩语、英语、中文各有 10 个生活主题（打招呼、吃饭、交通、旅行…），每个主题 40 个词、4 关，日语、韩语和中文都有自然的录音。按等级的单词库都在“检定”（英语的初中、高中也移到了那里）。另外，手机上的字母表不会再念出“capital”，更新内容也可以翻页了。',
       en: '“Words” is now organised by topic: Japanese, Korean, English and Chinese each have 10 everyday topics (greetings, food, getting around, travel…), 40 words and 4 levels each, with natural recordings for Japanese, Korean and Chinese. The graded lists are all under “Exams” (English junior/senior high moved there too). Also: the alphabet chart no longer says “capital” on phones, and “What\'s new” now has pages.',
