@@ -8,11 +8,13 @@
     "compatibility_date": "2026-09-23",
 
     "vars": {
-        // tried in order until one answers (gemini-2.5-* is closed to new keys). Each
-        // flash model allows only ~20 free requests a day and often answers 503 "high
-        // demand", so several are chained before the lite model, whose free quota is
-        // much larger. Models with "lite" in the name get no thinkingConfig (it's rejected).
-        "MODELS": "gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-3.5-flash-lite",
+        // tried in order until one answers (gemini-2.5-* is closed to new keys), fastest
+        // first — measured 2026-10-04, time to the first words: 3.6-flash ~0.7 s,
+        // 3.5-flash-lite ~0.6 s (and a much larger free quota), 3.8-flash ~5 s,
+        // 3.5-flash ~7 s, 3.7-flash often a 503 after 7 s. Each flash model allows only
+        // ~20 free requests a day; a spent or slow model is skipped for a while (src/index.js).
+        // Models with "lite" in the name get no thinkingConfig (it's rejected).
+        "MODELS": "gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash",
         // the site, plus the local test servers
         "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8765,http://localhost:8767"
     },

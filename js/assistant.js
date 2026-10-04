@@ -1,6 +1,5 @@
 /* ===================== 小花火 AI assistant =====================
-   A floating 小花火 (a stand-in until the owner draws the character) opens a
-   chat panel. Messages go to the hanabi-assistant Cloudflare Worker
+   A floating 小花火 (js/mascot.js) opens a chat panel. Messages go to the hanabi-assistant Cloudflare Worker
    (worker/assistant/), which holds the Gemini key and 小花火's persona — the
    static site itself can't keep a secret. The conversation lives only in
    sessionStorage and only its last turns are sent. */
@@ -12,6 +11,7 @@ const ASSISTANT_SUGGESTIONS = ['ai_s1', 'ai_s2', 'ai_s3', 'ai_s4'];
 
 let assistantLog = [];        // [{ role: 'user' | 'model', text, err? }] — err: our own error notice, never sent
 let assistantBusy = false;
+let assistantStreaming = false;   // the reply is arriving: show it instead of the typing dots
 
 function assistantLoad() {
     try {
@@ -41,7 +41,7 @@ function renderAssistant() {
     const hello = `<div class="assistant-msg model">${assistantFormat(t('ai_hello'))}</div>`;
     log.innerHTML = hello + assistantLog.map(m =>
         `<div class="assistant-msg ${m.role}">${m.role === 'model' ? assistantFormat(m.text) : escHtml(m.text).replace(/\n/g, '<br>')}</div>`
-    ).join('') + (assistantBusy ? '<div class="assistant-msg model typing" aria-label="…"><i></i><i></i><i></i></div>' : '');
+    ).join('') + (assistantBusy && !assistantStreaming ? '<div class="assistant-msg model typing" aria-label="…"><i></i><i></i><i></i></div>' : '');
     const chips = document.getElementById('assistant-chips');
     chips.innerHTML = assistantLog.length ? '' : ASSISTANT_SUGGESTIONS.map(k =>
         `<button type="button" class="assistant-chip" onclick="assistantAsk(this.textContent)">${escHtml(t(k))}</button>`).join('');
@@ -79,32 +79,61 @@ function assistantSubmit(e) {
     return false;
 }
 
+/* The reply streams in (the Worker answers text/plain while Gemini writes it), so the
+   first words show after about a second; an older Worker's JSON reply still works.
+   While words arrive the "typing" dots give way to the growing message and
+   小花火's mouth keeps moving. */
 async function assistantAsk(text) {
     if (assistantBusy || !text) return;
-    assistantLog.push({ role: 'user', text: text.slice(0, 600) });
+    const question = { role: 'user', text: text.slice(0, 600) };
+    assistantLog.push(question);
     assistantBusy = true;
     renderAssistant();
-    let reply, err = true;
+    const face = () => document.querySelector('.assistant-head-face');
+    let reply = '', err = true, errKey = 'ai_error';
     try {
         const res = await fetch(ASSISTANT_API, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ messages: assistantLog.filter(m => !m.err).slice(-12), lang: siteLang, page: document.body.dataset.page || 'home' })
+            body: JSON.stringify({ messages: assistantLog.filter(m => !m.err).slice(-12), lang: siteLang, page: document.body.dataset.page || 'home', stream: true })
         });
-        const data = await res.json().catch(() => ({}));
-        err = !(res.ok && data.reply);
-        reply = err ? t(data.error === 'busy' ? 'ai_busy' : 'ai_error') : data.reply;
+        const type = res.headers.get('Content-Type') || '';
+        if (res.ok && type.startsWith('text/plain') && res.body) {
+            const msg = { role: 'model', text: '' };
+            assistantLog.push(msg);
+            assistantStreaming = true;
+            let frame = 0;
+            const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+            for (;;) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                msg.text += value;
+                if (typeof mascotTalk === 'function') mascotTalk(face(), 700);
+                if (!frame) frame = requestAnimationFrame(() => { frame = 0; renderAssistant(); });
+            }
+            assistantLog.pop();   // re-added below, whole
+            reply = msg.text.trim();
+            err = !reply;
+        } else {
+            const data = await res.json().catch(() => ({}));
+            err = !(res.ok && data.reply);
+            if (err && data.error === 'busy') errKey = 'ai_busy';
+            reply = err ? '' : data.reply;
+            if (!err && typeof mascotTalk === 'function') mascotTalk(face(), 600 + reply.length * 40);
+        }
     } catch {
-        reply = t('ai_error');
+        // a dropped connection mid-answer keeps what already arrived
+        const partial = assistantStreaming && assistantLog[assistantLog.length - 1] !== question
+            ? assistantLog.pop().text.trim() : '';
+        if (partial) { reply = partial + ' …'; err = false; }
     }
     assistantBusy = false;
+    assistantStreaming = false;
     // a failed question isn't sent again either, so turns keep alternating
-    if (err) assistantLog[assistantLog.length - 1].err = true;
-    assistantLog.push(err ? { role: 'model', text: reply, err: true } : { role: 'model', text: reply });
+    if (err) question.err = true;
+    assistantLog.push(err ? { role: 'model', text: t(errKey), err: true } : { role: 'model', text: reply });
     assistantSave();
     renderAssistant();
-    // 小花火 "says" the answer: the mouth moves for about as long as it takes to read the start
-    if (!err && typeof mascotTalk === 'function') mascotTalk(document.querySelector('.assistant-head-face'), 600 + reply.length * 40);
 }
 
 document.addEventListener('keydown', e => {

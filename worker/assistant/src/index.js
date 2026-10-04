@@ -4,8 +4,10 @@
  * keeps the Gemini key as a secret (GEMINI_API_KEY), adds 小花火's persona and
  * the site's context, and forwards the chat to Google Gemini.
  *
- *   POST /chat  { messages: [{ role: 'user' | 'model', text }], lang, page }
+ *   POST /chat  { messages: [{ role: 'user' | 'model', text }], lang, page, stream? }
  *            -> { reply }   or   { error: 'busy' | 'bad_request' | 'upstream' }
+ *   With stream: true the reply comes back as text/plain, streamed while Gemini
+ *   writes it (the site shows it word by word); errors are still JSON.
  *
  * Guards: only the site's origins (ALLOWED_ORIGINS), a per-IP burst limit
  * (the LIMITER rate-limit binding), and caps on message count and length.
@@ -60,10 +62,42 @@ function json(body, status, headers) {
     });
 }
 
-const DEFAULT_MODELS = 'gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-3.5-flash-lite';
+/* Fastest first (measured 2026-10-04, time to the first words: 3.6-flash ~0.7 s,
+   3.5-flash-lite ~0.6 s, 3.8-flash ~5 s, 3.5-flash ~7 s, 3.7-flash often a 503 after 7 s). */
+const DEFAULT_MODELS = 'gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash';
+
+/* Models whose free daily quota is spent, or that kept us waiting, are skipped for
+   a while, so a question doesn't first wait on each of them. Kept in this isolate's
+   memory only (the Cache API doesn't work on workers.dev), which is enough: a busy
+   isolate serves many questions in a row. */
+const QUOTA_SKIP_MS = 60 * 60 * 1000;
+const SLOW_SKIP_MS = 10 * 60 * 1000;
+const FIRST_BYTE_MS = 5000;   // no answer started by then: try the next model
+const spent = new Map();   // model -> skip until (ms)
+
+/* The text in one Gemini response chunk. */
+function chunkText(data) {
+    const cand = data && data.candidates && data.candidates[0];
+    return ((cand && cand.content && cand.content.parts) || []).map(p => p.text || '').join('');
+}
+
+/* Splits Gemini's server-sent events ("data: {...}" blocks separated by a blank
+   line) off the front of buf; returns [texts, rest of buf]. */
+function takeEvents(buf) {
+    const texts = [];
+    let i;
+    while ((i = buf.search(/\r?\n\r?\n/)) >= 0) {
+        const event = buf.slice(0, i);
+        buf = buf.slice(i).replace(/^\r?\n\r?\n/, '');
+        const data = event.split(/\r?\n/).filter(l => l.startsWith('data:')).map(l => l.slice(5).trim()).join('');
+        if (!data) continue;
+        try { texts.push(chunkText(JSON.parse(data))); } catch {}
+    }
+    return [texts, buf];
+}
 
 export default {
-    async fetch(request, env) {
+    async fetch(request, env, ctx) {
         const origin = request.headers.get('Origin') || '';
         const headers = cors(origin, env);
         const url = new URL(request.url);
@@ -91,41 +125,100 @@ export default {
 
         const lang = typeof body.lang === 'string' ? body.lang : 'zh';
         const page = typeof body.page === 'string' ? body.page.slice(0, 20) : '';
+        const stream = body.stream === true;
         // env.MODELS in order, moving on whenever one fails: "too busy" (503), an error
         // (500), or — the usual case — its free daily quota is spent (429; each flash
         // model allows only ~20 requests a day, the lite model far more). Lite models
         // reject thinkingConfig, so it's only sent to the others.
-        const attempts = (env.MODELS || DEFAULT_MODELS).split(',').map(s => s.trim()).filter(Boolean)
-            .map(model => ({ model, thinking: !model.includes('lite') }));
-        let reply = '', busy = false;
-        for (const { model, thinking } of attempts) {
+        const now = Date.now();
+        const models = (env.MODELS || DEFAULT_MODELS).split(',').map(s => s.trim()).filter(Boolean);
+        const fresh = models.filter(m => !(spent.get(m) > now));
+        let busy = false;
+        for (const model of fresh.length ? fresh : models) {
             const generationConfig = { temperature: 0.7, maxOutputTokens: 800 };
-            if (thinking) generationConfig.thinkingConfig = { thinkingBudget: 0 };
+            if (!model.includes('lite')) generationConfig.thinkingConfig = { thinkingBudget: 0 };
+            const method = stream ? 'streamGenerateContent?alt=sse' : 'generateContent';
             let res;
+            const ctrl = new AbortController();
+            const timer = setTimeout(() => ctrl.abort(), FIRST_BYTE_MS);
             try {
-                res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+                res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:${method}`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
-                    body: JSON.stringify({ systemInstruction: { parts: [{ text: persona(lang, page) }] }, contents, generationConfig })
+                    body: JSON.stringify({ systemInstruction: { parts: [{ text: persona(lang, page) }] }, contents, generationConfig }),
+                    signal: ctrl.signal
                 });
             } catch (e) {
-                console.log('gemini fetch failed', model, String(e));
+                if (ctrl.signal.aborted) {
+                    spent.set(model, now + SLOW_SKIP_MS);
+                    busy = true;
+                }
+                console.log('gemini fetch failed', model, ctrl.signal.aborted ? 'too slow' : String(e));
                 continue;
+            } finally {
+                clearTimeout(timer);
             }
             if (!res.ok) {
                 busy = res.status === 429 || res.status === 503;
-                console.log('gemini error', model, res.status, (await res.text()).slice(0, 300));
+                const detail = (await res.text()).slice(0, 600);
+                if (res.status === 429 && /PerDay/i.test(detail)) spent.set(model, now + QUOTA_SKIP_MS);
+                console.log('gemini error', model, res.status, detail.slice(0, 300));
                 if (res.status === 400) break;   // a bad request fails on every model
                 continue;
             }
-            const data = await res.json().catch(() => ({}));
-            const cand = (data.candidates || [])[0];
-            reply = (cand?.content?.parts || []).map(p => p.text || '').join('').trim();
-            if (reply) break;
-            busy = false;
-            console.log('gemini empty reply', model, cand?.finishReason || data.promptFeedback?.blockReason || '');
+
+            if (!stream) {
+                const data = await res.json().catch(() => ({}));
+                const reply = chunkText(data).trim();
+                if (reply) return json({ reply }, 200, headers);
+                busy = false;
+                console.log('gemini empty reply', model, data.candidates?.[0]?.finishReason || data.promptFeedback?.blockReason || '');
+                continue;
+            }
+
+            // streaming: wait for the first words (an empty stream moves on to the next
+            // model), then pass the rest through as it arrives
+            const reader = res.body.pipeThrough(new TextDecoderStream()).getReader();
+            let buf = '', first = '', done = false;
+            while (!first && !done) {
+                const r = await reader.read();
+                done = r.done;
+                if (r.value) buf += r.value;
+                const [texts, rest] = takeEvents(done ? buf + '\n\n' : buf);
+                buf = rest;
+                first = texts.join('');
+            }
+            if (!first.trim()) {
+                busy = false;
+                console.log('gemini empty stream', model);
+                continue;
+            }
+            const { readable, writable } = new TransformStream();
+            const writer = writable.getWriter();
+            const enc = new TextEncoder();
+            ctx.waitUntil((async () => {
+                try {
+                    await writer.write(enc.encode(first.replace(/^\s+/, '')));
+                    while (!done) {
+                        const r = await reader.read();
+                        done = r.done;
+                        if (r.value) buf += r.value;
+                        const [texts, rest] = takeEvents(done ? buf + '\n\n' : buf);
+                        buf = rest;
+                        const text = texts.join('');
+                        if (text) await writer.write(enc.encode(text));
+                    }
+                    await writer.close();
+                } catch (e) {
+                    console.log('stream broke', model, String(e));
+                    try { await writer.abort(e); } catch {}
+                }
+            })());
+            return new Response(readable, {
+                status: 200,
+                headers: Object.assign({ 'Content-Type': 'text/plain; charset=utf-8', 'Cache-Control': 'no-store' }, headers)
+            });
         }
-        if (!reply) return json({ error: busy ? 'busy' : 'upstream' }, busy ? 429 : 502, headers);
-        return json({ reply }, 200, headers);
+        return json({ error: busy ? 'busy' : 'upstream' }, busy ? 429 : 502, headers);
     }
 };
