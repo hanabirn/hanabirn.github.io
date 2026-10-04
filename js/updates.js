@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-04',
+      zh: '「單字」改成依主題學：日文、韓文、英文各有 10 個生活主題（打招呼、吃飯、交通、旅行…），每個主題 40 個字、4 關，日文和韓文都有真人般的錄音。依等級的單字庫都在「檢定」（英文的國中、高中也移到那裡）。另外，手機上的字母表不會再念出「capital」，更新內容也可以翻頁了。',
+      'zh-Hans': '“单词”改成按主题学：日语、韩语、英语各有 10 个生活主题（打招呼、吃饭、交通、旅行…），每个主题 40 个词、4 关，日语和韩语都有自然的录音。按等级的单词库都在“检定”（英语的初中、高中也移到了那里）。另外，手机上的字母表不会再念出“capital”，更新内容也可以翻页了。',
+      en: '“Words” is now organised by topic: Japanese, Korean and English each have 10 everyday topics (greetings, food, getting around, travel…), 40 words and 4 levels each, with natural recordings for Japanese and Korean. The graded lists are all under “Exams” (English junior/senior high moved there too). Also: the alphabet chart no longer says “capital” on phones, and “What\'s new” now has pages.',
+      ja: '「単語」がテーマ別になりました：日本語・韓国語・英語にそれぞれ 10 の生活テーマ（あいさつ・食事・交通・旅行…）、各 40 語・4 ステージ。日本語と韓国語は自然な音声付きです。レベル別の単語リストは「検定」にまとめました（英語の中学・高校もこちらへ）。ほかに、スマホの文字表で「capital」と読まれなくなり、更新内容はページ送りできるようになりました。',
+      ko: '「단어」가 주제별로 바뀌었어요: 일본어·한국어·영어에 각각 10개의 생활 주제(인사, 식사, 교통, 여행…)가 있고, 주제마다 40개·4단계예요. 일본어와 한국어는 자연스러운 녹음도 있어요. 수준별 단어장은 모두 「검정」에 있어요(영어 중학교·고등학교도 그쪽으로 옮겼어요). 그리고 휴대폰의 문자표가 더 이상 「capital」이라고 읽지 않고, 업데이트 내용도 페이지를 넘길 수 있어요.',
+      ru: '«Слова» теперь по темам: в японском, корейском и английском по 10 бытовых тем (приветствия, еда, транспорт, путешествия…), в каждой 40 слов и 4 уровня, для японского и корейского — естественная озвучка. Списки по уровням — в «Экзаменах» (туда же переехал школьный английский). А ещё алфавит на телефонах больше не произносит «capital», а в «Что нового» появились страницы.',
+      fr: '« Mots » est maintenant classé par thème : le japonais, le coréen et l\'anglais ont chacun 10 thèmes du quotidien (salutations, repas, transports, voyage…), 40 mots et 4 niveaux par thème, avec des enregistrements naturels pour le japonais et le coréen. Les listes par niveau sont dans « Examens » (l\'anglais collège/lycée y a aussi été déplacé). Et l\'alphabet ne dit plus « capital » sur téléphone, et « Nouveautés » a maintenant des pages.',
+      es: '«Palabras» ahora va por temas: japonés, coreano e inglés tienen 10 temas cotidianos cada uno (saludos, comida, transporte, viajes…), con 40 palabras y 4 niveles por tema y grabaciones naturales en japonés y coreano. Las listas por nivel están en «Exámenes» (el inglés de secundaria y bachillerato también se movió allí). Además, el alfabeto ya no dice «capital» en el móvil y «Novedades» ahora tiene páginas.',
+      de: '„Vokabeln“ ist jetzt nach Themen sortiert: Japanisch, Koreanisch und Englisch haben je 10 Alltagsthemen (Begrüßungen, Essen, Unterwegs, Reisen…) mit 40 Wörtern in 4 Stufen, für Japanisch und Koreanisch mit natürlichen Aufnahmen. Die Listen nach Niveau stehen unter „Prüfungen“ (auch Englisch für Mittel- und Oberstufe ist dorthin umgezogen). Außerdem sagt die Buchstabentafel auf dem Handy nicht mehr „capital“, und „Neuigkeiten“ hat jetzt Seiten.' },
+    { date: '2026-10-04',
       zh: '小花火換上新造型了！現在是穿著櫻花和服的女孩，會眨眼、呼吸，回答問題時還會開口說話。',
       'zh-Hans': '小花火换上新造型了！现在是穿着樱花和服的女孩，会眨眼、呼吸，回答问题时还会开口说话。',
       en: '小花火 has a new look: a girl in a cherry-blossom kimono who blinks, breathes and talks when she answers your questions.',
@@ -166,18 +176,46 @@ function updatesDate(iso) {
     } catch { return iso; }
 }
 
+// a few entries per page with 上一頁 / 下一頁, so the list never needs a long scroll
+const UPDATES_PER_PAGE = 4;
+let updatesPage = 0;
+
+function updatesPageCount() {
+    return Math.max(1, Math.ceil(SITE_UPDATES.length / UPDATES_PER_PAGE));
+}
+
 function renderUpdates() {
     const list = document.getElementById('updates-list');
     if (!list) return;
-    list.innerHTML = SITE_UPDATES.map(u => `<li class="updates-item">
+    const pages = updatesPageCount();
+    updatesPage = Math.min(Math.max(updatesPage, 0), pages - 1);
+    const from = updatesPage * UPDATES_PER_PAGE;
+    list.start = from + 1;
+    list.innerHTML = SITE_UPDATES.slice(from, from + UPDATES_PER_PAGE).map(u => `<li class="updates-item">
         <time class="updates-date" datetime="${u.date}">${escHtml(updatesDate(u.date))}</time>
         <p class="updates-text">${escHtml(u[siteLang] || u.zh)}</p>
     </li>`).join('');
+    const pager = document.getElementById('updates-pager');
+    if (!pager) return;
+    pager.hidden = pages < 2;
+    document.getElementById('updates-prev').disabled = updatesPage === 0;
+    document.getElementById('updates-next').disabled = updatesPage === pages - 1;
+    document.getElementById('updates-page').textContent = t('updates_page', { n: updatesPage + 1, m: pages });
+}
+
+function updatesGo(step) {
+    const next = updatesPage + step;
+    if (next < 0 || next >= updatesPageCount()) return;
+    updatesPage = next;
+    renderUpdates();
+    const panel = document.querySelector('#updates-overlay .updates-panel');
+    if (panel) panel.scrollTop = 0;
 }
 
 function openUpdates() {
     const overlay = document.getElementById('updates-overlay');
     if (!overlay) return;
+    updatesPage = 0;
     renderUpdates();
     overlay.classList.add('show');
     try { localStorage.setItem('updates_seen', updatesSeenKey()); } catch {}
@@ -193,6 +231,11 @@ function closeUpdates() {
 
 document.addEventListener('keydown', e => {
     if (e.key === 'Escape') closeUpdates();
+    // ← → turn the pages while the popup is open
+    const overlay = document.getElementById('updates-overlay');
+    if (!overlay || !overlay.classList.contains('show')) return;
+    if (e.key === 'ArrowLeft') updatesGo(-1);
+    else if (e.key === 'ArrowRight') updatesGo(1);
 });
 
 document.addEventListener('DOMContentLoaded', refreshUpdatesDot);

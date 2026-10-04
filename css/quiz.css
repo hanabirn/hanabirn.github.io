@@ -5,7 +5,7 @@
    layout below it). :active sinks the face down into that thickness.
    Neutral = paper face; primary (.next-btn, .share-btn, ...) = vermilion. */
 .lang-btn, .mode-btn, .option-btn, .tool-btn, .back-btn, .next-btn, .share-btn,
-.mistake-review-btn, .mistake-page-btn, .input-group button {
+.mistake-review-btn, .mistake-page-btn, .input-group button, .topic-tile {
     background: var(--surface);
     color: var(--text);
     border: 2px solid var(--line);
@@ -24,7 +24,7 @@
 }
 @media (hover: hover) and (pointer: fine) {
     .lang-btn:hover, .mode-btn:hover, .tool-btn:hover, .back-btn:hover,
-    .mistake-page-btn:hover:not(:disabled) {
+    .mistake-page-btn:hover:not(:disabled), .topic-tile:hover {
         background: var(--bg-option-hover);
     }
     .next-btn:hover, .share-btn:hover, .mistake-review-btn:hover, .input-group button:hover {
@@ -33,7 +33,7 @@
 }
 .lang-btn:active, .mode-btn:active, .option-btn:active:not(:disabled), .tool-btn:active,
 .back-btn:active, .next-btn:active, .share-btn:active, .mistake-review-btn:active,
-.mistake-page-btn:active:not(:disabled), .input-group button:active {
+.mistake-page-btn:active:not(:disabled), .input-group button:active, .topic-tile:active {
     transform: translateY(4px);
     box-shadow: 0 0 0 transparent;
 }
@@ -63,6 +63,59 @@
     object-fit: cover;
     border-radius: 4px;
     border: 1px solid var(--line);
+}
+
+/* ===== Topics (#topic-card, renderTopicPicker) ===== */
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+@media (min-width: 640px) {
+    .topic-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+}
+.topic-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    padding: 16px 10px 12px;
+    min-width: 0;
+}
+.topic-emoji {
+    font-size: 1.9rem;
+    line-height: 1;
+}
+.topic-name {
+    font-family: var(--font-serif);
+    font-size: 1rem;
+}
+.topic-bar {
+    width: 100%;
+    max-width: 96px;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--track);
+    overflow: hidden;
+}
+.topic-bar i {
+    display: block;
+    height: 100%;
+    background: var(--primary);
+    border-radius: inherit;
+}
+.topic-state {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+.topic-tile.done { border-color: var(--success-edge); }
+.topic-tile.done .topic-bar i { background: var(--success); }
+.topic-tile.done .topic-state { color: var(--success-text); font-weight: 700; }
+.topic-exam {
+    margin: 16px 0 0;
+    text-align: center;
+    font-size: 0.85rem;
 }
 
 /* ===== Input ===== */

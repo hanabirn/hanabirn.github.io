@@ -121,7 +121,7 @@ function renderLessonPath(keepView) {
     const prog = getSetProgress(currentLang);
     const done = Math.min(prog.done, levels);
 
-    document.getElementById('path-title').textContent = t('quiz_' + currentLang);
+    document.getElementById('path-title').textContent = wordSetName(currentLang);
     document.getElementById('path-sub').textContent = done >= levels
         ? t('path_all_done')
         : t('path_progress', { n: done, m: levels });
@@ -187,7 +187,7 @@ function renderLessonPath(keepView) {
     const view = unitInfo(pathViewUnit);
     document.getElementById('path-units').innerHTML =
         `<div class="path-accordion">${accordion}</div>
-        <div class="path-wide">
+        <div class="path-wide${units === 1 ? ' path-one-unit' : ''}">
             <div class="path-stage path-unit ${view.state}">
                 <div class="path-unit-head">${unitHead(pathViewUnit, view)}</div>
                 <div class="path-nodes">${unitNodes(view)}</div>

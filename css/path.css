@@ -117,6 +117,13 @@ html[data-theme="dark"] .path-unit {
     .path-stage {
         margin-bottom: 0;
     }
+    /* a short set (the 40-word topics) has a single unit: no list beside it */
+    .path-wide.path-one-unit {
+        grid-template-columns: minmax(0, 1fr);
+    }
+    .path-one-unit .path-unit-list {
+        display: none;
+    }
     .path-stage > .path-unit-head {
         cursor: default;
         border-bottom: 1px dashed var(--line);

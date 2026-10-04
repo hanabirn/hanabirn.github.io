@@ -219,8 +219,10 @@
                 </div>
             </div>
             <div class="lang-card" id="examquiz-english-level-card" style="display: none;">
-                <h3 data-i18n="examquiz_english_title">✦ 選擇英文檢定 ✦</h3>
+                <h3 data-i18n="quiz_english_title">✦ 選擇英文單字庫 ✦</h3>
                 <div class="lang-buttons">
+                    <button class="lang-btn en" onclick="selectExamSet('en_jh')"><span data-i18n="quiz_en_jh">英文・國中單字</span></button>
+                    <button class="lang-btn en" onclick="selectExamSet('en_sh')"><span data-i18n="quiz_en_sh">英文・高中單字</span></button>
                     <button class="lang-btn en" onclick="selectExamSet('en_toeic')"><span data-i18n="quiz_en_toeic">多益 TOEIC</span></button>
                     <button class="lang-btn en" onclick="selectExamSet('en_toefl')"><span data-i18n="quiz_en_toefl">托福 TOEFL</span></button>
                 </div>
@@ -303,17 +305,14 @@
         </div>
 
         <div id="page-quiz" style="display: none;">
-            <!-- English word sets (bundled, see tools/build_vocab.py) -->
-            <div class="lang-card" id="en-level-card" style="display: none;">
-                <h3 data-i18n="quiz_english_title">✦ 選擇英文單字庫 ✦</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn en" onclick="selectWordSet('en_jh')"><span data-i18n="quiz_en_jh">英文・國中單字</span></button>
-                    <button class="lang-btn en" onclick="selectWordSet('en_sh')"><span data-i18n="quiz_en_sh">英文・高中單字</span></button>
-                    <button class="lang-btn en" onclick="selectWordSet('en_toeic')"><span data-i18n="quiz_en_toeic">多益 TOEIC</span></button>
-                    <button class="lang-btn en" onclick="selectWordSet('en_toefl')"><span data-i18n="quiz_en_toefl">托福 TOEFL</span></button>
-                </div>
+            <!-- Topics of one language (renderTopicPicker in js/quiz.js; word sets tp_<lang>_<topic>) -->
+            <div class="lang-card topic-card" id="topic-card" style="display: none;">
+                <h3 id="topic-title"></h3>
+                <p class="examquiz-hint" data-i18n="topic_hint">依生活情境分類的常用單字，每個主題 40 個字、分成 4 關。</p>
+                <div class="topic-grid" id="topic-grid"></div>
+                <p class="topic-exam"><button type="button" class="pc-link" id="topic-exam-btn" onclick="topicToExam(topicLang)"></button></p>
                 <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideEnglishLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                    <button class="btn back-btn" onclick="hideTopicPicker()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
 
@@ -709,6 +708,11 @@
         <div class="updates-panel" role="dialog" aria-modal="true" aria-labelledby="updates-title">
             <h3 id="updates-title" data-i18n="updates_title">📢 更新內容</h3>
             <ol class="updates-list" id="updates-list"></ol>
+            <div class="updates-pager" id="updates-pager" hidden>
+                <button type="button" class="mistake-page-btn" id="updates-prev" onclick="updatesGo(-1)" data-i18n="updates_prev">上一頁</button>
+                <span class="updates-page" id="updates-page" aria-live="polite"></span>
+                <button type="button" class="mistake-page-btn" id="updates-next" onclick="updatesGo(1)" data-i18n="updates_next">下一頁</button>
+            </div>
             <button class="next-btn updates-close" onclick="closeUpdates()" data-i18n="updates_close">關閉</button>
         </div>
     </div>

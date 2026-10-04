@@ -81,11 +81,11 @@ function homeRecentSets() {
 }
 
 function homeSetBadge(id) {
-    if (id.startsWith('jlpt_') || id === 'jp') return '日';
-    if (id.startsWith('topik_') || id === 'kr') return '韓';
-    if (id.startsWith('hsk_') || id === 'zh') return '中';
+    if (isJapaneseQuizLang(id)) return '日';
+    if (isKoreanQuizLang(id)) return '韓';
+    if (isChineseQuizLang(id)) return '中';
     if (id === 'fr') return 'Fr';
-    if (id === 'en' || id.startsWith('en_')) return 'En';
+    if (isEnglishQuizLang(id)) return 'En';
     return '・';
 }
 
@@ -127,7 +127,7 @@ function renderHome() {
     const last = localStorage.getItem('last_quiz_set');
     const cont = document.getElementById('home-continue');
     cont.textContent = QUIZ_LANG_ORDER.includes(last)
-        ? '▶ ' + t('home_continue', { name: t('quiz_' + last) })
+        ? '▶ ' + t('home_continue', { name: wordSetName(last) })
         : '▶ ' + t('home_start');
 
     // spaced review
@@ -157,7 +157,7 @@ function renderHome() {
             return `
             <button class="lang-btn home-course" onclick="homeOpenSet('${r.lang}')">
                 <span class="home-course-badge">${homeSetBadge(r.lang)}</span>
-                <span class="home-course-name">${escHtml(t('quiz_' + r.lang))}</span>
+                <span class="home-course-name">${escHtml(wordSetName(r.lang))}</span>
                 ${typeof fill === 'number' ? `
                 <span class="home-course-bar"><i style="width:${Math.max(0, Math.min(100, fill))}%"></i></span>` : ''}
                 ${note ? `<small>${escHtml(note)}</small>` : ''}

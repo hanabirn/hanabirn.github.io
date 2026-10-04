@@ -12,5 +12,6 @@ licence at the bottom of its learning path.
 | `en_toefl` | ECDICT words tagged `toefl` (minus the `en_jh` words) | MIT |
 | English Chinese meanings | ECDICT (github.com/skywind3000/ECDICT), converted to Taiwan Traditional with OpenCC `s2twp` | MIT |
 | `jlpt_n5` … `jlpt_n1`, `topik_1` … `topik_4` | Word lists compiled by Hanabi (site owner) | © Hanabi |
+| `tp_ja_*`, `tp_ko_*`, `tp_en_*` (10 topics × 40 words) | Written for the site by Claude and reviewed by Hanabi (site owner); source in `tools/topics/<lang>.tsv`, order kept as written | © Hanabi |
 | `hsk_1` … `hsk_7` | HSK 3.0, November-2025 revision, via github.com/drkameleon/complete-hsk-vocabulary (`hsk_7` = levels 7–9) | MIT |
 | Frequency ordering | wordfreq (Robyn Speer) | data CC BY-SA 4.0 |

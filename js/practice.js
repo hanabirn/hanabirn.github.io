@@ -51,7 +51,7 @@ function practiceHead(titleKey, backCall, right) {
 }
 
 function practiceSetName(id) {
-    const s = t('quiz_' + id);
+    const s = wordSetName(id);
     return s === 'quiz_' + id ? id : s;
 }
 
@@ -576,6 +576,8 @@ function fcPickMode(mode) { flashcardMode = mode; saveFlashcardPrefs(); renderFl
 function fcPickFront(reverse) { fcReverse = reverse; saveFlashcardPrefs(); renderFlashcardDecks(); }
 
 function fcDeckBadge(id) {
+    const tp = topicOf(id);
+    if (tp) return TOPIC_EMOJI[tp.topic];
     if (id.startsWith('jlpt_')) return id.slice(5).toUpperCase();
     if (id.startsWith('topik_')) return 'T' + id.slice(6);
     if (id.startsWith('hsk_')) return 'H' + id.slice(4);

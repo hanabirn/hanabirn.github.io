@@ -201,12 +201,37 @@ const BUNDLED_SETS = {
     hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
 };
 
+/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en>_<topic>,
+   built from the hand-written tools/topics/<lang>.tsv (the 檢定 page keeps the
+   graded lists). TOPIC_FILE_LANG maps a quiz-page language to the file prefix. */
+const TOPIC_IDS = ['greetings', 'food', 'home', 'shopping', 'transport', 'travel', 'weather', 'school', 'work', 'health'];
+const TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
+    travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
+const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en' };
+const topicSetIds = fileLang => TOPIC_IDS.map(tp => 'tp_' + fileLang + '_' + tp);
+Object.values(TOPIC_FILE_LANG).forEach(l => topicSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
+
+/* "tp_ja_food" -> { lang: 'ja', topic: 'food' }, anything else -> null */
+function topicOf(id) {
+    const m = /^tp_(ja|ko|en)_([a-z]+)$/.exec(id || '');
+    return m ? { lang: m[1], topic: m[2] } : null;
+}
+
+/* A word set's display name: "日文・吃飯" / "Korean · Food" for a topic, else its
+   quiz_<id> text. */
+function wordSetName(id) {
+    const tp = topicOf(id);
+    if (!tp) return t('quiz_' + id);
+    const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · ';
+    return t('dict_lang_' + tp.lang) + sep + t('topic_' + tp.topic);
+}
+
 /* Word sets by language, in picker order (the flashcard / listening tools pick a
    language, then one of these). */
 const WORD_SET_FAMILIES = {
-    en: ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'],
-    jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'],
-    kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'],
+    en: ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'].concat(topicSetIds('en')),
+    jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'].concat(topicSetIds('ja')),
+    kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'].concat(topicSetIds('ko')),
     zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'],
     fr: ['fr']
 };
@@ -409,22 +434,22 @@ function playSound(correct) {
    the same as 'jp' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isJapaneseQuizLang() call sites. */
 function isJapaneseQuizLang(lang) {
-    return lang === 'jp' || lang.startsWith('jlpt_');
+    return lang === 'jp' || lang.startsWith('jlpt_') || lang.startsWith('tp_ja_');
 }
 
 /* TOPIK levels (topik_1, topik_2, ...) are all Korean vocab, so treat them
    the same as 'kr' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isKoreanQuizLang() call sites. */
 function isKoreanQuizLang(lang) {
-    return lang === 'kr' || lang.startsWith('topik_');
+    return lang === 'kr' || lang.startsWith('topik_') || lang.startsWith('tp_ko_');
 }
 
 /* HSK levels (hsk_1, ...) are all Chinese vocab, so treat them
    the same as 'zh' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isChineseQuizLang() call sites. */
-/* English word sets (en_jh, en_toeic, ...) and the old general 'en' sheet */
+/* English word sets (en_jh, en_toeic, ..., the tp_en_ topics) and the old general 'en' sheet */
 function isEnglishQuizLang(lang) {
-    return lang === 'en' || String(lang).startsWith('en_');
+    return lang === 'en' || String(lang).startsWith('en_') || String(lang).startsWith('tp_en_');
 }
 
 function isChineseQuizLang(lang) {
@@ -468,7 +493,7 @@ function isValidWord(word, meaning) {
 }
 
 /* Every card of #page-quiz; showOnlyQuizCard() shows one of them and hides the rest. */
-const QUIZ_PAGE_CARDS = ['lang-card', 'en-level-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card',
+const QUIZ_PAGE_CARDS = ['lang-card', 'topic-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card',
     'mistake-card', 'stats-card', 'srs-card', 'flashcard-card', 'flashcard-setup-card', 'listening-setup-card',
     'mastered-list-card', 'unknown-list-card', 'path-card', 'lesson-card'];
 
@@ -507,26 +532,58 @@ function setResultAgainLabel(key) {
     b.innerHTML = t(key);
 }
 
-/* The quiz page's language card: French loads straight away; the other languages
-   open their level picker (English on this page, the rest on the exam page). */
+/* The quiz page's language card: Japanese, Korean and English open their topics
+   (#topic-card); French loads straight away; Chinese has no topics yet, so it
+   opens the HSK levels on the exam page. */
 function selectLanguage(lang) {
     if (lang === 'fr') { selectWordSet('fr'); return; }
-    if (lang === 'en') { showEnglishLevels(); return; }
+    if (TOPIC_FILE_LANG[lang]) { showTopicPicker(lang); return; }
+    topicToExam(lang);
+}
+
+/* The level picker of a language on the exam page (the topic card's link to it). */
+function topicToExam(lang) {
     switchPage('examquiz', null);
     hideExamLevelCards();
     if (lang === 'jp') showJlptLevels();
     else if (lang === 'kr') showTopikLevels();
     else if (lang === 'zh') showHskLevels();
+    else if (lang === 'en') showEnglishExamLevels();
 }
 
-function showEnglishLevels() {
-    document.getElementById('lang-card').style.display = 'none';
-    document.getElementById('en-level-card').style.display = 'block';
+let topicLang = 'jp';
+
+function showTopicPicker(lang) {
+    if (TOPIC_FILE_LANG[lang]) topicLang = lang;
+    showOnlyQuizCard('topic-card');
+    renderTopicPicker();
 }
 
-function hideEnglishLevels() {
-    document.getElementById('en-level-card').style.display = 'none';
-    document.getElementById('lang-card').style.display = 'block';
+function hideTopicPicker() {
+    showOnlyQuizCard('lang-card');
+}
+
+/* One tile per topic with its path progress (4 levels of 10 words; the real count
+   once the set has been loaded on this device). */
+function renderTopicPicker() {
+    const grid = document.getElementById('topic-grid');
+    if (!grid) return;
+    const fileLang = TOPIC_FILE_LANG[topicLang];
+    document.getElementById('topic-title').textContent = t('topic_title', { lang: t('dict_lang_' + fileLang) });
+    document.getElementById('topic-exam-btn').textContent = t('topic_exam_' + topicLang);
+    grid.innerHTML = topicSetIds(fileLang).map(id => {
+        const topic = topicOf(id).topic;
+        const sum = pathSummary(id);
+        const levels = sum ? sum.levels : 4;
+        const done = Math.min(getSetProgress(id).done, levels);
+        const finished = done >= levels;
+        return `<button type="button" class="topic-tile${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
+            <span class="topic-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
+            <span class="topic-name">${escHtml(t('topic_' + topic))}</span>
+            <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / levels * 100)}%"></i></span>
+            <span class="topic-state">${finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: levels }))}</span>
+        </button>`;
+    }).join('');
 }
 
 function hideExamLevelCards() {
@@ -842,6 +899,7 @@ function refreshDynamicContent() {
         const el = document.getElementById(id);
         return el && el.style.display !== 'none';
     };
+    if (isVisible('topic-card')) renderTopicPicker();
     if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();
     if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (typeof renderDictPage === 'function') renderDictPage();
@@ -1122,7 +1180,7 @@ function startQuiz(mode) {
     // otherwise (Chinese, custom sheets) the set's name
     const meaningKey = isEnglishQuizLang(currentLang) ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning' : currentLang === 'fr' ? 'mode_fr_meaning' : 'mode_kr_meaning';
     const modeKey = { meaning: meaningKey, reading: 'mode_jp_reading', both: 'mode_both' }[mode];
-    const setName = t('quiz_' + currentLang);
+    const setName = wordSetName(currentLang);
     document.getElementById('quiz-mode-label').innerText = modeKey ? t(modeKey)
         : setName !== 'quiz_' + currentLang ? setName : t('mode_title_label');
     document.getElementById('total-words').innerText = t('quiz_words', {n: vocabularyList.length});
@@ -1523,7 +1581,7 @@ function backToLanguage() {
     const wasListening = currentListeningMode;
     const wasSrsReview = reviewMode && reviewSource === 'srs';
     const wasEnglishSet = String(currentLang).startsWith('en_');
-    const wasEnglishExam = currentLang === 'en_toeic' || currentLang === 'en_toefl';
+    const wasTopic = topicOf(currentLang);
     const wasJlptQuiz = currentLang.startsWith('jlpt_');
     const wasTopikQuiz = currentLang.startsWith('topik_');
     const wasHskQuiz = currentLang.startsWith('hsk_');
@@ -1557,12 +1615,12 @@ function backToLanguage() {
         return;
     }
 
-    /* a set's "返回" lands on the level picker it was chosen from */
-    if (wasEnglishSet && !wasEnglishExam) {
-        showEnglishLevels();
+    /* a set's "返回" lands on the topic or level picker it was chosen from */
+    if (wasTopic) {
+        showTopicPicker(Object.keys(TOPIC_FILE_LANG).find(l => TOPIC_FILE_LANG[l] === wasTopic.lang));
         return;
     }
-    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz || wasEnglishExam) {
+    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz || wasEnglishSet) {
         document.getElementById('lang-card').style.display = 'none';
         switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
         hideExamLevelCards();
@@ -1588,6 +1646,7 @@ const QUIZ_LANG_FLAGS = {
     topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖',
     hsk_1: '📖', hsk_2: '📖', hsk_3: '📖', hsk_4: '📖', hsk_5: '📖', hsk_6: '📖', hsk_7: '📖'
 };
+Object.keys(BUNDLED_SETS).forEach(id => { const tp = topicOf(id); if (tp) QUIZ_LANG_FLAGS[id] = TOPIC_EMOJI[tp.topic]; });
 /* The sets a visitor can pick (paths, "continue", recent sets). */
 const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr);
 /* Retired general sheets; their mistake-book entries and SRS cards still exist. */
@@ -1880,7 +1939,7 @@ function shareScoreCard() {
     /* an SRS review mixes word sets (currentLang is just the last question's set) */
     const srsReview = reviewMode && reviewSource === 'srs';
     const flag = QUIZ_LANG_FLAGS[currentLang] || '';
-    const langLabel = srsReview ? t('srs_title') : flag + ' ' + (t('quiz_' + currentLang) || currentLang);
+    const langLabel = srsReview ? t('srs_title') : flag + ' ' + (wordSetName(currentLang) || currentLang);
     ctx.font = '700 18px "Noto Serif TC", "Noto Sans TC", "Noto Sans JP", serif';
     ctx.fillStyle = '#2b2724';
     ctx.textAlign = 'left';
@@ -2411,7 +2470,7 @@ function renderListeningSetup() {
     let html = row('lc_field_lang', LISTENING_LANGS.map(l => chip('lang', l, t(PRACTICE_LANG_NAME_KEYS[l]), l === listeningLang)).join(''));
     const sets = WORD_SET_FAMILIES[listeningLang] || [];
     if (sets.length > 1) {
-        html += row('lc_field_set', sets.map(s => chip('set', s, t('quiz_' + s), s === listeningSetId)).join(''));
+        html += row('lc_field_set', sets.map(s => chip('set', s, wordSetName(s), s === listeningSetId)).join(''));
     }
     html += row('lc_field_mode', LISTENING_MODES[listeningLang].map(m =>
         chip('mode', m, (m.startsWith('choice') ? '👆 ' : '⌨️ ') + t(LISTENING_MODE_KEYS[m]), m === listeningMode)).join(''));

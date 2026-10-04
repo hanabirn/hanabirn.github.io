@@ -279,6 +279,20 @@ header h1 {
     line-height: 1.65;
     color: var(--text);
 }
+/* 上一頁 / 下一頁 under the list (only when there is more than one page) */
+.updates-pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 0 0 16px;
+}
+.updates-pager[hidden] { display: none; }
+.updates-page {
+    color: var(--text-dim2);
+    font-size: 0.82rem;
+    text-align: center;
+}
 .next-btn.updates-close {
     display: block;
     width: 100%;

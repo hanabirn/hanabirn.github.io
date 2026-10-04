@@ -21,6 +21,8 @@ Sources and licences (also listed in data/vocab/README.md):
 - HSK 1-7: the November-2025 revision of HSK 3.0 ("newest-N" levels in
   drkameleon/complete-hsk-vocabulary, MIT); level 7 covers HSK 7-9.
 - Frequencies: wordfreq (Robyn Speer), data CC BY-SA 4.0.
+- Topic sets (tp_<lang>_<topic>, the 單字 page): hand-written lists in
+  tools/topics/<lang>.tsv, kept in the order written there (not re-sorted).
 """
 import argparse
 import csv
@@ -530,10 +532,44 @@ def build_hsk(args):
                   "HSK 3.0（2025 修訂版）詞彙（drkameleon/complete-hsk-vocabulary）" + ("，含 7–9 級" if lv == 7 else ""), "MIT")
 
 
+# 單字 page topics: tools/topics/<lang>.tsv -> data/vocab/tp_<lang>_<topic>.json.
+# Lines are "word<TAB>reading<TAB>meaning<TAB>english" under "## <topic>" headers;
+# rows keep the file's order (easy first, written that way by hand).
+TOPIC_LANGS = ("ja", "ko", "en")
+TOPICS = ("greetings", "food", "home", "shopping", "transport", "travel", "weather", "school", "work", "health")
+
+
+def build_topics(args):
+    for lang in TOPIC_LANGS:
+        topics, cur = {}, None
+        with open(os.path.join(ROOT, "tools", "topics", lang + ".tsv"), encoding="utf-8") as f:
+            for n, line in enumerate(f, 1):
+                line = line.rstrip("\r\n")
+                if line.startswith("## "):
+                    cur = line[3:].strip()
+                    if cur not in TOPICS or cur in topics:
+                        raise SystemExit(f"{lang}.tsv:{n}: unknown or repeated topic {cur!r}")
+                    topics[cur] = []
+                    continue
+                if not line.strip() or line.startswith("#"):
+                    continue
+                word, reading, meaning, english = (c.strip() for c in (line.split("\t") + ["", "", ""])[:4])
+                if cur is None or not word or not meaning:
+                    raise SystemExit(f"{lang}.tsv:{n}: bad line {line!r}")
+                if any(w[0] == word for w in topics[cur]):
+                    raise SystemExit(f"{lang}.tsv:{n}: {word!r} twice in {cur}")
+                topics[cur].append([word, reading, meaning, english])
+        missing = [t for t in TOPICS if t not in topics]
+        if missing:
+            raise SystemExit(f"{lang}.tsv: missing topics {missing}")
+        for topic in TOPICS:
+            write_set(f"tp_{lang}_{topic}", lang, topics[topic], "Hanabi 整理的主題單字", "© Hanabi")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--only", choices=["en", "sheets", "hsk"])
+    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics"])
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
     if args.only in (None, "en"):
@@ -542,6 +578,8 @@ def main():
         print("JLPT / TOPIK"); build_sheets(args)
     if args.only in (None, "hsk"):
         print("HSK 3.0"); build_hsk(args)
+    if args.only in (None, "topics"):
+        print("Topics"); build_topics(args)
 
 
 if __name__ == "__main__":
