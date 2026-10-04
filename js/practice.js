@@ -515,11 +515,12 @@ function renderSrsDashboard() {
 
 /* ===================== 單字閃卡 ===================== */
 
-const FC_LANGS = ['jp', 'kr', 'en', 'zh', 'fr'];
+const FC_LANGS = ['jp', 'kr', 'en', 'zh', 'fr', 'ru'];
 const FC_MODES = {
     jp: [{ id: 'zh-meaning', key: 'fc_show_zh' }, { id: 'en-meaning', key: 'fc_show_en' }],
     kr: [{ id: 'zh-meaning', key: 'fc_show_zh' }, { id: 'en-meaning', key: 'fc_show_en' }],
     fr: [{ id: 'zh-meaning', key: 'fc_show_zh' }, { id: 'en-meaning', key: 'fc_show_en' }],
+    ru: [{ id: 'zh-meaning', key: 'fc_show_zh' }, { id: 'en-meaning', key: 'fc_show_en' }],
     en: [{ id: 'zh-meaning', key: 'fc_show_zh' }],
     zh: [{ id: 'trad-bopomofo', key: 'fc_show_trad' }, { id: 'simp-roman', key: 'fc_show_simp' }]
 };
@@ -578,6 +579,7 @@ function fcPickFront(reverse) { fcReverse = reverse; saveFlashcardPrefs(); rende
 function fcDeckBadge(id) {
     const tp = topicOf(id);
     if (tp) return TOPIC_EMOJI[tp.topic];
+    if (/^(fr|ru)_/.test(id)) return id.slice(3).toUpperCase();
     if (id.startsWith('jlpt_')) return id.slice(5).toUpperCase();
     if (id.startsWith('topik_')) return 'T' + id.slice(6);
     if (id.startsWith('hsk_')) return 'H' + id.slice(4);

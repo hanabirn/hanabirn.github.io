@@ -84,7 +84,8 @@ function homeSetBadge(id) {
     if (isJapaneseQuizLang(id)) return '日';
     if (isKoreanQuizLang(id)) return '韓';
     if (isChineseQuizLang(id)) return '中';
-    if (id === 'fr') return 'Fr';
+    if (isFrenchQuizLang(id)) return 'Fr';
+    if (isRussianQuizLang(id)) return 'Ru';
     if (isEnglishQuizLang(id)) return 'En';
     return '・';
 }

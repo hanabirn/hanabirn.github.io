@@ -3,7 +3,7 @@
     python tools/build_vocab.py            # downloads sources into tools/.vocab-cache/
     python tools/build_vocab.py --offline  # reuse the cache only
 
-Needs: pip install wordfreq opencc-python-reimplemented pdfplumber pypinyin
+Needs: pip install wordfreq opencc-python-reimplemented pdfplumber pypinyin xlrd
 (wordfreq's frequency dictionaries are read directly, so MeCab is not required).
 
 Every set is ordered easy-first: most frequent words first (wordfreq / ECDICT
@@ -32,6 +32,8 @@ import json
 import os
 import re
 import sys
+import time
+import urllib.error
 import urllib.request
 
 sys.stdout.reconfigure(encoding="utf-8")
@@ -589,10 +591,336 @@ def build_topics(args):
             write_set(f"tp_{lang}_{topic}", lang, topics[topic], "Hanabi 整理的主題單字", "© Hanabi")
 
 
+# ---------- European lists: Wiktionary data (kaikki.org Wiktextract, CC BY-SA) ----------
+# The per-language dumps are huge (French ~580 MB, Russian ~940 MB), so they are
+# streamed and only the entries for words on our lists are kept, in a small
+# tools/.vocab-cache/kaikki_<lang>.json — the dump itself never touches the disk.
+KAIKKI = "https://kaikki.org/dictionary/{0}/kaikki.org-dictionary-{0}.jsonl"
+KAIKKI_NAMES = {"fr": "French", "ru": "Russian"}
+
+
+def kaikki_entry(e):
+    """The parts of a Wiktextract entry we use: part of speech, the first glosses of
+    real senses (not "plural of …"), gender tags and the canonical (stressed) form."""
+    glosses = []
+    for s in e.get("senses") or []:
+        if s.get("form_of") or "form-of" in (s.get("tags") or []):
+            continue
+        # a sub-sense lists its parent's gloss first ("[with accusative]", "to, into"):
+        # the last one is the sense itself
+        g = (s.get("glosses") or [""])[-1].strip()
+        if g and g not in glosses:
+            glosses.append(g)
+        if len(glosses) == 4:
+            break
+    tags = set(e.get("tags") or [])
+    for s in (e.get("senses") or [])[:1]:
+        tags |= set(s.get("tags") or [])
+    head = " ".join(h.get("expansion", "") for h in e.get("head_templates") or [])
+    canon = next((f.get("form") for f in e.get("forms") or [] if "canonical" in (f.get("tags") or [])), "")
+    return {"pos": e.get("pos", ""), "glosses": glosses, "head": head[:120],
+            "gender": sorted(t for t in tags if t in ("masculine", "feminine", "neuter")), "canonical": canon}
+
+
+def kaikki_key(lang, word):
+    """How words are matched: Russian lists write ё as е (еще), Wiktionary doesn't (ещё)."""
+    return word.replace("ё", "е").replace("Ё", "Е") if lang == "ru" else word
+
+
+def kaikki_extract(lang, words, offline):
+    """{word: [entry, ...]} for the words given (keyed by kaikki_key), from the cached
+    extract or by streaming."""
+    words = [kaikki_key(lang, w) for w in words]
+    path = os.path.join(CACHE, f"kaikki_{lang}.json")
+    if os.path.exists(path):
+        with open(path, encoding="utf-8") as f:
+            have = json.load(f)
+        if all(w in have for w in words):
+            return have
+    if offline:
+        raise SystemExit(f"{path} misses words (run without --offline)")
+    want, out, n = set(words), {w: [] for w in words}, 0
+    req = urllib.request.Request(KAIKKI.format(KAIKKI_NAMES[lang]), headers={"User-Agent": "Mozilla/5.0 (hanabirn.xyz vocab build)"})
+    with urllib.request.urlopen(req, timeout=600) as r:
+        for raw in io.TextIOWrapper(r, encoding="utf-8"):
+            n += 1
+            if n % 200000 == 0:
+                print(f"  kaikki {lang}: {n} entries read", flush=True)
+            # cheap test before parsing: the entry's own headword is followed by its
+            # language (nested "word"s, in related terms etc., are not); a line
+            # without that pattern is parsed in full
+            m = re.search(r'"word": "((?:[^"\\]|\\.)*)", "lang": "', raw)
+            if m and kaikki_key(lang, json.loads('"' + m.group(1) + '"')) not in want:
+                continue
+            e = json.loads(raw)
+            key = kaikki_key(lang, e.get("word", ""))
+            if key in want and e.get("lang_code") == lang:
+                out[key].append(kaikki_entry(e))
+    with open(path, "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False)
+    print(f"  kaikki {lang}: {sum(1 for v in out.values() if v)}/{len(out)} words found")
+    return out
+
+
+# ---------- Chinese meanings for the European lists, written by Gemini ----------
+# The lists have no translations. Gemini gets each word with its part of speech,
+# gender and Wiktionary glosses and writes a short Taiwan-Chinese meaning; answers
+# are cached in tools/.vocab-cache/gemini_<lang>.json (key "word|pos"), so a word is
+# only ever asked once, and ZH_FIX_<LANG> tables fix the ones that come out wrong.
+# The key is the site assistant's (worker/assistant/.dev.vars, free tier, billing
+# off). Its models are NOT used here — each model has its own daily quota and the
+# assistant needs theirs — only these:
+GEMINI_MODELS = ("gemini-3-flash-preview", "gemini-3.1-flash-lite")
+GEMINI_BATCH = 300                # the free tier counts requests, not words
+GEMINI_LANG_NAMES = {"fr": "French", "ru": "Russian"}
+
+
+def gemini_key():
+    key = os.environ.get("GEMINI_API_KEY", "")
+    path = os.path.join(ROOT, "worker", "assistant", ".dev.vars")
+    if not key and os.path.exists(path):
+        for line in open(path, encoding="utf-8"):
+            if line.startswith("GEMINI_API_KEY"):
+                key = line.split("=", 1)[1].strip().strip('"')
+    if not key:
+        raise SystemExit("no GEMINI_API_KEY (env or worker/assistant/.dev.vars)")
+    return key
+
+
+def gemini_call(model, prompt):
+    # a schema keeps the answer to exactly one JSON array (no trailing text)
+    config = {"responseMimeType": "application/json", "temperature": 0.2,
+              "responseSchema": {"type": "ARRAY", "items": {"type": "OBJECT", "required": ["id", "zh"],
+                                 "properties": {"id": {"type": "INTEGER"}, "zh": {"type": "STRING"}}}}}
+    if "lite" not in model:
+        config["thinkingConfig"] = {"thinkingBudget": 0}   # answers in seconds, not minutes (lite rejects it)
+    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}], "generationConfig": config}).encode()
+    req = urllib.request.Request(
+        f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent", data=body,
+        headers={"Content-Type": "application/json", "x-goog-api-key": gemini_key()})
+    with urllib.request.urlopen(req, timeout=120) as r:
+        d = json.load(r)
+    return d["candidates"][0]["content"]["parts"][0]["text"]
+
+
+def gemini_prompt(lang, items):
+    return (
+        f"You are writing a {GEMINI_LANG_NAMES[lang]}–Chinese vocabulary list for learners in Taiwan.\n"
+        "For each item give the meaning in Traditional Chinese as used in Taiwan (台灣用語, e.g. 腳踏車 not 自行車).\n"
+        "Rules: the most common meaning(s) only, at most 2, separated by \"；\"; at most 12 characters in total; "
+        "no pinyin, no part-of-speech labels, no explanations, no quotation marks; "
+        "a verb is given as a Chinese verb (吃, 開始), an adjective as an adjective (大的, 漂亮的); "
+        "follow the English glosses when they are given, and the part of speech.\n"
+        "Answer with a JSON array of objects {\"id\": <id>, \"zh\": \"<meaning>\"}, one per item, same ids.\n"
+        "Items:\n" + json.dumps(items, ensure_ascii=False))
+
+
+def gemini_meanings(lang, items):
+    """items: [{"w", "pos", "gender", "en"}] -> {"w|pos": zh}, asking only for uncached ones."""
+    path = os.path.join(CACHE, f"gemini_{lang}.json")
+    cache = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {}
+    todo = [it for it in items if f"{it['w']}|{it['pos']}" not in cache]
+    spent = set()                                              # models whose day is used up
+    for start in range(0, len(todo), GEMINI_BATCH):
+        batch = todo[start:start + GEMINI_BATCH]
+        ask = [{"id": i, "word": it["w"], "pos": it["pos"], **({"gender": it["gender"]} if it.get("gender") else {}),
+                **({"en": it["en"]} if it.get("en") else {})} for i, it in enumerate(batch)]
+        got = {}
+        for model in GEMINI_MODELS:
+            if model in spent:
+                continue
+            limited = 0
+            for attempt in range(4):
+                try:
+                    answer = json.loads(gemini_call(model, gemini_prompt(lang, ask)))
+                    got = {int(a["id"]): str(a["zh"]).strip() for a in answer if str(a.get("zh", "")).strip()}
+                except (urllib.error.URLError, OSError, ValueError, KeyError, TypeError) as e:
+                    print(f"  gemini {model}: {getattr(e, 'code', '')} {str(e)[:100]}", flush=True)
+                    if getattr(e, "code", 0) == 429:
+                        limited += 1
+                        if limited == 2:
+                            spent.add(model)                   # still limited: this model's day is spent
+                            break
+                        time.sleep(65)                         # maybe only the per-minute limit
+                    else:
+                        time.sleep(5)
+                    continue
+                if len(got) >= len(batch) * 0.95:
+                    break
+            if len(got) >= len(batch) * 0.95:
+                break
+        for i, it in enumerate(batch):
+            if i in got:
+                cache[f"{it['w']}|{it['pos']}"] = got[i]
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=0)
+        print(f"  gemini {lang}: {min(start + GEMINI_BATCH, len(todo))}/{len(todo)} asked, {len(got)} answered", flush=True)
+        if len(got) < len(batch) * 0.95:
+            raise SystemExit("Gemini stopped answering (quota?) — run again later; answers so far are cached")
+        time.sleep(8)                                          # stay well under the per-minute limit
+    return cache
+
+
+# ---------- French: FLELex (CEFRLex, UCLouvain), CC BY-NC-SA 4.0 ----------
+# The "Beacco" version gives every lemma a CEFR level. Kept: A1–C1, words that
+# Wiktionary knows in that part of speech (drops tagging noise such as participles
+# filed as nouns, plural forms), nouns only with a known gender; each word once, at
+# its lowest level; most frequent first. Rows: [shown word, gender, zh, en] — nouns
+# are shown with their article (le / la / l'; none before h, whose elision varies,
+# nor for months and days), the gender goes in the reading column.
+FLELEX = "https://cental.uclouvain.be/cefrlex/static/resources/fr/FleLex_TT_Beacco.tsv"
+CEFR_LEVELS = ("A1", "A2", "B1", "B2", "C1")
+FLELEX_POS = {"NOM": "noun", "VER": "verb", "ADJ": "adj", "ADV": "adv", "PRO": "pron", "PRP": "prep",
+              "KON": "conj", "INT": "intj", "DET:ART": "article", "DET:POS": "det", "PRP:det": "prep"}
+FR_NO_ARTICLE = set("janvier février mars avril mai juin juillet août septembre octobre novembre décembre "
+                    "lundi mardi mercredi jeudi vendredi samedi dimanche".split())
+# words Gemini can't sensibly translate on their own (articles, contractions,
+# clitics, halves of a fixed phrase), and fixes found when reviewing
+ZH_FIX_FR = {
+    "le|article": "（定冠詞，陽性）", "un|article": "一個；（不定冠詞）", "de|article": "（部分冠詞）；一些",
+    "au|prep": "到…；在…（= à le）", "du|prep": "…的；從…（= de le）",
+    "le|pron": "他；它（受詞）", "la|pron": "她；它（受詞）", "en|pron": "其中的；從那裡",
+    "y|pron": "那裡；（代替 à＋名詞）", "se|pron": "自己（反身代名詞）", "que|pron": "什麼；（關係代名詞）",
+    "que|conj": "（引導子句）；比", "on|pron": "人們；我們", "dont|pron": "（關係代名詞）其中",
+    "soit|conj": "或者；也就是", "parce|conj": "因為（parce que）", "tandis|conj": "而（tandis que）",
+    "afin|conj": "為了（afin de / que）",
+}
+
+
+def short_gloss(glosses, limit=40):
+    """Up to two English senses, without the bracketed notes, cut at a word."""
+    def clean(text):
+        return re.sub(r"\s*(\([^)]*\)?|\[[^\]]*\]?)", "", text).strip(" ,.:")
+
+    out = []
+    for g in glosses:
+        for part in g.split(";"):
+            p = clean(part)
+            if len(p) > limit:
+                p = p.split(",")[0].strip()
+            if p and p not in out and len("; ".join(out + [p])) <= limit:
+                out.append(p)
+            if len(out) == 2:
+                break
+        if len(out) == 2:
+            break
+    if not out:
+        first = next((clean(g) for g in glosses if clean(g)), "")
+        out = [first if len(first) <= limit else first[:limit].rsplit(" ", 1)[0]] if first else []
+    return "; ".join(out)
+
+
+def fr_shown(word, pos, gender):
+    if pos != "noun" or gender not in ("m", "f") or word in FR_NO_ARTICLE or word[0].lower() == "h":
+        return word
+    if word[0].lower() in "aeiouyàâäéèêëîïôöûüœæ":
+        return "l'" + word
+    return ("le " if gender == "m" else "la ") + word
+
+
+def french_items(offline):
+    """The kept FLELex words, by level: [{level, w, pos, gender, en, freq}]."""
+    with open(fetch("flelex_tt_beacco.tsv", FLELEX, offline), encoding="utf-8") as f:
+        rows = list(csv.DictReader(f, delimiter="\t"))
+    kk = kaikki_extract("fr", sorted({r["word"] for r in rows}), offline)
+    rank = {lv: i for i, lv in enumerate(CEFR_LEVELS)}
+    rows = [r for r in rows if r["level"] in rank]
+    rows.sort(key=lambda r: (rank[r["level"]], -float(r["freq_total"])))
+    items, seen = [], set()
+    for r in rows:
+        w, pos = r["word"], FLELEX_POS.get(r["tag"])
+        if w in seen or not pos or not re.fullmatch(r"[^\W\d_]+(?:['-][^\W\d_]+)*", w):
+            continue
+        e = next((x for x in kk.get(w) or [] if x["pos"] == pos and x["glosses"]), None)
+        if not e:
+            continue
+        g = e["gender"]
+        gender = "m" if g == ["masculine"] else "f" if g == ["feminine"] else "m/f" if g else ""
+        if pos == "noun" and not gender:
+            continue
+        seen.add(w)
+        items.append({"level": r["level"], "w": w, "pos": pos, "gender": gender if pos == "noun" else "",
+                      "en": "; ".join(e["glosses"][:3])[:200], "freq": float(r["freq_total"])})
+    return items
+
+
+def build_french(args):
+    items = french_items(args.offline)
+    todo = [it for it in items if f"{it['w']}|{it['pos']}" not in ZH_FIX_FR]
+    zh = gemini_meanings("fr", todo)
+    zh.update(ZH_FIX_FR)
+    missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
+    if missing:
+        raise SystemExit(f"{len(missing)} French words still lack a meaning; run again")
+    kk = kaikki_extract("fr", [it["w"] for it in items], True)
+    for lv in CEFR_LEVELS:
+        words = []
+        for it in items:
+            if it["level"] != lv:
+                continue
+            e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
+            g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
+            words.append([fr_shown(it["w"], it["pos"], it["gender"]), g, zh[f"{it['w']}|{it['pos']}"], short_gloss(e["glosses"])])
+        write_set(f"fr_{lv.lower()}", "fr", words,
+                  f"FLELex（CEFRLex, UCLouvain）{lv}；英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "FLELex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
+
+
+# ---------- Russian: the Kelly list (Leeds / Kelly project), CC BY-NC-SA 2.0 ----------
+# ssharoff.github.io/kelly: 8,958 lemmas with a CEFR level (some written in lower
+# case) and a part of speech, including multi-word expressions (до свидания). Kept:
+# A1–C1, words Wiktionary knows, each once at its lowest level, most frequent first.
+# Rows: [word, stressed form (молоко́, from Wiktionary; empty when it adds nothing), zh, en].
+KELLY_RU = "https://ssharoff.github.io/kelly/ru_m3.xls"
+KELLY_POS = {"n": "noun", "v": "verb", "adj": "adj", "adv": "adv", "mwe": "phrase", "num": "num",
+             "pron": "pron", "n prop": "name", "adpos": "prep", "prep": "prep", "particle": "particle",
+             "con": "conj", "excl": "intj", "abbr": "abbr", "det": "det"}
+ZH_FIX_RU = {}
+
+
+def russian_items(offline):
+    import xlrd   # pip install xlrd (reads the .xls)
+    sheet = xlrd.open_workbook(fetch("kelly_ru.xls", KELLY_RU, offline)).sheet_by_index(0)
+    rows = [sheet.row_values(i) for i in range(1, sheet.nrows)]
+    kk = kaikki_extract("ru", sorted({str(r[0]).strip() for r in rows}), offline)
+    rank = {lv: i for i, lv in enumerate(CEFR_LEVELS)}
+    rows = [r for r in rows if str(r[1]).upper() in rank]
+    rows.sort(key=lambda r: (rank[str(r[1]).upper()], -float(r[4] or 0)))
+    items, seen = [], set()
+    for r in rows:
+        w = str(r[0]).strip()
+        pos = KELLY_POS.get(str(r[2]).strip().lower(), "")
+        if not w or w in seen or not re.fullmatch(r"[а-яё]+(?:[ -][а-яё]+)*", w, re.I):
+            continue
+        ents = [x for x in kk.get(kaikki_key("ru", w)) or [] if x["glosses"]]
+        e = next((x for x in ents if x["pos"] == pos), ents[0] if ents else None)
+        if not e:
+            continue
+        seen.add(w)
+        stressed = e["canonical"] if e["canonical"] and e["canonical"] != w and kaikki_key("ru", e["canonical"].replace("́", "")) == kaikki_key("ru", w) else ""
+        items.append({"level": str(r[1]).upper(), "w": w, "pos": pos or e["pos"], "stressed": stressed,
+                      "en": "; ".join(e["glosses"][:3])[:200], "glosses": e["glosses"]})
+    return items
+
+
+def build_russian(args):
+    items = russian_items(args.offline)
+    todo = [{k: it[k] for k in ("w", "pos", "en")} for it in items if f"{it['w']}|{it['pos']}" not in ZH_FIX_RU]
+    zh = gemini_meanings("ru", todo)
+    zh.update(ZH_FIX_RU)
+    missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
+    if missing:
+        raise SystemExit(f"{len(missing)} Russian words still lack a meaning; run again")
+    for lv in CEFR_LEVELS:
+        words = [[it["w"], it["stressed"], zh[f"{it['w']}|{it['pos']}"], short_gloss(it["glosses"])]
+                 for it in items if it["level"] == lv]
+        write_set(f"ru_{lv.lower()}", "ru", words,
+                  f"Kelly 俄文詞表（Kelly project, Leeds）{lv}；重音與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "Kelly CC BY-NC-SA 2.0；Wiktionary CC BY-SA")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics"])
+    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics", "fr", "ru"])
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
     if args.only in (None, "en"):
@@ -603,6 +931,10 @@ def main():
         print("HSK 3.0"); build_hsk(args)
     if args.only in (None, "topics"):
         print("Topics"); build_topics(args)
+    if args.only in (None, "fr"):
+        print("French (FLELex)"); build_french(args)
+    if args.only in (None, "ru"):
+        print("Russian (Kelly)"); build_russian(args)
 
 
 if __name__ == "__main__":

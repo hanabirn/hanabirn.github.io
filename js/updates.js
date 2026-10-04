@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-04',
+      zh: '新增法文和俄文的分級單字庫：依歐洲共同語言參考標準（CEFR）從 A1 到 C1，法文約一萬個字、俄文約八千個字，每個字都有中文和英文意思；法文名詞附上 le / la，俄文附上重音。在「檢定」裡（「單字」的法文、俄文按鈕也會帶你過去）。',
+      'zh-Hans': '新增法语和俄语的分级单词库：按欧洲共同语言参考标准（CEFR）从 A1 到 C1，法语约一万个词、俄语约八千个词，每个词都有中文和英文意思；法语名词附上 le / la，俄语附上重音。在“检定”里（“单词”的法语、俄语按钮也会带你过去）。',
+      en: 'New French and Russian word lists graded by CEFR, A1 to C1: about 10,000 French and 8,000 Russian words, each with a Chinese and an English meaning; French nouns come with le / la and Russian words with their stress. Find them under “Exams” (the French and Russian buttons on “Words” take you there too).',
+      ja: 'フランス語とロシア語のレベル別単語リストを追加：CEFR の A1〜C1 で、フランス語は約1万語、ロシア語は約8千語。どの単語にも中国語と英語の意味があり、フランス語の名詞には le / la、ロシア語にはアクセントが付いています。「検定」にあります（「単語」のフランス語・ロシア語ボタンからも行けます）。',
+      ko: '프랑스어와 러시아어 수준별 단어장 추가: CEFR A1~C1로 프랑스어 약 1만 개, 러시아어 약 8천 개이고, 모든 단어에 중국어·영어 뜻이 있어요. 프랑스어 명사에는 le / la, 러시아어에는 강세가 붙어 있어요. 「검정」에 있어요(「단어」의 프랑스어·러시아어 버튼으로도 갈 수 있어요).',
+      ru: 'Новые списки слов по французскому и русскому по уровням CEFR от A1 до C1: около 10 000 французских и 8 000 русских слов, у каждого значение на китайском и английском; у французских существительных есть le / la, у русских слов — ударение. Ищи их в «Экзаменах» (кнопки французского и русского в «Словах» тоже ведут туда).',
+      fr: 'Nouvelles listes de mots en français et en russe classées selon le CECR, de A1 à C1 : environ 10 000 mots français et 8 000 mots russes, chacun avec un sens en chinois et en anglais ; les noms français ont leur le / la et les mots russes leur accent. Elles sont dans « Examens » (les boutons français et russe de « Mots » y mènent aussi).',
+      es: 'Nuevas listas de palabras en francés y ruso por niveles del MCER, de A1 a C1: unas 10 000 palabras francesas y 8 000 rusas, cada una con su significado en chino y en inglés; los sustantivos franceses llevan le / la y las palabras rusas su acento. Están en «Exámenes» (los botones de francés y ruso de «Palabras» también llevan allí).',
+      de: 'Neue Wortlisten für Französisch und Russisch nach GER-Stufen A1 bis C1: rund 10.000 französische und 8.000 russische Wörter, jedes mit chinesischer und englischer Bedeutung; französische Nomen mit le / la, russische Wörter mit Betonung. Zu finden unter „Prüfungen“ (die Buttons für Französisch und Russisch unter „Vokabeln“ führen auch dorthin).' },
+    { date: '2026-10-04',
       zh: '電腦寬螢幕的兩側不再空空的了：左邊的小花火可以戳戳看（摸頭、戳臉、戳身體的反應都不一樣，戳太多次她會生氣喔），右邊是每天換一個的「每日一字」，首頁還多了最近兩週的練習日曆和今日任務。',
       'zh-Hans': '电脑宽屏幕的两侧不再空空的了：左边的小花火可以戳戳看（摸头、戳脸、戳身体的反应都不一样，戳太多次她会生气哦），右边是每天换一个的“每日一词”，首页还多了最近两周的练习日历和今日任务。',
       en: 'The empty sides of wide desktop screens now have something in them: poke 小花火 on the left (head, face and body each get a different reaction — poke too much and she gets cross), and on the right a new word of the day, plus a two-week practice calendar and today\'s tasks on the home page.',

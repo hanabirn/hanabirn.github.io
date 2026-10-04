@@ -217,6 +217,14 @@
                         <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="US" class="lang-flag">
                         <span data-i18n="examquiz_english">英文檢定（多益／托福）</span>
                     </button>
+                    <button class="lang-btn fr" onclick="showCefrLevels('fr')">
+                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="France" class="lang-flag">
+                        <span data-i18n="examquiz_fr">法文（CEFR A1–C1）</span>
+                    </button>
+                    <button class="lang-btn ru" onclick="showCefrLevels('ru')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
+                        <span data-i18n="examquiz_ru">俄文（CEFR A1–C1）</span>
+                    </button>
                 </div>
             </div>
             <div class="lang-card" id="examquiz-english-level-card" style="display: none;">
@@ -229,6 +237,14 @@
                 </div>
                 <div class="action-buttons">
                     <button class="btn back-btn" onclick="hideEnglishExamLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
+                </div>
+            </div>
+            <!-- French / Russian CEFR levels (showCefrLevels in js/quiz.js) -->
+            <div class="lang-card" id="examquiz-cefr-level-card" style="display: none;">
+                <h3 id="examquiz-cefr-title"></h3>
+                <div class="lang-buttons" id="examquiz-cefr-buttons"></div>
+                <div class="action-buttons">
+                    <button class="btn back-btn" onclick="hideCefrLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
                 </div>
             </div>
             <div class="lang-card" id="examquiz-jlpt-level-card" style="display: none;">
@@ -331,6 +347,10 @@
                     <button class="lang-btn fr" onclick="selectLanguage('fr')">
                         <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="&#x6CD5;&#x570B;" class="lang-flag">
                         <span data-i18n="quiz_fr">&#x6CD5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
+                    </button>
+                    <button class="lang-btn ru" onclick="selectLanguage('ru')">
+                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
+                        <span data-i18n="quiz_ru">俄文單字測驗</span>
                     </button>
                     <button class="lang-btn en" onclick="selectLanguage('en')">
                         <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="&#x7F8E;&#x570B;" class="lang-flag">
