@@ -97,7 +97,7 @@ I18N.ko = {
         // voice picker: recordings
         tts_auto_rec: '자동: 미리 녹음한 자연스러운 음성 (없으면 {v})',
         // what's new
-        updates_btn: '업데이트 내용', updates_title: '📢 업데이트 내용', updates_close: '닫기', updates_prev: '이전', updates_next: '다음', updates_page: '{n} / {m} 페이지', topic_greetings: '인사', topic_food: '식사', topic_home: '집안 생활', topic_shopping: '쇼핑', topic_transport: '교통', topic_travel: '여행', topic_weather: '날씨와 계절', topic_school: '학교', topic_work: '일', topic_health: '몸과 병원', topic_title: '✦ {lang} · 주제별 단어 ✦', topic_hint: '생활 상황별로 나눈 자주 쓰는 단어예요. 주제마다 40개, 4단계로 나뉘어 있어요.', topic_levels: '{n}/{m} 단계', topic_done: '완료', topic_exam_jp: 'JLPT 급수별로 공부하고 싶다면 「검정」으로 →', topic_exam_kr: 'TOPIK 급수별로 공부하고 싶다면 「검정」으로 →', topic_exam_en: '수준별(중학교·고등학교·토익·토플)로 공부하고 싶다면 「검정」으로 →',
+        updates_btn: '업데이트 내용', updates_title: '📢 업데이트 내용', updates_close: '닫기', updates_prev: '이전', updates_next: '다음', updates_page: '{n} / {m} 페이지', topic_greetings: '인사', topic_food: '식사', topic_home: '집안 생활', topic_shopping: '쇼핑', topic_transport: '교통', topic_travel: '여행', topic_weather: '날씨와 계절', topic_school: '학교', topic_work: '일', topic_health: '몸과 병원', topic_title: '✦ {lang} · 주제별 단어 ✦', topic_hint: '생활 상황별로 나눈 자주 쓰는 단어예요. 주제마다 40개, 4단계로 나뉘어 있어요.', topic_levels: '{n}/{m} 단계', topic_done: '완료', topic_exam_jp: 'JLPT 급수별로 공부하고 싶다면 「검정」으로 →', topic_exam_kr: 'TOPIK 급수별로 공부하고 싶다면 「검정」으로 →', topic_exam_en: '수준별(중학교·고등학교·토익·토플)로 공부하고 싶다면 「검정」으로 →', topic_exam_zh: 'HSK 급수별로 공부하고 싶다면 「검정」으로 →',
         // result table header
         result_col_question: '문제',
         // site tour

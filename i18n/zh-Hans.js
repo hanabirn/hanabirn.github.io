@@ -98,7 +98,7 @@ I18N['zh-Hans'] = {
         // voice picker: recordings
         tts_auto_rec: '自动：预录的自然语音（没录到的用 {v}）',
         // what's new
-        updates_btn: '更新内容', updates_title: '📢 更新内容', updates_close: '关闭', updates_prev: '上一页', updates_next: '下一页', updates_page: '第 {n} / {m} 页', topic_greetings: '打招呼', topic_food: '吃饭', topic_home: '居家生活', topic_shopping: '购物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天气与季节', topic_school: '学校', topic_work: '工作', topic_health: '身体与看病', topic_title: '✦ {lang}・主题单词 ✦', topic_hint: '按生活场景分类的常用单词，每个主题 40 个词，分成 4 关。', topic_levels: '{n}/{m} 关', topic_done: '完成', topic_exam_jp: '想按 JLPT 等级学？去“检定”看看 →', topic_exam_kr: '想按 TOPIK 等级学？去“检定”看看 →', topic_exam_en: '想按程度学（初中、高中、托业、托福）？去“检定”看看 →',
+        updates_btn: '更新内容', updates_title: '📢 更新内容', updates_close: '关闭', updates_prev: '上一页', updates_next: '下一页', updates_page: '第 {n} / {m} 页', topic_greetings: '打招呼', topic_food: '吃饭', topic_home: '居家生活', topic_shopping: '购物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天气与季节', topic_school: '学校', topic_work: '工作', topic_health: '身体与看病', topic_title: '✦ {lang}・主题单词 ✦', topic_hint: '按生活场景分类的常用单词，每个主题 40 个词，分成 4 关。', topic_levels: '{n}/{m} 关', topic_done: '完成', topic_exam_jp: '想按 JLPT 等级学？去“检定”看看 →', topic_exam_kr: '想按 TOPIK 等级学？去“检定”看看 →', topic_exam_en: '想按程度学（初中、高中、托业、托福）？去“检定”看看 →', topic_exam_zh: '想按 HSK 等级学？去“检定”看看 →',
         // result table header
         result_col_question: '题目',
         // site tour

@@ -3,7 +3,7 @@
     python tools/build_vocab.py            # downloads sources into tools/.vocab-cache/
     python tools/build_vocab.py --offline  # reuse the cache only
 
-Needs: pip install wordfreq opencc-python-reimplemented pdfplumber
+Needs: pip install wordfreq opencc-python-reimplemented pdfplumber pypinyin
 (wordfreq's frequency dictionaries are read directly, so MeCab is not required).
 
 Every set is ordered easy-first: most frequent words first (wordfreq / ECDICT
@@ -534,12 +534,29 @@ def build_hsk(args):
 
 # 單字 page topics: tools/topics/<lang>.tsv -> data/vocab/tp_<lang>_<topic>.json.
 # Lines are "word<TAB>reading<TAB>meaning<TAB>english" under "## <topic>" headers;
-# rows keep the file's order (easy first, written that way by hand).
-TOPIC_LANGS = ("ja", "ko", "en")
+# rows keep the file's order (easy first, written that way by hand). Chinese lines
+# are "traditional<TAB>pinyin<TAB>english[<TAB>simplified]" and become HSK-shaped
+# rows: simplified by OpenCC tw2s unless given, bopomofo converted from the pinyin.
+TOPIC_LANGS = ("ja", "ko", "en", "zh")
 TOPICS = ("greetings", "food", "home", "shopping", "transport", "travel", "weather", "school", "work", "health")
 
 
+def zh_topic_row(cols, cc, bpmf):
+    trad, pinyin, english, simp = cols
+    syllables = pinyin.split()
+    hanzi = [ch for ch in trad if "一" <= ch <= "鿿"]
+    if not english or len(syllables) != len(hanzi):
+        raise ValueError(f"{len(syllables)} syllables for {len(hanzi)} characters, or no meaning")
+    zhuyin = [bpmf.to_bopomofo(s.lower()) for s in syllables]
+    if any(re.search(r"[a-z0-9À-ɏ]", z, re.I) for z in zhuyin):
+        raise ValueError(f"pinyin {pinyin!r} doesn't convert to bopomofo: {zhuyin}")
+    return [trad, simp or cc.convert(trad), " ".join(zhuyin), pinyin, english]
+
+
 def build_topics(args):
+    import opencc
+    from pypinyin.style.bopomofo import BopomofoConverter
+    cc, bpmf = opencc.OpenCC("tw2s"), BopomofoConverter()
     for lang in TOPIC_LANGS:
         topics, cur = {}, None
         with open(os.path.join(ROOT, "tools", "topics", lang + ".tsv"), encoding="utf-8") as f:
@@ -553,12 +570,18 @@ def build_topics(args):
                     continue
                 if not line.strip() or line.startswith("#"):
                     continue
-                word, reading, meaning, english = (c.strip() for c in (line.split("\t") + ["", "", ""])[:4])
-                if cur is None or not word or not meaning:
+                cols = [c.strip() for c in (line.split("\t") + ["", "", ""])[:4]]
+                if cur is None or not cols[0] or not cols[2 if lang != "zh" else 1]:
                     raise SystemExit(f"{lang}.tsv:{n}: bad line {line!r}")
-                if any(w[0] == word for w in topics[cur]):
-                    raise SystemExit(f"{lang}.tsv:{n}: {word!r} twice in {cur}")
-                topics[cur].append([word, reading, meaning, english])
+                if any(w[0] == cols[0] for w in topics[cur]):
+                    raise SystemExit(f"{lang}.tsv:{n}: {cols[0]!r} twice in {cur}")
+                if lang == "zh":
+                    try:
+                        topics[cur].append(zh_topic_row(cols, cc, bpmf))
+                    except ValueError as e:
+                        raise SystemExit(f"zh.tsv:{n}: {cols[0]}: {e}")
+                else:
+                    topics[cur].append(cols)
         missing = [t for t in TOPICS if t not in topics]
         if missing:
             raise SystemExit(f"{lang}.tsv: missing topics {missing}")

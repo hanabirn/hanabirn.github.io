@@ -98,7 +98,7 @@ I18N.zh = {
         // voice picker: recordings
         tts_auto_rec: '自動：預錄的自然語音（沒錄到的用 {v}）',
         // what's new
-        updates_btn: '更新內容', updates_title: '📢 更新內容', updates_close: '關閉', updates_prev: '上一頁', updates_next: '下一頁', updates_page: '第 {n} / {m} 頁', topic_greetings: '打招呼', topic_food: '吃飯', topic_home: '居家生活', topic_shopping: '購物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天氣與季節', topic_school: '學校', topic_work: '工作', topic_health: '身體與看病', topic_title: '✦ {lang}・主題單字 ✦', topic_hint: '依生活情境分類的常用單字，每個主題 40 個字、分成 4 關。', topic_levels: '{n}/{m} 關', topic_done: '完成', topic_exam_jp: '想照 JLPT 等級學？到「檢定」看看 →', topic_exam_kr: '想照 TOPIK 等級學？到「檢定」看看 →', topic_exam_en: '想照程度學（國中、高中、多益、托福）？到「檢定」看看 →',
+        updates_btn: '更新內容', updates_title: '📢 更新內容', updates_close: '關閉', updates_prev: '上一頁', updates_next: '下一頁', updates_page: '第 {n} / {m} 頁', topic_greetings: '打招呼', topic_food: '吃飯', topic_home: '居家生活', topic_shopping: '購物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天氣與季節', topic_school: '學校', topic_work: '工作', topic_health: '身體與看病', topic_title: '✦ {lang}・主題單字 ✦', topic_hint: '依生活情境分類的常用單字，每個主題 40 個字、分成 4 關。', topic_levels: '{n}/{m} 關', topic_done: '完成', topic_exam_jp: '想照 JLPT 等級學？到「檢定」看看 →', topic_exam_kr: '想照 TOPIK 等級學？到「檢定」看看 →', topic_exam_en: '想照程度學（國中、高中、多益、托福）？到「檢定」看看 →', topic_exam_zh: '想照 HSK 等級學？到「檢定」看看 →',
         // result table header
         result_col_question: '題目',
         // site tour

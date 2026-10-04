@@ -2,8 +2,8 @@
 and Chinese.
 
 Browsers' built-in Japanese / Korean / Chinese voices sound robotic, so the
-words of the JLPT, TOPIK and HSK sets, the Japanese / Korean topic sets (tp_ja_*,
-tp_ko_*), the alphabet chart and the voice-picker
+words of the JLPT, TOPIK and HSK sets, the topic sets (tp_ja_*, tp_ko_*,
+tp_zh_*), the alphabet chart and the voice-picker
 samples are rendered once here and shipped as small MP3s. js/speech.js plays
 them when it has one and falls back to the browser voice otherwise.
 
@@ -185,7 +185,7 @@ def jobs(lang):
         if lang == 'zh-TW':
             for text in alphabet({'zh'}):
                 add(text, text)
-        for trad, simp, *_ in vocab('hsk_'):
+        for trad, simp, *_ in list(vocab('hsk_')) + list(vocab('tp_zh_')):
             fid = add(trad, simp if lang == 'zh-CN' else trad)
             if simp != trad:
                 aliases[audio_id(simp)] = fid

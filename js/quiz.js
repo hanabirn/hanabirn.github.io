@@ -221,19 +221,19 @@ const BUNDLED_SETS = {
     hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
 };
 
-/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en>_<topic>,
+/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en|zh>_<topic>,
    built from the hand-written tools/topics/<lang>.tsv (the 檢定 page keeps the
    graded lists). TOPIC_FILE_LANG maps a quiz-page language to the file prefix. */
 const TOPIC_IDS = ['greetings', 'food', 'home', 'shopping', 'transport', 'travel', 'weather', 'school', 'work', 'health'];
 const TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
     travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
-const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en' };
+const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh' };
 const topicSetIds = fileLang => TOPIC_IDS.map(tp => 'tp_' + fileLang + '_' + tp);
 Object.values(TOPIC_FILE_LANG).forEach(l => topicSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
 /* "tp_ja_food" -> { lang: 'ja', topic: 'food' }, anything else -> null */
 function topicOf(id) {
-    const m = /^tp_(ja|ko|en)_([a-z]+)$/.exec(id || '');
+    const m = /^tp_(ja|ko|en|zh)_([a-z]+)$/.exec(id || '');
     return m ? { lang: m[1], topic: m[2] } : null;
 }
 
@@ -252,7 +252,7 @@ const WORD_SET_FAMILIES = {
     en: ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'].concat(topicSetIds('en')),
     jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'].concat(topicSetIds('ja')),
     kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'].concat(topicSetIds('ko')),
-    zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'],
+    zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'].concat(topicSetIds('zh')),
     fr: ['fr']
 };
 
@@ -473,7 +473,7 @@ function isEnglishQuizLang(lang) {
 }
 
 function isChineseQuizLang(lang) {
-    return lang === 'zh' || lang.startsWith('hsk_');
+    return lang === 'zh' || lang.startsWith('hsk_') || lang.startsWith('tp_zh_');
 }
 
 function speakWord(slow) {
@@ -552,13 +552,11 @@ function setResultAgainLabel(key) {
     b.innerHTML = t(key);
 }
 
-/* The quiz page's language card: Japanese, Korean and English open their topics
-   (#topic-card); French loads straight away; Chinese has no topics yet, so it
-   opens the HSK levels on the exam page. */
+/* The quiz page's language card: Japanese, Korean, English and Chinese open their
+   topics (#topic-card); French loads straight away. */
 function selectLanguage(lang) {
     if (lang === 'fr') { selectWordSet('fr'); return; }
-    if (TOPIC_FILE_LANG[lang]) { showTopicPicker(lang); return; }
-    topicToExam(lang);
+    if (TOPIC_FILE_LANG[lang]) showTopicPicker(lang);
 }
 
 /* The level picker of a language on the exam page (the topic card's link to it). */

@@ -97,7 +97,7 @@ I18N.ja = {
         // voice picker: recordings
         tts_auto_rec: '自動：収録済みの自然な音声（ないものは {v}）',
         // what's new
-        updates_btn: '更新情報', updates_title: '📢 更新情報', updates_close: '閉じる', updates_prev: '前へ', updates_next: '次へ', updates_page: '{n} / {m} ページ', topic_greetings: 'あいさつ', topic_food: '食事', topic_home: '家の中', topic_shopping: '買い物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天気と季節', topic_school: '学校', topic_work: '仕事', topic_health: '体と病院', topic_title: '✦ {lang}・テーマ別単語 ✦', topic_hint: '生活の場面ごとに分けたよく使う単語。各テーマ 40 語、4 ステージです。', topic_levels: '{n}/{m} ステージ', topic_done: 'クリア', topic_exam_jp: 'JLPT のレベル別で学びたいなら「検定」へ →', topic_exam_kr: 'TOPIK のレベル別で学びたいなら「検定」へ →', topic_exam_en: 'レベル別（中学・高校・TOEIC・TOEFL）で学びたいなら「検定」へ →',
+        updates_btn: '更新情報', updates_title: '📢 更新情報', updates_close: '閉じる', updates_prev: '前へ', updates_next: '次へ', updates_page: '{n} / {m} ページ', topic_greetings: 'あいさつ', topic_food: '食事', topic_home: '家の中', topic_shopping: '買い物', topic_transport: '交通', topic_travel: '旅行', topic_weather: '天気と季節', topic_school: '学校', topic_work: '仕事', topic_health: '体と病院', topic_title: '✦ {lang}・テーマ別単語 ✦', topic_hint: '生活の場面ごとに分けたよく使う単語。各テーマ 40 語、4 ステージです。', topic_levels: '{n}/{m} ステージ', topic_done: 'クリア', topic_exam_jp: 'JLPT のレベル別で学びたいなら「検定」へ →', topic_exam_kr: 'TOPIK のレベル別で学びたいなら「検定」へ →', topic_exam_en: 'レベル別（中学・高校・TOEIC・TOEFL）で学びたいなら「検定」へ →', topic_exam_zh: 'HSK のレベル別で学びたいなら「検定」へ →',
         // result table header
         result_col_question: '問題',
         // site tour
