@@ -103,6 +103,8 @@ async function assistantAsk(text) {
     assistantLog.push(err ? { role: 'model', text: reply, err: true } : { role: 'model', text: reply });
     assistantSave();
     renderAssistant();
+    // 小花火 "says" the answer: the mouth moves for about as long as it takes to read the start
+    if (!err && typeof mascotTalk === 'function') mascotTalk(document.querySelector('.assistant-head-face'), 600 + reply.length * 40);
 }
 
 document.addEventListener('keydown', e => {
@@ -112,10 +114,9 @@ document.addEventListener('keydown', e => {
 document.addEventListener('DOMContentLoaded', () => {
     assistantLoad();
     const fab = document.getElementById('assistant-fab');
-    const mascot = document.querySelector('svg.hm');
-    if (fab && mascot) {
-        fab.querySelector('.assistant-fab-face').appendChild(mascot.cloneNode(true));
-        document.querySelector('.assistant-head-face').appendChild(mascot.cloneNode(true));
+    if (fab && typeof mascotHtml === 'function') {
+        fab.querySelector('.assistant-fab-face').innerHTML = mascotHtml('bust');
+        document.querySelector('.assistant-head-face').innerHTML = mascotHtml('bust');
     }
     let seen = false;
     try { seen = !!localStorage.getItem('assistant_seen'); } catch {}

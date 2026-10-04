@@ -1,32 +1,52 @@
-/* ===== 小花火 (the firework mascot) =====
-   Inline SVG (class "hm") used in the header brand and the home dashboard.
-   Colours come from the theme, so the fuse turns light on 墨夜 by itself. */
-.hm {
-    display: block;
+/* ===== 小花火 (js/mascot.js) =====
+   Five stacked layers from images/mascot/ (the owner's drawing). .mascot-full is
+   the whole figure (244×491); .mascot-bust shows the head inside a circle and
+   takes its size from its container. */
+.mascot-slot, .mascot { display: block; }
+.mascot { position: relative; --mascot-ratio: 244 / 491; }
+.mascot .mc-fig { display: block; position: relative; aspect-ratio: var(--mascot-ratio); }
+.mascot-full .mc-fig { width: 100%; }
+.mascot-bust {
     width: 100%;
-    height: auto;
-    overflow: visible;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #fbf2ec;
 }
-.hm .hm-s1 { fill: var(--primary); }
-.hm .hm-s2 { fill: var(--gold); }
-.hm .hm-s3 { fill: #e8a4a0; }
-.hm .hm-fuse {
-    fill: none;
-    stroke: var(--ink);
-    stroke-width: 3;
-    stroke-linecap: round;
+.mascot-bust .mc-fig { position: absolute; width: 118%; left: -9%; top: -12%; }
+.mc-rig {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 100%;
+    animation: mc-breathe 3.2s ease-in-out infinite;
 }
-.hm .hm-body {
-    fill: #fbf2ec;
-    stroke: var(--ink);
-    stroke-width: 1.5;
+.mc-rig img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
 }
-.hm .hm-eye { fill: #2b2724; }
-.hm .hm-shine { fill: #fff; }
-.hm .hm-blush { fill: var(--primary); opacity: 0.35; }
-.hm .hm-mouth {
-    fill: none;
-    stroke: #2b2724;
-    stroke-width: 3;
-    stroke-linecap: round;
+.mc-eyes_closed, .mc-mouth_closed { visibility: hidden; }
+.mascot.mc-blink .mc-eyes_open { visibility: hidden; }
+.mascot.mc-blink .mc-eyes_closed { visibility: visible; }
+.mascot.mc-shut .mc-mouth_smile { visibility: hidden; }
+.mascot.mc-shut .mc-mouth_closed { visibility: visible; }
+.mascot.mc-hop .mc-rig { animation: mc-hop 0.6s cubic-bezier(0.3, 1.6, 0.5, 1); }
+
+@keyframes mc-breathe {
+    0%, 100% { transform: translateY(0) scaleY(1); }
+    50% { transform: translateY(-1.2%) scaleY(1.012); }
+}
+@keyframes mc-hop {
+    0% { transform: none; }
+    20% { transform: scale(1.06, 0.94); }
+    50% { transform: translateY(-12%) scale(0.96, 1.04); }
+    80% { transform: scale(1.04, 0.96); }
+    100% { transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .mc-rig, .mascot.mc-hop .mc-rig { animation: none; }
 }

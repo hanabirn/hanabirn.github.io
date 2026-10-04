@@ -34,13 +34,8 @@
     border-left: 4px solid var(--primary);
 }
 .home-mascot {
-    width: 84px;
+    width: 58px;
     flex: none;
-    animation: home-mascot-bob 3.2s ease-in-out infinite;
-}
-@keyframes home-mascot-bob {
-    0%, 100% { transform: translateY(0) rotate(-2deg); }
-    50%      { transform: translateY(-4px) rotate(2deg); }
 }
 .home-bubble {
     flex: 1;
@@ -260,7 +255,7 @@
     /* 7 x 24px + 6 x 4px = 192px, fits next to the ring at 360px wide */
     .home-week { gap: 4px; }
     .home-week i { width: 24px; height: 24px; font-size: 0.68rem; }
-    .home-mascot { width: 68px; }
+    .home-mascot { width: 48px; }
     .home-goal { gap: 14px; }
     .home-ring { width: 80px; height: 80px; }
     .home-ring > span { width: 64px; height: 64px; padding-top: 18px; }
@@ -268,5 +263,4 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .home-mascot { animation: none; }
 }

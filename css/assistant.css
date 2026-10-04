@@ -27,18 +27,8 @@
 }
 .assistant-fab-face {
     display: block;
-    width: 60px;
-    height: 60px;
+    width: 62px;
     margin: 0 auto;
-    animation: assistant-bob 2.4s ease-in-out infinite;
-}
-.assistant-fab-face svg {
-    width: 100%;
-    height: 100%;
-}
-@keyframes assistant-bob {
-    0%, 100% { transform: translateY(1px) rotate(-4deg); }
-    50% { transform: translateY(-2px) rotate(4deg); }
 }
 /* the tour already has 小花火 on screen */
 body:has(.tour) .assistant-fab,
@@ -115,10 +105,6 @@ body:has(.tour) .assistant-hint {
     width: 38px;
     height: 38px;
     flex: none;
-}
-.assistant-head-face svg {
-    width: 100%;
-    height: 100%;
 }
 .assistant-head-text {
     flex: 1;
@@ -286,8 +272,7 @@ body:has(.tour) .assistant-hint {
         height: 54px;
     }
     .assistant-fab-face {
-        width: 44px;
-        height: 44px;
+        width: 46px;
     }
     .assistant-hint {
         right: auto;
@@ -308,7 +293,7 @@ body:has(.tour) .assistant-hint {
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .assistant-fab-face, .assistant-hint, .assistant-msg.typing i {
+    .assistant-hint, .assistant-msg.typing i {
         animation: none;
     }
 }

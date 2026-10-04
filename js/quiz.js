@@ -1452,6 +1452,7 @@ function showResults() {
         void resultCard.offsetWidth;
         resultCard.classList.add('result-card-enter');
         window.scrollTo(0, 0);
+        if (percentage >= 60 && typeof mascotHop === 'function') setTimeout(() => mascotHop(resultCard.querySelector('.rs-mascot')), 350);
     }, 150);
 
     const correctCount = quizHistory.filter(h => h.isCorrect).length;

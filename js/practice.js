@@ -37,9 +37,9 @@ function srsStageIndex(box) {
 
 /* ----- small shared pieces ----- */
 
-function practiceMascot() {
-    const svg = document.querySelector('.brand-mark svg');
-    return svg ? svg.outerHTML : '';
+/* 小花火 (js/mascot.js): the head in a circle, or 'full' for the whole figure */
+function practiceMascot(kind) {
+    return typeof mascotHtml === 'function' ? mascotHtml(kind || 'bust') : '';
 }
 
 function practiceHead(titleKey, backCall, right) {
@@ -186,7 +186,7 @@ function renderMistakeBook() {
     const head = practiceHead('tool_mistakes', 'closeQuizTools()', openAll.length ? escHtml(t('mistake_open_n', { n: openAll.length })) : '');
 
     if (all.length === 0) {
-        box.innerHTML = head + `<div class="pc-empty"><span class="pc-empty-mascot">${practiceMascot()}</span><p>${escHtml(t('mistake_empty'))}</p></div>`;
+        box.innerHTML = head + `<div class="pc-empty"><span class="pc-empty-mascot">${practiceMascot('full')}</span><p>${escHtml(t('mistake_empty'))}</p></div>`;
         return;
     }
 
@@ -838,6 +838,7 @@ function fcFinish() {
             <button type="button" class="back-btn" onclick="showFlashcard()">${escHtml(t('fc_back_decks'))}</button>
         </div>`;
     window.scrollTo(0, 0);
+    if (pct >= 60 && typeof mascotHop === 'function') setTimeout(() => mascotHop(box.querySelector('.rs-mascot')), 350);
 }
 
 function closeFlashcard() { showFlashcard(); }
@@ -899,7 +900,7 @@ function resultHeroHtml(pct, tiles) {
     }
     return `<div class="rs-hero">
         ${confetti ? `<div class="rs-confetti" aria-hidden="true">${confetti}</div>` : ''}
-        <span class="rs-mascot">${practiceMascot()}</span>
+        <span class="rs-mascot">${practiceMascot('full')}</span>
         <h3 class="rs-title">${escHtml(t(title))}</h3>
     </div>
     <div class="pc-tiles rs-tiles">${tiles.map(x => `<div class="pc-tile ${x.cls || ''}"><b>${escHtml(String(x.n))}</b><span>${escHtml(x.label)}</span></div>`).join('')}</div>`;

@@ -65,8 +65,7 @@ function tourBuild() {
             </div>
             <div class="tour-burst" aria-hidden="true"></div>
         </div>`;
-    const mascot = document.querySelector('svg.hm');
-    if (mascot) el.querySelector('.tour-mascot').appendChild(mascot.cloneNode(true));
+    if (typeof mascotHtml === 'function') el.querySelector('.tour-mascot').innerHTML = mascotHtml('bust');
     document.body.appendChild(el);
     return el;
 }
@@ -104,6 +103,7 @@ function tourRender() {
     if (tourTarget && tourTarget.closest('main')) tourTarget.scrollIntoView({ block: 'center' });
     tourPlace();
     next.focus({ preventScroll: true });
+    if (typeof mascotTalk === 'function') mascotTalk(tourEl.querySelector('.tour-mascot'), 900);
 }
 
 /* The spotlight hugs the target; the card goes below it, or above when there

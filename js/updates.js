@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-04',
+      zh: '小花火換上新造型了！現在是穿著櫻花和服的女孩，會眨眼、呼吸，回答問題時還會開口說話。',
+      'zh-Hans': '小花火换上新造型了！现在是穿着樱花和服的女孩，会眨眼、呼吸，回答问题时还会开口说话。',
+      en: '小花火 has a new look: a girl in a cherry-blossom kimono who blinks, breathes and talks when she answers your questions.',
+      ja: '小花火が新しい姿に！桜の着物の女の子になって、まばたきや呼吸をして、質問に答えるときは口も動きます。',
+      ko: '小花火가 새 모습이 됐어요! 벚꽃 기모노를 입은 소녀로, 눈을 깜빡이고 숨을 쉬며 질문에 답할 때 입도 움직여요.',
+      ru: 'У 小花火 новый облик: девочка в кимоно с сакурой, которая моргает, дышит и говорит, когда отвечает на вопросы.',
+      fr: '小花火 change de look : une fille en kimono à fleurs de cerisier qui cligne des yeux, respire et parle quand elle répond à tes questions.',
+      es: '小花火 estrena aspecto: una chica con kimono de flores de cerezo que parpadea, respira y habla cuando responde a tus preguntas.',
+      de: '小花火 hat einen neuen Look: ein Mädchen im Kirschblüten-Kimono, das blinzelt, atmet und spricht, wenn es deine Fragen beantwortet.' },
+    { date: '2026-10-04',
       zh: '新增帳號登入（Google 或 Email）：登入後錯題本、複習卡片、連續天數和學習進度會自動同步，換手機或電腦都能接著練。不登入也可以照常使用。',
       'zh-Hans': '新增账号登录（Google 或邮箱）：登录后错题本、复习卡片、连续天数和学习进度会自动同步，换手机或电脑都能接着练。不登录也可以照常使用。',
       en: 'Accounts are here (Google or email): sign in and your mistake book, review cards, streak and progress sync automatically, so you can carry on from any phone or computer. Everything still works without an account.',
