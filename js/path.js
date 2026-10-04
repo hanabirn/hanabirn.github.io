@@ -41,7 +41,7 @@ function getSetProgress(setId) {
 function saveSetProgress(setId, prog) {
     const all = getPathProgress();
     all[setId] = prog;
-    try { localStorage.setItem(PATH_PROGRESS_KEY, JSON.stringify(all)); } catch {}
+    storeSet(PATH_PROGRESS_KEY, JSON.stringify(all));
 }
 
 function levelCountFor(wordCount) {

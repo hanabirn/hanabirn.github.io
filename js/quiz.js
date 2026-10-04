@@ -1,5 +1,25 @@
 applyLang(siteLang);
 
+/* localStorage.setItem for learning progress. When the ~5 MB quota is full, the
+   word-list caches (quiz_cache_*: offline copies that can be fetched again) are
+   dropped, biggest first, keeping the set in use, until the write fits — so a full
+   storage never loses progress or throws in the middle of a result screen.
+   Returns whether the value was stored. */
+function storeSet(key, value) {
+    try { localStorage.setItem(key, value); return true; } catch {}
+    try {
+        const keep = 'quiz_cache_' + currentLang;
+        const caches = Object.keys(localStorage)
+            .filter(k => k.startsWith('quiz_cache_') && k !== key && k !== keep)
+            .sort((a, b) => localStorage.getItem(b).length - localStorage.getItem(a).length);
+        for (const k of caches) {
+            localStorage.removeItem(k);
+            try { localStorage.setItem(key, value); return true; } catch {}
+        }
+    } catch {}
+    return false;
+}
+
 /* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
 const MORE_TABS = ['dict', 'alphabet', 'guestbook', 'feedback', 'about'];
 
@@ -56,7 +76,7 @@ function getTabVisibility() {
 }
 
 function saveTabVisibility(v) {
-    localStorage.setItem('nav_tab_visibility', JSON.stringify(v));
+    storeSet('nav_tab_visibility', JSON.stringify(v));
 }
 
 function applyTabVisibility() {
@@ -698,7 +718,7 @@ function selectWordSet(id) {
 
 function saveVocabCache(lang) {
     try {
-        localStorage.setItem('quiz_cache_' + lang, JSON.stringify({ vocabularyList, readingList }));
+        storeSet('quiz_cache_' + lang, JSON.stringify({ vocabularyList, readingList }));
     } catch (e) {}
 }
 
@@ -1683,7 +1703,7 @@ function saveMistakes(list) {
         // drop repaired rows before the ones still to fix, oldest first
         list = list.sort((a, b) => (!!a.fixedAt - !!b.fixedAt) || (b.last - a.last)).slice(0, 300);
     }
-    try { localStorage.setItem('quiz_mistakes', JSON.stringify(list)); } catch {}
+    storeSet('quiz_mistakes', JSON.stringify(list));
     updateMistakeBadge();
 }
 
@@ -1782,7 +1802,7 @@ function saveQuizRecord(rec) {
     const list = getQuizRecords();
     list.push(rec);
     if (list.length > 200) list.splice(0, list.length - 200);
-    localStorage.setItem('quiz_records', JSON.stringify(list));
+    storeSet('quiz_records', JSON.stringify(list));
 }
 
 /* ===== Daily activity (home dashboard: daily goal + streak) =====
@@ -1811,7 +1831,7 @@ function logDailyActivity() {
             .slice(0, keys.length - DAILY_ACTIVITY_KEEP_DAYS)
             .forEach(k => delete act[k]);
     }
-    try { localStorage.setItem('daily_activity', JSON.stringify(act)); } catch {}
+    storeSet('daily_activity', JSON.stringify(act));
 }
 
 /* A day counts toward the streak if a quiz was finished OR any word was
@@ -1882,7 +1902,7 @@ function checkAchievements() {
         }
     });
     if (newly.length) {
-        localStorage.setItem('quiz_achievements', JSON.stringify([...unlocked]));
+        storeSet('quiz_achievements', JSON.stringify([...unlocked]));
         newly.forEach((a, i) => {
             setTimeout(() => showShareToast(`${a.icon} ${t('ach_unlocked')}: ${t(a.titleKey)}`), i * 1200);
         });
@@ -2223,7 +2243,7 @@ function getFlashcardKnown() {
 }
 
 function saveFlashcardKnown() {
-    localStorage.setItem('flashcard_known', JSON.stringify([...flashcardKnownSet]));
+    storeSet('flashcard_known', JSON.stringify([...flashcardKnownSet]));
 }
 
 function getFlashcardUnknown() {
@@ -2231,7 +2251,7 @@ function getFlashcardUnknown() {
 }
 
 function saveFlashcardUnknown() {
-    localStorage.setItem('flashcard_unknown', JSON.stringify([...flashcardUnknownSet]));
+    storeSet('flashcard_unknown', JSON.stringify([...flashcardUnknownSet]));
 }
 
 /* ===================== Spaced Repetition (quiz words, Leitner boxes) =====================
@@ -2261,7 +2281,7 @@ function saveSrsQuizCards(cards) {
             .slice(0, ids.length - SRS_QUIZ_MAX_CARDS)
             .forEach(id => delete cards[id]);
     }
-    try { localStorage.setItem('srs_quiz', JSON.stringify(cards)); } catch {}
+    storeSet('srs_quiz', JSON.stringify(cards));
 }
 
 function gradeSrsQuizCard(entry, good) {
