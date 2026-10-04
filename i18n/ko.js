@@ -144,4 +144,7 @@ I18N.ko = {
         install_ios_1: '브라우저의 "공유" 버튼을 누르세요 (위쪽 화살표가 있는 네모, iPhone은 아래, iPad는 위)', install_ios_2: '아래로 내려서 "홈 화면에 추가"를 선택하세요', install_ios_3: '오른쪽 위의 "추가"를 누르면 홈 화면에 Hanabi가 생겨요', install_android_1: '브라우저 오른쪽 위의 "⋮" 메뉴를 누르세요',
         install_android_2: '"앱 설치" 또는 "홈 화면에 추가"를 선택하세요', install_mac_1: 'Safari 메뉴 막대에서 "파일"을 여세요', install_mac_2: '"Dock에 추가"를 선택하세요', install_desktop_1: 'Chrome이나 Edge로 사이트를 열고 주소창 오른쪽의 "설치" 아이콘(또는 브라우저의 ⋮ 메뉴)을 누르세요',
         install_desktop_2: '"Hanabiの小天地 설치"를 선택하세요',
+        // "we moved" notice for the old netlify app (js/widgets.js)
+        moved_title: '사이트가 이사했어요!', moved_text: '새 주소는 hanabirn.xyz예요. 예전에 홈 화면에 추가했다면 그건 이전 앱이에요. 지우고 여기서 다시 설치해야 새 기능과 AI 도우미 "小花火"를 제대로 쓸 수 있어요.', moved_note: '이전 앱의 연습 기록은 자동으로 옮길 수 없어요. 죄송해요!', moved_reinstall: '앱 다시 설치하기',
+        moved_ok: '알겠어요',
 };

@@ -287,6 +287,8 @@ function refreshInstallEntries() {
 
 function showInstallBanner() {
     if (isStandaloneApp()) return;
+    const moved = document.getElementById('moved-overlay');
+    if (moved && moved.classList.contains('show')) return;   // the moved notice already offers it
     try { if (localStorage.getItem('pwa_install_dismissed')) return; } catch {}
     const banner = document.getElementById('pwa-install-banner');
     if (banner) banner.classList.add('show');
@@ -360,6 +362,35 @@ function suggestInstallOnIos() {
     showInstallBanner();
 }
 if (installPlatform() === 'ios') setTimeout(suggestInstallOnIos, 8000);
+
+/* ===================== 🚚 "We moved" notice =====================
+   hanabirn.netlify.app 301s to hanabirn.xyz/…?from=netlify (the root _redirects file).
+   Whoever arrives that way — usually the old home-screen app, whose data and origin
+   stay on Netlify — is asked to delete it and install the app again from here. The
+   marker is taken off the address so a reload doesn't ask again. */
+function showMovedNotice() {
+    const overlay = document.getElementById('moved-overlay');
+    if (overlay) overlay.classList.add('show');
+    const banner = document.getElementById('pwa-install-banner');   // the notice offers the same thing
+    if (banner) banner.classList.remove('show');
+}
+
+function closeMovedNotice() {
+    const overlay = document.getElementById('moved-overlay');
+    if (overlay) overlay.classList.remove('show');
+}
+
+(function checkMovedFromNetlify() {
+    const params = new URLSearchParams(location.search);
+    if (params.get('from') !== 'netlify') return;
+    params.delete('from');
+    history.replaceState(null, '', location.pathname + (params.toString() ? '?' + params.toString() : '') + location.hash);
+    // a returning visitor: no first-visit tour over the notice (tour.js decides on DOMContentLoaded)
+    try { localStorage.setItem('tour_done', '1'); } catch {}
+    setTimeout(showMovedNotice, 600);
+})();
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMovedNotice(); });
 
 /* ===================== 🔄 New Version Banner ===================== */
 

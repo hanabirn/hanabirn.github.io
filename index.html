@@ -723,6 +723,23 @@
         </div>
     </div>
 
+    <!-- "we moved" notice for visitors still on the old hanabirn.netlify.app app (js/widgets.js) -->
+    <div class="updates-overlay" id="moved-overlay" onclick="if(event.target===this) closeMovedNotice()">
+        <div class="updates-panel install-panel" role="dialog" aria-modal="true" aria-labelledby="moved-title">
+            <div class="install-hero">
+                <img src="/icons/web-app-manifest-192x192.png" alt="" width="64" height="64">
+                <div>
+                    <h3 id="moved-title" data-i18n="moved_title">網站搬家囉！</h3>
+                    <p>hanabirn.xyz</p>
+                </div>
+            </div>
+            <p class="moved-text" data-i18n="moved_text">我們的新網址是 hanabirn.xyz。如果你之前把網站加到主畫面，那是舊的 App：請把它刪掉，再從這裡重新下載一次，新功能和 AI 小幫手「小花火」才能正常使用。</p>
+            <p class="moved-note" data-i18n="moved_note">舊 App 裡的練習紀錄沒辦法自動搬過來，不好意思！</p>
+            <button class="next-btn updates-close" onclick="closeMovedNotice(); openInstallHelp()" data-i18n="moved_reinstall">重新下載 App</button>
+            <button class="back-btn install-close" onclick="closeMovedNotice()" data-i18n="moved_ok">知道了</button>
+        </div>
+    </div>
+
     <div class="more-sheet-overlay" id="more-sheet" onclick="if(event.target===this) closeMoreSheet()">
         <div class="more-sheet" role="dialog" aria-modal="true" aria-labelledby="more-sheet-title">
             <div class="more-sheet-handle" aria-hidden="true"></div>

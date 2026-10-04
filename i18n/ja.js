@@ -144,4 +144,7 @@ I18N.ja = {
         install_ios_1: 'ブラウザの「共有」ボタンをタップ（四角に上向き矢印。iPhoneは下、iPadは上）', install_ios_2: '下にスクロールして「ホーム画面に追加」を選ぶ', install_ios_3: '右上の「追加」をタップすると、ホーム画面に Hanabi が出ます', install_android_1: 'ブラウザ右上の「⋮」メニューをタップ',
         install_android_2: '「アプリをインストール」か「ホーム画面に追加」を選ぶ', install_mac_1: 'Safari のメニューバーで「ファイル」を開く', install_mac_2: '「Dockに追加」を選ぶ', install_desktop_1: 'Chrome か Edge でサイトを開き、アドレスバー右の「インストール」アイコン（またはブラウザの ⋮ メニュー）をクリック',
         install_desktop_2: '「Hanabiの小天地 をインストール」を選ぶ',
+        // "we moved" notice for the old netlify app (js/widgets.js)
+        moved_title: 'サイトがお引っ越ししました！', moved_text: '新しいアドレスは hanabirn.xyz です。以前ホーム画面に追加していた場合、それは古いアプリです。削除して、ここからもう一度入れてください。新機能や AI アシスタント「小花火」が正しく使えるようになります。', moved_note: '古いアプリの練習記録は自動では引き継げません。ごめんなさい！', moved_reinstall: 'アプリを入れ直す',
+        moved_ok: 'わかった',
 };

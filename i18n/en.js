@@ -144,4 +144,7 @@ I18N.en = {
         install_ios_1: 'Tap the browser\'s Share button (a square with an arrow pointing up — at the bottom on iPhone, at the top on iPad)', install_ios_2: 'Scroll down and choose “Add to Home Screen”', install_ios_3: 'Tap “Add” in the top corner — Hanabi appears on your home screen', install_android_1: 'Tap the browser\'s ⋮ menu (top right)',
         install_android_2: 'Choose “Install app” or “Add to Home screen”', install_mac_1: 'In Safari\'s menu bar, open “File”', install_mac_2: 'Choose “Add to Dock”', install_desktop_1: 'Open the site in Chrome or Edge and click the install icon at the right of the address bar (or the browser\'s ⋮ menu)',
         install_desktop_2: 'Choose “Install Hanabiの小天地”',
+        // "we moved" notice for the old netlify app (js/widgets.js)
+        moved_title: 'We\'ve moved!', moved_text: 'Our new address is hanabirn.xyz. If you added the site to your home screen before, that\'s the old app: please delete it and install it again from here, so the new features and the AI helper 小花火 work properly.', moved_note: 'Sorry — practice progress saved in the old app can\'t be moved over automatically.', moved_reinstall: 'Install the app again',
+        moved_ok: 'Got it',
 };

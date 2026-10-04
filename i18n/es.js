@@ -144,4 +144,7 @@ I18N.es = {
         install_ios_1: 'Toca el botón Compartir (un cuadrado con una flecha hacia arriba; abajo en iPhone, arriba en iPad)', install_ios_2: 'Desliza y elige «Añadir a pantalla de inicio»', install_ios_3: 'Toca «Añadir» arriba: Hanabi aparecerá en tu pantalla de inicio', install_android_1: 'Toca el menú ⋮ del navegador (arriba a la derecha)',
         install_android_2: 'Elige «Instalar aplicación» o «Añadir a pantalla de inicio»', install_mac_1: 'En la barra de menús de Safari, abre «Archivo»', install_mac_2: 'Elige «Añadir al Dock»', install_desktop_1: 'Abre el sitio en Chrome o Edge y haz clic en el icono de instalar a la derecha de la barra de direcciones (o en el menú ⋮)',
         install_desktop_2: 'Elige «Instalar Hanabiの小天地»',
+        // "we moved" notice for the old netlify app (js/widgets.js)
+        moved_title: '¡Nos mudamos!', moved_text: 'Nuestra nueva dirección es hanabirn.xyz. Si antes añadiste el sitio a tu pantalla de inicio, esa es la app antigua: bórrala e instálala de nuevo desde aquí para que funcionen las novedades y el asistente de IA 小花火.', moved_note: 'Lo sentimos: el progreso de la app antigua no se puede pasar automáticamente.', moved_reinstall: 'Volver a instalar la app',
+        moved_ok: 'Entendido',
 };

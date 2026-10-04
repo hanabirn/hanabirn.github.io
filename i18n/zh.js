@@ -145,4 +145,7 @@ I18N.zh = {
         install_ios_1: '點瀏覽器的「分享」按鈕（方框加向上的箭頭；iPhone 在下方，iPad 在上方）', install_ios_2: '往下滑，選「加入主畫面」', install_ios_3: '按右上角的「新增」，主畫面就會出現 Hanabi', install_android_1: '點瀏覽器右上角的「⋮」選單',
         install_android_2: '選「安裝應用程式」或「加到主畫面」', install_mac_1: '在 Safari 上方的選單點「檔案」', install_mac_2: '選「加入 Dock」', install_desktop_1: '用 Chrome 或 Edge 開這個網站，點網址列右邊的「安裝」圖示（或瀏覽器的 ⋮ 選單）',
         install_desktop_2: '選「安裝 Hanabiの小天地」',
+        // "we moved" notice for the old netlify app (js/widgets.js)
+        moved_title: '網站搬家囉！', moved_text: '我們的新網址是 hanabirn.xyz。如果你之前把網站加到主畫面，那是舊的 App：請把它刪掉，再從這裡重新下載一次，新功能和 AI 小幫手「小花火」才能正常使用。', moved_note: '舊 App 裡的練習紀錄沒辦法自動搬過來，不好意思！', moved_reinstall: '重新下載 App',
+        moved_ok: '知道了',
 };
