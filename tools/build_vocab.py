@@ -784,7 +784,13 @@ ZH_FIX_FR = {
     "que|conj": "（引導子句）；比", "on|pron": "人們；我們", "dont|pron": "（關係代名詞）其中",
     "soit|conj": "或者；也就是", "parce|conj": "因為（parce que）", "tandis|conj": "而（tandis que）",
     "afin|conj": "為了（afin de / que）",
+    "mail|noun": "電子郵件",
 }
+EN_FIX_FR = {"mail|noun": "email"}
+# FLELex tagging noise found when reviewing: a name (Zoé), a verb form filed as a noun
+# (oublie), and words whose tag led to the wrong Wiktionary sense (bis, ben) or that
+# are far too rare for their level (pers, rabat, muser)
+FR_SKIP = {"zoé", "oublie", "bis", "ben", "pers", "rabat", "muser"}
 
 
 def short_gloss(glosses, limit=40):
@@ -829,7 +835,7 @@ def french_items(offline):
     items, seen = [], set()
     for r in rows:
         w, pos = r["word"], FLELEX_POS.get(r["tag"])
-        if w in seen or not pos or not re.fullmatch(r"[^\W\d_]+(?:['-][^\W\d_]+)*", w):
+        if w in seen or w in FR_SKIP or not pos or not re.fullmatch(r"[^\W\d_]+(?:['-][^\W\d_]+)*", w):
             continue
         e = next((x for x in kk.get(w) or [] if x["pos"] == pos and x["glosses"]), None)
         if not e:
@@ -860,7 +866,8 @@ def build_french(args):
                 continue
             e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
             g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
-            words.append([fr_shown(it["w"], it["pos"], it["gender"]), g, zh[f"{it['w']}|{it['pos']}"], short_gloss(e["glosses"])])
+            key = f"{it['w']}|{it['pos']}"
+            words.append([fr_shown(it["w"], it["pos"], it["gender"]), g, zh[key], EN_FIX_FR.get(key) or short_gloss(e["glosses"])])
         write_set(f"fr_{lv.lower()}", "fr", words,
                   f"FLELex（CEFRLex, UCLouvain）{lv}；英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "FLELex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
 
@@ -874,7 +881,18 @@ KELLY_RU = "https://ssharoff.github.io/kelly/ru_m3.xls"
 KELLY_POS = {"n": "noun", "v": "verb", "adj": "adj", "adv": "adv", "mwe": "phrase", "num": "num",
              "pron": "pron", "n prop": "name", "adpos": "prep", "prep": "prep", "particle": "particle",
              "con": "conj", "excl": "intj", "abbr": "abbr", "det": "det"}
-ZH_FIX_RU = {}
+# fixes found when reviewing: Kelly lists some forms (те, ту, та, эта) and words whose
+# first Wiktionary entry is a homonym (полька, a mortar; эта, the Greek letter)
+ZH_FIX_RU = {
+    "те|pron": "那些", "ту|pron": "那個（陰性受格）", "та|pron": "那（陰性）", "эта|pron": "這（陰性）",
+    "немка|noun": "德國女人", "полька|noun": "波蘭女人", "хоккей|noun": "冰上曲棍球", "мандарин|noun": "橘子",
+    "что|conj": "什麼；（引導子句）",
+}
+EN_FIX_RU = {
+    "те|pron": "those", "ту|pron": "that (feminine, accusative)", "та|pron": "that (feminine)",
+    "эта|pron": "this (feminine)", "немка|noun": "German woman", "полька|noun": "Polish woman",
+    "хоккей|noun": "ice hockey", "мандарин|noun": "mandarin orange", "что|conj": "what; that",
+}
 
 
 def russian_items(offline):
@@ -911,7 +929,8 @@ def build_russian(args):
     if missing:
         raise SystemExit(f"{len(missing)} Russian words still lack a meaning; run again")
     for lv in CEFR_LEVELS:
-        words = [[it["w"], it["stressed"], zh[f"{it['w']}|{it['pos']}"], short_gloss(it["glosses"])]
+        words = [[it["w"], it["stressed"], zh[f"{it['w']}|{it['pos']}"],
+                  EN_FIX_RU.get(f"{it['w']}|{it['pos']}") or short_gloss(it["glosses"])]
                  for it in items if it["level"] == lv]
         write_set(f"ru_{lv.lower()}", "ru", words,
                   f"Kelly 俄文詞表（Kelly project, Leeds）{lv}；重音與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "Kelly CC BY-NC-SA 2.0；Wiktionary CC BY-SA")
