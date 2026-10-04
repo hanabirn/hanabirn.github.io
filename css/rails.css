@@ -3,7 +3,9 @@
    clear of the fixed buttons on the right edge (AI chat, settings, reload,
    clock), so it needs a wider screen than the left one. The alphabet,
    dictionary and quiz pages widen to 1180px, so their rails wait for even
-   wider screens. */
+   wider screens. --rail-top is set by railPlace() (js/rails.js) from the
+   header's real height, which changes with the language (English wraps the
+   tagline onto three lines). */
 .side-rail { display: none; }
 
 @media (min-width: 1280px) {
@@ -12,7 +14,7 @@
     .rail-left {
         display: block;
         position: fixed;
-        top: 140px;
+        top: var(--rail-top);
         left: calc(50% - 360px - 28px - var(--rail-left-w));
         width: var(--rail-left-w);
         padding-top: 92px;
@@ -25,10 +27,10 @@
         flex-direction: column;
         gap: 14px;
         position: fixed;
-        top: 140px;
+        top: var(--rail-top);
         right: max(112px, calc(50% - 360px - 28px - var(--rail-right-w)));
         width: var(--rail-right-w);
-        max-height: calc(100vh - 140px - 120px);
+        max-height: calc(100vh - var(--rail-top) - 120px);
         overflow-y: auto;
         padding: 2px 2px 6px;
         z-index: 5;
@@ -37,7 +39,10 @@
 :root {
     --rail-left-w: 180px;
     --rail-right-w: 232px;
+    --rail-top: 150px;
 }
+/* with room on her left, the bubble goes there and she needs no space above */
+.rail-left.bubble-side { padding-top: 0; }
 
 /* the pages that are 1180px wide on desktop */
 @media (min-width: 1280px) and (max-width: 1699.98px) {
@@ -65,7 +70,7 @@
 .poke-btn {
     position: relative;
     display: block;
-    width: min(100%, calc((100vh - 140px - 92px - 40px) * 244 / 491));
+    width: min(100%, calc((100vh - var(--rail-top) - 92px - 40px) * 244 / 491));
     margin: 0 auto;
     padding: 0;
     border: 0;
@@ -73,6 +78,7 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
+.bubble-side .poke-btn { width: min(100%, calc((100vh - var(--rail-top) - 40px) * 244 / 491)); }
 .poke-btn:focus-visible {
     outline: 2px solid var(--primary);
     outline-offset: 6px;
@@ -125,6 +131,29 @@
 @keyframes poke-bubble-in {
     from { opacity: 0; transform: translateX(-50%) translateY(6px) scale(0.92); }
     to { opacity: 1; transform: translateX(-50%); }
+}
+/* beside her, at head height, pointing right */
+.bubble-side .poke-bubble {
+    top: 9%;
+    left: auto;
+    right: calc(100% + 14px);
+    transform: none;
+    max-width: 220px;
+    text-align: left;
+}
+.bubble-side .poke-bubble::after {
+    left: auto;
+    right: -9px;
+    top: 14px;
+    bottom: auto;
+    margin-left: 0;
+    border-bottom: 0;
+    border-top: 2px solid var(--line);
+}
+.bubble-side .poke-bubble.show { animation-name: poke-bubble-side-in; }
+@keyframes poke-bubble-side-in {
+    from { opacity: 0; transform: translateX(8px) scale(0.92); }
+    to { opacity: 1; transform: none; }
 }
 
 /* ♪ 💕 /// ! 💢 floating up beside her head */

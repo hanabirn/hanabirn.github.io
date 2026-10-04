@@ -336,7 +336,17 @@ function renderRailTasks() {
             <span class="rail-check" aria-hidden="true">${x.done ? '✓' : ''}</span><span>${escHtml(x.text)}</span></button></li>`).join('')}</ul>`;
 }
 
+/* The rails start below the header, whose height changes with the language and
+   the window; the bubble goes beside 小花火 when there is room on her left. */
+function railPlace() {
+    const header = document.querySelector('header');
+    if (header) document.documentElement.style.setProperty('--rail-top', (header.offsetTop + header.offsetHeight + 16) + 'px');
+    const left = document.getElementById('rail-left');
+    if (left && railVisible('rail-left')) left.classList.toggle('bubble-side', left.getBoundingClientRect().left >= 250);
+}
+
 function renderRails() {
+    railPlace();
     const left = document.getElementById('rail-left');
     const right = document.getElementById('rail-right');
     if (left) left.setAttribute('aria-label', t('rail_poke'));
@@ -367,6 +377,8 @@ document.addEventListener('DOMContentLoaded', () => {
     railPage = document.body.dataset.page || 'home';
     railSeenPages.add(railPage);
     renderRails();
+    // web fonts can change the header's height after load
+    window.addEventListener('load', railPlace);
     // the rails appear when the window gets wide enough: fill them in then
     window.addEventListener('resize', () => {
         clearTimeout(window._railResize);
