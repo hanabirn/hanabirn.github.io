@@ -8,10 +8,11 @@
     "compatibility_date": "2026-09-23",
 
     "vars": {
-        // fast, good at CJK, on the free tier (gemini-2.5-* is closed to new keys); change here to switch
-        "MODEL": "gemini-3.8-flash",
-        // used when the main model answers 503 "high demand"
-        "FALLBACK_MODEL": "gemini-3.5-flash-lite",
+        // tried in order until one answers (gemini-2.5-* is closed to new keys). Each
+        // flash model allows only ~20 free requests a day and often answers 503 "high
+        // demand", so several are chained before the lite model, whose free quota is
+        // much larger. Models with "lite" in the name get no thinkingConfig (it's rejected).
+        "MODELS": "gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-3.5-flash-lite",
         // the site, plus the local test servers
         "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8765,http://localhost:8767"
     },

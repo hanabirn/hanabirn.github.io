@@ -28,7 +28,7 @@ Personality: warm, encouraging and a little playful, like a small firework — b
 
 You help with:
 - Language learning in any language: meanings, nuance, grammar, pronunciation tips, example sentences, ways to remember words, study plans.
-- Using the site. Its features: a home dashboard (daily goal ring, streak, "continue learning"); 單字測驗 vocabulary quizzes with graded word lists (English junior/senior high, TOEIC, TOEFL; Japanese JLPT N5–N1; Korean TOPIK 1–4; Chinese HSK 1–7; French), learned on a path of 10-word levels (pass with 80%), plus free practice, flashcards, a listening quiz, a mistake book, spaced-repetition review and quiz stats; 檢定考試 exam word lists; 字典 a dictionary (translation, part of speech, definitions, examples); 字母表 an alphabet chart for 8 languages with audio; 記事本 a notepad stored only on the device; settings to choose visible pages and a voice per language; 9 interface languages and a dark mode; a site tour that can be replayed from the settings.
+- Using the site. Its features: a home dashboard (daily goal ring, streak, "continue learning"); 單字測驗 vocabulary quizzes with graded word lists (English junior/senior high, TOEIC, TOEFL; Japanese JLPT N5–N1; Korean TOPIK 1–4; Chinese HSK 1–7; French), learned on a path of 10-word levels (pass with 80%), plus free practice and the 練習中心 practice hub under the language buttons: 間隔複習 spaced-repetition review (due cards, next batch, 7-day forecast), 錯題本 a mistake book (a word leaves it after 2 right answers in a row; 修復 runs a repair round), 單字閃卡 flashcard decks you swipe right for 會了 / left for 還不熟, 聽力測驗 listening (tap the word you hear or type it, 🐢 slow playback) and 測驗統計 stats (words mastered per list, practice calendar, this week vs last); 檢定考試 exam word lists; 字典 a dictionary (translation, part of speech, definitions, examples); 字母表 an alphabet chart for 8 languages with audio; 記事本 a notepad stored only on the device; settings to choose visible pages and a voice per language; 9 interface languages and a dark mode; a site tour that can be replayed from the settings.
 
 Rules:
 - The visitor's interface language is ${name}. Reply in it, unless the visitor writes in another language or asks for one.
@@ -60,6 +60,8 @@ function json(body, status, headers) {
     });
 }
 
+const DEFAULT_MODELS = 'gemini-3.8-flash,gemini-3.7-flash,gemini-3.6-flash,gemini-3.5-flash,gemini-3.5-flash-lite';
+
 export default {
     async fetch(request, env) {
         const origin = request.headers.get('Origin') || '';
@@ -89,35 +91,41 @@ export default {
 
         const lang = typeof body.lang === 'string' ? body.lang : 'zh';
         const page = typeof body.page === 'string' ? body.page.slice(0, 20) : '';
-        // the main model, then a lighter one when Google answers "too busy" (503) —
-        // the lite model rejects thinkingConfig, so it's only sent to the main one
-        const attempts = [
-            { model: env.MODEL || 'gemini-3.8-flash', thinking: true },
-            { model: env.FALLBACK_MODEL || 'gemini-3.5-flash-lite', thinking: false }
-        ];
-        let res, busy = false;
+        // env.MODELS in order, moving on whenever one fails: "too busy" (503), an error
+        // (500), or — the usual case — its free daily quota is spent (429; each flash
+        // model allows only ~20 requests a day, the lite model far more). Lite models
+        // reject thinkingConfig, so it's only sent to the others.
+        const attempts = (env.MODELS || DEFAULT_MODELS).split(',').map(s => s.trim()).filter(Boolean)
+            .map(model => ({ model, thinking: !model.includes('lite') }));
+        let reply = '', busy = false;
         for (const { model, thinking } of attempts) {
             const generationConfig = { temperature: 0.7, maxOutputTokens: 800 };
             if (thinking) generationConfig.thinkingConfig = { thinkingBudget: 0 };
+            let res;
             try {
                 res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY },
                     body: JSON.stringify({ systemInstruction: { parts: [{ text: persona(lang, page) }] }, contents, generationConfig })
                 });
-            } catch {
-                res = null;
+            } catch (e) {
+                console.log('gemini fetch failed', model, String(e));
                 continue;
             }
-            if (res.ok) break;
-            busy = res.status === 429 || res.status === 503;
-            console.log('gemini error', model, res.status, (await res.text()).slice(0, 300));
-            if (res.status !== 503 && res.status !== 500) break;
+            if (!res.ok) {
+                busy = res.status === 429 || res.status === 503;
+                console.log('gemini error', model, res.status, (await res.text()).slice(0, 300));
+                if (res.status === 400) break;   // a bad request fails on every model
+                continue;
+            }
+            const data = await res.json().catch(() => ({}));
+            const cand = (data.candidates || [])[0];
+            reply = (cand?.content?.parts || []).map(p => p.text || '').join('').trim();
+            if (reply) break;
+            busy = false;
+            console.log('gemini empty reply', model, cand?.finishReason || data.promptFeedback?.blockReason || '');
         }
-        if (!res || !res.ok) return json({ error: busy ? 'busy' : 'upstream' }, busy ? 429 : 502, headers);
-        const data = await res.json();
-        const reply = ((data.candidates || [])[0]?.content?.parts || []).map(p => p.text || '').join('').trim();
-        if (!reply) return json({ error: 'upstream' }, 502, headers);
+        if (!reply) return json({ error: busy ? 'busy' : 'upstream' }, busy ? 429 : 502, headers);
         return json({ reply }, 200, headers);
     }
 };
