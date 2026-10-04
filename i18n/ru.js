@@ -138,4 +138,10 @@ I18N.ru = {
         result_line: 'Верно {c} / {n} · очки {s}', result_each: 'Все вопросы ({n})', result_goal_left: 'До цели дня: {n} слов', result_goal_done: 'Цель дня выполнена!',
         result_streak: '{n} дн. подряд', result_hook_now: 'Есть {n} карточек к повторению — нажми', result_hook_tomorrow: 'За 24 часа подойдёт срок {n} карточек — возвращайся!', result_hook_next: 'Следующие карточки — {when}',
         result_retry_wrong: 'Повторить {n} ошибок',
+        // install the app (js/widgets.js)
+        install_btn: 'Установить', install_title: 'Приложение Hanabi', install_sub: 'Бесплатно, без регистрации, обновляется вместе с сайтом', install_why_home: 'Открывается с главного экрана, как обычное приложение',
+        install_why_full: 'Полный экран без адресной строки', install_why_offline: 'Без интернета открывается то, что уже загружалось', install_now: 'Установить сейчас', install_how: 'Как добавить:',
+        install_ios_1: 'Нажми «Поделиться» (квадрат со стрелкой вверх: на iPhone внизу, на iPad вверху)', install_ios_2: 'Пролистай вниз и выбери «На экран «Домой»»', install_ios_3: 'Нажми «Добавить» — Hanabi появится на главном экране', install_android_1: 'Открой меню браузера «⋮» (справа вверху)',
+        install_android_2: 'Выбери «Установить приложение» или «Добавить на главный экран»', install_mac_1: 'В меню Safari открой «Файл»', install_mac_2: 'Выбери «Добавить в Dock»', install_desktop_1: 'Открой сайт в Chrome или Edge и нажми значок установки справа в адресной строке (или меню ⋮)',
+        install_desktop_2: 'Выбери «Установить Hanabiの小天地»',
 };

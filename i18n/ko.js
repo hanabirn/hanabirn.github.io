@@ -138,4 +138,10 @@ I18N.ko = {
         result_line: '{c} / {n}문제 정답 · 점수 {s}', result_each: '문제별로 보기 ({n})', result_goal_left: '오늘 목표까지 {n}개 남았어요', result_goal_done: '오늘 목표 달성!',
         result_streak: '{n}일 연속', result_hook_now: '복습할 카드가 {n}장 있어요. 눌러서 복습하기', result_hook_tomorrow: '24시간 안에 카드 {n}장이 복습 시간이 돼요. 꼭 돌아와요!', result_hook_next: '다음 복습 카드는 {when}',
         result_retry_wrong: '틀린 {n}개 다시 하기',
+        // install the app (js/widgets.js)
+        install_btn: '앱 설치', install_title: 'Hanabi 앱 설치하기', install_sub: '무료, 가입 없이, 사이트와 함께 업데이트돼요', install_why_home: '홈 화면에서 다른 앱처럼 바로 열어요',
+        install_why_full: '주소창 없이 전체 화면으로 연습', install_why_offline: '인터넷이 없어도 본 적 있는 내용은 열려요', install_now: '지금 설치', install_how: '추가하는 방법:',
+        install_ios_1: '브라우저의 "공유" 버튼을 누르세요 (위쪽 화살표가 있는 네모, iPhone은 아래, iPad는 위)', install_ios_2: '아래로 내려서 "홈 화면에 추가"를 선택하세요', install_ios_3: '오른쪽 위의 "추가"를 누르면 홈 화면에 Hanabi가 생겨요', install_android_1: '브라우저 오른쪽 위의 "⋮" 메뉴를 누르세요',
+        install_android_2: '"앱 설치" 또는 "홈 화면에 추가"를 선택하세요', install_mac_1: 'Safari 메뉴 막대에서 "파일"을 여세요', install_mac_2: '"Dock에 추가"를 선택하세요', install_desktop_1: 'Chrome이나 Edge로 사이트를 열고 주소창 오른쪽의 "설치" 아이콘(또는 브라우저의 ⋮ 메뉴)을 누르세요',
+        install_desktop_2: '"Hanabiの小天地 설치"를 선택하세요',
 };

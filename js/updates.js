@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-03',
+      zh: '新增「下載 App」：頁首（手機在「更多」裡）可以把網站裝成 App，iPhone 也有一步步的教學；舊網址 hanabirn.netlify.app 會自動轉到 hanabirn.xyz。',
+      'zh-Hans': '新增“下载 App”：页首（手机在“更多”里）可以把网站装成 App，iPhone 也有一步步的教学；旧网址 hanabirn.netlify.app 会自动转到 hanabirn.xyz。',
+      en: 'New “Get the app” button (in the header, or under More on phones) installs the site as an app, with step-by-step help for iPhone. The old address hanabirn.netlify.app now redirects to hanabirn.xyz.',
+      ja: '「アプリを入れる」を追加：ヘッダー（スマホは「その他」）からサイトをアプリとして入れられます。iPhone 向けの手順もあります。旧アドレス hanabirn.netlify.app は hanabirn.xyz に自動で移動します。',
+      ko: '"앱 설치" 추가: 상단(휴대폰은 "더보기")에서 사이트를 앱으로 설치할 수 있고, iPhone용 단계별 안내도 있어요. 예전 주소 hanabirn.netlify.app은 hanabirn.xyz로 자동 이동해요.',
+      ru: 'Новая кнопка «Установить» (в шапке, на телефоне — в «Ещё») ставит сайт как приложение, для iPhone есть пошаговая инструкция. Старый адрес hanabirn.netlify.app теперь ведёт на hanabirn.xyz.',
+      fr: 'Nouveau bouton « Installer l\'app » (dans l\'en-tête, ou « Plus » sur téléphone) pour installer le site comme une app, avec un pas-à-pas pour iPhone. L\'ancienne adresse hanabirn.netlify.app redirige vers hanabirn.xyz.',
+      es: 'Nuevo botón «Instalar la app» (en la cabecera, o en «Más» en el móvil) para instalar el sitio como app, con pasos para iPhone. La dirección antigua hanabirn.netlify.app ahora lleva a hanabirn.xyz.',
+      de: 'Neuer Button „App installieren“ (oben, auf dem Handy unter „Mehr“) installiert die Seite als App, mit Schritt-für-Schritt-Hilfe fürs iPhone. Die alte Adresse hanabirn.netlify.app leitet jetzt auf hanabirn.xyz weiter.' },
+    { date: '2026-10-03',
       zh: '練習工具改版：練習中心會告訴你現在該做什麼；錯題本變成筆記本，連續答對 2 次就能把字趕出去；新的統計（學會了多少、練習日曆）、間隔複習預報、可以左右滑的單字閃卡、聽力加入點選模式和慢速播放，做完還有慶祝畫面。',
       'zh-Hans': '练习工具改版：练习中心会告诉你现在该做什么；错题本变成笔记本，连续答对 2 次就能把词赶出去；新的统计（学会了多少、练习日历）、间隔复习预报、可以左右滑的单词闪卡、听力加入点选模式和慢速播放，做完还有庆祝画面。',
       en: 'Practice tools redesigned: the practice hub shows what to do next; the mistake book is a notebook where two right answers in a row clear a word; new stats (how much you\'ve learned, a practice calendar), a review forecast, swipeable flashcards, a tap-to-answer listening mode with slow playback, and a celebration when you finish.',

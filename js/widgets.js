@@ -252,39 +252,114 @@ function onLangMenuEscape(e) {
     if (e.key === 'Escape') toggleLangMenu(false);
 }
 
-/* ===================== 📲 PWA Install Prompt ===================== */
+/* ===================== 📲 Install the app (PWA) =====================
+   "下載 App" in the header (desktop) and the phone More sheet opens a dialog: browsers
+   that offer an install prompt (Chrome, Edge, Android — beforeinstallprompt) get an
+   "立即安裝" button; the rest (iPhone / iPad Safari, Firefox, desktop Safari) get the
+   add-to-home-screen steps for their platform. Everything is hidden once the site runs
+   as the installed app. The bottom banner suggests it once: on an install-prompt
+   browser when the prompt arrives, on iOS a few seconds after load; ✕ stops it. */
 
 let deferredInstallPrompt = null;
+
+function isStandaloneApp() {
+    return (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || navigator.standalone === true;
+}
+
+function installPlatform() {
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return 'ios';
+    if (/Android/.test(ua)) return 'android';
+    if (/Safari/.test(ua) && !/Chrome|Chromium|Edg|Firefox/.test(ua)) return 'mac_safari';
+    return 'desktop';
+}
+
+const INSTALL_STEPS = {
+    ios: ['install_ios_1', 'install_ios_2', 'install_ios_3'],
+    android: ['install_android_1', 'install_android_2'],
+    mac_safari: ['install_mac_1', 'install_mac_2'],
+    desktop: ['install_desktop_1', 'install_desktop_2']
+};
+
+function refreshInstallEntries() {
+    document.documentElement.classList.toggle('is-standalone', isStandaloneApp());
+}
+
+function showInstallBanner() {
+    if (isStandaloneApp()) return;
+    try { if (localStorage.getItem('pwa_install_dismissed')) return; } catch {}
+    const banner = document.getElementById('pwa-install-banner');
+    if (banner) banner.classList.add('show');
+}
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
     deferredInstallPrompt = e;
-    if (localStorage.getItem('pwa_install_dismissed')) return;
-    const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.classList.add('show');
+    showInstallBanner();
+    const now = document.getElementById('install-now');
+    if (now) now.hidden = false;
 });
 
+function openInstallHelp() {
+    const overlay = document.getElementById('install-overlay');
+    if (!overlay) return;
+    const steps = document.getElementById('install-steps');
+    if (deferredInstallPrompt) {
+        steps.innerHTML = '';
+    } else {
+        const keys = INSTALL_STEPS[installPlatform()];
+        steps.innerHTML = `<p class="install-how">${escHtml(t('install_how'))}</p><ol class="install-steps">${
+            keys.map(k => `<li>${escHtml(t(k))}</li>`).join('')}</ol>`;
+    }
+    document.getElementById('install-now').hidden = !deferredInstallPrompt;
+    overlay.classList.add('show');
+    const focus = overlay.querySelector(deferredInstallPrompt ? '#install-now' : '.install-close');
+    if (focus) focus.focus();
+}
+
+function closeInstallHelp() {
+    const overlay = document.getElementById('install-overlay');
+    if (overlay) overlay.classList.remove('show');
+}
+
+/* The banner's 安裝 and the dialog's 立即安裝: the browser's own prompt when there is
+   one, otherwise the steps. */
 function installPwa() {
     const banner = document.getElementById('pwa-install-banner');
     if (banner) banner.classList.remove('show');
-    if (!deferredInstallPrompt) return;
+    if (!deferredInstallPrompt) { openInstallHelp(); return; }
+    closeInstallHelp();
     deferredInstallPrompt.prompt();
     deferredInstallPrompt.userChoice.finally(() => {
         deferredInstallPrompt = null;
+        const now = document.getElementById('install-now');
+        if (now) now.hidden = true;
     });
 }
 
 function dismissPwaInstall() {
     const banner = document.getElementById('pwa-install-banner');
     if (banner) banner.classList.remove('show');
-    localStorage.setItem('pwa_install_dismissed', '1');
+    try { localStorage.setItem('pwa_install_dismissed', '1'); } catch {}
 }
 
 window.addEventListener('appinstalled', () => {
     const banner = document.getElementById('pwa-install-banner');
     if (banner) banner.classList.remove('show');
     deferredInstallPrompt = null;
+    closeInstallHelp();
+    refreshInstallEntries();
 });
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeInstallHelp(); });
+
+refreshInstallEntries();
+// iOS never fires beforeinstallprompt, so suggest it there after the visitor has settled in
+function suggestInstallOnIos() {
+    if (typeof tourEl !== 'undefined' && tourEl) { setTimeout(suggestInstallOnIos, 5000); return; }   // not over the site tour
+    showInstallBanner();
+}
+if (installPlatform() === 'ios') setTimeout(suggestInstallOnIos, 8000);
 
 /* ===================== 🔄 New Version Banner ===================== */
 

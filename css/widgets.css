@@ -230,6 +230,23 @@
     }
 }
 
+/* "下載 App" entries + help dialog (js/widgets.js; the dialog reuses .updates-panel).
+   Hidden when the site already runs as the installed app. */
+html.is-standalone .install-entry { display: none !important; }
+.install-hero { display: flex; gap: 14px; align-items: center; margin-bottom: 14px; }
+.install-hero img { width: 64px; height: 64px; border-radius: 16px; flex: none; box-shadow: 0 3px 0 var(--edge); }
+.updates-panel.install-panel h3 { margin: 0; color: var(--text); font-family: var(--font-serif); }
+.install-hero p { margin: 2px 0 0; font-size: 0.82rem; color: var(--text-muted); }
+.install-why { list-style: none; margin: 0 0 14px; padding: 12px 14px; border-radius: 14px; background: var(--surface-2); border: 1px solid var(--line); }
+.install-why li { position: relative; padding-left: 22px; font-size: 0.88rem; line-height: 1.7; }
+.install-why li::before { content: "✓"; position: absolute; left: 2px; color: var(--success-text); font-weight: 800; }
+.install-how { margin: 0 0 6px; font-size: 0.85rem; font-weight: 700; }
+.install-steps { margin: 0 0 16px; padding-left: 1.4em; font-size: 0.88rem; line-height: 1.75; }
+.install-steps li::marker { color: var(--primary); font-weight: 800; }
+#install-now { margin-bottom: 10px; }
+#install-now[hidden] { display: none; }
+.back-btn.install-close { display: block; width: 100%; padding: 10px; }
+
 /* ===================== 🔄 Update Available Banner =====================
    Bottom-centre like the install banner — pinned to the top it sat right
    over the header title. */

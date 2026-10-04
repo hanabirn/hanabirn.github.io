@@ -139,4 +139,10 @@ I18N.zh = {
         result_line: '答對 {c} / {n} 題・得分 {s}', result_each: '看每一題（{n}）', result_goal_left: '今日目標還差 {n} 個字', result_goal_done: '今日目標達成！',
         result_streak: '連續 {n} 天', result_hook_now: '還有 {n} 張卡片可以複習，點這裡去複習', result_hook_tomorrow: '接下來 24 小時會有 {n} 張卡片到期，記得回來救它們！', result_hook_next: '下一批複習卡片在 {when} 到期',
         result_retry_wrong: '再練錯的 {n} 個字',
+        // install the app (js/widgets.js)
+        install_btn: '下載 App', install_title: '下載 Hanabi App', install_sub: '免費、不用註冊，跟網站同步更新', install_why_home: '從主畫面一鍵打開，像一般 App 一樣',
+        install_why_full: '全螢幕練習，沒有網址列干擾', install_why_offline: '沒有網路時，也能打開看過的內容', install_now: '立即安裝', install_how: '這樣加到主畫面：',
+        install_ios_1: '點瀏覽器的「分享」按鈕（方框加向上的箭頭；iPhone 在下方，iPad 在上方）', install_ios_2: '往下滑，選「加入主畫面」', install_ios_3: '按右上角的「新增」，主畫面就會出現 Hanabi', install_android_1: '點瀏覽器右上角的「⋮」選單',
+        install_android_2: '選「安裝應用程式」或「加到主畫面」', install_mac_1: '在 Safari 上方的選單點「檔案」', install_mac_2: '選「加入 Dock」', install_desktop_1: '用 Chrome 或 Edge 開這個網站，點網址列右邊的「安裝」圖示（或瀏覽器的 ⋮ 選單）',
+        install_desktop_2: '選「安裝 Hanabiの小天地」',
 };

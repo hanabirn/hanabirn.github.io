@@ -138,4 +138,10 @@ I18N.ja = {
         result_line: '{c} / {n}問正解・得点 {s}', result_each: '各問題を見る（{n}）', result_goal_left: '今日の目標まであと{n}語', result_goal_done: '今日の目標達成！',
         result_streak: '{n}日連続', result_hook_now: '復習できるカードが{n}枚あります。タップして復習', result_hook_tomorrow: 'この24時間で{n}枚のカードが期限に。戻ってきて助けてね！', result_hook_next: '次の復習カードは {when}',
         result_retry_wrong: '間違えた{n}語をもう一度',
+        // install the app (js/widgets.js)
+        install_btn: 'アプリを入れる', install_title: 'Hanabi アプリを入れよう', install_sub: '無料・登録不要、サイトと同時に更新', install_why_home: 'ホーム画面からワンタップで開ける',
+        install_why_full: '全画面で練習、アドレスバーなし', install_why_offline: 'オフラインでも、一度開いた内容は見られる', install_now: '今すぐインストール', install_how: '追加のしかた：',
+        install_ios_1: 'ブラウザの「共有」ボタンをタップ（四角に上向き矢印。iPhoneは下、iPadは上）', install_ios_2: '下にスクロールして「ホーム画面に追加」を選ぶ', install_ios_3: '右上の「追加」をタップすると、ホーム画面に Hanabi が出ます', install_android_1: 'ブラウザ右上の「⋮」メニューをタップ',
+        install_android_2: '「アプリをインストール」か「ホーム画面に追加」を選ぶ', install_mac_1: 'Safari のメニューバーで「ファイル」を開く', install_mac_2: '「Dockに追加」を選ぶ', install_desktop_1: 'Chrome か Edge でサイトを開き、アドレスバー右の「インストール」アイコン（またはブラウザの ⋮ メニュー）をクリック',
+        install_desktop_2: '「Hanabiの小天地 をインストール」を選ぶ',
 };

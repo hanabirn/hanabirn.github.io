@@ -138,4 +138,10 @@ I18N.fr = {
         result_line: '{c} / {n} justes · score {s}', result_each: 'Voir chaque question ({n})', result_goal_left: 'Plus que {n} mots pour l\'objectif du jour', result_goal_done: 'Objectif du jour atteint !',
         result_streak: '{n} jours d\'affilée', result_hook_now: '{n} cartes sont prêtes à revoir : touche ici', result_hook_tomorrow: '{n} cartes arrivent à échéance dans les 24 h : reviens les sauver !', result_hook_next: 'Prochaines cartes à revoir : {when}',
         result_retry_wrong: 'Revoir les {n} ratés',
+        // install the app (js/widgets.js)
+        install_btn: 'Installer l\'app', install_title: 'L\'app Hanabi', install_sub: 'Gratuite, sans inscription, à jour comme le site', install_why_home: 'S\'ouvre depuis l\'écran d\'accueil comme une app',
+        install_why_full: 'Plein écran, sans barre d\'adresse', install_why_offline: 'Fonctionne hors ligne avec ce que tu as déjà ouvert', install_now: 'Installer maintenant', install_how: 'Comment l\'ajouter :',
+        install_ios_1: 'Touche le bouton Partager (un carré avec une flèche vers le haut, en bas sur iPhone, en haut sur iPad)', install_ios_2: 'Fais défiler et choisis « Sur l\'écran d\'accueil »', install_ios_3: 'Touche « Ajouter » en haut : Hanabi apparaît sur ton écran d\'accueil', install_android_1: 'Touche le menu ⋮ du navigateur (en haut à droite)',
+        install_android_2: 'Choisis « Installer l\'application » ou « Ajouter à l\'écran d\'accueil »', install_mac_1: 'Dans la barre de menus de Safari, ouvre « Fichier »', install_mac_2: 'Choisis « Ajouter au Dock »', install_desktop_1: 'Ouvre le site dans Chrome ou Edge et clique sur l\'icône d\'installation à droite de la barre d\'adresse (ou le menu ⋮)',
+        install_desktop_2: 'Choisis « Installer Hanabiの小天地 »',
 };

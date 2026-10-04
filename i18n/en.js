@@ -138,4 +138,10 @@ I18N.en = {
         result_line: '{c} / {n} right · score {s}', result_each: 'See every question ({n})', result_goal_left: '{n} words to today\'s goal', result_goal_done: 'Today\'s goal reached!',
         result_streak: '{n}-day streak', result_hook_now: '{n} cards are ready to review — tap to go', result_hook_tomorrow: '{n} cards come due in the next 24 hours — come back and rescue them!', result_hook_next: 'Your next review cards are due {when}',
         result_retry_wrong: 'Practise the {n} I missed',
+        // install the app (js/widgets.js)
+        install_btn: 'Get the app', install_title: 'Get the Hanabi app', install_sub: 'Free, no sign-up, always as up to date as the site', install_why_home: 'Open it from your home screen like any app',
+        install_why_full: 'Practise full screen, no address bar in the way', install_why_offline: 'Opens without internet, with what you\'ve already loaded', install_now: 'Install now', install_how: 'How to add it:',
+        install_ios_1: 'Tap the browser\'s Share button (a square with an arrow pointing up — at the bottom on iPhone, at the top on iPad)', install_ios_2: 'Scroll down and choose “Add to Home Screen”', install_ios_3: 'Tap “Add” in the top corner — Hanabi appears on your home screen', install_android_1: 'Tap the browser\'s ⋮ menu (top right)',
+        install_android_2: 'Choose “Install app” or “Add to Home screen”', install_mac_1: 'In Safari\'s menu bar, open “File”', install_mac_2: 'Choose “Add to Dock”', install_desktop_1: 'Open the site in Chrome or Edge and click the install icon at the right of the address bar (or the browser\'s ⋮ menu)',
+        install_desktop_2: 'Choose “Install Hanabiの小天地”',
 };
