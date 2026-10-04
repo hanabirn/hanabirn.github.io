@@ -158,6 +158,10 @@
     border-radius: 2px;
     cursor: pointer;
 }
+/* touch devices use their volume keys (js/widgets.js BGM_HARDWARE_VOLUME) */
+@media (hover: none) and (pointer: coarse) {
+    #bgm-volume { display: none; }
+}
 #bgm-volume::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;

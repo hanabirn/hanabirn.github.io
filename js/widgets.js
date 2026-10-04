@@ -16,10 +16,15 @@ let bgmAudio = null;
 let bgmIndex = 0;
 let bgmPlaying = false;
 
+/* Phones and tablets have hardware volume keys, so there the slider is hidden
+   (css/widgets.css, same media query) and the music plays at full volume — a saved
+   40% would otherwise cap what the keys can reach. */
+const BGM_HARDWARE_VOLUME = window.matchMedia && matchMedia('(hover: none) and (pointer: coarse)').matches;
+
 function initBgm() {
     bgmAudio = new Audio();
     const savedVol = parseInt(localStorage.getItem('bgm_volume'));
-    bgmAudio.volume = isNaN(savedVol) ? 0.4 : savedVol / 100;
+    bgmAudio.volume = BGM_HARDWARE_VOLUME ? 1 : isNaN(savedVol) ? 0.4 : savedVol / 100;
     const volSlider = document.getElementById('bgm-volume');
     if (volSlider) volSlider.value = Math.round(bgmAudio.volume * 100);
     bgmAudio.addEventListener('ended', () => bgmNext(true));
