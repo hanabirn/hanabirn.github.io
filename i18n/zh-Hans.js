@@ -148,4 +148,14 @@ I18N['zh-Hans'] = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '网站搬家啦！', moved_text: '我们的新网址是 hanabirn.xyz。如果你之前把网站添加到主屏幕，那是旧的 App：请把它删掉，再从这里重新下载一次，新功能和 AI 小助手“小花火”才能正常使用。', moved_note: '旧 App 里的练习记录没办法自动搬过来，不好意思！', moved_reinstall: '重新下载 App',
         moved_ok: '知道了',
+        // account & sync (js/account.js)
+        acct_title: '账号与同步', acct_signin: '登录', acct_home_title: '把进度存到云端', acct_home_text: '登录后，换手机或电脑都能接着练',
+        acct_intro: '登录后，错题本、复习卡片、连续天数和学习进度会同步到你的账号，换设备也不会丢失。不登录也可以照常使用。', acct_google: '用 Google 账号登录', acct_or_email: '或用 Email', acct_email: '邮箱',
+        acct_password: '密码', acct_password_new: '设置密码（至少 6 个字符）', acct_signup: '创建账号', acct_have_account: '已经有账号了？登录',
+        acct_new_account: '还没有账号？创建一个', acct_forgot: '忘记密码？', acct_privacy_note: '只会存储你的学习进度和登录用的邮箱／名称，不会公开。', acct_privacy_link: '隐私政策',
+        acct_reset_sent: '已发送重设密码的邮件，请到邮箱查看', acct_signout: '退出登录', acct_delete: '删除账号和云端数据', acct_delete_confirm: '确定要删除账号吗？云端上的进度会永久删除（这台设备上的进度会保留）。',
+        acct_deleted: '账号已删除', acct_sync_now: '立即同步', acct_sync_on: '自动同步已开启', acct_syncing: '同步中…',
+        acct_sync_error: '同步失败，稍后会自动重试', acct_synced: '已同步・{time}', acct_sync_what: '同步的内容：错题本、间隔复习、测验记录、每日练习量、学习路径、闪卡和成就。记事本只存在这台设备上。退出后，这台设备上的进度会保留。', acct_err_popup: '浏览器拦截了 Google 登录窗口。请改用邮箱登录，或用 Safari／Chrome 直接打开网站再试一次。',
+        acct_err_credentials: '邮箱或密码不对，请再确认一次。', acct_err_email: '请输入正确的邮箱。', acct_err_exists: '这个邮箱已经注册过了，请直接登录（或用 Google 登录）。', acct_err_weak: '密码至少要 6 个字符。',
+        acct_err_many: '尝试太多次了，请等几分钟再试。', acct_err_network: '连不上网络，请确认连接后再试。', acct_err_recent: '为了安全，删除账号前请先退出、再登录一次，然后马上删除。', acct_err_generic: '出了点问题（{code}），请稍后再试。',
 };

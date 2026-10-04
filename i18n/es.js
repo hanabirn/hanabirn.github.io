@@ -147,4 +147,14 @@ I18N.es = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '¡Nos mudamos!', moved_text: 'Nuestra nueva dirección es hanabirn.xyz. Si antes añadiste el sitio a tu pantalla de inicio, esa es la app antigua: bórrala e instálala de nuevo desde aquí para que funcionen las novedades y el asistente de IA 小花火.', moved_note: 'Lo sentimos: el progreso de la app antigua no se puede pasar automáticamente.', moved_reinstall: 'Volver a instalar la app',
         moved_ok: 'Entendido',
+        // account & sync (js/account.js)
+        acct_title: 'Cuenta y sincronización', acct_signin: 'Iniciar sesión', acct_home_title: 'Guarda tu progreso en la nube', acct_home_text: 'Inicia sesión y sigue donde lo dejaste en cualquier móvil u ordenador',
+        acct_intro: 'Con sesión iniciada, tu cuaderno de errores, tarjetas, racha y progreso se guardan en tu cuenta y te siguen a cualquier dispositivo. Sin cuenta, el sitio funciona igual.', acct_google: 'Continuar con Google', acct_or_email: 'o con correo', acct_email: 'Correo',
+        acct_password: 'Contraseña', acct_password_new: 'Elige una contraseña (mín. 6 caracteres)', acct_signup: 'Crear cuenta', acct_have_account: '¿Ya tienes cuenta? Inicia sesión',
+        acct_new_account: '¿Sin cuenta? Crea una', acct_forgot: '¿Olvidaste la contraseña?', acct_privacy_note: 'Solo se guardan tu progreso y el correo / nombre con que entras, y nunca se muestran.', acct_privacy_link: 'Política de privacidad',
+        acct_reset_sent: 'Correo para restablecer enviado', acct_signout: 'Cerrar sesión', acct_delete: 'Eliminar cuenta y datos en la nube', acct_delete_confirm: '¿Eliminar tu cuenta? El progreso en la nube se borrará para siempre (el de este dispositivo se queda).',
+        acct_deleted: 'Cuenta eliminada', acct_sync_now: 'Sincronizar', acct_sync_on: 'Sincronización automática activada', acct_syncing: 'Sincronizando…',
+        acct_sync_error: 'Falló la sincronización; se reintentará pronto', acct_synced: 'Sincronizado · {time}', acct_sync_what: 'Se sincronizan: cuaderno de errores, repaso espaciado, historial de quizzes, práctica diaria, rutas, tarjetas y logros. El bloc de notas queda en este dispositivo. Al cerrar sesión, el progreso de este dispositivo se mantiene.', acct_err_popup: 'El navegador bloqueó la ventana de Google. Usa el correo o abre el sitio directamente en Safari / Chrome e inténtalo otra vez.',
+        acct_err_credentials: 'Correo o contraseña incorrectos.', acct_err_email: 'Escribe un correo válido.', acct_err_exists: 'Ese correo ya tiene cuenta: inicia sesión (o usa Google).', acct_err_weak: 'La contraseña necesita al menos 6 caracteres.',
+        acct_err_many: 'Demasiados intentos; espera unos minutos.', acct_err_network: 'Sin conexión; revisa internet.', acct_err_recent: 'Por seguridad, cierra sesión, vuelve a entrar y elimina enseguida.', acct_err_generic: 'Algo salió mal ({code}). Inténtalo más tarde.',
 };

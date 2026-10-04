@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-10-04',
+      zh: '新增帳號登入（Google 或 Email）：登入後錯題本、複習卡片、連續天數和學習進度會自動同步，換手機或電腦都能接著練。不登入也可以照常使用。',
+      'zh-Hans': '新增账号登录（Google 或邮箱）：登录后错题本、复习卡片、连续天数和学习进度会自动同步，换手机或电脑都能接着练。不登录也可以照常使用。',
+      en: 'Accounts are here (Google or email): sign in and your mistake book, review cards, streak and progress sync automatically, so you can carry on from any phone or computer. Everything still works without an account.',
+      ja: 'アカウントでログインできるようになりました（Google またはメール）。間違いノート・復習カード・連続日数・進み具合が自動で同期され、スマホでもパソコンでも続きから練習できます。ログインしなくても今まで通り使えます。',
+      ko: '계정 로그인 추가 (Google 또는 이메일): 오답 노트, 복습 카드, 연속 일수, 진도가 자동으로 동기화되어 휴대폰이나 컴퓨터 어디서든 이어서 연습할 수 있어요. 로그인하지 않아도 그대로 쓸 수 있어요.',
+      ru: 'Появились аккаунты (Google или почта): тетрадь ошибок, карточки, серия и прогресс синхронизируются сами — продолжай на любом устройстве. Без аккаунта всё работает как раньше.',
+      fr: 'Les comptes arrivent (Google ou e-mail) : ton carnet d\'erreurs, tes cartes, ta série et ta progression se synchronisent tout seuls, pour continuer sur n\'importe quel appareil. Tout marche aussi sans compte.',
+      es: 'Llegan las cuentas (Google o correo): tu cuaderno de errores, tarjetas, racha y progreso se sincronizan solos para seguir en cualquier móvil u ordenador. Todo funciona igual sin cuenta.',
+      de: 'Neu: Konten (Google oder E-Mail). Fehlerheft, Wiederholungskarten, Serie und Fortschritt synchronisieren sich automatisch – mach auf jedem Handy oder Computer weiter. Ohne Konto funktioniert alles wie bisher.' },
     { date: '2026-10-03',
       zh: '新增「下載 App」：頁首（手機在「更多」裡）可以把網站裝成 App，iPhone 也有一步步的教學；舊網址 hanabirn.netlify.app 會自動轉到 hanabirn.xyz。',
       'zh-Hans': '新增“下载 App”：页首（手机在“更多”里）可以把网站装成 App，iPhone 也有一步步的教学；旧网址 hanabirn.netlify.app 会自动转到 hanabirn.xyz。',

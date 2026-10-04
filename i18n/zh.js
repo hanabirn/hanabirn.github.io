@@ -148,4 +148,14 @@ I18N.zh = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '網站搬家囉！', moved_text: '我們的新網址是 hanabirn.xyz。如果你之前把網站加到主畫面，那是舊的 App：請把它刪掉，再從這裡重新下載一次，新功能和 AI 小幫手「小花火」才能正常使用。', moved_note: '舊 App 裡的練習紀錄沒辦法自動搬過來，不好意思！', moved_reinstall: '重新下載 App',
         moved_ok: '知道了',
+        // account & sync (js/account.js)
+        acct_title: '帳號與同步', acct_signin: '登入', acct_home_title: '把進度存到雲端', acct_home_text: '登入後，換手機或電腦都能接著練',
+        acct_intro: '登入後，錯題本、複習卡片、連續天數和學習進度會同步到你的帳號，換裝置也不會不見。不登入也可以照常使用。', acct_google: '用 Google 帳號登入', acct_or_email: '或用 Email', acct_email: 'Email',
+        acct_password: '密碼', acct_password_new: '設定密碼（至少 6 個字）', acct_signup: '建立帳號', acct_have_account: '已經有帳號了？登入',
+        acct_new_account: '還沒有帳號？建立一個', acct_forgot: '忘記密碼？', acct_privacy_note: '只會儲存你的學習進度和登入用的 Email／名稱，不會公開。', acct_privacy_link: '隱私權政策',
+        acct_reset_sent: '已寄出重設密碼的信，請到信箱查看', acct_signout: '登出', acct_delete: '刪除帳號和雲端資料', acct_delete_confirm: '確定要刪除帳號嗎？雲端上的進度會永久刪除（這台裝置上的進度會留著）。',
+        acct_deleted: '帳號已刪除', acct_sync_now: '立即同步', acct_sync_on: '自動同步已開啟', acct_syncing: '同步中…',
+        acct_sync_error: '同步失敗，稍後會自動再試', acct_synced: '已同步・{time}', acct_sync_what: '同步的內容：錯題本、間隔複習、測驗紀錄、每日練習量、學習路徑、閃卡和成就。記事本只存在這台裝置上。登出後，這台裝置上的進度會留著。', acct_err_popup: '瀏覽器擋住了 Google 登入視窗。請改用 Email 登入，或用 Safari／Chrome 直接打開網站再試一次。',
+        acct_err_credentials: 'Email 或密碼不對，請再確認一次。', acct_err_email: '請輸入正確的 Email。', acct_err_exists: '這個 Email 已經註冊過了，請直接登入（或用 Google 登入）。', acct_err_weak: '密碼至少要 6 個字。',
+        acct_err_many: '嘗試太多次了，請等幾分鐘再試。', acct_err_network: '連不上網路，請確認連線後再試。', acct_err_recent: '為了安全，刪除帳號前請先登出、再登入一次，然後馬上刪除。', acct_err_generic: '出了點問題（{code}），請稍後再試。',
 };

@@ -147,4 +147,14 @@ I18N.ko = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '사이트가 이사했어요!', moved_text: '새 주소는 hanabirn.xyz예요. 예전에 홈 화면에 추가했다면 그건 이전 앱이에요. 지우고 여기서 다시 설치해야 새 기능과 AI 도우미 "小花火"를 제대로 쓸 수 있어요.', moved_note: '이전 앱의 연습 기록은 자동으로 옮길 수 없어요. 죄송해요!', moved_reinstall: '앱 다시 설치하기',
         moved_ok: '알겠어요',
+        // account & sync (js/account.js)
+        acct_title: '계정 및 동기화', acct_signin: '로그인', acct_home_title: '진도를 클라우드에 저장', acct_home_text: '로그인하면 휴대폰이나 컴퓨터 어디서든 이어서 연습할 수 있어요',
+        acct_intro: '로그인하면 오답 노트, 복습 카드, 연속 일수와 진도가 계정에 동기화되어 기기를 바꿔도 사라지지 않아요. 로그인하지 않아도 그대로 쓸 수 있어요.', acct_google: 'Google로 계속하기', acct_or_email: '또는 이메일로', acct_email: '이메일',
+        acct_password: '비밀번호', acct_password_new: '비밀번호 만들기 (6자 이상)', acct_signup: '계정 만들기', acct_have_account: '계정이 있나요? 로그인',
+        acct_new_account: '계정이 없나요? 만들기', acct_forgot: '비밀번호를 잊었나요?', acct_privacy_note: '학습 진도와 로그인용 이메일/이름만 저장되며 공개되지 않아요.', acct_privacy_link: '개인정보 처리방침',
+        acct_reset_sent: '비밀번호 재설정 메일을 보냈어요', acct_signout: '로그아웃', acct_delete: '계정과 클라우드 데이터 삭제', acct_delete_confirm: '계정을 삭제할까요? 클라우드의 진도는 영구 삭제돼요 (이 기기의 진도는 남아요).',
+        acct_deleted: '계정을 삭제했어요', acct_sync_now: '지금 동기화', acct_sync_on: '자동 동기화 켜짐', acct_syncing: '동기화 중…',
+        acct_sync_error: '동기화 실패, 잠시 후 다시 시도해요', acct_synced: '동기화됨 · {time}', acct_sync_what: '동기화 항목: 오답 노트, 간격 복습, 퀴즈 기록, 매일 연습량, 학습 경로, 단어 카드, 업적. 메모장은 이 기기에만 저장돼요. 로그아웃해도 이 기기의 진도는 남아요.', acct_err_popup: '브라우저가 Google 로그인 창을 막았어요. 이메일로 로그인하거나 Safari/Chrome에서 사이트를 직접 열어 다시 시도해 주세요.',
+        acct_err_credentials: '이메일 또는 비밀번호가 맞지 않아요.', acct_err_email: '올바른 이메일을 입력해 주세요.', acct_err_exists: '이미 가입된 이메일이에요. 로그인해 주세요 (Google도 가능).', acct_err_weak: '비밀번호는 6자 이상이어야 해요.',
+        acct_err_many: '시도가 너무 많아요. 몇 분 뒤에 다시 해 주세요.', acct_err_network: '연결할 수 없어요. 인터넷을 확인해 주세요.', acct_err_recent: '보안을 위해 로그아웃 후 다시 로그인한 다음 바로 삭제해 주세요.', acct_err_generic: '문제가 생겼어요 ({code}). 잠시 후 다시 시도해 주세요.',
 };

@@ -863,6 +863,7 @@ function refreshDynamicContent() {
     if (isVisible('stats-card') && typeof renderQuizStats === 'function') renderQuizStats();
     if (isVisible('srs-card') && typeof renderSrsDashboard === 'function') renderSrsDashboard();
     if (typeof renderPracticeHub === 'function') renderPracticeHub();
+    if (typeof renderAccount === 'function') renderAccount();
 }
 
 function setModeCardTitle(id, key) {

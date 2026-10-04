@@ -147,4 +147,14 @@ I18N.ja = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: 'サイトがお引っ越ししました！', moved_text: '新しいアドレスは hanabirn.xyz です。以前ホーム画面に追加していた場合、それは古いアプリです。削除して、ここからもう一度入れてください。新機能や AI アシスタント「小花火」が正しく使えるようになります。', moved_note: '古いアプリの練習記録は自動では引き継げません。ごめんなさい！', moved_reinstall: 'アプリを入れ直す',
         moved_ok: 'わかった',
+        // account & sync (js/account.js)
+        acct_title: 'アカウントと同期', acct_signin: 'ログイン', acct_home_title: '進み具合をクラウドに保存', acct_home_text: 'ログインすれば、スマホでもパソコンでも続きから練習できます',
+        acct_intro: 'ログインすると、間違いノート・復習カード・連続日数・進み具合がアカウントに同期され、端末を変えても消えません。ログインしなくても今まで通り使えます。', acct_google: 'Google でログイン', acct_or_email: 'またはメールで', acct_email: 'メールアドレス',
+        acct_password: 'パスワード', acct_password_new: 'パスワードを決める（6文字以上）', acct_signup: 'アカウントを作る', acct_have_account: 'アカウントをお持ちの方はログイン',
+        acct_new_account: 'アカウントを作る', acct_forgot: 'パスワードを忘れた？', acct_privacy_note: '保存するのは学習の進み具合とログイン用のメール／名前だけで、公開されません。', acct_privacy_link: 'プライバシーポリシー',
+        acct_reset_sent: 'パスワード再設定のメールを送りました', acct_signout: 'ログアウト', acct_delete: 'アカウントとクラウドのデータを削除', acct_delete_confirm: 'アカウントを削除しますか？クラウドの記録は完全に消えます（この端末の記録は残ります）。',
+        acct_deleted: 'アカウントを削除しました', acct_sync_now: '今すぐ同期', acct_sync_on: '自動同期オン', acct_syncing: '同期中…',
+        acct_sync_error: '同期に失敗しました。しばらくして再試行します', acct_synced: '同期済み・{time}', acct_sync_what: '同期するもの：間違いノート、間隔復習、テスト記録、毎日の練習量、学習パス、単語カード、実績。メモ帳はこの端末だけに保存されます。ログアウトしても、この端末の記録は残ります。', acct_err_popup: 'ブラウザが Google ログイン画面をブロックしました。メールでログインするか、Safari／Chrome でサイトを開いてもう一度試してください。',
+        acct_err_credentials: 'メールアドレスかパスワードが違います。', acct_err_email: '正しいメールアドレスを入力してください。', acct_err_exists: 'このメールアドレスは登録済みです。ログインしてください（Google でも可）。', acct_err_weak: 'パスワードは6文字以上にしてください。',
+        acct_err_many: '試行回数が多すぎます。数分待ってから試してください。', acct_err_network: '接続できません。ネット接続を確認してください。', acct_err_recent: '安全のため、一度ログアウトしてログインし直してから、すぐに削除してください。', acct_err_generic: '問題が発生しました（{code}）。しばらくして試してください。',
 };

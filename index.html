@@ -35,6 +35,7 @@
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/path.css">
     <link rel="stylesheet" href="css/practice.css">
+    <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="css/dict.css">
     <link rel="stylesheet" href="css/alphabet.css">
     <link rel="stylesheet" href="css/tour.css">
@@ -65,6 +66,7 @@
                 <button class="nav-btn header-btn" data-tab="about" onclick="switchPage('about', this)" data-i18n-title="nav_about" title="關於我"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg><span data-i18n="nav_about">關於我</span></button>
                 <button class="header-btn" id="updates-btn" onclick="openUpdates()" data-i18n-title="updates_btn" title="更新內容" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46"/></svg><span data-i18n="updates_btn">更新內容</span><i class="header-dot updates-dot" hidden></i></button>
                 <button class="header-btn install-entry" id="install-btn" onclick="openInstallHelp()" data-i18n-title="install_btn" title="下載 App" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3"/><path d="M12 8.25v6.5m0 0-2.75-2.75M12 14.75l2.75-2.75"/></svg><span data-i18n="install_btn">下載 App</span></button>
+                <button class="header-btn account-entry" id="account-btn" onclick="openAccount()" data-i18n-title="acct_title" title="帳號與同步" aria-haspopup="dialog"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z"/></svg><span class="account-entry-label">登入</span></button>
                 <div class="lang-globe" id="lang-globe">
                     <button class="lang-globe-btn" id="lang-globe-btn" onclick="toggleLangMenu()" aria-haspopup="true" aria-expanded="false" aria-label="Select language" title="Select language"><span class="lang-globe-icon">&#x1F310;</span><span id="lang-globe-current"><span class="flag flag--tw"></span></span></button>
                     <div class="lang-globe-menu" id="lang-globe-menu">
@@ -166,6 +168,15 @@
                     <button class="back-btn home-review-btn" onclick="homeOpenMistakes()" data-i18n="home_mistakes_btn">查看</button>
                 </section>
             </div>
+
+            <section class="home-card home-account" id="home-account-card">
+                <span class="home-account-icon" aria-hidden="true">☁️</span>
+                <div class="home-review-text">
+                    <div class="home-big" data-i18n="acct_home_title">把進度存到雲端</div>
+                    <div class="home-muted" data-i18n="acct_home_text">登入後，換手機或電腦都能接著練</div>
+                </div>
+                <button class="back-btn home-review-btn" onclick="openAccount()" data-i18n="acct_signin">登入</button>
+            </section>
 
             <h3 class="home-section-title" data-i18n="home_recent">最近練習</h3>
             <div class="home-courses" id="home-recent"></div>
@@ -740,6 +751,17 @@
         </div>
     </div>
 
+    <!-- account & sync (js/account.js draws #account-body) -->
+    <div class="updates-overlay" id="account-overlay" onclick="if(event.target===this) closeAccount()">
+        <div class="updates-panel account-panel" role="dialog" aria-modal="true" aria-labelledby="account-title">
+            <div class="acct-head">
+                <h3 id="account-title" data-i18n="acct_title">帳號與同步</h3>
+                <button type="button" class="acct-close" onclick="closeAccount()" data-i18n-title="updates_close" title="關閉">✕</button>
+            </div>
+            <div id="account-body"></div>
+        </div>
+    </div>
+
     <div class="more-sheet-overlay" id="more-sheet" onclick="if(event.target===this) closeMoreSheet()">
         <div class="more-sheet" role="dialog" aria-modal="true" aria-labelledby="more-sheet-title">
             <div class="more-sheet-handle" aria-hidden="true"></div>
@@ -751,6 +773,7 @@
             <button class="nav-btn more-item" data-tab="about" onclick="switchPage('about', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg><span data-i18n="nav_about">關於我</span></button>
             <button class="more-item" onclick="closeMoreSheet(); openUpdates()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46"/></svg><span data-i18n="updates_btn">更新內容</span><i class="header-dot updates-dot" hidden></i></button>
             <button class="more-item" onclick="closeMoreSheet(); startTour()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456Z"/></svg><span data-i18n="tour_replay">新手導覽</span></button>
+            <button class="more-item account-entry" onclick="closeMoreSheet(); openAccount()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z"/></svg><span class="account-entry-label">登入</span></button>
             <button class="more-item install-entry" onclick="closeMoreSheet(); openInstallHelp()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3"/><path d="M12 8.25v6.5m0 0-2.75-2.75M12 14.75l2.75-2.75"/></svg><span data-i18n="install_btn">下載 App</span></button>
             <div class="more-sep" aria-hidden="true"></div>
             <button class="more-item" onclick="closeMoreSheet(); toggleTabSettings()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10.343 3.94c.09-.542.56-.94 1.11-.94h1.093c.55 0 1.02.398 1.11.94l.149.894c.07.424.384.764.78.93.398.164.855.142 1.205-.108l.737-.527a1.125 1.125 0 0 1 1.45.12l.773.774c.39.389.44 1.002.12 1.45l-.527.737c-.25.35-.272.806-.107 1.204.165.397.505.71.93.78l.893.15c.543.09.94.559.94 1.109v1.094c0 .55-.397 1.02-.94 1.11l-.894.149c-.424.07-.764.383-.929.78-.165.398-.143.854.107 1.204l.527.738c.32.447.269 1.06-.12 1.45l-.774.773a1.125 1.125 0 0 1-1.449.12l-.738-.527c-.35-.25-.806-.272-1.203-.107-.398.165-.71.505-.781.929l-.149.894c-.09.542-.56.94-1.11.94h-1.094c-.55 0-1.019-.398-1.11-.94l-.148-.894c-.071-.424-.384-.764-.781-.93-.398-.164-.854-.142-1.204.108l-.738.527c-.447.32-1.06.269-1.45-.12l-.773-.774a1.125 1.125 0 0 1-.12-1.45l.527-.737c.25-.35.272-.806.108-1.204-.165-.397-.506-.71-.93-.78l-.894-.15c-.542-.09-.94-.56-.94-1.109v-1.094c0-.55.398-1.02.94-1.11l.894-.149c.424-.07.765-.383.93-.78.165-.398.143-.854-.108-1.204l-.526-.738a1.125 1.125 0 0 1 .12-1.45l.773-.773a1.125 1.125 0 0 1 1.45-.12l.737.527c.35.25.807.272 1.204.107.397-.165.71-.505.78-.929l.15-.894Z"/><path d="M15 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"/></svg><span data-i18n="more_settings">顯示設定</span></button>
@@ -800,6 +823,7 @@
     <script src="js/path.js"></script>
     <script src="js/home.js"></script>
     <script src="js/practice.js"></script>
+    <script src="js/account.js"></script>
     <script src="js/dict.js"></script>
     <script src="js/alphabet-data.js"></script>
     <script src="js/alphabet.js"></script>

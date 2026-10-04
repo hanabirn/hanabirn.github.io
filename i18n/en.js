@@ -147,4 +147,14 @@ I18N.en = {
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: 'We\'ve moved!', moved_text: 'Our new address is hanabirn.xyz. If you added the site to your home screen before, that\'s the old app: please delete it and install it again from here, so the new features and the AI helper 小花火 work properly.', moved_note: 'Sorry — practice progress saved in the old app can\'t be moved over automatically.', moved_reinstall: 'Install the app again',
         moved_ok: 'Got it',
+        // account & sync (js/account.js)
+        acct_title: 'Account & sync', acct_signin: 'Sign in', acct_home_title: 'Save your progress to the cloud', acct_home_text: 'Sign in to pick up where you left off on any phone or computer',
+        acct_intro: 'Signed in, your mistake book, review cards, streak and progress are kept in your account, so they follow you to any device. The site works just the same without an account.', acct_google: 'Continue with Google', acct_or_email: 'or with email', acct_email: 'Email',
+        acct_password: 'Password', acct_password_new: 'Choose a password (6+ characters)', acct_signup: 'Create account', acct_have_account: 'Have an account? Sign in',
+        acct_new_account: 'No account? Create one', acct_forgot: 'Forgot password?', acct_privacy_note: 'Only your learning progress and the email / name you sign in with are stored, and never shown to anyone.', acct_privacy_link: 'Privacy policy',
+        acct_reset_sent: 'Password reset email sent — check your inbox', acct_signout: 'Sign out', acct_delete: 'Delete account and cloud data', acct_delete_confirm: 'Delete your account? The progress in the cloud is erased for good (what\'s on this device stays).',
+        acct_deleted: 'Account deleted', acct_sync_now: 'Sync now', acct_sync_on: 'Auto-sync is on', acct_syncing: 'Syncing…',
+        acct_sync_error: 'Sync failed — it will retry shortly', acct_synced: 'Synced · {time}', acct_sync_what: 'Synced: mistake book, spaced review, quiz history, daily practice, learning paths, flashcards and achievements. The notepad stays on this device. Signing out keeps the progress on this device.', acct_err_popup: 'The browser blocked the Google sign-in window. Use email instead, or open the site directly in Safari / Chrome and try again.',
+        acct_err_credentials: 'Wrong email or password.', acct_err_email: 'Please enter a valid email.', acct_err_exists: 'That email already has an account — sign in instead (or use Google).', acct_err_weak: 'The password needs at least 6 characters.',
+        acct_err_many: 'Too many attempts — please wait a few minutes.', acct_err_network: 'Couldn\'t connect — check your internet and try again.', acct_err_recent: 'For safety, sign out and back in first, then delete right away.', acct_err_generic: 'Something went wrong ({code}). Please try again later.',
 };
