@@ -112,6 +112,28 @@
 }
 .grammar-form b { font-size: 0.8rem; color: var(--primary); }
 .grammar-explain { line-height: 1.85; font-size: 0.95rem; margin: 0 0 18px; }
+/* 注意事項 and 常見錯誤 */
+.grammar-notes {
+    padding: 10px 14px 4px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    margin-bottom: 18px;
+}
+.grammar-notes ul { margin: 0 0 6px; padding-left: 20px; }
+.grammar-notes li { font-size: 0.92rem; line-height: 1.75; margin-bottom: 4px; }
+.grammar-mistakes { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 10px; }
+.grammar-mistakes li {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--danger);
+    background: var(--surface);
+}
+.grammar-wrong { color: var(--danger-text); font-size: 1.02rem; }
+.grammar-wrong span, .grammar-right span { font-weight: 900; margin-right: 4px; }
+.grammar-right { color: var(--success); font-weight: 700; font-size: 1.02rem; margin-top: 2px; }
+.grammar-why { font-size: 0.88rem; color: var(--text-secondary); margin-top: 6px; line-height: 1.7; }
 .grammar-sub { margin: 0 0 8px; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; }
 .grammar-examples { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 10px; }
 .grammar-examples li {

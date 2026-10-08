@@ -42,6 +42,12 @@ def check(data, name):
                 problems.append(f'{where}: {key} needs zh and en')
         if not p.get('pattern'):
             problems.append(f'{where}: no pattern')
+        for n_ in p.get('notes', []):
+            if not n_.get('zh') or not n_.get('en'):
+                problems.append(f'{where}: a note needs zh and en')
+        for m in p.get('mistakes', []):
+            if not all(m.get(k) for k in ('wrong', 'right', 'zh', 'en')):
+                problems.append(f'{where}: a mistake needs wrong, right, zh, en')
         for ex in p.get('examples', []):
             if not all(ex.get(k) for k in ('ja', 'kana', 'zh', 'en')):
                 problems.append(f'{where}: example needs ja, kana, zh, en: {ex}')

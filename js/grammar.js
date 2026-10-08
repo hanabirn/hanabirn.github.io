@@ -1,8 +1,9 @@
 /* ===================== 文法 Grammar (#page-grammar) =====================
    Lessons built by tools/build_grammar.py from the hand-written tools/grammar/<id>.json
    (data/grammar/index.json lists them; Japanese N5 first, more levels / languages later).
-   A point = pattern, meaning, how it attaches (form), explanation, examples with
-   audio, then a few fill-in questions; getting GRAMMAR_PASS of them right marks it
+   A point = pattern, meaning, how it attaches (form), explanation, notes (注意事項),
+   common mistakes (✗ wrong / ✓ right / why), examples with audio, then a few
+   fill-in questions; getting GRAMMAR_PASS of them right marks it
    learned. Content texts come as { zh, 'zh-Hans', en }: other UI languages read
    the English. Progress: localStorage grammar_progress = { "<set>:<point>": { best, of, at } }
    (synced, js/account.js). Answers count toward the daily goal (logDailyActivity). */
@@ -133,6 +134,18 @@ function grammarPointHtml(set) {
         </div>
         <div class="grammar-form"><b>${escHtml(t('grammar_form'))}</b><span lang="${set.lang}">${escHtml(gText(p.form))}</span></div>
         <p class="grammar-explain">${escHtml(gText(p.explain))}</p>
+        ${(p.notes || []).length ? `<div class="grammar-notes">
+            <h4 class="grammar-sub">⚠️ ${escHtml(t('grammar_notes'))}</h4>
+            <ul>${p.notes.map(n => `<li>${escHtml(gText(n))}</li>`).join('')}</ul>
+        </div>` : ''}
+        ${(p.mistakes || []).length ? `<h4 class="grammar-sub">${escHtml(t('grammar_mistakes'))}</h4>
+        <ul class="grammar-mistakes">
+            ${p.mistakes.map(m => `<li>
+                <div class="grammar-wrong" lang="${set.lang}"><span aria-hidden="true">✗</span> <s>${escHtml(m.wrong)}</s></div>
+                <div class="grammar-right" lang="${set.lang}"><span aria-hidden="true">✓</span> ${escHtml(m.right)}</div>
+                <div class="grammar-why">${escHtml(gText(m))}</div>
+            </li>`).join('')}
+        </ul>` : ''}
         <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
