@@ -1,0 +1,167 @@
+/* ===== 文法 Grammar (js/grammar.js, #page-grammar) ===== */
+.grammar-card { text-align: left; }
+.grammar-card h3 { text-align: center; }
+.grammar-intro,
+.grammar-soon,
+.grammar-credit {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin: 0 0 14px;
+}
+.grammar-soon { font-size: 0.8rem; color: var(--text-muted); margin-top: -4px; }
+.grammar-credit { font-size: 0.75rem; color: var(--text-muted); margin: 18px 0 0; }
+.grammar-loading { text-align: center; color: var(--text-muted); padding: 30px 0; }
+
+.grammar-chips {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+.mode-btn.grammar-chip { flex: 0 0 auto; padding: 8px 16px; font-size: 0.9rem; min-width: 0; }
+
+.grammar-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin: 4px 0 14px;
+}
+.grammar-bar {
+    flex: 1;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--track);
+    overflow: hidden;
+}
+.grammar-bar i { display: block; height: 100%; background: var(--success); border-radius: 4px; }
+
+.grammar-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.grammar-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--line);
+    background: var(--surface);
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 4px 0 var(--edge);
+    font: inherit;
+}
+.grammar-item:hover { border-color: var(--primary); }
+.grammar-item:active { transform: translateY(4px); box-shadow: none; }
+.grammar-item.learned { border-color: var(--success); }
+.grammar-num {
+    flex: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: var(--track);
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+.grammar-item.learned .grammar-num { background: var(--success); color: var(--on-primary); }
+.grammar-item-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.grammar-pattern { font-family: var(--font-serif); font-size: 1.05rem; font-weight: 700; }
+.grammar-item-title { font-size: 0.85rem; color: var(--text-secondary); }
+.grammar-state { flex: none; font-size: 0.8rem; color: var(--text-muted); }
+.grammar-item.learned .grammar-state { color: var(--success); font-weight: 700; }
+
+/* ----- one point ----- */
+.grammar-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.btn.back-btn.grammar-back { width: auto; margin: 0; padding: 8px 14px; font-size: 0.85rem; }
+.grammar-count { font-size: 0.8rem; color: var(--text-muted); }
+.grammar-head { text-align: center; margin-bottom: 16px; }
+.grammar-big {
+    font-family: var(--font-serif);
+    font-size: 1.9rem;
+    font-weight: 900;
+    color: var(--primary);
+    line-height: 1.3;
+    overflow-wrap: anywhere;
+}
+.grammar-head-title { margin-top: 6px; font-size: 1.05rem; font-weight: 700; }
+.grammar-badge { font-size: 0.75rem; color: var(--success); white-space: nowrap; }
+.grammar-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+    align-items: baseline;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px dashed var(--line);
+    background: var(--primary-soft);
+    font-size: 0.95rem;
+    margin-bottom: 14px;
+}
+.grammar-form b { font-size: 0.8rem; color: var(--primary); }
+.grammar-explain { line-height: 1.85; font-size: 0.95rem; margin: 0 0 18px; }
+.grammar-sub { margin: 0 0 8px; font-size: 0.85rem; color: var(--text-muted); letter-spacing: 1px; }
+.grammar-examples { list-style: none; margin: 0 0 20px; padding: 0; display: grid; gap: 10px; }
+.grammar-examples li {
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+}
+.grammar-ex-line { display: flex; align-items: center; gap: 10px; }
+.grammar-ex-ja { flex: 1; font-size: 1.15rem; font-weight: 700; line-height: 1.5; }
+.grammar-ex-kana { font-size: 0.85rem; color: var(--text-muted); margin-top: 2px; }
+.grammar-ex-tr { font-size: 0.9rem; color: var(--text-secondary); margin-top: 4px; }
+.btn.next-btn.grammar-start { display: block; width: 100%; margin: 0 0 14px; }
+.grammar-nav { display: flex; gap: 10px; }
+.grammar-nav .back-btn { flex: 1; margin: 0; }
+.grammar-nav .back-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ----- practice ----- */
+.grammar-q { text-align: center; margin-bottom: 18px; }
+.grammar-q-pattern { font-size: 0.85rem; color: var(--primary); font-weight: 700; margin-bottom: 8px; }
+.grammar-q-text { font-size: 1.45rem; font-weight: 700; line-height: 1.7; overflow-wrap: anywhere; }
+.grammar-q-hint { font-size: 0.95rem; color: var(--text-secondary); margin-top: 6px; }
+.grammar-blank {
+    display: inline-block;
+    min-width: 2.4em;
+    padding: 0 6px;
+    margin: 0 3px;
+    border-bottom: 3px solid var(--primary);
+    color: var(--primary);
+}
+.grammar-blank.ok { border-color: var(--success); color: var(--success); }
+.grammar-blank.no { border-color: var(--danger); color: var(--danger); }
+.grammar-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
+.grammar-options .option-btn { margin: 0; font-size: 1.15rem; }
+.grammar-feedback { text-align: center; font-weight: 700; margin: 0 0 12px; }
+.grammar-feedback.ok { color: var(--success); }
+.grammar-feedback.no { color: var(--danger); }
+
+/* ----- result ----- */
+.grammar-result { text-align: center; margin-bottom: 18px; }
+.grammar-result-mascot { width: 72px; margin: 0 auto 10px; }
+.grammar-score { font-size: 1.3rem; font-weight: 700; margin: 10px 0 4px; }
+.grammar-verdict { margin: 0; font-weight: 700; }
+.grammar-verdict.ok { color: var(--success); }
+.grammar-verdict.no { color: var(--text-secondary); }
+.grammar-result-btns { display: grid; gap: 10px; }
+.grammar-result-btns .btn { width: 100%; margin: 0; }
+
+@media (max-width: 480px) {
+    .grammar-options { grid-template-columns: 1fr; }
+    .grammar-big { font-size: 1.6rem; }
+    .grammar-q-text { font-size: 1.25rem; }
+}

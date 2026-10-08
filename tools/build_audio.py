@@ -183,6 +183,13 @@ def jobs(lang):
             add(text, text)
         # N5 first, then the 單字 page topics (tp_ja_*), so a plain word's alias
         # keeps the most basic JLPT reading
+        # 文法 page examples (data/grammar/ja_*.json): keyed "sentence|kana" like
+        # kanji words, spoken from the kana so the reading is the one taught
+        for f in sorted((ROOT / 'data' / 'grammar').glob('ja_*.json')):
+            for point in json.loads(f.read_text(encoding='utf-8'))['points']:
+                for ex in point['examples']:
+                    fid = add(ex['ja'] + '|' + ex['kana'], ex['kana'].replace(' ', ''))
+                    aliases.setdefault(audio_id(ex['ja']), fid)
         rows = list(vocab('jlpt_', reverse=True)) + list(vocab('tp_ja_'))
         for word, kana, *_ in rows:
             if HAS_KANJI.search(word) and kana:

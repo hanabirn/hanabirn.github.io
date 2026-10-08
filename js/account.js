@@ -80,6 +80,15 @@ const SYNC_KEYS = {
     flashcard_known: { empty: [], merge: unionList },
     flashcard_unknown: { empty: [], merge: unionList },
     quiz_achievements: { empty: [], merge: unionList },
+    // grammar points: the better score of each (js/grammar.js)
+    grammar_progress: { empty: {}, merge: (a, b) => {
+        const o = Object.assign({}, a);
+        Object.entries(b).forEach(([k, p]) => {
+            const q = o[k];
+            if (!q || (p && p.best / (p.of || 1) > q.best / (q.of || 1))) o[k] = p;
+        });
+        return o;
+    } },
     // plain strings: this device's choice wins, the cloud fills in a missing one
     daily_goal: { raw: true },
     last_quiz_set: { raw: true }

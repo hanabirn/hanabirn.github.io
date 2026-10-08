@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v38';
+const CACHE_NAME = 'hanabi-v39';
 const ASSETS = [
   '/',
   '/index.html',
@@ -19,6 +19,7 @@ const ASSETS = [
   '/css/account.css',
   '/css/dict.css',
   '/css/alphabet.css',
+  '/css/grammar.css',
   '/css/tour.css',
   '/css/rails.css',
   '/css/assistant.css',
@@ -40,6 +41,7 @@ const ASSETS = [
   '/js/dict.js',
   '/js/alphabet-data.js',
   '/js/alphabet.js',
+  '/js/grammar.js',
   '/js/updates.js',
   '/js/tour.js',
   '/js/rails.js',
