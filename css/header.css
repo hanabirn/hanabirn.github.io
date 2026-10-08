@@ -299,6 +299,15 @@ header h1 {
     padding: 11px;
 }
 
+/* Desktop: the site name is long in most languages ("El Pequeño Mundo de Hanabi").
+   The brand keeps its natural width and, when the buttons don't fit beside it,
+   they wrap onto a second row on the right instead of running over the title. */
+@media (min-width: 769px) {
+    .header-bar { flex-wrap: wrap; row-gap: 10px; }
+    .brand { min-width: auto; flex: 0 1 auto; }
+    .subtitle-controls { margin-left: auto; }
+}
+
 @media (max-width: 768px) {
     header { padding-bottom: 0; }
     .header-bar { padding: 10px 14px; gap: 10px; }

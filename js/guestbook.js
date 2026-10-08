@@ -1,9 +1,14 @@
-/* ===== Guestbook — Google Sheets Backend ===== */
-const GUESTBOOK_API = 'https://script.google.com/macros/s/AKfycbx8V81ni-z8gCgLsV1vGGpJK--qcg1yqiLUJLjJYzfNl4F2D4VEMjFTyYtkncixfNUu/exec';
+/* ===== Guestbook (留言板) — Cloudflare Worker backend =====
+   Messages are kept by the hanabi-assistant Worker (worker/assistant/src/guestbook.js)
+   in Cloudflare KV, which only the Worker can write. Posting needs a site account
+   (js/account.js): the Worker checks the Firebase ID token, allows one message per
+   account (email accounts must have verified their address) and has Gemini refuse
+   violence, politics, sexual content, hate, spam and personal data. The small word
+   list below only saves a round trip for the obvious cases. */
+const GUESTBOOK_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
+    ? 'http://localhost:8787/guestbook'
+    : 'https://hanabi-assistant.osu-collection-hanabi.workers.dev/guestbook';
 
-// Client-side content filter: catches spam links and the more severe hate/explicit/
-// self-harm terms before a message ever reaches the public, unmoderated sheet.
-// Not bypass-proof (it's client-side), but blocks casual abuse and drive-by spam.
 const GUESTBOOK_BLOCKED_WORDS = [
     'nigger', 'nigga', 'faggot', 'retard', 'kill yourself', 'kys',
     'porn', 'onlyfans', 'nude pics',
@@ -17,46 +22,131 @@ function containsBlockedContent(text) {
 }
 
 let guestbookMessages = [];
-let guestbookLoading = false;
+let guestbookMine = null;          // this account already posted (null: unknown)
+let guestbookNotice = '';          // the line under the form (errors, "sent")
+let guestbookVerifySent = false;
 const GUESTBOOK_PAGE_SIZE = 10;
-const GUESTBOOK_CACHE_KEY = 'guestbook_cache';
+const GUESTBOOK_CACHE_KEY = 'guestbook_cache_v2';
 let guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
 
+function guestbookUser() {
+    return typeof acctUser !== 'undefined' ? acctUser : null;
+}
+
+// Google accounts are verified; email + password ones must confirm their address
+function guestbookNeedsVerify(user) {
+    return !!user && !user.emailVerified && !(user.providerData || []).some(p => p.providerId === 'google.com');
+}
+
+async function guestbookAuthHeader() {
+    const user = guestbookUser();
+    if (!user) return {};
+    try { return { Authorization: 'Bearer ' + await user.getIdToken() }; } catch { return {}; }
+}
+
 async function loadGuestbookMessages() {
-    guestbookLoading = true;
     guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
     const container = document.getElementById('guestbook-local');
+    // a device that was signed in: load Firebase so the form knows who is writing
+    try {
+        if (!guestbookUser() && localStorage.getItem('acct_signed_in') && typeof acctLoadSdk === 'function') acctLoadSdk().catch(() => {});
+    } catch {}
+    renderGuestbookGate();
 
-    // Show cached messages instantly (if any) while the fresh copy loads in the background,
-    // since the Apps Script backend can take a few seconds to respond.
-    const cached = localStorage.getItem(GUESTBOOK_CACHE_KEY);
+    // cached messages at once, the fresh list when it arrives
+    let cached = null;
+    try { cached = localStorage.getItem(GUESTBOOK_CACHE_KEY); } catch {}
     if (cached) {
-        try {
-            guestbookMessages = JSON.parse(cached);
-            renderGuestbookMessages();
-        } catch (e) {
-            guestbookMessages = [];
-        }
+        try { guestbookMessages = JSON.parse(cached); renderGuestbookMessages(); } catch { guestbookMessages = []; }
     } else {
-        container.innerHTML = `<div class="guestbook-loading">${t('guestbook_loading') || 'Loading...'}</div>`;
+        container.innerHTML = `<div class="guestbook-loading">${escapeHtml(t('guestbook_loading'))}</div>`;
     }
 
     try {
-        const res = await fetch(GUESTBOOK_API);
-        guestbookMessages = await res.json();
-        localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages));
+        const res = await fetch(GUESTBOOK_API, { headers: await guestbookAuthHeader() });
+        const data = await res.json();
+        if (!res.ok || !Array.isArray(data.messages)) throw new Error(data.error || res.status);
+        guestbookMessages = data.messages;
+        if (typeof data.mine === 'boolean') guestbookMine = data.mine;
+        try { localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages)); } catch {}
     } catch (e) {
         console.error('Guestbook load failed:', e);
         if (!cached) guestbookMessages = [];
     }
-    guestbookLoading = false;
     renderGuestbookMessages();
+    renderGuestbookGate();
+}
+
+/* account.js calls this when someone signs in or out. */
+function guestbookOnUser() {
+    guestbookMine = null;
+    guestbookNotice = '';
+    guestbookVerifySent = false;
+    const page = document.getElementById('page-guestbook');
+    if (page && page.style.display !== 'none') loadGuestbookMessages();
+}
+
+/* What the visitor can do: sign in / verify the email / write / already wrote. */
+function renderGuestbookGate() {
+    const gate = document.getElementById('guestbook-gate');
+    const form = document.querySelector('#page-guestbook .guestbook-form');
+    const note = document.getElementById('guestbook-notice');
+    if (!gate || !form) return;
+    const user = guestbookUser();
+    let html = '', showForm = false;
+    if (!user) {
+        html = `<p>${escapeHtml(t('guestbook_signin_hint'))}</p>
+            <button type="button" class="btn next-btn" onclick="openAccount()">${escapeHtml(t('guestbook_signin_btn'))}</button>`;
+    } else if (guestbookNeedsVerify(user)) {
+        html = `<p>${escapeHtml(t(guestbookVerifySent ? 'guestbook_verify_sent' : 'guestbook_verify_hint', { email: user.email || '' }))}</p>
+            <div class="guestbook-gate-btns">
+                <button type="button" class="btn next-btn" onclick="guestbookSendVerify()">${escapeHtml(t('guestbook_verify_send'))}</button>
+                <button type="button" class="btn back-btn" onclick="guestbookCheckVerified()">${escapeHtml(t('guestbook_verify_done'))}</button>
+            </div>`;
+    } else if (guestbookMine) {
+        html = `<p>✦ ${escapeHtml(t('guestbook_already'))}</p>`;
+    } else {
+        html = `<p class="guestbook-rule">${escapeHtml(t('guestbook_rule'))}</p>`;
+        showForm = true;
+    }
+    gate.innerHTML = html;
+    form.style.display = showForm ? '' : 'none';
+    if (note) {
+        note.textContent = guestbookNotice;
+        note.hidden = !guestbookNotice;
+    }
+}
+
+async function guestbookSendVerify() {
+    const user = guestbookUser();
+    if (!user || typeof acctLoadSdk !== 'function') return;
+    try {
+        const fb = await acctLoadSdk();
+        await fb.mod.sendEmailVerification(user);
+        guestbookVerifySent = true;
+        guestbookNotice = '';
+    } catch (e) {
+        console.warn('[guestbook] verify', e);
+        guestbookNotice = typeof acctErrorText === 'function' ? acctErrorText(e) : t('guestbook_error');
+    }
+    renderGuestbookGate();
+}
+
+async function guestbookCheckVerified() {
+    const user = guestbookUser();
+    if (!user) return;
+    try {
+        await user.reload();
+        await user.getIdToken(true);
+    } catch {}
+    guestbookNotice = guestbookNeedsVerify(user) ? t('guestbook_verify_not_yet') : '';
+    renderGuestbookGate();
 }
 
 function renderGuestbookMessages() {
     const container = document.getElementById('guestbook-local');
     if (guestbookMessages.length === 0) {
-        container.innerHTML = `<div class="guestbook-empty">${t('guestbook_empty') || 'No messages yet. Be the first!'}</div>`;
+        container.innerHTML = `<div class="guestbook-empty">${escapeHtml(t('guestbook_empty'))}</div>`;
         return;
     }
 
@@ -72,7 +162,7 @@ function renderGuestbookMessages() {
     }).join('');
 
     if (guestbookMessages.length > guestbookVisibleCount) {
-        html += `<button class="guestbook-load-more" onclick="loadMoreGuestbookMessages()">${t('guestbook_load_more')}</button>`;
+        html += `<button class="guestbook-load-more" onclick="loadMoreGuestbookMessages()">${escapeHtml(t('guestbook_load_more'))}</button>`;
     }
 
     container.innerHTML = html;
@@ -83,61 +173,66 @@ function loadMoreGuestbookMessages() {
     renderGuestbookMessages();
 }
 
+const GUESTBOOK_ERRORS = {
+    blocked: 'guestbook_blocked', moderation_busy: 'guestbook_mod_busy', busy: 'guestbook_busy',
+    signin: 'guestbook_signin_hint', verify_email: 'guestbook_verify_hint', bad_request: 'guestbook_error'
+};
+
 async function handleGuestbookSubmit(event) {
     event.preventDefault();
     const form = event.target;
     const name = form.elements.name.value.trim();
     const message = form.elements.message.value.trim();
     if (!name || !message) return false;
+    guestbookNotice = '';
 
-    if (containsBlockedContent(name) || containsBlockedContent(message)) {
-        alert(t('guestbook_blocked'));
+    // bots fill the hidden field: pretend it worked
+    if (form.elements.website && form.elements.website.value) {
+        form.reset();
         return false;
     }
-
-    if (form.elements.website && form.elements.website.value) {
-        form.style.display = 'none';
-        document.getElementById('guestbook-success').style.display = 'block';
-        setTimeout(() => {
-            form.style.display = '';
-            form.reset();
-        }, 3000);
+    if (containsBlockedContent(name) || containsBlockedContent(message)) {
+        guestbookNotice = t('guestbook_blocked');
+        renderGuestbookGate();
         return false;
     }
 
     const submitBtn = form.querySelector('.guestbook-submit');
     submitBtn.disabled = true;
-
+    submitBtn.classList.add('loading');
     try {
-        await fetch(GUESTBOOK_API, {
+        const res = await fetch(GUESTBOOK_API, {
             method: 'POST',
-            mode: 'no-cors',
+            headers: Object.assign({ 'Content-Type': 'application/json' }, await guestbookAuthHeader()),
             body: JSON.stringify({ name, message })
         });
-
-        form.style.display = 'none';
-        document.getElementById('guestbook-success').style.display = 'block';
-
-        guestbookMessages.unshift({ name, message, time: new Date().toISOString() });
-        localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages));
-        renderGuestbookMessages();
-
-        setTimeout(() => {
-            form.style.display = '';
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.item) {
+            guestbookMessages.unshift(data.item);
+            try { localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages)); } catch {}
+            guestbookMine = true;
             form.reset();
-            submitBtn.disabled = false;
-            document.getElementById('guestbook-success').style.display = 'none';
-        }, 3000);
+            const ok = document.getElementById('guestbook-success');
+            ok.style.display = 'block';
+            setTimeout(() => { ok.style.display = 'none'; }, 4000);
+            renderGuestbookMessages();
+        } else if (data.error === 'already') {
+            guestbookMine = true;
+        } else {
+            guestbookNotice = t(GUESTBOOK_ERRORS[data.error] || 'guestbook_error', { email: (guestbookUser() || {}).email || '' });
+        }
     } catch (e) {
         console.error('Guestbook submit failed:', e);
-        submitBtn.disabled = false;
+        guestbookNotice = t('guestbook_error');
     }
-
+    submitBtn.disabled = false;
+    submitBtn.classList.remove('loading');
+    renderGuestbookGate();
     return false;
 }
 
 function escapeHtml(str) {
     const div = document.createElement('div');
-    div.textContent = str;
+    div.textContent = str == null ? '' : String(str);
     return div.innerHTML;
 }

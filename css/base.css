@@ -106,6 +106,12 @@ main {
     font-weight: 700;
     color: var(--text);
     letter-spacing: 2px;
+    /* even lines, so a long title doesn't leave its closing ✦ alone on a line */
+    text-wrap: balance;
+    /* one long German / Russian word (Abstandswiederholung) mustn't stick out on phones */
+    hyphens: auto;
+    overflow-wrap: break-word;
+    min-width: 0;
 }
 
 .examquiz-hint {

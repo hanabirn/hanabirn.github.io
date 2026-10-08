@@ -539,7 +539,7 @@ def build_hsk(args):
 # rows keep the file's order (easy first, written that way by hand). Chinese lines
 # are "traditional<TAB>pinyin<TAB>english[<TAB>simplified]" and become HSK-shaped
 # rows: simplified by OpenCC tw2s unless given, bopomofo converted from the pinyin.
-TOPIC_LANGS = ("ja", "ko", "en", "zh")
+TOPIC_LANGS = ("ja", "ko", "en", "zh", "fr", "ru")   # fr rows: [le chat, m., zh, en]; ru: [слово, сло́во, zh, en]
 TOPICS = ("greetings", "food", "home", "shopping", "transport", "travel", "weather", "school", "work", "health")
 
 

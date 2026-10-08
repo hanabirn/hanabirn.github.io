@@ -589,14 +589,17 @@
         <div id="page-guestbook" style="display: none;">
             <div class="guestbook-card">
                 <h3 data-i18n="guestbook_title">&#x7559;&#x8A00;&#x677F;</h3>
-                <form class="guestbook-form" onsubmit="return handleGuestbookSubmit(event)">
+                <!-- sign in / verify the email / already posted (renderGuestbookGate in js/guestbook.js) -->
+                <div id="guestbook-gate" class="guestbook-gate"></div>
+                <form class="guestbook-form" onsubmit="return handleGuestbookSubmit(event)" style="display: none;">
                     <div class="guestbook-input-row">
-                        <input type="text" name="name" data-i18n-placeholder="guestbook_name" placeholder="&#x4F60;&#x7684;&#x540D;&#x5B57;" required class="guestbook-input">
-                        <input type="text" name="message" data-i18n-placeholder="guestbook_message" placeholder="&#x7559;&#x4E0B;&#x4F60;&#x7684;&#x8A00;&#x8A9E;..." required class="guestbook-input guestbook-msg">
+                        <input type="text" name="name" data-i18n-placeholder="guestbook_name" placeholder="&#x4F60;&#x7684;&#x540D;&#x5B57;" required maxlength="30" class="guestbook-input">
+                        <input type="text" name="message" data-i18n-placeholder="guestbook_message" placeholder="&#x7559;&#x4E0B;&#x4F60;&#x7684;&#x8A00;&#x8A9E;..." required maxlength="300" class="guestbook-input guestbook-msg">
                         <input type="text" name="website" class="guestbook-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
                         <button type="submit" class="btn next-btn guestbook-submit" data-i18n="guestbook_send">&#x9001;&#x51FA;</button>
                     </div>
                 </form>
+                <p id="guestbook-notice" class="guestbook-notice" role="alert" hidden></p>
                 <div id="guestbook-success" class="guestbook-success" style="display:none;" data-i18n="guestbook_success">&#x611F;&#x8B1D;&#x4F60;&#x7684;&#x7559;&#x8A00; &#x2726;</div>
                 <div id="guestbook-local" class="guestbook-local"></div>
             </div>

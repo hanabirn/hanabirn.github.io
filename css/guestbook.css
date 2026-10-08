@@ -167,3 +167,43 @@
     border-color: var(--accent-purple);
     background: rgba(var(--accent-purple-rgb),0.18);
 }
+
+/* ----- who may write (js/guestbook.js renderGuestbookGate) ----- */
+.guestbook-gate {
+    text-align: center;
+    margin-bottom: 14px;
+}
+.guestbook-gate p {
+    margin: 0 0 12px;
+    color: var(--text-secondary);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+.guestbook-gate p.guestbook-rule {
+    margin: 0;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+.guestbook-gate .next-btn,
+.guestbook-gate .back-btn {
+    display: inline-block;
+    width: auto;
+    margin: 0;
+    padding: 10px 22px;
+}
+.guestbook-gate-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.guestbook-notice {
+    margin: 0 0 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--danger);
+    background: var(--danger-bg);
+    color: var(--danger-text);
+    font-size: 0.88rem;
+    text-align: center;
+}

@@ -261,6 +261,11 @@
     .home-ring > span { width: 64px; height: 64px; padding-top: 18px; }
     .home-ring b { font-size: 1.3rem; }
 }
+/* 360px phones leave the dots less than 192px: smaller, and never a lone 7th on its own line */
+@media (max-width: 400px) {
+    .home-week { gap: 3px; flex-wrap: nowrap; }
+    .home-week i { width: 21px; height: 21px; flex: none; font-size: 0.62rem; }
+}
 
 @media (prefers-reduced-motion: reduce) {
 }

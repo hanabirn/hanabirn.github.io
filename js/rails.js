@@ -17,6 +17,7 @@ const POKE_ANGRY_AT = 5;
 const POKE_WINDOW_MS = 2500;
 const POKE_FACE_MS = 1600;
 const POKE_ANGRY_MS = 1800;
+const POKE_EXTRA_CHANCE = 0.3;   // how often a poke on the head or body gets a line about the visitor's day
 const RAIL_WORD_LANGS = ['jp', 'kr', 'en', 'zh'];
 const RAIL_TTS = { jp: 'ja-JP', kr: 'ko-KR', en: 'en-US' };
 const RAIL_CTX = { home: 'ctx_home', quiz: 'ctx_quiz', examquiz: 'ctx_exam', dict: 'ctx_dict',
@@ -48,14 +49,17 @@ function railLoad(key) {
 
 /* ---------- left: 小花火 ---------- */
 
-function pokeLines(key) {
-    return t(key).split('|').map(s => s.trim()).filter(Boolean);
+// t() fills only the first {n}, and every line of the key has its own
+function pokeLines(key, params) {
+    return t(key).split('|')
+        .map(s => Object.entries(params || {}).reduce((x, [k, v]) => x.split('{' + k + '}').join(v), s).trim())
+        .filter(Boolean);
 }
 
-function pokeSay(key) {
+function pokeSay(key, params) {
     const bubble = document.getElementById('poke-bubble');
     if (!bubble) return;
-    const lines = pokeLines(key);
+    const lines = pokeLines(key, params);
     if (!lines.length) return;
     let line = lines[Math.floor(Math.random() * lines.length)];
     if (line === pokeLastLine && lines.length > 1) line = lines[(lines.indexOf(line) + 1) % lines.length];
@@ -156,10 +160,11 @@ function pokeReact(zone) {
         return;
     }
     pokePop(false);
+    const extra = Math.random() < POKE_EXTRA_CHANCE ? pokeSituation() : null;
     if (zone === 'head') {
         pokeFace(mascot, 'mc-happy', POKE_FACE_MS);
         pokeFx(['♪', '💕']);
-        pokeSay('poke_head');
+        extra ? pokeSay(extra[0], extra[1]) : pokeSay('poke_head');
     } else if (zone === 'face') {
         pokeFace(mascot, 'mc-shy', POKE_FACE_MS);
         pokeFx(['///'], 'shy');
@@ -168,7 +173,57 @@ function pokeReact(zone) {
         pokeFace(mascot, '', 0);
         mascotHop(mascot);
         pokeFx(['!'], 'startle');
-        pokeSay('poke_body');
+        extra ? pokeSay(extra[0], extra[1]) : pokeSay('poke_body');
+    }
+}
+
+/* Now and then a poke gets a line about the visitor's day instead: the time,
+   their streak, cards waiting for review. [i18n key, params] or null. */
+function pokeSituation() {
+    const options = [];
+    const h = new Date().getHours();
+    if (h >= 5 && h < 11) options.push(['poke_morning']);
+    else if (h >= 22 || h < 5) options.push(['poke_night']);
+    try {
+        const streak = calcStreak(getQuizRecords());
+        if (streak >= 2) options.push(['poke_streak', { n: streak }]);
+        const due = srsQuizDueCount();
+        if (due > 0) options.push(['poke_due', { n: due }]);
+    } catch {}
+    return options.length ? options[Math.floor(Math.random() * options.length)] : null;
+}
+
+/* The quiz engine tells her how it's going (js/quiz.js: noteCombo, showResults):
+   she cheers every 5 right in a row, now and then comforts a miss, and comments
+   on the result. Only while she is on screen. */
+let railReactQuietUntil = 0;
+
+function railReact(event, n) {
+    if (!railVisible('rail-left')) return;
+    const mascot = mascotOf(document.getElementById('poke-btn'));
+    if (!mascot) return;
+    const now = Date.now();
+    if (event === 'combo') {
+        if (n < 5 || n % 5) return;
+        pokeFace(mascot, 'mc-happy', POKE_FACE_MS);
+        mascotHop(mascot);
+        pokeFx(['🔥', '✨']);
+        pokeSay('react_combo', { n });
+    } else if (event === 'wrong') {
+        if (now < railReactQuietUntil || Math.random() > 0.35) return;
+        railReactQuietUntil = now + 15000;
+        pokeSay('react_wrong');
+    } else if (event === 'result') {
+        if (n >= 100) {
+            pokeFace(mascot, 'mc-happy', POKE_FACE_MS * 2);
+            pokeFx(['🎉', '💯']);
+            pokeSay('react_perfect');
+        } else if (n >= 60) {
+            pokeFace(mascot, 'mc-happy', POKE_FACE_MS);
+            pokeSay('react_good');
+        } else {
+            pokeSay('react_low');
+        }
     }
 }
 
@@ -379,6 +434,17 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRails();
     // web fonts can change the header's height after load
     window.addEventListener('load', railPlace);
+    // on the quiz page only the path is 1180px wide; the other cards keep 680px,
+    // so the rails move in next to them (body.quiz-wide, css/rails.css)
+    const path = document.getElementById('path-card');
+    if (path) {
+        const sync = () => {
+            document.body.classList.toggle('quiz-wide', path.style.display !== 'none');
+            railPlace();
+        };
+        new MutationObserver(sync).observe(path, { attributes: true, attributeFilter: ['style'] });
+        sync();
+    }
     // the rails appear when the window gets wide enough: fill them in then
     window.addEventListener('resize', () => {
         clearTimeout(window._railResize);

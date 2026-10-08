@@ -9,11 +9,15 @@
  *   With stream: true the reply comes back as text/plain, streamed while Gemini
  *   writes it (the site shows it word by word); errors are still JSON.
  *
+ * The guestbook (留言板) is served here too: /guestbook, see src/guestbook.js.
+ *
  * Guards: only the site's origins (ALLOWED_ORIGINS), a per-IP burst limit
  * (the LIMITER rate-limit binding), and caps on message count and length.
  * Gemini's own free-tier quota is the daily ceiling; when it is used up the
  * site shows "小花火有點忙" instead of an error.
  */
+
+import { guestbook } from './guestbook.js';
 
 const MAX_MESSAGES = 12;      // conversation turns forwarded (latest)
 const MAX_CHARS = 600;        // per message
@@ -30,7 +34,7 @@ Personality: warm, encouraging and a little playful, like a small firework — b
 
 You help with:
 - Language learning in any language: meanings, nuance, grammar, pronunciation tips, example sentences, ways to remember words, study plans.
-- Using the site. Its features: a home dashboard (daily goal ring, streak, "continue learning"); 單字 vocabulary by everyday topic (Japanese, Korean, English and Chinese each have 10 topics — greetings, food, home, shopping, transport, travel, weather, school, work, health — 40 words / 4 levels each; French has its own list) and 檢定 graded exam lists (Japanese JLPT N5–N1; Korean TOPIK 1–4; Chinese HSK 1–7; English junior/senior high, TOEIC, TOEFL; French and Russian at CEFR A1–C1), both learned on a path of 10-word levels (pass with 80%), plus free practice and the 練習中心 practice hub under the language buttons: 間隔複習 spaced-repetition review (due cards, next batch, 7-day forecast), 錯題本 a mistake book (a word leaves it after 2 right answers in a row; 修復 runs a repair round), 單字閃卡 flashcard decks you swipe right for 會了 / left for 還不熟, 聽力測驗 listening (tap the word you hear or type it, 🐢 slow playback) and 測驗統計 stats (words mastered per list, practice calendar, this week vs last); 檢定考試 exam word lists; 字典 a dictionary (translation, part of speech, definitions, examples); 字母表 an alphabet chart for 8 languages with audio; 記事本 a notepad stored only on the device; settings to choose visible pages and a voice per language; 9 interface languages and a dark mode; a site tour that can be replayed from the settings; on wide computer screens, a standing 小花火 on the left who reacts when poked (head, face, body; too many pokes make her cross) and on the right a word of the day (plus a two-week practice calendar and today's tasks on the home page).
+- Using the site. Its features: a home dashboard (daily goal ring, streak, "continue learning"); 單字 vocabulary by everyday topic (Japanese, Korean, English and Chinese each have 10 topics — greetings, food, home, shopping, transport, travel, weather, school, work, health — 40 words / 4 levels each; French has its own list) and 檢定 graded exam lists (Japanese JLPT N5–N1; Korean TOPIK 1–4; Chinese HSK 1–7; English junior/senior high, TOEIC, TOEFL; French and Russian at CEFR A1–C1), both learned on a path of 10-word levels (pass with 80%), plus free practice and the 練習中心 practice hub under the language buttons: 間隔複習 spaced-repetition review (due cards, next batch, 7-day forecast), 錯題本 a mistake book (a word leaves it after 2 right answers in a row; 修復 runs a repair round), 單字閃卡 flashcard decks you swipe right for 會了 / left for 還不熟, 聽力測驗 listening (tap the word you hear or type it, 🐢 slow playback) and 測驗統計 stats (words mastered per list, practice calendar, this week vs last); 檢定考試 exam word lists; 字典 a dictionary (translation, part of speech, definitions, examples); 字母表 an alphabet chart for 8 languages with audio; 記事本 a notepad stored only on the device; 留言板 a guestbook (sign in to leave one message per account; messages are checked automatically, no politics, violence, sexual content, insults or ads); settings to choose visible pages and a voice per language; 9 interface languages and a dark mode; a site tour that can be replayed from the settings; on wide computer screens, a standing 小花火 on the left who reacts when poked (head, face, body; too many pokes make her cross) and on the right a word of the day (plus a two-week practice calendar and today's tasks on the home page).
 
 Rules:
 - The visitor's interface language is ${name}. Reply in it, unless the visitor writes in another language or asks for one.
@@ -48,8 +52,8 @@ function cors(origin, env) {
     const ok = allowed.includes(origin);
     return {
         'Access-Control-Allow-Origin': ok ? origin : allowed[0] || '',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type',
+        'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
         'Access-Control-Max-Age': '86400',
         'Vary': 'Origin'
     };
@@ -103,6 +107,11 @@ export default {
         const url = new URL(request.url);
 
         if (request.method === 'OPTIONS') return new Response(null, { status: 204, headers });
+        if (url.pathname === '/guestbook' || url.pathname.startsWith('/guestbook/')) {
+            // the owner's DELETE comes from a terminal, without an Origin
+            if (request.method !== 'DELETE' && headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
+            return guestbook(request, env, url, json, headers);
+        }
         if (url.pathname !== '/chat' || request.method !== 'POST') return json({ error: 'not_found' }, 404, headers);
         if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
 

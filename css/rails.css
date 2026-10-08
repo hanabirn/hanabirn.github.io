@@ -2,7 +2,8 @@
    Fixed beside the 720px main column, below the header. The right rail keeps
    clear of the fixed buttons on the right edge (AI chat, settings, reload,
    clock), so it needs a wider screen than the left one. The alphabet,
-   dictionary and quiz pages widen to 1180px, so their rails wait for even
+   dictionary and quiz pages widen to 1180px (the quiz page only while its path
+   shows: body.quiz-wide, set in js/rails.js), so their rails wait for even
    wider screens. --rail-top is set by railPlace() (js/rails.js) from the
    header's real height, which changes with the language (English wraps the
    tagline onto three lines). */
@@ -48,22 +49,22 @@
 @media (min-width: 1280px) and (max-width: 1699.98px) {
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
-    body[data-page="quiz"] .rail-left { display: none; }
+    body[data-page="quiz"].quiz-wide .rail-left { display: none; }
 }
 @media (min-width: 1700px) {
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
-    body[data-page="quiz"] .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
+    body[data-page="quiz"].quiz-wide .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
 }
 @media (min-width: 1480px) and (max-width: 1939.98px) {
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
-    body[data-page="quiz"] .rail-right { display: none; }
+    body[data-page="quiz"].quiz-wide .rail-right { display: none; }
 }
 @media (min-width: 1940px) {
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
-    body[data-page="quiz"] .rail-right { right: max(112px, calc(50% - 590px - 28px - var(--rail-right-w))); }
+    body[data-page="quiz"].quiz-wide .rail-right { right: max(112px, calc(50% - 590px - 28px - var(--rail-right-w))); }
 }
 
 /* ----- left: 小花火 ----- */

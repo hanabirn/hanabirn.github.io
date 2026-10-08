@@ -7,6 +7,15 @@
     <meta name="description" content="Hanabiの小天地 隱私權政策">
     <meta name="robots" content="index, follow">
     <link rel="icon" type="image/png" href="icons/web-app-manifest-192x192.png">
+    <script>
+        /* the theme the visitor picked on the site (js/theme.js), else the system one */
+        (function () {
+            var t = null;
+            try { t = localStorage.getItem('theme'); } catch (e) {}
+            if (t !== 'light' && t !== 'dark') t = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            document.documentElement.setAttribute('data-theme', t);
+        })();
+    </script>
     <link rel="stylesheet" href="css/theme.css">
     <link rel="stylesheet" href="css/base.css">
     <style>
@@ -16,16 +25,14 @@
             max-width: 760px;
             margin: 0 auto;
             padding: 40px 24px 60px;
-            color: var(--text-main, #f5f5f5);
+            color: var(--text);
             line-height: 1.8;
         }
         .policy-wrap h1 {
             font-size: 1.6rem;
             margin-bottom: 6px;
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-purple));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-family: var(--font-serif);
+            color: var(--primary);
         }
         .policy-updated {
             color: var(--text-muted);
@@ -35,18 +42,20 @@
         .policy-wrap h2 {
             font-size: 1.15rem;
             margin: 32px 0 10px;
-            color: var(--text-pink);
+            font-family: var(--font-serif);
+            color: var(--primary);
         }
         .policy-wrap p, .policy-wrap li {
             font-size: 0.95rem;
-            color: var(--text-secondary, #d8d8d8);
+            color: var(--text-secondary);
         }
+        .policy-wrap td { color: var(--text-secondary); }
         .policy-wrap ul {
             padding-left: 22px;
             margin: 8px 0;
         }
         .policy-wrap a {
-            color: var(--accent-light-purple, #c084fc);
+            color: var(--primary);
         }
         .policy-back {
             display: inline-block;
@@ -65,7 +74,7 @@
         table.policy-table th, table.policy-table td {
             text-align: left;
             padding: 8px 10px;
-            border-bottom: 1px solid rgba(255,255,255,0.12);
+            border-bottom: 1px solid var(--line);
             vertical-align: top;
         }
         table.policy-table th {
@@ -94,7 +103,7 @@
         <p data-p="s1_p3">例外：如果你登入帳號，上面的學習進度會另外同步一份到雲端，詳見第四節。</p>
 
         <h2 data-p="s2_h">二、留言板</h2>
-        <p data-p="s2_p">使用留言板功能時，你填寫的暱稱與留言內容會透過 Google Apps Script 傳送並儲存到本網站管理者的 Google 試算表，且會公開顯示給所有訪客瀏覽。請勿在留言中填寫真實姓名、聯絡方式等個人敏感資訊。</p>
+        <p data-p="s2_p">留言板需要登入帳號才能留言，每個帳號限留一則。你填寫的暱稱與留言會儲存在本網站的 Cloudflare Worker（Cloudflare KV），並公開顯示給所有訪客；系統另外記下你的帳號 ID（不公開），只用來確認每個帳號只留一則。送出前，暱稱與留言內容會傳給 Google Gemini 做自動審核，擋掉暴力、政治、色情、謾罵、廣告與個人資料，審核不會用來辨識你。請勿在留言中填寫真實姓名、聯絡方式等個人敏感資訊。</p>
 
         <h2 data-p="s3_h">三、建議&amp;改進</h2>
         <p data-p="s3_p">在「建議&amp;改進」頁面送出的內容，會透過 Google Apps Script 傳送並儲存到只有本網站管理者看得到的 Google 試算表，不會公開顯示。送出時會一併記錄當下的網站語言與頁面路徑，方便了解建議的情境；除此之外不會記錄其他資料，除非你自己寫在內容裡。</p>
@@ -110,12 +119,13 @@
         <h2 data-p="s4_h">五、使用的第三方服務</h2>
         <table class="policy-table">
             <tr><th data-p="th_service">服務</th><th data-p="th_purpose">用途</th><th data-p="th_data">可能涉及的資料</th></tr>
-            <tr><td>Google Apps Script / Google 試算表</td><td data-p="r1_purpose">留言板與「建議&amp;改進」的儲存與讀取</td><td data-p="r1_data">你主動填寫的暱稱、留言與建議內容</td></tr>
+            <tr><td data-p="r1_service">Google Apps Script / Google 試算表</td><td data-p="r1_purpose">「建議&改進」的儲存</td><td data-p="r1_data">你主動填寫的建議內容</td></tr>
             <tr><td>CounterAPI</td><td data-p="r2_purpose">網站訪客人數統計</td><td data-p="r2_data">匿名造訪次數</td></tr>
             <tr><td>ipapi.co</td><td data-p="r3_purpose">依 IP 位址推測所在城市，顯示天氣小工具（需點擊「顯示天氣」按鈕主動開啟，不會自動執行）</td><td data-p="r3_data">IP 位址（僅用於推估地理位置，未儲存）</td></tr>
             <tr><td>Open-Meteo</td><td data-p="r4_purpose">提供天氣資訊</td><td data-p="r4_data">經緯度座標（來自上方 IP 定位）</td></tr>
             <tr><td data-p="r5_service">Google AdSense（規劃中）</td><td data-p="r5_purpose">顯示廣告以支持網站營運</td><td data-p="r5_data">可能使用 Cookie 進行廣告個人化，詳見下方說明</td></tr>
             <tr><td>Google Firebase（Authentication / Firestore）</td><td data-p="r7_purpose">帳號登入與學習進度的雲端同步（只限有登入的使用者）</td><td data-p="r7_data">Email、顯示名稱、大頭貼網址與學習進度（見第四節）</td></tr>
+            <tr><td>Cloudflare Workers / Google Gemini</td><td data-p="r8_purpose">AI 小幫手「小花火」的對話，以及留言板的儲存與自動審核</td><td data-p="r8_data">你傳給小花火的訊息；留言的暱稱、內容與帳號 ID（帳號 ID 不公開）</td></tr>
             <tr><td>Ko-fi</td><td data-p="r6_purpose">贊助／小額支持連結</td><td data-p="r6_data">僅在你主動點擊贊助按鈕、離開本網站前往 ko-fi.com 後才適用，由 Ko-fi 自行處理</td></tr>
         </table>
 

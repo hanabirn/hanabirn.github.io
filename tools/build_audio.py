@@ -7,7 +7,10 @@ tp_zh_*), the alphabet chart and the voice-picker
 samples are rendered once here and shipped as small MP3s. js/speech.js plays
 them when it has one and falls back to the browser voice otherwise.
 
-Output, per language directory (ja, ko, zh-CN, zh-TW) under data/audio/:
+French and Russian (the CEFR word lists) and the French / Russian / German /
+Spanish alphabet tabs are rendered too (fr, ru, de, es).
+
+Output, per language directory (ja, ko, zh-CN, zh-TW, fr, ru, de, es) under data/audio/:
     <id>.mp3     id = cyrb53(text) in base 36 — the same hash audioId() in
                  js/speech.js computes for the text the site asks to say
     index.json   {"voice": ..., "f": [ids], "a": {alias id: file id}}
@@ -27,7 +30,7 @@ Setup: pip install lameenc
        put GOOGLE_TTS_KEY=<API key> in tools/.google-tts.env (git-ignored);
        a voice can be overridden there too, e.g. GOOGLE_TTS_VOICE_ja=ja-JP-Neural2-C
 Usage: python tools/build_audio.py --audition      # sample every voice, then pick
-       python tools/build_audio.py [--only ja|ko|zh-CN|zh-TW] [--limit N] [--dry-run]
+       python tools/build_audio.py [--only ja|ko|zh-CN|zh-TW|fr|ru|de|es] [--limit N] [--dry-run]
 """
 import argparse, base64, io, json, re, struct, sys, time, unicodedata, urllib.error, urllib.request, wave
 import threading
@@ -50,6 +53,13 @@ LANGS = {
     'ko': ('ko-KR', 'ko-KR', 'ko-KR-Chirp3-HD-Kore', 'ko-KR-Neural2-A'),
     'zh-CN': ('zh-CN', 'cmn-CN', 'cmn-CN-Chirp3-HD-Leda', 'cmn-CN-Wavenet-A'),
     'zh-TW': ('zh-TW', 'cmn-TW', 'cmn-TW-Wavenet-A', 'cmn-TW-Wavenet-A'),
+    # European languages (added 2026-10-08: the browser voices sound robotic; Chirp3-HD
+    # also rolls the Spanish / Russian r properly). German and Spanish have no word
+    # lists yet, so only their alphabet tab and sample.
+    'fr': ('fr-FR', 'fr-FR', 'fr-FR-Chirp3-HD-Kore', 'fr-FR-Neural2-F'),
+    'ru': ('ru-RU', 'ru-RU', 'ru-RU-Chirp3-HD-Kore', 'ru-RU-Wavenet-C'),
+    'de': ('de-DE', 'de-DE', 'de-DE-Chirp3-HD-Kore', 'de-DE-Neural2-G'),
+    'es': ('es-ES', 'es-ES', 'es-ES-Chirp3-HD-Kore', 'es-ES-Neural2-H'),
 }
 MIN_CLIP = 0.3         # seconds; shorter means the voice said nothing or got cut
 RATE = 0.9             # a little slower, for learners
@@ -79,6 +89,10 @@ AUDITION_WORDS = {
     'ko': ['안녕하세요. 만나서 반가워요.', '사과', '감사합니다', '학교', '병원'],
     'zh-CN': ['你好，很高兴认识你。', '老师', '吃饭', '中国人', '日本'],
     'zh-TW': ['你好，很高興認識你。', '老師', '吃飯', '中國人', '日本'],
+    'fr': ['Bonjour, enchanté.', 'le chat', 'la grenouille', 'rouge', 'écureuil'],
+    'ru': ['Здравствуйте, очень приятно.', 'рыба', 'хорошо', 'здравствуйте', 'спасибо'],
+    'de': ['Guten Tag, freut mich.', 'Brötchen', 'Eichhörnchen', 'rot', 'Straße'],
+    'es': ['Hola, mucho gusto.', 'perro', 'ratón', 'ferrocarril', 'jirafa'],
 }
 
 sys.stdout.reconfigure(encoding='utf-8')
@@ -181,6 +195,14 @@ def jobs(lang):
             add(text, text)
         for word, *_ in list(vocab('topik_')) + list(vocab('tp_ko_')):
             add(word, word)
+    elif lang in ('fr', 'ru', 'de', 'es'):
+        for text in alphabet({lang}):
+            add(text, text)
+        if lang in ('fr', 'ru'):
+            # French rows carry their article (le chat), Russian the plain word;
+            # the CEFR lists, then the 單字 page topics (tp_fr_*, tp_ru_*)
+            for word, *_ in list(vocab(lang + '_')) + list(vocab('tp_' + lang + '_')):
+                add(word, word)
     else:
         if lang == 'zh-TW':
             for text in alphabet({'zh'}):

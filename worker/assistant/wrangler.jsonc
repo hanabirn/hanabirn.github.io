@@ -1,7 +1,7 @@
 {
     // 小花火 AI assistant: forwards the site's chat to Google Gemini.
     // Deploy:  npx wrangler deploy           (from this folder)
-    // Key:     npx wrangler secret put GEMINI_API_KEY
+    // Key:     npx wrangler secret put GEMINI_API_KEY  (and ADMIN_TOKEN for the guestbook)
     // Local:   put GEMINI_API_KEY=... in .dev.vars (git-ignored), then npx wrangler dev
     "name": "hanabi-assistant",
     "main": "src/index.js",
@@ -16,8 +16,16 @@
         // Models with "lite" in the name get no thinkingConfig (it's rejected).
         "MODELS": "gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash",
         // the site, plus the local test servers
-        "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8765,http://localhost:8767"
+        "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8765,http://localhost:8767,http://localhost:8123",
+        // the site's public Firebase web key (js/account.js), used to check guestbook posters' ID tokens
+        "FIREBASE_API_KEY": "AIzaSyChjmEw7zDVPf3QqLvlvEmSDZ9DFat2yVE"
     },
+
+    // guestbook messages (src/guestbook.js); created with: npx wrangler kv namespace create GUESTBOOK
+    // ADMIN_TOKEN (secret) lets the owner delete a message: npx wrangler secret put ADMIN_TOKEN
+    "kv_namespaces": [
+        { "binding": "GUESTBOOK", "id": "REPLACE_WITH_KV_ID" }
+    ],
 
     // at most 8 messages a minute per visitor (IP)
     "ratelimits": [

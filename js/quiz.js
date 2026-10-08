@@ -222,13 +222,13 @@ const BUNDLED_SETS = {
     hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
 };
 
-/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en|zh>_<topic>,
+/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en|zh|fr|ru>_<topic>,
    built from the hand-written tools/topics/<lang>.tsv (the 檢定 page keeps the
    graded lists). TOPIC_FILE_LANG maps a quiz-page language to the file prefix. */
 const TOPIC_IDS = ['greetings', 'food', 'home', 'shopping', 'transport', 'travel', 'weather', 'school', 'work', 'health'];
 const TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
     travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
-const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh' };
+const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh', fr: 'fr', ru: 'ru' };
 const topicSetIds = fileLang => TOPIC_IDS.map(tp => 'tp_' + fileLang + '_' + tp);
 Object.values(TOPIC_FILE_LANG).forEach(l => topicSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
@@ -241,7 +241,7 @@ CEFR_LANGS.forEach(l => cefrSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
 /* "tp_ja_food" -> { lang: 'ja', topic: 'food' }, anything else -> null */
 function topicOf(id) {
-    const m = /^tp_(ja|ko|en|zh)_([a-z]+)$/.exec(id || '');
+    const m = /^tp_(ja|ko|en|zh|fr|ru)_([a-z]+)$/.exec(id || '');
     return m ? { lang: m[1], topic: m[2] } : null;
 }
 
@@ -263,8 +263,8 @@ const WORD_SET_FAMILIES = {
     jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'].concat(topicSetIds('ja')),
     kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'].concat(topicSetIds('ko')),
     zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'].concat(topicSetIds('zh')),
-    fr: cefrSetIds('fr'),
-    ru: cefrSetIds('ru')
+    fr: cefrSetIds('fr').concat(topicSetIds('fr')),
+    ru: cefrSetIds('ru').concat(topicSetIds('ru'))
 };
 
 let currentSetMeta = null; // { source, license } of the loaded bundled set
@@ -485,11 +485,11 @@ function isEnglishQuizLang(lang) {
 
 /* the CEFR sets (fr_a1 …) and the retired French sheet 'fr' */
 function isFrenchQuizLang(lang) {
-    return lang === 'fr' || String(lang).startsWith('fr_');
+    return lang === 'fr' || String(lang).startsWith('fr_') || String(lang).startsWith('tp_fr_');
 }
 
 function isRussianQuizLang(lang) {
-    return String(lang).startsWith('ru_');
+    return String(lang).startsWith('ru_') || String(lang).startsWith('tp_ru_');
 }
 
 /* the mode picker's "word → meaning" button text for the current set */
@@ -578,8 +578,8 @@ function setResultAgainLabel(key) {
     b.innerHTML = t(key);
 }
 
-/* The quiz page's language card: Japanese, Korean, English and Chinese open their
-   topics (#topic-card); French and Russian (no topics) their CEFR levels on the exam page. */
+/* The quiz page's language card: every language opens its topics (#topic-card),
+   which link to that language's levels on the exam page (topicToExam). */
 function selectLanguage(lang) {
     if (TOPIC_FILE_LANG[lang]) showTopicPicker(lang);
     else if (CEFR_LANGS.includes(lang)) topicToExam(lang);
@@ -962,6 +962,8 @@ function refreshDynamicContent() {
         return el && el.style.display !== 'none';
     };
     if (isVisible('topic-card')) renderTopicPicker();
+    const cefrCard = document.getElementById('examquiz-cefr-level-card');
+    if (cefrCard && isVisible('examquiz-cefr-level-card') && cefrCard.dataset.lang) showCefrLevels(cefrCard.dataset.lang);
     if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();
     if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (typeof renderDictPage === 'function') renderDictPage();
@@ -985,6 +987,7 @@ function refreshDynamicContent() {
     if (isVisible('srs-card') && typeof renderSrsDashboard === 'function') renderSrsDashboard();
     if (typeof renderPracticeHub === 'function') renderPracticeHub();
     if (typeof renderAccount === 'function') renderAccount();
+    if (typeof renderGuestbookGate === 'function') renderGuestbookGate();
 }
 
 function setModeCardTitle(id, key) {
@@ -1466,6 +1469,7 @@ function startSessionStats() {
 function noteCombo(correct) {
     comboNow = correct ? comboNow + 1 : 0;
     comboBest = Math.max(comboBest, comboNow);
+    if (typeof railReact === 'function') railReact(correct ? 'combo' : 'wrong', comboNow);
 }
 
 function correctFeedbackText(repaired) {
@@ -1596,6 +1600,7 @@ function showResults() {
         saveQuizRecord(rec);
         checkAchievements();
     }
+    if (total > 0 && typeof railReact === 'function') railReact('result', percentage);
 
     /* celebration, the three numbers, today's goal and the reason to come back
        (resultHeroHtml & co. in js/practice.js) */
@@ -1684,8 +1689,8 @@ function backToLanguage() {
         showTopicPicker(Object.keys(TOPIC_FILE_LANG).find(l => TOPIC_FILE_LANG[l] === wasTopic.lang));
         return;
     }
+    /* the quiz page keeps its language card, so coming back to 單字 later isn't blank */
     if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz || wasEnglishSet || wasCefr) {
-        document.getElementById('lang-card').style.display = 'none';
         switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
         hideExamLevelCards();
         if (wasJlptQuiz) showJlptLevels();

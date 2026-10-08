@@ -31,7 +31,8 @@ const TTS_SAMPLE = {
 };
 
 // recordings per language: directory under data/audio/
-const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW' };
+const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW',
+    'fr-FR': 'fr', 'ru-RU': 'ru', 'de-DE': 'de', 'es-ES': 'es' };
 const audioIndexes = {};
 let audioPlaying = null;
 let speakSeq = 0;
