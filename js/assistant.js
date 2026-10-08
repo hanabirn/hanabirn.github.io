@@ -140,6 +140,34 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') toggleAssistant(false);
 });
 
+/* Phones: the button sits over the content in the bottom-left corner, so it slides
+   away while the page is scrolled down and comes back on scrolling up or ~1 s after
+   the scrolling stops — always there again to tap. Not while the chat is open. */
+const FAB_BACK_MS = 1000;
+let fabLastY = 0;
+let fabTimer = 0;
+const fabPhone = window.matchMedia('(max-width: 768px)');
+
+function assistantFabTuck(tuck) {
+    const fab = document.getElementById('assistant-fab');
+    const hint = document.getElementById('assistant-hint');
+    if (fab) fab.classList.toggle('fab-tucked', tuck);
+    if (hint) hint.classList.toggle('fab-tucked', tuck);
+}
+
+window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    const down = y > fabLastY + 4;
+    const up = y < fabLastY - 4;
+    if (down || up) fabLastY = y;
+    const panel = document.getElementById('assistant-panel');
+    if (!fabPhone.matches || (panel && panel.classList.contains('show'))) return;
+    if (down && y > 60) assistantFabTuck(true);
+    else if (up) assistantFabTuck(false);
+    clearTimeout(fabTimer);
+    fabTimer = setTimeout(() => assistantFabTuck(false), FAB_BACK_MS);
+}, { passive: true });
+
 document.addEventListener('DOMContentLoaded', () => {
     assistantLoad();
     const fab = document.getElementById('assistant-fab');

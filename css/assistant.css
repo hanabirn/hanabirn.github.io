@@ -264,6 +264,16 @@ body:has(.tour) .assistant-hint {
 
 /* phones: above the tab bar, and the panel takes most of the screen */
 @media (max-width: 768px) {
+    /* slides out of the way while scrolling down (js/assistant.js) */
+    .assistant-fab, .assistant-hint {
+        transition: transform 0.25s ease, opacity 0.25s ease, box-shadow 0.08s ease;
+    }
+    .assistant-fab.fab-tucked, .assistant-hint.fab-tucked {
+        transform: translateX(-90px);
+        opacity: 0;
+        pointer-events: none;
+        animation: none;
+    }
     .assistant-fab {
         right: auto;
         left: 12px;
