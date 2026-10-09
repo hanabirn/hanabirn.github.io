@@ -1,14 +1,18 @@
 /* /dictionary: the same keyless sources as the site's 字典 page (js/dict.js) —
-   Wiktionary definitions (English) and Tatoeba examples with a Chinese translation —
-   plus the site's own word lists, which give a checked Chinese meaning when the word is
-   in one of them. MyMemory is left out: from Cloudflare's shared IPs its per-IP daily
+   Wiktionary definitions (English) and Tatoeba examples with a translation into the
+   visitor's language — plus the site's own word lists, which give a checked meaning
+   (Chinese / English) when the word is in one of them. MyMemory is left out: from Cloudflare's shared IPs its per-IP daily
    quota is usually spent. Each source fails on its own. */
 
-import { LANGS, setsFor, setInfo, loadSet, card } from './sets.js';
+import { STUDY_LANGS, studyName, setsFor, setInfo, loadSet, card } from './sets.js';
+import { t } from './i18n.js';
+import { toSimplified, toTraditional } from './zhconv.js';
 import { COLOR, linkButton, row, cut } from './ui.js';
 
 const WK = { ja: 'ja', ko: 'ko', en: 'en', zh: 'zh', fr: 'fr', ru: 'ru', es: 'es', de: 'de' };
 const TT = { ja: 'jpn', ko: 'kor', en: 'eng', zh: 'cmn', fr: 'fra', ru: 'rus', es: 'spa', de: 'deu' };
+/* the Tatoeba language a bot language's translations come in */
+const UI_TT = { zh: 'cmn', zhs: 'cmn', en: 'eng', ja: 'jpn', ko: 'kor', ru: 'rus', fr: 'fra', es: 'spa', de: 'deu' };
 const UA = { 'Api-User-Agent': 'hanabirn.xyz Discord bot (https://hanabirn.xyz/)', 'User-Agent': 'hanabirn.xyz Discord bot (https://hanabirn.xyz/)' };
 
 /* the language when none was picked: by script, Latin defaulting to English (as the site) */
@@ -37,20 +41,20 @@ const FORM_NOTE = /^(inflection|plural|feminine|masculine|(first|second|third)-p
 const bare = w => w.toLowerCase().replace(/^(le |la |l'|les |el\/la |el |la |los |las |der |die |das )/, '');
 
 /* rows of the site's lists for this word: [{set name, card}] */
-async function siteMatches(env, word, lang) {
+async function siteMatches(env, word, lang, ui) {
     const want = word.toLowerCase();
-    const sets = await Promise.all(setsFor(lang).map(async s => ({ s, data: await loadSet(env, s.id).catch(() => null) })));
+    const sets = await Promise.all(setsFor(lang, ui).map(async s => ({ s, data: await loadSet(env, s.id).catch(() => null) })));
     const out = [], seen = new Set();
     for (const { s, data } of sets) {
         if (!data) continue;
         for (const r of data.words) {
             const forms = [r[0], data.kind === 'zh' || data.kind === 'ja' ? r[1] : ''].filter(Boolean);
             if (!forms.some(f => f.toLowerCase() === want || bare(f) === want)) continue;
-            const c = card(data.kind, r);
+            const c = card(data.kind, r, ui);
             const key = c.word + '|' + c.answer;
             if (seen.has(key)) continue;
             seen.add(key);
-            out.push({ name: setInfo(s.id).name, c });
+            out.push({ name: setInfo(s.id, ui).name, c });
             if (out.length >= 4) return out;
         }
     }
@@ -70,9 +74,14 @@ async function wiktionary(word, lang) {
     return null;
 }
 
-async function tatoeba(word, lang) {
+/* Translations in the visitor's language; when that is the word's own language, in
+   English (or Chinese for an English word), as on the site. Tatoeba's Chinese mixes
+   both scripts: shown in the visitor's. */
+async function tatoeba(word, lang, ui) {
     const base = `https://api.tatoeba.org/unstable/sentences?lang=${TT[lang]}&q=${encodeURIComponent(word)}&sort=relevance&limit=3`;
-    const target = lang === 'zh' ? 'eng' : 'cmn';
+    let target = UI_TT[ui] || 'eng';
+    if (target === TT[lang]) target = lang === 'en' ? 'cmn' : 'eng';
+    const script = text => (target !== 'cmn' ? text : ui === 'zhs' ? toSimplified(text) : toTraditional(text));
     let res = await fetch(base + '&trans:lang=' + target, { headers: UA });
     let data = res.ok ? await res.json() : { data: [] };
     if (!data.data || !data.data.length) {
@@ -84,20 +93,21 @@ async function tatoeba(word, lang) {
         for (const group of s.translations || []) {
             for (const t of Array.isArray(group) ? group : [group]) if (!tr && t && t.lang === target && t.text) tr = t.text;
         }
-        return { text: s.text, tr };
+        return { text: s.text, tr: script(tr) };
     });
 }
 
-export async function lookUp(env, opts) {
+export async function lookUp(env, opts, ui) {
     const word = String(opts.word || '').trim().slice(0, 60);
-    if (!word) return { content: '請輸入要查的字。' };
-    const lang = LANGS[opts.language] ? opts.language : guessLang(word);
-    const [site, wk, ex] = await Promise.allSettled([siteMatches(env, word, lang), wiktionary(word, lang), tatoeba(word, lang)]);
+    if (!word) return { content: t(ui, 'd_enter') };
+    const lang = STUDY_LANGS.includes(opts.language) ? opts.language : guessLang(word);
+    const [site, wk, ex] = await Promise.allSettled([siteMatches(env, word, lang, ui), wiktionary(word, lang), tatoeba(word, lang, ui)]);
     const fields = [];
 
     if (site.status === 'fulfilled' && site.value.length) {
-        fields.push({ name: '📘 網站單字庫', value: cut(site.value.map(({ name, c }) =>
-            `**${c.word}**${c.reading ? `（${c.reading}）` : ''}　${c.answer}\n-# ${name}${c.extra ? '　' + c.extra : ''}`).join('\n'), 1024) });
+        const extra = e => (!e ? '' : '　' + (typeof e === 'string' ? e : t(ui, e.key, e)));
+        fields.push({ name: t(ui, 'd_site'), value: cut(site.value.map(({ name, c }) =>
+            `**${c.word}**${c.reading ? `（${c.reading}）` : ''}　${c.answer}\n-# ${name}${extra(c.extra)}`).join('\n'), 1024) });
     }
 
     let wkTitle = word;
@@ -111,20 +121,21 @@ export async function lookUp(env, opts) {
             if (defs.length) groups.push(`*${entry.partOfSpeech}*\n` + defs.map((d, k) => `${k + 1}. ${cut(d, 160)}`).join('\n'));
             if (groups.length >= 3) break;
         }
-        if (groups.length) fields.push({ name: '📖 英文釋義（Wiktionary）', value: cut(groups.join('\n'), 1024) });
+        if (groups.length) fields.push({ name: t(ui, 'd_wk'), value: cut(groups.join('\n'), 1024) });
     } else if (wk.status === 'rejected') {
-        fields.push({ name: '📖 英文釋義（Wiktionary）', value: '暫時連不上 Wiktionary，稍後再試。' });
+        fields.push({ name: t(ui, 'd_wk'), value: t(ui, 'd_wk_down') });
     }
 
     if (ex.status === 'fulfilled' && ex.value.length) {
-        fields.push({ name: '💬 例句（Tatoeba）', value: cut(ex.value.map(s => `> ${s.text}${s.tr ? `\n> -# ${s.tr}` : ''}`).join('\n'), 1024) });
+        // one quote per example, a blank line between them
+        fields.push({ name: t(ui, 'd_ex'), value: cut(ex.value.map(s => `> ${s.text}${s.tr ? `\n> ${s.tr}` : ''}`).join('\n\n'), 1024) });
     }
 
-    if (!fields.length) fields.push({ name: '找不到', value: `查不到「${word}」（${LANGS[lang]}）。拼字對嗎？也可以在指令裡指定語言。` });
+    if (!fields.length) fields.push({ name: t(ui, 'd_none_title'), value: t(ui, 'd_none', { w: word, lang: studyName(ui, lang) }) });
     return {
         content: '',
-        embeds: [{ color: COLOR, title: `🔎 ${word}`, description: `-# ${LANGS[lang]}`, fields,
-            footer: { text: 'Wiktionary（CC BY-SA）・Tatoeba（CC BY 2.0 FR）・Hanabiの小天地' } }],
+        embeds: [{ color: COLOR, title: `🔎 ${word}`, description: `-# ${studyName(ui, lang)}`, fields,
+            footer: { text: 'Wiktionary (CC BY-SA) · Tatoeba (CC BY 2.0 FR) · Hanabiの小天地' } }],
         components: [row([
             linkButton(`https://en.wiktionary.org/wiki/${encodeURIComponent(wkTitle)}`, 'Wiktionary'),
             linkButton(`https://tatoeba.org/zh-tw/sentences/search?query=${encodeURIComponent(word)}&from=${TT[lang]}`, 'Tatoeba')

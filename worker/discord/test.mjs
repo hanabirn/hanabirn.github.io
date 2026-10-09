@@ -69,8 +69,9 @@ async function send(payload, { sign = true } = {}) {
     for (let i = 0; i < 300 && !edited; i++) { edited = edits.get('tok' + n); if (!edited) await new Promise(r => setTimeout(r, 100)); }
     return { status: res.status, reply, edited };
 }
-const command = (name, options, user = OWNER) => send({ type: 2, member: { user: { id: user } }, data: { name, options: Object.entries(options).map(([k, v]) => ({ name: k, value: v })) } });
-const press = (customId, user = OWNER) => send({ type: 3, member: { user: { id: user } }, data: { custom_id: customId } });
+// every interaction carries the Discord client's locale; Traditional Chinese unless given
+const command = (name, options, user = OWNER, locale = 'zh-TW') => send({ type: 2, locale, member: { user: { id: user } }, data: { name, options: Object.entries(options).map(([k, v]) => ({ name: k, value: v })) } });
+const press = (customId, user = OWNER, locale = 'zh-TW') => send({ type: 3, locale, member: { user: { id: user } }, data: { custom_id: customId } });
 const buttons = msg => (msg.components || []).flatMap(r => r.components);
 const show = (label, msg) => !msg ? check(false, label + ': no reply arrived') : console.log(`\n--- ${label}\n` + (msg.content || '') + (msg.embeds || []).map(e =>
     `[${e.title}]\n${e.description || ''}\n${(e.fields || []).map(f => `<${f.name}>\n${f.value}`).join('\n')}\n(${e.footer?.text || ''})`).join('\n') +
@@ -82,9 +83,9 @@ try {
     check((await send({ type: 1 }, { sign: false })).status === 401, 'bad signature -> 401');
     check((await send({ type: 1 })).reply.type === 1, 'PING -> PONG');
 
-    const ac = await send({ type: 4, data: { name: 'quiz', options: [{ name: 'language', value: 'es' }, { name: 'set', value: 'a', focused: true }] } });
+    const ac = await send({ type: 4, locale: 'zh-TW', data: { name: 'quiz', options: [{ name: 'language', value: 'es' }, { name: 'set', value: 'a', focused: true }] } });
     check(ac.reply.type === 8 && ac.reply.data.choices.length > 0, 'autocomplete sets: ' + ac.reply.data.choices.map(c => c.name).join(', '));
-    const acg = await send({ type: 4, data: { name: 'grammar', options: [{ name: 'level', value: '日文', focused: true }] } });
+    const acg = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ name: 'level', value: '日文', focused: true }] } });
     check(acg.reply.data.choices.length === 3, 'autocomplete grammar: ' + acg.reply.data.choices.map(c => c.name).join(', '));
 
     // a whole public quiz, answering the first option each time
@@ -129,6 +130,59 @@ try {
         r = await command('dictionary', language ? { word, language } : { word });
         show('dictionary ' + word, r.edited);
     }
+
+    // ----- reply languages -----
+    const footer = m => m.embeds[0].footer?.text || '';
+    // from the Discord locale: Japanese UI, English meanings (no Japanese ones exist)
+    r = await command('quiz', { language: 'ko', set: 'tp_ko_food', count: 5 }, '333', 'ja');
+    show('ko food quiz, Japanese Discord', r.edited);
+    check(/問/.test(r.edited.embeds[0].title) && /意味/.test(footer(r.edited)), 'Japanese locale -> Japanese quiz text');
+    check(buttons(r.edited).filter(b => b.custom_id.startsWith('qa:')).every(b => /^[\x20-\x7E]+$/.test(b.label)), 'Japanese locale -> English meanings on the buttons');
+    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, '333', 'ja');
+    check(/次へ|結果/.test(buttons(r.edited).map(b => b.label).join()), 'its buttons stay Japanese');
+
+    // Simplified Chinese: HSK words in simplified
+    r = await command('quiz', { language: 'zh', set: 'hsk_2', count: 5 }, '333', 'zh-CN');
+    show('hsk_2, Simplified Discord', r.edited);
+    check(/题/.test(r.edited.embeds[0].title), 'zh-CN locale -> Simplified quiz text');
+    r = await command('quiz', { language: 'ja', set: 'tp_ja_food', count: 5 }, '333', 'zh-CN');
+    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, '333', 'zh-CN');
+    show('ja food answer, Simplified Discord', r.edited);
+
+    // /language: a saved choice beats the Discord locale, "auto" goes back to it
+    r = await command('language', { reply_language: 'fr' }, '444', 'ja');
+    check(r.reply.type === 4 && /français/i.test(r.reply.data.content) && /anglais/.test(r.reply.data.content), '/language fr answers in French with the English note: ' + r.reply.data.content.replace(/\n/g, ' '));
+    r = await command('quiz', { language: 'es', set: 'tp_es_food', count: 5 }, '444', 'ja');
+    show('es food quiz after /language fr', r.edited);
+    check(/question/.test(r.edited.embeds[0].title), 'saved French beats the Japanese locale');
+    const acf = await send({ type: 4, locale: 'ja', member: { user: { id: '444' } }, data: { name: 'quiz', options: [{ name: 'language', value: 'ja' }, { name: 'set', value: '', focused: true }] } });
+    check(acf.reply.data.choices.some(c => /Repas/.test(c.name)), 'autocomplete in French too: ' + acf.reply.data.choices.slice(-3).map(c => c.name).join(', '));
+    r = await command('language', { reply_language: 'auto' }, '444', 'ko');
+    check(/Discord/.test(r.reply.data.content) && /한국어/.test(r.reply.data.content), '/language auto: ' + r.reply.data.content);
+    r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5 }, '444', 'ko');
+    check(/번/.test(r.edited.embeds[0].title), 'after auto: Korean from the locale');
+
+    // grammar in Russian (English explanations), with the finish button
+    r = await command('grammar', { level: 'fr_a1' }, '555', 'ru');
+    show('grammar fr_a1, Russian Discord', r.edited);
+    const ge = buttons(r.edited).find(b => b.custom_id.startsWith('ge:'));
+    check(!!ge && ge.label === 'Закончить', 'grammar question has a finish button in Russian');
+    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('ga:')).custom_id, '555', 'ru');
+    show('grammar fr_a1 answer, Russian Discord', r.edited);
+    check(buttons(r.edited).some(b => b.custom_id?.startsWith('ge:')), 'grammar answer has the finish button');
+    r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('ge:')).custom_id, '555', 'ru');
+    show('grammar finished', r.edited);
+    check(/окончена/.test(r.edited.embeds[0].description), 'finish says goodbye in Russian');
+    r = await command('grammar', { level: 'zh_hsk12' }, '555', 'zh-CN');
+    show('grammar zh_hsk12, Simplified Discord', r.edited);
+
+    // dictionary: Tatoeba translations in the visitor's language, examples apart
+    r = await command('dictionary', { word: 'agua', language: 'es' }, '666', 'ja');
+    show('dictionary agua, Japanese Discord', r.edited);
+    const exField = r.edited.embeds[0].fields.find(f => /Tatoeba/.test(f.name));
+    check(!!exField && /\n\n> /.test(exField.value), 'examples are separated by a blank line');
+    r = await command('dictionary', { word: '食べる' }, '666', 'zh-TW');
+    show('dictionary 食べる, Traditional Discord', r.edited);
 } finally {
     if (process.exitCode || process.env.SHOW_LOG) console.log('\n=== wrangler log ===\n' + devLog.join(''));
     fake.close();

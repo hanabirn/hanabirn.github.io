@@ -10,6 +10,17 @@ commands, nothing to keep awake):
 | `/grammar` | 文法 | A random point of a grammar level: pattern, form, explanation and one practice question; the answer shows the full sentence, a common mistake and an example. |
 | `/dictionary` | 字典 | The site's word lists (checked Chinese meaning), Wiktionary (English definitions) and Tatoeba (examples with a Chinese translation). |
 
+| `/language` | 語言設定 | The language the bot replies in, saved per user (KV `PREFS`); "auto" follows the Discord client. |
+
+**Languages**: replies (buttons, titles, messages, set / topic names, Tatoeba translations)
+come in the site's 9 languages — the visitor's `/language` choice, else their Discord
+client's locale — and the commands are localised in Discord's own menu. The word
+meanings and grammar explanations exist only in Chinese and English: Simplified is
+converted character by character (`src/zhconv.js`), the other 6 languages get English.
+`src/i18n.js` holds the bot's text; `src/site-strings.js` and `src/zhconv.js` are generated
+by `python build_strings.py` (re-run when the site's set or topic names change). Buttons
+carry the language in their `custom_id` (`qa:<lang>:…`), so pressing one needs no lookup.
+
 Replies are private (ephemeral) unless `public` is set; on a public quiz only the person
 who started it can answer. Nothing is stored: each button carries its quiz in its
 `custom_id` and the question is rebuilt from a seed (see `src/quiz.js`).
@@ -43,7 +54,8 @@ doesn't have yet (e.g. before a push) answers "還沒有上線".
    `https://hanabi-discord.<account>.workers.dev`.
 5. **General Information → Interactions Endpoint URL**: that address. Discord checks it
    with a signed PING when you save — it only saves if the public key is right.
-6. Register the commands: `node register.mjs`.
+6. Register the commands: `node register.mjs`. For `/language`, create the KV store once
+   (`npx wrangler kv namespace create PREFS`) and put its id in `wrangler.jsonc`.
 7. **Installation**: tick *Guild Install* (scope `applications.commands`) and, if wanted,
    *User Install*; open the install link to add it to a server. No bot permissions and
    no privileged intents are needed.
