@@ -8,7 +8,7 @@ page offers. Don't edit data/grammar/ by hand — edit the source and re-run.
 Usage: pip install opencc-python-reimplemented
        python tools/build_grammar.py
 """
-import json, sys
+import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -48,6 +48,9 @@ def check(data, name):
         for m in p.get('mistakes', []):
             if not all(m.get(k) for k in ('wrong', 'right', 'zh', 'en')):
                 problems.append(f'{where}: a mistake needs wrong, right, zh, en')
+            for k in ('wrong', 'right'):
+                if re.search(r'（[^）ぁ-ゟ]*[一-鿿][^）ぁ-ゟ]*）', m.get(k, '')):
+                    problems.append(f'{where}: Chinese note inside the Japanese "{k}": {m[k]} — put it in zh')
         for ex in p.get('examples', []):
             if not all(ex.get(k) for k in ('ja', 'kana', 'zh', 'en')):
                 problems.append(f'{where}: example needs ja, kana, zh, en: {ex}')
@@ -77,10 +80,13 @@ def main():
         add_hans(data, cc)
         data.pop('note', None)
         (OUT / src.name).write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-        index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'count': len(data['points'])})
+        index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data.get('order', 0),
+                      'count': len(data['points'])})
         print(f'{src.name}: {len(data["points"])} points')
     if problems:
         sys.exit('\n'.join(problems))
+    # easiest level first within a language (each source file sets "order")
+    index.sort(key=lambda s: (s['lang'] != 'ja', s['lang'], s['order']))
     (OUT / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
 
