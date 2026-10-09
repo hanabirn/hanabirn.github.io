@@ -12,10 +12,11 @@ licence at the bottom of its learning path.
 | `en_toefl` | ECDICT words tagged `toefl` (minus the `en_jh` words) | MIT |
 | English Chinese meanings | ECDICT (github.com/skywind3000/ECDICT), converted to Taiwan Traditional with OpenCC `s2twp` | MIT |
 | `jlpt_n5` … `jlpt_n1`, `topik_1` … `topik_4` | Word lists compiled by Hanabi (site owner) | © Hanabi |
-| `tp_ja_*`, `tp_ko_*`, `tp_en_*`, `tp_zh_*`, `tp_fr_*`, `tp_ru_*` (10 topics × 40 words) | Written for the site by Claude and reviewed by Hanabi (site owner); source in `tools/topics/<lang>.tsv`, order kept as written | © Hanabi |
+| `tp_ja_*`, `tp_ko_*`, `tp_en_*`, `tp_zh_*`, `tp_fr_*`, `tp_ru_*`, `tp_es_*` (10 topics × 40 words) | Written for the site by Claude and reviewed by Hanabi (site owner); source in `tools/topics/<lang>.tsv`, order kept as written | © Hanabi |
 | `fr_a1` … `fr_c1` | FLELex (CEFRLex, UCLouvain — cental.uclouvain.be/cefrlex/flelex), "Beacco" version: each lemma's CEFR level | CC BY-NC-SA 4.0 (non-commercial) |
 | `ru_a1` … `ru_c1` | Kelly list, Russian (Kelly project; Serge Sharoff, University of Leeds — ssharoff.github.io/kelly) | CC BY-NC-SA 2.0 (non-commercial) |
-| French / Russian English meanings, genders, stress marks | Wiktionary via kaikki.org (Wiktextract) | CC BY-SA |
-| French / Russian Chinese meanings | Written by Gemini from the word, part of speech and Wiktionary glosses; fixes in `ZH_FIX_FR` / `ZH_FIX_RU` | — |
+| `es_a1` … `es_c1` | ELELex (CEFRLex, UCLouvain — cental.uclouvain.be/cefrlex/elelex): per-level frequencies; a word's level is the first by which it has appeared in 2 texts | CC BY-NC-SA 4.0 (non-commercial) |
+| French / Russian / Spanish English meanings, genders, stress marks | Wiktionary via kaikki.org (Wiktextract) | CC BY-SA |
+| French / Russian / Spanish Chinese meanings | Written by Gemini from the word, part of speech and Wiktionary glosses; fixes in `ZH_FIX_FR` / `ZH_FIX_RU` / `ZH_FIX_ES` | — |
 | `hsk_1` … `hsk_7` | HSK 3.0, November-2025 revision, via github.com/drkameleon/complete-hsk-vocabulary (`hsk_7` = levels 7–9) | MIT |
 | Frequency ordering | wordfreq (Robyn Speer) | data CC BY-SA 4.0 |

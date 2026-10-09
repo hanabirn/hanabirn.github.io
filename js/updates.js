@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-10-09',
+      zh: '新增西班牙文：「單字」有 10 個生活主題（打招呼、吃飯、居家生活……每個主題 40 個字），「檢定」有依 CEFR 從 A1 到 C1 分級的單字庫，約一萬個字，每個字都有中文和英文意思，名詞附上 el / la，發音是自然的錄音。',
+      'zh-Hans': '新增西班牙语：“单词”有 10 个生活主题（打招呼、吃饭、居家生活……每个主题 40 个词），“检定”有按 CEFR 从 A1 到 C1 分级的单词库，约一万个词，每个词都有中文和英文意思，名词附上 el / la，发音是自然的录音。',
+      en: 'Spanish is here: 10 everyday topics on “Words” (greetings, food, home… 40 words each) and, under “Exams”, about 10,000 words graded by CEFR from A1 to C1, each with a Chinese and an English meaning, nouns with el / la, and natural recordings.',
+      ja: 'スペイン語を追加：「単語」に10の生活テーマ（あいさつ、食事、家の生活…各40語）、「検定」に CEFR の A1〜C1 のレベル別単語リスト（約1万語）。どの単語にも中国語と英語の意味があり、名詞には el / la が付き、発音は自然な録音です。',
+      ko: '스페인어 추가: 「단어」에 생활 주제 10개(인사, 식사, 집안 생활… 주제마다 40개), 「검정」에 CEFR A1~C1 수준별 단어장(약 1만 개). 모든 단어에 중국어·영어 뜻이 있고, 명사에는 el / la가 붙어 있으며 발음은 자연스러운 녹음이에요.',
+      ru: 'Добавлен испанский: 10 бытовых тем в «Словах» (приветствия, еда, дом… по 40 слов) и в «Экзаменах» около 10 000 слов по уровням CEFR от A1 до C1 — у каждого значение на китайском и английском, у существительных el / la, озвучка естественными записями.',
+      fr: 'L\'espagnol arrive : 10 thèmes du quotidien dans « Mots » (salutations, repas, maison… 40 mots chacun) et, dans « Examens », environ 10 000 mots classés selon le CECR de A1 à C1, chacun avec un sens en chinois et en anglais, les noms avec el / la, et des enregistrements naturels.',
+      es: 'Llega el español: 10 temas cotidianos en «Palabras» (saludos, comida, casa… 40 palabras cada uno) y, en «Exámenes», unas 10 000 palabras por niveles del MCER de A1 a C1, cada una con su significado en chino y en inglés, los sustantivos con el / la, y grabaciones naturales.',
+      de: 'Spanisch ist da: 10 Alltagsthemen unter „Vokabeln“ (Begrüßung, Essen, Zuhause … je 40 Wörter) und unter „Prüfungen“ rund 10.000 Wörter nach GER-Stufen A1 bis C1, jedes mit chinesischer und englischer Bedeutung, Nomen mit el / la und natürlichen Aufnahmen.' },
     { date: '2026-10-08',
       zh: '新增「文法」頁：日文 N5（62 個）、N4（59 個）、N3（60 個），韓文 TOPIK I（47 個）、TOPIK II（60 個），法文 A1（26 個）、A2（30 個），俄文 A1（24 個）、A2（30 個）和中文 HSK 1–2（30 個）、HSK 3（30 個）文法，每個都有說明、注意事項、常見錯誤、有發音的例句和 3 題小練習，答對 2 題就算學會。中文可切換拼音或注音。電腦上說明和例句會左右並排。法文單字現在也有自然的錄音了。',
       'zh-Hans': '新增“语法”页：日语 N5（62 个）、N4（59 个）、N3（60 个），韩语 TOPIK I（47 个）、TOPIK II（60 个），法语 A1（26 个）、A2（30 个），俄语 A1（24 个）、A2（30 个）和中文 HSK 1–2（30 个）、HSK 3（30 个）语法，每个都有说明、注意事项、常见错误、带发音的例句和 3 道小练习，答对 2 道就算学会。中文可切换拼音或注音。电脑上说明和例句会左右并排。法语单词现在也有自然的录音了。',

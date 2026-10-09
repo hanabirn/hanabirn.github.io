@@ -210,9 +210,9 @@ def jobs(lang):
     elif lang in ('fr', 'ru', 'de', 'es'):
         for text in alphabet({lang}):
             add(text, text)
-        if lang in ('fr', 'ru'):
-            # French rows carry their article (le chat), Russian the plain word;
-            # the CEFR lists, then the 單字 page topics (tp_fr_*, tp_ru_*)
+        if lang in ('fr', 'ru', 'es', 'de'):
+            # French / Spanish / German rows carry their article (le chat, el gato, der Hund),
+            # Russian the plain word; the CEFR lists, then the 單字 page topics (tp_<lang>_*)
             for word, *_ in list(vocab(lang + '_')) + list(vocab('tp_' + lang + '_')):
                 add(word, word)
             # 文法 page examples (data/grammar/fr_*.json, ru_*.json)

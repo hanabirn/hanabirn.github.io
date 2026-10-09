@@ -86,6 +86,8 @@ function homeSetBadge(id) {
     if (isChineseQuizLang(id)) return '中';
     if (isFrenchQuizLang(id)) return 'Fr';
     if (isRussianQuizLang(id)) return 'Ru';
+    if (isSpanishQuizLang(id)) return 'Es';
+    if (isGermanQuizLang(id)) return 'De';
     if (isEnglishQuizLang(id)) return 'En';
     return '・';
 }

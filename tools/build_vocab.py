@@ -539,7 +539,7 @@ def build_hsk(args):
 # rows keep the file's order (easy first, written that way by hand). Chinese lines
 # are "traditional<TAB>pinyin<TAB>english[<TAB>simplified]" and become HSK-shaped
 # rows: simplified by OpenCC tw2s unless given, bopomofo converted from the pinyin.
-TOPIC_LANGS = ("ja", "ko", "en", "zh", "fr", "ru")   # fr rows: [le chat, m., zh, en]; ru: [слово, сло́во, zh, en]
+TOPIC_LANGS = ("ja", "ko", "en", "zh", "fr", "ru", "es", "de")   # fr / es rows: [le chat, m., zh, en]; ru: [слово, сло́во, zh, en]
 TOPICS = ("greetings", "food", "home", "shopping", "transport", "travel", "weather", "school", "work", "health")
 
 
@@ -596,7 +596,7 @@ def build_topics(args):
 # streamed and only the entries for words on our lists are kept, in a small
 # tools/.vocab-cache/kaikki_<lang>.json — the dump itself never touches the disk.
 KAIKKI = "https://kaikki.org/dictionary/{0}/kaikki.org-dictionary-{0}.jsonl"
-KAIKKI_NAMES = {"fr": "French", "ru": "Russian"}
+KAIKKI_NAMES = {"fr": "French", "ru": "Russian", "es": "Spanish", "de": "German"}
 
 
 def kaikki_entry(e):
@@ -618,20 +618,25 @@ def kaikki_entry(e):
         tags |= set(s.get("tags") or [])
     head = " ".join(h.get("expansion", "") for h in e.get("head_templates") or [])
     canon = next((f.get("form") for f in e.get("forms") or [] if "canonical" in (f.get("tags") or [])), "")
-    return {"pos": e.get("pos", ""), "glosses": glosses, "head": head[:120],
+    # the plain plural (German nouns: Hund -> Hunde), not dialect or error forms
+    plural = next((f.get("form") for f in e.get("forms") or [] if (f.get("tags") or []) in (["plural"], ["nominative", "plural"])), "")
+    return {"pos": e.get("pos", ""), "glosses": glosses, "head": head[:120], "word": e.get("word", ""), "plural": plural,
             "gender": sorted(t for t in tags if t in ("masculine", "feminine", "neuter")), "canonical": canon}
 
 
 def kaikki_key(lang, word):
-    """How words are matched: Russian lists write ё as е (еще), Wiktionary doesn't (ещё)."""
-    return word.replace("ё", "е").replace("Ё", "Е") if lang == "ru" else word
+    """How words are matched: Russian lists write ё as е (еще), Wiktionary doesn't (ещё);
+    DAFlex writes German nouns in lower case (hund), Wiktionary doesn't (Hund)."""
+    if lang == "ru":
+        return word.replace("ё", "е").replace("Ё", "Е")
+    return word.lower() if lang == "de" else word
 
 
-def kaikki_extract(lang, words, offline):
+def kaikki_extract(lang, words, offline, name=None):
     """{word: [entry, ...]} for the words given (keyed by kaikki_key), from the cached
-    extract or by streaming."""
+    extract (tools/.vocab-cache/<name or kaikki_<lang>>.json) or by streaming."""
     words = [kaikki_key(lang, w) for w in words]
-    path = os.path.join(CACHE, f"kaikki_{lang}.json")
+    path = os.path.join(CACHE, f"{name or 'kaikki_' + lang}.json")
     if os.path.exists(path):
         with open(path, encoding="utf-8") as f:
             have = json.load(f)
@@ -672,7 +677,7 @@ def kaikki_extract(lang, words, offline):
 # assistant needs theirs — only these:
 GEMINI_MODELS = ("gemini-3-flash-preview", "gemini-3.1-flash-lite")
 GEMINI_BATCH = 300                # the free tier counts requests, not words
-GEMINI_LANG_NAMES = {"fr": "French", "ru": "Russian"}
+GEMINI_LANG_NAMES = {"fr": "French", "ru": "Russian", "es": "Spanish", "de": "German"}
 
 
 def gemini_key():
@@ -816,6 +821,62 @@ def short_gloss(glosses, limit=40):
     return "; ".join(out)
 
 
+# English for learners (Spanish, German): Wiktionary puts slang senses next to the
+# real ones (amigo: penis, harina: cocaine) and gives some words only as a pointer
+# ("alternative form of video", "apocopic form of mucho; very"). A slang sense is
+# dropped when the word has others; a pointer becomes its quoted meaning (santo
+# (“saint”)), else the meaning written after it (very), else what the word it points
+# to means (looked up in `alt`, see form_of_targets()).
+FORM_OF = re.compile(r"^(?:(?:apocopic|alternative|dated|obsolete|archaic|superseded|pronunciation)\s+(?:form|spelling)"
+                     r"|misspelling|synonym|contraction|abbreviation)\s+of\s+(.+)$", re.I)
+SLANG_GLOSS = re.compile(r"\b(penis|dick|cum|semen|testicles?|cocaine|hashish|marijuana|excrement|shit|fucking|"
+                         r"vagina|threesome)\b", re.I)
+
+
+def form_of_target(gloss):
+    """"alternative form of video" -> "video", else None."""
+    m = FORM_OF.match(gloss)
+    return re.split(r"\s*[,;:(]", m.group(1), maxsplit=1)[0].strip() if m else None
+
+
+def form_of_targets(lang, items, kk):
+    """The words the kept entries point to ("alternative form of X") that `kk` lacks."""
+    out = set()
+    for it in items:
+        for e in kk.get(kaikki_key(lang, it["w"])) or []:
+            for g in e["glosses"]:
+                t = form_of_target(g)
+                if t and kaikki_key(lang, t) not in kk:
+                    out.add(t)
+    return sorted(out)
+
+
+def learner_glosses(lang, glosses, pos, alt):
+    out = []
+    for g in glosses:
+        m = FORM_OF.match(g)
+        if m:
+            body = m.group(1)
+            quoted = re.search(r"“([^”]+)”", body)
+            after = re.split(r"[,;:]", body, maxsplit=1)
+            paren = re.search(r"\(([^)]+)\)", body)
+            if quoted:
+                g = quoted.group(1)
+            elif len(after) == 2 and after[1].strip():
+                g = after[1].strip()
+            elif paren:
+                g = paren.group(1)
+            else:
+                ents = alt.get(kaikki_key(lang, form_of_target(g))) or []
+                e = next((x for x in ents if x["pos"] == pos and x["glosses"]), None) or next((x for x in ents if x["glosses"]), None)
+                out += [x for x in (e["glosses"] if e else []) if not FORM_OF.match(x) and x not in out]
+                continue
+        if g not in out:
+            out.append(g)
+    kept = [g for g in out if not SLANG_GLOSS.search(g)]
+    return kept or out or glosses
+
+
 def fr_shown(word, pos, gender):
     if pos != "noun" or gender not in ("m", "f") or word in FR_NO_ARTICLE or word[0].lower() == "h":
         return word
@@ -936,10 +997,307 @@ def build_russian(args):
                   f"Kelly 俄文詞表（Kelly project, Leeds）{lv}；重音與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "Kelly CC BY-NC-SA 2.0；Wiktionary CC BY-SA")
 
 
+# ---------- Spanish: ELELex (CEFRLex, UCLouvain), CC BY-NC-SA 4.0 ----------
+# ELELex gives each lemma's frequency and number of texts per level (A1–C1), not a
+# level. A word's level is the first one by which it has turned up in 2 texts; a word
+# met in a single text is dropped below B2 (mostly noise: chocolatero in A1) and kept
+# at its level from B2 up. Multi-word entries and names are left out; then, like
+# French, only words Wiktionary knows in that part of speech, nouns with a gender.
+# The tag carries the gender (NCM / NCF / NCC = both). Rows: [el gato, m., zh, en].
+ELELEX = "https://cental.uclouvain.be/cefrlex/static/resources/es/ELELex.tsv"
+ELELEX_POS = {"NC": "noun", "AQ": "adj", "VM": "verb", "RG": "adv", "SP": "prep", "CS": "conj", "CC": "conj",
+              "PP": "pron", "PI": "pron", "PR": "pron", "PD": "pron", "PT": "pron", "PX": "pron",
+              "DI": "det", "DA": "article", "DD": "det", "DP": "det", "DT": "det", "I": "intj",
+              "Zu": "num", "AO": "adj", "AP": "adj", "VA": "verb", "VS": "verb", "VP": "verb", "P0": "pron",
+              "RN": "adv", "DE": "pron"}
+# Wiktionary files some ELELex parts of speech elsewhere: numbers (cuatro, tagged as
+# nouns) are "num", possessives and question words move between det / pron / adj
+ES_POS_ALSO = {"noun": ("num",), "pron": ("det", "adj"), "det": ("pron", "adj"), "adj": ("det", "num")}
+# feminine nouns that take el because they start with a stressed a / ha (el agua)
+ES_EL_FEM = set("agua alma arma hambre área aula águila ala ancla hada haba habla asa aya acta alga ama ave".split())
+# nouns that take either gender but are usually masculine
+ES_GENDER = {"arte": "m", "mar": "m", "azúcar": "m", "internet": "m"}
+ES_NO_ARTICLE = set("enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre "
+                    "lunes martes miércoles jueves viernes sábado domingo".split())
+ZH_FIX_ES = {
+    "el|article": "（定冠詞，陽性）", "uno|article": "一個；（不定冠詞）", "lo|pron": "他；它（受詞）",
+    "la|pron": "她；它（受詞）", "le|pron": "給他；給她", "se|pron": "自己（反身代名詞）",
+    "que|conj": "（引導子句）；比", "que|pron": "（關係代名詞）…的",
+    "la|article": "（定冠詞，陰性）", "lo|article": "（中性冠詞，lo + 形容詞）", "una|pron": "一個（陰性）",
+    "novia|noun": "女朋友；新娘", "te|pron": "你（受詞）；你自己", "su|det": "他的；她的；您的",
+    "sí|pron": "是的；（反身）自己",
+    "por|prep": "為了；因為；透過",
+    # Gemini followed a slang or wrong English sense, found when reviewing
+    "leche|noun": "牛奶", "trío|noun": "三人組；三重奏", "varita|noun": "魔杖；小棒子", "tuerca|noun": "螺帽",
+    "corneta|noun": "號角；短號", "detonar|verb": "引爆；引發", "yacer|verb": "躺；長眠", "costo|noun": "成本；費用",
+    "leño|noun": "木頭；木柴", "chica|noun": "女孩", "navidad|noun": "聖誕節", "través|noun": "（a través de）穿過；透過",
+    "respecto|noun": "（con respecto a）關於",
+}
+EN_FIX_ES = {"novia|noun": "girlfriend; bride", "queso|noun": "cheese", "carta|noun": "letter; menu",
+             "técnico|noun": "technician", "través|noun": "(a través de) through", "respecto|noun": "(con respecto a) about",
+             "ó|conj": "or", "sida|noun": "AIDS", "medioambiente|noun": "environment", "hierbabuena|noun": "mint",
+             "mu|noun": "mu (Greek letter)", "porfa|adv": "please", "navidad|noun": "Christmas", "chica|noun": "girl",
+             "guión|noun": "script; hyphen", "chile|noun": "chili pepper", "coco|noun": "coconut; head",
+             "su|det": "his; her; your"}
+# ELELex has hardly any numbers (the texts write them as digits), so the basic ones
+# are put in A1 by hand: word -> (zh, en)
+ES_NUMBERS = {
+    "cero": ("零", "zero"), "uno": ("一", "one"), "dos": ("二", "two"), "tres": ("三", "three"), "cuatro": ("四", "four"),
+    "cinco": ("五", "five"), "seis": ("六", "six"), "siete": ("七", "seven"), "ocho": ("八", "eight"), "nueve": ("九", "nine"),
+    "diez": ("十", "ten"), "once": ("十一", "eleven"), "doce": ("十二", "twelve"), "trece": ("十三", "thirteen"),
+    "catorce": ("十四", "fourteen"), "quince": ("十五", "fifteen"), "dieciséis": ("十六", "sixteen"),
+    "diecisiete": ("十七", "seventeen"), "dieciocho": ("十八", "eighteen"), "diecinueve": ("十九", "nineteen"),
+    "veinte": ("二十", "twenty"), "treinta": ("三十", "thirty"), "cuarenta": ("四十", "forty"), "cincuenta": ("五十", "fifty"),
+    "sesenta": ("六十", "sixty"), "setenta": ("七十", "seventy"), "ochenta": ("八十", "eighty"), "noventa": ("九十", "ninety"),
+    "cien": ("一百", "a hundred"), "mil": ("一千", "a thousand"), "millón": ("一百萬", "a million"),
+}
+# names and slang the tagger filed as common words, found when reviewing
+ES_SKIP = {"quito", "roque", "tula", "fi", "bato", "ve", "do", "tenia", "deje", "mata", "manda",
+           # verb forms and other words the tagger filed as nouns (son = they are, not
+           # the son music; era, pasa, queda, deja, trata …), found by comparing how
+           # common the word is with how often ELELex saw it as a noun
+           "son", "corta", "era", "cómo", "pasa", "re", "dejo", "mía", "salga", "queda", "pienso",
+           "dicha", "máxima", "trata", "segunda", "deja", "supuesto", "cuesta", "toca", "torno",
+           "parecido", "un", "r", "t",
+           # Chilean slang only (meca: excrement)
+           "meca"}
+
+
+def es_shown(word, pos, gender):
+    if pos != "noun" or word in ES_NO_ARTICLE:
+        return word
+    if gender == "m":
+        return "el " + word
+    if gender == "f":
+        return ("el " if word in ES_EL_FEM else "la ") + word
+    if gender == "m/f":
+        return "el/la " + word
+    return word
+
+
+def spanish_items(offline):
+    """The kept ELELex words, by level: [{level, w, pos, gender, en, freq}]."""
+    levels = [lv.lower() for lv in CEFR_LEVELS]
+    merged = {}
+    with open(fetch("elelex.tsv", ELELEX, offline), encoding="utf-8") as f:
+        for r in csv.DictReader(f, delimiter="\t"):
+            w, tag = r["word"], r["tag"]
+            pos = ELELEX_POS.get(tag[:2]) or ELELEX_POS.get(tag[:1])
+            if not pos or tag.startswith("NP") or not re.fullmatch(r"[^\W\d_]+", w):
+                continue
+            gender = {"NCM": "m", "NCF": "f", "NCC": "m/f"}.get(tag[:3], "") if pos == "noun" else ""
+            m = merged.setdefault((w, pos), {"docs": [0.0] * 5, "freq": 0.0, "gender": gender})
+            m["docs"] = [a + float(r["nb_doc@" + lv]) for a, lv in zip(m["docs"], levels)]
+            m["freq"] += float(r["total_freq@total"])
+            if gender and m["gender"] and m["gender"] != gender:
+                m["gender"] = "m/f"
+    rows = []
+    for (w, pos), m in merged.items():
+        total, level = 0.0, None
+        for i, d in enumerate(m["docs"]):
+            total += d
+            if total >= 2:
+                level = i
+                break
+        if level is None:
+            first = next(i for i, d in enumerate(m["docs"]) if d)
+            if first < 3:                       # a single text below B2: noise
+                continue
+            level = first
+        rows.append((level, -m["freq"], w, pos, m["gender"]))
+    rows.sort()
+    kk = kaikki_extract("es", sorted({r[2] for r in rows}), offline)
+    from wordfreq import zipf_frequency
+    items, seen = [], set()
+    for level, negf, w, pos, gender in rows:
+        if w in seen or w in ES_SKIP or w in ES_NUMBERS:
+            continue
+        ents = [x for x in kk.get(w) or [] if x["glosses"]]
+        # numbers are tagged as nouns (dos, cuatro): Wiktionary's number entry, not "dung"
+        e = next((x for x in ents if x["pos"] == "num"), None) if pos in ("noun", "adj") else None
+        if e:
+            pos, gender = "num", ""
+        e = e or next((x for x in ents if x["pos"] == pos), None)
+        if not e:
+            e = next((x for x in ents if x["pos"] in ES_POS_ALSO.get(pos, ())), None)
+            if not e:
+                continue
+            pos, gender = e["pos"], gender if e["pos"] == "noun" else ""
+        zipf = zipf_frequency(w, "es")
+        if level < 3 and zipf < 2.0:                # very rare words in a beginner text: noise
+            continue
+        if pos == "noun":
+            # Wiktionary's gender first: ELELex sometimes tags one noun both ways (casa)
+            # (casa); when Wiktionary allows both but ELELex saw one, that one (el fin, el mar)
+            g = e["gender"]
+            wik = "m" if g == ["masculine"] else "f" if g == ["feminine"] else "m/f" if g else ""
+            gender = gender if (wik == "m/f" and gender in ("m", "f")) or not wik else wik
+            gender = ES_GENDER.get(w, gender)
+            if not gender:
+                continue
+        seen.add(w)
+        items.append({"level": CEFR_LEVELS[level], "w": w, "pos": pos, "gender": gender,
+                      "en": "; ".join(e["glosses"][:3])[:200], "freq": zipf})
+    for w, (zh, en) in ES_NUMBERS.items():
+        items.append({"level": "A1", "w": w, "pos": "num", "gender": "", "en": en, "freq": zipf_frequency(w, "es")})
+    # within a level, the most common words in Spanish at large come first
+    items.sort(key=lambda it: (CEFR_LEVELS.index(it["level"]), -it["freq"]))
+    return items
+
+
+def build_spanish(args):
+    items = spanish_items(args.offline)
+    fixed = dict(ZH_FIX_ES, **{f"{w}|num": zh for w, (zh, en) in ES_NUMBERS.items()})
+    todo = [dict(it, en=EN_FIX_ES.get(f"{it['w']}|{it['pos']}", it["en"])) for it in items if f"{it['w']}|{it['pos']}" not in fixed]
+    zh = gemini_meanings("es", todo)
+    zh.update(fixed)
+    missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
+    if missing:
+        raise SystemExit(f"{len(missing)} Spanish words still lack a meaning; run again")
+    kk = kaikki_extract("es", [it["w"] for it in items if it["w"] not in ES_NUMBERS], True)
+    # the words "alternative form of X" points to, in a cache of their own (re-streaming
+    # the main one could change the lists)
+    alt = dict(kk, **kaikki_extract("es", form_of_targets("es", items, kk), args.offline, name="kaikki_es_alt"))
+    for lv in CEFR_LEVELS:
+        words = []
+        for it in items:
+            if it["level"] != lv:
+                continue
+            g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
+            key = f"{it['w']}|{it['pos']}"
+            if it["w"] in ES_NUMBERS:
+                en = ES_NUMBERS[it["w"]][1]
+            else:
+                e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
+                en = EN_FIX_ES.get(key) or short_gloss(learner_glosses("es", e["glosses"], it["pos"], alt))
+            words.append([es_shown(it["w"], it["pos"], it["gender"]), g, zh[key], en])
+        write_set(f"es_{lv.lower()}", "es", words,
+                  f"ELELex（CEFRLex, UCLouvain）{lv}；英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "ELELex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
+
+
+# ---------- German: DAFlex (CEFRLex, UCLouvain), CC BY-NC-SA 4.0 ----------
+# Like ELELex: frequencies and text counts per level (A1–C2, we stop at C1), the
+# level is the first one by which a word has turned up in 2 texts (a single-text word
+# is kept only from B2 up). DAFlex gives no gender, so gender and plural come from
+# Wiktionary (Hund, masculine, plural Hunde). Rows:
+# [der Hund, "m. · Pl. Hunde", zh, en] — the reading column carries gender and plural.
+DAFLEX = "https://cental.uclouvain.be/cefrlex/static/resources/de/DAFlex.tsv"
+DAFLEX_POS = {"NN": "noun", "ADJA": "adj", "ADJD": "adj", "V": "verb", "VV": "verb", "VM": "verb", "VA": "verb",
+              "ADV": "adv", "PAV": "adv", "PWAV": "adv", "APPR": "prep", "APPO": "prep", "KON": "conj", "KOUS": "conj",
+              "KOKOM": "conj", "PPER": "pron", "PI": "pron", "PD": "pron", "PP": "pron", "PRF": "pron", "PWS": "pron",
+              "PPOS": "det", "ART": "article", "CARD": "num", "ITJ": "intj", "PTKANT": "intj"}
+DE_ARTICLE = {"m": "der", "f": "die", "n": "das"}
+ZH_FIX_DE = {}
+EN_FIX_DE = {}
+# tagging noise found when reviewing: inflected forms filed as their own words
+DE_SKIP = {"einen", "tagen", "weißen", "arten", "gleichen", "grenzen", "Einer", "Soll", "Habe", "Muss", "Tage", "Fort"}
+
+
+def de_shown(word, pos, gender):
+    return f"{DE_ARTICLE[gender]} {word}" if pos == "noun" and gender in DE_ARTICLE else word
+
+
+def de_reading(pos, gender, plural):
+    if pos != "noun":
+        return ""
+    g = {"m": "m.", "f": "f.", "n": "n."}.get(gender, "")
+    return f"{g} · Pl. {plural}" if plural else g
+
+
+def german_items(offline):
+    """The kept DAFlex words, by level: [{level, w, pos, gender, plural, en, freq}]."""
+    levels = [lv.lower() for lv in CEFR_LEVELS]
+    merged = {}
+    with open(fetch("daflex.tsv", DAFLEX, offline), encoding="utf-8") as f:
+        for r in csv.DictReader(f, delimiter="\t"):
+            w, pos = r["word"], DAFLEX_POS.get(r["tag"])
+            if not pos or not re.fullmatch(r"[^\W\d_]+", w):
+                continue
+            m = merged.setdefault((w, pos), {"docs": [0.0] * 5, "freq": 0.0})
+            m["docs"] = [a + float(r["nb_doc@" + lv]) for a, lv in zip(m["docs"], levels)]
+            m["freq"] += float(r["total_freq@total"])
+    # a word with several tags keeps only the ones DAFlex really uses it as: "ich" as a
+    # noun (das Ich), "einen" as a verb or "gut" as a noun (das Gut) are tagging noise
+    top = {}
+    for (w, pos), m in merged.items():
+        top[w.lower()] = max(top.get(w.lower(), 0.0), m["freq"])
+    rows = []
+    for (w, pos), m in merged.items():
+        if m["freq"] < 0.1 * top[w.lower()] or len(w) < 2:
+            continue
+        total, level = 0.0, None
+        for i, d in enumerate(m["docs"]):
+            total += d
+            if total >= 2:
+                level = i
+                break
+        if level is None:
+            first = next((i for i, d in enumerate(m["docs"]) if d), None)
+            if first is None or first < 3:      # only in C2, or a single text below B2
+                continue
+            level = first
+        rows.append((level, -m["freq"], w, pos))
+    rows.sort()
+    kk = kaikki_extract("de", sorted({r[2] for r in rows}), offline)
+    from wordfreq import zipf_frequency
+    items, seen = [], set()
+    for level, negf, w, pos in rows:
+        if w in DE_SKIP:
+            continue
+        ents = [x for x in kk.get(kaikki_key("de", w)) or [] if x["glosses"]]
+        # the entry of that part of speech whose spelling fits it (Hund for a noun,
+        # unternehmen for a verb — not the noun Unternehmen)
+        e = next((x for x in ents if x["pos"] == pos and (x["word"][:1].isupper()) == (pos == "noun")), None)
+        if not e:
+            continue
+        word = e["word"] or w
+        if word in seen or (len(word) > 1 and word.isupper()):
+            continue
+        if pos == "noun" and not word[:1].isupper():
+            continue                            # a lower-case "noun" is tagging noise
+        zipf = zipf_frequency(word, "de")
+        if level < 3 and zipf < 2.0:
+            continue
+        # from B1 up, a past participle filed as an adjective (gegeben, verwendet) is noise;
+        # the common ones (bekannt, verheiratet) sit in A1 / A2 and stay
+        if pos == "adj" and level >= 2 and any(x["pos"] == "verb" and not x["glosses"] for x in kk.get(kaikki_key("de", w)) or []):
+            continue
+        g = e["gender"]
+        gender = "m" if g == ["masculine"] else "f" if g == ["feminine"] else "n" if g == ["neuter"] else ""
+        if pos == "noun" and not gender:
+            continue
+        seen.add(word)
+        items.append({"level": CEFR_LEVELS[level], "w": word, "pos": pos, "gender": gender if pos == "noun" else "",
+                      "plural": e["plural"] if pos == "noun" else "", "en": "; ".join(e["glosses"][:3])[:200],
+                      "glosses": e["glosses"], "freq": zipf})
+    # a noun that is another kept noun's plural (Tage) is a form, not a word
+    plurals = {it["plural"] for it in items if it["pos"] == "noun" and it["plural"]}
+    items = [it for it in items if not (it["pos"] == "noun" and it["w"] in plurals and not it["plural"])]
+    items.sort(key=lambda it: (CEFR_LEVELS.index(it["level"]), -it["freq"]))
+    return items
+
+
+def build_german(args):
+    items = german_items(args.offline)
+    todo = [{k: it[k] for k in ("w", "pos", "gender", "en")} for it in items if f"{it['w']}|{it['pos']}" not in ZH_FIX_DE]
+    zh = gemini_meanings("de", todo)
+    zh.update(ZH_FIX_DE)
+    missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
+    if missing:
+        raise SystemExit(f"{len(missing)} German words still lack a meaning; run again")
+    for lv in CEFR_LEVELS:
+        words = [[de_shown(it["w"], it["pos"], it["gender"]), de_reading(it["pos"], it["gender"], it["plural"]),
+                  zh[f"{it['w']}|{it['pos']}"], EN_FIX_DE.get(f"{it['w']}|{it['pos']}") or short_gloss(it["glosses"])]
+                 for it in items if it["level"] == lv]
+        write_set(f"de_{lv.lower()}", "de", words,
+                  f"DAFlex（CEFRLex, UCLouvain）{lv}；性別、複數與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "DAFlex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics", "fr", "ru"])
+    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics", "fr", "ru", "es", "de"])
+    ap.add_argument("--items", action="store_true", help="with --only es / de: list the kept words and stop (no Gemini)")
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
     if args.only in (None, "en"):
@@ -954,6 +1312,24 @@ def main():
         print("French (FLELex)"); build_french(args)
     if args.only in (None, "ru"):
         print("Russian (Kelly)"); build_russian(args)
+    if args.only in (None, "es"):
+        print("Spanish (ELELex)")
+        if args.items:
+            items = spanish_items(args.offline)
+            json.dump(items, open(os.path.join(CACHE, "es_items.json"), "w", encoding="utf-8"), ensure_ascii=False)
+            from collections import Counter
+            print(Counter(it["level"] for it in items), len(items))
+        else:
+            build_spanish(args)
+    if args.only in (None, "de"):
+        print("German (DAFlex)")
+        if args.items:
+            items = german_items(args.offline)
+            json.dump(items, open(os.path.join(CACHE, "de_items.json"), "w", encoding="utf-8"), ensure_ascii=False)
+            from collections import Counter
+            print(Counter(it["level"] for it in items), len(items))
+        else:
+            build_german(args)
 
 
 if __name__ == "__main__":

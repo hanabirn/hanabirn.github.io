@@ -223,33 +223,33 @@ const BUNDLED_SETS = {
     hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
 };
 
-/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en|zh|fr|ru>_<topic>,
+/* 單字 page topics: one 40-word set per language and topic, tp_<ja|ko|en|zh|fr|ru|es|de>_<topic>,
    built from the hand-written tools/topics/<lang>.tsv (the 檢定 page keeps the
    graded lists). TOPIC_FILE_LANG maps a quiz-page language to the file prefix. */
 const TOPIC_IDS = ['greetings', 'food', 'home', 'shopping', 'transport', 'travel', 'weather', 'school', 'work', 'health'];
 const TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
     travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
-const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh', fr: 'fr', ru: 'ru' };
+const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh', fr: 'fr', ru: 'ru', es: 'es', de: 'de' };
 const topicSetIds = fileLang => TOPIC_IDS.map(tp => 'tp_' + fileLang + '_' + tp);
 Object.values(TOPIC_FILE_LANG).forEach(l => topicSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
-/* French (FLELex) and Russian (Kelly) by CEFR level, fr_a1 … ru_c1 (tools/build_vocab.py);
+/* French (FLELex), Russian (Kelly), Spanish (ELELex) and German (DAFlex) by CEFR level, fr_a1 … de_c1 (tools/build_vocab.py);
    they replaced the owner's French sheet ('fr', now a legacy id). */
 const CEFR_LEVELS = ['a1', 'a2', 'b1', 'b2', 'c1'];
-const CEFR_LANGS = ['fr', 'ru'];
+const CEFR_LANGS = ['fr', 'ru', 'es', 'de'];
 const cefrSetIds = lang => CEFR_LEVELS.map(lv => lang + '_' + lv);
 CEFR_LANGS.forEach(l => cefrSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
 /* "tp_ja_food" -> { lang: 'ja', topic: 'food' }, anything else -> null */
 function topicOf(id) {
-    const m = /^tp_(ja|ko|en|zh|fr|ru)_([a-z]+)$/.exec(id || '');
+    const m = /^tp_(ja|ko|en|zh|fr|ru|es|de)_([a-z]+)$/.exec(id || '');
     return m ? { lang: m[1], topic: m[2] } : null;
 }
 
 /* A word set's display name: "日文・吃飯" / "Korean · Food" for a topic, else its
    quiz_<id> text. */
 function wordSetName(id) {
-    const cefr = /^(fr|ru)_([abc][12])$/.exec(id || '');
+    const cefr = /^(fr|ru|es|de)_([abc][12])$/.exec(id || '');
     if (cefr) return t('dict_lang_' + cefr[1]) + ' ' + cefr[2].toUpperCase();
     const tp = topicOf(id);
     if (!tp) return t('quiz_' + id);
@@ -265,7 +265,9 @@ const WORD_SET_FAMILIES = {
     kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'].concat(topicSetIds('ko')),
     zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'].concat(topicSetIds('zh')),
     fr: cefrSetIds('fr').concat(topicSetIds('fr')),
-    ru: cefrSetIds('ru').concat(topicSetIds('ru'))
+    ru: cefrSetIds('ru').concat(topicSetIds('ru')),
+    es: cefrSetIds('es').concat(topicSetIds('es')),
+    de: cefrSetIds('de').concat(topicSetIds('de'))
 };
 
 let currentSetMeta = null; // { source, license } of the loaded bundled set
@@ -489,6 +491,16 @@ function isFrenchQuizLang(lang) {
     return lang === 'fr' || String(lang).startsWith('fr_') || String(lang).startsWith('tp_fr_');
 }
 
+/* the CEFR sets (es_a1 …) and the 單字 page topics (tp_es_*) */
+function isSpanishQuizLang(lang) {
+    return String(lang).startsWith('es_') || String(lang).startsWith('tp_es_');
+}
+
+/* the CEFR sets (de_a1 …) and the 單字 page topics (tp_de_*) */
+function isGermanQuizLang(lang) {
+    return String(lang).startsWith('de_') || String(lang).startsWith('tp_de_');
+}
+
 function isRussianQuizLang(lang) {
     return String(lang).startsWith('ru_') || String(lang).startsWith('tp_ru_');
 }
@@ -496,7 +508,7 @@ function isRussianQuizLang(lang) {
 /* the mode picker's "word → meaning" button text for the current set */
 function quizMeaningModeKey() {
     return isEnglishQuizLang(currentLang) ? 'mode_en_meaning' : isJapaneseQuizLang(currentLang) ? 'mode_jp_meaning'
-        : isFrenchQuizLang(currentLang) ? 'mode_fr_meaning' : isRussianQuizLang(currentLang) ? 'mode_ru_meaning' : 'mode_kr_meaning';
+        : isFrenchQuizLang(currentLang) ? 'mode_fr_meaning' : isRussianQuizLang(currentLang) ? 'mode_ru_meaning' : isSpanishQuizLang(currentLang) ? 'mode_es_meaning' : isGermanQuizLang(currentLang) ? 'mode_de_meaning' : 'mode_kr_meaning';
 }
 
 function isChineseQuizLang(lang) {
@@ -506,7 +518,7 @@ function isChineseQuizLang(lang) {
 function speakWord(slow) {
     if (!currentWord || !currentWord.word) return;
     const text = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
-    const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : isFrenchQuizLang(currentLang) ? 'fr-FR' : isRussianQuizLang(currentLang) ? 'ru-RU' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : isFrenchQuizLang(currentLang) ? 'fr-FR' : isRussianQuizLang(currentLang) ? 'ru-RU' : isSpanishQuizLang(currentLang) ? 'es-ES' : isGermanQuizLang(currentLang) ? 'de-DE' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
     // the kana tells a recording of 一日 (ついたち) from 一日 (いちにち); a
     // review question only has it as the answer of a reading question
     const reading = currentWord.kana
@@ -1018,7 +1030,7 @@ function showModeSelection() {
     const container = document.getElementById('mode-buttons');
     container.innerHTML = '';
 
-    const skipModeSelection = isKoreanQuizLang(currentLang) || isFrenchQuizLang(currentLang) || isRussianQuizLang(currentLang) || isEnglishQuizLang(currentLang);
+    const skipModeSelection = isKoreanQuizLang(currentLang) || isFrenchQuizLang(currentLang) || isRussianQuizLang(currentLang) || isSpanishQuizLang(currentLang) || isGermanQuizLang(currentLang) || isEnglishQuizLang(currentLang);
 
     const btnMeaning = document.createElement('button');
     btnMeaning.className = 'mode-btn';
@@ -1030,7 +1042,7 @@ function showModeSelection() {
         container.appendChild(btnMeaning);
     }
 
-    if (readingList.length >= 4 && !isFrenchQuizLang(currentLang) && !isRussianQuizLang(currentLang) && currentLang !== 'en') {
+    if (readingList.length >= 4 && !isFrenchQuizLang(currentLang) && !isRussianQuizLang(currentLang) && !isSpanishQuizLang(currentLang) && !isGermanQuizLang(currentLang) && currentLang !== 'en') {
         const btnReading = document.createElement('button');
         btnReading.className = 'mode-btn';
         btnReading.setAttribute('data-i18n', 'mode_jp_reading');
@@ -1714,6 +1726,8 @@ let currentReviewEntry = null;
 const QUIZ_LANG_FLAGS = {
     srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳',
     fr_a1: '📖', fr_a2: '📖', fr_b1: '📖', fr_b2: '📖', fr_c1: '📖',
+    es_a1: '📖', es_a2: '📖', es_b1: '📖', es_b2: '📖', es_c1: '📖',
+    de_a1: '📖', de_a2: '📖', de_b1: '📖', de_b2: '📖', de_c1: '📖',
     ru_a1: '📖', ru_a2: '📖', ru_b1: '📖', ru_b2: '📖', ru_c1: '📖',
     en_jh: '📘', en_sh: '📘', en_toeic: '📘', en_toefl: '📘',
     jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖',
@@ -1722,7 +1736,7 @@ const QUIZ_LANG_FLAGS = {
 };
 Object.keys(BUNDLED_SETS).forEach(id => { const tp = topicOf(id); if (tp) QUIZ_LANG_FLAGS[id] = TOPIC_EMOJI[tp.topic]; });
 /* The sets a visitor can pick (paths, "continue", recent sets). */
-const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr, WORD_SET_FAMILIES.ru);
+const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr, WORD_SET_FAMILIES.ru, WORD_SET_FAMILIES.es, WORD_SET_FAMILIES.de);
 /* Retired general sheets; their mistake-book entries and SRS cards still exist. */
 const LEGACY_SET_IDS = ['jp', 'kr', 'en', 'zh', 'fr'];
 
@@ -2454,24 +2468,26 @@ let listeningCount = 10;
 let listeningMeaningLang = 'zh';
 let listeningHintsUsed = 0;   // letters revealed on the current typing question
 
-const LISTENING_LANGS = ['jp', 'kr', 'en', 'zh', 'fr', 'ru'];
+const LISTENING_LANGS = ['jp', 'kr', 'en', 'zh', 'fr', 'ru', 'es', 'de'];
 const LISTENING_MODES = {
     jp: ['choice', 'hiragana', 'katakana', 'roman'],
     kr: ['choice', 'korean'],
     en: ['choice', 'english'],
     fr: ['choice', 'french'],
     ru: ['choice', 'russian'],
+    es: ['choice', 'spanish'],
+    de: ['choice', 'german'],
     zh: ['choice-trad', 'choice-simp', 'bopomofo', 'pinyin']
 };
 const LISTENING_MODE_KEYS = {
     choice: 'lc_mode_choice', 'choice-trad': 'lc_mode_choice_trad', 'choice-simp': 'lc_mode_choice_simp',
     hiragana: 'lc_mode_jp_hiragana', katakana: 'lc_mode_jp_katakana', roman: 'lc_mode_jp_roman',
-    korean: 'lc_mode_kr_korean', english: 'lc_mode_en_english', french: 'lc_mode_fr_french', russian: 'lc_mode_ru_russian',
+    korean: 'lc_mode_kr_korean', english: 'lc_mode_en_english', french: 'lc_mode_fr_french', russian: 'lc_mode_ru_russian', spanish: 'lc_mode_es_spanish', german: 'lc_mode_de_german',
     bopomofo: 'lc_mode_zh_bopomofo', pinyin: 'lc_mode_zh_pinyin'
 };
 const LISTENING_COUNTS = [10, 20, 30, 0];
 /* the language names in the pickers (shared with the flashcard decks) */
-const PRACTICE_LANG_NAME_KEYS = { jp: 'dict_lang_ja', kr: 'dict_lang_ko', en: 'dict_lang_en', zh: 'dict_lang_zh', fr: 'dict_lang_fr', ru: 'dict_lang_ru' };
+const PRACTICE_LANG_NAME_KEYS = { jp: 'dict_lang_ja', kr: 'dict_lang_ko', en: 'dict_lang_en', zh: 'dict_lang_zh', fr: 'dict_lang_fr', ru: 'dict_lang_ru', es: 'dict_lang_es', de: 'dict_lang_de' };
 
 function isListeningChoice() {
     return listeningMode.startsWith('choice');
@@ -2775,6 +2791,10 @@ function listeningAcceptedAnswers() {
     if (mode === 'english') return variants(w.english || w.word).map(v => v.toLowerCase());
     // a French noun is shown with its article: the bare noun counts too
     if (mode === 'french') return variants(w.word).flatMap(v => [v.toLowerCase(), v.toLowerCase().replace(/^(le |la |l')/, '')]);
+    // a Spanish noun is shown with its article (el gato, el/la estudiante, los fideos): the bare noun counts too
+    if (mode === 'spanish') return variants(w.word).flatMap(v => [v.toLowerCase(), v.toLowerCase().replace(/^(el\/la |el |la |los |las )/, '')]);
+    // a German noun is shown with der / die / das: the bare noun counts too, in any case (Hund, hund)
+    if (mode === 'german') return variants(w.word).flatMap(v => [v.toLowerCase(), v.toLowerCase().replace(/^(der |die |das )/, '')]);
     // Russian is often typed without ё
     if (mode === 'russian') return variants(w.word).map(v => v.toLowerCase().replace(/ё/g, 'е'));
     return variants(w.word).map(v => v.toLowerCase());
