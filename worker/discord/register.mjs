@@ -1,6 +1,6 @@
 // Registers (overwrites) the bot's global slash commands with Discord.
-// Needs DISCORD_APPLICATION_ID and DISCORD_BOT_TOKEN in .dev.vars (git-ignored) or the
-// environment. Run after changing src/commands.js:  node register.mjs
+// Needs DISCORD_BOT_TOKEN in .dev.vars (git-ignored) or the environment; the application
+// id comes from wrangler.jsonc. Run after changing src/commands.js:  node register.mjs
 import { readFileSync, existsSync } from 'node:fs';
 import { COMMANDS } from './src/commands.js';
 
@@ -12,10 +12,12 @@ if (existsSync(path)) {
         if (m) vars[m[1]] = m[2];
     }
 }
-const appId = process.env.DISCORD_APPLICATION_ID || vars.DISCORD_APPLICATION_ID;
+// the application id is public and also sits in wrangler.jsonc
+const wranglerId = /"DISCORD_APPLICATION_ID"\s*:\s*"(\d+)"/.exec(readFileSync(new URL('./wrangler.jsonc', import.meta.url), 'utf8'));
+const appId = process.env.DISCORD_APPLICATION_ID || vars.DISCORD_APPLICATION_ID || (wranglerId && wranglerId[1]);
 const token = process.env.DISCORD_BOT_TOKEN || vars.DISCORD_BOT_TOKEN;
 if (!appId || !token) {
-    console.error('DISCORD_APPLICATION_ID and DISCORD_BOT_TOKEN are needed (.dev.vars or environment)');
+    console.error(appId ? 'DISCORD_BOT_TOKEN is missing: put DISCORD_BOT_TOKEN=... in .dev.vars' : 'no DISCORD_APPLICATION_ID in wrangler.jsonc');
     process.exit(1);
 }
 const res = await fetch(`https://discord.com/api/v10/applications/${appId}/commands`, {

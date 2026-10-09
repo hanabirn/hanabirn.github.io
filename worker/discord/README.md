@@ -32,12 +32,11 @@ doesn't have yet (e.g. before a push) answers "還沒有上線".
 ## Setting up the Discord app (once)
 
 1. <https://discord.com/developers/applications> → **New Application** (name, e.g. 小花火).
-2. **General Information**: copy the **Application ID** and the **Public Key**.
-   Put the public key in `wrangler.jsonc` (`DISCORD_PUBLIC_KEY`, public by design).
+2. **General Information**: copy the **Application ID** and the **Public Key** into
+   `wrangler.jsonc` (`DISCORD_APPLICATION_ID`, `DISCORD_PUBLIC_KEY` — both public by design).
 3. **Bot** → **Reset Token** → copy it. It is only needed to register the commands and
-   stays on this computer, in the git-ignored `.dev.vars`:
+   stays on this computer, in the git-ignored `.dev.vars` (one line):
    ```
-   DISCORD_APPLICATION_ID=…
    DISCORD_BOT_TOKEN=…
    ```
 4. Deploy the Worker: `npx wrangler deploy` (from this folder) → it prints
