@@ -827,8 +827,9 @@ def short_gloss(glosses, limit=40):
 # dropped when the word has others; a pointer becomes its quoted meaning (santo
 # (“saint”)), else the meaning written after it (very), else what the word it points
 # to means (looked up in `alt`, see form_of_targets()).
-FORM_OF = re.compile(r"^(?:(?:apocopic|alternative|dated|obsolete|archaic|superseded|pronunciation)\s+(?:form|spelling)"
-                     r"|misspelling|synonym|contraction|abbreviation)\s+of\s+(.+)$", re.I)
+# (German glosses also say "ellipsis of Straßenverkehr", "clipping of Information")
+FORM_OF = re.compile(r"^(?:(?:apocopic|alternative|dated|obsolete|archaic|superseded|pronunciation|elongated|short)\s+(?:form|spelling)"
+                     r"|a\s+short\s+form|misspelling|synonym|contraction|abbreviation|ellipsis|clipping)\s+of\s+(.+)$", re.I)
 SLANG_GLOSS = re.compile(r"\b(penis|dick|cum|semen|testicles?|cocaine|hashish|marijuana|excrement|shit|fucking|"
                          r"vagina|threesome)\b", re.I)
 
@@ -1187,10 +1188,23 @@ DAFLEX_POS = {"NN": "noun", "ADJA": "adj", "ADJD": "adj", "V": "verb", "VV": "ve
               "KOKOM": "conj", "PPER": "pron", "PI": "pron", "PD": "pron", "PP": "pron", "PRF": "pron", "PWS": "pron",
               "PPOS": "det", "ART": "article", "CARD": "num", "ITJ": "intj", "PTKANT": "intj"}
 DE_ARTICLE = {"m": "der", "f": "die", "n": "das"}
-ZH_FIX_DE = {}
-EN_FIX_DE = {}
-# tagging noise found when reviewing: inflected forms filed as their own words
-DE_SKIP = {"einen", "tagen", "weißen", "arten", "gleichen", "grenzen", "Einer", "Soll", "Habe", "Muss", "Tage", "Fort"}
+# Gemini followed a wrong or slang English sense, found when reviewing
+ZH_FIX_DE = {
+    "dass|conj": "（引導子句）…這件事；以便", "allerdings|adv": "不過；的確", "überhaupt|adv": "根本；到底",
+    "eher|adv": "寧可；比較早", "Knochen|noun": "骨頭", "gemäß|adj": "依照；根據", "Verkehr|noun": "交通；往來",
+    "Gras|noun": "草",
+}
+EN_FIX_DE = {"Verkehr|noun": "traffic; dealings", "Knochen|noun": "bone", "gemäß|adj": "according to",
+             "Gras|noun": "grass", "darauf|adv": "on it; after that", "West|noun": "the west", "Nord|noun": "the north",
+             "Ost|noun": "the east", "Geburtstagskind|noun": "birthday boy / girl", "Bierglas|noun": "beer glass",
+             "Erfinderin|noun": "inventor (woman)", "Kanzlerin|noun": "chancellor (woman)", "Mist|noun": "manure; rubbish",
+             "dies|pron": "this"}
+# tagging noise found when reviewing: inflected forms filed as their own words, "ein"
+# as the adverb "on", a nominalised adjective (die Rote)
+DE_SKIP = {"einen", "tagen", "weißen", "arten", "gleichen", "grenzen", "Einer", "Soll", "Habe", "Muss", "Tage", "Fort",
+           "ein", "Rote"}
+# feminine nouns that look like nominalised adjectives (plural = singular, -e) but are real words
+DE_KEEP_FEM = {"Linke"}
 
 
 def de_shown(word, pos, gender):
@@ -1273,12 +1287,25 @@ def german_items(offline):
     # a noun that is another kept noun's plural (Tage) is a form, not a word
     plurals = {it["plural"] for it in items if it["pos"] == "noun" and it["plural"]}
     items = [it for it in items if not (it["pos"] == "noun" and it["w"] in plurals and not it["plural"])]
+    # a nominalised adjective in the feminine (die Beste, die Behinderte, die Dreißigjährige)
+    # duplicates its masculine entry: plural = singular and ending in -e gives it away
+    items = [it for it in items if it["w"] not in DE_SKIP and not (
+        it["pos"] == "noun" and it["gender"] == "f" and it["w"].endswith("e") and it["plural"] == it["w"]
+        and it["w"] not in DE_KEEP_FEM)]
     items.sort(key=lambda it: (CEFR_LEVELS.index(it["level"]), -it["freq"]))
     return items
 
 
 def build_german(args):
     items = german_items(args.offline)
+    # as for Spanish: no slang senses, "alternative form of X" -> what X means; the words
+    # X points to come from a cache of their own (re-streaming the main one could change
+    # the lists). Gemini is shown the cleaned English too.
+    kk = kaikki_extract("de", [it["w"] for it in items], True)
+    alt = dict(kk, **kaikki_extract("de", form_of_targets("de", items, kk), args.offline, name="kaikki_de_alt"))
+    for it in items:
+        it["glosses"] = learner_glosses("de", it["glosses"], it["pos"], alt)
+        it["en"] = "; ".join(it["glosses"][:3])[:200]
     todo = [{k: it[k] for k in ("w", "pos", "gender", "en")} for it in items if f"{it['w']}|{it['pos']}" not in ZH_FIX_DE]
     zh = gemini_meanings("de", todo)
     zh.update(ZH_FIX_DE)
