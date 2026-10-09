@@ -22,7 +22,11 @@ WORDS = {'星期': 'xīngqí', '誰': 'shéi', '媽媽': 'māma', '妹妹': 'mè
          '韓國': 'Hánguó', '電視': 'diànshì', '已經': 'yǐjīng', '但是': 'dànshì', '如果': 'rúguǒ',
          '雖然': 'suīrán', '因此': 'yīncǐ', '以前': 'yǐqián', '能夠': 'nénggòu', '回國': 'huíguó', '為了': 'wèile',
          '在家': 'zài jiā', '我家': 'wǒ jiā', '好累': 'hǎo lèi', '很累': 'hěn lèi', '你好': 'nǐ hǎo',
-         '也是': 'yě shì', '好不': 'hǎo bù', '正要': 'zhèng yào'}
+         '也是': 'yě shì', '好不': 'hǎo bù', '正要': 'zhèng yào',
+         '下雨': 'xià yǔ', '有空': 'yǒu kòng', '高興': 'gāoxìng', '以後': 'yǐhòu', '進來': 'jìnlái',
+         '走路': 'zǒulù', '說的話': 'shuō de huà', '講的話': 'jiǎng de huà', '聽的話': 'tīng de huà',
+         '到家': 'dào jiā', '認識': 'rènshì', '比賽': 'bǐsài', '取消': 'qǔxiāo', '才能': 'cái néng',
+         '那裡': 'nàlǐ', '出來': 'chūlái', '有一些': 'yǒu yìxiē', '沒關係': 'méi guānxi', '剛剛': 'gānggāng', '剛才': 'gāngcái'}
 # options that are wrong on purpose (a word said three times…): one syllable each, full tones
 OVERRIDES = {'看看看': 'kàn kàn kàn', '試試試': 'shì shì shì', '看一看看': 'kàn yí kàn kàn',
              '試一試試': 'shì yí shì shì', '看了看看': 'kàn le kàn kàn', '休休息息': 'xiū xiū xí xí',
@@ -218,12 +222,16 @@ def reading(text, sentence=True):
             if chars == '（　）':
                 out.append(' (___) ')
             else:
-                out.append({'，': ', ', '。': '. ', '？': '? ', '！': '! ', '、': ', ', '—': ' — '}.get(chars, chars))
+                out.append({'，': ', ', '。': '. ', '？': '? ', '！': '! ', '、': ', ', '—': ' — ',
+                            '：': ': ', '「': ' “', '」': '” '}.get(chars, chars))
             continue
         word = fixed or ''.join(sylls)
         if chars in PROPER:
             word = word[0].upper() + word[1:]
         out.append(' ' + word + ' ')
     s = re.sub(r' +', ' ', ''.join(out)).strip()
-    s = re.sub(r' ([,.?!])', r'\1', s)
-    return s[0].upper() + s[1:] if sentence and s[0].isalpha() and re.search(r'[。？！]$', text) else s
+    s = re.sub(r' ([,.?!:”])', r'\1', s)
+    s = s.replace('“ ', '“')
+    # a quoted sentence starts with a capital: shuō: “Méi guānxi.”
+    s = re.sub(r'“(\w)', lambda m: '“' + m.group(1).upper(), s)
+    return s[0].upper() + s[1:] if sentence and s[0].isalpha() and re.search(r'[。？！」]$', text) else s
