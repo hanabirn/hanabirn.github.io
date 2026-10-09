@@ -28,6 +28,14 @@ function gText(obj) {
     return obj.en || obj.zh || '';
 }
 
+/* Translations of examples and quiz hints: for the Chinese lessons a Chinese
+   interface would just repeat the sentence (and give the answer away), so it
+   shows the English instead. */
+function gHint(set, obj) {
+    if (set && set.lang === 'zh' && (siteLang === 'zh' || siteLang === 'zh-Hans')) return obj.en || gText(obj);
+    return gText(obj);
+}
+
 function grammarProgress() {
     try { return JSON.parse(localStorage.getItem('grammar_progress')) || {}; } catch { return {}; }
 }
@@ -187,7 +195,7 @@ function grammarPointHtml(set) {
                     <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">🔊</button>
                 </div>
                 ${exReading(ex) && exReading(ex).replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(exReading(ex))}</div>` : ''}
-                <div class="grammar-ex-tr">${escHtml(gText(ex))}</div>
+                <div class="grammar-ex-tr">${escHtml(gHint(set, ex))}</div>
             </li>`).join('')}
         </ul>
         <button type="button" class="btn next-btn grammar-start" onclick="grammarStartQuiz()">${escHtml(t('grammar_practice', { n: p.quiz.length }))}</button>
@@ -246,7 +254,7 @@ function grammarQuizHtml(set) {
         <div class="grammar-q">
             <div class="grammar-q-pattern" lang="${set.lang}">${escHtml(set.points[grammarPoint].pattern)}</div>
             ${it.q.q ? `<div class="grammar-q-text" lang="${set.lang}">${sentence}</div>` : ''}
-            <div class="grammar-q-hint">${escHtml(gText(it.q))}</div>
+            <div class="grammar-q-hint">${escHtml(gHint(set, it.q))}</div>
         </div>
         <div class="grammar-options">
             ${it.options.map((o, i) => {

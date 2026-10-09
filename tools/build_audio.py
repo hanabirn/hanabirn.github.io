@@ -215,10 +215,20 @@ def jobs(lang):
             # the CEFR lists, then the 單字 page topics (tp_fr_*, tp_ru_*)
             for word, *_ in list(vocab(lang + '_')) + list(vocab('tp_' + lang + '_')):
                 add(word, word)
+            # 文法 page examples (data/grammar/fr_*.json, ru_*.json)
+            for f in sorted((ROOT / 'data' / 'grammar').glob(lang + '_*.json')):
+                for point in json.loads(f.read_text(encoding='utf-8'))['points']:
+                    for ex in point['examples']:
+                        add(ex['text'], ex['text'])
     else:
         if lang == 'zh-TW':
             for text in alphabet({'zh'}):
                 add(text, text)
+            # 文法 page examples (data/grammar/zh_*.json, Traditional; the page speaks zh-TW)
+            for f in sorted((ROOT / 'data' / 'grammar').glob('zh_*.json')):
+                for point in json.loads(f.read_text(encoding='utf-8'))['points']:
+                    for ex in point['examples']:
+                        add(ex['text'], ex['text'])
         for trad, simp, *_ in list(vocab('hsk_')) + list(vocab('tp_zh_')):
             fid = add(trad, simp if lang == 'zh-CN' else trad)
             if simp != trad:

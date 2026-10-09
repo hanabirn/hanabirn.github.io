@@ -78,6 +78,8 @@ def main():
     index, problems = [], []
     for src in sorted(SRC.glob('*.json')):
         data = json.loads(src.read_text(encoding='utf-8'))
+        if not data['points']:
+            continue        # a language still being written stays off the page
         problems += check(data, src.name)
         add_hans(data, cc)
         data.pop('note', None)
@@ -88,7 +90,9 @@ def main():
     if problems:
         sys.exit('\n'.join(problems))
     # easiest level first within a language (each source file sets "order")
-    index.sort(key=lambda s: (s['lang'] != 'ja', s['lang'], s['order']))
+    # languages in the site's usual order (日 韓 英 中 法 俄 …), easiest level first
+    lang_order = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
+    index.sort(key=lambda s: (lang_order.index(s['lang']) if s['lang'] in lang_order else 99, s['order']))
     (OUT / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
 
 
