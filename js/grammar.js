@@ -187,14 +187,17 @@ function grammarPointHtml(set) {
         </ul>` : ''}
         </div>
         <div class="grammar-col-side">
-        <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
+        <div class="grammar-ex-head">
+            <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
+            ${set.lang === 'zh' ? grammarReadingSwitch() : ''}
+        </div>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
                 <div class="grammar-ex-line">
                     <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(exText(ex))}</span>
                     <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">🔊</button>
                 </div>
-                ${exReading(ex) && exReading(ex).replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(exReading(ex))}</div>` : ''}
+                ${exReadingHtml(set, ex)}
                 <div class="grammar-ex-tr">${escHtml(gHint(set, ex))}</div>
             </li>`).join('')}
         </ul>
@@ -211,6 +214,40 @@ function grammarPointHtml(set) {
    languages text and (optionally) reading. */
 function exText(ex) { return ex.text || ex.ja || ''; }
 function exReading(ex) { return ex.reading || ex.kana || ''; }
+
+/* Chinese examples carry pinyin (reading) and zhuyin (made from it by
+   tools/build_grammar.py); the visitor picks which to see. */
+const GRAMMAR_ZH_READINGS = ['pinyin', 'zhuyin', 'both'];
+
+function grammarZhReading() {
+    let v = '';
+    try { v = localStorage.getItem('grammar_zh_reading') || ''; } catch {}
+    return GRAMMAR_ZH_READINGS.includes(v) ? v : 'pinyin';
+}
+
+function grammarSetZhReading(v) {
+    try { localStorage.setItem('grammar_zh_reading', v); } catch {}
+    renderGrammar();
+}
+
+function grammarReadingSwitch() {
+    const cur = grammarZhReading();
+    return `<div class="grammar-rd" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">
+        ${GRAMMAR_ZH_READINGS.map(v => `<button type="button" class="grammar-rd-btn${v === cur ? ' on' : ''}" aria-pressed="${v === cur}" onclick="grammarSetZhReading('${v}')">${escHtml(t('grammar_rd_' + v))}</button>`).join('')}
+    </div>`;
+}
+
+function exReadingHtml(set, ex) {
+    if (set.lang === 'zh') {
+        const mode = grammarZhReading();
+        let html = '';
+        if (mode !== 'zhuyin' && ex.reading) html += `<div class="grammar-ex-kana">${escHtml(ex.reading)}</div>`;
+        if (mode !== 'pinyin' && ex.zhuyin) html += `<div class="grammar-ex-kana grammar-ex-zhuyin" lang="zh-TW">${escHtml(ex.zhuyin)}</div>`;
+        return html;
+    }
+    const r = exReading(ex);
+    return r && r.replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(r)}</div>` : '';
+}
 
 function grammarSay(i) {
     const set = grammarSets[grammarSetId];
