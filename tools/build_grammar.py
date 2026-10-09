@@ -8,7 +8,7 @@ page offers. Don't edit data/grammar/ by hand — edit the source and re-run.
 Usage: pip install opencc-python-reimplemented
        python tools/build_grammar.py
 """
-import json, re, sys, unicodedata
+import json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -29,78 +29,46 @@ def add_hans(obj, cc):
             add_hans(v, cc)
 
 
-# ---------- Chinese: bopomofo from the hand-written pinyin ----------
-# The examples' pinyin is the reference (it already carries tone sandhi such as
-# bú / yí and the neutral tones), so the zhuyin is derived from it rather than
-# guessed from the characters: the pinyin is cut into syllables (one per
-# character) and each syllable converted. A sentence that doesn't line up is
-# reported instead of getting a wrong reading.
-_SYLLABLES = None
+# ---------- Chinese readings ----------
+# The examples' pinyin is hand-written and the reference: their zhuyin is derived
+# from it (tools/zh_reading.py cuts it into one syllable per character), and the
+# words they spell set how the generated readings of the quiz sentences, options
+# and common mistakes are written. A sentence that doesn't line up is reported.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import zh_reading
 
 
-def _toneless(s):
-    s = unicodedata.normalize('NFD', s.lower())
-    s = ''.join(c for c in s if unicodedata.category(c) != 'Mn' or c == '̈')
-    return unicodedata.normalize('NFC', s).replace('ü', 'v')
+def add_zh_readings(data, problems, name):
+    for p in data['points']:
+        for ex in p['examples']:
+            try:
+                ex['zhuyin'] = zh_reading.zhuyin(ex['text'], ex.get('reading', ''))
+                zh_reading.learn(ex['text'], ex['reading'])
+            except ValueError as e:
+                problems.append(f'{name} {p["id"]}: {e}')
 
+    def both(text, given, sentence=True):
+        r = given or zh_reading.reading(text, sentence)
+        try:
+            return r, zh_reading.zhuyin(text, r)
+        except ValueError as e:
+            problems.append(f'{name}: {e}')
+            return r, ''
 
-def _syllables():
-    global _SYLLABLES
-    if _SYLLABLES is None:
-        from pypinyin.pinyin_dict import pinyin_dict
-        _SYLLABLES = {_toneless(r) for v in pinyin_dict.values() for r in v.split(',')}
-        _SYLLABLES |= {'r'}          # 兒化
-    return _SYLLABLES
-
-
-def _split(word):
-    """All ways to cut one pinyin word into syllables (fewest pieces first)."""
-    low = _toneless(word)
-    out = []
-
-    def go(i, acc):
-        if i == len(low):
-            out.append(acc)
-            return
-        for j in range(len(low), i, -1):
-            if low[i:j] in _syllables():
-                go(j, acc + [word[i:j]])
-
-    go(0, [])
-    return sorted(out, key=len)
-
-
-def zhuyin_for(text, reading):
-    from pypinyin.style.bopomofo import BopomofoConverter
-    import itertools
-    hanzi = [c for c in text if '一' <= c <= '鿿']
-    words = [w for w in re.split(r"[^A-Za-zÀ-ɏüǛ-ͯ]+", unicodedata.normalize('NFC', reading)) if w]
-    options = [_split(w)[:6] for w in words]
-    if any(not o for o in options):
-        raise ValueError(f'unknown pinyin in {reading!r}')
-    for combo in itertools.product(*options):
-        sylls = [s for part in combo for s in part]
-        if len(sylls) == len(hanzi):
-            break
-    else:
-        raise ValueError(f'{len(hanzi)} characters but the pinyin does not split into as many syllables: {reading!r}')
-    conv = BopomofoConverter()
-    bpmf = []
-    for s in sylls:
-        z = conv.to_bopomofo(s.lower())
-        if z.endswith('˙'):              # Taiwan writes the neutral-tone dot first
-            z = '˙' + z[:-1]
-        bpmf.append(z)
-    out, k = [], 0
-    for c in text:
-        if '一' <= c <= '鿿':
-            out.append((' ' if out and not out[-1].endswith(' ') else '') + bpmf[k] + ' ')
-            k += 1
-        elif c.strip():
-            if out:
-                out[-1] = out[-1].rstrip()   # punctuation sits right after the syllable
-            out.append(c + ' ')
-    return re.sub(r' +', ' ', ''.join(out)).strip()
+    for p in data['points']:
+        for q in p['quiz']:
+            q['q_reading'], q['q_zhuyin'] = both(q['q'], q.get('q_reading'))
+            given = q.get('options_reading') or [None] * 4
+            pairs = [both(o, g, False) for o, g in zip(q['options'], given)]
+            q['options_reading'] = [r for r, _ in pairs]
+            q['options_zhuyin'] = [z for _, z in pairs]
+            # after answering, the sentence with the answer in it (不 / 一 may change tone there)
+            if '（　）' in q['q']:
+                q['full_reading'], q['full_zhuyin'] = both(q['q'].replace('（　）', q['options'][q['answer']]),
+                                                           q.get('full_reading'))
+        for m in p.get('mistakes', []):
+            for k in ('wrong', 'right'):
+                m[k + '_reading'], m[k + '_zhuyin'] = both(m[k], m.get(k + '_reading'))
 
 
 def check(data, name):
@@ -156,12 +124,7 @@ def main():
             continue        # a language still being written stays off the page
         problems += check(data, src.name)
         if data['lang'] == 'zh':
-            for p in data['points']:
-                for ex in p['examples']:
-                    try:
-                        ex['zhuyin'] = zhuyin_for(ex['text'], ex.get('reading', ''))
-                    except ValueError as e:
-                        problems.append(f'{src.name} {p["id"]}: {e}')
+            add_zh_readings(data, problems, src.name)
         add_hans(data, cc)
         data.pop('note', None)
         (OUT / src.name).write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')

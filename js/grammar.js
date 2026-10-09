@@ -181,7 +181,9 @@ function grammarPointHtml(set) {
         <ul class="grammar-mistakes">
             ${p.mistakes.map(m => `<li>
                 <div class="grammar-wrong" lang="${set.lang}"><span aria-hidden="true">✗</span> <s>${escHtml(m.wrong)}</s></div>
+                ${zhReadingHtml(set, m.wrong_reading, m.wrong_zhuyin, 'grammar-m-rd')}
                 <div class="grammar-right" lang="${set.lang}"><span aria-hidden="true">✓</span> ${escHtml(m.right)}</div>
+                ${zhReadingHtml(set, m.right_reading, m.right_zhuyin, 'grammar-m-rd')}
                 <div class="grammar-why">${escHtml(gText(m))}</div>
             </li>`).join('')}
         </ul>` : ''}
@@ -237,14 +239,20 @@ function grammarReadingSwitch() {
     </div>`;
 }
 
+/* Pinyin and / or zhuyin lines for a Chinese sentence, as the switch says.
+   The quiz sentences, options and common mistakes get theirs from
+   tools/build_grammar.py too (q_reading / options_reading / wrong_reading…). */
+function zhReadingHtml(set, pinyin, zhuyin, cls) {
+    if (set.lang !== 'zh') return '';
+    const mode = grammarZhReading();
+    let html = '';
+    if (mode !== 'zhuyin' && pinyin) html += `<div class="grammar-ex-kana ${cls || ''}">${escHtml(pinyin)}</div>`;
+    if (mode !== 'pinyin' && zhuyin) html += `<div class="grammar-ex-kana grammar-ex-zhuyin ${cls || ''}" lang="zh-TW">${escHtml(zhuyin)}</div>`;
+    return html;
+}
+
 function exReadingHtml(set, ex) {
-    if (set.lang === 'zh') {
-        const mode = grammarZhReading();
-        let html = '';
-        if (mode !== 'zhuyin' && ex.reading) html += `<div class="grammar-ex-kana">${escHtml(ex.reading)}</div>`;
-        if (mode !== 'pinyin' && ex.zhuyin) html += `<div class="grammar-ex-kana grammar-ex-zhuyin" lang="zh-TW">${escHtml(ex.zhuyin)}</div>`;
-        return html;
-    }
+    if (set.lang === 'zh') return zhReadingHtml(set, ex.reading, ex.zhuyin);
     const r = exReading(ex);
     return r && r.replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(r)}</div>` : '';
 }
@@ -271,7 +279,7 @@ function grammarStartQuiz() {
     grammarQuiz = {
         items: grammarShuffle(p.quiz).map(q => {
             const order = grammarShuffle(q.options.map((_, i) => i));
-            return { q, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer) };
+            return { q, order, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer) };
         }),
         i: 0, right: 0, picked: -1
     };
@@ -283,14 +291,19 @@ function grammarQuizHtml(set) {
     const it = z.items[z.i];
     const answered = z.picked >= 0;
     // the blank （　） becomes a box, filled in once answered
+    // Chinese: the reading of the sentence; once answered, of the sentence with the answer in it
+    const optRd = (key, i) => ((it.q[key] || [])[it.order[i]]) || '';
+    const qPinyin = answered && it.q.full_reading ? it.q.full_reading : it.q.q_reading;
+    const qZhuyin = answered && it.q.full_zhuyin ? it.q.full_zhuyin : it.q.q_zhuyin;
     const sentence = escHtml(it.q.q).replace('（　）', `<span class="grammar-blank${answered ? (z.picked === it.answer ? ' ok' : ' no') : ''}">${answered ? escHtml(it.options[it.answer]) : '　　'}</span>`);
     return `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="grammarGo('point')">${escHtml(t('grammar_back_point'))}</button>
             <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.i + 1, m: z.items.length }))}</span>
         </div>
+        ${set.lang === 'zh' ? `<div class="grammar-q-rdswitch">${grammarReadingSwitch()}</div>` : ''}
         <div class="grammar-q">
             <div class="grammar-q-pattern" lang="${set.lang}">${escHtml(set.points[grammarPoint].pattern)}</div>
-            ${it.q.q ? `<div class="grammar-q-text" lang="${set.lang}">${sentence}</div>` : ''}
+            ${it.q.q ? `<div class="grammar-q-text" lang="${set.lang}">${sentence}</div>${zhReadingHtml(set, qPinyin, qZhuyin, 'grammar-q-rd')}` : ''}
             <div class="grammar-q-hint">${escHtml(gHint(set, it.q))}</div>
         </div>
         <div class="grammar-options">
@@ -298,7 +311,7 @@ function grammarQuizHtml(set) {
                 let cls = '';
                 if (answered && i === it.answer) cls = ' correct-choice';
                 else if (answered && i === z.picked) cls = ' wrong-choice';
-                return `<button type="button" class="btn option-btn${cls}" lang="${set.lang}" onclick="grammarAnswer(${i})"${answered ? ' disabled' : ''}>${escHtml(o)}</button>`;
+                return `<button type="button" class="btn option-btn${cls}" lang="${set.lang}" onclick="grammarAnswer(${i})"${answered ? ' disabled' : ''}>${escHtml(o)}${zhReadingHtml(set, optRd('options_reading', i), optRd('options_zhuyin', i), 'grammar-opt-rd')}</button>`;
             }).join('')}
         </div>
         ${answered ? `<p class="grammar-feedback ${z.picked === it.answer ? 'ok' : 'no'}">${escHtml(t(z.picked === it.answer ? 'correct' : 'grammar_wrong', { a: it.options[it.answer] }))}</p>
