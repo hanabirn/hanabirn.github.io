@@ -183,10 +183,10 @@ function grammarPointHtml(set) {
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
                 <div class="grammar-ex-line">
-                    <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(ex.ja)}</span>
+                    <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(exText(ex))}</span>
                     <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">🔊</button>
                 </div>
-                ${ex.kana && ex.kana.replace(/\s/g, '') !== ex.ja.replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(ex.kana)}</div>` : ''}
+                ${exReading(ex) && exReading(ex).replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(exReading(ex))}</div>` : ''}
                 <div class="grammar-ex-tr">${escHtml(gText(ex))}</div>
             </li>`).join('')}
         </ul>
@@ -199,12 +199,17 @@ function grammarPointHtml(set) {
         </div>`;
 }
 
+/* An example's sentence and reading: Japanese files use ja / kana, other
+   languages text and (optionally) reading. */
+function exText(ex) { return ex.text || ex.ja || ''; }
+function exReading(ex) { return ex.reading || ex.kana || ''; }
+
 function grammarSay(i) {
     const set = grammarSets[grammarSetId];
     const ex = set && set.points[grammarPoint].examples[i];
     if (!ex) return;
     // recordings of examples are keyed "sentence|kana" (tools/build_audio.py)
-    speakText(ex.ja, GRAMMAR_LANG_TTS[set.lang] || set.lang, ex.kana ? { reading: ex.kana } : undefined);
+    speakText(exText(ex), GRAMMAR_LANG_TTS[set.lang] || set.lang, exReading(ex) ? { reading: exReading(ex) } : undefined);
 }
 
 function grammarShuffle(a) {

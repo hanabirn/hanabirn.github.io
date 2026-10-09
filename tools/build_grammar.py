@@ -51,9 +51,11 @@ def check(data, name):
             for k in ('wrong', 'right'):
                 if re.search(r'（[^）ぁ-ゟ]*[一-鿿][^）ぁ-ゟ]*）', m.get(k, '')):
                     problems.append(f'{where}: Chinese note inside the Japanese "{k}": {m[k]} — put it in zh')
+        # Japanese examples: ja + kana (the reading is spoken); other languages: text
+        need = ('ja', 'kana', 'zh', 'en') if data['lang'] == 'ja' else ('text', 'zh', 'en')
         for ex in p.get('examples', []):
-            if not all(ex.get(k) for k in ('ja', 'kana', 'zh', 'en')):
-                problems.append(f'{where}: example needs ja, kana, zh, en: {ex}')
+            if not all(ex.get(k) for k in need):
+                problems.append(f'{where}: example needs {", ".join(need)}: {ex}')
         if len(p.get('examples', [])) < 2:
             problems.append(f'{where}: fewer than 2 examples')
         for q in p.get('quiz', []):
