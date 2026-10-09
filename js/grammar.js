@@ -17,6 +17,8 @@ let grammarSetId = '';
 let grammarView = 'list';       // 'list' | 'point' | 'quiz' | 'result'
 let grammarPoint = 0;
 let grammarQuiz = null;         // { items: [{ q, options (shuffled), answer }], i, right, picked }
+const GRAMMAR_PER_PAGE = 5;     // points per page of the list
+let grammarPage = 0;
 
 function gText(obj) {
     if (!obj) return '';
@@ -69,6 +71,9 @@ async function renderGrammar() {
         return;
     }
     const set = grammarSets[grammarSetId];
+    // the point view uses two columns on wide screens (css/grammar.css, css/base.css)
+    document.body.classList.toggle('grammar-wide', grammarView === 'point');
+    if (typeof railPlace === 'function') railPlace();
     if (grammarView === 'point') box.innerHTML = grammarPointHtml(set);
     else if (grammarView === 'quiz') box.innerHTML = grammarQuizHtml(set);
     else if (grammarView === 'result') box.innerHTML = grammarResultHtml(set);
@@ -78,6 +83,7 @@ async function renderGrammar() {
 function grammarGo(view, point) {
     grammarView = view;
     if (typeof point === 'number') grammarPoint = point;
+    if (view === 'list') grammarPage = Math.floor(grammarPoint / GRAMMAR_PER_PAGE);
     renderGrammar();
     const page = document.getElementById('page-grammar');
     if (page) window.scrollTo({ top: 0 });
@@ -85,6 +91,7 @@ function grammarGo(view, point) {
 
 function grammarPickSet(id) {
     grammarSetId = id;
+    grammarPoint = 0;
     try { localStorage.setItem('grammar_set', id); } catch {}
     grammarGo('list');
 }
@@ -105,8 +112,9 @@ function grammarListHtml(set) {
             <span>${escHtml(t('grammar_learned_n', { n: done, m: set.points.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
         </div>
-        <ol class="grammar-list">
-            ${set.points.map((p, i) => {
+        <ol class="grammar-list" start="${grammarPage * GRAMMAR_PER_PAGE + 1}">
+            ${set.points.slice(grammarPage * GRAMMAR_PER_PAGE, (grammarPage + 1) * GRAMMAR_PER_PAGE).map((p, k) => {
+                const i = grammarPage * GRAMMAR_PER_PAGE + k;
                 const learned = grammarLearned(set.id, p.id);
                 return `<li><button type="button" class="grammar-item${learned ? ' learned' : ''}" onclick="grammarGo('point', ${i})">
                     <span class="grammar-num">${i + 1}</span>
@@ -118,7 +126,28 @@ function grammarListHtml(set) {
                 </button></li>`;
             }).join('')}
         </ol>
+        ${grammarPagerHtml(set)}
         <p class="grammar-credit">${escHtml(t('grammar_credit'))}</p>`;
+}
+
+/* 上一頁 / 下一頁 under the list (the 更新內容 popup's texts) */
+function grammarPagerHtml(set) {
+    const pages = Math.ceil(set.points.length / GRAMMAR_PER_PAGE);
+    if (pages <= 1) return '';
+    return `<div class="grammar-pager">
+        <button type="button" class="btn back-btn" onclick="grammarTurn(-1)"${grammarPage === 0 ? ' disabled' : ''}>← ${escHtml(t('updates_prev'))}</button>
+        <span class="grammar-count">${escHtml(t('updates_page', { n: grammarPage + 1, m: pages }))}</span>
+        <button type="button" class="btn back-btn" onclick="grammarTurn(1)"${grammarPage >= pages - 1 ? ' disabled' : ''}>${escHtml(t('updates_next'))} →</button>
+    </div>`;
+}
+
+function grammarTurn(d) {
+    const set = grammarSets[grammarSetId];
+    if (!set) return;
+    grammarPage = Math.max(0, Math.min(Math.ceil(set.points.length / GRAMMAR_PER_PAGE) - 1, grammarPage + d));
+    renderGrammar();
+    const box = document.getElementById('grammar-card');
+    if (box) box.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
 function grammarPointHtml(set) {
@@ -132,6 +161,8 @@ function grammarPointHtml(set) {
             <div class="grammar-big" lang="${set.lang}">${escHtml(p.pattern)}</div>
             <div class="grammar-head-title">${escHtml(gText(p.title))}${grammarLearned(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('grammar_done_badge'))}</span>` : ''}</div>
         </div>
+        <div class="grammar-cols">
+        <div class="grammar-col-main">
         <div class="grammar-form"><b>${escHtml(t('grammar_form'))}</b><span lang="${set.lang}">${escHtml(gText(p.form))}</span></div>
         <p class="grammar-explain">${escHtml(gText(p.explain))}</p>
         ${(p.notes || []).length ? `<div class="grammar-notes">
@@ -146,6 +177,8 @@ function grammarPointHtml(set) {
                 <div class="grammar-why">${escHtml(gText(m))}</div>
             </li>`).join('')}
         </ul>` : ''}
+        </div>
+        <div class="grammar-col-side">
         <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
@@ -158,6 +191,8 @@ function grammarPointHtml(set) {
             </li>`).join('')}
         </ul>
         <button type="button" class="btn next-btn grammar-start" onclick="grammarStartQuiz()">${escHtml(t('grammar_practice', { n: p.quiz.length }))}</button>
+        </div>
+        </div>
         <div class="grammar-nav">
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint - 1})"${grammarPoint === 0 ? ' disabled' : ''}>${escHtml(t('grammar_prev'))}</button>
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint + 1})"${grammarPoint >= n - 1 ? ' disabled' : ''}>${escHtml(t('grammar_next'))}</button>

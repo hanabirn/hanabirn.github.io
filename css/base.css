@@ -67,12 +67,14 @@ main {
 
 /* ===== Wide pages on desktop =====
    switchPage() puts the open page on body[data-page]. The alphabet chart,
-   the dictionary and the quiz path use a wider column on big screens; on the
-   quiz page everything except the path keeps the usual width. */
+   the dictionary, the quiz path and a grammar point (two columns, body.grammar-wide)
+   use a wider column on big screens; on the quiz page everything except the path
+   keeps the usual width. */
 @media (min-width: 1024px) {
     body[data-page="alphabet"] main,
     body[data-page="dict"] main,
-    body[data-page="quiz"] main {
+    body[data-page="quiz"] main,
+    body[data-page="grammar"].grammar-wide main {
         max-width: 1180px;
     }
     body[data-page="quiz"] #page-quiz > :not(#path-card) {

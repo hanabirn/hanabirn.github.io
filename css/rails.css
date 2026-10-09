@@ -49,22 +49,26 @@
 @media (min-width: 1280px) and (max-width: 1699.98px) {
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
-    body[data-page="quiz"].quiz-wide .rail-left { display: none; }
+    body[data-page="quiz"].quiz-wide .rail-left,
+    body[data-page="grammar"].grammar-wide .rail-left { display: none; }
 }
 @media (min-width: 1700px) {
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
-    body[data-page="quiz"].quiz-wide .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
+    body[data-page="quiz"].quiz-wide .rail-left,
+    body[data-page="grammar"].grammar-wide .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
 }
 @media (min-width: 1480px) and (max-width: 1939.98px) {
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
-    body[data-page="quiz"].quiz-wide .rail-right { display: none; }
+    body[data-page="quiz"].quiz-wide .rail-right,
+    body[data-page="grammar"].grammar-wide .rail-right { display: none; }
 }
 @media (min-width: 1940px) {
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
-    body[data-page="quiz"].quiz-wide .rail-right { right: max(112px, calc(50% - 590px - 28px - var(--rail-right-w))); }
+    body[data-page="quiz"].quiz-wide .rail-right,
+    body[data-page="grammar"].grammar-wide .rail-right { right: max(112px, calc(50% - 590px - 28px - var(--rail-right-w))); }
 }
 
 /* ----- left: 小花火 ----- */

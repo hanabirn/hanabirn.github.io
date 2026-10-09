@@ -187,3 +187,31 @@
     .grammar-big { font-size: 1.6rem; }
     .grammar-q-text { font-size: 1.25rem; }
 }
+
+/* ----- list pages (5 points each) ----- */
+.grammar-pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 16px;
+}
+.grammar-pager .back-btn { width: auto; margin: 0; padding: 9px 14px; font-size: 0.85rem; }
+.grammar-pager .back-btn:disabled { opacity: 0.4; cursor: default; }
+
+/* ----- a point on wide screens: explanation left, examples right ----- */
+@media (min-width: 1024px) {
+    body.grammar-wide .grammar-card { max-width: none; }
+    .grammar-cols {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+        gap: 28px;
+        align-items: start;
+    }
+    /* the examples stay in view while the explanation scrolls */
+    .grammar-col-side {
+        position: sticky;
+        top: 16px;
+    }
+    .grammar-col-side .grammar-examples { margin-bottom: 16px; }
+}
