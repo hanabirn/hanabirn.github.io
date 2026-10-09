@@ -10,7 +10,7 @@
 import { startQuiz, quizButton, quizOwner, setChoices } from './quiz.js';
 import { startGrammar, grammarButton, grammarOwner, levelChoices } from './grammar.js';
 import { lookUp } from './dictionary.js';
-import { helpMessage } from './help.js';
+import { helpMessage, mention } from './help.js';
 import { t, fromLocale, isUiLang, contentLang, UI_NAMES } from './i18n.js';
 
 const EPHEMERAL = 64;
@@ -116,7 +116,7 @@ export default {
             const opts = options(it.data);
             if (it.data.name === 'language') return setLanguage(env, it, opts.reply_language);
             const ui = await uiLang(env, it);
-            if (it.data.name === 'help') return json({ type: 4, data: { ...helpMessage(ui), flags: EPHEMERAL } });
+            if (it.data.name === 'help') return json({ type: 4, data: { ...helpMessage(ui, it.locale), flags: EPHEMERAL } });
             const user = userOf(it);
             const work = it.data.name === 'quiz' ? () => startQuiz(env, opts, user, ui)
                 : it.data.name === 'grammar' ? () => startGrammar(env, opts, user, ui)
@@ -133,7 +133,7 @@ export default {
             const owner = ownerOf(parts);
             if (owner !== '0' && owner !== userOf(it)) {
                 // the note is for the person who pressed, in their own language
-                return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours'), flags: EPHEMERAL } });
+                return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours', { quiz: mention('quiz'), grammar: mention('grammar') }), flags: EPHEMERAL } });
             }
             const work = parts[0][0] === 'q' ? () => quizButton(env, parts)
                 : parts[0][0] === 'g' ? () => grammarButton(env, parts) : null;

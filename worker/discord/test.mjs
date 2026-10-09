@@ -184,12 +184,22 @@ try {
     r = await command('dictionary', { word: '食べる' }, '666', 'zh-TW');
     show('dictionary 食べる, Traditional Discord', r.edited);
 
-    // /help answers at once, privately, naming the commands as the visitor's Discord does
-    for (const [locale, name] of [['zh-TW', '單字測驗'], ['ja', '単語クイズ'], ['en-US', 'quiz']]) {
+    // /help answers at once, privately; commands are clickable mentions (Discord names them in
+    // the reader's own client language), the "public" option is named as their Discord does
+    for (const [locale, opt] of [['zh-TW', '公開'], ['ja', '公開'], ['en-US', 'public']]) {
         r = await command('help', {}, '777', locale);
-        check(r.reply.type === 4 && r.reply.data.flags === 64 && r.reply.data.embeds[0].description.includes('/' + name), `/help (${locale}) lists /${name}`);
-        if (locale !== 'en-US') show('help ' + locale, r.reply.data);
+        const d = r.reply.data.embeds[0].description;
+        check(r.reply.type === 4 && r.reply.data.flags === 64 && /<\/quiz:\d+>/.test(d) && /<\/help:\d+>/.test(d) && d.includes(opt), `/help (${locale}) uses mentions and names the option "${opt}"`);
     }
+    // the owner's case: an English Discord with Traditional Chinese replies
+    await command('language', { reply_language: 'zh' }, '888', 'en-US');
+    r = await command('help', {}, '888', 'en-US');
+    show('help, English Discord + Chinese replies', r.reply.data);
+    check(/小花火能做什麼/.test(r.reply.data.embeds[0].title) && r.reply.data.embeds[0].description.includes('「public」'), 'Chinese help, English option name');
+    // someone else's button: the note mentions the commands too
+    r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5, public: true }, OWNER);
+    const other = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, OTHER, 'en-US');
+    check(/<\/quiz:\d+>/.test(other.reply.data.content), 'not-yours note mentions /quiz: ' + other.reply.data.content);
 } finally {
     if (process.exitCode || process.env.SHOW_LOG) console.log('\n=== wrangler log ===\n' + devLog.join(''));
     fake.close();

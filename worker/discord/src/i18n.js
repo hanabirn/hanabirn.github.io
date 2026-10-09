@@ -36,7 +36,7 @@ const S = {
         g_ended: '文法練習結束，下次見！👋', g_levels: '{name}（{n} 個文法）', g_no_level: '找不到這個文法等級，換一個試試看。', g_load_failed: '這個文法等級暫時讀不到，稍後再試。',
         d_enter: '請輸入要查的字。', d_site: '📘 網站單字庫', d_wk: '📖 英文釋義（Wiktionary）', d_wk_down: '暫時連不上 Wiktionary，稍後再試。',
         d_ex: '💬 例句（Tatoeba）', d_none_title: '找不到', d_none: '查不到「{w}」（{lang}）。拼字對嗎？也可以在指令裡指定語言。',
-        not_yours: '這是別人的題目喔！用 `/quiz` 或 `/grammar` 開一個你自己的 😊', unknown: '不認得這個指令。', error: '出了點問題，請再試一次 🙏',
+        not_yours: '這是別人的題目喔！用 {quiz} 或 {grammar} 開一個你自己的 😊', unknown: '不認得這個指令。', error: '出了點問題，請再試一次 🙏',
         lang_set: '好的！之後我會用**{lang}**回覆你。', lang_auto: '好的！之後我會跟著你的 Discord 語言回覆（現在是**{lang}**）。',
         lang_note: '單字意思和文法說明目前只有中文和英文，所以會用英文顯示。'
     },
@@ -52,7 +52,7 @@ const S = {
         g_ended: '语法练习结束，下次见！👋', g_levels: '{name}（{n} 个语法）', g_no_level: '找不到这个语法等级，换一个试试看。', g_load_failed: '这个语法等级暂时读不到，稍后再试。',
         d_enter: '请输入要查的词。', d_site: '📘 网站单词库', d_wk: '📖 英文释义（Wiktionary）', d_wk_down: '暂时连不上 Wiktionary，稍后再试。',
         d_ex: '💬 例句（Tatoeba）', d_none_title: '找不到', d_none: '查不到“{w}”（{lang}）。拼写对吗？也可以在指令里指定语言。',
-        not_yours: '这是别人的题目哦！用 `/quiz` 或 `/grammar` 开一个你自己的 😊', unknown: '不认识这个指令。', error: '出了点问题，请再试一次 🙏',
+        not_yours: '这是别人的题目哦！用 {quiz} 或 {grammar} 开一个你自己的 😊', unknown: '不认识这个指令。', error: '出了点问题，请再试一次 🙏',
         lang_set: '好的！之后我会用**{lang}**回复你。', lang_auto: '好的！之后我会跟着你的 Discord 语言回复（现在是**{lang}**）。',
         lang_note: '单词意思和语法说明目前只有中文和英文，所以会用英文显示。'
     },
@@ -68,7 +68,7 @@ const S = {
         g_ended: 'Grammar practice finished — see you next time! 👋', g_levels: '{name} ({n} points)', g_no_level: "Couldn't find that grammar level — try another one.", g_load_failed: "Couldn't load this grammar level right now. Please try again later.",
         d_enter: 'Please enter a word.', d_site: '📘 Site word lists', d_wk: '📖 Definitions (Wiktionary)', d_wk_down: "Couldn't reach Wiktionary right now. Please try again later.",
         d_ex: '💬 Examples (Tatoeba)', d_none_title: 'Not found', d_none: 'Nothing found for “{w}” ({lang}). Is the spelling right? You can also pick the language in the command.',
-        not_yours: 'This one belongs to someone else! Start your own with `/quiz` or `/grammar` 😊', unknown: "I don't know that command.", error: 'Something went wrong — please try again 🙏',
+        not_yours: 'This one belongs to someone else! Start your own with {quiz} or {grammar} 😊', unknown: "I don't know that command.", error: 'Something went wrong — please try again 🙏',
         lang_set: "OK! I'll reply to you in **{lang}** from now on.", lang_auto: "OK! I'll follow your Discord language (currently **{lang}**).",
         lang_note: 'Word meanings and grammar explanations exist only in Chinese and English for now, so they are shown in English.'
     },
@@ -84,7 +84,7 @@ const S = {
         g_ended: '文法の練習はここまで。またね！👋', g_levels: '{name}（{n} 項目）', g_no_level: 'この文法レベルが見つかりません。ほかのものを選んでください。', g_load_failed: 'この文法レベルを今は読み込めません。あとでもう一度お試しください。',
         d_enter: '調べたい言葉を入力してください。', d_site: '📘 サイトの単語リスト', d_wk: '📖 英語の定義（Wiktionary）', d_wk_down: '今は Wiktionary につながりません。あとでもう一度お試しください。',
         d_ex: '💬 例文（Tatoeba）', d_none_title: '見つかりません', d_none: '「{w}」（{lang}）は見つかりませんでした。つづりは合っていますか？コマンドで言語を指定することもできます。',
-        not_yours: 'これはほかの人の問題です！`/quiz` か `/grammar` で自分の問題を始めてね 😊', unknown: 'そのコマンドはわかりません。', error: '問題が起きました。もう一度お試しください 🙏',
+        not_yours: 'これはほかの人の問題です！{quiz} か {grammar} で自分の問題を始めてね 😊', unknown: 'そのコマンドはわかりません。', error: '問題が起きました。もう一度お試しください 🙏',
         lang_set: 'わかりました！これからは**{lang}**で返信します。', lang_auto: 'わかりました！Discord の言語に合わせて返信します（今は**{lang}**）。',
         lang_note: '単語の意味と文法の説明は今のところ中国語と英語だけなので、英語で表示されます。'
     },
@@ -100,7 +100,7 @@ const S = {
         g_ended: '문법 연습 끝! 다음에 또 만나요 👋', g_levels: '{name} ({n}개 문법)', g_no_level: '이 문법 수준을 찾을 수 없어요. 다른 것을 골라 보세요.', g_load_failed: '지금은 이 문법 수준을 불러올 수 없어요. 잠시 후 다시 시도해 주세요.',
         d_enter: '찾을 단어를 입력해 주세요.', d_site: '📘 사이트 단어장', d_wk: '📖 영어 뜻풀이 (Wiktionary)', d_wk_down: '지금은 Wiktionary에 연결할 수 없어요. 잠시 후 다시 시도해 주세요.',
         d_ex: '💬 예문 (Tatoeba)', d_none_title: '찾을 수 없음', d_none: '「{w}」({lang})을(를) 찾지 못했어요. 철자가 맞나요? 명령어에서 언어를 지정할 수도 있어요.',
-        not_yours: '다른 사람의 문제예요! `/quiz`나 `/grammar`로 내 문제를 시작해 보세요 😊', unknown: '모르는 명령어예요.', error: '문제가 생겼어요. 다시 시도해 주세요 🙏',
+        not_yours: '다른 사람의 문제예요! {quiz}나 {grammar}로 내 문제를 시작해 보세요 😊', unknown: '모르는 명령어예요.', error: '문제가 생겼어요. 다시 시도해 주세요 🙏',
         lang_set: '좋아요! 앞으로 **{lang}**(으)로 답할게요.', lang_auto: '좋아요! Discord 언어에 맞춰 답할게요 (지금은 **{lang}**).',
         lang_note: '단어 뜻과 문법 설명은 아직 중국어와 영어만 있어서 영어로 보여요.'
     },
@@ -116,7 +116,7 @@ const S = {
         g_ended: 'Практика грамматики окончена — до встречи! 👋', g_levels: '{name} (тем: {n})', g_no_level: 'Такой уровень грамматики не найден — выберите другой.', g_load_failed: 'Не удалось загрузить этот уровень. Попробуйте позже.',
         d_enter: 'Введите слово.', d_site: '📘 Списки слов сайта', d_wk: '📖 Определения на английском (Wiktionary)', d_wk_down: 'Сейчас не удаётся связаться с Wiktionary. Попробуйте позже.',
         d_ex: '💬 Примеры (Tatoeba)', d_none_title: 'Не найдено', d_none: 'По запросу «{w}» ({lang}) ничего не найдено. Проверьте написание или укажите язык в команде.',
-        not_yours: 'Это чужой тест! Начните свой: `/quiz` или `/grammar` 😊', unknown: 'Я не знаю такой команды.', error: 'Что-то пошло не так — попробуйте ещё раз 🙏',
+        not_yours: 'Это чужой тест! Начните свой: {quiz} или {grammar} 😊', unknown: 'Я не знаю такой команды.', error: 'Что-то пошло не так — попробуйте ещё раз 🙏',
         lang_set: 'Хорошо! Теперь я буду отвечать вам на языке: **{lang}**.', lang_auto: 'Хорошо! Буду отвечать на языке вашего Discord (сейчас: **{lang}**).',
         lang_note: 'Значения слов и объяснения грамматики пока есть только на китайском и английском, поэтому они показаны на английском.'
     },
@@ -132,7 +132,7 @@ const S = {
         g_ended: 'Fin de la grammaire — à bientôt ! 👋', g_levels: '{name} ({n} points)', g_no_level: 'Niveau de grammaire introuvable — essaie un autre.', g_load_failed: 'Impossible de charger ce niveau pour le moment. Réessaie plus tard.',
         d_enter: 'Saisis un mot.', d_site: '📘 Listes de mots du site', d_wk: '📖 Définitions en anglais (Wiktionary)', d_wk_down: 'Wiktionary est injoignable pour le moment. Réessaie plus tard.',
         d_ex: '💬 Exemples (Tatoeba)', d_none_title: 'Introuvable', d_none: 'Rien trouvé pour « {w} » ({lang}). L’orthographe est-elle bonne ? Tu peux aussi choisir la langue dans la commande.',
-        not_yours: 'Ce quiz appartient à quelqu’un d’autre ! Lance le tien avec `/quiz` ou `/grammar` 😊', unknown: 'Je ne connais pas cette commande.', error: 'Un problème est survenu — réessaie 🙏',
+        not_yours: 'Ce quiz appartient à quelqu’un d’autre ! Lance le tien avec {quiz} ou {grammar} 😊', unknown: 'Je ne connais pas cette commande.', error: 'Un problème est survenu — réessaie 🙏',
         lang_set: 'D’accord ! Je te répondrai désormais en **{lang}**.', lang_auto: 'D’accord ! Je suivrai la langue de ton Discord (actuellement **{lang}**).',
         lang_note: 'Le sens des mots et les explications de grammaire n’existent pour l’instant qu’en chinois et en anglais : ils s’affichent donc en anglais.'
     },
@@ -148,7 +148,7 @@ const S = {
         g_ended: 'Fin de la práctica de gramática — ¡hasta pronto! 👋', g_levels: '{name} ({n} puntos)', g_no_level: 'No se encontró ese nivel de gramática — prueba con otro.', g_load_failed: 'No se pudo cargar este nivel ahora. Inténtalo más tarde.',
         d_enter: 'Escribe una palabra.', d_site: '📘 Listas de la web', d_wk: '📖 Definiciones en inglés (Wiktionary)', d_wk_down: 'Ahora no se puede conectar con Wiktionary. Inténtalo más tarde.',
         d_ex: '💬 Ejemplos (Tatoeba)', d_none_title: 'Sin resultados', d_none: 'No se encontró «{w}» ({lang}). ¿Está bien escrito? También puedes elegir el idioma en el comando.',
-        not_yours: '¡Esta es de otra persona! Empieza la tuya con `/quiz` o `/grammar` 😊', unknown: 'No conozco ese comando.', error: 'Algo salió mal — inténtalo de nuevo 🙏',
+        not_yours: '¡Esta es de otra persona! Empieza la tuya con {quiz} o {grammar} 😊', unknown: 'No conozco ese comando.', error: 'Algo salió mal — inténtalo de nuevo 🙏',
         lang_set: '¡Vale! A partir de ahora te responderé en **{lang}**.', lang_auto: '¡Vale! Seguiré el idioma de tu Discord (ahora **{lang}**).',
         lang_note: 'Los significados y las explicaciones de gramática solo existen en chino e inglés por ahora, así que se muestran en inglés.'
     },
@@ -164,7 +164,7 @@ const S = {
         g_ended: 'Grammatikübung beendet – bis bald! 👋', g_levels: '{name} ({n} Punkte)', g_no_level: 'Diese Grammatikstufe gibt es nicht – probier eine andere.', g_load_failed: 'Diese Stufe lässt sich gerade nicht laden. Bitte später erneut versuchen.',
         d_enter: 'Bitte ein Wort eingeben.', d_site: '📘 Wortlisten der Website', d_wk: '📖 Englische Definitionen (Wiktionary)', d_wk_down: 'Wiktionary ist gerade nicht erreichbar. Bitte später erneut versuchen.',
         d_ex: '💬 Beispiele (Tatoeba)', d_none_title: 'Nicht gefunden', d_none: 'Zu „{w}“ ({lang}) nichts gefunden. Stimmt die Schreibweise? Du kannst die Sprache auch im Befehl wählen.',
-        not_yours: 'Das gehört jemand anderem! Starte dein eigenes mit `/quiz` oder `/grammar` 😊', unknown: 'Diesen Befehl kenne ich nicht.', error: 'Da ist etwas schiefgelaufen – bitte noch einmal versuchen 🙏',
+        not_yours: 'Das gehört jemand anderem! Starte dein eigenes mit {quiz} oder {grammar} 😊', unknown: 'Diesen Befehl kenne ich nicht.', error: 'Da ist etwas schiefgelaufen – bitte noch einmal versuchen 🙏',
         lang_set: 'Alles klar! Ich antworte dir ab jetzt auf **{lang}**.', lang_auto: 'Alles klar! Ich richte mich nach deiner Discord-Sprache (gerade **{lang}**).',
         lang_note: 'Wortbedeutungen und Grammatik-Erklärungen gibt es bisher nur auf Chinesisch und Englisch, deshalb erscheinen sie auf Englisch.'
     }

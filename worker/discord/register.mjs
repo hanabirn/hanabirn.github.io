@@ -1,7 +1,7 @@
 // Registers (overwrites) the bot's global slash commands with Discord.
 // Needs DISCORD_BOT_TOKEN in .dev.vars (git-ignored) or the environment; the application
 // id comes from wrangler.jsonc. Run after changing src/commands.js:  node register.mjs
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync } from 'node:fs';
 import { COMMANDS } from './src/commands.js';
 
 const vars = {};
@@ -30,4 +30,13 @@ if (!res.ok) {
     console.error('Discord said', res.status, text);
     process.exit(1);
 }
-console.log('registered:', JSON.parse(text).map(c => '/' + c.name).join(' '));
+const registered = JSON.parse(text);
+console.log('registered:', registered.map(c => '/' + c.name).join(' '));
+// /help mentions the commands as </name:id> — Discord shows each in the reader's own
+// client language and makes it clickable. The ids stay the same on re-registration;
+// redeploy the Worker if this file changed.
+const ids = Object.fromEntries(registered.map(c => [c.name, c.id]));
+writeFileSync(new URL('./src/command-ids.js', import.meta.url),
+    '/* Written by register.mjs: the registered commands\' ids, for clickable </name:id> mentions. */\n' +
+    `export const COMMAND_IDS = ${JSON.stringify(ids, null, 4)};\n`);
+console.log('command ids saved to src/command-ids.js');
