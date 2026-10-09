@@ -183,6 +183,13 @@ try {
     check(!!exField && /\n\n> /.test(exField.value), 'examples are separated by a blank line');
     r = await command('dictionary', { word: '食べる' }, '666', 'zh-TW');
     show('dictionary 食べる, Traditional Discord', r.edited);
+
+    // /help answers at once, privately, naming the commands as the visitor's Discord does
+    for (const [locale, name] of [['zh-TW', '單字測驗'], ['ja', '単語クイズ'], ['en-US', 'quiz']]) {
+        r = await command('help', {}, '777', locale);
+        check(r.reply.type === 4 && r.reply.data.flags === 64 && r.reply.data.embeds[0].description.includes('/' + name), `/help (${locale}) lists /${name}`);
+        if (locale !== 'en-US') show('help ' + locale, r.reply.data);
+    }
 } finally {
     if (process.exitCode || process.env.SHOW_LOG) console.log('\n=== wrangler log ===\n' + devLog.join(''));
     fake.close();

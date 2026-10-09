@@ -10,6 +10,7 @@
 import { startQuiz, quizButton, quizOwner, setChoices } from './quiz.js';
 import { startGrammar, grammarButton, grammarOwner, levelChoices } from './grammar.js';
 import { lookUp } from './dictionary.js';
+import { helpMessage } from './help.js';
 import { t, fromLocale, isUiLang, contentLang, UI_NAMES } from './i18n.js';
 
 const EPHEMERAL = 64;
@@ -115,6 +116,7 @@ export default {
             const opts = options(it.data);
             if (it.data.name === 'language') return setLanguage(env, it, opts.reply_language);
             const ui = await uiLang(env, it);
+            if (it.data.name === 'help') return json({ type: 4, data: { ...helpMessage(ui), flags: EPHEMERAL } });
             const user = userOf(it);
             const work = it.data.name === 'quiz' ? () => startQuiz(env, opts, user, ui)
                 : it.data.name === 'grammar' ? () => startGrammar(env, opts, user, ui)

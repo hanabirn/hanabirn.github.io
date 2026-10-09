@@ -118,5 +118,11 @@ export const COMMANDS = [
                         ko: '버튼, 메시지, 번역의 언어', ru: 'Язык кнопок, сообщений и переводов', fr: 'Langue des boutons, messages et traductions',
                         es: 'Idioma de botones, mensajes y traducciones', de: 'Sprache von Buttons, Nachrichten und Übersetzungen' }]) }
         ]
+    },
+    {
+        ...where,
+        ...L(['help', { zh: '說明', zhs: '帮助', ja: 'ヘルプ', ko: '도움말', ru: 'помощь', fr: 'aide', es: 'ayuda', de: 'hilfe' }],
+            ['What this bot can do', { zh: '看看這個機器人能做什麼', zhs: '看看这个机器人能做什么', ja: 'このボットにできること',
+                ko: '이 봇이 할 수 있는 것', ru: 'Что умеет этот бот', fr: 'Ce que ce bot sait faire', es: 'Lo que puede hacer este bot', de: 'Was dieser Bot kann' }])
     }
 ];
