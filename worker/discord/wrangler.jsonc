@@ -1,0 +1,19 @@
+{
+    // hanabi-discord: the site's Discord bot (/quiz /grammar /dictionary), answering
+    // Discord's HTTP interactions. See README.md for setting up the Discord app.
+    // Deploy:    npx wrangler deploy                 (from this folder)
+    // Commands:  node register.mjs                   (needs DISCORD_BOT_TOKEN in .dev.vars)
+    // Local:     node test.mjs                       (runs wrangler dev against a fake Discord)
+    "name": "hanabi-discord",
+    "main": "src/index.js",
+    "compatibility_date": "2026-09-23",
+
+    "vars": {
+        // where the word lists and grammar lessons are read from
+        "SITE": "https://hanabirn.xyz",
+        // the Discord app's public key (Developer Portal → General Information); public by design
+        "DISCORD_PUBLIC_KEY": "REPLACE_WITH_PUBLIC_KEY"
+    },
+
+    "observability": { "enabled": true }
+}
