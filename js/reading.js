@@ -97,6 +97,7 @@ function readingGo(view, no) {
     if (typeof no === 'number') readingNo = no;
     if (view === 'read') readingStartTimer();
     readingAllRun++;                                   // ends a read-all chain
+    readingAllState = 'idle';
     if (typeof stopSpeech === 'function') stopSpeech();  // a recording or the browser voice
     renderReading();
     window.scrollTo({ top: 0 });
@@ -302,7 +303,7 @@ function readingReaderHtml(set) {
             ${set.lang === 'zh' ? readingZhTools() : ''}
             ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
             <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
-            <button type="button" class="mode-btn" onclick="readingSayAll()">🔊 ${escHtml(t('reading_all'))}</button>
+            <button type="button" class="mode-btn${readingAllState === 'playing' ? ' mode-btn-active' : ''}" id="rd-all" onclick="readingSayAll()">${readingAllLabel()}</button>
             <span class="rd-font" role="group" aria-label="${escHtml(t('reading_font'))}">
                 <button type="button" class="mode-btn" onclick="readingFontStep(-1)"${readingFont() === 0 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} −">A−</button>
                 <button type="button" class="mode-btn" onclick="readingFontStep(1)"${readingFont() === READING_FONTS.length - 1 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} +">A+</button>
@@ -348,21 +349,57 @@ function readingSay(el) {
     const s = readingSentences()[i];
     if (!s) return;
     readingAllRun = 0;
+    readingAllState = 'idle';                          // a tapped sentence ends read-all
+    readingAllBtn();
     readingMark(i);
     readingSpeak(s, () => readingMark(-1));
 }
 
 let readingAllRun = 0;   // bumps on every new playback, so an older chain stops
+let readingAllState = 'idle';   // read-all: 'idle' | 'playing' | 'paused'
+let readingAllAt = 0;           // the sentence it is on (resuming starts it again)
+
+function readingAllLabel() {
+    if (readingAllState === 'playing') return '⏸ ' + escHtml(t('reading_pause'));
+    if (readingAllState === 'paused') return '▶ ' + escHtml(t('reading_resume'));
+    return '🔊 ' + escHtml(t('reading_all'));
+}
+
+/* the read-all button follows the state without re-rendering the text */
+function readingAllBtn() {
+    const b = document.getElementById('rd-all');
+    if (!b) return;
+    b.innerHTML = readingAllLabel();
+    b.classList.toggle('mode-btn-active', readingAllState === 'playing');
+}
+
+/* 全文朗讀 → ⏸ 暫停 → ▶ 繼續 (from the start of the sentence it stopped in) */
 function readingSayAll() {
+    if (readingAllState === 'playing') {
+        readingAllRun++;
+        readingAllState = 'paused';
+        if (typeof stopSpeech === 'function') stopSpeech();
+        readingAllBtn();
+        return;
+    }
     const list = readingSentences();
+    const from = readingAllState === 'paused' ? readingAllAt : 0;
     const run = ++readingAllRun;
+    readingAllState = 'playing';
+    readingAllBtn();
     const step = i => {
         if (run !== readingAllRun || readingView !== 'read') return;
-        if (i >= list.length) { readingMark(-1); return; }
+        if (i >= list.length) {
+            readingMark(-1);
+            readingAllState = 'idle';
+            readingAllBtn();
+            return;
+        }
+        readingAllAt = i;
         readingMark(i);
         readingSpeak(list[i], () => step(i + 1));
     };
-    step(0);
+    step(from);
 }
 
 /* ----- word card ----- */
