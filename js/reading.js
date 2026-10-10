@@ -15,7 +15,7 @@
 const READING_PASS = 2 / 3;
 const READING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
 // the word set a level's glossary words are filed under (mistake book, spaced repetition)
-const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4' };
+const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ko_topik1: 'topik_1' };
 const READING_FONTS = [0.95, 1.1, 1.25, 1.45];     // rem, the reader's A− / A+
 const READING_TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
     travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
@@ -119,6 +119,11 @@ function readingSegsHtml(segs, withGloss) {
     return html;
 }
 
+/* sentences follow each other with a space, except in Japanese and Chinese */
+function readingSep(set) {
+    return set.lang === 'ja' || set.lang === 'zh' ? '' : ' ';
+}
+
 function readingPlain(segs) {
     return segs.map(s => s[0]).join('');
 }
@@ -188,7 +193,7 @@ function readingReaderHtml(set) {
     const furi = readingFuri(), tr = readingTr();
     let si = 0;
     const paras = p.paragraphs.map(para => `<div class="rd-para">
-            <p lang="${set.lang}">${para.s.map(s => `<span class="rd-s" data-i="${si++}" onclick="readingSay(this)">${readingSegsHtml(s.t, true)}</span>`).join('')}</p>
+            <p lang="${set.lang}">${para.s.map(s => `<span class="rd-s" data-i="${si++}" onclick="readingSay(this)">${readingSegsHtml(s.t, true)}</span>`).join(readingSep(set))}</p>
             ${tr ? `<p class="rd-tr">${escHtml(gText(para))}</p>` : ''}
         </div>`).join('');
     return `<div class="grammar-top">
@@ -409,7 +414,7 @@ function readingQuizHtml(set) {
             <div class="rd-sub">${escHtml(t('reading_quiz_hint'))}</div>
         </div>
         <details class="rd-peek"><summary>📄 ${escHtml(t('reading_peek'))}</summary>
-            <div class="rd-text${readingFuri() ? '' : ' no-furi'}" lang="${set.lang}">${p.paragraphs.map(para => `<p>${para.s.map(s => readingSegsHtml(s.t, false)).join('')}</p>`).join('')}</div>
+            <div class="rd-text${readingFuri() ? '' : ' no-furi'}" lang="${set.lang}">${p.paragraphs.map(para => `<p>${para.s.map(s => readingSegsHtml(s.t, false)).join(readingSep(set))}</p>`).join('')}</div>
         </details>
         <h4 class="grammar-sub rd-part">${escHtml(t('reading_part_mcq'))}</h4>
         <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${mcq}</div>

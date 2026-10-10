@@ -215,6 +215,14 @@ def jobs(lang):
             add(text, text)
         for word, *_ in list(vocab('topik_')) + list(vocab('tp_ko_')):
             add(word, word)
+        # 閱讀 page (data/reading/ko_*.json): every sentence and glossary word
+        for f in sorted((ROOT / 'data' / 'reading').glob('ko_*.json')):
+            for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
+                for para in p['paragraphs']:
+                    for sent in para['s']:
+                        add(sent['plain'], sent['plain'])
+                for g in p['glossary']:
+                    add(g['w'], g['w'])
         # 文法 page examples (data/grammar/ko_*.json)
         for f in sorted((ROOT / 'data' / 'grammar').glob('ko_*.json')):
             for point in json.loads(f.read_text(encoding='utf-8'))['points']:

@@ -30,7 +30,8 @@ KANJI = r'[㐀-䶿一-鿿々〆ヶ]'
 RUBY = re.compile(r'(' + KANJI + r'+)\{([^{}]+)\}')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 # word lists a level's glossary is checked against (that level and the easier ones)
-LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jlpt_n4', 'tp_ja_']}
+LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jlpt_n4', 'tp_ja_'],
+              ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_']}
 MCQ_COUNT, TF_COUNT = 5, 3
 
 
@@ -47,15 +48,16 @@ def tokens(marked):
     return out
 
 
-def sentence(marked, glossary, where, problems):
-    """segments, plain text and kana of one sentence; glossary=None for questions"""
+def sentence(marked, glossary, where, problems, lang='ja'):
+    """segments, plain text and kana of one sentence; glossary=None for questions.
+    Only Japanese uses {furigana}; elsewhere the kana is the plain text."""
     if '{' in RUBY.sub('', marked) or '}' in RUBY.sub('', marked):
         problems.append(f'{where}: a {{reading}} without kanji right before it: {marked}')
     toks = tokens(marked)
     plain = ''.join(t for t, _ in toks)
     kana = ''.join(r or t for t, r in toks)
     bare = [ch for t, r in toks if r is None for ch in t if re.match(KANJI, ch)]
-    if bare:
+    if bare and lang == 'ja':
         problems.append(f'{where}: kanji without furigana {"".join(bare)}: {marked}')
     # per character: which ruby group it belongs to (None = plain kana / punctuation)
     group, owner = [], []
@@ -110,12 +112,12 @@ def build(src, problems):
             problems.append(f'{where}: duplicate id')
         seen.add(p['id'])
         gl = p.get('glossary', [])
-        title, _, title_kana = sentence(p['title']['text'], None, where + ' title', problems)
+        title, _, title_kana = sentence(p['title']['text'], None, where + ' title', problems, data['lang'])
         paras, hits, length = [], set(), 0
         for k, para in enumerate(p['paragraphs']):
             sents = []
             for s in para['s']:
-                segs, plain, kana = sentence(s, gl, f'{where} ¶{k + 1}', problems)
+                segs, plain, kana = sentence(s, gl, f'{where} ¶{k + 1}', problems, data['lang'])
                 hits |= {g for _, _, g in segs if g is not None}
                 length += len(re.sub(r'[\s、。「」！？・，．]', '', plain))
                 sents.append({'t': segs, 'plain': plain, 'kana': kana})
@@ -140,8 +142,8 @@ def build(src, problems):
             for lang in ('zh', 'en'):
                 if not q.get(lang):
                     problems.append(f'{qw}: no {lang} explanation')
-            out_mcq.append({'q': sentence(q['q'], None, qw, problems)[0],
-                            'options': [sentence(o, None, qw, problems)[0] for o in q['options']],
+            out_mcq.append({'q': sentence(q['q'], None, qw, problems, data['lang'])[0],
+                            'options': [sentence(o, None, qw, problems, data['lang'])[0] for o in q['options']],
                             'answer': q['answer'], 'zh': q.get('zh', ''), 'en': q.get('en', '')})
         out_tf = []
         for ti, t in enumerate(tf):
@@ -151,7 +153,7 @@ def build(src, problems):
             for lang in ('zh', 'en'):
                 if not t.get(lang):
                     problems.append(f'{tw}: no {lang} explanation')
-            out_tf.append({'s': sentence(t['s'], None, tw, problems)[0], 'answer': t['answer'],
+            out_tf.append({'s': sentence(t['s'], None, tw, problems, data['lang'])[0], 'answer': t['answer'],
                            'zh': t.get('zh', ''), 'en': t.get('en', '')})
         if sum(t['answer'] for t in tf) in (0, len(tf)) and tf:
             problems.append(f'{where}: the true/false answers are all the same')
@@ -189,7 +191,8 @@ def main():
         known = level_words(data['lang'], data['level'])
         if known:
             for p in data['passages']:
-                stem = lambda w: w[:-2] if w.endswith('する') else w      # 勉強する: the lists have 勉強
+                # 勉強する / 공부하다: the lists have 勉強 / 공부
+                stem = lambda w: w[:-2] if w.endswith(('する', '하다')) else w
                 outside = [g['w'] for g in p['glossary'] if stem(g['w']) not in known and stem(g['r']) not in known]
                 if outside:
                     print(f'  {data["id"]}/{p["id"]}: glossary words outside the level lists: {", ".join(outside)}')
