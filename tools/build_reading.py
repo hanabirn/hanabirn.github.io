@@ -31,7 +31,13 @@ RUBY = re.compile(r'(' + KANJI + r'+)\{([^{}]+)\}')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 # word lists a level's glossary is checked against (that level and the easier ones)
 LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jlpt_n4', 'tp_ja_'],
-              ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_'], ('zh', 'HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_']}
+              ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_'], ('zh', 'HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_'],
+              ('fr', 'A1'): ['fr_a1', 'tp_fr_'], ('ru', 'A1'): ['ru_a1', 'tp_ru_'],
+              ('es', 'A1'): ['es_a1', 'tp_es_'], ('de', 'A1'): ['de_a1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_']}
+# a passage's length: characters in Japanese / Korean / Chinese, words elsewhere
+# (l'école, aujourd'hui and week-end count as one; js/reading.js READING_CHAR_LANGS)
+CHAR_LANGS = ('ja', 'ko', 'zh')
+WORD = re.compile(r"[^\W\d_]+(?:['’-][^\W\d_]+)*")
 MCQ_COUNT, TF_COUNT = 5, 3
 
 
@@ -197,7 +203,10 @@ def build(src, problems):
             for s in para['s']:
                 segs, plain, kana = sentence(s, gl, f'{where} ¶{k + 1}', problems, data['lang'])
                 hits |= {sg[2] for sg in segs if sg[2] is not None}
-                length += len(re.sub(r'[\s、。「」！？・，．]', '', plain))
+                if data['lang'] in CHAR_LANGS:
+                    length += len(re.sub(r'[\s、。「」！？・，．]', '', plain))
+                else:
+                    length += len(WORD.findall(plain))
                 sents.append({'t': segs, 'plain': plain, 'kana': kana})
             # Chinese passages are translated into English only (a Chinese one would repeat them)
             for lang in (('en',) if data['lang'] == 'zh' else ('zh', 'en')):
@@ -270,8 +279,8 @@ def main():
         known = level_words(data['lang'], data['level'])
         if known:
             for p in data['passages']:
-                # 勉強する / 공부하다: the lists have 勉強 / 공부
-                stem = lambda w: w[:-2] if w.endswith(('する', '하다')) else w
+                # 勉強する / 공부하다 / se lever: the lists have 勉強 / 공부 / lever
+                stem = lambda w: w[:-2] if w.endswith(('する', '하다')) else re.sub(r"^(se |s')", '', w)
                 outside = [g['w'] for g in p['glossary'] if stem(g['w']) not in known and stem(g['r']) not in known]
                 if outside:
                     print(f'  {data["id"]}/{p["id"]}: glossary words outside the level lists: {", ".join(outside)}')

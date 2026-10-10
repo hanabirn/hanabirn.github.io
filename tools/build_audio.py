@@ -241,6 +241,14 @@ def jobs(lang):
                 for point in json.loads(f.read_text(encoding='utf-8'))['points']:
                     for ex in point['examples']:
                         add(ex['text'], ex['text'])
+            # 閱讀 page (data/reading/fr_*.json …): every sentence and glossary word
+            for f in sorted((ROOT / 'data' / 'reading').glob(lang + '_*.json')):
+                for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
+                    for para in p['paragraphs']:
+                        for sent in para['s']:
+                            add(sent['plain'], sent['plain'])
+                    for g in p['glossary']:
+                        add(g['w'], g['w'])
     else:
         if lang == 'zh-TW':
             for text in alphabet({'zh'}):

@@ -1,0 +1,369 @@
+{
+  "id": "fr_a1",
+  "lang": "fr",
+  "level": "A1",
+  "order": 1,
+  "note": "Original passages written for the site (CEFR A1: présent, futur proche, a little passé composé). Glossary w = the dictionary form (nouns with their article), m = how it appears in the text (underlined there; case-sensitive). Edit this file, then run: python tools/build_reading.py",
+  "passages": [
+    {
+      "id": "my-day",
+      "topic": "home",
+      "title": {"text": "Ma journée", "zh": "我的一天", "en": "My day"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Léa.", "Je me lève à sept heures tous les jours.", "Le matin, je mange du pain et je bois du lait."],
+         "zh": "我叫 Léa。我每天七點起床。早上吃麵包、喝牛奶。", "en": "My name is Léa. I get up at seven every day. In the morning I eat bread and drink milk."},
+        {"s": ["À huit heures, je quitte la maison.", "Je prends le métro pour aller à l'école.", "À l'école, j'étudie l'anglais avec mes amis."],
+         "zh": "八點出門。搭地鐵去學校。在學校和朋友們一起學英文。", "en": "At eight I leave home. I take the metro to go to school. At school I study English with my friends."},
+        {"s": ["À midi, je mange avec une amie à la cantine.", "L'après-midi, je lis à la bibliothèque."],
+         "zh": "中午和一個朋友在學校餐廳吃飯。下午在圖書館看書。", "en": "At noon I eat with a friend in the cafeteria. In the afternoon I read in the library."},
+        {"s": ["Le soir, je prépare le dîner à la maison.", "Ensuite, je regarde la télévision et je me couche à onze heures."],
+         "zh": "晚上在家做晚餐。然後看電視，十一點睡覺。", "en": "In the evening I make dinner at home. Then I watch TV and go to bed at eleven."}
+      ],
+      "glossary": [
+        {"w": "se lever", "r": "", "zh": "起床", "en": "to get up", "m": ["me lève"]},
+        {"w": "tous les jours", "r": "", "zh": "每天", "en": "every day"},
+        {"w": "le métro", "r": "", "zh": "地鐵", "en": "metro, subway"},
+        {"w": "étudier", "r": "", "zh": "學習；讀書", "en": "to study", "m": ["étudie"]},
+        {"w": "la cantine", "r": "", "zh": "（學校的）餐廳", "en": "cafeteria"},
+        {"w": "l'après-midi", "r": "", "zh": "下午", "en": "afternoon", "m": ["après-midi"]},
+        {"w": "la bibliothèque", "r": "", "zh": "圖書館", "en": "library"},
+        {"w": "se coucher", "r": "", "zh": "睡覺；上床", "en": "to go to bed", "m": ["me couche"]}
+      ],
+      "mcq": [
+        {"q": "À quelle heure est-ce que Léa se lève ?", "options": ["À six heures", "À sept heures", "À huit heures", "À onze heures"], "answer": 1,
+         "zh": "「Je me lève à sept heures」：七點起床。八點是出門的時間。", "en": "“Je me lève à sept heures” — seven o'clock. Eight is when she leaves."},
+        {"q": "Comment est-ce qu'elle va à l'école ?", "options": ["En métro", "En bus", "À vélo", "En taxi"], "answer": 0,
+         "zh": "「Je prends le métro pour aller à l'école」：搭地鐵。", "en": "“Je prends le métro pour aller à l'école” — by metro."},
+        {"q": "Où est-ce qu'elle mange à midi ?", "options": ["À la maison", "À la bibliothèque", "Au café", "À la cantine"], "answer": 3,
+         "zh": "「À midi, je mange avec une amie à la cantine」：在學校餐廳。", "en": "“À midi, je mange avec une amie à la cantine” — in the cafeteria."},
+        {"q": "Qu'est-ce qu'elle fait l'après-midi ?", "options": ["Elle regarde la télévision", "Elle étudie l'anglais", "Elle lit", "Elle prépare le dîner"], "answer": 2,
+         "zh": "「L'après-midi, je lis à la bibliothèque」：下午看書。看電視和做晚餐是晚上。", "en": "“L'après-midi, je lis à la bibliothèque” — she reads. TV and dinner are in the evening."},
+        {"q": "À quelle heure est-ce qu'elle se couche ?", "options": ["À onze heures", "À dix heures", "À neuf heures", "À minuit"], "answer": 0,
+         "zh": "「je me couche à onze heures」：十一點睡覺。", "en": "“je me couche à onze heures” — at eleven."}
+      ],
+      "tf": [
+        {"s": "Le matin, Léa mange du riz.", "answer": false,
+         "zh": "×：早上吃的是「du pain」（麵包）。", "en": "False: in the morning she eats du pain (bread)."},
+        {"s": "À l'école, elle étudie l'anglais avec ses amis.", "answer": true,
+         "zh": "○：「À l'école, j'étudie l'anglais avec mes amis」。", "en": "True: À l'école, j'étudie l'anglais avec mes amis."},
+        {"s": "Le soir, elle mange au restaurant.", "answer": false,
+         "zh": "×：晚上「je prépare le dîner à la maison」，在家自己做。", "en": "False: she makes dinner at home (je prépare le dîner à la maison)."}
+      ]
+    },
+    {
+      "id": "new-cafe",
+      "topic": "food",
+      "title": {"text": "Un nouveau café", "zh": "新開的咖啡廳", "en": "A new café"},
+      "paragraphs": [
+        {"s": ["Dimanche, je suis allée dans un nouveau café près de la gare avec mon amie Camille."],
+         "zh": "星期天，我和朋友 Camille 一起去了車站附近一家新的咖啡廳。", "en": "On Sunday I went to a new café near the station with my friend Camille."},
+        {"s": ["Le café est très joli et il y a beaucoup de monde.", "J'ai pris un café et un gâteau au chocolat.", "Camille a bu un thé vert."],
+         "zh": "咖啡廳很漂亮，人很多。我點了咖啡和巧克力蛋糕。Camille 喝了綠茶。", "en": "The café is very pretty and there are lots of people. I had a coffee and a chocolate cake. Camille drank a green tea."},
+        {"s": ["Le gâteau est un peu cher, mais il est très bon.", "Nous avons parlé pendant deux heures."],
+         "zh": "蛋糕有點貴，但是非常好吃。我們聊了兩個小時。", "en": "The cake is a little expensive, but it's very good. We talked for two hours."},
+        {"s": ["La semaine prochaine, je vais revenir avec ma sœur."],
+         "zh": "下個星期，我要和姊姊再來一次。", "en": "Next week I'm going to come back with my sister."}
+      ],
+      "glossary": [
+        {"w": "près de", "r": "", "zh": "在……附近", "en": "near"},
+        {"w": "la gare", "r": "", "zh": "火車站", "en": "station"},
+        {"w": "beaucoup de", "r": "", "zh": "很多", "en": "a lot of"},
+        {"w": "le gâteau", "r": "", "zh": "蛋糕", "en": "cake", "m": ["un gâteau", "Le gâteau"]},
+        {"w": "boire", "r": "", "zh": "喝", "en": "to drink", "m": ["a bu"]},
+        {"w": "cher", "r": "", "zh": "貴的", "en": "expensive"},
+        {"w": "parler", "r": "", "zh": "說話；聊天", "en": "to talk", "m": ["avons parlé"]},
+        {"w": "la semaine prochaine", "r": "", "zh": "下個星期", "en": "next week", "m": ["La semaine prochaine"]}
+      ],
+      "mcq": [
+        {"q": "Quand est-ce que les deux amies sont allées au café ?", "options": ["Samedi", "Dimanche", "Lundi", "Vendredi"], "answer": 1,
+         "zh": "「Dimanche, je suis allée…」：星期天。", "en": "“Dimanche, je suis allée…” — on Sunday."},
+        {"q": "Où est le café ?", "options": ["Près de la gare", "Près de l'école", "Près de la maison", "Près du parc"], "answer": 0,
+         "zh": "「un nouveau café près de la gare」：在車站附近。", "en": "“un nouveau café près de la gare” — near the station."},
+        {"q": "Qu'est-ce que Camille a bu ?", "options": ["Un café", "Du lait", "Un thé vert", "Un jus d'orange"], "answer": 2,
+         "zh": "「Camille a bu un thé vert」：綠茶。咖啡是「我」點的。", "en": "“Camille a bu un thé vert” — a green tea. The coffee was the writer's."},
+        {"q": "Comment est le gâteau ?", "options": ["Pas cher et bon", "Cher mais très bon", "Cher et pas bon", "Petit et pas cher"], "answer": 1,
+         "zh": "「Le gâteau est un peu cher, mais il est très bon」：有點貴但很好吃。", "en": "“Le gâteau est un peu cher, mais il est très bon” — a little expensive but very good."},
+        {"q": "Avec qui est-ce qu'elle va revenir ?", "options": ["Avec Camille", "Avec sa mère", "Avec son frère", "Avec sa sœur"], "answer": 3,
+         "zh": "「je vais revenir avec ma sœur」：和姊姊一起。", "en": "“je vais revenir avec ma sœur” — with her sister."}
+      ],
+      "tf": [
+        {"s": "Il n'y a pas beaucoup de monde dans le café.", "answer": false,
+         "zh": "×：「il y a beaucoup de monde」，人很多。", "en": "False: il y a beaucoup de monde — it's busy."},
+        {"s": "Elles ont parlé pendant deux heures.", "answer": true,
+         "zh": "○：「Nous avons parlé pendant deux heures」。", "en": "True: Nous avons parlé pendant deux heures."},
+        {"s": "Elle a pris un gâteau aux fraises.", "answer": false,
+         "zh": "×：她點的是「un gâteau au chocolat」（巧克力蛋糕）。", "en": "False: she had un gâteau au chocolat (a chocolate cake)."}
+      ]
+    },
+    {
+      "id": "this-saturday",
+      "topic": "travel",
+      "title": {"text": "Ce samedi", "zh": "這個星期六", "en": "This Saturday"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Lucas.", "Ce samedi, je vais aller à la mer avec ma famille."],
+         "zh": "我叫 Lucas。這個星期六，我要和家人去海邊。", "en": "My name is Lucas. This Saturday I'm going to the seaside with my family."},
+        {"s": ["Nous allons partir à neuf heures du matin.", "Nous allons prendre le train.", "Le voyage dure deux heures."],
+         "zh": "我們早上九點出發。我們要搭火車。路程要兩個小時。", "en": "We're going to leave at nine in the morning. We're going to take the train. The journey takes two hours."},
+        {"s": ["À la mer, mon frère et moi, nous allons nager.", "Mes parents vont se promener sur la plage."],
+         "zh": "到了海邊，我和哥哥要去游泳。爸爸媽媽要在沙灘上散步。", "en": "At the seaside my brother and I are going to swim. My parents are going to walk on the beach."},
+        {"s": ["Le soir, nous allons manger du poisson dans un petit restaurant.", "Je suis très content !"],
+         "zh": "晚上我們要在一家小餐廳吃魚。我好開心！", "en": "In the evening we're going to eat fish in a little restaurant. I'm so happy!"}
+      ],
+      "glossary": [
+        {"w": "la mer", "r": "", "zh": "海；海邊", "en": "sea, seaside"},
+        {"w": "partir", "r": "", "zh": "出發；離開", "en": "to leave"},
+        {"w": "le train", "r": "", "zh": "火車", "en": "train"},
+        {"w": "le voyage", "r": "", "zh": "旅行；路程", "en": "journey, trip", "m": ["Le voyage"]},
+        {"w": "nager", "r": "", "zh": "游泳", "en": "to swim"},
+        {"w": "se promener", "r": "", "zh": "散步", "en": "to go for a walk"},
+        {"w": "la plage", "r": "", "zh": "沙灘", "en": "beach"},
+        {"w": "le poisson", "r": "", "zh": "魚", "en": "fish", "m": ["du poisson"]}
+      ],
+      "mcq": [
+        {"q": "Où est-ce que Lucas va aller samedi ?", "options": ["À la montagne", "À la mer", "À Paris", "Au zoo"], "answer": 1,
+         "zh": "「je vais aller à la mer」：去海邊。", "en": "“je vais aller à la mer” — to the seaside."},
+        {"q": "À quelle heure est-ce qu'ils vont partir ?", "options": ["À huit heures", "À dix heures", "À neuf heures", "À deux heures"], "answer": 2,
+         "zh": "「Nous allons partir à neuf heures du matin」：早上九點。兩個小時是路程的時間。", "en": "“Nous allons partir à neuf heures du matin” — at nine. Two hours is how long the journey takes."},
+        {"q": "Comment est-ce qu'ils vont voyager ?", "options": ["En train", "En voiture", "En bus", "En avion"], "answer": 0,
+         "zh": "「Nous allons prendre le train」：搭火車。", "en": "“Nous allons prendre le train” — by train."},
+        {"q": "Qu'est-ce que les parents vont faire ?", "options": ["Nager", "Manger une glace", "Lire", "Se promener sur la plage"], "answer": 3,
+         "zh": "「Mes parents vont se promener sur la plage」：在沙灘上散步。游泳的是 Lucas 和哥哥。", "en": "“Mes parents vont se promener sur la plage” — walk on the beach. Lucas and his brother swim."},
+        {"q": "Qu'est-ce qu'ils vont manger le soir ?", "options": ["De la viande", "Du poisson", "Une pizza", "Des pâtes"], "answer": 1,
+         "zh": "「nous allons manger du poisson」：吃魚。", "en": "“nous allons manger du poisson” — fish."}
+      ],
+      "tf": [
+        {"s": "Le voyage dure deux heures.", "answer": true,
+         "zh": "○：「Le voyage dure deux heures」。", "en": "True: Le voyage dure deux heures."},
+        {"s": "Lucas va nager avec sa sœur.", "answer": false,
+         "zh": "×：他是和「mon frère」（哥哥）一起游泳。", "en": "False: he swims with mon frère (his brother)."},
+        {"s": "Le soir, ils vont manger à la maison.", "answer": false,
+         "zh": "×：晚上在「un petit restaurant」（一家小餐廳）吃。", "en": "False: they eat in un petit restaurant (a little restaurant)."}
+      ]
+    },
+    {
+      "id": "rainy-day",
+      "topic": "weather",
+      "title": {"text": "Un jour de pluie", "zh": "下雨天", "en": "A rainy day"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Hugo.", "Aujourd'hui, il pleut beaucoup et il fait froid."],
+         "zh": "我叫 Hugo。今天雨下得很大，而且很冷。", "en": "My name is Hugo. Today it's raining a lot and it's cold."},
+        {"s": ["Je ne vais pas au parc avec mon chien.", "Je reste à la maison."],
+         "zh": "我不帶狗去公園了。我待在家裡。", "en": "I'm not going to the park with my dog. I'm staying at home."},
+        {"s": ["Je fais un gâteau avec ma mère.", "Après, je lis un livre et j'écoute de la musique."],
+         "zh": "我和媽媽一起做蛋糕。之後看書、聽音樂。", "en": "I make a cake with my mother. Afterwards I read a book and listen to music."},
+        {"s": ["Mon chien dort sur le canapé.", "Demain, il va faire beau.", "Nous allons aller au parc !"],
+         "zh": "我的狗在沙發上睡覺。明天會是好天氣。我們要去公園！", "en": "My dog is sleeping on the sofa. Tomorrow the weather will be nice. We're going to the park!"}
+      ],
+      "glossary": [
+        {"w": "aujourd'hui", "r": "", "zh": "今天", "en": "today", "m": ["Aujourd'hui"]},
+        {"w": "pleuvoir", "r": "", "zh": "下雨", "en": "to rain", "m": ["il pleut"]},
+        {"w": "froid", "r": "", "zh": "冷的", "en": "cold"},
+        {"w": "rester", "r": "", "zh": "待著；留下", "en": "to stay", "m": ["reste"]},
+        {"w": "écouter", "r": "", "zh": "聽", "en": "to listen to", "m": ["écoute"]},
+        {"w": "dormir", "r": "", "zh": "睡覺", "en": "to sleep", "m": ["dort"]},
+        {"w": "le canapé", "r": "", "zh": "沙發", "en": "sofa"},
+        {"w": "demain", "r": "", "zh": "明天", "en": "tomorrow", "m": ["Demain"]}
+      ],
+      "mcq": [
+        {"q": "Quel temps fait-il aujourd'hui ?", "options": ["Il fait beau", "Il neige", "Il pleut et il fait froid", "Il fait chaud"], "answer": 2,
+         "zh": "「il pleut beaucoup et il fait froid」：下大雨又冷。好天氣是明天。", "en": "“il pleut beaucoup et il fait froid” — rainy and cold. The nice weather is tomorrow."},
+        {"q": "Où est-ce que Hugo reste ?", "options": ["À la maison", "Au parc", "À l'école", "Chez un ami"], "answer": 0,
+         "zh": "「Je reste à la maison」：待在家裡。", "en": "“Je reste à la maison” — at home."},
+        {"q": "Qu'est-ce que Hugo fait avec sa mère ?", "options": ["Il lit un livre", "Il fait un gâteau", "Il regarde un film", "Il joue avec le chien"], "answer": 1,
+         "zh": "「Je fais un gâteau avec ma mère」：一起做蛋糕。看書是之後自己做的事。", "en": "“Je fais un gâteau avec ma mère” — they make a cake. Reading comes afterwards."},
+        {"q": "Où est le chien ?", "options": ["Dans le jardin", "Au parc", "Sous la table", "Sur le canapé"], "answer": 3,
+         "zh": "「Mon chien dort sur le canapé」：在沙發上睡覺。", "en": "“Mon chien dort sur le canapé” — on the sofa."},
+        {"q": "Quel temps va-t-il faire demain ?", "options": ["Il va faire beau", "Il va pleuvoir", "Il va neiger", "Il va faire froid"], "answer": 0,
+         "zh": "「Demain, il va faire beau」：明天天氣會很好。", "en": "“Demain, il va faire beau” — nice weather."}
+      ],
+      "tf": [
+        {"s": "Aujourd'hui, Hugo va au parc avec son chien.", "answer": false,
+         "zh": "×：「Je ne vais pas au parc」，今天不去公園。", "en": "False: Je ne vais pas au parc — not today."},
+        {"s": "Après, il écoute de la musique.", "answer": true,
+         "zh": "○：「Après, je lis un livre et j'écoute de la musique」。", "en": "True: Après, je lis un livre et j'écoute de la musique."},
+        {"s": "Demain, ils vont aller au parc.", "answer": true,
+         "zh": "○：「Nous allons aller au parc !」。", "en": "True: Nous allons aller au parc !"}
+      ]
+    },
+    {
+      "id": "market",
+      "topic": "shopping",
+      "title": {"text": "Au marché", "zh": "在市場", "en": "At the market"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Emma.", "Le samedi matin, je vais au marché avec mon père."],
+         "zh": "我叫 Emma。每個星期六早上，我和爸爸去市場。", "en": "My name is Emma. On Saturday mornings I go to the market with my father."},
+        {"s": ["Au marché, il y a des fruits, des légumes et du fromage.", "Nous achetons des pommes, des tomates et des carottes."],
+         "zh": "市場裡有水果、蔬菜和起司。我們買蘋果、番茄和紅蘿蔔。", "en": "At the market there are fruit, vegetables and cheese. We buy apples, tomatoes and carrots."},
+        {"s": ["Un kilo de pommes coûte trois euros.", "Mon père achète aussi un fromage pour le dîner."],
+         "zh": "一公斤蘋果三歐元。爸爸還買了一塊起司當晚餐。", "en": "A kilo of apples costs three euros. My father also buys a cheese for dinner."},
+        {"s": ["Le marchand est très gentil.", "Il me donne une banane !"],
+         "zh": "老闆人很好。他送我一根香蕉！", "en": "The stallholder is very kind. He gives me a banana!"}
+      ],
+      "glossary": [
+        {"w": "le marché", "r": "", "zh": "市場", "en": "market", "m": ["au marché", "Au marché"]},
+        {"w": "le légume", "r": "", "zh": "蔬菜", "en": "vegetable", "m": ["des légumes"]},
+        {"w": "le fromage", "r": "", "zh": "起司", "en": "cheese", "m": ["du fromage", "un fromage"]},
+        {"w": "acheter", "r": "", "zh": "買", "en": "to buy", "m": ["achetons", "achète"]},
+        {"w": "la pomme", "r": "", "zh": "蘋果", "en": "apple", "m": ["des pommes", "de pommes"]},
+        {"w": "coûter", "r": "", "zh": "值（多少錢）", "en": "to cost", "m": ["coûte"]},
+        {"w": "gentil", "r": "", "zh": "親切的；好心的", "en": "kind, nice"},
+        {"w": "donner", "r": "", "zh": "給", "en": "to give", "m": ["donne"]}
+      ],
+      "mcq": [
+        {"q": "Avec qui est-ce qu'Emma va au marché ?", "options": ["Avec sa mère", "Avec son père", "Avec son frère", "Avec une amie"], "answer": 1,
+         "zh": "「je vais au marché avec mon père」：和爸爸。", "en": "“je vais au marché avec mon père” — with her father."},
+        {"q": "Quand est-ce qu'ils vont au marché ?", "options": ["Le samedi matin", "Le dimanche matin", "Le samedi soir", "Le lundi"], "answer": 0,
+         "zh": "「Le samedi matin」：星期六早上。", "en": "“Le samedi matin” — on Saturday mornings."},
+        {"q": "Combien coûte un kilo de pommes ?", "options": ["Deux euros", "Cinq euros", "Un euro", "Trois euros"], "answer": 3,
+         "zh": "「Un kilo de pommes coûte trois euros」：三歐元。", "en": "“Un kilo de pommes coûte trois euros” — three euros."},
+        {"q": "Pourquoi est-ce que le père achète un fromage ?", "options": ["Pour le petit-déjeuner", "Pour le dîner", "Pour un ami", "Pour le déjeuner"], "answer": 1,
+         "zh": "「un fromage pour le dîner」：當晚餐。", "en": "“un fromage pour le dîner” — for dinner."},
+        {"q": "Qu'est-ce que le marchand donne à Emma ?", "options": ["Une pomme", "Une carotte", "Une banane", "Un fromage"], "answer": 2,
+         "zh": "「Il me donne une banane !」：一根香蕉。", "en": "“Il me donne une banane !” — a banana."}
+      ],
+      "tf": [
+        {"s": "Au marché, il n'y a pas de fromage.", "answer": false,
+         "zh": "×：「il y a des fruits, des légumes et du fromage」，有起司。", "en": "False: il y a … du fromage — there is cheese."},
+        {"s": "Ils achètent des tomates.", "answer": true,
+         "zh": "○：「Nous achetons des pommes, des tomates et des carottes」。", "en": "True: Nous achetons des pommes, des tomates et des carottes."},
+        {"s": "Le marchand n'est pas gentil.", "answer": false,
+         "zh": "×：「Le marchand est très gentil」，老闆人很好。", "en": "False: Le marchand est très gentil."}
+      ]
+    },
+    {
+      "id": "french-class",
+      "topic": "school",
+      "title": {"text": "Le cours de français", "zh": "法文課", "en": "French class"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Ken.", "Je suis japonais et j'habite à Lyon."],
+         "zh": "我叫 Ken。我是日本人，住在里昂。", "en": "My name is Ken. I'm Japanese and I live in Lyon."},
+        {"s": ["Le lundi et le mercredi, j'ai un cours de français.", "Le cours commence à dix heures et finit à midi."],
+         "zh": "每週一和週三有法文課。上課從十點開始，到中午結束。", "en": "On Mondays and Wednesdays I have a French class. The class starts at ten and finishes at noon."},
+        {"s": ["Dans ma classe, il y a douze étudiants.", "Notre professeure s'appelle Madame Martin.", "Elle parle lentement et elle est très sympa."],
+         "zh": "我們班有十二個學生。老師是 Martin 老師。她說話很慢，人很好。", "en": "There are twelve students in my class. Our teacher is called Madame Martin. She speaks slowly and she's very nice."},
+        {"s": ["Le français est difficile, mais j'aime beaucoup mon cours."],
+         "zh": "法文很難，但是我非常喜歡這門課。", "en": "French is difficult, but I really like my class."}
+      ],
+      "glossary": [
+        {"w": "habiter", "r": "", "zh": "住", "en": "to live", "m": ["habite"]},
+        {"w": "le cours", "r": "", "zh": "課", "en": "class, lesson", "m": ["un cours", "Le cours", "mon cours"]},
+        {"w": "commencer", "r": "", "zh": "開始", "en": "to start", "m": ["commence"]},
+        {"w": "finir", "r": "", "zh": "結束", "en": "to finish", "m": ["finit"]},
+        {"w": "l'étudiant", "r": "", "zh": "學生", "en": "student", "m": ["étudiants"]},
+        {"w": "la professeure", "r": "", "zh": "（女）老師", "en": "teacher (woman)", "m": ["professeure"]},
+        {"w": "lentement", "r": "", "zh": "慢慢地", "en": "slowly"},
+        {"w": "difficile", "r": "", "zh": "難的", "en": "difficult"}
+      ],
+      "mcq": [
+        {"q": "Où est-ce que Ken habite ?", "options": ["À Paris", "À Lyon", "À Tokyo", "À Nice"], "answer": 1,
+         "zh": "「j'habite à Lyon」：住在里昂。", "en": "“j'habite à Lyon” — in Lyon."},
+        {"q": "Quels jours est-ce qu'il a un cours de français ?", "options": ["Le lundi et le mercredi", "Le mardi et le jeudi", "Le lundi et le vendredi", "Le samedi"], "answer": 0,
+         "zh": "「Le lundi et le mercredi, j'ai un cours de français」：週一和週三。", "en": "“Le lundi et le mercredi, j'ai un cours de français” — Mondays and Wednesdays."},
+        {"q": "À quelle heure est-ce que le cours finit ?", "options": ["À dix heures", "À onze heures", "À une heure", "À midi"], "answer": 3,
+         "zh": "「finit à midi」：中午結束。十點是開始的時間。", "en": "“finit à midi” — at noon. Ten is when it starts."},
+        {"q": "Combien d'étudiants est-ce qu'il y a dans la classe ?", "options": ["Dix", "Vingt", "Douze", "Deux"], "answer": 2,
+         "zh": "「il y a douze étudiants」：十二個。", "en": "“il y a douze étudiants” — twelve."},
+        {"q": "Comment est Madame Martin ?", "options": ["Elle parle vite", "Elle est très sympa", "Elle n'est pas gentille", "Elle est japonaise"], "answer": 1,
+         "zh": "「Elle parle lentement et elle est très sympa」：說話慢、人很好。", "en": "“Elle parle lentement et elle est très sympa” — slow-spoken and very nice."}
+      ],
+      "tf": [
+        {"s": "Ken est chinois.", "answer": false,
+         "zh": "×：「Je suis japonais」，他是日本人。", "en": "False: Je suis japonais — he's Japanese."},
+        {"s": "Le cours commence à dix heures.", "answer": true,
+         "zh": "○：「Le cours commence à dix heures」。", "en": "True: Le cours commence à dix heures."},
+        {"s": "Ken n'aime pas son cours.", "answer": false,
+         "zh": "×：「j'aime beaucoup mon cours」，他很喜歡。", "en": "False: j'aime beaucoup mon cours — he really likes it."}
+      ]
+    },
+    {
+      "id": "zoo-by-bus",
+      "topic": "transport",
+      "title": {"text": "Au zoo en bus", "zh": "搭公車去動物園", "en": "To the zoo by bus"},
+      "paragraphs": [
+        {"s": ["Je m'appelle Chloé.", "Dimanche, je vais au zoo avec mon petit frère."],
+         "zh": "我叫 Chloé。星期天，我要和弟弟去動物園。", "en": "My name is Chloé. On Sunday I'm going to the zoo with my little brother."},
+        {"s": ["Nous prenons le bus numéro 5 devant la maison.", "Le bus arrive à neuf heures et demie.", "Le trajet dure trente minutes."],
+         "zh": "我們在家門前搭 5 號公車。公車九點半來。車程三十分鐘。", "en": "We take the number 5 bus in front of the house. The bus comes at half past nine. The ride takes thirty minutes."},
+        {"s": ["Au zoo, il y a des éléphants, des girafes et des pandas.", "Mon frère adore les pandas."],
+         "zh": "動物園裡有大象、長頸鹿和貓熊。弟弟最喜歡貓熊了。", "en": "At the zoo there are elephants, giraffes and pandas. My brother loves pandas."},
+        {"s": ["À midi, nous mangeons des sandwichs sous un arbre.", "Nous rentrons à la maison à quatre heures."],
+         "zh": "中午我們在樹下吃三明治。四點回家。", "en": "At noon we eat sandwiches under a tree. We go back home at four."}
+      ],
+      "glossary": [
+        {"w": "le zoo", "r": "", "zh": "動物園", "en": "zoo", "m": ["au zoo", "Au zoo"]},
+        {"w": "devant", "r": "", "zh": "在……前面", "en": "in front of"},
+        {"w": "arriver", "r": "", "zh": "到達；來", "en": "to arrive", "m": ["arrive"]},
+        {"w": "le trajet", "r": "", "zh": "路程；車程", "en": "journey, ride", "m": ["Le trajet"]},
+        {"w": "la girafe", "r": "", "zh": "長頸鹿", "en": "giraffe", "m": ["des girafes"]},
+        {"w": "adorer", "r": "", "zh": "非常喜歡", "en": "to love", "m": ["adore"]},
+        {"w": "l'arbre", "r": "", "zh": "樹", "en": "tree", "m": ["un arbre"]},
+        {"w": "rentrer", "r": "", "zh": "回家；回來", "en": "to go back home", "m": ["rentrons"]}
+      ],
+      "mcq": [
+        {"q": "Avec qui est-ce que Chloé va au zoo ?", "options": ["Avec sa sœur", "Avec son petit frère", "Avec ses parents", "Avec une amie"], "answer": 1,
+         "zh": "「avec mon petit frère」：和弟弟。", "en": "“avec mon petit frère” — with her little brother."},
+        {"q": "Quel bus est-ce qu'ils prennent ?", "options": ["Le bus numéro 3", "Le bus numéro 9", "Le bus numéro 5", "Le bus numéro 30"], "answer": 2,
+         "zh": "「le bus numéro 5」：5 號公車。", "en": "“le bus numéro 5” — the number 5."},
+        {"q": "Combien de temps dure le trajet ?", "options": ["Trente minutes", "Une heure", "Dix minutes", "Neuf minutes"], "answer": 0,
+         "zh": "「Le trajet dure trente minutes」：三十分鐘。", "en": "“Le trajet dure trente minutes” — thirty minutes."},
+        {"q": "Quel animal est-ce que le frère adore ?", "options": ["Les éléphants", "Les girafes", "Les lions", "Les pandas"], "answer": 3,
+         "zh": "「Mon frère adore les pandas」：貓熊。", "en": "“Mon frère adore les pandas” — pandas."},
+        {"q": "Où est-ce qu'ils mangent à midi ?", "options": ["Au restaurant", "Sous un arbre", "Dans le bus", "À la maison"], "answer": 1,
+         "zh": "「nous mangeons des sandwichs sous un arbre」：在樹下。", "en": "“nous mangeons des sandwichs sous un arbre” — under a tree."}
+      ],
+      "tf": [
+        {"s": "Le bus arrive à neuf heures et demie.", "answer": true,
+         "zh": "○：「Le bus arrive à neuf heures et demie」。", "en": "True: Le bus arrive à neuf heures et demie."},
+        {"s": "Au zoo, il n'y a pas de pandas.", "answer": false,
+         "zh": "×：「il y a des éléphants, des girafes et des pandas」，有貓熊。", "en": "False: il y a … des pandas — there are pandas."},
+        {"s": "Ils rentrent à la maison à six heures.", "answer": false,
+         "zh": "×：「Nous rentrons à la maison à quatre heures」，四點回家。", "en": "False: they go home at four (à quatre heures)."}
+      ]
+    },
+    {
+      "id": "caught-a-cold",
+      "topic": "health",
+      "title": {"text": "Thomas est malade", "zh": "Thomas 生病了", "en": "Thomas is ill"},
+      "paragraphs": [
+        {"s": ["Ce matin, Thomas ne va pas bien.", "Il a mal à la tête et il a de la fièvre."],
+         "zh": "今天早上 Thomas 不太舒服。他頭痛，還發燒。", "en": "This morning Thomas isn't well. He has a headache and a fever."},
+        {"s": ["Il ne va pas au travail.", "Il téléphone à son chef."],
+         "zh": "他不去上班。他打電話給主管。", "en": "He doesn't go to work. He phones his boss."},
+        {"s": ["L'après-midi, il va chez le médecin.", "Le médecin dit : « C'est un rhume. Restez au lit et buvez beaucoup d'eau. »"],
+         "zh": "下午他去看醫生。醫生說：「是感冒。請躺在床上休息，多喝水。」", "en": "In the afternoon he goes to the doctor. The doctor says: “It's a cold. Stay in bed and drink plenty of water.”"},
+        {"s": ["Thomas prend des médicaments et il dort.", "Le soir, il va un peu mieux."],
+         "zh": "Thomas 吃了藥，睡了一覺。晚上好一點了。", "en": "Thomas takes some medicine and sleeps. In the evening he feels a little better."}
+      ],
+      "glossary": [
+        {"w": "avoir mal à", "r": "", "zh": "（某處）痛", "en": "to have a pain in", "m": ["a mal à"]},
+        {"w": "la fièvre", "r": "", "zh": "發燒", "en": "fever", "m": ["de la fièvre"]},
+        {"w": "le travail", "r": "", "zh": "工作", "en": "work", "m": ["au travail"]},
+        {"w": "téléphoner", "r": "", "zh": "打電話", "en": "to phone", "m": ["téléphone"]},
+        {"w": "le médecin", "r": "", "zh": "醫生", "en": "doctor", "m": ["le médecin", "Le médecin"]},
+        {"w": "le rhume", "r": "", "zh": "感冒", "en": "cold", "m": ["un rhume"]},
+        {"w": "le médicament", "r": "", "zh": "藥", "en": "medicine", "m": ["des médicaments"]},
+        {"w": "mieux", "r": "", "zh": "比較好", "en": "better"}
+      ],
+      "mcq": [
+        {"q": "Qu'est-ce que Thomas a ce matin ?", "options": ["Mal au ventre", "Mal à la tête et de la fièvre", "Mal aux dents", "Froid"], "answer": 1,
+         "zh": "「Il a mal à la tête et il a de la fièvre」：頭痛、發燒。", "en": "“Il a mal à la tête et il a de la fièvre” — a headache and a fever."},
+        {"q": "À qui est-ce qu'il téléphone ?", "options": ["À son chef", "À sa mère", "Au médecin", "À un ami"], "answer": 0,
+         "zh": "「Il téléphone à son chef」：打給主管。醫生是下午去看的。", "en": "“Il téléphone à son chef” — his boss. He sees the doctor in the afternoon."},
+        {"q": "Quand est-ce qu'il va chez le médecin ?", "options": ["Le matin", "À midi", "Le soir", "L'après-midi"], "answer": 3,
+         "zh": "「L'après-midi, il va chez le médecin」：下午。", "en": "“L'après-midi, il va chez le médecin” — in the afternoon."},
+        {"q": "Qu'est-ce que le médecin dit ?", "options": ["Allez au travail", "Mangez beaucoup", "Restez au lit", "Faites du sport"], "answer": 2,
+         "zh": "「Restez au lit et buvez beaucoup d'eau」：躺在床上休息，多喝水。", "en": "“Restez au lit et buvez beaucoup d'eau” — stay in bed."},
+        {"q": "Comment va Thomas le soir ?", "options": ["Un peu mieux", "Très mal", "Il a plus de fièvre", "Il va au travail"], "answer": 0,
+         "zh": "「Le soir, il va un peu mieux」：好一點了。", "en": "“Le soir, il va un peu mieux” — a little better."}
+      ],
+      "tf": [
+        {"s": "Thomas va au travail ce matin.", "answer": false,
+         "zh": "×：「Il ne va pas au travail」，他沒去上班。", "en": "False: Il ne va pas au travail."},
+        {"s": "Le médecin dit que c'est un rhume.", "answer": true,
+         "zh": "○：「C'est un rhume」。", "en": "True: C'est un rhume."},
+        {"s": "Thomas prend des médicaments.", "answer": true,
+         "zh": "○：「Thomas prend des médicaments et il dort」。", "en": "True: Thomas prend des médicaments et il dort."}
+      ]
+    }
+  ]
+}

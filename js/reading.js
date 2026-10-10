@@ -22,6 +22,8 @@ const READING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'f
 const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ko_topik1: 'topik_1', zh_hsk12: 'hsk_1' };
 const READING_ZH_RD = ['pinyin', 'zhuyin', 'both', 'off'];   // readings above Chinese characters
 const READING_FONTS = [0.95, 1.1, 1.25, 1.45];     // rem, the reader's A− / A+
+// a passage's length is counted in characters here, in words elsewhere (tools/build_reading.py)
+const READING_CHAR_LANGS = ['ja', 'ko', 'zh'];
 const READING_TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
     travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
 
@@ -232,7 +234,7 @@ function readingListHtml(set) {
                     <span class="grammar-item-text">
                         <span class="grammar-pattern" lang="${set.lang}">${readingPlain(p.title.t)}</span>
                         <span class="grammar-item-title">${topic}${escHtml(readingTx(set, p.title))}
-                            <span class="rd-meta">${escHtml(t('reading_meta', { n: p.length, q: qs }))}</span></span>
+                            <span class="rd-meta">${escHtml(t(READING_CHAR_LANGS.includes(set.lang) ? 'reading_meta' : 'reading_meta_words', { n: p.length, q: qs }))}</span></span>
                     </span>
                     <span class="grammar-state">${best ? (done ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
                 </button></li>`;
@@ -579,7 +581,7 @@ function readingResultHtml(set) {
             <div class="grammar-result-mascot">${typeof mascotHtml === 'function' ? mascotHtml('bust') : ''}</div>
             <p class="grammar-score">${escHtml(t('grammar_result', { n: right, m: total }))}</p>
             <p class="grammar-verdict ${pass ? 'ok' : 'no'}">${escHtml(t(pass ? 'reading_pass' : 'reading_fail'))}</p>
-            ${secs >= 5 ? `<p class="rd-speed">⏱ ${escHtml(t('reading_time', { t: readingClock(secs) }))}${speed ? '　·　' + escHtml(t('reading_speed', { n: speed })) : ''}</p>` : ''}
+            ${secs >= 5 ? `<p class="rd-speed">⏱ ${escHtml(t('reading_time', { t: readingClock(secs) }))}${speed ? '　·　' + escHtml(t(READING_CHAR_LANGS.includes(set.lang) ? 'reading_speed' : 'reading_speed_words', { n: speed })) : ''}</p>` : ''}
             <div class="grammar-result-btns">
                 <button type="button" class="btn next-btn" onclick="readingStartReview()">📘 ${escHtml(t('reading_review_btn', { n: p.glossary.length }))}</button>
                 ${!last ? `<button type="button" class="btn ${pass ? 'next-btn' : 'back-btn'}" onclick="readingGo('read', ${readingNo + 1})">${escHtml(t('reading_next_passage'))}</button>` : ''}

@@ -39,6 +39,8 @@
     background: var(--surface);
 }
 .rd-text p { margin: 0 0 4px; }
+/* the tall lines leave room for furigana / pinyin; other languages need less */
+.rd-text p[lang]:not([lang="ja"]):not([lang="zh"]) { line-height: 1.95; }
 .rd-para + .rd-para { margin-top: 6px; }
 .rd-s { cursor: pointer; border-radius: 6px; transition: background 0.15s; }
 .rd-s:hover { background: var(--track); }
