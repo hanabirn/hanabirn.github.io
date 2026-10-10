@@ -17,6 +17,7 @@ const TOUR_STEPS = [
     { key: 'exam', targets: ['.main-nav .nav-btn[data-tab="examquiz"]', '.tabbar .nav-btn[data-tab="examquiz"]'] },
     { key: 'grammar', targets: ['.main-nav .nav-btn[data-tab="grammar"]', '#tabbar-more'] },
     { key: 'reading', targets: ['.main-nav .nav-btn[data-tab="reading"]', '#tabbar-more'] },
+    { key: 'listening', targets: ['.main-nav .nav-btn[data-tab="listening"]', '#tabbar-more'] },
     { key: 'review', targets: ['#home-srs-card'] },
     { key: 'dict', targets: ['.main-nav .nav-btn[data-tab="dict"]', '#tabbar-more'] },
     { key: 'alphabet', targets: ['.main-nav .nav-btn[data-tab="alphabet"]', '#tabbar-more'] },

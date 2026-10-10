@@ -21,7 +21,7 @@ function storeSet(key, value) {
 }
 
 /* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
-const MORE_TABS = ['grammar', 'reading', 'dict', 'alphabet', 'guestbook', 'feedback', 'about'];
+const MORE_TABS = ['grammar', 'reading', 'listening', 'dict', 'alphabet', 'guestbook', 'feedback', 'about'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -36,7 +36,11 @@ function switchPage(page, el) {
     if (more) more.classList.toggle('active', MORE_TABS.includes(page));
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
-    const pages = ['home', 'about', 'quiz', 'examquiz', 'grammar', 'reading', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
+    // a page change silences whatever is playing (a 聽解 item, read-all on 閱讀)
+    if (typeof listeningStop === 'function') listeningStop();
+    else if (typeof stopSpeech === 'function') stopSpeech();
+
+    const pages = ['home', 'about', 'quiz', 'examquiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -56,13 +60,14 @@ function switchPage(page, el) {
         if (page === 'notes') renderNotes();
         if (page === 'grammar' && typeof renderGrammar === 'function') renderGrammar();
         if (page === 'reading' && typeof renderReading === 'function') renderReading();
+        if (page === 'listening' && typeof renderListening === 'function') renderListening();
         if (typeof railsOnPage === 'function') railsOnPage(page);
     }, 120);
 }
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['home', 'quiz', 'examquiz', 'grammar', 'reading', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
+const ALL_TABS = ['home', 'quiz', 'examquiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['home'];
 
 function getTabVisibility() {
@@ -984,6 +989,7 @@ function refreshDynamicContent() {
     if (typeof renderAlphabet === 'function') renderAlphabet();
     if (typeof renderGrammar === 'function' && isVisible('page-grammar')) renderGrammar();
     if (typeof renderReading === 'function' && isVisible('page-reading')) renderReading();
+    if (typeof renderListening === 'function' && isVisible('page-listening')) renderListening();
     if (typeof renderUpdates === 'function') renderUpdates();
     if (typeof renderAssistant === 'function') renderAssistant();
     if (typeof renderRails === 'function') renderRails();
