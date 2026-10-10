@@ -495,8 +495,12 @@ def run_gemini(lang, files, aliases, top, limit):
         old = {}
     made = set(old.get('g', []))
     tiers = TIERS.get(lang, {})
-    todo = sorted((tiers.get(fid, 2), fid) for fid in files
+    # in the order jobs() met them — passage by passage (its sentences, then its
+    # words), so each day leaves whole passages done rather than scattered lines
+    seq = {fid: i for i, fid in enumerate(files)}
+    todo = sorted((tiers.get(fid, 2), seq[fid], fid) for fid in files
                   if fid not in made and (tiers.get(fid, 2) <= top or not (d / f'{fid}.mp3').exists()))
+    todo = [(t, fid) for t, _, fid in todo]
     if limit is not None:
         todo = todo[:limit]
     print(f'{lang} (Gemini {GEMINI_VOICES[lang][0]}): {len(todo)} to render '
