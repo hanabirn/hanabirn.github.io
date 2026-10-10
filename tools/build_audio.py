@@ -444,11 +444,34 @@ def gemini_say(key, lang, text):
         part = res['candidates'][0]['content']['parts'][0]['inlineData']
     except (KeyError, IndexError):
         raise RuntimeError(f'no audio: {str(res)[:200]}') from None
-    raw = base64.b64decode(part['data'])
+    raw = strip_c2pa(base64.b64decode(part['data']))
     m = re.search(r'rate=(\d+)', part.get('mimeType', ''))
     if m and int(m.group(1)) != GEMINI_SR:
         raise RuntimeError(f'Gemini returned {m.group(1)} Hz')
-    return trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR)
+    return fade_out(trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR), GEMINI_SR)
+
+
+def strip_c2pa(raw):
+    """Gemini appends its C2PA content credentials ("Created by Google Generative AI",
+    a CBOR block) to the PCM bytes; played as audio they are a loud pop at the end.
+    The SynthID watermark inside the audio itself stays."""
+    # the credentials are a "C2PA" + 4-byte length header followed by one JUMBF
+    # superbox (4-byte size + "jumb", ~6 KB) at the very end
+    at = raw.find(b'jumb', max(0, len(raw) - 65536))
+    if at >= 4 and b'c2pa' in raw[at:]:
+        head = raw.rfind(b'C2PA', max(0, at - 16), at)
+        raw = raw[:head if head >= 0 else at - 4]
+    return raw[:len(raw) // 2 * 2]
+
+
+def fade_out(samples, sr, secs=0.01):
+    """A 10 ms fade at the end, so a clip never stops with a click."""
+    n = min(len(samples), int(sr * secs))
+    if n:
+        samples = list(samples)
+        for i in range(n):
+            samples[-n + i] = int(samples[-n + i] * (n - 1 - i) / n)
+    return samples
 
 
 def spoken_chars(text):
