@@ -85,6 +85,12 @@ RPM = 200              # requests per minute; Chirp3-HD answers 429 well before 
 
 # Gemini TTS for Chinese (--gemini): output dir -> (voice, instruction before the text)
 GEMINI_TTS_MODEL = 'gemini-3.8-flash-tts'
+# each model has its own 100 requests a day, so a run moves on to the next when one is
+# spent: the owner's pick first, then the others (owner OK'd them for speed, 2026-10-10);
+# the lite model kept reading the instruction in Mainland Mandarin, so zh-TW only
+GEMINI_TTS_MODELS = ['gemini-3.8-flash-tts', 'gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-lite-tts']
+GEMINI_MODEL_LANGS = {'gemini-3.8-flash-lite-tts': {'zh-TW'}}
+GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
     'zh-TW': ('Aoede', 'Read the following Chinese text aloud in a natural, warm Taiwanese Mandarin '
                        'accent (台灣華語), at a calm, clear pace. Say only the text:\n'),
@@ -407,14 +413,14 @@ def gemini_key():
     sys.exit('Put GEMINI_API_KEY in worker/assistant/.dev.vars')
 
 
-def gemini_say(key, lang, text):
+def gemini_say(key, lang, text, model=None):
     """PCM samples (24 kHz) of Gemini TTS saying `text`, trimmed; QuotaSpent when the
-    day's free quota is used up."""
+    model's daily quota is used up."""
     voice, instruction = GEMINI_VOICES[lang]
     body = {'contents': [{'parts': [{'text': instruction + text}]}],
             'generationConfig': {'responseModalities': ['AUDIO'],
                                  'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voice}}}}}
-    url = f'https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_TTS_MODEL}:generateContent?key={key}'
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/{model or GEMINI_TTS_MODEL}:generateContent?key={key}'
     req = urllib.request.Request(url, json.dumps(body).encode(), {'Content-Type': 'application/json'})
     for attempt in range(8):
         throttle()
@@ -494,6 +500,7 @@ def run_gemini(lang, files, aliases, top, limit):
     except (OSError, ValueError):
         old = {}
     made = set(old.get('g', []))
+    by_model = dict(old.get('gm', {}))     # file id -> the Gemini model that made it
     tiers = TIERS.get(lang, {})
     # in the order jobs() met them — passage by passage (its sentences, then its
     # words), so each day leaves whole passages done rather than scattered lines
@@ -514,9 +521,23 @@ def run_gemini(lang, files, aliases, top, limit):
         have_set = set(have)
         index = {'voice': old.get('voice', LANGS[lang][2]), 'f': have,
                  'a': {a: f for a, f in sorted(aliases.items()) if f in have_set},
-                 'g': sorted(made & have_set)}
+                 'g': sorted(made & have_set),
+                 'gm': {f: m for f, m in sorted(by_model.items()) if f in made & have_set}}
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         return index
+
+    def say(said):
+        """One clip from the first model with quota left for this language."""
+        while True:
+            models = [m for m in GEMINI_TTS_MODELS
+                      if m not in GEMINI_SPENT and lang in GEMINI_MODEL_LANGS.get(m, {lang})]
+            if not models:
+                raise QuotaSpent(f'every model available for {lang} is spent for today')
+            try:
+                return gemini_say(key, lang, said, models[0]), models[0]
+            except QuotaSpent:
+                GEMINI_SPENT.add(models[0])
+                print(f'  {lang}: {models[0]} is spent for today, moving on', flush=True)
 
     try:
         for tier, fid in todo:
@@ -529,7 +550,7 @@ def run_gemini(lang, files, aliases, top, limit):
             else:
                 tries = [text] * 4
             for said in tries:
-                c = gemini_say(key, lang, said)
+                c, model = say(said)
                 if gemini_length_ok(text, c):
                     clip = c
                     break
@@ -538,6 +559,7 @@ def run_gemini(lang, files, aliases, top, limit):
                 continue
             (d / f'{fid}.mp3').write_bytes(to_mp3(clip, GEMINI_SR))
             made.add(fid)
+            by_model[fid] = model.replace('gemini-', '')
             done += 1
             if done % 25 == 0:
                 save_index()               # an interrupted run doesn't lose the "g" list
@@ -607,7 +629,10 @@ def main():
         made = {l: jobs(l) for l in todo}
         for top in (0, 2 if args.gemini_all else 1):
             for lang in todo:
-                if run_gemini(lang, *made[lang], top, args.limit) == 'quota':
+                # 'quota' = no model left for this language; another language
+                # may still have one (the lite model is zh-TW only)
+                run_gemini(lang, *made[lang], top, args.limit)
+                if all(m in GEMINI_SPENT for m in GEMINI_TTS_MODELS):
                     return
         return
 
@@ -662,11 +687,13 @@ def main():
         index = {'voice': voice, 'f': have,
                  'a': {a: f for a, f in sorted(aliases.items()) if f in have_set}}
         try:
-            made = set(json.loads((d / 'index.json').read_text(encoding='utf-8')).get('g', []))
+            prev = json.loads((d / 'index.json').read_text(encoding='utf-8'))
         except (OSError, ValueError):
-            made = set()
+            prev = {}
+        made = set(prev.get('g', []))
         if made & have_set:
             index['g'] = sorted(made & have_set)       # files Gemini made (--gemini)
+            index['gm'] = {f: m for f, m in prev.get('gm', {}).items() if f in have_set}
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         print(f'  {lang}: {len(have)} files in the index ({backups} new ones by the backup voice)')
 
