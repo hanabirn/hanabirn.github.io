@@ -249,3 +249,8 @@
 .grammar-q-rdswitch { display: flex; justify-content: flex-end; margin: -4px 0 10px; }
 .grammar-q-rd { font-size: 0.95rem; margin-top: 2px; }
 .grammar-opt-rd { display: block; font-size: 0.78rem; font-weight: 400; margin-top: 2px; color: inherit; opacity: 0.75; }
+
+/* Russian stress marks (U+0301): the CJK fonts the site uses place a combining mark
+   on the next letter in Cyrillic, so Russian text uses a system font that stacks it
+   (same rule in css/reading.css) */
+.grammar-card [lang="ru"] { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }

@@ -13,13 +13,14 @@
    into English only (readingTx). A Chinese sentence comes one segment per
    character, [char, pinyin, glossary index, zhuyin, simplified], shown in the
    script (reading_zh_script) and with the readings (reading_zh_rd) the visitor
-   picks. Progress: localStorage
+   picks. Russian is written with stress marks (U+0301), which reading_stress can
+   hide. Progress: localStorage
    reading_progress = { "<set>:<passage>": { best, of, at, secs } } (synced). */
 
 const READING_PASS = 2 / 3;
 const READING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
 // the word set a level's glossary words are filed under (mistake book, spaced repetition)
-const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ko_topik1: 'topik_1', zh_hsk12: 'hsk_1' };
+const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ko_topik1: 'topik_1', zh_hsk12: 'hsk_1', en_a1: 'en_jh' };
 const READING_ZH_RD = ['pinyin', 'zhuyin', 'both', 'off'];   // readings above Chinese characters
 const READING_FONTS = [0.95, 1.1, 1.25, 1.45];     // rem, the reader's A− / A+
 // a passage's length is counted in characters here, in words elsewhere (tools/build_reading.py)
@@ -115,6 +116,7 @@ function readingPickSet(id) {
 function readingSegsHtml(segs, withGloss) {
     if (segs.length && segs[0].length > 3) return readingZhHtml(segs, withGloss);
     let html = '', open = null;
+    const noStress = !readingStress();
     for (const [text, ruby, g] of segs) {
         const gi = withGloss && g !== null && g !== undefined ? g : null;
         if (open !== null && gi !== open) { html += '</span>'; open = null; }
@@ -122,7 +124,8 @@ function readingSegsHtml(segs, withGloss) {
             html += `<span class="rd-w" role="button" tabindex="0" onclick="readingWord(event, ${gi})" onkeydown="if(event.key==='Enter')readingWord(event, ${gi})">`;
             open = gi;
         }
-        html += ruby ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text);
+        const shown = noStress ? text.replace(/\u0301/g, '') : text;
+        html += ruby ? `<ruby>${escHtml(shown)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(shown);
     }
     if (open !== null) html += '</span>';
     return html;
@@ -194,15 +197,21 @@ function readingSetZh(key, v) {
     renderReading();
 }
 
-/* a translation: Chinese passages only have English ones */
+/* a translation: Chinese passages only have English ones, English passages Chinese */
 function readingTx(set, o) {
-    return set.lang === 'zh' ? (o.en || '') : gText(o);
+    if (set.lang === 'zh') return o.en || '';
+    if (set.lang === 'en') return (siteLang === 'zh-Hans' && o['zh-Hans']) || o.zh || '';
+    return gText(o);
 }
 
-/* a glossary word as shown: Simplified when picked */
+/* a glossary word as shown: Simplified when picked, Russian with its stress marks */
 function readingGw(set, g) {
+    if (set.lang === 'ru') return readingStress() && g.r ? g.r : g.w;
     return set.lang === 'zh' && readingZhScript() === 'simp' && g.simp ? g.simp : g.w;
 }
+
+/* Russian stress marks shown (reading_stress) */
+function readingStress() { return readingPref('reading_stress', '1') === '1'; }
 
 /* ----- list ----- */
 
@@ -253,7 +262,7 @@ function readingFont() {
 }
 
 function readingToggle(key) {
-    const on = readingPref(key, key === 'reading_furi' ? '1' : '0') === '1';
+    const on = readingPref(key, key === 'reading_furi' || key === 'reading_stress' ? '1' : '0') === '1';
     readingSetPref(key, on ? '0' : '1');
     renderReading();
 }
@@ -291,6 +300,7 @@ function readingReaderHtml(set) {
         <div class="rd-tools" role="group">
             ${set.lang === 'ja' ? `<button type="button" class="mode-btn${furi ? ' mode-btn-active' : ''}" aria-pressed="${furi}" onclick="readingToggle('reading_furi')">${escHtml(t('reading_furi'))}</button>` : ''}
             ${set.lang === 'zh' ? readingZhTools() : ''}
+            ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
             <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
             <button type="button" class="mode-btn" onclick="readingSayAll()">🔊 ${escHtml(t('reading_all'))}</button>
             <span class="rd-font" role="group" aria-label="${escHtml(t('reading_font'))}">
@@ -307,7 +317,7 @@ function readingReaderHtml(set) {
             <div class="rd-col-side">
                 <div class="rd-gloss">
                     <h4 class="grammar-sub">📘 ${escHtml(t('reading_glossary'))}</h4>
-                    <ul>${p.glossary.map((g, i) => `<li><button type="button" class="rd-gloss-item" onclick="readingWord(event, ${i})"><b lang="${set.lang}">${escHtml(readingGw(set, g))}</b> <span>${g.r && g.r !== g.w ? escHtml(g.r) + '・' : ''}${escHtml(readingTx(set, g))}</span></button></li>`).join('')}</ul>
+                    <ul>${p.glossary.map((g, i) => `<li><button type="button" class="rd-gloss-item" onclick="readingWord(event, ${i})"><b lang="${set.lang}">${escHtml(readingGw(set, g))}</b> <span>${g.r && g.r !== g.w && set.lang !== 'ru' ? escHtml(g.r) + '・' : ''}${escHtml(readingTx(set, g))}</span></button></li>`).join('')}</ul>
                 </div>
                 <button type="button" class="btn next-btn grammar-start" onclick="readingStartQuiz()">${escHtml(t('reading_start_quiz', { n: p.mcq.length + p.tf.length }))}</button>
             </div>
@@ -326,7 +336,7 @@ function readingSentences() {
 /* recordings are keyed "plain|kana" (tools/build_audio.py) and spoken from the kana */
 function readingSpeak(s, done) {
     const set = readingSets[readingSetId];
-    speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
+    speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(set.lang === 'ja' && s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
 }
 
 function readingMark(i) {
@@ -374,6 +384,7 @@ function readingWord(ev, gi) {
     // Chinese: both scripts when they differ, pinyin and zhuyin, the English meaning
     const head = zh
         ? `<b lang="zh-TW">${escHtml(g.w)}</b>${g.simp && g.simp !== g.w ? `<span class="rd-pop-r" lang="zh-CN">${escHtml(g.simp)}</span>` : ''}<span class="rd-pop-r">${escHtml(g.r)}</span><span class="rd-pop-r" lang="zh-TW">${escHtml(g.zy || '')}</span>`
+        : set.lang === 'ru' ? `<b lang="ru">${escHtml(readingGw(set, g))}</b>`
         : `<b lang="${set.lang}">${escHtml(g.w)}</b>${g.r && g.r !== g.w ? `<span class="rd-pop-r" lang="${set.lang}">${escHtml(g.r)}</span>` : ''}`;
     const meaning = zh ? escHtml(g.en)
         : escHtml(gText(g)) + (siteLang === 'zh' || siteLang === 'zh-Hans' ? `<span class="rd-pop-en">${escHtml(g.en)}</span>` : '');
@@ -417,7 +428,8 @@ function readingEntry(set, g) {
         // like an HSK word: the English meaning, pinyin as the hint
         return lessonEntryFor(setId, { word: g.w, trad: g.w, simp: g.simp || g.w, roman: g.r, meaning: g.en, kana: '', english: '' });
     }
-    return lessonEntryFor(setId, { word: g.w, kana: g.r && g.r !== g.w ? g.r : '', meaning: g.zh, english: g.en });
+    // an English word is asked with its Chinese meaning (its English gloss would only restate it)
+    return lessonEntryFor(setId, { word: g.w, kana: g.r && g.r !== g.w ? g.r : '', meaning: g.zh, english: set.lang === 'en' ? '' : g.en });
 }
 
 function readingAddReview(gi) {

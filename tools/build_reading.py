@@ -18,7 +18,8 @@ Don't edit data/reading/ by hand — edit the source and re-run.
 Usage: pip install opencc-python-reimplemented
        python tools/build_reading.py
 """
-import json, re, sys
+import json
+import unicodedata, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -116,6 +117,69 @@ def zh_glossary(g, where, problems):
             'zy': ' '.join(zh_bopomofo(x) for x in sylls), 'zh': g.get('zh', ''), 'en': g.get('en', '')}
 
 
+# ---------- Russian: stress marks ----------
+# Russian is written with a stress mark (U+0301 after the vowel) on every word of two
+# or more syllables; the page can hide them. Segments keep the marks, the plain text
+# (recordings, glossary matching) drops them, and the kana slot holds the marked text.
+ACUTE = '\u0301'
+RU_VOWELS = set('аеёиоуыэюяАЕЁИОУЫЭЮЯ')
+
+
+def ru_plain(text):
+    return unicodedata.normalize('NFC', text.replace(ACUTE, ''))
+
+
+def ru_stress_problems(text, where, problems):
+    """words of 2+ syllables without a mark, marks off a vowel, two marks in a word"""
+    for word in re.findall(r"[А-Яа-яЁё\u0301-]+", text):
+        for part in word.split('-'):
+            vowels = sum(c in RU_VOWELS for c in part)
+            marks = part.count(ACUTE)
+            if vowels >= 2 and not marks and not re.search('[Ёё]', part):
+                problems.append(f'{where}: no stress mark on "{part}" in: {text}')
+            if marks > 1:
+                problems.append(f'{where}: two stress marks in "{part}"')
+            for i, c in enumerate(part):
+                if c == ACUTE and (i == 0 or part[i - 1] not in RU_VOWELS):
+                    problems.append(f'{where}: a stress mark not after a vowel in "{part}"')
+
+
+def sentence_ru(marked, glossary, where, problems):
+    text = unicodedata.normalize('NFC', marked)
+    ru_stress_problems(text, where, problems)
+    clusters = []                       # one per letter, with its stress mark
+    for ch in text:
+        if ch == ACUTE and clusters:
+            clusters[-1] += ch
+        else:
+            clusters.append(ch)
+    plain = ''.join(c.replace(ACUTE, '') for c in clusters)
+    gloss = [None] * len(plain)
+    for gi, g in enumerate(glossary or []):
+        for form in g.get('m') or [g['w']]:
+            for m in re.finditer(re.escape(ru_plain(form)), plain):
+                if any(gloss[i] is not None for i in range(m.start(), m.end())):
+                    continue
+                for i in range(m.start(), m.end()):
+                    gloss[i] = gi
+    segs = []
+    for i, c in enumerate(clusters):
+        if segs and segs[-1][2] == gloss[i]:
+            segs[-1][0] += c
+        else:
+            segs.append([c, None, gloss[i]])
+    return segs, plain, text
+
+
+def ru_glossary(g, where, problems):
+    """w without stress, r with it (marked like the text)"""
+    r = unicodedata.normalize('NFC', g['r'])
+    if ru_plain(r) != unicodedata.normalize('NFC', g['w']):
+        problems.append(f'{where} glossary {g["w"]}: r "{r}" is not w with stress marks')
+    ru_stress_problems(r, where + ' glossary', problems)
+    return {'w': g['w'], 'r': r, 'zh': g['zh'], 'en': g['en']}
+
+
 def tokens(marked):
     """'七時{しちじ}に' -> [('七時', 'しちじ'), ('に', None)]"""
     out, pos = [], 0
@@ -135,6 +199,8 @@ def sentence(marked, glossary, where, problems, lang='ja', short=False):
     goes to sentence_zh (short: an option or title, not a sentence)."""
     if lang == 'zh':
         return sentence_zh(marked, glossary, where, problems, short)
+    if lang == 'ru':
+        return sentence_ru(marked, glossary, where, problems)
     if '{' in RUBY.sub('', marked) or '}' in RUBY.sub('', marked):
         problems.append(f'{where}: a {{reading}} without kanji right before it: {marked}')
     toks = tokens(marked)
@@ -208,8 +274,9 @@ def build(src, problems):
                 else:
                     length += len(WORD.findall(plain))
                 sents.append({'t': segs, 'plain': plain, 'kana': kana})
-            # Chinese passages are translated into English only (a Chinese one would repeat them)
-            for lang in (('en',) if data['lang'] == 'zh' else ('zh', 'en')):
+            # Chinese passages are translated into English only and English ones into
+            # Chinese only (the other would repeat them)
+            for lang in {'zh': ('en',), 'en': ('zh',)}.get(data['lang'], ('zh', 'en')):
                 if not para.get(lang):
                     problems.append(f'{where} ¶{k + 1}: no {lang} translation')
             paras.append({'s': sents, 'zh': para.get('zh', ''), 'en': para.get('en', '')})
@@ -249,7 +316,9 @@ def build(src, problems):
             'id': p['id'], 'topic': p.get('topic', ''),
             'title': {'t': title, 'kana': title_kana, 'zh': p['title'].get('zh', ''), 'en': p['title'].get('en', '')},
             'length': length, 'paragraphs': paras,
-            'glossary': [zh_glossary(g, where, problems) if data['lang'] == 'zh' else {k: g[k] for k in ('w', 'r', 'zh', 'en')} for g in gl],
+            'glossary': [zh_glossary(g, where, problems) if data['lang'] == 'zh'
+                         else ru_glossary(g, where, problems) if data['lang'] == 'ru'
+                         else {k: g[k] for k in ('w', 'r', 'zh', 'en')} for g in gl],
             'mcq': out_mcq, 'tf': out_tf})
     return out
 
