@@ -337,6 +337,14 @@ function readingSentences() {
 /* recordings are keyed "plain|kana" (tools/build_audio.py) and spoken from the kana */
 function readingSpeak(s, done) {
     const set = readingSets[readingSetId];
+    // Chinese: the script on screen picks the accent — Traditional is recorded with a
+    // Taiwan voice (zh-TW), Simplified with a Mainland one (zh-CN, keyed by the
+    // Simplified text; tools/build_audio.py --gemini)
+    if (set.lang === 'zh' && readingZhScript() === 'simp') {
+        const simp = s.t.map(sg => sg[4] || sg[0]).join('');
+        speakText(simp, 'zh-CN', done ? { onend: done } : undefined);
+        return;
+    }
     speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(set.lang === 'ja' && s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
 }
 
@@ -453,6 +461,10 @@ window.addEventListener('scroll', readingClosePop, { passive: true });
 function readingSayWord(gi) {
     const set = readingSets[readingSetId];
     const g = set.passages[readingNo].glossary[gi];
+    if (set.lang === 'zh' && readingZhScript() === 'simp') {
+        speakText(g.simp || g.w, 'zh-CN');
+        return;
+    }
     // a word with kanji is recorded as "word|kana" (the word lists' recordings)
     speakText(g.w, READING_TTS[set.lang] || set.lang, set.lang === 'ja' && g.r && g.r !== g.w ? { reading: g.r } : undefined);
 }
