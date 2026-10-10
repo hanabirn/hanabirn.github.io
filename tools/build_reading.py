@@ -51,7 +51,8 @@ ZH_REVIEW = []
 _zh_tools = {}
 # words zh_reading gets wrong here (覺 read jué, 長 zhǎng, 星期一 with 一 changing tone);
 # added to its lexicon for this build only, so the grammar's readings don't move
-READING_ZH_WORDS = {'睡覺': 'shuìjiào', '長頸鹿': 'chángjǐnglù', '星期一': 'xīngqíyī'}
+READING_ZH_WORDS = {'睡覺': 'shuìjiào', '長頸鹿': 'chángjǐnglù', '星期一': 'xīngqíyī',
+                    '教我': 'jiāowǒ', '台南': 'Táinán', '小明': 'Xiǎomíng', '小美': 'Xiǎoměi'}
 
 
 def zh_tools():

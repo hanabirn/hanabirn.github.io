@@ -3,366 +3,366 @@
   "lang": "ko",
   "level": "TOPIK I",
   "order": 1,
-  "note": "Original passages written for the site (TOPIK I level, 해요체). Glossary m = how the word appears in the text (underlined there). Edit this file, then run: python tools/build_reading.py",
+  "note": "Original passages written for the site (TOPIK I level, 해요체). Each language has its own stories (only the 8 topic tags are shared). Glossary m = how the word appears in the text (underlined there). Edit this file, then run: python tools/build_reading.py",
   "passages": [
     {
-      "id": "my-day",
+      "id": "our-cat",
       "topic": "home",
-      "title": {"text": "나의 하루", "zh": "我的一天", "en": "My day"},
+      "title": {"text": "우리 집 고양이 나비", "zh": "我們家的貓「小蝶」", "en": "Nabi, our cat"},
       "paragraphs": [
-        {"s": ["저는 매일 아침 일곱 시에 일어나요.", "아침에는 빵과 우유를 먹어요."],
-         "zh": "我每天早上七點起床。早上吃麵包、喝牛奶。", "en": "I get up at seven every morning. In the morning I have bread and milk."},
-        {"s": ["여덟 시에 집에서 나와요.", "지하철을 타고 학교에 가요.", "학교에서 친구들과 한국어를 공부해요."],
-         "zh": "八點出門。搭地鐵去學校。在學校和朋友們一起學韓文。", "en": "I leave home at eight. I take the subway to school. At school I study Korean with my friends."},
-        {"s": ["점심은 학교 식당에서 친구와 같이 먹어요.", "오후에는 도서관에서 책을 읽어요."],
-         "zh": "午餐和朋友一起在學校餐廳吃。下午在圖書館看書。", "en": "I eat lunch with a friend in the school cafeteria. In the afternoon I read books in the library."},
-        {"s": ["저녁에는 집에서 저녁을 만들어요.", "그리고 텔레비전을 보고 열한 시에 자요."],
-         "zh": "晚上在家做晚餐。然後看電視，十一點睡覺。", "en": "In the evening I cook dinner at home. Then I watch TV and go to bed at eleven."}
+        {"s": ["우리 집에는 고양이가 한 마리 있어요.", "이름은 나비예요.", "나비는 세 살이고 하얀색이에요."],
+         "zh": "我們家有一隻貓。名字叫「小蝶」（나비）。小蝶三歲，是白色的。", "en": "We have a cat at home. Her name is Nabi. Nabi is three years old and white."},
+        {"s": ["나비는 낮에 창문 옆에서 자요.", "밖을 보는 것을 좋아해요.", "저녁에 제가 집에 오면 문 앞에서 기다려요."],
+         "zh": "小蝶白天在窗戶旁邊睡覺。她喜歡看外面。晚上我回家的時候，她會在門口等我。", "en": "During the day Nabi sleeps by the window. She likes looking outside. When I come home in the evening, she waits at the door."},
+        {"s": ["나비는 생선을 아주 좋아해요.", "그래서 주말에는 어머니가 생선을 조금 줘요."],
+         "zh": "小蝶非常喜歡魚。所以週末媽媽會給她一點魚。", "en": "Nabi loves fish. So at the weekend my mother gives her a little fish."},
+        {"s": ["나비가 없으면 집이 조용해요.", "나비는 우리 가족이에요."],
+         "zh": "沒有小蝶的話，家裡就很安靜。小蝶是我們的家人。", "en": "Without Nabi the house is quiet. Nabi is part of our family."}
       ],
       "glossary": [
-        {"w": "매일", "r": "", "zh": "每天", "en": "every day"},
-        {"w": "일어나다", "r": "", "zh": "起床", "en": "to get up", "m": ["일어나요"]},
-        {"w": "지하철", "r": "", "zh": "地鐵", "en": "subway"},
-        {"w": "공부하다", "r": "", "zh": "學習；讀書", "en": "to study", "m": ["공부해요"]},
-        {"w": "식당", "r": "", "zh": "餐廳", "en": "restaurant; cafeteria"},
-        {"w": "오후", "r": "", "zh": "下午", "en": "afternoon"},
-        {"w": "도서관", "r": "", "zh": "圖書館", "en": "library"},
-        {"w": "자다", "r": "", "zh": "睡覺", "en": "to sleep", "m": ["자요"]}
-      ],
-      "mcq": [
-        {"q": "이 사람은 몇 시에 일어나요?", "options": ["여섯 시", "일곱 시", "여덟 시", "열한 시"], "answer": 1,
-         "zh": "「매일 아침 일곱 시에 일어나요」：七點起床。八點是出門的時間。", "en": "“매일 아침 일곱 시에 일어나요” — seven o'clock. Eight is when they leave."},
-        {"q": "무엇을 타고 학교에 가요?", "options": ["버스", "지하철", "자전거", "택시"], "answer": 1,
-         "zh": "「지하철을 타고 학교에 가요」：搭地鐵。", "en": "“지하철을 타고 학교에 가요” — by subway."},
-        {"q": "점심은 어디에서 먹어요?", "options": ["집", "학교 식당", "도서관", "카페"], "answer": 1,
-         "zh": "「점심은 학교 식당에서…먹어요」：在學校餐廳。", "en": "“점심은 학교 식당에서…먹어요” — in the school cafeteria."},
-        {"q": "오후에 무엇을 해요?", "options": ["텔레비전을 봐요", "한국어를 공부해요", "책을 읽어요", "저녁을 만들어요"], "answer": 2,
-         "zh": "「오후에는 도서관에서 책을 읽어요」：下午看書。看電視和做晚餐是晚上。", "en": "“오후에는 도서관에서 책을 읽어요” — reading. TV and cooking are in the evening."},
-        {"q": "몇 시에 자요?", "options": ["아홉 시", "열 시", "열한 시", "열두 시"], "answer": 2,
-         "zh": "「열한 시에 자요」：十一點睡覺。", "en": "“열한 시에 자요” — at eleven."}
-      ],
-      "tf": [
-        {"s": "아침에 밥과 김치를 먹어요.", "answer": false,
-         "zh": "×：早上吃的是「빵과 우유」（麵包和牛奶）。", "en": "False: breakfast is 빵과 우유 (bread and milk)."},
-        {"s": "학교에서 친구들과 한국어를 공부해요.", "answer": true,
-         "zh": "○：「학교에서 친구들과 한국어를 공부해요」。", "en": "True: 학교에서 친구들과 한국어를 공부해요."},
-        {"s": "저녁은 식당에서 먹어요.", "answer": false,
-         "zh": "×：晚餐是「집에서 저녁을 만들어요」，在家自己做。", "en": "False: they cook dinner at home (집에서 저녁을 만들어요)."}
-      ]
-    },
-    {
-      "id": "new-cafe",
-      "topic": "food",
-      "title": {"text": "새로 생긴 카페", "zh": "新開的咖啡廳", "en": "A new café"},
-      "paragraphs": [
-        {"s": ["일요일에 친구 수진 씨와 같이 역 근처에 있는 새 카페에 갔어요."],
-         "zh": "星期天，我和朋友秀珍一起去了車站附近一家新的咖啡廳。", "en": "On Sunday I went with my friend Sujin to a new café near the station."},
-        {"s": ["카페는 아주 예쁘고 사람이 많았어요.", "저는 커피와 케이크를 샀어요.", "수진 씨는 녹차를 마셨어요."],
-         "zh": "咖啡廳很漂亮，人很多。我買了咖啡和蛋糕。秀珍喝了綠茶。", "en": "The café was very pretty and crowded. I bought coffee and cake. Sujin had green tea."},
-        {"s": ["케이크는 조금 비쌌지만 정말 맛있었어요.", "커피는 별로 달지 않았어요."],
-         "zh": "蛋糕有點貴，但是真的很好吃。咖啡不太甜。", "en": "The cake was a little expensive, but really good. The coffee wasn't very sweet."},
-        {"s": ["우리는 두 시간쯤 이야기했어요.", "다음 주에도 같이 가고 싶어요."],
-         "zh": "我們聊了大約兩個小時。下星期也想一起去。", "en": "We talked for about two hours. I want to go together again next week."}
-      ],
-      "glossary": [
-        {"w": "역", "r": "", "zh": "車站", "en": "station"},
-        {"w": "근처", "r": "", "zh": "附近", "en": "nearby"},
-        {"w": "새", "r": "", "zh": "新的", "en": "new"},
-        {"w": "많다", "r": "", "zh": "多", "en": "to be many", "m": ["많았어요"]},
-        {"w": "녹차", "r": "", "zh": "綠茶", "en": "green tea"},
-        {"w": "비싸다", "r": "", "zh": "貴", "en": "to be expensive", "m": ["비쌌지만"]},
-        {"w": "달다", "r": "", "zh": "甜", "en": "to be sweet", "m": ["달지"]},
-        {"w": "다음 주", "r": "", "zh": "下星期", "en": "next week"}
-      ],
-      "mcq": [
-        {"q": "언제 카페에 갔어요?", "options": ["토요일", "일요일", "월요일", "금요일"], "answer": 1,
-         "zh": "「일요일에…카페에 갔어요」：星期天去的。", "en": "“일요일에…카페에 갔어요” — on Sunday."},
-        {"q": "카페는 어디에 있어요?", "options": ["학교 안", "역 근처", "수진 씨 집 앞", "백화점 안"], "answer": 1,
-         "zh": "「역 근처에 있는 새 카페」：在車站附近。", "en": "“역 근처에 있는 새 카페” — near the station."},
-        {"q": "수진 씨는 무엇을 마셨어요?", "options": ["커피", "녹차", "주스", "물"], "answer": 1,
-         "zh": "「수진 씨는 녹차를 마셨어요」。喝咖啡的是「저」。", "en": "“수진 씨는 녹차를 마셨어요”. The coffee was the writer's."},
-        {"q": "케이크는 어땠어요?", "options": ["싸고 맛있었어요", "비쌌지만 맛있었어요", "비싸고 맛없었어요", "쌌지만 맛없었어요"], "answer": 1,
-         "zh": "「조금 비쌌지만 정말 맛있었어요」：有點貴，但很好吃。", "en": "“조금 비쌌지만 정말 맛있었어요” — a little expensive but really good."},
-        {"q": "두 사람은 얼마나 이야기했어요?", "options": ["삼십 분쯤", "한 시간쯤", "두 시간쯤", "세 시간쯤"], "answer": 2,
-         "zh": "「두 시간쯤 이야기했어요」：大約兩小時。", "en": "“두 시간쯤 이야기했어요” — about two hours."}
-      ],
-      "tf": [
-        {"s": "카페에 사람이 적었어요.", "answer": false,
-         "zh": "×：「사람이 많았어요」，人很多。", "en": "False: 사람이 많았어요 — it was crowded."},
-        {"s": "커피는 아주 달았어요.", "answer": false,
-         "zh": "×：「별로 달지 않았어요」，不太甜。", "en": "False: 별로 달지 않았어요 — not very sweet."},
-        {"s": "다음 주에도 카페에 가고 싶어요.", "answer": true,
-         "zh": "○：「다음 주에도 같이 가고 싶어요」。", "en": "True: 다음 주에도 같이 가고 싶어요."}
-      ]
-    },
-    {
-      "id": "this-saturday",
-      "topic": "travel",
-      "title": {"text": "이번 토요일", "zh": "這個星期六", "en": "This Saturday"},
-      "paragraphs": [
-        {"s": ["이번 토요일에 가족과 같이 바다에 가요.", "아침 일찍 차로 출발해요."],
-         "zh": "這個星期六要和家人一起去海邊。早上很早就開車出發。", "en": "This Saturday I'm going to the sea with my family. We'll set off early in the morning by car."},
-        {"s": ["바다까지 세 시간쯤 걸려요.", "차 안에서 동생과 노래를 불러요."],
-         "zh": "到海邊大約要三個小時。在車上和弟弟妹妹唱歌。", "en": "It takes about three hours to the sea. In the car I sing songs with my younger sibling."},
-        {"s": ["바다에서는 다 같이 수영을 해요.", "점심은 어머니가 만든 김밥을 먹어요."],
-         "zh": "在海邊大家一起游泳。午餐吃媽媽做的紫菜飯捲。", "en": "At the sea we all swim together. For lunch we eat the gimbap my mother made."},
-        {"s": ["어제 일기 예보를 봤어요.", "토요일은 날씨가 맑아요.", "정말 기대돼요."],
-         "zh": "昨天看了天氣預報。星期六天氣晴朗。真的很期待。", "en": "I checked the weather forecast yesterday. Saturday will be clear. I'm really looking forward to it."}
-      ],
-      "glossary": [
-        {"w": "가족", "r": "", "zh": "家人", "en": "family"},
-        {"w": "바다", "r": "", "zh": "海；海邊", "en": "the sea"},
-        {"w": "출발하다", "r": "", "zh": "出發", "en": "to set off", "m": ["출발해요"]},
-        {"w": "걸리다", "r": "", "zh": "花（時間）", "en": "to take (time)", "m": ["걸려요"]},
-        {"w": "동생", "r": "", "zh": "弟弟；妹妹", "en": "younger sibling"},
-        {"w": "수영", "r": "", "zh": "游泳", "en": "swimming"},
-        {"w": "김밥", "r": "", "zh": "紫菜飯捲", "en": "gimbap"},
-        {"w": "맑다", "r": "", "zh": "晴朗", "en": "to be clear (weather)", "m": ["맑아요"]}
-      ],
-      "mcq": [
-        {"q": "누구와 바다에 가요?", "options": ["친구", "가족", "선생님", "혼자"], "answer": 1,
-         "zh": "「가족과 같이 바다에 가요」：和家人。", "en": "“가족과 같이 바다에 가요” — with the family."},
-        {"q": "무엇으로 가요?", "options": ["기차", "버스", "차", "비행기"], "answer": 2,
-         "zh": "「차로 출발해요」：開車去。", "en": "“차로 출발해요” — by car."},
-        {"q": "바다까지 얼마나 걸려요?", "options": ["한 시간쯤", "두 시간쯤", "세 시간쯤", "다섯 시간쯤"], "answer": 2,
-         "zh": "「바다까지 세 시간쯤 걸려요」。", "en": "“바다까지 세 시간쯤 걸려요” — about three hours."},
-        {"q": "차 안에서 무엇을 해요?", "options": ["책을 읽어요", "자요", "동생과 노래를 불러요", "게임을 해요"], "answer": 2,
-         "zh": "「차 안에서 동생과 노래를 불러요」。", "en": "“차 안에서 동생과 노래를 불러요” — singing with the sibling."},
-        {"q": "점심은 무엇을 먹어요?", "options": ["식당 음식", "어머니가 만든 김밥", "편의점 빵", "라면"], "answer": 1,
-         "zh": "「어머니가 만든 김밥을 먹어요」：媽媽做的飯捲。", "en": "“어머니가 만든 김밥을 먹어요” — the gimbap mother made."}
-      ],
-      "tf": [
-        {"s": "밤에 출발해요.", "answer": false,
-         "zh": "×：「아침 일찍 차로 출발해요」，早上出發。", "en": "False: they set off early in the morning (아침 일찍)."},
-        {"s": "바다에서 다 같이 수영해요.", "answer": true,
-         "zh": "○：「바다에서는 다 같이 수영을 해요」。", "en": "True: 바다에서는 다 같이 수영을 해요."},
-        {"s": "토요일에 비가 와요.", "answer": false,
-         "zh": "×：天氣預報說「토요일은 날씨가 맑아요」，是晴天。", "en": "False: the forecast says 토요일은 날씨가 맑아요 — clear."}
-      ]
-    },
-    {
-      "id": "rainy-day",
-      "topic": "weather",
-      "title": {"text": "비 오는 날", "zh": "下雨天", "en": "A rainy day"},
-      "paragraphs": [
-        {"s": ["오늘은 아침부터 비가 많이 와요.", "조금 추워요."],
-         "zh": "今天從早上就一直下大雨。有點冷。", "en": "It has been raining hard since this morning. It's a little cold."},
-        {"s": ["저는 우산을 가지고 버스로 회사에 갔어요.", "버스 안에 사람이 많았어요."],
-         "zh": "我帶著傘搭公車去公司。公車上有很多人。", "en": "I took my umbrella and went to work by bus. There were a lot of people on the bus."},
-        {"s": ["회사 근처에서 하얀 고양이를 봤어요.", "고양이는 나무 밑에서 비를 보고 있었어요."],
-         "zh": "在公司附近看到一隻白色的貓。貓在樹下看著雨。", "en": "Near the office I saw a white cat. The cat was watching the rain under a tree."},
-        {"s": ["저녁에는 비가 그쳤어요.", "집에 오는 길에 빵집에서 맛있는 빵을 샀어요."],
-         "zh": "到了傍晚雨停了。回家路上在麵包店買了好吃的麵包。", "en": "By evening the rain had stopped. On the way home I bought some nice bread at a bakery."}
-      ],
-      "glossary": [
-        {"w": "비", "r": "", "zh": "雨", "en": "rain", "m": ["비가", "비를"]},
-        {"w": "춥다", "r": "", "zh": "冷", "en": "to be cold", "m": ["추워요"]},
-        {"w": "우산", "r": "", "zh": "雨傘", "en": "umbrella"},
-        {"w": "회사", "r": "", "zh": "公司", "en": "company; office"},
         {"w": "고양이", "r": "", "zh": "貓", "en": "cat"},
-        {"w": "나무", "r": "", "zh": "樹", "en": "tree"},
-        {"w": "그치다", "r": "", "zh": "（雨）停", "en": "to stop (rain)", "m": ["그쳤어요"]},
-        {"w": "빵집", "r": "", "zh": "麵包店", "en": "bakery"}
+        {"w": "마리", "r": "", "zh": "隻（數動物）", "en": "counter for animals"},
+        {"w": "하얀색", "r": "", "zh": "白色", "en": "white"},
+        {"w": "창문", "r": "", "zh": "窗戶", "en": "window"},
+        {"w": "기다리다", "r": "", "zh": "等", "en": "to wait", "m": ["기다려요"]},
+        {"w": "생선", "r": "", "zh": "魚（食物）", "en": "fish (food)"},
+        {"w": "주말", "r": "", "zh": "週末", "en": "weekend"},
+        {"w": "조용하다", "r": "", "zh": "安靜", "en": "to be quiet", "m": ["조용해요"]}
       ],
       "mcq": [
-        {"q": "오늘 날씨는 어때요?", "options": ["맑고 더워요", "비가 오고 조금 추워요", "눈이 오고 아주 추워요", "흐리고 따뜻해요"], "answer": 1,
-         "zh": "「비가 많이 와요. 조금 추워요」：下雨、有點冷。", "en": "“비가 많이 와요. 조금 추워요” — rainy and a little cold."},
-        {"q": "무엇으로 회사에 갔어요?", "options": ["버스", "지하철", "택시", "걸어서"], "answer": 0,
-         "zh": "「버스로 회사에 갔어요」。", "en": "“버스로 회사에 갔어요” — by bus."},
-        {"q": "버스 안은 어땠어요?", "options": ["아무도 없었어요", "사람이 많았어요", "아주 조용했어요", "고양이가 있었어요"], "answer": 1,
-         "zh": "「버스 안에 사람이 많았어요」。", "en": "“버스 안에 사람이 많았어요” — lots of people."},
-        {"q": "고양이는 어디에 있었어요?", "options": ["버스 안", "회사 안", "나무 밑", "빵집 앞"], "answer": 2,
-         "zh": "「고양이는 나무 밑에서 비를 보고 있었어요」。", "en": "“고양이는 나무 밑에서…” — under a tree."},
-        {"q": "집에 오는 길에 무엇을 샀어요?", "options": ["우산", "빵", "케이크", "고양이 밥"], "answer": 1,
-         "zh": "「빵집에서 맛있는 빵을 샀어요」。", "en": "“빵집에서 맛있는 빵을 샀어요” — bread."}
+        {"q": "나비는 몇 살이에요?", "options": ["두 살", "세 살", "네 살", "다섯 살"], "answer": 1,
+         "zh": "「나비는 세 살이고」：三歲。", "en": "“나비는 세 살이고” — three."},
+        {"q": "나비는 낮에 어디에서 자요?", "options": ["창문 옆", "침대 위", "문 앞", "소파 위"], "answer": 0,
+         "zh": "「낮에 창문 옆에서 자요」：在窗戶旁邊。門口是晚上等人的地方。", "en": "“낮에 창문 옆에서 자요” — by the window. The door is where she waits in the evening."},
+        {"q": "저녁에 나비는 무엇을 해요?", "options": ["밖에 나가요", "생선을 먹어요", "잠을 자요", "문 앞에서 기다려요"], "answer": 3,
+         "zh": "「저녁에 제가 집에 오면 문 앞에서 기다려요」：在門口等。", "en": "“저녁에 제가 집에 오면 문 앞에서 기다려요” — she waits at the door."},
+        {"q": "나비가 좋아하는 음식은 뭐예요?", "options": ["고기", "우유", "생선", "빵"], "answer": 2,
+         "zh": "「나비는 생선을 아주 좋아해요」：魚。", "en": "“나비는 생선을 아주 좋아해요” — fish."},
+        {"q": "나비가 없으면 집이 어때요?", "options": ["조용해요", "시끄러워요", "더러워요", "추워요"], "answer": 0,
+         "zh": "「나비가 없으면 집이 조용해요」：很安靜。", "en": "“나비가 없으면 집이 조용해요” — quiet."}
       ],
       "tf": [
-        {"s": "우산을 가지고 나갔어요.", "answer": true,
-         "zh": "○：「우산을 가지고 버스로 회사에 갔어요」。", "en": "True: 우산을 가지고 버스로 회사에 갔어요."},
-        {"s": "고양이는 까만색이었어요.", "answer": false,
-         "zh": "×：是「하얀 고양이」，白色的貓。", "en": "False: it was a white cat (하얀 고양이)."},
-        {"s": "저녁에도 비가 많이 왔어요.", "answer": false,
-         "zh": "×：「저녁에는 비가 그쳤어요」，傍晚雨停了。", "en": "False: by evening it had stopped (비가 그쳤어요)."}
+        {"s": "나비는 검은색 고양이예요.", "answer": false,
+         "zh": "×：小蝶是「하얀색」（白色）。", "en": "False: Nabi is 하얀색 (white)."},
+        {"s": "나비는 밖을 보는 것을 좋아해요.", "answer": true,
+         "zh": "○：「밖을 보는 것을 좋아해요」。", "en": "True: 밖을 보는 것을 좋아해요."},
+        {"s": "나비는 매일 생선을 먹어요.", "answer": false,
+         "zh": "×：只有「주말에는」（週末）才給一點魚。", "en": "False: she only gets fish at the weekend (주말에는)."}
       ]
     },
     {
-      "id": "department-store",
-      "topic": "shopping",
-      "title": {"text": "백화점에서 쇼핑", "zh": "在百貨公司買東西", "en": "Shopping at the department store"},
+      "id": "kimbap-picnic",
+      "topic": "food",
+      "title": {"text": "소풍 김밥", "zh": "郊遊的紫菜飯捲", "en": "Kimbap for the picnic"},
       "paragraphs": [
-        {"s": ["어제 어머니 생일 선물을 사러 백화점에 갔어요."],
-         "zh": "昨天去百貨公司買媽媽的生日禮物。", "en": "Yesterday I went to the department store to buy a birthday present for my mother."},
-        {"s": ["삼 층에서 예쁜 가방을 봤어요.", "그런데 십만 원이어서 안 샀어요."],
-         "zh": "在三樓看到一個漂亮的包包。可是要十萬韓元，所以沒買。", "en": "On the third floor I saw a pretty bag. But it was a hundred thousand won, so I didn't buy it."},
-        {"s": ["그다음에 오 층에 갔어요.", "거기에 파란색 스웨터가 있었어요.", "사만 원이었어요.", "어머니가 파란색을 좋아해서 그 스웨터를 샀어요."],
-         "zh": "接著去了五樓。那裡有一件藍色毛衣，四萬韓元。媽媽喜歡藍色，所以買了那件毛衣。", "en": "Then I went to the fifth floor. There was a blue sweater there. It was forty thousand won. My mother likes blue, so I bought that sweater."},
-        {"s": ["빨리 어머니께 드리고 싶어요."],
-         "zh": "真想快點送給媽媽。", "en": "I can't wait to give it to her."}
+        {"s": ["내일 학교에서 소풍을 가요.", "그래서 오늘 저녁에 어머니와 같이 김밥을 만들었어요."],
+         "zh": "明天學校要去郊遊。所以今天晚上我和媽媽一起做了紫菜飯捲。", "en": "Tomorrow our school is going on a picnic. So this evening I made kimbap with my mother."},
+        {"s": ["먼저 밥에 참기름과 소금을 넣었어요.", "그리고 김 위에 밥과 계란, 당근, 햄을 놓았어요."],
+         "zh": "首先在飯裡加了香油和鹽。然後在海苔上放飯、蛋、紅蘿蔔和火腿。", "en": "First we put sesame oil and salt in the rice. Then we laid rice, egg, carrot and ham on the seaweed."},
+        {"s": ["처음에는 김밥을 잘 못 말았어요.", "하지만 세 번째 김밥은 아주 예뻤어요.", "어머니가 웃으면서 \"잘했어!\" 하고 말했어요."],
+         "zh": "一開始我捲得不好。但是第三條捲得很漂亮。媽媽笑著說：「做得好！」", "en": "At first I couldn't roll the kimbap well. But the third one was really pretty. My mother smiled and said, “Well done!”"},
+        {"s": ["김밥을 열 줄 만들었어요.", "내일 친구들하고 같이 먹을 거예요."],
+         "zh": "我們做了十條。明天要和朋友們一起吃。", "en": "We made ten rolls. Tomorrow I'll eat them with my friends."}
+      ],
+      "glossary": [
+        {"w": "소풍", "r": "", "zh": "郊遊；遠足", "en": "picnic, outing"},
+        {"w": "만들다", "r": "", "zh": "做；製作", "en": "to make", "m": ["만들었어요"]},
+        {"w": "먼저", "r": "", "zh": "首先；先", "en": "first"},
+        {"w": "소금", "r": "", "zh": "鹽", "en": "salt"},
+        {"w": "계란", "r": "", "zh": "雞蛋", "en": "egg"},
+        {"w": "처음", "r": "", "zh": "一開始；第一次", "en": "the beginning, first time"},
+        {"w": "예쁘다", "r": "", "zh": "漂亮", "en": "to be pretty", "m": ["예뻤어요"]},
+        {"w": "같이", "r": "", "zh": "一起", "en": "together"}
+      ],
+      "mcq": [
+        {"q": "언제 소풍을 가요?", "options": ["오늘", "내일", "주말", "다음 주"], "answer": 1,
+         "zh": "「내일 학교에서 소풍을 가요」：明天。", "en": "“내일 학교에서 소풍을 가요” — tomorrow."},
+        {"q": "누구와 김밥을 만들었어요?", "options": ["어머니", "친구", "언니", "선생님"], "answer": 0,
+         "zh": "「어머니와 같이 김밥을 만들었어요」：和媽媽。", "en": "“어머니와 같이 김밥을 만들었어요” — with her mother."},
+        {"q": "김밥에 무엇을 안 넣었어요?", "options": ["계란", "당근", "햄", "고기"], "answer": 3,
+         "zh": "放的是「밥과 계란, 당근, 햄」，沒有肉（고기）。", "en": "They used 밥과 계란, 당근, 햄 — no meat (고기)."},
+        {"q": "몇 번째 김밥이 예뻤어요?", "options": ["첫 번째", "두 번째", "세 번째", "열 번째"], "answer": 2,
+         "zh": "「세 번째 김밥은 아주 예뻤어요」：第三條。", "en": "“세 번째 김밥은 아주 예뻤어요” — the third."},
+        {"q": "김밥을 몇 줄 만들었어요?", "options": ["세 줄", "다섯 줄", "열 줄", "열두 줄"], "answer": 2,
+         "zh": "「김밥을 열 줄 만들었어요」：十條。", "en": "“김밥을 열 줄 만들었어요” — ten."}
+      ],
+      "tf": [
+        {"s": "오늘 소풍을 갔어요.", "answer": false,
+         "zh": "×：郊遊是「내일」（明天）。", "en": "False: the picnic is 내일 (tomorrow)."},
+        {"s": "밥에 참기름과 소금을 넣었어요.", "answer": true,
+         "zh": "○：「먼저 밥에 참기름과 소금을 넣었어요」。", "en": "True: 먼저 밥에 참기름과 소금을 넣었어요."},
+        {"s": "처음부터 김밥을 잘 말았어요.", "answer": false,
+         "zh": "×：「처음에는 김밥을 잘 못 말았어요」，一開始捲不好。", "en": "False: 처음에는 김밥을 잘 못 말았어요 — not at first."}
+      ]
+    },
+    {
+      "id": "busan-trip",
+      "topic": "travel",
+      "title": {"text": "부산 여행", "zh": "釜山旅行", "en": "A trip to Busan"},
+      "paragraphs": [
+        {"s": ["지난 주말에 친구와 부산에 갔어요.", "서울역에서 KTX를 탔어요.", "두 시간 반쯤 걸렸어요."],
+         "zh": "上個週末我和朋友去了釜山。在首爾站搭了 KTX（高鐵）。大概花了兩個半小時。", "en": "Last weekend I went to Busan with a friend. We took the KTX from Seoul Station. It took about two and a half hours."},
+        {"s": ["토요일에는 해운대 바다에 갔어요.", "날씨가 좋아서 사람이 많았어요.", "우리는 바다를 보면서 커피를 마셨어요."],
+         "zh": "星期六去了海雲台的海邊。天氣很好，所以人很多。我們一邊看海一邊喝咖啡。", "en": "On Saturday we went to the sea at Haeundae. The weather was nice, so there were lots of people. We drank coffee looking at the sea."},
+        {"s": ["저녁에는 시장에서 어묵과 떡볶이를 먹었어요.", "값이 싸고 맛있었어요."],
+         "zh": "晚上在市場吃了魚板和辣炒年糕。又便宜又好吃。", "en": "In the evening we ate fish cakes and tteokbokki at the market. It was cheap and tasty."},
+        {"s": ["일요일에 기차를 타고 서울로 돌아왔어요.", "다음에는 가족과 같이 가고 싶어요."],
+         "zh": "星期天搭火車回到首爾。下次想和家人一起去。", "en": "On Sunday we took the train back to Seoul. Next time I want to go with my family."}
+      ],
+      "glossary": [
+        {"w": "지난", "r": "", "zh": "上（一個）；過去的", "en": "last, past"},
+        {"w": "걸리다", "r": "", "zh": "花（時間）", "en": "to take (time)", "m": ["걸렸어요"]},
+        {"w": "바다", "r": "", "zh": "海", "en": "sea"},
+        {"w": "날씨", "r": "", "zh": "天氣", "en": "weather"},
+        {"w": "시장", "r": "", "zh": "市場", "en": "market"},
+        {"w": "싸다", "r": "", "zh": "便宜", "en": "to be cheap", "m": ["싸고"]},
+        {"w": "돌아오다", "r": "", "zh": "回來", "en": "to come back", "m": ["돌아왔어요"]},
+        {"w": "다음", "r": "", "zh": "下次；下一個", "en": "next"}
+      ],
+      "mcq": [
+        {"q": "어떻게 부산에 갔어요?", "options": ["비행기", "버스", "KTX", "자동차"], "answer": 2,
+         "zh": "「서울역에서 KTX를 탔어요」：搭 KTX。", "en": "“서울역에서 KTX를 탔어요” — by KTX."},
+        {"q": "서울에서 부산까지 얼마나 걸렸어요?", "options": ["한 시간", "두 시간 반쯤", "세 시간 반", "다섯 시간"], "answer": 1,
+         "zh": "「두 시간 반쯤 걸렸어요」：大約兩個半小時。", "en": "“두 시간 반쯤 걸렸어요” — about two and a half hours."},
+        {"q": "해운대에서 무엇을 했어요?", "options": ["수영을 했어요", "쇼핑을 했어요", "어묵을 먹었어요", "바다를 보면서 커피를 마셨어요"], "answer": 3,
+         "zh": "「바다를 보면서 커피를 마셨어요」：邊看海邊喝咖啡。魚板是晚上在市場吃的。", "en": "“바다를 보면서 커피를 마셨어요.” The fish cakes were at the market in the evening."},
+        {"q": "시장 음식은 어땠어요?", "options": ["싸고 맛있었어요", "비싸고 맛있었어요", "싸지만 맛없었어요", "너무 매웠어요"], "answer": 0,
+         "zh": "「값이 싸고 맛있었어요」：便宜又好吃。", "en": "“값이 싸고 맛있었어요” — cheap and tasty."},
+        {"q": "다음에는 누구와 가고 싶어요?", "options": ["친구", "혼자", "가족", "선생님"], "answer": 2,
+         "zh": "「다음에는 가족과 같이 가고 싶어요」：和家人。", "en": "“다음에는 가족과 같이 가고 싶어요” — with family."}
+      ],
+      "tf": [
+        {"s": "토요일에 해운대에는 사람이 적었어요.", "answer": false,
+         "zh": "×：「날씨가 좋아서 사람이 많았어요」，人很多。", "en": "False: 날씨가 좋아서 사람이 많았어요 — it was busy."},
+        {"s": "저녁에 시장에서 떡볶이를 먹었어요.", "answer": true,
+         "zh": "○：「저녁에는 시장에서 어묵과 떡볶이를 먹었어요」。", "en": "True: 저녁에는 시장에서 어묵과 떡볶이를 먹었어요."},
+        {"s": "일요일에 비행기를 타고 돌아왔어요.", "answer": false,
+         "zh": "×：是「기차를 타고」（搭火車）回來的。", "en": "False: they came back by train (기차를 타고)."}
+      ]
+    },
+    {
+      "id": "rainy-season",
+      "topic": "weather",
+      "title": {"text": "장마철", "zh": "梅雨季", "en": "The rainy season"},
+      "paragraphs": [
+        {"s": ["요즘은 장마철이에요.", "일주일 동안 매일 비가 와요."],
+         "zh": "最近是梅雨季。一整個星期每天都在下雨。", "en": "It's the rainy season now. It has rained every day for a week."},
+        {"s": ["어제 아침에 우산을 가지고 학교에 갔어요.", "그런데 집에 올 때 우산이 없었어요.", "교실에 두고 나왔어요."],
+         "zh": "昨天早上我帶著傘去學校。可是回家的時候傘不見了。我把它忘在教室了。", "en": "Yesterday morning I took my umbrella to school. But when I came home, I didn't have it. I'd left it in the classroom."},
+        {"s": ["밖에는 비가 많이 왔어요.", "그때 친구 민수가 \"같이 쓰자!\" 하고 말했어요.", "우리는 우산 하나를 같이 쓰고 버스 정류장까지 걸었어요."],
+         "zh": "外面雨下得很大。這時朋友民秀說：「一起撐吧！」我們撐著同一把傘走到公車站。", "en": "It was raining hard outside. Then my friend Minsu said, “Let's share!” We walked to the bus stop under one umbrella."},
+        {"s": ["오늘은 민수에게 우유를 사 줬어요.", "장마철은 싫지만 친구가 있어서 좋아요."],
+         "zh": "今天我請民秀喝了牛奶。雖然討厭梅雨季，但是有朋友真好。", "en": "Today I bought Minsu some milk. I don't like the rainy season, but it's nice to have a friend."}
+      ],
+      "glossary": [
+        {"w": "요즘", "r": "", "zh": "最近", "en": "these days"},
+        {"w": "매일", "r": "", "zh": "每天", "en": "every day"},
+        {"w": "우산", "r": "", "zh": "傘", "en": "umbrella"},
+        {"w": "그런데", "r": "", "zh": "可是；不過", "en": "but, however"},
+        {"w": "교실", "r": "", "zh": "教室", "en": "classroom"},
+        {"w": "정류장", "r": "", "zh": "（公車）站", "en": "bus stop"},
+        {"w": "걷다", "r": "", "zh": "走路", "en": "to walk", "m": ["걸었어요"]},
+        {"w": "싫다", "r": "", "zh": "討厭", "en": "to dislike", "m": ["싫지만"]}
+      ],
+      "mcq": [
+        {"q": "장마철에는 날씨가 어때요?", "options": ["매일 비가 와요", "매일 눈이 와요", "매일 더워요", "바람이 많이 불어요"], "answer": 0,
+         "zh": "「일주일 동안 매일 비가 와요」：每天下雨。", "en": "“일주일 동안 매일 비가 와요” — it rains every day."},
+        {"q": "우산은 어디에 있었어요?", "options": ["집", "버스", "교실", "가방"], "answer": 2,
+         "zh": "「교실에 두고 나왔어요」：忘在教室。", "en": "“교실에 두고 나왔어요” — in the classroom."},
+        {"q": "민수가 뭐라고 말했어요?", "options": ["빨리 가자!", "같이 쓰자!", "우산을 사자!", "집에 가자!"], "answer": 1,
+         "zh": "「\"같이 쓰자!\" 하고 말했어요」：一起撐吧。", "en": "He said “같이 쓰자!” — let's share."},
+        {"q": "두 사람은 어디까지 걸었어요?", "options": ["학교", "집", "지하철역", "버스 정류장"], "answer": 3,
+         "zh": "「버스 정류장까지 걸었어요」：走到公車站。", "en": "“버스 정류장까지 걸었어요” — to the bus stop."},
+        {"q": "오늘 민수에게 무엇을 사 줬어요?", "options": ["우산", "빵", "우유", "커피"], "answer": 2,
+         "zh": "「민수에게 우유를 사 줬어요」：牛奶。", "en": "“민수에게 우유를 사 줬어요” — milk."}
+      ],
+      "tf": [
+        {"s": "일주일 동안 매일 비가 왔어요.", "answer": true,
+         "zh": "○：「일주일 동안 매일 비가 와요」。", "en": "True: 일주일 동안 매일 비가 와요."},
+        {"s": "집에 올 때 우산을 가지고 있었어요.", "answer": false,
+         "zh": "×：「집에 올 때 우산이 없었어요」，傘忘在教室了。", "en": "False: 집에 올 때 우산이 없었어요 — it was left in the classroom."},
+        {"s": "이 사람은 친구가 있어서 좋아요.", "answer": true,
+         "zh": "○：「친구가 있어서 좋아요」。", "en": "True: 친구가 있어서 좋아요."}
+      ]
+    },
+    {
+      "id": "birthday-gift",
+      "topic": "shopping",
+      "title": {"text": "친구의 생일 선물", "zh": "朋友的生日禮物", "en": "A birthday present for a friend"},
+      "paragraphs": [
+        {"s": ["다음 주 금요일은 친구 지아의 생일이에요.", "그래서 토요일에 동대문 시장에 갔어요."],
+         "zh": "下週五是朋友智雅的生日。所以星期六我去了東大門市場。", "en": "Next Friday is my friend Jia's birthday. So on Saturday I went to Dongdaemun Market."},
+        {"s": ["지아는 모자를 좋아해요.", "가게에 예쁜 모자가 많았어요.", "저는 파란색 모자와 빨간색 모자 중에서 고민했어요."],
+         "zh": "智雅喜歡帽子。店裡有很多漂亮的帽子。我在藍色和紅色的帽子之間猶豫了很久。", "en": "Jia likes hats. The shop had lots of pretty hats. I couldn't decide between a blue hat and a red one."},
+        {"s": ["가게 아주머니가 \"빨간색이 더 인기가 많아요.\"라고 말했어요.", "하지만 지아는 파란색을 좋아해서 파란색 모자를 샀어요.", "만오천 원이었어요."],
+         "zh": "店裡的阿姨說：「紅色的比較受歡迎。」但是智雅喜歡藍色，所以我買了藍色的帽子。一萬五千韓元。", "en": "The lady in the shop said, “The red one is more popular.” But Jia likes blue, so I bought the blue hat. It was 15,000 won."},
+        {"s": ["모자를 예쁜 상자에 넣고 카드도 썼어요.", "지아가 좋아하면 좋겠어요."],
+         "zh": "我把帽子放進漂亮的盒子裡，也寫了卡片。希望智雅會喜歡。", "en": "I put the hat in a pretty box and wrote a card too. I hope Jia likes it."}
       ],
       "glossary": [
         {"w": "생일", "r": "", "zh": "生日", "en": "birthday"},
-        {"w": "선물", "r": "", "zh": "禮物", "en": "present"},
-        {"w": "백화점", "r": "", "zh": "百貨公司", "en": "department store"},
-        {"w": "층", "r": "", "zh": "樓（層）", "en": "floor", "m": ["삼 층", "오 층"]},
-        {"w": "가방", "r": "", "zh": "包包", "en": "bag"},
-        {"w": "만 원", "r": "", "zh": "一萬韓元", "en": "ten thousand won", "m": ["십만 원", "사만 원"]},
-        {"w": "스웨터", "r": "", "zh": "毛衣", "en": "sweater"},
-        {"w": "드리다", "r": "", "zh": "給（敬語）", "en": "to give (honorific)", "m": ["드리고"]}
+        {"w": "모자", "r": "", "zh": "帽子", "en": "hat"},
+        {"w": "가게", "r": "", "zh": "商店", "en": "shop"},
+        {"w": "고민하다", "r": "", "zh": "苦惱；猶豫", "en": "to agonise over, to be torn", "m": ["고민했어요"]},
+        {"w": "인기", "r": "", "zh": "人氣；受歡迎", "en": "popularity"},
+        {"w": "사다", "r": "", "zh": "買", "en": "to buy", "m": ["샀어요"]},
+        {"w": "상자", "r": "", "zh": "盒子；箱子", "en": "box"},
+        {"w": "쓰다", "r": "", "zh": "寫", "en": "to write", "m": ["썼어요"]}
       ],
       "mcq": [
-        {"q": "무엇을 사러 백화점에 갔어요?", "options": ["제 옷", "어머니 생일 선물", "아버지 가방", "친구 책"], "answer": 1,
-         "zh": "「어머니 생일 선물을 사러」：買媽媽的生日禮物。", "en": "“어머니 생일 선물을 사러” — a birthday present for mother."},
-        {"q": "삼 층에서 무엇을 봤어요?", "options": ["스웨터", "가방", "구두", "책"], "answer": 1,
-         "zh": "「삼 층에서 예쁜 가방을 봤어요」。毛衣在五樓。", "en": "“삼 층에서 예쁜 가방을 봤어요”. The sweater was on the fifth floor."},
-        {"q": "왜 가방을 안 샀어요?", "options": ["안 예뻐서", "비싸서", "커서", "어머니가 안 좋아해서"], "answer": 1,
-         "zh": "「십만 원이어서 안 샀어요」：太貴了。", "en": "“십만 원이어서 안 샀어요” — it was too expensive."},
-        {"q": "스웨터는 얼마였어요?", "options": ["사천 원", "사만 원", "십만 원", "사십만 원"], "answer": 1,
-         "zh": "「사만 원이었어요」。十萬韓元是包包。", "en": "“사만 원이었어요”. A hundred thousand won was the bag."},
-        {"q": "왜 파란색 스웨터를 샀어요?", "options": ["싸서", "어머니가 파란색을 좋아해서", "점원이 말해서", "제가 파란색을 좋아해서"], "answer": 1,
-         "zh": "「어머니가 파란색을 좋아해서」：媽媽喜歡藍色。", "en": "“어머니가 파란색을 좋아해서” — mother likes blue."}
+        {"q": "지아의 생일은 언제예요?", "options": ["이번 주 토요일", "다음 주 금요일", "다음 주 토요일", "오늘"], "answer": 1,
+         "zh": "「다음 주 금요일은 친구 지아의 생일이에요」：下週五。星期六是去買禮物的日子。", "en": "“다음 주 금요일은 … 생일이에요” — next Friday. Saturday is the shopping day."},
+        {"q": "어디에 갔어요?", "options": ["백화점", "편의점", "동대문 시장", "서점"], "answer": 2,
+         "zh": "「동대문 시장에 갔어요」：東大門市場。", "en": "“동대문 시장에 갔어요” — Dongdaemun Market."},
+        {"q": "아주머니는 어떤 색이 인기가 많다고 했어요?", "options": ["빨간색", "파란색", "하얀색", "검은색"], "answer": 0,
+         "zh": "「빨간색이 더 인기가 많아요」：紅色。", "en": "“빨간색이 더 인기가 많아요” — red."},
+        {"q": "모자는 얼마였어요?", "options": ["오천 원", "만 원", "이만 원", "만오천 원"], "answer": 3,
+         "zh": "「만오천 원이었어요」：一萬五千韓元。", "en": "“만오천 원이었어요” — 15,000 won."},
+        {"q": "왜 파란색 모자를 샀어요?", "options": ["싸서", "지아가 파란색을 좋아해서", "인기가 많아서", "하나만 있어서"], "answer": 1,
+         "zh": "「지아는 파란색을 좋아해서」：因為智雅喜歡藍色。", "en": "“지아는 파란색을 좋아해서” — Jia likes blue."}
       ],
       "tf": [
-        {"s": "백화점에 간 날은 어제예요.", "answer": true,
-         "zh": "○：「어제…백화점에 갔어요」。", "en": "True: 어제…백화점에 갔어요."},
-        {"s": "스웨터는 삼 층에 있었어요.", "answer": false,
-         "zh": "×：毛衣在「오 층」（五樓），三樓是包包。", "en": "False: the sweater was on the fifth floor (오 층); the bag was on the third."},
-        {"s": "가방과 스웨터를 샀어요.", "answer": false,
-         "zh": "×：包包「안 샀어요」，只買了毛衣。", "en": "False: the bag wasn't bought (안 샀어요), only the sweater."}
+        {"s": "지아는 모자를 좋아해요.", "answer": true,
+         "zh": "○：「지아는 모자를 좋아해요」。", "en": "True: 지아는 모자를 좋아해요."},
+        {"s": "빨간색 모자를 샀어요.", "answer": false,
+         "zh": "×：買的是「파란색 모자」（藍色帽子）。", "en": "False: she bought the 파란색 모자 (blue hat)."},
+        {"s": "카드는 안 썼어요.", "answer": false,
+         "zh": "×：「카드도 썼어요」，也寫了卡片。", "en": "False: 카드도 썼어요 — she wrote a card too."}
       ]
     },
     {
-      "id": "korean-class",
+      "id": "taekwondo-club",
       "topic": "school",
-      "title": {"text": "한국어 수업", "zh": "韓文課", "en": "Korean class"},
+      "title": {"text": "태권도 동아리", "zh": "跆拳道社", "en": "The taekwondo club"},
       "paragraphs": [
-        {"s": ["저는 매주 화요일과 목요일에 한국어 수업에 가요.", "수업은 저녁 일곱 시에 시작해요."],
-         "zh": "我每週二和週四去上韓文課。課從晚上七點開始。", "en": "Every Tuesday and Thursday I go to a Korean class. It starts at seven in the evening."},
-        {"s": ["선생님은 김 선생님이에요.", "선생님은 아주 친절하고 재미있어요."],
-         "zh": "老師是金老師。老師非常親切又有趣。", "en": "Our teacher is Mr Kim. He is very kind and fun."},
-        {"s": ["반에는 학생이 여덟 명 있어요.", "미국 사람, 일본 사람, 태국 사람이 있어요.", "우리는 같이 한국 노래를 불러요.", "게임도 해요."],
-         "zh": "班上有八個學生，有美國人、日本人、泰國人。我們一起唱韓文歌，也玩遊戲。", "en": "There are eight students in the class — Americans, Japanese and Thais. We sing Korean songs together and play games too."},
-        {"s": ["한글 받침은 어렵지만 매일 조금씩 연습해요.", "내년에 한국으로 여행을 가고 싶어요."],
-         "zh": "韓文的收尾音很難，但我每天都練習一點。明年想去韓國旅行。", "en": "Final consonants in Hangul are hard, but I practise a little every day. Next year I want to travel to Korea."}
+        {"s": ["저는 대학교 1학년이에요.", "지난달부터 태권도 동아리에 다녀요."],
+         "zh": "我是大學一年級。從上個月開始參加跆拳道社。", "en": "I'm in my first year at university. Since last month I've been going to the taekwondo club."},
+        {"s": ["동아리는 화요일과 목요일 저녁 여섯 시에 있어요.", "체육관에서 한 시간 반 동안 운동해요."],
+         "zh": "社團活動在星期二和星期四晚上六點。在體育館運動一個半小時。", "en": "The club meets on Tuesdays and Thursdays at six in the evening. We train for an hour and a half in the gym."},
+        {"s": ["처음에는 다리가 아파서 힘들었어요.", "하지만 선배들이 친절하게 가르쳐 줘요.", "지금은 발차기를 잘해요."],
+         "zh": "一開始腿很痛，很辛苦。但是學長姊們很親切地教我。現在我很會踢腿了。", "en": "At first my legs hurt and it was hard. But the older members teach me kindly. Now I'm good at kicks."},
+        {"s": ["다음 달에 작은 대회가 있어요.", "열심히 연습해서 메달을 받고 싶어요."],
+         "zh": "下個月有一場小比賽。我想努力練習拿到獎牌。", "en": "There's a small competition next month. I want to practise hard and win a medal."}
       ],
       "glossary": [
-        {"w": "매주", "r": "", "zh": "每週", "en": "every week"},
-        {"w": "화요일", "r": "", "zh": "星期二", "en": "Tuesday"},
-        {"w": "목요일", "r": "", "zh": "星期四", "en": "Thursday"},
-        {"w": "친절하다", "r": "", "zh": "親切", "en": "to be kind", "m": ["친절하고"]},
-        {"w": "재미있다", "r": "", "zh": "有趣", "en": "to be fun", "m": ["재미있어요"]},
-        {"w": "받침", "r": "", "zh": "收尾音（韓文字最下面的子音）", "en": "final consonant (batchim)"},
-        {"w": "어렵다", "r": "", "zh": "難", "en": "to be difficult", "m": ["어렵지만"]},
-        {"w": "연습하다", "r": "", "zh": "練習", "en": "to practise", "m": ["연습해요"]}
+        {"w": "학년", "r": "", "zh": "年級", "en": "school year, grade"},
+        {"w": "동아리", "r": "", "zh": "社團", "en": "club"},
+        {"w": "다니다", "r": "", "zh": "（固定）去；上（學、班）", "en": "to attend, to go regularly", "m": ["다녀요"]},
+        {"w": "체육관", "r": "", "zh": "體育館", "en": "gym"},
+        {"w": "운동하다", "r": "", "zh": "運動", "en": "to exercise", "m": ["운동해요"]},
+        {"w": "힘들다", "r": "", "zh": "辛苦；累", "en": "to be hard, tiring", "m": ["힘들었어요"]},
+        {"w": "친절하다", "r": "", "zh": "親切", "en": "to be kind", "m": ["친절하게"]},
+        {"w": "연습하다", "r": "", "zh": "練習", "en": "to practise", "m": ["연습해서"]}
       ],
       "mcq": [
-        {"q": "한국어 수업은 무슨 요일에 있어요?", "options": ["월요일과 수요일", "화요일과 목요일", "수요일과 금요일", "토요일과 일요일"], "answer": 1,
-         "zh": "「매주 화요일과 목요일에」：每週二和週四。", "en": "“매주 화요일과 목요일에” — Tuesdays and Thursdays."},
-        {"q": "수업은 몇 시에 시작해요?", "options": ["아침 일곱 시", "오후 한 시", "오후 다섯 시", "저녁 일곱 시"], "answer": 3,
-         "zh": "「수업은 저녁 일곱 시에 시작해요」：晚上七點。", "en": "“수업은 저녁 일곱 시에 시작해요” — seven in the evening."},
-        {"q": "김 선생님은 어떤 분이에요?", "options": ["조용한 분", "친절하고 재미있는 분", "무서운 분", "키가 큰 분"], "answer": 1,
-         "zh": "「아주 친절하고 재미있어요」：親切又有趣。", "en": "“아주 친절하고 재미있어요” — kind and fun."},
-        {"q": "반에 학생이 몇 명 있어요?", "options": ["여섯 명", "일곱 명", "여덟 명", "아홉 명"], "answer": 2,
-         "zh": "「학생이 여덟 명 있어요」：八個人。", "en": "“학생이 여덟 명 있어요” — eight."},
-        {"q": "내년에 무엇을 하고 싶어요?", "options": ["한국으로 여행을 가고 싶어요", "한국에서 일하고 싶어요", "한국어 선생님이 되고 싶어요", "미국에 가고 싶어요"], "answer": 0,
-         "zh": "「내년에 한국으로 여행을 가고 싶어요」。", "en": "“내년에 한국으로 여행을 가고 싶어요” — travel to Korea."}
+        {"q": "언제부터 동아리에 다녀요?", "options": ["지난주", "지난달", "작년", "다음 달"], "answer": 1,
+         "zh": "「지난달부터 태권도 동아리에 다녀요」：從上個月開始。", "en": "“지난달부터 … 다녀요” — since last month."},
+        {"q": "동아리는 무슨 요일에 있어요?", "options": ["화요일과 목요일", "월요일과 수요일", "금요일", "주말"], "answer": 0,
+         "zh": "「화요일과 목요일 저녁 여섯 시에 있어요」：星期二和星期四。", "en": "“화요일과 목요일 저녁 여섯 시에 있어요” — Tuesdays and Thursdays."},
+        {"q": "어디에서 운동해요?", "options": ["운동장", "교실", "공원", "체육관"], "answer": 3,
+         "zh": "「체육관에서 한 시간 반 동안 운동해요」：在體育館。", "en": "“체육관에서 … 운동해요” — in the gym."},
+        {"q": "처음에 왜 힘들었어요?", "options": ["다리가 아파서", "시간이 없어서", "선배가 무서워서", "너무 추워서"], "answer": 0,
+         "zh": "「처음에는 다리가 아파서 힘들었어요」：因為腿痛。", "en": "“처음에는 다리가 아파서 힘들었어요” — her legs hurt."},
+        {"q": "다음 달에 무엇이 있어요?", "options": ["시험", "여행", "대회", "방학"], "answer": 2,
+         "zh": "「다음 달에 작은 대회가 있어요」：比賽。", "en": "“다음 달에 작은 대회가 있어요” — a competition."}
       ],
       "tf": [
-        {"s": "반에 한국 학생이 많아요.", "answer": false,
-         "zh": "×：學生是美國人、日本人、泰國人，沒有提到韓國學生。", "en": "False: the students are American, Japanese and Thai — no Korean students are mentioned."},
-        {"s": "받침은 쉬워요.", "answer": false,
-         "zh": "×：「받침은 어렵지만」，收尾音很難。", "en": "False: 받침은 어렵지만 — final consonants are hard."},
-        {"s": "매일 조금씩 연습해요.", "answer": true,
-         "zh": "○：「매일 조금씩 연습해요」。", "en": "True: 매일 조금씩 연습해요."}
+        {"s": "동아리에서 한 시간 동안 운동해요.", "answer": false,
+         "zh": "×：是「한 시간 반」（一個半小時）。", "en": "False: it's 한 시간 반 (an hour and a half)."},
+        {"s": "선배들이 친절하게 가르쳐 줘요.", "answer": true,
+         "zh": "○：「선배들이 친절하게 가르쳐 줘요」。", "en": "True: 선배들이 친절하게 가르쳐 줘요."},
+        {"s": "지금도 발차기를 잘 못해요.", "answer": false,
+         "zh": "×：「지금은 발차기를 잘해요」，現在很會踢。", "en": "False: 지금은 발차기를 잘해요 — now she's good at it."}
       ]
     },
     {
-      "id": "zoo-by-bus",
+      "id": "asleep-on-the-bus",
       "topic": "transport",
-      "title": {"text": "버스로 동물원에", "zh": "搭公車去動物園", "en": "To the zoo by bus"},
+      "title": {"text": "버스에서 잠이 들었어요", "zh": "我在公車上睡著了", "en": "I fell asleep on the bus"},
       "paragraphs": [
-        {"s": ["지난주 일요일에 남동생과 동물원에 갔어요.", "역 앞에서 십이 번 버스를 탔어요."],
-         "zh": "上星期天和弟弟去了動物園。在車站前面搭了 12 號公車。", "en": "Last Sunday I went to the zoo with my younger brother. We took the number 12 bus in front of the station."},
-        {"s": ["버스는 이십 분쯤 후에 동물원에 도착했어요.", "입구에서 표를 두 장 샀어요.", "한 장에 오천 원이었어요."],
-         "zh": "公車大約二十分鐘後到了動物園。在入口買了兩張票，一張五千韓元。", "en": "The bus got to the zoo after about twenty minutes. We bought two tickets at the entrance — five thousand won each."},
-        {"s": ["동물원에는 코끼리, 기린, 판다가 있었어요.", "남동생은 판다를 제일 좋아해요.", "판다는 나무 위에서 자고 있었어요."],
-         "zh": "動物園裡有大象、長頸鹿和貓熊。弟弟最喜歡貓熊。貓熊在樹上睡覺。", "en": "At the zoo there were elephants, giraffes and pandas. My brother likes pandas best. The panda was asleep up in a tree."},
-        {"s": ["돌아올 때는 버스가 오지 않아서 역까지 걸어서 왔어요.", "삼십 분쯤 걸렸어요."],
-         "zh": "回程時公車沒來，我們就走路回到車站。大約花了三十分鐘。", "en": "On the way back the bus didn't come, so we walked to the station. It took about thirty minutes."}
+        {"s": ["어제 할머니 댁에 가려고 버스를 탔어요.", "할머니 댁은 버스로 사십 분 걸려요."],
+         "zh": "昨天我搭公車要去奶奶家。奶奶家搭公車要四十分鐘。", "en": "Yesterday I took the bus to go to my grandmother's. It takes forty minutes by bus."},
+        {"s": ["버스 안은 따뜻하고 조용했어요.", "그래서 저는 잠이 들었어요."],
+         "zh": "公車裡又溫暖又安靜。所以我睡著了。", "en": "It was warm and quiet on the bus. So I fell asleep."},
+        {"s": ["눈을 떠 보니까 모르는 곳이었어요.", "내릴 정류장을 세 개나 지나갔어요.", "깜짝 놀라서 다음 정류장에서 내렸어요."],
+         "zh": "睜開眼睛一看，是不認識的地方。我竟然坐過了三站。我嚇了一跳，在下一站下了車。", "en": "When I opened my eyes, I didn't know where I was. I had gone three stops past mine. I got a fright and got off at the next stop."},
+        {"s": ["길 건너편에서 반대 방향 버스를 다시 탔어요.", "할머니 댁에 한 시간 늦게 도착했어요.", "할머니가 웃으면서 맛있는 국수를 만들어 주셨어요."],
+         "zh": "我在馬路對面重新搭了反方向的公車。晚了一個小時才到奶奶家。奶奶笑著幫我煮了好吃的麵。", "en": "I took a bus back the other way from across the road. I got to my grandmother's an hour late. She laughed and made me some delicious noodles."}
       ],
       "glossary": [
-        {"w": "동물원", "r": "", "zh": "動物園", "en": "zoo"},
-        {"w": "남동생", "r": "", "zh": "弟弟", "en": "younger brother"},
-        {"w": "타다", "r": "", "zh": "搭乘", "en": "to ride; to take", "m": ["탔어요"]},
-        {"w": "도착하다", "r": "", "zh": "到達", "en": "to arrive", "m": ["도착했어요"]},
-        {"w": "입구", "r": "", "zh": "入口", "en": "entrance"},
-        {"w": "표", "r": "", "zh": "票", "en": "ticket", "m": ["표를"]},
-        {"w": "장", "r": "", "zh": "張（量詞）", "en": "counter for flat things", "m": ["두 장", "한 장"]},
-        {"w": "걷다", "r": "", "zh": "走路", "en": "to walk", "m": ["걸어서"]}
+        {"w": "댁", "r": "", "zh": "府上；家（敬語）", "en": "home (honorific)"},
+        {"w": "따뜻하다", "r": "", "zh": "溫暖", "en": "to be warm", "m": ["따뜻하고"]},
+        {"w": "잠이 들다", "r": "", "zh": "睡著", "en": "to fall asleep", "m": ["잠이 들었어요"]},
+        {"w": "내리다", "r": "", "zh": "下（車）", "en": "to get off", "m": ["내릴", "내렸어요"]},
+        {"w": "지나가다", "r": "", "zh": "經過；錯過", "en": "to pass, to go past", "m": ["지나갔어요"]},
+        {"w": "놀라다", "r": "", "zh": "嚇一跳；吃驚", "en": "to be startled", "m": ["놀라서"]},
+        {"w": "늦다", "r": "", "zh": "晚；遲", "en": "to be late", "m": ["늦게"]},
+        {"w": "도착하다", "r": "", "zh": "到達", "en": "to arrive", "m": ["도착했어요"]}
       ],
       "mcq": [
-        {"q": "누구와 동물원에 갔어요?", "options": ["형", "남동생", "누나", "친구"], "answer": 1,
-         "zh": "「남동생과 동물원에 갔어요」：和弟弟。", "en": "“남동생과 동물원에 갔어요” — with the younger brother."},
-        {"q": "몇 번 버스를 탔어요?", "options": ["이 번", "십 번", "십이 번", "이십 번"], "answer": 2,
-         "zh": "「십이 번 버스를 탔어요」：12 號公車。", "en": "“십이 번 버스를 탔어요” — the number 12."},
-        {"q": "표는 모두 얼마였어요?", "options": ["오천 원", "만 원", "만 오천 원", "이만 원"], "answer": 1,
-         "zh": "一張五千韓元 × 兩張 ＝ 一萬韓元。", "en": "Two tickets at 5,000 won each — 10,000 won in all."},
-        {"q": "판다는 무엇을 하고 있었어요?", "options": ["먹고 있었어요", "놀고 있었어요", "나무 위에서 자고 있었어요", "물을 마시고 있었어요"], "answer": 2,
-         "zh": "「판다는 나무 위에서 자고 있었어요」。", "en": "“판다는 나무 위에서 자고 있었어요” — asleep in a tree."},
-        {"q": "돌아올 때 어떻게 왔어요?", "options": ["버스로 왔어요", "택시로 왔어요", "역까지 걸어서 왔어요", "아버지 차로 왔어요"], "answer": 2,
-         "zh": "「역까지 걸어서 왔어요」：走路到車站。", "en": "“역까지 걸어서 왔어요” — they walked to the station."}
+        {"q": "어디에 가려고 했어요?", "options": ["학교", "할머니 댁", "친구 집", "병원"], "answer": 1,
+         "zh": "「할머니 댁에 가려고 버스를 탔어요」：要去奶奶家。", "en": "“할머니 댁에 가려고” — to her grandmother's."},
+        {"q": "왜 잠이 들었어요?", "options": ["피곤해서", "밤에 못 자서", "음악을 들어서", "버스 안이 따뜻하고 조용해서"], "answer": 3,
+         "zh": "「버스 안은 따뜻하고 조용했어요. 그래서…」：因為公車裡溫暖又安靜。", "en": "“버스 안은 따뜻하고 조용했어요. 그래서…” — warm and quiet."},
+        {"q": "정류장을 몇 개 지나갔어요?", "options": ["한 개", "두 개", "세 개", "네 개"], "answer": 2,
+         "zh": "「내릴 정류장을 세 개나 지나갔어요」：三站。", "en": "“세 개나 지나갔어요” — three."},
+        {"q": "할머니 댁에 얼마나 늦게 도착했어요?", "options": ["한 시간", "십 분", "사십 분", "두 시간"], "answer": 0,
+         "zh": "「한 시간 늦게 도착했어요」：晚了一小時。四十分鐘是平常的車程。", "en": "“한 시간 늦게 도착했어요” — an hour. Forty minutes is the usual ride."},
+        {"q": "할머니가 무엇을 만들어 주셨어요?", "options": ["김밥", "국수", "떡볶이", "불고기"], "answer": 1,
+         "zh": "「맛있는 국수를 만들어 주셨어요」：麵。", "en": "“맛있는 국수를 만들어 주셨어요” — noodles."}
       ],
       "tf": [
-        {"s": "버스는 한 시간쯤 후에 도착했어요.", "answer": false,
-         "zh": "×：「이십 분쯤 후에 도착했어요」，大約二十分鐘。", "en": "False: about twenty minutes (이십 분쯤)."},
-        {"s": "남동생은 코끼리를 제일 좋아해요.", "answer": false,
-         "zh": "×：弟弟最喜歡的是「판다」（貓熊）。", "en": "False: his favourite is the panda (판다)."},
-        {"s": "역까지 걸어서 삼십 분쯤 걸렸어요.", "answer": true,
-         "zh": "○：「삼십 분쯤 걸렸어요」。", "en": "True: 삼십 분쯤 걸렸어요."}
+        {"s": "할머니 댁은 버스로 사십 분 걸려요.", "answer": true,
+         "zh": "○：「할머니 댁은 버스로 사십 분 걸려요」。", "en": "True: 할머니 댁은 버스로 사십 분 걸려요."},
+        {"s": "버스 안은 시끄러웠어요.", "answer": false,
+         "zh": "×：「버스 안은 따뜻하고 조용했어요」，很安靜。", "en": "False: 버스 안은 따뜻하고 조용했어요 — it was quiet."},
+        {"s": "택시를 타고 할머니 댁에 갔어요.", "answer": false,
+         "zh": "×：是「반대 방향 버스를 다시 탔어요」，又搭了公車。", "en": "False: 반대 방향 버스를 다시 탔어요 — another bus."}
       ]
     },
     {
-      "id": "caught-a-cold",
+      "id": "cant-sleep",
       "topic": "health",
-      "title": {"text": "감기에 걸렸어요", "zh": "我感冒了", "en": "I caught a cold"},
+      "title": {"text": "잠을 잘 못 자요", "zh": "我睡不好", "en": "I can't sleep well"},
       "paragraphs": [
-        {"s": ["그저께부터 목이 아프고 열도 나요.", "감기에 걸렸어요."],
-         "zh": "從前天開始喉嚨痛，也發燒了。我感冒了。", "en": "Since the day before yesterday my throat has been sore and I have a fever. I've caught a cold."},
-        {"s": ["어제 집 근처 병원에 갔어요.", "의사 선생님이 \"약을 먹고 푹 쉬세요.\"라고 했어요."],
-         "zh": "昨天去了家附近的醫院。醫生說：「請吃藥，好好休息。」", "en": "Yesterday I went to a clinic near home. The doctor said, “Take your medicine and get plenty of rest.”"},
-        {"s": ["약은 하루에 세 번, 식사 후에 먹어요.", "오늘은 회사에 가지 않고 집에서 쉬었어요."],
-         "zh": "藥一天吃三次，飯後吃。今天沒去公司，在家休息。", "en": "I take the medicine three times a day, after meals. Today I didn't go to work and rested at home."},
-        {"s": ["어머니가 전화로 \"따뜻한 차를 많이 마셔.\"라고 했어요.", "저녁에 차를 마시고 일찍 잤어요.", "내일은 괜찮을 거예요."],
-         "zh": "媽媽在電話裡說：「多喝點熱茶。」晚上喝了茶就早早睡了。明天應該會好起來。", "en": "My mother said on the phone, “Drink lots of hot tea.” In the evening I had some tea and went to bed early. I'll be fine tomorrow."}
+        {"s": ["요즘 저는 밤에 잠을 잘 못 자요.", "그래서 아침에 항상 피곤해요."],
+         "zh": "最近我晚上睡不好。所以早上總是很累。", "en": "These days I can't sleep well at night. So I'm always tired in the morning."},
+        {"s": ["어제 병원에 가서 의사 선생님을 만났어요.", "의사 선생님이 \"하루에 커피를 몇 잔 마셔요?\" 하고 물었어요.", "저는 \"다섯 잔쯤 마셔요.\"라고 대답했어요."],
+         "zh": "昨天我去醫院看了醫生。醫生問：「一天喝幾杯咖啡？」我回答：「大概五杯。」", "en": "Yesterday I went to the hospital and saw a doctor. The doctor asked, “How many cups of coffee do you drink a day?” I answered, “About five.”"},
+        {"s": ["의사 선생님이 \"커피를 줄이세요. 그리고 자기 전에 휴대폰을 보지 마세요.\"라고 말했어요."],
+         "zh": "醫生說：「請少喝咖啡。還有睡前不要看手機。」", "en": "The doctor said, “Cut down on coffee. And don't look at your phone before bed.”"},
+        {"s": ["그래서 지금은 커피를 하루에 한 잔만 마셔요.", "자기 전에는 책을 읽어요.", "어젯밤에는 잘 잤어요."],
+         "zh": "所以現在我一天只喝一杯咖啡。睡前看書。昨天晚上睡得很好。", "en": "So now I drink only one coffee a day. Before bed I read a book. Last night I slept well."}
       ],
       "glossary": [
-        {"w": "목", "r": "", "zh": "喉嚨", "en": "throat", "m": ["목이"]},
-        {"w": "아프다", "r": "", "zh": "痛；不舒服", "en": "to hurt; to be sick", "m": ["아프고"]},
-        {"w": "열", "r": "", "zh": "發燒；熱度", "en": "fever", "m": ["열도"]},
-        {"w": "감기", "r": "", "zh": "感冒", "en": "a cold"},
-        {"w": "병원", "r": "", "zh": "醫院", "en": "hospital; clinic"},
-        {"w": "약", "r": "", "zh": "藥", "en": "medicine", "m": ["약을", "약은"]},
-        {"w": "쉬다", "r": "", "zh": "休息", "en": "to rest", "m": ["쉬었어요"]},
-        {"w": "따뜻하다", "r": "", "zh": "溫暖；熱的", "en": "to be warm", "m": ["따뜻한"]}
+        {"w": "항상", "r": "", "zh": "總是", "en": "always"},
+        {"w": "피곤하다", "r": "", "zh": "累；疲倦", "en": "to be tired", "m": ["피곤해요"]},
+        {"w": "병원", "r": "", "zh": "醫院", "en": "hospital, clinic"},
+        {"w": "의사", "r": "", "zh": "醫生", "en": "doctor"},
+        {"w": "묻다", "r": "", "zh": "問", "en": "to ask", "m": ["물었어요"]},
+        {"w": "대답하다", "r": "", "zh": "回答", "en": "to answer", "m": ["대답했어요"]},
+        {"w": "줄이다", "r": "", "zh": "減少", "en": "to reduce", "m": ["줄이세요"]},
+        {"w": "휴대폰", "r": "", "zh": "手機", "en": "mobile phone"}
       ],
       "mcq": [
-        {"q": "언제부터 감기에 걸렸어요?", "options": ["어제", "그저께", "지난주", "오늘"], "answer": 1,
-         "zh": "「그저께부터 목이 아프고」：從前天開始。", "en": "“그저께부터” — since the day before yesterday."},
-        {"q": "의사 선생님이 뭐라고 했어요?", "options": ["많이 드세요", "약을 먹고 푹 쉬세요", "회사에 가세요", "매일 병원에 오세요"], "answer": 1,
-         "zh": "醫生說「약을 먹고 푹 쉬세요」。", "en": "The doctor said “약을 먹고 푹 쉬세요”."},
-        {"q": "약은 하루에 몇 번 먹어요?", "options": ["한 번", "두 번", "세 번", "네 번"], "answer": 2,
-         "zh": "「하루에 세 번」：一天三次。", "en": "“하루에 세 번” — three times a day."},
-        {"q": "약은 언제 먹어요?", "options": ["식사 전", "식사 후", "자기 전", "아침에만"], "answer": 1,
-         "zh": "「식사 후에 먹어요」：飯後吃。", "en": "“식사 후에 먹어요” — after meals."},
-        {"q": "저녁에 무엇을 했어요?", "options": ["병원에 갔어요", "차를 마시고 일찍 잤어요", "어머니 집에 갔어요", "회사에서 일했어요"], "answer": 1,
-         "zh": "「저녁에 차를 마시고 일찍 잤어요」。", "en": "“저녁에 차를 마시고 일찍 잤어요” — had tea and went to bed early."}
+        {"q": "이 사람은 아침에 어때요?", "options": ["배가 고파요", "항상 피곤해요", "머리가 아파요", "기분이 좋아요"], "answer": 1,
+         "zh": "「아침에 항상 피곤해요」：總是很累。", "en": "“아침에 항상 피곤해요” — always tired."},
+        {"q": "전에는 커피를 하루에 몇 잔 마셨어요?", "options": ["한 잔", "세 잔", "다섯 잔쯤", "열 잔"], "answer": 2,
+         "zh": "「다섯 잔쯤 마셔요」：大約五杯。一杯是現在喝的量。", "en": "“다섯 잔쯤 마셔요” — about five. One is what she drinks now."},
+        {"q": "의사 선생님이 자기 전에 무엇을 보지 말라고 했어요?", "options": ["휴대폰", "책", "텔레비전", "영화"], "answer": 0,
+         "zh": "「자기 전에 휴대폰을 보지 마세요」：手機。", "en": "“자기 전에 휴대폰을 보지 마세요” — the phone."},
+        {"q": "지금은 자기 전에 무엇을 해요?", "options": ["커피를 마셔요", "휴대폰을 봐요", "운동을 해요", "책을 읽어요"], "answer": 3,
+         "zh": "「자기 전에는 책을 읽어요」：看書。", "en": "“자기 전에는 책을 읽어요” — she reads."},
+        {"q": "어젯밤에는 어땠어요?", "options": ["잘 잤어요", "못 잤어요", "병원에 갔어요", "커피를 마셨어요"], "answer": 0,
+         "zh": "「어젯밤에는 잘 잤어요」：睡得很好。", "en": "“어젯밤에는 잘 잤어요” — she slept well."}
       ],
       "tf": [
-        {"s": "열이 없어요.", "answer": false,
-         "zh": "×：「열도 나요」，有發燒。", "en": "False: 열도 나요 — they have a fever."},
-        {"s": "오늘 회사에 갔어요.", "answer": false,
-         "zh": "×：「회사에 가지 않고 집에서 쉬었어요」，在家休息。", "en": "False: they stayed home (회사에 가지 않고 집에서 쉬었어요)."},
-        {"s": "어머니와 전화로 이야기했어요.", "answer": true,
-         "zh": "○：「어머니가 전화로…라고 했어요」。", "en": "True: 어머니가 전화로…라고 했어요."}
+        {"s": "요즘 밤에 잠을 잘 자요.", "answer": false,
+         "zh": "×：「요즘 저는 밤에 잠을 잘 못 자요」，最近睡不好。", "en": "False: 요즘 … 잠을 잘 못 자요."},
+        {"s": "지금은 커피를 하루에 한 잔만 마셔요.", "answer": true,
+         "zh": "○：「지금은 커피를 하루에 한 잔만 마셔요」。", "en": "True: 지금은 커피를 하루에 한 잔만 마셔요."},
+        {"s": "의사 선생님이 운동을 하라고 했어요.", "answer": false,
+         "zh": "×：醫生說的是少喝咖啡、睡前不要看手機，沒有說運動。", "en": "False: the doctor said to cut down on coffee and not look at the phone — nothing about exercise."}
       ]
     }
   ]
