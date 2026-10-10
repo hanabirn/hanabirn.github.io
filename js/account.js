@@ -89,6 +89,15 @@ const SYNC_KEYS = {
         });
         return o;
     } },
+    // reading passages: the better score of each (js/reading.js)
+    reading_progress: { empty: {}, merge: (a, b) => {
+        const o = Object.assign({}, a);
+        Object.entries(b).forEach(([k, p]) => {
+            const q = o[k];
+            if (!q || (p && p.best / (p.of || 1) > q.best / (q.of || 1))) o[k] = p;
+        });
+        return o;
+    } },
     // plain strings: this device's choice wins, the cloud fills in a missing one
     daily_goal: { raw: true },
     last_quiz_set: { raw: true }

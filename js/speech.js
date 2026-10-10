@@ -133,7 +133,9 @@ function stopSpeech() {
 /* Says `text` in `lang`: a recording if there is one (opts.reading — the kana
    of a Japanese word — picks the right one when a word has several readings),
    else the browser voice. opts.slow plays it at TTS_SLOW_FACTOR of the usual speed
-   (the listening quiz's 🐢 button). */
+   (the listening quiz's 🐢 button); opts.onend is called once it has finished
+   (not when another speakText() / stopSpeech() cut it short) — the 閱讀 page's
+   read-all plays sentence after sentence with it. */
 const TTS_SLOW_FACTOR = 0.65;
 
 function speakText(text, lang, opts) {
@@ -141,23 +143,28 @@ function speakText(text, lang, opts) {
     stopSpeech();
     const seq = speakSeq;
     const slow = !!(opts && opts.slow);
+    const onend = opts && typeof opts.onend === 'function'
+        ? () => { if (seq === speakSeq) opts.onend(); } : null;
     const dir = AUDIO_DIRS[ttsNorm(lang)];
-    if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang, slow);
+    if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang, slow, onend);
     audioIndex(dir).then(map => {
         if (seq !== speakSeq) return;
         const keys = opts && opts.reading ? [text + '|' + opts.reading, text] : [text];
         const id = map && keys.map(k => map.get(audioId(k))).find(Boolean);
-        if (!id) return speakWithVoice(text, lang, slow);
+        if (!id) return speakWithVoice(text, lang, slow, onend);
         const a = new Audio('data/audio/' + dir + '/' + id + '.mp3');
         if (slow) a.playbackRate = TTS_SLOW_FACTOR;
         audioPlaying = a;
-        a.addEventListener('ended', () => { if (audioPlaying === a) audioPlaying = null; });
+        a.addEventListener('ended', () => {
+            if (audioPlaying === a) audioPlaying = null;
+            if (onend) onend();
+        });
         // blocked autoplay or a missing file (offline): use the browser voice
-        a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang, slow); });
+        a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang, slow, onend); });
     });
 }
 
-function speakWithVoice(text, lang, slow) {
+function speakWithVoice(text, lang, slow, onend) {
     if (!window.speechSynthesis) return;
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -168,6 +175,7 @@ function speakWithVoice(text, lang, slow) {
         u.voice = voice;
         u.lang = voice.lang;
     }
+    if (onend) u.onend = onend;
     speechSynthesis.speak(u);
 }
 

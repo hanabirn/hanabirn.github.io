@@ -21,7 +21,7 @@ const POKE_EXTRA_CHANCE = 0.3;   // how often a poke on the head or body gets a 
 const RAIL_WORD_LANGS = ['jp', 'kr', 'en', 'zh'];
 const RAIL_TTS = { jp: 'ja-JP', kr: 'ko-KR', en: 'en-US' };
 const RAIL_CTX = { home: 'ctx_home', quiz: 'ctx_quiz', examquiz: 'ctx_exam', dict: 'ctx_dict',
-    alphabet: 'ctx_alphabet', notes: 'ctx_notes', grammar: 'ctx_grammar' };
+    alphabet: 'ctx_alphabet', notes: 'ctx_notes', grammar: 'ctx_grammar', reading: 'ctx_reading' };
 
 let pokeTimes = [];
 let pokeCalmAt = 0;          // no reactions before this (after being cross)

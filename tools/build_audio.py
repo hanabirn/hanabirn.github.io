@@ -190,6 +190,19 @@ def jobs(lang):
                 for ex in point['examples']:
                     fid = add(ex['ja'] + '|' + ex['kana'], ex['kana'].replace(' ', ''))
                     aliases.setdefault(audio_id(ex['ja']), fid)
+        # 閱讀 page (data/reading/ja_*.json): every sentence keyed "plain|kana" and spoken
+        # from the kana (tools/build_reading.py makes both), and the glossary words
+        for f in sorted((ROOT / 'data' / 'reading').glob('ja_*.json')):
+            for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
+                for para in p['paragraphs']:
+                    for sent in para['s']:
+                        add(sent['plain'] + '|' + sent['kana'], sent['kana'])
+                for g in p['glossary']:
+                    if HAS_KANJI.search(g['w']) and g['r']:
+                        fid = add(g['w'] + '|' + g['r'], g['r'])
+                        aliases.setdefault(audio_id(g['w']), fid)
+                    else:
+                        add(g['w'], g['w'])
         rows = list(vocab('jlpt_', reverse=True)) + list(vocab('tp_ja_'))
         for word, kana, *_ in rows:
             if HAS_KANJI.search(word) and kana:

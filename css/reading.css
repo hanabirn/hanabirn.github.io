@@ -1,0 +1,132 @@
+/* ===================== 閱讀 Reading (#page-reading, js/reading.js) =====================
+   The list and the result screens reuse the grammar page's classes (css/grammar.css);
+   this file adds the reader (furigana, tappable sentences and words, the word card),
+   the one-page quiz with ○ / × and the timer / text size tools. */
+
+.reading-card { text-align: left; }
+.reading-card h3 { text-align: center; }
+
+/* list */
+.rd-topic {
+    display: inline-block;
+    font-size: 0.72rem;
+    padding: 1px 8px;
+    margin-right: 6px;
+    border-radius: 99px;
+    background: var(--track);
+    color: var(--text-secondary);
+}
+.rd-meta { font-size: 0.75rem; color: var(--text-muted); margin-left: 4px; white-space: nowrap; }
+
+/* reader head and tools */
+.rd-head { text-align: center; margin: 4px 0 12px; }
+.rd-title { font-family: var(--font-serif); font-size: 1.5rem; font-weight: 700; line-height: 1.9; }
+.rd-title-sm { font-size: 1.15rem; }
+.rd-sub { color: var(--text-secondary); font-size: 0.9rem; }
+.rd-tools { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: center; margin-bottom: 16px; }
+.rd-tools .mode-btn { width: auto; min-width: 0; flex: none; margin: 0; padding: 6px 12px; font-size: 0.85rem; }
+.rd-font { display: inline-flex; gap: 6px; }
+.rd-font .mode-btn { min-width: 44px; }
+.rd-font .mode-btn:disabled { opacity: 0.45; cursor: default; }
+.rd-timer { font-size: 0.85rem; color: var(--text-muted); font-variant-numeric: tabular-nums; padding: 0 4px; }
+
+/* the text */
+.rd-text {
+    line-height: 2.45;
+    padding: 14px 16px;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    background: var(--surface);
+}
+.rd-text p { margin: 0 0 4px; }
+.rd-para + .rd-para { margin-top: 6px; }
+.rd-s { cursor: pointer; border-radius: 6px; transition: background 0.15s; }
+.rd-s:hover { background: var(--track); }
+.rd-s.playing { background: color-mix(in srgb, var(--primary) 18%, transparent); }
+.rd-w { border-bottom: 2px dotted var(--primary); cursor: help; }
+.rd-w:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border-radius: 3px; }
+/* keep a kanji word together when its furigana is wider (食堂 / しょくどう) */
+.reading-card ruby { ruby-align: center; }
+.reading-card rt { font-size: 0.46em; color: var(--text-secondary); }
+.no-furi rt { visibility: hidden; }
+.rd-tr {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-secondary);
+    margin: 0 0 10px;
+    padding-left: 10px;
+    border-left: 3px solid var(--line);
+}
+.rd-help { font-size: 0.8rem; color: var(--text-muted); margin: 8px 0 0; text-align: center; }
+
+/* glossary */
+.rd-gloss { margin: 18px 0 14px; }
+.rd-gloss ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 4px 12px; }
+.rd-gloss-item {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 4px 6px;
+    border-radius: 8px;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+.rd-gloss-item:hover { background: var(--track); }
+.rd-gloss-item b { font-family: var(--font-serif); }
+.rd-gloss-item span { color: var(--text-secondary); font-size: 0.88rem; }
+
+/* word card */
+.rd-pop {
+    position: fixed;
+    z-index: 900;
+    display: none;
+    padding: 12px 14px;
+    border: 2px solid var(--edge);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 4px 0 var(--edge);
+}
+.rd-pop-head b { font-family: var(--font-serif); font-size: 1.25rem; }
+.rd-pop-r { margin-left: 8px; color: var(--text-secondary); }
+.rd-pop-m { margin: 6px 0 10px; line-height: 1.6; }
+.rd-pop-en { display: block; font-size: 0.8rem; color: var(--text-muted); }
+.rd-pop-acts { display: flex; gap: 8px; }
+.rd-pop-acts .back-btn { width: auto; margin: 0; padding: 6px 12px; font-size: 0.85rem; }
+
+/* quiz */
+.rd-peek { margin: 0 0 14px; }
+.rd-peek summary { cursor: pointer; color: var(--primary); font-size: 0.9rem; margin-bottom: 8px; }
+.rd-peek .rd-text { font-size: 1rem; }
+.rd-part { margin: 18px 0 8px; }
+.rd-q { margin: 0 0 18px; }
+.rd-q h4 { font-size: 1.08rem; font-weight: 600; line-height: 2.1; margin: 0 0 6px; }
+.rd-qn { color: var(--primary); font-weight: 700; margin-right: 2px; }
+.rd-opts { display: grid; gap: 8px; }
+.rd-opts .option-btn { width: 100%; margin: 0; text-align: left; line-height: 2; }
+.rd-tf { display: flex; gap: 12px; }
+.rd-tf .rd-tf-btn { flex: 1; margin: 0; font-size: 1.6rem; font-weight: 700; padding: 6px 0; }
+.rd-why {
+    margin: 8px 0 0;
+    padding: 8px 12px;
+    border-radius: 10px;
+    background: var(--track);
+    font-size: 0.88rem;
+    line-height: 1.7;
+}
+
+/* result + glossary review */
+.rd-result { text-align: center; margin: 24px 0 0; padding-top: 18px; border-top: 2px dashed var(--line); }
+.rd-result .grammar-result-btns { display: grid; gap: 10px; max-width: 420px; margin: 14px auto 0; }
+.rd-speed { color: var(--text-secondary); font-size: 0.9rem; }
+.rd-review-word { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; margin: 6px 0; }
+
+/* computers: text left, glossary + the quiz button right (sticky) on a 1180px page */
+@media (min-width: 1024px) {
+    .rd-cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
+    .rd-col-side { position: sticky; top: 16px; }
+    .rd-col-side .rd-gloss { margin-top: 0; }
+    .rd-col-side .rd-gloss ul { grid-template-columns: 1fr; }
+}
