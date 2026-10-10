@@ -49,6 +49,25 @@
 .reading-card ruby { ruby-align: center; }
 .reading-card rt { font-size: 0.46em; color: var(--text-secondary); }
 .no-furi rt { visibility: hidden; }
+/* Chinese: one column per character, pinyin above and zhuyin below (js/reading.js
+   readingSegsHtml); #reading-card[data-zhrd] says which rows show. Every column
+   has all three rows, so punctuation and characters line up. */
+.zc { display: inline-grid; grid-template-columns: auto; justify-items: center; vertical-align: bottom; line-height: 1.5; margin-top: 0.35em; }
+.zc .py { grid-row: 1; } .zc .ch { grid-row: 2; } .zc .zy { grid-row: 3; }
+.zc .py, .zc .ch, .zc .zy { grid-column: 2; }
+.zc .pu { grid-row: 2; grid-column: 3; line-height: 1.45; }
+.zc .pu.pre { grid-column: 1; }
+.zc .py, .zc .zy { font-size: 0.52em; line-height: 1.35; height: 1.35em; color: var(--text-secondary); white-space: nowrap; padding: 0 1px; }
+.zc .zy { font-size: 0.48em; letter-spacing: -0.04em; }
+.zc .ch { line-height: 1.45; }
+.rd-w .zc .ch { border-bottom: 2px dotted var(--primary); }
+.rd-w:has(.zc) { border-bottom: 0; }
+#reading-card[data-zhrd="pinyin"] .zc .zy,
+#reading-card[data-zhrd="zhuyin"] .zc .py,
+#reading-card[data-zhrd="off"] .zc .py,
+#reading-card[data-zhrd="off"] .zc .zy { display: none; }
+.rd-text:has(.zc) { line-height: 1.6; }
+.rd-seg { display: inline-flex; gap: 4px; }
 .rd-tr {
     font-size: 0.88rem;
     line-height: 1.7;

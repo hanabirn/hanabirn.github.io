@@ -1,0 +1,337 @@
+{
+  "id": "zh_hsk12",
+  "lang": "zh",
+  "level": "HSK 1–2",
+  "order": 1,
+  "note": "Original passages written for the site, Traditional Chinese in Taiwan wording. The pinyin of every sentence, question and option is generated (tools/zh_reading.py) — the build prints it for review; give a line its own pinyin as {\"t\": \"…\", \"p\": \"…\"}. Simplified and zhuyin are made from it per character. Translations and glossary meanings: English (zh may stay empty). Edit this file, then run: python tools/build_reading.py",
+  "passages": [
+    {
+      "id": "my-day",
+      "topic": "home",
+      "title": {"text": "我的一天", "zh": "", "en": "My day"},
+      "paragraphs": [
+        {"s": ["我每天早上七點起床。", "早飯是麵包和雞蛋。"], "zh": "", "en": "I get up at seven every morning. Breakfast is bread and eggs."},
+        {"s": ["八點我出門，坐公車去學校。", "在學校，我跟朋友一起學中文。"], "zh": "", "en": "At eight I leave home and take the bus to school. At school I study Chinese with my friends."},
+        {"s": ["中午我和朋友在學校的餐廳吃飯。", "下午我在圖書館看書。"], "zh": "", "en": "At noon I eat with my friends in the school cafeteria. In the afternoon I read in the library."},
+        {"s": ["晚上我在家做晚飯。", "然後看電視，十一點睡覺。"], "zh": "", "en": "In the evening I cook dinner at home. Then I watch TV and go to bed at eleven."}
+      ],
+      "glossary": [
+        {"w": "每天", "r": "měitiān", "zh": "", "en": "every day"},
+        {"w": "起床", "r": "qǐchuáng", "zh": "", "en": "to get up"},
+        {"w": "公車", "r": "gōngchē", "zh": "", "en": "bus"},
+        {"w": "學", "r": "xué", "zh": "", "en": "to learn; to study", "m": ["學中文"]},
+        {"w": "餐廳", "r": "cāntīng", "zh": "", "en": "restaurant; cafeteria"},
+        {"w": "下午", "r": "xiàwǔ", "zh": "", "en": "afternoon"},
+        {"w": "圖書館", "r": "túshūguǎn", "zh": "", "en": "library"},
+        {"w": "睡覺", "r": "shuìjiào", "zh": "", "en": "to sleep; to go to bed"}
+      ],
+      "mcq": [
+        {"q": "這個人每天早上幾點起床？", "options": ["六點", "七點", "八點", "十一點"], "answer": 1,
+         "zh": "「我每天早上七點起床」。八點是出門的時間。", "en": "“我每天早上七點起床” — seven o'clock. Eight is when they leave home."},
+        {"q": "他怎麼去學校？", "options": ["坐公車", "坐火車", "騎腳踏車", "開車"], "answer": 0,
+         "zh": "「坐公車去學校」。", "en": "“坐公車去學校” — by bus."},
+        {"q": "他中午在哪裡吃飯？", "options": ["家裡", "學校的餐廳", "圖書館", "公車上"], "answer": 1,
+         "zh": "「中午我和朋友在學校的餐廳吃飯」。", "en": "“中午我和朋友在學校的餐廳吃飯” — in the school cafeteria."},
+        {"q": "他下午做什麼？", "options": ["看電視", "學中文", "看書", "做晚飯"], "answer": 2,
+         "zh": "「下午我在圖書館看書」。看電視和做晚飯是晚上。", "en": "“下午我在圖書館看書” — reading. TV and cooking are in the evening."},
+        {"q": "他幾點睡覺？", "options": ["九點", "十點", "十一點", "十二點"], "answer": 2,
+         "zh": "「十一點睡覺」。", "en": "“十一點睡覺” — at eleven."}
+      ],
+      "tf": [
+        {"s": "早飯是米飯和湯。", "answer": false,
+         "zh": "×：早飯是「麵包和雞蛋」。", "en": "False: breakfast is 麵包和雞蛋 (bread and eggs)."},
+        {"s": "他在學校跟朋友一起學中文。", "answer": true,
+         "zh": "○：「在學校，我跟朋友一起學中文」。", "en": "True: 在學校，我跟朋友一起學中文."},
+        {"s": "晚上他在飯館吃晚飯。", "answer": false,
+         "zh": "×：「晚上我在家做晚飯」，在家自己做。", "en": "False: in the evening they cook dinner at home (在家做晚飯)."}
+      ]
+    },
+    {
+      "id": "new-cafe",
+      "topic": "food",
+      "title": {"text": "新開的咖啡店", "zh": "", "en": "A new café"},
+      "paragraphs": [
+        {"s": ["星期天，我和朋友小雨去了車站附近一家新開的咖啡店。"], "zh": "", "en": "On Sunday my friend Xiaoyu and I went to a new café near the station."},
+        {"s": ["咖啡店很漂亮，人很多。", "我買了咖啡和蛋糕，小雨喝了一杯茶。"], "zh": "", "en": "The café was very pretty and crowded. I bought coffee and cake; Xiaoyu had a cup of tea."},
+        {"s": ["蛋糕有一點貴，可是非常好吃。", "咖啡不太甜。"], "zh": "", "en": "The cake was a little expensive, but very good. The coffee wasn't very sweet."},
+        {"s": ["我們聊了兩個小時。", "下個星期我還想跟她一起去。"], "zh": "", "en": "We talked for two hours. Next week I want to go with her again."}
+      ],
+      "glossary": [
+        {"w": "車站", "r": "chēzhàn", "zh": "", "en": "station"},
+        {"w": "附近", "r": "fùjìn", "zh": "", "en": "nearby"},
+        {"w": "漂亮", "r": "piàoliang", "zh": "", "en": "pretty"},
+        {"w": "蛋糕", "r": "dàngāo", "zh": "", "en": "cake"},
+        {"w": "杯", "r": "bēi", "zh": "", "en": "cup (measure word)", "m": ["一杯"]},
+        {"w": "貴", "r": "guì", "zh": "", "en": "expensive"},
+        {"w": "甜", "r": "tián", "zh": "", "en": "sweet"},
+        {"w": "聊", "r": "liáo", "zh": "", "en": "to chat"}
+      ],
+      "mcq": [
+        {"q": "他們什麼時候去咖啡店？", "options": ["星期六", "星期天", "星期一", "星期五"], "answer": 1,
+         "zh": "「星期天，我和朋友小雨去了…咖啡店」。", "en": "“星期天…去了…咖啡店” — on Sunday."},
+        {"q": "咖啡店在哪裡？", "options": ["學校裡", "車站附近", "小雨家前面", "商店裡"], "answer": 1,
+         "zh": "「車站附近一家新開的咖啡店」。", "en": "“車站附近一家新開的咖啡店” — near the station."},
+        {"q": "小雨喝了什麼？", "options": ["咖啡", "茶", "果汁", "水"], "answer": 1,
+         "zh": "「小雨喝了一杯茶」。喝咖啡的是「我」。", "en": "“小雨喝了一杯茶”. The coffee was the writer's."},
+        {"q": "蛋糕怎麼樣？", "options": ["很便宜，也很好吃", "有一點貴，可是很好吃", "很貴，也不好吃", "很便宜，可是不好吃"], "answer": 1,
+         "zh": "「蛋糕有一點貴，可是非常好吃」。", "en": "“蛋糕有一點貴，可是非常好吃” — a little expensive but very good."},
+        {"q": "他們聊了多久？", "options": ["半個小時", "一個小時", "兩個小時", "三個小時"], "answer": 2,
+         "zh": "「我們聊了兩個小時」。", "en": "“我們聊了兩個小時” — two hours."}
+      ],
+      "tf": [
+        {"s": "咖啡店裡人很少。", "answer": false,
+         "zh": "×：「人很多」。", "en": "False: 人很多 — it was crowded."},
+        {"s": "咖啡很甜。", "answer": false,
+         "zh": "×：「咖啡不太甜」。", "en": "False: 咖啡不太甜 — not very sweet."},
+        {"s": "下個星期我還想去那家咖啡店。", "answer": true,
+         "zh": "○：「下個星期我還想跟她一起去」。", "en": "True: 下個星期我還想跟她一起去."}
+      ]
+    },
+    {
+      "id": "this-saturday",
+      "topic": "travel",
+      "title": {"text": "這個星期六", "zh": "", "en": "This Saturday"},
+      "paragraphs": [
+        {"s": ["這個星期六，我要跟家人一起去海邊。", "我們早上很早就開車出發。"], "zh": "", "en": "This Saturday I'm going to the seaside with my family. We'll set off by car very early in the morning."},
+        {"s": ["到海邊要三個小時。", "在車上，我跟妹妹一起唱歌。"], "zh": "", "en": "It takes three hours to get to the sea. In the car I sing songs with my little sister."},
+        {"s": ["到了海邊，大家一起游泳。", "中午我們吃媽媽做的飯。"], "zh": "", "en": "At the seaside we all go swimming. At noon we eat the food my mother made."},
+        {"s": ["電視上說星期六是晴天。", "我很高興！"], "zh": "", "en": "The TV says Saturday will be sunny. I'm so happy!"}
+      ],
+      "glossary": [
+        {"w": "家人", "r": "jiārén", "zh": "", "en": "family"},
+        {"w": "海邊", "r": "hǎibiān", "zh": "", "en": "seaside"},
+        {"w": "出發", "r": "chūfā", "zh": "", "en": "to set off"},
+        {"w": "小時", "r": "xiǎoshí", "zh": "", "en": "hour"},
+        {"w": "妹妹", "r": "mèimei", "zh": "", "en": "younger sister"},
+        {"w": "唱歌", "r": "chànggē", "zh": "", "en": "to sing"},
+        {"w": "游泳", "r": "yóuyǒng", "zh": "", "en": "to swim"},
+        {"w": "晴天", "r": "qíngtiān", "zh": "", "en": "sunny day"}
+      ],
+      "mcq": [
+        {"q": "我要跟誰去海邊？", "options": ["朋友", "家人", "老師", "一個人"], "answer": 1,
+         "zh": "「我要跟家人一起去海邊」。", "en": "“我要跟家人一起去海邊” — with the family."},
+        {"q": "我們怎麼去？", "options": ["坐火車", "坐公車", "開車", "坐飛機"], "answer": 2,
+         "zh": "「早上很早就開車出發」。", "en": "“開車出發” — by car."},
+        {"q": "到海邊要多久？", "options": ["一個小時", "兩個小時", "三個小時", "五個小時"], "answer": 2,
+         "zh": "「到海邊要三個小時」。", "en": "“到海邊要三個小時” — three hours."},
+        {"q": "在車上，我做什麼？", "options": ["看書", "睡覺", "跟妹妹唱歌", "玩遊戲"], "answer": 2,
+         "zh": "「在車上，我跟妹妹一起唱歌」。", "en": "“在車上，我跟妹妹一起唱歌” — singing with the sister."},
+        {"q": "中午吃什麼？", "options": ["飯館的菜", "媽媽做的飯", "商店的麵包", "牛肉麵"], "answer": 1,
+         "zh": "「中午我們吃媽媽做的飯」。", "en": "“中午我們吃媽媽做的飯” — the food mother made."}
+      ],
+      "tf": [
+        {"s": "我們晚上出發。", "answer": false,
+         "zh": "×：「早上很早就開車出發」。", "en": "False: they leave very early in the morning."},
+        {"s": "大家在海邊游泳。", "answer": true,
+         "zh": "○：「到了海邊，大家一起游泳」。", "en": "True: 到了海邊，大家一起游泳."},
+        {"s": "星期六會下雨。", "answer": false,
+         "zh": "×：「電視上說星期六是晴天」。", "en": "False: the TV says Saturday will be sunny (晴天)."}
+      ]
+    },
+    {
+      "id": "rainy-day",
+      "topic": "weather",
+      "title": {"text": "下雨天", "zh": "", "en": "A rainy day"},
+      "paragraphs": [
+        {"s": ["今天從早上開始一直下大雨，有一點冷。"], "zh": "", "en": "It has been raining hard all day since this morning, and it's a little cold."},
+        {"s": ["我帶著傘，坐公車去公司。", "公車上人很多。"], "zh": "", "en": "I took my umbrella and went to work by bus. There were a lot of people on the bus."},
+        {"s": ["在公司附近，我看見一隻白色的貓。", "貓在樹下看著雨。"], "zh": "", "en": "Near the office I saw a white cat. The cat was watching the rain under a tree."},
+        {"s": ["到了晚上，雨已經停了。", "回家的路上，我在麵包店買了好吃的麵包。"], "zh": "", "en": "By evening the rain had stopped. On the way home I bought some nice bread at a bakery."}
+      ],
+      "glossary": [
+        {"w": "一直", "r": "yìzhí", "zh": "", "en": "all the time; continuously"},
+        {"w": "冷", "r": "lěng", "zh": "", "en": "cold"},
+        {"w": "傘", "r": "sǎn", "zh": "", "en": "umbrella"},
+        {"w": "公司", "r": "gōngsī", "zh": "", "en": "company; office"},
+        {"w": "隻", "r": "zhī", "zh": "", "en": "measure word for animals", "m": ["一隻"]},
+        {"w": "貓", "r": "māo", "zh": "", "en": "cat"},
+        {"w": "樹", "r": "shù", "zh": "", "en": "tree"},
+        {"w": "停", "r": "tíng", "zh": "", "en": "to stop"}
+      ],
+      "mcq": [
+        {"q": "今天天氣怎麼樣？", "options": ["晴天，很熱", "下雨，有一點冷", "下雪，很冷", "陰天，很暖和"], "answer": 1,
+         "zh": "「一直下大雨，有一點冷」。", "en": "“一直下大雨，有一點冷” — rainy and a little cold."},
+        {"q": "我怎麼去公司？", "options": ["坐公車", "坐火車", "坐計程車", "走路"], "answer": 0,
+         "zh": "「坐公車去公司」。", "en": "“坐公車去公司” — by bus."},
+        {"q": "公車上怎麼樣？", "options": ["一個人也沒有", "人很多", "很安靜", "有一隻貓"], "answer": 1,
+         "zh": "「公車上人很多」。", "en": "“公車上人很多” — lots of people."},
+        {"q": "貓在哪裡？", "options": ["公車上", "公司裡", "樹下", "麵包店前面"], "answer": 2,
+         "zh": "「貓在樹下看著雨」。", "en": "“貓在樹下看著雨” — under a tree."},
+        {"q": "回家的路上，我買了什麼？", "options": ["傘", "麵包", "蛋糕", "貓吃的東西"], "answer": 1,
+         "zh": "「我在麵包店買了好吃的麵包」。", "en": "“我在麵包店買了好吃的麵包” — bread."}
+      ],
+      "tf": [
+        {"s": "我帶著傘出門。", "answer": true,
+         "zh": "○：「我帶著傘，坐公車去公司」。", "en": "True: 我帶著傘，坐公車去公司."},
+        {"s": "那隻貓是黑色的。", "answer": false,
+         "zh": "×：是「一隻白色的貓」。", "en": "False: it was a white cat (白色的貓)."},
+        {"s": "到了晚上，還在下大雨。", "answer": false,
+         "zh": "×：「到了晚上，雨已經停了」。", "en": "False: by evening the rain had stopped (雨已經停了)."}
+      ]
+    },
+    {
+      "id": "department-store",
+      "topic": "shopping",
+      "title": {"text": "在百貨公司買東西", "zh": "", "en": "Shopping at the department store"},
+      "paragraphs": [
+        {"s": ["昨天我去百貨公司買媽媽的生日禮物。"], "zh": "", "en": "Yesterday I went to the department store to buy my mother's birthday present."},
+        {"s": ["在三樓，我看到一個很漂亮的包包。", "可是要三千塊，太貴了，所以我沒買。"], "zh": "", "en": "On the third floor I saw a very pretty bag. But it was three thousand dollars — too expensive — so I didn't buy it."},
+        {"s": ["然後我去了五樓，那裡有一件藍色的毛衣，一千兩百塊。", "媽媽喜歡藍色，所以我買了那件毛衣。"], "zh": "", "en": "Then I went to the fifth floor, where there was a blue sweater for one thousand two hundred dollars. My mother likes blue, so I bought that sweater."},
+        {"s": ["我想快點送給媽媽。"], "zh": "", "en": "I can't wait to give it to her."}
+      ],
+      "glossary": [
+        {"w": "百貨公司", "r": "bǎihuò gōngsī", "zh": "", "en": "department store"},
+        {"w": "生日", "r": "shēngrì", "zh": "", "en": "birthday"},
+        {"w": "禮物", "r": "lǐwù", "zh": "", "en": "present; gift"},
+        {"w": "樓", "r": "lóu", "zh": "", "en": "floor (of a building)", "m": ["三樓", "五樓"]},
+        {"w": "包包", "r": "bāobao", "zh": "", "en": "bag"},
+        {"w": "塊", "r": "kuài", "zh": "", "en": "dollar (spoken)", "m": ["三千塊", "一千兩百塊"]},
+        {"w": "毛衣", "r": "máoyī", "zh": "", "en": "sweater"},
+        {"w": "送", "r": "sòng", "zh": "", "en": "to give (as a present)", "m": ["送給"]}
+      ],
+      "mcq": [
+        {"q": "我去百貨公司買什麼？", "options": ["我的衣服", "媽媽的生日禮物", "爸爸的包包", "朋友的書"], "answer": 1,
+         "zh": "「買媽媽的生日禮物」。", "en": "“買媽媽的生日禮物” — mother's birthday present."},
+        {"q": "我在三樓看到什麼？", "options": ["毛衣", "包包", "鞋子", "書"], "answer": 1,
+         "zh": "「在三樓，我看到一個很漂亮的包包」。毛衣在五樓。", "en": "“在三樓…包包”. The sweater was on the fifth floor."},
+        {"q": "我為什麼沒買包包？", "options": ["不漂亮", "太貴了", "太大了", "媽媽不喜歡"], "answer": 1,
+         "zh": "「要三千塊，太貴了，所以我沒買」。", "en": "“太貴了，所以我沒買” — too expensive."},
+        {"q": "毛衣多少錢？", "options": ["一百二十塊", "一千兩百塊", "三千塊", "一萬兩千塊"], "answer": 1,
+         "zh": "「一千兩百塊」。三千塊是包包。", "en": "“一千兩百塊”. Three thousand was the bag."},
+        {"q": "我為什麼買藍色的毛衣？", "options": ["很便宜", "媽媽喜歡藍色", "店員說的", "我喜歡藍色"], "answer": 1,
+         "zh": "「媽媽喜歡藍色，所以我買了那件毛衣」。", "en": "“媽媽喜歡藍色” — mother likes blue."}
+      ],
+      "tf": [
+        {"s": "我昨天去了百貨公司。", "answer": true,
+         "zh": "○：「昨天我去百貨公司…」。", "en": "True: 昨天我去百貨公司…."},
+        {"s": "毛衣在三樓。", "answer": false,
+         "zh": "×：毛衣在「五樓」，三樓是包包。", "en": "False: the sweater was on the fifth floor (五樓); the bag was on the third."},
+        {"s": "我買了包包和毛衣。", "answer": false,
+         "zh": "×：包包「我沒買」，只買了毛衣。", "en": "False: the bag wasn't bought (我沒買), only the sweater."}
+      ]
+    },
+    {
+      "id": "chinese-class",
+      "topic": "school",
+      "title": {"text": "中文課", "zh": "", "en": "Chinese class"},
+      "paragraphs": [
+        {"s": ["我每個星期二和星期四去上中文課。", "上課時間是晚上七點。"], "zh": "", "en": "Every Tuesday and Thursday I go to Chinese class. Class starts at seven in the evening."},
+        {"s": ["我們的老師是王老師。", "王老師人很好，上課很有意思。"], "zh": "", "en": "Our teacher is Ms Wang. She is very nice, and her classes are fun."},
+        {"s": ["我們班有八個學生，有美國人、日本人，也有泰國人。", "我們一起唱中文歌，也玩遊戲。"], "zh": "", "en": "There are eight students in our class — Americans, Japanese and Thais. We sing Chinese songs together and play games too."},
+        {"s": ["漢字很難，可是我每天都練習寫一點。", "明年我想去台灣旅遊。"], "zh": "", "en": "Chinese characters are hard, but I practise writing a few every day. Next year I want to travel to Taiwan."}
+      ],
+      "glossary": [
+        {"w": "星期二", "r": "xīngqí'èr", "zh": "", "en": "Tuesday"},
+        {"w": "上課", "r": "shàngkè", "zh": "", "en": "to have class"},
+        {"w": "老師", "r": "lǎoshī", "zh": "", "en": "teacher"},
+        {"w": "有意思", "r": "yǒu yìsi", "zh": "", "en": "interesting; fun"},
+        {"w": "班", "r": "bān", "zh": "", "en": "class (group of students)", "m": ["我們班"]},
+        {"w": "漢字", "r": "hànzì", "zh": "", "en": "Chinese character"},
+        {"w": "難", "r": "nán", "zh": "", "en": "difficult"},
+        {"w": "練習", "r": "liànxí", "zh": "", "en": "to practise"}
+      ],
+      "mcq": [
+        {"q": "中文課是星期幾？", "options": ["星期一和星期三", "星期二和星期四", "星期三和星期五", "星期六和星期天"], "answer": 1,
+         "zh": "「每個星期二和星期四去上中文課」。", "en": "“每個星期二和星期四” — Tuesdays and Thursdays."},
+        {"q": "幾點上課？", "options": ["早上七點", "下午一點", "下午五點", "晚上七點"], "answer": 3,
+         "zh": "「上課時間是晚上七點」。", "en": "“上課時間是晚上七點” — seven in the evening."},
+        {"q": "王老師怎麼樣？", "options": ["很安靜", "人很好，上課很有意思", "不太喜歡說話", "常常生氣"], "answer": 1,
+         "zh": "「王老師人很好，上課很有意思」。", "en": "“王老師人很好，上課很有意思” — nice, and the classes are fun."},
+        {"q": "我們班有幾個學生？", "options": ["六個", "七個", "八個", "九個"], "answer": 2,
+         "zh": "「我們班有八個學生」。", "en": "“我們班有八個學生” — eight."},
+        {"q": "明年我想做什麼？", "options": ["去台灣旅遊", "在台灣工作", "當中文老師", "去美國"], "answer": 0,
+         "zh": "「明年我想去台灣旅遊」。", "en": "“明年我想去台灣旅遊” — travel to Taiwan."}
+      ],
+      "tf": [
+        {"s": "我們班有很多台灣學生。", "answer": false,
+         "zh": "×：學生是美國人、日本人和泰國人，沒有提到台灣學生。", "en": "False: the students are American, Japanese and Thai — no Taiwanese students are mentioned."},
+        {"s": "漢字很容易。", "answer": false,
+         "zh": "×：「漢字很難」。", "en": "False: 漢字很難 — characters are hard."},
+        {"s": "我每天都練習寫漢字。", "answer": true,
+         "zh": "○：「我每天都練習寫一點」。", "en": "True: 我每天都練習寫一點."}
+      ]
+    },
+    {
+      "id": "zoo-by-bus",
+      "topic": "transport",
+      "title": {"text": "坐公車去動物園", "zh": "", "en": "To the zoo by bus"},
+      "paragraphs": [
+        {"s": ["上個星期天，我跟弟弟去動物園。", "我們在車站前面坐十二號公車。"], "zh": "", "en": "Last Sunday I went to the zoo with my little brother. We took the number 12 bus in front of the station."},
+        {"s": ["公車開了二十分鐘就到了動物園。", "我們在門口買了兩張票，一張一百塊。"], "zh": "", "en": "After twenty minutes the bus got to the zoo. We bought two tickets at the gate, a hundred dollars each."},
+        {"s": ["動物園裡有大象、長頸鹿和貓熊。", "弟弟最喜歡貓熊。", "貓熊在樹上睡覺。"], "zh": "", "en": "At the zoo there were elephants, giraffes and pandas. My brother likes pandas best. The panda was asleep up in a tree."},
+        {"s": ["回來的時候，公車一直不來，所以我們走路到車站，走了三十分鐘。"], "zh": "", "en": "On the way back the bus never came, so we walked to the station. It took thirty minutes."}
+      ],
+      "glossary": [
+        {"w": "動物園", "r": "dòngwùyuán", "zh": "", "en": "zoo"},
+        {"w": "弟弟", "r": "dìdi", "zh": "", "en": "younger brother"},
+        {"w": "號", "r": "hào", "zh": "", "en": "number", "m": ["十二號"]},
+        {"w": "門口", "r": "ménkǒu", "zh": "", "en": "entrance; gate"},
+        {"w": "張", "r": "zhāng", "zh": "", "en": "measure word for flat things", "m": ["兩張", "一張"]},
+        {"w": "票", "r": "piào", "zh": "", "en": "ticket"},
+        {"w": "最", "r": "zuì", "zh": "", "en": "most", "m": ["最喜歡"]},
+        {"w": "走路", "r": "zǒulù", "zh": "", "en": "to walk"}
+      ],
+      "mcq": [
+        {"q": "我跟誰去動物園？", "options": ["哥哥", "弟弟", "姐姐", "朋友"], "answer": 1,
+         "zh": "「我跟弟弟去動物園」。", "en": "“我跟弟弟去動物園” — with the younger brother."},
+        {"q": "我們坐幾號公車？", "options": ["二號", "十號", "十二號", "二十號"], "answer": 2,
+         "zh": "「坐十二號公車」。", "en": "“坐十二號公車” — the number 12."},
+        {"q": "票一共多少錢？", "options": ["一百塊", "兩百塊", "三百塊", "四百塊"], "answer": 1,
+         "zh": "一張一百塊，買了兩張，一共兩百塊。", "en": "Two tickets at 100 dollars each — 200 in all."},
+        {"q": "貓熊在做什麼？", "options": ["吃東西", "玩", "在樹上睡覺", "喝水"], "answer": 2,
+         "zh": "「貓熊在樹上睡覺」。", "en": "“貓熊在樹上睡覺” — asleep in a tree."},
+        {"q": "我們怎麼回到車站？", "options": ["坐公車", "坐計程車", "走路", "坐爸爸的車"], "answer": 2,
+         "zh": "「所以我們走路到車站」。", "en": "“我們走路到車站” — they walked."}
+      ],
+      "tf": [
+        {"s": "公車開了一個小時才到動物園。", "answer": false,
+         "zh": "×：「公車開了二十分鐘就到了」。", "en": "False: it took twenty minutes (二十分鐘)."},
+        {"s": "弟弟最喜歡大象。", "answer": false,
+         "zh": "×：弟弟最喜歡「貓熊」。", "en": "False: his favourite is the panda (貓熊)."},
+        {"s": "我們走了三十分鐘到車站。", "answer": true,
+         "zh": "○：「走路到車站，走了三十分鐘」。", "en": "True: 走路到車站，走了三十分鐘."}
+      ]
+    },
+    {
+      "id": "caught-a-cold",
+      "topic": "health",
+      "title": {"text": "我感冒了", "zh": "", "en": "I caught a cold"},
+      "paragraphs": [
+        {"s": ["從前天開始，我的喉嚨很痛，還有一點發燒。", "我感冒了。"], "zh": "", "en": "Since the day before yesterday my throat has been very sore, and I have a slight fever. I've caught a cold."},
+        {"s": ["昨天我去了家附近的醫院。", "醫生說：「要吃藥，多休息。」"], "zh": "", "en": "Yesterday I went to the hospital near my home. The doctor said, “Take your medicine and rest a lot.”"},
+        {"s": ["藥一天吃三次，飯後吃。", "今天我沒去公司，在家休息。"], "zh": "", "en": "I take the medicine three times a day, after meals. Today I didn't go to work; I rested at home."},
+        {"s": ["媽媽打電話說：「多喝熱水。」", "晚上我喝了熱湯，很早就睡了。", "明天應該會好一點。"], "zh": "", "en": "My mother called and said, “Drink lots of hot water.” In the evening I had some hot soup and went to bed early. I should feel a bit better tomorrow."}
+      ],
+      "glossary": [
+        {"w": "喉嚨", "r": "hóulóng", "zh": "", "en": "throat"},
+        {"w": "痛", "r": "tòng", "zh": "", "en": "sore; painful"},
+        {"w": "發燒", "r": "fāshāo", "zh": "", "en": "to have a fever"},
+        {"w": "感冒", "r": "gǎnmào", "zh": "", "en": "to catch a cold; a cold"},
+        {"w": "醫院", "r": "yīyuàn", "zh": "", "en": "hospital"},
+        {"w": "藥", "r": "yào", "zh": "", "en": "medicine"},
+        {"w": "休息", "r": "xiūxí", "zh": "", "en": "to rest"},
+        {"w": "熱", "r": "rè", "zh": "", "en": "hot", "m": ["熱水", "熱湯"]}
+      ],
+      "mcq": [
+        {"q": "我從什麼時候開始感冒？", "options": ["昨天", "前天", "上個星期", "今天"], "answer": 1,
+         "zh": "「從前天開始，我的喉嚨很痛」。", "en": "“從前天開始” — since the day before yesterday."},
+        {"q": "醫生說了什麼？", "options": ["多吃飯", "要吃藥，多休息", "去公司上班", "每天來醫院"], "answer": 1,
+         "zh": "醫生說「要吃藥，多休息」。", "en": "The doctor said “要吃藥，多休息”."},
+        {"q": "藥一天吃幾次？", "options": ["一次", "兩次", "三次", "四次"], "answer": 2,
+         "zh": "「藥一天吃三次」。", "en": "“藥一天吃三次” — three times a day."},
+        {"q": "藥什麼時候吃？", "options": ["飯前", "飯後", "睡覺前", "只在早上"], "answer": 1,
+         "zh": "「飯後吃」。", "en": "“飯後吃” — after meals."},
+        {"q": "晚上我做了什麼？", "options": ["去醫院", "喝了熱湯，很早就睡了", "去媽媽家", "在公司工作"], "answer": 1,
+         "zh": "「晚上我喝了熱湯，很早就睡了」。", "en": "“晚上我喝了熱湯，很早就睡了” — had hot soup and went to bed early."}
+      ],
+      "tf": [
+        {"s": "我沒有發燒。", "answer": false,
+         "zh": "×：「還有一點發燒」，有一點發燒。", "en": "False: 還有一點發燒 — a slight fever."},
+        {"s": "今天我去公司了。", "answer": false,
+         "zh": "×：「今天我沒去公司，在家休息」。", "en": "False: 今天我沒去公司 — they stayed home."},
+        {"s": "媽媽打電話給我。", "answer": true,
+         "zh": "○：「媽媽打電話說…」。", "en": "True: 媽媽打電話說…."}
+      ]
+    }
+  ]
+}
