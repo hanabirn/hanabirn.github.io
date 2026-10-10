@@ -11,7 +11,7 @@ licence at the bottom of its learning path.
 | `en_toeic` | TOEIC Service List 1.2 — Browne, C., Culligan, B. (2013), www.newgeneralservicelist.com | CC BY-SA 4.0 |
 | `en_toefl` | ECDICT words tagged `toefl` (minus the `en_jh` words) | MIT |
 | English Chinese meanings | ECDICT (github.com/skywind3000/ECDICT), converted to Taiwan Traditional with OpenCC `s2twp` | MIT |
-| `jlpt_n5` … `jlpt_n1`, `topik_1` … `topik_4` | Word lists compiled by Hanabi (site owner) | © Hanabi |
+| `jlpt_n5` … `jlpt_n1`, `topik_1` … `topik_4` | Word lists compiled by Hanabi (site owner); JLPT levels checked against the JLPT lists of [tanos.co.uk](http://www.tanos.co.uk/jlpt/) by Jonathan Waller (via jamsinclair/open-anki-jlpt-decks) — an entry it puts at an easier level is moved there | © Hanabi; reference lists CC BY |
 | `tp_ja_*`, `tp_ko_*`, `tp_en_*`, `tp_zh_*`, `tp_fr_*`, `tp_ru_*`, `tp_es_*`, `tp_de_*` (10 topics × 40 words) | Written for the site by Claude and reviewed by Hanabi (site owner); source in `tools/topics/<lang>.tsv`, order kept as written | © Hanabi |
 | `fr_a1` … `fr_c1` | FLELex (CEFRLex, UCLouvain — cental.uclouvain.be/cefrlex/flelex), "Beacco" version: each lemma's CEFR level | CC BY-NC-SA 4.0 (non-commercial) |
 | `ru_a1` … `ru_c1` | Kelly list, Russian (Kelly project; Serge Sharoff, University of Leeds — ssharoff.github.io/kelly) | CC BY-NC-SA 2.0 (non-commercial) |

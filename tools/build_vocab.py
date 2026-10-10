@@ -448,7 +448,52 @@ def ko_freq(entry):
     return f
 
 
-def build_sheets(args):
+# ---- JLPT levelling (2026-10-10): the owner's sheets had easy words in the higher
+# levels (それ, しかし, ありがとう in N1; ずっと, 探す in N2), and frequency order put
+# them first, so N1 opened with N5 words. Each entry is checked against the open
+# JLPT lists from tanos.co.uk (Jonathan Waller, CC BY; CSVs via jamsinclair/
+# open-anki-jlpt-decks): an entry the reference puts at an EASIER level moves there
+# (never up), and a word in two levels stays only in the easiest. Matching needs the
+# same word AND reading, so 人(じん) isn't taken for 人(ひと); such a rarer reading of
+# a word the reference has at an easier level is sorted to the end of its level
+# instead of the front. A review page lists every move: tools/.mockups/jlpt_moves.html.
+JLPT_REF = "https://raw.githubusercontent.com/jamsinclair/open-anki-jlpt-decks/main/src/n{}.csv"
+JLPT_LEVEL = {"jlpt_n5": 5, "jlpt_n4": 4, "jlpt_n3": 3, "jlpt_n2": 2, "jlpt_n1": 1}
+JLPT_KEEP = set()      # (word, kana) the owner wants left where the sheet puts it
+JLPT_MOVE = {}         # (word, kana) -> 5..1, a level the owner picked by hand
+
+
+def jlpt_reference(offline):
+    """{(word, kana): easiest level}, {word: easiest level}, {kana: easiest level}
+    from the tanos lists."""
+    exact, by_word, by_reading = {}, {}, {}
+    for n in (5, 4, 3, 2, 1):
+        path = fetch(f"jlpt_ref_n{n}.csv", JLPT_REF.format(n), offline)
+        for r in csv.DictReader(open(path, encoding="utf-8")):
+            reading = r["reading"].strip()
+            by_reading[reading] = max(by_reading.get(reading, 0), n)
+            for w in r["expression"].split(";"):
+                w = w.strip()
+                exact.setdefault((w, reading), n)
+                by_word[w] = max(by_word.get(w, 0), n)
+    return exact, by_word, by_reading
+
+
+def jlpt_ref_level(key, exact, by_reading):
+    """The reference's level for an entry, or 0. A word our sheet writes in kana is
+    often in kanji there (おはよう / お早う), so a kana-only entry of 3+ kana is also
+    looked up by its reading; 1–2 kana (だけ, たい, し) match too many other words."""
+    word, kana = key
+    if key in exact:
+        return exact[key]
+    if word == kana and KANA_ONLY.match(word) and len(word) >= 3:
+        return by_reading.get(kana, 0)
+    return 0
+
+
+def build_jlpt(args):
+    exact, by_word, by_reading = jlpt_reference(args.offline)
+    sheets = {}
     for set_id, sid in JLPT_SHEETS.items():
         rows = sheet_rows(sid)[1:]  # header: word,kana,meaning,english
         words, seen = [], set()
@@ -460,8 +505,97 @@ def build_sheets(args):
                 continue
             seen.add(key)
             words.append([r[0].strip(), r[1].strip(), r[2].strip(), r[3].strip()])
-        words = freq_sorted(words, ja_freq)
-        write_set(set_id, "ja", words, "Hanabi 整理的 JLPT 單字表（依詞頻排序）", "© Hanabi")
+        sheets[set_id] = words
+    # where each entry goes: its own level, or an easier one the reference (or the
+    # owner) gives; a word met at several levels keeps the easiest, and the copy from
+    # the level it is in already (the owner's own meaning) wins over a moved one
+    target = {}            # (word, kana) -> (level, its own level, row)
+    for set_id, words in sheets.items():
+        own = JLPT_LEVEL[set_id]
+        for row in words:
+            key = (row[0], row[1])
+            lvl = own
+            if key in JLPT_MOVE:
+                lvl = JLPT_MOVE[key]
+            elif key not in JLPT_KEEP and jlpt_ref_level(key, exact, by_reading) > own:
+                lvl = jlpt_ref_level(key, exact, by_reading)
+            cur = target.get(key)
+            if cur is None or (lvl, lvl == own) > (cur[0], cur[0] == cur[1]):
+                target[key] = (lvl, own, row)
+    levels = {n: [] for n in (5, 4, 3, 2, 1)}
+    moves = []
+    for lvl, own, row in target.values():
+        levels[lvl].append(row)
+        if lvl != own:
+            moves.append((own, lvl, row))
+    # the copies that lost: a word also met at an easier level
+    dropped = [(JLPT_LEVEL[s], row) for s, words in sheets.items() for row in words
+               if target[(row[0], row[1])][1] != JLPT_LEVEL[s]]
+
+    def rare_reading(row):
+        # a word the reference has at an easier level with another reading (人 ひと vs
+        # 人 じん), or — from N3 up — 1–2 kana the reference can't place (だけ, たい, し:
+        # grammar words, or rare words spelled like them); both would otherwise lead
+        # the level on their frequency
+        key, lvl = (row[0], row[1]), target[(row[0], row[1])][0]
+        if key in exact:
+            return False
+        if by_word.get(row[0], 0) > lvl:
+            return True
+        return lvl <= 3 and row[0] == row[1] and KANA_ONLY.match(row[0]) and len(row[0]) <= 2
+
+    def weight(row, n):
+        if rare_reading(row):
+            return 0.0001
+        # from N3 up a lone kanji (的 まと, 日 にち, 中 ちゅう) is mostly a reading or a
+        # suffix of the kanji, whose count comes from the compounds it is part of
+        if n <= 3 and len(row[0]) == 1 and not KANA_ONLY.match(row[0]):
+            return 0.02
+        return 1
+
+    late = []
+    for set_id, n in JLPT_LEVEL.items():
+        words = freq_sorted(levels[n], lambda e: ja_freq(e) * weight(e, n))
+        late += [(n, row) for row in words if rare_reading(row)]
+        write_set(set_id, "ja", words, "Hanabi 整理的 JLPT 單字表（依詞頻排序；分級參考 tanos.co.uk JLPT 單字表）", "© Hanabi")
+    jlpt_review(moves, dropped, late)
+
+
+def jlpt_review(moves, dropped, late):
+    """A page for the owner: every entry moved to another level, each duplicate left
+    out, each rarer reading sorted to the end (git-ignored tools/.mockups/)."""
+    import html as H
+    esc = lambda s: H.escape(str(s))
+    def table(rows, cols):
+        return ("<table><tr>" + "".join(f"<th>{c}</th>" for c in cols) + "</tr>"
+                + "".join("<tr>" + "".join(f"<td>{esc(c)}</td>" for c in r) + "</tr>" for r in rows) + "</table>")
+    moves.sort(key=lambda m: (-m[0], m[1], m[2][1]))
+    groups = {}
+    for own, lvl, row in moves:
+        groups.setdefault((own, lvl), []).append(row)
+    parts = [f"<h1>JLPT 重新分級清單</h1><p>搬動 {len(moves)} 個字（只往簡單的級別搬）；"
+             f"跨級重複而刪掉 {len(dropped)} 筆；罕見讀法排到該級後段 {len(late)} 個。"
+             "覺得不該搬的字告訴 Claude，會放進 JLPT_KEEP。</p>"]
+    for (own, lvl), rows in sorted(groups.items(), key=lambda g: (g[0][0], -g[0][1])):
+        parts.append(f"<h2>N{own} → N{lvl}（{len(rows)} 個）</h2>")
+        parts.append(table([(r[0], r[1], r[2], r[3]) for r in rows], ["單字", "讀音", "中文", "English"]))
+    parts.append(f"<h2>跨級重複、只留在較簡單級別而刪掉的（{len(dropped)} 筆）</h2>")
+    parts.append(table([(f"N{n}", r[0], r[1], r[2]) for n, r in sorted(dropped, key=lambda d: d[0])],
+                       ["原本在", "單字", "讀音", "中文"]))
+    parts.append(f"<h2>罕見讀法，排到該級後段（{len(late)} 個）</h2>")
+    parts.append(table([(f"N{n}", r[0], r[1], r[2]) for n, r in late], ["級別", "單字", "讀音", "中文"]))
+    page = ("<!doctype html><meta charset='utf-8'><title>JLPT 重新分級</title><style>body{font:15px sans-serif;"
+            "max-width:980px;margin:20px auto;padding:0 16px}table{border-collapse:collapse;width:100%;margin:6px 0 18px}"
+            "td,th{border:1px solid #ccc;padding:3px 7px;text-align:left}th{background:#f3efe6}h2{margin-top:28px}</style>"
+            + "".join(parts))
+    out = os.path.join(ROOT, "tools", ".mockups", "jlpt_moves.html")
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    open(out, "w", encoding="utf-8").write(page)
+    print(f"  JLPT: {len(moves)} moved, {len(dropped)} duplicates left out, {len(late)} rarer readings last — review {out}")
+
+
+def build_sheets(args):
+    build_jlpt(args)
     for set_id, sid in TOPIK_SHEETS.items():
         rows = sheet_rows(sid)[1:]  # header: 韓文單字,繁體中文翻譯,English
         words, seen = [], set()
