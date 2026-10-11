@@ -1,19 +1,19 @@
 /* ===== Navigation =====
-   Desktop: pill tabs under the header (.main-nav). Phones (<=768px): the
-   bottom .tabbar plus the "More" sheet. Buttons in all three carry
-   .nav-btn + data-tab so switchPage() keeps them in sync, so the pill look
-   below is scoped to .main-nav. */
+   Desktop: five pill tabs in the header (.main-nav) — 首頁, 單字, 檢定 and two
+   dropdowns, 學習 ▾ / 工具 ▾ (.nav-group) — plus the ☰ menu (.site-menu).
+   Phones (<=768px): the bottom .tabbar with its 學習 and 更多 sheets. Page
+   buttons in all of them carry .nav-btn + data-tab so switchPage() keeps them
+   in sync, so each look below is scoped to its container. */
 .main-nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 8px;
-    max-width: 1240px;
-    margin: 0 auto;
-    padding: 0 20px;
+    align-items: center;
+    gap: 6px;
 }
 
-.main-nav .nav-btn {
+.main-nav > .nav-btn,
+.nav-group-btn {
     background: transparent;
     color: var(--text-secondary);
     border: 1px solid var(--nav-border);
@@ -23,46 +23,128 @@
     cursor: pointer;
     transition: all 0.3s;
     position: relative;
-    overflow: hidden;
+    white-space: nowrap;
 }
 
-.main-nav .nav-btn:hover {
+.main-nav > .nav-btn:hover,
+.nav-group-btn:hover,
+.nav-group.open .nav-group-btn {
     color: var(--text);
     border-color: var(--primary);
 }
 
-.main-nav .nav-btn.active {
+.main-nav > .nav-btn.active,
+.nav-group.has-active .nav-group-btn {
     background: var(--primary);
     color: var(--on-primary);
     font-weight: bold;
     border-color: var(--primary);
 }
 
-/* ===== Tab Visibility Settings ===== */
-.tab-settings-btn {
-    position: fixed;
-    bottom: 186px; right: 20px;
-    width: 48px; height: 48px;
-    border-radius: 50%;
-    border: 1px solid var(--theme-toggle-border);
-    background: var(--theme-toggle-bg);
-    color: var(--text);
-    cursor: pointer;
-    z-index: 200;
-    font-size: 1.4rem;
+/* --- 學習 ▾ / 工具 ▾ --- */
+.nav-group { position: relative; }
+.nav-group-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+.nav-chev {
+    width: 14px;
+    height: 14px;
+    flex: none;
+    opacity: 0.7;
+    transition: transform 0.2s;
+}
+.nav-group.open .nav-chev { transform: rotate(180deg); }
+
+/* the dropdown cards: the nav's two menus and the ☰ menu */
+.nav-menu,
+.site-menu-panel {
+    position: absolute;
+    top: calc(100% + 8px);
+    z-index: 300;
+    min-width: 250px;
+    padding: 6px;
+    border-radius: 14px;
+    background: var(--surface);
+    border: 2px solid var(--edge);
+    box-shadow: 0 4px 0 var(--edge), 0 10px 24px rgba(0, 0, 0, 0.12);
+    display: none;
+}
+.nav-menu { left: 50%; transform: translateX(-50%); }
+.site-menu-panel { right: 0; }
+/* a bridge over the 8px gap, so the mouse can travel from the tab to its menu */
+.nav-menu::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -12px;
+    height: 12px;
+}
+.nav-group.open .nav-menu,
+.site-menu.open .site-menu-panel {
+    display: block;
+    animation: nav-menu-in 0.14s ease-out;
+}
+@keyframes nav-menu-in { from { opacity: 0; margin-top: -4px; } }
+.site-menu { position: relative; }
+
+.nav-menu-item,
+.menu-item {
     display: flex;
     align-items: center;
-    justify-content: center;
-    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
-        transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
-    box-shadow: 0 2px 0 var(--edge);
+    gap: 12px;
+    width: 100%;
+    padding: 9px 12px;
+    background: none;
+    border: none;
+    border-radius: 10px;
+    color: var(--text);
+    font-size: 0.95rem;
+    text-align: left;
+    cursor: pointer;
 }
-.tab-settings-btn:hover {
-    transform: scale(1.12) rotate(45deg);
-    border-color: var(--primary);
-    color: var(--text-pink);
+.nav-menu-item svg,
+.menu-item svg {
+    width: 22px;
+    height: 22px;
+    flex: none;
+    color: var(--text-secondary);
+}
+.nav-menu-text { display: flex; flex-direction: column; min-width: 0; }
+.nav-menu-text b { font-weight: 700; }
+.nav-menu-text small { font-size: 0.76rem; color: var(--text-secondary); margin-top: 1px; }
+.nav-menu-item:hover,
+.menu-item:hover,
+.nav-menu-item:focus-visible,
+.menu-item:focus-visible {
+    background: var(--bg-section-hover);
+}
+.nav-menu-item.active,
+.menu-item.active {
+    color: var(--primary);
     background: var(--primary-soft);
 }
+.nav-menu-item.active svg,
+.menu-item.active svg { color: var(--primary); }
+.menu-item .header-dot { position: static; margin-left: auto; flex: none; }
+.menu-sep { height: 1px; background: var(--line); margin: 5px 8px; }
+
+@media (prefers-reduced-motion: reduce) {
+    .nav-group.open .nav-menu, .site-menu.open .site-menu-panel { animation: none; }
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+/* ===== Tab Visibility Settings ===== */
 
 .tab-settings-overlay {
     position: fixed;
@@ -342,6 +424,110 @@
     background: var(--line);
     margin: 6px 10px;
 }
+
+/* 更多: tiles in groups (工具 / 網站 / 交流), then the quick actions */
+.more-cap {
+    font-size: 0.74rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--text-secondary);
+    margin: 10px 4px 6px;
+}
+.more-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+.more-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.more-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.more-tile {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-height: 68px;
+    padding: 10px 4px 8px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    background: var(--paper);
+    box-shadow: 0 3px 0 var(--line);
+    color: var(--text);
+    font-size: 0.78rem;
+    font-weight: 600;
+    line-height: 1.25;
+    text-align: center;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.more-grid-4 .more-tile { padding-left: 2px; padding-right: 2px; font-size: 0.74rem; }
+.more-tile svg { width: 24px; height: 24px; color: var(--text-secondary); flex: none; }
+.more-tile:active { transform: translateY(3px); box-shadow: none; }
+.more-tile.active { border-color: var(--primary); color: var(--primary); }
+.more-tile.active svg { color: var(--primary); }
+.more-tile .header-dot { top: 6px; right: 8px; }
+.more-quick-row {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px solid var(--line);
+}
+.more-quick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    padding: 8px 2px;
+    border: 1.5px solid var(--line);
+    border-radius: 10px;
+    background: none;
+    color: var(--text-secondary);
+    font-size: 0.7rem;
+    line-height: 1.2;
+    text-align: center;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.more-quick svg { width: 20px; height: 20px; flex: none; }
+.more-quick.on,
+html[data-theme="dark"] .more-quick.more-theme {
+    color: var(--primary);
+    border-color: var(--primary);
+    background: var(--primary-soft);
+}
+
+/* 學習: one card per page with how much is done */
+.learn-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 12px 14px;
+    border: 2px solid var(--line);
+    border-radius: 14px;
+    background: var(--paper);
+    box-shadow: 0 3px 0 var(--line);
+    color: var(--text);
+    text-align: left;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.learn-item svg { width: 28px; height: 28px; flex: none; color: var(--primary); }
+.learn-item:active { transform: translateY(3px); box-shadow: none; }
+.learn-item.active { border-color: var(--primary); }
+.learn-item-text { flex: 1; display: flex; flex-direction: column; min-width: 0; }
+.learn-item-text b { font-size: 1rem; }
+.learn-item-text small { font-size: 0.78rem; color: var(--text-secondary); margin-top: 2px; }
+.learn-item-prog { font-size: 0.75rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
+.learn-item-prog.none { color: var(--text-muted); font-weight: 500; }
 
 @media (prefers-reduced-motion: reduce) {
     .more-sheet, .more-sheet-overlay { transition-duration: 0.01s; }

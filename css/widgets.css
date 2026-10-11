@@ -172,6 +172,26 @@
     cursor: pointer;
 }
 
+/* In the header's ☰ menu (.menu-bgm): disc, label, track name and ⏮ ⏭ on a
+   grid, the volume underneath — the player and its old hover panel only pass
+   their children through (display: contents). */
+.menu-bgm {
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr) auto;
+    grid-template-areas: "disc label ctrl" "disc track ctrl" "vol vol vol";
+    column-gap: 12px;
+    row-gap: 2px;
+    align-items: center;
+    padding: 8px 12px;
+}
+.menu-bgm .bgm-player,
+.menu-bgm .bgm-panel { display: contents; visibility: visible; }
+.menu-bgm .bgm-disc { grid-area: disc; }
+.menu-bgm-label { grid-area: label; font-size: 0.95rem; color: var(--text); }
+.menu-bgm .bgm-track-name { grid-area: track; max-width: none; font-size: 0.74rem; }
+.menu-bgm .bgm-controls { grid-area: ctrl; }
+.menu-bgm #bgm-volume { grid-area: vol; margin-top: 8px; }
+
 /* ===================== 📲 PWA Install Banner ===================== */
 .pwa-install-banner {
     position: fixed;
@@ -308,99 +328,9 @@ html.is-standalone .install-entry { display: none !important; }
     }
 }
 
-/* ===================== 🕐 Clock & Weather Widget ===================== */
-.clock-widget {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 200;
-    background: var(--bg-widget);
-    border: 1px solid var(--border-card);
-    border-radius: 14px;
-    padding: 10px 16px;
-    text-align: center;
-    box-shadow: 0 2px 0 var(--edge);
-    transition: all 0.3s;
-}
-.clock-widget:hover {
-    border-color: var(--primary);
-}
-
-.clock-time {
-    font-size: 1.15rem;
-    font-weight: bold;
-    color: var(--text);
-    letter-spacing: 1px;
-    font-variant-numeric: tabular-nums;
-}
-
-.clock-date {
-    font-size: 0.72rem;
-    color: var(--text-accent);
-    margin-top: 2px;
-}
-
-.clock-weather {
-    font-size: 0.8rem;
-    color: var(--text-pink);
-    margin-top: 3px;
-}
-.clock-weather:empty { display: none; }
-.weather-optin-btn {
-    font-size: 0.75rem;
-    color: var(--text-pink);
-    background: none;
-    border: 1px solid rgba(var(--accent-pink-rgb),0.4);
-    border-radius: 10px;
-    padding: 2px 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-.weather-optin-btn:hover {
-    background: rgba(var(--accent-pink-rgb),0.15);
-    border-color: rgba(var(--accent-pink-rgb),0.7);
-}
-
-.reload-btn {
-    position: fixed;
-    bottom: 130px;
-    right: 20px;
-    z-index: 200;
-    width: 48px;
-    height: 48px;
-    background: var(--theme-toggle-bg);
-    border: 1px solid var(--theme-toggle-border);
-    color: var(--text);
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: border-color 0.25s, color 0.25s, box-shadow 0.25s,
-        transform 0.30s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
-    flex-shrink: 0;
-}
-.reload-btn svg { width: 22px; height: 22px; }
-.reload-btn:hover {
-    background: var(--primary-soft);
-    color: var(--text-pink);
-    border-color: var(--primary);
-    transform: scale(1.12) rotate(90deg);
-}
-
 /* ===================== Responsive ===================== */
 @media (max-width: 768px) {
-    /* settings + reload live in the tab bar's More sheet on phones
-       (this file loads after nav.css, so the hide has to live here) */
-    .reload-btn, .tab-settings-btn {
-        display: none;
-    }
-    /* no floating clock on phones: on a narrow screen it covered buttons
-       (a lesson word's 🔊, the quiz tools) whatever the page */
-    .clock-widget {
-        display: none;
-    }
-    /* the bottom edge is taken by the tab bar and the clock, so the
+    /* the bottom edge is taken by the tab bar, so the
        install / update banners drop in from the top instead, just under
        the ~56px phone header so they don't cover its controls */
     .pwa-install-banner,

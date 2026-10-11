@@ -110,112 +110,16 @@ function updateBgmUI() {
     if (disc) disc.classList.toggle('spinning', bgmPlaying);
     if (waveIcon) waveIcon.style.display = bgmPlaying ? '' : 'none';
     if (muteIcon) muteIcon.style.display = bgmPlaying ? 'none' : '';
+    document.querySelectorAll('.more-bgm').forEach(b => {
+        b.classList.toggle('on', bgmPlaying);
+        b.setAttribute('aria-pressed', String(bgmPlaying));
+    });
 }
 
-/* ===================== 🕐 時鐘 + 天氣 Clock & Weather ===================== */
-
-const WEATHER_EMOJI = {
-    0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
-    45: '🌫️', 48: '🌫️',
-    51: '🌦️', 53: '🌦️', 55: '🌧️',
-    56: '🌧️', 57: '🌧️',
-    61: '🌧️', 63: '🌧️', 65: '🌧️',
-    66: '🌧️', 67: '🌧️',
-    71: '🌨️', 73: '🌨️', 75: '❄️', 77: '❄️',
-    80: '🌦️', 81: '🌧️', 82: '⛈️',
-    85: '🌨️', 86: '❄️',
-    95: '⛈️', 96: '⛈️', 99: '⛈️'
-};
-
-function updateClock() {
-    const now = new Date();
-    const timeEl = document.getElementById('clock-time');
-    const dateEl = document.getElementById('clock-date');
-    if (timeEl) {
-        const h = String(now.getHours()).padStart(2, '0');
-        const m = String(now.getMinutes()).padStart(2, '0');
-        const s = String(now.getSeconds()).padStart(2, '0');
-        timeEl.textContent = `${h}:${m}:${s}`;
-    }
-    if (dateEl) dateEl.textContent = formatClockDate(now);
-}
-
-/* Date + weekday in the site language: "9/25（五）", "9/25（金）",
-   "9/25 (Fri)", "25/09 (ven.)", "25.9. (Fr.)"… CJK keeps the one-character
-   weekday in full-width brackets; the rest use Intl's short weekday. */
-const CLOCK_LOCALES = { zh: 'zh-TW', 'zh-Hans': 'zh-CN' };
-function formatClockDate(d) {
-    const lang = typeof siteLang === 'string' ? siteLang : 'zh';
-    const locale = CLOCK_LOCALES[lang] || lang;
-    try {
-        const date = d.toLocaleDateString(locale, { month: 'numeric', day: 'numeric' });
-        if (/^(zh|ja|ko)/.test(lang)) {
-            return `${date}（${d.toLocaleDateString(locale, { weekday: 'narrow' })}）`;
-        }
-        return `${date} (${d.toLocaleDateString(locale, { weekday: 'short' })})`;
-    } catch (e) {
-        return `${d.getMonth() + 1}/${d.getDate()}`;
-    }
-}
-
-async function fetchWeather(lat, lon) {
-    try {
-        const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code&timezone=auto`);
-        const data = await res.json();
-        const cur = data.current;
-        if (!cur) return;
-        const emoji = WEATHER_EMOJI[cur.weather_code] || '🌡️';
-        const el = document.getElementById('clock-weather');
-        if (el) el.textContent = `${emoji} ${Math.round(cur.temperature_2m)}°C`;
-    } catch (e) {
-        console.log('Weather fetch failed:', e);
-    }
-}
-
-let weatherLat = 25.03, weatherLon = 121.56; // Taipei fallback
-
-async function initWeather() {
-    // Only runs after the user opts in via #weather-optin (see initWeatherOptin) —
-    // fetching IP-based location without consent isn't something we do silently.
-    try {
-        const res = await fetch('https://ipapi.co/json/');
-        const data = await res.json();
-        if (data.latitude && data.longitude) {
-            weatherLat = data.latitude;
-            weatherLon = data.longitude;
-        }
-    } catch (e) {
-        console.log('IP geolocation failed, using fallback:', e);
-    }
-    fetchWeather(weatherLat, weatherLon);
-    setInterval(() => fetchWeather(weatherLat, weatherLon), 1800000);
-}
-
-function initWeatherOptin() {
-    const el = document.getElementById('clock-weather');
-    if (!el) return;
-    if (localStorage.getItem('weather_consent') === 'granted') {
-        initWeather();
-        return;
-    }
-    const btn = document.createElement('button');
-    btn.className = 'weather-optin-btn';
-    // data-i18n so applyLang() re-translates it on a language switch.
-    btn.setAttribute('data-i18n', 'weather_enable');
-    btn.textContent = t('weather_enable');
-    btn.onclick = () => {
-        localStorage.setItem('weather_consent', 'granted');
-        el.innerHTML = '';
-        initWeather();
-    };
-    el.appendChild(btn);
-}
-
-/* ===================== 📱 Mobile "more options" FAB ===================== */
-/* ===================== 📱 Tab bar "More" sheet (phones) ===================== */
-function setMoreSheet(open) {
-    const sheet = document.getElementById('more-sheet');
-    const btn = document.getElementById('tabbar-more');
+/* ===================== 📱 Tab bar sheets (phones): 學習 and 更多 ===================== */
+function setSheet(id, btnId, open) {
+    const sheet = document.getElementById(id);
+    const btn = document.getElementById(btnId);
     if (!sheet) return;
     sheet.classList.toggle('show', open);
     if (btn) btn.setAttribute('aria-expanded', String(open));
@@ -223,15 +127,132 @@ function setMoreSheet(open) {
 
 function toggleMoreSheet() {
     const sheet = document.getElementById('more-sheet');
-    setMoreSheet(!(sheet && sheet.classList.contains('show')));
+    const open = !(sheet && sheet.classList.contains('show'));
+    setSheet('learn-sheet', 'tabbar-learn', false);
+    setSheet('more-sheet', 'tabbar-more', open);
 }
 
+function toggleLearnSheet() {
+    const sheet = document.getElementById('learn-sheet');
+    const open = !(sheet && sheet.classList.contains('show'));
+    setSheet('more-sheet', 'tabbar-more', false);
+    if (open) renderLearnSheet();
+    setSheet('learn-sheet', 'tabbar-learn', open);
+}
+
+function closeLearnSheet() {
+    setSheet('learn-sheet', 'tabbar-learn', false);
+}
+
+/* switchPage() calls this, so it closes both sheets */
 function closeMoreSheet() {
-    setMoreSheet(false);
+    setSheet('more-sheet', 'tabbar-more', false);
+    closeLearnSheet();
+}
+
+/* How much of each 學習 page is done: grammar points / passages / listening sets
+   passed (each page keeps { "<set>:<item>": { best, of } } in localStorage). */
+function learnPassedCount(key, pass) {
+    let prog = {};
+    try { prog = JSON.parse(localStorage.getItem(key)) || {}; } catch {}
+    return Object.values(prog).filter(r => r && r.of && r.best / r.of >= pass).length;
+}
+
+function renderLearnSheet() {
+    const rows = [
+        ['grammar', 'grammar_progress', typeof GRAMMAR_PASS === 'number' ? GRAMMAR_PASS : 2 / 3, 'learn_prog_grammar'],
+        ['reading', 'reading_progress', typeof READING_PASS === 'number' ? READING_PASS : 2 / 3, 'learn_prog_reading'],
+        ['listening', 'listening_progress', typeof LISTENING_PASS === 'number' ? LISTENING_PASS : 2 / 3, 'learn_prog_listening'],
+    ];
+    rows.forEach(([tab, key, pass, label]) => {
+        const el = document.getElementById('learn-prog-' + tab);
+        if (!el) return;
+        const n = learnPassedCount(key, pass);
+        el.textContent = n ? t(label, { n }) : t('learn_prog_new');
+        el.classList.toggle('none', !n);
+    });
+}
+
+/* ===================== 🧭 Desktop dropdowns: 學習 ▾ / 工具 ▾ / ☰ ===================== */
+/* Opened by a click, or by hovering with a mouse; one open at a time. */
+function setNavMenu(wrap, open) {
+    if (!wrap) return;
+    wrap.classList.toggle('open', open);
+    const btn = wrap.querySelector('.nav-group-btn, #menu-btn');
+    if (btn) btn.setAttribute('aria-expanded', String(open));
+}
+
+function closeNavMenus(except) {
+    document.querySelectorAll('.nav-group.open, .site-menu.open').forEach(w => { if (w !== except) setNavMenu(w, false); });
+}
+
+function toggleNavGroup(id) {
+    const wrap = document.getElementById('nav-group-' + id);
+    if (!wrap) return;
+    // with a mouse, hovering has already opened it: a click keeps it open
+    const open = NAV_HOVER || !wrap.classList.contains('open');
+    closeNavMenus(wrap);
+    setNavMenu(wrap, open);
+}
+
+function toggleSiteMenu() {
+    const wrap = document.getElementById('site-menu');
+    if (!wrap) return;
+    const open = !wrap.classList.contains('open');
+    closeNavMenus(wrap);
+    if (typeof toggleLangMenu === 'function') toggleLangMenu(false);
+    setNavMenu(wrap, open);
+}
+
+function closeSiteMenu() {
+    setNavMenu(document.getElementById('site-menu'), false);
+}
+
+/* One header row when brand + nav + controls fit, else the nav moves to a row
+   of its own (.nav-below, css/header.css). Re-checked whenever the brand or the
+   nav changes size: window width, a language switch, the account name. */
+function headerFit() {
+    const bar = document.querySelector('.header-bar');
+    const brand = bar && bar.querySelector('.brand');
+    const nav = bar && bar.querySelector('.main-nav');
+    const controls = bar && bar.querySelector('.subtitle-controls');
+    if (!brand || !nav || !controls) return;
+    bar.classList.remove('nav-below');
+    if (getComputedStyle(nav).display === 'none') return;   // phones
+    const top = brand.offsetTop;
+    if (nav.offsetTop > top + 8 || controls.offsetTop > top + 8) bar.classList.add('nav-below');
+}
+
+const NAV_HOVER = window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches;
+function initNavMenus() {
+    headerFit();
+    window.addEventListener('resize', headerFit);
+    if (window.ResizeObserver) {
+        const ro = new ResizeObserver(() => headerFit());
+        document.querySelectorAll('.header-bar .brand-text, .main-nav > *, .subtitle-controls > *').forEach(el => ro.observe(el));
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(headerFit);
+    if (NAV_HOVER) {
+        document.querySelectorAll('.nav-group').forEach(wrap => {
+            let timer = 0;
+            wrap.addEventListener('mouseenter', () => { clearTimeout(timer); closeNavMenus(wrap); setNavMenu(wrap, true); });
+            wrap.addEventListener('mouseleave', () => { timer = setTimeout(() => setNavMenu(wrap, false), 180); });
+        });
+    }
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.nav-group, .site-menu')) closeNavMenus();
+    });
 }
 
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeMoreSheet();
+    if (e.key !== 'Escape') return;
+    closeMoreSheet();
+    const open = document.querySelector('.nav-group.open, .site-menu.open');
+    if (open) {
+        closeNavMenus();
+        const btn = open.querySelector('.nav-group-btn, #menu-btn');
+        if (btn) btn.focus();
+    }
 });
 
 /* ===================== 🌐 Language Dropdown ===================== */
@@ -417,9 +438,7 @@ function dismissUpdateBanner() {
 
 document.addEventListener('DOMContentLoaded', () => {
     initBgm();
-    updateClock();
-    setInterval(updateClock, 1000);
-    initWeatherOptin();
+    initNavMenus();
     initVisitorCounter();
 });
 

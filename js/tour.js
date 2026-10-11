@@ -15,14 +15,14 @@ const TOUR_STEPS = [
     { key: 'start', targets: ['#home-continue'] },
     { key: 'quiz', targets: ['.main-nav .nav-btn[data-tab="quiz"]', '.tabbar .nav-btn[data-tab="quiz"]'] },
     { key: 'exam', targets: ['.main-nav .nav-btn[data-tab="examquiz"]', '.tabbar .nav-btn[data-tab="examquiz"]'] },
-    { key: 'grammar', targets: ['.main-nav .nav-btn[data-tab="grammar"]', '#tabbar-more'] },
-    { key: 'reading', targets: ['.main-nav .nav-btn[data-tab="reading"]', '#tabbar-more'] },
-    { key: 'listening', targets: ['.main-nav .nav-btn[data-tab="listening"]', '#tabbar-more'] },
+    { key: 'grammar', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
+    { key: 'reading', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
+    { key: 'listening', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
     { key: 'review', targets: ['#home-srs-card'] },
-    { key: 'dict', targets: ['.main-nav .nav-btn[data-tab="dict"]', '#tabbar-more'] },
-    { key: 'alphabet', targets: ['.main-nav .nav-btn[data-tab="alphabet"]', '#tabbar-more'] },
-    { key: 'notes', targets: ['.main-nav .nav-btn[data-tab="notes"]', '.tabbar .nav-btn[data-tab="notes"]'] },
-    { key: 'settings', targets: ['#tab-settings-btn', '#tabbar-more'] },
+    { key: 'dict', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
+    { key: 'alphabet', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
+    { key: 'notes', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
+    { key: 'settings', targets: ['#menu-btn', '#tabbar-more'] },
     { key: 'lang', targets: ['#lang-globe-btn'] },
     { key: 'done' }
 ];
@@ -77,11 +77,15 @@ function tourRender() {
     const step = TOUR_STEPS[tourIdx];
     const last = tourIdx === TOUR_STEPS.length - 1;
     tourTarget = tourFindTarget(step);
-    const inMore = tourTarget && tourTarget.id === 'tabbar-more';
+    // a page tucked into a menu: say which one
+    const where = !tourTarget ? '' : tourTarget.id === 'tabbar-more' ? 'tour_in_more'
+        : tourTarget.id === 'tabbar-learn' || tourTarget.closest('#nav-group-learn') ? 'tour_in_learn'
+        : tourTarget.closest('#nav-group-tools') ? 'tour_in_tools'
+        : tourTarget.id === 'menu-btn' ? 'tour_in_menu' : '';
 
     tourEl.querySelector('#tour-count').textContent = t('tour_step', { n: tourIdx + 1, m: TOUR_STEPS.length });
     tourEl.querySelector('#tour-title').textContent = t('tour_' + step.key + '_title');
-    tourEl.querySelector('#tour-text').textContent = t('tour_' + step.key + '_text') + (inMore ? ' ' + t('tour_in_more') : '');
+    tourEl.querySelector('#tour-text').textContent = t('tour_' + step.key + '_text') + (where ? ' ' + t(where) : '');
     tourEl.querySelectorAll('.tour-dots i').forEach((d, i) => {
         d.classList.toggle('on', i === tourIdx);
         d.classList.toggle('past', i < tourIdx);

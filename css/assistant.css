@@ -1,11 +1,11 @@
 /* ===== 小花火 AI assistant (js/assistant.js) ===== */
 
-/* desktop: right-hand column, just above the settings gear (bottom 186px,
-   48px tall, centred 44px from the edge); phones: bottom-left, see below */
+/* desktop: alone in the bottom-right corner (settings and reload moved into
+   the header's ☰ menu, the clock was removed); phones: bottom-left, see below */
 .assistant-fab {
     position: fixed;
-    right: 8px;
-    bottom: 248px;
+    right: 20px;
+    bottom: 20px;
     z-index: 600;
     width: 72px;
     height: 72px;
@@ -39,8 +39,8 @@ body:has(.tour) .assistant-hint {
 /* first-visit nudge, to the left of the button */
 .assistant-hint {
     position: fixed;
-    right: 92px;
-    bottom: 270px;
+    right: 104px;
+    bottom: 42px;
     z-index: 600;
     padding: 7px 12px;
     border-radius: 14px 14px 4px 14px;
@@ -65,17 +65,16 @@ body:has(.tour) .assistant-hint {
     50% { transform: translateX(4px); }
 }
 
-/* --- the chat panel: beside the right-hand column on desktop, its bottom
-   above the clock (which is wider than the column) --- */
+/* --- the chat panel: beside the button on desktop --- */
 .assistant-panel {
     position: fixed;
-    right: 96px;
-    bottom: 124px;
+    right: 104px;
+    bottom: 20px;
     z-index: 650;
     display: flex;
     flex-direction: column;
     width: min(390px, calc(100vw - 120px));
-    height: min(600px, calc(100vh - 144px));
+    height: min(600px, calc(100vh - 120px));
     border-radius: 18px;
     background: var(--surface);
     border: 2px solid var(--line);

@@ -8,6 +8,11 @@
     white-space: nowrap;
 }
 .header-btn.account-entry.signed-in svg { color: var(--success-text); }
+@media (max-width: 768px) {
+    /* phones: a round icon in the header (the More sheet no longer lists it) */
+    .header-btn.account-entry { display: flex; width: 36px; padding: 0; justify-content: center; }
+    .header-btn.account-entry .account-entry-label { display: none; }
+}
 
 /* home dashboard card, hidden once signed in */
 .home-account { display: flex; align-items: center; gap: 12px; border-style: dashed; }

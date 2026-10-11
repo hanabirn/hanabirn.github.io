@@ -20,8 +20,9 @@ function storeSet(key, value) {
     return false;
 }
 
-/* Pages reached from the phone tab bar's "More" sheet rather than a tab of their own. */
-const MORE_TABS = ['grammar', 'reading', 'listening', 'dict', 'alphabet', 'guestbook', 'feedback', 'about'];
+/* Pages reached from the phone tab bar's 學習 / 更多 sheets rather than a tab of their own. */
+const LEARN_TABS = ['grammar', 'reading', 'listening'];
+const MORE_TABS = ['dict', 'alphabet', 'notes', 'guestbook', 'feedback', 'about'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -34,6 +35,12 @@ function switchPage(page, el) {
     });
     const more = document.getElementById('tabbar-more');
     if (more) more.classList.toggle('active', MORE_TABS.includes(page));
+    const learn = document.getElementById('tabbar-learn');
+    if (learn) learn.classList.toggle('active', LEARN_TABS.includes(page));
+    // a desktop dropdown (學習 ▾ / 工具 ▾ / ☰) lights up when one of its pages is open
+    document.querySelectorAll('.nav-group, .site-menu').forEach(g =>
+        g.classList.toggle('has-active', !!g.querySelector(`.nav-btn[data-tab="${page}"]`)));
+    if (typeof closeNavMenus === 'function') closeNavMenus();
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
 
     // a page change silences whatever is playing (a 聽解 item, read-all on 閱讀)
@@ -95,6 +102,12 @@ function applyTabVisibility() {
             btn.style.display = v[key] ? '' : 'none';
         });
     });
+    // a dropdown / the 學習 tab with every page hidden goes too
+    document.querySelectorAll('.nav-group').forEach(g => {
+        g.style.display = [...g.querySelectorAll('.nav-btn[data-tab]')].some(b => v[b.dataset.tab]) ? '' : 'none';
+    });
+    const learnTab = document.getElementById('tabbar-learn');
+    if (learnTab) learnTab.style.display = LEARN_TABS.some(k => v[k]) ? '' : 'none';
 
     const activeBtn = document.querySelector('.nav-btn.active');
     const activeKey = activeBtn && activeBtn.dataset.tab;

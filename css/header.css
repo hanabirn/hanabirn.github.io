@@ -4,14 +4,14 @@ header {
     z-index: 20;
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
-    padding: 0 0 14px;
 }
 
-/* Brand (mascot + site name) on the left, language / BGM / theme on the right. */
+/* One row: brand (mascot + site name) | main nav | language, theme, account, ☰.
+   Narrower desktops put the nav on a second row (see the media queries below). */
 .header-bar {
-    max-width: 960px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 14px 20px 12px;
+    padding: 12px 20px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -161,7 +161,7 @@ header h1 {
     flex: none;
 }
 
-/* "關於我" / "更新內容": pills with a label on desktop, round icons on phones */
+/* the account pill (label = name or 登入); round icon-only on phones (css/account.css) */
 .header-btn {
     position: relative;
     display: flex;
@@ -299,13 +299,46 @@ header h1 {
     padding: 11px;
 }
 
+/* ☰ — same pill look as the language button, icon only */
+.header-icon-btn {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--lang-pill-bg);
+    border: 1px solid var(--lang-pill-border);
+    color: var(--lang-pill-text);
+    cursor: pointer;
+    transition: border-color 0.25s, background 0.25s;
+}
+.header-icon-btn svg { width: 20px; height: 20px; }
+.header-icon-btn:hover,
+.site-menu.open .header-icon-btn,
+.site-menu.has-active .header-icon-btn {
+    background: var(--primary-soft);
+    border-color: var(--primary);
+    color: var(--text-pink);
+}
+
 /* Desktop: the site name is long in most languages ("El Pequeño Mundo de Hanabi").
-   The brand keeps its natural width and, when the buttons don't fit beside it,
-   they wrap onto a second row on the right instead of running over the title. */
+   The brand keeps its natural width; the nav sits between it and the controls
+   when all three fit on one row, else headerFit() (js/widgets.js) adds .nav-below
+   and the nav takes a row of its own under them. */
 @media (min-width: 769px) {
     .header-bar { flex-wrap: wrap; row-gap: 10px; }
     .brand { min-width: auto; flex: 0 1 auto; }
     .subtitle-controls { margin-left: auto; }
+    /* nowrap: a nav that doesn't fit beside the brand wraps as a whole (and
+       headerFit() then gives it its own row) instead of breaking into two lines */
+    .header-bar .main-nav { flex: 1 1 auto; flex-wrap: nowrap; }
+}
+@media (min-width: 769px) {
+    .header-bar.nav-below { padding-bottom: 10px; }
+    .header-bar.nav-below .main-nav { order: 3; flex-basis: 100%; flex-wrap: wrap; }
 }
 
 @media (max-width: 768px) {
@@ -324,7 +357,8 @@ header h1 {
     }
     .subtitle { display: none; }
     .subtitle-controls { gap: 8px; }
-    /* phones: these two live in the "More" sheet instead, keeping the title readable */
-    .header-btn { display: none; }
+    /* phones: the theme switch and the ☰ items live in the "More" sheet instead,
+       keeping the title readable; the header keeps language + account */
+    .header-btn, .theme-toggle, .site-menu { display: none; }
     .lang-globe-icon { display: none; }
 }
