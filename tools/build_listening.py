@@ -4,14 +4,25 @@ Sets are hand-written in tools/listening/<id>.json (original content only — th
 item types follow the JLPT listening sections, which is fair to follow; real exam
 questions are copyrighted):
 
-    {id, lang, level, order, sets: [{id, items: [item…]}]}
-    item = {type: task | point | utterance | response,
+    {id, lang, level, order,
+     types?: [...],              # the level's item types in exam order (問題 1, 2, …);
+                                 # default task, point, utterance, response (N5 / N4)
+     mock_plays?: 1,             # plays per item in a mock exam (JLPT: once)
+     mock_counts?: {type: n},    # the official mix (in questions) a mock set must have
+     read_secs?: 10,             # ポイント理解: time to read the options
+     sets: [{id, mock?: true, items: [item…]}]}
+    item = {type: task | point | outline | utterance | response | integrated,
             scene?: {emoji, zh, en},              # shown on screen (utterance: required)
-            lines: [{who: N|M|F, s, zh, en}],     # what is played, in order
-            options: [...],                        # task / point: {t, emoji?, zh?, en?} shown
-                                                   # utterance / response: {who, s, zh, en} spoken
-            answer: index, explain: {zh, en},
+            lines: [{who, s, zh, en}],            # what is played, in order
+            # one question (the usual case):
+            options: [...], answer: index, explain: {zh, en},
+            # or several about the same recording (統合理解, HSK 4+, TOEIC Part 3…):
+            questions: [{q?: {who, s, zh, en}, spoken?: bool, options, answer, explain}],
             words?: [{w, r, zh, en, m?}]}         # glossary, underlined in the transcript
+    Options are printed {t, emoji?, zh?, en?} for task / point (and integrated unless
+    spoken), spoken {who, s, zh, en} for utterance / response (3) and outline (4).
+    who: N narrator, F / M a woman / a man, F2 / M2 a second woman / man (three
+    speakers in 統合理解).
 
 Japanese is written like the 閱讀 page: 漢字{かな}, the reading of the kanji run
 right before it (tools/build_reading.py sentence()). The output gives every spoken
@@ -40,23 +51,26 @@ import build_audio as ba                           # noqa: E402
 # per language: Google voice for the narrator (N), a woman (F) and a man (M) — picked
 # by the owner by ear on the mockup (2026-10-10)
 VOICES = {
-    'ja': ('ja-JP', {'N': 'ja-JP-Chirp3-HD-Kore', 'F': 'ja-JP-Chirp3-HD-Erinome', 'M': 'ja-JP-Chirp3-HD-Charon'}),
+    'ja': ('ja-JP', {'N': 'ja-JP-Chirp3-HD-Kore', 'F': 'ja-JP-Chirp3-HD-Erinome', 'M': 'ja-JP-Chirp3-HD-Charon',
+                     'F2': 'ja-JP-Chirp3-HD-Leda', 'M2': 'ja-JP-Chirp3-HD-Fenrir'}),
 }
-TYPES = ('task', 'point', 'utterance', 'response')
-N_OPTIONS = {'task': 4, 'point': 4, 'utterance': 3, 'response': 3}
+TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated')
+DEFAULT_TYPES = ['task', 'point', 'utterance', 'response']
+SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4}     # types whose options are read aloud
+SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 
 
 # spoken options are numbered aloud, as in the exam (いち、… に、… さん、…)
-NUMBERS = {'ja': ['いち、', 'に、', 'さん、']}
+NUMBERS = {'ja': ['いち、', 'に、', 'さん、', 'よん、']}
 
 
 def spoken(line, where, words, problems, lang, jobs, number=None):
     """A spoken line as output: segments, plain, kana, audio id; queues its audio
     (an option's audio starts with its number; the transcript shows the line only)."""
     who = line.get('who')
-    if who not in ('N', 'F', 'M'):
-        problems.append(f'{where}: speaker must be N, F or M, not {who!r}')
+    if who not in SPEAKERS:
+        problems.append(f'{where}: speaker must be one of {SPEAKERS}, not {who!r}')
         who = 'N'
     segs, plain, kana = sentence(line['s'], words, where, problems, lang)
     for k in ('zh', 'en'):
@@ -69,9 +83,39 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
             'zh': line.get('zh', ''), 'en': line.get('en', '')}
 
 
+def build_question(q, typ, where, words, problems, lang, jobs, multi):
+    spoken_opts = typ in SPOKEN or bool(q.get('spoken'))
+    want = SPOKEN.get(typ, 4)
+    if len(q.get('options', [])) != want:
+        problems.append(f'{where}: {typ} needs {want} options, has {len(q.get("options", []))}')
+    if not 0 <= q.get('answer', -1) < len(q.get('options', [])):
+        problems.append(f'{where}: answer out of range')
+    for k in ('zh', 'en'):
+        if not (q.get('explain') or {}).get(k):
+            problems.append(f'{where}: no {k} explanation')
+    if multi and not q.get('q'):
+        problems.append(f'{where}: each of several questions needs its spoken question "q"')
+    qline = spoken(q['q'], f'{where} question', words, problems, lang, jobs) if q.get('q') else None
+    if spoken_opts:
+        options = [spoken(o, f'{where} option {i + 1}', [], problems, lang, jobs, i) for i, o in enumerate(q['options'])]
+    else:
+        options = []
+        for i, o in enumerate(q['options']):
+            segs, plain, _ = sentence(o['t'], None, f'{where} option {i + 1}', problems, lang, short=True)
+            options.append({'t': segs, 'plain': plain, 'emoji': o.get('emoji', ''),
+                            'zh': o.get('zh', ''), 'en': o.get('en', '')})
+    return {'q': qline, 'spoken': spoken_opts, 'options': options, 'answer': q.get('answer', 0),
+            'explain': q.get('explain', {})}
+
+
 def build(src, problems, jobs):
     data = json.loads(src.read_text(encoding='utf-8'))
     lang = data['lang']
+    types = data.get('types', DEFAULT_TYPES)
+    read_secs = data.get('read_secs', 10)
+    for t in types:
+        if t not in TYPES:
+            problems.append(f'{src.stem}: unknown type {t!r} in "types"')
     sets = []
     for set_ in data['sets']:
         items = []
@@ -79,43 +123,44 @@ def build(src, problems, jobs):
         for k, it in enumerate(set_['items']):
             where = f'{src.stem}/{set_["id"]} #{k + 1}'
             typ = it.get('type')
-            if typ not in TYPES:
-                problems.append(f'{where}: unknown type {typ!r}')
+            if typ not in types:
+                problems.append(f'{where}: type {typ!r} is not one of the level types {types}')
                 continue
-            mix[typ] += 1
             words = it.get('words', [])
             lines = [spoken(l, f'{where} line {i + 1}', words, problems, lang, jobs) for i, l in enumerate(it['lines'])]
-            if len(it['options']) != N_OPTIONS[typ]:
-                problems.append(f'{where}: {typ} needs {N_OPTIONS[typ]} options, has {len(it["options"])}')
-            if not 0 <= it.get('answer', -1) < len(it['options']):
-                problems.append(f'{where}: answer out of range')
-            if typ in ('utterance', 'response'):
-                options = [spoken(o, f'{where} option {i + 1}', [], problems, lang, jobs, i) for i, o in enumerate(it['options'])]
-            else:
-                options = []
-                for i, o in enumerate(it['options']):
-                    segs, plain, _ = sentence(o['t'], None, f'{where} option {i + 1}', problems, lang, short=True)
-                    options.append({'t': segs, 'plain': plain, 'emoji': o.get('emoji', ''),
-                                    'zh': o.get('zh', ''), 'en': o.get('en', '')})
+            qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
+                                          'explain': it.get('explain')}]
+            questions = [build_question(q, typ, f'{where} Q{n + 1}' if len(qs) > 1 else where, words, problems,
+                                        lang, jobs, len(qs) > 1) for n, q in enumerate(qs)]
+            mix[typ] += len(questions)
             if typ == 'utterance' and not it.get('scene'):
                 problems.append(f'{where}: an utterance item needs a scene')
             for k2 in ('zh', 'en'):
-                if not (it.get('explain') or {}).get(k2):
-                    problems.append(f'{where}: no {k2} explanation')
                 if it.get('scene') and not it['scene'].get(k2):
                     problems.append(f'{where}: no {k2} scene text')
             # every glossary word must show up in the transcript
             hit = {sg[2] for l in lines for sg in l['t'] if sg[2] is not None}
+            hit |= {sg[2] for q in questions if q['q'] for sg in q['q']['t'] if sg[2] is not None}
             for gi, g in enumerate(words):
                 if gi not in hit:
                     problems.append(f'{where}: glossary word {g["w"]} never appears (set "m")')
-            items.append({'type': typ, 'scene': it.get('scene'), 'lines': lines, 'options': options,
-                          'answer': it['answer'], 'explain': it['explain'],
+            items.append({'type': typ, 'scene': it.get('scene'), 'lines': lines, 'questions': questions,
+                          'read': it.get('read', read_secs if typ == 'point' else 0),
                           'words': [{k3: g[k3] for k3 in ('w', 'r', 'zh', 'en')} for g in words]})
-        if any(mix[t] == 0 for t in TYPES):
+        if set_.get('mock'):
+            want = data.get('mock_counts')
+            got = {t: n for t, n in mix.items() if n}
+            if want and got != want:
+                problems.append(f'{src.stem}/{set_["id"]}: a mock set should have {want} questions, has {got}')
+            # exam order: all of 問題1, then 問題2, ...
+            seq = [types.index(i['type']) for i in items]
+            if seq != sorted(seq):
+                problems.append(f'{src.stem}/{set_["id"]}: a mock set must keep the types in exam order')
+        elif any(mix[t] == 0 for t in types):
             problems.append(f'{src.stem}/{set_["id"]}: a set should have every type, has {mix}')
-        sets.append({'id': set_['id'], 'items': items})
-    return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'sets': sets}
+        sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
+    return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
+            'mock_plays': data.get('mock_plays', 1), 'sets': sets}
 
 
 def render_audio(lang, jobs):
@@ -152,9 +197,10 @@ def main():
         add_hans(data, cc)
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         n = sum(len(s['items']) for s in data['sets'])
+        mocks = sum(1 for s in data['sets'] if s['mock'])
         index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
-                      'count': len(data['sets']), 'items': n})
-        print(f'{data["id"]}: {len(data["sets"])} sets, {n} items')
+                      'count': len(data['sets']), 'items': n, 'mocks': mocks})
+        print(f'{data["id"]}: {len(data["sets"])} sets ({mocks} mock), {n} items')
         if not args.no_audio and not problems:
             render_audio(data['lang'], jobs)
     index.sort(key=lambda l: (LANG_ORDER.index(l['lang']) if l['lang'] in LANG_ORDER else 99, l['order']))

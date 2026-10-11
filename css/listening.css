@@ -72,6 +72,38 @@
 .ls-type-box { border: 2px solid var(--line); border-radius: 12px; padding: 8px 12px; background: var(--surface); font-size: .82rem; color: var(--text-secondary); }
 .ls-type-box b { display: block; font-size: 1.05rem; color: var(--ink, var(--text-main)); }
 
+/* mock exam: the card on the list, the tag above an item, the answer sheet */
+.ls-mock { border: 2px solid var(--primary); border-radius: 14px; padding: 10px 12px 4px; margin: 4px 0 14px;
+    background: color-mix(in srgb, var(--primary) 6%, var(--surface)); }
+.ls-mock-head { font-size: .95rem; }
+.ls-mock-hint { font-size: .8rem; color: var(--text-secondary); margin: 4px 0 8px; line-height: 1.6; }
+.ls-mock .grammar-list { margin: 0; }
+.ls-mock-tag { text-align: center; font-size: .78rem; font-weight: 700; color: var(--primary); margin-top: 6px; }
+.ls-dot.done { background: var(--text-secondary); }
+.ls-sheet { display: grid; grid-template-columns: repeat(auto-fill, minmax(46px, 1fr)); gap: 6px; margin: 8px 0 14px; }
+.ls-sheet-cell { border: 2px solid var(--line); border-radius: 10px; background: var(--surface); padding: 4px 0;
+    font-weight: 700; color: var(--ink, var(--text-main)); cursor: pointer; display: flex; flex-direction: column; align-items: center; line-height: 1.2; }
+.ls-sheet-cell i { font-style: normal; font-size: .95rem; }
+.ls-sheet-cell.ok i { color: var(--success, #3b8a5a); }
+.ls-sheet-cell.no { border-color: var(--danger, #c0392b); }
+.ls-sheet-cell.no i { color: var(--danger, #c0392b); }
+
+/* reading time / answer time countdown */
+.ls-clock { font-size: .85rem; font-weight: 700; color: var(--primary); display: flex; gap: 8px; align-items: center; }
+.ls-clock[hidden] { display: none; }
+.ls-clock.urgent { color: var(--danger, #c0392b); }
+.ls-skip { border: 1.5px solid var(--line); background: none; border-radius: 99px; padding: 1px 10px; font-size: .75rem;
+    color: var(--text-secondary); cursor: pointer; }
+
+/* a picked option before the answers show (mock exam, multi-question items) */
+.ls-opts .option-btn.ls-picked { border-color: var(--primary); background: var(--primary-soft); }
+
+/* several questions about one recording */
+.ls-q + .ls-q { margin-top: 14px; padding-top: 12px; border-top: 2px dashed var(--line); }
+.ls-qlabel { font-size: .82rem; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+.ls-qtext { font-size: 1rem; line-height: 2; margin-bottom: 8px; }
+.ls-line-q .ls-ja { font-weight: 700; }
+
 @media (max-width: 560px) {
     .ls-opts, .ls-opts.three, .ls-types-result { grid-template-columns: 1fr; }
     .ls-dots { display: none; }          /* the count beside it says the same; the row was too tight */

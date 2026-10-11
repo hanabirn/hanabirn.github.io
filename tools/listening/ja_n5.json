@@ -4,6 +4,8 @@
   "level": "N5",
   "order": 1,
   "note": "Original listening items (JLPT N5 style: 課題理解 task, ポイント理解 point, 発話表現 utterance, 即時応答 response). who: N narrator, F woman, M man. Furigana as on the 閱讀 page: 漢字{かな}. Edit this file, then run: python tools/build_listening.py",
+  "mock_plays": 1,
+  "mock_counts": {"task": 7, "point": 6, "utterance": 5, "response": 6},
   "sets": [
     {
       "id": "s1",
@@ -1002,6 +1004,457 @@
           ],
           "answer": 2,
           "explain": {"zh": "對方請你再說一次，就重複剛才的話：「はい。あしたは休みです」。", "en": "Asked to say it again, you repeat it: はい。あしたは休みです."}
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "女{おんな}の人{ひと}と男{おとこ}の人{ひと}が料理{りょうり}をしています。男{おとこ}の人{ひと}はまず何{なに}をしますか。", "zh": "女生和男生在做菜。男生要先做什麼？", "en": "A woman and a man are cooking. What will the man do first?"},
+            {"who": "F", "s": "カレーを作{つく}りましょう。", "zh": "我們來做咖哩吧。", "en": "Let's make curry."},
+            {"who": "M", "s": "はい。じゃあ、肉{にく}を切{き}りますね。", "zh": "好。那我來切肉喔。", "en": "OK. Then I'll cut the meat."},
+            {"who": "F", "s": "あ、肉{にく}はわたしが切{き}ります。まず、野菜{やさい}を洗{あら}ってください。", "zh": "啊，肉我來切。請你先洗蔬菜。", "en": "Oh, I'll cut the meat. First, please wash the vegetables."},
+            {"who": "M", "s": "わかりました。それから、なべに水{みず}を入{い}れますか。", "zh": "好的。然後要在鍋子裡放水嗎？", "en": "All right. And then shall I put water in the pot?"},
+            {"who": "F", "s": "それはあとでいいです。", "zh": "那個等一下再做就好。", "en": "That can wait till later."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はまず何{なに}をしますか。", "zh": "男生要先做什麼？", "en": "What will the man do first?"}
+          ],
+          "options": [
+            {"t": "肉{にく}を切{き}る", "emoji": "🥩", "zh": "切肉", "en": "cut the meat"},
+            {"t": "野菜{やさい}を洗{あら}う", "emoji": "🥕", "zh": "洗蔬菜", "en": "wash the vegetables"},
+            {"t": "なべに水{みず}を入{い}れる", "emoji": "🍲", "zh": "在鍋裡放水", "en": "put water in the pot"},
+            {"t": "お皿{さら}を出{だ}す", "emoji": "🍽️", "zh": "拿出盤子", "en": "take out the plates"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「肉我來切」，請男生「先洗蔬菜」；放水是「等一下再做」。", "en": "She'll cut the meat herself and asks him to wash the vegetables first; the water can wait."},
+          "words": [
+            {"w": "野菜", "r": "やさい", "zh": "蔬菜", "en": "vegetables"},
+            {"w": "洗う", "r": "あらう", "zh": "洗", "en": "to wash", "m": ["洗って"]}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}はどこをそうじしますか。", "zh": "女生和男生在說話。男生要打掃哪裡？", "en": "A woman and a man are talking. Where will the man clean?"},
+            {"who": "F", "s": "あしたお客{きゃく}さんが来{き}ますから、いっしょにそうじしましょう。", "zh": "明天有客人要來，我們一起打掃吧。", "en": "We have guests tomorrow, so let's clean together."},
+            {"who": "M", "s": "いいですよ。ぼくは台所{だいどころ}をしましょうか。", "zh": "好啊。我來掃廚房好嗎？", "en": "Sure. Shall I do the kitchen?"},
+            {"who": "F", "s": "台所{だいどころ}はきのうしました。トイレとおふろをお願{ねが}いします。", "zh": "廚房昨天掃過了。廁所和浴室就拜託你了。", "en": "I did the kitchen yesterday. Please do the toilet and the bath."},
+            {"who": "M", "s": "はい。へやは？", "zh": "好。那房間呢？", "en": "OK. What about the rooms?"},
+            {"who": "F", "s": "へやはわたしがします。", "zh": "房間我來掃。", "en": "I'll do the rooms."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はどこをそうじしますか。", "zh": "男生要打掃哪裡？", "en": "Where will the man clean?"}
+          ],
+          "options": [
+            {"t": "台所{だいどころ}", "emoji": "🍳", "zh": "廚房", "en": "the kitchen"},
+            {"t": "トイレとおふろ", "emoji": "🚽🛁", "zh": "廁所和浴室", "en": "the toilet and the bath"},
+            {"t": "へや", "emoji": "🛋️", "zh": "房間", "en": "the rooms"},
+            {"t": "台所{だいどころ}とへや", "emoji": "🍳🛋️", "zh": "廚房和房間", "en": "the kitchen and the rooms"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "廚房「昨天掃過了」，房間女生自己掃，所以男生掃廁所和浴室。", "en": "The kitchen was done yesterday and she'll do the rooms, so he does the toilet and the bath."},
+          "words": [
+            {"w": "台所", "r": "だいどころ", "zh": "廚房", "en": "kitchen"},
+            {"w": "お客さん", "r": "おきゃくさん", "zh": "客人", "en": "guest"}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "郵便局{ゆうびんきょく}で女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}は何{なに}を買{か}いますか。", "zh": "女生和男生在郵局說話。女生要買什麼？", "en": "A woman and a man are talking at the post office. What will the woman buy?"},
+            {"who": "F", "s": "すみません、この手紙{てがみ}をアメリカに送{おく}りたいんですが。", "zh": "不好意思，我想把這封信寄到美國。", "en": "Excuse me, I'd like to send this letter to America."},
+            {"who": "M", "s": "はい。百五十円{ひゃくごじゅうえん}です。切手{きって}は一枚{いちまい}でいいですよ。", "zh": "好的，一百五十圓。郵票一張就可以了。", "en": "Sure, that's 150 yen. One stamp is enough."},
+            {"who": "F", "s": "それから、はがきも二枚{にまい}ください。", "zh": "然後也請給我兩張明信片。", "en": "And two postcards too, please."},
+            {"who": "M", "s": "はがきは、きょうはありません。すみません。", "zh": "明信片今天沒有了，不好意思。", "en": "We have no postcards today, sorry."},
+            {"who": "F", "s": "そうですか。じゃあ、いいです。", "zh": "這樣啊。那就不用了。", "en": "I see. Never mind, then."},
+            {"who": "N", "s": "女{おんな}の人{ひと}は何{なに}を買{か}いますか。", "zh": "女生要買什麼？", "en": "What will the woman buy?"}
+          ],
+          "options": [
+            {"t": "切手{きって}一枚{いちまい}", "emoji": "✉️", "zh": "郵票一張", "en": "one stamp"},
+            {"t": "切手{きって}二枚{にまい}", "emoji": "✉️✉️", "zh": "郵票兩張", "en": "two stamps"},
+            {"t": "切手{きって}一枚{いちまい}とはがき二枚{にまい}", "emoji": "✉️📮", "zh": "郵票一張和明信片兩張", "en": "one stamp and two postcards"},
+            {"t": "はがき二枚{にまい}", "emoji": "📮", "zh": "明信片兩張", "en": "two postcards"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "寄美國的信貼「一張郵票」就好；明信片今天沒有，所以只買郵票一張。", "en": "One stamp is enough for the letter, and there are no postcards today, so just one stamp."},
+          "words": [
+            {"w": "切手", "r": "きって", "zh": "郵票", "en": "stamp"},
+            {"w": "送る", "r": "おくる", "zh": "寄送", "en": "to send", "m": ["送りたい"]}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "会社{かいしゃ}で女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}はこれから何{なに}をしますか。", "zh": "女生和男生在公司說話。男生接下來要做什麼？", "en": "A woman and a man are talking at the office. What will the man do now?"},
+            {"who": "F", "s": "山田{やまだ}さん、この紙{かみ}を十枚{じゅうまい}コピーしてくれませんか。", "zh": "山田先生，可以幫我把這張紙影印十張嗎？", "en": "Mr Yamada, could you make ten copies of this sheet?"},
+            {"who": "M", "s": "いいですよ。今{いま}、電話{でんわ}をかけていますから、そのあとでいいですか。", "zh": "可以啊。我現在在打電話，打完再弄可以嗎？", "en": "Sure. I'm on a call right now; is after that OK?"},
+            {"who": "F", "s": "あ、会議{かいぎ}は二時{にじ}からですから、急{いそ}いでください。電話{でんわ}はあとでお願{ねが}いします。", "zh": "啊，會議兩點開始，請快一點。電話請之後再打。", "en": "Oh, the meeting starts at two, so please hurry. Make the call later."},
+            {"who": "M", "s": "わかりました。すぐします。", "zh": "知道了，我馬上弄。", "en": "Got it. I'll do it right away."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はこれから何{なに}をしますか。", "zh": "男生接下來要做什麼？", "en": "What will the man do now?"}
+          ],
+          "options": [
+            {"t": "電話{でんわ}をかける", "emoji": "📞", "zh": "打電話", "en": "make a phone call"},
+            {"t": "コピーをする", "emoji": "🖨️", "zh": "影印", "en": "make copies"},
+            {"t": "会議{かいぎ}に出{で}る", "emoji": "👥", "zh": "去開會", "en": "go to the meeting"},
+            {"t": "お茶{ちゃ}を買{か}う", "emoji": "🍵", "zh": "買茶", "en": "buy tea"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說會議快開始了，「電話請之後再打」，所以男生先去影印。", "en": "The meeting is soon and she says to make the call later, so he makes the copies now."},
+          "words": [
+            {"w": "会議", "r": "かいぎ", "zh": "會議", "en": "meeting"},
+            {"w": "急ぐ", "r": "いそぐ", "zh": "趕快", "en": "to hurry", "m": ["急いで"]}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "道{みち}で男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}はどの道{みち}を行{い}きますか。", "zh": "男生和女生在路上說話。男生要走哪條路？", "en": "A man and a woman are talking in the street. Which way will the man go?"},
+            {"who": "M", "s": "すみません、さくら病院{びょういん}はどこですか。", "zh": "不好意思，櫻花醫院在哪裡？", "en": "Excuse me, where is Sakura Hospital?"},
+            {"who": "F", "s": "この道{みち}をまっすぐ行{い}って、二{ふた}つ目{め}の角{かど}を右{みぎ}に曲{ま}がってください。", "zh": "請沿著這條路直走，在第二個轉角右轉。", "en": "Go straight along this road and turn right at the second corner."},
+            {"who": "M", "s": "二{ふた}つ目{め}の角{かど}を右{みぎ}ですね。", "zh": "第二個轉角右轉，對吧。", "en": "Right at the second corner, yes?"},
+            {"who": "F", "s": "はい。病院{びょういん}は銀行{ぎんこう}のとなりですよ。", "zh": "對。醫院在銀行旁邊喔。", "en": "Yes. The hospital is next to the bank."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はどの道{みち}を行{い}きますか。", "zh": "男生要走哪條路？", "en": "Which way will the man go?"}
+          ],
+          "options": [
+            {"t": "一{ひと}つ目{め}の角{かど}を右{みぎ}", "emoji": "1️⃣➡️", "zh": "第一個轉角右轉", "en": "right at the first corner"},
+            {"t": "一{ひと}つ目{め}の角{かど}を左{ひだり}", "emoji": "1️⃣⬅️", "zh": "第一個轉角左轉", "en": "left at the first corner"},
+            {"t": "二{ふた}つ目{め}の角{かど}を右{みぎ}", "emoji": "2️⃣➡️", "zh": "第二個轉角右轉", "en": "right at the second corner"},
+            {"t": "二{ふた}つ目{め}の角{かど}を左{ひだり}", "emoji": "2️⃣⬅️", "zh": "第二個轉角左轉", "en": "left at the second corner"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "「直走，在第二個轉角右轉」，男生也重複了一次。", "en": "Straight on, then right at the second corner; he repeats it back."},
+          "words": [
+            {"w": "曲がる", "r": "まがる", "zh": "轉彎", "en": "to turn", "m": ["曲がって"]},
+            {"w": "角", "r": "かど", "zh": "轉角", "en": "corner"}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}は何{なに}を着{き}て出{で}かけますか。", "zh": "男生和女生在說話。女生要穿什麼出門？", "en": "A man and a woman are talking. What will the woman wear to go out?"},
+            {"who": "M", "s": "きょうは寒{さむ}いですよ。コートを着{き}て行{い}きませんか。", "zh": "今天很冷喔。要不要穿大衣去？", "en": "It's cold today. Why not wear a coat?"},
+            {"who": "F", "s": "そうですね。でも、コートは重{おも}いですから……。", "zh": "也是。不過大衣很重……", "en": "True. But coats are heavy..."},
+            {"who": "M", "s": "じゃあ、セーターはどうですか。", "zh": "那毛衣怎麼樣？", "en": "Then how about a sweater?"},
+            {"who": "F", "s": "いいですね。セーターを着{き}ます。それから、ぼうしもかぶります。", "zh": "好主意。我穿毛衣。然後也戴帽子。", "en": "Good idea. I'll wear a sweater. And a hat too."},
+            {"who": "N", "s": "女{おんな}の人{ひと}は何{なに}を着{き}て出{で}かけますか。", "zh": "女生要穿什麼出門？", "en": "What will the woman wear to go out?"}
+          ],
+          "options": [
+            {"t": "コート", "emoji": "🧥", "zh": "大衣", "en": "a coat"},
+            {"t": "コートとぼうし", "emoji": "🧥🎩", "zh": "大衣和帽子", "en": "a coat and a hat"},
+            {"t": "セーター", "emoji": "🧶", "zh": "毛衣", "en": "a sweater"},
+            {"t": "セーターとぼうし", "emoji": "🧶🎩", "zh": "毛衣和帽子", "en": "a sweater and a hat"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "大衣太重不穿，改穿毛衣，「也戴帽子」。", "en": "Coats are heavy, so a sweater — and a hat as well."},
+          "words": [
+            {"w": "寒い", "r": "さむい", "zh": "冷", "en": "cold"},
+            {"w": "重い", "r": "おもい", "zh": "重", "en": "heavy"}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "病院{びょういん}で医者{いしゃ}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}はいつ薬{くすり}を飲{の}みますか。", "zh": "醫生和男生在醫院說話。男生什麼時候吃藥？", "en": "A doctor and a man are talking at a hospital. When will the man take his medicine?"},
+            {"who": "F", "s": "この薬{くすり}を一日{いちにち}二回{にかい}飲{の}んでください。", "zh": "這個藥請一天吃兩次。", "en": "Please take this medicine twice a day."},
+            {"who": "M", "s": "ごはんの前{まえ}ですか。", "zh": "是飯前吃嗎？", "en": "Before meals?"},
+            {"who": "F", "s": "いいえ、朝{あさ}ごはんと晩{ばん}ごはんのあとに飲{の}んでください。昼{ひる}はいいです。", "zh": "不是，請在早餐和晚餐之後吃。中午不用。", "en": "No, after breakfast and dinner. Not at lunch."},
+            {"who": "M", "s": "わかりました。", "zh": "我知道了。", "en": "I understand."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はいつ薬{くすり}を飲{の}みますか。", "zh": "男生什麼時候吃藥？", "en": "When will the man take his medicine?"}
+          ],
+          "options": [
+            {"t": "朝{あさ}ごはんと晩{ばん}ごはんの前{まえ}", "emoji": "🌅🌙", "zh": "早餐和晚餐之前", "en": "before breakfast and dinner"},
+            {"t": "朝{あさ}ごはんと晩{ばん}ごはんのあと", "emoji": "🌅🌙", "zh": "早餐和晚餐之後", "en": "after breakfast and dinner"},
+            {"t": "昼{ひる}ごはんのあと", "emoji": "☀️", "zh": "午餐之後", "en": "after lunch"},
+            {"t": "寝{ね}る前{まえ}", "emoji": "🛏️", "zh": "睡前", "en": "before bed"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "醫生說不是飯前，「早餐和晚餐之後吃，中午不用」。", "en": "Not before meals: after breakfast and dinner, nothing at lunch."},
+          "words": [
+            {"w": "薬", "r": "くすり", "zh": "藥", "en": "medicine"},
+            {"w": "医者", "r": "いしゃ", "zh": "醫生", "en": "doctor"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}は夏休{なつやす}みにどこへ行{い}きましたか。", "zh": "男生和女生在說話。女生暑假去了哪裡？", "en": "A man and a woman are talking. Where did the woman go in the summer holidays?"},
+            {"who": "M", "s": "夏休{なつやす}みはどこかへ行{い}きましたか。", "zh": "暑假有去哪裡嗎？", "en": "Did you go anywhere in the summer holidays?"},
+            {"who": "F", "s": "はい。はじめは海{うみ}へ行{い}きたかったんですが、雨{あめ}でしたから、山{やま}の上{うえ}のお寺{てら}へ行{い}きました。", "zh": "有。一開始想去海邊，可是下雨，所以去了山上的寺廟。", "en": "Yes. At first I wanted to go to the sea, but it rained, so I went to a temple up a mountain."},
+            {"who": "M", "s": "そうですか。ぼくは京都{きょうと}へ行{い}きました。", "zh": "這樣啊。我去了京都。", "en": "I see. I went to Kyoto."},
+            {"who": "N", "s": "女{おんな}の人{ひと}は夏休{なつやす}みにどこへ行{い}きましたか。", "zh": "女生暑假去了哪裡？", "en": "Where did the woman go in the summer holidays?"}
+          ],
+          "options": [
+            {"t": "海{うみ}", "emoji": "🏖️", "zh": "海邊", "en": "the sea"},
+            {"t": "山{やま}のお寺{てら}", "emoji": "⛩️⛰️", "zh": "山上的寺廟", "en": "a temple on a mountain"},
+            {"t": "京都{きょうと}", "emoji": "🏯", "zh": "京都", "en": "Kyoto"},
+            {"t": "どこへも行{い}かなかった", "emoji": "🏠", "zh": "哪裡都沒去", "en": "nowhere"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "想去海邊但下雨，所以「去了山上的寺廟」；京都是男生去的。", "en": "She wanted the sea but it rained, so she went to a mountain temple; Kyoto was the man."},
+          "words": [
+            {"w": "夏休み", "r": "なつやすみ", "zh": "暑假", "en": "summer holidays"},
+            {"w": "お寺", "r": "おてら", "zh": "寺廟", "en": "temple"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}はどのスポーツがいちばん好{す}きですか。", "zh": "女生和男生在說話。男生最喜歡哪種運動？", "en": "A woman and a man are talking. Which sport does the man like best?"},
+            {"who": "F", "s": "田中{たなか}さんはよくテニスをしますね。", "zh": "田中先生你常打網球呢。", "en": "You often play tennis, Mr Tanaka."},
+            {"who": "M", "s": "ええ、会社{かいしゃ}の人{ひと}とします。でも、いちばん好{す}きなのは水泳{すいえい}です。", "zh": "對，和公司的人打。不過我最喜歡的是游泳。", "en": "Yes, with people from work. But what I like best is swimming."},
+            {"who": "F", "s": "サッカーは？", "zh": "那足球呢？", "en": "And football?"},
+            {"who": "M", "s": "サッカーは見{み}るのは好{す}きですが、するのはあまり……。", "zh": "足球我喜歡看，但是踢的話就不太……", "en": "I like watching football, but playing it, not really..."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}はどのスポーツがいちばん好{す}きですか。", "zh": "男生最喜歡哪種運動？", "en": "Which sport does the man like best?"}
+          ],
+          "options": [
+            {"t": "テニス", "emoji": "🎾", "zh": "網球", "en": "tennis"},
+            {"t": "水泳{すいえい}", "emoji": "🏊", "zh": "游泳", "en": "swimming"},
+            {"t": "サッカー", "emoji": "⚽", "zh": "足球", "en": "football"},
+            {"t": "野球{やきゅう}", "emoji": "⚾", "zh": "棒球", "en": "baseball"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "網球是常打，但「最喜歡的是游泳」。", "en": "He often plays tennis, but what he likes best is swimming."},
+          "words": [
+            {"w": "水泳", "r": "すいえい", "zh": "游泳", "en": "swimming"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。二人{ふたり}は何{なん}で美術館{びじゅつかん}へ行{い}きますか。", "zh": "男生和女生在說話。兩個人要怎麼去美術館？", "en": "A man and a woman are talking. How will the two of them get to the art museum?"},
+            {"who": "M", "s": "美術館{びじゅつかん}までタクシーで行{い}きましょうか。", "zh": "我們搭計程車去美術館吧？", "en": "Shall we take a taxi to the art museum?"},
+            {"who": "F", "s": "タクシーは高{たか}いですよ。バスで行{い}きませんか。", "zh": "計程車很貴耶。要不要搭公車去？", "en": "Taxis are expensive. Why don't we take the bus?"},
+            {"who": "M", "s": "バスは一時間{いちじかん}に一台{いちだい}ですから、ちょっと……。歩{ある}いて二十分{にじゅっぷん}ですよ。", "zh": "公車一小時才一班，有點……。走路二十分鐘喔。", "en": "There's only one bus an hour... It's twenty minutes on foot."},
+            {"who": "F", "s": "じゃあ、天気{てんき}もいいですから、歩{ある}きましょう。", "zh": "那天氣也不錯，我們走路去吧。", "en": "Then the weather's nice, so let's walk."},
+            {"who": "N", "s": "二人{ふたり}は何{なん}で美術館{びじゅつかん}へ行{い}きますか。", "zh": "兩個人要怎麼去美術館？", "en": "How will the two of them get to the art museum?"}
+          ],
+          "options": [
+            {"t": "タクシー", "emoji": "🚕", "zh": "計程車", "en": "by taxi"},
+            {"t": "バス", "emoji": "🚌", "zh": "公車", "en": "by bus"},
+            {"t": "電車{でんしゃ}", "emoji": "🚃", "zh": "電車", "en": "by train"},
+            {"t": "歩{ある}いて", "emoji": "🚶", "zh": "走路", "en": "on foot"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "計程車太貴、公車一小時一班，最後「天氣好，走路去吧」。", "en": "Taxis are expensive and the bus comes once an hour, so they walk."},
+          "words": [
+            {"w": "美術館", "r": "びじゅつかん", "zh": "美術館", "en": "art museum"},
+            {"w": "歩く", "r": "あるく", "zh": "走路", "en": "to walk", "m": ["歩いて", "歩きましょう"]}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}はきのう何時間{なんじかん}勉強{べんきょう}しましたか。", "zh": "男生和女生在說話。女生昨天讀了幾個小時的書？", "en": "A man and a woman are talking. How many hours did the woman study yesterday?"},
+            {"who": "M", "s": "あしたはテストですね。きのうはたくさん勉強{べんきょう}しましたか。", "zh": "明天要考試了呢。昨天有讀很多書嗎？", "en": "The test is tomorrow. Did you study a lot yesterday?"},
+            {"who": "F", "s": "はい。図書館{としょかん}で二時間{にじかん}、それから家{いえ}で一時間{いちじかん}勉強{べんきょう}しました。", "zh": "有。在圖書館讀了兩小時，然後在家讀了一小時。", "en": "Yes. Two hours at the library, then an hour at home."},
+            {"who": "M", "s": "すごいですね。ぼくは一時間{いちじかん}だけです。", "zh": "好厲害。我只讀了一小時。", "en": "Impressive. I only did one hour."},
+            {"who": "N", "s": "女{おんな}の人{ひと}はきのう何時間{なんじかん}勉強{べんきょう}しましたか。", "zh": "女生昨天讀了幾個小時的書？", "en": "How many hours did the woman study yesterday?"}
+          ],
+          "options": [
+            {"t": "一時間{いちじかん}", "emoji": "🕐", "zh": "一小時", "en": "one hour"},
+            {"t": "二時間{にじかん}", "emoji": "🕑", "zh": "兩小時", "en": "two hours"},
+            {"t": "三時間{さんじかん}", "emoji": "🕒", "zh": "三小時", "en": "three hours"},
+            {"t": "四時間{よじかん}", "emoji": "🕓", "zh": "四小時", "en": "four hours"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "圖書館兩小時＋家裡一小時＝三小時；一小時是男生。", "en": "Two hours at the library plus one at home makes three; one hour was the man."},
+          "words": [
+            {"w": "勉強", "r": "べんきょう", "zh": "讀書、學習", "en": "study"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}のへやは何階{なんがい}ですか。", "zh": "女生和男生在說話。男生的房間在幾樓？", "en": "A woman and a man are talking. Which floor is the man's room on?"},
+            {"who": "F", "s": "新{あたら}しいアパートはどうですか。", "zh": "新的公寓怎麼樣？", "en": "How's the new flat?"},
+            {"who": "M", "s": "とてもいいです。駅{えき}から近{ちか}いですし、へやも広{ひろ}いです。", "zh": "很好。離車站近，房間也很大。", "en": "Very nice. It's close to the station and the room is big."},
+            {"who": "F", "s": "何階{なんがい}ですか。", "zh": "在幾樓？", "en": "Which floor?"},
+            {"who": "M", "s": "五階{ごかい}です。でも、エレベーターがありませんから、毎日{まいにち}たいへんです。", "zh": "五樓。不過沒有電梯，每天都很辛苦。", "en": "The fifth. But there's no lift, so it's hard work every day."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}のへやは何階{なんがい}ですか。", "zh": "男生的房間在幾樓？", "en": "Which floor is the man's room on?"}
+          ],
+          "options": [
+            {"t": "三階{さんがい}", "emoji": "3️⃣", "zh": "三樓", "en": "third floor"},
+            {"t": "四階{よんかい}", "emoji": "4️⃣", "zh": "四樓", "en": "fourth floor"},
+            {"t": "五階{ごかい}", "emoji": "5️⃣", "zh": "五樓", "en": "fifth floor"},
+            {"t": "六階{ろっかい}", "emoji": "6️⃣", "zh": "六樓", "en": "sixth floor"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「五樓」，而且沒有電梯很辛苦。", "en": "He says the fifth floor, with no lift."},
+          "words": [
+            {"w": "広い", "r": "ひろい", "zh": "寬敞", "en": "spacious"},
+            {"w": "近い", "r": "ちかい", "zh": "近", "en": "near", "m": ["近くて", "近い"]}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}はどうして元気{げんき}がありませんか。", "zh": "男生和女生在說話。女生為什麼沒精神？", "en": "A man and a woman are talking. Why is the woman feeling low?"},
+            {"who": "M", "s": "元気{げんき}がありませんね。かぜですか。", "zh": "你看起來沒精神呢。感冒了嗎？", "en": "You look tired. Have you got a cold?"},
+            {"who": "F", "s": "いいえ。きのうの夜{よる}、となりのへやがうるさくて、あまり寝{ね}ませんでした。", "zh": "不是。昨天晚上隔壁房間很吵，沒怎麼睡。", "en": "No. Last night the room next door was noisy, so I hardly slept."},
+            {"who": "M", "s": "そうですか。きょうは早{はや}く帰{かえ}って、寝{ね}てください。", "zh": "這樣啊。今天早點回去睡覺吧。", "en": "I see. Go home early today and get some sleep."},
+            {"who": "N", "s": "女{おんな}の人{ひと}はどうして元気{げんき}がありませんか。", "zh": "女生為什麼沒精神？", "en": "Why is the woman feeling low?"}
+          ],
+          "options": [
+            {"t": "かぜをひいたから", "emoji": "🤧", "zh": "因為感冒了", "en": "she has a cold"},
+            {"t": "よく寝{ね}なかったから", "emoji": "😪", "zh": "因為沒睡好", "en": "she didn't sleep well"},
+            {"t": "おなかが痛{いた}いから", "emoji": "🤕", "zh": "因為肚子痛", "en": "her stomach hurts"},
+            {"t": "仕事{しごと}が多{おお}いから", "emoji": "📚", "zh": "因為工作太多", "en": "she has too much work"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "不是感冒；隔壁很吵，所以「沒怎麼睡」。", "en": "Not a cold: the room next door was noisy and she hardly slept."},
+          "words": [
+            {"w": "元気", "r": "げんき", "zh": "有精神", "en": "energy, cheer"},
+            {"w": "うるさい", "r": "うるさい", "zh": "吵", "en": "noisy", "m": ["うるさくて"]}
+          ]
+        },
+        {
+          "type": "utterance",
+          "scene": {"emoji": "👕🏬", "zh": "在店裡想試穿看看衣服。該說什麼？", "en": "At a shop you want to try on a top. What do you say?"},
+          "lines": [
+            {"who": "N", "s": "店{みせ}で服{ふく}を着{き}たいです。何{なん}と言{い}いますか。", "zh": "在店裡想試穿衣服。該說什麼？", "en": "At a shop you want to try on some clothes. What do you say?"}
+          ],
+          "options": [
+            {"who": "F", "s": "これ、着{き}てもいいですか。", "zh": "這件可以穿穿看嗎？", "en": "May I try this on?"},
+            {"who": "F", "s": "これ、着{き}てください。", "zh": "請穿這件。", "en": "Please wear this."},
+            {"who": "F", "s": "これ、着{き}ましたか。", "zh": "這件你穿過了嗎？", "en": "Did you wear this?"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "請求許可用「〜てもいいですか」（可以……嗎）。「〜てください」是請對方做。", "en": "To ask permission use 〜てもいいですか; 〜てください asks someone else to do it."}
+        },
+        {
+          "type": "utterance",
+          "scene": {"emoji": "📕🙂", "zh": "想跟朋友借書。該說什麼？", "en": "You want to borrow a friend's book. What do you say?"},
+          "lines": [
+            {"who": "N", "s": "友{とも}だちの本{ほん}を借{か}りたいです。何{なん}と言{い}いますか。", "zh": "想借朋友的書。該說什麼？", "en": "You want to borrow a friend's book. What do you say?"}
+          ],
+          "options": [
+            {"who": "M", "s": "この本{ほん}、貸{か}しましょうか。", "zh": "這本書要借你嗎？", "en": "Shall I lend you this book?"},
+            {"who": "M", "s": "この本{ほん}、借{か}りてもいいですか。", "zh": "這本書可以借我嗎？", "en": "Can I borrow this book?"},
+            {"who": "M", "s": "この本{ほん}、借{か}りませんか。", "zh": "要不要借這本書？", "en": "Won't you borrow this book?"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "自己要借是「借りる」＋「〜てもいいですか」。「貸す」是借出去。", "en": "Borrowing is 借りる + 〜てもいいですか; 貸す means to lend."}
+        },
+        {
+          "type": "utterance",
+          "scene": {"emoji": "🚪👩‍🏫", "zh": "要進老師的辦公室。該說什麼？", "en": "You're going into your teacher's office. What do you say?"},
+          "lines": [
+            {"who": "N", "s": "先生{せんせい}のへやに入{はい}ります。何{なん}と言{い}いますか。", "zh": "要進老師的房間。該說什麼？", "en": "You go into your teacher's room. What do you say?"}
+          ],
+          "options": [
+            {"who": "F", "s": "ごちそうさまでした。", "zh": "我吃飽了，謝謝招待。", "en": "Thank you for the meal."},
+            {"who": "F", "s": "おやすみなさい。", "zh": "晚安。", "en": "Good night."},
+            {"who": "F", "s": "しつれいします。", "zh": "打擾了。", "en": "Excuse me (for coming in)."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "進老師或上司的房間時說「しつれいします」。", "en": "Entering a teacher's or boss's room you say しつれいします."}
+        },
+        {
+          "type": "utterance",
+          "scene": {"emoji": "🎂🎉", "zh": "今天是朋友的生日。該說什麼？", "en": "It's your friend's birthday. What do you say?"},
+          "lines": [
+            {"who": "N", "s": "友{とも}だちの誕生日{たんじょうび}です。何{なん}と言{い}いますか。", "zh": "今天是朋友的生日。該說什麼？", "en": "It's your friend's birthday. What do you say?"}
+          ],
+          "options": [
+            {"who": "F", "s": "お誕生日{たんじょうび}、おめでとう。", "zh": "生日快樂。", "en": "Happy birthday."},
+            {"who": "F", "s": "おつかれさま。", "zh": "辛苦了。", "en": "Thanks for your hard work."},
+            {"who": "F", "s": "いただきます。", "zh": "我開動了。", "en": "Let's eat."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "祝賀說「おめでとう」。「おつかれさま」是對辛苦的人說的。", "en": "Congratulations are おめでとう; おつかれさま is for someone who has worked hard."}
+        },
+        {
+          "type": "utterance",
+          "scene": {"emoji": "👵🧳", "zh": "有位老太太拿著很重的行李。你想幫她拿。該說什麼？", "en": "An old woman is carrying a heavy bag. You want to help. What do you say?"},
+          "lines": [
+            {"who": "N", "s": "おばあさんの荷物{にもつ}が重{おも}そうです。何{なん}と言{い}いますか。", "zh": "老太太的行李看起來很重。該說什麼？", "en": "An old woman's bag looks heavy. What do you say?"}
+          ],
+          "options": [
+            {"who": "M", "s": "持{も}ってください。", "zh": "請拿著。", "en": "Please carry it."},
+            {"who": "M", "s": "持{も}ちましょうか。", "zh": "我幫您拿吧？", "en": "Shall I carry it for you?"},
+            {"who": "M", "s": "持{も}ちませんか。", "zh": "要不要拿？", "en": "Won't you carry it?"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "主動提議幫忙用「〜ましょうか」（我來……吧）。", "en": "Offering to help is 〜ましょうか."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "M", "s": "お国{くに}はどちらですか。", "zh": "請問您是哪國人？", "en": "Which country are you from?"}
+          ],
+          "options": [
+            {"who": "F", "s": "あちらです。", "zh": "在那邊。", "en": "Over there."},
+            {"who": "F", "s": "台湾{たいわん}です。", "zh": "台灣。", "en": "Taiwan."},
+            {"who": "F", "s": "国{くに}です。", "zh": "是國家。", "en": "It's a country."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "「お国はどちらですか」是問哪一國，回答國名。", "en": "お国はどちらですか asks your country, so answer with its name."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "F", "s": "あしたは何曜日{なんようび}ですか。", "zh": "明天星期幾？", "en": "What day of the week is tomorrow?"}
+          ],
+          "options": [
+            {"who": "M", "s": "十日{とおか}です。", "zh": "十號。", "en": "The tenth."},
+            {"who": "M", "s": "あしたです。", "zh": "是明天。", "en": "It's tomorrow."},
+            {"who": "M", "s": "水曜日{すいようび}です。", "zh": "星期三。", "en": "Wednesday."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "問「何曜日」（星期幾）要回答星期；「十日」是日期。", "en": "何曜日 asks the day of the week; 十日 is a date."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "M", "s": "このかさ、だれのですか。", "zh": "這把傘是誰的？", "en": "Whose umbrella is this?"}
+          ],
+          "options": [
+            {"who": "F", "s": "わたしのです。", "zh": "是我的。", "en": "It's mine."},
+            {"who": "F", "s": "かさです。", "zh": "是傘。", "en": "It's an umbrella."},
+            {"who": "F", "s": "青{あお}いです。", "zh": "是藍色的。", "en": "It's blue."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "問「だれの」（誰的）要回答主人。", "en": "だれの asks whose it is."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "F", "s": "お先{さき}にしつれいします。", "zh": "我先走了。", "en": "I'll be leaving before you."}
+          ],
+          "options": [
+            {"who": "M", "s": "いってらっしゃい。", "zh": "路上小心。", "en": "See you later."},
+            {"who": "M", "s": "おつかれさまでした。", "zh": "辛苦了。", "en": "Thanks for your work today."},
+            {"who": "M", "s": "いただきます。", "zh": "我開動了。", "en": "Let's eat."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "同事下班先走時回「おつかれさまでした」。", "en": "When a colleague leaves first, reply おつかれさまでした."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "M", "s": "どうぞ、こちらにすわってください。", "zh": "請坐這邊。", "en": "Please, have a seat here."}
+          ],
+          "options": [
+            {"who": "F", "s": "ありがとうございます。", "zh": "謝謝。", "en": "Thank you."},
+            {"who": "F", "s": "どういたしまして。", "zh": "不客氣。", "en": "You're welcome."},
+            {"who": "F", "s": "いいえ、すわります。", "zh": "不，我要坐。", "en": "No, I'll sit."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "別人請你坐，要道謝。「どういたしまして」是回應別人的道謝。", "en": "When offered a seat, say thank you; どういたしまして answers someone else's thanks."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "F", "s": "週末{しゅうまつ}は何{なに}をしましたか。", "zh": "週末做了什麼？", "en": "What did you do at the weekend?"}
+          ],
+          "options": [
+            {"who": "M", "s": "友{とも}だちと映画{えいが}を見{み}ます。", "zh": "我要和朋友看電影。", "en": "I'll watch a film with a friend."},
+            {"who": "M", "s": "映画{えいが}が好{す}きです。", "zh": "我喜歡電影。", "en": "I like films."},
+            {"who": "M", "s": "友{とも}だちと映画{えいが}を見{み}ました。", "zh": "和朋友看了電影。", "en": "I watched a film with a friend."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "問的是過去（しましたか），回答也要用過去式「見ました」。", "en": "The question is in the past, so the answer is too: 見ました."}
         }
       ]
     }
