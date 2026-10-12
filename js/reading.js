@@ -334,6 +334,20 @@ function readingSentences() {
     return p.paragraphs.flatMap(para => para.s);
 }
 
+/* Simplified text speaks its Mainland (zh-CN) recording; one not recorded yet plays
+   the Taiwan (zh-TW) recording of the same sentence rather than the browser voice —
+   unless the visitor picked a browser voice for zh-CN in the settings. */
+function readingSpeakSimp(simp, trad, opts) {
+    stopSpeech();
+    const seq = speakSeq;
+    if (ttsSaved()[ttsKey('zh-CN')]) return speakText(simp, 'zh-CN', opts);
+    audioIndex('zh-CN').then(map => {
+        if (seq !== speakSeq) return;          // stopped meanwhile
+        if (map && map.get(audioId(simp))) speakText(simp, 'zh-CN', opts);
+        else speakText(trad, 'zh-TW', opts);
+    });
+}
+
 /* recordings are keyed "plain|kana" (tools/build_audio.py) and spoken from the kana */
 function readingSpeak(s, done) {
     const set = readingSets[readingSetId];
@@ -342,7 +356,7 @@ function readingSpeak(s, done) {
     // Simplified text; tools/build_audio.py --gemini)
     if (set.lang === 'zh' && readingZhScript() === 'simp') {
         const simp = s.t.map(sg => sg[4] || sg[0]).join('');
-        speakText(simp, 'zh-CN', done ? { onend: done } : undefined);
+        readingSpeakSimp(simp, s.plain, done ? { onend: done } : undefined);
         return;
     }
     speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(set.lang === 'ja' && s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
@@ -462,7 +476,7 @@ function readingSayWord(gi) {
     const set = readingSets[readingSetId];
     const g = set.passages[readingNo].glossary[gi];
     if (set.lang === 'zh' && readingZhScript() === 'simp') {
-        speakText(g.simp || g.w, 'zh-CN');
+        readingSpeakSimp(g.simp || g.w, g.w);
         return;
     }
     // a word with kanji is recorded as "word|kana" (the word lists' recordings)
