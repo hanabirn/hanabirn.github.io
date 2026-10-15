@@ -95,6 +95,9 @@ GEMINI_TTS_MODEL = 'gemini-3.8-flash-tts'
 # the lite model kept reading the instruction in Mainland Mandarin, so zh-TW only
 GEMINI_TTS_MODELS = ['gemini-3.8-flash-tts', 'gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-lite-tts']
 GEMINI_MODEL_LANGS = {'gemini-3.8-flash-lite-tts': {'zh-TW'}}
+# Mainland Mandarin: 3.1 first — it made most of the Mainland 閱讀 recordings (one voice
+# throughout), 3.8 often misreads the length in zh-CN, and 3.1 has no noise before the voice
+GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-tts']}
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
     'zh-TW': ('Aoede', 'Read the following Chinese text aloud in a natural, warm Taiwanese Mandarin '
@@ -292,13 +295,19 @@ def jobs(lang):
                         add(g['w'], g['w'])
     else:
         if lang == 'zh-TW':
-            for text in alphabet({'zh'}):
+            for text in alphabet({'zh'}):       # 注音 is Taiwan's: no Mainland recordings
                 add(text, text)
-            # 文法 page examples (data/grammar/zh_*.json, Traditional; the page speaks zh-TW)
-            for f in sorted((ROOT / 'data' / 'grammar').glob('zh_*.json')):
-                for point in json.loads(f.read_text(encoding='utf-8'))['points']:
-                    for ex in point['examples']:
-                        add(ex['text'], ex['text'], 1)
+        # 文法 page examples (data/grammar/zh_*.json, Traditional): keyed by the
+        # Traditional text in both accents (the page has no Simplified), the Mainland
+        # voice reading it in Simplified — converted character by character (tw2s),
+        # so it says the Taiwan words on screen (捷運 → 捷运, not 地铁)
+        if lang == 'zh-CN':
+            import opencc
+            tw2s = opencc.OpenCC('tw2s').convert
+        for f in sorted((ROOT / 'data' / 'grammar').glob('zh_*.json')):
+            for point in json.loads(f.read_text(encoding='utf-8'))['points']:
+                for ex in point['examples']:
+                    add(ex['text'], ex['text'] if lang == 'zh-TW' else tw2s(ex['text']), 1)
         # 閱讀 page (data/reading/zh_*.json): every sentence and glossary word — in
         # Traditional for zh-TW and in Simplified for zh-CN (the reader speaks the
         # script it shows, with that accent)
@@ -671,7 +680,7 @@ def run_gemini(lang, files, aliases, top, limit):
     def say(said):
         """One clip from the first model with quota left for this language."""
         while True:
-            models = [m for m in GEMINI_TTS_MODELS
+            models = [m for m in GEMINI_LANG_ORDER.get(lang, GEMINI_TTS_MODELS)
                       if m not in GEMINI_SPENT and lang in GEMINI_MODEL_LANGS.get(m, {lang})]
             if not models:
                 raise QuotaSpent(f'every model available for {lang} is spent for today')
