@@ -186,6 +186,7 @@ def main():
     args = ap.parse_args()
     import opencc
     from build_grammar import add_hans
+    from content_i18n import fill, report_missing
     cc = opencc.OpenCC('tw2sp')
     problems, index = [], []
     OUT.mkdir(parents=True, exist_ok=True)
@@ -195,6 +196,7 @@ def main():
         if not data['sets']:
             continue
         add_hans(data, cc)
+        report_missing(fill(data), data['id'])   # ja ko ru fr es de (tools/content_i18n.py)
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         n = sum(len(s['items']) for s in data['sets'])
         mocks = sum(1 for s in data['sets'] if s['mock'])

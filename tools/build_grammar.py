@@ -115,6 +115,7 @@ def check(data, name):
 
 def main():
     import opencc
+    from content_i18n import fill, report_missing
     cc = opencc.OpenCC('tw2sp')
     OUT.mkdir(parents=True, exist_ok=True)
     index, problems = [], []
@@ -126,6 +127,7 @@ def main():
         if data['lang'] == 'zh':
             add_zh_readings(data, problems, src.name)
         add_hans(data, cc)
+        report_missing(fill(data), src.name)   # ja ko ru fr es de (tools/content_i18n.py)
         data.pop('note', None)
         (OUT / src.name).write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data.get('order', 0),

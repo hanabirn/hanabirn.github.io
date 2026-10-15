@@ -340,6 +340,7 @@ def main():
     cc = opencc.OpenCC('tw2sp')
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     from build_grammar import add_hans
+    from content_i18n import fill, report_missing
     problems, index = [], []
     OUT.mkdir(parents=True, exist_ok=True)
     for src in sorted(SRC.glob('*.json')):
@@ -355,6 +356,7 @@ def main():
                 if outside:
                     print(f'  {data["id"]}/{p["id"]}: glossary words outside the level lists: {", ".join(outside)}')
         add_hans(data, cc)
+        report_missing(fill(data), data['id'])   # ja ko ru fr es de (tools/content_i18n.py)
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
                       'count': len(data['passages'])})
