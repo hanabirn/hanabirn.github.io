@@ -46,8 +46,10 @@ carries on. Order: the 閱讀 page (tier 0), the 文法 examples (tier 1), and w
 then reads the instruction aloud too, so every clip is checked against the length
 of its text and re-rendered (4 tries, 5 for a word of up to 4 characters; otherwise the old file stays). Files made by
 Gemini are listed in index.json under "g". About 1 sentence in 5 ends with a short
-mouth click, heard as a pop; drop_end_click() cuts it from every new clip, and
---fix-clicks cuts it from the files already made (needs `pip install miniaudio`).
+mouth click, heard as a pop, and the gemini-3.8 models start every clip with ~80 ms
+of noise, heard as a pop the moment 🔊 is pressed; drop_end_click() and
+drop_lead_burst() cut them from every new clip, and --fix-clicks from the files
+already made (needs `pip install miniaudio numpy`).
        python tools/build_audio.py --gemini [--only zh-TW|zh-CN] [--gemini-all] [--limit N]
        python tools/build_audio.py --fix-clicks [--only zh-TW|zh-CN]
 """
@@ -383,10 +385,10 @@ def trim(samples, sr=SR):
     return list(samples[start:end])
 
 
-def to_mp3(samples, sr=SR):
+def to_mp3(samples, sr=SR, kbps=32):
     import lameenc
     enc = lameenc.Encoder()
-    enc.set_bit_rate(32)
+    enc.set_bit_rate(kbps)
     enc.set_in_sample_rate(sr)
     enc.set_channels(1)
     enc.set_quality(2)
@@ -457,7 +459,8 @@ def gemini_say(key, lang, text, model=None):
     m = re.search(r'rate=(\d+)', part.get('mimeType', ''))
     if m and int(m.group(1)) != GEMINI_SR:
         raise RuntimeError(f'Gemini returned {m.group(1)} Hz')
-    return drop_end_click(fade_out(trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR), GEMINI_SR), GEMINI_SR)
+    clip = drop_lead_burst(trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR), GEMINI_SR)
+    return drop_end_click(fade_out(clip, GEMINI_SR), GEMINI_SR)
 
 
 def strip_c2pa(raw):
@@ -520,10 +523,55 @@ def drop_end_click(samples, sr):
     return out + [0] * int(sr * 0.15)
 
 
+def drop_lead_burst(samples, sr):
+    """The gemini-3.8 TTS models (flash and flash-lite, not 3.1) start every clip with
+    ~80 ms of noise — up to about -12 dB, as loud above 3 kHz as below, gone before
+    the voice begins — heard as a pop the moment 🔊 is pressed (found 2026-10-15, the
+    owner's ears and waveform). Cuts it: the clip starts 60 ms before the voice, with
+    a 10 ms fade-in. Speech never matches: a voiced sound has far less energy above
+    3 kHz, and a syllable doesn't die away within 100 ms with a gap after it."""
+    import numpy as np
+    s = np.asarray(samples, dtype=float)
+    w = int(sr * 0.005)
+    if len(s) < 40 * w:
+        return samples
+    peak = np.abs(s).max() or 1
+    head = s[:len(s[:int(1.0 * sr)]) // w * w]      # some clips wait 0.6 s+ to speak
+    spec = np.fft.rfft(head)
+    spec[np.fft.rfftfreq(len(head), 1 / sr) < 3000] = 0
+    high = np.fft.irfft(spec, len(head))
+
+    def db(x):           # level of each 5 ms window, dB against the clip's peak
+        return 20 * np.log10(np.sqrt(np.mean(x.reshape(-1, w) ** 2, axis=1)) / peak + 1e-6)
+
+    e, h = db(head), db(high)
+    above = np.flatnonzero(e > -50)
+    if not len(above) or above[0] * w > 0.25 * sr:
+        return samples
+    on = above[0]
+    top = on + int(np.argmax(e[on:on + 12]))          # its peak, within 60 ms
+    if e[top] < -25 or e[top] - h[top] > 10:          # too quiet, or voiced
+        return samples
+    quiet = e < -42
+    after = np.flatnonzero(quiet[top:-1] & quiet[top + 1:])   # 10 ms quiet: a dip isn't the end
+    if not len(after) or (top + after[0] - on) * w > 0.1 * sr:
+        return samples                                # still sounding after 100 ms
+    end = top + after[0]
+    voice = np.flatnonzero(e[end:] > -40)
+    if not len(voice) or voice[0] * w < 0.02 * sr:
+        return samples                                # no gap before the voice
+    voice = end + voice[0]
+    out = s[max(end, voice - 12) * w:].copy()          # from 60 ms before the voice
+    n = int(sr * 0.01)
+    out[:n] *= np.linspace(0, 1, n)
+    return [int(x) for x in np.round(out)]
+
+
 def fix_clicks(langs):
-    """--fix-clicks: drop_end_click() on the Gemini files made before it existed — each
-    file once (index.json "c" lists the files done; new recordings go straight in). A
-    file is decoded and encoded again only when it has a click."""
+    """--fix-clicks: drop_end_click() and drop_lead_burst() on the Gemini files made
+    before them — each file once (index.json "c" / "l" list the files each has been
+    through; new recordings go straight in). A file is decoded and encoded again only
+    when something was cut, both cuts at once."""
     import miniaudio
     for lang in langs:
         d = OUT / lang
@@ -531,30 +579,43 @@ def fix_clicks(langs):
             index = json.loads((d / 'index.json').read_text(encoding='utf-8'))
         except (OSError, ValueError):
             continue
-        done = set(index.get('c', []))
-        todo = [fid for fid in index.get('g', []) if fid not in done]
-        fixed = 0
+        made = index.get('g', [])
+        ends, leads = set(index.get('c', [])), set(index.get('l', []))
+        todo = [fid for fid in made if fid not in ends or fid not in leads]
+        cut_end = cut_lead = 0
         for fid in todo:
             f = d / f'{fid}.mp3'
-            # decoded from bytes: miniaudio can't open a path with non-ASCII folders (我的網站)
-            pcm = miniaudio.decode(f.read_bytes(), output_format=miniaudio.SampleFormat.SIGNED16,
-                                   nchannels=1, sample_rate=GEMINI_SR)
-            samples = list(pcm.samples)
-            clean = drop_end_click(samples, GEMINI_SR)
+            # decoded from bytes (miniaudio can't open a path with non-ASCII folders, 我的網站)
+            # at the file's own rate: LAME stored the 24 kHz clips at 22.05 kHz
+            data = f.read_bytes()
+            sr = miniaudio.mp3_get_info(data).sample_rate
+            pcm = miniaudio.decode(data, output_format=miniaudio.SampleFormat.SIGNED16, nchannels=1, sample_rate=sr)
+            samples = clean = list(pcm.samples)
+            if fid not in ends:
+                c = drop_end_click(clean, sr)
+                cut_end += c is not clean
+                clean = c
+            lead = clean
+            if fid not in leads:
+                clean = drop_lead_burst(clean, sr)
+                cut_lead += clean is not lead
             if clean is not samples:
-                # drop the silence the MP3 encoder added at the start (back to trim()'s
-                # 60 ms), so a file doesn't grow when it is encoded again; done after the
-                # cut, which was tried by ear on the decoded files as they were
-                thr = max(300, max(abs(x) for x in clean) * 0.03)
-                first = next(i for i, x in enumerate(clean) if abs(x) > thr)
-                clean = clean[max(0, first - int(0.06 * GEMINI_SR)):]
-                f.write_bytes(to_mp3(clean, GEMINI_SR))
-                fixed += 1
-            done.add(fid)
-        index['c'] = sorted(done & set(index.get('g', [])))
+                if clean is lead:
+                    # drop the silence the MP3 encoder added at the start (back to trim()'s
+                    # 60 ms), so a file doesn't grow when it is encoded again
+                    thr = max(300, max(abs(x) for x in clean) * 0.03)
+                    first = next(i for i, x in enumerate(clean) if abs(x) > thr)
+                    clean = clean[max(0, first - int(0.06 * sr)):]
+                # 48 kbps: a second encoding at 32 kbps audibly dulls it (0.97 vs 0.995
+                # correlation with the first encoding)
+                f.write_bytes(to_mp3(clean, sr, 48))
+            ends.add(fid)
+            leads.add(fid)
+        index['c'] = sorted(ends & set(made))
+        index['l'] = sorted(leads & set(made))
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-        print(f'{lang}: {fixed} of {len(todo)} Gemini files had an end click, cut '
-              f'({len(index["g"]) - len(todo)} done before)')
+        print(f'{lang}: of {len(todo)} Gemini files, {cut_end} had an end click and {cut_lead} '
+              f'a noise burst before the voice, cut ({len(made) - len(todo)} done before)')
 
 
 def spoken_chars(text):
@@ -579,6 +640,7 @@ def run_gemini(lang, files, aliases, top, limit):
     made = set(old.get('g', []))
     by_model = dict(old.get('gm', {}))     # file id -> the Gemini model that made it
     declicked = set(old.get('c', []))      # files drop_end_click() has been through
+    deburst = set(old.get('l', []))        # … and drop_lead_burst()
     tiers = TIERS.get(lang, {})
     # in the order jobs() met them — passage by passage (its sentences, then its
     # words), so each day leaves whole passages done rather than scattered lines
@@ -601,7 +663,8 @@ def run_gemini(lang, files, aliases, top, limit):
                  'a': {a: f for a, f in sorted(aliases.items()) if f in have_set},
                  'g': sorted(made & have_set),
                  'gm': {f: m for f, m in sorted(by_model.items()) if f in made & have_set},
-                 'c': sorted(declicked & made & have_set)}
+                 'c': sorted(declicked & made & have_set),
+                 'l': sorted(deburst & made & have_set)}
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         return index
 
@@ -639,6 +702,7 @@ def run_gemini(lang, files, aliases, top, limit):
             (d / f'{fid}.mp3').write_bytes(to_mp3(clip, GEMINI_SR))
             made.add(fid)
             declicked.add(fid)             # gemini_say() already cut the click
+            deburst.add(fid)               # … and the noise before the voice
             by_model[fid] = model.replace('gemini-', '')
             done += 1
             if done % 25 == 0:
@@ -780,6 +844,7 @@ def main():
             index['g'] = sorted(made & have_set)       # files Gemini made (--gemini)
             index['gm'] = {f: m for f, m in prev.get('gm', {}).items() if f in have_set}
             index['c'] = sorted(set(prev.get('c', [])) & made & have_set)
+            index['l'] = sorted(set(prev.get('l', [])) & made & have_set)
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         print(f'  {lang}: {len(have)} files in the index ({backups} new ones by the backup voice)')
 
