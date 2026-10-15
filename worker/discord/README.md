@@ -6,8 +6,9 @@ commands, nothing to keep awake):
 
 | Command | 中文名稱 | What it does |
 | --- | --- | --- |
-| `/quiz` | 單字測驗 | Language → level or topic (autocomplete) → 5–30 multiple-choice questions on 4 buttons, then a score card. Japanese kanji words ask for the reading, everything else for the meaning (Chinese lists: the English meaning). |
-| `/grammar` | 文法 | A random point of a grammar level: pattern, form, explanation and one practice question; the answer shows the full sentence, a common mistake and an example. |
+| `/quiz` | 單字測驗 | Language → level or topic (autocomplete) → 5–30 multiple-choice questions on 4 buttons, then a score card listing every word asked, right or wrong, with its meaning (10 a page). Japanese kanji words ask for the reading, everything else for the meaning (Chinese lists: the English meaning). |
+| `/grammar study` | 文法・學習 | Language → level: the level's points in order, each with its form, explanation, an example and its three practice questions; a wrong answer says why that option doesn't fit and the answer does. Where the visitor got to is kept per language in KV `PREFS` (`g:<user>:<lang>`), and the next `/grammar study` picks up there. |
+| `/grammar quiz` | 文法・測驗 | Language → level → 5–30 questions drawn from the whole level; the result lists the missed ones with the why of the picked option and of the answer. |
 | `/dictionary` | 字典 | The site's word lists (checked Chinese meaning), Wiktionary (English definitions) and Tatoeba (examples with a Chinese translation). |
 
 | `/language` | 語言設定 | The language the bot replies in, saved per user (KV `PREFS`); "auto" follows the Discord client. |
@@ -15,15 +16,20 @@ commands, nothing to keep awake):
 **Languages**: replies (buttons, titles, messages, set / topic names, Tatoeba translations)
 come in the site's 9 languages — the visitor's `/language` choice, else their Discord
 client's locale — and the commands are localised in Discord's own menu. The word
-meanings and grammar explanations exist only in Chinese and English: Simplified is
-converted character by character (`src/zhconv.js`), the other 6 languages get English.
+meanings exist only in Chinese and English: Simplified is converted character by
+character (`src/zhconv.js`), the other 6 languages get English. The grammar texts come in
+all 9 (the site's `tools/content_i18n.py`), and each practice question carries one line
+per option on why it is right or wrong (`tools/grammar_why.py`) — both read from the live site.
 `src/i18n.js` holds the bot's text; `src/site-strings.js` and `src/zhconv.js` are generated
 by `python build_strings.py` (re-run when the site's set or topic names change). Buttons
-carry the language in their `custom_id` (`qa:<lang>:…`), so pressing one needs no lookup.
+carry the language in their `custom_id` (`va:<lang>:…`), so pressing one needs no lookup.
 
 Replies are private (ephemeral) unless `public` is set; on a public quiz only the person
-who started it can answer. Nothing is stored: each button carries its quiz in its
-`custom_id` and the question is rebuilt from a seed (see `src/quiz.js`).
+who started it can answer (the owner is always the third field of a `custom_id`). Apart
+from the grammar place, nothing is stored: each button carries its quiz in its
+`custom_id` — the options picked so far as digits — and the questions are rebuilt from
+a seed (see the top of `src/quiz.js` and `src/grammar.js`). Buttons of the older format
+(`qa` `qn` `qe` `ga` `gn`, before 2026-10-15) answer that they have expired.
 
 Data is read from `SITE` (`https://hanabirn.xyz`): `data/vocab/<set>.json` and
 `data/grammar/<level>.json`, cached at Cloudflare's edge for an hour. A set the site

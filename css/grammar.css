@@ -250,6 +250,21 @@
 .grammar-feedback { text-align: center; font-weight: 700; margin: 0 0 12px; }
 .grammar-feedback.ok { color: var(--success); }
 .grammar-feedback.no { color: var(--danger); }
+/* why the picked option is wrong / the answer right (grammarWhyHtml) */
+.grammar-why-box {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin: 0 0 14px;
+    padding: 10px 12px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+}
+.grammar-why-line { margin: 0; font-size: 0.88rem; line-height: 1.6; color: var(--ink); }
+.grammar-why-line b { margin-right: 4px; }
+.grammar-why-line.ok b { color: var(--success); }
+.grammar-why-line.no b { color: var(--danger); }
 
 /* ----- result ----- */
 .grammar-result { text-align: center; margin-bottom: 18px; }

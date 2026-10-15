@@ -116,6 +116,7 @@ def check(data, name):
 def main():
     import opencc
     from content_i18n import fill, report_missing
+    from grammar_why import fill_why
     cc = opencc.OpenCC('tw2sp')
     OUT.mkdir(parents=True, exist_ok=True)
     index, problems = [], []
@@ -126,6 +127,9 @@ def main():
         problems += check(data, src.name)
         if data['lang'] == 'zh':
             add_zh_readings(data, problems, src.name)
+        missing_why = fill_why(data)                 # quiz[].why (tools/grammar_why.py)
+        if missing_why:
+            print(f'  {src.name}: {missing_why} questions without the why of each option — run python tools/grammar_why.py')
         add_hans(data, cc)
         report_missing(fill(data), src.name)   # ja ko ru fr es de (tools/content_i18n.py)
         data.pop('note', None)

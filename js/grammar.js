@@ -392,7 +392,18 @@ function grammarQuizHtml(set) {
             }).join('')}
         </div>
         ${answered ? `<p class="grammar-feedback ${z.picked === it.answer ? 'ok' : 'no'}">${escHtml(t(z.picked === it.answer ? 'correct' : 'grammar_wrong', { a: it.options[it.answer] }))}</p>
+        ${grammarWhyHtml(set, it, z.picked)}
         <button type="button" class="btn next-btn grammar-start" onclick="grammarNextQ()">${escHtml(t(z.i + 1 < z.items.length ? 'grammar_next_q' : 'grammar_see_result'))}</button>` : ''}`;
+}
+
+/* After an answer: why the picked option doesn't fit (when wrong) and why the answer
+   does — q.why holds one line per option in the source order (tools/grammar_why.py),
+   it.order maps a shown option back to it. */
+function grammarWhyHtml(set, it, picked) {
+    const why = it.q.why;
+    if (!why || why.length !== it.q.options.length) return '';
+    const line = (i, ok) => `<p class="grammar-why-line ${ok ? 'ok' : 'no'}"><b lang="${set.lang}">${ok ? '✓' : '✗'} ${escHtml(it.options[i])}</b> ${escHtml(gText(why[it.order[i]]))}</p>`;
+    return `<div class="grammar-why-box">${picked !== it.answer ? line(picked, false) : ''}${line(it.answer, true)}</div>`;
 }
 
 function grammarAnswer(i) {

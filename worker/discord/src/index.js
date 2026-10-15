@@ -7,8 +7,8 @@
    Reply language: what the visitor chose with /language (KV PREFS, "lang:<user id>"),
    else their Discord client's language. Buttons carry it in their custom_id. */
 
-import { startQuiz, quizButton, quizOwner, setChoices } from './quiz.js';
-import { startGrammar, grammarButton, grammarOwner, levelChoices } from './grammar.js';
+import { startQuiz, quizButton, setChoices, QUIZ_KINDS } from './quiz.js';
+import { startStudy, startQuiz as startGrammarQuiz, grammarButton, levelChoices, GRAMMAR_KINDS } from './grammar.js';
 import { lookUp } from './dictionary.js';
 import { helpMessage, mention } from './help.js';
 import { t, fromLocale, isUiLang, contentLang, UI_NAMES } from './i18n.js';
@@ -53,10 +53,23 @@ async function run(env, it, ui, work) {
     await edit(env, it, message || { content: t(ui, 'error'), embeds: [], components: [] });
 }
 
+/* the options of a command, or of its subcommand (/grammar study | quiz): {sub, name: value…} */
 function options(data) {
+    let list = (data && data.options) || [];
     const out = {};
-    for (const o of (data && data.options) || []) out[o.name] = o.value;
+    if (list[0] && (list[0].type === 1 || list[0].type === 2)) {
+        out.sub = list[0].name;
+        list = list[0].options || [];
+    }
+    for (const o of list) out[o.name] = o.value;
     return out;
+}
+
+/* the option being typed in an autocomplete, also inside a subcommand */
+function focusedOption(data) {
+    let list = (data && data.options) || [];
+    if (list[0] && (list[0].type === 1 || list[0].type === 2)) list = list[0].options || [];
+    return list.find(o => o.focused) || {};
 }
 
 const userOf = it => (it.member && it.member.user && it.member.user.id) || (it.user && it.user.id) || '0';
@@ -87,12 +100,12 @@ async function setLanguage(env, it, choice) {
     return json({ type: 4, data: { content: text, flags: EPHEMERAL } });
 }
 
-/* which user may press a button: the owner field of its custom_id (0 = anyone who can see it) */
-function ownerOf(parts) {
-    if (['qa', 'qn', 'qe'].includes(parts[0])) return quizOwner(parts);
-    if (['ga', 'gn', 'ge'].includes(parts[0])) return grammarOwner(parts);
-    return '0';
-}
+/* which user may press a button: the owner field of its custom_id (0 = anyone who can
+   see it) — always the third field */
+const ownerOf = parts => ([...QUIZ_KINDS, ...GRAMMAR_KINDS].includes(parts[0]) ? parts[2] || '0' : '0');
+
+// buttons of the quizzes before 2026-10-15 (score in place of the picks): expired
+const OLD_KINDS = ['qa', 'qn', 'qe', 'ga', 'gn'];
 
 export default {
     async fetch(request, env, ctx) {
@@ -106,8 +119,8 @@ export default {
         if (it.type === 4) {                                                 // autocomplete
             const ui = await uiLang(env, it);
             const opts = options(it.data);
-            const focused = ((it.data && it.data.options) || []).find(o => o.focused) || {};
-            const choices = it.data.name === 'grammar' ? await levelChoices(env, focused.value, ui)
+            const focused = focusedOption(it.data);
+            const choices = it.data.name === 'grammar' ? await levelChoices(env, opts.language, focused.value, ui)
                 : setChoices(opts.language, focused.value, ui);
             return json({ type: 8, data: { choices } });
         }
@@ -119,7 +132,7 @@ export default {
             if (it.data.name === 'help') return json({ type: 4, data: { ...helpMessage(ui, it.locale), flags: EPHEMERAL } });
             const user = userOf(it);
             const work = it.data.name === 'quiz' ? () => startQuiz(env, opts, user, ui)
-                : it.data.name === 'grammar' ? () => startGrammar(env, opts, user, ui)
+                : it.data.name === 'grammar' ? () => (opts.sub === 'quiz' ? startGrammarQuiz : startStudy)(env, opts, user, ui)
                 : it.data.name === 'dictionary' ? () => lookUp(env, opts, ui)
                 : null;
             if (!work) return json({ type: 4, data: { content: t(ui, 'unknown'), flags: EPHEMERAL } });
@@ -130,13 +143,16 @@ export default {
         if (it.type === 3) {                                                 // button
             const parts = String(it.data.custom_id || '').split(':');
             const ui = isUiLang(parts[1]) ? parts[1] : fromLocale(it.locale);
+            if (OLD_KINDS.includes(parts[0])) {
+                return json({ type: 4, data: { content: t(ui, 'expired', { quiz: mention('quiz', ui), grammar: mention('grammar study', ui) }), flags: EPHEMERAL } });
+            }
             const owner = ownerOf(parts);
             if (owner !== '0' && owner !== userOf(it)) {
                 // the note is for the person who pressed, in their own language
-                return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours', { quiz: mention('quiz'), grammar: mention('grammar') }), flags: EPHEMERAL } });
+                return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours', { quiz: mention('quiz'), grammar: mention('grammar study') }), flags: EPHEMERAL } });
             }
-            const work = parts[0][0] === 'q' ? () => quizButton(env, parts)
-                : parts[0][0] === 'g' ? () => grammarButton(env, parts) : null;
+            const work = QUIZ_KINDS.includes(parts[0]) ? () => quizButton(env, parts)
+                : GRAMMAR_KINDS.includes(parts[0]) ? () => grammarButton(env, parts, userOf(it)) : null;
             if (!work) return json({ type: 6 });
             ctx.waitUntil(run(env, it, ui, work));
             return json({ type: 6 });                                        // "updating this message…"

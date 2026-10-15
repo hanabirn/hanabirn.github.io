@@ -22,6 +22,8 @@ const site = http.createServer(async (req, res) => {
 const WRANGLER = process.argv[2] || 'npx wrangler';
 const WORKER = 'http://127.0.0.1:8788';
 const OWNER = '111', OTHER = '222';
+// the grammar student: a new user each run, since wrangler dev keeps the KV between runs
+const STUDENT = '9' + Date.now();
 
 const keys = await crypto.subtle.generateKey({ name: 'Ed25519' }, true, ['sign', 'verify']);
 const pubHex = Buffer.from(await crypto.subtle.exportKey('raw', keys.publicKey)).toString('hex');
@@ -71,6 +73,8 @@ async function send(payload, { sign = true } = {}) {
 }
 // every interaction carries the Discord client's locale; Traditional Chinese unless given
 const command = (name, options, user = OWNER, locale = 'zh-TW') => send({ type: 2, locale, member: { user: { id: user } }, data: { name, options: Object.entries(options).map(([k, v]) => ({ name: k, value: v })) } });
+// a subcommand: /grammar study | quiz
+const sub = (name, subName, options, user = OWNER, locale = 'zh-TW') => send({ type: 2, locale, member: { user: { id: user } }, data: { name, options: [{ type: 1, name: subName, options: Object.entries(options).map(([k, v]) => ({ name: k, value: v })) }] } });
 const press = (customId, user = OWNER, locale = 'zh-TW') => send({ type: 3, locale, member: { user: { id: user } }, data: { custom_id: customId } });
 const buttons = msg => (msg.components || []).flatMap(r => r.components);
 const show = (label, msg) => !msg ? check(false, label + ': no reply arrived') : console.log(`\n--- ${label}\n` + (msg.content || '') + (msg.embeds || []).map(e =>
@@ -85,46 +89,79 @@ try {
 
     const ac = await send({ type: 4, locale: 'zh-TW', data: { name: 'quiz', options: [{ name: 'language', value: 'es' }, { name: 'set', value: 'a', focused: true }] } });
     check(ac.reply.type === 8 && ac.reply.data.choices.length > 0, 'autocomplete sets: ' + ac.reply.data.choices.map(c => c.name).join(', '));
-    const acg = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ name: 'level', value: '日文', focused: true }] } });
-    check(acg.reply.data.choices.length === 3, 'autocomplete grammar: ' + acg.reply.data.choices.map(c => c.name).join(', '));
+    const acg = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'study', options: [{ name: 'language', value: 'ja' }, { name: 'level', value: '', focused: true }] }] } });
+    check(acg.reply.data.choices.length === 3, 'autocomplete grammar, Japanese only: ' + acg.reply.data.choices.map(c => c.name).join(', '));
+    const acg2 = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'quiz', options: [{ name: 'language', value: 'ko' }, { name: 'level', value: '', focused: true }] }] } });
+    check(acg2.reply.data.choices.length === 2 && acg2.reply.data.choices.every(c => /韓文/.test(c.name)), 'autocomplete grammar quiz, Korean only: ' + acg2.reply.data.choices.map(c => c.name).join(', '));
+    // a button from before 2026-10-15 says it has expired
+    const old = await press('qa:zh:jlpt_n5:abc:0:0:5:0:1');
+    check(old.reply.type === 4 && /過期/.test(old.reply.data.content), 'an old quiz button has expired: ' + old.reply.data.content);
 
     // a whole public quiz, answering the first option each time
-    let r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5, public: true });
+    let r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 12, public: true });
     check(r.reply.type === 5 && r.reply.data.flags === 0, 'public quiz deferred without the ephemeral flag');
     show('quiz question 1', r.edited);
-    for (let i = 0; i < 5; i++) {
-        const answer = buttons(r.edited).find(b => b.custom_id.startsWith('qa:'));
+    for (let i = 0; i < 12; i++) {
+        const answer = buttons(r.edited).find(b => b.custom_id.startsWith('va:'));
         if (i === 0) {
             const other = await press(answer.custom_id, OTHER);
             check(other.reply.type === 4 && other.reply.data.flags === 64, 'someone else pressing gets a private note');
         }
         r = await press(answer.custom_id);
         if (i === 0) show('quiz answer 1', r.edited);
-        const next = buttons(r.edited).find(b => b.custom_id.startsWith('qn:') || b.label.startsWith('看結果'));
+        const next = buttons(r.edited).find(b => b.custom_id.startsWith('vn:') || b.label.startsWith('看結果'));
         r = await press(next.custom_id);
     }
     show('quiz result', r.edited);
     check(/測驗結果/.test(r.edited.embeds[0].title), 'quiz ends with a result card');
+    const listed = d => (d.match(/^[✅❌] \d+\. /gmu) || []).length;
+    check(listed(r.edited.embeds[0].description) === 10, 'result page 1 lists 10 words');
+    const nextPage = buttons(r.edited).find(b => b.custom_id?.startsWith('vr:') && !b.disabled);
+    check(!!nextPage, 'result has a next-page button');
+    r = await press(nextPage.custom_id);
+    show('quiz result page 2', r.edited);
+    check(listed(r.edited.embeds[0].description) === 2 && /11\. /.test(r.edited.embeds[0].description), 'result page 2 lists words 11-12');
 
     for (const [lang, set] of [['zh', 'hsk_1'], ['en', 'en_toeic'], ['ru', 'ru_a1'], ['es', 'tp_es_food'], ['ko', 'topik_1']]) {
         r = await command('quiz', { language: lang, set, count: 5 });
-        check(r.reply.data.flags === 64 && buttons(r.edited).filter(b => b.custom_id.startsWith('qa:')).length === 4, `private ${set} question with 4 options`);
+        check(r.reply.data.flags === 64 && buttons(r.edited).filter(b => b.custom_id.startsWith('va:')).length === 4, `private ${set} question with 4 options`);
         show(set, r.edited);
     }
     r = await command('quiz', { language: 'de', set: 'de_a1' });
     show('a set the site does not have yet', r.edited);
 
-    // grammar: a point, its answer, the next point
+    // grammar study: a point's three questions, then the next point; the place is kept
     for (const level of ['ja_n5', 'zh_hsk3', 'fr_a2', 'ko_topik1', 'ru_a1']) {
-        r = await command('grammar', { level });
-        show('grammar ' + level, r.edited);
-        const ga = buttons(r.edited).find(b => b.custom_id.startsWith('ga:'));
-        r = await press(ga.custom_id);
-        show('grammar answer ' + level, r.edited);
-        check(buttons(r.edited).some(b => b.custom_id?.startsWith('gn:')), 'grammar answer offers the next point');
+        const lang = level.slice(0, 2);
+        r = await sub('grammar', 'study', { language: lang, level }, STUDENT);
+        show('grammar study ' + level, r.edited);
+        for (let q = 0; q < 3; q++) {
+            const sa = buttons(r.edited).filter(b => b.custom_id?.startsWith('sa:'));
+            check(sa.length >= 2, `${level} question ${q + 1} has options`);
+            r = await press(sa[sa.length - 1].custom_id, STUDENT);
+            if (q === 0) show('grammar study answer ' + level, r.edited);
+            if (q < 2) r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('sq:')).custom_id, STUDENT);
+        }
+        show('grammar study point done ' + level, r.edited);
+        check(/答對 \d \/ 3 題/.test(r.edited.embeds[0].description) && buttons(r.edited).some(b => b.custom_id?.startsWith('sp:')), level + ': the point ends with its score and the next point');
     }
-    r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('gn:')).custom_id);
-    check(buttons(r.edited).filter(b => b.custom_id?.startsWith('ga:')).length >= 2, 'next grammar point has options');
+    // the place: /grammar study ja (no level) goes back to ja_n5, at point 2
+    r = await sub('grammar', 'study', { language: 'ja' }, STUDENT);
+    show('grammar study again', r.edited);
+    check(/第 2 \/ \d+ 個/.test(r.edited.embeds[0].title) && /上次/.test(r.edited.embeds[0].description), 'study picks up at point 2 of ja_n5');
+    // grammar quiz: 5 questions, then the missed ones explained
+    r = await sub('grammar', 'quiz', { language: 'ko', level: 'ko_topik1', count: 5 }, '902');
+    show('grammar quiz', r.edited);
+    for (let i = 0; i < 5; i++) {
+        const ta = buttons(r.edited).filter(b => b.custom_id?.startsWith('ta:'));
+        r = await press(ta[0].custom_id, '902');
+        if (i === 0) show('grammar quiz answer', r.edited);
+        r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith(i < 4 ? 'tq:' : 'tr:')).custom_id, '902');
+    }
+    show('grammar quiz results', r.edited);
+    check(/測驗結果/.test(r.edited.embeds[0].title) && /\d \/ 5/.test(r.edited.embeds[0].description), 'grammar quiz ends with a score');
+    r = await sub('grammar', 'study', { language: 'en' }, '903');
+    check(/準備中/.test(r.edited.content), 'a language without grammar: ' + r.edited.content);
 
     for (const [word, language] of [['agua', 'es'], ['食べる', undefined], ['house', undefined], ['學生', undefined], ['qwxzv', 'fr']]) {
         r = await command('dictionary', language ? { word, language } : { word });
@@ -137,8 +174,8 @@ try {
     r = await command('quiz', { language: 'ko', set: 'tp_ko_food', count: 5 }, '333', 'ja');
     show('ko food quiz, Japanese Discord', r.edited);
     check(/問/.test(r.edited.embeds[0].title) && /意味/.test(footer(r.edited)), 'Japanese locale -> Japanese quiz text');
-    check(buttons(r.edited).filter(b => b.custom_id.startsWith('qa:')).every(b => /^[\x20-\x7E]+$/.test(b.label)), 'Japanese locale -> English meanings on the buttons');
-    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, '333', 'ja');
+    check(buttons(r.edited).filter(b => b.custom_id.startsWith('va:')).every(b => /^[\x20-\x7E]+$/.test(b.label)), 'Japanese locale -> English meanings on the buttons');
+    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('va:')).custom_id, '333', 'ja');
     check(/次へ|結果/.test(buttons(r.edited).map(b => b.label).join()), 'its buttons stay Japanese');
 
     // Simplified Chinese: HSK words in simplified
@@ -146,7 +183,7 @@ try {
     show('hsk_2, Simplified Discord', r.edited);
     check(/题/.test(r.edited.embeds[0].title), 'zh-CN locale -> Simplified quiz text');
     r = await command('quiz', { language: 'ja', set: 'tp_ja_food', count: 5 }, '333', 'zh-CN');
-    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, '333', 'zh-CN');
+    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('va:')).custom_id, '333', 'zh-CN');
     show('ja food answer, Simplified Discord', r.edited);
 
     // /language: a saved choice beats the Discord locale, "auto" goes back to it
@@ -162,18 +199,16 @@ try {
     r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5 }, '444', 'ko');
     check(/번/.test(r.edited.embeds[0].title), 'after auto: Korean from the locale');
 
-    // grammar in Russian (English explanations), with the finish button
-    r = await command('grammar', { level: 'fr_a1' }, '555', 'ru');
+    // grammar in Russian (Russian explanations now), with the finish button
+    r = await sub('grammar', 'study', { language: 'fr', level: 'fr_a1' }, '555', 'ru');
     show('grammar fr_a1, Russian Discord', r.edited);
+    check(/[а-я]{4}/.test(r.edited.embeds[0].description.split('\n').slice(2).join(' ')), 'explanation in Russian');
     const ge = buttons(r.edited).find(b => b.custom_id.startsWith('ge:'));
     check(!!ge && ge.label === 'Закончить', 'grammar question has a finish button in Russian');
-    r = await press(buttons(r.edited).find(b => b.custom_id.startsWith('ga:')).custom_id, '555', 'ru');
-    show('grammar fr_a1 answer, Russian Discord', r.edited);
-    check(buttons(r.edited).some(b => b.custom_id?.startsWith('ge:')), 'grammar answer has the finish button');
-    r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('ge:')).custom_id, '555', 'ru');
+    r = await press(ge.custom_id, '555', 'ru');
     show('grammar finished', r.edited);
     check(/окончена/.test(r.edited.embeds[0].description), 'finish says goodbye in Russian');
-    r = await command('grammar', { level: 'zh_hsk12' }, '555', 'zh-CN');
+    r = await sub('grammar', 'study', { language: 'zh', level: 'zh_hsk12' }, '555', 'zh-CN');
     show('grammar zh_hsk12, Simplified Discord', r.edited);
 
     // dictionary: Tatoeba translations in the visitor's language, examples apart
@@ -198,7 +233,7 @@ try {
     check(/小花火能做什麼/.test(r.reply.data.embeds[0].title) && r.reply.data.embeds[0].description.includes('「public」'), 'Chinese help, English option name');
     // someone else's button: the note mentions the commands too
     r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5, public: true }, OWNER);
-    const other = await press(buttons(r.edited).find(b => b.custom_id.startsWith('qa:')).custom_id, OTHER, 'en-US');
+    const other = await press(buttons(r.edited).find(b => b.custom_id.startsWith('va:')).custom_id, OTHER, 'en-US');
     check(/<\/quiz:\d+>/.test(other.reply.data.content), 'not-yours note mentions /quiz: ' + other.reply.data.content);
 } finally {
     if (process.exitCode || process.env.SHOW_LOG) console.log('\n=== wrangler log ===\n' + devLog.join(''));

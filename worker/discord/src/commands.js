@@ -6,6 +6,7 @@
 import { STUDY_LANGS } from './sets.js';
 import { UI_LANGS, UI_NAMES, siteT } from './i18n.js';
 import { QUIZ_MIN, QUIZ_MAX, QUIZ_DEFAULT } from './quiz.js';
+import { GQ_MIN, GQ_MAX, GQ_DEFAULT } from './grammar.js';
 
 /* bot language -> Discord locales */
 const LOCALES = { zh: ['zh-TW'], zhs: ['zh-CN'], ja: ['ja'], ko: ['ko'], ru: ['ru'], fr: ['fr'], es: ['es-ES', 'es-419'], de: ['de'] };
@@ -45,6 +46,25 @@ const publicOption = {
             es: 'Mostrarlo a todo el canal (por defecto: solo a ti)', de: 'Für alle im Kanal anzeigen (Standard: nur für dich)' }])
 };
 
+/* /grammar: the languages that have grammar lessons on the site (data/grammar/index.json).
+   Discord keeps choices from registration — add a language here and run register.mjs
+   again when the site gets its grammar. */
+const GRAMMAR_LANGS = ['ja', 'ko', 'zh', 'fr', 'ru'];
+const grammarLanguage = {
+    type: 3, required: true, choices: studyChoices.filter(c => GRAMMAR_LANGS.includes(c.value)),
+    ...L(['language', { zh: '語言', zhs: '语言', ja: '言語', ko: '언어', ru: 'язык', fr: 'langue', es: 'idioma', de: 'sprache' }],
+        ['The language to study', { zh: '要學的語言', zhs: '要学的语言', ja: '学ぶ言語', ko: '공부할 언어', ru: 'Язык для изучения',
+            fr: 'La langue à étudier', es: 'El idioma que quieres estudiar', de: 'Die Sprache, die du lernen willst' }])
+};
+const grammarLevel = {
+    type: 3, autocomplete: true,
+    ...L(['level', { zh: '等級', zhs: '等级', ja: 'レベル', ko: '수준', ru: 'уровень', fr: 'niveau', es: 'nivel', de: 'stufe' }],
+        ['The level (default: where you left off, else the easiest)', { zh: '等級（預設：上次的地方，或最簡單的）', zhs: '等级（默认：上次的地方，或最简单的）',
+            ja: 'レベル（通常は前回の続き、なければいちばん易しいもの）', ko: '수준 (기본: 지난번 이어서, 없으면 가장 쉬운 것)',
+            ru: 'Уровень (по умолчанию — где вы остановились, иначе самый простой)', fr: 'Le niveau (par défaut : où tu t’es arrêté, sinon le plus facile)',
+            es: 'El nivel (por defecto: donde lo dejaste, si no el más fácil)', de: 'Die Stufe (Standard: wo du aufgehört hast, sonst die leichteste)' }])
+};
+
 export const COMMANDS = [
     {
         ...where,
@@ -72,17 +92,37 @@ export const COMMANDS = [
     {
         ...where,
         ...L(['grammar', { zh: '文法', zhs: '语法', ja: '文法', ko: '문법', ru: 'грамматика', fr: 'grammaire', es: 'gramática', de: 'grammatik' }],
-            ['A grammar point with a practice question', { zh: '隨機一個文法：說明＋小測驗', zhs: '随机一个语法：说明＋小测验',
-                ja: 'ランダムな文法：説明＋ミニテスト', ko: '무작위 문법: 설명 + 미니 테스트', ru: 'Случайная тема грамматики: объяснение и вопрос',
-                fr: 'Un point de grammaire au hasard : explication + exercice', es: 'Un punto de gramática al azar: explicación + ejercicio',
-                de: 'Ein zufälliger Grammatikpunkt: Erklärung + Übung' }]),
+            ['Grammar lessons and quizzes from hanabirn.xyz', { zh: 'Hanabiの小天地 的文法：學習或測驗', zhs: 'Hanabiの小天地 的语法：学习或测验',
+                ja: 'Hanabiの小天地 の文法：学習またはテスト', ko: 'Hanabiの小天地 문법: 학습 또는 테스트', ru: 'Грамматика Hanabiの小天地: уроки и тесты',
+                fr: 'La grammaire de Hanabiの小天地 : leçons et quiz', es: 'La gramática de Hanabiの小天地: lecciones y pruebas',
+                de: 'Grammatik von Hanabiの小天地: Lektionen und Tests' }]),
         options: [
-            { type: 3, required: true, autocomplete: true,
-                ...L(['level', { zh: '等級', zhs: '等级', ja: 'レベル', ko: '수준', ru: 'уровень', fr: 'niveau', es: 'nivel', de: 'stufe' }],
-                    ['Language and level, e.g. Japanese N5', { zh: '語言和等級，例如 日文 N5', zhs: '语言和等级，例如 日语 N5', ja: '言語とレベル（例：日本語 N5）',
-                        ko: '언어와 수준 (예: 일본어 N5)', ru: 'Язык и уровень, например японский N5', fr: 'Langue et niveau, par ex. japonais N5',
-                        es: 'Idioma y nivel, p. ej. japonés N5', de: 'Sprache und Stufe, z. B. Japanisch N5' }]) },
-            publicOption
+            { type: 1,
+                ...L(['study', { zh: '學習', zhs: '学习', ja: '学習', ko: '학습', ru: 'учить', fr: 'apprendre', es: 'estudiar', de: 'lernen' }],
+                    ['The points of a level in order, three questions each; picks up where you left off', {
+                        zh: '照順序學一個等級的文法，每個 3 題；會從上次的地方繼續', zhs: '按顺序学一个等级的语法，每个 3 题；会从上次的地方继续',
+                        ja: 'レベルの文法を順番に、各 3 問。前回の続きから', ko: '레벨의 문법을 순서대로, 각 3문제. 지난번 이어서',
+                        ru: 'Темы уровня по порядку, по 3 вопроса; с того места, где вы остановились',
+                        fr: 'Les points d’un niveau dans l’ordre, 3 questions chacun ; reprend où tu t’es arrêté',
+                        es: 'Los puntos de un nivel en orden, 3 preguntas cada uno; sigue donde lo dejaste',
+                        de: 'Die Punkte einer Stufe der Reihe nach, je 3 Fragen; macht dort weiter, wo du aufgehört hast' }]),
+                options: [grammarLanguage, grammarLevel, publicOption] },
+            { type: 1,
+                ...L(['quiz', { zh: '測驗', zhs: '测验', ja: 'テスト', ko: '테스트', ru: 'тест', fr: 'quiz', es: 'prueba', de: 'test' }],
+                    ['Random questions from a whole level; the missed ones explained at the end', {
+                        zh: '從整個等級隨機抽題；最後列出答錯的題目和解釋', zhs: '从整个等级随机抽题；最后列出答错的题目和解释',
+                        ja: 'レベル全体からランダムに出題。最後に間違えた問題を解説', ko: '레벨 전체에서 무작위 출제. 마지막에 틀린 문제 해설',
+                        ru: 'Случайные вопросы по всему уровню; в конце — разбор ошибок',
+                        fr: 'Questions au hasard sur tout un niveau ; les erreurs expliquées à la fin',
+                        es: 'Preguntas al azar de todo un nivel; al final, los fallos explicados',
+                        de: 'Zufällige Fragen aus einer ganzen Stufe; am Ende die Fehler erklärt' }]),
+                options: [grammarLanguage, grammarLevel,
+                    { type: 4, min_value: GQ_MIN, max_value: GQ_MAX,
+                        ...L(['count', { zh: '題數', zhs: '题数', ja: '問題数', ko: '문제수', ru: 'вопросов', fr: 'questions', es: 'preguntas', de: 'fragen' }],
+                            [`Number of questions (default ${GQ_DEFAULT})`, { zh: `幾題（預設 ${GQ_DEFAULT}）`, zhs: `几题（默认 ${GQ_DEFAULT}）`,
+                                ja: `問題の数（通常 ${GQ_DEFAULT}）`, ko: `문제 수 (기본 ${GQ_DEFAULT})`, ru: `Сколько вопросов (по умолчанию ${GQ_DEFAULT})`,
+                                fr: `Nombre de questions (par défaut ${GQ_DEFAULT})`, es: `Número de preguntas (por defecto ${GQ_DEFAULT})`, de: `Anzahl der Fragen (Standard ${GQ_DEFAULT})` }]) },
+                    publicOption] }
         ]
     },
     {
