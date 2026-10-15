@@ -45,8 +45,11 @@ carries on. Order: the 閱讀 page (tier 0), the 文法 examples (tier 1), and w
 --gemini-all everything else (words, alphabet, samples; tier 2). The model now and
 then reads the instruction aloud too, so every clip is checked against the length
 of its text and re-rendered (4 tries, 5 for a word of up to 4 characters; otherwise the old file stays). Files made by
-Gemini are listed in index.json under "g".
+Gemini are listed in index.json under "g". About 1 sentence in 5 ends with a short
+mouth click, heard as a pop; drop_end_click() cuts it from every new clip, and
+--fix-clicks cuts it from the files already made (needs `pip install miniaudio`).
        python tools/build_audio.py --gemini [--only zh-TW|zh-CN] [--gemini-all] [--limit N]
+       python tools/build_audio.py --fix-clicks [--only zh-TW|zh-CN]
 """
 import argparse, base64, io, json, re, struct, sys, time, unicodedata, urllib.error, urllib.request, wave
 import threading
@@ -454,7 +457,7 @@ def gemini_say(key, lang, text, model=None):
     m = re.search(r'rate=(\d+)', part.get('mimeType', ''))
     if m and int(m.group(1)) != GEMINI_SR:
         raise RuntimeError(f'Gemini returned {m.group(1)} Hz')
-    return fade_out(trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR), GEMINI_SR)
+    return drop_end_click(fade_out(trim(struct.unpack('<%dh' % (len(raw) // 2), raw), GEMINI_SR), GEMINI_SR), GEMINI_SR)
 
 
 def strip_c2pa(raw):
@@ -480,6 +483,80 @@ def fade_out(samples, sr, secs=0.01):
     return samples
 
 
+def drop_end_click(samples, sr):
+    """Gemini ends about 1 sentence in 5 with a mouth click — 5–15 ms of sound 10–25 ms
+    after the voice stops — heard as a pop. Cuts it (up to 3 times: some clips end with
+    two) and ends the clip with a 30 ms fade and 150 ms of silence; clips without one are
+    returned unchanged. Picked by the owner over re-rendering, by ear (2026-10-15).
+    Run it once per clip: a few clips end in creaky voice, pulses 20 ms apart that each
+    look like a click, and running it again would eat into the last syllable."""
+    w = int(sr * 0.005)
+    if len(samples) < 4 * w:
+        return samples
+    peak = max(abs(x) for x in samples) or 1
+    out, cut = list(samples), False
+    for _ in range(3):
+        # loudness of each 5 ms window, against the clip's peak
+        env = [(sum(x * x for x in out[i:i + w]) / w) ** 0.5 / peak for i in range(0, len(out) - w, w)]
+        loud = [i for i, e in enumerate(env) if e > 0.03]
+        if not loud:
+            break
+        last = start = loud[-1]
+        while start > 0 and env[start - 1] > 0.03:
+            start -= 1
+        g, gap = start - 1, 0
+        while g > 0 and env[g] < 0.02:
+            gap += 1
+            g -= 1
+        if last - start + 1 > 8 or gap < 2:      # a burst of <= 40 ms after >= 10 ms of quiet
+            break
+        out = out[:(g + 2) * w]                  # the voice, plus 5 ms of the quiet gap
+        cut = True
+    if not cut:
+        return samples
+    n = min(len(out), int(sr * 0.03))
+    for i in range(n):
+        out[-n + i] = int(out[-n + i] * (n - 1 - i) / n)
+    return out + [0] * int(sr * 0.15)
+
+
+def fix_clicks(langs):
+    """--fix-clicks: drop_end_click() on the Gemini files made before it existed — each
+    file once (index.json "c" lists the files done; new recordings go straight in). A
+    file is decoded and encoded again only when it has a click."""
+    import miniaudio
+    for lang in langs:
+        d = OUT / lang
+        try:
+            index = json.loads((d / 'index.json').read_text(encoding='utf-8'))
+        except (OSError, ValueError):
+            continue
+        done = set(index.get('c', []))
+        todo = [fid for fid in index.get('g', []) if fid not in done]
+        fixed = 0
+        for fid in todo:
+            f = d / f'{fid}.mp3'
+            # decoded from bytes: miniaudio can't open a path with non-ASCII folders (我的網站)
+            pcm = miniaudio.decode(f.read_bytes(), output_format=miniaudio.SampleFormat.SIGNED16,
+                                   nchannels=1, sample_rate=GEMINI_SR)
+            samples = list(pcm.samples)
+            clean = drop_end_click(samples, GEMINI_SR)
+            if clean is not samples:
+                # drop the silence the MP3 encoder added at the start (back to trim()'s
+                # 60 ms), so a file doesn't grow when it is encoded again; done after the
+                # cut, which was tried by ear on the decoded files as they were
+                thr = max(300, max(abs(x) for x in clean) * 0.03)
+                first = next(i for i, x in enumerate(clean) if abs(x) > thr)
+                clean = clean[max(0, first - int(0.06 * GEMINI_SR)):]
+                f.write_bytes(to_mp3(clean, GEMINI_SR))
+                fixed += 1
+            done.add(fid)
+        index['c'] = sorted(done & set(index.get('g', [])))
+        (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+        print(f'{lang}: {fixed} of {len(todo)} Gemini files had an end click, cut '
+              f'({len(index["g"]) - len(todo)} done before)')
+
+
 def spoken_chars(text):
     return max(1, len(re.findall(r'[\u3400-\u9fff\uf900-\ufaffA-Za-z0-9]', text)))
 
@@ -501,6 +578,7 @@ def run_gemini(lang, files, aliases, top, limit):
         old = {}
     made = set(old.get('g', []))
     by_model = dict(old.get('gm', {}))     # file id -> the Gemini model that made it
+    declicked = set(old.get('c', []))      # files drop_end_click() has been through
     tiers = TIERS.get(lang, {})
     # in the order jobs() met them — passage by passage (its sentences, then its
     # words), so each day leaves whole passages done rather than scattered lines
@@ -522,7 +600,8 @@ def run_gemini(lang, files, aliases, top, limit):
         index = {'voice': old.get('voice', LANGS[lang][2]), 'f': have,
                  'a': {a: f for a, f in sorted(aliases.items()) if f in have_set},
                  'g': sorted(made & have_set),
-                 'gm': {f: m for f, m in sorted(by_model.items()) if f in made & have_set}}
+                 'gm': {f: m for f, m in sorted(by_model.items()) if f in made & have_set},
+                 'c': sorted(declicked & made & have_set)}
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         return index
 
@@ -559,6 +638,7 @@ def run_gemini(lang, files, aliases, top, limit):
                 continue
             (d / f'{fid}.mp3').write_bytes(to_mp3(clip, GEMINI_SR))
             made.add(fid)
+            declicked.add(fid)             # gemini_say() already cut the click
             by_model[fid] = model.replace('gemini-', '')
             done += 1
             if done % 25 == 0:
@@ -619,8 +699,13 @@ def main():
     ap.add_argument('--rpm', type=int, default=None, help='requests per minute')
     ap.add_argument('--gemini', action='store_true', help='(re-)render Chinese with Gemini TTS (zh-TW / zh-CN)')
     ap.add_argument('--gemini-all', action='store_true', help='with --gemini: also the words, alphabet and samples')
+    ap.add_argument('--fix-clicks', action='store_true',
+                    help='cut the end click from the Gemini files already made (no requests)')
     args = ap.parse_args()
     langs = [args.only] if args.only else list(LANGS)
+    if args.fix_clicks:
+        fix_clicks([l for l in ('zh-TW', 'zh-CN') if l in langs])
+        return
     RPM = args.rpm or (GEMINI_RPM if args.gemini else RPM)
     if args.gemini:
         # the 閱讀 page in both accents first, then the 文法 examples (and with
@@ -694,6 +779,7 @@ def main():
         if made & have_set:
             index['g'] = sorted(made & have_set)       # files Gemini made (--gemini)
             index['gm'] = {f: m for f, m in prev.get('gm', {}).items() if f in have_set}
+            index['c'] = sorted(set(prev.get('c', [])) & made & have_set)
         (d / 'index.json').write_text(json.dumps(index, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         print(f'  {lang}: {len(have)} files in the index ({backups} new ones by the backup voice)')
 
