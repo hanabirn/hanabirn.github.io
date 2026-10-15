@@ -57,6 +57,33 @@
     position: relative;
 }
 
+/* region cards above the language buttons (renderRegionPicker in js/quiz.js) */
+.region-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.lang-btn.region-btn {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    padding: 18px 20px;
+    text-align: left;
+}
+.lang-btn.region-btn > span { text-align: left; }
+.region-title { font-size: 1.15rem; font-weight: 700; }
+.region-flags { display: flex; flex-wrap: wrap; gap: 6px; }
+.region-flags .lang-flag { width: 30px; height: 20px; }
+.region-langs { font-size: 0.85rem; font-weight: 400; color: var(--text-secondary); line-height: 1.5; }
+.region-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin: 0 0 14px; color: var(--ink); }
+.region-back {
+    border: 0;
+    background: none;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.92rem;
+    padding: 4px 0;
+    cursor: pointer;
+}
+.region-back:hover { color: var(--primary); }
+
 /* when a long one-word label (Французский, Französisch) doesn't fit beside the flag,
    it moves under it instead of pushing the flag out of the button */
 .lang-btn { flex-wrap: wrap; row-gap: 6px; padding-left: 10px; padding-right: 10px; }

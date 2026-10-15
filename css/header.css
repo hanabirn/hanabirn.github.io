@@ -298,6 +298,29 @@ header h1 {
     width: 100%;
     padding: 11px;
 }
+/* the changelog: title + ✕ stay at the top while the list scrolls (the ✕ is the
+   .acct-close button of css/account.css); wider on computers, and on phones the ✕
+   replaces the 關閉 button at the bottom */
+.updates-head {
+    position: sticky;
+    top: -24px;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: -24px -24px 14px;
+    padding: 24px 24px 10px;
+    background: var(--bg-widget);
+}
+.updates-head h3 { margin: 0; }
+.updates-x { flex: none; }
+@media (min-width: 769px) {
+    #updates-overlay .updates-panel { max-width: 760px; }
+}
+@media (max-width: 768px) {
+    #updates-overlay .updates-close { display: none; }
+}
 
 /* ☰ — same pill look as the language button, icon only */
 .header-icon-btn {

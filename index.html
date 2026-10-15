@@ -229,35 +229,35 @@
                 <h3 data-i18n="examquiz_title">&#x2726; &#x6AA2;&#x5B9A;&#x8003;&#x8A66;&#x55AE;&#x5B57; &#x2726;</h3>
                 <p class="examquiz-hint" data-i18n="examquiz_hint">這裡是各國語文檢定考試的單字庫：JLPT（N5～N1）、TOPIK（1～4）、HSK 3.0（1～7 級）和英文檢定（多益、托福）。每個單字庫都依常用程度，由簡單排到難。</p>
                 <div class="lang-buttons">
-                    <button class="lang-btn jp" onclick="showJlptLevels()">
+                    <button class="lang-btn jp" data-lang="ja" onclick="showJlptLevels()">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本" class="lang-flag">
                         <span data-i18n="examquiz_jlpt">JLPT&#xFF08;&#x65E5;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
                     </button>
-                    <button class="lang-btn kr" onclick="showTopikLevels()">
+                    <button class="lang-btn kr" data-lang="ko" onclick="showTopikLevels()">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國" class="lang-flag">
                         <span data-i18n="examquiz_topik">TOPIK&#xFF08;&#x97D3;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
                     </button>
-                    <button class="lang-btn zh" onclick="showHskLevels()">
+                    <button class="lang-btn zh" data-lang="zh" onclick="showHskLevels()">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/960px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="中國" class="lang-flag">
                         <span data-i18n="examquiz_hsk">HSK&#xFF08;&#x4E2D;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
                     </button>
-                    <button class="lang-btn en" onclick="showEnglishExamLevels()">
+                    <button class="lang-btn en" data-lang="en" onclick="showEnglishExamLevels()">
                         <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="US" class="lang-flag">
                         <span data-i18n="examquiz_english">英文檢定（多益／托福）</span>
                     </button>
-                    <button class="lang-btn fr" onclick="showCefrLevels('fr')">
+                    <button class="lang-btn fr" data-lang="fr" onclick="showCefrLevels('fr')">
                         <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="France" class="lang-flag">
                         <span data-i18n="examquiz_fr">法文（CEFR A1–C1）</span>
                     </button>
-                    <button class="lang-btn ru" onclick="showCefrLevels('ru')">
+                    <button class="lang-btn ru" data-lang="ru" onclick="showCefrLevels('ru')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
                         <span data-i18n="examquiz_ru">俄文（CEFR A1–C1）</span>
                     </button>
-                    <button class="lang-btn es" onclick="showCefrLevels('es')">
+                    <button class="lang-btn es" data-lang="es" onclick="showCefrLevels('es')">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/250px-Flag_of_Spain.svg.png" alt="Spain" class="lang-flag">
                         <span data-i18n="examquiz_es">西班牙文（CEFR A1–C1）</span>
                     </button>
-                    <button class="lang-btn de" onclick="showCefrLevels('de')">
+                    <button class="lang-btn de" data-lang="de" onclick="showCefrLevels('de')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png" alt="Germany" class="lang-flag">
                         <span data-i18n="examquiz_de">德文（CEFR A1–C1）</span>
                     </button>
@@ -372,35 +372,35 @@
             <div class="lang-card" id="lang-card">
                 <h3 data-i18n="select_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
                 <div class="lang-buttons">
-                    <button class="lang-btn jp" onclick="selectLanguage('jp')">
+                    <button class="lang-btn jp" data-lang="ja" onclick="selectLanguage('jp')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="&#x65E5;&#x672C;" class="lang-flag">
                         <span data-i18n="quiz_jp">&#x65E5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
-                    <button class="lang-btn kr" onclick="selectLanguage('kr')">
+                    <button class="lang-btn kr" data-lang="ko" onclick="selectLanguage('kr')">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="&#x97D3;&#x570B;" class="lang-flag">
                         <span data-i18n="quiz_kr">&#x97D3;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
-                    <button class="lang-btn fr" onclick="selectLanguage('fr')">
+                    <button class="lang-btn fr" data-lang="fr" onclick="selectLanguage('fr')">
                         <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="&#x6CD5;&#x570B;" class="lang-flag">
                         <span data-i18n="quiz_fr">&#x6CD5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
-                    <button class="lang-btn ru" onclick="selectLanguage('ru')">
+                    <button class="lang-btn ru" data-lang="ru" onclick="selectLanguage('ru')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
                         <span data-i18n="quiz_ru">俄文單字測驗</span>
                     </button>
-                    <button class="lang-btn es" onclick="selectLanguage('es')">
+                    <button class="lang-btn es" data-lang="es" onclick="selectLanguage('es')">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/250px-Flag_of_Spain.svg.png" alt="Spain" class="lang-flag">
                         <span data-i18n="quiz_es">西班牙文單字測驗</span>
                     </button>
-                    <button class="lang-btn de" onclick="selectLanguage('de')">
+                    <button class="lang-btn de" data-lang="de" onclick="selectLanguage('de')">
                         <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png" alt="Germany" class="lang-flag">
                         <span data-i18n="quiz_de">德文單字測驗</span>
                     </button>
-                    <button class="lang-btn en" onclick="selectLanguage('en')">
+                    <button class="lang-btn en" data-lang="en" onclick="selectLanguage('en')">
                         <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="&#x7F8E;&#x570B;" class="lang-flag">
                         <span data-i18n="quiz_en">&#x82F1;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
                     </button>
-                    <button class="lang-btn zh" onclick="selectLanguage('zh')">
+                    <button class="lang-btn zh" data-lang="zh" onclick="selectLanguage('zh')">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/250px-Flag_of_the_Republic_of_China.svg.png" alt="&#x53F0;&#x7063;" class="lang-flag">
                         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/960px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="&#x4E2D;&#x570B;" class="lang-flag">
                         <span data-i18n="quiz_zh">&#x4E2D;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
@@ -799,7 +799,10 @@
     <!-- "更新內容" popup (js/updates.js) -->
     <div class="updates-overlay" id="updates-overlay" onclick="if(event.target===this) closeUpdates()">
         <div class="updates-panel" role="dialog" aria-modal="true" aria-labelledby="updates-title">
-            <h3 id="updates-title" data-i18n="updates_title">📢 更新內容</h3>
+            <div class="updates-head">
+                <h3 id="updates-title" data-i18n="updates_title">📢 更新內容</h3>
+                <button type="button" class="acct-close updates-x" onclick="closeUpdates()" data-i18n-title="updates_close" title="關閉">✕</button>
+            </div>
             <ol class="updates-list" id="updates-list"></ol>
             <div class="updates-pager" id="updates-pager" hidden>
                 <button type="button" class="mistake-page-btn" id="updates-prev" onclick="updatesGo(-1)" data-i18n="updates_prev">上一頁</button>

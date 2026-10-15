@@ -302,7 +302,7 @@ function railWordView(lang, row) {
     if (lang === 'zh') {
         const simp = siteLang === 'zh-Hans';
         return { word: simp ? row[1] : row[0], reading: simp ? row[3] : row[2] + ' · ' + row[3], meaning: row[4],
-                 speak: simp ? row[1] : row[0], tts: simp ? 'zh-CN' : 'zh-TW', htmlLang: simp ? 'zh-Hans' : 'zh-Hant' };
+                 speak: simp ? row[1] : row[0], tts: zhAccent(simp ? 'simp' : 'trad'), htmlLang: simp ? 'zh-Hans' : 'zh-Hant' };
     }
     const reading = lang === 'jp' && row[1] && row[1] !== row[0] ? row[1] : '';
     return { word: row[0], reading, meaning: uiZh || !row[3] ? row[2] : row[3],

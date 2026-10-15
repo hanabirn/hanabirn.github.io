@@ -313,7 +313,7 @@ function loadWordSet(id) {
                 });
                 currentSetMeta = { source: data.source || '', license: data.license || '' };
                 const audioLang = isJapaneseQuizLang(id) ? 'ja-JP' : isKoreanQuizLang(id) ? 'ko-KR'
-                    : isChineseQuizLang(id) ? (siteLang === 'zh-Hans' ? 'zh-CN' : 'zh-TW') : '';
+                    : isChineseQuizLang(id) ? zhAccent(zhUiScript()) : '';
                 if (audioLang) audioWarm(audioLang);
                 return vocabularyList.length;
             });
@@ -537,7 +537,7 @@ function isChineseQuizLang(lang) {
 function speakWord(slow) {
     if (!currentWord || !currentWord.word) return;
     const text = currentWord.word.includes(' / ') ? pickOneVariant(currentWord.word) : currentWord.word;
-    const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : isFrenchQuizLang(currentLang) ? 'fr-FR' : isRussianQuizLang(currentLang) ? 'ru-RU' : isSpanishQuizLang(currentLang) ? 'es-ES' : isGermanQuizLang(currentLang) ? 'de-DE' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? (zhCharType === 'simp' ? 'zh-CN' : 'zh-TW') : 'ko-KR';
+    const lang = isJapaneseQuizLang(currentLang) ? 'ja-JP' : isFrenchQuizLang(currentLang) ? 'fr-FR' : isRussianQuizLang(currentLang) ? 'ru-RU' : isSpanishQuizLang(currentLang) ? 'es-ES' : isGermanQuizLang(currentLang) ? 'de-DE' : isEnglishQuizLang(currentLang) ? 'en-US' : isChineseQuizLang(currentLang) ? zhAccent(zhCharType) : 'ko-KR';
     // the kana tells a recording of 一日 (ついたち) from 一日 (いちにち); a
     // review question only has it as the answer of a reading question
     const reading = currentWord.kana
@@ -609,6 +609,89 @@ function setResultAgainLabel(key) {
     b.setAttribute('data-i18n', key);
     b.innerHTML = t(key);
 }
+
+/* ----- Languages by region -----
+   The 單字 and 檢定 pages first show a card per region, then that region's language
+   buttons (owner's pick, 2026-10-15); the 學習 pages group their language menu the
+   same way. A new language goes into its region here — the cards count it. Codes are
+   the dict_lang_* ones (ja ko zh en fr ru es de). */
+const LANG_REGIONS = [
+    { id: 'asia', icon: '🌏', langs: ['ja', 'ko', 'zh'] },
+    { id: 'europe', icon: '🌍', langs: ['en', 'fr', 'ru', 'es', 'de'] },
+];
+const REGION_CARDS = ['lang-card', 'examquiz-card'];
+
+function langRegion(lang) {
+    const r = LANG_REGIONS.find(x => x.langs.includes(lang));
+    return r ? r.id : '';
+}
+
+function langNameList(langs) {
+    const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '、' : ', ';
+    return langs.map(l => t('dict_lang_' + l)).join(sep);
+}
+
+// the region a card shows, remembered per card ('' = the region cards)
+function regionSaved(cardId) {
+    let v = '';
+    try { v = localStorage.getItem('region_' + cardId) || ''; } catch {}
+    return LANG_REGIONS.some(r => r.id === v) ? v : '';
+}
+
+function setRegion(cardId, region) {
+    try { localStorage.setItem('region_' + cardId, region); } catch {}
+    renderRegionPicker(cardId);
+}
+
+/* Region cards, or the chosen region's buttons with "← 換地區" above them. The
+   buttons stay in index.html, marked with data-lang. */
+function renderRegionPicker(cardId) {
+    const card = document.getElementById(cardId);
+    const box = card && card.querySelector('.lang-buttons');
+    if (!box) return;
+    const buttons = [...box.querySelectorAll('.lang-btn[data-lang]')];
+    let picker = card.querySelector('.region-picker');
+    if (!picker) {
+        picker = document.createElement('div');
+        picker.className = 'region-picker';
+        box.before(picker);
+        // opening a language keeps its region for the way back
+        box.addEventListener('click', e => {
+            const b = e.target.closest('.lang-btn[data-lang]');
+            if (b && langRegion(b.dataset.lang)) try { localStorage.setItem('region_' + cardId, langRegion(b.dataset.lang)); } catch {}
+        });
+    }
+    const region = regionSaved(cardId);
+    if (!region) {
+        picker.innerHTML = `<div class="region-grid">${LANG_REGIONS.map(r => {
+            const mine = buttons.filter(b => langRegion(b.dataset.lang) === r.id)
+                .sort((a, b) => r.langs.indexOf(a.dataset.lang) - r.langs.indexOf(b.dataset.lang));
+            if (!mine.length) return '';
+            const langs = [...new Set(mine.map(b => b.dataset.lang))];
+            const flags = mine.map(b => [...b.querySelectorAll('.lang-flag')].map(img => img.outerHTML).join('')).join('');
+            return `<button type="button" class="lang-btn region-btn" onclick="setRegion('${cardId}', '${r.id}')">
+                <span class="region-title">${r.icon} ${escHtml(t('region_' + r.id))}</span>
+                <span class="region-flags">${flags}</span>
+                <span class="region-langs">${escHtml(langNameList(langs))}${['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · '}${escHtml(t('region_count', { n: langs.length }))}</span>
+            </button>`;
+        }).join('')}</div>`;
+        box.style.display = 'none';
+        return;
+    }
+    const r = LANG_REGIONS.find(x => x.id === region);
+    picker.innerHTML = `<div class="region-head">
+        <button type="button" class="region-back" onclick="setRegion('${cardId}', '')">← ${escHtml(t('region_change'))}</button>
+        <b>${r.icon} ${escHtml(t('region_' + r.id))}</b>
+    </div>`;
+    box.style.display = '';
+    buttons.forEach(b => { b.style.display = langRegion(b.dataset.lang) === region ? '' : 'none'; });
+}
+
+function renderRegionPickers() {
+    REGION_CARDS.forEach(renderRegionPicker);
+}
+
+document.addEventListener('DOMContentLoaded', renderRegionPickers);
 
 /* The quiz page's language card: every language opens its topics (#topic-card),
    which link to that language's levels on the exam page (topicToExam). */
@@ -994,6 +1077,9 @@ function refreshDynamicContent() {
         return el && el.style.display !== 'none';
     };
     if (isVisible('topic-card')) renderTopicPicker();
+    // applyLang() runs this while quiz.js is still loading, before LANG_REGIONS exists;
+    // the cards are drawn on DOMContentLoaded then
+    if (document.readyState !== 'loading') renderRegionPickers();
     const cefrCard = document.getElementById('examquiz-cefr-level-card');
     if (cefrCard && isVisible('examquiz-cefr-level-card') && cefrCard.dataset.lang) showCefrLevels(cefrCard.dataset.lang);
     if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();

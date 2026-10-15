@@ -334,7 +334,9 @@ async function dictExamples(word, lang, target, signal) {
 }
 
 function dictSpeak(text, langId) {
-    speakText(text, dictLangById(langId).tts);
+    const tts = dictLangById(langId).tts;
+    // Chinese in the visitor's accent (js/speech.js)
+    speakText(text, tts.startsWith('zh') ? zhAccent(zhUiScript()) : tts);
 }
 
 /* ----- page lifecycle ----- */

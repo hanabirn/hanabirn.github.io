@@ -198,10 +198,12 @@ function readingSetZh(key, v) {
     renderReading();
 }
 
-/* a translation: Chinese passages only have English ones, English passages Chinese */
+/* a translation: Chinese passages have English ones, English passages Chinese, and both
+   the other interface languages (tools/content_i18n.py) */
 function readingTx(set, o) {
-    if (set.lang === 'zh') return o.en || '';
-    if (set.lang === 'en') return (siteLang === 'zh-Hans' && o['zh-Hans']) || o.zh || '';
+    const zhUi = siteLang === 'zh' || siteLang === 'zh-Hans';
+    if (set.lang === 'zh') return (!zhUi && o[siteLang]) || o.en || '';
+    if (set.lang === 'en') return (!zhUi && o[siteLang]) || (siteLang === 'zh-Hans' && o['zh-Hans']) || o.zh || '';
     return gText(o);
 }
 
@@ -217,18 +219,12 @@ function readingStress() { return readingPref('reading_stress', '1') === '1'; }
 /* ----- list ----- */
 
 function readingListHtml(set) {
-    const langs = [...new Set(readingIndex.map(s => s.lang))];
-    const levels = readingIndex.filter(s => s.lang === set.lang);
     const read = set.passages.filter(p => readingRead(set.id, p.id)).length;
     const pct = Math.round(read / set.passages.length * 100);
     const prog = readingProgress();
     return `<h3>${escHtml(t('reading_title'))}</h3>
         <p class="grammar-intro">${escHtml(t('reading_intro'))}</p>
-        <div class="grammar-chips" role="group">
-            ${langs.map(l => `<button type="button" class="mode-btn grammar-chip${l === set.lang ? ' mode-btn-active' : ''}" onclick="readingPickSet('${readingIndex.find(s => s.lang === l).id}')">${escHtml(t('dict_lang_' + l))}</button>`).join('')}
-            ${levels.map(s => `<button type="button" class="mode-btn grammar-chip${s.id === set.id ? ' mode-btn-active' : ''}" onclick="readingPickSet('${s.id}')">${escHtml(s.level)}</button>`).join('')}
-        </div>
-        <p class="grammar-soon">${escHtml(t('reading_soon'))}</p>
+        ${learnPickerHtml(readingIndex, set.id, 'readingPickSet', id => learnDoneCount(prog, id, READING_PASS))}
         <div class="grammar-progress">
             <span>${escHtml(t('reading_read_n', { n: read, m: set.passages.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
@@ -273,12 +269,19 @@ function readingFontStep(d) {
     renderReading();
 }
 
-/* the reader's Chinese switches: 繁 / 简 and pinyin / zhuyin / both / none */
+/* the reader's Chinese switches: 繁 / 简, pinyin / zhuyin / both / none, and the accent */
 function readingZhTools() {
-    const sc = readingZhScript(), rd = readingZhRd();
+    const sc = readingZhScript(), rd = readingZhRd(), ac = zhAccent(sc);
     const btn = (key, v, label, on) => `<button type="button" class="mode-btn${on ? ' mode-btn-active' : ''}" aria-pressed="${on}" onclick="readingSetZh('${key}', '${v}')">${escHtml(label)}</button>`;
+    const acBtn = (v, label) => `<button type="button" class="mode-btn${ac === v ? ' mode-btn-active' : ''}" aria-pressed="${ac === v}" onclick="readingSetAccent('${v}')">${escHtml(label)}</button>`;
     return `<span class="rd-seg" role="group">${btn('reading_zh_script', 'trad', t('reading_trad'), sc === 'trad')}${btn('reading_zh_script', 'simp', t('reading_simp'), sc === 'simp')}</span>
-        <span class="rd-seg" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">${READING_ZH_RD.map(v => btn('reading_zh_rd', v, t(v === 'off' ? 'reading_rd_off' : 'grammar_rd_' + v), rd === v)).join('')}</span>`;
+        <span class="rd-seg" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">${READING_ZH_RD.map(v => btn('reading_zh_rd', v, t(v === 'off' ? 'reading_rd_off' : 'grammar_rd_' + v), rd === v)).join('')}</span>
+        <span class="rd-seg" role="group" aria-label="${escHtml(t('zh_accent'))}" title="${escHtml(t('zh_accent'))}"><span class="rd-seg-label" aria-hidden="true">🔊</span>${acBtn('zh-TW', t('zh_accent_tw'))}${acBtn('zh-CN', t('zh_accent_cn'))}</span>`;
+}
+
+function readingSetAccent(v) {
+    setZhAccent(v);
+    renderReading();
 }
 
 function readingReaderHtml(set) {
@@ -334,29 +337,14 @@ function readingSentences() {
     return p.paragraphs.flatMap(para => para.s);
 }
 
-/* Simplified text speaks its Mainland (zh-CN) recording; one not recorded yet plays
-   the Taiwan (zh-TW) recording of the same sentence rather than the browser voice —
-   unless the visitor picked a browser voice for zh-CN in the settings. */
-function readingSpeakSimp(simp, trad, opts) {
-    stopSpeech();
-    const seq = speakSeq;
-    if (ttsSaved()[ttsKey('zh-CN')]) return speakText(simp, 'zh-CN', opts);
-    audioIndex('zh-CN').then(map => {
-        if (seq !== speakSeq) return;          // stopped meanwhile
-        if (map && map.get(audioId(simp))) speakText(simp, 'zh-CN', opts);
-        else speakText(trad, 'zh-TW', opts);
-    });
-}
-
 /* recordings are keyed "plain|kana" (tools/build_audio.py) and spoken from the kana */
 function readingSpeak(s, done) {
     const set = readingSets[readingSetId];
-    // Chinese: the script on screen picks the accent — Traditional is recorded with a
-    // Taiwan voice (zh-TW), Simplified with a Mainland one (zh-CN, keyed by the
-    // Simplified text; tools/build_audio.py --gemini)
-    if (set.lang === 'zh' && readingZhScript() === 'simp') {
+    // Chinese: in the visitor's accent (js/speech.js) — Taiwan recordings are keyed by
+    // the Traditional text, Mainland ones by the Simplified (tools/build_audio.py --gemini)
+    if (set.lang === 'zh') {
         const simp = s.t.map(sg => sg[4] || sg[0]).join('');
-        readingSpeakSimp(simp, s.plain, done ? { onend: done } : undefined);
+        speakChinese(s.plain, simp, readingZhScript(), done ? { onend: done } : undefined);
         return;
     }
     speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(set.lang === 'ja' && s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
@@ -445,7 +433,7 @@ function readingWord(ev, gi) {
         ? `<b lang="zh-TW">${escHtml(g.w)}</b>${g.simp && g.simp !== g.w ? `<span class="rd-pop-r" lang="zh-CN">${escHtml(g.simp)}</span>` : ''}<span class="rd-pop-r">${escHtml(g.r)}</span><span class="rd-pop-r" lang="zh-TW">${escHtml(g.zy || '')}</span>`
         : set.lang === 'ru' ? `<b lang="ru">${escHtml(readingGw(set, g))}</b>`
         : `<b lang="${set.lang}">${escHtml(g.w)}</b>${g.r && g.r !== g.w ? `<span class="rd-pop-r" lang="${set.lang}">${escHtml(g.r)}</span>` : ''}`;
-    const meaning = zh ? escHtml(g.en)
+    const meaning = zh ? escHtml(readingTx(set, g))
         : escHtml(gText(g)) + (siteLang === 'zh' || siteLang === 'zh-Hans' ? `<span class="rd-pop-en">${escHtml(g.en)}</span>` : '');
     pop.innerHTML = `<div class="rd-pop-head">${head}</div>
         <div class="rd-pop-m">${meaning}</div>
@@ -475,8 +463,8 @@ window.addEventListener('scroll', readingClosePop, { passive: true });
 function readingSayWord(gi) {
     const set = readingSets[readingSetId];
     const g = set.passages[readingNo].glossary[gi];
-    if (set.lang === 'zh' && readingZhScript() === 'simp') {
-        readingSpeakSimp(g.simp || g.w, g.w);
+    if (set.lang === 'zh') {
+        speakChinese(g.w, g.simp || g.w, readingZhScript());
         return;
     }
     // a word with kanji is recorded as "word|kana" (the word lists' recordings)

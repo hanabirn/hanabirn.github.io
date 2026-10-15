@@ -165,8 +165,6 @@ function listeningSetCard(lv, s, i, prog) {
 }
 
 function listeningListHtml(lv) {
-    const langs = [...new Set(listeningIndex.map(l => l.lang))];
-    const levels = listeningIndex.filter(l => l.lang === lv.lang);
     const prog = listeningProgress();
     const practice = lv.sets.filter(s => !s.mock);
     const mocks = lv.sets.filter(s => s.mock);
@@ -176,11 +174,7 @@ function listeningListHtml(lv) {
     const mockQ = mocks.length ? mocks[0].items.reduce((n, it) => n + it.questions.length, 0) : 0;
     return `<h3>${escHtml(t('listening_title'))}</h3>
         <p class="grammar-intro">${escHtml(t('listening_intro'))}</p>
-        <div class="grammar-chips" role="group">
-            ${langs.map(l => `<button type="button" class="mode-btn grammar-chip${l === lv.lang ? ' mode-btn-active' : ''}" onclick="listeningPickLevel('${listeningIndex.find(x => x.lang === l).id}')">${escHtml(t('dict_lang_' + l))}</button>`).join('')}
-            ${levels.map(l => `<button type="button" class="mode-btn grammar-chip${l.id === lv.id ? ' mode-btn-active' : ''}" onclick="listeningPickLevel('${l.id}')">${escHtml(l.level)}</button>`).join('')}
-        </div>
-        <p class="grammar-soon">${escHtml(t('listening_soon'))}</p>
+        ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
         ${mocks.length ? `<div class="ls-mock">
             <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>
             <p class="ls-mock-hint">${escHtml(t('listening_mock_hint', { n: mockQ, p: lv.mock_plays || 1 }))}</p>

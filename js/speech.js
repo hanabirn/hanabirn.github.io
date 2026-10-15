@@ -164,6 +164,57 @@ function speakText(text, lang, opts) {
     });
 }
 
+/* ----- Chinese accent -----
+   Taiwan (zh-TW) or Mainland (zh-CN), as the visitor picked (settings panel, the 閱讀
+   and 文法 pages; localStorage['zh_accent']), else the one that goes with the script
+   on screen: Traditional → Taiwan, Simplified → Mainland. */
+const ZH_ACCENTS = ['zh-TW', 'zh-CN'];
+
+function zhAccentSaved() {
+    let v = '';
+    try { v = localStorage.getItem('zh_accent') || ''; } catch {}
+    return ZH_ACCENTS.includes(v) ? v : '';
+}
+
+function zhAccent(script) {
+    return zhAccentSaved() || (script === 'simp' ? 'zh-CN' : 'zh-TW');
+}
+
+// the script of the site's Chinese UI, for pages without a 繁 / 简 switch of their own
+function zhUiScript() {
+    return typeof siteLang !== 'undefined' && siteLang === 'zh-Hans' ? 'simp' : 'trad';
+}
+
+function setZhAccent(v) {
+    try {
+        if (ZH_ACCENTS.includes(v)) localStorage.setItem('zh_accent', v);
+        else localStorage.removeItem('zh_accent');
+    } catch {}
+}
+
+/* Says a Chinese sentence or word in the visitor's accent. Recordings are keyed by
+   the Traditional text (`trad`) — except the 閱讀 page's Mainland ones, keyed by the
+   Simplified text (`simp`) — so both are tried. One not recorded in that accent yet
+   plays the other accent's recording rather than the browser voice, unless the
+   visitor picked a browser voice for it. */
+function speakChinese(trad, simp, script, opts) {
+    const accent = zhAccent(script);
+    const other = accent === 'zh-CN' ? 'zh-TW' : 'zh-CN';
+    const mine = accent === 'zh-CN' ? [simp || trad, trad] : [trad, simp || trad];
+    stopSpeech();
+    const seq = speakSeq;
+    if (ttsSaved()[ttsKey(accent)]) return speakText(mine[0], accent, opts);
+    Promise.all([audioIndex(AUDIO_DIRS[accent]), audioIndex(AUDIO_DIRS[other])]).then(([map, otherMap]) => {
+        if (seq !== speakSeq) return;          // stopped meanwhile
+        const has = (m, text) => m && m.get(audioId(text));
+        const own = mine.find(text => has(map, text));
+        if (own) return speakText(own, accent, opts);
+        const theirs = mine.slice().reverse().find(text => has(otherMap, text));
+        if (theirs && !ttsSaved()[ttsKey(other)]) return speakText(theirs, other, opts);
+        speakText(mine[0], accent, opts);
+    });
+}
+
 function speakWithVoice(text, lang, slow, onend) {
     if (!window.speechSynthesis) return;
     speechSynthesis.cancel();
@@ -193,12 +244,22 @@ function ttsLangLabel(lang) {
 function renderTtsSettings() {
     const el = document.getElementById('tts-settings-list');
     if (!el) return;
+    // the Chinese accent works without browser voices too (recordings)
+    const cur = zhAccentSaved();
+    const accentRow = `<div class="tts-row">
+            <label class="tts-lang" for="tts-zh-accent">${escHtml(t('zh_accent'))}</label>
+            <select class="tts-select" id="tts-zh-accent" onchange="setZhAccentFromSettings(this.value)">
+                ${[['', 'zh_accent_auto'], ['zh-TW', 'zh_accent_tw'], ['zh-CN', 'zh_accent_cn']].map(([v, k]) =>
+                    `<option value="${v}"${cur === v ? ' selected' : ''}>${escHtml(t(k))}</option>`).join('')}
+            </select>
+            <button type="button" class="speak-btn tts-try" onclick="speakChinese(TTS_SAMPLE['zh-TW'], TTS_SAMPLE['zh-CN'], zhUiScript())" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">▶</button>
+        </div>`;
     if (!window.speechSynthesis) {
-        el.innerHTML = `<p class="tts-empty">${escHtml(t('tts_unsupported'))}</p>`;
+        el.innerHTML = accentRow + `<p class="tts-empty">${escHtml(t('tts_unsupported'))}</p>`;
         return;
     }
     const saved = ttsSaved();
-    el.innerHTML = TTS_LANGS.map(lang => {
+    el.innerHTML = accentRow + TTS_LANGS.map(lang => {
         const list = ttsCandidates(lang);
         const auto = AUDIO_DIRS[lang]
             ? t('tts_auto_rec', { v: list.length ? ttsShortName(list[0]) : '—' })
@@ -213,6 +274,16 @@ function renderTtsSettings() {
             <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length || AUDIO_DIRS[lang] ? '' : ' disabled'}>▶</button>
         </div>`;
     }).join('');
+}
+
+function setZhAccentFromSettings(v) {
+    setZhAccent(v);
+    speakChinese(TTS_SAMPLE['zh-TW'], TTS_SAMPLE['zh-CN'], zhUiScript());
+    // the 閱讀 / 文法 pages show the accent on their own switches; only the open one is
+    // redrawn (they set page-wide classes on <body>), the other draws itself when opened
+    const page = document.body.dataset.page;
+    if (page === 'reading' && typeof renderReading === 'function') renderReading();
+    if (page === 'grammar' && typeof renderGrammar === 'function') renderGrammar();
 }
 
 function setTtsVoice(lang, name) {

@@ -25,7 +25,9 @@ function gText(obj) {
     if (typeof obj === 'string') return obj;
     if (siteLang === 'zh') return obj.zh || obj.en || '';
     if (siteLang === 'zh-Hans') return obj['zh-Hans'] || obj.zh || obj.en || '';
-    return obj.en || obj.zh || '';
+    // ja ko ru fr es de: machine-translated by tools/content_i18n.py (never into the
+    // lesson's own language, which reads the English)
+    return obj[siteLang] || obj.en || obj.zh || '';
 }
 
 /* Translations of examples and quiz hints: for the Chinese lessons a Chinese
@@ -34,6 +36,70 @@ function gText(obj) {
 function gHint(set, obj) {
     if (set && set.lang === 'zh' && (siteLang === 'zh' || siteLang === 'zh-Hans')) return obj.en || gText(obj);
     return gText(obj);
+}
+
+/* ----- the 學習 pages' language + level picker (owner's pick, 2026-10-15) -----
+   A language button opening a menu grouped by region (LANG_REGIONS in js/quiz.js;
+   languages this page has nothing for yet are greyed out), and below it only the
+   chosen language's levels, each with how much of it is done. Shared by the 文法,
+   閱讀 and 聽解 lists: index = the page's index.json, pick = the name of the global
+   function that opens a level, done(id) = items passed in that level. */
+const LEARN_FLAGS = { ja: ['jp'], ko: ['kr'], zh: ['tw', 'cn'], en: ['gb'], fr: ['fr'], ru: ['ru'], es: ['es'], de: ['de'] };
+
+function learnFlags(lang) {
+    return (LEARN_FLAGS[lang] || []).map(f => `<span class="flag flag--${f}" aria-hidden="true"></span>`).join('');
+}
+
+function learnPickerHtml(index, curId, pick, done) {
+    const cur = index.find(s => s.id === curId) || index[0];
+    const levelsOf = l => index.filter(s => s.lang === l);
+    const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · ';
+    const menu = LANG_REGIONS.map(r => `<div class="learn-menu-group">${r.icon} ${escHtml(t('region_' + r.id))}</div>
+        <div class="learn-menu-list">${r.langs.map(l => {
+            const lv = levelsOf(l);
+            if (!lv.length) {
+                return `<button type="button" class="learn-menu-item soon" disabled>${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(t('learn_soon'))}</small></span></button>`;
+            }
+            return `<button type="button" class="learn-menu-item${l === cur.lang ? ' on' : ''}" onclick="${pick}('${lv[0].id}')">${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(lv.map(s => s.level).join(sep))}</small></span></button>`;
+        }).join('')}</div>`).join('');
+    const chips = levelsOf(cur.lang).map(s => {
+        const n = done(s.id), m = s.count || 0;
+        return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
+            ${escHtml(s.level)}<span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small>
+        </button>`;
+    }).join('');
+    return `<div class="learn-picker">
+        <div class="learn-lang">
+            <button type="button" class="learn-lang-btn" aria-haspopup="true" aria-label="${escHtml(t('learn_lang_menu'))}" onclick="learnMenuToggle(event, this)">${learnFlags(cur.lang)}${escHtml(t('dict_lang_' + cur.lang))}<span class="learn-caret" aria-hidden="true">▾</span></button>
+            <div class="learn-menu" role="menu">${menu}</div>
+        </div>
+        <div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><span class="learn-levels-label">${escHtml(t('learn_levels'))}</span>${chips}</div>
+    </div>`;
+}
+
+function learnMenuToggle(e, btn) {
+    e.stopPropagation();
+    const box = btn.parentElement;
+    const open = !box.classList.contains('open');
+    learnMenuClose();
+    box.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', String(open));
+}
+
+function learnMenuClose() {
+    document.querySelectorAll('.learn-lang.open').forEach(el => {
+        el.classList.remove('open');
+        const b = el.querySelector('.learn-lang-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+    });
+}
+
+document.addEventListener('click', e => { if (!e.target.closest('.learn-menu')) learnMenuClose(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') learnMenuClose(); });
+
+// items passed in a level, from a progress store keyed "<level>:<item>" ({best, of})
+function learnDoneCount(prog, levelId, pass) {
+    return Object.entries(prog).filter(([k, p]) => k.startsWith(levelId + ':') && p && p.of > 0 && p.best / p.of >= pass).length;
 }
 
 function grammarProgress() {
@@ -105,17 +171,11 @@ function grammarPickSet(id) {
 }
 
 function grammarListHtml(set) {
-    const langs = [...new Set(grammarIndex.map(s => s.lang))];
-    const levels = grammarIndex.filter(s => s.lang === set.lang);
     const done = set.points.filter(p => grammarLearned(set.id, p.id)).length;
     const pct = Math.round(done / set.points.length * 100);
     return `<h3>${escHtml(t('grammar_title'))}</h3>
         <p class="grammar-intro">${escHtml(t('grammar_intro'))}</p>
-        <div class="grammar-chips" role="group">
-            ${langs.map(l => `<button type="button" class="mode-btn grammar-chip${l === set.lang ? ' mode-btn-active' : ''}" onclick="grammarPickSet('${grammarIndex.find(s => s.lang === l).id}')">${escHtml(t('dict_lang_' + l))}</button>`).join('')}
-            ${levels.map(s => `<button type="button" class="mode-btn grammar-chip${s.id === set.id ? ' mode-btn-active' : ''}" onclick="grammarPickSet('${s.id}')">${escHtml(s.level)}</button>`).join('')}
-        </div>
-        <p class="grammar-soon">${escHtml(t('grammar_soon'))}</p>
+        ${learnPickerHtml(grammarIndex, set.id, 'grammarPickSet', id => learnDoneCount(grammarProgress(), id, GRAMMAR_PASS))}
         <div class="grammar-progress">
             <span>${escHtml(t('grammar_learned_n', { n: done, m: set.points.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
@@ -191,7 +251,7 @@ function grammarPointHtml(set) {
         <div class="grammar-col-side">
         <div class="grammar-ex-head">
             <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
-            ${set.lang === 'zh' ? grammarReadingSwitch() : ''}
+            ${set.lang === 'zh' ? `<div class="grammar-ex-tools">${grammarReadingSwitch()}${grammarAccentSwitch()}</div>` : ''}
         </div>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
@@ -239,6 +299,21 @@ function grammarReadingSwitch() {
     </div>`;
 }
 
+/* Taiwan / Mainland accent of the examples' 🔊 (js/speech.js). The page shows
+   Traditional only, so without a choice the accent follows the site's script. */
+function grammarAccentSwitch() {
+    const cur = zhAccent(zhUiScript());
+    return `<div class="grammar-rd" role="group" aria-label="${escHtml(t('zh_accent'))}" title="${escHtml(t('zh_accent'))}">
+        <span class="grammar-rd-label" aria-hidden="true">🔊</span>
+        ${[['zh-TW', 'zh_accent_tw'], ['zh-CN', 'zh_accent_cn']].map(([v, k]) => `<button type="button" class="grammar-rd-btn${v === cur ? ' on' : ''}" aria-pressed="${v === cur}" onclick="grammarSetAccent('${v}')">${escHtml(t(k))}</button>`).join('')}
+    </div>`;
+}
+
+function grammarSetAccent(v) {
+    setZhAccent(v);
+    renderGrammar();
+}
+
 /* Pinyin and / or zhuyin lines for a Chinese sentence, as the switch says.
    The quiz sentences, options and common mistakes get theirs from
    tools/build_grammar.py too (q_reading / options_reading / wrong_reading…). */
@@ -261,6 +336,8 @@ function grammarSay(i) {
     const set = grammarSets[grammarSetId];
     const ex = set && set.points[grammarPoint].examples[i];
     if (!ex) return;
+    // Chinese: both accents' recordings are keyed by the Traditional sentence
+    if (set.lang === 'zh') return speakChinese(exText(ex), exText(ex), zhUiScript());
     // recordings of examples are keyed "sentence|kana" (tools/build_audio.py)
     speakText(exText(ex), GRAMMAR_LANG_TTS[set.lang] || set.lang, exReading(ex) ? { reading: exReading(ex) } : undefined);
 }
