@@ -40,7 +40,7 @@ const fake = http.createServer((req, res) => {
     });
 }).listen(8790);
 
-const dev = spawn(`${WRANGLER} dev --port 8788 --ip 127.0.0.1 --var DISCORD_PUBLIC_KEY:${pubHex} --var SITE:http://127.0.0.1:8791 --var DISCORD_API:http://127.0.0.1:8790`,
+const dev = spawn(`${WRANGLER} dev --port 8788 --ip 127.0.0.1 --var DISCORD_PUBLIC_KEY:${pubHex} --var SITE:http://127.0.0.1:8791 --var DISCORD_API:http://127.0.0.1:8790 --var RELAY_TOKEN:test-relay`,
     { shell: true, cwd: fileURLToPath(new URL('.', import.meta.url)) });
 const devLog = [];
 dev.stdout.on('data', d => devLog.push(String(d)));
@@ -244,6 +244,18 @@ try {
     show('ask follow-up', follow.edited);
     check(follow.reply.type === 5 && follow.reply.data.flags === 64, 'the follow-up is a new private message');
     check(/天空|藍/.test(follow.edited.embeds[0].description.split('\n\n').slice(1).join('')), 'the follow-up remembers the first question');
+    // POST /chat: replies relayed by the gateway bot on Render — a secret, then the chain as the conversation
+    const chat = (body, token) => fetch(WORKER + '/chat', { method: 'POST', body: JSON.stringify(body),
+        headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) } });
+    check((await chat({ user: '123456789', history: [{ role: 'user', text: 'hi' }] })).status === 403, '/chat without the secret -> 403');
+    check((await chat({ user: '123456789', history: [{ role: 'user', text: 'hi' }] }, 'wrong')).status === 403, '/chat with a wrong secret -> 403');
+    const cr = await chat({ user: '7' + Date.now(), locale: 'zh-TW', history: [
+        { role: 'user', text: '我最喜歡的水果是芒果。' },
+        { role: 'model', text: '芒果很好吃！夏天的愛文芒果最棒了。' },
+        { role: 'user', text: '我剛剛說我最喜歡什麼水果？只回答水果名稱。' }] }, 'test-relay');
+    const cj = cr.status === 200 ? await cr.json() : {};
+    console.log('\n--- /chat reply\n' + (cj.reply || cr.status));
+    check(cr.status === 200 && /芒果/.test(cj.reply || ''), '/chat answers from the reply chain');
     // someone else's button: the note mentions the commands too
     r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5, public: true }, OWNER);
     const other = await press(buttons(r.edited).find(b => b.custom_id.startsWith('va:')).custom_id, OTHER, 'en-US');

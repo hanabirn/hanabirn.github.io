@@ -13,7 +13,7 @@
      ak:<ui>:<owner>:<id>   the button (answered with the modal at once)
      am:<ui>:<owner>:<id>   the modal's submit */
 
-import { t } from './i18n.js';
+import { t, fromLocale } from './i18n.js';
 import { COLOR, SITE_URL, button, linkButton, row, cut } from './ui.js';
 
 // fastest first (measured for the site's assistant, 2026-10-04), then the rest
@@ -149,6 +149,35 @@ async function ask(env, ui, owner, user, id, question) {
             { expirationTtl: CONV_TTL });
     }
     return reply(ui, owner, id, question, got.text);
+}
+
+/* POST /chat — replies and @mentions in Discord (owner's request, 2026-10-15). The
+   Worker only sees slash commands and buttons, so the gateway bot on Render
+   (my-dc-bot, bots/hanabi_presence) watches messages and posts here: {user, history:
+   [{role: 'user' | 'model', text}], locale}, the reply chain oldest first, with the
+   shared secret RELAY_TOKEN. Same models and daily limit as /ask; nothing is stored —
+   the chain itself is the conversation. Answers {reply}. */
+export async function chatHttp(request, env) {
+    if (!env.RELAY_TOKEN || request.headers.get('Authorization') !== `Bearer ${env.RELAY_TOKEN}`) {
+        return new Response('forbidden', { status: 403 });
+    }
+    let body;
+    try { body = await request.json(); } catch { return new Response('bad json', { status: 400 }); }
+    const user = String(body.user || '');
+    const history = (Array.isArray(body.history) ? body.history : [])
+        .map(m => ({ role: m.role === 'model' ? 'model' : 'user', text: String(m.text || '').slice(0, ASK_MAX) }))
+        .filter(m => m.text.trim()).slice(-KEEP_TURNS);
+    while (history.length && history[0].role !== 'user') history.shift();
+    if (!/^\d{5,25}$/.test(user) || !history.length || history[history.length - 1].role !== 'user') {
+        return new Response('bad request', { status: 400 });
+    }
+    let ui = null;
+    if (env.PREFS) try { ui = await env.PREFS.get('lang:' + user); } catch { ui = null; }
+    if (!LANG_NAMES[ui]) ui = fromLocale(body.locale);
+    const out = text => new Response(JSON.stringify({ reply: text }), { headers: { 'Content-Type': 'application/json' } });
+    if ((await countAsk(env, user)) === null) return out(t(ui, 'ask_limit', { n: ASK_PER_DAY }));
+    const got = await answer(env, history, ui);
+    return out(got ? got.text : t(ui, 'ask_busy'));
 }
 
 /* /ask question:<text> public:<bool> */

@@ -10,7 +10,7 @@
 import { startQuiz, quizButton, setChoices, QUIZ_KINDS } from './quiz.js';
 import { startStudy, startQuiz as startGrammarQuiz, grammarButton, levelChoices, GRAMMAR_KINDS } from './grammar.js';
 import { lookUp } from './dictionary.js';
-import { startAsk, askModal, askSubmit, ASK_KINDS } from './ask.js';
+import { startAsk, askModal, askSubmit, chatHttp, ASK_KINDS } from './ask.js';
 import { helpMessage, mention } from './help.js';
 import { t, fromLocale, isUiLang, contentLang, UI_NAMES } from './i18n.js';
 
@@ -111,6 +111,8 @@ const OLD_KINDS = ['qa', 'qn', 'qe', 'ga', 'gn'];
 export default {
     async fetch(request, env, ctx) {
         if (request.method !== 'POST') return new Response('Hanabiの小天地 Discord bot', { status: 200 });
+        // replies / @mentions relayed by the gateway bot on Render (src/ask.js)
+        if (new URL(request.url).pathname === '/chat') return chatHttp(request, env);
         const body = await request.text();
         if (!await verified(request, body, env)) return new Response('invalid request signature', { status: 401 });
         const it = JSON.parse(body);
