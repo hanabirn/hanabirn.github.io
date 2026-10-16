@@ -284,6 +284,18 @@ function readingSetAccent(v) {
     renderReading();
 }
 
+/* the English reader's accent: American / British (en_accent, js/speech.js) */
+function readingEnTools() {
+    const ac = enAccent();
+    return `<span class="rd-seg" role="group" aria-label="${escHtml(t('en_accent'))}" title="${escHtml(t('en_accent'))}"><span class="rd-seg-label" aria-hidden="true">🔊</span>${[['en-US', 'en_accent_us'], ['en-GB', 'en_accent_gb']].map(([v, k]) =>
+        `<button type="button" class="mode-btn${ac === v ? ' mode-btn-active' : ''}" aria-pressed="${ac === v}" onclick="readingSetEnAccent('${v}')">${escHtml(t(k))}</button>`).join('')}</span>`;
+}
+
+function readingSetEnAccent(v) {
+    setEnAccent(v);
+    renderReading();
+}
+
 function readingReaderHtml(set) {
     const p = set.passages[readingNo];
     const n = set.passages.length;
@@ -304,6 +316,7 @@ function readingReaderHtml(set) {
         <div class="rd-tools" role="group">
             ${set.lang === 'ja' ? `<button type="button" class="mode-btn${furi ? ' mode-btn-active' : ''}" aria-pressed="${furi}" onclick="readingToggle('reading_furi')">${escHtml(t('reading_furi'))}</button>` : ''}
             ${set.lang === 'zh' ? readingZhTools() : ''}
+            ${set.lang === 'en' ? readingEnTools() : ''}
             ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
             <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
             <button type="button" class="mode-btn${readingAllState === 'playing' ? ' mode-btn-active' : ''}" id="rd-all" onclick="readingSayAll()">${readingAllLabel()}</button>

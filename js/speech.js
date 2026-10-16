@@ -17,11 +17,12 @@
    a recording falls back to the browser voice. */
 
 const TTS_RATE = 0.9;
-const TTS_LANGS = ['ja-JP', 'ko-KR', 'en-US', 'fr-FR', 'es-ES', 'de-DE', 'ru-RU', 'zh-TW', 'zh-CN'];
+const TTS_LANGS = ['ja-JP', 'ko-KR', 'en-US', 'en-GB', 'fr-FR', 'es-ES', 'de-DE', 'ru-RU', 'zh-TW', 'zh-CN'];
 const TTS_SAMPLE = {
     'ja-JP': 'こんにちは。はじめまして。',
     'ko-KR': '안녕하세요. 만나서 반가워요.',
     'en-US': 'Hello! Nice to meet you.',
+    'en-GB': 'Hello! Nice to meet you.',
     'fr-FR': 'Bonjour ! Enchanté.',
     'es-ES': '¡Hola! Mucho gusto.',
     'de-DE': 'Hallo! Freut mich.',
@@ -32,7 +33,7 @@ const TTS_SAMPLE = {
 
 // recordings per language: directory under data/audio/
 const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW',
-    'fr-FR': 'fr', 'ru-RU': 'ru', 'de-DE': 'de', 'es-ES': 'es' };
+    'fr-FR': 'fr', 'ru-RU': 'ru', 'de-DE': 'de', 'es-ES': 'es', 'en-US': 'en-US', 'en-GB': 'en-GB' };
 const audioIndexes = {};
 let audioPlaying = null;
 let speakSeq = 0;
@@ -84,7 +85,7 @@ function ttsNorm(lang) {
 // settings key for a language: its TTS_LANGS entry (Chinese keeps its region)
 function ttsKey(lang) {
     const l = ttsNorm(lang), base = l.split('-')[0];
-    if (base === 'zh') return l;
+    if (base === 'zh' || TTS_LANGS.includes(l)) return l;
     return TTS_LANGS.find(k => k.startsWith(base + '-')) || l;
 }
 
@@ -145,14 +146,24 @@ function speakText(text, lang, opts) {
     const slow = !!(opts && opts.slow);
     const onend = opts && typeof opts.onend === 'function'
         ? () => { if (seq === speakSeq) opts.onend(); } : null;
+    // English is said in the visitor's accent (opts.exact: just this one — the settings rows)
+    if (/^en([-_]|$)/.test(lang || '') && !(opts && opts.exact)) lang = enAccent();
     const dir = AUDIO_DIRS[ttsNorm(lang)];
     if (!dir || ttsSaved()[ttsKey(lang)]) return speakWithVoice(text, lang, slow, onend);
-    audioIndex(dir).then(map => {
+    // an English word not recorded in this accent yet: the other accent's recording
+    const other = EN_ACCENTS.includes(lang) && !(opts && opts.exact)
+        ? EN_ACCENTS.find(v => v !== lang && !ttsSaved()[v]) : null;
+    Promise.all([audioIndex(dir), other ? audioIndex(AUDIO_DIRS[other]) : null]).then(([map, otherMap]) => {
         if (seq !== speakSeq) return;
         const keys = opts && opts.reading ? [text + '|' + opts.reading, text] : [text];
-        const id = map && keys.map(k => map.get(audioId(k))).find(Boolean);
+        const find = m => m && keys.map(k => m.get(audioId(k))).find(Boolean);
+        let id = find(map), from = dir;
+        if (!id && find(otherMap)) {
+            id = find(otherMap);
+            from = AUDIO_DIRS[other];
+        }
         if (!id) return speakWithVoice(text, lang, slow, onend);
-        const a = new Audio('data/audio/' + dir + '/' + id + '.mp3');
+        const a = new Audio('data/audio/' + from + '/' + id + '.mp3');
         if (slow) a.playbackRate = TTS_SLOW_FACTOR;
         audioPlaying = a;
         a.addEventListener('ended', () => {
@@ -162,6 +173,24 @@ function speakText(text, lang, opts) {
         // blocked autoplay or a missing file (offline): use the browser voice
         a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang, slow, onend); });
     });
+}
+
+/* ----- English accent -----
+   American (en-US, the default) or British (en-GB), picked in the settings panel and on
+   the 閱讀 reader (localStorage['en_accent']); every English speakText() follows it. */
+const EN_ACCENTS = ['en-US', 'en-GB'];
+
+function enAccent() {
+    let v = '';
+    try { v = localStorage.getItem('en_accent') || ''; } catch {}
+    return EN_ACCENTS.includes(v) ? v : 'en-US';
+}
+
+function setEnAccent(v) {
+    try {
+        if (v === 'en-GB') localStorage.setItem('en_accent', v);
+        else localStorage.removeItem('en_accent');
+    } catch {}
 }
 
 /* ----- Chinese accent -----
@@ -238,7 +267,7 @@ function ttsShortName(v) {
 }
 
 function ttsLangLabel(lang) {
-    return lang.startsWith('zh') ? t('tts_lang_' + lang.replace('-', '_')) : t('dict_lang_' + lang.split('-')[0]);
+    return lang.startsWith('zh') || lang.startsWith('en') ? t('tts_lang_' + lang.replace('-', '_')) : t('dict_lang_' + lang.split('-')[0]);
 }
 
 function renderTtsSettings() {
@@ -253,6 +282,13 @@ function renderTtsSettings() {
                     `<option value="${v}"${cur === v ? ' selected' : ''}>${escHtml(t(k))}</option>`).join('')}
             </select>
             <button type="button" class="speak-btn tts-try" onclick="speakChinese(TTS_SAMPLE['zh-TW'], TTS_SAMPLE['zh-CN'], zhUiScript())" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">▶</button>
+        </div><div class="tts-row">
+            <label class="tts-lang" for="tts-en-accent">${escHtml(t('en_accent'))}</label>
+            <select class="tts-select" id="tts-en-accent" onchange="setEnAccentFromSettings(this.value)">
+                ${[['en-US', 'en_accent_us'], ['en-GB', 'en_accent_gb']].map(([v, k]) =>
+                    `<option value="${v}"${enAccent() === v ? ' selected' : ''}>${escHtml(t(k))}</option>`).join('')}
+            </select>
+            <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['en-US'], 'en')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">▶</button>
         </div>`;
     if (!window.speechSynthesis) {
         el.innerHTML = accentRow + `<p class="tts-empty">${escHtml(t('tts_unsupported'))}</p>`;
@@ -271,7 +307,7 @@ function renderTtsSettings() {
         return `<div class="tts-row">
             <label class="tts-lang" for="tts-${lang}">${escHtml(ttsLangLabel(lang))}</label>
             <select class="tts-select" id="tts-${lang}" onchange="setTtsVoice('${lang}', this.value)"${list.length ? '' : ' disabled'}>${opts.join('')}</select>
-            <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length || AUDIO_DIRS[lang] ? '' : ' disabled'}>▶</button>
+            <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}', {exact: true})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length || AUDIO_DIRS[lang] ? '' : ' disabled'}>▶</button>
         </div>`;
     }).join('');
 }
@@ -290,7 +326,13 @@ function setTtsVoice(lang, name) {
     const saved = ttsSaved();
     if (name) saved[lang] = name; else delete saved[lang];
     try { localStorage.setItem('tts_voices', JSON.stringify(saved)); } catch {}
-    speakText(TTS_SAMPLE[lang], lang);
+    speakText(TTS_SAMPLE[lang], lang, { exact: true });
+}
+
+function setEnAccentFromSettings(v) {
+    setEnAccent(v);
+    speakText(TTS_SAMPLE['en-US'], 'en');
+    if (document.body.dataset.page === 'reading' && typeof renderReading === 'function') renderReading();
 }
 
 // Chrome fills the voice list asynchronously; refresh the panel when it arrives.

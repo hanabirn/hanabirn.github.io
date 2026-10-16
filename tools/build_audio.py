@@ -7,10 +7,11 @@ tp_zh_*), the alphabet chart and the voice-picker
 samples are rendered once here and shipped as small MP3s. js/speech.js plays
 them when it has one and falls back to the browser voice otherwise.
 
-French and Russian (the CEFR word lists) and the French / Russian / German /
-Spanish alphabet tabs are rendered too (fr, ru, de, es).
+French, Russian, Spanish and German (the CEFR word lists, topics, 文法 and 閱讀)
+are rendered too (fr, ru, es, de), and since 2026-10-16 English in two accents
+(en-US, en-GB: the 國中 / 高中 / 多益 / 托福 lists, topics, 閱讀 and the alphabet tab).
 
-Output, per language directory (ja, ko, zh-CN, zh-TW, fr, ru, de, es) under data/audio/:
+Output, per language directory (ja, ko, zh-CN, zh-TW, fr, ru, de, es, en-US, en-GB) under data/audio/:
     <id>.mp3     id = cyrb53(text) in base 36 — the same hash audioId() in
                  js/speech.js computes for the text the site asks to say
     index.json   {"voice": ..., "f": [ids], "a": {alias id: file id}}
@@ -30,7 +31,11 @@ Setup: pip install lameenc
        put GOOGLE_TTS_KEY=<API key> in tools/.google-tts.env (git-ignored);
        a voice can be overridden there too, e.g. GOOGLE_TTS_VOICE_ja=ja-JP-Neural2-C
 Usage: python tools/build_audio.py --audition      # sample every voice, then pick
-       python tools/build_audio.py [--only ja|ko|zh-CN|zh-TW|fr|ru|de|es] [--limit N] [--dry-run]
+       python tools/build_audio.py [--only ja|ko|zh-CN|zh-TW|fr|ru|de|es|en-US|en-GB] [--limit N] [--dry-run]
+       python tools/build_audio.py --only de --redo   # a new voice: re-render all of a language
+--redo renders into the git-ignored tools/.audio-redo/<lang>/ (so an interrupted run
+carries on, and the site keeps playing the old voice meanwhile) and copies the files
+over the old ones once every file has been tried; with --limit it only renders a test batch.
 
 Chinese with Gemini (--gemini, added 2026-10-10): Google Cloud has no natural
 Taiwan Mandarin voice (only the old Wavenet), so zh-TW / zh-CN can be (re-)rendered
@@ -75,13 +80,19 @@ LANGS = {
     'zh-CN': ('zh-CN', 'cmn-CN', 'cmn-CN-Chirp3-HD-Leda', 'cmn-CN-Wavenet-A'),
     'zh-TW': ('zh-TW', 'cmn-TW', 'cmn-TW-Wavenet-A', 'cmn-TW-Wavenet-A'),
     # European languages (added 2026-10-08: the browser voices sound robotic; Chirp3-HD
-    # also rolls the Spanish / Russian r properly). German and Spanish have no word
-    # lists yet, so only their alphabet tab and sample.
+    # also rolls the Spanish / Russian r properly).
     'fr': ('fr-FR', 'fr-FR', 'fr-FR-Chirp3-HD-Kore', 'fr-FR-Neural2-F'),
     'ru': ('ru-RU', 'ru-RU', 'ru-RU-Chirp3-HD-Kore', 'ru-RU-Wavenet-C'),
-    'de': ('de-DE', 'de-DE', 'de-DE-Chirp3-HD-Kore', 'de-DE-Neural2-G'),
+    # German: Kore until 2026-10-16, then Zephyr (the owner's pick, 2026-10-11) —
+    # re-rendered with --redo
+    'de': ('de-DE', 'de-DE', 'de-DE-Chirp3-HD-Zephyr', 'de-DE-Neural2-G'),
     'es': ('es-ES', 'es-ES', 'es-ES-Chirp3-HD-Kore', 'es-ES-Neural2-H'),
+    # English (2026-10-16) in both accents, the visitor picks one (en_accent in
+    # js/speech.js): American Leda, British Erinome (owner's picks, 2026-10-11)
+    'en-US': ('en-US', 'en-US', 'en-US-Chirp3-HD-Leda', 'en-US-Neural2-F'),
+    'en-GB': ('en-GB', 'en-GB', 'en-GB-Chirp3-HD-Erinome', 'en-GB-Neural2-A'),
 }
+REDO = ROOT / 'tools' / '.audio-redo'   # --redo renders here first, then swaps
 MIN_CLIP = 0.3         # seconds; shorter means the voice said nothing or got cut
 RATE = 0.9             # a little slower, for learners
 SR = 16000
@@ -293,6 +304,21 @@ def jobs(lang):
                             add(sent['plain'], sent['plain'])
                     for g in p['glossary']:
                         add(g['w'], g['w'])
+    elif lang in ('en-US', 'en-GB'):
+        for text in alphabet({'en'}):
+            add(text, text)
+        # 國中 / 高中 / 多益 / 托福, then the 單字 page topics; a few rows are two
+        # forms (a/an, movie/film): said as two words, not "a slash an"
+        for word, *_ in list(vocab('en_')) + list(vocab('tp_en_')):
+            add(word, word.replace('/', ', '))
+        # 閱讀 page (data/reading/en_*.json): every sentence and glossary word
+        for f in sorted((ROOT / 'data' / 'reading').glob('en_*.json')):
+            for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
+                for para in p['paragraphs']:
+                    for sent in para['s']:
+                        add(sent['plain'], sent['plain'])
+                for g in p['glossary']:
+                    add(g['w'], g['w'])
     else:
         if lang == 'zh-TW':
             for text in alphabet({'zh'}):       # 注音 is Taiwan's: no Mainland recordings
@@ -774,7 +800,12 @@ def main():
     ap.add_argument('--gemini-all', action='store_true', help='with --gemini: also the words, alphabet and samples')
     ap.add_argument('--fix-clicks', action='store_true',
                     help='cut the end click from the Gemini files already made (no requests)')
+    ap.add_argument('--redo', action='store_true',
+                    help='with --only: re-render every file with the current voice (into tools/.audio-redo/ '
+                         'first; the site keeps the old files until all are made, then they are replaced)')
     args = ap.parse_args()
+    if args.redo and (not args.only or args.only.startswith('zh')):
+        sys.exit('--redo needs --only <lang>, and not zh-TW / zh-CN (their Gemini files would be lost)')
     langs = [args.only] if args.only else list(LANGS)
     if args.fix_clicks:
         fix_clicks([l for l in ('zh-TW', 'zh-CN') if l in langs])
@@ -799,7 +830,7 @@ def main():
         return audition(env, langs)
     for lang in langs:
         files, aliases = jobs(lang)
-        d = OUT / lang
+        d = (REDO if args.redo else OUT) / lang
         todo = [(fid, text) for fid, text in files.items() if not (d / f'{fid}.mp3').exists()]
         if args.limit is not None:
             todo = todo[:args.limit]
@@ -809,6 +840,7 @@ def main():
         if args.dry_run:
             continue
         d.mkdir(parents=True, exist_ok=True)
+        (OUT / lang).mkdir(parents=True, exist_ok=True)
         code = LANGS[lang][1]
 
         backup = LANGS[lang][3]
@@ -839,6 +871,17 @@ def main():
                     print(f'  ! {lang} {problem}')
                 if done % 500 == 0:
                     print(f'  {lang}: {done}/{len(todo)}')
+        if args.redo:
+            # a test run (--limit) leaves the site alone; a full one moves the new files
+            # over the old (one the new voice couldn't make keeps its old file)
+            if args.limit is not None:
+                print(f'  {lang}: test run, new files are in {d.relative_to(ROOT)} (the site is unchanged)')
+                continue
+            new = [fid for fid in files if (d / f'{fid}.mp3').exists()]
+            for fid in new:
+                (OUT / lang / f'{fid}.mp3').write_bytes((d / f'{fid}.mp3').read_bytes())
+            print(f'  {lang}: {len(new)} files replaced, {len(files) - len(new)} kept the old voice')
+            d = OUT / lang
         # the index lists only files that really exist
         have = sorted(fid for fid in files if (d / f'{fid}.mp3').exists())
         have_set = set(have)
