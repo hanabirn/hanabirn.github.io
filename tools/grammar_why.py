@@ -79,9 +79,10 @@ def prompt(lesson, items):
         "what it would change — without just repeating the answer. If it is grammatical but means something "
         "else, say so.\n"
         "Write each line twice: \"zh\" in Traditional Chinese as used in Taiwan, at most 45 characters; \"en\" in "
-        "English, at most 25 words. Keep every word in "
-        f"{lang} exactly as written (quote options with 「」 in zh and with no quotes or italics in en). Be "
-        "accurate; never invent rules. Plain text, no markdown.\n"
+        "English, at most 25 words. In BOTH, write every word in "
+        f"{lang} exactly as it is written in the item, in its own script (kana, kanji, hangul, Cyrillic, "
+        "accents) — never romanize or transliterate it (write できます, not dekimasu). Quote options with 「」 in "
+        "zh; in en use them bare. Be accurate; never invent rules. Plain text, no markdown.\n"
         "Answer with a JSON array: one object per item, same id, \"why\" = array of {\"zh\", \"en\"} with exactly "
         "as many entries as that item's options.\n"
         "Items:\n" + json.dumps(items, ensure_ascii=False))
