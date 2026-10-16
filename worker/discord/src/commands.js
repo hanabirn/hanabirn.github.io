@@ -7,6 +7,7 @@ import { STUDY_LANGS } from './sets.js';
 import { UI_LANGS, UI_NAMES, siteT } from './i18n.js';
 import { QUIZ_MIN, QUIZ_MAX, QUIZ_DEFAULT } from './quiz.js';
 import { GQ_MIN, GQ_MAX, GQ_DEFAULT } from './grammar.js';
+import { ASK_MAX } from './ask.js';
 
 /* bot language -> Discord locales */
 const LOCALES = { zh: ['zh-TW'], zhs: ['zh-CN'], ja: ['ja'], ko: ['ko'], ru: ['ru'], fr: ['fr'], es: ['es-ES', 'es-419'], de: ['de'] };
@@ -139,6 +140,23 @@ export const COMMANDS = [
             languageOption(false, ['Its language (guessed when left out)', { zh: '這個字的語言（不選會自動判斷）', zhs: '这个词的语言（不选会自动判断）',
                 ja: 'その言葉の言語（選ばなければ自動判定）', ko: '단어의 언어 (선택하지 않으면 자동 판단)', ru: 'Язык слова (если не указать — определится сам)',
                 fr: 'Sa langue (devinée si vide)', es: 'Su idioma (se adivina si lo dejas vacío)', de: 'Seine Sprache (wird sonst erraten)' }]),
+            publicOption
+        ]
+    },
+    {
+        ...where,
+        ...L(['ask', { zh: '問小花火', zhs: '问小花火', ja: '小花火に質問', ko: '小花火에게질문', ru: 'спросить', fr: 'demander', es: 'preguntar', de: 'fragen' }],
+            ['Ask 小花火 anything: everyday questions, how things work, languages', { zh: '問小花火任何問題：日常、原理、語言學習都可以',
+                zhs: '问小花火任何问题：日常、原理、语言学习都可以', ja: '小花火になんでも質問：日常、しくみ、語学など',
+                ko: '小花火에게 무엇이든 질문: 일상, 원리, 언어 학습', ru: 'Спросите 小花火 о чём угодно: быт, как всё устроено, языки',
+                fr: 'Pose n’importe quelle question à 小花火 : quotidien, fonctionnement, langues',
+                es: 'Pregúntale lo que quieras a 小花火: vida diaria, cómo funcionan las cosas, idiomas',
+                de: 'Frag 小花火 alles: Alltag, wie Dinge funktionieren, Sprachen' }]),
+        options: [
+            { type: 3, required: true, max_length: ASK_MAX,
+                ...L(['question', { zh: '問題', zhs: '问题', ja: '質問', ko: '질문', ru: 'вопрос', fr: 'question', es: 'pregunta', de: 'frage' }],
+                    ['What you want to know', { zh: '你想問的事', zhs: '你想问的事', ja: '聞きたいこと', ko: '궁금한 것', ru: 'Что вы хотите узнать',
+                        fr: 'Ce que tu veux savoir', es: 'Lo que quieres saber', de: 'Was du wissen willst' }]) },
             publicOption
         ]
     },

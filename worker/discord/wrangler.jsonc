@@ -23,5 +23,12 @@
         { "binding": "PREFS", "id": "69ef919a578c4937bccf729517c4a449" }
     ],
 
+    // /ask: Cloudflare Workers AI answers when every Gemini model's free quota is spent
+    // (the free daily allowance; nothing is billed on the Workers Free plan)
+    "ai": { "binding": "AI" },
+
+    // secrets, not here: GEMINI_API_KEY (/ask; a Gemini project with NO billing, so it can
+    // only use the free tier) — npx wrangler secret put GEMINI_API_KEY; locally in .dev.vars
+
     "observability": { "enabled": true }
 }

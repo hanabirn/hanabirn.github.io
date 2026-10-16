@@ -231,6 +231,19 @@ try {
     r = await command('help', {}, '888', 'en-US');
     show('help, English Discord + Chinese replies', r.reply.data);
     check(/小花火能做什麼/.test(r.reply.data.embeds[0].title) && r.reply.data.embeds[0].description.includes('「public」'), 'Chinese help, English option name');
+    // /ask: an answer with 繼續問; the button opens a box; its question continues the conversation
+    const ASKER = '8' + Date.now();
+    r = await command('ask', { question: '請用一句話解釋為什麼天空是藍色的。' }, ASKER);
+    show('ask', r.edited);
+    const ak = buttons(r.edited).find(b => b.custom_id?.startsWith('ak:'));
+    check(!!ak && r.edited.embeds[0].description.length > 20, '/ask answers with a 繼續問 button');
+    const modal = await press(ak.custom_id, ASKER);
+    check(modal.reply.type === 9 && modal.reply.data.custom_id.startsWith('am:'), '繼續問 opens a box: ' + modal.reply.data?.title);
+    const follow = await send({ type: 5, locale: 'zh-TW', member: { user: { id: ASKER } }, data: { custom_id: modal.reply.data.custom_id,
+        components: [{ type: 1, components: [{ type: 4, custom_id: 'q', value: '我剛剛問了什麼？用一句話回答。' }] }] } });
+    show('ask follow-up', follow.edited);
+    check(follow.reply.type === 5 && follow.reply.data.flags === 64, 'the follow-up is a new private message');
+    check(/天空|藍/.test(follow.edited.embeds[0].description.split('\n\n').slice(1).join('')), 'the follow-up remembers the first question');
     // someone else's button: the note mentions the commands too
     r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 5, public: true }, OWNER);
     const other = await press(buttons(r.edited).find(b => b.custom_id.startsWith('va:')).custom_id, OTHER, 'en-US');

@@ -10,6 +10,7 @@
 import { startQuiz, quizButton, setChoices, QUIZ_KINDS } from './quiz.js';
 import { startStudy, startQuiz as startGrammarQuiz, grammarButton, levelChoices, GRAMMAR_KINDS } from './grammar.js';
 import { lookUp } from './dictionary.js';
+import { startAsk, askModal, askSubmit, ASK_KINDS } from './ask.js';
 import { helpMessage, mention } from './help.js';
 import { t, fromLocale, isUiLang, contentLang, UI_NAMES } from './i18n.js';
 
@@ -102,7 +103,7 @@ async function setLanguage(env, it, choice) {
 
 /* which user may press a button: the owner field of its custom_id (0 = anyone who can
    see it) — always the third field */
-const ownerOf = parts => ([...QUIZ_KINDS, ...GRAMMAR_KINDS].includes(parts[0]) ? parts[2] || '0' : '0');
+const ownerOf = parts => ([...QUIZ_KINDS, ...GRAMMAR_KINDS, ...ASK_KINDS].includes(parts[0]) ? parts[2] || '0' : '0');
 
 // buttons of the quizzes before 2026-10-15 (score in place of the picks): expired
 const OLD_KINDS = ['qa', 'qn', 'qe', 'ga', 'gn'];
@@ -134,6 +135,7 @@ export default {
             const work = it.data.name === 'quiz' ? () => startQuiz(env, opts, user, ui)
                 : it.data.name === 'grammar' ? () => (opts.sub === 'quiz' ? startGrammarQuiz : startStudy)(env, opts, user, ui)
                 : it.data.name === 'dictionary' ? () => lookUp(env, opts, ui)
+                : it.data.name === 'ask' ? () => startAsk(env, opts, user, ui)
                 : null;
             if (!work) return json({ type: 4, data: { content: t(ui, 'unknown'), flags: EPHEMERAL } });
             ctx.waitUntil(run(env, it, ui, work));
@@ -151,11 +153,26 @@ export default {
                 // the note is for the person who pressed, in their own language
                 return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours', { quiz: mention('quiz'), grammar: mention('grammar study') }), flags: EPHEMERAL } });
             }
+            // 繼續問: the box for the next question has to be the answer itself
+            if (parts[0] === 'ak') return json(askModal(parts));
             const work = QUIZ_KINDS.includes(parts[0]) ? () => quizButton(env, parts)
                 : GRAMMAR_KINDS.includes(parts[0]) ? () => grammarButton(env, parts, userOf(it)) : null;
             if (!work) return json({ type: 6 });
             ctx.waitUntil(run(env, it, ui, work));
             return json({ type: 6 });                                        // "updating this message…"
+        }
+
+        if (it.type === 5) {                                                 // a modal's submit (/ask 繼續問)
+            const parts = String(it.data.custom_id || '').split(':');
+            const ui = isUiLang(parts[1]) ? parts[1] : fromLocale(it.locale);
+            const owner = ownerOf(parts);
+            if (parts[0] !== 'am') return json({ type: 6 });
+            if (owner !== '0' && owner !== userOf(it)) {
+                return json({ type: 4, data: { content: t(fromLocale(it.locale), 'not_yours', { quiz: mention('quiz'), grammar: mention('grammar study') }), flags: EPHEMERAL } });
+            }
+            ctx.waitUntil(run(env, it, ui, () => askSubmit(env, parts, it.data, userOf(it))));
+            // a new message under the answer: private when the conversation is
+            return json({ type: 5, data: { flags: owner === '0' ? EPHEMERAL : 0 } });
         }
 
         return json({ error: 'unknown interaction' }, 400);
