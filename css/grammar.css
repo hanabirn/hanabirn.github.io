@@ -266,6 +266,68 @@
 .grammar-why-line.ok b { color: var(--success); }
 .grammar-why-line.no b { color: var(--danger); }
 
+/* hard questions and sentence ordering (2026-10-16) */
+.grammar-tag {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 1px 9px;
+    border: 1.5px solid var(--primary);
+    border-radius: 999px;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    vertical-align: 1px;
+}
+.grammar-tag.hard { background: var(--primary); color: var(--surface); }
+.grammar-q-text ruby rt, .grammar-options ruby rt, .grammar-arrange ruby rt,
+.grammar-why-line ruby rt, .grammar-pool ruby rt { font-size: 0.5em; font-weight: 400; }
+.grammar-slot {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 2.6em;
+    margin: 0 4px;
+    border-bottom: 3px solid var(--ink);
+    line-height: 1.3;
+    vertical-align: bottom;
+}
+.grammar-slot-mark { font-size: 0.7rem; color: var(--primary); line-height: 1; }
+.grammar-slot.star { border-color: var(--primary); color: var(--primary); padding: 0 4px; }
+.grammar-slot.star.ok { border-color: var(--success); color: var(--success); }
+.grammar-slot.star.no { border-color: var(--danger); color: var(--danger); }
+.grammar-why-line b.grammar-star-part { margin: 0; color: var(--primary); }
+.grammar-arrange {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    min-height: 58px;
+    margin: 0 0 14px;
+    padding: 10px;
+    border: 2px dashed var(--line);
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.8;
+}
+.grammar-arrange.ok { border-style: solid; border-color: var(--success); }
+.grammar-arrange.no { border-style: solid; border-color: var(--danger); }
+.grammar-arrange-empty { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+.grammar-chip {
+    padding: 4px 10px;
+    border: 2px solid var(--edge);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--ink);
+    font: inherit;
+    cursor: pointer;
+}
+.grammar-chip:disabled { cursor: default; }
+.grammar-pool { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 14px; }
+.grammar-pool .option-btn { width: auto; margin: 0; padding: 10px 16px; font-size: 1.1rem; }
+.grammar-order-full { font-size: 1.05rem; font-weight: 700; }
+
 /* ----- result ----- */
 .grammar-result { text-align: center; margin-bottom: 18px; }
 .grammar-result-mascot { width: 72px; margin: 0 auto 10px; }

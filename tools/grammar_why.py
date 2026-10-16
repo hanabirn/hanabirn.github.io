@@ -10,6 +10,10 @@ other languages then come from tools/content_i18n.py like every other text.
 
     python tools/grammar_why.py [--only <level>] [--limit N] [--dry-run]
 
+A sentence-ordering question ("type": "order", 2026-10-16) gets one line instead: why
+the four parts go in that order. The source is run through build_grammar's
+prepare_quiz() first, so keys use the plain text (no {furigana}) like the build.
+
 A changed question (text, options or answer) gets a new key and a new explanation.
 Uses the paid key in tools/.gemini-tts.env.
 """
@@ -45,13 +49,18 @@ def save_store(level, data):
                                          encoding='utf-8')
 
 
+def lines_for(q):
+    """How many lines of why a question gets: one per option, one for an ordering question."""
+    return 1 if q.get('type') == 'order' else len(q['options'])
+
+
 def fill_why(data):
     """quiz[].why from the store (tools/build_grammar.py); returns how many lack one."""
     store, missing = load_store(data['id']), 0
     for p in data['points']:
         for q in p.get('quiz', []):
             why = store.get(q_key(data['lang'], q))
-            if why and len(why) == len(q['options']):
+            if why and len(why) == lines_for(q):
                 q['why'] = [{'zh': w['zh'], 'en': w['en']} for w in why]
             else:
                 q.pop('why', None)
@@ -73,7 +82,11 @@ def prompt(lesson, items):
         f"You are a careful teacher of {lang} grammar for beginners. Each item is a fill-in-the-blank practice "
         "question from a lesson on one grammar point (its pattern, title and explanation are given), with its "
         "options and the index of the correct answer.\n"
-        "For EVERY option, in the same order, write one short line that a learner who picked it would read:\n"
+        "Items with \"kind\": \"order\" are sentence-ordering questions instead: four parts that must be put in "
+        "order between the text before and after (\"sentence\" is the finished sentence, \"parts\" the parts in "
+        "the right order). For those write exactly ONE line: why the parts go in this order — what links to "
+        "what, and the grammar point's rule; \"zh\" at most 60 characters, \"en\" at most 35 words.\n"
+        "For a fill-in item (\"kind\": \"fill\"), for EVERY option, in the same order, write one short line that a learner who picked it would read:\n"
         "- the correct option: why it is right here (the rule, briefly);\n"
         "- a wrong option: why it does not fit this sentence — what it means or which grammar it belongs to, and "
         "what it would change — without just repeating the answer. If it is grammatical but means something "
@@ -84,7 +97,7 @@ def prompt(lesson, items):
         "accents) — never romanize or transliterate it (write できます, not dekimasu). Quote options with 「」 in "
         "zh; in en use them bare. Be accurate; never invent rules. Plain text, no markdown.\n"
         "Answer with a JSON array: one object per item, same id, \"why\" = array of {\"zh\", \"en\"} with exactly "
-        "as many entries as that item's options.\n"
+        "as many entries as that item's options (a fill-in item) or exactly one entry (an order item).\n"
         "Items:\n" + json.dumps(items, ensure_ascii=False))
 
 
@@ -109,9 +122,14 @@ def ask(items, lesson):
 
 
 def run_batch(level, lesson, batch, store):
-    items = [{'id': i, 'pattern': p['pattern'], 'title': p['title'].get('en', ''), 'explain': p['explain'].get('en', ''),
-              'question': q['q'], 'translation': q.get('en', ''), 'options': q['options'], 'answer': q['answer']}
-             for i, (p, q) in enumerate(batch)]
+    def item(i, p, q):
+        it = {'id': i, 'pattern': p['pattern'], 'title': p['title'].get('en', ''), 'explain': p['explain'].get('en', ''),
+              'translation': q.get('en', '')}
+        if q.get('type') == 'order':
+            return {**it, 'kind': 'order', 'before': q['before'], 'parts': q['parts'], 'after': q['after'],
+                    'sentence': q['before'] + ''.join(q['parts']) + q['after']}
+        return {**it, 'kind': 'fill', 'question': q['q'], 'options': q['options'], 'answer': q['answer']}
+    items = [item(i, p, q) for i, (p, q) in enumerate(batch)]
     for attempt in range(4):
         try:
             got = {int(a['id']): a['why'] for a in ask(items, lesson)}
@@ -130,7 +148,7 @@ def run_batch(level, lesson, batch, store):
         with LOCK:
             for i, (p, q) in enumerate(batch):
                 why = got.get(i)
-                if why and len(why) == len(q['options']) and all(w.get('zh', '').strip() and w.get('en', '').strip() for w in why):
+                if why and len(why) == lines_for(q) and all(w.get('zh', '').strip() and w.get('en', '').strip() for w in why):
                     store[q_key(lesson, q)] = [{'zh': w['zh'].strip(), 'en': w['en'].strip()} for w in why]
                     done += 1
         if done >= len(batch) * 0.9:
@@ -146,11 +164,16 @@ def main():
     ap.add_argument('--dry-run', action='store_true')
     ap.add_argument('--workers', type=int, default=4)
     args = ap.parse_args()
+    from build_grammar import prepare_quiz
     jobs, stores = [], {}
     for src in sorted(SRC.glob('*.json')):
         data = json.loads(src.read_text(encoding='utf-8'))
         if not data.get('points') or (args.only and data['id'] != args.only):
             continue
+        problems = []
+        prepare_quiz(data, problems, src.name)       # the plain text and order questions' q / options
+        if problems:
+            sys.exit('\n'.join(problems))
         store = stores[data['id']] = load_store(data['id'])
         todo = [(p, q) for p in data['points'] for q in p.get('quiz', []) if q_key(data['lang'], q) not in store]
         print(f'{data["id"]}: {len(todo)} questions to explain', flush=True)

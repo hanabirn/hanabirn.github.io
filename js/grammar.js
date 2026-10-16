@@ -3,8 +3,11 @@
    (data/grammar/index.json lists them; Japanese N5 first, more levels / languages later).
    A point = pattern, meaning, how it attaches (form), explanation, notes (注意事項),
    common mistakes (✗ wrong / ✓ right / why), examples with audio, then a few
-   fill-in questions; getting GRAMMAR_PASS of them right marks it
-   learned. Content texts come as { zh, 'zh-Hans', en }: other UI languages read
+   questions — the easy ones first, then the hard ones (q.hard, tagged 進階; 2026-10-16),
+   each a fill-in or a sentence to put in order (q.type 'order': picking the ★ part, or
+   arranging all four parts when the level's order_style is 'arrange'); Japanese texts may
+   carry furigana segments (q_furi …, see tools/build_grammar.py). Getting GRAMMAR_PASS of
+   them right marks it learned. Content texts come as { zh, 'zh-Hans', en }: other UI languages read
    the English. Progress: localStorage grammar_progress = { "<set>:<point>": { best, of, at } }
    (synced, js/account.js). Answers count toward the daily goal (logDailyActivity). */
 
@@ -16,7 +19,7 @@ const grammarSets = {};         // id -> loaded set
 let grammarSetId = '';
 let grammarView = 'list';       // 'list' | 'point' | 'quiz' | 'result'
 let grammarPoint = 0;
-let grammarQuiz = null;         // { items: [{ q, options (shuffled), answer }], i, right, picked }
+let grammarQuiz = null;         // { items: [{ q, order, options (shuffled), answer, arrange, built }], i, right, picked }
 const GRAMMAR_PER_PAGE = 5;     // points per page of the list
 let grammarPage = 0;
 
@@ -352,11 +355,15 @@ function grammarShuffle(a) {
 }
 
 function grammarStartQuiz() {
-    const p = grammarSets[grammarSetId].points[grammarPoint];
+    const set = grammarSets[grammarSetId];
+    const p = set.points[grammarPoint];
+    // the easy questions first, then the hard ones, each group shuffled
+    const qs = grammarShuffle(p.quiz.filter(q => !q.hard)).concat(grammarShuffle(p.quiz.filter(q => q.hard)));
     grammarQuiz = {
-        items: grammarShuffle(p.quiz).map(q => {
+        items: qs.map(q => {
             const order = grammarShuffle(q.options.map((_, i) => i));
-            return { q, order, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer) };
+            const arrange = q.type === 'order' && set.order_style === 'arrange';
+            return { q, order, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer), arrange, built: [] };
         }),
         i: 0, right: 0, picked: -1
     };
@@ -372,11 +379,16 @@ function grammarQuizHtml(set) {
     const optRd = (key, i) => ((it.q[key] || [])[it.order[i]]) || '';
     const qPinyin = answered && it.q.full_reading ? it.q.full_reading : it.q.q_reading;
     const qZhuyin = answered && it.q.full_zhuyin ? it.q.full_zhuyin : it.q.q_zhuyin;
-    const sentence = escHtml(it.q.q).replace('（　）', `<span class="grammar-blank${answered ? (z.picked === it.answer ? ' ok' : ' no') : ''}">${answered ? escHtml(it.options[it.answer]) : '　　'}</span>`);
-    return `<div class="grammar-top">
+    const ok = z.picked === it.answer;
+    const sentence = grammarFuri(it.q.q, it.q.q_furi).replace('（　）', `<span class="grammar-blank${answered ? (ok ? ' ok' : ' no') : ''}">${answered ? grammarFuri(it.options[it.answer], grammarOptFuri(it, it.answer)) : '　　'}</span>`);
+    const tags = (it.q.hard ? `<span class="grammar-tag hard">${escHtml(t('grammar_hard'))}</span>` : '')
+        + (it.q.type === 'order' ? `<span class="grammar-tag">${escHtml(t('grammar_order'))}</span>` : '');
+    const top = `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="grammarGo('point')">${escHtml(t('grammar_back_point'))}</button>
-            <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.i + 1, m: z.items.length }))}</span>
-        </div>
+            <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.i + 1, m: z.items.length }))}${tags}</span>
+        </div>`;
+    if (it.q.type === 'order') return top + grammarOrderHtml(set, it, answered, ok);
+    return top + `
         ${set.lang === 'zh' ? `<div class="grammar-q-rdswitch">${grammarReadingSwitch()}</div>` : ''}
         <div class="grammar-q">
             <div class="grammar-q-pattern" lang="${set.lang}">${escHtml(set.points[grammarPoint].pattern)}</div>
@@ -388,7 +400,7 @@ function grammarQuizHtml(set) {
                 let cls = '';
                 if (answered && i === it.answer) cls = ' correct-choice';
                 else if (answered && i === z.picked) cls = ' wrong-choice';
-                return `<button type="button" class="btn option-btn${cls}" lang="${set.lang}" onclick="grammarAnswer(${i})"${answered ? ' disabled' : ''}>${escHtml(o)}${zhReadingHtml(set, optRd('options_reading', i), optRd('options_zhuyin', i), 'grammar-opt-rd')}</button>`;
+                return `<button type="button" class="btn option-btn${cls}" lang="${set.lang}" onclick="grammarAnswer(${i})"${answered ? ' disabled' : ''}>${grammarFuri(o, grammarOptFuri(it, i))}${zhReadingHtml(set, optRd('options_reading', i), optRd('options_zhuyin', i), 'grammar-opt-rd')}</button>`;
             }).join('')}
         </div>
         ${answered ? `<p class="grammar-feedback ${z.picked === it.answer ? 'ok' : 'no'}">${escHtml(t(z.picked === it.answer ? 'correct' : 'grammar_wrong', { a: it.options[it.answer] }))}</p>
@@ -401,9 +413,99 @@ function grammarQuizHtml(set) {
    it.order maps a shown option back to it. */
 function grammarWhyHtml(set, it, picked) {
     const why = it.q.why;
+    if (it.q.type === 'order') {
+        // the whole sentence, the ★ part marked, its translation and why it goes that way
+        const parts = it.q.parts.map((x, k) => {
+            const h = grammarFuri(x, (it.q.parts_furi || [])[k]);
+            return k === it.q.star && !it.arrange ? `<b class="grammar-star-part">${h}</b>` : h;
+        }).join('');
+        return `<div class="grammar-why-box">
+            <p class="grammar-why-line ok grammar-order-full" lang="${set.lang}">${grammarFuri(it.q.before, it.q.before_furi)}${parts}${grammarFuri(it.q.after, it.q.after_furi)}</p>
+            <p class="grammar-why-line">${escHtml(gText(it.q))}</p>
+            ${why && why.length === 1 ? `<p class="grammar-why-line">${escHtml(gText(why[0]))}</p>` : ''}
+        </div>`;
+    }
     if (!why || why.length !== it.q.options.length) return '';
     const line = (i, ok) => `<p class="grammar-why-line ${ok ? 'ok' : 'no'}"><b lang="${set.lang}">${ok ? '✓' : '✗'} ${escHtml(it.options[i])}</b> ${escHtml(gText(why[it.order[i]]))}</p>`;
     return `<div class="grammar-why-box">${picked !== it.answer ? line(picked, false) : ''}${line(it.answer, true)}</div>`;
+}
+
+/* Japanese text with furigana segments [[text, reading], …] (tools/build_grammar.py) */
+function grammarFuri(text, segs) {
+    if (!segs) return escHtml(text || '');
+    return segs.map(([s, r]) => r ? `<ruby>${escHtml(s)}<rt>${escHtml(r)}</rt></ruby>` : escHtml(s)).join('');
+}
+
+// the furigana of a shown option (it.order maps it back to the source order)
+function grammarOptFuri(it, i) {
+    const f = it.q.type === 'order' ? it.q.parts_furi : it.q.options_furi;
+    return f ? f[it.order[i]] : null;
+}
+
+/* A sentence to put in order: four blanks between the text before and after. 'star'
+   (the JLPT way): pick the part that goes on ★; 'arrange' (N5–N4): tap the parts in
+   order into the row, tap a placed one to take it back, then 確定. */
+function grammarOrderHtml(set, it, answered, ok) {
+    const lang = set.lang;
+    const head = `<div class="grammar-q">
+            <div class="grammar-q-pattern" lang="${lang}">${escHtml(set.points[grammarPoint].pattern)}</div>`;
+    const after = answered ? `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct')
+            : it.arrange ? t('grammar_order_right') : t('grammar_star_is', { a: it.q.parts[it.q.star] }))}</p>
+        ${grammarWhyHtml(set, it, grammarQuiz.picked)}
+        <button type="button" class="btn next-btn grammar-start" onclick="grammarNextQ()">${escHtml(t(grammarQuiz.i + 1 < grammarQuiz.items.length ? 'grammar_next_q' : 'grammar_see_result'))}</button>` : '';
+    if (it.arrange) {
+        const chips = it.built.map((k, n) => `<button type="button" class="grammar-chip" lang="${lang}" onclick="grammarArrangeUndo(${n})"${answered ? ' disabled' : ''}>${grammarFuri(it.q.parts[k], (it.q.parts_furi || [])[k])}</button>`).join('');
+        const pool = it.order.filter(k => !it.built.includes(k)).map(k =>
+            `<button type="button" class="btn option-btn" lang="${lang}" onclick="grammarArrangePick(${k})">${grammarFuri(it.q.parts[k], (it.q.parts_furi || [])[k])}</button>`).join('');
+        return head + `
+            <div class="grammar-q-hint">${escHtml(gHint(set, it.q))}</div>
+        </div>
+        <div class="grammar-arrange${answered ? (ok ? ' ok' : ' no') : ''}" lang="${lang}">
+            ${grammarFuri(it.q.before, it.q.before_furi)}${chips || `<span class="grammar-arrange-empty">${escHtml(t('grammar_arrange_hint'))}</span>`}${grammarFuri(it.q.after, it.q.after_furi)}
+        </div>
+        ${answered ? '' : `<div class="grammar-pool">${pool}</div>
+        ${it.built.length === 4 ? `<button type="button" class="btn next-btn grammar-start" onclick="grammarArrangeCheck()">${escHtml(t('grammar_order_check'))}</button>` : ''}`}
+        ${after}`;
+    }
+    const slots = [0, 1, 2, 3].map(k => k === it.q.star
+        ? `<span class="grammar-slot star${answered ? (ok ? ' ok' : ' no') : ''}"><span class="grammar-slot-mark">★</span>${answered ? grammarFuri(it.q.parts[k], (it.q.parts_furi || [])[k]) : '　'}</span>`
+        : `<span class="grammar-slot"><span class="grammar-slot-mark">&nbsp;</span>　</span>`).join('');
+    return head + `
+            <div class="grammar-q-text" lang="${lang}">${grammarFuri(it.q.before, it.q.before_furi)}${slots}${grammarFuri(it.q.after, it.q.after_furi)}</div>
+            <div class="grammar-q-hint">${escHtml(t('grammar_star_hint'))}</div>
+            <div class="grammar-q-hint">${escHtml(gHint(set, it.q))}</div>
+        </div>
+        <div class="grammar-options">
+            ${it.options.map((o, i) => {
+                let cls = '';
+                if (answered && i === it.answer) cls = ' correct-choice';
+                else if (answered && i === grammarQuiz.picked) cls = ' wrong-choice';
+                return `<button type="button" class="btn option-btn${cls}" lang="${lang}" onclick="grammarAnswer(${i})"${answered ? ' disabled' : ''}>${grammarFuri(o, grammarOptFuri(it, i))}</button>`;
+            }).join('')}
+        </div>
+        ${after}`;
+}
+
+function grammarArrangePick(k) {
+    const it = grammarQuiz && grammarQuiz.items[grammarQuiz.i];
+    if (!it || grammarQuiz.picked >= 0 || it.built.includes(k) || it.built.length >= 4) return;
+    it.built.push(k);
+    renderGrammar();
+}
+
+function grammarArrangeUndo(n) {
+    const it = grammarQuiz && grammarQuiz.items[grammarQuiz.i];
+    if (!it || grammarQuiz.picked >= 0) return;
+    it.built.splice(n, 1);
+    renderGrammar();
+}
+
+// right = the parts in the source order, or one of the other right orders (q.alts)
+function grammarArrangeCheck() {
+    const it = grammarQuiz && grammarQuiz.items[grammarQuiz.i];
+    if (!it || it.built.length !== 4) return;
+    const same = a => a.every((k, n) => k === it.built[n]);
+    grammarAnswer(same([0, 1, 2, 3]) || (it.q.alts || []).some(same) ? it.answer : (it.answer + 1) % 4);
 }
 
 function grammarAnswer(i) {

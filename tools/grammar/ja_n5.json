@@ -3,6 +3,7 @@
   "lang": "ja",
   "level": "N5",
   "order": 1,
+  "order_style": "arrange",
   "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
   "points": [
     {
@@ -598,6 +599,47 @@
             "です"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "きのうは あめでしたから、どこへも（　）。",
+          "zh": "昨天下雨，所以哪裡都沒去。",
+          "en": "It rained yesterday, so I didn't go anywhere.",
+          "options": [
+            "いきませんでした",
+            "いきません",
+            "いきました",
+            "いきます"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "やまださんは おさけを ぜんぜん（　）。",
+          "zh": "山田先生完全不喝酒。",
+          "en": "Mr. Yamada doesn't drink alcohol at all.",
+          "options": [
+            "のみません",
+            "のみます",
+            "のみました",
+            "のみましょう"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "きのうは ",
+          "parts": [
+            "にくを",
+            "たべ",
+            "ません",
+            "でした"
+          ],
+          "after": "。",
+          "star": 2,
+          "zh": "昨天沒有吃肉。",
+          "en": "I didn't eat meat yesterday."
         }
       ]
     },
