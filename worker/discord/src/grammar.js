@@ -108,6 +108,20 @@ function fillBlank(lang, sentence, answer) {
     });
 }
 
+/* The finished sentence: the blank filled, or for a sentence-ordering question
+   (q.type 'order', tools/build_grammar.py) the parts in order with the ★ part bold. */
+function fullSentence(lessonLang, q, ui) {
+    if (q.type === 'order')
+        return zhText(lessonLang, q.before + q.parts.map((x, k) => (k === q.star ? `**${x}**` : x)).join('') + q.after, ui);
+    return fillBlank(lessonLang, zhText(lessonLang, q.q, ui), zhText(lessonLang, q.options[q.answer], ui));
+}
+
+// why an option is right / wrong: one line per option (fill-ins), one line for the order (ordering)
+const whyPerOption = q => q.type !== 'order' && q.why && q.why.length === q.options.length;
+const whyOfOrder = q => q.type === 'order' && q.why && q.why.length === 1;
+// the heading of a question: "what fills the blank" or "which part goes on ★"
+const questionHead = (ui, q, i, n) => t(ui, q.type === 'order' ? 'g_q_n_order' : 'g_q_n', { i, n });
+
 function optionLabel(lessonLang, q, k, ui) {
     const text = zhText(lessonLang, q.options[k], ui);
     const r = q.options_reading && q.options_reading[k];
@@ -151,15 +165,17 @@ function questionLines(lessonLang, q, ui) {
    mistake as before */
 function feedbackLines(lessonLang, p, q, chosen, ui) {
     const ok = chosen === q.answer;
-    const full = fillBlank(lessonLang, zhText(lessonLang, q.q, ui), zhText(lessonLang, q.options[q.answer], ui));
+    const full = fullSentence(lessonLang, q, ui);
     const lines = [ok ? t(ui, 'right') : t(ui, 'wrong', { a: optionLabel(lessonLang, q, q.answer, ui) }), '', `### ${full}`];
     if (q.full_reading) lines.push(`-# ${q.full_reading}`);
     const tr = translation(lessonLang, q, ui);
     if (tr) lines.push(`-# ${tr}`);
-    if (q.why && q.why.length === q.options.length) {
+    if (whyPerOption(q)) {
         lines.push('', `**${t(ui, 'g_why')}**`);
         if (!ok) lines.push(`❌ **${optionLabel(lessonLang, q, chosen, ui)}** — ${gText(q.why[chosen], ui)}`);
         lines.push(`✅ **${optionLabel(lessonLang, q, q.answer, ui)}** — ${gText(q.why[q.answer], ui)}`);
+    } else if (whyOfOrder(q)) {
+        lines.push('', `**${t(ui, 'g_why')}**`, gText(q.why[0], ui));
     } else if (!ok) {
         const mistake = (p.mistakes || [])[0];
         if (mistake) {
@@ -220,7 +236,7 @@ async function showPoint(env, ui, owner, levelId, pi, picks, resumed) {
         if (ex) lines.push('', `**${t(ui, 'g_example')}**`, ...exampleLines(info.lang, ex, ui));
         lines.push('');
     }
-    lines.push(`**${t(ui, 'g_q_n', { i: qi + 1, n: p.quiz.length })}**`, ...questionLines(info.lang, q, ui));
+    lines.push(`**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, ...questionLines(info.lang, q, ui));
     const base = `${ui}:${owner}:${levelId}:${pi}:${picks}`;
     return {
         content: '',
@@ -238,7 +254,7 @@ async function studyAnswer(env, ui, owner, user, levelId, pi, picks, chosen) {
     if (!q || !(chosen >= 0 && chosen < q.options.length)) return null;
     const order = optionOrder(q, (pi * 31 + qi + 7) ^ idHash(levelId));
     const all = picks + chosen;
-    const lines = [...heading(info.lang, p, ui), `**${t(ui, 'g_q_n', { i: qi + 1, n: p.quiz.length })}**`, '',
+    const lines = [...heading(info.lang, p, ui), `**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, '',
         ...feedbackLines(info.lang, p, q, chosen, ui)];
     const last = qi + 1 >= p.quiz.length;
     let buttons;
@@ -351,11 +367,12 @@ async function quizResults(env, ui, owner, levelId, seed, n, picks, page) {
     if (missed.length) {
         lines.push('', `**${t(ui, 'gq_missed')}**`);
         for (const { p, q, chosen, i } of missed.slice(page * WRONG_PER_PAGE, (page + 1) * WRONG_PER_PAGE)) {
-            const full = fillBlank(info.lang, zhText(info.lang, q.q, ui), zhText(info.lang, q.options[q.answer], ui));
+            const full = fullSentence(info.lang, q, ui);
             lines.push('', `**${i + 1}.** ${full}`, `-# ${heading(info.lang, p, ui).map(s => s.replace(/^#+ |\*\*/g, '')).join('・')}`);
-            const why = q.why && q.why.length === q.options.length;
+            const why = whyPerOption(q);
             lines.push(`❌ ${optionLabel(info.lang, q, chosen, ui)}${why ? ' — ' + gText(q.why[chosen], ui) : ''}`);
             lines.push(`✅ ${optionLabel(info.lang, q, q.answer, ui)}${why ? ' — ' + gText(q.why[q.answer], ui) : ''}`);
+            if (whyOfOrder(q)) lines.push(`-# ${gText(q.why[0], ui)}`);
         }
     } else if (asked) {
         lines.push('', t(ui, 'gq_all_right'));

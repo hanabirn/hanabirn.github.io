@@ -100,13 +100,13 @@ export const COMMANDS = [
         options: [
             { type: 1,
                 ...L(['study', { zh: '學習', zhs: '学习', ja: '学習', ko: '학습', ru: 'учить', fr: 'apprendre', es: 'estudiar', de: 'lernen' }],
-                    ['The points of a level in order, three questions each; picks up where you left off', {
-                        zh: '照順序學一個等級的文法，每個 3 題；會從上次的地方繼續', zhs: '按顺序学一个等级的语法，每个 3 题；会从上次的地方继续',
-                        ja: 'レベルの文法を順番に、各 3 問。前回の続きから', ko: '레벨의 문법을 순서대로, 각 3문제. 지난번 이어서',
-                        ru: 'Темы уровня по порядку, по 3 вопроса; с того места, где вы остановились',
-                        fr: 'Les points d’un niveau dans l’ordre, 3 questions chacun ; reprend où tu t’es arrêté',
-                        es: 'Los puntos de un nivel en orden, 3 preguntas cada uno; sigue donde lo dejaste',
-                        de: 'Die Punkte einer Stufe der Reihe nach, je 3 Fragen; macht dort weiter, wo du aufgehört hast' }]),
+                    ['The points of a level in order, three to six questions each; picks up where you left off', {
+                        zh: '照順序學一個等級的文法，每個 3～6 題；會從上次的地方繼續', zhs: '按顺序学一个等级的语法，每个 3～6 题；会从上次的地方继续',
+                        ja: 'レベルの文法を順番に、各 3～6 問。前回の続きから', ko: '레벨의 문법을 순서대로, 각 3~6문제. 지난번 이어서',
+                        ru: 'Темы уровня по порядку, по 3–6 вопросов; с того места, где вы остановились',
+                        fr: 'Les points d’un niveau dans l’ordre, 3 à 6 questions chacun ; reprend où tu t’es arrêté',
+                        es: 'Los puntos de un nivel en orden, de 3 a 6 preguntas cada uno; sigue donde lo dejaste',
+                        de: 'Die Punkte einer Stufe der Reihe nach, je 3–6 Fragen; macht dort weiter, wo du aufgehört hast' }]),
                 options: [grammarLanguage, grammarLevel, publicOption] },
             { type: 1,
                 ...L(['quiz', { zh: '測驗', zhs: '测验', ja: 'テスト', ko: '테스트', ru: 'тест', fr: 'quiz', es: 'prueba', de: 'test' }],

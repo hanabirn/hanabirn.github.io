@@ -90,7 +90,7 @@ try {
     const ac = await send({ type: 4, locale: 'zh-TW', data: { name: 'quiz', options: [{ name: 'language', value: 'es' }, { name: 'set', value: 'a', focused: true }] } });
     check(ac.reply.type === 8 && ac.reply.data.choices.length > 0, 'autocomplete sets: ' + ac.reply.data.choices.map(c => c.name).join(', '));
     const acg = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'study', options: [{ name: 'language', value: 'ja' }, { name: 'level', value: '', focused: true }] }] } });
-    check(acg.reply.data.choices.length === 3, 'autocomplete grammar, Japanese only: ' + acg.reply.data.choices.map(c => c.name).join(', '));
+    check(acg.reply.data.choices.length >= 3 && acg.reply.data.choices.every(c => c.name.startsWith('日文')), 'autocomplete grammar, Japanese only: ' + acg.reply.data.choices.map(c => c.name).join(', '));
     const acg2 = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'quiz', options: [{ name: 'language', value: 'ko' }, { name: 'level', value: '', focused: true }] }] } });
     check(acg2.reply.data.choices.length === 2 && acg2.reply.data.choices.every(c => /韓文/.test(c.name)), 'autocomplete grammar quiz, Korean only: ' + acg2.reply.data.choices.map(c => c.name).join(', '));
     // a button from before 2026-10-15 says it has expired
@@ -130,20 +130,24 @@ try {
     r = await command('quiz', { language: 'de', set: 'de_a1' });
     show('a set the site does not have yet', r.edited);
 
-    // grammar study: a point's three questions, then the next point; the place is kept
+    // grammar study: a point's questions (3, or 6 with the hard ones), then the next point; the place is kept
     for (const level of ['ja_n5', 'zh_hsk3', 'fr_a2', 'ko_topik1', 'ru_a1']) {
         const lang = level.slice(0, 2);
         r = await sub('grammar', 'study', { language: lang, level }, STUDENT);
         show('grammar study ' + level, r.edited);
-        for (let q = 0; q < 3; q++) {
+        let asked = 0;
+        for (let q = 0; q < 6; q++) {
             const sa = buttons(r.edited).filter(b => b.custom_id?.startsWith('sa:'));
             check(sa.length >= 2, `${level} question ${q + 1} has options`);
             r = await press(sa[sa.length - 1].custom_id, STUDENT);
+            asked++;
             if (q === 0) show('grammar study answer ' + level, r.edited);
-            if (q < 2) r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('sq:')).custom_id, STUDENT);
+            const next = buttons(r.edited).find(b => b.custom_id?.startsWith('sq:'));
+            if (!next) break;
+            r = await press(next.custom_id, STUDENT);
         }
         show('grammar study point done ' + level, r.edited);
-        check(/答對 \d \/ 3 題/.test(r.edited.embeds[0].description) && buttons(r.edited).some(b => b.custom_id?.startsWith('sp:')), level + ': the point ends with its score and the next point');
+        check(new RegExp(`答對 \\d / ${asked} 題`).test(r.edited.embeds[0].description) && buttons(r.edited).some(b => b.custom_id?.startsWith('sp:')), `${level}: the point ends after its ${asked} questions with its score and the next point`);
     }
     // the place: /grammar study ja (no level) goes back to ja_n5, at point 2
     r = await sub('grammar', 'study', { language: 'ja' }, STUDENT);
