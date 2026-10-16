@@ -29,6 +29,8 @@
 
     // secrets, not here: GEMINI_API_KEY (/ask; a Gemini project with NO billing, so it can
     // only use the free tier) — npx wrangler secret put GEMINI_API_KEY; locally in .dev.vars
+    // GROQ_API_KEY (/ask, after Gemini: Groq's free tier), RELAY_TOKEN (POST /chat from the
+    // gateway bot on Render, my-dc-bot) — same way
 
     "observability": { "enabled": true }
 }

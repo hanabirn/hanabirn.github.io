@@ -4,9 +4,10 @@
    Free only: the bot's own Gemini key (GEMINI_API_KEY, a project with no billing, so
    it can't cost anything) tries ASK_MODELS in order — each model has its own small daily
    quota — and a model that says 429 / fails is skipped for a while (KV "spent:<model>").
-   When all are spent, Cloudflare Workers AI answers (env.AI, its free daily
+   When all are spent, Groq's free tier answers (GROQ_API_KEY, GROQ_MODELS — about a
+   thousand a day; added 2026-10-15), then Cloudflare Workers AI (env.AI, its free daily
    allowance), and after that the visitor is told to come back tomorrow. Each visitor
-   may ask ASK_PER_DAY times a day ("ac:<user>:<day>").
+   may ask ASK_PER_DAY times a day ("ac:<user>:<day>"; 50 since 2026-10-15).
 
    A conversation is kept in KV for CONV_TTL ("ask:<id>", the last KEEP_TURNS turns):
    the answer's "繼續問" button opens a box for the next question
@@ -20,8 +21,12 @@ import { COLOR, SITE_URL, button, linkButton, row, cut } from './ui.js';
 export const ASK_MODELS = ['gemini-3.6-flash', 'gemini-3.5-flash-lite', 'gemini-3.8-flash', 'gemini-3.7-flash',
     'gemini-3.5-flash', 'gemini-3.1-flash-lite', 'gemini-flash-lite-latest', 'gemini-2.5-flash', 'gemini-2.5-flash-lite',
     'gemma-4-31b-it', 'gemma-4-26b-a4b-it'];
+// Groq (OpenAI-style API), free tier, each model with its own daily limit
+// tried 2026-10-15: qwen3.8 the most natural in Chinese and Japanese; gpt-oss-20b answered a
+// Japanese question in Chinese and got a fact wrong, so it is left out
+const GROQ_MODELS = ['qwen/qwen3.8-27b', 'openai/gpt-oss-120b'];
 const WORKERS_AI_MODEL = '@cf/qwen/qwen3-30b-a3b-fp8';   // good Chinese / Japanese, a light MoE
-export const ASK_PER_DAY = 20;
+export const ASK_PER_DAY = 50;
 const KEEP_TURNS = 8;              // messages sent back to the model (user + reply)
 const CONV_TTL = 6 * 3600;         // seconds a conversation can be continued
 const MODEL_TIMEOUT = 25000;
@@ -88,6 +93,31 @@ async function gemini(env, model, history, ui) {
     }
 }
 
+async function groq(env, model, history, ui) {
+    const messages = [{ role: 'system', content: persona(ui) },
+        ...history.map(m => ({ role: m.role === 'model' ? 'assistant' : 'user', content: m.text }))];
+    const body = { model, messages, temperature: 0.7, max_tokens: 1200 };
+    if (model.includes('gpt-oss')) body.reasoning_effort = 'low';
+    const ctrl = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), MODEL_TIMEOUT);
+    try {
+        const res = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+            method: 'POST', signal: ctrl.signal,
+            headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${env.GROQ_API_KEY}` },
+            body: JSON.stringify(body)
+        });
+        if (!res.ok) return { status: res.status, detail: (await res.text()).slice(0, 200) };
+        const d = await res.json();
+        const out = String((((d.choices || [])[0] || {}).message || {}).content || '')
+            .replace(/<think>[\s\S]*?<\/think>/g, '').trim();
+        return out ? { text: out } : { status: 0, detail: 'empty' };
+    } catch (err) {
+        return { status: 0, detail: String(err).slice(0, 100) };
+    } finally {
+        clearTimeout(timer);
+    }
+}
+
 async function workersAi(env, history, ui) {
     if (!env.AI) return null;
     try {
@@ -105,10 +135,11 @@ async function workersAi(env, history, ui) {
 
 /* an answer from the first model with quota left: {text, model} or null */
 async function answer(env, history, ui) {
-    for (const model of ASK_MODELS) {
-        if (!env.GEMINI_API_KEY) break;
+    const tries = [...(env.GEMINI_API_KEY ? ASK_MODELS.map(m => [m, gemini]) : []),
+        ...(env.GROQ_API_KEY ? GROQ_MODELS.map(m => [m, groq]) : [])];
+    for (const [model, call] of tries) {
         if (env.PREFS && await env.PREFS.get('spent:' + model)) continue;
-        const got = await gemini(env, model, history, ui);
+        const got = await call(env, model, history, ui);
         if (got.text) return { text: got.text, model };
         console.log('ask model failed', model, got.status, got.detail);
         // a used-up day (429) waits an hour, a failure or a slow answer ten minutes
