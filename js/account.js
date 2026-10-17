@@ -109,7 +109,9 @@ const SYNC_KEYS = {
     } },
     // plain strings: this device's choice wins, the cloud fills in a missing one
     daily_goal: { raw: true },
-    last_quiz_set: { raw: true }
+    last_quiz_set: { raw: true },
+    // the header's 我在學 language (js/learnlang.js), so a new device opens in it
+    learn_lang: { raw: true }
 };
 
 /* The merged localStorage string of a key, or null when neither side has it. */

@@ -9,7 +9,7 @@
    Opening a page makes her say a line about it once per visit (ctx_* keys).
 
    Right: 每日一字, a word a day from the topic sets (tp_*) in the language the
-   visitor studies (last_quiz_set, or picked on the card; rail_word_lang). On the
+   visitor studies (the header's learning language, js/learnlang.js). On the
    home page also the last two weeks of daily_activity (今日任務 was dropped
    2026-10-17: the home page's own goal and review cards already say the same). */
 
@@ -18,8 +18,9 @@ const POKE_WINDOW_MS = 2500;
 const POKE_FACE_MS = 1600;
 const POKE_ANGRY_MS = 1800;
 const POKE_EXTRA_CHANCE = 0.3;   // how often a poke on the head or body gets a line about the visitor's day
-const RAIL_WORD_LANGS = ['jp', 'kr', 'en', 'zh'];
-const RAIL_TTS = { jp: 'ja-JP', kr: 'ko-KR', en: 'en-US' };
+// the first four keep their place so their words of the day didn't change when the others came
+const RAIL_WORD_LANGS = ['jp', 'kr', 'en', 'zh', 'fr', 'ru', 'es', 'de'];
+const RAIL_TTS = { jp: 'ja-JP', kr: 'ko-KR', en: 'en-US', fr: 'fr-FR', ru: 'ru-RU', es: 'es-ES', de: 'de-DE' };
 const RAIL_CTX = { home: 'ctx_home', quiz: 'ctx_quiz', examquiz: 'ctx_exam', dict: 'ctx_dict',
     alphabet: 'ctx_alphabet', notes: 'ctx_notes', grammar: 'ctx_grammar', reading: 'ctx_reading', listening: 'ctx_listening' };
 
@@ -259,20 +260,16 @@ function railHash(n) {
     return (h ^ (h >>> 16)) >>> 0;
 }
 
+/* The header's learning language (js/learnlang.js; the card had its own 日 / 韓 / 英 / 中
+   chips until 2026-10-17); before one is chosen, the language of the last word set. */
 function railWordLang() {
-    const saved = railLoad('rail_word_lang');
-    if (RAIL_WORD_LANGS.includes(saved)) return saved;
+    const learn = typeof learnLang === 'function' ? LEARN_QUIZ_CODE[learnLang()] : '';
+    if (RAIL_WORD_LANGS.includes(learn)) return learn;
     const last = railLoad('last_quiz_set') || '';
     if (isKoreanQuizLang(last)) return 'kr';
     if (isEnglishQuizLang(last)) return 'en';
     if (isChineseQuizLang(last)) return 'zh';
     return 'jp';
-}
-
-function railPickLang(lang) {
-    if (!RAIL_WORD_LANGS.includes(lang)) return;
-    railStore('rail_word_lang', lang);
-    renderRailWord();
 }
 
 function railLoadSet(id) {
@@ -304,10 +301,11 @@ function railWordView(lang, row) {
         return { word: simp ? row[1] : row[0], reading: simp ? row[3] : row[2] + ' · ' + row[3], meaning: row[4],
                  speak: simp ? row[1] : row[0], tts: zhAccent(simp ? 'simp' : 'trad'), htmlLang: simp ? 'zh-Hans' : 'zh-Hant' };
     }
-    const reading = lang === 'jp' && row[1] && row[1] !== row[0] ? row[1] : '';
+    // Japanese: the kana; French / Spanish / German: gender (and plural); Russian: the stressed form
+    const reading = row[1] && row[1] !== row[0] && lang !== 'kr' && lang !== 'en' ? row[1] : '';
     return { word: row[0], reading, meaning: uiZh || !row[3] ? row[2] : row[3],
              speak: row[0], kana: lang === 'jp' && hasKanji(row[0]) ? row[1] : '', tts: RAIL_TTS[lang],
-             htmlLang: { jp: 'ja', kr: 'ko', en: 'en' }[lang] };
+             htmlLang: { jp: 'ja', kr: 'ko' }[lang] || lang };
 }
 
 let railWordNow = null;    // { lang, id, topic, view } of the card on screen
@@ -316,12 +314,8 @@ function renderRailWord() {
     const box = document.getElementById('rail-word');
     if (!box || !railVisible('rail-right')) return;
     const lang = railWordLang();
-    const short = t('rail_lang_short').split('|');
-    const chips = RAIL_WORD_LANGS.map((l, i) =>
-        `<button type="button" class="rail-chip${l === lang ? ' on' : ''}" onclick="railPickLang('${l}')" aria-pressed="${l === lang}" title="${escHtml(t('dict_lang_' + TOPIC_FILE_LANG[l]))}">${escHtml(short[i] || l)}</button>`).join('');
     const now = new Date();
-    const head = `<div class="rail-head"><h4 class="rail-title">${escHtml(t('rail_word_title'))}</h4><span class="rail-date">${now.getMonth() + 1}/${now.getDate()}</span></div>
-        <div class="rail-chips">${chips}</div>`;
+    const head = `<div class="rail-head"><h4 class="rail-title">${escHtml(t('rail_word_title'))}</h4><span class="rail-date">${now.getMonth() + 1}/${now.getDate()}</span></div>`;
     railTodayWord(lang).then(({ id, topic, row }) => {
         if (railWordLang() !== lang || !row) return;
         const v = railWordView(lang, row);

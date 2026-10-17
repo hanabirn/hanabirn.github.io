@@ -48,6 +48,58 @@ header h1 {
 .lang-globe {
     position: relative;
 }
+
+/* 我在學的語言 (js/learnlang.js): the language the learning pages show */
+.learn-pill-wrap { position: relative; }
+.learn-pill {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 36px;
+    padding: 0 12px 0 10px;
+    border-radius: 18px;
+    border: 2px solid var(--primary);
+    background: var(--primary-soft);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+}
+.learn-pill.empty { border-style: dashed; }
+.learn-pill-caret { font-size: 0.7rem; color: var(--text-secondary); }
+.learn-pill-menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    z-index: 220;
+    width: min(320px, calc(100vw - 24px));
+    padding: 12px;
+    border: 1px solid var(--border-card);
+    border-radius: 14px;
+    background: var(--bg-widget-panel);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.18);
+}
+.learn-pill-wrap.open .learn-pill-menu { display: block; }
+.learn-menu-title { margin-bottom: 8px; font-size: 0.85rem; font-weight: 800; color: var(--text); }
+.learn-menu-ui {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    margin-top: 12px;
+    padding: 10px 4px 2px;
+    border: 0;
+    border-top: 1px solid var(--line);
+    background: none;
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.82rem;
+    cursor: pointer;
+}
+.learn-menu-ui b { margin-left: auto; color: var(--text); }
 /* Pill rather than a circle: it carries the globe plus the active
    language's flag chip (#lang-globe-current), like the osu! site. */
 .lang-globe-btn {
@@ -387,4 +439,10 @@ header h1 {
        keeping the title readable; the header keeps language + account */
     .header-btn, .theme-toggle, .site-menu { display: none; }
     .lang-globe-icon { display: none; }
+    /* the learning pill takes the globe's place; the site language opens from the pill's
+       menu or the More sheet, in the globe's own menu (kept for that) */
+    .lang-globe-btn { display: none; }
+    .learn-pill { height: 32px; padding: 0 10px 0 8px; font-size: 0.8rem; }
+    /* the menu spans the screen under the header rather than hanging off the pill */
+    .learn-pill-menu { position: fixed; top: 58px; left: 12px; right: 12px; width: auto; max-height: calc(100vh - 140px); overflow-y: auto; }
 }

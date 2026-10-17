@@ -77,11 +77,27 @@ function alphaCardHtml(item) {
     </div>`;
 }
 
+/* Only the tabs of the header's learning language (js/learnlang.js): hiragana and
+   katakana for Japanese, one tab for the others; every tab before a language is chosen. */
+function alphaTabsShown() {
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    const mine = ALPHA_TABS.filter(id => ALPHA_LANG[id].split('-')[0] === lang);
+    return mine.length ? mine : ALPHA_TABS;
+}
+
+function alphaFollowLearnLang() {
+    const shown = alphaTabsShown();
+    if (!shown.includes(alphaTab)) alphaTab = shown[0];
+}
+
 function renderAlphabet() {
     const tabs = document.getElementById('alpha-tabs');
     const body = document.getElementById('alpha-body');
     if (!tabs || !body) return;
-    tabs.innerHTML = ALPHA_TABS.map(id =>
+    alphaFollowLearnLang();
+    const shown = alphaTabsShown();
+    tabs.hidden = shown.length < 2;
+    tabs.innerHTML = shown.map(id =>
         `<button type="button" class="mode-btn alpha-tab ${id === alphaTab ? 'mode-btn-active' : ''}" onclick="setAlphaTab('${id}')" ${id === alphaTab ? 'aria-pressed="true"' : 'aria-pressed="false"'}>${escHtml(t('alpha_tab_' + id))}</button>`
     ).join('');
     body.setAttribute('lang', ALPHA_LANG[alphaTab]);

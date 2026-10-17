@@ -59,9 +59,11 @@ async function readingLoad() {
         try { readingIndex = await fetch('data/reading/index.json').then(r => r.json()); }
         catch { readingIndex = null; return false; }
     }
-    if (!readingSetId && readingIndex.length) {
-        const saved = readingPref('reading_set', '');
-        readingSetId = readingIndex.some(s => s.id === saved) ? saved : readingIndex[0].id;
+    // the level in the header's learning language (js/learnlang.js); '' = nothing in it yet
+    const want = learnSetId(readingIndex, readingSetId || readingPref('reading_set', ''), 'reading');
+    if (want !== readingSetId) {
+        if (readingView === 'read') readingStopTimer();
+        readingSetId = want; readingView = 'list'; readingNo = 0;
     }
     if (readingSetId && !readingSets[readingSetId]) {
         try { readingSets[readingSetId] = await fetch('data/reading/' + readingSetId + '.json').then(r => r.json()); }
@@ -77,6 +79,11 @@ async function renderReading() {
     if (!readingSets[readingSetId]) box.innerHTML = `<p class="grammar-loading">${escHtml(t('grammar_loading'))}</p>`;
     if (!await readingLoad()) {
         box.innerHTML = `<p class="grammar-loading">${escHtml(t('grammar_error'))}</p>`;
+        return;
+    }
+    if (!readingSetId) {
+        document.body.classList.remove('reading-wide');
+        box.innerHTML = `<h3>${escHtml(t('reading_title'))}</h3>${learnEmptyHtml(readingIndex, 'nav_reading')}`;
         return;
     }
     const set = readingSets[readingSetId];
@@ -107,6 +114,7 @@ function readingPickSet(id) {
     readingSetId = id;
     readingNo = 0;
     readingSetPref('reading_set', id);
+    learnRememberLevel('reading', (readingIndex || []).find(s => s.id === id));
     readingGo('list');
 }
 

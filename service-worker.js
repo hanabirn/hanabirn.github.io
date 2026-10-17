@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v42';
+const CACHE_NAME = 'hanabi-v43';
 const ASSETS = [
   '/',
   '/index.html',
@@ -39,6 +39,7 @@ const ASSETS = [
   '/i18n/es.js',
   '/i18n/de.js',
   '/js/quiz.js',
+  '/js/learnlang.js',
   '/js/path.js',
   '/js/dict.js',
   '/js/alphabet-data.js',

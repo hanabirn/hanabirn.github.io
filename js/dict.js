@@ -346,7 +346,15 @@ function renderDictPage() {
     renderDictRecent();
 }
 
+/* The dictionary starts in the header's learning language (js/learnlang.js); its own
+   language buttons stay, for looking up a word in another one. */
+function dictFollowLearnLang() {
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    if (lang && dictLangById(lang).id === lang) dictLang = lang;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     dictLang = dictLangById(dictLoad('dict_lang', 'en')).id;
+    dictFollowLearnLang();
     renderDictPage();
 });

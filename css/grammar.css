@@ -23,48 +23,8 @@
 }
 .mode-btn.grammar-chip { flex: 0 0 auto; padding: 8px 16px; font-size: 0.9rem; min-width: 0; }
 
-/* the 學習 pages' language + level picker (learnPickerHtml in js/grammar.js): a
-   language button opening a menu grouped by region, the language's levels below */
-.learn-picker {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin: 0 0 14px;
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-}
-.learn-lang { position: relative; align-self: flex-start; }
-.learn-lang-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 7px 14px;
-    border: 2px solid var(--ink);
-    border-radius: 12px;
-    background: var(--surface);
-    color: var(--ink);
-    font: inherit;
-    font-weight: 700;
-    cursor: pointer;
-    box-shadow: 0 4px 0 var(--edge);
-}
-.learn-lang-btn:active { transform: translateY(4px); box-shadow: none; }
-.learn-caret { font-size: 0.75rem; color: var(--text-secondary); }
-.learn-menu {
-    display: none;
-    position: absolute;
-    z-index: 20;
-    top: calc(100% + 8px);
-    left: 0;
-    width: min(340px, 86vw);
-    padding: 12px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: var(--bg-widget);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-.learn-lang.open .learn-menu { display: block; }
+/* language buttons: the header's 我在學 menu and the pages' "which language?" card
+   (js/learnlang.js) */
 .learn-menu-group { margin: 2px 0 6px; font-size: 0.78rem; color: var(--text-secondary); }
 .learn-menu-list + .learn-menu-group { margin-top: 12px; }
 .learn-menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
@@ -72,6 +32,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+    min-height: 40px;
     padding: 8px 10px;
     border: 1px solid var(--line);
     border-radius: 10px;
@@ -82,18 +43,18 @@
     text-align: left;
     cursor: pointer;
 }
-.learn-menu-item:hover:not(:disabled) { border-color: var(--primary); }
+.learn-menu-item:hover { border-color: var(--primary); }
 .learn-menu-item.on { border-color: var(--primary); background: var(--primary-soft); font-weight: 700; }
-.learn-menu-item small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-secondary); }
-.learn-menu-item.soon { opacity: 0.45; cursor: default; }
+/* a page with nothing in the learning language, or no language chosen yet */
+.learn-choose { text-align: center; padding: 6px 0 4px; }
+.learn-choose h4 { margin: 8px 0 6px; font-size: 1rem; color: var(--text); }
+.learn-choose p { margin: 0 0 14px; font-size: 0.88rem; line-height: 1.6; color: var(--text-secondary); }
+.learn-choose-list { display: flex; flex-wrap: wrap; justify-content: center; max-width: 440px; margin: 0 auto; }
+.learn-choose-list .learn-menu-item { flex: 0 1 calc(50% - 3px); }
 /* the levels as one even row of equal buttons (two even rows past 5 levels),
    each with its name over a progress bar — rather than chips that wrapped
    unevenly (等級 N5 / N4 N3 / N2 N1 on phones) */
-.learn-levels {
-    padding-top: 12px;
-    border-top: 1px dashed var(--line);
-}
-.learn-levels-label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-secondary); }
+.learn-levels { margin: 0 0 14px; }
 .learn-level-grid {
     display: grid;
     grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));

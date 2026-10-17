@@ -50,12 +50,12 @@ function gHint(set, obj) {
     return gText(obj);
 }
 
-/* ----- the 學習 pages' language + level picker (owner's pick, 2026-10-15) -----
-   A language button opening a menu grouped by region (LANG_REGIONS in js/quiz.js;
-   languages this page has nothing for yet are greyed out), and below it only the
-   chosen language's levels, each with how much of it is done. Shared by the 文法,
-   閱讀 and 聽解 lists: index = the page's index.json, pick = the name of the global
-   function that opens a level, done(id) = items passed in that level. */
+/* ----- the 學習 pages' level picker -----
+   The language comes from the header's 我在學 pill (js/learnlang.js, 2026-10-17; this
+   used to have its own language menu); this draws that language's levels, each with how
+   much of it is done. Shared by the 文法, 閱讀 and 聽解 lists: index = the page's
+   index.json, pick = the name of the global function that opens a level, done(id) =
+   items passed in that level. */
 const LEARN_FLAGS = { ja: ['jp'], ko: ['kr'], zh: ['tw', 'cn'], en: ['gb'], fr: ['fr'], ru: ['ru'], es: ['es'], de: ['de'] };
 
 function learnFlags(lang) {
@@ -64,17 +64,8 @@ function learnFlags(lang) {
 
 function learnPickerHtml(index, curId, pick, done) {
     const cur = index.find(s => s.id === curId) || index[0];
-    const levelsOf = l => index.filter(s => s.lang === l);
-    const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · ';
-    const menu = LANG_REGIONS.map(r => `<div class="learn-menu-group">${r.icon} ${escHtml(t('region_' + r.id))}</div>
-        <div class="learn-menu-list">${r.langs.map(l => {
-            const lv = levelsOf(l);
-            if (!lv.length) {
-                return `<button type="button" class="learn-menu-item soon" disabled>${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(t('learn_soon'))}</small></span></button>`;
-            }
-            return `<button type="button" class="learn-menu-item${l === cur.lang ? ' on' : ''}" onclick="${pick}('${lv[0].id}')">${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(lv.map(s => learnLevelName(s.level)).join(sep))}</small></span></button>`;
-        }).join('')}</div>`).join('');
-    const levels = levelsOf(cur.lang);
+    const levels = index.filter(s => s.lang === cur.lang);
+    if (levels.length < 2) return '';   // one level (Spanish A1): nothing to pick
     const chips = levels.map(s => {
         const n = done(s.id), m = s.count || 0;
         return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
@@ -83,34 +74,8 @@ function learnPickerHtml(index, curId, pick, done) {
     }).join('');
     // equal columns: up to 5 levels in one row, more in two even rows (6 → 3 + 3)
     const cols = levels.length <= 5 ? levels.length : Math.ceil(levels.length / 2);
-    return `<div class="learn-picker">
-        <div class="learn-lang">
-            <button type="button" class="learn-lang-btn" aria-haspopup="true" aria-label="${escHtml(t('learn_lang_menu'))}" onclick="learnMenuToggle(event, this)">${learnFlags(cur.lang)}${escHtml(t('dict_lang_' + cur.lang))}<span class="learn-caret" aria-hidden="true">▾</span></button>
-            <div class="learn-menu" role="menu">${menu}</div>
-        </div>
-        <div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><span class="learn-levels-label">${escHtml(t('learn_levels'))}</span><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>
-    </div>`;
+    return `<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>`;
 }
-
-function learnMenuToggle(e, btn) {
-    e.stopPropagation();
-    const box = btn.parentElement;
-    const open = !box.classList.contains('open');
-    learnMenuClose();
-    box.classList.toggle('open', open);
-    btn.setAttribute('aria-expanded', String(open));
-}
-
-function learnMenuClose() {
-    document.querySelectorAll('.learn-lang.open').forEach(el => {
-        el.classList.remove('open');
-        const b = el.querySelector('.learn-lang-btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-    });
-}
-
-document.addEventListener('click', e => { if (!e.target.closest('.learn-menu')) learnMenuClose(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape') learnMenuClose(); });
 
 // items passed in a level, from a progress store keyed "<level>:<item>" ({best, of})
 function learnDoneCount(prog, levelId, pass) {
@@ -179,11 +144,11 @@ async function grammarLoad() {
             return false;
         }
     }
-    if (!grammarSetId && grammarIndex.length) {
-        let saved = '';
-        try { saved = localStorage.getItem('grammar_set') || ''; } catch {}
-        grammarSetId = grammarIndex.some(s => s.id === saved) ? saved : grammarIndex[0].id;
-    }
+    // the level in the header's learning language (js/learnlang.js); '' = nothing in it yet
+    let saved = '';
+    if (!grammarSetId) try { saved = localStorage.getItem('grammar_set') || ''; } catch {}
+    const want = learnSetId(grammarIndex, grammarSetId || saved, 'grammar');
+    if (want !== grammarSetId) { grammarSetId = want; grammarView = 'list'; grammarPoint = 0; grammarPage = 0; }
     if (grammarSetId && !grammarSets[grammarSetId]) {
         try {
             grammarSets[grammarSetId] = await fetch('data/grammar/' + grammarSetId + '.json').then(r => r.json());
@@ -201,6 +166,11 @@ async function renderGrammar() {
     if (!grammarSets[grammarSetId]) box.innerHTML = `<p class="grammar-loading">${escHtml(t('grammar_loading'))}</p>`;
     if (!await grammarLoad()) {
         box.innerHTML = `<p class="grammar-loading">${escHtml(t('grammar_error'))}</p>`;
+        return;
+    }
+    if (!grammarSetId) {
+        document.body.classList.remove('grammar-wide');
+        box.innerHTML = `<h3>${escHtml(t('grammar_title'))}</h3>${learnEmptyHtml(grammarIndex, 'nav_grammar')}`;
         return;
     }
     const set = grammarSets[grammarSetId];
@@ -226,6 +196,7 @@ function grammarPickSet(id) {
     grammarSetId = id;
     grammarPoint = 0;
     try { localStorage.setItem('grammar_set', id); } catch {}
+    learnRememberLevel('grammar', (grammarIndex || []).find(s => s.id === id));
     grammarGo('list');
 }
 

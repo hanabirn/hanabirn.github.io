@@ -1072,6 +1072,7 @@ function addWord(word, kana, meaning, englishMeaning) {
 
 function refreshDynamicContent() {
     if (typeof renderHome === 'function') renderHome();
+    if (typeof renderLearnPill === 'function' && document.readyState !== 'loading') renderLearnPill();
     const isVisible = (id) => {
         const el = document.getElementById(id);
         return el && el.style.display !== 'none';
