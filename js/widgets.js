@@ -326,14 +326,48 @@ window.addEventListener('beforeinstallprompt', (e) => {
     showInstallBanner();
     const now = document.getElementById('install-now');
     if (now) now.hidden = false;
+    // Chrome on Android offers the prompt only after a little while on the page: if the
+    // dialog is already open with the manual steps, swap them for the one-tap button.
+    const overlay = document.getElementById('install-overlay');
+    if (overlay && overlay.classList.contains('show')) openInstallHelp();
 });
+
+/* Apps that open links in their own browser (LINE, Facebook, Instagram…) can't install
+   a web app, so the dialog asks to open the site in a real browser first: LINE has a
+   URL flag for that, Android can hand the page to Chrome with an intent; iPhone apps
+   only offer it in their own ⋯ menu. */
+function inAppBrowser() {
+    const ua = navigator.userAgent;
+    const apps = [[/Line\//, 'LINE'], [/FBAN|FBAV|FB_IAB/, 'Facebook'], [/Instagram/, 'Instagram'],
+        [/Barcelona/, 'Threads'], [/MicroMessenger/, 'WeChat'], [/KAKAOTALK/i, 'KakaoTalk'],
+        [/musical_ly|BytedanceWebview|TikTok/i, 'TikTok']];
+    const hit = apps.find(([re]) => re.test(ua));
+    return hit ? hit[1] : '';
+}
+
+function openInRealBrowser() {
+    const url = new URL(location.href);
+    if (inAppBrowser() === 'LINE') {
+        url.searchParams.set('openExternalBrowser', '1');
+        location.href = url.toString();
+    } else {
+        location.href = `intent://${url.host}${url.pathname}${url.search}#Intent;scheme=https;package=com.android.chrome;`
+            + `S.browser_fallback_url=${encodeURIComponent(url.toString())};end`;
+    }
+}
 
 function openInstallHelp() {
     const overlay = document.getElementById('install-overlay');
     if (!overlay) return;
     const steps = document.getElementById('install-steps');
+    const app = deferredInstallPrompt ? '' : inAppBrowser();
     if (deferredInstallPrompt) {
         steps.innerHTML = '';
+    } else if (app) {
+        const oneTap = app === 'LINE' || installPlatform() === 'android';
+        steps.innerHTML = `<p class="install-how">${escHtml(t('install_inapp', {app}))}</p>${oneTap
+            ? `<button class="next-btn install-open-browser" onclick="openInRealBrowser()">${escHtml(t('install_open_browser'))}</button>`
+            : `<ol class="install-steps"><li>${escHtml(t('install_inapp_ios'))}</li></ol>`}`;
     } else {
         const keys = INSTALL_STEPS[installPlatform()];
         steps.innerHTML = `<p class="install-how">${escHtml(t('install_how'))}</p><ol class="install-steps">${

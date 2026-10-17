@@ -90,14 +90,14 @@ self.addEventListener('fetch', e => {
   // Same-origin files are revalidated with the server (a cheap 304 when
   // unchanged) instead of taken from the browser's HTTP cache, which GitHub
   // Pages lets hold a file for 10 minutes — otherwise "reload for the new
-  // version" could still serve the old CSS/JS. Navigations keep their own
-  // request, and cross-origin requests (CDN, fonts, Sheets) are untouched.
+  // version" could still serve the old CSS/JS (or, for a navigation, the old
+  // page). Cross-origin requests (CDN, fonts, Sheets) are untouched.
   const sameOrigin = new URL(e.request.url).origin === self.location.origin;
-  const req = sameOrigin && e.request.mode !== 'navigate'
-    ? new Request(e.request, { cache: 'no-cache' })
-    : e.request;
+  const fresh = !sameOrigin ? fetch(e.request)
+    : e.request.mode === 'navigate' ? fetch(e.request, { cache: 'no-cache' })
+    : fetch(new Request(e.request, { cache: 'no-cache' }));
   e.respondWith(
-    fetch(req).then(r => {
+    fresh.then(r => {
       const clone = r.clone();
       caches.open(CACHE_NAME).then(c => c.put(e.request, clone));
       return r;

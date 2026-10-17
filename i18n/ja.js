@@ -142,9 +142,10 @@ I18N.ja = {
         // install the app (js/widgets.js)
         install_btn: 'アプリを入れる', install_title: 'Hanabi アプリを入れよう', install_sub: '無料・登録不要、サイトと同時に更新', install_why_home: 'ホーム画面からワンタップで開ける',
         install_why_full: '全画面で練習、アドレスバーなし', install_why_offline: 'オフラインでも、一度開いた内容は見られる', install_now: '今すぐインストール', install_how: '追加のしかた：',
-        install_ios_1: 'ブラウザの「共有」ボタンをタップ（四角に上向き矢印。iPhoneは下、iPadは上）', install_ios_2: '下にスクロールして「ホーム画面に追加」を選ぶ', install_ios_3: '右上の「追加」をタップすると、ホーム画面に Hanabi が出ます', install_android_1: 'ブラウザ右上の「⋮」メニューをタップ',
+        install_ios_1: 'ブラウザの「共有」ボタンをタップ（四角に上向き矢印。見当たらないときは先に「⋯」をタップ）', install_ios_2: '下にスクロールして「ホーム画面に追加」を選ぶ', install_ios_3: '右上の「追加」をタップすると、ホーム画面に Hanabi が出ます', install_android_1: 'ブラウザ右上の「⋮」メニューをタップ',
         install_android_2: '「アプリをインストール」か「ホーム画面に追加」を選ぶ', install_mac_1: 'Safari のメニューバーで「ファイル」を開く', install_mac_2: '「Dockに追加」を選ぶ', install_desktop_1: 'Chrome か Edge でサイトを開き、アドレスバー右の「インストール」アイコン（またはブラウザの ⋮ メニュー）をクリック',
         install_desktop_2: '「Hanabiの小天地 をインストール」を選ぶ',
+        install_inapp: '今は {app} の中でサイトを開いているため、ここではインストールできません。先にブラウザで開いてください：', install_open_browser: 'ブラウザで開く', install_inapp_ios: '右上（または右下）の「⋯」か共有ボタンから「Safariで開く」を選び、そこからインストールしてください',
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: 'サイトがお引っ越ししました！', moved_text: '新しいアドレスは hanabirn.xyz です。以前ホーム画面に追加していた場合、それは古いアプリです。削除して、ここからもう一度入れてください。新機能や AI アシスタント「小花火」が正しく使えるようになります。', moved_note: '古いアプリの練習記録は自動では引き継げません。ごめんなさい！', moved_reinstall: 'アプリを入れ直す',
         moved_ok: 'わかった',

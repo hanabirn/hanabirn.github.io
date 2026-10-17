@@ -143,9 +143,10 @@ I18N.zh = {
         // install the app (js/widgets.js)
         install_btn: '下載 App', install_title: '下載 Hanabi App', install_sub: '免費、不用註冊，跟網站同步更新', install_why_home: '從主畫面一鍵打開，像一般 App 一樣',
         install_why_full: '全螢幕練習，沒有網址列干擾', install_why_offline: '沒有網路時，也能打開看過的內容', install_now: '立即安裝', install_how: '這樣加到主畫面：',
-        install_ios_1: '點瀏覽器的「分享」按鈕（方框加向上的箭頭；iPhone 在下方，iPad 在上方）', install_ios_2: '往下滑，選「加入主畫面」', install_ios_3: '按右上角的「新增」，主畫面就會出現 Hanabi', install_android_1: '點瀏覽器右上角的「⋮」選單',
+        install_ios_1: '點瀏覽器的「分享」按鈕（方框加向上的箭頭；看不到的話先點「⋯」）', install_ios_2: '往下滑，選「加入主畫面」', install_ios_3: '按右上角的「新增」，主畫面就會出現 Hanabi', install_android_1: '點瀏覽器右上角的「⋮」選單',
         install_android_2: '選「安裝應用程式」或「加到主畫面」', install_mac_1: '在 Safari 上方的選單點「檔案」', install_mac_2: '選「加入 Dock」', install_desktop_1: '用 Chrome 或 Edge 開這個網站，點網址列右邊的「安裝」圖示（或瀏覽器的 ⋮ 選單）',
         install_desktop_2: '選「安裝 Hanabiの小天地」',
+        install_inapp: '你現在是在 {app} 裡面開啟網站，這裡沒辦法安裝。請先改用瀏覽器開啟：', install_open_browser: '用瀏覽器開啟', install_inapp_ios: '點右上角（或右下角）的「⋯」或分享按鈕，選「用 Safari 開啟」，再從那裡安裝',
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '網站搬家囉！', moved_text: '我們的新網址是 hanabirn.xyz。如果你之前把網站加到主畫面，那是舊的 App：請把它刪掉，再從這裡重新下載一次，新功能和 AI 小幫手「小花火」才能正常使用。', moved_note: '舊 App 裡的練習紀錄沒辦法自動搬過來，不好意思！', moved_reinstall: '重新下載 App',
         moved_ok: '知道了',

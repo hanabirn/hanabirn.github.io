@@ -972,6 +972,26 @@
           setInterval(function() { reg.update(); }, 30 * 60 * 1000);
         }).catch(function() {});
       }
+      // A push that leaves service-worker.js alone never fires updatefound, so also ask
+      // whether the site was deployed since this page loaded: GitHub Pages stamps every
+      // file with the deploy time, so the page's own Last-Modified is enough. A HEAD with
+      // a unique query skips the CDN's 10-minute cache (and the service worker, GET only).
+      (function watchForDeploy() {
+        var loaded = Date.parse(document.lastModified), lastCheck = 0, found = false;
+        if (!loaded || !window.fetch) return;
+        function check() {
+          if (found || document.hidden || !navigator.onLine || Date.now() - lastCheck < 60 * 1000) return;
+          lastCheck = Date.now();
+          fetch('/?deploy=' + Date.now(), { method: 'HEAD', cache: 'no-store' }).then(function(r) {
+            var server = Date.parse(r.headers.get('Last-Modified') || '');
+            if (r.ok && server - loaded > 2000) { found = true; showUpdateBanner(); }
+          }).catch(function() {});
+        }
+        setTimeout(check, 10 * 1000);
+        setInterval(check, 5 * 60 * 1000);
+        document.addEventListener('visibilitychange', check);
+        window.addEventListener('online', check);
+      })();
     </script>
 </body>
 </html>

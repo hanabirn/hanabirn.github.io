@@ -142,9 +142,10 @@ I18N.es = {
         // install the app (js/widgets.js)
         install_btn: 'Instalar la app', install_title: 'La app de Hanabi', install_sub: 'Gratis, sin registro y siempre al día como el sitio', install_why_home: 'Se abre desde la pantalla de inicio como cualquier app',
         install_why_full: 'Pantalla completa, sin barra de direcciones', install_why_offline: 'Funciona sin internet con lo que ya abriste', install_now: 'Instalar ahora', install_how: 'Cómo añadirla:',
-        install_ios_1: 'Toca el botón Compartir (un cuadrado con una flecha hacia arriba; abajo en iPhone, arriba en iPad)', install_ios_2: 'Desliza y elige «Añadir a pantalla de inicio»', install_ios_3: 'Toca «Añadir» arriba: Hanabi aparecerá en tu pantalla de inicio', install_android_1: 'Toca el menú ⋮ del navegador (arriba a la derecha)',
+        install_ios_1: 'Toca el botón Compartir (un cuadrado con una flecha hacia arriba; si no lo ves, toca antes «⋯»)', install_ios_2: 'Desliza y elige «Añadir a pantalla de inicio»', install_ios_3: 'Toca «Añadir» arriba: Hanabi aparecerá en tu pantalla de inicio', install_android_1: 'Toca el menú ⋮ del navegador (arriba a la derecha)',
         install_android_2: 'Elige «Instalar aplicación» o «Añadir a pantalla de inicio»', install_mac_1: 'En la barra de menús de Safari, abre «Archivo»', install_mac_2: 'Elige «Añadir al Dock»', install_desktop_1: 'Abre el sitio en Chrome o Edge y haz clic en el icono de instalar a la derecha de la barra de direcciones (o en el menú ⋮)',
         install_desktop_2: 'Elige «Instalar Hanabiの小天地»',
+        install_inapp: 'Abriste el sitio dentro de {app}, que no puede instalarlo. Ábrelo primero en tu navegador:', install_open_browser: 'Abrir en el navegador', install_inapp_ios: 'Toca «⋯» o el botón Compartir en una esquina, elige «Abrir en Safari» e instálala desde allí',
         // "we moved" notice for the old netlify app (js/widgets.js)
         moved_title: '¡Nos mudamos!', moved_text: 'Nuestra nueva dirección es hanabirn.xyz. Si antes añadiste el sitio a tu pantalla de inicio, esa es la app antigua: bórrala e instálala de nuevo desde aquí para que funcionen las novedades y el asistente de IA 小花火.', moved_note: 'Lo sentimos: el progreso de la app antigua no se puede pasar automáticamente.', moved_reinstall: 'Volver a instalar la app',
         moved_ok: 'Entendido',
