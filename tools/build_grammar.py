@@ -16,7 +16,8 @@ alts: other right orders as index lists, e.g. [[1, 0, 2, 3]]}) — the
 build adds q (before ＿＿ ＿＿ ★ ＿＿ after), options (= parts) and answer (= star), so
 the Discord bot and the why-explanations treat it as a 4-option question. How the page
 asks it is the level's "order_style": "arrange" (put all four in order; N5–N4, owner's
-pick) or "star" (the default: pick the ★ part, like the JLPT). Japanese quiz texts may
+pick) or "star" (the default: pick the ★ part, like the JLPT); a question's own "style"
+overrides it (Korean 3급 and up ask one of each per point, owner's pick 2026-10-17). Japanese quiz texts may
 carry furigana as 漢字{かな} (as in tools/reading/): the build keeps the plain text in
 q / options / before / after / parts and the segments in q_furi / options_furi /
 before_furi / after_furi / parts_furi ([[text, reading or ""], …]).
@@ -80,6 +81,8 @@ def prepare_quiz(data, problems, name):
                 for alt in q.get('alts', []):
                     if sorted(alt) != [0, 1, 2, 3] or alt[q.get('star', 0)] != q.get('star'):
                         problems.append(f'{where}: alts must be orders of 0–3 keeping the ★ part in place: {alt}')
+                if q.get('style') not in (None, 'star', 'arrange'):
+                    problems.append(f'{where}: style is "star" or "arrange"')
                 for k in ('before', 'after'):
                     q.setdefault(k, '')
                 if ja:

@@ -5,7 +5,8 @@
    common mistakes (✗ wrong / ✓ right / why), examples with audio, then a few
    questions — the easy ones first, then the hard ones (q.hard, tagged 進階; 2026-10-16),
    each a fill-in or a sentence to put in order (q.type 'order': picking the ★ part, or
-   arranging all four parts when the level's order_style is 'arrange'); Japanese texts may
+   arranging all four parts when the question's style, else the level's order_style, is
+   'arrange'); Japanese texts may
    carry furigana segments (q_furi …, see tools/build_grammar.py). Getting GRAMMAR_PASS of
    them right marks it learned. Content texts come as { zh, 'zh-Hans', en }: other UI languages read
    the English. Progress: localStorage grammar_progress = { "<set>:<point>": { best, of, at } }
@@ -406,7 +407,8 @@ function grammarStartQuiz() {
     grammarQuiz = {
         items: qs.map(q => {
             const order = grammarShuffle(q.options.map((_, i) => i));
-            const arrange = q.type === 'order' && set.order_style === 'arrange';
+            // a question's own style wins over the level's (Korean 3급+ ask both kinds)
+            const arrange = q.type === 'order' && (q.style || set.order_style) === 'arrange';
             return { q, order, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer), arrange, built: [] };
         }),
         i: 0, right: 0, picked: -1
