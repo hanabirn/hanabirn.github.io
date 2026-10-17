@@ -108,13 +108,22 @@ GEMINI_TTS_MODELS = ['gemini-3.8-flash-tts', 'gemini-3.1-flash-tts-preview', 'ge
 GEMINI_MODEL_LANGS = {'gemini-3.8-flash-lite-tts': {'zh-TW'}}
 # Mainland Mandarin: 3.1 first — it made most of the Mainland 閱讀 recordings (one voice
 # throughout), 3.8 often misreads the length in zh-CN, and 3.1 has no noise before the voice
-GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-tts']}
+GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-tts'],
+                     # Japanese 閱讀 (2026-10-16): Aoede, picked by the owner over the Google voice
+                     'ja': ['gemini-3.8-flash-tts', 'gemini-3.1-flash-tts-preview']}
+# Japanese with Gemini only for the 閱讀 levels listed here (tier 0); everything else in
+# Japanese — words, grammar examples, the other reading levels — stays with Google, and
+# Gemini is given the sentence as written (kanji and all, GEMINI_SAY), not the kana
+GEMINI_JA_READING = {'ja_n4'}
+GEMINI_SAY = {}        # (lang, file id) -> the text Gemini reads, when it isn't files[fid]
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
     'zh-TW': ('Aoede', 'Read the following Chinese text aloud in a natural, warm Taiwanese Mandarin '
                        'accent (台灣華語), at a calm, clear pace. Say only the text:\n'),
     'zh-CN': ('Kore', 'Read the following Chinese text aloud in natural, standard Mainland Mandarin '
                       '(普通话), at a calm, clear pace. Say only the text:\n'),
+    'ja': ('Aoede', 'Read the following Japanese text aloud in natural, standard Tokyo Japanese, '
+                    'like a calm audiobook narrator, at a clear pace for learners. Say only the text:\n'),
 }
 GEMINI_RPM = 8
 GEMINI_SR = 24000
@@ -248,10 +257,13 @@ def jobs(lang):
         # 閱讀 page (data/reading/ja_*.json): every sentence keyed "plain|kana" and spoken
         # from the kana (tools/build_reading.py makes both), and the glossary words
         for f in sorted((ROOT / 'data' / 'reading').glob('ja_*.json')):
+            gem = f.stem in GEMINI_JA_READING
             for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
                 for para in p['paragraphs']:
                     for sent in para['s']:
-                        add(sent['plain'] + '|' + sent['kana'], sent['kana'])
+                        fid = add(sent['plain'] + '|' + sent['kana'], sent['kana'], 0 if gem else 2)
+                        if gem:
+                            GEMINI_SAY[('ja', fid)] = sent['plain']
                 for g in p['glossary']:
                     if HAS_KANJI.search(g['w']) and g['r']:
                         fid = add(g['w'] + '|' + g['r'], g['r'])
@@ -654,7 +666,8 @@ def fix_clicks(langs):
 
 
 def spoken_chars(text):
-    return max(1, len(re.findall(r'[\u3400-\u9fff\uf900-\ufaffA-Za-z0-9]', text)))
+    # kanji, letters, digits — and kana, for Japanese
+    return max(1, len(re.findall(r'[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaffA-Za-z0-9]', text)))
 
 
 def gemini_length_ok(text, clip):
@@ -681,7 +694,8 @@ def run_gemini(lang, files, aliases, top, limit):
     # words), so each day leaves whole passages done rather than scattered lines
     seq = {fid: i for i, fid in enumerate(files)}
     todo = sorted((tiers.get(fid, 2), seq[fid], fid) for fid in files
-                  if fid not in made and (tiers.get(fid, 2) <= top or not (d / f'{fid}.mp3').exists()))
+                  if fid not in made and (tiers.get(fid, 2) <= top
+                                          or (lang != 'ja' and not (d / f'{fid}.mp3').exists())))
     todo = [(t, fid) for t, _, fid in todo]
     if limit is not None:
         todo = todo[:limit]
@@ -718,7 +732,7 @@ def run_gemini(lang, files, aliases, top, limit):
 
     try:
         for tier, fid in todo:
-            text = files[fid]
+            text = GEMINI_SAY.get((lang, fid), files[fid])
             clip = None
             # a lone word is the likeliest to come out with the instruction read too
             # (about 1 in 3), so words get more tries, alternating 「word」 / word。
@@ -796,7 +810,7 @@ def main():
     ap.add_argument('--audition', action='store_true', help='render a few words with every good voice')
     ap.add_argument('--workers', type=int, default=WORKERS, help='requests in parallel')
     ap.add_argument('--rpm', type=int, default=None, help='requests per minute')
-    ap.add_argument('--gemini', action='store_true', help='(re-)render Chinese with Gemini TTS (zh-TW / zh-CN)')
+    ap.add_argument('--gemini', action='store_true', help='(re-)render Chinese with Gemini TTS (zh-TW / zh-CN), and the Japanese 閱讀 levels in GEMINI_JA_READING')
     ap.add_argument('--gemini-all', action='store_true', help='with --gemini: also the words, alphabet and samples')
     ap.add_argument('--fix-clicks', action='store_true',
                     help='cut the end click from the Gemini files already made (no requests)')
@@ -814,13 +828,14 @@ def main():
     if args.gemini:
         # the 閱讀 page in both accents first, then the 文法 examples (and with
         # --gemini-all the rest); a spent daily quota ends the run
-        todo = [l for l in ('zh-TW', 'zh-CN') if l in langs]
+        todo = [l for l in ('zh-TW', 'zh-CN', 'ja') if l in langs]
         made = {l: jobs(l) for l in todo}
         for top in (0, 2 if args.gemini_all else 1):
             for lang in todo:
                 # 'quota' = no model left for this language; another language
-                # may still have one (the lite model is zh-TW only)
-                run_gemini(lang, *made[lang], top, args.limit)
+                # may still have one (the lite model is zh-TW only). Japanese: only the
+                # 閱讀 levels in GEMINI_JA_READING (tier 0), never the words
+                run_gemini(lang, *made[lang], 0 if lang == 'ja' else top, args.limit)
                 if all(m in GEMINI_SPENT for m in GEMINI_TTS_MODELS):
                     return
         return
