@@ -20,7 +20,7 @@
 const READING_PASS = 2 / 3;
 const READING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
 // the word set a level's glossary words are filed under (mistake book, spaced repetition)
-const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ko_topik1: 'topik_1', zh_hsk12: 'hsk_1', en_a1: 'en_jh' };
+const READING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ja_n3: 'jlpt_n3', ja_n2: 'jlpt_n2', ja_n1: 'jlpt_n1', ko_topik1: 'topik_1', zh_hsk12: 'hsk_1', en_a1: 'en_jh' };
 const READING_ZH_RD = ['pinyin', 'zhuyin', 'both', 'off'];   // readings above Chinese characters
 const READING_FONTS = [0.95, 1.1, 1.25, 1.45];     // rem, the reader's A− / A+
 // a passage's length is counted in characters here, in words elsewhere (tools/build_reading.py)

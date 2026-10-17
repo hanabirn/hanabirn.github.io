@@ -32,6 +32,9 @@ RUBY = re.compile(r'(' + KANJI + r'+)\{([^{}]+)\}')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 # word lists a level's glossary is checked against (that level and the easier ones)
 LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jlpt_n4', 'tp_ja_'],
+              ('ja', 'N3'): ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'tp_ja_'],
+              ('ja', 'N2'): ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'tp_ja_'],
+              ('ja', 'N1'): ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1', 'tp_ja_'],
               ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_'], ('zh', 'HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_'],
               ('fr', 'A1'): ['fr_a1', 'tp_fr_'], ('ru', 'A1'): ['ru_a1', 'tp_ru_'],
               ('es', 'A1'): ['es_a1', 'tp_es_'], ('de', 'A1'): ['de_a1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_']}
