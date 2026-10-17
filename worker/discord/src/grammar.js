@@ -22,7 +22,7 @@
    language, which reads the English. q.why = one line per option (tools/grammar_why.py). */
 
 import { studyName, rng, shuffle, newSeed } from './sets.js';
-import { t, isUiLang } from './i18n.js';
+import { t, siteT, isUiLang } from './i18n.js';
 import { toSimplified } from './zhconv.js';
 import { COLOR, SITE_URL, button, linkButton, row, cut } from './ui.js';
 
@@ -39,7 +39,13 @@ async function fetchJson(env, path) {
 /* [{id, lang, level, count, name: "日文 N5"}] in the site's order */
 export async function grammarLevels(env, ui) {
     const index = await fetchJson(env, 'index.json');
-    return (index || []).map(l => ({ ...l, name: `${studyName(ui, l.lang)} ${l.level}` }));
+    return (index || []).map(l => ({ ...l, name: `${studyName(ui, l.lang)} ${levelName(ui, l.level)}` }));
+}
+
+/* Korean "1급" … "6급" as the site shows them ("1 級", "Level 1" …) */
+function levelName(ui, level) {
+    const m = /^(\d)급$/.exec(level || '');
+    return m ? siteT(ui, 'learn_level_n').replace('{n}', m[1]) : level;
 }
 
 /* autocomplete for the level option: the chosen language's levels */

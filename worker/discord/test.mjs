@@ -131,7 +131,7 @@ try {
     show('a set the site does not have yet', r.edited);
 
     // grammar study: a point's questions (3, or 6 with the hard ones), then the next point; the place is kept
-    for (const level of ['ja_n5', 'zh_hsk3', 'fr_a2', 'ko_topik1', 'ru_a1']) {
+    for (const level of ['ja_n5', 'zh_hsk3', 'fr_a2', 'ko_1', 'ru_a1']) {
         const lang = level.slice(0, 2);
         r = await sub('grammar', 'study', { language: lang, level }, STUDENT);
         show('grammar study ' + level, r.edited);
@@ -154,7 +154,7 @@ try {
     show('grammar study again', r.edited);
     check(/第 2 \/ \d+ 個/.test(r.edited.embeds[0].title) && /上次/.test(r.edited.embeds[0].description), 'study picks up at point 2 of ja_n5');
     // grammar quiz: 5 questions, then the missed ones explained
-    r = await sub('grammar', 'quiz', { language: 'ko', level: 'ko_topik1', count: 5 }, '902');
+    r = await sub('grammar', 'quiz', { language: 'ko', level: 'ko_1', count: 5 }, '902');
     show('grammar quiz', r.edited);
     for (let i = 0; i < 5; i++) {
         const ta = buttons(r.edited).filter(b => b.custom_id?.startsWith('ta:'));

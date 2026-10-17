@@ -20,7 +20,7 @@ FILES = {"zh": "zh", "zhs": "zh-Hans", "en": "en", "ja": "ja", "ko": "ko", "ru":
 KEYS = ([f"dict_lang_{l}" for l in ("ja", "ko", "en", "zh", "fr", "ru", "es", "de")]
         + [f"topic_{t}" for t in ("greetings", "food", "home", "shopping", "transport", "travel", "weather", "school", "work", "health")]
         + [f"quiz_en_{s}" for s in ("jh", "sh", "toeic", "toefl")]
-        + [f"quiz_jlpt_n{n}" for n in range(1, 6)] + [f"quiz_topik_{n}" for n in range(1, 5)] + [f"quiz_hsk_{n}" for n in range(1, 8)])
+        + [f"quiz_jlpt_n{n}" for n in range(1, 6)] + [f"quiz_topik_{n}" for n in range(1, 5)] + [f"quiz_hsk_{n}" for n in range(1, 8)] + ["learn_level_n"])
 
 
 def site_strings():

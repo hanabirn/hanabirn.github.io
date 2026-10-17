@@ -87,7 +87,7 @@ const SYNC_KEYS = {
             const q = o[k];
             if (!q || (p && p.best / (p.of || 1) > q.best / (q.of || 1))) o[k] = p;
         });
-        return o;
+        return typeof grammarMoveKo === 'function' ? grammarMoveKo(o) : o;   // old Korean level ids
     } },
     // listening sets: the better score of each (js/listening.js)
     listening_progress: { empty: {}, merge: (a, b) => {

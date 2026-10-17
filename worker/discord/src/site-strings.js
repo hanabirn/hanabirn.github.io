@@ -38,7 +38,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "{n} 級"
  },
  "zhs": {
   "dict_lang_ja": "日语",
@@ -78,7 +79,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "{n} 级"
  },
  "en": {
   "dict_lang_ja": "Japanese",
@@ -118,7 +120,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "Level {n}"
  },
  "ja": {
   "dict_lang_ja": "日本語",
@@ -158,7 +161,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "{n}級"
  },
  "ko": {
   "dict_lang_ja": "일본어",
@@ -198,7 +202,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "{n}급"
  },
  "ru": {
   "dict_lang_ja": "Японский",
@@ -238,7 +243,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "Уровень {n}"
  },
  "fr": {
   "dict_lang_ja": "Japonais",
@@ -278,7 +284,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "Niveau {n}"
  },
  "es": {
   "dict_lang_ja": "Japonés",
@@ -318,7 +325,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "Nivel {n}"
  },
  "de": {
   "dict_lang_ja": "Japanisch",
@@ -358,6 +366,7 @@ export const SITE_STRINGS = {
   "quiz_hsk_4": "HSK 4",
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
-  "quiz_hsk_7": "HSK 7–9"
+  "quiz_hsk_7": "HSK 7–9",
+  "learn_level_n": "Stufe {n}"
  }
 };

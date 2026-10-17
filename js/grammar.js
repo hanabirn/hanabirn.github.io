@@ -63,12 +63,12 @@ function learnPickerHtml(index, curId, pick, done) {
             if (!lv.length) {
                 return `<button type="button" class="learn-menu-item soon" disabled>${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(t('learn_soon'))}</small></span></button>`;
             }
-            return `<button type="button" class="learn-menu-item${l === cur.lang ? ' on' : ''}" onclick="${pick}('${lv[0].id}')">${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(lv.map(s => s.level).join(sep))}</small></span></button>`;
+            return `<button type="button" class="learn-menu-item${l === cur.lang ? ' on' : ''}" onclick="${pick}('${lv[0].id}')">${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(lv.map(s => learnLevelName(s.level)).join(sep))}</small></span></button>`;
         }).join('')}</div>`).join('');
     const chips = levelsOf(cur.lang).map(s => {
         const n = done(s.id), m = s.count || 0;
         return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
-            ${escHtml(s.level)}<span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small>
+            ${escHtml(learnLevelName(s.level))}<span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small>
         </button>`;
     }).join('');
     return `<div class="learn-picker">
@@ -107,6 +107,50 @@ function learnDoneCount(prog, levelId, pass) {
 
 function grammarProgress() {
     try { return JSON.parse(localStorage.getItem('grammar_progress')) || {}; } catch { return {}; }
+}
+
+/* 2026-10-16: Korean went from "TOPIK I" / "TOPIK II" (ko_topik1 / ko_topik2) to the
+   standard curriculum's levels 1급–4급 (ko_1 … ko_4). Progress kept under the old ids is
+   moved to the point's new level, keeping the better score; account.js runs this on the
+   synced copy too, so the cloud loses the old keys. Points not listed were ko_topik1's → 1급. */
+const GRAMMAR_KO_MOVED = {
+    2: 'aseo-seq aseo-reason eumyeon adj-mod neun-mod eun-past-mod eul-ttae aya-hada eunikka gi-jeone eun-hue ado-doeda eumyeon-andoeda neunde eumyeonseo geona neun-dongan euryeogo geot-gatda gunyo a-itda ge-doeda a-jida eun-jeok giro-hada eul-jul-alda ge-adverb eun-ji gi-ttaemune',
+    3: 'daga atdaga jamaja dorok gi-wihaeseo euryeomyeon neurago a-boida na-boda eul-jido-moreuda eul-tende dago-hada indirect-others daeyo deon deoragoyo janayo geodeunyo eulgeoryo a-beorida a-nota eul-ppeonhada ji-aneumyeon-an-doeda eul-manhada gineun-hada neun-pyeonida a-yagetda passive ado daesine e-bihae ppunman-anira e-ttara',
+    4: 'eun-gime neun-barame deokbune-tase neun-moyangida eul-subakke-eopda causative eulsurok deorado eun-dedaga jocha neun-daero',
+};
+
+function grammarMoveKo(prog) {
+    const old = Object.keys(prog || {}).filter(k => k.startsWith('ko_topik'));
+    if (!old.length) return prog;
+    const level = {};
+    Object.entries(GRAMMAR_KO_MOVED).forEach(([n, ids]) => ids.split(' ').forEach(id => { level[id] = n; }));
+    const rate = p => (p && p.of ? p.best / p.of : -1);
+    old.forEach(k => {
+        const pid = k.slice(k.indexOf(':') + 1);
+        const nk = 'ko_' + (level[pid] || 1) + ':' + pid;
+        if (rate(prog[k]) > rate(prog[nk])) prog[nk] = prog[k];
+        delete prog[k];
+    });
+    return prog;
+}
+
+(function grammarMigrateKo() {
+    try {
+        const raw = localStorage.getItem('grammar_progress');
+        if (raw && raw.includes('ko_topik')) {
+            const prog = JSON.stringify(grammarMoveKo(JSON.parse(raw)));
+            if (typeof storeSet === 'function') storeSet('grammar_progress', prog);
+            else localStorage.setItem('grammar_progress', prog);
+        }
+        const set = localStorage.getItem('grammar_set');
+        if (set === 'ko_topik1' || set === 'ko_topik2') localStorage.setItem('grammar_set', set === 'ko_topik1' ? 'ko_1' : 'ko_3');
+    } catch {}
+})();
+
+/* a level's name on the chips: Korean "1급" … "6급" in the visitor's language */
+function learnLevelName(level) {
+    const m = /^(\d)급$/.exec(level || '');
+    return m ? t('learn_level_n', { n: m[1] }) : level;
 }
 
 function grammarLearned(setId, pointId) {
