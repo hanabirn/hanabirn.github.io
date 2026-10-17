@@ -116,57 +116,117 @@ function renderHome() {
     document.getElementById('home-streak-n').textContent = streak;
     document.getElementById('home-streak').classList.toggle('cold', streak === 0);
 
-    // daily goal ring + week
+    // 今天: the ring, the steps and one button to the first one not done
     const ring = document.getElementById('home-ring');
     ring.style.setProperty('--p', Math.min(100, Math.round(today / goal * 100)));
     ring.classList.toggle('done', left === 0);
     document.getElementById('home-goal-done').textContent = today;
     document.getElementById('home-goal-total').textContent = '/' + goal;
-    document.getElementById('home-goal-left').textContent =
-        left === 0 ? t('home_goal_done') : t('home_goal_left', { n: left });
     document.getElementById('home-week').innerHTML = homeWeekHtml();
-
-    // continue button
-    const last = localStorage.getItem('last_quiz_set');
+    const steps = homeTodaySteps(goal, today);
+    const open = steps.filter(x => !x.done);
+    document.getElementById('home-today-left').textContent =
+        open.length ? t('home_today_left', { n: open.length }) : t('home_today_done');
+    document.getElementById('home-steps').innerHTML = steps.map((x, i) => `
+        <li class="home-step${x.done ? ' done' : x === open[0] ? ' next' : ''}">
+            <span class="home-step-ck" aria-hidden="true">${x.done ? '✓' : i + 1}</span>
+            <span class="home-step-text">${escHtml(x.title)}${x.sub ? `<small>${escHtml(x.sub)}</small>` : ''}</span>
+        </li>`).join('');
     const cont = document.getElementById('home-continue');
-    cont.textContent = QUIZ_LANG_ORDER.includes(last)
-        ? '▶ ' + t('home_continue', { name: wordSetName(last) })
-        : '▶ ' + t('home_start');
+    homeNextStep = open[0] || null;
+    const last = localStorage.getItem('last_quiz_set');
+    cont.textContent = '▶ ' + (homeNextStep ? homeNextStep.title
+        : QUIZ_LANG_ORDER.includes(last) ? t('home_more', { name: wordSetName(last) }) : t('home_start'));
 
-    // spaced review
-    const due = homeSrsDueCount();
-    document.getElementById('home-srs-count').textContent = due > 0 ? t('home_srs_count', { n: due }) : t('home_srs_none');
-    document.getElementById('home-srs-hint').style.display = due > 0 ? '' : 'none';
-    document.getElementById('home-srs-card').classList.toggle('quiet', due === 0);
-
-    // mistakes
-    const mistakes = getActiveMistakes().length;   // repaired ones don't count
-    document.getElementById('home-mistakes-count').textContent =
-        mistakes > 0 ? t('home_mistakes_count', { n: mistakes }) : t('home_mistakes_none');
-    document.getElementById('home-mistakes-card').classList.toggle('quiet', mistakes === 0);
-
-    // recent practice
+    // 繼續上次的: recent word sets, then where the 學習 pages were left in the learning language
     const recent = homeRecentSets();
     const recentEl = document.getElementById('home-recent');
-    if (recent.length === 0) {
-        recentEl.innerHTML = `<p class="home-empty">${escHtml(t('home_recent_empty'))}</p>`;
-    } else {
+    const sets = recent.map(r => {
         /* path progress when the set's word count is known (cached), else the last score */
-        recentEl.innerHTML = recent.map(r => {
-            const path = pathSummary(r.lang);
-            const fill = path ? Math.round(path.done / path.levels * 100) : r.pct;
-            const note = path ? t('home_path_progress', { n: path.done, m: path.levels })
-                : typeof r.pct === 'number' ? r.pct + '%' : '';
-            return `
-            <button class="lang-btn home-course" onclick="homeOpenSet('${r.lang}')">
-                <span class="home-course-badge">${homeSetBadge(r.lang)}</span>
-                <span class="home-course-name">${escHtml(wordSetName(r.lang))}</span>
+        const path = pathSummary(r.lang);
+        const fill = path ? Math.round(path.done / path.levels * 100) : r.pct;
+        const note = path ? t('home_path_progress', { n: path.done, m: path.levels })
+            : typeof r.pct === 'number' ? r.pct + '%' : '';
+        return homeCourseHtml(`homeOpenSet('${r.lang}')`, homeSetBadge(r.lang), wordSetName(r.lang), fill, note);
+    });
+    recentEl.innerHTML = sets.concat(homeLearnChips()).join('') || `<p class="home-empty">${escHtml(t('home_recent_empty'))}</p>`;
+    document.getElementById('home-beginner').hidden = everPractised;
+}
+
+function homeCourseHtml(onclick, badge, name, fill, note) {
+    return `
+            <button class="lang-btn home-course" onclick="${onclick}">
+                <span class="home-course-badge">${badge}</span>
+                <span class="home-course-name">${escHtml(name)}</span>
                 ${typeof fill === 'number' ? `
                 <span class="home-course-bar"><i style="width:${Math.max(0, Math.min(100, fill))}%"></i></span>` : ''}
                 ${note ? `<small>${escHtml(note)}</small>` : ''}
             </button>`;
-        }).join('');
+}
+
+/* ----- 今天 (proposal B, 2026-10-17) -----
+   In order: the cards due now (a batch of SRS_REVIEW_LIMIT), the daily goal, and the
+   open mistakes when there are any. A step is done when nothing is left of it; the
+   button goes to the first one that isn't. */
+let homeNextStep = null;
+
+function homeTodaySteps(goal, today) {
+    const steps = [];
+    const due = homeSrsDueCount();
+    if (Object.keys(getSrsQuizCards()).length > 0) {
+        const k = Math.min(due, SRS_REVIEW_LIMIT);
+        steps.push(due > 0
+            ? { title: t('home_step_review', { n: k }), sub: due > k ? t('home_step_review_sub', { n: due }) : '', go: homeOpenSrs }
+            : { title: t('home_step_review_done'), done: true });
     }
+    const last = localStorage.getItem('last_quiz_set');
+    const left = Math.max(goal - today, 0);
+    steps.push(left > 0
+        ? { title: t('home_step_goal', { n: goal }), sub: t('home_step_goal_sub', { n: left }) + (QUIZ_LANG_ORDER.includes(last) ? ' · ' + wordSetName(last) : ''), go: homeContinue }
+        : { title: t('home_step_goal_done'), done: true });
+    const mistakes = getActiveMistakes().length;   // repaired ones don't count
+    if (mistakes > 0) steps.push({ title: t('home_step_mistakes'), sub: t('home_step_mistakes_sub', { n: mistakes }), go: homeOpenMistakes });
+    return steps;
+}
+
+function homeTodayGo() {
+    if (homeNextStep && homeNextStep.go) homeNextStep.go();
+    else homeContinue();
+}
+
+/* Where the 文法 / 閱讀 / 聽解 pages were left in the learning language: the level used
+   last there (learn_last_levels) with how much of it is done. The pages' index files
+   are small; the first render fetches the ones not loaded yet and draws again. */
+const HOME_LEARN_PAGES = [
+    { page: 'grammar', name: 'nav_grammar', badge: '文', url: 'data/grammar/index.json',
+      index: () => grammarIndex, set: v => { grammarIndex = v; }, prog: () => grammarProgress(), pass: () => GRAMMAR_PASS },
+    { page: 'reading', name: 'nav_reading', badge: '讀', url: 'data/reading/index.json',
+      index: () => readingIndex, set: v => { readingIndex = v; }, prog: () => readingProgress(), pass: () => READING_PASS },
+    { page: 'listening', name: 'nav_listening', badge: '聽', url: 'data/listening/index.json',
+      index: () => listeningIndex, set: v => { listeningIndex = v; }, prog: () => listeningProgress(), pass: () => LISTENING_PASS },
+];
+let homeLearnFetching = false;
+
+function homeLearnChips() {
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    if (!lang) return [];
+    const last = learnLastLevels();
+    const used = HOME_LEARN_PAGES.filter(p => last[p.page + ':' + lang]);   // pages opened in this language
+    const missing = used.filter(p => !p.index());
+    if (missing.length && !homeLearnFetching) {
+        homeLearnFetching = true;
+        Promise.all(missing.map(p => fetch(p.url).then(r => r.json()).then(v => { if (!p.index()) p.set(v); }).catch(() => {})))
+            .then(() => { homeLearnFetching = false; renderHome(); });
+    }
+    return used.map(p => {
+        const index = p.index();
+        const set = index && index.find(s => s.id === last[p.page + ':' + lang]);
+        if (!set) return '';
+        const n = learnDoneCount(p.prog(), set.id, p.pass()), m = set.count || 0;
+        return homeCourseHtml(`switchPage('${p.page}', null)`, p.badge, t(p.name) + ' ' + learnLevelName(set.level),
+            m ? Math.round(n / m * 100) : null, m ? n + ' / ' + m : '');
+    });
+
 }
 
 /* ----- navigation out of the dashboard ----- */
@@ -206,14 +266,6 @@ function homeOpenSrs() {
 function homeOpenMistakes() {
     homeResetQuizPage();
     showMistakeBook();
-}
-
-/* The exam shortcuts: that language's 檢定等級 tab on the 單字 page, the language
-   becoming the one being learnt (js/learnlang.js). */
-function homeOpenExam(kind) {
-    const lang = { jlpt: 'ja', topik: 'ko', hsk: 'zh', english: 'en' }[kind];
-    if (lang) setLearnLang(lang);
-    openWords('levels');
 }
 
 document.addEventListener('DOMContentLoaded', renderHome);

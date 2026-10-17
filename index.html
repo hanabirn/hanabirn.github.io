@@ -174,34 +174,19 @@
                 <div class="home-streak" id="home-streak" data-i18n-title="home_streak_title" title="連續學習天數"><span aria-hidden="true">🔥</span><b id="home-streak-n">0</b></div>
             </section>
 
-            <section class="home-card home-goal">
-                <button class="home-ring" id="home-ring" style="--p:0" onclick="cycleDailyGoal()" data-i18n-title="home_goal_change" title="點一下更改每日目標"><span><b id="home-goal-done">0</b><small id="home-goal-total">/20</small></span></button>
-                <div class="home-goal-text">
-                    <div class="home-label" data-i18n="home_goal_label">今日目標</div>
-                    <div class="home-big" id="home-goal-left"></div>
-                    <div class="home-week" id="home-week"></div>
+            <!-- 今天 (proposal B): today's steps in order and one button to the next one (js/home.js) -->
+            <section class="home-card home-today" id="home-today">
+                <div class="home-today-head">
+                    <button class="home-ring" id="home-ring" style="--p:0" onclick="cycleDailyGoal()" data-i18n-title="home_goal_change" title="點一下更改每日目標"><span><b id="home-goal-done">0</b><small id="home-goal-total">/20</small></span></button>
+                    <div class="home-goal-text">
+                        <div class="home-label" data-i18n="home_today">今天</div>
+                        <div class="home-big" id="home-today-left"></div>
+                        <div class="home-week" id="home-week"></div>
+                    </div>
                 </div>
+                <ol class="home-steps" id="home-steps"></ol>
+                <button class="next-btn home-continue" id="home-continue" onclick="homeTodayGo()"></button>
             </section>
-
-            <button class="next-btn home-continue" id="home-continue" onclick="homeContinue()"></button>
-
-            <div class="home-row">
-                <section class="home-card home-review" id="home-srs-card">
-                    <div class="home-review-text">
-                        <div class="home-label" data-i18n="home_srs_title">間隔複習</div>
-                        <div class="home-big" id="home-srs-count"></div>
-                        <div class="home-muted" id="home-srs-hint" data-i18n="home_srs_hint">記憶快淡掉了，現在複習最划算</div>
-                    </div>
-                    <button class="back-btn home-review-btn" onclick="homeOpenSrs()" data-i18n="home_review_btn">複習</button>
-                </section>
-                <section class="home-card home-review" id="home-mistakes-card">
-                    <div class="home-review-text">
-                        <div class="home-label" data-i18n="home_mistakes_title">錯題本</div>
-                        <div class="home-big" id="home-mistakes-count"></div>
-                    </div>
-                    <button class="back-btn home-review-btn" onclick="homeOpenMistakes()" data-i18n="home_mistakes_btn">查看</button>
-                </section>
-            </div>
 
             <section class="home-card home-account" id="home-account-card">
                 <span class="home-account-icon" aria-hidden="true">☁️</span>
@@ -212,20 +197,15 @@
                 <button class="back-btn home-review-btn" onclick="openAccount()" data-i18n="acct_signin">登入</button>
             </section>
 
-            <h3 class="home-section-title" data-i18n="home_recent">最近練習</h3>
+            <h3 class="home-section-title" data-i18n="home_continue_title">繼續上次的</h3>
             <div class="home-courses" id="home-recent"></div>
 
+            <div id="home-beginner">
             <h3 class="home-section-title" data-i18n="home_beginner">剛開始學？</h3>
             <div class="home-courses">
                 <button class="lang-btn home-course" onclick="switchPage('alphabet', null)"><span class="home-course-badge">Aa</span><span class="home-course-name" data-i18n="home_alphabet_btn">字母表：從發音開始</span></button>
             </div>
 
-            <h3 class="home-section-title" data-i18n="home_exams">檢定考試</h3>
-            <div class="home-courses">
-                <button class="lang-btn home-course" onclick="homeOpenExam('jlpt')"><span class="home-course-badge">日</span><span class="home-course-name" data-i18n="examquiz_jlpt">JLPT（日文檢定）</span></button>
-                <button class="lang-btn home-course" onclick="homeOpenExam('topik')"><span class="home-course-badge">韓</span><span class="home-course-name" data-i18n="examquiz_topik">TOPIK（韓文檢定）</span></button>
-                <button class="lang-btn home-course" onclick="homeOpenExam('hsk')"><span class="home-course-badge">中</span><span class="home-course-name" data-i18n="examquiz_hsk">HSK（中文檢定）</span></button>
-                <button class="lang-btn home-course" onclick="homeOpenExam('english')"><span class="home-course-badge">En</span><span class="home-course-name" data-i18n="examquiz_english">英文檢定（多益／托福）</span></button>
             </div>
         </div>
 

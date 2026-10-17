@@ -74,6 +74,7 @@ async function listeningLoad() {
     // the level in the header's learning language (js/learnlang.js); '' = nothing in it yet
     const want = learnSetId(listeningIndex, listeningLevelId || listeningPref('listening_level', ''), 'listening');
     if (want !== listeningLevelId) { listeningLevelId = want; listeningView = 'list'; listeningSession = null; }
+    learnRememberLevel('listening', listeningIndex.find(s => s.id === want));   // the home page's 繼續上次的
     if (listeningLevelId && !listeningLevels[listeningLevelId]) {
         try { listeningLevels[listeningLevelId] = await fetch('data/listening/' + listeningLevelId + '.json').then(r => r.json()); }
         catch { return false; }

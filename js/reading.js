@@ -65,6 +65,7 @@ async function readingLoad() {
         if (readingView === 'read') readingStopTimer();
         readingSetId = want; readingView = 'list'; readingNo = 0;
     }
+    learnRememberLevel('reading', readingIndex.find(s => s.id === want));   // the home page's 繼續上次的
     if (readingSetId && !readingSets[readingSetId]) {
         try { readingSets[readingSetId] = await fetch('data/reading/' + readingSetId + '.json').then(r => r.json()); }
         catch { return false; }

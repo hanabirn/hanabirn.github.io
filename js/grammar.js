@@ -149,6 +149,7 @@ async function grammarLoad() {
     if (!grammarSetId) try { saved = localStorage.getItem('grammar_set') || ''; } catch {}
     const want = learnSetId(grammarIndex, grammarSetId || saved, 'grammar');
     if (want !== grammarSetId) { grammarSetId = want; grammarView = 'list'; grammarPoint = 0; grammarPage = 0; }
+    learnRememberLevel('grammar', grammarIndex.find(s => s.id === want));   // the home page's 繼續上次的
     if (grammarSetId && !grammarSets[grammarSetId]) {
         try {
             grammarSets[grammarSetId] = await fetch('data/grammar/' + grammarSetId + '.json').then(r => r.json());

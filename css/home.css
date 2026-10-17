@@ -72,12 +72,51 @@
     filter: grayscale(1);
 }
 
-/* --- daily goal --- */
-.home-goal {
+/* --- 今天 (renderHome / homeTodaySteps): the goal ring, today's steps, one button --- */
+.home-card.home-today {
+    border: 2px solid var(--primary);
+}
+.home-today-head {
     display: flex;
     align-items: center;
     gap: 18px;
 }
+.home-steps {
+    list-style: none;
+    margin: 14px 0 0;
+    padding: 0;
+}
+.home-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 9px 0;
+    border-top: 1px dashed var(--line);
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+.home-step-ck {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 22px;
+    height: 22px;
+    margin-top: 1px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    font-size: 0.72rem;
+    font-weight: 800;
+    color: var(--text-secondary);
+}
+.home-step-text small {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-secondary);
+}
+.home-step.next { font-weight: 800; }
+.home-step.next .home-step-ck { border-color: var(--primary); color: var(--primary); }
+.home-step.done { color: var(--text-secondary); }
+.home-step.done .home-step-ck { border-color: var(--success); background: var(--success); color: var(--on-primary); }
 .home-ring {
     --p: 0;
     width: 92px;
@@ -152,22 +191,17 @@
     outline-color: var(--primary-edge);
 }
 
-/* --- continue --- */
+/* --- the 今天 card's button --- */
 .next-btn.home-continue {
     display: block;
     width: 100%;
-    margin: 0 0 18px;
+    margin: 10px 0 0;
     padding: 14px 16px;
     font-size: 1.05rem;
     text-align: center;
 }
 
 /* --- review / mistakes --- */
-.home-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0 14px;
-}
 .home-review {
     display: flex;
     flex-wrap: wrap;
@@ -255,12 +289,11 @@
 }
 
 @media (max-width: 560px) {
-    .home-row { grid-template-columns: 1fr; }
     /* 7 x 24px + 6 x 4px = 192px, fits next to the ring at 360px wide */
     .home-week { gap: 4px; }
     .home-week i { width: 24px; height: 24px; font-size: 0.68rem; }
     .home-mascot { width: 48px; }
-    .home-goal { gap: 14px; }
+    .home-today-head { gap: 14px; }
     .home-ring { width: 80px; height: 80px; }
     .home-ring > span { width: 64px; height: 64px; padding-top: 18px; }
     .home-ring b { font-size: 1.3rem; }
