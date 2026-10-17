@@ -204,6 +204,7 @@ body.rail-home .rail-home-only { display: block; }
 }
 .rail-head {
     display: flex;
+    flex-wrap: wrap;   /* a long title (Последние две недели) puts the count under it */
     align-items: baseline;
     justify-content: space-between;
     gap: 8px;
@@ -295,51 +296,6 @@ body.rail-home .rail-home-only { display: block; }
 .rail-day.some { background: var(--primary-soft); color: var(--text); }
 .rail-day.full { background: var(--primary); color: var(--on-primary); font-weight: 700; }
 .rail-day.today { outline: 2px solid var(--primary); outline-offset: 1px; }
-
-.rail-tasks {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-}
-.rail-task {
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
-    width: 100%;
-    padding: 6px 4px;
-    border: 0;
-    border-radius: 8px;
-    background: none;
-    color: var(--text);
-    font: inherit;
-    font-size: 0.82rem;
-    line-height: 1.45;
-    text-align: left;
-    cursor: pointer;
-}
-.rail-task:hover { background: var(--bg-option-hover); }
-.rail-check {
-    flex: none;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 18px;
-    height: 18px;
-    margin-top: 1px;
-    border-radius: 50%;
-    border: 2px solid var(--line);
-    font-size: 0.7rem;
-    font-weight: 700;
-}
-.rail-task.done { color: var(--text-secondary); }
-.rail-task.done .rail-check {
-    border-color: var(--success);
-    background: var(--success);
-    color: var(--on-primary);
-}
 
 @media (prefers-reduced-motion: reduce) {
     .poke-bubble.show, .poke-fx-item { animation: none; }

@@ -379,6 +379,9 @@ header h1 {
         text-overflow: ellipsis;
     }
     .subtitle { display: none; }
+    /* the name doesn't fit (headerFit() in js/widgets.js): show the short one */
+    .header-bar.brand-short h1 { font-size: 0; }
+    .header-bar.brand-short h1::after { content: "Hanabi"; font-size: 1.05rem; }
     .subtitle-controls { gap: 8px; }
     /* phones: the theme switch and the ☰ items live in the "More" sheet instead,
        keeping the title readable; the header keeps language + account */

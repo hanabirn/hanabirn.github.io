@@ -217,8 +217,13 @@ function headerFit() {
     const nav = bar && bar.querySelector('.main-nav');
     const controls = bar && bar.querySelector('.subtitle-controls');
     if (!brand || !nav || !controls) return;
-    bar.classList.remove('nav-below');
-    if (getComputedStyle(nav).display === 'none') return;   // phones
+    bar.classList.remove('nav-below', 'brand-short');
+    if (getComputedStyle(nav).display === 'none') {   // phones
+        // a site name too long for the bar ("Маленький мир Хан…") gives way to "Hanabi"
+        const h1 = brand.querySelector('h1');
+        if (h1 && h1.scrollWidth > h1.clientWidth + 1) bar.classList.add('brand-short');
+        return;
+    }
     const top = brand.offsetTop;
     if (nav.offsetTop > top + 8 || controls.offsetTop > top + 8) bar.classList.add('nav-below');
 }
@@ -232,6 +237,9 @@ function initNavMenus() {
         document.querySelectorAll('.header-bar .brand-text, .main-nav > *, .subtitle-controls > *').forEach(el => ro.observe(el));
     }
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(headerFit);
+    // the phone title is clipped, so its size never changes: watch its text (language switch)
+    const h1 = document.querySelector('.header-bar h1');
+    if (h1 && window.MutationObserver) new MutationObserver(headerFit).observe(h1, { childList: true, characterData: true, subtree: true });
     if (NAV_HOVER) {
         document.querySelectorAll('.nav-group').forEach(wrap => {
             let timer = 0;
@@ -317,8 +325,14 @@ function showInstallBanner() {
     if (moved && moved.classList.contains('show')) return;   // the moved notice already offers it
     try { if (localStorage.getItem('pwa_install_dismissed')) return; } catch {}
     const banner = document.getElementById('pwa-install-banner');
-    if (banner) banner.classList.add('show');
+    if (!banner) return;
+    banner.classList.add('show');
+    // it sits over the bottom of the page, so it folds away by itself after a while
+    // (only ✕ stops it for good; the ☰ / More "下載 App" stays there)
+    clearTimeout(showInstallBanner.timer);
+    showInstallBanner.timer = setTimeout(() => banner.classList.remove('show'), INSTALL_BANNER_MS);
 }
+const INSTALL_BANNER_MS = 12000;
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();

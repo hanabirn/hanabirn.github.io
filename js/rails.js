@@ -10,8 +10,8 @@
 
    Right: 每日一字, a word a day from the topic sets (tp_*) in the language the
    visitor studies (last_quiz_set, or picked on the card; rail_word_lang). On the
-   home page also the last two weeks of daily_activity and 今日任務 (daily goal,
-   due SRS cards, listening to the word of the day: rail_word_heard). */
+   home page also the last two weeks of daily_activity (今日任務 was dropped
+   2026-10-17: the home page's own goal and review cards already say the same). */
 
 const POKE_ANGRY_AT = 5;
 const POKE_WINDOW_MS = 2500;
@@ -343,10 +343,6 @@ function railSpeak() {
     if (!railWordNow) return;
     const v = railWordNow.view;
     speakText(v.speak, v.tts, v.kana ? { reading: v.kana } : undefined);
-    if (railLoad('rail_word_heard') !== railDayKey(new Date())) {
-        railStore('rail_word_heard', railDayKey(new Date()));
-        renderRailTasks();
-    }
 }
 
 function railOpenTopic() {
@@ -374,23 +370,6 @@ function renderRailCalendar() {
         <div class="rail-cal">${cells}</div>`;
 }
 
-function renderRailTasks() {
-    const box = document.getElementById('rail-tasks');
-    if (!box || railPage !== 'home') return;
-    const today = homeTodayCount();
-    const goal = getDailyGoal();
-    const due = srsQuizDueCount();
-    const tasks = [
-        { done: today >= goal, text: t('rail_task_goal', { n: Math.min(today, goal), m: goal }), call: 'homeContinue()' },
-        { done: due === 0, text: due === 0 ? t('rail_task_srs_done') : t('rail_task_srs', { n: due }), call: 'homeOpenSrs()' },
-        { done: railLoad('rail_word_heard') === railDayKey(new Date()), text: t('rail_task_word'), call: 'railSpeak()' }
-    ];
-    const n = tasks.filter(x => x.done).length;
-    box.innerHTML = `<div class="rail-head"><h4 class="rail-title">${escHtml(t('rail_tasks_title'))}</h4><span class="rail-date">${n}/${tasks.length}</span></div>
-        <ul class="rail-tasks">${tasks.map(x => `<li><button type="button" class="rail-task${x.done ? ' done' : ''}" onclick="${x.call}">
-            <span class="rail-check" aria-hidden="true">${x.done ? '✓' : ''}</span><span>${escHtml(x.text)}</span></button></li>`).join('')}</ul>`;
-}
-
 /* The rails start below the header, whose height changes with the language and
    the window; the bubble goes beside 小花火 when there is room on her left. */
 function railPlace() {
@@ -411,7 +390,6 @@ function renderRails() {
     renderRailWord();
     if (railPage === 'home') {
         renderRailCalendar();
-        renderRailTasks();
     }
 }
 

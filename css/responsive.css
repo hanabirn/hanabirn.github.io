@@ -25,3 +25,18 @@
     .about-socials { gap: 0.4rem; }
     .about-social-link { padding: 0.4rem 0.7rem; font-size: 0.75rem; }
 }
+
+/* Phones: a page's outer card is only a frame around the cards inside it, and on a
+   390px screen the frame + its padding cost ~50px of width (text ran in ~300px).
+   Drop the frame so the content uses the screen; the cards inside keep theirs. The
+   home page is made of separate cards, so it stays as it is. */
+@media (max-width: 768px) {
+    main { padding: 0 16px; margin-top: 20px; }
+    [id^="page-"]:not(#page-home) > :is(.lang-card, .mode-card, .setup-card, .quiz-card, .guestbook-card, .about-card) {
+        background: none;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        padding: 4px 0 8px;
+    }
+}

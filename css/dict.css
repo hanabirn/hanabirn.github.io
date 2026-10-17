@@ -69,6 +69,11 @@
     font-size: 0.85rem;
     box-shadow: 0 3px 0 var(--edge);
 }
+/* phones: the 8 languages as an even 4 × 2 grid */
+@media (max-width: 560px) {
+    .dict-langs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .mode-btn.dict-lang { padding: 7px 4px; }
+}
 .mode-btn.dict-lang.mode-btn-active {
     box-shadow: 0 3px 0 var(--primary-edge);
 }

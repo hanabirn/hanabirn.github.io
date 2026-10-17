@@ -213,6 +213,8 @@
     max-width: 92vw;
     transition: opacity 250ms ease-out, transform 250ms ease-out, visibility 250ms ease-out;
 }
+/* only on the home page: elsewhere it covered the end of lists (js/widgets.js) */
+body:not([data-page="home"]) .pwa-install-banner { display: none; }
 .pwa-install-banner.show {
     opacity: 1;
     visibility: visible;
@@ -305,7 +307,7 @@ html.is-standalone .install-entry { display: none !important; }
     transform: translateX(-50%) translateY(0);
 }
 /* Both banners showing at once: stack the update banner above the install one. */
-.pwa-install-banner.show ~ .update-banner {
+body[data-page="home"] .pwa-install-banner.show ~ .update-banner {
     bottom: 76px;
 }
 /* no icon any more, so phones keep the text and let it wrap */
@@ -336,7 +338,7 @@ html.is-standalone .install-entry { display: none !important; }
        the ~56px phone header so they don't cover its controls */
     .pwa-install-banner,
     .update-banner { top: 64px; bottom: auto; }
-    .pwa-install-banner.show ~ .update-banner { top: 124px; bottom: auto; }
+    body[data-page="home"] .pwa-install-banner.show ~ .update-banner { top: 124px; bottom: auto; }
 }
 
 

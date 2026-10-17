@@ -433,13 +433,13 @@
     color: var(--text-secondary);
     margin: 10px 4px 6px;
 }
+/* every group on the same 4-column grid, so all tiles are one size (3, 4 and 2
+   tiles used to give three different widths); a short group leaves gaps on the right */
 .more-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(4, minmax(0, 1fr));
     gap: 8px;
 }
-.more-grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.more-grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .more-tile {
     position: relative;
     display: flex;
@@ -448,13 +448,13 @@
     justify-content: center;
     gap: 4px;
     min-height: 68px;
-    padding: 10px 4px 8px;
+    padding: 10px 2px 8px;
     border: 2px solid var(--line);
     border-radius: 12px;
     background: var(--paper);
     box-shadow: 0 3px 0 var(--line);
     color: var(--text);
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     font-weight: 600;
     line-height: 1.25;
     text-align: center;
@@ -463,7 +463,7 @@
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
 }
-.more-grid-4 .more-tile { padding-left: 2px; padding-right: 2px; font-size: 0.74rem; }
+
 .more-tile svg { width: 24px; height: 24px; color: var(--text-secondary); flex: none; }
 .more-tile:active { transform: translateY(3px); box-shadow: none; }
 .more-tile.active { border-color: var(--primary); color: var(--primary); }

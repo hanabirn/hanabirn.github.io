@@ -86,18 +86,32 @@
 .learn-menu-item.on { border-color: var(--primary); background: var(--primary-soft); font-weight: 700; }
 .learn-menu-item small { display: block; font-size: 0.72rem; font-weight: 400; color: var(--text-secondary); }
 .learn-menu-item.soon { opacity: 0.45; cursor: default; }
+/* the levels as one even row of equal buttons (two even rows past 5 levels),
+   each with its name over a progress bar — rather than chips that wrapped
+   unevenly (等級 N5 / N4 N3 / N2 N1 on phones) */
 .learn-levels {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
     padding-top: 12px;
     border-top: 1px dashed var(--line);
 }
-.learn-levels-label { margin-right: 2px; font-size: 0.8rem; color: var(--text-secondary); }
-.mode-btn.learn-level { display: inline-flex; align-items: center; gap: 6px; }
-.learn-level small { font-size: 0.72rem; font-weight: 400; opacity: 0.8; }
-.learn-bar { width: 28px; height: 4px; border-radius: 2px; background: var(--track); overflow: hidden; }
+.learn-levels-label { display: block; margin-bottom: 8px; font-size: 0.8rem; color: var(--text-secondary); }
+.learn-level-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 5), minmax(0, 1fr));
+    gap: 8px;
+    max-width: calc(var(--cols, 5) * 132px);
+}
+.mode-btn.grammar-chip.learn-level {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    padding: 8px 8px 7px;
+    text-align: center;
+}
+.learn-level b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.learn-level-meta { display: flex; align-items: center; gap: 5px; }
+.learn-level small { font-size: 0.7rem; font-weight: 400; opacity: 0.8; white-space: nowrap; }
+.learn-bar { flex: 1; min-width: 12px; height: 4px; border-radius: 2px; background: var(--track); overflow: hidden; }
 .learn-bar i { display: block; height: 100%; background: var(--success); }
 .mode-btn-active .learn-bar i { background: var(--primary); }   /* the chosen chip is pale with red text */
 
@@ -382,7 +396,21 @@
     margin-bottom: 8px;
 }
 .grammar-ex-head .grammar-sub { margin: 0; }
-.grammar-ex-tools { display: flex; flex-wrap: wrap; gap: 8px; }
+/* the Chinese examples' two switches on a row of their own under 例句, each named
+   (讀音 / 🔊 中文口音) — five unlabelled pills beside the heading were hard to read */
+.grammar-ex-tools {
+    flex-basis: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 8px 16px;
+    padding: 8px 10px;
+    border-radius: 10px;
+    background: var(--surface-2);
+    border: 1px solid var(--line);
+}
+.grammar-tool { display: flex; align-items: center; gap: 8px; }
+.grammar-tool-label { font-size: 0.75rem; color: var(--text-secondary); white-space: nowrap; }
 .grammar-rd {
     display: inline-flex;
     border: 1px solid var(--line);
@@ -399,7 +427,6 @@
     cursor: pointer;
 }
 .grammar-rd-btn + .grammar-rd-btn { border-left: 1px solid var(--line); }
-.grammar-rd-label { display: inline-flex; align-items: center; padding: 0 4px 0 10px; font-size: 0.78rem; }
 .grammar-rd-btn.on { background: var(--primary); color: var(--on-primary); font-weight: 700; }
 .grammar-ex-zhuyin { letter-spacing: 0.5px; }
 /* readings of the common mistakes, quiz sentence and options (Chinese) */

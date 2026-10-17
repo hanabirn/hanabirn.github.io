@@ -22,6 +22,11 @@
     font-size: 0.85rem;
     box-shadow: 0 3px 0 var(--edge);
 }
+/* phones: 9 tabs as an even 3 × 3 grid instead of rows of 4 / 4 / 1 */
+@media (max-width: 560px) {
+    .alpha-tabs { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .mode-btn.alpha-tab { padding: 7px 4px; }
+}
 .mode-btn.alpha-tab.mode-btn-active {
     box-shadow: 0 3px 0 var(--primary-edge);
 }

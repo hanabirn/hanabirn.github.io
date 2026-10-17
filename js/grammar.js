@@ -24,6 +24,14 @@ let grammarQuiz = null;         // { items: [{ q, order, options (shuffled), ans
 const GRAMMAR_PER_PAGE = 5;     // points per page of the list
 let grammarPage = 0;
 
+/* A point's title under its pattern — left out when it only repeats the pattern
+   (the Chinese lessons' "A 是 B" titled "A 是 B" in a Chinese UI). */
+function grammarTitle(p) {
+    const bare = s => String(s || '').replace(/\s+/g, '');
+    if ((siteLang === 'zh' || siteLang === 'zh-Hans') && p.title && bare(p.title.zh) === bare(p.pattern)) return '';
+    return gText(p.title);
+}
+
 function gText(obj) {
     if (!obj) return '';
     if (typeof obj === 'string') return obj;
@@ -66,18 +74,21 @@ function learnPickerHtml(index, curId, pick, done) {
             }
             return `<button type="button" class="learn-menu-item${l === cur.lang ? ' on' : ''}" onclick="${pick}('${lv[0].id}')">${learnFlags(l)}<span>${escHtml(t('dict_lang_' + l))}<small>${escHtml(lv.map(s => learnLevelName(s.level)).join(sep))}</small></span></button>`;
         }).join('')}</div>`).join('');
-    const chips = levelsOf(cur.lang).map(s => {
+    const levels = levelsOf(cur.lang);
+    const chips = levels.map(s => {
         const n = done(s.id), m = s.count || 0;
         return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
-            ${escHtml(learnLevelName(s.level))}<span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small>
+            <b>${escHtml(learnLevelName(s.level))}</b><span class="learn-level-meta"><span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small></span>
         </button>`;
     }).join('');
+    // equal columns: up to 5 levels in one row, more in two even rows (6 → 3 + 3)
+    const cols = levels.length <= 5 ? levels.length : Math.ceil(levels.length / 2);
     return `<div class="learn-picker">
         <div class="learn-lang">
             <button type="button" class="learn-lang-btn" aria-haspopup="true" aria-label="${escHtml(t('learn_lang_menu'))}" onclick="learnMenuToggle(event, this)">${learnFlags(cur.lang)}${escHtml(t('dict_lang_' + cur.lang))}<span class="learn-caret" aria-hidden="true">▾</span></button>
             <div class="learn-menu" role="menu">${menu}</div>
         </div>
-        <div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><span class="learn-levels-label">${escHtml(t('learn_levels'))}</span>${chips}</div>
+        <div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><span class="learn-levels-label">${escHtml(t('learn_levels'))}</span><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>
     </div>`;
 }
 
@@ -236,7 +247,7 @@ function grammarListHtml(set) {
                     <span class="grammar-num">${i + 1}</span>
                     <span class="grammar-item-text">
                         <span class="grammar-pattern" lang="${set.lang}">${escHtml(p.pattern)}</span>
-                        <span class="grammar-item-title">${escHtml(gText(p.title))}</span>
+                        ${grammarTitle(p) ? `<span class="grammar-item-title">${escHtml(grammarTitle(p))}</span>` : ''}
                     </span>
                     <span class="grammar-state">${learned ? '✓ ' + escHtml(t('grammar_done_badge')) : '›'}</span>
                 </button></li>`;
@@ -275,7 +286,7 @@ function grammarPointHtml(set) {
         </div>
         <div class="grammar-head">
             <div class="grammar-big" lang="${set.lang}">${escHtml(p.pattern)}</div>
-            <div class="grammar-head-title">${escHtml(gText(p.title))}${grammarLearned(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('grammar_done_badge'))}</span>` : ''}</div>
+            <div class="grammar-head-title">${escHtml(grammarTitle(p))}${grammarLearned(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('grammar_done_badge'))}</span>` : ''}</div>
         </div>
         <div class="grammar-cols">
         <div class="grammar-col-main">
@@ -299,7 +310,10 @@ function grammarPointHtml(set) {
         <div class="grammar-col-side">
         <div class="grammar-ex-head">
             <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
-            ${set.lang === 'zh' ? `<div class="grammar-ex-tools">${grammarReadingSwitch()}${grammarAccentSwitch()}</div>` : ''}
+            ${set.lang === 'zh' ? `<div class="grammar-ex-tools">
+                <div class="grammar-tool"><span class="grammar-tool-label">${escHtml(t('grammar_rd_label'))}</span>${grammarReadingSwitch()}</div>
+                <div class="grammar-tool"><span class="grammar-tool-label">🔊 ${escHtml(t('zh_accent'))}</span>${grammarAccentSwitch()}</div>
+            </div>` : ''}
         </div>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
@@ -351,8 +365,7 @@ function grammarReadingSwitch() {
    Traditional only, so without a choice the accent follows the site's script. */
 function grammarAccentSwitch() {
     const cur = zhAccent(zhUiScript());
-    return `<div class="grammar-rd" role="group" aria-label="${escHtml(t('zh_accent'))}" title="${escHtml(t('zh_accent'))}">
-        <span class="grammar-rd-label" aria-hidden="true">🔊</span>
+    return `<div class="grammar-rd" role="group" aria-label="${escHtml(t('zh_accent'))}">
         ${[['zh-TW', 'zh_accent_tw'], ['zh-CN', 'zh_accent_cn']].map(([v, k]) => `<button type="button" class="grammar-rd-btn${v === cur ? ' on' : ''}" aria-pressed="${v === cur}" onclick="grammarSetAccent('${v}')">${escHtml(t(k))}</button>`).join('')}
     </div>`;
 }
