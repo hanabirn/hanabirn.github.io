@@ -116,7 +116,7 @@ GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash
 # Japanese — words, grammar examples, the other reading levels — stays with Google, and
 # Gemini is given the sentence as written (kanji and all, GEMINI_SAY), not the kana
 # N5 re-recorded to match N4 (owner, 2026-10-16); recorded in this order, a level at a time
-GEMINI_JA_READING = ['ja_n5', 'ja_n4', 'ja_n3']
+GEMINI_JA_READING = ['ja_n5', 'ja_n4', 'ja_n3', 'ja_n2']
 GEMINI_SAY = {}        # (lang, file id) -> the text Gemini reads, when it isn't files[fid]
 GEMINI_RANK = {}       # (lang, file id) -> its level's place in GEMINI_JA_READING
 REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
