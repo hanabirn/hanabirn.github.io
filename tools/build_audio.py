@@ -115,8 +115,10 @@ GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash
 # Japanese with Gemini only for the 閱讀 levels listed here (tier 0); everything else in
 # Japanese — words, grammar examples, the other reading levels — stays with Google, and
 # Gemini is given the sentence as written (kanji and all, GEMINI_SAY), not the kana
-GEMINI_JA_READING = {'ja_n4', 'ja_n5'}      # N5 re-recorded to match N4 (owner, 2026-10-16)
+# N5 re-recorded to match N4 (owner, 2026-10-16); recorded in this order, a level at a time
+GEMINI_JA_READING = ['ja_n5', 'ja_n4', 'ja_n3']
 GEMINI_SAY = {}        # (lang, file id) -> the text Gemini reads, when it isn't files[fid]
+GEMINI_RANK = {}       # (lang, file id) -> its level's place in GEMINI_JA_READING
 REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
@@ -260,12 +262,14 @@ def jobs(lang):
         # from the kana (tools/build_reading.py makes both), and the glossary words
         for f in sorted((ROOT / 'data' / 'reading').glob('ja_*.json')):
             gem = f.stem in GEMINI_JA_READING
+            rank = GEMINI_JA_READING.index(f.stem) if gem else 0
             for p in json.loads(f.read_text(encoding='utf-8'))['passages']:
                 for para in p['paragraphs']:
                     for sent in para['s']:
                         fid = add(sent['plain'] + '|' + sent['kana'], sent['kana'], 0 if gem else 2)
                         if gem:
                             GEMINI_SAY[('ja', fid)] = sent['plain']
+                            GEMINI_RANK[('ja', fid)] = rank
                 for g in p['glossary']:
                     if HAS_KANJI.search(g['w']) and g['r']:
                         fid = add(g['w'] + '|' + g['r'], g['r'])
@@ -697,10 +701,10 @@ def run_gemini(lang, files, aliases, top, limit):
     # in the order jobs() met them — passage by passage (its sentences, then its
     # words), so each day leaves whole passages done rather than scattered lines
     seq = {fid: i for i, fid in enumerate(files)}
-    todo = sorted((tiers.get(fid, 2), seq[fid], fid) for fid in files
+    todo = sorted((tiers.get(fid, 2), GEMINI_RANK.get((lang, fid), 0), seq[fid], fid) for fid in files
                   if fid not in made and (tiers.get(fid, 2) <= top
                                           or (lang != 'ja' and not (d / f'{fid}.mp3').exists())))
-    todo = [(t, fid) for t, _, fid in todo]
+    todo = [(t, fid) for t, _, _, fid in todo]
     if limit is not None:
         todo = todo[:limit]
     print(f'{lang} (Gemini {GEMINI_VOICES[lang][0]}): {len(todo)} to render '
