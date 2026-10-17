@@ -64,7 +64,7 @@
           "en": "I'll get fruit while at the market.",
           "options": [
             "김에",
-            "동안",
+            "덕분에",
             "다가",
             "자마자"
           ],
@@ -93,6 +93,215 @@
             "나올"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "은행에（　）김에 우체국에도 들렀어요.",
+          "zh": "去銀行，順便也去了郵局。",
+          "en": "While I was at the bank, I stopped by the post office too.",
+          "options": [
+            "간",
+            "갈",
+            "가",
+            "가서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "청소하는（　）창문도 닦았어요.",
+          "zh": "打掃時順便把窗戶也擦了。",
+          "en": "While cleaning, I wiped the windows too.",
+          "options": [
+            "김에",
+            "바람에",
+            "덕분에",
+            "탓에"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "시내에",
+            "나온",
+            "김에",
+            "영화도"
+          ],
+          "after": " 봤어요.",
+          "star": 1,
+          "zh": "來市區，順便也看了電影。",
+          "en": "Since I was in town, I watched a film too.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "일어난",
+            "김에",
+            "물",
+            "좀"
+          ],
+          "after": " 갖다 줄래요?",
+          "star": 1,
+          "zh": "你都起來了，順便幫我拿點水好嗎？",
+          "en": "Since you're up, could you get me some water?"
+        }
+      ]
+    },
+    {
+      "id": "eul-gyeom",
+      "pattern": "V-(으)ㄹ 겸 ／ N 겸 N",
+      "title": {
+        "zh": "兼～、順便～（一次帶著兩個目的）",
+        "en": "partly to …, also to … (two purposes at once)"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ 겸　有收音 → -을 겸　名詞：N 겸 N",
+        "en": "no final consonant / ㄹ → -ㄹ 겸　final consonant → -을 겸　nouns: N 겸 N"
+      },
+      "explain": {
+        "zh": "做一件事時同時帶著兩個（以上）目的：운동도 할 겸 공원까지 걸어갔어요（也為了運動，走路到公園）。名詞「N 겸 N」表示兼具兩種用途：거실 겸 식당（客廳兼餐廳）。",
+        "en": "Doing one thing with two (or more) purposes: 운동도 할 겸 공원까지 걸어갔어요 (I walked to the park, partly for the exercise). With nouns, N 겸 N is \"both … and …\": 거실 겸 식당 (a living and dining room)."
+      },
+      "notes": [
+        {
+          "zh": "常和「-도」一起用：바람도 쐴 겸、친구도 만날 겸。",
+          "en": "Often with -도: 바람도 쐴 겸, 친구도 만날 겸."
+        },
+        {
+          "zh": "和「-는 김에」比：「김에」是趁著已經在做的事順便做；「겸」是一開始就帶著兩個目的。",
+          "en": "-는 김에 adds something while already doing another thing; -(으)ㄹ 겸 sets out with both purposes."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "친구를 만나는 겸 명동에 갔어요.",
+          "right": "친구도 만날 겸 명동에 갔어요.",
+          "zh": "是「-(으)ㄹ 겸」，不是「-는 겸」。",
+          "en": "It is -(으)ㄹ 겸, not -는 겸."
+        },
+        {
+          "wrong": "좀 쉬을 겸 카페에 갔어요.",
+          "right": "좀 쉴 겸 카페에 갔어요.",
+          "zh": "「쉬다」沒有收音，接「-ㄹ 겸」。",
+          "en": "쉬다 has no final consonant, so it takes -ㄹ 겸."
+        }
+      ],
+      "examples": [
+        {
+          "text": "운동도 할 겸 공원까지 걸어갔어요.",
+          "zh": "也為了運動，走路到公園。",
+          "en": "I walked to the park, partly for the exercise."
+        },
+        {
+          "text": "친구도 만날 겸 쇼핑도 할 겸 명동에 갔어요.",
+          "zh": "為了見朋友也為了購物，去了明洞。",
+          "en": "I went to Myeongdong to see a friend and to do some shopping."
+        },
+        {
+          "text": "이 방은 거실 겸 식당이에요.",
+          "zh": "這個房間是客廳兼餐廳。",
+          "en": "This room is a living and dining room."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "바람도（　）겸 밖에 나갔어요.",
+          "zh": "也想吹吹風，就出去了。",
+          "en": "I went out, partly to get some fresh air.",
+          "options": [
+            "쐴",
+            "쐬는",
+            "쐰",
+            "쐬어"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "한국어 공부도（　）겸 한국 드라마를 봐요.",
+          "zh": "也為了學韓文，看韓劇。",
+          "en": "I watch Korean dramas, partly to study Korean.",
+          "options": [
+            "할",
+            "하는",
+            "한",
+            "해"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이 방은 서재（　）침실이에요.",
+          "zh": "這個房間是書房兼臥室。",
+          "en": "This room is a study and bedroom.",
+          "options": [
+            "겸",
+            "김에",
+            "뿐",
+            "동안"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "기분 전환도（　）겸 머리를 잘랐어요.",
+          "zh": "也為了轉換心情，剪了頭髮。",
+          "en": "I had my hair cut, partly for a change of mood.",
+          "options": [
+            "할",
+            "하는",
+            "한",
+            "해"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "이번 여행은 출장（　）휴가예요.",
+          "zh": "這次旅行是出差兼休假。",
+          "en": "This trip is business and holiday combined.",
+          "options": [
+            "겸",
+            "김에",
+            "뿐",
+            "만큼"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "산책도",
+            "할",
+            "겸",
+            "빵을"
+          ],
+          "after": " 사러 나갔어요.",
+          "star": 2,
+          "zh": "也想散散步，就出去買麵包了。",
+          "en": "I went out to buy bread, partly to take a walk.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "친구도",
+            "만날",
+            "겸",
+            "쇼핑도"
+          ],
+          "after": " 할 겸 명동에 갔어요.",
+          "star": 2,
+          "zh": "為了見朋友也為了購物，去了明洞。",
+          "en": "I went to Myeongdong to see a friend and do some shopping."
         }
       ]
     },
@@ -184,6 +393,215 @@
             "오자마자"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "알람이 안（　）바람에 늦잠을 잤어요.",
+          "zh": "鬧鐘沒響，結果睡過頭了。",
+          "en": "My alarm didn't go off, so I overslept.",
+          "options": [
+            "울리는",
+            "울린",
+            "울릴",
+            "울려"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "친구가 계속 말을 거는（　）공부를 하나도 못 했어요.",
+          "zh": "朋友一直跟我說話，害我完全沒讀到書。",
+          "en": "My friend kept talking to me, so I couldn't study at all.",
+          "options": [
+            "바람에",
+            "김에",
+            "덕분에",
+            "대로"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "길이",
+            "막히는",
+            "바람에",
+            "회의에"
+          ],
+          "after": " 늦었어요.",
+          "star": 2,
+          "zh": "因為塞車，開會遲到了。",
+          "en": "I was late for the meeting because of the traffic.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "급하게",
+            "뛰어가는",
+            "바람에",
+            "넘어졌어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "急著跑過去，結果跌倒了。",
+          "en": "I was rushing and fell over."
+        }
+      ]
+    },
+    {
+      "id": "aseo-geureonji",
+      "pattern": "V/A-아/어서 그런지 ／ N(이)라서 그런지",
+      "title": {
+        "zh": "可能是因為～（不確定的原因）",
+        "en": "maybe because …"
+      },
+      "form": {
+        "zh": "母音ㅏ・ㅗ → -아서 그런지　其他 → -어서 그런지　하다 → 해서 그런지　名詞 → (이)라서 그런지",
+        "en": "ㅏ/ㅗ → -아서 그런지　others → -어서 그런지　하다 → 해서 그런지　nouns → (이)라서 그런지"
+      },
+      "explain": {
+        "zh": "說話者猜某件事的原因，但不太確定：피곤해서 그런지 머리가 아파요（可能是因為累，頭很痛）、주말이라서 그런지 길이 많이 막혀요（可能是週末，路很塞）。",
+        "en": "The speaker guesses at a cause without being sure: 피곤해서 그런지 머리가 아파요 (maybe because I'm tired, my head hurts), 주말이라서 그런지 길이 많이 막혀요 (maybe because it's the weekend, the roads are busy)."
+      },
+      "notes": [
+        {
+          "zh": "和「-아/어서」比：多了「也許是這樣」的不確定感。",
+          "en": "Compared with -아/어서, it adds \"perhaps\"."
+        },
+        {
+          "zh": "前面一般不加過去式：어제 늦게 자서 그런지 피곤해요。",
+          "en": "Usually no past tense before it: 어제 늦게 자서 그런지 피곤해요."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "날씨가 덥어서 그런지 입맛이 없어요.",
+          "right": "날씨가 더워서 그런지 입맛이 없어요.",
+          "zh": "「덥다」是ㅂ不規則，變成「더워서」。",
+          "en": "덥다 is ㅂ-irregular: 더워서."
+        },
+        {
+          "wrong": "방학라서 그런지 학교가 조용해요.",
+          "right": "방학이라서 그런지 학교가 조용해요.",
+          "zh": "有收音的名詞接「이라서」。",
+          "en": "A noun ending in a consonant takes 이라서."
+        }
+      ],
+      "examples": [
+        {
+          "text": "피곤해서 그런지 머리가 아파요.",
+          "zh": "可能是因為累，頭很痛。",
+          "en": "Maybe because I'm tired, I have a headache."
+        },
+        {
+          "text": "주말이라서 그런지 길이 많이 막혀요.",
+          "zh": "可能是週末，路很塞。",
+          "en": "Maybe because it's the weekend, the roads are busy."
+        },
+        {
+          "text": "커피를 많이 마셔서 그런지 잠이 안 와요.",
+          "zh": "可能是咖啡喝太多，睡不著。",
+          "en": "Maybe because I drank a lot of coffee, I can't sleep."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "어제 잠을 못（　）그런지 졸려요.",
+          "zh": "可能是昨天沒睡好，好睏。",
+          "en": "Maybe because I didn't sleep last night, I'm sleepy.",
+          "options": [
+            "자서",
+            "자고",
+            "자면",
+            "자려고"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "날씨가（　）그런지 사람이 별로 없어요.",
+          "zh": "可能是天氣冷，沒什麼人。",
+          "en": "Maybe because it's cold, there aren't many people.",
+          "options": [
+            "추워서",
+            "춥어서",
+            "추와서",
+            "추우서"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "방학（　）그런지 학교가 조용해요.",
+          "zh": "可能是放假，學校很安靜。",
+          "en": "Maybe because it's the holidays, the school is quiet.",
+          "options": [
+            "이라서",
+            "라서",
+            "이라고",
+            "에서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "요즘 날씨가 자주（　）그런지 감기 걸린 사람이 많아요.",
+          "zh": "最近可能是天氣常變，感冒的人很多。",
+          "en": "Maybe because the weather keeps changing, lots of people have colds.",
+          "options": [
+            "바뀌어서",
+            "바뀌니까서",
+            "바뀌는",
+            "바껴서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "오늘은 일요일（　）그런지 공원에 사람이 많네요.",
+          "zh": "今天可能是星期天，公園人很多。",
+          "en": "Maybe because it's Sunday, the park is busy.",
+          "options": [
+            "이라서",
+            "라서",
+            "이어라서",
+            "이니서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "커피를",
+            "많이",
+            "마셔서",
+            "그런지"
+          ],
+          "after": " 잠이 안 와요.",
+          "star": 2,
+          "zh": "可能是咖啡喝太多，睡不著。",
+          "en": "Maybe because I drank too much coffee, I can't sleep.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "어제",
+            "늦게",
+            "자서",
+            "그런지"
+          ],
+          "after": " 머리가 아파요.",
+          "star": 2,
+          "zh": "可能是昨天太晚睡，頭很痛。",
+          "en": "Maybe because I went to bed late, I have a headache."
         }
       ]
     },
@@ -275,6 +693,679 @@
             "동안"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "친구가（　）덕분에 이사를 빨리 끝냈어요.",
+          "zh": "多虧朋友幫忙，很快就搬完家了。",
+          "en": "Thanks to my friend's help, I finished moving quickly.",
+          "options": [
+            "도와준",
+            "도와줄",
+            "도와줘",
+            "도와주던데"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "제가 실수한（　）팀이 졌어요.",
+          "zh": "都怪我失誤，隊伍輸了。",
+          "en": "Our team lost because of my mistake.",
+          "options": [
+            "탓에",
+            "덕분에",
+            "김에",
+            "대로"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "선생님이",
+            "잘",
+            "가르쳐 주신",
+            "덕분에"
+          ],
+          "after": " 합격했어요.",
+          "star": 3,
+          "zh": "多虧老師教得好，我考上了。",
+          "en": "Thanks to my teacher teaching me so well, I passed.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "날씨가",
+            "나쁜",
+            "탓에",
+            "비행기가"
+          ],
+          "after": " 늦게 출발했어요.",
+          "star": 2,
+          "zh": "都怪天氣不好，飛機很晚才起飛。",
+          "en": "The plane left late because of the bad weather."
+        }
+      ]
+    },
+    {
+      "id": "da-boni",
+      "pattern": "V-다 보니(까)",
+      "title": {
+        "zh": "做著做著就～（持續做某事後的結果或發現）",
+        "en": "from doing … (over time), it turned out …"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -다 보니(까)",
+        "en": "verb stem + -다 보니(까)"
+      },
+      "explain": {
+        "zh": "一直反覆做某件事，後來自然出現某個結果、或發現某件事：매일 연습하다 보니 실력이 늘었어요（每天練習，實力就進步了）、이야기하다 보니까 벌써 12시가 됐어요（聊著聊著就十二點了）。",
+        "en": "Keeping on doing something leads to a result or a discovery: 매일 연습하다 보니 실력이 늘었어요 (practising every day, I got better), 이야기하다 보니까 벌써 12시가 됐어요 (we talked and talked, and it was already midnight)."
+      },
+      "notes": [
+        {
+          "zh": "後句是已經發生的結果或現在的狀態，不接命令、提議。",
+          "en": "The second clause is a result that has happened or a present state — no commands or suggestions."
+        },
+        {
+          "zh": "和「-다 보면」比：「-다 보면」是「這樣下去的話會～」（假設、未來）。",
+          "en": "-다 보면 is \"if you keep on …, you will …\" (future, hypothetical)."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "매일 걷다 보니 운동하세요.",
+          "right": "매일 걷다 보니 건강해졌어요.",
+          "zh": "「-다 보니」後面接結果，不接命令。",
+          "en": "-다 보니 is followed by a result, not a command."
+        },
+        {
+          "wrong": "한국 드라마를 봤다 보니 한국어가 늘었어요.",
+          "right": "한국 드라마를 보다 보니 한국어가 늘었어요.",
+          "zh": "「-다 보니」前面不加過去式。",
+          "en": "No past tense before -다 보니."
+        }
+      ],
+      "examples": [
+        {
+          "text": "매일 연습하다 보니 실력이 늘었어요.",
+          "zh": "每天練習，實力就進步了。",
+          "en": "Practising every day, I got better."
+        },
+        {
+          "text": "이야기하다 보니까 벌써 12시가 됐어요.",
+          "zh": "聊著聊著就已經十二點了。",
+          "en": "We talked and talked, and it was already midnight."
+        },
+        {
+          "text": "한국 친구와 자주 만나다 보니 한국어가 편해졌어요.",
+          "zh": "常和韓國朋友見面，韓文就變得自在了。",
+          "en": "Seeing my Korean friends often, I got comfortable with Korean."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "친구와 이야기（　）시간 가는 줄 몰랐어요.",
+          "zh": "和朋友聊著聊著，都不知道時間過了。",
+          "en": "Talking with my friend, I lost track of time.",
+          "options": [
+            "하다 보니",
+            "하다 보면",
+            "했다 보니",
+            "하다 보려고"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "매일 한국 노래를（　）가사를 다 외웠어요.",
+          "zh": "每天聽韓國歌，歌詞就全背起來了。",
+          "en": "Listening to Korean songs every day, I learned all the lyrics.",
+          "options": [
+            "듣다 보니",
+            "들다 보니",
+            "들었다 보니",
+            "듣다 보면"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "계속（　）보니 이제는 맵지 않아요.",
+          "zh": "一直吃，現在就不覺得辣了。",
+          "en": "From eating it all the time, it doesn't taste spicy any more.",
+          "options": [
+            "먹다",
+            "먹어",
+            "먹고",
+            "먹은"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "한국 드라마를 자주（　）한국어 실력이 늘었어요.",
+          "zh": "常看韓劇，韓文就進步了。",
+          "en": "From watching Korean dramas a lot, my Korean improved.",
+          "options": [
+            "보다 보니",
+            "보다 보면",
+            "봤다 보니",
+            "보고 보면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "같이 일하다（　）친해졌어요.",
+          "zh": "一起工作久了就變熟了。",
+          "en": "Working together, we became close.",
+          "options": [
+            "보니까",
+            "보면",
+            "봐서",
+            "보러"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "혼자",
+            "살다",
+            "보니",
+            "요리를"
+          ],
+          "after": " 잘하게 됐어요.",
+          "star": 2,
+          "zh": "一個人住久了，就變得很會做菜。",
+          "en": "Living alone, I got good at cooking.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "이야기하다",
+            "보니",
+            "벌써",
+            "밤"
+          ],
+          "after": " 12시가 됐어요.",
+          "star": 1,
+          "zh": "聊著聊著就已經半夜十二點了。",
+          "en": "We talked and talked, and suddenly it was midnight."
+        }
+      ]
+    },
+    {
+      "id": "go-boni",
+      "pattern": "V-고 보니(까)",
+      "title": {
+        "zh": "～了之後才發現",
+        "en": "having done …, I found …"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -고 보니(까)",
+        "en": "verb stem + -고 보니(까)"
+      },
+      "explain": {
+        "zh": "做完某件事以後，才知道原本不知道的事：집에 오고 보니 지갑이 없었어요（回到家才發現錢包不見了）、이야기를 듣고 보니 제가 잘못했네요（聽了才知道是我不對）。",
+        "en": "Only after doing something do you find out something new: 집에 오고 보니 지갑이 없었어요 (when I got home, my wallet was gone), 이야기를 듣고 보니 제가 잘못했네요 (now that I've heard it, I see I was wrong)."
+      },
+      "notes": [
+        {
+          "zh": "和「-다 보니」比：「-다 보니」是一直做的過程中；「-고 보니」是做完一次之後。",
+          "en": "-다 보니 is during repeated doing; -고 보니 is right after doing it once."
+        },
+        {
+          "zh": "前面不加過去式：타고 보니（○）、탔고 보니（×）。",
+          "en": "No past tense before it: 타고 보니, not 탔고 보니."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "버스를 탔고 보니 반대 방향이었어요.",
+          "right": "버스를 타고 보니 반대 방향이었어요.",
+          "zh": "「-고 보니」前面不加過去式。",
+          "en": "No past tense before -고 보니."
+        },
+        {
+          "wrong": "전화를 끊다 보니 이름을 안 물어봤어요.",
+          "right": "전화를 끊고 보니 이름을 안 물어봤어요.",
+          "zh": "掛了電話「之後」才發現，用「-고 보니」。",
+          "en": "Finding out after hanging up is -고 보니."
+        }
+      ],
+      "examples": [
+        {
+          "text": "집에 오고 보니 지갑이 없었어요.",
+          "zh": "回到家才發現錢包不見了。",
+          "en": "When I got home, I found my wallet was gone."
+        },
+        {
+          "text": "버스를 타고 보니 반대 방향이었어요.",
+          "zh": "上了公車才發現是反方向。",
+          "en": "Once I got on the bus, I realised it was going the other way."
+        },
+        {
+          "text": "이야기를 듣고 보니 제가 잘못했네요.",
+          "zh": "聽了你說的，才知道是我不對。",
+          "en": "Now that I've heard the story, I see I was wrong."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "전화를（　）보니 이름을 안 물어봤어요.",
+          "zh": "掛了電話才發現沒問名字。",
+          "en": "After hanging up, I realised I hadn't asked their name.",
+          "options": [
+            "끊고",
+            "끊다",
+            "끊어",
+            "끊었고"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이야기를 듣（　）제가 오해했네요.",
+          "zh": "聽了之後才知道是我誤會了。",
+          "en": "Now that I've heard it, I see I misunderstood.",
+          "options": [
+            "고 보니",
+            "다 보면",
+            "고 보면",
+            "아 보니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "버스를 타고（　）반대 방향이었어요.",
+          "zh": "上了公車才發現是反方向。",
+          "en": "Once I got on the bus, I found it was going the wrong way.",
+          "options": [
+            "보니",
+            "보면",
+            "봐서",
+            "보러"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "가방을 열고（　）지갑이 없었어요.",
+          "zh": "打開包包才發現錢包不見了。",
+          "en": "When I opened my bag, my wallet wasn't there.",
+          "options": [
+            "보니",
+            "보면",
+            "봐서",
+            "보려고"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그 사람과（　）보니 좋은 사람이었어요.",
+          "zh": "和他談過之後，才發現他是好人。",
+          "en": "Once I talked with him, I found he was a good person.",
+          "options": [
+            "이야기하고",
+            "이야기해",
+            "이야기했고",
+            "이야기하러"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "밖에",
+            "나가고",
+            "보니",
+            "비가"
+          ],
+          "after": " 오고 있었어요.",
+          "star": 2,
+          "zh": "出門之後才發現在下雨。",
+          "en": "When I went out, I found it was raining.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "집에",
+            "도착하고",
+            "보니",
+            "열쇠가"
+          ],
+          "after": " 없었어요.",
+          "star": 2,
+          "zh": "到家才發現鑰匙不見了。",
+          "en": "When I got home, I found my key was gone."
+        }
+      ]
+    },
+    {
+      "id": "atdeoni",
+      "pattern": "V-았/었더니",
+      "title": {
+        "zh": "我做了～，結果～（自己做的事帶出的結果或發現）",
+        "en": "I did …, and then … (what came of it)"
+      },
+      "form": {
+        "zh": "動詞 ＋ -았/었더니（前句的主語通常是「我」）",
+        "en": "verb + -았/었더니 (the first clause is usually about \"I\")"
+      },
+      "explain": {
+        "zh": "說話者自己做了某件事，接著出現某個結果、或發現某件事：약을 먹었더니 좀 나았어요（吃了藥，好一點了）、친구 집에 갔더니 아무도 없었어요（去了朋友家，結果沒人在）。",
+        "en": "The speaker did something, and then a result followed or something was found: 약을 먹었더니 좀 나았어요 (I took some medicine and felt better), 친구 집에 갔더니 아무도 없었어요 (I went to my friend's, but nobody was in)."
+      },
+      "notes": [
+        {
+          "zh": "前句說的是自己的行為；說別人前後的變化用「-더니」。",
+          "en": "The first clause is your own action; for changes you saw in someone else, use -더니."
+        },
+        {
+          "zh": "後句多是過去的結果或發現。",
+          "en": "The second clause is usually a past result or discovery."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "제가 운동하더니 몸이 좋아졌어요.",
+          "right": "제가 운동했더니 몸이 좋아졌어요.",
+          "zh": "說自己做了什麼、結果怎樣，用「-았/었더니」。",
+          "en": "For what you did and what came of it, use -았/었더니."
+        },
+        {
+          "wrong": "제가 창문을 열더니 시원했어요.",
+          "right": "제가 창문을 열었더니 시원했어요.",
+          "zh": "自己開了窗，結果很涼快，用「-았/었더니」。",
+          "en": "You opened the window and it got cool: -았/었더니."
+        }
+      ],
+      "examples": [
+        {
+          "text": "약을 먹었더니 좀 나았어요.",
+          "zh": "吃了藥，好一點了。",
+          "en": "I took some medicine and felt a bit better."
+        },
+        {
+          "text": "친구 집에 갔더니 아무도 없었어요.",
+          "zh": "去了朋友家，結果沒人在。",
+          "en": "I went to my friend's place, but nobody was in."
+        },
+        {
+          "text": "아침을 많이 먹었더니 아직 배가 불러요.",
+          "zh": "早餐吃太多，現在還很飽。",
+          "en": "I ate a big breakfast, so I'm still full."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "어제 일찍（　）오늘은 피곤하지 않아요.",
+          "zh": "昨天早睡，今天就不累了。",
+          "en": "I went to bed early yesterday, so I'm not tired today.",
+          "options": [
+            "잤더니",
+            "자더니",
+            "잔더니",
+            "자았더니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "창문을（　）시원한 바람이 들어왔어요.",
+          "zh": "我打開窗戶，涼風就吹進來了。",
+          "en": "I opened the window and a cool breeze came in.",
+          "options": [
+            "열었더니",
+            "열더니",
+            "열었다니",
+            "열던니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "오랜만에 운동을（　）온몸이 아파요.",
+          "zh": "久違地運動，結果全身痠痛。",
+          "en": "I exercised for the first time in ages, and now I ache all over.",
+          "options": [
+            "했더니",
+            "하더니",
+            "했다니",
+            "하었더니"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "친구에게 전화를（　）안 받았어요.",
+          "zh": "我打電話給朋友，結果他沒接。",
+          "en": "I called my friend, but they didn't answer.",
+          "options": [
+            "했더니",
+            "하더니",
+            "했다니",
+            "하던니"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "오랜만에 고향에（　）많이 변해 있었어요.",
+          "zh": "久違地回到家鄉，發現變了很多。",
+          "en": "I went back to my hometown after a long time and found it had changed a lot.",
+          "options": [
+            "갔더니",
+            "가더니",
+            "갔다니",
+            "가던데"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "약을",
+            "먹었더니",
+            "열이",
+            "내렸어요"
+          ],
+          "after": ".",
+          "star": 1,
+          "zh": "吃了藥，結果燒退了。",
+          "en": "I took some medicine and my fever went down.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "선생님께",
+            "여쭤봤더니",
+            "친절하게",
+            "설명해"
+          ],
+          "after": " 주셨어요.",
+          "star": 1,
+          "zh": "我問了老師，老師親切地說明了。",
+          "en": "I asked my teacher, and they explained it kindly."
+        }
+      ]
+    },
+    {
+      "id": "deoni",
+      "pattern": "V/A-더니",
+      "title": {
+        "zh": "之前～，（後來）～（說話者觀察到的變化）",
+        "en": "was … before, and then … (a change you saw)"
+      },
+      "form": {
+        "zh": "詞幹 ＋ -더니（前句多是別人或天氣等，不是「我」）",
+        "en": "stem + -더니 (the first clause is about someone or something else, not \"I\")"
+      },
+      "explain": {
+        "zh": "說話者親眼看到某人或某事之前的樣子，再說後來的變化或結果：아침에는 춥더니 오후에는 따뜻해졌어요（早上很冷，下午就變暖了）、민수 씨가 열심히 공부하더니 시험에 합격했어요（民秀之前很努力讀書，後來考上了）。",
+        "en": "The speaker saw how someone or something was, then tells the change or result: 아침에는 춥더니 오후에는 따뜻해졌어요 (it was cold in the morning, but it warmed up in the afternoon), 민수 씨가 열심히 공부하더니 시험에 합격했어요 (Minsu studied hard, and he passed)."
+      },
+      "notes": [
+        {
+          "zh": "說的是自己親眼看到的事，前句主語一般不是「我」。",
+          "en": "It reports what you saw; the first clause is usually not about \"I\"."
+        },
+        {
+          "zh": "自己做了某事的結果用「-았/었더니」。",
+          "en": "For the result of your own action, use -았/었더니."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "제가 열심히 공부하더니 합격했어요.",
+          "right": "제가 열심히 공부했더니 합격했어요.",
+          "zh": "說自己用「-았/었더니」；「-더니」說的是別人。",
+          "en": "About yourself use -았/었더니; -더니 is about others."
+        },
+        {
+          "wrong": "아침에는 춥었더니 오후에는 따뜻해졌어요.",
+          "right": "아침에는 춥더니 오후에는 따뜻해졌어요.",
+          "zh": "天氣的前後變化用「-더니」，詞幹直接接。",
+          "en": "A change in the weather takes -더니 straight after the stem."
+        }
+      ],
+      "examples": [
+        {
+          "text": "아침에는 춥더니 오후에는 따뜻해졌어요.",
+          "zh": "早上很冷，下午就變暖了。",
+          "en": "It was cold in the morning, but it warmed up in the afternoon."
+        },
+        {
+          "text": "민수 씨가 열심히 공부하더니 시험에 합격했어요.",
+          "zh": "民秀之前很努力讀書，後來考上了。",
+          "en": "Minsu studied hard, and he passed the exam."
+        },
+        {
+          "text": "동생이 하루 종일 게임만 하더니 눈이 빨개졌어요.",
+          "zh": "弟弟一整天只打電動，結果眼睛都紅了。",
+          "en": "My brother played games all day, and now his eyes are red."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "어제는 비가 많이（　）오늘은 맑네요.",
+          "zh": "昨天下了很多雨，今天倒是晴天呢。",
+          "en": "It rained a lot yesterday, but today it's clear.",
+          "options": [
+            "오더니",
+            "와더니",
+            "오던니",
+            "올더니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "동생이 하루 종일 과자만（　）배탈이 났어요.",
+          "zh": "弟弟一整天只吃零食，結果吃壞肚子了。",
+          "en": "My brother ate nothing but snacks all day and got an upset stomach.",
+          "options": [
+            "먹더니",
+            "먹는더니",
+            "먹던니",
+            "먹을더니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "민수 씨가 요즘 운동을（　）살이 많이 빠졌어요.",
+          "zh": "民秀最近一直運動，瘦了很多。",
+          "en": "Minsu has been exercising lately and has lost a lot of weight.",
+          "options": [
+            "하더니",
+            "하는더니",
+            "해더니",
+            "하던니"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "하늘이 흐리（　）결국 비가 오기 시작했어요.",
+          "zh": "天空本來陰陰的，後來終於下起雨了。",
+          "en": "The sky had been cloudy, and in the end it started to rain.",
+          "options": [
+            "더니",
+            "던니",
+            "던데요",
+            "더라고요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "민수 씨는 어렸을 때 키가（　）지금은 아주 커요.",
+          "zh": "民秀小時候個子很小，現在很高。",
+          "en": "Minsu was small as a child, but now he is very tall.",
+          "options": [
+            "작더니",
+            "작던니",
+            "작은더니",
+            "작더라니"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "동생이",
+            "아침부터",
+            "기침을",
+            "하더니"
+          ],
+          "after": " 결국 열이 났어요.",
+          "star": 3,
+          "zh": "弟弟從早上就一直咳嗽，最後發燒了。",
+          "en": "My brother had been coughing since morning and finally ran a fever.",
+          "alts": [
+            [
+              1,
+              0,
+              2,
+              3
+            ]
+          ],
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "어제는",
+            "그렇게",
+            "덥더니",
+            "오늘은"
+          ],
+          "after": " 시원하네요.",
+          "star": 2,
+          "zh": "昨天那麼熱，今天卻很涼快。",
+          "en": "It was so hot yesterday, but today it's cool."
         }
       ]
     },
@@ -366,6 +1457,695 @@
             "바람이에요"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "민수 씨가 계속 하품을 하네요. 어젯밤에 잠을 못（　）모양이에요.",
+          "zh": "民秀一直打哈欠，看樣子昨晚沒睡好。",
+          "en": "Minsu keeps yawning. He can't have slept last night.",
+          "options": [
+            "잔",
+            "자는",
+            "잘",
+            "자"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "사람들이 우산을 쓰고 있어요. 비가（　）모양이에요.",
+          "zh": "大家都撐著傘，看樣子在下雨。",
+          "en": "People are using umbrellas. It must be raining.",
+          "options": [
+            "오는",
+            "오은",
+            "올",
+            "와"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "밖이",
+            "시끄러운",
+            "걸",
+            "보니"
+          ],
+          "after": " 무슨 일이 있는 모양이에요.",
+          "star": 1,
+          "zh": "外面很吵，看樣子發生了什麼事。",
+          "en": "It's noisy outside — something must be going on.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "두 사람이",
+            "요즘",
+            "사이가",
+            "좋은"
+          ],
+          "after": " 모양이에요.",
+          "star": 3,
+          "zh": "那兩個人最近看樣子感情很好。",
+          "en": "Those two seem to be getting along well these days."
+        }
+      ]
+    },
+    {
+      "id": "eul-riga-eopda",
+      "pattern": "V/A-(으)ㄹ 리가 없다",
+      "title": {
+        "zh": "不可能～（強烈否定的推測）",
+        "en": "there's no way …"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ 리가 없다　有收音 → -을 리가 없다　過去：-았/었을 리가 없다",
+        "en": "no final consonant / ㄹ → -ㄹ 리가 없다　final consonant → -을 리가 없다　past: -았/었을 리가 없다"
+      },
+      "explain": {
+        "zh": "說話者根據自己知道的事，認為某件事絕對不可能：그 사람이 거짓말을 할 리가 없어요（那個人不可能說謊）。問句「-(으)ㄹ 리가 있어요?」也是「怎麼可能」的意思。",
+        "en": "From what the speaker knows, something is impossible: 그 사람이 거짓말을 할 리가 없어요 (he would never lie). The question -(으)ㄹ 리가 있어요? also means \"how could …?\"."
+      },
+      "notes": [
+        {
+          "zh": "過去的事：벌써 끝났을 리가 없어요（不可能已經結束了）。",
+          "en": "For the past: 벌써 끝났을 리가 없어요 (it can't have finished already)."
+        },
+        {
+          "zh": "「리」前面一定是「-(으)ㄹ」。",
+          "en": "리 always follows -(으)ㄹ."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "그 사람이 늦는 리가 없어요.",
+          "right": "그 사람이 늦을 리가 없어요.",
+          "zh": "「리가 없다」前面用「-(으)ㄹ」。",
+          "en": "리가 없다 follows -(으)ㄹ."
+        },
+        {
+          "wrong": "그럴 리가 안 돼요.",
+          "right": "그럴 리가 없어요.",
+          "zh": "固定說「리가 없다」。",
+          "en": "The set phrase is 리가 없다."
+        }
+      ],
+      "examples": [
+        {
+          "text": "그 사람이 거짓말을 할 리가 없어요.",
+          "zh": "那個人不可能說謊。",
+          "en": "There's no way he would lie."
+        },
+        {
+          "text": "민수 씨가 벌써 집에 갔을 리가 없어요.",
+          "zh": "民秀不可能已經回家了。",
+          "en": "Minsu can't have gone home already."
+        },
+        {
+          "text": "이렇게 쉬운 문제를 틀릴 리가 있어요?",
+          "zh": "這麼簡單的題目怎麼可能答錯？",
+          "en": "How could anyone get such an easy question wrong?"
+        }
+      ],
+      "quiz": [
+        {
+          "q": "그렇게 착한 사람이 화를（　）리가 없어요.",
+          "zh": "那麼善良的人不可能發脾氣。",
+          "en": "Someone that kind would never get angry.",
+          "options": [
+            "낼",
+            "내는",
+            "낸",
+            "내"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "지금 출발했으니까 벌써（　）리가 없어요.",
+          "zh": "現在才出發，不可能已經到了。",
+          "en": "They've only just left, so they can't have arrived yet.",
+          "options": [
+            "도착했을",
+            "도착한",
+            "도착하는",
+            "도착해"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이렇게 맛있는 음식이 인기가 없을（　）.",
+          "zh": "這麼好吃的菜不可能不受歡迎。",
+          "en": "There's no way food this good isn't popular.",
+          "options": [
+            "리가 없어요",
+            "리가 안 돼요",
+            "리가 못 해요",
+            "리를 없어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그렇게 열심히 공부했는데 시험에（　）리가 없어요.",
+          "zh": "那麼努力讀書，不可能考不過。",
+          "en": "He studied so hard — there's no way he failed.",
+          "options": [
+            "떨어졌을",
+            "떨어진",
+            "떨어지는",
+            "떨어져"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "민수 씨가 그런 말을 했을 리가（　）?",
+          "zh": "民秀怎麼可能說那種話？",
+          "en": "How could Minsu have said such a thing?",
+          "options": [
+            "있어요",
+            "돼요",
+            "해요",
+            "줘요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "가게가",
+            "벌써",
+            "문을"
+          ],
+          "after": " 닫았을 리가 없어요.",
+          "star": 3,
+          "zh": "那家店不可能已經關門了。",
+          "en": "That shop can't have closed already.",
+          "alts": [
+            [
+              2,
+              0,
+              1,
+              3
+            ]
+          ],
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "이렇게",
+            "쉬운",
+            "문제를",
+            "틀릴"
+          ],
+          "after": " 리가 없어요.",
+          "star": 3,
+          "zh": "這麼簡單的題目不可能答錯。",
+          "en": "There's no way I'd get such an easy question wrong."
+        }
+      ]
+    },
+    {
+      "id": "eul-ge-ppeonhada",
+      "pattern": "V/A-(으)ㄹ 게 뻔하다",
+      "title": {
+        "zh": "肯定會～、明擺著會～（多是不好的事）",
+        "en": "it's obvious that … (usually something bad)"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ 게 뻔하다　有收音 → -을 게 뻔하다　過去：-았/었을 게 뻔하다",
+        "en": "no final consonant / ㄹ → -ㄹ 게 뻔하다　final consonant → -을 게 뻔하다　past: -았/었을 게 뻔하다"
+      },
+      "explain": {
+        "zh": "不用看也知道結果一定是那樣，多半是不好的事：지금 가면 늦을 게 뻔해요（現在去肯定會遲到）。「게」是「것이」的口語縮寫。",
+        "en": "You know without looking how it will turn out, usually badly: 지금 가면 늦을 게 뻔해요 (if we go now, we'll obviously be late). 게 is the spoken form of 것이."
+      },
+      "notes": [
+        {
+          "zh": "書面也可寫「-(으)ㄹ 것이 뻔하다」。",
+          "en": "In writing: -(으)ㄹ 것이 뻔하다."
+        },
+        {
+          "zh": "帶有「早就知道會這樣」的語氣。",
+          "en": "It carries a tone of \"I could have told you\"."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "늦을 께 뻔해요.",
+          "right": "늦을 게 뻔해요.",
+          "zh": "寫成「게」，不是「께」。",
+          "en": "Spelled 게, not 께."
+        },
+        {
+          "wrong": "내일 시험에 떨어진 게 뻔해요.",
+          "right": "내일 시험에 떨어질 게 뻔해요.",
+          "zh": "還沒發生的事用「-(으)ㄹ 게 뻔하다」。",
+          "en": "Something yet to happen takes -(으)ㄹ 게 뻔하다."
+        }
+      ],
+      "examples": [
+        {
+          "text": "지금 가면 늦을 게 뻔해요.",
+          "zh": "現在去肯定會遲到。",
+          "en": "If we go now, we'll obviously be late."
+        },
+        {
+          "text": "그렇게 놀기만 하면 시험에 떨어질 게 뻔해요.",
+          "zh": "那樣一直玩，考試肯定會落榜。",
+          "en": "If you just play like that, you'll obviously fail the exam."
+        },
+        {
+          "text": "동생이 또 늦잠을 잤을 게 뻔해요.",
+          "zh": "弟弟肯定又睡過頭了。",
+          "en": "My brother has obviously overslept again."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "이렇게 비가 많이 오면 길이（　）게 뻔해요.",
+          "zh": "雨下這麼大，路肯定會塞。",
+          "en": "With this much rain, the roads will obviously be jammed.",
+          "options": [
+            "막힐",
+            "막히을",
+            "막힌",
+            "막혀"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "그 사람은 또 약속을（　）게 뻔해요.",
+          "zh": "那個人肯定又會忘記約定。",
+          "en": "He'll obviously forget the appointment again.",
+          "options": [
+            "잊어버릴",
+            "잊어버리을",
+            "잊어버린",
+            "잊어버려"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "아무 준비도 안 했으니 실패할 게（　）.",
+          "zh": "什麼都沒準備，肯定會失敗。",
+          "en": "We haven't prepared at all, so we'll obviously fail.",
+          "options": [
+            "뻔해요",
+            "뻔이에요",
+            "뻔했으면",
+            "뻔하세요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "지금 출발해도 회의에（　）게 뻔해요.",
+          "zh": "現在出發也肯定會趕不上會議。",
+          "en": "Even if we leave now, we'll obviously be late for the meeting.",
+          "options": [
+            "늦을",
+            "늦을께",
+            "늦은",
+            "늦어"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "동생은 숙제를 안 했을 게（　）.",
+          "zh": "弟弟肯定沒寫作業。",
+          "en": "My brother obviously hasn't done his homework.",
+          "options": [
+            "뻔해요",
+            "뻔이에요",
+            "뻔해 있어요",
+            "뻔하세요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그렇게",
+            "놀기만",
+            "하면",
+            "떨어질"
+          ],
+          "after": " 게 뻔해요.",
+          "star": 3,
+          "zh": "那樣一直玩的話，肯定會落榜。",
+          "en": "If you just play like that, you'll obviously fail.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "사람은",
+            "또",
+            "늦을"
+          ],
+          "after": " 게 뻔해요.",
+          "star": 3,
+          "zh": "那個人肯定又會遲到。",
+          "en": "He'll obviously be late again."
+        }
+      ]
+    },
+    {
+      "id": "eun-semida",
+      "pattern": "-(으)ㄴ/는 셈이다",
+      "title": {
+        "zh": "等於是～、可以說是～",
+        "en": "it's as good as …, it amounts to …"
+      },
+      "form": {
+        "zh": "動詞現在 -는 셈이다　動詞過去 -(으)ㄴ 셈이다　形容詞 -(으)ㄴ 셈이다",
+        "en": "verb (present) -는 셈이다　verb (past) -(으)ㄴ 셈이다　adjective -(으)ㄴ 셈이다"
+      },
+      "explain": {
+        "zh": "雖然不完全一樣，但換算或整體來看差不多是那樣：매일 만나니까 같이 사는 셈이에요（每天見面，等於是住在一起）、거의 다 했으니까 끝난 셈이에요（快做完了，等於結束了）。",
+        "en": "Not exactly, but all things considered it comes to that: 매일 만나니까 같이 사는 셈이에요 (we meet every day, so we practically live together), 거의 다 했으니까 끝난 셈이에요 (it's nearly done, so it's as good as finished)."
+      },
+      "notes": [
+        {
+          "zh": "常和「거의、다、결국」一起用。",
+          "en": "Often with 거의, 다 or 결국."
+        },
+        {
+          "zh": "「-(으)ㄴ/는 편이다」是「算是比較～」；「셈이다」是「換算下來等於」。",
+          "en": "-(으)ㄴ/는 편이다 is \"rather …\"; 셈이다 is \"it amounts to …\"."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "숙제를 다 했으니까 끝나는 셈이에요.",
+          "right": "숙제를 다 했으니까 끝난 셈이에요.",
+          "zh": "已經完成的事用過去的「-(으)ㄴ」。",
+          "en": "Something already done takes the past -(으)ㄴ."
+        },
+        {
+          "wrong": "이번 주는 거의 다 쉬은 셈이에요.",
+          "right": "이번 주는 거의 다 쉰 셈이에요.",
+          "zh": "「쉬다」沒有收音，過去冠形詞是「쉰」。",
+          "en": "쉬다 has no final consonant: 쉰."
+        }
+      ],
+      "examples": [
+        {
+          "text": "매일 만나니까 같이 사는 셈이에요.",
+          "zh": "每天見面，等於是住在一起。",
+          "en": "We meet every day, so we practically live together."
+        },
+        {
+          "text": "숙제를 거의 다 했으니까 끝난 셈이에요.",
+          "zh": "作業快寫完了，等於是結束了。",
+          "en": "My homework is nearly done, so it's as good as finished."
+        },
+        {
+          "text": "한 달에 책을 열 권 읽으니까 사흘에 한 권 읽는 셈이에요.",
+          "zh": "一個月讀十本書，等於三天讀一本。",
+          "en": "I read ten books a month — that's one every three days."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "10명 중 9명이 왔으니까 거의 다（　）셈이에요.",
+          "zh": "十個人來了九個，差不多等於全來了。",
+          "en": "Nine out of ten came, so practically everyone's here.",
+          "options": [
+            "온",
+            "오는",
+            "올",
+            "와"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "일주일에 6일 일하니까 거의 매일（　）셈이에요.",
+          "zh": "一週工作六天，差不多等於每天都在工作。",
+          "en": "I work six days a week, so it's practically every day.",
+          "options": [
+            "일하는",
+            "일한",
+            "일할",
+            "일해"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이제 다 끝난（　）.",
+          "zh": "現在等於全部結束了。",
+          "en": "It's as good as over now.",
+          "options": [
+            "셈이에요",
+            "셈해요",
+            "셈있어요",
+            "셈돼요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "한 달에 20일 일하니까 거의 매일 출근하는（　）.",
+          "zh": "一個月上班二十天，差不多等於每天上班。",
+          "en": "I work 20 days a month, so it's almost like going in every day.",
+          "options": [
+            "셈이에요",
+            "셈해요",
+            "셈 돼요",
+            "셈 있어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "이 일은 거의 다（　）셈이에요.",
+          "zh": "這件事差不多等於做完了。",
+          "en": "This job is as good as done.",
+          "options": [
+            "끝난",
+            "끝나는",
+            "끝날",
+            "끝나"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "결국",
+            "제가",
+            "돈을",
+            "낸"
+          ],
+          "after": " 셈이에요.",
+          "star": 3,
+          "zh": "結果等於是我付了錢。",
+          "en": "So in the end, I'm the one who paid.",
+          "alts": [
+            [
+              1,
+              0,
+              2,
+              3
+            ]
+          ],
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "하루에",
+            "세 시간씩",
+            "공부하니까",
+            "일주일에"
+          ],
+          "after": " 21시간 공부하는 셈이에요.",
+          "star": 2,
+          "zh": "一天讀三小時，一週等於讀二十一小時。",
+          "en": "Three hours a day makes 21 hours a week."
+        }
+      ]
+    },
+    {
+      "id": "deonde",
+      "pattern": "V/A-던데(요)",
+      "title": {
+        "zh": "我看到～耶（把親身看到、感受到的事委婉地說出來）",
+        "en": "… I noticed (sharing what you saw, softly)"
+      },
+      "form": {
+        "zh": "詞幹 ＋ -던데(요)　過去：-았/었던데(요)　句中：-던데 ＋ 後句",
+        "en": "stem + -던데(요)　past: -았/었던데(요)　mid-sentence: -던데 + a second clause"
+      },
+      "explain": {
+        "zh": "說話者把自己親眼看到、經歷到的事告訴對方，語氣委婉，常期待對方回應：그 식당 정말 맛있던데요（那家餐廳挺好吃的耶）、민수 씨가 아까 찾던데요（民秀剛剛在找你耶）。放在句中可以帶出建議或問題：밖에 비가 오던데 우산 있어요?",
+        "en": "The speaker shares something they saw or experienced, softly, often inviting a reply: 그 식당 정말 맛있던데요 (that restaurant was really good, you know), 민수 씨가 아까 찾던데요 (Minsu was looking for you earlier). Mid-sentence it leads into a suggestion or question: 밖에 비가 오던데 우산 있어요?"
+      },
+      "notes": [
+        {
+          "zh": "和「-더라고요」很像，「-던데요」更委婉。",
+          "en": "Like -더라고요, but softer."
+        },
+        {
+          "zh": "不能用來說自己的動作：제가 공부하던데요（×）。",
+          "en": "Not for your own actions: 제가 공부하던데요 is wrong."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "제가 어제 공부하던데요.",
+          "right": "민수 씨가 어제 공부하던데요.",
+          "zh": "「-던데요」說的是自己看到別人的事。",
+          "en": "-던데요 tells what you saw of others."
+        },
+        {
+          "wrong": "밖이 춥는던데요.",
+          "right": "밖이 춥던데요.",
+          "zh": "詞幹直接接「-던데요」。",
+          "en": "-던데요 goes straight after the stem."
+        }
+      ],
+      "examples": [
+        {
+          "text": "그 식당 정말 맛있던데요.",
+          "zh": "那家餐廳真的挺好吃的耶。",
+          "en": "That restaurant was really good, you know."
+        },
+        {
+          "text": "민수 씨가 아까 찾던데요.",
+          "zh": "民秀剛剛在找你耶。",
+          "en": "Minsu was looking for you earlier."
+        },
+        {
+          "text": "밖에 비가 오던데 우산 있어요?",
+          "zh": "外面在下雨耶，你有帶傘嗎？",
+          "en": "It's raining out — do you have an umbrella?"
+        }
+      ],
+      "quiz": [
+        {
+          "q": "어제 그 영화 봤는데 생각보다（　）.",
+          "zh": "昨天看了那部電影，比想像中好看耶。",
+          "en": "I saw that film yesterday — it was better than I expected.",
+          "options": [
+            "재미있던데요",
+            "재미있을래요",
+            "재미있읍시다",
+            "재미있으세요"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "밖에 바람이 많이（　）따뜻하게 입고 가세요.",
+          "zh": "外面風很大耶，穿暖一點再出門吧。",
+          "en": "It's very windy out, so dress warmly.",
+          "options": [
+            "불던데",
+            "불던니",
+            "부는던데",
+            "불었던니"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "아까 민수 씨가 선생님을（　）.",
+          "zh": "剛才民秀在找老師耶。",
+          "en": "Minsu was looking for the teacher earlier.",
+          "options": [
+            "찾던데요",
+            "찾을래요",
+            "찾을게요",
+            "찾읍시다"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그 카페에 가 봤는데 분위기가 정말（　）.",
+          "zh": "去過那家咖啡廳，氣氛真的很好耶。",
+          "en": "I went to that café — it had a really nice atmosphere.",
+          "options": [
+            "좋던데요",
+            "좋을래요",
+            "좋으세요",
+            "좋읍시다"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "민수 씨가 아까 사무실에（　）못 봤어요?",
+          "zh": "民秀剛剛在辦公室耶，你沒看到嗎？",
+          "en": "Minsu was in the office earlier — didn't you see him?",
+          "options": [
+            "있던데",
+            "있을래",
+            "있으려고",
+            "있자고"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "밖에",
+            "눈이",
+            "많이",
+            "오던데"
+          ],
+          "after": " 조심히 가세요.",
+          "star": 3,
+          "zh": "外面雪下得很大耶，路上小心。",
+          "en": "It's snowing hard out there, so be careful going home.",
+          "alts": [
+            [
+              1,
+              0,
+              2,
+              3
+            ]
+          ],
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "어제",
+            "본",
+            "그",
+            "영화"
+          ],
+          "after": " 재미있던데요.",
+          "star": 3,
+          "zh": "昨天看的那部電影挺好看的耶。",
+          "en": "That film we saw yesterday was pretty good."
         }
       ]
     },
@@ -457,6 +2237,63 @@
             "돌아와"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "비행기가 취소돼서 하루 더（　）수밖에 없었어요.",
+          "zh": "飛機取消了，只好多住一天。",
+          "en": "The flight was cancelled, so we had no choice but to stay another day.",
+          "options": [
+            "머물",
+            "머무는",
+            "머문",
+            "머물러"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그렇게 매일 연습하니까 실력이（　）수밖에 없어요.",
+          "zh": "那樣每天練習，實力當然會進步。",
+          "en": "Practising every day like that, you can't help but improve.",
+          "options": [
+            "늘",
+            "느는",
+            "는",
+            "늘어"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "돈이",
+            "없어서",
+            "걸어갈",
+            "수밖에"
+          ],
+          "after": " 없었어요.",
+          "star": 2,
+          "zh": "沒錢，只好走路去。",
+          "en": "I had no money, so I had to walk.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "다른",
+            "방법이",
+            "없어서",
+            "포기할"
+          ],
+          "after": " 수밖에 없었어요.",
+          "star": 3,
+          "zh": "沒有其他方法，只好放棄。",
+          "en": "There was no other way, so I had to give up."
         }
       ]
     },
@@ -548,6 +2385,63 @@
             "읽기"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "아이에게 옷을（　）밖에 나갔어요.",
+          "zh": "幫孩子穿上衣服後出門了。",
+          "en": "I dressed the child and went out.",
+          "options": [
+            "입히고",
+            "입고",
+            "입혀서는",
+            "입어서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "엄마가 아이를 일찍（　）.",
+          "zh": "媽媽很早就讓孩子睡了。",
+          "en": "Mom put the child to bed early.",
+          "options": [
+            "재웠어요",
+            "잤어요",
+            "자혔어요",
+            "자게 됐어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "선생님이",
+            "학생들에게",
+            "숙제를",
+            "제출하게"
+          ],
+          "after": " 했어요.",
+          "star": 3,
+          "zh": "老師讓學生們交作業。",
+          "en": "The teacher had the students hand in their homework.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "동생을",
+            "웃기려고",
+            "재미있는",
+            "이야기를"
+          ],
+          "after": " 했어요.",
+          "star": 1,
+          "zh": "為了逗弟弟笑，講了有趣的故事。",
+          "en": "I told a funny story to make my brother laugh."
         }
       ]
     },
@@ -639,6 +2533,679 @@
             "많ㄹ수록"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "이 책은（　）수록 재미있어요.",
+          "zh": "這本書越讀越有趣。",
+          "en": "This book gets more interesting the more you read it.",
+          "options": [
+            "읽을",
+            "읽는",
+            "읽은",
+            "읽"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "시간이（　）날씨가 더 추워졌어요.",
+          "zh": "時間越晚，天氣越冷。",
+          "en": "The later it got, the colder it became.",
+          "options": [
+            "갈수록",
+            "가는수록",
+            "갈 수록이",
+            "가수록"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "한국어는",
+            "배우면",
+            "배울수록",
+            "어려워요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "韓文越學越難。",
+          "en": "The more I learn Korean, the harder it gets.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "사람은",
+            "만나면",
+            "만날수록"
+          ],
+          "after": " 좋은 사람 같아요.",
+          "star": 3,
+          "zh": "那個人越見越覺得是好人。",
+          "en": "The more I meet him, the nicer he seems."
+        }
+      ]
+    },
+    {
+      "id": "eul-jeongdoro",
+      "pattern": "V/A-(으)ㄹ 정도로",
+      "title": {
+        "zh": "到～的程度、～得…",
+        "en": "so … that …, to the point of …"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ 정도로　有收音 → -을 정도로　句尾：-(으)ㄹ 정도이다",
+        "en": "no final consonant / ㄹ → -ㄹ 정도로　final consonant → -을 정도로　at the end: -(으)ㄹ 정도이다"
+      },
+      "explain": {
+        "zh": "用一個具體的情況說明程度有多高：눈물이 날 정도로 웃었어요（笑到流眼淚）、걸을 수 없을 정도로 피곤해요（累到走不動）。",
+        "en": "A concrete situation shows how far something goes: 눈물이 날 정도로 웃었어요 (I laughed so hard I cried), 걸을 수 없을 정도로 피곤해요 (I'm too tired to walk)."
+      },
+      "notes": [
+        {
+          "zh": "放句尾：-(으)ㄹ 정도예요（程度到～）。",
+          "en": "At the end: -(으)ㄹ 정도예요."
+        },
+        {
+          "zh": "和「-(으)ㄹ 만큼」意思很接近，常可以互換。",
+          "en": "Close to -(으)ㄹ 만큼; they often swap."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "눈물이 나는 정도로 웃었어요.",
+          "right": "눈물이 날 정도로 웃었어요.",
+          "zh": "「정도로」前面用「-(으)ㄹ」。",
+          "en": "정도로 follows -(으)ㄹ."
+        },
+        {
+          "wrong": "손이 얼을 정도로 추웠어요.",
+          "right": "손이 얼 정도로 추웠어요.",
+          "zh": "「얼다」是ㄹ收音，直接接「-ㄹ 정도로」。",
+          "en": "얼다 ends in ㄹ: 얼 정도로."
+        }
+      ],
+      "examples": [
+        {
+          "text": "눈물이 날 정도로 웃었어요.",
+          "zh": "笑到流眼淚。",
+          "en": "I laughed so hard I cried."
+        },
+        {
+          "text": "걸을 수 없을 정도로 피곤해요.",
+          "zh": "累到走不動。",
+          "en": "I'm too tired to walk."
+        },
+        {
+          "text": "그 사람은 한국 사람이라고 생각할 정도로 한국어를 잘해요.",
+          "zh": "那個人韓文好到讓人以為是韓國人。",
+          "en": "His Korean is so good you'd think he was Korean."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "배가 터질（　）많이 먹었어요.",
+          "zh": "吃到肚子快撐破了。",
+          "en": "I ate so much I thought I'd burst.",
+          "options": [
+            "정도로",
+            "정도에",
+            "정도를",
+            "정도가"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "귀가（　）정도로 음악 소리가 커요.",
+          "zh": "音樂大聲到耳朵都痛。",
+          "en": "The music is so loud it hurts my ears.",
+          "options": [
+            "아플",
+            "아픈",
+            "아프는",
+            "아파"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "손이（　）정도로 추웠어요.",
+          "zh": "冷到手都快凍僵了。",
+          "en": "It was so cold my hands nearly froze.",
+          "options": [
+            "얼",
+            "언",
+            "어는",
+            "얼을"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "발이（　）정도로 많이 걸었어요.",
+          "zh": "走到腳都痛了。",
+          "en": "I walked so much my feet hurt.",
+          "options": [
+            "아플",
+            "아픈",
+            "아프는",
+            "아파"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그 영화는 다시 보고 싶을（　）감동적이었어요.",
+          "zh": "那部電影感人到讓人想再看一次。",
+          "en": "That film was so moving I wanted to watch it again.",
+          "options": [
+            "정도로",
+            "정도에",
+            "정도를",
+            "정도는"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "눈물이",
+            "날",
+            "정도로",
+            "웃었어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "笑到流眼淚。",
+          "en": "I laughed so hard I cried.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "앞이",
+            "안",
+            "보일",
+            "정도로"
+          ],
+          "after": " 눈이 많이 왔어요.",
+          "star": 3,
+          "zh": "雪大到前面都看不見。",
+          "en": "It snowed so much you couldn't see ahead."
+        }
+      ]
+    },
+    {
+      "id": "eul-mankeum",
+      "pattern": "V/A-(으)ㄹ 만큼 ／ -(으)ㄴ/는 만큼 ／ N만큼",
+      "title": {
+        "zh": "像～那樣、到～的程度；和～一樣",
+        "en": "as much as …, to the extent that …; as … as N"
+      },
+      "form": {
+        "zh": "程度：-(으)ㄹ 만큼　相當的量：-(으)ㄴ/는 만큼　名詞：N만큼（連寫）",
+        "en": "degree: -(으)ㄹ 만큼　matching amount: -(으)ㄴ/는 만큼　nouns: N만큼 (no space)"
+      },
+      "explain": {
+        "zh": "「-(으)ㄹ 만큼」表示程度，和「-(으)ㄹ 정도로」接近：쓰러질 만큼 일했어요。「-(으)ㄴ/는 만큼」表示「和～相當的量」：노력한 만큼 결과가 나와요（付出多少努力，就有多少成果）。名詞：저도 형만큼 키가 커요（我也和哥哥一樣高）。",
+        "en": "-(으)ㄹ 만큼 shows degree, like -(으)ㄹ 정도로: 쓰러질 만큼 일했어요. -(으)ㄴ/는 만큼 is \"as much as\": 노력한 만큼 결과가 나와요 (you get out what you put in). With a noun: 저도 형만큼 키가 커요 (I'm as tall as my brother)."
+      },
+      "notes": [
+        {
+          "zh": "名詞後面直接加「만큼」，不空格。",
+          "en": "만큼 attaches to a noun with no space."
+        },
+        {
+          "zh": "「먹을 만큼 드세요」＝吃你吃得下的份量。",
+          "en": "먹을 만큼 드세요 = take as much as you can eat."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "저도 형보다 만큼 커요.",
+          "right": "저도 형만큼 커요.",
+          "zh": "「和～一樣」只用「만큼」，不加「보다」。",
+          "en": "\"As … as\" is just 만큼, without 보다."
+        },
+        {
+          "wrong": "필요하는 만큼 가져가세요.",
+          "right": "필요한 만큼 가져가세요.",
+          "zh": "「필요하다」是形容詞，接「-(으)ㄴ 만큼」。",
+          "en": "필요하다 is an adjective: 필요한 만큼."
+        }
+      ],
+      "examples": [
+        {
+          "text": "쓰러질 만큼 열심히 일했어요.",
+          "zh": "工作到快累倒。",
+          "en": "I worked so hard I nearly collapsed."
+        },
+        {
+          "text": "노력한 만큼 결과가 나와요.",
+          "zh": "付出多少努力，就有多少成果。",
+          "en": "You get results in proportion to your effort."
+        },
+        {
+          "text": "저도 형만큼 키가 커요.",
+          "zh": "我也和哥哥一樣高。",
+          "en": "I'm as tall as my older brother."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "저도 언니（　）요리를 잘해요.",
+          "zh": "我也和姊姊一樣會做菜。",
+          "en": "I'm as good a cook as my sister.",
+          "options": [
+            "만큼",
+            "보다만",
+            "하고만큼",
+            "의 만큼"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "필요（　）만큼 가져가세요.",
+          "zh": "需要多少就拿多少吧。",
+          "en": "Take as much as you need.",
+          "options": [
+            "한",
+            "하는",
+            "해",
+            "하은"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "쓰러질（　）열심히 일했어요.",
+          "zh": "工作到快累倒的程度。",
+          "en": "I worked so hard I nearly collapsed.",
+          "options": [
+            "만큼",
+            "대신",
+            "김에",
+            "동안"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "먹을（　）덜어서 드세요.",
+          "zh": "請夾你吃得下的份量。",
+          "en": "Take as much as you can eat.",
+          "options": [
+            "만큼",
+            "만에",
+            "대로",
+            "김에"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "노력（　）만큼 좋은 결과가 나올 거예요.",
+          "zh": "付出多少努力，就會有多少好結果。",
+          "en": "You'll get results as good as the effort you put in.",
+          "options": [
+            "한",
+            "해",
+            "하을",
+            "했는"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "저도",
+            "언니만큼",
+            "요리를",
+            "잘해요"
+          ],
+          "after": ".",
+          "star": 3,
+          "zh": "我也和姊姊一樣會做菜。",
+          "en": "I'm as good a cook as my sister.",
+          "alts": [
+            [
+              0,
+              2,
+              1,
+              3
+            ]
+          ],
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "쓰러질",
+            "만큼",
+            "열심히",
+            "일했어요"
+          ],
+          "after": ".",
+          "star": 1,
+          "zh": "工作到快累倒的程度。",
+          "en": "I worked so hard I nearly collapsed."
+        }
+      ]
+    },
+    {
+      "id": "eun-banmyeone",
+      "pattern": "-(으)ㄴ/는 반면(에)",
+      "title": {
+        "zh": "相反地、另一方面～（對比兩面）",
+        "en": "whereas, on the other hand"
+      },
+      "form": {
+        "zh": "動詞現在 -는 반면(에)　形容詞・動詞過去 -(으)ㄴ 반면(에)　名詞 인 반면(에)",
+        "en": "verb (present) -는 반면(에)　adjective / verb (past) -(으)ㄴ 반면(에)　noun 인 반면(에)"
+      },
+      "explain": {
+        "zh": "把同一件事的兩個相反面、或兩個對比的人事物並列：이 집은 넓은 반면에 교통이 불편해요（這間房子寬敞，但交通不方便）。比「-지만」更書面。",
+        "en": "Sets two opposite sides side by side: 이 집은 넓은 반면에 교통이 불편해요 (this house is spacious, but transport is inconvenient). More formal than -지만."
+      },
+      "notes": [
+        {
+          "zh": "前後兩句是對比的性質。",
+          "en": "The two clauses contrast."
+        },
+        {
+          "zh": "名詞：형은 의사인 반면에 동생은 가수예요。",
+          "en": "With a noun: 형은 의사인 반면에 동생은 가수예요."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "이 집은 넓는 반면에 교통이 불편해요.",
+          "right": "이 집은 넓은 반면에 교통이 불편해요.",
+          "zh": "形容詞接「-(으)ㄴ 반면에」。",
+          "en": "An adjective takes -(으)ㄴ 반면에."
+        },
+        {
+          "wrong": "형은 의사 반면에 동생은 가수예요.",
+          "right": "형은 의사인 반면에 동생은 가수예요.",
+          "zh": "名詞要加「인」。",
+          "en": "A noun needs 인."
+        }
+      ],
+      "examples": [
+        {
+          "text": "이 집은 넓은 반면에 교통이 불편해요.",
+          "zh": "這間房子寬敞，但交通不方便。",
+          "en": "This house is spacious, but transport is inconvenient."
+        },
+        {
+          "text": "형은 말이 많은 반면에 동생은 조용해요.",
+          "zh": "哥哥話很多，弟弟則很安靜。",
+          "en": "The older brother talks a lot, whereas the younger is quiet."
+        },
+        {
+          "text": "도시는 편리한 반면 공기가 안 좋아요.",
+          "zh": "城市很方便，但空氣不好。",
+          "en": "Cities are convenient, but the air is bad."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "이 옷은 예쁜（　）값이 너무 비싸요.",
+          "zh": "這件衣服很漂亮，但價格太貴了。",
+          "en": "These clothes are pretty, but far too expensive.",
+          "options": [
+            "반면에",
+            "대신에서",
+            "덕분에",
+            "김에"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "언니는 키가（　）반면에 저는 작아요.",
+          "zh": "姊姊個子高，我則很矮。",
+          "en": "My sister is tall, whereas I am short.",
+          "options": [
+            "큰",
+            "크는",
+            "클",
+            "커"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "서울은 볼거리가（　）반면에 물가가 비싸요.",
+          "zh": "首爾值得看的東西很多，但物價高。",
+          "en": "Seoul has lots to see, but it's expensive.",
+          "options": [
+            "많은",
+            "많는",
+            "많을",
+            "많아"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "이 동네는 교통이（　）반면에 시끄러워요.",
+          "zh": "這一帶交通方便，但相對地很吵。",
+          "en": "This area has good transport, but it's noisy.",
+          "options": [
+            "편리한",
+            "편리하는",
+            "편리할",
+            "편리해"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "형은 운동을 잘하는（　）동생은 공부를 잘해요.",
+          "zh": "哥哥很會運動，弟弟則是很會讀書。",
+          "en": "The older brother is good at sports, whereas the younger is good at studying.",
+          "options": [
+            "반면에",
+            "덕분에",
+            "김에",
+            "바람에"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "월급이",
+            "많은",
+            "반면에",
+            "일이"
+          ],
+          "after": " 힘들어요.",
+          "star": 2,
+          "zh": "薪水多，相對地工作很辛苦。",
+          "en": "The pay is good, but the work is hard.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "형은",
+            "의사인",
+            "반면에",
+            "동생은"
+          ],
+          "after": " 가수예요.",
+          "star": 2,
+          "zh": "哥哥是醫生，弟弟則是歌手。",
+          "en": "The older brother is a doctor, while the younger is a singer."
+        }
+      ]
+    },
+    {
+      "id": "gineunkeonyeong",
+      "pattern": "V/A-기는커녕 ／ N은/는커녕",
+      "title": {
+        "zh": "別說～了，（連）～都…",
+        "en": "far from …, not even …"
+      },
+      "form": {
+        "zh": "動詞・形容詞 -기는커녕　名詞 은/는커녕　後句常用「도／조차」和否定",
+        "en": "verb / adjective -기는커녕　noun 은/는커녕　the second clause often has 도 / 조차 and a negative"
+      },
+      "explain": {
+        "zh": "前面那件事不但沒做到，連更基本的也沒有，或結果反而更差：쉬기는커녕 밥 먹을 시간도 없어요（別說休息了，連吃飯的時間都沒有）、칭찬은커녕 야단만 맞았어요（別說稱讚了，只挨了罵）。",
+        "en": "Not only did the first thing not happen, even something more basic didn't, or it went the other way: 쉬기는커녕 밥 먹을 시간도 없어요 (far from resting, I don't even have time to eat), 칭찬은커녕 야단만 맞았어요 (instead of praise, I just got told off)."
+      },
+      "notes": [
+        {
+          "zh": "後句多是否定，或比預期更差的情況。",
+          "en": "The second clause is usually negative or worse than expected."
+        },
+        {
+          "zh": "名詞：돈은커녕 시간도 없어요。",
+          "en": "With a noun: 돈은커녕 시간도 없어요."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "쉬기커녕 일만 했어요.",
+          "right": "쉬기는커녕 일만 했어요.",
+          "zh": "是「-기는커녕」，「는」不能省。",
+          "en": "It is -기는커녕; 는 can't be dropped."
+        },
+        {
+          "wrong": "돈는커녕 시간도 없어요.",
+          "right": "돈은커녕 시간도 없어요.",
+          "zh": "有收音的名詞接「은커녕」。",
+          "en": "A noun ending in a consonant takes 은커녕."
+        }
+      ],
+      "examples": [
+        {
+          "text": "쉬기는커녕 밥 먹을 시간도 없어요.",
+          "zh": "別說休息了，連吃飯的時間都沒有。",
+          "en": "Far from resting, I don't even have time to eat."
+        },
+        {
+          "text": "칭찬은커녕 야단만 맞았어요.",
+          "zh": "別說稱讚了，只挨了罵。",
+          "en": "Instead of praise, I just got told off."
+        },
+        {
+          "text": "돈을 모으기는커녕 빚만 늘었어요.",
+          "zh": "別說存錢了，只有負債越來越多。",
+          "en": "Far from saving money, I only got deeper in debt."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "주말에 쉬기（　）더 바빴어요.",
+          "zh": "週末別說休息了，反而更忙了。",
+          "en": "Far from resting at the weekend, I was even busier.",
+          "options": [
+            "는커녕",
+            "커녕은",
+            "를커녕",
+            "도커녕"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "아침（　）커피 한 잔도 못 마셨어요.",
+          "zh": "別說早餐了，連一杯咖啡都沒喝到。",
+          "en": "Never mind breakfast, I didn't even get a cup of coffee.",
+          "options": [
+            "은커녕",
+            "는커녕",
+            "이커녕",
+            "을커녕"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "칭찬은커녕 야단（　）맞았어요.",
+          "zh": "別說稱讚了，只挨了罵。",
+          "en": "Instead of praise, I just got told off.",
+          "options": [
+            "만",
+            "처럼",
+            "에게",
+            "하고"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "돈을（　）빚만 늘었어요.",
+          "zh": "別說存錢了，只有負債越來越多。",
+          "en": "Far from saving money, I only got deeper into debt.",
+          "options": [
+            "모으기는커녕",
+            "모으는커녕",
+            "모으기커녕",
+            "모아는커녕"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "휴가（　）주말에도 못 쉬어요.",
+          "zh": "別說休假了，連週末都不能休息。",
+          "en": "Never mind a holiday, I can't even rest at weekends.",
+          "options": [
+            "는커녕",
+            "은커녕",
+            "가커녕",
+            "를커녕"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "도와주기는커녕",
+            "방해만",
+            "하고",
+            "갔어요"
+          ],
+          "after": ".",
+          "star": 1,
+          "zh": "別說幫忙了，只會妨礙就走了。",
+          "en": "Far from helping, he just got in the way and left.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "돈을",
+            "벌기는커녕",
+            "오히려",
+            "잃었어요"
+          ],
+          "after": ".",
+          "star": 1,
+          "zh": "別說賺錢了，反而賠了錢。",
+          "en": "Far from making money, I actually lost some."
         }
       ]
     },
@@ -730,6 +3297,975 @@
             "떨어지려고"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "아무리 바쁘（　）밥은 꼭 챙겨 드세요.",
+          "zh": "再怎麼忙，也一定要好好吃飯。",
+          "en": "However busy you are, make sure you eat.",
+          "options": [
+            "더라도",
+            "더니",
+            "던데",
+            "더라고요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "혹시 늦게（　）꼭 연락해 주세요.",
+          "zh": "萬一晚到，也一定要聯絡我。",
+          "en": "Even if you arrive late, be sure to let me know.",
+          "options": [
+            "도착하더라도",
+            "도착했더라도요",
+            "도착하더니",
+            "도착하던데"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "결과가",
+            "안",
+            "좋더라도",
+            "실망하지"
+          ],
+          "after": " 마세요.",
+          "star": 2,
+          "zh": "就算結果不好，也不要失望。",
+          "en": "Even if the results aren't good, don't be disappointed.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "내일",
+            "비가",
+            "오더라도",
+            "출발할"
+          ],
+          "after": " 거예요.",
+          "star": 2,
+          "zh": "就算明天下雨，也會出發。",
+          "en": "We'll leave even if it rains tomorrow."
+        }
+      ]
+    },
+    {
+      "id": "a-bwatja",
+      "pattern": "V/A-아/어 봤자",
+      "title": {
+        "zh": "就算～也（沒用）",
+        "en": "even if …, it's no use"
+      },
+      "form": {
+        "zh": "母音ㅏ・ㅗ → -아 봤자　其他 → -어 봤자　하다 → 해 봤자",
+        "en": "ㅏ/ㅗ → -아 봤자　others → -어 봤자　하다 → 해 봤자"
+      },
+      "explain": {
+        "zh": "就算做了前面的事，也得不到期待的結果，帶有「白費力氣」的語氣：지금 가 봤자 이미 늦었어요（現在去也已經來不及了）、비싸 봤자 만 원쯤 할 거예요（再貴也不過一萬元左右）。",
+        "en": "Even doing the first thing won't bring the hoped-for result — \"no point\": 지금 가 봤자 이미 늦었어요 (there's no point going now, it's too late), 비싸 봤자 만 원쯤 할 거예요 (it can't cost more than about 10,000 won)."
+      },
+      "notes": [
+        {
+          "zh": "後句多是否定、沒用的結果：소용없다、-(으)ㄹ 거예요。",
+          "en": "The second clause is usually negative: 소용없다, -(으)ㄹ 거예요."
+        },
+        {
+          "zh": "緊接的後句不能是命令或提議。",
+          "en": "The clause right after it can't be a command or suggestion."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "지금 가 봤자 같이 가요.",
+          "right": "지금 가 봤자 소용없어요.",
+          "zh": "「-아/어 봤자」後面接沒用的結果，不接提議。",
+          "en": "-아/어 봤자 is followed by a useless outcome, not a suggestion."
+        },
+        {
+          "wrong": "아무리 했어 봤자 안 돼요.",
+          "right": "아무리 해 봤자 안 돼요.",
+          "zh": "「봤자」前面不加過去式。",
+          "en": "No past tense before 봤자."
+        }
+      ],
+      "examples": [
+        {
+          "text": "지금 가 봤자 이미 늦었어요.",
+          "zh": "現在去也已經來不及了。",
+          "en": "There's no point going now — it's too late."
+        },
+        {
+          "text": "아무리 말해 봤자 소용없어요.",
+          "zh": "再怎麼說也沒用。",
+          "en": "It's no use, however much you say."
+        },
+        {
+          "text": "비싸 봤자 만 원쯤 할 거예요.",
+          "zh": "再貴也不過一萬元左右吧。",
+          "en": "It can't cost more than about 10,000 won."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "지금 서둘러（　）기차를 못 탈 거예요.",
+          "zh": "現在再趕也搭不上火車了。",
+          "en": "Even if we hurry now, we won't make the train.",
+          "options": [
+            "봤자",
+            "보니까",
+            "보면",
+            "보고"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "그 사람한테（　）봤자 안 들을 거예요.",
+          "zh": "就算跟他說，他也不會聽。",
+          "en": "Even if you tell him, he won't listen.",
+          "options": [
+            "말해",
+            "말하",
+            "말한",
+            "말하고"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "아무리 후회（　）소용없어요.",
+          "zh": "再怎麼後悔也沒用。",
+          "en": "It's no use regretting it, however much you do.",
+          "options": [
+            "해 봤자",
+            "하 봤자",
+            "했어 봤자",
+            "해 봤자도"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "지금 택시를（　）봤자 늦을 거예요.",
+          "zh": "現在就算搭計程車也會遲到。",
+          "en": "Even if we take a taxi now, we'll be late.",
+          "options": [
+            "타",
+            "타고",
+            "탄",
+            "타서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "아무리 비싸（　）만 원 정도일 거예요.",
+          "zh": "再貴也不過一萬元左右吧。",
+          "en": "However expensive it is, it'll be about 10,000 won at most.",
+          "options": [
+            "봤자",
+            "보니",
+            "보면",
+            "봐서"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "지금",
+            "후회해",
+            "봤자",
+            "소용없어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "現在後悔也沒用。",
+          "en": "There's no use regretting it now.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "사람에게",
+            "말해",
+            "봤자"
+          ],
+          "after": " 안 들을 거예요.",
+          "star": 3,
+          "zh": "就算跟他說，他也不會聽。",
+          "en": "Even if you tell him, he won't listen."
+        }
+      ]
+    },
+    {
+      "id": "da-bomyeon",
+      "pattern": "V-다 보면",
+      "title": {
+        "zh": "一直～下去的話，（就會）～",
+        "en": "if you keep on …, (you will) …"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -다 보면",
+        "en": "verb stem + -다 보면"
+      },
+      "explain": {
+        "zh": "只要持續做某件事，就會出現某個結果：열심히 하다 보면 잘하게 될 거예요（一直努力下去，就會變厲害的）、이야기하다 보면 시간 가는 줄 몰라요（聊著聊著就忘了時間）。",
+        "en": "If you keep doing something, a result will come: 열심히 하다 보면 잘하게 될 거예요 (keep working hard and you'll get good), 이야기하다 보면 시간 가는 줄 몰라요 (when we get talking, we lose track of time)."
+      },
+      "notes": [
+        {
+          "zh": "後句常用「-(으)ㄹ 거예요」「-게 되다」「-(으)ㄹ 때도 있다」。",
+          "en": "The second clause often has -(으)ㄹ 거예요, -게 되다 or -(으)ㄹ 때도 있다."
+        },
+        {
+          "zh": "已經發生的結果用「-다 보니」。",
+          "en": "For a result that has already happened, use -다 보니."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "연습하다 보면 잘하게 됐어요.",
+          "right": "연습하다 보니 잘하게 됐어요.",
+          "zh": "已經發生的結果用「-다 보니」。",
+          "en": "A result that has happened takes -다 보니."
+        },
+        {
+          "wrong": "계속 했다 보면 익숙해질 거예요.",
+          "right": "계속 하다 보면 익숙해질 거예요.",
+          "zh": "「-다 보면」前面不加過去式。",
+          "en": "No past tense before -다 보면."
+        }
+      ],
+      "examples": [
+        {
+          "text": "열심히 하다 보면 잘하게 될 거예요.",
+          "zh": "一直努力下去，就會變厲害的。",
+          "en": "Keep working hard and you'll get good at it."
+        },
+        {
+          "text": "한국에 살다 보면 한국어가 늘 거예요.",
+          "zh": "在韓國住下去，韓文就會進步的。",
+          "en": "If you keep living in Korea, your Korean will improve."
+        },
+        {
+          "text": "이야기하다 보면 시간 가는 줄 몰라요.",
+          "zh": "聊著聊著就會忘了時間。",
+          "en": "When we get talking, we lose track of time."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "계속（　）보면 익숙해질 거예요.",
+          "zh": "一直做下去就會習慣的。",
+          "en": "If you keep at it, you'll get used to it.",
+          "options": [
+            "하다",
+            "했다",
+            "하고",
+            "해"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "매일 한국어로（　）실력이 늘 거예요.",
+          "zh": "每天用韓文說話，實力就會進步的。",
+          "en": "If you speak Korean every day, you'll improve.",
+          "options": [
+            "말하다 보면",
+            "말하다 보니",
+            "말했다 보면",
+            "말하고 보면"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "살다（　）그런 일도 있어요.",
+          "zh": "人活著，也會遇到那種事的。",
+          "en": "In life, these things happen.",
+          "options": [
+            "보면",
+            "봐서",
+            "보러",
+            "보자"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "한국에서（　）한국 문화도 자연스럽게 알게 될 거예요.",
+          "zh": "在韓國住下去，自然就會了解韓國文化。",
+          "en": "If you keep living in Korea, you'll naturally get to know its culture.",
+          "options": [
+            "살다 보면",
+            "살다 보니",
+            "살았다 보면",
+            "사다 보면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "열심히 연습하다（　）실력이 늘 거예요.",
+          "zh": "一直努力練習的話，實力就會進步。",
+          "en": "If you keep practising hard, you'll improve.",
+          "options": [
+            "보면",
+            "보니",
+            "봐서",
+            "본다면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "계속",
+            "듣다",
+            "보면",
+            "익숙해질"
+          ],
+          "after": " 거예요.",
+          "star": 2,
+          "zh": "一直聽下去就會習慣的。",
+          "en": "If you keep listening, you'll get used to it.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "여행을",
+            "하다",
+            "보면",
+            "길을"
+          ],
+          "after": " 잃을 때도 있어요.",
+          "star": 2,
+          "zh": "旅行的時候，也會有迷路的時候。",
+          "en": "When you travel, sometimes you get lost."
+        }
+      ]
+    },
+    {
+      "id": "giman-hamyeon",
+      "pattern": "V-기만 하면",
+      "title": {
+        "zh": "只要一～就～（每次都）；只要～就行",
+        "en": "whenever …, every time …; all you have to do is …"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -기만 하면　只要～就可以：-기만 하면 되다",
+        "en": "verb stem + -기만 하면　all you need is: -기만 하면 되다"
+      },
+      "explain": {
+        "zh": "只要前面的事一發生，後面的事每次都會跟著發生：동생은 차를 타기만 하면 자요（弟弟只要一坐車就睡）。「-기만 하면 되다」是「只要～就行」：여기에 이름을 쓰기만 하면 돼요。",
+        "en": "Every time the first thing happens, the second follows: 동생은 차를 타기만 하면 자요 (my brother falls asleep whenever he gets in a car). -기만 하면 되다 is \"all you need to do is …\": 여기에 이름을 쓰기만 하면 돼요."
+      },
+      "notes": [
+        {
+          "zh": "過去的習慣：-기만 하면 …았/었어요。",
+          "en": "For a past habit: -기만 하면 …았/었어요."
+        },
+        {
+          "zh": "「만」表示「只要」，不能換成別的助詞。",
+          "en": "만 means \"just\"; it can't be swapped for another particle."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "차를 타면만 하면 자요.",
+          "right": "차를 타기만 하면 자요.",
+          "zh": "是「-기만 하면」。",
+          "en": "It is -기만 하면."
+        },
+        {
+          "wrong": "여기에 이름을 쓰기만 되면 돼요.",
+          "right": "여기에 이름을 쓰기만 하면 돼요.",
+          "zh": "「只要～就行」是「-기만 하면 되다」。",
+          "en": "\"All you need\" is -기만 하면 되다."
+        }
+      ],
+      "examples": [
+        {
+          "text": "동생은 차를 타기만 하면 자요.",
+          "zh": "弟弟只要一坐車就睡。",
+          "en": "My brother falls asleep whenever he gets in a car."
+        },
+        {
+          "text": "저는 이 노래를 듣기만 하면 눈물이 나요.",
+          "zh": "我只要一聽這首歌就會流淚。",
+          "en": "Every time I hear this song, I cry."
+        },
+        {
+          "text": "여기에 이름을 쓰기만 하면 돼요.",
+          "zh": "只要在這裡寫上名字就行了。",
+          "en": "All you have to do is write your name here."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "그 아이는 저를（　）하면 울어요.",
+          "zh": "那個孩子只要一看到我就哭。",
+          "en": "That child cries whenever he sees me.",
+          "options": [
+            "보기만",
+            "보만",
+            "보기는",
+            "보기를"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이 버튼을 누르기만（　）돼요.",
+          "zh": "只要按這個按鈕就行了。",
+          "en": "All you have to do is press this button.",
+          "options": [
+            "하면",
+            "해서",
+            "하고",
+            "하니까"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "저는 우유를（　）하면 배가 아파요.",
+          "zh": "我只要一喝牛奶肚子就痛。",
+          "en": "Whenever I drink milk, my stomach hurts.",
+          "options": [
+            "마시기만",
+            "마시만",
+            "마셔기만",
+            "마시기를"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "저는 비행기를（　）하면 귀가 아파요.",
+          "zh": "我只要一搭飛機耳朵就痛。",
+          "en": "Whenever I fly, my ears hurt.",
+          "options": [
+            "타기만",
+            "타면만",
+            "타기도",
+            "타기를"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "이 약은 하루에 한 번 먹기만（　）돼요.",
+          "zh": "這個藥只要一天吃一次就行了。",
+          "en": "You only need to take this medicine once a day.",
+          "options": [
+            "하면",
+            "해서",
+            "하고",
+            "하니까"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "동생은",
+            "차를",
+            "타기만",
+            "하면"
+          ],
+          "after": " 잠이 들어요.",
+          "star": 2,
+          "zh": "弟弟只要一坐車就睡著。",
+          "en": "My brother falls asleep whenever he gets in a car.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그 노래를",
+            "듣기만",
+            "하면",
+            "옛날"
+          ],
+          "after": " 생각이 나요.",
+          "star": 1,
+          "zh": "只要一聽那首歌就想起從前。",
+          "en": "Whenever I hear that song, I think of the old days."
+        }
+      ]
+    },
+    {
+      "id": "damyeon",
+      "pattern": "V/A-(ㄴ/는)다면 ／ N(이)라면",
+      "title": {
+        "zh": "假如～的話（假設、不太可能的情況）",
+        "en": "if … (supposing, often unlikely)"
+      },
+      "form": {
+        "zh": "動詞 -ㄴ/는다면　形容詞 -다면　名詞 -(이)라면　過去 -았/었다면",
+        "en": "verb -ㄴ/는다면　adjective -다면　noun -(이)라면　past -았/었다면"
+      },
+      "explain": {
+        "zh": "假設一個不太可能、或還沒發生的情況：복권에 당첨된다면 세계 여행을 하고 싶어요（假如中了彩券，想環遊世界）。比「-(으)면」更有「假如」的感覺。過去相反的假設：그때 알았다면 도와줬을 거예요（那時候知道的話，就會幫忙了）。",
+        "en": "Supposes something unlikely or not yet real: 복권에 당첨된다면 세계 여행을 하고 싶어요 (if I won the lottery, I'd travel the world). It feels more hypothetical than -(으)면. Against the past: 그때 알았다면 도와줬을 거예요 (if I had known then, I would have helped)."
+      },
+      "notes": [
+        {
+          "zh": "名詞：내가 너라면…（如果我是你…）。",
+          "en": "With a noun: 내가 너라면… (if I were you …)."
+        },
+        {
+          "zh": "動詞現在：沒有收音 -ㄴ다면，有收音 -는다면。",
+          "en": "Verbs: -ㄴ다면 after a vowel, -는다면 after a consonant."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "복권에 당첨되다면…",
+          "right": "복권에 당첨된다면…",
+          "zh": "動詞要用「-ㄴ/는다면」。",
+          "en": "A verb takes -ㄴ/는다면."
+        },
+        {
+          "wrong": "내가 부자다면…",
+          "right": "내가 부자라면…",
+          "zh": "名詞用「-(이)라면」。",
+          "en": "A noun takes -(이)라면."
+        }
+      ],
+      "examples": [
+        {
+          "text": "복권에 당첨된다면 세계 여행을 하고 싶어요.",
+          "zh": "假如中了彩券，想環遊世界。",
+          "en": "If I won the lottery, I'd like to travel the world."
+        },
+        {
+          "text": "다시 태어난다면 새가 되고 싶어요.",
+          "zh": "如果能重新出生，想當一隻鳥。",
+          "en": "If I were born again, I'd like to be a bird."
+        },
+        {
+          "text": "그때 알았다면 도와줬을 거예요.",
+          "zh": "那時候知道的話，就會幫忙了。",
+          "en": "If I had known then, I would have helped."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "시간이（　）같이 여행 가고 싶어요.",
+          "zh": "假如有時間的話，想一起去旅行。",
+          "en": "If I had the time, I'd like to travel together.",
+          "options": [
+            "있다면",
+            "있는다면",
+            "있ㄴ다면",
+            "있라면"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "내가 새（　）하늘을 날 수 있을 텐데.",
+          "zh": "假如我是鳥，就能在天上飛了。",
+          "en": "If I were a bird, I could fly.",
+          "options": [
+            "라면",
+            "다면",
+            "이라면",
+            "는다면"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "한국에 다시（　）부산에 가 보고 싶어요.",
+          "zh": "假如再去韓國，想去釜山看看。",
+          "en": "If I go to Korea again, I'd like to visit Busan.",
+          "options": [
+            "간다면",
+            "가다면",
+            "가는다면",
+            "갔는다면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "복권에（　）집부터 사고 싶어요.",
+          "zh": "假如中了彩券，想先買房子。",
+          "en": "If I won the lottery, I would buy a house first.",
+          "options": [
+            "당첨된다면",
+            "당첨되다면",
+            "당첨된다니",
+            "당첨되는다면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "내가 너（　）그렇게 하지 않을 거야.",
+          "zh": "如果我是你，就不會那樣做。",
+          "en": "If I were you, I wouldn't do that.",
+          "options": [
+            "라면",
+            "이라면",
+            "다면",
+            "는다면"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그때",
+            "더",
+            "열심히",
+            "했다면"
+          ],
+          "after": " 합격했을 거예요.",
+          "star": 3,
+          "zh": "那時候再努力一點的話，就考上了。",
+          "en": "If I had worked harder back then, I would have passed.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "다시",
+            "태어난다면",
+            "새가",
+            "되고"
+          ],
+          "after": " 싶어요.",
+          "star": 1,
+          "zh": "如果能重新出生，想當一隻鳥。",
+          "en": "If I were born again, I'd like to be a bird."
+        }
+      ]
+    },
+    {
+      "id": "neun-han",
+      "pattern": "V-는 한",
+      "title": {
+        "zh": "只要～（就）、在～的範圍內",
+        "en": "as long as …, unless … (with -지 않는 한)"
+      },
+      "form": {
+        "zh": "動詞・있다/없다 ＋ -는 한　除非：-지 않는 한",
+        "en": "verb or 있다/없다 + -는 한　unless: -지 않는 한"
+      },
+      "explain": {
+        "zh": "表示一個條件或範圍，只要這個條件存在，後句就成立：특별한 일이 없는 한 참석할게요（只要沒有特別的事，我就會出席）、제가 살아 있는 한 잊지 않을 거예요（只要我活著，就不會忘記）。語氣較正式。",
+        "en": "States a condition or limit: as long as it holds, the second clause is true: 특별한 일이 없는 한 참석할게요 (barring anything unusual, I'll attend), 제가 살아 있는 한 잊지 않을 거예요 (as long as I live, I won't forget). Rather formal."
+      },
+      "notes": [
+        {
+          "zh": "「-지 않는 한」＝除非～，否則～。",
+          "en": "-지 않는 한 = unless."
+        },
+        {
+          "zh": "「한」前面用「-는」。",
+          "en": "한 follows -는."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "제가 살아 있은 한 잊지 않을 거예요.",
+          "right": "제가 살아 있는 한 잊지 않을 거예요.",
+          "zh": "「있다」接「-는 한」。",
+          "en": "있다 takes -는 한."
+        },
+        {
+          "wrong": "비가 오지 않은 한 출발할 거예요.",
+          "right": "비가 오지 않는 한 출발할 거예요.",
+          "zh": "「-지 않는 한」用現在的「-는」。",
+          "en": "-지 않는 한 uses the present -는."
+        }
+      ],
+      "examples": [
+        {
+          "text": "특별한 일이 없는 한 참석할게요.",
+          "zh": "只要沒有特別的事，我就會出席。",
+          "en": "Barring anything unusual, I'll be there."
+        },
+        {
+          "text": "제가 살아 있는 한 그 일은 잊지 않을 거예요.",
+          "zh": "只要我活著，就不會忘記那件事。",
+          "en": "As long as I live, I won't forget that."
+        },
+        {
+          "text": "노력하지 않는 한 성공할 수 없어요.",
+          "zh": "不努力的話，就不可能成功。",
+          "en": "Unless you work hard, you can't succeed."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "비가 오지 않는（　）행사는 예정대로 진행됩니다.",
+          "zh": "只要不下雨，活動就照計畫進行。",
+          "en": "Unless it rains, the event will go ahead as planned.",
+          "options": [
+            "한",
+            "대로",
+            "만큼",
+            "김에"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "제가 할 수 있는（　）도와 드릴게요.",
+          "zh": "在我能力範圍內，我都會幫您。",
+          "en": "I'll help you as far as I can.",
+          "options": [
+            "한",
+            "김에",
+            "바람에",
+            "덕분에"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "특별한 일이（　）한 꼭 갈게요.",
+          "zh": "只要沒有特別的事，我一定去。",
+          "en": "Barring anything unusual, I'll definitely go.",
+          "options": [
+            "없는",
+            "없은",
+            "없을",
+            "없어"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "특별한 일이 생기지（　）한 내일 출발합니다.",
+          "zh": "除非有特別的事，否則明天出發。",
+          "en": "Unless something comes up, we leave tomorrow.",
+          "options": [
+            "않는",
+            "않은",
+            "않을",
+            "않아"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "제가 이 회사에（　）한 그 일은 제가 책임질게요.",
+          "zh": "只要我還在這家公司，那件事就由我負責。",
+          "en": "As long as I'm at this company, I'll take responsibility for that.",
+          "options": [
+            "있는",
+            "있은",
+            "있을",
+            "있던"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "노력하지",
+            "않는",
+            "한",
+            "성공할"
+          ],
+          "after": " 수 없어요.",
+          "star": 2,
+          "zh": "不努力的話，就不可能成功。",
+          "en": "Unless you work hard, you can't succeed.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "비가",
+            "많이",
+            "오지",
+            "않는"
+          ],
+          "after": " 한 행사는 열립니다.",
+          "star": 3,
+          "zh": "只要雨不大，活動就會舉行。",
+          "en": "The event will go ahead unless it rains heavily."
+        }
+      ]
+    },
+    {
+      "id": "eul-teni",
+      "pattern": "V/A-(으)ㄹ 테니까",
+      "title": {
+        "zh": "我會～，所以（你）～；應該會～，所以～",
+        "en": "I'll …, so (you) …; it'll probably …, so …"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ 테니까　有收音 → -을 테니까",
+        "en": "no final consonant / ㄹ → -ㄹ 테니까　final consonant → -을 테니까"
+      },
+      "explain": {
+        "zh": "1) 說話者表明自己要做的事，請對方據此行動：제가 청소할 테니까 쉬세요（我來打掃，你休息吧）。2) 推測某種情況，所以給對方建議：길이 막힐 테니까 지하철을 타세요（路應該會塞，搭地鐵吧）。後句常是命令或提議。",
+        "en": "1) The speaker says what they will do, so the listener can act on it: 제가 청소할 테니까 쉬세요 (I'll clean, so you rest). 2) A guess gives a reason for advice: 길이 막힐 테니까 지하철을 타세요 (the roads will probably be busy, so take the subway). The second clause is usually a command or suggestion."
+      },
+      "notes": [
+        {
+          "zh": "1) 的主語是「我」。",
+          "en": "In 1) the subject is \"I\"."
+        },
+        {
+          "zh": "和「-(으)ㄹ 텐데」比：「텐데」帶出遺憾或委婉的建議；「테니까」是給對方一個理由。",
+          "en": "-(으)ㄹ 텐데 leads into regret or soft advice; -(으)ㄹ 테니까 gives the listener a reason."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "제가 할게요니까 쉬세요.",
+          "right": "제가 할 테니까 쉬세요.",
+          "zh": "是「-(으)ㄹ 테니까」。",
+          "en": "It is -(으)ㄹ 테니까."
+        },
+        {
+          "wrong": "길이 막히는 테니까 지하철을 타세요.",
+          "right": "길이 막힐 테니까 지하철을 타세요.",
+          "zh": "「테니까」前面用「-(으)ㄹ」。",
+          "en": "테니까 follows -(으)ㄹ."
+        }
+      ],
+      "examples": [
+        {
+          "text": "제가 청소할 테니까 좀 쉬세요.",
+          "zh": "我來打掃，你休息一下吧。",
+          "en": "I'll clean up, so you take a rest."
+        },
+        {
+          "text": "길이 막힐 테니까 지하철을 타세요.",
+          "zh": "路應該會塞，請搭地鐵。",
+          "en": "The roads will be busy, so take the subway."
+        },
+        {
+          "text": "곧 도착할 테니까 조금만 기다려 주세요.",
+          "zh": "我馬上就到，請再等一下。",
+          "en": "I'll be there soon, so please wait a little."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "제가 설거지（　）테니까 먼저 들어가세요.",
+          "zh": "我來洗碗，你先進去吧。",
+          "en": "I'll do the dishes, so you go in first.",
+          "options": [
+            "할",
+            "하는",
+            "한",
+            "해"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "밖이 추울（　）따뜻하게 입으세요.",
+          "zh": "外面應該很冷，穿暖一點吧。",
+          "en": "It'll be cold out, so dress warmly.",
+          "options": [
+            "테니까",
+            "터니까",
+            "테서",
+            "텐데서"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "제가 음식을（　）테니까 음료수만 사 오세요.",
+          "zh": "我來準備食物，你只要買飲料來就好。",
+          "en": "I'll get the food ready, so just bring drinks.",
+          "options": [
+            "준비할",
+            "준비하는",
+            "준비한",
+            "준비해"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "곧 회의가（　）테니까 자리에 앉아 주세요.",
+          "zh": "會議馬上要開始了，請就座。",
+          "en": "The meeting will start soon, so please take your seats.",
+          "options": [
+            "시작될",
+            "시작되는",
+            "시작된",
+            "시작돼"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "제가 운전（　）민수 씨는 좀 주무세요.",
+          "zh": "我來開車，民秀你睡一下吧。",
+          "en": "I'll drive, so you get some sleep, Minsu.",
+          "options": [
+            "할 테니까",
+            "하는 테니까",
+            "할 테서",
+            "했을 테니까"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "길이",
+            "막힐",
+            "테니까",
+            "지하철을"
+          ],
+          "after": " 타세요.",
+          "star": 2,
+          "zh": "路應該會塞，請搭地鐵。",
+          "en": "The roads will be busy, so take the subway.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "제가",
+            "청소할",
+            "테니까",
+            "좀"
+          ],
+          "after": " 쉬세요.",
+          "star": 2,
+          "zh": "我來打掃，你休息一下吧。",
+          "en": "I'll clean up, so you rest."
         }
       ]
     },
@@ -821,6 +4357,63 @@
             "친절해"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그 가게는 물건이（　）데다가 직원도 친절해요.",
+          "zh": "那家店東西多，再加上店員也很親切。",
+          "en": "That shop has lots of goods, and the staff are friendly too.",
+          "options": [
+            "많은",
+            "많는",
+            "많을",
+            "많아"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "늦잠을（　）데다가 버스도 놓쳤어요.",
+          "zh": "睡過頭，再加上又錯過了公車。",
+          "en": "I overslept, and on top of that I missed the bus.",
+          "options": [
+            "잔",
+            "자는",
+            "잘",
+            "자"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "이 집은",
+            "넓은",
+            "데다가",
+            "값도"
+          ],
+          "after": " 싸요.",
+          "star": 2,
+          "zh": "這間房子很寬敞，再加上價格也便宜。",
+          "en": "This house is spacious and cheap as well.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "감기에",
+            "걸린",
+            "데다가",
+            "일까지"
+          ],
+          "after": " 많아서 힘들어요.",
+          "star": 2,
+          "zh": "感冒了，再加上工作又多，好累。",
+          "en": "I've got a cold and lots of work too, so it's tough."
         }
       ]
     },
@@ -908,10 +4501,67 @@
           "options": [
             "까지",
             "조차",
-            "마저",
+            "대로",
             "만큼은"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "너무 긴장해서 제 이름（　）잊어버렸어요.",
+          "zh": "太緊張了，連自己的名字都忘了。",
+          "en": "I was so nervous I even forgot my own name.",
+          "options": [
+            "조차",
+            "만큼",
+            "대로",
+            "뿐"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "믿었던 친구（　）저를 도와주지 않았어요.",
+          "zh": "連我信任的朋友都沒有幫我。",
+          "en": "Even the friend I trusted didn't help me.",
+          "options": [
+            "마저",
+            "대로",
+            "만큼",
+            "에게"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "사람은",
+            "인사조차",
+            "안"
+          ],
+          "after": " 했어요.",
+          "star": 2,
+          "zh": "那個人連招呼都沒打。",
+          "en": "He didn't even say hello.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "너무",
+            "피곤해서",
+            "말할",
+            "힘조차"
+          ],
+          "after": " 없어요.",
+          "star": 3,
+          "zh": "太累了，連說話的力氣都沒有。",
+          "en": "I'm so tired I don't even have the energy to talk."
         }
       ]
     },
@@ -1003,6 +4653,671 @@
             "도착해"
           ],
           "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "도착하는（　）전화해 주세요.",
+          "zh": "一到就請打電話給我。",
+          "en": "Call me as soon as you arrive.",
+          "options": [
+            "대로",
+            "대신",
+            "만큼",
+            "바람에"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "제가（　）대로 따라 해 보세요.",
+          "zh": "請照著我做的跟著做做看。",
+          "en": "Try doing it just as I do.",
+          "options": [
+            "하는",
+            "할",
+            "하던데",
+            "해"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "설명서에",
+            "쓰여 있는",
+            "대로",
+            "조립했어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "照說明書寫的組裝了。",
+          "en": "I put it together as the manual said.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "끝나는",
+            "대로",
+            "바로",
+            "연락할게요"
+          ],
+          "after": ".",
+          "star": 1,
+          "zh": "一結束就馬上聯絡你。",
+          "en": "I'll get in touch as soon as it's over."
+        }
+      ]
+    },
+    {
+      "id": "eun-chaero",
+      "pattern": "V-(으)ㄴ 채(로)",
+      "title": {
+        "zh": "在～的狀態下（保持原樣就做別的事）",
+        "en": "with … still …, leaving … as it is"
+      },
+      "form": {
+        "zh": "動詞 ＋ -(으)ㄴ 채(로)　否定：안 -(으)ㄴ 채로",
+        "en": "verb + -(으)ㄴ 채(로)　negative: 안 -(으)ㄴ 채로"
+      },
+      "explain": {
+        "zh": "前一個動作完成後的狀態保持不變，就那樣做下一件事，常帶有「不該這樣」的意味：불을 켠 채로 잤어요（開著燈睡著了）、신발을 신은 채로 들어오면 안 돼요（不可以穿著鞋進來）。",
+        "en": "The state left by the first action stays as it is while the next thing happens, often something you shouldn't do: 불을 켠 채로 잤어요 (I fell asleep with the light on), 신발을 신은 채로 들어오면 안 돼요 (don't come in with your shoes on)."
+      },
+      "notes": [
+        {
+          "zh": "前面用過去冠形詞「-(으)ㄴ」。",
+          "en": "It follows the past modifier -(으)ㄴ."
+        },
+        {
+          "zh": "和「-아/어 있다」不同：「-(으)ㄴ 채로」後面一定接另一個動作。",
+          "en": "Unlike -아/어 있다, -(으)ㄴ 채로 is always followed by another action."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "불을 켜는 채로 잤어요.",
+          "right": "불을 켠 채로 잤어요.",
+          "zh": "「채로」前面用過去的「-(으)ㄴ」。",
+          "en": "채로 follows the past -(으)ㄴ."
+        },
+        {
+          "wrong": "창문을 열은 채로 나갔어요.",
+          "right": "창문을 연 채로 나갔어요.",
+          "zh": "「열다」是ㄹ收音，變成「연」。",
+          "en": "열다 ends in ㄹ: 연."
+        }
+      ],
+      "examples": [
+        {
+          "text": "불을 켠 채로 잤어요.",
+          "zh": "開著燈睡著了。",
+          "en": "I fell asleep with the light on."
+        },
+        {
+          "text": "신발을 신은 채로 들어오면 안 돼요.",
+          "zh": "不可以穿著鞋進來。",
+          "en": "Don't come in with your shoes on."
+        },
+        {
+          "text": "창문을 연 채로 외출했어요.",
+          "zh": "開著窗戶就出門了。",
+          "en": "I went out leaving the window open."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "텔레비전을（　）채로 잠이 들었어요.",
+          "zh": "開著電視就睡著了。",
+          "en": "I fell asleep with the TV on.",
+          "options": [
+            "켠",
+            "켜는",
+            "켤",
+            "켜"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "모자를（　）채로 인사하면 실례예요.",
+          "zh": "戴著帽子打招呼很失禮。",
+          "en": "It's rude to greet someone with your hat on.",
+          "options": [
+            "쓴",
+            "쓰는",
+            "쓸",
+            "써"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "창문을（　）채 외출했어요.",
+          "zh": "開著窗戶就出門了。",
+          "en": "I went out leaving the window open.",
+          "options": [
+            "연",
+            "열은",
+            "여는",
+            "열"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "안경을（　）채로 세수를 했어요.",
+          "zh": "戴著眼鏡洗了臉。",
+          "en": "I washed my face with my glasses on.",
+          "options": [
+            "쓴",
+            "쓰는",
+            "쓸",
+            "써"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "너무 피곤해서 옷을 입（　）잠들었어요.",
+          "zh": "太累了，穿著衣服就睡著了。",
+          "en": "I was so tired I fell asleep in my clothes.",
+          "options": [
+            "은 채로",
+            "는 채로",
+            "을 채로",
+            "어 채로"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "문을",
+            "열어 놓은",
+            "채로",
+            "나갔어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "門開著就出去了。",
+          "en": "I went out leaving the door open.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "신발을",
+            "신은",
+            "채로",
+            "들어오지"
+          ],
+          "after": " 마세요.",
+          "star": 2,
+          "zh": "請不要穿著鞋進來。",
+          "en": "Don't come in with your shoes on."
+        }
+      ]
+    },
+    {
+      "id": "gon-hada",
+      "pattern": "V-곤 하다",
+      "title": {
+        "zh": "常常會～、（以前）常～（反覆的習慣）",
+        "en": "used to …, would often …"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -곤 하다（＝-고는 하다）",
+        "en": "verb stem + -곤 하다 (= -고는 하다)"
+      },
+      "explain": {
+        "zh": "某件事反覆發生，常用來說過去的習慣：어릴 때 이 공원에서 놀곤 했어요（小時候常在這個公園玩）、스트레스를 받으면 노래방에 가곤 해요（有壓力時常會去 KTV）。",
+        "en": "Something that happens again and again, often a past habit: 어릴 때 이 공원에서 놀곤 했어요 (I used to play in this park as a child), 스트레스를 받으면 노래방에 가곤 해요 (when I'm stressed, I often go to karaoke)."
+      },
+      "notes": [
+        {
+          "zh": "「-곤 하다」是「-고는 하다」的縮寫。",
+          "en": "-곤 하다 is short for -고는 하다."
+        },
+        {
+          "zh": "只用在反覆的事，說只發生一次的事不能用。",
+          "en": "Only for repeated things, never a one-off."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "어제 친구하고 놀곤 했어요.",
+          "right": "어제 친구하고 놀았어요.",
+          "zh": "只發生一次的事不用「-곤 하다」。",
+          "en": "A one-off event doesn't take -곤 하다."
+        },
+        {
+          "wrong": "어릴 때 여기서 놀고 했어요.",
+          "right": "어릴 때 여기서 놀곤 했어요.",
+          "zh": "是「-곤 하다」，不是「-고 하다」。",
+          "en": "It is -곤 하다, not -고 하다."
+        }
+      ],
+      "examples": [
+        {
+          "text": "어릴 때 이 공원에서 놀곤 했어요.",
+          "zh": "小時候常在這個公園玩。",
+          "en": "I used to play in this park as a child."
+        },
+        {
+          "text": "스트레스를 받으면 노래방에 가곤 해요.",
+          "zh": "有壓力時常會去 KTV。",
+          "en": "When I'm stressed, I often go to karaoke."
+        },
+        {
+          "text": "대학생 때는 밤새 이야기하곤 했어요.",
+          "zh": "大學時常常聊通宵。",
+          "en": "In college, we used to talk all night."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "주말에는 친구들과 등산을（　）했어요.",
+          "zh": "週末常和朋友去爬山。",
+          "en": "At weekends I used to go hiking with friends.",
+          "options": [
+            "가곤",
+            "가고",
+            "가는",
+            "가기"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "비가 오면 창밖을 보며 커피를 마시（　）.",
+          "zh": "下雨時，我常會看著窗外喝咖啡。",
+          "en": "When it rains, I often drink coffee looking out of the window.",
+          "options": [
+            "곤 해요",
+            "고 해요",
+            "곤 돼요",
+            "곤 있어요"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "어렸을 때 할머니 댁에 자주 가（　）.",
+          "zh": "小時候常去奶奶家。",
+          "en": "As a child, I often went to my grandmother's.",
+          "options": [
+            "곤 했어요",
+            "곤 됐어요",
+            "고 했어요",
+            "곤 있었어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "어렸을 때는 동생과 자주（　）했어요.",
+          "zh": "小時候常和弟弟吵架。",
+          "en": "As a child I often fought with my brother.",
+          "options": [
+            "싸우곤",
+            "싸우고",
+            "싸운",
+            "싸워"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "기분이 우울할 때는 바다를 보러（　）.",
+          "zh": "心情憂鬱的時候，我常會去看海。",
+          "en": "When I feel down, I often go to see the sea.",
+          "options": [
+            "가곤 해요",
+            "가곤 돼요",
+            "가고 해요",
+            "가곤 있어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "대학생",
+            "때는",
+            "밤새",
+            "이야기하곤"
+          ],
+          "after": " 했어요.",
+          "star": 3,
+          "zh": "大學時常常聊通宵。",
+          "en": "In college, we used to talk all night.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "시험",
+            "기간에는",
+            "도서관에서",
+            "밤을"
+          ],
+          "after": " 새우곤 했어요.",
+          "star": 2,
+          "zh": "考試期間常在圖書館熬夜。",
+          "en": "During exams, I used to stay up all night in the library."
+        }
+      ]
+    },
+    {
+      "id": "go-malda",
+      "pattern": "V-고 말다",
+      "title": {
+        "zh": "終究還是～了（不希望的結果）；一定要～（決心）",
+        "en": "end up …ing (sadly); … no matter what (resolve)"
+      },
+      "form": {
+        "zh": "動詞詞幹 ＋ -고 말다（多用過去 -고 말았어요；決心：-고 말겠다）",
+        "en": "verb stem + -고 말다 (mostly past -고 말았어요; resolve: -고 말겠다)"
+      },
+      "explain": {
+        "zh": "1) 想避免卻還是發生了，帶有遺憾：참으려고 했는데 울고 말았어요（想忍住，結果還是哭了）。2)「-고 말겠다」表示一定要做到的決心：이번에는 꼭 합격하고 말겠어요（這次一定要考上）。",
+        "en": "1) It happened despite trying to avoid it, with regret: 참으려고 했는데 울고 말았어요 (I tried to hold back but ended up crying). 2) -고 말겠다 is firm resolve: 이번에는 꼭 합격하고 말겠어요 (this time I'll pass, no matter what)."
+      },
+      "notes": [
+        {
+          "zh": "和「-아/어 버리다」相近，「-고 말다」更強調「最後還是」的遺憾。",
+          "en": "Close to -아/어 버리다; -고 말다 stresses \"in the end, sadly\"."
+        },
+        {
+          "zh": "決心「-고 말겠다」的主語是「我」。",
+          "en": "The resolve -고 말겠다 is about \"I\"."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "결국 잠이 들어 말았어요.",
+          "right": "결국 잠이 들고 말았어요.",
+          "zh": "是「-고 말다」，不是「-아/어 말다」。",
+          "en": "It is -고 말다, not -아/어 말다."
+        },
+        {
+          "wrong": "지갑을 잃어버렸고 말았어요.",
+          "right": "지갑을 잃어버리고 말았어요.",
+          "zh": "「-고 말다」前面不加過去式。",
+          "en": "No past tense before -고 말다."
+        }
+      ],
+      "examples": [
+        {
+          "text": "참으려고 했는데 울고 말았어요.",
+          "zh": "想忍住，結果還是哭了。",
+          "en": "I tried to hold back, but I ended up crying."
+        },
+        {
+          "text": "조심했는데 결국 컵을 깨고 말았어요.",
+          "zh": "很小心了，最後還是把杯子打破了。",
+          "en": "I was careful, but I broke the cup in the end."
+        },
+        {
+          "text": "이번에는 꼭 합격하고 말겠어요.",
+          "zh": "這次一定要考上。",
+          "en": "This time I'll pass, no matter what."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "열심히 뛰었지만 버스를 놓치（　）.",
+          "zh": "拚命跑了，最後還是錯過了公車。",
+          "en": "I ran as fast as I could, but I missed the bus.",
+          "options": [
+            "고 말았어요",
+            "어 말았어요",
+            "고 말렸어요",
+            "곤 말았어요"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "다이어트 중인데 케이크를 다（　）말았어요.",
+          "zh": "明明在減肥，結果還是把蛋糕全吃了。",
+          "en": "I'm on a diet, but I ended up eating the whole cake.",
+          "options": [
+            "먹고",
+            "먹어",
+            "먹은",
+            "먹게"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "이번 시합에서는 꼭（　）.",
+          "zh": "這次比賽一定要贏。",
+          "en": "I'm going to win this match, no matter what.",
+          "options": [
+            "이기고 말겠어요",
+            "이겨 말겠어요",
+            "이기고 말았겠어요",
+            "이기곤 말겠어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "그렇게 조심했는데 결국 접시를（　）말았어요.",
+          "zh": "那麼小心了，最後還是把盤子打破了。",
+          "en": "I was so careful, but I ended up breaking the plate.",
+          "options": [
+            "깨고",
+            "깨어",
+            "깬",
+            "깨게"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "슬픈 영화를 보다가 결국（　）.",
+          "zh": "看悲傷的電影，最後還是哭了。",
+          "en": "Watching the sad film, I ended up crying.",
+          "options": [
+            "울고 말았어요",
+            "울어 말았어요",
+            "울고 말겠어요",
+            "울곤 말았어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "참으려고",
+            "했지만",
+            "웃고",
+            "말았어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "想忍住，結果還是笑出來了。",
+          "en": "I tried to hold it in, but I ended up laughing.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "이번에는",
+            "꼭",
+            "1등을",
+            "하고"
+          ],
+          "after": " 말겠어요.",
+          "star": 3,
+          "zh": "這次一定要拿到第一名。",
+          "en": "This time I'm going to come first, no matter what."
+        }
+      ]
+    },
+    {
+      "id": "eulgeol-geuraetda",
+      "pattern": "V-(으)ㄹ걸 그랬다",
+      "title": {
+        "zh": "早知道就～了（後悔）",
+        "en": "I should have …"
+      },
+      "form": {
+        "zh": "沒有收音・ㄹ收音 → -ㄹ걸 그랬다　有收音 → -을걸 그랬다　不該做的：-지 말걸 그랬다",
+        "en": "no final consonant / ㄹ → -ㄹ걸 그랬다　final consonant → -을걸 그랬다　should not have: -지 말걸 그랬다"
+      },
+      "explain": {
+        "zh": "後悔過去沒做、或做了某件事：우산을 가져올걸 그랬어요（早知道就帶傘了）、그 말을 하지 말걸 그랬어요（早知道就不說那句話了）。口語也常只說「-(으)ㄹ걸」。",
+        "en": "Regret about something you did or didn't do: 우산을 가져올걸 그랬어요 (I should have brought an umbrella), 그 말을 하지 말걸 그랬어요 (I shouldn't have said that). In speech, often just -(으)ㄹ걸."
+      },
+      "notes": [
+        {
+          "zh": "和 3 級的推測「-(으)ㄹ걸요」寫法很像，但這裡是後悔，常加「그랬다」。",
+          "en": "Spelled like the guess -(으)ㄹ걸요 (3급), but this is regret, often with 그랬다."
+        },
+        {
+          "zh": "說的是自己的行為。",
+          "en": "It is about your own actions."
+        }
+      ],
+      "mistakes": [
+        {
+          "wrong": "우산을 가져왔을걸 그랬어요.",
+          "right": "우산을 가져올걸 그랬어요.",
+          "zh": "後悔用「-(으)ㄹ걸」，前面不加過去式。",
+          "en": "Regret is -(으)ㄹ걸 with no past tense before it."
+        },
+        {
+          "wrong": "조금만 먹을껄 그랬어요.",
+          "right": "조금만 먹을걸 그랬어요.",
+          "zh": "寫成「걸」，不是「껄」。",
+          "en": "Spelled 걸, not 껄."
+        }
+      ],
+      "examples": [
+        {
+          "text": "우산을 가져올걸 그랬어요.",
+          "zh": "早知道就帶傘了。",
+          "en": "I should have brought an umbrella."
+        },
+        {
+          "text": "그 말을 하지 말걸 그랬어요.",
+          "zh": "早知道就不說那句話了。",
+          "en": "I shouldn't have said that."
+        },
+        {
+          "text": "좀 더 일찍 출발할걸.",
+          "zh": "早知道就早一點出發了。",
+          "en": "I should have left a bit earlier."
+        }
+      ],
+      "quiz": [
+        {
+          "q": "비가 오네요. 우산을（　）그랬어요.",
+          "zh": "下雨了，早知道就帶傘了。",
+          "en": "It's raining. I should have brought an umbrella.",
+          "options": [
+            "가져올걸",
+            "가져왔을걸",
+            "가져오는걸",
+            "가져올게"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "너무 많이 먹었어요. 조금만（　）그랬어요.",
+          "zh": "吃太多了，早知道只吃一點就好。",
+          "en": "I ate too much. I should have had just a little.",
+          "options": [
+            "먹을걸",
+            "먹을껄",
+            "먹었을걸",
+            "먹는걸"
+          ],
+          "answer": 0
+        },
+        {
+          "q": "그 사람한테 그런 말을 하지（　）그랬어요.",
+          "zh": "早知道就不對他說那種話了。",
+          "en": "I shouldn't have said that to him.",
+          "options": [
+            "말걸",
+            "마를걸",
+            "말을걸",
+            "말았을걸"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "표가 다 팔렸네요. 미리（　）그랬어요.",
+          "zh": "票都賣完了，早知道就先買了。",
+          "en": "The tickets are sold out. I should have bought them in advance.",
+          "options": [
+            "살걸",
+            "샀을걸",
+            "사는걸",
+            "살게"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "q": "어제 술을 너무 많이 마셨어요. 조금만（　）.",
+          "zh": "昨天喝太多酒了，早知道只喝一點就好。",
+          "en": "I drank too much yesterday. I should have had just a little.",
+          "options": [
+            "마실걸 그랬어요",
+            "마실걸요",
+            "마셨을걸 그랬어요",
+            "마실게 그랬어요"
+          ],
+          "answer": 0
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "좀",
+            "더",
+            "일찍",
+            "출발할걸"
+          ],
+          "after": " 그랬어요.",
+          "star": 3,
+          "zh": "早知道就早一點出發了。",
+          "en": "I should have left a bit earlier.",
+          "style": "arrange"
+        },
+        {
+          "hard": true,
+          "type": "order",
+          "before": "",
+          "parts": [
+            "그",
+            "사람한테",
+            "사과할걸",
+            "그랬어요"
+          ],
+          "after": ".",
+          "star": 2,
+          "zh": "早知道就向他道歉了。",
+          "en": "I should have apologised to him."
         }
       ]
     }
