@@ -118,7 +118,8 @@ function fillBlank(lang, sentence, answer) {
    (q.type 'order', tools/build_grammar.py) the parts in order with the ★ part bold. */
 function fullSentence(lessonLang, q, ui) {
     if (q.type === 'order')
-        return zhText(lessonLang, q.before + q.parts.map((x, k) => (k === q.star ? `**${x}**` : x)).join('') + q.after, ui);
+        return zhText(lessonLang, q.before + q.parts.map((x, k) => (k === q.star ? `**${x}**` : x))
+            .join(lessonLang === 'ja' || lessonLang === 'zh' ? '' : ' ') + q.after, ui);   // Korean: spaced
     return fillBlank(lessonLang, zhText(lessonLang, q.q, ui), zhText(lessonLang, q.options[q.answer], ui));
 }
 

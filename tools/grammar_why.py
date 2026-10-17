@@ -127,7 +127,8 @@ def run_batch(level, lesson, batch, store):
               'translation': q.get('en', '')}
         if q.get('type') == 'order':
             return {**it, 'kind': 'order', 'before': q['before'], 'parts': q['parts'], 'after': q['after'],
-                    'sentence': q['before'] + ''.join(q['parts']) + q['after']}
+                    # Korean (and other spaced languages) put a space between the parts
+                    'sentence': q['before'] + ('' if lesson in ('ja', 'zh') else ' ').join(q['parts']) + q['after']}
         return {**it, 'kind': 'fill', 'question': q['q'], 'options': q['options'], 'answer': q['answer']}
     items = [item(i, p, q) for i, (p, q) in enumerate(batch)]
     for attempt in range(4):
