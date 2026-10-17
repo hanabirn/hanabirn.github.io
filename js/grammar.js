@@ -462,7 +462,7 @@ function grammarWhyHtml(set, it, picked) {
         const parts = it.q.parts.map((x, k) => {
             const h = grammarFuri(x, (it.q.parts_furi || [])[k]);
             return k === it.q.star && !it.arrange ? `<b class="grammar-star-part">${h}</b>` : h;
-        }).join('');
+        }).join(set.lang === 'ja' || set.lang === 'zh' ? '' : ' ');   // Korean puts a space between the parts
         return `<div class="grammar-why-box">
             <p class="grammar-why-line ok grammar-order-full" lang="${set.lang}">${grammarFuri(it.q.before, it.q.before_furi)}${parts}${grammarFuri(it.q.after, it.q.after_furi)}</p>
             <p class="grammar-why-line">${escHtml(gText(it.q))}</p>
