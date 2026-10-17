@@ -51,7 +51,7 @@ function alphaHighlight(word, glyph) {
 
 function alphaCardHtml(item) {
     const [glyph, reading, speak, word, wordReading, emoji] = item;
-    const letterBtn = `<button type="button" class="speak-btn alpha-speak" data-text="${escHtml(speak)}" onclick="alphaSay(this)" aria-label="${escHtml(t('alpha_play_letter'))}" title="${escHtml(t('alpha_play_letter'))}">🔊</button>`;
+    const letterBtn = `<button type="button" class="speak-btn alpha-speak" data-text="${escHtml(speak)}" onclick="alphaSay(this)" aria-label="${escHtml(t('alpha_play_letter'))}" title="${escHtml(t('alpha_play_letter'))}">${uiIcon('speaker')}</button>`;
     let ex;
     if (!word) {
         ex = `<div class="alpha-ex alpha-ex-none">${escHtml(t('alpha_rare'))}</div>`;
@@ -64,7 +64,7 @@ function alphaCardHtml(item) {
                 ${wordReading ? `<div class="alpha-word-reading">${escHtml(wordReading)}</div>` : ''}
                 ${meaning ? `<div class="alpha-meaning" lang="${siteLang}">${escHtml(meaning)}</div>` : ''}
             </div>
-            <button type="button" class="speak-btn alpha-speak" data-text="${escHtml(word)}" onclick="alphaSay(this)" aria-label="${escHtml(t('alpha_play_word'))}" title="${escHtml(t('alpha_play_word'))}">🔊</button>
+            <button type="button" class="speak-btn alpha-speak" data-text="${escHtml(word)}" onclick="alphaSay(this)" aria-label="${escHtml(t('alpha_play_word'))}" title="${escHtml(t('alpha_play_word'))}">${uiIcon('speaker')}</button>
         </div>`;
     }
     return `<div class="alpha-card">

@@ -153,7 +153,7 @@ function dictSearch(word, langId) {
         `<div class="dict-word">
             <span class="dict-word-text">${escHtml(word)}</span>
             <span class="dict-word-lang" data-i18n="dict_lang_${lang.id}">${escHtml(t('dict_lang_' + lang.id))}</span>
-            <button class="speak-btn" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(word)}" aria-label="🔊">🔊</button>
+            <button class="speak-btn" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(word)}" aria-label="🔊">${uiIcon('speaker')}</button>
         </div>` +
         dictSection('dict-tr', 'dict_translation', 'dict_mt_note') +
         dictSection('dict-def', 'dict_definitions', 'dict_definitions_note') +
@@ -323,7 +323,7 @@ async function dictExamples(word, lang, target, signal) {
             return `<li>
                 <div class="dict-ex-text">${highlightWord(s.text, word)}</div>
                 ${tr ? `<div class="dict-ex-tr">${escHtml(tr)}</div>` : ''}
-                <button class="speak-btn dict-ex-speak" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(s.text)}" aria-label="🔊">🔊</button>
+                <button class="speak-btn dict-ex-speak" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(s.text)}" aria-label="🔊">${uiIcon('speaker')}</button>
             </li>`;
         }).join('')}</ul>
         <a class="dict-more" href="https://tatoeba.org/${lang.tt === 'cmn' ? 'zh-tw' : 'en'}/sentences/search?query=${encodeURIComponent(word)}&from=${lang.tt}" target="_blank" rel="noopener noreferrer">Tatoeba ↗</a>`);

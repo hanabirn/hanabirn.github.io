@@ -325,7 +325,7 @@ function renderRailWord() {
             ${v.reading ? `<div class="rail-reading" lang="${v.htmlLang}">${escHtml(v.reading)}</div>` : ''}
             <div class="rail-meaning">${escHtml(v.meaning)}</div>
             <div class="rail-word-foot">
-                <button type="button" class="speak-btn rail-speak" onclick="railSpeak()" aria-label="${escHtml(t('alpha_play_word'))}" title="${escHtml(t('alpha_play_word'))}">🔊</button>
+                <button type="button" class="speak-btn rail-speak" onclick="railSpeak()" aria-label="${escHtml(t('alpha_play_word'))}" title="${escHtml(t('alpha_play_word'))}">${uiIcon('speaker')}</button>
                 <button type="button" class="pc-link rail-topic" onclick="railOpenTopic()">${TOPIC_EMOJI[topic]} ${escHtml(t('rail_word_go', { topic: t('topic_' + topic) }))}</button>
             </div>`;
     }).catch(() => {

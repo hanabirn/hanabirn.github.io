@@ -246,7 +246,7 @@ function renderLessonPreview() {
                 ${reading ? `<span class="lesson-word-reading">${escHtml(reading)}</span>` : ''}
             </div>
             <div class="lesson-word-meaning">${escHtml(meaning || '')}</div>
-            <button class="speak-btn lesson-speak" onclick="lessonSpeak(${i})" aria-label="🔊">🔊</button>
+            <button class="speak-btn lesson-speak" onclick="lessonSpeak(${i})" aria-label="🔊">${uiIcon('speaker')}</button>
         </li>`;
     }).join('');
 }

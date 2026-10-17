@@ -285,7 +285,7 @@ function readingZhTools() {
     const acBtn = (v, label) => `<button type="button" class="mode-btn${ac === v ? ' mode-btn-active' : ''}" aria-pressed="${ac === v}" onclick="readingSetAccent('${v}')">${escHtml(label)}</button>`;
     return `<span class="rd-seg" role="group">${btn('reading_zh_script', 'trad', t('reading_trad'), sc === 'trad')}${btn('reading_zh_script', 'simp', t('reading_simp'), sc === 'simp')}</span>
         <span class="rd-seg" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">${READING_ZH_RD.map(v => btn('reading_zh_rd', v, t(v === 'off' ? 'reading_rd_off' : 'grammar_rd_' + v), rd === v)).join('')}</span>
-        <span class="rd-seg" role="group" aria-label="${escHtml(t('zh_accent'))}" title="${escHtml(t('zh_accent'))}"><span class="rd-seg-label" aria-hidden="true">🔊</span>${acBtn('zh-TW', t('zh_accent_tw'))}${acBtn('zh-CN', t('zh_accent_cn'))}</span>`;
+        <span class="rd-seg" role="group" aria-label="${escHtml(t('zh_accent'))}" title="${escHtml(t('zh_accent'))}"><span class="rd-seg-label" aria-hidden="true">${uiIcon('speaker')}</span>${acBtn('zh-TW', t('zh_accent_tw'))}${acBtn('zh-CN', t('zh_accent_cn'))}</span>`;
 }
 
 function readingSetAccent(v) {
@@ -296,7 +296,7 @@ function readingSetAccent(v) {
 /* the English reader's accent: American / British (en_accent, js/speech.js) */
 function readingEnTools() {
     const ac = enAccent();
-    return `<span class="rd-seg" role="group" aria-label="${escHtml(t('en_accent'))}" title="${escHtml(t('en_accent'))}"><span class="rd-seg-label" aria-hidden="true">🔊</span>${[['en-US', 'en_accent_us'], ['en-GB', 'en_accent_gb']].map(([v, k]) =>
+    return `<span class="rd-seg" role="group" aria-label="${escHtml(t('en_accent'))}" title="${escHtml(t('en_accent'))}"><span class="rd-seg-label" aria-hidden="true">${uiIcon('speaker')}</span>${[['en-US', 'en_accent_us'], ['en-GB', 'en_accent_gb']].map(([v, k]) =>
         `<button type="button" class="mode-btn${ac === v ? ' mode-btn-active' : ''}" aria-pressed="${ac === v}" onclick="readingSetEnAccent('${v}')">${escHtml(t(k))}</button>`).join('')}</span>`;
 }
 
@@ -394,7 +394,7 @@ let readingAllAt = 0;           // the sentence it is on (resuming starts it aga
 function readingAllLabel() {
     if (readingAllState === 'playing') return '⏸ ' + escHtml(t('reading_pause'));
     if (readingAllState === 'paused') return '▶ ' + escHtml(t('reading_resume'));
-    return '🔊 ' + escHtml(t('reading_all'));
+    return uiIcon('speaker') + ' ' + escHtml(t('reading_all'));
 }
 
 /* the read-all button follows the state without re-rendering the text */
@@ -460,7 +460,7 @@ function readingWord(ev, gi) {
     pop.innerHTML = `<div class="rd-pop-head">${head}</div>
         <div class="rd-pop-m">${meaning}</div>
         <div class="rd-pop-acts">
-            <button type="button" class="btn back-btn" onclick="readingSayWord(${gi})" aria-label="🔊">🔊</button>
+            <button type="button" class="btn back-btn" onclick="readingSayWord(${gi})" aria-label="🔊">${uiIcon('speaker')}</button>
             <button type="button" class="btn back-btn" onclick="readingAddReview(${gi})">＋ ${escHtml(t('reading_add_review'))}</button>
         </div>`;
     const r = (ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect) ? ev.currentTarget.getBoundingClientRect() : { left: 20, bottom: 120 };
@@ -594,7 +594,7 @@ function readingQuizHtml(set) {
             <div class="rd-title rd-title-sm" lang="${set.lang}">${readingSegsHtml(p.title.t, false)}</div>
             <div class="rd-sub">${escHtml(t('reading_quiz_hint'))}</div>
         </div>
-        <details class="rd-peek"><summary>📄 ${escHtml(t('reading_peek'))}</summary>
+        <details class="rd-peek"><summary>${uiIcon('document')} ${escHtml(t('reading_peek'))}</summary>
             <div class="rd-text${readingFuri() ? '' : ' no-furi'}" lang="${set.lang}">${p.paragraphs.map(para => `<p>${para.s.map(s => readingSegsHtml(s.t, false)).join(readingSep(set))}</p>`).join('')}</div>
         </details>
         <h4 class="grammar-sub rd-part">${escHtml(t('reading_part_mcq'))}</h4>

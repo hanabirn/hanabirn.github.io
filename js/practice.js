@@ -480,7 +480,7 @@ function renderSrsDashboard() {
     // the 複習 tab lands here, so the mistake book is one tap away too
     const open = getActiveMistakes().length;
     html += `<button type="button" class="srs-mistakes-row" onclick="showMistakeBook()">
-        <span>📕 ${escHtml(t('tool_mistakes'))}</span><b>${escHtml(open ? t('home_mistakes_count', { n: open }) : t('home_mistakes_none'))}</b><span aria-hidden="true">›</span>
+        <span>${uiIcon('book')} ${escHtml(t('tool_mistakes'))}</span><b>${escHtml(open ? t('home_mistakes_count', { n: open }) : t('home_mistakes_none'))}</b><span aria-hidden="true">›</span>
     </button>`;
 
     if (cards.length) {
@@ -725,7 +725,7 @@ function renderFlashcard() {
     if (!w) return;
     const n = flashcardList.length;
     const faces = fcFaces(w);
-    const speak = `<button type="button" class="fc-speak" onclick="event.stopPropagation(); fcSpeak()" aria-label="${escHtml(t('lc_play'))}">🔊</button>`;
+    const speak = `<button type="button" class="fc-speak" onclick="event.stopPropagation(); fcSpeak()" aria-label="${escHtml(t('lc_play'))}">${uiIcon('speaker')}</button>`;
     const state = flashcardKnownSet.has(fcKey(w)) ? `<span class="fc-was yes">${escHtml(t('fc_was_known'))}</span>`
         : flashcardUnknownSet.has(fcKey(w)) ? `<span class="fc-was no">${escHtml(t('fc_was_unknown'))}</span>` : '';
     box.innerHTML = `

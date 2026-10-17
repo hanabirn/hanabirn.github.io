@@ -113,7 +113,7 @@ function learnLangMenuHtml() {
         <div class="learn-menu-list">${item(cur)}${item(other[0])}</div>` : '';
     const regions = typeof LANG_REGIONS !== 'undefined' ? LANG_REGIONS : [{ id: '', icon: '', langs: LEARN_LANGS }];
     return `<div class="learn-menu-title">${escHtml(t('learn_pill_title'))}</div>${recent}${regions.map(r => `
-        ${r.id ? `<div class="learn-menu-group">${r.icon} ${escHtml(t('region_' + r.id))}</div>` : ''}
+        ${r.id ? `<div class="learn-menu-group">${uiIcon('globe')} ${escHtml(t('region_' + r.id))}</div>` : ''}
         <div class="learn-menu-list">${r.langs.map(item).join('')}</div>`).join('')}
         <button type="button" class="learn-menu-ui" onclick="event.stopPropagation(); openUiLangMenu()">
             <span aria-hidden="true">🌐</span>${escHtml(t('learn_ui_lang'))}<b>${escHtml(uiLangName())}</b>

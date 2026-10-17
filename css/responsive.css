@@ -40,3 +40,13 @@
         padding: 4px 0 8px;
     }
 }
+
+/* Touch screens: the small toggles and chips get a 44px-high target (they were
+   about 24–32px: the 拼音 / 注音 and accent switches, the reader's tools, the
+   dictionary's recent words). A mouse keeps the compact sizes. */
+@media (pointer: coarse) {
+    .grammar-rd-btn { min-height: 44px; padding-top: 0; padding-bottom: 0; }
+    .rd-tools .mode-btn { min-height: 44px; }
+    .dict-chip { min-height: 40px; padding: 0 14px; }
+    .learn-level-grid .mode-btn.learn-level { min-height: 48px; }
+}

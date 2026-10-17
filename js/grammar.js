@@ -265,7 +265,7 @@ function grammarPointHtml(set) {
         <div class="grammar-form"><b>${escHtml(t('grammar_form'))}</b><span lang="${set.lang}">${escHtml(gText(p.form))}</span></div>
         <p class="grammar-explain">${escHtml(gText(p.explain))}</p>
         ${(p.notes || []).length ? `<div class="grammar-notes">
-            <h4 class="grammar-sub">⚠️ ${escHtml(t('grammar_notes'))}</h4>
+            <h4 class="grammar-sub">${uiIcon('warning')} ${escHtml(t('grammar_notes'))}</h4>
             <ul>${p.notes.map(n => `<li>${escHtml(gText(n))}</li>`).join('')}</ul>
         </div>` : ''}
         ${(p.mistakes || []).length ? `<h4 class="grammar-sub">${escHtml(t('grammar_mistakes'))}</h4>
@@ -284,14 +284,14 @@ function grammarPointHtml(set) {
             <h4 class="grammar-sub">${escHtml(t('grammar_examples'))}</h4>
             ${set.lang === 'zh' ? `<div class="grammar-ex-tools">
                 <div class="grammar-tool"><span class="grammar-tool-label">${escHtml(t('grammar_rd_label'))}</span>${grammarReadingSwitch()}</div>
-                <div class="grammar-tool"><span class="grammar-tool-label">🔊 ${escHtml(t('zh_accent'))}</span>${grammarAccentSwitch()}</div>
+                <div class="grammar-tool"><span class="grammar-tool-label">${uiIcon('speaker')} ${escHtml(t('zh_accent'))}</span>${grammarAccentSwitch()}</div>
             </div>` : ''}
         </div>
         <ul class="grammar-examples">
             ${p.examples.map((ex, i) => `<li>
                 <div class="grammar-ex-line">
                     <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(exText(ex))}</span>
-                    <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">🔊</button>
+                    <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">${uiIcon('speaker')}</button>
                 </div>
                 ${exReadingHtml(set, ex)}
                 <div class="grammar-ex-tr">${escHtml(gHint(set, ex))}</div>

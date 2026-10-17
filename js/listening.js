@@ -458,12 +458,12 @@ function listeningQuizHtml(lv) {
     }).join('');
     const all = listeningLinesOf(it);
     const tx = showTx ? `<details class="ls-tx" open>
-            <summary>📄 ${escHtml(t('listening_transcript'))}</summary>
+            <summary>${uiIcon('document')} ${escHtml(t('listening_transcript'))}</summary>
             ${all.map(x => `<div class="ls-line${x.isQ ? ' ls-line-q' : ''}" data-i="${x.idx}">
                     <span class="ls-who">${x.opt !== undefined ? escHtml((multi ? 'Q' + (x.qn + 1) + '-' : '') + (x.opt + 1)) : x.isQ ? escHtml(multi ? 'Q' + (x.qn + 1) : listeningWho(x.line.who)) : escHtml(listeningWho(x.line.who))}</span>
                     <div><div class="ls-ja" lang="${lv.lang}">${listeningSegsHtml(x.line.t, true)}</div>
                         <div class="ls-zh">${escHtml(gText(x.line))}</div></div>
-                    <button type="button" class="ls-say" onclick="listeningSayLine(${x.idx})" aria-label="🔊">🔊</button>
+                    <button type="button" class="ls-say" onclick="listeningSayLine(${x.idx})" aria-label="🔊">${uiIcon('speaker')}</button>
                 </div>`).join('')}
             ${it.words && it.words.length ? `<div class="ls-words">📘 ${it.words.map(w => `<span><b lang="${lv.lang}">${escHtml(w.w)}</b>${w.r && w.r !== w.w ? `（${escHtml(w.r)}）` : ''} ${escHtml(gText(w))}</span>`).join('')}</div>` : ''}
         </details>` : '';
