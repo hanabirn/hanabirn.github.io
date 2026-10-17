@@ -92,7 +92,8 @@ try {
     const acg = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'study', options: [{ name: 'language', value: 'ja' }, { name: 'level', value: '', focused: true }] }] } });
     check(acg.reply.data.choices.length >= 3 && acg.reply.data.choices.every(c => c.name.startsWith('日文')), 'autocomplete grammar, Japanese only: ' + acg.reply.data.choices.map(c => c.name).join(', '));
     const acg2 = await send({ type: 4, locale: 'zh-TW', data: { name: 'grammar', options: [{ type: 1, name: 'quiz', options: [{ name: 'language', value: 'ko' }, { name: 'level', value: '', focused: true }] }] } });
-    check(acg2.reply.data.choices.length === 2 && acg2.reply.data.choices.every(c => /韓文/.test(c.name)), 'autocomplete grammar quiz, Korean only: ' + acg2.reply.data.choices.map(c => c.name).join(', '));
+    // Korean levels 1급–6급 since 2026-10-16 (4 of them written so far)
+    check(acg2.reply.data.choices.length >= 4 && acg2.reply.data.choices.every(c => /韓文 \d 級/.test(c.name)), 'autocomplete grammar quiz, Korean only: ' + acg2.reply.data.choices.map(c => c.name).join(', '));
     // a button from before 2026-10-15 says it has expired
     const old = await press('qa:zh:jlpt_n5:abc:0:0:5:0:1');
     check(old.reply.type === 4 && /過期/.test(old.reply.data.content), 'an old quiz button has expired: ' + old.reply.data.content);
