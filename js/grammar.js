@@ -204,8 +204,8 @@ function grammarPickSet(id) {
 function grammarListHtml(set) {
     const done = set.points.filter(p => grammarLearned(set.id, p.id)).length;
     const pct = Math.round(done / set.points.length * 100);
-    return `<h3>${escHtml(t('grammar_title'))}</h3>
-        <p class="grammar-intro">${escHtml(t('grammar_intro'))}</p>
+    return `<h3>${escHtml(t('grammar_title'))}${introInfoBtn('grammar_intro')}</h3>
+        ${introHtml('grammar_intro')}
         ${learnPickerHtml(grammarIndex, set.id, 'grammarPickSet', id => learnDoneCount(grammarProgress(), id, GRAMMAR_PASS))}
         <div class="grammar-progress">
             <span>${escHtml(t('grammar_learned_n', { n: done, m: set.points.length }))}</span>

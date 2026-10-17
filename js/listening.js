@@ -177,8 +177,8 @@ function listeningListHtml(lv) {
     const pct = practice.length ? Math.round(done / practice.length * 100) : 0;
     const exam = listeningPref('listening_exam', '0') === '1';
     const mockQ = mocks.length ? mocks[0].items.reduce((n, it) => n + it.questions.length, 0) : 0;
-    return `<h3>${escHtml(t('listening_title'))}</h3>
-        <p class="grammar-intro">${escHtml(t('listening_intro'))}</p>
+    return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
+        ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
         ${mocks.length ? `<div class="ls-mock">
             <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>

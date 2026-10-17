@@ -95,6 +95,8 @@ function renderAlphabet() {
     const body = document.getElementById('alpha-body');
     if (!tabs || !body) return;
     alphaFollowLearnLang();
+    document.getElementById('alpha-title').innerHTML = escHtml(t('alpha_title')) + introInfoBtn('alpha_hint');
+    document.getElementById('alpha-intro').innerHTML = introHtml('alpha_hint');
     const shown = alphaTabsShown();
     tabs.hidden = shown.length < 2;
     tabs.innerHTML = shown.map(id =>

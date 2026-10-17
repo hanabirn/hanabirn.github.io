@@ -212,7 +212,8 @@
         <div id="page-quiz" style="display: none;">
             <!-- 單字: the learning language's word sets as 主題 / 檢定等級 tabs (renderWords in js/quiz.js) -->
             <div class="lang-card" id="lang-card">
-                <h3 data-i18n="words_title">✦ 單字 ✦</h3>
+                <h3 id="words-title">✦ 單字 ✦</h3>
+                <div id="words-intro"></div>
                 <div class="words-tabs" id="words-tabs" role="tablist"></div>
                 <div id="words-body"></div>
                 <div class="streak-display" id="streak-display" style="display:none">
@@ -529,8 +530,8 @@
         <!-- Alphabet chart for beginners (js/alphabet.js, data in js/alphabet-data.js) -->
         <div id="page-alphabet" style="display: none;">
             <div class="mode-card">
-                <h3 data-i18n="alpha_title">✦ 字母表 ✦</h3>
-                <p class="alpha-hint" data-i18n="alpha_hint">給剛開始學的你：每個字母都有讀音和一個例字，點 🔊 就能聽發音。</p>
+                <h3 id="alpha-title">✦ 字母表 ✦</h3>
+                <div id="alpha-intro"></div>
                 <div class="alpha-tabs" id="alpha-tabs"></div>
             </div>
             <div id="alpha-body"></div>

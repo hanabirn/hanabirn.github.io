@@ -20,6 +20,41 @@ function storeSet(key, value) {
     return false;
 }
 
+/* ----- a page's intro line (proposal E, 2026-10-17) -----
+   Shown under the title the first times a page is opened, with 知道了; after that it
+   folds into an ⓘ beside the title that brings it back. Which ones were folded is kept
+   per device (intro_seen), not synced. key = the intro's i18n key. */
+function introSeen(key) {
+    try { return (JSON.parse(localStorage.getItem('intro_seen')) || []).includes(key); } catch { return false; }
+}
+
+function introHtml(key, force) {
+    if (introSeen(key) && !force) return '';
+    return `<div class="page-intro" data-intro="${key}"><span>${escHtml(t(key))}</span>`
+        + `<button type="button" class="page-intro-ok" onclick="introDismiss('${key}')">${escHtml(t('intro_ok'))}</button></div>`;
+}
+
+function introInfoBtn(key) {
+    if (!introSeen(key)) return '';
+    return `<button type="button" class="intro-info" onclick="introShow('${key}', this)" aria-label="${escHtml(t('intro_info'))}" title="${escHtml(t('intro_info'))}">i</button>`;
+}
+
+function introDismiss(key) {
+    let seen = [];
+    try { seen = JSON.parse(localStorage.getItem('intro_seen')) || []; } catch {}
+    if (!seen.includes(key)) seen.push(key);
+    try { localStorage.setItem('intro_seen', JSON.stringify(seen)); } catch {}
+    document.querySelectorAll(`.page-intro[data-intro="${key}"]`).forEach(el => el.remove());
+    refreshDynamicContent();
+}
+
+// the ⓘ: the intro again, right under the title, until 知道了
+function introShow(key, btn) {
+    const head = btn.closest('h3');
+    if (!head || document.querySelector(`.page-intro[data-intro="${key}"]`)) return;
+    head.insertAdjacentHTML('afterend', introHtml(key, true));
+}
+
 /* Pages reached from the phone tab bar's 學習 / 更多 sheets rather than a tab of their own. */
 const LEARN_TABS = ['grammar', 'reading', 'listening'];
 const MORE_TABS = ['dict', 'alphabet', 'notes', 'guestbook', 'feedback', 'about'];
@@ -662,6 +697,8 @@ function renderWords() {
     const tabs = document.getElementById('words-tabs');
     const body = document.getElementById('words-body');
     if (!tabs || !body) return;
+    document.getElementById('words-title').innerHTML = escHtml(t('words_title')) + introInfoBtn('words_intro');
+    document.getElementById('words-intro').innerHTML = introHtml('words_intro');
     const code = wordsLang();
     if (!code) {
         tabs.innerHTML = '';
@@ -671,8 +708,7 @@ function renderWords() {
     tabs.innerHTML = [['topics', 'words_tab_topics'], ['levels', 'words_tab_levels']].map(([id, key]) =>
         `<button type="button" role="tab" class="words-tab${wordsTab === id ? ' on' : ''}" aria-selected="${wordsTab === id}" onclick="setWordsTab('${id}')">${escHtml(t(key))}</button>`).join('');
     if (wordsTab === 'levels') {
-        body.innerHTML = `<p class="examquiz-hint">${escHtml(t('examquiz_hint'))}</p>
-            <div class="words-levels">${wordsLevelIds(code).map(id => {
+        body.innerHTML = `<div class="words-levels">${wordsLevelIds(code).map(id => {
                 const sum = pathSummary(id);
                 const done = sum ? sum.done : getSetProgress(id).done;
                 const finished = sum && done >= sum.levels;
@@ -687,8 +723,7 @@ function renderWords() {
     }
     // one tile per topic with its path progress (4 levels of 10 words; the real count
     // once the set has been loaded on this device)
-    body.innerHTML = `<p class="examquiz-hint">${escHtml(t('topic_hint'))}</p>
-        <div class="topic-grid">${topicSetIds(TOPIC_FILE_LANG[code]).map(id => {
+    body.innerHTML = `<div class="topic-grid">${topicSetIds(TOPIC_FILE_LANG[code]).map(id => {
             const topic = topicOf(id).topic;
             const sum = pathSummary(id);
             const levels = sum ? sum.levels : 4;
