@@ -109,13 +109,15 @@ GEMINI_MODEL_LANGS = {'gemini-3.8-flash-lite-tts': {'zh-TW'}}
 # Mainland Mandarin: 3.1 first — it made most of the Mainland 閱讀 recordings (one voice
 # throughout), 3.8 often misreads the length in zh-CN, and 3.1 has no noise before the voice
 GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash-tts'],
-                     # Japanese 閱讀 (2026-10-16): Aoede, picked by the owner over the Google voice
-                     'ja': ['gemini-3.8-flash-tts', 'gemini-3.1-flash-tts-preview']}
+                     # Japanese 閱讀 (2026-10-16): Aoede, picked by the owner over the Google voice;
+                     # 3.8 only, so every passage sounds the same (owner, 2026-10-16)
+                     'ja': ['gemini-3.8-flash-tts']}
 # Japanese with Gemini only for the 閱讀 levels listed here (tier 0); everything else in
 # Japanese — words, grammar examples, the other reading levels — stays with Google, and
 # Gemini is given the sentence as written (kanji and all, GEMINI_SAY), not the kana
-GEMINI_JA_READING = {'ja_n4'}
+GEMINI_JA_READING = {'ja_n4', 'ja_n5'}      # N5 re-recorded to match N4 (owner, 2026-10-16)
 GEMINI_SAY = {}        # (lang, file id) -> the text Gemini reads, when it isn't files[fid]
+REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
     'zh-TW': ('Aoede', 'Read the following Chinese text aloud in a natural, warm Taiwanese Mandarin '
@@ -687,6 +689,8 @@ def run_gemini(lang, files, aliases, top, limit):
         old = {}
     made = set(old.get('g', []))
     by_model = dict(old.get('gm', {}))     # file id -> the Gemini model that made it
+    if REGEMINI:                           # --regemini MODEL: make that model's files again
+        made -= {f for f, m in by_model.items() if m == REGEMINI}
     declicked = set(old.get('c', []))      # files drop_end_click() has been through
     deburst = set(old.get('l', []))        # … and drop_lead_burst()
     tiers = TIERS.get(lang, {})
@@ -814,10 +818,15 @@ def main():
     ap.add_argument('--gemini-all', action='store_true', help='with --gemini: also the words, alphabet and samples')
     ap.add_argument('--fix-clicks', action='store_true',
                     help='cut the end click from the Gemini files already made (no requests)')
+    ap.add_argument('--regemini', metavar='MODEL',
+                    help='with --gemini: render again the files made by this model, as index.json "gm" '
+                         'names it (e.g. 3.1-flash-tts-preview), so a level ends up in one model\'s voice')
     ap.add_argument('--redo', action='store_true',
                     help='with --only: re-render every file with the current voice (into tools/.audio-redo/ '
                          'first; the site keeps the old files until all are made, then they are replaced)')
     args = ap.parse_args()
+    global REGEMINI
+    REGEMINI = args.regemini or ''
     if args.redo and (not args.only or args.only.startswith('zh')):
         sys.exit('--redo needs --only <lang>, and not zh-TW / zh-CN (their Gemini files would be lost)')
     langs = [args.only] if args.only else list(LANGS)
