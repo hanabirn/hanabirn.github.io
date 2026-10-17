@@ -40,7 +40,57 @@ const FORM_NOTE = /^(inflection|plural|feminine|masculine|(first|second|third)-p
 
 const bare = w => w.toLowerCase().replace(/^(le |la |l'|les |el\/la |el |la |los |las |der |die |das )/, '');
 
-/* rows of the site's lists for this word: [{set name, card}] */
+/* ----- the site's recordings (2026-10-17) -----
+   A word in the site's lists has an MP3 under data/audio/<dir>/, named by audioId() of
+   its text — the same hash as js/speech.js and tools/build_audio.py (keep the three
+   identical). index.json lists the files ("f") and aliases ("a": a Japanese kanji word's
+   plain spelling, a Simplified spelling → the file). Sent as an attachment, so Discord
+   plays it in the reply. English words aren't recorded yet. */
+const AUDIO_DIRS = { ja: 'ja', ko: 'ko', fr: 'fr', ru: 'ru', es: 'es', de: 'de' };
+
+function audioId(text) {
+    const str = text.normalize('NFC').trim();
+    let h1 = 0xdeadbeef, h2 = 0x41c6ce57;
+    for (let i = 0, ch; i < str.length; i++) {
+        ch = str.charCodeAt(i);
+        h1 = Math.imul(h1 ^ ch, 2654435761);
+        h2 = Math.imul(h2 ^ ch, 1597334677);
+    }
+    h1 = Math.imul(h1 ^ (h1 >>> 16), 2246822507);
+    h1 ^= Math.imul(h2 ^ (h2 >>> 13), 3266489909);
+    h2 = Math.imul(h2 ^ (h2 >>> 16), 2246822507);
+    h2 ^= Math.imul(h1 ^ (h1 >>> 13), 3266489909);
+    return (4294967296 * (2097151 & h2) + (h1 >>> 0)).toString(36);
+}
+
+async function audioIndex(env, dir) {
+    const res = await fetch(`${env.SITE}/data/audio/${dir}/index.json`, { cf: { cacheTtl: 3600, cacheEverything: true } });
+    if (!res.ok) return null;
+    const j = await res.json();
+    const files = new Set(j.f || []);
+    return id => (files.has(id) ? id : (j.a || {})[id] || '');
+}
+
+/* the first site match's recording as {name, data}, or null */
+async function pronunciation(env, matches, ui) {
+    const m = matches.find(x => x.kind !== 'en');
+    if (!m) return null;
+    const r = m.row;
+    // what the recording was made from: a Japanese kanji word with its kana, a Chinese word
+    // in the accent of the reply's script (Taiwan for Traditional, Mainland for Simplified)
+    const dir = m.kind === 'zh' ? (ui === 'zhs' ? 'zh-CN' : 'zh-TW') : AUDIO_DIRS[m.kind];
+    const keys = m.kind === 'ja' ? [r[0] + '|' + r[1], r[0]] : m.kind === 'zh' ? (ui === 'zhs' ? [r[1], r[0]] : [r[0], r[1]]) : [r[0]];
+    if (!dir) return null;
+    const find = await audioIndex(env, dir).catch(() => null);
+    const id = find && keys.map(k => k && find(audioId(k))).find(Boolean);
+    if (!id) return null;
+    const res = await fetch(`${env.SITE}/data/audio/${dir}/${id}.mp3`, { cf: { cacheTtl: 86400, cacheEverything: true } });
+    if (!res.ok) return null;
+    const name = String(m.c.word).replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 40) || 'word';
+    return { name: name + '.mp3', type: 'audio/mpeg', data: await res.arrayBuffer() };
+}
+
+/* rows of the site's lists for this word: [{set name, card, kind, row}] */
 async function siteMatches(env, word, lang, ui) {
     const want = word.toLowerCase();
     const sets = await Promise.all(setsFor(lang, ui).map(async s => ({ s, data: await loadSet(env, s.id).catch(() => null) })));
@@ -54,7 +104,7 @@ async function siteMatches(env, word, lang, ui) {
             const key = c.word + '|' + c.answer;
             if (seen.has(key)) continue;
             seen.add(key);
-            out.push({ name: setInfo(s.id, ui).name, c });
+            out.push({ name: setInfo(s.id, ui).name, c, kind: data.kind, row: r });
             if (out.length >= 4) return out;
         }
     }
@@ -132,7 +182,9 @@ export async function lookUp(env, opts, ui) {
     }
 
     if (!fields.length) fields.push({ name: t(ui, 'd_none_title'), value: t(ui, 'd_none', { w: word, lang: studyName(ui, lang) }) });
+    const audio = site.status === 'fulfilled' && site.value.length ? await pronunciation(env, site.value, ui).catch(() => null) : null;
     return {
+        ...(audio ? { files: [audio] } : {}),
         content: '',
         embeds: [{ color: COLOR, title: `🔎 ${word}`, description: `-# ${studyName(ui, lang)}`, fields,
             footer: { text: 'Wiktionary (CC BY-SA) · Tatoeba (CC BY 2.0 FR) · Hanabiの小天地' } }],

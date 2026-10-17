@@ -1,8 +1,8 @@
 /* /grammar: the site's grammar levels (data/grammar/<id>.json, built by
    tools/build_grammar.py), in two modes (owner's request, 2026-10-15):
 
-   study — the level's points in order, each with its explanation and all three of its
-           practice questions; where a visitor got to is kept in KV PREFS
+   study — the level's points in order: first the point's explanation and example (a
+           card of its own since 2026-10-17, owner's pick), then its practice questions; where a visitor got to is kept in KV PREFS
            ("g:<user>:<lang>" = {level, at: {<level>: point index}}) and /grammar study
            picks up there next time.
    quiz  — n questions drawn at random from the whole level; at the end the missed
@@ -10,12 +10,15 @@
 
    Nothing else is stored: a button's custom_id carries the state (the options picked
    so far as digits), and questions are rebuilt from it on each press:
-     study  sp:<ui>:<owner>:<level>:<point>                 the point and its question 1
-            sq:<ui>:<owner>:<level>:<point>:<picks>         its next question
+     study  sp:<ui>:<owner>:<level>:<point>                 the point's explanation
+            sq:<ui>:<owner>:<level>:<point>:<picks>         its next question (picks '' = the first)
             sa:<ui>:<owner>:<level>:<point>:<picks>:<k>     an answer
      quiz   tq:<ui>:<owner>:<level>:<seed36>:<n>:<picks>       the next question
             ta:<ui>:<owner>:<level>:<seed36>:<n>:<picks>:<k>   an answer
             tr:<ui>:<owner>:<level>:<seed36>:<n>:<picks>:<page> the results
+            tm:<ui>:<owner>:<level>:<seed36>:<n>:<picks>       a round of the missed ones
+            tg:<ui>:<owner>:<level>:<n>                        the level again, a new seed
+            (seed36 = "M" + an id: a missed round, its questions in KV "gm:<id>" for 3 days)
      both   ge:<ui>:<owner>                                 finish
    Texts come in the visitor's language: Chinese, English, and since 2026-10-15
    ja / ko / ru / fr / es / de (tools/content_i18n.py) — never the lesson's own
@@ -24,10 +27,10 @@
 import { studyName, rng, shuffle, newSeed } from './sets.js';
 import { t, siteT, isUiLang } from './i18n.js';
 import { toSimplified } from './zhconv.js';
-import { COLOR, SITE_URL, button, linkButton, row, cut } from './ui.js';
+import { COLOR, NEUTRAL, GREEN, RED, SITE_URL, button, linkButton, row, cut, progressBar, LETTERS, needLetters } from './ui.js';
 
 const BLANK = /（[\s　_＿]*）|\([\s_]*\)/;
-const GREEN = 0x3A8F5C;
+const MISSED_TTL = 3 * 24 * 3600;
 export const GQ_MIN = 5, GQ_MAX = 30, GQ_DEFAULT = 10;
 const WRONG_PER_PAGE = 4;
 
@@ -135,6 +138,19 @@ function optionLabel(lessonLang, q, k, ui) {
     return r ? `${text}（${r}）` : text;
 }
 
+/* the answer buttons (and, for long options, the A–D lines for the card); after an answer
+   the right one green and the picked one red, all disabled */
+function optionParts(lessonLang, q, order, ui, idFor, answered) {
+    const labels = order.map(k => optionLabel(lessonLang, q, k, ui));
+    const letters = needLetters(labels);
+    const mark = k => (k === q.answer ? '✅' : k === answered.chosen ? '❌' : '▫️');
+    const lines = letters ? order.map((k, j) => `${answered.done ? mark(k) + ' ' : ''}**${LETTERS[j]}**　${labels[j]}`) : [];
+    const buttons = order.map((k, j) => answered.done
+        ? button(`x:${j}`, letters ? LETTERS[j] : cut(labels[j], 80), k === q.answer ? 3 : k === answered.chosen ? 4 : 2, true)
+        : button(idFor(k), letters ? LETTERS[j] : cut(labels[j], 80)));
+    return { lines, buttons };
+}
+
 async function load(env, levelId, ui) {
     const levels = await grammarLevels(env, ui);
     const info = levels.find(l => l.id === levelId);
@@ -223,33 +239,54 @@ export async function startStudy(env, opts, user, ui) {
     const id = levels.some(l => l.id === opts.level) ? opts.level
         : place && levels.some(l => l.id === place.level) ? place.level : levels[0].id;
     const at = (place && place.at && place.at[id]) || 0;
-    return showPoint(env, ui, opts.public ? user : '0', id, at, '', at > 0);
+    return showLesson(env, ui, opts.public ? user : '0', id, at, at > 0);
 }
 
-/* point `pi` and its question picks.length + 1 (all on one card for the first) */
-async function showPoint(env, ui, owner, levelId, pi, picks, resumed) {
+/* point `pi`'s explanation and example, with 開始練習 / 跳過這個 */
+async function showLesson(env, ui, owner, levelId, pi, resumed) {
     const got = levelId && await load(env, levelId, ui);
     if (!got || !got.level) return gone(ui, 'g_no_level');
     const { info, level } = got;
     if (pi >= level.points.length) pi = 0;
+    const p = level.points[pi];
+    const lines = [...heading(info.lang, p, ui)];
+    if (resumed) lines.push(`-# ${t(ui, 'g_resumed')}`);
+    lines.push('', t(ui, 'g_form', { f: gText(p.form, ui) }), '', cut(gText(p.explain, ui), 1200));
+    const ex = (p.examples || [])[0];
+    if (ex) lines.push('', `**${t(ui, 'g_example')}**`, ...exampleLines(info.lang, ex, ui));
+    const next = pi + 1 < level.points.length ? pi + 1 : 0;
+    return {
+        content: '',
+        embeds: [{ color: NEUTRAL, title: t(ui, 'gs_title', { level: info.name, i: pi + 1, n: level.points.length }),
+            description: cut(lines.join('\n'), 4000), footer: { text: t(ui, 'g_learn_foot', { n: p.quiz.length }) } }],
+        components: [row([button(`sq:${ui}:${owner}:${levelId}:${pi}:`, t(ui, 'g_start'), 1),
+            button(`sp:${ui}:${owner}:${levelId}:${next}`, t(ui, 'g_skip'), 2), endButton(ui, owner)])]
+    };
+}
+
+// right / wrong for each question of the point answered so far
+const pointMarks = (p, picks) => [...picks].map((c, k) => Number(c) === p.quiz[k].answer);
+
+/* question picks.length + 1 of point `pi`: a short card — the pattern, the question */
+async function showQuestion(env, ui, owner, levelId, pi, picks) {
+    const got = levelId && await load(env, levelId, ui);
+    if (!got || !got.level || !got.level.points[pi]) return gone(ui, 'g_no_level');
+    const { info, level } = got;
     const p = level.points[pi], qi = picks.length, q = p.quiz[qi];
     if (!q) return gone(ui, 'g_no_level');
     const order = optionOrder(q, (pi * 31 + qi + 7) ^ idHash(levelId));
-    const lines = [...heading(info.lang, p, ui)];
-    if (qi === 0) {
-        if (resumed) lines.push(`-# ${t(ui, 'g_resumed')}`);
-        lines.push(t(ui, 'g_form', { f: gText(p.form, ui) }), '', cut(gText(p.explain, ui), 900));
-        const ex = (p.examples || [])[0];
-        if (ex) lines.push('', `**${t(ui, 'g_example')}**`, ...exampleLines(info.lang, ex, ui));
-        lines.push('');
-    }
-    lines.push(`**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, ...questionLines(info.lang, q, ui));
     const base = `${ui}:${owner}:${levelId}:${pi}:${picks}`;
+    const opts = optionParts(info.lang, q, order, ui, k => `sa:${base}:${k}`, {});
+    const lines = [`-# ${heading(info.lang, p, ui).map(x => x.replace(/^#+ |\*\*/g, '')).join('・')}`,
+        `**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, ...questionLines(info.lang, q, ui),
+        ...(opts.lines.length ? ['', ...opts.lines] : [])];
     return {
         content: '',
-        embeds: [{ color: COLOR, title: t(ui, 'gs_title', { level: info.name, i: pi + 1, n: level.points.length }),
-            description: cut(lines.join('\n'), 4000) }],
-        components: [row(order.map(k => button(`sa:${base}:${k}`, cut(optionLabel(info.lang, q, k, ui), 80)))), row([endButton(ui, owner)])]
+        embeds: [{ color: NEUTRAL, title: t(ui, 'gs_title', { level: info.name, i: pi + 1, n: level.points.length }),
+            description: cut(lines.join('\n'), 4000),
+            footer: { text: `${progressBar(pointMarks(p, picks), p.quiz.length)}　${qi + 1} / ${p.quiz.length}` } }],
+        components: [row(opts.buttons),
+            row([button(`sp:${ui}:${owner}:${levelId}:${pi}`, t(ui, 'g_reread'), 2), endButton(ui, owner)])]
     };
 }
 
@@ -261,7 +298,9 @@ async function studyAnswer(env, ui, owner, user, levelId, pi, picks, chosen) {
     if (!q || !(chosen >= 0 && chosen < q.options.length)) return null;
     const order = optionOrder(q, (pi * 31 + qi + 7) ^ idHash(levelId));
     const all = picks + chosen;
-    const lines = [...heading(info.lang, p, ui), `**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, '',
+    const opts = optionParts(info.lang, q, order, ui, null, { done: true, chosen });
+    const lines = [`-# ${heading(info.lang, p, ui).map(x => x.replace(/^#+ |\*\*/g, '')).join('・')}`,
+        `**${questionHead(ui, q, qi + 1, p.quiz.length)}**`, ...(opts.lines.length ? ['', ...opts.lines] : []), '',
         ...feedbackLines(info.lang, p, q, chosen, ui)];
     const last = qi + 1 >= p.quiz.length;
     let buttons;
@@ -275,15 +314,16 @@ async function studyAnswer(env, ui, owner, user, levelId, pi, picks, chosen) {
         await savePlace(env, user, info.lang, levelId, next);
         if (next === 0) lines.push('', t(ui, 'g_level_done'));
         buttons = [button(`sp:${ui}:${owner}:${levelId}:${next}`, t(ui, 'g_next'), 1),
-            button(`sp:${ui}:${owner}:${levelId}:${pi}`, t(ui, 'g_retry'), 2), endButton(ui, owner)];
+            button(`sq:${ui}:${owner}:${levelId}:${pi}:`, t(ui, 'g_retry'), 2), endButton(ui, owner)];
     }
     return {
         content: '',
-        embeds: [{ color: Number(chosen) === q.answer ? GREEN : COLOR,
+        embeds: [{ color: Number(chosen) === q.answer ? GREEN : RED,
             title: t(ui, 'gs_title', { level: info.name, i: pi + 1, n: level.points.length }),
-            description: cut(lines.join('\n'), 4000), footer: { text: t(ui, last ? 'g_saved' : 'g_footer') } }],
+            description: cut(lines.join('\n'), 4000),
+            footer: { text: `${progressBar(pointMarks(p, all), p.quiz.length)}　${qi + 1} / ${p.quiz.length}\n${t(ui, last ? 'g_saved' : 'g_footer')}` } }],
         components: [
-            row(order.map(k => button(`x:${k}`, cut(optionLabel(info.lang, q, k, ui), 80), k === q.answer ? 3 : k === chosen ? 4 : 2, true))),
+            row(opts.buttons),
             row(last ? [...buttons, linkButton(SITE_URL, t(ui, 'g_site'))] : buttons)
         ]
     };
@@ -291,15 +331,33 @@ async function studyAnswer(env, ui, owner, user, levelId, pi, picks, chosen) {
 
 /* ===================== quiz ===================== */
 
-/* question i of a quiz: the level's questions in the order the seed shuffles them */
-function quizQuestion(level, seed, i) {
+/* The order a quiz asks the level's questions in, as [point, question] pairs: the seed's
+   shuffle, or a missed round's own list (KV); null when that round expired. */
+async function quizDeck(env, level, seedField) {
+    if (seedField.startsWith('M')) {
+        let saved = null;
+        try { saved = env.PREFS && JSON.parse(await env.PREFS.get('gm:' + seedField.slice(1))); } catch {}
+        const items = saved && Array.isArray(saved.items) ? saved.items.filter(([pi, qi]) => level.points[pi] && level.points[pi].quiz[qi]) : [];
+        return items.length ? { items, seed: idHash(seedField) } : null;
+    }
+    const seed = parseInt(seedField, 36) >>> 0;
     const all = [];
     level.points.forEach((p, pi) => (p.quiz || []).forEach((q, qi) => all.push([pi, qi])));
-    const order = shuffle(all.map((_, k) => k), rng(seed));
-    const [pi, qi] = all[order[i % order.length]];
-    const p = level.points[pi], q = p.quiz[qi];
-    return { p, q, order: optionOrder(q, (seed ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0) };
+    return { items: shuffle(all.map((_, k) => k), rng(seed)).map(k => all[k]), seed };
 }
+
+/* question i of a quiz */
+function quizQuestion(level, d, i) {
+    const [pi, qi] = d.items[i % d.items.length];
+    const p = level.points[pi], q = p.quiz[qi];
+    return { p, q, pi, qi, order: optionOrder(q, (d.seed ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0) };
+}
+
+const quizMarks = (level, d, picks) => [...picks].map((c, i) => Number(c) === quizQuestion(level, d, i).q.answer);
+const quizProgress = (ui, level, d, picks, n) => {
+    const marks = quizMarks(level, d, picks);
+    return progressBar(marks, n) + (picks.length ? `　${t(ui, 'q_tally', { s: marks.filter(Boolean).length, n: picks.length })}` : '');
+};
 
 /* /grammar quiz language:<…> level:<id?> count:<n> */
 export async function startQuiz(env, opts, user, ui) {
@@ -307,62 +365,66 @@ export async function startQuiz(env, opts, user, ui) {
     if (!levels.length) return gone(ui, 'g_no_lang');
     const id = levels.some(l => l.id === opts.level) ? opts.level : levels[0].id;
     const n = Math.min(GQ_MAX, Math.max(GQ_MIN, Number(opts.count) || GQ_DEFAULT));
-    return quizAsk(env, ui, opts.public ? user : '0', id, newSeed(), n, '');
+    return quizAsk(env, ui, opts.public ? user : '0', id, newSeed().toString(36), n, '');
 }
 
-async function quizAsk(env, ui, owner, levelId, seed, n, picks) {
+async function quizAsk(env, ui, owner, levelId, seedField, n, picks) {
     const got = await load(env, levelId, ui);
     if (!got || !got.level) return gone(ui, 'g_no_level');
     const { info, level } = got;
+    const d = await quizDeck(env, level, seedField);
+    if (!d) return gone(ui, 'expired_round');
     const i = picks.length;
-    const { p, q, order } = quizQuestion(level, seed, i);
-    const base = `${ui}:${owner}:${levelId}:${seed.toString(36)}:${n}:${picks}`;
-    const lines = [...heading(info.lang, p, ui), '', ...questionLines(info.lang, q, ui)];
+    const { p, q, order } = quizQuestion(level, d, i);
+    const base = `${ui}:${owner}:${levelId}:${seedField}:${n}:${picks}`;
+    const opts = optionParts(info.lang, q, order, ui, k => `ta:${base}:${k}`, {});
+    const lines = [...heading(info.lang, p, ui), '', ...questionLines(info.lang, q, ui), ...(opts.lines.length ? ['', ...opts.lines] : [])];
     return {
         content: '',
-        embeds: [{ color: COLOR, title: t(ui, 'gq_title', { level: info.name, i: i + 1, n }), description: cut(lines.join('\n'), 4000),
-            footer: { text: t(ui, 'q_tally', { s: quizScore(level, seed, picks), n: i }) } }],
-        components: [row(order.map(k => button(`ta:${base}:${k}`, cut(optionLabel(info.lang, q, k, ui), 80)))),
-            row([button(`tr:${base}:0`, t(ui, 'q_end'), 2)])]
+        embeds: [{ color: NEUTRAL, title: t(ui, 'gq_title', { level: info.name, i: i + 1, n }), description: cut(lines.join('\n'), 4000),
+            footer: { text: quizProgress(ui, level, d, picks, n) } }],
+        components: [row(opts.buttons), row([button(`tr:${base}:0`, t(ui, 'q_end'), 2)])]
     };
 }
 
-function quizScore(level, seed, picks) {
-    return [...picks].filter((c, i) => Number(c) === quizQuestion(level, seed, i).q.answer).length;
-}
-
-async function quizAnswer(env, ui, owner, levelId, seed, n, picks, chosen) {
+async function quizAnswer(env, ui, owner, levelId, seedField, n, picks, chosen) {
     const got = await load(env, levelId, ui);
     if (!got || !got.level) return gone(ui, 'g_load_failed');
     const { info, level } = got;
+    const d = await quizDeck(env, level, seedField);
+    if (!d) return gone(ui, 'expired_round');
     const i = picks.length;
-    const { p, q, order } = quizQuestion(level, seed, i);
+    const { p, q, order } = quizQuestion(level, d, i);
     if (!(chosen >= 0 && chosen < q.options.length)) return null;
     const all = picks + chosen;
-    const base = `${ui}:${owner}:${levelId}:${seed.toString(36)}:${n}:${all}`;
+    const base = `${ui}:${owner}:${levelId}:${seedField}:${n}:${all}`;
     const last = i + 1 >= n;
-    const lines = [...heading(info.lang, p, ui), '', ...feedbackLines(info.lang, p, q, chosen, ui)];
+    const opts = optionParts(info.lang, q, order, ui, null, { done: true, chosen });
+    const lines = [...heading(info.lang, p, ui), ...(opts.lines.length ? ['', ...opts.lines] : []), '', ...feedbackLines(info.lang, p, q, chosen, ui)];
     return {
         content: '',
-        embeds: [{ color: chosen === q.answer ? GREEN : COLOR, title: t(ui, 'gq_title', { level: info.name, i: i + 1, n }),
-            description: cut(lines.join('\n'), 4000), footer: { text: t(ui, 'q_tally', { s: quizScore(level, seed, all), n: i + 1 }) } }],
+        embeds: [{ color: chosen === q.answer ? GREEN : RED, title: t(ui, 'gq_title', { level: info.name, i: i + 1, n }),
+            description: cut(lines.join('\n'), 4000), footer: { text: quizProgress(ui, level, d, all, n) } }],
         components: [
-            row(order.map(k => button(`x:${k}`, cut(optionLabel(info.lang, q, k, ui), 80), k === q.answer ? 3 : k === chosen ? 4 : 2, true))),
+            row(opts.buttons),
             row(last ? [button(`tr:${base}:0`, t(ui, 'q_results'), 1)]
                 : [button(`tq:${base}`, t(ui, 'q_next'), 1), button(`tr:${base}:0`, t(ui, 'q_end'), 2)])
         ]
     };
 }
 
-/* the result: score, then the missed questions with why, WRONG_PER_PAGE a page */
-async function quizResults(env, ui, owner, levelId, seed, n, picks, page) {
+/* the result: score, then the missed questions with why, WRONG_PER_PAGE a page; then a
+   round of the missed ones, the level again, or the site */
+async function quizResults(env, ui, owner, levelId, seedField, n, picks, page) {
     const got = await load(env, levelId, ui);
     if (!got || !got.level) return gone(ui, 'g_load_failed');
     const { info, level } = got;
+    const d = await quizDeck(env, level, seedField);
+    if (!d) return gone(ui, 'expired_round');
     const asked = picks.length;
     const missed = [];
     [...picks].forEach((c, i) => {
-        const { p, q } = quizQuestion(level, seed, i);
+        const { p, q } = quizQuestion(level, d, i);
         if (Number(c) !== q.answer) missed.push({ p, q, chosen: Number(c), i });
     });
     const score = asked - missed.length;
@@ -370,7 +432,7 @@ async function quizResults(env, ui, owner, levelId, seed, n, picks, page) {
     const say = t(ui, !asked ? 'r_none' : pct === 100 ? 'r_100' : pct >= 80 ? 'r_80' : pct >= 60 ? 'r_60' : 'r_low');
     const pages = Math.max(1, Math.ceil(missed.length / WRONG_PER_PAGE));
     page = Math.min(Math.max(0, page), pages - 1);
-    const lines = asked ? [`# ${score} / ${asked}`, t(ui, 'r_accuracy', { p: pct }), '', say] : [say];
+    const lines = asked ? [`# ${score} / ${asked}`, `${t(ui, 'r_accuracy', { p: pct })}　${progressBar(quizMarks(level, d, picks), asked)}`, '', say] : [say];
     if (missed.length) {
         lines.push('', `**${t(ui, 'gq_missed')}**`);
         for (const { p, q, chosen, i } of missed.slice(page * WRONG_PER_PAGE, (page + 1) * WRONG_PER_PAGE)) {
@@ -384,17 +446,34 @@ async function quizResults(env, ui, owner, levelId, seed, n, picks, page) {
     } else if (asked) {
         lines.push('', t(ui, 'gq_all_right'));
     }
-    const base = `${ui}:${owner}:${levelId}:${seed.toString(36)}:${n}:${picks}`;
+    const base = `${ui}:${owner}:${levelId}:${seedField}:${n}:${picks}`;
     const nav = pages > 1 ? [
         button(`tr:${base}:${page - 1}`, t(ui, 'p_prev'), 2, page === 0),
-        button(`x:page`, t(ui, 'p_page', { p: page + 1, m: pages }), 2, true),
         button(`tr:${base}:${page + 1}`, t(ui, 'p_next'), 2, page >= pages - 1)] : [];
+    const next = [
+        ...(missed.length ? [button(`tm:${base}`, t(ui, 'gq_retry_missed', { n: missed.length }), 1)] : []),
+        button(`tg:${ui}:${owner}:${levelId}:${Math.max(GQ_MIN, n)}`, t(ui, 'r_again'), missed.length ? 2 : 1),
+        linkButton(SITE_URL, t(ui, 'g_site'))];
+    const footer = [pages > 1 ? t(ui, 'p_page', { p: page + 1, m: pages }) : '', t(ui, 'g_footer')].filter(Boolean).join(' · ');
     return {
         content: '',
         embeds: [{ color: COLOR, title: t(ui, 'gq_results', { level: info.name }), description: cut(lines.join('\n'), 4000),
-            footer: { text: t(ui, 'g_footer') } }],
-        components: [...(nav.length ? [row(nav)] : []), row([linkButton(SITE_URL, t(ui, 'g_site'))])]
+            footer: { text: footer } }],
+        components: [...(nav.length ? [row(nav)] : []), row(next)]
     };
+}
+
+/* a round of the questions just missed: their places go to KV under a short id */
+async function quizMissedRound(env, ui, owner, levelId, seedField, n, picks) {
+    const got = await load(env, levelId, ui);
+    if (!got || !got.level) return gone(ui, 'g_load_failed');
+    const d = await quizDeck(env, got.level, seedField);
+    if (!d || !env.PREFS) return gone(ui, 'expired_round');
+    const items = [...picks].map((c, i) => quizQuestion(got.level, d, i)).filter((x, i) => Number(picks[i]) !== x.q.answer).map(x => [x.pi, x.qi]);
+    if (!items.length) return quizResults(env, ui, owner, levelId, seedField, n, picks, 0);
+    const rid = newSeed().toString(36).padStart(7, '0').slice(0, 8);
+    await env.PREFS.put('gm:' + rid, JSON.stringify({ level: levelId, items }), { expirationTtl: MISSED_TTL });
+    return quizAsk(env, ui, owner, levelId, 'M' + rid, items.length, '');
 }
 
 /* ===================== buttons ===================== */
@@ -407,7 +486,7 @@ function ended(ui) {
     };
 }
 
-export const GRAMMAR_KINDS = ['sp', 'sq', 'sa', 'tq', 'ta', 'tr', 'ge'];
+export const GRAMMAR_KINDS = ['sp', 'sq', 'sa', 'tq', 'ta', 'tr', 'tm', 'tg', 'ge'];
 
 /* a grammar button, split on ":" (see the top of this file); user = who pressed it */
 export async function grammarButton(env, parts, user) {
@@ -419,12 +498,19 @@ export async function grammarButton(env, parts, user) {
         const pi = Number(parts[4]), picks = kind === 'sp' ? '' : parts[5];
         if (!Number.isInteger(pi) || pi < 0 || pi > 500 || !picksOk(picks)) return null;
         if (kind === 'sa') return studyAnswer(env, ui, owner, user, levelId, pi, picks, Number(parts[6]));
-        return showPoint(env, ui, owner, levelId, pi, picks, false);
+        if (kind === 'sq') return showQuestion(env, ui, owner, levelId, pi, picks);
+        return showLesson(env, ui, owner, levelId, pi, false);
     }
-    const seed = parseInt(parts[4], 36) >>> 0, n = Number(parts[5]), picks = parts[6];
-    if (!Number.isInteger(n) || n < 1 || n > GQ_MAX || !picksOk(picks) || picks.length > n) return null;
-    if (kind === 'tq') return quizAsk(env, ui, owner, levelId, seed, n, picks);
-    if (kind === 'ta') return picks.length < n ? quizAnswer(env, ui, owner, levelId, seed, n, picks, Number(parts[7])) : null;
-    if (kind === 'tr') return quizResults(env, ui, owner, levelId, seed, n, picks, Number(parts[7]) || 0);
+    if (kind === 'tg') {
+        const n = Number(parts[4]);
+        if (!Number.isInteger(n) || n < GQ_MIN || n > GQ_MAX) return null;
+        return quizAsk(env, ui, owner, levelId, newSeed().toString(36), n, '');
+    }
+    const seedField = parts[4], n = Number(parts[5]), picks = parts[6];
+    if (!/^M?[0-9a-z]{1,8}$/.test(seedField || '') || !Number.isInteger(n) || n < 1 || n > GQ_MAX || !picksOk(picks) || picks.length > n) return null;
+    if (kind === 'tq') return quizAsk(env, ui, owner, levelId, seedField, n, picks);
+    if (kind === 'ta') return picks.length < n ? quizAnswer(env, ui, owner, levelId, seedField, n, picks, Number(parts[7])) : null;
+    if (kind === 'tr') return quizResults(env, ui, owner, levelId, seedField, n, picks, Number(parts[7]) || 0);
+    if (kind === 'tm') return quizMissedRound(env, ui, owner, levelId, seedField, n, picks);
     return null;
 }

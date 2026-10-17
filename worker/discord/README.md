@@ -6,11 +6,11 @@ commands, nothing to keep awake):
 
 | Command | 中文名稱 | What it does |
 | --- | --- | --- |
-| `/quiz` | 單字測驗 | Language → level or topic (autocomplete) → 5–30 multiple-choice questions on 4 buttons, then a score card listing every word asked, right or wrong, with its meaning (10 a page). Japanese kanji words ask for the reading, everything else for the meaning (Chinese lists: the English meaning). |
-| `/grammar study` | 文法・學習 | Language → level: the level's points in order, each with its form, explanation, an example and its three practice questions; a wrong answer says why that option doesn't fit and the answer does. Where the visitor got to is kept per language in KV `PREFS` (`g:<user>:<lang>`), and the next `/grammar study` picks up there. |
-| `/grammar quiz` | 文法・測驗 | Language → level → 5–30 questions drawn from the whole level; the result lists the missed ones with the why of the picked option and of the answer. |
+| `/quiz` | 單字測驗 | Language → level or topic (autocomplete) → 5–30 multiple-choice questions on 4 buttons, then a score card listing every word asked, right or wrong, with its meaning (10 a page). Japanese kanji words ask for the reading, everything else for the meaning (Chinese lists: the English meaning). Both options are optional: a bare `/quiz` carries on with the visitor's last set (KV `q:<user>`), and question 1 has a drop-down to switch to another set of that language. Options too long for a button go in the card as A–D. The score card offers a round of just the missed words (their card list in KV `vm:<id>` for 3 days — too long for a `custom_id`) and the same set again. |
+| `/grammar study` | 文法・學習 | Language → level: the level's points in order — first a card with its form, explanation and an example (開始練習 / 跳過這個), then its practice questions one by one (再看一次說明 goes back); a wrong answer says why that option doesn't fit and the answer does. Where the visitor got to is kept per language in KV `PREFS` (`g:<user>:<lang>`), and the next `/grammar study` picks up there. |
+| `/grammar quiz` | 文法・測驗 | Language → level → 5–30 questions drawn from the whole level; the result lists the missed ones with the why of the picked option and of the answer, and offers a round of just those (KV `gm:<id>`) or the level again. |
 | `/ask` | 問小花火 | 小花火 answers anything (everyday life, how things work, languages, the site); 繼續問 opens a box for the next question and the conversation (last 8 messages) is kept in KV for 6 hours. Free only: the bot's own Gemini key from a project with **no billing** (`GEMINI_API_KEY`, a secret) tries `ASK_MODELS` in order — each has its own small daily quota, a 429 skips a model for an hour (`spent:<model>`) — then Groq's free tier (`GROQ_API_KEY`, `GROQ_MODELS`), then Cloudflare Workers AI (`@cf/qwen/qwen3-30b-a3b-fp8`, its free daily allowance), then "come back tomorrow". 50 questions per person a day (`ASK_PER_DAY`). Replies to 小花火 and @mentions come from the gateway bot on Render through `POST /chat` (secret `RELAY_TOKEN`) and use the same chain. |
-| `/dictionary` | 字典 | The site's word lists (checked Chinese meaning), Wiktionary (English definitions) and Tatoeba (examples with a Chinese translation). |
+| `/dictionary` | 字典 | The site's word lists (checked Chinese meaning), Wiktionary (English definitions) and Tatoeba (examples with a Chinese translation). A word in the site's lists comes with the site's recording as an MP3 attachment Discord plays in place (`data/audio/<dir>/`, the same `audioId()` hash as the site; Chinese in the accent of the reply's script; English isn't recorded yet). |
 
 | `/language` | 語言設定 | The language the bot replies in, saved per user (KV `PREFS`); "auto" follows the Discord client. |
 
@@ -25,9 +25,15 @@ per option on why it is right or wrong (`tools/grammar_why.py`) — both read fr
 by `python build_strings.py` (re-run when the site's set or topic names change). Buttons
 carry the language in their `custom_id` (`va:<lang>:…`), so pressing one needs no lookup.
 
+**Look** (2026-10-17, owner's picks): the embed's colour bar says what a card is — ink grey
+(`NEUTRAL`) for a question, green / red after a right / wrong answer, the site's vermilion
+for results, help and the dictionary (`src/ui.js`). Questions show a 🟩🟥⬜ progress bar
+in the footer (`progressBar`), page numbers sit in the footer rather than on a dead
+button, and `/help` lists the commands one line each in two groups (fields).
+
 Replies are private (ephemeral) unless `public` is set; on a public quiz only the person
 who started it can answer (the owner is always the third field of a `custom_id`). Apart
-from the grammar place, nothing is stored: each button carries its quiz in its
+from the grammar place, the last word set and the missed-words rounds, nothing is stored: each button carries its quiz in its
 `custom_id` — the options picked so far as digits — and the questions are rebuilt from
 a seed (see the top of `src/quiz.js` and `src/grammar.js`). Buttons of the older format
 (`qa` `qn` `qe` `ga` `gn`, before 2026-10-15) answer that they have expired.

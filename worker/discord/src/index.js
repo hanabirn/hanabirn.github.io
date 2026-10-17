@@ -34,13 +34,22 @@ async function verified(request, body, env) {
     }
 }
 
-/* replace the deferred reply ("thinking…") with the real message */
+/* replace the deferred reply ("thinking…") with the real message; a message with
+   files (the dictionary's recording) goes as multipart, the files listed as attachments */
 async function edit(env, it, message) {
     const api = env.DISCORD_API || 'https://discord.com/api/v10';
-    const res = await fetch(`${api}/webhooks/${it.application_id}/${it.token}/messages/@original`, {
-        method: 'PATCH', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ allowed_mentions: { parse: [] }, ...message })
-    });
+    const { files, ...rest } = message;
+    const payload = { allowed_mentions: { parse: [] }, ...rest };
+    let init;
+    if (files && files.length) {
+        const form = new FormData();
+        form.append('payload_json', JSON.stringify({ ...payload, attachments: files.map((f, i) => ({ id: i, filename: f.name })) }));
+        files.forEach((f, i) => form.append(`files[${i}]`, new Blob([f.data], { type: f.type || 'application/octet-stream' }), f.name));
+        init = { method: 'PATCH', body: form };
+    } else {
+        init = { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) };
+    }
+    const res = await fetch(`${api}/webhooks/${it.application_id}/${it.token}/messages/@original`, init);
     if (!res.ok) console.log('edit failed', res.status, await res.text());
 }
 
@@ -157,7 +166,7 @@ export default {
             }
             // 繼續問: the box for the next question has to be the answer itself
             if (parts[0] === 'ak') return json(askModal(parts));
-            const work = QUIZ_KINDS.includes(parts[0]) ? () => quizButton(env, parts)
+            const work = QUIZ_KINDS.includes(parts[0]) ? () => quizButton(env, parts, ((it.data && it.data.values) || [])[0], userOf(it))
                 : GRAMMAR_KINDS.includes(parts[0]) ? () => grammarButton(env, parts, userOf(it)) : null;
             if (!work) return json({ type: 6 });
             ctx.waitUntil(run(env, it, ui, work));

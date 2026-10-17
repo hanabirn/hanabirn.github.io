@@ -7,60 +7,70 @@ import { COLOR, SITE_URL, linkButton, row } from './ui.js';
 
 const LOCALE = { zh: 'zh-TW', zhs: 'zh-CN', ja: 'ja', ko: 'ko', ru: 'ru', fr: 'fr', es: 'es-ES', de: 'de' };
 
+/* One line per command, in two groups (2026-10-17: the help used to be one long text) */
 const H = {
     zh: {
-        title: '🌸 小花火能做什麼？', intro: '我是 **Hanabiの小天地** 的學習小幫手，用網站上的單字庫和文法，陪你練習日文、韓文、英文、中文、法文、俄文、西班牙文和德文！',
-        quiz: '選語言和等級（或生活主題），用按鈕作答的單字選擇題；最後看分數和每個單字的對錯與意思。', grammar: '學習：照順序學一個等級的文法，每個 3～6 題，答錯會解釋為什麼，下次從上次的地方繼續。測驗：從整個等級隨機抽題，最後列出答錯的題目和解釋。',
-        ask: '問小花火任何問題：日常生活、科學原理、歷史、語言學習都可以；按「繼續問」可以接著聊。', dictionary: '查單字：網站單字庫的意思、英文釋義和例句。', language: '選擇我回覆你的語言（9 種）。', help: '顯示這個說明。',
-        tip: '💡 題目和結果預設只有你看得到；想讓頻道的人一起看，把「{opt}」設成 True。', site: '到 Hanabiの小天地 網站'
+        title: '🌸 小花火能做什麼？', intro: '我是 **Hanabiの小天地** 的學習小幫手，陪你練日、韓、英、中、法、俄、西、德 8 種語言！',
+        practice: '📚 練習', other: '💬 其他',
+        quiz: '單字選擇題，結束後看每個字的對錯；不選語言就接著上次的單字庫', grammar_study: '照順序學文法：先看說明再練習，下次接著學', grammar_quiz: '整個等級隨機抽題，最後解釋答錯的題目', dictionary: '查單字：意思、英文釋義、例句和發音',
+        ask: '問小花火任何問題，按「繼續問」接著聊', language: '換我回覆的語言（9 種）',
+        tip: '💡 結果預設只有你看得到；「{opt}」設成 True 就能分享到頻道', site: '到 Hanabiの小天地 網站'
     },
     zhs: {
-        title: '🌸 小花火能做什么？', intro: '我是 **Hanabiの小天地** 的学习小帮手，用网站上的单词库和语法，陪你练习日语、韩语、英语、中文、法语、俄语、西班牙语和德语！',
-        quiz: '选语言和等级（或生活主题），用按钮作答的单词选择题；最后看分数和每个单词的对错与意思。', grammar: '学习：按顺序学一个等级的语法，每个 3～6 题，答错会解释为什么，下次从上次的地方继续。测验：从整个等级随机抽题，最后列出答错的题目和解释。',
-        ask: '问小花火任何问题：日常生活、科学原理、历史、语言学习都可以；按“继续问”可以接着聊。', dictionary: '查单词：网站单词库的意思、英文释义和例句。', language: '选择我回复你的语言（9 种）。', help: '显示这个说明。',
-        tip: '💡 题目和结果默认只有你看得到；想让频道里的人一起看，把“{opt}”设为 True。', site: '去 Hanabiの小天地 网站'
+        title: '🌸 小花火能做什么？', intro: '我是 **Hanabiの小天地** 的学习小帮手，陪你练日、韩、英、中、法、俄、西、德 8 种语言！',
+        practice: '📚 练习', other: '💬 其他',
+        quiz: '单词选择题，结束后看每个词的对错；不选语言就接着上次的单词库', grammar_study: '按顺序学语法：先看说明再练习，下次接着学', grammar_quiz: '整个等级随机抽题，最后解释答错的题目', dictionary: '查单词：意思、英文释义、例句和发音',
+        ask: '问小花火任何问题，按“继续问”接着聊', language: '换我回复的语言（9 种）',
+        tip: '💡 结果默认只有你看得到；把“{opt}”设为 True 就能分享到频道', site: '去 Hanabiの小天地 网站'
     },
     en: {
-        title: '🌸 What can 小花火 do?', intro: "I'm the study buddy of **Hanabiの小天地**. With the site's word lists and grammar lessons I help you practise Japanese, Korean, English, Chinese, French, Russian, Spanish and German!",
-        quiz: 'Pick a language and a level (or an everyday topic) for a multiple-choice word quiz with buttons; at the end your score and every word, right or wrong, with its meaning.', grammar: 'Study: a level’s points in order, three to six questions each, with why an answer is wrong; next time it picks up where you left off. Quiz: random questions from a whole level, the missed ones explained at the end.',
-        ask: 'Ask 小花火 anything — everyday life, how things work, history, languages; press "Ask more" to keep talking.', dictionary: "Look up a word: the site's meaning, English definitions and example sentences.", language: 'Choose the language I reply to you in (9 languages).', help: 'Show this help.',
-        tip: '💡 Questions and results are only visible to you by default; set "{opt}" to True to share them with the channel.', site: 'Visit Hanabiの小天地'
+        title: '🌸 What can 小花火 do?', intro: "I'm the study buddy of **Hanabiの小天地** — let's practise 8 languages together!",
+        practice: '📚 Practice', other: '💬 More',
+        quiz: 'Multiple-choice word quiz, every word right or wrong at the end; no language picks up your last list', grammar_study: 'Grammar in order: read the point, then practise; carries on next time', grammar_quiz: 'Random questions from a whole level, the misses explained', dictionary: 'Look up a word: meaning, English definitions, examples and audio',
+        ask: 'Ask 小花火 anything; "Ask more" keeps talking', language: 'Change the language I reply in (9 languages)',
+        tip: '💡 Results are only visible to you; set "{opt}" to True to share them with the channel', site: 'Visit Hanabiの小天地'
     },
     ja: {
-        title: '🌸 小花火にできること', intro: '**Hanabiの小天地** の学習アシスタントです。サイトの単語リストと文法で、日本語・韓国語・英語・中国語・フランス語・ロシア語・スペイン語・ドイツ語の練習をお手伝いします！',
-        quiz: '言語とレベル（または生活テーマ）を選んで、ボタンで答える単語クイズ。最後にスコアと、各単語の正誤と意味。', grammar: '学習：レベルの文法を順番に、各 3～6 問。間違えると理由を解説し、次回は続きから。テスト：レベル全体からランダムに出題し、最後に間違えた問題を解説。',
-        ask: '小花火になんでも質問：日常のこと、しくみ、歴史、語学など。「続けて質問」で会話を続けられます。', dictionary: '単語を調べる：サイトの意味、英語の定義、例文。', language: '返信の言語を選ぶ（9 言語）。', help: 'このヘルプを表示。',
-        tip: '💡 問題と結果は通常あなたにだけ表示されます。チャンネルのみんなに見せたいときは「{opt}」を True に。', site: 'Hanabiの小天地 を見る'
+        title: '🌸 小花火にできること', intro: '**Hanabiの小天地** の学習アシスタントです。8 つの言語の練習をお手伝いします！',
+        practice: '📚 練習', other: '💬 その他',
+        quiz: '単語の選択クイズ。最後に各単語の正誤。言語を選ばなければ前回の続き', grammar_study: '文法を順番に：説明を読んでから練習、次回は続きから', grammar_quiz: 'レベル全体からランダム出題、間違いを解説', dictionary: '単語を調べる：意味・英語の定義・例文・発音',
+        ask: '小花火になんでも質問。「続けて質問」で会話を続ける', language: '返信の言語を変える（9 言語）',
+        tip: '💡 結果は通常あなたにだけ表示。「{opt}」を True にするとチャンネルに共有', site: 'Hanabiの小天地 を見る'
     },
     ko: {
-        title: '🌸 小花火가 할 수 있는 것', intro: '저는 **Hanabiの小天地**의 학습 도우미예요. 사이트의 단어장과 문법으로 일본어, 한국어, 영어, 중국어, 프랑스어, 러시아어, 스페인어, 독일어 연습을 도와드려요!',
-        quiz: '언어와 수준(또는 생활 주제)을 골라 버튼으로 답하는 단어 퀴즈. 마지막에 점수와 단어별 정답·오답과 뜻을 보여 줘요.', grammar: '학습: 레벨의 문법을 순서대로, 각 3~6문제. 틀리면 이유를 설명하고, 다음에는 이어서 해요. 테스트: 레벨 전체에서 무작위 출제, 마지막에 틀린 문제 해설.',
-        ask: '小花火에게 무엇이든 물어보세요: 일상, 원리, 역사, 언어 학습. 「계속 질문」으로 대화를 이어 갈 수 있어요.', dictionary: '단어 찾기: 사이트의 뜻, 영어 뜻풀이, 예문.', language: '제가 답할 언어를 골라요 (9개 언어).', help: '이 도움말을 보여 줘요.',
-        tip: '💡 문제와 결과는 기본적으로 나만 볼 수 있어요. 채널 사람들과 함께 보려면 「{opt}」를 True로 설정하세요.', site: 'Hanabiの小天地 가기'
+        title: '🌸 小花火가 할 수 있는 것', intro: '저는 **Hanabiの小天地**의 학습 도우미예요. 8개 언어 연습을 함께해요!',
+        practice: '📚 연습', other: '💬 기타',
+        quiz: '단어 객관식 퀴즈, 마지막에 단어별 정답·오답. 언어를 안 고르면 지난번에 이어서', grammar_study: '문법을 순서대로: 설명을 읽고 연습, 다음에 이어서', grammar_quiz: '레벨 전체에서 무작위 출제, 틀린 문제 해설', dictionary: '단어 찾기: 뜻, 영어 뜻풀이, 예문, 발음',
+        ask: '小花火에게 무엇이든 질문, 「계속 질문」으로 대화 이어 가기', language: '제가 답할 언어 바꾸기 (9개 언어)',
+        tip: '💡 결과는 기본적으로 나만 볼 수 있어요. 「{opt}」를 True로 하면 채널에 공유', site: 'Hanabiの小天地 가기'
     },
     ru: {
-        title: '🌸 Что умеет 小花火?', intro: 'Я помощник по учёбе сайта **Hanabiの小天地**. По спискам слов и урокам грамматики сайта помогаю практиковать японский, корейский, английский, китайский, французский, русский, испанский и немецкий!',
-        quiz: 'Выберите язык и уровень (или тему) — тест на слова с кнопками; в конце счёт и все слова с отметкой и значением.', grammar: 'Учить: темы уровня по порядку, по 3–6 вопросов, с объяснением ошибок; в следующий раз — с того же места. Тест: случайные вопросы по всему уровню, в конце — разбор ошибок.',
-        ask: 'Спросите 小花火 о чём угодно — быт, как всё устроено, история, языки; «Спросить ещё» продолжит разговор.', dictionary: 'Найти слово: значение с сайта, определения на английском и примеры.', language: 'Выбрать язык моих ответов (9 языков).', help: 'Показать эту справку.',
-        tip: '💡 Вопросы и результаты по умолчанию видны только вам; чтобы показать их каналу, укажите «{opt}» = True.', site: 'Открыть Hanabiの小天地'
+        title: '🌸 Что умеет 小花火?', intro: 'Я помощник по учёбе сайта **Hanabiの小天地** — практикуем 8 языков вместе!',
+        practice: '📚 Практика', other: '💬 Другое',
+        quiz: 'Тест на слова с вариантами, в конце — все слова с отметкой; без языка — прошлый список', grammar_study: 'Грамматика по порядку: сначала объяснение, потом практика; дальше с того же места', grammar_quiz: 'Случайные вопросы по уровню, ошибки с разбором', dictionary: 'Найти слово: значение, английские определения, примеры и произношение',
+        ask: 'Спросите 小花火 о чём угодно; «Спросить ещё» продолжит разговор', language: 'Сменить язык моих ответов (9 языков)',
+        tip: '💡 Результаты видны только вам; укажите «{opt}» = True, чтобы показать каналу', site: 'Открыть Hanabiの小天地'
     },
     fr: {
-        title: '🌸 Que sait faire 小花火 ?', intro: 'Je suis l’assistante d’étude de **Hanabiの小天地**. Avec les listes de mots et la grammaire du site, je t’aide à pratiquer le japonais, le coréen, l’anglais, le chinois, le français, le russe, l’espagnol et l’allemand !',
-        quiz: 'Choisis une langue et un niveau (ou un thème) : quiz de vocabulaire à boutons ; à la fin, ton score et chaque mot, juste ou faux, avec son sens.', grammar: 'Apprendre : les points d’un niveau dans l’ordre, 3 à 6 questions chacun, avec pourquoi une réponse est fausse ; la fois suivante, ça reprend où tu t’es arrêté. Quiz : des questions au hasard sur tout un niveau, les erreurs expliquées à la fin.',
-        ask: 'Pose n’importe quelle question à 小花火 — quotidien, fonctionnement des choses, histoire, langues ; « Demander encore » pour continuer.', dictionary: 'Chercher un mot : le sens du site, les définitions en anglais et des exemples.', language: 'Choisir la langue de mes réponses (9 langues).', help: 'Afficher cette aide.',
-        tip: '💡 Par défaut, toi seul vois les questions et résultats ; mets « {opt} » à True pour les partager avec le salon.', site: 'Aller sur Hanabiの小天地'
+        title: '🌸 Que sait faire 小花火 ?', intro: 'Je suis l’assistante d’étude de **Hanabiの小天地** — pratiquons 8 langues ensemble !',
+        practice: '📚 S’entraîner', other: '💬 Autres',
+        quiz: 'Quiz de vocabulaire à choix, chaque mot juste ou faux à la fin ; sans langue, ta dernière liste', grammar_study: 'La grammaire dans l’ordre : l’explication, puis l’entraînement ; ça reprend la fois suivante', grammar_quiz: 'Des questions au hasard sur un niveau, les erreurs expliquées', dictionary: 'Chercher un mot : sens, définitions en anglais, exemples et prononciation',
+        ask: 'Pose n’importe quelle question à 小花火 ; « Demander encore » pour continuer', language: 'Changer la langue de mes réponses (9 langues)',
+        tip: '💡 Toi seul vois les résultats ; mets « {opt} » à True pour les partager avec le salon', site: 'Aller sur Hanabiの小天地'
     },
     es: {
-        title: '🌸 ¿Qué puede hacer 小花火?', intro: 'Soy la ayudante de estudio de **Hanabiの小天地**. Con las listas de palabras y la gramática de la web te ayudo a practicar japonés, coreano, inglés, chino, francés, ruso, español y alemán.',
-        quiz: 'Elige un idioma y un nivel (o un tema): quiz de vocabulario con botones; al final, tu puntuación y cada palabra, bien o mal, con su significado.', grammar: 'Estudiar: los puntos de un nivel en orden, de 3 a 6 preguntas cada uno, con por qué una respuesta está mal; la próxima vez sigue donde lo dejaste. Prueba: preguntas al azar de todo un nivel y, al final, los fallos explicados.',
-        ask: 'Pregúntale lo que quieras a 小花火: vida diaria, cómo funcionan las cosas, historia, idiomas; «Preguntar más» para seguir.', dictionary: 'Buscar una palabra: el significado de la web, definiciones en inglés y ejemplos.', language: 'Elegir el idioma de mis respuestas (9 idiomas).', help: 'Mostrar esta ayuda.',
-        tip: '💡 Por defecto, solo tú ves las preguntas y los resultados; pon «{opt}» en True para compartirlos con el canal.', site: 'Ir a Hanabiの小天地'
+        title: '🌸 ¿Qué puede hacer 小花火?', intro: 'Soy la ayudante de estudio de **Hanabiの小天地**: ¡practiquemos 8 idiomas juntos!',
+        practice: '📚 Practicar', other: '💬 Más',
+        quiz: 'Quiz de vocabulario de opciones, cada palabra bien o mal al final; sin idioma, tu última lista', grammar_study: 'La gramática en orden: la explicación y luego la práctica; sigue la próxima vez', grammar_quiz: 'Preguntas al azar de un nivel, con los fallos explicados', dictionary: 'Buscar una palabra: significado, definiciones en inglés, ejemplos y audio',
+        ask: 'Pregúntale lo que quieras a 小花火; «Preguntar más» para seguir', language: 'Cambiar el idioma de mis respuestas (9 idiomas)',
+        tip: '💡 Solo tú ves los resultados; pon «{opt}» en True para compartirlos con el canal', site: 'Ir a Hanabiの小天地'
     },
     de: {
-        title: '🌸 Was kann 小花火?', intro: 'Ich bin die Lernhilfe von **Hanabiの小天地**. Mit den Wortlisten und Grammatiklektionen der Website helfe ich dir beim Üben von Japanisch, Koreanisch, Englisch, Chinesisch, Französisch, Russisch, Spanisch und Deutsch!',
-        quiz: 'Wähle Sprache und Stufe (oder ein Alltagsthema): Vokabelquiz mit Buttons; am Ende dein Punktestand und jedes Wort, richtig oder falsch, mit Bedeutung.', grammar: 'Lernen: die Punkte einer Stufe der Reihe nach, je 3–6 Fragen, mit Erklärung, warum eine Antwort falsch ist; beim nächsten Mal geht es dort weiter. Test: zufällige Fragen aus einer ganzen Stufe, am Ende die Fehler erklärt.',
-        ask: 'Frag 小花火 alles – Alltag, wie Dinge funktionieren, Geschichte, Sprachen; mit „Weiter fragen“ geht das Gespräch weiter.', dictionary: 'Ein Wort nachschlagen: Bedeutung von der Website, englische Definitionen und Beispielsätze.', language: 'Die Sprache meiner Antworten wählen (9 Sprachen).', help: 'Diese Hilfe anzeigen.',
-        tip: '💡 Fragen und Ergebnisse siehst standardmäßig nur du; setze „{opt}“ auf True, um sie mit dem Kanal zu teilen.', site: 'Zu Hanabiの小天地'
+        title: '🌸 Was kann 小花火?', intro: 'Ich bin die Lernhilfe von **Hanabiの小天地** – lass uns 8 Sprachen üben!',
+        practice: '📚 Üben', other: '💬 Sonstiges',
+        quiz: 'Vokabelquiz mit Auswahl, am Ende jedes Wort richtig oder falsch; ohne Sprache geht es mit der letzten Liste weiter', grammar_study: 'Grammatik der Reihe nach: erst die Erklärung, dann üben; beim nächsten Mal geht es weiter', grammar_quiz: 'Zufällige Fragen aus einer Stufe, Fehler erklärt', dictionary: 'Ein Wort nachschlagen: Bedeutung, englische Definitionen, Beispiele und Aussprache',
+        ask: 'Frag 小花火 alles; mit „Weiter fragen“ geht es weiter', language: 'Die Sprache meiner Antworten ändern (9 Sprachen)',
+        tip: '💡 Ergebnisse siehst nur du; setze „{opt}“ auf True, um sie mit dem Kanal zu teilen', site: 'Zu Hanabiの小天地'
     }
 };
 
@@ -88,12 +98,15 @@ function publicOptionName(locale) {
 /* ui: the reply language; locale: the Discord client's (it.locale) */
 export function helpMessage(ui, locale) {
     const h = H[ui] || H.en;
-    const line = name => `${name === 'grammar' ? mention('grammar study', ui) + '　' + mention('grammar quiz', ui) : mention(name, ui)}\n${h[name]}`;
+    const lines = names => names.map(([cmd, key]) => `${mention(cmd, ui)}　${h[key]}`).join('\n');
     return {
         embeds: [{
-            color: COLOR, title: h.title,
-            description: [h.intro, '', ...['quiz', 'grammar', 'ask', 'dictionary', 'language', 'help'].map(line).join('\n\n').split('\n'), '',
-                h.tip.replace('{opt}', publicOptionName(locale))].join('\n')
+            color: COLOR, title: h.title, description: h.intro,
+            fields: [
+                { name: h.practice, value: lines([['quiz', 'quiz'], ['grammar study', 'grammar_study'], ['grammar quiz', 'grammar_quiz'], ['dictionary', 'dictionary']]) },
+                { name: h.other, value: lines([['ask', 'ask'], ['language', 'language']]) }
+            ],
+            footer: { text: h.tip.replace('{opt}', publicOptionName(locale)) }
         }],
         components: [row([linkButton(SITE_URL, h.site)])]
     };

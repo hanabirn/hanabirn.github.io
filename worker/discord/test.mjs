@@ -13,10 +13,10 @@ import { fileURLToPath } from 'node:url';
 const REPO = fileURLToPath(new URL('../../', import.meta.url));
 const site = http.createServer(async (req, res) => {
     const path = decodeURIComponent(req.url.split('?')[0]);
-    if (!/^\/data\/[\w/.-]+\.json$/.test(path) || path.includes('..')) return res.writeHead(404).end();
+    if (!/^\/data\/[\w/.-]+\.(json|mp3)$/.test(path) || path.includes('..')) return res.writeHead(404).end();
     let body;
     try { body = await readFile(REPO + path.slice(1)); } catch { return res.writeHead(404).end(); }
-    res.writeHead(200, { 'Content-Type': 'application/json' }).end(body);
+    res.writeHead(200, { 'Content-Type': path.endsWith('.mp3') ? 'audio/mpeg' : 'application/json' }).end(body);
 }).listen(8791);
 
 const WRANGLER = process.argv[2] || 'npx wrangler';
@@ -31,11 +31,18 @@ const pubHex = Buffer.from(await crypto.subtle.exportKey('raw', keys.publicKey))
 // the fake Discord: remembers the last message written for each interaction token
 const edits = new Map();
 const fake = http.createServer((req, res) => {
-    let body = '';
-    req.on('data', c => { body += c; });
+    const chunks = [];
+    req.on('data', c => { chunks.push(c); });
     req.on('end', () => {
         const token = req.url.split('/')[3];
-        edits.set(token, JSON.parse(body));
+        const body = Buffer.concat(chunks).toString('latin1');
+        if (/multipart/.test(req.headers['content-type'] || '')) {
+            const json = /name="payload_json"\r\n(?:Content-Type:[^\r]*\r\n)?\r\n([\s\S]*?)\r\n--/.exec(body);
+            const msg = JSON.parse(Buffer.from(json[1], 'latin1').toString('utf8'));
+            msg._files = [...body.matchAll(/name="files\[\d+\]"; filename="([^"]*)"/g)].map(m => Buffer.from(m[1], 'latin1').toString('utf8'));
+            msg._bytes = body.length;
+            edits.set(token, msg);
+        } else edits.set(token, JSON.parse(Buffer.from(body, 'latin1').toString('utf8')));
         res.writeHead(200, { 'Content-Type': 'application/json' }).end('{}');
     });
 }).listen(8790);
@@ -76,10 +83,13 @@ const command = (name, options, user = OWNER, locale = 'zh-TW') => send({ type: 
 // a subcommand: /grammar study | quiz
 const sub = (name, subName, options, user = OWNER, locale = 'zh-TW') => send({ type: 2, locale, member: { user: { id: user } }, data: { name, options: [{ type: 1, name: subName, options: Object.entries(options).map(([k, v]) => ({ name: k, value: v })) }] } });
 const press = (customId, user = OWNER, locale = 'zh-TW') => send({ type: 3, locale, member: { user: { id: user } }, data: { custom_id: customId } });
+const choose = (customId, value, user = OWNER, locale = 'zh-TW') => send({ type: 3, locale, member: { user: { id: user } }, data: { custom_id: customId, component_type: 3, values: [value] } });
+const NEUTRAL = 0x8A7F72, GREEN = 0x3A8F5C, RED = 0xD83C3E;
 const buttons = msg => (msg.components || []).flatMap(r => r.components);
 const show = (label, msg) => !msg ? check(false, label + ': no reply arrived') : console.log(`\n--- ${label}\n` + (msg.content || '') + (msg.embeds || []).map(e =>
     `[${e.title}]\n${e.description || ''}\n${(e.fields || []).map(f => `<${f.name}>\n${f.value}`).join('\n')}\n(${e.footer?.text || ''})`).join('\n') +
-    '\nbuttons: ' + buttons(msg).map(b => `${b.label}${b.disabled ? '(off)' : ''}${b.style === 3 ? '✓' : b.style === 4 ? '✗' : ''}`).join(' | '));
+    '\nbuttons: ' + buttons(msg).map(b => b.type === 3 ? `[menu: ${b.options.length}]` : `${b.label}${b.disabled ? '(off)' : ''}${b.style === 3 ? '✓' : b.style === 4 ? '✗' : ''}`).join(' | ') +
+    (msg._files ? '\nfiles: ' + msg._files.join(', ') : ''));
 
 const check = (ok, what) => { console.log((ok ? 'PASS ' : 'FAIL ') + what); if (!ok) process.exitCode = 1; };
 
@@ -102,6 +112,8 @@ try {
     let r = await command('quiz', { language: 'ja', set: 'jlpt_n5', count: 12, public: true });
     check(r.reply.type === 5 && r.reply.data.flags === 0, 'public quiz deferred without the ephemeral flag');
     show('quiz question 1', r.edited);
+    check(r.edited.embeds[0].color === NEUTRAL && /⬜{12}/.test(r.edited.embeds[0].footer.text), 'question card: ink grey, 12 empty squares');
+    check(buttons(r.edited).some(b => b.type === 3 && b.custom_id.startsWith('vs:') && b.options.length === 15), 'question 1 offers the other JLPT / topic sets');
     for (let i = 0; i < 12; i++) {
         const answer = buttons(r.edited).find(b => b.custom_id.startsWith('va:'));
         if (i === 0) {
@@ -109,7 +121,10 @@ try {
             check(other.reply.type === 4 && other.reply.data.flags === 64, 'someone else pressing gets a private note');
         }
         r = await press(answer.custom_id);
-        if (i === 0) show('quiz answer 1', r.edited);
+        if (i === 0) {
+            show('quiz answer 1', r.edited);
+            check([GREEN, RED].includes(r.edited.embeds[0].color) && /[🟩🟥]⬜{11}/u.test(r.edited.embeds[0].footer.text), 'answer card: green or red, the first square filled');
+        }
         const next = buttons(r.edited).find(b => b.custom_id.startsWith('vn:') || b.label.startsWith('看結果'));
         r = await press(next.custom_id);
     }
@@ -122,6 +137,25 @@ try {
     r = await press(nextPage.custom_id);
     show('quiz result page 2', r.edited);
     check(listed(r.edited.embeds[0].description) === 2 && /11\. /.test(r.edited.embeds[0].description), 'result page 2 lists words 11-12');
+    check(/第 2 \/ 2 頁/.test(r.edited.embeds[0].footer.text) && !buttons(r.edited).some(b => /頁$/.test(b.label || '') && b.disabled && !/[⬅➡]/.test(b.label)), 'the page number is in the footer, not a dead button');
+    const missedBtn = buttons(r.edited).find(b => b.custom_id?.startsWith('vm:'));
+    const missedN = 12 - Number(/^# (\d+) \/ 12/m.exec(r.edited.embeds[0].description)[1]);
+    check(missedN === 0 ? !missedBtn : !!missedBtn && buttons(r.edited).some(b => b.custom_id?.startsWith('vg:')), `result offers the ${missedN} missed and "again"`);
+    if (missedBtn) {
+        r = await press(missedBtn.custom_id);
+        show('missed round, question 1', r.edited);
+        check(new RegExp(`^⬜{${missedN}}$`, 'mu').test(r.edited.embeds[0].footer.text), `a round of the ${missedN} missed words`);
+        r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('va:')).custom_id);
+        check([GREEN, RED].includes(r.edited.embeds[0].color), 'the missed round answers too');
+    }
+    // a bare /quiz carries on with the last set; the menu switches to another
+    r = await command('quiz', { count: 5 });
+    show('bare /quiz', r.edited);
+    check(/JLPT N5/.test(r.edited.embeds[0].title) && /接著上次/.test(r.edited.embeds[0].description), 'bare /quiz resumes JLPT N5');
+    r = await choose(buttons(r.edited).find(b => b.type === 3).custom_id, 'tp_ja_food');
+    check(/吃飯/.test(r.edited.embeds[0].title), 'the menu switches to 日文・吃飯: ' + r.edited.embeds[0].title);
+    r = await command('quiz', { count: 5 });
+    check(/吃飯/.test(r.edited.embeds[0].title), 'and /quiz remembers that one');
 
     for (const [lang, set] of [['zh', 'hsk_1'], ['en', 'en_toeic'], ['ru', 'ru_a1'], ['es', 'tp_es_food'], ['ko', 'topik_1']]) {
         r = await command('quiz', { language: lang, set, count: 5 });
@@ -136,6 +170,10 @@ try {
         const lang = level.slice(0, 2);
         r = await sub('grammar', 'study', { language: lang, level }, STUDENT);
         show('grammar study ' + level, r.edited);
+        check(!buttons(r.edited).some(b => b.custom_id?.startsWith('sa:')) && r.edited.embeds[0].color === NEUTRAL, `${level}: the explanation comes alone first`);
+        r = await press(buttons(r.edited).find(b => b.custom_id?.startsWith('sq:')).custom_id, STUDENT);
+        show('grammar study question 1 ' + level, r.edited);
+        check(buttons(r.edited).some(b => b.custom_id?.startsWith('sp:')), `${level}: a question can go back to the explanation`);
         let asked = 0;
         for (let q = 0; q < 6; q++) {
             const sa = buttons(r.edited).filter(b => b.custom_id?.startsWith('sa:'));
@@ -143,7 +181,8 @@ try {
             r = await press(sa[sa.length - 1].custom_id, STUDENT);
             asked++;
             if (q === 0) show('grammar study answer ' + level, r.edited);
-            const next = buttons(r.edited).find(b => b.custom_id?.startsWith('sq:'));
+            // the next question is the blue sq: button (再練一次 on the last card is a grey one)
+            const next = buttons(r.edited).find(b => b.custom_id?.startsWith('sq:') && b.style === 1);
             if (!next) break;
             r = await press(next.custom_id, STUDENT);
         }
@@ -165,6 +204,13 @@ try {
     }
     show('grammar quiz results', r.edited);
     check(/測驗結果/.test(r.edited.embeds[0].title) && /\d \/ 5/.test(r.edited.embeds[0].description), 'grammar quiz ends with a score');
+    const gm = buttons(r.edited).find(b => b.custom_id?.startsWith('tm:'));
+    if (gm) {
+        r = await press(gm.custom_id, '902');
+        show('grammar missed round', r.edited);
+        check(buttons(r.edited).some(b => b.custom_id?.startsWith('ta:')), 'grammar quiz: a round of the missed questions');
+    }
+    check(buttons((await press(buttons(r.edited).find(b => b.custom_id?.startsWith('ta:')).custom_id, '902')).edited).length > 0, 'its answers work');
     r = await sub('grammar', 'study', { language: 'en' }, '903');
     check(/準備中/.test(r.edited.content), 'a language without grammar: ' + r.edited.content);
 
@@ -223,19 +269,23 @@ try {
     check(!!exField && /\n\n> /.test(exField.value), 'examples are separated by a blank line');
     r = await command('dictionary', { word: '食べる' }, '666', 'zh-TW');
     show('dictionary 食べる, Traditional Discord', r.edited);
+    check((r.edited._files || []).some(f => /\.mp3$/.test(f)) && r.edited.attachments?.length === 1 && r.edited._bytes > 2000, 'dictionary sends the site recording of 食べる');
+    r = await command('dictionary', { word: '學生' }, '666', 'zh-CN');
+    check((r.edited._files || []).length === 1, 'and of 學生 (Mainland accent): ' + (r.edited._files || []).join());
 
     // /help answers at once, privately; commands are clickable mentions (Discord names them in
     // the reader's own client language), the "public" option is named as their Discord does
     for (const [locale, opt] of [['zh-TW', '公開'], ['ja', '公開'], ['en-US', 'public']]) {
         r = await command('help', {}, '777', locale);
-        const d = r.reply.data.embeds[0].description;
-        check(r.reply.type === 4 && r.reply.data.flags === 64 && /<\/quiz:\d+>/.test(d) && /<\/help:\d+>/.test(d) && d.includes(opt), `/help (${locale}) uses mentions and names the option "${opt}"`);
+        const e = r.reply.data.embeds[0];
+        const d = [e.description, ...(e.fields || []).map(f => f.name + '\n' + f.value), e.footer?.text].join('\n');
+        check(r.reply.type === 4 && r.reply.data.flags === 64 && e.fields?.length === 2 && /<\/quiz:\d+>/.test(d) && /<\/ask:\d+>/.test(d) && d.includes(opt), `/help (${locale}): two groups, mentions, the option "${opt}"`);
     }
     // the owner's case: an English Discord with Traditional Chinese replies
     await command('language', { reply_language: 'zh' }, '888', 'en-US');
     r = await command('help', {}, '888', 'en-US');
     show('help, English Discord + Chinese replies', r.reply.data);
-    check(/小花火能做什麼/.test(r.reply.data.embeds[0].title) && r.reply.data.embeds[0].description.includes('「public」'), 'Chinese help, English option name');
+    check(/小花火能做什麼/.test(r.reply.data.embeds[0].title) && r.reply.data.embeds[0].footer.text.includes('「public」'), 'Chinese help, English option name');
     // /ask: an answer with 繼續問; the button opens a box; its question continues the conversation
     const ASKER = '8' + Date.now();
     r = await command('ask', { question: '請用一句話解釋為什麼天空是藍色的。' }, ASKER);

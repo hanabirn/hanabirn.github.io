@@ -75,8 +75,9 @@ export const COMMANDS = [
                 ko: 'Hanabiの小天地 단어장으로 객관식 퀴즈', ru: 'Тест по спискам слов Hanabiの小天地', fr: 'Quiz de vocabulaire avec les listes de Hanabiの小天地',
                 es: 'Quiz de vocabulario con las listas de Hanabiの小天地', de: 'Vokabelquiz mit den Wortlisten von Hanabiの小天地' }]),
         options: [
-            languageOption(true, ['The language to practise', { zh: '要練習的語言', zhs: '要练习的语言', ja: '練習する言語', ko: '연습할 언어',
-                ru: 'Язык для практики', fr: 'La langue à travailler', es: 'El idioma que quieres practicar', de: 'Die Sprache, die du üben willst' }]),
+            // optional since 2026-10-17: a bare /quiz carries on with the last word list
+            languageOption(false, ['The language to practise (default: your last word list)', { zh: '要練習的語言（預設：上次的單字庫）', zhs: '要练习的语言（默认：上次的单词库）', ja: '練習する言語（通常は前回の単語リスト）', ko: '연습할 언어 (기본: 지난번 단어장)',
+                ru: 'Язык для практики (по умолчанию — прошлый список слов)', fr: 'La langue à travailler (par défaut : ta dernière liste)', es: 'El idioma que quieres practicar (por defecto: tu última lista)', de: 'Die Sprache, die du üben willst (Standard: deine letzte Wortliste)' }]),
             { type: 3, autocomplete: true,
                 ...L(['set', { zh: '單字庫', zhs: '单词库', ja: '単語リスト', ko: '단어장', ru: 'список', fr: 'liste', es: 'lista', de: 'liste' }],
                     ['Level or topic (default: the easiest)', { zh: '檢定等級或生活主題（預設最簡單的）', zhs: '检定等级或生活主题（默认最简单的）',
