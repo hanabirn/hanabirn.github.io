@@ -208,15 +208,12 @@ function homeOpenMistakes() {
     showMistakeBook();
 }
 
-/* show*Levels() only hide the exam picker, so a level card left open from an
-   earlier visit (say TOPIK) would stay up next to the one asked for. */
+/* The exam shortcuts: that language's 檢定等級 tab on the 單字 page, the language
+   becoming the one being learnt (js/learnlang.js). */
 function homeOpenExam(kind) {
-    switchPage('examquiz', null);
-    hideExamLevelCards();
-    if (kind === 'jlpt') showJlptLevels();
-    else if (kind === 'topik') showTopikLevels();
-    else if (kind === 'hsk') showHskLevels();
-    else if (kind === 'english') showEnglishExamLevels();
+    const lang = { jlpt: 'ja', topik: 'ko', hsk: 'zh', english: 'en' }[kind];
+    if (lang) setLearnLang(lang);
+    openWords('levels');
 }
 
 document.addEventListener('DOMContentLoaded', renderHome);

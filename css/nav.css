@@ -583,3 +583,22 @@ html[data-theme="dark"] .more-quick.more-theme {
     }
 
 }
+
+/* 複習's count of cards due now (updateReviewBadge in js/quiz.js) */
+.nav-btn[data-tab="review"] { position: relative; }
+.nav-badge {
+    display: inline-block;
+    min-width: 18px;
+    margin-left: 5px;
+    padding: 1px 5px;
+    border-radius: 9px;
+    background: var(--primary);
+    color: var(--on-primary);
+    font-size: 0.68rem;
+    font-weight: 800;
+    line-height: 1.4;
+    text-align: center;
+}
+.nav-badge[hidden] { display: none; }
+.tabbar-btn .nav-badge { position: absolute; top: 2px; left: 54%; margin: 0; }
+.main-nav .nav-btn[data-tab="review"].active .nav-badge { background: var(--on-primary); color: var(--primary); }

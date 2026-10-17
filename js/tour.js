@@ -11,19 +11,19 @@
 
 const TOUR_STEPS = [
     { key: 'welcome' },
+    { key: 'learn', targets: ['#learn-pill'] },
     { key: 'goal', targets: ['#page-home .home-goal'] },
     { key: 'start', targets: ['#home-continue'] },
     { key: 'quiz', targets: ['.main-nav .nav-btn[data-tab="quiz"]', '.tabbar .nav-btn[data-tab="quiz"]'] },
-    { key: 'exam', targets: ['.main-nav .nav-btn[data-tab="examquiz"]', '.tabbar .nav-btn[data-tab="examquiz"]'] },
     { key: 'grammar', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
     { key: 'reading', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
     { key: 'listening', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
-    { key: 'review', targets: ['#home-srs-card'] },
+    { key: 'review', targets: ['.main-nav .nav-btn[data-tab="review"]', '.tabbar .nav-btn[data-tab="review"]', '#home-srs-card'] },
     { key: 'dict', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
     { key: 'alphabet', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
     { key: 'notes', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
     { key: 'settings', targets: ['#menu-btn', '#tabbar-more'] },
-    { key: 'lang', targets: ['#lang-globe-btn'] },
+    { key: 'lang', targets: ['#lang-globe-btn', '#learn-pill'] },
     { key: 'done' }
 ];
 

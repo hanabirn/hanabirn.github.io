@@ -340,6 +340,25 @@
 .srs-talk { display: flex; gap: 10px; align-items: center; }
 .srs-mascot { width: 64px; flex: none; }
 .srs-talk .pc-bubble { flex: 1; }
+/* the 間隔複習 page's way to the mistake book (the 複習 tab lands on this page) */
+.srs-mistakes-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    margin: 14px 0 4px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface-2);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.9rem;
+    text-align: left;
+    cursor: pointer;
+}
+.srs-mistakes-row b { margin-left: auto; font-weight: 600; font-size: 0.82rem; color: var(--text-secondary); }
+.srs-mistakes-row:hover { border-color: var(--primary); }
 .srs-due {
     width: 170px;
     height: 170px;

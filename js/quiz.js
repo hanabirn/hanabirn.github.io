@@ -27,7 +27,12 @@ const MORE_TABS = ['dict', 'alphabet', 'notes', 'guestbook', 'feedback', 'about'
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
    nav AND in the phone tab bar / More sheet and both must stay in sync. */
+let pageTarget = 'home';   // the page being opened (body[data-page] follows 120 ms later)
+
 function switchPage(page, el) {
+    // the 檢定 page became the 單字 page's 檢定等級 tab (2026-10-17)
+    if (page === 'examquiz') { openWords('levels'); return; }
+    pageTarget = page;
     document.querySelectorAll('.nav-btn').forEach(b => {
         const on = b.dataset.tab === page;
         b.classList.toggle('active', on);
@@ -42,12 +47,22 @@ function switchPage(page, el) {
         g.classList.toggle('has-active', !!g.querySelector(`.nav-btn[data-tab="${page}"]`)));
     if (typeof closeNavMenus === 'function') closeNavMenus();
     if (typeof closeMoreSheet === 'function') closeMoreSheet();
+    if (page === 'quiz') {
+        // 單字 in the navigation while 複習 is on screen: back to the word sets
+        if (el && el.dataset && el.dataset.tab === 'quiz' && quizReviewShown()) {
+            stopTimer();
+            endReviewState();
+            currentLang = '';
+            showOnlyQuizCard('lang-card');
+        }
+        quizNavMark();
+    }
 
     // a page change silences whatever is playing (a 聽解 item, read-all on 閱讀)
     if (typeof listeningStop === 'function') listeningStop();
     else if (typeof stopSpeech === 'function') stopSpeech();
 
-    const pages = ['home', 'about', 'quiz', 'examquiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
+    const pages = ['home', 'about', 'quiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -74,7 +89,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['home', 'quiz', 'examquiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
+const ALL_TABS = ['home', 'quiz', 'review', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['home'];
 
 function getTabVisibility() {
@@ -571,7 +586,7 @@ function isValidWord(word, meaning) {
 }
 
 /* Every card of #page-quiz; showOnlyQuizCard() shows one of them and hides the rest. */
-const QUIZ_PAGE_CARDS = ['lang-card', 'topic-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card',
+const QUIZ_PAGE_CARDS = ['lang-card', 'setup-card', 'mode-card', 'quiz-card', 'result-card',
     'mistake-card', 'stats-card', 'srs-card', 'flashcard-card', 'flashcard-setup-card', 'listening-setup-card',
     'mastered-list-card', 'unknown-list-card', 'path-card', 'lesson-card'];
 
@@ -580,6 +595,8 @@ function showOnlyQuizCard(id) {
         const el = document.getElementById(c);
         if (el) el.style.display = c === id ? 'block' : 'none';
     });
+    if (id === 'lang-card') renderWords();
+    quizNavMark();
 }
 
 /* Starting a new word set ends any review that was left on screen; otherwise
@@ -611,208 +628,126 @@ function setResultAgainLabel(key) {
 }
 
 /* ----- Languages by region -----
-   The 單字 and 檢定 pages first show a card per region, then that region's language
-   buttons (owner's pick, 2026-10-15); the 學習 pages group their language menu the
-   same way. A new language goes into its region here — the cards count it. Codes are
-   the dict_lang_* ones (ja ko zh en fr ru es de). */
+   The header's 我在學 menu (js/learnlang.js) groups the languages this way. A new
+   language goes into its region here. Codes are the dict_lang_* ones. */
 const LANG_REGIONS = [
     { id: 'asia', icon: '🌏', langs: ['ja', 'ko', 'zh'] },
     { id: 'europe', icon: '🌍', langs: ['en', 'fr', 'ru', 'es', 'de'] },
 ];
-const REGION_CARDS = ['lang-card', 'examquiz-card'];
 
-function langRegion(lang) {
-    const r = LANG_REGIONS.find(x => x.langs.includes(lang));
-    return r ? r.id : '';
+/* ----- 單字 page (proposal C, 2026-10-17) -----
+   One page for the learning language's word sets, in two tabs: 主題 (the topic sets,
+   tp_<lang>_<topic>) and 檢定等級 (the graded lists: JLPT, TOPIK, HSK, the English
+   school / TOEIC / TOEFL lists, CEFR). It replaced the separate 單字 (topics) and
+   檢定 (levels) pages and their region → language pickers; the 檢定 slot in the
+   navigation is 複習 now (openReview). */
+let wordsTab = (() => { try { return localStorage.getItem('words_tab') === 'levels' ? 'levels' : 'topics'; } catch { return 'topics'; } })();
+
+function setWordsTab(tab) {
+    wordsTab = tab === 'levels' ? 'levels' : 'topics';
+    try { localStorage.setItem('words_tab', wordsTab); } catch {}
+    renderWords();
 }
 
-function langNameList(langs) {
-    const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '、' : ', ';
-    return langs.map(l => t('dict_lang_' + l)).join(sep);
+// the 單字 page's own code for the learning language (jp, kr …), '' before one is chosen
+function wordsLang() {
+    return typeof learnLang === 'function' ? (LEARN_QUIZ_CODE[learnLang()] || '') : '';
 }
 
-// the region a card shows, remembered per card ('' = the region cards)
-function regionSaved(cardId) {
-    let v = '';
-    try { v = localStorage.getItem('region_' + cardId) || ''; } catch {}
-    return LANG_REGIONS.some(r => r.id === v) ? v : '';
+function wordsLevelIds(code) {
+    return (WORD_SET_FAMILIES[code] || []).filter(id => !topicOf(id));
 }
 
-function setRegion(cardId, region) {
-    try { localStorage.setItem('region_' + cardId, region); } catch {}
-    renderRegionPicker(cardId);
-}
-
-/* Region cards, or the chosen region's buttons with "← 換地區" above them. The
-   buttons stay in index.html, marked with data-lang. */
-function renderRegionPicker(cardId) {
-    const card = document.getElementById(cardId);
-    const box = card && card.querySelector('.lang-buttons');
-    if (!box) return;
-    const buttons = [...box.querySelectorAll('.lang-btn[data-lang]')];
-    let picker = card.querySelector('.region-picker');
-    if (!picker) {
-        picker = document.createElement('div');
-        picker.className = 'region-picker';
-        box.before(picker);
-        // opening a language keeps its region for the way back
-        box.addEventListener('click', e => {
-            const b = e.target.closest('.lang-btn[data-lang]');
-            if (b && langRegion(b.dataset.lang)) try { localStorage.setItem('region_' + cardId, langRegion(b.dataset.lang)); } catch {}
-        });
-    }
-    const region = regionSaved(cardId);
-    if (!region) {
-        picker.innerHTML = `<div class="region-grid">${LANG_REGIONS.map(r => {
-            const mine = buttons.filter(b => langRegion(b.dataset.lang) === r.id)
-                .sort((a, b) => r.langs.indexOf(a.dataset.lang) - r.langs.indexOf(b.dataset.lang));
-            if (!mine.length) return '';
-            const langs = [...new Set(mine.map(b => b.dataset.lang))];
-            const flags = mine.map(b => [...b.querySelectorAll('.lang-flag')].map(img => img.outerHTML).join('')).join('');
-            return `<button type="button" class="lang-btn region-btn" onclick="setRegion('${cardId}', '${r.id}')">
-                <span class="region-title">${r.icon} ${escHtml(t('region_' + r.id))}</span>
-                <span class="region-flags">${flags}</span>
-                <span class="region-langs">${escHtml(langNameList(langs))}${['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · '}${escHtml(t('region_count', { n: langs.length }))}</span>
-            </button>`;
-        }).join('')}</div>`;
-        box.style.display = 'none';
+function renderWords() {
+    const tabs = document.getElementById('words-tabs');
+    const body = document.getElementById('words-body');
+    if (!tabs || !body) return;
+    const code = wordsLang();
+    if (!code) {
+        tabs.innerHTML = '';
+        body.innerHTML = learnChooseHtml();
         return;
     }
-    const r = LANG_REGIONS.find(x => x.id === region);
-    picker.innerHTML = `<div class="region-head">
-        <button type="button" class="region-back" onclick="setRegion('${cardId}', '')">← ${escHtml(t('region_change'))}</button>
-        <b>${r.icon} ${escHtml(t('region_' + r.id))}</b>
-    </div>`;
-    box.style.display = '';
-    buttons.forEach(b => { b.style.display = langRegion(b.dataset.lang) === region ? '' : 'none'; });
+    tabs.innerHTML = [['topics', 'words_tab_topics'], ['levels', 'words_tab_levels']].map(([id, key]) =>
+        `<button type="button" role="tab" class="words-tab${wordsTab === id ? ' on' : ''}" aria-selected="${wordsTab === id}" onclick="setWordsTab('${id}')">${escHtml(t(key))}</button>`).join('');
+    if (wordsTab === 'levels') {
+        body.innerHTML = `<p class="examquiz-hint">${escHtml(t('examquiz_hint'))}</p>
+            <div class="words-levels">${wordsLevelIds(code).map(id => {
+                const sum = pathSummary(id);
+                const done = sum ? sum.done : getSetProgress(id).done;
+                const finished = sum && done >= sum.levels;
+                return `<button type="button" class="words-level${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
+                    <span class="words-level-name">${escHtml(wordSetName(id))}</span>
+                    <span class="words-level-state">${sum ? (finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: sum.levels }))) : ''}</span>
+                    ${sum ? `<span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / sum.levels * 100)}%"></i></span>` : ''}
+                    <span class="words-level-go" aria-hidden="true">›</span>
+                </button>`;
+            }).join('')}</div>`;
+        return;
+    }
+    // one tile per topic with its path progress (4 levels of 10 words; the real count
+    // once the set has been loaded on this device)
+    body.innerHTML = `<p class="examquiz-hint">${escHtml(t('topic_hint'))}</p>
+        <div class="topic-grid">${topicSetIds(TOPIC_FILE_LANG[code]).map(id => {
+            const topic = topicOf(id).topic;
+            const sum = pathSummary(id);
+            const levels = sum ? sum.levels : 4;
+            const done = Math.min(getSetProgress(id).done, levels);
+            const finished = done >= levels;
+            return `<button type="button" class="topic-tile${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
+                <span class="topic-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
+                <span class="topic-name">${escHtml(t('topic_' + topic))}</span>
+                <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / levels * 100)}%"></i></span>
+                <span class="topic-state">${finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: levels }))}</span>
+            </button>`;
+        }).join('')}</div>`;
 }
 
-function renderRegionPickers() {
-    REGION_CARDS.forEach(renderRegionPicker);
+/* Opens the 單字 page on a tab (the home page's exam shortcuts, old 檢定 links). */
+function openWords(tab) {
+    if (tab) { wordsTab = tab === 'levels' ? 'levels' : 'topics'; try { localStorage.setItem('words_tab', wordsTab); } catch {} }
+    currentLang = '';
+    reviewMode = false;
+    currentListeningMode = false;
+    backToLanguage();
+    switchPage('quiz', null);
 }
 
-document.addEventListener('DOMContentLoaded', renderRegionPickers);
-
-/* The quiz page's language card: every language opens its topics (#topic-card),
-   which link to that language's levels on the exam page (topicToExam). */
-function selectLanguage(lang) {
-    if (TOPIC_FILE_LANG[lang]) showTopicPicker(lang);
-    else if (CEFR_LANGS.includes(lang)) topicToExam(lang);
+/* 複習 (the navigation slot 檢定 had): the 間隔複習 page, which also leads to the
+   mistake book. The tab lights up while a review or the mistake book is on screen
+   (quizNavMark). */
+function openReview() {
+    switchPage('quiz', null);
+    showSrsDashboard();
 }
 
-/* The level picker of a language on the exam page (the topic card's link to it). */
-function topicToExam(lang) {
-    switchPage('examquiz', null);
-    hideExamLevelCards();
-    if (lang === 'jp') showJlptLevels();
-    else if (lang === 'kr') showTopikLevels();
-    else if (lang === 'zh') showHskLevels();
-    else if (lang === 'en') showEnglishExamLevels();
-    else if (CEFR_LANGS.includes(lang)) showCefrLevels(lang);
+// the 間隔複習 page, the mistake book, or a review / repair round running on the quiz cards
+function quizReviewShown() {
+    const card = QUIZ_PAGE_CARDS.find(c => { const el = document.getElementById(c); return el && el.style.display !== 'none'; });
+    return card === 'srs-card' || card === 'mistake-card'
+        || ((card === 'quiz-card' || card === 'result-card') && reviewMode && (reviewSource === 'srs' || reviewSource === 'mistakes'));
 }
 
-/* The CEFR level card of the exam page, filled for French or Russian. */
-function showCefrLevels(lang) {
-    const card = document.getElementById('examquiz-cefr-level-card');
-    if (!card || !CEFR_LANGS.includes(lang)) return;
-    card.dataset.lang = lang;
-    document.getElementById('examquiz-cefr-title').textContent = t('examquiz_cefr_title', { lang: t('dict_lang_' + lang) });
-    document.getElementById('examquiz-cefr-buttons').innerHTML = cefrSetIds(lang).map(id =>
-        `<button class="lang-btn ${lang}" onclick="selectExamSet('${id}')"><span>${escHtml(wordSetName(id))}</span></button>`).join('');
-    document.getElementById('examquiz-card').style.display = 'none';
-    card.style.display = 'block';
+// which of 單字 / 複習 the navigation marks while the 單字 page is open
+function quizNavMark() {
+    if (pageTarget !== 'quiz') return;
+    const review = quizReviewShown();
+    document.querySelectorAll('.nav-btn[data-tab="quiz"], .nav-btn[data-tab="review"]').forEach(b => {
+        const on = b.dataset.tab === (review ? 'review' : 'quiz');
+        b.classList.toggle('active', on);
+        if (on) b.setAttribute('aria-current', 'page'); else b.removeAttribute('aria-current');
+    });
 }
 
-function hideCefrLevels() {
-    document.getElementById('examquiz-cefr-level-card').style.display = 'none';
-    document.getElementById('examquiz-card').style.display = 'block';
-}
+document.addEventListener('DOMContentLoaded', () => { renderWords(); updateReviewBadge(); });
 
-let topicLang = 'jp';
-
-function showTopicPicker(lang) {
-    if (TOPIC_FILE_LANG[lang]) topicLang = lang;
-    showOnlyQuizCard('topic-card');
-    renderTopicPicker();
-}
-
-function hideTopicPicker() {
-    showOnlyQuizCard('lang-card');
-}
-
-/* One tile per topic with its path progress (4 levels of 10 words; the real count
-   once the set has been loaded on this device). */
-function renderTopicPicker() {
-    const grid = document.getElementById('topic-grid');
-    if (!grid) return;
-    const fileLang = TOPIC_FILE_LANG[topicLang];
-    document.getElementById('topic-title').textContent = t('topic_title', { lang: t('dict_lang_' + fileLang) });
-    document.getElementById('topic-exam-btn').textContent = t('topic_exam_' + topicLang);
-    grid.innerHTML = topicSetIds(fileLang).map(id => {
-        const topic = topicOf(id).topic;
-        const sum = pathSummary(id);
-        const levels = sum ? sum.levels : 4;
-        const done = Math.min(getSetProgress(id).done, levels);
-        const finished = done >= levels;
-        return `<button type="button" class="topic-tile${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
-            <span class="topic-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
-            <span class="topic-name">${escHtml(t('topic_' + topic))}</span>
-            <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / levels * 100)}%"></i></span>
-            <span class="topic-state">${finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: levels }))}</span>
-        </button>`;
-    }).join('');
-}
-
-function hideExamLevelCards() {
-    ['examquiz-jlpt-level-card', 'examquiz-topik-level-card', 'examquiz-hsk-level-card', 'examquiz-english-level-card', 'examquiz-cefr-level-card']
-        .forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
-}
-
-function showEnglishExamLevels() {
-    document.getElementById('examquiz-card').style.display = 'none';
-    document.getElementById('examquiz-english-level-card').style.display = 'block';
-}
-
-function hideEnglishExamLevels() {
-    document.getElementById('examquiz-english-level-card').style.display = 'none';
-    document.getElementById('examquiz-card').style.display = 'block';
-}
-
-/* Certification-exam vocab sets (e.g. JLPT N5, TOPIK 1) live in their own
-   Google Sheets (JLPT_SHEETS / TOPIK_SHEETS, one spreadsheet per level),
-   fetched live via CSV export just like the general-language sheets in
-   SHEETS — but each row is a single word, so no stride parsing is needed,
-   just parseExamVocab()/parseTopikVocab() below. Only the specific level a
-   visitor picks is ever fetched, and it's cached to localStorage the same
-   way as the general languages (saveVocabCache/getVocabCache). */
-function showJlptLevels() {
-    document.getElementById('examquiz-card').style.display = 'none';
-    document.getElementById('examquiz-jlpt-level-card').style.display = 'block';
-}
-
-function hideJlptLevels() {
-    document.getElementById('examquiz-jlpt-level-card').style.display = 'none';
-    document.getElementById('examquiz-card').style.display = 'block';
-}
-
-function showTopikLevels() {
-    document.getElementById('examquiz-card').style.display = 'none';
-    document.getElementById('examquiz-topik-level-card').style.display = 'block';
-}
-
-function hideTopikLevels() {
-    document.getElementById('examquiz-topik-level-card').style.display = 'none';
-    document.getElementById('examquiz-card').style.display = 'block';
-}
-
-function showHskLevels() {
-    document.getElementById('examquiz-card').style.display = 'none';
-    document.getElementById('examquiz-hsk-level-card').style.display = 'block';
-}
-
-function hideHskLevels() {
-    document.getElementById('examquiz-hsk-level-card').style.display = 'none';
-    document.getElementById('examquiz-card').style.display = 'block';
+// the 複習 tab's badge: cards due now
+function updateReviewBadge() {
+    const n = typeof srsQuizDueCount === 'function' ? srsQuizDueCount() : 0;
+    document.querySelectorAll('.review-badge').forEach(b => {
+        b.hidden = !n;
+        b.textContent = n > 99 ? '99+' : String(n);
+    });
 }
 
 function parseExamVocab(rows) {
@@ -1077,12 +1012,8 @@ function refreshDynamicContent() {
         const el = document.getElementById(id);
         return el && el.style.display !== 'none';
     };
-    if (isVisible('topic-card')) renderTopicPicker();
-    // applyLang() runs this while quiz.js is still loading, before LANG_REGIONS exists;
-    // the cards are drawn on DOMContentLoaded then
-    if (document.readyState !== 'loading') renderRegionPickers();
-    const cefrCard = document.getElementById('examquiz-cefr-level-card');
-    if (cefrCard && isVisible('examquiz-cefr-level-card') && cefrCard.dataset.lang) showCefrLevels(cefrCard.dataset.lang);
+    // applyLang() runs this while quiz.js is still loading; the page is drawn on DOMContentLoaded then
+    if (document.readyState !== 'loading') renderWords();
     if (typeof renderLessonPath === 'function' && isVisible('path-card')) renderLessonPath();
     if (typeof renderLessonPreview === 'function' && isVisible('lesson-card')) renderLessonPreview();
     if (typeof renderDictPage === 'function') renderDictPage();
@@ -1770,12 +1701,8 @@ function backToLanguage() {
     const wasMistakeRepair = reviewMode && reviewSource === 'mistakes';
     const wasListening = currentListeningMode;
     const wasSrsReview = reviewMode && reviewSource === 'srs';
-    const wasEnglishSet = String(currentLang).startsWith('en_');
-    const wasTopic = topicOf(currentLang);
-    const wasJlptQuiz = currentLang.startsWith('jlpt_');
-    const wasTopikQuiz = currentLang.startsWith('topik_');
-    const wasHskQuiz = currentLang.startsWith('hsk_');
-    const wasCefr = CEFR_LANGS.find(l => String(currentLang).startsWith(l + '_'));
+    // a set's "返回" lands on the 單字 tab it was chosen from
+    if (currentLang && QUIZ_LANG_ORDER.includes(currentLang)) wordsTab = topicOf(currentLang) ? 'topics' : 'levels';
     currentLang = '';
     vocabularyList = [];
     readingList = [];
@@ -1804,22 +1731,6 @@ function backToLanguage() {
         if (srsReviewOrigin === 'tool') showSrsDashboard();
         else switchPage('home', null);
         return;
-    }
-
-    /* a set's "返回" lands on the topic or level picker it was chosen from */
-    if (wasTopic) {
-        showTopicPicker(Object.keys(TOPIC_FILE_LANG).find(l => TOPIC_FILE_LANG[l] === wasTopic.lang));
-        return;
-    }
-    /* the quiz page keeps its language card, so coming back to 單字 later isn't blank */
-    if (wasJlptQuiz || wasTopikQuiz || wasHskQuiz || wasEnglishSet || wasCefr) {
-        switchPage('examquiz', document.querySelector('.nav-btn[data-tab="examquiz"]'));
-        hideExamLevelCards();
-        if (wasJlptQuiz) showJlptLevels();
-        else if (wasTopikQuiz) showTopikLevels();
-        else if (wasHskQuiz) showHskLevels();
-        else if (wasCefr) showCefrLevels(wasCefr);
-        else showEnglishExamLevels();
     }
 }
 
@@ -1963,6 +1874,7 @@ function removeMistakeById(id) {
 /* The quiz page's tool hub shows the open mistakes (js/practice.js draws it). */
 function updateMistakeBadge() {
     if (typeof renderPracticeHub === 'function') renderPracticeHub();
+    updateReviewBadge();
 }
 
 /* The mistake book itself (#mistake-card) is drawn by js/practice.js. */

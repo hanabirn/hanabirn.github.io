@@ -69,7 +69,7 @@
             <nav class="main-nav" aria-label="Main">
                 <button class="nav-btn active" data-tab="home" onclick="switchPage('home', this)" data-i18n="nav_home" aria-current="page">首頁</button>
                 <button class="nav-btn" data-tab="quiz" onclick="switchPage('quiz', this)" data-i18n="nav_quiz">&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</button>
-                <button class="nav-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)" data-i18n="nav_examquiz">&#x6AA2;&#x5B9A;&#x8003;&#x8A66;</button>
+                <button class="nav-btn" data-tab="review" onclick="openReview()"><span data-i18n="nav_review">複習</span><span class="nav-badge review-badge" hidden></span></button>
                 <div class="nav-group" id="nav-group-learn">
                     <button type="button" class="nav-group-btn" onclick="toggleNavGroup('learn')" aria-haspopup="true" aria-expanded="false"><span data-i18n="nav_learn">學習</span><svg class="nav-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button>
                     <div class="nav-menu" role="menu">
@@ -157,7 +157,7 @@
     <nav class="tabbar" aria-label="Main">
         <button class="nav-btn tabbar-btn active" data-tab="home" onclick="switchPage('home', this)" aria-current="page"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.25 12 8.954-8.955a1.126 1.126 0 0 1 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg><span data-i18n="nav_home">首頁</span></button>
         <button class="nav-btn tabbar-btn" data-tab="quiz" onclick="switchPage('quiz', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg><span data-i18n="tab_quiz">單字</span></button>
-        <button class="nav-btn tabbar-btn" data-tab="examquiz" onclick="switchPage('examquiz', this)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg><span data-i18n="tab_exam">檢定</span></button>
+        <button class="nav-btn tabbar-btn" data-tab="review" onclick="openReview()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"/></svg><span data-i18n="nav_review">複習</span><span class="nav-badge review-badge" hidden></span></button>
         <button class="tabbar-btn tabbar-learn" id="tabbar-learn" onclick="toggleLearnSheet()" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19.5V5.25A2.25 2.25 0 0 1 6.25 3H19.5v15H6.25A2.25 2.25 0 0 0 4 20.25v0A2.25 2.25 0 0 0 6.25 22.5H19.5v-4.5"/><path d="M8.5 7.5h7M8.5 11h5"/></svg><span data-i18n="nav_learn">學習</span></button>
         <button class="tabbar-btn tabbar-more" id="tabbar-more" onclick="toggleMoreSheet()" aria-haspopup="dialog" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="12" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="18.5" cy="12" r="1.4" fill="currentColor"/></svg><i class="header-dot updates-dot" hidden></i><span data-i18n="tab_more">更多</span></button>
     </nav>
@@ -229,188 +229,12 @@
             </div>
         </div>
 
-        <div id="page-examquiz" style="display: none;">
-            <div class="lang-card" id="examquiz-card">
-                <h3 data-i18n="examquiz_title">&#x2726; &#x6AA2;&#x5B9A;&#x8003;&#x8A66;&#x55AE;&#x5B57; &#x2726;</h3>
-                <p class="examquiz-hint" data-i18n="examquiz_hint">依檢定等級整理的單字庫，每一級都從最常用的字開始。</p>
-                <div class="lang-buttons">
-                    <button class="lang-btn jp" data-lang="ja" onclick="showJlptLevels()">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="日本" class="lang-flag">
-                        <span data-i18n="examquiz_jlpt">JLPT&#xFF08;&#x65E5;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
-                    </button>
-                    <button class="lang-btn kr" data-lang="ko" onclick="showTopikLevels()">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="韓國" class="lang-flag">
-                        <span data-i18n="examquiz_topik">TOPIK&#xFF08;&#x97D3;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
-                    </button>
-                    <button class="lang-btn zh" data-lang="zh" onclick="showHskLevels()">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/960px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="中國" class="lang-flag">
-                        <span data-i18n="examquiz_hsk">HSK&#xFF08;&#x4E2D;&#x6587;&#x6AA2;&#x5B9A;&#xFF09;</span>
-                    </button>
-                    <button class="lang-btn en" data-lang="en" onclick="showEnglishExamLevels()">
-                        <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="US" class="lang-flag">
-                        <span data-i18n="examquiz_english">英文檢定（多益／托福）</span>
-                    </button>
-                    <button class="lang-btn fr" data-lang="fr" onclick="showCefrLevels('fr')">
-                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="France" class="lang-flag">
-                        <span data-i18n="examquiz_fr">法文（CEFR A1–C1）</span>
-                    </button>
-                    <button class="lang-btn ru" data-lang="ru" onclick="showCefrLevels('ru')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
-                        <span data-i18n="examquiz_ru">俄文（CEFR A1–C1）</span>
-                    </button>
-                    <button class="lang-btn es" data-lang="es" onclick="showCefrLevels('es')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/250px-Flag_of_Spain.svg.png" alt="Spain" class="lang-flag">
-                        <span data-i18n="examquiz_es">西班牙文（CEFR A1–C1）</span>
-                    </button>
-                    <button class="lang-btn de" data-lang="de" onclick="showCefrLevels('de')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png" alt="Germany" class="lang-flag">
-                        <span data-i18n="examquiz_de">德文（CEFR A1–C1）</span>
-                    </button>
-                </div>
-            </div>
-            <div class="lang-card" id="examquiz-english-level-card" style="display: none;">
-                <h3 data-i18n="quiz_english_title">✦ 選擇英文單字庫 ✦</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn en" onclick="selectExamSet('en_jh')"><span data-i18n="quiz_en_jh">英文・國中單字</span></button>
-                    <button class="lang-btn en" onclick="selectExamSet('en_sh')"><span data-i18n="quiz_en_sh">英文・高中單字</span></button>
-                    <button class="lang-btn en" onclick="selectExamSet('en_toeic')"><span data-i18n="quiz_en_toeic">多益 TOEIC</span></button>
-                    <button class="lang-btn en" onclick="selectExamSet('en_toefl')"><span data-i18n="quiz_en_toefl">托福 TOEFL</span></button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideEnglishExamLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-            <!-- French / Russian CEFR levels (showCefrLevels in js/quiz.js) -->
-            <div class="lang-card" id="examquiz-cefr-level-card" style="display: none;">
-                <h3 id="examquiz-cefr-title"></h3>
-                <div class="lang-buttons" id="examquiz-cefr-buttons"></div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideCefrLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-            <div class="lang-card" id="examquiz-jlpt-level-card" style="display: none;">
-                <h3 data-i18n="examquiz_jlpt_title">&#x2726; &#x9078;&#x64C7; JLPT &#x7B49;&#x7D1A; &#x2726;</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n5')">
-                        <span data-i18n="examquiz_jlpt_n5">N5</span>
-                    </button>
-                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n4')">
-                        <span data-i18n="examquiz_jlpt_n4">N4</span>
-                    </button>
-                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n3')">
-                        <span data-i18n="examquiz_jlpt_n3">N3</span>
-                    </button>
-                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n2')">
-                        <span data-i18n="examquiz_jlpt_n2">N2</span>
-                    </button>
-                    <button class="lang-btn jp" onclick="selectExamSet('jlpt_n1')">
-                        <span data-i18n="examquiz_jlpt_n1">N1</span>
-                    </button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideJlptLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-            <div class="lang-card" id="examquiz-topik-level-card" style="display: none;">
-                <h3 data-i18n="examquiz_topik_title">&#x2726; &#x9078;&#x64C7; TOPIK &#x7B49;&#x7D1A; &#x2726;</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn kr" onclick="selectExamSet('topik_1')">
-                        <span data-i18n="examquiz_topik_1">TOPIK 1</span>
-                    </button>
-                    <button class="lang-btn kr" onclick="selectExamSet('topik_2')">
-                        <span data-i18n="examquiz_topik_2">TOPIK 2</span>
-                    </button>
-                    <button class="lang-btn kr" onclick="selectExamSet('topik_3')">
-                        <span data-i18n="examquiz_topik_3">TOPIK 3</span>
-                    </button>
-                    <button class="lang-btn kr" onclick="selectExamSet('topik_4')">
-                        <span data-i18n="examquiz_topik_4">TOPIK 4</span>
-                    </button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideTopikLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-            <div class="lang-card" id="examquiz-hsk-level-card" style="display: none;">
-                <h3 data-i18n="examquiz_hsk_title">✦ 選擇 HSK 等級 ✦</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_1')">
-                        <span data-i18n="examquiz_hsk_1">HSK 1</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_2')">
-                        <span data-i18n="examquiz_hsk_2">HSK 2</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_3')">
-                        <span data-i18n="examquiz_hsk_3">HSK 3</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_4')">
-                        <span data-i18n="examquiz_hsk_4">HSK 4</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_5')">
-                        <span data-i18n="examquiz_hsk_5">HSK 5</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_6')">
-                        <span data-i18n="examquiz_hsk_6">HSK 6</span>
-                    </button>
-                    <button class="lang-btn zh" onclick="selectExamSet('hsk_7')">
-                        <span data-i18n="examquiz_hsk_7">HSK 7–9</span>
-                    </button>
-                </div>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideHskLevels()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-        </div>
-
         <div id="page-quiz" style="display: none;">
-            <!-- Topics of one language (renderTopicPicker in js/quiz.js; word sets tp_<lang>_<topic>) -->
-            <div class="lang-card topic-card" id="topic-card" style="display: none;">
-                <h3 id="topic-title"></h3>
-                <p class="examquiz-hint" data-i18n="topic_hint">依生活情境分類的常用單字，每個主題 40 個字、分成 4 關。</p>
-                <div class="topic-grid" id="topic-grid"></div>
-                <p class="topic-exam"><button type="button" class="pc-link" id="topic-exam-btn" onclick="topicToExam(topicLang)"></button></p>
-                <div class="action-buttons">
-                    <button class="btn back-btn" onclick="hideTopicPicker()" data-i18n="tool_back">&#x2190; &#x8FD4;&#x56DE;</button>
-                </div>
-            </div>
-
+            <!-- 單字: the learning language's word sets as 主題 / 檢定等級 tabs (renderWords in js/quiz.js) -->
             <div class="lang-card" id="lang-card">
-                <h3 data-i18n="select_lang">&#x2726; &#x9078;&#x64C7;&#x8A9E;&#x8A00; &#x2726;</h3>
-                <div class="lang-buttons">
-                    <button class="lang-btn jp" data-lang="ja" onclick="selectLanguage('jp')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/9/9e/Flag_of_Japan.svg/1280px-Flag_of_Japan.svg.png" alt="&#x65E5;&#x672C;" class="lang-flag">
-                        <span data-i18n="quiz_jp">&#x65E5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
-                    </button>
-                    <button class="lang-btn kr" data-lang="ko" onclick="selectLanguage('kr')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Flag_of_South_Korea.svg/3840px-Flag_of_South_Korea.svg.png" alt="&#x97D3;&#x570B;" class="lang-flag">
-                        <span data-i18n="quiz_kr">&#x97D3;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
-                    </button>
-                    <button class="lang-btn fr" data-lang="fr" onclick="selectLanguage('fr')">
-                        <img src="https://cdn.britannica.com/82/682-050-8AA3D6A6/Flag-France.jpg" alt="&#x6CD5;&#x570B;" class="lang-flag">
-                        <span data-i18n="quiz_fr">&#x6CD5;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
-                    </button>
-                    <button class="lang-btn ru" data-lang="ru" onclick="selectLanguage('ru')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/f/f3/Flag_of_Russia.svg/250px-Flag_of_Russia.svg.png" alt="Russia" class="lang-flag">
-                        <span data-i18n="quiz_ru">俄文單字測驗</span>
-                    </button>
-                    <button class="lang-btn es" data-lang="es" onclick="selectLanguage('es')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Flag_of_Spain.svg/250px-Flag_of_Spain.svg.png" alt="Spain" class="lang-flag">
-                        <span data-i18n="quiz_es">西班牙文單字測驗</span>
-                    </button>
-                    <button class="lang-btn de" data-lang="de" onclick="selectLanguage('de')">
-                        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/250px-Flag_of_Germany.svg.png" alt="Germany" class="lang-flag">
-                        <span data-i18n="quiz_de">德文單字測驗</span>
-                    </button>
-                    <button class="lang-btn en" data-lang="en" onclick="selectLanguage('en')">
-                        <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" alt="&#x7F8E;&#x570B;" class="lang-flag">
-                        <span data-i18n="quiz_en">&#x82F1;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
-                    </button>
-                    <button class="lang-btn zh" data-lang="zh" onclick="selectLanguage('zh')">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/72/Flag_of_the_Republic_of_China.svg/250px-Flag_of_the_Republic_of_China.svg.png" alt="&#x53F0;&#x7063;" class="lang-flag">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Flag_of_the_People%27s_Republic_of_China.svg/960px-Flag_of_the_People%27s_Republic_of_China.svg.png" alt="&#x4E2D;&#x570B;" class="lang-flag">
-                        <span data-i18n="quiz_zh">&#x4E2D;&#x6587;&#x55AE;&#x5B57;&#x6E2C;&#x9A57;</span>
-                    </button>
-                </div>
+                <h3 data-i18n="words_title">✦ 單字 ✦</h3>
+                <div class="words-tabs" id="words-tabs" role="tablist"></div>
+                <div id="words-body"></div>
                 <div class="streak-display" id="streak-display" style="display:none">
                     &#x1F525; <span id="streak-count">0</span> <span data-i18n="streak_suffix">&#x5929;&#x9023;&#x7E8C;</span>
                 </div>

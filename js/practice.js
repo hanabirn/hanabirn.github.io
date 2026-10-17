@@ -477,6 +477,11 @@ function renderSrsDashboard() {
         <div class="srs-talk"><span class="srs-mascot">${practiceMascot()}</span><div class="pc-bubble">${escHtml(msg)}</div></div>
         <div class="srs-due${due ? '' : ' none'}"><b>${due}</b><small>${escHtml(t('srs_due_label'))}</small></div>
         <button type="button" class="next-btn pc-wide" onclick="startSrsQuizReview('tool')"${due ? '' : ' disabled'}>${escHtml(due > SRS_REVIEW_LIMIT ? t('srs_start_some', { n: startN }) : t('srs_start_n', { n: startN }))}</button>`;
+    // the 複習 tab lands here, so the mistake book is one tap away too
+    const open = getActiveMistakes().length;
+    html += `<button type="button" class="srs-mistakes-row" onclick="showMistakeBook()">
+        <span>📕 ${escHtml(t('tool_mistakes'))}</span><b>${escHtml(open ? t('home_mistakes_count', { n: open }) : t('home_mistakes_none'))}</b><span aria-hidden="true">›</span>
+    </button>`;
 
     if (cards.length) {
         // upcoming: the next batch, then today / tomorrow
