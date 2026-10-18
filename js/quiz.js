@@ -352,6 +352,9 @@ function topicOf(id) {
 /* A word set's display name: "日文・吃飯" / "Korean · Food" for a topic, else its
    quiz_<id> text. */
 function wordSetName(id) {
+    // the notepad's word cards (js/notes.js): "筆記・日文"
+    const note = /^note_([a-z]+)$/.exec(id || '');
+    if (note) return t('notes_set_name', { l: note[1] === 'xx' ? t('notes_lang_none') : t('dict_lang_' + note[1]) });
     const cefr = /^(fr|ru|es|de)_([abc][12])$/.exec(id || '');
     if (cefr) return t('dict_lang_' + cefr[1]) + ' ' + cefr[2].toUpperCase();
     const tp = topicOf(id);
@@ -599,14 +602,14 @@ function playSound(correct) {
    the same as 'jp' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isJapaneseQuizLang() call sites. */
 function isJapaneseQuizLang(lang) {
-    return lang === 'jp' || lang.startsWith('jlpt_') || lang.startsWith('tp_ja_');
+    return lang === 'jp' || lang === 'note_ja' || lang.startsWith('jlpt_') || lang.startsWith('tp_ja_');
 }
 
 /* TOPIK levels (topik_1, topik_2, ...) are all Korean vocab, so treat them
    the same as 'kr' anywhere quiz.js branches on currentLang for language
    (not sheet-loading) purposes — see isKoreanQuizLang() call sites. */
 function isKoreanQuizLang(lang) {
-    return lang === 'kr' || lang.startsWith('topik_') || lang.startsWith('tp_ko_');
+    return lang === 'kr' || lang === 'note_ko' || lang.startsWith('topik_') || lang.startsWith('tp_ko_');
 }
 
 /* HSK levels (hsk_1, ...) are all Chinese vocab, so treat them
@@ -614,26 +617,26 @@ function isKoreanQuizLang(lang) {
    (not sheet-loading) purposes — see isChineseQuizLang() call sites. */
 /* English word sets (en_jh, en_toeic, ..., the tp_en_ topics) and the old general 'en' sheet */
 function isEnglishQuizLang(lang) {
-    return lang === 'en' || String(lang).startsWith('en_') || String(lang).startsWith('tp_en_');
+    return lang === 'en' || lang === 'note_en' || String(lang).startsWith('en_') || String(lang).startsWith('tp_en_');
 }
 
 /* the CEFR sets (fr_a1 …) and the retired French sheet 'fr' */
 function isFrenchQuizLang(lang) {
-    return lang === 'fr' || String(lang).startsWith('fr_') || String(lang).startsWith('tp_fr_');
+    return lang === 'fr' || lang === 'note_fr' || String(lang).startsWith('fr_') || String(lang).startsWith('tp_fr_');
 }
 
 /* the CEFR sets (es_a1 …) and the 單字 page topics (tp_es_*) */
 function isSpanishQuizLang(lang) {
-    return String(lang).startsWith('es_') || String(lang).startsWith('tp_es_');
+    return lang === 'note_es' || String(lang).startsWith('es_') || String(lang).startsWith('tp_es_');
 }
 
 /* the CEFR sets (de_a1 …) and the 單字 page topics (tp_de_*) */
 function isGermanQuizLang(lang) {
-    return String(lang).startsWith('de_') || String(lang).startsWith('tp_de_');
+    return lang === 'note_de' || String(lang).startsWith('de_') || String(lang).startsWith('tp_de_');
 }
 
 function isRussianQuizLang(lang) {
-    return String(lang).startsWith('ru_') || String(lang).startsWith('tp_ru_');
+    return lang === 'note_ru' || String(lang).startsWith('ru_') || String(lang).startsWith('tp_ru_');
 }
 
 /* the mode picker's "word → meaning" button text for the current set */
@@ -643,7 +646,7 @@ function quizMeaningModeKey() {
 }
 
 function isChineseQuizLang(lang) {
-    return lang === 'zh' || lang.startsWith('hsk_') || lang.startsWith('tp_zh_');
+    return lang === 'zh' || lang === 'note_zh' || lang.startsWith('hsk_') || lang.startsWith('tp_zh_');
 }
 
 function speakWord(slow) {
@@ -1832,6 +1835,7 @@ function backToLanguage() {
     }
     if (wasSrsReview) {
         if (srsReviewOrigin === 'tool') showSrsDashboard();
+        else if (srsReviewOrigin === 'notes') switchPage('notes', null);
         else switchPage('home', null);
         return;
     }
@@ -2517,9 +2521,12 @@ function showSrsReview() {
 /* where "返回" leads after an SRS review: 'tool' = the 間隔複習 page, else home */
 let srsReviewOrigin = 'home';
 
-function startSrsQuizReview(origin) {
-    srsReviewOrigin = origin === 'tool' ? 'tool' : 'home';
-    const due = getDueSrsQuizCards().slice(0, SRS_REVIEW_LIMIT);
+let srsReviewCustom = null;   // the cards of a review started from a note (js/notes.js), for 再來一次
+
+function startSrsQuizReview(origin, cards) {
+    srsReviewOrigin = origin === 'tool' || origin === 'notes' ? origin : 'home';
+    srsReviewCustom = cards && cards.length ? cards : null;
+    const due = srsReviewCustom ? srsReviewCustom.slice(0, SRS_REVIEW_LIMIT) : getDueSrsQuizCards().slice(0, SRS_REVIEW_LIMIT);
     if (due.length === 0) {
         showShareToast(t('srs_all_done'));
         return;
@@ -2553,7 +2560,7 @@ function quizAgain() {
         return;
     }
     if (reviewMode && reviewSource === 'srs') {
-        startSrsQuizReview();
+        startSrsQuizReview(srsReviewOrigin, srsReviewCustom);
         return;
     }
     if (reviewMode && reviewSource === 'lesson') {

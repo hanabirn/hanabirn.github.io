@@ -198,7 +198,8 @@ function renderMistakeBook() {
         return;
     }
 
-    const sets = QUIZ_LANG_ORDER.concat(LEGACY_SET_IDS).filter(id => all.some(m => m.lang === id));
+    const noteSets = [...new Set(all.map(m => m.lang).filter(l => /^note_/.test(l || '')))];   // js/notes.js word cards
+    const sets = QUIZ_LANG_ORDER.concat(LEGACY_SET_IDS, noteSets).filter(id => all.some(m => m.lang === id));
     if (mbFilter !== 'all' && !sets.includes(mbFilter)) mbFilter = 'all';
     const inFilter = m => mbFilter === 'all' || m.lang === mbFilter;
     const open = openAll.filter(inFilter);

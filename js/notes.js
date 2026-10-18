@@ -2,7 +2,9 @@
    (synced to the account, js/account.js SYNC_KEYS), attachments in IndexedDB (this
    device only). A note:
      { id, title, text, category (folder id or ''), tags [], lang, pinned, star,
-       src {kind, ref, label} (where it was saved from, notesAddFrom), createdAt, updatedAt,
+       src {kind, ref, label} (where it was saved from, notesAddFrom), rv {box, due, n, last}
+       (the ⭐ review schedule, NOTES_REVIEW_DAYS), noCards (its word cards kept out of
+       間隔複習), createdAt, updatedAt,
        deletedAt (in the trash), purged (a tombstone: emptied after NOTES_TRASH_DAYS so
        the deletion still syncs) }
    text is light markup: "# " a heading, "- " a list item, **bold**, ==highlight==, and a
@@ -13,7 +15,9 @@ const NOTES_CATEGORIES_KEY = 'notepad_categories';
 const NOTE_ATTACHMENT_MAX_MB = 20;
 const NOTES_TRASH_DAYS = 30;
 const NOTES_SAVE_MS = 400;
-let notesFilter = { k: 'all' };   // all | star | pinned | images | trash | folder (v = id) | tag (v = name) | folders (the folder manager)
+const NOTES_REVIEW_DAYS = [1, 3, 7, 14, 30];   // ⭐ notes: days until the next look, per 記得了 in a row
+const NOTES_DAY_MS = 86400000;
+let notesFilter = { k: 'all' };   // all | star | pinned | images | trash | folder (v = id) | tag (v = name) | folders (the folder manager) | review
 let notesOpenId = null;           // the note on screen, null = the list
 let notesEditing = false;
 let notesSearch = '';
@@ -60,6 +64,7 @@ function notesUpdate(id, change) {
     if (!n) return null;
     Object.assign(n, change, { updatedAt: notesNow() });
     saveNotesData(all);
+    if (['text', 'lang', 'deletedAt', 'noCards'].some(k => k in change)) notesSyncCards(n);
     return n;
 }
 
@@ -75,7 +80,150 @@ function notesPurgeTrash() {
             changed = true;
         }
     });
-    if (changed) saveNotesData(all);
+    if (changed) { saveNotesData(all); notesTidyCards(); }
+}
+
+/* ----- word cards: "word — meaning" lines as 間隔複習 cards (srs_quiz, js/quiz.js) -----
+   set id note_<lang> (wordSetName → "筆記・日文"), card id note|<note id>|<word>. A new
+   line is a fresh card due now; a changed meaning updates it; a removed line, a deleted
+   note or noCards drops it. */
+function notesCardEntry(n, pair) {
+    return { id: 'note|' + n.id + '|' + pair.w, lang: 'note_' + (n.lang || 'xx'), word: pair.w, answer: pair.m, hint: notesTitleOf(n), group: 'meaning' };
+}
+
+function notesWantCards(n) {
+    return !n || n.purged || n.deletedAt || n.noCards ? [] : notesPairs(n.text).map(pr => notesCardEntry(n, pr));
+}
+
+function notesSyncCards(n, cards) {
+    if (typeof getSrsQuizCards !== 'function' || !n) return false;
+    const own = !cards;
+    cards = cards || getSrsQuizCards();
+    const prefix = 'note|' + n.id + '|';
+    const want = notesWantCards(n);
+    const ids = new Set(want.map(e => e.id));
+    let changed = false;
+    Object.keys(cards).forEach(id => { if (id.startsWith(prefix) && !ids.has(id)) { delete cards[id]; changed = true; } });
+    want.forEach(e => {
+        const c = cards[e.id];
+        if (!c) { cards[e.id] = Object.assign({}, e, { box: 1, due: Date.now(), seen: 0 }); changed = true; }
+        else if (c.answer !== e.answer || c.lang !== e.lang || c.hint !== e.hint) { Object.assign(c, { answer: e.answer, lang: e.lang, hint: e.hint }); changed = true; }
+    });
+    if (changed && own) saveSrsQuizCards(cards);
+    return changed;
+}
+
+/* every note's cards, and none for notes that are gone (srs_quiz syncs as a union) */
+function notesTidyCards() {
+    if (typeof getSrsQuizCards !== 'function') return;
+    const cards = getSrsQuizCards();
+    const notes = getNotes();
+    const live = new Set(notes.filter(n => !n.purged && !n.deletedAt && !n.noCards).map(n => String(n.id)));
+    let changed = false;
+    Object.keys(cards).forEach(id => {
+        const m = /^note\|([^|]+)\|/.exec(id);
+        if (m && !live.has(m[1])) { delete cards[id]; changed = true; }
+    });
+    notes.forEach(n => { if (notesSyncCards(n, cards)) changed = true; });
+    if (changed) saveSrsQuizCards(cards);
+}
+
+/* 現在練一次: this note's cards on the review engine, back to the notepad after */
+function notesPracticeCards(id) {
+    const n = notesFind(id);
+    const entries = notesWantCards(n);
+    if (!entries.length || typeof startSrsQuizReview !== 'function') return;
+    notesFlushSave();
+    switchPage('quiz');
+    startSrsQuizReview('notes', entries);
+}
+
+function notesToggleCards(id) {
+    const n = notesFind(id);
+    if (!n) return;
+    notesUpdate(id, { noCards: !n.noCards });
+    renderNotes();
+}
+
+/* ----- ⭐ notes: looked at again after 1, 3, 7, 14, 30 days ----- */
+function notesFreshReview() {
+    return { box: 0, due: Date.now() + NOTES_DAY_MS, n: 0, last: 0 };
+}
+
+function notesDue(all) {
+    const now = Date.now();
+    return notesLive(all).filter(n => n.star && (!n.rv || n.rv.due <= now)).sort((a, b) => ((a.rv && a.rv.due) || 0) - ((b.rv && b.rv.due) || 0));
+}
+
+function notesDueCount() { return notesDue().length; }
+
+function notesStartReview() {
+    notesFlushSave();
+    notesFilter = { k: 'review' };
+    notesOpenId = null;
+    notesEditing = false;
+    notesReviewDone = 0;
+    renderNotes();
+    window.scrollTo({ top: 0 });
+}
+let notesReviewDone = 0;   // notes looked at in this round
+
+/* 記得了 → the next, longer wait; 還不熟 → tomorrow */
+function notesGradeReview(id, good) {
+    const n = notesFind(id);
+    if (!n) return;
+    const rv = Object.assign(notesFreshReview(), n.rv || {});
+    rv.box = good ? Math.min(rv.box + 1, NOTES_REVIEW_DAYS.length - 1) : 0;
+    rv.due = Date.now() + NOTES_REVIEW_DAYS[good ? rv.box : 0] * NOTES_DAY_MS;
+    rv.n = (rv.n || 0) + 1;
+    rv.last = Date.now();
+    notesUpdate(id, { rv });
+    notesReviewDone++;
+    if (typeof logDailyActivity === 'function') logDailyActivity(1);
+    notesRenderBody();
+    window.scrollTo({ top: 0 });
+}
+
+function notesReviewHtml() {
+    const due = notesDue();
+    const total = due.length + notesReviewDone;
+    if (!due.length) {
+        return `<div class="notes-empty">
+            <span class="mascot-slot notes-empty-mascot" data-mascot="bust"></span>
+            <div class="notes-empty-title">${notesEsc(t('notes_review_done'))}</div>
+            <div class="notes-empty-btns"><button type="button" class="btn back-btn" onclick="notesSetFilter('all')">${uiIcon('back')} ${notesEsc(t('notes_back'))}</button></div>
+        </div>`;
+    }
+    const n = due[0];
+    const rv = n.rv || notesFreshReview();
+    const nextGood = NOTES_REVIEW_DAYS[Math.min((rv.box || 0) + 1, NOTES_REVIEW_DAYS.length - 1)];
+    return `<div class="notes-review">
+        <div class="notes-view-bar">
+            <button type="button" class="btn back-btn" onclick="notesSetFilter('all')">${uiIcon('back')} ${notesEsc(t('notes_back'))}</button>
+            <span class="notes-grow"></span>
+            <span class="notes-muted">${notesEsc(t('notes_review_n', { n: notesReviewDone + 1, m: total }))}</span>
+        </div>
+        <div class="notes-section-title">${uiIcon('star')} ${notesEsc(t('notes_review_title'))}</div>
+        <div class="notes-review-card">
+            <h3 class="notes-view-title">${notesEsc(notesTitleOf(n))}</h3>
+            <div class="notes-muted">${notesEsc(rv.n ? t('notes_review_times', { n: rv.n + 1, d: formatNoteTime(new Date(rv.last).toISOString()) }) : t('notes_review_first'))}</div>
+            ${notesSourceHtml(n)}
+            <div class="notes-view-text">${notesRender(n.text) || ''}</div>
+            <div class="notes-item-attachments" data-note-id="${n.id}"></div>
+        </div>
+        <div class="notes-review-btns">
+            <button type="button" class="btn back-btn" onclick="notesGradeReview(${n.id}, false)">${notesEsc(t('notes_review_again'))}</button>
+            <button type="button" class="btn next-btn" onclick="notesGradeReview(${n.id}, true)">${notesEsc(t('notes_review_good'))}</button>
+        </div>
+        <p class="notes-muted notes-center">${notesEsc(t('notes_review_hint', { d: nextGood }))}</p>
+    </div>`;
+}
+
+/* the review state on a card: due today, or the next date */
+function notesReviewMeta(n) {
+    if (!n.star) return '';
+    const due = !n.rv || n.rv.due <= Date.now();
+    return `<span class="notes-card-due${due ? ' now' : ''}">${uiIcon('star')}${notesEsc(due ? t('notes_review_today') : t('notes_review_next', { d: formatNoteTime(new Date(n.rv.due).toISOString()) }))}</span>`;
 }
 
 /* ----- IndexedDB: attachments (can be much larger than localStorage's quota allows) ----- */
@@ -318,6 +466,7 @@ async function handleImportFile(input) {
         }
     }
 
+    notesTidyCards();
     renderNotes();
     alert(t('notes_import_success', { n: newNotes.length }));
 }
@@ -555,6 +704,7 @@ function notesFilterItems() {
     const items = [
         { k: 'all', icon: 'grid', label: t('notes_cat_all'), n: live.length },
         { k: 'star', icon: 'star', label: t('notes_f_star'), n: live.filter(n => n.star).length },
+        { k: 'review', icon: 'cards', label: t('notes_review_title'), n: notesDue(live).length, hideEmpty: true },
         { k: 'pinned', icon: 'pin', label: t('notes_pin'), n: live.filter(n => n.pinned).length, hideEmpty: true },
         { k: 'images', icon: 'photo', label: t('notes_view_gallery') }
     ];
@@ -620,7 +770,8 @@ function notesCardHtml(n, cats) {
         n.src ? `<span class="notes-card-src">${uiIcon('uturn')}${notesEsc(n.src.label || '')}</span>` : '',
         pairs ? `<span class="notes-card-pairs">${uiIcon('cards')}${notesEsc(t('notes_cards_n', { n: pairs }))}</span>` : '',
         notesAttachCounts[n.id] ? `<span>${uiIcon('photo')}${notesAttachCounts[n.id]}</span>` : '',
-        `<span class="notes-card-time">${trash ? notesEsc(t('notes_trashed_on', { d: formatNoteTime(n.deletedAt) })) : formatNoteTime(n.updatedAt)}</span>`
+        trash ? `<span class="notes-card-time">${notesEsc(t('notes_trashed_on', { d: formatNoteTime(n.deletedAt) }))}</span>`
+            : n.star ? notesReviewMeta(n).replace('notes-card-due', 'notes-card-due notes-card-time') : `<span class="notes-card-time">${formatNoteTime(n.updatedAt)}</span>`
     ].join('');
     const actions = trash
         ? `<div class="notes-card-actions"><button type="button" class="btn back-btn" onclick="event.stopPropagation(); notesRestore(${n.id})">${uiIcon('uturn')} ${notesEsc(t('notes_restore'))}</button>
@@ -628,7 +779,6 @@ function notesCardHtml(n, cats) {
         : '';
     return `<div class="notes-card${n.pinned ? ' pinned' : ''}" style="--c:${color}" ${trash ? '' : `role="button" tabindex="0" onclick="notesOpen(${n.id})" onkeydown="if(event.key==='Enter')notesOpen(${n.id})"`}>
         <div class="notes-card-title">${flag}<span>${notesEsc(notesTitleOf(n))}</span>
-            ${n.star ? `<span class="notes-card-mark star" title="${notesEsc(t('notes_f_star'))}">${uiIcon('star')}</span>` : ''}
             ${n.pinned ? `<span class="notes-card-mark" title="${notesEsc(t('notes_pin'))}">${uiIcon('pin')}</span>` : ''}</div>
         ${notesPreviewOf(n) ? `<div class="notes-card-preview">${notesEsc(notesPreviewOf(n))}</div>` : ''}
         <div class="notes-card-meta">${meta}</div>
@@ -729,12 +879,13 @@ function notesNew(kind) {
     all.unshift({
         id, title: '', text: notesTemplate(kind), category: folder, tags: tag,
         lang: typeof learnLang === 'function' ? learnLang() : '', pinned: false, star: notesFilter.k === 'star',
+        rv: notesFilter.k === 'star' ? notesFreshReview() : undefined,
         createdAt: now, updatedAt: now
     });
     saveNotesData(all);
     notesOpenId = id;
     notesEditing = true;
-    if (notesFilter.k === 'trash' || notesFilter.k === 'folders' || notesFilter.k === 'images') notesFilter = { k: 'all' };
+    if (['trash', 'folders', 'images', 'review'].includes(notesFilter.k)) notesFilter = { k: 'all' };
     renderNotes();
     const title = document.getElementById('notes-ed-title');
     if (title) title.focus();
@@ -777,7 +928,9 @@ function notesToggle(field) {
     const n = notesFind(notesOpenId);
     if (!n) return;
     notesFlushSave();
-    notesUpdate(n.id, { [field]: !n[field] });
+    const change = { [field]: !n[field] };
+    if (field === 'star' && !n.star && !n.rv) change.rv = notesFreshReview();   // first look tomorrow
+    notesUpdate(n.id, change);
     renderNotes();
 }
 
@@ -802,6 +955,7 @@ function notesDeleteForever(id) {
     all[i] = { id, purged: true, deletedAt: all[i].deletedAt || notesNow(), updatedAt: notesNow() };
     saveNotesData(all);
     idbDeleteAttachmentsForNote(id).catch(() => {});
+    notesTidyCards();
     renderNotes();
 }
 
@@ -933,9 +1087,17 @@ function notesReaderHtml(n) {
             ${cat ? `<button type="button" class="notes-card-folder" onclick="notesSetFilter('folder','${cat.id}')">${uiIcon('folder')}${notesEsc(notesFolderName(cat.id, cats))}</button>` : ''}
             ${tags}
         </div>
+        ${n.star ? `<div class="notes-view-review">${notesReviewMeta(n)}</div>` : ''}
         ${notesSourceHtml(n)}
         <div class="notes-view-text" onclick="if(!getSelection().toString())notesEdit()">${notesRender(n.text) || `<p class="notes-muted">${notesEsc(t('notes_body_empty'))}</p>`}</div>
-        ${pairs.length ? `<div class="notes-cards-box">${uiIcon('cards')} ${notesEsc(t('notes_cards_n', { n: pairs.length }))}</div>` : ''}
+        ${pairs.length ? `<div class="notes-cards-box">
+            <div class="notes-cards-line">${uiIcon('cards')} <span>${notesEsc(t('notes_cards_n', { n: pairs.length }))}</span>
+                <span class="notes-cards-state${n.noCards ? ' off' : ''}">${notesEsc(t(n.noCards ? 'notes_cards_off' : 'notes_cards_on'))}</span></div>
+            <div class="notes-cards-acts">
+                ${n.noCards ? '' : `<button type="button" class="btn next-btn" onclick="notesPracticeCards(${n.id})">${notesEsc(t('notes_cards_practice'))}</button>`}
+                <button type="button" class="btn back-btn" onclick="notesToggleCards(${n.id})">${notesEsc(t(n.noCards ? 'notes_cards_start' : 'notes_cards_stop'))}</button>
+            </div>
+        </div>` : ''}
         <div class="notes-item-attachments" data-note-id="${n.id}"></div>
         <div class="notes-view-foot">
             <label class="btn back-btn notes-attach-btn">${uiIcon('clip')} ${notesEsc(t('notes_attach'))}<input type="file" multiple onchange="handleAddAttachmentToExisting(${n.id}, this)"></label>
@@ -1065,6 +1227,13 @@ function notesRenderBody() {
         return;
     }
     if (f.k === 'folders') { body.innerHTML = notesFoldersHtml(); return; }
+    if (f.k === 'review') {
+        body.innerHTML = notesReviewHtml();
+        const first = notesDue()[0];
+        if (first) renderNoteAttachments(first.id);
+        if (typeof mascotFillSlots === 'function') mascotFillSlots(body);
+        return;
+    }
     if (f.k === 'images' && !notesSearch) {
         body.innerHTML = `<div class="notes-section-title">${uiIcon('photo')} ${notesEsc(t('notes_view_gallery'))} <small>${notesEsc(t('notes_local_files'))}</small></div><div id="notes-gallery" class="notes-gallery"></div>`;
         renderGallery();
@@ -1076,6 +1245,9 @@ function notesRenderBody() {
     if (f.k === 'trash') head = `<div class="notes-section-title">${uiIcon('trash')} ${notesEsc(t('notes_trash'))}</div><p class="notes-muted">${notesEsc(t('notes_trash_hint', { n: NOTES_TRASH_DAYS }))}</p>`;
     else if (f.k === 'folder') head = `<div class="notes-section-title"><span class="notes-dot" style="background:${categoryColor(notesFolders().find(c => c.id === f.v) || { id: f.v })}"></span> ${notesEsc(notesFolderName(f.v))}</div>`;
     else if (f.k === 'tag') head = `<div class="notes-section-title"><span class="notes-hash">#</span>${notesEsc(f.v)}</div>`;
+    const dueN = f.k === 'trash' || notesSearch ? 0 : notesDueCount();
+    if (dueN) head = `<div class="notes-due-banner">${uiIcon('star')}<span>${notesEsc(t('notes_review_banner', { n: dueN }))}</span>
+        <button type="button" class="btn next-btn" onclick="notesStartReview()">${notesEsc(t('notes_review_start'))}</button></div>` + head;
     if (!all.length && f.k !== 'trash' && !notesSearch) { body.innerHTML = notesEmptyHtml(); if (typeof mascotFillSlots === 'function') mascotFillSlots(body); return; }
     if (!notes.length) {
         const key = notesSearch ? 'notes_empty_search' : f.k === 'trash' ? 'notes_trash_empty' : f.k === 'star' ? 'notes_star_empty' : 'notes_empty_filter';
@@ -1126,12 +1298,13 @@ function notesAddFrom(o) {
     } else {
         n = {
             id: Date.now(), title: o.title || '', text, category: notesLastFolder(), tags: [],
-            lang: o.lang || '', pinned: false, star: true,
+            lang: o.lang || '', pinned: false, star: true, rv: notesFreshReview(),
             src: { kind: o.kind, ref: o.ref, label: o.label || '', lang: o.lang || '' }, createdAt: now, updatedAt: now
         };
         all.unshift(n);
     }
     saveNotesData(all);
+    notesSyncCards(n);
     notesToast(t('notes_added', { t: notesTitleOf(n) }), n.id);
     return n.id;
 }
@@ -1215,3 +1388,5 @@ async function notesOpenSource(src) {
         if (typeof selectWordSet === 'function') selectWordSet(a);
     }
 }
+
+document.addEventListener('DOMContentLoaded', () => { try { notesTidyCards(); } catch (e) { console.warn('[notes] cards', e); } });

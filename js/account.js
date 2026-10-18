@@ -278,6 +278,7 @@ async function acctFlush() {
 }
 
 function acctRefreshScreens() {
+    if (typeof notesTidyCards === 'function') notesTidyCards();   // srs_quiz merges as a union
     if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
     if (typeof updateStreakBadge === 'function') updateStreakBadge();
 }

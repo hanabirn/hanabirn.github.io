@@ -186,6 +186,9 @@ function homeTodaySteps(goal, today) {
         : { title: t('home_step_goal_done'), done: true });
     const mistakes = getActiveMistakes().length;   // repaired ones don't count
     if (mistakes > 0) steps.push({ title: t('home_step_mistakes'), sub: t('home_step_mistakes_sub', { n: mistakes }), go: homeOpenMistakes });
+    // starred notes due for another look (js/notes.js)
+    const notes = typeof notesDueCount === 'function' ? notesDueCount() : 0;
+    if (notes > 0) steps.push({ title: t('home_step_notes', { n: notes }), sub: t('home_step_notes_sub'), go: () => { switchPage('notes'); notesStartReview(); } });
     return steps;
 }
 

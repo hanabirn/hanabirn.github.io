@@ -683,3 +683,20 @@
     font-weight: 800;
     cursor: pointer;
 }
+
+/* ----- review (stage D) ----- */
+.notes-due-banner { display: flex; align-items: center; gap: 10px; padding: 10px 12px; margin-bottom: 10px; border: 2px solid var(--primary); border-radius: 14px; background: var(--primary-soft); font-weight: 700; }
+.notes-due-banner span { flex: 1; }
+.notes-due-banner .btn { margin: 0; }
+.notes-due-banner .ui-icon, .notes-card-due .ui-icon { fill: currentColor; color: var(--primary); }
+.notes-card-due { display: inline-flex; align-items: center; gap: 4px; }
+.notes-card-due.now { color: var(--primary); font-weight: 800; }
+.notes-cards-box { flex-direction: column; align-items: stretch; }
+.notes-cards-line { display: flex; align-items: center; gap: 8px; }
+.notes-cards-state { margin-left: auto; font-size: 0.78rem; color: var(--success-text); }
+.notes-cards-state.off { color: var(--text-muted); }
+.notes-cards-acts { display: flex; flex-wrap: wrap; gap: 8px; }
+.notes-cards-acts .btn { margin: 0; }
+.notes-review-card { padding: 14px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); display: flex; flex-direction: column; gap: 8px; }
+.notes-review-btns { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.notes-review-btns .btn { margin: 0; }
