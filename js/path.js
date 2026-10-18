@@ -247,8 +247,18 @@ function renderLessonPreview() {
             </div>
             <div class="lesson-word-meaning">${escHtml(meaning || '')}</div>
             <button class="speak-btn lesson-speak" onclick="lessonSpeak(${i})" aria-label="🔊">${uiIcon('speaker')}</button>
+            <button type="button" class="speak-btn lesson-note" onclick="lessonNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('document')}</button>
         </li>`;
     }).join('');
+}
+
+/* ＋筆記 (js/notes.js): a preview word into its word set's note, as a word card */
+function lessonNote(i) {
+    const w = levelWords(lessonLevel)[i];
+    if (!w || typeof notesAddWord !== 'function') return;
+    const e = lessonEntryFor(lessonSetId, w);
+    const reading = isChineseQuizLang(lessonSetId) ? (w.roman || w.bopomofo || '') : (w.kana || '');
+    notesAddWord(lessonSetId, e.word, reading, e.group === 'reading' ? e.hint : e.answer);
 }
 
 function lessonSpeak(i) {

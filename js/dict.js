@@ -154,6 +154,7 @@ function dictSearch(word, langId) {
             <span class="dict-word-text">${escHtml(word)}</span>
             <span class="dict-word-lang" data-i18n="dict_lang_${lang.id}">${escHtml(t('dict_lang_' + lang.id))}</span>
             <button class="speak-btn" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(word)}" aria-label="🔊">${uiIcon('speaker')}</button>
+            <button type="button" class="note-add" data-text="${escHtml(word)}" onclick="dictNote(this.dataset.text, '${lang.id}')" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>` +
         dictSection('dict-tr', 'dict_translation', 'dict_mt_note') +
         dictSection('dict-def', 'dict_definitions', 'dict_definitions_note') +
@@ -163,6 +164,17 @@ function dictSearch(word, langId) {
     const gloss = dictDefinitions(word, lang, signal);
     dictTranslate(word, lang, target, gloss, signal);
     dictExamples(word, lang, target, signal);
+}
+
+/* ＋筆記 (js/notes.js): the word and its translation, as a word card in the language's note */
+function dictNote(word, langId) {
+    if (typeof notesAddFrom !== 'function') return;
+    const tr = document.querySelector('#dict-tr .dict-translation');
+    const name = t('dict_lang_' + langId);
+    notesAddFrom({
+        kind: 'dict', ref: langId, lang: langId, label: t('nav_dict'),
+        title: t('notes_src_dict_title', { l: name }), text: notesWordLine(word, '', tr ? tr.textContent : '')
+    });
 }
 
 function dictErrorKey(err) {

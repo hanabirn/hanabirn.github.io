@@ -294,7 +294,7 @@ html[data-theme="dark"] .path-node.done {
 }
 .lesson-word {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto auto;
     align-items: center;
     gap: 10px;
     padding: 10px 12px;
@@ -326,7 +326,8 @@ html[data-theme="dark"] .lesson-word {
     color: var(--text-secondary);
     word-break: break-word;
 }
-.speak-btn.lesson-speak {
+.speak-btn.lesson-speak,
+.speak-btn.lesson-note {
     width: 36px;
     height: 36px;
     font-size: 1rem;
@@ -353,7 +354,7 @@ html[data-theme="dark"] .lesson-word {
 
 @media (max-width: 560px) {
     .lesson-word {
-        grid-template-columns: minmax(0, 1fr) auto;
+        grid-template-columns: minmax(0, 1fr) auto auto;
     }
     .lesson-word-meaning {
         grid-column: 1;
@@ -361,6 +362,10 @@ html[data-theme="dark"] .lesson-word {
     }
     .speak-btn.lesson-speak {
         grid-column: 2;
+        grid-row: 1 / span 2;
+    }
+    .speak-btn.lesson-note {
+        grid-column: 3;
         grid-row: 1 / span 2;
     }
     /* the zigzag is narrower on phones so the "開始！" tag still fits */

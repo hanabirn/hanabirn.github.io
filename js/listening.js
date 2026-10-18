@@ -466,6 +466,7 @@ function listeningQuizHtml(lv) {
                     <button type="button" class="ls-say" onclick="listeningSayLine(${x.idx})" aria-label="🔊">${uiIcon('speaker')}</button>
                 </div>`).join('')}
             ${it.words && it.words.length ? `<div class="ls-words">📘 ${it.words.map(w => `<span><b lang="${lv.lang}">${escHtml(w.w)}</b>${w.r && w.r !== w.w ? `（${escHtml(w.r)}）` : ''} ${escHtml(gText(w))}</span>`).join('')}</div>` : ''}
+            <div class="ls-note-row"><button type="button" class="note-add" onclick="listeningNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button></div>
         </details>` : '';
     const last = z.qi >= z.order.length - 1;
     const canNext = listeningAnswered();
@@ -498,6 +499,24 @@ function listeningQuizHtml(lv) {
             <button type="button" class="btn back-btn" onclick="listeningMove(-1)"${z.qi === 0 || lockedMock ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
             <button type="button" class="btn next-btn" onclick="${nextCall}"${canNext ? '' : ' disabled'}>${escHtml(t(nextLabel))}</button>
         </div>`;
+}
+
+/* ＋筆記 (js/notes.js): this item's transcript and words, one note per item */
+function listeningNote() {
+    const lv = listeningLevels[listeningLevelId];
+    const z = listeningSession;
+    if (!lv || !z || typeof notesAddFrom !== 'function') return;
+    const it = listeningItem(lv);
+    const s = lv.sets[z.setNo];
+    const setName = s.mock ? t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 })
+        : t('listening_set', { n: lv.sets.filter(x => !x.mock).indexOf(s) + 1 });
+    const kind = setName + '・' + t('listening_type_' + it.type) + ' ' + (z.qi + 1);
+    const lines = listeningLinesOf(it).map(x => '- ' + (x.line.plain || '') + (gText(x.line) ? '（' + gText(x.line) + '）' : ''))
+        .concat((it.words || []).map(w => notesWordLine(w.w, w.r, gText(w))));
+    notesAddFrom({
+        kind: 'listening', ref: lv.id + '|' + z.setNo + '|' + z.order[z.qi], lang: lv.lang, title: kind,
+        label: t('nav_listening') + ' ' + learnLevelName(lv.level) + '・' + kind, text: lines.join('\n')
+    });
 }
 
 function listeningRerender() {

@@ -154,6 +154,14 @@ function mbSetFilter(v) { mbFilter = v; mbShown = MISTAKE_ROWS_STEP; renderMista
 function mbSetSort(v) { mbSort = v; mbShown = MISTAKE_ROWS_STEP; renderMistakeBook(); }
 function mbMore() { mbShown += MISTAKE_ROWS_STEP; renderMistakeBook(); }
 
+/* ＋筆記 (js/notes.js): a missed word into its word set's note, as a word card */
+function mbNote(i) {
+    const m = mbRows[i];
+    if (!m || typeof notesAddWord !== 'function') return;
+    if (m.group === 'reading') notesAddWord(m.lang, m.word, m.answer, m.hint);
+    else notesAddWord(m.lang, m.word, '', m.answer);
+}
+
 function mbDelete(i) {
     const m = mbRows[i];
     if (!m) return;
@@ -240,6 +248,7 @@ function renderMistakeBook() {
                     : `<div class="mb-state" title="${escHtml(t('mistake_state_title', { n: m.count || 1, f: m.fix || 0, m: MISTAKE_FIX_STREAK }))}">
                         <span class="mb-dots">${dots}</span><span class="mb-slots">${slots}</span>
                     </div>`}
+                <button type="button" class="mb-note" onclick="mbNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('document')}</button>
                 <button type="button" class="mb-del" onclick="mbDelete(${i})" aria-label="${escHtml(t('mistake_delete'))}">✕</button>
             </li>`;
         }).join('') + '</ol>';

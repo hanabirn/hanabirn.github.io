@@ -828,6 +828,7 @@ function notesFlushSave() {
 
 function notesSetFolder(value) {
     notesUpdate(notesOpenId, { category: value });
+    try { localStorage.setItem('notes_last_folder', value); } catch {}   // where ＋筆記 saves next
 }
 
 function notesSetLang(value) {
@@ -1097,5 +1098,120 @@ async function notesLoadCounts(notes) {
     if (changed && notesOpenId == null) {
         const box = document.querySelector('#notes-body .notes-cards');
         if (box) box.innerHTML = notes.map(n => notesCardHtml(n, notesFolders())).join('');
+    }
+}
+
+/* ===== Saving from the other pages (＋筆記) =====
+   notesAddFrom({ kind, ref, label, title, text, lang }): the note saved from that place
+   before gets the new lines added (once), else a new note is made — starred for review,
+   in the folder used last, with src so it can lead back (notesOpenSource). kind:
+   grammar (ref "set|point"), reading ("set|passage"), listening ("level|set"), dict
+   ("lang"), words ("word set"). */
+function notesLastFolder() {
+    let id = '';
+    try { id = localStorage.getItem('notes_last_folder') || ''; } catch {}
+    return notesFolders().some(c => c.id === id) ? id : '';
+}
+
+function notesAddFrom(o) {
+    const all = getNotes();
+    const now = notesNow();
+    const text = String(o.text || '').trim();
+    let n = notesLive(all).find(x => x.src && x.src.kind === o.kind && x.src.ref === o.ref);
+    if (n) {
+        const have = n.text.split('\n').map(l => l.trim());
+        const add = text.split('\n').filter(l => l.trim() && !have.includes(l.trim()));
+        if (add.length) n.text = n.text.replace(/\s+$/, '') + '\n' + add.join('\n');
+        n.updatedAt = now;
+    } else {
+        n = {
+            id: Date.now(), title: o.title || '', text, category: notesLastFolder(), tags: [],
+            lang: o.lang || '', pinned: false, star: true,
+            src: { kind: o.kind, ref: o.ref, label: o.label || '', lang: o.lang || '' }, createdAt: now, updatedAt: now
+        };
+        all.unshift(n);
+    }
+    saveNotesData(all);
+    notesToast(t('notes_added', { t: notesTitleOf(n) }), n.id);
+    return n.id;
+}
+
+/* a toast with an 打開 button (the site's share toast can't be clicked) */
+function notesToast(msg, id) {
+    let el = document.getElementById('notes-toast');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'notes-toast';
+        el.className = 'notes-toast';
+        el.setAttribute('role', 'status');
+        document.body.appendChild(el);
+    }
+    el.innerHTML = `<span>${notesEsc(msg)}</span><button type="button" onclick="notesToastOpen(${id})">${notesEsc(t('notes_open'))}</button>`;
+    el.classList.add('show');
+    clearTimeout(el._timer);
+    el._timer = setTimeout(() => el.classList.remove('show'), 4000);
+}
+
+function notesToastOpen(id) {
+    const el = document.getElementById('notes-toast');
+    if (el) el.classList.remove('show');
+    notesFilter = { k: 'all' };
+    notesSearch = '';
+    switchPage('notes');
+    notesOpen(id);
+}
+
+/* the learning language of a word set (js/quiz.js codes: jp, jlpt_n5, tp_ko_food …) */
+function notesLangOfSet(id) {
+    const tests = [['ja', 'isJapaneseQuizLang'], ['ko', 'isKoreanQuizLang'], ['zh', 'isChineseQuizLang'], ['en', 'isEnglishQuizLang'],
+        ['fr', 'isFrenchQuizLang'], ['ru', 'isRussianQuizLang'], ['es', 'isSpanishQuizLang'], ['de', 'isGermanQuizLang']];
+    const hit = tests.find(([, f]) => typeof window[f] === 'function' && window[f](id || ''));
+    return hit ? hit[0] : '';
+}
+
+/* a word as a word-card line: "word（reading） — meaning" */
+function notesWordLine(word, reading, meaning) {
+    const w = String(word || '').trim();
+    const r = String(reading || '').trim();
+    const m = String(meaning || '').replace(/\s*\n\s*/g, '；').trim();
+    return (r && r !== w ? `${w}（${r}）` : w) + (m ? ' — ' + m : '');
+}
+
+/* words from the quiz pages, one note per word set */
+function notesAddWord(setId, word, reading, meaning) {
+    const name = typeof wordSetName === 'function' ? wordSetName(setId) : setId;
+    notesAddFrom({
+        kind: 'words', ref: setId, label: name, title: t('notes_src_words_title', { s: name }),
+        text: notesWordLine(word, reading, meaning), lang: notesLangOfSet(setId)
+    });
+}
+
+/* "回到 …": open the page a note was saved from (another learning language switches the header too) */
+async function notesOpenSource(src) {
+    const [a, b] = String(src.ref || '').split('|');
+    if (src.lang && typeof learnLang === 'function' && learnLang() !== src.lang && typeof setLearnLang === 'function') setLearnLang(src.lang);
+    if (src.kind === 'grammar') {
+        grammarSetId = a;
+        switchPage('grammar');
+        if (!(await grammarLoad())) return;
+        const set = grammarSets[grammarSetId];
+        const i = set ? set.points.findIndex(p => p.id === b) : -1;
+        grammarGo(i >= 0 ? 'point' : 'list', Math.max(0, i));
+    } else if (src.kind === 'reading') {
+        readingSetId = a;
+        switchPage('reading');
+        if (!(await readingLoad())) return;
+        const set = readingSets[readingSetId];
+        const i = set ? set.passages.findIndex(p => p.id === b) : -1;
+        if (i >= 0) readingGo('read', i);
+    } else if (src.kind === 'listening') {
+        switchPage('listening');
+        if (typeof listeningPickLevel === 'function') listeningPickLevel(a);
+    } else if (src.kind === 'dict') {
+        if (typeof setDictLang === 'function') setDictLang(a);
+        switchPage('dict');
+    } else if (src.kind === 'words') {
+        switchPage('quiz');
+        if (typeof selectWordSet === 'function') selectWordSet(a);
     }
 }

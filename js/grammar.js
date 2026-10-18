@@ -255,6 +255,7 @@ function grammarPointHtml(set) {
     return `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="grammarGo('list')">${escHtml(t('grammar_back_list'))}</button>
             <span class="grammar-count">${escHtml(t('grammar_point_n', { n: grammarPoint + 1, m: n }))}</span>
+            <button type="button" class="note-add" onclick="grammarNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>
         <div class="grammar-head">
             <div class="grammar-big" lang="${set.lang}">${escHtml(p.pattern)}</div>
@@ -292,6 +293,7 @@ function grammarPointHtml(set) {
                 <div class="grammar-ex-line">
                     <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(exText(ex))}</span>
                     <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">${uiIcon('speaker')}</button>
+                    <button type="button" class="note-add" onclick="grammarNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
                 </div>
                 ${exReadingHtml(set, ex)}
                 <div class="grammar-ex-tr">${escHtml(gHint(set, ex))}</div>
@@ -304,6 +306,21 @@ function grammarPointHtml(set) {
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint - 1})"${grammarPoint === 0 ? ' disabled' : ''}>${escHtml(t('grammar_prev'))}</button>
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint + 1})"${grammarPoint >= n - 1 ? ' disabled' : ''}>${escHtml(t('grammar_next'))}</button>
         </div>`;
+}
+
+/* ＋筆記 (js/notes.js): the point — meaning, form, examples — or one more example
+   into the note saved from this point */
+function grammarNote(exIdx) {
+    const set = grammarSets[grammarSetId];
+    const p = set && set.points[grammarPoint];
+    if (!p || typeof notesAddFrom !== 'function') return;
+    const exLine = ex => '- ' + exText(ex) + (gHint(set, ex) ? '（' + gHint(set, ex) + '）' : '');
+    const lines = [gText(p.title), '# ' + t('grammar_form'), gText(p.form), '# ' + t('grammar_examples')]
+        .concat((exIdx == null ? p.examples : [p.examples[exIdx]]).map(exLine));
+    notesAddFrom({
+        kind: 'grammar', ref: set.id + '|' + p.id, lang: set.lang, title: p.pattern,
+        label: t('nav_grammar') + ' ' + learnLevelName(set.level) + '・' + p.pattern, text: lines.filter(Boolean).join('\n')
+    });
 }
 
 /* An example's sentence and reading: Japanese files use ja / kana, other

@@ -334,6 +334,7 @@ function readingReaderHtml(set) {
                 <button type="button" class="mode-btn" onclick="readingFontStep(1)"${readingFont() === READING_FONTS.length - 1 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} +">A+</button>
             </span>
             <span class="rd-timer" id="rd-timer" title="${escHtml(t('reading_timer'))}">⏱ ${readingClock(readingElapsed())}</span>
+            <button type="button" class="note-add" onclick="readingNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>
         <div class="rd-cols">
             <div class="rd-col-main">
@@ -462,6 +463,7 @@ function readingWord(ev, gi) {
         <div class="rd-pop-acts">
             <button type="button" class="btn back-btn" onclick="readingSayWord(${gi})" aria-label="🔊">${uiIcon('speaker')}</button>
             <button type="button" class="btn back-btn" onclick="readingAddReview(${gi})">＋ ${escHtml(t('reading_add_review'))}</button>
+            <button type="button" class="note-add" onclick="readingNote(${gi})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>`;
     const r = (ev && ev.currentTarget && ev.currentTarget.getBoundingClientRect) ? ev.currentTarget.getBoundingClientRect() : { left: 20, bottom: 120 };
     pop.style.display = 'block';
@@ -470,6 +472,24 @@ function readingWord(ev, gi) {
     pop.style.left = Math.min(window.innerWidth - w - 12, Math.max(12, r.left)) + 'px';
     const below = r.bottom + 8;
     pop.style.top = (below + 170 > window.innerHeight ? Math.max(12, r.top - 178) : below) + 'px';
+}
+
+/* ＋筆記 (js/notes.js): the passage's note, with a glossary word added as a word card */
+function readingNote(gi) {
+    const set = readingSets[readingSetId];
+    const p = set && set.passages[readingNo];
+    if (!p || typeof notesAddFrom !== 'function') return;
+    const title = readingPlain(p.title.t);
+    const lines = [readingTx(set, p.title)];
+    if (gi != null) {
+        const g = p.glossary[gi];
+        lines.push(notesWordLine(readingGw(set, g), set.lang === 'ru' ? '' : g.r, readingTx(set, g)));
+    }
+    notesAddFrom({
+        kind: 'reading', ref: set.id + '|' + p.id, lang: set.lang, title,
+        label: t('nav_reading') + ' ' + learnLevelName(set.level) + '・' + title, text: lines.filter(Boolean).join('\n')
+    });
+    readingClosePop();
 }
 
 function readingClosePop() {

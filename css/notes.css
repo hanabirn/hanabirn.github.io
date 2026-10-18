@@ -605,3 +605,81 @@
 .notes-side-item.on { background: var(--primary-soft); color: var(--primary); font-weight: 800; }
 .notes-side-item.muted { color: var(--text-muted); }
 .notes-side-foot { margin-top: 12px; padding-top: 8px; border-top: 1px solid var(--line); }
+
+/* ----- ＋筆記 on the other pages (grammar, reading, listening, dictionary) ----- */
+.note-add {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    min-height: 32px;
+    padding: 0 9px;
+    border: 1px solid var(--primary);
+    border-radius: 9px;
+    background: var(--primary-soft);
+    color: var(--primary);
+    font: inherit;
+    font-size: 0.78rem;
+    font-weight: 800;
+    white-space: nowrap;
+    cursor: pointer;
+    flex: none;
+}
+.note-add .ui-icon { width: 14px; height: 14px; stroke-width: 2.4; }
+.note-add:hover { background: var(--primary); color: var(--on-primary); }
+.grammar-top .note-add { margin-left: 8px; }
+.rd-tools .note-add { margin-left: auto; }
+.ls-note-row { display: flex; justify-content: flex-end; margin-top: 8px; }
+@media (pointer: coarse) {
+    .note-add { min-height: 40px; }
+}
+.mb-note {
+    display: grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border: none;
+    border-radius: 8px;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    flex: none;
+}
+.mb-note:hover { color: var(--primary); background: var(--primary-soft); }
+.mb-note .ui-icon { width: 17px; height: 17px; }
+
+/* the "saved" toast, with an 打開 button */
+.notes-toast {
+    position: fixed;
+    left: 50%;
+    bottom: calc(96px + env(safe-area-inset-bottom));
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    max-width: calc(100vw - 32px);
+    padding: 10px 10px 10px 18px;
+    border-radius: 14px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 0.9rem;
+    font-weight: 600;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-50%) translateY(16px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+.notes-toast.show { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+.notes-toast span { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.notes-toast button {
+    flex: none;
+    min-height: 36px;
+    padding: 0 14px;
+    border: none;
+    border-radius: 10px;
+    background: var(--primary);
+    color: var(--on-primary);
+    font: inherit;
+    font-weight: 800;
+    cursor: pointer;
+}
