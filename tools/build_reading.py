@@ -251,16 +251,95 @@ def used(glossary):
     return {g for s in glossary for g in s}
 
 
+# ---------- exam-style rounds (TOPIK, 2026-10-18) ----------
+# A level may also hold "sets": practice rounds and mock exams in the exam's own format
+# — many short texts, each with 1–3 four-option questions. An item:
+#   { type: text | notice | chart | order | insert | headline, ask (the instruction, a key
+#     of SET_ASKS; a question may have its own), text (plain; __x__ underlines, （　） a
+#     blank, ㉠–㉣ insertion points), notice {title, rows [[label, value]], lines, foot},
+#     chart {title, unit, bars [[label, number]]}, parts (order: (가)–(라) sentences),
+#     box (insert: the sentence to place), tr {zh, en} (the text in translation),
+#     questions [{ask?, q?, options [4], answer, zh, en}], words [{w, zh, en}]? }
+# A set: { id, mock?, minutes?, start? (the first question's number), items }.
+SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purpose', 'about',
+            'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference'}
+SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline'}
+
+
+def build_sets(data, name, problems):
+    out, seen = [], set()
+    for st in data.get('sets', []):
+        sw = f'{name}/{st.get("id")}'
+        if st.get('id') in seen:
+            problems.append(f'{sw}: duplicate set id')
+        seen.add(st.get('id'))
+        items, n = [], 0
+        for k, it in enumerate(st.get('items', [])):
+            iw = f'{sw} item {k + 1}'
+            typ = it.get('type', 'text')
+            if typ not in SET_TYPES:
+                problems.append(f'{iw}: unknown type {typ}')
+            need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
+                    'notice': ['notice'], 'chart': ['chart']}.get(typ, [])
+            for key in need:
+                if not it.get(key):
+                    problems.append(f'{iw}: a {typ} item needs "{key}"')
+            if typ == 'order' and len(it.get('parts', [])) != 4:
+                problems.append(f'{iw}: an order item has 4 parts')
+            if typ == 'insert' and not all(m in it.get('text', '') for m in '㉠㉡㉢㉣'):
+                problems.append(f'{iw}: an insert text marks ㉠ ㉡ ㉢ ㉣')
+            tr = it.get('tr') or {}
+            for lang in ('zh', 'en'):
+                if not tr.get(lang):
+                    problems.append(f'{iw}: no {lang} translation (tr)')
+            qs = []
+            for qi, q in enumerate(it.get('questions', [])):
+                n += 1
+                qw = f'{iw} Q{qi + 1}'
+                ask = q.get('ask') or it.get('ask')
+                if ask not in SET_ASKS:
+                    problems.append(f'{qw}: ask "{ask}" is not one of {sorted(SET_ASKS)}')
+                opts = q.get('options', [])
+                if len(opts) != 4 or not 0 <= q.get('answer', -1) < 4:
+                    problems.append(f'{qw}: needs 4 options and an answer 0-3')
+                if len(set(opts)) != len(opts):
+                    problems.append(f'{qw}: two options are the same')
+                for lang in ('zh', 'en'):
+                    if not q.get(lang):
+                        problems.append(f'{qw}: no {lang} explanation')
+                qs.append({'ask': ask, 'q': q.get('q', ''), 'options': opts, 'answer': q.get('answer'),
+                           'zh': q.get('zh', ''), 'en': q.get('en', '')})
+            if not qs:
+                problems.append(f'{iw}: no questions')
+            item = {'type': typ, 'tr': {'zh': tr.get('zh', ''), 'en': tr.get('en', '')}, 'questions': qs}
+            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title'):
+                if key in it:
+                    item[key] = it[key]
+            if it.get('words'):
+                item['words'] = [{'w': w['w'], 'zh': w.get('zh', ''), 'en': w.get('en', '')} for w in it['words']]
+            items.append(item)
+        if st.get('mock') and not st.get('minutes'):
+            problems.append(f'{sw}: a mock exam needs "minutes"')
+        out.append({'id': st['id'], 'mock': bool(st.get('mock')), 'minutes': st.get('minutes', 0),
+                    'start': st.get('start', 1), 'count': n, 'items': items})
+        if not st.get('mock') and n == 0:
+            problems.append(f'{sw}: no questions')
+    return out
+
+
 def build(src, problems):
     data = json.loads(src.read_text(encoding='utf-8'))
     name = src.stem
-    for key in ('id', 'lang', 'level', 'order', 'passages'):
+    for key in ('id', 'lang', 'level', 'order'):
         if key not in data:
             problems.append(f'{name}: missing "{key}"')
+    if 'passages' not in data and 'sets' not in data:
+        problems.append(f'{name}: no "passages" or "sets"')
     out = {k: data[k] for k in ('id', 'lang', 'level', 'order')}
     out['passages'] = []
+    out['sets'] = build_sets(data, name, problems)
     seen = set()
-    for p in data['passages']:
+    for p in data.get('passages', []):
         where = f'{name}/{p.get("id")}'
         if p['id'] in seen:
             problems.append(f'{where}: duplicate id')
@@ -348,7 +427,7 @@ def main():
     OUT.mkdir(parents=True, exist_ok=True)
     for src in sorted(SRC.glob('*.json')):
         data = build(src, problems)
-        if not data['passages']:
+        if not data['passages'] and not data['sets']:
             continue
         known = level_words(data['lang'], data['level'])
         if known:
@@ -362,8 +441,9 @@ def main():
         report_missing(fill(data), data['id'])   # ja ko ru fr es de (tools/content_i18n.py)
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
-                      'count': len(data['passages'])})
-        print(f'{data["id"]}: {len(data["passages"])} passages, lengths {[p["length"] for p in data["passages"]]}')
+                      'count': len(data['passages']) + len(data['sets'])})
+        print(f'{data["id"]}: {len(data["passages"])} passages, lengths {[p["length"] for p in data["passages"]]}'
+              + (f', sets {[(st["id"], st["count"]) for st in data["sets"]]}' if data['sets'] else ''))
     if ZH_REVIEW:
         print('\nChinese pinyin to review (generated):')
         for line in ZH_REVIEW:

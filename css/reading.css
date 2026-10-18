@@ -156,3 +156,48 @@
 /* Russian stress marks (U+0301): the CJK fonts the site uses place a combining mark
    on the next letter in Cyrillic, so Russian text uses a system font that stacks it */
 .reading-card [lang="ru"] { font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif; }
+
+/* ===== exam-style rounds (js/reading-exam.js, TOPIK 2026-10-18) ===== */
+.rdx-head { margin: 18px 0 8px; }
+.rdx-clock { font-weight: 800; font-variant-numeric: tabular-nums; color: var(--text-secondary); }
+.rdx-clock.low { color: var(--danger); }
+.rdx-ask { display: flex; flex-direction: column; gap: 3px; margin: 10px 0 12px; padding: 10px 14px; border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 0 10px 10px 0; }
+.rdx-ask > span[lang] { font-weight: 800; line-height: 1.6; }
+.rdx-ask-tr { font-size: 0.82rem; color: var(--text-secondary); }
+.rdx-item { margin-bottom: 14px; }
+.rdx-text { padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); font-size: 1.08rem; line-height: 1.95; word-break: keep-all; }
+.rdx-text u { text-decoration-thickness: 2px; text-underline-offset: 4px; }
+.rdx-blank { color: var(--primary); font-weight: 800; white-space: pre; }
+.rdx-mark { color: var(--primary); }
+.rdx-box { margin-bottom: 10px; padding: 10px 14px; border: 2px dashed var(--line); border-radius: 10px; line-height: 1.8; }
+.rdx-headline { padding: 16px 18px; border-top: 3px double var(--ink); border-bottom: 3px double var(--ink); font-family: var(--font-serif); font-size: 1.2rem; font-weight: 800; text-align: center; line-height: 1.6; }
+.rdx-parts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.rdx-parts li { padding: 10px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); line-height: 1.8; }
+.rdx-notice { max-width: 440px; margin: 0 auto; padding: 16px 18px; border: 2px solid var(--ink); border-radius: 6px; background: var(--surface); box-shadow: 4px 4px 0 var(--line); line-height: 1.75; }
+.rdx-notice-title { text-align: center; font-weight: 900; font-size: 1.12rem; padding-bottom: 8px; margin-bottom: 8px; border-bottom: 1px solid var(--line); }
+.rdx-notice dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0 0 6px; }
+.rdx-notice dt { font-weight: 800; }
+.rdx-notice dd { margin: 0; }
+.rdx-notice p { margin: 0 0 4px; }
+.rdx-notice-foot { margin-top: 8px; font-size: 0.92rem; color: var(--text-secondary); }
+.rdx-chart { margin: 0 auto; max-width: 480px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.rdx-chart figcaption { text-align: center; font-weight: 800; margin-bottom: 10px; }
+.rdx-bar { display: grid; grid-template-columns: 5.5em 1fr 3.5em; align-items: center; gap: 8px; margin: 6px 0; font-size: 0.92rem; }
+.rdx-bar-track { height: 14px; border-radius: 7px; background: var(--track); overflow: hidden; }
+.rdx-bar-track i { display: block; height: 100%; background: var(--primary); }
+.rdx-bar-val { text-align: right; font-variant-numeric: tabular-nums; }
+.rdx-tr { margin: -4px 0 12px; font-size: 0.9rem; color: var(--text-secondary); }
+.rdx-tr summary { cursor: pointer; color: var(--primary); font-weight: 700; }
+.rdx-tr p { margin: 6px 0 0; line-height: 1.7; }
+.rdx-q { margin-bottom: 14px; }
+.rdx-qhead { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; margin-bottom: 8px; font-weight: 700; }
+.rdx-no { font-weight: 900; color: var(--primary); }
+.rdx-opts { display: grid; grid-template-columns: 1fr; gap: 8px; }
+.rdx-opt { display: flex; align-items: flex-start; gap: 8px; text-align: left; line-height: 1.6; word-break: keep-all; }
+.rdx-opt-n { flex: none; font-weight: 800; }
+.rdx-opt.rdx-picked { border-color: var(--primary); background: var(--primary-soft); }
+.rdx-submit-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; }
+.rdx-submit-row .btn { margin: 0; }
+@media (min-width: 769px) {
+    .rdx-opts { grid-template-columns: 1fr 1fr; }
+}

@@ -1,7 +1,7 @@
 {
   "id": "ko_topik1",
   "lang": "ko",
-  "level": "TOPIK I",
+  "level": "1급",
   "order": 1,
   "note": "Original passages written for the site (TOPIK I level, 해요체). Each language has its own stories (only the 8 topic tags are shared). Glossary m = how the word appears in the text (underlined there). Edit this file, then run: python tools/build_reading.py",
   "passages": [
@@ -363,6 +363,183 @@
          "zh": "○：「지금은 커피를 하루에 한 잔만 마셔요」。", "en": "True: 지금은 커피를 하루에 한 잔만 마셔요."},
         {"s": "의사 선생님이 운동을 하라고 했어요.", "answer": false,
          "zh": "×：醫生說的是少喝咖啡、睡前不要看手機，沒有說運動。", "en": "False: the doctor said to cut down on coffee and not look at the phone — nothing about exercise."}
+      ]
+    }
+  ],
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "사과가 맛있습니다. 바나나도 좋아합니다.",
+          "tr": {"zh": "蘋果很好吃。我也喜歡香蕉。", "en": "Apples are tasty. I like bananas too."},
+          "questions": [
+            {"options": ["과일", "날씨", "계절", "운동"], "answer": 0, "zh": "蘋果和香蕉都是水果（과일）。", "en": "Apples and bananas are both fruit (과일)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "오늘은 덥습니다. 바람이 불지 않습니다.",
+          "tr": {"zh": "今天很熱。沒有風。", "en": "It is hot today. There is no wind."},
+          "questions": [
+            {"options": ["시간", "날씨", "주말", "여행"], "answer": 1, "zh": "熱、有沒有風，說的是天氣（날씨）。", "en": "Hot, no wind — this is about the weather (날씨)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "저는 토요일에 쉽니다. 일요일에도 회사에 안 갑니다.",
+          "tr": {"zh": "我星期六休息。星期天也不去公司。", "en": "I rest on Saturday. I don’t go to work on Sunday either."},
+          "questions": [
+            {"options": ["직업", "가족", "주말", "고향"], "answer": 2, "zh": "星期六、星期天就是週末（주말）。", "en": "Saturday and Sunday are the weekend (주말)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "목이 마릅니다. 물을 （　　）.",
+          "tr": {"zh": "口渴了。（　）水。", "en": "I am thirsty. I (　　) water."},
+          "questions": [
+            {"options": ["읽습니다", "마십니다", "씁니다", "봅니다"], "answer": 1, "zh": "口渴時「喝」水：마시다 → 마십니다。", "en": "When thirsty you drink (마시다 → 마십니다) water."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "저는 동생（　　） 같이 영화를 봤습니다.",
+          "tr": {"zh": "我（　）弟弟／妹妹一起看了電影。", "en": "I watched a film together (　　) my younger sibling."},
+          "questions": [
+            {"options": ["하고", "에서", "에게", "을"], "answer": 0, "zh": "「N하고 같이」＝和 N 一起。", "en": "N하고 같이 = together with N."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "내일은 친구 생일입니다. 그래서 선물을 （　　）.",
+          "tr": {"zh": "明天是朋友的生日。所以要（　）禮物。", "en": "Tomorrow is my friend’s birthday, so I (　　) a present."},
+          "questions": [
+            {"options": ["잡니다", "배웁니다", "삽니다", "팝니다"], "answer": 2, "zh": "朋友生日，所以去「買」禮物：사다 → 삽니다。팝니다 是「賣」。", "en": "For a birthday you buy (사다 → 삽니다) a present; 팝니다 means “sell”."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "날씨가 （　　） 창문을 열었습니다.",
+          "tr": {"zh": "天氣（　），所以打開了窗戶。", "en": "The weather was (　　), so I opened the window."},
+          "questions": [
+            {"options": ["더워서", "추워서", "어두워서", "작아서"], "answer": 0, "zh": "因為「熱」才開窗：덥다 → 더워서。", "en": "You open the window because it is hot (덥다 → 더워서)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "이 가방은 너무 （　　）. 좀 더 싼 가방을 주세요.",
+          "tr": {"zh": "這個包包太（　）了。請給我便宜一點的包包。", "en": "This bag is too (　　). Please give me a cheaper one."},
+          "questions": [
+            {"options": ["가볍습니다", "작습니다", "좋습니다", "비쌉니다"], "answer": 3, "zh": "後面要「更便宜的」，所以這個包包「太貴」：비싸다 → 비쌉니다。", "en": "They want a cheaper bag, so this one is too expensive (비쌉니다)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "저는 아침에 （　　） 일어납니다. 여섯 시에 일어납니다.",
+          "tr": {"zh": "我早上（　）起床。六點起床。", "en": "I get up (　　) in the morning — at six."},
+          "questions": [
+            {"options": ["늦게", "일찍", "자주", "다시"], "answer": 1, "zh": "六點起床是「早」：일찍。", "en": "Six o’clock is early (일찍)."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "도서관 이용 안내",
+            "rows": [["이용 시간", "월요일~금요일 09:00~18:00"], ["토요일", "09:00~13:00"], ["쉬는 날", "일요일"]],
+            "foot": "책은 한 번에 5권까지 빌릴 수 있습니다."
+          },
+          "tr": {"zh": "圖書館使用說明｜開放時間：週一～週五 09:00～18:00｜星期六：09:00～13:00｜休館日：星期日｜一次最多可借 5 本書。", "en": "Library hours | Mon–Fri 09:00–18:00 | Saturday 09:00–13:00 | Closed: Sunday | Up to 5 books at a time."},
+          "questions": [
+            {"options": ["토요일에도 도서관에 갈 수 있습니다.", "일요일에는 도서관이 쉽니다.", "책을 다섯 권 빌릴 수 있습니다.", "금요일에는 오후 1시에 문을 닫습니다."], "answer": 3, "zh": "週一到週五開到 18:00，下午 1 點關門的是星期六，所以 4 不對。", "en": "Mon–Fri it closes at 18:00; it is Saturday that closes at 1 p.m., so 4 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {"title": "민수 씨에게", "lines": ["민수 씨, 오늘 저녁 약속을 내일로 바꿀 수 있어요?", "오늘 회사 일이 많아서 늦게 끝나요.", "내일 일곱 시에 학교 앞 식당에서 만나요."], "foot": "— 지영"},
+          "tr": {"zh": "給民秀：民秀，今天晚上的約可以改到明天嗎？今天公司事情多，會很晚下班。明天七點在學校前面的餐廳見吧。——志英", "en": "To Minsu: Minsu, can we move tonight’s plans to tomorrow? I have a lot of work today and will finish late. Let’s meet at 7 tomorrow at the restaurant in front of the school. — Jiyeong"},
+          "questions": [
+            {"options": ["지영 씨가 민수 씨에게 썼습니다.", "두 사람은 내일 만날 겁니다.", "두 사람은 학교 앞에서 만납니다.", "지영 씨는 오늘 일찍 일이 끝납니다."], "answer": 3, "zh": "志英說今天公司事情多，會「晚」下班（늦게 끝나요），所以 4 不對。", "en": "Jiyeong says she will finish late today (늦게 끝나요), so 4 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "봄맞이 할인",
+            "rows": [["기간", "3월 1일~3월 7일"], ["장소", "한빛마트 2층"], ["할인", "옷, 신발 30%"]],
+            "foot": "※ 과일과 채소는 할인하지 않습니다."
+          },
+          "tr": {"zh": "迎春折扣｜期間：3 月 1 日～3 月 7 日｜地點：韓光超市 2 樓｜折扣：衣服、鞋子 7 折｜※ 水果和蔬菜不打折。", "en": "Spring sale | 1–7 March | Hanbit Mart, 2nd floor | Clothes and shoes 30% off | ※ No discount on fruit and vegetables."},
+          "questions": [
+            {"options": ["일주일 동안 할인합니다.", "과일도 30% 할인합니다.", "2층에 가면 옷이 있습니다.", "신발을 싸게 살 수 있습니다."], "answer": 1, "zh": "公告寫水果和蔬菜「不打折」，所以 2 不對。", "en": "The notice says fruit and vegetables are not discounted, so 2 is wrong."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "저는 매일 아침 공원에서 달립니다. 그런데 오늘은 비가 와서 집에서 운동했습니다. 내일은 날씨가 좋으면 좋겠습니다.",
+          "tr": {"zh": "我每天早上在公園跑步。可是今天下雨，所以在家運動了。希望明天天氣好。", "en": "I run in the park every morning. But today it rained, so I exercised at home. I hope the weather is good tomorrow."},
+          "questions": [
+            {"options": ["저는 오늘 공원에 갔습니다.", "저는 매일 저녁에 달립니다.", "오늘은 비가 왔습니다.", "저는 운동을 좋아하지 않습니다."], "answer": 2, "zh": "「오늘은 비가 와서」：今天下雨了。今天沒去公園（1），是早上跑步（2）。", "en": "“오늘은 비가 와서” — it rained today. They didn’t go to the park (1) and run in the morning (2)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "제 동생은 요리를 잘합니다. 주말마다 저에게 맛있는 음식을 만들어 줍니다. 저는 요리를 못해서 설거지를 합니다.",
+          "tr": {"zh": "我弟弟／妹妹很會做菜。每個週末都做好吃的給我。我不會做菜，所以負責洗碗。", "en": "My younger sibling cooks well and makes me tasty food every weekend. I can’t cook, so I do the dishes."},
+          "questions": [
+            {"options": ["저는 요리를 잘합니다.", "동생은 주말에 요리를 합니다.", "동생이 설거지를 합니다.", "저는 음식을 만들어 줍니다."], "answer": 1, "zh": "「주말마다…만들어 줍니다」：弟弟／妹妹週末做菜。洗碗的是「我」。", "en": "“주말마다 … 만들어 줍니다” — the sibling cooks at weekends; “I” do the dishes."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "어제 새 휴대폰을 샀습니다. 사진이 아주 잘 나옵니다. 그래서 오늘 친구들과 사진을 많이 찍었습니다.",
+          "tr": {"zh": "昨天買了新手機。拍照很漂亮。所以今天和朋友拍了很多照片。", "en": "I bought a new phone yesterday. It takes great photos, so today I took lots of pictures with friends."},
+          "questions": [
+            {"options": ["휴대폰이 오래되었습니다.", "오늘 사진을 찍지 않았습니다.", "친구가 휴대폰을 샀습니다.", "새 휴대폰으로 사진을 찍었습니다."], "answer": 3, "zh": "昨天買了新手機，今天用它拍了很多照片。", "en": "They bought a new phone yesterday and took many photos with it today."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 한국 음식을 좋아합니다. 그래서 한국 음식을 직접 만들어 보고 싶습니다. 다음 달부터 요리 학원에 다닐 겁니다.",
+          "tr": {"zh": "我喜歡韓國菜。所以想自己做做看。下個月開始要去上烹飪班。", "en": "I like Korean food, so I want to try making it myself. From next month I’ll go to a cooking school."},
+          "questions": [
+            {"options": ["저는 한국 음식을 자주 먹습니다.", "저는 한국 음식을 만들고 싶습니다.", "저는 요리 학원이 멉니다.", "저는 다음 달에 한국에 갑니다."], "answer": 1, "zh": "重點在「想自己做韓國菜」，所以去烹飪班。", "en": "The point is that they want to make Korean food themselves."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "우리 집 근처에 큰 공원이 있습니다. 공원에는 나무와 꽃이 많습니다. 저는 그 공원에서 산책하는 것을 좋아합니다.",
+          "tr": {"zh": "我家附近有一座大公園。公園裡有很多樹和花。我喜歡在那座公園散步。", "en": "There is a big park near my home with many trees and flowers. I like walking in that park."},
+          "questions": [
+            {"options": ["공원에 나무가 많습니다.", "저는 꽃을 사고 싶습니다.", "저는 집 근처 공원을 좋아합니다.", "공원이 너무 큽니다."], "answer": 2, "zh": "1 雖然對，但只是細節；整段想說的是「我喜歡家附近的公園」。", "en": "1 is true but only a detail; the whole text says “I like the park near my home”."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 지난주에 감기에 걸렸습니다. 약을 먹고 푹 쉬어서 지금은 괜찮습니다. 앞으로는 손을 자주 씻을 겁니다.",
+          "tr": {"zh": "我上星期感冒了。吃了藥、好好休息，現在沒事了。以後要常常洗手。", "en": "I caught a cold last week. I took medicine and rested, so I’m fine now. From now on I’ll wash my hands often."},
+          "questions": [
+            {"options": ["저는 아직 아픕니다.", "저는 약을 싫어합니다.", "저는 지난주에 쉬지 못했습니다.", "저는 감기에 안 걸리려고 노력할 겁니다."], "answer": 3, "zh": "最後說「以後要常洗手」，想說的是會努力不再感冒。", "en": "They end with “I’ll wash my hands often” — they will try not to catch a cold again."}
+          ]
+        }
       ]
     }
   ]

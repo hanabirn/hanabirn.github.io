@@ -64,6 +64,7 @@ async function readingLoad() {
     if (want !== readingSetId) {
         if (readingView === 'read') readingStopTimer();
         readingSetId = want; readingView = 'list'; readingNo = 0;
+        if (typeof readingExamStopClock === 'function') { readingExamStopClock(); readingExam = null; }
     }
     learnRememberLevel('reading', readingIndex.find(s => s.id === want));   // the home page's 繼續上次的
     if (readingSetId && !readingSets[readingSetId]) {
@@ -92,7 +93,10 @@ async function renderReading() {
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
     document.body.classList.toggle('reading-wide', readingView === 'read');
     if (typeof railPlace === 'function') railPlace();
+    if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
     if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
+    else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
+    else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);
     else if (readingView === 'quiz') box.innerHTML = readingQuizHtml(set);
     else if (readingView === 'review') box.innerHTML = readingReviewHtml(set);
     else box.innerHTML = readingListHtml(set);
@@ -229,15 +233,16 @@ function readingStress() { return readingPref('reading_stress', '1') === '1'; }
 
 function readingListHtml(set) {
     const read = set.passages.filter(p => readingRead(set.id, p.id)).length;
-    const pct = Math.round(read / set.passages.length * 100);
+    const pct = set.passages.length ? Math.round(read / set.passages.length * 100) : 0;
     const prog = readingProgress();
     return `<h3>${escHtml(t('reading_title'))}${introInfoBtn('reading_intro')}</h3>
         ${introHtml('reading_intro')}
         ${learnPickerHtml(readingIndex, set.id, 'readingPickSet', id => learnDoneCount(prog, id, READING_PASS))}
-        <div class="grammar-progress">
+        ${typeof readingSetsHtml === 'function' ? readingSetsHtml(set) : ''}
+        ${set.passages.length ? `<div class="grammar-progress">
             <span>${escHtml(t('reading_read_n', { n: read, m: set.passages.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
-        </div>
+        </div>` : ''}
         <ol class="grammar-list">
             ${set.passages.map((p, i) => {
                 const done = readingRead(set.id, p.id);
