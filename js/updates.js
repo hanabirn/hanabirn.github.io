@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-17',
+      zh: '文法頁新增韓文 6 級：30 個高級文法（-(으)ㄹ세라、-기에 망정이지、-(으)ㄴ들、-건만、-기로서니……），每個都有說明、注意事項、常見錯誤、有發音的例句，以及 7 題練習（含句子排序和選 ★ 的進階題），每個選項都有解釋。',
+      'zh-Hans': '语法页新增韩语 6 级：30 个高级语法（-(으)ㄹ세라、-기에 망정이지、-(으)ㄴ들、-건만、-기로서니……），每个都有说明、注意事项、常见错误、带发音的例句，以及 7 题练习（含句子排序和选 ★ 的进阶题），每个选项都有解释。',
+      en: 'New on the Grammar page: Korean Level 6 — 30 advanced patterns (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), each with an explanation, notes, common mistakes, spoken examples and 7 practice questions (including sentence ordering and pick-the-★), every option explained.',
+      ja: '文法ページに韓国語 6 級を追加：上級の文法 30 項目（-(으)ㄹ세라・-기에 망정이지・-(으)ㄴ들・-건만・-기로서니 …）。それぞれ説明・注意点・よくある間違い・音声つきの例文と、並べ替えや★を選ぶ問題を含む 7 問の練習つき。選択肢ごとに解説があります。',
+      ko: '문법 페이지에 한국어 6급을 추가했어요: 고급 문법 30개(-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …). 각각 설명, 주의할 점, 자주 하는 실수, 음성이 있는 예문과 문장 배열·★ 고르기를 포함한 연습 문제 7개가 있고, 선택지마다 해설이 있어요.',
+      ru: 'Новое в разделе «Грамматика»: корейский, уровень 6 — 30 конструкций продвинутого уровня (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), у каждой объяснение, заметки, типичные ошибки, озвученные примеры и 7 вопросов (в том числе порядок слов и выбор ★), с разбором каждого варианта.',
+      fr: 'Nouveau dans Grammaire : le coréen niveau 6 — 30 structures de niveau avancé (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), chacune avec explication, remarques, erreurs fréquentes, exemples audio et 7 questions (dont remise en ordre et choix du ★), chaque option expliquée.',
+      es: 'Novedad en Gramática: coreano nivel 6 — 30 estructuras de nivel avanzado (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), cada una con explicación, notas, errores frecuentes, ejemplos con audio y 7 preguntas (incluidas ordenar la frase y elegir la ★), con cada opción explicada.',
+      de: 'Neu auf der Grammatik-Seite: Koreanisch Stufe 6 — 30 Strukturen der Oberstufe (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), jeweils mit Erklärung, Hinweisen, häufigen Fehlern, vertonten Beispielen und 7 Übungsfragen (auch Satzbau und ★-Auswahl), jede Option erklärt.', },
+    { date: '2026-10-17',
       zh: '文法頁新增韓文 5 級：30 個中高級文法（-기 마련이다、-는 법이다、-(으)ㄹ 바에야、-았/었더라면、N(이)야말로……），每個都有說明、注意事項、常見錯誤、有發音的例句，以及 7 題練習（含句子排序和選 ★ 的進階題），每個選項都有解釋。',
       'zh-Hans': '语法页新增韩语 5 级：30 个中高级语法（-기 마련이다、-는 법이다、-(으)ㄹ 바에야、-았/었더라면、N(이)야말로……），每个都有说明、注意事项、常见错误、带发音的例句，以及 7 题练习（含句子排序和选 ★ 的进阶题），每个选项都有解释。',
       en: 'New on the Grammar page: Korean Level 5 — 30 upper-intermediate patterns (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), each with an explanation, notes, common mistakes, spoken examples and 7 practice questions (including sentence ordering and pick-the-★), every option explained.',
