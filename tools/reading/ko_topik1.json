@@ -541,6 +541,356 @@
           ]
         }
       ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "아버지는 의사입니다. 어머니는 선생님입니다.",
+          "tr": {"zh": "爸爸是醫生。媽媽是老師。", "en": "My father is a doctor. My mother is a teacher."},
+          "questions": [
+            {"options": ["나이", "직업", "취미", "나라"], "answer": 1, "zh": "醫生、老師是職業（직업）。", "en": "Doctor and teacher are jobs (직업)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "저는 서울에 삽니다. 동생은 부산에 삽니다.",
+          "tr": {"zh": "我住在首爾。弟弟／妹妹住在釜山。", "en": "I live in Seoul. My younger sibling lives in Busan."},
+          "questions": [
+            {"options": ["장소", "요일", "시간", "쇼핑"], "answer": 0, "zh": "首爾、釜山是地方（장소）。", "en": "Seoul and Busan are places (장소)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "지금은 세 시입니다. 네 시에 친구를 만납니다.",
+          "tr": {"zh": "現在三點。四點要和朋友見面。", "en": "It is three o’clock now. I meet a friend at four."},
+          "questions": [
+            {"options": ["계절", "날짜", "시간", "공부"], "answer": 2, "zh": "三點、四點說的是時間（시간）。날짜 是日期。", "en": "Three and four o’clock are about time (시간); 날짜 is a date."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "날씨가 좋습니다. 그래서 공원에 （　　）.",
+          "tr": {"zh": "天氣很好。所以（　）公園。", "en": "The weather is nice, so I (　　) to the park."},
+          "questions": [
+            {"options": ["갑니다", "잡니다", "읽습니다", "씻습니다"], "answer": 0, "zh": "「공원에 가다」＝去公園。", "en": "공원에 가다 = go to the park."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "저는 커피（　　） 좋아합니다.",
+          "tr": {"zh": "我喜歡咖啡。（受詞助詞）", "en": "I like coffee. (object particle)"},
+          "questions": [
+            {"options": ["에", "를", "가", "와"], "answer": 1, "zh": "「좋아하다」的受詞用 을/를：커피를 좋아합니다。", "en": "좋아하다 takes an object with 을/를: 커피를 좋아합니다."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "집에서 학교까지 （　　） 갑니다. 십 분쯤 걸립니다.",
+          "tr": {"zh": "從家裡到學校（　）去。大約十分鐘。", "en": "I go from home to school (　　). It takes about ten minutes."},
+          "questions": [
+            {"options": ["자주", "먼저", "걸어서", "아주"], "answer": 2, "zh": "「걸어서 가다」＝走路去，走十分鐘左右。", "en": "걸어서 가다 = go on foot; about ten minutes’ walk."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "배가 （　　）. 밥을 먹고 싶습니다.",
+          "tr": {"zh": "肚子（　）。想吃飯。", "en": "I am (　　). I want to eat."},
+          "questions": [
+            {"options": ["아픕니다", "고픕니다", "부릅니다", "큽니다"], "answer": 1, "zh": "「배가 고프다」＝肚子餓，所以想吃飯。배가 부르다 是吃飽。", "en": "배가 고프다 = hungry, so they want to eat; 배가 부르다 is “full”."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "이 옷은 저에게 （　　）. 더 큰 옷이 있습니까?",
+          "tr": {"zh": "這件衣服對我來說（　）。有更大的嗎？", "en": "These clothes are (　　) for me. Do you have a bigger size?"},
+          "questions": [
+            {"options": ["큽니다", "예쁩니다", "작습니다", "비쌉니다"], "answer": 2, "zh": "想要「更大的」，所以這件太「小」：작습니다。", "en": "They want a bigger one, so this one is small (작습니다)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "（　　） 비가 왔습니다. 오늘은 맑습니다.",
+          "tr": {"zh": "（　）下雨了。今天是晴天。", "en": "It rained (　　). Today it is clear."},
+          "questions": [
+            {"options": ["어제", "내일", "다음 주", "나중에"], "answer": 0, "zh": "「왔습니다」是過去式，所以是「昨天」：어제。", "en": "왔습니다 is past tense, so “yesterday” (어제)."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "수영장 이용 안내",
+            "rows": [["시간", "오전 6시~오후 9시"], ["쉬는 날", "매주 월요일"], ["가격", "어른 5,000원 / 어린이 3,000원"]],
+            "foot": "수영 모자를 꼭 쓰세요."
+          },
+          "tr": {"zh": "游泳池使用說明｜時間：上午 6 點～晚上 9 點｜休息日：每週一｜價格：大人 5,000 韓元／兒童 3,000 韓元｜一定要戴泳帽。", "en": "Swimming pool | 6 a.m.–9 p.m. | Closed every Monday | Adults ₩5,000 / children ₩3,000 | Swimming caps required."},
+          "questions": [
+            {"options": ["월요일에는 수영장에 갈 수 없습니다.", "어린이는 3,000원입니다.", "수영 모자가 필요합니다.", "밤 10시까지 수영할 수 있습니다."], "answer": 3, "zh": "開到晚上 9 點，不能游到 10 點，所以 4 不對。", "en": "It closes at 9 p.m., not 10, so 4 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {"title": "엄마에게", "lines": ["엄마, 저 오늘 저녁에 친구 집에서 숙제를 해요.", "저녁도 친구 집에서 먹을 거예요.", "아홉 시까지 집에 갈게요."], "foot": "— 민지"},
+          "tr": {"zh": "給媽媽：媽，我今天晚上要在朋友家寫作業。晚餐也會在朋友家吃。九點以前會回家。——敏智", "en": "To Mom: Mom, I’m doing homework at my friend’s house tonight. I’ll have dinner there too. I’ll be home by nine. — Minji"},
+          "questions": [
+            {"options": ["민지는 엄마에게 메모를 썼습니다.", "민지는 오늘 친구 집에 갑니다.", "민지는 집에서 저녁을 먹습니다.", "민지는 아홉 시까지 집에 옵니다."], "answer": 2, "zh": "敏智說晚餐也在「朋友家」吃，所以 3 不對。", "en": "Minji will eat dinner at her friend’s house, so 3 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "한국 요리 교실",
+            "rows": [["날짜", "5월 10일 (토)"], ["시간", "오후 2시~4시"], ["장소", "시민회관 3층"], ["요리", "김밥, 떡볶이"]],
+            "foot": "※ 신청: 5월 8일까지 (무료)"
+          },
+          "tr": {"zh": "韓國料理教室｜日期：5 月 10 日（六）｜時間：下午 2 點～4 點｜地點：市民會館 3 樓｜料理：紫菜飯捲、辣炒年糕｜※ 報名：5 月 8 日前（免費）", "en": "Korean cooking class | Sat 10 May | 2–4 p.m. | Civic hall, 3rd floor | Gimbap and tteokbokki | ※ Sign up by 8 May (free)"},
+          "questions": [
+            {"options": ["토요일에 요리를 배웁니다.", "두 시간 동안 합니다.", "돈을 내야 합니다.", "김밥을 만듭니다."], "answer": 2, "zh": "傳單寫「무료」（免費），不用付錢，所以 3 不對。", "en": "The flyer says 무료 (free), so 3 is wrong."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "저는 지난달에 이사를 했습니다. 새 집은 회사에서 가깝습니다. 그래서 아침에 늦게 일어나도 괜찮습니다.",
+          "tr": {"zh": "我上個月搬家了。新家離公司很近。所以早上晚一點起床也沒關係。", "en": "I moved last month. The new home is close to work, so it’s fine to get up later."},
+          "questions": [
+            {"options": ["저는 회사 근처로 이사했습니다.", "새 집은 회사에서 멉니다.", "저는 아침에 일찍 일어나야 합니다.", "저는 다음 달에 이사합니다."], "answer": 0, "zh": "新家離公司「近」（가깝습니다），所以是搬到公司附近。", "en": "The new home is close to work, so they moved near the office."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "우리 반에는 학생이 열 명 있습니다. 모두 다른 나라에서 왔습니다. 수업 시간에는 한국어로만 이야기합니다.",
+          "tr": {"zh": "我們班有十個學生。大家都來自不同的國家。上課時只用韓語說話。", "en": "There are ten students in our class, all from different countries. In class we only speak Korean."},
+          "questions": [
+            {"options": ["우리 반 학생은 모두 한국 사람입니다.", "학생이 스무 명 있습니다.", "수업 시간에 한국어로 말합니다.", "학생들은 같은 나라에서 왔습니다."], "answer": 2, "zh": "「수업 시간에는 한국어로만」：上課只說韓語。", "en": "“수업 시간에는 한국어로만” — only Korean in class."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "저는 매주 금요일에 할머니 댁에 갑니다. 할머니는 꽃을 좋아하십니다. 그래서 갈 때마다 꽃을 사 갑니다.",
+          "tr": {"zh": "我每週五去奶奶家。奶奶喜歡花。所以每次去都會買花去。", "en": "I visit my grandmother every Friday. She likes flowers, so I bring some each time."},
+          "questions": [
+            {"options": ["저는 할머니와 같이 삽니다.", "할머니는 꽃을 싫어하십니다.", "할머니가 저에게 꽃을 주십니다.", "저는 금요일마다 할머니 댁에 갑니다."], "answer": 3, "zh": "「매주 금요일에 할머니 댁에 갑니다」＝每週五去奶奶家。買花的是「我」。", "en": "“매주 금요일에 … 갑니다” — every Friday. It is “I” who buys the flowers."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 아침에 운동을 합니다. 운동을 하면 하루 종일 기분이 좋습니다. 그래서 바빠도 운동은 꼭 합니다.",
+          "tr": {"zh": "我早上運動。運動之後一整天心情都很好。所以就算忙也一定會運動。", "en": "I exercise in the morning. It puts me in a good mood all day, so I always exercise, even when busy."},
+          "questions": [
+            {"options": ["저는 바빠도 운동을 꼭 합니다.", "저는 아침에 늘 바쁩니다.", "운동을 하면 피곤합니다.", "저는 저녁에 운동을 합니다."], "answer": 0, "zh": "最後一句是重點：再忙也一定運動。", "en": "The last sentence is the point: they always exercise, however busy."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 한국 드라마를 자주 봅니다. 드라마를 보면서 한국어 공부를 합니다. 모르는 말은 공책에 씁니다.",
+          "tr": {"zh": "我常看韓劇。一邊看劇一邊學韓語。不懂的話寫在筆記本上。", "en": "I often watch Korean dramas and study Korean while watching. I write down words I don’t know."},
+          "questions": [
+            {"options": ["저는 드라마를 만들고 싶습니다.", "저는 드라마로 한국어를 공부합니다.", "저는 공책을 사야 합니다.", "저는 한국어를 잘합니다."], "answer": 1, "zh": "整段在說「用韓劇學韓語」。", "en": "The whole text is about learning Korean through dramas."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "다음 주에 친구가 한국에 옵니다. 친구와 같이 경복궁에 가고 싶습니다. 맛있는 한국 음식도 같이 먹을 겁니다.",
+          "tr": {"zh": "下週朋友要來韓國。想和朋友一起去景福宮。也要一起吃好吃的韓國菜。", "en": "A friend comes to Korea next week. I want to visit Gyeongbokgung with them and eat good Korean food together."},
+          "questions": [
+            {"options": ["저는 다음 주에 고향에 갑니다.", "친구는 한국 음식을 싫어합니다.", "저는 친구와 같이 한국을 즐기고 싶습니다.", "저는 경복궁에 가 봤습니다."], "answer": 2, "zh": "想和朋友一起去景福宮、吃韓國菜：想和朋友一起享受韓國。", "en": "Visiting Gyeongbokgung and eating together: they want to enjoy Korea with their friend."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "저는 노래를 좋아합니다. 주말에는 피아노도 칩니다.",
+          "tr": {"zh": "我喜歡唱歌。週末也彈鋼琴。", "en": "I like singing. At weekends I also play the piano."},
+          "questions": [
+            {"options": ["쇼핑", "고향", "건강", "취미"], "answer": 3, "zh": "唱歌、彈鋼琴是興趣（취미）。", "en": "Singing and playing the piano are hobbies (취미)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "봄에는 꽃이 핍니다. 가을에는 단풍이 듭니다.",
+          "tr": {"zh": "春天開花。秋天樹葉變紅。", "en": "Flowers bloom in spring. Leaves turn red in autumn."},
+          "questions": [
+            {"options": ["날짜", "계절", "음식", "주소"], "answer": 1, "zh": "春天、秋天是季節（계절）。", "en": "Spring and autumn are seasons (계절)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "topic",
+          "text": "여기는 은행입니다. 저기는 우체국입니다.",
+          "tr": {"zh": "這裡是銀行。那裡是郵局。", "en": "This is a bank. That is a post office."},
+          "questions": [
+            {"options": ["나이", "값", "장소", "이름"], "answer": 2, "zh": "銀行、郵局是地方（장소）。", "en": "A bank and a post office are places (장소)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "어제 친구에게 편지를 （　　）.",
+          "tr": {"zh": "昨天給朋友（　）了信。", "en": "Yesterday I (　　) a letter to a friend."},
+          "questions": [
+            {"options": ["썼습니다", "먹었습니다", "들었습니다", "탔습니다"], "answer": 0, "zh": "「편지를 쓰다」＝寫信：썼습니다。", "en": "편지를 쓰다 = write a letter (썼습니다)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "저는 아침（　　） 빵을 먹습니다.",
+          "tr": {"zh": "我早上吃麵包。（表示時間的助詞）", "en": "I eat bread in the morning. (time particle)"},
+          "questions": [
+            {"options": ["을", "에", "이", "처럼"], "answer": 1, "zh": "時間後面用「에」：아침에＝在早上。", "en": "Time takes 에: 아침에 = in the morning."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "동생은 키가 （　　）. 그래서 농구를 잘합니다.",
+          "tr": {"zh": "弟弟／妹妹個子（　）。所以很會打籃球。", "en": "My younger sibling is (　　), so they’re good at basketball."},
+          "questions": [
+            {"options": ["작습니다", "큽니다", "짧습니다", "적습니다"], "answer": 1, "zh": "「키가 크다」＝個子高，所以籃球打得好。", "en": "키가 크다 = tall, so good at basketball."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "시간이 없습니다. （　　） 가야 합니다.",
+          "tr": {"zh": "沒時間了。必須（　）去。", "en": "There’s no time. I must go (　　)."},
+          "questions": [
+            {"options": ["천천히", "조금", "빨리", "가끔"], "answer": 2, "zh": "沒時間，所以要「快」：빨리。", "en": "No time, so quickly (빨리)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "도서관에서는 （　　） 이야기해야 합니다.",
+          "tr": {"zh": "在圖書館要（　）說話。", "en": "In the library you must talk (　　)."},
+          "questions": [
+            {"options": ["크게", "많이", "멀리", "조용히"], "answer": 3, "zh": "圖書館要「安靜地」說話：조용히。", "en": "In a library you talk quietly (조용히)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "백화점에 가서 구두를 （　　）. 아주 예쁩니다.",
+          "tr": {"zh": "去百貨公司（　）了皮鞋。非常漂亮。", "en": "I went to the department store and (　　) shoes. They’re very pretty."},
+          "questions": [
+            {"options": ["샀습니다", "만들었습니다", "씻었습니다", "배웠습니다"], "answer": 0, "zh": "去百貨公司「買」鞋：사다 → 샀습니다。", "en": "At a department store you buy shoes (샀습니다)."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "버스 시간표 (서울 → 춘천)",
+            "rows": [["첫차", "오전 6:30"], ["막차", "오후 10:00"], ["간격", "30분마다"], ["요금", "8,500원"]],
+            "foot": "※ 표는 정류장 매표소에서 삽니다."
+          },
+          "tr": {"zh": "巴士時刻表（首爾 → 春川）｜首班車：上午 6:30｜末班車：晚上 10:00｜間隔：每 30 分鐘｜票價：8,500 韓元｜※ 車票在車站售票處購買。", "en": "Bus timetable (Seoul → Chuncheon) | First 6:30 a.m. | Last 10:00 p.m. | Every 30 minutes | Fare ₩8,500 | ※ Buy tickets at the station ticket office."},
+          "questions": [
+            {"options": ["버스는 30분에 한 번 있습니다.", "마지막 버스는 밤 열 시에 있습니다.", "표는 버스 안에서 삽니다.", "표는 8,500원입니다."], "answer": 2, "zh": "車票要在「車站售票處」買，不是在車上，所以 3 不對。", "en": "Tickets are sold at the station office, not on the bus, so 3 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {"title": "중고 자전거 팝니다", "lines": ["1년 동안 탄 자전거입니다. 아주 깨끗합니다.", "가격: 50,000원", "연락: 문자 주세요 (저녁 7시 이후)"]},
+          "tr": {"zh": "出售二手腳踏車｜騎了一年的腳踏車，非常乾淨。｜價格：50,000 韓元｜聯絡：請傳簡訊（晚上 7 點以後）", "en": "Used bike for sale | Ridden for one year, very clean. | Price ₩50,000 | Contact: text me (after 7 p.m.)"},
+          "questions": [
+            {"options": ["자전거를 팔려고 합니다.", "자전거는 깨끗합니다.", "저녁에 연락하면 됩니다.", "자전거를 2년 동안 탔습니다."], "answer": 3, "zh": "公告寫騎了「1 年」（1년 동안），不是 2 年，所以 4 不對。", "en": "It says the bike was ridden for one year, not two, so 4 is wrong."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "wrong",
+          "notice": {
+            "title": "생일 파티에 초대합니다",
+            "rows": [["언제", "6월 3일 금요일 저녁 7시"], ["어디", "우리 집 (한빛아파트 102동 305호)"]],
+            "foot": "맛있는 음식을 준비할게요. 선물은 안 가져와도 돼요! — 수진"
+          },
+          "tr": {"zh": "生日派對邀請｜時間：6 月 3 日星期五晚上 7 點｜地點：我家（韓光公寓 102 棟 305 號）｜我會準備好吃的。不用帶禮物喔！——秀珍", "en": "Birthday party invitation | Fri 3 June, 7 p.m. | My place (Hanbit Apartments, building 102, no. 305) | I’ll make good food. No presents needed! — Sujin"},
+          "questions": [
+            {"options": ["수진 씨가 파티를 합니다.", "파티는 금요일 저녁입니다.", "선물을 꼭 가져가야 합니다.", "파티는 수진 씨 집에서 합니다."], "answer": 2, "zh": "秀珍說「선물은 안 가져와도 돼요」（不用帶禮物），所以 3 不對。", "en": "Sujin says no presents are needed, so 3 is wrong."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "제 방은 작습니다. 그런데 창문이 커서 아주 밝습니다. 저는 창문 옆에서 책 읽는 것을 좋아합니다.",
+          "tr": {"zh": "我的房間很小。可是窗戶很大，所以很明亮。我喜歡在窗邊看書。", "en": "My room is small, but the big window makes it very bright. I like reading by the window."},
+          "questions": [
+            {"options": ["제 방은 어둡습니다.", "제 방은 큽니다.", "저는 창문 옆에서 책을 읽습니다.", "제 방에는 창문이 없습니다."], "answer": 2, "zh": "「창문 옆에서 책 읽는 것을 좋아합니다」：喜歡在窗邊看書。房間小但明亮。", "en": "They like reading by the window; the room is small but bright."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "저는 오늘 처음으로 김치를 만들었습니다. 한국 친구가 도와줬습니다. 조금 매웠지만 맛있었습니다.",
+          "tr": {"zh": "我今天第一次做了泡菜。韓國朋友幫了我。有點辣，但很好吃。", "en": "Today I made kimchi for the first time. A Korean friend helped. It was a little spicy but tasty."},
+          "questions": [
+            {"options": ["친구가 혼자 김치를 만들었습니다.", "김치가 맛없었습니다.", "저는 김치를 자주 만듭니다.", "저는 친구와 같이 김치를 만들었습니다."], "answer": 3, "zh": "朋友「幫忙」（도와줬습니다），是兩個人一起做；而且是「第一次」做。", "en": "The friend helped, so they made it together — and it was the first time."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "우리 회사는 아홉 시에 일을 시작합니다. 저는 보통 여덟 시 반에 도착합니다. 오늘은 길이 막혀서 늦었습니다.",
+          "tr": {"zh": "我們公司九點開始上班。我通常八點半到。今天因為塞車遲到了。", "en": "Work starts at nine. I usually arrive at half past eight. Today I was late because of traffic."},
+          "questions": [
+            {"options": ["저는 오늘 늦게 도착했습니다.", "저는 오늘 일찍 도착했습니다.", "회사는 여덟 시 반에 시작합니다.", "길이 막히지 않았습니다."], "answer": 0, "zh": "「오늘은 길이 막혀서 늦었습니다」：今天塞車遲到了。", "en": "“오늘은 … 늦었습니다” — today they were late."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 고양이를 키우고 싶습니다. 그런데 우리 아파트에서는 동물을 키울 수 없습니다. 그래서 이사를 가려고 합니다.",
+          "tr": {"zh": "我想養貓。可是我們公寓不能養動物。所以打算搬家。", "en": "I want a cat, but pets aren’t allowed in my apartment, so I plan to move."},
+          "questions": [
+            {"options": ["저는 고양이를 좋아하지 않습니다.", "저는 고양이를 키우려고 이사하고 싶습니다.", "우리 아파트는 아주 큽니다.", "저는 강아지를 키웁니다."], "answer": 1, "zh": "想養貓，但公寓不能養，所以要搬家：為了養貓想搬家。", "en": "They want a cat and the flat forbids pets, so they want to move in order to keep one."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 시장을 좋아합니다. 시장에는 물건이 싸고 사람들이 친절합니다. 그래서 장을 볼 때는 시장에 갑니다.",
+          "tr": {"zh": "我喜歡市場。市場的東西便宜，人也親切。所以買菜時都去市場。", "en": "I like the market: things are cheap and people are kind, so I shop for food there."},
+          "questions": [
+            {"options": ["시장은 사람이 많습니다.", "저는 장을 볼 때 마트에 갑니다.", "저는 시장에서 물건 사는 것을 좋아합니다.", "시장의 물건은 비쌉니다."], "answer": 2, "zh": "整段說「喜歡在市場買東西」。", "en": "The text is about liking to shop at the market."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "main",
+          "text": "저는 매일 일기를 씁니다. 한국어로 쓰니까 처음에는 어려웠습니다. 하지만 지금은 한국어 실력이 많이 늘었습니다.",
+          "tr": {"zh": "我每天寫日記。因為用韓語寫，一開始很難。但現在韓語進步很多。", "en": "I keep a diary every day. Writing in Korean was hard at first, but my Korean has improved a lot."},
+          "questions": [
+            {"options": ["일기는 쓰기 어렵습니다.", "저는 일기를 쓰지 않습니다.", "저는 영어로 일기를 씁니다.", "한국어로 일기를 쓰면서 한국어가 늘었습니다."], "answer": 3, "zh": "重點在最後：用韓語寫日記讓韓語進步了。1 只是一開始的感覺。", "en": "The point comes last: writing a diary in Korean improved their Korean; 1 is only how it felt at first."}
+          ]
+        }
+      ]
     }
   ]
 }
