@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-17',
+      zh: '文法頁新增韓文 5 級：30 個中高級文法（-기 마련이다、-는 법이다、-(으)ㄹ 바에야、-았/었더라면、N(이)야말로……），每個都有說明、注意事項、常見錯誤、有發音的例句，以及 7 題練習（含句子排序和選 ★ 的進階題），每個選項都有解釋。',
+      'zh-Hans': '语法页新增韩语 5 级：30 个中高级语法（-기 마련이다、-는 법이다、-(으)ㄹ 바에야、-았/었더라면、N(이)야말로……），每个都有说明、注意事项、常见错误、带发音的例句，以及 7 题练习（含句子排序和选 ★ 的进阶题），每个选项都有解释。',
+      en: 'New on the Grammar page: Korean Level 5 — 30 upper-intermediate patterns (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), each with an explanation, notes, common mistakes, spoken examples and 7 practice questions (including sentence ordering and pick-the-★), every option explained.',
+      ja: '文法ページに韓国語 5 級を追加：中上級の文法 30 項目（-기 마련이다・-는 법이다・-(으)ㄹ 바에야・-았/었더라면・N(이)야말로 …）。それぞれ説明・注意点・よくある間違い・音声つきの例文と、並べ替えや★を選ぶ問題を含む 7 問の練習つき。選択肢ごとに解説があります。',
+      ko: '문법 페이지에 한국어 5급을 추가했어요: 중상급 문법 30개(-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …). 각각 설명, 주의할 점, 자주 하는 실수, 음성이 있는 예문과 문장 배열·★ 고르기를 포함한 연습 문제 7개가 있고, 선택지마다 해설이 있어요.',
+      ru: 'Новое в разделе «Грамматика»: корейский, уровень 5 — 30 конструкций выше среднего (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), у каждой объяснение, заметки, типичные ошибки, озвученные примеры и 7 вопросов (в том числе порядок слов и выбор ★), с разбором каждого варианта.',
+      fr: 'Nouveau dans Grammaire : le coréen niveau 5 — 30 structures de niveau intermédiaire supérieur (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), chacune avec explication, remarques, erreurs fréquentes, exemples audio et 7 questions (dont remise en ordre et choix du ★), chaque option expliquée.',
+      es: 'Novedad en Gramática: coreano nivel 5 — 30 estructuras de nivel intermedio alto (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), cada una con explicación, notas, errores frecuentes, ejemplos con audio y 7 preguntas (incluidas ordenar la frase y elegir la ★), con cada opción explicada.',
+      de: 'Neu auf der Grammatik-Seite: Koreanisch Stufe 5 — 30 Strukturen der oberen Mittelstufe (-기 마련이다, -는 법이다, -(으)ㄹ 바에야, -았/었더라면, N(이)야말로 …), jeweils mit Erklärung, Hinweisen, häufigen Fehlern, vertonten Beispielen und 7 Übungsfragen (auch Satzbau und ★-Auswahl), jede Option erklärt.', },
+    { date: '2026-10-17',
       zh: '網站排版大整理：上方新增「我在學」按鈕，選一次語言，單字、文法、閱讀、聽解、字母表、字典和每日一字都會照它顯示；「單字」和「檢定」合成一頁，用「主題／檢定等級」切換，原本的「檢定」位置換成「複習」（顯示該複習的張數，錯題本也在裡面）；首頁改成「今天」卡片，照順序列出今天該做的事，一個按鈕直接帶你去下一件；各頁的說明看過一次就收成 ⓘ；按鈕、字的大小和圖示也統一整理過。',
       'zh-Hans': '网站排版大整理：上方新增“我在学”按钮，选一次语言，单词、语法、阅读、听解、字母表、词典和每日一词都会按它显示；“单词”和“考级”合成一页，用“主题／考试等级”切换，原来“考级”的位置换成“复习”（显示该复习的张数，错题本也在里面）；首页改成“今天”卡片，按顺序列出今天该做的事，一个按钮直接带你去下一件；各页的说明看过一次就收成 ⓘ；按钮、文字大小和图标也统一整理过。',
       en: 'A big layout tidy-up: a new “I’m learning” button at the top — pick your language once and words, grammar, reading, listening, the alphabet, the dictionary and the word of the day all follow it; Words and Exams are one page now, with Topics / Exam levels tabs, and the Exams slot became Review (with the number of cards due, and your mistake book inside); the home page has a Today card listing what to do in order, with one button to the next step; page intros fold into an ⓘ once read; buttons, text sizes and icons are more consistent too.',
