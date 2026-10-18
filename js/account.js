@@ -107,12 +107,26 @@ const SYNC_KEYS = {
         });
         return o;
     } },
+    // the notepad (js/notes.js): each note / folder by id, the copy edited last wins (a
+    // deleted one is kept as a tombstone, so deleting syncs too); attachments stay on the device
+    notepad_notes: { empty: [], merge: notesSyncMerge },
+    notepad_categories: { empty: [], merge: notesSyncMerge },
     // plain strings: this device's choice wins, the cloud fills in a missing one
     daily_goal: { raw: true },
     last_quiz_set: { raw: true },
     // the header's 我在學 language (js/learnlang.js), so a new device opens in it
     learn_lang: { raw: true }
 };
+
+function notesSyncMerge(a, b) {
+    const m = new Map();
+    [].concat(a, b).forEach(x => {
+        if (!x || x.id == null) return;
+        const p = m.get(x.id);
+        if (!p || (Date.parse(x.updatedAt) || 0) > (Date.parse(p.updatedAt) || 0)) m.set(x.id, x);
+    });
+    return [...m.values()];
+}
 
 /* The merged localStorage string of a key, or null when neither side has it. */
 function syncMerge(key, local, cloud) {
