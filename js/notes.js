@@ -1053,6 +1053,7 @@ function notesFormat(kind) {
     }
     ta.focus();
     notesQueueSave();
+    notesHistRecord(true);
 }
 
 function notesSourceHtml(n) {
@@ -1122,7 +1123,7 @@ function notesEditorHtml(n) {
             <button type="button" class="notes-icon-btn${n.star ? ' on' : ''}" onclick="notesToggle('star')" title="${notesEsc(t('notes_f_star'))}" aria-label="${notesEsc(t('notes_f_star'))}" aria-pressed="${n.star}">${uiIcon('star')}</button>
             <button type="button" class="notes-icon-btn" onclick="notesTrash(${n.id})" title="${notesEsc(t('notes_delete'))}" aria-label="${notesEsc(t('notes_delete'))}">${uiIcon('trash')}</button>
         </div>
-        <input type="text" id="notes-ed-title" class="notes-ed-title" maxlength="80" value="${notesEsc(n.title)}" placeholder="${notesEsc(t('notes_title_ph'))}" aria-label="${notesEsc(t('notes_title_ph'))}" oninput="notesQueueSave()">
+        <input type="text" id="notes-ed-title" class="notes-ed-title" maxlength="80" value="${notesEsc(n.title)}" placeholder="${notesEsc(t('notes_title_ph'))}" aria-label="${notesEsc(t('notes_title_ph'))}" oninput="notesQueueSave(); notesHistRecord()" onkeydown="notesHistKey(event)">
         <div class="notes-ed-fields">
             <label class="notes-field">${uiIcon('folder')}<select class="notes-input" onchange="notesSetFolder(this.value)" aria-label="${notesEsc(t('notes_folders'))}">${folderOpts}</select></label>
             <label class="notes-field">${uiIcon('globe')}<select class="notes-input" onchange="notesSetLang(this.value)" aria-label="${notesEsc(t('notes_lang'))}">${langOpts}</select></label>
@@ -1131,6 +1132,9 @@ function notesEditorHtml(n) {
                 <datalist id="notes-tag-list">${tagList}</datalist></div>
         </div>
         <div class="notes-tools" role="toolbar">
+            <button type="button" class="notes-tool" id="notes-undo" onmousedown="event.preventDefault()" onclick="notesUndo()" title="${notesEsc(t('notes_undo'))}" aria-label="${notesEsc(t('notes_undo'))}" disabled>${uiIcon('uturn')}</button>
+            <button type="button" class="notes-tool" id="notes-redo" onmousedown="event.preventDefault()" onclick="notesRedo()" title="${notesEsc(t('notes_redo'))}" aria-label="${notesEsc(t('notes_redo'))}" disabled>${uiIcon('redo')}</button>
+            <span class="notes-tools-sep" aria-hidden="true"></span>
             ${tool('bold', t('notes_tool_bold'), '<b>B</b>')}
             ${tool('head', t('notes_tool_head'), '<b>H</b>')}
             ${tool('list', t('notes_tool_list'), '• ' + notesEsc(t('notes_tool_list')))}
@@ -1138,11 +1142,97 @@ function notesEditorHtml(n) {
             ${tool('card', t('notes_tool_card'), uiIcon('cards') + notesEsc(t('notes_tool_card')))}
             <label class="notes-tool" title="${notesEsc(t('notes_attach'))}" aria-label="${notesEsc(t('notes_attach'))}">${uiIcon('clip')}<input type="file" multiple onchange="handleAddAttachmentToExisting(${n.id}, this)"></label>
         </div>
-        <textarea id="notes-ed-text" class="notes-ed-text" placeholder="${notesEsc(t('notes_body_ph'))}" aria-label="${notesEsc(t('notes_body_ph'))}" oninput="notesQueueSave(); notesGrow(this)"></textarea>
+        <textarea id="notes-ed-text" class="notes-ed-text" placeholder="${notesEsc(t('notes_body_ph'))}" aria-label="${notesEsc(t('notes_body_ph'))}" oninput="notesQueueSave(); notesGrow(this); notesHistRecord()" onkeydown="notesHistKey(event)"></textarea>
         <p class="notes-ed-help">${notesEsc(t('notes_format_help'))}</p>
         ${notesSourceHtml(n)}
         <div class="notes-item-attachments" data-note-id="${n.id}"></div>
     </div>`;
+}
+
+/* ----- undo / redo (上一步 / 下一步) for the title and the text -----
+   The browser's own undo misses the formatting buttons (setRangeText) and phones have no
+   Ctrl+Z, so the editor keeps its own steps: a burst of typing is one step, a big
+   deletion and every formatting button a step of their own. Kept per note while the
+   page is open. */
+const NOTES_HIST_MAX = 200;
+const NOTES_HIST_GROUP_MS = 900;
+let notesHist = { id: null, steps: [], i: -1, at: 0 };
+
+function notesHistNow() {
+    const title = document.getElementById('notes-ed-title');
+    const ta = document.getElementById('notes-ed-text');
+    if (!title || !ta) return null;
+    return { title: title.value, text: ta.value, a: ta.selectionStart, b: ta.selectionEnd };
+}
+
+function notesHistStart(n) {
+    if (notesHist.id !== n.id) notesHist = { id: n.id, steps: [{ title: n.title, text: n.text, a: n.text.length, b: n.text.length }], i: 0, at: 0 };
+    notesHistButtons();
+}
+
+/* after a change: a new step, or (typing on within NOTES_HIST_GROUP_MS) the same one */
+function notesHistRecord(force) {
+    const now = notesHistNow();
+    if (!now || notesHist.id !== notesOpenId) return;
+    const cur = notesHist.steps[notesHist.i];
+    if (cur && cur.title === now.title && cur.text === now.text) return;
+    const prev = notesHist.steps[notesHist.i - 1];
+    const big = cur && Math.abs(cur.text.length - now.text.length) > 20;
+    const group = !force && !big && notesHist.i > 0 && notesHist.i === notesHist.steps.length - 1
+        && Date.now() - notesHist.at < NOTES_HIST_GROUP_MS && prev && !notesHist.hard;
+    notesHist.steps.length = notesHist.i + 1;          // a change after an undo drops the redo steps
+    if (group) notesHist.steps[notesHist.i] = now;
+    else {
+        notesHist.steps.push(now);
+        if (notesHist.steps.length > NOTES_HIST_MAX) notesHist.steps.shift();
+        notesHist.i = notesHist.steps.length - 1;
+    }
+    notesHist.hard = !!(force || big);                 // the next keystroke starts a new step
+    notesHist.at = Date.now();
+    notesHistButtons();
+}
+
+function notesHistApply(step) {
+    const title = document.getElementById('notes-ed-title');
+    const ta = document.getElementById('notes-ed-text');
+    if (!title || !ta || !step) return;
+    title.value = step.title;
+    ta.value = step.text;
+    notesGrow(ta);
+    ta.focus();
+    ta.setSelectionRange(Math.min(step.a, step.text.length), Math.min(step.b, step.text.length));
+    notesHist.at = 0;
+    notesHist.hard = true;
+    notesQueueSave();
+    notesHistButtons();
+}
+
+function notesUndo() {
+    if (notesHist.id !== notesOpenId || notesHist.i <= 0) return;
+    notesHistRecord();                                  // keep what was just typed, so 下一步 brings it back
+    notesHist.i--;
+    notesHistApply(notesHist.steps[notesHist.i]);
+}
+
+function notesRedo() {
+    if (notesHist.id !== notesOpenId || notesHist.i >= notesHist.steps.length - 1) return;
+    notesHist.i++;
+    notesHistApply(notesHist.steps[notesHist.i]);
+}
+
+function notesHistButtons() {
+    const u = document.getElementById('notes-undo');
+    const r = document.getElementById('notes-redo');
+    if (u) u.disabled = notesHist.i <= 0;
+    if (r) r.disabled = notesHist.i >= notesHist.steps.length - 1;
+}
+
+/* Ctrl+Z / ⌘Z, Ctrl+Y / Ctrl+Shift+Z use these steps too */
+function notesHistKey(e) {
+    if (!(e.ctrlKey || e.metaKey) || e.altKey) return;
+    const k = e.key.toLowerCase();
+    if (k === 'z' && !e.shiftKey) { e.preventDefault(); notesUndo(); }
+    else if (k === 'y' || (k === 'z' && e.shiftKey)) { e.preventDefault(); notesRedo(); }
 }
 
 function notesGrow(el) {
@@ -1188,6 +1278,7 @@ document.addEventListener('click', e => {
 function renderNotes() {
     const root = document.getElementById('notes-root');
     if (!root) return;
+    notesFlushSave();   // a redraw (switchPage's, a sync's) must not drop what was just typed
     notesPurgeTrash();
     if (notesOpenId != null && !notesLive().some(n => n.id === notesOpenId)) { notesOpenId = null; notesEditing = false; }
     const open = notesOpenId != null;
@@ -1222,6 +1313,7 @@ function notesRenderBody() {
             ta.value = n.text;
             notesGrow(ta);
             notesRenderTags();
+            notesHistStart(n);
         }
         renderNoteAttachments(n.id);
         return;

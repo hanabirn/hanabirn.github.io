@@ -80,6 +80,7 @@ const UI_ICONS = {
     cloud: 'M2.25 15a4.5 4.5 0 0 0 4.5 4.5H18a3.75 3.75 0 0 0 1.332-7.257 3 3 0 0 0-3.758-3.848 5.25 5.25 0 0 0-10.233 2.33A4.502 4.502 0 0 0 2.25 15Z',
     cards: 'M6 6.878V6a2.25 2.25 0 0 1 2.25-2.25h7.5A2.25 2.25 0 0 1 18 6v.878m-12 0c.235-.083.487-.128.75-.128h10.5c.263 0 .515.045.75.128m-12 0A2.25 2.25 0 0 0 4.5 9v.878m13.5-3A2.25 2.25 0 0 1 19.5 9v.878m0 0a2.246 2.246 0 0 0-.75-.128H5.25c-.263 0-.515.045-.75.128m15 0A2.25 2.25 0 0 1 21 12v6a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 18v-6c0-.98.626-1.813 1.5-2.122',
     uturn: 'M9 15 3 9m0 0 6-6M3 9h12a6 6 0 0 1 0 12h-3',
+    redo: 'm15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3',
     download: 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3',
     upload: 'M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5',
     grid: 'M3.75 6A2.25 2.25 0 0 1 6 3.75h2.25A2.25 2.25 0 0 1 10.5 6v2.25a2.25 2.25 0 0 1-2.25 2.25H6a2.25 2.25 0 0 1-2.25-2.25V6ZM3.75 15.75A2.25 2.25 0 0 1 6 13.5h2.25a2.25 2.25 0 0 1 2.25 2.25V18a2.25 2.25 0 0 1-2.25 2.25H6A2.25 2.25 0 0 1 3.75 18v-2.25ZM13.5 6a2.25 2.25 0 0 1 2.25-2.25H18A2.25 2.25 0 0 1 20.25 6v2.25A2.25 2.25 0 0 1 18 10.5h-2.25a2.25 2.25 0 0 1-2.25-2.25V6ZM13.5 15.75a2.25 2.25 0 0 1 2.25-2.25H18a2.25 2.25 0 0 1 2.25 2.25V18A2.25 2.25 0 0 1 18 20.25h-2.25A2.25 2.25 0 0 1 13.5 18v-2.25Z'
@@ -1777,7 +1778,7 @@ function showResults() {
     let detailHTML = `<details class="pc-details"><summary>${escHtml(t('result_each', { n: total }))}</summary><table class="result-table"><thead><tr>`;
     detailHTML += `<th>${t('result_col_question')}</th>`;
     detailHTML += `<th>${t('result_your_answer')}</th>`;
-    detailHTML += `<th>${t('result_correct_answer')}</th></tr></thead><tbody>`;
+    detailHTML += `<th>${t('result_correct_answer')}</th><th><span class="sr-only">${escHtml(t('notes_add'))}</span></th></tr></thead><tbody>`;
 
     quizHistory.forEach((h, i) => {
         const cls = h.isCorrect ? 'result-correct' : 'result-wrong';
@@ -1785,6 +1786,7 @@ function showResults() {
             <td>${i + 1}. ${escHtml(h.question)}</td>
             <td>${escHtml(h.yourAnswer)}</td>
             <td>${escHtml(h.correctAnswer)}</td>
+            <td class="result-note-cell"><button type="button" class="mb-note" onclick="resultNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('document')}</button></td>
         </tr>`;
     });
     detailHTML += '</tbody></table></details>';
@@ -1839,6 +1841,16 @@ function backToLanguage() {
         else switchPage('home', null);
         return;
     }
+}
+
+/* ＋筆記 on a result row (js/notes.js): the word into its word set's note, as a word card */
+function resultNote(i) {
+    const h = quizHistory[i];
+    if (!h || typeof notesAddWord !== 'function') return;
+    const e = h.entry;
+    if (!e) notesAddWord(currentLang, h.question, '', h.correctAnswer);
+    else if (e.group === 'reading') notesAddWord(e.lang, e.word, e.answer, e.hint);
+    else notesAddWord(e.lang, e.word, '', e.answer);
 }
 
 /* ===================== 錯題本 Mistake Notebook ===================== */
