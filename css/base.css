@@ -13,6 +13,8 @@ html {
     scrollbar-gutter: stable;
     overflow-x: hidden;
     overflow-y: auto;
+    /* an explicit colour on the root too: iOS 26's edge colouring falls back to it */
+    background: var(--paper);
 }
 
 /* No overflow-x/overflow-y here: html already clips horizontal overflow as

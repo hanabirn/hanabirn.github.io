@@ -602,3 +602,29 @@ html[data-theme="dark"] .more-quick.more-theme {
 .nav-badge[hidden] { display: none; }
 .tabbar-btn .nav-badge { position: absolute; top: 2px; left: 54%; margin: 0; }
 .main-nav .nav-btn[data-tab="review"].active .nav-badge { background: var(--on-primary); color: var(--primary); }
+
+/* Closed overlays leave the page (display: none) rather than sit invisible over it:
+   iOS 26 blurs the top edge of a home-screen app unless the fixed / sticky box covering
+   that edge has a solid background, and these full-screen, half-transparent boxes stacked
+   above the header made it blur the header row. They still fade (allow-discrete keeps
+   display until the fade ends; @starting-style gives the fade-in a start). */
+.updates-overlay:not(.show),
+.tab-settings-overlay:not(.show),
+.more-sheet-overlay:not(.show) {
+    display: none;
+}
+.updates-overlay,
+.tab-settings-overlay,
+.more-sheet-overlay {
+    transition-property: opacity, visibility, display;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-out;
+    transition-behavior: allow-discrete;
+}
+@starting-style {
+    .updates-overlay.show,
+    .tab-settings-overlay.show,
+    .more-sheet-overlay.show { opacity: 0; }
+    .tab-settings-overlay.show .tab-settings-panel { transform: scale(0.95); }
+    .more-sheet-overlay.show .more-sheet { transform: translateY(100%); }
+}
