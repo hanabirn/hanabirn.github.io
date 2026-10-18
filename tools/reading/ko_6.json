@@ -1,0 +1,552 @@
+{
+  "id": "ko_6",
+  "lang": "ko",
+  "level": "6급",
+  "order": 6,
+  "note": "TOPIK II format: practice rounds of questions 42–50 and a 50-question reading mock exam; original texts. Written with tools/.mockups/ko6_*.py + ko_sets.py, then run: python tools/build_reading.py",
+  "sets": [
+    {
+      "id": "mock1",
+      "mock": true,
+      "minutes": 70,
+      "start": 1,
+      "items": [
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "주말에 친구를 （　　） 같이 영화를 봤다.",
+          "tr": {"zh": "週末（　）朋友，一起看了電影。", "en": "At the weekend I (　　) a friend and we saw a film together."},
+          "questions": [
+            {"options": ["만나서", "만나지만", "만나려면", "만나도"], "answer": 0, "zh": "先見面、再一起看電影，前後相連的動作用「-아서」。", "en": "Meeting, then watching together — linked actions take -아서."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "오후에 비가 （　　） 우산을 챙기는 것이 좋겠다.",
+          "tr": {"zh": "下午（　）會下雨，最好帶把傘。", "en": "It (　　) rain this afternoon, so you’d better take an umbrella."},
+          "questions": [
+            {"options": ["오는 바람에", "올 테니까", "왔더니", "오다가"], "answer": 1, "zh": "推測會下雨，當作建議的理由：「-(으)ㄹ 테니까」。오는 바람에（因為…結果不好，已發生）、왔더니（發現）、오다가（…途中）都不合。", "en": "A guess used as a reason for advice takes -(으)ㄹ 테니까."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "similar",
+          "text": "아무리 바빠도 아침은 __먹는 편이다__.",
+          "tr": {"zh": "再怎麼忙，早餐__算是都會吃__。", "en": "However busy I am, I __tend to eat__ breakfast."},
+          "questions": [
+            {"options": ["먹을 뻔했다", "먹는 척한다", "대체로 먹는다", "먹을 리가 없다"], "answer": 2, "zh": "「-는 편이다」＝大致上傾向於，和「대체로 먹는다」最接近。", "en": "-는 편이다 (tend to) is closest to 대체로 (generally)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "similar",
+          "text": "수업이 끝나__자마자__ 집에 갈 거예요.",
+          "tr": {"zh": "課一__結束就__回家。", "en": "I’ll go home __as soon as__ class ends."},
+          "questions": [
+            {"options": ["끝나는 대로", "끝나다가", "끝나도록", "끝나느라고"], "answer": 0, "zh": "「-자마자」和「-는 대로」都是「一…就…」。", "en": "-자마자 and -는 대로 both mean “as soon as”."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "about",
+          "notice": {"title": "한 방울로 하루 종일 촉촉하게!", "lines": ["건조한 피부를 위한 선택"]},
+          "tr": {"zh": "一滴就能整天水潤！給乾燥肌膚的選擇", "en": "One drop for all-day moisture! The choice for dry skin"},
+          "questions": [
+            {"options": ["음료수", "세탁기", "운동화", "화장품"], "answer": 3, "zh": "「水潤」「乾燥肌膚」：是化妝品。", "en": "“Moisture”, “dry skin” — cosmetics."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "about",
+          "notice": {"title": "읽고 싶은 책을 무료로 빌려 가세요", "lines": ["열람실은 밤 10시까지 이용할 수 있습니다."]},
+          "tr": {"zh": "想看的書免費借回家。閱覽室開到晚上 10 點。", "en": "Borrow the books you want for free. The reading room is open until 10 p.m."},
+          "questions": [
+            {"options": ["서점", "도서관", "문구점", "우체국"], "answer": 1, "zh": "「免費借書」「閱覽室」：圖書館。", "en": "“Borrow for free”, “reading room” — a library."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "about",
+          "notice": {"title": "작은 불씨가 큰 산불이 됩니다", "lines": ["산에서는 절대 불을 피우지 마십시오."]},
+          "tr": {"zh": "小小的火星會變成大火。在山上絕對不要生火。", "en": "A small spark becomes a big wildfire. Never light a fire on the mountain."},
+          "questions": [
+            {"options": ["환경 보호", "등산 안내", "산불 예방", "건강 관리"], "answer": 2, "zh": "「火星變大火」「山上不要生火」：預防山火。", "en": "“Spark”, “no fires on the mountain” — wildfire prevention."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "about",
+          "notice": {"title": "이용 시간: 평일 9시 ~ 18시", "lines": ["신분증을 꼭 가지고 오십시오."]},
+          "tr": {"zh": "使用時間：平日 9 點～18 點。請帶身分證來。", "en": "Hours: weekdays 9:00–18:00. Please bring your ID card."},
+          "questions": [
+            {"options": ["이용 안내", "상품 소개", "주의 사항", "교환 방법"], "answer": 0, "zh": "說明使用時間和要帶的東西：使用說明（이용 안내）。", "en": "Opening hours and what to bring — information on use."}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "match",
+          "notice": {
+            "title": "한빛 구민 수영 교실",
+            "rows": [["기간", "3월 4일 ~ 3월 29일 (4주)"], ["시간", "매주 화·목 오전 7시 ~ 8시"], ["대상", "성인 (초급)"], ["수강료", "월 40,000원"]],
+            "foot": "※ 수영모는 꼭 써야 합니다. 신청: 구민회관 홈페이지"
+          },
+          "tr": {"zh": "韓光區民游泳班｜期間：3 月 4 日～3 月 29 日（4 週）｜時間：每週二、四 上午 7 點～8 點｜對象：成人（初級）｜學費：每月 40,000 韓元｜※ 一定要戴泳帽。報名：區民會館網站", "en": "Hanbit District Swimming Class | 4–29 March (4 weeks) | Tue & Thu 7–8 a.m. | Adults (beginners) | ₩40,000 a month | ※ Swimming caps required. Apply on the community centre website."},
+          "questions": [
+            {"options": ["수영 교실은 주말에 한다.", "초급자를 위한 수업이다.", "수영모는 쓰지 않아도 된다.", "신청은 전화로만 할 수 있다."], "answer": 1, "zh": "對象是「成人（初級）」。是週二、四，泳帽一定要戴，在網站報名。", "en": "It’s for adult beginners. Classes are Tue/Thu, caps are required, and you apply online."}
+          ]
+        },
+        {
+          "type": "chart",
+          "ask": "match",
+          "chart": {
+            "title": "직장인이 점심시간에 하는 일",
+            "unit": "%",
+            "bars": [["식사", 48], ["휴대폰 보기", 22], ["낮잠", 15], ["운동", 9], ["기타", 6]]
+          },
+          "tr": {"zh": "上班族午休時做的事：吃飯 48%、看手機 22%、午睡 15%、運動 9%、其他 6%。", "en": "What office workers do at lunchtime: eat 48%, look at their phones 22%, nap 15%, exercise 9%, other 6%."},
+          "questions": [
+            {"options": ["낮잠을 자는 사람이 운동하는 사람보다 많다.", "휴대폰을 보는 사람이 가장 많다.", "운동하는 사람이 15%이다.", "식사하는 사람은 절반이 넘는다."], "answer": 0, "zh": "午睡 15% 比運動 9% 多。最多的是吃飯；運動是 9%；吃飯 48% 沒有超過一半。", "en": "Napping (15%) beats exercise (9%). Eating is highest, but at 48% it isn’t over half."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "한빛시가 이번 달부터 공공 자전거 이용 시간을 밤 12시까지 늘렸다. 지금까지는 밤 10시가 넘으면 이용할 수 없었다. 퇴근이 늦은 직장인들의 요청이 많았기 때문이다. 이용 요금은 그대로 1시간에 1,000원이다.",
+          "tr": {"zh": "韓光市從這個月起把公共自行車的使用時間延長到晚上 12 點。之前過了晚上 10 點就不能用。因為下班晚的上班族要求很多。費用不變，一小時 1,000 韓元。", "en": "From this month Hanbit City has extended public bike hours to midnight. Until now they couldn’t be used after 10 p.m. Many late-working office staff had asked for it. The fee stays at ₩1,000 an hour."},
+          "questions": [
+            {"options": ["공공 자전거 요금이 올랐다.", "전에는 밤 12시까지 이용할 수 있었다.", "학생들의 요청으로 시간이 늘었다.", "이제 밤 11시에도 자전거를 탈 수 있다."], "answer": 3, "zh": "現在開到 12 點，所以 11 點也能騎。費用不變，以前只到 10 點，是上班族要求的。", "en": "It’s open until midnight now, so 11 p.m. is fine. The fee is unchanged, it used to end at 10, and office workers asked for it."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "지난 주말 한빛 공원에서 열린 '반려견과 함께 걷기' 행사에 500여 명이 참가했다. 참가자들은 반려견과 함께 공원을 5킬로미터 걸었다. 행사 참가비는 모두 유기견 보호소에 기부되었다. 주최 측은 내년에도 행사를 열 계획이다.",
+          "tr": {"zh": "上週末在韓光公園舉辦的「和狗狗一起走」活動，有 500 多人參加。參加者和狗狗一起在公園走了 5 公里。活動報名費全部捐給了流浪狗收容所。主辦單位打算明年也舉辦。", "en": "Some 500 people joined last weekend’s “Walk with Your Dog” event in Hanbit Park, walking 5 km with their dogs. All the entry fees were donated to a shelter for abandoned dogs. The organisers plan to hold it again next year."},
+          "questions": [
+            {"options": ["행사는 올해가 마지막이다.", "참가비는 유기견 보호소에 전달되었다.", "참가자들은 공원을 10킬로미터 걸었다.", "행사에 천 명이 넘게 참가했다."], "answer": 1, "zh": "報名費全部捐給流浪狗收容所。明年還會辦，走 5 公里，500 多人參加。", "en": "Fees went to the dog shelter. It returns next year, the walk was 5 km, and about 500 joined."}
+          ]
+        },
+        {
+          "type": "order",
+          "ask": "order",
+          "parts": ["(가) 그래서 퇴근 후 동네 화실에 다니기 시작했다.", "(나) 나는 어릴 때부터 그림 그리기를 좋아했다.", "(다) 요즘은 주말마다 그린 그림을 친구들에게 보여 준다.", "(라) 하지만 회사에 다니면서 그림을 그릴 시간이 없었다."],
+          "tr": {"zh": "(나) 我從小就喜歡畫畫。(라) 但上班之後就沒時間畫了。(가) 所以下班後開始去社區的畫室。(다) 最近每個週末都會把畫好的畫給朋友看。", "en": "(나) I’ve loved drawing since I was small. (라) But once I started work I had no time to draw. (가) So I began going to a local studio after work. (다) These days I show friends what I’ve drawn every weekend."},
+          "questions": [
+            {"options": ["(나)-(라)-(가)-(다)", "(나)-(가)-(다)-(라)", "(라)-(나)-(다)-(가)", "(라)-(가)-(나)-(다)"], "answer": 0, "zh": "喜歡畫畫（나）→ 但沒時間（라，하지만）→ 所以去畫室（가，그래서）→ 最近（다）。", "en": "Loves drawing (나) → no time (라) → so a studio (가) → these days (다)."}
+          ]
+        },
+        {
+          "type": "order",
+          "ask": "order",
+          "parts": ["(가) 그 결과 버려지는 음식이 크게 줄었다.", "(나) 한 식당은 음식을 남기는 손님이 많아 고민이었다.", "(다) 그래서 반찬의 양을 줄이고 더 먹고 싶은 사람은 직접 가져가도록 했다.", "(라) 손님들도 먹을 만큼만 가져갈 수 있어 좋다는 반응이다."],
+          "tr": {"zh": "(나) 有家餐廳因為很多客人剩菜而苦惱。(다) 於是減少小菜的份量，想多吃的人自己去拿。(가) 結果丟掉的食物大幅減少。(라) 客人也反應說能只拿吃得完的量，很好。", "en": "(나) A restaurant was troubled by how much food customers left. (다) So it served smaller side dishes and let those who wanted more help themselves. (가) As a result, much less food was thrown away. (라) Customers like being able to take only as much as they can eat."},
+          "questions": [
+            {"options": ["(다)-(나)-(가)-(라)", "(나)-(라)-(다)-(가)", "(나)-(다)-(가)-(라)", "(다)-(가)-(나)-(라)"], "answer": 2, "zh": "問題（나）→ 對策（다，그래서）→ 結果（가，그 결과）→ 客人的反應（라）。", "en": "Problem (나) → solution (다) → result (가) → customers’ reaction (라)."}
+          ]
+        },
+        {
+          "type": "order",
+          "ask": "order",
+          "parts": ["(가) 이 방법을 쓰면 단어를 훨씬 오래 기억할 수 있다.", "(나) 외국어 단어를 외울 때 소리 내어 읽는 학생은 많지 않다.", "(다) 하지만 소리 내어 읽으면 눈과 입, 귀를 함께 쓰게 된다.", "(라) 그러니 오늘부터 단어를 소리 내어 읽어 보자."],
+          "tr": {"zh": "(나) 背外語單字時，出聲唸的學生不多。(다) 但是出聲唸的話，會同時用到眼睛、嘴巴和耳朵。(가) 用這個方法，單字能記得久得多。(라) 所以從今天開始試著出聲唸單字吧。", "en": "(나) Few students read words aloud when learning vocabulary. (다) But reading aloud uses your eyes, mouth and ears together. (가) This way you remember words far longer. (라) So let’s start reading words aloud today."},
+          "questions": [
+            {"options": ["(가)-(나)-(라)-(다)", "(나)-(가)-(다)-(라)", "(가)-(다)-(나)-(라)", "(나)-(다)-(가)-(라)"], "answer": 3, "zh": "現況（나）→ 但出聲唸的好處（다，하지만）→「這個方法」（가，指 다）→ 所以（라）。", "en": "The situation (나) → but reading aloud (다) → “this way” (가) → so (라)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "고양이는 높은 곳에 올라가는 것을 좋아한다. 높은 곳에서는 주변을 한눈에 살필 수 있어 （　　）. 그래서 집에서 고양이를 키울 때는 캣타워처럼 올라갈 수 있는 공간을 만들어 주는 것이 좋다.",
+          "tr": {"zh": "貓喜歡爬到高處。在高處能把周圍一覽無遺，（　）。所以在家養貓時，最好準備像貓跳台那樣可以爬上去的空間。", "en": "Cats love climbing up high. From up there they can take in their surroundings at a glance, (　　). So if you keep a cat, it’s good to give it somewhere to climb, such as a cat tower."},
+          "questions": [
+            {"options": ["더 배가 고프기 때문이다", "쉽게 잠이 들지 못하기 때문이다", "안전하다고 느끼기 때문이다", "다른 고양이를 만날 수 있기 때문이다"], "answer": 2, "zh": "能看清周圍，所以覺得安全。", "en": "Seeing everything around makes them feel safe."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "물건을 살 때 '1+1' 행사를 보면 이득이라고 생각해 （　　） 사는 경우가 많다. 하지만 결국 쓰지 않고 버리게 되면 오히려 손해다. 필요한 물건인지 먼저 생각해 보아야 한다.",
+          "tr": {"zh": "買東西時看到「買一送一」，常會覺得划算就連（　）都買了。但最後沒用就丟掉的話，反而是虧了。應該先想想是不是需要的東西。", "en": "Seeing a “buy one, get one free” deal, people often think it’s a bargain and buy (　　). But if it ends up unused and thrown away, it’s a loss. Think first whether you need it."},
+          "questions": [
+            {"options": ["가장 싼 물건만", "필요하지 않은 물건까지", "친구와 함께", "미리 계획한 대로"], "answer": 1, "zh": "後面說「最後沒用就丟」「先想是不是需要」：所以是連「不需要的東西」都買。", "en": "“Unused and thrown away”, “think whether you need it” — they buy even things they don’t need."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "아이들은 어른들의 말보다 행동을 보고 배운다. 부모가 아이에게 책을 읽으라고 말하면서 자신은 텔레비전만 본다면 아이는 책을 가까이하지 않을 것이다. 아이가 책을 좋아하게 만들고 싶다면 （　　）.",
+          "tr": {"zh": "孩子比起大人的話，更會看大人的行為來學。父母叫孩子讀書，自己卻只看電視的話，孩子是不會親近書本的。想讓孩子喜歡書，（　）。", "en": "Children learn from what adults do more than from what they say. If parents tell a child to read but only watch TV themselves, the child won’t take to books. If you want a child to love books, (　　)."},
+          "questions": [
+            {"options": ["책을 많이 사 주어야 한다", "텔레비전을 없애야 한다", "책을 읽으면 상을 주어야 한다", "부모가 먼저 책을 읽는 모습을 보여야 한다"], "answer": 3, "zh": "孩子看行為學習，所以父母要先讓孩子看到自己讀書。", "en": "Children copy behaviour, so parents must be seen reading first."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "사람들은 흔히 잠을 줄이면 그만큼 더 많은 일을 할 수 있다고 생각한다. 하지만 잠이 부족하면 집중력과 판단력이 떨어져 일의 효율이 （　　） 낮아진다. 몇 시간 더 일하려고 잠을 줄이는 것은 결국 손해이다. 충분히 자는 것도 일을 잘하기 위한 준비라고 할 수 있다.",
+          "tr": {"zh": "人們常以為少睡一點，就能多做那麼多事。但睡眠不足會讓專注力和判斷力下降，工作效率（　）變低。為了多工作幾小時而少睡，最後是吃虧的。睡飽也可以說是把工作做好的準備。", "en": "People often think that sleeping less lets them do that much more work. But lack of sleep dulls concentration and judgement, so efficiency (　　) drops. Cutting sleep to work a few more hours is a loss in the end. Sleeping enough is part of preparing to work well."},
+          "questions": [
+            {"ask": "blank", "options": ["오히려", "과연", "차라리", "설마"], "answer": 0, "zh": "本來以為能多做事，結果「反而」效率變低：오히려。", "en": "Expected to do more, efficiency actually falls — 오히려 (on the contrary)."},
+            {"ask": "main", "options": ["잠을 줄여서 일을 더 해야 한다.", "충분한 잠이 일의 효율을 높인다.", "집중력은 잠과 관계가 없다.", "일은 밤에 하는 것이 효율적이다."], "answer": 1, "zh": "最後一句：睡飽是把工作做好的準備。", "en": "Last sentence: enough sleep prepares you to work well."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "요즘 회사들은 신입 사원에게 처음부터 완벽한 결과를 기대하는 경우가 많다. 그러나 경험이 없는 신입 사원이 처음부터 일을 잘하기는 어렵다. 선배들이 （　　） 일을 가르쳐 주고 실수를 너그럽게 봐줄 때 신입 사원은 빨리 성장할 수 있다. 신입 사원을 키우는 것은 결국 회사의 미래를 키우는 일이다.",
+          "tr": {"zh": "最近很多公司一開始就期待新進員工交出完美的成果。但沒有經驗的新人很難一開始就把工作做好。前輩們（　）教他們工作、寬容地看待失誤時，新人才能快速成長。培養新人，最終就是培養公司的未來。", "en": "Companies today often expect perfect results from new staff right away. But inexperienced newcomers can hardly do well from the start. When seniors (　　) teach them the work and are forgiving of mistakes, newcomers grow quickly. Raising new staff is, in the end, raising the company’s future."},
+          "questions": [
+            {"ask": "blank", "options": ["손을 놓고", "발을 끊고", "팔을 걷어붙이고", "눈을 감고"], "answer": 2, "zh": "「팔을 걷어붙이다」＝捲起袖子、積極去做，正是主動教新人。손을 놓다（撒手不管）、발을 끊다（斷絕往來）、눈을 감다（裝作沒看見）都不合。", "en": "팔을 걷어붙이다 = roll up your sleeves, get stuck in. The others mean give up, cut ties, turn a blind eye."},
+            {"ask": "main", "options": ["신입 사원은 처음부터 완벽해야 한다.", "선배는 신입 사원의 실수를 지적해야 한다.", "회사는 경력 사원만 뽑아야 한다.", "선배들이 신입 사원을 적극적으로 도와야 한다."], "answer": 3, "zh": "中心思想：前輩要積極教導、寬容新人，新人才能成長。", "en": "The point: seniors should actively help newcomers."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "feeling",
+          "text": "올봄, 나는 십 년 동안 다니던 회사를 그만두고 작은 꽃집을 열었다. 가족들은 안정된 직장을 왜 버리느냐며 걱정했다. 개업 첫날, 아침부터 저녁까지 손님이 한 명도 오지 않았다. 해가 질 무렵 가게 문을 닫으려는데 초등학생 한 명이 들어와 동전을 내밀며 엄마 생일 선물로 꽃 한 송이를 달라고 했다. 나는 가장 예쁜 장미를 골라 정성껏 포장해 주었다. 아이가 꽃을 품에 안고 뛰어가는 모습을 보며 __나는 이 일을 시작하길 정말 잘했다는 생각이 들었다__.",
+          "tr": {"zh": "今年春天，我辭掉做了十年的公司，開了一家小花店。家人擔心地說，為什麼要丟掉穩定的工作。開幕第一天，從早到晚一個客人也沒有。傍晚正要關店時，一個小學生走進來，遞出硬幣，說要一朵花當媽媽的生日禮物。我挑了最漂亮的玫瑰，用心包好給他。看著孩子把花抱在懷裡跑走的樣子，__我覺得開始做這件事真是做對了__。", "en": "This spring I left the company I had worked at for ten years and opened a small flower shop. My family worried, asking why I’d throw away a stable job. On opening day not a single customer came from morning to evening. As I was about to close at sunset, a primary-school child came in, held out some coins and asked for one flower for their mum’s birthday. I picked the prettiest rose and wrapped it with care. Watching the child run off hugging it, __I felt that starting this had been the right choice__."},
+          "questions": [
+            {"ask": "feeling", "options": ["뿌듯하다", "허전하다", "억울하다", "초조하다"], "answer": 0, "zh": "覺得「做對了」，是滿足又自豪：뿌듯하다。", "en": "“The right choice” — proud and fulfilled: 뿌듯하다."},
+            {"ask": "match", "options": ["가족들은 처음부터 꽃집을 응원했다.", "개업 첫날 아침부터 손님이 많았다.", "나는 회사를 그만두고 꽃집을 열었다.", "아이는 아빠에게 줄 꽃을 샀다."], "answer": 2, "zh": "第一句：辭掉公司開了花店。家人是擔心，第一天沒有客人，花是給媽媽的。", "en": "First sentence: I quit and opened a flower shop. The family worried, no one came, and the flower was for Mum."}
+          ]
+        },
+        {
+          "type": "headline",
+          "ask": "headline",
+          "text": "첫눈에 출근길 '엉금엉금', 지각 속출",
+          "tr": {"zh": "初雪讓上班路「慢慢爬」，遲到接連發生", "en": "First snow has commuters “crawling”; late arrivals pile up"},
+          "questions": [
+            {"options": ["첫눈이 와서 사람들이 일찍 출근했다.", "첫눈 때문에 길이 미끄러워 천천히 다니느라 늦은 사람이 많았다.", "출근길에 눈이 오지 않아 차가 잘 다녔다.", "첫눈을 보려고 사람들이 길에 모였다."], "answer": 1, "zh": "「엉금엉금」＝慢慢爬，「지각 속출」＝遲到的人接連出現。", "en": "“엉금엉금” = crawling; “지각 속출” = late arrivals one after another."}
+          ]
+        },
+        {
+          "type": "headline",
+          "ask": "headline",
+          "text": "전통 시장 '온라인 장보기' 인기, 매출 '쑥'",
+          "tr": {"zh": "傳統市場「線上買菜」受歡迎，營業額「猛增」", "en": "Traditional markets’ “online shopping” a hit; sales “shoot up”"},
+          "questions": [
+            {"options": ["전통 시장이 온라인으로 물건을 팔기 시작해 손님이 줄었다.", "온라인 쇼핑 때문에 전통 시장이 문을 닫았다.", "전통 시장의 온라인 장보기가 인기를 얻어 매출이 크게 늘었다.", "전통 시장 상인들이 온라인 쇼핑을 걱정한다."], "answer": 2, "zh": "「인기」受歡迎，「쑥」＝一下子增加很多。", "en": "“인기” popular, “쑥” = shot up."}
+          ]
+        },
+        {
+          "type": "headline",
+          "ask": "headline",
+          "text": "고물가에 '도시락족' 늘어, 편의점 도시락 '불티'",
+          "tr": {"zh": "物價高漲「便當族」增加，超商便當「賣到缺貨」", "en": "High prices swell the “lunchbox crowd”; convenience-store lunchboxes “fly off the shelves”"},
+          "questions": [
+            {"options": ["물가가 내려 식당에서 밥을 먹는 사람이 늘었다.", "편의점 도시락 가격이 크게 올랐다.", "도시락을 싸 오는 사람이 줄었다.", "물가가 올라 도시락을 먹는 사람이 늘어 편의점 도시락이 잘 팔린다."], "answer": 3, "zh": "「고물가」物價高，「불티(나다)」＝賣得飛快。", "en": "“고물가” high prices; “불티” = selling like hot cakes."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "사람들은 보통 왼손잡이가 오른손잡이보다 불편할 것이라고 생각한다. 실제로 가위나 문손잡이처럼 （　　） 물건이 많아서 왼손잡이들은 생활 속에서 불편을 겪는다. 최근에는 왼손잡이를 위한 물건도 판매되고 있다.",
+          "tr": {"zh": "人們通常認為左撇子會比右撇子不方便。實際上，像剪刀、門把這種（　）東西很多，所以左撇子在生活中會感到不便。最近也有賣給左撇子用的東西了。", "en": "People usually assume left-handers have a harder time than right-handers. Indeed, many things such as scissors and door handles are (　　), so left-handers face inconvenience in daily life. Products for left-handers are now on sale too."},
+          "questions": [
+            {"options": ["왼손잡이에게 맞춰 만든", "오른손잡이에게 맞춰 만든", "양손으로 써야 하는", "값이 비싼"], "answer": 1, "zh": "左撇子不方便，是因為東西多是「配合右撇子做的」。", "en": "Left-handers struggle because things are made for right-handers."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "겨울잠을 자는 동물들은 （　　） 가을에 먹이를 충분히 먹어 몸에 지방을 저장한다. 겨울잠을 자는 동안에는 체온을 낮추고 숨 쉬는 횟수도 줄여 에너지를 아낀다. 그래서 몇 달 동안 아무것도 먹지 않고도 살 수 있다.",
+          "tr": {"zh": "冬眠的動物（　），秋天會吃足食物，把脂肪存在身體裡。冬眠期間降低體溫、減少呼吸次數來節省能量。所以幾個月什麼都不吃也能活。", "en": "Hibernating animals, (　　), eat plenty in autumn and store fat in their bodies. While hibernating they lower their temperature and breathe less to save energy, so they can live for months without eating."},
+          "questions": [
+            {"options": ["먹이가 없는 겨울을 견디기 위해", "더위를 피하기 위해", "새끼를 낳기 위해", "빨리 달리기 위해"], "answer": 0, "zh": "後面說幾個月不吃也能活：是為了撐過沒有食物的冬天。", "en": "They live months without food — it’s to survive a winter with nothing to eat."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "박물관에 가면 '만지지 마시오'라는 안내문을 자주 볼 수 있다. 그런데 최근 일부 박물관에서는 시각 장애인들이 （　　） 유물을 본뜬 모형을 만들어 직접 만져 볼 수 있게 했다. 손끝으로 느끼는 경험은 눈으로 보는 것과는 또 다른 감동을 준다.",
+          "tr": {"zh": "去博物館常會看到「請勿觸摸」的告示。可是最近有些博物館做了仿文物的模型，讓視障者（　），可以親手摸摸看。用指尖感受的經驗，帶來和用眼睛看不同的感動。", "en": "Museums often have “Do not touch” signs. But lately some have made replicas of artefacts so that visually impaired visitors (　　) and can touch them directly. Feeling with your fingertips moves you in a different way from seeing."},
+          "questions": [
+            {"options": ["사진을 찍을 수 있도록", "소리를 들을 수 있도록", "손으로 느낄 수 있도록", "더 가까이에서 볼 수 있도록"], "answer": 2, "zh": "讓視障者「親手摸」、「用指尖感受」：是為了能用手感受。", "en": "“Touch them directly”, “fingertips” — so they can feel with their hands."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "blank",
+          "text": "물건을 오래 쓰는 것은 환경을 위한 좋은 습관이다. 그런데 요즘 전자 제품은 고장이 나면 （　　） 새 제품을 사는 것이 더 싼 경우가 많다. 그래서 일부 나라에서는 제조사가 부품을 일정 기간 동안 반드시 공급하도록 하는 법을 만들었다.",
+          "tr": {"zh": "東西用久一點，是對環境好的習慣。可是最近的電子產品壞了，常常（　），買新的反而比較便宜。所以有些國家立法規定，製造商在一定期間內一定要供應零件。", "en": "Using things for a long time is a good habit for the environment. But when electronics break today, (　　), so buying new is often cheaper. That’s why some countries have passed laws requiring makers to supply parts for a set period."},
+          "questions": [
+            {"options": ["디자인이 예뻐서", "사용법이 쉬워서", "크기가 작아서", "고치는 비용이 비싸서"], "answer": 3, "zh": "買新的比較便宜，是因為「修理費太貴」；後面的零件法律也是為了讓人能修。", "en": "New is cheaper because repairs cost so much — hence the spare-parts law."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "갯벌은 바닷물이 빠졌을 때 드러나는 넓은 진흙 땅이다. 갯벌에는 조개와 게 등 수많은 생물이 살고 있으며, 갯벌은 오염 물질을 걸러 바다를 깨끗하게 해 준다. 한국의 서해안 갯벌은 세계적으로도 넓고 생물이 다양해 2021년 유네스코 세계 자연 유산으로 지정되었다.",
+          "tr": {"zh": "潮間帶泥灘是海水退去時露出來的大片泥地。泥灘上住著貝類、螃蟹等無數生物，泥灘還會過濾汙染物，讓海洋變乾淨。韓國西海岸的泥灘在世界上也算廣大、生物多樣，2021 年被列為聯合國教科文組織世界自然遺產。", "en": "Tidal flats are wide stretches of mud revealed when the sea goes out. Countless creatures such as clams and crabs live there, and the flats filter pollutants, keeping the sea clean. Korea’s west-coast flats, among the world’s widest and richest in life, became UNESCO World Natural Heritage in 2021."},
+          "questions": [
+            {"options": ["갯벌은 바닷물이 들어왔을 때 보인다.", "갯벌에는 생물이 거의 살지 않는다.", "한국의 동해안 갯벌이 세계 유산이 되었다.", "갯벌은 바다를 깨끗하게 하는 역할을 한다."], "answer": 3, "zh": "「오염 물질을 걸러 바다를 깨끗하게 해 준다」：讓海洋變乾淨。是海水「退去」時看得到、生物很多、是「西」海岸。", "en": "“Filter pollutants, keeping the sea clean.” They appear when the tide goes out, teem with life, and it’s the west coast."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "세종 대왕은 백성들이 글을 몰라 억울한 일을 당하는 것을 안타깝게 여겼다. 당시에는 어려운 한자를 써야 해서 글을 배울 수 있는 사람이 적었기 때문이다. 그래서 세종은 누구나 쉽게 배울 수 있는 문자인 훈민정음을 만들어 1446년에 널리 알렸다. 오늘날 이 문자는 '한글'이라고 불린다.",
+          "tr": {"zh": "世宗大王很心疼百姓因為不識字而蒙受冤屈。因為當時必須用難懂的漢字，能學會讀寫的人很少。所以世宗創造了誰都能輕鬆學會的文字「訓民正音」，在 1446 年廣為頒布。今天這種文字被稱為「韓文」。", "en": "King Sejong grieved that ordinary people suffered injustice because they could not read or write, for at the time writing meant difficult Chinese characters and few could learn them. So he created Hunminjeongeum, a script anyone could learn easily, and proclaimed it in 1446. Today it is called Hangeul."},
+          "questions": [
+            {"options": ["세종은 한자를 더 쉽게 바꾸었다.", "훈민정음은 1446년에 널리 알려졌다.", "당시에는 대부분의 백성이 한자를 잘 알았다.", "한글은 처음부터 한글이라고 불렸다."], "answer": 1, "zh": "「1446년에 널리 알렸다」：1446 年頒布。是創造新文字，不是改漢字；當時識字的人少；「韓文」是今天的叫法。", "en": "“Proclaimed in 1446.” He made a new script, few could read then, and “Hangeul” is today’s name."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "match",
+          "text": "바다거북은 바다에서 살지만 알은 육지의 모래사장에 낳는다. 알에서 깨어난 새끼들은 달빛이 비치는 밝은 바다 쪽으로 기어간다. 그런데 해변의 가로등이나 건물 불빛 때문에 새끼들이 바다가 아닌 육지 쪽으로 가는 일이 생기고 있다. 그래서 일부 해변에서는 바다거북이 알을 낳는 시기에 불을 끄는 운동을 한다.",
+          "tr": {"zh": "海龜住在海裡，卻把蛋生在陸地的沙灘上。從蛋裡孵出來的小海龜，會朝著月光照亮的明亮海面爬去。可是因為海邊的路燈和建築燈光，小海龜有時會往陸地而不是海的方向爬。所以有些海灘在海龜產卵的時期推動關燈活動。", "en": "Sea turtles live in the sea but lay their eggs on sandy beaches. Hatchlings crawl towards the bright, moonlit sea. But streetlights and building lights on the shore are sending some hatchlings inland instead. So some beaches run lights-out campaigns during the laying season."},
+          "questions": [
+            {"options": ["불빛 때문에 새끼 바다거북이 길을 잃기도 한다.", "새끼 바다거북은 어두운 쪽으로 기어간다.", "바다거북은 알을 바닷속에 낳는다.", "해변의 불은 일 년 내내 꺼져 있다."], "answer": 0, "zh": "燈光讓小海龜往陸地爬，也就是迷路。是往「明亮」的方向、蛋生在沙灘、只在產卵期關燈。", "en": "Lights send hatchlings the wrong way. They head for brightness, eggs are laid on sand, and lights go off only in the season."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "많은 사람들이 운동을 할 시간이 없다고 말한다. 그러나 운동은 꼭 헬스장에 가야만 할 수 있는 것이 아니다. 엘리베이터 대신 계단을 이용하거나 한 정거장 먼저 내려 걷는 것도 훌륭한 운동이 된다. 생활 속에서 조금씩 몸을 움직이는 습관이 건강을 지키는 첫걸음이다.",
+          "tr": {"zh": "很多人說沒時間運動。但運動不是一定要去健身房才能做。不搭電梯改走樓梯，或提早一站下車走路，也是很好的運動。在生活中一點一點活動身體的習慣，是守護健康的第一步。", "en": "Many people say they have no time to exercise. But exercise doesn’t require a gym. Taking the stairs instead of the lift, or getting off a stop early and walking, is fine exercise. The habit of moving a little throughout daily life is the first step to staying healthy."},
+          "questions": [
+            {"options": ["운동은 헬스장에서 해야 효과가 있다.", "생활 속에서 몸을 움직이는 습관이 중요하다.", "계단은 위험하므로 이용하지 않는 것이 좋다.", "바쁜 사람은 운동을 하지 않아도 된다."], "answer": 1, "zh": "最後一句是主題：在生活中活動身體的習慣。", "en": "The final sentence: the habit of moving in daily life."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "회의 시간이 길어진다고 좋은 결론이 나오는 것은 아니다. 오히려 회의가 길어지면 참석자들이 지쳐 집중력이 떨어진다. 회의 전에 안건을 미리 공유하고 정해진 시간 안에 끝내는 것이 효율적이다. 짧고 분명한 회의가 좋은 결정을 만든다.",
+          "tr": {"zh": "會議開得久，不代表能得出好結論。反而會議一長，與會者會累、專注力下降。開會前先分享議題，在規定時間內結束比較有效率。簡短明確的會議才能做出好決定。", "en": "Longer meetings don’t produce better conclusions. If anything, attendees tire and lose focus. Sharing the agenda in advance and finishing on time is more efficient. Short, clear meetings make good decisions."},
+          "questions": [
+            {"options": ["회의는 길게 할수록 좋다.", "회의 안건은 회의 중에 정해야 한다.", "회의를 자주 해야 한다.", "회의는 짧고 분명하게 하는 것이 좋다."], "answer": 3, "zh": "最後一句：簡短明確的會議才能做出好決定。", "en": "Last sentence: short, clear meetings decide well."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "아이들은 놀이를 통해 많은 것을 배운다. 친구들과 놀면서 규칙을 지키는 법과 양보하는 법을 익히고, 스스로 문제를 해결하는 힘도 기른다. 그런데 요즘 아이들은 학원에 다니느라 놀 시간이 부족하다. 아이들의 성장을 위해 충분히 놀 수 있는 시간을 보장해 주어야 한다.",
+          "tr": {"zh": "孩子透過遊戲學到很多東西。和朋友玩的時候，學會守規則、學會讓步，也培養自己解決問題的能力。可是現在的孩子忙著上補習班，玩的時間不夠。為了孩子的成長，應該保障他們有足夠玩耍的時間。", "en": "Children learn a great deal through play. Playing with friends, they learn to follow rules and to give way, and build the ability to solve problems themselves. But today’s children are too busy with cram schools to play enough. For their growth, we must guarantee them enough time to play."},
+          "questions": [
+            {"options": ["아이들에게 놀 시간을 충분히 주어야 한다.", "아이들은 학원에서 더 많이 배운다.", "놀이는 아이들의 공부를 방해한다.", "아이들은 혼자 노는 것이 좋다."], "answer": 0, "zh": "最後一句：要保障孩子有足夠玩耍的時間。", "en": "Last sentence: guarantee children enough time to play."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "도시의 오래된 건물을 무조건 허물고 새로 짓는 것만이 발전은 아니다. 오래된 건물에는 그 도시가 지나온 시간과 사람들의 추억이 담겨 있다. 최근 낡은 공장을 고쳐 카페나 전시관으로 활용하는 사례가 늘고 있는데, 이런 곳은 독특한 분위기로 많은 사람들의 사랑을 받고 있다. 오래된 건물을 살려 새로운 가치를 만드는 방법을 고민해야 한다.",
+          "tr": {"zh": "把城市裡的老建築一律拆掉重蓋，並不是唯一的發展。老建築裡裝著那座城市走過的時光和人們的回憶。最近把舊工廠改成咖啡廳或展覽館的例子越來越多，這些地方以獨特的氛圍受到很多人喜愛。應該思考如何活用老建築，創造新的價值。", "en": "Tearing down old buildings and building new ones isn’t the only kind of progress. Old buildings hold a city’s past and people’s memories. More and more old factories are being turned into cafés or galleries, and their distinctive atmosphere is winning many fans. We should think about how to give old buildings new value."},
+          "questions": [
+            {"options": ["오래된 건물은 모두 허물어야 한다.", "낡은 공장은 카페로만 써야 한다.", "새 건물이 오래된 건물보다 인기가 많다.", "오래된 건물을 살려 새로운 가치를 만들어야 한다."], "answer": 3, "zh": "最後一句是主題：活用老建築創造新價值。", "en": "The final sentence: give old buildings new value."}
+          ]
+        },
+        {
+          "type": "insert",
+          "ask": "insert",
+          "text": "한국 사람들은 이사를 하면 이웃에게 떡을 돌리는 풍습이 있다. ( ㉠ ) 새로 이사 온 사람이 앞으로 잘 지내자는 뜻으로 인사를 하는 것이다. ( ㉡ ) 떡을 받은 이웃들은 빈 그릇을 그냥 돌려주지 않고 과일이나 반찬을 담아 보내기도 했다. ( ㉢ ) 요즘은 떡 대신 작은 선물을 하는 경우도 많지만 이웃과 정을 나누는 마음은 그대로이다. ( ㉣ )",
+          "box": "이렇게 음식을 주고받으며 이웃 사이의 정이 깊어졌다.",
+          "tr": {"zh": "韓國人搬家時有分送年糕給鄰居的習俗。（㉠）這是新搬來的人表示「以後好好相處」的問候。（㉡）收到年糕的鄰居不會把空碗直接還回去，常會裝上水果或小菜送回來。（㉢）現在也常用小禮物代替年糕，但和鄰居分享情誼的心意沒變。（㉣）〈例〉像這樣互送食物，鄰居之間的情誼就更深了。", "en": "Koreans traditionally hand out rice cakes to neighbours when they move. (㉠) It is the newcomer’s greeting, meaning “let’s get along”. (㉡) Neighbours who received them didn’t return the dish empty but sent it back with fruit or side dishes. (㉢) Today small gifts often replace rice cakes, but the wish to share warmth with neighbours is the same. (㉣) 〈보기〉 Exchanging food like this deepened the bond between neighbours."},
+          "questions": [
+            {"options": ["㉠", "㉡", "㉢", "㉣"], "answer": 2, "zh": "〈보기〉的「像這樣互送」要接在「鄰居裝水果送回來」之後，雙方都送過了：㉢。", "en": "“Exchanging food like this” needs both directions described first — after the return gift: ㉢."}
+          ]
+        },
+        {
+          "type": "insert",
+          "ask": "insert",
+          "text": "최근 걷기 여행이 인기를 끌고 있다. ( ㉠ ) 자동차나 버스로 빠르게 지나칠 때는 보이지 않던 작은 풍경들이 걸을 때는 눈에 들어온다. ( ㉡ ) 길가의 들꽃이나 시골 마을의 오래된 담장 같은 것들이다. ( ㉢ ) 또 걷기 여행은 돈이 많이 들지 않고 건강에도 좋다. ( ㉣ )",
+          "box": "걷기 여행의 가장 큰 매력은 천천히 주변을 보며 여행할 수 있다는 것이다.",
+          "tr": {"zh": "最近徒步旅行很受歡迎。（㉠）搭汽車或公車快速經過時看不到的小風景，走路時就會映入眼簾。（㉡）像是路邊的野花或鄉下村子的老圍牆。（㉢）而且徒步旅行花費不多，對健康也好。（㉣）〈例〉徒步旅行最大的魅力，是能慢慢看著周圍旅行。", "en": "Walking holidays are popular these days. (㉠) Small sights you miss speeding past by car or bus catch your eye on foot. (㉡) Things like wildflowers by the road or the old walls of a country village. (㉢) Walking trips also cost little and are good for your health. (㉣) 〈보기〉 The greatest charm of walking holidays is that you travel slowly, looking around you."},
+          "questions": [
+            {"options": ["㉠", "㉡", "㉢", "㉣"], "answer": 0, "zh": "〈보기〉說「最大的魅力是慢慢看周圍」，後面再具體說看得到的小風景；最後一句用「또」補充其他優點：㉠。", "en": "〈보기〉 names the main charm, then the sights are described, and “또” adds more later: ㉠."}
+          ]
+        },
+        {
+          "type": "insert",
+          "ask": "insert",
+          "text": "전기 자동차는 달릴 때 배기가스를 내보내지 않아 친환경 자동차로 불린다. ( ㉠ ) 하지만 전기 자동차가 정말 환경에 좋은지에 대해서는 의견이 엇갈린다. ( ㉡ ) 전기를 만드는 과정에서 석탄을 많이 사용한다면 결국 환경을 오염시키는 것이기 때문이다. ( ㉢ ) 따라서 전기 자동차가 진정한 친환경 자동차가 되려면 깨끗한 에너지로 전기를 만드는 노력이 함께 이루어져야 한다. ( ㉣ )",
+          "box": "또한 배터리를 만들 때도 많은 에너지와 자원이 필요하다.",
+          "tr": {"zh": "電動車行駛時不排放廢氣，被稱為環保車。（㉠）但對電動車是否真的對環境好，意見分歧。（㉡）因為如果發電過程大量使用煤炭，最後還是在汙染環境。（㉢）因此電動車要成為真正的環保車，必須同時努力用乾淨的能源發電。（㉣）〈例〉而且製造電池時也需要大量能源和資源。", "en": "Electric cars emit no exhaust while driving, so they are called eco-friendly. (㉠) But opinions differ on whether they’re really good for the environment. (㉡) If a lot of coal is burned to make the electricity, they pollute in the end. (㉢) So for electric cars to be truly green, efforts to generate electricity from clean energy must go with them. (㉣) 〈보기〉 Making their batteries also takes a lot of energy and resources."},
+          "questions": [
+            {"options": ["㉠", "㉡", "㉢", "㉣"], "answer": 2, "zh": "〈보기〉用「또한」補充第二個問題，要接在第一個問題（煤炭發電）之後：㉢。", "en": "“또한” adds a second problem, so it follows the first (coal): ㉢."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "feeling",
+          "text": "아버지가 고장 난 라디오를 고치는 모습은 늘 신기했다. 아버지는 퇴근 후면 작은 공구 상자를 꺼내 동네 사람들이 맡긴 물건들을 하나하나 손보았다. 돈을 받는 일도 아니었는데 아버지는 그 일을 무척 즐거워하셨다. 아버지가 돌아가신 지 삼 년이 지난 어느 날, 창고를 정리하다가 그 공구 상자를 발견했다. 상자 안에는 손때 묻은 드라이버와 함께 '우리 딸이 처음 고친 시계'라는 쪽지가 붙은 낡은 손목시계가 들어 있었다. 어릴 때 아버지 옆에서 흉내만 냈던 그 시계를 아버지는 이렇게 간직하고 계셨던 것이다. __나는 시계를 손바닥에 올려놓은 채 한참을 울었다.__",
+          "tr": {"zh": "爸爸修理壞掉收音機的樣子，總是讓我覺得很神奇。爸爸下班後就會拿出小工具箱，把鄰居託付的東西一件一件修好。那不是收錢的事，爸爸卻做得非常開心。爸爸過世三年後的某一天，我整理倉庫時發現了那個工具箱。箱子裡有沾滿手垢的螺絲起子，還有一支舊手錶，上面貼著寫有「我女兒第一次修的錶」的紙條。小時候我只是在爸爸旁邊有樣學樣地弄過那支錶，爸爸卻這樣一直珍藏著。__我把手錶放在掌心，哭了好久。__", "en": "Watching my father fix broken radios always amazed me. After work he would take out his small toolbox and mend, one by one, the things the neighbours left with him. He was never paid for it, yet he loved doing it. One day, three years after he died, I found that toolbox while clearing the shed. Inside, beside a well-worn screwdriver, was an old wristwatch with a note: “The first watch my daughter fixed.” As a child I had only pretended to fix it beside him, and he had kept it all this time. __I held the watch in my palm and cried for a long time.__"},
+          "questions": [
+            {"ask": "feeling", "options": ["부끄럽고 창피하다", "그립고 슬프다", "억울하고 화가 난다", "후련하고 시원하다"], "answer": 1, "zh": "發現過世的爸爸一直珍藏著我小時候「修」的錶，哭了很久：思念又悲傷，그립고 슬프다。", "en": "Finding that her late father kept the watch, she weeps — missing him, sad: 그립고 슬프다."},
+            {"ask": "match", "options": ["아버지는 돈을 받고 물건을 고쳐 주었다.", "아버지는 나에게 시계를 선물로 사 주었다.", "공구 상자는 아버지가 돌아가신 해에 발견했다.", "나는 창고에서 아버지의 공구 상자를 찾았다."], "answer": 3, "zh": "「창고를 정리하다가 그 공구 상자를 발견했다」：在倉庫找到。修東西不收錢，錶是我小時候「修」的，是過世三年後才發現。", "en": "“Found the toolbox while clearing the shed.” He wasn’t paid, the watch was one she “fixed”, and it was three years after his death."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "사람의 기억은 생각보다 정확하지 않다. 우리는 과거의 일을 떠올릴 때 마치 녹화된 영상을 다시 보는 것처럼 기억을 꺼낸다고 생각한다. 그러나 실제로 뇌는 기억을 떠올릴 때마다 그 내용을 새롭게 （　　）. 이 과정에서 그 뒤에 들은 이야기나 현재의 감정이 섞여 기억이 조금씩 바뀌게 된다. 그래서 같은 사건을 겪은 사람들도 서로 다르게 기억하는 일이 생긴다. 따라서 자신의 기억만을 절대적으로 믿기보다는 다른 사람의 기억과 기록을 함께 살펴볼 필요가 있다.",
+          "tr": {"zh": "人的記憶沒有想像中那麼準確。我們以為回想過去時，就像重看錄好的影片一樣把記憶拿出來。但實際上，大腦每次回想記憶時，都會把內容重新（　）。在這個過程中，後來聽到的話或現在的情緒會混進去，記憶就一點一點改變了。所以經歷同一件事的人，也會記得不一樣。因此與其絕對相信自己的記憶，不如同時參考別人的記憶和紀錄。", "en": "Human memory is less accurate than we think. We imagine that recalling the past is like replaying a recording. In fact, every time the brain recalls a memory it (　　) its content anew. In the process, things heard later and present feelings get mixed in, and the memory gradually changes. That is why people who lived through the same event remember it differently. So rather than trusting our own memory absolutely, we should also look at others’ memories and records."},
+          "questions": [
+            {"ask": "subject", "options": ["기억은 녹화된 영상처럼 정확하다.", "같은 사건은 모두 똑같이 기억된다.", "기억은 바뀔 수 있으므로 절대적으로 믿어서는 안 된다.", "감정은 기억에 영향을 주지 않는다."], "answer": 2, "zh": "記憶會改變，最後一句「따라서」：不要絕對相信自己的記憶。", "en": "Memory changes, so (따라서) don’t trust it absolutely."},
+            {"ask": "blank", "options": ["지워 버린다", "다시 만들어 낸다", "그대로 보관한다", "다른 사람에게 전한다"], "answer": 1, "zh": "「그러나」否定了「像重看錄影」，下一句說會混進別的東西而改變：每次都是「重新建構」。", "en": "“그러나” rejects the replay idea, and the next line says things get mixed in — it rebuilds the memory."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "attitude",
+          "text": "최근 농촌에서는 일할 사람이 부족해 농사를 포기하는 경우가 늘고 있다. 농민의 절반 이상이 65세가 넘었고 젊은 사람들은 도시로 떠나고 있기 때문이다. 이에 정부는 농촌으로 오는 청년들에게 몇 년 동안 정착 지원금을 주는 정책을 시행하고 있다. 이러한 정책은 분명 의미가 있지만 지원금만으로 청년들을 농촌에 머물게 하기는 어렵다. 청년들이 농촌을 떠나는 이유는 돈 때문만이 아니라 병원, 학교, 문화 시설 같은 생활 기반이 부족하기 때문이다. 지원금을 주는 데서 그치지 말고 청년들이 농촌에서 계속 살고 싶어 하도록 생활 환경을 함께 개선해야 한다.",
+          "tr": {"zh": "最近農村因為缺乏人手而放棄耕作的情況越來越多。因為農民有一半以上超過 65 歲，年輕人又往城市去。對此，政府實施了給到農村來的青年幾年定居補助金的政策。這種政策確實有意義，但光靠補助金很難讓青年留在農村。青年離開農村的原因不只是錢，還因為缺乏醫院、學校、文化設施這些生活基礎。不能只停在發補助金，還要一起改善生活環境，讓青年想一直住在農村。", "en": "More and more farms are being abandoned for lack of workers, since over half of farmers are past 65 and young people are leaving for the cities. In response, the government gives young people who move to the countryside a settlement grant for several years. The policy certainly has merit, but grants alone can hardly keep young people there. They leave not just for money but because basic services such as hospitals, schools and cultural facilities are lacking. Rather than stopping at grants, we must also improve living conditions so that young people want to stay."},
+          "questions": [
+            {"ask": "attitude", "options": ["정부의 정책이 아무 의미가 없다고 비판하고 있다.", "지원금을 더 늘려야 한다고 요구하고 있다.", "청년들이 도시로 가는 것을 당연하게 여기고 있다.", "지원금과 함께 생활 환경 개선이 필요하다고 주장하고 있다."], "answer": 3, "zh": "承認政策「有意義」，但主張不能只發補助金，還要改善生活環境。", "en": "It grants the policy merit but argues living conditions must improve too."},
+            {"ask": "match", "options": ["농민의 절반 이상이 65세가 넘었다.", "청년들은 돈 때문에만 농촌을 떠난다.", "정부는 농촌 청년에게 지원금을 주지 않는다.", "농촌에는 병원과 학교가 충분하다."], "answer": 0, "zh": "第二句：農民一半以上超過 65 歲。離開不只是為了錢，政府有發補助金，醫院學校是不足的。", "en": "Second sentence: over half are past 65. It isn’t only money, grants exist, and services are lacking."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "purpose",
+          "text": "자율 주행 자동차가 도로를 달리는 날이 머지않았다. 사람이 운전하지 않아도 되니 운전이 어려운 노인이나 장애인의 이동이 편리해지고, 졸음운전 같은 사람의 실수로 인한 사고도 줄어들 것으로 기대된다. 그러나 기술의 발전 속도에 비해 （　　）. 예를 들어 자율 주행 자동차가 사고를 냈을 때 그 책임이 차에 탄 사람에게 있는지, 자동차 회사에 있는지, 아니면 프로그램을 만든 회사에 있는지에 대한 기준이 아직 분명하지 않다. 일부에서는 __기술만 완벽하면 사고는 일어나지 않을 것이므로 법은 나중에 만들어도 된다고 말하지만__, 어떤 기술도 사고의 가능성을 완전히 없앨 수는 없다. 기준이 없는 상태에서 사고가 나면 피해자는 보상을 받기까지 오랜 시간을 기다려야 할 것이다. 자율 주행 시대를 안전하게 맞이하려면 기술 개발과 함께 책임과 보상에 관한 제도를 서둘러 마련해야 한다.",
+          "tr": {"zh": "自動駕駛車上路的日子不遠了。不用人開車，開車困難的老人和身障者移動會變方便，打瞌睡駕駛這類人為失誤造成的事故也可望減少。然而和技術發展的速度相比，（　）。例如自動駕駛車出事時，責任是在車上的人、汽車公司，還是寫程式的公司，至今還沒有明確的標準。有些人__說只要技術完美就不會出事，所以法律以後再訂也可以__，但沒有任何技術能完全消除事故的可能。在沒有標準的情況下出事，受害者恐怕要等很久才能得到賠償。想要安全地迎接自動駕駛時代，就必須在開發技術的同時，盡快建立關於責任和賠償的制度。", "en": "The day self-driving cars take to the roads is not far off. With no need for a human driver, getting around will be easier for older and disabled people who struggle to drive, and accidents caused by human error such as drowsy driving are expected to fall. Yet compared with how fast the technology is advancing, (　　). For instance, there is still no clear standard for who is responsible when a self-driving car causes an accident — the person inside, the car maker, or the company that wrote the software. Some __say that if the technology is perfect there will be no accidents, so the law can come later__, but no technology can remove the possibility of accidents entirely. If an accident happens with no standard in place, victims may wait a long time for compensation. To enter the self-driving age safely, rules on responsibility and compensation must be drawn up quickly, alongside the technology."},
+          "questions": [
+            {"ask": "purpose", "options": ["자율 주행 자동차의 장점을 홍보하려고", "자율 주행 자동차 사고에 대한 제도 마련을 촉구하려고", "자동차 회사의 책임을 면제하자고 주장하려고", "자율 주행 기술의 원리를 설명하려고"], "answer": 1, "zh": "最後一句：要盡快建立責任和賠償的制度——寫作目的是呼籲建立制度。", "en": "The final sentence urges rules on responsibility and compensation."},
+            {"ask": "blank", "options": ["관련 법과 제도의 준비는 늦어지고 있다", "자동차의 가격이 너무 빨리 내려가고 있다", "운전하려는 사람이 늘어나고 있다", "사고가 더 자주 일어나고 있다"], "answer": 0, "zh": "「그러나……에 비해」，下一句舉例「責任標準還不明確」：法律和制度的準備落後了。", "en": "After the contrast, the example (no clear standard for blame) shows the law is lagging."},
+            {"ask": "attitude", "options": ["그 주장에 동의하고 있다.", "그 주장을 새로운 시각으로 소개하고 있다.", "그 주장에 대해 판단을 미루고 있다.", "그 주장이 지나치게 낙관적이라고 반박하고 있다."], "answer": 3, "zh": "「……라고 말하지만, 어떤 기술도 사고의 가능성을 완전히 없앨 수는 없다」：反駁這種說法太樂觀。", "en": "“They say … but no technology can remove all risk” — rebutting it as over-optimistic."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "text",
+          "ask": "feeling",
+          "text": "어머니가 시골집을 팔기로 했다는 소식을 들은 것은 지난봄이었다. 나는 서둘러 내려갔지만 집은 이미 반쯤 비어 있었다. 마당의 감나무만이 예전처럼 그 자리에 서 있었다. 어릴 적 나는 저 나무에 올라가 감을 따다가 떨어져 팔이 부러진 적이 있었다. 그때 어머니는 나를 업고 십 리 길을 걸어 읍내 병원까지 가셨다. \"이 나무는 두고 가야지. 나무까지 데려갈 수는 없잖니.\" 어머니는 아무렇지 않은 듯 웃으셨지만 감나무를 쓰다듬는 손끝이 가늘게 떨리고 있었다. __나는 아무 말도 하지 못하고 어머니의 뒷모습만 바라보았다.__ 그날 밤 우리는 마루에 나란히 앉아 오래도록 감나무를 올려다보았다.",
+          "tr": {"zh": "聽到媽媽決定賣掉鄉下老家的消息，是去年春天的事。我急忙趕回去，但房子已經空了一半。只有院子裡的柿子樹還像從前一樣站在那裡。小時候我曾經爬上那棵樹摘柿子，摔下來把手臂摔斷了。那時媽媽背著我走了十里路，一路走到鎮上的醫院。「這棵樹只能留下了。總不能連樹也帶走吧。」媽媽像沒事一樣笑著，可是撫摸柿子樹的指尖卻微微發抖。__我什麼話也說不出口，只是望著媽媽的背影。__那天晚上，我們並肩坐在簷廊上，久久地抬頭望著柿子樹。", "en": "It was last spring that I heard my mother had decided to sell the country house. I hurried down, but the house was already half empty. Only the persimmon tree in the yard still stood where it always had. As a child I once climbed it to pick persimmons, fell and broke my arm. My mother carried me on her back for miles to the hospital in town. “The tree will have to stay. We can’t take the tree with us, can we?” She smiled as if it were nothing, but her fingertips trembled as she stroked the trunk. __I couldn’t say a word; I only watched her from behind.__ That night we sat side by side on the wooden porch and looked up at the tree for a long time."},
+          "questions": [
+            {"ask": "feeling", "options": ["홀가분하다", "억울하다", "안타깝고 먹먹하다", "설레다"], "answer": 2, "zh": "媽媽假裝沒事，手卻在發抖；我說不出話，只能看著她——是心疼又說不出口的難過：안타깝고 먹먹하다。", "en": "She pretends it’s nothing but her hand trembles, and I’m speechless — aching sadness: 안타깝고 먹먹하다."},
+            {"ask": "match", "options": ["어머니는 감나무를 새집으로 옮겼다.", "나는 어릴 때 감나무에서 떨어져 다친 적이 있다.", "내가 도착했을 때 집은 아직 그대로였다.", "어머니는 나를 차에 태워 병원에 데려갔다."], "answer": 1, "zh": "「떨어져 팔이 부러진 적이 있었다」：小時候從樹上摔下來受傷。樹要留下，到的時候家已經空了一半，媽媽是背我走去醫院。", "en": "“떨어져 팔이 부러진 적이 있었다” — I fell and was hurt. The tree stays, the house was half empty, and she carried me on foot."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "꿀벌은 꿀을 만드는 곤충으로만 알려져 있지만 실제로는 인류의 식량 생산에 훨씬 더 큰 역할을 한다. 꿀벌은 꽃가루를 옮겨 식물이 열매를 맺도록 돕는데, 우리가 먹는 농작물의 상당수가 이러한 꽃가루받이에 의존하고 있다. 그런데 최근 들어 전 세계적으로 꿀벌의 수가 급격히 줄고 있다. 농약 사용과 기후 변화, 서식지 파괴 등이 그 원인으로 꼽힌다. 꿀벌이 사라지면 과일과 채소의 생산량이 크게 줄어 （　　）. 따라서 꿀벌을 보호하는 일은 단순히 한 곤충을 지키는 것이 아니라 우리의 밥상을 지키는 일이라고 할 수 있다.",
+          "tr": {"zh": "蜜蜂只被當成會釀蜜的昆蟲，但實際上它在人類的糧食生產中扮演更重要的角色。蜜蜂搬運花粉，幫助植物結果，我們吃的農作物有很多都依賴這種授粉。可是最近全世界的蜜蜂數量急遽減少，原因包括農藥的使用、氣候變遷和棲地破壞等。蜜蜂一旦消失，水果和蔬菜的產量會大幅減少，（　）。因此，保護蜜蜂不只是守護一種昆蟲，也可以說是守護我們的餐桌。", "en": "Bees are known only as honey-makers, but they play a far greater part in feeding humanity. They carry pollen so plants can bear fruit, and much of what we eat depends on this pollination. Yet bee numbers are falling sharply worldwide, blamed on pesticides, climate change and habitat loss. If bees disappear, fruit and vegetable harvests will drop sharply and (　　). Protecting bees, then, isn’t just protecting one insect — it’s protecting our dinner table."},
+          "questions": [
+            {"ask": "subject", "options": ["꿀벌은 꿀을 만드는 유일한 곤충이다.", "농약은 농작물 생산에 꼭 필요하다.", "기후 변화의 원인을 밝혀야 한다.", "꿀벌을 보호하는 것은 식량을 지키는 일이다."], "answer": 3, "zh": "最後一句「따라서……」是主題：保護蜜蜂就是守護餐桌（糧食）。", "en": "The closing “따라서”: protecting bees protects our food."},
+            {"ask": "blank", "options": ["식량 위기로 이어질 수 있다", "꿀의 가격이 내려갈 것이다", "농약 사용이 늘어날 것이다", "새로운 곤충이 나타날 것이다"], "answer": 0, "zh": "產量大減的結果，接下一句「守護餐桌」：會導致糧食危機。", "en": "Falling harvests, then “our dinner table” — it could lead to a food crisis."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "attitude",
+          "text": "최근 인공지능 번역기의 성능이 크게 좋아지면서 외국어를 배울 필요가 없다는 주장이 나오고 있다. 실제로 간단한 여행 회화나 업무용 이메일 정도는 번역기만으로도 충분히 해결할 수 있다. 하지만 이러한 주장은 언어를 단순한 정보 전달의 도구로만 보는 데서 비롯된 것이다. 언어에는 그 사회의 역사와 사고방식이 담겨 있어서 외국어를 배우는 과정은 곧 다른 문화를 이해하는 과정이기도 하다. 또한 번역기는 말투에 담긴 미묘한 감정이나 농담을 제대로 옮기지 못하는 경우가 많다. 기술이 아무리 발전하더라도 사람과 사람 사이의 깊은 소통을 기계에 모두 맡길 수는 없다. 외국어 교육은 오히려 지금보다 더 중요해질 것이다.",
+          "tr": {"zh": "最近 AI 翻譯機的性能大幅提升，於是出現了「不必再學外語」的主張。實際上，簡單的旅行會話或工作用的電子郵件，光靠翻譯機就能解決。但這種主張是只把語言看成傳遞資訊的工具。語言裡蘊含著那個社會的歷史和思考方式，所以學外語的過程，也就是理解另一種文化的過程。而且翻譯機常常無法準確傳達語氣中微妙的情感或玩笑。不管技術多進步，人與人之間深刻的溝通都不能全交給機器。外語教育反而會比現在更重要。", "en": "As AI translators improve, some argue there’s no need to learn foreign languages. Indeed, simple travel talk or work emails can be handled by a translator alone. But this view treats language merely as a tool for passing on information. A language carries its society’s history and ways of thinking, so learning one is also learning to understand another culture. Translators also often fail to carry the subtle feeling in a tone of voice, or a joke. However far technology advances, deep communication between people can’t be left entirely to machines. Language education will, if anything, matter more than now."},
+          "questions": [
+            {"ask": "attitude", "options": ["번역기의 발전을 기대하고 있다.", "외국어 학습이 필요 없다는 주장에 반대하고 있다.", "번역기 사용을 금지해야 한다고 주장하고 있다.", "외국어 교육의 효과를 의심하고 있다."], "answer": 1, "zh": "「하지만 이러한 주장은……」之後一路反駁，結論是外語教育更重要：反對「不必學外語」。", "en": "After “하지만” the writer rebuts the claim and ends that language education matters more — opposing it."},
+            {"ask": "match", "options": ["번역기는 감정이나 농담을 잘 옮긴다.", "간단한 이메일은 번역기로 해결하기 어렵다.", "외국어를 배우는 것은 다른 문화를 이해하는 과정이다.", "필자는 외국어 교육이 덜 중요해질 것이라고 본다."], "answer": 2, "zh": "第四句：學外語就是理解另一種文化的過程。翻譯機傳達不好情感和玩笑，簡單郵件可以解決，作者認為外語教育更重要。", "en": "Fourth sentence: learning a language is understanding another culture. The others contradict the text."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "purpose",
+          "text": "전국 곳곳에서 열리는 지역 축제의 수가 해마다 늘고 있다. 지역 축제는 지역 경제를 살리고 주민들의 자부심을 높인다는 점에서 의미가 있다. 그러나 늘어난 숫자에 비해 축제의 내용은 （　　）. 어느 축제에 가든 비슷한 먹거리 장터와 유명 가수의 공연, 기념품 판매대가 자리를 차지하고 있다. 이렇다 보니 관광객들은 한 번 방문한 뒤 다시 찾지 않고, 축제에 들인 예산에 비해 효과는 미미한 경우가 많다. 일부 지방 자치 단체는 방문객 수를 늘리는 데만 몰두한 나머지 __지역의 고유한 역사와 문화를 축제의 들러리로 만들어 버렸다__. 축제가 오래 사랑받으려면 그 지역에서만 경험할 수 있는 이야기를 담아야 한다. 주민들이 직접 기획에 참여하고 지역의 전통을 살린 프로그램을 개발할 때 축제는 비로소 지역의 얼굴이 될 수 있을 것이다.",
+          "tr": {"zh": "全國各地舉辦的地方慶典數量年年增加。地方慶典能振興地方經濟、提高居民的自豪感，這點是有意義的。然而和增加的數量相比，慶典的內容（　）。不管去哪個慶典，都是類似的小吃市集、知名歌手的演出和紀念品攤位。結果遊客去過一次就不再來，和投入的預算相比，效果往往微乎其微。有些地方政府一心只想增加遊客人數，結果__把當地獨有的歷史和文化變成了慶典的陪襯__。慶典要長久受到喜愛，就必須包含只有在那個地方才能體驗的故事。當居民親自參與企劃、開發出活用當地傳統的節目時，慶典才能真正成為地方的門面。", "en": "The number of local festivals across the country grows every year. They matter because they revive local economies and raise residents’ pride. But for all their number, their content is (　　). Wherever you go there are the same food stalls, a famous singer’s concert and souvenir stands. So visitors come once and never return, and the effect is often slight for the money spent. Some local governments, fixed only on visitor numbers, __have turned their own history and culture into a mere backdrop to the festival__. To be loved for long, a festival must tell stories you can only experience in that place. Only when residents help plan it and develop programmes that bring local traditions to life can a festival truly become the face of its region."},
+          "questions": [
+            {"ask": "purpose", "options": ["지역 축제가 나아가야 할 방향을 제시하려고", "지역 축제의 경제적 효과를 소개하려고", "유명 가수의 공연을 늘릴 것을 요구하려고", "축제 예산을 줄여야 한다고 주장하려고"], "answer": 0, "zh": "先指出問題（千篇一律），最後提出「要包含當地才有的故事、讓居民參與」：是為了提出慶典該走的方向。", "en": "It names the problem (sameness) and ends with what festivals should do — showing the way forward."},
+            {"ask": "blank", "options": ["점점 다양해지고 있다", "지역마다 뚜렷한 특색을 보인다", "대부분 비슷비슷하다", "해마다 새롭게 바뀐다"], "answer": 2, "zh": "「그러나……에 비해」轉折，下一句說「不管去哪個慶典都差不多」：大多大同小異。", "en": "After the contrast, the next sentence says every festival has the same things — they’re all alike."},
+            {"ask": "attitude", "options": ["지방 자치 단체의 노력을 높이 평가하고 있다.", "방문객 수가 늘어난 것을 반기고 있다.", "축제의 전통적인 내용을 걱정 없이 받아들이고 있다.", "지역 고유의 문화가 소외된 것을 비판하고 있다."], "answer": 3, "zh": "「들러리로 만들어 버렸다」（淪為陪襯，還用了帶遺憾語氣的 -아 버리다）：批評當地文化被冷落。", "en": "“들러리로 만들어 버렸다” (reduced to a backdrop, with regretful -아 버리다) — criticising the neglect of local culture."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "text",
+          "ask": "feeling",
+          "text": "퇴근길에 우편함을 열어 보니 낯선 이름이 적힌 편지 한 통이 들어 있었다. 보낸 사람은 이십 년 전 내가 처음 담임을 맡았던 반의 학생이었다. 그 아이는 늘 교실 맨 뒷자리에 앉아 창밖만 바라보던 조용한 아이였다. 나는 그 아이에게 무슨 말을 해 주어야 할지 몰라 공책 끝에 짧은 글을 몇 번 적어 준 것이 전부였다. 편지에는 그 몇 줄의 글이 힘들 때마다 자신을 붙잡아 주었고, 이제 자신도 아이들을 가르치는 교사가 되었다고 쓰여 있었다. 편지를 다 읽고 나서도 __나는 한참 동안 그 자리에서 움직이지 못했다.__ 내가 잊고 지낸 작은 일이 누군가의 인생을 바꾸어 놓았다는 사실이 믿기지 않았다.",
+          "tr": {"zh": "下班路上打開信箱，裡面有一封寫著陌生名字的信。寄信的人是二十年前我第一次當班導師時班上的學生。那孩子總是坐在教室最後面，只望著窗外，是個安靜的孩子。我不知道該對他說什麼，只在他的筆記本最後寫過幾次短短的話，就只有這樣。信上寫著，每當他難受的時候，那幾行字就撐住了他，現在他自己也成了教孩子的老師。讀完信之後，__我在原地好久都動不了。__我一直忘了的一件小事，竟然改變了某個人的人生，我簡直不敢相信。", "en": "On my way home from work I opened the mailbox and found a letter with an unfamiliar name. It was from a pupil in the first class I ever had as a form teacher, twenty years ago — a quiet child who always sat at the back staring out of the window. Not knowing what to say, all I had done was write a few short lines at the end of the child’s notebook now and then. The letter said those lines had held the writer up through every hard time, and that the writer was now a teacher too. Even after I finished reading, __I couldn’t move from the spot for a long while.__ I could hardly believe that a small thing I had forgotten had changed someone’s life."},
+          "questions": [
+            {"ask": "feeling", "options": ["감격스럽다", "후회스럽다", "불안하다", "귀찮다"], "answer": 0, "zh": "忘掉的小事改變了學生的人生，感動得動不了：감격스럽다。", "en": "A forgotten kindness changed a life — deeply moved: 감격스럽다."},
+            {"ask": "match", "options": ["그 학생은 반에서 가장 활발한 아이였다.", "나는 그 학생에게 공책에 짧은 글을 써 주었다.", "편지는 나와 친한 동료가 보낸 것이다.", "그 학생은 지금 의사가 되었다."], "answer": 1, "zh": "「공책 끝에 짧은 글을 몇 번 적어 준 것」：在筆記本上寫過短短的話。學生很安靜，信是學生寄的，現在是老師。", "en": "“공책 끝에 짧은 글을 몇 번 적어 준 것” — I wrote short notes in the notebook. The pupil was quiet, wrote the letter, and is now a teacher."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "인터넷 서비스들은 사용자가 무엇을 클릭하고 얼마나 오래 보았는지를 분석해 좋아할 만한 콘텐츠를 골라 보여 준다. 이런 추천 기능 덕분에 사람들은 원하는 정보를 빠르게 찾을 수 있게 되었다. 하지만 비슷한 내용만 계속 접하게 되면서 자신과 다른 의견을 만날 기회는 줄어들고 있다. 이처럼 사용자가 자신이 보고 싶은 정보에만 둘러싸이는 현상을 '필터 버블'이라고 한다. 필터 버블 속에 있는 사람은 자신의 생각이 （　　） 착각하기 쉽고, 이는 사회 갈등을 키우는 원인이 되기도 한다. 그러므로 추천된 정보만 받아들이기보다 다양한 관점의 정보를 스스로 찾아보려는 노력이 필요하다.",
+          "tr": {"zh": "網路服務會分析使用者點了什麼、看了多久，挑出他可能喜歡的內容給他看。多虧這種推薦功能，人們能很快找到想要的資訊。但一直只接觸類似的內容，遇到和自己不同意見的機會就越來越少。像這樣使用者只被自己想看的資訊包圍的現象，叫做「過濾氣泡」。在過濾氣泡裡的人，很容易誤以為自己的想法（　），這也會成為加深社會衝突的原因。所以與其只接受被推薦的資訊，更需要努力自己去找各種觀點的資訊。", "en": "Online services analyse what users click and how long they watch, then pick content they’re likely to enjoy. Thanks to these recommendations people find what they want quickly. But seeing only similar content, they meet fewer opinions unlike their own. This state of being surrounded only by what you want to see is called a “filter bubble”. People inside one easily mistake their own view for (　　), which can deepen social conflict. So rather than taking in only what is recommended, we need to make the effort to seek out information from many viewpoints."},
+          "questions": [
+            {"ask": "subject", "options": ["추천 기능은 정보 검색을 느리게 만든다.", "인터넷 서비스는 사용자 정보를 분석하면 안 된다.", "사회 갈등은 인터넷 때문에 생긴다.", "다양한 관점의 정보를 스스로 찾아보아야 한다."], "answer": 3, "zh": "最後一句「그러므로……」是主題：要自己去找各種觀點的資訊。", "en": "The closing “그러므로”: seek out many viewpoints yourself."},
+            {"ask": "blank", "options": ["틀렸다고", "자주 바뀐다고", "모든 사람의 생각과 같다고", "아무 의미가 없다고"], "answer": 2, "zh": "只看到和自己相同的意見，就會誤以為「大家都這麼想」：모든 사람의 생각과 같다고。", "en": "Seeing only agreeing views, you assume everyone thinks the same."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "attitude",
+          "text": "최근 어린이의 스마트폰 사용을 법으로 제한해야 한다는 목소리가 높아지고 있다. 스마트폰을 오래 사용하는 아이들이 집중력이 떨어지고 수면 시간이 줄어든다는 연구 결과가 잇따라 발표되었기 때문이다. 아이들의 건강을 걱정하는 마음은 충분히 이해할 만하다. 그러나 무조건 금지하는 방식은 근본적인 해결책이 되기 어렵다. 금지된 것일수록 더 하고 싶어지는 것이 사람의 마음이고, 아이들은 결국 어른들의 눈을 피해 스마트폰을 사용하게 될 것이다. 게다가 스마트폰은 이제 학습과 소통에 없어서는 안 될 도구가 되었다. 중요한 것은 사용 자체를 막는 것이 아니라 아이들이 스스로 사용 시간을 조절하는 힘을 기르도록 돕는 일이다. 이를 위해서는 가정과 학교가 함께 올바른 사용 습관을 가르쳐야 한다.",
+          "tr": {"zh": "最近要求用法律限制兒童使用智慧型手機的聲音越來越大，因為接連有研究發現，長時間用手機的孩子專注力下降、睡眠時間減少。擔心孩子健康的心情完全可以理解。但一律禁止的方式很難成為根本的解決辦法。越是被禁止的東西越想做，這是人之常情，孩子最後會躲著大人偷用手機。而且手機現在已經是學習和溝通不可缺少的工具。重要的不是阻止使用本身，而是幫助孩子培養自己控制使用時間的能力。為此，家庭和學校要一起教導正確的使用習慣。", "en": "Calls to limit children’s smartphone use by law are growing, after a string of studies found that children who use phones for long periods concentrate less and sleep less. The worry for children’s health is easy to understand. But a blanket ban is unlikely to solve the problem at its root. People want most what is forbidden, and children would end up using phones out of adults’ sight. Besides, smartphones are now indispensable for learning and communication. What matters is not stopping use itself but helping children build the ability to control their own screen time. For that, families and schools must teach good habits together."},
+          "questions": [
+            {"ask": "attitude", "options": ["스마트폰 사용을 법으로 금지하는 데 찬성하고 있다.", "아이들의 건강 문제를 대수롭지 않게 여기고 있다.", "무조건적인 금지보다 스스로 조절하는 교육을 강조하고 있다.", "스마트폰이 학습에 도움이 안 된다고 보고 있다."], "answer": 2, "zh": "「중요한 것은……스스로……조절하는 힘을 기르도록 돕는 일」：強調比起禁止，更要教孩子自己控制。", "en": "“중요한 것은 … 스스로 조절하는 힘” — the writer stresses self-control over a ban."},
+            {"ask": "match", "options": ["스마트폰을 오래 쓰면 수면 시간이 늘어난다.", "필자는 아이들의 건강을 걱정하는 마음을 이해한다.", "금지하면 아이들은 스마트폰을 쓰지 않게 된다.", "스마트폰 교육은 학교에서만 해야 한다."], "answer": 1, "zh": "「걱정하는 마음은 충분히 이해할 만하다」：作者能理解。睡眠時間是減少，禁止了也會偷用，要家庭和學校一起教。", "en": "“충분히 이해할 만하다” — the writer understands the worry. Sleep falls, children would use phones secretly, and homes and schools both teach."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "purpose",
+          "text": "오래된 문화재가 훼손되면 이를 원래 모습으로 되돌리기 위한 복원 작업이 이루어진다. 그런데 최근 일부 복원 현장에서 공사 기간을 줄이기 위해 전통 재료 대신 값싼 현대식 재료를 쓰거나, 고증이 충분하지 않은 상태에서 서둘러 공사를 마치는 일이 벌어지고 있다. 이렇게 복원된 문화재는 겉모습은 그럴듯해도 （　　）. 문화재의 가치는 그것이 지나온 시간과 그 시대 사람들의 솜씨에 있기 때문이다. 관계 기관은 관람객을 빨리 맞이해야 한다는 이유로 __복원 일정을 앞당기는 것이 당연하다는 듯이 말하지만__, 한번 잘못 복원된 문화재는 되돌리기가 매우 어렵다. 따라서 복원에 앞서 충분한 조사와 연구가 이루어져야 하며, 전통 기술을 가진 장인을 길러 내는 일에도 투자가 필요하다. 문화재 복원은 빨리 끝내는 것보다 제대로 하는 것이 중요하다.",
+          "tr": {"zh": "古老的文化資產受損後，會進行修復，讓它回到原本的樣子。可是最近有些修復現場為了縮短工期，用便宜的現代材料代替傳統材料，或是在考證不夠充分的情況下匆忙完工。這樣修復的文化資產，外表看起來像樣，（　）。因為文化資產的價值，在於它走過的歲月和那個時代人們的手藝。相關機關以要早點迎接參觀者為理由，__說得好像提前修復時程是理所當然的__，但一旦修復錯了，文化資產就很難再恢復。因此修復之前必須做充分的調查和研究，也需要投資培養擁有傳統技術的匠人。文化資產的修復，做對比做得快更重要。", "en": "When an old heritage site is damaged, it is restored to its original state. Lately, though, some restorations have used cheap modern materials instead of traditional ones to save time, or rushed to finish without enough historical research. Heritage restored like this may look convincing, but (　　), because a heritage site’s value lies in the time it has passed through and the craft of the people of its age. The authorities, saying visitors must be welcomed soon, __talk as if bringing the schedule forward were only natural__, yet a site once wrongly restored is very hard to put right. So thorough research must come before restoration, and money must also go into training craftspeople with traditional skills. In restoration, doing it right matters more than doing it fast."},
+          "questions": [
+            {"ask": "purpose", "options": ["문화재 관람 방법을 안내하려고", "현대식 재료의 장점을 알리려고", "올바른 문화재 복원의 조건을 강조하려고", "복원 공사를 빨리 끝낼 것을 요구하려고"], "answer": 2, "zh": "指出草率修復的問題，再提出「充分調查、培養匠人、做對比做快重要」：強調正確修復的條件。", "en": "It criticises rushed work and sets out what proper restoration needs."},
+            {"ask": "blank", "options": ["더 튼튼해진다", "관람객에게 인기가 많다", "원래보다 오래 보존된다", "진정한 가치를 잃게 된다"], "answer": 3, "zh": "「겉모습은 그럴듯해도」轉折，下一句說價值在於歲月與手藝：會失去真正的價值。", "en": "“It may look convincing, but…” and value lies in time and craft — it loses its real value."},
+            {"ask": "attitude", "options": ["관계 기관의 태도를 비판하고 있다.", "관계 기관의 결정을 지지하고 있다.", "관람객의 불만에 공감하고 있다.", "공사 기간에 대해 무관심하다."], "answer": 0, "zh": "「당연하다는 듯이 말하지만」（說得好像理所當然，但……）：批評相關機關的態度。", "en": "“당연하다는 듯이 말하지만” — “talk as if it were natural, but…”: criticising the authorities."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "text",
+          "ask": "feeling",
+          "text": "서울에 올라와 처음 얻은 방은 언덕 꼭대기에 있는 낡은 집의 옥탑방이었다. 주인 할머니는 말수가 적고 늘 무뚝뚝한 표정이어서 나는 마주칠 때마다 괜히 주눅이 들었다. 월세를 하루라도 늦게 내면 쫓겨날 것만 같았다. 그해 겨울, 회사에서 밤늦게 돌아온 나는 문 앞에 놓인 보자기를 발견했다. 그 안에는 아직 따뜻한 김치찌개와 반찬 몇 가지, 그리고 삐뚤삐뚤한 글씨로 '밥은 먹고 다녀라'라고 쓴 쪽지가 들어 있었다. __나는 보자기를 끌어안은 채 한동안 계단에 주저앉아 있었다.__ 그 뒤로 할머니의 무뚝뚝한 얼굴이 조금도 무섭게 보이지 않았다.",
+          "tr": {"zh": "到首爾後租的第一個房間，是山坡頂上一棟舊房子的頂樓加蓋。房東奶奶話少，總是一臉冷淡，每次碰到她我都莫名地畏縮。總覺得房租只要晚交一天就會被趕出去。那年冬天，我從公司很晚回家，發現門口放著一個包袱。裡面有還溫熱的泡菜鍋和幾樣小菜，還有一張歪歪扭扭寫著「飯要記得吃」的紙條。__我抱著包袱，在樓梯上坐了好一陣子。__從那以後，奶奶冷淡的臉一點也不可怕了。", "en": "The first room I found after moving to Seoul was a rooftop room on an old house at the top of a hill. The landlady was a woman of few words with a permanently stern face, and I shrank a little every time we met. I felt I’d be thrown out if I paid the rent even a day late. That winter, coming home late from work, I found a bundle wrapped in cloth at my door. Inside were a still-warm kimchi stew, a few side dishes and a note in shaky handwriting: “Make sure you eat.” __Hugging the bundle, I sat down on the stairs for a long while.__ After that, her stern face never looked frightening again."},
+          "questions": [
+            {"ask": "feeling", "options": ["당황스럽다", "부담스럽다", "섭섭하다", "고맙고 뭉클하다"], "answer": 3, "zh": "以為很兇的房東奶奶默默送來熱食和紙條，我抱著包袱坐在樓梯上：感激又感動，고맙고 뭉클하다。", "en": "The stern landlady quietly leaves warm food and a note — grateful and touched: 고맙고 뭉클하다."},
+            {"ask": "match", "options": ["나는 회사 근처의 큰 아파트에 살았다.", "주인 할머니는 처음부터 다정하게 말을 걸었다.", "할머니는 내 방 앞에 음식을 두고 갔다.", "나는 월세를 자주 늦게 냈다."], "answer": 2, "zh": "「문 앞에 놓인 보자기」裡有泡菜鍋和小菜：奶奶把食物放在門口。我住頂樓加蓋，奶奶話少又冷淡，「好像晚一天就會被趕」只是擔心。", "en": "The bundle at the door held food. I lived in a rooftop room, she was curt, and the late rent was only a fear."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "subject",
+          "text": "숲속의 나무들은 서로 떨어져 홀로 자라는 것처럼 보이지만 실제로는 땅속에서 긴밀하게 연결되어 있다. 나무뿌리에 붙어 사는 곰팡이의 가는 실이 그물처럼 퍼져 나무와 나무를 이어 주기 때문이다. 나무들은 이 연결망을 통해 물과 양분을 주고받는다. 특히 오래되고 큰 나무는 햇빛을 충분히 받지 못하는 어린나무에게 양분을 나누어 주기도 하는데, 이 때문에 큰 나무를 '어머니 나무'라고 부르기도 한다. 그래서 숲에서 큰 나무를 함부로 베어 내면 （　　）. 숲을 보호할 때 한 그루 한 그루가 아니라 숲 전체를 하나의 공동체로 보아야 하는 이유가 여기에 있다.",
+          "tr": {"zh": "森林裡的樹看起來各自分開、獨自生長，但實際上在地底下緊密相連。因為長在樹根上的真菌細絲像網子一樣散開，把樹和樹連接起來。樹木透過這個網絡互相交換水和養分。特別是又老又大的樹，還會把養分分給曬不到足夠陽光的小樹，所以大樹也被稱為「母親樹」。因此在森林裡隨便砍掉大樹，（　）。保護森林時，不該只看一棵一棵的樹，而要把整片森林看成一個共同體，原因就在這裡。", "en": "Trees in a forest seem to grow alone, apart from one another, but underground they are closely connected: the fine threads of fungi living on their roots spread like a net and link tree to tree. Through this network trees exchange water and nutrients. Old, large trees even share nutrients with young trees that get too little sunlight, which is why they are called “mother trees”. So cutting down a big tree carelessly (　　). That is why a forest must be protected as one community, not tree by tree."},
+          "questions": [
+            {"ask": "subject", "options": ["곰팡이는 나무에 해롭다.", "숲은 나무들이 연결된 하나의 공동체이다.", "큰 나무는 베어 내야 어린나무가 자란다.", "나무는 햇빛만 있으면 자랄 수 있다."], "answer": 1, "zh": "開頭說樹在地下相連，最後說要把森林當成一個共同體：主題是森林是互相連結的共同體。", "en": "Trees are linked underground, and the forest is one community — that is the topic."},
+            {"ask": "blank", "options": ["주변의 어린나무들까지 약해질 수 있다", "숲이 더 빨리 자란다", "곰팡이가 사라지지 않는다", "어린나무가 햇빛을 덜 받게 된다"], "answer": 0, "zh": "大樹會分養分給小樹，砍掉它，周圍的小樹也會變弱。", "en": "Big trees feed young ones, so cutting one can weaken the young trees around it."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "attitude",
+          "text": "우리 사회에서 '손님은 왕'이라는 말은 오랫동안 서비스의 기본처럼 여겨져 왔다. 그 결과 많은 서비스 노동자들이 무리한 요구나 폭언을 듣고도 웃는 얼굴로 응대해야 했다. 자신의 감정을 숨기고 회사가 정한 감정을 표현해야 하는 이러한 노동을 '감정 노동'이라고 한다. 감정 노동이 계속되면 우울증이나 불면증 같은 문제로 이어지기 쉽다. 다행히 최근에는 고객의 폭언이 있을 때 직원이 응대를 멈출 수 있도록 하는 기업이 늘고 있다. 그러나 제도만으로는 충분하지 않다. 서비스를 제공하는 사람도 누군가의 소중한 가족이라는 사실을 기억하고, 서로를 존중하는 소비 문화가 자리 잡아야 한다.",
+          "tr": {"zh": "在我們的社會，「顧客是王」這句話長久以來被當成服務的基本。結果很多服務業勞工聽到無理的要求或辱罵，也得笑臉應對。這種隱藏自己的情緒、表現公司規定的情緒的勞動，叫做「情緒勞動」。情緒勞動持續下去，很容易導致憂鬱症或失眠等問題。幸好最近越來越多企業讓員工在顧客辱罵時可以停止應對。但光有制度還不夠。要記得提供服務的人也是某人珍貴的家人，互相尊重的消費文化必須扎根。", "en": "“The customer is king” has long been treated as the basis of service here. As a result many service workers have had to smile through unreasonable demands and abuse. Work in which you hide your own feelings and show the ones the company sets is called “emotional labour”. If it goes on, it easily leads to problems such as depression or insomnia. Fortunately, more companies now let staff stop serving a customer who becomes abusive. But rules alone are not enough. We must remember that the person serving us is someone’s precious family, and a culture of mutual respect between customers and workers must take root."},
+          "questions": [
+            {"ask": "attitude", "options": ["감정 노동자의 문제를 과장하고 있다.", "기업의 제도만으로 문제가 해결된다고 보고 있다.", "'손님은 왕'이라는 생각을 지지하고 있다.", "서로 존중하는 소비 문화가 필요하다고 주장하고 있다."], "answer": 3, "zh": "最後兩句：光有制度不夠，要有互相尊重的消費文化——這是作者的主張。", "en": "The last two sentences: rules aren’t enough; a culture of respect is needed."},
+            {"ask": "match", "options": ["감정 노동은 건강에 영향을 주지 않는다.", "응대를 멈출 수 있게 하는 기업이 늘고 있다.", "서비스 노동자는 폭언을 들으면 화를 내도 된다.", "필자는 제도가 전혀 필요 없다고 본다."], "answer": 1, "zh": "「응대를 멈출 수 있도록 하는 기업이 늘고 있다」：這樣的企業在增加。情緒勞動會導致憂鬱、失眠；作者說的是「光有制度不夠」，不是不需要。", "en": "“응대를 멈출 수 있도록 하는 기업이 늘고 있다” — such companies are increasing. It harms health, and the writer says rules aren’t enough, not unnecessary."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "purpose",
+          "text": "정부의 연구 개발 예산은 해마다 늘고 있지만 그 대부분은 몇 년 안에 성과를 낼 수 있는 응용 연구에 집중되어 있다. 당장 상품으로 만들 수 있는 기술이 경제에 도움이 된다는 이유에서이다. 반면 자연의 원리를 밝히는 기초 과학은 결과가 언제 나올지 알 수 없다는 이유로 지원에서 밀려나기 일쑤이다. 그러나 과학의 역사를 돌아보면 （　　）. 오늘날 우리가 쓰는 휴대폰의 위치 확인 기술도 처음에는 실생활과 아무 관련이 없어 보이던 물리학 이론에서 출발했다. 연구 기관을 평가할 때 __1년 단위로 논문 수와 특허 수만 따지는 지금의 방식은__ 연구자들로 하여금 쉽고 안전한 주제만 고르게 만든다. 기초 과학에 대한 장기적이고 안정적인 투자가 이루어질 때 비로소 미래의 혁신도 가능해질 것이다.",
+          "tr": {"zh": "政府的研發預算年年增加，但大部分集中在幾年內就能出成果的應用研究，理由是能馬上做成商品的技術對經濟有幫助。相反地，揭開自然原理的基礎科學，常常因為「不知道什麼時候會有結果」而被排擠在補助之外。然而回顧科學史，（　）。今天我們手機用的定位技術，一開始也是從看起來和日常生活毫無關係的物理學理論出發的。評鑑研究機構時，__以一年為單位、只計算論文數和專利數的現行方式__，會讓研究者只挑簡單又安全的題目。只有對基礎科學進行長期而穩定的投資，未來的創新才有可能。", "en": "Government R&D budgets grow every year, but most goes to applied research that can show results within a few years, on the grounds that technology ready to become products helps the economy. Basic science, which uncovers the principles of nature, is regularly pushed out of funding because no one knows when it will pay off. Yet looking back at the history of science, (　　). Even the location technology in our phones began in a physics theory that once seemed to have nothing to do with daily life. __The current practice of judging research institutes year by year on paper and patent counts alone__ makes researchers pick only easy, safe topics. Only with long-term, stable investment in basic science will future innovation become possible."},
+          "questions": [
+            {"ask": "purpose", "options": ["기초 과학에 장기적으로 투자해야 함을 주장하려고", "응용 연구의 경제적 효과를 소개하려고", "휴대폰 위치 확인 기술의 원리를 설명하려고", "연구 기관의 논문 수를 늘리자고 제안하려고"], "answer": 0, "zh": "最後一句：要對基礎科學長期、穩定地投資——這是寫作目的。手機定位只是例子。", "en": "The final sentence: invest in basic science for the long term. The phone is only an example."},
+            {"ask": "blank", "options": ["응용 연구가 언제나 더 큰 성과를 냈다", "기초 과학은 경제와 관련이 없었다", "세상을 바꾼 기술은 대부분 기초 과학에서 나왔다", "과학자들은 늘 빠른 성과를 원했다"], "answer": 2, "zh": "「그러나」反駁上一句，下一句舉例：手機定位也來自物理理論——改變世界的技術多來自基礎科學。", "en": "“그러나” answers the previous sentence, and the example (phone location from physics) shows world-changing technology came from basic science."},
+            {"ask": "attitude", "options": ["현재의 평가 방식을 긍정적으로 보고 있다.", "현재의 평가 방식에 문제가 있다고 지적하고 있다.", "평가 방식의 변화를 걱정하고 있다.", "연구자들의 선택을 칭찬하고 있다."], "answer": 1, "zh": "這種方式「讓研究者只挑簡單又安全的題目」：作者在指出現行評鑑方式的問題。", "en": "It “makes researchers pick only easy, safe topics” — the writer points out a flaw."}
+          ]
+        }
+      ]
+    }
+  ]
+}
