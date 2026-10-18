@@ -273,26 +273,24 @@ body:has(.tour) .assistant-hint {
         pointer-events: none;
         animation: none;
     }
-    /* half of her peeks in from the left edge, in the page's side margin, so she
-       never sits on top of a card's text; tapping her opens the chat as before */
+    /* bottom-left, whole, just inside the page's side margin; she slides away while
+       scrolling down, so she doesn't sit on the text being read */
     .assistant-fab {
         right: auto;
-        left: 0;
+        left: 10px;
         bottom: calc(80px + env(safe-area-inset-bottom));
         width: 50px;
         height: 50px;
-        transform: translateX(-50%);
     }
     .assistant-fab:active {
-        transform: translateX(-50%) translateY(3px);
+        transform: translateY(3px);
     }
     .assistant-fab-face {
         width: 44px;
-        transform: translateX(4px);
     }
     .assistant-hint {
         right: auto;
-        left: 36px;
+        left: 70px;
         bottom: calc(92px + env(safe-area-inset-bottom));
         border-radius: 14px 14px 14px 4px;
         animation-name: assistant-hint-phone;
@@ -302,7 +300,7 @@ body:has(.tour) .assistant-hint {
         right: 12px;
         transform-origin: bottom left;
         width: auto;
-        top: 68px;
+        top: calc(68px + env(safe-area-inset-top));
         bottom: calc(146px + env(safe-area-inset-bottom));
         height: auto;
     }

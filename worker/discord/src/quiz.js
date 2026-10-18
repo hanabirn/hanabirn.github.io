@@ -19,6 +19,7 @@
 
 import { STUDY_LANGS, setsFor, setInfo, loadSet, card, shortMeaning, rng, shuffle, newSeed } from './sets.js';
 import { t, isUiLang } from './i18n.js';
+import { generateSimilarReadings } from './kana.js';
 import { COLOR, NEUTRAL, GREEN, RED, SITE_URL, button, linkButton, select, row, cut, progressBar, LETTERS, needLetters } from './ui.js';
 
 export const QUIZ_MIN = 5, QUIZ_MAX = 30, QUIZ_DEFAULT = 10;
@@ -66,10 +67,11 @@ function question(d, i) {
     const ask = d.kind === 'ja' && c.reading ? 'reading' : 'meaning';
     const value = x => ask === 'reading' ? x.reading : shortMeaning(x.answer);
     const right = value(c);
-    // wrong readings of about the same length look alike; meanings come from anywhere
+    // wrong readings are look-alike kana as in the JLPT (どうろ: どうろう, どろ, どろう), topped
+    // up with other readings of about the same length; meanings come from anywhere
     const pool = ask === 'reading' ? cards.filter(x => x.reading && Math.abs(x.reading.length - right.length) <= 1) : cards;
     const rand = rng((seed ^ Math.imul(i + 1, 0x9E3779B1)) >>> 0);
-    const wrong = [];
+    const wrong = ask === 'reading' ? generateSimilarReadings(right, 3, rand) : [];
     for (let tries = 0; wrong.length < 3 && tries < 300; tries++) {
         const from = tries < 200 && pool.length > 10 ? pool : cards.filter(x => ask !== 'reading' || x.reading);
         const m = value(from[Math.floor(rand() * from.length)]);

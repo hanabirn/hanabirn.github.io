@@ -1,7 +1,11 @@
 /* ===== Header ===== */
+/* viewport-fit=cover: on an iPhone home-screen app the page runs under the status bar,
+   so the header's own background fills that strip and its row starts below it — iOS
+   blurs whatever sits in the strip, which had blurred the header row itself */
 header {
     position: relative;
     z-index: 20;
+    padding-top: env(safe-area-inset-top);
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
 }
@@ -444,5 +448,5 @@ header h1 {
     .lang-globe-btn { display: none; }
     .learn-pill { height: 32px; padding: 0 10px 0 8px; font-size: 0.8rem; }
     /* the menu spans the screen under the header rather than hanging off the pill */
-    .learn-pill-menu { position: fixed; top: 58px; left: 12px; right: 12px; width: auto; max-height: calc(100vh - 140px); overflow-y: auto; }
+    .learn-pill-menu { position: fixed; top: calc(58px + env(safe-area-inset-top)); left: 12px; right: 12px; width: auto; max-height: calc(100vh - 140px); overflow-y: auto; }
 }

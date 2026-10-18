@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-17',
+      zh: '日文單字的讀音題，選項改成像日檢一樣的相似讀音（道路：どうろ／どうろう／どろ／どろう），網站和 Discord bot 都一樣。手機上：小花火的按鈕不再被切掉一半；裝在主畫面的 App 最上面那排不會再模糊。',
+      'zh-Hans': '日语单词的读音题，选项改成像日语能力考一样的相似读音（道路：どうろ／どうろう／どろ／どろう），网站和 Discord bot 都一样。手机上：小花火的按钮不再被切掉一半；装在主屏幕的 App 最上面那排不会再模糊。',
+      en: 'Japanese reading questions now offer look-alike readings as in the JLPT (道路: どうろ / どうろう / どろ / どろう), on the site and in the Discord bot. On phones, the 小花火 button is no longer cut in half, and the top row of the home-screen app is no longer blurred.',
+      ja: '日本語の読み方の問題は、JLPT のように似た読みの選択肢になりました（道路：どうろ／どうろう／どろ／どろう）。サイトと Discord bot の両方です。スマホでは小花火のボタンが半分切れなくなり、ホーム画面のアプリで一番上の行がぼやけなくなりました。',
+      ko: '일본어 읽기 문제의 선택지가 JLPT처럼 비슷한 읽기로 바뀌었어요(道路: どうろ / どうろう / どろ / どろう). 사이트와 Discord 봇 모두 같아요. 휴대폰에서는 小花火 버튼이 반으로 잘리지 않고, 홈 화면 앱의 맨 윗줄이 더 이상 흐릿하지 않아요.',
+      ru: 'В вопросах на чтение японских слов теперь похожие варианты, как на JLPT (道路: どうろ / どうろう / どろ / どろう) — и на сайте, и в Discord-боте. На телефонах кнопка 小花火 больше не обрезана наполовину, а верхняя строка приложения с главного экрана больше не размыта.',
+      fr: 'Les questions de lecture des mots japonais proposent désormais des lectures qui se ressemblent, comme au JLPT (道路 : どうろ / どうろう / どろ / どろう), sur le site et dans le bot Discord. Sur téléphone, le bouton de 小花火 n’est plus coupé en deux et la ligne du haut de l’app sur l’écran d’accueil n’est plus floue.',
+      es: 'Las preguntas de lectura de palabras japonesas ahora ofrecen lecturas parecidas, como en el JLPT (道路: どうろ / どうろう / どろ / どろう), en la web y en el bot de Discord. En el móvil, el botón de 小花火 ya no aparece cortado por la mitad y la fila superior de la app de la pantalla de inicio ya no se ve borrosa.',
+      de: 'Bei Lesungsfragen zu japanischen Wörtern stehen jetzt ähnlich aussehende Lesungen zur Wahl, wie im JLPT (道路: どうろ / どうろう / どろ / どろう) — auf der Website und im Discord-Bot. Auf dem Handy ist der 小花火-Knopf nicht mehr halb abgeschnitten, und die oberste Zeile der App auf dem Startbildschirm ist nicht mehr unscharf.', },
+    { date: '2026-10-17',
       zh: '文法頁新增韓文 6 級：30 個高級文法（-(으)ㄹ세라、-기에 망정이지、-(으)ㄴ들、-건만、-기로서니……），每個都有說明、注意事項、常見錯誤、有發音的例句，以及 7 題練習（含句子排序和選 ★ 的進階題），每個選項都有解釋。',
       'zh-Hans': '语法页新增韩语 6 级：30 个高级语法（-(으)ㄹ세라、-기에 망정이지、-(으)ㄴ들、-건만、-기로서니……），每个都有说明、注意事项、常见错误、带发音的例句，以及 7 题练习（含句子排序和选 ★ 的进阶题），每个选项都有解释。',
       en: 'New on the Grammar page: Korean Level 6 — 30 advanced patterns (-(으)ㄹ세라, -기에 망정이지, -(으)ㄴ들, -건만, -기로서니 …), each with an explanation, notes, common mistakes, spoken examples and 7 practice questions (including sentence ordering and pick-the-★), every option explained.',
