@@ -169,7 +169,7 @@ function readingExamHtml(set) {
                 <span class="rdx-opt-n">${READING_OPT_MARKS[k]}</span>${readingExText(op)}</button>`;
         }).join('');
         return `<div class="rdx-q">
-            <div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="ko">${escHtml(READING_ASK_KO[q.ask])}</span>` : ''}${q.q ? `<span lang="ko">${readingExText(q.q)}</span>` : ''}</div>
+            ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="ko">${escHtml(READING_ASK_KO[q.ask])}</span>` : ''}${q.q ? `<span lang="ko">${readingExText(q.q)}</span>` : ''}</div>` : ''}
             <div class="rdx-opts">${opts}</div>
             ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(readingTx(set, q))}</div>` : ''}
@@ -201,7 +201,10 @@ function readingExamHtml(set) {
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
         <div class="rdx-ask"><span lang="ko">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? READING_ASK_KO[asks[0]] : '다음을 읽고 물음에 답하십시오.')}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
-        <div class="rdx-item">${readingExBodyHtml(item)}</div>
+        <div class="rdx-item">
+            <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${escHtml(t('reading_passage_label'))}</div>
+            ${readingExBodyHtml(item)}
+        </div>
         ${z.reviewing || (!z.mock && answered) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
         ${qHtml}
         <div class="grammar-nav">
