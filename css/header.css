@@ -421,7 +421,10 @@ header h1 {
 }
 
 @media (max-width: 768px) {
-    header { padding-bottom: 0; }
+    /* sticky with its solid background: iOS 26 blurs the top edge of a home-screen app
+       unless a fixed / sticky box with a background covers it (it then takes that colour
+       instead), and the blur had landed on the header row */
+    header { padding-bottom: 0; position: sticky; top: 0; }
     .header-bar { padding: 10px 14px; gap: 10px; }
     /* the brand gives way to the controls: the title ellipsises rather
        than running underneath the language button */
