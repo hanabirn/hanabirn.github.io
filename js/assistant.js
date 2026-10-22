@@ -52,7 +52,10 @@ function renderAssistant() {
 function toggleAssistant(open) {
     const panel = document.getElementById('assistant-panel');
     if (!panel) return;
+    // the click that ends a drag of the button doesn't open the chat
+    if (typeof open !== 'boolean' && fabSwallowClick) { fabSwallowClick = false; return; }
     const show = typeof open === 'boolean' ? open : !panel.classList.contains('show');
+    if (show) fabPlacePanel();
     panel.classList.toggle('show', show);
     document.getElementById('assistant-fab').setAttribute('aria-expanded', String(show));
     if (show) {
@@ -168,6 +171,108 @@ window.addEventListener('scroll', () => {
     fabTimer = setTimeout(() => assistantFabTuck(false), FAB_BACK_MS);
 }, { passive: true });
 
+/* Computers: 小花火 can be dragged anywhere (owner's request 2026-10-22). The place is
+   kept per device in assistant_fab_pos ({ x, y }: her top-left corner as a share of
+   the window, so it survives a resize), a press without moving still opens the chat,
+   and the chat opens beside wherever she is. Phones keep their fixed corner. */
+const fabDesktop = window.matchMedia('(min-width: 769px) and (pointer: fine)');
+const FAB_DRAG_PX = 6;          // a press that moves less than this is a click
+let fabDrag = null;
+let fabSwallowClick = false;
+
+function fabPos() {
+    try {
+        const p = JSON.parse(localStorage.getItem('assistant_fab_pos'));
+        return p && typeof p.x === 'number' && typeof p.y === 'number' ? p : null;
+    } catch { return null; }
+}
+
+const fabClamp = (v, lo, hi) => Math.max(lo, Math.min(hi, v));
+
+function fabMoveTo(fab, left, top) {
+    fab.style.left = fabClamp(left, 8, innerWidth - fab.offsetWidth - 8) + 'px';
+    fab.style.top = fabClamp(top, 8, innerHeight - fab.offsetHeight - 8) + 'px';
+    fab.style.right = 'auto';
+    fab.style.bottom = 'auto';
+}
+
+function fabSavePos(fab) {
+    try { localStorage.setItem('assistant_fab_pos', JSON.stringify({ x: fab.offsetLeft / innerWidth, y: fab.offsetTop / innerHeight })); } catch {}
+}
+
+/* where she stands: the saved place on computers, the CSS corner otherwise */
+function fabApply() {
+    const fab = document.getElementById('assistant-fab');
+    if (!fab) return;
+    const p = fabDesktop.matches ? fabPos() : null;
+    if (!p) {
+        fab.style.left = fab.style.top = fab.style.right = fab.style.bottom = '';
+    } else {
+        fabMoveTo(fab, p.x * innerWidth, p.y * innerHeight);
+        const hint = document.getElementById('assistant-hint');
+        if (hint) hint.hidden = true;            // it points at the corner
+    }
+    fabPlacePanel();
+}
+
+/* the chat beside her: on her left when she is on the right half, else on her right */
+function fabPlacePanel() {
+    const panel = document.getElementById('assistant-panel');
+    const fab = document.getElementById('assistant-fab');
+    if (!panel || !fab) return;
+    if (!fabDesktop.matches || !fabPos()) {
+        panel.style.left = panel.style.top = panel.style.right = panel.style.bottom = panel.style.transformOrigin = '';
+        return;
+    }
+    const r = fab.getBoundingClientRect();
+    const pw = panel.offsetWidth, ph = panel.offsetHeight;
+    const onRight = r.left + r.width / 2 > innerWidth / 2;
+    panel.style.left = fabClamp(onRight ? r.left - pw - 14 : r.right + 14, 8, innerWidth - pw - 8) + 'px';
+    panel.style.top = fabClamp(r.bottom - ph, 8, innerHeight - ph - 8) + 'px';
+    panel.style.right = 'auto';
+    panel.style.bottom = 'auto';
+    panel.style.transformOrigin = (onRight ? 'right' : 'left') + ' bottom';
+}
+
+function fabDragStart(e) {
+    if (!fabDesktop.matches || e.button !== 0) return;
+    const r = e.currentTarget.getBoundingClientRect();
+    fabDrag = { id: e.pointerId, sx: e.clientX, sy: e.clientY, ox: r.left, oy: r.top, moved: false };
+    // held from the press on, so a quick drag that leaves the button is still hers
+    // (a press without moving still ends in a click on the button)
+    e.currentTarget.setPointerCapture(e.pointerId);
+}
+
+function fabDragMove(e) {
+    if (!fabDrag || e.pointerId !== fabDrag.id) return;
+    const fab = e.currentTarget;
+    const dx = e.clientX - fabDrag.sx, dy = e.clientY - fabDrag.sy;
+    if (!fabDrag.moved) {
+        if (Math.hypot(dx, dy) < FAB_DRAG_PX) return;
+        fabDrag.moved = true;
+        fab.classList.add('dragging');
+    }
+    fabMoveTo(fab, fabDrag.ox + dx, fabDrag.oy + dy);
+    const panel = document.getElementById('assistant-panel');
+    if (panel && panel.classList.contains('show')) { fabSavePos(fab); fabPlacePanel(); }
+}
+
+function fabDragEnd(e) {
+    if (!fabDrag || e.pointerId !== fabDrag.id) return;
+    const fab = e.currentTarget;
+    if (fabDrag.moved) {
+        fab.classList.remove('dragging');
+        fabSavePos(fab);
+        fabSwallowClick = true;                  // the click that follows the drag
+        setTimeout(() => { fabSwallowClick = false; }, 0);
+        fabApply();
+    }
+    fabDrag = null;
+}
+
+window.addEventListener('resize', fabApply);
+fabDesktop.addEventListener('change', fabApply);
+
 document.addEventListener('DOMContentLoaded', () => {
     assistantLoad();
     const fab = document.getElementById('assistant-fab');
@@ -179,6 +284,13 @@ document.addEventListener('DOMContentLoaded', () => {
     try { seen = !!localStorage.getItem('assistant_seen'); } catch {}
     const hint = document.getElementById('assistant-hint');
     if (hint) hint.hidden = seen;
+    if (fab) {
+        fab.addEventListener('pointerdown', fabDragStart);
+        fab.addEventListener('pointermove', fabDragMove);
+        fab.addEventListener('pointerup', fabDragEnd);
+        fab.addEventListener('pointercancel', fabDragEnd);
+        fabApply();
+    }
     // Enter sends, Shift+Enter makes a new line
     const input = document.getElementById('assistant-input');
     if (input) input.addEventListener('keydown', e => {

@@ -1,14 +1,14 @@
 /* ===== 小花火 AI assistant (js/assistant.js) ===== */
 
-/* desktop: alone in the bottom-right corner (settings and reload moved into
-   the header's ☰ menu, the clock was removed); phones: bottom-left, see below */
+/* desktop: in the bottom-right corner until the visitor drags her somewhere else
+   (js/assistant.js, 2026-10-22: bigger, and draggable); phones: bottom-left, see below */
 .assistant-fab {
     position: fixed;
     right: 20px;
     bottom: 20px;
     z-index: 600;
-    width: 72px;
-    height: 72px;
+    width: 96px;
+    height: 96px;
     padding: 0;
     border-radius: 50%;
     border: 2px solid var(--line);
@@ -27,8 +27,18 @@
 }
 .assistant-fab-face {
     display: block;
-    width: 62px;
+    width: 84px;
     margin: 0 auto;
+    pointer-events: none;
+}
+@media (min-width: 769px) and (pointer: fine) {
+    .assistant-fab { cursor: grab; touch-action: none; }
+    .assistant-fab.dragging {
+        cursor: grabbing;
+        transform: scale(1.06);
+        transition: none;
+        box-shadow: 0 10px 0 var(--edge), 0 16px 30px rgba(0, 0, 0, 0.25);
+    }
 }
 /* the tour already has 小花火 on screen */
 body:has(.tour) .assistant-fab,
@@ -39,8 +49,8 @@ body:has(.tour) .assistant-hint {
 /* first-visit nudge, to the left of the button */
 .assistant-hint {
     position: fixed;
-    right: 104px;
-    bottom: 42px;
+    right: 128px;
+    bottom: 54px;
     z-index: 600;
     padding: 7px 12px;
     border-radius: 14px 14px 4px 14px;
@@ -68,7 +78,7 @@ body:has(.tour) .assistant-hint {
 /* --- the chat panel: beside the button on desktop --- */
 .assistant-panel {
     position: fixed;
-    right: 104px;
+    right: 128px;
     bottom: 20px;
     z-index: 650;
     display: flex;
