@@ -20,7 +20,9 @@ def summary(log, code):
     left = (to_render[-1] - new[-1]) if to_render and new and len(new) >= len(to_render) else (to_render[-1] if to_render else None)
     today = (datetime.now(timezone.utc) + timedelta(hours=8)).strftime('%Y-%m-%d')   # Taiwan date
     out = [f'🎙️ **Hanabi 錄音日報** {today}']
-    credit = re.search(r'HTTP 40[23]|prepayment|credits? (are )?depleted|billing', log, re.I)
+    # Google's 429 for a spent daily quota also says "check your plan and billing details",
+    # so only an explicit 402 / depleted-credit message counts as money running out
+    credit = re.search(r'HTTP 402|prepayment credits|credits? (are |have been )?depleted', log, re.I)
     if credit:
         out.append('⚠️ **Gemini 餘額可能用完了**：請到 Google AI Studio（hanabi-tts 專案）看帳單、儲值。儲值後明天會自動接著錄。')
     if code != 0 and not credit:

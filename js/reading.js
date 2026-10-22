@@ -6,7 +6,10 @@
    it plays its recording (keyed "plain|kana", tools/build_audio.py), tapping an
    underlined word opens its card. The reader has a furigana / translation toggle,
    a timer and a font size; the quiz is one page (multiple choice, then ○ / ×), and
-   READING_PASS of it right marks the passage read. Afterwards a short glossary
+   READING_PASS of it right marks the passage read. Since 2026-10-22 (owner's request) the
+   questions sit beside the text (right column on computers, under it on phones),
+   READING_Q_PAGE a page, and half-done answers are kept in study_resume (resumeSave in
+   js/quiz.js, synced) so a visitor carries on where they left off. Afterwards a short glossary
    review grades the words into the mistake book and spaced repetition (entries
    from lessonEntryFor(), filed under the level's word set). Content texts come as
    { zh, 'zh-Hans', en } (gText in js/grammar.js); Chinese passages are translated
@@ -33,7 +36,9 @@ const readingSets = {};           // id -> loaded set
 let readingSetId = '';
 let readingView = 'list';         // 'list' | 'read' | 'quiz' | 'review'
 let readingNo = 0;                // passage index in the set
-let readingQuiz = null;           // { picks: [mcq…, tf…], done }
+let readingQuiz = null;           // { picks: [mcq…, tf…], done, page, resumed }
+let readingPanel = 'q';           // the reader's side panel: 'q' questions | 'gloss' glossary
+const READING_Q_PAGE = 3;         // questions a page in the panel
 let readingReview = null;         // { items: [{ entry, word, options, answer }], i, picked, right }
 let readingTimer = { start: 0, secs: 0, tick: null };
 
@@ -91,23 +96,23 @@ async function renderReading() {
     const set = readingSets[readingSetId];
     box.dataset.zhrd = readingZhRd();           // which Chinese readings show (css/reading.css)
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
-    document.body.classList.toggle('reading-wide', readingView === 'read');
+    document.body.classList.toggle('reading-wide', readingView === 'read' || readingView === 'exam');
     if (typeof railPlace === 'function') railPlace();
     if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
     if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
     else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
     else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);
-    else if (readingView === 'quiz') box.innerHTML = readingQuizHtml(set);
     else if (readingView === 'review') box.innerHTML = readingReviewHtml(set);
     else box.innerHTML = readingListHtml(set);
     readingClosePop();
 }
 
 function readingGo(view, no) {
-    if (readingView === 'read' && view !== 'read') readingStopTimer();
+    if (view === 'quiz') view = 'read';                 // the questions are beside the text now
+    if (readingView === 'read') { readingSaveResume(); readingStopTimer(); }
     readingView = view;
     if (typeof no === 'number') readingNo = no;
-    if (view === 'read') readingStartTimer();
+    if (view === 'read') readingOpenQuiz();
     readingAllRun++;                                   // ends a read-all chain
     readingAllState = 'idle';
     if (typeof stopSpeech === 'function') stopSpeech();  // a recording or the browser voice
