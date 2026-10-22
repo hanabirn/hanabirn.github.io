@@ -290,12 +290,19 @@ function renderTtsSettings() {
             </select>
             <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['en-US'], 'en')" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">▶</button>
         </div>`;
+    // which languages play recordings (their index loads) — filled in once known
+    const recLine = `<p class="tts-rec" id="tts-rec">${escHtml(t('tts_rec_loading'))}</p>`;
     if (!window.speechSynthesis) {
-        el.innerHTML = accentRow + `<p class="tts-empty">${escHtml(t('tts_unsupported'))}</p>`;
+        el.innerHTML = accentRow + recLine + `<p class="tts-empty">${escHtml(t('tts_unsupported'))}</p>`;
+        ttsFillRecLine();
         return;
     }
     const saved = ttsSaved();
-    el.innerHTML = accentRow + TTS_LANGS.map(lang => {
+    const own = TTS_LANGS.filter(l => saved[l]).length;
+    el.innerHTML = accentRow + recLine + `<details class="tts-adv"${own ? ' open' : ''}>
+        <summary>${escHtml(t('tts_advanced'))}${own ? ` <small>${escHtml(t('tts_advanced_n', { n: own }))}</small>` : ''}</summary>
+        <p class="tab-settings-desc">${escHtml(t('tts_desc'))}</p>
+        <div class="tts-adv-list">` + TTS_LANGS.map(lang => {
         const list = ttsCandidates(lang);
         const auto = AUDIO_DIRS[lang]
             ? t('tts_auto_rec', { v: list.length ? ttsShortName(list[0]) : '—' })
@@ -309,7 +316,24 @@ function renderTtsSettings() {
             <select class="tts-select" id="tts-${lang}" onchange="setTtsVoice('${lang}', this.value)"${list.length ? '' : ' disabled'}>${opts.join('')}</select>
             <button type="button" class="speak-btn tts-try" onclick="speakText(TTS_SAMPLE['${lang}'], '${lang}', {exact: true})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}"${list.length || AUDIO_DIRS[lang] ? '' : ' disabled'}>▶</button>
         </div>`;
-    }).join('');
+    }).join('') + '</div></details>';
+    ttsFillRecLine();
+}
+
+/* "預先錄好的語音：日文、韓文…；其他用這台裝置的聲音" — a language counts when its
+   recordings' index loads (English isn't recorded yet, see tools/build_audio.py) */
+function ttsFillRecLine() {
+    const langs = TTS_LANGS.filter(l => AUDIO_DIRS[l]);
+    Promise.all(langs.map(l => audioIndex(AUDIO_DIRS[l]).then(m => m && m.size ? l : null, () => null)))
+        .then(found => {
+            const el = document.getElementById('tts-rec');
+            if (!el) return;
+            const names = [...new Set(found.filter(Boolean).map(ttsLangLabel))];
+            const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '、' : ', ';
+            el.innerHTML = names.length
+                ? `<b>${escHtml(t('tts_rec_head'))}</b> ${escHtml(names.join(sep))}<br><span>${escHtml(t('tts_rec_rest'))}</span>`
+                : escHtml(t('tts_rec_none'));
+        });
 }
 
 function setZhAccentFromSettings(v) {
