@@ -1,0 +1,68 @@
+# Daily Gemini recordings in the cloud (replaces the Windows task "Hanabi Gemini 錄音",
+# owner's pick 2026-10-22, so the PC doesn't have to stay on). Each run records what the
+# day's quota allows with tools/build_audio.py, commits the files to the audio-queue
+# branch — never main, so nothing goes live until the owner says so and it is merged —
+# and posts a report to Discord (tools/audio_cloud_report.py).
+# Secrets: GEMINI_TTS_KEY (the hanabi-tts key), DISCORD_WEBHOOK (the channel's webhook URL).
+name: Gemini 錄音
+
+on:
+  schedule:
+    # 08:20 UTC: after the quota resets at midnight US Pacific (00:20 PST / 01:20 PDT;
+    # 16:20 in Taiwan)
+    - cron: '20 8 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gemini-audio
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      BRANCH: audio-queue
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audio-queue
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install
+        run: pip install lameenc numpy miniaudio opencc-python-reimplemented
+
+      - name: Record
+        env:
+          GEMINI_TTS_KEY: ${{ secrets.GEMINI_TTS_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          printf 'GEMINI_TTS_KEY=%s\n' "$GEMINI_TTS_KEY" > tools/.gemini-tts.env
+          set +e
+          python -u tools/build_audio.py --gemini --only ja --regemini 3.1-flash-tts-preview 2>&1 | tee record.log
+          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_ENV"
+          rm -f tools/.gemini-tts.env
+
+      - name: Commit
+        run: |
+          git config user.name 'hanabi-audio-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/audio
+          if git diff --cached --quiet; then echo 'nothing new'; exit 0; fi
+          git commit -q -m "Gemini recordings $(date -u +%Y-%m-%d) (GitHub Actions)"
+          git push origin HEAD:audio-queue
+
+      - name: Report
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONIOENCODING: utf-8
+        run: python tools/audio_cloud_report.py record.log "${code:-1}"
