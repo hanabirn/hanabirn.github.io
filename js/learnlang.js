@@ -56,7 +56,7 @@ function setLearnLang(lang) {
    new one; refreshDynamicContent() redraws whatever is on screen. */
 function learnLangChanged() {
     if (typeof grammarSetId !== 'undefined') { grammarView = 'list'; grammarPoint = 0; }
-    if (typeof readingSetId !== 'undefined') { if (readingView === 'read') readingStopTimer(); readingView = 'list'; readingNo = 0; }
+    if (typeof readingSetId !== 'undefined') { if (readingView === 'read') { readingSaveResume(); readingStopTimer(); } readingView = 'list'; readingNo = 0; }
     if (typeof listeningLevelId !== 'undefined') { listeningStop(); listeningView = 'list'; listeningSession = null; }
     if (typeof alphaFollowLearnLang === 'function') alphaFollowLearnLang();
     if (typeof dictFollowLearnLang === 'function') dictFollowLearnLang();

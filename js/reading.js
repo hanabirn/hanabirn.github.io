@@ -6,7 +6,10 @@
    it plays its recording (keyed "plain|kana", tools/build_audio.py), tapping an
    underlined word opens its card. The reader has a furigana / translation toggle,
    a timer and a font size; the quiz is one page (multiple choice, then ○ / ×), and
-   READING_PASS of it right marks the passage read. Afterwards a short glossary
+   READING_PASS of it right marks the passage read. Since 2026-10-22 (owner's request) the
+   questions sit beside the text (right column on computers, under it on phones),
+   READING_Q_PAGE a page, and half-done answers are kept in study_resume (resumeSave in
+   js/quiz.js, synced) so a visitor carries on where they left off. Afterwards a short glossary
    review grades the words into the mistake book and spaced repetition (entries
    from lessonEntryFor(), filed under the level's word set). Content texts come as
    { zh, 'zh-Hans', en } (gText in js/grammar.js); Chinese passages are translated
@@ -33,9 +36,14 @@ const readingSets = {};           // id -> loaded set
 let readingSetId = '';
 let readingView = 'list';         // 'list' | 'read' | 'quiz' | 'review'
 let readingNo = 0;                // passage index in the set
-let readingQuiz = null;           // { picks: [mcq…, tf…], done }
+let readingQuiz = null;           // { picks: [mcq…, tf…], done, page, resumed }
+let readingPanel = 'q';           // the reader's side panel: 'q' questions | 'gloss' glossary
+const READING_Q_PAGE = 3;         // questions a page in the panel
 let readingReview = null;         // { items: [{ entry, word, options, answer }], i, picked, right }
 let readingTimer = { start: 0, secs: 0, tick: null };
+
+// a tab closed or put away keeps the answers so far (study_resume)
+document.addEventListener('visibilitychange', () => { if (document.hidden) readingSaveResume(); });
 
 function readingProgress() {
     try { return JSON.parse(localStorage.getItem('reading_progress')) || {}; } catch { return {}; }
@@ -91,23 +99,23 @@ async function renderReading() {
     const set = readingSets[readingSetId];
     box.dataset.zhrd = readingZhRd();           // which Chinese readings show (css/reading.css)
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
-    document.body.classList.toggle('reading-wide', readingView === 'read');
+    document.body.classList.toggle('reading-wide', readingView === 'read' || readingView === 'exam');
     if (typeof railPlace === 'function') railPlace();
     if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
     if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
     else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
     else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);
-    else if (readingView === 'quiz') box.innerHTML = readingQuizHtml(set);
     else if (readingView === 'review') box.innerHTML = readingReviewHtml(set);
     else box.innerHTML = readingListHtml(set);
     readingClosePop();
 }
 
 function readingGo(view, no) {
-    if (readingView === 'read' && view !== 'read') readingStopTimer();
+    if (view === 'quiz') view = 'read';                 // the questions are beside the text now
+    if (readingView === 'read') { readingSaveResume(); readingStopTimer(); }
     readingView = view;
     if (typeof no === 'number') readingNo = no;
-    if (view === 'read') readingStartTimer();
+    if (view === 'read') readingOpenQuiz();
     readingAllRun++;                                   // ends a read-all chain
     readingAllState = 'idle';
     if (typeof stopSpeech === 'function') stopSpeech();  // a recording or the browser voice
@@ -248,6 +256,8 @@ function readingListHtml(set) {
                 const done = readingRead(set.id, p.id);
                 const best = prog[set.id + ':' + p.id];
                 const qs = p.mcq.length + p.tf.length;
+                const half = resumeGet('reading|' + set.id + ':' + p.id);
+                const halfN = half && Array.isArray(half.picks) ? half.picks.filter(x => x >= 0).length : 0;
                 const topic = p.topic && READING_TOPIC_EMOJI[p.topic] ? `<span class="rd-topic">${READING_TOPIC_EMOJI[p.topic]} ${escHtml(t('topic_' + p.topic))}</span>` : '';
                 return `<li><button type="button" class="grammar-item${done ? ' learned' : ''}" onclick="readingGo('read', ${i})">
                     <span class="grammar-num">${i + 1}</span>
@@ -256,7 +266,7 @@ function readingListHtml(set) {
                         <span class="grammar-item-title">${topic}${escHtml(readingTx(set, p.title))}
                             <span class="rd-meta">${escHtml(t(READING_CHAR_LANGS.includes(set.lang) ? 'reading_meta' : 'reading_meta_words', { n: p.length, q: qs }))}</span></span>
                     </span>
-                    <span class="grammar-state">${best ? (done ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
+                    <span class="grammar-state">${halfN ? `<span class="rd-half">${escHtml(t('reading_half', { n: halfN, m: qs }))}</span>` : best ? (done ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
                 </button></li>`;
             }).join('')}
         </ol>
@@ -346,13 +356,7 @@ function readingReaderHtml(set) {
                 <div class="rd-text${furi ? '' : ' no-furi'}" style="font-size:${READING_FONTS[readingFont()]}rem">${paras}</div>
                 <p class="rd-help">${escHtml(t('reading_help'))}</p>
             </div>
-            <div class="rd-col-side">
-                <div class="rd-gloss">
-                    <h4 class="grammar-sub">📘 ${escHtml(t('reading_glossary'))}</h4>
-                    <ul>${p.glossary.map((g, i) => `<li><button type="button" class="rd-gloss-item" onclick="readingWord(event, ${i})"><b lang="${set.lang}">${escHtml(readingGw(set, g))}</b> <span>${g.r && g.r !== g.w && set.lang !== 'ru' ? escHtml(g.r) + '・' : ''}${escHtml(readingTx(set, g))}</span></button></li>`).join('')}</ul>
-                </div>
-                <button type="button" class="btn next-btn grammar-start" onclick="readingStartQuiz()">${escHtml(t('reading_start_quiz', { n: p.mcq.length + p.tf.length }))}</button>
-            </div>
+            <div class="rd-col-side" id="rd-panel">${readingPanelHtml(set, p)}</div>
         </div>
         <div class="grammar-nav">
             <button type="button" class="btn back-btn" onclick="readingGo('read', ${readingNo - 1})"${readingNo === 0 ? ' disabled' : ''}>${escHtml(t('reading_prev'))}</button>
@@ -549,12 +553,12 @@ function readingClock(s) {
     return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0');
 }
 
-function readingStartTimer() {
+function readingStartTimer(secs) {
     readingStopTimer();
-    readingTimer = { start: Date.now(), secs: 0, tick: null };
+    readingTimer = { start: Date.now(), secs: secs || 0, tick: null };
     readingTimer.tick = setInterval(() => {
         const el = document.getElementById('rd-timer');
-        if (!el || readingView !== 'read') return;
+        if (!el || readingView !== 'read' || !readingTimer.start) return;
         el.textContent = '⏱ ' + readingClock(readingElapsed());
     }, 1000);
 }
@@ -568,21 +572,80 @@ function readingStopTimer() {
 
 /* ----- quiz: multiple choice, then ○ / × on one page ----- */
 
-function readingStartQuiz() {
-    readingStopTimer();
-    const p = readingSets[readingSetId].passages[readingNo];
-    readingQuiz = { picks: new Array(p.mcq.length + p.tf.length).fill(-1), done: false };
-    readingGo('quiz');
+/* The questions beside the text: opened (or picked up from study_resume) with the
+   passage, READING_Q_PAGE at a time in the side panel. */
+function readingQuizKey() {
+    const set = readingSets[readingSetId];
+    return 'reading|' + set.id + ':' + set.passages[readingNo].id;
 }
 
-function readingQuizHtml(set) {
-    const p = set.passages[readingNo];
+function readingPages(total) { return Math.max(1, Math.ceil(total / READING_Q_PAGE)); }
+
+function readingOpenQuiz(fresh) {
+    const p = readingSets[readingSetId].passages[readingNo];
+    const n = p.mcq.length + p.tf.length;
+    const r = fresh ? null : resumeGet(readingQuizKey());
+    const ok = !!r && Array.isArray(r.picks) && r.picks.length === n;
+    readingQuiz = { picks: ok ? r.picks.slice() : new Array(n).fill(-1), done: false,
+                    page: ok ? Math.min(r.page || 0, readingPages(n) - 1) : 0,
+                    resumed: ok && r.picks.some(x => x >= 0) };
+    readingPanel = 'q';
+    readingStartTimer(ok ? r.secs || 0 : 0);
+}
+
+/* the answers so far, when there are any (also on leaving the page: switchPage in js/quiz.js) */
+function readingSaveResume() {
+    if (readingView === 'exam' && typeof readingExamSave === 'function') readingExamSave();
+    const z = readingQuiz;
+    if (!z || z.done || readingView !== 'read' || !readingSets[readingSetId] || !z.picks.some(x => x >= 0)) return;
+    resumeSave(readingQuizKey(), { picks: z.picks, page: z.page, secs: readingElapsed() });
+}
+
+/* 重新作答 / 再做一次: the same passage with no answers */
+function readingRetry() {
+    resumeClear(readingQuizKey());
+    readingOpenQuiz(true);
+    readingRenderPanel(true);
+}
+
+function readingSetPanel(k) {
+    readingPanel = k;
+    readingRenderPanel();
+}
+
+function readingQPage(d) {
+    const z = readingQuiz;
+    z.page = Math.max(0, Math.min(readingPages(z.picks.length) - 1, z.page + d));
+    readingSaveResume();
+    readingRenderPanel(true);
+}
+
+/* redraw only the side panel, so the text (and where it is scrolled) stays as it is */
+function readingRenderPanel(toTop) {
+    const box = document.getElementById('rd-panel');
+    const set = readingSets[readingSetId];
+    if (!box || !set) { renderReading(); return; }
+    box.innerHTML = readingPanelHtml(set, set.passages[readingNo]);
+    if (toTop && box.getBoundingClientRect().top < 0) box.scrollIntoView({ block: 'start' });
+}
+
+function readingGlossHtml(set, p) {
+    return `<div class="rd-gloss">
+        <ul>${p.glossary.map((g, i) => `<li><button type="button" class="rd-gloss-item" onclick="readingWord(event, ${i})"><b lang="${set.lang}">${escHtml(readingGw(set, g))}</b> <span>${g.r && g.r !== g.w && set.lang !== 'ru' ? escHtml(g.r) + '・' : ''}${escHtml(readingTx(set, g))}</span></button></li>`).join('')}</ul>
+    </div>`;
+}
+
+/* one question by its place in the flat list (multiple choice first, then ○ / ×) */
+function readingQuestionHtml(set, p, k) {
     const z = readingQuiz;
     const nm = p.mcq.length;
+    const picked = z.picks[k];
     const why = q => `<p class="rd-why">${escHtml(gText(q))}</p>`;
-    const mcq = p.mcq.map((q, k) => {
-        const picked = z.picks[k];
-        return `<div class="rd-q${picked >= 0 ? ' done' : ''}">
+    const part = k === 0 ? 'reading_part_mcq' : k === nm ? 'reading_part_tf' : '';
+    const head = part ? `<h4 class="grammar-sub rd-part">${escHtml(t(part))}</h4>` : '';
+    if (k < nm) {
+        const q = p.mcq[k];
+        return `${head}<div class="rd-q${picked >= 0 ? ' done' : ''}">
             <h4 lang="${set.lang}"><span class="rd-qn">${k + 1}.</span> ${readingSegsHtml(q.q, false)}</h4>
             <div class="rd-opts">${q.options.map((o, i) => {
                 let cls = '';
@@ -592,41 +655,49 @@ function readingQuizHtml(set) {
             }).join('')}</div>
             ${picked >= 0 ? why(q) : ''}
         </div>`;
-    }).join('');
-    const tf = p.tf.map((q, k) => {
-        const idx = nm + k;
-        const picked = z.picks[idx];
-        const btn = (val, label) => {
-            const i = val ? 1 : 0;
-            let cls = '';
-            if (picked >= 0 && val === q.answer) cls = ' correct-choice';
-            else if (picked === i) cls = ' wrong-choice';
-            return `<button type="button" class="btn option-btn rd-tf-btn${cls}" onclick="readingAnswer(${idx}, ${i})"${picked >= 0 ? ' disabled' : ''} aria-label="${escHtml(t(val ? 'reading_true' : 'reading_false'))}">${label}</button>`;
-        };
-        return `<div class="rd-q${picked >= 0 ? ' done' : ''}">
-            <h4 lang="${set.lang}"><span class="rd-qn">${nm + k + 1}.</span> ${readingSegsHtml(q.s, false)}</h4>
-            <div class="rd-tf">${btn(true, '○')}${btn(false, '×')}</div>
-            ${picked >= 0 ? why(q) : ''}
-        </div>`;
-    }).join('');
-    const answered = z.picks.filter(x => x >= 0).length;
+    }
+    const q = p.tf[k - nm];
+    const btn = (val, label) => {
+        const i = val ? 1 : 0;
+        let cls = '';
+        if (picked >= 0 && val === q.answer) cls = ' correct-choice';
+        else if (picked === i) cls = ' wrong-choice';
+        return `<button type="button" class="btn option-btn rd-tf-btn${cls}" onclick="readingAnswer(${k}, ${i})"${picked >= 0 ? ' disabled' : ''} aria-label="${escHtml(t(val ? 'reading_true' : 'reading_false'))}">${label}</button>`;
+    };
+    return `${head}<div class="rd-q${picked >= 0 ? ' done' : ''}">
+        <h4 lang="${set.lang}"><span class="rd-qn">${k + 1}.</span> ${readingSegsHtml(q.s, false)}</h4>
+        <div class="rd-tf">${btn(true, '○')}${btn(false, '×')}</div>
+        ${picked >= 0 ? why(q) : ''}
+    </div>`;
+}
+
+/* the side panel: 題目 / 生詞 tabs; the questions a page at a time, the result on top once done */
+function readingPanelHtml(set, p) {
+    const z = readingQuiz;
     const total = z.picks.length;
-    return `<div class="grammar-top">
-            <button type="button" class="btn back-btn grammar-back" onclick="readingGo('read')">${escHtml(t('reading_back_text'))}</button>
-            <span class="grammar-count">${escHtml(t('reading_answered', { n: answered, m: total }))}</span>
-        </div>
-        <div class="rd-head">
-            <div class="rd-title rd-title-sm" lang="${set.lang}">${readingSegsHtml(p.title.t, false)}</div>
-            <div class="rd-sub">${escHtml(t('reading_quiz_hint'))}</div>
-        </div>
-        <details class="rd-peek"><summary>${uiIcon('document')} ${escHtml(t('reading_peek'))}</summary>
-            <div class="rd-text${readingFuri() ? '' : ' no-furi'}" lang="${set.lang}">${p.paragraphs.map(para => `<p>${para.s.map(s => readingSegsHtml(s.t, false)).join(readingSep(set))}</p>`).join('')}</div>
-        </details>
-        <h4 class="grammar-sub rd-part">${escHtml(t('reading_part_mcq'))}</h4>
-        <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${mcq}</div>
-        <h4 class="grammar-sub rd-part">${escHtml(t('reading_part_tf'))}</h4>
-        <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${tf}</div>
-        ${z.done ? readingResultHtml(set) : ''}`;
+    const answered = z.picks.filter(x => x >= 0).length;
+    const tab = (k, label) => `<button type="button" role="tab" class="rd-tab${readingPanel === k ? ' on' : ''}" aria-selected="${readingPanel === k}" onclick="readingSetPanel('${k}')">${label}</button>`;
+    const head = `<div class="rd-tabs" role="tablist">
+            ${tab('q', escHtml(t('reading_tab_q', { n: answered, m: total })))}
+            ${tab('gloss', '📘 ' + escHtml(t('reading_glossary')) + ` <small>${p.glossary.length}</small>`)}
+        </div>`;
+    if (readingPanel === 'gloss') return head + readingGlossHtml(set, p);
+    const pages = readingPages(total);
+    const from = z.page * READING_Q_PAGE;
+    let qs = '';
+    for (let k = from; k < Math.min(total, from + READING_Q_PAGE); k++) qs += readingQuestionHtml(set, p, k);
+    const note = z.done ? '' : z.resumed
+        ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: answered, m: total }))} <button type="button" class="rd-link" onclick="readingRetry()">${escHtml(t('reading_restart'))}</button></p>`
+        : answered ? '' : `<p class="rd-note">${escHtml(t('reading_quiz_hint'))}</p>`;
+    return `${head}
+        ${z.done ? readingResultHtml(set) : ''}
+        ${note}
+        <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${qs}</div>
+        ${pages > 1 ? `<div class="rd-pager">
+            <button type="button" class="btn back-btn" onclick="readingQPage(-1)"${z.page === 0 ? ' disabled' : ''}>${escHtml(t('mistake_prev'))}</button>
+            <span>${escHtml(t('updates_page', { n: z.page + 1, m: pages }))}</span>
+            <button type="button" class="btn back-btn" onclick="readingQPage(1)"${z.page >= pages - 1 ? ' disabled' : ''}>${escHtml(t('mistake_next'))}</button>
+        </div>` : ''}`;
 }
 
 function readingAnswer(k, i) {
@@ -639,9 +710,8 @@ function readingAnswer(k, i) {
     if (typeof logDailyActivity === 'function') logDailyActivity();
     if (!right && typeof railReact === 'function') railReact('wrong');
     if (z.picks.every(x => x >= 0)) readingFinish();
-    const y = window.scrollY;
-    renderReading();
-    window.scrollTo({ top: y });
+    else readingSaveResume();
+    readingRenderPanel();
     if (z.done) {
         const res = document.querySelector('#reading-card .rd-result');
         if (res) res.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -661,6 +731,8 @@ function readingScore(p) {
 function readingFinish() {
     const z = readingQuiz;
     z.done = true;
+    readingStopTimer();
+    resumeClear(readingQuizKey());
     const set = readingSets[readingSetId];
     const p = set.passages[readingNo];
     const right = readingScore(p);
@@ -695,7 +767,8 @@ function readingResultHtml(set) {
             <div class="grammar-result-btns">
                 <button type="button" class="btn next-btn" onclick="readingStartReview()">📘 ${escHtml(t('reading_review_btn', { n: p.glossary.length }))}</button>
                 ${!last ? `<button type="button" class="btn ${pass ? 'next-btn' : 'back-btn'}" onclick="readingGo('read', ${readingNo + 1})">${escHtml(t('reading_next_passage'))}</button>` : ''}
-                <button type="button" class="btn back-btn" onclick="${pass ? "readingGo('list')" : "readingGo('read')"}">${escHtml(t(pass ? 'reading_back_list' : 'reading_reread'))}</button>
+                <button type="button" class="btn back-btn" onclick="readingRetry()">${escHtml(t('reading_again'))}</button>
+                <button type="button" class="btn back-btn" onclick="readingGo('list')">${escHtml(t('reading_back_list'))}</button>
             </div>
         </div>`;
 }

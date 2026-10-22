@@ -1,7 +1,7 @@
 /* ===================== 閱讀 Reading (#page-reading, js/reading.js) =====================
    The list and the result screens reuse the grammar page's classes (css/grammar.css);
    this file adds the reader (furigana, tappable sentences and words, the word card),
-   the one-page quiz with ○ / × and the timer / text size tools. */
+   the question panel beside the text (○ / × too) and the timer / text size tools. */
 
 .reading-card { text-align: left; }
 .reading-card h3 { text-align: center; }
@@ -145,11 +145,46 @@
 .rd-speed { color: var(--text-secondary); font-size: 0.9rem; }
 .rd-review-word { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; margin: 6px 0; }
 
-/* computers: text left, glossary + the quiz button right (sticky) on a 1180px page */
+/* the side panel (js/reading.js readingPanelHtml): 題目 / 生詞 tabs, the questions
+   READING_Q_PAGE a page, 上一頁 / 下一頁 */
+.rd-col-side { margin-top: 18px; }
+.rd-tabs { display: flex; gap: 6px; margin-bottom: 12px; border-bottom: 2px solid var(--line); }
+.rd-tab {
+    flex: 1;
+    padding: 9px 10px;
+    margin-bottom: -2px;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    background: none;
+    color: var(--text-secondary);
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+}
+.rd-tab small { font-weight: 500; color: var(--text-muted); }
+.rd-tab.on { color: var(--primary); border-bottom-color: var(--primary); }
+.rd-note { font-size: 0.85rem; color: var(--text-secondary); margin: 0 0 12px; }
+.rd-link { border: 0; background: none; padding: 0; color: var(--primary); font: inherit; font-weight: 700; text-decoration: underline; cursor: pointer; }
+.rd-col-side .rd-part:first-child { margin-top: 0; }
+.rd-col-side .rd-gloss { margin: 0; }
+.rd-pager { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.rd-pager .btn { width: auto; flex: 1; max-width: 160px; margin: 0; }
+.rd-pager .btn:disabled { opacity: 0.4; cursor: default; }
+.rd-pager span { font-size: 0.85rem; color: var(--text-secondary); white-space: nowrap; }
+.rd-col-side .rd-result { margin: 0 0 18px; padding: 0 0 18px; border-top: 0; border-bottom: 2px dashed var(--line); }
+
+/* computers: text left, the panel right (sticky, scrolling by itself) on a 1180px page */
 @media (min-width: 1024px) {
-    .rd-cols { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 24px; align-items: start; }
-    .rd-col-side { position: sticky; top: 16px; }
-    .rd-col-side .rd-gloss { margin-top: 0; }
+    .rd-cols { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 24px; align-items: start; }
+    .rd-col-side {
+        position: sticky;
+        top: 16px;
+        margin-top: 0;
+        max-height: calc(100vh - 32px);
+        overflow-y: auto;
+        padding-right: 4px;
+    }
     .rd-col-side .rd-gloss ul { grid-template-columns: 1fr; }
 }
 
@@ -203,3 +238,10 @@
 @media (min-width: 769px) {
     .rdx-opts { grid-template-columns: 1fr 1fr; }
 }
+/* computers: the text left, its questions right (the page is 1180px wide, body.reading-wide) */
+@media (min-width: 1024px) {
+    .rdx-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+    .rdx-col-text { position: sticky; top: 16px; }
+    .rdx-col-q .rdx-opts { grid-template-columns: 1fr; }
+}
+.rd-half { font-size: 0.78rem; font-weight: 700; color: var(--primary); white-space: nowrap; }

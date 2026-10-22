@@ -9,7 +9,10 @@
    picked; a mock exam is timed (set.minutes, from the moment it starts, submitted when
    time runs out), answers can change until it is handed in, then a sheet of answers
    opens each question in review. READING_PASS of a set right marks it done in
-   reading_progress ("<level>:set:<set>", synced). Answers count toward daily_activity. */
+   reading_progress ("<level>:set:<set>", synced). Answers count toward daily_activity.
+   A practice round left halfway is kept in study_resume (resumeSave, js/quiz.js) and
+   picked up next time; a mock exam is not (2026-10-22). Computers show the text on
+   the left and its questions on the right. */
 
 const READING_ASK_KO = {
     topic: '무엇에 대한 내용입니까? 알맞은 것을 고르십시오.',
@@ -30,7 +33,7 @@ const READING_ASK_KO = {
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 
-let readingExam = null;   // { si, qs: [{ item, q, n }], qi (item on screen), picks [], start, mock, done, reviewing, tick }
+let readingExam = null;   // { si, key, qs: [{ item, q, n }], qi (item on screen), picks [], start, base, mock, done, reviewing, resumed, tick }
 
 function readingSetKey(set, st) { return set.id + ':set:' + st.id; }
 
@@ -46,6 +49,8 @@ function readingSetsHtml(set) {
     const card = (st, i) => {
         const best = prog[readingSetKey(set, st)];
         const ok = best && best.best / best.of >= READING_PASS;
+        const half = !st.mock && resumeGet('reading|' + readingSetKey(set, st));
+        const halfN = half && Array.isArray(half.picks) ? half.picks.filter(p => p !== -1).length : 0;
         const meta = st.mock ? t('reading_exam_meta', { n: st.count, m: st.minutes }) : t('reading_set_meta', { n: st.count });
         return `<li><button type="button" class="grammar-item${ok ? ' learned' : ''}${st.mock ? ' ls-mock-item' : ''}" onclick="readingExamStart(${i})">
             <span class="grammar-num">${st.mock ? '📝' : set.sets.filter(x => !x.mock).indexOf(st) + 1}</span>
@@ -53,7 +58,7 @@ function readingSetsHtml(set) {
                 <span class="grammar-pattern">${escHtml(readingSetName(set, st))}</span>
                 <span class="rd-meta">${escHtml(meta)}</span>
             </span>
-            <span class="grammar-state">${best ? (ok ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
+            <span class="grammar-state">${halfN ? `<span class="rd-half">${escHtml(t('reading_half', { n: halfN, m: st.count }))}</span>` : best ? (ok ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
         </button></li>`;
     };
     const mocks = set.sets.filter(st => st.mock);
@@ -68,14 +73,20 @@ function readingSetsHtml(set) {
         ${set.passages.length ? `<h4 class="grammar-sub rdx-head">${escHtml(t('reading_short_head'))}</h4>` : ''}`;
 }
 
-function readingExamStart(si) {
+function readingExamStart(si, fresh) {
     const set = readingSets[readingSetId];
     const st = set && set.sets[si];
     if (!st) return;
     const qs = [];
     st.items.forEach((item, ii) => item.questions.forEach((q, k) => qs.push({ item, ii, k, q, n: st.start + qs.length })));
     readingExamStopClock();
-    readingExam = { si, qs, qi: 0, picks: qs.map(() => -1), start: Date.now(), mock: st.mock, done: false, reviewing: false };
+    const key = 'reading|' + readingSetKey(set, st);
+    if (fresh) resumeClear(key);
+    const r = st.mock || fresh ? null : resumeGet(key);
+    const ok = !!r && Array.isArray(r.picks) && r.picks.length === qs.length;
+    readingExam = { si, key, qs, qi: ok ? Math.min(r.qi || 0, qs.length - 1) : 0, picks: ok ? r.picks.slice() : qs.map(() => -1),
+                    start: Date.now(), base: ok ? r.secs || 0 : 0, mock: st.mock, done: false, reviewing: false,
+                    resumed: ok && r.picks.some(p => p !== -1) };
     readingView = 'exam';
     if (st.mock) readingExam.tick = setInterval(readingExamClock, 1000);
     renderReading();
@@ -85,6 +96,13 @@ function readingExamStart(si) {
 function readingExamStopClock() {
     if (readingExam && readingExam.tick) clearInterval(readingExam.tick);
     if (readingExam) readingExam.tick = null;
+}
+
+/* a practice round's answers and place so far (never a mock exam's) */
+function readingExamSave() {
+    const z = readingExam;
+    if (!z || z.mock || z.done || z.reviewing || !z.picks.some(p => p !== -1)) return;
+    resumeSave(z.key, { picks: z.picks, qi: z.qi, secs: z.base + Math.round((Date.now() - z.start) / 1000) });
 }
 
 /* seconds left in a mock exam */
@@ -201,12 +219,17 @@ function readingExamHtml(set) {
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
         <div class="rdx-ask"><span lang="ko">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? READING_ASK_KO[asks[0]] : '다음을 읽고 물음에 답하십시오.')}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
-        <div class="rdx-item">
-            <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${escHtml(t('reading_passage_label'))}</div>
-            ${readingExBodyHtml(item)}
+        ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
+        <div class="rdx-cols">
+            <div class="rdx-col-text">
+                <div class="rdx-item">
+                    <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${escHtml(t('reading_passage_label'))}</div>
+                    ${readingExBodyHtml(item)}
+                </div>
+                ${z.reviewing || (!z.mock && answered) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
+            </div>
+            <div class="rdx-col-q">${qHtml}</div>
         </div>
-        ${z.reviewing || (!z.mock && answered) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
-        ${qHtml}
         <div class="grammar-nav">
             <button type="button" class="btn back-btn" onclick="readingExamMove(-1)"${firstQ === 0 ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
             ${next}
@@ -222,6 +245,7 @@ function readingExamPick(i, k) {
     if (!z.mock && z.picks[i] !== -1) return;   // practice: the first pick counts
     z.picks[i] = k;
     if (!z.mock && typeof logDailyActivity === 'function') logDailyActivity(1);
+    readingExamSave();
     renderReading();
 }
 
@@ -232,11 +256,13 @@ function readingExamMove(d) {
     const target = d > 0 ? own[own.length - 1].i + 1 : own[0].i - 1;
     if (target < 0 || target >= z.qs.length) return;
     z.qi = target;
+    readingExamSave();
     renderReading();
     window.scrollTo({ top: 0 });
 }
 
 function readingExamQuit() {
+    readingExamSave();
     readingExamStopClock();
     readingExam = null;
     readingGo('list');
@@ -254,7 +280,8 @@ function readingExamFinish(timeUp) {
     readingExamStopClock();
     z.done = true;
     z.timeUp = !!timeUp;
-    z.secs = Math.round((Date.now() - z.start) / 1000);
+    z.secs = z.base + Math.round((Date.now() - z.start) / 1000);
+    if (!z.mock) resumeClear(z.key);
     const set = readingSets[readingSetId];
     const st = set.sets[z.si];
     const right = z.qs.filter((x, i) => z.picks[i] === x.q.answer).length;
@@ -291,7 +318,7 @@ function readingExamResultHtml(set) {
             <p class="rd-help">${escHtml(t('reading_sheet_hint'))}</p>
             ${sheet}
             <div class="grammar-nav">
-                <button type="button" class="btn back-btn" onclick="readingExamStart(${z.si})">${escHtml(t('reading_set_again'))}</button>
+                <button type="button" class="btn back-btn" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_set_again'))}</button>
                 <button type="button" class="btn next-btn" onclick="readingExamQuit()">${escHtml(t('listening_back_list'))}</button>
             </div>
         </div>`;
