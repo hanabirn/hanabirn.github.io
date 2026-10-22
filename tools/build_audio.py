@@ -490,7 +490,7 @@ def gemini_say(key, lang, text, model=None):
             msg = e.read().decode('utf-8', 'replace')
             if e.code == 429:
                 if re.search(r'PerDay|per_day|per day', msg, re.I):
-                    raise QuotaSpent(msg[:300]) from None
+                    raise QuotaSpent(msg[:3000]) from None
                 throttle(pause=60)
                 continue
             if e.code in (500, 502, 503, 504) and attempt < 7:
@@ -711,6 +711,9 @@ def run_gemini(lang, files, aliases, top, limit):
           f'({sum(1 for t, _ in todo if t == 0)} reading, {sum(1 for t, _ in todo if t == 1)} grammar, '
           f'{sum(1 for t, _ in todo if t == 2)} other), {len(made)} done before')
     key = gemini_key()
+    # which key this is, without showing it (compare with the PC's): the first 8 hex of its sha256
+    import hashlib
+    print(f'  key sha256 {hashlib.sha256(key.encode()).hexdigest()[:8]}, {len(key)} characters', flush=True)
     done = 0
 
     def save_index():
@@ -738,7 +741,7 @@ def run_gemini(lang, files, aliases, top, limit):
                 GEMINI_SPENT.add(models[0])
                 # Google's own words, so an unexpected "spent" can be told apart (the
                 # first GitHub Actions run, 2026-10-22, got one while the PC's key still worked)
-                print(f'  {lang}: {models[0]} is spent for today, moving on (Google: {str(e)[:400]})', flush=True)
+                print(f'  {lang}: {models[0]} is spent for today, moving on (Google: {" ".join(str(e).split())[:1500]})', flush=True)
 
     try:
         for tier, fid in todo:
