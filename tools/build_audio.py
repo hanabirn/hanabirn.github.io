@@ -734,9 +734,11 @@ def run_gemini(lang, files, aliases, top, limit):
                 raise QuotaSpent(f'every model available for {lang} is spent for today')
             try:
                 return gemini_say(key, lang, said, models[0]), models[0]
-            except QuotaSpent:
+            except QuotaSpent as e:
                 GEMINI_SPENT.add(models[0])
-                print(f'  {lang}: {models[0]} is spent for today, moving on', flush=True)
+                # Google's own words, so an unexpected "spent" can be told apart (the
+                # first GitHub Actions run, 2026-10-22, got one while the PC's key still worked)
+                print(f'  {lang}: {models[0]} is spent for today, moving on (Google: {str(e)[:400]})', flush=True)
 
     try:
         for tier, fid in todo:
