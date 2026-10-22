@@ -20,44 +20,6 @@ function storeSet(key, value) {
     return false;
 }
 
-/* ----- work in progress on the 學習 pages (owner's request 2026-10-22) -----
-   A reading passage's answers and a reading / listening practice round's answers and
-   place, so a visitor who leaves halfway carries on next time — on any device
-   (study_resume is synced, js/account.js: per key the newer `at` wins). Keys
-   "reading|<level>:<passage>", "reading|<level>:set:<set>", "listening|<level>:<set>".
-   A finished one becomes { done: true, at } rather than being deleted, so the cloud
-   copy can't bring it back; entries older than RESUME_KEEP_DAYS are dropped. Mock
-   exams are never kept (they are taken in one go). */
-const RESUME_KEEP_DAYS = 60;
-
-function resumeAll() {
-    try { return JSON.parse(localStorage.getItem('study_resume')) || {}; } catch { return {}; }
-}
-
-function resumeGet(key) {
-    const r = resumeAll()[key];
-    return r && !r.done ? r : null;
-}
-
-function resumeWrite(all) {
-    const cut = Date.now() - RESUME_KEEP_DAYS * 24 * 60 * 60 * 1000;
-    Object.keys(all).forEach(k => { if (!all[k] || (all[k].at || 0) < cut) delete all[k]; });
-    storeSet('study_resume', JSON.stringify(all));
-}
-
-function resumeSave(key, state) {
-    const all = resumeAll();
-    all[key] = Object.assign({}, state, { at: Date.now() });
-    resumeWrite(all);
-}
-
-function resumeClear(key) {
-    const all = resumeAll();
-    if (!all[key] || all[key].done) return;
-    all[key] = { done: true, at: Date.now() };
-    resumeWrite(all);
-}
-
 /* ----- a page's intro line (proposal E, 2026-10-17) -----
    Shown under the title the first times a page is opened, with 知道了; after that it
    folds into an ⓘ beside the title that brings it back. Which ones were folded is kept

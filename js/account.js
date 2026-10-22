@@ -107,13 +107,6 @@ const SYNC_KEYS = {
         });
         return o;
     } },
-    // half-done reading / listening rounds (resumeSave in js/quiz.js): per round the newer
-    // copy wins, a finished round's { done } marker included
-    study_resume: { empty: {}, merge: (a, b) => {
-        const o = Object.assign({}, a);
-        Object.entries(b).forEach(([k, r]) => { if (r && (!o[k] || (r.at || 0) > (o[k].at || 0))) o[k] = r; });
-        return o;
-    } },
     // the notepad (js/notes.js): each note / folder by id, the copy edited last wins (a
     // deleted one is kept as a tombstone, so deleting syncs too); attachments stay on the device
     notepad_notes: { empty: [], merge: notesSyncMerge },
