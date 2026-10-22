@@ -18,7 +18,6 @@
 const FC_SESSION_SIZE = 20;
 const FC_SWIPE_PX = 90;          // drag further than this to rate a card
 const MISTAKE_REPAIR_SIZE = 10;
-const MISTAKE_ROWS_STEP = 20;
 const STATS_WEEKS = 16;
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -135,24 +134,72 @@ function renderPracticeHub() {
         </div>`;
 }
 
-/* ===================== 錯題本 (mistake notebook) ===================== */
+/* ===================== 錯題本 (mistake notebook) =====================
+   Redesigned 2026-10-22 (owner's request): a two-step filter — the language first
+   (flag, name, open mistakes), then that language's levels (JLPT N5 …; the topic sets
+   together as 主題單字, the notepad's cards as 筆記) — a sort switch, and the words in
+   two columns on computers, MB_PAGE a page with 上一頁 / 下一頁. The card is 1180px
+   wide on computers like the reading page (css/base.css). */
 
-let mbFilter = 'all';
+const MB_PAGE = 20;
+let mbLang = 'all';       // 'all' | a learning language (ja, ko …)
+let mbGroup = 'all';      // 'all' | a word set id | 'topics' | 'notes'
 let mbSort = 'count';     // 'count' | 'recent' | 'fixed'
-let mbShown = MISTAKE_ROWS_STEP;
+let mbPage = 0;
 let mbRows = [];          // the rows on screen, for the ✕ buttons
+
+const MB_CODE_LANG = Object.fromEntries(Object.entries(LEARN_QUIZ_CODE).map(([l, c]) => [c, l]));   // jp → ja
+
+/* the learning language a mistake's word set belongs to ('' when unknown) */
+function mbLangOf(id) {
+    const note = /^note_([a-z]+)$/.exec(id || '');
+    if (note) return LEARN_LANGS.includes(note[1]) ? note[1] : '';
+    const tp = topicOf(id);
+    if (tp) return tp.lang;
+    if (MB_CODE_LANG[id]) return MB_CODE_LANG[id];          // the retired general sets (jp, kr …)
+    for (const [code, ids] of Object.entries(WORD_SET_FAMILIES)) if (ids.includes(id)) return MB_CODE_LANG[code] || '';
+    return '';
+}
+
+/* the second-step group of a word set: its own id, or all topics / all notes together */
+function mbGroupOf(id) {
+    if (topicOf(id)) return 'topics';
+    if (/^note_/.test(id || '')) return 'notes';
+    return id;
+}
+
+/* a group's short name inside its language: "N5", "A1", "主題單字", "筆記" */
+function mbGroupName(g) {
+    if (g === 'topics') return t('mistake_group_topics');
+    if (g === 'notes') return t('mistake_group_notes');
+    const cefr = /^(fr|ru|es|de)_([abc][12])$/.exec(g);
+    if (cefr) return cefr[2].toUpperCase();
+    if (LEGACY_SET_IDS.includes(g)) return t('mistake_group_old');
+    return practiceSetName(g);
+}
+
+function mbInFilter(m) {
+    if (mbLang !== 'all' && (mbLangOf(m.lang) || 'other') !== mbLang) return false;
+    return mbGroup === 'all' || mbGroupOf(m.lang) === mbGroup;
+}
 
 function showMistakeBook() {
     endReviewState();
-    mbShown = MISTAKE_ROWS_STEP;
+    mbPage = 0;
     showOnlyQuizCard('mistake-card');
     renderMistakeBook();
     window.scrollTo(0, 0);
 }
 
-function mbSetFilter(v) { mbFilter = v; mbShown = MISTAKE_ROWS_STEP; renderMistakeBook(); }
-function mbSetSort(v) { mbSort = v; mbShown = MISTAKE_ROWS_STEP; renderMistakeBook(); }
-function mbMore() { mbShown += MISTAKE_ROWS_STEP; renderMistakeBook(); }
+function mbSetLang(v) { mbLang = v; mbGroup = 'all'; mbPage = 0; renderMistakeBook(); }
+function mbSetGroup(v) { mbGroup = v; mbPage = 0; renderMistakeBook(); }
+function mbSetSort(v) { mbSort = v; mbPage = 0; renderMistakeBook(); }
+function mbGoPage(d) {
+    mbPage = Math.max(0, mbPage + d);
+    renderMistakeBook();
+    const list = document.querySelector('#mistake-content .mb-toolbar');
+    if (list && list.getBoundingClientRect().top < 0) list.scrollIntoView({ block: 'start' });
+}
 
 /* ＋筆記 (js/notes.js): a missed word into its word set's note, as a word card */
 function mbNote(i) {
@@ -169,11 +216,17 @@ function mbDelete(i) {
     renderMistakeBook();
 }
 
+/* the name of what the filter shows: "全部", "日文", "日文 N5" */
+function mbFilterName() {
+    if (mbLang === 'all') return t('mistake_all');
+    const lang = learnLangName(mbLang);
+    return mbGroup === 'all' ? lang : lang + ' ' + mbGroupName(mbGroup);
+}
+
 function mbClearFilter() {
-    const name = mbFilter === 'all' ? t('mistake_all') : practiceSetName(mbFilter);
-    if (!confirm(t('mistake_clear_confirm', { name }))) return;
-    saveMistakes(getMistakes().filter(m => mbFilter !== 'all' && m.lang !== mbFilter));
-    mbFilter = 'all';
+    if (!confirm(t('mistake_clear_confirm', { name: mbFilterName() }))) return;
+    saveMistakes(getMistakes().filter(m => !mbInFilter(m)));
+    mbLang = 'all'; mbGroup = 'all'; mbPage = 0;
     renderMistakeBook();
 }
 
@@ -182,6 +235,29 @@ function mistakeRowParts(m) {
     const p = m.group === 'reading' ? { sub: m.answer, line: m.hint || '' } : { sub: m.hint || '', line: m.answer };
     if (p.sub === m.word) p.sub = '';   // a kana word's "reading" is the word itself
     return p;
+}
+
+function mbRowHtml(m, i, n) {
+    const p = mistakeRowParts(m);
+    const fixedRow = !isMistakeActive(m);
+    const dots = '<i></i>'.repeat(Math.min(m.count || 1, 5)) + (m.count > 5 ? `<em>×${m.count}</em>` : '');
+    const slots = Array.from({ length: MISTAKE_FIX_STREAK }, (_, k) => `<i class="${k < (m.fix || 0) ? 'on' : ''}"></i>`).join('');
+    const where = mbLang === 'all' || mbGroup === 'all' ? `<span class="mb-set">${escHtml(practiceSetName(m.lang))}</span>` : '';
+    return `<li class="mb-row${fixedRow ? ' fixed' : ''}">
+        <span class="mb-n">${n}</span>
+        <div class="mb-word">
+            <div><b>${escHtml(m.word)}</b>${p.sub ? `<span>${escHtml(p.sub)}</span>` : ''}</div>
+            <div class="mb-line">${escHtml(p.line)}</div>
+            ${where}
+        </div>
+        ${fixedRow
+            ? `<span class="mb-stamp">${escHtml(t('mistake_fixed_stamp'))}</span>`
+            : `<div class="mb-state" title="${escHtml(t('mistake_state_title', { n: m.count || 1, f: m.fix || 0, m: MISTAKE_FIX_STREAK }))}">
+                <span class="mb-dots">${dots}</span><span class="mb-slots">${slots}</span>
+            </div>`}
+        <button type="button" class="mb-note" onclick="mbNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('document')}</button>
+        <button type="button" class="mb-del" onclick="mbDelete(${i})" aria-label="${escHtml(t('mistake_delete'))}">✕</button>
+    </li>`;
 }
 
 function renderMistakeBook() {
@@ -198,68 +274,87 @@ function renderMistakeBook() {
         return;
     }
 
-    const noteSets = [...new Set(all.map(m => m.lang).filter(l => /^note_/.test(l || '')))];   // js/notes.js word cards
-    const sets = QUIZ_LANG_ORDER.concat(LEGACY_SET_IDS, noteSets).filter(id => all.some(m => m.lang === id));
-    if (mbFilter !== 'all' && !sets.includes(mbFilter)) mbFilter = 'all';
-    const inFilter = m => mbFilter === 'all' || m.lang === mbFilter;
-    const open = openAll.filter(inFilter);
-    const fixed = fixedAll.filter(inFilter);
+    // step 1: the languages that have mistakes, in the learning-language order
+    const langs = LEARN_LANGS.filter(l => all.some(m => mbLangOf(m.lang) === l));
+    if (all.some(m => !mbLangOf(m.lang))) langs.push('other');
+    if (mbLang !== 'all' && !langs.includes(mbLang)) { mbLang = 'all'; mbGroup = 'all'; }
+    const openIn = l => openAll.filter(m => (mbLangOf(m.lang) || 'other') === l).length;
+    // step 2: that language's groups, in its word-set order
+    let groups = [];
+    if (mbLang !== 'all') {
+        const order = [].concat(WORD_SET_FAMILIES[LEARN_QUIZ_CODE[mbLang]] || []).map(mbGroupOf);
+        const have = [...new Set(all.filter(m => (mbLangOf(m.lang) || 'other') === mbLang).map(m => mbGroupOf(m.lang)))];
+        groups = have.sort((a, b) => {
+            const ia = order.indexOf(a), ib = order.indexOf(b);
+            return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+        });
+        if (mbGroup !== 'all' && !groups.includes(mbGroup)) mbGroup = 'all';
+    }
+    const open = openAll.filter(mbInFilter);
+    const fixed = fixedAll.filter(mbInFilter);
 
     const total = openAll.length + fixedAll.length;
     const pct = total ? Math.round(fixedAll.length / total * 100) : 0;
-    let html = head + `
-        <div class="mb-summary">
-            <div class="pc-ring" style="--p:${pct}"><div><b>${fixedAll.length}</b><small>/ ${total}</small></div></div>
-            <div class="pc-bubble">${escHtml(t('mistake_bubble', { n: MISTAKE_FIX_STREAK }))}</div>
-        </div>`;
     const repairN = Math.min(MISTAKE_REPAIR_SIZE, open.length);
-    html += repairN > 0
-        ? `<button type="button" class="next-btn pc-wide" onclick="startMistakeRepair()">🔧 ${escHtml(t('mistake_repair_btn', { n: repairN }))}</button>`
-        : `<p class="pc-note">${escHtml(t('mistake_all_fixed'))}</p>`;
+    const fixedWeek = fixedAll.filter(m => m.fixedAt > now - 7 * DAY_MS).length;
+    let html = head + `
+        <div class="mb-top">
+            <div class="mb-summary">
+                <div class="pc-ring" style="--p:${pct}"><div><b>${fixedAll.length}</b><small>/ ${total}</small></div></div>
+                <div class="pc-bubble">${escHtml(t('mistake_bubble', { n: MISTAKE_FIX_STREAK }))}</div>
+            </div>
+            <div class="mb-act">
+                ${repairN > 0
+                    ? `<button type="button" class="next-btn pc-wide" onclick="startMistakeRepair()">🔧 ${escHtml(t('mistake_repair_btn', { n: repairN }))}</button>
+                       <p class="mb-act-sub">${escHtml(mbFilterName())}</p>`
+                    : `<p class="pc-note">${escHtml(t('mistake_all_fixed'))}</p>`}
+                ${fixedWeek > 0 ? `<p class="mb-week">✓ ${escHtml(t('mistake_fixed_week', { n: fixedWeek }))}</p>` : ''}
+            </div>
+        </div>`;
 
-    const chip = (on, call, label) => `<button type="button" class="pc-chip${on ? ' on' : ''}" onclick="${call}" aria-pressed="${on}">${escHtml(label)}</button>`;
-    html += `<div class="pc-chips">${chip(mbFilter === 'all', "mbSetFilter('all')", t('mistake_all') + ' ' + openAll.length)}${
-        sets.map(id => chip(mbFilter === id, `mbSetFilter('${id}')`, practiceSetName(id) + ' ' + openAll.filter(m => m.lang === id).length)).join('')}</div>`;
-    html += `<div class="pc-chips">${chip(mbSort === 'count', "mbSetSort('count')", t('mistake_sort_count'))}${
-        chip(mbSort === 'recent', "mbSetSort('recent')", t('mistake_sort_recent'))}${
-        chip(mbSort === 'fixed', "mbSetSort('fixed')", t('mistake_sort_fixed') + ' ' + fixed.length)}</div>`;
+    const langBtn = (v, inner, n) => `<button type="button" class="mb-lang${mbLang === v ? ' on' : ''}" onclick="mbSetLang('${v}')" aria-pressed="${mbLang === v}">${inner}<b>${n}</b></button>`;
+    html += `<div class="mb-filter">
+        <div class="mb-langs">${langBtn('all', `<span class="mb-lang-name">${escHtml(t('mistake_all'))}</span>`, openAll.length)}${
+            langs.map(l => langBtn(l, l === 'other' ? `<span class="mb-lang-name">${escHtml(t('mistake_group_old'))}</span>`
+                : `${learnFlags(l)}<span class="mb-lang-name">${escHtml(learnLangName(l))}</span>`, openIn(l))).join('')}</div>
+        ${groups.length > 1 ? `<div class="mb-groups">${[['all', t('mistake_all')]].concat(groups.map(g => [g, mbGroupName(g)])).map(([g, label]) => {
+            const n = g === 'all' ? openIn(mbLang) : openAll.filter(m => (mbLangOf(m.lang) || 'other') === mbLang && mbGroupOf(m.lang) === g).length;
+            return `<button type="button" class="pc-chip${mbGroup === g ? ' on' : ''}" onclick="mbSetGroup('${g}')" aria-pressed="${mbGroup === g}">${escHtml(label)} ${n}</button>`;
+        }).join('')}</div>` : ''}
+    </div>`;
 
     let rows;
     if (mbSort === 'fixed') rows = fixed.slice().sort((a, b) => b.fixedAt - a.fixedAt);
     else if (mbSort === 'recent') rows = open.slice().sort((a, b) => b.last - a.last);
     else rows = open.slice().sort((a, b) => (b.count - a.count) || (b.last - a.last));
-    mbRows = rows.slice(0, mbShown);
+    const pages = Math.max(1, Math.ceil(rows.length / MB_PAGE));
+    mbPage = Math.min(mbPage, pages - 1);
+    const from = mbPage * MB_PAGE;
+    mbRows = rows.slice(from, from + MB_PAGE);
+
+    const seg = (v, label) => `<button type="button" class="mode-btn${mbSort === v ? ' mode-btn-active' : ''}" onclick="mbSetSort('${v}')" aria-pressed="${mbSort === v}">${escHtml(label)}</button>`;
+    html += `<div class="mb-toolbar">
+        <span class="mb-count">${escHtml(t(mbSort === 'fixed' ? 'mistake_count_fixed' : 'mistake_count_open', { n: rows.length }))}</span>
+        <span class="mb-sort" role="group" aria-label="${escHtml(t('mistake_sort'))}">${seg('count', t('mistake_sort_count'))}${seg('recent', t('mistake_sort_recent'))}${seg('fixed', t('mistake_sort_fixed') + ' ' + fixed.length)}</span>
+    </div>`;
 
     if (mbRows.length === 0) {
         html += `<p class="pc-note">${escHtml(t(mbSort === 'fixed' ? 'mistake_none_fixed' : 'mistake_none_here'))}</p>`;
     } else {
-        html += '<ol class="mb-notebook">' + mbRows.map((m, i) => {
-            const p = mistakeRowParts(m);
-            const fixedRow = !isMistakeActive(m);
-            const dots = '<i></i>'.repeat(Math.min(m.count || 1, 5)) + (m.count > 5 ? `<em>×${m.count}</em>` : '');
-            const slots = Array.from({ length: MISTAKE_FIX_STREAK }, (_, k) => `<i class="${k < (m.fix || 0) ? 'on' : ''}"></i>`).join('');
-            return `<li class="mb-row${fixedRow ? ' fixed' : ''}">
-                <span class="mb-n">${i + 1}</span>
-                <div class="mb-word">
-                    <div><b>${escHtml(m.word)}</b>${p.sub ? `<span>${escHtml(p.sub)}</span>` : ''}</div>
-                    <div class="mb-line">${escHtml(p.line)}</div>
-                </div>
-                ${fixedRow
-                    ? `<span class="mb-stamp">${escHtml(t('mistake_fixed_stamp'))}</span>`
-                    : `<div class="mb-state" title="${escHtml(t('mistake_state_title', { n: m.count || 1, f: m.fix || 0, m: MISTAKE_FIX_STREAK }))}">
-                        <span class="mb-dots">${dots}</span><span class="mb-slots">${slots}</span>
-                    </div>`}
-                <button type="button" class="mb-note" onclick="mbNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('document')}</button>
-                <button type="button" class="mb-del" onclick="mbDelete(${i})" aria-label="${escHtml(t('mistake_delete'))}">✕</button>
-            </li>`;
-        }).join('') + '</ol>';
-        if (rows.length > mbShown) html += `<button type="button" class="back-btn pc-wide pc-more" onclick="mbMore()">${escHtml(t('mistake_more', { n: rows.length - mbShown }))}</button>`;
+        // two columns on computers: the first half of the page left, the rest right
+        const half = Math.ceil(mbRows.length / 2);
+        const col = (a, b) => `<ol class="mb-notebook">${mbRows.slice(a, b).map((m, k) => mbRowHtml(m, a + k, from + a + k + 1)).join('')}</ol>`;
+        html += `<div class="mb-cols${mbRows.length > 1 ? '' : ' one'}">${col(0, half)}${mbRows.length > 1 ? col(half, mbRows.length) : ''}</div>`;
+        if (pages > 1) html += `<div class="rd-pager mb-pager">
+            <button type="button" class="btn back-btn" onclick="mbGoPage(-1)"${mbPage === 0 ? ' disabled' : ''}>${escHtml(t('mistake_prev'))}</button>
+            <span>${escHtml(t('updates_page', { n: mbPage + 1, m: pages }))}</span>
+            <button type="button" class="btn back-btn" onclick="mbGoPage(1)"${mbPage >= pages - 1 ? ' disabled' : ''}>${escHtml(t('mistake_next'))}</button>
+        </div>`;
     }
 
-    const fixedWeek = fixedAll.filter(m => m.fixedAt > now - 7 * DAY_MS).length;
     html += `<div class="mb-foot">
-        <span>${fixedWeek > 0 ? '✓ ' + escHtml(t('mistake_fixed_week', { n: fixedWeek })) : ''}</span>
-        <button type="button" class="mb-clear" onclick="mbClearFilter()">${escHtml(t(mbFilter === 'all' ? 'mistake_clear_all' : 'mistake_clear_set'))}</button>
+        <span></span>
+        <button type="button" class="mb-clear" onclick="mbClearFilter()">${escHtml(t(mbLang === 'all' ? 'mistake_clear_all' : 'mistake_clear_set'))}</button>
     </div>`;
     box.innerHTML = html;
 }
@@ -271,7 +366,7 @@ function startMistakeRepair(entries) {
     let list = entries;
     if (!list) {
         list = getActiveMistakes()
-            .filter(m => mbFilter === 'all' || m.lang === mbFilter)
+            .filter(mbInFilter)
             .sort((a, b) => (b.count - a.count) || (b.last - a.last))
             .slice(0, MISTAKE_REPAIR_SIZE);
     }

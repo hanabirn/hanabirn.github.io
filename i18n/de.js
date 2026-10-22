@@ -116,7 +116,7 @@ I18N.de = {
         hub_mistakes_none: 'Keine Fehler – super!', hub_fc_known: '{n} Wörter gelernt', hub_fc_intro: 'Mit Karteikarten lernen', hub_listen_last: 'Zuletzt {c} / {n}',
         hub_listen_intro: 'Wähle oder tippe, was du hörst', hub_stats_week: '{n} Wörter diese Woche geübt', when_tomorrow: 'morgen {time}', mistake_open_n: '{n} offen',
         mistake_bubble: 'Beantworte ein Wort {n}-mal hintereinander richtig, dann fliegt es raus!', mistake_repair_btn: 'Die {n} häufigsten Fehler üben', mistake_all_fixed: 'Alle Fehler behoben – klasse!', mistake_all: 'Alle',
-        mistake_sort_count: 'Am häufigsten', mistake_sort_recent: 'Neueste', mistake_sort_fixed: 'Geschafft', mistake_none_here: 'Hier gibt es nichts zu tun',
+        mistake_sort_count: 'Am häufigsten', mistake_sort_recent: 'Neueste', mistake_sort_fixed: 'Geschafft', mistake_group_topics: 'Wörter nach Thema', mistake_group_notes: 'Notizen', mistake_group_old: 'Alte Wortlisten', mistake_count_open: '{n} zu reparieren', mistake_count_fixed: '{n} repariert', mistake_sort: 'Sortieren', mistake_none_here: 'Hier gibt es nichts zu tun',
         mistake_none_fixed: 'Noch nichts – Wörter erscheinen hier nach zwei richtigen Antworten', mistake_fixed_stamp: 'Geschafft', mistake_state_title: '{n}× falsch · Fortschritt {f}/{m}', mistake_delete: 'Löschen',
         mistake_more: '{n} weitere zeigen', mistake_fixed_week: '{n} diese Woche geschafft', mistake_clear_all: 'Fehlerheft leeren', mistake_clear_set: 'Fehler dieser Liste löschen',
         mistake_clear_confirm: 'Fehler in „{name}“ löschen?', mistake_repair_label: 'Fehler üben', stats_longest: 'Rekord', stats_mastery_title: 'Wie viel ich gelernt habe',

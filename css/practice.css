@@ -207,8 +207,51 @@
 .hub-mascot { width: 52px; flex: none; }
 
 /* ----- 錯題本 ----- */
+.mb-top { display: grid; gap: 4px 20px; }
 .mb-summary { display: flex; gap: 14px; align-items: center; margin-bottom: 4px; }
 .mb-summary .pc-bubble { flex: 1; }
+.mb-act .pc-wide { margin-bottom: 2px; }
+.mb-act-sub, .mb-week { margin: 2px 0 0; font-size: 0.8rem; text-align: center; color: var(--text-muted); }
+.mb-week { color: var(--success-text); font-weight: 700; }
+/* step 1: languages (flag, name, open mistakes); step 2: that language's levels */
+.mb-filter { margin: 16px 0 6px; padding: 12px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface-2); }
+.mb-langs { display: grid; grid-template-columns: repeat(auto-fill, minmax(132px, 1fr)); gap: 8px; }
+.mb-lang {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border: 2px solid var(--line);
+    border-radius: 12px;
+    background: var(--surface);
+    color: var(--text);
+    font: inherit;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+}
+.mb-lang .mb-lang-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.mb-lang b { font-size: 0.8rem; min-width: 1.6em; padding: 0 6px; border-radius: 99px; background: var(--track); text-align: center; }
+.mb-lang.on { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+.mb-lang.on b { background: var(--primary); color: #fff; }
+@media (hover: hover) and (pointer: fine) {
+    .mb-lang:not(.on):hover { border-color: var(--primary); }
+}
+.mb-groups { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed var(--line); }
+.mb-toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; margin: 14px 0 4px; }
+.mb-count { font-weight: 800; font-size: 0.92rem; }
+.mb-sort { display: inline-flex; gap: 4px; }
+.mb-sort .mode-btn { width: auto; min-width: 0; margin: 0; padding: 6px 12px; font-size: 0.82rem; white-space: nowrap; }
+.mb-set { display: inline-block; margin-top: 2px; font-size: 0.72rem; color: var(--text-muted); }
+.mb-cols { display: grid; gap: 10px; }
+.mb-cols .mb-notebook { margin: 0; }
+.mb-pager { margin-top: 14px; }
+/* computers: summary and the repair button side by side, the words in two columns */
+@media (min-width: 1024px) {
+    .mb-top { grid-template-columns: minmax(0, 1fr) 360px; align-items: center; }
+    .mb-cols:not(.one) { grid-template-columns: 1fr 1fr; align-items: start; }
+}
 .mb-notebook {
     list-style: none;
     margin: 10px 0 0;
@@ -222,7 +265,7 @@
 }
 .mb-row {
     display: grid;
-    grid-template-columns: 38px 1fr auto 30px;
+    grid-template-columns: 38px 1fr auto 30px 30px;
     align-items: center;
     gap: 0 8px;
     min-height: 58px;

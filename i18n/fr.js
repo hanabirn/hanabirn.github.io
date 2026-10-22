@@ -116,7 +116,7 @@ I18N.fr = {
         hub_mistakes_none: 'Aucune erreur, bravo !', hub_fc_known: '{n} mots connus', hub_fc_intro: 'Retourne les cartes pour apprendre', hub_listen_last: 'Dernière fois {c} / {n}',
         hub_listen_intro: 'Choisis ou écris ce que tu entends', hub_stats_week: '{n} mots pratiqués cette semaine', when_tomorrow: 'demain {time}', mistake_open_n: '{n} à réparer',
         mistake_bubble: 'Réponds juste {n} fois d\'affilée pour chasser le mot du carnet !', mistake_repair_btn: 'Réparer les {n} mots les plus ratés', mistake_all_fixed: 'Toutes les erreurs sont réparées, bravo !', mistake_all: 'Tout',
-        mistake_sort_count: 'Les plus ratés', mistake_sort_recent: 'Récents', mistake_sort_fixed: 'Réparés', mistake_none_here: 'Rien à réparer ici',
+        mistake_sort_count: 'Les plus ratés', mistake_sort_recent: 'Récents', mistake_sort_fixed: 'Réparés', mistake_group_topics: 'Mots par thème', mistake_group_notes: 'Notes', mistake_group_old: 'Anciennes listes', mistake_count_open: '{n} à corriger', mistake_count_fixed: '{n} corrigés', mistake_sort: 'Trier', mistake_none_here: 'Rien à réparer ici',
         mistake_none_fixed: 'Rien encore : les mots arrivent ici après deux bonnes réponses', mistake_fixed_stamp: 'Réparé', mistake_state_title: 'Raté {n} fois · réparation {f}/{m}', mistake_delete: 'Supprimer',
         mistake_more: 'Afficher {n} de plus', mistake_fixed_week: '{n} réparés cette semaine', mistake_clear_all: 'Vider le carnet', mistake_clear_set: 'Effacer les erreurs de cette liste',
         mistake_clear_confirm: 'Effacer les erreurs de « {name} » ?', mistake_repair_label: 'Réparation des erreurs', stats_longest: 'Record', stats_mastery_title: 'Ce que j\'ai appris',

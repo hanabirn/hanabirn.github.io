@@ -116,7 +116,7 @@ I18N.es = {
         hub_mistakes_none: 'Sin errores, ¡genial!', hub_fc_known: '{n} palabras sabidas', hub_fc_intro: 'Gira tarjetas para aprender', hub_listen_last: 'Última vez {c} / {n}',
         hub_listen_intro: 'Elige o escribe lo que oyes', hub_stats_week: '{n} palabras practicadas esta semana', when_tomorrow: 'mañana {time}', mistake_open_n: '{n} por corregir',
         mistake_bubble: '¡Acierta {n} veces seguidas y la palabra sale del cuaderno!', mistake_repair_btn: 'Corregir las {n} más falladas', mistake_all_fixed: '¡Todos los errores corregidos, increíble!', mistake_all: 'Todo',
-        mistake_sort_count: 'Más falladas', mistake_sort_recent: 'Recientes', mistake_sort_fixed: 'Corregidas', mistake_none_here: 'Nada que corregir aquí',
+        mistake_sort_count: 'Más falladas', mistake_sort_recent: 'Recientes', mistake_sort_fixed: 'Corregidas', mistake_group_topics: 'Palabras por tema', mistake_group_notes: 'Notas', mistake_group_old: 'Listas antiguas', mistake_count_open: '{n} por corregir', mistake_count_fixed: '{n} corregidas', mistake_sort: 'Ordenar', mistake_none_here: 'Nada que corregir aquí',
         mistake_none_fixed: 'Aún nada: las palabras aparecen aquí tras dos aciertos', mistake_fixed_stamp: 'Corregida', mistake_state_title: 'Fallada {n} veces · progreso {f}/{m}', mistake_delete: 'Eliminar',
         mistake_more: 'Mostrar {n} más', mistake_fixed_week: '{n} corregidas esta semana', mistake_clear_all: 'Vaciar el cuaderno', mistake_clear_set: 'Borrar los errores de esta lista',
         mistake_clear_confirm: '¿Borrar los errores de «{name}»?', mistake_repair_label: 'Corrigiendo errores', stats_longest: 'Récord', stats_mastery_title: 'Cuánto he aprendido',

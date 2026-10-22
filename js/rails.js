@@ -406,15 +406,15 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRails();
     // web fonts can change the header's height after load
     window.addEventListener('load', railPlace);
-    // on the quiz page only the path is 1180px wide; the other cards keep 680px,
-    // so the rails move in next to them (body.quiz-wide, css/rails.css)
-    const path = document.getElementById('path-card');
-    if (path) {
+    // on the quiz page only the path and the mistake book are 1180px wide; the other
+    // cards keep 680px, so the rails move in next to them (body.quiz-wide, css/rails.css)
+    const wide = ['path-card', 'mistake-card'].map(id => document.getElementById(id)).filter(Boolean);
+    if (wide.length) {
         const sync = () => {
-            document.body.classList.toggle('quiz-wide', path.style.display !== 'none');
+            document.body.classList.toggle('quiz-wide', wide.some(el => el.style.display !== 'none'));
             railPlace();
         };
-        new MutationObserver(sync).observe(path, { attributes: true, attributeFilter: ['style'] });
+        wide.forEach(el => new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['style'] }));
         sync();
     }
     // the rails appear when the window gets wide enough: fill them in then
