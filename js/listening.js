@@ -443,8 +443,9 @@ function listeningQuizHtml(lv) {
     const lockedMock = z.mock && !z.reviewing;
     const showTx = show || (z.peek && !exam);
     const multi = it.questions.length > 1;
-    // ポイント理解: the question is on screen before listening (its translation only once answered —
-    // before that it would give the question away)
+    // 発話表現's scene is the exam's picture: only its emoji until answered (its text translates
+    // the spoken question). ポイント理解: the question is on screen before listening, its
+    // translation only once answered — before that it would give the question away
     const pointQ = it.type === 'point' ? (it.questions[0].q || it.lines[it.lines.length - 1]) : null;
     const dots = z.order.map((k, i) => {
         const item = lv.sets[z.setNo].items[k];
@@ -488,7 +489,7 @@ function listeningQuizHtml(lv) {
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
         <div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>
-        ${it.scene ? `<div class="ls-scene"><span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>${escHtml(gText(it.scene))}</div>` : ''}
+        ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}"><span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
         ${pointQ ? `<div class="ls-scene ls-question" lang="${lv.lang}">${listeningSegsHtml(pointQ.t, false)}${show ? `<div class="ls-zh">${escHtml(gText(pointQ))}</div>` : ''}</div>` : ''}
         <div class="ls-player">
             <button type="button" class="ls-play" id="ls-play" onclick="listeningPlay()">▶</button>

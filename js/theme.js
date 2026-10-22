@@ -41,7 +41,9 @@ function renderVisitorCount() {
 
 /* One count per device per day (owner's pick 2026-10-22: a reload or a second visit the
    same day used to count again, so the number said little): the first load of the day
-   calls `up`, later ones only read the counter. visit_counted_day holds that day.
+   calls `up`, later ones only read the counter. visit_counted_day holds that day. The
+   counter is "daily-visitors" (made 2026-10-22, from 0); the old "hanabirn" one stopped at
+   about 1,180 and counted every load.
    The `up` endpoint's GET response gets cached by Cloudflare for hours despite
    having a side effect (it increments), so every request needs a cache-busting
    query param or repeat visits just replay the same stale cached count. */
@@ -51,7 +53,7 @@ async function initVisitorCounter() {
     let counted = false;
     try { counted = localStorage.getItem('visit_counted_day') === today; } catch {}
     try {
-        const res = await fetch(`https://api.counterapi.dev/v2/hanabirn/hanabirn${counted ? '' : '/up'}?t=${Date.now()}`);
+        const res = await fetch(`https://api.counterapi.dev/v2/hanabirn/daily-visitors${counted ? '' : '/up'}?t=${Date.now()}`);
         if (!counted && res.ok) { try { localStorage.setItem('visit_counted_day', today); } catch {} }
         const json = await res.json();
         if (json.data && json.data.up_count !== undefined) {
