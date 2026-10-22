@@ -834,16 +834,62 @@ async function renderGallery() {
     const items = atts.filter(a => a.type && a.type.startsWith('image/') && live.has(a.noteId))
         .map(a => ({ note: live.get(a.noteId), attachment: a }));
     notesGalleryItems = items;
+    const input = `<input type="file" accept="image/*" multiple onchange="notesGalleryUpload(this)">`;
     if (!items.length) {
-        gallery.innerHTML = `<p class="notes-muted notes-center">${notesEsc(t('notes_gallery_empty'))}</p>`;
+        gallery.innerHTML = `<div class="notes-gallery-empty">
+            <p class="notes-muted">${notesEsc(t('notes_gallery_empty'))}</p>
+            <label class="btn next-btn notes-attach-btn">${uiIcon('upload')} ${notesEsc(t('notes_gallery_upload'))}${input}</label>
+        </div>`;
         return;
     }
-    gallery.innerHTML = items.map((it, idx) => {
-        const url = URL.createObjectURL(it.attachment.blob);
-        return `<button type="button" class="notes-gallery-tile" onclick="openGalleryLightbox(${idx})">
+    gallery.innerHTML = `<label class="notes-gallery-tile notes-gallery-add" title="${notesEsc(t('notes_gallery_upload'))}">${uiIcon('plus')}<span>${notesEsc(t('notes_gallery_upload'))}</span>${input}</label>`
+        + items.map((it, idx) => {
+            const url = URL.createObjectURL(it.attachment.blob);
+            return `<button type="button" class="notes-gallery-tile" onclick="openGalleryLightbox(${idx})">
             <img src="${url}" alt="${notesEsc(it.attachment.name)}" loading="lazy">
         </button>`;
-    }).join('');
+        }).join('');
+}
+
+/* 圖庫's upload: images belong to a note, so a batch goes into a new note
+   "照片 10/22" (in the folder used last) and the gallery redraws. */
+async function notesGalleryUpload(input) {
+    const files = Array.from(input.files || []).filter(f => f.type && f.type.startsWith('image/'));
+    input.value = '';
+    if (!files.length) return;
+    const maxBytes = NOTE_ATTACHMENT_MAX_MB * 1024 * 1024;
+    const ok = files.filter(f => f.size <= maxBytes);
+    if (ok.length < files.length) alert(t('notes_file_too_large', { n: NOTE_ATTACHMENT_MAX_MB }));
+    if (!ok.length) return;
+    const all = getNotes();
+    const now = notesNow();
+    const id = Date.now();
+    all.unshift({
+        id, title: t('notes_gallery_note_title', { d: formatNoteTime(now) }), text: '',
+        category: notesLastFolder(), tags: [],
+        lang: typeof learnLang === 'function' ? learnLang() : '', pinned: false, star: false,
+        createdAt: now, updatedAt: now
+    });
+    saveNotesData(all);
+    let added = 0;
+    for (const file of ok) {
+        try {
+            await idbAddAttachment({
+                id: 'a' + id + '_' + Date.now() + '_' + Math.random().toString(36).slice(2),
+                noteId: id,
+                name: file.name,
+                type: file.type,
+                size: file.size,
+                blob: file,
+                addedAt: new Date().toISOString()
+            });
+            added++;
+        } catch (e) {
+            console.error('Failed to store attachment:', e);
+        }
+    }
+    notesAttachCounts[id] = added;
+    renderGallery();
 }
 
 function openGalleryLightbox(idx) {

@@ -29,7 +29,8 @@ right before it (tools/build_reading.py sentence()). The output gives every spok
 line its segments, plain text, kana and an audio id; the audio is rendered here
 with Google Cloud TTS (tools/.google-tts.env) into data/audio/listening/<lang>/<id>.mp3,
 one voice per speaker (VOICES: narrator, woman, man), spoken from the kana so the
-reading is the one taught (options with their number in front). id = cyrb53 of "who|plain|said" (tools/build_audio.py
+reading is the one taught (a spoken option's number is its own narrator clip, `na`,
+played with a pause before the option). id = cyrb53 of "who|plain|said" (tools/build_audio.py
 audio_id) — the page reads it from the data, it never computes it. Existing files
 are kept. Checks: furigana / glossary problems (as on the 閱讀 page), option counts
 (4 for task / point, 3 for utterance / response), answer in range, every line and
@@ -61,13 +62,15 @@ SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 
 
-# spoken options are numbered aloud, as in the exam (いち、… に、… さん、…)
-NUMBERS = {'ja': ['いち、', 'に、', 'さん、', 'よん、']}
+# spoken options are numbered aloud, as in the exam (いち … に … さん …): the narrator
+# says the number as a clip of its own and the page pauses before the option
+# (until 2026-10-22 the number was the start of the option's clip and ran into it)
+NUMBERS = {'ja': ['いち。', 'に。', 'さん。', 'よん。']}
 
 
 def spoken(line, where, words, problems, lang, jobs, number=None):
     """A spoken line as output: segments, plain, kana, audio id; queues its audio
-    (an option's audio starts with its number; the transcript shows the line only)."""
+    (an option also gets `na` / `nk`, the narrator's clip of its number and that text)."""
     who = line.get('who')
     if who not in SPEAKERS:
         problems.append(f'{where}: speaker must be one of {SPEAKERS}, not {who!r}')
@@ -76,11 +79,16 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
     for k in ('zh', 'en'):
         if not line.get(k):
             problems.append(f'{where}: no {k} translation for {plain}')
-    said = (NUMBERS[lang][number] if number is not None else '') + kana
-    aid = ba.audio_id(f'{who}|{plain}|{said}')
-    jobs[aid] = (who, said)
-    return {'who': who, 't': segs, 'plain': plain, 'kana': kana, 'a': aid,
-            'zh': line.get('zh', ''), 'en': line.get('en', '')}
+    aid = ba.audio_id(f'{who}|{plain}|{kana}')
+    jobs[aid] = (who, kana)
+    out = {'who': who, 't': segs, 'plain': plain, 'kana': kana, 'a': aid,
+           'zh': line.get('zh', ''), 'en': line.get('en', '')}
+    if number is not None:
+        nk = NUMBERS[lang][number]
+        out['na'] = ba.audio_id(f'N|{nk}|{nk}')
+        out['nk'] = nk
+        jobs[out['na']] = ('N', nk)
+    return out
 
 
 def build_question(q, typ, where, words, problems, lang, jobs, multi):

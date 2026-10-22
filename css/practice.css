@@ -362,7 +362,8 @@
 .srs-due {
     width: 170px;
     height: 170px;
-    margin: 18px auto 8px;
+    /* the bottom margin clears the 7px "thickness" shadow and leaves a gap above 開始複習 */
+    margin: 18px auto 26px;
     border-radius: 50%;
     border: 3px solid var(--primary);
     box-shadow: 0 7px 0 var(--primary-edge);
@@ -372,7 +373,7 @@
     text-align: center;
     line-height: 1.1;
 }
-.srs-due b { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 900; color: var(--primary); }
+.srs-due b { font-family: var(--font-serif); font-size: 3.4rem; font-weight: 900; line-height: 1; color: var(--primary); }
 .srs-due small { font-size: 0.8rem; color: var(--text-muted); }
 .srs-due.none { border-color: var(--line); box-shadow: 0 7px 0 var(--edge); }
 .srs-due.none b { color: var(--text-muted); }

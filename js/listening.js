@@ -27,6 +27,8 @@ const LISTENING_PASS = 2 / 3;
 const LISTENING_EXAM_PLAYS = 2;
 const LISTENING_GAP_MS = 450;        // between lines
 const LISTENING_OPTIONS_GAP_MS = 900; // before the spoken options / a spoken question
+const LISTENING_NEXT_OPTION_GAP_MS = 600; // extra, before the number of the 2nd, 3rd… spoken option
+const LISTENING_NUMBER_GAP_MS = 300;  // extra, between an option's number (いち) and the option
 const LISTENING_READ_SECS = 10;      // ポイント理解: time to read the options (lv.read_secs)
 // mock exam: seconds to answer once the recording has ended, per question
 const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15, utterance: 8, response: 8 };
@@ -238,13 +240,18 @@ function listeningLinesOf(it) {
 }
 
 /* what one ▶ plays: the lines (with the reading pause after the first one for a
-   point item), then the questions and spoken options */
+   point item), then the questions and spoken options — each option as the narrator's
+   number (its own clip, line.na), a pause, then the option */
 function listeningPlaylist(it) {
     const all = listeningLinesOf(it);
     const list = [];
     all.forEach((x, k) => {
-        const gap = k > 0 && (x.isQ || x.opt === 0) ? LISTENING_OPTIONS_GAP_MS : 0;
-        list.push({ line: x.line, idx: x.idx, gap });
+        const gap = k > 0 && (x.isQ || x.opt === 0) ? LISTENING_OPTIONS_GAP_MS
+            : x.opt > 0 ? LISTENING_NEXT_OPTION_GAP_MS : 0;
+        if (x.line.na) {
+            list.push({ line: { a: x.line.na, plain: x.line.nk, kana: x.line.nk }, idx: x.idx, gap });
+            list.push({ line: x.line, idx: x.idx, gap: LISTENING_NUMBER_GAP_MS });
+        } else list.push({ line: x.line, idx: x.idx, gap });
         if (k === 0 && it.read) list.push({ pause: it.read });
     });
     return list;
@@ -436,7 +443,8 @@ function listeningQuizHtml(lv) {
     const lockedMock = z.mock && !z.reviewing;
     const showTx = show || (z.peek && !exam);
     const multi = it.questions.length > 1;
-    // ポイント理解: the question is on screen before listening
+    // ポイント理解: the question is on screen before listening (its translation only once answered —
+    // before that it would give the question away)
     const pointQ = it.type === 'point' ? (it.questions[0].q || it.lines[it.lines.length - 1]) : null;
     const dots = z.order.map((k, i) => {
         const item = lv.sets[z.setNo].items[k];
@@ -481,7 +489,7 @@ function listeningQuizHtml(lv) {
         <div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>
         ${it.scene ? `<div class="ls-scene"><span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>${escHtml(gText(it.scene))}</div>` : ''}
-        ${pointQ ? `<div class="ls-scene ls-question" lang="${lv.lang}">${listeningSegsHtml(pointQ.t, false)}<div class="ls-zh">${escHtml(gText(pointQ))}</div></div>` : ''}
+        ${pointQ ? `<div class="ls-scene ls-question" lang="${lv.lang}">${listeningSegsHtml(pointQ.t, false)}${show ? `<div class="ls-zh">${escHtml(gText(pointQ))}</div>` : ''}</div>` : ''}
         <div class="ls-player">
             <button type="button" class="ls-play" id="ls-play" onclick="listeningPlay()">▶</button>
             <div class="ls-bar" aria-hidden="true"><i id="ls-bar"></i></div>
