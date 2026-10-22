@@ -21,7 +21,9 @@
    Results: score per type (counted in questions), time, plays; a glossary review
    graded into the mistake book and spaced repetition (lessonEntryFor, filed under
    LISTENING_WORD_SET), and "retry the wrong ones". Progress: localStorage
-   listening_progress = { "<level>:<set>": { best, of, at } } (synced). */
+   listening_progress = { "<level>:<set>": { best, of, at } } (synced). A practice set left
+   halfway is kept in study_resume (resumeSave, js/quiz.js; synced) and picked up where
+   it was; a mock exam is not, and opens on a notice saying so (mockNoteHtml, 2026-10-22). */
 
 const LISTENING_PASS = 2 / 3;
 const LISTENING_EXAM_PLAYS = 2;
@@ -43,6 +45,7 @@ let listeningView = 'list';          // 'list' | 'quiz' | 'result' | 'review'
 // { setNo, order: [item indexes], qi, picks: [[per question]], plays, peek, start, secs,
 //   retry, mock, reviewing }
 let listeningSession = null;
+let listeningMockNote = -1;    // the mock set whose notice is on screen (listeningView 'mocknote')
 let listeningReview = null;          // { items, i, picked, right }
 let listeningRun = 0;                // bumps on every playback, so an older chain stops
 let listeningPlaying = -1;           // index of the line playing (for the 🔊 marks), -1 = none
@@ -101,6 +104,7 @@ async function renderListening() {
     if (listeningView === 'quiz' && listeningSession) { box.innerHTML = listeningQuizHtml(lv); listeningPlayerUi(); listeningAutoPlay(); }
     else if (listeningView === 'result' && listeningSession) box.innerHTML = listeningResultHtml(lv);
     else if (listeningView === 'review' && listeningReview) box.innerHTML = listeningReviewHtml(lv);
+    else if (listeningView === 'mocknote' && lv.sets[listeningMockNote]) box.innerHTML = listeningMockNoteHtml(lv);
     else { listeningView = 'list'; box.innerHTML = listeningListHtml(lv); }
 }
 
@@ -158,7 +162,9 @@ function listeningSetCard(lv, s, i, prog) {
     const nq = s.items.reduce((n, it) => n + it.questions.length, 0);
     const best = prog[lv.id + ':' + s.id];
     const ok = listeningDone(lv.id, s.id);
-    const mins = Math.max(1, Math.round(s.items.length * (s.mock ? 1.1 : 0.7)));
+    const mins = listeningMinutes(s);
+    const half = !s.mock && resumeGet(listeningResumeKey(lv, s));
+    const halfN = half && Array.isArray(half.picks) ? half.picks.filter(p => Array.isArray(p) && p.every(x => x !== -1)).length : 0;
     const title = s.mock ? t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 }) : t('listening_set', { n: lv.sets.filter(x => !x.mock).indexOf(s) + 1 });
     return `<li><button type="button" class="grammar-item${ok ? ' learned' : ''}${s.mock ? ' ls-mock-item' : ''}" onclick="listeningStart(${i})">
         <span class="grammar-num">${s.mock ? '📝' : lv.sets.filter(x => !x.mock).indexOf(s) + 1}</span>
@@ -167,8 +173,19 @@ function listeningSetCard(lv, s, i, prog) {
             <span class="ls-types">${listeningTypes(lv).filter(ty => count[ty]).map(ty => `<span class="ls-type">${escHtml(t('listening_type_' + ty))} ${count[ty]}</span>`).join('')}</span>
             <span class="rd-meta">${escHtml(t('listening_meta', { n: nq, m: mins }))}</span>
         </span>
-        <span class="grammar-state">${best ? (ok ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
+        <span class="grammar-state">${halfN ? `<span class="rd-half">${escHtml(t('reading_half', { n: halfN, m: s.items.length }))}</span>` : best ? (ok ? '✓ ' : '') + best.best + '/' + best.of : '›'}</span>
     </button></li>`;
+}
+
+function listeningMinutes(s) { return Math.max(1, Math.round(s.items.length * (s.mock ? 1.1 : 0.7))); }
+function listeningResumeKey(lv, s) { return 'listening|' + lv.id + ':' + s.id; }
+
+function listeningMockNoteHtml(lv) {
+    const s = lv.sets[listeningMockNote];
+    const nq = s.items.reduce((n, it) => n + it.questions.length, 0);
+    return mockNoteHtml(t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 }),
+        [t('mock_note_listening', { n: nq, m: listeningMinutes(s), p: lv.mock_plays || 1 })],
+        `listeningStart(${listeningMockNote}, null, 'go')`, "listeningGo('list')");
 }
 
 function listeningListHtml(lv) {
@@ -201,16 +218,42 @@ function listeningListHtml(lv) {
 
 /* ----- a session: one set, or just the items missed last time ----- */
 
-function listeningStart(setNo, only) {
+/* how: 'go' = past the mock exam's notice, 'fresh' = a practice set from the start */
+function listeningStart(setNo, only, how) {
     const lv = listeningLevels[listeningLevelId];
     const set = lv.sets[setNo];
+    const mock = !!set.mock && !(only && only.length);
+    if (mock && how !== 'go') {
+        listeningMockNote = setNo;
+        listeningGo('mocknote');
+        return;
+    }
     const order = only && only.length ? only : [...Array(set.items.length).keys()];
-    listeningSession = { setNo, order, qi: 0,
-                         picks: order.map(k => set.items[k].questions.map(() => -1)),
-                         plays: new Array(order.length).fill(0), peek: false, start: Date.now(), secs: 0,
-                         retry: !!only, mock: !!set.mock && !only, reviewing: false };
+    const key = listeningResumeKey(lv, set);
+    if (how === 'fresh') resumeClear(key);
+    // a practice set left halfway: its picks and place (only when it still has the same shape)
+    const r = mock || only || how === 'fresh' ? null : resumeGet(key);
+    const ok = !!r && Array.isArray(r.picks) && r.picks.length === order.length
+        && r.picks.every((p, i) => Array.isArray(p) && p.length === set.items[order[i]].questions.length);
+    listeningSession = { setNo, order, key, qi: ok ? Math.min(r.qi || 0, order.length - 1) : 0,
+                         picks: ok ? r.picks.map(p => p.slice()) : order.map(k => set.items[k].questions.map(() => -1)),
+                         plays: new Array(order.length).fill(0), peek: false,
+                         start: Date.now() - (ok ? (r.secs || 0) * 1000 : 0), secs: 0,
+                         retry: !!(only && only.length), mock, reviewing: false,
+                         resumed: ok && r.picks.some(p => p.some(x => x !== -1)) };
     listeningGo('quiz');
 }
+
+/* a practice set's picks and place so far (not a mock exam, a retry of the missed ones or a review) */
+function listeningSaveResume() {
+    const z = listeningSession;
+    if (!z || z.mock || z.retry || z.reviewing || z.finished || listeningView !== 'quiz') return;
+    if (!z.picks.some(p => p.some(x => x !== -1))) return;
+    resumeSave(z.key, { picks: z.picks, qi: z.qi, secs: Math.round((Date.now() - z.start) / 1000) });
+}
+
+// a tab closed or put away keeps the place
+document.addEventListener('visibilitychange', () => { if (document.hidden) listeningSaveResume(); });
 
 function listeningItem(lv) {
     const z = listeningSession;
@@ -487,6 +530,7 @@ function listeningQuizHtml(lv) {
             <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.qi + 1, m: z.order.length }))}</span>
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
+        ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
         <div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>
         ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}"><span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
@@ -538,6 +582,7 @@ function listeningMove(d) {
     const z = listeningSession;
     z.qi = Math.max(0, Math.min(z.order.length - 1, z.qi + d));
     z.peek = false;
+    listeningSaveResume();
     listeningGo('quiz');
 }
 
@@ -563,6 +608,7 @@ function listeningAnswer(qn, i) {
     if (z.picks[z.qi][qn] !== -1) return;
     z.picks[z.qi][qn] = i;
     if (typeof logDailyActivity === 'function') logDailyActivity();
+    listeningSaveResume();
     if (i !== it.questions[qn].answer && typeof railReact === 'function') railReact('wrong');
     // with several questions, wait until all are answered before showing them
     if (listeningAnswered()) listeningRerender();
@@ -592,6 +638,8 @@ function listeningFinish() {
     const lv = listeningLevels[listeningLevelId];
     const z = listeningSession;
     z.secs = Math.round((Date.now() - z.start) / 1000);
+    z.finished = true;
+    if (!z.mock && !z.retry) resumeClear(z.key);
     const { right, total } = listeningTally(lv);
     if (z.mock) {
         // the answers count toward the day's practice once the exam is over

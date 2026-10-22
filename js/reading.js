@@ -105,6 +105,7 @@ async function renderReading() {
     if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
     else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
     else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);
+    else if (readingView === 'mocknote' && set.sets && set.sets[readingMockNote]) box.innerHTML = readingMockNoteHtml(set);
     else if (readingView === 'review') box.innerHTML = readingReviewHtml(set);
     else box.innerHTML = readingListHtml(set);
     readingClosePop();

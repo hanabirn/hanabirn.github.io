@@ -62,6 +62,21 @@ function learnFlags(lang) {
     return (LEARN_FLAGS[lang] || []).map(f => `<span class="flag flag--${f}" aria-hidden="true"></span>`).join('');
 }
 
+/* Before a mock exam (閱讀 and 聽解, owner's request 2026-10-22): it is taken in one go and
+   its place is never kept, so say so first. lines = what this exam is like. */
+function mockNoteHtml(title, lines, startCall, backCall) {
+    return `<div class="grammar-top">
+            <button type="button" class="btn back-btn grammar-back" onclick="${backCall}">${escHtml(t('listening_back_list'))}</button>
+        </div>
+        <div class="mock-note">
+            <div class="mock-note-icon" aria-hidden="true">📝</div>
+            <h3>${escHtml(title)}</h3>
+            ${lines.map(l => `<p>${escHtml(l)}</p>`).join('')}
+            <p class="mock-note-warn">${uiIcon('warning')} ${escHtml(t('mock_note_warn'))}</p>
+            <button type="button" class="btn next-btn" onclick="${startCall}">${escHtml(t('mock_note_ok'))}</button>
+        </div>`;
+}
+
 function learnPickerHtml(index, curId, pick, done) {
     const cur = index.find(s => s.id === curId) || index[0];
     const levels = index.filter(s => s.lang === cur.lang);

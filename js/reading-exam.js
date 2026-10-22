@@ -73,10 +73,18 @@ function readingSetsHtml(set) {
         ${set.passages.length ? `<h4 class="grammar-sub rdx-head">${escHtml(t('reading_short_head'))}</h4>` : ''}`;
 }
 
-function readingExamStart(si, fresh) {
+let readingMockNote = -1;   // the mock set whose notice is on screen (readingView 'mocknote')
+
+/* fresh: a practice round from the start; go: past the mock exam's notice */
+function readingExamStart(si, fresh, go) {
     const set = readingSets[readingSetId];
     const st = set && set.sets[si];
     if (!st) return;
+    if (st.mock && !go) {
+        readingMockNote = si;
+        readingGo('mocknote');
+        return;
+    }
     const qs = [];
     st.items.forEach((item, ii) => item.questions.forEach((q, k) => qs.push({ item, ii, k, q, n: st.start + qs.length })));
     readingExamStopClock();
@@ -91,6 +99,12 @@ function readingExamStart(si, fresh) {
     if (st.mock) readingExam.tick = setInterval(readingExamClock, 1000);
     renderReading();
     window.scrollTo({ top: 0 });
+}
+
+function readingMockNoteHtml(set) {
+    const st = set.sets[readingMockNote];
+    return mockNoteHtml(readingSetName(set, st), [t('mock_note_reading', { n: st.count, m: st.minutes })],
+        `readingExamStart(${readingMockNote}, false, true)`, "readingGo('list')");
 }
 
 function readingExamStopClock() {

@@ -168,6 +168,7 @@ function switchPage(page, el) {
 
     // half-done 閱讀 answers are kept (study_resume) before the page goes
     if (typeof readingSaveResume === 'function') readingSaveResume();
+    if (typeof listeningSaveResume === 'function') listeningSaveResume();
     // a page change silences whatever is playing (a 聽解 item, read-all on 閱讀)
     if (typeof listeningStop === 'function') listeningStop();
     else if (typeof stopSpeech === 'function') stopSpeech();
