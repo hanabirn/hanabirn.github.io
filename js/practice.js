@@ -339,7 +339,11 @@ function renderMistakeBook() {
     </div>`;
 
     if (mbRows.length === 0) {
-        html += `<p class="pc-note">${escHtml(t(mbSort === 'fixed' ? 'mistake_none_fixed' : 'mistake_none_here'))}</p>`;
+        // everything here is repaired: say so and offer the repaired list rather than an empty page
+        html += mbSort !== 'fixed' && fixed.length
+            ? `<p class="pc-note">${escHtml(t('mistake_all_fixed_here', { n: fixed.length }))}<br>
+                <button type="button" class="back-btn mb-see-fixed" onclick="mbSetSort('fixed')">${escHtml(t('mistake_see_fixed', { n: fixed.length }))}</button></p>`
+            : `<p class="pc-note">${escHtml(t(mbSort === 'fixed' ? 'mistake_none_fixed' : 'mistake_none_here'))}</p>`;
     } else {
         // two columns on computers: the first half of the page left, the rest right
         const half = Math.ceil(mbRows.length / 2);

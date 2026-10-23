@@ -116,7 +116,7 @@ I18N.ja = {
         hub_mistakes_none: '間違いなし、すごい！', hub_fc_known: '覚えた単語 {n}語', hub_fc_intro: 'カードをめくって覚えよう', hub_listen_last: '前回 {c} / {n}',
         hub_listen_intro: '聞いて選ぶ・書き取る', hub_stats_week: '今週 {n}語練習しました', when_tomorrow: '明日 {time}', mistake_open_n: '克服待ち {n}語',
         mistake_bubble: '{n}回続けて正解すれば、ノートから卒業できるよ！', mistake_repair_btn: 'よく間違える{n}語を克服', mistake_all_fixed: '間違いは全部克服、すごい！', mistake_all: 'すべて',
-        mistake_sort_count: 'よく間違える', mistake_sort_recent: '最近', mistake_sort_fixed: '克服済み', mistake_group_topics: 'テーマ別単語', mistake_group_notes: 'ノート', mistake_group_old: '旧単語リスト', mistake_count_open: '未修正 {n} 個', mistake_count_fixed: '修正済み {n} 個', mistake_sort: '並べ替え', mistake_none_here: 'ここには克服待ちの単語はありません',
+        mistake_sort_count: 'よく間違える', mistake_sort_recent: '最近', mistake_sort_fixed: '克服済み', mistake_group_topics: 'テーマ別単語', mistake_group_notes: 'ノート', mistake_group_old: '旧単語リスト', mistake_count_open: '未修正 {n} 個', mistake_count_fixed: '修正済み {n} 個', mistake_sort: '並べ替え', mistake_none_here: 'ここには克服待ちの単語はありません', mistake_all_fixed_here: 'ここの {n} 語はすべて修正済み。すごい！', mistake_see_fixed: '修正済みの {n} 語を見る',
         mistake_none_fixed: 'まだ克服した単語はありません。2回正解するとここに並びます', mistake_fixed_stamp: '克服', mistake_state_title: '{n}回ミス・克服 {f}/{m}', mistake_delete: '削除',
         mistake_more: 'あと{n}語を表示', mistake_fixed_week: '今週 {n}語を克服', mistake_clear_all: 'ノートを空にする', mistake_clear_set: 'この単語帳の間違いを消す',
         mistake_clear_confirm: '「{name}」の間違いを消しますか？', mistake_repair_label: '間違い克服', stats_longest: '最長記録', stats_mastery_title: 'どれだけ覚えたか',

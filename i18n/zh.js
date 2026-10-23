@@ -117,7 +117,7 @@ I18N.zh = {
         hub_mistakes_none: '沒有錯題，太棒了', hub_fc_known: '已會 {n} 個字', hub_fc_intro: '翻卡片背單字', hub_listen_last: '上次 {c} / {n}',
         hub_listen_intro: '聽音選字或聽寫', hub_stats_week: '這週練了 {n} 個字', when_tomorrow: '明天 {time}', mistake_open_n: '{n} 個待修復',
         mistake_bubble: '每個字連續答對 {n} 次，就能把它趕出錯題本！', mistake_repair_btn: '修復最常錯的 {n} 個', mistake_all_fixed: '錯題都修好了，太厲害了！', mistake_all: '全部',
-        mistake_sort_count: '最常錯', mistake_sort_recent: '最近錯', mistake_sort_fixed: '已修正', mistake_group_topics: '主題單字', mistake_group_notes: '筆記', mistake_group_old: '舊版單字', mistake_count_open: '{n} 個待修正', mistake_count_fixed: '{n} 個已修正', mistake_sort: '排序', mistake_none_here: '這裡沒有待修復的字',
+        mistake_sort_count: '最常錯', mistake_sort_recent: '最近錯', mistake_sort_fixed: '已修正', mistake_group_topics: '主題單字', mistake_group_notes: '筆記', mistake_group_old: '舊版單字', mistake_count_open: '{n} 個待修正', mistake_count_fixed: '{n} 個已修正', mistake_sort: '排序', mistake_none_here: '這裡沒有待修復的字', mistake_all_fixed_here: '這裡的 {n} 個字都修好了，太棒了！', mistake_see_fixed: '看已修正的 {n} 個',
         mistake_none_fixed: '還沒有修好的字，答對 2 次就會出現在這裡', mistake_fixed_stamp: '已修正', mistake_state_title: '錯了 {n} 次・修復進度 {f}/{m}', mistake_delete: '刪除',
         mistake_more: '再顯示 {n} 個', mistake_fixed_week: '本週已修正 {n} 個', mistake_clear_all: '清空錯題本', mistake_clear_set: '清空這個單字庫的錯題',
         mistake_clear_confirm: '確定要清空「{name}」的錯題嗎？', mistake_repair_label: '錯題修復', stats_longest: '最長紀錄', stats_mastery_title: '我學會了多少',

@@ -116,7 +116,7 @@ I18N.ko = {
         hub_mistakes_none: '오답이 없어요, 최고!', hub_fc_known: '아는 단어 {n}개', hub_fc_intro: '카드를 넘기며 외워요', hub_listen_last: '지난번 {c} / {n}',
         hub_listen_intro: '듣고 고르거나 받아쓰기', hub_stats_week: '이번 주 {n}개 단어 연습', when_tomorrow: '내일 {time}', mistake_open_n: '해결할 단어 {n}개',
         mistake_bubble: '{n}번 연속 맞히면 오답 노트에서 내보낼 수 있어요!', mistake_repair_btn: '자주 틀린 {n}개 해결하기', mistake_all_fixed: '오답을 모두 해결했어요, 대단해요!', mistake_all: '전체',
-        mistake_sort_count: '자주 틀림', mistake_sort_recent: '최근', mistake_sort_fixed: '해결함', mistake_group_topics: '주제별 단어', mistake_group_notes: '노트', mistake_group_old: '이전 단어장', mistake_count_open: '고칠 단어 {n}개', mistake_count_fixed: '고친 단어 {n}개', mistake_sort: '정렬', mistake_none_here: '여기에는 해결할 단어가 없어요',
+        mistake_sort_count: '자주 틀림', mistake_sort_recent: '최근', mistake_sort_fixed: '해결함', mistake_group_topics: '주제별 단어', mistake_group_notes: '노트', mistake_group_old: '이전 단어장', mistake_count_open: '고칠 단어 {n}개', mistake_count_fixed: '고친 단어 {n}개', mistake_sort: '정렬', mistake_none_here: '여기에는 해결할 단어가 없어요', mistake_all_fixed_here: '여기 있는 {n}개 단어를 모두 고쳤어요. 대단해요!', mistake_see_fixed: '고친 단어 {n}개 보기',
         mistake_none_fixed: '아직 해결한 단어가 없어요. 두 번 맞히면 여기에 나와요', mistake_fixed_stamp: '해결', mistake_state_title: '{n}번 틀림 · 해결 {f}/{m}', mistake_delete: '삭제',
         mistake_more: '{n}개 더 보기', mistake_fixed_week: '이번 주 {n}개 해결', mistake_clear_all: '오답 노트 비우기', mistake_clear_set: '이 단어장의 오답 비우기',
         mistake_clear_confirm: '「{name}」의 오답을 비울까요?', mistake_repair_label: '오답 해결', stats_longest: '최장 기록', stats_mastery_title: '얼마나 익혔을까',

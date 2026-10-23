@@ -117,7 +117,7 @@ I18N['zh-Hans'] = {
         hub_mistakes_none: '没有错题，太棒了', hub_fc_known: '已会 {n} 个词', hub_fc_intro: '翻卡片背单词', hub_listen_last: '上次 {c} / {n}',
         hub_listen_intro: '听音选词或听写', hub_stats_week: '这周练了 {n} 个词', when_tomorrow: '明天 {time}', mistake_open_n: '{n} 个待修复',
         mistake_bubble: '每个词连续答对 {n} 次，就能把它赶出错题本！', mistake_repair_btn: '修复最常错的 {n} 个', mistake_all_fixed: '错题都修好了，太厉害了！', mistake_all: '全部',
-        mistake_sort_count: '最常错', mistake_sort_recent: '最近错', mistake_sort_fixed: '已修正', mistake_group_topics: '主题单词', mistake_group_notes: '笔记', mistake_group_old: '旧版单词', mistake_count_open: '{n} 个待修正', mistake_count_fixed: '{n} 个已修正', mistake_sort: '排序', mistake_none_here: '这里没有待修复的词',
+        mistake_sort_count: '最常错', mistake_sort_recent: '最近错', mistake_sort_fixed: '已修正', mistake_group_topics: '主题单词', mistake_group_notes: '笔记', mistake_group_old: '旧版单词', mistake_count_open: '{n} 个待修正', mistake_count_fixed: '{n} 个已修正', mistake_sort: '排序', mistake_none_here: '这里没有待修复的词', mistake_all_fixed_here: '这里的 {n} 个词都修好了，太棒了！', mistake_see_fixed: '看已修正的 {n} 个',
         mistake_none_fixed: '还没有修好的词，答对 2 次就会出现在这里', mistake_fixed_stamp: '已修正', mistake_state_title: '错了 {n} 次・修复进度 {f}/{m}', mistake_delete: '删除',
         mistake_more: '再显示 {n} 个', mistake_fixed_week: '本周已修正 {n} 个', mistake_clear_all: '清空错题本', mistake_clear_set: '清空这个单词库的错题',
         mistake_clear_confirm: '确定要清空“{name}”的错题吗？', mistake_repair_label: '错题修复', stats_longest: '最长纪录', stats_mastery_title: '我学会了多少',

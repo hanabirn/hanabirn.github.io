@@ -35,6 +35,11 @@ const TTS_SAMPLE = {
 const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW',
     'fr-FR': 'fr', 'ru-RU': 'ru', 'de-DE': 'de', 'es-ES': 'es', 'en-US': 'en-US', 'en-GB': 'en-GB' };
 const audioIndexes = {};
+// the same, once settled (a Map, or null when the language has none), so speakText()
+// can decide at once: iPhone Safari only speaks / plays from inside the tap itself,
+// not after waiting for a fetch (English had no recordings online and its ▶ stayed
+// silent, 2026-10-22)
+const audioKnown = {};
 let audioPlaying = null;
 let speakSeq = 0;
 
@@ -61,13 +66,13 @@ function audioIndex(dir) {
         audioIndexes[dir] = fetch('data/audio/' + dir + '/index.json')
             .then(r => r.ok ? r.json() : null)
             .then(j => {
-                if (!j) return null;
+                if (!j) return (audioKnown[dir] = null);
                 const map = new Map();
                 (j.f || []).forEach(id => map.set(id, id));
                 Object.entries(j.a || {}).forEach(([alias, id]) => map.set(alias, id));
-                return map;
+                return (audioKnown[dir] = map);
             })
-            .catch(() => { delete audioIndexes[dir]; return null; });
+            .catch(() => { delete audioIndexes[dir]; return null; });   // offline: try again next time
     }
     return audioIndexes[dir];
 }
@@ -153,7 +158,7 @@ function speakText(text, lang, opts) {
     // an English word not recorded in this accent yet: the other accent's recording
     const other = EN_ACCENTS.includes(lang) && !(opts && opts.exact)
         ? EN_ACCENTS.find(v => v !== lang && !ttsSaved()[v]) : null;
-    Promise.all([audioIndex(dir), other ? audioIndex(AUDIO_DIRS[other]) : null]).then(([map, otherMap]) => {
+    const play = (map, otherMap) => {
         if (seq !== speakSeq) return;
         const keys = opts && opts.reading ? [text + '|' + opts.reading, text] : [text];
         const find = m => m && keys.map(k => m.get(audioId(k))).find(Boolean);
@@ -172,7 +177,11 @@ function speakText(text, lang, opts) {
         });
         // blocked autoplay or a missing file (offline): use the browser voice
         a.play().catch(() => { if (seq === speakSeq) speakWithVoice(text, lang, slow, onend); });
-    });
+    };
+    const otherDir = other ? AUDIO_DIRS[other] : null;
+    // indexes already loaded (or known to be missing): right away, inside the tap
+    if (dir in audioKnown && (!otherDir || otherDir in audioKnown)) return play(audioKnown[dir], otherDir ? audioKnown[otherDir] : null);
+    Promise.all([audioIndex(dir), otherDir ? audioIndex(otherDir) : null]).then(([map, otherMap]) => play(map, otherMap));
 }
 
 /* ----- English accent -----
