@@ -594,6 +594,13 @@ def jlpt_review(moves, dropped, late):
     print(f"  JLPT: {len(moves)} moved, {len(dropped)} duplicates left out, {len(late)} rarer readings last — review {out}")
 
 
+# Wrong meanings in the owner's TOPIK sheets, fixed here so the sheet needn't change
+# (owner's request 2026-10-23): word -> Chinese meaning
+KO_FIX = {
+    "자리": "座位；位置",
+}
+
+
 def build_sheets(args):
     build_jlpt(args)
     for set_id, sid in TOPIK_SHEETS.items():
@@ -603,7 +610,7 @@ def build_sheets(args):
             if len(r) < 3 or not valid(r[0], r[1]) or r[0].strip() in seen:
                 continue
             seen.add(r[0].strip())
-            words.append([r[0].strip(), "", r[1].strip(), r[2].strip()])
+            words.append([r[0].strip(), "", KO_FIX.get(r[0].strip(), r[1].strip()), r[2].strip()])
         words = freq_sorted(words, ko_freq)
         write_set(set_id, "ko", words, "Hanabi 整理的 TOPIK 單字表（依詞頻排序）", "© Hanabi")
 

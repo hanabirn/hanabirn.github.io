@@ -198,7 +198,11 @@ def ladders(lang, cache):
         parts = []                                     # [label, words, first set, last set, part (0 = whole)]
         marks = '①②③④⑤⑥⑦⑧⑨⑩'
         for a, b, words in merged:
-            name = LEVEL_NAMES[a] if a == b else LEVEL_NAMES[a] + '–' + LEVEL_NAMES[b]
+            # "TOPIK 1–2", "HSK 1–4": the second name without the prefix they share
+            nb = LEVEL_NAMES[b]
+            if a != b and ' ' in LEVEL_NAMES[a] and nb.startswith(LEVEL_NAMES[a].split(' ')[0] + ' '):
+                nb = nb.split(' ', 1)[1]
+            name = LEVEL_NAMES[a] if a == b else LEVEL_NAMES[a] + '–' + nb
             if len(words) <= MAX_LEVEL:
                 parts.append([name, words, a, b, 0]); continue
             k = -(-len(words) // MAX_LEVEL)            # this many parts, as even as possible
@@ -246,7 +250,8 @@ def write(lang, cache):
     allsteps = {}
     if js.exists():
         txt = js.read_text(encoding='utf-8')
-        allsteps = json.loads(txt[txt.index('{'):txt.rindex('}') + 1])
+        start = txt.index('const TOPIC_LEVELS = ') + len('const TOPIC_LEVELS = ')
+        allsteps = json.loads(txt[start:txt.rindex('}') + 1])
     allsteps[lang] = steps
     allsteps = {l: allsteps[l] for l in LEVEL_SETS if l in allsteps}
     js.write_text('/* Built by tools/build_topic_levels.py --write — do not edit by hand.\n'
@@ -261,7 +266,7 @@ def review(lang, cache):
     lad, base = ladders(lang, cache)
     rows, total = [], 0
     for t, levels in lad.items():
-        n = sum(len(w) for _, w in levels); total += n
+        n = sum(len(w) for _, w, *_ in levels); total += n
         rows.append(f'<section><h2>{TOPIC_ZH[t]} <small>{t} · 基礎 {len(base.get(t, []))} 字（手寫，不變）＋ 檢定 {n} 字</small></h2>')
         for name, words, *_ in levels:
             rows.append(f'<details><summary><b>{name}</b> — {len(words)} 字</summary><div class="w">' +

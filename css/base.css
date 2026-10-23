@@ -30,6 +30,9 @@ body {
     /* viewport-fit=cover (index.html): keep content clear of the notch in landscape */
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
+    /* its own stacking context, so the z-index: -1 patterns below paint above the body's
+       paper colour (without it the 七寶 band was hidden and the waves only half showed) */
+    isolation: isolate;
 }
 
 /* 青海波: faint waves rising from the bottom of the screen, behind everything
@@ -48,8 +51,23 @@ body::before {
     -webkit-mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 35%, transparent 100%);
     mask-image: linear-gradient(to top, #000 0%, rgba(0,0,0,0.6) 35%, transparent 100%);
 }
+/* option B (owner's pick 2026-10-23, tools/.mockups/backdrop/ui.html): a band of 七寶
+   rising behind the header and fading down, answering the 青海波 at the bottom */
+body::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 340px;
+    z-index: -1;
+    pointer-events: none;
+    background-image: var(--shippo-pattern);
+    -webkit-mask-image: linear-gradient(to bottom, #000 20%, transparent);
+    mask-image: linear-gradient(to bottom, #000 20%, transparent);
+}
 @media print {
-    body::before { display: none; }
+    body::before, body::after { display: none; }
 }
 
 /* ===== Headings in Mincho (serif), controls in the body sans ===== */
@@ -109,6 +127,17 @@ main {
     box-shadow:
         var(--shadow-card),
         var(--shadow-card-inset);
+}
+/* option B: the page cards carry a vermilion top edge and lift off the paper */
+.lang-card, .setup-card, .mode-card, .quiz-card, .guestbook-card, .about-card {
+    border-top: 4px solid var(--primary);
+    box-shadow: var(--shadow-card);
+}
+/* … and section titles inside them a vermilion bar on the left */
+.pc-section h4, .hub-title, .home-section-title, .dict-section-title, .alpha-sec-title, .stats-chart-title {
+    padding-left: 10px;
+    border-left: 4px solid var(--primary);
+    line-height: 1.25;
 }
 
 .lang-card h3,

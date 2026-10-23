@@ -402,7 +402,11 @@ function topicLevelName(id) {
     const short = sid => /^jlpt_/.test(sid) ? sid.slice(5).toUpperCase()
         : /^(fr|ru|es|de)_/.test(sid) ? sid.slice(3).toUpperCase()
         : /^en_/.test(sid) ? t('topic_lv_' + sid) : t('quiz_' + sid);
-    return short(st[1]) + (st[1] !== st[2] ? '–' + short(st[2]) : '') + (st[3] ? ' ' + '①②③④⑤⑥⑦⑧⑨⑩'[st[3] - 1] : '');
+    // "TOPIK 1–2", "HSK 1–4": the second name without the prefix the two share
+    const a = short(st[1]), b = short(st[2]);
+    const pre = a.includes(' ') ? a.split(' ')[0] + ' ' : '';
+    const to = pre && b.startsWith(pre) ? b.slice(pre.length) : b;
+    return a + (st[1] !== st[2] ? '–' + to : '') + (st[3] ? ' ' + '①②③④⑤⑥⑦⑧⑨⑩'[st[3] - 1] : '');
 }
 
 /* French (FLELex), Russian (Kelly), Spanish (ELELex) and German (DAFlex) by CEFR level, fr_a1 … de_c1 (tools/build_vocab.py);

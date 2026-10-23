@@ -208,24 +208,23 @@ function closeSiteMenu() {
     setNavMenu(document.getElementById('site-menu'), false);
 }
 
-/* One header row when brand + nav + controls fit, else the nav moves to a row
-   of its own (.nav-below, css/header.css). Re-checked whenever the brand or the
-   nav changes size: window width, a language switch, the account name. */
+/* Phones: a site name too long for the header shows as "Hanabi" (.brand-short). On
+   computers the controls, the name and the nav each have a row (css/header.css), so
+   nothing needs measuring. Re-checked on resize and a language switch. */
 function headerFit() {
     const bar = document.querySelector('.header-bar');
     const brand = bar && bar.querySelector('.brand');
     const nav = bar && bar.querySelector('.main-nav');
     const controls = bar && bar.querySelector('.subtitle-controls');
     if (!brand || !nav || !controls) return;
-    bar.classList.remove('nav-below', 'brand-short');
+    bar.classList.remove('brand-short');
     if (getComputedStyle(nav).display === 'none') {   // phones
         // a site name too long for the bar ("Маленький мир Хан…") gives way to "Hanabi"
         const h1 = brand.querySelector('h1');
         if (h1 && h1.scrollWidth > h1.clientWidth + 1) bar.classList.add('brand-short');
         return;
     }
-    const top = brand.offsetTop;
-    if (nav.offsetTop > top + 8 || controls.offsetTop > top + 8) bar.classList.add('nav-below');
+    // computers: the controls, the name and the nav each have a row (css/header.css)
 }
 
 const NAV_HOVER = window.matchMedia && matchMedia('(hover: hover) and (pointer: fine)').matches;
