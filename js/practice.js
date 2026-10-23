@@ -138,10 +138,13 @@ function renderPracticeHub() {
    Redesigned 2026-10-22 (owner's request): a two-step filter — the language first
    (flag, name, open mistakes), then that language's levels (JLPT N5 …; the topic sets
    together as 主題單字, the notepad's cards as 筆記) — a sort switch, and the words in
-   two columns on computers, MB_PAGE a page with 上一頁 / 下一頁. The card is 1180px
+   two columns on computers, MB_PAGE a page (MB_PAGE_PHONE on phones) with 上一頁 / 下一頁. The card is 1180px
    wide on computers like the reading page (css/base.css). */
 
 const MB_PAGE = 20;
+const MB_PAGE_PHONE = 6;  // phones show one column, so fewer a page (owner's pick 2026-10-22)
+const mbPhone = window.matchMedia('(max-width: 768px)');
+function mbPageSize() { return mbPhone.matches ? MB_PAGE_PHONE : MB_PAGE; }
 let mbLang = 'all';       // 'all' | a learning language (ja, ko …)
 let mbGroup = 'all';      // 'all' | a word set id | 'topics' | 'notes'
 let mbSort = 'count';     // 'count' | 'recent' | 'fixed'
@@ -327,10 +330,11 @@ function renderMistakeBook() {
     if (mbSort === 'fixed') rows = fixed.slice().sort((a, b) => b.fixedAt - a.fixedAt);
     else if (mbSort === 'recent') rows = open.slice().sort((a, b) => b.last - a.last);
     else rows = open.slice().sort((a, b) => (b.count - a.count) || (b.last - a.last));
-    const pages = Math.max(1, Math.ceil(rows.length / MB_PAGE));
+    const size = mbPageSize();
+    const pages = Math.max(1, Math.ceil(rows.length / size));
     mbPage = Math.min(mbPage, pages - 1);
-    const from = mbPage * MB_PAGE;
-    mbRows = rows.slice(from, from + MB_PAGE);
+    const from = mbPage * size;
+    mbRows = rows.slice(from, from + size);
 
     const seg = (v, label) => `<button type="button" class="mode-btn${mbSort === v ? ' mode-btn-active' : ''}" onclick="mbSetSort('${v}')" aria-pressed="${mbSort === v}">${escHtml(label)}</button>`;
     html += `<div class="mb-toolbar">
