@@ -38,7 +38,7 @@ I18N.zh = {
         result_correct: '答對', result_wrong: '答錯', result_score: '總分', result_out_of: '題',
         quiz_again: '🔄 再來一次',
         share_score: '📱 分享成績', share_copied: '已複製到剪貼簿！', share_downloaded: '已下載圖片！',
-        about_tagline: '學習語言、玩音樂遊戲、聽音樂、看動漫 / 漫畫',
+        about_tagline: '學習語言、玩音樂遊戲、聽音樂、看動漫 / 漫畫', about_intro_title: '自我介紹', about_intro_1: '嗨，我是 Hanabi！我最早是因為動漫才開始學日文，到現在日文還是我學最久、也最喜歡的語言。', about_intro_2: '後來認識了越來越多來自不同國家的朋友，就想說也來學學他們國家的語言，希望有一天能用他們的母語聊天、一起玩遊戲。所以現在也在學韓文、法文、俄文和粵語。', about_intro_3: '會做這個網站，是希望讓更多人不再排斥學語言，能輕鬆自在、沒有壓力地學下去。', about_intro_4: '平常喜歡玩音樂遊戲（最喜歡 osu!），也喜歡聽音樂、看動漫和漫畫。我看過的動漫歌曲大部分都很好聽！', about_intro_5: '希望你能在這裡學到想學的語言，也希望這個網站對你有幫助。如果你想學的語言這裡還沒有，或覺得網站哪裡可以做得更好，隨時都可以私訊我，或到「建議&改進」留言給我喔！',
         about_langs_title: '正在學習的語言', about_note_title: '小提醒',
         about_note: '本人目前居住在美國 (UTC-7)，有時差還請多多包涵 !',
         about_links_title: '社群連結', about_discord_title: '中文學習交流', about_discord_desc: '想學中文的外國朋友，或只是想找人一起打屁聊天？歡迎加入這個 Discord 伺服器！',

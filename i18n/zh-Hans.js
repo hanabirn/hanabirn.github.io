@@ -38,7 +38,7 @@ I18N['zh-Hans'] = {
         result_correct: '答对', result_wrong: '答错', result_score: '总分', result_out_of: '题',
         quiz_again: '🔄 再来一次',
         share_score: '📱 分享成绩', share_copied: '已复制到剪贴板！', share_downloaded: '已下载图片！',
-        about_tagline: '学习语言、玩音乐游戏、听音乐、看动漫 / 漫画',
+        about_tagline: '学习语言、玩音乐游戏、听音乐、看动漫 / 漫画', about_intro_title: '自我介绍', about_intro_1: '嗨，我是 Hanabi！我最早是因为动漫才开始学日语，到现在日语还是我学得最久、也最喜欢的语言。', about_intro_2: '后来认识了越来越多来自不同国家的朋友，就想着也学学他们国家的语言，希望有一天能用他们的母语聊天、一起玩游戏。所以现在也在学韩语、法语、俄语和粤语。', about_intro_3: '做这个网站，是希望让更多人不再排斥学语言，能轻松自在、没有压力地学下去。', about_intro_4: '平时喜欢玩音乐游戏（最喜欢 osu!），也喜欢听音乐、看动漫和漫画。我看过的动漫歌曲大部分都很好听！', about_intro_5: '希望你能在这里学到想学的语言，也希望这个网站对你有帮助。如果你想学的语言这里还没有，或觉得网站哪里可以做得更好，随时都可以私信我，或到“建议&改进”留言给我哦！',
         about_langs_title: '正在学习的语言', about_note_title: '小提醒',
         about_note: '本人目前居住在美国 (UTC-7)，有时差还请多多包涵 !',
         about_links_title: '社交链接', about_discord_title: '中文学习交流', about_discord_desc: '想学中文的外国朋友，或只是想找人一起闲聊？欢迎加入这个 Discord 服务器！',

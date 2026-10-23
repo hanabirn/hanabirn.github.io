@@ -377,14 +377,25 @@
                 <h2 class="about-name">Hanabi</h2>
                 <p class="about-tagline" data-i18n="about_tagline"></p>
 
+                <!-- the owner's self-introduction (written from the owner's answers, 2026-10-22) -->
+                <div class="about-section about-intro">
+                    <h3><span class="about-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg></span><span data-i18n="about_intro_title"></span></h3>
+                    <p class="about-text" data-i18n="about_intro_1"></p>
+                    <p class="about-text" data-i18n="about_intro_2"></p>
+                    <p class="about-text" data-i18n="about_intro_3"></p>
+                    <p class="about-text" data-i18n="about_intro_4"></p>
+                    <p class="about-text" data-i18n="about_intro_5"></p>
+                </div>
+
                 <div class="about-section">
                     <h3><span class="about-section-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 3.5 6 3.5 9s-1 6.5-3.5 9c-2.5-2.5-3.5-6-3.5-9s1-6.5 3.5-9Z"/></svg></span><span data-i18n="about_langs_title"></span></h3>
                     <div class="about-tags">
-                        <span class="about-tag jp" data-i18n="lang_jp"></span>
-                        <span class="about-tag kr" data-i18n="lang_kr"></span>
-                        <span class="about-tag fr" data-i18n="lang_fr"></span>
-                        <span class="about-tag ru" data-i18n="lang_ru"></span>
-                        <span class="about-tag cantonese" data-i18n="lang_cantonese"></span>
+                        <!-- SVG flags (css/header.css) rather than emoji, which Windows shows as letters -->
+                        <span class="about-tag"><span class="flag flag--jp" aria-hidden="true"></span><span data-i18n="dict_lang_ja"></span></span>
+                        <span class="about-tag"><span class="flag flag--kr" aria-hidden="true"></span><span data-i18n="dict_lang_ko"></span></span>
+                        <span class="about-tag"><span class="flag flag--fr" aria-hidden="true"></span><span data-i18n="dict_lang_fr"></span></span>
+                        <span class="about-tag"><span class="flag flag--ru" aria-hidden="true"></span><span data-i18n="dict_lang_ru"></span></span>
+                        <span class="about-tag"><span class="flag flag--hk" aria-hidden="true"></span><span data-i18n="lang_cantonese"></span></span>
                     </div>
                 </div>
 

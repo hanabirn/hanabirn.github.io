@@ -84,19 +84,22 @@
     gap: 0.5rem;
 }
 
+/* one look for every language (owner's pick 2026-10-22): the flag tells them apart */
 .about-tag {
-    padding: 0.4rem 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 0.4rem 0.95rem;
     border-radius: 20px;
     font-size: 0.9rem;
     font-weight: 700;
-    color: #fff;
+    color: var(--ink);
+    background: var(--surface);
+    border: 2px solid var(--line);
+    box-shadow: 0 3px 0 var(--edge);
 }
-
-.about-tag.jp { background: #c8432b; }
-.about-tag.kr { background: #3f5a8a; }
-.about-tag.fr { background: #2f4f86; }
-.about-tag.ru { background: #8a3a3a; }
-.about-tag.cantonese { background: #a8792a; }
+.about-intro .about-text { margin: 0 0 0.55rem; text-align: left; }
+.about-intro .about-text:last-child { margin-bottom: 0; }
 
 .about-text {
     color: var(--about-text);
@@ -120,7 +123,7 @@
     gap: 0.4rem;
     padding: 0.5rem 1rem;
     border-radius: 25px;
-    color: #fff;
+    color: var(--ink);   /* was white on a pale tint and hard to read (2026-10-22) */
     text-decoration: none;
     font-weight: 700;
     font-size: 0.85rem;
