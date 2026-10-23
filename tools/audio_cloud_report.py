@@ -1,8 +1,10 @@
-"""The daily Gemini recording run on GitHub Actions (.github/workflows/gemini-audio.yml)
-posts its result to Discord with this: how many lines were recorded today, how many are
-left, and anything that needs the owner (credit used up, a failed run, all done).
+"""The recording runs on GitHub Actions post their result to Discord with this. The daily
+Gemini run (.github/workflows/gemini-audio.yml): how many lines were recorded today, how
+many are left, and anything that needs the owner (credit used up, a failed run, all
+done). With --google, a Google Cloud TTS run (google-audio.yml, started by hand): per
+language how many files it was to make, how many it skipped, and whether it finished.
 
-Usage: python tools/audio_cloud_report.py <log file> <exit code of build_audio.py>
+Usage: python tools/audio_cloud_report.py <log file> <exit code> [--google]
 Env: DISCORD_WEBHOOK (the channel's webhook URL; without it the message is only printed),
      RUN_URL (link to the Actions run), BRANCH (where the files were committed).
 """
@@ -44,10 +46,45 @@ def summary(log, code):
     return '\n'.join(out)[:1900]
 
 
+def google_summary(log, code):
+    """One line per build_audio.py run in the log ("===== --only en-US" … "----- exit 0")."""
+    today = (datetime.now(timezone.utc) + timedelta(hours=8)).strftime('%Y-%m-%d')
+    out = [f'🔊 **Hanabi Google 錄音** {today}']
+    for block in re.split(r'^===== ', log, flags=re.M)[1:]:
+        run = block.splitlines()[0].strip()
+        head = re.search(r'^(\S+) \(([^)]+)\): (\d+) files .*?, (\d+) to render, (\d+) characters', block, re.M)
+        ex = re.search(r'^----- exit (\d+)', block, re.M)
+        skipped = len(re.findall(r'^  ! ', block, re.M))
+        replaced = re.search(r': (\d+) files replaced, (\d+) kept the old voice', block)
+        if not head:
+            out.append(f'❌ `{run}`：沒有開始（{block.strip().splitlines()[-1][:200] if block.strip() else "沒有輸出"}）')
+            continue
+        lang, voice, todo, chars = head.group(1), head.group(2), int(head.group(4)), int(head.group(5))
+        ok = ex and ex.group(1) == '0'
+        line = f'{"✅" if ok else "❌"} **{lang}**（{voice}）：要錄 {todo} 個、{chars:,} 字'
+        if replaced:
+            line += f'，換掉 {replaced.group(1)} 個（{replaced.group(2)} 個保留舊聲音）'
+        if skipped:
+            line += f'，{skipped} 個沒錄成（之後重跑會補）'
+        if not ok:
+            line += f'，中途失敗（代碼 {ex.group(1) if ex else "?"}）'
+        out.append(line)
+    if re.search(r'HTTP 40[13]|API key not valid|PERMISSION_DENIED|billing', log, re.I):
+        out.append('⚠️ Google Cloud 拒絕了請求：可能是金鑰或帳單（試用金／付款方式）的問題，請到 Cloud 主控台看一下。')
+    if code != 0 and len(out) == 1:
+        tail = '\n'.join(log.strip().splitlines()[-6:])
+        out.append(f'❌ 執行失敗（代碼 {code}）：\n```\n{tail[-900:]}\n```')
+    if os.environ.get('BRANCH'):
+        out.append(f'檔案存在 `{os.environ["BRANCH"]}` 分支（還沒上線，跟 Claude 說「合併錄音」再 Push）')
+    if os.environ.get('RUN_URL'):
+        out.append(os.environ['RUN_URL'])
+    return '\n'.join(out)[:1900]
+
+
 def main():
     log = open(sys.argv[1], encoding='utf-8', errors='replace').read() if os.path.exists(sys.argv[1]) else ''
     code = int(sys.argv[2]) if len(sys.argv) > 2 else 0
-    msg = summary(log, code)
+    msg = google_summary(log, code) if '--google' in sys.argv[3:] else summary(log, code)
     print(msg)
     hook = os.environ.get('DISCORD_WEBHOOK')
     if hook:

@@ -1,0 +1,80 @@
+# Google Cloud TTS recordings in the cloud, started by hand (Actions → Google 錄音 → Run
+# workflow), so long runs don't need the PC (owner's pick 2026-10-22: the English accents
+# and German's new voice, ~35k files, about 3 hours). Each job is one tools/build_audio.py
+# run; its files are committed to the audio-queue branch right after it (never main —
+# nothing goes live until the owner says Push and it is merged), and a report goes to
+# Discord (tools/audio_cloud_report.py --google).
+# Secrets: GOOGLE_TTS_KEY (Cloud Text-to-Speech), DISCORD_WEBHOOK.
+name: Google 錄音
+
+on:
+  workflow_dispatch:
+    inputs:
+      jobs:
+        description: 'build_audio.py runs, separated by ";" (e.g. --only en-US; --only de --redo)'
+        default: '--only en-US; --only en-GB; --only de --redo'
+        required: true
+
+permissions:
+  contents: write
+
+concurrency:
+  group: google-audio
+  cancel-in-progress: false
+
+jobs:
+  record:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    env:
+      BRANCH: audio-queue
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: audio-queue
+          fetch-depth: 1
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install
+        run: pip install lameenc numpy miniaudio opencc-python-reimplemented
+
+      - name: Record
+        env:
+          GOOGLE_TTS_KEY: ${{ secrets.GOOGLE_TTS_KEY }}
+          JOBS: ${{ inputs.jobs }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          printf 'GOOGLE_TTS_KEY=%s\n' "$GOOGLE_TTS_KEY" > tools/.google-tts.env
+          git config user.name 'hanabi-audio-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          set +e
+          worst=0
+          IFS=';' read -ra RUNS <<< "$JOBS"
+          for run in "${RUNS[@]}"; do
+            run="$(echo "$run" | xargs)"
+            [ -z "$run" ] && continue
+            echo "===== $run" | tee -a record.log
+            python -u tools/build_audio.py $run 2>&1 | tee -a record.log
+            code=${PIPESTATUS[0]}
+            echo "----- exit $code" | tee -a record.log
+            [ "$code" -ne 0 ] && worst=$code
+            # keep what this run made even if a later one fails
+            git add data/audio
+            if ! git diff --cached --quiet; then
+              git commit -q -m "Google recordings: $run ($(date -u +%Y-%m-%d), GitHub Actions)"
+              git push -q origin HEAD:audio-queue || worst=1
+            fi
+          done
+          rm -f tools/.google-tts.env
+          echo "code=$worst" >> "$GITHUB_ENV"
+
+      - name: Report
+        if: always()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONIOENCODING: utf-8
+        run: python tools/audio_cloud_report.py record.log "${code:-1}" --google
