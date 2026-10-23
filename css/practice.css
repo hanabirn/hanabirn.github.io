@@ -161,6 +161,19 @@
 .pc-progress i { background: var(--success); border-radius: 999px; transition: width 0.3s ease; }
 .pc-count { font-size: 0.82rem; color: var(--text-muted); font-weight: 700; min-width: 48px; text-align: right; }
 
+/* computers: 間隔複習, 測驗統計 and the flashcard decks are 1180px wide (css/base.css)
+   and two columns, so they show without scrolling (owner's layout rule, 2026-10-23) */
+@media (min-width: 1024px) {
+    .pc-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+    .pc-col > :first-child { margin-top: 0; }
+    .fc-cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr;
+        grid-template-areas: "opts decks" "lists decks"; gap: 0 28px; align-items: start; }
+    .fc-cols-opts { grid-area: opts; }
+    .fc-cols-decks { grid-area: decks; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .fc-cols-decks .fc-deck { margin: 0; }
+    .fc-cols-lists { grid-area: lists; }
+}
+
 /* ----- 練習中心 ----- */
 .quiz-tools { display: block; margin-top: 22px; }
 .hub-title { font-size: 1rem !important; margin: 0 0 10px !important; text-align: left !important; }

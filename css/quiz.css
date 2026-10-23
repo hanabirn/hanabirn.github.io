@@ -155,6 +155,46 @@
 @media (min-width: 640px) {
     .topic-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 }
+/* a topic's ladder: 基礎 → N5 → … (renderWords → topicLadderHtml, 2026-10-23) */
+.topic-back { margin-bottom: 12px; }
+/* computers: the 單字 page is 1180px wide (css/base.css) — word sets left, the streak and
+   練習中心 right, so it all shows without scrolling (owner's rule, 2026-10-23). The last
+   row is 1fr so the tall right column doesn't stretch the rows on the left. */
+@media (min-width: 1024px) {
+    #lang-card {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 360px;
+        grid-template-rows: repeat(4, auto) 1fr;
+        column-gap: 28px;
+        align-items: start;
+    }
+    #lang-card > * { grid-column: 1; }
+    #lang-card > #streak-display, #lang-card > #quiz-tools { grid-column: 2; }
+    #lang-card > #streak-display { grid-row: 1; margin-top: 0; }
+    #lang-card > #quiz-tools { grid-row: 2 / -1; margin-top: 0; }
+    #lang-card > #streak-display[style*="none"] + #quiz-tools { grid-row: 1 / -1; }
+    #lang-card .topic-ladder { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+}
+.topic-head { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.topic-head-emoji { font-size: 2rem; line-height: 1; }
+.topic-head h3 { font-family: var(--font-serif); font-size: 1.2rem; margin: 0; }
+.topic-head p { margin: 2px 0 0; font-size: 0.82rem; color: var(--text-secondary); }
+.topic-step { grid-template-columns: 54px minmax(0, 1fr) auto; column-gap: 12px; }
+.topic-step .words-level-name, .topic-step .words-level-state, .topic-step .topic-bar { grid-column: 2; }
+.topic-step .words-level-name { grid-row: 1; }
+.topic-step .words-level-go { grid-column: 3; }
+.topic-step-badge {
+    grid-column: 1; grid-row: 1 / span 3; width: 54px; height: 54px; border-radius: 50%;
+    display: grid; place-items: center; text-align: center; line-height: 1.1; padding: 2px;
+    font-weight: 900; font-size: 0.75rem; border: 2px solid var(--line); background: var(--surface);
+}
+.topic-step.done .topic-step-badge { background: var(--success-bg); border-color: var(--success); color: var(--success); font-size: 1.1rem; }
+.topic-step.next { outline: 2px solid var(--primary); outline-offset: 2px; }
+.topic-step.next .topic-step-badge { background: var(--primary); border-color: var(--primary-edge); color: #fff; }
+.topic-next-tag {
+    display: inline-block; margin-left: 8px; padding: 1px 8px; border-radius: 999px; vertical-align: 2px;
+    font-family: var(--font-sans, inherit); font-size: 0.72rem; font-weight: 800; background: var(--primary); color: #fff;
+}
 .topic-tile {
     display: flex;
     flex-direction: column;

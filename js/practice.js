@@ -466,7 +466,8 @@ function renderQuizStats() {
     const streak = calcStreak(recs);
     const avg = recs.length ? Math.round(recs.reduce((s, r) => s + r.pct, 0) / recs.length) + '%' : '—';
 
-    let html = practiceHead('tool_stats', 'closeQuizTools()') + `
+    // computers: two columns (css/practice.css .pc-cols) — learned left, activity right
+    let html = practiceHead('tool_stats', 'closeQuizTools()') + `<div class="pc-cols"><div class="pc-col">
         <div class="pc-tiles">
             <div class="pc-tile"><b>🔥 ${streak}</b><span>${escHtml(t('stats_streak'))}</span></div>
             <div class="pc-tile"><b>${longestStreak(days)}</b><span>${escHtml(t('stats_longest'))}</span></div>
@@ -501,7 +502,7 @@ function renderQuizStats() {
         });
         html += `<p class="pc-tip">${escHtml(t('stats_mastery_tip'))}</p>`;
     }
-    html += '</section>';
+    html += '</section></div><div class="pc-col">';
 
     // ----- practice calendar -----
     const today = new Date(); today.setHours(12, 0, 0, 0);
@@ -560,7 +561,7 @@ function renderQuizStats() {
             <table class="result-table stats-table"><thead><tr><th>${escHtml(t('stats_date'))}</th><th>${escHtml(t('stats_lang'))}</th><th>${escHtml(t('stats_accuracy'))}</th></tr></thead><tbody>${rows}</tbody></table>
         </details>`;
     }
-    box.innerHTML = html;
+    box.innerHTML = html + '</div></div>';
 }
 
 /* ===================== 間隔複習 page ===================== */
@@ -586,7 +587,7 @@ function renderSrsDashboard() {
     else msg = t('srs_bubble_empty');
 
     const startN = Math.min(due, SRS_REVIEW_LIMIT);
-    let html = practiceHead('tool_srs', 'closeQuizTools()') + `
+    let html = practiceHead('tool_srs', 'closeQuizTools()') + `<div class="pc-cols"><div class="pc-col">
         <div class="srs-talk"><span class="srs-mascot">${practiceMascot()}</span><div class="pc-bubble">${escHtml(msg)}</div></div>
         <div class="srs-due${due ? '' : ' none'}"><b>${due}</b><small>${escHtml(t('srs_due_label'))}</small></div>
         <button type="button" class="next-btn pc-wide" onclick="startSrsQuizReview('tool')"${due ? '' : ' disabled'}>${escHtml(due > SRS_REVIEW_LIMIT ? t('srs_start_some', { n: startN }) : t('srs_start_n', { n: startN }))}</button>`;
@@ -605,7 +606,7 @@ function renderSrsDashboard() {
             ${later.length ? `<div><span>${escHtml(t('srs_next_batch', { when: practiceWhen(later[0].due) }))}</span><b>${later.filter(c => c.due - later[0].due < 60 * 60 * 1000).length}</b></div>` : ''}
             <div><span>${escHtml(t('srs_later_today'))}</span><b>+${laterToday}</b></div>
             <div><span>${escHtml(t('srs_tomorrow'))}</span><b>+${tomorrow}</b></div>
-        </div>`;
+        </div></div><div class="pc-col">`;
 
         // 7-day forecast: day 0 also holds everything already due
         const fmt = weekdayFormatter();
@@ -628,7 +629,7 @@ function renderSrsDashboard() {
             <p class="pc-tip">${escHtml(t('srs_stage_tip'))}</p>
         </section>`;
     }
-    box.innerHTML = html;
+    box.innerHTML = html + '</div></div>';
 }
 
 /* ===================== 單字閃卡 ===================== */
@@ -710,7 +711,7 @@ function renderFlashcardDecks() {
     const box = document.getElementById('fc-setup');
     if (!box) return;
     const chip = (on, call, label) => `<button type="button" class="pc-chip${on ? ' on' : ''}" onclick="${call}" aria-pressed="${on}">${escHtml(label)}</button>`;
-    let html = practiceHead('tool_flashcard', 'closeFlashcardSetup()');
+    let html = practiceHead('tool_flashcard', 'closeFlashcardSetup()') + '<div class="fc-cols"><div class="fc-cols-opts">';
     html += `<div class="pc-chips">${FC_LANGS.map(l => chip(l === flashcardLang, `fcPickLang('${l}')`, t(PRACTICE_LANG_NAME_KEYS[l]))).join('')}</div>`;
     const modes = FC_MODES[flashcardLang];
     html += '<div class="fc-opts">';
@@ -720,7 +721,7 @@ function renderFlashcardDecks() {
     }
     html += `<span class="pc-label">${escHtml(t('fc_field_front'))}</span>`
         + chip(!fcReverse, 'fcPickFront(false)', t('fc_front_word')) + chip(fcReverse, 'fcPickFront(true)', t('fc_front_meaning'));
-    html += '</div>';
+    html += '</div></div><div class="fc-cols-decks">';
 
     const last = getFlashcardPrefs().set;
     const prefix = fcPrefix();
@@ -746,12 +747,12 @@ function renderFlashcardDecks() {
 
     const nUnknown = [...flashcardUnknownSet].filter(k => k.startsWith(prefix)).length;
     const nKnown = [...flashcardKnownSet].filter(k => k.startsWith(prefix)).length;
-    html += `<div class="pc-two">
+    html += `</div><div class="fc-cols-lists"><div class="pc-two">
         <button type="button" class="back-btn" onclick="reviewUnknownWords()"${nUnknown ? '' : ' disabled'}>${escHtml(t('fc_only_unknown', { n: nUnknown }))}</button>
         <button type="button" class="back-btn" onclick="showMasteredList()">${escHtml(t('fc_known_list', { n: nKnown }))}</button>
     </div>`;
     if (nUnknown) html += `<p class="pc-tip"><button type="button" class="pc-link" onclick="showUnknownList()">${escHtml(t('fc_unknown_list', { n: nUnknown }))}</button></p>`;
-    box.innerHTML = html;
+    box.innerHTML = html + '</div></div>';
 }
 
 /* A deck session: this set's 還不熟 words first, then words not seen yet in list order

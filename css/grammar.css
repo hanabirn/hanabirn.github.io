@@ -94,6 +94,11 @@
 .grammar-bar i { display: block; height: 100%; background: var(--success); border-radius: 4px; }
 
 .grammar-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+/* the 閱讀 / 聽解 lists on computers: two columns on the 1180px page (body.reading-wide /
+   body.listening-wide, owner's layout rule 2026-10-23) */
+@media (min-width: 1024px) {
+    body.reading-wide .learn-list-grid, body.listening-wide .learn-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .grammar-item {
     width: 100%;
     display: flex;

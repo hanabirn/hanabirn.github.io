@@ -66,10 +66,10 @@ function readingSetsHtml(set) {
     return `${mocks.length ? `<div class="ls-mock">
             <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>
             <p class="ls-mock-hint">${escHtml(t('reading_mock_hint', { n: mocks[0].count, m: mocks[0].minutes }))}</p>
-            <ol class="grammar-list">${mocks.map(st => card(st, set.sets.indexOf(st))).join('')}</ol>
+            <ol class="grammar-list learn-list-grid">${mocks.map(st => card(st, set.sets.indexOf(st))).join('')}</ol>
         </div>` : ''}
         ${practice.length ? `<h4 class="grammar-sub rdx-head">${escHtml(t('reading_sets_head'))}</h4>
-        <ol class="grammar-list">${practice.map(st => card(st, set.sets.indexOf(st))).join('')}</ol>` : ''}
+        <ol class="grammar-list learn-list-grid">${practice.map(st => card(st, set.sets.indexOf(st))).join('')}</ol>` : ''}
         ${set.passages.length ? `<h4 class="grammar-sub rdx-head">${escHtml(t('reading_short_head'))}</h4>` : ''}`;
 }
 

@@ -406,9 +406,9 @@ document.addEventListener('DOMContentLoaded', () => {
     renderRails();
     // web fonts can change the header's height after load
     window.addEventListener('load', railPlace);
-    // on the quiz page only the path and the mistake book are 1180px wide; the other
-    // cards keep 680px, so the rails move in next to them (body.quiz-wide, css/rails.css)
-    const wide = ['path-card', 'mistake-card'].map(id => document.getElementById(id)).filter(Boolean);
+    // on the quiz page only the 單字 page, the path, the mistake book, 間隔複習, 測驗統計 and the flashcard decks are 1180px wide; the
+    // other cards keep 680px, so the rails move in next to them (body.quiz-wide, css/rails.css)
+    const wide = ['lang-card', 'path-card', 'mistake-card', 'srs-card', 'stats-card', 'flashcard-setup-card'].map(id => document.getElementById(id)).filter(Boolean);
     if (wide.length) {
         const sync = () => {
             document.body.classList.toggle('quiz-wide', wide.some(el => el.style.display !== 'none'));

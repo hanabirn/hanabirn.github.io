@@ -99,7 +99,8 @@ async function renderReading() {
     const set = readingSets[readingSetId];
     box.dataset.zhrd = readingZhRd();           // which Chinese readings show (css/reading.css)
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
-    document.body.classList.toggle('reading-wide', readingView === 'read' || readingView === 'exam');
+    // the list too: its passages and rounds in two columns (owner's layout rule, 2026-10-23)
+    document.body.classList.toggle('reading-wide', ['read', 'exam', 'list'].includes(readingView));
     if (typeof railPlace === 'function') railPlace();
     if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
     if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
@@ -252,7 +253,7 @@ function readingListHtml(set) {
             <span>${escHtml(t('reading_read_n', { n: read, m: set.passages.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
         </div>` : ''}
-        <ol class="grammar-list">
+        <ol class="grammar-list learn-list-grid">
             ${set.passages.map((p, i) => {
                 const done = readingRead(set.id, p.id);
                 const best = prog[set.id + ':' + p.id];

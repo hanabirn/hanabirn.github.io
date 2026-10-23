@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-23',
+      zh: "單字的「主題」變大了：日文多了 6 個新主題（家人與人際、興趣與娛樂、自然與動物、心情與個性、時間與日期、社會與新聞），點進一個主題是一條從「基礎」到 N5～N1 的階梯——JLPT 的單字照主題分好，每 10 個字一關，想從哪一段開始都可以。其他語言之後陸續加上。另外，電腦上的單字頁、單字閃卡、測驗統計、間隔複習，以及閱讀和聽解的列表都改成寬版或左右兩欄，不用往下捲就能看完。",
+      'zh-Hans': "单词的“主题”变大了：日语多了 6 个新主题（家人与人际、兴趣与娱乐、自然与动物、心情与性格、时间与日期、社会与新闻），点进一个主题是一条从“基础”到 N5～N1 的阶梯——JLPT 的单词按主题分好，每 10 个词一关，想从哪一段开始都可以。其他语言之后陆续加上。另外，电脑上的单词页、单词闪卡、测验统计、间隔复习，以及阅读和听解的列表都改成宽版或左右两栏，不用往下滚就能看完。",
+      en: "Word topics grew: Japanese has 6 new topics (Family & people, Hobbies & fun, Nature & animals, Feelings & personality, Time & dates, Society & news), and each topic now opens a ladder from “Basics” up through N5–N1 — the JLPT words sorted by topic, 10 words a lesson, starting wherever you like. Other languages will follow. On computers the Words page, flashcards, statistics, spaced review and the Reading and Listening lists are now wide or in two columns, so they fit without scrolling.",
+      ja: "単語の「トピック」が広がりました。日本語に新しいトピックが 6 つ（家族と人間関係・趣味と娯楽・自然と動物・気持ちと性格・時間と日付・社会とニュース）加わり、トピックを開くと「基礎」から N5〜N1 までの階段になっています。JLPT の単語をトピック別に分け、10 語で 1 課、どこからでも始められます。ほかの言語も順次追加します。また PC では、単語ページ・単語カード・学習記録・間隔復習、読解と聴解の一覧が横長または 2 列になり、スクロールせずに見渡せます。",
+      ko: "단어 「주제」가 커졌어요. 일본어에 새 주제 6개(가족과 인간관계, 취미와 오락, 자연과 동물, 감정과 성격, 시간과 날짜, 사회와 뉴스)가 생겼고, 주제를 열면 「기초」부터 N5~N1까지 이어지는 계단이 나와요. JLPT 단어를 주제별로 나눠 10개씩 한 과로 만들었고, 어느 단계부터 시작해도 돼요. 다른 언어도 차례로 추가할게요. 또 컴퓨터에서는 단어 페이지, 단어 카드, 학습 통계, 간격 복습, 읽기·듣기 목록이 넓은 화면이나 두 줄로 바뀌어서 스크롤 없이 한눈에 볼 수 있어요.",
+      ru: "Темы слов расширились: в японском 6 новых тем («Семья и люди», «Хобби и досуг», «Природа и животные», «Чувства и характер», «Время и даты», «Общество и новости»), а каждая тема теперь открывает лесенку от «Основ» до N5–N1 — слова JLPT, разобранные по темам, по 10 в уроке, начинать можно с любой ступени. Другие языки появятся позже. На компьютере страница слов, карточки, статистика, интервальное повторение и списки чтения и аудирования стали широкими или в две колонки — всё видно без прокрутки.",
+      fr: "Les thèmes de vocabulaire s’agrandissent : le japonais a 6 nouveaux thèmes (Famille et relations, Loisirs, Nature et animaux, Émotions et caractère, Temps et dates, Société et actualité), et chaque thème ouvre maintenant une échelle des « Bases » jusqu’aux niveaux N5–N1 — les mots du JLPT classés par thème, 10 mots par leçon, en commençant où tu veux. Les autres langues suivront. Sur ordinateur, la page des mots, les cartes, les statistiques, la révision espacée et les listes de lecture et d’écoute sont désormais larges ou sur deux colonnes, sans avoir à défiler.",
+      es: "Los temas de vocabulario crecen: el japonés tiene 6 temas nuevos (Familia y relaciones, Aficiones y ocio, Naturaleza y animales, Emociones y carácter, Tiempo y fechas, Sociedad y noticias), y cada tema abre ahora una escalera desde «Básico» hasta N5–N1: las palabras del JLPT ordenadas por tema, 10 por lección, empezando donde quieras. Los demás idiomas llegarán después. En el ordenador, la página de palabras, las tarjetas, las estadísticas, el repaso espaciado y las listas de lectura y comprensión auditiva son ahora anchas o a dos columnas, sin tener que desplazarse.",
+      de: "Die Wortthemen sind gewachsen: Japanisch hat 6 neue Themen (Familie und Menschen, Hobbys und Freizeit, Natur und Tiere, Gefühle und Charakter, Zeit und Datum, Gesellschaft und Nachrichten), und jedes Thema öffnet jetzt eine Leiter vom „Grundwortschatz“ bis N5–N1 — die JLPT-Wörter nach Thema sortiert, 10 Wörter pro Lektion, Einstieg wo du willst. Weitere Sprachen folgen. Am Computer sind die Wortseite, die Karteikarten, die Statistik, die verteilte Wiederholung und die Listen beim Lesen und Hören jetzt breit oder zweispaltig — alles ohne Scrollen sichtbar.", },
+    { date: '2026-10-23',
       zh: '英文和德文單字有了自然的錄音：英文分成美式和英式兩種口音（在「設定」裡選），德文也換了新的聲音。字典改版：搜尋框旁邊可以選語言；查一個字會同時列出它在其他 8 種語言怎麼說，詞性和解釋也翻成網站目前的語言（按「看英文原文」可以對照），成語和諺語還有白話說明和出處。聽解頁照 JLPT 考卷加了圖：N5、N4 的課題理解改成看四張圖選答案，N5～N3 的發話表現有一張圖、箭頭指著說話的人；模擬考和考試模式不再把ポイント理解的題目印出來，跟正式考試一樣只唸一次。另外，「關於網站作者」頁多了自我介紹，學習中的語言改用國旗圖示。',
       'zh-Hans': '英语和德语单词有了自然的录音：英语分美式和英式两种口音（在“设置”里选），德语也换了新的声音。词典改版：搜索框旁边可以选语言；查一个词会同时列出它在其他 8 种语言里怎么说，词性和解释也翻成网站当前的语言（点“看英文原文”可以对照），成语和谚语还有白话说明和出处。听解页照 JLPT 试卷加了图：N5、N4 的课题理解改成看四张图选答案，N5～N3 的发话表现有一张图、箭头指着说话的人；模拟考和考试模式不再把ポイント理解的题目印出来，和正式考试一样只念一次。另外，“关于网站作者”页多了自我介绍，学习中的语言改用国旗图示。',
       en: 'English and German words now have natural recordings: English in an American or a British accent (choose in Settings), and German in a new voice. The dictionary is redesigned: pick the language beside the search box; a word now shows how to say it in the 8 other languages, its definitions come in your interface language (“Show the English” to compare), and idioms and proverbs get a plain explanation with their origin. Listening has pictures like the JLPT paper: N5 and N4 task questions are four pictures to choose from, and N5–N3 “what do you say” questions show a scene with an arrow at the speaker; mock exams and exam mode no longer print the key-point question — it is only heard, as in the real test. The About page now has a self-introduction and flag icons for the languages being learned.',
@@ -387,7 +397,10 @@ const SITE_UPDATES = [
 ];
 
 function updatesSeenKey() {
-    return SITE_UPDATES.length ? SITE_UPDATES[0].date : '';
+    if (!SITE_UPDATES.length) return '';
+    // a second entry on the same day lights the dot again: "2026-10-23#2"
+    const d = SITE_UPDATES[0].date, n = SITE_UPDATES.filter(u => u.date === d).length;
+    return n > 1 ? d + '#' + n : d;
 }
 
 // the dot sits on the header button (desktop) and on the phone "More" tab + item

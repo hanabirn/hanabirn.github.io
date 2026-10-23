@@ -97,6 +97,7 @@ async function renderListening() {
         return;
     }
     if (!listeningLevelId) {
+        document.body.classList.remove('listening-wide');
         box.innerHTML = `<h3>${escHtml(t('listening_title'))}</h3>${learnEmptyHtml(listeningIndex, 'nav_listening')}`;
         return;
     }
@@ -106,6 +107,9 @@ async function renderListening() {
     else if (listeningView === 'review' && listeningReview) box.innerHTML = listeningReviewHtml(lv);
     else if (listeningView === 'mocknote' && lv.sets[listeningMockNote]) box.innerHTML = listeningMockNoteHtml(lv);
     else { listeningView = 'list'; box.innerHTML = listeningListHtml(lv); }
+    // the list is 1180px wide on computers, its sets in two columns (css/base.css, css/grammar.css)
+    document.body.classList.toggle('listening-wide', listeningView === 'list');
+    if (typeof railPlace === 'function') railPlace();
 }
 
 function listeningGo(view) {
@@ -202,7 +206,7 @@ function listeningListHtml(lv) {
         ${mocks.length ? `<div class="ls-mock">
             <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>
             <p class="ls-mock-hint">${escHtml(t('listening_mock_hint', { n: mockQ, p: lv.mock_plays || 1 }))}</p>
-            <ol class="grammar-list">${mocks.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
+            <ol class="grammar-list learn-list-grid">${mocks.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
         </div>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">
@@ -212,7 +216,7 @@ function listeningListHtml(lv) {
             <span>${escHtml(t('listening_done_n', { n: done, m: practice.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
         </div>
-        <ol class="grammar-list">${practice.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
+        <ol class="grammar-list learn-list-grid">${practice.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
         <p class="grammar-credit">${escHtml(t('listening_credit'))}</p>`;
 }
 

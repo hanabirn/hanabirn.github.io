@@ -73,9 +73,10 @@ main {
 /* ===== Wide pages on desktop =====
    switchPage() puts the open page on body[data-page]. The alphabet chart,
    the dictionary, the notepad (a side list beside the cards), the quiz path, a grammar point (two columns, body.grammar-wide) and
-   a reading passage (body.reading-wide)
-   use a wider column on big screens; on the quiz page everything except the path and
-   the mistake book keeps the usual width. */
+   a reading passage and the reading / listening lists (body.reading-wide, body.listening-wide)
+   use a wider column on big screens; on the quiz page everything except the 單字 page
+   itself (#lang-card: word sets left, 練習中心 right, 2026-10-23), the path and the
+   mistake book keeps the usual width. */
 @media (min-width: 1024px) {
     body[data-page="alphabet"] main,
     body[data-page="dict"] main,
@@ -83,11 +84,12 @@ main {
     body[data-page="about"] main,
     body[data-page="quiz"] main,
     body[data-page="grammar"].grammar-wide main,
-    body[data-page="reading"].reading-wide main {
+    body[data-page="reading"].reading-wide main,
+    body[data-page="listening"].listening-wide main {
         max-width: 1180px;
     }
     /* the mistake book is as wide as the reading page (2026-10-22) */
-    body[data-page="quiz"] #page-quiz > :not(#path-card):not(#mistake-card) {
+    body[data-page="quiz"] #page-quiz > :not(#path-card):not(#mistake-card):not(#lang-card):not(#srs-card):not(#stats-card):not(#flashcard-setup-card) {
         max-width: 680px;
         margin-left: auto;
         margin-right: auto;

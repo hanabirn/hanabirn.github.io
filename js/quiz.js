@@ -372,11 +372,38 @@ const BUNDLED_SETS = {
    built from the hand-written tools/topics/<lang>.tsv (the 檢定 page keeps the
    graded lists). TOPIC_FILE_LANG maps a quiz-page language to the file prefix. */
 const TOPIC_IDS = ['greetings', 'food', 'home', 'shopping', 'transport', 'travel', 'weather', 'school', 'work', 'health'];
+/* 2026-10-23: every topic also has levels above its hand-written words, cut from the
+   graded lists by tools/build_topic_levels.py (TOPIC_LEVELS, js/topic-levels-data.js);
+   the topics added then have no hand-written words and start at the first level. */
+const TOPIC_ALL = TOPIC_IDS.concat(['family', 'hobby', 'nature', 'feelings', 'time', 'society']);
 const TOPIC_EMOJI = { greetings: '👋', food: '🍜', home: '🏠', shopping: '🛒', transport: '🚃',
-    travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺' };
+    travel: '✈️', weather: '🌤️', school: '🏫', work: '💼', health: '🩺',
+    family: '👪', hobby: '🎮', nature: '🌳', feelings: '😊', time: '⏰', society: '📰' };
 const TOPIC_FILE_LANG = { jp: 'ja', kr: 'ko', en: 'en', zh: 'zh', fr: 'fr', ru: 'ru', es: 'es', de: 'de' };
 const topicSetIds = fileLang => TOPIC_IDS.map(tp => 'tp_' + fileLang + '_' + tp);
 Object.values(TOPIC_FILE_LANG).forEach(l => topicSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
+const TOPIC_LEVEL_STEP = {};   // set id -> [id, first graded set, last graded set, part, words]
+if (typeof TOPIC_LEVELS !== 'undefined') Object.entries(TOPIC_LEVELS).forEach(([l, topics]) =>
+    Object.values(topics).forEach(steps => steps.forEach(st => { BUNDLED_SETS[st[0]] = l; TOPIC_LEVEL_STEP[st[0]] = st; })));
+
+/* A topic's ladder in a language: the hand-written set (if the topic has one), then its
+   levels — [{id, words, level}] where level is '' for the hand-written step. */
+function topicSteps(fileLang, topic) {
+    const out = TOPIC_IDS.includes(topic) ? [{ id: 'tp_' + fileLang + '_' + topic, words: 40, level: '' }] : [];
+    ((typeof TOPIC_LEVELS !== 'undefined' && TOPIC_LEVELS[fileLang] || {})[topic] || [])
+        .forEach(st => out.push({ id: st[0], words: st[4], level: topicLevelName(st[0]) }));
+    return out;
+}
+
+/* "N5", "N5–N4", "N3 ②", "TOPIK 1", "HSK 7–9", "A1", "國中" — a topic level's short name */
+function topicLevelName(id) {
+    const st = TOPIC_LEVEL_STEP[id];
+    if (!st) return '';
+    const short = sid => /^jlpt_/.test(sid) ? sid.slice(5).toUpperCase()
+        : /^(fr|ru|es|de)_/.test(sid) ? sid.slice(3).toUpperCase()
+        : /^en_/.test(sid) ? t('topic_lv_' + sid) : t('quiz_' + sid);
+    return short(st[1]) + (st[1] !== st[2] ? '–' + short(st[2]) : '') + (st[3] ? ' ' + '①②③④⑤⑥⑦⑧⑨⑩'[st[3] - 1] : '');
+}
 
 /* French (FLELex), Russian (Kelly), Spanish (ELELex) and German (DAFlex) by CEFR level, fr_a1 … de_c1 (tools/build_vocab.py);
    they replaced the owner's French sheet ('fr', now a legacy id). */
@@ -385,10 +412,11 @@ const CEFR_LANGS = ['fr', 'ru', 'es', 'de'];
 const cefrSetIds = lang => CEFR_LEVELS.map(lv => lang + '_' + lv);
 CEFR_LANGS.forEach(l => cefrSetIds(l).forEach(id => { BUNDLED_SETS[id] = l; }));
 
-/* "tp_ja_food" -> { lang: 'ja', topic: 'food' }, anything else -> null */
+/* "tp_ja_food" -> { lang: 'ja', topic: 'food', level: '' }, a level "tp_ja_food_n3_2" ->
+   level 'n3_2', anything else -> null */
 function topicOf(id) {
-    const m = /^tp_(ja|ko|en|zh|fr|ru|es|de)_([a-z]+)$/.exec(id || '');
-    return m ? { lang: m[1], topic: m[2] } : null;
+    const m = /^tp_(ja|ko|en|zh|fr|ru|es|de)_([a-z]+)(?:_([a-z0-9_-]+))?$/.exec(id || '');
+    return m ? { lang: m[1], topic: m[2], level: m[3] || '' } : null;
 }
 
 /* A word set's display name: "日文・吃飯" / "Korean · Food" for a topic, else its
@@ -402,7 +430,7 @@ function wordSetName(id) {
     const tp = topicOf(id);
     if (!tp) return t('quiz_' + id);
     const sep = ['zh', 'zh-Hans', 'ja'].includes(siteLang) ? '・' : ' · ';
-    return t('dict_lang_' + tp.lang) + sep + t('topic_' + tp.topic);
+    return t('dict_lang_' + tp.lang) + sep + t('topic_' + tp.topic) + (tp.level ? ' ' + topicLevelName(id) : '');
 }
 
 /* Word sets by language, in picker order (the flashcard / listening tools pick a
@@ -735,7 +763,10 @@ const QUIZ_PAGE_CARDS = ['lang-card', 'setup-card', 'mode-card', 'quiz-card', 'r
 function showOnlyQuizCard(id) {
     QUIZ_PAGE_CARDS.forEach(c => {
         const el = document.getElementById(c);
-        if (el) el.style.display = c === id ? 'block' : 'none';
+        if (!el) return;
+        // shown: let the stylesheet decide (the 單字 page is a grid on computers), block if it hides it
+        el.style.display = c === id ? '' : 'none';
+        if (c === id && getComputedStyle(el).display === 'none') el.style.display = 'block';
     });
     if (id === 'lang-card') renderWords();
     quizNavMark();
@@ -784,6 +815,7 @@ const LANG_REGIONS = [
    檢定 (levels) pages and their region → language pickers; the 檢定 slot in the
    navigation is 複習 now (openReview). */
 let wordsTab = (() => { try { return localStorage.getItem('words_tab') === 'levels' ? 'levels' : 'topics'; } catch { return 'topics'; } })();
+let wordsTopic = '';   // the topic whose ladder the 主題 tab shows ('' = the tiles)
 
 function setWordsTab(tab) {
     wordsTab = tab === 'levels' ? 'levels' : 'topics';
@@ -828,21 +860,68 @@ function renderWords() {
             }).join('')}</div>`;
         return;
     }
-    // one tile per topic with its path progress (4 levels of 10 words; the real count
-    // once the set has been loaded on this device)
-    body.innerHTML = `<div class="topic-grid">${topicSetIds(TOPIC_FILE_LANG[code]).map(id => {
-            const topic = topicOf(id).topic;
-            const sum = pathSummary(id);
-            const levels = sum ? sum.levels : 4;
-            const done = Math.min(getSetProgress(id).done, levels);
-            const finished = done >= levels;
-            return `<button type="button" class="topic-tile${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
+    const fileLang = TOPIC_FILE_LANG[code];
+    if (wordsTopic && TOPIC_ALL.includes(wordsTopic) && topicSteps(fileLang, wordsTopic).length) {
+        body.innerHTML = topicLadderHtml(fileLang, wordsTopic);
+        return;
+    }
+    // one tile per topic: where its ladder stands (the step being learned and its lessons)
+    body.innerHTML = `<div class="topic-grid">${TOPIC_ALL.map(topic => {
+            const steps = topicStepStates(fileLang, topic);
+            if (!steps.length) return '';
+            const total = steps.reduce((s, st) => s + st.levels, 0);
+            const done = steps.reduce((s, st) => s + st.done, 0);
+            const cur = steps.find(st => st.done < st.levels);
+            const state = !cur ? '✓ ' + escHtml(t('topic_done'))
+                : escHtml((cur.level || t('topic_base_short')) + ' ' + t('topic_levels', { n: cur.done, m: cur.levels }));
+            return `<button type="button" class="topic-tile${cur ? '' : ' done'}" onclick="openTopic('${topic}')">
                 <span class="topic-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
                 <span class="topic-name">${escHtml(t('topic_' + topic))}</span>
-                <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / levels * 100)}%"></i></span>
-                <span class="topic-state">${finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: levels }))}</span>
+                <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / total * 100)}%"></i></span>
+                <span class="topic-state">${state}</span>
             </button>`;
         }).join('')}</div>`;
+}
+
+/* a topic's steps with their lessons: {id, level, words, levels, done} (the real word count
+   once a set has been loaded on this device) */
+function topicStepStates(fileLang, topic) {
+    return topicSteps(fileLang, topic).map(st => {
+        const sum = pathSummary(st.id);
+        const levels = sum ? sum.levels : levelCountFor(st.words);
+        return Object.assign({}, st, { levels, done: Math.min(getSetProgress(st.id).done, levels) });
+    });
+}
+
+/* A topic's ladder (owner's picks 2026-10-23): nothing is locked; the first step not
+   finished is marked 下一步. */
+function topicLadderHtml(fileLang, topic) {
+    const steps = topicStepStates(fileLang, topic);
+    const next = steps.find(st => st.done < st.levels);
+    const total = steps.reduce((s, st) => s + st.levels, 0);
+    const done = steps.reduce((s, st) => s + st.done, 0);
+    const words = steps.reduce((s, st) => s + st.words, 0);
+    return `<button type="button" class="back-btn topic-back" onclick="openTopic('')">${escHtml(t('topic_back'))}</button>
+        <div class="topic-head"><span class="topic-head-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
+            <div><h3>${escHtml(wordSetName('tp_' + fileLang + '_' + topic))}</h3>
+            <p>${escHtml(t('topic_ladder_sub', { w: words, n: done, m: total }))}</p></div></div>
+        <div class="words-levels topic-ladder">${steps.map(st => {
+            const finished = st.done >= st.levels;
+            const isNext = st === next;
+            const badge = st.level ? st.level.replace(/ [①-⑩]$/, '') : t('topic_base_short');
+            return `<button type="button" class="words-level topic-step${finished ? ' done' : ''}${isNext ? ' next' : ''}" onclick="selectWordSet('${st.id}')">
+                <span class="topic-step-badge" aria-hidden="true">${finished ? '✓' : escHtml(badge)}</span>
+                <span class="words-level-name">${escHtml(st.level || t('topic_base'))}${isNext ? `<span class="topic-next-tag">${escHtml(t('topic_next'))}</span>` : ''}</span>
+                <span class="words-level-state">${escHtml(t('topic_words_n', { n: st.words }))} · ${finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: st.done, m: st.levels }))}</span>
+                <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(st.done / st.levels * 100)}%"></i></span>
+            </button>`;
+        }).join('')}</div>`;
+}
+
+function openTopic(topic) {
+    wordsTopic = topic || '';
+    renderWords();
+    window.scrollTo(0, 0);
 }
 
 /* Opens the 單字 page on a tab (the home page's exam shortcuts, old 檢定 links). */
@@ -1852,6 +1931,8 @@ function backToLanguage() {
     const wasSrsReview = reviewMode && reviewSource === 'srs';
     // a set's "返回" lands on the 單字 tab it was chosen from
     if (currentLang && QUIZ_LANG_ORDER.includes(currentLang)) wordsTab = topicOf(currentLang) ? 'topics' : 'levels';
+    // a topic step goes back to its topic's ladder
+    if (currentLang && topicOf(currentLang)) wordsTopic = topicOf(currentLang).topic;
     currentLang = '';
     vocabularyList = [];
     readingList = [];
@@ -1915,7 +1996,8 @@ const QUIZ_LANG_FLAGS = {
 };
 Object.keys(BUNDLED_SETS).forEach(id => { const tp = topicOf(id); if (tp) QUIZ_LANG_FLAGS[id] = TOPIC_EMOJI[tp.topic]; });
 /* The sets a visitor can pick (paths, "continue", recent sets). */
-const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr, WORD_SET_FAMILIES.ru, WORD_SET_FAMILIES.es, WORD_SET_FAMILIES.de);
+// the topic levels open on a path too, but stay out of the flashcard / listening pickers (WORD_SET_FAMILIES)
+const QUIZ_LANG_ORDER = [].concat(WORD_SET_FAMILIES.en, WORD_SET_FAMILIES.jp, WORD_SET_FAMILIES.kr, WORD_SET_FAMILIES.zh, WORD_SET_FAMILIES.fr, WORD_SET_FAMILIES.ru, WORD_SET_FAMILIES.es, WORD_SET_FAMILIES.de, Object.keys(TOPIC_LEVEL_STEP));
 /* Retired general sheets; their mistake-book entries and SRS cards still exist. */
 const LEGACY_SET_IDS = ['jp', 'kr', 'en', 'zh', 'fr'];
 
