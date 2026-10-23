@@ -1,0 +1,95 @@
+# 錄音檢查 (owner's request 2026-10-23): after each recording run and once a week,
+# tools/audio_check.py checks every recording the site uses — is there a file, is it
+# healthy (silent, cut, too long, gaps, clipping), and for sentences (plus a sample of
+# words) does it say the right thing (Gemini listens; the owner's pick). Results are kept
+# on the audio-check branch so each clip is paid for once; new problems go to the
+# #錄音檢查 Discord channel with the clip attached (tools/audio_check_report.py).
+# Reads main (the live site) and audio-queue (recordings not live yet); never writes them.
+# Secrets: GEMINI_TTS_KEY (the hanabi-tts key), DISCORD_AUDIO_QA_WEBHOOK.
+name: 錄音檢查
+
+on:
+  workflow_run:
+    workflows: ['Gemini 錄音', 'Google 錄音']
+    types: [completed]
+  schedule:
+    - cron: '0 9 * * 0'        # Sundays 17:00 in Taiwan: the weekly full check
+  workflow_dispatch:
+    inputs:
+      content:
+        description: 'At most this many clips for Gemini to listen to (0 = none)'
+        default: '3000'
+      health:
+        description: 'new = only files not checked yet, all = every file again'
+        default: 'new'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: audio-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          path: site
+          fetch-depth: 1
+
+      - uses: actions/checkout@v4
+        with:
+          ref: audio-queue
+          path: queue
+          fetch-depth: 1
+          sparse-checkout: data/audio
+
+      - name: State (the audio-check branch)
+        run: |
+          git clone --depth 1 --branch audio-check "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git" state \
+            || { mkdir state && cd state && git init -q -b audio-check && git remote add origin "https://x-access-token:${{ github.token }}@github.com/${{ github.repository }}.git"; }
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install
+        run: pip install numpy miniaudio opencc-python-reimplemented lameenc
+
+      - name: Check
+        env:
+          GEMINI_TTS_KEY: ${{ secrets.GEMINI_TTS_KEY }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          printf 'GEMINI_TTS_KEY=%s\n' "$GEMINI_TTS_KEY" > site/tools/.gemini-tts.env
+          # the weekly run checks every file again; the others only new ones
+          HEALTH='${{ github.event.inputs.health }}'
+          if [ -z "$HEALTH" ]; then HEALTH=new; [ '${{ github.event_name }}' = schedule ] && HEALTH=all; fi
+          python -u site/tools/audio_check.py --queue queue --state state/state.json --report report.json \
+            --health "$HEALTH" --content '${{ github.event.inputs.content || 3000 }}' 2>&1 | grep -v 'already says' | tee check.log
+          rm -f site/tools/.gemini-tts.env
+
+      - name: Report
+        if: always()
+        env:
+          DISCORD_AUDIO_QA_WEBHOOK: ${{ secrets.DISCORD_AUDIO_QA_WEBHOOK }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          PYTHONIOENCODING: utf-8
+        run: |
+          [ -f report.json ] && python site/tools/audio_check_report.py report.json state/state.json --site site --queue queue
+          cp report.json state/report.json 2>/dev/null || true
+
+      - name: Save state
+        if: always()
+        run: |
+          cd state
+          git config user.name 'hanabi-audio-bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -q -m "audio check $(date -u +%Y-%m-%d)"
+          git push origin HEAD:audio-check
