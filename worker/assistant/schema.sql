@@ -7,6 +7,7 @@ CREATE TABLE IF NOT EXISTS profiles (
     uid TEXT PRIMARY KEY,              -- Firebase uid, never sent to other visitors
     code TEXT NOT NULL UNIQUE,         -- the friend code, e.g. HANA7K3P (shown as HANA-7K3P)
     name TEXT NOT NULL,                -- display name (moderated), not the Google name
+    avatar TEXT NOT NULL DEFAULT '',   -- a picked icon "icon:colour" (FRIEND_AVATARS on the site), '' = initial
     public INTEGER NOT NULL DEFAULT 0, -- 1 = friends may see my progress
     langs TEXT NOT NULL DEFAULT '',    -- learning languages, e.g. "ja,ko"
     streak INTEGER NOT NULL DEFAULT 0, -- the site's own streak, as the device reported it

@@ -9,6 +9,11 @@
 const FRIENDS_API = /^(localhost|127\.0\.0\.1)$/.test(location.hostname)
     ? 'http://localhost:8787/friends'
     : 'https://hanabi-assistant.osu-collection-hanabi.workers.dev/friends';
+// avatars are picked from these (owner's pick C, 2026-10-23: no uploads, so nothing to moderate);
+// stored as "icon:colour" — keep the counts in step with AVATAR_ICONS / AVATAR_COLOURS in the Worker
+const FRIEND_AVATARS = ['🐱', '🐶', '🐰', '🐻', '🐼', '🦊', '🐨', '🐯', '🐸', '🐧', '🦉', '🐢',
+    '🌸', '🌻', '🍀', '🍙', '🍣', '🍓', '☕', '🎮', '🎵', '📚', '⭐', '🌙'];
+const FRIEND_AVATAR_COLOURS = ['#c8553d', '#3d6c8c', '#8a5a9c', '#b08a2e', '#5b6b4e', '#a3485e'];
 const FRIEND_STICKERS = { cheer: ['💪', '🎉', '🔥', '📚', '🌸', '🏆'], nudge: ['🔔', '🤝', '⏰', '🌙', '📚', '🌸'] };
 const FRIENDS_PING_MS = 30000;        // after practice, wait this long for more answers
 const FRIENDS_NOTES_PHONE = 1;        // the phone shows the newest note, the rest behind 全部
@@ -23,6 +28,7 @@ let friendsPick = null;               // { code, kind } — the sticker menu ope
 let friendsRenaming = false;
 let friendsRemoveArm = '';            // the code whose 刪除 was pressed once
 let friendsManage = false;            // the leaderboard shows 刪除 on each friend
+let friendsAvatarOpen = false;        // my card shows the avatar picker
 let friendsAllNotes = false;
 let friendsPendingCode = '';          // from a shared link (?friend=CODE)
 let friendsPingTimer = 0;
@@ -177,14 +183,15 @@ function friendsMeHtml(phone) {
     }
     const sub = `🔥 ${escHtml(t('fr_days', { n: me.streak || 0 }))}${phone ? ' · ' + escHtml(code) : ''}`;
     if (phone) {
-        return `<div class="fr-me-strip">${friendsAvatar(me)}<span class="fr-grow"><b>${escHtml(friendsName(me))}</b><small>${sub}</small></span>
+        return `<div class="fr-me-strip">${friendsMyAvatar()}<span class="fr-grow"><b>${escHtml(friendsName(me))}</b><small>${sub}</small></span>
             <button type="button" class="fr-btn" onclick="friendsShare()">${escHtml(t('fr_share'))}</button>
             <button type="button" class="fr-btn" onclick="friendsRenaming = true; renderFriends()" aria-label="${escHtml(t('fr_rename'))}">✎</button></div>
-            ${friendsPublicHtml()}`;
+            ${friendsAvatarPickerHtml()}${friendsPublicHtml()}`;
     }
     return `<div class="fr-box">
-        <div class="fr-me">${friendsAvatar(me)}<span class="fr-grow"><b>${escHtml(friendsName(me))}</b><small>${friendsLangs(me.langs)} ${sub}</small></span>
+        <div class="fr-me">${friendsMyAvatar()}<span class="fr-grow"><b>${escHtml(friendsName(me))}</b><small>${friendsLangs(me.langs)} ${sub}</small></span>
             <button type="button" class="fr-btn" onclick="friendsRenaming = true; renderFriends()">${escHtml(t('fr_rename'))}</button></div>
+        ${friendsAvatarPickerHtml()}
         <div class="fr-code"><span class="fr-sub">${escHtml(t('fr_my_code'))}</span><code>${escHtml(code)}</code>
             <button type="button" class="fr-btn" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button>
             <button type="button" class="fr-btn" onclick="friendsShare()">${escHtml(t('fr_share'))}</button></div>
@@ -199,11 +206,37 @@ function friendsPublicHtml() {
         <span><b>${escHtml(t('fr_public'))}</b><small>${escHtml(t('fr_public_hint'))}</small></span></label>`;
 }
 
+// a picked icon on its colour, else the name's first letter on a colour from the code
 function friendsAvatar(p) {
-    const colours = ['#c8553d', '#3d6c8c', '#8a5a9c', '#b08a2e', '#5b6b4e', '#a3485e'];
+    const m = /^(\d+):(\d+)$/.exec(p.avatar || '');
+    if (m && FRIEND_AVATARS[m[1]]) {
+        return `<span class="fr-av fr-av-icon" style="background:${FRIEND_AVATAR_COLOURS[m[2]] || FRIEND_AVATAR_COLOURS[0]}" aria-hidden="true">${FRIEND_AVATARS[m[1]]}</span>`;
+    }
     const n = [...(p.code || '')].reduce((s, ch) => s + ch.charCodeAt(0), 0);
     const ch = [...friendsName(p).replace(/\s/g, '')][0] || '?';
-    return `<span class="fr-av" style="background:${colours[n % colours.length]}" aria-hidden="true">${escHtml(ch.toUpperCase())}</span>`;
+    return `<span class="fr-av" style="background:${FRIEND_AVATAR_COLOURS[n % FRIEND_AVATAR_COLOURS.length]}" aria-hidden="true">${escHtml(ch.toUpperCase())}</span>`;
+}
+
+// my avatar is a button that opens the picker
+function friendsMyAvatar() {
+    return `<button type="button" class="fr-av-btn" onclick="friendsAvatarOpen = !friendsAvatarOpen; renderFriends()"
+        title="${escHtml(t('fr_avatar'))}" aria-expanded="${friendsAvatarOpen}">${friendsAvatar(friendsState.me)}<span class="fr-av-edit" aria-hidden="true">✎</span></button>`;
+}
+
+function friendsAvatarPickerHtml() {
+    if (!friendsAvatarOpen) return '';
+    const m = /^(\d+):(\d+)$/.exec(friendsState.me.avatar || '');
+    const icon = m ? +m[1] : -1, colour = m ? +m[2] : 0;
+    return `<div class="fr-av-picker"><p class="fr-sub">${escHtml(t('fr_avatar'))}</p>
+        <div class="fr-av-colours">${FRIEND_AVATAR_COLOURS.map((c, i) => `<button type="button" class="${i === colour ? 'on' : ''}" style="background:${c}"
+            aria-label="${i + 1}" aria-pressed="${i === colour}" onclick="friendsSetAvatar(${icon < 0 ? 0 : icon}, ${i})"></button>`).join('')}</div>
+        <div class="fr-av-grid">${FRIEND_AVATARS.map((e, i) => `<button type="button" class="${i === icon ? 'on' : ''}" style="background:${FRIEND_AVATAR_COLOURS[colour]}"
+            aria-pressed="${i === icon}" onclick="friendsSetAvatar(${i}, ${colour})">${e}</button>`).join('')}</div></div>`;
+}
+
+function friendsSetAvatar(icon, colour) {
+    friendsState.me.avatar = icon + ':' + colour;          // at once; the Worker answer follows
+    friendsDo('profile', { avatar: { icon, colour } });
 }
 
 function friendsLangs(langs) {

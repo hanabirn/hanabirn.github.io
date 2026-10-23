@@ -7,7 +7,8 @@
  *
  *   POST /friends { action, ... }  + Authorization: Bearer <Firebase ID token>
  *     get                               -> state
- *     profile  { name?, public? }       -> state | { error: 'blocked' | 'moderation_busy' | 'bad_name' }
+ *     profile  { name?, public?, avatar? }  -> state | { error: 'blocked' | 'moderation_busy' | 'bad_name' }
+ *              avatar = { icon: 0…AVATAR_ICONS-1, colour: 0…AVATAR_COLOURS-1 }: one of the site's own icons, no uploads
  *     ping     { streak, week, langs, practised }  the device's own numbers, after practice
  *     add      { code }                 -> state | { error: 'not_found' | 'self' | 'already' | 'full' | 'too_many' }
  *     respond  { code, accept }         a request someone sent me
@@ -28,6 +29,8 @@ const FRIENDS_MAX = 50;      // friends and open requests together
 const PAIRS_MAX = 5;         // 🤝 streaks, as in Duolingo
 const ADDS_PER_DAY = 20;     // requests sent in 24 hours
 const STICKERS = 6;          // fr_cheer_0…5 / fr_nudge_0…5 on the site
+const AVATAR_ICONS = 24;     // FRIEND_AVATARS on the site
+const AVATAR_COLOURS = 6;
 const NOTES_SHOWN = 20;
 const LANGS = ['ja', 'ko', 'zh', 'en', 'fr', 'ru', 'es', 'de'];
 const DAY_MS = 86400000;
@@ -83,7 +86,7 @@ function seen(p, today) {
     const pub = p.public === 1;
     const active = p.tday >= dayBefore(today);
     return {
-        code: p.code, name: p.name, public: pub,
+        code: p.code, name: p.name, avatar: p.avatar || '', public: pub,
         langs: pub ? p.langs : '',
         streak: pub ? (active ? p.streak : 0) : null,
         week: pub ? (p.week_key === weekKey(today) ? p.week_words : 0) : null,
@@ -119,18 +122,18 @@ async function stateOf(db, uid) {
             } : null;
             v.sent = { cheer: sentKey.has(o.uid + '|cheer'), nudge: sentKey.has(o.uid + '|nudge') };
             friends.push(v);
-        } else if (l.by_uid === uid) outgoing.push({ code: o.code, name: o.name });
+        } else if (l.by_uid === uid) outgoing.push({ code: o.code, name: o.name, avatar: o.avatar || '' });
         else incoming.push(v);
     });
     friends.sort((x, y) => (y.week || 0) - (x.week || 0) || (y.streak || 0) - (x.streak || 0));
-    const notes = (await db.prepare(`SELECT n.kind, n.sticker, n.created, n.seen, p.code, p.name FROM notes n
+    const notes = (await db.prepare(`SELECT n.kind, n.sticker, n.created, n.seen, p.code, p.name, p.avatar FROM notes n
             JOIN profiles p ON p.uid = n.from_uid WHERE n.to_uid = ? ORDER BY n.created DESC LIMIT ?`)
         .bind(uid, NOTES_SHOWN).all()).results || [];
     const mine = seen(Object.assign({}, me, { public: 1 }), today);
     mine.public = me.public === 1;
     return {
         me: mine, friends, incoming, outgoing,
-        notes: notes.map(n => ({ kind: n.kind, sticker: n.sticker, created: n.created, seen: n.seen === 1, code: n.code, name: n.name })),
+        notes: notes.map(n => ({ kind: n.kind, sticker: n.sticker, created: n.created, seen: n.seen === 1, code: n.code, name: n.name, avatar: n.avatar || '' })),
         unseen: notes.filter(n => !n.seen).length,
         tday: today
     };
@@ -166,6 +169,10 @@ export async function friends(request, env, json, headers) {
         case 'profile': {
             if (typeof body.public === 'boolean') {
                 await db.prepare('UPDATE profiles SET public = ?, updated = ? WHERE uid = ?').bind(body.public ? 1 : 0, now, uid).run();
+            }
+            if (body.avatar && typeof body.avatar === 'object') {
+                const av = int(body.avatar.icon, AVATAR_ICONS - 1) + ':' + int(body.avatar.colour, AVATAR_COLOURS - 1);
+                await db.prepare('UPDATE profiles SET avatar = ?, updated = ? WHERE uid = ?').bind(av, now, uid).run();
             }
             if (typeof body.name === 'string') {
                 const name = body.name.replace(/[\u0000-\u001f\u007f]/g, ' ').replace(/\s+/g, ' ').trim().slice(0, NAME_MAX);
