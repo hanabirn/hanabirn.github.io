@@ -280,6 +280,7 @@ function toggleTabSettings() {
     if (show) {
         renderTabSettingsList();
         if (typeof renderTtsSettings === 'function') renderTtsSettings();
+        if (typeof renderPushSettings === 'function') renderPushSettings();
     }
     overlay.classList.toggle('show', show);
 }
@@ -2172,6 +2173,8 @@ function logDailyActivity() {
     storeSet('daily_activity', JSON.stringify(act));
     // 好友: report this device's numbers a little later (js/friends.js)
     if (typeof friendsActivity === 'function') friendsActivity();
+    // 每日提醒: "practised today" for the Worker, once a day (js/push.js)
+    if (typeof pushActivity === 'function') pushActivity();
 }
 
 /* A day counts toward the streak if a quiz was finished OR any word was

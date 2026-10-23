@@ -46,3 +46,22 @@ CREATE TABLE IF NOT EXISTS notes (
     UNIQUE (from_uid, to_uid, kind, tday)
 );
 CREATE INDEX IF NOT EXISTS notes_to ON notes (to_uid, created);
+
+-- 每日提醒 (src/push.js): one row per device that turned reminders on
+CREATE TABLE IF NOT EXISTS push_subs (
+    id TEXT PRIMARY KEY,               -- sha-256 of the endpoint (first 32 hex)
+    endpoint TEXT NOT NULL,
+    p256dh TEXT NOT NULL,
+    auth TEXT NOT NULL,
+    hour INTEGER NOT NULL DEFAULT 20,  -- 19–22, the device's local time
+    tz TEXT NOT NULL DEFAULT 'Asia/Taipei',
+    lang TEXT NOT NULL DEFAULT 'zh',
+    streak INTEGER NOT NULL DEFAULT 0,
+    last_practice TEXT NOT NULL DEFAULT '',   -- the device's local date it last practised
+    last_sent TEXT NOT NULL DEFAULT '',       -- the local date of the last reminder
+    uid TEXT,                          -- a signed-in account: friends' nudges reach it
+    tests INTEGER NOT NULL DEFAULT 0,
+    test_at INTEGER NOT NULL DEFAULT 0,
+    created INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS push_subs_uid ON push_subs (uid);

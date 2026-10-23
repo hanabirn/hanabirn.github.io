@@ -414,6 +414,12 @@ function friendsUnseen() {
 // a shared link: https://hanabirn.xyz/?friend=CODE opens the page with the code filled in
 document.addEventListener('DOMContentLoaded', () => {
     const p = new URLSearchParams(location.search);
+    // a nudge notification opens /?page=friends (service-worker.js)
+    if (p.get('page') === 'friends') {
+        p.delete('page');
+        history.replaceState(null, '', location.pathname + (p.toString() ? '?' + p : '') + location.hash);
+        setTimeout(() => switchPage('friends', null), 300);
+    }
     const code = (p.get('friend') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
     if (code.length === 8) {
         friendsPendingCode = code;

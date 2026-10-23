@@ -22,6 +22,7 @@
  * grows by one on a day both practised, and shows 0 once a day was missed.
  */
 import { firebaseUser, bearer, moderate } from './guestbook.js';
+import { pushNudge } from './push.js';
 
 const CODE_CHARS = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789';   // no 0/O, 1/I/L
 const NAME_MAX = 20;
@@ -254,6 +255,8 @@ export async function friends(request, env, json, headers) {
             const res = await db.prepare('INSERT OR IGNORE INTO notes (to_uid, from_uid, kind, sticker, tday, created) VALUES (?, ?, ?, ?, ?, ?)')
                 .bind(other.uid, uid, kind, int(body.sticker, STICKERS - 1), today, now).run();
             if (!res.meta || !res.meta.changes) return fail('already');
+            // a nudge also reaches the friend's phone when they turned reminders on (src/push.js)
+            if (kind === 'nudge') await pushNudge(env, other.uid, me.name, int(body.sticker, STICKERS - 1));
             break;
         }
         case 'seen':

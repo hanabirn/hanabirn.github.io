@@ -21,6 +21,7 @@
 import { guestbook } from './guestbook.js';
 import { dict } from './dict.js';
 import { friends } from './friends.js';
+import { push, runReminders } from './push.js';
 
 const MAX_MESSAGES = 12;      // conversation turns forwarded (latest)
 const MAX_CHARS = 600;        // per message
@@ -114,6 +115,10 @@ export default {
             // the owner's DELETE comes from a terminal, without an Origin
             if (request.method !== 'DELETE' && headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
             return guestbook(request, env, url, json, headers);
+        }
+        if (url.pathname === '/push') {
+            if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
+            return push(request, env, json, headers);
         }
         if (url.pathname === '/friends') {
             if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
@@ -240,5 +245,10 @@ export default {
             });
         }
         return json({ error: busy ? 'busy' : 'upstream' }, busy ? 429 : 502, headers);
+    },
+
+    // 每日提醒: every hour, the devices whose reminder hour it is (src/push.js)
+    async scheduled(event, env, ctx) {
+        ctx.waitUntil(runReminders(env));
     }
 };

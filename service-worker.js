@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v46';
+const CACHE_NAME = 'hanabi-v47';
 const ASSETS = [
   '/',
   '/index.html',
@@ -59,6 +59,7 @@ const ASSETS = [
   '/js/account.js',
   '/js/guestbook.js',
   '/js/friends.js',
+  '/js/push.js',
   '/js/notes.js',
   '/js/feedback.js',
   '/js/widgets.js',
@@ -108,4 +109,28 @@ self.addEventListener('fetch', e => {
       return r;
     }).catch(() => caches.match(e.request))
   );
+});
+
+// 每日提醒 and friends' 🔔 (js/push.js, worker/assistant/src/push.js): show the notification,
+// and a tap opens the site (or the tab already open) at the page it is about
+self.addEventListener('push', e => {
+  let d = {};
+  try { d = e.data ? e.data.json() : {}; } catch {}
+  e.waitUntil(self.registration.showNotification(d.title || 'Hanabi', {
+    body: d.body || '',
+    icon: '/icons/web-app-manifest-192x192.png',
+    badge: '/icons/web-app-manifest-192x192.png',
+    tag: d.tag || 'hanabi',
+    data: { url: d.url || '/' }
+  }));
+});
+
+self.addEventListener('notificationclick', e => {
+  e.notification.close();
+  const url = new URL((e.notification.data && e.notification.data.url) || '/', self.location.origin).href;
+  e.waitUntil(self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then(list => {
+    const open = list.find(c => new URL(c.url).origin === self.location.origin);
+    if (open) { open.focus(); return open.navigate ? open.navigate(url) : null; }
+    return self.clients.openWindow(url);
+  }));
 });

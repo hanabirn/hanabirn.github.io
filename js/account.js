@@ -323,6 +323,7 @@ function acctOnUser(user) {
     renderAccount();
     if ((user && user.uid) !== was && typeof guestbookOnUser === 'function') guestbookOnUser();
     if ((user && user.uid) !== was && typeof friendsOnUser === 'function') friendsOnUser();
+    if ((user && user.uid) !== was && typeof pushOnUser === 'function') pushOnUser();
 }
 
 const ACCT_AUTH_LANG = { zh: 'zh-TW', 'zh-Hans': 'zh-CN', en: 'en', ja: 'ja', ko: 'ko', ru: 'ru', fr: 'fr', es: 'es', de: 'de' };

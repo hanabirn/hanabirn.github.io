@@ -18,8 +18,13 @@
         // the site, plus the local test servers
         "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8000,http://localhost:8765,http://localhost:8767,http://localhost:8123",
         // the site's public Firebase web key (js/account.js), used to check guestbook posters' ID tokens
-        "FIREBASE_API_KEY": "AIzaSyChjmEw7zDVPf3QqLvlvEmSDZ9DFat2yVE"
+        "FIREBASE_API_KEY": "AIzaSyChjmEw7zDVPf3QqLvlvEmSDZ9DFat2yVE",
+        // 每日提醒 (src/push.js): the VAPID public key, also in js/push.js; the private half is
+        // the secret VAPID_PRIVATE
+        "VAPID_PUBLIC": "BJXqJi8syeubno1nPig5nWT5c3QiN9_yvediOPquDp6HURTqgvvox-WzGIwWPydzhQHjwQr21_21LTp27czTxHk"
     },
+    // 每日提醒: check every hour whose reminder hour it is
+    "triggers": { "crons": ["0 * * * *"] },
 
     // guestbook messages (src/guestbook.js); created with: npx wrangler kv namespace create GUESTBOOK
     // ADMIN_TOKEN (secret) lets the owner delete a message: npx wrangler secret put ADMIN_TOKEN
