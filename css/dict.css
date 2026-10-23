@@ -212,6 +212,12 @@
 .dict-tr-item { position: relative; padding: 8px 40px 8px 10px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); min-width: 0; }
 .dict-tr-lang { display: flex; align-items: center; gap: 5px; font-size: 0.75rem; color: var(--text-muted); margin-bottom: 2px; }
 .dict-tr-text { display: block; font-weight: 800; font-size: 1.02rem; color: var(--text); word-break: break-word; line-height: 1.45; }
+.dict-tr-first { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); }
+.dict-tr-item.main .dict-tr-text { font-size: 1.3rem; }
+.dict-tr-more { margin-top: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--text-secondary); border-radius: 99px; padding: 4px 12px; font: inherit; font-size: 0.8rem; font-weight: 700; cursor: pointer; }
+.dict-tr-more[aria-expanded="true"] { border-color: var(--primary); color: var(--primary); }
+#dict-tr-rest { margin-top: 8px; }
+#dict-tr-rest[hidden] { display: none; }
 .speak-btn.dict-tr-speak { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); width: 30px; height: 30px; font-size: 0.85rem; }
 .speak-btn.dict-tr-speak:hover { transform: translateY(-50%) scale(1.1); }
 /* 看英文原文: the English sense under the translated one */

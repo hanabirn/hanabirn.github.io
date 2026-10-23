@@ -182,7 +182,7 @@ function dictSearch(word, langId) {
             <button class="speak-btn" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(word)}" aria-label="🔊">${uiIcon('speaker')}</button>
             <button type="button" class="note-add" data-text="${escHtml(word)}" onclick="dictNote(this.dataset.text, '${lang.id}')" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>` +
-        dictSection('dict-tr', 'dict_tr_title', 'dict_mt_note') +
+        dictSection('dict-tr', 'dict_translation', 'dict_mt_note') +
         dictSection('dict-def', 'dict_definitions', 'dict_definitions_note') +
         dictSection('dict-ex', 'dict_examples', null);
 
@@ -251,6 +251,37 @@ async function dictAsk(word, lang, signal) {
     return r;
 }
 
+/* Which translations show first (owner's pick 2026-10-23): the interface language and
+   the 我在學 language (js/learnlang.js); the rest wait behind 其他語言. When the word is
+   in the interface language itself, English stands in for it. */
+function dictTrFirst(r) {
+    const zhKey = siteLang === 'zh-Hans' ? 'zh-Hans' : 'zh';
+    const learn = typeof learnLang === 'function' ? learnLang() : '';
+    // the interface language, or English standing in when the word is in it already
+    const ui = r.tr && r.tr[siteLang] ? siteLang : 'en';
+    const want = [ui, learn === 'zh' ? zhKey : learn].filter(Boolean);
+    let first = [...new Set(want)].filter(c => r.tr && r.tr[c]);
+    if (!first.length) first = ['en', zhKey].filter(c => r.tr && r.tr[c]).slice(0, 1);
+    if (!first.length) first = DICT_TR_ORDER.filter(c => r.tr && r.tr[c]).slice(0, 1);
+    return first;
+}
+
+function dictTrItem(r, c, main) {
+    return `<div class="dict-tr-item${main ? ' main' : ''}">
+            <span class="dict-tr-lang">${(DICT_TR_FLAGS[c] || []).map(f => `<span class="flag flag--${f}" aria-hidden="true"></span>`).join('')}${escHtml(dictTrLabel(c))}</span>
+            <span class="dict-tr-text" lang="${c}">${escHtml(r.tr[c])}</span>
+            <button type="button" class="speak-btn dict-tr-speak" onclick="speakText(this.dataset.text, '${DICT_TR_TTS[c]}')" data-text="${escHtml(r.tr[c].split(' / ')[0].replace(/\s*\(.*?\)\s*/g, ' ').trim())}" aria-label="🔊">${uiIcon('speaker')}</button>
+        </div>`;
+}
+
+function dictTrMore(btn) {
+    const box = document.getElementById('dict-tr-rest');
+    if (!box) return;
+    box.hidden = !box.hidden;
+    btn.setAttribute('aria-expanded', String(!box.hidden));
+    btn.textContent = box.hidden ? t('dict_tr_more', { n: box.children.length }) : t('dict_tr_less');
+}
+
 function dictTrLabel(code) {
     if (code === 'zh') return t('dict_tr_zh');
     if (code === 'zh-Hans') return t('dict_tr_zhs');
@@ -268,11 +299,11 @@ function dictRenderAsk(r, lang) {
         if (r.kind && r.kind !== 'word') head.querySelector('.dict-word-lang').insertAdjacentHTML('afterend', `<span class="dict-kind">${escHtml(t('dict_kind_' + r.kind))}</span>`);
     }
     const codes = DICT_TR_ORDER.filter(c => r.tr && r.tr[c]);
-    dictSetBody('dict-tr', codes.length ? `<div class="dict-tr-grid">${codes.map(c => `<div class="dict-tr-item">
-            <span class="dict-tr-lang">${(DICT_TR_FLAGS[c] || []).map(f => `<span class="flag flag--${f}" aria-hidden="true"></span>`).join('')}${escHtml(dictTrLabel(c))}</span>
-            <span class="dict-tr-text" lang="${c}">${escHtml(r.tr[c])}</span>
-            <button type="button" class="speak-btn dict-tr-speak" onclick="speakText(this.dataset.text, '${DICT_TR_TTS[c]}')" data-text="${escHtml(r.tr[c].split(' / ')[0].replace(/\s*\(.*?\)\s*/g, ' ').trim())}" aria-label="🔊">${uiIcon('speaker')}</button>
-        </div>`).join('')}</div>` : dictStatus('dict_none'));
+    const first = dictTrFirst(r);
+    const rest = codes.filter(c => !first.includes(c));
+    dictSetBody('dict-tr', codes.length ? `<div class="dict-tr-grid dict-tr-first">${first.map((c, i) => dictTrItem(r, c, i === 0)).join('')}</div>
+        ${rest.length ? `<button type="button" class="dict-tr-more" onclick="dictTrMore(this)" aria-expanded="false" aria-controls="dict-tr-rest">${escHtml(t('dict_tr_more', { n: rest.length }))}</button>
+        <div class="dict-tr-grid" id="dict-tr-rest" hidden>${rest.map(c => dictTrItem(r, c, false)).join('')}</div>` : ''}` : dictStatus('dict_none'));
 
     const hasEn = r.senses.some(s => s.defs.some(d => d.en));
     let html = r.senses.length ? r.senses.map(s => `<div class="dict-pos-group">
