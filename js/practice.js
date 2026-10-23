@@ -88,7 +88,7 @@ function renderPracticeHub() {
     const now = Date.now();
     const cards = Object.values(getSrsQuizCards());
     const due = cards.filter(c => c && c.due <= now).length;
-    const nextDue = cards.filter(c => c && c.due > now).reduce((m, c) => Math.min(m, c.due), Infinity);
+    const nextDue = cards.filter(c => c && c.due > now && !c.grad).reduce((m, c) => Math.min(m, c.due), Infinity);
     const all = getMistakes();
     const open = all.filter(isMistakeActive).length;
     const fixedWeek = all.filter(m => m.fixedAt && m.fixedAt > now - 7 * DAY_MS).length;
@@ -578,7 +578,7 @@ function renderSrsDashboard() {
     const now = Date.now();
     const cards = Object.values(getSrsQuizCards()).filter(c => c && c.due);
     const due = cards.filter(c => c.due <= now).length;
-    const later = cards.filter(c => c.due > now).sort((a, b) => a.due - b.due);
+    const later = cards.filter(c => c.due > now && !c.grad).sort((a, b) => a.due - b.due);   // graduated ones aren't coming back
 
     let msg;
     if (due > 0) msg = t('srs_bubble_due', { n: due });
@@ -1052,7 +1052,7 @@ function resultHookHtml(afterSrs) {
     }
     const tomorrow = cards.filter(c => c.due > now && c.due <= now + DAY_MS).length;
     if (tomorrow > 0) return `<div class="rs-hook">🔔 <span>${escHtml(t('result_hook_tomorrow', { n: tomorrow }))}</span></div>`;
-    const next = cards.filter(c => c.due > now).reduce((m, c) => Math.min(m, c.due), Infinity);
+    const next = cards.filter(c => c.due > now && !c.grad).reduce((m, c) => Math.min(m, c.due), Infinity);
     if (next < Infinity) return `<div class="rs-hook">🔔 <span>${escHtml(t('result_hook_next', { when: practiceWhen(next) }))}</span></div>`;
     return '';
 }

@@ -1709,7 +1709,7 @@ function selectOption(selectedBtn, selectedText, type) {
     gradeSrsQuizCard(entry, isCorrect);
     let repaired = null;
     if (isCorrect) {
-        const m = entry && noteMistakeCorrect(entry.id);
+        const m = entry && noteMistakeCorrect(entry.id, reviewMode && reviewSource === 'srs');
         if (m && m.fixedAt) repaired = m;
         else if (m && reviewMode && reviewSource === 'mistakes') requeueForRepair(entry);
     } else {
@@ -1954,14 +1954,16 @@ function saveMistakes(list) {
     updateMistakeBadge();
 }
 
-/* A right answer to a word in the mistake book: one step towards repairing it.
-   Returns the entry after the step (null when the word isn't an open mistake). */
-function noteMistakeCorrect(id) {
+/* A right answer to a word in the mistake book: one step towards repairing it (or the
+   whole way, whole = true: answered in 間隔複習). Returns the entry after the step
+   (null when the word isn't an open mistake). */
+function noteMistakeCorrect(id, whole) {
     if (!id) return null;
     const list = getMistakes();
     const m = list.find(x => x.id === id);
     if (!m || m.fixedAt) return null;
-    m.fix = (m.fix || 0) + 1;
+    // whole: a right answer in 間隔複習, asked after a gap, repairs it at once (2026-10-22)
+    m.fix = whole ? MISTAKE_FIX_STREAK : (m.fix || 0) + 1;
     if (m.fix >= MISTAKE_FIX_STREAK) m.fixedAt = Date.now();
     saveMistakes(list);
     return m;
@@ -2508,10 +2510,16 @@ function saveFlashcardUnknown() {
    ({id, lang, word, answer, hint, group, zct}) plus Leitner state {box, due, seen}. That
    shape lets the review session reuse the mistake-review question engine (reviewMode in
    nextQuestion()). A correct answer moves a card up a box (longer wait); a miss drops it
-   to box 1 and brings it back in 10 minutes.
+   to box 1 and brings it back in 10 minutes. Since 2026-10-22 (owner's pick, so the due
+   count shows words that need it): a word answered right the first time starts at
+   SRS_FIRST_RIGHT_BOX (due in 7 days, not tomorrow), and a card answered right in the
+   last box graduates — `grad`, due in SRS_GRADUATED_DAYS, so it leaves the reviews but
+   still counts as 精通; missing it anywhere later brings it back to box 1.
    This replaced the older flashcard-only SRS (srs_cards), whose cards kept only the word,
    not its answer, so they couldn't be carried over. */
 const SRS_INTERVAL_DAYS = [0, 1, 3, 7, 14, 30]; // index 0 = box 1
+const SRS_FIRST_RIGHT_BOX = 4;                     // a new word answered right: next in 7 days
+const SRS_GRADUATED_DAYS = 3650;                   // a graduated card is out of the way
 const SRS_AGAIN_DELAY_MS = 10 * 60 * 1000; // so a missed card doesn't instantly reappear
 const SRS_REVIEW_LIMIT = 20;
 const SRS_QUIZ_MAX_CARDS = 4000;
@@ -2538,9 +2546,17 @@ function gradeSrsQuizCard(entry, good) {
     const prev = cards[entry.id];
     const now = Date.now();
     let box = prev ? prev.box : 1;
-    let due;
-    if (good) {
-        box = Math.min(box + 1, SRS_INTERVAL_DAYS.length);
+    let due, grad = false;
+    const last = SRS_INTERVAL_DAYS.length;
+    if (good && !prev) {
+        box = SRS_FIRST_RIGHT_BOX;
+        due = now + SRS_INTERVAL_DAYS[box - 1] * 24 * 60 * 60 * 1000;
+    } else if (good && box >= last) {
+        box = last;
+        grad = true;
+        due = now + SRS_GRADUATED_DAYS * 24 * 60 * 60 * 1000;
+    } else if (good) {
+        box = Math.min(box + 1, last);
         due = now + SRS_INTERVAL_DAYS[box - 1] * 24 * 60 * 60 * 1000;
     } else {
         box = 1;
@@ -2551,6 +2567,7 @@ function gradeSrsQuizCard(entry, good) {
         hint: entry.hint || '', group: entry.group, zct: entry.zct,
         box: box, due: due, seen: now
     };
+    if (grad) cards[entry.id].grad = true;
     saveSrsQuizCards(cards);
 }
 
@@ -3032,7 +3049,9 @@ function listeningChoiceOptions() {
 
 /* The entry this word is reviewed as in the mistake book / SRS (the same one a lesson
    asks), so a word missed by ear comes back as a normal question. */
-function listeningEntry() {
+// (named listeningEntry until 2026-10-22, when it turned out js/listening.js, loaded later,
+// has a function of that name too and had been replacing it: every answer here threw)
+function listeningQuizEntry() {
     if (!currentWord || typeof lessonEntryFor !== 'function') return null;
     const e = lessonEntryFor(listeningSetId, currentWord);
     return e && e.answer ? e : null;
@@ -3201,7 +3220,8 @@ function submitListeningAnswer(choiceText, btn) {
     answered = true;
     logDailyActivity();
     const correctAnswer = listeningDisplayAnswer();
-    const entry = listeningEntry();
+    const entry = listeningQuizEntry();
+    gradeSrsQuizCard(entry, isCorrect);   // like every other quiz answer (it didn't, until 2026-10-22)
     let repaired = null;
     if (isCorrect) {
         const m = entry && noteMistakeCorrect(entry.id);
