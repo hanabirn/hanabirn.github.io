@@ -16,7 +16,7 @@
         // Models with "lite" in the name get no thinkingConfig (it's rejected).
         "MODELS": "gemini-3.6-flash,gemini-3.5-flash-lite,gemini-3.8-flash,gemini-3.5-flash,gemini-3.7-flash",
         // the site, plus the local test servers
-        "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8765,http://localhost:8767,http://localhost:8123",
+        "ALLOWED_ORIGINS": "https://hanabirn.xyz,https://hanabirn.github.io,http://localhost:8000,http://localhost:8765,http://localhost:8767,http://localhost:8123",
         // the site's public Firebase web key (js/account.js), used to check guestbook posters' ID tokens
         "FIREBASE_API_KEY": "AIzaSyChjmEw7zDVPf3QqLvlvEmSDZ9DFat2yVE"
     },
@@ -24,12 +24,18 @@
     // guestbook messages (src/guestbook.js); created with: npx wrangler kv namespace create GUESTBOOK
     // ADMIN_TOKEN (secret) lets the owner delete a message: npx wrangler secret put ADMIN_TOKEN
     "kv_namespaces": [
-        { "binding": "GUESTBOOK", "id": "d49403ad572943b0914a9505592ba8d3" }
+        { "binding": "GUESTBOOK", "id": "d49403ad572943b0914a9505592ba8d3" },
+        // the dictionary's answers, shared by all visitors (src/dict.js); created with:
+        // npx wrangler kv namespace create DICT   (then put its id here)
+        { "binding": "DICT", "id": "DICT_NAMESPACE_ID" }
     ],
+    // the dictionary's paid fallback key (src/dict.js): npx wrangler secret put GEMINI_PAID_KEY
 
     // at most 8 messages a minute per visitor (IP)
     "ratelimits": [
-        { "name": "LIMITER", "namespace_id": "1001", "simple": { "limit": 8, "period": 60 } }
+        { "name": "LIMITER", "namespace_id": "1001", "simple": { "limit": 8, "period": 60 } },
+        // the dictionary: at most 12 new lookups a minute per visitor
+        { "name": "DICT_LIMITER", "namespace_id": "1002", "simple": { "limit": 12, "period": 60 } }
     ],
 
     "observability": { "enabled": true }

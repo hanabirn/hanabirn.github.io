@@ -8,7 +8,9 @@
    - Wiktionary part of speech + definitions (English) + the odd example, CC BY-SA
    - Tatoeba    example sentences with a translation, CC BY 2.0 FR (endpoint is "unstable")
    Each section loads and fails on its own, so one service being down never blanks
-   the page. A newer search aborts the requests of the previous one. */
+   the page. A newer search aborts the requests of the previous one.
+   Since 2026-10-22 the translations and definitions come from the 小花火 Worker (below);
+   MyMemory and the English-only Wiktionary view are the fallback when it can't answer. */
 
 const DICT_LANGS = [
     { id: 'ja', wk: 'ja', mm: 'ja',    tt: 'jpn', tts: 'ja-JP' },
@@ -58,13 +60,36 @@ function dictLoad(key, fallback) {
 
 /* ----- language chips ----- */
 
+/* the word's language: a pill in front of the search box opening a menu grouped by
+   region like the header's 我在學 (2026-10-22: the row of 8 buttons only grew) */
 function renderDictLangs() {
-    const el = document.getElementById('dict-langs');
+    const el = document.getElementById('dict-pick');
     if (!el) return;
-    el.innerHTML = DICT_LANGS.map(l =>
-        `<button type="button" class="mode-btn dict-lang ${l.id === dictLang ? 'mode-btn-active' : ''}" onclick="setDictLang('${l.id}')">${escHtml(t('dict_lang_' + l.id))}</button>`
-    ).join('');
+    const open = el.classList.contains('open');
+    const flags = id => (typeof learnFlags === 'function' ? learnFlags(id) : '');
+    const regions = typeof LANG_REGIONS !== 'undefined' ? LANG_REGIONS : [{ id: '', langs: DICT_LANGS.map(l => l.id) }];
+    el.innerHTML = `<button type="button" class="dict-pill" onclick="toggleDictPick()" aria-haspopup="true" aria-expanded="${open}">${flags(dictLang)}<span>${escHtml(t('dict_lang_' + dictLang))}</span><span class="dict-pill-caret" aria-hidden="true">▾</span></button>
+        <div class="dict-pick-menu" role="menu">${regions.map(r => `
+            ${r.id ? `<div class="dict-pick-group">${escHtml(t('region_' + r.id))}</div>` : ''}
+            <div class="dict-pick-opts">${r.langs.filter(id => DICT_LANGS.some(l => l.id === id)).map(id =>
+                `<button type="button" role="menuitem" class="${id === dictLang ? 'on' : ''}" onclick="setDictLang('${id}'); toggleDictPick(false)">${flags(id)}<span>${escHtml(t('dict_lang_' + id))}</span></button>`).join('')}</div>`).join('')}
+            <p class="dict-pick-tip">${escHtml(t('dict_pick_tip'))}</p>
+        </div>`;
 }
+
+function toggleDictPick(open) {
+    const el = document.getElementById('dict-pick');
+    if (!el) return;
+    const on = typeof open === 'boolean' ? open : !el.classList.contains('open');
+    el.classList.toggle('open', on);
+    const b = el.querySelector('.dict-pill');
+    if (b) b.setAttribute('aria-expanded', String(on));
+}
+
+document.addEventListener('click', e => {
+    const el = document.getElementById('dict-pick');
+    if (el && el.classList.contains('open') && !el.contains(e.target)) toggleDictPick(false);
+});
 
 function setDictLang(id) {
     dictLang = dictLangById(id).id;
@@ -152,17 +177,25 @@ function dictSearch(word, langId) {
     document.getElementById('dict-results').innerHTML =
         `<div class="dict-word">
             <span class="dict-word-text">${escHtml(word)}</span>
+            <span class="dict-word-reading"></span>
             <span class="dict-word-lang" data-i18n="dict_lang_${lang.id}">${escHtml(t('dict_lang_' + lang.id))}</span>
             <button class="speak-btn" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(word)}" aria-label="🔊">${uiIcon('speaker')}</button>
             <button type="button" class="note-add" data-text="${escHtml(word)}" onclick="dictNote(this.dataset.text, '${lang.id}')" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
         </div>` +
-        dictSection('dict-tr', 'dict_translation', 'dict_mt_note') +
+        dictSection('dict-tr', 'dict_tr_title', 'dict_mt_note') +
         dictSection('dict-def', 'dict_definitions', 'dict_definitions_note') +
         dictSection('dict-ex', 'dict_examples', null);
 
     const target = dictTarget(lang.id);
-    const gloss = dictDefinitions(word, lang, signal);
-    dictTranslate(word, lang, target, gloss, signal);
+    dictLast = null;
+    dictAsk(word, lang, signal)
+        .then(r => { if (!signal.aborted) dictRenderAsk(r, lang); })
+        .catch(err => {
+            if (err && err.name === 'AbortError') return;
+            // the Worker can't answer: the old way (English definitions, MyMemory)
+            const gloss = dictDefinitions(word, lang, signal);
+            dictTranslate(word, lang, target, gloss, signal);
+        });
     dictExamples(word, lang, target, signal);
 }
 
@@ -171,14 +204,101 @@ function dictNote(word, langId) {
     if (typeof notesAddFrom !== 'function') return;
     const tr = document.querySelector('#dict-tr .dict-translation');
     const name = t('dict_lang_' + langId);
+    const mine = dictLast && dictLast.word === word
+        ? (dictLast.tr[siteLang] || (dictLast.senses[0] && dictLast.senses[0].defs[0] && dictLast.senses[0].defs[0].t) || '') : '';
     notesAddFrom({
         kind: 'dict', ref: langId, lang: langId, label: t('nav_dict'),
-        title: t('notes_src_dict_title', { l: name }), text: notesWordLine(word, '', tr ? tr.textContent : '')
+        title: t('notes_src_dict_title', { l: name }), text: notesWordLine(word, dictLast && dictLast.word === word ? dictLast.reading : '', mine || (tr ? tr.textContent : ''))
     });
 }
 
 function dictErrorKey(err) {
     return err && err.name === 'AbortError' ? null : 'dict_error';
+}
+
+/* ----- the dictionary Worker (2026-10-22, owner's picks A1 + B + C1 + D + E) -----
+   /dict on the 小花火 Worker (worker/assistant/src/dict.js) gives, in one answer, the word
+   in every other site language (tr), its Wiktionary senses translated into the interface
+   language (with the English kept for 看英文原文), a reading and, for an idiom or proverb,
+   a plain explanation (note). Answers are kept per device in dict_cache (DICT_CACHE_MAX),
+   and shared by all visitors on the Worker. Without the Worker (offline, busy) the page
+   falls back to the old way: Wiktionary in English and MyMemory. */
+const DICT_CACHE_MAX = 60;
+const DICT_TR_ORDER = ['zh', 'zh-Hans', 'en', 'ja', 'ko', 'fr', 'ru', 'es', 'de'];
+const DICT_TR_FLAGS = { zh: ['tw'], 'zh-Hans': ['cn'], en: ['gb'], ja: ['jp'], ko: ['kr'], fr: ['fr'], ru: ['ru'], es: ['es'], de: ['de'] };
+const DICT_TR_TTS = { zh: 'zh-TW', 'zh-Hans': 'zh-CN', en: 'en-US', ja: 'ja-JP', ko: 'ko-KR', fr: 'fr-FR', ru: 'ru-RU', es: 'es-ES', de: 'de-DE' };
+let dictLast = null;      // the Worker's answer on screen (＋筆記 uses it)
+
+function dictApi() {
+    return (typeof ASSISTANT_API === 'string' ? ASSISTANT_API : 'https://hanabi-assistant.osu-collection-hanabi.workers.dev/chat').replace(/\/chat$/, '/dict');
+}
+
+async function dictAsk(word, lang, signal) {
+    const key = lang.id + '|' + siteLang + '|' + word;
+    const cache = dictLoad('dict_cache', {});
+    if (cache[key] && cache[key].r) return cache[key].r;
+    const res = await fetch(dictApi(), {
+        method: 'POST', signal,
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ word, lang: lang.id, ui: siteLang })
+    });
+    const r = await res.json().catch(() => ({ error: 'upstream' }));
+    if (!res.ok || r.error) { const e = new Error(r.error || 'dict ' + res.status); e.name = r.error === 'busy' ? 'Busy' : 'Error'; throw e; }
+    cache[key] = { r, at: Date.now() };
+    const keys = Object.keys(cache).sort((a, b) => (cache[b].at || 0) - (cache[a].at || 0));
+    keys.slice(DICT_CACHE_MAX).forEach(k => delete cache[k]);
+    dictStore('dict_cache', cache);
+    return r;
+}
+
+function dictTrLabel(code) {
+    if (code === 'zh') return t('dict_tr_zh');
+    if (code === 'zh-Hans') return t('dict_tr_zhs');
+    return t('dict_lang_' + code);
+}
+
+/* the Worker's answer on the page: the reading and kind in the head, the word in every
+   other language, the senses in the interface language, the plain explanation */
+function dictRenderAsk(r, lang) {
+    dictLast = r;
+    const head = document.querySelector('#dict-results .dict-word');
+    if (head) {
+        const rd = head.querySelector('.dict-word-reading');
+        if (rd && r.reading && r.reading !== r.word) rd.textContent = r.reading;
+        if (r.kind && r.kind !== 'word') head.querySelector('.dict-word-lang').insertAdjacentHTML('afterend', `<span class="dict-kind">${escHtml(t('dict_kind_' + r.kind))}</span>`);
+    }
+    const codes = DICT_TR_ORDER.filter(c => r.tr && r.tr[c]);
+    dictSetBody('dict-tr', codes.length ? `<div class="dict-tr-grid">${codes.map(c => `<div class="dict-tr-item">
+            <span class="dict-tr-lang">${(DICT_TR_FLAGS[c] || []).map(f => `<span class="flag flag--${f}" aria-hidden="true"></span>`).join('')}${escHtml(dictTrLabel(c))}</span>
+            <span class="dict-tr-text" lang="${c}">${escHtml(r.tr[c])}</span>
+            <button type="button" class="speak-btn dict-tr-speak" onclick="speakText(this.dataset.text, '${DICT_TR_TTS[c]}')" data-text="${escHtml(r.tr[c].split(' / ')[0].replace(/\s*\(.*?\)\s*/g, ' ').trim())}" aria-label="🔊">${uiIcon('speaker')}</button>
+        </div>`).join('')}</div>` : dictStatus('dict_none'));
+
+    const hasEn = r.senses.some(s => s.defs.some(d => d.en));
+    let html = r.senses.length ? r.senses.map(s => `<div class="dict-pos-group">
+            <span class="dict-pos">${escHtml(s.pos)}</span>
+            <ol class="dict-defs">${s.defs.map(d => `<li>
+                <span class="dict-def">${escHtml(d.t)}</span>
+                ${d.en ? `<span class="dict-def-en" lang="en" hidden>${escHtml(d.en)}</span>` : ''}
+                ${d.ex ? `<span class="dict-def-ex" lang="${lang.id}">${escHtml(d.ex)}${d.ex_tr ? `<span class="dict-def-ex-tr">${escHtml(d.ex_tr)}</span>` : ''}</span>` : ''}
+            </li>`).join('')}</ol>
+        </div>`).join('') : dictStatus('dict_none');
+    if (r.note) html += `<div class="dict-plain"><b>${escHtml(t('dict_plain'))}</b>${escHtml(r.note).replace(/\n/g, '<br>')}</div>`;
+    if (r.src === 'wiktionary') html += `<a class="dict-more" href="https://en.wiktionary.org/wiki/${encodeURIComponent(r.title || r.word)}" target="_blank" rel="noopener noreferrer">Wiktionary ↗</a>`;
+    dictSetBody('dict-def', html);
+    const note = document.querySelector('#dict-def .dict-note');
+    if (note) note.innerHTML = hasEn && siteLang !== 'en'
+        ? `<button type="button" class="dict-en-toggle" onclick="dictToggleEn(this)" aria-pressed="false">${escHtml(t('dict_show_en'))}</button>`
+        : escHtml(t(r.src === 'wiktionary' ? 'dict_definitions_note' : 'dict_def_ai_note'));
+}
+
+/* 看英文原文 / 看翻譯: the Wiktionary English under (instead of) each translated definition */
+function dictToggleEn(btn) {
+    const on = btn.getAttribute('aria-pressed') !== 'true';
+    btn.setAttribute('aria-pressed', String(on));
+    btn.textContent = t(on ? 'dict_show_tr' : 'dict_show_en');
+    document.querySelectorAll('#dict-def .dict-def-en').forEach(el => { el.hidden = !on; });
+    document.querySelectorAll('#dict-def .dict-def').forEach(el => el.classList.toggle('dict-def-dim', on));
 }
 
 /* MyMemory: one request, 500-byte cap per query */

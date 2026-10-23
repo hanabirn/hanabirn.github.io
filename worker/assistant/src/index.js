@@ -9,7 +9,8 @@
  *   With stream: true the reply comes back as text/plain, streamed while Gemini
  *   writes it (the site shows it word by word); errors are still JSON.
  *
- * The guestbook (留言板) is served here too: /guestbook, see src/guestbook.js.
+ * The guestbook (留言板) is served here too: /guestbook, see src/guestbook.js;
+ * and the dictionary's translations: /dict, see src/dict.js.
  *
  * Guards: only the site's origins (ALLOWED_ORIGINS), a per-IP burst limit
  * (the LIMITER rate-limit binding), and caps on message count and length.
@@ -18,6 +19,7 @@
  */
 
 import { guestbook } from './guestbook.js';
+import { dict } from './dict.js';
 
 const MAX_MESSAGES = 12;      // conversation turns forwarded (latest)
 const MAX_CHARS = 600;        // per message
@@ -111,6 +113,10 @@ export default {
             // the owner's DELETE comes from a terminal, without an Origin
             if (request.method !== 'DELETE' && headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
             return guestbook(request, env, url, json, headers);
+        }
+        if (url.pathname === '/dict') {
+            if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
+            return dict(request, env, json, headers);
         }
         if (url.pathname !== '/chat' || request.method !== 'POST') return json({ error: 'not_found' }, 404, headers);
         if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);

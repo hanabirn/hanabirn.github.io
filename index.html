@@ -519,14 +519,14 @@
             <div class="mode-card dict-card">
                 <h3 data-i18n="dict_title">✦ 字典 ✦</h3>
                 <form class="dict-form" onsubmit="return dictSubmit(event)">
+                    <div class="dict-pick" id="dict-pick"></div>
                     <input id="dict-input" class="dict-input" type="search" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="search" maxlength="60" oninput="dictGuessLang(this.value)" data-i18n-placeholder="dict_placeholder" placeholder="輸入想查的單字…">
                     <button type="submit" class="next-btn dict-go" data-i18n="dict_search">查詢</button>
                 </form>
-                <div class="dict-langs" id="dict-langs"></div>
                 <div class="dict-recent" id="dict-recent"></div>
             </div>
             <div id="dict-results"><p class="dict-empty" data-i18n="dict_empty_hint">輸入單字，查翻譯、詞性、解釋和例句。</p></div>
-            <p class="dict-sources" data-i18n="dict_sources">資料來源：翻譯 MyMemory；詞性與解釋 Wiktionary（CC BY-SA）；例句 Tatoeba（CC BY 2.0 FR）。</p>
+            <p class="dict-sources" data-i18n="dict_sources">資料來源：詞性與解釋 Wiktionary（CC BY-SA），由 Gemini 翻譯並翻成各國語言；例句 Tatoeba（CC BY 2.0 FR）。</p>
         </div>
 
     </main>
