@@ -156,17 +156,35 @@ def health(path, item):
 
 
 # ---------- 3. content (Gemini listens) ----------
-PROMPT = """You check recordings for a language-learning website. For each numbered clip you get the
-text the recording should say ({lang}). Listen and decide whether the speech says that text —
-the same words in the same order, nothing missing, nothing added (ignore punctuation, tone and
-small pronunciation differences; for Japanese the reading is given in kana, accept the kanji
-words that read so). Also flag clips that are not speech, are in another language, or are
-garbled. Answer only with JSON: [{"i": number, "ok": true|false, "heard": "what you heard",
-"problem": "none|missing_words|extra_words|wrong_words|not_speech|wrong_language|garbled"}]."""
+PROMPT = """You check recordings for a language-learning website ({lang}). For each numbered clip,
+write down exactly what is said — every syllable, including anything extra at the start or end,
+and nothing that is not said. {script} Then say whether it says the expected text given with the
+clip, and if not, what is wrong. Answer only with JSON: [{"i": number, "heard": "what is said",
+"ok": true|false, "problem": "none|missing_words|extra_words|wrong_words|not_speech|wrong_language|garbled"}]."""
+SCRIPT = {'ja': 'Write Japanese in hiragana only (no kanji, no katakana), so it can be compared with the kana reading.',
+          'zh': 'Write Chinese in the same characters as the expected text where they are the words said.'}
+# similarity of what was heard to the text, below which a clip is flagged: sentences stricter,
+# because a stray syllable (the Google voices sometimes start with 「おやり」) costs them little
+MATCH = {'word': 0.85, 'sentence': 0.95, 'listening': 0.95}
+
+
+def simplify(text):
+    """for comparing: lower case, no punctuation or spaces, katakana as hiragana"""
+    t = ''.join(chr(ord(ch) - 0x60) if 'ァ' <= ch <= 'ヶ' else ch for ch in text.lower())
+    return ''.join(re.findall(r'[^\W_]', t))
+
+
+def matches(heard, say):
+    """Gemini's yes / no is unreliable (it says no to homophones such as 移動 / 異動, and to
+    はう for 這う), so the clip is judged by how close what it heard is to the text"""
+    import difflib
+    x, y = simplify(heard), simplify(say)
+    return difflib.SequenceMatcher(None, x, y).ratio() if x and y else 0.0
 
 
 def judge(batch, lang, key):
-    parts = [{'text': PROMPT.replace('{lang}', lang)}]
+    base = 'ja' if lang.startswith('ja') else 'zh' if lang.startswith(('zh', 'cmn')) else ''
+    parts = [{'text': PROMPT.replace('{lang}', lang).replace('{script}', SCRIPT.get(base, ''))}]
     for i, (fid, item, path) in enumerate(batch):
         parts.append({'text': f'Clip {i}: should say: {item["say"]}'})
         parts.append({'inline_data': {'mime_type': 'audio/mp3', 'data': base64.b64encode(path.read_bytes()).decode()}})
@@ -285,8 +303,11 @@ def main():
                     v = got.get(i)
                     if not v:
                         continue
-                    ok = bool(v.get('ok'))
-                    state['content'][f'{lang}|{fid}'] = [size, ok, str(v.get('heard', ''))[:200], v.get('problem', 'none')]
+                    score = matches(str(v.get('heard', '')), item['say'])
+                    ok = score >= MATCH[item['kind']]
+                    problem = 'none' if ok else (v.get('problem') if v.get('problem') not in (None, 'none') else 'wrong_words')
+                    v['problem'] = problem
+                    state['content'][f'{lang}|{fid}'] = [size, ok, str(v.get('heard', ''))[:200], problem, round(score, 2)]
                     if not ok:
                         report['problems'].append({'lang': lang, 'fid': fid, 'text': item['key'], 'issues': ['content:' + v.get('problem', '?')],
                                                    'heard': v.get('heard', ''), 'root': 'queue' if queue and path.is_relative_to(queue) else 'site', 'path': path.relative_to(queue if queue and path.is_relative_to(queue) else site).as_posix()})

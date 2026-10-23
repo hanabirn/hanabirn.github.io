@@ -94,6 +94,8 @@ LANGS = {
 }
 REDO = ROOT / 'tools' / '.audio-redo'   # --redo renders here first, then swaps
 MIN_CLIP = 0.3         # seconds; shorter means the voice said nothing or got cut
+QUIET_PEAK = 3000      # int16; a clip whose loudest sample is under this only whispered (はい, うん came out
+                       # at -36 dB and passed the length check — found by tools/audio_check.py, 2026-10-23)
 RATE = 0.9             # a little slower, for learners
 SR = 16000
 WORKERS = 8
@@ -422,6 +424,10 @@ def synthesize(env, lang_code, voice, text):
     if rate != SR:
         raise RuntimeError(f'{voice} returned {rate} Hz')
     return trim(struct.unpack('<%dh' % (len(raw) // 2), raw))
+
+
+def loud_enough(clip):
+    return bool(clip) and max(abs(x) for x in clip) >= QUIET_PEAK
 
 
 def trim(samples, sr=SR):
@@ -893,7 +899,7 @@ def main():
             tries = [backup] if len(text) == 1 and lang in ('ja', 'ko') else [voice, voice, voice, backup]
             for name in tries:
                 clip = synthesize(env, code, name, text)
-                if MIN_CLIP * SR <= len(clip) <= 8 * SR:
+                if MIN_CLIP * SR <= len(clip) <= 8 * SR and loud_enough(clip):
                     (d / f'{fid}.mp3').write_bytes(to_mp3(clip))
                     return 'backup' if name != voice else None
             return f'{text!r}: no usable clip ({len(clip) / SR:.2f}s), skipped'

@@ -225,7 +225,15 @@ def render_audio(lang, jobs):
         return
     env = ba.load_env()
     for aid, who, kana in todo:
-        clip = ba.synthesize(env, code, voices[who], kana)
+        # a few tries: a whisper, or a clip far too long for its text (the voice once
+        # rambled 「小川を左方向に…」 for 23 s instead of a 4 s line — tools/audio_check.py)
+        n = max(1, len(re.findall(r'[^\W_]', kana)))
+        for attempt in range(4):
+            clip = ba.synthesize(env, code, voices[who], kana)
+            secs = len(clip) / ba.SR
+            if ba.loud_enough(clip) and secs <= 0.5 * n + 1.6:
+                break
+            print(f'  ! {lang} {aid}: retry ({secs:.1f}s for {n} kana)')
         (d / f'{aid}.mp3').write_bytes(ba.to_mp3(clip))
 
 
