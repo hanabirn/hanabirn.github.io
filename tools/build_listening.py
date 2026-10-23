@@ -38,13 +38,14 @@ explanation translated, each set's mix of types.
 
 Usage: python tools/build_listening.py [--no-audio]
 """
-import argparse, json, sys
+import argparse, hashlib, json, re, sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'tools' / 'listening'
 OUT = ROOT / 'data' / 'listening'
 AUDIO = ROOT / 'data' / 'audio' / 'listening'
+IMG = ROOT / 'data' / 'listening' / 'img'
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_reading import sentence                 # noqa: E402
 import build_audio as ba                           # noqa: E402
@@ -60,6 +61,44 @@ DEFAULT_TYPES = ['task', 'point', 'utterance', 'response']
 SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4}     # types whose options are read aloud
 SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
+
+
+# pictures as on the JLPT paper (tools/listening/pics.json, drawn by tools/build_listening_img.py):
+# an item with a description gets `pic` {f: file id, kind: grid|scene} once its picture exists
+PICS = {k: v for k, v in json.loads((SRC / 'pics.json').read_text(encoding='utf-8')).items() if not k.startswith('_')}
+PIC_STYLE = ('Black-and-white line illustration in the style of a Japanese language proficiency test booklet (JLPT): '
+             'clean even ink outlines, light gray flat shading only, simple friendly anime-like people, plain white background. '
+             'Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
+
+
+def pic_prompt(spec):
+    """(prompt, aspect ratio) for one picture description."""
+    if 'grid' in spec:
+        g = spec['grid']
+        where = ['Top-left', 'Top-right', 'Bottom-left', 'Bottom-right']
+        return ('A 2x2 grid of four equal square panels separated by thin black lines, with a thin black frame around each panel. '
+                + g['cast'][0].upper() + g['cast'][1:] + '. '
+                + ' '.join(f'{w}: {p}.' for w, p in zip(where, g['panels'])) + ' ' + PIC_STYLE, '1:1')
+    sc = spec['scene']
+    return ('One single scene: ' + sc['desc'] + '. Exactly ONE bold solid black arrow in the whole picture, pointing down at '
+            + sc['arrow'] + '. Only one arrow; nobody else has an arrow. ' + PIC_STYLE, '4:3')
+
+
+def pic_id(spec):
+    return hashlib.sha1(pic_prompt(spec)[0].encode('utf-8')).hexdigest()[:12]
+
+
+def item_pic(key, it, lang, problems):
+    spec = PICS.get(key)
+    if not spec:
+        return None
+    first = re.sub(r'\{[^}]*\}', '', it['lines'][0]['s'])
+    want = 'grid' if it.get('type') == 'task' else 'scene' if it.get('type') == 'utterance' else None
+    if not first.startswith(spec['first']) or want not in spec:
+        problems.append(f'{key}: tools/listening/pics.json describes another item ({spec["first"]!r}, a {want or it.get("type")} is here)')
+        return None
+    f = pic_id(spec)
+    return {'f': f, 'kind': want} if (IMG / lang / f'{f}.webp').exists() else None
 
 
 # spoken options are numbered aloud, as in the exam (いち … に … さん …): the narrator
@@ -152,7 +191,9 @@ def build(src, problems, jobs):
             for gi, g in enumerate(words):
                 if gi not in hit:
                     problems.append(f'{where}: glossary word {g["w"]} never appears (set "m")')
+            pic = item_pic(f'{data["id"]}/{set_["id"]}/{k}', it, lang, problems)
             items.append({'type': typ, 'scene': it.get('scene'), 'lines': lines, 'questions': questions,
+                          **({'pic': pic} if pic else {}),
                           'read': it.get('read', read_secs if typ == 'point' else 0),
                           'words': [{k3: g[k3] for k3 in ('w', 'r', 'zh', 'en')} for g in words]})
         if set_.get('mock'):
@@ -199,6 +240,8 @@ def main():
     problems, index = [], []
     OUT.mkdir(parents=True, exist_ok=True)
     for src in sorted(SRC.glob('*.json')):
+        if src.name == 'pics.json':          # the picture descriptions, not a level
+            continue
         jobs = {}
         data = build(src, problems, jobs)
         if not data['sets']:

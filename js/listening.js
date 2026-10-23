@@ -462,8 +462,14 @@ function listeningPlayerUi(frac) {
     }
 }
 
+/* a picture of the item (tools/listening/pics.json): its file, and for a 2x2 grid the
+   quarter that is option i */
+function listeningPicUrl(lv, it) { return 'data/listening/img/' + lv.lang + '/' + it.pic.f + '.webp'; }
+const LISTENING_PIC_QUARTERS = ['0 0', '100% 0', '0 100%', '100% 100%'];
+
 function listeningOptionsHtml(lv, it, q, qn, show) {
     const z = listeningSession;
+    const grid = it.pic && it.pic.kind === 'grid' && !q.spoken;
     const picked = z.picks[z.qi][qn];
     const done = picked !== -1;
     return q.options.map((o, i) => {
@@ -471,7 +477,11 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
         if (show && i === q.answer) cls = ' correct-choice';
         else if (show && i === picked) cls = ' wrong-choice';
         else if (!show && i === picked) cls = ' ls-picked';
-        const label = q.spoken
+        // a picture option shows only its quarter of the picture, as on the JLPT paper; its
+        // words appear once answered
+        const label = grid
+            ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}" style="background-image:url('${listeningPicUrl(lv, it)}');background-position:${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
+            : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
         return `<button type="button" class="btn option-btn${cls}" onclick="listeningAnswer(${qn}, ${i})"${done && (show || z.mock === false) ? ' disabled' : ''}>${label}</button>`;
@@ -506,7 +516,7 @@ function listeningQuizHtml(lv) {
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi ? qText : ''}
-            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
+            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
             ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: q.answer + 1 }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
         </div>`;
@@ -536,7 +546,9 @@ function listeningQuizHtml(lv) {
         ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
         <div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>
-        ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}"><span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
+        ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}">${it.pic && it.pic.kind === 'scene'
+                ? `<img class="ls-scene-img" src="${listeningPicUrl(lv, it)}" alt="" onerror="this.nextElementSibling.hidden = false; this.remove()"><span class="ls-scene-emoji" aria-hidden="true" hidden>${it.scene.emoji || ''}</span>`
+                : `<span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>`}${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
         ${pointShown ? `<div class="ls-scene ls-question" lang="${lv.lang}">${listeningSegsHtml(pointQ.t, false)}${show ? `<div class="ls-zh">${escHtml(gText(pointQ))}</div>` : ''}</div>`
             : pointQ && !exam ? `<div class="ls-scene"><button type="button" class="mode-btn ls-small ls-showq" onclick="listeningSession.showQ = true; listeningRerender()">${escHtml(t('listening_show_q'))}</button></div>` : ''}
         <div class="ls-player">
