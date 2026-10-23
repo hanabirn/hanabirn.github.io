@@ -22,6 +22,7 @@ let friendsSort = 'week';             // week | streak
 let friendsPick = null;               // { code, kind } — the sticker menu open under a row
 let friendsRenaming = false;
 let friendsRemoveArm = '';            // the code whose 刪除 was pressed once
+let friendsManage = false;            // the leaderboard shows 刪除 on each friend
 let friendsAllNotes = false;
 let friendsPendingCode = '';          // from a shared link (?friend=CODE)
 let friendsPingTimer = 0;
@@ -147,11 +148,11 @@ function renderFriends() {
             + (s.notes.length ? `<div class="fr-notes-phone">${notes.map(friendsNoteHtml).join('')}
                 ${s.notes.length > FRIENDS_NOTES_PHONE ? `<button type="button" class="fr-link" onclick="friendsAllNotes = !friendsAllNotes; renderFriends()">${escHtml(friendsAllNotes ? t('fr_less') : t('fr_all_notes', { n: s.notes.length }))}</button>` : ''}</div>` : '')
             + `<div class="fr-tabs" role="tablist">${tabs.map(([id, key, n]) => `<button type="button" role="tab" aria-selected="${friendsTab === id}" class="${friendsTab === id ? 'on' : ''}" onclick="friendsTab='${id}'; friendsPick = null; renderFriends()">${escHtml(t(key))}${n ? `<i>${n}</i>` : ''}</button>`).join('')}</div>`
-            + (friendsTab === 'board' ? friendsBoardHtml() : friendsTab === 'pairs' ? friendsPairsHtml() : friendsAddHtml() + friendsRequestsHtml());
+            + (friendsTab === 'board' ? friendsBoardHtml() : friendsTab === 'pairs' ? friendsPairsHtml() : friendsRequestsHtml() + friendsAddHtml());
     } else {
         root.innerHTML = head + msg + `<div class="fr-cols">
-            <div class="fr-col">${friendsMeHtml(false)}${friendsPairsHtml()}${friendsNotesHtml()}${friendsAddHtml()}${friendsRequestsHtml()}</div>
-            <div class="fr-col">${friendsBoardHtml()}</div>
+            <div class="fr-col">${friendsMeHtml(false)}${friendsPairsHtml()}${friendsNotesHtml()}</div>
+            <div class="fr-col">${friendsRequestsHtml()}${friendsBoardHtml()}</div>
         </div>`;
     }
     if (friendsPendingCode) {
@@ -187,6 +188,7 @@ function friendsMeHtml(phone) {
         <div class="fr-code"><span class="fr-sub">${escHtml(t('fr_my_code'))}</span><code>${escHtml(code)}</code>
             <button type="button" class="fr-btn" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button>
             <button type="button" class="fr-btn" onclick="friendsShare()">${escHtml(t('fr_share'))}</button></div>
+        ${friendsAddRowHtml()}
         ${friendsPublicHtml()}
     </div>`;
 }
@@ -224,7 +226,9 @@ function friendsBoardHtml() {
         const pairBtn = f.isMe || f.pair ? '' : `<button type="button" class="fr-link" title="${escHtml(t('fr_pair_invite_title'))}" onclick="friendsDo('pair', { code: '${f.code}', op: 'invite' }, 'fr_pair_sent')">${escHtml(t('fr_pair_invite'))}</button>`;
         const kind = pub && f.today === false ? 'nudge' : 'cheer';
         const sent = f.sent && f.sent[kind];
-        const act = f.isMe ? '' : `<button type="button" class="fr-act${kind === 'nudge' ? ' nudge' : ''}" ${sent ? 'disabled' : ''}
+        const act = f.isMe ? '' : friendsManage
+            ? `<button type="button" class="fr-btn${friendsRemoveArm === f.code ? ' red' : ''}" onclick="friendsRemove('${f.code}')">${escHtml(t(friendsRemoveArm === f.code ? 'fr_remove_again' : 'fr_remove'))}</button>`
+            : `<button type="button" class="fr-act${kind === 'nudge' ? ' nudge' : ''}" ${sent ? 'disabled' : ''}
             title="${escHtml(t(sent ? 'fr_sent_already' : kind === 'nudge' ? 'fr_nudge_btn' : 'fr_cheer_btn'))}"
             onclick="friendsPick = friendsPick && friendsPick.code === '${f.code}' ? null : { code: '${f.code}', kind: '${kind}' }; renderFriends()">${kind === 'nudge' ? '🔔' : '📣'}</button>`;
         const pick = friendsPick && friendsPick.code === f.code ? friendsStickersHtml(f, friendsPick.kind) : '';
@@ -238,7 +242,8 @@ function friendsBoardHtml() {
     return `<div class="fr-box">
         <div class="fr-board-head"><h4>${escHtml(t('fr_board'))}</h4>
             <button type="button" class="pc-chip${key === 'week' ? ' on' : ''}" onclick="friendsSort='week'; renderFriends()">${escHtml(t('fr_by_week'))}</button>
-            <button type="button" class="pc-chip${key === 'streak' ? ' on' : ''}" onclick="friendsSort='streak'; renderFriends()">${escHtml(t('fr_by_streak'))}</button></div>
+            <button type="button" class="pc-chip${key === 'streak' ? ' on' : ''}" onclick="friendsSort='streak'; renderFriends()">${escHtml(t('fr_by_streak'))}</button>
+            ${s.friends.length ? `<button type="button" class="fr-link fr-manage-btn" aria-pressed="${friendsManage}" onclick="friendsManage = !friendsManage; friendsRemoveArm = ''; friendsPick = null; renderFriends()">${escHtml(t(friendsManage ? 'fr_manage_done' : 'fr_manage'))}</button>` : ''}</div>
         ${s.friends.length ? `<ol class="fr-board">${list}</ol>` : `<p class="fr-empty">${escHtml(t('fr_board_empty'))}</p>`}
         <p class="fr-sub">${escHtml(t('fr_board_note'))}</p>
     </div>`;
@@ -297,12 +302,17 @@ function friendsNotesHtml() {
     </div>`;
 }
 
-function friendsAddHtml() {
-    return `<div class="fr-box"><h4>${escHtml(t('fr_add'))}</h4>
+// the box for a friend's code (in my card on computers, the 加好友 tab on phones)
+function friendsAddRowHtml() {
+    return `<div class="fr-add-row"><span class="fr-sub">${escHtml(t('fr_add'))}</span>
         <div class="fr-add"><input id="fr-add-code" maxlength="9" autocomplete="off" autocapitalize="characters" placeholder="${escHtml(t('fr_add_ph'))}"
-            onkeydown="if (event.key === 'Enter') friendsAdd()">
-        <button type="button" class="fr-btn red" onclick="friendsAdd()">${escHtml(t('fr_add_btn'))}</button></div>
-        ${friendsPhone() ? `<p class="fr-sub">${escHtml(t('fr_my_code'))}：<b>${escHtml(friendsCodeFmt(friendsState.me.code))}</b> <button type="button" class="fr-link" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button></p>` : ''}
+            aria-label="${escHtml(t('fr_add'))}" onkeydown="if (event.key === 'Enter') friendsAdd()">
+        <button type="button" class="fr-btn red" onclick="friendsAdd()">${escHtml(t('fr_add_btn'))}</button></div></div>`;
+}
+
+function friendsAddHtml() {
+    return `<div class="fr-box"><h4>${escHtml(t('fr_add'))}</h4>${friendsAddRowHtml()}
+        <p class="fr-sub">${escHtml(t('fr_my_code'))}：<b>${escHtml(friendsCodeFmt(friendsState.me.code))}</b> <button type="button" class="fr-link" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button></p>
     </div>`;
 }
 
@@ -320,12 +330,8 @@ function friendsRequestsHtml() {
         <button type="button" class="fr-btn" onclick="friendsDo('respond', { code: '${f.code}', accept: false })">${escHtml(t('fr_decline'))}</button></div>`).join('');
     const out = s.outgoing.map(f => `<div class="fr-req">${friendsAvatar(f)}<span class="fr-grow"><b>${escHtml(friendsName(f))}</b><small>${escHtml(t('fr_waiting'))}</small></span>
         <button type="button" class="fr-btn" onclick="friendsDo('remove', { code: '${f.code}' })">${escHtml(t('fr_withdraw'))}</button></div>`).join('');
-    // friends can be removed from here (two presses, no browser dialog)
-    const list = s.friends.map(f => `<div class="fr-req">${friendsAvatar(f)}<span class="fr-grow"><b>${escHtml(friendsName(f))}</b></span>
-        <button type="button" class="fr-btn${friendsRemoveArm === f.code ? ' red' : ''}" onclick="friendsRemove('${f.code}')">${escHtml(t(friendsRemoveArm === f.code ? 'fr_remove_again' : 'fr_remove'))}</button></div>`).join('');
-    return (inc ? `<div class="fr-box"><h4>${escHtml(t('fr_requests'))}（${s.incoming.length}）</h4>${inc}</div>` : '')
-        + (out ? `<div class="fr-box"><h4>${escHtml(t('fr_outgoing'))}</h4>${out}</div>` : '')
-        + (list ? `<details class="fr-box fr-manage"><summary>${escHtml(t('fr_manage', { n: s.friends.length }))}</summary>${list}</details>` : '');
+    return (inc ? `<div class="fr-box fr-requests"><h4>${escHtml(t('fr_requests'))}（${s.incoming.length}）</h4>${inc}</div>` : '')
+        + (out ? `<div class="fr-box"><h4>${escHtml(t('fr_outgoing'))}</h4>${out}</div>` : '');
 }
 
 function friendsRemove(code) {
