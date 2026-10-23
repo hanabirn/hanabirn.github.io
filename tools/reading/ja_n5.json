@@ -365,5 +365,217 @@
          "zh": "○：「母が電話で…と言いました」。", "en": "True: 母が電話で…と言いました."}
       ]
     }
+  ],
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "（がっこうで）\nにほんごクラスの　みなさんへ\nあしたの　じゅぎょうは　9時{じ}からでは　ありません。　10時{じ}からです。\nきょうしつは　3かいの　301です。　じしょを　もって　きて　ください。\n山田{やまだ}",
+          "tr": {"zh": "（在學校）\n給日文班的各位\n明天的課不是 9 點開始，是 10 點開始。教室在 3 樓的 301。請帶字典來。\n山田", "en": "(At school)\nTo everyone in the Japanese class\nTomorrow’s lesson does not start at 9 — it starts at 10. The classroom is 301 on the 3rd floor. Please bring your dictionary.\nYamada"},
+          "questions": [
+            {"q": "あしたの　じゅぎょうは　どこで　何時{なんじ}からですか。", "options": ["301で　9時{じ}から", "301で　10時{じ}から", "103で　10時{じ}から", "3かいの　きょうしつで　9時{じ}から"], "answer": 1, "zh": "「9時からでは ありません。10時からです」，教室是「301」，所以是 301、10 點。", "en": "“Not from 9 — from 10”, and the room is 301: room 301 from 10."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "わたしは　きのう　友{とも}だちと　デパートへ　いきました。\nわたしは　くつを　かいました。　友{とも}だちは　なにも　かいませんでした。\nそれから　いっしょに　レストランで　ばんごはんを　たべました。",
+          "tr": {"zh": "我昨天和朋友去了百貨公司。我買了鞋子，朋友什麼都沒買。然後一起在餐廳吃了晚餐。", "en": "Yesterday I went to a department store with a friend. I bought shoes; my friend bought nothing. Then we had dinner together at a restaurant."},
+          "questions": [
+            {"q": "きのう、　「わたし」は　何{なに}を　しましたか。", "options": ["友{とも}だちと　いっしょに　くつを　かいました。", "ひとりで　デパートへ　いきました。", "くつを　かって、　ばんごはんを　たべました。", "友{とも}だちに　くつを　あげました。"], "answer": 2, "zh": "「わたし」買了鞋子，之後和朋友吃了晚餐。朋友什麼都沒買（1 錯），是和朋友去的（2 錯）。", "en": "“I” bought shoes and then had dinner. The friend bought nothing (not 1), and they went together (not 2)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_mid",
+          "mondai": 5,
+          "text": "わたしは　まいしゅう　どようびに　こうえんで　テニスを　します。\n友{とも}だちの　マリアさんと　いっしょに　します。\nでも、　せんしゅうの　どようびは　雨{あめ}でしたから、　テニスを　しませんでした。\nマリアさんの　うちへ　いって、　二人{ふたり}で　ケーキを　つくりました。\nマリアさんは　ケーキを　つくるのが　とても　じょうずです。\nわたしは　はじめて　つくりましたから、　あまり　じょうずに　できませんでした。\nでも、　とても　おいしかったです。\nこんどの　どようびは、　てんきが　いい　ときは　テニスを　して、　雨{あめ}の　ときは　また　ケーキを　つくります。",
+          "tr": {"zh": "我每週六在公園打網球，和朋友瑪莉亞一起打。可是上週六下雨，所以沒有打網球。我去了瑪莉亞家，兩個人一起做了蛋糕。瑪莉亞做蛋糕很拿手。我是第一次做，做得不太好，不過非常好吃。這個星期六，天氣好的時候就打網球，下雨的時候就再做蛋糕。", "en": "Every Saturday I play tennis in the park with my friend Maria. But last Saturday it rained, so we didn’t play. I went to Maria’s house and the two of us made a cake. Maria is very good at making cakes. It was my first time, so mine didn’t turn out very well — but it was delicious. This Saturday we’ll play tennis if the weather is good, and make a cake again if it rains."},
+          "questions": [
+            {"q": "せんしゅうの　どようび、　「わたし」は　何{なに}を　しましたか。", "options": ["こうえんで　テニスを　しました。", "マリアさんの　うちで　ケーキを　つくりました。", "ひとりで　ケーキを　かいました。", "マリアさんと　レストランへ　いきました。"], "answer": 1, "zh": "上週六下雨沒打網球，「マリアさんの うちへ いって、二人で ケーキを つくりました」。", "en": "It rained, so no tennis: “I went to Maria’s house and the two of us made a cake.”"},
+            {"q": "こんどの　どようびに　「わたし」は　何{なに}を　しますか。", "options": ["てんきが　わるくても　テニスを　します。", "てんきが　いい　ときは　ケーキを　つくります。", "雨{あめ}の　ときは　こうえんへ　いきます。", "てんきが　いい　ときは　テニスを　します。"], "answer": 3, "zh": "「てんきが いい ときは テニスを して、雨の ときは また ケーキを つくります」：天氣好就打網球。", "en": "“Tennis when the weather is good, cake again when it rains.”"}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "ja_info",
+          "mondai": 6,
+          "notice": {
+            "title": "さくら　としょかん",
+            "rows": [
+              ["あいて　いる　日{ひ}", "かようび　～　にちようび"],
+              ["じかん", "9:00　～　17:00（どようびは　9:00　～　12:00）"],
+              ["やすみ", "げつようび"],
+              ["かりられる　本{ほん}", "1かいに　5さつまで（2しゅうかん）"]
+            ]
+          },
+          "tr": {"zh": "櫻花圖書館｜開放日：星期二～星期日｜時間：9:00～17:00（星期六 9:00～12:00）｜休館：星期一｜可借的書：一次最多 5 本（借 2 週）", "en": "Sakura Library | Open: Tuesday–Sunday | Hours: 9:00–17:00 (Saturday 9:00–12:00) | Closed: Monday | Books: up to 5 at a time (for 2 weeks)"},
+          "questions": [
+            {"q": "キムさんは　どようびに　本{ほん}を　かりに　いきます。　何時{なんじ}までに　いかなければ　なりませんか。", "options": ["9時{じ}", "12時{じ}", "17時{じ}", "どようびは　やすみです。"], "answer": 1, "zh": "星期六只開到 12:00（どようびは 9:00～12:00），所以要在 12 點前去。休館日是星期一。", "en": "On Saturdays it is open only until 12:00, so Kim must go by 12. The closed day is Monday."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "（いえで）\nけんたへ\nおかあさんは　きょう　おそく　かえります。　れいぞうこに　カレーが　あります。\nあたためて　たべて　ください。　たべた　あとで、　おさらを　あらって　ください。\nはは",
+          "tr": {"zh": "（在家裡）\n給健太\n媽媽今天會晚回家。冰箱裡有咖哩，熱一熱吃吧。吃完以後，請把盤子洗一洗。\n媽媽", "en": "(At home)\nTo Kenta\nMum will be home late today. There’s curry in the fridge — heat it up and eat it. After you eat, please wash the plates.\nMum"},
+          "questions": [
+            {"q": "けんたくんは　ばんごはんの　あとで　何{なに}を　しますか。", "options": ["カレーを　つくります。", "おさらを　あらいます。", "れいぞうこを　あらいます。", "おかあさんを　まちます。"], "answer": 1, "zh": "「たべた あとで、おさらを あらって ください」：吃完要洗盤子。咖哩是已經做好放在冰箱裡的。", "en": "“After you eat, please wash the plates.” The curry is already made, in the fridge."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "（がっこうで）\nりゅうがくせいの　みなさんへ\nらいしゅうの　すいようびは　こうえんへ　いきます。\n8時半{じはん}に　がっこうの　前{まえ}に　あつまって　ください。\nひるごはんは　いりません。　のみものを　もって　きて　ください。",
+          "tr": {"zh": "（在學校）\n給各位留學生\n下週三要去公園。請 8 點半在學校前面集合。不用帶午餐，請帶飲料來。", "en": "(At school)\nTo all international students\nNext Wednesday we are going to the park. Please gather in front of the school at 8:30. You don’t need lunch; please bring something to drink."},
+          "questions": [
+            {"q": "すいようびに　学生{がくせい}は　何{なに}を　もって　いきますか。", "options": ["ひるごはん", "おかね", "のみもの", "なにも　もって　いきません。"], "answer": 2, "zh": "「ひるごはんは いりません」：不用帶午餐；要帶的是飲料（のみもの）。", "en": "“You don’t need lunch”: what students bring is something to drink."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_mid",
+          "mondai": 5,
+          "text": "わたしは　せんげつ　あたらしい　アパートに　ひっこしました。\nまえの　アパートは　えきから　とおかったですが、　こんどの　アパートは　えきから　あるいて　5ふんです。\nへやは　まえより　すこし　せまいですが、　まどが　大{おお}きくて　あかるいです。\nアパートの　ちかくに　スーパーと　びょういんが　あります。　でも、　こうえんは　ありません。\nわたしは　いぬが　いますから、　まいあさ　いぬと　さんぽします。\nこうえんが　ありませんから、　かわの　ちかくを　あるきます。　かわの　ちかくは　しずかで、　きれいです。",
+          "tr": {"zh": "我上個月搬到了新公寓。以前的公寓離車站很遠，這次的公寓從車站走路 5 分鐘。房間比以前小一點，不過窗戶很大，很明亮。公寓附近有超市和醫院，但是沒有公園。我養了狗，所以每天早上和狗散步。因為沒有公園，就在河邊走。河邊很安靜，也很漂亮。", "en": "Last month I moved to a new flat. My old flat was far from the station, but the new one is a 5-minute walk from it. The room is a little smaller than before, but the windows are big and it’s bright. Near the flat there is a supermarket and a hospital, but no park. I have a dog, so every morning I walk it. As there’s no park, I walk by the river. It’s quiet and pretty by the river."},
+          "questions": [
+            {"q": "あたらしい　アパートは　どうですか。", "options": ["えきから　とおいです。", "まえの　アパートより　ひろいです。", "まどが　大{おお}きくて　あかるいです。", "ちかくに　こうえんが　あります。"], "answer": 2, "zh": "「まどが 大きくて あかるいです」。離車站走路 5 分鐘（1 錯），房間比以前小（2 錯），附近沒有公園（4 錯）。", "en": "“The windows are big and it’s bright.” It is near the station (not 1), smaller (not 2), and there’s no park (not 4)."},
+            {"q": "「わたし」は　まいあさ　どこを　さんぽしますか。", "options": ["かわの　ちかく", "こうえん", "えきの　前{まえ}", "スーパーの　ちかく"], "answer": 0, "zh": "「こうえんが ありませんから、かわの ちかくを あるきます」：因為沒有公園，所以在河邊散步。", "en": "“As there’s no park, I walk by the river.”"}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "ja_info",
+          "mondai": 6,
+          "notice": {
+            "title": "やまの　ホテルまでの　バス",
+            "rows": [
+              ["えき　→　ホテル", "8:10　　9:40　　11:10　　13:40　　15:10"],
+              ["ホテル　→　えき", "9:00　　10:30　　12:00　　14:30　　16:00"],
+              ["ねだん", "おとな　300円{えん}　／　こども　150円{えん}"]
+            ],
+            "foot": "バスは　えきから　ホテルまで　40ぷん　かかります。"
+          },
+          "tr": {"zh": "往山上飯店的巴士｜車站→飯店：8:10、9:40、11:10、13:40、15:10｜飯店→車站：9:00、10:30、12:00、14:30、16:00｜票價：大人 300 日圓／小孩 150 日圓｜巴士從車站到飯店要 40 分鐘。", "en": "Bus to the mountain hotel | Station → hotel: 8:10, 9:40, 11:10, 13:40, 15:10 | Hotel → station: 9:00, 10:30, 12:00, 14:30, 16:00 | Fare: adults ¥300 / children ¥150 | The bus takes 40 minutes from the station to the hotel."},
+          "questions": [
+            {"q": "ヤンさんは　12時半{じはん}までに　ホテルに　つきたいです。　えきから　のる　バスで　いちばん　おそいのは　何時{なんじ}の　バスですか。", "options": ["9:40", "11:10", "12:00", "13:40"], "answer": 1, "zh": "要 40 分鐘：11:10 的車 11:50 到，來得及；13:40 太晚。12:00 是飯店往車站的車。", "en": "The ride takes 40 minutes: the 11:10 arrives at 11:50, in time; 13:40 is too late; 12:00 is a bus from the hotel."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "（かいしゃで）\nたなかさん\nさっき　ABCかいしゃの　スミスさんから　でんわが　ありました。\nあしたの　かいぎは　2時{じ}からでは　なくて、　3時{じ}からに　なりました。\nスミスさんに　でんわを　して　ください。\nやまもと　10:30",
+          "tr": {"zh": "（在公司）\n田中先生\n剛才 ABC 公司的史密斯先生打電話來。明天的會議從 2 點改成 3 點開始。請打電話給史密斯先生。\n山本 10:30", "en": "(At the office)\nMr Tanaka\nMr Smith of ABC Company phoned a little while ago. Tomorrow’s meeting is no longer at 2 — it will start at 3. Please call Mr Smith.\nYamamoto 10:30"},
+          "questions": [
+            {"q": "たなかさんは　何{なに}を　しなければ　なりませんか。", "options": ["2時{じ}に　かいぎに　いきます。", "やまもとさんに　でんわを　します。", "ABCかいしゃへ　いきます。", "スミスさんに　でんわを　します。"], "answer": 3, "zh": "紙條最後寫「スミスさんに でんわを して ください」。會議改到 3 點（1 錯）。", "en": "The note ends “please call Mr Smith”. The meeting moved to 3 (not 1)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "きょうは　あさから　とても　さむかったです。\nゆきが　ふって、　でんしゃが　とまりましたから、　がっこうへ　いきませんでした。\nごごは　いもうとと　こうえんで　ゆきで　あそびました。",
+          "tr": {"zh": "今天從早上就很冷。下了雪，電車停駛，所以沒去學校。下午和妹妹在公園玩雪。", "en": "It was very cold from the morning today. It snowed and the trains stopped, so I didn’t go to school. In the afternoon I played in the snow in the park with my little sister."},
+          "questions": [
+            {"q": "きょう　「わたし」は　何{なに}を　しましたか。", "options": ["ごご、　いもうとと　こうえんへ　いきました。", "でんしゃで　がっこうへ　いきました。", "あさ、　ひとりで　ゆきで　あそびました。", "いちにちじゅう　いえに　いました。"], "answer": 0, "zh": "「ごごは いもうとと こうえんで ゆきで あそびました」。電車停了沒去學校（2 錯）。", "en": "“In the afternoon I played in the snow in the park with my sister.” The trains stopped, so no school (not 2)."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_mid",
+          "mondai": 5,
+          "text": "わたしは　なつやすみに　2しゅうかん、　にほんの　かぞくの　うちに　ホームステイを　しました。\nおとうさんと　おかあさんと　小学生{しょうがくせい}の　おとこの　子{こ}が　いました。\nおかあさんは　まいにち　おいしい　りょうりを　つくりました。\nわたしは　さかなが　あまり　すきでは　ありませんでしたが、　おかあさんの　さかなりょうりは　とても　おいしかったです。\nにちようびには、　おとうさんの　くるまで　うみへ　いきました。　おとこの　子{こ}と　いっしょに　およぎました。\nかえる　日{ひ}に、　おとこの　子{こ}が　わたしに　えを　くれました。　いまも　わたしの　へやに　あります。",
+          "tr": {"zh": "暑假我在日本家庭寄宿了兩週。家裡有爸爸、媽媽和一個讀小學的男孩。媽媽每天做好吃的料理。我原本不太喜歡魚，不過媽媽做的魚料理非常好吃。星期天坐爸爸的車去了海邊，我和男孩一起游泳。回國那天，男孩送了我一幅畫，現在還放在我的房間裡。", "en": "In the summer holidays I did a two-week homestay with a Japanese family: a father, a mother and a boy at primary school. The mother made delicious food every day. I didn’t much like fish, but her fish dishes were very good. On Sunday we went to the sea in the father’s car, and I swam with the boy. On the day I left, the boy gave me a drawing. It is still in my room."},
+          "questions": [
+            {"q": "ホームステイの　とき、　「わたし」は　おかあさんの　さかなりょうりを　どう　おもいましたか。", "options": ["とても　おいしかったです。", "すきでは　ないので、　たべませんでした。", "あまり　おいしく　なかったです。", "じぶんで　つくりたいと　おもいました。"], "answer": 0, "zh": "「さかなが あまり すきでは ありませんでしたが、おかあさんの さかなりょうりは とても おいしかったです」。", "en": "“I didn’t much like fish, but her fish dishes were very good.”"},
+            {"q": "おとこの　子{こ}は　「わたし」に　何{なに}を　くれましたか。", "options": ["さかな", "しゃしん", "え", "てがみ"], "answer": 2, "zh": "「かえる 日に、おとこの 子が わたしに えを くれました」：男孩送的是畫（え）。", "en": "“On the day I left, the boy gave me a drawing (え).”"}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "ja_info",
+          "mondai": 6,
+          "notice": {
+            "title": "やおや　まるやま　（くだもの・やさい）",
+            "rows": [["りんご", "1こ　120円{えん}　（3こ　300円{えん}）"], ["バナナ", "1ぽん　40円{えん}"], ["トマト", "1こ　80円{えん}"]],
+            "foot": "どようびは　トマトが　1こ　50円{えん}です！"
+          },
+          "tr": {"zh": "丸山蔬果店｜蘋果：1 個 120 日圓（3 個 300 日圓）｜香蕉：1 根 40 日圓｜番茄：1 個 80 日圓｜星期六番茄 1 個 50 日圓！", "en": "Maruyama greengrocer | Apples: ¥120 each (3 for ¥300) | Bananas: ¥40 each | Tomatoes: ¥80 each | Saturdays: tomatoes ¥50 each!"},
+          "questions": [
+            {"q": "どようびに　りんごを　3こと　トマトを　1こ　かいます。　いくらですか。", "options": ["350円{えん}", "380円{えん}", "410円{えん}", "440円{えん}"], "answer": 0, "zh": "蘋果 3 個 300 日圓，星期六番茄 1 個 50 日圓：300＋50＝350 日圓。", "en": "Three apples are ¥300 and on Saturday a tomato is ¥50: 300 + 50 = ¥350."}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 20,
+      "items": [
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "（がっこうで）\nこの　きょうしつを　つかった　人{ひと}は、　つくえと　いすを　まえの　ところに　おいて　ください。\nかえる　ときは、　まどを　しめて、　でんきを　けして　ください。",
+          "tr": {"zh": "（在學校）\n用過這間教室的人，請把桌椅放回原位。回去的時候，請關窗、關燈。", "en": "(At school)\nIf you use this classroom, please put the desks and chairs back where they were. When you leave, please close the windows and turn off the lights."},
+          "questions": [
+            {"q": "きょうしつを　でる　とき、　何{なに}を　しますか。", "options": ["まどを　あけて、　でんきを　けします。", "でんきを　つけて、　まどを　しめます。", "つくえを　まどの　ちかくに　おきます。", "まどを　しめて、　でんきを　けします。"], "answer": 3, "zh": "「かえる ときは、まどを しめて、でんきを けして ください」：關窗、關燈。", "en": "“When you leave, close the windows and turn off the lights.”"}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_short",
+          "mondai": 4,
+          "text": "マリアさんへ\nらいしゅうの　にちようびは　わたしの　たんじょうびです。\nうちで　パーティーを　します。　ごご　3時{じ}からです。\nなにも　もって　こないで　くださいね。\nゆき",
+          "tr": {"zh": "給瑪莉亞\n下週日是我的生日，要在家裡開派對，下午 3 點開始。請什麼都不要帶喔。\n由紀", "en": "To Maria\nNext Sunday is my birthday. I’m having a party at home, from 3 p.m. Please don’t bring anything.\nYuki"},
+          "questions": [
+            {"q": "マリアさんは　らいしゅうの　にちようびに　何{なに}を　しますか。", "options": ["ゆきさんの　うちへ　いきます。", "プレゼントを　かいに　いきます。", "じぶんの　うちで　パーティーを　します。", "ゆきさんと　りょうりを　つくります。"], "answer": 0, "zh": "由紀邀請瑪莉亞到自己家參加生日派對，所以瑪莉亞要去由紀家。由紀說什麼都不用帶。", "en": "Yuki invites Maria to a party at Yuki’s home, so Maria will go to Yuki’s house. Yuki says to bring nothing."}
+          ]
+        },
+        {
+          "type": "text",
+          "ask": "ja_mid",
+          "mondai": 5,
+          "text": "わたしの　すきな　ばしょは、　えきの　ちかくの　ちいさい　きっさてんです。\nはじめは　だいがくの　友{とも}だちと　いっしょに　いきました。\nこの　みせの　コーヒーは　ほかの　みせより　すこし　たかいですが、　とても　おいしいです。\nみせの　中{なか}は　しずかで、　本{ほん}が　たくさん　あります。\nわたしは　しゅうまつに　ここで　コーヒーを　のんで、　本{ほん}を　よみます。\nみせの　人{ひと}は　やさしくて、　いつも　「きょうは　何{なに}を　よんで　いますか」と　ききます。\nでも、　この　みせは　かようびが　やすみですから、　かようびは　としょかんへ　いきます。",
+          "tr": {"zh": "我喜歡的地方是車站附近的一家小咖啡店，第一次是和大學的朋友一起去的。這家店的咖啡比別家貴一點，但是非常好喝。店裡很安靜，有很多書。我週末會在這裡喝咖啡、看書。店員很親切，總是問我「今天在看什麼書呢？」。不過這家店星期二公休，所以星期二我去圖書館。", "en": "My favourite place is a small café near the station; the first time, I went there with a friend from university. The coffee is a little more expensive than at other places, but it is very good. It’s quiet inside and there are lots of books. At weekends I drink coffee and read here. The staff are kind and always ask, “What are you reading today?” But the café is closed on Tuesdays, so on Tuesdays I go to the library."},
+          "questions": [
+            {"q": "この　きっさてんの　コーヒーは　どうですか。", "options": ["やすくて　おいしいです。", "あまり　おいしく　ないです。", "ほかの　みせより　やすいです。", "すこし　たかいですが、　おいしいです。"], "answer": 3, "zh": "「ほかの みせより すこし たかいですが、とても おいしいです」：貴一點，但很好喝。", "en": "“A little more expensive than other places, but very good.”"},
+            {"q": "「わたし」は　かようびに　どこへ　いきますか。", "options": ["きっさてん", "だいがく", "としょかん", "友{とも}だちの　うち"], "answer": 2, "zh": "「かようびが やすみですから、かようびは としょかんへ いきます」：咖啡店星期二公休，所以去圖書館。", "en": "“It’s closed on Tuesdays, so on Tuesdays I go to the library.”"}
+          ]
+        },
+        {
+          "type": "notice",
+          "ask": "ja_info",
+          "mondai": 6,
+          "notice": {
+            "title": "スポーツセンターの　プール",
+            "rows": [["あいて　いる　じかん", "10:00　～　20:00"], ["やすみ", "もくようび"], ["りょうきん", "おとな　400円{えん}　／　こども（小学生{しょうがくせい}まで）　200円{えん}"]],
+            "foot": "にちようびの　ごご　1時{じ}から　4時{じ}までは　こどもの　クラスが　ありますから、　おとなは　はいれません。"
+          },
+          "tr": {"zh": "運動中心游泳池｜開放時間：10:00～20:00｜休館：星期四｜費用：大人 400 日圓／小孩（到小學生）200 日圓｜星期日下午 1 點到 4 點有兒童課程，大人不能進去。", "en": "Sports centre pool | Open 10:00–20:00 | Closed Thursdays | Adults ¥400 / children (up to primary school) ¥200 | On Sundays from 1 to 4 p.m. there is a children’s class, so adults cannot go in."},
+          "questions": [
+            {"q": "やまださんは　おとなです。　にちようびに　プールへ　いきたいです。　何時{なんじ}に　いけますか。", "options": ["ごご　1時{じ}", "ごご　2時{じ}", "ごご　3時{じ}", "ごぜん　11時{じ}"], "answer": 3, "zh": "星期日下午 1～4 點是兒童游泳課，大人不能用；上午 11 點在開放時間內，可以去。", "en": "On Sundays 1–4 p.m. is the children’s class, closed to adults; 11 a.m. is within opening hours."}
+          ]
+        }
+      ]
+    }
   ]
 }

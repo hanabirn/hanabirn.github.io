@@ -199,6 +199,12 @@
 .rdx-ask { display: flex; flex-direction: column; gap: 3px; margin: 10px 0 12px; padding: 10px 14px; border-left: 4px solid var(--primary); background: var(--surface-2); border-radius: 0 10px 10px 0; }
 .rdx-ask > span[lang] { font-weight: 800; line-height: 1.6; }
 .rdx-ask-tr { font-size: 0.82rem; color: var(--text-secondary); }
+/* JLPT: the もんだい number above the instruction, and the furigana switch */
+.rdx-mondai { align-self: flex-start; font-weight: 900; font-size: 0.9rem; padding: 1px 10px; border: 2px solid var(--ink); border-radius: 4px; background: var(--surface); }
+.rdx-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 10px; }
+#reading-card .rdx-tools .mode-btn { flex: none; width: auto; margin: 0; padding: 6px 14px; font-size: 0.85rem; }
+.rdx-text[lang="ja"], .rdx-notice[lang="ja"] { line-height: 2.2; }
+.rdx-text rt, .rdx-notice rt, .rdx-opt rt, .rdx-qhead rt { font-size: 0.55em; color: var(--text-secondary); }
 .rdx-item { margin-bottom: 16px; }
 .rdx-item-label { display: flex; align-items: baseline; gap: 8px; margin: 0 0 6px 2px; font-size: 0.82rem; font-weight: 800; color: var(--text-secondary); }
 .rdx-item-label .rdx-no { font-size: 1.05rem; }
@@ -228,6 +234,7 @@
 .rdx-tr p { margin: 6px 0 0; line-height: 1.7; }
 .rdx-q { margin-bottom: 14px; }
 .rdx-qhead { display: flex; flex-wrap: wrap; gap: 6px; align-items: baseline; margin-bottom: 8px; font-weight: 700; }
+.rdx-qhead > span[lang] { flex: 1; min-width: 0; }   /* a long question wraps beside its number, not under it */
 .rdx-no { font-weight: 900; color: var(--primary); }
 .rdx-opts { display: grid; grid-template-columns: 1fr; gap: 8px; }
 .rdx-opt { display: flex; align-items: flex-start; gap: 8px; text-align: left; line-height: 1.6; word-break: keep-all; }

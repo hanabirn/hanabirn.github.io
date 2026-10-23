@@ -262,7 +262,41 @@ def used(glossary):
 #     questions [{ask?, q?, options [4], answer, zh, en}], words [{w, zh, en}]? }
 # A set: { id, mock?, minutes?, start? (the first question's number), items }.
 SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purpose', 'about',
-            'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference'}
+            'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference',
+            # JLPT (2026-10-24): もんだい４ short texts, ５ mid-size, ６ information retrieval
+            'ja_short', 'ja_mid', 'ja_info'}
+
+# Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
+# levels below show no furigana until the visitor asks (owner's pick A1). The N5 kanji
+# (the common lists, e.g. tanos.co.uk); later levels add theirs.
+KANJI_LEVEL = {
+    'N5': set('一二三四五六七八九十百千万円日月火水木金土曜年時分半午前後今何週毎上下左右中外'
+              '東西南北山川天気雨花空人男女子父母友先生学校名国語本書読話言聞見行来出入休買'
+              '食飲車電駅道長高大小白立目耳手足口店社会'),
+}
+
+
+def known_kanji(level):
+    order = ['N5', 'N4', 'N3', 'N2', 'N1']
+    out = set()
+    for lv in order[:order.index(level) + 1] if level in order else []:
+        out |= KANJI_LEVEL.get(lv, set())
+    return out
+
+
+def ja_segs(marked, where, problems, known):
+    """a Japanese line of a round -> segments [text, furigana, None, known (1 = a kanji of the
+    level or below: its furigana hidden until asked)]"""
+    segs, _plain, _kana = sentence(marked, None, where, problems, 'ja', short=True)
+    out = []
+    for t, r, g in segs:
+        kanji = [ch for ch in t if re.match(KANJI, ch)]
+        out.append([t, r, g, 1 if r and kanji and all(ch in known for ch in kanji) else 0])
+    return out
+
+
+def plain_of(marked):
+    return ''.join(t for t, _ in tokens(marked))
 SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline'}
 
 
@@ -312,9 +346,30 @@ def build_sets(data, name, problems):
             if not qs:
                 problems.append(f'{iw}: no questions')
             item = {'type': typ, 'tr': {'zh': tr.get('zh', ''), 'en': tr.get('en', '')}, 'questions': qs}
-            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title'):
+            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title', 'mondai'):
                 if key in it:
                     item[key] = it[key]
+            if data.get('lang') == 'ja':
+                # segments for the page (furigana), and the plain text where the source had {readings}
+                known = known_kanji(data.get('level', ''))
+                seg = lambda s, w: ja_segs(s, w, problems, known)
+                if 'text' in it:
+                    item['text_t'] = [seg(line, iw) for line in it['text'].split('\n')]
+                    item['text'] = plain_of(it['text'])
+                if 'notice' in it:
+                    nt = it['notice']   # (not n: that counts the questions)
+                    item['notice_t'] = {'title': seg(nt.get('title', ''), iw), 'rows': [[seg(a, iw), seg(b, iw)] for a, b in nt.get('rows', [])],
+                                        'lines': [seg(l, iw) for l in nt.get('lines', [])], 'foot': seg(nt.get('foot', ''), iw)}
+                    item['notice'] = {'title': plain_of(nt.get('title', '')), 'rows': [[plain_of(a), plain_of(b)] for a, b in nt.get('rows', [])],
+                                      'lines': [plain_of(l) for l in nt.get('lines', [])], 'foot': plain_of(nt.get('foot', ''))}
+                for q in qs:
+                    if q['q']:
+                        q['q_t'] = seg(q['q'], iw)
+                        q['q'] = plain_of(q['q'])
+                    q['options_t'] = [seg(o, iw) for o in q['options']]
+                    q['options'] = [plain_of(o) for o in q['options']]
+                if not it.get('mondai'):
+                    problems.append(f'{iw}: a Japanese round item needs "mondai" (4, 5, 6 …)')
             if it.get('words'):
                 item['words'] = [{'w': w['w'], 'zh': w.get('zh', ''), 'en': w.get('en', '')} for w in it['words']]
             items.append(item)

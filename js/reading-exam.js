@@ -31,7 +31,52 @@ const READING_ASK_KO = {
     subject: '이 글의 주제로 가장 알맞은 것을 고르십시오.',
     inference: '이 글의 내용으로 알 수 있는 것을 고르십시오.'
 };
+// JLPT (2026-10-24): the instructions as the paper words them (N5 in hiragana, with spaces)
+const READING_ASK_JA = {
+    ja_short: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。こたえは、1・2・3・4から　いちばん　いい　ものを　ひとつ　えらんで　ください。',
+    ja_mid: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。こたえは、1・2・3・4から　いちばん　いい　ものを　ひとつ　えらんで　ください。',
+    ja_info: 'つぎの　ページを　見て、しつもんに　こたえて　ください。こたえは、1・2・3・4から　いちばん　いい　ものを　ひとつ　えらんで　ください。'
+};
+const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA };
+const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。' };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
+const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
+
+function readingExLang() {
+    const set = readingSets[readingSetId];
+    return (set && set.lang) || 'ko';
+}
+function readingAskText(key) {
+    const lang = readingExLang();
+    return (READING_ASK_ALL[lang] || READING_ASK_KO)[key] || '';
+}
+
+/* Japanese rounds: furigana on the kanji above the level only, unless the visitor asks for all
+   (reading_exam_furi = 'all'; owner's pick A1) */
+function readingExFuriAll() { return readingPref('reading_exam_furi', 'level') === 'all'; }
+function readingExFuriToggle() {
+    readingSetPref('reading_exam_furi', readingExFuriAll() ? 'level' : 'all');
+    renderReading();
+}
+
+/* segments [text, furigana, glossary, known] (tools/build_reading.py ja_segs) as HTML */
+function readingExSegs(segs) {
+    const all = readingExFuriAll();
+    return (segs || []).map(([text, ruby, _g, known]) => ruby && (all || !known)
+        ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text)).join('');
+}
+
+/* a field shown with its marks (__underline__, （　） blanks, ㉠–㉣): Japanese from its segments */
+function readingExMark(html) {
+    return html
+        .replace(/__(.+?)__/g, '<u>$1</u>')
+        .replace(/（\s*）|（　+）/g, m => `<span class="rdx-blank">${m}</span>`)
+        .replace(/([㉠㉡㉢㉣])/g, '<b class="rdx-mark">$1</b>')
+        .replace(/\n/g, '<br>');
+}
+function readingExField(plain, segs) {
+    return segs ? readingExMark(readingExSegs(segs)) : readingExText(plain);
+}
 
 let readingExam = null;   // { si, key, qs: [{ item, q, n }], qi (item on screen), picks [], start, base, mock, done, reviewing, resumed, tick }
 
@@ -146,22 +191,20 @@ function readingExamItemQs() {
 
 /* a text with its marks: __underline__, （　） blanks, ㉠–㉣ */
 function readingExText(s) {
-    return escHtml(s)
-        .replace(/__(.+?)__/g, '<u>$1</u>')
-        .replace(/（\s*）|（　+）/g, m => `<span class="rdx-blank">${m}</span>`)
-        .replace(/([㉠㉡㉢㉣])/g, '<b class="rdx-mark">$1</b>')
-        .replace(/\n/g, '<br>');
+    return readingExMark(escHtml(s));
 }
 
 function readingExBodyHtml(item) {
-    const lang = 'ko';
+    const lang = readingExLang();
     if (item.type === 'notice') {
         const n = item.notice;
+        const nt = item.notice_t;       // Japanese: the same fields as segments
+        const f = (plain, segs) => nt ? readingExSegs(segs) : escHtml(plain);
         return `<div class="rdx-notice" lang="${lang}">
-            ${n.title ? `<div class="rdx-notice-title">${escHtml(n.title)}</div>` : ''}
-            ${(n.rows || []).length ? `<dl>${n.rows.map(r => `<dt>${escHtml(r[0])}</dt><dd>${escHtml(r[1])}</dd>`).join('')}</dl>` : ''}
-            ${(n.lines || []).map(l => `<p>${escHtml(l)}</p>`).join('')}
-            ${n.foot ? `<div class="rdx-notice-foot">${escHtml(n.foot)}</div>` : ''}
+            ${n.title ? `<div class="rdx-notice-title">${f(n.title, nt && nt.title)}</div>` : ''}
+            ${(n.rows || []).length ? `<dl>${n.rows.map((r, i) => `<dt>${f(r[0], nt && nt.rows[i][0])}</dt><dd>${f(r[1], nt && nt.rows[i][1])}</dd>`).join('')}</dl>` : ''}
+            ${(n.lines || []).map((l, i) => `<p>${f(l, nt && nt.lines[i])}</p>`).join('')}
+            ${n.foot ? `<div class="rdx-notice-foot">${f(n.foot, nt && nt.foot)}</div>` : ''}
         </div>`;
     }
     if (item.type === 'chart') {
@@ -181,7 +224,8 @@ function readingExBodyHtml(item) {
         return `<div class="rdx-headline" lang="${lang}">${readingExText(item.text)}</div>`;
     }
     const box = item.type === 'insert' && item.box ? `<div class="rdx-box" lang="${lang}"><b>〈보기〉</b> ${readingExText(item.box)}</div>` : '';
-    return `${box}<div class="rdx-text" lang="${lang}">${item.title ? `<b>${escHtml(item.title)}</b><br>` : ''}${readingExText(item.text || '')}</div>`;
+    const body = item.text_t ? item.text_t.map(line => readingExMark(readingExSegs(line))).join('<br>') : readingExText(item.text || '');
+    return `${box}<div class="rdx-text" lang="${lang}">${item.title ? `<b>${escHtml(item.title)}</b><br>` : ''}${body}</div>`;
 }
 
 function readingExamHtml(set) {
@@ -191,17 +235,19 @@ function readingExamHtml(set) {
     const item = own[0].x.item;
     const asks = [...new Set(own.map(o => o.x.q.ask))];
     const answered = own.every(o => z.picks[o.i] !== -1);
+    const lang = readingExLang();
+    const marks = lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
     const qHtml = own.map(o => {
         const q = o.x.q;
         const pick = z.picks[o.i];
         const reveal = z.reviewing || (!z.mock && pick !== -1);   // review shows unanswered ones too
         const opts = q.options.map((op, k) => {
             const cls = reveal ? (k === q.answer ? ' correct-choice' : k === pick ? ' wrong-choice' : '') : (k === pick ? ' rdx-picked' : '');
-            return `<button type="button" class="option-btn rdx-opt${cls}" lang="ko" onclick="readingExamPick(${o.i}, ${k})"${reveal ? ' disabled' : ''}>
-                <span class="rdx-opt-n">${READING_OPT_MARKS[k]}</span>${readingExText(op)}</button>`;
+            return `<button type="button" class="option-btn rdx-opt${cls}" lang="${lang}" onclick="readingExamPick(${o.i}, ${k})"${reveal ? ' disabled' : ''}>
+                <span class="rdx-opt-n">${marks[k]}</span><span class="rdx-opt-t">${readingExField(op, q.options_t && q.options_t[k])}</span></button>`;
         }).join('');
         return `<div class="rdx-q">
-            ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="ko">${escHtml(READING_ASK_KO[q.ask])}</span>` : ''}${q.q ? `<span lang="ko">${readingExText(q.q)}</span>` : ''}</div>` : ''}
+            ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
             <div class="rdx-opts">${opts}</div>
             ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(readingTx(set, q))}</div>` : ''}
@@ -231,8 +277,10 @@ function readingExamHtml(set) {
                 : `<span class="grammar-count">${escHtml(t('grammar_q_n', { n: firstQ + 1, m: z.qs.length }))}</span>`}
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
-        <div class="rdx-ask"><span lang="ko">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? READING_ASK_KO[asks[0]] : '다음을 읽고 물음에 답하십시오.')}</span>
+        <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
+        ${lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
+            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
         <div class="rdx-cols">
             <div class="rdx-col-text">
