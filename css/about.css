@@ -99,6 +99,11 @@
     box-shadow: 0 3px 0 var(--edge);
 }
 .about-intro .about-text { margin: 0 0 0.55rem; text-align: left; }
+/* computers: the person on the left, everything else on the right (1180px page) */
+@media (min-width: 1024px) {
+    #page-about .about-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; align-items: start; max-width: none; }
+    #page-about .about-main { position: sticky; top: 16px; }
+}
 .about-intro .about-text:last-child { margin-bottom: 0; }
 
 .about-text {
