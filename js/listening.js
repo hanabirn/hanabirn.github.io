@@ -469,7 +469,9 @@ function listeningPlayerUi(frac) {
 /* a picture of the item (tools/listening/pics.json): its file, and for a 2x2 grid the
    quarter that is option i */
 function listeningPicUrl(lv, it) { return 'data/listening/img/' + lv.lang + '/' + it.pic.f + '.webp'; }
-const LISTENING_PIC_QUARTERS = ['0 0', '100% 0', '0 100%', '100% 100%'];
+// each option shows one quarter of a 2x2 picture: an <img> twice the box's size, moved so that
+// quarter shows (a CSS background crop came out blank on the owner's phone, 2026-10-24)
+const LISTENING_PIC_QUARTERS = ['left:0;top:0', 'left:-100%;top:0', 'left:0;top:-100%', 'left:-100%;top:-100%'];
 
 function listeningOptionsHtml(lv, it, q, qn, show) {
     const z = listeningSession;
@@ -484,7 +486,7 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
         // a picture option shows only its quarter of the picture, as on the JLPT paper; its
         // words appear once answered
         const label = grid
-            ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}" style="background-image:url('${listeningPicUrl(lv, it)}');background-position:${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
+            ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
