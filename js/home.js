@@ -112,6 +112,15 @@ function renderHome() {
     else msg = t('home_msg_left', { n: left });
     document.getElementById('home-msg').textContent = msg;
 
+    // 好友: cheers / nudges not read yet (js/friends.js keeps the count)
+    const unseen = typeof friendsUnseen === 'function' && typeof friendsUser === 'function' && friendsUser() ? friendsUnseen() : 0;
+    const fc = document.getElementById('home-friends-card');
+    if (fc) {
+        fc.hidden = !unseen;
+        if (unseen) document.getElementById('home-friends-title').textContent = t('fr_home_title', { n: unseen });
+    }
+    document.querySelectorAll('.friends-dot').forEach(d => { d.hidden = !unseen; });
+
     // streak chip
     document.getElementById('home-streak-n').textContent = streak;
     document.getElementById('home-streak').classList.toggle('cold', streak === 0);

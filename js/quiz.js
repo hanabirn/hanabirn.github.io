@@ -130,7 +130,7 @@ function uiIcon(name) {
 
 /* Pages reached from the phone tab bar's 學習 / 更多 sheets rather than a tab of their own. */
 const LEARN_TABS = ['grammar', 'reading', 'listening'];
-const MORE_TABS = ['dict', 'alphabet', 'notes', 'guestbook', 'feedback', 'about'];
+const MORE_TABS = ['dict', 'alphabet', 'notes', 'friends', 'guestbook', 'feedback', 'about'];
 
 /* `el` is kept for the existing onclick="switchPage('x', this)" call sites, but the
    active state is set by data-tab, because each page has a button in the desktop
@@ -173,7 +173,7 @@ function switchPage(page, el) {
     if (typeof listeningStop === 'function') listeningStop();
     else if (typeof stopSpeech === 'function') stopSpeech();
 
-    const pages = ['home', 'about', 'quiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'guestbook', 'feedback'];
+    const pages = ['home', 'about', 'quiz', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'friends', 'guestbook', 'feedback'];
     const main = document.querySelector('main');
     main.style.transition = 'opacity 120ms ease-out';
     main.style.opacity = '0';
@@ -190,6 +190,7 @@ function switchPage(page, el) {
         window.scrollTo(0, 0);
         if (page === 'home' && typeof renderHome === 'function') renderHome();
         if (page === 'guestbook') loadGuestbookMessages();
+        if (page === 'friends' && typeof renderFriends === 'function') renderFriends();
         if (page === 'notes') renderNotes();
         if (page === 'grammar' && typeof renderGrammar === 'function') renderGrammar();
         if (page === 'reading' && typeof renderReading === 'function') renderReading();
@@ -200,7 +201,7 @@ function switchPage(page, el) {
 
 /* ===================== Tab Visibility Settings ===================== */
 
-const ALL_TABS = ['home', 'quiz', 'review', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'about', 'guestbook', 'feedback'];
+const ALL_TABS = ['home', 'quiz', 'review', 'grammar', 'reading', 'listening', 'dict', 'alphabet', 'notes', 'about', 'friends', 'guestbook', 'feedback'];
 const LOCKED_TABS = ['home'];
 
 function getTabVisibility() {
@@ -2168,6 +2169,8 @@ function logDailyActivity() {
             .forEach(k => delete act[k]);
     }
     storeSet('daily_activity', JSON.stringify(act));
+    // 好友: report this device's numbers a little later (js/friends.js)
+    if (typeof friendsActivity === 'function') friendsActivity();
 }
 
 /* A day counts toward the streak if a quiz was finished OR any word was

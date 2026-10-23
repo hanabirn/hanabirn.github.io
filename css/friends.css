@@ -1,0 +1,94 @@
+/* ===== 好友 (js/friends.js) =====
+   Computers: two columns on the 1180px page (css/base.css) — me, 🤝, notes, add, requests
+   left; the weekly leaderboard right. Phones: a strip with me, the newest note, then the
+   tabs 排行榜 / 🤝 連續 / 加好友 (one thing at a time). */
+.friends-card .fr-title { margin-bottom: 14px; }
+.fr-loading, .fr-empty { color: var(--text-secondary); font-size: 0.9rem; text-align: center; margin: 10px 0; }
+.fr-msg { margin: 0 0 12px; padding: 8px 12px; border-radius: 10px; background: var(--success-bg); color: var(--success-text); font-size: 0.88rem; font-weight: 700; text-align: center; }
+.fr-msg-err { background: var(--danger-bg); color: var(--danger-text); }
+
+.fr-gate { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; padding: 12px 0; }
+.fr-gate .mascot-bust { width: 72px; }
+.fr-gate b { font-family: var(--font-serif); font-size: 1.1rem; }
+.fr-gate p { margin: 0 0 6px; color: var(--text-secondary); font-size: 0.9rem; max-width: 420px; }
+
+.fr-cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 0 28px; align-items: start; }
+.fr-col + .fr-col { padding-left: 28px; border-left: 1px dashed var(--line); align-self: stretch; }
+.fr-box { border: 2px solid var(--line); border-radius: 16px; padding: 14px; margin-bottom: 14px; background: var(--surface); box-shadow: 0 4px 0 var(--edge); }
+.fr-box h4 { margin: 0 0 10px; font-size: 1rem; padding-left: 10px; border-left: 4px solid var(--primary); line-height: 1.25; }
+.fr-sub { display: block; margin: 8px 0 0; color: var(--text-secondary); font-size: 0.78rem; line-height: 1.5; }
+.fr-box h4 .fr-sub { display: inline; margin: 0; font-weight: 600; }
+.fr-grow { flex: 1; min-width: 0; }
+.fr-grow b { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.fr-grow small { display: block; color: var(--text-secondary); font-size: 0.78rem; }
+.fr-red { color: var(--primary) !important; }
+.fr-label { display: block; font-weight: 800; margin-bottom: 8px; }
+
+.fr-av { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; flex: none; font-weight: 900; color: #fff; font-size: 1rem; }
+.fr-me, .fr-me-strip { display: flex; align-items: center; gap: 12px; }
+.fr-me-strip { padding: 10px 12px; border: 2px solid var(--line); border-radius: 14px; margin-bottom: 10px; background: var(--surface); }
+.fr-me-strip .fr-av { width: 36px; height: 36px; font-size: 0.9rem; }
+.fr-lang { display: inline-block; margin-right: 6px; padding: 0 8px; border-radius: 99px; background: var(--track); font-size: 0.72rem; font-weight: 700; color: var(--text); }
+.fr-code { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 12px; padding: 10px 12px; border: 2px dashed var(--line); border-radius: 12px; }
+.fr-code .fr-sub { margin: 0; }
+.fr-code code { flex: 1; font-size: 1.25rem; font-weight: 900; letter-spacing: 0.12em; font-family: inherit; }
+
+.fr-btn {
+    font: inherit; font-size: 0.82rem; font-weight: 800; padding: 6px 12px; min-height: 36px; border-radius: 10px; cursor: pointer;
+    border: 2px solid var(--line); background: var(--surface); color: var(--text); box-shadow: 0 3px 0 var(--edge); white-space: nowrap;
+}
+.fr-btn:active { transform: translateY(3px); box-shadow: none; }
+.fr-btn.red { background: var(--primary); color: var(--on-primary); border-color: var(--primary-edge); box-shadow: 0 3px 0 var(--primary-edge); }
+.fr-link { font: inherit; font-size: 0.8rem; font-weight: 800; color: var(--primary); background: none; border: 0; padding: 2px 4px; cursor: pointer; }
+
+.fr-toggle { display: flex; align-items: flex-start; gap: 10px; margin-top: 12px; font-size: 0.86rem; cursor: pointer; }
+.fr-toggle input { width: 20px; height: 20px; accent-color: var(--success); margin-top: 2px; flex: none; }
+.fr-toggle small { display: block; color: var(--text-secondary); font-size: 0.76rem; }
+
+.fr-add { display: flex; gap: 8px; }
+.fr-add input { flex: 1; min-width: 0; font: inherit; padding: 8px 10px; border: 2px solid var(--line); border-radius: 10px; background: var(--bg-input); color: var(--text); }
+.fr-req { display: flex; align-items: center; gap: 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+.fr-box h4 + .fr-req, .fr-manage summary + .fr-req { border-top: 0; }
+.fr-manage summary { cursor: pointer; font-weight: 800; font-size: 0.9rem; }
+.fr-manage[open] summary { margin-bottom: 6px; }
+
+.fr-note { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 12px; background: var(--success-bg); margin-bottom: 8px; font-size: 0.88rem; }
+.fr-note.nudge { background: var(--bg-option-hover); }
+.fr-note.new { outline: 2px solid var(--primary); }
+.fr-note small { display: block; color: var(--text-secondary); font-size: 0.74rem; }
+.fr-note-e { font-size: 1.4rem; flex: none; }
+.fr-notes-phone { margin-bottom: 10px; }
+
+.fr-board-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
+.fr-board-head h4 { flex: 1; margin: 0; }
+.fr-board { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.fr-row { display: grid; grid-template-columns: 30px 42px minmax(0, 1fr) auto auto; gap: 10px; align-items: center; padding: 10px 12px; border: 2px solid var(--line); border-radius: 14px; background: var(--surface); }
+.fr-row.me { border-color: var(--primary); background: var(--bg-option-hover); }
+.fr-rank { font-weight: 900; text-align: center; font-size: 1.05rem; }
+.fr-stats { display: flex !important; flex-wrap: wrap; gap: 2px 10px; }
+.fr-val { font-weight: 900; font-size: 1.1rem; text-align: right; line-height: 1.1; }
+.fr-val small { display: block; font-size: 0.7rem; font-weight: 600; color: var(--text-secondary); }
+.fr-act { width: 44px; height: 44px; border-radius: 12px; border: 2px solid var(--line); background: var(--surface); box-shadow: 0 3px 0 var(--edge); font-size: 1.15rem; cursor: pointer; }
+.fr-act.nudge { border-color: var(--primary); }
+.fr-act:disabled { opacity: 0.45; cursor: default; box-shadow: none; }
+.fr-pop { list-style: none; padding: 10px; border: 2px solid var(--primary); border-radius: 14px; background: var(--surface); }
+.fr-pop p { margin: 0 0 8px; font-size: 0.82rem; color: var(--text-secondary); }
+.fr-stickers { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+.fr-stickers button { font: inherit; font-size: 0.8rem; padding: 8px 4px; min-height: 56px; border-radius: 10px; border: 2px solid var(--line); background: var(--bg-primary); color: var(--text); cursor: pointer; }
+.fr-stickers button span { display: block; font-size: 1.4rem; }
+
+.fr-tabs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; border-radius: 14px; background: var(--track); margin-bottom: 10px; }
+.fr-tabs button { position: relative; font: inherit; text-align: center; padding: 10px 4px; min-height: 44px; border: 0; border-radius: 10px; background: none; font-size: 0.86rem; font-weight: 800; color: var(--text-secondary); cursor: pointer; }
+.fr-tabs button.on { background: var(--surface); color: var(--text); box-shadow: 0 2px 0 var(--edge); }
+.fr-tabs i { position: absolute; top: 4px; right: 8px; min-width: 16px; height: 16px; border-radius: 99px; background: var(--primary); color: #fff; font-size: 0.65rem; font-style: normal; line-height: 16px; }
+
+/* the unread dot on the ☰ item and the phone More tile */
+.more-tile .friends-dot { position: absolute; top: 6px; right: 8px; }
+.more-tile { position: relative; }
+
+@media (max-width: 768px) {
+    .fr-row { grid-template-columns: 24px 36px minmax(0, 1fr) auto auto; gap: 8px; padding: 10px; }
+    .fr-row .fr-av { width: 36px; height: 36px; font-size: 0.9rem; }
+    .fr-stats { font-size: 0.74rem; }
+    .fr-code code { font-size: 1.1rem; }
+}

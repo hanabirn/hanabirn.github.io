@@ -35,7 +35,15 @@
     "ratelimits": [
         { "name": "LIMITER", "namespace_id": "1001", "simple": { "limit": 8, "period": 60 } },
         // the dictionary: at most 12 new lookups a minute per visitor
-        { "name": "DICT_LIMITER", "namespace_id": "1002", "simple": { "limit": 12, "period": 60 } }
+        { "name": "DICT_LIMITER", "namespace_id": "1002", "simple": { "limit": 12, "period": 60 } },
+        // 好友: at most 30 requests a minute per account
+        { "name": "FRIENDS_LIMITER", "namespace_id": "1003", "simple": { "limit": 30, "period": 60 } }
+    ],
+
+    // 好友 (src/friends.js, 2026-10-23): created with  npx wrangler d1 create hanabi-friends,
+    // tables from schema.sql:  npx wrangler d1 execute hanabi-friends --remote --file=schema.sql
+    "d1_databases": [
+        { "binding": "FRIENDS", "database_name": "hanabi-friends", "database_id": "00000000-0000-0000-0000-000000000000" }
     ],
 
     "observability": { "enabled": true }

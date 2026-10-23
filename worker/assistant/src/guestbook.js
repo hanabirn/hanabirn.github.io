@@ -27,7 +27,7 @@ function clean(s, max) {
 
 /* Firebase ID token -> { uid, verified } or null, asked of the Identity Toolkit
    (it checks signature and expiry for us). */
-async function firebaseUser(token, env) {
+export async function firebaseUser(token, env) {
     if (!token) return null;
     const res = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=${env.FIREBASE_API_KEY}`, {
         method: 'POST',
@@ -42,7 +42,7 @@ async function firebaseUser(token, env) {
     return { uid: u.localId, verified: google || u.emailVerified === true };
 }
 
-function bearer(request) {
+export function bearer(request) {
     const m = /^Bearer\s+(.+)$/i.exec(request.headers.get('Authorization') || '');
     return m ? m[1].trim() : '';
 }

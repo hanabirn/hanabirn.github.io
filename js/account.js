@@ -322,6 +322,7 @@ function acctOnUser(user) {
     if (!user) { acctStatus = 'idle'; acctDirty.clear(); }
     renderAccount();
     if ((user && user.uid) !== was && typeof guestbookOnUser === 'function') guestbookOnUser();
+    if ((user && user.uid) !== was && typeof friendsOnUser === 'function') friendsOnUser();
 }
 
 const ACCT_AUTH_LANG = { zh: 'zh-TW', 'zh-Hans': 'zh-CN', en: 'en', ja: 'ja', ko: 'ko', ru: 'ru', fr: 'fr', es: 'es', de: 'de' };
