@@ -158,19 +158,27 @@ def health(path, item):
 # ---------- 3. content (Gemini listens) ----------
 PROMPT = """You check recordings for a language-learning website ({lang}). For each numbered clip,
 write down exactly what is said — every syllable, including anything extra at the start or end,
-and nothing that is not said. {script} Then say whether it says the expected text given with the
+and nothing that is not said. {script} Write numbers with digits and Latin letters as letters
+(10, 2005, SNS, CD) when the expected text writes them so. Then say whether it says the expected text given with the
 clip, and if not, what is wrong. Answer only with JSON: [{"i": number, "heard": "what is said",
 "ok": true|false, "problem": "none|missing_words|extra_words|wrong_words|not_speech|wrong_language|garbled"}]."""
 SCRIPT = {'ja': 'Write Japanese in hiragana only (no kanji, no katakana), so it can be compared with the kana reading.',
           'zh': 'Write Chinese in the same characters as the expected text where they are the words said.'}
-# similarity of what was heard to the text, below which a clip is flagged: sentences stricter,
-# because a stray syllable (the Google voices sometimes start with 「おやり」) costs them little
+# similarity of what was heard to the text: at or above MATCH a clip is fine; between FLOOR and
+# MATCH only when Gemini itself also says it is wrong; under FLOOR it is flagged either way.
+# Sentences are stricter, because a stray syllable (the Google voices sometimes start with
+# 「おやり」) costs them little; a lone word is often misheard without context (バッグ → ばっく).
 MATCH = {'word': 0.85, 'sentence': 0.95, 'listening': 0.95}
+FLOOR = {'word': 0.5, 'sentence': 0.75, 'listening': 0.75}
+# sounds written two ways: the particles は / を / へ said わ / お / え, ぢ / づ, long marks
+KANA_SAME = str.maketrans({'わ': 'は', 'を': 'お', 'へ': 'え', 'づ': 'ず', 'ぢ': 'じ', 'ー': None})
+ZH_SAME = str.maketrans({'牠': '它', '祂': '他', '妳': '你', '臺': '台'})
 
 
 def simplify(text):
     """for comparing: lower case, no punctuation or spaces, katakana as hiragana"""
     t = ''.join(chr(ord(ch) - 0x60) if 'ァ' <= ch <= 'ヶ' else ch for ch in text.lower())
+    t = t.translate(KANA_SAME).translate(ZH_SAME)
     return ''.join(re.findall(r'[^\W_]', t))
 
 
@@ -228,6 +236,8 @@ def main():
     state = json.loads(state_f.read_text(encoding='utf-8')) if state_f.exists() else {}
     state.setdefault('health', {})
     state.setdefault('content', {})
+    for k in [k for k, v in state['content'].items() if not v[1] and len(v) < 6]:
+        del state['content'][k]
     only = set(args.only.split(',')) if args.only else None
 
     texts = collect(site)
@@ -304,10 +314,11 @@ def main():
                     if not v:
                         continue
                     score = matches(str(v.get('heard', '')), item['say'])
-                    ok = score >= MATCH[item['kind']]
+                    said_ok = v.get('ok') is True
+                    ok = score >= MATCH[item['kind']] or (said_ok and score >= FLOOR[item['kind']])
                     problem = 'none' if ok else (v.get('problem') if v.get('problem') not in (None, 'none') else 'wrong_words')
                     v['problem'] = problem
-                    state['content'][f'{lang}|{fid}'] = [size, ok, str(v.get('heard', ''))[:200], problem, round(score, 2)]
+                    state['content'][f'{lang}|{fid}'] = [size, ok, str(v.get('heard', ''))[:200], problem, round(score, 2), said_ok]
                     if not ok:
                         report['problems'].append({'lang': lang, 'fid': fid, 'text': item['key'], 'issues': ['content:' + v.get('problem', '?')],
                                                    'heard': v.get('heard', ''), 'root': 'queue' if queue and path.is_relative_to(queue) else 'site', 'path': path.relative_to(queue if queue and path.is_relative_to(queue) else site).as_posix()})
