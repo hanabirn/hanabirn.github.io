@@ -314,7 +314,7 @@ function friendsPairsHtml() {
             <small class="${p.status === 'on' && !p.today ? 'fr-red' : ''}">${line}</small></span>${btn}${leave}</div>`;
     }).join('');
     const on = pairs.length;
-    return `<div class="fr-box"><h4>${escHtml(t('fr_pairs'))} <span class="fr-sub">（${on} / 5）</span></h4>
+    return `<div class="fr-box"><h4>${escHtml(t('fr_pairs'))} <span class="fr-sub">${escHtml(t('fr_count', { n: on + ' / 5' }))}</span></h4>
         ${rows || `<p class="fr-empty">${escHtml(t('fr_pair_none'))}</p>`}
         <p class="fr-sub">${escHtml(t('fr_pairs_hint'))}</p></div>`;
 }
@@ -345,7 +345,7 @@ function friendsAddRowHtml() {
 
 function friendsAddHtml() {
     return `<div class="fr-box"><h4>${escHtml(t('fr_add'))}</h4>${friendsAddRowHtml()}
-        <p class="fr-sub">${escHtml(t('fr_my_code'))}：<b>${escHtml(friendsCodeFmt(friendsState.me.code))}</b> <button type="button" class="fr-link" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button></p>
+        <p class="fr-sub">${escHtml(t('fr_my_code') + t('fr_colon'))}<b>${escHtml(friendsCodeFmt(friendsState.me.code))}</b> <button type="button" class="fr-link" onclick="friendsCopy()">${escHtml(t('fr_copy'))}</button></p>
     </div>`;
 }
 
@@ -363,7 +363,7 @@ function friendsRequestsHtml() {
         <button type="button" class="fr-btn" onclick="friendsDo('respond', { code: '${f.code}', accept: false })">${escHtml(t('fr_decline'))}</button></div>`).join('');
     const out = s.outgoing.map(f => `<div class="fr-req">${friendsAvatar(f)}<span class="fr-grow"><b>${escHtml(friendsName(f))}</b><small>${escHtml(t('fr_waiting'))}</small></span>
         <button type="button" class="fr-btn" onclick="friendsDo('remove', { code: '${f.code}' })">${escHtml(t('fr_withdraw'))}</button></div>`).join('');
-    return (inc ? `<div class="fr-box fr-requests"><h4>${escHtml(t('fr_requests'))}（${s.incoming.length}）</h4>${inc}</div>` : '')
+    return (inc ? `<div class="fr-box fr-requests"><h4>${escHtml(t('fr_requests') + t('fr_count', { n: s.incoming.length }))}</h4>${inc}</div>` : '')
         + (out ? `<div class="fr-box"><h4>${escHtml(t('fr_outgoing'))}</h4>${out}</div>` : '');
 }
 

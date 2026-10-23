@@ -1247,6 +1247,7 @@ function refreshDynamicContent() {
     if (typeof renderGrammar === 'function' && isVisible('page-grammar')) renderGrammar();
     if (typeof renderReading === 'function' && isVisible('page-reading')) renderReading();
     if (typeof renderListening === 'function' && isVisible('page-listening')) renderListening();
+    if (typeof renderFriends === 'function' && isVisible('page-friends')) renderFriends();
     // the notepad, unless a note is open (a redraw would drop what is being typed)
     if (typeof renderNotes === 'function' && isVisible('page-notes') && notesOpenId == null) renderNotes();
     if (typeof renderUpdates === 'function') renderUpdates();
