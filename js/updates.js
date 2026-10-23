@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-23',
+      zh: "新功能「每日提醒」：在 ☰ 選單（手機在「更多」）的「設定」裡打開 🔔 每日提醒，選 19～22 點其中一個時間；到了那個時間、今天還沒練習的話，小花火會傳通知提醒你。好友按 🔔 提醒你時，也會收到通知。iPhone 需要先把網站「加到主畫面」，再從主畫面打開才收得到。",
+      'zh-Hans': "新功能“每日提醒”：在 ☰ 菜单（手机在“更多”）的“设置”里打开 🔔 每日提醒，选 19～22 点其中一个时间；到了那个时间、今天还没练习的话，小花火会发通知提醒你。好友点 🔔 提醒你时，也会收到通知。iPhone 需要先把网站“添加到主屏幕”，再从主屏幕打开才能收到。",
+      en: "New: daily reminders. In Settings (the ☰ menu, or More on phones) turn on 🔔 Daily reminder and pick a time from 19:00 to 22:00; if you haven’t practised by then, 小花火 sends a notification. You also get one when a friend nudges you with 🔔. On iPhone, add the site to the Home Screen and open it from there.",
+      ja: "新機能「毎日のお知らせ」：☰ メニュー（スマホは「その他」）の「設定」で 🔔 毎日のお知らせをオンにして、19〜22 時から時間を選ぶと、その時間までに練習していない日は小花火が通知でお知らせします。フレンドが 🔔 で知らせてくれたときも届きます。iPhone はサイトを「ホーム画面に追加」して、ホーム画面から開いてください。",
+      ko: "새 기능 「매일 알림」: ☰ 메뉴(휴대폰은 「더보기」)의 「설정」에서 🔔 매일 알림을 켜고 19~22시 중 시간을 고르면, 그때까지 연습하지 않은 날 小花火가 알림을 보내요. 친구가 🔔로 알려 줄 때도 받아요. iPhone은 사이트를 「홈 화면에 추가」한 뒤 홈 화면에서 열어 주세요.",
+      ru: "Новое: ежедневные напоминания. В «Настройках» (меню ☰, на телефоне — «Ещё») включите 🔔 и выберите время с 19:00 до 22:00 — если вы ещё не занимались, 小花火 пришлёт уведомление. Оно придёт и когда друг напомнит вам 🔔. На iPhone добавьте сайт на экран «Домой» и открывайте его оттуда.",
+      fr: "Nouveau : rappel quotidien. Dans les Paramètres (menu ☰, ou Plus sur mobile), active 🔔 et choisis une heure entre 19 h et 22 h ; si tu n’as pas encore pratiqué, 小花火 t’envoie une notification. Tu en reçois aussi quand un ami te fait 🔔. Sur iPhone, ajoute le site à l’écran d’accueil et ouvre-le depuis là.",
+      es: "Nuevo: recordatorio diario. En Ajustes (menú ☰, o Más en el móvil) activa 🔔 y elige una hora entre las 19:00 y las 22:00; si aún no has practicado, 小花火 te envía una notificación. También te llega cuando un amigo te avisa con 🔔. En iPhone, añade el sitio a la pantalla de inicio y ábrelo desde ahí.",
+      de: "Neu: tägliche Erinnerung. In den Einstellungen (☰-Menü, am Handy unter Mehr) 🔔 einschalten und eine Uhrzeit zwischen 19 und 22 Uhr wählen – hast du bis dahin nicht geübt, schickt dir 小花火 eine Benachrichtigung. Auch wenn dich ein Freund mit 🔔 erinnert. Auf dem iPhone die Seite zum Home-Bildschirm hinzufügen und von dort öffnen.", },
+    { date: '2026-10-23',
       zh: "新功能「好友」（在 ☰ 選單，手機在「更多 › 交流」，需要登入）：用好友代碼或分享連結加好友，選一個頭像和名稱；好友排行榜比一比這週練了幾個字；好友練習了就送他加油貼圖，還沒練就按 🔔 提醒他；和最多 5 位好友一起累積「🤝 好友連續天數」，兩個人當天都練習才會 +1。你的數字只有在打開「讓好友看到我的進度」時才會顯示。",
       'zh-Hans': "新功能“好友”（在 ☰ 菜单，手机在“更多 › 交流”，需要登录）：用好友代码或分享链接加好友，选一个头像和名称；好友排行榜比一比这周练了多少词；好友练习了就送他加油贴图，还没练就点 🔔 提醒他；和最多 5 位好友一起累积“🤝 好友连续天数”，两个人当天都练习才会 +1。你的数字只有在打开“让好友看到我的进度”时才会显示。",
       en: "New: Friends (in the ☰ menu, on phones under More › Community; sign-in needed). Add friends with a friend code or a shared link and pick an avatar and a name; compare words practised this week on the friends ranking; send a cheer sticker to a friend who practised, or 🔔 nudge one who hasn’t yet; and keep a “🤝 friend streak” with up to 5 friends — it grows on days you both practise. Your numbers show only if you turn on “Let friends see my progress”.",
