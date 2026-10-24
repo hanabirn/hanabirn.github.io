@@ -1,5 +1,7 @@
 # CLAUDE.md
 
+> **Always reply to the owner in Traditional Chinese (繁體中文)** — every message, including the final report after a long run of tools, even though this file, the rule files, code and commit messages are in English. Before sending, check the reply is in Chinese.
+
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository. It holds only what every task needs; each feature's details live in a path-scoped rule file under `.claude/rules/` (see the index at the end), which loads when you work on that feature's files. **Before changing a feature, read its rule file; after changing it, keep that file up to date** (add new facts there, not here).
 
 ## What this is
