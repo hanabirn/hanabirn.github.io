@@ -21,7 +21,12 @@ let grammarSetId = '';
 let grammarView = 'list';       // 'list' | 'point' | 'quiz' | 'result'
 let grammarPoint = 0;
 let grammarQuiz = null;         // { items: [{ q, order, options (shuffled), answer, arrange, built }], i, right, picked }
-const GRAMMAR_PER_PAGE = 5;     // points per page of the list
+const GRAMMAR_PER_PAGE = 5;     // points per page of the list (phones)
+// computers: the list is 1180px wide in two columns, 8 points a page, so it fits one 1080p
+// screen with the level picker in two rows (big check, 2026-10-24)
+function grammarPerPage() {
+    return window.matchMedia && window.matchMedia('(min-width: 1024px)').matches ? 8 : GRAMMAR_PER_PAGE;
+}
 let grammarPage = 0;
 
 /* A point's title under its pattern — left out when it only repeats the pattern
@@ -191,9 +196,9 @@ async function renderGrammar() {
     }
     const set = grammarSets[grammarSetId];
     // the point view uses two columns on wide screens (css/grammar.css, css/base.css)
-    document.body.classList.toggle('grammar-wide', grammarView === 'point');
+    document.body.classList.toggle('grammar-wide', grammarView === 'point' || grammarView === 'list');
     if (typeof railPlace === 'function') railPlace();
-    if (grammarView === 'point') box.innerHTML = grammarPointHtml(set);
+    if (grammarView === 'point') { box.innerHTML = grammarPointHtml(set); grammarBalance(box); }
     else if (grammarView === 'quiz') box.innerHTML = grammarQuizHtml(set);
     else if (grammarView === 'result') box.innerHTML = grammarResultHtml(set);
     else box.innerHTML = grammarListHtml(set);
@@ -202,7 +207,7 @@ async function renderGrammar() {
 function grammarGo(view, point) {
     grammarView = view;
     if (typeof point === 'number') grammarPoint = point;
-    if (view === 'list') grammarPage = Math.floor(grammarPoint / GRAMMAR_PER_PAGE);
+    if (view === 'list') grammarPage = Math.floor(grammarPoint / grammarPerPage());
     renderGrammar();
     const page = document.getElementById('page-grammar');
     if (page) window.scrollTo({ top: 0 });
@@ -226,9 +231,9 @@ function grammarListHtml(set) {
             <span>${escHtml(t('grammar_learned_n', { n: done, m: set.points.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
         </div>
-        <ol class="grammar-list" start="${grammarPage * GRAMMAR_PER_PAGE + 1}">
-            ${set.points.slice(grammarPage * GRAMMAR_PER_PAGE, (grammarPage + 1) * GRAMMAR_PER_PAGE).map((p, k) => {
-                const i = grammarPage * GRAMMAR_PER_PAGE + k;
+        <ol class="grammar-list learn-list-grid" start="${grammarPage * grammarPerPage() + 1}">
+            ${set.points.slice(grammarPage * grammarPerPage(), (grammarPage + 1) * grammarPerPage()).map((p, k) => {
+                const i = grammarPage * grammarPerPage() + k;
                 const learned = grammarLearned(set.id, p.id);
                 return `<li><button type="button" class="grammar-item${learned ? ' learned' : ''}" onclick="grammarGo('point', ${i})">
                     <span class="grammar-num">${i + 1}</span>
@@ -246,7 +251,7 @@ function grammarListHtml(set) {
 
 /* 上一頁 / 下一頁 under the list (the 更新內容 popup's texts) */
 function grammarPagerHtml(set) {
-    const pages = Math.ceil(set.points.length / GRAMMAR_PER_PAGE);
+    const pages = Math.ceil(set.points.length / grammarPerPage());
     if (pages <= 1) return '';
     return `<div class="grammar-pager">
         <button type="button" class="btn back-btn" onclick="grammarTurn(-1)"${grammarPage === 0 ? ' disabled' : ''}>← ${escHtml(t('updates_prev'))}</button>
@@ -258,23 +263,40 @@ function grammarPagerHtml(set) {
 function grammarTurn(d) {
     const set = grammarSets[grammarSetId];
     if (!set) return;
-    grammarPage = Math.max(0, Math.min(Math.ceil(set.points.length / GRAMMAR_PER_PAGE) - 1, grammarPage + d));
+    grammarPage = Math.max(0, Math.min(Math.ceil(set.points.length / grammarPerPage()) - 1, grammarPage + d));
     renderGrammar();
     const box = document.getElementById('grammar-card');
     if (box) box.scrollIntoView({ block: 'start', behavior: 'smooth' });
 }
 
+/* computers: 常見錯誤 sits under the explanation; when that column is much longer than the
+   examples beside it, it moves under the practice button instead — whichever keeps the page
+   shorter, so a point fits one 1080p screen (big check, 2026-10-24) */
+function grammarBalance(box) {
+    if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) return;
+    const main = box.querySelector('.grammar-col-main'), side = box.querySelector('.grammar-col-side');
+    const head = box.querySelector('.grammar-mistakes-head'), list = box.querySelector('.grammar-mistakes');
+    if (!main || !side || !head || !list) return;
+    const m = list.getBoundingClientRect().bottom - head.getBoundingClientRect().top;
+    const mainH = main.getBoundingClientRect().height, sideH = side.getBoundingClientRect().height;
+    if (Math.max(mainH - m, sideH + m + 18) < mainH) { side.appendChild(head); side.appendChild(list); }
+}
+
 function grammarPointHtml(set) {
     const p = set.points[grammarPoint];
     const n = set.points.length;
-    return `<div class="grammar-top">
+    return `<div class="grammar-top grammar-point-top">
             <button type="button" class="btn back-btn grammar-back" onclick="grammarGo('list')">${escHtml(t('grammar_back_list'))}</button>
+            <div class="grammar-head">
+                <div class="grammar-big" lang="${set.lang}">${escHtml(p.pattern)}</div>
+                <div class="grammar-head-title">${escHtml(grammarTitle(p))}${grammarLearned(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('grammar_done_badge'))}</span>` : ''}</div>
+            </div>
             <span class="grammar-count">${escHtml(t('grammar_point_n', { n: grammarPoint + 1, m: n }))}</span>
+            <span class="grammar-top-nav">
+                <button type="button" class="mode-btn" onclick="grammarGo('point', ${grammarPoint - 1})"${grammarPoint === 0 ? ' disabled' : ''}>${escHtml(t('grammar_prev'))}</button>
+                <button type="button" class="mode-btn" onclick="grammarGo('point', ${grammarPoint + 1})"${grammarPoint >= n - 1 ? ' disabled' : ''}>${escHtml(t('grammar_next'))}</button>
+            </span>
             <button type="button" class="note-add" onclick="grammarNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
-        </div>
-        <div class="grammar-head">
-            <div class="grammar-big" lang="${set.lang}">${escHtml(p.pattern)}</div>
-            <div class="grammar-head-title">${escHtml(grammarTitle(p))}${grammarLearned(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('grammar_done_badge'))}</span>` : ''}</div>
         </div>
         <div class="grammar-cols">
         <div class="grammar-col-main">
@@ -284,7 +306,7 @@ function grammarPointHtml(set) {
             <h4 class="grammar-sub">${uiIcon('warning')} ${escHtml(t('grammar_notes'))}</h4>
             <ul>${p.notes.map(n => `<li>${escHtml(gText(n))}</li>`).join('')}</ul>
         </div>` : ''}
-        ${(p.mistakes || []).length ? `<h4 class="grammar-sub">${escHtml(t('grammar_mistakes'))}</h4>
+        ${(p.mistakes || []).length ? `<h4 class="grammar-sub grammar-mistakes-head">${escHtml(t('grammar_mistakes'))}</h4>
         <ul class="grammar-mistakes">
             ${p.mistakes.map(m => `<li>
                 <div class="grammar-wrong" lang="${set.lang}"><span aria-hidden="true">✗</span> <s>${escHtml(m.wrong)}</s></div>
@@ -317,7 +339,7 @@ function grammarPointHtml(set) {
         <button type="button" class="btn next-btn grammar-start" onclick="grammarStartQuiz()">${escHtml(t('grammar_practice', { n: p.quiz.length }))}</button>
         </div>
         </div>
-        <div class="grammar-nav">
+        <div class="grammar-nav grammar-point-nav">
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint - 1})"${grammarPoint === 0 ? ' disabled' : ''}>${escHtml(t('grammar_prev'))}</button>
             <button type="button" class="btn back-btn" onclick="grammarGo('point', ${grammarPoint + 1})"${grammarPoint >= n - 1 ? ' disabled' : ''}>${escHtml(t('grammar_next'))}</button>
         </div>`;
