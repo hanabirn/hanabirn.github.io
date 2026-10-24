@@ -83,8 +83,11 @@ function listeningRange(set, k) {
     let a = 0;
     for (let i = 0; i < k; i++) a += items[i].questions.length;
     let lo = k, hi = k;
-    while (lo > 0 && items[lo - 1].type === items[k].type) lo--;
-    while (hi < items.length - 1 && items[hi + 1].type === items[k].type) hi++;
+    // an item with several questions is a group of its own, as on the paper ([21~22], [23~24] …)
+    if (items[k].questions.length === 1) {
+        while (lo > 0 && items[lo - 1].type === items[k].type && items[lo - 1].questions.length === 1) lo--;
+        while (hi < items.length - 1 && items[hi + 1].type === items[k].type && items[hi + 1].questions.length === 1) hi++;
+    }
     let first = a + 1;
     for (let i = lo; i < k; i++) first -= items[i].questions.length;
     let last = first - 1;
