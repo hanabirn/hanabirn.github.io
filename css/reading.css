@@ -145,6 +145,8 @@
 .rd-speed { color: var(--text-secondary); font-size: 0.9rem; }
 .rd-review-word { font-family: var(--font-serif); font-size: 2.2rem; font-weight: 700; margin: 6px 0; }
 
+.rd-top-nav { display: none; }
+
 /* the side panel (js/reading.js readingPanelHtml): 題目 / 生詞 tabs, the questions
    READING_Q_PAGE a page, 上一頁 / 下一頁 */
 .rd-col-side { margin-top: 18px; }
@@ -176,7 +178,7 @@
 
 /* computers: text left, the panel right (sticky, scrolling by itself) on a 1180px page */
 @media (min-width: 1024px) {
-    .rd-cols { display: grid; grid-template-columns: minmax(0, 1fr) 440px; gap: 24px; align-items: start; }
+    .rd-cols { display: grid; grid-template-columns: minmax(0, 1fr) 520px; gap: 24px; align-items: start; }
     .rd-col-side {
         position: sticky;
         top: 16px;
@@ -186,6 +188,22 @@
         padding-right: 4px;
     }
     .rd-col-side .rd-gloss ul { grid-template-columns: 1fr; }
+    /* the text scrolls in its own box no taller than the screen, so the whole reader fits one
+       1080p screen; the questions beside it come one at a time (big check, 2026-10-24) */
+    .rd-col-main .rd-text { max-height: max(300px, calc(100vh - 505px)); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
+    .rd-col-side { max-height: max(300px, calc(100vh - 426px)); }
+    .rd-col-main .rd-tools { margin-top: 0; }
+    .rd-hint { display: none; }                         /* the number tabs say it already */
+    .rd-col-side .rd-opts .option-btn { font-size: 1rem; line-height: 1.85; padding: 10px 14px; }   /* long options in two lines, not three */
+    .rd-bottom-nav { display: none; }                   /* 上一篇 / 下一篇 sit in the top row */
+    .rd-top-nav { display: flex; gap: 8px; margin-left: 12px; }
+    .rd-top-nav .mode-btn { padding: 6px 12px; font-size: 0.85rem; }
+    .rd-qtabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+    .rd-qtab { min-width: 34px; height: 34px; padding: 0 8px; border: 2px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text-secondary); font: inherit; font-weight: 700; cursor: pointer; }
+    .rd-qtab.on { border-color: var(--primary); color: var(--primary); }
+    .rd-qtab.ok { background: var(--success-bg); border-color: var(--success); color: var(--success-text); }
+    .rd-qtab.no { background: var(--danger-bg); border-color: var(--danger); color: var(--danger-text); }
+    .rd-qtab.on.ok, .rd-qtab.on.no { outline: 2px solid var(--primary); outline-offset: 1px; }
 }
 
 /* Russian stress marks (U+0301): the CJK fonts the site uses place a combining mark

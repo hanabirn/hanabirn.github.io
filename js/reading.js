@@ -38,7 +38,7 @@ let readingView = 'list';         // 'list' | 'read' | 'quiz' | 'review'
 let readingNo = 0;                // passage index in the set
 let readingQuiz = null;           // { picks: [mcq…, tf…], done, page, resumed }
 let readingPanel = 'q';           // the reader's side panel: 'q' questions | 'gloss' glossary
-const READING_Q_PAGE = 3;         // questions a page in the panel
+const READING_Q_PAGE = 3;         // questions a page in the panel (phones; computers show one at a time)
 let readingReview = null;         // { items: [{ entry, word, options, answer }], i, picked, right }
 let readingTimer = { start: 0, secs: 0, tick: null };
 
@@ -334,33 +334,37 @@ function readingReaderHtml(set) {
     return `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="readingGo('list')">${escHtml(t('reading_back_list'))}</button>
             <span class="grammar-count">${escHtml(t('reading_no', { n: readingNo + 1, m: n }))}</span>
+            <span class="rd-top-nav">
+                <button type="button" class="mode-btn" onclick="readingGo('read', ${readingNo - 1})"${readingNo === 0 ? ' disabled' : ''}>${escHtml(t('reading_prev'))}</button>
+                <button type="button" class="mode-btn" onclick="readingGo('read', ${readingNo + 1})"${readingNo >= n - 1 ? ' disabled' : ''}>${escHtml(t('reading_next'))}</button>
+            </span>
         </div>
         <div class="rd-head">
             <div class="rd-title" lang="${set.lang}">${readingSegsHtml(p.title.t, false)}</div>
             <div class="rd-sub">${escHtml(readingTx(set, p.title))}${readingRead(set.id, p.id) ? ` <span class="grammar-badge">✓ ${escHtml(t('reading_done_badge'))}</span>` : ''}</div>
         </div>
-        <div class="rd-tools" role="group">
-            ${set.lang === 'ja' ? `<button type="button" class="mode-btn${furi ? ' mode-btn-active' : ''}" aria-pressed="${furi}" onclick="readingToggle('reading_furi')">${escHtml(t('reading_furi'))}</button>` : ''}
-            ${set.lang === 'zh' ? readingZhTools() : ''}
-            ${set.lang === 'en' ? readingEnTools() : ''}
-            ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
-            <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
-            <button type="button" class="mode-btn${readingAllState === 'playing' ? ' mode-btn-active' : ''}" id="rd-all" onclick="readingSayAll()">${readingAllLabel()}</button>
-            <span class="rd-font" role="group" aria-label="${escHtml(t('reading_font'))}">
-                <button type="button" class="mode-btn" onclick="readingFontStep(-1)"${readingFont() === 0 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} −">A−</button>
-                <button type="button" class="mode-btn" onclick="readingFontStep(1)"${readingFont() === READING_FONTS.length - 1 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} +">A+</button>
-            </span>
-            <span class="rd-timer" id="rd-timer" title="${escHtml(t('reading_timer'))}">⏱ ${readingClock(readingElapsed())}</span>
-            <button type="button" class="note-add" onclick="readingNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
-        </div>
         <div class="rd-cols">
             <div class="rd-col-main">
+                <div class="rd-tools" role="group">
+                    ${set.lang === 'ja' ? `<button type="button" class="mode-btn${furi ? ' mode-btn-active' : ''}" aria-pressed="${furi}" onclick="readingToggle('reading_furi')">${escHtml(t('reading_furi'))}</button>` : ''}
+                    ${set.lang === 'zh' ? readingZhTools() : ''}
+                    ${set.lang === 'en' ? readingEnTools() : ''}
+                    ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
+                    <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
+                    <button type="button" class="mode-btn${readingAllState === 'playing' ? ' mode-btn-active' : ''}" id="rd-all" onclick="readingSayAll()">${readingAllLabel()}</button>
+                    <span class="rd-font" role="group" aria-label="${escHtml(t('reading_font'))}">
+                        <button type="button" class="mode-btn" onclick="readingFontStep(-1)"${readingFont() === 0 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} −">A−</button>
+                        <button type="button" class="mode-btn" onclick="readingFontStep(1)"${readingFont() === READING_FONTS.length - 1 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} +">A+</button>
+                    </span>
+                    <span class="rd-timer" id="rd-timer" title="${escHtml(t('reading_timer'))}">⏱ ${readingClock(readingElapsed())}</span>
+                    <button type="button" class="note-add" onclick="readingNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
+                </div>
                 <div class="rd-text${furi ? '' : ' no-furi'}" style="font-size:${READING_FONTS[readingFont()]}rem">${paras}</div>
                 <p class="rd-help">${escHtml(t('reading_help'))}</p>
             </div>
             <div class="rd-col-side" id="rd-panel">${readingPanelHtml(set, p)}</div>
         </div>
-        <div class="grammar-nav">
+        <div class="grammar-nav rd-bottom-nav">
             <button type="button" class="btn back-btn" onclick="readingGo('read', ${readingNo - 1})"${readingNo === 0 ? ' disabled' : ''}>${escHtml(t('reading_prev'))}</button>
             <button type="button" class="btn back-btn" onclick="readingGo('read', ${readingNo + 1})"${readingNo >= n - 1 ? ' disabled' : ''}>${escHtml(t('reading_next'))}</button>
         </div>`;
@@ -581,7 +585,18 @@ function readingQuizKey() {
     return 'reading|' + set.id + ':' + set.passages[readingNo].id;
 }
 
-function readingPages(total) { return Math.max(1, Math.ceil(total / READING_Q_PAGE)); }
+/* computers: one question at a time beside the text, with number tabs, so a question and its
+   options fit a 1080p screen (big check, 2026-10-24); phones: READING_Q_PAGE a page under the text */
+function readingQPer() {
+    return window.matchMedia && window.matchMedia('(min-width: 1024px)').matches ? 1 : READING_Q_PAGE;
+}
+function readingPages(total) { return Math.max(1, Math.ceil(total / readingQPer())); }
+function readingQGo(k) {
+    const z = readingQuiz;
+    z.page = Math.max(0, Math.min(readingPages(z.picks.length) - 1, Math.floor(k / readingQPer())));
+    readingSaveResume();
+    readingRenderPanel(true);
+}
 
 function readingOpenQuiz(fresh) {
     const p = readingSets[readingSetId].passages[readingNo];
@@ -685,15 +700,23 @@ function readingPanelHtml(set, p) {
         </div>`;
     if (readingPanel === 'gloss') return head + readingGlossHtml(set, p);
     const pages = readingPages(total);
-    const from = z.page * READING_Q_PAGE;
+    const per = readingQPer();
+    if (z.page > pages - 1) z.page = pages - 1;     // the page size changed with the window
+    const from = z.page * per;
     let qs = '';
-    for (let k = from; k < Math.min(total, from + READING_Q_PAGE); k++) qs += readingQuestionHtml(set, p, k);
+    for (let k = from; k < Math.min(total, from + per); k++) qs += readingQuestionHtml(set, p, k);
+    // one at a time: number tabs to jump, marked ○ / × once answered
+    const tabs = per === 1 ? `<div class="rd-qtabs" role="tablist">${z.picks.map((x, k) => {
+            const st = x < 0 ? '' : readingIsRight(p, k) ? ' ok' : ' no';
+            return `<button type="button" role="tab" class="rd-qtab${k === from ? ' on' : ''}${st}" aria-selected="${k === from}" onclick="readingQGo(${k})">${k + 1}</button>`;
+        }).join('')}</div>` : '';
     const note = z.done ? '' : z.resumed
         ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: answered, m: total }))} <button type="button" class="rd-link" onclick="readingRetry()">${escHtml(t('reading_restart'))}</button></p>`
-        : answered ? '' : `<p class="rd-note">${escHtml(t('reading_quiz_hint'))}</p>`;
+        : answered ? '' : `<p class="rd-note rd-hint">${escHtml(t('reading_quiz_hint'))}</p>`;
     return `${head}
         ${z.done ? readingResultHtml(set) : ''}
         ${note}
+        ${tabs}
         <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${qs}</div>
         ${pages > 1 ? `<div class="rd-pager">
             <button type="button" class="btn back-btn" onclick="readingQPage(-1)"${z.page === 0 ? ' disabled' : ''}>${escHtml(t('mistake_prev'))}</button>
