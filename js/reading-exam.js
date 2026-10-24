@@ -37,6 +37,13 @@ const READING_ASK_JA = {
     ja_mid: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。こたえは、1・2・3・4から　いちばん　いい　ものを　ひとつ　えらんで　ください。',
     ja_info: 'つぎの　ページを　見て、しつもんに　こたえて　ください。こたえは、1・2・3・4から　いちばん　いい　ものを　ひとつ　えらんで　ください。'
 };
+// N3 and up: the papers' ordinary wording, in kanji
+const READING_ASK_JA_UPPER = {
+    ja_short: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
+    ja_mid: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
+    ja_long: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
+    ja_info: '次のページを見て、下の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。'
+};
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA };
 const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。' };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
@@ -46,8 +53,13 @@ function readingExLang() {
     const set = readingSets[readingSetId];
     return (set && set.lang) || 'ko';
 }
+function readingExUpper() {
+    const set = readingSets[readingSetId];
+    return !!set && set.lang === 'ja' && ['N3', 'N2', 'N1'].includes(set.level);
+}
 function readingAskText(key) {
     const lang = readingExLang();
+    if (readingExUpper()) return READING_ASK_JA_UPPER[key] || '';
     return (READING_ASK_ALL[lang] || READING_ASK_KO)[key] || '';
 }
 
@@ -292,10 +304,10 @@ function readingExamHtml(set) {
                 : `<span class="grammar-count">${escHtml(t('grammar_q_n', { n: firstQ + 1, m: z.qs.length }))}</span>`}
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
-        <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
+        <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (readingExUpper() ? '次の文章を読んで、質問に答えなさい。' : READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
-        <div class="rdx-cols">
+        <div class="rdx-cols${readingExUpper() ? ' rdx-flow' : ''}">
             <div class="rdx-col-text">
                 <div class="rdx-item">
                     <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${escHtml(t('reading_passage_label'))}</div>

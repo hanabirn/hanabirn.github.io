@@ -204,6 +204,8 @@
 .rdx-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 10px; }
 #reading-card .rdx-tools .mode-btn { flex: none; width: auto; margin: 0; padding: 6px 14px; font-size: 0.85rem; }
 .rdx-text[lang="ja"], .rdx-notice[lang="ja"] { line-height: 2.2; }
+/* N3 and up are written without spaces: wrap anywhere, as Japanese does (keep-all kept whole runs) */
+.rdx-flow .rdx-text, .rdx-flow .rdx-opt, .rdx-flow .rdx-notice, .rdx-flow .rdx-qhead { word-break: normal; line-break: strict; }
 .rdx-text rt, .rdx-notice rt, .rdx-opt rt, .rdx-qhead rt { font-size: 0.55em; color: var(--text-secondary); }
 .rdx-item { margin-bottom: 16px; }
 .rdx-item-label { display: flex; align-items: baseline; gap: 8px; margin: 0 0 6px 2px; font-size: 0.82rem; font-weight: 800; color: var(--text-secondary); }
@@ -254,6 +256,7 @@
     .rdx-col-q .rdx-opts { grid-template-columns: 1fr; }
     .rdx-col-q .rdx-opts.rdx-opts-2 { grid-template-columns: 1fr 1fr; }
     .rdx-q-off { display: none; }
+    .rdx-col-text .rdx-notice[lang="ja"] { max-width: none; }   /* JLPT information pages: the whole column, so less to scroll */
     .rdx-subtabs { display: flex; gap: 8px; margin-bottom: 12px; }
     .rdx-sub-next { display: flex; justify-content: flex-end; margin: 10px 0 0; }
     .rdx-sub-next .btn { margin: 0; }

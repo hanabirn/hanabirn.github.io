@@ -264,20 +264,28 @@ def used(glossary):
 SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purpose', 'about',
             'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference',
             # JLPT (2026-10-24): もんだい４ short texts, ５ mid-size, ６ information retrieval
-            'ja_short', 'ja_mid', 'ja_info'}
+            'ja_short', 'ja_mid', 'ja_info', 'ja_long'}
 
 # Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
-# levels below show no furigana until the visitor asks (owner's pick A1). The N5 kanji
-# (the common lists, e.g. tanos.co.uk); later levels add theirs.
+# levels below show no furigana until the visitor asks (owner's pick A1). The lists are the JLPT
+# kanji of tanos.co.uk (Jonathan Waller, CC BY), as in davidluzgouveia/kanji-data's jlpt_new
+# field (2026-10-24; N5 79, N4 166, N3 367 kanji; 分 and 身 的 lack a level there and are added by
+# hand to N5 / N3); N2 / N1 are added with those levels.
 KANJI_LEVEL = {
-    'N5': set('一二三四五六七八九十百千万円日月火水木金土曜年時分半午前後今何週毎上下左右中外'
-              '東西南北山川天気雨花空人男女子父母友先生学校名国語本書読話言聞見行来出入休買'
-              '食飲車電駅道長高大小白立目耳手足口店社会'),
-    'N4': set('同事自発者地業方場員開力問代明動京通理体田主題意不作用度強公持野以思家世多正'
-              '安院心界教文元重近考画海売知集別物使品計死特私始朝運終台広住真有少町料工建'
-              '急止送切転研究楽起着病質待試族銀早映親験英医仕去味写字答夜音注帰歌悪図室'
-              '歩風紙黒春赤青館屋色走秋夏習洋旅服夕借貸堂鳥飯勉冬昼茶弟牛魚兄犬妹姉漢'
-              '部議会者引越便利礼部屋'),
+    'N5': set('分日一国人年大十二本中長出三時行見月後前生五間上東四今金九入学高円子外八六下来気小七山話女北午百書'
+              '先名川千水半男西電校語土木聞食車何南万毎白天母火右読友左休父雨'),
+    'N4': set('会同事自社発者地業方新場員立開手力問代明動京目通言理体田主題意不作用度強公持野以思家世多正安院心'
+              '界教文元重近考画海売知道集別物使品計死特私始朝運終台広住真有口少町料工建空急止送切転研足究楽起着'
+              '店病質待試族銀早映親験英医仕去味写字答夜音注帰古歌買悪図週室歩風紙黒花春赤青館屋色走秋夏習駅洋旅'
+              '服夕借曜飲肉貸堂鳥飯勉冬昼茶弟牛魚兄犬妹姉漢'),
+    'N3': set('身的政議民連対部合市内相定回選米実関決全表戦経最現調化当約首法性要制治務成期取都和機平加受続進数記初'
+              '指権支産点報済活原共得解交資予向際勝面告反判認参利組信在件側任引求所次昨論官増係感情投示変打直両'
+              '式確果容必演歳争談能位置流格疑過局放常状球職与供役構割費付由説難優夫収断石違消神番規術備宅害配警'
+              '育席訪乗残想声念助労例然限追商葉伝働形景落好退頭負渡失差末守若種美命福望非観察段横深申様財港識呼'
+              '達良候程満敗値突光路科積他処太客否師登易速存飛殺号単座破除完降責捕危給苦迎園具辞因馬愛富彼未舞亡'
+              '冷適婦寄込顔類余王返妻背熱宿薬険頼覚船途許抜便留罪努精散静婚喜浮絶幸押倒等老曲払庭徒勤遅居雑招困'
+              '欠更刻賛抱犯恐息遠戻願絵越欲痛笑互束似列探逃遊迷夢君閉緒折草暮酒悲晴掛到寝暗盗吸陽御歯忘雪吹娘誤'
+              '洗慣礼窓昔貧怒泳祖杯疲皆鳴腹煙眠怖耳頂箱晩寒髪忙才靴恥偶偉猫幾'),
 }
 
 
