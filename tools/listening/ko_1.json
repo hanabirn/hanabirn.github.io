@@ -1,0 +1,283 @@
+{
+  "id": "ko_1",
+  "lang": "ko",
+  "level": "1급",
+  "order": 1,
+  "note": "Original listening items in the TOPIK I format, questions 1–14 (ko_answer 1–4: answer the question, ko_next 5–6: what comes next, ko_place 7–10: where is this, ko_topic 11–14: what is it about). Every option is printed, as on the paper. who: F woman, M man. Edit this file, then run: python tools/build_listening.py",
+  "types": ["ko_answer", "ko_next", "ko_place", "ko_topic"],
+  "instr": {
+    "ko_answer": "다음을 듣고 물음에 맞는 대답을 고르십시오.",
+    "ko_next": "다음을 듣고 이어지는 말을 고르십시오.",
+    "ko_place": "여기는 어디입니까? 알맞은 것을 고르십시오.",
+    "ko_topic": "다음은 무엇에 대해 말하고 있습니까? 알맞은 것을 고르십시오."
+  },
+  "mock_plays": 2,
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "M", "s": "우유를 좋아해요?", "zh": "你喜歡牛奶嗎？", "en": "Do you like milk?"}
+          ],
+          "options": [
+            {"t": "네, 우유예요.", "zh": "對，是牛奶。", "en": "Yes, it's milk."},
+            {"t": "네, 우유를 좋아해요.", "zh": "對，我喜歡牛奶。", "en": "Yes, I like milk."},
+            {"t": "아니요, 우유가 있어요.", "zh": "不，有牛奶。", "en": "No, there is milk."},
+            {"t": "아니요, 우유를 사요.", "zh": "不，我買牛奶。", "en": "No, I buy milk."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "問「좋아해요?」（喜歡嗎？），要用「네, 좋아해요」或「아니요, 안 좋아해요」回答。其他選項沒有回答到「喜不喜歡」。", "en": "The question is 좋아해요? (do you like it?), so the answer must say 좋아해요 / 안 좋아해요. The other options don't answer whether he likes it."},
+          "words": [
+            {"w": "우유", "r": "", "zh": "牛奶", "en": "milk"},
+            {"w": "좋아하다", "r": "", "zh": "喜歡", "en": "to like", "m": ["좋아해요"]}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "F", "s": "동생이 있어요?", "zh": "你有弟弟或妹妹嗎？", "en": "Do you have a younger brother or sister?"}
+          ],
+          "options": [
+            {"t": "네, 동생이에요.", "zh": "對，是弟弟（妹妹）。", "en": "Yes, it's my younger sibling."},
+            {"t": "네, 동생이 없어요.", "zh": "對，沒有弟弟妹妹。", "en": "Yes, I have no younger sibling."},
+            {"t": "아니요, 동생이 없어요.", "zh": "不，我沒有弟弟妹妹。", "en": "No, I don't have one."},
+            {"t": "아니요, 동생이 많아요.", "zh": "不，弟弟妹妹很多。", "en": "No, I have many."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "問「있어요?」（有嗎？），回答「네」就接「있어요」，回答「아니요」就接「없어요」。只有「아니요, 동생이 없어요」前後一致。", "en": "For 있어요? (do you have?), 네 goes with 있어요 and 아니요 with 없어요. Only 아니요, 동생이 없어요 matches."},
+          "words": [
+            {"w": "동생", "r": "", "zh": "弟弟／妹妹", "en": "younger sibling"}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "M", "s": "어디에서 친구를 만나요?", "zh": "你在哪裡跟朋友見面？", "en": "Where do you meet your friend?"}
+          ],
+          "options": [
+            {"t": "학교 앞에서 만나요.", "zh": "在學校前面見面。", "en": "We meet in front of the school."},
+            {"t": "저녁에 만나요.", "zh": "晚上見面。", "en": "We meet in the evening."},
+            {"t": "자주 만나요.", "zh": "常常見面。", "en": "We meet often."},
+            {"t": "동생을 만나요.", "zh": "跟弟弟（妹妹）見面。", "en": "I meet my younger sibling."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "「어디에서」問的是「在哪裡」，所以要回答地點：「학교 앞에서」（在學校前面）。「저녁에」是時間，「자주」是頻率。", "en": "어디에서 asks where, so the answer is a place: 학교 앞에서 (in front of the school). 저녁에 is a time and 자주 is how often."},
+          "words": [
+            {"w": "어디에서", "r": "", "zh": "在哪裡", "en": "where (at)"},
+            {"w": "만나다", "r": "", "zh": "見面", "en": "to meet", "m": ["만나요"]}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "F", "s": "이 가방 얼마예요?", "zh": "這個包包多少錢？", "en": "How much is this bag?"}
+          ],
+          "options": [
+            {"t": "가방이 커요.", "zh": "包包很大。", "en": "The bag is big."},
+            {"t": "제 가방이에요.", "zh": "是我的包包。", "en": "It's my bag."},
+            {"t": "어제 샀어요.", "zh": "昨天買的。", "en": "I bought it yesterday."},
+            {"t": "삼만 원이에요.", "zh": "三萬韓元。", "en": "It's 30,000 won."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "「얼마예요?」是問價錢，所以答案是「삼만 원이에요」（三萬韓元）。", "en": "얼마예요? asks the price, so the answer is 삼만 원이에요 (30,000 won)."},
+          "words": [
+            {"w": "얼마", "r": "", "zh": "多少（錢）", "en": "how much"},
+            {"w": "가방", "r": "", "zh": "包包", "en": "bag"}
+          ]
+        },
+        {
+          "type": "ko_next",
+          "lines": [
+            {"who": "M", "s": "늦어서 미안해요.", "zh": "對不起，我遲到了。", "en": "Sorry I'm late."}
+          ],
+          "options": [
+            {"t": "반가워요.", "zh": "很高興見到你。", "en": "Nice to meet you."},
+            {"t": "괜찮아요.", "zh": "沒關係。", "en": "That's all right."},
+            {"t": "잘 먹겠습니다.", "zh": "我開動了。", "en": "Thank you for the meal (before eating)."},
+            {"t": "어서 오세요.", "zh": "歡迎光臨。", "en": "Welcome."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "對方道歉「미안해요」（對不起），通常回答「괜찮아요」（沒關係）。", "en": "When someone says 미안해요 (sorry), the usual reply is 괜찮아요 (that's all right)."},
+          "words": [
+            {"w": "늦다", "r": "", "zh": "遲、晚", "en": "to be late", "m": ["늦어서"]},
+            {"w": "미안하다", "r": "", "zh": "抱歉", "en": "to be sorry", "m": ["미안해요"]}
+          ]
+        },
+        {
+          "type": "ko_next",
+          "lines": [
+            {"who": "F", "s": "맛있게 드세요.", "zh": "請慢用。", "en": "Enjoy your meal."}
+          ],
+          "options": [
+            {"t": "안녕히 계세요.", "zh": "再見（對留下的人說）。", "en": "Goodbye (to someone staying)."},
+            {"t": "실례합니다.", "zh": "打擾了。", "en": "Excuse me."},
+            {"t": "잘 먹겠습니다.", "zh": "我開動了。", "en": "Thank you, I'll enjoy it."},
+            {"t": "축하합니다.", "zh": "恭喜。", "en": "Congratulations."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "對方端上食物說「맛있게 드세요」（請慢用），吃的人回答「잘 먹겠습니다」（我開動了）。", "en": "When served food with 맛있게 드세요 (enjoy your meal), you answer 잘 먹겠습니다."},
+          "words": [
+            {"w": "맛있다", "r": "", "zh": "好吃", "en": "to be tasty", "m": ["맛있게"]},
+            {"w": "드시다", "r": "", "zh": "吃、喝（敬語）", "en": "to eat (honorific)", "m": ["드세요"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "F", "s": "어떻게 오셨어요?", "zh": "請問有什麼事嗎？", "en": "How can I help you?"},
+            {"who": "M", "s": "머리가 아프고 열이 나요.", "zh": "我頭痛，還發燒。", "en": "I have a headache and a fever."}
+          ],
+          "options": [
+            {"t": "은행", "zh": "銀行", "en": "bank"},
+            {"t": "병원", "zh": "醫院", "en": "hospital"},
+            {"t": "서점", "zh": "書店", "en": "bookshop"},
+            {"t": "식당", "zh": "餐廳", "en": "restaurant"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「머리가 아프고 열이 나요」（頭痛又發燒），是來看病的，所以這裡是「병원」（醫院）。", "en": "He says 머리가 아프고 열이 나요 (headache and fever) — he has come to see a doctor, so this is a 병원 (hospital)."},
+          "words": [
+            {"w": "머리", "r": "", "zh": "頭", "en": "head"},
+            {"w": "아프다", "r": "", "zh": "痛、不舒服", "en": "to hurt", "m": ["아프고"]},
+            {"w": "열이 나다", "r": "", "zh": "發燒", "en": "to have a fever", "m": ["열이 나요"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "M", "s": "이 편지를 일본에 보내고 싶어요.", "zh": "我想把這封信寄到日本。", "en": "I'd like to send this letter to Japan."},
+            {"who": "F", "s": "네, 여기에 올려 주세요.", "zh": "好的，請放在這裡。", "en": "Sure, please put it here."}
+          ],
+          "options": [
+            {"t": "우체국", "zh": "郵局", "en": "post office"},
+            {"t": "공항", "zh": "機場", "en": "airport"},
+            {"t": "시장", "zh": "市場", "en": "market"},
+            {"t": "극장", "zh": "劇場", "en": "theatre"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「편지를 일본에 보내고 싶어요」（想把信寄到日本），寄信的地方是「우체국」（郵局）。", "en": "He wants to send a letter to Japan (편지를 일본에 보내고 싶어요) — you do that at the 우체국 (post office)."},
+          "words": [
+            {"w": "편지", "r": "", "zh": "信", "en": "letter"},
+            {"w": "보내다", "r": "", "zh": "寄、送", "en": "to send", "m": ["보내고"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "F", "s": "이 바지 좀 입어 봐도 돼요?", "zh": "這件褲子可以試穿嗎？", "en": "May I try these trousers on?"},
+            {"who": "M", "s": "네, 저쪽에서 입어 보세요.", "zh": "可以，請到那邊試穿。", "en": "Sure, you can try them on over there."}
+          ],
+          "options": [
+            {"t": "도서관", "zh": "圖書館", "en": "library"},
+            {"t": "미용실", "zh": "美髮院", "en": "hair salon"},
+            {"t": "옷 가게", "zh": "服飾店", "en": "clothes shop"},
+            {"t": "사진관", "zh": "照相館", "en": "photo studio"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生問「바지 좀 입어 봐도 돼요?」（褲子可以試穿嗎？），試穿衣服的地方是「옷 가게」（服飾店）。", "en": "She asks to try on trousers (바지 좀 입어 봐도 돼요?) — that happens in an 옷 가게 (clothes shop)."},
+          "words": [
+            {"w": "바지", "r": "", "zh": "褲子", "en": "trousers"},
+            {"w": "입다", "r": "", "zh": "穿", "en": "to wear", "m": ["입어"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "M", "s": "일곱 시 영화 표 두 장 주세요.", "zh": "請給我兩張七點的電影票。", "en": "Two tickets for the seven o'clock film, please."},
+            {"who": "F", "s": "네, 이만 원입니다.", "zh": "好的，兩萬韓元。", "en": "Sure, that's 20,000 won."}
+          ],
+          "options": [
+            {"t": "백화점", "zh": "百貨公司", "en": "department store"},
+            {"t": "박물관", "zh": "博物館", "en": "museum"},
+            {"t": "은행", "zh": "銀行", "en": "bank"},
+            {"t": "영화관", "zh": "電影院", "en": "cinema"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "男生要買「영화 표」（電影票），所以這裡是「영화관」（電影院）。", "en": "He is buying 영화 표 (film tickets), so this is a 영화관 (cinema)."},
+          "words": [
+            {"w": "표", "r": "", "zh": "票", "en": "ticket"},
+            {"w": "장", "r": "", "zh": "張（量詞）", "en": "(counter for sheets / tickets)", "m": ["두 장"]}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "F", "s": "마이클 씨는 어느 나라 사람이에요?", "zh": "麥可，你是哪國人？", "en": "Michael, where are you from?"},
+            {"who": "M", "s": "저는 캐나다 사람이에요.", "zh": "我是加拿大人。", "en": "I'm Canadian."}
+          ],
+          "options": [
+            {"t": "시간", "zh": "時間", "en": "time"},
+            {"t": "나라", "zh": "國家", "en": "country"},
+            {"t": "취미", "zh": "興趣", "en": "hobby"},
+            {"t": "가족", "zh": "家人", "en": "family"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生問「어느 나라 사람이에요?」（哪國人？），男生回答「캐나다 사람」（加拿大人），兩人在談「나라」（國家）。", "en": "She asks 어느 나라 사람이에요? and he answers 캐나다 사람 — they are talking about 나라 (country)."},
+          "words": [
+            {"w": "어느", "r": "", "zh": "哪個", "en": "which"},
+            {"w": "나라", "r": "", "zh": "國家", "en": "country"}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "M", "s": "주말에 보통 뭐 해요?", "zh": "你週末通常做什麼？", "en": "What do you usually do at the weekend?"},
+            {"who": "F", "s": "저는 산에 자주 가요. 등산을 좋아해요.", "zh": "我常常去爬山。我喜歡爬山。", "en": "I often go to the mountains. I like hiking."}
+          ],
+          "options": [
+            {"t": "취미", "zh": "興趣", "en": "hobby"},
+            {"t": "날씨", "zh": "天氣", "en": "weather"},
+            {"t": "음식", "zh": "食物", "en": "food"},
+            {"t": "위치", "zh": "位置", "en": "location"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "週末常做的事、喜歡「등산」（爬山），談的是「취미」（興趣）。", "en": "What she usually does at the weekend and that she likes 등산 (hiking) — the topic is 취미 (hobby)."},
+          "words": [
+            {"w": "주말", "r": "", "zh": "週末", "en": "weekend"},
+            {"w": "보통", "r": "", "zh": "通常", "en": "usually"},
+            {"w": "등산", "r": "", "zh": "爬山", "en": "hiking"}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "F", "s": "오늘 정말 덥네요.", "zh": "今天真的好熱喔。", "en": "It's really hot today."},
+            {"who": "M", "s": "네, 그런데 내일은 비가 와요.", "zh": "對啊，不過明天會下雨。", "en": "Yes, but it's going to rain tomorrow."}
+          ],
+          "options": [
+            {"t": "운동", "zh": "運動", "en": "exercise"},
+            {"t": "생일", "zh": "生日", "en": "birthday"},
+            {"t": "날씨", "zh": "天氣", "en": "weather"},
+            {"t": "쇼핑", "zh": "購物", "en": "shopping"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "「덥네요」（好熱）、「비가 와요」（下雨），兩人在談「날씨」（天氣）。", "en": "덥네요 (it's hot) and 비가 와요 (it rains) — they are talking about 날씨 (the weather)."},
+          "words": [
+            {"w": "덥다", "r": "", "zh": "熱", "en": "to be hot", "m": ["덥네요"]},
+            {"w": "비가 오다", "r": "", "zh": "下雨", "en": "to rain", "m": ["비가 와요"]}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "M", "s": "이 사과 한 개에 얼마예요?", "zh": "這個蘋果一個多少錢？", "en": "How much is one of these apples?"},
+            {"who": "F", "s": "천 원이에요. 다섯 개에 사천 원이에요.", "zh": "一千韓元。五個四千韓元。", "en": "1,000 won. Five for 4,000 won."}
+          ],
+          "options": [
+            {"t": "장소", "zh": "地點", "en": "place"},
+            {"t": "요일", "zh": "星期幾", "en": "day of the week"},
+            {"t": "약속", "zh": "約定", "en": "appointment"},
+            {"t": "가격", "zh": "價格", "en": "price"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "「얼마예요?」（多少錢？）、「천 원」「사천 원」，兩人在談「가격」（價格）。", "en": "얼마예요? (how much?), 천 원, 사천 원 — they are talking about 가격 (price)."},
+          "words": [
+            {"w": "사과", "r": "", "zh": "蘋果", "en": "apple"},
+            {"w": "개", "r": "", "zh": "個（量詞）", "en": "(counter for things)", "m": ["한 개", "다섯 개"]}
+          ]
+        }
+      ]
+    }
+  ]
+}

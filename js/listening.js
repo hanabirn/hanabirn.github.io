@@ -7,7 +7,9 @@
    the question and four options are spoken at the end), utterance (発話表現: a
    scene, then three spoken options), response (即時応答: one line, three spoken
    replies) and integrated (統合理解: longer, several speakers, and the last one
-   asks two questions about one recording). Every item has questions[] — usually
+   asks two questions about one recording); Korean levels use TOPIK's groups instead
+   (ko_answer … ko_pair, ko2_pic … ko2_pair: every option and question printed, the
+   paper's Korean instruction in lv.instr, mock_plays per type). Every item has questions[] — usually
    one — each {q (a spoken question, or null when it is the last line), spoken
    (options read aloud) | printed options, answer, explain}. Every spoken line
    carries its own recording (data/audio/listening/<lang>/<a>.mp3, one voice per
@@ -33,9 +35,13 @@ const LISTENING_NEXT_OPTION_GAP_MS = 600; // extra, before the number of the 2nd
 const LISTENING_NUMBER_GAP_MS = 300;  // extra, between an option's number (いち) and the option
 const LISTENING_READ_SECS = 10;      // ポイント理解: time to read the options (lv.read_secs)
 // mock exam: seconds to answer once the recording has ended, per question
-const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15, utterance: 8, response: 8 };
+const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15, utterance: 8, response: 8,
+    ko_answer: 8, ko_next: 8, ko_place: 8, ko_topic: 8, ko_pic: 10, ko_same: 12, ko_main: 12, ko_pair: 15,
+    ko2_pic: 12, ko2_next: 10, ko2_act: 12, ko2_same: 15, ko2_main: 15, ko2_pair: 20 };
+const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
 const LISTENING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
-const LISTENING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ja_n3: 'jlpt_n3', ja_n2: 'jlpt_n2', ja_n1: 'jlpt_n1' };
+const LISTENING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ja_n3: 'jlpt_n3', ja_n2: 'jlpt_n2', ja_n1: 'jlpt_n1',
+    ko_1: 'topik_1', ko_2: 'topik_2', ko_3: 'topik_3', ko_4: 'topik_4', ko_5: 'topik_4', ko_6: 'topik_4' };
 const LISTENING_DEFAULT_TYPES = ['task', 'point', 'utterance', 'response'];
 
 let listeningIndex = null;
@@ -62,6 +68,29 @@ function listeningExam() { return listeningMock() || listeningPref('listening_ex
 function listeningSlow() { return !listeningExam() && listeningPref('listening_slow', '0') === '1'; }
 function listeningTypes(lv) { return lv.types || LISTENING_DEFAULT_TYPES; }
 function listeningTypeNo(lv, type) { return listeningTypes(lv).indexOf(type) + 1; }
+/* plays per item in a mock exam: one number, or one per type (TOPIK II: 1–20 once, 21–50 twice) */
+function listeningMockPlays(lv, type) {
+    const p = lv.mock_plays || 1;
+    return typeof p === 'object' ? (p[type] || 1) : p;
+}
+function listeningMockPlaysText(lv) {
+    const ns = [...new Set(listeningTypes(lv).map(ty => listeningMockPlays(lv, ty)))].sort();
+    return ns.length > 1 ? ns[0] + '–' + ns[ns.length - 1] : String(ns[0]);
+}
+/* "[1~4]": the question numbers of the item's group in its set (TOPIK levels, which have lv.instr) */
+function listeningRange(set, k) {
+    const items = set.items;
+    let a = 0;
+    for (let i = 0; i < k; i++) a += items[i].questions.length;
+    let lo = k, hi = k;
+    while (lo > 0 && items[lo - 1].type === items[k].type) lo--;
+    while (hi < items.length - 1 && items[hi + 1].type === items[k].type) hi++;
+    let first = a + 1;
+    for (let i = lo; i < k; i++) first -= items[i].questions.length;
+    let last = first - 1;
+    for (let i = lo; i <= hi; i++) last += items[i].questions.length;
+    return first === last ? '[' + first + ']' : '[' + first + '~' + last + ']';
+}
 
 function listeningProgress() {
     try { return JSON.parse(localStorage.getItem('listening_progress')) || {}; } catch { return {}; }
@@ -188,7 +217,7 @@ function listeningMockNoteHtml(lv) {
     const s = lv.sets[listeningMockNote];
     const nq = s.items.reduce((n, it) => n + it.questions.length, 0);
     return mockNoteHtml(t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 }),
-        [t('mock_note_listening', { n: nq, m: listeningMinutes(s), p: lv.mock_plays || 1 })],
+        [t('mock_note_listening', { n: nq, m: listeningMinutes(s), p: listeningMockPlaysText(lv) })],
         `listeningStart(${listeningMockNote}, null, 'go')`, "listeningGo('list')");
 }
 
@@ -205,7 +234,7 @@ function listeningListHtml(lv) {
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
         ${mocks.length ? `<div class="ls-mock">
             <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>
-            <p class="ls-mock-hint">${escHtml(t('listening_mock_hint', { n: mockQ, p: lv.mock_plays || 1 }))}</p>
+            <p class="ls-mock-hint">${escHtml(t('listening_mock_hint', { n: mockQ, p: listeningMockPlaysText(lv) }))}</p>
             <ol class="grammar-list learn-list-grid">${mocks.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
         </div>` : ''}
         <label class="ls-exam">
@@ -306,7 +335,7 @@ function listeningPlaylist(it) {
 
 function listeningPlaysAllowed(lv) {
     const z = listeningSession;
-    if (z.mock && !z.reviewing) return lv.mock_plays || 1;
+    if (z.mock && !z.reviewing) return listeningMockPlays(lv, listeningItem(lv).type);
     return listeningExam() && !z.reviewing ? LISTENING_EXAM_PLAYS : Infinity;
 }
 
@@ -370,7 +399,13 @@ function listeningPlay() {
    was made early — the pace is the exam's), then moves on */
 function listeningPlayEnded() {
     const z = listeningSession;
-    if (!z.mock || z.reviewing || listeningPlaysLeft() > 0) return;
+    if (!z.mock || z.reviewing) return;
+    if (listeningPlaysLeft() > 0) {
+        // played twice, as in TOPIK: the second time follows by itself
+        const run = listeningRun;
+        setTimeout(() => { if (run === listeningRun && listeningView === 'quiz') listeningPlay(); }, LISTENING_REPLAY_GAP_MS);
+        return;
+    }
     const lv = listeningLevels[listeningLevelId];
     const it = listeningItem(lv);
     listeningClockStart('answer', (LISTENING_ANSWER_SECS[it.type] || 12) * it.questions.length, () => {
@@ -489,7 +524,8 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
             ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
-            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
+            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && lv.instr && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}`;
+        // (TOPIK levels: each printed option's translation once answered)
         return `<button type="button" class="btn option-btn${cls}" onclick="listeningAnswer(${qn}, ${i})"${done && (show || z.mock === false) ? ' disabled' : ''}>${label}</button>`;
     }).join('');
 }
@@ -518,10 +554,11 @@ function listeningQuizHtml(lv) {
     }).join('');
     const questionsHtml = it.questions.map((q, qn) => {
         const picked = z.picks[z.qi][qn];
-        const qText = q.q && (show || !q.spoken && !multi) ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
+        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span><div class="ls-zh">${escHtml(gText(q.ask))}</div></div>`
+            : q.q && (show || !q.spoken && !multi) ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
-            ${multi ? qText : ''}
+            ${multi || q.ask ? qText : ''}
             <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
             ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: q.answer + 1 }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
@@ -550,8 +587,11 @@ function listeningQuizHtml(lv) {
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
-        <div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
-        <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>
+        ${lv.instr ? `<div class="ls-kind">${escHtml(listeningRange(lv.sets[z.setNo], z.order[z.qi]))}　${escHtml(t('listening_type_' + it.type))}</div>
+        <div class="ls-instr" lang="${lv.lang}">${escHtml(lv.instr[it.type] || '')}</div>
+        <div class="ls-how">${escHtml(t('listening_how_' + it.type))}</div>`
+        : `<div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
+        <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>`}
         ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}">${it.pic && it.pic.kind === 'scene'
                 ? `<img class="ls-scene-img" src="${listeningPicUrl(lv, it)}" alt="" onerror="this.nextElementSibling.hidden = false; this.remove()"><span class="ls-scene-emoji" aria-hidden="true" hidden>${it.scene.emoji || ''}</span>`
                 : `<span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>`}${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
@@ -714,7 +754,7 @@ function listeningResultHtml(lv) {
             <p class="grammar-score">${escHtml(t('grammar_result', { n: right, m: total }))}</p>
             <p class="grammar-verdict ${pass ? 'ok' : 'no'}">${escHtml(t(z.retry ? 'listening_retry_done' : z.mock ? (pass ? 'listening_mock_pass' : 'listening_mock_fail') : pass ? 'listening_pass' : 'listening_fail'))}</p>
             <div class="ls-types-result">${listeningTypes(lv).filter(ty => byType[ty]).map(ty =>
-                `<div class="ls-type-box"><span>${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, ty) }))} ${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
+                `<div class="ls-type-box"><span>${lv.instr ? '' : escHtml(t('listening_mondai', { n: listeningTypeNo(lv, ty) })) + ' '}${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
             <p class="rd-speed">⏱ ${escHtml(t('listening_time', { t: listeningClockText(z.secs) }))}${z.mock ? '' : `　·　${escHtml(t('listening_avg_plays', { n: plays.toFixed(1) }))}`}</p>
             ${z.mock ? `<p class="rd-help">${escHtml(t('listening_mock_sheet'))}</p>${sheet}` : ''}
             <div class="grammar-result-btns">

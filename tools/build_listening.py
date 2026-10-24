@@ -7,7 +7,9 @@ questions are copyrighted):
     {id, lang, level, order,
      types?: [...],              # the level's item types in exam order (問題 1, 2, …);
                                  # default task, point, utterance, response (N5 / N4)
-     mock_plays?: 1,             # plays per item in a mock exam (JLPT: once)
+     mock_plays?: 1,             # plays per item in a mock exam (JLPT: once), or {type: n}
+                                 # (TOPIK II: 1–20 once, 21–50 twice)
+     instr?: {type: text},       # TOPIK: the paper's Korean instruction of each type
      mock_counts?: {type: n},    # the official mix (in questions) a mock set must have
      read_secs?: 10,             # ポイント理解: time to read the options
      sets: [{id, mock?: true, items: [item…]}]}
@@ -17,7 +19,8 @@ questions are copyrighted):
             # one question (the usual case):
             options: [...], answer: index, explain: {zh, en},
             # or several about the same recording (統合理解, HSK 4+, TOEIC Part 3…):
-            questions: [{q?: {who, s, zh, en}, spoken?: bool, options, answer, explain}],
+            questions: [{q?: {who, s, zh, en}, ask?: {s, zh, en}, spoken?: bool, options, answer, explain}],
+            # q is played after the lines; ask is printed (TOPIK's questions; also item-level `ask`)
             words?: [{w, r, zh, en, m?}]}         # glossary, underlined in the transcript
     Options are printed {t, emoji?, zh?, en?} for task / point (and integrated unless
     spoken), spoken {who, s, zh, en} for utterance / response (3) and outline (4).
@@ -55,8 +58,18 @@ import build_audio as ba                           # noqa: E402
 VOICES = {
     'ja': ('ja-JP', {'N': 'ja-JP-Chirp3-HD-Kore', 'F': 'ja-JP-Chirp3-HD-Erinome', 'M': 'ja-JP-Chirp3-HD-Charon',
                      'F2': 'ja-JP-Chirp3-HD-Leda', 'M2': 'ja-JP-Chirp3-HD-Fenrir'}),
+    # the same three, picked again by ear for Korean (tools/.mockups/ko_listen_voices.py, 2026-10-24)
+    'ko': ('ko-KR', {'N': 'ko-KR-Chirp3-HD-Kore', 'F': 'ko-KR-Chirp3-HD-Erinome', 'M': 'ko-KR-Chirp3-HD-Charon',
+                     'F2': 'ko-KR-Chirp3-HD-Leda', 'M2': 'ko-KR-Chirp3-HD-Fenrir'}),
 }
-TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated')
+# TOPIK (Korean) item types, one per instruction group of the paper; every option is printed.
+# TOPIK I: 1–4 answer, 5–6 next, 7–10 place, 11–14 topic, 15–16 pic, 17–21 same, 22–24 main,
+# 25–30 pair (one recording, two printed questions). TOPIK II: 1–3 pic, 4–8 next, 9–12 act,
+# 13–16 same, 17–20 main, 21–50 pair. The level file gives each type its Korean instruction (`instr`).
+KO_TYPES = ('ko_answer', 'ko_next', 'ko_place', 'ko_topic', 'ko_pic', 'ko_same', 'ko_main', 'ko_pair',
+            'ko2_pic', 'ko2_next', 'ko2_act', 'ko2_same', 'ko2_main', 'ko2_pair')
+PIC_TYPES = ('task', 'ko_pic', 'ko2_pic')          # options drawn as one 2x2 picture
+TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES
 DEFAULT_TYPES = ['task', 'point', 'utterance', 'response']
 SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4}     # types whose options are read aloud
 SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
@@ -93,7 +106,7 @@ def item_pic(key, it, lang, problems):
     if not spec:
         return None
     first = re.sub(r'\{[^}]*\}', '', it['lines'][0]['s'])
-    want = 'grid' if it.get('type') == 'task' else 'scene' if it.get('type') == 'utterance' else None
+    want = 'grid' if it.get('type') in PIC_TYPES else 'scene' if it.get('type') == 'utterance' else None
     if not first.startswith(spec['first']) or want not in spec:
         problems.append(f'{key}: tools/listening/pics.json describes another item ({spec["first"]!r}, a {want or it.get("type")} is here)')
         return None
@@ -140,9 +153,16 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi):
     for k in ('zh', 'en'):
         if not (q.get('explain') or {}).get(k):
             problems.append(f'{where}: no {k} explanation')
-    if multi and not q.get('q'):
-        problems.append(f'{where}: each of several questions needs its spoken question "q"')
+    if multi and not q.get('q') and not q.get('ask'):
+        problems.append(f'{where}: each of several questions needs its spoken question "q" or printed "ask"')
     qline = spoken(q['q'], f'{where} question', words, problems, lang, jobs) if q.get('q') else None
+    ask = None
+    if q.get('ask'):                       # a printed question (TOPIK), not played
+        segs, plain, _ = sentence(q['ask']['s'], None, f'{where} ask', problems, lang, short=True)
+        for k in ('zh', 'en'):
+            if not q['ask'].get(k):
+                problems.append(f'{where}: no {k} translation of the printed question')
+        ask = {'t': segs, 'plain': plain, 'zh': q['ask'].get('zh', ''), 'en': q['ask'].get('en', '')}
     if spoken_opts:
         options = [spoken(o, f'{where} option {i + 1}', [], problems, lang, jobs, i) for i, o in enumerate(q['options'])]
     else:
@@ -151,7 +171,7 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi):
             segs, plain, _ = sentence(o['t'], None, f'{where} option {i + 1}', problems, lang, short=True)
             options.append({'t': segs, 'plain': plain, 'emoji': o.get('emoji', ''),
                             'zh': o.get('zh', ''), 'en': o.get('en', '')})
-    return {'q': qline, 'spoken': spoken_opts, 'options': options, 'answer': q.get('answer', 0),
+    return {'q': qline, **({'ask': ask} if ask else {}), 'spoken': spoken_opts, 'options': options, 'answer': q.get('answer', 0),
             'explain': q.get('explain', {})}
 
 
@@ -163,6 +183,11 @@ def build(src, problems, jobs):
     for t in types:
         if t not in TYPES:
             problems.append(f'{src.stem}: unknown type {t!r} in "types"')
+        if t in KO_TYPES and not data.get('instr', {}).get(t):
+            problems.append(f'{src.stem}: type {t} needs its instruction in "instr"')
+    plays = data.get('mock_plays', 1)
+    if isinstance(plays, dict) and set(plays) != set(types):
+        problems.append(f'{src.stem}: "mock_plays" by type must name every type')
     sets = []
     for set_ in data['sets']:
         items = []
@@ -176,7 +201,7 @@ def build(src, problems, jobs):
             words = it.get('words', [])
             lines = [spoken(l, f'{where} line {i + 1}', words, problems, lang, jobs) for i, l in enumerate(it['lines'])]
             qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
-                                          'explain': it.get('explain')}]
+                                          'explain': it.get('explain'), **({'ask': it['ask']} if it.get('ask') else {})}]
             questions = [build_question(q, typ, f'{where} Q{n + 1}' if len(qs) > 1 else where, words, problems,
                                         lang, jobs, len(qs) > 1) for n, q in enumerate(qs)]
             mix[typ] += len(questions)
@@ -209,7 +234,8 @@ def build(src, problems, jobs):
             problems.append(f'{src.stem}/{set_["id"]}: a set should have every type, has {mix}')
         sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
-            'mock_plays': data.get('mock_plays', 1), 'sets': sets}
+            **({'instr': {t: data['instr'][t] for t in types}} if data.get('instr') else {}),
+            'mock_plays': plays, 'sets': sets}
 
 
 def render_audio(lang, jobs):
