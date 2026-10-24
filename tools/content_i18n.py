@@ -182,8 +182,11 @@ def translate(kind, lesson, objs):
                 for i, o in enumerate(objs):
                     a = got.get(i) or {}
                     if all(isinstance(a.get(t), str) and a[t].strip() for t in targets):
+                        # a text shared with another lesson (same zh + en) keeps the translation
+                        # it already has — the run only adds the languages it lacked (2026-10-24:
+                        # Korean listening re-translated 66 grammar / reading texts and moved them)
                         for t in targets:
-                            store(t)[text_key(o)] = a[t].strip()
+                            store(t).setdefault(text_key(o), a[t].strip())
                         done += 1
             if done >= len(objs) * 0.9:
                 return done
