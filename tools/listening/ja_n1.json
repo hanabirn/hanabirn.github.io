@@ -1139,6 +1139,243 @@
           ]
         }
       ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "会社{かいしゃ}で部長{ぶちょう}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}はこのあとまず何{なに}をしますか。", "zh": "部長和女生在公司說話。女生接下來首先要做什麼？", "en": "A manager and a woman are talking at the office. What will the woman do first?"},
+            {"who": "M", "s": "来月{らいげつ}の新商品{しんしょうひん}発表会{はっぴょうかい}の件{けん}だけど、会場{かいじょう}はもう押{お}さえてあるんだよね。", "zh": "下個月新產品發表會的事，場地已經訂好了吧。", "en": "About next month's product launch — you've already secured the venue, haven't you?"},
+            {"who": "F", "s": "はい、ホテルの宴会場{えんかいじょう}を予約{よやく}してあります。招待状{しょうたいじょう}は来週{らいしゅう}発送{はっそう}する予定{よてい}です。", "zh": "是的，已經預約了飯店的宴會廳。邀請函預定下週寄出。", "en": "Yes, I've booked a hotel banquet hall. The invitations are due to go out next week."},
+            {"who": "M", "s": "そのことなんだけど、取引先{とりひきさき}の数{かず}が去年{きょねん}より増{ふ}えてるから、会場{かいじょう}の広{ひろ}さが足{た}りるかどうか、まず確{たし}かめてもらえるかな。招待状{しょうたいじょう}はそれからでいいから。", "zh": "關於這件事，客戶的數量比去年多，可以先確認一下場地夠不夠大嗎？邀請函等確認之後再寄就好。", "en": "About that — we have more clients than last year, so could you first check whether the hall is big enough? The invitations can wait until then."},
+            {"who": "F", "s": "承知{しょうち}しました。では、出席{しゅっせき}予定者{よていしゃ}の人数{にんずう}をもう一度{いちど}数{かぞ}え直{なお}して……。", "zh": "明白了。那我再重新算一次預定出席的人數……", "en": "Understood. Then I'll recount the expected number of guests and…"},
+            {"who": "M", "s": "ああ、人数{にんずう}は営業部{えいぎょうぶ}がもう出{だ}してくれてるから、それを使{つか}って。", "zh": "啊，人數業務部已經提供了，用那個就好。", "en": "Oh, the sales department has already given us the numbers — use those."},
+            {"who": "F", "s": "わかりました。では、その人数{にんずう}でホテルに問{と}い合{あ}わせます。", "zh": "知道了。那我用那個人數去問飯店。", "en": "All right. I'll ask the hotel with those figures, then."},
+            {"who": "N", "s": "女{おんな}の人{ひと}はこのあとまず何{なに}をしますか。", "zh": "女生接下來首先要做什麼？", "en": "What will the woman do first?"}
+          ],
+          "options": [
+            {"t": "招待状{しょうたいじょう}を発送{はっそう}する", "emoji": "✉️", "zh": "寄出邀請函", "en": "send out the invitations"},
+            {"t": "出席者{しゅっせきしゃ}の人数{にんずう}を数{かぞ}え直{なお}す", "emoji": "🧮", "zh": "重新計算出席人數", "en": "recount the guests"},
+            {"t": "営業部{えいぎょうぶ}に人数{にんずう}を聞{き}く", "emoji": "📞", "zh": "向業務部詢問人數", "en": "ask sales for the numbers"},
+            {"t": "ホテルに会場{かいじょう}の広{ひろ}さを問{と}い合{あ}わせる", "emoji": "🏨", "zh": "向飯店詢問場地大小", "en": "ask the hotel about the size of the hall"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "人數業務部已經給了，不用重算也不用再問；邀請函「それからでいい」（之後再寄）。所以首先是拿那個人數去問飯店場地夠不夠大。", "en": "Sales has already supplied the numbers, so no recount or call is needed, and the invitations wait. First she asks the hotel about the hall size."},
+          "words": [
+            {"w": "会場", "r": "かいじょう", "zh": "會場", "en": "venue", "m": ["会場は", "会場の"]},
+            {"w": "招待状", "r": "しょうたいじょう", "zh": "邀請函", "en": "invitation"},
+            {"w": "取引先", "r": "とりひきさき", "zh": "客戶", "en": "client"},
+            {"w": "問", "r": "と", "zh": "詢問", "en": "to inquire", "m": ["問"]}
+          ]
+        },
+        {
+          "type": "task",
+          "lines": [
+            {"who": "N", "s": "大学{だいがく}の事務室{じむしつ}で男{おとこ}の学生{がくせい}と職員{しょくいん}が話{はな}しています。男{おとこ}の学生{がくせい}は奨学金{しょうがくきん}の申請{しんせい}のために、何{なに}を用意{ようい}しなければなりませんか。", "zh": "男學生和職員在大學辦公室說話。男學生為了申請獎學金，必須準備什麼？", "en": "A male student is talking to a staff member at the university office. What must he prepare to apply for the scholarship?"},
+            {"who": "M", "s": "奨学金{しょうがくきん}の申請{しんせい}をしたいんですが、必要{ひつよう}な書類{しょるい}を教{おし}えていただけますか。", "zh": "我想申請獎學金，可以告訴我需要哪些文件嗎？", "en": "I'd like to apply for the scholarship. Could you tell me which documents I need?"},
+            {"who": "F", "s": "申請書{しんせいしょ}と成績{せいせき}証明書{しょうめいしょ}、それから推薦状{すいせんじょう}です。成績{せいせき}証明書{しょうめいしょ}はこちらで発行{はっこう}して審査{しんさ}の担当{たんとう}に直接{ちょくせつ}回{まわ}しますので、ご自分{じぶん}で用意{ようい}していただく必要{ひつよう}はありません。", "zh": "申請書、成績證明書，還有推薦信。成績證明書由我們這邊發行，直接轉交給審查負責人，所以不需要您自己準備。", "en": "An application form, a transcript and a letter of recommendation. We issue the transcript ourselves and pass it straight to the reviewers, so you don't need to provide it."},
+            {"who": "M", "s": "推薦状{すいせんじょう}は、指導{しどう}教員{きょういん}にお願{ねが}いすればいいんでしょうか。", "zh": "推薦信是拜託指導教授寫就可以了嗎？", "en": "Should I ask my supervisor for the recommendation?"},
+            {"who": "F", "s": "ええ。ただ、今年{ことし}から推薦状{すいせんじょう}は先生{せんせい}から事務室{じむしつ}に直接{ちょくせつ}送{おく}っていただくことになりました。学生{がくせい}さんは申請書{しんせいしょ}だけ出{だ}してください。", "zh": "是的。不過從今年開始，推薦信改成由老師直接寄到辦公室。學生只要交申請書就好。", "en": "Yes. But from this year the professor sends the letter directly to this office. Students only need to hand in the application form."},
+            {"who": "M", "s": "わかりました。じゃあ、先生{せんせい}にはお願{ねが}いだけしておけばいいんですね。", "zh": "知道了。那我只要先拜託老師就好了吧。", "en": "I see. So I just need to ask my professor."},
+            {"who": "N", "s": "男{おとこ}の学生{がくせい}は奨学金{しょうがくきん}の申請{しんせい}のために、何{なに}を用意{ようい}しなければなりませんか。", "zh": "男學生為了申請獎學金，必須準備什麼？", "en": "What must the student prepare for the scholarship application?"}
+          ],
+          "options": [
+            {"t": "申請書{しんせいしょ}だけ", "emoji": "📝", "zh": "只有申請書", "en": "only the application form"},
+            {"t": "申請書{しんせいしょ}と成績{せいせき}証明書{しょうめいしょ}", "emoji": "📑", "zh": "申請書和成績證明書", "en": "the form and a transcript"},
+            {"t": "申請書{しんせいしょ}と推薦状{すいせんじょう}", "emoji": "✉️", "zh": "申請書和推薦信", "en": "the form and a recommendation"},
+            {"t": "三{みっ}つの書類{しょるい}すべて", "emoji": "🗂️", "zh": "三種文件全部", "en": "all three documents"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "成績證明書由學校轉交，推薦信由老師直接寄，職員說「学生さんは申請書だけ出してください」（學生只要交申請書）。", "en": "The office handles the transcript and the professor sends the letter, so the student hands in only the application form."},
+          "words": [
+            {"w": "奨学金", "r": "しょうがくきん", "zh": "獎學金", "en": "scholarship"},
+            {"w": "申請", "r": "しんせい", "zh": "申請", "en": "application", "m": ["申請を", "申請の"]},
+            {"w": "推薦状", "r": "すいせんじょう", "zh": "推薦信", "en": "letter of recommendation"},
+            {"w": "書類", "r": "しょるい", "zh": "文件", "en": "documents"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "女{おんな}の人{ひと}と男{おとこ}の人{ひと}が話{はな}しています。男{おとこ}の人{ひと}は、この映画{えいが}のどんな点{てん}をいちばん評価{ひょうか}していますか。", "zh": "女生和男生在說話。男生最欣賞這部電影的哪一點？", "en": "A woman and a man are talking. What does the man value most about the film?"},
+            {"who": "F", "s": "昨日{きのう}、話題{わだい}の映画{えいが}を見{み}たんでしょう？どうだった？", "zh": "你昨天看了那部很紅的電影吧？怎麼樣？", "en": "You saw that much-talked-about film yesterday, right? How was it?"},
+            {"who": "M", "s": "映像{えいぞう}は確{たし}かに見事{みごと}だったし、主演{しゅえん}の俳優{はいゆう}の演技{えんぎ}も評判{ひょうばん}どおりだったよ。ただ、ストーリーは正直{しょうじき}、先{さき}が読{よ}めてしまってね。", "zh": "影像確實很精彩，主角的演技也跟評價一樣好。不過老實說，劇情可以猜到後面。", "en": "The visuals were certainly stunning, and the lead actor was as good as everyone says. But honestly, the story was predictable."},
+            {"who": "F", "s": "じゃあ、いまいちだったの？", "zh": "那是不怎麼樣囉？", "en": "So it was a bit disappointing?"},
+            {"who": "M", "s": "いや、それでも見{み}てよかったと思{おも}うよ。何{なに}より、台詞{せりふ}が少{すく}ないのに、登場{とうじょう}人物{じんぶつ}の気持{きも}ちが音楽{おんがく}だけで伝{つた}わってくるんだ。あれはほかの映画{えいが}ではなかなか味{あじ}わえないよ。", "zh": "不，我還是覺得看了很值得。最重要的是，明明台詞很少，角色的心情卻只靠音樂就傳達出來了。那是在其他電影很難體會到的。", "en": "No, I'm still glad I saw it. Above all, though there's little dialogue, the characters' feelings come through in the music alone. You rarely get that in other films."},
+            {"who": "N", "s": "男{おとこ}の人{ひと}は、この映画{えいが}のどんな点{てん}をいちばん評価{ひょうか}していますか。", "zh": "男生最欣賞這部電影的哪一點？", "en": "What does the man value most about the film?"}
+          ],
+          "options": [
+            {"t": "映像{えいぞう}が美{うつく}しいこと", "emoji": "🎞️", "zh": "影像很美", "en": "the beautiful visuals"},
+            {"t": "俳優{はいゆう}の演技{えんぎ}がうまいこと", "emoji": "🎭", "zh": "演員演技好", "en": "the acting"},
+            {"t": "音楽{おんがく}で気持{きも}ちが伝{つた}わること", "emoji": "🎵", "zh": "用音樂傳達心情", "en": "feelings conveyed through music"},
+            {"t": "ストーリーが意外{いがい}なこと", "emoji": "📖", "zh": "劇情出人意料", "en": "the surprising story"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "影像和演技也稱讚了，但他用「何より」（最重要的是）說的是「気持ちが音楽だけで伝わってくる」（心情只靠音樂就傳達出來）。劇情他覺得猜得到。", "en": "He praises the visuals and acting, but \"above all\" (何より) the music that conveys the feelings. He found the story predictable."},
+          "words": [
+            {"w": "映像", "r": "えいぞう", "zh": "影像", "en": "visuals"},
+            {"w": "演技", "r": "えんぎ", "zh": "演技", "en": "acting"},
+            {"w": "台詞", "r": "せりふ", "zh": "台詞", "en": "lines, dialogue"},
+            {"w": "評価", "r": "ひょうか", "zh": "評價", "en": "evaluation"}
+          ]
+        },
+        {
+          "type": "point",
+          "lines": [
+            {"who": "N", "s": "男{おとこ}の人{ひと}と女{おんな}の人{ひと}が話{はな}しています。女{おんな}の人{ひと}は、ボランティアを辞{や}めた理由{りゆう}は何{なん}だと言{い}っていますか。", "zh": "男生和女生在說話。女生說她辭掉志工的理由是什麼？", "en": "A man and a woman are talking. Why does the woman say she quit volunteering?"},
+            {"who": "M", "s": "地域{ちいき}のボランティア、辞{や}めたんだって？あんなに熱心{ねっしん}だったのに。", "zh": "聽說你辭掉社區志工了？你以前那麼熱心。", "en": "I hear you've quit the local volunteering? You were so keen."},
+            {"who": "F", "s": "うん。仕事{しごと}が忙{いそが}しくなったのもあるけど、それはどうにでもなるの。それより、最近{さいきん}活動{かつどう}の内容{ないよう}が変{か}わって、子{こ}どもたちと直接{ちょくせつ}関{かか}わる機会{きかい}がほとんどなくなっちゃったのよ。わたしはそれがやりたくて始{はじ}めたから。", "zh": "嗯。工作變忙也是原因之一，但那總有辦法。比較主要的是，最近活動內容改變，幾乎沒有直接跟孩子們互動的機會了。我是因為想做那個才開始的。", "en": "Yes. Work got busier, but I could have managed that. The real thing is that the activities changed recently, and there's hardly any chance to work with the children directly any more. That's why I started in the first place."},
+            {"who": "M", "s": "そうか。人間{にんげん}関係{かんけい}で何{なに}かあったのかと思{おも}ったよ。", "zh": "這樣啊。我還以為是人際關係出了什麼問題。", "en": "I see. I thought something had happened with the people there."},
+            {"who": "F", "s": "みんないい人{ひと}たちだよ。", "zh": "大家都是好人喔。", "en": "They're all lovely people."},
+            {"who": "N", "s": "女{おんな}の人{ひと}は、ボランティアを辞{や}めた理由{りゆう}は何{なん}だと言{い}っていますか。", "zh": "女生說她辭掉志工的理由是什麼？", "en": "Why does the woman say she quit volunteering?"}
+          ],
+          "options": [
+            {"t": "仕事{しごと}が忙{いそが}しくなったから", "emoji": "💼", "zh": "因為工作變忙", "en": "work got busier"},
+            {"t": "やりたかった活動{かつどう}ができなくなったから", "emoji": "🧒", "zh": "因為不能做想做的活動了", "en": "she can no longer do what she wanted to"},
+            {"t": "ほかの人{ひと}と合{あ}わなかったから", "emoji": "👥", "zh": "因為跟其他人合不來", "en": "she didn't get on with the others"},
+            {"t": "子{こ}どもが苦手{にがて}だから", "emoji": "🙅", "zh": "因為不擅長應付小孩", "en": "she isn't good with children"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說工作忙「それはどうにでもなる」（那總有辦法），真正的理由是「子どもたちと直接関わる機会がほとんどなくなった」（幾乎沒機會直接跟孩子互動），那是她想做的事。", "en": "She says busy work was manageable; the real reason is that she can hardly work with the children any more, which is why she joined."},
+          "words": [
+            {"w": "地域", "r": "ちいき", "zh": "地區、社區", "en": "local area"},
+            {"w": "熱心", "r": "ねっしん", "zh": "熱心", "en": "keen"},
+            {"w": "活動", "r": "かつどう", "zh": "活動", "en": "activity"},
+            {"w": "機会", "r": "きかい", "zh": "機會", "en": "opportunity"}
+          ]
+        },
+        {
+          "type": "outline",
+          "lines": [
+            {"who": "N", "s": "テレビで経済{けいざい}の専門家{せんもんか}が話{はな}しています。", "zh": "經濟專家在電視上說話。", "en": "An economist is speaking on TV."},
+            {"who": "M", "s": "最近{さいきん}、商品{しょうひん}を「所有{しょゆう}」するのではなく、必要{ひつよう}なときだけ「利用{りよう}」するサービスが広{ひろ}がっています。車{くるま}や服{ふく}、家具{かぐ}まで、月{つき}ごとに料金{りょうきん}を払{はら}って使{つか}うという形{かたち}です。", "zh": "最近，不是「擁有」商品，而是只在需要時「使用」的服務越來越普及。從車子、衣服到家具，都是每月付費使用的形式。", "en": "Services that let you 'use' things only when you need them, instead of 'owning' them, are spreading. From cars and clothes to furniture, you pay a monthly fee to use them."},
+            {"who": "M", "s": "消費者{しょうひしゃ}にとっては初期{しょき}費用{ひよう}がかからず、企業{きぎょう}にとっては安定{あんてい}した収入{しゅうにゅう}が見込{みこ}めるという利点{りてん}があります。ただ、長{なが}く使{つか}うほど、買{か}うより割高{わりだか}になる場合{ばあい}もあり、契約{けいやく}の前{まえ}によく計算{けいさん}することが大切{たいせつ}です。", "zh": "對消費者來說不需要初期費用，對企業來說可以期待穩定的收入，這是它的優點。不過用得越久，有時會比買下來更貴，所以簽約前好好計算很重要。", "en": "For consumers there are no upfront costs, and for companies a steady income — those are the advantages. But the longer you use something, the more it can end up costing compared with buying it, so it is important to do the sums before signing."},
+            {"who": "N", "s": "専門家{せんもんか}は何{なに}について話{はな}していますか。", "zh": "專家在說關於什麼的事？", "en": "What is the economist talking about?"}
+          ],
+          "options": [
+            {"who": "N", "s": "物{もの}を買{か}うときの節約{せつやく}の方法{ほうほう}", "zh": "買東西時節省的方法", "en": "ways to save money when shopping"},
+            {"who": "N", "s": "企業{きぎょう}の収入{しゅうにゅう}を増{ふ}やす方法{ほうほう}", "zh": "增加企業收入的方法", "en": "ways for companies to earn more"},
+            {"who": "N", "s": "車{くるま}の新{あたら}しい売{う}り方{かた}", "zh": "汽車的新賣法", "en": "a new way of selling cars"},
+            {"who": "N", "s": "物{もの}を所有{しょゆう}せずに利用{りよう}するサービスの特徴{とくちょう}", "zh": "不擁有物品而是使用的服務的特點", "en": "the features of services for using things without owning them"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "專家說明「所有」改為「利用」的服務在普及，並說出對消費者和企業的優點，以及要注意的地方，談的是這種服務的特點。", "en": "He describes the spread of services for using rather than owning things, with their pros and pitfalls — the features of such services."},
+          "words": [
+            {"w": "所有", "r": "しょゆう", "zh": "擁有", "en": "ownership"},
+            {"w": "利用", "r": "りよう", "zh": "使用", "en": "use"},
+            {"w": "料金", "r": "りょうきん", "zh": "費用", "en": "fee"},
+            {"w": "割高", "r": "わりだか", "zh": "比較貴", "en": "comparatively expensive"},
+            {"w": "契約", "r": "けいやく", "zh": "契約", "en": "contract"}
+          ]
+        },
+        {
+          "type": "outline",
+          "lines": [
+            {"who": "N", "s": "講演会{こうえんかい}で女{おんな}の人{ひと}が話{はな}しています。", "zh": "女生在演講會上說話。", "en": "A woman is speaking at a lecture."},
+            {"who": "F", "s": "「失敗{しっぱい}は成功{せいこう}のもと」と言{い}いますが、失敗{しっぱい}がそのまま成功{せいこう}につながるわけではありません。大切{たいせつ}なのは、なぜうまくいかなかったのかを冷静{れいせい}に振{ふ}り返{かえ}ることです。", "zh": "俗話說「失敗為成功之母」，但失敗並不會直接變成成功。重要的是冷靜回顧為什麼沒有成功。", "en": "They say failure is the mother of success, but failure doesn't lead straight to success. What matters is looking back calmly at why things went wrong."},
+            {"who": "F", "s": "ところが、多{おお}くの人{ひと}は失敗{しっぱい}すると、それを早{はや}く忘{わす}れようとしてしまいます。つらい経験{けいけん}だからこそ、目{め}をそらさずに原因{げんいん}を分析{ぶんせき}する。それができて初{はじ}めて、失敗{しっぱい}は次{つぎ}の成功{せいこう}の材料{ざいりょう}になるのです。", "zh": "然而，很多人一失敗就想趕快忘掉。正因為是痛苦的經驗，才要不逃避地分析原因。能做到這一點，失敗才會成為下一次成功的材料。", "en": "Yet many people try to forget a failure as quickly as possible. Precisely because it is painful, you must face it and analyse the causes. Only then does failure become material for the next success."},
+            {"who": "N", "s": "女{おんな}の人{ひと}が最{もっと}も言{い}いたいことは何{なん}ですか。", "zh": "女生最想說的是什麼？", "en": "What is the woman's main point?"}
+          ],
+          "options": [
+            {"who": "N", "s": "失敗{しっぱい}の原因{げんいん}を振{ふ}り返{かえ}ることが成功{せいこう}につながる", "zh": "回顧失敗的原因才能通往成功", "en": "looking back at the causes of failure leads to success"},
+            {"who": "N", "s": "失敗{しっぱい}はできるだけ早{はや}く忘{わす}れたほうがいい", "zh": "失敗最好盡快忘掉", "en": "it is best to forget failures quickly"},
+            {"who": "N", "s": "失敗{しっぱい}すれば必{かなら}ず成功{せいこう}できる", "zh": "只要失敗就一定能成功", "en": "failing guarantees success"},
+            {"who": "N", "s": "失敗{しっぱい}しないように慎重{しんちょう}に行動{こうどう}すべきだ", "zh": "應該謹慎行動以免失敗", "en": "you should act carefully so as not to fail"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生說「大切なのは、なぜうまくいかなかったのかを冷静に振り返ること」（重要的是冷靜回顧原因），這樣失敗才能成為成功的材料。她說失敗「不會直接」變成功，也批評了想快點忘記的做法。", "en": "Her point: reflecting calmly on why you failed is what turns failure into success. She denies failure leads straight to success and criticises trying to forget it."},
+          "words": [
+            {"w": "冷静", "r": "れいせい", "zh": "冷靜", "en": "calm"},
+            {"w": "振", "r": "ふ", "zh": "回顧（振り返る）", "en": "to look back", "m": ["振"]},
+            {"w": "分析", "r": "ぶんせき", "zh": "分析", "en": "analysis"},
+            {"w": "材料", "r": "ざいりょう", "zh": "材料", "en": "material"}
+          ]
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "M", "s": "先日{せんじつ}お願{ねが}いした件{けん}、その後{ご}いかがでしょうか。", "zh": "前幾天拜託您的那件事，後來怎麼樣了呢？", "en": "How are things going with the matter I asked you about the other day?"}
+          ],
+          "options": [
+            {"who": "F", "s": "その後{ご}はお願{ねが}いしておりません。", "zh": "之後我就沒有拜託了。", "en": "I haven't asked anything since then."},
+            {"who": "F", "s": "申{もう}し訳{わけ}ありません、ただいま確認{かくにん}しているところです。", "zh": "非常抱歉，目前正在確認中。", "en": "I'm sorry, I'm checking on it right now."},
+            {"who": "F", "s": "いかがでしたか。楽{たの}しかったですか。", "zh": "怎麼樣呢？好玩嗎？", "en": "How was it? Did you enjoy it?"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "對方問拜託的事進度如何，回答「ただいま確認しているところです」（目前正在確認）最自然。", "en": "Asked how the request is going, she says she is checking on it now."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "F", "s": "課長{かちょう}、この企画書{きかくしょ}、もう少{すこ}し練{ね}り直{なお}したほうがいいでしょうか。", "zh": "課長，這份企劃書是不是再修改一下比較好？", "en": "Should I rework this proposal a little more?"}
+          ],
+          "options": [
+            {"who": "M", "s": "練{ね}り直{なお}してくれてありがとう。", "zh": "謝謝你幫忙修改。", "en": "Thanks for reworking it."},
+            {"who": "M", "s": "いや、これで十分{じゅうぶん}だよ。このまま出{だ}して。", "zh": "不，這樣就夠了。直接交出去吧。", "en": "No, this is fine. Hand it in as it is."},
+            {"who": "M", "s": "企画書{きかくしょ}、まだ見{み}ていないの？", "zh": "企劃書你還沒看嗎？", "en": "Haven't you looked at the proposal yet?"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "她問要不要再修改，課長回答「これで十分だよ。このまま出して」（這樣就夠了，直接交）。1 是改完後的道謝，3 搞錯了是誰在看。", "en": "She asks whether to rework it; he says it is fine as it is. Option 1 thanks her for finished work; 3 confuses who is reviewing."}
+        },
+        {
+          "type": "response",
+          "lines": [
+            {"who": "M", "s": "山田{やまだ}さんって、あんな大事{だいじ}な会議{かいぎ}でも、まったく物怖{ものお}じしないね。", "zh": "山田在那麼重要的會議上也完全不怯場呢。", "en": "Ms Yamada never seems nervous at all, even in such an important meeting."}
+          ],
+          "options": [
+            {"who": "F", "s": "ええ、緊張{きんちょう}しすぎて何{なに}も話{はな}せなかったみたい。", "zh": "是啊，好像緊張到什麼都說不出來。", "en": "Yes, she seemed too nervous to say anything."},
+            {"who": "F", "s": "会議{かいぎ}には出{で}なかったんですか。", "zh": "你沒去開會嗎？", "en": "Didn't you attend the meeting?"},
+            {"who": "F", "s": "本当{ほんとう}に。堂々{どうどう}としていて、見習{みなら}いたいです。", "zh": "真的。那麼落落大方，真想向她學習。", "en": "Really. She's so composed — I'd like to learn from her."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "「物怖じしない」是不怯場的意思，回答「堂々としていて、見習いたい」（落落大方，想向她學習）最自然。1 跟「不怯場」相反。", "en": "物怖じしない means not being nervous; the natural reply praises her composure. Option 1 says the opposite."}
+        },
+        {
+          "type": "integrated",
+          "lines": [
+            {"who": "N", "s": "不動産屋{ふどうさんや}で、店員{てんいん}の説明{せつめい}を聞{き}いて、夫婦{ふうふ}が話{はな}しています。", "zh": "夫妻在房屋仲介聽了店員的說明後在討論。", "en": "A couple is talking after hearing an estate agent's explanation."},
+            {"who": "F2", "s": "ご希望{きぼう}に合{あ}う物件{ぶっけん}は四{よっ}つございます。Aは駅{えき}から徒歩{とほ}三分{さんぷん}ですが、部屋{へや}は少{すこ}し狭{せま}めです。Bは広{ひろ}くて日当{ひあ}たりもいいんですが、駅{えき}からバスで十五分{じゅうごふん}かかります。", "zh": "符合您需求的物件有四間。A 離車站走路三分鐘，不過房間有點小。B 寬敞、採光也好，但從車站搭公車要十五分鐘。", "en": "We have four properties that match your wishes. A is three minutes' walk from the station, but the rooms are a little small. B is spacious and sunny, but it is fifteen minutes by bus from the station."},
+            {"who": "F2", "s": "Cは駅{えき}から徒歩{とほ}十分{じゅっぷん}で広{ひろ}さも十分{じゅうぶん}ですが、築{ちく}三十年{さんじゅうねん}と古{ふる}めです。Dは新築{しんちく}で駅{えき}にも近{ちか}いんですが、家賃{やちん}がご予算{よさん}を少{すこ}し超{こ}えてしまいます。", "zh": "C 離車站走路十分鐘，空間也夠大，但屋齡三十年，比較舊。D 是新屋、離車站也近，但房租會稍微超出您的預算。", "en": "C is ten minutes' walk from the station and plenty big, but it is thirty years old. D is brand new and close to the station, but the rent is a little over your budget."},
+            {"who": "M", "s": "ぼくは毎朝{まいあさ}早{はや}いから、駅{えき}に近{ちか}いのは譲{ゆず}れないな。予算{よさん}オーバーは困{こま}るし、狭{せま}くても我慢{がまん}するよ。", "zh": "我每天早上很早出門，離車站近這點不能讓步。超出預算也不行，就算小一點我也能忍。", "en": "I leave early every morning, so being near the station is a must. Going over budget is no good, so I'll put up with it being small."},
+            {"who": "F", "s": "二人{ふたり}で住{す}むなら、狭{せま}いのはちょっとね……。古{ふる}くても中{なか}はきれいに直{なお}してあるって言{い}ってたし、歩{ある}いて十分{じゅっぷん}なら通{かよ}えるでしょう？わたしはそこがいいと思{おも}う。", "zh": "兩個人住的話，小的有點……。她說就算舊，裡面也整修得很漂亮，走路十分鐘也能通勤吧？我覺得那間不錯。", "en": "For two of us, small is a bit… She said the old one has been nicely renovated inside, and a ten-minute walk is fine for commuting, isn't it? I think that one's good."},
+            {"who": "M", "s": "うーん、確{たし}かに、十分{じゅっぷん}ならなんとかなるか。じゃあ、そうしよう。", "zh": "嗯……確實，十分鐘的話還可以吧。那就這樣吧。", "en": "Hmm, true, ten minutes is manageable. All right, let's do that."},
+            {"who": "N", "s": "質問{しつもん}は二{ふた}つです。", "zh": "問題有兩個。", "en": "There are two questions."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "質問{しつもん}一{いち}、男{おとこ}の人{ひと}は最初{さいしょ}、どの物件{ぶっけん}がいいと言{い}っていましたか。", "zh": "問題一，男生一開始說哪間物件好？", "en": "Question 1: which property did the man first say he wanted?"},
+              "options": [
+                {"t": "A", "emoji": "🚉", "zh": "A（離車站三分鐘、較小）", "en": "A (3 min, small)"},
+                {"t": "B", "emoji": "☀️", "zh": "B（寬敞、要搭公車）", "en": "B (spacious, by bus)"},
+                {"t": "C", "emoji": "🏚️", "zh": "C（走路十分鐘、較舊）", "en": "C (10 min, old)"},
+                {"t": "D", "emoji": "✨", "zh": "D（新屋、超出預算）", "en": "D (new, over budget)"}
+              ],
+              "answer": 0,
+              "explain": {"zh": "男生說離車站近不能讓步、不能超出預算、小一點可以忍，符合的是「駅から徒歩三分」但較小的 A。", "en": "He insists on being near the station and within budget and will accept a small flat — A, three minutes away but small."}
+            },
+            {
+              "q": {"who": "N", "s": "質問{しつもん}二{に}、二人{ふたり}はどの物件{ぶっけん}に決{き}めましたか。", "zh": "問題二，兩個人決定了哪間物件？", "en": "Question 2: which property did they decide on?"},
+              "options": [
+                {"t": "A", "emoji": "🚉", "zh": "A（離車站三分鐘、較小）", "en": "A (3 min, small)"},
+                {"t": "B", "emoji": "☀️", "zh": "B（寬敞、要搭公車）", "en": "B (spacious, by bus)"},
+                {"t": "C", "emoji": "🏚️", "zh": "C（走路十分鐘、較舊）", "en": "C (10 min, old)"},
+                {"t": "D", "emoji": "✨", "zh": "D（新屋、超出預算）", "en": "D (new, over budget)"}
+              ],
+              "answer": 2,
+              "explain": {"zh": "女生說舊的但整修過、走路十分鐘可以通勤，男生也同意「十分ならなんとかなるか。じゃあ、そうしよう」，所以是 C。", "en": "She prefers the renovated older flat ten minutes away, and he agrees ten minutes is fine — C."}
+            }
+          ],
+          "words": [
+            {"w": "物件", "r": "ぶっけん", "zh": "物件、房子", "en": "property"},
+            {"w": "徒歩", "r": "とほ", "zh": "步行", "en": "on foot"},
+            {"w": "日当", "r": "ひあ", "zh": "採光（日當たり）", "en": "sunlight", "m": ["日当"]},
+            {"w": "予算", "r": "よさん", "zh": "預算", "en": "budget"},
+            {"w": "我慢", "r": "がまん", "zh": "忍耐", "en": "putting up with"}
+          ]
+        }
+      ]
     }
   ]
 }
