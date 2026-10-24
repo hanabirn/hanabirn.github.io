@@ -524,8 +524,9 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
             ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
-            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && lv.instr && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}`;
-        // (TOPIK levels: each printed option's translation once answered)
+            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && lv.instr && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}`;
+        // (TOPIK levels: each printed option's translation once answered — practice only; a mock
+        // exam has no translations, not even in its review: owner, 2026-10-24)
         return `<button type="button" class="btn option-btn${cls}" onclick="listeningAnswer(${qn}, ${i})"${done && (show || z.mock === false) ? ' disabled' : ''}>${label}</button>`;
     }).join('');
 }
@@ -554,7 +555,7 @@ function listeningQuizHtml(lv) {
     }).join('');
     const questionsHtml = it.questions.map((q, qn) => {
         const picked = z.picks[z.qi][qn];
-        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span><div class="ls-zh">${escHtml(gText(q.ask))}</div></div>`
+        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
             : q.q && (show || !q.spoken && !multi) ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
