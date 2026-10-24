@@ -247,10 +247,26 @@
 }
 /* computers: the text left, its questions right (the page is 1180px wide, body.reading-wide) */
 @media (min-width: 1024px) {
-    .rdx-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px; align-items: start; }
-    .rdx-col-text { position: sticky; top: 16px; }
+    /* the text gets the wider column: the questions beside it are one at a time (2026-10-24) */
+    .rdx-cols { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 24px; align-items: start; }
+    /* a long text scrolls in its own box, so the questions beside it stay in view (2026-10-24) */
+    .rdx-col-text { position: sticky; top: 16px; max-height: max(420px, calc(100vh - 560px)); overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; scrollbar-width: thin; }
     .rdx-col-q .rdx-opts { grid-template-columns: 1fr; }
+    .rdx-col-q .rdx-opts.rdx-opts-2 { grid-template-columns: 1fr 1fr; }
+    .rdx-q-off { display: none; }
+    .rdx-subtabs { display: flex; gap: 8px; margin-bottom: 12px; }
+    .rdx-sub-next { display: flex; justify-content: flex-end; margin: 10px 0 0; }
+    .rdx-sub-next .btn { margin: 0; }
 }
+@media (max-width: 1023.98px) {
+    .rdx-subtabs, .rdx-sub-next { display: none; }
+}
+.rdx-subtab { min-width: 44px; padding: 6px 12px; border: 2px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--ink); font: inherit; font-weight: 800; cursor: pointer; }
+.rdx-subtab.now { border-color: var(--primary); color: var(--primary); }
+.rdx-subtab.ok { background: var(--success-soft, var(--surface-2)); border-color: var(--success, #3b8a5a); }
+.rdx-subtab.no { background: var(--danger-soft, var(--surface-2)); border-color: var(--danger, #c0392b); }
+.rdx-subtab.done { background: var(--surface-2); }
+.rdx-subtab.now.ok, .rdx-subtab.now.no, .rdx-subtab.now.done { box-shadow: 0 0 0 2px var(--primary); }
 .rd-half { font-size: 0.78rem; font-weight: 700; color: var(--primary); white-space: nowrap; }
 /* 上一篇 / 下一篇 (and an exam round's 上一題 / 下一題): well apart from the questions' own
    上一頁 / 下一頁 above, so the two rows aren't tapped by mistake (phones, 2026-10-22) */

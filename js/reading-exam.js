@@ -237,7 +237,10 @@ function readingExamHtml(set) {
     const answered = own.every(o => z.picks[o.i] !== -1);
     const lang = readingExLang();
     const marks = lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
-    const qHtml = own.map(o => {
+    // computers (2026-10-24): an item's questions one at a time beside its text, so the screen
+    // needs no scrolling; phones keep them all under the text (.rdx-q-off is only hidden ≥1024px)
+    const sub = Math.max(0, own.findIndex(o => o.i === z.qi));
+    const qHtml = own.map((o, j) => {
         const q = o.x.q;
         const pick = z.picks[o.i];
         const reveal = z.reviewing || (!z.mock && pick !== -1);   // review shows unanswered ones too
@@ -246,13 +249,25 @@ function readingExamHtml(set) {
             return `<button type="button" class="option-btn rdx-opt${cls}" lang="${lang}" onclick="readingExamPick(${o.i}, ${k})"${reveal ? ' disabled' : ''}>
                 <span class="rdx-opt-n">${marks[k]}</span><span class="rdx-opt-t">${readingExField(op, q.options_t && q.options_t[k])}</span></button>`;
         }).join('');
-        return `<div class="rdx-q">
+        const short = q.options.every(op => op.length <= (READING_CHAR_LANGS.includes(lang) ? 12 : 22));
+        const subNext = own.length > 1 && j < own.length - 1 && (reveal || pick !== -1)
+            ? `<p class="rdx-sub-next"><button type="button" class="btn back-btn" onclick="readingExamSub(${own[j + 1].i})">${escHtml(t('rdx_next_sub', { n: own[j + 1].x.n }))}</button></p>` : '';
+        return `<div class="rdx-q${j === sub ? '' : ' rdx-q-off'}">
             ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
-            <div class="rdx-opts">${opts}</div>
+            <div class="rdx-opts${short ? ' rdx-opts-2' : ''}">${opts}</div>
             ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(readingTx(set, q))}</div>` : ''}
+            ${subNext}
         </div>`;
     }).join('');
+    const subTabs = own.length > 1 ? `<div class="rdx-subtabs" role="tablist">${own.map((o, j) => {
+        const p = z.picks[o.i];
+        const state = p === -1 ? '' : z.mock && !z.reviewing ? ' done' : p === o.x.q.answer ? ' ok' : ' no';
+        return `<button type="button" role="tab" class="rdx-subtab${state}${j === sub ? ' now' : ''}" aria-selected="${j === sub}" onclick="readingExamSub(${o.i})">${o.x.n}</button>`;
+    }).join('')}</div>` : '';
+    // the furigana switch heads the questions' column (above the columns it pushed the text down)
+    const tools = lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
+            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : '';
     const firstQ = own[0].i;
     const lastQ = own[own.length - 1].i;
     const atEnd = lastQ >= z.qs.length - 1;
@@ -279,8 +294,6 @@ function readingExamHtml(set) {
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
         <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
-        ${lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
-            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
         <div class="rdx-cols">
             <div class="rdx-col-text">
@@ -290,7 +303,7 @@ function readingExamHtml(set) {
                 </div>
                 ${z.reviewing || (!z.mock && answered) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
             </div>
-            <div class="rdx-col-q">${qHtml}</div>
+            <div class="rdx-col-q">${tools}${subTabs}${qHtml}</div>
         </div>
         <div class="grammar-nav">
             <button type="button" class="btn back-btn" onclick="readingExamMove(-1)"${firstQ === 0 ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
@@ -307,6 +320,13 @@ function readingExamPick(i, k) {
     if (!z.mock && z.picks[i] !== -1) return;   // practice: the first pick counts
     z.picks[i] = k;
     if (!z.mock && typeof logDailyActivity === 'function') logDailyActivity(1);
+    readingExamSave();
+    renderReading();
+}
+
+/* computers: another question of the same item */
+function readingExamSub(i) {
+    readingExam.qi = i;
     readingExamSave();
     renderReading();
 }
