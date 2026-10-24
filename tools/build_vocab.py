@@ -599,6 +599,12 @@ def jlpt_review(moves, dropped, late):
 KO_FIX = {
     "자리": "座位；位置",
 }
+# the corrections found by the big check of 2026-10-24 (tools/vocab_fixes/ko.tsv: word, meaning, old)
+with open(os.path.join(ROOT, "tools", "vocab_fixes", "ko.tsv"), encoding="utf-8") as _f:
+    for _line in _f:
+        if _line.strip() and not _line.startswith("#"):
+            _c = _line.rstrip("\n").split("\t")
+            KO_FIX[_c[0]] = _c[1]
 
 
 def build_sheets(args):
