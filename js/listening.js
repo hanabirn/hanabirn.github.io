@@ -136,8 +136,10 @@ async function renderListening() {
     else if (listeningView === 'review' && listeningReview) box.innerHTML = listeningReviewHtml(lv);
     else if (listeningView === 'mocknote' && lv.sets[listeningMockNote]) box.innerHTML = listeningMockNoteHtml(lv);
     else { listeningView = 'list'; box.innerHTML = listeningListHtml(lv); }
-    // the list is 1180px wide on computers, its sets in two columns (css/base.css, css/grammar.css)
-    document.body.classList.toggle('listening-wide', listeningView === 'list');
+    // the list and an item are 1180px wide on computers (css/base.css): the list's sets in two
+    // columns (css/grammar.css), an item's player left and its questions right (.ls-cols), so a
+    // question and its options fit one 1080p screen without scrolling (owner, 2026-10-24)
+    document.body.classList.toggle('listening-wide', listeningView === 'list' || listeningView === 'quiz');
     if (typeof railPlace === 'function') railPlace();
 }
 
@@ -525,7 +527,9 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
             ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
-            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && lv.instr && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}`;
+            : lv.instr
+            ? `<span class="ls-n">${i + 1}</span><span class="ls-otx"><span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}</span>`
+            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
         // (TOPIK levels: each printed option's translation once answered — practice only; a mock
         // exam has no translations, not even in its review: owner, 2026-10-24)
         return `<button type="button" class="btn option-btn${cls}" onclick="listeningAnswer(${qn}, ${i})"${done && (show || z.mock === false) ? ' disabled' : ''}>${label}</button>`;
@@ -561,7 +565,7 @@ function listeningQuizHtml(lv) {
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
-            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
+            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : lv.instr ? ' ls-sent' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
             ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: q.answer + 1 }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
         </div>`;
@@ -589,6 +593,7 @@ function listeningQuizHtml(lv) {
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
+        <div class="ls-cols"><div class="ls-head">
         ${lv.instr ? `<div class="ls-kind">${escHtml(listeningRange(lv.sets[z.setNo], z.order[z.qi]))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-instr" lang="${lv.lang}">${escHtml(lv.instr[it.type] || '')}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type))}</div>`
@@ -610,8 +615,10 @@ function listeningQuizHtml(lv) {
                 ${show ? '' : `<button type="button" class="mode-btn ls-small${z.peek ? ' mode-btn-active' : ''}" onclick="listeningSession.peek = !listeningSession.peek; listeningRerender()">👀 ${escHtml(t('listening_peek'))}</button>`}`}
             </div>
         </div>
-        ${questionsHtml}
-        ${tx}
+        </div>
+        <div class="ls-qs">${questionsHtml}</div>
+        ${tx ? `<div class="ls-txw">${tx}</div>` : ''}
+        </div>
         <div class="grammar-nav">
             <button type="button" class="btn back-btn" onclick="listeningMove(-1)"${z.qi === 0 || lockedMock ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
             <button type="button" class="btn next-btn" onclick="${nextCall}"${canNext ? '' : ' disabled'}>${escHtml(t(nextLabel))}</button>
