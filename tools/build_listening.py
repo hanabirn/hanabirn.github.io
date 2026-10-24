@@ -10,6 +10,7 @@ questions are copyrighted):
      mock_plays?: 1,             # plays per item in a mock exam (JLPT: once), or {type: n}
                                  # (TOPIK II: 1–20 once, 21–50 twice)
      instr?: {type: text},       # TOPIK: the paper's Korean instruction of each type
+     practice_types?: [...],     # the types a practice round holds (default: all of types)
      mock_counts?: {type: n},    # the official mix (in questions) a mock set must have
      read_secs?: 10,             # ポイント理解: time to read the options
      sets: [{id, mock?: true, items: [item…]}]}
@@ -82,19 +83,25 @@ PICS = {k: v for k, v in json.loads((SRC / 'pics.json').read_text(encoding='utf-
 PIC_STYLE = ('Black-and-white line illustration in the style of a Japanese language proficiency test booklet (JLPT): '
              'clean even ink outlines, light gray flat shading only, simple friendly anime-like people, plain white background. '
              'Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
+# Korean pictures ("style": "topik" in pics.json) are drawn like the TOPIK paper; the Japanese
+# prompt stays as it was, so its pictures keep their ids and are not drawn again
+PIC_STYLE_TOPIK = ('Black-and-white line illustration in the style of a Korean language proficiency test booklet (TOPIK): '
+                   'clean even ink outlines, light gray flat shading only, simple friendly Korean people, plain white background. '
+                   'Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
 
 
 def pic_prompt(spec):
     """(prompt, aspect ratio) for one picture description."""
+    style = PIC_STYLE_TOPIK if spec.get('style') == 'topik' else PIC_STYLE
     if 'grid' in spec:
         g = spec['grid']
         where = ['Top-left', 'Top-right', 'Bottom-left', 'Bottom-right']
         return ('A 2x2 grid of four equal square panels separated by thin black lines, with a thin black frame around each panel. '
                 + g['cast'][0].upper() + g['cast'][1:] + '. '
-                + ' '.join(f'{w}: {p}.' for w, p in zip(where, g['panels'])) + ' ' + PIC_STYLE, '1:1')
+                + ' '.join(f'{w}: {p}.' for w, p in zip(where, g['panels'])) + ' ' + style, '1:1')
     sc = spec['scene']
     return ('One single scene: ' + sc['desc'] + '. Exactly ONE bold solid black arrow in the whole picture, pointing down at '
-            + sc['arrow'] + '. Only one arrow; nobody else has an arrow. ' + PIC_STYLE, '4:3')
+            + sc['arrow'] + '. Only one arrow; nobody else has an arrow. ' + style, '4:3')
 
 
 def pic_id(spec):
@@ -179,6 +186,9 @@ def build(src, problems, jobs):
     data = json.loads(src.read_text(encoding='utf-8'))
     lang = data['lang']
     types = data.get('types', DEFAULT_TYPES)
+    # a practice round may hold only part of the level's types (Korean 2급: TOPIK I 15–30 in
+    # practice, the whole of TOPIK I 1–30 in the mock exam)
+    practice_types = data.get('practice_types', types)
     read_secs = data.get('read_secs', 10)
     for t in types:
         if t not in TYPES:
@@ -230,7 +240,7 @@ def build(src, problems, jobs):
             seq = [types.index(i['type']) for i in items]
             if seq != sorted(seq):
                 problems.append(f'{src.stem}/{set_["id"]}: a mock set must keep the types in exam order')
-        elif any(mix[t] == 0 for t in types):
+        elif any(mix[t] == 0 for t in practice_types) or any(mix[t] for t in types if t not in practice_types):
             problems.append(f'{src.stem}/{set_["id"]}: a set should have every type, has {mix}')
         sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,

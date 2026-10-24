@@ -1,0 +1,1602 @@
+{
+  "id": "ko_2",
+  "lang": "ko",
+  "level": "2급",
+  "order": 2,
+  "note": "Original listening items in the TOPIK I format. Practice rounds: questions 15–30 (ko_pic 15–16: pick the picture, ko_same 17–21: same as the dialogue, ko_main 22–24: the woman's main idea, ko_pair 25–30: one recording, two printed questions), numbered from 1. The mock exam is the whole TOPIK I listening section, 1–30, each recording played twice. who: F woman, M man. Edit this file, then run: python tools/build_listening.py",
+  "types": ["ko_answer", "ko_next", "ko_place", "ko_topic", "ko_pic", "ko_same", "ko_main", "ko_pair"],
+  "practice_types": ["ko_pic", "ko_same", "ko_main", "ko_pair"],
+  "instr": {
+    "ko_answer": "다음을 듣고 물음에 맞는 대답을 고르십시오.",
+    "ko_next": "다음을 듣고 이어지는 말을 고르십시오.",
+    "ko_place": "여기는 어디입니까? 알맞은 것을 고르십시오.",
+    "ko_topic": "다음은 무엇에 대해 말하고 있습니까? 알맞은 것을 고르십시오.",
+    "ko_pic": "다음 대화를 듣고 알맞은 그림을 고르십시오.",
+    "ko_same": "다음을 듣고 대화 내용과 같은 것을 고르십시오.",
+    "ko_main": "다음을 듣고 여자의 중심 생각을 고르십시오.",
+    "ko_pair": "다음을 듣고 물음에 답하십시오."
+  },
+  "mock_plays": 2,
+  "mock_counts": {"ko_answer": 4, "ko_next": 2, "ko_place": 4, "ko_topic": 4, "ko_pic": 2, "ko_same": 5, "ko_main": 3, "ko_pair": 6},
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "M", "s": "손님, 무엇을 찾으세요?", "zh": "客人，您在找什麼？", "en": "What are you looking for?"},
+            {"who": "F", "s": "운동화를 사고 싶어요. 좀 보여 주세요.", "zh": "我想買運動鞋。請給我看看。", "en": "I'd like to buy some trainers. Could you show me some?"}
+          ],
+          "options": [
+            {"t": "남자가 여자에게 가방을 보여 줍니다.", "zh": "男生給女生看包包。", "en": "The man shows the woman a bag."},
+            {"t": "남자가 여자에게 운동화를 보여 줍니다.", "zh": "男生給女生看運動鞋。", "en": "The man shows the woman some trainers."},
+            {"t": "여자가 거울 앞에서 모자를 써 봅니다.", "zh": "女生在鏡子前試戴帽子。", "en": "The woman tries on a hat in front of a mirror."},
+            {"t": "남자가 운동화를 신어 봅니다.", "zh": "男生試穿運動鞋。", "en": "The man tries on trainers himself."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「운동화를 사고 싶어요. 좀 보여 주세요」（想買運動鞋，請給我看看），所以是店員拿運動鞋給她看的圖。", "en": "She wants to buy trainers and asks to see some (운동화를 사고 싶어요. 좀 보여 주세요) — the clerk is showing her trainers."},
+          "words": [
+            {"w": "손님", "r": "", "zh": "客人", "en": "customer"},
+            {"w": "운동화", "r": "", "zh": "運動鞋", "en": "trainers"},
+            {"w": "보여 주다", "r": "", "zh": "給…看", "en": "to show", "m": ["보여 주세요"]}
+          ]
+        },
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "F", "s": "저, 여기 앉아도 돼요?", "zh": "請問，我可以坐這裡嗎？", "en": "Excuse me, may I sit here?"},
+            {"who": "M", "s": "네, 앉으세요. 가방은 여기에 놓으세요.", "zh": "可以，請坐。包包請放這裡。", "en": "Yes, please sit down. You can put your bag here."}
+          ],
+          "options": [
+            {"t": "남자가 할머니에게 자리를 양보합니다.", "zh": "男生讓座給老奶奶。", "en": "The man gives his seat to an old woman."},
+            {"t": "두 사람이 버스에서 서 있습니다.", "zh": "兩個人在公車上站著。", "en": "Both of them are standing on the bus."},
+            {"t": "남자가 옆자리를 가리키며 앉으라고 합니다.", "zh": "男生指著旁邊的位子請她坐。", "en": "The man points to the seat next to him and asks her to sit."},
+            {"t": "여자가 자리에 앉아서 자고 있습니다.", "zh": "女生坐在位子上睡覺。", "en": "The woman is asleep in her seat."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生問「여기 앉아도 돼요?」（可以坐這裡嗎？），男生說「네, 앉으세요」（請坐），是男生指著旁邊空位請她坐的圖。", "en": "She asks 여기 앉아도 돼요? and he answers 네, 앉으세요 — he is pointing to the empty seat beside him."},
+          "words": [
+            {"w": "앉다", "r": "", "zh": "坐", "en": "to sit", "m": ["앉아도", "앉으세요"]},
+            {"w": "놓다", "r": "", "zh": "放", "en": "to put", "m": ["놓으세요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 주말에 뭐 했어요?", "zh": "秀美，你週末做了什麼？", "en": "Sumi, what did you do at the weekend?"},
+            {"who": "F", "s": "친구하고 남산에 갔어요. 사진도 많이 찍었어요.", "zh": "跟朋友去了南山。也拍了很多照片。", "en": "I went to Namsan with a friend. I took lots of photos too."},
+            {"who": "M", "s": "그래요? 저도 다음 주에 가 보고 싶어요.", "zh": "是嗎？我下週也想去看看。", "en": "Really? I'd like to go there next week too."}
+          ],
+          "options": [
+            {"t": "남자는 주말에 남산에 갔습니다.", "zh": "男生週末去了南山。", "en": "The man went to Namsan at the weekend."},
+            {"t": "여자는 혼자 남산에 갔습니다.", "zh": "女生一個人去了南山。", "en": "The woman went to Namsan alone."},
+            {"t": "남자는 지난주에 사진을 찍었습니다.", "zh": "男生上週拍了照片。", "en": "The man took photos last week."},
+            {"t": "여자는 남산에서 사진을 찍었습니다.", "zh": "女生在南山拍了照片。", "en": "The woman took photos on Namsan."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「사진도 많이 찍었어요」（也拍了很多照片）。去南山的是女生，而且是跟朋友一起去；男生是「下週」才想去。", "en": "She says 사진도 많이 찍었어요 (I took lots of photos). She went with a friend, and it is the man who wants to go next week."},
+          "words": [
+            {"w": "주말", "r": "", "zh": "週末", "en": "weekend"},
+            {"w": "사진을 찍다", "r": "", "zh": "拍照", "en": "to take a photo", "m": ["사진도 많이 찍었어요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 이 근처에 우체국이 있어요?", "zh": "民秀，這附近有郵局嗎？", "en": "Minsu, is there a post office near here?"},
+            {"who": "M", "s": "네, 저 은행 옆에 있어요. 그런데 오늘은 토요일이라서 일찍 문을 닫아요.", "zh": "有，在那家銀行旁邊。不過今天是星期六，所以很早就關門。", "en": "Yes, next to that bank. But it's Saturday today, so it closes early."},
+            {"who": "F", "s": "아, 그래요? 그럼 지금 빨리 갈게요.", "zh": "啊，是嗎？那我現在快點去。", "en": "Oh, really? Then I'll go right now."}
+          ],
+          "options": [
+            {"t": "우체국은 은행 옆에 있습니다.", "zh": "郵局在銀行旁邊。", "en": "The post office is next to the bank."},
+            {"t": "여자는 내일 우체국에 갈 겁니다.", "zh": "女生明天會去郵局。", "en": "The woman will go to the post office tomorrow."},
+            {"t": "우체국은 토요일에 늦게 닫습니다.", "zh": "郵局星期六很晚關門。", "en": "The post office closes late on Saturdays."},
+            {"t": "남자는 우체국에서 일합니다.", "zh": "男生在郵局工作。", "en": "The man works at the post office."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「저 은행 옆에 있어요」（在那家銀行旁邊）。星期六是「일찍」（早）關門，女生是「지금」（現在）就要去。", "en": "He says 저 은행 옆에 있어요 (next to that bank). It closes early (일찍) on Saturday, and she is going now (지금)."},
+          "words": [
+            {"w": "근처", "r": "", "zh": "附近", "en": "nearby"},
+            {"w": "우체국", "r": "", "zh": "郵局", "en": "post office"},
+            {"w": "일찍", "r": "", "zh": "早", "en": "early"},
+            {"w": "문을 닫다", "r": "", "zh": "關門", "en": "to close", "m": ["문을 닫아요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "여보세요, 거기 한국식당이지요? 오늘 저녁 일곱 시에 네 명 예약하고 싶은데요.", "zh": "喂，請問是韓國餐廳嗎？我想預約今天晚上七點四個人。", "en": "Hello, is that the Korean restaurant? I'd like to book a table for four at seven this evening."},
+            {"who": "F", "s": "죄송합니다. 일곱 시에는 자리가 없어요. 여덟 시는 괜찮으세요?", "zh": "不好意思，七點沒有位子了。八點可以嗎？", "en": "I'm sorry, we have no tables at seven. Would eight be all right?"},
+            {"who": "M", "s": "네, 그럼 여덟 시로 해 주세요.", "zh": "好，那請幫我訂八點。", "en": "Yes, then eight, please."}
+          ],
+          "options": [
+            {"t": "남자는 일곱 시에 식당에 갑니다.", "zh": "男生七點去餐廳。", "en": "The man goes to the restaurant at seven."},
+            {"t": "남자는 세 명을 예약했습니다.", "zh": "男生預約了三個人。", "en": "The man booked for three people."},
+            {"t": "식당은 일곱 시에 자리가 없습니다.", "zh": "餐廳七點沒有位子。", "en": "The restaurant has no tables at seven."},
+            {"t": "여자는 식당에 전화를 했습니다.", "zh": "女生打電話到餐廳。", "en": "The woman phoned the restaurant."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說「일곱 시에는 자리가 없어요」（七點沒有位子），所以男生改訂八點、四個人。打電話的是男生。", "en": "She says 일곱 시에는 자리가 없어요 (no tables at seven), so he books eight o'clock, for four. It is the man who phoned."},
+          "words": [
+            {"w": "예약하다", "r": "", "zh": "預約", "en": "to book", "m": ["예약하고"]},
+            {"w": "자리", "r": "", "zh": "位子", "en": "seat, table"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "저, 이 버스가 시청에 가요?", "zh": "請問，這班公車有到市政府嗎？", "en": "Excuse me, does this bus go to City Hall?"},
+            {"who": "M", "s": "아니요, 이 버스는 안 가요. 길 건너에서 102번 버스를 타세요.", "zh": "沒有，這班車不到。請到對面搭 102 號公車。", "en": "No, this one doesn't. Take the number 102 across the road."},
+            {"who": "F", "s": "아, 감사합니다.", "zh": "啊，謝謝。", "en": "Oh, thank you."}
+          ],
+          "options": [
+            {"t": "이 버스는 시청에 갑니다.", "zh": "這班公車會到市政府。", "en": "This bus goes to City Hall."},
+            {"t": "남자는 102번 버스를 탑니다.", "zh": "男生搭 102 號公車。", "en": "The man takes the number 102."},
+            {"t": "여자는 지금 집에 갑니다.", "zh": "女生現在要回家。", "en": "The woman is going home now."},
+            {"t": "여자는 시청에 가고 싶어 합니다.", "zh": "女生想去市政府。", "en": "The woman wants to go to City Hall."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生問「이 버스가 시청에 가요?」，表示她要去市政府。這班車不到，要搭 102 號的是女生。", "en": "She asks whether the bus goes to City Hall, so that is where she wants to go. This bus doesn't, and it is she who should take the 102."},
+          "words": [
+            {"w": "시청", "r": "", "zh": "市政府", "en": "city hall"},
+            {"w": "길 건너", "r": "", "zh": "馬路對面", "en": "across the road", "m": ["길 건너에서"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "이번 방학에 고향에 가요?", "zh": "這次放假你要回老家嗎？", "en": "Are you going home this vacation?"},
+            {"who": "F", "s": "아니요, 이번에는 한국에서 아르바이트를 할 거예요. 고향에는 다음 방학에 갈 거예요.", "zh": "不，這次要在韓國打工。下次放假再回老家。", "en": "No, this time I'll work part-time in Korea. I'll go home next vacation."},
+            {"who": "M", "s": "그래요? 무슨 아르바이트를 해요?", "zh": "是嗎？做什麼打工？", "en": "Really? What kind of job?"},
+            {"who": "F", "s": "카페에서 일해요.", "zh": "在咖啡廳工作。", "en": "I work at a café."}
+          ],
+          "options": [
+            {"t": "여자는 이번 방학에 고향에 갑니다.", "zh": "女生這次放假要回老家。", "en": "The woman goes home this vacation."},
+            {"t": "여자는 카페에서 아르바이트를 합니다.", "zh": "女生在咖啡廳打工。", "en": "The woman works part-time at a café."},
+            {"t": "남자는 카페에서 일합니다.", "zh": "男生在咖啡廳工作。", "en": "The man works at a café."},
+            {"t": "여자는 지난 방학에 아르바이트를 했습니다.", "zh": "女生上次放假打了工。", "en": "The woman worked part-time last vacation."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「카페에서 일해요」（在咖啡廳工作）。她這次不回老家，「下次放假」才回去。", "en": "She says 카페에서 일해요 (I work at a café). She isn't going home this time — she will next vacation."},
+          "words": [
+            {"w": "방학", "r": "", "zh": "（學校）放假", "en": "school vacation"},
+            {"w": "고향", "r": "", "zh": "故鄉", "en": "hometown"},
+            {"w": "아르바이트", "r": "", "zh": "打工", "en": "part-time job"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "날씨가 좋으니까 우리 걸어서 갈까요?", "zh": "天氣很好，我們走路去吧？", "en": "The weather's nice — shall we walk?"},
+            {"who": "F", "s": "여기에서 영화관까지 멀어요. 걸어가면 영화 시간에 늦을 거예요. 택시를 타는 게 좋겠어요.", "zh": "這裡到電影院很遠。走路去的話會趕不上電影。搭計程車比較好。", "en": "It's far from here to the cinema. If we walk we'll be late for the film. We'd better take a taxi."},
+            {"who": "M", "s": "그래요. 그럼 택시를 타요.", "zh": "好吧。那搭計程車吧。", "en": "All right, let's take a taxi."}
+          ],
+          "options": [
+            {"t": "날씨가 좋으면 걷고 싶습니다.", "zh": "天氣好的話想走路。", "en": "When the weather is nice she wants to walk."},
+            {"t": "영화를 보러 가고 싶지 않습니다.", "zh": "不想去看電影。", "en": "She doesn't want to go to the film."},
+            {"t": "영화관은 가까워서 걸어가도 됩니다.", "zh": "電影院很近，走路去也可以。", "en": "The cinema is close, so they can walk."},
+            {"t": "늦지 않게 택시를 타는 것이 좋습니다.", "zh": "為了不遲到，搭計程車比較好。", "en": "It is better to take a taxi so as not to be late."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說走路會「늦을 거예요」（遲到），「택시를 타는 게 좋겠어요」（搭計程車比較好）。想走路的是男生。", "en": "She says walking would make them late and 택시를 타는 게 좋겠어요 (we'd better take a taxi). It is the man who wanted to walk."},
+          "words": [
+            {"w": "걸어가다", "r": "", "zh": "走路去", "en": "to walk (there)", "m": ["걸어서 갈까요", "걸어가면"]},
+            {"w": "멀다", "r": "", "zh": "遠", "en": "to be far", "m": ["멀어요"]},
+            {"w": "늦다", "r": "", "zh": "遲到", "en": "to be late", "m": ["늦을"]}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "F", "s": "민호 씨, 아침을 안 먹었어요?", "zh": "敏浩，你沒吃早餐嗎？", "en": "Minho, didn't you have breakfast?"},
+            {"who": "M", "s": "네, 시간이 없어서 못 먹었어요.", "zh": "對，沒時間所以沒吃。", "en": "No, I didn't have time."},
+            {"who": "F", "s": "아침을 안 먹으면 점심 때까지 힘들어요. 바빠도 조금이라도 먹는 게 좋아요.", "zh": "不吃早餐的話，到中午會很累。再忙也最好吃一點。", "en": "If you skip breakfast it's hard to last till lunch. Even when you're busy, it's good to eat at least a little."}
+          ],
+          "options": [
+            {"t": "아침을 조금이라도 먹는 것이 좋습니다.", "zh": "早餐最好吃一點。", "en": "It is good to eat at least a little breakfast."},
+            {"t": "아침은 먹지 않아도 괜찮습니다.", "zh": "不吃早餐也沒關係。", "en": "It's fine to skip breakfast."},
+            {"t": "바쁠 때는 점심을 일찍 먹어야 합니다.", "zh": "忙的時候要早點吃午餐。", "en": "When busy, you should have lunch early."},
+            {"t": "시간이 있을 때 운동을 해야 합니다.", "zh": "有時間的時候要運動。", "en": "You should exercise when you have time."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生最後說「바빠도 조금이라도 먹는 게 좋아요」（再忙也最好吃一點），這就是她的中心想法。", "en": "Her point is the last line: 바빠도 조금이라도 먹는 게 좋아요 (even when busy, eat at least a little)."},
+          "words": [
+            {"w": "아침", "r": "", "zh": "早餐、早上", "en": "breakfast, morning"},
+            {"w": "힘들다", "r": "", "zh": "累、辛苦", "en": "to be hard", "m": ["힘들어요"]},
+            {"w": "조금이라도", "r": "", "zh": "至少一點", "en": "even a little"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "이 책 다 읽었어요? 저한테 좀 빌려줄 수 있어요?", "zh": "這本書你看完了嗎？可以借我嗎？", "en": "Have you finished this book? Could you lend it to me?"},
+            {"who": "F", "s": "네, 빌려줄게요. 그런데 다 읽으면 꼭 돌려줘야 해요.", "zh": "好，借你。不過看完一定要還我。", "en": "Yes, I'll lend it to you. But you must give it back when you've finished."},
+            {"who": "F", "s": "지난번에 친구가 책을 안 돌려줘서 속상했어요.", "zh": "上次朋友沒把書還我，我很難過。", "en": "Last time a friend never gave a book back, and I was upset."}
+          ],
+          "options": [
+            {"t": "책은 사서 읽는 것이 좋습니다.", "zh": "書最好買來看。", "en": "It is better to buy books to read."},
+            {"t": "빌린 책은 꼭 돌려줘야 합니다.", "zh": "借來的書一定要還。", "en": "A borrowed book must be given back."},
+            {"t": "친구에게 책을 선물하고 싶습니다.", "zh": "想送書給朋友。", "en": "She wants to give a friend a book."},
+            {"t": "책을 빨리 읽는 것이 중요합니다.", "zh": "看書看得快很重要。", "en": "Reading fast is important."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「다 읽으면 꼭 돌려줘야 해요」（看完一定要還），還提到上次朋友沒還書的事。", "en": "She says 다 읽으면 꼭 돌려줘야 해요 (you must give it back) and recalls a friend who never did."},
+          "words": [
+            {"w": "빌려주다", "r": "", "zh": "借（出）", "en": "to lend", "m": ["빌려줄", "빌려줄게요"]},
+            {"w": "돌려주다", "r": "", "zh": "還", "en": "to give back", "m": ["돌려줘야", "돌려줘서"]},
+            {"w": "속상하다", "r": "", "zh": "難過、心煩", "en": "to be upset", "m": ["속상했어요"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "승객 여러분께 안내 말씀 드리겠습니다. 이번 역은 서울역입니다. 내리실 문은 오른쪽입니다.", "zh": "各位乘客請注意。本站是首爾站，下車的門在右邊。", "en": "Attention, passengers. This stop is Seoul Station. The doors will open on the right."},
+            {"who": "F", "s": "부산으로 가시는 분은 이번 역에서 내려서 기차로 갈아타시기 바랍니다.", "zh": "要去釜山的旅客，請在本站下車轉搭火車。", "en": "Passengers going to Busan, please get off here and change to the train."},
+            {"who": "F", "s": "내리실 때 두고 내리는 물건이 없는지 다시 한번 확인해 주십시오. 감사합니다.", "zh": "下車時請再確認一次有沒有遺留物品。謝謝。", "en": "When you get off, please check once more that you have not left anything behind. Thank you."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "여자가 왜 이 이야기를 하고 있는지 고르십시오.", "zh": "選出女生為什麼說這段話。", "en": "Choose why the woman is saying this."},
+              "options": [
+                {"t": "기차표를 팔려고", "zh": "為了賣火車票", "en": "to sell train tickets"},
+                {"t": "역을 안내하려고", "zh": "為了介紹車站（廣播到站）", "en": "to announce the station"},
+                {"t": "물건을 찾으려고", "zh": "為了找東西", "en": "to look for something"},
+                {"t": "길을 물어보려고", "zh": "為了問路", "en": "to ask the way"}
+              ],
+              "answer": 1,
+              "explain": {"zh": "這是地鐵裡的到站廣播：說明本站是首爾站、下車門在哪邊、在哪裡轉車。", "en": "It is an announcement on the subway: which station this is, which side the doors open, where to change."}
+            },
+            {
+              "ask": {"s": "들은 내용과 같은 것을 고르십시오.", "zh": "選出和聽到的內容相同的。", "en": "Choose what matches what you heard."},
+              "options": [
+                {"t": "이번 역은 부산역입니다.", "zh": "本站是釜山站。", "en": "This stop is Busan Station."},
+                {"t": "내리는 문은 왼쪽입니다.", "zh": "下車的門在左邊。", "en": "The doors open on the left."},
+                {"t": "지하철에서 물건을 잃어버렸습니다.", "zh": "在地鐵上掉了東西。", "en": "Something was lost on the subway."},
+                {"t": "서울역에서 기차를 탈 수 있습니다.", "zh": "在首爾站可以搭火車。", "en": "You can take a train at Seoul Station."}
+              ],
+              "answer": 3,
+              "explain": {"zh": "廣播說去釜山的人要「이번 역에서 내려서 기차로 갈아타」（在本站下車轉搭火車），所以在首爾站可以搭火車。門在右邊；最後一句只是提醒別忘了東西。", "en": "People going to Busan should get off here and change to the train, so trains leave from Seoul Station. The doors open on the right, and the last line is only a reminder."}
+            }
+          ],
+          "words": [
+            {"w": "승객", "r": "", "zh": "乘客", "en": "passenger"},
+            {"w": "갈아타다", "r": "", "zh": "轉乘", "en": "to change (trains)", "m": ["갈아타시기"]},
+            {"w": "확인하다", "r": "", "zh": "確認", "en": "to check", "m": ["확인해"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "M", "s": "저 다음 주에 이사를 해요.", "zh": "我下週要搬家。", "en": "I'm moving house next week."},
+            {"who": "F", "s": "그래요? 어디로 가요?", "zh": "是嗎？搬去哪裡？", "en": "Really? Where to?"},
+            {"who": "M", "s": "회사 근처로 가요. 지금 집은 회사에서 너무 멀어서 한 시간 넘게 걸려요.", "zh": "搬到公司附近。現在的家離公司太遠，要花一個多小時。", "en": "Near my office. My place now is so far from work that it takes over an hour."},
+            {"who": "F", "s": "이사 준비는 다 했어요?", "zh": "搬家都準備好了嗎？", "en": "Are you all ready for the move?"},
+            {"who": "M", "s": "아직요. 짐이 많아서 걱정이에요. 주말에 좀 도와줄 수 있어요?", "zh": "還沒。東西很多，我很擔心。週末可以幫我一下嗎？", "en": "Not yet. I've got a lot of stuff and I'm worried. Could you help me at the weekend?"},
+            {"who": "F", "s": "네, 토요일에 갈게요.", "zh": "好，我星期六過去。", "en": "Sure, I'll come on Saturday."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "두 사람이 무엇에 대해 이야기를 하고 있는지 고르십시오.", "zh": "選出兩個人在談論什麼。", "en": "Choose what the two people are talking about."},
+              "options": [
+                {"t": "남자의 이사", "zh": "男生搬家的事", "en": "the man's move"},
+                {"t": "여자의 회사", "zh": "女生的公司", "en": "the woman's company"},
+                {"t": "주말 여행 계획", "zh": "週末旅行計畫", "en": "weekend travel plans"},
+                {"t": "새로 산 물건", "zh": "新買的東西", "en": "things he has just bought"}
+              ],
+              "answer": 0,
+              "explain": {"zh": "從頭到尾都在談男生下週搬家：搬去哪裡、為什麼搬、準備好了沒。", "en": "The whole talk is about the man moving next week: where, why, and whether he is ready."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "남자는 지금 회사 근처에 삽니다.", "zh": "男生現在住在公司附近。", "en": "The man now lives near his office."},
+                {"t": "여자는 일요일에 남자를 도와줄 겁니다.", "zh": "女生星期日會去幫男生。", "en": "The woman will help him on Sunday."},
+                {"t": "남자의 지금 집은 회사에서 멉니다.", "zh": "男生現在的家離公司很遠。", "en": "The man's current home is far from his office."},
+                {"t": "남자는 이사 준비를 다 했습니다.", "zh": "男生搬家都準備好了。", "en": "The man is all ready for the move."}
+              ],
+              "answer": 2,
+              "explain": {"zh": "男生說「지금 집은 회사에서 너무 멀어서」（現在的家離公司太遠）。他是要搬「到」公司附近；女生是星期六去；準備還沒好。", "en": "He says 지금 집은 회사에서 너무 멀어서 (my place now is too far from work). He is moving near the office, she comes on Saturday, and he isn't ready yet."}
+            }
+          ],
+          "words": [
+            {"w": "이사", "r": "", "zh": "搬家", "en": "moving house", "m": ["이사를", "이사 준비"]},
+            {"w": "짐", "r": "", "zh": "行李、東西", "en": "luggage, belongings"},
+            {"w": "걱정", "r": "", "zh": "擔心", "en": "worry", "m": ["걱정이에요"]},
+            {"w": "도와주다", "r": "", "zh": "幫忙", "en": "to help", "m": ["도와줄"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "사장님, 이 빵집은 언제 문을 열었어요?", "zh": "老闆，這家麵包店是什麼時候開的？", "en": "When did you open this bakery?"},
+            {"who": "M", "s": "십 년 전에 열었어요. 처음에는 아주 작은 가게였어요.", "zh": "十年前開的。一開始是很小的店。", "en": "Ten years ago. At first it was a very small shop."},
+            {"who": "F", "s": "손님이 정말 많은데요. 빵이 왜 이렇게 인기가 많아요?", "zh": "客人真的好多。麵包為什麼這麼受歡迎？", "en": "You have so many customers. Why is your bread so popular?"},
+            {"who": "M", "s": "매일 아침 다섯 시에 일어나서 그날 팔 빵을 만들어요. 그래서 빵이 아주 신선해요.", "zh": "我每天早上五點起床，做當天要賣的麵包。所以麵包很新鮮。", "en": "Every morning I get up at five and bake the bread for that day. So it is very fresh."},
+            {"who": "M", "s": "그리고 설탕을 많이 넣지 않아서 아이들도 건강하게 먹을 수 있어요.", "zh": "而且糖放得不多，小朋友也可以吃得健康。", "en": "And I don't put much sugar in, so children can eat it healthily too."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "이 빵집에 손님이 많은 이유를 고르십시오.", "zh": "選出這家麵包店客人很多的原因。", "en": "Choose why this bakery has many customers."},
+              "options": [
+                {"t": "빵이 신선해서", "zh": "因為麵包新鮮", "en": "because the bread is fresh"},
+                {"t": "빵값이 싸서", "zh": "因為麵包便宜", "en": "because the bread is cheap"},
+                {"t": "가게가 커서", "zh": "因為店很大", "en": "because the shop is big"},
+                {"t": "빵 종류가 많아서", "zh": "因為麵包種類多", "en": "because there are many kinds of bread"}
+              ],
+              "answer": 0,
+              "explain": {"zh": "老闆說每天早上做當天的麵包，「그래서 빵이 아주 신선해요」（所以麵包很新鮮）。價錢和種類都沒有提到。", "en": "He bakes each day's bread that morning — 그래서 빵이 아주 신선해요 (so it is very fresh). Price and variety are never mentioned."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "빵집은 처음부터 가게가 컸습니다.", "zh": "麵包店一開始店面就很大。", "en": "The bakery was big from the start."},
+                {"t": "남자는 매일 아침 일찍 일어납니다.", "zh": "男生每天早上很早起床。", "en": "The man gets up early every morning."},
+                {"t": "빵집은 오 년 전에 문을 열었습니다.", "zh": "麵包店是五年前開的。", "en": "The bakery opened five years ago."},
+                {"t": "이 빵에는 설탕이 많이 들어갑니다.", "zh": "這裡的麵包放很多糖。", "en": "This bread has a lot of sugar in it."}
+              ],
+              "answer": 1,
+              "explain": {"zh": "老闆說「매일 아침 다섯 시에 일어나서」（每天早上五點起床）。店是十年前開的，一開始很小，糖也放得不多。", "en": "He gets up at five every morning. The shop opened ten years ago, was small at first, and the bread has little sugar."}
+            }
+          ],
+          "words": [
+            {"w": "사장님", "r": "", "zh": "老闆", "en": "owner, boss"},
+            {"w": "인기", "r": "", "zh": "人氣、受歡迎", "en": "popularity"},
+            {"w": "신선하다", "r": "", "zh": "新鮮", "en": "to be fresh", "m": ["신선해요"]},
+            {"w": "설탕", "r": "", "zh": "糖", "en": "sugar"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "F", "s": "저, 사진 좀 찍어 주시겠어요?", "zh": "不好意思，可以幫我拍張照嗎？", "en": "Excuse me, could you take a photo of me?"},
+            {"who": "M", "s": "네, 여기 보세요. 하나, 둘, 셋!", "zh": "好，請看這裡。一、二、三！", "en": "Sure, look here. One, two, three!"}
+          ],
+          "options": [
+            {"t": "남자가 여자의 사진을 찍어 줍니다.", "zh": "男生幫女生拍照。", "en": "The man takes a photo of the woman."},
+            {"t": "여자가 남자의 사진을 찍어 줍니다.", "zh": "女生幫男生拍照。", "en": "The woman takes a photo of the man."},
+            {"t": "두 사람이 같이 셀카를 찍습니다.", "zh": "兩個人一起自拍。", "en": "The two take a selfie together."},
+            {"t": "남자가 벽에 걸린 사진을 봅니다.", "zh": "男生看著牆上的照片。", "en": "The man looks at photos on a wall."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生請男生「사진 좀 찍어 주시겠어요?」（幫我拍照），男生說「여기 보세요」（請看這裡），是男生幫女生拍照的圖。", "en": "She asks him to take her photo and he says 여기 보세요 (look here) — he is photographing her."},
+          "words": [
+            {"w": "사진", "r": "", "zh": "照片", "en": "photo"},
+            {"w": "찍다", "r": "", "zh": "拍", "en": "to take (a photo)", "m": ["찍어"]}
+          ]
+        },
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "M", "s": "비가 오네요. 우산 가지고 왔어요?", "zh": "下雨了耶。你有帶傘嗎？", "en": "It's raining. Did you bring an umbrella?"},
+            {"who": "F", "s": "아니요, 안 가지고 왔어요.", "zh": "沒有，我沒帶。", "en": "No, I didn't."},
+            {"who": "M", "s": "그럼 제 우산을 같이 써요.", "zh": "那我們一起撐我的傘吧。", "en": "Then let's share mine."}
+          ],
+          "options": [
+            {"t": "여자가 남자에게 우산을 줍니다.", "zh": "女生把傘給男生。", "en": "The woman gives the man an umbrella."},
+            {"t": "두 사람이 각자 우산을 쓰고 걸어갑니다.", "zh": "兩個人各撐各的傘走路。", "en": "Each of them walks under their own umbrella."},
+            {"t": "남자가 가게에서 우산을 삽니다.", "zh": "男生在店裡買傘。", "en": "The man buys an umbrella in a shop."},
+            {"t": "두 사람이 우산 하나를 같이 쓰고 걸어갑니다.", "zh": "兩個人一起撐一把傘走路。", "en": "The two walk together under one umbrella."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生沒帶傘，男生說「제 우산을 같이 써요」（一起撐我的傘），是兩個人共撐一把傘的圖。", "en": "She has no umbrella and he says 제 우산을 같이 써요 (let's share mine) — they walk under one umbrella."},
+          "words": [
+            {"w": "우산", "r": "", "zh": "雨傘", "en": "umbrella"},
+            {"w": "가지고 오다", "r": "", "zh": "帶來", "en": "to bring", "m": ["가지고 왔어요"]},
+            {"w": "쓰다", "r": "", "zh": "撐（傘）", "en": "to hold (an umbrella)", "m": ["써요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "준호 씨, 어제 왜 수업에 안 왔어요?", "zh": "俊浩，你昨天怎麼沒來上課？", "en": "Junho, why didn't you come to class yesterday?"},
+            {"who": "M", "s": "감기에 걸려서 병원에 갔어요.", "zh": "我感冒了，去了醫院。", "en": "I had a cold, so I went to the doctor."},
+            {"who": "F", "s": "지금은 괜찮아요?", "zh": "現在還好嗎？", "en": "Are you all right now?"},
+            {"who": "M", "s": "네, 약을 먹어서 많이 좋아졌어요.", "zh": "嗯，吃了藥好多了。", "en": "Yes, I took some medicine and I'm much better."}
+          ],
+          "options": [
+            {"t": "여자는 어제 수업에 안 왔습니다.", "zh": "女生昨天沒來上課。", "en": "The woman didn't come to class yesterday."},
+            {"t": "남자는 지금도 많이 아픕니다.", "zh": "男生現在還是很不舒服。", "en": "The man is still very ill."},
+            {"t": "남자는 어제 병원에 갔습니다.", "zh": "男生昨天去了醫院。", "en": "The man went to the doctor yesterday."},
+            {"t": "남자는 약을 먹지 않았습니다.", "zh": "男生沒有吃藥。", "en": "The man didn't take any medicine."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「감기에 걸려서 병원에 갔어요」（感冒去了醫院）。沒來上課的是男生；他吃了藥，現在「많이 좋아졌어요」（好多了）。", "en": "He says 감기에 걸려서 병원에 갔어요 (he had a cold and went to the doctor). He is the one who missed class, and after the medicine he is much better."},
+          "words": [
+            {"w": "수업", "r": "", "zh": "課", "en": "class"},
+            {"w": "감기에 걸리다", "r": "", "zh": "感冒", "en": "to catch a cold", "m": ["감기에 걸려서"]},
+            {"w": "좋아지다", "r": "", "zh": "變好", "en": "to get better", "m": ["좋아졌어요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "이 치마 다른 색깔도 있어요?", "zh": "這件裙子有別的顏色嗎？", "en": "Does this skirt come in other colours?"},
+            {"who": "M", "s": "네, 검은색하고 하얀색이 있어요.", "zh": "有，有黑色和白色。", "en": "Yes, black and white."},
+            {"who": "F", "s": "그럼 검은색으로 주세요.", "zh": "那請給我黑色的。", "en": "Then I'll take the black one."}
+          ],
+          "options": [
+            {"t": "여자는 검은색 치마를 삽니다.", "zh": "女生買黑色的裙子。", "en": "The woman buys the black skirt."},
+            {"t": "치마는 한 가지 색깔만 있습니다.", "zh": "裙子只有一種顏色。", "en": "The skirt comes in only one colour."},
+            {"t": "남자는 치마를 입어 봅니다.", "zh": "男生試穿裙子。", "en": "The man tries the skirt on."},
+            {"t": "여자는 하얀색 치마를 샀습니다.", "zh": "女生買了白色的裙子。", "en": "The woman bought the white skirt."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生最後說「검은색으로 주세요」（請給我黑色的）。裙子還有黑色和白色兩種。", "en": "She ends with 검은색으로 주세요 (the black one, please). The skirt also comes in black and white."},
+          "words": [
+            {"w": "치마", "r": "", "zh": "裙子", "en": "skirt"},
+            {"w": "색깔", "r": "", "zh": "顏色", "en": "colour"},
+            {"w": "검은색", "r": "", "zh": "黑色", "en": "black"},
+            {"w": "하얀색", "r": "", "zh": "白色", "en": "white"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "민수 씨는 운동을 자주 해요?", "zh": "民秀，你常運動嗎？", "en": "Minsu, do you exercise often?"},
+            {"who": "M", "s": "네, 매일 아침 수영을 해요. 수미 씨는요?", "zh": "對，我每天早上游泳。秀美你呢？", "en": "Yes, I swim every morning. What about you, Sumi?"},
+            {"who": "F", "s": "저는 바빠서 운동을 거의 못 해요.", "zh": "我很忙，幾乎沒辦法運動。", "en": "I'm busy, so I hardly ever exercise."},
+            {"who": "M", "s": "그럼 주말에 같이 자전거를 탈까요?", "zh": "那週末要不要一起騎腳踏車？", "en": "Then shall we go cycling together at the weekend?"}
+          ],
+          "options": [
+            {"t": "여자는 매일 운동을 합니다.", "zh": "女生每天運動。", "en": "The woman exercises every day."},
+            {"t": "남자는 아침마다 수영을 합니다.", "zh": "男生每天早上游泳。", "en": "The man swims every morning."},
+            {"t": "남자는 자전거를 못 탑니다.", "zh": "男生不會騎腳踏車。", "en": "The man can't ride a bike."},
+            {"t": "두 사람은 오늘 수영장에 갑니다.", "zh": "兩個人今天去游泳池。", "en": "They are going to the pool today."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「매일 아침 수영을 해요」（每天早上游泳）。女生幾乎不運動；男生約她週末騎腳踏車。", "en": "He says 매일 아침 수영을 해요 (I swim every morning). She hardly exercises, and he suggests cycling at the weekend."},
+          "words": [
+            {"w": "자주", "r": "", "zh": "常常", "en": "often"},
+            {"w": "수영", "r": "", "zh": "游泳", "en": "swimming"},
+            {"w": "거의", "r": "", "zh": "幾乎", "en": "almost, hardly"},
+            {"w": "자전거", "r": "", "zh": "腳踏車", "en": "bicycle"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "다음 주 금요일이 지영 씨 생일이에요. 선물로 뭐가 좋을까요?", "zh": "下週五是智英的生日。送什麼禮物好呢？", "en": "Next Friday is Jiyoung's birthday. What would make a good present?"},
+            {"who": "F", "s": "지영 씨는 책 읽는 것을 좋아해요. 책을 선물하면 어때요?", "zh": "智英喜歡看書。送書怎麼樣？", "en": "Jiyoung loves reading. How about a book?"},
+            {"who": "M", "s": "좋아요. 그럼 내일 같이 서점에 가요.", "zh": "好啊。那明天一起去書店吧。", "en": "Good idea. Then let's go to the bookshop together tomorrow."}
+          ],
+          "options": [
+            {"t": "오늘은 지영 씨의 생일입니다.", "zh": "今天是智英的生日。", "en": "Today is Jiyoung's birthday."},
+            {"t": "지영 씨는 운동을 좋아합니다.", "zh": "智英喜歡運動。", "en": "Jiyoung likes sport."},
+            {"t": "여자는 이미 선물을 샀습니다.", "zh": "女生已經買好禮物了。", "en": "The woman has already bought a present."},
+            {"t": "두 사람은 내일 서점에 갈 겁니다.", "zh": "兩個人明天會去書店。", "en": "They will go to the bookshop tomorrow."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "男生說「내일 같이 서점에 가요」（明天一起去書店）。生日是下週五，智英喜歡的是看書。", "en": "He says 내일 같이 서점에 가요 (let's go to the bookshop tomorrow). The birthday is next Friday, and Jiyoung likes reading."},
+          "words": [
+            {"w": "선물", "r": "", "zh": "禮物", "en": "present", "m": ["선물로", "선물하면"]},
+            {"w": "서점", "r": "", "zh": "書店", "en": "bookshop"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "여보세요. 김 선생님 계세요?", "zh": "喂，請問金老師在嗎？", "en": "Hello, is Mr Kim there?"},
+            {"who": "M", "s": "지금 회의 중이세요. 회의는 한 시간 후에 끝나요.", "zh": "他現在在開會。會議一個小時後結束。", "en": "He's in a meeting. It finishes in an hour."},
+            {"who": "F", "s": "그럼 제가 한 시간 후에 다시 전화할게요.", "zh": "那我一個小時後再打來。", "en": "Then I'll call again in an hour."}
+          ],
+          "options": [
+            {"t": "김 선생님은 지금 회의를 하지 않습니다.", "zh": "金老師現在沒有在開會。", "en": "Mr Kim is not in a meeting now."},
+            {"t": "회의는 두 시간 후에 끝납니다.", "zh": "會議兩個小時後結束。", "en": "The meeting ends in two hours."},
+            {"t": "여자는 나중에 다시 전화할 겁니다.", "zh": "女生等一下會再打電話。", "en": "The woman will call again later."},
+            {"t": "남자가 김 선생님입니다.", "zh": "男生就是金老師。", "en": "The man is Mr Kim."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說「한 시간 후에 다시 전화할게요」（一個小時後再打來）。金老師正在開會，會議一個小時後結束。", "en": "She says 한 시간 후에 다시 전화할게요 (I'll call again in an hour). Mr Kim is in a meeting that ends in an hour."},
+          "words": [
+            {"w": "회의", "r": "", "zh": "會議", "en": "meeting"},
+            {"w": "끝나다", "r": "", "zh": "結束", "en": "to end", "m": ["끝나요"]},
+            {"w": "다시", "r": "", "zh": "再", "en": "again"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "이 식당 음식이 너무 비싸네요.", "zh": "這家餐廳的菜好貴喔。", "en": "The food here is really expensive."},
+            {"who": "F", "s": "그래도 여기는 음식이 맛있고 깨끗해요. 저는 조금 비싸도 맛있는 곳에서 먹고 싶어요.", "zh": "可是這裡的菜好吃又乾淨。我寧願貴一點也想在好吃的地方吃。", "en": "But the food here is tasty and clean. I'd rather eat somewhere good, even if it costs a bit more."}
+          ],
+          "options": [
+            {"t": "싼 식당에서 자주 먹어야 합니다.", "zh": "要常常在便宜的餐廳吃。", "en": "You should eat at cheap places often."},
+            {"t": "조금 비싸도 맛있는 음식을 먹고 싶습니다.", "zh": "貴一點也想吃好吃的東西。", "en": "She wants to eat good food even if it costs a little more."},
+            {"t": "이 식당은 깨끗하지 않습니다.", "zh": "這家餐廳不乾淨。", "en": "This restaurant is not clean."},
+            {"t": "집에서 음식을 만드는 것이 좋습니다.", "zh": "在家做飯比較好。", "en": "It is better to cook at home."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「조금 비싸도 맛있는 곳에서 먹고 싶어요」（貴一點也想在好吃的地方吃），這是她的中心想法。", "en": "Her view: 조금 비싸도 맛있는 곳에서 먹고 싶어요 (even if it costs more, she wants to eat somewhere good)."},
+          "words": [
+            {"w": "비싸다", "r": "", "zh": "貴", "en": "to be expensive", "m": ["비싸네요", "비싸도"]},
+            {"w": "깨끗하다", "r": "", "zh": "乾淨", "en": "to be clean", "m": ["깨끗해요"]}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "요즘 밤에 잠을 잘 못 자요.", "zh": "最近晚上都睡不好。", "en": "I can't sleep well at night these days."},
+            {"who": "F", "s": "자기 전에 휴대폰을 보지 마세요. 휴대폰을 오래 보면 잠이 잘 안 와요. 대신 책을 읽어 보세요.", "zh": "睡前不要看手機。手機看太久會睡不著。改看書試試看。", "en": "Don't look at your phone before bed. If you look at it for a long time you can't fall asleep. Try reading a book instead."}
+          ],
+          "options": [
+            {"t": "잠을 많이 자면 건강에 나쁩니다.", "zh": "睡太多對健康不好。", "en": "Sleeping a lot is bad for your health."},
+            {"t": "책은 아침에 읽는 것이 좋습니다.", "zh": "書最好早上看。", "en": "Books are best read in the morning."},
+            {"t": "휴대폰을 새로 사야 합니다.", "zh": "要買新手機。", "en": "He should buy a new phone."},
+            {"t": "자기 전에 휴대폰을 보지 않는 것이 좋습니다.", "zh": "睡前最好不要看手機。", "en": "It's better not to look at your phone before bed."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「자기 전에 휴대폰을 보지 마세요」（睡前不要看手機），因為看太久會睡不著。", "en": "She says 자기 전에 휴대폰을 보지 마세요 (don't look at your phone before bed), because it keeps you awake."},
+          "words": [
+            {"w": "잠", "r": "", "zh": "睡眠", "en": "sleep"},
+            {"w": "휴대폰", "r": "", "zh": "手機", "en": "mobile phone"},
+            {"w": "대신", "r": "", "zh": "代替", "en": "instead"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "한국어를 잘하고 싶은데 단어가 너무 어려워요.", "zh": "我想把韓文學好，可是單字太難了。", "en": "I want to be good at Korean, but the vocabulary is so hard."},
+            {"who": "F", "s": "단어는 한 번에 많이 외우는 것보다 매일 조금씩 외우는 게 좋아요. 저도 그렇게 공부했어요.", "zh": "單字與其一次背很多，不如每天背一點。我也是這樣學的。", "en": "It's better to learn a few words every day than lots at once. That's how I studied too."}
+          ],
+          "options": [
+            {"t": "단어는 매일 조금씩 외우는 것이 좋습니다.", "zh": "單字最好每天背一點。", "en": "It is better to learn a few words every day."},
+            {"t": "한국어 단어는 너무 어렵습니다.", "zh": "韓文單字太難了。", "en": "Korean words are too hard."},
+            {"t": "단어를 한 번에 많이 외워야 합니다.", "zh": "要一次背很多單字。", "en": "You should learn many words at once."},
+            {"t": "한국어는 친구하고 공부해야 합니다.", "zh": "韓文要跟朋友一起學。", "en": "You should study Korean with friends."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生說「매일 조금씩 외우는 게 좋아요」（每天背一點比較好）。覺得單字難的是男生。", "en": "She says 매일 조금씩 외우는 게 좋아요 (better a little every day). It is the man who finds the words hard."},
+          "words": [
+            {"w": "단어", "r": "", "zh": "單字", "en": "word"},
+            {"w": "외우다", "r": "", "zh": "背", "en": "to memorise", "m": ["외우는"]},
+            {"w": "조금씩", "r": "", "zh": "一點一點地", "en": "little by little"}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "여보세요, 민수 씨. 저 수미예요. 내일 오후 세 시에 학교 앞 카페에서 만나기로 했지요?", "zh": "喂，民秀，我是秀美。我們約明天下午三點在學校前面的咖啡廳見面對吧？", "en": "Hi Minsu, it's Sumi. We said we'd meet at the café in front of school at three tomorrow, didn't we?"},
+            {"who": "F", "s": "그런데 제가 내일 갑자기 아르바이트를 하게 됐어요. 그래서 시간을 다섯 시로 바꾸고 싶어요.", "zh": "可是我明天突然要打工。所以想把時間改到五點。", "en": "But I suddenly have to work tomorrow, so I'd like to change it to five."},
+            {"who": "F", "s": "괜찮으면 문자 주세요.", "zh": "可以的話請傳簡訊給我。", "en": "If that's OK, send me a text."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "여자가 왜 이 이야기를 하고 있는지 고르십시오.", "zh": "選出女生為什麼說這段話。", "en": "Choose why the woman is saying this."},
+              "options": [
+                {"t": "아르바이트를 소개하려고", "zh": "為了介紹打工", "en": "to recommend a part-time job"},
+                {"t": "카페 위치를 알려 주려고", "zh": "為了告訴他咖啡廳的位置", "en": "to tell him where the café is"},
+                {"t": "약속 시간을 바꾸려고", "zh": "為了改約定的時間", "en": "to change the time they meet"},
+                {"t": "약속을 취소하려고", "zh": "為了取消約定", "en": "to cancel the meeting"}
+              ],
+              "answer": 2,
+              "explain": {"zh": "秀美說「시간을 다섯 시로 바꾸고 싶어요」（想把時間改到五點），她沒有取消，只是改時間。", "en": "She says 시간을 다섯 시로 바꾸고 싶어요 (I want to change it to five) — she changes the time, she doesn't cancel."}
+            },
+            {
+              "ask": {"s": "들은 내용과 같은 것을 고르십시오.", "zh": "選出和聽到的內容相同的。", "en": "Choose what matches what you heard."},
+              "options": [
+                {"t": "두 사람은 오늘 만납니다.", "zh": "兩個人今天見面。", "en": "They meet today."},
+                {"t": "여자는 내일 아르바이트를 합니다.", "zh": "女生明天要打工。", "en": "The woman works part-time tomorrow."},
+                {"t": "여자는 전화로 대답을 듣고 싶어 합니다.", "zh": "女生想用電話聽到回覆。", "en": "The woman wants a reply by phone."},
+                {"t": "약속 시간은 세 시로 바뀌었습니다.", "zh": "約定時間改成了三點。", "en": "The time has been changed to three."}
+              ],
+              "answer": 1,
+              "explain": {"zh": "她說「내일 갑자기 아르바이트를 하게 됐어요」（明天突然要打工）。見面是明天，原本三點、想改五點，回覆要傳「문자」（簡訊）。", "en": "She says she suddenly has to work tomorrow. They meet tomorrow, the time moves from three to five, and she wants a text (문자)."}
+            }
+          ],
+          "words": [
+            {"w": "갑자기", "r": "", "zh": "突然", "en": "suddenly"},
+            {"w": "바꾸다", "r": "", "zh": "換、改", "en": "to change", "m": ["바꾸고"]},
+            {"w": "문자", "r": "", "zh": "簡訊", "en": "text message"}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 이번 주말에 한강 공원에서 축제가 있는데 같이 갈래요?", "zh": "秀美，這個週末漢江公園有慶典，要一起去嗎？", "en": "Sumi, there's a festival in Hangang Park this weekend. Want to come?"},
+            {"who": "F", "s": "무슨 축제예요?", "zh": "什麼慶典？", "en": "What kind of festival?"},
+            {"who": "M", "s": "세계 음식 축제예요. 여러 나라 음식을 먹을 수 있어요. 공연도 있어요.", "zh": "世界美食節。可以吃到很多國家的食物。也有表演。", "en": "A world food festival. You can try food from lots of countries, and there are shows too."},
+            {"who": "F", "s": "재미있겠네요. 몇 시에 시작해요?", "zh": "聽起來很有趣。幾點開始？", "en": "Sounds fun. What time does it start?"},
+            {"who": "M", "s": "토요일 오전 열한 시에 시작해요.", "zh": "星期六上午十一點開始。", "en": "It starts at eleven on Saturday morning."},
+            {"who": "F", "s": "좋아요. 그럼 열한 시에 지하철역에서 만나요.", "zh": "好啊。那十一點在地鐵站見。", "en": "Great. Then let's meet at the subway station at eleven."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "두 사람이 무엇에 대해 이야기를 하고 있는지 고르십시오.", "zh": "選出兩個人在談論什麼。", "en": "Choose what the two people are talking about."},
+              "options": [
+                {"t": "좋아하는 나라 음식", "zh": "喜歡的外國菜", "en": "their favourite foreign food"},
+                {"t": "지하철 타는 방법", "zh": "搭地鐵的方法", "en": "how to take the subway"},
+                {"t": "공연 표 예매", "zh": "預購表演票", "en": "booking show tickets"},
+                {"t": "주말에 가는 축제", "zh": "週末要去的慶典", "en": "the festival they will go to at the weekend"}
+              ],
+              "answer": 3,
+              "explain": {"zh": "兩人在談週末漢江公園的世界美食節：是什麼慶典、幾點開始、在哪裡見面。", "en": "They talk about the world food festival in Hangang Park this weekend: what it is, when it starts, where to meet."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "축제에서 공연을 볼 수 있습니다.", "zh": "在慶典上可以看表演。", "en": "You can see shows at the festival."},
+                {"t": "축제는 일요일에 시작합니다.", "zh": "慶典星期日開始。", "en": "The festival starts on Sunday."},
+                {"t": "두 사람은 한강 공원에서 만납니다.", "zh": "兩個人在漢江公園見面。", "en": "They will meet in Hangang Park."},
+                {"t": "여자는 축제에 가고 싶지 않습니다.", "zh": "女生不想去慶典。", "en": "The woman doesn't want to go."}
+              ],
+              "answer": 0,
+              "explain": {"zh": "男生說「공연도 있어요」（也有表演）。慶典星期六開始，兩人約在地鐵站見面，女生也想去。", "en": "He says 공연도 있어요 (there are shows too). It starts on Saturday, they meet at the subway station, and she is keen."}
+            }
+          ],
+          "words": [
+            {"w": "축제", "r": "", "zh": "慶典", "en": "festival"},
+            {"w": "여러", "r": "", "zh": "許多", "en": "many, various"},
+            {"w": "공연", "r": "", "zh": "表演", "en": "performance, show"},
+            {"w": "시작하다", "r": "", "zh": "開始", "en": "to start", "m": ["시작해요"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "김민호 씨는 주말마다 무슨 일을 하세요?", "zh": "金敏浩先生，您每個週末都做什麼呢？", "en": "Mr Kim, what do you do every weekend?"},
+            {"who": "M", "s": "저는 주말에 외국인들에게 한국어를 가르치는 봉사를 해요. 3년 전부터 했어요.", "zh": "我週末當志工，教外國人韓文。從三年前開始的。", "en": "At weekends I volunteer teaching Korean to foreigners. I've done it for three years."},
+            {"who": "F", "s": "왜 이 일을 시작하셨어요?", "zh": "您為什麼開始做這件事？", "en": "Why did you start?"},
+            {"who": "M", "s": "저도 외국에서 공부할 때 그 나라 사람들이 많이 도와줬어요. 그때 정말 고마웠어요.", "zh": "我在國外讀書的時候，當地人幫了我很多。那時候真的很感激。", "en": "When I studied abroad, the people there helped me a lot. I was really grateful."},
+            {"who": "M", "s": "그래서 저도 한국에 온 외국인들을 돕고 싶었어요.", "zh": "所以我也想幫助來韓國的外國人。", "en": "So I wanted to help foreigners who come to Korea too."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "남자가 이 일을 시작한 이유를 고르십시오.", "zh": "選出男生開始做這件事的原因。", "en": "Choose why the man started this work."},
+              "options": [
+                {"t": "한국어 선생님이 되고 싶어서", "zh": "因為想當韓文老師", "en": "because he wants to be a Korean teacher"},
+                {"t": "외국에서 도움을 받은 적이 있어서", "zh": "因為在國外曾受到幫助", "en": "because he was once helped abroad"},
+                {"t": "외국어를 배우고 싶어서", "zh": "因為想學外語", "en": "because he wants to learn a foreign language"},
+                {"t": "주말에 시간이 많아서", "zh": "因為週末時間很多", "en": "because he has a lot of time at weekends"}
+              ],
+              "answer": 1,
+              "explain": {"zh": "男生說在國外讀書時「그 나라 사람들이 많이 도와줬어요」（當地人幫了很多），所以也想幫助外國人。", "en": "He says that abroad 그 나라 사람들이 많이 도와줬어요 (the people there helped him a lot), so he wants to help foreigners too."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "남자는 평일에 한국어를 가르칩니다.", "zh": "男生平日教韓文。", "en": "The man teaches Korean on weekdays."},
+                {"t": "남자는 작년에 이 일을 시작했습니다.", "zh": "男生去年開始做這件事。", "en": "The man started this last year."},
+                {"t": "남자는 외국에서 공부한 적이 있습니다.", "zh": "男生曾經在國外讀書。", "en": "The man once studied abroad."},
+                {"t": "남자는 돈을 받고 한국어를 가르칩니다.", "zh": "男生收費教韓文。", "en": "The man is paid to teach Korean."}
+              ],
+              "answer": 2,
+              "explain": {"zh": "男生說「외국에서 공부할 때」（在國外讀書的時候）。他是週末教、三年前開始，而且是「봉사」（志工），不收錢。", "en": "He mentions 외국에서 공부할 때 (when I studied abroad). He teaches at weekends, began three years ago, and as a volunteer (봉사) he is not paid."}
+            }
+          ],
+          "words": [
+            {"w": "외국인", "r": "", "zh": "外國人", "en": "foreigner", "m": ["외국인들"]},
+            {"w": "가르치다", "r": "", "zh": "教", "en": "to teach", "m": ["가르치는"]},
+            {"w": "봉사", "r": "", "zh": "志工服務", "en": "volunteer work"},
+            {"w": "돕다", "r": "", "zh": "幫助", "en": "to help", "m": ["돕고"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "F", "s": "도서관에서는 조용히 해 주세요.", "zh": "在圖書館請保持安靜。", "en": "Please be quiet in the library."},
+            {"who": "M", "s": "아, 죄송합니다.", "zh": "啊，對不起。", "en": "Oh, I'm sorry."}
+          ],
+          "options": [
+            {"t": "남자가 책상에 책을 돌려줍니다.", "zh": "男生在櫃檯還書。", "en": "The man returns books at the desk."},
+            {"t": "여자가 전화하는 남자에게 조용히 하라고 합니다.", "zh": "女生請講電話的男生安靜。", "en": "The woman asks the man on the phone to be quiet."},
+            {"t": "남자가 책을 읽다가 잠을 잡니다.", "zh": "男生看書看到睡著。", "en": "The man falls asleep over his book."},
+            {"t": "남자가 여자에게 높은 곳의 책을 꺼내 줍니다.", "zh": "男生幫女生拿高處的書。", "en": "The man gets a book down from a high shelf for her."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「조용히 해 주세요」（請安靜），男生道歉，是女生請吵鬧的男生安靜的圖。", "en": "She says 조용히 해 주세요 (please be quiet) and he apologises — she is hushing the noisy man."},
+          "words": [
+            {"w": "조용히", "r": "", "zh": "安靜地", "en": "quietly"},
+            {"w": "죄송하다", "r": "", "zh": "抱歉", "en": "to be sorry", "m": ["죄송합니다"]}
+          ]
+        },
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "M", "s": "어디가 아프세요?", "zh": "哪裡不舒服？", "en": "What's the matter?"},
+            {"who": "F", "s": "어제부터 목이 아파요. 기침도 나요.", "zh": "從昨天開始喉嚨痛。也會咳嗽。", "en": "My throat has been sore since yesterday. I've got a cough too."}
+          ],
+          "options": [
+            {"t": "의사가 여자의 다리에 붕대를 감아 줍니다.", "zh": "醫生幫女生的腿包紮。", "en": "The doctor bandages the woman's leg."},
+            {"t": "약사가 남자에게 약을 줍니다.", "zh": "藥師拿藥給男生。", "en": "A pharmacist gives the man some medicine."},
+            {"t": "의사가 여자의 눈을 봅니다.", "zh": "醫生檢查女生的眼睛。", "en": "The doctor looks at the woman's eye."},
+            {"t": "여자가 목을 가리키고 의사가 이야기를 듣습니다.", "zh": "女生指著喉嚨，醫生在聽她說。", "en": "The woman points to her throat while the doctor listens."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「목이 아파요」（喉嚨痛），還會咳嗽，是她指著喉嚨跟醫生說明的圖。", "en": "She says 목이 아파요 (my throat hurts) and she coughs — she points to her throat while the doctor listens."},
+          "words": [
+            {"w": "목", "r": "", "zh": "喉嚨、脖子", "en": "throat, neck"},
+            {"w": "기침", "r": "", "zh": "咳嗽", "en": "cough"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "저 다음 달에 한국어 시험을 봐요.", "zh": "我下個月要考韓文檢定。", "en": "I'm taking a Korean exam next month."},
+            {"who": "F", "s": "그래요? 준비는 많이 했어요?", "zh": "是嗎？準備得多嗎？", "en": "Really? Have you prepared much?"},
+            {"who": "M", "s": "아니요, 아직 많이 못 했어요. 그래서 요즘 매일 도서관에서 공부해요.", "zh": "沒有，還沒準備多少。所以最近每天在圖書館讀書。", "en": "No, not much yet. So I study at the library every day these days."}
+          ],
+          "options": [
+            {"t": "남자는 요즘 도서관에서 공부합니다.", "zh": "男生最近在圖書館讀書。", "en": "The man studies at the library these days."},
+            {"t": "남자는 지난달에 시험을 봤습니다.", "zh": "男生上個月考了試。", "en": "The man took the exam last month."},
+            {"t": "여자는 다음 달에 시험을 봅니다.", "zh": "女生下個月考試。", "en": "The woman takes an exam next month."},
+            {"t": "남자는 시험 준비를 다 했습니다.", "zh": "男生考試都準備好了。", "en": "The man is fully prepared."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「요즘 매일 도서관에서 공부해요」（最近每天在圖書館讀書）。考試是下個月、考的是男生，而且他還沒準備好。", "en": "He says 요즘 매일 도서관에서 공부해요. The exam is next month, it is his, and he isn't ready yet."},
+          "words": [
+            {"w": "시험을 보다", "r": "", "zh": "考試", "en": "to take an exam", "m": ["시험을 봐요"]},
+            {"w": "준비", "r": "", "zh": "準備", "en": "preparation"},
+            {"w": "아직", "r": "", "zh": "還（沒）", "en": "yet, still"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "저, 여기에서 사진을 찍어도 돼요?", "zh": "請問，這裡可以拍照嗎？", "en": "Excuse me, may I take photos here?"},
+            {"who": "M", "s": "박물관 안에서는 사진을 찍으면 안 돼요. 밖에서는 괜찮아요.", "zh": "博物館裡面不能拍照。外面可以。", "en": "You can't take photos inside the museum. Outside is fine."},
+            {"who": "F", "s": "네, 알겠습니다.", "zh": "好，我知道了。", "en": "All right, I see."}
+          ],
+          "options": [
+            {"t": "박물관 안에서 사진을 찍어도 됩니다.", "zh": "博物館裡面可以拍照。", "en": "You may take photos inside the museum."},
+            {"t": "여자는 박물관에서 일합니다.", "zh": "女生在博物館工作。", "en": "The woman works at the museum."},
+            {"t": "박물관 밖에서는 사진을 찍을 수 있습니다.", "zh": "博物館外面可以拍照。", "en": "You can take photos outside the museum."},
+            {"t": "남자는 사진을 찍고 있습니다.", "zh": "男生正在拍照。", "en": "The man is taking photos."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「밖에서는 괜찮아요」（外面可以），裡面不能拍。問問題的女生是參觀的人。", "en": "He says 밖에서는 괜찮아요 (outside is fine) — not inside. The woman asking is a visitor."},
+          "words": [
+            {"w": "박물관", "r": "", "zh": "博物館", "en": "museum"},
+            {"w": "안", "r": "", "zh": "裡面", "en": "inside", "m": ["안에서는"]},
+            {"w": "밖", "r": "", "zh": "外面", "en": "outside", "m": ["밖에서는"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "지난 주말에 이사한 집은 어때요?", "zh": "上週末搬的新家怎麼樣？", "en": "How is the place you moved into last weekend?"},
+            {"who": "F", "s": "방이 넓고 밝아서 좋아요. 그런데 회사까지 버스로 사십 분쯤 걸려요.", "zh": "房間又大又亮，很好。不過搭公車到公司要四十分鐘左右。", "en": "The rooms are big and bright — I like it. But it takes about forty minutes to work by bus."},
+            {"who": "M", "s": "전 집보다 멀어요?", "zh": "比以前的家遠嗎？", "en": "Is that further than your old place?"},
+            {"who": "F", "s": "네, 조금 더 멀어요.", "zh": "對，遠一點。", "en": "Yes, a bit further."}
+          ],
+          "options": [
+            {"t": "여자는 이번 주말에 이사합니다.", "zh": "女生這個週末要搬家。", "en": "The woman is moving this weekend."},
+            {"t": "새집은 전 집보다 회사에서 가깝습니다.", "zh": "新家比以前的家離公司近。", "en": "The new home is closer to work than the old one."},
+            {"t": "여자는 지하철로 회사에 갑니다.", "zh": "女生搭地鐵去公司。", "en": "The woman goes to work by subway."},
+            {"t": "여자의 새집은 방이 밝습니다.", "zh": "女生新家的房間很亮。", "en": "The woman's new home has bright rooms."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「방이 넓고 밝아서 좋아요」（房間又大又亮）。她是上週末搬的，新家比較遠，上班搭的是公車。", "en": "She says 방이 넓고 밝아서 좋아요 (big, bright rooms). She moved last weekend, the new place is further, and she takes the bus."},
+          "words": [
+            {"w": "넓다", "r": "", "zh": "寬敞", "en": "to be spacious", "m": ["넓고"]},
+            {"w": "밝다", "r": "", "zh": "明亮", "en": "to be bright", "m": ["밝아서"]},
+            {"w": "쯤", "r": "", "zh": "左右", "en": "about", "m": ["사십 분쯤"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "이 노트북 좀 고쳐 주세요. 갑자기 화면이 안 나와요.", "zh": "請幫我修這台筆電。螢幕突然不亮了。", "en": "Could you fix this laptop? The screen suddenly went blank."},
+            {"who": "M", "s": "오늘은 손님이 많아서요. 내일 오후에 찾으러 오세요.", "zh": "今天客人比較多。請明天下午來拿。", "en": "We have a lot of customers today. Please come and pick it up tomorrow afternoon."},
+            {"who": "F", "s": "네, 그럼 내일 올게요.", "zh": "好，那我明天來。", "en": "OK, I'll come tomorrow then."}
+          ],
+          "options": [
+            {"t": "노트북은 오늘 다 고칩니다.", "zh": "筆電今天就會修好。", "en": "The laptop will be fixed today."},
+            {"t": "여자는 내일 다시 올 겁니다.", "zh": "女生明天會再來。", "en": "The woman will come back tomorrow."},
+            {"t": "남자의 노트북이 고장 났습니다.", "zh": "男生的筆電壞了。", "en": "The man's laptop is broken."},
+            {"t": "오늘은 손님이 없습니다.", "zh": "今天沒有客人。", "en": "There are no customers today."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「내일 올게요」（明天來）。今天客人多，所以明天下午才能拿；壞掉的是女生的筆電。", "en": "She says 내일 올게요 (I'll come tomorrow). The shop is busy today, so it is ready tomorrow afternoon; the broken laptop is hers."},
+          "words": [
+            {"w": "고치다", "r": "", "zh": "修理", "en": "to fix", "m": ["고쳐"]},
+            {"w": "화면", "r": "", "zh": "螢幕", "en": "screen"},
+            {"w": "찾다", "r": "", "zh": "取、找", "en": "to pick up", "m": ["찾으러"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 커피 한 잔 할까요?", "zh": "秀美，要不要喝杯咖啡？", "en": "Sumi, shall we have a coffee?"},
+            {"who": "F", "s": "미안해요. 저는 저녁에 커피를 마시면 잠을 못 자요. 주스를 마실게요.", "zh": "不好意思。我晚上喝咖啡就會睡不著。我喝果汁好了。", "en": "Sorry. If I drink coffee in the evening I can't sleep. I'll have juice."},
+            {"who": "M", "s": "그래요. 그럼 저는 커피, 수미 씨는 주스.", "zh": "好。那我喝咖啡，秀美喝果汁。", "en": "OK. Coffee for me, juice for you."}
+          ],
+          "options": [
+            {"t": "여자는 주스를 마실 겁니다.", "zh": "女生要喝果汁。", "en": "The woman will have juice."},
+            {"t": "지금은 아침입니다.", "zh": "現在是早上。", "en": "It's morning now."},
+            {"t": "남자는 커피를 안 좋아합니다.", "zh": "男生不喜歡咖啡。", "en": "The man doesn't like coffee."},
+            {"t": "여자는 커피를 마시고 잠을 잘 잤습니다.", "zh": "女生喝了咖啡睡得很好。", "en": "The woman slept well after coffee."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生說「주스를 마실게요」（我喝果汁）。現在是晚上；男生要喝咖啡。", "en": "She says 주스를 마실게요 (I'll have juice). It is evening, and the man is having coffee."},
+          "words": [
+            {"w": "잔", "r": "", "zh": "杯", "en": "cup", "m": ["한 잔"]},
+            {"w": "저녁", "r": "", "zh": "晚上", "en": "evening"},
+            {"w": "주스", "r": "", "zh": "果汁", "en": "juice"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "이번 휴가에 어디로 갈까요? 해외여행 갈까요?", "zh": "這次休假要去哪裡？要出國旅行嗎？", "en": "Where shall we go this holiday? Abroad?"},
+            {"who": "F", "s": "해외도 좋지만 비행기 표가 너무 비싸요. 저는 가까운 국내 여행도 충분히 좋다고 생각해요. 제주도는 어때요?", "zh": "國外雖然也不錯，但機票太貴了。我覺得近一點的國內旅行也很好。濟州島怎麼樣？", "en": "Abroad would be nice, but flights are too expensive. I think a trip in Korea is just as good. How about Jeju?"}
+          ],
+          "options": [
+            {"t": "해외여행을 꼭 가야 합니다.", "zh": "一定要出國旅行。", "en": "They must go abroad."},
+            {"t": "휴가에는 집에서 쉬고 싶습니다.", "zh": "休假想在家休息。", "en": "She wants to rest at home on holiday."},
+            {"t": "국내 여행도 충분히 좋습니다.", "zh": "國內旅行也很好。", "en": "A trip in the country is good enough."},
+            {"t": "비행기 표를 빨리 사야 합니다.", "zh": "要快點買機票。", "en": "They must buy plane tickets soon."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說「국내 여행도 충분히 좋다고 생각해요」（我覺得國內旅行也很好），還提議去濟州島。", "en": "She says 국내 여행도 충분히 좋다고 생각해요 (a trip in Korea is good enough) and suggests Jeju."},
+          "words": [
+            {"w": "휴가", "r": "", "zh": "休假", "en": "holiday"},
+            {"w": "해외여행", "r": "", "zh": "出國旅行", "en": "travel abroad"},
+            {"w": "국내", "r": "", "zh": "國內", "en": "domestic"},
+            {"w": "충분히", "r": "", "zh": "足夠地", "en": "enough"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "회의 자료를 아직 다 못 만들었어요. 내일 아침에 하면 될까요?", "zh": "會議資料還沒做完。明天早上做可以嗎？", "en": "I haven't finished the meeting papers yet. Can I do them tomorrow morning?"},
+            {"who": "F", "s": "내일 아침에는 시간이 부족할 거예요. 일은 미리 끝내 놓는 게 좋아요. 오늘 조금 더 해요.", "zh": "明天早上時間會不夠。事情最好先做完。今天再多做一點吧。", "en": "There won't be enough time tomorrow morning. It's better to get work done in advance. Do a bit more today."}
+          ],
+          "options": [
+            {"t": "회의 자료는 필요 없습니다.", "zh": "不需要會議資料。", "en": "The meeting papers are not needed."},
+            {"t": "일은 미리 끝내는 것이 좋습니다.", "zh": "事情最好提早做完。", "en": "It is better to finish work in advance."},
+            {"t": "내일 아침에 일찍 와야 합니다.", "zh": "明天早上要早點來。", "en": "He must come in early tomorrow."},
+            {"t": "오늘은 일찍 집에 가는 것이 좋습니다.", "zh": "今天最好早點回家。", "en": "He had better go home early today."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「일은 미리 끝내 놓는 게 좋아요」（事情最好先做完），所以要他今天多做一點。", "en": "She says 일은 미리 끝내 놓는 게 좋아요 (it's better to finish in advance) and tells him to do more today."},
+          "words": [
+            {"w": "자료", "r": "", "zh": "資料", "en": "materials, papers"},
+            {"w": "부족하다", "r": "", "zh": "不足", "en": "to be short of", "m": ["부족할"]},
+            {"w": "미리", "r": "", "zh": "事先", "en": "in advance"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 쓰레기를 아무 데나 버리면 안 돼요.", "zh": "民秀，垃圾不能隨便亂丟。", "en": "Minsu, you mustn't throw rubbish just anywhere."},
+            {"who": "M", "s": "쓰레기통이 없어서요.", "zh": "因為沒有垃圾桶嘛。", "en": "There's no bin."},
+            {"who": "F", "s": "그래도 쓰레기통이 보일 때까지 가지고 있다가 버려야 해요. 거리가 깨끗해야 모두 기분이 좋잖아요.", "zh": "就算這樣，也要拿著，等看到垃圾桶再丟。街道乾淨，大家心情才會好啊。", "en": "Even so, you should hold on to it until you see a bin. Everyone feels better when the streets are clean."}
+          ],
+          "options": [
+            {"t": "거리에 쓰레기통이 많이 있습니다.", "zh": "街上有很多垃圾桶。", "en": "There are many bins in the street."},
+            {"t": "쓰레기를 줍는 일은 힘듭니다.", "zh": "撿垃圾很辛苦。", "en": "Picking up rubbish is hard work."},
+            {"t": "쓰레기는 집에서만 버려야 합니다.", "zh": "垃圾只能在家裡丟。", "en": "Rubbish should only be thrown away at home."},
+            {"t": "쓰레기는 쓰레기통에 버려야 합니다.", "zh": "垃圾要丟進垃圾桶。", "en": "Rubbish should go in a bin."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說要「쓰레기통이 보일 때까지 가지고 있다가 버려야 해요」（拿著等看到垃圾桶再丟），重點是垃圾要丟進垃圾桶。", "en": "She says to keep it until you see a bin and throw it there — rubbish belongs in a bin."},
+          "words": [
+            {"w": "쓰레기통", "r": "", "zh": "垃圾桶", "en": "bin"},
+            {"w": "쓰레기", "r": "", "zh": "垃圾", "en": "rubbish"},
+            {"w": "버리다", "r": "", "zh": "丟", "en": "to throw away", "m": ["버리면", "버려야"]},
+            {"w": "거리", "r": "", "zh": "街道", "en": "street"}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "고객 여러분께 안내 말씀 드리겠습니다. 오늘부터 일주일 동안 5층 여성복 매장에서 봄옷 할인 행사를 합니다.", "zh": "各位顧客請注意。從今天起一週，五樓女裝賣場舉辦春裝特價活動。", "en": "Attention, shoppers. From today, for one week, the fifth-floor womenswear department is holding a spring clothing sale."},
+            {"who": "F", "s": "모든 옷을 30퍼센트 싸게 살 수 있습니다. 그리고 10만 원 이상 사시는 분께는 예쁜 우산을 선물로 드립니다.", "zh": "所有衣服都打七折。另外，購物滿十萬韓元的顧客會獲贈漂亮的雨傘。", "en": "All clothes are 30 per cent off. And customers who spend 100,000 won or more will receive a pretty umbrella as a gift."},
+            {"who": "F", "s": "많이 이용해 주시기 바랍니다.", "zh": "歡迎多加利用。", "en": "We hope to see you there."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "여자가 왜 이 이야기를 하고 있는지 고르십시오.", "zh": "選出女生為什麼說這段話。", "en": "Choose why the woman is saying this."},
+              "options": [
+                {"t": "할인 행사를 알리려고", "zh": "為了宣傳特價活動", "en": "to announce a sale"},
+                {"t": "우산을 팔려고", "zh": "為了賣雨傘", "en": "to sell umbrellas"},
+                {"t": "손님을 찾으려고", "zh": "為了找客人", "en": "to look for a customer"},
+                {"t": "매장 위치를 바꾸려고", "zh": "為了換賣場的位置", "en": "to move the department"}
+              ],
+              "answer": 0,
+              "explain": {"zh": "這是百貨公司的廣播，說明春裝特價活動的時間、地點和折扣。雨傘是贈品，不是賣的。", "en": "It is a store announcement about the spring sale: when, where and how much off. The umbrella is a free gift, not for sale."}
+            },
+            {
+              "ask": {"s": "들은 내용과 같은 것을 고르십시오.", "zh": "選出和聽到的內容相同的。", "en": "Choose what matches what you heard."},
+              "options": [
+                {"t": "할인 행사는 3층에서 합니다.", "zh": "特價活動在三樓。", "en": "The sale is on the third floor."},
+                {"t": "모든 손님이 우산을 받습니다.", "zh": "所有客人都會拿到雨傘。", "en": "Every customer gets an umbrella."},
+                {"t": "할인 행사는 일주일 동안 합니다.", "zh": "特價活動舉辦一週。", "en": "The sale lasts one week."},
+                {"t": "겨울옷을 싸게 팝니다.", "zh": "冬裝特價。", "en": "Winter clothes are on sale."}
+              ],
+              "answer": 2,
+              "explain": {"zh": "廣播說「오늘부터 일주일 동안」（從今天起一週）。地點是五樓、賣的是春裝，雨傘只送給買滿十萬韓元的人。", "en": "It says 오늘부터 일주일 동안 (for a week from today). It is on the fifth floor, it is spring clothes, and only people spending 100,000 won get an umbrella."}
+            }
+          ],
+          "words": [
+            {"w": "할인", "r": "", "zh": "打折", "en": "discount", "m": ["할인 행사"]},
+            {"w": "매장", "r": "", "zh": "賣場", "en": "department, store floor"},
+            {"w": "이상", "r": "", "zh": "以上", "en": "or more"}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "민호 씨, 요즘 무슨 운동을 해요?", "zh": "敏浩，你最近做什麼運動？", "en": "Minho, what exercise do you do these days?"},
+            {"who": "M", "s": "퇴근 후에 회사 근처에서 테니스를 배워요.", "zh": "下班後在公司附近學網球。", "en": "I learn tennis near my office after work."},
+            {"who": "F", "s": "테니스요? 어렵지 않아요?", "zh": "網球？不難嗎？", "en": "Tennis? Isn't it hard?"},
+            {"who": "M", "s": "처음에는 어려웠는데 지금은 아주 재미있어요. 같이 배우는 사람들하고 친해져서 더 좋아요.", "zh": "一開始很難，現在覺得很好玩。跟一起學的人變熟了，所以更喜歡了。", "en": "It was hard at first, but now it's great fun. I've made friends with the others in the class, so it's even better."},
+            {"who": "F", "s": "저도 배우고 싶어요. 어디에서 배워요?", "zh": "我也想學。在哪裡學？", "en": "I'd like to learn too. Where do you go?"},
+            {"who": "M", "s": "회사 옆 스포츠 센터에서요. 다음에 같이 가요.", "zh": "在公司旁邊的運動中心。下次一起去吧。", "en": "The sports centre next to the office. Come along next time."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "두 사람이 무엇에 대해 이야기를 하고 있는지 고르십시오.", "zh": "選出兩個人在談論什麼。", "en": "Choose what the two people are talking about."},
+              "options": [
+                {"t": "회사 근처 식당", "zh": "公司附近的餐廳", "en": "restaurants near the office"},
+                {"t": "남자가 배우는 운동", "zh": "男生在學的運動", "en": "the sport the man is learning"},
+                {"t": "퇴근 시간", "zh": "下班時間", "en": "when they finish work"},
+                {"t": "테니스 대회", "zh": "網球比賽", "en": "a tennis tournament"}
+              ],
+              "answer": 1,
+              "explain": {"zh": "兩人在談男生下班後學的網球：難不難、好不好玩、在哪裡學。", "en": "They talk about the tennis the man learns after work: whether it is hard, how fun it is, where he learns."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "여자는 테니스를 잘 칩니다.", "zh": "女生網球打得很好。", "en": "The woman plays tennis well."},
+                {"t": "남자는 테니스가 지금도 어렵습니다.", "zh": "男生現在還是覺得網球很難。", "en": "The man still finds tennis hard."},
+                {"t": "스포츠 센터는 집 근처에 있습니다.", "zh": "運動中心在家附近。", "en": "The sports centre is near his home."},
+                {"t": "남자는 퇴근 후에 테니스를 배웁니다.", "zh": "男生下班後學網球。", "en": "The man learns tennis after work."}
+              ],
+              "answer": 3,
+              "explain": {"zh": "男生說「퇴근 후에 회사 근처에서 테니스를 배워요」（下班後在公司附近學網球）。現在覺得很好玩，運動中心在公司旁邊，女生是還沒學。", "en": "He says 퇴근 후에 ... 테니스를 배워요 (he learns tennis after work). He enjoys it now, the centre is next to the office, and she hasn't started yet."}
+            }
+          ],
+          "words": [
+            {"w": "퇴근", "r": "", "zh": "下班", "en": "leaving work"},
+            {"w": "배우다", "r": "", "zh": "學", "en": "to learn", "m": ["배워요", "배우는", "배우고"]},
+            {"w": "친해지다", "r": "", "zh": "變熟", "en": "to become friends", "m": ["친해져서"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "전에는 서울에서 회사에 다니셨지요?", "zh": "您以前是在首爾上班的吧？", "en": "You used to work for a company in Seoul, didn't you?"},
+            {"who": "M", "s": "네, 그런데 오 년 전에 고향에 와서 딸기 농사를 시작했어요.", "zh": "對，不過五年前回到老家，開始種草莓。", "en": "Yes, but five years ago I came back to my hometown and started growing strawberries."},
+            {"who": "F", "s": "왜 시골로 오셨어요?", "zh": "您為什麼搬到鄉下？", "en": "Why did you move to the countryside?"},
+            {"who": "M", "s": "회사 일이 너무 바빠서 가족과 함께 있는 시간이 없었어요.", "zh": "公司的工作太忙，沒有時間跟家人在一起。", "en": "My job was so busy that I had no time with my family."},
+            {"who": "M", "s": "여기에서는 아이들하고 시간을 많이 보낼 수 있어서 좋아요.", "zh": "在這裡可以跟孩子們相處很多時間，很好。", "en": "Here I can spend a lot of time with my children, which I love."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "남자가 시골로 온 이유를 고르십시오.", "zh": "選出男生搬到鄉下的原因。", "en": "Choose why the man moved to the countryside."},
+              "options": [
+                {"t": "딸기를 좋아해서", "zh": "因為喜歡草莓", "en": "because he likes strawberries"},
+                {"t": "서울 집이 비싸서", "zh": "因為首爾的房子很貴", "en": "because homes in Seoul are expensive"},
+                {"t": "가족과 시간을 보내고 싶어서", "zh": "因為想跟家人相處", "en": "because he wanted time with his family"},
+                {"t": "건강이 나빠져서", "zh": "因為身體變差了", "en": "because his health got worse"}
+              ],
+              "answer": 2,
+              "explain": {"zh": "男生說以前太忙「가족과 함께 있는 시간이 없었어요」（沒有時間跟家人在一起），現在可以多陪孩子。", "en": "He says he used to have no time with his family; here he can spend lots of time with his children."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "남자는 오 년 전에 고향에 왔습니다.", "zh": "男生五年前回到老家。", "en": "The man came back to his hometown five years ago."},
+                {"t": "남자는 지금 서울에서 회사에 다닙니다.", "zh": "男生現在在首爾上班。", "en": "The man works for a company in Seoul now."},
+                {"t": "남자는 사과 농사를 합니다.", "zh": "男生種蘋果。", "en": "The man grows apples."},
+                {"t": "남자는 가족과 따로 삽니다.", "zh": "男生跟家人分開住。", "en": "The man lives apart from his family."}
+              ],
+              "answer": 0,
+              "explain": {"zh": "男生說「오 년 전에 고향에 와서」（五年前回到老家）。他現在種的是草莓，而且跟孩子們住在一起。", "en": "He says 오 년 전에 고향에 와서 (five years ago I came back home). He grows strawberries and lives with his children."}
+            }
+          ],
+          "words": [
+            {"w": "시골", "r": "", "zh": "鄉下", "en": "countryside"},
+            {"w": "농사", "r": "", "zh": "農事、種田", "en": "farming", "m": ["농사"]},
+            {"w": "딸기", "r": "", "zh": "草莓", "en": "strawberry"},
+            {"w": "보내다", "r": "", "zh": "度過", "en": "to spend (time)", "m": ["보낼"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "M", "s": "학생이에요?", "zh": "你是學生嗎？", "en": "Are you a student?"}
+          ],
+          "options": [
+            {"t": "네, 학생이에요.", "zh": "對，我是學生。", "en": "Yes, I'm a student."},
+            {"t": "네, 학생이 없어요.", "zh": "對，沒有學生。", "en": "Yes, there are no students."},
+            {"t": "아니요, 학생이 많아요.", "zh": "不，學生很多。", "en": "No, there are many students."},
+            {"t": "아니요, 학교예요.", "zh": "不，是學校。", "en": "No, it's a school."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "問「학생이에요?」（是學生嗎？），回答「네, 학생이에요」（對，是學生）。", "en": "For 학생이에요? (are you a student?) the answer is 네, 학생이에요."},
+          "words": [
+            {"w": "학생", "r": "", "zh": "學生", "en": "student"}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "F", "s": "숙제가 많아요?", "zh": "作業很多嗎？", "en": "Do you have a lot of homework?"}
+          ],
+          "options": [
+            {"t": "네, 숙제를 해요.", "zh": "對，我在寫作業。", "en": "Yes, I'm doing homework."},
+            {"t": "아니요, 숙제예요.", "zh": "不，是作業。", "en": "No, it's homework."},
+            {"t": "아니요, 숙제가 적어요.", "zh": "不，作業很少。", "en": "No, I don't have much."},
+            {"t": "네, 숙제가 없어요.", "zh": "對，沒有作業。", "en": "Yes, there is no homework."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "問「많아요?」（多嗎？），「아니요」接相反的「적어요」（少）。「네, 숙제가 없어요」前後矛盾。", "en": "For 많아요? (a lot?), 아니요 goes with the opposite, 적어요 (little). 네 with 없어요 contradicts itself."},
+          "words": [
+            {"w": "숙제", "r": "", "zh": "作業", "en": "homework"}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "M", "s": "누가 노래해요?", "zh": "誰在唱歌？", "en": "Who is singing?"}
+          ],
+          "options": [
+            {"t": "노래방에서 노래해요.", "zh": "在 KTV 唱歌。", "en": "They sing at a karaoke room."},
+            {"t": "제 동생이 노래해요.", "zh": "我弟弟（妹妹）在唱歌。", "en": "My younger sibling is singing."},
+            {"t": "지금 노래해요.", "zh": "現在在唱。", "en": "They are singing now."},
+            {"t": "노래를 잘해요.", "zh": "歌唱得很好。", "en": "They sing well."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "「누가」問「誰」，答案要是人：「제 동생」（我的弟弟妹妹）。", "en": "누가 asks who, so the answer is a person: 제 동생 (my younger sibling)."},
+          "words": [
+            {"w": "누가", "r": "", "zh": "誰（主語）", "en": "who (as subject)"},
+            {"w": "노래하다", "r": "", "zh": "唱歌", "en": "to sing", "m": ["노래해요"]}
+          ]
+        },
+        {
+          "type": "ko_answer",
+          "lines": [
+            {"who": "F", "s": "여기에 어떻게 왔어요?", "zh": "你怎麼來這裡的？", "en": "How did you get here?"}
+          ],
+          "options": [
+            {"t": "어제 왔어요.", "zh": "昨天來的。", "en": "I came yesterday."},
+            {"t": "친구하고 왔어요.", "zh": "跟朋友來的。", "en": "I came with a friend."},
+            {"t": "학교에 왔어요.", "zh": "來學校了。", "en": "I came to school."},
+            {"t": "버스를 타고 왔어요.", "zh": "搭公車來的。", "en": "I came by bus."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "「어떻게」問「怎麼（用什麼方式）」，答案是交通方式：「버스를 타고」（搭公車）。", "en": "어떻게 asks how, so the answer is the means: 버스를 타고 (by bus)."},
+          "words": [
+            {"w": "어떻게", "r": "", "zh": "怎麼", "en": "how"}
+          ]
+        },
+        {
+          "type": "ko_next",
+          "lines": [
+            {"who": "M", "s": "다녀오겠습니다.", "zh": "我出門了。", "en": "I'm off."}
+          ],
+          "options": [
+            {"t": "어서 오세요.", "zh": "歡迎光臨。", "en": "Welcome."},
+            {"t": "잘 먹겠습니다.", "zh": "我開動了。", "en": "Thank you for the meal (before eating)."},
+            {"t": "잘 다녀오세요.", "zh": "路上小心。", "en": "Have a good day."},
+            {"t": "축하합니다.", "zh": "恭喜。", "en": "Congratulations."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "出門時說「다녀오겠습니다」（我出門了），家人回答「잘 다녀오세요」（路上小心）。", "en": "When someone leaves saying 다녀오겠습니다, you answer 잘 다녀오세요 (have a good day)."},
+          "words": [
+            {"w": "다녀오다", "r": "", "zh": "去一趟回來", "en": "to go and come back", "m": ["다녀오겠습니다"]}
+          ]
+        },
+        {
+          "type": "ko_next",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 오랜만이에요.", "zh": "民秀，好久不見。", "en": "Minsu, long time no see."}
+          ],
+          "options": [
+            {"t": "네, 정말 오랜만이에요. 잘 지냈어요?", "zh": "對啊，真的好久不見。過得好嗎？", "en": "Yes, it's been ages. How have you been?"},
+            {"t": "네, 처음 뵙겠습니다.", "zh": "對，初次見面。", "en": "Yes, how do you do?"},
+            {"t": "아니요, 괜찮아요.", "zh": "不，沒關係。", "en": "No, it's fine."},
+            {"t": "네, 실례합니다.", "zh": "對，打擾了。", "en": "Yes, excuse me."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "對方說「오랜만이에요」（好久不見），就回答「오랜만이에요. 잘 지냈어요?」（好久不見，過得好嗎？）。久別重逢不會說「初次見面」。", "en": "To 오랜만이에요 (long time no see) you answer the same and ask 잘 지냈어요? You don't say 처음 뵙겠습니다 to someone you already know."},
+          "words": [
+            {"w": "오랜만", "r": "", "zh": "好久", "en": "a long time", "m": ["오랜만이에요"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "M", "s": "몇 층에 가세요?", "zh": "您要到幾樓？", "en": "Which floor?"},
+            {"who": "F", "s": "7층 좀 눌러 주세요.", "zh": "請幫我按七樓。", "en": "Seven, please."}
+          ],
+          "options": [
+            {"t": "엘리베이터", "zh": "電梯", "en": "lift"},
+            {"t": "주차장", "zh": "停車場", "en": "car park"},
+            {"t": "화장실", "zh": "洗手間", "en": "toilet"},
+            {"t": "운동장", "zh": "運動場", "en": "sports ground"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "問「몇 층에 가세요?」（到幾樓？），請對方「7층 눌러 주세요」（按七樓），這裡是「엘리베이터」（電梯）。", "en": "Which floor, and 7층 눌러 주세요 (press seven) — they are in an 엘리베이터 (lift)."},
+          "words": [
+            {"w": "층", "r": "", "zh": "樓（層）", "en": "floor", "m": ["몇 층", "7층"]},
+            {"w": "누르다", "r": "", "zh": "按", "en": "to press", "m": ["눌러"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "F", "s": "이 소설책 얼마예요?", "zh": "這本小說多少錢？", "en": "How much is this novel?"},
+            {"who": "M", "s": "만 오천 원이에요. 저쪽 계산대에서 계산하세요.", "zh": "一萬五千韓元。請到那邊的櫃台結帳。", "en": "It's 15,000 won. Please pay at the counter over there."}
+          ],
+          "options": [
+            {"t": "꽃집", "zh": "花店", "en": "flower shop"},
+            {"t": "세탁소", "zh": "洗衣店", "en": "dry cleaner"},
+            {"t": "우체국", "zh": "郵局", "en": "post office"},
+            {"t": "서점", "zh": "書店", "en": "bookshop"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "買「소설책」（小說），在櫃台結帳，這裡是「서점」（書店）。", "en": "She is buying a 소설책 (novel) and pays at the counter — this is a 서점 (bookshop)."},
+          "words": [
+            {"w": "소설책", "r": "", "zh": "小說", "en": "novel"},
+            {"w": "계산하다", "r": "", "zh": "結帳", "en": "to pay", "m": ["계산하세요"]},
+            {"w": "계산대", "r": "", "zh": "收銀台", "en": "checkout counter"}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "M", "s": "오늘 빈방 있어요?", "zh": "今天有空房嗎？", "en": "Do you have a room for tonight?"},
+            {"who": "F", "s": "네, 있어요. 며칠 동안 계실 거예요?", "zh": "有的。您要住幾天呢？", "en": "Yes, we do. How many nights will you stay?"},
+            {"who": "M", "s": "이틀이요.", "zh": "兩天。", "en": "Two nights."}
+          ],
+          "options": [
+            {"t": "병원", "zh": "醫院", "en": "hospital"},
+            {"t": "호텔", "zh": "飯店", "en": "hotel"},
+            {"t": "학교", "zh": "學校", "en": "school"},
+            {"t": "식당", "zh": "餐廳", "en": "restaurant"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "問有沒有「빈방」（空房）、要住幾天，這裡是「호텔」（飯店）。", "en": "He asks for a 빈방 (vacant room) and how many nights — this is a 호텔 (hotel)."},
+          "words": [
+            {"w": "빈방", "r": "", "zh": "空房", "en": "vacant room"},
+            {"w": "며칠", "r": "", "zh": "幾天", "en": "how many days"},
+            {"w": "이틀", "r": "", "zh": "兩天", "en": "two days", "m": ["이틀이요"]}
+          ]
+        },
+        {
+          "type": "ko_place",
+          "lines": [
+            {"who": "M", "s": "이 장미로 열 송이 주세요.", "zh": "請給我這種玫瑰十朵。", "en": "Ten of these roses, please."},
+            {"who": "F", "s": "네, 예쁘게 포장해 드릴게요.", "zh": "好的，我幫您包得漂亮一點。", "en": "Sure, I'll wrap them nicely for you."}
+          ],
+          "options": [
+            {"t": "빵집", "zh": "麵包店", "en": "bakery"},
+            {"t": "약국", "zh": "藥局", "en": "pharmacy"},
+            {"t": "꽃집", "zh": "花店", "en": "flower shop"},
+            {"t": "은행", "zh": "銀行", "en": "bank"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "買「장미」（玫瑰）「열 송이」（十朵），這裡是「꽃집」（花店）。", "en": "He buys 장미 (roses), 열 송이 (ten stems) — this is a 꽃집 (flower shop)."},
+          "words": [
+            {"w": "장미", "r": "", "zh": "玫瑰", "en": "rose"},
+            {"w": "송이", "r": "", "zh": "朵", "en": "(counter for flowers)", "m": ["열 송이"]},
+            {"w": "포장하다", "r": "", "zh": "包裝", "en": "to wrap", "m": ["포장해"]}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "F", "s": "누나가 몇 살이에요?", "zh": "你姊姊幾歲？", "en": "How old is your older sister?"},
+            {"who": "M", "s": "스물다섯 살이에요. 저보다 세 살 많아요.", "zh": "二十五歲。比我大三歲。", "en": "She's twenty-five. Three years older than me."}
+          ],
+          "options": [
+            {"t": "직업", "zh": "職業", "en": "job"},
+            {"t": "이름", "zh": "名字", "en": "name"},
+            {"t": "주소", "zh": "地址", "en": "address"},
+            {"t": "나이", "zh": "年齡", "en": "age"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "問「몇 살이에요?」（幾歲？），回答「스물다섯 살」（二十五歲），談的是「나이」（年齡）。", "en": "몇 살이에요? (how old?) and 스물다섯 살 (twenty-five) — the topic is 나이 (age)."},
+          "words": [
+            {"w": "누나", "r": "", "zh": "姊姊（男生稱呼）", "en": "older sister (said by a man)"},
+            {"w": "살", "r": "", "zh": "歲", "en": "years old", "m": ["몇 살", "스물다섯 살", "세 살"]}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "M", "s": "무슨 요일에 한국어 수업이 있어요?", "zh": "韓文課是星期幾？", "en": "What days do you have Korean class?"},
+            {"who": "F", "s": "월요일하고 수요일에 있어요.", "zh": "星期一和星期三。", "en": "On Mondays and Wednesdays."}
+          ],
+          "options": [
+            {"t": "장소", "zh": "地點", "en": "place"},
+            {"t": "요일", "zh": "星期幾", "en": "days of the week"},
+            {"t": "날씨", "zh": "天氣", "en": "weather"},
+            {"t": "가족", "zh": "家人", "en": "family"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "問「무슨 요일」（星期幾），回答「월요일하고 수요일」（星期一和星期三），談的是「요일」。", "en": "무슨 요일 (what day) and 월요일하고 수요일 — the topic is 요일 (days of the week)."},
+          "words": [
+            {"w": "요일", "r": "", "zh": "星期", "en": "day of the week", "m": ["무슨 요일"]},
+            {"w": "월요일", "r": "", "zh": "星期一", "en": "Monday"},
+            {"w": "수요일", "r": "", "zh": "星期三", "en": "Wednesday"}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "F", "s": "고향이 어디예요?", "zh": "你的故鄉在哪裡？", "en": "Where is your hometown?"},
+            {"who": "M", "s": "부산이에요. 바다가 정말 아름다워요.", "zh": "釜山。海真的很美。", "en": "Busan. The sea there is really beautiful."}
+          ],
+          "options": [
+            {"t": "고향", "zh": "故鄉", "en": "hometown"},
+            {"t": "여행", "zh": "旅行", "en": "travel"},
+            {"t": "계절", "zh": "季節", "en": "season"},
+            {"t": "음식", "zh": "食物", "en": "food"}
+          ],
+          "answer": 0,
+          "explain": {"zh": "問「고향이 어디예요?」（故鄉在哪裡？），回答「부산」（釜山），談的是「고향」（故鄉）。", "en": "고향이 어디예요? and 부산 — the topic is 고향 (hometown)."},
+          "words": [
+            {"w": "바다", "r": "", "zh": "海", "en": "sea"},
+            {"w": "아름답다", "r": "", "zh": "美麗", "en": "to be beautiful", "m": ["아름다워요"]}
+          ]
+        },
+        {
+          "type": "ko_topic",
+          "lines": [
+            {"who": "M", "s": "이번 겨울 방학에 뭐 할 거예요?", "zh": "這次寒假你要做什麼？", "en": "What will you do this winter vacation?"},
+            {"who": "F", "s": "친구들하고 스키를 타러 갈 거예요.", "zh": "要跟朋友去滑雪。", "en": "I'm going skiing with my friends."}
+          ],
+          "options": [
+            {"t": "날씨", "zh": "天氣", "en": "weather"},
+            {"t": "선물", "zh": "禮物", "en": "present"},
+            {"t": "계획", "zh": "計畫", "en": "plans"},
+            {"t": "건강", "zh": "健康", "en": "health"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "問「뭐 할 거예요?」（要做什麼？），回答「스키를 타러 갈 거예요」（要去滑雪），談的是「계획」（計畫）。", "en": "뭐 할 거예요? (what will you do?) and 스키를 타러 갈 거예요 (I'll go skiing) — the topic is 계획 (plans)."},
+          "words": [
+            {"w": "겨울", "r": "", "zh": "冬天", "en": "winter"},
+            {"w": "스키를 타다", "r": "", "zh": "滑雪", "en": "to ski", "m": ["스키를 타러"]}
+          ]
+        },
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "M", "s": "저, 이 상자 좀 같이 들어 주시겠어요? 너무 무거워요.", "zh": "請問，可以幫我一起抬這個箱子嗎？太重了。", "en": "Excuse me, could you help me carry this box? It's too heavy."},
+            {"who": "F", "s": "네, 그럴게요.", "zh": "好，我來幫忙。", "en": "Sure, I will."}
+          ],
+          "options": [
+            {"t": "여자가 혼자 상자를 들고 갑니다.", "zh": "女生一個人搬著箱子走。", "en": "The woman carries a box alone."},
+            {"t": "두 사람이 같이 큰 상자를 들고 갑니다.", "zh": "兩個人一起抬著大箱子。", "en": "The two carry a big box together."},
+            {"t": "남자가 여자에게 택배 상자를 줍니다.", "zh": "男生把包裹交給女生。", "en": "The man hands the woman a parcel."},
+            {"t": "남자가 상자를 열어 봅니다.", "zh": "男生打開箱子看。", "en": "The man opens a box."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「같이 들어 주시겠어요?」（可以一起抬嗎？），女生答應，是兩個人一起抬箱子的圖。", "en": "He asks her to help carry the box (같이 들어 주시겠어요?) and she agrees — they carry it together."},
+          "words": [
+            {"w": "상자", "r": "", "zh": "箱子", "en": "box"},
+            {"w": "들다", "r": "", "zh": "抬、拿", "en": "to lift, to carry", "m": ["들어"]},
+            {"w": "무겁다", "r": "", "zh": "重", "en": "to be heavy", "m": ["무거워요"]}
+          ]
+        },
+        {
+          "type": "ko_pic",
+          "lines": [
+            {"who": "F", "s": "손님, 여기에서는 담배를 피우시면 안 돼요.", "zh": "先生，這裡不能抽菸。", "en": "Sir, you can't smoke here."},
+            {"who": "M", "s": "아, 몰랐어요. 죄송합니다.", "zh": "啊，我不知道。對不起。", "en": "Oh, I didn't know. I'm sorry."}
+          ],
+          "options": [
+            {"t": "남자가 쓰레기통에 담배를 버립니다.", "zh": "男生把菸丟進垃圾桶。", "en": "The man throws a cigarette into a bin."},
+            {"t": "여자가 밖에서 담배를 피웁니다.", "zh": "女生在外面抽菸。", "en": "The woman smokes outside."},
+            {"t": "남자가 가게에서 담배를 삽니다.", "zh": "男生在店裡買菸。", "en": "The man buys cigarettes in a shop."},
+            {"t": "여자가 담배를 피우는 남자를 말립니다.", "zh": "女生阻止抽菸的男生。", "en": "The woman stops the man who is smoking."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「여기에서는 담배를 피우시면 안 돼요」（這裡不能抽菸），男生道歉，是女店員阻止男生抽菸的圖。", "en": "She tells him 여기에서는 담배를 피우시면 안 돼요 (you can't smoke here) and he apologises — she is stopping him."},
+          "words": [
+            {"w": "담배를 피우다", "r": "", "zh": "抽菸", "en": "to smoke", "m": ["담배를 피우시면"]},
+            {"w": "모르다", "r": "", "zh": "不知道", "en": "not to know", "m": ["몰랐어요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "지은 씨, 점심 먹었어요?", "zh": "智恩，你吃午餐了嗎？", "en": "Jieun, have you had lunch?"},
+            {"who": "F", "s": "아니요, 아직이요. 일이 많아서요.", "zh": "還沒。因為事情很多。", "en": "No, not yet. I've got a lot of work."},
+            {"who": "M", "s": "그럼 제가 김밥을 사 올게요.", "zh": "那我去買紫菜飯捲回來。", "en": "Then I'll go and get you some gimbap."},
+            {"who": "F", "s": "고마워요.", "zh": "謝謝。", "en": "Thanks."}
+          ],
+          "options": [
+            {"t": "남자가 김밥을 사러 갈 겁니다.", "zh": "男生要去買紫菜飯捲。", "en": "The man will go and buy gimbap."},
+            {"t": "여자는 점심을 먹었습니다.", "zh": "女生吃過午餐了。", "en": "The woman has had lunch."},
+            {"t": "남자는 일이 많습니다.", "zh": "男生事情很多。", "en": "The man has a lot of work."},
+            {"t": "여자가 김밥을 만들었습니다.", "zh": "女生做了紫菜飯捲。", "en": "The woman made gimbap."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「제가 김밥을 사 올게요」（我去買紫菜飯捲回來）。還沒吃飯、工作很多的是女生。", "en": "He says 제가 김밥을 사 올게요 (I'll go and get gimbap). It is she who hasn't eaten and is busy."},
+          "words": [
+            {"w": "아직", "r": "", "zh": "還（沒）", "en": "yet"},
+            {"w": "김밥", "r": "", "zh": "紫菜飯捲", "en": "gimbap"},
+            {"w": "사 오다", "r": "", "zh": "買回來", "en": "to go and buy", "m": ["사 올게요"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "이 노트북 언제 샀어요?", "zh": "這台筆電什麼時候買的？", "en": "When did you buy this laptop?"},
+            {"who": "M", "s": "지난달에 샀어요. 가볍고 빨라서 좋아요.", "zh": "上個月買的。又輕又快，很好用。", "en": "Last month. It's light and fast — I like it."},
+            {"who": "F", "s": "저도 하나 사고 싶어요. 얼마예요?", "zh": "我也想買一台。多少錢？", "en": "I'd like one too. How much is it?"},
+            {"who": "M", "s": "백만 원쯤 해요.", "zh": "大概一百萬韓元。", "en": "About a million won."}
+          ],
+          "options": [
+            {"t": "남자는 어제 노트북을 샀습니다.", "zh": "男生昨天買了筆電。", "en": "The man bought the laptop yesterday."},
+            {"t": "여자는 노트북을 샀습니다.", "zh": "女生買了筆電。", "en": "The woman bought a laptop."},
+            {"t": "남자의 노트북은 가볍습니다.", "zh": "男生的筆電很輕。", "en": "The man's laptop is light."},
+            {"t": "노트북은 십만 원입니다.", "zh": "筆電十萬韓元。", "en": "The laptop costs 100,000 won."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「가볍고 빨라서 좋아요」（又輕又快）。他是上個月買的，價格大約一百萬韓元，女生只是想買。", "en": "He says 가볍고 빨라서 좋아요 (light and fast). He bought it last month, it costs about a million won, and she only wants one."},
+          "words": [
+            {"w": "노트북", "r": "", "zh": "筆電", "en": "laptop"},
+            {"w": "가볍다", "r": "", "zh": "輕", "en": "to be light", "m": ["가볍고"]},
+            {"w": "빠르다", "r": "", "zh": "快", "en": "to be fast", "m": ["빨라서"]}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "저, 여기에 주차해도 돼요?", "zh": "請問，這裡可以停車嗎？", "en": "Excuse me, may I park here?"},
+            {"who": "F", "s": "아니요, 여기는 주차하면 안 돼요. 건물 뒤에 주차장이 있어요.", "zh": "不行，這裡不能停車。大樓後面有停車場。", "en": "No, you can't park here. There's a car park behind the building."},
+            {"who": "M", "s": "아, 감사합니다.", "zh": "啊，謝謝。", "en": "Oh, thank you."}
+          ],
+          "options": [
+            {"t": "여기에 주차할 수 있습니다.", "zh": "這裡可以停車。", "en": "You can park here."},
+            {"t": "여자는 주차장을 찾고 있습니다.", "zh": "女生在找停車場。", "en": "The woman is looking for a car park."},
+            {"t": "주차장은 건물 앞에 있습니다.", "zh": "停車場在大樓前面。", "en": "The car park is in front of the building."},
+            {"t": "건물 뒤에 주차장이 있습니다.", "zh": "大樓後面有停車場。", "en": "There is a car park behind the building."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「건물 뒤에 주차장이 있어요」（大樓後面有停車場）。這裡不能停，找停車場的是男生。", "en": "She says 건물 뒤에 주차장이 있어요 (there's a car park behind the building). Parking here isn't allowed, and it is the man who needs a space."},
+          "words": [
+            {"w": "주차하다", "r": "", "zh": "停車", "en": "to park", "m": ["주차해도", "주차하면"]},
+            {"w": "건물", "r": "", "zh": "大樓", "en": "building"},
+            {"w": "뒤", "r": "", "zh": "後面", "en": "behind"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 내일 같이 등산 갈 수 있어요?", "zh": "民秀，明天可以一起去爬山嗎？", "en": "Minsu, can you go hiking with me tomorrow?"},
+            {"who": "M", "s": "미안해요. 내일은 할머니 생신이라서 가족들하고 식사를 해요.", "zh": "抱歉。明天是我奶奶生日，要跟家人吃飯。", "en": "Sorry. Tomorrow is my grandmother's birthday, so I'm having a meal with my family."},
+            {"who": "F", "s": "그럼 다음 주에 가요.", "zh": "那我們下週去吧。", "en": "Let's go next week, then."}
+          ],
+          "options": [
+            {"t": "남자는 내일 등산을 갑니다.", "zh": "男生明天去爬山。", "en": "The man goes hiking tomorrow."},
+            {"t": "남자는 내일 가족과 식사를 합니다.", "zh": "男生明天要跟家人吃飯。", "en": "The man has a meal with his family tomorrow."},
+            {"t": "오늘은 할머니 생신입니다.", "zh": "今天是奶奶的生日。", "en": "Today is his grandmother's birthday."},
+            {"t": "여자는 다음 주에 가족을 만납니다.", "zh": "女生下週要見家人。", "en": "The woman meets her family next week."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「내일은 할머니 생신이라서 가족들하고 식사를 해요」（明天奶奶生日，要跟家人吃飯）。爬山改到下週。", "en": "He says tomorrow is his grandmother's birthday and he is eating with his family. The hike moves to next week."},
+          "words": [
+            {"w": "등산", "r": "", "zh": "爬山", "en": "hiking"},
+            {"w": "생신", "r": "", "zh": "生日（敬語）", "en": "birthday (honorific)"},
+            {"w": "식사", "r": "", "zh": "用餐", "en": "meal"}
+          ]
+        },
+        {
+          "type": "ko_same",
+          "lines": [
+            {"who": "M", "s": "이 가방 어제 여기서 샀는데 바꿀 수 있어요?", "zh": "這個包包是昨天在這裡買的，可以換嗎？", "en": "I bought this bag here yesterday. Can I exchange it?"},
+            {"who": "F", "s": "네, 영수증 있으세요?", "zh": "可以，您有收據嗎？", "en": "Yes. Do you have the receipt?"},
+            {"who": "M", "s": "네, 여기 있어요. 색깔을 바꾸고 싶어요.", "zh": "有，在這裡。我想換顏色。", "en": "Yes, here it is. I'd like a different colour."},
+            {"who": "F", "s": "무슨 색으로 드릴까요?", "zh": "您要換什麼顏色？", "en": "Which colour would you like?"}
+          ],
+          "options": [
+            {"t": "남자는 가방 색깔을 바꾸려고 합니다.", "zh": "男生想換包包的顏色。", "en": "The man wants to change the bag's colour."},
+            {"t": "남자는 오늘 가방을 샀습니다.", "zh": "男生今天買了包包。", "en": "The man bought the bag today."},
+            {"t": "남자는 영수증이 없습니다.", "zh": "男生沒有收據。", "en": "The man has no receipt."},
+            {"t": "남자는 돈을 돌려받고 싶어 합니다.", "zh": "男生想退錢。", "en": "The man wants his money back."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「색깔을 바꾸고 싶어요」（想換顏色）。包包是昨天買的，他有收據，是要換貨不是退錢。", "en": "He says 색깔을 바꾸고 싶어요 (I want another colour). He bought it yesterday, has the receipt, and wants an exchange, not a refund."},
+          "words": [
+            {"w": "바꾸다", "r": "", "zh": "換", "en": "to exchange", "m": ["바꿀", "바꾸고"]},
+            {"w": "영수증", "r": "", "zh": "收據", "en": "receipt"}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "수미 씨는 주말에 보통 뭐 해요?", "zh": "秀美，你週末通常做什麼？", "en": "Sumi, what do you usually do at weekends?"},
+            {"who": "F", "s": "집에서 쉬어요. 평일에 일이 많아서 주말에는 쉬어야 다음 주에 다시 힘을 낼 수 있어요.", "zh": "在家休息。平日工作很多，週末要休息，下週才有力氣。", "en": "I rest at home. I work a lot on weekdays, so I need to rest at weekends to have energy for the next week."}
+          ],
+          "options": [
+            {"t": "주말에도 일을 해야 합니다.", "zh": "週末也要工作。", "en": "You must work at weekends too."},
+            {"t": "평일에 운동을 하고 싶습니다.", "zh": "平日想運動。", "en": "She wants to exercise on weekdays."},
+            {"t": "주말에 친구를 만나는 것이 좋습니다.", "zh": "週末見朋友比較好。", "en": "It is good to meet friends at weekends."},
+            {"t": "주말에는 쉬는 것이 필요합니다.", "zh": "週末需要休息。", "en": "Resting at weekends is necessary."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說「주말에는 쉬어야 다음 주에 다시 힘을 낼 수 있어요」（週末要休息，下週才有力氣）。", "en": "She says she must rest at weekends to have energy for the next week."},
+          "words": [
+            {"w": "쉬다", "r": "", "zh": "休息", "en": "to rest", "m": ["쉬어요", "쉬어야"]},
+            {"w": "평일", "r": "", "zh": "平日", "en": "weekday"},
+            {"w": "힘을 내다", "r": "", "zh": "打起精神", "en": "to find energy", "m": ["힘을 낼"]}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "F", "s": "민호 씨, 그 옷은 너무 얇아요. 오늘 저녁부터 추워질 거예요.", "zh": "敏浩，那件衣服太薄了。今天晚上開始會變冷。", "en": "Minho, that's too thin. It's going to get cold from this evening."},
+            {"who": "M", "s": "괜찮아요. 금방 올 거예요.", "zh": "沒關係，我很快就回來。", "en": "It's fine. I'll be back soon."},
+            {"who": "F", "s": "그래도 따뜻한 옷을 입고 가는 게 좋아요. 감기에 걸리면 고생해요.", "zh": "還是穿件暖和的衣服去比較好。感冒了就辛苦了。", "en": "Still, you'd better wear something warm. If you catch a cold you'll suffer."}
+          ],
+          "options": [
+            {"t": "얇은 옷이 예쁩니다.", "zh": "薄的衣服好看。", "en": "Thin clothes look nice."},
+            {"t": "저녁에는 밖에 나가면 안 됩니다.", "zh": "晚上不能出門。", "en": "You mustn't go out in the evening."},
+            {"t": "따뜻하게 입는 것이 좋습니다.", "zh": "穿暖和一點比較好。", "en": "It is better to dress warmly."},
+            {"t": "감기에 걸리면 병원에 가야 합니다.", "zh": "感冒了要去醫院。", "en": "If you catch a cold you must see a doctor."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說「따뜻한 옷을 입고 가는 게 좋아요」（穿暖和的衣服去比較好），因為晚上會變冷。", "en": "She says 따뜻한 옷을 입고 가는 게 좋아요 (better wear something warm), because it will get cold."},
+          "words": [
+            {"w": "얇다", "r": "", "zh": "薄", "en": "to be thin", "m": ["얇아요"]},
+            {"w": "추워지다", "r": "", "zh": "變冷", "en": "to get cold", "m": ["추워질"]},
+            {"w": "따뜻하다", "r": "", "zh": "溫暖", "en": "to be warm", "m": ["따뜻한"]},
+            {"w": "고생하다", "r": "", "zh": "吃苦", "en": "to have a hard time", "m": ["고생해요"]}
+          ]
+        },
+        {
+          "type": "ko_main",
+          "lines": [
+            {"who": "M", "s": "요즘은 휴대폰으로 책을 읽으니까 정말 편해요.", "zh": "最近用手機看書，真的很方便。", "en": "Reading books on my phone these days is really convenient."},
+            {"who": "F", "s": "편하기는 하지만 저는 종이책이 더 좋아요. 종이책으로 읽으면 눈도 덜 아프고 내용도 더 잘 기억나요.", "zh": "方便是方便，不過我比較喜歡紙本書。看紙本書眼睛比較不會痛，內容也記得比較清楚。", "en": "It's convenient, but I prefer paper books. With a paper book my eyes hurt less and I remember more of it."}
+          ],
+          "options": [
+            {"t": "휴대폰으로 책을 읽는 것이 편합니다.", "zh": "用手機看書很方便。", "en": "Reading on a phone is convenient."},
+            {"t": "종이책으로 읽는 것이 더 좋습니다.", "zh": "看紙本書比較好。", "en": "Reading paper books is better."},
+            {"t": "책을 많이 읽어야 합니다.", "zh": "要多看書。", "en": "You should read a lot."},
+            {"t": "눈이 아프면 쉬어야 합니다.", "zh": "眼睛痛的話要休息。", "en": "You should rest if your eyes hurt."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "女生說「저는 종이책이 더 좋아요」（我比較喜歡紙本書），還說了理由。覺得手機方便的是男生。", "en": "She says 저는 종이책이 더 좋아요 (I prefer paper books) and gives reasons. The man is the one who finds the phone convenient."},
+          "words": [
+            {"w": "편하다", "r": "", "zh": "方便", "en": "to be convenient", "m": ["편해요", "편하기는"]},
+            {"w": "종이책", "r": "", "zh": "紙本書", "en": "paper book"},
+            {"w": "기억나다", "r": "", "zh": "記得", "en": "to remember", "m": ["기억나요"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "학생 여러분, 안내 말씀 드리겠습니다. 이번 주 금요일에 도서관 컴퓨터를 새것으로 바꿉니다.", "zh": "各位同學請注意。這週五圖書館的電腦要換成新的。", "en": "Attention, students. This Friday the library computers will be replaced with new ones."},
+            {"who": "F", "s": "그래서 금요일에는 도서관 3층을 이용할 수 없습니다. 1층과 2층은 평소처럼 이용할 수 있습니다.", "zh": "所以星期五不能使用圖書館三樓。一樓和二樓可以照常使用。", "en": "So the third floor of the library will be closed on Friday. The first and second floors are open as usual."},
+            {"who": "F", "s": "불편을 드려서 죄송합니다.", "zh": "造成不便，敬請見諒。", "en": "We are sorry for the inconvenience."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "여자가 왜 이 이야기를 하고 있는지 고르십시오.", "zh": "選出女生為什麼說這段話。", "en": "Choose why the woman is saying this."},
+              "options": [
+                {"t": "도서관 이용을 안내하려고", "zh": "為了說明圖書館的使用", "en": "to give information about using the library"},
+                {"t": "새 컴퓨터를 팔려고", "zh": "為了賣新電腦", "en": "to sell new computers"},
+                {"t": "도서관 직원을 뽑으려고", "zh": "為了招募圖書館職員", "en": "to hire library staff"},
+                {"t": "책 읽기를 권하려고", "zh": "為了鼓勵看書", "en": "to encourage reading"}
+              ],
+              "answer": 0,
+              "explain": {"zh": "廣播說明星期五哪一層不能用、哪幾層可以照常用，是在說明圖書館的使用。", "en": "It tells students which floor is closed on Friday and which are open — information about using the library."}
+            },
+            {
+              "ask": {"s": "들은 내용과 같은 것을 고르십시오.", "zh": "選出和聽到的內容相同的。", "en": "Choose what matches what you heard."},
+              "options": [
+                {"t": "컴퓨터는 다음 주에 바꿉니다.", "zh": "電腦下週換。", "en": "The computers will be replaced next week."},
+                {"t": "금요일에 도서관 문을 닫습니다.", "zh": "星期五圖書館關門。", "en": "The library is closed on Friday."},
+                {"t": "2층에서 컴퓨터를 바꿉니다.", "zh": "在二樓換電腦。", "en": "The computers on the second floor are being replaced."},
+                {"t": "금요일에 3층을 이용할 수 없습니다.", "zh": "星期五不能使用三樓。", "en": "The third floor cannot be used on Friday."}
+              ],
+              "answer": 3,
+              "explain": {"zh": "廣播說「금요일에는 도서관 3층을 이용할 수 없습니다」。是這週五換電腦，一、二樓照常開放，所以圖書館沒有關門。", "en": "It says the third floor can't be used on Friday. The change is this Friday, and floors 1 and 2 stay open, so the library is not closed."}
+            }
+          ],
+          "words": [
+            {"w": "이용하다", "r": "", "zh": "使用", "en": "to use", "m": ["이용할"]},
+            {"w": "평소", "r": "", "zh": "平時", "en": "usual", "m": ["평소처럼"]},
+            {"w": "불편", "r": "", "zh": "不便", "en": "inconvenience", "m": ["불편을"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 한국 음식 중에서 뭘 제일 좋아해요?", "zh": "秀美，韓國菜裡你最喜歡什麼？", "en": "Sumi, what Korean food do you like best?"},
+            {"who": "F", "s": "저는 불고기를 제일 좋아해요. 맵지 않아서 먹기 좋아요.", "zh": "我最喜歡烤肉。不辣，很好入口。", "en": "I like bulgogi best. It isn't spicy, so it's easy to eat."},
+            {"who": "M", "s": "그럼 김치는 잘 먹어요?", "zh": "那泡菜你敢吃嗎？", "en": "Then can you eat kimchi?"},
+            {"who": "F", "s": "처음에는 매워서 못 먹었는데 지금은 매일 먹어요.", "zh": "一開始太辣吃不了，現在每天都吃。", "en": "At first it was too spicy for me, but now I eat it every day."},
+            {"who": "M", "s": "와, 이제 한국 사람 같네요.", "zh": "哇，現在簡直像韓國人了。", "en": "Wow, you're just like a Korean now."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "두 사람이 무엇에 대해 이야기를 하고 있는지 고르십시오.", "zh": "選出兩個人在談論什麼。", "en": "Choose what the two people are talking about."},
+              "options": [
+                {"t": "김치 만드는 방법", "zh": "做泡菜的方法", "en": "how to make kimchi"},
+                {"t": "맛있는 식당", "zh": "好吃的餐廳", "en": "good restaurants"},
+                {"t": "좋아하는 한국 음식", "zh": "喜歡的韓國菜", "en": "Korean food they like"},
+                {"t": "한국 사람의 성격", "zh": "韓國人的個性", "en": "Koreans' character"}
+              ],
+              "answer": 2,
+              "explain": {"zh": "男生問「뭘 제일 좋아해요?」（最喜歡什麼？），兩人談女生喜歡的韓國菜和吃不吃得了泡菜。", "en": "He asks what she likes best, and they talk about the Korean food she likes and whether she eats kimchi."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "여자는 매운 불고기를 좋아합니다.", "zh": "女生喜歡辣的烤肉。", "en": "The woman likes spicy bulgogi."},
+                {"t": "여자는 지금 김치를 매일 먹습니다.", "zh": "女生現在每天吃泡菜。", "en": "The woman eats kimchi every day now."},
+                {"t": "여자는 처음부터 김치를 잘 먹었습니다.", "zh": "女生一開始就很敢吃泡菜。", "en": "The woman could eat kimchi from the start."},
+                {"t": "남자는 불고기를 제일 좋아합니다.", "zh": "男生最喜歡烤肉。", "en": "The man likes bulgogi best."}
+              ],
+              "answer": 1,
+              "explain": {"zh": "女生說「지금은 매일 먹어요」（現在每天吃）。烤肉是「맵지 않아서」（不辣）她才喜歡；一開始她吃不了泡菜；最喜歡烤肉的是女生。", "en": "She says 지금은 매일 먹어요 (now I eat it every day). She likes bulgogi because it isn't spicy, couldn't eat kimchi at first, and bulgogi is her favourite, not his."}
+            }
+          ],
+          "words": [
+            {"w": "불고기", "r": "", "zh": "韓式烤肉", "en": "bulgogi"},
+            {"w": "맵다", "r": "", "zh": "辣", "en": "to be spicy", "m": ["맵지", "매워서"]},
+            {"w": "같다", "r": "", "zh": "像", "en": "to be like", "m": ["같네요"]}
+          ]
+        },
+        {
+          "type": "ko_pair",
+          "lines": [
+            {"who": "F", "s": "버스 운전을 하신 지 얼마나 되셨어요?", "zh": "您開公車多久了？", "en": "How long have you been driving buses?"},
+            {"who": "M", "s": "이십 년 됐어요.", "zh": "二十年了。", "en": "Twenty years."},
+            {"who": "F", "s": "이 일을 하면서 언제 제일 기쁘세요?", "zh": "做這份工作，什麼時候最開心？", "en": "When are you happiest in this job?"},
+            {"who": "M", "s": "승객들이 내릴 때 \"감사합니다\" 하고 인사해 주면 정말 기뻐요. 그 말을 들으면 피곤하지 않아요.", "zh": "乘客下車時跟我說「謝謝」，我就很開心。聽到那句話就不累了。", "en": "When passengers say \"thank you\" as they get off, I'm really happy. Hearing that, I don't feel tired."},
+            {"who": "F", "s": "힘든 일은 없으세요?", "zh": "有沒有辛苦的事呢？", "en": "Is anything hard?"},
+            {"who": "M", "s": "길이 막혀서 늦을 때 승객들에게 미안해요.", "zh": "路上塞車遲到的時候，會覺得對乘客很抱歉。", "en": "When the traffic is bad and I'm late, I feel sorry for the passengers."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "남자가 일을 하면서 기쁠 때를 고르십시오.", "zh": "選出男生工作時開心的時候。", "en": "Choose when the man is happy in his work."},
+              "options": [
+                {"t": "길이 막히지 않을 때", "zh": "不塞車的時候", "en": "when the roads are clear"},
+                {"t": "일찍 퇴근할 때", "zh": "早下班的時候", "en": "when he finishes early"},
+                {"t": "새 버스를 운전할 때", "zh": "開新公車的時候", "en": "when he drives a new bus"},
+                {"t": "승객들이 인사해 줄 때", "zh": "乘客跟他打招呼的時候", "en": "when passengers thank him"}
+              ],
+              "answer": 3,
+              "explain": {"zh": "男生說乘客下車時說「감사합니다」，他就「정말 기뻐요」（真的很開心）。", "en": "He says he is really happy when passengers say 감사합니다 as they get off."}
+            },
+            {
+              "ask": {"s": "들은 내용으로 맞는 것을 고르십시오.", "zh": "選出和聽到的內容相符的。", "en": "Choose what is true according to what you heard."},
+              "options": [
+                {"t": "남자는 이십 년 동안 버스를 운전했습니다.", "zh": "男生開了二十年公車。", "en": "The man has driven buses for twenty years."},
+                {"t": "남자는 일이 피곤해서 그만두고 싶습니다.", "zh": "男生工作很累，想辭職。", "en": "The man is tired and wants to quit."},
+                {"t": "승객들은 남자에게 인사를 하지 않습니다.", "zh": "乘客不跟男生打招呼。", "en": "Passengers never greet the man."},
+                {"t": "남자는 길이 막혀도 늦지 않습니다.", "zh": "男生就算塞車也不會遲到。", "en": "The man is never late, even in traffic."}
+              ],
+              "answer": 0,
+              "explain": {"zh": "男生說「이십 년 됐어요」（二十年了）。聽到乘客道謝就不累，也沒說想辭職；塞車時會遲到。", "en": "He says 이십 년 됐어요 (twenty years). Passengers' thanks keep him from feeling tired, he never says he wants to quit, and traffic does make him late."}
+            }
+          ],
+          "words": [
+            {"w": "운전", "r": "", "zh": "駕駛", "en": "driving"},
+            {"w": "승객", "r": "", "zh": "乘客", "en": "passenger", "m": ["승객들이", "승객들에게"]},
+            {"w": "기쁘다", "r": "", "zh": "開心", "en": "to be glad", "m": ["기쁘세요", "기뻐요"]},
+            {"w": "길이 막히다", "r": "", "zh": "塞車", "en": "traffic to be heavy", "m": ["길이 막혀서"]}
+          ]
+        }
+      ]
+    }
+  ]
+}
