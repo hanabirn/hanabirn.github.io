@@ -42,6 +42,7 @@ const READING_ASK_JA_UPPER = {
     ja_short: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
     ja_mid: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
     ja_long: '次の文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
+    ja_integrated: '次のAとBの文章を読んで、後の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
     ja_info: '次のページを見て、下の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。'
 };
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA };
@@ -236,7 +237,9 @@ function readingExBodyHtml(item) {
         return `<div class="rdx-headline" lang="${lang}">${readingExText(item.text)}</div>`;
     }
     const box = item.type === 'insert' && item.box ? `<div class="rdx-box" lang="${lang}"><b>〈보기〉</b> ${readingExText(item.box)}</div>` : '';
-    const body = item.text_t ? item.text_t.map(line => readingExMark(readingExSegs(line))).join('<br>') : readingExText(item.text || '');
+    // a line that is only Ａ / Ｂ heads one of two texts to compare (JLPT N2+ 統合理解)
+    const line = segs => { const h = readingExMark(readingExSegs(segs)); return /^[ＡＢ]$/.test(h) ? `<b class="rdx-ab">${h}</b>` : h; };
+    const body = item.text_t ? item.text_t.map(line).join('<br>') : readingExText(item.text || '');
     return `${box}<div class="rdx-text" lang="${lang}">${item.title ? `<b>${escHtml(item.title)}</b><br>` : ''}${body}</div>`;
 }
 

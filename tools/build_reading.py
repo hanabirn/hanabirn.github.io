@@ -264,13 +264,13 @@ def used(glossary):
 SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purpose', 'about',
             'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference',
             # JLPT (2026-10-24): もんだい４ short texts, ５ mid-size, ６ information retrieval
-            'ja_short', 'ja_mid', 'ja_info', 'ja_long'}
+            'ja_short', 'ja_mid', 'ja_info', 'ja_long', 'ja_integrated'}
 
 # Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
 # levels below show no furigana until the visitor asks (owner's pick A1). The lists are the JLPT
 # kanji of tanos.co.uk (Jonathan Waller, CC BY), as in davidluzgouveia/kanji-data's jlpt_new
-# field (2026-10-24; N5 79, N4 166, N3 367 kanji; 分 and 身 的 lack a level there and are added by
-# hand to N5 / N3); N2 / N1 are added with those levels.
+# field (2026-10-24; N5 79, N4 166, N3 367, N2 367 kanji; 分, 身 的 and 無 可 lack a level there and are
+# added by hand to N5 / N3 / N2); N1 is added with its level.
 KANJI_LEVEL = {
     'N5': set('分日一国人年大十二本中長出三時行見月後前生五間上東四今金九入学高円子外八六下来気小七山話女北午百書'
               '先名川千水半男西電校語土木聞食車何南万毎白天母火右読友左休父雨'),
@@ -286,6 +286,14 @@ KANJI_LEVEL = {
               '冷適婦寄込顔類余王返妻背熱宿薬険頼覚船途許抜便留罪努精散静婚喜浮絶幸押倒等老曲払庭徒勤遅居雑招困'
               '欠更刻賛抱犯恐息遠戻願絵越欲痛笑互束似列探逃遊迷夢君閉緒折草暮酒悲晴掛到寝暗盗吸陽御歯忘雪吹娘誤'
               '洗慣礼窓昔貧怒泳祖杯疲皆鳴腹煙眠怖耳頂箱晩寒髪忙才靴恥偶偉猫幾'),
+    'N2': set('党協総区領県設改府査委軍団各島革村勢減再税営比防補境導副算輸述線農州武象域額欧担準賞辺造被技低復'
+              '移個門課脳極含蔵量型況針専谷史階管兵接細効丸湾録省旧橋岸周材戸央券編捜竹超並療採森競介根販歴将幅'
+              '般貿講林装諸劇河航鉄児禁印逆換久短油暴輪占植清倍均億圧芸署伸停爆陸玉波帯延羽固則乱普測豊厚齢囲卒'
+              '略承順岩練軽了庁城患層版令角絡損募裏仏績築貨混昇池血温季星永著誌庫刊像香坂底布寺宇巨震希触依籍汚'
+              '枚複郵仲栄札板骨傾届巻燃跡包駐弱紹雇替預焼簡章臓律贈照薄群秒奥詰双刺純翌快片敬悩泉皮漁荒貯硬埋柱'
+              '祭袋筆訓浴童宝封胸砂塩賢腕兆床毛緑尊祝柔殿濃液衣肩零幼荷泊黄甘臣浅掃雲掘捨軟沈凍乳恋紅郊腰炭踊冊'
+              '勇械菜珍卵湖喫干虫刷湯溶鉱涙匹孫鋭枝塗軒毒叫拝氷乾棒祈拾粉糸綿汗銅湿瓶咲召缶隻脂蒸肌耕鈍泥隅灯辛'
+              '磨麦姓筒鼻粒詞胃畳机膚濯塔沸灰菓帽枯涼舟貝符憎皿肯燥畜挟曇滴伺無可'),
 }
 
 
