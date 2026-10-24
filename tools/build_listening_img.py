@@ -91,7 +91,8 @@ def main():
     ap.add_argument('--limit', type=int)
     ap.add_argument('--review', action='store_true')
     args = ap.parse_args()
-    items = [(k, v) for k, v in PICS.items() if not args.only or k.startswith(args.only + '/')]
+    # charts (TOPIK II 3) are drawn by tools/build_listening_charts.py, not here
+    items = [(k, v) for k, v in PICS.items() if 'chart' not in v and (not args.only or k.startswith(args.only + '/'))]
     if args.review:
         return review(items)
     for k in args.redo:

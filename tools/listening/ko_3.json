@@ -1,0 +1,766 @@
+{
+  "id": "ko_3",
+  "lang": "ko",
+  "level": "3급",
+  "order": 3,
+  "note": "Original listening items in the TOPIK II format, questions 1–12 (ko2_pic 1–3: pick the picture — 1–2 a scene, 3 a chart drawn by tools/build_listening_charts.py —, ko2_next 4–8: what comes next, ko2_act 9–12: what the woman does next). Every option is printed, as on the paper. who: F woman, M man. Edit this file, then run: python tools/build_listening.py",
+  "types": ["ko2_pic", "ko2_next", "ko2_act"],
+  "instr": {
+    "ko2_pic": "다음을 듣고 알맞은 그림 또는 그래프를 고르십시오.",
+    "ko2_next": "다음 대화를 잘 듣고 이어질 수 있는 말로 가장 알맞은 것을 고르십시오.",
+    "ko2_act": "다음 대화를 잘 듣고 여자가 이어서 할 행동으로 가장 알맞은 것을 고르십시오."
+  },
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "F", "s": "저, 자전거를 좀 빌리고 싶은데요.", "zh": "請問，我想借腳踏車。", "en": "Excuse me, I'd like to rent a bike."},
+            {"who": "M", "s": "네, 그럼 여기에 이름하고 전화번호를 써 주세요.", "zh": "好的，那請在這裡寫上名字和電話。", "en": "Sure, then please write your name and phone number here."},
+            {"who": "F", "s": "네, 알겠습니다.", "zh": "好，我知道了。", "en": "All right."}
+          ],
+          "options": [
+            {"t": "여자가 자전거를 타고 공원을 달립니다.", "zh": "女生騎著腳踏車在公園裡。", "en": "The woman rides a bike in the park."},
+            {"t": "여자가 자전거를 돌려줍니다.", "zh": "女生歸還腳踏車。", "en": "The woman returns a bike."},
+            {"t": "여자가 대여소에서 종이에 이름을 씁니다.", "zh": "女生在租借處的紙上寫名字。", "en": "The woman writes her name on a form at the rental office."},
+            {"t": "남자가 자전거를 고치고 있습니다.", "zh": "男生在修腳踏車。", "en": "The man is repairing a bike."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「여기에 이름하고 전화번호를 써 주세요」（請在這裡寫名字和電話），所以是女生在租借處填資料的圖。", "en": "He says 여기에 이름하고 전화번호를 써 주세요 (write your name and number here) — she is filling in the form at the rental counter."},
+          "words": [
+            {"w": "빌리다", "r": "", "zh": "借、租", "en": "to borrow, to rent", "m": ["빌리고"]},
+            {"w": "전화번호", "r": "", "zh": "電話號碼", "en": "phone number"}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "어, 프린터가 또 안 되네요.", "zh": "咦，印表機又不動了。", "en": "Oh, the printer isn't working again."},
+            {"who": "F", "s": "종이가 걸린 것 같아요. 제가 한번 열어 볼게요.", "zh": "好像卡紙了。我來打開看看。", "en": "I think the paper's jammed. Let me open it and look."},
+            {"who": "M", "s": "고마워요.", "zh": "謝謝。", "en": "Thanks."}
+          ],
+          "options": [
+            {"t": "여자가 프린터를 열고 걸린 종이를 확인합니다.", "zh": "女生打開印表機檢查卡住的紙。", "en": "The woman opens the printer to check the jammed paper."},
+            {"t": "남자가 여자에게 서류를 건네줍니다.", "zh": "男生把文件遞給女生。", "en": "The man hands the woman some papers."},
+            {"t": "여자가 가게에서 프린터 종이를 삽니다.", "zh": "女生在店裡買印表機用紙。", "en": "The woman buys printer paper in a shop."},
+            {"t": "남자가 혼자 컴퓨터를 고칩니다.", "zh": "男生一個人修電腦。", "en": "The man repairs a computer by himself."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生說「종이가 걸린 것 같아요. 제가 한번 열어 볼게요」（好像卡紙了，我來打開看看），是女生打開印表機的圖。", "en": "She says the paper seems jammed and she will open it — she is opening the printer."},
+          "words": [
+            {"w": "종이", "r": "", "zh": "紙", "en": "paper"},
+            {"w": "걸리다", "r": "", "zh": "卡住", "en": "to get stuck", "m": ["걸린"]},
+            {"w": "열다", "r": "", "zh": "打開", "en": "to open", "m": ["열어"]}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "직장인들이 점심시간에 가장 많이 하는 일을 조사했습니다. '식사'가 가장 많았고 그다음은 '휴식', '운동' 순이었습니다.", "zh": "調查了上班族午休時間最常做的事。「吃飯」最多，其次是「休息」、「運動」。", "en": "A survey asked office workers what they do most in their lunch break. Eating came first, followed by resting and exercising."},
+            {"who": "M", "s": "한편 점심시간에 운동하는 직장인은 5년 전보다 두 배로 늘었습니다.", "zh": "另一方面，午休時間運動的上班族比五年前增加了一倍。", "en": "Meanwhile, the number of office workers who exercise at lunch has doubled in five years."}
+          ],
+          "options": [
+            {"t": "점심시간에 하는 일: 휴식 > 식사 > 운동 (막대그래프)", "zh": "午休做的事：休息 > 吃飯 > 運動（長條圖）", "en": "Lunch break: resting > eating > exercising (bar chart)"},
+            {"t": "점심시간에 하는 일: 식사 > 휴식 > 운동 (막대그래프)", "zh": "午休做的事：吃飯 > 休息 > 運動（長條圖）", "en": "Lunch break: eating > resting > exercising (bar chart)"},
+            {"t": "점심시간에 운동하는 직장인: 2020년 20% → 2025년 10% (꺾은선그래프)", "zh": "午休運動的上班族：2020 年 20% → 2025 年 10%（折線圖）", "en": "Workers exercising at lunch: 20% in 2020 → 10% in 2025 (line chart)"},
+            {"t": "점심시간에 하는 일: 운동 > 식사 > 휴식 (원그래프)", "zh": "午休做的事：運動 > 吃飯 > 休息（圓餅圖）", "en": "Lunch break: exercising > eating > resting (pie chart)"}
+          ],
+          "answer": 1,
+          "explain": {"zh": "順序是「식사 → 휴식 → 운동」（吃飯、休息、運動），所以是第 2 張。午休運動的人是「두 배로 늘었습니다」（增加一倍），第 3 張是減少，不對。", "en": "The order is eating, resting, exercising — chart 2. Lunchtime exercise doubled (두 배로 늘었습니다), so chart 3, which falls, is wrong."},
+          "words": [
+            {"w": "직장인", "r": "", "zh": "上班族", "en": "office worker", "m": ["직장인들이", "직장인은"]},
+            {"w": "조사하다", "r": "", "zh": "調查", "en": "to survey", "m": ["조사했습니다"]},
+            {"w": "휴식", "r": "", "zh": "休息", "en": "rest"},
+            {"w": "순", "r": "", "zh": "順序", "en": "order", "m": ["순이었습니다"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 이 우산 민수 씨 거예요?", "zh": "民秀，這把傘是你的嗎？", "en": "Minsu, is this umbrella yours?"},
+            {"who": "M", "s": "아니요, 제 건 파란색이에요. 회의실에 누가 두고 간 것 같아요.", "zh": "不是，我的是藍色的。好像是有人忘在會議室的。", "en": "No, mine is blue. Someone must have left it in the meeting room."}
+          ],
+          "options": [
+            {"t": "비가 와서 우산을 샀어요.", "zh": "因為下雨，所以買了傘。", "en": "It rained, so I bought an umbrella."},
+            {"t": "파란색 우산이 정말 예쁘네요.", "zh": "藍色的傘真好看。", "en": "The blue umbrella is really pretty."},
+            {"t": "회의는 몇 시에 끝나요?", "zh": "會議幾點結束？", "en": "What time does the meeting end?"},
+            {"t": "그럼 안내 데스크에 맡겨야겠어요.", "zh": "那我拿去服務台寄放好了。", "en": "Then I'll leave it at the front desk."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "傘不是民秀的，是別人忘在會議室的，所以接下來會說要拿去服務台寄放。", "en": "The umbrella isn't his — someone left it behind — so the natural next line is to hand it in at the front desk."},
+          "words": [
+            {"w": "두고 가다", "r": "", "zh": "留下、忘了帶走", "en": "to leave behind", "m": ["두고 간"]},
+            {"w": "회의실", "r": "", "zh": "會議室", "en": "meeting room"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "이번 주말에 등산 가기로 한 거 잊지 않았죠?", "zh": "你沒忘記這週末約好去爬山吧？", "en": "You haven't forgotten we're hiking this weekend, have you?"},
+            {"who": "F", "s": "그럼요. 그런데 일기 예보를 보니까 주말에 비가 많이 온대요.", "zh": "當然沒忘。不過看氣象預報說週末會下大雨。", "en": "Of course not. But the forecast says it'll rain a lot at the weekend."}
+          ],
+          "options": [
+            {"t": "산에 가면 기분이 좋아요.", "zh": "去山上心情很好。", "en": "Going to the mountains makes me feel good."},
+            {"t": "그럼 다음 주로 미루는 게 어때요?", "zh": "那延到下週怎麼樣？", "en": "Then how about putting it off till next week?"},
+            {"t": "저는 등산을 자주 가요.", "zh": "我常去爬山。", "en": "I go hiking often."},
+            {"t": "지난주에도 비가 왔어요.", "zh": "上週也下了雨。", "en": "It rained last week too."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "週末會下大雨，所以接下來自然是提議「다음 주로 미루는 게 어때요?」（延到下週怎麼樣？）。", "en": "Heavy rain is forecast, so the natural reply suggests postponing: 다음 주로 미루는 게 어때요?"},
+          "words": [
+            {"w": "잊다", "r": "", "zh": "忘記", "en": "to forget", "m": ["잊지"]},
+            {"w": "일기 예보", "r": "", "zh": "氣象預報", "en": "weather forecast"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "이 노트북을 지난주에 샀는데 소리가 잘 안 나요.", "zh": "這台筆電上週買的，可是聲音出不太來。", "en": "I bought this laptop last week, but the sound hardly works."},
+            {"who": "M", "s": "영수증 가지고 오셨어요?", "zh": "您有帶收據來嗎？", "en": "Did you bring the receipt?"}
+          ],
+          "options": [
+            {"t": "네, 소리가 잘 나서 좋아요.", "zh": "對，聲音很清楚，很好。", "en": "Yes, the sound is good."},
+            {"t": "노트북을 하나 더 사고 싶어요.", "zh": "我想再買一台筆電。", "en": "I'd like to buy another laptop."},
+            {"t": "아니요, 집에 두고 왔는데 괜찮을까요?", "zh": "沒有，放在家裡了，沒關係嗎？", "en": "No, I left it at home — is that all right?"},
+            {"t": "지난주에 수리를 맡겼어요.", "zh": "上週送修了。", "en": "I took it in for repair last week."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "店員問「영수증 가지고 오셨어요?」（有帶收據嗎？），要回答有沒有帶收據。", "en": "He asks whether she brought the receipt, so the answer is about the receipt."},
+          "words": [
+            {"w": "소리", "r": "", "zh": "聲音", "en": "sound"},
+            {"w": "영수증", "r": "", "zh": "收據", "en": "receipt"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "요즘 회사 근처 헬스장에 다니는데 생각보다 재미있어요.", "zh": "我最近在公司附近的健身房運動，比想像中有趣。", "en": "I've been going to a gym near work lately, and it's more fun than I expected."},
+            {"who": "F", "s": "저도 운동을 시작하고 싶은데 혼자 하면 금방 그만둘 것 같아요.", "zh": "我也想開始運動，可是一個人的話好像很快就會放棄。", "en": "I want to start exercising too, but on my own I think I'd soon give up."}
+          ],
+          "options": [
+            {"t": "그럼 저하고 같이 다닐래요?", "zh": "那要不要跟我一起去？", "en": "Then why not come with me?"},
+            {"t": "헬스장이 회사에서 멀어요.", "zh": "健身房離公司很遠。", "en": "The gym is far from work."},
+            {"t": "운동을 그만둔 지 오래됐어요.", "zh": "我不運動很久了。", "en": "I stopped exercising long ago."},
+            {"t": "혼자 사는 게 편해요.", "zh": "一個人住比較自在。", "en": "Living alone is easier."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生擔心一個人運動會放棄，男生自然會邀她「저하고 같이 다닐래요?」（要不要跟我一起去？）。男生說過健身房在公司附近。", "en": "She fears giving up alone, so he invites her along. He already said the gym is near work."},
+          "words": [
+            {"w": "헬스장", "r": "", "zh": "健身房", "en": "gym"},
+            {"w": "다니다", "r": "", "zh": "（固定）去", "en": "to go regularly", "m": ["다니는데", "다닐래요"]},
+            {"w": "그만두다", "r": "", "zh": "放棄、停止", "en": "to quit", "m": ["그만둘"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "과장님, 내일 회의 자료를 미리 보내 드릴까요?", "zh": "課長，明天的會議資料要先寄給您嗎？", "en": "Shall I send you the papers for tomorrow's meeting in advance?"},
+            {"who": "M", "s": "네, 오늘 퇴근 전까지 이메일로 보내 주세요.", "zh": "好，請在今天下班前用電子郵件寄給我。", "en": "Yes, please email them to me before you leave today."}
+          ],
+          "options": [
+            {"t": "회의가 벌써 끝났어요.", "zh": "會議已經結束了。", "en": "The meeting is already over."},
+            {"t": "어제 퇴근이 늦었어요.", "zh": "我昨天很晚下班。", "en": "I left work late yesterday."},
+            {"t": "회의실을 예약해 주세요.", "zh": "請幫我預約會議室。", "en": "Please book the meeting room."},
+            {"t": "네, 정리해서 바로 보내 드리겠습니다.", "zh": "好的，整理好馬上寄給您。", "en": "Yes, I'll put them together and send them right away."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "課長要她今天下班前寄資料，所以回答「네, 정리해서 바로 보내 드리겠습니다」（好的，整理好馬上寄）。", "en": "He asks for the papers by email before she leaves, so she agrees to send them right away."},
+          "words": [
+            {"w": "미리", "r": "", "zh": "事先", "en": "in advance"},
+            {"w": "퇴근", "r": "", "zh": "下班", "en": "leaving work"},
+            {"w": "자료", "r": "", "zh": "資料", "en": "materials"}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 손님들 오시기 전에 회의실 준비 좀 해 줄래요?", "zh": "秀美，客人來之前，可以幫忙準備會議室嗎？", "en": "Sumi, could you get the meeting room ready before the guests arrive?"},
+            {"who": "F", "s": "네, 의자는 몇 개 놓을까요?", "zh": "好的，椅子要擺幾張？", "en": "Sure. How many chairs shall I put out?"},
+            {"who": "M", "s": "열 개면 돼요. 의자는 제가 놓을 테니까 수미 씨는 물하고 컵을 준비해 주세요.", "zh": "十張就夠了。椅子我來擺，秀美你準備水和杯子。", "en": "Ten will do. I'll put the chairs out — you get the water and cups ready."},
+            {"who": "F", "s": "네, 알겠습니다.", "zh": "好，我知道了。", "en": "All right."}
+          ],
+          "options": [
+            {"t": "의자를 놓는다.", "zh": "擺椅子。", "en": "She puts out the chairs."},
+            {"t": "물과 컵을 준비한다.", "zh": "準備水和杯子。", "en": "She gets the water and cups ready."},
+            {"t": "손님을 맞이한다.", "zh": "迎接客人。", "en": "She welcomes the guests."},
+            {"t": "회의실을 예약한다.", "zh": "預約會議室。", "en": "She books the meeting room."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「의자는 제가 놓을 테니까 수미 씨는 물하고 컵을 준비해 주세요」（椅子我擺，你準備水和杯子）。", "en": "He says he will do the chairs and she should get the water and cups ready."},
+          "words": [
+            {"w": "준비", "r": "", "zh": "準備", "en": "preparation"},
+            {"w": "의자", "r": "", "zh": "椅子", "en": "chair"},
+            {"w": "놓다", "r": "", "zh": "擺、放", "en": "to put", "m": ["놓을까요", "놓을"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "이 셔츠를 다른 사이즈로 바꾸고 싶은데요.", "zh": "這件襯衫我想換別的尺寸。", "en": "I'd like to change this shirt for another size."},
+            {"who": "M", "s": "지금 그 사이즈는 다 팔렸어요. 다른 매장에 있는지 확인해 볼까요?", "zh": "那個尺寸現在都賣完了。要幫您查查看別的分店有沒有嗎？", "en": "That size is sold out right now. Shall I check whether another branch has it?"},
+            {"who": "F", "s": "아니요, 그냥 환불해 주세요.", "zh": "不用了，直接幫我退款吧。", "en": "No, just give me a refund, please."},
+            {"who": "M", "s": "네, 그럼 카드를 주시겠어요?", "zh": "好的，那可以給我您的卡嗎？", "en": "Certainly. May I have your card, then?"}
+          ],
+          "options": [
+            {"t": "셔츠를 입어 본다.", "zh": "試穿襯衫。", "en": "She tries on the shirt."},
+            {"t": "다른 매장에 간다.", "zh": "去別的分店。", "en": "She goes to another branch."},
+            {"t": "카드를 준다.", "zh": "把卡給店員。", "en": "She gives him her card."},
+            {"t": "사이즈를 확인한다.", "zh": "確認尺寸。", "en": "She checks the size."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生決定退款，店員說「카드를 주시겠어요?」（可以給我卡嗎？），所以她接下來會把卡給店員。", "en": "She asks for a refund and he asks for her card, so next she hands it over."},
+          "words": [
+            {"w": "사이즈", "r": "", "zh": "尺寸", "en": "size"},
+            {"w": "팔리다", "r": "", "zh": "被賣出", "en": "to be sold", "m": ["팔렸어요"]},
+            {"w": "매장", "r": "", "zh": "店面、分店", "en": "store, branch"},
+            {"w": "환불하다", "r": "", "zh": "退款", "en": "to refund", "m": ["환불해"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "다음 주 발표 준비는 잘 되고 있어요?", "zh": "下週的報告準備得怎麼樣？", "en": "How's the preparation for next week's presentation going?"},
+            {"who": "F", "s": "자료는 다 찾았는데 발표 연습을 아직 못 했어요.", "zh": "資料都找好了，可是還沒練習報告。", "en": "I've found all the material, but I haven't practised yet."},
+            {"who": "M", "s": "그럼 지금 회의실이 비어 있으니까 거기서 한번 연습해 보세요.", "zh": "那現在會議室空著，去那裡練習看看吧。", "en": "The meeting room is free now — go and practise there."},
+            {"who": "F", "s": "그게 좋겠네요. 노트북 가지고 갈게요.", "zh": "這樣好。我帶筆電過去。", "en": "Good idea. I'll take my laptop."}
+          ],
+          "options": [
+            {"t": "노트북을 가지고 회의실에 간다.", "zh": "帶著筆電去會議室。", "en": "She takes her laptop to the meeting room."},
+            {"t": "발표 자료를 찾는다.", "zh": "找報告資料。", "en": "She looks for material."},
+            {"t": "회의실을 청소한다.", "zh": "打掃會議室。", "en": "She cleans the meeting room."},
+            {"t": "발표 날짜를 바꾼다.", "zh": "改報告日期。", "en": "She changes the presentation date."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生說「노트북 가지고 갈게요」（我帶筆電過去），要去空著的會議室練習。資料已經找好了。", "en": "She says 노트북 가지고 갈게요 — she will take her laptop to the empty meeting room to practise. The material is already found."},
+          "words": [
+            {"w": "발표", "r": "", "zh": "報告、發表", "en": "presentation"},
+            {"w": "연습", "r": "", "zh": "練習", "en": "practice", "m": ["연습을", "연습해"]},
+            {"w": "비다", "r": "", "zh": "空", "en": "to be empty", "m": ["비어"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "여보세요, 거기 서울병원이죠? 내일 오전에 진료 예약을 하고 싶은데요.", "zh": "喂，請問是首爾醫院嗎？我想預約明天上午看診。", "en": "Hello, is that Seoul Hospital? I'd like to book an appointment for tomorrow morning."},
+            {"who": "M", "s": "네, 처음 오시는 거면 홈페이지에서 회원 가입을 먼저 하셔야 해요.", "zh": "好的，如果是初診，要先在網站上加入會員。", "en": "Certainly. If it's your first visit, you need to register on our website first."},
+            {"who": "F", "s": "아, 그래요? 그럼 지금 가입할게요.", "zh": "啊，是嗎？那我現在去加入。", "en": "Oh, really? Then I'll register now."}
+          ],
+          "options": [
+            {"t": "병원에 간다.", "zh": "去醫院。", "en": "She goes to the hospital."},
+            {"t": "진료를 받는다.", "zh": "看診。", "en": "She sees a doctor."},
+            {"t": "다시 전화로 예약한다.", "zh": "再打電話預約。", "en": "She books again by phone."},
+            {"t": "홈페이지에서 회원 가입을 한다.", "zh": "在網站上加入會員。", "en": "She registers on the website."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "初診要先在網站加入會員，女生說「지금 가입할게요」（現在去加入）。", "en": "First-time patients must register on the website, and she says 지금 가입할게요 (I'll register now)."},
+          "words": [
+            {"w": "진료", "r": "", "zh": "看診", "en": "medical treatment"},
+            {"w": "회원 가입", "r": "", "zh": "加入會員", "en": "registering as a member"},
+            {"w": "가입하다", "r": "", "zh": "加入", "en": "to join", "m": ["가입할게요"]}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "F", "s": "이 화분은 어디에 놓을까요?", "zh": "這個盆栽要放哪裡？", "en": "Where shall I put this plant?"},
+            {"who": "M", "s": "햇빛이 잘 드는 창가에 놓아 주세요.", "zh": "請放在陽光充足的窗邊。", "en": "By the window, where it gets lots of sun, please."},
+            {"who": "F", "s": "네, 여기에 놓을게요.", "zh": "好，我放這裡。", "en": "OK, I'll put it here."}
+          ],
+          "options": [
+            {"t": "여자가 정원에서 꽃에 물을 줍니다.", "zh": "女生在庭院幫花澆水。", "en": "The woman waters flowers in a garden."},
+            {"t": "남자가 꽃집에서 화분을 삽니다.", "zh": "男生在花店買盆栽。", "en": "The man buys a plant at a flower shop."},
+            {"t": "여자가 어두운 구석 책상 위에 화분을 놓습니다.", "zh": "女生把盆栽放在陰暗角落的桌上。", "en": "The woman puts the plant on a desk in a dark corner."},
+            {"t": "여자가 햇빛이 드는 창가에 화분을 놓습니다.", "zh": "女生把盆栽放在有陽光的窗邊。", "en": "The woman puts the plant by a sunny window."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "男生說「햇빛이 잘 드는 창가에 놓아 주세요」（放在陽光充足的窗邊），是女生把盆栽放到窗邊的圖。", "en": "He says to put it by the sunny window (햇빛이 잘 드는 창가) — she is placing it there."},
+          "words": [
+            {"w": "화분", "r": "", "zh": "盆栽", "en": "potted plant"},
+            {"w": "햇빛", "r": "", "zh": "陽光", "en": "sunlight"},
+            {"w": "창가", "r": "", "zh": "窗邊", "en": "by the window"}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "저기요, 지갑 떨어뜨리셨어요.", "zh": "不好意思，您的錢包掉了。", "en": "Excuse me, you dropped your wallet."},
+            {"who": "F", "s": "어머, 감사합니다. 정말 몰랐어요.", "zh": "哎呀，謝謝。我完全沒發現。", "en": "Oh my, thank you. I had no idea."}
+          ],
+          "options": [
+            {"t": "여자가 가게에서 지갑을 꺼내 돈을 냅니다.", "zh": "女生在店裡拿出錢包付錢。", "en": "The woman takes out her wallet and pays in a shop."},
+            {"t": "남자가 길에 떨어진 지갑을 여자에게 돌려줍니다.", "zh": "男生把掉在路上的錢包還給女生。", "en": "The man gives back the wallet she dropped in the street."},
+            {"t": "남자가 가방 안에서 자기 지갑을 찾습니다.", "zh": "男生在包包裡找自己的錢包。", "en": "The man looks for his own wallet in his bag."},
+            {"t": "여자가 남자에게 돈을 줍니다.", "zh": "女生給男生錢。", "en": "The woman gives the man some money."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說「지갑 떨어뜨리셨어요」（您的錢包掉了），女生道謝，是男生撿起錢包還給她的圖。", "en": "He says 지갑 떨어뜨리셨어요 (you dropped your wallet) and she thanks him — he is handing it back."},
+          "words": [
+            {"w": "지갑", "r": "", "zh": "錢包", "en": "wallet"},
+            {"w": "떨어뜨리다", "r": "", "zh": "弄掉", "en": "to drop", "m": ["떨어뜨리셨어요"]}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "20대가 여가 시간에 가장 많이 하는 활동을 조사한 결과, '영화 감상'이 40%로 가장 많았습니다. 그다음은 '운동', '여행' 순이었습니다.", "zh": "調查二十多歲的人空閒時間最常做的活動，結果「看電影」占 40% 最多，其次是「運動」、「旅行」。", "en": "A survey of people in their twenties found that watching films was their top free-time activity at 40%, followed by exercise and travel."},
+            {"who": "M", "s": "또 여가 시간을 혼자 보내는 20대는 해마다 늘고 있습니다.", "zh": "另外，獨自度過空閒時間的二十多歲年輕人每年都在增加。", "en": "Also, the number of people in their twenties who spend their free time alone is rising every year."}
+          ],
+          "options": [
+            {"t": "20대의 여가 활동: 운동 40% > 영화 감상 30% > 여행 20% (원그래프)", "zh": "二十多歲的休閒活動：運動 40% > 看電影 30% > 旅行 20%（圓餅圖）", "en": "Free time: exercise 40% > films 30% > travel 20% (pie chart)"},
+            {"t": "여가 시간을 혼자 보내는 20대: 2019년 35% → 2023년 25% (꺾은선그래프)", "zh": "獨自度過空閒時間的二十多歲：2019 年 35% → 2023 年 25%（折線圖）", "en": "Spending free time alone: 35% in 2019 → 25% in 2023 (line chart)"},
+            {"t": "20대의 여가 활동: 영화 감상 40% > 운동 30% > 여행 20% (원그래프)", "zh": "二十多歲的休閒活動：看電影 40% > 運動 30% > 旅行 20%（圓餅圖）", "en": "Free time: films 40% > exercise 30% > travel 20% (pie chart)"},
+            {"t": "20대의 여가 활동: 여행 > 운동 > 영화 감상 (막대그래프)", "zh": "二十多歲的休閒活動：旅行 > 運動 > 看電影（長條圖）", "en": "Free time: travel > exercise > films (bar chart)"}
+          ],
+          "answer": 2,
+          "explain": {"zh": "「영화 감상」40% 最多，接著是「운동」、「여행」，是第 3 張。獨自度過的人「해마다 늘고 있습니다」（每年增加），第 2 張是減少，不對。", "en": "Films top the list at 40%, then exercise and travel — chart 3. Spending free time alone is rising, so the falling line (chart 2) is wrong."},
+          "words": [
+            {"w": "여가", "r": "", "zh": "休閒、空閒", "en": "leisure", "m": ["여가 시간"]},
+            {"w": "활동", "r": "", "zh": "活動", "en": "activity"},
+            {"w": "감상", "r": "", "zh": "欣賞", "en": "watching, appreciation", "m": ["영화 감상"]},
+            {"w": "해마다", "r": "", "zh": "每年", "en": "every year"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "지난번에 빌려 간 책 다 읽었어요?", "zh": "上次借走的書看完了嗎？", "en": "Have you finished the book you borrowed?"},
+            {"who": "F", "s": "아, 죄송해요. 아직 반밖에 못 읽었어요.", "zh": "啊，抱歉。我才看了一半。", "en": "Oh, sorry. I've only read half of it so far."}
+          ],
+          "options": [
+            {"t": "괜찮아요. 천천히 읽고 돌려줘도 돼요.", "zh": "沒關係。慢慢看完再還就好。", "en": "That's fine. Take your time and give it back later."},
+            {"t": "그 책은 서점에서 샀어요.", "zh": "那本書是在書店買的。", "en": "I bought that book at a bookshop."},
+            {"t": "저도 책을 빌리고 싶어요.", "zh": "我也想借書。", "en": "I'd like to borrow a book too."},
+            {"t": "다 읽어서 정말 다행이에요.", "zh": "看完了真是太好了。", "en": "I'm so glad you've finished it."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生道歉說才看一半，借書的男生自然回答「천천히 읽고 돌려줘도 돼요」（慢慢看再還就好）。", "en": "She apologises for reading only half, so the lender says she can take her time."},
+          "words": [
+            {"w": "반", "r": "", "zh": "一半", "en": "half", "m": ["반밖에"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "오늘 저녁에 같이 밥 먹을래요? 회사 앞에 식당이 새로 생겼대요.", "zh": "今天晚上要一起吃飯嗎？聽說公司前面新開了一家餐廳。", "en": "Shall we have dinner together tonight? I hear a new restaurant has opened in front of the office."},
+            {"who": "M", "s": "좋아요. 그런데 거기 예약해야 하지 않을까요?", "zh": "好啊。不過那裡是不是要先訂位？", "en": "Great. But don't we need to book?"}
+          ],
+          "options": [
+            {"t": "어제 거기에서 먹었어요.", "zh": "我昨天在那裡吃過了。", "en": "I ate there yesterday."},
+            {"t": "회사 앞은 길이 복잡해요.", "zh": "公司前面的路很亂。", "en": "The road in front of the office is busy."},
+            {"t": "그럼 제가 지금 전화해 볼게요.", "zh": "那我現在打電話問問看。", "en": "Then I'll call them now."},
+            {"t": "예약을 취소해서 미안해요.", "zh": "取消了預約，很抱歉。", "en": "Sorry I cancelled the booking."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生問是不是要訂位，女生自然回答「제가 지금 전화해 볼게요」（我現在打電話看看）。", "en": "He asks whether they need to book, so she offers to call now."},
+          "words": [
+            {"w": "새로", "r": "", "zh": "新", "en": "newly"},
+            {"w": "생기다", "r": "", "zh": "出現、開設", "en": "to open, to appear", "m": ["생겼대요"]},
+            {"w": "예약하다", "r": "", "zh": "預約", "en": "to book", "m": ["예약해야"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "이 서류를 오늘까지 내야 하는데 프린터가 고장 났어요.", "zh": "這份文件今天要交，可是印表機壞了。", "en": "I have to hand in these papers today, but the printer's broken."},
+            {"who": "F", "s": "3층 사무실 프린터는 괜찮을 거예요.", "zh": "三樓辦公室的印表機應該沒問題。", "en": "The printer in the third-floor office should be fine."}
+          ],
+          "options": [
+            {"t": "서류를 벌써 냈어요.", "zh": "文件已經交了。", "en": "I've already handed them in."},
+            {"t": "프린터를 새로 샀어요.", "zh": "我買了新的印表機。", "en": "I bought a new printer."},
+            {"t": "3층에는 회의실이 있어요.", "zh": "三樓有會議室。", "en": "There is a meeting room on the third floor."},
+            {"t": "그럼 거기 가서 뽑아야겠네요.", "zh": "那我得去那裡印了。", "en": "Then I'll go and print them there."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "女生說三樓的印表機可以用，所以男生接著說「거기 가서 뽑아야겠네요」（得去那裡印）。", "en": "She says the third-floor printer works, so he will go and print there."},
+          "words": [
+            {"w": "서류", "r": "", "zh": "文件", "en": "documents"},
+            {"w": "고장 나다", "r": "", "zh": "故障", "en": "to break down", "m": ["고장 났어요"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 얼굴이 안 좋아 보여요. 어디 아파요?", "zh": "民秀，你臉色不太好。哪裡不舒服嗎？", "en": "Minsu, you don't look well. Are you ill?"},
+            {"who": "M", "s": "어제부터 머리가 좀 아프네요.", "zh": "從昨天開始頭有點痛。", "en": "I've had a bit of a headache since yesterday."}
+          ],
+          "options": [
+            {"t": "저도 어제 일찍 잤어요.", "zh": "我昨天也很早睡。", "en": "I went to bed early yesterday too."},
+            {"t": "그럼 오늘은 일찍 들어가서 쉬세요.", "zh": "那今天早點回去休息吧。", "en": "Then go home early and rest today."},
+            {"t": "얼굴이 많이 탔네요.", "zh": "你曬得好黑喔。", "en": "You've got quite a tan."},
+            {"t": "머리를 자르니까 멋있어요.", "zh": "剪了頭髮很帥。", "en": "Your haircut looks great."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說頭痛，女生自然會勸他「일찍 들어가서 쉬세요」（早點回去休息）。「머리」在這裡是頭，不是頭髮。", "en": "He has a headache, so she tells him to go home and rest. 머리 here means head, not hair."},
+          "words": [
+            {"w": "얼굴", "r": "", "zh": "臉", "en": "face"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "다음 달에 이사 간다면서요? 집은 구했어요?", "zh": "聽說你下個月要搬家？房子找到了嗎？", "en": "I hear you're moving next month. Have you found a place?"},
+            {"who": "F", "s": "네, 회사 근처에 괜찮은 집을 찾았어요.", "zh": "找到了，在公司附近找到不錯的房子。", "en": "Yes, I found a nice place near work."}
+          ],
+          "options": [
+            {"t": "잘됐네요. 출근하기 편하겠어요.", "zh": "太好了。上班會很方便吧。", "en": "That's great. It'll be easy to get to work."},
+            {"t": "저는 집에서 일해요.", "zh": "我在家工作。", "en": "I work from home."},
+            {"t": "다음 달에 회사를 그만둬요.", "zh": "我下個月辭職。", "en": "I'm leaving my job next month."},
+            {"t": "아직 집을 못 찾았어요.", "zh": "還沒找到房子。", "en": "I haven't found a place yet."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "女生在公司附近找到房子，男生自然回答「잘됐네요. 출근하기 편하겠어요」（太好了，上班會很方便）。", "en": "She found a place near work, so he says that's great — commuting will be easy."},
+          "words": [
+            {"w": "이사", "r": "", "zh": "搬家", "en": "moving"},
+            {"w": "구하다", "r": "", "zh": "找（房子等）", "en": "to look for, to find", "m": ["구했어요"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "부장님, 출장 가실 기차표는 예매했습니다.", "zh": "部長，您出差的火車票已經訂好了。", "en": "I've booked your train tickets for the business trip."},
+            {"who": "M", "s": "고마워요. 호텔은요?", "zh": "謝謝。飯店呢？", "en": "Thanks. And the hotel?"},
+            {"who": "F", "s": "아직 못 했습니다. 지금 바로 알아보겠습니다.", "zh": "還沒訂。我現在馬上查。", "en": "Not yet. I'll look into it right away."},
+            {"who": "M", "s": "네, 역에서 가까운 곳으로 부탁해요.", "zh": "好，麻煩找離車站近一點的。", "en": "Yes, somewhere near the station, please."}
+          ],
+          "options": [
+            {"t": "기차표를 예매한다.", "zh": "訂火車票。", "en": "She books train tickets."},
+            {"t": "역에 간다.", "zh": "去車站。", "en": "She goes to the station."},
+            {"t": "출장을 간다.", "zh": "去出差。", "en": "She goes on a business trip."},
+            {"t": "호텔을 알아본다.", "zh": "查飯店。", "en": "She looks for a hotel."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "火車票已經訂好了，女生說飯店「지금 바로 알아보겠습니다」（現在馬上查）。", "en": "The train tickets are done; she says she will look for a hotel right away."},
+          "words": [
+            {"w": "출장", "r": "", "zh": "出差", "en": "business trip"},
+            {"w": "예매하다", "r": "", "zh": "預購", "en": "to book (tickets)", "m": ["예매했습니다"]},
+            {"w": "알아보다", "r": "", "zh": "查查看", "en": "to look into", "m": ["알아보겠습니다"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 이 상자 좀 같이 옮겨 줄래요?", "zh": "秀美，可以幫我一起搬這個箱子嗎？", "en": "Sumi, could you help me move this box?"},
+            {"who": "F", "s": "네, 그런데 너무 무거운데 안에 있는 걸 좀 꺼낼까요?", "zh": "好，不過太重了，要不要先拿一些東西出來？", "en": "Sure, but it's very heavy. Shall I take some things out first?"},
+            {"who": "M", "s": "그래요. 책을 반쯤 꺼내 주세요.", "zh": "好啊。請拿出一半左右的書。", "en": "Good idea. Take out about half the books."},
+            {"who": "F", "s": "네, 꺼낼게요.", "zh": "好，我拿出來。", "en": "OK, I'll take them out."}
+          ],
+          "options": [
+            {"t": "상자에서 책을 꺼낸다.", "zh": "從箱子裡拿出書。", "en": "She takes books out of the box."},
+            {"t": "상자를 혼자 옮긴다.", "zh": "一個人搬箱子。", "en": "She moves the box alone."},
+            {"t": "새 상자를 산다.", "zh": "買新箱子。", "en": "She buys a new box."},
+            {"t": "책을 읽는다.", "zh": "看書。", "en": "She reads a book."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「책을 반쯤 꺼내 주세요」（請拿出一半左右的書），所以女生接下來要把書拿出來。", "en": "He asks her to take out about half the books, so that is what she does next."},
+          "words": [
+            {"w": "옮기다", "r": "", "zh": "搬", "en": "to move", "m": ["옮겨"]},
+            {"w": "꺼내다", "r": "", "zh": "拿出", "en": "to take out", "m": ["꺼낼까요", "꺼내"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "이 약을 사고 싶은데요.", "zh": "我想買這個藥。", "en": "I'd like to buy this medicine."},
+            {"who": "M", "s": "이 약은 처방전이 있어야 드릴 수 있어요.", "zh": "這個藥要有處方箋才能給您。", "en": "I can only give you this with a prescription."},
+            {"who": "F", "s": "처방전을 병원에 두고 왔네요.", "zh": "我把處方箋忘在醫院了。", "en": "I've left the prescription at the hospital."},
+            {"who": "M", "s": "그럼 병원에 다시 다녀오셔야 해요.", "zh": "那您得再回醫院一趟。", "en": "Then you'll have to go back to the hospital."}
+          ],
+          "options": [
+            {"t": "약을 먹는다.", "zh": "吃藥。", "en": "She takes the medicine."},
+            {"t": "처방전을 쓴다.", "zh": "寫處方箋。", "en": "She writes a prescription."},
+            {"t": "병원에 다녀온다.", "zh": "回醫院一趟。", "en": "She goes back to the hospital."},
+            {"t": "다른 약을 산다.", "zh": "買別的藥。", "en": "She buys a different medicine."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "沒有處方箋就不能買，藥師說「병원에 다시 다녀오셔야 해요」（得再回醫院一趟）。", "en": "Without the prescription she can't buy it, so she has to go back to the hospital."},
+          "words": [
+            {"w": "약", "r": "", "zh": "藥", "en": "medicine"},
+            {"w": "처방전", "r": "", "zh": "處方箋", "en": "prescription"}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "동아리 홍보 포스터는 다 만들었어요?", "zh": "社團宣傳海報都做好了嗎？", "en": "Have you finished the club posters?"},
+            {"who": "F", "s": "네, 다 만들었어요. 학생회관에 붙이면 될까요?", "zh": "做好了。貼在學生會館就可以嗎？", "en": "Yes, all done. Shall I put them up in the student union?"},
+            {"who": "M", "s": "학생회관은 제가 붙일게요. 수미 씨는 도서관 게시판에 붙여 주세요.", "zh": "學生會館我來貼。秀美你貼在圖書館的布告欄。", "en": "I'll do the student union. You put them up on the library notice board."},
+            {"who": "F", "s": "알겠어요.", "zh": "知道了。", "en": "OK."}
+          ],
+          "options": [
+            {"t": "포스터를 만든다.", "zh": "做海報。", "en": "She makes posters."},
+            {"t": "도서관 게시판에 포스터를 붙인다.", "zh": "在圖書館布告欄貼海報。", "en": "She puts posters up on the library notice board."},
+            {"t": "학생회관에 포스터를 붙인다.", "zh": "在學生會館貼海報。", "en": "She puts posters up in the student union."},
+            {"t": "동아리에 가입한다.", "zh": "加入社團。", "en": "She joins the club."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說學生會館他來貼，「수미 씨는 도서관 게시판에 붙여 주세요」（秀美貼在圖書館布告欄）。海報已經做好了。", "en": "He will do the student union; she should put them up on the library notice board. The posters are already made."},
+          "words": [
+            {"w": "동아리", "r": "", "zh": "社團", "en": "club"},
+            {"w": "홍보", "r": "", "zh": "宣傳", "en": "publicity"},
+            {"w": "붙이다", "r": "", "zh": "貼", "en": "to put up", "m": ["붙이면", "붙일게요", "붙여"]},
+            {"w": "게시판", "r": "", "zh": "布告欄", "en": "notice board"}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "F", "s": "이 소포를 미국으로 보내려고 하는데요.", "zh": "我想把這個包裹寄到美國。", "en": "I'd like to send this parcel to the United States."},
+            {"who": "M", "s": "네, 무게를 재야 하니까 여기 저울 위에 올려 주세요.", "zh": "好的，要秤重量，請放到這個秤上。", "en": "Sure. I need to weigh it, so please put it on the scale here."}
+          ],
+          "options": [
+            {"t": "여자가 우체국 저울 위에 소포를 올립니다.", "zh": "女生把包裹放到郵局的秤上。", "en": "The woman puts the parcel on the scale at the post office."},
+            {"t": "여자가 집에서 소포를 열어 봅니다.", "zh": "女生在家打開包裹。", "en": "The woman opens a parcel at home."},
+            {"t": "남자가 여자의 집에 소포를 배달합니다.", "zh": "男生把包裹送到女生家。", "en": "The man delivers a parcel to the woman's home."},
+            {"t": "여자가 책상에서 편지를 씁니다.", "zh": "女生在書桌前寫信。", "en": "The woman writes a letter at her desk."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生說「여기 저울 위에 올려 주세요」（請放到這個秤上），是女生在郵局把包裹放上秤的圖。", "en": "He says 여기 저울 위에 올려 주세요 (put it on the scale) — she is placing the parcel on the post-office scale."},
+          "words": [
+            {"w": "소포", "r": "", "zh": "包裹", "en": "parcel"},
+            {"w": "무게", "r": "", "zh": "重量", "en": "weight"},
+            {"w": "재다", "r": "", "zh": "量、秤", "en": "to measure", "m": ["재야"]},
+            {"w": "저울", "r": "", "zh": "秤", "en": "scale"}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "여기 이 버튼을 누르면 표가 나와요.", "zh": "按這個按鈕，票就會出來。", "en": "If you press this button here, the ticket comes out."},
+            {"who": "F", "s": "아, 이렇게 하는 거군요. 감사합니다.", "zh": "啊，原來是這樣弄的。謝謝。", "en": "Oh, so that's how it works. Thank you."}
+          ],
+          "options": [
+            {"t": "여자가 매표소 직원에게서 표를 삽니다.", "zh": "女生向售票處的職員買票。", "en": "The woman buys a ticket from a clerk at the ticket window."},
+            {"t": "남자가 개찰구를 지나갑니다.", "zh": "男生通過剪票口。", "en": "The man goes through the ticket gate."},
+            {"t": "남자가 여자에게 표 판매기 사용법을 알려 줍니다.", "zh": "男生教女生怎麼用售票機。", "en": "The man shows the woman how to use the ticket machine."},
+            {"t": "여자가 남자에게 표를 건네줍니다.", "zh": "女生把票交給男生。", "en": "The woman hands the man a ticket."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "男生說「이 버튼을 누르면 표가 나와요」（按這個按鈕票就會出來），是男生教女生用售票機的圖。", "en": "He says 이 버튼을 누르면 표가 나와요 (press this and the ticket comes out) — he is showing her the ticket machine."},
+          "words": [
+            {"w": "버튼", "r": "", "zh": "按鈕", "en": "button"},
+            {"w": "누르다", "r": "", "zh": "按", "en": "to press", "m": ["누르면"]},
+            {"w": "표", "r": "", "zh": "票", "en": "ticket"}
+          ]
+        },
+        {
+          "type": "ko2_pic",
+          "lines": [
+            {"who": "M", "s": "우리나라 성인이 1년 동안 읽는 책이 계속 줄고 있습니다. 2015년에는 평균 9권이었는데 2020년에는 7권, 2025년에는 5권으로 줄었습니다.", "zh": "我國成人一年閱讀的書本數持續減少。2015 年平均 9 本，2020 年 7 本，2025 年減少到 5 本。", "en": "The number of books adults in Korea read a year keeps falling: an average of 9 in 2015, 7 in 2020 and 5 in 2025."},
+            {"who": "M", "s": "책을 읽지 않는 이유로는 '시간이 없어서'가 가장 많았습니다.", "zh": "不讀書的原因中，「沒有時間」最多。", "en": "The most common reason for not reading was \"no time\"."}
+          ],
+          "options": [
+            {"t": "1년 평균 독서량: 2015년 5권 → 2020년 7권 → 2025년 9권 (꺾은선그래프)", "zh": "一年平均閱讀量：2015 年 5 本 → 2020 年 7 本 → 2025 年 9 本（折線圖）", "en": "Books a year: 5 (2015) → 7 (2020) → 9 (2025) (line chart)"},
+            {"t": "책을 읽지 않는 이유: 재미없어서 > 시간이 없어서 > 휴대폰 (막대그래프)", "zh": "不讀書的原因：沒興趣 > 沒時間 > 手機（長條圖）", "en": "Reasons for not reading: not interesting > no time > phone (bar chart)"},
+            {"t": "1년 평균 독서량: 2015년 9권 → 2020년 5권 → 2025년 7권 (꺾은선그래프)", "zh": "一年平均閱讀量：2015 年 9 本 → 2020 年 5 本 → 2025 年 7 本（折線圖）", "en": "Books a year: 9 (2015) → 5 (2020) → 7 (2025) (line chart)"},
+            {"t": "1년 평균 독서량: 2015년 9권 → 2020년 7권 → 2025년 5권 (꺾은선그래프)", "zh": "一年平均閱讀量：2015 年 9 本 → 2020 年 7 本 → 2025 年 5 本（折線圖）", "en": "Books a year: 9 (2015) → 7 (2020) → 5 (2025) (line chart)"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "9 本 → 7 本 → 5 本，一直減少，是第 4 張。不讀書的原因是「시간이 없어서」（沒時間）最多，第 2 張不對。", "en": "9 → 7 → 5, falling steadily — chart 4. The top reason is no time, so chart 2 is wrong."},
+          "words": [
+            {"w": "성인", "r": "", "zh": "成人", "en": "adult"},
+            {"w": "평균", "r": "", "zh": "平均", "en": "average"},
+            {"w": "권", "r": "", "zh": "本（量詞）", "en": "(counter for books)", "m": ["9권", "7권", "5권"]},
+            {"w": "줄다", "r": "", "zh": "減少", "en": "to decrease", "m": ["줄고", "줄었습니다"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "민수 씨, 내일 발표 자료 다 만들었어요?", "zh": "民秀，明天的報告資料都做好了嗎？", "en": "Minsu, have you finished the slides for tomorrow?"},
+            {"who": "M", "s": "거의 다 했는데 그래프 넣는 게 좀 어렵네요.", "zh": "差不多做完了，可是放圖表有點難。", "en": "Almost, but adding the graphs is a bit tricky."}
+          ],
+          "options": [
+            {"t": "발표가 벌써 끝났어요.", "zh": "報告已經結束了。", "en": "The presentation is already over."},
+            {"t": "제가 도와줄까요? 그래프는 자신 있어요.", "zh": "要我幫忙嗎？圖表我很拿手。", "en": "Shall I help? I'm good at graphs."},
+            {"t": "자료를 다 읽었어요.", "zh": "資料都看完了。", "en": "I've read all the material."},
+            {"t": "내일은 회사에 안 와요.", "zh": "我明天不來公司。", "en": "I'm not coming in tomorrow."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生說放圖表有點難，女生自然會說「제가 도와줄까요?」（要我幫忙嗎？）。", "en": "He finds the graphs tricky, so she offers to help."},
+          "words": [
+            {"w": "거의", "r": "", "zh": "幾乎", "en": "almost"},
+            {"w": "그래프", "r": "", "zh": "圖表", "en": "graph"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "이 식당은 항상 사람이 많네요. 얼마나 기다려야 할까요?", "zh": "這家餐廳總是好多人。要等多久呢？", "en": "This place is always packed. How long will we have to wait?"},
+            {"who": "F", "s": "직원한테 물어보니까 삼십 분쯤 기다려야 한대요.", "zh": "問了店員，說大概要等三十分鐘。", "en": "I asked the staff — they said about thirty minutes."}
+          ],
+          "options": [
+            {"t": "벌써 다 먹었어요.", "zh": "已經吃完了。", "en": "I've already eaten it all."},
+            {"t": "직원이 정말 친절하네요.", "zh": "店員真親切。", "en": "The staff are really friendly."},
+            {"t": "사람이 없어서 좋아요.", "zh": "沒什麼人，真好。", "en": "It's nice that it's empty."},
+            {"t": "그럼 다른 데로 갈까요?", "zh": "那要不要去別家？", "en": "Then shall we go somewhere else?"}
+          ],
+          "answer": 3,
+          "explain": {"zh": "要等三十分鐘，男生自然會問「다른 데로 갈까요?」（要不要去別家？）。店裡人很多，所以「사람이 없어서」不對。", "en": "A thirty-minute wait, so he suggests going elsewhere. The place is packed, so \"it's empty\" is wrong."},
+          "words": [
+            {"w": "항상", "r": "", "zh": "總是", "en": "always"},
+            {"w": "기다리다", "r": "", "zh": "等", "en": "to wait", "m": ["기다려야"]},
+            {"w": "물어보다", "r": "", "zh": "問", "en": "to ask", "m": ["물어보니까"]}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "이번 휴가 때 제주도에 가려고 하는데 비행기 표가 없어요.", "zh": "這次休假想去濟州島，可是沒有機票了。", "en": "I want to go to Jeju this holiday, but there are no plane tickets."},
+            {"who": "M", "s": "배를 타고 가는 건 어때요? 시간은 좀 걸리지만 재미있어요.", "zh": "搭船去怎麼樣？雖然比較花時間，但很好玩。", "en": "How about going by boat? It takes a while, but it's fun."}
+          ],
+          "options": [
+            {"t": "배요? 멀미를 할까 봐 걱정이에요.", "zh": "搭船？我怕會暈船。", "en": "A boat? I'm worried I'll get seasick."},
+            {"t": "비행기 표를 벌써 샀어요.", "zh": "我已經買好機票了。", "en": "I've already bought a plane ticket."},
+            {"t": "휴가가 너무 짧았어요.", "zh": "休假太短了。", "en": "The holiday was too short."},
+            {"t": "배가 고파서 밥을 먹었어요.", "zh": "肚子餓所以吃了飯。", "en": "I was hungry, so I ate."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "男生建議「배를 타고」（搭船），女生回應的是搭船這件事：擔心暈船。「배가 고프다」的「배」是肚子，是陷阱。", "en": "He suggests going by boat (배), and she answers about the boat — she fears seasickness. 배가 고파서 uses 배 = stomach, a trap."},
+          "words": [
+            {"w": "휴가", "r": "", "zh": "休假", "en": "holiday"},
+            {"w": "배", "r": "", "zh": "船", "en": "boat"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 요즘 중국어를 배운다면서요?", "zh": "秀美，聽說你最近在學中文？", "en": "Sumi, I hear you're learning Chinese these days."},
+            {"who": "F", "s": "네, 회사에서 중국 손님을 만날 일이 많아져서요.", "zh": "對，因為公司裡要見中國客戶的機會變多了。", "en": "Yes, I've been meeting more Chinese clients at work."}
+          ],
+          "options": [
+            {"t": "중국 손님은 내일 와요.", "zh": "中國客人明天來。", "en": "The Chinese clients come tomorrow."},
+            {"t": "회사를 그만두려고요?", "zh": "你打算辭職嗎？", "en": "Are you going to quit?"},
+            {"t": "그렇군요. 배우는 건 재미있어요?", "zh": "原來如此。學起來有趣嗎？", "en": "I see. Are you enjoying it?"},
+            {"t": "중국어를 가르친 지 오래됐어요.", "zh": "我教中文很久了。", "en": "I've taught Chinese for a long time."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說明學中文的理由，男生接著問「배우는 건 재미있어요?」（學起來有趣嗎？）最自然。", "en": "She explains why she is learning, so asking whether she enjoys it is the natural follow-up."},
+          "words": [
+            {"w": "배우다", "r": "", "zh": "學", "en": "to learn", "m": ["배운다면서요", "배우는"]},
+            {"w": "손님", "r": "", "zh": "客人", "en": "client, guest"}
+          ]
+        },
+        {
+          "type": "ko2_next",
+          "lines": [
+            {"who": "F", "s": "혹시 이 근처에 24시간 하는 약국이 있을까요?", "zh": "請問這附近有 24 小時營業的藥局嗎？", "en": "Is there a 24-hour pharmacy around here, by any chance?"},
+            {"who": "M", "s": "네, 저 편의점 옆에 하나 있어요.", "zh": "有，那家便利商店旁邊就有一家。", "en": "Yes, there's one next to that convenience store."}
+          ],
+          "options": [
+            {"t": "편의점에서 일하세요?", "zh": "你在便利商店工作嗎？", "en": "Do you work at the convenience store?"},
+            {"t": "감사합니다. 지금 가 봐야겠어요.", "zh": "謝謝。我現在就去看看。", "en": "Thank you. I'll go there now."},
+            {"t": "약을 벌써 먹었어요.", "zh": "我已經吃過藥了。", "en": "I've already taken the medicine."},
+            {"t": "24시간 동안 잤어요.", "zh": "我睡了 24 個小時。", "en": "I slept for 24 hours."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生告訴她藥局在哪裡，女生道謝並說「지금 가 봐야겠어요」（現在就去看看）。", "en": "He tells her where the pharmacy is, so she thanks him and goes."},
+          "words": [
+            {"w": "혹시", "r": "", "zh": "請問、或許", "en": "by any chance"},
+            {"w": "약국", "r": "", "zh": "藥局", "en": "pharmacy"},
+            {"w": "편의점", "r": "", "zh": "便利商店", "en": "convenience store"}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "수미 씨, 오늘 오후 회의가 3시에서 4시로 바뀌었어요.", "zh": "秀美，今天下午的會議從三點改到四點了。", "en": "Sumi, this afternoon's meeting has moved from three to four."},
+            {"who": "F", "s": "그래요? 다른 분들한테도 알려야겠네요.", "zh": "是嗎？那得通知其他人了。", "en": "Really? We should tell the others."},
+            {"who": "M", "s": "팀원들한테는 제가 이메일을 보낼게요. 수미 씨는 회의실 예약 시간을 바꿔 주세요.", "zh": "我來寄電子郵件給組員。秀美你去改會議室的預約時間。", "en": "I'll email the team. You change the meeting room booking."},
+            {"who": "F", "s": "네, 바로 할게요.", "zh": "好，我馬上去做。", "en": "OK, I'll do it right away."}
+          ],
+          "options": [
+            {"t": "팀원들에게 이메일을 보낸다.", "zh": "寄電子郵件給組員。", "en": "She emails the team."},
+            {"t": "회의에 들어간다.", "zh": "進去開會。", "en": "She goes into the meeting."},
+            {"t": "회의 자료를 만든다.", "zh": "做會議資料。", "en": "She prepares the meeting papers."},
+            {"t": "회의실 예약 시간을 바꾼다.", "zh": "改會議室的預約時間。", "en": "She changes the meeting room booking."}
+          ],
+          "answer": 3,
+          "explain": {"zh": "寄電子郵件的是男生；男生請女生「회의실 예약 시간을 바꿔 주세요」（改會議室預約時間）。", "en": "The man will send the emails; he asks her to change the room booking."},
+          "words": [
+            {"w": "바뀌다", "r": "", "zh": "被改變", "en": "to be changed", "m": ["바뀌었어요"]},
+            {"w": "알리다", "r": "", "zh": "通知", "en": "to let know", "m": ["알려야겠네요"]},
+            {"w": "팀원", "r": "", "zh": "組員", "en": "team member", "m": ["팀원들한테는"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "이 냉장고는 언제 배달돼요?", "zh": "這台冰箱什麼時候送到？", "en": "When will this fridge be delivered?"},
+            {"who": "M", "s": "내일 오후에 가능합니다. 주소를 여기에 써 주시겠어요?", "zh": "明天下午可以。可以請您把地址寫在這裡嗎？", "en": "Tomorrow afternoon. Could you write your address here?"},
+            {"who": "F", "s": "네. 그리고 쓰던 냉장고도 가져가 주실 수 있어요?", "zh": "好。另外可以把舊冰箱也收走嗎？", "en": "Sure. And could you take away my old fridge too?"},
+            {"who": "M", "s": "네, 그럼요.", "zh": "可以，當然。", "en": "Yes, of course."}
+          ],
+          "options": [
+            {"t": "주소를 쓴다.", "zh": "寫地址。", "en": "She writes her address."},
+            {"t": "냉장고를 고친다.", "zh": "修冰箱。", "en": "She repairs the fridge."},
+            {"t": "배달을 기다린다.", "zh": "等送貨。", "en": "She waits for the delivery."},
+            {"t": "오래된 냉장고를 버린다.", "zh": "丟掉舊冰箱。", "en": "She throws away the old fridge."}
+          ],
+          "answer": 0,
+          "explain": {"zh": "店員請她「주소를 여기에 써 주시겠어요?」（把地址寫在這裡），所以接下來是寫地址。送貨是明天，舊冰箱由店家收走。", "en": "He asks her to write her address here, so that is next. Delivery is tomorrow, and the shop takes the old fridge."},
+          "words": [
+            {"w": "냉장고", "r": "", "zh": "冰箱", "en": "fridge"},
+            {"w": "배달되다", "r": "", "zh": "被送達", "en": "to be delivered", "m": ["배달돼요"]},
+            {"w": "주소", "r": "", "zh": "地址", "en": "address"}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "M", "s": "이번 주 토요일 봉사 활동 신청했어요?", "zh": "這週六的志工活動你報名了嗎？", "en": "Have you signed up for the volunteering this Saturday?"},
+            {"who": "F", "s": "아니요, 아직이요. 어떻게 신청해요?", "zh": "還沒。要怎麼報名？", "en": "Not yet. How do I sign up?"},
+            {"who": "M", "s": "학교 홈페이지에서 신청서를 내려받아서 사무실에 내면 돼요.", "zh": "從學校網站下載申請表，交到辦公室就可以了。", "en": "Download the form from the school website and hand it in at the office."},
+            {"who": "F", "s": "그렇군요. 지금 홈페이지에 들어가 볼게요.", "zh": "原來如此。我現在上網站看看。", "en": "I see. I'll go to the website now."}
+          ],
+          "options": [
+            {"t": "사무실에 간다.", "zh": "去辦公室。", "en": "She goes to the office."},
+            {"t": "봉사 활동을 한다.", "zh": "做志工。", "en": "She does volunteer work."},
+            {"t": "학교 홈페이지에 들어간다.", "zh": "上學校網站。", "en": "She goes to the school website."},
+            {"t": "신청서를 낸다.", "zh": "交申請表。", "en": "She hands in the form."}
+          ],
+          "answer": 2,
+          "explain": {"zh": "女生說「지금 홈페이지에 들어가 볼게요」（現在上網站看看），先要下載申請表，交表是之後的事。", "en": "She says she will go to the website now; handing in the form comes later."},
+          "words": [
+            {"w": "봉사 활동", "r": "", "zh": "志工活動", "en": "volunteer work"},
+            {"w": "신청하다", "r": "", "zh": "申請、報名", "en": "to apply", "m": ["신청했어요", "신청해요"]},
+            {"w": "신청서", "r": "", "zh": "申請表", "en": "application form"},
+            {"w": "내려받다", "r": "", "zh": "下載", "en": "to download", "m": ["내려받아서"]}
+          ]
+        },
+        {
+          "type": "ko2_act",
+          "lines": [
+            {"who": "F", "s": "손님, 주문하신 케이크 나왔습니다.", "zh": "先生，您訂的蛋糕好了。", "en": "Sir, your cake is ready."},
+            {"who": "M", "s": "감사합니다. 그런데 초는 안 주시나요?", "zh": "謝謝。不過沒有附蠟燭嗎？", "en": "Thank you. But don't I get any candles?"},
+            {"who": "F", "s": "아, 죄송합니다. 몇 개 드릴까요?", "zh": "啊，對不起。要給您幾根？", "en": "Oh, I'm sorry. How many would you like?"},
+            {"who": "M", "s": "큰 거 세 개 주세요.", "zh": "請給我三根大的。", "en": "Three big ones, please."}
+          ],
+          "options": [
+            {"t": "케이크를 만든다.", "zh": "做蛋糕。", "en": "She makes a cake."},
+            {"t": "초를 세 개 준다.", "zh": "給三根蠟燭。", "en": "She gives him three candles."},
+            {"t": "돈을 받는다.", "zh": "收錢。", "en": "She takes the money."},
+            {"t": "케이크를 포장한다.", "zh": "包裝蛋糕。", "en": "She wraps the cake."}
+          ],
+          "answer": 1,
+          "explain": {"zh": "男生要蠟燭，說「큰 거 세 개 주세요」（請給我三根大的），所以女生接下來要給他三根蠟燭。", "en": "He asks for three big candles, so next she gives them to him."},
+          "words": [
+            {"w": "주문하다", "r": "", "zh": "訂購", "en": "to order", "m": ["주문하신"]},
+            {"w": "초", "r": "", "zh": "蠟燭", "en": "candle"}
+          ]
+        }
+      ]
+    }
+  ]
+}

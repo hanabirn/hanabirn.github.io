@@ -195,7 +195,7 @@ function listeningSetCard(lv, s, i, prog) {
     const nq = s.items.reduce((n, it) => n + it.questions.length, 0);
     const best = prog[lv.id + ':' + s.id];
     const ok = listeningDone(lv.id, s.id);
-    const mins = listeningMinutes(s);
+    const mins = listeningMinutes(s, lv);
     const half = !s.mock && resumeGet(listeningResumeKey(lv, s));
     const halfN = half && Array.isArray(half.picks) ? half.picks.filter(p => Array.isArray(p) && p.every(x => x !== -1)).length : 0;
     const title = s.mock ? t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 }) : t('listening_set', { n: lv.sets.filter(x => !x.mock).indexOf(s) + 1 });
@@ -210,14 +210,15 @@ function listeningSetCard(lv, s, i, prog) {
     </button></li>`;
 }
 
-function listeningMinutes(s) { return Math.max(1, Math.round(s.items.length * (s.mock ? 1.1 : 0.7))); }
+// a mock exam shows the official length when the level gives one (TOPIK I 40, II 60 minutes)
+function listeningMinutes(s, lv) { return s.mock && lv && lv.mock_minutes || Math.max(1, Math.round(s.items.length * (s.mock ? 1.1 : 0.7))); }
 function listeningResumeKey(lv, s) { return 'listening|' + lv.id + ':' + s.id; }
 
 function listeningMockNoteHtml(lv) {
     const s = lv.sets[listeningMockNote];
     const nq = s.items.reduce((n, it) => n + it.questions.length, 0);
     return mockNoteHtml(t('listening_mock_n', { n: lv.sets.filter(x => x.mock).indexOf(s) + 1 }),
-        [t('mock_note_listening', { n: nq, m: listeningMinutes(s), p: listeningMockPlaysText(lv) })],
+        [t('mock_note_listening', { n: nq, m: listeningMinutes(s, lv), p: listeningMockPlaysText(lv) })],
         `listeningStart(${listeningMockNote}, null, 'go')`, "listeningGo('list')");
 }
 

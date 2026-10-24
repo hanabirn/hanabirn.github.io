@@ -11,6 +11,7 @@ questions are copyrighted):
                                  # (TOPIK II: 1–20 once, 21–50 twice)
      instr?: {type: text},       # TOPIK: the paper's Korean instruction of each type
      practice_types?: [...],     # the types a practice round holds (default: all of types)
+     mock_minutes?: 40,          # the official length shown for a mock exam (TOPIK I 40, II 60)
      mock_counts?: {type: n},    # the official mix (in questions) a mock set must have
      read_secs?: 10,             # ポイント理解: time to read the options
      sets: [{id, mock?: true, items: [item…]}]}
@@ -105,6 +106,8 @@ def pic_prompt(spec):
 
 
 def pic_id(spec):
+    if 'chart' in spec:        # TOPIK II 3: four charts drawn by tools/build_listening_charts.py, not by AI
+        return 'c' + hashlib.sha1(json.dumps(spec['chart'], ensure_ascii=False, sort_keys=True).encode('utf-8')).hexdigest()[:11]
     return hashlib.sha1(pic_prompt(spec)[0].encode('utf-8')).hexdigest()[:12]
 
 
@@ -114,7 +117,7 @@ def item_pic(key, it, lang, problems):
         return None
     first = re.sub(r'\{[^}]*\}', '', it['lines'][0]['s'])
     want = 'grid' if it.get('type') in PIC_TYPES else 'scene' if it.get('type') == 'utterance' else None
-    if not first.startswith(spec['first']) or want not in spec:
+    if not first.startswith(spec['first']) or not (want in spec or want == 'grid' and 'chart' in spec):
         problems.append(f'{key}: tools/listening/pics.json describes another item ({spec["first"]!r}, a {want or it.get("type")} is here)')
         return None
     f = pic_id(spec)
@@ -245,7 +248,7 @@ def build(src, problems, jobs):
         sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
             **({'instr': {t: data['instr'][t] for t in types}} if data.get('instr') else {}),
-            'mock_plays': plays, 'sets': sets}
+            'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}), 'sets': sets}
 
 
 def render_audio(lang, jobs):
