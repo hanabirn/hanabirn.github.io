@@ -9,6 +9,12 @@ listen to 100 000 clips.
   3. content  — Gemini listens: sentences (文法, 閱讀, 聽解) all, words a sample
      (WORD_SAMPLE). The owner's picks: Gemini, sentences only + a sample of words.
 
+A clip the first listen fails gets a second opinion (`second_opinion`, SECOND_MODEL, sounds
+only: digits for number words, homophones and punctuation don't count) and is flagged only when
+both agree (2026-10-25: 43 of the first 74 problems were such misreadings). Clips a person has
+confirmed are fine are listed with their size in tools/audio_check_ok.json and never reported;
+tools/audio_rerecord.py re-records the real problems.
+
 Results are kept per file (keyed by its size, so a re-recorded file is checked again) in
 a state file — the audio-check branch in the cloud — so a clip is only ever paid for once.
 
@@ -33,6 +39,10 @@ CLIP_SHARE = 0.003              # share of samples at full scale: clipping
 PRICE_IN = 0.30 / 1e6           # US$ per input token (audio), estimate — check the bill
 PRICE_OUT = 1.20 / 1e6
 AUDIO_TOKENS_PER_SEC = 32
+SECOND_MODEL = 'gemini-3.8-flash'
+OK_FILE = ROOT / 'tools' / 'audio_check_ok.json'     # "lang|fid": size of a clip confirmed fine
+LANG_NAMES = {'ja': 'Japanese', 'ko': 'Korean', 'zh-CN': 'Mandarin Chinese (Simplified)', 'zh-TW': 'Mandarin Chinese (Taiwan)',
+              'fr': 'French', 'ru': 'Russian', 'es': 'Spanish', 'de': 'German', 'en-US': 'English (US)', 'en-GB': 'English (UK)'}
 
 KEYS = {}                       # file id -> the key text (what the page shows)
 _audio_id = ba.audio_id
@@ -215,6 +225,34 @@ def judge(batch, lang, key):
     return {}, {}
 
 
+def second_opinion(data, lang, say, key, model=SECOND_MODEL):
+    """(same, heard, diff, usage): a stronger model writes down the clip (mp3 bytes) and compares its
+    sounds with `say` — number words written as digits, homophones and punctuation don't count"""
+    base = lang.split('/')[-1]
+    name = LANG_NAMES.get(base, base)
+    prompt = (f'This is a recording in {name}. 1) Transcribe exactly what is said, syllable by syllable, writing every '
+              f'number as words (not digits){", Japanese in hiragana" if base == "ja" else ""}, including anything extra at '
+              f'the start or the end. 2) The recording is supposed to say: «{say}». Compare the SOUNDS only (homophones, digits '
+              'vs words and punctuation do not matter). Is every syllable there, pronounced correctly, with nothing extra, '
+              'missing or replaced? Answer JSON {"heard": str, "same": bool, "diff": str}.')
+    body = {'contents': [{'parts': [{'text': prompt}, {'inline_data': {'mime_type': 'audio/mp3', 'data': base64.b64encode(data).decode()}}]}],
+            'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0}}
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}'
+    for attempt in range(4):
+        try:
+            req = urllib.request.Request(url, json.dumps(body).encode(), {'Content-Type': 'application/json'})
+            res = json.load(urllib.request.urlopen(req, timeout=120))
+            v = json.loads(res['candidates'][0]['content']['parts'][0]['text'])
+            return bool(v.get('same')), str(v.get('heard', '')), str(v.get('diff', '')), res.get('usageMetadata', {})
+        except urllib.error.HTTPError as e:
+            if e.code in (400, 403):
+                raise
+            time.sleep(15 * (attempt + 1))
+        except (KeyError, ValueError, urllib.error.URLError, TimeoutError):
+            time.sleep(10)
+    return None, '', '', {}
+
+
 def sampled(fid):
     return int(hashlib.sha1(fid.encode()).hexdigest()[:8], 16) / 0xffffffff < WORD_SAMPLE
 
@@ -239,6 +277,7 @@ def main():
     for k in [k for k, v in state['content'].items() if not v[1] and len(v) < 6]:
         del state['content'][k]
     only = set(args.only.split(',')) if args.only else None
+    confirmed = json.loads(OK_FILE.read_text(encoding='utf-8')) if OK_FILE.exists() else {}
 
     texts = collect(site)
     report = {'when': time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime()), 'langs': {}, 'problems': [], 'content_cost': 0.0}
@@ -274,6 +313,8 @@ def main():
             if args.health == 'all' or (args.health == 'new' and (state['health'].get(key) or [None])[0] != size):
                 issues, secs = health(path, item)
                 state['health'][key] = [size, issues, round(secs, 2)]
+            if confirmed.get(key) == size:
+                continue                     # a person listened: it is fine
             h = state['health'].get(key)
             if h and h[0] == size and h[1]:
                 report['problems'].append({'lang': lang, 'fid': fid, 'text': item['key'], 'issues': h[1], 'secs': h[2],
@@ -316,6 +357,14 @@ def main():
                     score = matches(str(v.get('heard', '')), item['say'])
                     said_ok = v.get('ok') is True
                     ok = score >= MATCH[item['kind']] or (said_ok and score >= FLOOR[item['kind']])
+                    if not ok:                 # a second, stronger listen before it counts
+                        same, heard2, diff, um2 = second_opinion(path.read_bytes(), lang, item['say'], key)
+                        usage['in'] += um2.get('promptTokenCount', 0)
+                        usage['out'] += um2.get('candidatesTokenCount', 0) + um2.get('thoughtsTokenCount', 0)
+                        if same:
+                            ok = True
+                        elif heard2:
+                            v['heard'] = f'{heard2} ({diff})'[:200]
                     problem = 'none' if ok else (v.get('problem') if v.get('problem') not in (None, 'none') else 'wrong_words')
                     v['problem'] = problem
                     state['content'][f'{lang}|{fid}'] = [size, ok, str(v.get('heard', ''))[:200], problem, round(score, 2), said_ok]
