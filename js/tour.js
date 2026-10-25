@@ -9,21 +9,17 @@
    so existing visitors aren't interrupted) and can be replayed from the
    settings panel or the phone "More" sheet (startTour). */
 
+// 8 steps since 2026-10-25 (was 15; a new visitor skipped most of them): the learning
+// language is picked right in step 2 (pick: buttons in the card), 文法 / 閱讀 / 聽解 are one
+// step and the tools, settings, site language and dark mode another
 const TOUR_STEPS = [
     { key: 'welcome' },
-    { key: 'learn', targets: ['#learn-pill'] },
+    { key: 'learn', targets: ['#learn-pill'], pick: true },
     { key: 'goal', targets: ['#home-today'] },
-    { key: 'start', targets: ['#home-continue'] },
     { key: 'quiz', targets: ['.main-nav .nav-btn[data-tab="quiz"]', '.tabbar .nav-btn[data-tab="quiz"]'] },
-    { key: 'grammar', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
-    { key: 'reading', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
-    { key: 'listening', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'] },
+    { key: 'study', targets: ['#nav-group-learn .nav-group-btn', '#tabbar-learn'], noWhere: true },
     { key: 'review', targets: ['.main-nav .nav-btn[data-tab="review"]', '.tabbar .nav-btn[data-tab="review"]'] },
-    { key: 'dict', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
-    { key: 'alphabet', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
-    { key: 'notes', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'] },
-    { key: 'settings', targets: ['#menu-btn', '#tabbar-more'] },
-    { key: 'lang', targets: ['#lang-globe-btn', '#learn-pill'] },
+    { key: 'tools', targets: ['#nav-group-tools .nav-group-btn', '#tabbar-more'], noWhere: true },
     { key: 'done' }
 ];
 
@@ -60,6 +56,7 @@ function tourBuild() {
             <div class="tour-count" id="tour-count"></div>
             <h3 class="tour-title" id="tour-title"></h3>
             <p class="tour-text" id="tour-text"></p>
+            <div class="tour-pick" id="tour-pick"></div>
             <div class="tour-dots" aria-hidden="true">${TOUR_STEPS.map(() => '<i></i>').join('')}</div>
             <div class="tour-actions">
                 <button type="button" class="tour-skip" onclick="endTour()"></button>
@@ -85,7 +82,8 @@ function tourRender() {
 
     tourEl.querySelector('#tour-count').textContent = t('tour_step', { n: tourIdx + 1, m: TOUR_STEPS.length });
     tourEl.querySelector('#tour-title').textContent = t('tour_' + step.key + '_title');
-    tourEl.querySelector('#tour-text').textContent = t('tour_' + step.key + '_text') + (where ? ' ' + t(where) : '');
+    tourEl.querySelector('#tour-text').textContent = t('tour_' + step.key + '_text') + (where && !step.pick && !step.noWhere ? ' ' + t(where) : '');
+    tourRenderPick(step);
     tourEl.querySelectorAll('.tour-dots i').forEach((d, i) => {
         d.classList.toggle('on', i === tourIdx);
         d.classList.toggle('past', i < tourIdx);
@@ -111,6 +109,21 @@ function tourRender() {
     tourPlace();
     next.focus({ preventScroll: true });
     if (typeof mascotTalk === 'function') mascotTalk(tourEl.querySelector('.tour-mascot'), 900);
+}
+
+/* step 2: the learning languages as buttons — a pick sets it and moves on */
+function tourRenderPick(step) {
+    const box = tourEl.querySelector('#tour-pick');
+    if (!step.pick || typeof LEARN_LANGS === 'undefined') { box.innerHTML = ''; box.hidden = true; return; }
+    const now = learnLang();
+    box.hidden = false;
+    box.innerHTML = LEARN_LANGS.map(l => `<button type="button" class="tour-pick-btn${l === now ? ' on' : ''}" onclick="tourPick('${l}')">${learnFlags(l)}<span>${escHtml(learnLangName(l))}</span></button>`).join('');
+}
+
+function tourPick(lang) {
+    setLearnLang(lang);
+    tourRenderPick(TOUR_STEPS[tourIdx]);
+    setTimeout(() => { if (tourEl && TOUR_STEPS[tourIdx].pick) tourGo(1); }, 350);
 }
 
 /* The spotlight hugs the target; the card goes below it, or above when there

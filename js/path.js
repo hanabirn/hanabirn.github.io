@@ -83,9 +83,12 @@ function hidePathCards() {
 
 /* What a word set opens on once it's loaded: its path, or (a pasted custom sheet
    has no path) the regular mode picker. */
+let pathAutoOpen = null;   // a level to open as soon as the set is loaded (home's first lesson)
 function showSetStart() {
-    if (QUIZ_LANG_ORDER.includes(currentLang)) showLessonPath();
-    else showFreePractice();
+    if (QUIZ_LANG_ORDER.includes(currentLang)) {
+        showLessonPath();
+        if (pathAutoOpen !== null) { const lv = pathAutoOpen; pathAutoOpen = null; pathOpenLevel(lv); }
+    } else showFreePractice();
 }
 
 function showFreePractice() {
@@ -282,6 +285,10 @@ function startLessonQuiz() {
     reviewSource = 'lesson';
     lessonPassed = false;
     currentLang = lessonSetId;
+    // home's 繼續上次的 leads with the set of the last lesson begun, not only of a finished quiz
+    if (QUIZ_LANG_ORDER.includes(lessonSetId)) {
+        try { localStorage.setItem('last_quiz_set', lessonSetId); } catch {}
+    }
     // wrong options come from the whole set, not just this level's ten words
     reviewPool = vocabularyList.map(w => lessonEntryFor(lessonSetId, w)).filter(e => e.answer);
     reviewList = shuffleArray(entries);

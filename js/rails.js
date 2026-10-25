@@ -269,7 +269,8 @@ function railWordLang() {
     if (isKoreanQuizLang(last)) return 'kr';
     if (isEnglishQuizLang(last)) return 'en';
     if (isChineseQuizLang(last)) return 'zh';
-    return 'jp';
+    if (isJapaneseQuizLang(last)) return 'jp';
+    return '';            // no language yet: no word of the day (it showed Japanese to everyone)
 }
 
 function railLoadSet(id) {
@@ -314,6 +315,8 @@ function renderRailWord() {
     const box = document.getElementById('rail-word');
     if (!box || !railVisible('rail-right')) return;
     const lang = railWordLang();
+    box.style.display = lang ? '' : 'none';
+    if (!lang) return;
     const now = new Date();
     const head = `<div class="rail-head"><h4 class="rail-title">${escHtml(t('rail_word_title'))}</h4><span class="rail-date">${now.getMonth() + 1}/${now.getDate()}</span></div>`;
     railTodayWord(lang).then(({ id, topic, row }) => {

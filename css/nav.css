@@ -562,8 +562,9 @@ html[data-theme="dark"] .more-quick.more-theme {
 @media (max-width: 768px) {
     .main-nav { display: none; }
 
-    /* keep the last bit of the page clear of the fixed tab bar */
-    body { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+    /* keep the last bit of the page clear of the fixed tab bar and of 小花火's button above it
+       (bottom-left, css/assistant.css), so the page's end can be scrolled out from under her */
+    body { padding-bottom: calc(136px + env(safe-area-inset-bottom)); }
 
     .tabbar {
         display: flex;

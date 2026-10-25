@@ -323,6 +323,8 @@ function showInstallBanner() {
     const moved = document.getElementById('moved-overlay');
     if (moved && moved.classList.contains('show')) return;   // the moved notice already offers it
     try { if (localStorage.getItem('pwa_install_dismissed')) return; } catch {}
+    // not on the first day: a new visitor gets the tour, not an install ad on top of it (2026-10-25)
+    if (installFirstDay() || (typeof tourEl !== 'undefined' && tourEl)) return;
     const banner = document.getElementById('pwa-install-banner');
     if (!banner) return;
     banner.classList.add('show');
@@ -332,6 +334,17 @@ function showInstallBanner() {
     showInstallBanner.timer = setTimeout(() => banner.classList.remove('show'), INSTALL_BANNER_MS);
 }
 const INSTALL_BANNER_MS = 12000;
+
+/* the day of the first visit (first_visit_day, set on the first load) is today */
+function installFirstDay() {
+    const today = new Date().toDateString();
+    try {
+        const first = localStorage.getItem('first_visit_day');
+        if (!first) { localStorage.setItem('first_visit_day', today); return true; }
+        return first === today;
+    } catch { return false; }
+}
+installFirstDay();   // remember the first day on the first load, banner or not
 
 window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();

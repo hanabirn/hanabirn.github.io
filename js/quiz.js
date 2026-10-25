@@ -537,6 +537,40 @@ function shuffleArray(arr) {
     return a;
 }
 
+/* Two meanings that could both be right (big check of 2026-10-25: さようなら offered 再見 and
+   拜拜, 知り合い and 知人 are both 熟人): a shared sense, or a Chinese sense inside another
+   (小姐 / 先生／小姐). Wrong options never clash with the answer or with each other.
+   MEANING_CLASH (data/vocab/clash.json, loaded by loadMeaningClash) adds pairs that only
+   mean the same (再見 / 拜拜), keyed by word set. */
+function meaningSenses(m) {
+    return String(m || '').replace(/[（(][^）)]*[）)]/g, '').split(/[；;,，、/／]/)
+        .map(x => x.trim().toLowerCase().replace(/^(to|a|an|the) /, '')).filter(Boolean);
+}
+function meaningsClash(a, b) {
+    if (a === b) return true;
+    const A = meaningSenses(a), B = meaningSenses(b);
+    return A.some(x => B.some(y => x === y
+        || (/[^\x00-\x7f]/.test(x + y) && x.length >= 2 && y.length >= 2 && (x.includes(y) || y.includes(x)))));
+}
+let MEANING_CLASH = null;   // { setId: [[word, word], …] } → Set of 'set|word|word'
+function loadMeaningClash() {
+    if (MEANING_CLASH) return;
+    MEANING_CLASH = new Set();
+    fetch('data/vocab/clash.json').then(r => r.ok ? r.json() : {}).then(d => {
+        Object.entries(d || {}).forEach(([set, pairs]) => pairs.forEach(([x, y]) => {
+            MEANING_CLASH.add(set + '|' + x + '|' + y);
+            MEANING_CLASH.add(set + '|' + y + '|' + x);
+        }));
+    }).catch(() => {});
+}
+function wordsClash(set, x, y) {
+    return !!(MEANING_CLASH && set && x && y && MEANING_CLASH.has(set + '|' + x + '|' + y));
+}
+/* answer groups whose options are meanings (not readings, pinyin or zhuyin) */
+function isMeaningGroup(group) {
+    return !/reading|roman|bopomofo/.test(group || '');
+}
+
 /* Distractors for kanji reading questions (every Japanese reading question: the quiz,
    path lessons, reviews, the listening tool): the slips JLPT reading questions are made
    of, applied to the right kana — a long vowel added, dropped or moved (どうろ → どうろう,
@@ -871,7 +905,9 @@ function renderWords() {
         body.innerHTML = topicLadderHtml(fileLang, wordsTopic);
         return;
     }
-    // one tile per topic: where its ladder stands (the step being learned and its lessons)
+    // one tile per topic: where its ladder stands (the step being learned and its lessons);
+    // before any topic is started, 打招呼 says 下一步 so a new learner knows where to begin
+    const fresh = TOPIC_ALL.every(topic => topicStepStates(fileLang, topic).every(st => !st.done));
     body.innerHTML = `<div class="topic-grid">${TOPIC_ALL.map(topic => {
             const steps = topicStepStates(fileLang, topic);
             if (!steps.length) return '';
@@ -880,7 +916,9 @@ function renderWords() {
             const cur = steps.find(st => st.done < st.levels);
             const state = !cur ? '✓ ' + escHtml(t('topic_done'))
                 : escHtml((cur.level || t('topic_base_short')) + ' ' + t('topic_levels', { n: cur.done, m: cur.levels }));
-            return `<button type="button" class="topic-tile${cur ? '' : ' done'}" onclick="openTopic('${topic}')">
+            const start = fresh && topic === TOPIC_ALL[0];
+            return `<button type="button" class="topic-tile${cur ? '' : ' done'}${start ? ' start' : ''}" onclick="openTopic('${topic}')">
+                ${start ? `<span class="topic-next-tag">${escHtml(t('topic_next'))}</span>` : ''}
                 <span class="topic-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
                 <span class="topic-name">${escHtml(t('topic_' + topic))}</span>
                 <span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / total * 100)}%"></i></span>
@@ -1544,6 +1582,7 @@ function pickQuestionType() {
 }
 
 function nextQuestion() {
+    loadMeaningClash();
     answered = false;
     questionNum++;
     if (questionNum === 1) startSessionStats();
@@ -1581,10 +1620,14 @@ function nextQuestion() {
         const sameGroup = reviewPool.filter(m => notThis(m) && m.group === e.group && m.lang !== e.lang);
         const others = reviewPool.filter(m => notThis(m) && m.group !== e.group);
         let options = [e.answer];
-        const take = list => {
+        const optWords = [e.word];
+        const meaningQ = isMeaningGroup(e.group);
+        const clashes = p => meaningQ && (options.some(o => meaningsClash(o, p.answer))
+            || optWords.some(w => wordsClash(p.lang || e.lang, w, p.word)));
+        const take = (list, loose) => {
             for (const p of list) {
                 if (options.length >= 4) break;
-                if (!options.includes(p.answer)) options.push(p.answer);
+                if (!options.includes(p.answer) && (loose || !clashes(p))) { options.push(p.answer); optWords.push(p.word); }
             }
         };
         // Japanese readings: look-alike kana, as in the JLPT (どうろ: どうろう, どろ, どろう)
@@ -1599,7 +1642,7 @@ function nextQuestion() {
                 : e.group.startsWith('zh-') ? w => w[e.group.slice(3)]
                 : e.group === 'meaning-en' ? w => (w.english || w.meaning)
                 : w => w.meaning;
-            take(shuffleArray(words.map(w => ({ answer: answerOf(w) })).filter(notThis)));
+            take(shuffleArray(words.map(w => ({ answer: answerOf(w), word: w.word, lang: e.lang })).filter(notThis)));
         }
         if (options.length < 4 && e.group === 'reading') {
             for (const r of generateSimilarReadings(e.answer, 4 - options.length)) {
@@ -1609,6 +1652,7 @@ function nextQuestion() {
         }
         take(shuffleArray(sameGroup));
         take(shuffleArray(others));
+        take(shuffleArray(sameSet.concat(sameGroup, others)), true);   // too few without a clash: fill up anyway
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'review');
 
@@ -1629,11 +1673,15 @@ function nextQuestion() {
         const pool = shuffledVocab.filter(w => w[field] && w[field].length > 0);
         const correctAnswer = currentWord[field];
         let options = [correctAnswer];
+        const optWords = [currentWord.trad];
         let attempts = 0;
         while (options.length < 4 && pool.length >= 4 && attempts < 300) {
             attempts++;
-            const pick = pool[Math.floor(Math.random() * pool.length)][field];
-            if (!options.includes(pick)) options.push(pick);
+            const w = pool[Math.floor(Math.random() * pool.length)];
+            const pick = w[field];
+            const clash = attempts < 200 && isMeaningGroup(field)
+                && (options.some(o => meaningsClash(o, pick)) || optWords.some(x => wordsClash(currentLang, x, w.trad)));
+            if (!options.includes(pick) && !clash) { options.push(pick); optWords.push(w.trad); }
         }
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'zh');
@@ -1695,10 +1743,13 @@ function nextQuestion() {
 
         const correctAnswer = useEn ? (currentWord.english || currentWord.meaning) : currentWord.meaning;
         let options = [correctAnswer];
+        const optWords = [currentWord.word];
+        let tries = 0;
         while (options.length < 4) {
             const pick = answerPool[Math.floor(Math.random() * answerPool.length)];
             const val = useEn ? (pick.english || pick.meaning) : pick.meaning;
-            if (!options.includes(val)) options.push(val);
+            const clash = ++tries < 200 && (options.some(o => meaningsClash(o, val)) || optWords.some(x => wordsClash(currentLang, x, pick.word)));
+            if (!options.includes(val) && !clash) { options.push(val); optWords.push(pick.word); }
         }
         options.sort(() => Math.random() - 0.5);
         renderOptions(options, 'meaning');

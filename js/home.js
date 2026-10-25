@@ -262,8 +262,15 @@ function homeOpenSet(id) {
 
 function homeContinue() {
     const last = localStorage.getItem('last_quiz_set');
-    if (QUIZ_LANG_ORDER.includes(last)) homeOpenSet(last);
-    else homeResetQuizPage();
+    if (QUIZ_LANG_ORDER.includes(last)) return homeOpenSet(last);
+    // nothing practised yet: straight to the first lesson of the learning language's 打招呼
+    // basics (2026-10-25: it took five clicks to get there); no language yet → the chooser
+    const code = typeof learnLang === 'function' && LEARN_QUIZ_CODE[learnLang()];
+    const starter = code && TOPIC_FILE_LANG[code] ? 'tp_' + TOPIC_FILE_LANG[code] + '_' + TOPIC_ALL[0] : '';
+    if (QUIZ_LANG_ORDER.includes(starter)) {
+        pathAutoOpen = 0;
+        homeOpenSet(starter);
+    } else homeResetQuizPage();
 }
 
 function homeOpenSrs() {

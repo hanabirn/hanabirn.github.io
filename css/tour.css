@@ -83,6 +83,18 @@
     font-size: 1.12rem;
     color: var(--text-pink);
 }
+/* step 2: pick the learning language in the card */
+.tour-pick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; margin: 4px 0 10px; }
+.tour-pick[hidden] { display: none; }
+.tour-pick-btn {
+    display: flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 10px;
+    border: 2px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--ink);
+    font: inherit; font-size: 0.88rem; font-weight: 700; cursor: pointer; text-align: left;
+}
+.tour-pick-btn:hover { border-color: var(--primary); }
+.tour-pick-btn.on { border-color: var(--primary); background: var(--primary-soft); }
+@media (pointer: coarse) { .tour-pick-btn { min-height: 44px; } }
+
 .tour-text {
     margin: 0;
     font-size: 0.92rem;

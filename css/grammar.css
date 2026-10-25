@@ -98,6 +98,11 @@
    body.listening-wide, owner's layout rule 2026-10-23) */
 @media (min-width: 1024px) {
     body.reading-wide .learn-list-grid, body.listening-wide .learn-list-grid, body.grammar-wide .learn-list-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    /* 閱讀 / 聽解 lists four a row, so a level's rounds, mock and passages fit one 1080p screen (2026-10-25) */
+    #page-reading .learn-list-grid, #page-listening .learn-list-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    /* four a row: a passage's topic, translated title and length on one line (cut with …) */
+    #page-reading .learn-list-grid .grammar-item-title { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    #page-reading .learn-list-grid .grammar-pattern { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; line-clamp: 2; overflow: hidden; }
 }
 .grammar-item {
     width: 100%;

@@ -227,6 +227,8 @@ function listeningMockNoteHtml(lv) {
         `listeningStart(${listeningMockNote}, null, 'go')`, "listeningGo('list')");
 }
 
+/* the practice rounds first and the mock exam after them in the same grid (2026-10-25: a new
+   visitor's first choice was a timed mock) */
 function listeningListHtml(lv) {
     const prog = listeningProgress();
     const practice = lv.sets.filter(s => !s.mock);
@@ -238,11 +240,6 @@ function listeningListHtml(lv) {
     return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
         ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
-        ${mocks.length ? `<div class="ls-mock">
-            <div class="ls-mock-head">📝 <b>${escHtml(t('listening_mock'))}</b></div>
-            <p class="ls-mock-hint">${escHtml(t('listening_mock_hint', { n: mockQ, p: listeningMockPlaysText(lv) }))}</p>
-            <ol class="grammar-list learn-list-grid">${mocks.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
-        </div>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">
             <span><b>${escHtml(t('listening_exam'))}</b>　${escHtml(t('listening_exam_hint', { n: LISTENING_EXAM_PLAYS }))}</span>
@@ -251,7 +248,8 @@ function listeningListHtml(lv) {
             <span>${escHtml(t('listening_done_n', { n: done, m: practice.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
         </div>
-        <ol class="grammar-list learn-list-grid">${practice.map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
+        <ol class="grammar-list learn-list-grid">${practice.concat(mocks).map(s => listeningSetCard(lv, s, lv.sets.indexOf(s), prog)).join('')}</ol>
+        ${mocks.length ? `<p class="ls-mock-hint ls-mock-note">📝 ${escHtml(t('listening_mock_hint', { n: mockQ, p: listeningMockPlaysText(lv) }))}</p>` : ''}
         <p class="grammar-credit">${escHtml(t('listening_credit'))}</p>`;
 }
 

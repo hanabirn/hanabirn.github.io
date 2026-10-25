@@ -243,6 +243,10 @@
     color: var(--text-secondary);
 }
 .topic-tile.done { border-color: var(--success-edge); }
+/* where a new learner begins (renderWords: 打招呼 before any topic is started) */
+.topic-tile { position: relative; }
+.topic-tile.start { border-color: var(--primary); }
+.topic-tile.start .topic-next-tag { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); margin: 0; white-space: nowrap; }
 .topic-tile.done .topic-bar i { background: var(--success); }
 .topic-tile.done .topic-state { color: var(--success-text); font-weight: 700; }
 .topic-exam {
