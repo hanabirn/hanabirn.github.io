@@ -57,10 +57,31 @@ function pokeLines(key, params) {
         .filter(Boolean);
 }
 
+/* Lines that only fit some moments, by their place in the key (the same in all 9
+   languages): 歡迎回來 not on a first visit, the due-cards line only with cards due, the
+   word-of-the-day line only while it shows, and the take-a-break / read-it-again lines only
+   after some practice today (2026-10-25, first-visitor review) */
+const POKE_LINE_WHEN = {
+    ctx_home: { 0: 'returning', 2: 'due', 5: 'wordday' },
+    ctx_quiz: { 4: 'practised' },
+    ctx_listening: { 9: 'practised' },
+    ctx_reading: { 6: 'practised' },
+    ctx_other: { 6: 'practised' }
+};
+function pokeLineFits(when) {
+    const today = () => { try { return (JSON.parse(localStorage.getItem('daily_activity') || '{}') || {})[railDayKey(new Date())] || 0; } catch { return 0; } };
+    if (when === 'practised') return today() >= 10;
+    if (when === 'due') return typeof srsQuizDueCount === 'function' && srsQuizDueCount() > 0;
+    if (when === 'wordday') return !!railWordLang();
+    if (when === 'returning') return !(typeof installFirstDay === 'function' && installFirstDay());
+    return true;
+}
+
 function pokeSay(key, params) {
     const bubble = document.getElementById('poke-bubble');
     if (!bubble) return;
-    const lines = pokeLines(key, params);
+    const when = POKE_LINE_WHEN[key] || {};
+    const lines = pokeLines(key, params).filter((l, i) => !when[i] || pokeLineFits(when[i]));
     if (!lines.length) return;
     let line = lines[Math.floor(Math.random() * lines.length)];
     if (line === pokeLastLine && lines.length > 1) line = lines[(lines.indexOf(line) + 1) % lines.length];

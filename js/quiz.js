@@ -571,6 +571,17 @@ function isMeaningGroup(group) {
     return !/reading|roman|bopomofo/.test(group || '');
 }
 
+/* The small line under a question: a kana-only word's "reading" is itself, so none; with the
+   羅馬拼音 switch on (js/path.js) a Japanese / Korean meaning question shows the word in
+   Latin letters — never a reading question, whose answer that would be (2026-10-25) */
+function quizHintFor(set, word, hint, group) {
+    const h = hint && hint !== word ? hint : '';
+    if (group === 'reading' || typeof romajiOn !== 'function' || !romajiOn()) return h;
+    if (!isJapaneseQuizLang(set) && !isKoreanQuizLang(set)) return h;
+    const r = romanOf(set, { word, kana: isJapaneseQuizLang(set) ? (hint || word) : '' });
+    return [h, r].filter(Boolean).join(' · ');
+}
+
 /* Distractors for kanji reading questions (every Japanese reading question: the quiz,
    path lessons, reviews, the listening tool): the slips JLPT reading questions are made
    of, applied to the right kana — a long vowel added, dropped or moved (どうろ → どうろう,
@@ -1608,7 +1619,7 @@ function nextQuestion() {
         if (isChineseQuizLang(currentReviewEntry.lang) && currentReviewEntry.zct) zhCharType = currentReviewEntry.zct;
 
         document.getElementById('word-question').innerText = currentReviewEntry.word;
-        document.getElementById('word-hint').innerText = currentReviewEntry.hint || '';
+        document.getElementById('word-hint').innerText = quizHintFor(currentReviewEntry.lang, currentReviewEntry.word, currentReviewEntry.hint, currentReviewEntry.group);
 
         /* Wrong options, best first: other cards of the same word set and question type;
            the same set's cached word list (a new learner has only a few cards); near-miss
@@ -1734,7 +1745,7 @@ function nextQuestion() {
         }
 
         document.getElementById('word-question').innerText = currentWord.word;
-        document.getElementById('word-hint').innerText = currentWord.kana ? `讀法：${currentWord.kana}` : '';
+        document.getElementById('word-hint').innerText = quizHintFor(currentLang, currentWord.word, currentWord.kana, 'meaning');
 
         const answerPool = useEn
             ? pool.filter(w => w.english && w.english.length > 0)

@@ -39,7 +39,8 @@ function applyLang(lang) {
     }
     if (typeof renderVisitorCount === 'function') renderVisitorCount();
     if (typeof updateClock === 'function') updateClock();
-    if (t.title) document.title = t.title;
+    // the browser tab / search result: the name plus what the site is (doc_title, 2026-10-25)
+    if (t.doc_title || t.title) document.title = t.doc_title || t.title;
     if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
 }
 

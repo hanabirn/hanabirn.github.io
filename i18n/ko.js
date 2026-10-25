@@ -1,4 +1,6 @@
 I18N.ko = {
+        doc_title: "Hanabi 의 작은 세계 | 일본어·한국어·중국어 등 8개 언어 무료 학습: 단어·문법·읽기·청해",
+        lesson_romaji: "로마자", lesson_alpha_tip_ja: "가나를 아직 못 읽나요? 발음부터 시작해요:", lesson_alpha_tip_ko: "한글을 아직 못 읽나요? 발음부터 시작해요:",
         title: 'Hanabi 의 작은 세계', subtitle: '배우고 또 배워서 자신의 꿈을 향해 나아가자!',
         nav_learn: '학습', nav_tools: '도구', menu_title: '메뉴', menu_bgm: '배경 음악', more_site: '사이트', more_community: '소통', more_theme: '다크 모드', nav_grammar_desc: '문형 설명과 연습', nav_reading_desc: '등급별 지문과 문제', nav_listening_desc: '시험형 듣기', nav_dict_desc: '번역·예문·발음 찾기', nav_alphabet_desc: '글자와 발음부터', nav_notes_desc: '노트 정리와 복습', learn_prog_grammar: '{n}개 익힘', learn_prog_reading: '{n}편 읽음', learn_prog_listening: '{n}회 완료', learn_prog_new: '시작 전', tour_in_learn: '(「학습」 안)', tour_in_tools: '(「도구」 안)', tour_in_menu: '(오른쪽 위 ☰ 메뉴 안)',
         nav_quiz: '단어 퀴즈', nav_about: '사이트 제작자 소개',

@@ -1,4 +1,6 @@
 I18N.en = {
+        doc_title: "Hanabi's World | Learn Japanese, Korean, Chinese and more for free: words, grammar, reading, listening",
+        lesson_romaji: "Romanization", lesson_alpha_tip_ja: "Can’t read kana yet? Start with the sounds:", lesson_alpha_tip_ko: "Can’t read Hangul yet? Start with the sounds:",
         title: "Hanabi's World", subtitle: 'Keep learning, keep moving toward your dreams!',
         nav_learn: 'Learn', nav_tools: 'Tools', menu_title: 'Menu', menu_bgm: 'Background music', more_site: 'Site', more_community: 'Community', more_theme: 'Dark mode', nav_grammar_desc: 'Patterns explained, with practice', nav_reading_desc: 'Graded passages and quizzes', nav_listening_desc: 'Exam-style listening', nav_dict_desc: 'Translations, examples, sound', nav_alphabet_desc: 'Start with letters and sounds', nav_notes_desc: 'Notes to organise and review', learn_prog_grammar: '{n} learned', learn_prog_reading: '{n} read', learn_prog_listening: '{n} done', learn_prog_new: 'Not started', tour_in_learn: '(under “Learn”)', tour_in_tools: '(under “Tools”)', tour_in_menu: '(in the ☰ menu, top right)',
         nav_quiz: 'Vocabulary Quiz', nav_about: 'About the Author',

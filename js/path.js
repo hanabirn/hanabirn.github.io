@@ -74,6 +74,90 @@ function lessonEntryFor(setId, w) {
              answer: useEn ? w.english : w.meaning, hint: w.kana || '', group: group };
 }
 
+/* ----- Romanization for beginners (2026-10-25, first-visitor review) -----
+   A 羅馬拼音 switch on Japanese and Korean lessons (show_romaji, per device) writes each
+   word in Latin letters under it and as the hint of a meaning question (never of a reading
+   question — it would give the answer away). Japanese: Hepburn from the kana; Korean: the
+   Revised Romanization with liaison and the common nasal changes. */
+const ROMAJI_KANA = {
+    'あ':'a','い':'i','う':'u','え':'e','お':'o','か':'ka','き':'ki','く':'ku','け':'ke','こ':'ko','さ':'sa','し':'shi','す':'su','せ':'se','そ':'so',
+    'た':'ta','ち':'chi','つ':'tsu','て':'te','と':'to','な':'na','に':'ni','ぬ':'nu','ね':'ne','の':'no','は':'ha','ひ':'hi','ふ':'fu','へ':'he','ほ':'ho',
+    'ま':'ma','み':'mi','む':'mu','め':'me','も':'mo','や':'ya','ゆ':'yu','よ':'yo','ら':'ra','り':'ri','る':'ru','れ':'re','ろ':'ro','わ':'wa','を':'o','ん':'n',
+    'が':'ga','ぎ':'gi','ぐ':'gu','げ':'ge','ご':'go','ざ':'za','じ':'ji','ず':'zu','ぜ':'ze','ぞ':'zo','だ':'da','ぢ':'ji','づ':'zu','で':'de','ど':'do',
+    'ば':'ba','び':'bi','ぶ':'bu','べ':'be','ぼ':'bo','ぱ':'pa','ぴ':'pi','ぷ':'pu','ぺ':'pe','ぽ':'po','ゔ':'vu',
+    'ぁ':'a','ぃ':'i','ぅ':'u','ぇ':'e','ぉ':'o','ゎ':'wa'
+};
+const ROMAJI_SMALL = { 'ゃ': 'ya', 'ゅ': 'yu', 'ょ': 'yo' };
+// greetings that end in the particle は, said わ
+const ROMAJI_WA = ['こんにちは', 'こんばんは'];
+
+function romajiOf(kana) {
+    const k = [...String(kana || '')].map(c => c >= 'ァ' && c <= 'ヶ' ? String.fromCharCode(c.charCodeAt(0) - 0x60) : c).join('');
+    const ch = [...k];
+    let out = '';
+    for (let i = 0; i < ch.length; i++) {
+        const c = ch[i], next = ch[i + 1];
+        if (c === 'っ') {                       // doubles the next consonant (っち → tchi)
+            const r = romajiOf(ch.slice(i + 1, i + 3).join(''));
+            out += r.startsWith('ch') ? 't' : (r[0] || '');
+            continue;
+        }
+        if (c === 'ー') { out += out.slice(-1); continue; }
+        let r = ROMAJI_KANA[c];
+        if (r === undefined) { out += c; continue; }
+        if (next && ROMAJI_SMALL[next] && r.length > 1 && r.endsWith('i')) {   // きゃ kya, しゃ sha, ちゃ cha
+            const y = ROMAJI_SMALL[next];
+            r = /^(sh|ch|j)/.test(r) ? r.slice(0, -1) + y.slice(1) : r.slice(0, -1) + y;
+            i++;
+        }
+        if (c === 'ん' && next && /^[aiueoy]/.test(ROMAJI_KANA[next] || '')) r = "n'";
+        out += r;
+    }
+    return ROMAJI_WA.includes(k) ? out.replace(/ha$/, 'wa') : out;
+}
+
+const RR_INI = ['g', 'kk', 'n', 'd', 'tt', 'r', 'm', 'b', 'pp', 's', 'ss', '', 'j', 'jj', 'ch', 'k', 't', 'p', 'h'];
+const RR_MED = ['a', 'ae', 'ya', 'yae', 'eo', 'e', 'yeo', 'ye', 'o', 'wa', 'wae', 'oe', 'yo', 'u', 'wo', 'we', 'wi', 'yu', 'eu', 'ui', 'i'];
+const RR_FIN = ['', 'k', 'k', 'k', 'n', 'n', 'n', 't', 'l', 'k', 'm', 'l', 'l', 'l', 'p', 'l', 'm', 'p', 'p', 't', 't', 'ng', 't', 't', 'k', 't', 'p', 't'];
+// a single final consonant carried over to a following ㅇ (liaison): how it sounds there
+const RR_CARRY = { 1: 'g', 4: 'n', 7: 'd', 8: 'r', 16: 'm', 17: 'b', 19: 's', 20: 'ss', 22: 'j', 23: 'ch', 24: 'k', 25: 't', 26: 'p', 27: '' };
+
+function hangulRoman(text) {
+    const syl = [...String(text || '')].map(c => {
+        const code = c.charCodeAt(0) - 0xAC00;
+        return code >= 0 && code <= 11171
+            ? { ini: Math.floor(code / 588), med: Math.floor((code % 588) / 28), fin: code % 28 } : { ch: c };
+    });
+    let out = '';
+    syl.forEach((x, i) => {
+        if (x.ch !== undefined) { out += x.ch; return; }
+        out += (x.head !== undefined ? x.head : RR_INI[x.ini]) + RR_MED[x.med];
+        if (!x.fin) return;
+        const n = syl[i + 1] && syl[i + 1].ch === undefined ? syl[i + 1] : null;
+        if (n && n.ini === 11 && RR_CARRY[x.fin] !== undefined) { n.head = RR_CARRY[x.fin]; return; }   // 한국어 → hangugeo
+        let f = RR_FIN[x.fin];
+        if (n && (n.ini === 2 || n.ini === 6)) f = { k: 'ng', t: 'n', p: 'm' }[f] || f;               // 합니다 → hamnida
+        if (f === 'l' && n && (n.ini === 5 || n.ini === 2)) n.head = 'l';                             // 설날 → seollal
+        out += f;
+    });
+    return out;
+}
+
+function romanOf(setId, w) {
+    if (isJapaneseQuizLang(setId)) return romajiOf(w.kana || w.word);
+    if (isKoreanQuizLang(setId)) return hangulRoman(w.word);
+    return '';
+}
+
+function romajiOn() {
+    try { return localStorage.getItem('show_romaji') === '1'; } catch { return false; }
+}
+
+function toggleRomaji() {
+    try { localStorage.setItem('show_romaji', romajiOn() ? '0' : '1'); } catch {}
+    renderLessonPreview();
+}
+
 function hidePathCards() {
     ['path-card', 'lesson-card'].forEach(id => {
         const el = document.getElementById(id);
@@ -237,11 +321,22 @@ function renderLessonPreview() {
     document.getElementById('lesson-title').textContent =
         t('path_level', { n: lessonLevel + 1 }) + ' · ' + t('lesson_preview_title');
     document.getElementById('lesson-hint').textContent = t('lesson_preview_hint', { n: words.length });
+    // Japanese / Korean: the 羅馬拼音 switch, and on a set's first level a way to the alphabet
+    const ja = isJapaneseQuizLang(lessonSetId), ko = isKoreanQuizLang(lessonSetId);
+    const roman = (ja || ko) && romajiOn();
+    const tools = document.getElementById('lesson-tools');
+    if (tools) {
+        tools.hidden = !(ja || ko);
+        tools.innerHTML = ja || ko ? `<button type="button" class="mode-btn lesson-romaji${roman ? ' mode-btn-active' : ''}" aria-pressed="${roman}" onclick="toggleRomaji()">${escHtml(t('lesson_romaji'))}</button>
+            ${lessonLevel === 0 ? `<span class="lesson-alpha-tip">${escHtml(t(ja ? 'lesson_alpha_tip_ja' : 'lesson_alpha_tip_ko'))} <button type="button" class="rd-link" onclick="switchPage('alphabet', null)">${escHtml(t('nav_alphabet'))} →</button></span>` : ''}` : '';
+    }
     document.getElementById('lesson-list').innerHTML = words.map((w, i) => {
         const e = lessonEntryFor(lessonSetId, w);
-        const reading = isChineseQuizLang(lessonSetId)
+        let reading = isChineseQuizLang(lessonSetId)
             ? [w.bopomofo, w.roman].filter(Boolean).join(' · ')
             : (w.kana || '');
+        if (reading === e.word) reading = '';      // a kana-only word: its "reading" is itself
+        if (roman) reading = [reading, romanOf(lessonSetId, w)].filter(Boolean).join(' · ');
         const meaning = e.group === 'reading' ? e.hint : e.answer;
         return `<li class="lesson-word">
             <div class="lesson-word-main">

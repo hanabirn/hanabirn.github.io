@@ -1,4 +1,6 @@
 I18N.ru = {
+        doc_title: "Маленький мир Ханаби — японский, корейский, китайский и ещё 5 языков бесплатно: слова, грамматика, чтение, аудирование",
+        lesson_romaji: "Латиница", lesson_alpha_tip_ja: "Ещё не читаете кану? Начните с произношения:", lesson_alpha_tip_ko: "Ещё не читаете хангыль? Начните с произношения:",
         title: 'Маленький мир Ханаби', subtitle: 'Учись и иди к своей мечте!',
         nav_learn: 'Учёба', nav_tools: 'Инструменты', menu_title: 'Меню', menu_bgm: 'Фоновая музыка', more_site: 'Сайт', more_community: 'Общение', more_theme: 'Тёмная тема', nav_grammar_desc: 'Конструкции с объяснением и практикой', nav_reading_desc: 'Тексты по уровням с вопросами', nav_listening_desc: 'Аудирование как на экзамене', nav_dict_desc: 'Перевод, примеры, произношение', nav_alphabet_desc: 'Начни с букв и звуков', nav_notes_desc: 'Заметки для повторения', learn_prog_grammar: 'выучено: {n}', learn_prog_reading: 'прочитано: {n}', learn_prog_listening: 'пройдено: {n}', learn_prog_new: 'Не начато', tour_in_learn: '(в разделе «Учёба»)', tour_in_tools: '(в разделе «Инструменты»)', tour_in_menu: '(в меню ☰ справа вверху)',
         nav_quiz: 'Тест на слова', nav_about: 'Об авторе сайта',

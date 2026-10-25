@@ -94,6 +94,14 @@ function renderPracticeHub() {
     const fixedWeek = all.filter(m => m.fixedAt && m.fixedAt > now - 7 * DAY_MS).length;
     const known = getFlashcardKnown().length;
     const lastListen = getQuizRecords().filter(r => r && r.kind === 'listening').pop();
+    // nothing to show before the first answer: the 單字 page then gives the word sets the whole
+    // width (2026-10-25, first-visitor review: the tools came before the visitor could use them)
+    let practised = cards.length || all.length || known || getQuizRecords().length;
+    try { practised = practised || !!localStorage.getItem('daily_activity'); } catch {}
+    box.hidden = !practised;
+    const langCard = document.getElementById('lang-card');
+    if (langCard) langCard.classList.toggle('no-tools', !practised);
+    if (!practised) return;
 
     let suggest = '';
     if (due > 0) {

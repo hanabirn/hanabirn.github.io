@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-25',
+      zh: "給剛開始學的人：日文和韓文的關卡可以打開「羅馬拼音」，只用假名寫的單字不再重複顯示讀音，第一關也會提示可以先去字母表學發音。還沒答過題時，單字頁先不顯示練習中心；測驗上方改成「單字數」，答錯時顯示「答錯了」。小花火不會再在你剛來時就說「累了休息一下」這類的話。",
+      'zh-Hans': "给刚开始学的人：日语和韩语的关卡可以打开“罗马拼音”，只用假名写的单词不再重复显示读音，第一关也会提示可以先去字母表学发音。还没答过题时，单词页先不显示练习中心；测验上方改成“单词数”，答错时显示“答错了”。小花火不会再在你刚来时就说“累了休息一下”这类的话。",
+      en: "For beginners: Japanese and Korean lessons have a Romanization switch, kana-only words no longer repeat themselves as their reading, and the first lesson points you to the alphabet chart. The practice hub waits until you have answered something, and 小花火 no longer tells you to take a break the moment you arrive.",
+      ja: "はじめての人へ：日本語・韓国語のレッスンに「ローマ字」スイッチを付け、かなだけの単語で読みを二重に表示しないようにしました。最初のレッスンでは文字表への案内も出ます。練習センターは一度答えてから表示され、小花火が来たばかりの人に「疲れたら休んで」と言うこともなくなりました。",
+      ko: "처음 배우는 분께: 일본어·한국어 레슨에 「로마자」 스위치가 생겼고, 가나로만 쓴 단어는 읽기를 두 번 보여 주지 않아요. 첫 레슨에서는 문자표로 가는 안내도 나와요. 연습 센터는 한 번 답한 뒤에 보이고, 小花火가 막 온 사람에게 「피곤하면 쉬어」 같은 말을 하지 않아요.",
+      ru: "Для начинающих: в уроках японского и корейского есть переключатель латиницы, слова только из каны больше не повторяются как чтение, а первый урок подсказывает заглянуть в таблицу алфавита. Центр практики появляется после первого ответа, а 小花火 больше не предлагает отдохнуть, едва вы пришли.",
+      fr: "Pour les débutants : les leçons de japonais et de coréen ont un bouton de romanisation, les mots écrits en kana ne répètent plus leur lecture, et la première leçon t’indique le tableau de l’alphabet. Le centre d’entraînement attend ta première réponse, et 小花火 ne te dit plus de faire une pause dès ton arrivée.",
+      es: "Para principiantes: las lecciones de japonés y coreano tienen un interruptor de romanización, las palabras solo en kana ya no repiten su lectura y la primera lección te indica el alfabeto. El centro de práctica aparece tras tu primera respuesta, y 小花火 ya no te dice que descanses nada más llegar.",
+      de: "Für Einsteiger: Japanisch- und Koreanisch-Lektionen haben einen Lateinschrift-Schalter, reine Kana-Wörter wiederholen ihre Lesung nicht mehr, und die erste Lektion weist auf die Alphabettafel hin. Das Übungszentrum erscheint erst nach der ersten Antwort, und 小花火 schlägt keine Pause mehr vor, kaum dass du da bist." },
+    { date: '2026-10-25',
       zh: "新手更好上手：導覽從 15 步縮短成 8 步，第 2 步就能直接選要學的語言；選好之後，首頁的大按鈕會直接帶你進到第一關。測驗的選項不會再出現意思一樣的答案。閱讀和聽解的列表先放練習回、模擬考放最後，電腦上一個畫面就看得完。手機上「有問題問我！」的提示會自己收起來。",
       'zh-Hans': "新手更好上手：导览从 15 步缩短成 8 步，第 2 步就能直接选要学的语言；选好之后，首页的大按钮会直接带你进到第一关。测验的选项不会再出现意思一样的答案。阅读和听解的列表先放练习回、模拟考放最后，电脑上一屏就能看完。手机上“有问题问我！”的提示会自己收起来。",
       en: "Easier first steps: the site tour is down from 15 steps to 8 and lets you pick your language right in step 2; after that, the big button on Home takes you straight to your first lesson. Quiz options no longer include two answers that mean the same. Reading and Listening list the practice rounds first and the mock exam last, and fit one screen on computers. On phones the “Ask me!” bubble now tucks itself away.",

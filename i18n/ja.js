@@ -1,4 +1,6 @@
 I18N.ja = {
+        doc_title: "Hanabi の 小天地｜日本語・韓国語・中国語など 8 言語を無料で：単語・文法・読解・聴解",
+        lesson_romaji: "ローマ字", lesson_alpha_tip_ja: "かながまだ読めない？まずは発音から：", lesson_alpha_tip_ko: "ハングルがまだ読めない？まずは発音から：",
         title: 'Hanabi の 小天地', subtitle: '学び続け、自分の夢に向かって進もう！',
         nav_learn: '学ぶ', nav_tools: 'ツール', menu_title: 'メニュー', menu_bgm: 'BGM', more_site: 'サイト', more_community: '交流', more_theme: 'ダークモード', nav_grammar_desc: '文型の解説と練習', nav_reading_desc: 'レベル別の文章と問題', nav_listening_desc: '試験形式の聴解', nav_dict_desc: '訳・例文・発音を調べる', nav_alphabet_desc: '文字と発音から始めよう', nav_notes_desc: 'メモを整理して復習', learn_prog_grammar: '{n} 個習得', learn_prog_reading: '{n} 本読了', learn_prog_listening: '{n} 回完了', learn_prog_new: '未開始', tour_in_learn: '（「学ぶ」の中）', tour_in_tools: '（「ツール」の中）', tour_in_menu: '（右上の ☰ メニューの中）',
         nav_quiz: '単語テスト', nav_about: 'サイト作者について',

@@ -1,4 +1,6 @@
 I18N.de = {
+        doc_title: "Hanabis kleine Welt | Japanisch, Koreanisch, Chinesisch und mehr kostenlos: Wörter, Grammatik, Lesen, Hören",
+        lesson_romaji: "Lateinschrift", lesson_alpha_tip_ja: "Kannst du Kana noch nicht lesen? Fang mit den Lauten an:", lesson_alpha_tip_ko: "Kannst du Hangul noch nicht lesen? Fang mit den Lauten an:",
         title: "Hanabis kleine Welt", subtitle: 'Lerne weiter und gehe auf deine Träume zu!',
         nav_learn: 'Lernen', nav_tools: 'Werkzeuge', menu_title: 'Menü', menu_bgm: 'Hintergrundmusik', more_site: 'Website', more_community: 'Austausch', more_theme: 'Dunkelmodus', nav_grammar_desc: 'Strukturen erklärt, mit Übungen', nav_reading_desc: 'Texte nach Niveau mit Fragen', nav_listening_desc: 'Hörverstehen wie in der Prüfung', nav_dict_desc: 'Übersetzungen, Beispiele, Aussprache', nav_alphabet_desc: 'Mit Buchstaben und Lauten anfangen', nav_notes_desc: 'Notizen zum Wiederholen', learn_prog_grammar: '{n} gelernt', learn_prog_reading: '{n} gelesen', learn_prog_listening: '{n} geschafft', learn_prog_new: 'Noch nicht begonnen', tour_in_learn: '(unter „Lernen“)', tour_in_tools: '(unter „Werkzeuge“)', tour_in_menu: '(im ☰-Menü oben rechts)',
         nav_quiz: 'Vokabel-Quiz', nav_about: 'Wer hinter der Seite steht',

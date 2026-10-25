@@ -1,4 +1,6 @@
 I18N.es = {
+        doc_title: "El Pequeño Mundo de Hanabi | Japonés, coreano, chino y más, gratis: vocabulario, gramática, lectura y comprensión auditiva",
+        lesson_romaji: "Romanización", lesson_alpha_tip_ja: "¿Aún no lees kana? Empieza por los sonidos:", lesson_alpha_tip_ko: "¿Aún no lees hangul? Empieza por los sonidos:",
         title: "El Pequeño Mundo de Hanabi", subtitle: '¡Sigue aprendiendo y camina hacia tus sueños!',
         nav_learn: 'Aprender', nav_tools: 'Herramientas', menu_title: 'Menú', menu_bgm: 'Música de fondo', more_site: 'Sitio', more_community: 'Comunidad', more_theme: 'Modo oscuro', nav_grammar_desc: 'Estructuras explicadas, con práctica', nav_reading_desc: 'Textos por nivel y preguntas', nav_listening_desc: 'Comprensión auditiva tipo examen', nav_dict_desc: 'Traducciones, ejemplos, pronunciación', nav_alphabet_desc: 'Empieza por las letras y los sonidos', nav_notes_desc: 'Notas para repasar', learn_prog_grammar: '{n} aprendidas', learn_prog_reading: '{n} leídos', learn_prog_listening: '{n} hechas', learn_prog_new: 'Sin empezar', tour_in_learn: '(en «Aprender»)', tour_in_tools: '(en «Herramientas»)', tour_in_menu: '(en el menú ☰, arriba a la derecha)',
         nav_quiz: 'Quiz Vocabulario', nav_about: 'Quién creó el sitio',
