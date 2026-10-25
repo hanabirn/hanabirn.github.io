@@ -8,7 +8,7 @@ data/vocab/clash.json ({set id: [[word, word], …]}), which js/quiz.js loads (l
 Answers are cached per set and content in the git-ignored tools/.vocab-cache/clash/, so a re-run
 only asks about sets that changed.
 
-  python tools/build_clash.py [--max-size 200] [--only tp_ja_] [--limit N] [--dry-run]
+  python tools/build_clash.py [--max-size N] [--only tp_ja_] [--limit N] [--dry-run]
 """
 import argparse, glob, hashlib, json, os, sys, threading, urllib.request
 from concurrent.futures import ThreadPoolExecutor
@@ -57,7 +57,7 @@ def ask(entries):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--max-size', type=int, default=200, help='only sets of at most this many words')
+    ap.add_argument('--max-size', type=int, default=100000, help='only sets of at most this many words (clash.json is written from the sets asked)')
     ap.add_argument('--only', help='set ids starting with this')
     ap.add_argument('--limit', type=int, help='at most N sets (a test batch)')
     ap.add_argument('--workers', type=int, default=6)
