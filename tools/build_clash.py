@@ -21,6 +21,7 @@ from content_i18n import gemini_key   # noqa: E402
 OUT = ROOT / 'data' / 'vocab' / 'clash.json'
 MODEL = 'gemini-3.8-flash'
 THINK = 'low'
+CHUNK = 500
 CACHE = ROOT / 'tools' / '.vocab-cache' / 'clash' / f'{MODEL}-{THINK}'     # one folder per model
 PRICE = (0.30 / 1e6, 2.50 / 1e6)     # US$ per input / output token, estimate
 USAGE = {'in': 0, 'out': 0}
@@ -87,13 +88,17 @@ def main():
         return
 
     def run(job):
+        # a long graded list goes in parts of CHUNK words (one request of 6,000 misses most pairs)
         sid, entries, h = job
+        found = []
         try:
-            pairs = ask(entries)
+            for start in range(0, len(entries), CHUNK):
+                part = entries[start:start + CHUNK]
+                found += [[part[a][0], part[b][0]] for a, b in ask(part)]
         except Exception as e:
             print(f'  {sid}: {e}', flush=True)
             return
-        (CACHE / f'{sid}.{h}.json').write_text(json.dumps([[entries[a][0], entries[b][0]] for a, b in pairs], ensure_ascii=False), encoding='utf-8')
+        (CACHE / f'{sid}.{h}.json').write_text(json.dumps(found, ensure_ascii=False), encoding='utf-8')
 
     with ThreadPoolExecutor(args.workers) as pool:
         list(pool.map(run, todo))
