@@ -304,5 +304,21 @@
     .home-week i { width: 21px; height: 21px; flex: none; font-size: 0.62rem; }
 }
 
+/* computers: 1180px wide (css/base.css) in two columns so the page fits one 1080p screen —
+   the greeting across the top, 今天 on the left, the rest on the right (big check 2026-10-24) */
+@media (min-width: 1024px) {
+    #page-home {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        column-gap: 22px;
+        align-items: start;
+        align-content: start;
+    }
+    #page-home > * { grid-column: 2; }
+    #page-home > .home-hero { grid-column: 1 / -1; }
+    #page-home > .home-today { grid-column: 1; grid-row: 2 / span 6; }
+    .home-section-title:first-of-type { margin-top: 0; }
+}
+
 @media (prefers-reduced-motion: reduce) {
 }

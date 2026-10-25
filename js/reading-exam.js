@@ -292,6 +292,11 @@ function readingExamHtml(set) {
         return `<span class="ls-dot ${state}"></span>`;
     }).join('');
     const unanswered = z.picks.filter(p => p === -1).length;
+    // computers: 上一題 / 下一題, a mock's name and 交卷 sit in the top row (.rd-top-nav,
+    // .rdx-submit-top, .rdx-mock-top), so a question fits one 1080p screen (big check 2026-10-24)
+    const prev = `<button type="button" class="btn back-btn" onclick="readingExamMove(-1)"${firstQ === 0 ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>`;
+    const submitRow = cls => z.mock && !z.reviewing && !atEnd ? `<p class="rdx-submit-row ${cls}"><button type="button" class="btn back-btn" onclick="readingExamSubmit()">${escHtml(t('reading_submit'))}</button>
+            <span class="rd-meta">${escHtml(t('reading_answered', { n: z.qs.length - unanswered, m: z.qs.length }))}</span></p>` : '';
     const next = z.reviewing
         ? (atEnd ? `<button type="button" class="btn next-btn" onclick="readingGo('examresult')">${escHtml(t('listening_back_result'))}</button>`
                  : `<button type="button" class="btn next-btn" onclick="readingExamMove(1)">${escHtml(t('grammar_next_q'))}</button>`)
@@ -303,10 +308,12 @@ function readingExamHtml(set) {
     return `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="${z.reviewing ? "readingGo('examresult')" : 'readingExamQuit()'}">${escHtml(t(z.reviewing ? 'listening_back_result' : 'listening_back_list'))}</button>
             <span class="ls-dots" aria-hidden="true">${dots}</span>
+            ${z.mock ? `<span class="ls-mock-tag rdx-mock-top">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</span>` : ''}
             ${z.mock && !z.reviewing ? `<span class="rdx-clock" id="rdx-clock">${escHtml(t('reading_time_left', { t: readingClock(readingExamLeft()) }))}</span>`
                 : `<span class="grammar-count">${escHtml(t('grammar_q_n', { n: firstQ + 1, m: z.qs.length }))}</span>`}
+            <span class="rd-top-nav rdx-top-nav">${submitRow('rdx-submit-top').replace(/^<p|p>$/g, m => m === '<p' ? '<span' : 'span>')}${prev}${next}</span>
         </div>
-        ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
+        ${z.mock ? `<div class="ls-mock-tag rdx-mock-row">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
         <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (readingExUpper() ? '次の文章を読んで、質問に答えなさい。' : READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
@@ -320,12 +327,11 @@ function readingExamHtml(set) {
             </div>
             <div class="rdx-col-q">${tools}${subTabs}${qHtml}</div>
         </div>
-        <div class="grammar-nav">
-            <button type="button" class="btn back-btn" onclick="readingExamMove(-1)"${firstQ === 0 ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
+        <div class="grammar-nav rd-bottom-nav">
+            ${prev}
             ${next}
         </div>
-        ${z.mock && !z.reviewing && !atEnd ? `<p class="rdx-submit-row"><button type="button" class="btn back-btn" onclick="readingExamSubmit()">${escHtml(t('reading_submit'))}</button>
-            <span class="rd-meta">${escHtml(t('reading_answered', { n: z.qs.length - unanswered, m: z.qs.length }))}</span></p>` : ''}`;
+        ${submitRow('rdx-submit-bottom')}`;
 }
 
 function readingExamPick(i, k) {

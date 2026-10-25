@@ -907,11 +907,12 @@ function topicLadderHtml(fileLang, topic) {
     const total = steps.reduce((s, st) => s + st.levels, 0);
     const done = steps.reduce((s, st) => s + st.done, 0);
     const words = steps.reduce((s, st) => s + st.words, 0);
-    return `<button type="button" class="back-btn topic-back" onclick="openTopic('')">${escHtml(t('topic_back'))}</button>
+    // a long ladder (more than 8 steps) is drawn smaller on computers, 4 a row (.many, css/quiz.css)
+    return `<div class="topic-top"><button type="button" class="back-btn topic-back" onclick="openTopic('')">${escHtml(t('topic_back'))}</button>
         <div class="topic-head"><span class="topic-head-emoji" aria-hidden="true">${TOPIC_EMOJI[topic]}</span>
             <div><h3>${escHtml(wordSetName('tp_' + fileLang + '_' + topic))}</h3>
-            <p>${escHtml(t('topic_ladder_sub', { w: words, n: done, m: total }))}</p></div></div>
-        <div class="words-levels topic-ladder">${steps.map(st => {
+            <p>${escHtml(t('topic_ladder_sub', { w: words, n: done, m: total }))}</p></div></div></div>
+        <div class="words-levels topic-ladder${steps.length > 8 ? ' many' : ''}">${steps.map(st => {
             const finished = st.done >= st.levels;
             const isNext = st === next;
             const badge = st.level ? st.level.replace(/ [①-⑩]$/, '') : t('topic_base_short');

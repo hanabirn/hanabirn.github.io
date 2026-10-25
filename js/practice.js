@@ -139,9 +139,10 @@ function renderPracticeHub() {
    (flag, name, open mistakes), then that language's levels (JLPT N5 …; the topic sets
    together as 主題單字, the notepad's cards as 筆記) — a sort switch, and the words in
    two columns on computers, MB_PAGE a page (MB_PAGE_PHONE on phones) with 上一頁 / 下一頁. The card is 1180px
-   wide on computers like the reading page (css/base.css). */
+   wide on computers like the reading page (css/base.css), with the summary and the filter in a side column
+   (.mb-side) so a full page (14 words) fits one 1080p screen (big check 2026-10-24). */
 
-const MB_PAGE = 20;
+const MB_PAGE = 14;
 const MB_PAGE_PHONE = 6;  // phones show one column, so fewer a page (owner's pick 2026-10-22)
 const mbPhone = window.matchMedia('(max-width: 768px)');
 function mbPageSize() { return mbPhone.matches ? MB_PAGE_PHONE : MB_PAGE; }
@@ -300,7 +301,7 @@ function renderMistakeBook() {
     const pct = total ? Math.round(fixedAll.length / total * 100) : 0;
     const repairN = Math.min(MISTAKE_REPAIR_SIZE, open.length);
     const fixedWeek = fixedAll.filter(m => m.fixedAt > now - 7 * DAY_MS).length;
-    let html = head + `
+    let html = head + `<div class="mb-layout"><div class="mb-side">
         <div class="mb-top">
             <div class="mb-summary">
                 <div class="pc-ring" style="--p:${pct}"><div><b>${fixedAll.length}</b><small>/ ${total}</small></div></div>
@@ -324,7 +325,11 @@ function renderMistakeBook() {
             const n = g === 'all' ? openIn(mbLang) : openAll.filter(m => (mbLangOf(m.lang) || 'other') === mbLang && mbGroupOf(m.lang) === g).length;
             return `<button type="button" class="pc-chip${mbGroup === g ? ' on' : ''}" onclick="mbSetGroup('${g}')" aria-pressed="${mbGroup === g}">${escHtml(label)} ${n}</button>`;
         }).join('')}</div>` : ''}
-    </div>`;
+    </div>
+    <div class="mb-foot">
+        <span></span>
+        <button type="button" class="mb-clear" onclick="mbClearFilter()">${escHtml(t(mbLang === 'all' ? 'mistake_clear_all' : 'mistake_clear_set'))}</button>
+    </div></div><div class="mb-main">`;
 
     let rows;
     if (mbSort === 'fixed') rows = fixed.slice().sort((a, b) => b.fixedAt - a.fixedAt);
@@ -360,11 +365,7 @@ function renderMistakeBook() {
         </div>`;
     }
 
-    html += `<div class="mb-foot">
-        <span></span>
-        <button type="button" class="mb-clear" onclick="mbClearFilter()">${escHtml(t(mbLang === 'all' ? 'mistake_clear_all' : 'mistake_clear_set'))}</button>
-    </div>`;
-    box.innerHTML = html;
+    box.innerHTML = html + '</div></div>';
 }
 
 /* A repair round: the most-missed open mistakes (of the chosen word set), asked on the

@@ -89,13 +89,14 @@ main {
 }
 
 /* ===== Wide pages on desktop =====
-   switchPage() puts the open page on body[data-page]. The alphabet chart,
+   switchPage() puts the open page on body[data-page]. Home (two columns, css/home.css), the alphabet chart,
    the dictionary, the notepad (a side list beside the cards), the quiz path, a grammar point (two columns, body.grammar-wide) and
    a reading passage and the reading / listening lists (body.reading-wide, body.listening-wide)
    use a wider column on big screens; on the quiz page everything except the 單字 page
    itself (#lang-card: word sets left, 練習中心 right, 2026-10-23), the path and the
    mistake book keeps the usual width. */
 @media (min-width: 1024px) {
+    body[data-page="home"] main,
     body[data-page="alphabet"] main,
     body[data-page="dict"] main,
     body[data-page="notes"] main,

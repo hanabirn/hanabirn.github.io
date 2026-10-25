@@ -167,10 +167,10 @@
     .pc-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
     .pc-col > :first-child { margin-top: 0; }
     .pc-col + .pc-col { padding-left: 28px; border-left: 1px dashed var(--line); align-self: stretch; }
-    .fc-cols { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr;
+    .fc-cols { display: grid; grid-template-columns: 340px minmax(0, 1fr); grid-template-rows: auto 1fr;
         grid-template-areas: "opts decks" "lists decks"; gap: 0 28px; align-items: start; }
     .fc-cols-opts { grid-area: opts; }
-    .fc-cols-decks { padding-left: 28px; border-left: 1px dashed var(--line); align-self: stretch; align-content: start; grid-area: decks; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .fc-cols-decks { padding-left: 28px; border-left: 1px dashed var(--line); align-self: stretch; align-content: start; grid-area: decks; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
     .fc-cols-decks .fc-deck { margin: 0; }
     .fc-cols-lists { grid-area: lists; }
 }
@@ -260,12 +260,25 @@
 .mb-set { display: inline-block; margin-top: 2px; font-size: 0.72rem; color: var(--text-muted); }
 .mb-cols { display: grid; gap: 10px; }
 .mb-cols .mb-notebook { margin: 0; }
+/* phones and tablets: one column, 清空 at the very bottom (computers: .mb-side, below) */
+.mb-layout { display: flex; flex-direction: column; }
+.mb-side { display: contents; }
+.mb-layout .mb-foot { order: 2; }
 .mb-pager { margin-top: 14px; }
 .mb-see-fixed { width: auto; margin: 10px auto 0; padding: 8px 18px; }
 /* computers: summary and the repair button side by side, the words in two columns */
 @media (min-width: 1024px) {
-    .mb-top { grid-template-columns: minmax(0, 1fr) 360px; align-items: center; }
     .mb-cols:not(.one) { grid-template-columns: 1fr 1fr; align-items: start; }
+    /* the summary, repair button and filter in a side column, the words beside it; a word's
+       meaning and its word set share one line — so 14 words fit one 1080p screen */
+    .mb-layout { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 0 24px; align-items: start; }
+    .mb-side { display: block; padding-right: 24px; border-right: 1px dashed var(--line); align-self: stretch; }
+    .mb-side .mb-filter { margin-top: 14px; }
+    .mb-side .mb-langs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .mb-main > .mb-toolbar { margin-top: 0; }
+    .mb-main .mb-line { display: inline; }
+    .mb-main .mb-set { margin: 0 0 0 8px; }
+    .mb-main .mb-row { min-height: 54px; padding: 4px 4px 4px 0; }
 }
 .mb-notebook {
     list-style: none;
@@ -691,6 +704,19 @@ button.rs-hook { cursor: pointer; }
 button.rs-hook:hover { background: var(--primary-soft); }
 .rs-actions .next-btn, .rs-actions .back-btn, .rs-actions .share-btn { flex: 1 1 40%; }
 #result-card .lesson-result { margin: 8px 0; }
+/* computers: 小花火 beside the title and the buttons in one row when they fit, so a result
+   (with a lesson's pass / fail line) fits one 1080p screen (big check 2026-10-24) */
+@media (min-width: 1024px) {
+    .rs-hero { display: flex; align-items: center; justify-content: center; gap: 16px; padding-top: 0; }
+    .rs-mascot { width: 54px; margin: 0; }
+    .rs-title { margin: 0 !important; }
+    .rs-actions .next-btn, .rs-actions .back-btn, .rs-actions .share-btn { flex: 1 1 auto; }
+    /* today's goal and the reason to come back side by side */
+    #result-summary { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: 12px; }
+    #result-summary > * { grid-column: 1 / -1; }
+    #result-summary > .rs-goal:not(:last-child) { grid-column: 1; }
+    #result-summary > .rs-goal + .rs-hook { grid-column: 2; width: auto; }
+}
 
 @media (prefers-reduced-motion: reduce) {
     .ls-play::after, .rs-confetti i { animation: none; }

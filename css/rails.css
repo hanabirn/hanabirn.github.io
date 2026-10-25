@@ -47,6 +47,7 @@
 
 /* the pages that are 1180px wide on desktop */
 @media (min-width: 1280px) and (max-width: 1699.98px) {
+    body[data-page="home"] .rail-left,
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
     body[data-page="notes"] .rail-left,
@@ -56,8 +57,11 @@
     body[data-page="grammar"].grammar-wide .rail-left,
     body[data-page="reading"].reading-wide .rail-left,
     body[data-page="listening"].listening-wide .rail-left { display: none; }
+    /* home is 1180px too: with no 小花火 beside it, the greeting keeps its small one */
+    body[data-page="home"] .home-mascot { display: block; }
 }
 @media (min-width: 1700px) {
+    body[data-page="home"] .rail-left,
     body[data-page="alphabet"] .rail-left,
     body[data-page="dict"] .rail-left,
     body[data-page="notes"] .rail-left,
@@ -69,6 +73,7 @@
     body[data-page="listening"].listening-wide .rail-left { left: calc(50% - 590px - 28px - var(--rail-left-w)); }
 }
 @media (min-width: 1480px) and (max-width: 1939.98px) {
+    body[data-page="home"] .rail-right,
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
     body[data-page="notes"] .rail-right,
@@ -80,6 +85,7 @@
     body[data-page="listening"].listening-wide .rail-right { display: none; }
 }
 @media (min-width: 1940px) {
+    body[data-page="home"] .rail-right,
     body[data-page="alphabet"] .rail-right,
     body[data-page="dict"] .rail-right,
     body[data-page="notes"] .rail-right,
