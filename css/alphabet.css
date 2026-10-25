@@ -24,6 +24,25 @@
     box-shadow: 0 3px 0 var(--primary-edge);
 }
 
+/* small tabs: a chart in pages of at most 3 rows (js/alphabet.js alphaPages) */
+.alpha-pages { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 12px; }
+.alpha-pages:empty { display: none; }
+.alpha-page {
+    min-height: 34px;
+    padding: 4px 12px;
+    border: 2px solid var(--line);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--text-secondary);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+.alpha-page:hover { border-color: var(--primary); }
+.alpha-page.on { border-color: var(--ink); background: var(--ink); color: var(--paper); }
+@media (pointer: coarse) { .alpha-page { min-height: 44px; } }
+
 .alpha-sec-title {
     margin: 22px 2px 10px;
     font-size: 1rem;
@@ -156,15 +175,24 @@
 }
 
 @media (min-width: 1024px) {
-    .alpha-grid {
-        grid-template-columns: repeat(6, minmax(0, 1fr));
-    }
-    .alpha-grid.alpha-gojuon {
+    /* 5 a row like the 五十音 chart, so a word's reading and meaning fit one line */
+    .alpha-grid, .alpha-grid.alpha-gojuon {
         grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 10px;
     }
     .alpha-blank {
         display: block;
     }
+    /* a little flatter, so 3 rows and the header fit a 1080p screen: the word's reading
+       and meaning share one line */
+    .alpha-head { padding: 7px 10px 5px 12px; }
+    .alpha-ex { padding: 6px 10px 8px 12px; }
+    .alpha-word-reading, .alpha-meaning { display: inline; }
+    .alpha-word-reading + .alpha-meaning::before { content: " · "; color: var(--text-muted); }
+    /* two sections on one small tab: a slimmer title between them */
+    .alpha-sec-title { margin: 8px 2px 5px; }
+    .alpha-tabs { margin-top: 12px; }
+    .alpha-pages { margin-top: 10px; }
 }
 
 @media (max-width: 480px) {

@@ -8,6 +8,17 @@ const ALPHA_TABS = ['en', 'hira', 'kata', 'ko', 'zh', 'ru', 'fr', 'de', 'es'];
 // forms) and the UI language whose own meaning would just repeat the word
 const ALPHA_LANG = { en: 'en', hira: 'ja', kata: 'ja', ko: 'ko', zh: 'zh-TW', ru: 'ru', fr: 'fr', de: 'de', es: 'es' };
 let alphaTab = 'en';
+let alphaPage = 0;        // the small tab (page) of alphaTab on screen
+
+/* Small tabs (big check 2026-10-24, owner's pick): a chart is cut into pages of at most
+   ALPHA_PAGE_ROWS rows, so each fits one 1080p screen. A row is one 行 of the 五十音 chart
+   or ALPHA_ROW cards elsewhere (both 5 columns on computers). Whole sections share a
+   page when they fit; a longer one is cut by rows and its last part may share with the next. */
+const ALPHA_PAGE_ROWS = 3;
+const ALPHA_ROW = 5;
+const ALPHA_GOJUON_SECS = ['alpha_sec_seion', 'alpha_sec_dakuon', 'alpha_sec_handakuon'];
+// first kana of each 行 (hiragana and katakana)
+const ALPHA_ROW_HEADS = new Set([...'あかさたなはまやらわんがざだばぱアカサタナハマヤラワンガザダバパ']);
 
 // empty cells after these kana keep the chart's columns: や _ ゆ _ よ, わ _ _ _ を
 const ALPHA_BLANK = '<div class="alpha-blank" aria-hidden="true"></div>';
@@ -77,6 +88,50 @@ function alphaCardHtml(item) {
     </div>`;
 }
 
+function alphaRows(sec) {
+    const rows = [];
+    if (ALPHA_GOJUON_SECS.includes(sec.title)) {
+        sec.items.forEach(item => {
+            if (!rows.length || ALPHA_ROW_HEADS.has(item[0])) rows.push([]);
+            rows[rows.length - 1].push(item);
+        });
+    } else {
+        for (let i = 0; i < sec.items.length; i += ALPHA_ROW) rows.push(sec.items.slice(i, i + ALPHA_ROW));
+    }
+    return rows;
+}
+
+/* [{ parts: [{ title, rows, whole }] }] for a tab */
+function alphaPages(tab) {
+    const pages = [];
+    let cur = [];
+    const used = () => cur.reduce((n, p) => n + p.rows.length, 0);
+    const flush = () => { if (cur.length) pages.push({ parts: cur }); cur = []; };
+    ALPHABETS[tab].sections.forEach(sec => {
+        const rows = alphaRows(sec);
+        if (rows.length <= ALPHA_PAGE_ROWS - used()) { cur.push({ title: sec.title, rows, whole: true }); return; }
+        flush();
+        if (rows.length <= ALPHA_PAGE_ROWS) { cur.push({ title: sec.title, rows, whole: true }); return; }
+        for (let i = 0; i < rows.length; i += ALPHA_PAGE_ROWS) {
+            cur.push({ title: sec.title, rows: rows.slice(i, i + ALPHA_PAGE_ROWS), whole: false });
+            if (i + ALPHA_PAGE_ROWS < rows.length) flush();
+        }
+    });
+    flush();
+    return pages;
+}
+
+/* a page's name: its sections, and the first–last letter of a section cut in parts (A–M, 清音 あ–そ) */
+function alphaPageName(page) {
+    return page.parts.map(p => {
+        const name = p.title ? t(p.title) : '';
+        if (p.whole) return name;
+        const items = p.rows.flat();
+        const glyph = it => it[0].split(' ')[0];
+        return (name ? name + ' ' : '') + glyph(items[0]) + '–' + glyph(items[items.length - 1]);
+    }).join('・');
+}
+
 /* Only the tabs of the header's learning language (js/learnlang.js): hiragana and
    katakana for Japanese, one tab for the others; every tab before a language is chosen. */
 function alphaTabsShown() {
@@ -102,21 +157,34 @@ function renderAlphabet() {
     tabs.innerHTML = shown.map(id =>
         `<button type="button" class="mode-btn alpha-tab ${id === alphaTab ? 'mode-btn-active' : ''}" onclick="setAlphaTab('${id}')" ${id === alphaTab ? 'aria-pressed="true"' : 'aria-pressed="false"'}>${escHtml(t('alpha_tab_' + id))}</button>`
     ).join('');
+    const pages = alphaPages(alphaTab);
+    alphaPage = Math.min(alphaPage, pages.length - 1);
+    const pageBox = document.getElementById('alpha-pages');
+    pageBox.innerHTML = pages.length < 2 ? '' : pages.map((pg, i) =>
+        `<button type="button" role="tab" class="alpha-page${i === alphaPage ? ' on' : ''}" aria-selected="${i === alphaPage}" onclick="setAlphaPage(${i})" lang="${ALPHA_LANG[alphaTab]}">${escHtml(alphaPageName(pg))}</button>`).join('');
     body.setAttribute('lang', ALPHA_LANG[alphaTab]);
     audioWarm(ALPHABETS[alphaTab].tts);
-    body.innerHTML = ALPHABETS[alphaTab].sections.map(sec => {
-        // the basic kana as a 5-column 五十音 chart on desktop (CSS shows the gaps)
-        const gojuon = sec.title === 'alpha_sec_seion';
-        const cards = sec.items.map(item => alphaCardHtml(item) +
+    const parts = pages[alphaPage].parts;
+    body.innerHTML = parts.map(p => {
+        // kana as a 5-column 五十音 chart on desktop (CSS shows the gaps)
+        const gojuon = ALPHA_GOJUON_SECS.includes(p.title);
+        const cards = p.rows.flat().map(item => alphaCardHtml(item) +
             (gojuon ? ALPHA_GOJUON_GAPS[item[0]] || '' : '')).join('');
-        return (sec.title ? `<h4 class="alpha-sec-title">${escHtml(t(sec.title))}</h4>` : '') +
+        // a section's title only when two share the page (the small tab names a lone one)
+        return (parts.length > 1 && p.title ? `<h4 class="alpha-sec-title">${escHtml(t(p.title))}</h4>` : '') +
             `<div class="alpha-grid${gojuon ? ' alpha-gojuon' : ''}">${cards}</div>`;
     }).join('');
+}
+
+function setAlphaPage(i) {
+    alphaPage = i;
+    renderAlphabet();
 }
 
 function setAlphaTab(id) {
     if (!ALPHA_TABS.includes(id)) return;
     alphaTab = id;
+    alphaPage = 0;
     alphaStore(id);
     renderAlphabet();
 }
