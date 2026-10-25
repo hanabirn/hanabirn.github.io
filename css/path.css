@@ -131,9 +131,19 @@ html[data-theme="dark"] .path-unit {
     .path-stage > .path-unit-head::before {
         content: none;
     }
+    /* a unit's levels in rows of five instead of one long zigzag column, and a level's words
+       in two columns, so both fit one 1080p screen (big check, 2026-10-24) */
     .path-stage .path-nodes {
-        padding-top: 18px;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        justify-items: center;
+        row-gap: 30px;
+        padding-top: 22px;
     }
+    .path-stage .path-node-wrap { transform: none; }
+    .lesson-card .lesson-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 14px; }
+    /* the unit list scrolls in its own box, ending above the buttons under the path */
+    .path-wide .path-unit-list { max-height: max(260px, calc(100vh - 470px)); }
     .path-unit-list {
         display: flex;
         flex-direction: column;
