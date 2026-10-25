@@ -40,7 +40,7 @@
     "ratelimits": [
         { "name": "LIMITER", "namespace_id": "1001", "simple": { "limit": 8, "period": 60 } },
         // the dictionary: at most 12 new lookups a minute per visitor
-        { "name": "DICT_LIMITER", "namespace_id": "1002", "simple": { "limit": 12, "period": 60 } },
+        { "name": "DICT_LIMITER", "namespace_id": "1002", "simple": { "limit": 20, "period": 60 } },
         // 好友: at most 30 requests a minute per account
         { "name": "FRIENDS_LIMITER", "namespace_id": "1003", "simple": { "limit": 30, "period": 60 } }
     ],

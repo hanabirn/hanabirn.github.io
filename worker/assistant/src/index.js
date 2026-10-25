@@ -10,7 +10,7 @@
  *   writes it (the site shows it word by word); errors are still JSON.
  *
  * The guestbook (留言板) is served here too: /guestbook, see src/guestbook.js;
- * and the dictionary's translations: /dict, see src/dict.js.
+ * and the dictionary's translations: /dict and /dict/zh, see src/dict.js.
  *
  * Guards: only the site's origins (ALLOWED_ORIGINS), a per-IP burst limit
  * (the LIMITER rate-limit binding), and caps on message count and length.
@@ -19,7 +19,7 @@
  */
 
 import { guestbook } from './guestbook.js';
-import { dict } from './dict.js';
+import { dict, dictZh } from './dict.js';
 import { friends } from './friends.js';
 import { push, runReminders } from './push.js';
 
@@ -127,6 +127,10 @@ export default {
         if (url.pathname === '/dict') {
             if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
             return dict(request, env, json, headers);
+        }
+        if (url.pathname === '/dict/zh') {
+            if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);
+            return dictZh(request, env, json, headers);
         }
         if (url.pathname !== '/chat' || request.method !== 'POST') return json({ error: 'not_found' }, 404, headers);
         if (headers['Access-Control-Allow-Origin'] !== origin) return json({ error: 'forbidden' }, 403, headers);

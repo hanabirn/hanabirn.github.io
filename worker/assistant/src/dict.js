@@ -3,6 +3,10 @@
  *   POST /dict  { word, lang, ui }
  *     -> { word, lang, ui, reading, kind, tr: { <lang>: text }, senses: [{ pos, defs: [{ t, en, ex, ex_tr }] }], note, src }
  *     or { error: 'busy' | 'bad_request' | 'upstream' }
+ *   POST /dict/zh  { to: 'zh' | 'zh-Hans', lines: [text] }
+ *     -> { lines: [text] }   the page's Tatoeba example lines (Chinese ones are often Simplified,
+ *        mainland wording) in Traditional Chinese with Taiwan wording, or Simplified (big check
+ *        2026-10-24); a line Gemini can't do comes back unchanged
  *
  * The word's English definitions come from Wiktionary (CC BY-SA, fetched here); Gemini
  * translates them into the visitor's interface language (`ui`), writes the word in every
@@ -141,6 +145,47 @@ async function ask(env, body) {
         if (r.quota) spentUntil.set(who + '|' + model, Date.now() + 60 * 60 * 1000);
     }
     return null;
+}
+
+/* ----- Tatoeba lines in the interface's Chinese script ----- */
+async function sha1(str) {
+    const buf = await crypto.subtle.digest('SHA-1', new TextEncoder().encode(str));
+    return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+export async function dictZh(request, env, json, headers) {
+    if (request.method !== 'POST') return json({ error: 'not_found' }, 404, headers);
+    let q;
+    try { q = await request.json(); } catch { return json({ error: 'bad_request' }, 400, headers); }
+    const to = q && q.to === 'zh-Hans' ? 'zh-Hans' : 'zh';
+    const lines = (Array.isArray(q && q.lines) ? q.lines : []).slice(0, 12).map(l => String(l || '').slice(0, 300));
+    if (!lines.length) return json({ error: 'bad_request' }, 400, headers);
+    const cacheKey = `zh:${VERSION}:${to}:${await sha1(lines.join('\n'))}`;
+    if (env.DICT) {
+        const hit = await env.DICT.get(cacheKey, 'json');
+        if (hit) return json(hit, 200, headers);
+    }
+    if (env.DICT_LIMITER) {
+        const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+        const { success } = await env.DICT_LIMITER.limit({ key: ip });
+        if (!success) return json({ error: 'busy' }, 429, headers);
+    }
+    const rule = to === 'zh'
+        ? 'Rewrite each line in Traditional Chinese as written in Taiwan: Traditional characters and Taiwan vocabulary (e.g. 吸尘器 → 吸塵器, 软件 → 軟體, 出租车 → 計程車, 土豆 → 馬鈴薯, 视频 → 影片).'
+        : 'Rewrite each line in Simplified Chinese as written in Mainland China: Simplified characters and Mainland vocabulary (e.g. 軟體 → 软件, 計程車 → 出租车, 影片 → 视频).';
+    const body = {
+        contents: [{ role: 'user', parts: [{ text: `${rule} Keep the meaning, the tone and the punctuation (full-width); do not translate, explain or add anything. A line that is already right stays as it is. Lines:\n${JSON.stringify(lines)}` }] }],
+        generationConfig: { responseMimeType: 'application/json', temperature: 0,
+            responseSchema: { type: 'OBJECT', properties: { lines: { type: 'ARRAY', items: { type: 'STRING' } } }, required: ['lines'] } }
+    };
+    const g = await ask(env, body);
+    const got = g && Array.isArray(g.lines) && g.lines.length === lines.length ? g.lines.map(String) : null;
+    if (!got) return json({ lines }, 200, headers);
+    const out = { lines: got };
+    if (env.DICT) {
+        try { await env.DICT.put(cacheKey, JSON.stringify(out), { expirationTtl: DICT_TTL }); } catch {}
+    }
+    return json(out, 200, headers);
 }
 
 export async function dict(request, env, json, headers) {

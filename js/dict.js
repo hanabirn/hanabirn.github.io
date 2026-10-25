@@ -459,13 +459,50 @@ function highlightWord(sentence, word) {
     return safe.replace(re, m => `<mark>${m}</mark>`);
 }
 
+/* Tatoeba's Chinese is mixed, mostly Simplified with mainland wording. Common characters
+   that exist only in one script tell whether a line needs /dict/zh (the Worker rewrites it
+   in Taiwan Traditional or Mainland Simplified, big check 2026-10-24). */
+const DICT_SIMP_ONLY = '们这个说时来对会为学么吗还过没样现发经门东车书长开关见听话语读写电脑买卖钱问间边头欢爱气难点热饭馆鱼鸡鸟马龙国园图场认识让给红绿蓝黄汉岁业从两进远运动员华体师阳阴机杂条桥楼灯烟猫猪实宝当总节乐丢伞尘屉视觉讨厌办桌诉亲爷孙这样谁请谢该虽应试题错练习课词须觉时间钟药医种约饮饺鸭汤盐糖货价单张网络脸钥铅笔湾广';
+const DICT_TRAD_ONLY = '們這個說時來對會為學麼嗎還過沒樣現發經門東車書長開關見聽話語讀寫電腦買賣錢問間邊頭歡愛氣難點熱飯館魚雞鳥馬龍國園圖場認識讓給紅綠藍黃漢歲業從兩進遠運動員華體師陽陰機雜條橋樓燈煙貓豬實寶當總節樂丟傘塵屜視覺討厭辦訴親爺孫誰請謝該雖應試題錯練習課詞須鐘藥醫種約飲餃鴨湯鹽貨價單張網絡臉鑰鉛筆灣廣';
+function dictZhTarget() { return siteLang === 'zh-Hans' ? 'zh-Hans' : siteLang === 'zh' ? 'zh' : ''; }
+function dictZhWrong(line, to) {
+    const other = to === 'zh-Hans' ? DICT_TRAD_ONLY : DICT_SIMP_ONLY;
+    return [...line].some(c => other.includes(c));
+}
+
 function tatoebaTranslation(s, tt) {
+    const all = [];
     for (const group of (s.translations || [])) {
         for (const tr of (Array.isArray(group) ? group : [group])) {
-            if (tr && tr.lang === tt && tr.text) return tr.text;
+            if (tr && tr.lang === tt && tr.text) all.push(tr.text);
         }
     }
-    return '';
+    // Chinese: rather a translation already in the interface's script
+    const to = tt === 'cmn' && dictZhTarget();
+    return (to && all.find(l => !dictZhWrong(l, to))) || all[0] || '';
+}
+
+/* The example lines (data-zh) not yet in the interface's script, rewritten by the Worker;
+   the page shows Tatoeba's text first and swaps each line in when the answer comes. */
+async function dictZhFix(box, signal) {
+    const to = dictZhTarget();
+    if (!to || !box) return;
+    const els = [...box.querySelectorAll('[data-zh]')].filter(el => dictZhWrong(el.textContent, to));
+    if (!els.length) return;
+    try {
+        const res = await fetch(dictApi() + '/zh', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ to, lines: els.map(el => el.textContent) }), signal });
+        if (!res.ok) return;
+        const data = await res.json();
+        if (!data.lines || data.lines.length !== els.length) return;
+        els.forEach((el, i) => {
+            const line = String(data.lines[i] || '');
+            if (!line) return;
+            const speak = el.closest('li') && el.closest('li').querySelector('.dict-ex-speak');
+            if (speak && el.classList.contains('dict-ex-text')) speak.dataset.text = line;
+            el.innerHTML = el.classList.contains('dict-ex-text') ? highlightWord(line, el.dataset.zh) : escHtml(line);
+        });
+    } catch {}
 }
 
 async function dictExamples(word, lang, target, signal) {
@@ -483,13 +520,15 @@ async function dictExamples(word, lang, target, signal) {
         if (!list.length) { dictSetBody('dict-ex', dictStatus('dict_none')); return; }
         dictSetBody('dict-ex', `<ul class="dict-examples">${list.map(s => {
             const tr = tatoebaTranslation(s, target.tt);
+            // data-zh marks a Chinese line dictZhFix may rewrite (on the sentence: the word to mark)
             return `<li>
-                <div class="dict-ex-text">${highlightWord(s.text, word)}</div>
-                ${tr ? `<div class="dict-ex-tr">${escHtml(tr)}</div>` : ''}
+                <div class="dict-ex-text"${lang.tt === 'cmn' ? ` data-zh="${escHtml(word)}"` : ''}>${highlightWord(s.text, word)}</div>
+                ${tr ? `<div class="dict-ex-tr"${target.tt === 'cmn' ? ' data-zh=""' : ''}>${escHtml(tr)}</div>` : ''}
                 <button class="speak-btn dict-ex-speak" onclick="dictSpeak(this.dataset.text, '${lang.id}')" data-text="${escHtml(s.text)}" aria-label="🔊">${uiIcon('speaker')}</button>
             </li>`;
         }).join('')}</ul>
         <a class="dict-more" href="https://tatoeba.org/${lang.tt === 'cmn' ? 'zh-tw' : 'en'}/sentences/search?query=${encodeURIComponent(word)}&from=${lang.tt}" target="_blank" rel="noopener noreferrer">Tatoeba ↗</a>`);
+        dictZhFix(document.getElementById('dict-ex'), signal);
     } catch (err) {
         const key = dictErrorKey(err);
         if (key) dictSetBody('dict-ex', dictStatus(key));
