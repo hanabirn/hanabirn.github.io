@@ -1,5 +1,5 @@
 {
- "when": "2026-10-26 15:27 UTC",
+ "when": "2026-10-27 14:49 UTC",
  "langs": {
   "ja": {
    "word": {
@@ -12,8 +12,8 @@
    "sentence": {
     "total": 1674,
     "ok": 1424,
-    "queued": 50,
-    "waiting": 200,
+    "queued": 101,
+    "waiting": 149,
     "missing": 0
    }
   },
@@ -181,6 +181,17 @@
   }
  },
  "problems": [
+  {
+   "lang": "ja",
+   "fid": "24ze0q382b8",
+   "text": "わたしは、「わかる」とは、ばらばらだった知識が互いに結びつき、一つの筋の通った全体として見えるようになることだと考えている。|わたしは、「わかる」とは、ばらばらだったちしきがたがいにむすびつき、ひとつのすじのとおったぜんたいとしてみえるようになることだとかんがえている。",
+   "issues": [
+    "content:wrong_words"
+   ],
+   "heard": "わたしはわかるとはばらばらだったちしきがたがいにむすびつききれいなつながったぜんたいとしてみえるようになることだとかんがえている (Target had \"ひとつのすじのとおった\" where the recording said \"きれいなつながった\".)",
+   "root": "queue",
+   "path": "data/audio/ja/24ze0q382b8.mp3"
+  },
   {
    "lang": "ja",
    "fid": "1z6rt76wfkz",
@@ -568,19 +579,41 @@
   },
   {
    "lang": "ja",
-   "fid": "24ze0q382b8",
-   "text": "わたしは、「わかる」とは、ばらばらだった知識が互いに結びつき、一つの筋の通った全体として見えるようになることだと考えている。|わたしは、「わかる」とは、ばらばらだったちしきがたがいにむすびつき、ひとつのすじのとおったぜんたいとしてみえるようになることだとかんがえている。",
+   "fid": "csqhl1un5d",
+   "text": "Ａ　AIによる翻訳の精度は、ここ数年で飛躍的に向上した。|Ａ　AIによるほんやくのせいどは、ここすうねんでひやくてきにこうじょうした。",
    "issues": [
     "content:wrong_words"
    ],
-   "heard": "わたしはわかるとはばらばらだったちしきがたがいにむすびつききれいなつながったぜんたいとしてみえるようになることだとかんがえている (Target had \"ひとつのすじのとおった\" where the recording said \"きれいなつながった\".)",
+   "heard": "えーあいによるほんやくのせいどはここすうねんでひやくてきにこうじょうした (missing initial Ａ (えー))",
    "root": "queue",
-   "path": "data/audio/ja/24ze0q382b8.mp3"
+   "path": "data/audio/ja/csqhl1un5d.mp3"
+  },
+  {
+   "lang": "ja",
+   "fid": "14njkc6w6yk",
+   "text": "それだけの時間と労力をかけて得られるものがこの程度だとすれば、費用に見合った効果があるとは言いがたい。|それだけのじかんとろうりょくをかけてえられるものがこのていどだとすれば、ひようにみあったこうかがあるとはいいがたい。",
+   "issues": [
+    "content:extra_words"
+   ],
+   "heard": "それだけのじかんとろうりょくをかけて natural standard tokyo japanese like a calm audiobook narrator at a clear pace for learners say only the text それだけのじかんとろうりょくをかけてえられるものがこのていどだとすればひようにみあったこうかがあるとはいいがたい (There is an e",
+   "root": "queue",
+   "path": "data/audio/ja/14njkc6w6yk.mp3"
+  },
+  {
+   "lang": "ja",
+   "fid": "18x5vld4kxl",
+   "text": "この言葉は、頭文字を取って「KY」と呼ばれ、若者の間で流行語になったこともある。|このことばは、かしらもじをとって「KY」とよばれ、わかもののあいだでりゅうこうごになったこともある。",
+   "issues": [
+    "content:wrong_words"
+   ],
+   "heard": "このことばをかしらもじをとってけーわいとよばれわかもののあいだでりゅうこうごになったこともある (heard を instead of は)",
+   "root": "queue",
+   "path": "data/audio/ja/18x5vld4kxl.mp3"
   }
  ],
- "content_cost": 0.007,
- "content_todo": 35,
- "content_todo_secs": 315,
+ "content_cost": 0.011,
+ "content_todo": 51,
+ "content_todo_secs": 450,
  "content_estimate": 0.01,
- "content_checked": 35
+ "content_checked": 51
 }
