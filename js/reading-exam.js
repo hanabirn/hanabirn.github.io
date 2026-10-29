@@ -45,10 +45,22 @@ const READING_ASK_JA_UPPER = {
     ja_integrated: '次のAとBの文章を読んで、後の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。',
     ja_info: '次のページを見て、下の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。'
 };
-const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA };
-const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。' };
+// HSK (2026-10-30, the Mainland edition): the instructions in Simplified, as the papers word them
+const READING_ASK_ZH = {
+    zh_pic: '看句子，选择对应的图片。',
+    zh_match: '为下面的问题选择合适的回答。',
+    zh_next: '为下面的句子选择合适的下一句。',
+    zh_bank: '选择合适的词语填空。',
+    zh_text: '读句子，回答问题。',
+    zh_passage: '读短文，回答问题。'
+};
+const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA, zh: READING_ASK_ZH };
+const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。', zh: '读短文，回答问题。' };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
+const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];   // HSK letters them
+// HSK items whose questions share a bank (a picture's panels, words, replies): letter buttons only
+const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank'];
 
 function readingExLang() {
     const set = readingSets[readingSetId];
@@ -57,6 +69,24 @@ function readingExLang() {
 function readingExUpper() {
     const set = readingSets[readingSetId];
     return !!set && set.lang === 'ja' && ['N3', 'N2', 'N1'].includes(set.level);
+}
+function readingExMarks() {
+    const lang = readingExLang();
+    return lang === 'zh' ? READING_OPT_LETTERS : lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
+}
+/* the part of the paper an item belongs to: もんだい４ / 第四部分 */
+function readingExMondai(n) {
+    return readingExLang() === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : `もんだい${n}`;
+}
+/* an explanation: a Chinese set's text is Chinese, so readingTx gives its English translation —
+   an HSK explanation follows the site language instead */
+function readingExWhy(set, q) {
+    return set.lang === 'zh' ? gText(q) : readingTx(set, q);
+}
+/* HSK 3 and up hide the pinyin as the papers do (the segments' "known" flag) */
+function readingExHasHidden(item, own) {
+    const any = segs => (segs || []).some(s => s[1] && s[3]);
+    return (item.text_t || []).some(any) || (item.bank_t || []).some(any) || own.some(o => any(o.x.q.q_t));
 }
 function readingAskText(key) {
     const lang = readingExLang();
@@ -229,6 +259,17 @@ function readingExBodyHtml(item) {
                 <span class="rdx-bar-val">${b[1]}${escHtml(c.unit || '')}</span></div>`).join('')}
         </figure>`;
     }
+    if (item.type === 'zh_pic' && item.pic) {
+        // one picture of cols × rows panels, lettered A–F like the paper
+        const p = item.pic;
+        const cells = READING_OPT_LETTERS.slice(0, p.cols * p.rows).map(l => `<span>${l}</span>`).join('');
+        return `<figure class="rdx-pic"><img src="data/reading/img/zh/${escHtml(p.f)}.webp" alt="" loading="lazy">
+            <span class="rdx-pic-grid" style="grid-template-columns:repeat(${p.cols},1fr);grid-template-rows:repeat(${p.rows},1fr)" aria-hidden="true">${cells}</span></figure>`;
+    }
+    if ((item.type === 'zh_bank' || item.type === 'zh_match') && item.bank_t) {
+        return `<ol class="rdx-bank${item.type === 'zh_bank' ? ' rdx-bank-words' : ''}" lang="zh-CN">${item.bank_t.map((b, i) =>
+            `<li><b>${READING_OPT_LETTERS[i]}</b><span>${readingExSegs(b)}</span></li>`).join('')}</ol>`;
+    }
     if (item.type === 'order') {
         return `<ul class="rdx-parts" lang="${lang}">${item.parts.map(p => `<li>${readingExText(p)}</li>`).join('')}</ul>`;
     }
@@ -250,7 +291,8 @@ function readingExamHtml(set) {
     const asks = [...new Set(own.map(o => o.x.q.ask))];
     const answered = own.every(o => z.picks[o.i] !== -1);
     const lang = readingExLang();
-    const marks = lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
+    const marks = readingExMarks();
+    const bankItem = READING_ZH_BANK.includes(item.type);
     // computers (2026-10-24): an item's questions one at a time beside its text, so the screen
     // needs no scrolling; phones keep them all under the text (.rdx-q-off is only hidden ≥1024px)
     const sub = Math.max(0, own.findIndex(o => o.i === z.qi));
@@ -260,17 +302,18 @@ function readingExamHtml(set) {
         const reveal = z.reviewing || (!z.mock && pick !== -1);   // review shows unanswered ones too
         const opts = q.options.map((op, k) => {
             const cls = reveal ? (k === q.answer ? ' correct-choice' : k === pick ? ' wrong-choice' : '') : (k === pick ? ' rdx-picked' : '');
-            return `<button type="button" class="option-btn rdx-opt${cls}" lang="${lang}" onclick="readingExamPick(${o.i}, ${k})"${reveal ? ' disabled' : ''}>
-                <span class="rdx-opt-n">${marks[k]}</span><span class="rdx-opt-t">${readingExField(op, q.options_t && q.options_t[k])}</span></button>`;
+            const text = bankItem ? '' : `<span class="rdx-opt-t">${readingExField(op, q.options_t && q.options_t[k])}</span>`;
+            return `<button type="button" class="option-btn rdx-opt${bankItem ? ' rdx-opt-letter' : ''}${cls}" lang="${lang}" onclick="readingExamPick(${o.i}, ${k})"${reveal ? ' disabled' : ''}>
+                <span class="rdx-opt-n">${marks[k]}</span>${text}</button>`;
         }).join('');
         const short = q.options.every(op => op.length <= (READING_CHAR_LANGS.includes(lang) ? 12 : 22));
         const subNext = own.length > 1 && j < own.length - 1 && (reveal || pick !== -1)
             ? `<p class="rdx-sub-next"><button type="button" class="btn back-btn" onclick="readingExamSub(${own[j + 1].i})">${escHtml(t('rdx_next_sub', { n: own[j + 1].x.n }))}</button></p>` : '';
         return `<div class="rdx-q${j === sub ? '' : ' rdx-q-off'}">
-            ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
-            <div class="rdx-opts${short ? ' rdx-opts-2' : ''}">${opts}</div>
-            ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
-                <div class="ls-why">${escHtml(readingTx(set, q))}</div>` : ''}
+            ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${item.type === 'zh_text' ? '★ ' : ''}${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
+            <div class="rdx-opts${bankItem ? ' rdx-opts-letters' : short && q.options.length === 3 ? ' rdx-opts-3' : short ? ' rdx-opts-2' : ''}">${opts}</div>
+            ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: lang === 'zh' ? marks[q.answer] : q.answer + 1 }))}</p>
+                <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>` : ''}
             ${subNext}
         </div>`;
     }).join('');
@@ -280,7 +323,9 @@ function readingExamHtml(set) {
         return `<button type="button" role="tab" class="rdx-subtab${state}${j === sub ? ' now' : ''}" aria-selected="${j === sub}" onclick="readingExamSub(${o.i})">${o.x.n}</button>`;
     }).join('')}</div>` : '';
     // the furigana switch heads the questions' column (above the columns it pushed the text down)
-    const tools = lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
+    const tools = lang === 'zh' ? (readingExHasHidden(item, own) ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_py_all'))}</button>
+            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level', { lv: set.level }))}</span></p>` : '')
+        : lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
             <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : '';
     const firstQ = own[0].i;
     const lastQ = own[own.length - 1].i;
@@ -313,16 +358,16 @@ function readingExamHtml(set) {
             <span class="rd-top-nav rdx-top-nav">${submitRow('rdx-submit-top').replace(/^<p|p>$/g, m => m === '<p' ? '<span' : 'span>')}${prev}${next}</span>
         </div>
         ${z.mock ? `<div class="ls-mock-tag rdx-mock-row">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</div>` : ''}
-        <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">もんだい${item.mondai}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (readingExUpper() ? '次の文章を読んで、質問に答えなさい。' : READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
+        <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">${readingExMondai(item.mondai)}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (readingExUpper() ? '次の文章を読んで、質問に答えなさい。' : READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
         <div class="rdx-cols${readingExUpper() ? ' rdx-flow' : ''}">
             <div class="rdx-col-text">
                 <div class="rdx-item">
-                    <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${escHtml(t('reading_passage_label'))}</div>
+                    <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${bankItem ? '' : escHtml(t('reading_passage_label'))}</div>
                     ${readingExBodyHtml(item)}
                 </div>
-                ${z.reviewing || (!z.mock && answered) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
+                ${(z.reviewing || (!z.mock && answered)) && readingTx(set, item.tr) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
             </div>
             <div class="rdx-col-q">${tools}${subTabs}${qHtml}</div>
         </div>

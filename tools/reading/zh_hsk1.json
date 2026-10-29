@@ -1,0 +1,60 @@
+{
+  "id": "zh_hsk1",
+  "lang": "zh",
+  "level": "HSK 1",
+  "order": 2,
+  "note": "HSK 1 reading rounds in the 新版HSK (2025-12) format, Mainland edition (Simplified, Mainland wording; owner's plan 2026-10-30): 第一部分 看句子配图 ×5, 第二部分 问答配对 ×5, 第三部分 选词填空 ×5, 第四部分 读句子回答问题 (3 options) ×5. Original texts. Pictures: data/reading/img/zh/<pic.f>.webp.",
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {"type": "zh_pic", "mondai": 1, "ask": "zh_pic", "pic": {"f": "hsk1_r1_1", "cols": 3, "rows": 2},
+         "questions": [
+          {"q": "我很喜欢看书。", "answer": "B", "zh": "「我很喜歡看書」：B 是坐在沙發上看書的女孩。", "en": "\"I really like reading.\" B is the girl reading a book on the sofa."},
+          {"q": "她在打电话。", "answer": "F", "zh": "「她在打電話」＝她正在講電話。F 是在公車站講手機的女生。", "en": "\"She is on the phone.\" F is the woman talking on her phone at the bus stop."},
+          {"q": "我的猫在睡觉。", "answer": "C", "zh": "「我的貓在睡覺」。C 是在椅子底下睡覺的貓。", "en": "\"My cat is sleeping.\" C is the cat asleep under the chair."},
+          {"q": "我想喝水。", "answer": "A", "zh": "「我想喝水」：A 是在喝水的男生。", "en": "\"I want to drink some water.\" A is the young man drinking water."},
+          {"q": "儿子喜欢吃米饭。", "answer": "D", "zh": "「兒子喜歡吃米飯」。D 是拿筷子吃飯的男孩。", "en": "\"My son likes eating rice.\" D is the boy eating rice with chopsticks."}
+        ]},
+        {"type": "zh_match", "mondai": 2, "ask": "zh_match",
+         "bank": ["好的，谢谢！", "不是，我是学生。", "八点。", "在家里。", "不客气。", "我叫王明。"],
+         "questions": [
+          {"q": "你叫什么名字？", "answer": "F", "zh": "問「你叫什麼名字？」，回答名字：「我叫王明。」", "en": "\"What's your name?\" — \"My name is Wang Ming.\""},
+          {"q": "你几点去学校？", "answer": "C", "zh": "問「你幾點去學校？」，回答時間：「八點。」", "en": "\"What time do you go to school?\" — \"Eight o'clock.\""},
+          {"q": "你是老师吗？", "answer": "B", "zh": "問「你是老師嗎？」，回答「不是，我是學生。」", "en": "\"Are you a teacher?\" — \"No, I'm a student.\""},
+          {"q": "谢谢你！", "answer": "E", "zh": "別人說「謝謝你！」，回答「不客氣。」", "en": "\"Thank you!\" — \"You're welcome.\""},
+          {"q": "你妈妈在哪儿？", "answer": "D", "zh": "問「你媽媽在哪兒？」（你媽媽在哪裡），回答地點：「在家裡。」A「好的，謝謝！」是多出來的。", "en": "\"Where is your mother?\" — \"At home.\" A is the spare reply."}
+        ]},
+        {"type": "zh_bank", "mondai": 3, "ask": "zh_bank",
+         "bank": ["岁", "本", "开", "去", "叫", "很"],
+         "questions": [
+          {"q": "我今年十八（　）。", "answer": "A", "zh": "說年紀用「歲」：我今年十八歲。", "en": "Age takes 岁 (years old): I'm eighteen this year."},
+          {"q": "这（　）书是我的。", "answer": "B", "zh": "書的量詞是「本」：這本書是我的。", "en": "本 is the measure word for books: this book is mine."},
+          {"q": "他今天（　）高兴。", "answer": "F", "zh": "形容詞前面加「很」：他今天很高興。", "en": "很 goes before an adjective: he's very happy today."},
+          {"q": "我明天（　）北京。", "answer": "D", "zh": "「去」＋地方：我明天去北京。", "en": "去 + a place: I'm going to Beijing tomorrow."},
+          {"q": "我爸爸会（　）车。", "answer": "C", "zh": "「開車」：我爸爸會開車。「叫」是多出來的。", "en": "开车 is to drive: my dad can drive. 叫 is the spare word."}
+        ]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我家有三个人：爸爸、妈妈和我。",
+         "tr": {"en": "There are three people in my family: dad, mum and me."},
+         "questions": [{"q": "他家有几个人？", "options": ["两个", "三个", "四个"], "answer": 1,
+           "zh": "「我家有三個人」：爸爸、媽媽和我，一共三個人。", "en": "\"There are three people in my family\" — dad, mum and him."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "今天天气很冷，我不想去学校。",
+         "tr": {"en": "It's very cold today; I don't want to go to school."},
+         "questions": [{"q": "今天天气怎么样？", "options": ["很热", "很好", "很冷"], "answer": 2,
+           "zh": "「今天天氣很冷」，所以他不想去學校。", "en": "\"It's very cold today\", so he doesn't want to go to school."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我是中国人，现在在日本工作。",
+         "tr": {"en": "I'm Chinese, and I'm working in Japan now."},
+         "questions": [{"q": "他在哪儿工作？", "options": ["中国", "日本", "美国"], "answer": 1,
+           "zh": "他是中國人，可是「現在在日本工作」。", "en": "He is Chinese, but he \"is working in Japan now\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "现在是下午三点，我们五点去看电影。",
+         "tr": {"en": "It's three in the afternoon now; we're going to see a film at five."},
+         "questions": [{"q": "他们几点去看电影？", "options": ["三点", "四点", "五点"], "answer": 2,
+           "zh": "現在是三點，「我們五點去看電影」。", "en": "It's three now; they \"are going to see a film at five\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "王先生是医生，他的女儿是老师。",
+         "tr": {"en": "Mr Wang is a doctor, and his daughter is a teacher."},
+         "questions": [{"q": "王先生的女儿做什么工作？", "options": ["老师", "医生", "学生"], "answer": 0,
+           "zh": "王先生是醫生，「他的女兒是老師」。", "en": "Mr Wang is the doctor; \"his daughter is a teacher\"."}]}
+      ]
+    }
+  ]
+}

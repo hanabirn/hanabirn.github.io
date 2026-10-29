@@ -263,8 +263,27 @@
 .rdx-opt.rdx-picked { border-color: var(--primary); background: var(--primary-soft); }
 .rdx-submit-row { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 12px; }
 .rdx-submit-row .btn { margin: 0; }
+/* HSK (2026-10-30): pinyin over the characters (ruby) needs taller lines; a picture of lettered
+   panels, a bank of words or replies lettered A–F, and letter-only answer buttons */
+.rdx-text[lang="zh"], .rdx-qhead [lang="zh"], .rdx-opt[lang="zh"], .rdx-bank { line-height: 2.4; }
+.rdx-text[lang="zh"] rt, .rdx-qhead [lang="zh"] rt, .rdx-opt[lang="zh"] rt, .rdx-bank rt { font-family: var(--font-sans, inherit); font-size: 0.5em; }
+.rdx-qhead > span[lang="zh"], .rdx-text[lang="zh"] { font-size: 1.3rem; font-weight: 600; }   /* the sentence to read, pinyin and all */
+/* HSK is printed in Simplified: the TC fonts lack 为 选 适 …, so a Simplified font (only the pieces a page uses load) */
+.rdx-cols [lang="zh"], .rdx-ask [lang="zh"], .rdx-bank { font-family: 'Noto Sans SC', var(--font-sans); }
+.rdx-pic { position: relative; margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.rdx-pic img { display: block; width: 100%; height: auto; }
+.rdx-pic-grid { position: absolute; inset: 0; display: grid; pointer-events: none; }
+.rdx-pic-grid span { align-self: start; justify-self: start; margin: 6px; min-width: 26px; padding: 1px 7px; border: 2px solid var(--ink); border-radius: 6px;
+    background: var(--surface); color: var(--ink); font-weight: 900; text-align: center; }
+.rdx-bank { margin: 0; padding: 12px 16px; list-style: none; border: 1px solid var(--line); border-radius: 12px; background: var(--surface-2); font-size: 1.08rem; }
+.rdx-bank li { display: flex; align-items: baseline; gap: 10px; }
+.rdx-bank b { flex: none; color: var(--primary); }
+.rdx-bank.rdx-bank-words { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 12px; }
+.rdx-opts.rdx-opts-letters, .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
+.rdx-opt.rdx-opt-letter { justify-content: center; font-size: 1.1rem; }
 @media (min-width: 769px) {
     .rdx-opts { grid-template-columns: 1fr 1fr; }
+    .rdx-opts.rdx-opts-letters, .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
 }
 /* computers: the text left, its questions right (the page is 1180px wide, body.reading-wide) */
 @media (min-width: 1024px) {
@@ -274,6 +293,7 @@
     .rdx-col-text { position: sticky; top: 16px; max-height: max(420px, calc(100vh - 560px)); overflow-y: auto; overscroll-behavior: contain; padding-right: 4px; scrollbar-width: thin; }
     .rdx-col-q .rdx-opts { grid-template-columns: 1fr; }
     .rdx-col-q .rdx-opts.rdx-opts-2 { grid-template-columns: 1fr 1fr; }
+    .rdx-col-q .rdx-opts.rdx-opts-letters, .rdx-col-q .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
     .rdx-q-off { display: none; }
     .rdx-col-text .rdx-notice[lang="ja"] { max-width: none; }   /* JLPT information pages: the whole column, so less to scroll */
     .rdx-subtabs { display: flex; gap: 8px; margin-bottom: 12px; }

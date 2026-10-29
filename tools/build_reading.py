@@ -264,7 +264,9 @@ def used(glossary):
 SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purpose', 'about',
             'similar', 'headline', 'feeling', 'attitude', 'subject', 'inference',
             # JLPT (2026-10-24): もんだい４ short texts, ５ mid-size, ６ information retrieval
-            'ja_short', 'ja_mid', 'ja_info', 'ja_long', 'ja_integrated'}
+            'ja_short', 'ja_mid', 'ja_info', 'ja_long', 'ja_integrated',
+            # HSK (2026-10-30): match a picture, a reply, the next sentence; fill a blank; a text
+            'zh_pic', 'zh_match', 'zh_next', 'zh_bank', 'zh_text', 'zh_passage'}
 
 # Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
 # levels below show no furigana until the visitor asks (owner's pick A1). The lists are the JLPT
@@ -349,7 +351,53 @@ def ja_segs(marked, where, problems, known):
 
 def plain_of(marked):
     return ''.join(t for t, _ in tokens(marked))
-SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline'}
+
+
+# ---------- HSK rounds (Mainland edition, 2026-10-30, owner's plan) ----------
+# Written in Simplified with Mainland wording; the pinyin is Mainland (tools/zh_mainland.py) and
+# printed for review like the Taiwan passages'. HSK 1–2 print pinyin over every character and a
+# space between words, as the papers do; from HSK 3 the papers print none, so the pinyin is hidden
+# until the visitor asks (the "known" flag of the Japanese segments). Item types:
+#   zh_pic   — sentences to match with the panels of one picture (pic {f, cols, rows}), A–F
+#   zh_match — sentences to match with the replies / next sentences of a bank, A–F
+#   zh_bank  — sentences with a blank （　） and a bank of words, A–F
+#   zh_text  — a text (one line per \n) and a ★ question with 3 options (4 from HSK 4)
+# In the bank types every question's options are the bank (a picture's are its letters), the
+# answer a letter or index, each letter the answer at most once; a bank has one spare.
+ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text'}
+ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank'}
+LETTERS = 'ABCDEF'
+
+
+def hsk_level(level):
+    m = re.search(r'\d+', level or '')
+    return int(m.group()) if m else 0
+
+
+def zh_segs(text, where, problems, hidden, spaced):
+    """an HSK line (plain Simplified, or {t, p} with hand-written pinyin) -> segments
+    [text, pinyin, None, hidden] and the plain text"""
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import zh_mainland
+    src, given = (text['t'], text.get('p')) if isinstance(text, dict) else (text, None)
+    try:
+        words = zh_mainland.reading(src, given)
+    except ValueError as e:
+        problems.append(f'{where}: {e}')
+        return [[src, None, None, 0]], src
+    if not given:
+        ZH_REVIEW.append(f'{where}: {src}  →  {zh_mainland.pinyin_line(src)}')
+    segs = []
+    for w, s in words:
+        han = s and s[0] is not None
+        if spaced and han and segs and segs[-1][1] is not None:
+            segs.append([' ', None, None, 0])        # the papers' space between words (HSK 1–2)
+        for ch, py in zip(w, s):
+            segs.append([ch, py, None, hidden if py else 0])
+    return segs, src
+
+
+SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline'} | ZH_SET_TYPES
 
 
 def build_sets(data, name, problems):
@@ -366,7 +414,8 @@ def build_sets(data, name, problems):
             if typ not in SET_TYPES:
                 problems.append(f'{iw}: unknown type {typ}')
             need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
-                    'notice': ['notice'], 'chart': ['chart']}.get(typ, [])
+                    'notice': ['notice'], 'chart': ['chart'],
+                    'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text']}.get(typ, [])
             for key in need:
                 if not it.get(key):
                     problems.append(f'{iw}: a {typ} item needs "{key}"')
@@ -374,20 +423,42 @@ def build_sets(data, name, problems):
                 problems.append(f'{iw}: an order item has 4 parts')
             if typ == 'insert' and not all(m in it.get('text', '') for m in '㉠㉡㉢㉣'):
                 problems.append(f'{iw}: an insert text marks ㉠ ㉡ ㉢ ㉣')
+            zh = data.get('lang') == 'zh'
+            if zh and typ not in ZH_SET_TYPES:
+                problems.append(f'{iw}: an HSK item is one of {sorted(ZH_SET_TYPES)}')
+            bank = None
+            if typ in ZH_BANK_TYPES:
+                pic = it.get('pic') or {}
+                bank = list(LETTERS[:pic.get('cols', 0) * pic.get('rows', 0)]) if typ == 'zh_pic' else it.get('bank', [])
+                if len(bank) != len(it.get('questions', [])) + 1:
+                    problems.append(f'{iw}: a bank holds one more than the questions ({len(bank)} for {len(it.get("questions", []))})')
             tr = it.get('tr') or {}
-            for lang in ('zh', 'en'):
+            # a Chinese text is translated into English (the other languages come from
+            # tools/content_i18n.py); the bank types' sentences are explained one by one
+            for lang in () if typ in ZH_BANK_TYPES else ('en',) if zh else ('zh', 'en'):
                 if not tr.get(lang):
                     problems.append(f'{iw}: no {lang} translation (tr)')
-            qs = []
+            qs, used_letters = [], set()
             for qi, q in enumerate(it.get('questions', [])):
                 n += 1
                 qw = f'{iw} Q{qi + 1}'
                 ask = q.get('ask') or it.get('ask')
                 if ask not in SET_ASKS:
                     problems.append(f'{qw}: ask "{ask}" is not one of {sorted(SET_ASKS)}')
+                if bank is not None:
+                    q = dict(q, options=bank)
+                    if isinstance(q.get('answer'), str) and q['answer'] in LETTERS:
+                        q['answer'] = LETTERS.index(q['answer'])
+                    if q.get('answer') in used_letters:
+                        a = q.get('answer')
+                        problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
+                    used_letters.add(q.get('answer'))
+                    if not q.get('q'):
+                        problems.append(f'{qw}: a {typ} question needs its sentence "q"')
                 opts = q.get('options', [])
-                if len(opts) != 4 or not 0 <= q.get('answer', -1) < 4:
-                    problems.append(f'{qw}: needs 4 options and an answer 0-3')
+                want = len(bank) if bank is not None else (3 if hsk_level(data.get('level')) <= 3 else 4) if zh else 4
+                if len(opts) != want or not isinstance(q.get('answer'), int) or not 0 <= q['answer'] < want:
+                    problems.append(f'{qw}: needs {want} options and an answer 0-{want - 1}')
                 if len(set(opts)) != len(opts):
                     problems.append(f'{qw}: two options are the same')
                 for lang in ('zh', 'en'):
@@ -398,9 +469,31 @@ def build_sets(data, name, problems):
             if not qs:
                 problems.append(f'{iw}: no questions')
             item = {'type': typ, 'tr': {'zh': tr.get('zh', ''), 'en': tr.get('en', '')}, 'questions': qs}
-            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title', 'mondai'):
+            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title', 'mondai', 'pic', 'bank'):
                 if key in it:
                     item[key] = it[key]
+            if zh:
+                # segments with pinyin; a picture's options are its bare letters
+                lv = hsk_level(data.get('level', ''))
+                seg = lambda s, w: zh_segs(s, w, problems, 1 if lv >= 3 else 0, lv <= 2)
+                if 'text' in it:
+                    lines = [seg(line, iw) for line in it['text'].split('\n')]
+                    item['text_t'] = [s for s, _ in lines]
+                    item['text'] = '\n'.join(p for _, p in lines)
+                if typ in ('zh_match', 'zh_bank'):
+                    got = [seg(b, iw) for b in it.get('bank', [])]
+                    item['bank_t'] = [s for s, _ in got]
+                    item['bank'] = [p for _, p in got]
+                for q in qs:
+                    if q['q']:
+                        q['q_t'], q['q'] = seg(q['q'], iw)
+                    if typ in ZH_BANK_TYPES:
+                        continue          # the options are the bank (bank_t) or the picture's letters
+                    got = [seg(o, iw) for o in q['options']]
+                    q['options_t'] = [s for s, _ in got]
+                    q['options'] = [p for _, p in got]
+                if not it.get('mondai'):
+                    problems.append(f'{iw}: an HSK item needs "mondai" (its 部分: 1, 2, 3 …)')
             if data.get('lang') == 'ja':
                 # segments for the page (furigana), and the plain text where the source had {readings}
                 known = known_kanji(data.get('level', ''))
