@@ -36,10 +36,17 @@ SILENT_DB = -35                 # the loudest sample below this: nothing was sai
 GAP_SECS = 1.6                  # a quiet stretch this long inside a sentence
 LISTEN_GAP_SECS = 2.5           # 聽解 lines may pause longer
 CLIP_SHARE = 0.003              # share of samples at full scale: clipping
-PRICE_IN = 0.30 / 1e6           # US$ per input token (audio), estimate — check the bill
-PRICE_OUT = 1.20 / 1e6
+# US$ per token, paid tier, from ai.google.dev/gemini-api/docs/pricing (2026-10-30; doubled from
+# 2027-01-01 for the 3.8 models): CHECK_MODEL audio in / out, SECOND_MODEL in / out (thinking counts as out)
+PRICE_IN = 0.50 / 1e6
+PRICE_OUT = 1.50 / 1e6
+PRICE2_IN = 0.75 / 1e6
+PRICE2_OUT = 3.75 / 1e6
 AUDIO_TOKENS_PER_SEC = 32
 SECOND_MODEL = 'gemini-3.8-flash'
+# 'low' thinking (2026-10-30, 18 clips whose answer was known): 17 right against 16 at the default
+# level, and a quarter of the cost — the default spent ~500 thinking tokens a clip
+SECOND_THINK = 'low'
 OK_FILE = ROOT / 'tools' / 'audio_check_ok.json'     # "lang|fid": size of a clip confirmed fine
 LANG_NAMES = {'ja': 'Japanese', 'ko': 'Korean', 'zh-CN': 'Mandarin Chinese (Simplified)', 'zh-TW': 'Mandarin Chinese (Taiwan)',
               'fr': 'French', 'ru': 'Russian', 'es': 'Spanish', 'de': 'German', 'en-US': 'English (US)', 'en-GB': 'English (UK)'}
@@ -232,7 +239,7 @@ def judge(batch, lang, key):
     return {}, {}
 
 
-def second_opinion(data, lang, say, key, model=SECOND_MODEL):
+def second_opinion(data, lang, say, key, model=SECOND_MODEL, think=SECOND_THINK):
     """(same, heard, diff, usage): a stronger model writes down the clip (mp3 bytes) and compares its
     sounds with `say` — number words written as digits, homophones and punctuation don't count"""
     base = lang.split('/')[-1]
@@ -243,7 +250,8 @@ def second_opinion(data, lang, say, key, model=SECOND_MODEL):
               'vs words and punctuation do not matter). Is every syllable there, pronounced correctly, with nothing extra, '
               'missing or replaced? Answer JSON {"heard": str, "same": bool, "diff": str}.')
     body = {'contents': [{'parts': [{'text': prompt}, {'inline_data': {'mime_type': 'audio/mp3', 'data': base64.b64encode(data).decode()}}]}],
-            'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0}}
+            'generationConfig': {'responseMimeType': 'application/json', 'temperature': 0,
+                                 **({'thinkingConfig': {'thinkingLevel': think}} if think else {})}}
     url = f'https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={key}'
     for attempt in range(4):
         try:
@@ -346,7 +354,7 @@ def main():
     if args.content and not args.dry_run and todo_content:
         key = ba.gemini_key()
         done = 0
-        usage = {'in': 0, 'out': 0}
+        usage = {'in': 0, 'out': 0, 'in2': 0, 'out2': 0}     # first listen, second opinion
         by_lang = {}
         for t in todo_content[:args.content]:
             by_lang.setdefault(t[0], []).append(t)
@@ -366,8 +374,8 @@ def main():
                     ok = score >= MATCH[item['kind']] or (said_ok and score >= FLOOR[item['kind']])
                     if not ok:                 # a second, stronger listen before it counts
                         same, heard2, diff, um2 = second_opinion(path.read_bytes(), lang, item['say'], key)
-                        usage['in'] += um2.get('promptTokenCount', 0)
-                        usage['out'] += um2.get('candidatesTokenCount', 0) + um2.get('thoughtsTokenCount', 0)
+                        usage['in2'] += um2.get('promptTokenCount', 0)
+                        usage['out2'] += um2.get('candidatesTokenCount', 0) + um2.get('thoughtsTokenCount', 0)
                         if same:
                             ok = True
                         elif heard2:
@@ -383,7 +391,8 @@ def main():
                 state_f.write_text(json.dumps(state, ensure_ascii=False), encoding='utf-8')
                 print(f'  {lang}: {done}/{min(args.content, len(todo_content))}', flush=True)
         report['content_checked'] = done
-        report['content_cost'] = round(usage['in'] * PRICE_IN + usage['out'] * PRICE_OUT, 3)
+        report['content_cost'] = round(usage['in'] * PRICE_IN + usage['out'] * PRICE_OUT
+                                       + usage['in2'] * PRICE2_IN + usage['out2'] * PRICE2_OUT, 3)
     state_f.parent.mkdir(parents=True, exist_ok=True)
     state_f.write_text(json.dumps(state, ensure_ascii=False), encoding='utf-8')
     Path(args.report).parent.mkdir(parents=True, exist_ok=True)

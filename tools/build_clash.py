@@ -23,7 +23,9 @@ MODEL = 'gemini-3.8-flash'
 THINK = 'low'
 CHUNK = 500
 CACHE = ROOT / 'tools' / '.vocab-cache' / 'clash' / f'{MODEL}-{THINK}'     # one folder per model
-PRICE = (0.30 / 1e6, 2.50 / 1e6)     # US$ per input / output token, estimate
+# US$ per input / output token (thinking counts as output), ai.google.dev pricing 2026-10-30 —
+# doubled from 2027-01-01; the old guess (0.30 / 2.50) quoted the 10/25 run far too low
+PRICE = (0.75 / 1e6, 3.75 / 1e6)
 USAGE = {'in': 0, 'out': 0}
 LOCK = threading.Lock()
 
