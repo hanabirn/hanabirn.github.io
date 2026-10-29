@@ -121,6 +121,16 @@ GEMINI_LANG_ORDER = {'zh-CN': ['gemini-3.1-flash-tts-preview', 'gemini-3.8-flash
 GEMINI_JA_READING = ['ja_n5', 'ja_n4', 'ja_n3', 'ja_n2', 'ja_n1']
 GEMINI_SAY = {}        # (lang, file id) -> the text Gemini reads, when it isn't files[fid]
 GEMINI_RANK = {}       # (lang, file id) -> its level's place in GEMINI_JA_READING
+# kanji Gemini reads its own way (錄音檢查 2026-10-29: 間 → あいだ for ま, 明日 → あす, 何に
+# → なんに): a segment of exactly these is given to Gemini in the kana the page shows
+GEMINI_JA_KANA = {'間', '明日', '何'}
+
+
+def gemini_ja_text(sent):
+    """a 閱讀 sentence as Gemini reads it: as written, but GEMINI_JA_KANA kanji in their kana"""
+    if not any(seg[0] in GEMINI_JA_KANA and seg[1] for seg in sent.get('t', [])):
+        return sent['plain']
+    return ''.join(seg[1] if seg[0] in GEMINI_JA_KANA and seg[1] else seg[0] for seg in sent['t'])
 REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 GEMINI_VOICES = {
@@ -270,7 +280,7 @@ def jobs(lang):
                     for sent in para['s']:
                         fid = add(sent['plain'] + '|' + sent['kana'], sent['kana'], 0 if gem else 2)
                         if gem:
-                            GEMINI_SAY[('ja', fid)] = sent['plain']
+                            GEMINI_SAY[('ja', fid)] = gemini_ja_text(sent)
                             GEMINI_RANK[('ja', fid)] = rank
                 for g in p['glossary']:
                     if HAS_KANJI.search(g['w']) and g['r']:
@@ -309,8 +319,10 @@ def jobs(lang):
         if lang in ('fr', 'ru', 'es', 'de'):
             # French / Spanish / German rows carry their article (le chat, el gato, der Hund),
             # Russian the plain word; the CEFR lists, then the 單字 page topics (tp_<lang>_*)
+            # Spanish "el/la joven" (either gender) is said "el o la joven", not "el barra la"
+            # (錄音檢查 2026-10-29)
             for word, *_ in list(vocab(lang + '_')) + list(vocab('tp_' + lang + '_')):
-                add(word, word)
+                add(word, word.replace('el/la ', 'el o la ') if lang == 'es' else word)
             # 文法 page examples (data/grammar/fr_*.json, ru_*.json)
             for f in sorted((ROOT / 'data' / 'grammar').glob(lang + '_*.json')):
                 for point in json.loads(f.read_text(encoding='utf-8'))['points']:
@@ -682,12 +694,15 @@ def spoken_chars(text):
     return max(1, len(re.findall(r'[\u3040-\u30ff\u3400-\u9fff\uf900-\ufaffA-Za-z0-9]', text)))
 
 
-def gemini_length_ok(text, clip):
+def gemini_length_ok(text, clip, kana=''):
     """About 0.25 s a character when it says just the text; much longer means it also
-    read (part of) the instruction, much shorter that it got cut."""
+    read (part of) the instruction, much shorter that it got cut. Japanese read from kanji
+    also gives its kana: about 0.17 s a kana, and past 0.25 it was the instruction read too
+    or the sentence said twice (錄音檢查 2026-10-30; a kanji count let those through)."""
     n = spoken_chars(text)
     secs = len(clip) / GEMINI_SR
-    return 0.12 * n + 0.2 <= secs <= 0.42 * n + 1.2
+    k = spoken_chars(kana) if kana else 0
+    return 0.12 * n + 0.2 <= secs <= 0.42 * n + 1.2 and (k <= 4 or secs <= 0.25 * k + 1.5)
 
 
 def run_gemini(lang, files, aliases, top, limit):
@@ -761,7 +776,7 @@ def run_gemini(lang, files, aliases, top, limit):
                 tries = [text] * 4
             for said in tries:
                 c, model = say(said)
-                if gemini_length_ok(text, c):
+                if gemini_length_ok(text, c, files[fid] if lang == 'ja' else ''):
                     clip = c
                     break
             if clip is None:

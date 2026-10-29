@@ -140,6 +140,13 @@ def health(path, item):
     n = letters(text)
     cjk = bool(re.search(r'[぀-ヿ㐀-鿿가-힯]', text))
     lo, hi = (0.07 * n + 0.1, 0.5 * n + 1.6) if cjk else (0.025 * n + 0.1, 0.2 * n + 1.6)
+    if item['kind'] != 'word' and re.search(r'[぀-ヿ]', text):
+        # a Japanese sentence runs about 0.17 s a kana; past 0.25 it is nearly always the instruction
+        # read aloud or the sentence said twice (2026-10-30: 21 閱讀 clips; of 8 listened to again
+        # 7 were such, 1 just slow), which the
+        # first listen tends to miss — it writes down the text it was told to expect. Chinese
+        # keeps the loose limit: its short sentences pause, and those were fine
+        hi = 0.25 * n + 1.5
     if item['kind'] != 'word' or n > 3:          # a lone letter or short word varies too much
         if secs < lo:
             issues.append('too_short')
