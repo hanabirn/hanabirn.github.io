@@ -52,7 +52,7 @@ OUT = ROOT / 'data' / 'listening'
 AUDIO = ROOT / 'data' / 'audio' / 'listening'
 IMG = ROOT / 'data' / 'listening' / 'img'
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_reading import sentence                 # noqa: E402
+from build_reading import sentence, zh_segs, hsk_level, hsk_pic_prompt, hsk_pic_id   # noqa: E402
 import build_audio as ba                           # noqa: E402
 
 # per language: Google voice for the narrator (N), a woman (F) and a man (M) — picked
@@ -63,6 +63,9 @@ VOICES = {
     # the same three, picked again by ear for Korean (tools/.mockups/ko_listen_voices.py, 2026-10-24)
     'ko': ('ko-KR', {'N': 'ko-KR-Chirp3-HD-Kore', 'F': 'ko-KR-Chirp3-HD-Erinome', 'M': 'ko-KR-Chirp3-HD-Charon',
                      'F2': 'ko-KR-Chirp3-HD-Leda', 'M2': 'ko-KR-Chirp3-HD-Fenrir'}),
+    # HSK, Mainland edition: the same three, picked by ear (tools/.mockups/zh_listen_voices.py, 2026-10-30)
+    'zh': ('cmn-CN', {'N': 'cmn-CN-Chirp3-HD-Kore', 'F': 'cmn-CN-Chirp3-HD-Erinome', 'M': 'cmn-CN-Chirp3-HD-Charon',
+                      'F2': 'cmn-CN-Chirp3-HD-Leda', 'M2': 'cmn-CN-Chirp3-HD-Fenrir'}),
 }
 # TOPIK (Korean) item types, one per instruction group of the paper; every option is printed.
 # TOPIK I: 1–4 answer, 5–6 next, 7–10 place, 11–14 topic, 15–16 pic, 17–21 same, 22–24 main,
@@ -71,7 +74,16 @@ VOICES = {
 KO_TYPES = ('ko_answer', 'ko_next', 'ko_place', 'ko_topic', 'ko_pic', 'ko_same', 'ko_main', 'ko_pair',
             'ko2_pic', 'ko2_next', 'ko2_act', 'ko2_same', 'ko2_main', 'ko2_pair')
 PIC_TYPES = ('task', 'ko_pic', 'ko2_pic')          # options drawn as one 2x2 picture
-TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES
+# HSK (新版HSK, Mainland edition, 2026-10-30): zh_pic3 — hear a word / sentence, pick one of 3 pictures
+# (one row of a 3x2 picture two items share); zh_reply — hear a question, pick the printed reply;
+# zh_match — dialogues matched with the 6 panels A–F of one picture; zh_q — a sentence or dialogue and
+# its spoken question, 3 printed options. Options are printed in Simplified with pinyin (HSK 1–2); the
+# question is said, never printed, so the page shows it only once answered.
+ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q')
+TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES + ZH_TYPES
+ZH_LETTERS = 'ABCDEF'
+HSK_IMG = ROOT / 'data' / 'listening' / 'img' / 'zh'
+CUR = {}          # the level being built: {'level': 'HSK 1'} (Chinese text needs it for the pinyin)
 DEFAULT_TYPES = ['task', 'point', 'utterance', 'response']
 SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4}     # types whose options are read aloud
 SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
@@ -130,6 +142,28 @@ def item_pic(key, it, lang, problems):
 NUMBERS = {'ja': ['いち。', 'に。', 'さん。', 'よん。']}
 
 
+def text_of(s, words, where, problems, lang, short=False):
+    """segments, plain text and the text to speak: Chinese (HSK) is Simplified with Mainland
+    pinyin (tools/zh_mainland.py via build_reading.zh_segs) and spoken as written"""
+    if lang == 'zh':
+        lv = hsk_level(CUR.get('level', ''))
+        segs, plain = zh_segs(s, where, problems, 1 if lv >= 3 else 0, lv <= 2, words)
+        return segs, plain, plain
+    return sentence(s, words, where, problems, lang, short=short)
+
+
+def hsk_pic(spec, row, problems, where):
+    """an HSK picture (cols × rows panels, drawn like the reading ones; build_reading.hsk_pic_prompt):
+    its file id, size, the row whose panels are this item's options (zh_pic3), captions, drawn or not"""
+    n = spec.get('cols', 0) * spec.get('rows', 0)
+    if len(spec.get('panels', [])) != n or len(spec.get('cap', [])) != n:
+        problems.append(f'{where}: a picture of {n} panels needs {n} "panels" and "cap"')
+        return None
+    f = hsk_pic_id(spec)
+    return {'f': f, 'kind': 'cells' if row is not None else 'sheet', 'cols': spec['cols'], 'rows': spec['rows'],
+            **({'row': row} if row is not None else {}), 'cap': spec['cap'], 'drawn': (HSK_IMG / f'{f}.webp').exists()}
+
+
 def spoken(line, where, words, problems, lang, jobs, number=None):
     """A spoken line as output: segments, plain, kana, audio id; queues its audio
     (an option also gets `na` / `nk`, the narrator's clip of its number and that text)."""
@@ -137,7 +171,7 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
     if who not in SPEAKERS:
         problems.append(f'{where}: speaker must be one of {SPEAKERS}, not {who!r}')
         who = 'N'
-    segs, plain, kana = sentence(line['s'], words, where, problems, lang)
+    segs, plain, kana = text_of(line['s'], words, where, problems, lang)
     for k in ('zh', 'en'):
         if not line.get(k):
             problems.append(f'{where}: no {k} translation for {plain}')
@@ -153,9 +187,9 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
     return out
 
 
-def build_question(q, typ, where, words, problems, lang, jobs, multi):
+def build_question(q, typ, where, words, problems, lang, jobs, multi, n_options=None):
     spoken_opts = typ in SPOKEN or bool(q.get('spoken'))
-    want = SPOKEN.get(typ, 4)
+    want = n_options or SPOKEN.get(typ, 4)
     if len(q.get('options', [])) != want:
         problems.append(f'{where}: {typ} needs {want} options, has {len(q.get("options", []))}')
     if not 0 <= q.get('answer', -1) < len(q.get('options', [])):
@@ -168,7 +202,7 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi):
     qline = spoken(q['q'], f'{where} question', words, problems, lang, jobs) if q.get('q') else None
     ask = None
     if q.get('ask'):                       # a printed question (TOPIK), not played
-        segs, plain, _ = sentence(q['ask']['s'], None, f'{where} ask', problems, lang, short=True)
+        segs, plain, _ = text_of(q['ask']['s'], None, f'{where} ask', problems, lang, short=True)
         for k in ('zh', 'en'):
             if not q['ask'].get(k):
                 problems.append(f'{where}: no {k} translation of the printed question')
@@ -178,7 +212,7 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi):
     else:
         options = []
         for i, o in enumerate(q['options']):
-            segs, plain, _ = sentence(o['t'], None, f'{where} option {i + 1}', problems, lang, short=True)
+            segs, plain, _ = text_of(o['t'], None, f'{where} option {i + 1}', problems, lang, short=True)
             options.append({'t': segs, 'plain': plain, 'emoji': o.get('emoji', ''),
                             'zh': o.get('zh', ''), 'en': o.get('en', '')})
     return {'q': qline, **({'ask': ask} if ask else {}), 'spoken': spoken_opts, 'options': options, 'answer': q.get('answer', 0),
@@ -188,6 +222,7 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi):
 def build(src, problems, jobs):
     data = json.loads(src.read_text(encoding='utf-8'))
     lang = data['lang']
+    CUR['level'] = data.get('level', '')
     types = data.get('types', DEFAULT_TYPES)
     # a practice round may hold only part of the level's types (Korean 2급: TOPIK I 15–30 in
     # practice, the whole of TOPIK I 1–30 in the mock exam)
@@ -215,8 +250,32 @@ def build(src, problems, jobs):
             lines = [spoken(l, f'{where} line {i + 1}', words, problems, lang, jobs) for i, l in enumerate(it['lines'])]
             qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
                                           'explain': it.get('explain'), **({'ask': it['ask']} if it.get('ask') else {})}]
+            # HSK: a picture described in the set (set "pics": {name: {cols, rows, panels, cap}}),
+            # the item naming it ("pic": {"name", "row"?}); zh_match options are its letters A–F
+            zpic = None
+            if typ in ('zh_pic3', 'zh_match'):
+                ref = it.get('pic') or {}
+                spec = (set_.get('pics') or {}).get(ref.get('name'))
+                if not spec:
+                    problems.append(f'{where}: {typ} needs "pic": {{"name": …}} of the set\'s "pics"')
+                else:
+                    zpic = hsk_pic(spec, ref.get('row') if typ == 'zh_pic3' else None, problems, where)
+                    if typ == 'zh_pic3' and not (zpic and 0 <= ref.get('row', -1) < spec['rows'] and spec['cols'] == 3):
+                        problems.append(f'{where}: zh_pic3 takes a row of a picture 3 panels wide')
+            n_opts = None
+            if typ == 'zh_match' and zpic:
+                n_opts = zpic['cols'] * zpic['rows']
+                if not it.get('options'):
+                    it = dict(it, options=[{'t': ZH_LETTERS[i]} for i in range(n_opts)])
+            elif typ in ZH_TYPES:
+                n_opts = 3 if hsk_level(data.get('level', '')) <= 3 else 4
+            if typ in ZH_TYPES and isinstance(it.get('answer'), str):
+                it = dict(it, answer=ZH_LETTERS.index(it['answer']))
+            qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
+                                          'explain': it.get('explain'), **({'ask': it['ask']} if it.get('ask') else {}),
+                                          **({'q': it['q']} if it.get('q') else {})}]
             questions = [build_question(q, typ, f'{where} Q{n + 1}' if len(qs) > 1 else where, words, problems,
-                                        lang, jobs, len(qs) > 1) for n, q in enumerate(qs)]
+                                        lang, jobs, len(qs) > 1, n_opts) for n, q in enumerate(qs)]
             mix[typ] += len(questions)
             if typ == 'utterance' and not it.get('scene'):
                 problems.append(f'{where}: an utterance item needs a scene')
@@ -229,7 +288,7 @@ def build(src, problems, jobs):
             for gi, g in enumerate(words):
                 if gi not in hit:
                     problems.append(f'{where}: glossary word {g["w"]} never appears (set "m")')
-            pic = item_pic(f'{data["id"]}/{set_["id"]}/{k}', it, lang, problems)
+            pic = zpic or item_pic(f'{data["id"]}/{set_["id"]}/{k}', it, lang, problems)
             items.append({'type': typ, 'scene': it.get('scene'), 'lines': lines, 'questions': questions,
                           **({'pic': pic} if pic else {}),
                           'read': it.get('read', read_secs if typ == 'point' else 0),

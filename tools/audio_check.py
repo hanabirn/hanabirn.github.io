@@ -48,7 +48,7 @@ SECOND_MODEL = 'gemini-3.8-flash'
 # level, and a quarter of the cost — the default spent ~500 thinking tokens a clip
 SECOND_THINK = 'low'
 OK_FILE = ROOT / 'tools' / 'audio_check_ok.json'     # "lang|fid": size of a clip confirmed fine
-LANG_NAMES = {'ja': 'Japanese', 'ko': 'Korean', 'zh-CN': 'Mandarin Chinese (Simplified)', 'zh-TW': 'Mandarin Chinese (Taiwan)',
+LANG_NAMES = {'ja': 'Japanese', 'ko': 'Korean', 'zh': 'Mandarin Chinese (Mainland)', 'zh-CN': 'Mandarin Chinese (Simplified)', 'zh-TW': 'Mandarin Chinese (Taiwan)',
               'fr': 'French', 'ru': 'Russian', 'es': 'Spanish', 'de': 'German', 'en-US': 'English (US)', 'en-GB': 'English (UK)'}
 
 KEYS = {}                       # file id -> the key text (what the page shows)

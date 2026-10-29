@@ -512,9 +512,32 @@ function listeningPicUrl(lv, it) { return 'data/listening/img/' + lv.lang + '/' 
 // quarter shows (a CSS background crop came out blank on the owner's phone, 2026-10-24)
 const LISTENING_PIC_QUARTERS = ['left:0;top:0', 'left:-100%;top:0', 'left:0;top:-100%', 'left:-100%;top:-100%'];
 
+/* HSK (2026-10-30): options lettered A B C as on the paper; the part named 第一部分 */
+function listeningMark(lv, i) { return lv.lang === 'zh' ? 'ABCDEF'[i] : String(i + 1); }
+function listeningPartName(lv, type) {
+    const n = listeningTypeNo(lv, type);
+    return lv.lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : t('listening_mondai', { n });
+}
+/* an HSK picture of cols × rows panels: the <img> style that shows panel k inside a square box */
+function listeningCellStyle(p, k) {
+    const col = k % p.cols, row = Math.floor(k / p.cols);
+    return `width:${p.cols * 100}%;height:${p.rows * 100}%;left:-${col * 100}%;top:-${row * 100}%`;
+}
+/* zh_match: the whole picture, lettered A–F (or its captions while it isn't drawn yet) */
+function listeningSheetHtml(lv, it) {
+    const p = it.pic;
+    const grid = `grid-template-columns:repeat(${p.cols},1fr);grid-template-rows:repeat(${p.rows},1fr)`;
+    const letters = 'ABCDEF'.slice(0, p.cols * p.rows).split('');
+    if (!p.drawn) return `<div class="rdx-pic rdx-pic-todo ls-sheet-pic" style="${grid}">${letters.map((l, i) => `<span><b>${l}</b>${escHtml(p.cap[i] || '')}</span>`).join('')}</div>`;
+    return `<figure class="rdx-pic ls-sheet-pic"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async">
+        <span class="rdx-pic-grid" style="${grid}" aria-hidden="true">${letters.map(l => `<span>${l}</span>`).join('')}</span></figure>`;
+}
+
 function listeningOptionsHtml(lv, it, q, qn, show) {
     const z = listeningSession;
     const grid = it.pic && it.pic.kind === 'grid' && !q.spoken;
+    const cells = it.pic && it.pic.kind === 'cells';       // HSK: a row of a 3×2 picture
+    const sheet = it.pic && it.pic.kind === 'sheet';       // HSK: letters of the picture shown above
     const picked = z.picks[z.qi][qn];
     const done = picked !== -1;
     return q.options.map((o, i) => {
@@ -524,13 +547,20 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
         else if (!show && i === picked) cls = ' ls-picked';
         // a picture option shows only its quarter of the picture, as on the JLPT paper; its
         // words appear once answered
+        const mark = listeningMark(lv, i);
+        const cell = cells ? it.pic.row * it.pic.cols + i : -1;
         const label = grid
             ? `<span class="ls-n">${i + 1}</span><span class="ls-pic" role="img" aria-label="${i + 1}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${LISTENING_PIC_QUARTERS[i]}"></span>${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
+            : cells
+            ? `<span class="ls-n">${mark}</span>${it.pic.drawn ? `<span class="ls-pic" role="img" aria-label="${mark}"><img src="${listeningPicUrl(lv, it)}" alt="" decoding="async" style="${listeningCellStyle(it.pic, cell)}"></span>`
+                : `<span class="ls-pic ls-pic-todo">${escHtml(it.pic.cap[cell] || '')}</span>`}${show ? `<span class="ls-pic-tx" lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
+            : sheet
+            ? `<span class="ls-n">${mark}</span>`
             : q.spoken
             ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : lv.instr
-            ? `<span class="ls-n">${i + 1}</span><span class="ls-otx"><span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}</span>`
-            : `<span class="ls-n">${i + 1}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
+            ? `<span class="ls-n">${mark}</span><span class="ls-otx"><span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}</span>`
+            : `<span class="ls-n">${mark}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
         // (TOPIK levels: each printed option's translation once answered — practice only; a mock
         // exam has no translations, not even in its review: owner, 2026-10-24)
         return `<button type="button" class="btn option-btn${cls}" onclick="listeningAnswer(${qn}, ${i})"${done && (show || z.mock === false) ? ' disabled' : ''}>${label}</button>`;
@@ -562,12 +592,12 @@ function listeningQuizHtml(lv) {
     const questionsHtml = it.questions.map((q, qn) => {
         const picked = z.picks[z.qi][qn];
         const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
-            : q.q && (show || !q.spoken && !multi) ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
+            : q.q && (show || !q.spoken && !multi && lv.lang !== 'zh') ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
-            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : lv.instr ? ' ls-sent' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
-            ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: q.answer + 1 }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: q.answer + 1 }))}</p>
+            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? ' three ls-zh-opts' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
+            ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: listeningMark(lv, q.answer) }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: listeningMark(lv, q.answer) }))}</p>
                 <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
         </div>`;
     }).join('');
@@ -598,8 +628,9 @@ function listeningQuizHtml(lv) {
         ${lv.instr ? `<div class="ls-kind">${escHtml(listeningRange(lv.sets[z.setNo], z.order[z.qi]))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-instr" lang="${lv.lang}">${escHtml(lv.instr[it.type] || '')}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type))}</div>`
-        : `<div class="ls-kind">${escHtml(t('listening_mondai', { n: listeningTypeNo(lv, it.type) }))}　${escHtml(t('listening_type_' + it.type))}</div>
+        : `<div class="ls-kind">${escHtml(listeningPartName(lv, it.type))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>`}
+        ${it.pic && it.pic.kind === 'sheet' ? listeningSheetHtml(lv, it) : ''}
         ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}">${it.pic && it.pic.kind === 'scene'
                 ? `<img class="ls-scene-img" src="${listeningPicUrl(lv, it)}" alt="" onerror="this.nextElementSibling.hidden = false; this.remove()"><span class="ls-scene-emoji" aria-hidden="true" hidden>${it.scene.emoji || ''}</span>`
                 : `<span class="ls-scene-emoji" aria-hidden="true">${it.scene.emoji || ''}</span>`}${show ? escHtml(gText(it.scene)) : ''}</div>` : ''}
@@ -764,7 +795,7 @@ function listeningResultHtml(lv) {
             <p class="grammar-score">${escHtml(t('grammar_result', { n: right, m: total }))}</p>
             <p class="grammar-verdict ${pass ? 'ok' : 'no'}">${escHtml(t(z.retry ? 'listening_retry_done' : z.mock ? (pass ? 'listening_mock_pass' : 'listening_mock_fail') : pass ? 'listening_pass' : 'listening_fail'))}</p>
             <div class="ls-types-result">${listeningTypes(lv).filter(ty => byType[ty]).map(ty =>
-                `<div class="ls-type-box"><span>${lv.instr ? '' : escHtml(t('listening_mondai', { n: listeningTypeNo(lv, ty) })) + ' '}${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
+                `<div class="ls-type-box"><span>${lv.instr ? '' : escHtml(listeningPartName(lv, ty)) + ' '}${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
             <p class="rd-speed">⏱ ${escHtml(t('listening_time', { t: listeningClockText(z.secs) }))}${z.mock ? '' : `　·　${escHtml(t('listening_avg_plays', { n: plays.toFixed(1) }))}`}</p>
             ${z.mock ? `<p class="rd-help">${escHtml(t('listening_mock_sheet'))}</p>${sheet}` : ''}
             <div class="grammar-result-btns">

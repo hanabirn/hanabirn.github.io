@@ -385,11 +385,11 @@ def hsk_pic_prompt(pic):
     cols, rows = pic['cols'], pic['rows']
     across = {1: ['Middle'], 2: ['Left', 'Right'], 3: ['Left', 'Middle', 'Right']}[cols]
     down = {1: [''], 2: ['Top-', 'Bottom-'], 3: ['Top-', 'Middle-', 'Bottom-']}[rows]
-    where = [(d + a.lower() if d else a) for d in down for a in across]
+    where = [('Center' if d == 'Middle-' and a == 'Middle' else d + a.lower() if d else a) for d in down for a in across]
     grid = (f'A {cols}x{rows} grid of {cols * rows} equal panels' if rows > 1 else f'{cols} equal panels side by side in one row')
     return (grid + ' separated by thin black lines, with a thin black frame around each panel. '
             + ' '.join(f'{w}: {p}.' for w, p in zip(where, pic['panels'])) + ' ' + HSK_PIC_STYLE,
-            {(3, 2): '3:2', (3, 1): '16:9', (2, 2): '1:1', (2, 1): '16:9'}.get((cols, rows), '1:1'))
+            {(3, 3): '1:1', (3, 2): '3:2', (3, 1): '21:9', (2, 2): '1:1', (2, 1): '16:9'}.get((cols, rows), '1:1'))
 
 
 def hsk_pic_id(pic):
@@ -401,9 +401,9 @@ def hsk_level(level):
     return int(m.group()) if m else 0
 
 
-def zh_segs(text, where, problems, hidden, spaced):
+def zh_segs(text, where, problems, hidden, spaced, glossary=None):
     """an HSK line (plain Simplified, or {t, p} with hand-written pinyin) -> segments
-    [text, pinyin, None, hidden] and the plain text"""
+    [text, pinyin, glossary index, hidden] and the plain text (glossary: words {w, m?} to underline)"""
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import zh_mainland
     src, given = (text['t'], text.get('p')) if isinstance(text, dict) else (text, None)
@@ -414,13 +414,21 @@ def zh_segs(text, where, problems, hidden, spaced):
         return [[src, None, None, 0]], src
     if not given:
         ZH_REVIEW.append(f'{where}: {src}  →  {zh_mainland.pinyin_line(src)}')
-    segs = []
+    gloss = [None] * len(src)
+    for gi, g in enumerate(glossary or []):
+        for form in g.get('m') or [g['w']]:
+            for m in re.finditer(re.escape(form), src):
+                if all(gloss[i] is None for i in range(m.start(), m.end())):
+                    for i in range(m.start(), m.end()):
+                        gloss[i] = gi
+    segs, pos = [], 0
     for w, s in words:
         han = s and s[0] is not None
         if spaced and han and segs and segs[-1][1] is not None:
             segs.append([' ', None, None, 0])        # the papers' space between words (HSK 1–2)
         for ch, py in zip(w, s):
-            segs.append([ch, py, None, hidden if py else 0])
+            segs.append([ch, py, gloss[pos], hidden if py else 0])
+            pos += 1
     return segs, src
 
 

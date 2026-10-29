@@ -36,8 +36,19 @@
 .ls-opts.pics .option-btn { flex-direction: column; gap: 4px; padding: 8px; min-height: 0; position: relative; }
 .ls-opts.pics .ls-n { position: absolute; left: 10px; top: 8px; z-index: 1; background: #fff; color: #2b2724; border: 2px solid #2b2724; border-radius: 8px; padding: 0 7px; line-height: 1.5; }
 .ls-pic { position: relative; display: block; width: 100%; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background-color: #fff; }
-.ls-pic img { position: absolute; width: 200%; height: 200%; max-width: none; display: block; }
+.ls-pic img { position: absolute; width: 200%; height: 200%; max-width: none; display: block; }   /* HSK pictures set their own size (listeningCellStyle) */
 .ls-pic-tx { font-size: .9rem; line-height: 1.6; }
+/* HSK (2026-10-30): three pictures in a row; a panel not drawn yet shows its caption; the letters of
+   a dialogue-matching picture; printed options with pinyin over the characters */
+.ls-opts.pics.pics3 { grid-template-columns: repeat(3, 1fr); }   /* also on phones: three, not 2 + 1 */
+.ls-q .grammar-feedback { margin: 14px 0 10px; }   /* clear of the options, as in 閱讀 (owner, 2026-10-30) */
+.ls-pic-todo { display: flex; align-items: center; justify-content: center; padding: 8px; border: 1px dashed var(--line);
+    background: var(--surface-2); color: var(--text-secondary); font-size: .85rem; text-align: center; }
+.ls-opts.ls-letters { grid-template-columns: repeat(3, 1fr); }
+.ls-opts.ls-letters .option-btn { justify-content: center; font-size: 1.1rem; }
+.ls-sheet-pic { margin: 8px 0; }
+.ls-zh-opts [lang="zh"], .ls-qtext[lang="zh"], .ls-ja[lang="zh"] { font-family: 'Noto Sans SC', var(--font-sans); line-height: 2.3; }
+.ls-zh-opts rt, .ls-qtext[lang="zh"] rt, .ls-ja[lang="zh"] rt { font-size: .5em; }
 /* the pictures are drawn black on white; in the dark theme they keep their white paper */
 @media (max-width: 560px) {
     .ls-opts.pics { grid-template-columns: 1fr 1fr; }
