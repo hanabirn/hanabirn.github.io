@@ -147,6 +147,8 @@ function grammarMoveKo(prog) {
 /* a level's name on the chips: Korean "1급" … "6급" in the visitor's language */
 function learnLevelName(level) {
     const m = /^(\d)급$/.exec(level || '');
+    // the 8 Taiwan passages (Traditional, Taiwan wording) beside the Mainland HSK rounds (2026-10-30)
+    if (level === 'TW HSK 1–2') return t('learn_level_tw_reading');
     return m ? t('learn_level_n', { n: m[1] }) : level;
 }
 
