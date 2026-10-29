@@ -235,7 +235,9 @@
 .grammar-blank.no { border-color: var(--danger); color: var(--danger); }
 .grammar-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; }
 .grammar-options .option-btn { margin: 0; font-size: 1.15rem; }
-.grammar-feedback { text-align: center; font-weight: 700; margin: 0 0 12px; }
+/* 答對了 / 答案是 … under the options of every quiz (grammar, reading, listening, word reviews): well clear
+   of the buttons — the owner asked twice (2026-10-30), so it lives here, not per page */
+.grammar-feedback { text-align: center; font-weight: 700; margin: 28px 0 12px; }
 .grammar-feedback.ok { color: var(--success); }
 .grammar-feedback.no { color: var(--danger); }
 /* why the picked option is wrong / the answer right (grammarWhyHtml) */
