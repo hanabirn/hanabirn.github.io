@@ -273,6 +273,10 @@
 .rdx-cols [lang="zh"], .rdx-ask [lang="zh"], .rdx-bank { font-family: 'Noto Sans SC', var(--font-sans); }
 .rdx-pic { position: relative; margin: 0; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .rdx-pic img { display: block; width: 100%; height: auto; }
+.rdx-pic-todo { display: grid; gap: 6px; padding: 8px; aspect-ratio: 3 / 2; background: var(--surface-2); }
+.rdx-pic-todo span { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 4px; padding: 6px;
+    border: 1px dashed var(--line); border-radius: 8px; text-align: center; font-size: 0.9rem; color: var(--text-secondary); }
+.rdx-pic-todo b { color: var(--ink); }
 .rdx-pic-grid { position: absolute; inset: 0; display: grid; pointer-events: none; }
 .rdx-pic-grid span { align-self: start; justify-self: start; margin: 6px; min-width: 26px; padding: 1px 7px; border: 2px solid var(--ink); border-radius: 6px;
     background: var(--surface); color: var(--ink); font-weight: 900; text-align: center; }

@@ -25,7 +25,8 @@ NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧
 # words the lists lack or read differently from the papers (add as they turn up in review)
 WORDS = {'家里': 'jiā li',
          # names and places: capitals, as the papers print them
-         '王明': 'Wáng Míng', '王先生': 'Wáng xiān sheng', '北京': 'Běi jīng', '日本': 'Rì běn', '美国': 'Měi guó'}
+         '王明': 'Wáng Míng', '王先生': 'Wáng xiān sheng', '王老师': 'Wáng lǎo shī', '李老师': 'Lǐ lǎo shī',
+         '小张': 'Xiǎo Zhāng', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual)
 NOT_WORDS = {'个人'}
 TONE_MARKS = {'ā': 1, 'á': 2, 'ǎ': 3, 'à': 4, 'ē': 1, 'é': 2, 'ě': 3, 'è': 4, 'ī': 1, 'í': 2, 'ǐ': 3, 'ì': 4,

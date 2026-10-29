@@ -262,9 +262,15 @@ function readingExBodyHtml(item) {
     if (item.type === 'zh_pic' && item.pic) {
         // one picture of cols × rows panels, lettered A–F like the paper
         const p = item.pic;
+        const grid = `grid-template-columns:repeat(${p.cols},1fr);grid-template-rows:repeat(${p.rows},1fr)`;
+        // not drawn yet (pictures are drawn a round at a time, after its questions): the captions
+        if (p.drawn === false) {
+            return `<div class="rdx-pic rdx-pic-todo" style="${grid}">${READING_OPT_LETTERS.slice(0, p.cols * p.rows).map((l, i) =>
+                `<span><b>${l}</b>${escHtml((p.cap || [])[i] || '')}</span>`).join('')}</div>`;
+        }
         const cells = READING_OPT_LETTERS.slice(0, p.cols * p.rows).map(l => `<span>${l}</span>`).join('');
         return `<figure class="rdx-pic"><img src="data/reading/img/zh/${escHtml(p.f)}.webp" alt="" loading="lazy">
-            <span class="rdx-pic-grid" style="grid-template-columns:repeat(${p.cols},1fr);grid-template-rows:repeat(${p.rows},1fr)" aria-hidden="true">${cells}</span></figure>`;
+            <span class="rdx-pic-grid" style="${grid}" aria-hidden="true">${cells}</span></figure>`;
     }
     if ((item.type === 'zh_bank' || item.type === 'zh_match') && item.bank_t) {
         return `<ol class="rdx-bank${item.type === 'zh_bank' ? ' rdx-bank-words' : ''}" lang="zh-CN">${item.bank_t.map((b, i) =>

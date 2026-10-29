@@ -18,7 +18,7 @@ Don't edit data/reading/ by hand — edit the source and re-run.
 Usage: pip install opencc-python-reimplemented
        python tools/build_reading.py
 """
-import json
+import hashlib, json
 import unicodedata, re, sys
 from pathlib import Path
 
@@ -369,6 +369,33 @@ ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank'}
 LETTERS = 'ABCDEF'
 
 
+# HSK pictures (owner's pick 2026-10-30: the JLPT 聽解 line art, drawn with Batch, a round at a time):
+# a zh_pic item's pic is {cols, rows, panels [English, one per panel, left to right, top to bottom],
+# cap [a short Traditional caption per panel]} — or {f, cols, rows} for a picture drawn by hand.
+# The file is data/reading/img/zh/<f>.webp, f = hsk_pic_id() of the prompt (a changed panel is drawn
+# again); until it exists the page shows the captions instead (`drawn`).
+HSK_PIC_STYLE = ('Black-and-white line illustration in the style of a Chinese language proficiency test booklet (HSK): '
+                 'clean even ink outlines, light gray flat shading only, simple friendly people of everyday modern China, '
+                 'plain white background. Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
+HSK_PIC_DIR = ROOT / 'data' / 'reading' / 'img' / 'zh'
+
+
+def hsk_pic_prompt(pic):
+    """(prompt, aspect ratio) of a picture of cols × rows panels"""
+    cols, rows = pic['cols'], pic['rows']
+    across = {1: ['Middle'], 2: ['Left', 'Right'], 3: ['Left', 'Middle', 'Right']}[cols]
+    down = {1: [''], 2: ['Top-', 'Bottom-'], 3: ['Top-', 'Middle-', 'Bottom-']}[rows]
+    where = [(d + a.lower() if d else a) for d in down for a in across]
+    grid = (f'A {cols}x{rows} grid of {cols * rows} equal panels' if rows > 1 else f'{cols} equal panels side by side in one row')
+    return (grid + ' separated by thin black lines, with a thin black frame around each panel. '
+            + ' '.join(f'{w}: {p}.' for w, p in zip(where, pic['panels'])) + ' ' + HSK_PIC_STYLE,
+            {(3, 2): '3:2', (3, 1): '16:9', (2, 2): '1:1', (2, 1): '16:9'}.get((cols, rows), '1:1'))
+
+
+def hsk_pic_id(pic):
+    return 'h' + hashlib.sha1(hsk_pic_prompt(pic)[0].encode('utf-8')).hexdigest()[:11]
+
+
 def hsk_level(level):
     m = re.search(r'\d+', level or '')
     return int(m.group()) if m else 0
@@ -469,9 +496,19 @@ def build_sets(data, name, problems):
             if not qs:
                 problems.append(f'{iw}: no questions')
             item = {'type': typ, 'tr': {'zh': tr.get('zh', ''), 'en': tr.get('en', '')}, 'questions': qs}
-            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title', 'mondai', 'pic', 'bank'):
+            for key in ('text', 'box', 'parts', 'notice', 'chart', 'title', 'mondai', 'bank'):
                 if key in it:
                     item[key] = it[key]
+            if typ == 'zh_pic' and it.get('pic'):
+                pic = it['pic']
+                n_panels = pic.get('cols', 0) * pic.get('rows', 0)
+                if 'panels' in pic and (len(pic['panels']) != n_panels or len(pic.get('cap', [])) != n_panels):
+                    problems.append(f'{iw}: a picture of {n_panels} panels needs {n_panels} "panels" and "cap"')
+                f = pic.get('f') or (hsk_pic_id(pic) if 'panels' in pic else '')
+                if not f:
+                    problems.append(f'{iw}: a picture needs "panels" (or "f")')
+                item['pic'] = {'f': f, 'cols': pic.get('cols'), 'rows': pic.get('rows'), 'cap': pic.get('cap', []),
+                               'drawn': (HSK_PIC_DIR / f'{f}.webp').exists()}
             if zh:
                 # segments with pinyin; a picture's options are its bare letters
                 lv = hsk_level(data.get('level', ''))

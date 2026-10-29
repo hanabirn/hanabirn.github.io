@@ -55,6 +55,173 @@
          "questions": [{"q": "王先生的女儿做什么工作？", "options": ["老师", "医生", "学生"], "answer": 0,
            "zh": "王先生是醫生，「他的女兒是老師」。", "en": "Mr Wang is the doctor; \"his daughter is a teacher\"."}]}
       ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {"type": "zh_pic", "mondai": 1, "ask": "zh_pic",
+         "pic": {"cols": 3, "rows": 2,
+                 "panels": ["a mother cooking at the stove in a small kitchen", "a father asleep in bed under a blanket", "a boy writing Chinese characters in a notebook at a desk",
+                            "a girl buying apples from a fruit seller at a shop", "a small dog sitting in front of a house door", "a family of three watching television on a sofa in the evening"],
+                 "cap": ["媽媽在做飯", "爸爸在睡覺", "男孩在寫字", "女孩在買蘋果", "門口的小狗", "一家人看電視"]},
+         "questions": [
+          {"q": "妈妈在做饭。", "answer": "A", "zh": "「媽媽在做飯」：A 是在廚房煮飯的媽媽。", "en": "\"Mum is cooking.\" A is the mother at the stove."},
+          {"q": "我想买几个苹果。", "answer": "D", "zh": "「我想買幾個蘋果」：D 是在店裡買蘋果的女孩。", "en": "\"I'd like to buy a few apples.\" D is the girl buying apples."},
+          {"q": "他在写汉字。", "answer": "C", "zh": "「他在寫漢字」：C 是在書桌前寫字的男孩。", "en": "\"He is writing Chinese characters.\" That is C."},
+          {"q": "我们晚上在家看电视。", "answer": "F", "zh": "「我們晚上在家看電視」：F 是晚上一起看電視的一家人。", "en": "\"We watch TV at home in the evening.\" F is the family on the sofa."},
+          {"q": "爸爸还在睡觉呢。", "answer": "B", "zh": "「爸爸還在睡覺呢」：B 是在床上睡覺的爸爸。E（小狗）是多出來的。", "en": "\"Dad is still asleep.\" B is the father in bed. E, the dog, is the spare picture."}
+        ]},
+        {"type": "zh_match", "mondai": 2, "ask": "zh_match",
+         "bank": ["是的，他是我哥哥。", "星期三。", "二十块。", "很好，谢谢。", "坐出租车。", "对不起，我不会。"],
+         "questions": [
+          {"q": "你好吗？", "answer": "D", "zh": "問「你好嗎？」，回答「很好，謝謝。」", "en": "\"How are you?\" — \"Very well, thanks.\""},
+          {"q": "这个多少钱？", "answer": "C", "zh": "問「這個多少錢？」，回答價錢：「二十塊。」", "en": "\"How much is this?\" — \"Twenty kuai.\""},
+          {"q": "你怎么去学校？", "answer": "E", "zh": "問「你怎麼去學校？」，回答交通方式：「坐出租車。」", "en": "\"How do you get to school?\" — \"By taxi.\""},
+          {"q": "今天星期几？", "answer": "B", "zh": "問「今天星期幾？」，回答「星期三。」", "en": "\"What day is it today?\" — \"Wednesday.\""},
+          {"q": "他是你哥哥吗？", "answer": "A", "zh": "問「他是你哥哥嗎？」，回答「是的，他是我哥哥。」F「對不起，我不會。」是多出來的。", "en": "\"Is he your older brother?\" — \"Yes, he is.\" F is the spare reply."}
+        ]},
+        {"type": "zh_bank", "mondai": 3, "ask": "zh_bank",
+         "bank": ["喝", "个", "在", "是", "会", "也"],
+         "questions": [
+          {"q": "我（　）中国人。", "answer": "D", "zh": "說自己是哪國人用「是」：我是中國人。", "en": "是 links you and your nationality: I am Chinese."},
+          {"q": "你（　）说汉语吗？", "answer": "E", "zh": "問能力用「會」：你會說漢語嗎？", "en": "会 asks about a skill: can you speak Chinese?"},
+          {"q": "我有三（　）朋友。", "answer": "B", "zh": "人的量詞用「個」：三個朋友。", "en": "个 is the measure word for people: three friends."},
+          {"q": "我妈妈（　）医院工作。", "answer": "C", "zh": "「在」＋地方＋工作：我媽媽在醫院工作。", "en": "在 + a place + 工作: my mum works at a hospital."},
+          {"q": "我喜欢（　）茶。", "answer": "A", "zh": "茶是用「喝」的：我喜歡喝茶。「也」是多出來的。", "en": "You drink (喝) tea: I like drinking tea. 也 is the spare word."}
+        ]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我女儿今年六岁，她很喜欢小狗。",
+         "tr": {"en": "My daughter is six this year, and she loves puppies."},
+         "questions": [{"q": "他女儿多大了？", "options": ["五岁", "六岁", "七岁"], "answer": 1,
+           "zh": "「我女兒今年六歲」。", "en": "\"My daughter is six this year.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我昨天去商店买了一些水果。",
+         "tr": {"en": "Yesterday I went to the shop and bought some fruit."},
+         "questions": [{"q": "他昨天去哪儿了？", "options": ["医院", "学校", "商店"], "answer": 2,
+           "zh": "「我昨天去商店買了一些水果」：他去了商店。", "en": "\"Yesterday I went to the shop and bought some fruit.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "明天下雨，我们不去商店了，在家看书吧。",
+         "tr": {"en": "It's going to rain tomorrow, so let's not go to the shops — let's stay home and read."},
+         "questions": [{"q": "明天他们做什么？", "options": ["在家看书", "去商店", "去学校"], "answer": 0,
+           "zh": "下雨，所以「不去商店了，在家看書吧」。", "en": "Because of the rain: \"let's not go to the shops; let's stay home and read.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "李老师会说汉语，也会做中国菜。",
+         "tr": {"en": "Ms Li speaks Chinese, and she can cook Chinese food too."},
+         "questions": [{"q": "李老师会做什么？", "options": ["开车", "做中国菜", "写汉字"], "answer": 1,
+           "zh": "「也會做中國菜」：李老師會做中國菜。", "en": "\"…and she can cook Chinese food too.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "你的书在桌子上，你的杯子在椅子下。",
+         "tr": {"en": "Your book is on the table, and your cup is under the chair."},
+         "questions": [{"q": "他的杯子在哪儿？", "options": ["桌子上", "椅子上", "椅子下"], "answer": 2,
+           "zh": "書在桌子上，「杯子在椅子下」。", "en": "The book is on the table; \"your cup is under the chair\"."}]}
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {"type": "zh_pic", "mondai": 1, "ask": "zh_pic",
+         "pic": {"cols": 3, "rows": 2,
+                 "panels": ["a man driving a car, seen through the side window", "a girl holding a cup of tea and smiling", "a student studying at a desk with an open textbook",
+                            "an old woman walking in the rain under an umbrella", "a man trying on a jacket that is much too big for him in a clothes shop", "two friends eating together at a table in a restaurant"],
+                 "cap": ["男人在開車", "女孩在喝茶", "學生在學習", "下雨天撐傘", "衣服太大了", "在飯店吃飯"]},
+         "questions": [
+          {"q": "下雨了。", "answer": "D", "zh": "「下雨了」：D 是撐著傘走在雨裡的老奶奶。", "en": "\"It's raining.\" D is the old woman under an umbrella."},
+          {"q": "这件衣服太大了。", "answer": "E", "zh": "「這件衣服太大了」：E 是穿著太大外套的男人。", "en": "\"This jacket is too big.\" E is the man in the oversized jacket."},
+          {"q": "我们去饭店吃饭吧。", "answer": "F", "zh": "「我們去飯店吃飯吧」：F 是在餐廳一起吃飯的兩個人。", "en": "\"Let's go and eat at a restaurant.\" That is F."},
+          {"q": "他在学习汉语。", "answer": "C", "zh": "「他在學習漢語」：C 是在書桌前念書的學生。", "en": "\"He is studying Chinese.\" C is the student at the desk."},
+          {"q": "我喜欢喝茶。", "answer": "B", "zh": "「我喜歡喝茶」：B 是拿著茶杯的女孩。A（開車）是多出來的。", "en": "\"I like drinking tea.\" B is the girl with the cup. A, the driver, is the spare picture."}
+        ]},
+        {"type": "zh_match", "mondai": 2, "ask": "zh_match",
+         "bank": ["没关系。", "我在看电影。", "下午三点。", "他们是我的同学。", "喜欢，很好吃。", "在北京。"],
+         "questions": [
+          {"q": "对不起！", "answer": "A", "zh": "別人說「對不起！」，回答「沒關係。」", "en": "\"Sorry!\" — \"That's all right.\""},
+          {"q": "你在做什么呢？", "answer": "B", "zh": "問「你在做什麼呢？」，回答正在做的事：「我在看電影。」", "en": "\"What are you doing?\" — \"I'm watching a film.\""},
+          {"q": "你喜欢吃米饭吗？", "answer": "E", "zh": "問「你喜歡吃米飯嗎？」，回答「喜歡，很好吃。」", "en": "\"Do you like rice?\" — \"Yes, it's delicious.\""},
+          {"q": "他们是谁？", "answer": "D", "zh": "問「他們是誰？」，回答「他們是我的同學。」", "en": "\"Who are they?\" — \"They're my classmates.\""},
+          {"q": "你家在哪儿？", "answer": "F", "zh": "問「你家在哪兒？」，回答地點：「在北京。」C「下午三點」是多出來的。", "en": "\"Where is your home?\" — \"In Beijing.\" C is the spare reply."}
+        ]},
+        {"type": "zh_bank", "mondai": 3, "ask": "zh_bank",
+         "bank": ["认识", "多少", "上", "想", "冷", "本"],
+         "questions": [
+          {"q": "很高兴（　）你。", "answer": "A", "zh": "初次見面說「很高興認識你」。", "en": "On meeting someone: 很高兴认识你, nice to meet you."},
+          {"q": "你们学校有（　）个学生？", "answer": "B", "zh": "問數量用「多少」：你們學校有多少個學生？", "en": "多少 asks how many: how many students does your school have?"},
+          {"q": "我的电脑在桌子（　）。", "answer": "C", "zh": "東西放在桌面用「上」：在桌子上。", "en": "上 is on (top of): my computer is on the table."},
+          {"q": "我（　）喝茶。", "answer": "D", "zh": "說自己的願望用「想」：我想喝茶。", "en": "想 says what you'd like: I'd like some tea."},
+          {"q": "我有三（　）汉语书。", "answer": "F", "zh": "書的量詞是「本」：三本漢語書。「冷」是多出來的。", "en": "本 is the measure word for books: three Chinese books. 冷 is the spare word."}
+        ]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我们学校有很多猫，我很喜欢它们。",
+         "tr": {"en": "There are lots of cats at our school, and I really like them."},
+         "questions": [{"q": "他喜欢什么？", "options": ["猫", "狗", "书"], "answer": 0,
+           "zh": "學校有很多貓，「我很喜歡牠們」：他喜歡貓。", "en": "There are many cats at school and \"I really like them\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "王老师今天不在学校，她病了。",
+         "tr": {"en": "Ms Wang isn't at school today; she is ill."},
+         "questions": [{"q": "王老师怎么了？", "options": ["去北京了", "病了", "在家看书"], "answer": 1,
+           "zh": "「她病了」，所以今天不在學校。", "en": "\"She is ill\", so she isn't at school today."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "这本书是我在商店买的，三十块钱。",
+         "tr": {"en": "I bought this book at a shop; it was thirty kuai."},
+         "questions": [{"q": "这本书多少钱？", "options": ["三块", "十三块", "三十块"], "answer": 2,
+           "zh": "「三十塊錢」。", "en": "\"Thirty kuai.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我早上七点起床，八点去学校。",
+         "tr": {"en": "I get up at seven in the morning and go to school at eight."},
+         "questions": [{"q": "他几点去学校？", "options": ["七点", "八点", "九点"], "answer": 1,
+           "zh": "七點起床，「八點去學校」。", "en": "He gets up at seven and \"goes to school at eight\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "小张喜欢喝茶，不喜欢喝水。",
+         "tr": {"en": "Xiao Zhang likes drinking tea but not water."},
+         "questions": [{"q": "小张喜欢喝什么？", "options": ["茶", "水", "米饭"], "answer": 0,
+           "zh": "「小張喜歡喝茶」，不喜歡喝水。", "en": "\"Xiao Zhang likes drinking tea\", not water."}]}
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 20,
+      "items": [
+        {"type": "zh_pic", "mondai": 1, "ask": "zh_pic",
+         "pic": {"cols": 3, "rows": 2,
+                 "panels": ["a cat and a dog sitting side by side on a rug", "a father cooking a pot of rice in the kitchen", "a girl writing characters with a pencil at a table",
+                            "a man reading a book on a bus", "students in a classroom listening to their teacher", "a man drinking a glass of water under a hot summer sun"],
+                 "cap": ["貓和狗", "爸爸在做米飯", "女孩在寫字", "在公車上看書", "學生聽老師說話", "天熱喝水"]},
+         "questions": [
+          {"q": "我家有猫，也有狗。", "answer": "A", "zh": "「我家有貓，也有狗」：A 是坐在一起的貓和狗。", "en": "\"We have a cat and a dog too.\" That is A."},
+          {"q": "爸爸在做米饭。", "answer": "B", "zh": "「爸爸在做米飯」：B 是在廚房煮飯的爸爸。", "en": "\"Dad is cooking rice.\" B is the father in the kitchen."},
+          {"q": "她在写字。", "answer": "C", "zh": "「她在寫字」：C 是拿鉛筆寫字的女孩。", "en": "\"She is writing.\" C is the girl with the pencil."},
+          {"q": "学生们在听老师说话。", "answer": "E", "zh": "「學生們在聽老師說話」：E 是上課的教室。", "en": "\"The students are listening to the teacher.\" That is E."},
+          {"q": "天气太热了，我想喝水。", "answer": "F", "zh": "「天氣太熱了，我想喝水」：F 是在大太陽下喝水的男人。D（在公車上看書）是多出來的。", "en": "\"It's too hot; I want some water.\" F is the man drinking in the sun. D is the spare picture."}
+        ]},
+        {"type": "zh_match", "mondai": 2, "ask": "zh_match",
+         "bank": ["好的，我们去吧。", "五个。", "我是日本人。", "很漂亮。", "很好吃。", "明天上午。"],
+         "questions": [
+          {"q": "你是哪国人？", "answer": "C", "zh": "問「你是哪國人？」，回答國籍：「我是日本人。」", "en": "\"Where are you from?\" — \"I'm Japanese.\""},
+          {"q": "你家有几个人？", "answer": "B", "zh": "問「你家有幾個人？」，回答人數：「五個。」", "en": "\"How many people are in your family?\" — \"Five.\""},
+          {"q": "你什么时候去北京？", "answer": "F", "zh": "問「你什麼時候去北京？」，回答時間：「明天上午。」", "en": "\"When are you going to Beijing?\" — \"Tomorrow morning.\""},
+          {"q": "你看，这是我的新衣服。", "answer": "D", "zh": "別人給你看新衣服，回答「很漂亮。」", "en": "\"Look, these are my new clothes.\" — \"They're lovely.\""},
+          {"q": "我们去吃饭吧！", "answer": "A", "zh": "別人說「我們去吃飯吧！」，回答「好的，我們去吧。」E「很好吃」是多出來的。", "en": "\"Let's go and eat!\" — \"OK, let's go.\" E is the spare reply."}
+        ]},
+        {"type": "zh_bank", "mondai": 3, "ask": "zh_bank",
+         "bank": ["块", "坐", "住", "读", "和", "点"],
+         "questions": [
+          {"q": "我（　）在北京。", "answer": "C", "zh": "說家在哪裡用「住」：我住在北京。", "en": "住 is to live: I live in Beijing."},
+          {"q": "这个杯子十（　）钱。", "answer": "A", "zh": "說錢用「塊」：十塊錢。", "en": "块 counts money: ten kuai."},
+          {"q": "我们（　）飞机去上海。", "answer": "B", "zh": "搭交通工具用「坐」：坐飛機去上海。", "en": "坐 is to take (a plane, a bus): we're flying to Shanghai."},
+          {"q": "现在几（　）了？", "answer": "F", "zh": "問時間：現在幾點了？", "en": "几点 asks the time: what time is it now?"},
+          {"q": "我（　）妈妈去商店。", "answer": "E", "zh": "「和」＝跟：我和媽媽去商店。「讀」是多出來的。", "en": "和 is and / with: I'm going to the shop with my mum. 读 is the spare word."}
+        ]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "今天是星期六，我不去学校，在家看电视。",
+         "tr": {"en": "It's Saturday today; I'm not going to school — I'm watching TV at home."},
+         "questions": [{"q": "今天他在哪儿？", "options": ["学校", "家里", "商店"], "answer": 1,
+           "zh": "星期六不去學校，「在家看電視」。", "en": "No school on Saturday: he is \"watching TV at home\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我想去北京看我的朋友，他在那儿工作。",
+         "tr": {"en": "I want to go to Beijing to see my friend; he works there."},
+         "questions": [{"q": "他去北京做什么？", "options": ["看朋友", "工作", "学习"], "answer": 0,
+           "zh": "「我想去北京看我的朋友」：工作的是他的朋友。", "en": "\"I want to go to Beijing to see my friend\" — it's the friend who works there."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "这是我的老师，她是李老师，是北京人。",
+         "tr": {"en": "This is my teacher, Ms Li; she is from Beijing."},
+         "questions": [{"q": "李老师是哪儿人？", "options": ["上海", "日本", "北京"], "answer": 2,
+           "zh": "「是北京人」。", "en": "\"She is from Beijing.\""}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "我儿子会说汉语，不会写汉字。",
+         "tr": {"en": "My son can speak Chinese but can't write characters."},
+         "questions": [{"q": "他儿子不会做什么？", "options": ["写汉字", "说汉语", "看书"], "answer": 0,
+           "zh": "會說漢語，「不會寫漢字」。", "en": "He can speak Chinese but \"can't write characters\"."}]},
+        {"type": "zh_text", "mondai": 4, "ask": "zh_text", "text": "昨天很冷，今天不冷了，很热。",
+         "tr": {"en": "Yesterday was cold; today it isn't — it's hot."},
+         "questions": [{"q": "今天天气怎么样？", "options": ["很冷", "很热", "下雨"], "answer": 1,
+           "zh": "昨天很冷，「今天不冷了，很熱」。", "en": "Yesterday was cold; \"today it isn't — it's hot\"."}]}
+      ]
     }
   ]
 }
