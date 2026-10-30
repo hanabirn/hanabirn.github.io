@@ -156,6 +156,8 @@
     .ls-dots { display: none; }          /* the count beside it says the same; the row was too tight */
 }
 
+.ls-qtabs { display: none; }   /* phones: all the questions of an item are listed (shown ≥1024px below) */
+
 /* computers: the item's header and player left, its question(s) and options right, the transcript
    under the player once shown — so a question and all its options fit one 1080p screen without
    scrolling (owner's rule, 2026-10-24); phones keep one column in the order head, questions, transcript */
@@ -168,4 +170,16 @@
     .ls-cols .ls-scene-img { max-width: 100%; }
     /* a picture grid: four quarters in a square no taller than the screen allows */
     .ls-qs .ls-opts.pics { max-width: 560px; margin: 0 auto; }
+    /* four or more questions on one recording (HSK 5–6, LISTENING_Q_PAGED): one at a time, number tabs
+       above — the look of the 閱讀 reader's .rd-qtab; phones list them all and hide the tabs */
+    .ls-qtabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+    .ls-qtab { min-width: 34px; height: 34px; padding: 0 8px; border: 2px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text-secondary); font: inherit; font-weight: 700; cursor: pointer; }
+    .ls-qtab.on { border-color: var(--primary); color: var(--primary); }
+    .ls-qtab.done { background: var(--track); }
+    .ls-qtab.ok { background: var(--success-bg); border-color: var(--success); color: var(--success-text); }
+    .ls-qtab.no { background: var(--danger-bg); border-color: var(--danger); color: var(--danger-text); }
+    .ls-qtab.on.ok, .ls-qtab.on.no, .ls-qtab.on.done { outline: 2px solid var(--primary); outline-offset: 1px; }
+    .ls-q-off { display: none; }
+    .ls-qtabs ~ .ls-q .ls-opts.four { grid-template-columns: 1fr 1fr; }   /* one question in view: room for long options */
+    .ls-q-off + .ls-q, .ls-qtabs + .ls-q { margin-top: 0; padding-top: 0; border-top: 0; }
 }

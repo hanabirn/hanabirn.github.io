@@ -38,6 +38,7 @@ const LISTENING_READ_SECS = 10;      // ポイント理解: time to read the opt
 const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15, utterance: 8, response: 8,
     ko_answer: 8, ko_next: 8, ko_place: 8, ko_topic: 8, ko_pic: 10, ko_same: 12, ko_main: 12, ko_pair: 15,
     ko2_pic: 12, ko2_next: 10, ko2_act: 12, ko2_same: 15, ko2_main: 15, ko2_pair: 20 };
+const LISTENING_Q_PAGED = 4;          // an item with this many questions shows them one at a time on computers (HSK 5–6)
 const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
 const LISTENING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
 const LISTENING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ja_n3: 'jlpt_n3', ja_n2: 'jlpt_n2', ja_n1: 'jlpt_n1',
@@ -592,11 +593,20 @@ function listeningQuizHtml(lv) {
             ? (item.questions.every((q, qn) => p[qn] === q.answer) ? 'ok' : 'no') : 'done';
         return `<span class="ls-dot ${state}"></span>`;
     }).join('');
+    // four or more questions on one recording (HSK 5–6): one at a time on computers, number tabs above
+    // (css/listening.css hides .ls-q-off only ≥1024px; phones list them all), as the 閱讀 rounds do
+    const paged = it.questions.length >= LISTENING_Q_PAGED;
+    const sub = paged ? Math.min(z.sub || 0, it.questions.length - 1) : 0;
+    const qtabs = paged ? `<div class="ls-qtabs" role="tablist">${it.questions.map((q, qn) => {
+        const p = z.picks[z.qi][qn];
+        const state = p === -1 ? '' : show ? (p === q.answer ? ' ok' : ' no') : ' done';
+        return `<button type="button" role="tab" class="ls-qtab${state}${qn === sub ? ' on' : ''}" aria-selected="${qn === sub}" data-qn="${qn}" onclick="listeningSub(${qn})">${qn + 1}</button>`;
+    }).join('')}</div>` : '';
     const questionsHtml = it.questions.map((q, qn) => {
         const picked = z.picks[z.qi][qn];
         const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
             : q.q && (show || !q.spoken && !multi && lv.lang !== 'zh') ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
-        return `<div class="ls-q" data-qn="${qn}">
+        return `<div class="ls-q${paged && qn !== sub ? ' ls-q-off' : ''}" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
             <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? (q.options.length === 4 ? ' four ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
@@ -651,7 +661,7 @@ function listeningQuizHtml(lv) {
             </div>
         </div>
         </div>
-        <div class="ls-qs">${questionsHtml}</div>
+        <div class="ls-qs">${qtabs}${questionsHtml}</div>
         ${tx ? `<div class="ls-txw">${tx}</div>` : ''}
         </div>
         <div class="grammar-nav">
@@ -684,9 +694,35 @@ function listeningRerender() {
     renderListening().then(() => window.scrollTo({ top: y }));
 }
 
+/* one of a paged item's questions (LISTENING_Q_PAGED): swapped in place, so a playing recording goes on */
+function listeningSub(qn) {
+    const z = listeningSession;
+    if (!z) return;
+    z.sub = qn;
+    document.querySelectorAll('#listening-card .ls-q').forEach(el => el.classList.toggle('ls-q-off', +el.dataset.qn !== qn));
+    document.querySelectorAll('#listening-card .ls-qtab').forEach(b => {
+        const on = +b.dataset.qn === qn;
+        b.classList.toggle('on', on);
+        b.setAttribute('aria-selected', on);
+    });
+}
+
+/* after a pick in a paged item: mark its tab and go on to the next unanswered question */
+function listeningSubNext(qn) {
+    const z = listeningSession;
+    const tab = document.querySelector(`#listening-card .ls-qtab[data-qn="${qn}"]`);
+    if (!tab) return;
+    tab.classList.add('done');
+    const p = z.picks[z.qi];
+    const next = p.findIndex((x, k) => k > qn && x === -1);
+    const first = p.findIndex(x => x === -1);
+    if (next !== -1 || first !== -1) listeningSub(next !== -1 ? next : first);
+}
+
 function listeningMove(d) {
     const z = listeningSession;
     z.qi = Math.max(0, Math.min(z.order.length - 1, z.qi + d));
+    z.sub = 0;
     z.peek = false;
     z.showQ = false;
     listeningSaveResume();
@@ -710,6 +746,7 @@ function listeningAnswer(qn, i) {
         document.querySelectorAll(`#listening-card .ls-q[data-qn="${qn}"] .option-btn`).forEach((b, k) => b.classList.toggle('ls-picked', k === i));
         const next = document.querySelector('#listening-card .grammar-nav .next-btn');
         if (next) next.disabled = !listeningAnswered();
+        listeningSubNext(qn);
         return;
     }
     if (z.picks[z.qi][qn] !== -1) return;
@@ -719,10 +756,13 @@ function listeningAnswer(qn, i) {
     if (i !== it.questions[qn].answer && typeof railReact === 'function') railReact('wrong');
     // with several questions, wait until all are answered before showing them
     if (listeningAnswered()) listeningRerender();
-    else document.querySelectorAll(`#listening-card .ls-q[data-qn="${qn}"] .option-btn`).forEach((b, k) => {
-        b.classList.toggle('ls-picked', k === i);
-        b.disabled = true;
-    });
+    else {
+        document.querySelectorAll(`#listening-card .ls-q[data-qn="${qn}"] .option-btn`).forEach((b, k) => {
+            b.classList.toggle('ls-picked', k === i);
+            b.disabled = true;
+        });
+        listeningSubNext(qn);
+    }
 }
 
 function listeningTally(lv) {
