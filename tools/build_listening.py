@@ -82,7 +82,12 @@ PIC_TYPES = ('task', 'ko_pic', 'ko2_pic')          # options drawn as one 2x2 pi
 # HSK 3–6 (2026-10-30): zh_talk — a passage (one speaker) and its spoken question(s); zh_gist — a
 # passage and no question: pick the statement that matches it (HSK 6 第一部分). zh_q / zh_talk items
 # from HSK 4 may hold several questions ("questions": [{q, options, answer, explain}], answers letters).
-ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q', 'zh_talk', 'zh_gist')
+# HSK 7–9 (2026-10-30): zh_tf — a passage and printed statements, each 对 or 错 (第一部分); and in zh_q /
+# zh_talk a question may be written instead of chosen: a printed "ask" sentence with （　） and "answers"
+# (Simplified; Traditional added), typed by the visitor, at most ZH_TYPED_MAX characters (第二、三部分)
+ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q', 'zh_talk', 'zh_gist', 'zh_tf')
+ZH_TF = ['对', '错']
+ZH_TYPED_MAX = 10
 TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES + ZH_TYPES
 ZH_LETTERS = 'ABCDEF'
 HSK_IMG = ROOT / 'data' / 'listening' / 'img' / 'zh'
@@ -191,6 +196,8 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
 
 
 def build_question(q, typ, where, words, problems, lang, jobs, multi, n_options=None):
+    if q.get('answers') is not None:
+        return build_typed(q, where, words, problems, lang, jobs)
     spoken_opts = typ in SPOKEN or bool(q.get('spoken'))
     want = n_options or SPOKEN.get(typ, 4)
     if len(q.get('options', [])) != want:
@@ -220,6 +227,26 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi, n_options=
                             'zh': o.get('zh', ''), 'en': o.get('en', '')})
     return {'q': qline, **({'ask': ask} if ask else {}), 'spoken': spoken_opts, 'options': options, 'answer': q.get('answer', 0),
             'explain': q.get('explain', {})}
+
+
+def build_typed(q, where, words, problems, lang, jobs):
+    """a question answered in writing (HSK 7–9): a printed sentence with a blank, the accepted answers"""
+    import opencc
+    answers = q.get('answers') or []
+    if not q.get('ask') or '（　）' not in q['ask'].get('s', '') or not answers or q.get('options'):
+        problems.append(f'{where}: a written question has a printed "ask" with （　）, "answers" and no options')
+    for a in answers:
+        if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > ZH_TYPED_MAX:
+            problems.append(f'{where}: answer "{a}" is longer than {ZH_TYPED_MAX} characters')
+    for k in ('zh', 'en'):
+        if not (q.get('explain') or {}).get(k):
+            problems.append(f'{where}: no {k} explanation')
+    segs, plain, _ = text_of(q['ask']['s'], None, f'{where} ask', problems, lang, short=True)
+    s2tw = opencc.OpenCC('s2tw')
+    return {'q': spoken(q['q'], f'{where} question', words, problems, lang, jobs) if q.get('q') else None,
+            'ask': {'t': segs, 'plain': plain, 'zh': q['ask'].get('zh', ''), 'en': q['ask'].get('en', '')},
+            'spoken': False, 'options': [], 'answer': -1,
+            'answers': list(dict.fromkeys(answers + [s2tw.convert(a) for a in answers])), 'explain': q.get('explain', {})}
 
 
 def build(src, problems, jobs):
@@ -270,6 +297,8 @@ def build(src, problems, jobs):
                 n_opts = zpic['cols'] * zpic['rows']
                 if not it.get('options'):
                     it = dict(it, options=[{'t': ZH_LETTERS[i]} for i in range(n_opts)])
+            elif typ == 'zh_tf':
+                n_opts = 2          # 对 / 错, printed under each statement
             elif typ in ZH_TYPES:
                 n_opts = 3 if hsk_level(data.get('level', '')) <= 3 else 4
             if typ in ZH_TYPES and isinstance(it.get('answer'), str):
@@ -277,7 +306,13 @@ def build(src, problems, jobs):
             qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
                                           'explain': it.get('explain'), **({'ask': it['ask']} if it.get('ask') else {}),
                                           **({'q': it['q']} if it.get('q') else {})}]
-            if typ in ZH_TYPES:
+            if typ == 'zh_tf':
+                # a statement is true or false: answer True / False, options 对 / 错, the statement printed
+                qs = [dict(q, options=[{'t': w} for w in ZH_TF], answer=0 if q.get('answer') is True else 1 if q.get('answer') is False else -1)
+                      for q in qs]
+                if any(not q.get('ask') or q.get('q') for q in qs):
+                    problems.append(f'{where}: a zh_tf statement is printed ("ask"), not spoken')
+            elif typ in ZH_TYPES:
                 qs = [dict(q, answer=ZH_LETTERS.index(q['answer'])) if isinstance(q.get('answer'), str) else q for q in qs]
                 if typ == 'zh_gist' and any(q.get('q') for q in qs):
                     problems.append(f'{where}: a zh_gist item has no spoken question')

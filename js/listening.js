@@ -302,6 +302,54 @@ function listeningItem(lv) {
 }
 
 /* answered = every question has a pick (-2 = time ran out in a mock exam) */
+/* right or wrong: an option index, or (HSK 7–9) a typed answer checked like the 閱讀 page's written
+   answers (readingExOk in js/reading-exam.js: q.answers, spaces and punctuation ignored, { t, self }) */
+function listeningOk(q, p) {
+    return q.answers ? readingExOk(q, p) : p === q.answer;
+}
+
+/* an HSK 7–9 written question: a box (at most 10 characters) — practice sends it with 送出 / Enter,
+   a mock keeps what is typed until the item moves on */
+function listeningTypedHtml(q, qn, show) {
+    const z = listeningSession;
+    const picked = z.picks[z.qi][qn];
+    const done = picked !== -1 && picked !== -2;
+    const locked = show || (!z.mock && done);
+    return `<div class="rdx-short ls-typed">
+            <input type="text" class="rdx-short-in" id="ls-in-${qn}" lang="zh-CN" maxlength="10" autocomplete="off" spellcheck="false"
+                value="${escHtml(readingExTyped(picked))}" placeholder="${escHtml(t('rdx_short_ph'))}"${locked ? ' disabled' : ''}
+                ${z.mock ? `oninput="listeningType(${qn}, this.value)"` : `onkeydown="if (event.key === 'Enter') listeningWrite(${qn})"`}>
+            ${!z.mock && !locked ? `<button type="button" class="btn next-btn rdx-short-go" onclick="listeningWrite(${qn})">${escHtml(t('rdx_short_send'))}</button>` : ''}
+        </div>`;
+}
+
+function listeningWrite(qn) {
+    const el = document.getElementById('ls-in-' + qn);
+    const v = el ? el.value.trim() : '';
+    if (!v) { if (el) el.focus(); return; }
+    listeningAnswer(qn, v);
+}
+
+/* a mock exam: keep the typed text without re-rendering (the recording and the box's focus go on) */
+function listeningType(qn, v) {
+    const z = listeningSession;
+    if (!z || !z.mock || z.reviewing) return;
+    z.picks[z.qi][qn] = v.trim() ? v.trim() : -1;
+    const next = document.querySelector('#listening-card .grammar-nav .next-btn');
+    if (next) next.disabled = !listeningAnswered();
+}
+
+/* practice: the visitor's answer means the same — count it right */
+function listeningSelf(qn) {
+    const z = listeningSession;
+    if (!z || z.mock) return;
+    const p = z.picks[z.qi][qn];
+    if (p === -1) return;
+    z.picks[z.qi][qn] = { t: readingExTyped(p), self: true };
+    listeningSaveResume();
+    listeningRerender();
+}
+
 function listeningAnswered(i) {
     const z = listeningSession;
     return z.picks[i === undefined ? z.qi : i].every(p => p !== -1);
@@ -590,7 +638,7 @@ function listeningQuizHtml(lv) {
         const item = lv.sets[z.setNo].items[k];
         const p = z.picks[i];
         const state = i === z.qi ? 'now' : p.some(x => x === -1) ? '' : !z.mock || z.reviewing
-            ? (item.questions.every((q, qn) => p[qn] === q.answer) ? 'ok' : 'no') : 'done';
+            ? (item.questions.every((q, qn) => listeningOk(q, p[qn])) ? 'ok' : 'no') : 'done';
         return `<span class="ls-dot ${state}"></span>`;
     }).join('');
     // four or more questions on one recording (HSK 5–6): one at a time on computers, number tabs above
@@ -599,19 +647,25 @@ function listeningQuizHtml(lv) {
     const sub = paged ? Math.min(z.sub || 0, it.questions.length - 1) : 0;
     const qtabs = paged ? `<div class="ls-qtabs" role="tablist">${it.questions.map((q, qn) => {
         const p = z.picks[z.qi][qn];
-        const state = p === -1 ? '' : show ? (p === q.answer ? ' ok' : ' no') : ' done';
+        const state = p === -1 ? '' : show ? (listeningOk(q, p) ? ' ok' : ' no') : ' done';
         return `<button type="button" role="tab" class="ls-qtab${state}${qn === sub ? ' on' : ''}" aria-selected="${qn === sub}" data-qn="${qn}" onclick="listeningSub(${qn})">${qn + 1}</button>`;
     }).join('')}</div>` : '';
     const questionsHtml = it.questions.map((q, qn) => {
         const picked = z.picks[z.qi][qn];
-        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
+        // a printed question's translation: practice only (TOPIK); an HSK one only once answered, since a
+        // written question's translation would give its blank away
+        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock || (lv.lang === 'zh' && !show) ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
             : q.q && (show || !q.spoken && !multi && lv.lang !== 'zh') ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
         return `<div class="ls-q${paged && qn !== sub ? ' ls-q-off' : ''}" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
-            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? (q.options.length === 4 ? ' four ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
-            ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: listeningMark(lv, q.answer) }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: listeningMark(lv, q.answer) }))}</p>
-                <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
+            ${q.answers ? listeningTypedHtml(q, qn, show) : `<div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? (q.options.length === 4 ? ' four ls-zh-opts' : q.options.length === 2 ? ' two ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>`}
+            ${!show ? '' : q.answers
+                ? `<p class="grammar-feedback ${listeningOk(q, picked) ? 'ok' : 'no'}">${escHtml(listeningOk(q, picked) ? t('correct') : t('rdx_short_ref', { a: q.answers[0] }))}</p>
+                    ${!listeningOk(q, picked) && !z.mock && picked !== -2 ? `<p class="rdx-self"><button type="button" class="mode-btn" onclick="listeningSelf(${qn})">${escHtml(t('rdx_short_self'))}</button></p>` : ''}
+                    <div class="ls-why">${escHtml(gText(q.explain))}</div>`
+                : `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: listeningMark(lv, q.answer) }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: listeningMark(lv, q.answer) }))}</p>
+                <div class="ls-why">${escHtml(gText(q.explain))}</div>`}
         </div>`;
     }).join('');
     const all = listeningLinesOf(it);
@@ -753,7 +807,7 @@ function listeningAnswer(qn, i) {
     z.picks[z.qi][qn] = i;
     if (typeof logDailyActivity === 'function') logDailyActivity();
     listeningSaveResume();
-    if (i !== it.questions[qn].answer && typeof railReact === 'function') railReact('wrong');
+    if (!listeningOk(it.questions[qn], i) && typeof railReact === 'function') railReact('wrong');
     // with several questions, wait until all are answered before showing them
     if (listeningAnswered()) listeningRerender();
     else {
@@ -761,6 +815,10 @@ function listeningAnswer(qn, i) {
             b.classList.toggle('ls-picked', k === i);
             b.disabled = true;
         });
+        // a written answer: lock its box until the rest are answered
+        const box = document.getElementById('ls-in-' + qn);
+        if (box) box.disabled = true;
+        document.querySelectorAll(`#listening-card .ls-q[data-qn="${qn}"] .rdx-short-go`).forEach(b => b.remove());
         listeningSubNext(qn);
     }
 }
@@ -775,7 +833,7 @@ function listeningTally(lv) {
         const b = byType[it.type] || (byType[it.type] = { ok: 0, of: 0 });
         it.questions.forEach((q, qn) => {
             total++; b.of++;
-            if (z.picks[i][qn] === q.answer) { right++; b.ok++; }
+            if (listeningOk(q, z.picks[i][qn])) { right++; b.ok++; }
         });
     });
     return { right, total, byType };
@@ -820,7 +878,7 @@ function listeningResultHtml(lv) {
     const set = lv.sets[z.setNo];
     const { right, total, byType } = listeningTally(lv);
     const pass = right / total >= LISTENING_PASS;
-    const wrong = z.order.filter((k, i) => set.items[k].questions.some((q, qn) => z.picks[i][qn] !== q.answer));
+    const wrong = z.order.filter((k, i) => set.items[k].questions.some((q, qn) => !listeningOk(q, z.picks[i][qn])));
     const words = listeningSetWords(set);
     const plays = z.plays.reduce((a, b) => a + b, 0) / z.order.length;
     setTimeout(() => {
@@ -830,7 +888,7 @@ function listeningResultHtml(lv) {
     const nextSet = lv.sets.findIndex((s, i) => i > z.setNo && !!s.mock === !!set.mock);
     const sheet = z.mock ? `<div class="ls-sheet">${z.order.map((k, i) => {
             const it = set.items[k];
-            const ok = it.questions.every((q, qn) => z.picks[i][qn] === q.answer);
+            const ok = it.questions.every((q, qn) => listeningOk(q, z.picks[i][qn]));
             return `<button type="button" class="ls-sheet-cell ${ok ? 'ok' : 'no'}" onclick="listeningReviewMock(${i})" title="${escHtml(t('listening_type_' + it.type))}">${i + 1}<i>${ok ? '○' : '×'}</i></button>`;
         }).join('')}</div>` : '';
     return `<div class="rd-result">
