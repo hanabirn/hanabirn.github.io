@@ -366,9 +366,14 @@ def main():
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
         n = sum(len(s['items']) for s in data['sets'])
         mocks = sum(1 for s in data['sets'] if s['mock'])
-        index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
-                      'count': len(data['sets']), 'items': n, 'mocks': mocks})
-        print(f'{data["id"]}: {len(data["sets"])} sets ({mocks} mock), {n} items')
+        if json.loads(src.read_text(encoding='utf-8')).get('unlisted'):
+            # built but left out of index.json, so the page doesn't offer it yet (HSK 3–6 until
+            # recorded, owner 2026-10-30): drop "unlisted" from the source to publish the level
+            print(f'{data["id"]}: unlisted — {len(data["sets"])} sets, {n} items (not in index.json)')
+        else:
+            index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
+                          'count': len(data['sets']), 'items': n, 'mocks': mocks})
+            print(f'{data["id"]}: {len(data["sets"])} sets ({mocks} mock), {n} items')
         if not args.no_audio and not problems:
             render_audio(data['lang'], jobs)
     index.sort(key=lambda l: (LANG_ORDER.index(l['lang']) if l['lang'] in LANG_ORDER else 99, l['order']))
