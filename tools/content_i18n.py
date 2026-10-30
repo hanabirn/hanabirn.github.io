@@ -114,12 +114,17 @@ def prompt(kind, lesson, targets, items):
     names = ', '.join(f'"{t}" = {TARGETS[t]}' for t in targets)
     return (
         f"You translate the learner-facing texts of {KIND_NAMES[kind]} on a site for people learning "
-        f"{LESSON_LANGS.get(lesson, lesson)}. Each item has the same text in Traditional Chinese (zh) and "
+        f"{LESSON_LANGS.get(lesson, lesson)}. Each item has the same text in {'Simplified' if lesson == 'zh' else 'Traditional'} Chinese (zh) and "
         f"English (en); one of them may be empty. Translate it into: {names}.\n"
         "Rules:\n"
         f"- Keep every word, phrase or sentence in {LESSON_LANGS.get(lesson, lesson)} exactly as written "
         "(examples, grammar patterns such as 〜ている or -았/었-, quoted words, words in brackets), and keep "
         "symbols and layout: ＋ ・ → … ○ × quotation marks, slashes, numbers, line breaks.\n"
+        + ("- The zh text is itself Chinese: only Chinese inside 「」 or after a colon as an example stays as "
+           "written; every other Chinese word is the explanation and is translated (follow the en text), "
+           "e.g. 王先生是医生，「他的女儿是老师」。 → 王さんは医者で、「他的女儿是老师」（娘は先生）です。 "
+           "A text that is only a quote keeps it and adds its meaning: 「她是医生」。 → 「她是医生」（彼女は医者です）。\n"
+           if lesson == 'zh' else '') +
         "- Translate the meaning naturally and concisely, in the plain, friendly register of a textbook for "
         "beginners; grammar terms as learners of that language know them.\n"
         "- When zh and en differ in detail, keep the fuller meaning. Names of people and places in their usual "
@@ -157,7 +162,16 @@ def translate(kind, lesson, objs):
     """objs: dicts needing at least one translation; stores the answers and returns
     how many were translated (0 = no model answered)."""
     targets = targets_for(lesson)
-    items = [{'id': i, 'zh': o.get('zh') or '', 'en': o.get('en') or ''} for i, o in enumerate(objs)]
+    # an HSK explanation quotes the Simplified sentence on the page: given the Traditional text, the
+    # model kept 「我很喜歡看書」 in every language (2026-10-29), so it gets the converted zh-Hans
+    # A Chinese line or question with nothing quoted goes from its English alone: given the Chinese,
+    # the model kept the whole mock-exam dialogue as written (2026-10-29)
+    def zh_of(o):
+        if lesson != 'zh':
+            return o.get('zh') or ''
+        src = o.get('zh-Hans') or o.get('zh') or ''
+        return src if '「' in src or not o.get('en') else ''
+    items = [{'id': i, 'zh': zh_of(o), 'en': o.get('en') or ''} for i, o in enumerate(objs)]
     for model in MODELS[kind]:
         for attempt in range(4):
             if STOP.is_set():
