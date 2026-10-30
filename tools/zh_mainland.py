@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧': 'ba', '着': 'zhe', '们': 'men', '啊': 'a',
            '过': 'guo'}   # alone 过 is the aspect particle (看过); 过来 / 过去 / 过年 are list words
 # words the lists lack or read differently from the papers (add as they turn up in review)
-WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '长大': 'zhǎng dà',
+WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '面条': 'miàn tiáo', '下雪': 'xià xuě', '晴天': 'qíng tiān', '玩儿': 'wán r', '长大': 'zhǎng dà',
          # names and places: capitals, as the papers print them
          '王明': 'Wáng Míng', '李明': 'Lǐ Míng', '王先生': 'Wáng xiān sheng', '王老师': 'Wáng lǎo shī', '李老师': 'Lǐ lǎo shī',
          '小张': 'Xiǎo Zhāng', '小王': 'Xiǎo Wáng', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
@@ -32,7 +32,7 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
 SINGLE = {'谁': 'shéi', '王': 'Wáng', '长': 'cháng'}   # 王 alone is the surname (姓王); 长 alone is long (长大 is a word)
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
 # 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
-NOT_WORDS = {'个人', '十分', '只要'}   # 只要五分钟 is 只 / 要 (only takes)
+NOT_WORDS = {'个人', '十分', '只要', '有时'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间
 TONE_MARKS = {'ā': 1, 'á': 2, 'ǎ': 3, 'à': 4, 'ē': 1, 'é': 2, 'ě': 3, 'è': 4, 'ī': 1, 'í': 2, 'ǐ': 3, 'ì': 4,
               'ō': 1, 'ó': 2, 'ǒ': 3, 'ò': 4, 'ū': 1, 'ú': 2, 'ǔ': 3, 'ù': 4, 'ǖ': 1, 'ǘ': 2, 'ǚ': 3, 'ǜ': 4}
 NUM = set('零〇一二三四五六七八九十百千万两几第')
