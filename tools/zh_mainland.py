@@ -21,19 +21,23 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 # 得 alone is the complement marker (跳得好); 得到 / 觉得 / 记得 match as words first
-NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧': 'ba', '着': 'zhe', '们': 'men', '啊': 'a'}
+NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧': 'ba', '着': 'zhe', '们': 'men', '啊': 'a',
+           '过': 'guo'}   # alone 过 is the aspect particle (看过); 过来 / 过去 / 过年 are list words
 # words the lists lack or read differently from the papers (add as they turn up in review)
-WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan',
+WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men',
          # names and places: capitals, as the papers print them
          '王明': 'Wáng Míng', '李明': 'Lǐ Míng', '王先生': 'Wáng xiān sheng', '王老师': 'Wáng lǎo shī', '李老师': 'Lǐ lǎo shī',
          '小张': 'Xiǎo Zhāng', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
 # single characters pypinyin reads one way here and another there (谁 shuí / shéi): one reading
 SINGLE = {'谁': 'shéi'}
-# list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual)
-NOT_WORDS = {'个人'}
+# list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
+# 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
+NOT_WORDS = {'个人', '十分'}
 TONE_MARKS = {'ā': 1, 'á': 2, 'ǎ': 3, 'à': 4, 'ē': 1, 'é': 2, 'ě': 3, 'è': 4, 'ī': 1, 'í': 2, 'ǐ': 3, 'ì': 4,
               'ō': 1, 'ó': 2, 'ǒ': 3, 'ò': 4, 'ū': 1, 'ú': 2, 'ǔ': 3, 'ù': 4, 'ǖ': 1, 'ǘ': 2, 'ǚ': 3, 'ǜ': 4}
 NUM = set('零〇一二三四五六七八九十百千万两几第')
+# the characters of a written-out number, printed as one word (shíbā suì, sìshí fēnzhōng)
+DIGITS = set('零〇一二三四五六七八九十百千万')
 MAX_WORD = 6
 _lex = {}
 
@@ -94,12 +98,25 @@ def _words(run):
     return out
 
 
+def _numbers(words):
+    """consecutive single digit characters joined: 十 / 八 → 十八"""
+    out = []
+    for w, s in words:
+        if w in DIGITS and out and len(out[-1][0]) and all(ch in DIGITS for ch in out[-1][0]):
+            out[-1] = (out[-1][0] + w, out[-1][1] + s)
+        else:
+            out.append((w, s))
+    return out
+
+
 def _sandhi(words):
     """一 / 不 before the next syllable, across words"""
     flat = [(wi, k) for wi, (w, s) in enumerate(words) for k in range(len(s))]
     for n, (wi, k) in enumerate(flat):
         w, s = words[wi]
         ch = w[k]
+        if ch == '一' and all(c in DIGITS for c in w):
+            s[k] = 'yī'                        # pypinyin already turned some (十一 → shí yì)
         if ch not in '一不' or s[k] not in ('yī', 'bù'):
             continue
         nxt = flat[n + 1] if n + 1 < len(flat) else None
@@ -109,8 +126,8 @@ def _sandhi(words):
         nch, nsyl = nw[nxt[1]], ns[nxt[1]]
         prev = words[flat[n - 1][0]][0][flat[n - 1][1]] if n else ''
         if ch == '一':
-            if prev in NUM or nch in NUM or nch in '月号日':
-                continue                       # 十一, 第一, 一二三, 一月
+            if prev in NUM or (nch in NUM and nch not in '百千万') or nch in '月号日':
+                continue                       # 十一, 第一, 一二三, 一月 (but yìbǎi, yìqiān, yíwàn)
             # 个 is gè in the lists but sounds 4th after 一 either way
             s[k] = 'yí' if tone(nsyl) == 4 or nch == '个' else 'yì'
         else:
@@ -126,7 +143,7 @@ def reading(text, given=None):
     words = []
     for c in chunks:
         if is_hanzi(c[0]):
-            ws = _words(c)
+            ws = _numbers(_words(c))
             if not given:
                 _sandhi(ws)               # within the run only: not across punctuation
             words.extend(ws)

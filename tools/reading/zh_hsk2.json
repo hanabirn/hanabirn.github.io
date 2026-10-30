@@ -1,0 +1,265 @@
+{
+  "id": "zh_hsk2",
+  "lang": "zh",
+  "level": "HSK 2",
+  "order": 3,
+  "note": "HSK 2 reading rounds in the 新版HSK (2025-12) format, Mainland edition (Simplified, Mainland wording; owner's plan 2026-10-30): 第一部分 看句子配图 ×5, 第二部分 选词填空 ×5, 第三部分 上下句配对 ×10 (two groups of 5, six sentences each), 第四部分 读句子回答问题 (3 options) ×5; the mock exam is 25 minutes. Original texts, words within HSK 1–2. Pictures: data/reading/img/zh/<id>.webp, drawn by tools/build_hsk_pics.py.",
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "zh_pic",
+          "mondai": 1,
+          "ask": "zh_pic",
+          "pic": {
+            "cols": 3,
+            "rows": 2,
+            "panels": [
+              "a young man running along a path in a park in the morning",
+              "a girl swimming in a swimming pool",
+              "a boy kicking a football on a grass field",
+              "a woman drinking a cup of coffee at a small table",
+              "a family around a birthday cake with candles, everyone smiling",
+              "an old man and an old woman walking a small dog in the street"
+            ],
+            "cap": [
+              "跑步",
+              "游泳",
+              "踢足球",
+              "喝咖啡",
+              "過生日",
+              "爺爺奶奶和小狗"
+            ]
+          },
+          "questions": [
+            {
+              "q": "我每天早上都去跑步。",
+              "answer": "A",
+              "zh": "「我每天早上都去跑步」：A 是早上在公園跑步的男生。",
+              "en": "\"I go running every morning.\" A is the young man running in the park."
+            },
+            {
+              "q": "今天是我的生日，大家都来了。",
+              "answer": "E",
+              "zh": "「今天是我的生日」：E 是圍著生日蛋糕的一家人。",
+              "en": "\"Today is my birthday, and everyone has come.\" E is the family around the birthday cake."
+            },
+            {
+              "q": "她游泳游得很快。",
+              "answer": "B",
+              "zh": "「她游泳游得很快」：B 是在游泳池游泳的女孩。",
+              "en": "\"She swims fast.\" B is the girl in the swimming pool."
+            },
+            {
+              "q": "弟弟非常喜欢踢足球。",
+              "answer": "C",
+              "zh": "「弟弟非常喜歡踢足球」：C 是在草地上踢球的男孩。",
+              "en": "\"My little brother loves playing football.\" C is the boy kicking a ball on the grass."
+            },
+            {
+              "q": "她每天上午都喝咖啡。",
+              "answer": "D",
+              "zh": "「她每天上午都喝咖啡」：D 是坐在桌子旁邊喝咖啡的女士。F（爺爺奶奶和小狗）是多出來的。",
+              "en": "\"She drinks coffee every morning.\" D is the woman with a cup of coffee. F, the old couple with the dog, is the spare picture."
+            }
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["离", "送", "已经", "准备", "比", "告诉"],
+          "questions": [
+            {
+              "q": "现在（　）十点了，你快起床吧！",
+              "answer": "C",
+              "zh": "「已經」表示事情發生了：現在已經十點了，快起床吧！",
+              "en": "已经 (already): it's already ten o'clock — get up!"
+            },
+            {
+              "q": "我家（　）学校很近。",
+              "answer": "A",
+              "zh": "說兩個地方的距離用「離」：我家離學校很近。",
+              "en": "A 离 B 很近 says how near two places are: my home is close to the school."
+            },
+            {
+              "q": "哥哥（　）我高。",
+              "answer": "E",
+              "zh": "比較用「A 比 B ＋形容詞」：哥哥比我高。",
+              "en": "A 比 B + adjective compares two things: my brother is taller than me."
+            },
+            {
+              "q": "这件事你别（　）妈妈。",
+              "answer": "F",
+              "zh": "「告訴」某人一件事：這件事你別告訴媽媽。",
+              "en": "告诉 (to tell) someone something: don't tell Mum about this."
+            },
+            {
+              "q": "明天有考试，我要（　）一下。",
+              "answer": "D",
+              "zh": "考試前要「準備」：明天有考試，我要準備一下。B「送」是多出來的。",
+              "en": "Before a test you 准备 (prepare): there's a test tomorrow, so I need to get ready. B 送 is the spare word."
+            }
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 3,
+          "ask": "zh_next",
+          "bank": ["所以我今天没去学校。", "我们坐地铁去吧。", "他说下午就回来。", "我已经看过这个电影了。", "但是有点儿贵。", "我们一起去吃午饭吧。"],
+          "questions": [
+            {
+              "q": "因为我生病了，",
+              "answer": "A",
+              "zh": "「因為……所以……」：因為我生病了，所以我今天沒去學校。",
+              "en": "因为… 所以… (because… so…): I was ill, so I didn't go to school today."
+            },
+            {
+              "q": "打车去机场太贵了，",
+              "answer": "B",
+              "zh": "打車太貴，所以說「我們坐地鐵去吧」。",
+              "en": "A taxi is too expensive, so: \"Let's take the underground.\""
+            },
+            {
+              "q": "王老师出去了，",
+              "answer": "C",
+              "zh": "老師出去了，接著說他什麼時候回來：「他說下午就回來。」",
+              "en": "The teacher has gone out, and the next line says when he'll be back: \"He said he'd be back this afternoon.\""
+            },
+            {
+              "q": "这件衣服很漂亮，",
+              "answer": "E",
+              "zh": "「很漂亮，但是有點兒貴」：「但是」接相反的意思。",
+              "en": "\"It's pretty, but a bit expensive\": 但是 brings in the other side."
+            },
+            {
+              "q": "已经十二点了，",
+              "answer": "F",
+              "zh": "十二點是吃午飯的時間：「我們一起去吃午飯吧。」D 是多出來的。",
+              "en": "Twelve o'clock is lunchtime: \"Let's go and have lunch together.\" D is the spare sentence."
+            }
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 3,
+          "ask": "zh_next",
+          "bank": ["我每个星期都去游泳。", "那我们明天再去吧。", "他是我的同学。", "谢谢，我自己能拿。", "他每天走路去上班。", "就在机场旁边。"],
+          "questions": [
+            {
+              "q": "你经常运动吗？",
+              "answer": "A",
+              "zh": "問「你經常運動嗎？」，回答「我每個星期都去游泳。」",
+              "en": "\"Do you exercise often?\" — \"I go swimming every week.\""
+            },
+            {
+              "q": "今天下大雨。",
+              "answer": "B",
+              "zh": "今天下大雨，所以說「那我們明天再去吧」。",
+              "en": "It's pouring today, so: \"Then let's go tomorrow instead.\""
+            },
+            {
+              "q": "这个人是谁？",
+              "answer": "C",
+              "zh": "問「這個人是誰？」，回答「他是我的同學。」",
+              "en": "\"Who is this?\" — \"He's my classmate.\""
+            },
+            {
+              "q": "我帮你拿吧。",
+              "answer": "D",
+              "zh": "別人說要幫忙拿東西，回答「謝謝，我自己能拿。」",
+              "en": "\"Let me carry that for you.\" — \"Thanks, I can carry it myself.\""
+            },
+            {
+              "q": "你住的酒店在哪儿？",
+              "answer": "F",
+              "zh": "問酒店在哪兒，回答地方：「就在機場旁邊。」E 是多出來的。",
+              "en": "\"Where is your hotel?\" — \"Right next to the airport.\" E is the spare sentence."
+            }
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我比妹妹大两岁，我今年二十岁了。",
+          "tr": {"en": "I'm two years older than my sister; I'm twenty this year."},
+          "questions": [
+            {
+              "q": "妹妹今年多大？",
+              "options": ["二十二岁", "十八岁", "二十岁"],
+              "answer": 1,
+              "zh": "我今年二十歲，「比妹妹大兩歲」，所以妹妹十八歲。",
+              "en": "I'm twenty and \"two years older than my sister\", so she is eighteen."
+            }
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "虽然外面很冷，但是孩子们还在外面踢球。",
+          "tr": {"en": "Although it's cold outside, the children are still out there playing football."},
+          "questions": [
+            {
+              "q": "孩子们在做什么？",
+              "options": ["看书", "睡觉", "踢球"],
+              "answer": 2,
+              "zh": "「孩子們還在外面踢球」。",
+              "en": "\"The children are still out there playing football.\""
+            }
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我的手机坏了，明天要去商店买一个新的。",
+          "tr": {"en": "My phone is broken; tomorrow I'm going to the shop to buy a new one."},
+          "questions": [
+            {
+              "q": "他明天要做什么？",
+              "options": ["去医院", "买手机", "考试"],
+              "answer": 1,
+              "zh": "手機壞了，「明天要去商店買一個新的」，就是買手機。",
+              "en": "His phone is broken and \"tomorrow he's going to buy a new one\" — a phone."
+            }
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "从我家到公司，坐公交车要四十分钟，走路要一个多小时。",
+          "tr": {"en": "From my home to the office it's forty minutes by bus and over an hour on foot."},
+          "questions": [
+            {
+              "q": "坐公交车要多长时间？",
+              "options": ["一个多小时", "一个小时", "四十分钟"],
+              "answer": 2,
+              "zh": "「坐公交車要四十分鐘」；一個多小時是走路的時間。",
+              "en": "\"Forty minutes by bus\"; over an hour is the time on foot."
+            }
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我爷爷今年七十岁了，身体很好，每天早上都去跑步。",
+          "tr": {"en": "My grandfather is seventy this year; he's in good health and goes running every morning."},
+          "questions": [
+            {
+              "q": "爷爷每天早上做什么？",
+              "options": ["跑步", "游泳", "跳舞"],
+              "answer": 0,
+              "zh": "爺爺「每天早上都去跑步」。",
+              "en": "Grandfather \"goes running every morning\"."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
