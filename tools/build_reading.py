@@ -379,6 +379,7 @@ def plain_of(marked):
 ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text', 'zh_cloze', 'zh_fill', 'zh_order', 'zh_short'}
 import opencc as _opencc
 S2TW = _opencc.OpenCC('s2tw')
+T2S = _opencc.OpenCC('t2s')        # the Taiwan edition's answers, typed in Simplified
 SHORT_MAX = 10          # a written answer's characters (HSK 7–9 阅读第三部分)
 ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
 ZH_BLANK_TYPES = {'zh_cloze', 'zh_fill'}     # a passage whose blanks are the questions
@@ -417,19 +418,30 @@ def hsk_level(level):
     return int(m.group()) if m else 0
 
 
+# the edition of the file being built: 'cn' (Simplified, Mainland readings) or 'tw' (Traditional, Taiwan
+# wording and readings, tools/zh_taiwan.py; segments get a 5th element, the zhuyin) — set by build()
+# here and in build_listening.py from the source's "edition"
+ZH_EDITION = {'now': 'cn'}
+
+
 def zh_segs(text, where, problems, hidden, spaced, glossary=None):
-    """an HSK line (plain Simplified, or {t, p} with hand-written pinyin) -> segments
-    [text, pinyin, glossary index, hidden] and the plain text (glossary: words {w, m?} to underline)"""
+    """an HSK line (plain Simplified — Traditional in the Taiwan edition — or {t, p} with hand-written
+    pinyin) -> segments [text, pinyin, glossary index, hidden(, zhuyin)] and the plain text
+    (glossary: words {w, m?} to underline)"""
     sys.path.insert(0, str(Path(__file__).resolve().parent))
-    import zh_mainland
+    tw = ZH_EDITION['now'] == 'tw'
+    if tw:
+        import zh_taiwan as reader
+    else:
+        import zh_mainland as reader
     src, given = (text['t'], text.get('p')) if isinstance(text, dict) else (text, None)
     try:
-        words = zh_mainland.reading(src, given)
+        words = reader.reading(src, given)
     except ValueError as e:
         problems.append(f'{where}: {e}')
         return [[src, None, None, 0]], src
     if not given:
-        ZH_REVIEW.append(f'{where}: {src}  →  {zh_mainland.pinyin_line(src)}')
+        ZH_REVIEW.append(f'{where}: {src}  →  {reader.pinyin_line(src)}')
     gloss = [None] * len(src)
     for gi, g in enumerate(glossary or []):
         for form in g.get('m') or [g['w']]:
@@ -443,7 +455,7 @@ def zh_segs(text, where, problems, hidden, spaced, glossary=None):
         if spaced and han and segs and segs[-1][1] is not None:
             segs.append([' ', None, None, 0])        # the papers' space between words (HSK 1–2)
         for ch, py in zip(w, s):
-            segs.append([ch, py, gloss[pos], hidden if py else 0])
+            segs.append([ch, py, gloss[pos], hidden if py else 0] + ([zh_bopomofo(py) if py else None] if tw else []))
             pos += 1
     return segs, src
 
@@ -572,7 +584,7 @@ def build_sets(data, name, problems):
                     if q.get('answers') is not None:
                         # a written answer: the accepted ones in Simplified and Traditional (s2tw), so
                         # a visitor may type either; the page compares them without spaces and punctuation
-                        q['answers'] = list(dict.fromkeys(q['answers'] + [S2TW.convert(a) for a in q['answers']]))
+                        q['answers'] = list(dict.fromkeys(q['answers'] + [S2TW.convert(a) for a in q['answers']] + [T2S.convert(a) for a in q['answers']]))
                         continue
                     if typ in ZH_BANK_TYPES:
                         continue          # the options are the bank (bank_t) or the picture's letters
@@ -623,6 +635,9 @@ def build(src, problems):
     if 'passages' not in data and 'sets' not in data:
         problems.append(f'{name}: no "passages" or "sets"')
     out = {k: data[k] for k in ('id', 'lang', 'level', 'order')}
+    ZH_EDITION['now'] = data.get('edition', 'cn')
+    if data.get('edition'):
+        out['edition'] = data['edition']        # 'tw': the Taiwan edition of the HSK rounds
     out['passages'] = []
     out['sets'] = build_sets(data, name, problems)
     seen = set()
@@ -727,8 +742,13 @@ def main():
         add_hans(data, cc)
         report_missing(fill(data), data['id'])   # ja ko ru fr es de (tools/content_i18n.py)
         (OUT / f'{data["id"]}.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
-        index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
-                      'count': len(data['passages']) + len(data['sets'])})
+        if json.loads(src.read_text(encoding='utf-8')).get('unlisted'):
+            # built but not offered on the page until the owner OKs it (the Taiwan edition, 2026-10-30)
+            print(f'{data["id"]}: unlisted (not in index.json)')
+        else:
+            index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
+                          'count': len(data['passages']) + len(data['sets']),
+                          **({'edition': data['edition']} if data.get('edition') else {})})
         print(f'{data["id"]}: {len(data["passages"])} passages, lengths {[p["length"] for p in data["passages"]]}'
               + (f', sets {[(st["id"], st["count"]) for st in data["sets"]]}' if data['sets'] else ''))
     if ZH_REVIEW:

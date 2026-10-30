@@ -67,9 +67,44 @@ function learnLangChanged() {
    The current one if it is in the learning language, else the one used last in that
    language (learn_last_levels, per page), else its first; '' when the page has nothing
    in that language yet (the page then shows learnEmptyHtml). */
+/* The Chinese HSK rounds come in two editions (owner, 2026-10-30): 大陸版 (Simplified, Mainland wording and
+   readings) and 台灣版 (Traditional, Taiwan wording, pinyin / zhuyin). An index entry's "edition" ('tw') says
+   which; the 8 Taiwan passages (level 'TW HSK 1–2') show in both. Only an index that holds both editions is
+   split, so the switch appears once a Taiwan level is published. */
+function learnEdition() {
+    try { return localStorage.getItem('zh_edition') === 'tw' ? 'tw' : 'cn'; } catch { return 'cn'; }
+}
+
+function learnHasEditions(index, lang) {
+    return lang === 'zh' && (index || []).some(s => s.lang === 'zh' && s.edition === 'tw');
+}
+
+function learnInEdition(s) {
+    const ed = s.edition || (/^TW /.test(s.level || '') ? 'both' : 'cn');
+    return ed === 'both' || ed === learnEdition();
+}
+
+// the levels of one language that the page offers (only the chosen edition's, for Chinese)
+function learnLevelsOf(index, lang) {
+    const all = (index || []).filter(s => s.lang === lang);
+    return learnHasEditions(index, lang) ? all.filter(learnInEdition) : all;
+}
+
+function setLearnEdition(ed) {
+    try { localStorage.setItem('zh_edition', ed); } catch {}
+    if (typeof refreshDynamicContent === 'function') refreshDynamicContent();
+}
+
+function learnEditionHtml(index, lang) {
+    if (!learnHasEditions(index, lang)) return '';
+    const ed = learnEdition();
+    const btn = v => `<button type="button" class="mode-btn${ed === v ? ' mode-btn-active' : ''}" aria-pressed="${ed === v}" onclick="setLearnEdition('${v}')">${escHtml(t('learn_edition_' + v))}</button>`;
+    return `<div class="learn-edition rd-seg" role="group" aria-label="${escHtml(t('learn_edition_label'))}">${btn('cn')}${btn('tw')}</div>`;
+}
+
 function learnSetId(index, current, page) {
     const lang = learnLang();
-    const mine = (index || []).filter(s => s.lang === lang);
+    const mine = learnLevelsOf(index, lang);
     if (!mine.length) return '';
     if (mine.some(s => s.id === current)) return current;
     const last = learnLastLevels()[page + ':' + lang];

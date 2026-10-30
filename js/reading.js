@@ -98,6 +98,7 @@ async function renderReading() {
     }
     const set = readingSets[readingSetId];
     box.dataset.zhrd = readingZhRd();           // which Chinese readings show (css/reading.css)
+    box.classList.toggle('zh-tw', !!set && set.edition === 'tw');   // the HSK Taiwan edition: TC font
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
     // the list too: its passages and rounds in two columns (owner's layout rule, 2026-10-23)
     document.body.classList.toggle('reading-wide', ['read', 'exam', 'list'].includes(readingView));

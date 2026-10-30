@@ -138,6 +138,9 @@ async function renderListening() {
         return;
     }
     const lv = listeningLevels[listeningLevelId];
+    // the Taiwan edition: Traditional in the TC font, pinyin / zhuyin by reading_zh_rd (css/reading.css)
+    box.dataset.zhrd = readingZhRd();
+    box.classList.toggle('zh-tw', lv.edition === 'tw');
     if (listeningView === 'quiz' && listeningSession) { box.innerHTML = listeningQuizHtml(lv); listeningPlayerUi(); listeningAutoPlay(); }
     else if (listeningView === 'result' && listeningSession) box.innerHTML = listeningResultHtml(lv);
     else if (listeningView === 'review' && listeningReview) box.innerHTML = listeningReviewHtml(lv);
@@ -166,6 +169,14 @@ function listeningStop() {
     listeningMarkPlaying();
 }
 
+/* the Taiwan edition's 拼音 / 注音 / 兩者 / 不顯示 (shared with 閱讀: reading_zh_rd) */
+function listeningSetZhRd(v) {
+    readingSetPref('reading_zh_rd', v);
+    const box = document.getElementById('listening-card');
+    if (box) box.dataset.zhrd = readingZhRd();
+    if (listeningView === 'quiz' && listeningSession) listeningRerender(); else renderListening();
+}
+
 function listeningPickLevel(id) {
     listeningLevelId = id;
     listeningSetPref('listening_level', id);
@@ -181,11 +192,11 @@ function listeningSegsHtml(segs, withGloss) {
     // HSK 3+ segments carry a 4th "hidden" flag: printed options and questions show no pinyin, as on
     // the paper (the transcript, withGloss, keeps it; 閱讀's 全部顯示拼音 shows it everywhere)
     const allPy = withGloss || (typeof readingExFuriAll === 'function' && readingExFuriAll());
-    for (const [text, ruby, g, hidden] of segs) {
+    for (const [text, ruby, g, hidden, zy] of segs) {
         const gi = withGloss && g !== null && g !== undefined ? g : null;
         if (open !== null && gi !== open) { html += '</span>'; open = null; }
         if (gi !== null && open === null) { html += '<span class="rd-w">'; open = gi; }
-        html += ruby && (allPy || !hidden) ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text);
+        html += ruby && (allPy || !hidden) ? zhRuby(text, ruby, zy) : escHtml(text);
     }
     if (open !== null) html += '</span>';
     return html;
@@ -247,6 +258,7 @@ function listeningListHtml(lv) {
     return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
         ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
+        ${lv.edition === 'tw' ? `<p class="rdx-tools ls-tw-tools">${zhRdSwitchHtml('listeningSetZhRd')}</p>` : ''}
         ${LISTENING_SOON[lv.lang] ? `<p class="ls-soon">🎙️ ${escHtml(t('listening_soon_rec', { levels: LISTENING_SOON[lv.lang] }))}</p>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">

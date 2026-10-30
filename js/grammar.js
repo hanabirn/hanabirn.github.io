@@ -84,8 +84,9 @@ function mockNoteHtml(title, lines, startCall, backCall) {
 
 function learnPickerHtml(index, curId, pick, done) {
     const cur = index.find(s => s.id === curId) || index[0];
-    const levels = index.filter(s => s.lang === cur.lang);
-    if (levels.length < 2) return '';   // one level (Spanish A1): nothing to pick
+    const levels = learnLevelsOf(index, cur.lang);     // Chinese: the chosen edition's (js/learnlang.js)
+    const edition = learnEditionHtml(index, cur.lang);
+    if (levels.length < 2) return edition;   // one level (Spanish A1): nothing to pick
     const chips = levels.map(s => {
         const n = done(s.id), m = s.count || 0;
         return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
@@ -94,7 +95,7 @@ function learnPickerHtml(index, curId, pick, done) {
     }).join('');
     // equal columns: up to 5 levels in one row, more in two even rows (6 → 3 + 3)
     const cols = levels.length <= 5 ? levels.length : Math.ceil(levels.length / 2);
-    return `<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>`;
+    return `${edition}<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>`;
 }
 
 // items passed in a level, from a progress store keyed "<level>:<item>" ({best, of})

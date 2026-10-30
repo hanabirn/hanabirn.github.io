@@ -78,6 +78,19 @@ function readingExOk(q, p) {
     const n = readingExNorm(readingExTyped(p));
     return !!n && q.answers.some(a => readingExNorm(a) === n);
 }
+// the Taiwan edition's instructions (Traditional, Taiwan wording)
+const READING_ASK_ZH_TW = {
+    zh_pic: '看句子，選出對應的圖片。',
+    zh_match: '為下面的問題選出合適的回答。',
+    zh_next: '為下面的句子選出合適的下一句。',
+    zh_bank: '選出合適的詞語填空。',
+    zh_text: '讀句子，回答問題。',
+    zh_passage: '讀短文，回答問題。',
+    zh_cloze: '閱讀短文，選出最恰當的答案填空。',
+    zh_fill: '閱讀短文，選出合適的句子填空。',
+    zh_order: '把下面的段落排成正確的順序。',
+    zh_short: '閱讀文章，根據內容回答問題，每題答案不超過10個字。'
+};
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA, zh: READING_ASK_ZH };
 const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。', zh: '读短文，回答问题。' };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
@@ -116,6 +129,8 @@ function readingExHasHidden(item, own) {
 function readingAskText(key) {
     const lang = readingExLang();
     if (readingExUpper()) return READING_ASK_JA_UPPER[key] || '';
+    const set = readingSets[readingSetId];
+    if (lang === 'zh' && set && set.edition === 'tw') return READING_ASK_ZH_TW[key] || '';
     return (READING_ASK_ALL[lang] || READING_ASK_KO)[key] || '';
 }
 
@@ -130,8 +145,23 @@ function readingExFuriToggle() {
 /* segments [text, furigana, glossary, known] (tools/build_reading.py ja_segs) as HTML */
 function readingExSegs(segs) {
     const all = readingExFuriAll();
-    return (segs || []).map(([text, ruby, _g, known]) => ruby && (all || !known)
-        ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text)).join('');
+    return (segs || []).map(([text, ruby, _g, known, zy]) => ruby && (all || !known)
+        ? zhRuby(text, ruby, zy) : escHtml(text)).join('');
+}
+
+/* a character with its reading: the Taiwan edition's segments carry zhuyin too (a 5th element), as a
+   second ruby around the first so 兩者 stacks zhuyin over pinyin; the card's data-zhrd (拼音 / 注音 /
+   兩者 / 不顯示, reading_zh_rd) hides one or both (css/reading.css .rt-py / .rt-zy) */
+function zhRuby(text, py, zy) {
+    return zy ? `<ruby><ruby>${escHtml(text)}<rt class="rt-py">${escHtml(py)}</rt></ruby><rt class="rt-zy">${escHtml(zy)}</rt></ruby>`
+        : `<ruby>${escHtml(text)}<rt>${escHtml(py)}</rt></ruby>`;
+}
+
+/* the Taiwan edition's reading switch (拼音 / 注音 / 兩者 / 不顯示), for the reading rounds and 聽解 */
+function zhRdSwitchHtml(call) {
+    const rd = readingZhRd();
+    return `<span class="rd-seg" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">${READING_ZH_RD.map(v =>
+        `<button type="button" class="mode-btn${rd === v ? ' mode-btn-active' : ''}" aria-pressed="${rd === v}" onclick="${call}('${v}')">${escHtml(t(v === 'off' ? 'reading_rd_off' : 'grammar_rd_' + v))}</button>`).join('')}</span>`;
 }
 
 /* a field shown with its marks (__underline__, （　） blanks, ㉠–㉣): Japanese from its segments */
@@ -380,8 +410,9 @@ function readingExamHtml(set) {
         return `<button type="button" role="tab" class="rdx-subtab${state}${j === sub ? ' now' : ''}" aria-selected="${j === sub}" onclick="readingExamSub(${o.i})">${o.x.n}</button>`;
     }).join('')}</div>` : '';
     // the furigana switch heads the questions' column (above the columns it pushed the text down)
+    const twRd = set.edition === 'tw' ? zhRdSwitchHtml("readingSetZh('reading_zh_rd', ") : '';
     const tools = lang === 'zh' ? (readingExHasHidden(item, own) ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_py_all'))}</button>
-            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level', { lv: set.level }))}</span></p>` : '')
+            <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level', { lv: set.level }))}</span>${twRd}</p>` : twRd ? `<p class="rdx-tools">${twRd}</p>` : '')
         : lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
             <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : '';
     const firstQ = own[0].i;

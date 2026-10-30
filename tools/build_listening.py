@@ -52,7 +52,7 @@ OUT = ROOT / 'data' / 'listening'
 AUDIO = ROOT / 'data' / 'audio' / 'listening'
 IMG = ROOT / 'data' / 'listening' / 'img'
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from build_reading import sentence, zh_segs, hsk_level, hsk_pic_prompt, hsk_pic_id   # noqa: E402
+from build_reading import sentence, zh_segs, hsk_level, hsk_pic_prompt, hsk_pic_id, ZH_EDITION   # noqa: E402
 import build_audio as ba                           # noqa: E402
 
 # per language: Google voice for the narrator (N), a woman (F) and a man (M) — picked
@@ -87,6 +87,7 @@ PIC_TYPES = ('task', 'ko_pic', 'ko2_pic')          # options drawn as one 2x2 pi
 # (Simplified; Traditional added), typed by the visitor, at most ZH_TYPED_MAX characters (第二、三部分)
 ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q', 'zh_talk', 'zh_gist', 'zh_tf')
 ZH_TF = ['对', '错']
+ZH_TF_TW = ['對', '錯']      # the Taiwan edition
 ZH_TYPED_MAX = 10
 TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES + ZH_TYPES
 ZH_LETTERS = 'ABCDEF'
@@ -246,13 +247,14 @@ def build_typed(q, where, words, problems, lang, jobs):
     return {'q': spoken(q['q'], f'{where} question', words, problems, lang, jobs) if q.get('q') else None,
             'ask': {'t': segs, 'plain': plain, 'zh': q['ask'].get('zh', ''), 'en': q['ask'].get('en', '')},
             'spoken': False, 'options': [], 'answer': -1,
-            'answers': list(dict.fromkeys(answers + [s2tw.convert(a) for a in answers])), 'explain': q.get('explain', {})}
+            'answers': list(dict.fromkeys(answers + [s2tw.convert(a) for a in answers] + [opencc.OpenCC('t2s').convert(a) for a in answers])), 'explain': q.get('explain', {})}
 
 
 def build(src, problems, jobs):
     data = json.loads(src.read_text(encoding='utf-8'))
     lang = data['lang']
     CUR['level'] = data.get('level', '')
+    ZH_EDITION['now'] = data.get('edition', 'cn')     # 'tw': Traditional, Taiwan readings + zhuyin (build_reading.zh_segs)
     types = data.get('types', DEFAULT_TYPES)
     # a practice round may hold only part of the level's types (Korean 2급: TOPIK I 15–30 in
     # practice, the whole of TOPIK I 1–30 in the mock exam)
@@ -308,7 +310,7 @@ def build(src, problems, jobs):
                                           **({'q': it['q']} if it.get('q') else {})}]
             if typ == 'zh_tf':
                 # a statement is true or false: answer True / False, options 对 / 错, the statement printed
-                qs = [dict(q, options=[{'t': w} for w in ZH_TF], answer=0 if q.get('answer') is True else 1 if q.get('answer') is False else -1)
+                qs = [dict(q, options=[{'t': w} for w in (ZH_TF_TW if data.get('edition') == 'tw' else ZH_TF)], answer=0 if q.get('answer') is True else 1 if q.get('answer') is False else -1)
                       for q in qs]
                 if any(not q.get('ask') or q.get('q') for q in qs):
                     problems.append(f'{where}: a zh_tf statement is printed ("ask"), not spoken')
@@ -348,6 +350,7 @@ def build(src, problems, jobs):
             problems.append(f'{src.stem}/{set_["id"]}: a set should have every type, has {mix}')
         sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
+            **({'edition': data['edition']} if data.get('edition') else {}),
             **({'instr': {t: data['instr'][t] for t in types}} if data.get('instr') else {}),
             'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}), 'sets': sets}
 
@@ -407,7 +410,8 @@ def main():
             print(f'{data["id"]}: unlisted — {len(data["sets"])} sets, {n} items (not in index.json)')
         else:
             index.append({'id': data['id'], 'lang': data['lang'], 'level': data['level'], 'order': data['order'],
-                          'count': len(data['sets']), 'items': n, 'mocks': mocks})
+                          'count': len(data['sets']), 'items': n, 'mocks': mocks,
+                          **({'edition': data['edition']} if data.get('edition') else {})})
             print(f'{data["id"]}: {len(data["sets"])} sets ({mocks} mock), {n} items')
         if not args.no_audio and not problems:
             render_audio(data['lang'], jobs)

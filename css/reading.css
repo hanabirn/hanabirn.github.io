@@ -347,3 +347,12 @@
 /* 上一篇 / 下一篇 (and an exam round's 上一題 / 下一題): well apart from the questions' own
    上一頁 / 下一頁 above, so the two rows aren't tapped by mistake (phones, 2026-10-22) */
 #reading-card > .grammar-nav { margin-top: 32px; padding-top: 16px; border-top: 1px solid var(--line); }
+
+/* the HSK Taiwan edition (2026-10-30): Traditional in the TC font, and pinyin / zhuyin in one <rt>
+   (js/reading-exam.js zhRt) shown by the card's data-zhrd — on 閱讀 and 聽解 alike */
+.zh-tw .rdx-cols [lang="zh"], .zh-tw .rdx-ask [lang="zh"], .zh-tw .rdx-bank,
+.zh-tw .ls-zh-opts [lang="zh"], .zh-tw .ls-qtext[lang="zh"], .zh-tw .ls-ja[lang="zh"] { font-family: var(--font-sans); }
+[data-zhrd="pinyin"] .rt-zy, [data-zhrd="zhuyin"] .rt-py,
+[data-zhrd="off"] .rt-py, [data-zhrd="off"] .rt-zy { display: none; }
+.rt-zy { letter-spacing: -0.04em; }
+.learn-edition { margin: 0 0 10px; }
