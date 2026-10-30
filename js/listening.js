@@ -38,6 +38,9 @@ const LISTENING_READ_SECS = 10;      // ポイント理解: time to read the opt
 const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15, utterance: 8, response: 8,
     ko_answer: 8, ko_next: 8, ko_place: 8, ko_topic: 8, ko_pic: 10, ko_same: 12, ko_main: 12, ko_pair: 15,
     ko2_pic: 12, ko2_next: 10, ko2_act: 12, ko2_same: 15, ko2_main: 15, ko2_pair: 20 };
+// levels written but not yet recorded (kept out of data/listening/index.json with "unlisted"): a note under the
+// level picker tells visitors they are coming — drop a language's entry once its levels are published
+const LISTENING_SOON = { zh: 'HSK 3–9' };
 const LISTENING_Q_PAGED = 4;          // an item with this many questions shows them one at a time on computers (HSK 5–6)
 const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
 const LISTENING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
@@ -244,6 +247,7 @@ function listeningListHtml(lv) {
     return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
         ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
+        ${LISTENING_SOON[lv.lang] ? `<p class="ls-soon">🎙️ ${escHtml(t('listening_soon_rec', { levels: LISTENING_SOON[lv.lang] }))}</p>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">
             <span><b>${escHtml(t('listening_exam'))}</b>　${escHtml(t('listening_exam_hint', { n: LISTENING_EXAM_PLAYS }))}</span>
