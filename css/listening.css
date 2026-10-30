@@ -75,6 +75,11 @@
 /* options */
 .ls-opts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 .ls-opts.three { grid-template-columns: 1fr 1fr 1fr; }
+/* HSK 4–6: four printed options in one row, so a recording with three or four questions still fits
+   a 1080p screen (2026-10-30); two a row on phones */
+.ls-opts.four { grid-template-columns: repeat(4, 1fr); }
+.ls-opts.four .option-btn { padding-left: 8px; padding-right: 8px; flex-wrap: nowrap; line-height: 1.5; }
+.ls-opts.four .ls-n { flex: none; }
 .ls-opts .option-btn { margin: 0; min-height: 56px; display: flex; align-items: center; justify-content: center; gap: 6px; flex-wrap: wrap; line-height: 1.8; }
 .ls-n { font-weight: 700; color: var(--primary); }
 .ls-emoji { font-size: 1.15rem; }
@@ -147,6 +152,7 @@
 
 @media (max-width: 560px) {
     .ls-opts, .ls-opts.three, .ls-types-result { grid-template-columns: 1fr; }
+    .ls-opts.four { grid-template-columns: 1fr 1fr; }
     .ls-dots { display: none; }          /* the count beside it says the same; the row was too tight */
 }
 

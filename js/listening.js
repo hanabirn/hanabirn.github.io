@@ -174,11 +174,14 @@ function listeningPickLevel(id) {
 
 function listeningSegsHtml(segs, withGloss) {
     let html = '', open = null;
-    for (const [text, ruby, g] of segs) {
+    // HSK 3+ segments carry a 4th "hidden" flag: printed options and questions show no pinyin, as on
+    // the paper (the transcript, withGloss, keeps it; 閱讀's 全部顯示拼音 shows it everywhere)
+    const allPy = withGloss || (typeof readingExFuriAll === 'function' && readingExFuriAll());
+    for (const [text, ruby, g, hidden] of segs) {
         const gi = withGloss && g !== null && g !== undefined ? g : null;
         if (open !== null && gi !== open) { html += '</span>'; open = null; }
         if (gi !== null && open === null) { html += '<span class="rd-w">'; open = gi; }
-        html += ruby ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text);
+        html += ruby && (allPy || !hidden) ? `<ruby>${escHtml(text)}<rt>${escHtml(ruby)}</rt></ruby>` : escHtml(text);
     }
     if (open !== null) html += '</span>';
     return html;
@@ -596,7 +599,7 @@ function listeningQuizHtml(lv) {
         return `<div class="ls-q" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
-            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? ' three ls-zh-opts' : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
+            <div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? (q.options.length === 4 ? ' four ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>
             ${show ? `<p class="grammar-feedback ${picked === q.answer ? 'ok' : 'no'}">${escHtml(picked === -2 ? t('listening_timeout', { n: listeningMark(lv, q.answer) }) : picked === q.answer ? t('correct') : t('listening_wrong', { n: listeningMark(lv, q.answer) }))}</p>
                 <div class="ls-why">${escHtml(gText(q.explain))}</div>` : ''}
         </div>`;
