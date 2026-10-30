@@ -61,7 +61,9 @@ def _simplified(text):
     s = T2S.convert(text)
     if len(s) != len(text):               # a phrase changed length: convert character by character
         s = ''.join(T2S.convert(c) if len(T2S.convert(c)) == 1 else c for c in text)
-    return s
+    # Taiwan writes the particle 著 (睡不著, 開著) with the character Simplified keeps for zhù (著名):
+    # 着 everywhere but 著名 / 著作, so zh_mainland reads it zhe / zháo
+    return re.sub('著(?![名作])', '着', s)
 
 
 def reading(text, given=None):
