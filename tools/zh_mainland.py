@@ -40,7 +40,8 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
          '干垃圾': 'gān lā jī', '完全干': 'wán quán gān', '一日三餐': 'yí rì sān cān', '午睡': 'wǔ shuì', '单词': 'dān cí', '一只能': 'yì zhī néng', '有关系': 'yǒu guān xi', '坐坐': 'zuò zuo', '春节': 'Chūn jié', '春运': 'chūn yùn', '过春节': 'guò Chūn jié', '不过春节': 'bú guò Chūn jié', '一个人过': 'yí gè rén guò', '面对面地': 'miàn duì miàn de',
          # HSK 5 mock: 喝口水 not 口水, 不要紧张 not 不要紧, 一个人生活 not 人生, 更新鲜 not 更新, 还给我 hái, 一天下来, 有效率, 不再见面, 好运气, 用得上的话
          '喝口水': 'hē kǒu shuǐ', '不要紧张': 'bú yào jǐn zhāng', '一个人生活': 'yí gè rén shēng huó', '更新鲜': 'gèng xīn xiān', '还给我带': 'hái gěi wǒ dài',
-         '一天下来': 'yì tiān xià lai', '有效率': 'yǒu xiào lǜ', '不再见面': 'bú zài jiàn miàn', '好运气': 'hǎo yùn qi', '用得上的话': 'yòng de shàng de huà', '英国': 'Yīng guó', '种上': 'zhòng shàng', '浇浇': 'jiāo jiao',
+         '一天下来': 'yì tiān xià lai', '有效率': 'yǒu xiào lǜ', '不再见面': 'bú zài jiàn miàn', '好运气': 'hǎo yùn qi', '用得上的话': 'yòng de shàng de huà', '英国': 'Yīng guó', '种上': 'zhòng shàng', '浇浇': 'jiāo jiao', '散散步': 'sàn san bù', '王经理': 'Wáng jīng lǐ',
+         '我得带带': 'wǒ děi dài dai', '看会儿': 'kàn huì r', '急急忙忙地': 'jí jí máng máng de', '要长': 'yào zhǎng', '长出': 'zhǎng chū', '上长的': 'shàng zhǎng de', '种树': 'zhòng shù', '种的树': 'zhòng de shù',
          '星期一': 'xīng qī yī', '星期二': 'xīng qī èr', '星期三': 'xīng qī sān', '星期四': 'xīng qī sì',
          '星期五': 'xīng qī wǔ', '星期六': 'xīng qī liù',
          '星期天': 'xīng qī tiān', '星期日': 'xīng qī rì',   # the list capitalises these, the papers don't
@@ -53,7 +54,7 @@ SINGLE = {'谁': 'shéi', '王': 'Wáng', '长': 'cháng', '都': 'dōu', '教':
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
 # 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
 NOT_WORDS = {'个人', '十分', '只要', '有时', '新手', '要不', '不满', '才能', '看中', '学会', '来回', '都会', '也好', '大多', '把手',
-             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容', '不适'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
+             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容', '不适', '别看', '人种'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
 # 要不要, 不满意, 只有…才能, 看中国, 学会了 (HSK 3): the words 要不 / 不满 / 才能 / 看中 / 学会 cut them wrongly
 # (我来回答, 都会去, 对身体也好, 大多了, 把手机 likewise)
 # (HSK 4: 有机会, 放下手机, 很多人家, 有人选择, 和平时, 平时差不多, 好心情, 只得了, 我们家用了, 有意义, 很多人为了)
