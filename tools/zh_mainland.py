@@ -48,7 +48,15 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
          '极大地': 'jí dà de', '过多': 'guò duō', '明清': 'Míng Qīng', '春秋时期': 'Chūn qiū shí qī', '吴王夫差': 'Wú wáng Fū chāi', '邗沟': 'Hán gōu',
          '长江': 'Cháng jiāng', '淮河': 'Huái hé', '黄河': 'Huáng hé', '隋朝': 'Suí cháo', '隋炀帝': 'Suí Yáng dì', '元朝': 'Yuán cháo', '京杭': 'Jīng Háng',
          '通济渠': 'Tōng jì qú', '永济渠': 'Yǒng jì qú', '洛阳': 'Luò yáng', '涿郡': 'Zhuō jùn', '余杭': 'Yú háng', '会通河': 'Huì tōng hé', '通惠河': 'Tōng huì hé',
-         '扬州': 'Yáng zhōu', '苏州': 'Sū zhōu', '淮安': 'Huái ān', '临清': 'Lín qīng', '敦煌': 'Dūn huáng', '莫高窟': 'Mò gāo kū', '佛教': 'Fó jiào', '为中心': 'wéi zhōng xīn', '王经理': 'Wáng jīng lǐ',
+         '扬州': 'Yáng zhōu', '苏州': 'Sū zhōu', '淮安': 'Huái ān', '临清': 'Lín qīng', '敦煌': 'Dūn huáng', '莫高窟': 'Mò gāo kū', '佛教': 'Fó jiào', '为中心': 'wéi zhōng xīn',
+         '李希霍芬': 'Lǐ xī huò fēn', '张骞': 'Zhāng Qiān', '汉武帝': 'Hàn Wǔ dì', '西域': 'Xī yù', '大月氏': 'Dà yuè zhī', '匈奴': 'Xiōng nú', '长安': 'Cháng ān',
+         '河西走廊': 'Hé xī zǒu láng', '新疆': 'Xīn jiāng', '中亚': 'Zhōng yà', '西亚': 'Xī yà', '地中海': 'Dì zhōng hǎi', '印度洋': 'Yìn dù yáng', '东非': 'Dōng fēi',
+         '泉州': 'Quán zhōu', '宋元': 'Sòng Yuán', '西汉': 'Xī Hàn', '汉朝': 'Hàn cháo', '天山': 'Tiān shān', '欧洲': 'Ōu zhōu', '东南亚': 'Dōng nán yà',
+         '朱熹': 'Zhū Xī', '岳麓书院': 'Yuè lù Shū yuàn', '白鹿洞书院': 'Bái lù dòng Shū yuàn', '湖南大学': 'Hú nán Dà xué', '唐代': 'Táng dài', '宋代': 'Sòng dài', '清朝': 'Qīng cháo', '清明': 'Qīng míng',
+         '教科文组织': 'Jiào kē wén Zǔ zhī', '一片面积': 'yí piàn miàn jī', '种瓜': 'zhòng guā', '从中国': 'cóng Zhōng guó', '东西方': 'dōng xī fāng', '德国': 'Dé guó', '郑和': 'Zhèng Hé', '明成祖': 'Míng Chéng zǔ', '朱棣': 'Zhū Dì', '明朝': 'Míng cháo', '南海': 'Nán hǎi', '江苏': 'Jiāng sū', '太仓': 'Tài cāng', '刘家港': 'Liú jiā gǎng',
+         '南亚': 'Nán yà', '哥伦布': 'Gē lún bù', '美洲': 'Měi zhōu', '伽马': 'Jiā mǎ', '印度': 'Yìn dù', '西藏': 'Xī zàng', '四川': 'Sì chuān', '毕昇': 'Bì Shēng', '北宋': 'Běi Sòng',
+         '朝鲜': 'Cháo xiǎn', '茶马古道': 'Chá mǎ Gǔ dào', '马帮': 'mǎ bāng', '骡马': 'luó mǎ', '雕版': 'diāo bǎn', '胶泥': 'jiāo ní', '航海日': 'Háng hǎi rì', '为原料': 'wéi yuán liào', '为目的': 'wéi mù dì', '定为': 'dìng wéi', '着重要': 'zhe zhòng yào', '重放': 'chóng fàng', '随行人员': 'suí xíng rén yuán', '比达': 'bǐ Dá', '关羽': 'Guān Yǔ', '包拯': 'Bāo Zhěng', '曹操': 'Cáo Cāo', '陕西': 'Shǎn xī', '甘肃': 'Gān sù', '都江堰': 'Dū jiāng yàn', '成都': 'Chéng dū', '秦国': 'Qín guó', '蜀郡': 'Shǔ jùn',
+         '李冰': 'Lǐ Bīng', '岷江': 'Mín jiāng', '鱼嘴': 'Yú zuǐ', '飞沙堰': 'Fēi shā yàn', '宝瓶口': 'Bǎo píng kǒu', '青城山': 'Qīng chéng shān', '天府之国': 'Tiān fǔ zhī guó', '落下来': 'luò xià lai', '为特征': 'wéi tè zhēng', '水和泥沙': 'shuǐ hé ní shā', '而得名': 'ér dé míng', '王经理': 'Wáng jīng lǐ',
          '我得带带': 'wǒ děi dài dai', '看会儿': 'kàn huì r', '急急忙忙地': 'jí jí máng máng de', '要长': 'yào zhǎng', '长出': 'zhǎng chū', '上长的': 'shàng zhǎng de', '种树': 'zhòng shù', '种的树': 'zhòng de shù',
          '星期一': 'xīng qī yī', '星期二': 'xīng qī èr', '星期三': 'xīng qī sān', '星期四': 'xīng qī sì',
          '星期五': 'xīng qī wǔ', '星期六': 'xīng qī liù',
@@ -75,7 +83,7 @@ ZHI_BEFORE = NUM | set('这那哪每')
 # the characters of a written-out number, printed as one word (shíbā suì, sìshí fēnzhōng)
 DIGITS = set('零〇一二三四五六七八九十百千万')
 # a surname standing alone between punctuation (a list of surnames, an option 王 / 赵): capitalised
-SURNAME_ALONE = {'王': 'Wáng', '李': 'Lǐ', '张': 'Zhāng', '刘': 'Liú', '陈': 'Chén', '赵': 'Zhào', '孙': 'Sūn', '周': 'Zhōu', '黄': 'Huáng', '杨': 'Yáng'}
+SURNAME_ALONE = {'达': 'Dá', '王': 'Wáng', '李': 'Lǐ', '张': 'Zhāng', '刘': 'Liú', '陈': 'Chén', '赵': 'Zhào', '孙': 'Sūn', '周': 'Zhōu', '黄': 'Huáng', '杨': 'Yáng'}
 MAX_WORD = 6
 _lex = {}
 
@@ -192,7 +200,8 @@ def _de(words):
         if w != '地' or k == 0:
             continue
         prev = words[k - 1][0]
-        if len(prev) < 2 and not (k >= 2 and words[k - 2][0] == prev):   # 早早地: a doubled character
+        # 早早地: a doubled character; 更早地 / 很快地 / 最大地: a degree word and one character
+        if len(prev) < 2 and not (k >= 2 and (words[k - 2][0] == prev or words[k - 2][0] in ('更', '很', '最', '太', '越', '十分', '非常'))):
             continue
         nxt = words[k + 1][0][:1] if k + 1 < len(words) else ''
         if nxt not in DE_NOT_BEFORE:
