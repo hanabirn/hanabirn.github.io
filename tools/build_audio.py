@@ -705,6 +705,9 @@ def gemini_length_ok(text, clip, kana=''):
     return 0.12 * n + 0.2 <= secs <= 0.42 * n + 1.2 and (k <= 4 or secs <= 0.25 * k + 1.5)
 
 
+DRY_RUN = False                            # --dry-run (main): run_gemini() only counts
+
+
 def run_gemini(lang, files, aliases, top, limit):
     d = OUT / lang
     d.mkdir(parents=True, exist_ok=True)
@@ -731,6 +734,8 @@ def run_gemini(lang, files, aliases, top, limit):
     print(f'{lang} (Gemini {GEMINI_VOICES[lang][0]}): {len(todo)} to render '
           f'({sum(1 for t, _ in todo if t == 0)} reading, {sum(1 for t, _ in todo if t == 1)} grammar, '
           f'{sum(1 for t, _ in todo if t == 2)} other), {len(made)} done before')
+    if DRY_RUN:                            # count only: --dry-run must never spend the paid quota
+        return
     key = gemini_key()
     # which key this is, without showing it (compare with the PC's): the first 8 hex of its sha256
     import hashlib
@@ -864,6 +869,8 @@ def main():
         fix_clicks([l for l in ('zh-TW', 'zh-CN') if l in langs])
         return
     RPM = args.rpm or (GEMINI_RPM if args.gemini else RPM)
+    global DRY_RUN
+    DRY_RUN = args.dry_run
     if args.gemini:
         # the 閱讀 page in both accents first, then the 文法 examples (and with
         # --gemini-all the rest); a spent daily quota ends the run
