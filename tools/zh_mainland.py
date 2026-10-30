@@ -35,22 +35,26 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
          '太干': 'tài gān', '很干': 'hěn gān', '多种': 'duō zhǒng', '种了': 'zhòng le',   # 干 dry, 种 kind / to plant
          '天假': 'tiān jià', '还能': 'hái néng', '教孩子': 'jiāo hái zi', '这行': 'zhè háng',
          '简单地': 'jiǎn dān de', '高兴地': 'gāo xìng de', '认真地': 'rèn zhēn de', '慢慢地': 'màn man de', '画地': 'huà de', '英语': 'Yīng yǔ', '积极地': 'jī jí de', '干了': 'gān le', '睡不着觉': 'shuì bu zháo jiào', '过一会儿': 'guò yí huì r',   # 地 after an adjective is de
+         # HSK 5: 会计算 is 会 / 计算, not 会计 (accountant); 看一下班级; 压着手臂; 十分 as very; 干 dry; 一 before a 4th-tone 日
+         '会计算': 'huì jì suàn', '一下班级': 'yí xià bān jí', '着手臂': 'zhe shǒu bì', '十分满意': 'shí fēn mǎn yì',
+         '干垃圾': 'gān lā jī', '完全干': 'wán quán gān', '一日三餐': 'yí rì sān cān', '午睡': 'wǔ shuì', '单词': 'dān cí', '一只能': 'yì zhī néng',
          '星期一': 'xīng qī yī', '星期二': 'xīng qī èr', '星期三': 'xīng qī sān', '星期四': 'xīng qī sì',
          '星期五': 'xīng qī wǔ', '星期六': 'xīng qī liù',
          '星期天': 'xīng qī tiān', '星期日': 'xīng qī rì',   # the list capitalises these, the papers don't
          # names and places: capitals, as the papers print them
          '王明': 'Wáng Míng', '李明': 'Lǐ Míng', '王先生': 'Wáng xiān sheng', '王老师': 'Wáng lǎo shī', '李老师': 'Lǐ lǎo shī',
          '小张': 'Xiǎo Zhāng', '小李': 'Xiǎo Lǐ', '张先生': 'Zhāng xiān sheng', '张老师': 'Zhāng lǎo shī',
-         '张经理': 'Zhāng jīng lǐ', '李经理': 'Lǐ jīng lǐ', '姓张': 'xìng Zhāng', '张红': 'Zhāng Hóng', '韩国': 'Hán guó', '李丽': 'Lǐ Lì', '李阿姨': 'Lǐ ā yí', '云南': 'Yún nán', '豆豆': 'Dòu dou', '长城': 'Cháng chéng', '小王': 'Xiǎo Wáng', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
+         '张经理': 'Zhāng jīng lǐ', '李经理': 'Lǐ jīng lǐ', '姓张': 'xìng Zhāng', '张红': 'Zhāng Hóng', '韩国': 'Hán guó', '李丽': 'Lǐ Lì', '李阿姨': 'Lǐ ā yí', '云南': 'Yún nán', '豆豆': 'Dòu dou', '长城': 'Cháng chéng', '小王': 'Xiǎo Wáng', '小明': 'Xiǎo Míng', '李强': 'Lǐ Qiáng', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
 # single characters pypinyin reads one way here and another there (谁 shuí / shéi): one reading
 SINGLE = {'谁': 'shéi', '王': 'Wáng', '长': 'cháng', '都': 'dōu', '教': 'jiāo', '觉': 'jiào'}   # 教 alone teaches (教室 is a word); 觉 alone is sleep (觉得 is a word)   # 王 alone is the surname (姓王); 长 alone is long (长大 is a word)
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
 # 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
 NOT_WORDS = {'个人', '十分', '只要', '有时', '新手', '要不', '不满', '才能', '看中', '学会', '来回', '都会', '也好', '大多', '把手',
-             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
+             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
 # 要不要, 不满意, 只有…才能, 看中国, 学会了 (HSK 3): the words 要不 / 不满 / 才能 / 看中 / 学会 cut them wrongly
 # (我来回答, 都会去, 对身体也好, 大多了, 把手机 likewise)
 # (HSK 4: 有机会, 放下手机, 很多人家, 有人选择, 和平时, 平时差不多, 好心情, 只得了, 我们家用了, 有意义, 很多人为了)
+# (HSK 5: 人身体, 并不容易)
 TONE_MARKS = {'ā': 1, 'á': 2, 'ǎ': 3, 'à': 4, 'ē': 1, 'é': 2, 'ě': 3, 'è': 4, 'ī': 1, 'í': 2, 'ǐ': 3, 'ì': 4,
               'ō': 1, 'ó': 2, 'ǒ': 3, 'ò': 4, 'ū': 1, 'ú': 2, 'ǔ': 3, 'ù': 4, 'ǖ': 1, 'ǘ': 2, 'ǚ': 3, 'ǜ': 4}
 NUM = set('零〇一二三四五六七八九十百千万两几第')
@@ -164,6 +168,24 @@ def _sandhi(words):
     return words
 
 
+# 地 standing alone after a word of two or more characters is the adverbial particle de
+# or after a doubled character (流利地交流, 早早地睡了, 一味地少吃); 地上 / 地下 / 地方 / 地面 keep dì (most are words anyway)
+DE_NOT_BEFORE = set('上下里方面图区铁球')
+
+
+def _de(words):
+    for k, (w, s) in enumerate(words):
+        if w != '地' or k == 0:
+            continue
+        prev = words[k - 1][0]
+        if len(prev) < 2 and not (k >= 2 and words[k - 2][0] == prev):   # 早早地: a doubled character
+            continue
+        nxt = words[k + 1][0][:1] if k + 1 < len(words) else ''
+        if nxt not in DE_NOT_BEFORE:
+            words[k] = (w, ['de'])
+    return words
+
+
 def reading(text, given=None):
     """[(chunk, [syllable or None per character])]: Han runs cut into words, other text as is.
     given: hand-written pinyin for the whole text, syllables space-separated, punctuation left out"""
@@ -171,7 +193,7 @@ def reading(text, given=None):
     words = []
     for c in chunks:
         if is_hanzi(c[0]):
-            ws = _measure(_numbers(_words(c)))
+            ws = _de(_measure(_numbers(_words(c))))
             if not given:
                 _sandhi(ws)               # within the run only: not across punctuation
             words.extend(ws)
