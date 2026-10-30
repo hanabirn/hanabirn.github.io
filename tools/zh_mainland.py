@@ -40,7 +40,7 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
          '干垃圾': 'gān lā jī', '完全干': 'wán quán gān', '一日三餐': 'yí rì sān cān', '午睡': 'wǔ shuì', '单词': 'dān cí', '一只能': 'yì zhī néng', '有关系': 'yǒu guān xi', '坐坐': 'zuò zuo', '春节': 'Chūn jié', '春运': 'chūn yùn', '过春节': 'guò Chūn jié', '不过春节': 'bú guò Chūn jié', '一个人过': 'yí gè rén guò', '面对面地': 'miàn duì miàn de',
          # HSK 5 mock: 喝口水 not 口水, 不要紧张 not 不要紧, 一个人生活 not 人生, 更新鲜 not 更新, 还给我 hái, 一天下来, 有效率, 不再见面, 好运气, 用得上的话
          '喝口水': 'hē kǒu shuǐ', '不要紧张': 'bú yào jǐn zhāng', '一个人生活': 'yí gè rén shēng huó', '更新鲜': 'gèng xīn xiān', '还给我带': 'hái gěi wǒ dài',
-         '一天下来': 'yì tiān xià lai', '有效率': 'yǒu xiào lǜ', '不再见面': 'bú zài jiàn miàn', '好运气': 'hǎo yùn qi', '用得上的话': 'yòng de shàng de huà', '英国': 'Yīng guó', '种上': 'zhòng shàng', '浇浇': 'jiāo jiao', '散散步': 'sàn san bù', '陈的人': 'Chén de rén', '种不少': 'zhòng bù shǎo', '忙不过来': 'máng bu guò lái', '李小姐': 'Lǐ xiǎo jie', '人民路': 'Rén mín lù', '小陈': 'Xiǎo Chén', '五一斤': 'wǔ yì jīn', '先进去': 'xiān jìn qù', '广州': 'Guǎng zhōu', '别人有的': 'bié ren yǒu de', '我们有的': 'wǒ men yǒu de', '练练': 'liàn lian', '赶不上': 'gǎn bu shàng', '李医生': 'Lǐ yī shēng', '近地': 'jìn de', '页地': 'yè de', '西安': 'Xī ān', '李欣': 'Lǐ Xīn', '张伟': 'Zhāng Wěi', '跑来跑去地': 'pǎo lái pǎo qù de', '区长': 'qū zhǎng', '长在': 'zhǎng zài', '种的人': 'zhòng de rén', '得了奖': 'dé le jiǎng', '不少年轻人': 'bù shǎo nián qīng rén', '王经理': 'Wáng jīng lǐ',
+         '一天下来': 'yì tiān xià lai', '有效率': 'yǒu xiào lǜ', '不再见面': 'bú zài jiàn miàn', '好运气': 'hǎo yùn qi', '用得上的话': 'yòng de shàng de huà', '英国': 'Yīng guó', '种上': 'zhòng shàng', '浇浇': 'jiāo jiao', '散散步': 'sàn san bù', '陈的人': 'Chén de rén', '种不少': 'zhòng bù shǎo', '忙不过来': 'máng bu guò lái', '李小姐': 'Lǐ xiǎo jie', '人民路': 'Rén mín lù', '小陈': 'Xiǎo Chén', '五一斤': 'wǔ yì jīn', '先进去': 'xiān jìn qù', '广州': 'Guǎng zhōu', '别人有的': 'bié ren yǒu de', '我们有的': 'wǒ men yǒu de', '练练': 'liàn lian', '赶不上': 'gǎn bu shàng', '李医生': 'Lǐ yī shēng', '近地': 'jìn de', '页地': 'yè de', '西安': 'Xī ān', '李欣': 'Lǐ Xīn', '张伟': 'Zhāng Wěi', '跑来跑去地': 'pǎo lái pǎo qù de', '区长': 'qū zhǎng', '长在': 'zhǎng zài', '种的人': 'zhòng de rén', '得了奖': 'dé le jiǎng', '不少年轻人': 'bù shǎo nián qīng rén', '刘阿姨': 'Liú ā yí', '正面临': 'zhèng miàn lín', '一张红纸': 'yì zhāng hóng zhǐ', '方向长': 'fāng xiàng zhǎng', '都得在': 'dōu děi zài', '研究生态': 'yán jiū shēng tài', '老周': 'Lǎo Zhōu', '更好地': 'gèng hǎo de', '种了解': 'zhǒng liǎo jiě', '哈欠': 'hā qian', '穿着': 'chuān zhe', '汉服': 'Hàn fú', '汉族': 'Hàn zú', '武汉': 'Wǔ hàn', '刘明': 'Liú Míng', '陈老板': 'Chén lǎo bǎn', '姓陈': 'xìng Chén', '温暖和': 'wēn nuǎn hé', '重庆': 'Chóng qìng', '浙江': 'Zhè jiāng', '杭州': 'Háng zhōu', '山东': 'Shān dōng', '哈尔滨': 'Hā ěr bīn', '张大爷': 'Zhāng dà ye', '王经理': 'Wáng jīng lǐ',
          '我得带带': 'wǒ děi dài dai', '看会儿': 'kàn huì r', '急急忙忙地': 'jí jí máng máng de', '要长': 'yào zhǎng', '长出': 'zhǎng chū', '上长的': 'shàng zhǎng de', '种树': 'zhòng shù', '种的树': 'zhòng de shù',
          '星期一': 'xīng qī yī', '星期二': 'xīng qī èr', '星期三': 'xīng qī sān', '星期四': 'xīng qī sì',
          '星期五': 'xīng qī wǔ', '星期六': 'xīng qī liù',
@@ -50,11 +50,11 @@ WORDS = {'家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天
          '小张': 'Xiǎo Zhāng', '小李': 'Xiǎo Lǐ', '张先生': 'Zhāng xiān sheng', '张老师': 'Zhāng lǎo shī',
          '张经理': 'Zhāng jīng lǐ', '李经理': 'Lǐ jīng lǐ', '姓张': 'xìng Zhāng', '张红': 'Zhāng Hóng', '韩国': 'Hán guó', '李丽': 'Lǐ Lì', '李阿姨': 'Lǐ ā yí', '云南': 'Yún nán', '豆豆': 'Dòu dou', '长城': 'Cháng chéng', '小王': 'Xiǎo Wáng', '小明': 'Xiǎo Míng', '李强': 'Lǐ Qiáng', '小林': 'Xiǎo Lín', '老张': 'Lǎo Zhāng', '王师傅': 'Wáng shī fu', '小周': 'Xiǎo Zhōu', '小马': 'Xiǎo Mǎ', '刘经理': 'Liú jīng lǐ', '北京': 'Běi jīng', '上海': 'Shàng hǎi', '日本': 'Rì běn', '美国': 'Měi guó'}
 # single characters pypinyin reads one way here and another there (谁 shuí / shéi): one reading
-SINGLE = {'谁': 'shéi', '没': 'méi', '脏': 'zāng', '王': 'Wáng', '长': 'cháng', '都': 'dōu', '教': 'jiāo', '觉': 'jiào'}   # 教 alone teaches (教室 is a word); 觉 alone is sleep (觉得 is a word)   # 王 alone is the surname (姓王); 长 alone is long (长大 is a word)
+SINGLE = {'谁': 'shéi', '没': 'méi', '脏': 'zāng', '更': 'gèng', '王': 'Wáng', '长': 'cháng', '都': 'dōu', '教': 'jiāo', '觉': 'jiào'}   # 教 alone teaches (教室 is a word); 觉 alone is sleep (觉得 is a word)   # 王 alone is the surname (姓王); 长 alone is long (长大 is a word)
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
 # 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
 NOT_WORDS = {'个人', '十分', '只要', '有时', '新手', '要不', '不满', '才能', '看中', '学会', '来回', '都会', '也好', '大多', '把手',
-             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容', '不适', '别看', '人种', '没收', '对白', '天才'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
+             '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容', '不适', '别看', '人种', '没收', '对白', '天才', '人手', '要好', '出自'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
 # 要不要, 不满意, 只有…才能, 看中国, 学会了 (HSK 3): the words 要不 / 不满 / 才能 / 看中 / 学会 cut them wrongly
 # (我来回答, 都会去, 对身体也好, 大多了, 把手机 likewise)
 # (HSK 4: 有机会, 放下手机, 很多人家, 有人选择, 和平时, 平时差不多, 好心情, 只得了, 我们家用了, 有意义, 很多人为了)
@@ -197,6 +197,7 @@ def reading(text, given=None):
     given: hand-written pinyin for the whole text, syllables space-separated, punctuation left out"""
     chunks = re.findall(r'[㐀-鿿]+|[^㐀-鿿]+', text)
     words = []
+    pos = 0
     for c in chunks:
         if is_hanzi(c[0]) and c in SURNAME_ALONE:     # a surname set off by punctuation: 姓王、李、张……
             words.append((c, [SURNAME_ALONE[c]]))
@@ -204,11 +205,14 @@ def reading(text, given=None):
             ws = _de(_measure(_numbers(_words(c))))
             if ws and ws[0][0] == '地' and words and words[-1][0].endswith('）'):   # （　）地: a blank's adverb
                 ws[0] = ('地', ['de'])
+            if ws and ws[-1][0] == '地' and len(ws) > 1 and text[pos + len(c):pos + len(c) + 1] == '（':   # 更好地（　）
+                ws[-1] = ('地', ['de'])
             if not given:
                 _sandhi(ws)               # within the run only: not across punctuation
             words.extend(ws)
         else:
             words.append((c, [None] * len(c)))
+        pos += len(c)
     if given:
         sylls = given.split()
         han = [i for i, (w, s) in enumerate(words) if s and s[0] is not None]
