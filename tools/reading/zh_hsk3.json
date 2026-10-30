@@ -1,0 +1,567 @@
+{
+  "id": "zh_hsk3",
+  "lang": "zh",
+  "level": "HSK 3",
+  "order": 4,
+  "note": "HSK 3 reading rounds in the 新版HSK (2025-12) format, Mainland edition (Simplified, Mainland wording): 第一部分 句子配对 ×10 (two groups of 5, six sentences each), 第二部分 选词填空 ×10 (41–45 sentences, 46–50 dialogues), 第三部分 读短文回答问题 ×10 (51–56 one question each, 57–60 two texts × 2); 3 options, pinyin hidden as on the paper; the mock exam is 30 minutes. Original texts, words within HSK 1–3. Drafted 2026-10-30 in tools/.mockups/hsk3_rd.py.",
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你周末打算做什么？", "这件衬衫怎么样？", "经理怎么不在办公室？", "你怎么还没洗澡？", "我们几点出发？", "你的腿怎么了？"],
+          "questions": [
+            {"q": "他去开会了，你一个小时以后再来吧。", "answer": "C", "zh": "問經理為什麼不在辦公室，回答「他去開會了」。", "en": "\"Why isn't the manager in the office?\" — \"He's gone to a meeting.\""},
+            {"q": "有点儿短，你试试那件蓝色的。", "answer": "B", "zh": "問襯衫怎麼樣，回答「有點兒短」，再建議試另一件。", "en": "\"How's this shirt?\" — \"A bit short; try the blue one.\""},
+            {"q": "我想去爬山，你要不要一起去？", "answer": "A", "zh": "問週末的打算，回答「我想去爬山」。", "en": "\"What are you doing at the weekend?\" — \"I want to go climbing.\""},
+            {"q": "昨天踢球踢得太久了，有点儿疼。", "answer": "F", "zh": "問腿怎麼了，回答踢球踢得太久，有點兒疼。", "en": "\"What's wrong with your leg?\" — \"I played football too long; it hurts a bit.\""},
+            {"q": "别着急，八点半走就可以。", "answer": "E", "zh": "問幾點出發，回答「八點半走就可以」。D 是多出來的。", "en": "\"What time do we leave?\" — \"Half past eight will do.\" D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你最近怎么这么忙？", "这个菜是谁做的？", "你还记得他的电话号码吗？", "图书馆几点关门？", "你会骑自行车吗？", "这儿的环境怎么样？"],
+          "questions": [
+            {"q": "不记得了，你问问小李吧。", "answer": "C", "zh": "問還記不記得電話號碼，回答「不記得了」。", "en": "\"Do you still remember his number?\" — \"No, ask Xiao Li.\""},
+            {"q": "公司来了很多新同事，我要帮他们做很多事。", "answer": "A", "zh": "問為什麼這麼忙，回答公司來了新同事。", "en": "\"Why are you so busy lately?\" — \"Lots of new colleagues to help.\""},
+            {"q": "很安静，也很干净。", "answer": "F", "zh": "問環境怎麼樣，回答「很安靜，也很乾淨」。", "en": "\"What's it like here?\" — \"Very quiet, and clean.\""},
+            {"q": "是我奶奶做的，你尝尝。", "answer": "B", "zh": "問菜是誰做的，回答「是我奶奶做的」。", "en": "\"Who made this dish?\" — \"My grandma; have a taste.\""},
+            {"q": "会，我小时候就学会了。", "answer": "E", "zh": "問會不會騎自行車，回答「會」。D 是多出來的。", "en": "\"Can you ride a bike?\" — \"Yes, I learnt as a child.\" D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["地方", "一般", "检查", "担心", "而且", "照顾"],
+          "questions": [
+            {"q": "这个（　）太小了，放不下这么多桌子。", "answer": "A", "zh": "「這個地方太小了」：說空間用「地方」。", "en": "地方 (place, room): this place is too small for so many tables."},
+            {"q": "我（　）晚上十一点睡觉，早上七点起床。", "answer": "B", "zh": "「一般」是通常：我一般十一點睡覺。", "en": "一般 (usually): I usually go to bed at eleven."},
+            {"q": "考试的时候，写完了要再（　）一遍。", "answer": "C", "zh": "寫完了再「檢查」一遍。", "en": "检查 (check): when you finish, check it once more."},
+            {"q": "这家饭馆的菜很便宜，（　）很好吃。", "answer": "E", "zh": "「不但……而且……」的意思：便宜，而且好吃。", "en": "而且 (and also): cheap, and tasty too."},
+            {"q": "妈妈生病了，这个星期我每天在家（　）她。", "answer": "F", "zh": "在家「照顧」生病的媽媽。D「擔心」是多出來的。", "en": "照顾 (look after) my sick mother. D 担心 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["终于", "关心", "一边", "满意", "需要", "刚才"],
+          "questions": [
+            {"q": "A：你对这个房间（　）吗？\nB：很好，又干净又安静。", "answer": "D", "zh": "問對房間「滿意」嗎，回答很好。", "en": "满意 (satisfied): are you happy with the room?"},
+            {"q": "A：你（　）去哪儿了？我给你打了三个电话。\nB：对不起，我在洗澡，没听见。", "answer": "F", "zh": "「剛才」是不久以前：剛才去哪兒了？", "en": "刚才 (just now): where were you just now?"},
+            {"q": "A：我们（　）买点儿什么吗？\nB：不用了，冰箱里还有很多吃的。", "answer": "E", "zh": "「需要」買什麼嗎？回答「不用了」。", "en": "需要 (need): do we need to buy anything?"},
+            {"q": "A：你等了多长时间了？\nB：一个多小时，车（　）来了。", "answer": "A", "zh": "等了很久，「終於」來了。", "en": "终于 (at last): after an hour the bus finally came."},
+            {"q": "A：你奶奶喜欢做什么？\nB：她喜欢（　）听音乐一边做饭。", "answer": "C", "zh": "「一邊……一邊……」表示同時做兩件事。B「關心」是多出來的。", "en": "一边…一边… (while): she cooks while listening to music. B 关心 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我把会议的时间和地点发给大家了，请大家检查一下自己的邮箱。如果没有收到，请在星期五中午以前告诉我。",
+          "tr": {"en": "I have sent everyone the time and place of the meeting; please check your email. If you haven't received it, tell me before Friday noon."},
+          "questions": [
+            {"q": "他让大家：", "options": ["检查邮箱", "星期五开会", "中午吃饭"], "answer": 0, "zh": "他說「請大家檢查一下自己的郵箱」。", "en": "\"Please check your email.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我家附近新开了一个超市，东西比别的地方便宜，而且晚上十一点才关门，下班以后去买东西很方便。",
+          "tr": {"en": "A new supermarket has opened near my home; things are cheaper than elsewhere, and it doesn't close until 11 p.m., so shopping after work is easy."},
+          "questions": [
+            {"q": "关于那个超市，可以知道：", "options": ["东西很贵", "关门很晚", "离他家很远"], "answer": 1, "zh": "「晚上十一點才關門」，所以關門很晚。", "en": "\"It doesn't close until eleven\": it closes late."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "小王以前很少锻炼，身体也不太好。去年他开始每天早上跑步，现在他不但瘦了，而且很少生病了。",
+          "tr": {"en": "Xiao Wang used to exercise little and wasn't very healthy. Last year he started running every morning; now he has slimmed down and rarely gets ill."},
+          "questions": [
+            {"q": "小王现在怎么样？", "options": ["还是很少锻炼", "经常感冒", "身体比以前好"], "answer": 2, "zh": "「很少生病了」，說明身體比以前好。", "en": "\"He rarely gets ill now\": he's healthier than before."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这个周末我打算和朋友去公园，可是电视上说星期六有大雨，所以我们决定星期日再去。",
+          "tr": {"en": "This weekend I planned to go to the park with friends, but the TV said heavy rain on Saturday, so we decided to go on Sunday instead."},
+          "questions": [
+            {"q": "他们为什么不星期六去公园？", "options": ["会下大雨", "朋友没有时间", "公园关门了"], "answer": 0, "zh": "「電視上說星期六有大雨」。", "en": "\"The TV said heavy rain on Saturday.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我的电脑坏了，同事说可以帮我看看，但是他今天太忙了，让我明天把电脑带到他的办公室。",
+          "tr": {"en": "My computer is broken. A colleague said he could take a look, but he is too busy today and told me to bring it to his office tomorrow."},
+          "questions": [
+            {"q": "同事让他：", "options": ["买一个新电脑", "明天带电脑去", "今天就去他办公室"], "answer": 1, "zh": "同事「讓我明天把電腦帶到他的辦公室」。", "en": "\"He told me to bring it to his office tomorrow.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我妹妹对画画儿很感兴趣，每个星期六都去学画画儿。她的老师说她画得越来越好了。",
+          "tr": {"en": "My younger sister is very interested in drawing and goes to drawing lessons every Saturday. Her teacher says she is drawing better and better."},
+          "questions": [
+            {"q": "关于妹妹，可以知道：", "options": ["每天都去上课", "是一个老师", "画得越来越好"], "answer": 2, "zh": "老師說「她畫得越來越好了」。", "en": "\"She is drawing better and better.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "很多人觉得早上喝一杯咖啡对身体不好。其实，如果一天只喝一两杯，一般没有什么问题。但是晚上最好别喝，喝了可能会睡不着。",
+          "tr": {"en": "Many people think a cup of coffee in the morning is bad for you. In fact, one or two cups a day is usually fine. But better not drink it in the evening: you may not be able to sleep."},
+          "questions": [
+            {"q": "根据这段话，一天喝一两杯咖啡：", "options": ["一般没问题", "对身体很不好", "会让人很累"], "answer": 0, "zh": "「如果一天只喝一兩杯，一般沒有什麼問題」。", "en": "\"One or two cups a day is usually fine.\""},
+            {"q": "晚上喝咖啡可能会怎么样？", "options": ["更想吃东西", "睡不着觉", "感冒"], "answer": 1, "zh": "「晚上最好別喝，喝了可能會睡不著」。", "en": "\"Drink it and you may not sleep.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "我刚来北京的时候，一句汉语也不会说，去超市买东西都很难。后来我每天跟中国同学一起练习，三个月以后，我已经能用汉语跟别人聊天了。现在我觉得学汉语越来越有意思。",
+          "tr": {"en": "When I first came to Beijing I couldn't say a word of Chinese; even shopping was hard. Then I practised with Chinese classmates every day, and after three months I could already chat in Chinese. Now learning Chinese feels more and more interesting."},
+          "questions": [
+            {"q": "他刚到北京的时候：", "options": ["经常去超市", "认识很多中国人", "不会说汉语"], "answer": 2, "zh": "「一句漢語也不會說」。", "en": "\"I couldn't say a word of Chinese.\""},
+            {"q": "他是怎么学汉语的？", "options": ["和同学一起练习", "看电影", "去学校上课"], "answer": 0, "zh": "「每天跟中國同學一起練習」。", "en": "\"I practised with Chinese classmates every day.\""}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你怎么买了这么多水果？", "我们坐几路公交车？", "你哥哥结婚了吗？", "这个题你会做吗？", "你为什么不开车？", "今天的会议几点结束？"],
+          "questions": [
+            {"q": "还没有，他说想先把工作做好。", "answer": "C", "zh": "問哥哥結婚了沒有，回答「還沒有」。", "en": "\"Is your brother married?\" — \"Not yet.\""},
+            {"q": "太难了，我也不会，我们问问老师吧。", "answer": "D", "zh": "問這個題會不會做，回答「我也不會」。", "en": "\"Can you do this question?\" — \"It's too hard; let's ask the teacher.\""},
+            {"q": "明天我的同学们要来家里玩儿。", "answer": "A", "zh": "問為什麼買這麼多水果，回答同學要來。", "en": "\"Why so much fruit?\" — \"My classmates are coming over tomorrow.\""},
+            {"q": "路上车太多了，坐地铁比较快。", "answer": "E", "zh": "問為什麼不開車，回答坐地鐵比較快。", "en": "\"Why aren't you driving?\" — \"Too much traffic; the underground is quicker.\""},
+            {"q": "坐三路，在学校门口下车。", "answer": "B", "zh": "問坐幾路公交車，回答「坐三路」。F 是多出來的。", "en": "\"Which bus number?\" — \"Number three.\" F is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你的新同事怎么样？", "这条裤子多少钱？", "你看见我的手表了吗？", "你明天能早点儿来吗？", "你喜欢什么季节？", "电影是不是已经开始了？"],
+          "questions": [
+            {"q": "一百二，比上次那条便宜。", "answer": "B", "zh": "問褲子多少錢，回答價錢。", "en": "\"How much are the trousers?\" — \"120.\""},
+            {"q": "秋天，不冷也不热。", "answer": "E", "zh": "問喜歡什麼季節，回答「秋天」。", "en": "\"Which season do you like?\" — \"Autumn.\""},
+            {"q": "可以，我七点半就到。", "answer": "D", "zh": "問能不能早點兒來，回答「七點半就到」。", "en": "\"Can you come early tomorrow?\" — \"Sure, I'll be there by 7:30.\""},
+            {"q": "在桌子上，电脑旁边，你自己找找。", "answer": "C", "zh": "問看見手錶沒有，回答在桌子上。", "en": "\"Have you seen my watch?\" — \"On the desk, by the computer.\""},
+            {"q": "人很好，工作也很认真。", "answer": "A", "zh": "問新同事怎麼樣，回答人好、工作認真。F 是多出來的。", "en": "\"What's the new colleague like?\" — \"Nice, and hard-working.\" F is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["历史", "突然", "决定", "安静", "习惯", "还是"],
+          "questions": [
+            {"q": "我们正在吃饭，外面（　）下起了大雨。", "answer": "B", "zh": "雨來得很快，沒想到：「突然」。", "en": "突然 (suddenly): it suddenly started to pour."},
+            {"q": "我对中国（　）很感兴趣，看了很多这样的书。", "answer": "A", "zh": "對中國「歷史」感興趣。", "en": "历史 (history): I'm interested in Chinese history."},
+            {"q": "图书馆里很（　），大家都在看书。", "answer": "D", "zh": "圖書館裡很「安靜」。", "en": "安静 (quiet): the library is quiet."},
+            {"q": "他已经（　）了，明年去上海工作。", "answer": "C", "zh": "「決定」了一件事。", "en": "决定 (decide): he has decided to work in Shanghai next year."},
+            {"q": "我刚来的时候不（　）这儿的天气，现在好多了。", "answer": "E", "zh": "「不習慣」天氣。F「還是」是多出來的。", "en": "习惯 (be used to): at first I wasn't used to the weather. F 还是 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["总是", "发现", "借", "简单", "注意", "难过"],
+          "questions": [
+            {"q": "A：这个题这么（　），你怎么还做错了？\nB：我写得太快了。", "answer": "D", "zh": "題很「簡單」卻做錯了。", "en": "简单 (easy): such an easy question!"},
+            {"q": "A：你能（　）我一本词典吗？\nB：好的，给你。", "answer": "C", "zh": "向別人「借」東西。", "en": "借 (lend / borrow): can you lend me a dictionary?"},
+            {"q": "A：外面下雪了，开车要（　）点儿。\nB：知道了，我会慢一点儿开。", "answer": "E", "zh": "下雪了，開車要「注意」。", "en": "注意 (be careful): it's snowing."},
+            {"q": "A：他怎么（　）迟到？\nB：他家离公司太远了。", "answer": "A", "zh": "「總是」遲到，是一直這樣。", "en": "总是 (always): why is he always late?"},
+            {"q": "A：我的手机找不到了。\nB：别着急，你什么时候（　）的？", "answer": "B", "zh": "什麼時候「發現」手機不見了。F「難過」是多出來的。", "en": "发现 (notice): when did you notice? F 难过 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这家饭馆的菜很好吃，可是人太多了，每次去都要等半个多小时。如果你想去，最好先打电话。",
+          "tr": {"en": "This restaurant's food is very good, but it's so crowded that every time you have to wait over half an hour. If you want to go, it's best to phone first."},
+          "questions": [
+            {"q": "那家饭馆：", "options": ["菜不好吃", "人很多", "离这儿很远"], "answer": 1, "zh": "「人太多了，每次去都要等半個多小時」。", "en": "\"It's very crowded; you always wait.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我女儿今年上小学一年级。她每天放学回家后，先做作业，然后才看一会儿电视。",
+          "tr": {"en": "My daughter is in her first year of primary school. Every day after school she does her homework first and only then watches a little TV."},
+          "questions": [
+            {"q": "女儿放学回家后先做什么？", "options": ["做作业", "看电视", "吃饭"], "answer": 0, "zh": "「先做作業，然後才看一會兒電視」。", "en": "\"Homework first, then a little TV.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "明天上午九点在三楼会议室开会，请大家不要迟到。会议大概一个小时，开完会我们一起去吃午饭。",
+          "tr": {"en": "There's a meeting tomorrow at nine in the third-floor meeting room; please don't be late. It will take about an hour, and afterwards we'll all go for lunch."},
+          "questions": [
+            {"q": "会议大概开多长时间？", "options": ["半个小时", "三个小时", "一个小时"], "answer": 2, "zh": "「會議大概一個小時」。", "en": "\"It will take about an hour.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "以前我总是坐出租车上班，又贵又常常要等很长时间。上个月我买了一辆自行车，现在每天骑车上班，不但便宜，还锻炼了身体。",
+          "tr": {"en": "I used to take a taxi to work — expensive, and often a long wait. Last month I bought a bike; now I cycle every day, which is cheap and keeps me fit."},
+          "questions": [
+            {"q": "他现在怎么上班？", "options": ["坐出租车", "骑自行车", "坐地铁"], "answer": 1, "zh": "「現在每天騎車上班」。", "en": "\"Now I cycle to work every day.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我的护照找不到了，下个星期就要去旅游，真着急。我妈妈让我别担心，她说先想一想最后一次用护照是在哪儿。",
+          "tr": {"en": "I can't find my passport and I'm travelling next week — I'm so worried. My mum told me not to worry and to think first where I last used it."},
+          "questions": [
+            {"q": "妈妈让他：", "options": ["先想一想", "马上去买", "不要去旅游"], "answer": 0, "zh": "媽媽說「先想一想最後一次用護照是在哪兒」。", "en": "\"Think first where you last used it.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这个房子离地铁站很近，房间也很大，可是有点儿旧，洗手间也比较小。但是它很便宜，我还是很满意。",
+          "tr": {"en": "This flat is close to the underground and the rooms are big, but it's a bit old and the bathroom is small. Still, it's cheap, so I'm happy with it."},
+          "questions": [
+            {"q": "他对那个房子：", "options": ["一点儿也不喜欢", "还没决定", "比较满意"], "answer": 2, "zh": "「我還是很滿意」。", "en": "\"I'm still happy with it.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "每个人都有自己的习惯。有的人喜欢早上学习，觉得早上记东西最快；有的人喜欢晚上学习，因为晚上比较安静。其实，找到对自己最好的时间最重要。",
+          "tr": {"en": "Everyone has their own habits. Some like to study in the morning, when they remember things fastest; some prefer the evening because it's quieter. Really, finding the time that suits you is what matters most."},
+          "questions": [
+            {"q": "有的人喜欢晚上学习，是因为晚上：", "options": ["记东西最快", "比较安静", "没有作业"], "answer": 1, "zh": "「因為晚上比較安靜」。", "en": "\"Because the evening is quieter.\""},
+            {"q": "这段话主要想告诉我们：", "options": ["找到对自己最好的时间", "早上学习最好", "晚上不要学习"], "answer": 0, "zh": "「找到對自己最好的時間最重要」。", "en": "\"Finding the time that suits you matters most.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "上周末我和同学去爬山。早上出发的时候天气很好，可是到了山上突然刮起了大风，还下起了雨。我们在一个小饭馆里等了两个小时，雨小了才下山。虽然很累，但是大家都觉得很有意思。",
+          "tr": {"en": "Last weekend I went hiking with classmates. The weather was fine when we set off, but on the mountain a strong wind suddenly rose and it began to rain. We waited two hours in a small restaurant until the rain eased before coming down. It was tiring, but everyone found it fun."},
+          "questions": [
+            {"q": "到了山上，天气怎么样？", "options": ["一直很好", "很热", "刮风下雨了"], "answer": 2, "zh": "「突然颳起了大風，還下起了雨」。", "en": "\"A strong wind suddenly rose and it rained.\""},
+            {"q": "他们在小饭馆里：", "options": ["吃午饭", "等雨小", "找同学"], "answer": 1, "zh": "「在一個小飯館裡等了兩個小時，雨小了才下山」。", "en": "\"We waited two hours until the rain eased.\""}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你的感冒好了吗？", "这些书你要带走吗？", "你在哪儿学的游泳？", "你们公司离这儿远吗？", "你今天怎么穿得这么漂亮？", "你觉得这个故事怎么样？"],
+          "questions": [
+            {"q": "好多了，明天就能去上班了。", "answer": "A", "zh": "問感冒好了沒有，回答「好多了」。", "en": "\"Is your cold better?\" — \"Much better.\""},
+            {"q": "不远，走路十分钟就到。", "answer": "D", "zh": "問公司遠不遠，回答「不遠」。", "en": "\"Is your company far?\" — \"No, ten minutes' walk.\""},
+            {"q": "晚上有一个朋友的生日晚会。", "answer": "E", "zh": "問為什麼穿得漂亮，回答要去生日晚會。", "en": "\"Why so dressed up?\" — \"A friend's birthday party tonight.\""},
+            {"q": "不带了，我已经看完了，送给你吧。", "answer": "B", "zh": "問書帶不帶走，回答「不帶了」。", "en": "\"Taking these books?\" — \"No, you can have them.\""},
+            {"q": "很有意思，我女儿听了好几遍。", "answer": "F", "zh": "問故事怎麼樣，回答「很有意思」。C 是多出來的。", "en": "\"What do you think of the story?\" — \"Very interesting.\" C is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你怎么不吃了？", "明天的考试你准备好了吗？", "这个空调怎么不凉快？", "你的护照办好了吗？", "我们去哪儿吃晚饭？", "你还在生气吗？"],
+          "questions": [
+            {"q": "可能坏了，我明天找人来看看。", "answer": "C", "zh": "問空調為什麼不涼快，回答「可能壞了」。", "en": "\"Why isn't the air-con cooling?\" — \"Maybe it's broken.\""},
+            {"q": "早就不生气了，我们去喝杯咖啡吧。", "answer": "F", "zh": "問還生不生氣，回答「早就不生氣了」。", "en": "\"Are you still angry?\" — \"Not at all any more.\""},
+            {"q": "我已经吃饱了，你慢慢吃。", "answer": "A", "zh": "問為什麼不吃了，回答「吃飽了」。", "en": "\"Why have you stopped eating?\" — \"I'm full.\""},
+            {"q": "差不多了，晚上再复习一遍。", "answer": "B", "zh": "問考試準備好了沒有，回答「差不多了」。", "en": "\"Ready for tomorrow's test?\" — \"Nearly; I'll revise again tonight.\""},
+            {"q": "学校旁边新开了一家饭馆，去试试吧。", "answer": "E", "zh": "問去哪兒吃晚飯，回答學校旁邊的新飯館。D 是多出來的。", "en": "\"Where shall we eat?\" — \"The new place by the school.\" D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["机会", "必须", "影响", "只有", "奇怪", "着急"],
+          "questions": [
+            {"q": "这是一个很好的学习（　），你一定要去。", "answer": "A", "zh": "很好的學習「機會」。", "en": "机会 (chance): a good chance to learn."},
+            {"q": "晚上玩儿手机太久，会（　）睡觉。", "answer": "C", "zh": "手機玩兒太久會「影響」睡覺。", "en": "影响 (affect): too much phone time affects sleep."},
+            {"q": "明天的会很重要，你（　）参加。", "answer": "B", "zh": "很重要，所以「必須」參加。", "en": "必须 (must): you must attend."},
+            {"q": "真（　），他平时很早就到，今天怎么还没来？", "answer": "E", "zh": "和平時不一樣，覺得「奇怪」。", "en": "奇怪 (strange): odd, he's usually early."},
+            {"q": "（　）多练习，你的汉语才能越来越好。", "answer": "D", "zh": "「只有……才……」表示條件。F「著急」是多出來的。", "en": "只有…才… (only if): only by practising will your Chinese improve. F 着急 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["相信", "放", "健康", "一定", "舒服", "为了"],
+          "questions": [
+            {"q": "A：你把我的手机（　）在哪儿了？\nB：桌子上，电脑旁边。", "answer": "B", "zh": "把東西「放」在哪兒。", "en": "放 (put): where did you put my phone?"},
+            {"q": "A：你哪儿不（　）？\nB：我头疼，还有点儿发烧。", "answer": "E", "zh": "問哪兒不「舒服」。", "en": "舒服 (well, comfortable): where do you feel unwell?"},
+            {"q": "A：你（　）他能做好吗？\nB：当然，他做事很认真。", "answer": "A", "zh": "「相信」他能做好。", "en": "相信 (believe): do you trust he can do it?"},
+            {"q": "A：你为什么每天都去游泳？\nB：（　）锻炼身体。", "answer": "F", "zh": "「為了」鍛鍊身體，表示目的。", "en": "为了 (in order to): to keep fit."},
+            {"q": "A：明天的晚会你会来吗？\nB：（　）来，我已经准备好礼物了。", "answer": "D", "zh": "「一定」來，表示肯定。C「健康」是多出來的。", "en": "一定 (definitely): I'll definitely come. C 健康 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我们学校的图书馆周一到周五早上八点开门，晚上十点关门；周末开门时间比较晚，上午十点才开。",
+          "tr": {"en": "Our school library opens at 8 a.m. and closes at 10 p.m. Monday to Friday; at weekends it opens later, not until 10 a.m."},
+          "questions": [
+            {"q": "图书馆周末几点开门？", "options": ["早上八点", "上午十点", "晚上十点"], "answer": 1, "zh": "「週末……上午十點才開」。", "en": "\"At weekends it opens at 10 a.m.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "小张，经理让你下午两点去他的办公室，他要跟你说一下下个月去上海的事情。",
+          "tr": {"en": "Xiao Zhang, the manager wants you in his office at two this afternoon; he wants to talk to you about next month's trip to Shanghai."},
+          "questions": [
+            {"q": "经理要和小张说什么？", "options": ["开会的事", "买电脑的事", "去上海的事"], "answer": 2, "zh": "「下個月去上海的事情」。", "en": "\"About next month's trip to Shanghai.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这条街上有很多小饭馆，东西又好吃又便宜。每到周末，很多年轻人都来这里，一边吃一边聊天儿。",
+          "tr": {"en": "This street has many little restaurants; the food is tasty and cheap. Every weekend lots of young people come here to eat and chat."},
+          "questions": [
+            {"q": "周末很多年轻人来这条街：", "options": ["吃东西聊天儿", "买衣服", "看电影"], "answer": 0, "zh": "「一邊吃一邊聊天兒」。", "en": "\"They eat and chat.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我以为这次考试很难，所以准备了很长时间。没想到题都很简单，我半个小时就写完了。",
+          "tr": {"en": "I thought this exam would be hard, so I prepared for a long time. To my surprise the questions were all easy, and I finished in half an hour."},
+          "questions": [
+            {"q": "这次考试：", "options": ["非常难", "他没有准备", "比他想的简单"], "answer": 2, "zh": "「沒想到題都很簡單」。", "en": "\"The questions were easier than he expected.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我家的小猫特别喜欢睡觉，一天能睡十几个小时。只有吃饭的时候它才会跑过来，吃完又去睡了。",
+          "tr": {"en": "Our cat loves sleeping — it can sleep over ten hours a day. It only comes running at mealtimes, then goes back to sleep."},
+          "questions": [
+            {"q": "小猫什么时候会跑过来？", "options": ["有人回家的时候", "吃饭的时候", "早上起床的时候"], "answer": 1, "zh": "「只有吃飯的時候它才會跑過來」。", "en": "\"Only at mealtimes.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我是北方人，在北方，冬天外面特别冷，可是房间里一点儿也不冷，在家穿一件衬衫就可以了。我现在在南方上学，这里冬天外面不太冷，可是房间里很冷，在家也要穿得很多。",
+          "tr": {"en": "I'm from the north: in winter it's very cold outside, but indoors it isn't cold at all — a shirt is enough. Now I study in the south: outside it isn't so cold in winter, but indoors it's cold and I have to wrap up."},
+          "questions": [
+            {"q": "在北方，冬天房间里：", "options": ["不冷", "要穿很多衣服", "比外面冷"], "answer": 0, "zh": "北方冬天「房間裡一點兒也不冷」。", "en": "\"In the north, indoors isn't cold at all.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "我爷爷今年七十多岁了，他每天早上六点起床，先去公园锻炼一个小时，然后回家吃早饭、看报纸。下午他喜欢和朋友一起喝茶聊天儿。爷爷常说，人老了更要多运动，多和别人聊天儿，这样才会每天都高兴。",
+          "tr": {"en": "My grandfather is over seventy. He gets up at six every morning, exercises in the park for an hour, then comes home for breakfast and the newspaper. In the afternoon he likes drinking tea and chatting with friends. He often says that the older you are, the more you should exercise and chat with others — that keeps you happy."},
+          "questions": [
+            {"q": "爷爷每天早上先做什么？", "options": ["吃早饭", "看报纸", "去公园锻炼"], "answer": 2, "zh": "「先去公園鍛鍊一個小時，然後回家吃早飯」。", "en": "\"First an hour of exercise in the park.\""},
+            {"q": "爷爷觉得人老了应该：", "options": ["多睡觉", "多运动多聊天儿", "少出门"], "answer": 1, "zh": "「人老了更要多運動，多和別人聊天兒」。", "en": "\"Exercise more and chat with others more.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "现在很多人喜欢在网上买东西，因为不用出门，东西也比较便宜。但是网上买东西也有问题：有时候买来的衣服跟照片上的不一样，大小也不合适。所以买衣服的时候，我还是喜欢去商店，自己穿上试一试。",
+          "tr": {"en": "Many people like shopping online now: you needn't go out and things are cheaper. But it has problems: sometimes clothes don't look like the photo, or don't fit. So for clothes I still prefer going to a shop and trying them on."},
+          "questions": [
+            {"q": "很多人喜欢在网上买东西，是因为：", "options": ["不用出门", "东西很新", "可以试穿"], "answer": 0, "zh": "「因為不用出門，東西也比較便宜」。", "en": "\"You needn't go out, and it's cheaper.\""},
+            {"q": "买衣服的时候，他喜欢：", "options": ["在网上买", "让朋友帮他买", "去商店试穿"], "answer": 2, "zh": "「我還是喜歡去商店，自己穿上試一試」。", "en": "\"I still prefer a shop, to try them on.\""}
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 30,
+      "items": [
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你们班有多少个学生？", "这个包是谁的？", "你怎么才来？", "你喜欢喝绿茶还是红茶？", "你周末一般做什么？", "要不要我帮你拿？"],
+          "questions": [
+            {"q": "不用了，我自己可以。", "answer": "F", "zh": "問要不要幫忙拿，回答「不用了」。", "en": "\"Shall I carry it?\" — \"No need.\""},
+            {"q": "二十五个，男生有十个。", "answer": "A", "zh": "問班裡有多少學生，回答「二十五個」。", "en": "\"How many students?\" — \"Twenty-five.\""},
+            {"q": "对不起，路上车太多了。", "answer": "C", "zh": "問怎麼才來，說明遲到的原因。", "en": "\"Why so late?\" — \"Sorry, heavy traffic.\""},
+            {"q": "好像是小李的，他刚才放在这儿的。", "answer": "B", "zh": "問包是誰的，回答「好像是小李的」。", "en": "\"Whose bag is this?\" — \"Xiao Li's, I think.\""},
+            {"q": "在家看看书，有时候也去打打球。", "answer": "E", "zh": "問週末做什麼，回答看書、打球。D 是多出來的。", "en": "\"What do you do at weekends?\" — \"Read, play ball sometimes.\" D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你的箱子里是什么？", "他们两个是什么关系？", "这儿可以照相吗？", "你吃过这种水果吗？", "你的作业写完了吗？", "你们什么时候放假？"],
+          "questions": [
+            {"q": "还差一点儿，吃完饭再写。", "answer": "E", "zh": "問作業寫完沒有，回答「還差一點兒」。", "en": "\"Finished your homework?\" — \"Almost.\""},
+            {"q": "他是哥哥，他是弟弟，你看他们长得多像！", "answer": "B", "zh": "問兩個人是什麼關係，回答是哥哥和弟弟。", "en": "\"How are those two related?\" — \"Brothers.\""},
+            {"q": "里面都是送给朋友的礼物。", "answer": "A", "zh": "問箱子裡是什麼，回答都是禮物。", "en": "\"What's in your box?\" — \"Presents for friends.\""},
+            {"q": "没有，这是第一次，有点儿甜。", "answer": "D", "zh": "問吃沒吃過這種水果，回答「這是第一次」。", "en": "\"Have you had this fruit?\" — \"First time.\""},
+            {"q": "下个月十号，放一个月。", "answer": "F", "zh": "問什麼時候放假，回答「下個月十號」。C 是多出來的。", "en": "\"When do your holidays start?\" — \"The tenth of next month.\" C is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["参加", "干净", "经常", "容易", "变化", "提高"],
+          "questions": [
+            {"q": "下个星期的运动会，我们班有二十个同学（　）。", "answer": "A", "zh": "「參加」運動會。", "en": "参加 (take part): twenty classmates will take part in the sports day."},
+            {"q": "这几年我们这儿（　）很大，很多地方我都不认识了。", "answer": "E", "zh": "這裡「變化」很大。", "en": "变化 (change): this place has changed a lot."},
+            {"q": "多听多说，可以（　）你的汉语水平。", "answer": "F", "zh": "「提高」水平。", "en": "提高 (raise, improve) your level of Chinese."},
+            {"q": "这个字不（　）写，你多写几遍吧。", "answer": "D", "zh": "這個字不「容易」寫。", "en": "容易 (easy): this character isn't easy to write."},
+            {"q": "他（　）去那家咖啡馆，那里的服务员都认识他。", "answer": "C", "zh": "「經常」去，所以服務員都認識他。B 是多出來的。", "en": "经常 (often): he goes so often the staff know him. B is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["甜", "而且", "马上", "清楚", "世界", "同意"],
+          "questions": [
+            {"q": "A：黑板上的字你看得（　）吗？\nB：看不太清楚，我能坐到前面去吗？", "answer": "D", "zh": "問看得「清楚」嗎。", "en": "清楚 (clear): can you see the board clearly?"},
+            {"q": "A：我们去公园玩儿，好不好？\nB：我（　），但是要问问爸爸。", "answer": "F", "zh": "「我同意」，表示贊成。", "en": "同意 (agree): I agree, but must ask Dad."},
+            {"q": "A：你快点儿，电影快开始了！\nB：好，（　）就好。", "answer": "C", "zh": "「馬上」就好，表示很快。", "en": "马上 (right away): one moment!"},
+            {"q": "A：这个蛋糕怎么样？\nB：太（　）了，我不能吃太多。", "answer": "A", "zh": "蛋糕太「甜」了。", "en": "甜 (sweet): it's too sweet."},
+            {"q": "A：你去过哪些国家？\nB：不多，我想以后去（　）上很多地方看看。", "answer": "E", "zh": "去「世界」上很多地方。B「而且」是多出來的。", "en": "世界 (world): see many places in the world. B 而且 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "对不起，我今天晚上要在公司工作，不能和你一起去看电影了。我们明天晚上去，好吗？",
+          "tr": {"en": "Sorry, I have to work at the office tonight and can't go to the film with you. Shall we go tomorrow evening?"},
+          "questions": [
+            {"q": "他今天晚上要：", "options": ["看电影", "工作", "和朋友吃饭"], "answer": 1, "zh": "「我今天晚上要在公司工作」。", "en": "\"I have to work at the office tonight.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这个周末商店里的衣服都很便宜，很多人去买。我也买了两件衬衫，一共才花了两百块。",
+          "tr": {"en": "This weekend clothes in the shops are cheap and lots of people are going. I bought two shirts too — only 200 yuan in all."},
+          "questions": [
+            {"q": "他买两件衬衫花了多少钱？", "options": ["两百块", "一百块", "三百块"], "answer": 0, "zh": "「一共才花了兩百塊」。", "en": "\"Only 200 yuan in all.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我同事小王做饭做得特别好，每次大家一起吃饭，都希望他能做几个菜。他说做饭是他最大的爱好。",
+          "tr": {"en": "My colleague Xiao Wang cooks really well; whenever we all eat together, everyone hopes he'll make a few dishes. He says cooking is his greatest hobby."},
+          "questions": [
+            {"q": "关于小王，可以知道：", "options": ["在饭馆工作", "不喜欢和大家吃饭", "很喜欢做饭"], "answer": 2, "zh": "「做飯是他最大的愛好」。", "en": "\"Cooking is his greatest hobby.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "请大家注意，因为天气不好，今天下午三点的飞机要晚两个小时起飞，请大家在这里休息一下。",
+          "tr": {"en": "Attention please: because of bad weather, the three o'clock flight this afternoon will take off two hours late. Please rest here for now."},
+          "questions": [
+            {"q": "飞机现在几点起飞？", "options": ["三点", "五点", "两点"], "answer": 1, "zh": "三點的飛機「要晚兩個小時」，所以五點起飛。", "en": "The three o'clock flight is two hours late: five o'clock."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我小时候很怕水，一直没学游泳。上大学以后，在同学的帮助下，我终于学会了。现在游泳是我最喜欢的运动。",
+          "tr": {"en": "As a child I was afraid of water and never learnt to swim. At university, with a classmate's help, I finally learnt. Now swimming is my favourite sport."},
+          "questions": [
+            {"q": "他是什么时候学会游泳的？", "options": ["上大学以后", "小时候", "工作以后"], "answer": 0, "zh": "「上大學以後……我終於學會了」。", "en": "\"After starting university.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "这家宾馆的房间很干净，服务员也很热情。可是，宾馆附近没有地铁站，去哪儿都要坐出租车，不太方便。",
+          "tr": {"en": "The rooms in this hotel are clean and the staff are friendly. But there's no underground station nearby, so you need a taxi to go anywhere — not very convenient."},
+          "questions": [
+            {"q": "这家宾馆有什么问题？", "options": ["房间不干净", "服务员不热情", "去哪儿都不方便"], "answer": 2, "zh": "「附近沒有地鐵站……不太方便」。", "en": "\"No underground nearby — inconvenient.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "我叫王明，是一名中学老师，教数学已经十年了。我的学生都很喜欢我，因为我上课的时候总是讲很多有意思的故事。我觉得，学生对一门课感兴趣，才会认真学。",
+          "tr": {"en": "I'm Wang Ming, a secondary-school teacher; I've taught maths for ten years. My students like me because I always tell interesting stories in class. I think students only study hard when they're interested in a subject."},
+          "questions": [
+            {"q": "王明教了多长时间数学？", "options": ["五年", "十年", "二十年"], "answer": 1, "zh": "「教數學已經十年了」。", "en": "\"Ten years.\""},
+            {"q": "王明认为学生什么时候才会认真学习？", "options": ["对课感兴趣的时候", "老师很认真的时候", "考试以前"], "answer": 0, "zh": "「學生對一門課感興趣，才會認真學」。", "en": "\"Only when interested in the subject.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "上个月我搬家了。新家离公司比较远，坐地铁要四十分钟，但是旁边有一个很大的公园，环境非常好。每天下班回来，我都去公园走一走，觉得一天的累都没有了。",
+          "tr": {"en": "I moved last month. The new place is farther from work — forty minutes on the underground — but there's a big park next to it and the surroundings are lovely. Every day after work I walk in the park and my tiredness goes away."},
+          "questions": [
+            {"q": "新家离公司：", "options": ["很近", "走路十分钟", "比较远"], "answer": 2, "zh": "「新家離公司比較遠，坐地鐵要四十分鐘」。", "en": "\"Farther from work: forty minutes by underground.\""},
+            {"q": "他下班以后常常：", "options": ["去公园走走", "在家做饭", "去公司工作"], "answer": 0, "zh": "「我都去公園走一走」。", "en": "\"I walk in the park.\""}
+          ]
+        }
+      ]
+    }
+  ]
+}

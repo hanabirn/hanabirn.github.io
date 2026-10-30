@@ -266,7 +266,10 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             # JLPT (2026-10-24): もんだい４ short texts, ５ mid-size, ６ information retrieval
             'ja_short', 'ja_mid', 'ja_info', 'ja_long', 'ja_integrated',
             # HSK (2026-10-30): match a picture, a reply, the next sentence; fill a blank; a text
-            'zh_pic', 'zh_match', 'zh_next', 'zh_bank', 'zh_text', 'zh_passage'}
+            'zh_pic', 'zh_match', 'zh_next', 'zh_bank', 'zh_text', 'zh_passage',
+            # HSK 4–6 (2026-10-30): a passage with numbered blanks — 4 options each (cloze) or a
+            # bank of sentences (fill); paragraphs put in order
+            'zh_cloze', 'zh_fill', 'zh_order'}
 
 # Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
 # levels below show no furigana until the visitor asks (owner's pick A1). The lists are the JLPT
@@ -362,10 +365,16 @@ def plain_of(marked):
 #   zh_match — sentences to match with the replies / next sentences of a bank, A–F
 #   zh_bank  — sentences with a blank （　） and a bank of words, A–F
 #   zh_text  — a text (one line per \n) and a ★ question with 3 options (4 from HSK 4)
+#   zh_cloze — a passage whose blanks （　） are its questions, each with its own 3 / 4 options (HSK 5–6)
+#   zh_fill  — a passage whose blanks （　） take sentences from a bank, A–F (HSK 4 第三部分, HSK 6)
+#   zh_order — paragraphs A–E (the bank) to put in order; each question is a place (HSK 5)
+# From HSK 4 a bank may hold exactly as many entries as questions (the papers' 33–37: A–E for five);
+# zh_fill / zh_order banks may too. The page numbers a passage's blanks with its questions' numbers.
 # In the bank types every question's options are the bank (a picture's are its letters), the
 # answer a letter or index, each letter the answer at most once; a bank has one spare.
-ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text'}
-ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank'}
+ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text', 'zh_cloze', 'zh_fill', 'zh_order'}
+ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
+ZH_BLANK_TYPES = {'zh_cloze', 'zh_fill'}     # a passage whose blanks are the questions
 LETTERS = 'ABCDEF'
 
 
@@ -450,7 +459,8 @@ def build_sets(data, name, problems):
                 problems.append(f'{iw}: unknown type {typ}')
             need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
                     'notice': ['notice'], 'chart': ['chart'],
-                    'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text']}.get(typ, [])
+                    'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text'],
+                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank']}.get(typ, [])
             for key in need:
                 if not it.get(key):
                     problems.append(f'{iw}: a {typ} item needs "{key}"')
@@ -465,12 +475,17 @@ def build_sets(data, name, problems):
             if typ in ZH_BANK_TYPES:
                 pic = it.get('pic') or {}
                 bank = list(LETTERS[:pic.get('cols', 0) * pic.get('rows', 0)]) if typ == 'zh_pic' else it.get('bank', [])
-                if len(bank) != len(it.get('questions', [])) + 1:
-                    problems.append(f'{iw}: a bank holds one more than the questions ({len(bank)} for {len(it.get("questions", []))})')
+                nq = len(it.get('questions', []))
+                exact_ok = typ in ('zh_fill', 'zh_order') or hsk_level(data.get('level')) >= 4
+                if not (len(bank) == nq + 1 or (exact_ok and len(bank) == nq)):
+                    problems.append(f'{iw}: a bank holds one more than the questions ({len(bank)} for {nq})')
+            if typ in ZH_BLANK_TYPES and it.get('text', '').count('（　）') != len(it.get('questions', [])):
+                problems.append(f'{iw}: a {typ} passage needs one （　） per question')
             tr = it.get('tr') or {}
             # a Chinese text is translated into English (the other languages come from
             # tools/content_i18n.py); the bank types' sentences are explained one by one
-            for lang in () if typ in ZH_BANK_TYPES else ('en',) if zh else ('zh', 'en'):
+            # (a zh_fill / zh_order passage is translated like a text)
+            for lang in () if typ in ('zh_pic', 'zh_match', 'zh_bank') else ('en',) if zh else ('zh', 'en'):
                 if not tr.get(lang):
                     problems.append(f'{iw}: no {lang} translation (tr)')
             qs, used_letters = [], set()
@@ -488,7 +503,7 @@ def build_sets(data, name, problems):
                         a = q.get('answer')
                         problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
                     used_letters.add(q.get('answer'))
-                    if not q.get('q'):
+                    if not q.get('q') and typ != 'zh_fill':
                         problems.append(f'{qw}: a {typ} question needs its sentence "q"')
                 opts = q.get('options', [])
                 want = len(bank) if bank is not None else (3 if hsk_level(data.get('level')) <= 3 else 4) if zh else 4
@@ -525,7 +540,7 @@ def build_sets(data, name, problems):
                     lines = [seg(line, iw) for line in it['text'].split('\n')]
                     item['text_t'] = [s for s, _ in lines]
                     item['text'] = '\n'.join(p for _, p in lines)
-                if typ in ('zh_match', 'zh_bank'):
+                if typ in ('zh_match', 'zh_bank', 'zh_fill', 'zh_order'):
                     got = [seg(b, iw) for b in it.get('bank', [])]
                     item['bank_t'] = [s for s, _ in got]
                     item['bank'] = [p for _, p in got]

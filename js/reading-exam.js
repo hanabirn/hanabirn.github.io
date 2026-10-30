@@ -52,7 +52,11 @@ const READING_ASK_ZH = {
     zh_next: '为下面的句子选择合适的下一句。',
     zh_bank: '选择合适的词语填空。',
     zh_text: '读句子，回答问题。',
-    zh_passage: '读短文，回答问题。'
+    zh_passage: '读短文，回答问题。',
+    // HSK 4–6 (2026-10-30)
+    zh_cloze: '阅读短文，选出最恰当的答案填空。',
+    zh_fill: '阅读短文，选择合适的句子填空。',
+    zh_order: '把下面的段落排成正确的顺序。'
 };
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA, zh: READING_ASK_ZH };
 const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。', zh: '读短文，回答问题。' };
@@ -60,7 +64,8 @@ const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
 const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];   // HSK letters them
 // HSK items whose questions share a bank (a picture's panels, words, replies): letter buttons only
-const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank'];
+const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'];
+// HSK passages whose blanks （　） are the questions: each blank shows its question's number
 
 function readingExLang() {
     const set = readingSets[readingSetId];
@@ -236,7 +241,7 @@ function readingExText(s) {
     return readingExMark(escHtml(s));
 }
 
-function readingExBodyHtml(item) {
+function readingExBodyHtml(item, nums, cur) {
     const lang = readingExLang();
     if (item.type === 'notice') {
         const n = item.notice;
@@ -272,9 +277,20 @@ function readingExBodyHtml(item) {
         return `<figure class="rdx-pic"><img src="data/reading/img/zh/${escHtml(p.f)}.webp" alt="" loading="lazy">
             <span class="rdx-pic-grid" style="${grid}" aria-hidden="true">${cells}</span></figure>`;
     }
-    if ((item.type === 'zh_bank' || item.type === 'zh_match') && item.bank_t) {
-        return `<ol class="rdx-bank${item.type === 'zh_bank' ? ' rdx-bank-words' : ''}" lang="zh-CN">${item.bank_t.map((b, i) =>
+    const bankList = cls => `<ol class="rdx-bank${cls}" lang="zh-CN">${item.bank_t.map((b, i) =>
             `<li><b>${READING_OPT_LETTERS[i]}</b><span>${readingExSegs(b)}</span></li>`).join('')}</ol>`;
+    if ((item.type === 'zh_bank' || item.type === 'zh_match') && item.bank_t) {
+        return bankList(item.type === 'zh_bank' ? ' rdx-bank-words' : '');
+    }
+    if (item.type === 'zh_order' && item.bank_t) return bankList(' rdx-bank-paras');
+    if ((item.type === 'zh_cloze' || item.type === 'zh_fill') && item.text_t) {
+        // the k-th blank is question nums[k]; the one on screen is marked (cur)
+        let k = 0;
+        const body = item.text_t.map(segs => readingExMark(readingExSegs(segs)).replace(/<span class="rdx-blank">[^<]*<\/span>/g, () => {
+            const i = k++;
+            return `<span class="rdx-blank rdx-blank-n${i === cur ? ' now' : ''}">（${nums && nums[i] !== undefined ? nums[i] : i + 1}）</span>`;
+        })).join('<br>');
+        return `<div class="rdx-text" lang="${lang}">${body}</div>${item.type === 'zh_fill' && item.bank_t ? bankList(' rdx-bank-sents') : ''}`;
     }
     if (item.type === 'order') {
         return `<ul class="rdx-parts" lang="${lang}">${item.parts.map(p => `<li>${readingExText(p)}</li>`).join('')}</ul>`;
@@ -371,7 +387,7 @@ function readingExamHtml(set) {
             <div class="rdx-col-text">
                 <div class="rdx-item">
                     <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${bankItem ? '' : escHtml(t('reading_passage_label'))}</div>
-                    ${readingExBodyHtml(item)}
+                    ${readingExBodyHtml(item, own.map(o => o.x.n), sub)}
                 </div>
                 ${(z.reviewing || (!z.mock && answered)) && readingTx(set, item.tr) ? `<details class="rdx-tr"><summary>${escHtml(t('reading_show_tr'))}</summary><p>${escHtml(readingTx(set, item.tr))}</p></details>` : ''}
             </div>

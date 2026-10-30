@@ -283,6 +283,13 @@
 .rdx-bank li { display: flex; align-items: baseline; gap: 10px; }
 .rdx-bank b { flex: none; color: var(--primary); }
 .rdx-bank.rdx-bank-words { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 12px; }
+/* HSK 4–6: a passage's numbered blanks (the one on screen marked), its bank of sentences below,
+   paragraphs to put in order */
+.rdx-blank-n { padding: 0 2px; border-radius: 6px; }
+.rdx-blank-n.now { background: var(--primary-soft); }
+.rdx-bank.rdx-bank-sents { margin-top: 12px; line-height: 2; }
+.rdx-bank.rdx-bank-paras { line-height: 2; }
+.rdx-bank.rdx-bank-paras li + li { margin-top: 8px; }
 .rdx-opts.rdx-opts-letters, .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
 .rdx-opt.rdx-opt-letter { justify-content: center; font-size: 1.1rem; }
 @media (min-width: 769px) {

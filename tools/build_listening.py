@@ -79,7 +79,10 @@ PIC_TYPES = ('task', 'ko_pic', 'ko2_pic')          # options drawn as one 2x2 pi
 # zh_match — dialogues matched with the 6 panels A–F of one picture; zh_q — a sentence or dialogue and
 # its spoken question, 3 printed options. Options are printed in Simplified with pinyin (HSK 1–2); the
 # question is said, never printed, so the page shows it only once answered.
-ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q')
+# HSK 3–6 (2026-10-30): zh_talk — a passage (one speaker) and its spoken question(s); zh_gist — a
+# passage and no question: pick the statement that matches it (HSK 6 第一部分). zh_q / zh_talk items
+# from HSK 4 may hold several questions ("questions": [{q, options, answer, explain}], answers letters).
+ZH_TYPES = ('zh_pic3', 'zh_reply', 'zh_match', 'zh_q', 'zh_talk', 'zh_gist')
 TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES + ZH_TYPES
 ZH_LETTERS = 'ABCDEF'
 HSK_IMG = ROOT / 'data' / 'listening' / 'img' / 'zh'
@@ -274,6 +277,10 @@ def build(src, problems, jobs):
             qs = it.get('questions') or [{'options': it.get('options', []), 'answer': it.get('answer', -1),
                                           'explain': it.get('explain'), **({'ask': it['ask']} if it.get('ask') else {}),
                                           **({'q': it['q']} if it.get('q') else {})}]
+            if typ in ZH_TYPES:
+                qs = [dict(q, answer=ZH_LETTERS.index(q['answer'])) if isinstance(q.get('answer'), str) else q for q in qs]
+                if typ == 'zh_gist' and any(q.get('q') for q in qs):
+                    problems.append(f'{where}: a zh_gist item has no spoken question')
             questions = [build_question(q, typ, f'{where} Q{n + 1}' if len(qs) > 1 else where, words, problems,
                                         lang, jobs, len(qs) > 1, n_opts) for n, q in enumerate(qs)]
             mix[typ] += len(questions)
