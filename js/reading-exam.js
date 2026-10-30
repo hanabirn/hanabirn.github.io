@@ -56,13 +56,33 @@ const READING_ASK_ZH = {
     // HSK 4–6 (2026-10-30)
     zh_cloze: '阅读短文，选出最恰当的答案填空。',
     zh_fill: '阅读短文，选择合适的句子填空。',
-    zh_order: '把下面的段落排成正确的顺序。'
+    zh_order: '把下面的段落排成正确的顺序。',
+    // HSK 7–9 (2026-10-30): a long text whose answers are written
+    zh_short: '阅读文章，根据内容回答问题，每题答案不超过10个字。'
 };
+
+/* HSK 7–9 written answers (zh_short): a pick is the typed text, or { t, self: true } once the
+   visitor marked a rejected answer right ("我的答案也對", practice only); an empty answer stays -1.
+   The text is compared with q.answers (Simplified and Traditional, from the build) without spaces
+   and punctuation. Every other question's pick is an option index. */
+function readingExNorm(s) {
+    return String(s || '').replace(/[\s，。、！？；：“”‘’「」『』（）()《》,.!?;:'"·…—\-]/g, '').toLowerCase();
+}
+function readingExTyped(p) {
+    return p && typeof p === 'object' ? p.t : typeof p === 'string' ? p : '';
+}
+function readingExOk(q, p) {
+    if (!q.answers) return p === q.answer;
+    if (p === -1 || p === '' || p == null) return false;
+    if (typeof p === 'object' && p.self) return true;
+    const n = readingExNorm(readingExTyped(p));
+    return !!n && q.answers.some(a => readingExNorm(a) === n);
+}
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA, zh: READING_ASK_ZH };
 const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。', zh: '读短文，回答问题。' };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
-const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];   // HSK letters them
+const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];   // HSK letters them (G: HSK 7–9's seventh sentence)
 // HSK items whose questions share a bank (a picture's panels, words, replies): letter buttons only
 const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'];
 // HSK passages whose blanks （　） are the questions: each blank shows its question's number
@@ -331,17 +351,32 @@ function readingExamHtml(set) {
         const short = q.options.every(op => op.length <= (READING_CHAR_LANGS.includes(lang) ? 12 : 22));
         const subNext = own.length > 1 && j < own.length - 1 && (reveal || pick !== -1)
             ? `<p class="rdx-sub-next"><button type="button" class="btn back-btn" onclick="readingExamSub(${own[j + 1].i})">${escHtml(t('rdx_next_sub', { n: own[j + 1].x.n }))}</button></p>` : '';
+        const ok = readingExOk(q, pick);
+        // a written answer (HSK 7–9): a box of SHORT_MAX characters; practice sends it with 送出 / Enter,
+        // a mock keeps whatever is typed until 交卷
+        const written = q.answers ? `<div class="rdx-short">
+                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="zh-CN" maxlength="10" autocomplete="off" spellcheck="false"
+                    value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t('rdx_short_ph'))}"${reveal ? ' disabled' : ''}
+                    ${z.mock ? `oninput="readingExamType(${o.i}, this.value)"` : `onkeydown="if (event.key === 'Enter') readingExamWrite(${o.i})"`}>
+                ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}
+            </div>` : '';
+        const feedback = !reveal ? '' : q.answers
+            ? `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('rdx_short_ref', { a: q.answers[0] }))}</p>
+                ${ok && pick && typeof pick === 'object' && pick.self ? `<p class="rd-meta">${escHtml(t('rdx_short_ref', { a: q.answers[0] }))}</p>` : ''}
+                ${!ok && !z.mock && pick !== -1 ? `<p class="rdx-self"><button type="button" class="mode-btn" onclick="readingExamSelf(${o.i})">${escHtml(t('rdx_short_self'))}</button></p>` : ''}
+                <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`
+            : `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('listening_wrong', { n: lang === 'zh' ? marks[q.answer] : q.answer + 1 }))}</p>
+                <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`;
         return `<div class="rdx-q${j === sub ? '' : ' rdx-q-off'}">
             ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${item.type === 'zh_text' ? '★ ' : ''}${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
-            <div class="rdx-opts${bankItem ? ' rdx-opts-letters' : short && q.options.length === 3 ? ' rdx-opts-3' : short ? ' rdx-opts-2' : ''}">${opts}</div>
-            ${reveal ? `<p class="grammar-feedback ${pick === q.answer ? 'ok' : 'no'}">${escHtml(pick === q.answer ? t('correct') : t('listening_wrong', { n: lang === 'zh' ? marks[q.answer] : q.answer + 1 }))}</p>
-                <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>` : ''}
+            ${q.answers ? written : `<div class="rdx-opts${bankItem ? ' rdx-opts-letters' : short && q.options.length === 3 ? ' rdx-opts-3' : short ? ' rdx-opts-2' : ''}">${opts}</div>`}
+            ${feedback}
             ${subNext}
         </div>`;
     }).join('');
     const subTabs = own.length > 1 ? `<div class="rdx-subtabs" role="tablist">${own.map((o, j) => {
         const p = z.picks[o.i];
-        const state = p === -1 ? '' : z.mock && !z.reviewing ? ' done' : p === o.x.q.answer ? ' ok' : ' no';
+        const state = p === -1 ? '' : z.mock && !z.reviewing ? ' done' : readingExOk(o.x.q, p) ? ' ok' : ' no';
         return `<button type="button" role="tab" class="rdx-subtab${state}${j === sub ? ' now' : ''}" aria-selected="${j === sub}" onclick="readingExamSub(${o.i})">${o.x.n}</button>`;
     }).join('')}</div>` : '';
     // the furigana switch heads the questions' column (above the columns it pushed the text down)
@@ -354,7 +389,7 @@ function readingExamHtml(set) {
     const atEnd = lastQ >= z.qs.length - 1;
     const dots = z.qs.map((x, i) => {
         const p = z.picks[i];
-        const state = i >= firstQ && i <= lastQ ? 'now' : p === -1 ? '' : z.mock && !z.reviewing ? 'done' : p === x.q.answer ? 'ok' : 'no';
+        const state = i >= firstQ && i <= lastQ ? 'now' : p === -1 ? '' : z.mock && !z.reviewing ? 'done' : readingExOk(x.q, p) ? 'ok' : 'no';
         return `<span class="ls-dot ${state}"></span>`;
     }).join('');
     const unanswered = z.picks.filter(p => p === -1).length;
@@ -411,6 +446,35 @@ function readingExamPick(i, k) {
     renderReading();
 }
 
+/* HSK 7–9 written answers: practice sends the box (送出 / Enter) and shows the answer at once */
+function readingExamWrite(i) {
+    const z = readingExam;
+    if (!z || z.mock || z.reviewing || z.picks[i] !== -1) return;
+    const el = document.getElementById('rdx-in-' + i);
+    const v = el ? el.value.trim() : '';
+    if (!v) { if (el) el.focus(); return; }
+    z.picks[i] = v;
+    if (typeof logDailyActivity === 'function') logDailyActivity(1);
+    readingExamSave();
+    renderReading();
+}
+
+/* a mock exam keeps what is typed (no re-render, so the box keeps its focus) */
+function readingExamType(i, v) {
+    const z = readingExam;
+    if (!z || !z.mock || z.done) return;
+    z.picks[i] = v.trim() ? v.trim() : -1;
+}
+
+/* practice: the visitor's answer says the same in other words — count it as right */
+function readingExamSelf(i) {
+    const z = readingExam;
+    if (!z || z.mock || z.reviewing || z.picks[i] === -1) return;
+    z.picks[i] = { t: readingExTyped(z.picks[i]), self: true };
+    readingExamSave();
+    renderReading();
+}
+
 /* computers: another question of the same item */
 function readingExamSub(i) {
     readingExam.qi = i;
@@ -453,7 +517,7 @@ function readingExamFinish(timeUp) {
     if (!z.mock) resumeClear(z.key);
     const set = readingSets[readingSetId];
     const st = set.sets[z.si];
-    const right = z.qs.filter((x, i) => z.picks[i] === x.q.answer).length;
+    const right = z.qs.filter((x, i) => readingExOk(x.q, z.picks[i])).length;
     z.right = right;
     const prog = readingProgress();
     const key = readingSetKey(set, st);
@@ -472,7 +536,7 @@ function readingExamResultHtml(set) {
     const total = z.qs.length;
     const pass = z.right / total >= READING_PASS;
     const sheet = `<div class="ls-sheet">${z.qs.map((x, i) => {
-        const ok = z.picks[i] === x.q.answer;
+        const ok = readingExOk(x.q, z.picks[i]);
         return `<button type="button" class="ls-sheet-cell ${ok ? 'ok' : 'no'}" onclick="readingExamReview(${i})" title="${escHtml(t('reading_ask_' + x.q.ask))}">${x.n}<i>${ok ? '○' : '×'}</i></button>`;
     }).join('')}</div>`;
     return `<div class="grammar-top">

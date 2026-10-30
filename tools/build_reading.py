@@ -269,7 +269,9 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             'zh_pic', 'zh_match', 'zh_next', 'zh_bank', 'zh_text', 'zh_passage',
             # HSK 4–6 (2026-10-30): a passage with numbered blanks — 4 options each (cloze) or a
             # bank of sentences (fill); paragraphs put in order
-            'zh_cloze', 'zh_fill', 'zh_order'}
+            'zh_cloze', 'zh_fill', 'zh_order',
+            # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
+            'zh_short'}
 
 # Japanese rounds: every kanji carries its reading (漢字{かな}); the kanji of the level and the
 # levels below show no furigana until the visitor asks (owner's pick A1). The lists are the JLPT
@@ -368,14 +370,19 @@ def plain_of(marked):
 #   zh_cloze — a passage whose blanks （　） are its questions, each with its own 3 / 4 options (HSK 5–6)
 #   zh_fill  — a passage whose blanks （　） take sentences from a bank, A–F (HSK 4 第三部分, HSK 6)
 #   zh_order — paragraphs A–E (the bank) to put in order; each question is a place (HSK 5)
+#   zh_short — a long text whose questions have no options: the answer is written, at most 10
+#              characters, and checked against "answers" (Simplified; the build adds Traditional) (HSK 7–9)
 # From HSK 4 a bank may hold exactly as many entries as questions (the papers' 33–37: A–E for five);
 # zh_fill / zh_order banks may too. The page numbers a passage's blanks with its questions' numbers.
 # In the bank types every question's options are the bank (a picture's are its letters), the
 # answer a letter or index, each letter the answer at most once; a bank has one spare.
-ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text', 'zh_cloze', 'zh_fill', 'zh_order'}
+ZH_SET_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_text', 'zh_cloze', 'zh_fill', 'zh_order', 'zh_short'}
+import opencc as _opencc
+S2TW = _opencc.OpenCC('s2tw')
+SHORT_MAX = 10          # a written answer's characters (HSK 7–9 阅读第三部分)
 ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
 ZH_BLANK_TYPES = {'zh_cloze', 'zh_fill'}     # a passage whose blanks are the questions
-LETTERS = 'ABCDEF'
+LETTERS = 'ABCDEFG'          # G: HSK 7–9's seven sentences
 
 
 # HSK pictures (owner's pick 2026-10-30: the JLPT 聽解 line art, drawn with Batch, a round at a time):
@@ -460,7 +467,7 @@ def build_sets(data, name, problems):
             need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
                     'notice': ['notice'], 'chart': ['chart'],
                     'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text'],
-                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank']}.get(typ, [])
+                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank'], 'zh_short': ['text']}.get(typ, [])
             for key in need:
                 if not it.get(key):
                     problems.append(f'{iw}: a {typ} item needs "{key}"')
@@ -477,7 +484,9 @@ def build_sets(data, name, problems):
                 bank = list(LETTERS[:pic.get('cols', 0) * pic.get('rows', 0)]) if typ == 'zh_pic' else it.get('bank', [])
                 nq = len(it.get('questions', []))
                 exact_ok = typ in ('zh_fill', 'zh_order') or hsk_level(data.get('level')) >= 4
-                if not (len(bank) == nq + 1 or (exact_ok and len(bank) == nq)):
+                # HSK 7–9 阅读第二部分: five blanks from seven sentences
+                two_spare = typ == 'zh_fill' and hsk_level(data.get('level')) >= 7 and len(bank) == nq + 2
+                if not (len(bank) == nq + 1 or (exact_ok and len(bank) == nq) or two_spare):
                     problems.append(f'{iw}: a bank holds one more than the questions ({len(bank)} for {nq})')
             if typ in ZH_BLANK_TYPES and it.get('text', '').count('（　）') != len(it.get('questions', [])):
                 problems.append(f'{iw}: a {typ} passage needs one （　） per question')
@@ -506,6 +515,19 @@ def build_sets(data, name, problems):
                     if not q.get('q') and typ != 'zh_fill':
                         problems.append(f'{qw}: a {typ} question needs its sentence "q"')
                 opts = q.get('options', [])
+                if typ == 'zh_short':
+                    answers = q.get('answers') or []
+                    if not q.get('q') or not answers or opts:
+                        problems.append(f'{qw}: a zh_short question has "q" and "answers", no options')
+                    for a in answers:
+                        if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > SHORT_MAX:
+                            problems.append(f'{qw}: answer "{a}" is longer than {SHORT_MAX} characters')
+                    for lang in ('zh', 'en'):
+                        if not q.get(lang):
+                            problems.append(f'{qw}: no {lang} explanation')
+                    qs.append({'ask': ask, 'q': q.get('q', ''), 'options': [], 'answers': answers,
+                               'zh': q.get('zh', ''), 'en': q.get('en', '')})
+                    continue
                 want = len(bank) if bank is not None else (3 if hsk_level(data.get('level')) <= 3 else 4) if zh else 4
                 if len(opts) != want or not isinstance(q.get('answer'), int) or not 0 <= q['answer'] < want:
                     problems.append(f'{qw}: needs {want} options and an answer 0-{want - 1}')
@@ -547,6 +569,11 @@ def build_sets(data, name, problems):
                 for q in qs:
                     if q['q']:
                         q['q_t'], q['q'] = seg(q['q'], iw)
+                    if q.get('answers') is not None:
+                        # a written answer: the accepted ones in Simplified and Traditional (s2tw), so
+                        # a visitor may type either; the page compares them without spaces and punctuation
+                        q['answers'] = list(dict.fromkeys(q['answers'] + [S2TW.convert(a) for a in q['answers']]))
+                        continue
                     if typ in ZH_BANK_TYPES:
                         continue          # the options are the bank (bank_t) or the picture's letters
                     got = [seg(o, iw) for o in q['options']]

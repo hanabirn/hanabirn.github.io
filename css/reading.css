@@ -292,6 +292,15 @@
 .rdx-bank.rdx-bank-paras li + li { margin-top: 8px; }
 .rdx-opts.rdx-opts-letters, .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
 .rdx-opt.rdx-opt-letter { justify-content: center; font-size: 1.1rem; }
+/* HSK 7–9 written answers (zh_short): a box of at most 10 characters and 送出 beside it */
+.rdx-short { display: flex; gap: 10px; align-items: stretch; flex-wrap: wrap; }
+.rdx-short-in { flex: 1 1 220px; min-width: 0; min-height: 48px; padding: 10px 14px; border: 2px solid var(--line); border-radius: 12px;
+    background: var(--surface); color: var(--ink); font: inherit; font-size: 1.15rem; }
+.rdx-short-in:focus { outline: none; border-color: var(--primary); }
+.rdx-short-in:disabled { background: var(--surface-2); color: var(--ink); opacity: 1; }
+.rdx-short .rdx-short-go { margin: 0; min-width: 96px; }
+.rdx-self { margin: 6px 0 0; }
+.rdx-self .mode-btn { font-size: .9rem; }
 @media (min-width: 769px) {
     .rdx-opts { grid-template-columns: 1fr 1fr; }
     .rdx-opts.rdx-opts-letters, .rdx-opts.rdx-opts-3 { grid-template-columns: repeat(3, 1fr); }
