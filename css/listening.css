@@ -24,6 +24,9 @@
 .ls-dot.now { background: var(--primary); }
 .ls-dot.ok { background: var(--success, #3b8a5a); }
 .ls-dot.no { background: var(--danger, #c0392b); }
+/* a long round (Cambridge B2 / C1: 52–56 questions) keeps its dots on one line */
+.ls-dots-many { gap: 2px; flex-wrap: nowrap; }
+.ls-dots-many .ls-dot { width: 6px; height: 6px; flex: none; }
 .ls-kind { text-align: center; font-size: .82rem; font-weight: 700; color: var(--primary); letter-spacing: .04em; margin-top: 4px; }
 .ls-how { text-align: center; font-size: .82rem; color: var(--text-secondary); margin: 2px 0 12px; }
 /* TOPIK: the paper's Korean instruction above its translation (.ls-how) */

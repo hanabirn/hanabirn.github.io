@@ -537,7 +537,7 @@ def build_sets(data, name, problems):
                     if isinstance(q.get('answer'), str) and q['answer'] in LETTERS:
                         q['answer'] = LETTERS.index(q['answer'])
                     # a Cambridge bank smaller than its questions (First Part 7: four texts, ten questions) reuses letters
-                    if q.get('answer') in used_letters and not (typ in EN_BANK_TYPES and len(bank) < len(it.get('questions', []))):
+                    if q.get('answer') in used_letters and not (typ in EN_BANK_TYPES and (len(bank) < len(it.get('questions', [])) or it.get('ask') == 'en_sections')):
                         a = q.get('answer')
                         problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
                     used_letters.add(q.get('answer'))

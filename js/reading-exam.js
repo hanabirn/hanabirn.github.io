@@ -405,7 +405,7 @@ function readingExamHtml(set) {
         // a mock keeps whatever is typed until 交卷
         const written = q.answers ? `<div class="rdx-short">
                 <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${lang === 'en' ? 'en' : 'zh-CN'}" maxlength="${lang === 'en' ? 40 : 10}" autocomplete="off" spellcheck="false"
-                    value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t('rdx_short_ph'))}"${reveal ? ' disabled' : ''}
+                    value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t(lang === 'en' ? 'rdx_short_ph_en' : 'rdx_short_ph'))}"${reveal ? ' disabled' : ''}
                     ${z.mock ? `oninput="readingExamType(${o.i}, this.value)"` : `onkeydown="if (event.key === 'Enter') readingExamWrite(${o.i})"`}>
                 ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}
             </div>` : '';
@@ -458,7 +458,7 @@ function readingExamHtml(set) {
                      : `<button type="button" class="btn next-btn" onclick="readingExamMove(1)"${answered ? '' : ' disabled'}>${escHtml(t('grammar_next_q'))}</button>`);
     return `<div class="grammar-top">
             <button type="button" class="btn back-btn grammar-back" onclick="${z.reviewing ? "readingGo('examresult')" : 'readingExamQuit()'}">${escHtml(t(z.reviewing ? 'listening_back_result' : 'listening_back_list'))}</button>
-            <span class="ls-dots" aria-hidden="true">${dots}</span>
+            <span class="ls-dots${z.qs.length > 44 ? ' ls-dots-many' : ''}" aria-hidden="true">${dots}</span>
             ${z.mock ? `<span class="ls-mock-tag rdx-mock-top">📝 ${escHtml(readingSetName(set, st))}${z.reviewing ? '・' + escHtml(t('listening_mock_review')) : ''}</span>` : ''}
             ${z.mock && !z.reviewing ? `<span class="rdx-clock" id="rdx-clock">${escHtml(t('reading_time_left', { t: readingClock(readingExamLeft()) }))}</span>`
                 : `<span class="grammar-count">${escHtml(t('grammar_q_n', { n: firstQ + 1, m: z.qs.length }))}</span>`}
