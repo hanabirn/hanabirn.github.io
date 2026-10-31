@@ -1732,6 +1732,29 @@
           ]
         },
         {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "Por favor, no hablen por teléfono en el comedor. Gracias.",
+          "tr": {
+            "zh": "請勿在餐廳講電話。謝謝。",
+            "en": "Please do not talk on the phone in the dining room. Thank you."
+          },
+          "questions": [
+            {
+              "q": "En el comedor…",
+              "options": [
+                "no se puede comer.",
+                "no se puede llamar por teléfono.",
+                "hay un teléfono."
+              ],
+              "answer": 1,
+              "zh": "請勿講電話。",
+              "en": "No phone calls."
+            }
+          ]
+        },
+        {
           "type": "en_people",
           "mondai": 3,
           "ask": "en_people",
@@ -1740,11 +1763,15 @@
             "Gimnasio Activo — piscina, yoga y clases de baile. Primer mes gratis.",
             "Librería Letras — libros en español, inglés y francés. También cafetería.",
             "Clínica dental Sonrisa — urgencias 24 horas.",
-            "Agencia de viajes Sol — viajes baratos a las islas Canarias."
+            "Agencia de viajes Sol — viajes baratos a las islas Canarias.",
+            "Tienda Mascotas Felices — comida y juguetes para perros y gatos.",
+            "Escuela de idiomas Babel — clases de inglés para niños, sábados por la mañana.",
+            "Floristería Rosa — flores y plantas, envío a domicilio.",
+            "Taller Rápido — reparamos su coche en un día."
           ],
           "tr": {
-            "zh": "A 港口餐廳：新鮮海鮮和西班牙海鮮飯。每天營業。\nB 活力健身房：游泳池、瑜伽和舞蹈課。第一個月免費。\nC 字母書店：西班牙文、英文和法文書。也有咖啡館。\nD 微笑牙科診所：24 小時急診。\nE 太陽旅行社：便宜的加那利群島旅遊。",
-            "en": "A El Puerto restaurant: fresh fish and paella. Open every day.\nB Activo gym: pool, yoga and dance classes. First month free.\nC Letras bookshop: books in Spanish, English and French. Café too.\nD Sonrisa dental clinic: 24-hour emergencies.\nE Sol travel agency: cheap trips to the Canary Islands."
+            "zh": "A 港口餐廳：新鮮海鮮和西班牙海鮮飯。每天營業。\nB 活力健身房：游泳池、瑜伽和舞蹈課。第一個月免費。\nC 字母書店：西班牙文、英文和法文書。也有咖啡館。\nD 微笑牙科診所：24 小時急診。\nE 太陽旅行社：便宜的加那利群島旅遊。\nF 快樂寵物店：貓狗的食物和玩具。\nG 巴別語言學校：兒童英文課，週六上午。\nH 玫瑰花店：花和植物，送貨到府。\nI 快速修車廠：一天修好您的車。",
+            "en": "A El Puerto restaurant: fresh fish and paella. Open every day.\nB Activo gym: pool, yoga and dance classes. First month free.\nC Letras bookshop: books in Spanish, English and French. Café too.\nD Sonrisa dental clinic: 24-hour emergencies.\nE Sol travel agency: cheap trips to the Canary Islands.\nF Happy Pets shop: food and toys for dogs and cats.\nG Babel language school: English classes for children, Saturday mornings.\nH Rosa florist: flowers and plants, home delivery.\nI Rápido garage: we repair your car in a day."
           },
           "questions": [
             {
@@ -1760,16 +1787,28 @@
               "en": "Sport, little money: first month free."
             },
             {
-              "q": "Tom busca un libro en inglés para su hijo.",
+              "q": "Tom busca un libro en inglés para leer en la playa.",
               "answer": "C",
               "zh": "找英文書：書店。",
               "en": "An English book: the bookshop."
             },
             {
-              "q": "Ana y su novio quieren ir de vacaciones a la playa.",
+              "q": "Ana y su novio quieren ir de vacaciones a una isla.",
               "answer": "E",
-              "zh": "去海邊度假：加那利群島旅遊。",
-              "en": "A beach holiday: the Canaries."
+              "zh": "去島上度假：加那利群島旅遊。",
+              "en": "An island holiday: the Canaries."
+            },
+            {
+              "q": "Es el cumpleaños de la madre de Luis, pero él vive lejos.",
+              "answer": "H",
+              "zh": "媽媽生日但住很遠：花店送貨到府。",
+              "en": "His mother's birthday, far away: flowers delivered."
+            },
+            {
+              "q": "La hija de Carmen (7 años) quiere aprender inglés.",
+              "answer": "G",
+              "zh": "七歲女兒學英文：兒童英文課。",
+              "en": "Her daughter's English: the children's classes."
             }
           ]
         },
@@ -1777,55 +1816,99 @@
           "type": "text",
           "mondai": 4,
           "ask": "en_long",
-          "text": "Me llamo Carlos y tengo 35 años. Soy profesor de matemáticas en un instituto de Sevilla. Estoy casado y tengo dos hijos, Pablo y Elena. Pablo tiene ocho años y le gusta mucho el fútbol. Elena tiene cinco años y le encanta pintar. Mi mujer, Rosa, es médica y trabaja en un hospital. Todos los días me levanto a las siete y voy al trabajo en bicicleta. Los domingos comemos en casa de mis padres. Mi madre cocina muy bien.",
+          "text": "CURSO DE VERANO — ESCUELA SOL Y LENGUA (Málaga)\nLunes: 9:00 llegada y prueba de nivel. 13:00 comida con los profesores.\nMartes a jueves: clases de 9:00 a 13:00. Por la tarde, actividades: martes, visita a la catedral; miércoles, clase de cocina (paella); jueves, playa.\nViernes: 9:00 a 11:00 clase. 12:00 examen final. 20:00 fiesta de despedida en el jardín de la escuela.\nPrecio: 320 € la semana. Con alojamiento en familia: 520 € (desayuno y cena incluidos).\nPara inscribirse: escribir a info@solylengua.es antes del 1 de junio.",
           "tr": {
-            "zh": "我叫卡洛斯，35 歲。我在塞維亞一所高中教數學。我已婚，有兩個孩子，帕布羅和艾蓮娜。帕布羅八歲，很喜歡足球。艾蓮娜五歲，最愛畫畫。我太太羅莎是醫生，在醫院工作。我每天七點起床，騎腳踏車上班。星期天我們去我爸媽家吃飯。我媽媽很會做菜。",
-            "en": "My name is Carlos and I'm 35. I teach maths at a secondary school in Seville. I'm married and have two children, Pablo and Elena. Pablo is eight and loves football. Elena is five and loves painting. My wife, Rosa, is a doctor and works in a hospital. Every day I get up at seven and cycle to work. On Sundays we eat at my parents' house. My mother is a very good cook."
+            "zh": "暑期課程——陽光語言學校（馬拉加）\n星期一：9:00 報到和分級測驗。13:00 和老師們一起吃午餐。\n星期二到星期四：9:00 到 13:00 上課。下午活動：星期二參觀大教堂；星期三烹飪課（海鮮飯）；星期四去海邊。\n星期五：9:00 到 11:00 上課。12:00 期末考。20:00 在學校花園辦歡送會。\n費用：每週 320 歐元。住寄宿家庭：520 歐元（含早餐和晚餐）。\n報名：6 月 1 日前寫信到 info@solylengua.es。",
+            "en": "SUMMER COURSE — SOL Y LENGUA SCHOOL (Málaga)\nMonday: 9:00 arrival and level test. 13:00 lunch with the teachers.\nTuesday to Thursday: classes 9:00–13:00. Afternoon activities: Tuesday, a visit to the cathedral; Wednesday, a cooking class (paella); Thursday, the beach.\nFriday: class 9:00–11:00. 12:00 final exam. 20:00 farewell party in the school garden.\nPrice: €320 a week. With a host family: €520 (breakfast and dinner included).\nTo enrol: write to info@solylengua.es before 1 June."
           },
           "questions": [
             {
-              "q": "Carlos trabaja en…",
+              "q": "El lunes por la mañana los estudiantes…",
               "options": [
-                "un hospital.",
-                "un instituto.",
-                "una tienda."
+                "hacen una prueba.",
+                "van a la playa.",
+                "tienen el examen final."
               ],
-              "answer": 1,
-              "zh": "在高中教數學；醫院是太太。",
-              "en": "A school; the hospital is his wife."
+              "answer": 0,
+              "zh": "星期一報到和分級測驗。",
+              "en": "A level test on Monday."
             },
             {
-              "q": "A Elena le gusta…",
+              "q": "El lunes comen con…",
               "options": [
-                "el fútbol.",
-                "pintar.",
-                "cocinar."
+                "su familia.",
+                "los profesores.",
+                "los otros estudiantes en la playa."
               ],
               "answer": 1,
-              "zh": "艾蓮娜最愛畫畫；足球是帕布羅。",
-              "en": "Painting; football is Pablo."
+              "zh": "13:00 和老師吃午餐。",
+              "en": "Lunch with the teachers."
             },
             {
-              "q": "Carlos va al trabajo…",
+              "q": "Las clases de martes a jueves son…",
               "options": [
-                "en coche.",
-                "en autobús.",
-                "en bicicleta."
+                "por la mañana.",
+                "por la tarde.",
+                "por la noche."
               ],
-              "answer": 2,
-              "zh": "騎腳踏車。",
-              "en": "By bike."
+              "answer": 0,
+              "zh": "9:00 到 13:00。",
+              "en": "9:00–13:00."
             },
             {
-              "q": "Los domingos la familia come…",
+              "q": "¿Qué día visitan la catedral?",
               "options": [
-                "en un restaurante.",
-                "con los padres de Carlos.",
-                "en el hospital."
+                "el lunes",
+                "el martes",
+                "el jueves"
               ],
               "answer": 1,
-              "zh": "去卡洛斯爸媽家吃飯。",
-              "en": "At Carlos's parents'."
+              "zh": "星期二參觀大教堂。",
+              "en": "Tuesday."
+            },
+            {
+              "q": "El miércoles aprenden a…",
+              "options": [
+                "bailar.",
+                "cocinar.",
+                "nadar."
+              ],
+              "answer": 1,
+              "zh": "烹飪課：海鮮飯。",
+              "en": "A cooking class."
+            },
+            {
+              "q": "La fiesta es…",
+              "options": [
+                "el viernes por la noche.",
+                "el jueves en la playa.",
+                "el lunes a la una."
+              ],
+              "answer": 0,
+              "zh": "星期五 20:00 歡送會。",
+              "en": "Friday at 20:00."
+            },
+            {
+              "q": "Con familia, el curso cuesta…",
+              "options": [
+                "320 euros.",
+                "520 euros.",
+                "200 euros."
+              ],
+              "answer": 1,
+              "zh": "住寄宿家庭 520 歐元。",
+              "en": "€520 with a host family."
+            },
+            {
+              "q": "Para inscribirse hay que…",
+              "options": [
+                "llamar por teléfono.",
+                "enviar un correo electrónico.",
+                "ir a la escuela."
+              ],
+              "answer": 1,
+              "zh": "寫信到電子信箱。",
+              "en": "Write an e-mail."
             }
           ]
         }
