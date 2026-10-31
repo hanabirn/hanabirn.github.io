@@ -4,7 +4,7 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "Spanish B1 reading rounds in the DELE B1 format (owner's plan 2026-10-30): Tarea 1 five offers for four people (en_people), Tarea 2 an article ×6; 10 questions. ⚠️ the real paper has 5 tareas, 30 questions. Original texts. Drafted in tools/.mockups/es_b1.py.",
+  "note": "Spanish B1 reading rounds in the DELE B1 format (EXAMS.md): Tarea 1 six people for nine offers, Tarea 2 an article on a grandmother cooking online, Tarea 3 three travellers — who says it, Tarea 4 the siesta, six fragments back (two spare), Tarea 5 a letter, grammar cloze — 30 questions. Original texts. Drafted in tools/.mockups/es_b1.py.",
   "sets": [
     {
       "id": "r1",
@@ -18,11 +18,15 @@
             "Voluntariado en una protectora de animales — Buscamos personas que puedan venir al menos dos tardes por semana para pasear a los perros.",
             "Taller de cocina vegetariana — Cuatro sesiones los lunes por la noche. Aprenderás recetas fáciles y económicas.",
             "Club de lectura en inglés — Nos reunimos una vez al mes en la biblioteca para comentar una novela. Nivel intermedio.",
-            "Excursiones en kayak — Salidas por la costa para grupos de amigos o empresas. Mínimo seis personas."
+            "Excursiones en kayak — Salidas por la costa para grupos de amigos o empresas. Mínimo seis personas.",
+            "Clases de guitarra a domicilio — El profesor va a tu casa. Para niños y adultos, todos los niveles.",
+            "Intercambio de casas — Pasa tus vacaciones en la casa de otra familia mientras ella vive en la tuya. Sin pagar alojamiento.",
+            "Huerto urbano comunitario — Parcelas de 10 m² en el centro de la ciudad. Herramientas incluidas.",
+            "Escapada de spa para dos — Masajes, piscina de agua caliente y cena. Ideal para regalar."
           ],
           "tr": {
-            "zh": "A 自然攝影課：週末在多尼亞納國家公園。含住宿。初學者程度。\nB 動物保護協會志工：徵求每週至少能來兩個下午遛狗的人。\nC 素食烹飪工作坊：四堂課，星期一晚上。學簡單又省錢的食譜。\nD 英文讀書會：每月在圖書館聚會一次，討論一本小說。中級程度。\nE 獨木舟出遊：沿海岸出遊，適合朋友團體或公司。至少六人。",
-            "en": "A Nature photography course: weekends in Doñana National Park. Accommodation included. Beginner level.\nB Volunteering at an animal shelter: we are looking for people who can come at least two afternoons a week to walk the dogs.\nC Vegetarian cooking workshop: four sessions on Monday evenings. You will learn easy, cheap recipes.\nD English book club: we meet once a month in the library to discuss a novel. Intermediate level.\nE Kayak trips: outings along the coast for groups of friends or companies. Minimum six people."
+            "zh": "A 自然攝影課：週末在多尼亞納國家公園。含住宿。初學者程度。\nB 動物保護協會志工：徵求每週至少能來兩個下午遛狗的人。\nC 素食烹飪工作坊：四堂課，星期一晚上。學簡單又省錢的食譜。\nD 英文讀書會：每月在圖書館聚會一次，討論一本小說。中級程度。\nE 獨木舟出遊：沿海岸出遊，適合朋友團體或公司。至少六人。\nF 到府吉他課：老師到你家。兒童和成人，各種程度。\nG 換屋度假：住到另一個家庭家裡度假，他們住你家。不用付住宿費。\nH 城市共享菜園：市中心 10 平方公尺的小地塊，附工具。\nI 雙人 SPA 小旅行：按摩、溫水泳池和晚餐。很適合當禮物。",
+            "en": "A Nature photography course: weekends in Doñana National Park. Accommodation included. Beginner level.\nB Volunteering at an animal shelter: we are looking for people who can come at least two afternoons a week to walk the dogs.\nC Vegetarian cooking workshop: four sessions on Monday evenings. You will learn easy, cheap recipes.\nD English book club: we meet once a month in the library to discuss a novel. Intermediate level.\nE Kayak trips: outings along the coast for groups of friends or companies. Minimum six people.\nF Guitar lessons at home: the teacher comes to your house. Children and adults, all levels.\nG House swap: spend your holidays in another family's home while they live in yours. No accommodation costs.\nH Community urban garden: 10 m² plots in the city centre. Tools included.\nI Spa break for two: massages, a warm pool and dinner. Ideal as a present."
           },
           "questions": [
             {
@@ -48,6 +52,18 @@
               "answer": "B",
               "zh": "下午有空、愛動物、想幫忙：動物保護協會志工。",
               "en": "Volunteering with dogs in the afternoons."
+            },
+            {
+              "q": "Una familia quiere viajar este verano, pero no puede gastar dinero en hoteles.",
+              "answer": "G",
+              "zh": "想旅行但不能花住宿錢：換屋度假。",
+              "en": "A house swap: no hotel costs."
+            },
+            {
+              "q": "Andrés vive en un piso sin balcón y le gustaría cultivar sus propias verduras.",
+              "answer": "H",
+              "zh": "沒陽台、想自己種菜：城市共享菜園。",
+              "en": "A community garden plot."
             }
           ]
         },
@@ -126,6 +142,194 @@
               "answer": 1,
               "zh": "修屋頂、出錢讓鄰居旅行。",
               "en": "She paid for her neighbours' trip."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 3,
+          "ask": "en_sections",
+          "bank": [
+            "Lorena, 27 años — Hace dos años dejé mi trabajo en una oficina para dar la vuelta al mundo en bicicleta. Mis padres pensaban que estaba loca. He recorrido 22 países y he dormido en tiendas de campaña, en casas de desconocidos y alguna vez en una estación. Lo más difícil no fue el cansancio, sino la soledad de algunas noches.",
+            "Tomás, 54 años — Yo viajo siempre por trabajo y, sinceramente, ya no me apetece. Los aeropuertos son todos iguales. En vacaciones prefiero quedarme en mi pueblo, con mis nietos y mi huerto. Para mí, viajar de verdad es conocer bien tu propia tierra.",
+            "Sofía, 35 años — Me encanta viajar, pero intento hacerlo de forma responsable. No cojo aviones para viajes cortos: voy en tren aunque tarde más. Y siempre me alojo en casas de gente del lugar, así el dinero se queda allí. El año pasado fui a Portugal en tren con mis dos hijos."
+          ],
+          "tr": {
+            "zh": "A 洛雷娜，27 歲：兩年前我辭掉辦公室工作，騎腳踏車環遊世界。我爸媽以為我瘋了。我騎過 22 個國家，睡過帳篷、陌生人的家，有時候還睡車站。最難的不是累，而是某些夜晚的孤單。\nB 托馬斯，54 歲：我總是因為工作出差，老實說已經不想旅行了。機場都長得一樣。放假時我寧可待在我的村子，陪孫子、顧菜園。對我來說，真正的旅行是好好認識自己的土地。\nC 索菲亞，35 歲：我很愛旅行，但盡量用負責任的方式。短程不搭飛機：就算比較久也坐火車。我總是住當地人家裡，這樣錢會留在當地。去年我帶兩個孩子坐火車去葡萄牙。",
+            "en": "A Lorena, 27 — Two years ago I left my office job to cycle round the world. My parents thought I was mad. I've cycled through 22 countries and slept in tents, in strangers' homes and once or twice in a station. The hardest thing wasn't tiredness but the loneliness of some nights.\nB Tomás, 54 — I always travel for work and, honestly, I don't feel like it any more. Airports are all the same. On holiday I prefer to stay in my village, with my grandchildren and my vegetable garden. For me, real travel is getting to know your own land well.\nC Sofía, 35 — I love travelling, but I try to do it responsibly. I don't fly for short trips: I go by train even if it takes longer. And I always stay in local people's homes, so the money stays there. Last year I went to Portugal by train with my two children."
+          },
+          "questions": [
+            {
+              "q": "¿Quién viaja con su familia?",
+              "answer": "C",
+              "zh": "索菲亞帶兩個孩子去葡萄牙。",
+              "en": "Sofía went with her children."
+            },
+            {
+              "q": "¿Quién se sintió sola a veces?",
+              "answer": "A",
+              "zh": "洛雷娜：最難的是某些夜晚的孤單。",
+              "en": "Lorena: the loneliness."
+            },
+            {
+              "q": "¿Quién viaja mucho, pero no por placer?",
+              "answer": "B",
+              "zh": "托馬斯總是因為工作出差。",
+              "en": "Tomás travels for work."
+            },
+            {
+              "q": "¿Quién se preocupa por el medio ambiente al viajar?",
+              "answer": "C",
+              "zh": "短程不搭飛機，改坐火車。",
+              "en": "No short flights."
+            },
+            {
+              "q": "¿Quién cambió de vida para viajar?",
+              "answer": "A",
+              "zh": "辭掉工作騎腳踏車環遊世界。",
+              "en": "She quit her job to cycle the world."
+            },
+            {
+              "q": "¿Quién prefiere no salir de su región?",
+              "answer": "B",
+              "zh": "放假待在村子，認識自己的土地。",
+              "en": "He stays in his village."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 4,
+          "ask": "en_gapped",
+          "text": "La siesta, ¿una costumbre en peligro?\nDurante siglos, la siesta fue parte de la vida en España. (19) ＿＿＿＿＿ Sin embargo, hoy solo una de cada cinco personas la duerme con regularidad. La razón principal es el horario de trabajo. (20) ＿＿＿＿＿ Además, muchas personas viven lejos de su trabajo y no tienen tiempo de volver a casa. Curiosamente, mientras en España se duerme menos siesta, en otros países se descubren sus ventajas. (21) ＿＿＿＿＿ Los médicos explican que una siesta corta mejora la memoria y la concentración. (22) ＿＿＿＿＿ Lo importante es no dormir demasiado. (23) ＿＿＿＿＿ Quizás el futuro no sea volver a la siesta larga de antes, sino aprender a descansar un poco cada día. (24) ＿＿＿＿＿",
+          "bank": [
+            "Después de comer, las tiendas cerraban y las calles se quedaban vacías.",
+            "Cada vez más empresas tienen jornadas continuas, sin una pausa larga al mediodía.",
+            "En Japón o en Estados Unidos, algunas oficinas tienen ya salas para dormir un rato.",
+            "También reduce el estrés y el riesgo de algunas enfermedades del corazón.",
+            "Más de treinta minutos pueden dejarnos más cansados que antes.",
+            "Al fin y al cabo, el descanso no es una pérdida de tiempo.",
+            "Por eso en España nadie trabaja por la tarde.",
+            "Los niños españoles nunca duermen la siesta."
+          ],
+          "tr": {
+            "zh": "午睡是正在消失的習慣嗎？\n幾百年來，午睡是西班牙生活的一部分。（19）然而，如今只有五分之一的人經常午睡。主要原因是工作時間。（20）此外，很多人住得離公司很遠，沒時間回家。有趣的是，西班牙人午睡越來越少，其他國家卻開始發現它的好處。（21）醫生解釋，短暫的午睡能改善記憶和專注力。（22）重要的是不要睡太久。（23）也許未來不是回到以前那種長時間午睡，而是學會每天休息一下。（24）\nA 午餐後，商店關門，街上空無一人。\nB 越來越多公司實行連續工時，中午沒有長休息。\nC 在日本或美國，有些辦公室已經有小睡室。\nD 它也能減輕壓力，降低某些心臟疾病的風險。\nE 超過三十分鐘可能讓我們比之前更累。\nF 說到底，休息不是浪費時間。\nG 所以西班牙沒有人下午上班。\nH 西班牙小孩從不午睡。",
+            "en": "The siesta: a custom in danger?\nFor centuries the siesta was part of life in Spain. (19) However, today only one person in five takes one regularly. The main reason is working hours. (20) Besides, many people live far from work and have no time to go home. Curiously, while Spaniards sleep less at midday, other countries are discovering its advantages. (21) Doctors explain that a short nap improves memory and concentration. (22) The important thing is not to sleep too long. (23) Perhaps the future is not a return to the long siesta of the past but learning to rest a little every day. (24)\nA After lunch, the shops closed and the streets were empty.\nB More and more companies have continuous working days, with no long break at midday.\nC In Japan or the United States, some offices already have rooms for a short sleep.\nD It also reduces stress and the risk of some heart diseases.\nE More than thirty minutes can leave us more tired than before.\nF After all, rest is not a waste of time.\nG That is why nobody in Spain works in the afternoon.\nH Spanish children never take a siesta."
+          },
+          "questions": [
+            {
+              "q": "(19)",
+              "answer": "A",
+              "zh": "過去的午睡景象：商店關門、街上空無一人。",
+              "en": "The old siesta: shops closed."
+            },
+            {
+              "q": "(20)",
+              "answer": "B",
+              "zh": "工作時間：連續工時，中午沒長休息。",
+              "en": "Working hours: no midday break."
+            },
+            {
+              "q": "(21)",
+              "answer": "C",
+              "zh": "其他國家發現好處：日本、美國的小睡室。",
+              "en": "Other countries: nap rooms."
+            },
+            {
+              "q": "(22)",
+              "answer": "D",
+              "zh": "更多好處：減壓、降低心臟病風險。",
+              "en": "More benefits."
+            },
+            {
+              "q": "(23)",
+              "answer": "E",
+              "zh": "不要睡太久：超過三十分鐘反而更累。",
+              "en": "Too long makes you tired."
+            },
+            {
+              "q": "(24)",
+              "answer": "F",
+              "zh": "結論：休息不是浪費時間。G、H 與文章矛盾。",
+              "en": "Conclusion; G and H contradict the text."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_cloze",
+          "text": "Hola, Marta:\n¿Qué tal estás? Te escribo (25) ＿＿＿＿＿ contarte que por fin he encontrado piso. Está en el centro, muy cerca (26) ＿＿＿＿＿ la estación. Es pequeño, pero tiene mucha luz. El dueño es muy amable: me ha dicho que, si necesito algo, (27) ＿＿＿＿＿ llame a cualquier hora. Todavía no tengo muebles, así que el sábado voy a ir a una tienda de segunda mano. ¿(28) ＿＿＿＿＿ acompañarme? Cuando (29) ＿＿＿＿＿ todo listo, haré una pequeña fiesta. ¡Espero que (30) ＿＿＿＿＿ venir!\nUn abrazo,\nRaquel",
+          "tr": {
+            "zh": "瑪爾塔你好：\n妳好嗎？我寫信是要告訴妳，我終於找到公寓了。在市中心，離車站很近。房子小，但採光很好。房東人很好：他說如果我需要什麼，隨時都可以打給他。我還沒有家具，所以星期六要去二手店。妳要陪我去嗎？等一切都準備好，我要辦個小派對。希望妳能來！\n擁抱，\n拉凱爾",
+            "en": "Hi Marta,\nHow are you? I'm writing to tell you that I've finally found a flat. It's in the centre, very near the station. It's small but very bright. The owner is very kind: he told me that if I need anything I can call him at any time. I don't have furniture yet, so on Saturday I'm going to a second-hand shop. Would you like to come with me? When everything is ready, I'll have a little party. I hope you can come!\nHugs,\nRaquel"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "options": [
+                "para",
+                "por",
+                "de"
+              ],
+              "answer": 0,
+              "zh": "「para contarte」：表示目的「為了告訴妳」。",
+              "en": "\"para\" + infinitive: purpose."
+            },
+            {
+              "q": "(26)",
+              "options": [
+                "a",
+                "de",
+                "en"
+              ],
+              "answer": 1,
+              "zh": "「cerca de」：在……附近。",
+              "en": "\"cerca de\": near."
+            },
+            {
+              "q": "(27)",
+              "options": [
+                "le",
+                "lo",
+                "la"
+              ],
+              "answer": 0,
+              "zh": "llamar a alguien 的間接受詞用 le：「(que) le llame」打給他。",
+              "en": "\"le llame\": call him (indirect object)."
+            },
+            {
+              "q": "(28)",
+              "options": [
+                "Quieres",
+                "Quieras",
+                "Quieren"
+              ],
+              "answer": 0,
+              "zh": "直接問對方（tú）：「¿Quieres acompañarme?」你要陪我嗎？Quieras 是虛擬式，Quieren 是「他們」。",
+              "en": "A direct question to tú: ¿Quieres…?"
+            },
+            {
+              "q": "(29)",
+              "options": [
+                "tengo",
+                "tenga",
+                "tendré"
+              ],
+              "answer": 1,
+              "zh": "cuando 指未來時接虛擬式：cuando tenga。",
+              "en": "cuando + future meaning takes the subjunctive."
+            },
+            {
+              "q": "(30)",
+              "options": [
+                "puedes",
+                "puedas",
+                "podrás"
+              ],
+              "answer": 1,
+              "zh": "espero que 後面接虛擬式：puedas。",
+              "en": "espero que + subjunctive."
             }
           ]
         }

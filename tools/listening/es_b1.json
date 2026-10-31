@@ -4,20 +4,259 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "Spanish B1 listening in the DELE B1 format (owner's plan 2026-10-30): a monologue about moving to a village ×5, a conversation ×2 (en_q); 7 questions. ⚠️ the real paper has 5 tareas, 30 questions. Original texts. Drafted in tools/.mockups/es_b1_ls.py.",
+  "note": "Spanish B1 listening in the DELE B1 format (EXAMS.md): Tarea 1 six dialogues, Tarea 2 a monologue on moving to a village ×6, Tarea 3 six news items, Tarea 4 six people for eight statements, Tarea 5 flatmates — who says it ×6 — 30 questions, each heard twice; items name their tarea. Original texts. Drafted in tools/.mockups/es_b1_ls.py.",
   "types": [
-    "en_q"
+    "en_talk",
+    "en_q",
+    "en_match"
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_q": 7
+    "en_talk": 12,
+    "en_q": 12,
+    "en_match": 6
   },
   "sets": [
     {
       "id": "s1",
       "items": [
         {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "F",
+              "s": "¿Has visto mis gafas? Las dejé aquí, en la mesa.",
+              "zh": "你有看到我的眼鏡嗎？我放在這張桌上。",
+              "en": "Have you seen my glasses? I left them here on the table."
+            },
+            {
+              "who": "M",
+              "s": "Las he puesto en el cajón para que no se rompan.",
+              "zh": "我把它們放進抽屜裡，免得摔壞。",
+              "en": "I've put them in the drawer so they don't break."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde están las gafas?",
+            "zh": "眼鏡在哪裡？",
+            "en": "Where are the glasses?"
+          },
+          "options": [
+            {
+              "t": "en la mesa"
+            },
+            {
+              "t": "en el cajón"
+            },
+            {
+              "t": "en el bolso"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "放進抽屜了。",
+            "en": "In the drawer."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "¿Vienes a la reunión de las cinco?",
+              "zh": "妳要來五點的會議嗎？",
+              "en": "Are you coming to the five o'clock meeting?"
+            },
+            {
+              "who": "F",
+              "s": "La han cambiado a las seis, porque el director llega tarde.",
+              "zh": "改到六點了，因為主管會晚到。",
+              "en": "They've moved it to six because the director is arriving late."
+            }
+          ],
+          "ask": {
+            "s": "¿A qué hora es la reunión?",
+            "zh": "會議幾點？",
+            "en": "What time is the meeting?"
+          },
+          "options": [
+            {
+              "t": "a las cinco"
+            },
+            {
+              "t": "a las seis"
+            },
+            {
+              "t": "a las siete"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "改到六點。",
+            "en": "Moved to six."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "F",
+              "s": "Quería devolver este jersey. Me queda pequeño.",
+              "zh": "我想退這件毛衣，太小了。",
+              "en": "I wanted to return this jumper. It's too small for me."
+            },
+            {
+              "who": "M",
+              "s": "No podemos devolver el dinero, pero puede cambiarlo por otra talla.",
+              "zh": "我們不能退錢，但可以換別的尺寸。",
+              "en": "We can't refund the money, but you can exchange it for another size."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué puede hacer la mujer?",
+            "zh": "女的可以怎麼做？",
+            "en": "What can the woman do?"
+          },
+          "options": [
+            {
+              "t": "recuperar su dinero"
+            },
+            {
+              "t": "cambiar el jersey"
+            },
+            {
+              "t": "comprar otro más barato"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "不能退錢，可以換尺寸。",
+            "en": "Exchange it."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "¿Qué tal el examen de conducir?",
+              "zh": "駕照考試怎麼樣？",
+              "en": "How was the driving test?"
+            },
+            {
+              "who": "F",
+              "s": "La parte teórica, perfecta. Pero en la práctica me puse nerviosa y suspendí. Lo repito en dos semanas.",
+              "zh": "筆試很完美。但路考我太緊張沒過。兩週後重考。",
+              "en": "The theory part, perfect. But in the practical I got nervous and failed. I'm retaking it in two weeks."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué le pasó a la mujer?",
+            "zh": "女的怎麼了？",
+            "en": "What happened to the woman?"
+          },
+          "options": [
+            {
+              "t": "Aprobó todo."
+            },
+            {
+              "t": "Suspendió la parte práctica."
+            },
+            {
+              "t": "No se presentó."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "路考沒過。",
+            "en": "She failed the practical."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "F",
+              "s": "¿Vas a ir a la boda de Laura en coche?",
+              "zh": "你要開車去蘿拉的婚禮嗎？",
+              "en": "Are you driving to Laura's wedding?"
+            },
+            {
+              "who": "M",
+              "s": "No, es muy lejos. Voy en tren y luego cojo un taxi hasta la iglesia.",
+              "zh": "不，太遠了。我搭火車，再搭計程車到教堂。",
+              "en": "No, it's too far. I'm going by train and then taking a taxi to the church."
+            }
+          ],
+          "ask": {
+            "s": "¿Cómo va el hombre a la boda?",
+            "zh": "男的怎麼去婚禮？",
+            "en": "How is the man getting to the wedding?"
+          },
+          "options": [
+            {
+              "t": "en coche"
+            },
+            {
+              "t": "en tren y taxi"
+            },
+            {
+              "t": "en autobús"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "火車加計程車。",
+            "en": "Train, then taxi."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "Este restaurante está siempre lleno. ¿Reservamos para el viernes?",
+              "zh": "這家餐廳總是客滿。我們訂星期五好嗎？",
+              "en": "This restaurant is always full. Shall we book for Friday?"
+            },
+            {
+              "who": "F",
+              "s": "El viernes trabajo hasta tarde. Mejor el sábado a mediodía.",
+              "zh": "星期五我工作到很晚。星期六中午比較好。",
+              "en": "I work late on Friday. Saturday lunchtime is better."
+            }
+          ],
+          "ask": {
+            "s": "¿Cuándo quiere ir la mujer?",
+            "zh": "女的想什麼時候去？",
+            "en": "When does the woman want to go?"
+          },
+          "options": [
+            {
+              "t": "el viernes por la noche"
+            },
+            {
+              "t": "el sábado a mediodía"
+            },
+            {
+              "t": "el sábado por la noche"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "星期六中午。",
+            "en": "Saturday lunchtime."
+          }
+        },
+        {
           "type": "en_q",
+          "part": 2,
           "lines": [
             {
               "who": "N",
@@ -54,6 +293,29 @@
               "explain": {
                 "zh": "巴塞隆納的銀行。",
                 "en": "At a bank."
+              }
+            },
+            {
+              "ask": {
+                "s": "Sus amigos…",
+                "zh": "她的朋友們……",
+                "en": "Her friends…"
+              },
+              "options": [
+                {
+                  "t": "la apoyaron."
+                },
+                {
+                  "t": "no entendían su decisión."
+                },
+                {
+                  "t": "se mudaron con ella."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "覺得她瘋了。",
+                "en": "They thought she was mad."
               }
             },
             {
@@ -151,84 +413,738 @@
           ]
         },
         {
-          "type": "en_q",
+          "type": "en_talk",
+          "part": 3,
           "lines": [
             {
               "who": "N",
-              "s": "Vas a escuchar una conversación entre dos compañeros de trabajo.",
-              "zh": "你會聽到兩位同事的對話。",
-              "en": "You will hear a conversation between two colleagues."
+              "s": "Noticia 1.",
+              "zh": "新聞 1。",
+              "en": "News item 1."
             },
             {
               "who": "M",
-              "s": "Elena, ¿vienes a la cena de Navidad de la empresa?",
-              "zh": "艾蓮娜，妳要來公司的聖誕晚餐嗎？",
-              "en": "Elena, are you coming to the company Christmas dinner?"
+              "s": "El Ayuntamiento de Sevilla plantará este invierno dos mil árboles nuevos en los barrios con más calor en verano.",
+              "zh": "塞維亞市政府今年冬天將在夏天最熱的社區種兩千棵新樹。",
+              "en": "Seville city council will plant two thousand new trees this winter in the neighbourhoods that are hottest in summer."
+            }
+          ],
+          "ask": {
+            "s": "¿Para qué se plantarán los árboles?",
+            "zh": "為什麼要種樹？",
+            "en": "Why will the trees be planted?"
+          },
+          "options": [
+            {
+              "t": "para dar sombra en los barrios calurosos"
+            },
+            {
+              "t": "para un parque nuevo"
+            },
+            {
+              "t": "para vender madera"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "種在夏天最熱的社區。",
+            "en": "In the hottest neighbourhoods."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Noticia 2.",
+              "zh": "新聞 2。",
+              "en": "News item 2."
             },
             {
               "who": "F",
-              "s": "No sé... Es el mismo día que la función de teatro de mi hija. Si la función termina pronto, intentaré llegar a los postres.",
-              "zh": "不知道……跟我女兒的戲劇表演同一天。如果表演早點結束，我會試著趕上甜點。",
-              "en": "I don't know... It's the same day as my daughter's school play. If the play finishes early, I'll try to make it for dessert."
+              "s": "A partir del lunes, los museos estatales serán gratuitos para los menores de veinticinco años los domingos por la tarde.",
+              "zh": "從星期一起，國立博物館星期天下午對 25 歲以下的人免費。",
+              "en": "From Monday, state museums will be free for under-25s on Sunday afternoons."
+            }
+          ],
+          "ask": {
+            "s": "¿Quién podrá entrar gratis?",
+            "zh": "誰可以免費入場？",
+            "en": "Who will get in free?"
+          },
+          "options": [
+            {
+              "t": "los jubilados"
+            },
+            {
+              "t": "los jóvenes"
+            },
+            {
+              "t": "todos los visitantes"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "25 歲以下。",
+            "en": "Under-25s."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Noticia 3.",
+              "zh": "新聞 3。",
+              "en": "News item 3."
             },
             {
               "who": "M",
-              "s": "Pues este año la cena es en un restaurante nuevo del centro, y han dicho que habrá karaoke.",
-              "zh": "今年晚餐在市中心一家新餐廳，聽說還有卡拉 OK。",
-              "en": "Well, this year it's at a new restaurant in the centre, and they say there'll be karaoke."
+              "s": "Por las fuertes lluvias, el partido de fútbol entre el Valencia y el Betis se ha aplazado al miércoles.",
+              "zh": "因為大雨，瓦倫西亞對貝蒂斯的足球賽延到星期三。",
+              "en": "Because of heavy rain, the football match between Valencia and Betis has been postponed to Wednesday."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué ha pasado con el partido?",
+            "zh": "比賽怎麼了？",
+            "en": "What has happened to the match?"
+          },
+          "options": [
+            {
+              "t": "Se ha jugado sin público."
+            },
+            {
+              "t": "Se jugará otro día."
+            },
+            {
+              "t": "Lo ha ganado el Betis."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "延到星期三。",
+            "en": "Postponed to Wednesday."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Noticia 4.",
+              "zh": "新聞 4。",
+              "en": "News item 4."
             },
             {
               "who": "F",
-              "s": "¿Karaoke? Entonces seguro que voy, aunque sea tarde. ¡No me lo pierdo!",
-              "zh": "卡拉 OK？那我一定去，就算晚到也去。我可不想錯過！",
-              "en": "Karaoke? Then I'm definitely going, even if I'm late. I'm not missing that!"
+              "s": "Una niña de doce años de Bilbao ha ganado el concurso nacional de ciencia con un proyecto para limpiar el agua con cáscaras de plátano.",
+              "zh": "畢爾包一個十二歲女孩以香蕉皮淨水的計畫贏得全國科學競賽。",
+              "en": "A twelve-year-old girl from Bilbao has won the national science competition with a project to clean water using banana peel."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué ha ganado la niña?",
+            "zh": "女孩贏得了什麼？",
+            "en": "What has the girl won?"
+          },
+          "options": [
+            {
+              "t": "un concurso de ciencia"
+            },
+            {
+              "t": "una carrera"
+            },
+            {
+              "t": "un concurso de cocina"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "全國科學競賽。",
+            "en": "A science competition."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Noticia 5.",
+              "zh": "新聞 5。",
+              "en": "News item 5."
+            },
+            {
+              "who": "M",
+              "s": "Las obras del metro en la línea tres terminarán en marzo, dos meses más tarde de lo previsto.",
+              "zh": "地鐵三號線的工程將在三月完工，比預定晚兩個月。",
+              "en": "The work on metro line three will finish in March, two months later than planned."
+            }
+          ],
+          "ask": {
+            "s": "Las obras del metro…",
+            "zh": "地鐵工程……",
+            "en": "The metro works…"
+          },
+          "options": [
+            {
+              "t": "ya han terminado."
+            },
+            {
+              "t": "terminarán con retraso."
+            },
+            {
+              "t": "empezarán en marzo."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "比預定晚兩個月。",
+            "en": "Two months late."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Noticia 6.",
+              "zh": "新聞 6。",
+              "en": "News item 6."
+            },
+            {
+              "who": "F",
+              "s": "Mañana bajarán mucho las temperaturas en el norte. Se esperan nevadas por encima de los mil metros.",
+              "zh": "明天北部氣溫大幅下降。海拔一千公尺以上預計會下雪。",
+              "en": "Tomorrow temperatures will drop sharply in the north. Snow is expected above a thousand metres."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué tiempo hará mañana en el norte?",
+            "zh": "明天北部天氣如何？",
+            "en": "What will the weather be like in the north tomorrow?"
+          },
+          "options": [
+            {
+              "t": "calor"
+            },
+            {
+              "t": "frío y nieve en las montañas"
+            },
+            {
+              "t": "sol y viento"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "降溫，山上下雪。",
+            "en": "Cold, snow in the mountains."
+          }
+        },
+        {
+          "type": "en_match",
+          "part": 4,
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar a seis personas que cuentan novedades de su vida. Relaciona cada persona con un enunciado.",
+              "zh": "你會聽到六個人說自己的近況。請把每個人配上一句敘述。",
+              "en": "You will hear six people telling news from their lives. Match each person with a statement."
+            },
+            {
+              "who": "N",
+              "s": "Persona 1",
+              "zh": "第 1 個人",
+              "en": "Person 1"
+            },
+            {
+              "who": "M",
+              "s": "Después de diez años en la misma empresa, el mes pasado empecé en una agencia de publicidad. Estoy encantado.",
+              "zh": "在同一家公司十年後，上個月我開始在一家廣告公司上班。我很開心。",
+              "en": "After ten years at the same company, last month I started at an advertising agency. I love it."
+            },
+            {
+              "who": "N",
+              "s": "Persona 2",
+              "zh": "第 2 個人",
+              "en": "Person 2"
+            },
+            {
+              "who": "F",
+              "s": "Ya no vivo en el centro: nos hemos ido a una casa con jardín, a las afueras. Los niños están felices.",
+              "zh": "我不住市中心了：我們搬到郊區一間有花園的房子。孩子們很高興。",
+              "en": "I don't live in the centre any more: we've moved to a house with a garden on the outskirts. The children are happy."
+            },
+            {
+              "who": "N",
+              "s": "Persona 3",
+              "zh": "第 3 個人",
+              "en": "Person 3"
+            },
+            {
+              "who": "M",
+              "s": "Con cuarenta años me he matriculado en la universidad. Estudio Historia del Arte a distancia.",
+              "zh": "四十歲的我註冊了大學，遠距念藝術史。",
+              "en": "At forty I've enrolled at university. I'm studying Art History by distance learning."
+            },
+            {
+              "who": "N",
+              "s": "Persona 4",
+              "zh": "第 4 個人",
+              "en": "Person 4"
+            },
+            {
+              "who": "F",
+              "s": "Mi novela quedó primera en un concurso literario de mi región. ¡Todavía no me lo creo!",
+              "zh": "我的小說在本地區的文學比賽得了第一名。我到現在還不敢相信！",
+              "en": "My novel came first in a literary competition in my region. I still can't believe it!"
+            },
+            {
+              "who": "N",
+              "s": "Persona 5",
+              "zh": "第 5 個人",
+              "en": "Person 5"
+            },
+            {
+              "who": "M",
+              "s": "Llevo un año en Berlín. Trabajo en un hospital y ya hablo bastante alemán.",
+              "zh": "我在柏林一年了。在醫院工作，德文已經講得不錯。",
+              "en": "I've been in Berlin for a year. I work in a hospital and I already speak quite a lot of German."
+            },
+            {
+              "who": "N",
+              "s": "Persona 6",
+              "zh": "第 6 個人",
+              "en": "Person 6"
+            },
+            {
+              "who": "F",
+              "s": "En marzo nació nuestra hija, Lucía. Dormimos poco, pero estamos muy contentos.",
+              "zh": "三月我們的女兒露西亞出生了。我們睡得少，但很開心。",
+              "en": "Our daughter Lucía was born in March. We sleep little, but we are very happy."
             }
           ],
           "questions": [
             {
               "ask": {
-                "s": "¿Por qué Elena no está segura de ir?",
-                "zh": "艾蓮娜為什麼不確定能去？",
-                "en": "Why isn't Elena sure she can go?"
+                "s": "Persona 1",
+                "zh": "第 1 個人",
+                "en": "Person 1"
               },
               "options": [
                 {
-                  "t": "Tiene que trabajar."
+                  "t": "Ha cambiado de trabajo."
                 },
                 {
-                  "t": "Su hija tiene una función de teatro."
+                  "t": "Vive en el extranjero."
                 },
                 {
-                  "t": "No le gustan las cenas."
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
                 }
               ],
-              "answer": "B",
+              "answer": "A",
               "explain": {
-                "zh": "同一天有女兒的戲劇表演。",
-                "en": "Her daughter's play."
+                "zh": "換到廣告公司：換工作。",
+                "en": "A new job."
               }
             },
             {
               "ask": {
-                "s": "Al final, Elena…",
-                "zh": "最後艾蓮娜……",
-                "en": "In the end, Elena…"
+                "s": "Persona 2",
+                "zh": "第 2 個人",
+                "en": "Person 2"
               },
               "options": [
                 {
-                  "t": "no irá a la cena."
+                  "t": "Ha cambiado de trabajo."
                 },
                 {
-                  "t": "irá aunque llegue tarde."
+                  "t": "Vive en el extranjero."
                 },
                 {
-                  "t": "irá al teatro con su compañero."
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
+                }
+              ],
+              "answer": "G",
+              "explain": {
+                "zh": "搬到郊區：搬家。",
+                "en": "Moved house."
+              }
+            },
+            {
+              "ask": {
+                "s": "Persona 3",
+                "zh": "第 3 個人",
+                "en": "Person 3"
+              },
+              "options": [
+                {
+                  "t": "Ha cambiado de trabajo."
+                },
+                {
+                  "t": "Vive en el extranjero."
+                },
+                {
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "註冊大學：開始讀書。",
+                "en": "Started studying."
+              }
+            },
+            {
+              "ask": {
+                "s": "Persona 4",
+                "zh": "第 4 個人",
+                "en": "Person 4"
+              },
+              "options": [
+                {
+                  "t": "Ha cambiado de trabajo."
+                },
+                {
+                  "t": "Vive en el extranjero."
+                },
+                {
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
+                }
+              ],
+              "answer": "F",
+              "explain": {
+                "zh": "小說得第一名：得獎。",
+                "en": "Won a prize."
+              }
+            },
+            {
+              "ask": {
+                "s": "Persona 5",
+                "zh": "第 5 個人",
+                "en": "Person 5"
+              },
+              "options": [
+                {
+                  "t": "Ha cambiado de trabajo."
+                },
+                {
+                  "t": "Vive en el extranjero."
+                },
+                {
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
                 }
               ],
               "answer": "B",
               "explain": {
-                "zh": "有卡拉 OK，就算晚到也一定去。",
-                "en": "She'll go even if late."
+                "zh": "在柏林：住國外。（在醫院工作，但沒有健康問題。）",
+                "en": "Abroad (works in a hospital, not ill)."
+              }
+            },
+            {
+              "ask": {
+                "s": "Persona 6",
+                "zh": "第 6 個人",
+                "en": "Person 6"
+              },
+              "options": [
+                {
+                  "t": "Ha cambiado de trabajo."
+                },
+                {
+                  "t": "Vive en el extranjero."
+                },
+                {
+                  "t": "Ha aprendido a cocinar."
+                },
+                {
+                  "t": "Tiene un problema de salud."
+                },
+                {
+                  "t": "Ha tenido un hijo."
+                },
+                {
+                  "t": "Ha ganado un premio."
+                },
+                {
+                  "t": "Se ha mudado de casa."
+                },
+                {
+                  "t": "Ha empezado a estudiar."
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "女兒出生：有了孩子。C、D 沒有用到。",
+                "en": "A baby; C and D unused."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 5,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre dos compañeros de piso, Rubén y Marta. Indica quién dice cada cosa.",
+              "zh": "你會聽到兩位室友魯本和瑪爾塔的對話。請指出每句話是誰說的。",
+              "en": "You will hear a conversation between two flatmates, Rubén and Marta. Say who says each thing."
+            },
+            {
+              "who": "M",
+              "s": "Marta, ¿otra vez has dejado los platos sin lavar? Ayer también.",
+              "zh": "瑪爾塔，妳又沒洗碗了？昨天也是。",
+              "en": "Marta, have you left the dishes unwashed again? Yesterday too."
+            },
+            {
+              "who": "F",
+              "s": "Perdona, es que llegué muy tarde del trabajo. Esta noche los lavo yo todos.",
+              "zh": "抱歉，我昨天工作到很晚才回來。今晚我全部洗。",
+              "en": "Sorry, I got back from work very late. I'll wash them all tonight."
+            },
+            {
+              "who": "M",
+              "s": "Vale. Oye, ¿y si hacemos una lista con las tareas de la semana? Así no discutimos.",
+              "zh": "好。欸，我們要不要列一張每週家事表？這樣就不會吵架。",
+              "en": "OK. Listen, what if we make a list of the week's chores? Then we won't argue."
+            },
+            {
+              "who": "F",
+              "s": "Buena idea. Yo prefiero limpiar el baño, la cocina se me da fatal.",
+              "zh": "好主意。我比較想打掃浴室，廚房我很不擅長。",
+              "en": "Good idea. I'd rather clean the bathroom; I'm terrible at the kitchen."
+            },
+            {
+              "who": "M",
+              "s": "Por mí, bien. Ah, y el sábado viene mi hermano a dormir. ¿Te importa?",
+              "zh": "我沒問題。啊，星期六我弟弟要來住一晚。妳介意嗎？",
+              "en": "Fine by me. Oh, and my brother is coming to stay on Saturday. Do you mind?"
+            },
+            {
+              "who": "F",
+              "s": "Para nada. Pero el domingo por la mañana tengo que estudiar, así que, por favor, sin mucho ruido.",
+              "zh": "一點也不。不過星期天早上我要讀書，所以請不要太吵。",
+              "en": "Not at all. But on Sunday morning I have to study, so please, not too much noise."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Se queja de los platos sucios.",
+                "zh": "抱怨碗沒洗。",
+                "en": "Complains about the dirty dishes."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "魯本：「妳又沒洗碗了？」",
+                "en": "Rubén."
+              }
+            },
+            {
+              "ask": {
+                "s": "Llegó tarde a casa.",
+                "zh": "很晚才回家。",
+                "en": "Got home late."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "瑪爾塔：工作到很晚。",
+                "en": "Marta."
+              }
+            },
+            {
+              "ask": {
+                "s": "Propone organizar las tareas.",
+                "zh": "提議安排家事。",
+                "en": "Suggests organising the chores."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "魯本：列每週家事表。",
+                "en": "Rubén."
+              }
+            },
+            {
+              "ask": {
+                "s": "Prefiere limpiar el baño.",
+                "zh": "比較想打掃浴室。",
+                "en": "Prefers cleaning the bathroom."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "瑪爾塔。",
+                "en": "Marta."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quiere cambiar de piso.",
+                "zh": "想換房子。",
+                "en": "Wants to move flat."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "兩個人都沒說要搬家。",
+                "en": "Neither."
+              }
+            },
+            {
+              "ask": {
+                "s": "Necesita silencio el domingo.",
+                "zh": "星期天需要安靜。",
+                "en": "Needs quiet on Sunday."
+              },
+              "options": [
+                {
+                  "t": "Rubén"
+                },
+                {
+                  "t": "Marta"
+                },
+                {
+                  "t": "ninguno de los dos"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "瑪爾塔：星期天早上要讀書。",
+                "en": "Marta: studying on Sunday."
               }
             }
           ]
