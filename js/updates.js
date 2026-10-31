@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-10-31',
+      zh: "新的閱讀、聽解考試題型（中文台灣版 HSK、英、法、俄、德、西）的解說和翻譯，現在也有日文、韓文、俄文、法文、西班牙文、德文了（之前這些語言先顯示英文）。",
+      'zh-Hans': "新的阅读、听解考试题型（中文台湾版 HSK、英、法、俄、德、西）的解说和翻译，现在也有日语、韩语、俄语、法语、西班牙语、德语了（之前这些语言先显示英文）。",
+      en: "The explanations and translations of the new Reading and Listening exam rounds (Chinese HSK Taiwan edition, English, French, Russian, German, Spanish) are now also in Japanese, Korean, Russian, French, Spanish and German (they showed English until now).",
+      ja: "新しい読解・聴解の試験形式の問題（中国語 HSK 台湾版、英語、フランス語、ロシア語、ドイツ語、スペイン語）の解説と訳が、日本語・韓国語・ロシア語・フランス語・スペイン語・ドイツ語でも読めるようになりました（これまでは英語で表示していました）。",
+      ko: "새 읽기·듣기 시험형 문제(중국어 HSK 대만판, 영어, 프랑스어, 러시아어, 독일어, 스페인어)의 해설과 번역을 이제 한국어·일본어·러시아어·프랑스어·스페인어·독일어로도 볼 수 있어요(지금까지는 영어로 나왔어요).",
+      ru: "Пояснения и переводы к новым экзаменационным заданиям по чтению и аудированию (китайский HSK в тайваньской версии, английский, французский, русский, немецкий, испанский) теперь есть и на русском, японском, корейском, французском, испанском и немецком (раньше они показывались на английском).",
+      fr: "Les explications et traductions des nouvelles épreuves de lecture et de compréhension orale (chinois HSK édition taïwanaise, anglais, français, russe, allemand, espagnol) existent maintenant aussi en français, japonais, coréen, russe, espagnol et allemand (elles s'affichaient en anglais jusqu'ici).",
+      es: "Las explicaciones y traducciones de las nuevas pruebas de lectura y audición (chino HSK edición de Taiwán, inglés, francés, ruso, alemán, español) ya están también en español, japonés, coreano, ruso, francés y alemán (hasta ahora se mostraban en inglés).",
+      de: "Die Erklärungen und Übersetzungen der neuen Prüfungsrunden im Lesen und Hören (Chinesisch HSK Taiwan-Ausgabe, Englisch, Französisch, Russisch, Deutsch, Spanisch) gibt es jetzt auch auf Deutsch, Japanisch, Koreanisch, Russisch, Französisch und Spanisch (bisher wurden sie auf Englisch angezeigt)." },
+    { date: '2026-10-31',
       zh: "歐洲語言的考試題型補齊到官方題數：德文 Goethe B1～C1（閱讀、聽解各 30 題）、西班牙文 DELE A1～C1（例如 B2 閱讀 36 題、C1 閱讀 40 題）、法文新版 DELF（A1 閱讀 8 個練習、B2 閱讀與聽解各 20 題等）、俄文 ТРКИ-1（閱讀 20 題、聽解 30 題、只播一次）。聽解會標出是第幾部分，播放次數也照各考試的規定。",
       'zh-Hans': "欧洲语言的考试题型补齐到官方题数：德语 Goethe B1～C1（阅读、听解各 30 题）、西班牙语 DELE A1～C1（例如 B2 阅读 36 题、C1 阅读 40 题）、法语新版 DELF（A1 阅读 8 个练习、B2 阅读与听解各 20 题等）、俄语 ТРКИ-1（阅读 20 题、听解 30 题、只播一次）。听解会标出是第几部分，播放次数也按各考试的规定。",
       en: "The European exam rounds now have the official question counts: German Goethe B1–C1 (30 reading and 30 listening questions), Spanish DELE A1–C1 (e.g. 36 reading questions at B2, 40 at C1), French in the new DELF format (8 reading exercises at A1, 20 + 20 at B2, and more) and Russian ТРКИ-1 (20 reading, 30 listening, played once). Listening items show which part they belong to and play as many times as the real exam.",

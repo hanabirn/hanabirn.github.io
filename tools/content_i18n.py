@@ -158,18 +158,19 @@ LOCK = threading.Lock()
 STOP = threading.Event()        # set when the prepaid credit runs out
 
 
-def translate(kind, lesson, objs):
+def translate(kind, lesson, objs, tw=False):
     """objs: dicts needing at least one translation; stores the answers and returns
     how many were translated (0 = no model answered)."""
     targets = targets_for(lesson)
     # an HSK explanation quotes the Simplified sentence on the page: given the Traditional text, the
-    # model kept 「我很喜歡看書」 in every language (2026-10-29), so it gets the converted zh-Hans
+    # model kept 「我很喜歡看書」 in every language (2026-10-29), so it gets the converted zh-Hans; the Taiwan
+    # edition (zh_tw*, edition 'tw') quotes Traditional, so it keeps its own text (2026-10-31)
     # A Chinese line or question with nothing quoted goes from its English alone: given the Chinese,
     # the model kept the whole mock-exam dialogue as written (2026-10-29)
     def zh_of(o):
         if lesson != 'zh':
             return o.get('zh') or ''
-        src = o.get('zh-Hans') or o.get('zh') or ''
+        src = (o.get('zh') if tw else o.get('zh-Hans')) or o.get('zh') or ''
         return src if '「' in src or not o.get('en') else ''
     items = [{'id': i, 'zh': zh_of(o), 'en': o.get('en') or ''} for i, o in enumerate(objs)]
     for model in MODELS[kind]:
@@ -231,13 +232,14 @@ def main():
                 seen.add(k)
                 todo.append(o)
         print(f'{kind}/{f.name}: {len(todo)} texts to translate', flush=True)
-        jobs += [(kind, lesson, f.name, todo[i:i + BATCH]) for i in range(0, len(todo), BATCH)]
+        tw = data.get('edition') == 'tw'
+        jobs += [(kind, lesson, f.name, todo[i:i + BATCH], tw) for i in range(0, len(todo), BATCH)]
     if args.limit is not None:
         keep, n = [], 0
         for job in jobs:
             if n >= args.limit:
                 break
-            keep.append(job[:3] + (job[3][:args.limit - n],))
+            keep.append(job[:3] + (job[3][:args.limit - n],) + job[4:])
             n += len(keep[-1][3])
         jobs = keep
     total = sum(len(j[3]) for j in jobs)
@@ -248,8 +250,8 @@ def main():
 
     def run(job):
         nonlocal done_n
-        kind, lesson, name, batch = job
-        done = translate(kind, lesson, batch)
+        kind, lesson, name, batch, tw = job
+        done = translate(kind, lesson, batch, tw)
         with LOCK:
             for t in TARGETS:
                 save_store(t)
