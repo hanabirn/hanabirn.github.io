@@ -4,14 +4,14 @@
   "level": "A1",
   "order": 1,
   "n_options": 3,
-  "note": "French A1 listening in the DELF A1 format (owner's plan 2026-10-30): Exercice 1 a phone message ×4, Exercice 2 a station announcement ×3, Exercice 3 a radio advert ×4 (en_q), Exercice 4 five short dialogues matched to six situations (en_match). Each recording twice. Original texts. Drafted in tools/.mockups/fr_a1_ls.py.",
+  "note": "French A1 listening in the new DELF A1 format (5 recordings, 21 questions): Exercice 1 a phone message ×4, Exercice 2 a station announcement ×3, Exercice 3 a radio advert ×4 (en_q), Exercice 4 five short dialogues matched to six situations (en_match), Exercice 5 at the ticket office ×5. Each recording twice. Original texts. Drafted in tools/.mockups/fr_a1_ls.py.",
   "types": [
     "en_q",
     "en_match"
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_q": 11,
+    "en_q": 16,
     "en_match": 5
   },
   "sets": [
@@ -19,6 +19,7 @@
       "id": "s1",
       "items": [
         {
+          "part": 1,
           "type": "en_q",
           "lines": [
             {
@@ -130,6 +131,7 @@
           ]
         },
         {
+          "part": 2,
           "type": "en_q",
           "lines": [
             {
@@ -218,6 +220,7 @@
           ]
         },
         {
+          "part": 3,
           "type": "en_q",
           "lines": [
             {
@@ -329,6 +332,7 @@
           ]
         },
         {
+          "part": 4,
           "type": "en_match",
           "n_options": 6,
           "lines": [
@@ -588,6 +592,171 @@
               "explain": {
                 "zh": "喉嚨痛，問醫生明天早上有沒有空：預約看醫生。剩下的 F（在收銀台付錢）沒有用到。",
                 "en": "A sore throat, asking for an appointment; F is not used."
+              }
+            }
+          ]
+        },
+        {
+          "part": 5,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes à la gare. Vous entendez cette conversation au guichet.",
+              "zh": "你在火車站，聽到售票窗口的這段對話。",
+              "en": "You are at the station. You hear this conversation at the ticket office."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour, je voudrais un billet pour Lyon, s'il vous plaît.",
+              "zh": "您好，我想買一張到里昂的票。",
+              "en": "Hello, I'd like a ticket to Lyon, please."
+            },
+            {
+              "who": "M",
+              "s": "Un aller simple ? Il y a un train à 10 h 15 et un autre à 11 h 40.",
+              "zh": "單程嗎？有一班 10 點 15 分，另一班 11 點 40 分。",
+              "en": "One way? There's a train at 10.15 and another at 11.40."
+            },
+            {
+              "who": "F",
+              "s": "Oui, un aller simple. Le train de 11 h 40, s'il vous plaît. C'est combien ?",
+              "zh": "對，單程。請給我 11 點 40 分那班。多少錢？",
+              "en": "Yes, one way. The 11.40 train, please. How much is it?"
+            },
+            {
+              "who": "M",
+              "s": "35 euros. Vous avez moins de 26 ans ? Avec la carte Jeune, c'est 25 euros.",
+              "zh": "35 歐元。您未滿 26 歲嗎？用青年卡是 25 歐元。",
+              "en": "35 euros. Are you under 26? With the Young Person's card it's 25 euros."
+            },
+            {
+              "who": "F",
+              "s": "Non, j'ai 30 ans. Je paie par carte bancaire.",
+              "zh": "不是，我 30 歲。我刷卡付款。",
+              "en": "No, I'm 30. I'll pay by card."
+            },
+            {
+              "who": "M",
+              "s": "Très bien. Le train part du quai 4. Bon voyage !",
+              "zh": "好的。火車從 4 號月台出發。旅途愉快！",
+              "en": "Very good. The train leaves from platform 4. Have a good trip!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "La femme va à…",
+                "zh": "這位女士要去……",
+                "en": "The woman is going to…"
+              },
+              "options": [
+                {
+                  "t": "Paris."
+                },
+                {
+                  "t": "Lyon."
+                },
+                {
+                  "t": "Lille."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「一張到里昂的票」。",
+                "en": "A ticket to Lyon."
+              }
+            },
+            {
+              "ask": {
+                "s": "Elle prend le train de…",
+                "zh": "她搭……的火車。",
+                "en": "She takes the train at…"
+              },
+              "options": [
+                {
+                  "t": "10 h 15."
+                },
+                {
+                  "t": "11 h 40."
+                },
+                {
+                  "t": "11 h 15."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "她選 11 點 40 分那班。",
+                "en": "She chooses the 11.40."
+              }
+            },
+            {
+              "ask": {
+                "s": "Elle achète…",
+                "zh": "她買……",
+                "en": "She buys…"
+              },
+              "options": [
+                {
+                  "t": "un aller simple."
+                },
+                {
+                  "t": "un aller-retour."
+                },
+                {
+                  "t": "deux billets."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「對，單程」。",
+                "en": "Yes, one way."
+              }
+            },
+            {
+              "ask": {
+                "s": "Elle paie…",
+                "zh": "她付……",
+                "en": "She pays…"
+              },
+              "options": [
+                {
+                  "t": "25 euros."
+                },
+                {
+                  "t": "30 euros."
+                },
+                {
+                  "t": "35 euros."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "她 30 歲，不能用青年卡：35 歐元。",
+                "en": "She's 30, so no young person's card: 35 euros."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le train part du quai…",
+                "zh": "火車從……號月台出發。",
+                "en": "The train leaves from platform…"
+              },
+              "options": [
+                {
+                  "t": "2."
+                },
+                {
+                  "t": "4."
+                },
+                {
+                  "t": "14."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「從 4 號月台出發」。",
+                "en": "Platform 4."
               }
             }
           ]
