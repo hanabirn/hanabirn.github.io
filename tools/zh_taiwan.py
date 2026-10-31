@@ -29,7 +29,7 @@ TW_WORDS = {'頭髮': 'tóu fǎ', '理髮': 'lǐ fǎ', '法國': 'Fà guó', '�
             '休息': 'xiū xí', '衣服': 'yī fú', '豆腐': 'dòu fǔ', '星期': 'xīng qí', '認識': 'rèn shì',
             '台灣': 'Tái wān', '臺灣': 'Tái wān', '台北': 'Tái běi', '臺北': 'Tái běi', '高雄': 'Gāo xióng', '台中': 'Tái zhōng',
             '台南': 'Tái nán', '花蓮': 'Huā lián', '捷運': 'jié yùn', '垃圾': 'lè sè', '禮拜': 'lǐ bài', '包括': 'bāo kuò',
-            '頻率': 'pín lǜ', '部分': 'bù fèn', '期待': 'qí dài', '暫時': 'zhàn shí', '研究': 'yán jiù', '企業': 'qì yè', '亞洲': 'Yǎ zhōu'}
+            '頻率': 'pín lǜ', '部分': 'bù fèn', '種出來': 'zhòng chū lái', '種父母': 'zhòng fù mǔ', '種出不用': 'zhòng chū bú yòng', '期待': 'qí dài', '暫時': 'zhàn shí', '研究': 'yán jiù', '企業': 'qì yè', '亞洲': 'Yǎ zhōu'}
 TW_WORDS = {k: v for k, v in TW_WORDS.items() if v}
 # the house style of the Taiwan passages and grammar (zh_reading.WORDS: 沒關係 méi guānxi, 東西 dōngxi …)
 for _w, _r in zh_reading.WORDS.items():
