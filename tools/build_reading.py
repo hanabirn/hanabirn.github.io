@@ -392,7 +392,7 @@ ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
 # the bank's letters are the options, each the answer at most once, the bank may hold several spares
 EN_BANK_TYPES = {'en_people', 'en_gapped'}
 ZH_BLANK_TYPES = {'zh_cloze', 'zh_fill'}     # a passage whose blanks are the questions
-LETTERS = 'ABCDEFGH'         # G: HSK 7–9's seven sentences; H: Cambridge B1's eight texts
+LETTERS = 'ABCDEFGHIJ'       # G: HSK 7–9's seven sentences; H: Cambridge B1's eight texts; J: Goethe B1's ten ads
 
 
 # HSK pictures (owner's pick 2026-10-30: the JLPT 聽解 line art, drawn with Batch, a round at a time):

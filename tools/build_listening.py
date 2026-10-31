@@ -205,7 +205,7 @@ def build_question(q, typ, where, words, problems, lang, jobs, multi, n_options=
     if q.get('answers') is not None:
         return build_typed(q, where, words, problems, lang, jobs)
     spoken_opts = typ in SPOKEN or bool(q.get('spoken'))
-    want = n_options or SPOKEN.get(typ, 4)
+    want = q.get('n_options') or n_options or SPOKEN.get(typ, 4)   # a question may differ (Goethe B1 Hören Teil 1: R/F + a/b/c)
     if len(q.get('options', [])) != want:
         problems.append(f'{where}: {typ} needs {want} options, has {len(q.get("options", []))}')
     if not 0 <= q.get('answer', -1) < len(q.get('options', [])):
@@ -344,6 +344,9 @@ def build(src, problems, jobs):
             pic = zpic or item_pic(f'{data["id"]}/{set_["id"]}/{k}', it, lang, problems)
             items.append({'type': typ, 'scene': it.get('scene'), 'lines': lines, 'questions': questions,
                           **({'pic': pic} if pic else {}),
+                          # the paper's part and plays when they don't follow the type (Goethe: two parts of one type)
+                          **({'part': it['part']} if it.get('part') else {}),
+                          **({'plays': it['plays']} if it.get('plays') else {}),
                           'read': it.get('read', read_secs if typ == 'point' else 0),
                           'words': [{k3: g[k3] for k3 in ('w', 'r', 'zh', 'en')} for g in words]})
         if set_.get('mock'):

@@ -154,7 +154,7 @@
 ### 德文 Goethe ✅（官方 Übungssatz／Modellsatz、C1 官方手冊 2024）
 - **A1（Start Deutsch 1）**：讀 15（Teil 1 兩封信 R/F 5、Teil 2 情境配 a/b 廣告 5、Teil 3 告示 R/F 5）；聽 15（Teil 1 短對話 6 題三選一聽兩次、Teil 2 廣播 4 題 R/F 聽一次、Teil 3 電話留言 5 題聽兩次）。**網站第 1 回已相同。**
 - **A2**：讀 20（文章 5、樓層指南 5、電子郵件 5、5 人配 6 則廣告）；聽 20（廣播 5、對話配對 5、短對話 5、訪談 Ja/Nein 5）。**網站第 1 回已相同。**
-- **B1**（讀 65 分、聽 40 分）：讀 30 — Teil 1 部落格 R/F 6、Teil 2 兩篇報導各 3 題 a/b/c、Teil 3 **7 個情境配 10 則廣告（一個沒有答案＝0）**、Teil 4 7 則留言 Ja/Nein、Teil 5 規章 4 題 a/b/c；聽 30 — Teil 1 **5 段短文各 2 題（R/F＋a/b/c）聽兩次**、Teil 2 導覽 5 題 a/b/c 聽一次、Teil 3 對話 7 題 R/F 聽一次、Teil 4 討論「誰說的」8 題聽兩次。網站第 1 回：讀 15、聽 14 → 缺讀 Teil 3、各部分題數；缺聽 Teil 1。
+- **B1**（讀 65 分、聽 40 分）：讀 30 — Teil 1 部落格 R/F 6、Teil 2 兩篇報導各 3 題 a/b/c、Teil 3 **7 個情境配 10 則廣告（一個沒有答案＝0）**、Teil 4 7 則留言 Ja/Nein、Teil 5 規章 4 題 a/b/c；聽 30 — Teil 1 **5 段短文各 2 題（R/F＋a/b/c）聽兩次**、Teil 2 導覽 5 題 a/b/c 聽一次、Teil 3 對話 7 題 R/F 聽一次、Teil 4 討論「誰說的」8 題聽兩次。網站第 1 回：**已補齊 30＋30**（2026-10-31；讀 Teil 3 沒有「0＝沒有合適廣告」那一題）。
 - **B2**（讀 65、聽約 40）：讀 30 — Teil 1 四人論壇「誰說的」9（可重複）、Teil 2 文章挖句 6（多 2 句）、Teil 3 文章 6 題 a/b/c、Teil 4 意見配標題 6（多 1）、Teil 5 條文配標題 3（多 4）；聽 30 — Teil 1 5 段各 2 題聽一次、Teil 2 訪談 6 題聽兩次、Teil 3 討論「誰說的」6 題聽一次、Teil 4 演講 8 題聽兩次。網站第 1 回：讀 11、聽 7。
 - **C1**（2024 新版；讀 65、聽 40）：讀 30 — Teil 1 克漏字 8（四選一）、Teil 2 長文 7（三選一）、Teil 3 挖句 8（多 2 句）、Teil 4 學者意見「誰說的」7（有 0＝沒人說）；聽 30 — Teil 1 podcast 配書 6 聽一次、Teil 2 訪談 9 題「對／錯／沒提到」聽兩次、Teil 3 討論分 4 段各 2 題聽一次、Teil 4 演講 7 題聽兩次。網站第 1 回：讀 7、聽 7。
 - 來源：goethe.de B1_Uebungssatz_Erwachsene.pdf、b2_modellsatz_erwachsene.pdf、Handbuch_Pruefungsziele_Testbeschreibung_C1.pdf。

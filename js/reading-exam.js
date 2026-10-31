@@ -153,7 +153,7 @@ const READING_ASK_EN = {
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
-const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];   // HSK letters them (G: HSK 7–9's seventh sentence)
+const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J'];   // HSK letters them (G: HSK 7–9's seventh sentence; J: Goethe B1's ten ads)
 // HSK items whose questions share a bank (a picture's panels, words, replies): letter buttons only
 const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order', 'en_people', 'en_gapped'];
 // HSK passages whose blanks （　） are the questions: each blank shows its question's number

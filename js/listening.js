@@ -73,13 +73,17 @@ function listeningExam() { return listeningMock() || listeningPref('listening_ex
 function listeningSlow() { return !listeningExam() && listeningPref('listening_slow', '0') === '1'; }
 function listeningTypes(lv) { return lv.types || LISTENING_DEFAULT_TYPES; }
 function listeningTypeNo(lv, type) { return listeningTypes(lv).indexOf(type) + 1; }
-/* plays per item in a mock exam: one number, or one per type (TOPIK II: 1–20 once, 21–50 twice) */
-function listeningMockPlays(lv, type) {
+/* an item may name its part and plays itself ("part", "plays": Goethe B1–C1, where two parts share a type) */
+function listeningHasParts(lv) { return lv.sets.some(s => s.items.some(it => it.part)); }
+/* plays per item in a mock exam: the item's own, one number, or one per type (TOPIK II: 1–20 once, 21–50 twice) */
+function listeningMockPlays(lv, type, it) {
+    if (it && it.plays) return it.plays;
     const p = lv.mock_plays || 1;
     return typeof p === 'object' ? (p[type] || 1) : p;
 }
 function listeningMockPlaysText(lv) {
-    const ns = [...new Set(listeningTypes(lv).map(ty => listeningMockPlays(lv, ty)))].sort();
+    const ns = [...new Set([...listeningTypes(lv).map(ty => listeningMockPlays(lv, ty)),
+        ...lv.sets.flatMap(s => s.items.filter(it => it.plays).map(it => it.plays))])].sort();
     return ns.length > 1 ? ns[0] + '–' + ns[ns.length - 1] : String(ns[0]);
 }
 /* "[1~4]": the question numbers of the item's group in its set (TOPIK levels, which have lv.instr) */
@@ -406,7 +410,7 @@ function listeningPlaylist(it) {
 
 function listeningPlaysAllowed(lv) {
     const z = listeningSession;
-    if (z.mock && !z.reviewing) return listeningMockPlays(lv, listeningItem(lv).type);
+    if (z.mock && !z.reviewing) { const it = listeningItem(lv); return listeningMockPlays(lv, it.type, it); }
     return listeningExam() && !z.reviewing ? LISTENING_EXAM_PLAYS : Infinity;
 }
 
@@ -610,8 +614,8 @@ const LISTENING_PIC_QUARTERS = ['left:0;top:0', 'left:-100%;top:0', 'left:0;top:
 
 /* HSK (2026-10-30): options lettered A B C as on the paper; the part named 第一部分 */
 function listeningMark(lv, i) { return lv.lang === 'zh' || READING_CEFR.includes(lv.lang) ? 'ABCDEFGH'[i] : String(i + 1); }
-function listeningPartName(lv, type) {
-    const n = listeningTypeNo(lv, type);
+function listeningPartName(lv, type, it) {
+    const n = it && it.part || listeningTypeNo(lv, type);
     return lv.lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : READING_PART[lv.lang] ? `${READING_PART[lv.lang]} ${n}` : t('listening_mondai', { n });
 }
 /* an HSK picture of cols × rows panels: the <img> style that shows panel k inside a square box */
@@ -741,7 +745,7 @@ function listeningQuizHtml(lv) {
         ${lv.instr ? `<div class="ls-kind">${escHtml(listeningRange(lv.sets[z.setNo], z.order[z.qi]))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-instr" lang="${lv.lang}">${escHtml(lv.instr[it.type] || '')}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type))}</div>`
-        : `<div class="ls-kind">${escHtml(listeningPartName(lv, it.type))}　${escHtml(t('listening_type_' + it.type))}</div>
+        : `<div class="ls-kind">${escHtml(listeningPartName(lv, it.type, it))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type + (it.type === 'integrated' && multi ? '_multi' : '')))}</div>`}
         ${it.pic && it.pic.kind === 'sheet' ? listeningSheetHtml(lv, it) : ''}
         ${it.scene ? `<div class="ls-scene${show ? '' : ' ls-scene-pic'}">${it.pic && it.pic.kind === 'scene'
@@ -943,7 +947,7 @@ function listeningResultHtml(lv) {
             <p class="grammar-score">${escHtml(t('grammar_result', { n: right, m: total }))}</p>
             <p class="grammar-verdict ${pass ? 'ok' : 'no'}">${escHtml(t(z.retry ? 'listening_retry_done' : z.mock ? (pass ? 'listening_mock_pass' : 'listening_mock_fail') : pass ? 'listening_pass' : 'listening_fail'))}</p>
             <div class="ls-types-result">${listeningTypes(lv).filter(ty => byType[ty]).map(ty =>
-                `<div class="ls-type-box"><span>${lv.instr ? '' : escHtml(listeningPartName(lv, ty)) + ' '}${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
+                `<div class="ls-type-box"><span>${lv.instr || listeningHasParts(lv) ? '' : escHtml(listeningPartName(lv, ty)) + ' '}${escHtml(t('listening_type_' + ty))}</span><b>${byType[ty].ok} / ${byType[ty].of}</b></div>`).join('')}</div>
             <p class="rd-speed">⏱ ${escHtml(t('listening_time', { t: listeningClockText(z.secs) }))}${z.mock ? '' : `　·　${escHtml(t('listening_avg_plays', { n: plays.toFixed(1) }))}`}</p>
             ${z.mock ? `<p class="rd-help">${escHtml(t('listening_mock_sheet'))}</p>${sheet}` : ''}
             <div class="grammar-result-btns">

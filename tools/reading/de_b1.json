@@ -4,7 +4,7 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "German B1 reading rounds in the Goethe-Zertifikat B1 format (owner's plan 2026-10-30): a blog Richtig / Falsch ×5, an article ×4, readers' letters Ja / Nein ×3, house rules ×3; 15 questions. ⚠️ the real paper has 5 parts, 30 questions (the ads part is missing here). Original texts. Drafted in tools/.mockups/de_b1.py.",
+  "note": "German B1 reading rounds in the Goethe-Zertifikat B1 format, as the official Übungssatz (EXAMS.md): Teil 1 a blog Richtig / Falsch ×6, Teil 2 two press texts ×3, Teil 3 seven situations / ten ads, Teil 4 seven readers' letters Ja / Nein, Teil 5 house rules ×4 — 30 questions. Original texts. Drafted in tools/.mockups/de_b1.py.",
   "sets": [
     {
       "id": "r1",
@@ -29,6 +29,16 @@
               "answer": 1,
               "zh": "原因「其實不是環保，而是錢」。",
               "en": "Money, not the environment."
+            },
+            {
+              "q": "Das Auto hat Tobias jeden Monat viel Geld gekostet.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "每個月將近 300 歐元。",
+              "en": "Almost €300 a month."
             },
             {
               "q": "Bei schlechtem Wetter fährt er mit der Straßenbahn.",
@@ -76,10 +86,10 @@
           "type": "text",
           "mondai": 2,
           "ask": "en_long",
-          "text": "Schule ohne Noten\nAn der Gesamtschule in Wiesbach gibt es bis zur achten Klasse keine Noten mehr. Statt Zahlen von 1 bis 6 bekommen die Schülerinnen und Schüler zweimal im Jahr einen ausführlichen Bericht. Darin stehen ihre Stärken, aber auch die Bereiche, in denen sie sich verbessern sollen. Außerdem führen Lehrer, Eltern und Kinder gemeinsam ein Gespräch. „Mit Noten haben viele Kinder nur für die Prüfung gelernt und danach alles vergessen“, sagt Schulleiterin Petra Albers. „Jetzt fragen sie mehr nach.“ Nicht alle Eltern sind begeistert. Einige befürchten, dass ihre Kinder später Probleme haben, wenn sie an eine andere Schule wechseln. Ab der neunten Klasse gibt es deshalb wieder normale Noten — für die Bewerbung um einen Ausbildungsplatz braucht man sie.",
+          "text": "Schule ohne Noten\nAn der Gesamtschule in Wiesbach gibt es bis zur achten Klasse keine Noten mehr. Statt Zahlen von 1 bis 6 bekommen die Schülerinnen und Schüler zweimal im Jahr einen ausführlichen Bericht. Darin stehen ihre Stärken, aber auch die Bereiche, in denen sie sich verbessern sollen. „Mit Noten haben viele Kinder nur für die Prüfung gelernt und danach alles vergessen“, sagt Schulleiterin Petra Albers. „Jetzt fragen sie mehr nach.“ Nicht alle Eltern sind begeistert. Einige befürchten, dass ihre Kinder später Probleme haben, wenn sie an eine andere Schule wechseln. Ab der neunten Klasse gibt es deshalb wieder normale Noten — für die Bewerbung um einen Ausbildungsplatz braucht man sie.",
           "tr": {
-            "zh": "沒有分數的學校\n維斯巴赫綜合中學八年級以前都不打分數了。學生一年兩次拿到一份詳細的報告，取代 1 到 6 的分數。報告裡寫著他們的優點，也寫著需要加強的地方。此外，老師、家長和孩子會一起面談。校長佩特拉‧阿爾貝斯說：「有分數的時候，很多孩子只為考試念書，考完就全忘了。現在他們會多問。」不是所有家長都很熱衷。有些人擔心孩子以後轉學會有問題。因此從九年級起又恢復一般的分數——申請職業培訓名額時需要。",
-            "en": "School without marks\nAt the comprehensive school in Wiesbach there are no more marks up to year eight. Instead of numbers from 1 to 6, pupils get a detailed report twice a year. It lists their strengths, but also the areas where they should improve. In addition, teachers, parents and children have a conversation together. \"With marks, many children only learnt for the test and then forgot everything,\" says head teacher Petra Albers. \"Now they ask more questions.\" Not all parents are enthusiastic. Some fear their children will have problems later if they change to another school. From year nine there are normal marks again, therefore — you need them to apply for a training place."
+            "zh": "沒有分數的學校\n維斯巴赫綜合中學八年級以前都不打分數了。學生一年兩次拿到一份詳細的報告，取代 1 到 6 的分數。報告裡寫著他們的優點，也寫著需要加強的地方。校長佩特拉‧阿爾貝斯說：「有分數的時候，很多孩子只為考試念書，考完就全忘了。現在他們會多問。」不是所有家長都很熱衷。有些人擔心孩子以後轉學會有問題。因此從九年級起又恢復一般的分數——申請職業培訓名額時需要。",
+            "en": "School without marks\nAt the comprehensive school in Wiesbach there are no more marks up to year eight. Instead of numbers from 1 to 6, pupils get a detailed report twice a year. It lists their strengths, but also the areas where they should improve. \"With marks, many children only learnt for the test and then forgot everything,\" says head teacher Petra Albers. \"Now they ask more questions.\" Not all parents are enthusiastic. Some fear their children will have problems later if they change to another school. From year nine there are normal marks again, therefore — you need them to apply for a training place."
           },
           "questions": [
             {
@@ -92,17 +102,6 @@
               "answer": 1,
               "zh": "一年兩次詳細的報告。",
               "en": "A detailed report twice a year."
-            },
-            {
-              "q": "Laut Frau Albers lernen die Kinder jetzt…",
-              "options": [
-                "nur für Prüfungen.",
-                "mit mehr Interesse.",
-                "weniger."
-              ],
-              "answer": 1,
-              "zh": "「現在他們會多問」：比較有興趣。",
-              "en": "\"Now they ask more questions.\""
             },
             {
               "q": "Einige Eltern haben Angst, dass…",
@@ -130,13 +129,123 @@
         },
         {
           "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Bücher für alle\nIn immer mehr deutschen Städten stehen öffentliche Bücherschränke: alte Telefonzellen oder Holzschränke auf Plätzen, in die jeder Bücher stellen und aus denen jeder Bücher mitnehmen kann — kostenlos und ohne Anmeldung. In Bonn gibt es inzwischen über 20 solcher Schränke. Betreut werden sie von Freiwilligen, die regelmäßig vorbeikommen, beschädigte Bücher aussortieren und für Ordnung sorgen. „Am Anfang hatten wir Angst, dass alles gestohlen wird“, erzählt Ursula Brandt, die seit vier Jahren einen Schrank in der Südstadt betreut. „Aber die Leute bringen fast mehr, als sie nehmen.“ Besonders beliebt sind Romane und Kinderbücher. Lexika und alte Schulbücher dagegen bleiben oft monatelang stehen.",
+          "tr": {
+            "zh": "給大家的書\n越來越多德國城市出現公共書櫃：廣場上的舊電話亭或木櫃，任何人都可以把書放進去，也可以把書拿走——免費，也不用登記。波昂現在已經有 20 多個這樣的書櫃。由志工照顧，他們定期來整理，挑出破損的書。在南城照顧一個書櫃四年的烏蘇拉‧布蘭特說：「一開始我們怕東西全被偷光。但大家放進來的幾乎比拿走的還多。」最受歡迎的是小說和童書。百科全書和舊課本則常常放好幾個月都沒人拿。",
+            "en": "Books for everyone\nIn more and more German cities there are public bookcases: old phone boxes or wooden cupboards on squares, where anyone can put books in and take books out — free and without registering. Bonn now has over 20 of them. They are looked after by volunteers who come by regularly, sort out damaged books and keep things tidy. \"At first we were afraid everything would be stolen,\" says Ursula Brandt, who has looked after a bookcase in the Südstadt for four years. \"But people bring almost more than they take.\" Novels and children's books are especially popular. Encyclopaedias and old school books, on the other hand, often stay there for months."
+          },
+          "questions": [
+            {
+              "q": "Wer Bücher aus einem Bücherschrank nehmen will, …",
+              "options": [
+                "muss sich anmelden.",
+                "muss nichts bezahlen.",
+                "muss ein Buch zurückbringen."
+              ],
+              "answer": 1,
+              "zh": "免費，也不用登記；沒說要還。",
+              "en": "Free and no registration; nothing about returning one."
+            },
+            {
+              "q": "Die Freiwilligen…",
+              "options": [
+                "verkaufen alte Bücher.",
+                "kümmern sich um die Schränke.",
+                "bauen neue Schränke."
+              ],
+              "answer": 1,
+              "zh": "定期整理、挑出破損的書。",
+              "en": "They look after them and keep them tidy."
+            },
+            {
+              "q": "Was hat Frau Brandt erlebt?",
+              "options": [
+                "Viele Bücher wurden gestohlen.",
+                "Die Leute bringen viele Bücher.",
+                "Niemand interessiert sich für die Schränke."
+              ],
+              "answer": 1,
+              "zh": "「大家放進來的幾乎比拿走的還多」。",
+              "en": "\"People bring almost more than they take.\""
+            }
+          ]
+        },
+        {
+          "type": "en_people",
           "mondai": 3,
+          "ask": "en_people",
+          "bank": [
+            "Ferienspaß Kinderland — Für unser Sommerprogramm (Juli und August) suchen wir Betreuerinnen und Betreuer ab 16 Jahren. Gute Bezahlung!",
+            "Cucina Italiana — Kochkurse jeden Samstag. Pasta, Pizza und Desserts. Gutscheine gibt es auch als Geschenk.",
+            "Rad-Werkstatt Süd — Reparaturkurs für Anfänger: Lernen Sie, Ihr Fahrrad selbst zu reparieren. Dienstags 18–20 Uhr.",
+            "Englisch-Nachhilfe online — Für Schülerinnen und Schüler der Klassen 5–10. 20 € pro Stunde.",
+            "Stadtführer/in für den Sommer gesucht — Sie sprechen mindestens zwei Fremdsprachen? Dann führen Sie Touristen durch unsere Altstadt.",
+            "FitPoint — Probetraining kostenlos, geöffnet rund um die Uhr.",
+            "Chor „Bunte Stimmen“ sucht neue Mitglieder. Keine Vorkenntnisse nötig, wir proben mittwochs und gehen danach zusammen essen.",
+            "Gebrauchte Kinderfahrräder günstig abzugeben, 20–40 €. Anrufen ab 17 Uhr.",
+            "Sprachtandem Spanisch–Deutsch — Spanische Muttersprachler treffen Deutsche zum Üben, jeden Freitag im Café Mundo.",
+            "Erste-Hilfe-Kurs für den Führerschein — Samstag, 9–16 Uhr, mit Bescheinigung."
+          ],
+          "tr": {
+            "zh": "A 兒童樂園夏令營：七、八月的夏季活動徵 16 歲以上的照顧員。待遇好！\nB 義大利廚房：每週六烹飪課，義大利麵、披薩和甜點。也有禮券可當禮物。\nC 南區單車工坊：初學者修車課，學會自己修腳踏車。週二 18–20 點。\nD 線上英文家教：給 5–10 年級學生，每小時 20 歐元。\nE 徵夏季導覽員：會至少兩種外語？帶遊客參觀老城。\nF FitPoint 健身房：免費試用，24 小時營業。\nG「彩色歌聲」合唱團招新團員：不需經驗，每週三練唱，之後一起吃飯。\nH 便宜出售二手兒童腳踏車，20–40 歐元。17 點後來電。\nI 西德語言交換：西班牙母語者和德國人一起練習，每週五在世界咖啡館。\nJ 考駕照用的急救課：週六 9–16 點，附證明。",
+            "en": "A Holiday fun Kinderland: for our summer programme (July and August) we are looking for carers aged 16+. Good pay!\nB Cucina Italiana: cooking classes every Saturday. Pasta, pizza and desserts. Vouchers also available as gifts.\nC Bike workshop South: repair course for beginners — learn to repair your own bike. Tuesdays 6–8 p.m.\nD English tutoring online: for pupils in years 5–10. €20 an hour.\nE Tour guide wanted for the summer: you speak at least two foreign languages? Then lead tourists through our old town.\nF FitPoint: free trial, open 24 hours.\nG Choir \"Colourful Voices\" looking for new members. No experience needed; we rehearse on Wednesdays and eat together afterwards.\nH Used children's bikes, cheap, €20–40. Call after 5 p.m.\nI Language tandem Spanish–German: native Spanish speakers meet Germans to practise, every Friday at Café Mundo.\nJ First-aid course for the driving licence: Saturday, 9 a.m.–4 p.m., with certificate."
+          },
+          "questions": [
+            {
+              "q": "Lena (17) möchte in den Sommerferien Geld verdienen. Sie arbeitet gern mit Kindern.",
+              "answer": "A",
+              "zh": "暑假賺錢、喜歡小孩、17 歲：A 徵 16 歲以上照顧員，有薪水。",
+              "en": "Summer, paid, children, 16+: A."
+            },
+            {
+              "q": "Herr Yilmaz sucht ein Geschenk für seine Frau, die gern italienisch kocht.",
+              "answer": "B",
+              "zh": "送太太禮物、義大利菜：B 有禮券。",
+              "en": "A gift, Italian cooking: B sells vouchers."
+            },
+            {
+              "q": "Paul möchte nicht mehr für jede Fahrradreparatur bezahlen.",
+              "answer": "C",
+              "zh": "想自己修腳踏車：C 修車課。H 是賣腳踏車。",
+              "en": "Learn to repair his own bike: C; H sells bikes."
+            },
+            {
+              "q": "Mira macht bald die Führerscheinprüfung und braucht noch einen Pflichtkurs.",
+              "answer": "J",
+              "zh": "考駕照需要的課：J 急救課附證明。",
+              "en": "The first-aid course for the licence: J."
+            },
+            {
+              "q": "Sofia singt gern und möchte in der neuen Stadt Leute kennenlernen.",
+              "answer": "G",
+              "zh": "喜歡唱歌、想認識人：G 合唱團，練完一起吃飯。",
+              "en": "Singing and meeting people: the choir."
+            },
+            {
+              "q": "Jonas lernt Spanisch und möchte mit Muttersprachlern sprechen.",
+              "answer": "I",
+              "zh": "和母語者練西班牙文：I 語言交換。",
+              "en": "Practise with native speakers: the tandem."
+            },
+            {
+              "q": "Clara studiert Englisch und Französisch und sucht einen Ferienjob in der Stadt.",
+              "answer": "E",
+              "zh": "會兩種外語、找暑期工作：E 導覽員；A 是照顧小孩。",
+              "en": "Two languages, a summer job: E."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
           "ask": "en_long",
           "n_options": 2,
-          "text": "Leserbriefe zum Thema: Sollen Geschäfte auch am Sonntag öffnen?\nAnja, 34: Ich arbeite unter der Woche bis 19 Uhr. Am Samstag ist es in der Stadt so voll, dass Einkaufen keinen Spaß macht. Ein offener Sonntag wäre für mich ideal.\nRolf, 58: Der Sonntag ist der einzige Tag, an dem die ganze Familie zusammen ist. Wenn die Geschäfte öffnen, müssen viele Verkäuferinnen arbeiten. Das finde ich nicht richtig.\nMehmet, 26: Ich verstehe beide Seiten. Vielleicht kann man an vier Sonntagen im Jahr öffnen, zum Beispiel vor Weihnachten.\nGisela, 71: Wer am Sonntag einkaufen will, kann im Internet bestellen. Die Innenstadt sollte an diesem Tag ruhig bleiben.",
+          "text": "Leserbriefe zum Thema: Sollen Geschäfte auch am Sonntag öffnen?\nAnja, 34: Ich arbeite unter der Woche bis 19 Uhr. Am Samstag ist es in der Stadt so voll, dass Einkaufen keinen Spaß macht. Ein offener Sonntag wäre für mich ideal.\nRolf, 58: Der Sonntag ist der einzige Tag, an dem die ganze Familie zusammen ist. Wenn die Geschäfte öffnen, müssen viele Verkäuferinnen arbeiten. Das finde ich nicht richtig.\nLukas, 21: Ich studiere und jobbe im Supermarkt. Sonntagsarbeit wird besser bezahlt — ich würde sofort sonntags arbeiten.\nPetra, 47: Ich habe einen kleinen Buchladen. Für mich lohnt sich ein offener Sonntag nicht: Das Personal kostet mehr, und die Kunden kaufen trotzdem nicht mehr.\nTim, 30: Unsere Stadt lebt vom Tourismus. Touristen sind am Wochenende hier und wundern sich über geschlossene Läden. Da verliert die Stadt Geld.\nGisela, 71: Wer am Sonntag einkaufen will, kann im Internet bestellen. Die Innenstadt sollte an diesem Tag ruhig bleiben.\nHanna, 25: Ich arbeite im Krankenhaus oft am Wochenende. Wenn ich Sonntag frei habe, möchte ich auch mal einkaufen gehen können.",
           "tr": {
-            "zh": "讀者來信：商店星期天也該營業嗎？\n安雅，34 歲：我平日工作到晚上 7 點。星期六市中心人多到逛街一點都不好玩。星期天營業對我來說最理想。\n羅爾夫，58 歲：星期天是全家唯一能團聚的日子。如果商店營業，很多店員就得上班。我覺得這樣不對。\n梅赫梅特，26 歲：兩邊我都能理解。也許一年可以開四個星期天，例如聖誕節前。\n吉賽拉，71 歲：星期天想買東西的人可以上網訂。市中心那天應該保持安靜。",
-            "en": "Readers' letters: Should shops open on Sundays too?\nAnja, 34: I work until 7 p.m. during the week. On Saturdays town is so crowded that shopping is no fun. An open Sunday would be ideal for me.\nRolf, 58: Sunday is the only day the whole family is together. If shops open, many sales assistants have to work. I don't think that's right.\nMehmet, 26: I understand both sides. Perhaps shops could open on four Sundays a year, for example before Christmas.\nGisela, 71: Anyone who wants to shop on Sunday can order online. The town centre should stay quiet on that day."
+            "zh": "讀者來信：商店星期天也該營業嗎？\n安雅，34 歲：我平日工作到晚上 7 點。星期六市中心人多到逛街一點都不好玩。星期天營業對我來說最理想。\n羅爾夫，58 歲：星期天是全家唯一能團聚的日子。如果商店營業，很多店員就得上班。我覺得這樣不對。\n盧卡斯，21 歲：我是大學生，在超市打工。星期天上班薪水比較高——我馬上就願意星期天上班。\n佩特拉，47 歲：我開一家小書店。星期天營業對我不划算：人事費更高，客人也不會因此買比較多。\n提姆，30 歲：我們的城市靠觀光維生。遊客週末來，看到商店關門都很驚訝。城市就這樣少賺了錢。\n吉賽拉，71 歲：星期天想買東西的人可以上網訂。市中心那天應該保持安靜。\n漢娜，25 歲：我在醫院工作，常常週末上班。我星期天休假的時候，也想能去買東西。",
+            "en": "Readers' letters: Should shops open on Sundays too?\nAnja, 34: I work until 7 p.m. during the week. On Saturdays town is so crowded that shopping is no fun. An open Sunday would be ideal for me.\nRolf, 58: Sunday is the only day the whole family is together. If shops open, many sales assistants have to work. I don't think that's right.\nLukas, 21: I'm a student with a job in a supermarket. Sunday work is better paid — I'd work Sundays straight away.\nPetra, 47: I have a small bookshop. An open Sunday doesn't pay for me: staff cost more, and customers still don't buy more.\nTim, 30: Our town lives on tourism. Tourists are here at weekends and are surprised at closed shops. The town loses money.\nGisela, 71: Anyone who wants to shop on Sunday can order online. The town centre should stay quiet on that day.\nHanna, 25: I work in a hospital, often at weekends. When I have a Sunday off, I'd like to be able to go shopping too."
           },
           "questions": [
             {
@@ -160,6 +269,36 @@
               "en": "He thinks it is wrong for staff."
             },
             {
+              "q": "Ist Lukas für offene Geschäfte am Sonntag?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "星期天薪水高，他願意上班。",
+              "en": "Better pay; he would work."
+            },
+            {
+              "q": "Ist Petra für offene Geschäfte am Sonntag?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "對小書店不划算。",
+              "en": "It doesn't pay for her shop."
+            },
+            {
+              "q": "Ist Tim für offene Geschäfte am Sonntag?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "關門讓城市少賺觀光客的錢。",
+              "en": "Closed shops lose tourist money."
+            },
+            {
               "q": "Ist Gisela für offene Geschäfte am Sonntag?",
               "options": [
                 "Ja",
@@ -168,12 +307,22 @@
               "answer": 1,
               "zh": "可以上網訂，市中心該安靜。",
               "en": "Order online; keep the centre quiet."
+            },
+            {
+              "q": "Ist Hanna für offene Geschäfte am Sonntag?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "週末常上班，休假的星期天想去買東西。",
+              "en": "She wants to shop on her Sundays off."
             }
           ]
         },
         {
           "type": "text",
-          "mondai": 4,
+          "mondai": 5,
           "ask": "en_long",
           "text": "Hausordnung — Studentenwohnheim Am Lindenhof\n1. Ruhezeiten: Von 22 bis 7 Uhr und sonntags den ganzen Tag bitte keine laute Musik.\n2. Küche: Jede Etage hat eine Gemeinschaftsküche. Bitte spülen Sie Ihr Geschirr sofort und nehmen Sie Ihre Lebensmittel aus dem Kühlschrank, wenn Sie länger als eine Woche weg sind.\n3. Gäste: Besuch darf maximal drei Nächte bleiben. Bitte melden Sie Übernachtungsgäste beim Hausmeister an.\n4. Fahrräder: Fahrräder gehören in den Keller, nicht in den Flur.\n5. Müll: Papier, Plastik und Restmüll bitte trennen. Die Container stehen hinter dem Haus.",
           "tr": {
@@ -213,6 +362,17 @@
               "answer": 1,
               "zh": "訪客最多三晚。",
               "en": "Three nights at most."
+            },
+            {
+              "q": "Wohin gehört Ihr Fahrrad?",
+              "options": [
+                "in den Flur",
+                "in den Keller",
+                "hinter das Haus"
+              ],
+              "answer": 1,
+              "zh": "腳踏車放地下室；房子後面是回收箱。",
+              "en": "In the cellar; the bins are behind the house."
             }
           ]
         }
