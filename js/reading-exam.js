@@ -106,7 +106,9 @@ const READING_ASK_FR = {
     en_open: 'Complétez le texte avec un seul mot par espace.',
     en_people: 'Lisez les annonces et choisissez celle qui convient à chaque personne.',
     en_gapped: 'Des phrases ont été retirées du texte. Choisissez la phrase qui convient pour chaque espace.',
-    en_sections: 'Pour chaque question, choisissez la partie du texte (A–D).'
+    en_sections: 'Pour chaque question, choisissez la partie du texte (A–D).',
+    en_headings: 'Quel texte correspond à chaque titre ? Un texte ne sert pas.',
+    en_titles: 'Quel titre correspond à chaque paragraphe ? Certains titres ne servent pas.'
 };
 const READING_ASK_RU = {          // ТРКИ
     en_notice: 'Прочитайте текст и ответьте на вопросы.',
@@ -116,7 +118,9 @@ const READING_ASK_RU = {          // ТРКИ
     en_open: 'Вставьте в каждый пропуск одно слово.',
     en_people: 'Прочитайте объявления и выберите подходящее для каждого человека.',
     en_gapped: 'Из текста убраны предложения. Выберите подходящее для каждого пропуска.',
-    en_sections: 'Для каждого вопроса выберите часть текста (A–D).'
+    en_sections: 'Для каждого вопроса выберите часть текста (A–D).',
+    en_headings: 'Какой текст подходит к каждому заголовку? Один текст лишний.',
+    en_titles: 'Какой заголовок подходит к каждому абзацу? Некоторые заголовки лишние.'
 };
 const READING_ASK_DE = {          // Goethe-Zertifikat
     en_notice: 'Lesen Sie den Text und lösen Sie die Aufgaben.',
@@ -126,7 +130,9 @@ const READING_ASK_DE = {          // Goethe-Zertifikat
     en_open: 'Ergänzen Sie in jeder Lücke ein Wort.',
     en_people: 'Lesen Sie die Anzeigen. Welche Anzeige passt zu welcher Person?',
     en_gapped: 'Im Text fehlen Sätze. Welcher Satz passt in welche Lücke?',
-    en_sections: 'Zu welchem Abschnitt (A–D) passt die Aussage?'
+    en_sections: 'Zu welchem Abschnitt (A–D) passt die Aussage?',
+    en_headings: 'Welche Äußerung passt zu welcher Überschrift? Eine Äußerung passt nicht.',
+    en_titles: 'Welche Überschrift passt zu welchem Paragrafen? Einige Überschriften werden nicht gebraucht.'
 };
 const READING_ASK_ES = {          // DELE
     en_notice: 'Lea el texto y responda a las preguntas.',
@@ -136,7 +142,9 @@ const READING_ASK_ES = {          // DELE
     en_open: 'Complete cada hueco con una sola palabra.',
     en_people: 'Lea los anuncios y relacione a cada persona con el anuncio adecuado.',
     en_gapped: 'Faltan fragmentos en el texto. Elija el fragmento adecuado para cada hueco.',
-    en_sections: 'Indique a qué parte del texto (A–D) corresponde cada enunciado.'
+    en_sections: 'Indique a qué parte del texto (A–D) corresponde cada enunciado.',
+    en_headings: '¿Qué texto corresponde a cada título? Sobra un texto.',
+    en_titles: '¿Qué título corresponde a cada párrafo? Sobran algunos títulos.'
 };
 const READING_ASK_CEFR = { fr: READING_ASK_FR, ru: READING_ASK_RU, de: READING_ASK_DE, es: READING_ASK_ES };
 const READING_ASK_EN = {
@@ -149,7 +157,9 @@ const READING_ASK_EN = {
     en_gapped: 'Sentences have been removed from the text. Choose the sentence which fits each gap. There are extra sentences which you do not need to use.',
     en_wordform: 'Use the word given in capitals to form a word that fits in the gap.',
     en_transform: 'Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.',
-    en_sections: 'For each question, choose from the sections (A–D). The sections may be chosen more than once.'
+    en_sections: 'For each question, choose from the sections (A–D). The sections may be chosen more than once.',
+    en_headings: 'Which text matches each heading? There is one text you do not need.',
+    en_titles: 'Which heading matches each paragraph? There are headings you do not need.'
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options

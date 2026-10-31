@@ -275,6 +275,8 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             'en_notice', 'en_match', 'en_long', 'en_cloze', 'en_open', 'en_people', 'en_gapped',
             # Cambridge First / Advanced: word formation, key word transformations, sections matched to statements
             'en_wordform', 'en_transform', 'en_sections',
+            # Goethe B2 Lesen Teil 4 (a text for each heading) and Teil 5 (a heading for each paragraph)
+            'en_headings', 'en_titles',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 

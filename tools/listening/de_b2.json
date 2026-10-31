@@ -4,20 +4,382 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "German B2 listening in the Goethe-Zertifikat B2 format (owner's plan 2026-10-30): an interview on cooler cities ×5, a news item ×2 (en_q), played once; 7 questions. ⚠️ the real paper has 4 parts, 30 questions. Original texts. Drafted in tools/.mockups/de_b2_ls.py.",
+  "note": "German B2 listening in the Goethe-Zertifikat B2 format, as the official Modellsatz (EXAMS.md): Teil 1 five short texts ×2 (R/F + a/b/c, once), Teil 2 an interview on cooler cities ×6 (twice), Teil 3 a conversation on country life, who says it ×6 (once), Teil 4 a talk on sleep ×8 (twice) — 30 questions; items name their part and plays. Original texts. Drafted in tools/.mockups/de_b2_ls.py.",
   "types": [
+    "en_talk",
     "en_q"
   ],
-  "mock_plays": 1,
+  "mock_plays": {
+    "en_talk": 1,
+    "en_q": 2
+  },
   "mock_counts": {
-    "en_q": 7
+    "en_talk": 10,
+    "en_q": 20
   },
   "sets": [
     {
       "id": "s1",
       "items": [
         {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht auf der Mailbox.",
+              "zh": "你會聽到一則語音信箱留言。",
+              "en": "You will hear a voicemail message."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Herr Wagner, hier ist Lena Hoffmann von der Firma Gartenwelt. Die Pflanzen, die Sie bestellt haben, sind leider erst nächste Woche lieferbar. Wir können sie Ihnen kostenlos nach Hause bringen, oder Sie holen sie selbst ab und bekommen zehn Prozent Rabatt. Rufen Sie mich bitte kurz zurück.",
+              "zh": "華格納先生您好，我是花園世界公司的蓮娜‧霍夫曼。您訂的植物很抱歉下週才能出貨。我們可以免費送到府上，或是您自己來取，享九折優惠。請回個電話給我。",
+              "en": "Hello Mr Wagner, this is Lena Hoffmann from Gartenwelt. Unfortunately the plants you ordered won't be available until next week. We can deliver them to your home free of charge, or you can collect them yourself and get ten per cent off. Please call me back briefly."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Pflanzen können sofort geliefert werden.",
+                "zh": "植物可以馬上送貨。",
+                "en": "The plants can be delivered at once."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "下週才能出貨。",
+                "en": "Not until next week."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Wenn Herr Wagner die Pflanzen selbst abholt, …",
+                "zh": "如果華格納先生自己去取，……",
+                "en": "If Mr Wagner collects the plants himself, …"
+              },
+              "options": [
+                {
+                  "t": "bekommt er einen Preisnachlass."
+                },
+                {
+                  "t": "muss er nichts bezahlen."
+                },
+                {
+                  "t": "bekommt er sie heute."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "自己取享九折。",
+                "en": "Ten per cent off for collecting."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch im Büro.",
+              "zh": "你會聽到辦公室裡的一段對話。",
+              "en": "You will hear a conversation in an office."
+            },
+            {
+              "who": "M",
+              "s": "Frau Lang, haben Sie die Präsentation für morgen schon fertig?",
+              "zh": "朗女士，明天的簡報做好了嗎？",
+              "en": "Ms Lang, have you finished the presentation for tomorrow?"
+            },
+            {
+              "who": "F",
+              "s": "Fast. Mir fehlen nur noch die Zahlen aus dem Verkauf. Herr Ott wollte sie mir heute Vormittag schicken, aber er ist krank.",
+              "zh": "快了。只差銷售部的數字。奧特先生說今天上午寄給我，可是他生病了。",
+              "en": "Almost. I just need the sales figures. Mr Ott was going to send them this morning, but he's ill."
+            },
+            {
+              "who": "M",
+              "s": "Dann frage ich seine Kollegin, die hat bestimmt Zugriff darauf. Ich melde mich in einer Stunde.",
+              "zh": "那我去問他的同事，她一定看得到。我一小時後回覆妳。",
+              "en": "Then I'll ask his colleague; she's bound to have access. I'll get back to you in an hour."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Präsentation ist komplett fertig.",
+                "zh": "簡報已經完全做好了。",
+                "en": "The presentation is completely finished."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "還差銷售數字。",
+                "en": "The sales figures are missing."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Der Mann will…",
+                "zh": "男的打算……",
+                "en": "The man is going to…"
+              },
+              "options": [
+                {
+                  "t": "Herrn Ott anrufen."
+                },
+                {
+                  "t": "eine Kollegin von Herrn Ott fragen."
+                },
+                {
+                  "t": "die Präsentation verschieben."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我去問他的同事」。",
+                "en": "\"I'll ask his colleague.\""
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Durchsage am Flughafen.",
+              "zh": "你會聽到機場的廣播。",
+              "en": "You will hear an announcement at the airport."
+            },
+            {
+              "who": "F",
+              "s": "Achtung, Passagiere des Fluges LH 452 nach New York: Wegen eines technischen Problems verzögert sich der Abflug um etwa zwei Stunden. Sie erhalten am Schalter B 20 einen Gutschein für ein Essen in unseren Restaurants.",
+              "zh": "搭乘 LH 452 班機往紐約的旅客請注意：因技術問題，起飛時間延後約兩小時。請到 B20 櫃台領取本機場餐廳的餐券。",
+              "en": "Attention, passengers on flight LH 452 to New York: because of a technical problem, departure is delayed by about two hours. You will receive a voucher for a meal in our restaurants at desk B 20."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Der Flug nach New York fällt aus.",
+                "zh": "飛紐約的班機取消了。",
+                "en": "The flight to New York is cancelled."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "只是延後兩小時。",
+                "en": "Only delayed by two hours."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Am Schalter B 20 bekommen die Passagiere…",
+                "zh": "旅客在 B20 櫃台可以拿到……",
+                "en": "At desk B 20 passengers get…"
+              },
+              "options": [
+                {
+                  "t": "einen neuen Flug."
+                },
+                {
+                  "t": "einen Essensgutschein."
+                },
+                {
+                  "t": "ein Hotelzimmer."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "餐券。",
+                "en": "A meal voucher."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Tipp im Radio.",
+              "zh": "你會聽到廣播裡的一則小建議。",
+              "en": "You will hear a tip on the radio."
+            },
+            {
+              "who": "M",
+              "s": "Sie wollen im Winter Heizkosten sparen? Dann lüften Sie lieber dreimal am Tag fünf Minuten mit ganz offenem Fenster, statt das Fenster stundenlang zu kippen. So bleibt die Wand warm, und es bildet sich kein Schimmel.",
+              "zh": "冬天想省暖氣費嗎？那就一天三次、每次五分鐘把窗戶完全打開通風，而不要好幾個小時開著小縫。這樣牆壁會保持溫暖，也不會發霉。",
+              "en": "Want to save heating costs in winter? Then air the room three times a day for five minutes with the window wide open, rather than leaving it tilted for hours. That way the walls stay warm and no mould forms."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Man soll das Fenster lange gekippt lassen.",
+                "zh": "應該長時間開著小縫通風。",
+                "en": "You should leave the window tilted for a long time."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "相反：短時間全開。",
+                "en": "The opposite: briefly, wide open."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Kurzes Lüften verhindert…",
+                "zh": "短時間通風可以避免……",
+                "en": "Short airing prevents…"
+              },
+              "options": [
+                {
+                  "t": "Schimmel."
+                },
+                {
+                  "t": "Lärm."
+                },
+                {
+                  "t": "Staub."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「也不會發霉」。",
+                "en": "No mould."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch unter Nachbarn.",
+              "zh": "你會聽到鄰居之間的對話。",
+              "en": "You will hear a conversation between neighbours."
+            },
+            {
+              "who": "F",
+              "s": "Herr Kaya, am Samstag machen wir im Hof ein Hausfest. Kommen Sie auch?",
+              "zh": "卡亞先生，星期六我們在中庭辦住戶派對。您也來嗎？",
+              "en": "Mr Kaya, on Saturday we're having a house party in the courtyard. Are you coming?"
+            },
+            {
+              "who": "M",
+              "s": "Gern! Soll ich etwas mitbringen?",
+              "zh": "好啊！要我帶什麼嗎？",
+              "en": "Gladly! Shall I bring something?"
+            },
+            {
+              "who": "F",
+              "s": "Getränke haben wir genug, aber jemand müsste Tische und Stühle aus dem Keller holen.",
+              "zh": "飲料夠了，不過需要有人從地下室搬桌椅上來。",
+              "en": "We have enough drinks, but someone needs to fetch tables and chairs from the cellar."
+            },
+            {
+              "who": "M",
+              "s": "Das mache ich, aber erst ab drei, vorher arbeite ich.",
+              "zh": "我來搬，不過要三點以後，之前我要上班。",
+              "en": "I'll do that, but not until three; I'm working before then."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Herr Kaya kommt zum Hausfest.",
+                "zh": "卡亞先生會來住戶派對。",
+                "en": "Mr Kaya is coming to the house party."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「好啊！」",
+                "en": "\"Gladly!\""
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Herr Kaya wird…",
+                "zh": "卡亞先生會……",
+                "en": "Mr Kaya will…"
+              },
+              "options": [
+                {
+                  "t": "Getränke kaufen."
+                },
+                {
+                  "t": "Möbel aus dem Keller holen."
+                },
+                {
+                  "t": "am Vormittag helfen."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "搬桌椅，三點以後。",
+                "en": "Fetch tables and chairs, after three."
+              }
+            }
+          ]
+        },
+        {
           "type": "en_q",
+          "part": 2,
+          "plays": 2,
           "lines": [
             {
               "who": "N",
@@ -57,9 +419,9 @@
             },
             {
               "who": "F",
-              "s": "Am Anfang ja. Aber Hitze kostet auch: Menschen werden krank, arbeiten weniger, Krankenhäuser sind voll. Langfristig ist Nichtstun die teuerste Lösung.",
-              "zh": "一開始是。但炎熱也有代價：人會生病、工作效率降低、醫院爆滿。長遠來看，什麼都不做才是最貴的辦法。",
-              "en": "At first, yes. But heat costs money too: people get ill, work less, hospitals are full. In the long run, doing nothing is the most expensive solution."
+              "s": "Am Anfang ja. Aber Hitze kostet auch: Menschen werden krank, arbeiten weniger, Krankenhäuser sind voll. Langfristig ist Nichtstun die teuerste Lösung. Und jeder kann etwas beitragen — schon ein begrünter Balkon hilft im eigenen Haus.",
+              "zh": "一開始是。但炎熱也有代價：人會生病、工作效率降低、醫院爆滿。長遠來看，什麼都不做才是最貴的辦法。而且每個人都能出一份力——光是陽台種滿植物，就對自己的房子有幫助。",
+              "en": "At first, yes. But heat costs money too: people get ill, work less, hospitals are full. In the long run, doing nothing is the most expensive solution. And everyone can contribute — even a green balcony helps in your own building."
             }
           ],
           "questions": [
@@ -177,70 +539,440 @@
                 "zh": "「長遠來看，什麼都不做才是最貴的」。",
                 "en": "In the long run, doing nothing costs most."
               }
+            },
+            {
+              "ask": {
+                "s": "Was kann jeder Einzelne tun?",
+                "zh": "每個人可以做什麼？",
+                "en": "What can each individual do?"
+              },
+              "options": [
+                {
+                  "t": "einen Baum fällen"
+                },
+                {
+                  "t": "den Balkon bepflanzen"
+                },
+                {
+                  "t": "die Klimaanlage öfter nutzen"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「陽台種滿植物就有幫助」。",
+                "en": "A green balcony helps."
+              }
             }
           ]
         },
         {
           "type": "en_q",
+          "part": 3,
+          "plays": 1,
           "lines": [
             {
               "who": "N",
-              "s": "Sie hören eine Kurznachricht im Radio.",
-              "zh": "你會聽到一則廣播短訊。",
-              "en": "You will hear a short news item on the radio."
+              "s": "Sie hören im Radio ein Gespräch über das Leben auf dem Land. Der Moderator spricht mit Frau Gerster und Herrn Lücke.",
+              "zh": "你會聽到一段關於鄉村生活的廣播對談。主持人和葛斯特女士、呂克先生對談。",
+              "en": "You will hear a radio conversation about life in the countryside. The presenter talks to Ms Gerster and Mr Lücke."
             },
             {
               "who": "M",
-              "s": "Die Stadt Münster testet ab Januar ein kostenloses Busticket für alle Schülerinnen und Schüler. Der Versuch läuft zunächst ein Jahr. Die Stadt hofft, dass weniger Eltern ihre Kinder mit dem Auto zur Schule bringen. Der Verkehrsverbund warnt allerdings, dass in den Stoßzeiten zusätzliche Busse nötig sein werden.",
-              "zh": "明斯特市從一月起試辦所有學生免費搭公車。試辦期先一年。市府希望少一點家長開車送孩子上學。不過交通聯營公司警告，尖峰時段會需要加開公車。",
-              "en": "From January the city of Münster is testing a free bus ticket for all schoolchildren. The trial will run for a year at first. The city hopes fewer parents will drive their children to school. The transport association warns, however, that extra buses will be needed at peak times."
+              "s": "Immer mehr junge Familien ziehen aus der Stadt aufs Land. Frau Gerster, Sie haben das vor zwei Jahren gemacht.",
+              "zh": "越來越多年輕家庭從城市搬到鄉下。葛斯特女士，您兩年前就這麼做了。",
+              "en": "More and more young families are moving from the city to the countryside. Ms Gerster, you did that two years ago."
+            },
+            {
+              "who": "F",
+              "s": "Ja, und ich bereue es keine Sekunde. Unsere Kinder spielen draußen, und für den Preis einer kleinen Stadtwohnung haben wir ein ganzes Haus gekauft.",
+              "zh": "對，我一秒都沒後悔過。孩子們在外面玩，用城市小公寓的價錢我們買了一整棟房子。",
+              "en": "Yes, and I don't regret it for a second. Our children play outside, and for the price of a small city flat we bought a whole house."
+            },
+            {
+              "who": "M2",
+              "s": "Das klingt schön, aber man darf die Nachteile nicht vergessen. Bei uns im Dorf fährt der Bus nur zweimal am Tag. Ohne Auto geht gar nichts.",
+              "zh": "聽起來很好，但不能忘了缺點。我們村子的公車一天只有兩班。沒有車什麼都辦不了。",
+              "en": "That sounds lovely, but you mustn't forget the disadvantages. In our village the bus runs only twice a day. Without a car nothing works."
+            },
+            {
+              "who": "M",
+              "s": "Und wie ist es mit dem Internet? Viele arbeiten ja von zu Hause.",
+              "zh": "那網路呢？很多人都在家工作。",
+              "en": "And what about the internet? After all, many people work from home."
+            },
+            {
+              "who": "F",
+              "s": "Bei uns ist es inzwischen gut, die Gemeinde hat Glasfaser verlegt. Das war für uns die Voraussetzung für den Umzug.",
+              "zh": "我們那裡現在很好，鎮公所鋪了光纖。這是我們搬家的前提。",
+              "en": "With us it is good now; the council laid fibre-optic cable. That was the precondition for our move."
+            },
+            {
+              "who": "M2",
+              "s": "Da hatten Sie Glück. Ich kenne viele Dörfer, in denen man kaum telefonieren kann. Und die Ärzte gehen in Rente, ohne einen Nachfolger zu finden.",
+              "zh": "那您很幸運。我知道很多村子連電話都很難打。而且醫生退休了，也找不到接班人。",
+              "en": "You were lucky there. I know many villages where you can hardly make a phone call. And doctors retire without finding a successor."
+            },
+            {
+              "who": "M",
+              "s": "Was müsste die Politik tun?",
+              "zh": "政府應該怎麼做？",
+              "en": "What should politicians do?"
+            },
+            {
+              "who": "M2",
+              "s": "Vor allem in Bus und Bahn investieren. Nicht jeder kann oder will zwei Autos haben.",
+              "zh": "最重要的是投資公車和鐵路。不是每個人都能或想要有兩輛車。",
+              "en": "Above all invest in buses and trains. Not everyone can or wants to have two cars."
+            },
+            {
+              "who": "F",
+              "s": "Und die Dorfgemeinschaft stärken. Bei uns gibt es seit einem Jahr einen Dorfladen, den die Bewohner selbst organisieren — das verbindet.",
+              "zh": "還有加強村子的凝聚力。我們那裡一年前開了一家由居民自己經營的村子商店——這讓大家更緊密。",
+              "en": "And strengthen the village community. For a year we've had a village shop that the residents run themselves — it brings people together."
             }
           ],
           "questions": [
             {
               "ask": {
-                "s": "Was ist das Ziel des Versuchs?",
-                "zh": "試辦的目的是什麼？",
-                "en": "What is the aim of the trial?"
+                "s": "Immer mehr Familien verlassen die Stadt.",
+                "zh": "越來越多家庭離開城市。",
+                "en": "More and more families are leaving the city."
               },
               "options": [
                 {
-                  "t": "weniger Autoverkehr vor Schulen"
+                  "t": "der Moderator"
                 },
                 {
-                  "t": "mehr Geld für Busse"
+                  "t": "Frau Gerster"
                 },
                 {
-                  "t": "kürzere Schulwege"
+                  "t": "Herr Lücke"
                 }
               ],
               "answer": "A",
               "explain": {
-                "zh": "希望少一點家長開車送孩子。",
-                "en": "Fewer parents driving children."
+                "zh": "主持人開場說的。",
+                "en": "The presenter says so at the start."
               }
             },
             {
               "ask": {
-                "s": "Wovor warnt der Verkehrsverbund?",
-                "zh": "交通聯營公司警告什麼？",
-                "en": "What does the transport association warn about?"
+                "s": "Auf dem Land ist Wohnraum günstiger.",
+                "zh": "鄉下的房子比較便宜。",
+                "en": "Housing is cheaper in the countryside."
               },
               "options": [
                 {
-                  "t": "vor höheren Preisen"
+                  "t": "der Moderator"
                 },
                 {
-                  "t": "vor vollen Bussen zu Stoßzeiten"
+                  "t": "Frau Gerster"
                 },
                 {
-                  "t": "vor dem Ende des Versuchs"
+                  "t": "Herr Lücke"
                 }
               ],
               "answer": "B",
               "explain": {
-                "zh": "尖峰時段要加開公車。",
-                "en": "Extra buses needed at peak times."
+                "zh": "葛斯特：小公寓的價錢買一整棟房子。",
+                "en": "Ms Gerster: a house for the price of a flat."
+              }
+            },
+            {
+              "ask": {
+                "s": "Öffentliche Verkehrsmittel fahren zu selten.",
+                "zh": "大眾運輸班次太少。",
+                "en": "Public transport runs too rarely."
+              },
+              "options": [
+                {
+                  "t": "der Moderator"
+                },
+                {
+                  "t": "Frau Gerster"
+                },
+                {
+                  "t": "Herr Lücke"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "呂克：公車一天兩班。",
+                "en": "Mr Lücke: two buses a day."
+              }
+            },
+            {
+              "ask": {
+                "s": "Schnelles Internet war eine Bedingung für den Umzug.",
+                "zh": "快速網路是搬家的條件。",
+                "en": "Fast internet was a condition for the move."
+              },
+              "options": [
+                {
+                  "t": "der Moderator"
+                },
+                {
+                  "t": "Frau Gerster"
+                },
+                {
+                  "t": "Herr Lücke"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "葛斯特：光纖是搬家的前提。",
+                "en": "Ms Gerster: fibre was the precondition."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die medizinische Versorgung wird schlechter.",
+                "zh": "醫療資源變差了。",
+                "en": "Medical care is getting worse."
+              },
+              "options": [
+                {
+                  "t": "der Moderator"
+                },
+                {
+                  "t": "Frau Gerster"
+                },
+                {
+                  "t": "Herr Lücke"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "呂克：醫生退休找不到接班人。",
+                "en": "Mr Lücke: doctors retire without successors."
+              }
+            },
+            {
+              "ask": {
+                "s": "Gemeinsame Projekte im Dorf bringen Menschen zusammen.",
+                "zh": "村子裡的共同計畫讓人更緊密。",
+                "en": "Joint projects in the village bring people together."
+              },
+              "options": [
+                {
+                  "t": "der Moderator"
+                },
+                {
+                  "t": "Frau Gerster"
+                },
+                {
+                  "t": "Herr Lücke"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "葛斯特：居民自己經營的商店。",
+                "en": "Ms Gerster: the residents' shop."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen kurzen Vortrag. Der Redner spricht über das Thema „Besser schlafen“.",
+              "zh": "你會聽到一場簡短的演講，主題是「睡得更好」。",
+              "en": "You will hear a short talk. The speaker is talking about \"Sleeping better\"."
+            },
+            {
+              "who": "M",
+              "s": "Meine Damen und Herren, etwa ein Drittel der Erwachsenen in Deutschland schläft schlecht. Dabei ist guter Schlaf kein Luxus: Im Schlaf verarbeitet das Gehirn, was wir tagsüber gelernt haben. Der häufigste Fehler ist ein unregelmäßiger Rhythmus. Wer am Wochenende drei Stunden länger schläft, bringt seine innere Uhr durcheinander — man spricht vom „sozialen Jetlag“. Zweitens: das Licht. Das blaue Licht von Bildschirmen hemmt das Schlafhormon Melatonin. Legen Sie das Handy also eine Stunde vor dem Schlafen weg. Drittens: die Temperatur. Ideal sind 16 bis 18 Grad im Schlafzimmer, nicht mehr. Und was ist mit Alkohol? Ein Glas Wein hilft vielleicht beim Einschlafen, aber die zweite Nachthälfte wird unruhiger. Mittagsschlaf dagegen ist nicht schädlich — solange er kürzer als 20 Minuten ist. Wenn Sie trotz allem nachts wach liegen, stehen Sie lieber auf und lesen etwas, statt sich im Bett zu ärgern. Und wenn die Probleme länger als drei Monate dauern, sollten Sie unbedingt einen Arzt aufsuchen.",
+              "zh": "各位女士先生，德國大約三分之一的成年人睡不好。但好的睡眠不是奢侈品：睡覺時，大腦會整理我們白天學到的東西。最常見的錯誤是作息不規律。週末多睡三個小時的人，會打亂自己的生理時鐘——這叫做「社交時差」。第二是光線。螢幕的藍光會抑制睡眠荷爾蒙褪黑激素。所以睡前一小時就把手機放下。第三是溫度。臥室 16 到 18 度最理想，不要更高。那酒呢？一杯紅酒也許有助入睡，但後半夜會睡得比較不安穩。相反地，午睡並無害處——只要少於 20 分鐘。如果這樣還是半夜睡不著，與其在床上生氣，不如起床讀點東西。如果問題持續超過三個月，一定要去看醫生。",
+              "en": "Ladies and gentlemen, about a third of adults in Germany sleep badly. Yet good sleep is no luxury: during sleep the brain processes what we learnt during the day. The most common mistake is an irregular rhythm. Anyone who sleeps three hours longer at weekends throws their internal clock into disorder — we speak of \"social jet lag\". Second: light. The blue light of screens inhibits the sleep hormone melatonin. So put your phone away an hour before sleeping. Third: temperature. 16 to 18 degrees in the bedroom is ideal, no more. And what about alcohol? A glass of wine may help you fall asleep, but the second half of the night becomes more restless. A nap at midday, on the other hand, is not harmful — as long as it is shorter than 20 minutes. If you still lie awake at night, it's better to get up and read something rather than lie in bed getting annoyed. And if the problems last longer than three months, you should definitely see a doctor."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wie viele Erwachsene in Deutschland schlafen schlecht?",
+                "zh": "德國有多少成年人睡不好？",
+                "en": "How many adults in Germany sleep badly?"
+              },
+              "options": [
+                {
+                  "t": "etwa ein Drittel"
+                },
+                {
+                  "t": "etwa die Hälfte"
+                },
+                {
+                  "t": "fast alle"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「大約三分之一」。",
+                "en": "About a third."
+              }
+            },
+            {
+              "ask": {
+                "s": "Im Schlaf…",
+                "zh": "睡覺時……",
+                "en": "During sleep…"
+              },
+              "options": [
+                {
+                  "t": "ruht das Gehirn vollständig."
+                },
+                {
+                  "t": "verarbeitet das Gehirn Gelerntes."
+                },
+                {
+                  "t": "wächst der Körper."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "大腦整理白天學到的東西。",
+                "en": "The brain processes what was learnt."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was ist „sozialer Jetlag“?",
+                "zh": "什麼是「社交時差」？",
+                "en": "What is \"social jet lag\"?"
+              },
+              "options": [
+                {
+                  "t": "Müdigkeit nach einer Flugreise"
+                },
+                {
+                  "t": "ein unregelmäßiger Schlafrhythmus durch lange Wochenenden"
+                },
+                {
+                  "t": "zu viele Termine"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "週末多睡打亂生理時鐘。",
+                "en": "Sleeping longer at weekends upsets the clock."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Handy sollte man…",
+                "zh": "手機應該……",
+                "en": "You should put your phone away…"
+              },
+              "options": [
+                {
+                  "t": "direkt vor dem Schlafen weglegen."
+                },
+                {
+                  "t": "eine Stunde vorher weglegen."
+                },
+                {
+                  "t": "im Schlafzimmer laden."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "睡前一小時放下。",
+                "en": "An hour before."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die ideale Temperatur im Schlafzimmer liegt bei…",
+                "zh": "臥室理想溫度是……",
+                "en": "The ideal bedroom temperature is…"
+              },
+              "options": [
+                {
+                  "t": "12–14 Grad."
+                },
+                {
+                  "t": "16–18 Grad."
+                },
+                {
+                  "t": "20–22 Grad."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "16 到 18 度。",
+                "en": "16–18 degrees."
+              }
+            },
+            {
+              "ask": {
+                "s": "Alkohol am Abend…",
+                "zh": "晚上喝酒……",
+                "en": "Alcohol in the evening…"
+              },
+              "options": [
+                {
+                  "t": "verbessert den Schlaf insgesamt."
+                },
+                {
+                  "t": "macht die zweite Nachthälfte unruhiger."
+                },
+                {
+                  "t": "hat keine Wirkung."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "後半夜比較不安穩。",
+                "en": "The second half of the night is more restless."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein Mittagsschlaf ist in Ordnung, wenn er…",
+                "zh": "午睡沒問題，只要……",
+                "en": "A midday nap is fine if it…"
+              },
+              "options": [
+                {
+                  "t": "kürzer als 20 Minuten ist."
+                },
+                {
+                  "t": "mindestens eine Stunde dauert."
+                },
+                {
+                  "t": "vor 12 Uhr stattfindet."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "少於 20 分鐘。",
+                "en": "Shorter than 20 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Zum Arzt sollte man gehen, wenn die Probleme…",
+                "zh": "問題怎樣時應該看醫生？",
+                "en": "You should see a doctor if the problems…"
+              },
+              "options": [
+                {
+                  "t": "länger als drei Monate dauern."
+                },
+                {
+                  "t": "zum ersten Mal auftreten."
+                },
+                {
+                  "t": "am Wochenende auftreten."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "持續超過三個月。",
+                "en": "Last longer than three months."
               }
             }
           ]
