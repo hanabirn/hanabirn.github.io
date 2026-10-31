@@ -1,0 +1,377 @@
+{
+  "id": "es_a2",
+  "lang": "es",
+  "level": "A2",
+  "order": 2,
+  "unlisted": true,
+  "n_options": 3,
+  "note": "Spanish A2 listening in the DELE A2 format (owner's plan 2026-10-30): Tarea 1 four announcements (en_talk), Tarea 2 a conversation ×3, Tarea 3 a radio programme ×3 (en_q); 10 questions. ⚠️ from memory; the real paper is longer. Original texts. Drafted in tools/.mockups/es_a2_ls.py.",
+  "types": [
+    "en_talk",
+    "en_q"
+  ],
+  "mock_plays": 2,
+  "mock_counts": {
+    "en_talk": 4,
+    "en_q": 6
+  },
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "En la estación de autobuses.",
+              "zh": "在巴士站。",
+              "en": "At the bus station."
+            },
+            {
+              "who": "F",
+              "s": "El autobús con destino a Granada saldrá hoy del andén cinco, y no del andén tres como es habitual.",
+              "zh": "開往格拉納達的巴士今天從第五月台出發，不是平常的第三月台。",
+              "en": "The bus to Granada will leave today from platform five, not platform three as usual."
+            }
+          ],
+          "ask": {
+            "s": "¿De qué andén sale hoy el autobús?",
+            "zh": "巴士今天從幾號月台出發？",
+            "en": "Which platform does the bus leave from today?"
+          },
+          "options": [
+            {
+              "t": "del tres"
+            },
+            {
+              "t": "del cinco"
+            },
+            {
+              "t": "del ocho"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "今天第五月台。",
+            "en": "Platform five today."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "En el contestador.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hola, Clara. Soy Miguel. Ya tengo las entradas para el teatro. Nos vemos el viernes a las siete y media en la puerta. ¡No llegues tarde!",
+              "zh": "嗨，克拉拉，我是米格爾。戲票我拿到了。星期五七點半在門口見。別遲到！",
+              "en": "Hi Clara, it's Miguel. I've got the theatre tickets. See you on Friday at half past seven at the door. Don't be late!"
+            }
+          ],
+          "ask": {
+            "s": "¿Para qué llama Miguel?",
+            "zh": "米格爾打電話做什麼？",
+            "en": "Why is Miguel calling?"
+          },
+          "options": [
+            {
+              "t": "para comprar entradas"
+            },
+            {
+              "t": "para quedar con Clara"
+            },
+            {
+              "t": "para cancelar el plan"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "約好星期五見面。",
+            "en": "To arrange to meet."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "En unos grandes almacenes.",
+              "zh": "在百貨公司。",
+              "en": "In a department store."
+            },
+            {
+              "who": "F",
+              "s": "Atención: en la segunda planta, toda la ropa de invierno con un cincuenta por ciento de descuento, solo hasta el domingo.",
+              "zh": "注意：二樓所有冬裝五折，只到星期天。",
+              "en": "Attention: on the second floor, all winter clothes at fifty per cent off, only until Sunday."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué está rebajado?",
+            "zh": "什麼在打折？",
+            "en": "What is reduced?"
+          },
+          "options": [
+            {
+              "t": "la ropa de verano"
+            },
+            {
+              "t": "la ropa de invierno"
+            },
+            {
+              "t": "los zapatos"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "冬裝五折。",
+            "en": "Winter clothes."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "En la radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "M",
+              "s": "Mañana, debido a la huelga, no habrá metro entre las seis y las diez de la mañana. Se recomienda usar el autobús.",
+              "zh": "明天因為罷工，早上六點到十點地鐵停駛。建議改搭公車。",
+              "en": "Tomorrow, because of the strike, there will be no metro between six and ten in the morning. Using the bus is recommended."
+            }
+          ],
+          "ask": {
+            "s": "Mañana por la mañana…",
+            "zh": "明天早上……",
+            "en": "Tomorrow morning…"
+          },
+          "options": [
+            {
+              "t": "no funciona el metro."
+            },
+            {
+              "t": "no hay autobuses."
+            },
+            {
+              "t": "el metro es gratis."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "地鐵停駛六點到十點。",
+            "en": "No metro 6–10."
+          }
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre dos amigos.",
+              "zh": "你會聽到兩個朋友的對話。",
+              "en": "You will hear a conversation between two friends."
+            },
+            {
+              "who": "F",
+              "s": "Andrés, ¿qué tal tu nuevo trabajo?",
+              "zh": "安德烈斯，新工作怎麼樣？",
+              "en": "Andrés, how's your new job?"
+            },
+            {
+              "who": "M",
+              "s": "Muy bien. Es en una empresa de diseño, cerca de la playa. Lo malo es que tengo que coger dos autobuses y tardo casi una hora.",
+              "zh": "很好。在一家設計公司，靠近海邊。壞處是要轉兩班公車，要將近一個小時。",
+              "en": "Very good. It's at a design company near the beach. The bad thing is I have to take two buses and it takes almost an hour."
+            },
+            {
+              "who": "F",
+              "s": "¿Y por qué no vas en bici?",
+              "zh": "那你為什麼不騎腳踏車？",
+              "en": "And why don't you cycle?"
+            },
+            {
+              "who": "M",
+              "s": "Lo he pensado. De hecho, el sábado voy a comprarme una bicicleta eléctrica.",
+              "zh": "我想過。事實上星期六我要去買一台電動腳踏車。",
+              "en": "I've thought about it. In fact, on Saturday I'm going to buy an electric bike."
+            },
+            {
+              "who": "F",
+              "s": "¡Qué buena idea! Yo conozco una tienda donde son bastante baratas. Si quieres, te acompaño.",
+              "zh": "好主意！我知道一家店賣得滿便宜的。你要的話我陪你去。",
+              "en": "What a good idea! I know a shop where they are quite cheap. If you like, I'll go with you."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Andrés trabaja…",
+                "zh": "安德烈斯在哪裡工作？",
+                "en": "Andrés works…"
+              },
+              "options": [
+                {
+                  "t": "en una escuela."
+                },
+                {
+                  "t": "en una empresa de diseño."
+                },
+                {
+                  "t": "en la playa."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "設計公司，靠近海邊。",
+                "en": "At a design company."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Cuál es el problema de su trabajo?",
+                "zh": "工作的問題是什麼？",
+                "en": "What is the problem with his job?"
+              },
+              "options": [
+                {
+                  "t": "El sueldo es bajo."
+                },
+                {
+                  "t": "Tarda mucho en llegar."
+                },
+                {
+                  "t": "Trabaja muchas horas."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "轉兩班公車，將近一小時。",
+                "en": "Almost an hour to get there."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué va a hacer el sábado?",
+                "zh": "他星期六要做什麼？",
+                "en": "What is he going to do on Saturday?"
+              },
+              "options": [
+                {
+                  "t": "comprar una bici"
+                },
+                {
+                  "t": "ir a la playa"
+                },
+                {
+                  "t": "trabajar"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "買電動腳踏車。",
+                "en": "Buy an e-bike."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar un programa de radio.",
+              "zh": "你會聽到一個廣播節目。",
+              "en": "You will hear a radio programme."
+            },
+            {
+              "who": "F",
+              "s": "Hoy en «Vivir mejor» hablamos con Teresa, una mujer de 68 años que el año pasado empezó a estudiar en la universidad. Teresa trabajó cuarenta años como costurera y siempre quiso estudiar Historia. «Cuando era joven, no pude, porque tenía que ayudar a mi familia», nos cuenta. Ahora va a clase tres días a la semana. Dice que sus compañeros, todos muy jóvenes, la tratan como a una amiga y que a veces la ayudan con el ordenador. Su consejo para los oyentes: «Nunca es tarde para aprender».",
+              "zh": "今天的《更好生活》我們訪問泰瑞莎，一位 68 歲、去年開始念大學的女士。泰瑞莎當了四十年裁縫，一直想念歷史。她說：「年輕時我沒辦法，因為得幫忙家裡。」現在她每週上課三天。她說同學們都很年輕，把她當朋友，有時候還幫她用電腦。她給聽眾的建議是：「學習永遠不嫌晚。」",
+              "en": "Today on \"Living better\" we talk to Teresa, a 68-year-old woman who started university last year. Teresa worked for forty years as a seamstress and always wanted to study History. \"When I was young I couldn't, because I had to help my family,\" she tells us. Now she goes to class three days a week. She says her classmates, all very young, treat her like a friend and sometimes help her with the computer. Her advice for listeners: \"It's never too late to learn.\""
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Teresa trabajó como…",
+                "zh": "泰瑞莎以前的工作是……",
+                "en": "Teresa worked as…"
+              },
+              "options": [
+                {
+                  "t": "profesora."
+                },
+                {
+                  "t": "costurera."
+                },
+                {
+                  "t": "historiadora."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "當了四十年裁縫。",
+                "en": "A seamstress."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Por qué no estudió de joven?",
+                "zh": "她年輕時為什麼沒念書？",
+                "en": "Why didn't she study when she was young?"
+              },
+              "options": [
+                {
+                  "t": "No le gustaba."
+                },
+                {
+                  "t": "Tenía que ayudar a su familia."
+                },
+                {
+                  "t": "No había universidad."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "得幫忙家裡。",
+                "en": "She had to help her family."
+              }
+            },
+            {
+              "ask": {
+                "s": "Sus compañeros…",
+                "zh": "她的同學……",
+                "en": "Her classmates…"
+              },
+              "options": [
+                {
+                  "t": "la ayudan a veces."
+                },
+                {
+                  "t": "no hablan con ella."
+                },
+                {
+                  "t": "son de su edad."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "有時候幫她用電腦。",
+                "en": "They sometimes help with the computer."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
