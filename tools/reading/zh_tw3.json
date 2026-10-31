@@ -4,7 +4,6 @@
   "level": "HSK 3",
   "order": 4,
   "edition": "tw",
-  "unlisted": true,
   "note": "HSK 3 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 句子配對 ×10, 第二部分 選詞填空 ×10 (41–45 sentences, 46–50 dialogues), 第三部分 讀短文回答問題 ×10 (six texts × 1, two × 2); 3 options, pinyin / zhuyin hidden as on the paper; mock 30 minutes. Original texts. Drafted in tools/.mockups/tw3_rd.py.",
   "sets": [
     {
@@ -14,52 +13,180 @@
           "type": "zh_match",
           "mondai": 1,
           "ask": "zh_match",
-          "bank": ["你下班以後要去哪裡？", "這雙鞋你穿起來怎麼樣？", "你怎麼這麼晚才回來？", "這附近有銀行嗎？", "你的感冒好了沒有？", "明天的考試難不難？"],
+          "bank": [
+            "你下班以後要去哪裡？",
+            "這雙鞋你穿起來怎麼樣？",
+            "你怎麼這麼晚才回來？",
+            "這附近有銀行嗎？",
+            "你的感冒好了沒有？",
+            "明天的考試難不難？"
+          ],
           "questions": [
-            {"q": "我想去超市買點菜，晚上自己做飯。", "answer": "A", "zh": "問下班以後去哪裡，回答「去超市買點菜」。", "en": "\"Where are you going after work?\" — \"To the supermarket for groceries.\""},
-            {"q": "有點小，我想換大一號的。", "answer": "B", "zh": "問鞋穿起來怎麼樣，回答「有點小」。", "en": "\"How do the shoes feel?\" — \"A bit small; I'd like a size up.\""},
-            {"q": "路上車太多了，公車開得很慢。", "answer": "C", "zh": "問怎麼這麼晚才回來，回答路上車太多。", "en": "\"Why are you so late?\" — \"Too much traffic; the bus was slow.\""},
-            {"q": "還沒好，醫生讓我多休息幾天。", "answer": "E", "zh": "問感冒好了沒有，回答「還沒好」。", "en": "\"Is your cold better?\" — \"Not yet; the doctor told me to rest.\""},
-            {"q": "有，就在前面的路口，走過去五分鐘。", "answer": "D", "zh": "問附近有沒有銀行，回答在前面的路口。F 是多出來的。", "en": "\"Is there a bank near here?\" — \"At the next corner.\" F is the spare."}
+            {
+              "q": "我想去超市買點菜，晚上自己做飯。",
+              "answer": "A",
+              "zh": "問下班以後去哪裡，回答「去超市買點菜」。",
+              "en": "\"Where are you going after work?\" — \"To the supermarket for groceries.\""
+            },
+            {
+              "q": "有點小，我想換大一號的。",
+              "answer": "B",
+              "zh": "問鞋穿起來怎麼樣，回答「有點小」。",
+              "en": "\"How do the shoes feel?\" — \"A bit small; I'd like a size up.\""
+            },
+            {
+              "q": "路上車太多了，公車開得很慢。",
+              "answer": "C",
+              "zh": "問怎麼這麼晚才回來，回答路上車太多。",
+              "en": "\"Why are you so late?\" — \"Too much traffic; the bus was slow.\""
+            },
+            {
+              "q": "還沒好，醫生讓我多休息幾天。",
+              "answer": "E",
+              "zh": "問感冒好了沒有，回答「還沒好」。",
+              "en": "\"Is your cold better?\" — \"Not yet; the doctor told me to rest.\""
+            },
+            {
+              "q": "有，就在前面的路口，走過去五分鐘。",
+              "answer": "D",
+              "zh": "問附近有沒有銀行，回答在前面的路口。F 是多出來的。",
+              "en": "\"Is there a bank near here?\" — \"At the next corner.\" F is the spare."
+            }
           ]
         },
         {
           "type": "zh_match",
           "mondai": 1,
           "ask": "zh_match",
-          "bank": ["你在台灣住了多久了？", "這個週末你有時間嗎？", "你怎麼不吃了？", "你覺得這本書怎麼樣？", "你們公司離車站遠不遠？", "你妹妹在做什麼？"],
+          "bank": [
+            "你在台灣住了多久了？",
+            "這個週末你有時間嗎？",
+            "你怎麼不吃了？",
+            "你覺得這本書怎麼樣？",
+            "你們公司離車站遠不遠？",
+            "你妹妹在做什麼？"
+          ],
           "questions": [
-            {"q": "快三年了，我很喜歡這裡。", "answer": "A", "zh": "問住了多久，回答「快三年了」。", "en": "\"How long have you lived in Taiwan?\" — \"Almost three years.\""},
-            {"q": "很有意思，我一個晚上就看完了。", "answer": "D", "zh": "問書怎麼樣，回答「很有意思」。", "en": "\"What do you think of the book?\" — \"Very interesting; I finished it in one evening.\""},
-            {"q": "不遠，走路十分鐘就到了。", "answer": "E", "zh": "問遠不遠，回答「不遠，走路十分鐘」。", "en": "\"Is your office far from the station?\" — \"No, ten minutes on foot.\""},
-            {"q": "我已經吃飽了，謝謝。", "answer": "C", "zh": "問怎麼不吃了，回答「已經吃飽了」。", "en": "\"Why have you stopped eating?\" — \"I'm full, thanks.\""},
-            {"q": "她在房間裡準備明天的考試。", "answer": "F", "zh": "問妹妹在做什麼，回答在準備考試。B 是多出來的。", "en": "\"What's your sister doing?\" — \"Preparing for tomorrow's exam.\" B is the spare."}
+            {
+              "q": "快三年了，我很喜歡這裡。",
+              "answer": "A",
+              "zh": "問住了多久，回答「快三年了」。",
+              "en": "\"How long have you lived in Taiwan?\" — \"Almost three years.\""
+            },
+            {
+              "q": "很有意思，我一個晚上就看完了。",
+              "answer": "D",
+              "zh": "問書怎麼樣，回答「很有意思」。",
+              "en": "\"What do you think of the book?\" — \"Very interesting; I finished it in one evening.\""
+            },
+            {
+              "q": "不遠，走路十分鐘就到了。",
+              "answer": "E",
+              "zh": "問遠不遠，回答「不遠，走路十分鐘」。",
+              "en": "\"Is your office far from the station?\" — \"No, ten minutes on foot.\""
+            },
+            {
+              "q": "我已經吃飽了，謝謝。",
+              "answer": "C",
+              "zh": "問怎麼不吃了，回答「已經吃飽了」。",
+              "en": "\"Why have you stopped eating?\" — \"I'm full, thanks.\""
+            },
+            {
+              "q": "她在房間裡準備明天的考試。",
+              "answer": "F",
+              "zh": "問妹妹在做什麼，回答在準備考試。B 是多出來的。",
+              "en": "\"What's your sister doing?\" — \"Preparing for tomorrow's exam.\" B is the spare."
+            }
           ]
         },
         {
           "type": "zh_bank",
           "mondai": 2,
           "ask": "zh_bank",
-          "bank": ["習慣", "打算", "特別", "決定", "一定", "認真"],
+          "bank": [
+            "習慣",
+            "打算",
+            "特別",
+            "決定",
+            "一定",
+            "認真"
+          ],
           "questions": [
-            {"q": "我剛來台灣的時候，不太（　）這裡的天氣。", "answer": "A", "zh": "「不習慣」天氣：剛來的時候還不習慣。", "en": "习惯 (be used to): at first I wasn't used to the weather here."},
-            {"q": "這家店的牛肉麵（　）好吃，每天都有很多人。", "answer": "C", "zh": "「特別好吃」：非常好吃。", "en": "特别 (especially): this shop's beef noodles are especially good."},
-            {"q": "你明天（　）要早點來，九點開會。", "answer": "E", "zh": "「一定要」：明天一定要早點來。", "en": "一定要 (must): you must come early tomorrow."},
-            {"q": "他上課很（　），老師說的每句話都寫下來。", "answer": "F", "zh": "上課「很認真」，每句話都寫下來。", "en": "认真 (conscientious): he writes down every word the teacher says."},
-            {"q": "我們（　）了，下個月去花蓮玩。", "answer": "D", "zh": "「決定了」：已經決定好的事。B「打算」是多出來的。", "en": "决定 (decide): we've decided — Hualien next month. B 打算 is the spare."}
+            {
+              "q": "我剛來台灣的時候，不太（　）這裡的天氣。",
+              "answer": "A",
+              "zh": "「不習慣」天氣：剛來的時候還不習慣。",
+              "en": "习惯 (be used to): at first I wasn't used to the weather here."
+            },
+            {
+              "q": "這家店的牛肉麵（　）好吃，每天都有很多人。",
+              "answer": "C",
+              "zh": "「特別好吃」：非常好吃。",
+              "en": "特别 (especially): this shop's beef noodles are especially good."
+            },
+            {
+              "q": "你明天（　）要早點來，九點開會。",
+              "answer": "E",
+              "zh": "「一定要」：明天一定要早點來。",
+              "en": "一定要 (must): you must come early tomorrow."
+            },
+            {
+              "q": "他上課很（　），老師說的每句話都寫下來。",
+              "answer": "F",
+              "zh": "上課「很認真」，每句話都寫下來。",
+              "en": "认真 (conscientious): he writes down every word the teacher says."
+            },
+            {
+              "q": "我們（　）了，下個月去花蓮玩。",
+              "answer": "D",
+              "zh": "「決定了」：已經決定好的事。B「打算」是多出來的。",
+              "en": "决定 (decide): we've decided — Hualien next month. B 打算 is the spare."
+            }
           ]
         },
         {
           "type": "zh_bank",
           "mondai": 2,
           "ask": "zh_bank",
-          "bank": ["剛才", "其實", "還是", "而且", "越來越", "一般"],
+          "bank": [
+            "剛才",
+            "其實",
+            "還是",
+            "而且",
+            "越來越",
+            "一般"
+          ],
           "questions": [
-            {"q": "A：你喝咖啡（　）喝茶？\nB：茶吧，我晚上不喝咖啡。", "answer": "C", "zh": "問兩個裡面選哪一個用「還是」。", "en": "还是 (or) in a question: coffee or tea?"},
-            {"q": "A：你的中文說得（　）好了！\nB：謝謝，我每天都練習。", "answer": "E", "zh": "「越來越好」：一天比一天好。", "en": "越来越 (more and more): your Chinese is getting better and better."},
-            {"q": "A：你為什麼常常來這家店買菜？\nB：這裡的菜很便宜，（　）很新鮮。", "answer": "D", "zh": "「很便宜，而且很新鮮」：兩個好處。", "en": "而且 (and also): cheap, and fresh too."},
-            {"q": "A：你（　）去哪裡了？我找了你半天。\nB：我去樓下買咖啡了。", "answer": "A", "zh": "「剛才」：不久以前。", "en": "刚才 (just now): where were you just now?"},
-            {"q": "A：你覺得這個問題很難嗎？\nB：（　）不難，只是我還沒想好。", "answer": "B", "zh": "「其實」：事實上。F「一般」是多出來的。", "en": "其实 (actually): it isn't hard really. F 一般 is the spare."}
+            {
+              "q": "A：你喝咖啡（　）喝茶？\nB：茶吧，我晚上不喝咖啡。",
+              "answer": "C",
+              "zh": "問兩個裡面選哪一個用「還是」。",
+              "en": "还是 (or) in a question: coffee or tea?"
+            },
+            {
+              "q": "A：你的中文說得（　）好了！\nB：謝謝，我每天都練習。",
+              "answer": "E",
+              "zh": "「越來越好」：一天比一天好。",
+              "en": "越来越 (more and more): your Chinese is getting better and better."
+            },
+            {
+              "q": "A：你為什麼常常來這家店買菜？\nB：這裡的菜很便宜，（　）很新鮮。",
+              "answer": "D",
+              "zh": "「很便宜，而且很新鮮」：兩個好處。",
+              "en": "而且 (and also): cheap, and fresh too."
+            },
+            {
+              "q": "A：你（　）去哪裡了？我找了你半天。\nB：我去樓下買咖啡了。",
+              "answer": "A",
+              "zh": "「剛才」：不久以前。",
+              "en": "刚才 (just now): where were you just now?"
+            },
+            {
+              "q": "A：你覺得這個問題很難嗎？\nB：（　）不難，只是我還沒想好。",
+              "answer": "B",
+              "zh": "「其實」：事實上。F「一般」是多出來的。",
+              "en": "其实 (actually): it isn't hard really. F 一般 is the spare."
+            }
           ]
         },
         {
@@ -67,9 +194,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "我上個月在台北的一家公司找到了新工作。公司離我家很近，坐公車只要十五分鐘，所以我每天早上可以多睡一會兒。",
-          "tr": {"en": "Last month I found a new job at a company in Taipei. It's close to home — only fifteen minutes by bus — so I can sleep a bit longer every morning."},
+          "tr": {
+            "en": "Last month I found a new job at a company in Taipei. It's close to home — only fifteen minutes by bus — so I can sleep a bit longer every morning."
+          },
           "questions": [
-            {"q": "他的新工作：", "options": ["在台中", "離家很近", "要坐一個小時的車"], "answer": 1, "zh": "「公司離我家很近，坐公車只要十五分鐘」。", "en": "\"Close to home, fifteen minutes by bus.\""}
+            {
+              "q": "他的新工作：",
+              "options": [
+                "在台中",
+                "離家很近",
+                "要坐一個小時的車"
+              ],
+              "answer": 1,
+              "zh": "「公司離我家很近，坐公車只要十五分鐘」。",
+              "en": "\"Close to home, fifteen minutes by bus.\""
+            }
           ]
         },
         {
@@ -77,9 +216,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "花蓮的山和海都很漂亮，很多人週末會去那裡玩。但是從台北開車過去要很長時間，所以大家一般都坐火車去。",
-          "tr": {"en": "Hualien's mountains and sea are beautiful, and many people go there at weekends. But driving from Taipei takes a long time, so people usually take the train."},
+          "tr": {
+            "en": "Hualien's mountains and sea are beautiful, and many people go there at weekends. But driving from Taipei takes a long time, so people usually take the train."
+          },
           "questions": [
-            {"q": "去花蓮，大家一般：", "options": ["開車", "坐飛機", "坐火車"], "answer": 2, "zh": "「所以大家一般都坐火車去」。", "en": "\"So people usually take the train.\""}
+            {
+              "q": "去花蓮，大家一般：",
+              "options": [
+                "開車",
+                "坐飛機",
+                "坐火車"
+              ],
+              "answer": 2,
+              "zh": "「所以大家一般都坐火車去」。",
+              "en": "\"So people usually take the train.\""
+            }
           ]
         },
         {
@@ -87,9 +238,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "我奶奶七十多歲了，身體還很好。她每天早上都去公園跟朋友一起跳舞，回家以後再去超市買菜。",
-          "tr": {"en": "My grandma is over seventy and still very healthy. Every morning she dances with friends in the park, then goes to the supermarket on the way home."},
+          "tr": {
+            "en": "My grandma is over seventy and still very healthy. Every morning she dances with friends in the park, then goes to the supermarket on the way home."
+          },
           "questions": [
-            {"q": "奶奶每天早上做什麼？", "options": ["跟朋友跳舞", "去醫院", "在家看電視"], "answer": 0, "zh": "「每天早上都去公園跟朋友一起跳舞」。", "en": "\"She dances with friends in the park every morning.\""}
+            {
+              "q": "奶奶每天早上做什麼？",
+              "options": [
+                "跟朋友跳舞",
+                "去醫院",
+                "在家看電視"
+              ],
+              "answer": 0,
+              "zh": "「每天早上都去公園跟朋友一起跳舞」。",
+              "en": "\"She dances with friends in the park every morning.\""
+            }
           ]
         },
         {
@@ -97,9 +260,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "這家咖啡店的咖啡不太便宜，但是環境很安靜，所以很多學生喜歡來這裡看書、寫作業。",
-          "tr": {"en": "The coffee at this café isn't cheap, but it's very quiet, so many students like to come here to read and do homework."},
+          "tr": {
+            "en": "The coffee at this café isn't cheap, but it's very quiet, so many students like to come here to read and do homework."
+          },
           "questions": [
-            {"q": "學生為什麼喜歡來這家咖啡店？", "options": ["咖啡很便宜", "環境很安靜", "離學校很近"], "answer": 1, "zh": "「但是環境很安靜，所以很多學生喜歡來這裡」。", "en": "\"It's very quiet.\""}
+            {
+              "q": "學生為什麼喜歡來這家咖啡店？",
+              "options": [
+                "咖啡很便宜",
+                "環境很安靜",
+                "離學校很近"
+              ],
+              "answer": 1,
+              "zh": "「但是環境很安靜，所以很多學生喜歡來這裡」。",
+              "en": "\"It's very quiet.\""
+            }
           ]
         },
         {
@@ -107,9 +282,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "我打算這個週末去爬山，可是新聞說週六會下大雨，所以我們決定下個週末再去。",
-          "tr": {"en": "I planned to go hiking this weekend, but the news said heavy rain on Saturday, so we decided to go next weekend instead."},
+          "tr": {
+            "en": "I planned to go hiking this weekend, but the news said heavy rain on Saturday, so we decided to go next weekend instead."
+          },
           "questions": [
-            {"q": "他們為什麼不這個週末去爬山？", "options": ["朋友沒時間", "要工作", "會下大雨"], "answer": 2, "zh": "「新聞說週六會下大雨」。", "en": "\"The news said heavy rain on Saturday.\""}
+            {
+              "q": "他們為什麼不這個週末去爬山？",
+              "options": [
+                "朋友沒時間",
+                "要工作",
+                "會下大雨"
+              ],
+              "answer": 2,
+              "zh": "「新聞說週六會下大雨」。",
+              "en": "\"The news said heavy rain on Saturday.\""
+            }
           ]
         },
         {
@@ -117,9 +304,21 @@
           "mondai": 3,
           "ask": "zh_text",
           "text": "小林以前很怕說中文，因為怕說錯。後來老師告訴他，說錯了沒關係，多說才能說得更好。現在他每天都跟同學練習。",
-          "tr": {"en": "Xiao Lin used to be afraid of speaking Chinese for fear of mistakes. Then his teacher told him mistakes don't matter — speaking more is how you get better. Now he practises with classmates every day."},
+          "tr": {
+            "en": "Xiao Lin used to be afraid of speaking Chinese for fear of mistakes. Then his teacher told him mistakes don't matter — speaking more is how you get better. Now he practises with classmates every day."
+          },
           "questions": [
-            {"q": "老師告訴小林什麼？", "options": ["說錯了沒關係", "不要說中文", "要多寫漢字"], "answer": 0, "zh": "老師告訴他「說錯了沒關係，多說才能說得更好」。", "en": "\"Mistakes don't matter; you improve by speaking.\""}
+            {
+              "q": "老師告訴小林什麼？",
+              "options": [
+                "說錯了沒關係",
+                "不要說中文",
+                "要多寫漢字"
+              ],
+              "answer": 0,
+              "zh": "老師告訴他「說錯了沒關係，多說才能說得更好」。",
+              "en": "\"Mistakes don't matter; you improve by speaking.\""
+            }
           ]
         },
         {
@@ -127,10 +326,32 @@
           "mondai": 3,
           "ask": "zh_passage",
           "text": "很多人覺得在家工作很舒服，不用每天坐車上班。其實在家工作也有不方便的地方，比如很難跟同事見面，有問題的時候也不能馬上問。所以有的公司讓大家一個星期在家工作兩天，其他時間到公司上班。",
-          "tr": {"en": "Many people think working from home is comfortable — no commute every day. In fact it has its drawbacks: it's hard to see colleagues, and you can't ask straight away when there's a problem. So some companies let staff work from home two days a week and come in the rest of the time."},
+          "tr": {
+            "en": "Many people think working from home is comfortable — no commute every day. In fact it has its drawbacks: it's hard to see colleagues, and you can't ask straight away when there's a problem. So some companies let staff work from home two days a week and come in the rest of the time."
+          },
           "questions": [
-            {"q": "在家工作有什麼不方便？", "options": ["要很早起床", "要坐很久的車", "很難跟同事見面"], "answer": 2, "zh": "「很難跟同事見面，有問題的時候也不能馬上問」。", "en": "\"It's hard to see colleagues.\""},
-            {"q": "有的公司讓大家：", "options": ["每天都在家工作", "一個星期在家工作兩天", "週末也上班"], "answer": 1, "zh": "「讓大家一個星期在家工作兩天」。", "en": "\"Work from home two days a week.\""}
+            {
+              "q": "在家工作有什麼不方便？",
+              "options": [
+                "要很早起床",
+                "要坐很久的車",
+                "很難跟同事見面"
+              ],
+              "answer": 2,
+              "zh": "「很難跟同事見面，有問題的時候也不能馬上問」。",
+              "en": "\"It's hard to see colleagues.\""
+            },
+            {
+              "q": "有的公司讓大家：",
+              "options": [
+                "每天都在家工作",
+                "一個星期在家工作兩天",
+                "週末也上班"
+              ],
+              "answer": 1,
+              "zh": "「讓大家一個星期在家工作兩天」。",
+              "en": "\"Work from home two days a week.\""
+            }
           ]
         },
         {
@@ -138,10 +359,32 @@
           "mondai": 3,
           "ask": "zh_passage",
           "text": "我第一次來台灣是十年前，那時候我一句中文也不會說。我住在一個台灣人的家裡，他們每天晚上都教我說中文。三個月以後，我已經能跟他們聊天了。現在我還常常回去看他們。",
-          "tr": {"en": "I first came to Taiwan ten years ago, when I couldn't say a word of Chinese. I lived with a Taiwanese family who taught me Chinese every evening. Three months later I could already chat with them. I still often go back to see them."},
+          "tr": {
+            "en": "I first came to Taiwan ten years ago, when I couldn't say a word of Chinese. I lived with a Taiwanese family who taught me Chinese every evening. Three months later I could already chat with them. I still often go back to see them."
+          },
           "questions": [
-            {"q": "他第一次來台灣的時候：", "options": ["不會說中文", "住在學校", "認識很多人"], "answer": 0, "zh": "「那時候我一句中文也不會說」。", "en": "\"I couldn't say a word of Chinese.\""},
-            {"q": "他是怎麼學中文的？", "options": ["在學校上課", "看電視", "住的那家人教他"], "answer": 2, "zh": "「他們每天晚上都教我說中文」。", "en": "\"They taught me every evening.\""}
+            {
+              "q": "他第一次來台灣的時候：",
+              "options": [
+                "不會說中文",
+                "住在學校",
+                "認識很多人"
+              ],
+              "answer": 0,
+              "zh": "「那時候我一句中文也不會說」。",
+              "en": "\"I couldn't say a word of Chinese.\""
+            },
+            {
+              "q": "他是怎麼學中文的？",
+              "options": [
+                "在學校上課",
+                "看電視",
+                "住的那家人教他"
+              ],
+              "answer": 2,
+              "zh": "「他們每天晚上都教我說中文」。",
+              "en": "\"They taught me every evening.\""
+            }
           ]
         }
       ]

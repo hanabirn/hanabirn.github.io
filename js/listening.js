@@ -252,7 +252,8 @@ function listeningListHtml(lv) {
     return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
         ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
-        ${LISTENING_SOON[lv.lang] ? `<p class="ls-soon">🎙️ ${escHtml(t('listening_soon_rec', { levels: LISTENING_SOON[lv.lang] }))}</p>` : ''}
+        ${learnPrepHtml(lv.id)}
+        ${LISTENING_SOON[lv.lang] && lv.edition !== 'tw' ? `<p class="ls-soon">🎙️ ${escHtml(t('listening_soon_rec', { levels: LISTENING_SOON[lv.lang] }))}</p>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">
             <span><b>${escHtml(t('listening_exam'))}</b>　${escHtml(t('listening_exam_hint', { n: LISTENING_EXAM_PLAYS }))}</span>

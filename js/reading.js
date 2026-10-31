@@ -251,6 +251,7 @@ function readingListHtml(set) {
     return `<h3>${escHtml(t('reading_title'))}${introInfoBtn('reading_intro')}</h3>
         ${introHtml('reading_intro')}
         ${learnPickerHtml(readingIndex, set.id, 'readingPickSet', id => learnDoneCount(prog, id, READING_PASS))}
+        ${learnPrepHtml(set.id)}
         ${typeof readingSetsHtml === 'function' ? readingSetsHtml(set) : ''}
         ${set.passages.length ? `<div class="grammar-progress">
             <span>${escHtml(t('reading_read_n', { n: read, m: set.passages.length }))}</span>

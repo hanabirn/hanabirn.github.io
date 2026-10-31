@@ -3,367 +3,1807 @@
   "lang": "de",
   "level": "A1",
   "order": 1,
-  "note": "Original passages written for the site (CEFR A1: Präsens, a little Perfekt). Each language has its own stories (only the 8 topic tags are shared). Glossary w = the dictionary form (nouns with their article), m = how it appears in the text (underlined there; case-sensitive; a longer form first; a separable verb is underlined where it stands together). Edit this file, then run: python tools/build_reading.py",
+  "note": "Original passages written for the site (CEFR A1: Präsens, a little Perfekt). Each language has its own stories (only the 8 topic tags are shared). Glossary w = the dictionary form (nouns with their article), m = how it appears in the text (underlined there; case-sensitive; a longer form first; a separable verb is underlined where it stands together). Edit this file, then run: python tools/build_reading.py Also the exam rounds (\"sets\", German A1 reading rounds in the Goethe-Zertifikat A1 (Start Deutsch 1) format), drafted in tools/.mockups/de_a1.py.",
   "passages": [
     {
       "id": "shared-flat",
       "topic": "home",
-      "title": {"text": "Meine neue WG", "zh": "我的新合租公寓", "en": "My new flat-share"},
+      "title": {
+        "text": "Meine neue WG",
+        "zh": "我的新合租公寓",
+        "en": "My new flat-share"
+      },
       "paragraphs": [
-        {"s": ["Ich heiße Marie und ich studiere in Leipzig.", "Seit einem Monat wohne ich in einer WG."],
-         "zh": "我叫瑪麗，在萊比錫讀大學。我從一個月前開始住在合租公寓（WG）。", "en": "My name is Marie and I study in Leipzig. I've been living in a flat-share for a month."},
-        {"s": ["Ich wohne dort mit zwei Mitbewohnern, Tom und Aylin.", "Jeder hat ein eigenes Zimmer, aber die Küche und das Bad teilen wir."],
-         "zh": "我和兩位室友湯姆和艾琳住在一起。每個人都有自己的房間，但是廚房和浴室是共用的。", "en": "I live there with two flatmates, Tom and Aylin. Everyone has their own room, but we share the kitchen and the bathroom."},
-        {"s": ["Wir haben einen Putzplan.", "Diese Woche putze ich das Bad, und Tom kauft ein."],
-         "zh": "我們有一張打掃輪值表。這個星期我打掃浴室，湯姆負責買東西。", "en": "We have a cleaning rota. This week I clean the bathroom and Tom does the shopping."},
-        {"s": ["Am Sonntag kochen wir oft zusammen.", "Das macht viel Spaß!"],
-         "zh": "星期天我們常常一起煮飯。很好玩！", "en": "On Sundays we often cook together. It's a lot of fun!"}
+        {
+          "s": [
+            "Ich heiße Marie und ich studiere in Leipzig.",
+            "Seit einem Monat wohne ich in einer WG."
+          ],
+          "zh": "我叫瑪麗，在萊比錫讀大學。我從一個月前開始住在合租公寓（WG）。",
+          "en": "My name is Marie and I study in Leipzig. I've been living in a flat-share for a month."
+        },
+        {
+          "s": [
+            "Ich wohne dort mit zwei Mitbewohnern, Tom und Aylin.",
+            "Jeder hat ein eigenes Zimmer, aber die Küche und das Bad teilen wir."
+          ],
+          "zh": "我和兩位室友湯姆和艾琳住在一起。每個人都有自己的房間，但是廚房和浴室是共用的。",
+          "en": "I live there with two flatmates, Tom and Aylin. Everyone has their own room, but we share the kitchen and the bathroom."
+        },
+        {
+          "s": [
+            "Wir haben einen Putzplan.",
+            "Diese Woche putze ich das Bad, und Tom kauft ein."
+          ],
+          "zh": "我們有一張打掃輪值表。這個星期我打掃浴室，湯姆負責買東西。",
+          "en": "We have a cleaning rota. This week I clean the bathroom and Tom does the shopping."
+        },
+        {
+          "s": [
+            "Am Sonntag kochen wir oft zusammen.",
+            "Das macht viel Spaß!"
+          ],
+          "zh": "星期天我們常常一起煮飯。很好玩！",
+          "en": "On Sundays we often cook together. It's a lot of fun!"
+        }
       ],
       "glossary": [
-        {"w": "studieren", "r": "", "zh": "讀大學；研讀", "en": "to study (at university)", "m": ["studiere"]},
-        {"w": "seit", "r": "", "zh": "從……以來", "en": "since, for", "m": ["Seit"]},
-        {"w": "der Mitbewohner", "r": "", "zh": "室友", "en": "flatmate", "m": ["Mitbewohnern"]},
-        {"w": "eigen", "r": "", "zh": "自己的", "en": "own", "m": ["eigenes"]},
-        {"w": "teilen", "r": "", "zh": "共用；分享", "en": "to share"},
-        {"w": "putzen", "r": "", "zh": "打掃", "en": "to clean", "m": ["putze"]},
-        {"w": "einkaufen", "r": "", "zh": "購物；買東西", "en": "to go shopping", "m": ["kauft ein"]},
-        {"w": "zusammen", "r": "", "zh": "一起", "en": "together"}
+        {
+          "w": "studieren",
+          "r": "",
+          "zh": "讀大學；研讀",
+          "en": "to study (at university)",
+          "m": [
+            "studiere"
+          ]
+        },
+        {
+          "w": "seit",
+          "r": "",
+          "zh": "從……以來",
+          "en": "since, for",
+          "m": [
+            "Seit"
+          ]
+        },
+        {
+          "w": "der Mitbewohner",
+          "r": "",
+          "zh": "室友",
+          "en": "flatmate",
+          "m": [
+            "Mitbewohnern"
+          ]
+        },
+        {
+          "w": "eigen",
+          "r": "",
+          "zh": "自己的",
+          "en": "own",
+          "m": [
+            "eigenes"
+          ]
+        },
+        {
+          "w": "teilen",
+          "r": "",
+          "zh": "共用；分享",
+          "en": "to share"
+        },
+        {
+          "w": "putzen",
+          "r": "",
+          "zh": "打掃",
+          "en": "to clean",
+          "m": [
+            "putze"
+          ]
+        },
+        {
+          "w": "einkaufen",
+          "r": "",
+          "zh": "購物；買東西",
+          "en": "to go shopping",
+          "m": [
+            "kauft ein"
+          ]
+        },
+        {
+          "w": "zusammen",
+          "r": "",
+          "zh": "一起",
+          "en": "together"
+        }
       ],
       "mcq": [
-        {"q": "Wo studiert Marie?", "options": ["In Berlin", "In Leipzig", "In München", "In Köln"], "answer": 1,
-         "zh": "「ich studiere in Leipzig」：萊比錫。", "en": "“ich studiere in Leipzig” — in Leipzig."},
-        {"q": "Seit wann wohnt sie in der WG?", "options": ["Seit einem Monat", "Seit einem Jahr", "Seit einer Woche", "Seit zwei Monaten"], "answer": 0,
-         "zh": "「Seit einem Monat wohne ich in einer WG」：一個月。", "en": "“Seit einem Monat wohne ich in einer WG” — a month."},
-        {"q": "Was teilen die drei?", "options": ["Die Zimmer", "Das Auto", "Den Garten", "Die Küche und das Bad"], "answer": 3,
-         "zh": "「die Küche und das Bad teilen wir」：廚房和浴室。房間是各自的。", "en": "“die Küche und das Bad teilen wir.” Each has their own room."},
-        {"q": "Was macht Tom diese Woche?", "options": ["Er putzt das Bad", "Er kocht", "Er kauft ein", "Er wäscht"], "answer": 2,
-         "zh": "「Tom kauft ein」：買東西。打掃浴室的是瑪麗。", "en": "“Tom kauft ein” — he does the shopping. Marie cleans the bathroom."},
-        {"q": "Was machen sie am Sonntag oft?", "options": ["Sie gehen aus", "Sie kochen zusammen", "Sie putzen", "Sie schlafen lange"], "answer": 1,
-         "zh": "「Am Sonntag kochen wir oft zusammen」：一起煮飯。", "en": "“Am Sonntag kochen wir oft zusammen.”"}
+        {
+          "q": "Wo studiert Marie?",
+          "options": [
+            "In Berlin",
+            "In Leipzig",
+            "In München",
+            "In Köln"
+          ],
+          "answer": 1,
+          "zh": "「ich studiere in Leipzig」：萊比錫。",
+          "en": "“ich studiere in Leipzig” — in Leipzig."
+        },
+        {
+          "q": "Seit wann wohnt sie in der WG?",
+          "options": [
+            "Seit einem Monat",
+            "Seit einem Jahr",
+            "Seit einer Woche",
+            "Seit zwei Monaten"
+          ],
+          "answer": 0,
+          "zh": "「Seit einem Monat wohne ich in einer WG」：一個月。",
+          "en": "“Seit einem Monat wohne ich in einer WG” — a month."
+        },
+        {
+          "q": "Was teilen die drei?",
+          "options": [
+            "Die Zimmer",
+            "Das Auto",
+            "Den Garten",
+            "Die Küche und das Bad"
+          ],
+          "answer": 3,
+          "zh": "「die Küche und das Bad teilen wir」：廚房和浴室。房間是各自的。",
+          "en": "“die Küche und das Bad teilen wir.” Each has their own room."
+        },
+        {
+          "q": "Was macht Tom diese Woche?",
+          "options": [
+            "Er putzt das Bad",
+            "Er kocht",
+            "Er kauft ein",
+            "Er wäscht"
+          ],
+          "answer": 2,
+          "zh": "「Tom kauft ein」：買東西。打掃浴室的是瑪麗。",
+          "en": "“Tom kauft ein” — he does the shopping. Marie cleans the bathroom."
+        },
+        {
+          "q": "Was machen sie am Sonntag oft?",
+          "options": [
+            "Sie gehen aus",
+            "Sie kochen zusammen",
+            "Sie putzen",
+            "Sie schlafen lange"
+          ],
+          "answer": 1,
+          "zh": "「Am Sonntag kochen wir oft zusammen」：一起煮飯。",
+          "en": "“Am Sonntag kochen wir oft zusammen.”"
+        }
       ],
       "tf": [
-        {"s": "Marie wohnt mit drei Mitbewohnern zusammen.", "answer": false,
-         "zh": "×：是「zwei Mitbewohnern」（兩位室友）。", "en": "False: zwei Mitbewohnern — two."},
-        {"s": "Jeder hat ein eigenes Zimmer.", "answer": true,
-         "zh": "○：「Jeder hat ein eigenes Zimmer」。", "en": "True: Jeder hat ein eigenes Zimmer."},
-        {"s": "Diese Woche putzt Marie das Bad.", "answer": true,
-         "zh": "○：「Diese Woche putze ich das Bad」。", "en": "True: Diese Woche putze ich das Bad."}
+        {
+          "s": "Marie wohnt mit drei Mitbewohnern zusammen.",
+          "answer": false,
+          "zh": "×：是「zwei Mitbewohnern」（兩位室友）。",
+          "en": "False: zwei Mitbewohnern — two."
+        },
+        {
+          "s": "Jeder hat ein eigenes Zimmer.",
+          "answer": true,
+          "zh": "○：「Jeder hat ein eigenes Zimmer」。",
+          "en": "True: Jeder hat ein eigenes Zimmer."
+        },
+        {
+          "s": "Diese Woche putzt Marie das Bad.",
+          "answer": true,
+          "zh": "○：「Diese Woche putze ich das Bad」。",
+          "en": "True: Diese Woche putze ich das Bad."
+        }
       ]
     },
     {
       "id": "barbecue",
       "topic": "food",
-      "title": {"text": "Grillen im Garten", "zh": "在花園烤肉", "en": "A barbecue in the garden"},
+      "title": {
+        "text": "Grillen im Garten",
+        "zh": "在花園烤肉",
+        "en": "A barbecue in the garden"
+      },
       "paragraphs": [
-        {"s": ["Am Samstag haben wir mit unseren Nachbarn im Garten gegrillt.", "Mein Vater hat Würstchen und Gemüse gegrillt."],
-         "zh": "星期六我們和鄰居在花園烤肉。爸爸烤了香腸和蔬菜。", "en": "On Saturday we had a barbecue in the garden with our neighbours. My father grilled sausages and vegetables."},
-        {"s": ["Frau Schmidt von nebenan hat einen Kartoffelsalat mitgebracht.", "Die Kinder haben Limonade getrunken und Ball gespielt."],
-         "zh": "隔壁的施密特太太帶了馬鈴薯沙拉來。小孩們喝汽水、玩球。", "en": "Mrs Schmidt from next door brought a potato salad. The children drank lemonade and played ball."},
-        {"s": ["Um sechs Uhr hat es plötzlich angefangen zu regnen.", "Alle sind schnell ins Haus gelaufen."],
-         "zh": "六點的時候突然開始下雨。大家都趕快跑進屋子裡。", "en": "At six o'clock it suddenly started to rain. Everyone ran quickly into the house."},
-        {"s": ["Wir haben dann im Wohnzimmer weitergegessen.", "Es war trotzdem ein schöner Abend!"],
-         "zh": "接著我們在客廳繼續吃。即使這樣，還是一個很棒的夜晚！", "en": "Then we carried on eating in the living room. It was still a lovely evening!"}
+        {
+          "s": [
+            "Am Samstag haben wir mit unseren Nachbarn im Garten gegrillt.",
+            "Mein Vater hat Würstchen und Gemüse gegrillt."
+          ],
+          "zh": "星期六我們和鄰居在花園烤肉。爸爸烤了香腸和蔬菜。",
+          "en": "On Saturday we had a barbecue in the garden with our neighbours. My father grilled sausages and vegetables."
+        },
+        {
+          "s": [
+            "Frau Schmidt von nebenan hat einen Kartoffelsalat mitgebracht.",
+            "Die Kinder haben Limonade getrunken und Ball gespielt."
+          ],
+          "zh": "隔壁的施密特太太帶了馬鈴薯沙拉來。小孩們喝汽水、玩球。",
+          "en": "Mrs Schmidt from next door brought a potato salad. The children drank lemonade and played ball."
+        },
+        {
+          "s": [
+            "Um sechs Uhr hat es plötzlich angefangen zu regnen.",
+            "Alle sind schnell ins Haus gelaufen."
+          ],
+          "zh": "六點的時候突然開始下雨。大家都趕快跑進屋子裡。",
+          "en": "At six o'clock it suddenly started to rain. Everyone ran quickly into the house."
+        },
+        {
+          "s": [
+            "Wir haben dann im Wohnzimmer weitergegessen.",
+            "Es war trotzdem ein schöner Abend!"
+          ],
+          "zh": "接著我們在客廳繼續吃。即使這樣，還是一個很棒的夜晚！",
+          "en": "Then we carried on eating in the living room. It was still a lovely evening!"
+        }
       ],
       "glossary": [
-        {"w": "der Nachbar", "r": "", "zh": "鄰居", "en": "neighbour", "m": ["Nachbarn"]},
-        {"w": "grillen", "r": "", "zh": "烤肉；燒烤", "en": "to grill, to barbecue", "m": ["gegrillt"]},
-        {"w": "das Würstchen", "r": "", "zh": "小香腸", "en": "sausage", "m": ["Würstchen"]},
-        {"w": "nebenan", "r": "", "zh": "隔壁", "en": "next door"},
-        {"w": "mitbringen", "r": "", "zh": "帶來", "en": "to bring (along)", "m": ["mitgebracht"]},
-        {"w": "plötzlich", "r": "", "zh": "突然", "en": "suddenly"},
-        {"w": "laufen", "r": "", "zh": "跑；走", "en": "to run, to walk", "m": ["gelaufen"]},
-        {"w": "trotzdem", "r": "", "zh": "儘管如此；還是", "en": "still, nevertheless"}
+        {
+          "w": "der Nachbar",
+          "r": "",
+          "zh": "鄰居",
+          "en": "neighbour",
+          "m": [
+            "Nachbarn"
+          ]
+        },
+        {
+          "w": "grillen",
+          "r": "",
+          "zh": "烤肉；燒烤",
+          "en": "to grill, to barbecue",
+          "m": [
+            "gegrillt"
+          ]
+        },
+        {
+          "w": "das Würstchen",
+          "r": "",
+          "zh": "小香腸",
+          "en": "sausage",
+          "m": [
+            "Würstchen"
+          ]
+        },
+        {
+          "w": "nebenan",
+          "r": "",
+          "zh": "隔壁",
+          "en": "next door"
+        },
+        {
+          "w": "mitbringen",
+          "r": "",
+          "zh": "帶來",
+          "en": "to bring (along)",
+          "m": [
+            "mitgebracht"
+          ]
+        },
+        {
+          "w": "plötzlich",
+          "r": "",
+          "zh": "突然",
+          "en": "suddenly"
+        },
+        {
+          "w": "laufen",
+          "r": "",
+          "zh": "跑；走",
+          "en": "to run, to walk",
+          "m": [
+            "gelaufen"
+          ]
+        },
+        {
+          "w": "trotzdem",
+          "r": "",
+          "zh": "儘管如此；還是",
+          "en": "still, nevertheless"
+        }
       ],
       "mcq": [
-        {"q": "Mit wem haben sie gegrillt?", "options": ["Mit Freunden", "Mit den Nachbarn", "Mit der Oma", "Mit Kollegen"], "answer": 1,
-         "zh": "「mit unseren Nachbarn」：和鄰居。", "en": "“mit unseren Nachbarn” — with the neighbours."},
-        {"q": "Was hat Frau Schmidt mitgebracht?", "options": ["Einen Kartoffelsalat", "Würstchen", "Einen Kuchen", "Limonade"], "answer": 0,
-         "zh": "「hat einen Kartoffelsalat mitgebracht」：馬鈴薯沙拉。", "en": "“hat einen Kartoffelsalat mitgebracht.”"},
-        {"q": "Was haben die Kinder gemacht?", "options": ["Sie haben gegrillt", "Sie haben gekocht", "Sie haben geschlafen", "Sie haben Ball gespielt"], "answer": 3,
-         "zh": "「Die Kinder haben … Ball gespielt」：玩球。", "en": "“Die Kinder haben … Ball gespielt.”"},
-        {"q": "Was ist um sechs Uhr passiert?", "options": ["Die Gäste sind gekommen", "Es hat geschneit", "Es hat angefangen zu regnen", "Die Würstchen waren fertig"], "answer": 2,
-         "zh": "「Um sechs Uhr hat es plötzlich angefangen zu regnen」：開始下雨。", "en": "“Um sechs Uhr hat es plötzlich angefangen zu regnen.”"},
-        {"q": "Wo haben sie weitergegessen?", "options": ["Im Garten", "Im Wohnzimmer", "In der Küche", "Bei Frau Schmidt"], "answer": 1,
-         "zh": "「Wir haben dann im Wohnzimmer weitergegessen」：在客廳。", "en": "“Wir haben dann im Wohnzimmer weitergegessen.”"}
+        {
+          "q": "Mit wem haben sie gegrillt?",
+          "options": [
+            "Mit Freunden",
+            "Mit den Nachbarn",
+            "Mit der Oma",
+            "Mit Kollegen"
+          ],
+          "answer": 1,
+          "zh": "「mit unseren Nachbarn」：和鄰居。",
+          "en": "“mit unseren Nachbarn” — with the neighbours."
+        },
+        {
+          "q": "Was hat Frau Schmidt mitgebracht?",
+          "options": [
+            "Einen Kartoffelsalat",
+            "Würstchen",
+            "Einen Kuchen",
+            "Limonade"
+          ],
+          "answer": 0,
+          "zh": "「hat einen Kartoffelsalat mitgebracht」：馬鈴薯沙拉。",
+          "en": "“hat einen Kartoffelsalat mitgebracht.”"
+        },
+        {
+          "q": "Was haben die Kinder gemacht?",
+          "options": [
+            "Sie haben gegrillt",
+            "Sie haben gekocht",
+            "Sie haben geschlafen",
+            "Sie haben Ball gespielt"
+          ],
+          "answer": 3,
+          "zh": "「Die Kinder haben … Ball gespielt」：玩球。",
+          "en": "“Die Kinder haben … Ball gespielt.”"
+        },
+        {
+          "q": "Was ist um sechs Uhr passiert?",
+          "options": [
+            "Die Gäste sind gekommen",
+            "Es hat geschneit",
+            "Es hat angefangen zu regnen",
+            "Die Würstchen waren fertig"
+          ],
+          "answer": 2,
+          "zh": "「Um sechs Uhr hat es plötzlich angefangen zu regnen」：開始下雨。",
+          "en": "“Um sechs Uhr hat es plötzlich angefangen zu regnen.”"
+        },
+        {
+          "q": "Wo haben sie weitergegessen?",
+          "options": [
+            "Im Garten",
+            "Im Wohnzimmer",
+            "In der Küche",
+            "Bei Frau Schmidt"
+          ],
+          "answer": 1,
+          "zh": "「Wir haben dann im Wohnzimmer weitergegessen」：在客廳。",
+          "en": "“Wir haben dann im Wohnzimmer weitergegessen.”"
+        }
       ],
       "tf": [
-        {"s": "Der Vater hat Würstchen gegrillt.", "answer": true,
-         "zh": "○：「Mein Vater hat Würstchen und Gemüse gegrillt」。", "en": "True: Mein Vater hat Würstchen und Gemüse gegrillt."},
-        {"s": "Es hat den ganzen Tag geregnet.", "answer": false,
-         "zh": "×：雨是「Um sechs Uhr」（六點）才突然開始下的。", "en": "False: the rain only started at six (Um sechs Uhr)."},
-        {"s": "Der Abend war schön.", "answer": true,
-         "zh": "○：「Es war trotzdem ein schöner Abend」。", "en": "True: Es war trotzdem ein schöner Abend."}
+        {
+          "s": "Der Vater hat Würstchen gegrillt.",
+          "answer": true,
+          "zh": "○：「Mein Vater hat Würstchen und Gemüse gegrillt」。",
+          "en": "True: Mein Vater hat Würstchen und Gemüse gegrillt."
+        },
+        {
+          "s": "Es hat den ganzen Tag geregnet.",
+          "answer": false,
+          "zh": "×：雨是「Um sechs Uhr」（六點）才突然開始下的。",
+          "en": "False: the rain only started at six (Um sechs Uhr)."
+        },
+        {
+          "s": "Der Abend war schön.",
+          "answer": true,
+          "zh": "○：「Es war trotzdem ein schöner Abend」。",
+          "en": "True: Es war trotzdem ein schöner Abend."
+        }
       ]
     },
     {
       "id": "vienna",
       "topic": "travel",
-      "title": {"text": "Ein Wochenende in Wien", "zh": "維也納的週末", "en": "A weekend in Vienna"},
+      "title": {
+        "text": "Ein Wochenende in Wien",
+        "zh": "維也納的週末",
+        "en": "A weekend in Vienna"
+      },
       "paragraphs": [
-        {"s": ["Letztes Wochenende war ich mit meiner Schwester in Wien.", "Wir sind mit dem Zug von München gefahren.", "Die Fahrt hat vier Stunden gedauert."],
-         "zh": "上個週末我和姊姊去了維也納。我們從慕尼黑搭火車去。車程花了四個小時。", "en": "Last weekend I was in Vienna with my sister. We went by train from Munich. The journey took four hours."},
-        {"s": ["Am Samstag haben wir das Schloss Schönbrunn besichtigt.", "Der Garten dort ist riesig."],
-         "zh": "星期六我們參觀了美泉宮。那裡的花園非常大。", "en": "On Saturday we visited Schönbrunn Palace. The garden there is huge."},
-        {"s": ["Am Nachmittag waren wir in einem alten Kaffeehaus.", "Dort haben wir Sachertorte gegessen.", "Sie war sehr süß, aber lecker."],
-         "zh": "下午我們去了一家老咖啡館。我們在那裡吃了薩赫蛋糕。蛋糕很甜，但是很好吃。", "en": "In the afternoon we went to an old coffee house. We had Sachertorte there. It was very sweet, but tasty."},
-        {"s": ["Am Sonntag sind wir wieder nach Hause gefahren.", "Wien ist wunderschön!"],
-         "zh": "星期天我們又搭車回家了。維也納真美！", "en": "On Sunday we went back home. Vienna is beautiful!"}
+        {
+          "s": [
+            "Letztes Wochenende war ich mit meiner Schwester in Wien.",
+            "Wir sind mit dem Zug von München gefahren.",
+            "Die Fahrt hat vier Stunden gedauert."
+          ],
+          "zh": "上個週末我和姊姊去了維也納。我們從慕尼黑搭火車去。車程花了四個小時。",
+          "en": "Last weekend I was in Vienna with my sister. We went by train from Munich. The journey took four hours."
+        },
+        {
+          "s": [
+            "Am Samstag haben wir das Schloss Schönbrunn besichtigt.",
+            "Der Garten dort ist riesig."
+          ],
+          "zh": "星期六我們參觀了美泉宮。那裡的花園非常大。",
+          "en": "On Saturday we visited Schönbrunn Palace. The garden there is huge."
+        },
+        {
+          "s": [
+            "Am Nachmittag waren wir in einem alten Kaffeehaus.",
+            "Dort haben wir Sachertorte gegessen.",
+            "Sie war sehr süß, aber lecker."
+          ],
+          "zh": "下午我們去了一家老咖啡館。我們在那裡吃了薩赫蛋糕。蛋糕很甜，但是很好吃。",
+          "en": "In the afternoon we went to an old coffee house. We had Sachertorte there. It was very sweet, but tasty."
+        },
+        {
+          "s": [
+            "Am Sonntag sind wir wieder nach Hause gefahren.",
+            "Wien ist wunderschön!"
+          ],
+          "zh": "星期天我們又搭車回家了。維也納真美！",
+          "en": "On Sunday we went back home. Vienna is beautiful!"
+        }
       ],
       "glossary": [
-        {"w": "letzt", "r": "", "zh": "上一個；最後的", "en": "last", "m": ["Letztes"]},
-        {"w": "das Schloss", "r": "", "zh": "宮殿；城堡", "en": "palace, castle", "m": ["Schloss"]},
-        {"w": "besichtigen", "r": "", "zh": "參觀", "en": "to visit (a sight)", "m": ["besichtigt"]},
-        {"w": "riesig", "r": "", "zh": "巨大的", "en": "huge"},
-        {"w": "alt", "r": "", "zh": "老的；舊的", "en": "old", "m": ["alten"]},
-        {"w": "das Kaffeehaus", "r": "", "zh": "（維也納式）咖啡館", "en": "coffee house", "m": ["Kaffeehaus"]},
-        {"w": "süß", "r": "", "zh": "甜的", "en": "sweet"},
-        {"w": "wieder", "r": "", "zh": "再；又", "en": "again"}
+        {
+          "w": "letzt",
+          "r": "",
+          "zh": "上一個；最後的",
+          "en": "last",
+          "m": [
+            "Letztes"
+          ]
+        },
+        {
+          "w": "das Schloss",
+          "r": "",
+          "zh": "宮殿；城堡",
+          "en": "palace, castle",
+          "m": [
+            "Schloss"
+          ]
+        },
+        {
+          "w": "besichtigen",
+          "r": "",
+          "zh": "參觀",
+          "en": "to visit (a sight)",
+          "m": [
+            "besichtigt"
+          ]
+        },
+        {
+          "w": "riesig",
+          "r": "",
+          "zh": "巨大的",
+          "en": "huge"
+        },
+        {
+          "w": "alt",
+          "r": "",
+          "zh": "老的；舊的",
+          "en": "old",
+          "m": [
+            "alten"
+          ]
+        },
+        {
+          "w": "das Kaffeehaus",
+          "r": "",
+          "zh": "（維也納式）咖啡館",
+          "en": "coffee house",
+          "m": [
+            "Kaffeehaus"
+          ]
+        },
+        {
+          "w": "süß",
+          "r": "",
+          "zh": "甜的",
+          "en": "sweet"
+        },
+        {
+          "w": "wieder",
+          "r": "",
+          "zh": "再；又",
+          "en": "again"
+        }
       ],
       "mcq": [
-        {"q": "Mit wem war die Person in Wien?", "options": ["Mit ihrer Mutter", "Mit ihrer Schwester", "Allein", "Mit einem Freund"], "answer": 1,
-         "zh": "「mit meiner Schwester」：和姊姊。", "en": "“mit meiner Schwester” — with her sister."},
-        {"q": "Wie lange hat die Fahrt gedauert?", "options": ["Vier Stunden", "Zwei Stunden", "Sechs Stunden", "Eine Stunde"], "answer": 0,
-         "zh": "「Die Fahrt hat vier Stunden gedauert」：四小時。", "en": "“Die Fahrt hat vier Stunden gedauert.”"},
-        {"q": "Was haben sie am Samstag besichtigt?", "options": ["Ein Museum", "Den Zoo", "Eine Kirche", "Das Schloss Schönbrunn"], "answer": 3,
-         "zh": "「haben wir das Schloss Schönbrunn besichtigt」：美泉宮。", "en": "“haben wir das Schloss Schönbrunn besichtigt.”"},
-        {"q": "Wie war die Sachertorte?", "options": ["Trocken", "Nicht gut", "Sehr süß, aber lecker", "Zu teuer"], "answer": 2,
-         "zh": "「Sie war sehr süß, aber lecker」：很甜但很好吃。", "en": "“Sie war sehr süß, aber lecker.”"},
-        {"q": "Wann sind sie nach Hause gefahren?", "options": ["Am Samstag", "Am Sonntag", "Am Montag", "Am Freitag"], "answer": 1,
-         "zh": "「Am Sonntag sind wir wieder nach Hause gefahren」：星期天。", "en": "“Am Sonntag sind wir wieder nach Hause gefahren.”"}
+        {
+          "q": "Mit wem war die Person in Wien?",
+          "options": [
+            "Mit ihrer Mutter",
+            "Mit ihrer Schwester",
+            "Allein",
+            "Mit einem Freund"
+          ],
+          "answer": 1,
+          "zh": "「mit meiner Schwester」：和姊姊。",
+          "en": "“mit meiner Schwester” — with her sister."
+        },
+        {
+          "q": "Wie lange hat die Fahrt gedauert?",
+          "options": [
+            "Vier Stunden",
+            "Zwei Stunden",
+            "Sechs Stunden",
+            "Eine Stunde"
+          ],
+          "answer": 0,
+          "zh": "「Die Fahrt hat vier Stunden gedauert」：四小時。",
+          "en": "“Die Fahrt hat vier Stunden gedauert.”"
+        },
+        {
+          "q": "Was haben sie am Samstag besichtigt?",
+          "options": [
+            "Ein Museum",
+            "Den Zoo",
+            "Eine Kirche",
+            "Das Schloss Schönbrunn"
+          ],
+          "answer": 3,
+          "zh": "「haben wir das Schloss Schönbrunn besichtigt」：美泉宮。",
+          "en": "“haben wir das Schloss Schönbrunn besichtigt.”"
+        },
+        {
+          "q": "Wie war die Sachertorte?",
+          "options": [
+            "Trocken",
+            "Nicht gut",
+            "Sehr süß, aber lecker",
+            "Zu teuer"
+          ],
+          "answer": 2,
+          "zh": "「Sie war sehr süß, aber lecker」：很甜但很好吃。",
+          "en": "“Sie war sehr süß, aber lecker.”"
+        },
+        {
+          "q": "Wann sind sie nach Hause gefahren?",
+          "options": [
+            "Am Samstag",
+            "Am Sonntag",
+            "Am Montag",
+            "Am Freitag"
+          ],
+          "answer": 1,
+          "zh": "「Am Sonntag sind wir wieder nach Hause gefahren」：星期天。",
+          "en": "“Am Sonntag sind wir wieder nach Hause gefahren.”"
+        }
       ],
       "tf": [
-        {"s": "Sie sind mit dem Auto nach Wien gefahren.", "answer": false,
-         "zh": "×：他們是「mit dem Zug」（搭火車）去的。", "en": "False: they went mit dem Zug (by train)."},
-        {"s": "Der Garten von Schönbrunn ist sehr groß.", "answer": true,
-         "zh": "○：「Der Garten dort ist riesig」。", "en": "True: Der Garten dort ist riesig."},
-        {"s": "Sie haben im Kaffeehaus Sachertorte gegessen.", "answer": true,
-         "zh": "○：「Dort haben wir Sachertorte gegessen」。", "en": "True: Dort haben wir Sachertorte gegessen."}
+        {
+          "s": "Sie sind mit dem Auto nach Wien gefahren.",
+          "answer": false,
+          "zh": "×：他們是「mit dem Zug」（搭火車）去的。",
+          "en": "False: they went mit dem Zug (by train)."
+        },
+        {
+          "s": "Der Garten von Schönbrunn ist sehr groß.",
+          "answer": true,
+          "zh": "○：「Der Garten dort ist riesig」。",
+          "en": "True: Der Garten dort ist riesig."
+        },
+        {
+          "s": "Sie haben im Kaffeehaus Sachertorte gegessen.",
+          "answer": true,
+          "zh": "○：「Dort haben wir Sachertorte gegessen」。",
+          "en": "True: Dort haben wir Sachertorte gegessen."
+        }
       ]
     },
     {
       "id": "autumn",
       "topic": "weather",
-      "title": {"text": "Der Herbst ist da", "zh": "秋天來了", "en": "Autumn is here"},
+      "title": {
+        "text": "Der Herbst ist da",
+        "zh": "秋天來了",
+        "en": "Autumn is here"
+      },
       "paragraphs": [
-        {"s": ["Jetzt ist Herbst.", "Die Blätter an den Bäumen sind rot, gelb und braun."],
-         "zh": "現在是秋天。樹上的葉子是紅色、黃色和咖啡色的。", "en": "It's autumn now. The leaves on the trees are red, yellow and brown."},
-        {"s": ["Es ist oft windig und es regnet viel.", "Ohne Regenjacke gehe ich nicht aus dem Haus."],
-         "zh": "常常颳風，也常下雨。我不穿雨衣就不出門。", "en": "It's often windy and it rains a lot. I never leave the house without my rain jacket."},
-        {"s": ["Am Sonntag war das Wetter aber schön.", "Ich bin mit meinem kleinen Bruder auf einen Hügel gegangen.", "Dort haben wir einen Drachen steigen lassen."],
-         "zh": "不過星期天天氣很好。我和弟弟去爬了一座小山丘。我們在那裡放風箏。", "en": "But on Sunday the weather was nice. I went up a hill with my little brother. There we flew a kite."},
-        {"s": ["Der Wind war stark, und der Drache ist sehr hoch geflogen.", "Mein Bruder war total glücklich."],
-         "zh": "風很強，風箏飛得好高。弟弟超開心的。", "en": "The wind was strong, and the kite flew very high. My brother was totally happy."}
+        {
+          "s": [
+            "Jetzt ist Herbst.",
+            "Die Blätter an den Bäumen sind rot, gelb und braun."
+          ],
+          "zh": "現在是秋天。樹上的葉子是紅色、黃色和咖啡色的。",
+          "en": "It's autumn now. The leaves on the trees are red, yellow and brown."
+        },
+        {
+          "s": [
+            "Es ist oft windig und es regnet viel.",
+            "Ohne Regenjacke gehe ich nicht aus dem Haus."
+          ],
+          "zh": "常常颳風，也常下雨。我不穿雨衣就不出門。",
+          "en": "It's often windy and it rains a lot. I never leave the house without my rain jacket."
+        },
+        {
+          "s": [
+            "Am Sonntag war das Wetter aber schön.",
+            "Ich bin mit meinem kleinen Bruder auf einen Hügel gegangen.",
+            "Dort haben wir einen Drachen steigen lassen."
+          ],
+          "zh": "不過星期天天氣很好。我和弟弟去爬了一座小山丘。我們在那裡放風箏。",
+          "en": "But on Sunday the weather was nice. I went up a hill with my little brother. There we flew a kite."
+        },
+        {
+          "s": [
+            "Der Wind war stark, und der Drache ist sehr hoch geflogen.",
+            "Mein Bruder war total glücklich."
+          ],
+          "zh": "風很強，風箏飛得好高。弟弟超開心的。",
+          "en": "The wind was strong, and the kite flew very high. My brother was totally happy."
+        }
       ],
       "glossary": [
-        {"w": "der Herbst", "r": "", "zh": "秋天", "en": "autumn", "m": ["Herbst"]},
-        {"w": "das Blatt", "r": "", "zh": "葉子", "en": "leaf", "m": ["Blätter"]},
-        {"w": "windig", "r": "", "zh": "颳風的", "en": "windy"},
-        {"w": "ohne", "r": "", "zh": "沒有；不帶", "en": "without", "m": ["Ohne"]},
-        {"w": "die Regenjacke", "r": "", "zh": "雨衣；防水外套", "en": "rain jacket", "m": ["Regenjacke"]},
-        {"w": "der Hügel", "r": "", "zh": "小山丘", "en": "hill", "m": ["Hügel"]},
-        {"w": "der Drache", "r": "", "zh": "風箏", "en": "kite", "m": ["Drachen", "Drache"]},
-        {"w": "stark", "r": "", "zh": "強的", "en": "strong"}
+        {
+          "w": "der Herbst",
+          "r": "",
+          "zh": "秋天",
+          "en": "autumn",
+          "m": [
+            "Herbst"
+          ]
+        },
+        {
+          "w": "das Blatt",
+          "r": "",
+          "zh": "葉子",
+          "en": "leaf",
+          "m": [
+            "Blätter"
+          ]
+        },
+        {
+          "w": "windig",
+          "r": "",
+          "zh": "颳風的",
+          "en": "windy"
+        },
+        {
+          "w": "ohne",
+          "r": "",
+          "zh": "沒有；不帶",
+          "en": "without",
+          "m": [
+            "Ohne"
+          ]
+        },
+        {
+          "w": "die Regenjacke",
+          "r": "",
+          "zh": "雨衣；防水外套",
+          "en": "rain jacket",
+          "m": [
+            "Regenjacke"
+          ]
+        },
+        {
+          "w": "der Hügel",
+          "r": "",
+          "zh": "小山丘",
+          "en": "hill",
+          "m": [
+            "Hügel"
+          ]
+        },
+        {
+          "w": "der Drache",
+          "r": "",
+          "zh": "風箏",
+          "en": "kite",
+          "m": [
+            "Drachen",
+            "Drache"
+          ]
+        },
+        {
+          "w": "stark",
+          "r": "",
+          "zh": "強的",
+          "en": "strong"
+        }
       ],
       "mcq": [
-        {"q": "Welche Farbe haben die Blätter nicht?", "options": ["Rot", "Gelb", "Braun", "Blau"], "answer": 3,
-         "zh": "葉子是「rot, gelb und braun」，沒有藍色。", "en": "The leaves are rot, gelb und braun — not blue."},
-        {"q": "Wie ist das Wetter im Herbst oft?", "options": ["Heiß und sonnig", "Windig und regnerisch", "Es schneit", "Sehr trocken"], "answer": 1,
-         "zh": "「Es ist oft windig und es regnet viel」：颳風又下雨。", "en": "“Es ist oft windig und es regnet viel.”"},
-        {"q": "Wann war das Wetter schön?", "options": ["Am Sonntag", "Am Samstag", "Jeden Tag", "Am Montag"], "answer": 0,
-         "zh": "「Am Sonntag war das Wetter aber schön」：星期天。", "en": "“Am Sonntag war das Wetter aber schön.”"},
-        {"q": "Was haben sie auf dem Hügel gemacht?", "options": ["Sie haben gepicknickt", "Sie haben einen Drachen steigen lassen", "Sie haben Fußball gespielt", "Sie haben Blätter gesammelt"], "answer": 1,
-         "zh": "「Dort haben wir einen Drachen steigen lassen」：放風箏。", "en": "“Dort haben wir einen Drachen steigen lassen.”"},
-        {"q": "Wie war der kleine Bruder?", "options": ["Müde", "Traurig", "Total glücklich", "Krank"], "answer": 2,
-         "zh": "「Mein Bruder war total glücklich」：超開心。", "en": "“Mein Bruder war total glücklich.”"}
+        {
+          "q": "Welche Farbe haben die Blätter nicht?",
+          "options": [
+            "Rot",
+            "Gelb",
+            "Braun",
+            "Blau"
+          ],
+          "answer": 3,
+          "zh": "葉子是「rot, gelb und braun」，沒有藍色。",
+          "en": "The leaves are rot, gelb und braun — not blue."
+        },
+        {
+          "q": "Wie ist das Wetter im Herbst oft?",
+          "options": [
+            "Heiß und sonnig",
+            "Windig und regnerisch",
+            "Es schneit",
+            "Sehr trocken"
+          ],
+          "answer": 1,
+          "zh": "「Es ist oft windig und es regnet viel」：颳風又下雨。",
+          "en": "“Es ist oft windig und es regnet viel.”"
+        },
+        {
+          "q": "Wann war das Wetter schön?",
+          "options": [
+            "Am Sonntag",
+            "Am Samstag",
+            "Jeden Tag",
+            "Am Montag"
+          ],
+          "answer": 0,
+          "zh": "「Am Sonntag war das Wetter aber schön」：星期天。",
+          "en": "“Am Sonntag war das Wetter aber schön.”"
+        },
+        {
+          "q": "Was haben sie auf dem Hügel gemacht?",
+          "options": [
+            "Sie haben gepicknickt",
+            "Sie haben einen Drachen steigen lassen",
+            "Sie haben Fußball gespielt",
+            "Sie haben Blätter gesammelt"
+          ],
+          "answer": 1,
+          "zh": "「Dort haben wir einen Drachen steigen lassen」：放風箏。",
+          "en": "“Dort haben wir einen Drachen steigen lassen.”"
+        },
+        {
+          "q": "Wie war der kleine Bruder?",
+          "options": [
+            "Müde",
+            "Traurig",
+            "Total glücklich",
+            "Krank"
+          ],
+          "answer": 2,
+          "zh": "「Mein Bruder war total glücklich」：超開心。",
+          "en": "“Mein Bruder war total glücklich.”"
+        }
       ],
       "tf": [
-        {"s": "Im Herbst regnet es viel.", "answer": true,
-         "zh": "○：「es regnet viel」。", "en": "True: es regnet viel."},
-        {"s": "Die Person geht gern ohne Regenjacke aus dem Haus.", "answer": false,
-         "zh": "×：「Ohne Regenjacke gehe ich nicht aus dem Haus」。", "en": "False: Ohne Regenjacke gehe ich nicht aus dem Haus."},
-        {"s": "Der Drache ist nicht hoch geflogen.", "answer": false,
-         "zh": "×：「der Drache ist sehr hoch geflogen」，飛得很高。", "en": "False: der Drache ist sehr hoch geflogen."}
+        {
+          "s": "Im Herbst regnet es viel.",
+          "answer": true,
+          "zh": "○：「es regnet viel」。",
+          "en": "True: es regnet viel."
+        },
+        {
+          "s": "Die Person geht gern ohne Regenjacke aus dem Haus.",
+          "answer": false,
+          "zh": "×：「Ohne Regenjacke gehe ich nicht aus dem Haus」。",
+          "en": "False: Ohne Regenjacke gehe ich nicht aus dem Haus."
+        },
+        {
+          "s": "Der Drache ist nicht hoch geflogen.",
+          "answer": false,
+          "zh": "×：「der Drache ist sehr hoch geflogen」，飛得很高。",
+          "en": "False: der Drache ist sehr hoch geflogen."
+        }
       ]
     },
     {
       "id": "shopping-list",
       "topic": "shopping",
-      "title": {"text": "Der Einkaufszettel", "zh": "購物清單", "en": "The shopping list"},
+      "title": {
+        "text": "Der Einkaufszettel",
+        "zh": "購物清單",
+        "en": "The shopping list"
+      },
       "paragraphs": [
-        {"s": ["Am Freitag kaufe ich immer für die ganze Woche ein.", "Ich schreibe vorher einen Einkaufszettel."],
-         "zh": "星期五我總是把一整週要用的東西買齊。我會先寫一張購物清單。", "en": "On Fridays I always do the shopping for the whole week. I write a shopping list first."},
-        {"s": ["Auf dem Zettel stehen Brot, Käse, Eier, Äpfel und Milch.", "Ich nehme auch die leeren Flaschen mit.", "Im Supermarkt bekomme ich dafür Pfand zurück."],
-         "zh": "清單上寫著麵包、起司、雞蛋、蘋果和牛奶。我也會帶空瓶子去。在超市可以拿回瓶子的押金。", "en": "On the list are bread, cheese, eggs, apples and milk. I also take the empty bottles. At the supermarket I get the deposit back for them."},
-        {"s": ["Heute war der Supermarkt sehr voll.", "An der Kasse habe ich zwanzig Minuten gewartet."],
-         "zh": "今天超市人很多。我在結帳櫃台等了二十分鐘。", "en": "Today the supermarket was very full. I waited twenty minutes at the checkout."},
-        {"s": ["Zu Hause habe ich gemerkt: Ich habe die Milch vergessen!", "Jetzt muss ich noch einmal los."],
-         "zh": "回到家我才發現：我忘了買牛奶！現在得再出門一趟。", "en": "At home I noticed: I forgot the milk! Now I have to go out again."}
+        {
+          "s": [
+            "Am Freitag kaufe ich immer für die ganze Woche ein.",
+            "Ich schreibe vorher einen Einkaufszettel."
+          ],
+          "zh": "星期五我總是把一整週要用的東西買齊。我會先寫一張購物清單。",
+          "en": "On Fridays I always do the shopping for the whole week. I write a shopping list first."
+        },
+        {
+          "s": [
+            "Auf dem Zettel stehen Brot, Käse, Eier, Äpfel und Milch.",
+            "Ich nehme auch die leeren Flaschen mit.",
+            "Im Supermarkt bekomme ich dafür Pfand zurück."
+          ],
+          "zh": "清單上寫著麵包、起司、雞蛋、蘋果和牛奶。我也會帶空瓶子去。在超市可以拿回瓶子的押金。",
+          "en": "On the list are bread, cheese, eggs, apples and milk. I also take the empty bottles. At the supermarket I get the deposit back for them."
+        },
+        {
+          "s": [
+            "Heute war der Supermarkt sehr voll.",
+            "An der Kasse habe ich zwanzig Minuten gewartet."
+          ],
+          "zh": "今天超市人很多。我在結帳櫃台等了二十分鐘。",
+          "en": "Today the supermarket was very full. I waited twenty minutes at the checkout."
+        },
+        {
+          "s": [
+            "Zu Hause habe ich gemerkt: Ich habe die Milch vergessen!",
+            "Jetzt muss ich noch einmal los."
+          ],
+          "zh": "回到家我才發現：我忘了買牛奶！現在得再出門一趟。",
+          "en": "At home I noticed: I forgot the milk! Now I have to go out again."
+        }
       ],
       "glossary": [
-        {"w": "immer", "r": "", "zh": "總是", "en": "always"},
-        {"w": "vorher", "r": "", "zh": "事先；之前", "en": "beforehand"},
-        {"w": "der Einkaufszettel", "r": "", "zh": "購物清單", "en": "shopping list", "m": ["Einkaufszettel"]},
-        {"w": "leer", "r": "", "zh": "空的", "en": "empty", "m": ["leeren"]},
-        {"w": "die Flasche", "r": "", "zh": "瓶子", "en": "bottle", "m": ["Flaschen"]},
-        {"w": "voll", "r": "", "zh": "滿的；擠的", "en": "full, crowded"},
-        {"w": "die Kasse", "r": "", "zh": "收銀台", "en": "checkout, till", "m": ["Kasse"]},
-        {"w": "vergessen", "r": "", "zh": "忘記", "en": "to forget"}
+        {
+          "w": "immer",
+          "r": "",
+          "zh": "總是",
+          "en": "always"
+        },
+        {
+          "w": "vorher",
+          "r": "",
+          "zh": "事先；之前",
+          "en": "beforehand"
+        },
+        {
+          "w": "der Einkaufszettel",
+          "r": "",
+          "zh": "購物清單",
+          "en": "shopping list",
+          "m": [
+            "Einkaufszettel"
+          ]
+        },
+        {
+          "w": "leer",
+          "r": "",
+          "zh": "空的",
+          "en": "empty",
+          "m": [
+            "leeren"
+          ]
+        },
+        {
+          "w": "die Flasche",
+          "r": "",
+          "zh": "瓶子",
+          "en": "bottle",
+          "m": [
+            "Flaschen"
+          ]
+        },
+        {
+          "w": "voll",
+          "r": "",
+          "zh": "滿的；擠的",
+          "en": "full, crowded"
+        },
+        {
+          "w": "die Kasse",
+          "r": "",
+          "zh": "收銀台",
+          "en": "checkout, till",
+          "m": [
+            "Kasse"
+          ]
+        },
+        {
+          "w": "vergessen",
+          "r": "",
+          "zh": "忘記",
+          "en": "to forget"
+        }
       ],
       "mcq": [
-        {"q": "Wann kauft die Person ein?", "options": ["Am Freitag", "Am Samstag", "Jeden Tag", "Am Montag"], "answer": 0,
-         "zh": "「Am Freitag kaufe ich immer … ein」：星期五。", "en": "“Am Freitag kaufe ich immer … ein” — on Fridays."},
-        {"q": "Was steht nicht auf dem Zettel?", "options": ["Brot", "Käse", "Äpfel", "Fleisch"], "answer": 3,
-         "zh": "清單上是麵包、起司、雞蛋、蘋果和牛奶，沒有肉（Fleisch）。", "en": "The list has bread, cheese, eggs, apples and milk — no meat (Fleisch)."},
-        {"q": "Was bekommt man für die leeren Flaschen?", "options": ["Ein Geschenk", "Pfand", "Neue Flaschen", "Milch"], "answer": 1,
-         "zh": "「bekomme ich dafür Pfand zurück」：押金。", "en": "“bekomme ich dafür Pfand zurück” — the deposit."},
-        {"q": "Wie lange hat die Person an der Kasse gewartet?", "options": ["Fünf Minuten", "Eine Stunde", "Zwanzig Minuten", "Zehn Minuten"], "answer": 2,
-         "zh": "「An der Kasse habe ich zwanzig Minuten gewartet」：二十分鐘。", "en": "“An der Kasse habe ich zwanzig Minuten gewartet.”"},
-        {"q": "Was hat die Person vergessen?", "options": ["Das Brot", "Die Milch", "Die Eier", "Den Zettel"], "answer": 1,
-         "zh": "「Ich habe die Milch vergessen」：牛奶。", "en": "“Ich habe die Milch vergessen.”"}
+        {
+          "q": "Wann kauft die Person ein?",
+          "options": [
+            "Am Freitag",
+            "Am Samstag",
+            "Jeden Tag",
+            "Am Montag"
+          ],
+          "answer": 0,
+          "zh": "「Am Freitag kaufe ich immer … ein」：星期五。",
+          "en": "“Am Freitag kaufe ich immer … ein” — on Fridays."
+        },
+        {
+          "q": "Was steht nicht auf dem Zettel?",
+          "options": [
+            "Brot",
+            "Käse",
+            "Äpfel",
+            "Fleisch"
+          ],
+          "answer": 3,
+          "zh": "清單上是麵包、起司、雞蛋、蘋果和牛奶，沒有肉（Fleisch）。",
+          "en": "The list has bread, cheese, eggs, apples and milk — no meat (Fleisch)."
+        },
+        {
+          "q": "Was bekommt man für die leeren Flaschen?",
+          "options": [
+            "Ein Geschenk",
+            "Pfand",
+            "Neue Flaschen",
+            "Milch"
+          ],
+          "answer": 1,
+          "zh": "「bekomme ich dafür Pfand zurück」：押金。",
+          "en": "“bekomme ich dafür Pfand zurück” — the deposit."
+        },
+        {
+          "q": "Wie lange hat die Person an der Kasse gewartet?",
+          "options": [
+            "Fünf Minuten",
+            "Eine Stunde",
+            "Zwanzig Minuten",
+            "Zehn Minuten"
+          ],
+          "answer": 2,
+          "zh": "「An der Kasse habe ich zwanzig Minuten gewartet」：二十分鐘。",
+          "en": "“An der Kasse habe ich zwanzig Minuten gewartet.”"
+        },
+        {
+          "q": "Was hat die Person vergessen?",
+          "options": [
+            "Das Brot",
+            "Die Milch",
+            "Die Eier",
+            "Den Zettel"
+          ],
+          "answer": 1,
+          "zh": "「Ich habe die Milch vergessen」：牛奶。",
+          "en": "“Ich habe die Milch vergessen.”"
+        }
       ],
       "tf": [
-        {"s": "Die Person schreibt einen Einkaufszettel.", "answer": true,
-         "zh": "○：「Ich schreibe vorher einen Einkaufszettel」。", "en": "True: Ich schreibe vorher einen Einkaufszettel."},
-        {"s": "Heute war der Supermarkt leer.", "answer": false,
-         "zh": "×：「Heute war der Supermarkt sehr voll」。", "en": "False: Heute war der Supermarkt sehr voll."},
-        {"s": "Die Person muss noch einmal einkaufen gehen.", "answer": true,
-         "zh": "○：「Jetzt muss ich noch einmal los」。", "en": "True: Jetzt muss ich noch einmal los."}
+        {
+          "s": "Die Person schreibt einen Einkaufszettel.",
+          "answer": true,
+          "zh": "○：「Ich schreibe vorher einen Einkaufszettel」。",
+          "en": "True: Ich schreibe vorher einen Einkaufszettel."
+        },
+        {
+          "s": "Heute war der Supermarkt leer.",
+          "answer": false,
+          "zh": "×：「Heute war der Supermarkt sehr voll」。",
+          "en": "False: Heute war der Supermarkt sehr voll."
+        },
+        {
+          "s": "Die Person muss noch einmal einkaufen gehen.",
+          "answer": true,
+          "zh": "○：「Jetzt muss ich noch einmal los」。",
+          "en": "True: Jetzt muss ich noch einmal los."
+        }
       ]
     },
     {
       "id": "new-classmate",
       "topic": "school",
-      "title": {"text": "Ein neuer Mitschüler", "zh": "新同學", "en": "A new classmate"},
+      "title": {
+        "text": "Ein neuer Mitschüler",
+        "zh": "新同學",
+        "en": "A new classmate"
+      },
       "paragraphs": [
-        {"s": ["Seit Montag haben wir einen neuen Mitschüler.", "Er heißt Luca und kommt aus Italien."],
-         "zh": "從星期一開始，我們班來了一位新同學。他叫路卡，是義大利人。", "en": "Since Monday we've had a new classmate. His name is Luca and he's from Italy."},
-        {"s": ["Luca spricht noch nicht so gut Deutsch.", "Unsere Lehrerin hat gesagt: „Ben, kannst du ihm helfen?“"],
-         "zh": "路卡的德文還不太好。老師說：「班，你可以幫他嗎？」", "en": "Luca doesn't speak German very well yet. Our teacher said, “Ben, can you help him?”"},
-        {"s": ["Ich habe ihm die Schule gezeigt: die Bibliothek, die Turnhalle und die Mensa.", "In der Pause haben wir zusammen Fußball gespielt.", "Luca spielt super!"],
-         "zh": "我帶他看了學校：圖書館、體育館和餐廳。下課的時候我們一起踢足球。路卡踢得超好！", "en": "I showed him the school: the library, the gym and the canteen. At break we played football together. Luca plays brilliantly!"},
-        {"s": ["Jetzt helfe ich ihm mit Deutsch, und er lehrt mich Italienisch.", "Wir sind schon gute Freunde."],
-         "zh": "現在我幫他學德文，他教我義大利文。我們已經是好朋友了。", "en": "Now I help him with German and he teaches me Italian. We're already good friends."}
+        {
+          "s": [
+            "Seit Montag haben wir einen neuen Mitschüler.",
+            "Er heißt Luca und kommt aus Italien."
+          ],
+          "zh": "從星期一開始，我們班來了一位新同學。他叫路卡，是義大利人。",
+          "en": "Since Monday we've had a new classmate. His name is Luca and he's from Italy."
+        },
+        {
+          "s": [
+            "Luca spricht noch nicht so gut Deutsch.",
+            "Unsere Lehrerin hat gesagt: „Ben, kannst du ihm helfen?“"
+          ],
+          "zh": "路卡的德文還不太好。老師說：「班，你可以幫他嗎？」",
+          "en": "Luca doesn't speak German very well yet. Our teacher said, “Ben, can you help him?”"
+        },
+        {
+          "s": [
+            "Ich habe ihm die Schule gezeigt: die Bibliothek, die Turnhalle und die Mensa.",
+            "In der Pause haben wir zusammen Fußball gespielt.",
+            "Luca spielt super!"
+          ],
+          "zh": "我帶他看了學校：圖書館、體育館和餐廳。下課的時候我們一起踢足球。路卡踢得超好！",
+          "en": "I showed him the school: the library, the gym and the canteen. At break we played football together. Luca plays brilliantly!"
+        },
+        {
+          "s": [
+            "Jetzt helfe ich ihm mit Deutsch, und er lehrt mich Italienisch.",
+            "Wir sind schon gute Freunde."
+          ],
+          "zh": "現在我幫他學德文，他教我義大利文。我們已經是好朋友了。",
+          "en": "Now I help him with German and he teaches me Italian. We're already good friends."
+        }
       ],
       "glossary": [
-        {"w": "der Mitschüler", "r": "", "zh": "同學", "en": "classmate", "m": ["Mitschüler"]},
-        {"w": "noch nicht", "r": "", "zh": "還沒有；還不", "en": "not yet"},
-        {"w": "helfen", "r": "", "zh": "幫忙", "en": "to help", "m": ["helfen", "helfe"]},
-        {"w": "zeigen", "r": "", "zh": "給……看；帶……參觀", "en": "to show", "m": ["gezeigt"]},
-        {"w": "die Turnhalle", "r": "", "zh": "體育館", "en": "gym", "m": ["Turnhalle"]},
-        {"w": "die Pause", "r": "", "zh": "下課；休息", "en": "break", "m": ["Pause"]},
-        {"w": "schon", "r": "", "zh": "已經", "en": "already"},
-        {"w": "der Freund", "r": "", "zh": "朋友", "en": "friend", "m": ["Freunde"]}
+        {
+          "w": "der Mitschüler",
+          "r": "",
+          "zh": "同學",
+          "en": "classmate",
+          "m": [
+            "Mitschüler"
+          ]
+        },
+        {
+          "w": "noch nicht",
+          "r": "",
+          "zh": "還沒有；還不",
+          "en": "not yet"
+        },
+        {
+          "w": "helfen",
+          "r": "",
+          "zh": "幫忙",
+          "en": "to help",
+          "m": [
+            "helfen",
+            "helfe"
+          ]
+        },
+        {
+          "w": "zeigen",
+          "r": "",
+          "zh": "給……看；帶……參觀",
+          "en": "to show",
+          "m": [
+            "gezeigt"
+          ]
+        },
+        {
+          "w": "die Turnhalle",
+          "r": "",
+          "zh": "體育館",
+          "en": "gym",
+          "m": [
+            "Turnhalle"
+          ]
+        },
+        {
+          "w": "die Pause",
+          "r": "",
+          "zh": "下課；休息",
+          "en": "break",
+          "m": [
+            "Pause"
+          ]
+        },
+        {
+          "w": "schon",
+          "r": "",
+          "zh": "已經",
+          "en": "already"
+        },
+        {
+          "w": "der Freund",
+          "r": "",
+          "zh": "朋友",
+          "en": "friend",
+          "m": [
+            "Freunde"
+          ]
+        }
       ],
       "mcq": [
-        {"q": "Woher kommt Luca?", "options": ["Aus Spanien", "Aus Italien", "Aus Frankreich", "Aus der Türkei"], "answer": 1,
-         "zh": "「kommt aus Italien」：義大利。", "en": "“kommt aus Italien” — from Italy."},
-        {"q": "Seit wann ist Luca in der Klasse?", "options": ["Seit Montag", "Seit gestern", "Seit einem Monat", "Seit Freitag"], "answer": 0,
-         "zh": "「Seit Montag haben wir einen neuen Mitschüler」：從星期一。", "en": "“Seit Montag haben wir einen neuen Mitschüler.”"},
-        {"q": "Wer soll Luca helfen?", "options": ["Die Lehrerin", "Ein Mädchen", "Ein Lehrer", "Ben"], "answer": 3,
-         "zh": "「Ben, kannst du ihm helfen?」：班。", "en": "“Ben, kannst du ihm helfen?” — Ben."},
-        {"q": "Was haben sie in der Pause gemacht?", "options": ["Sie haben gegessen", "Sie haben gelesen", "Sie haben Fußball gespielt", "Sie haben Deutsch gelernt"], "answer": 2,
-         "zh": "「In der Pause haben wir zusammen Fußball gespielt」：踢足球。", "en": "“In der Pause haben wir zusammen Fußball gespielt.”"},
-        {"q": "Was lernt Ben von Luca?", "options": ["Englisch", "Italienisch", "Fußball", "Mathe"], "answer": 1,
-         "zh": "「er lehrt mich Italienisch」：義大利文。", "en": "“er lehrt mich Italienisch” — Italian."}
+        {
+          "q": "Woher kommt Luca?",
+          "options": [
+            "Aus Spanien",
+            "Aus Italien",
+            "Aus Frankreich",
+            "Aus der Türkei"
+          ],
+          "answer": 1,
+          "zh": "「kommt aus Italien」：義大利。",
+          "en": "“kommt aus Italien” — from Italy."
+        },
+        {
+          "q": "Seit wann ist Luca in der Klasse?",
+          "options": [
+            "Seit Montag",
+            "Seit gestern",
+            "Seit einem Monat",
+            "Seit Freitag"
+          ],
+          "answer": 0,
+          "zh": "「Seit Montag haben wir einen neuen Mitschüler」：從星期一。",
+          "en": "“Seit Montag haben wir einen neuen Mitschüler.”"
+        },
+        {
+          "q": "Wer soll Luca helfen?",
+          "options": [
+            "Die Lehrerin",
+            "Ein Mädchen",
+            "Ein Lehrer",
+            "Ben"
+          ],
+          "answer": 3,
+          "zh": "「Ben, kannst du ihm helfen?」：班。",
+          "en": "“Ben, kannst du ihm helfen?” — Ben."
+        },
+        {
+          "q": "Was haben sie in der Pause gemacht?",
+          "options": [
+            "Sie haben gegessen",
+            "Sie haben gelesen",
+            "Sie haben Fußball gespielt",
+            "Sie haben Deutsch gelernt"
+          ],
+          "answer": 2,
+          "zh": "「In der Pause haben wir zusammen Fußball gespielt」：踢足球。",
+          "en": "“In der Pause haben wir zusammen Fußball gespielt.”"
+        },
+        {
+          "q": "Was lernt Ben von Luca?",
+          "options": [
+            "Englisch",
+            "Italienisch",
+            "Fußball",
+            "Mathe"
+          ],
+          "answer": 1,
+          "zh": "「er lehrt mich Italienisch」：義大利文。",
+          "en": "“er lehrt mich Italienisch” — Italian."
+        }
       ],
       "tf": [
-        {"s": "Luca spricht schon sehr gut Deutsch.", "answer": false,
-         "zh": "×：「Luca spricht noch nicht so gut Deutsch」。", "en": "False: Luca spricht noch nicht so gut Deutsch."},
-        {"s": "Ben hat Luca die Mensa gezeigt.", "answer": true,
-         "zh": "○：「die Bibliothek, die Turnhalle und die Mensa」。", "en": "True: die Bibliothek, die Turnhalle und die Mensa."},
-        {"s": "Ben und Luca sind jetzt Freunde.", "answer": true,
-         "zh": "○：「Wir sind schon gute Freunde」。", "en": "True: Wir sind schon gute Freunde."}
+        {
+          "s": "Luca spricht schon sehr gut Deutsch.",
+          "answer": false,
+          "zh": "×：「Luca spricht noch nicht so gut Deutsch」。",
+          "en": "False: Luca spricht noch nicht so gut Deutsch."
+        },
+        {
+          "s": "Ben hat Luca die Mensa gezeigt.",
+          "answer": true,
+          "zh": "○：「die Bibliothek, die Turnhalle und die Mensa」。",
+          "en": "True: die Bibliothek, die Turnhalle und die Mensa."
+        },
+        {
+          "s": "Ben und Luca sind jetzt Freunde.",
+          "answer": true,
+          "zh": "○：「Wir sind schon gute Freunde」。",
+          "en": "True: Wir sind schon gute Freunde."
+        }
       ]
     },
     {
       "id": "late-train",
       "topic": "transport",
-      "title": {"text": "Der Zug hat Verspätung", "zh": "火車誤點了", "en": "The train is late"},
+      "title": {
+        "text": "Der Zug hat Verspätung",
+        "zh": "火車誤點了",
+        "en": "The train is late"
+      },
       "paragraphs": [
-        {"s": ["Heute muss ich für die Arbeit nach Hamburg fahren.", "Mein Zug fährt um acht Uhr zwölf ab."],
-         "zh": "今天我要去漢堡出差。我的火車八點十二分開。", "en": "Today I have to go to Hamburg for work. My train leaves at twelve minutes past eight."},
-        {"s": ["Am Bahnhof sehe ich auf der Anzeige: „Vierzig Minuten Verspätung“.", "Das ist ein Problem, denn ich muss in Hannover umsteigen."],
-         "zh": "在車站我看到看板上寫著：「誤點四十分鐘」。這是個問題，因為我要在漢諾威轉車。", "en": "At the station I see on the display: “Forty minutes late”. That's a problem, because I have to change in Hanover."},
-        {"s": ["Ich rufe meine Kollegin in Hamburg an und sage: „Ich komme leider eine Stunde später.“", "Sie antwortet: „Kein Problem, das kennen wir!“"],
-         "zh": "我打電話給在漢堡的同事說：「很抱歉，我會晚一個小時到。」她回答：「沒關係，我們都習慣了！」", "en": "I phone my colleague in Hamburg and say, “I'm afraid I'll be an hour late.” She answers, “No problem, we know how it is!”"},
-        {"s": ["Im Zug trinke ich einen Kaffee und lese meine E-Mails.", "So ist die Zeit nicht verloren."],
-         "zh": "在火車上我喝咖啡、看電子郵件。這樣時間就不會浪費了。", "en": "On the train I drink a coffee and read my emails. That way the time isn't lost."}
+        {
+          "s": [
+            "Heute muss ich für die Arbeit nach Hamburg fahren.",
+            "Mein Zug fährt um acht Uhr zwölf ab."
+          ],
+          "zh": "今天我要去漢堡出差。我的火車八點十二分開。",
+          "en": "Today I have to go to Hamburg for work. My train leaves at twelve minutes past eight."
+        },
+        {
+          "s": [
+            "Am Bahnhof sehe ich auf der Anzeige: „Vierzig Minuten Verspätung“.",
+            "Das ist ein Problem, denn ich muss in Hannover umsteigen."
+          ],
+          "zh": "在車站我看到看板上寫著：「誤點四十分鐘」。這是個問題，因為我要在漢諾威轉車。",
+          "en": "At the station I see on the display: “Forty minutes late”. That's a problem, because I have to change in Hanover."
+        },
+        {
+          "s": [
+            "Ich rufe meine Kollegin in Hamburg an und sage: „Ich komme leider eine Stunde später.“",
+            "Sie antwortet: „Kein Problem, das kennen wir!“"
+          ],
+          "zh": "我打電話給在漢堡的同事說：「很抱歉，我會晚一個小時到。」她回答：「沒關係，我們都習慣了！」",
+          "en": "I phone my colleague in Hamburg and say, “I'm afraid I'll be an hour late.” She answers, “No problem, we know how it is!”"
+        },
+        {
+          "s": [
+            "Im Zug trinke ich einen Kaffee und lese meine E-Mails.",
+            "So ist die Zeit nicht verloren."
+          ],
+          "zh": "在火車上我喝咖啡、看電子郵件。這樣時間就不會浪費了。",
+          "en": "On the train I drink a coffee and read my emails. That way the time isn't lost."
+        }
       ],
       "glossary": [
-        {"w": "die Anzeige", "r": "", "zh": "顯示看板", "en": "display, departure board", "m": ["Anzeige"]},
-        {"w": "die Verspätung", "r": "", "zh": "誤點；延誤", "en": "delay", "m": ["Verspätung"]},
-        {"w": "denn", "r": "", "zh": "因為", "en": "because"},
-        {"w": "umsteigen", "r": "", "zh": "轉車", "en": "to change (trains)"},
-        {"w": "die Kollegin", "r": "", "zh": "（女）同事", "en": "colleague (woman)", "m": ["Kollegin"]},
-        {"w": "leider", "r": "", "zh": "可惜；很抱歉", "en": "unfortunately"},
-        {"w": "später", "r": "", "zh": "比較晚；之後", "en": "later"},
-        {"w": "antworten", "r": "", "zh": "回答", "en": "to answer", "m": ["antwortet"]}
+        {
+          "w": "die Anzeige",
+          "r": "",
+          "zh": "顯示看板",
+          "en": "display, departure board",
+          "m": [
+            "Anzeige"
+          ]
+        },
+        {
+          "w": "die Verspätung",
+          "r": "",
+          "zh": "誤點；延誤",
+          "en": "delay",
+          "m": [
+            "Verspätung"
+          ]
+        },
+        {
+          "w": "denn",
+          "r": "",
+          "zh": "因為",
+          "en": "because"
+        },
+        {
+          "w": "umsteigen",
+          "r": "",
+          "zh": "轉車",
+          "en": "to change (trains)"
+        },
+        {
+          "w": "die Kollegin",
+          "r": "",
+          "zh": "（女）同事",
+          "en": "colleague (woman)",
+          "m": [
+            "Kollegin"
+          ]
+        },
+        {
+          "w": "leider",
+          "r": "",
+          "zh": "可惜；很抱歉",
+          "en": "unfortunately"
+        },
+        {
+          "w": "später",
+          "r": "",
+          "zh": "比較晚；之後",
+          "en": "later"
+        },
+        {
+          "w": "antworten",
+          "r": "",
+          "zh": "回答",
+          "en": "to answer",
+          "m": [
+            "antwortet"
+          ]
+        }
       ],
       "mcq": [
-        {"q": "Wohin muss die Person fahren?", "options": ["Nach Berlin", "Nach Hamburg", "Nach Hannover", "Nach Köln"], "answer": 1,
-         "zh": "「nach Hamburg fahren」：漢堡。漢諾威是轉車的地方。", "en": "“nach Hamburg fahren” — Hamburg. Hanover is where she changes."},
-        {"q": "Wie viel Verspätung hat der Zug?", "options": ["Vierzig Minuten", "Zehn Minuten", "Eine Stunde", "Zwei Stunden"], "answer": 0,
-         "zh": "「Vierzig Minuten Verspätung」：四十分鐘。", "en": "“Vierzig Minuten Verspätung” — forty minutes."},
-        {"q": "Wo muss die Person umsteigen?", "options": ["In Hamburg", "In Köln", "In München", "In Hannover"], "answer": 3,
-         "zh": "「ich muss in Hannover umsteigen」：漢諾威。", "en": "“ich muss in Hannover umsteigen.”"},
-        {"q": "Wen ruft die Person an?", "options": ["Ihren Chef", "Ihre Mutter", "Ihre Kollegin", "Den Bahnhof"], "answer": 2,
-         "zh": "「Ich rufe meine Kollegin in Hamburg an」：同事。", "en": "“Ich rufe meine Kollegin in Hamburg an.”"},
-        {"q": "Was macht die Person im Zug?", "options": ["Sie schläft", "Sie trinkt Kaffee und liest E-Mails", "Sie isst", "Sie telefoniert"], "answer": 1,
-         "zh": "「trinke ich einen Kaffee und lese meine E-Mails」。", "en": "“trinke ich einen Kaffee und lese meine E-Mails.”"}
+        {
+          "q": "Wohin muss die Person fahren?",
+          "options": [
+            "Nach Berlin",
+            "Nach Hamburg",
+            "Nach Hannover",
+            "Nach Köln"
+          ],
+          "answer": 1,
+          "zh": "「nach Hamburg fahren」：漢堡。漢諾威是轉車的地方。",
+          "en": "“nach Hamburg fahren” — Hamburg. Hanover is where she changes."
+        },
+        {
+          "q": "Wie viel Verspätung hat der Zug?",
+          "options": [
+            "Vierzig Minuten",
+            "Zehn Minuten",
+            "Eine Stunde",
+            "Zwei Stunden"
+          ],
+          "answer": 0,
+          "zh": "「Vierzig Minuten Verspätung」：四十分鐘。",
+          "en": "“Vierzig Minuten Verspätung” — forty minutes."
+        },
+        {
+          "q": "Wo muss die Person umsteigen?",
+          "options": [
+            "In Hamburg",
+            "In Köln",
+            "In München",
+            "In Hannover"
+          ],
+          "answer": 3,
+          "zh": "「ich muss in Hannover umsteigen」：漢諾威。",
+          "en": "“ich muss in Hannover umsteigen.”"
+        },
+        {
+          "q": "Wen ruft die Person an?",
+          "options": [
+            "Ihren Chef",
+            "Ihre Mutter",
+            "Ihre Kollegin",
+            "Den Bahnhof"
+          ],
+          "answer": 2,
+          "zh": "「Ich rufe meine Kollegin in Hamburg an」：同事。",
+          "en": "“Ich rufe meine Kollegin in Hamburg an.”"
+        },
+        {
+          "q": "Was macht die Person im Zug?",
+          "options": [
+            "Sie schläft",
+            "Sie trinkt Kaffee und liest E-Mails",
+            "Sie isst",
+            "Sie telefoniert"
+          ],
+          "answer": 1,
+          "zh": "「trinke ich einen Kaffee und lese meine E-Mails」。",
+          "en": "“trinke ich einen Kaffee und lese meine E-Mails.”"
+        }
       ],
       "tf": [
-        {"s": "Der Zug ist pünktlich.", "answer": false,
-         "zh": "×：火車誤點「Vierzig Minuten」（四十分鐘）。", "en": "False: it's forty minutes late (Vierzig Minuten Verspätung)."},
-        {"s": "Die Kollegin ist nicht böse.", "answer": true,
-         "zh": "○：她說「Kein Problem」。", "en": "True: she says Kein Problem."},
-        {"s": "Die Person kommt eine Stunde später.", "answer": true,
-         "zh": "○：「Ich komme leider eine Stunde später」。", "en": "True: Ich komme leider eine Stunde später."}
+        {
+          "s": "Der Zug ist pünktlich.",
+          "answer": false,
+          "zh": "×：火車誤點「Vierzig Minuten」（四十分鐘）。",
+          "en": "False: it's forty minutes late (Vierzig Minuten Verspätung)."
+        },
+        {
+          "s": "Die Kollegin ist nicht böse.",
+          "answer": true,
+          "zh": "○：她說「Kein Problem」。",
+          "en": "True: she says Kein Problem."
+        },
+        {
+          "s": "Die Person kommt eine Stunde später.",
+          "answer": true,
+          "zh": "○：「Ich komme leider eine Stunde später」。",
+          "en": "True: Ich komme leider eine Stunde später."
+        }
       ]
     },
     {
       "id": "football-foot",
       "topic": "health",
-      "title": {"text": "Beim Fußball", "zh": "踢足球的時候", "en": "At football"},
+      "title": {
+        "text": "Beim Fußball",
+        "zh": "踢足球的時候",
+        "en": "At football"
+      },
       "paragraphs": [
-        {"s": ["Am Samstag hatte mein Verein ein wichtiges Spiel.", "In der zweiten Halbzeit bin ich gefallen."],
-         "zh": "星期六我的球隊有一場重要的比賽。下半場的時候我摔倒了。", "en": "On Saturday my club had an important match. In the second half I fell."},
-        {"s": ["Mein Fuß hat sehr wehgetan.", "Ich konnte nicht mehr laufen.", "Mein Trainer hat mich ins Krankenhaus gebracht."],
-         "zh": "我的腳非常痛。我沒辦法再跑了。教練送我去醫院。", "en": "My foot hurt a lot. I couldn't run any more. My coach took me to hospital."},
-        {"s": ["Die Ärztin hat den Fuß geröntgt.", "Zum Glück ist er nicht gebrochen.", "Aber ich muss zwei Wochen Pause machen."],
-         "zh": "醫生幫我的腳照了 X 光。幸好沒有骨折。但是我要休息兩個星期。", "en": "The doctor X-rayed my foot. Luckily it isn't broken. But I have to take two weeks off."},
-        {"s": ["Jetzt liege ich auf dem Sofa und sehe die Spiele im Fernsehen.", "Ich will schnell wieder spielen!"],
-         "zh": "現在我躺在沙發上看電視上的比賽。我想趕快再上場！", "en": "Now I'm lying on the sofa watching the matches on TV. I want to play again soon!"}
+        {
+          "s": [
+            "Am Samstag hatte mein Verein ein wichtiges Spiel.",
+            "In der zweiten Halbzeit bin ich gefallen."
+          ],
+          "zh": "星期六我的球隊有一場重要的比賽。下半場的時候我摔倒了。",
+          "en": "On Saturday my club had an important match. In the second half I fell."
+        },
+        {
+          "s": [
+            "Mein Fuß hat sehr wehgetan.",
+            "Ich konnte nicht mehr laufen.",
+            "Mein Trainer hat mich ins Krankenhaus gebracht."
+          ],
+          "zh": "我的腳非常痛。我沒辦法再跑了。教練送我去醫院。",
+          "en": "My foot hurt a lot. I couldn't run any more. My coach took me to hospital."
+        },
+        {
+          "s": [
+            "Die Ärztin hat den Fuß geröntgt.",
+            "Zum Glück ist er nicht gebrochen.",
+            "Aber ich muss zwei Wochen Pause machen."
+          ],
+          "zh": "醫生幫我的腳照了 X 光。幸好沒有骨折。但是我要休息兩個星期。",
+          "en": "The doctor X-rayed my foot. Luckily it isn't broken. But I have to take two weeks off."
+        },
+        {
+          "s": [
+            "Jetzt liege ich auf dem Sofa und sehe die Spiele im Fernsehen.",
+            "Ich will schnell wieder spielen!"
+          ],
+          "zh": "現在我躺在沙發上看電視上的比賽。我想趕快再上場！",
+          "en": "Now I'm lying on the sofa watching the matches on TV. I want to play again soon!"
+        }
       ],
       "glossary": [
-        {"w": "der Verein", "r": "", "zh": "社團；球隊", "en": "club", "m": ["Verein"]},
-        {"w": "wichtig", "r": "", "zh": "重要的", "en": "important", "m": ["wichtiges"]},
-        {"w": "fallen", "r": "", "zh": "跌倒；掉下", "en": "to fall", "m": ["gefallen"]},
-        {"w": "wehtun", "r": "", "zh": "痛", "en": "to hurt", "m": ["wehgetan"]},
-        {"w": "das Krankenhaus", "r": "", "zh": "醫院", "en": "hospital", "m": ["Krankenhaus"]},
-        {"w": "zum Glück", "r": "", "zh": "幸好", "en": "luckily", "m": ["Zum Glück"]},
-        {"w": "gebrochen", "r": "", "zh": "斷了的；骨折的", "en": "broken"},
-        {"w": "liegen", "r": "", "zh": "躺", "en": "to lie (down)", "m": ["liege"]}
+        {
+          "w": "der Verein",
+          "r": "",
+          "zh": "社團；球隊",
+          "en": "club",
+          "m": [
+            "Verein"
+          ]
+        },
+        {
+          "w": "wichtig",
+          "r": "",
+          "zh": "重要的",
+          "en": "important",
+          "m": [
+            "wichtiges"
+          ]
+        },
+        {
+          "w": "fallen",
+          "r": "",
+          "zh": "跌倒；掉下",
+          "en": "to fall",
+          "m": [
+            "gefallen"
+          ]
+        },
+        {
+          "w": "wehtun",
+          "r": "",
+          "zh": "痛",
+          "en": "to hurt",
+          "m": [
+            "wehgetan"
+          ]
+        },
+        {
+          "w": "das Krankenhaus",
+          "r": "",
+          "zh": "醫院",
+          "en": "hospital",
+          "m": [
+            "Krankenhaus"
+          ]
+        },
+        {
+          "w": "zum Glück",
+          "r": "",
+          "zh": "幸好",
+          "en": "luckily",
+          "m": [
+            "Zum Glück"
+          ]
+        },
+        {
+          "w": "gebrochen",
+          "r": "",
+          "zh": "斷了的；骨折的",
+          "en": "broken"
+        },
+        {
+          "w": "liegen",
+          "r": "",
+          "zh": "躺",
+          "en": "to lie (down)",
+          "m": [
+            "liege"
+          ]
+        }
       ],
       "mcq": [
-        {"q": "Wann war das Spiel?", "options": ["Am Freitag", "Am Samstag", "Am Sonntag", "Am Mittwoch"], "answer": 1,
-         "zh": "「Am Samstag hatte mein Verein ein wichtiges Spiel」：星期六。", "en": "“Am Samstag hatte mein Verein ein wichtiges Spiel.”"},
-        {"q": "Wann ist die Person gefallen?", "options": ["In der zweiten Halbzeit", "Vor dem Spiel", "In der ersten Halbzeit", "Nach dem Spiel"], "answer": 0,
-         "zh": "「In der zweiten Halbzeit bin ich gefallen」：下半場。", "en": "“In der zweiten Halbzeit bin ich gefallen.”"},
-        {"q": "Wer hat die Person ins Krankenhaus gebracht?", "options": ["Die Mutter", "Ein Freund", "Ein Taxi", "Der Trainer"], "answer": 3,
-         "zh": "「Mein Trainer hat mich ins Krankenhaus gebracht」：教練。", "en": "“Mein Trainer hat mich ins Krankenhaus gebracht.”"},
-        {"q": "Was hat die Ärztin festgestellt?", "options": ["Der Fuß ist gebrochen", "Der Fuß ist gesund", "Der Fuß ist nicht gebrochen", "Die Person muss operiert werden"], "answer": 2,
-         "zh": "「Zum Glück ist er nicht gebrochen」：沒有骨折（但還是痛，要休息）。", "en": "“Zum Glück ist er nicht gebrochen” — not broken (but it still needs rest)."},
-        {"q": "Wie lange muss die Person Pause machen?", "options": ["Eine Woche", "Zwei Wochen", "Einen Monat", "Drei Tage"], "answer": 1,
-         "zh": "「ich muss zwei Wochen Pause machen」：兩個星期。", "en": "“ich muss zwei Wochen Pause machen.”"}
+        {
+          "q": "Wann war das Spiel?",
+          "options": [
+            "Am Freitag",
+            "Am Samstag",
+            "Am Sonntag",
+            "Am Mittwoch"
+          ],
+          "answer": 1,
+          "zh": "「Am Samstag hatte mein Verein ein wichtiges Spiel」：星期六。",
+          "en": "“Am Samstag hatte mein Verein ein wichtiges Spiel.”"
+        },
+        {
+          "q": "Wann ist die Person gefallen?",
+          "options": [
+            "In der zweiten Halbzeit",
+            "Vor dem Spiel",
+            "In der ersten Halbzeit",
+            "Nach dem Spiel"
+          ],
+          "answer": 0,
+          "zh": "「In der zweiten Halbzeit bin ich gefallen」：下半場。",
+          "en": "“In der zweiten Halbzeit bin ich gefallen.”"
+        },
+        {
+          "q": "Wer hat die Person ins Krankenhaus gebracht?",
+          "options": [
+            "Die Mutter",
+            "Ein Freund",
+            "Ein Taxi",
+            "Der Trainer"
+          ],
+          "answer": 3,
+          "zh": "「Mein Trainer hat mich ins Krankenhaus gebracht」：教練。",
+          "en": "“Mein Trainer hat mich ins Krankenhaus gebracht.”"
+        },
+        {
+          "q": "Was hat die Ärztin festgestellt?",
+          "options": [
+            "Der Fuß ist gebrochen",
+            "Der Fuß ist gesund",
+            "Der Fuß ist nicht gebrochen",
+            "Die Person muss operiert werden"
+          ],
+          "answer": 2,
+          "zh": "「Zum Glück ist er nicht gebrochen」：沒有骨折（但還是痛，要休息）。",
+          "en": "“Zum Glück ist er nicht gebrochen” — not broken (but it still needs rest)."
+        },
+        {
+          "q": "Wie lange muss die Person Pause machen?",
+          "options": [
+            "Eine Woche",
+            "Zwei Wochen",
+            "Einen Monat",
+            "Drei Tage"
+          ],
+          "answer": 1,
+          "zh": "「ich muss zwei Wochen Pause machen」：兩個星期。",
+          "en": "“ich muss zwei Wochen Pause machen.”"
+        }
       ],
       "tf": [
-        {"s": "Der Fuß hat sehr wehgetan.", "answer": true,
-         "zh": "○：「Mein Fuß hat sehr wehgetan」。", "en": "True: Mein Fuß hat sehr wehgetan."},
-        {"s": "Der Fuß ist gebrochen.", "answer": false,
-         "zh": "×：「Zum Glück ist er nicht gebrochen」。", "en": "False: Zum Glück ist er nicht gebrochen."},
-        {"s": "Die Person spielt jetzt jeden Tag Fußball.", "answer": false,
-         "zh": "×：現在要休息兩週，躺在沙發上看比賽。", "en": "False: they have to rest for two weeks and watch from the sofa."}
+        {
+          "s": "Der Fuß hat sehr wehgetan.",
+          "answer": true,
+          "zh": "○：「Mein Fuß hat sehr wehgetan」。",
+          "en": "True: Mein Fuß hat sehr wehgetan."
+        },
+        {
+          "s": "Der Fuß ist gebrochen.",
+          "answer": false,
+          "zh": "×：「Zum Glück ist er nicht gebrochen」。",
+          "en": "False: Zum Glück ist er nicht gebrochen."
+        },
+        {
+          "s": "Die Person spielt jetzt jeden Tag Fußball.",
+          "answer": false,
+          "zh": "×：現在要休息兩週，躺在沙發上看比賽。",
+          "en": "False: they have to rest for two weeks and watch from the sofa."
+        }
       ]
     }
-  ]
+  ],
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Liebe Sabine,\nich bin jetzt in Hamburg! Die Wohnung ist klein, aber sehr schön, und sie liegt direkt am Park. Am Montag beginnt mein Deutschkurs. Er ist jeden Tag von 9 bis 12 Uhr. Am Nachmittag arbeite ich in einem Café. Besuchst du mich im Mai? Ich habe ein Sofa für dich!\nViele Grüße\nPaula",
+          "tr": {
+            "zh": "親愛的莎賓娜：\n我現在在漢堡了！公寓很小，但很漂亮，就在公園旁邊。我的德文課星期一開始，每天 9 點到 12 點。下午我在一家咖啡館工作。妳五月來看我嗎？我有一張沙發給妳睡！\n祝好\n寶拉",
+            "en": "Dear Sabine,\nI'm in Hamburg now! The flat is small but very nice, and it's right by the park. My German course starts on Monday. It's every day from 9 to 12. In the afternoon I work in a café. Will you visit me in May? I have a sofa for you!\nBest wishes\nPaula"
+          },
+          "questions": [
+            {
+              "q": "Paulas Wohnung ist groß.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "公寓「很小」。",
+              "en": "The flat is small."
+            },
+            {
+              "q": "Der Deutschkurs ist am Vormittag.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "9 點到 12 點：上午。",
+              "en": "9 to 12: in the morning."
+            },
+            {
+              "q": "Sabine soll im Mai nach Hamburg kommen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「妳五月來看我嗎？」",
+              "en": "\"Will you visit me in May?\""
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Hallo Herr Weber,\nleider kann ich morgen nicht zum Termin kommen. Mein Sohn ist krank. Geht es auch am Donnerstag um 15 Uhr? Bitte rufen Sie mich an: 0171 4567 890.\nMit freundlichen Grüßen\nAnna Kowalski",
+          "tr": {
+            "zh": "韋伯先生您好：\n很抱歉，我明天不能去赴約。我兒子生病了。星期四下午 3 點也可以嗎？請打電話給我：0171 4567 890。\n敬祝\n安娜‧柯瓦斯基",
+            "en": "Hello Mr Weber,\nI'm afraid I can't come to the appointment tomorrow. My son is ill. Is Thursday at 3 p.m. possible too? Please call me: 0171 4567 890.\nKind regards\nAnna Kowalski"
+          },
+          "questions": [
+            {
+              "q": "Frau Kowalski ist krank.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "生病的是她兒子。",
+              "en": "Her son is ill, not her."
+            },
+            {
+              "q": "Frau Kowalski möchte einen neuen Termin.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "問星期四 3 點可不可以：要改時間。",
+              "en": "She asks for Thursday at 3."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "n_options": 2,
+          "text": "Lesen Sie die Situationen. Welche Anzeige passt: a oder b?",
+          "tr": {
+            "zh": "閱讀情境。哪一則廣告符合：a 還是 b？",
+            "en": "Read the situations. Which ad fits: a or b?"
+          },
+          "questions": [
+            {
+              "q": "Sie möchten am Sonntag schwimmen.",
+              "options": [
+                "Hallenbad Mitte — Mo–Sa 7–21 Uhr",
+                "Freizeitbad Wellenland — täglich 10–22 Uhr"
+              ],
+              "answer": 1,
+              "zh": "a 星期日不開；b 每天開。",
+              "en": "a is closed on Sunday; b opens daily."
+            },
+            {
+              "q": "Sie suchen ein gebrauchtes Fahrrad.",
+              "options": [
+                "Fahrrad-Shop Rad & Tat: neue Räder, Reparatur",
+                "Flohmarkt am Rathaus: Fahrräder, Bücher, Kleidung — alles gebraucht"
+              ],
+              "answer": 1,
+              "zh": "a 賣新車；b 跳蚤市場都是二手的。",
+              "en": "a sells new bikes; b is all second-hand."
+            },
+            {
+              "q": "Sie wollen mit Ihrer Familie Deutsch lernen. Sie haben nur am Wochenende Zeit.",
+              "options": [
+                "Sprachschule Lingua: Deutschkurse für Familien, samstags 10–12 Uhr",
+                "Volkshochschule: Deutsch A1, Montag und Mittwoch 18–20 Uhr"
+              ],
+              "answer": 0,
+              "zh": "a 星期六、給家庭；b 在平日晚上。",
+              "en": "a: Saturdays, for families; b: weekday evenings."
+            },
+            {
+              "q": "Sie möchten heute Abend Pizza essen, aber nicht kochen und nicht ausgehen.",
+              "options": [
+                "Pizzeria Roma: Lieferservice bis 23 Uhr",
+                "Supermarkt Frisch: Pizza zum Selbstbacken, 2 für 5 €"
+              ],
+              "answer": 0,
+              "zh": "不煮也不出門：a 外送到晚上 11 點。",
+              "en": "No cooking, no going out: a delivers until 11 p.m."
+            },
+            {
+              "q": "Sie fahren nach Berlin und brauchen ein billiges Zimmer.",
+              "options": [
+                "Hotel Adlon Berlin: Luxuszimmer ab 280 €",
+                "Hostel Berlin Mitte: Bett im Zimmer ab 25 €"
+              ],
+              "answer": 1,
+              "zh": "便宜的房間：b 25 歐元起。",
+              "en": "Cheap: b from €25."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Bibliothek: Liebe Besucher, ab 1. März sind wir auch am Samstag von 10 bis 14 Uhr für Sie da.",
+          "tr": {
+            "zh": "圖書館：各位訪客，從 3 月 1 日起，我們星期六上午 10 點到下午 2 點也開放。",
+            "en": "Library: Dear visitors, from 1 March we are also open on Saturdays from 10 to 2."
+          },
+          "questions": [
+            {
+              "q": "Die Bibliothek ist ab März auch samstags geöffnet.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "3 月 1 日起星期六也開。",
+              "en": "From March, open on Saturdays too."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Arztpraxis Dr. Klein: Wir haben vom 4. bis 18. August Urlaub. Vertretung: Dr. Braun, Bahnhofstraße 12.",
+          "tr": {
+            "zh": "克萊因醫師診所：8 月 4 日到 18 日休假。代診：布朗醫師，車站街 12 號。",
+            "en": "Dr Klein's surgery: We are on holiday from 4 to 18 August. Cover: Dr Braun, Bahnhofstraße 12."
+          },
+          "questions": [
+            {
+              "q": "Im August können Sie zu Dr. Braun gehen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "休假期間由布朗醫師代診。",
+              "en": "Dr Braun covers during the holiday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Im Zug: Liebe Fahrgäste, das Bordrestaurant ist heute leider geschlossen. Getränke bekommen Sie am Platz.",
+          "tr": {
+            "zh": "火車上：各位旅客，餐車今天很抱歉不營業。飲料會送到您的座位。",
+            "en": "On the train: Dear passengers, the restaurant car is unfortunately closed today. Drinks are served at your seat."
+          },
+          "questions": [
+            {
+              "q": "Man kann heute im Zug nichts trinken.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "餐車關了，但飲料會送到座位。",
+              "en": "Drinks are served at the seat."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Supermarkt: Kasse 3 ist kaputt. Bitte gehen Sie zu Kasse 1 oder 2.",
+          "tr": {
+            "zh": "超市：3 號收銀台故障。請到 1 號或 2 號收銀台。",
+            "en": "Supermarket: Checkout 3 is broken. Please go to checkout 1 or 2."
+          },
+          "questions": [
+            {
+              "q": "Sie können an Kasse 3 bezahlen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "3 號收銀台故障。",
+              "en": "Checkout 3 is broken."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Schwimmbad: Kinder unter 6 Jahren nur mit Mama oder Papa!",
+          "tr": {
+            "zh": "游泳池：6 歲以下兒童須由爸爸或媽媽陪同！",
+            "en": "Swimming pool: Children under 6 only with Mum or Dad!"
+          },
+          "questions": [
+            {
+              "q": "Ein fünfjähriges Kind darf allein ins Schwimmbad.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "6 歲以下要爸媽陪。",
+              "en": "Under 6 needs a parent."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "n_options": 2
 }

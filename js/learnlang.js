@@ -72,7 +72,20 @@ function learnLangChanged() {
    which; the 8 Taiwan passages (level 'TW HSK 1–2') show in both. Only an index that holds both editions is
    split, so the switch appears once a Taiwan level is published. */
 function learnEdition() {
-    try { return localStorage.getItem('zh_edition') === 'tw' ? 'tw' : 'cn'; } catch { return 'cn'; }
+    let v = null;
+    try { v = localStorage.getItem('zh_edition'); } catch {}
+    if (v === 'tw' || v === 'cn') return v;
+    // not chosen yet: a Traditional Chinese interface starts on 台灣版 (owner, 2026-10-31)
+    return siteLang === 'zh' ? 'tw' : 'cn';
+}
+
+/* levels published before their recordings and translations (owner, 2026-10-31): the HSK Taiwan edition
+   and the European exams (their A1 exam rounds sit in the A1 files beside the older passages; English A1
+   has passages only). A note under the level picker of 閱讀 and 聽解 says what is still coming — drop
+   an id here once its level is recorded and translated. */
+const LEARN_PREP = /^(zh_tw\d+|(fr|ru|de|es)_a1|(en|fr|ru|de|es)_(a2|b1|b2|c1))$/;
+function learnPrepHtml(id) {
+    return LEARN_PREP.test(id || '') ? `<p class="ls-soon">🎙️ ${escHtml(t('learn_prep_note'))}</p>` : '';
 }
 
 function learnHasEditions(index, lang) {
