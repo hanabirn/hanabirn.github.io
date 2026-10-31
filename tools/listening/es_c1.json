@@ -4,13 +4,15 @@
   "level": "C1",
   "order": 5,
   "n_options": 3,
-  "note": "Spanish C1 listening in the DELE C1 format (owner's plan 2026-10-30): a lecture on varieties of Spanish ×5, a commentary ×1 (en_q). ⚠️ from memory; the real paper is longer. Original texts. Drafted in tools/.mockups/es_c1_ls.py.",
+  "note": "Spanish C1 listening in the DELE C1 format (EXAMS.md): Tarea 1 a lecture on varieties of Spanish ×6, Tarea 2 four conversations ×2, Tarea 3 an interview with a literary translator ×6, Tarea 4 ten short monologues — 30 questions, each heard twice; items name their tarea. Original texts. Drafted in tools/.mockups/es_c1_ls.py.",
   "types": [
-    "en_q"
+    "en_q",
+    "en_talk"
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_q": 6
+    "en_q": 20,
+    "en_talk": 10
   },
   "sets": [
     {
@@ -18,6 +20,7 @@
       "items": [
         {
           "type": "en_q",
+          "part": 1,
           "lines": [
             {
               "who": "N",
@@ -64,16 +67,16 @@
               },
               "options": [
                 {
-                  "t": "los hablantes no se entienden."
+                  "t": "hay diferencias de vocabulario sin problemas de comunicación."
                 },
                 {
-                  "t": "hay diferencias de vocabulario sin problemas de comunicación."
+                  "t": "los hablantes no se entienden."
                 },
                 {
                   "t": "España tiene las palabras correctas."
                 }
               ],
-              "answer": "B",
+              "answer": "A",
               "explain": {
                 "zh": "溝通無礙，但叫法不同。",
                 "en": "Different words, no communication problems."
@@ -100,6 +103,29 @@
               "explain": {
                 "zh": "二十三國語言學院一起合作。",
                 "en": "Academies of 23 countries together."
+              }
+            },
+            {
+              "ask": {
+                "s": "El diccionario actual…",
+                "zh": "現在的辭典……",
+                "en": "The dictionary today…"
+              },
+              "options": [
+                {
+                  "t": "sigue marcando los usos americanos como regionales."
+                },
+                {
+                  "t": "solo recoge el español de España."
+                },
+                {
+                  "t": "acepta como correctos usos de distintos países."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "把美洲用法收錄為同樣正確。",
+                "en": "Accepts usages from different countries as correct."
               }
             },
             {
@@ -136,13 +162,13 @@
                   "t": "los diccionarios."
                 },
                 {
-                  "t": "la enseñanza del español a extranjeros."
+                  "t": "las academias."
                 },
                 {
-                  "t": "las academias."
+                  "t": "la enseñanza del español a extranjeros."
                 }
               ],
-              "answer": "B",
+              "answer": "C",
               "explain": {
                 "zh": "外語課堂常只教一種變體。",
                 "en": "Teaching Spanish as a foreign language."
@@ -152,12 +178,900 @@
         },
         {
           "type": "en_q",
+          "part": 2,
           "lines": [
             {
               "who": "N",
-              "s": "Vas a escuchar un breve comentario radiofónico.",
-              "zh": "你會聽到一段簡短的廣播評論。",
-              "en": "You will hear a short radio commentary."
+              "s": "Vas a escuchar una conversación entre dos compañeros de trabajo.",
+              "zh": "你會聽到兩個同事的對話。",
+              "en": "You will hear a conversation between two colleagues."
+            },
+            {
+              "who": "F",
+              "s": "Andrés, el cliente quiere adelantar la entrega del proyecto al día quince.",
+              "zh": "安德烈斯，客戶想把專案交件提前到十五號。",
+              "en": "Andrés, the client wants to bring the project delivery forward to the fifteenth."
+            },
+            {
+              "who": "M",
+              "s": "¿Al quince? Imposible. Todavía falta probar toda la aplicación. Si la entregamos con fallos, la culpa será nuestra.",
+              "zh": "十五號？不可能。整個應用程式都還沒測試。如果有錯誤就交出去，責任在我們。",
+              "en": "The fifteenth? Impossible. We still have to test the whole application. If we deliver it with bugs, it'll be our fault."
+            },
+            {
+              "who": "F",
+              "s": "Ya, pero no podemos decirle que no sin más. ¿Y si le entregamos una primera versión el quince y la definitiva a final de mes?",
+              "zh": "我知道，但不能就這樣拒絕他。不如十五號先交第一版，月底再交正式版？",
+              "en": "I know, but we can't just say no. What if we give them a first version on the fifteenth and the final one at the end of the month?"
+            },
+            {
+              "who": "M",
+              "s": "Eso me parece más razonable. Pero que quede por escrito que la primera versión no está probada.",
+              "zh": "這樣比較合理。但要白紙黑字寫明第一版還沒測試過。",
+              "en": "That seems more reasonable. But let's put in writing that the first version hasn't been tested."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Por qué no quiere Andrés entregar el día quince?",
+                "zh": "安德烈斯為什麼不想十五號交件？",
+                "en": "Why doesn't Andrés want to deliver on the fifteenth?"
+              },
+              "options": [
+                {
+                  "t": "El cliente no ha pagado."
+                },
+                {
+                  "t": "Faltan las pruebas de la aplicación."
+                },
+                {
+                  "t": "Está de vacaciones."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "整個應用程式還沒測試。",
+                "en": "Testing is still missing."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué condición pone Andrés?",
+                "zh": "安德烈斯提出什麼條件？",
+                "en": "What condition does Andrés set?"
+              },
+              "options": [
+                {
+                  "t": "que conste por escrito que la versión no está probada"
+                },
+                {
+                  "t": "que el cliente pague más"
+                },
+                {
+                  "t": "que la entrega definitiva sea el quince"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "要寫明第一版沒測試過。",
+                "en": "Put in writing that it is untested."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre una pareja.",
+              "zh": "你會聽到一對伴侶的對話。",
+              "en": "You will hear a conversation between a couple."
+            },
+            {
+              "who": "M",
+              "s": "He visto en la protectora un perro precioso. Se llama Toby y tiene seis años.",
+              "zh": "我在動物收容所看到一隻很漂亮的狗。牠叫托比，六歲。",
+              "en": "I saw a lovely dog at the shelter. He's called Toby and he's six."
+            },
+            {
+              "who": "F",
+              "s": "Me encantaría, pero ya sabes que viajamos mucho. ¿Quién lo cuidaría?",
+              "zh": "我很想要，但你知道我們常出門。誰來照顧牠？",
+              "en": "I would love to, but you know we travel a lot. Who would look after him?"
+            },
+            {
+              "who": "M",
+              "s": "Mi hermana se ofreció. Y además, en la protectora dicen que los perros adultos se adaptan mejor que los cachorros: ya están educados.",
+              "zh": "我姊姊說她可以。而且收容所說成犬比幼犬更容易適應：牠們已經受過訓練了。",
+              "en": "My sister offered. And besides, at the shelter they say adult dogs adapt better than puppies: they're already trained."
+            },
+            {
+              "who": "F",
+              "s": "Bueno, vamos a conocerlo el sábado. Pero no prometo nada.",
+              "zh": "好吧，星期六去看看牠。但我不保證什麼。",
+              "en": "All right, let's go and meet him on Saturday. But I'm not promising anything."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Qué le preocupa a la mujer?",
+                "zh": "女的擔心什麼？",
+                "en": "What worries the woman?"
+              },
+              "options": [
+                {
+                  "t": "el tamaño del perro"
+                },
+                {
+                  "t": "el precio"
+                },
+                {
+                  "t": "quién cuidará al perro cuando viajen"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "常出門，誰來照顧。",
+                "en": "Who looks after it when they travel."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué deciden finalmente?",
+                "zh": "他們最後決定什麼？",
+                "en": "What do they finally decide?"
+              },
+              "options": [
+                {
+                  "t": "adoptar a Toby hoy mismo"
+                },
+                {
+                  "t": "ir a conocer al perro el sábado"
+                },
+                {
+                  "t": "buscar un cachorro"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "星期六去看，但不保證。",
+                "en": "Meet him on Saturday."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre una estudiante y su directora de tesis.",
+              "zh": "你會聽到一名學生和她的論文指導教授的對話。",
+              "en": "You will hear a conversation between a student and her thesis supervisor."
+            },
+            {
+              "who": "F",
+              "s": "Profesora, he leído sus comentarios. ¿De verdad cree que tengo que reescribir el segundo capítulo entero?",
+              "zh": "教授，我看了您的意見。您真的認為我要把第二章整個重寫嗎？",
+              "en": "Professor, I have read your comments. Do you really think I have to rewrite the whole second chapter?"
+            },
+            {
+              "who": "F",
+              "s": "Entero no. Los datos son buenos; el problema es el orden. Empiezas con las conclusiones y el lector se pierde. Reorganízalo y verás que mejora mucho.",
+              "zh": "不用整章。資料很好，問題是順序。妳一開頭就寫結論，讀者會看不懂。重新整理一下，妳會發現好很多。",
+              "en": "Not all of it. The data are good; the problem is the order. You start with the conclusions and the reader gets lost. Reorganise it and you'll see it improves a lot."
+            },
+            {
+              "who": "F",
+              "s": "¿Y el plazo? Quería depositarla en junio.",
+              "zh": "那期限呢？我想六月提交。",
+              "en": "And the deadline? I wanted to submit it in June."
+            },
+            {
+              "who": "F",
+              "s": "Junio es ambicioso. Yo apuntaría a septiembre: así tendrás el verano para revisar la bibliografía con calma.",
+              "zh": "六月太趕了。我會建議九月：這樣妳整個夏天可以慢慢檢查參考文獻。",
+              "en": "June is ambitious. I'd aim for September: that way you'll have the summer to go over the bibliography calmly."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Según la profesora, el problema del capítulo es…",
+                "zh": "教授認為這一章的問題是……",
+                "en": "According to the professor, the problem with the chapter is…"
+              },
+              "options": [
+                {
+                  "t": "la estructura."
+                },
+                {
+                  "t": "la calidad de los datos."
+                },
+                {
+                  "t": "la extensión."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "資料很好，問題是順序。",
+                "en": "The order, not the data."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué le aconseja sobre el plazo?",
+                "zh": "她對期限有什麼建議？",
+                "en": "What does she advise about the deadline?"
+              },
+              "options": [
+                {
+                  "t": "entregar en junio"
+                },
+                {
+                  "t": "esperar hasta septiembre"
+                },
+                {
+                  "t": "pedir un año más"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "建議九月。",
+                "en": "Aim for September."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre dos vecinos.",
+              "zh": "你會聽到兩個鄰居的對話。",
+              "en": "You will hear a conversation between two neighbours."
+            },
+            {
+              "who": "M",
+              "s": "¿Vas a ir a la reunión de la comunidad del jueves? Se vota lo de las placas solares.",
+              "zh": "你星期四會去住戶大會嗎？要表決裝太陽能板的事。",
+              "en": "Are you going to the residents' meeting on Thursday? They're voting on the solar panels."
+            },
+            {
+              "who": "F",
+              "s": "Sí. Yo estoy a favor, aunque la primera cuota es alta. En cinco o seis años se amortiza con el ahorro en la luz.",
+              "zh": "會啊。我贊成，雖然第一期的分攤費很高。省下來的電費五、六年就回本了。",
+              "en": "Yes. I'm in favour, although the first payment is high. It pays for itself in five or six years with the savings on electricity."
+            },
+            {
+              "who": "M",
+              "s": "A mí lo que me preocupa es el tejado. Tiene goteras y nadie quiere arreglarlo.",
+              "zh": "我擔心的是屋頂。它會漏水，卻沒人想修。",
+              "en": "What worries me is the roof. It leaks and nobody wants to fix it."
+            },
+            {
+              "who": "F",
+              "s": "Precisamente: la empresa de las placas incluye la reparación del tejado en el presupuesto. Lo pone en la última página.",
+              "zh": "正好：太陽能板公司的報價裡就包含修屋頂。寫在最後一頁。",
+              "en": "Exactly: the solar panel company includes repairing the roof in the quote. It's on the last page."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Qué opina la mujer de las placas solares?",
+                "zh": "女的對太陽能板有什麼看法？",
+                "en": "What does the woman think of the solar panels?"
+              },
+              "options": [
+                {
+                  "t": "Son demasiado caras y no compensan."
+                },
+                {
+                  "t": "Al principio cuestan, pero se recupera la inversión."
+                },
+                {
+                  "t": "No ahorran energía."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "第一期很貴，但五、六年回本。",
+                "en": "Expensive at first, but they pay for themselves."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué descubre el hombre sobre el tejado?",
+                "zh": "男的知道了屋頂的什麼事？",
+                "en": "What does the man find out about the roof?"
+              },
+              "options": [
+                {
+                  "t": "Ya está reparado."
+                },
+                {
+                  "t": "Nadie lo puede arreglar."
+                },
+                {
+                  "t": "Su reparación está incluida en el presupuesto."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "報價包含修屋頂。",
+                "en": "The repair is in the quote."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una entrevista a una traductora literaria.",
+              "zh": "你會聽到一段文學譯者的訪談。",
+              "en": "You will hear an interview with a literary translator."
+            },
+            {
+              "who": "M",
+              "s": "Hoy hablamos con Irene Robles, que ha traducido al español a varios autores japoneses. Irene, ¿cómo llegó a esta profesión?",
+              "zh": "今天的來賓是艾琳娜‧羅布雷斯，她把好幾位日本作家的作品譯成西班牙文。艾琳娜，妳是怎麼走上這一行的？",
+              "en": "Today we're talking to Irene Robles, who has translated several Japanese authors into Spanish. Irene, how did you come to this profession?"
+            },
+            {
+              "who": "F",
+              "s": "Por casualidad. Estudié Económicas y me fui a Tokio a trabajar en un banco. Empecé a leer novelas para aprender el idioma y un día pensé: «Esto tiene que leerlo mi madre». Así que traduje un cuento para ella. Una editorial lo vio y me encargó un libro.",
+              "zh": "純屬偶然。我念經濟，後來到東京的銀行工作。為了學日文開始讀小說，有一天我想：「這一定要讓我媽媽讀到。」所以我替她翻譯了一篇短篇小說。一家出版社看到了，就委託我翻譯一本書。",
+              "en": "By chance. I studied economics and went to Tokyo to work in a bank. I started reading novels to learn the language and one day I thought, \"My mother has to read this.\" So I translated a short story for her. A publisher saw it and commissioned a book from me."
+            },
+            {
+              "who": "M",
+              "s": "¿Qué es lo más difícil de traducir del japonés?",
+              "zh": "日文翻譯最難的是什麼？",
+              "en": "What is the hardest thing to translate from Japanese?"
+            },
+            {
+              "who": "F",
+              "s": "Lo que no se dice. En japonés muchas frases no tienen sujeto, y el lector entiende por el contexto quién habla. En español, si no lo pongo, el lector se pierde; si lo pongo siempre, el texto suena pesado. Es un equilibrio constante.",
+              "zh": "沒說出來的東西。日文很多句子沒有主詞，讀者靠上下文就知道是誰在說話。在西班牙文裡，如果我不寫出來，讀者會看不懂；如果每次都寫，文章又顯得笨重。這是一直在拿捏的平衡。",
+              "en": "What isn't said. In Japanese many sentences have no subject, and the reader understands from the context who is speaking. In Spanish, if I leave it out, the reader gets lost; if I always put it in, the text sounds heavy. It's a constant balance."
+            },
+            {
+              "who": "M",
+              "s": "¿Le preocupa que la inteligencia artificial acabe con su oficio?",
+              "zh": "妳擔心人工智慧會讓妳的工作消失嗎？",
+              "en": "Are you worried that artificial intelligence will put an end to your profession?"
+            },
+            {
+              "who": "F",
+              "s": "Me preocupa más que los editores, por ahorrar, se conformen con traducciones correctas pero sin alma. Una máquina traduce frases; yo traduzco una voz. Dicho esto, la uso para buscar vocabulario técnico, y me ahorra horas.",
+              "zh": "我比較擔心的是出版社為了省錢，滿足於正確卻沒有靈魂的翻譯。機器翻譯的是句子；我翻譯的是一個聲音。話雖如此，我會用它查專業詞彙，替我省下好幾個小時。",
+              "en": "I'm more worried that publishers, to save money, will settle for translations that are correct but soulless. A machine translates sentences; I translate a voice. That said, I use it to look up technical vocabulary, and it saves me hours."
+            },
+            {
+              "who": "M",
+              "s": "¿Y qué consejo daría a quien quiera dedicarse a esto?",
+              "zh": "對想做這一行的人，妳有什麼建議？",
+              "en": "And what advice would you give to someone who wants to do this?"
+            },
+            {
+              "who": "F",
+              "s": "Que lea mucho en su propia lengua. Todo el mundo cree que lo importante es dominar el idioma extranjero, pero el resultado final está escrito en español, y ahí es donde se nota quién es buen traductor.",
+              "zh": "多讀自己母語的書。大家都以為重要的是精通外語，但最後的成品是用西班牙文寫的，好譯者和壞譯者的差別就在那裡看得出來。",
+              "en": "Read a lot in your own language. Everybody thinks the important thing is to master the foreign language, but the final result is written in Spanish, and that's where you can tell who is a good translator."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Por qué fue Irene a Tokio?",
+                "zh": "艾琳娜為什麼去東京？",
+                "en": "Why did Irene go to Tokyo?"
+              },
+              "options": [
+                {
+                  "t": "para estudiar japonés"
+                },
+                {
+                  "t": "para trabajar en un banco"
+                },
+                {
+                  "t": "para traducir novelas"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "到東京的銀行工作。",
+                "en": "To work in a bank."
+              }
+            },
+            {
+              "ask": {
+                "s": "Su primera traducción fue…",
+                "zh": "她的第一份翻譯是……",
+                "en": "Her first translation was…"
+              },
+              "options": [
+                {
+                  "t": "un cuento para su madre."
+                },
+                {
+                  "t": "un encargo de una editorial."
+                },
+                {
+                  "t": "un informe económico."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "替媽媽翻譯一篇短篇小說，之後出版社才委託。",
+                "en": "A story for her mother; the commission came later."
+              }
+            },
+            {
+              "ask": {
+                "s": "Según Irene, lo más difícil del japonés es…",
+                "zh": "艾琳娜認為日文最難的是……",
+                "en": "According to Irene, the hardest thing about Japanese is…"
+              },
+              "options": [
+                {
+                  "t": "su vocabulario técnico."
+                },
+                {
+                  "t": "su escritura."
+                },
+                {
+                  "t": "decidir cuándo hacer explícito el sujeto."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "很多句子沒有主詞，寫不寫出來要拿捏。",
+                "en": "Whether to make the subject explicit."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué le preocupa de la inteligencia artificial?",
+                "zh": "她對人工智慧擔心什麼？",
+                "en": "What worries her about artificial intelligence?"
+              },
+              "options": [
+                {
+                  "t": "que traduzca mejor que ella"
+                },
+                {
+                  "t": "que las editoriales acepten traducciones sin calidad literaria"
+                },
+                {
+                  "t": "que no sirva para nada"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "出版社為了省錢，接受正確卻沒有靈魂的翻譯。",
+                "en": "Publishers settling for soulless translations."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Para qué usa Irene la inteligencia artificial?",
+                "zh": "艾琳娜用人工智慧做什麼？",
+                "en": "What does Irene use artificial intelligence for?"
+              },
+              "options": [
+                {
+                  "t": "para buscar vocabulario técnico"
+                },
+                {
+                  "t": "para traducir novelas enteras"
+                },
+                {
+                  "t": "no la usa nunca"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "查專業詞彙。",
+                "en": "Technical vocabulary."
+              }
+            },
+            {
+              "ask": {
+                "s": "Su consejo principal es…",
+                "zh": "她主要的建議是……",
+                "en": "Her main advice is…"
+              },
+              "options": [
+                {
+                  "t": "vivir en el país extranjero."
+                },
+                {
+                  "t": "estudiar traducción en la universidad."
+                },
+                {
+                  "t": "leer mucho en la lengua materna."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "多讀自己母語的書。",
+                "en": "Read a lot in your own language."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un mensaje en el contestador.",
+              "zh": "請聽一則電話答錄機留言。",
+              "en": "Listen to an answering-machine message."
+            },
+            {
+              "who": "F",
+              "s": "Hola, soy Marta, de la clínica dental. Le llamo porque el doctor Ruiz no podrá atenderle el martes. Le proponemos el jueves a la misma hora; si no le viene bien, llámenos antes del lunes.",
+              "zh": "你好，我是牙醫診所的瑪爾塔。打來是因為魯伊斯醫生星期二沒辦法看診。我們建議改到星期四同一時間；如果不方便，請在星期一之前回電。",
+              "en": "Hello, this is Marta from the dental clinic. I'm calling because Dr Ruiz won't be able to see you on Tuesday. We suggest Thursday at the same time; if that doesn't suit you, call us before Monday."
+            }
+          ],
+          "ask": {
+            "s": "¿Para qué llama Marta?",
+            "zh": "瑪爾塔為什麼打來？",
+            "en": "Why is Marta calling?"
+          },
+          "options": [
+            {
+              "t": "para cancelar la cita definitivamente"
+            },
+            {
+              "t": "para cambiar el día de la cita"
+            },
+            {
+              "t": "para cambiar de dentista"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "星期二改到星期四。",
+            "en": "Tuesday moved to Thursday."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un anuncio en una estación.",
+              "zh": "請聽車站的廣播。",
+              "en": "Listen to an announcement at a station."
+            },
+            {
+              "who": "M",
+              "s": "Por obras en la vía, el tren con destino a Zaragoza saldrá hoy del andén siete, y no del tres como estaba previsto. Rogamos disculpen las molestias.",
+              "zh": "因軌道施工，今天開往薩拉戈薩的列車將從七號月台發車，而不是原定的三號月台。造成不便，敬請見諒。",
+              "en": "Because of track works, the train to Zaragoza will leave today from platform seven, not from platform three as planned. We apologise for the inconvenience."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué cambia hoy?",
+            "zh": "今天有什麼改變？",
+            "en": "What changes today?"
+          },
+          "options": [
+            {
+              "t": "la hora de salida"
+            },
+            {
+              "t": "el destino del tren"
+            },
+            {
+              "t": "el andén de salida"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "從七號月台發車。",
+            "en": "The platform."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un fragmento de un programa de radio.",
+              "zh": "請聽一段廣播節目。",
+              "en": "Listen to part of a radio programme."
+            },
+            {
+              "who": "F",
+              "s": "Muchos oyentes nos preguntan si es mejor estudiar por la mañana o por la noche. Los estudios dicen que no hay una hora mágica: lo que de verdad importa es dormir lo suficiente después de estudiar, porque es durante el sueño cuando el cerebro fija lo aprendido.",
+              "zh": "很多聽眾問我們早上念書好還是晚上念書好。研究說沒有神奇的時段：真正重要的是念完書後睡飽，因為大腦是在睡眠中把學到的東西固定下來。",
+              "en": "Many listeners ask us whether it is better to study in the morning or at night. Studies say there is no magic hour: what really matters is getting enough sleep after studying, because it is during sleep that the brain fixes what it has learnt."
+            }
+          ],
+          "ask": {
+            "s": "Según la locutora, para recordar lo estudiado es clave…",
+            "zh": "主持人說，要記住念過的東西，關鍵是……",
+            "en": "According to the presenter, the key to remembering what you studied is…"
+          },
+          "options": [
+            {
+              "t": "estudiar por la mañana."
+            },
+            {
+              "t": "dormir bien después."
+            },
+            {
+              "t": "estudiar de noche."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "念完書後睡飽。",
+            "en": "Sleeping enough afterwards."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha a un hombre que habla de su barrio.",
+              "zh": "請聽一個男人談他住的街區。",
+              "en": "Listen to a man talking about his neighbourhood."
+            },
+            {
+              "who": "M",
+              "s": "Cuando me mudé aquí, hace veinte años, era un barrio obrero y algo descuidado. Ahora está de moda, hay cafeterías por todas partes... y yo apenas puedo pagar el alquiler. Me alegro de que esté más bonito, pero no a este precio.",
+              "zh": "二十年前我搬來時，這裡是有點破舊的勞工區。現在變得很時髦，到處都是咖啡館……而我幾乎付不起房租了。我很高興它變漂亮了，但不是用這種代價。",
+              "en": "When I moved here twenty years ago, it was a working-class and somewhat neglected neighbourhood. Now it's fashionable, there are cafés everywhere... and I can barely pay the rent. I'm glad it's nicer, but not at this price."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué siente el hombre por los cambios en su barrio?",
+            "zh": "這個男人對街區的改變有什麼感覺？",
+            "en": "How does the man feel about the changes in his neighbourhood?"
+          },
+          "options": [
+            {
+              "t": "Le parecen totalmente positivos."
+            },
+            {
+              "t": "Le gustan, pero le preocupa lo que cuesta vivir allí."
+            },
+            {
+              "t": "Le son indiferentes."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "高興變漂亮，但付不起房租。",
+            "en": "Glad but worried about the rent."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un anuncio publicitario.",
+              "zh": "請聽一則廣告。",
+              "en": "Listen to an advertisement."
+            },
+            {
+              "who": "F",
+              "s": "¿Cansado de cocinar? Con Huerta en Casa recibes cada semana verduras de temporada y tres recetas sencillas. Sin permanencia: puedes darte de baja cuando quieras. Y este mes, la primera caja es gratis.",
+              "zh": "煮飯煮累了嗎？訂「家中菜園」，每週收到當季蔬菜和三道簡單食譜。沒有綁約：想退訂隨時都可以。而且這個月第一箱免費。",
+              "en": "Tired of cooking? With Huerta en Casa you get seasonal vegetables and three simple recipes every week. No minimum term: you can cancel whenever you like. And this month, the first box is free."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué ofrece el anuncio este mes?",
+            "zh": "這則廣告這個月提供什麼？",
+            "en": "What does the ad offer this month?"
+          },
+          "options": [
+            {
+              "t": "la primera caja sin coste"
+            },
+            {
+              "t": "un descuento del 50 %"
+            },
+            {
+              "t": "recetas gratis para siempre"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "第一箱免費。",
+            "en": "The first box free."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha a una mujer en una reunión de trabajo.",
+              "zh": "請聽一位女性在工作會議上的發言。",
+              "en": "Listen to a woman at a work meeting."
+            },
+            {
+              "who": "F",
+              "s": "Sé que el equipo está saturado, así que propongo algo concreto: durante un mes probamos a no tener reuniones los viernes. Si al final del mes no notamos ninguna mejora, volvemos al sistema de antes.",
+              "zh": "我知道團隊的工作量已經滿了，所以我提一個具體的做法：試一個月星期五不開會。如果月底看不到任何改善，就恢復原本的方式。",
+              "en": "I know the team is overloaded, so I'm proposing something concrete: for a month we try having no meetings on Fridays. If at the end of the month we notice no improvement, we go back to the old system."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué propone la mujer?",
+            "zh": "這位女性提議什麼？",
+            "en": "What does the woman propose?"
+          },
+          "options": [
+            {
+              "t": "eliminar todas las reuniones"
+            },
+            {
+              "t": "una prueba de un mes sin reuniones los viernes"
+            },
+            {
+              "t": "contratar a más personas"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "試一個月星期五不開會。",
+            "en": "A one-month trial without Friday meetings."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha a un guía en un museo.",
+              "zh": "請聽博物館導覽員的解說。",
+              "en": "Listen to a guide in a museum."
+            },
+            {
+              "who": "M",
+              "s": "Este cuadro estuvo atribuido durante siglos a Velázquez. Sin embargo, un análisis reciente de los pigmentos demostró que se pintó unos treinta años después de su muerte, probablemente en su taller.",
+              "zh": "這幅畫好幾個世紀以來都被認為是委拉斯開茲的作品。然而，最近的顏料分析證明，它是在他死後大約三十年才畫的，很可能出自他的畫室。",
+              "en": "For centuries this painting was attributed to Velázquez. However, a recent analysis of the pigments showed that it was painted some thirty years after his death, probably in his workshop."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué se ha descubierto sobre el cuadro?",
+            "zh": "關於這幅畫，發現了什麼？",
+            "en": "What has been discovered about the painting?"
+          },
+          "options": [
+            {
+              "t": "Es una falsificación moderna."
+            },
+            {
+              "t": "Lo pintó Velázquez de joven."
+            },
+            {
+              "t": "No es obra de Velázquez."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "他死後三十年才畫的。",
+            "en": "Painted thirty years after his death."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha a una mujer que habla de sus vacaciones.",
+              "zh": "請聽一位女性談她的假期。",
+              "en": "Listen to a woman talking about her holiday."
+            },
+            {
+              "who": "F",
+              "s": "Este año decidimos no viajar en avión y fuimos en tren hasta Lisboa. Tardamos el doble, sí, pero el viaje formó parte de las vacaciones: leímos, charlamos con otros pasajeros y vimos paisajes que desde el aire no habríamos visto.",
+              "zh": "今年我們決定不搭飛機，坐火車到里斯本。是花了兩倍的時間，但旅途本身就是假期的一部分：我們看書、和其他乘客聊天，還看到從空中看不到的風景。",
+              "en": "This year we decided not to fly and went to Lisbon by train. It took twice as long, yes, but the journey was part of the holiday: we read, chatted with other passengers and saw landscapes we wouldn't have seen from the air."
+            }
+          ],
+          "ask": {
+            "s": "¿Cómo valora la mujer el viaje en tren?",
+            "zh": "這位女性怎麼看坐火車的旅程？",
+            "en": "How does the woman rate the train journey?"
+          },
+          "options": [
+            {
+              "t": "Fue demasiado largo y aburrido."
+            },
+            {
+              "t": "Fue una parte agradable de las vacaciones."
+            },
+            {
+              "t": "Fue más barato que el avión."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "旅途本身就是假期的一部分。",
+            "en": "Part of the holiday."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un aviso en una universidad.",
+              "zh": "請聽大學的公告。",
+              "en": "Listen to a notice at a university."
+            },
+            {
+              "who": "M",
+              "s": "Se recuerda a los estudiantes que el plazo para solicitar las becas de movilidad termina el viernes a las catorce horas. No se aceptarán solicitudes en papel: todo el trámite se hace a través de la sede electrónica.",
+              "zh": "提醒同學，交換獎學金的申請期限是星期五下午兩點截止。不接受紙本申請：所有手續都要透過線上系統辦理。",
+              "en": "Students are reminded that the deadline to apply for mobility grants ends on Friday at two p.m. Paper applications will not be accepted: the whole procedure is done through the online portal."
+            }
+          ],
+          "ask": {
+            "s": "¿Cómo hay que presentar la solicitud?",
+            "zh": "要怎麼提出申請？",
+            "en": "How must the application be submitted?"
+          },
+          "options": [
+            {
+              "t": "solo por internet"
+            },
+            {
+              "t": "en papel en secretaría"
+            },
+            {
+              "t": "por correo postal"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "不接受紙本，全部線上辦理。",
+            "en": "Online only."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escucha un breve comentario radiofónico.",
+              "zh": "請聽一段簡短的廣播評論。",
+              "en": "Listen to a short radio commentary."
             },
             {
               "who": "M",
@@ -166,31 +1080,27 @@
               "en": "Every summer the same scene repeats itself: crowded beaches, sky-high rents and residents who can no longer live in the centre of their own city. Some councils have responded with a tourist tax. Fine, but if that money doesn't go to housing and services for residents, the tax will be just another toll, not a solution."
             }
           ],
-          "questions": [
+          "ask": {
+            "s": "Según el comentarista, la tasa turística…",
+            "zh": "評論者認為觀光稅……",
+            "en": "According to the commentator, the tourist tax…"
+          },
+          "options": [
             {
-              "ask": {
-                "s": "Según el comentarista, la tasa turística…",
-                "zh": "評論者認為觀光稅……",
-                "en": "According to the commentator, the tourist tax…"
-              },
-              "options": [
-                {
-                  "t": "es inútil en cualquier caso."
-                },
-                {
-                  "t": "solo sirve si el dinero beneficia a los residentes."
-                },
-                {
-                  "t": "debería ser más alta."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "錢要用在居民的住房和服務上。",
-                "en": "Only if the money helps residents."
-              }
+              "t": "es inútil en cualquier caso."
+            },
+            {
+              "t": "debería ser más alta."
+            },
+            {
+              "t": "solo sirve si el dinero beneficia a los residentes."
             }
-          ]
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "錢要用在居民的住房和服務上。",
+            "en": "Only if the money helps residents."
+          }
         }
       ]
     }
