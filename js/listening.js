@@ -138,8 +138,8 @@ async function renderListening() {
         return;
     }
     const lv = listeningLevels[listeningLevelId];
-    // the Taiwan edition: Traditional in the TC font, pinyin / zhuyin by reading_zh_rd (css/reading.css)
-    box.dataset.zhrd = readingZhRd();
+    // the Taiwan edition: Traditional in the TC font, zhuyin or none by reading_tw_rd (css/reading.css)
+    box.dataset.zhrd = lv.edition === 'tw' ? readingTwRd() : readingZhRd();
     box.classList.toggle('zh-tw', lv.edition === 'tw');
     if (listeningView === 'quiz' && listeningSession) { box.innerHTML = listeningQuizHtml(lv); listeningPlayerUi(); listeningAutoPlay(); }
     else if (listeningView === 'result' && listeningSession) box.innerHTML = listeningResultHtml(lv);
@@ -169,11 +169,11 @@ function listeningStop() {
     listeningMarkPlaying();
 }
 
-/* the Taiwan edition's 拼音 / 注音 / 兩者 / 不顯示 (shared with 閱讀: reading_zh_rd) */
+/* the Taiwan edition's 注音 / 不顯示 (shared with 閱讀: reading_tw_rd) */
 function listeningSetZhRd(v) {
-    readingSetPref('reading_zh_rd', v);
+    readingSetPref('reading_tw_rd', v);
     const box = document.getElementById('listening-card');
-    if (box) box.dataset.zhrd = readingZhRd();
+    if (box) box.dataset.zhrd = readingTwRd();
     if (listeningView === 'quiz' && listeningSession) listeningRerender(); else renderListening();
 }
 
