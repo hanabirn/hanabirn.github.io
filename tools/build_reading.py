@@ -270,6 +270,9 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             # HSK 4–6 (2026-10-30): a passage with numbered blanks — 4 options each (cloze) or a
             # bank of sentences (fill); paragraphs put in order
             'zh_cloze', 'zh_fill', 'zh_order',
+            # Cambridge English (night queue 2026-10-31): notices / messages, three texts to match,
+            # a long text, a multiple-choice cloze (the text's gaps are written (1) … (6))
+            'en_notice', 'en_match', 'en_long', 'en_cloze',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 
@@ -506,7 +509,8 @@ def build_sets(data, name, problems):
             # a Chinese text is translated into English (the other languages come from
             # tools/content_i18n.py); the bank types' sentences are explained one by one
             # (a zh_fill / zh_order passage is translated like a text)
-            for lang in () if typ in ('zh_pic', 'zh_match', 'zh_bank') else ('en',) if zh else ('zh', 'en'):
+            # an English text is translated into Chinese only (the other languages from content_i18n)
+            for lang in () if typ in ('zh_pic', 'zh_match', 'zh_bank') else ('en',) if zh else ('zh',) if data.get('lang') == 'en' else ('zh', 'en'):
                 if not tr.get(lang):
                     problems.append(f'{iw}: no {lang} translation (tr)')
             qs, used_letters = [], set()
@@ -540,7 +544,8 @@ def build_sets(data, name, problems):
                     qs.append({'ask': ask, 'q': q.get('q', ''), 'options': [], 'answers': answers,
                                'zh': q.get('zh', ''), 'en': q.get('en', '')})
                     continue
-                want = len(bank) if bank is not None else (3 if hsk_level(data.get('level')) <= 3 else 4) if zh else 4
+                # Cambridge A2 Key prints three options ("n_options" on the file or the item)
+                want = len(bank) if bank is not None else (3 if hsk_level(data.get('level')) <= 3 else 4) if zh else it.get('n_options') or data.get('n_options', 4)
                 if len(opts) != want or not isinstance(q.get('answer'), int) or not 0 <= q['answer'] < want:
                     problems.append(f'{qw}: needs {want} options and an answer 0-{want - 1}')
                 if len(set(opts)) != len(opts):

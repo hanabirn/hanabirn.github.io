@@ -1,0 +1,379 @@
+{
+  "id": "en_a2",
+  "lang": "en",
+  "level": "A2",
+  "order": 2,
+  "unlisted": true,
+  "n_options": 3,
+  "note": "English A2 reading rounds in the Cambridge A2 Key format (owner's plan 2026-10-30: each language's own exam). Parts 1–4 (6 notices / messages, 7 questions on three texts, a long text × 5, a multiple-choice cloze × 6); Part 5 (open cloze) waits for typed answers outside Chinese. Three options. Original texts. Drafted in tools/.mockups/en_a2.py.",
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "SWIMMING POOL\nThe pool is closed for cleaning on Monday morning.\nIt will open again at 2 p.m.",
+          "tr": {
+            "zh": "游泳池\n星期一上午泳池清潔，暫停開放。\n下午兩點重新開放。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "You can swim on Monday afternoon.",
+                "The pool is closed all day on Monday.",
+                "Cleaning starts at 2 p.m."
+              ],
+              "answer": 0,
+              "zh": "星期一只有上午清潔，「下午兩點重新開放」，所以下午可以游泳。",
+              "en": "Only the morning is closed; it opens again at 2 p.m."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Hi Tom,\nI'm sorry I can't come to football practice tonight. My mum needs help in the shop. See you at the match on Saturday!\nLeo",
+          "tr": {
+            "zh": "湯姆：\n抱歉，我今晚不能去足球練習了。我媽媽店裡需要人幫忙。星期六比賽見！\n里歐"
+          },
+          "questions": [
+            {
+              "q": "Why is Leo writing?",
+              "options": [
+                "to ask Tom to help in the shop",
+                "to say he will miss practice",
+                "to change the time of the match"
+              ],
+              "answer": 1,
+              "zh": "「我今晚不能去足球練習了」：他是要說自己不能去練習。",
+              "en": "\"I can't come to football practice tonight.\""
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Dear students,\nFrom next week the school library will open from 8 a.m. to 6 p.m., Monday to Friday. It will be closed at weekends.",
+          "tr": {
+            "zh": "各位同學：\n從下週起，學校圖書館星期一到星期五早上八點到晚上六點開放，週末不開放。"
+          },
+          "questions": [
+            {
+              "q": "From next week, students",
+              "options": [
+                "can use the library on Saturdays.",
+                "must return books by 6 p.m.",
+                "can go to the library early in the morning."
+              ],
+              "answer": 2,
+              "zh": "圖書館「早上八點」就開了，所以早上可以去；週末不開，也沒有說要六點前還書。",
+              "en": "It opens at 8 a.m.; it is closed at weekends."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Please pay at the counter before you sit down.\nFree water is on the table by the door.",
+          "tr": {
+            "zh": "請先在櫃台付款再入座。\n門邊的桌上有免費的水。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "You can get water without paying.",
+                "You must sit down before you order.",
+                "The table by the door is free to use."
+              ],
+              "answer": 0,
+              "zh": "「門邊的桌上有免費的水」：喝水不用付錢。",
+              "en": "\"Free water\" — no need to pay for it."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Grandma,\nThe bus was late, so I'll be at your house at 5.30, not 5. Can you keep some cake for me?\nLove, Mia",
+          "tr": {
+            "zh": "奶奶：\n公車晚了，所以我五點半才會到你家，不是五點。可以幫我留一點蛋糕嗎？\n米亞"
+          },
+          "questions": [
+            {
+              "q": "What does Mia say?",
+              "options": [
+                "She wants to eat cake at five.",
+                "She will arrive later than she planned.",
+                "Grandma's bus was late."
+              ],
+              "answer": 1,
+              "zh": "「五點半才會到，不是五點」：比原來的時間晚。",
+              "en": "5.30, not 5: later than planned."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "LOST!\nSmall black cat with white feet. Her name is Pepper.\nIf you see her, please phone Sam on 0794 551 208.",
+          "tr": {
+            "zh": "尋貓！\n小黑貓，四隻腳是白色的，名字叫小胡椒。\n如果看到她，請打電話給山姆：0794 551 208。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "The cat's feet are black.",
+                "Someone has found a cat called Pepper.",
+                "The owner wants people to phone if they see the cat."
+              ],
+              "answer": 2,
+              "zh": "「如果看到她，請打電話給山姆」；貓是走失的，腳是白色的。",
+              "en": "Phone if you see her; the cat is lost and has white feet."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "text": "A  Anna\nI work in a bookshop on Saturdays. I help customers find books and put new books on the shelves. The best part is that I can read for free in my lunch break. The worst part is that I have to start at eight o'clock, which is early for me.\nB  Ben\nOn Sundays I work at a café near the beach. It gets very busy in summer, and sometimes I work for eight hours without a break! I like meeting tourists from different countries. I'm saving my money for a new bike.\nC  Carla\nI walk dogs for people in my street on Saturday and Sunday afternoons. I usually walk three dogs at the same time. I love animals, so it doesn't feel like work. When it rains, though, it isn't much fun.",
+          "tr": {
+            "zh": "A 安娜：我星期六在書店工作，幫客人找書、把新書放上架。最棒的是午休時可以免費看書；最糟的是要八點開始上班，對我來說太早了。\nB 班：我星期天在海邊的咖啡店工作。夏天很忙，有時候一連工作八個小時都沒休息！我喜歡認識各國來的遊客。我在存錢買新腳踏車。\nC 卡拉：我星期六和星期天下午幫街上的鄰居遛狗，通常一次遛三隻。我很喜歡動物，所以不覺得是在工作。不過下雨的時候就沒那麼好玩了。"
+          },
+          "questions": [
+            {
+              "q": "Who works on both days of the weekend?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 2,
+              "zh": "卡拉「星期六和星期天下午」都遛狗。",
+              "en": "Carla works on Saturday and Sunday."
+            },
+            {
+              "q": "Who has to get up early for work?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 0,
+              "zh": "安娜「要八點開始上班，對我來說太早了」。",
+              "en": "Anna starts at eight, early for her."
+            },
+            {
+              "q": "Who is saving money for something?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 1,
+              "zh": "班「在存錢買新腳踏車」。",
+              "en": "Ben is saving for a bike."
+            },
+            {
+              "q": "Who doesn't enjoy the job in bad weather?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 2,
+              "zh": "卡拉說「下雨的時候就沒那麼好玩了」。",
+              "en": "Carla: not fun when it rains."
+            },
+            {
+              "q": "Who gets something free at work?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 0,
+              "zh": "安娜「午休時可以免費看書」。",
+              "en": "Anna reads for free."
+            },
+            {
+              "q": "Who sometimes works for hours without stopping?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 1,
+              "zh": "班「有時候一連工作八個小時都沒休息」。",
+              "en": "Ben works eight hours without a break."
+            },
+            {
+              "q": "Who meets people from other countries?",
+              "options": [
+                "Anna",
+                "Ben",
+                "Carla"
+              ],
+              "answer": 1,
+              "zh": "班「喜歡認識各國來的遊客」。",
+              "en": "Ben meets tourists from different countries."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "My first month in the city\nLast month my family moved from a small town to a big city because of my dad's new job. I was worried because I didn't know anyone there. On my first day at my new school, my teacher, Mr Hall, asked a girl called Jess to show me around. She took me to the library, the dining room and the sports hall. At lunch she sat with me and introduced me to her friends. I was surprised that everyone was so friendly.\nThe city is very different from my old town. There are lots of buses, and now I can go to school on my own, which I couldn't do before. My old school was a ten-minute walk from my house, but now the journey takes thirty minutes by bus. I don't mind, because I read on the bus.\nAt the weekend Jess invited me to go to the museum with her family. We saw some dinosaur bones and had pizza afterwards. I miss my grandparents, who still live in my old town, but we talk on the phone every Sunday. Next month they are coming to visit us, and I'm going to show them all my favourite places. — Sofia",
+          "tr": {
+            "zh": "我在城市的第一個月\n上個月，因為爸爸換了新工作，我們全家從小鎮搬到了大城市。我很擔心，因為那裡我一個人也不認識。到新學校的第一天，霍爾老師請一個叫潔絲的女生帶我參觀。她帶我去了圖書館、餐廳和體育館。午餐時她和我坐在一起，還把她的朋友介紹給我。大家都這麼友善，讓我很驚訝。\n城市和我以前住的小鎮很不一樣。這裡公車很多，我現在可以自己去上學，以前是不行的。以前學校離家走路十分鐘，現在坐公車要三十分鐘。我不介意，因為我在車上看書。\n週末潔絲邀我和她的家人一起去博物館。我們看了恐龍骨頭，然後去吃披薩。我很想念還住在小鎮的爺爺奶奶，不過我們每個星期天都會通電話。下個月他們要來看我們，我要帶他們去我最喜歡的地方。——蘇菲亞"
+          },
+          "questions": [
+            {
+              "q": "Why did Sofia's family move?",
+              "options": [
+                "because of her father's job",
+                "because her old school closed",
+                "to be near her grandparents"
+              ],
+              "answer": 0,
+              "zh": "「因為爸爸換了新工作」。",
+              "en": "\"Because of my dad's new job.\""
+            },
+            {
+              "q": "How did Sofia feel before her first day?",
+              "options": [
+                "excited",
+                "nervous",
+                "bored"
+              ],
+              "answer": 1,
+              "zh": "「我很擔心，因為那裡我一個人也不認識」：很緊張。",
+              "en": "\"I was worried.\""
+            },
+            {
+              "q": "What did Jess do at lunch?",
+              "options": [
+                "She showed Sofia the sports hall.",
+                "She asked Mr Hall to help.",
+                "She introduced Sofia to her friends."
+              ],
+              "answer": 2,
+              "zh": "「午餐時她和我坐在一起，還把她的朋友介紹給我」；參觀體育館不是午餐時。",
+              "en": "At lunch she introduced Sofia to her friends."
+            },
+            {
+              "q": "What is different about going to school now?",
+              "options": [
+                "Sofia walks for ten minutes.",
+                "Sofia travels on her own by bus.",
+                "Sofia's dad drives her."
+              ],
+              "answer": 1,
+              "zh": "「我現在可以自己去上學」，坐公車三十分鐘；走路十分鐘是以前。",
+              "en": "She goes alone by bus; the ten-minute walk was before."
+            },
+            {
+              "q": "What will Sofia do next month?",
+              "options": [
+                "visit her old town",
+                "go to the museum again",
+                "show her grandparents around"
+              ],
+              "answer": 2,
+              "zh": "「下個月他們要來看我們，我要帶他們去我最喜歡的地方」。",
+              "en": "Her grandparents visit and she shows them around."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_cloze",
+          "text": "The Robot Café\nA new café has opened in the city centre, and it is (1) ______ any other café you have visited. Here, robots bring your food (2) ______ your table. The owner, Lisa Grant, got the idea (3) ______ she was on holiday in Japan. 'People come here because they (4) ______ to see the robots,' she says. 'But they come back because the food is good.' The café is open seven days (5) ______ week, and children under five eat for free. It's a good idea to book a table, (6) ______ the café is often very busy.",
+          "tr": {
+            "zh": "機器人咖啡店\n市中心新開了一家咖啡店，和你去過的任何咖啡店都不一樣。在這裡，是機器人把餐點送到你的桌上。老闆麗莎·葛蘭特是在日本度假時想到這個點子的。她說：「客人來這裡是因為想看機器人，但他們會再來，是因為東西好吃。」咖啡店一週七天都營業，五歲以下的孩子免費用餐。最好先訂位，因為店裡常常很多人。"
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "different",
+                "unlike",
+                "other"
+              ],
+              "answer": 1,
+              "zh": "「unlike any other café」：和其他咖啡店都不一樣。different 要說 different from。",
+              "en": "unlike any other café; \"different\" would need \"from\"."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "at",
+                "to",
+                "in"
+              ],
+              "answer": 1,
+              "zh": "把東西送「到」某處用 bring … to。",
+              "en": "bring something to a place."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "so",
+                "but",
+                "when"
+              ],
+              "answer": 2,
+              "zh": "「when she was on holiday」：在度假的時候。",
+              "en": "when she was on holiday."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "enjoy",
+                "want",
+                "look"
+              ],
+              "answer": 1,
+              "zh": "「want to see」想看；enjoy 後面接 seeing，look 要用 look at。",
+              "en": "want to see; enjoy takes -ing."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "the",
+                "one",
+                "a"
+              ],
+              "answer": 2,
+              "zh": "「seven days a week」是固定說法：一週七天。",
+              "en": "seven days a week."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "because",
+                "so",
+                "but"
+              ],
+              "answer": 0,
+              "zh": "最好訂位的原因是店裡很多人，用 because。",
+              "en": "Book because it is busy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
