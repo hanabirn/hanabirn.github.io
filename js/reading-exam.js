@@ -100,13 +100,15 @@ const READING_ASK_EN = {
     en_match: 'For each question, choose the correct answer.',
     en_long: 'Read the text and answer the questions.',
     en_cloze: 'Read the text below and choose the correct word for each space.',
-    en_open: 'For each question, write the correct answer. Write one word for each gap.'
+    en_open: 'For each question, write the correct answer. Write one word for each gap.',
+    en_people: 'The people below all want something. On the left there are eight texts. Decide which one would be the most suitable for each person.',
+    en_gapped: 'Five sentences have been removed from the text. For each question, choose the correct answer. There are three extra sentences which you do not need to use.'
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
-const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G'];   // HSK letters them (G: HSK 7–9's seventh sentence)
+const READING_OPT_LETTERS = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'];   // HSK letters them (G: HSK 7–9's seventh sentence)
 // HSK items whose questions share a bank (a picture's panels, words, replies): letter buttons only
-const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'];
+const READING_ZH_BANK = ['zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order', 'en_people', 'en_gapped'];
 // HSK passages whose blanks （　） are the questions: each blank shows its question's number
 
 function readingExLang() {
@@ -338,8 +340,11 @@ function readingExBodyHtml(item, nums, cur) {
         return `<figure class="rdx-pic"><img src="data/reading/img/zh/${escHtml(p.f)}.webp" alt="" loading="lazy">
             <span class="rdx-pic-grid" style="${grid}" aria-hidden="true">${cells}</span></figure>`;
     }
-    const bankList = cls => `<ol class="rdx-bank${cls}" lang="zh-CN">${item.bank_t.map((b, i) =>
-            `<li><b>${READING_OPT_LETTERS[i]}</b><span>${readingExSegs(b)}</span></li>`).join('')}</ol>`;
+    // HSK banks come as segments (bank_t, with pinyin); Cambridge ones (en_people, en_gapped) as plain text
+    const bankList = cls => `<ol class="rdx-bank${cls}" lang="${item.bank_t ? 'zh-CN' : lang}">${(item.bank_t || item.bank || []).map((b, i) =>
+            `<li><b>${READING_OPT_LETTERS[i]}</b><span>${item.bank_t ? readingExSegs(b) : readingExText(b)}</span></li>`).join('')}</ol>`;
+    if (item.type === 'en_people') return bankList(' rdx-bank-paras');
+    if (item.type === 'en_gapped') return `<div class="rdx-text" lang="${lang}">${item.text.split('\n').map(readingExText).join('<br>')}</div>${bankList(' rdx-bank-sents')}`;
     if ((item.type === 'zh_bank' || item.type === 'zh_match') && item.bank_t) {
         return bankList(item.type === 'zh_bank' ? ' rdx-bank-words' : '');
     }

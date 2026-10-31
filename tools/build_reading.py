@@ -272,7 +272,7 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             'zh_cloze', 'zh_fill', 'zh_order',
             # Cambridge English (night queue 2026-10-31): notices / messages, three texts to match,
             # a long text, a multiple-choice cloze (the text's gaps are written (1) … (6))
-            'en_notice', 'en_match', 'en_long', 'en_cloze', 'en_open',
+            'en_notice', 'en_match', 'en_long', 'en_cloze', 'en_open', 'en_people', 'en_gapped',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 
@@ -385,8 +385,11 @@ S2TW = _opencc.OpenCC('s2tw')
 T2S = _opencc.OpenCC('t2s')        # the Taiwan edition's answers, typed in Simplified
 SHORT_MAX = 10          # a written answer's characters (HSK 7–9 阅读第三部分)
 ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
+# Cambridge B1+: people matched to a bank of texts (en_people), sentences put back into a text (en_gapped) —
+# the bank's letters are the options, each the answer at most once, the bank may hold several spares
+EN_BANK_TYPES = {'en_people', 'en_gapped'}
 ZH_BLANK_TYPES = {'zh_cloze', 'zh_fill'}     # a passage whose blanks are the questions
-LETTERS = 'ABCDEFG'          # G: HSK 7–9's seven sentences
+LETTERS = 'ABCDEFGH'         # G: HSK 7–9's seven sentences; H: Cambridge B1's eight texts
 
 
 # HSK pictures (owner's pick 2026-10-30: the JLPT 聽解 line art, drawn with Batch, a round at a time):
@@ -464,7 +467,7 @@ def zh_segs(text, where, problems, hidden, spaced, glossary=None):
 
 
 # en_open: an English open cloze (A2 Key Part 5) — a text with numbered gaps whose answers are typed, one word
-SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline', 'en_open'} | ZH_SET_TYPES
+SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline', 'en_open'} | ZH_SET_TYPES | EN_BANK_TYPES
 
 
 def build_sets(data, name, problems):
@@ -483,7 +486,8 @@ def build_sets(data, name, problems):
             need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
                     'notice': ['notice'], 'chart': ['chart'],
                     'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text'],
-                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank'], 'zh_short': ['text'], 'en_open': ['text']}.get(typ, [])
+                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank'], 'zh_short': ['text'], 'en_open': ['text'],
+                    'en_people': ['bank'], 'en_gapped': ['text', 'bank']}.get(typ, [])
             for key in need:
                 if not it.get(key):
                     problems.append(f'{iw}: a {typ} item needs "{key}"')
@@ -495,6 +499,10 @@ def build_sets(data, name, problems):
             if zh and typ not in ZH_SET_TYPES:
                 problems.append(f'{iw}: an HSK item is one of {sorted(ZH_SET_TYPES)}')
             bank = None
+            if typ in EN_BANK_TYPES:
+                bank = it.get('bank', [])
+                if len(bank) < len(it.get('questions', [])):
+                    problems.append(f'{iw}: a bank holds at least as many entries as questions')
             if typ in ZH_BANK_TYPES:
                 pic = it.get('pic') or {}
                 bank = list(LETTERS[:pic.get('cols', 0) * pic.get('rows', 0)]) if typ == 'zh_pic' else it.get('bank', [])
@@ -529,7 +537,7 @@ def build_sets(data, name, problems):
                         a = q.get('answer')
                         problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
                     used_letters.add(q.get('answer'))
-                    if not q.get('q') and typ != 'zh_fill':
+                    if not q.get('q') and typ not in ('zh_fill', 'en_gapped'):
                         problems.append(f'{qw}: a {typ} question needs its sentence "q"')
                 opts = q.get('options', [])
                 if typ in ('zh_short', 'en_open'):
