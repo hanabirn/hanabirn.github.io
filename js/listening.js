@@ -332,11 +332,16 @@ function listeningTypedHtml(q, qn, show) {
     const done = picked !== -1 && picked !== -2;
     const locked = show || (!z.mock && done);
     return `<div class="rdx-short ls-typed">
-            <input type="text" class="rdx-short-in" id="ls-in-${qn}" lang="zh-CN" maxlength="10" autocomplete="off" spellcheck="false"
+            <input type="text" class="rdx-short-in" id="ls-in-${qn}" lang="${listeningIsEn() ? 'en' : 'zh-CN'}" maxlength="${listeningIsEn() ? 40 : 10}" autocomplete="off" spellcheck="false"
                 value="${escHtml(readingExTyped(picked))}" placeholder="${escHtml(t('rdx_short_ph'))}"${locked ? ' disabled' : ''}
                 ${z.mock ? `oninput="listeningType(${qn}, this.value)"` : `onkeydown="if (event.key === 'Enter') listeningWrite(${qn})"`}>
             ${!z.mock && !locked ? `<button type="button" class="btn next-btn rdx-short-go" onclick="listeningWrite(${qn})">${escHtml(t('rdx_short_send'))}</button>` : ''}
         </div>`;
+}
+
+function listeningIsEn() {
+    const lv = listeningLevels[listeningLevelId];
+    return !!lv && lv.lang === 'en';
 }
 
 function listeningWrite(qn) {
@@ -581,10 +586,10 @@ function listeningPicUrl(lv, it) { return 'data/listening/img/' + lv.lang + '/' 
 const LISTENING_PIC_QUARTERS = ['left:0;top:0', 'left:-100%;top:0', 'left:0;top:-100%', 'left:-100%;top:-100%'];
 
 /* HSK (2026-10-30): options lettered A B C as on the paper; the part named 第一部分 */
-function listeningMark(lv, i) { return lv.lang === 'zh' ? 'ABCDEF'[i] : String(i + 1); }
+function listeningMark(lv, i) { return lv.lang === 'zh' || lv.lang === 'en' ? 'ABCDEFGH'[i] : String(i + 1); }
 function listeningPartName(lv, type) {
     const n = listeningTypeNo(lv, type);
-    return lv.lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : t('listening_mondai', { n });
+    return lv.lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : lv.lang === 'en' ? `Part ${n}` : t('listening_mondai', { n });
 }
 /* an HSK picture of cols × rows panels: the <img> style that shows panel k inside a square box */
 function listeningCellStyle(p, k) {
@@ -670,12 +675,12 @@ function listeningQuizHtml(lv) {
         const picked = z.picks[z.qi][qn];
         // a printed question's translation: practice only (TOPIK); an HSK one only once answered, since a
         // written question's translation would give its blank away
-        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock || (lv.lang === 'zh' && !show) ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
+        const qText = q.ask ? `<div class="ls-qtext ls-ask"><span lang="${lv.lang}">${listeningSegsHtml(q.ask.t, false)}</span>${z.mock || ((lv.lang === 'zh' || lv.lang === 'en') && !show) ? '' : `<div class="ls-zh">${escHtml(gText(q.ask))}</div>`}</div>`
             : q.q && (show || !q.spoken && !multi && lv.lang !== 'zh') ? `<div class="ls-qtext" lang="${lv.lang}">${listeningSegsHtml(q.q.t, false)}<div class="ls-zh">${escHtml(gText(q.q))}</div></div>` : '';
         return `<div class="ls-q${paged && qn !== sub ? ' ls-q-off' : ''}" data-qn="${qn}">
             ${multi ? `<div class="ls-qlabel">${escHtml(t('listening_q_n', { n: qn + 1 }))}</div>` : ''}
             ${multi || q.ask ? qText : ''}
-            ${q.answers ? listeningTypedHtml(q, qn, show) : `<div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' ? (q.options.length === 4 ? ' four ls-zh-opts' : q.options.length === 2 ? ' two ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>`}
+            ${q.answers ? listeningTypedHtml(q, qn, show) : `<div class="ls-opts${q.spoken && q.options.length === 3 ? ' three' : ''}${it.pic && it.pic.kind === 'grid' && !q.spoken ? ' pics' : it.pic && it.pic.kind === 'cells' ? ' pics pics3' : it.pic && it.pic.kind === 'sheet' ? ' ls-letters' : lv.instr ? ' ls-sent' : lv.lang === 'zh' || lv.lang === 'en' ? (q.options.length >= 4 ? ' four ls-zh-opts' : q.options.length === 2 ? ' two ls-zh-opts' : ' three ls-zh-opts') : ''}">${listeningOptionsHtml(lv, it, q, qn, show)}</div>`}
             ${!show ? '' : q.answers
                 ? `<p class="grammar-feedback ${listeningOk(q, picked) ? 'ok' : 'no'}">${escHtml(listeningOk(q, picked) ? t('correct') : t('rdx_short_ref', { a: q.answers[0] }))}</p>
                     ${!listeningOk(q, picked) && !z.mock && picked !== -2 ? `<p class="rdx-self"><button type="button" class="mode-btn" onclick="listeningSelf(${qn})">${escHtml(t('rdx_short_self'))}</button></p>` : ''}
