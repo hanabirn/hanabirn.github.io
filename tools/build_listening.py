@@ -242,7 +242,7 @@ def build_typed(q, where, words, problems, lang, jobs):
     gap = '（　）' in q.get('ask', {}).get('s', '') or '＿' in q.get('ask', {}).get('s', '')     # 中文 （　）, English notes ＿＿
     if not q.get('ask') or not gap or not answers or q.get('options'):
         problems.append(f'{where}: a written question has a printed "ask" with a gap, "answers" and no options')
-    limit = 30 if lang == 'en' else ZH_TYPED_MAX
+    limit = 30 if lang in ('en', 'fr', 'de', 'es', 'ru') else ZH_TYPED_MAX
     for a in answers:
         if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > limit:
             problems.append(f'{where}: answer "{a}" is longer than {limit} characters')

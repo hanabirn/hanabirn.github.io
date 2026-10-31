@@ -1,0 +1,599 @@
+{
+  "id": "fr_a1",
+  "lang": "fr",
+  "level": "A1",
+  "order": 1,
+  "unlisted": true,
+  "n_options": 3,
+  "note": "French A1 listening in the DELF A1 format (owner's plan 2026-10-30): Exercice 1 a phone message ×4, Exercice 2 a station announcement ×3, Exercice 3 a radio advert ×4 (en_q), Exercice 4 five short dialogues matched to six situations (en_match). Each recording twice. Original texts. Drafted in tools/.mockups/fr_a1_ls.py.",
+  "types": [
+    "en_q",
+    "en_match"
+  ],
+  "mock_plays": 2,
+  "mock_counts": {
+    "en_q": 11,
+    "en_match": 5
+  },
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un message sur un répondeur.",
+              "zh": "你會聽到一則電話答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Allô, Thomas ? C'est Camille. Ce soir, on va au cinéma avec Hugo et Inès. Le film commence à 20 h 30. On se retrouve à 20 heures au café en face du cinéma, d'accord ? Les places coûtent 9 euros. Et n'oublie pas : demain, c'est l'anniversaire d'Inès ! Rappelle-moi au 06 45 12 87 30. À ce soir !",
+              "zh": "喂，托馬嗎？我是卡蜜兒。今晚我們要和雨果、伊內絲去看電影。電影晚上八點半開始。我們八點在電影院對面的咖啡館碰面，好嗎？票價 9 歐元。還有別忘了：明天是伊內絲的生日！打 06 45 12 87 30 回電給我。晚上見！",
+              "en": "Hello, Thomas? It's Camille. Tonight we're going to the cinema with Hugo and Inès. The film starts at 8.30. Let's meet at 8 at the café opposite the cinema, OK? Tickets cost 9 euros. And don't forget: tomorrow is Inès's birthday! Call me back on 06 45 12 87 30. See you tonight!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Où vont les amis ce soir ?",
+                "zh": "朋友們今晚要去哪裡？",
+                "en": "Where are the friends going tonight?"
+              },
+              "options": [
+                {
+                  "t": "au cinéma"
+                },
+                {
+                  "t": "au restaurant"
+                },
+                {
+                  "t": "au théâtre"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「今晚我們要去看電影」。",
+                "en": "They are going to the cinema."
+              }
+            },
+            {
+              "ask": {
+                "s": "À quelle heure est le rendez-vous ?",
+                "zh": "幾點碰面？",
+                "en": "What time are they meeting?"
+              },
+              "options": [
+                {
+                  "t": "à 19 h 30"
+                },
+                {
+                  "t": "à 20 h"
+                },
+                {
+                  "t": "à 20 h 30"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "八點在咖啡館碰面；八點半是電影開始。",
+                "en": "They meet at 8; the film starts at 8.30."
+              }
+            },
+            {
+              "ask": {
+                "s": "Combien coûte une place ?",
+                "zh": "一張票多少錢？",
+                "en": "How much is a ticket?"
+              },
+              "options": [
+                {
+                  "t": "6 euros"
+                },
+                {
+                  "t": "9 euros"
+                },
+                {
+                  "t": "12 euros"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「票價 9 歐元」。",
+                "en": "Nine euros."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'est-ce qui se passe demain ?",
+                "zh": "明天有什麼事？",
+                "en": "What is happening tomorrow?"
+              },
+              "options": [
+                {
+                  "t": "C'est l'anniversaire d'Inès."
+                },
+                {
+                  "t": "Hugo part en vacances."
+                },
+                {
+                  "t": "Camille commence un travail."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「明天是伊內絲的生日」。",
+                "en": "Tomorrow is Inès's birthday."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes à la gare. Vous entendez cette annonce.",
+              "zh": "你在火車站，聽到這則廣播。",
+              "en": "You are at the station. You hear this announcement."
+            },
+            {
+              "who": "F",
+              "s": "Mesdames et messieurs, attention ! Le train TER numéro 4512 à destination de Marseille, prévu à 14 h 10, a un retard de vingt minutes. Il partira voie 6, et non voie 3. Nous vous rappelons que le wagon-bar est en tête du train. Merci de votre attention.",
+              "zh": "各位旅客請注意！開往馬賽的 4512 次區域列車，原定 14:10 發車，將誤點二十分鐘，改在第 6 月台發車，不是第 3 月台。提醒您，餐車在列車最前面。謝謝。",
+              "en": "Ladies and gentlemen, your attention please! TER train number 4512 to Marseille, due at 14.10, is twenty minutes late. It will leave from platform 6, not platform 3. The buffet car is at the front of the train. Thank you."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le train va à…",
+                "zh": "這班火車開往……",
+                "en": "The train is going to…"
+              },
+              "options": [
+                {
+                  "t": "Marseille."
+                },
+                {
+                  "t": "Nice."
+                },
+                {
+                  "t": "Lyon."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開往馬賽」。",
+                "en": "To Marseille."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le train va partir à quelle heure ?",
+                "zh": "火車幾點開？",
+                "en": "What time will the train leave?"
+              },
+              "options": [
+                {
+                  "t": "à 14 h 10"
+                },
+                {
+                  "t": "à 14 h 20"
+                },
+                {
+                  "t": "à 14 h 30"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "原定 14:10，誤點二十分鐘：14:30。",
+                "en": "Due at 14.10, twenty minutes late: 14.30."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le train part de quelle voie ?",
+                "zh": "火車從第幾月台出發？",
+                "en": "Which platform does the train leave from?"
+              },
+              "options": [
+                {
+                  "t": "voie 3"
+                },
+                {
+                  "t": "voie 6"
+                },
+                {
+                  "t": "voie 4"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「改在第 6 月台，不是第 3 月台」。",
+                "en": "Platform 6, not 3."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez la radio.",
+              "zh": "你在聽廣播。",
+              "en": "You are listening to the radio."
+            },
+            {
+              "who": "M",
+              "s": "Vous aimez le sport ? Venez à la Fête du sport, ce dimanche, au stade municipal ! De 10 heures à 17 heures, essayez gratuitement le tennis, la danse, le judo et l'escalade. Pour les enfants de moins de 10 ans, il y a un parcours spécial. Sur place : boissons et sandwichs. Venez à vélo : un parking pour les vélos est devant l'entrée !",
+              "zh": "你喜歡運動嗎？這個星期天來市立體育場參加運動節！上午 10 點到下午 5 點，免費體驗網球、舞蹈、柔道和攀岩。10 歲以下的孩子有特別的闖關路線。現場有飲料和三明治。騎腳踏車來吧：入口前面有腳踏車停車場！",
+              "en": "Do you like sport? Come to the Sports Festival this Sunday at the town stadium! From 10 a.m. to 5 p.m., try tennis, dance, judo and climbing for free. For children under 10 there is a special course. Drinks and sandwiches on site. Come by bike: there is bike parking in front of the entrance!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "La Fête du sport, c'est quel jour ?",
+                "zh": "運動節是哪一天？",
+                "en": "Which day is the Sports Festival?"
+              },
+              "options": [
+                {
+                  "t": "samedi"
+                },
+                {
+                  "t": "dimanche"
+                },
+                {
+                  "t": "mercredi"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「這個星期天」。",
+                "en": "This Sunday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les activités sont…",
+                "zh": "活動……",
+                "en": "The activities are…"
+              },
+              "options": [
+                {
+                  "t": "gratuites."
+                },
+                {
+                  "t": "à 5 euros."
+                },
+                {
+                  "t": "pour les adultes seulement."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「免費體驗」；還有給小孩的路線。",
+                "en": "Free to try; there is also a children's course."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quel sport est cité ?",
+                "zh": "提到哪一項運動？",
+                "en": "Which sport is mentioned?"
+              },
+              "options": [
+                {
+                  "t": "la natation"
+                },
+                {
+                  "t": "le football"
+                },
+                {
+                  "t": "le judo"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "網球、舞蹈、柔道和攀岩：有柔道。",
+                "en": "Tennis, dance, judo and climbing."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le parking pour les vélos est…",
+                "zh": "腳踏車停車場在……",
+                "en": "The bike parking is…"
+              },
+              "options": [
+                {
+                  "t": "derrière le stade."
+                },
+                {
+                  "t": "devant l'entrée."
+                },
+                {
+                  "t": "à la gare."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「入口前面有腳踏車停車場」。",
+                "en": "In front of the entrance."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_match",
+          "n_options": 6,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre cinq dialogues. Associez chaque dialogue à une situation.",
+              "zh": "你會聽到五段對話。請把每段對話配上一個情境。",
+              "en": "You will hear five dialogues. Match each dialogue to a situation."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 1",
+              "zh": "對話 1",
+              "en": "Dialogue 1"
+            },
+            {
+              "who": "M",
+              "s": "Bonjour, une baguette et deux croissants, s'il vous plaît.",
+              "zh": "你好，一根長棍麵包和兩個可頌，謝謝。",
+              "en": "Hello, a baguette and two croissants, please."
+            },
+            {
+              "who": "F",
+              "s": "Voilà. Ça fait 3 euros 20.",
+              "zh": "來，一共 3 歐元 20。",
+              "en": "Here you are. That's 3 euros 20."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 2",
+              "zh": "對話 2",
+              "en": "Dialogue 2"
+            },
+            {
+              "who": "F",
+              "s": "Pardon, monsieur, la poste, c'est loin ?",
+              "zh": "先生，不好意思，郵局很遠嗎？",
+              "en": "Excuse me, sir, is the post office far?"
+            },
+            {
+              "who": "M",
+              "s": "Non, vous allez tout droit et vous tournez à gauche après la pharmacie.",
+              "zh": "不遠，您直走，過了藥局左轉。",
+              "en": "No, go straight on and turn left after the chemist's."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 3",
+              "zh": "對話 3",
+              "en": "Dialogue 3"
+            },
+            {
+              "who": "M",
+              "s": "Restaurant Le Lion, bonjour !",
+              "zh": "獅子餐廳，您好！",
+              "en": "Le Lion restaurant, hello!"
+            },
+            {
+              "who": "F",
+              "s": "Bonjour, je voudrais une table pour quatre personnes, samedi soir, à 20 heures.",
+              "zh": "您好，我想訂星期六晚上八點、四個人的位子。",
+              "en": "Hello, I'd like a table for four on Saturday evening at 8."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 4",
+              "zh": "對話 4",
+              "en": "Dialogue 4"
+            },
+            {
+              "who": "F",
+              "s": "Un aller-retour pour Bordeaux, s'il vous plaît.",
+              "zh": "一張到波爾多的來回票，謝謝。",
+              "en": "A return to Bordeaux, please."
+            },
+            {
+              "who": "M",
+              "s": "Pour quel jour ? Le train de 9 heures est complet.",
+              "zh": "哪一天的？九點那班已經客滿了。",
+              "en": "For which day? The 9 o'clock train is full."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 5",
+              "zh": "對話 5",
+              "en": "Dialogue 5"
+            },
+            {
+              "who": "M",
+              "s": "Cabinet du docteur Martin, bonjour.",
+              "zh": "馬丹醫師診所，您好。",
+              "en": "Dr Martin's surgery, hello."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour, j'ai mal à la gorge depuis trois jours. Est-ce que le docteur est libre demain matin ?",
+              "zh": "您好，我喉嚨痛了三天。醫生明天早上有空嗎？",
+              "en": "Hello, I've had a sore throat for three days. Is the doctor free tomorrow morning?"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Dialogue 1",
+                "zh": "對話 1",
+                "en": "Dialogue 1"
+              },
+              "options": [
+                {
+                  "t": "acheter du pain"
+                },
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "réserver une table"
+                },
+                {
+                  "t": "prendre rendez-vous chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                },
+                {
+                  "t": "payer à la caisse"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "買長棍麵包和可頌：買麵包。不是 F，因為對話的重點是買什麼。",
+                "en": "A baguette and croissants: buying bread."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 2",
+                "zh": "對話 2",
+                "en": "Dialogue 2"
+              },
+              "options": [
+                {
+                  "t": "acheter du pain"
+                },
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "réserver une table"
+                },
+                {
+                  "t": "prendre rendez-vous chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                },
+                {
+                  "t": "payer à la caisse"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "問郵局遠不遠、怎麼走：問路。",
+                "en": "Asking the way to the post office."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 3",
+                "zh": "對話 3",
+                "en": "Dialogue 3"
+              },
+              "options": [
+                {
+                  "t": "acheter du pain"
+                },
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "réserver une table"
+                },
+                {
+                  "t": "prendre rendez-vous chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                },
+                {
+                  "t": "payer à la caisse"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "打給餐廳訂四個人的位子。",
+                "en": "Booking a table for four."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 4",
+                "zh": "對話 4",
+                "en": "Dialogue 4"
+              },
+              "options": [
+                {
+                  "t": "acheter du pain"
+                },
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "réserver une table"
+                },
+                {
+                  "t": "prendre rendez-vous chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                },
+                {
+                  "t": "payer à la caisse"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "「到波爾多的來回票」：買火車票。",
+                "en": "A return ticket to Bordeaux."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 5",
+                "zh": "對話 5",
+                "en": "Dialogue 5"
+              },
+              "options": [
+                {
+                  "t": "acheter du pain"
+                },
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "réserver une table"
+                },
+                {
+                  "t": "prendre rendez-vous chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                },
+                {
+                  "t": "payer à la caisse"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "喉嚨痛，問醫生明天早上有沒有空：預約看醫生。剩下的 F（在收銀台付錢）沒有用到。",
+                "en": "A sore throat, asking for an appointment; F is not used."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

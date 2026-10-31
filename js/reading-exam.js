@@ -94,7 +94,20 @@ const READING_ASK_ZH_TW = {
 const READING_ASK_ALL = { ko: READING_ASK_KO, ja: READING_ASK_JA, zh: READING_ASK_ZH };
 const READING_ASK_MULTI = { ko: '다음을 읽고 물음에 답하십시오.', ja: 'つぎの　ぶんしょうを　よんで、しつもんに　こたえて　ください。', zh: '读短文，回答问题。',
     en: 'Read the text and answer the questions.' };
-// Cambridge English rounds (night queue 2026-10-31, A2 Key first): the paper's instructions, options lettered A B C
+// The European exams (night queue 2026-10-31): Cambridge English first, then DELF / DALF, Goethe, DELE, ТРКИ — the en_*
+// item types serve them all; options lettered, each paper's part name and instructions
+const READING_CEFR = ['en', 'fr', 'de', 'es', 'ru'];
+const READING_PART = { en: 'Part', fr: 'Exercice', de: 'Teil', es: 'Tarea', ru: 'Задание' };
+const READING_ASK_FR = {
+    en_notice: 'Lisez le document et répondez aux questions.',
+    en_match: 'Lisez les documents et répondez aux questions.',
+    en_long: 'Lisez le texte et répondez aux questions.',
+    en_cloze: 'Lisez le texte et choisissez le mot qui convient.',
+    en_open: 'Complétez le texte avec un seul mot par espace.',
+    en_people: 'Lisez les annonces et choisissez celle qui convient à chaque personne.',
+    en_gapped: 'Des phrases ont été retirées du texte. Choisissez la phrase qui convient pour chaque espace.',
+    en_sections: 'Pour chaque question, choisissez la partie du texte (A–D).'
+};
 const READING_ASK_EN = {
     en_notice: 'For each question, choose the correct answer.',
     en_match: 'For each question, choose the correct answer.',
@@ -124,12 +137,12 @@ function readingExUpper() {
 }
 function readingExMarks() {
     const lang = readingExLang();
-    return lang === 'zh' || lang === 'en' ? READING_OPT_LETTERS : lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
+    return lang === 'zh' || READING_CEFR.includes(lang) ? READING_OPT_LETTERS : lang === 'ja' ? READING_OPT_NUMS : READING_OPT_MARKS;
 }
 /* the part of the paper an item belongs to: もんだい４ / 第四部分 */
 function readingExMondai(n) {
     const lang = readingExLang();
-    return lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : lang === 'en' ? `Part ${n}` : `もんだい${n}`;
+    return lang === 'zh' ? `第${'一二三四五六七八九十'[n - 1] || n}部分` : READING_PART[lang] ? `${READING_PART[lang]} ${n}` : `もんだい${n}`;
 }
 /* an explanation: a Chinese set's text is Chinese, so readingTx gives its English translation —
    an HSK explanation follows the site language instead */
@@ -147,6 +160,7 @@ function readingAskText(key) {
     const set = readingSets[readingSetId];
     if (lang === 'zh' && set && set.edition === 'tw') return READING_ASK_ZH_TW[key] || '';
     if (lang === 'en') return READING_ASK_EN[key] || '';
+    if (lang === 'fr') return READING_ASK_FR[key] || READING_ASK_EN[key] || '';
     return (READING_ASK_ALL[lang] || READING_ASK_KO)[key] || '';
 }
 
@@ -404,8 +418,8 @@ function readingExamHtml(set) {
         // a written answer (HSK 7–9): a box of SHORT_MAX characters; practice sends it with 送出 / Enter,
         // a mock keeps whatever is typed until 交卷
         const written = q.answers ? `<div class="rdx-short">
-                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${lang === 'en' ? 'en' : 'zh-CN'}" maxlength="${lang === 'en' ? 40 : 10}" autocomplete="off" spellcheck="false"
-                    value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t(lang === 'en' ? 'rdx_short_ph_en' : 'rdx_short_ph'))}"${reveal ? ' disabled' : ''}
+                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${READING_CEFR.includes(lang) ? lang : 'zh-CN'}" maxlength="${READING_CEFR.includes(lang) ? 40 : 10}" autocomplete="off" spellcheck="false"
+                    value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t(READING_CEFR.includes(lang) ? 'rdx_short_ph_en' : 'rdx_short_ph'))}"${reveal ? ' disabled' : ''}
                     ${z.mock ? `oninput="readingExamType(${o.i}, this.value)"` : `onkeydown="if (event.key === 'Enter') readingExamWrite(${o.i})"`}>
                 ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}
             </div>` : '';
@@ -414,7 +428,7 @@ function readingExamHtml(set) {
                 ${ok && pick && typeof pick === 'object' && pick.self ? `<p class="rd-meta">${escHtml(t('rdx_short_ref', { a: q.answers[0] }))}</p>` : ''}
                 ${!ok && !z.mock && pick !== -1 ? `<p class="rdx-self"><button type="button" class="mode-btn" onclick="readingExamSelf(${o.i})">${escHtml(t('rdx_short_self'))}</button></p>` : ''}
                 <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`
-            : `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('listening_wrong', { n: lang === 'zh' || lang === 'en' ? marks[q.answer] : q.answer + 1 }))}</p>
+            : `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('listening_wrong', { n: lang === 'zh' || READING_CEFR.includes(lang) ? marks[q.answer] : q.answer + 1 }))}</p>
                 <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`;
         return `<div class="rdx-q${j === sub ? '' : ' rdx-q-off'}">
             ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${item.type === 'zh_text' ? '★ ' : ''}${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
