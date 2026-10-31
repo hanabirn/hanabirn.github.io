@@ -99,7 +99,8 @@ const READING_ASK_EN = {
     en_notice: 'For each question, choose the correct answer.',
     en_match: 'For each question, choose the correct answer.',
     en_long: 'Read the text and answer the questions.',
-    en_cloze: 'Read the text below and choose the correct word for each space.'
+    en_cloze: 'Read the text below and choose the correct word for each space.',
+    en_open: 'For each question, write the correct answer. Write one word for each gap.'
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
@@ -395,7 +396,7 @@ function readingExamHtml(set) {
         // a written answer (HSK 7–9): a box of SHORT_MAX characters; practice sends it with 送出 / Enter,
         // a mock keeps whatever is typed until 交卷
         const written = q.answers ? `<div class="rdx-short">
-                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="zh-CN" maxlength="10" autocomplete="off" spellcheck="false"
+                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${lang === 'en' ? 'en' : 'zh-CN'}" maxlength="10" autocomplete="off" spellcheck="false"
                     value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t('rdx_short_ph'))}"${reveal ? ' disabled' : ''}
                     ${z.mock ? `oninput="readingExamType(${o.i}, this.value)"` : `onkeydown="if (event.key === 'Enter') readingExamWrite(${o.i})"`}>
                 ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}

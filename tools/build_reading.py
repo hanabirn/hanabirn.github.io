@@ -272,7 +272,7 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             'zh_cloze', 'zh_fill', 'zh_order',
             # Cambridge English (night queue 2026-10-31): notices / messages, three texts to match,
             # a long text, a multiple-choice cloze (the text's gaps are written (1) … (6))
-            'en_notice', 'en_match', 'en_long', 'en_cloze',
+            'en_notice', 'en_match', 'en_long', 'en_cloze', 'en_open',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 
@@ -463,7 +463,8 @@ def zh_segs(text, where, problems, hidden, spaced, glossary=None):
     return segs, src
 
 
-SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline'} | ZH_SET_TYPES
+# en_open: an English open cloze (A2 Key Part 5) — a text with numbered gaps whose answers are typed, one word
+SET_TYPES = {'text', 'notice', 'chart', 'order', 'insert', 'headline', 'en_open'} | ZH_SET_TYPES
 
 
 def build_sets(data, name, problems):
@@ -482,7 +483,7 @@ def build_sets(data, name, problems):
             need = {'text': ['text'], 'insert': ['text', 'box'], 'headline': ['text'], 'order': ['parts'],
                     'notice': ['notice'], 'chart': ['chart'],
                     'zh_pic': ['pic'], 'zh_match': ['bank'], 'zh_bank': ['bank'], 'zh_text': ['text'],
-                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank'], 'zh_short': ['text']}.get(typ, [])
+                    'zh_cloze': ['text'], 'zh_fill': ['text', 'bank'], 'zh_order': ['bank'], 'zh_short': ['text'], 'en_open': ['text']}.get(typ, [])
             for key in need:
                 if not it.get(key):
                     problems.append(f'{iw}: a {typ} item needs "{key}"')
@@ -531,10 +532,10 @@ def build_sets(data, name, problems):
                     if not q.get('q') and typ != 'zh_fill':
                         problems.append(f'{qw}: a {typ} question needs its sentence "q"')
                 opts = q.get('options', [])
-                if typ == 'zh_short':
+                if typ in ('zh_short', 'en_open'):
                     answers = q.get('answers') or []
                     if not q.get('q') or not answers or opts:
-                        problems.append(f'{qw}: a zh_short question has "q" and "answers", no options')
+                        problems.append(f'{qw}: a {typ} question has "q" and "answers", no options')
                     for a in answers:
                         if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > SHORT_MAX:
                             problems.append(f'{qw}: answer "{a}" is longer than {SHORT_MAX} characters')

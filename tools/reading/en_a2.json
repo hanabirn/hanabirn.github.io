@@ -5,7 +5,7 @@
   "order": 2,
   "unlisted": true,
   "n_options": 3,
-  "note": "English A2 reading rounds in the Cambridge A2 Key format (owner's plan 2026-10-30: each language's own exam). Parts 1–4 (6 notices / messages, 7 questions on three texts, a long text × 5, a multiple-choice cloze × 6); Part 5 (open cloze) waits for typed answers outside Chinese. Three options. Original texts. Drafted in tools/.mockups/en_a2.py.",
+  "note": "English A2 reading rounds in the Cambridge A2 Key format (owner's plan 2026-10-30: each language's own exam). Parts 1–5 (6 notices / messages, 7 questions on three texts, a long text × 5, a multiple-choice cloze × 6, an open cloze × 6 with typed one-word answers, en_open). Three options. Original texts. Drafted in tools/.mockups/en_a2.py.",
   "sets": [
     {
       "id": "r1",
@@ -300,13 +300,13 @@
           "type": "text",
           "mondai": 4,
           "ask": "en_cloze",
-          "text": "The Robot Café\nA new café has opened in the city centre, and it is (1) ______ any other café you have visited. Here, robots bring your food (2) ______ your table. The owner, Lisa Grant, got the idea (3) ______ she was on holiday in Japan. 'People come here because they (4) ______ to see the robots,' she says. 'But they come back because the food is good.' The café is open seven days (5) ______ week, and children under five eat for free. It's a good idea to book a table, (6) ______ the café is often very busy.",
+          "text": "The Robot Café\nA new café has opened in the city centre, and it is (19) ＿＿＿＿＿ any other café you have visited. Here, robots bring your food (20) ＿＿＿＿＿ your table. The owner, Lisa Grant, got the idea (21) ＿＿＿＿＿ she was on holiday in Japan. 'People come here because they (22) ＿＿＿＿＿ to see the robots,' she says. 'But they come back because the food is good.' The café is open seven days (23) ＿＿＿＿＿ week, and children under five eat for free. It's a good idea to book a table, (24) ＿＿＿＿＿ the café is often very busy.",
           "tr": {
             "zh": "機器人咖啡店\n市中心新開了一家咖啡店，和你去過的任何咖啡店都不一樣。在這裡，是機器人把餐點送到你的桌上。老闆麗莎·葛蘭特是在日本度假時想到這個點子的。她說：「客人來這裡是因為想看機器人，但他們會再來，是因為東西好吃。」咖啡店一週七天都營業，五歲以下的孩子免費用餐。最好先訂位，因為店裡常常很多人。"
           },
           "questions": [
             {
-              "q": "(1)",
+              "q": "(19)",
               "options": [
                 "different",
                 "unlike",
@@ -317,7 +317,7 @@
               "en": "unlike any other café; \"different\" would need \"from\"."
             },
             {
-              "q": "(2)",
+              "q": "(20)",
               "options": [
                 "at",
                 "to",
@@ -328,7 +328,7 @@
               "en": "bring something to a place."
             },
             {
-              "q": "(3)",
+              "q": "(21)",
               "options": [
                 "so",
                 "but",
@@ -339,7 +339,7 @@
               "en": "when she was on holiday."
             },
             {
-              "q": "(4)",
+              "q": "(22)",
               "options": [
                 "enjoy",
                 "want",
@@ -350,7 +350,7 @@
               "en": "want to see; enjoy takes -ing."
             },
             {
-              "q": "(5)",
+              "q": "(23)",
               "options": [
                 "the",
                 "one",
@@ -361,7 +361,7 @@
               "en": "seven days a week."
             },
             {
-              "q": "(6)",
+              "q": "(24)",
               "options": [
                 "because",
                 "so",
@@ -370,6 +370,69 @@
               "answer": 0,
               "zh": "最好訂位的原因是店裡很多人，用 because。",
               "en": "Book because it is busy."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 5,
+          "ask": "en_open",
+          "text": "Hi Sam,\nThanks (25) ＿＿＿＿＿ your email. I'm writing to tell you about my new hobby. Last month I started (26) ＿＿＿＿＿ the guitar. I have a lesson every Tuesday after school. My teacher is very patient, and she says I am getting better. At the moment I'm learning a song (27) ＿＿＿＿＿ my favourite band. It's quite difficult, but I practise (28) ＿＿＿＿＿ day. Would you like to come to my house next weekend? We (29) ＿＿＿＿＿ play some music together. Let me know (30) ＿＿＿＿＿ you can come!\nMax",
+          "tr": {
+            "zh": "山姆你好：\n謝謝你的來信。我想告訴你我的新嗜好。上個月我開始學吉他，每個星期二放學後上一堂課。老師很有耐心，她說我越來越進步了。我現在在學我最喜歡的樂團的一首歌，滿難的，不過我每天都練習。下週末要不要來我家？我們可以一起彈點音樂。告訴我你能不能來！\n麥克斯"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "for"
+              ],
+              "zh": "「Thanks for …」：謝謝某件事，固定用 for。",
+              "en": "Thanks for your email."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "playing",
+                "learning"
+              ],
+              "zh": "「start playing / learning the guitar」：開始彈、開始學吉他；start 後面接 -ing。",
+              "en": "started playing (or learning) the guitar."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "by",
+                "from"
+              ],
+              "zh": "「a song by my favourite band」：某個樂團的歌，用 by（也可以說 from）。",
+              "en": "a song by (or from) my favourite band."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "every"
+              ],
+              "zh": "「every day」：每天。",
+              "en": "every day."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "can",
+                "could"
+              ],
+              "zh": "提議一起做某事：「We can / could play …」。",
+              "en": "We can (could) play some music together."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "if",
+                "whether"
+              ],
+              "zh": "「Let me know if you can come」：告訴我你能不能來。",
+              "en": "Let me know if (whether) you can come."
             }
           ]
         }
