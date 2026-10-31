@@ -4,19 +4,20 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "Russian B1 listening in the ТРКИ-1 format (owner's plan 2026-10-30): a dialogue ×5, an interview ×4, a news item ×3 (en_q). Played once (ТРКИ-1, SPbU 2020). Original texts. Drafted in tools/.mockups/ru_b1_ls.py.",
+  "note": "Russian B1 listening in the ТРКИ-1 format (SPbU 2020: 30 questions in 6 parts, each played once): a dialogue ×5, an interview ×4, a news item ×3, a city-festival announcement ×6, a dialogue on moving flat ×6, the life of Yuri Gagarin ×6 (en_q). Original texts. Drafted in tools/.mockups/ru_b1_ls.py.",
   "types": [
     "en_q"
   ],
   "mock_plays": 1,
   "mock_counts": {
-    "en_q": 12
+    "en_q": 30
   },
   "sets": [
     {
       "id": "s1",
       "items": [
         {
+          "part": 1,
           "type": "en_q",
           "lines": [
             {
@@ -187,6 +188,7 @@
           ]
         },
         {
+          "part": 2,
           "type": "en_q",
           "lines": [
             {
@@ -328,6 +330,7 @@
           ]
         },
         {
+          "part": 3,
           "type": "en_q",
           "lines": [
             {
@@ -411,6 +414,522 @@
               "explain": {
                 "zh": "孩子來借書的次數變少了。",
                 "en": "Children came less often."
+              }
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте объявле́ние по ра́дио.",
+              "zh": "請聽一則廣播公告。",
+              "en": "Listen to a radio announcement."
+            },
+            {
+              "who": "F",
+              "s": "Дороги́е жи́тели! В э́ту суббо́ту наш го́род отмеча́ет свой день рожде́ния — ему́ исполня́ется 850 лет. Пра́здник начнётся в де́сять часо́в утра́ на центра́льной пло́щади. Днём в па́рке бу́дут рабо́тать мастерски́е для дете́й: там мо́жно научи́ться рисова́ть на де́реве и де́лать игру́шки из гли́ны. В шесть часо́в ве́чера на на́бережной вы́ступят музыка́льные гру́ппы из на́шего го́рода. А в оди́ннадцать ве́чера вы уви́дите пра́здничный салю́т. Обрати́те внима́ние: в суббо́ту центр го́рода бу́дет закры́т для маши́н, поэ́тому сове́туем прие́хать на метро́. Авто́бусы бу́дут ходи́ть до ча́су но́чи.",
+              "zh": "親愛的市民！這個星期六是我們城市的生日——它滿 850 歲了。慶典上午十點在中央廣場開始。白天公園裡會有兒童工作坊：可以學在木頭上畫畫，用黏土做玩具。晚上六點，本市的樂團會在河岸表演。晚上十一點會有慶祝煙火。請注意：星期六市中心禁止汽車通行，所以建議搭地鐵前來。公車會開到凌晨一點。",
+              "en": "Dear residents! This Saturday our city celebrates its birthday — it turns 850. The celebration will begin at ten in the morning on the central square. During the day there will be workshops for children in the park: they can learn to paint on wood and make clay toys. At six in the evening, music groups from our city will perform on the embankment. And at eleven in the evening you will see the fireworks. Please note: on Saturday the city centre will be closed to cars, so we advise you to come by metro. Buses will run until one in the morning."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Ско́лько лет исполня́ется го́роду?",
+                "zh": "這座城市滿幾歲？",
+                "en": "How old is the city turning?"
+              },
+              "options": [
+                {
+                  "t": "500"
+                },
+                {
+                  "t": "850"
+                },
+                {
+                  "t": "1000"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「滿 850 歲」。",
+                "en": "It turns 850."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где начнётся пра́здник?",
+                "zh": "慶典在哪裡開始？",
+                "en": "Where will the celebration begin?"
+              },
+              "options": [
+                {
+                  "t": "в па́рке"
+                },
+                {
+                  "t": "на на́бережной"
+                },
+                {
+                  "t": "на центра́льной пло́щади"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "上午十點在中央廣場。",
+                "en": "On the central square at ten."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что мо́жно де́лать в де́тских мастерски́х?",
+                "zh": "兒童工作坊可以做什麼？",
+                "en": "What can you do at the children's workshops?"
+              },
+              "options": [
+                {
+                  "t": "де́лать игру́шки из гли́ны"
+                },
+                {
+                  "t": "петь пе́сни"
+                },
+                {
+                  "t": "игра́ть в футбо́л"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "在木頭上畫畫、用黏土做玩具。",
+                "en": "Paint on wood and make clay toys."
+              }
+            },
+            {
+              "ask": {
+                "s": "Когда́ начнётся конце́рт?",
+                "zh": "音樂會什麼時候開始？",
+                "en": "When does the concert start?"
+              },
+              "options": [
+                {
+                  "t": "в 10 часо́в"
+                },
+                {
+                  "t": "в 18 часо́в"
+                },
+                {
+                  "t": "в 23 ча́са"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "晚上六點在河岸；十一點是煙火。",
+                "en": "Six in the evening; eleven is the fireworks."
+              }
+            },
+            {
+              "ask": {
+                "s": "Почему́ лу́чше прие́хать на метро́?",
+                "zh": "為什麼最好搭地鐵？",
+                "en": "Why is it better to come by metro?"
+              },
+              "options": [
+                {
+                  "t": "Центр закры́т для маши́н."
+                },
+                {
+                  "t": "Метро́ беспла́тное."
+                },
+                {
+                  "t": "Авто́бусы не хо́дят."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "市中心禁止汽車通行。",
+                "en": "The centre is closed to cars."
+              }
+            },
+            {
+              "ask": {
+                "s": "До како́го вре́мени бу́дут ходи́ть авто́бусы?",
+                "zh": "公車開到幾點？",
+                "en": "Until what time will the buses run?"
+              },
+              "options": [
+                {
+                  "t": "до полу́ночи"
+                },
+                {
+                  "t": "до ча́су но́чи"
+                },
+                {
+                  "t": "до утра́"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「開到凌晨一點」。",
+                "en": "Until one in the morning."
+              }
+            }
+          ]
+        },
+        {
+          "part": 5,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте диало́г.",
+              "zh": "請聽一段對話。",
+              "en": "Listen to the dialogue."
+            },
+            {
+              "who": "M",
+              "s": "Ле́на, приве́т! Говоря́т, ты переезжа́ешь?",
+              "zh": "蓮娜，嗨！聽說妳要搬家？",
+              "en": "Lena, hi! I hear you're moving?"
+            },
+            {
+              "who": "F",
+              "s": "Да, наконе́ц-то нашла́ кварти́ру. Мне надое́ло жить в общежи́тии: там всегда́ шу́мно, и я не могу́ занима́ться.",
+              "zh": "對，終於找到房子了。我住宿舍住煩了：那裡總是很吵，我沒辦法念書。",
+              "en": "Yes, I've finally found a flat. I'm tired of living in the hall of residence: it's always noisy there and I can't study."
+            },
+            {
+              "who": "M",
+              "s": "А где кварти́ра? Далеко́ от университе́та?",
+              "zh": "房子在哪裡？離大學遠嗎？",
+              "en": "And where is the flat? Far from the university?"
+            },
+            {
+              "who": "F",
+              "s": "Нет, всего́ пятна́дцать мину́т пешко́м. Пра́вда, она́ ма́ленькая — одна́ ко́мната и ку́хня, — но зато́ све́тлая, и о́кна выхо́дят в парк.",
+              "zh": "不遠，走路只要十五分鐘。不過它很小——一個房間加一個廚房——但採光很好，窗戶面對公園。",
+              "en": "No, only fifteen minutes on foot. It's small, it's true — one room and a kitchen — but it's bright and the windows look out onto the park."
+            },
+            {
+              "who": "M",
+              "s": "Наве́рное, до́рого?",
+              "zh": "大概很貴吧？",
+              "en": "Expensive, I suppose?"
+            },
+            {
+              "who": "F",
+              "s": "Не о́чень. Я бу́ду жить там с подру́гой, с О́лей, и мы бу́дем плати́ть попола́м. Получа́ется двена́дцать ты́сяч в ме́сяц.",
+              "zh": "不太貴。我會和朋友奧莉亞一起住，我們平分房租。算起來每人每月一萬兩千。",
+              "en": "Not very. I'll live there with a friend, Olya, and we'll split it in half. That comes to twelve thousand a month."
+            },
+            {
+              "who": "M",
+              "s": "А когда́ переезжа́ешь? Тебе́ нужна́ по́мощь?",
+              "zh": "那妳什麼時候搬？需要幫忙嗎？",
+              "en": "And when are you moving? Do you need help?"
+            },
+            {
+              "who": "F",
+              "s": "В воскресе́нье. Е́сли помо́жешь перенести́ ве́щи, я пригото́влю тебе́ у́жин!",
+              "zh": "星期天。如果你幫我搬東西，我就做晚餐給你吃！",
+              "en": "On Sunday. If you help me carry my things, I'll cook you dinner!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Почему́ Ле́на хо́чет уе́хать из общежи́тия?",
+                "zh": "蓮娜為什麼想搬出宿舍？",
+                "en": "Why does Lena want to leave the hall of residence?"
+              },
+              "options": [
+                {
+                  "t": "Там до́рого."
+                },
+                {
+                  "t": "Там шу́мно."
+                },
+                {
+                  "t": "Оно́ далеко́ от университе́та."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "總是很吵，沒辦法念書。",
+                "en": "It is noisy; she cannot study."
+              }
+            },
+            {
+              "ask": {
+                "s": "Как далеко́ кварти́ра от университе́та?",
+                "zh": "房子離大學多遠？",
+                "en": "How far is the flat from the university?"
+              },
+              "options": [
+                {
+                  "t": "пять мину́т на авто́бусе"
+                },
+                {
+                  "t": "пятна́дцать мину́т пешко́м"
+                },
+                {
+                  "t": "полчаса́ на метро́"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "走路十五分鐘。",
+                "en": "Fifteen minutes on foot."
+              }
+            },
+            {
+              "ask": {
+                "s": "Кака́я кварти́ра?",
+                "zh": "房子是什麼樣子？",
+                "en": "What is the flat like?"
+              },
+              "options": [
+                {
+                  "t": "больша́я и тёмная"
+                },
+                {
+                  "t": "ма́ленькая и све́тлая"
+                },
+                {
+                  "t": "с двумя́ ко́мнатами"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "一個房間加廚房，採光很好。",
+                "en": "One room, bright."
+              }
+            },
+            {
+              "ask": {
+                "s": "Куда́ выхо́дят о́кна?",
+                "zh": "窗戶面向哪裡？",
+                "en": "What do the windows look out onto?"
+              },
+              "options": [
+                {
+                  "t": "в парк"
+                },
+                {
+                  "t": "на у́лицу"
+                },
+                {
+                  "t": "во двор"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "面對公園。",
+                "en": "The park."
+              }
+            },
+            {
+              "ask": {
+                "s": "С кем Ле́на бу́дет жить?",
+                "zh": "蓮娜會和誰住？",
+                "en": "Who will Lena live with?"
+              },
+              "options": [
+                {
+                  "t": "одна́"
+                },
+                {
+                  "t": "с сестро́й"
+                },
+                {
+                  "t": "с подру́гой"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "和朋友奧莉亞。",
+                "en": "With her friend Olya."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что Ле́на обеща́ет дру́гу?",
+                "zh": "蓮娜答應朋友什麼？",
+                "en": "What does Lena promise her friend?"
+              },
+              "options": [
+                {
+                  "t": "пригото́вить у́жин"
+                },
+                {
+                  "t": "заплати́ть за по́мощь"
+                },
+                {
+                  "t": "показа́ть го́род"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "幫忙搬東西就做晚餐給他吃。",
+                "en": "Dinner if he helps."
+              }
+            }
+          ]
+        },
+        {
+          "part": 6,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте расска́з о жи́зни изве́стного челове́ка.",
+              "zh": "請聽一段名人生平的故事。",
+              "en": "Listen to a story about a famous person's life."
+            },
+            {
+              "who": "M",
+              "s": "Ю́рий Гага́рин роди́лся 9 ма́рта 1934 го́да в дере́вне Клу́шино Смоле́нской о́бласти в просто́й семье́. Когда́ начала́сь война́, ему́ бы́ло всего́ семь лет. По́сле шко́лы он учи́лся в Лю́берцах на лите́йщика, а пото́м в индустриа́льном те́хникуме в Сара́тове. И́менно в Сара́тове он нача́л занима́ться в аэроклу́бе и впервы́е подня́лся в не́бо. По́сле э́того Гага́рин око́нчил лётное учи́лище и стал вое́нным лётчиком. В 1960 году́ его́ вы́брали в пе́рвую гру́ппу космона́втов. 12 апре́ля 1961 го́да на корабле́ «Восто́к» он пе́рвым в ми́ре полете́л в ко́смос. Полёт продолжа́лся 108 мину́т. Пе́ред ста́ртом Гага́рин сказа́л своё знамени́тое «Пое́хали!». По́сле полёта он стал изве́стен во всём ми́ре и побыва́л в деся́тках стран. Гага́рин поги́б в 1968 году́ во вре́мя трениро́вочного полёта. Сего́дня 12 апре́ля в Росси́и отмеча́ют День космона́втики.",
+              "zh": "尤里‧加加林 1934 年 3 月 9 日生於斯摩稜斯克州的克盧希諾村，家境平凡。戰爭開始時他才七歲。中學畢業後，他在柳別爾齊學鑄造工，後來在薩拉托夫的工業技術學校念書。就是在薩拉托夫，他開始參加飛行俱樂部，第一次飛上天空。之後加加林從飛行學校畢業，成為軍事飛行員。1960 年他被選入第一批太空人。1961 年 4 月 12 日，他乘坐「東方號」太空船，成為世界上第一個上太空的人。飛行持續了 108 分鐘。出發前加加林說了那句有名的「出發了！」。飛行之後他舉世聞名，去過幾十個國家。加加林 1968 年在一次訓練飛行中殉職。如今在俄羅斯，4 月 12 日是太空人節。",
+              "en": "Yuri Gagarin was born on 9 March 1934 in the village of Klushino in the Smolensk region, into an ordinary family. When the war began he was only seven. After school he trained as a foundry worker in Lyubertsy, and then at an industrial technical college in Saratov. It was in Saratov that he began going to a flying club and first went up into the sky. After that Gagarin graduated from flying school and became a military pilot. In 1960 he was chosen for the first group of cosmonauts. On 12 April 1961, aboard the spacecraft Vostok, he became the first person in the world to fly into space. The flight lasted 108 minutes. Before the launch Gagarin said his famous \"Let's go!\". After the flight he became famous all over the world and visited dozens of countries. Gagarin died in 1968 during a training flight. Today, 12 April is celebrated in Russia as Cosmonautics Day."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Где роди́лся Гага́рин?",
+                "zh": "加加林在哪裡出生？",
+                "en": "Where was Gagarin born?"
+              },
+              "options": [
+                {
+                  "t": "в Москве́"
+                },
+                {
+                  "t": "в дере́вне"
+                },
+                {
+                  "t": "в Сара́тове"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "斯摩稜斯克州的克盧希諾村。",
+                "en": "In the village of Klushino."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько лет бы́ло Гага́рину, когда́ начала́сь война́?",
+                "zh": "戰爭開始時加加林幾歲？",
+                "en": "How old was Gagarin when the war began?"
+              },
+              "options": [
+                {
+                  "t": "семь"
+                },
+                {
+                  "t": "де́сять"
+                },
+                {
+                  "t": "семна́дцать"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「才七歲」。",
+                "en": "Seven."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где Гага́рин впервы́е подня́лся в не́бо?",
+                "zh": "加加林在哪裡第一次飛上天空？",
+                "en": "Where did Gagarin first go up into the sky?"
+              },
+              "options": [
+                {
+                  "t": "в Лю́берцах"
+                },
+                {
+                  "t": "в Смоле́нске"
+                },
+                {
+                  "t": "в Сара́тове"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "在薩拉托夫的飛行俱樂部；柳別爾齊是學鑄造的地方。",
+                "en": "In the Saratov flying club; Lyubertsy is where he trained as a foundry worker."
+              }
+            },
+            {
+              "ask": {
+                "s": "Кем стал Гага́рин по́сле лётного учи́лища?",
+                "zh": "加加林飛行學校畢業後成為什麼？",
+                "en": "What did Gagarin become after flying school?"
+              },
+              "options": [
+                {
+                  "t": "инжене́ром"
+                },
+                {
+                  "t": "вое́нным лётчиком"
+                },
+                {
+                  "t": "учи́телем"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "成為軍事飛行員。",
+                "en": "A military pilot."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько продолжа́лся полёт в ко́смос?",
+                "zh": "太空飛行持續了多久？",
+                "en": "How long did the space flight last?"
+              },
+              "options": [
+                {
+                  "t": "108 мину́т"
+                },
+                {
+                  "t": "12 часо́в"
+                },
+                {
+                  "t": "оди́н день"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "108 分鐘。",
+                "en": "108 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что отмеча́ют в Росси́и 12 апре́ля?",
+                "zh": "俄羅斯在 4 月 12 日慶祝什麼？",
+                "en": "What is celebrated in Russia on 12 April?"
+              },
+              "options": [
+                {
+                  "t": "день рожде́ния Гага́рина"
+                },
+                {
+                  "t": "День космона́втики"
+                },
+                {
+                  "t": "День го́рода"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "太空人節；他的生日是 3 月 9 日。",
+                "en": "Cosmonautics Day; his birthday is 9 March."
               }
             }
           ]
