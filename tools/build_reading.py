@@ -277,6 +277,8 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             'en_wordform', 'en_transform', 'en_sections',
             # Goethe B2 Lesen Teil 4 (a text for each heading) and Teil 5 (a heading for each paragraph)
             'en_headings', 'en_titles',
+            # Goethe C1 Lesen Teil 4: who says it, or nobody (the last bank entry)
+            'en_who',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 
@@ -506,7 +508,7 @@ def build_sets(data, name, problems):
             bank = None
             if typ in EN_BANK_TYPES:
                 bank = it.get('bank', [])
-                if len(bank) < len(it.get('questions', [])) and it.get('ask') != 'en_sections':   # First Part 7 reuses its four sections
+                if len(bank) < len(it.get('questions', [])) and it.get('ask') not in ('en_sections', 'en_who'):   # First Part 7 reuses its four sections
                     problems.append(f'{iw}: a bank holds at least as many entries as questions')
             if typ in ZH_BANK_TYPES:
                 pic = it.get('pic') or {}
@@ -539,7 +541,7 @@ def build_sets(data, name, problems):
                     if isinstance(q.get('answer'), str) and q['answer'] in LETTERS:
                         q['answer'] = LETTERS.index(q['answer'])
                     # a Cambridge bank smaller than its questions (First Part 7: four texts, ten questions) reuses letters
-                    if q.get('answer') in used_letters and not (typ in EN_BANK_TYPES and (len(bank) < len(it.get('questions', [])) or it.get('ask') == 'en_sections')):
+                    if q.get('answer') in used_letters and not (typ in EN_BANK_TYPES and (len(bank) < len(it.get('questions', [])) or it.get('ask') in ('en_sections', 'en_who'))):
                         a = q.get('answer')
                         problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
                     used_letters.add(q.get('answer'))

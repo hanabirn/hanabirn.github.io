@@ -4,20 +4,758 @@
   "level": "C1",
   "order": 5,
   "n_options": 3,
-  "note": "German C1 listening in the Goethe-Zertifikat C1 format (owner's plan 2026-10-30): a lecture on language change ×5, a commentary ×2 (en_q), played once. ⚠️ from memory; the real paper is longer. Original texts. Drafted in tools/.mockups/de_c1_ls.py.",
+  "note": "German C1 listening in the Goethe-Zertifikat C1 format (2024 handbook, EXAMS.md): Teil 1 a podcast on three books, which book ×6 (once); Teil 2 an interview on handwriting, stimmt / stimmt nicht / nicht gesagt ×9 (twice); Teil 3 a discussion on housing in four sections ×2 (once each); Teil 4 a lecture on language change ×7 (twice) — 30 questions; items name their part and plays. Original texts. Drafted in tools/.mockups/de_c1_ls.py.",
   "types": [
-    "en_q"
+    "en_match",
+    "en_q",
+    "en_talk"
   ],
-  "mock_plays": 1,
+  "mock_plays": {
+    "en_match": 1,
+    "en_q": 2,
+    "en_talk": 2
+  },
   "mock_counts": {
-    "en_q": 7
+    "en_match": 6,
+    "en_q": 17,
+    "en_talk": 7
   },
   "sets": [
     {
       "id": "s1",
       "items": [
         {
+          "type": "en_match",
+          "part": 1,
+          "plays": 1,
+          "n_options": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Podcast über neue Sachbücher.",
+              "zh": "你會聽到一集介紹新非文學類書籍的 podcast。",
+              "en": "You will hear a podcast about new non-fiction books."
+            },
+            {
+              "who": "F",
+              "s": "Willkommen zu „Neu im Regal“. Heute stelle ich drei Bücher vor. Das erste, „Das stille Wasser“, ist eigentlich ein Roman: Eine Hydrologin kehrt in ihr Heimatdorf zurück, wo ein See langsam verschwindet. Dabei erfährt man nebenbei erstaunlich viel darüber, wie Grundwasser entsteht. Mich hat vor allem die Beziehung zwischen der Forscherin und ihrem Vater berührt.",
+              "zh": "歡迎收聽《新書上架》。今天介紹三本書。第一本《寂靜之水》其實是一本小說：一位水文學家回到家鄉，那裡的湖正慢慢消失。讀的過程中，順便學到很多地下水如何形成的知識。最打動我的是女研究員和她父親之間的關係。",
+              "en": "Welcome to \"New on the Shelf\". Today I'm presenting three books. The first, \"The Still Water\", is actually a novel: a hydrologist returns to her home village, where a lake is slowly disappearing. Along the way you learn an astonishing amount about how groundwater forms. What moved me most was the relationship between the researcher and her father."
+            },
+            {
+              "who": "F",
+              "s": "Das zweite Buch, „Wege aus der Hitze“, ist ein Sachbuch von zwei Stadtplanern. Sie zeigen an Beispielen aus Paris, Wien und Singapur, wie Städte im Sommer kühler werden können. Mir gefällt, dass sie keine Wunderlösungen versprechen, sondern auch die Kosten offen nennen.",
+              "zh": "第二本《走出炎熱》是兩位都市規劃師寫的非文學作品。他們以巴黎、維也納和新加坡為例，說明城市夏天怎麼變涼。我喜歡他們不承諾萬靈丹，也坦白說出成本。",
+              "en": "The second book, \"Ways out of the Heat\", is non-fiction by two urban planners. Using examples from Paris, Vienna and Singapore, they show how cities can become cooler in summer. I like that they promise no miracle solutions but also name the costs openly."
+            },
+            {
+              "who": "F",
+              "s": "Und schließlich „Die Stadt der Bienen“: Eine Imkerin erzählt, wie sie auf den Dächern Berlins Bienenvölker hält. Das Buch ist voller Fotos und eignet sich auch für Kinder. Etwas zu kurz kommt allerdings die Frage, ob Stadtbienen den Wildbienen Nahrung wegnehmen — eine Debatte, die unter Fachleuten heftig geführt wird.",
+              "zh": "最後是《蜜蜂之城》：一位養蜂人講述她如何在柏林的屋頂上養蜂。書裡有很多照片，也適合孩子看。不過有一個問題談得太少：城市蜜蜂會不會搶走野生蜜蜂的食物——這是專家之間爭論很激烈的話題。",
+              "en": "And finally \"The City of Bees\": a beekeeper tells how she keeps bee colonies on Berlin's rooftops. The book is full of photos and is also suitable for children. The question of whether city bees take food away from wild bees is somewhat neglected, though — a debate that experts conduct fiercely."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Das Buch erzählt eine erfundene Geschichte.",
+                "zh": "這本書講的是虛構的故事。",
+                "en": "The book tells an invented story."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "第一本「其實是一本小說」。",
+                "en": "Book 1 is a novel."
+              }
+            },
+            {
+              "ask": {
+                "s": "Es werden Beispiele aus mehreren Ländern vorgestellt.",
+                "zh": "書裡介紹了好幾個國家的例子。",
+                "en": "Examples from several countries are presented."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "巴黎、維也納、新加坡。",
+                "en": "Paris, Vienna, Singapore."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Buch ist auch für ein junges Publikum geeignet.",
+                "zh": "這本書也適合年輕讀者。",
+                "en": "The book is also suitable for a young audience."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「也適合孩子看」。",
+                "en": "Suitable for children."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wissenschaftliche Informationen sind in die Handlung eingebaut.",
+                "zh": "科學知識融入在情節裡。",
+                "en": "Scientific information is built into the plot."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "小說裡順便學到地下水知識。",
+                "en": "Groundwater facts within the novel."
+              }
+            },
+            {
+              "ask": {
+                "s": "Eine umstrittene Frage wird zu wenig behandelt.",
+                "zh": "一個有爭議的問題談得太少。",
+                "en": "A controversial question is not covered enough."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "城市蜜蜂與野生蜜蜂的爭論談得太少。",
+                "en": "The city vs wild bee debate."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Autoren sprechen auch über finanzielle Aspekte.",
+                "zh": "作者也談到財務面。",
+                "en": "The authors also talk about financial aspects."
+              },
+              "options": [
+                {
+                  "t": "Buch 1 – „Das stille Wasser“"
+                },
+                {
+                  "t": "Buch 2 – „Wege aus der Hitze“"
+                },
+                {
+                  "t": "Buch 3 – „Die Stadt der Bienen“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「也坦白說出成本」。",
+                "en": "They name the costs."
+              }
+            }
+          ]
+        },
+        {
           "type": "en_q",
+          "part": 2,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Radiointerview mit dem Hirnforscher Tobias Maurer über das Schreiben mit der Hand.",
+              "zh": "你會聽到一段廣播訪談，對象是腦科學家托比亞斯‧毛勒，主題是手寫。",
+              "en": "You will hear a radio interview with the brain researcher Tobias Maurer about handwriting."
+            },
+            {
+              "who": "F",
+              "s": "Herr Maurer, viele Schulen schaffen die Schreibschrift ab, Kinder tippen früh auf Tablets. Ist das ein Problem?",
+              "zh": "毛勒先生，很多學校廢除了連寫體，孩子很早就在平板上打字。這是問題嗎？",
+              "en": "Mr Maurer, many schools are abolishing joined-up writing, and children type on tablets early. Is that a problem?"
+            },
+            {
+              "who": "M",
+              "s": "Ich würde nicht von einem Problem sprechen, aber von einem Verlust. Wenn wir mit der Hand schreiben, ist das Gehirn deutlich aktiver als beim Tippen — vor allem die Bereiche, die mit Lernen und Gedächtnis zu tun haben. Studien zeigen, dass Studierende, die in Vorlesungen mit der Hand mitschreiben, sich den Stoff besser merken. Beim Tippen schreibt man oft fast wörtlich mit, ohne nachzudenken. Mit der Hand muss man auswählen und zusammenfassen.",
+              "zh": "我不會說是問題，但會說是一種損失。手寫時，大腦明顯比打字時活躍——尤其是和學習、記憶有關的區域。研究顯示，上課用手寫筆記的學生比較記得住內容。打字時常常幾乎逐字記下，沒有思考。手寫則必須挑選和摘要。",
+              "en": "I wouldn't speak of a problem, but of a loss. When we write by hand, the brain is considerably more active than when typing — above all the areas to do with learning and memory. Studies show that students who take notes by hand in lectures remember the material better. When typing, you often write almost word for word without thinking. By hand you have to select and summarise."
+            },
+            {
+              "who": "F",
+              "s": "Heißt das, Computer haben in der Schule nichts zu suchen?",
+              "zh": "這表示電腦不該出現在學校嗎？",
+              "en": "Does that mean computers have no place in school?"
+            },
+            {
+              "who": "M",
+              "s": "Keineswegs. Tippen ist eine wichtige Kulturtechnik, die Kinder lernen müssen. Ich plädiere für beides — aber in der richtigen Reihenfolge: zuerst die Hand, dann die Tastatur. Mein eigenes Buch habe ich übrigens am Computer geschrieben; nur die Gliederung entsteht bei mir immer auf Papier.",
+              "zh": "完全不是。打字是孩子必須學會的重要文化技能。我主張兩者都要——但順序要對：先手寫，再鍵盤。順帶一提，我自己的書是用電腦寫的；只有大綱總是先寫在紙上。",
+              "en": "Not at all. Typing is an important cultural skill that children must learn. I argue for both — but in the right order: first the hand, then the keyboard. By the way, I wrote my own book on the computer; only the outline always comes about on paper for me."
+            },
+            {
+              "who": "F",
+              "s": "Wird die Handschrift aussterben?",
+              "zh": "手寫會消失嗎？",
+              "en": "Will handwriting die out?"
+            },
+            {
+              "who": "M",
+              "s": "Das glaube ich nicht. Gerade junge Leute entdecken Notizbücher und Kalligrafie wieder. Aber sie wird zu etwas Besonderem werden, so wie heute ein handgeschriebener Brief.",
+              "zh": "我不這麼認為。正是年輕人重新發現了筆記本和書法。但它會變成一種特別的東西，就像今天的手寫信一樣。",
+              "en": "I don't think so. Young people in particular are rediscovering notebooks and calligraphy. But it will become something special, like a handwritten letter today."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Herr Maurer hält die Entwicklung für einen Verlust.",
+                "zh": "毛勒認為這個發展是一種損失。",
+                "en": "Mr Maurer considers the development a loss."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「不是問題，而是損失」。",
+                "en": "\"Not a problem, but a loss.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Beim Schreiben mit der Hand ist das Gehirn weniger aktiv.",
+                "zh": "手寫時大腦比較不活躍。",
+                "en": "The brain is less active when writing by hand."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "相反，比打字時更活躍。",
+                "en": "The opposite: more active."
+              }
+            },
+            {
+              "ask": {
+                "s": "Handschriftliche Notizen helfen beim Behalten von Lerninhalten.",
+                "zh": "手寫筆記有助於記住學習內容。",
+                "en": "Handwritten notes help retain what is learnt."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "手寫筆記的學生比較記得住。",
+                "en": "Students who write by hand remember better."
+              }
+            },
+            {
+              "ask": {
+                "s": "Beim Tippen fasst man Inhalte stärker zusammen.",
+                "zh": "打字時比較會摘要內容。",
+                "en": "When typing you summarise content more."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "打字幾乎逐字記，手寫才要摘要。",
+                "en": "Typing is near word for word."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Maurer will Computer aus den Schulen verbannen.",
+                "zh": "毛勒想把電腦趕出學校。",
+                "en": "Mr Maurer wants to ban computers from schools."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「完全不是」，他主張兩者都要。",
+                "en": "\"Not at all\" — both."
+              }
+            },
+            {
+              "ask": {
+                "s": "Kinder sollen zuerst mit der Hand schreiben lernen.",
+                "zh": "孩子應該先學手寫。",
+                "en": "Children should learn to write by hand first."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「先手寫，再鍵盤」。",
+                "en": "First the hand, then the keyboard."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Maurer hat sein Buch mit der Hand geschrieben.",
+                "zh": "毛勒的書是手寫的。",
+                "en": "Mr Maurer wrote his book by hand."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "用電腦寫的，只有大綱寫在紙上。",
+                "en": "On the computer; only the outline on paper."
+              }
+            },
+            {
+              "ask": {
+                "s": "In Finnland wird Schreibschrift nicht mehr unterrichtet.",
+                "zh": "芬蘭已經不教連寫體了。",
+                "en": "Joined-up writing is no longer taught in Finland."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "訪談沒有提到芬蘭。",
+                "en": "Finland is not mentioned."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Maurer erwartet, dass die Handschrift verschwindet.",
+                "zh": "毛勒預期手寫會消失。",
+                "en": "Mr Maurer expects handwriting to disappear."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我不這麼認為」，會變成特別的東西。",
+                "en": "\"I don't think so\"; it will become special."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch über das Wohnen der Zukunft. Abschnitt 1.",
+              "zh": "你會聽到一段關於未來居住方式的對談。第一段。",
+              "en": "You will hear a conversation about housing in the future. Section 1."
+            },
+            {
+              "who": "M",
+              "s": "Frau Dr. Kern, Sie sind Soziologin. Warum wird das Thema Wohnen gerade jetzt so heftig diskutiert?",
+              "zh": "柯恩博士，您是社會學家。為什麼居住問題現在討論得這麼激烈？",
+              "en": "Dr Kern, you are a sociologist. Why is housing being debated so fiercely right now?"
+            },
+            {
+              "who": "F",
+              "s": "Weil zwei Entwicklungen zusammenkommen: Die Mieten in den Städten steigen, und gleichzeitig leben immer mehr Menschen allein — in großen Wohnungen, die einmal für Familien gebaut wurden. Wir haben also nicht nur zu wenig Wohnraum, sondern nutzen ihn auch schlecht.",
+              "zh": "因為兩個發展同時發生：城市房租上漲，同時越來越多人獨居——住在當初為家庭蓋的大公寓裡。所以我們不只是住房不夠，也沒有好好利用。",
+              "en": "Because two developments are coming together: rents in the cities are rising, and at the same time more and more people live alone — in large flats that were once built for families. So we don't just have too little housing; we also use it badly."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Laut Frau Kern ist ein Grund für die Wohnungsknappheit, dass…",
+                "zh": "柯恩認為住房短缺的原因之一是……",
+                "en": "According to Dr Kern, one reason for the housing shortage is that…"
+              },
+              "options": [
+                {
+                  "t": "zu wenig gebaut wird."
+                },
+                {
+                  "t": "viele Menschen allein in großen Wohnungen leben."
+                },
+                {
+                  "t": "Familien in die Stadt ziehen."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "越來越多人獨居在大公寓。",
+                "en": "Many live alone in large flats."
+              }
+            },
+            {
+              "ask": {
+                "s": "Frau Kern meint, der vorhandene Wohnraum…",
+                "zh": "柯恩認為現有的住房……",
+                "en": "Dr Kern thinks the existing housing…"
+              },
+              "options": [
+                {
+                  "t": "wird nicht gut genutzt."
+                },
+                {
+                  "t": "ist zu teuer gebaut."
+                },
+                {
+                  "t": "reicht völlig aus."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「沒有好好利用」。",
+                "en": "\"We use it badly.\""
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 2.",
+              "zh": "第二段。",
+              "en": "Section 2."
+            },
+            {
+              "who": "M",
+              "s": "Herr Albers, Sie planen als Architekt sogenannte Clusterwohnungen. Was ist das?",
+              "zh": "阿爾貝斯先生，您是建築師，規劃所謂的「群集公寓」。那是什麼？",
+              "en": "Mr Albers, as an architect you design so-called cluster flats. What are they?"
+            },
+            {
+              "who": "M2",
+              "s": "Jeder hat ein kleines privates Apartment mit Bad, aber Küche, Wohnzimmer und Garten teilt man mit anderen. So braucht jeder weniger Fläche und ist trotzdem nicht allein. Interessanterweise sind es vor allem Menschen über sechzig, die sich dafür melden.",
+              "zh": "每個人有一間附浴室的小套房，但廚房、客廳和花園和別人共用。這樣每個人需要的面積比較少，又不會孤單。有趣的是，報名的主要是六十歲以上的人。",
+              "en": "Everyone has a small private apartment with a bathroom, but you share the kitchen, living room and garden with others. That way everyone needs less space and still isn't alone. Interestingly, it's mainly people over sixty who sign up."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "In Clusterwohnungen…",
+                "zh": "在群集公寓裡……",
+                "en": "In cluster flats…"
+              },
+              "options": [
+                {
+                  "t": "wohnt jeder in einer eigenen großen Wohnung."
+                },
+                {
+                  "t": "teilt man einige Räume mit anderen."
+                },
+                {
+                  "t": "leben nur Familien."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "廚房、客廳、花園共用。",
+                "en": "Kitchen, living room and garden are shared."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wer interessiert sich besonders für dieses Modell?",
+                "zh": "誰特別對這種模式有興趣？",
+                "en": "Who is especially interested in this model?"
+              },
+              "options": [
+                {
+                  "t": "Studierende"
+                },
+                {
+                  "t": "ältere Menschen"
+                },
+                {
+                  "t": "junge Familien"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "主要是六十歲以上的人。",
+                "en": "Mainly people over sixty."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 3.",
+              "zh": "第三段。",
+              "en": "Section 3."
+            },
+            {
+              "who": "F",
+              "s": "Ich sehe da aber auch eine Gefahr. Solche Projekte sind oft teuer und werden von gut verdienenden Akademikern bewohnt. Für eine alleinerziehende Verkäuferin sind sie kaum erreichbar.",
+              "zh": "不過我也看到一個危險。這類計畫往往很貴，住的是收入好的知識分子。對一個單親的店員來說，幾乎遙不可及。",
+              "en": "But I also see a danger there. Such projects are often expensive and are lived in by well-paid academics. For a single-parent sales assistant they are hardly within reach."
+            },
+            {
+              "who": "M2",
+              "s": "Das stimmt leider. Deshalb müssten Städte Grundstücke günstiger an Genossenschaften vergeben, statt sie an den Meistbietenden zu verkaufen.",
+              "zh": "可惜這是事實。所以城市應該以較便宜的價格把土地交給合作社，而不是賣給出價最高的人。",
+              "en": "Unfortunately that's true. That's why cities should give plots to cooperatives more cheaply instead of selling them to the highest bidder."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Kern kritisiert, dass solche Projekte…",
+                "zh": "柯恩批評這類計畫……",
+                "en": "Dr Kern criticises that such projects…"
+              },
+              "options": [
+                {
+                  "t": "zu weit außerhalb liegen."
+                },
+                {
+                  "t": "für Menschen mit wenig Geld schwer zugänglich sind."
+                },
+                {
+                  "t": "zu wenig Privatsphäre bieten."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "很貴，單親店員遙不可及。",
+                "en": "Expensive, out of reach for low earners."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Albers fordert, dass Städte…",
+                "zh": "阿爾貝斯要求城市……",
+                "en": "Mr Albers demands that cities…"
+              },
+              "options": [
+                {
+                  "t": "mehr Hochhäuser bauen."
+                },
+                {
+                  "t": "Bauland günstiger an Genossenschaften geben."
+                },
+                {
+                  "t": "die Mieten einfrieren."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "把土地便宜交給合作社。",
+                "en": "Give land to cooperatives more cheaply."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 4.",
+              "zh": "第四段。",
+              "en": "Section 4."
+            },
+            {
+              "who": "M",
+              "s": "Zum Schluss: Wie wohnen wir in zwanzig Jahren?",
+              "zh": "最後：二十年後我們會怎麼住？",
+              "en": "Finally: how will we live in twenty years?"
+            },
+            {
+              "who": "F",
+              "s": "Ich hoffe, flexibler. Wohnungen sollten mitwachsen und schrumpfen können — ein Zimmer, das man abtrennt und vermietet, wenn die Kinder ausgezogen sind.",
+              "zh": "我希望更有彈性。房子應該能跟著變大或變小——例如孩子搬出去後，可以隔出一個房間出租。",
+              "en": "More flexibly, I hope. Flats should be able to grow and shrink — a room you can separate off and let once the children have moved out."
+            },
+            {
+              "who": "M2",
+              "s": "Und weniger nach Alter getrennt. Die besten Projekte, die ich kenne, mischen Generationen — die Rentnerin passt auf die Kinder auf, der Student hilft beim Einkaufen.",
+              "zh": "還有比較不會依年齡分開。我知道最好的計畫都是混合世代——退休的阿姨幫忙看小孩，學生幫忙買東西。",
+              "en": "And less separated by age. The best projects I know mix generations — the pensioner looks after the children, the student helps with the shopping."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Kern wünscht sich Wohnungen, die…",
+                "zh": "柯恩希望房子……",
+                "en": "Dr Kern would like flats that…"
+              },
+              "options": [
+                {
+                  "t": "sich an veränderte Lebenssituationen anpassen lassen."
+                },
+                {
+                  "t": "größer sind als heute."
+                },
+                {
+                  "t": "nur für eine Person gedacht sind."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "能跟著變大或變小。",
+                "en": "Able to grow and shrink."
+              }
+            },
+            {
+              "ask": {
+                "s": "Gute Projekte zeichnen sich laut Herrn Albers dadurch aus, dass…",
+                "zh": "阿爾貝斯認為好的計畫的特點是……",
+                "en": "According to Mr Albers, good projects are marked by…"
+              },
+              "options": [
+                {
+                  "t": "dort nur junge Menschen wohnen."
+                },
+                {
+                  "t": "verschiedene Generationen zusammenleben."
+                },
+                {
+                  "t": "sie am Stadtrand liegen."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "混合世代。",
+                "en": "Mixing generations."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "plays": 2,
           "lines": [
             {
               "who": "N",
@@ -27,9 +765,9 @@
             },
             {
               "who": "M",
-              "s": "Meine Damen und Herren, kaum ein Thema erregt die Gemüter so sehr wie der Wandel der eigenen Sprache. Jede Generation klagt, die Jugend verderbe das Deutsche. Interessant ist jedoch, dass sich diese Klagen seit Jahrhunderten kaum verändert haben — nur die kritisierten Wörter wechseln. Was heute als Fehler gilt, ist morgen oft Standard. Denken Sie an das Wort ‚wegen‘ mit Dativ: Lange als nachlässig verpönt, ist es in der gesprochenen Sprache heute völlig normal. Sprachwandel folgt dabei durchaus Regeln. Häufig gebrauchte Formen werden kürzer, unregelmäßige Formen seltener Wörter werden regelmäßig — ‚backen, buk‘ ist fast verschwunden, ‚backte‘ hat sich durchgesetzt. Für die Sprachwissenschaft ist Wandel deshalb kein Verfall, sondern ein Zeichen von Lebendigkeit. Nur tote Sprachen ändern sich nicht. Das heißt allerdings nicht, dass Normen überflüssig wären: In Schule und Verwaltung braucht es eine verbindliche Form, damit alle einander verstehen.",
-              "zh": "各位女士先生，幾乎沒有一個話題像自己語言的變化那樣讓人激動。每一代人都抱怨年輕人敗壞了德語。有趣的是，這些抱怨幾百年來幾乎沒變——只是被批評的字換了。今天被認為是錯誤的，明天常常就成了標準。想想「wegen」接第三格：長久以來被斥為隨便，如今在口語裡完全正常。語言變化也有規律可循。常用的形式會變短，罕用字的不規則形式會變規則——「backen, buk」幾乎消失了，「backte」占了上風。所以對語言學來說，變化不是衰敗，而是有生命力的象徵。只有死語言不會變。不過這並不表示規範是多餘的：在學校和行政上，需要一個有約束力的形式，大家才能彼此理解。",
-              "en": "Ladies and gentlemen, hardly any topic stirs people up as much as change in their own language. Every generation complains that young people are ruining German. What is interesting, however, is that these complaints have barely changed for centuries — only the criticised words change. What counts as a mistake today is often standard tomorrow. Think of 'wegen' with the dative: long frowned upon as sloppy, it is now completely normal in spoken language. Language change does follow rules. Frequently used forms get shorter, irregular forms of rare words become regular — 'backen, buk' has almost disappeared; 'backte' has won. For linguistics, change is therefore not decay but a sign of life. Only dead languages do not change. That does not mean norms are superfluous: schools and administration need a binding form so that everyone understands one another."
+              "s": "Meine Damen und Herren, kaum ein Thema erregt die Gemüter so sehr wie der Wandel der eigenen Sprache. Jede Generation klagt, die Jugend verderbe das Deutsche. Interessant ist jedoch, dass sich diese Klagen seit Jahrhunderten kaum verändert haben — nur die kritisierten Wörter wechseln. Was heute als Fehler gilt, ist morgen oft Standard. Denken Sie an das Wort ‚wegen‘ mit Dativ: Lange als nachlässig verpönt, ist es in der gesprochenen Sprache heute völlig normal. Sprachwandel folgt dabei durchaus Regeln. Häufig gebrauchte Formen werden kürzer, unregelmäßige Formen seltener Wörter werden regelmäßig — ‚backen, buk‘ ist fast verschwunden, ‚backte‘ hat sich durchgesetzt. Auch Kontakt mit anderen Sprachen spielt eine Rolle: Das Deutsche hat im Lauf der Geschichte Wörter aus dem Lateinischen, dem Französischen und heute vor allem aus dem Englischen aufgenommen — und sie meist an die eigene Grammatik angepasst, man denke an ‚gedownloadet‘. Für die Sprachwissenschaft ist Wandel deshalb kein Verfall, sondern ein Zeichen von Lebendigkeit. Nur tote Sprachen ändern sich nicht. Das heißt allerdings nicht, dass Normen überflüssig wären: In Schule und Verwaltung braucht es eine verbindliche Form, damit alle einander verstehen.",
+              "zh": "各位女士先生，幾乎沒有一個話題像自己語言的變化那樣讓人激動。每一代人都抱怨年輕人敗壞了德語。有趣的是，這些抱怨幾百年來幾乎沒變——只是被批評的字換了。今天被認為是錯誤的，明天常常就成了標準。想想「wegen」接第三格：長久以來被斥為隨便，如今在口語裡完全正常。語言變化也有規律可循。常用的形式會變短，罕用字的不規則形式會變規則——「backen, buk」幾乎消失了，「backte」占了上風。和其他語言接觸也有影響：德語在歷史上吸收了拉丁文、法文的詞，如今主要是英文——而且大多套進自己的文法，想想「gedownloadet」。所以對語言學來說，變化不是衰敗，而是有生命力的象徵。只有死語言不會變。不過這並不表示規範是多餘的：在學校和行政上，需要一個有約束力的形式，大家才能彼此理解。",
+              "en": "Ladies and gentlemen, hardly any topic stirs people up as much as change in their own language. Every generation complains that young people are ruining German. What is interesting, however, is that these complaints have barely changed for centuries — only the criticised words change. What counts as a mistake today is often standard tomorrow. Think of 'wegen' with the dative: long frowned upon as sloppy, it is now completely normal in spoken language. Language change does follow rules. Frequently used forms get shorter, irregular forms of rare words become regular — 'backen, buk' has almost disappeared; 'backte' has won. Contact with other languages plays a part too: in the course of history German has taken in words from Latin, French and today above all English — and mostly adapted them to its own grammar; think of 'gedownloadet'. For linguistics, change is therefore not decay but a sign of life. Only dead languages do not change. That does not mean norms are superfluous: schools and administration need a binding form so that everyone understands one another."
             }
           ],
           "questions": [
@@ -104,6 +842,52 @@
             },
             {
               "ask": {
+                "s": "Wörter aus anderen Sprachen…",
+                "zh": "外語來的詞……",
+                "en": "Words from other languages…"
+              },
+              "options": [
+                {
+                  "t": "bleiben unverändert."
+                },
+                {
+                  "t": "werden meist der deutschen Grammatik angepasst."
+                },
+                {
+                  "t": "werden heute vermieden."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "大多套進自己的文法，例如 gedownloadet。",
+                "en": "Mostly adapted, e.g. gedownloadet."
+              }
+            },
+            {
+              "ask": {
+                "s": "Heute kommen neue Wörter vor allem aus dem…",
+                "zh": "今天新詞主要來自……",
+                "en": "Today new words come mainly from…"
+              },
+              "options": [
+                {
+                  "t": "Lateinischen."
+                },
+                {
+                  "t": "Französischen."
+                },
+                {
+                  "t": "Englischen."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「如今主要是英文」。",
+                "en": "Today above all English."
+              }
+            },
+            {
+              "ask": {
                 "s": "Für die Sprachwissenschaft ist Sprachwandel…",
                 "zh": "對語言學來說，語言變化是……",
                 "en": "For linguistics, language change is…"
@@ -146,71 +930,6 @@
               "explain": {
                 "zh": "學校和行政需要有約束力的形式。",
                 "en": "Needed in schools and administration."
-              }
-            }
-          ]
-        },
-        {
-          "type": "en_q",
-          "lines": [
-            {
-              "who": "N",
-              "s": "Sie hören einen Kommentar im Radio.",
-              "zh": "你會聽到一段廣播評論。",
-              "en": "You will hear a radio commentary."
-            },
-            {
-              "who": "F",
-              "s": "Die Vier-Tage-Woche wird gern als Allheilmittel gegen Stress gefeiert. Doch wer genauer hinsieht, erkennt ein Muster: Profitieren tun vor allem Berufe, in denen man ohnehin am Schreibtisch sitzt. Für Pflegekräfte, Busfahrer oder Verkäuferinnen bedeutet eine verkürzte Woche schlicht, dass mehr Personal gebraucht wird — und das fehlt schon heute. Wer also über Arbeitszeit spricht, sollte nicht nur über Bürojobs reden.",
-              "zh": "一週工作四天常被讚為對抗壓力的萬靈丹。但仔細一看就會發現一個模式：受益的主要是本來就坐在辦公桌前的職業。對護理人員、公車司機或店員來說，縮短工作週只代表需要更多人手——而人手現在就已經不夠了。所以談工時的人，不該只談辦公室工作。",
-              "en": "The four-day week is often celebrated as a cure-all for stress. But look more closely and you see a pattern: it mainly benefits jobs where people sit at a desk anyway. For carers, bus drivers or shop assistants, a shorter week simply means more staff are needed — and they are already lacking. So anyone talking about working hours should not only talk about office jobs."
-            }
-          ],
-          "questions": [
-            {
-              "ask": {
-                "s": "Die Kommentatorin meint, die Vier-Tage-Woche…",
-                "zh": "評論者認為一週四天……",
-                "en": "The commentator thinks the four-day week…"
-              },
-              "options": [
-                {
-                  "t": "hilft allen Berufen gleich."
-                },
-                {
-                  "t": "nützt vor allem Büroberufen."
-                },
-                {
-                  "t": "sollte verboten werden."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "受益的主要是辦公桌前的職業。",
-                "en": "Mainly benefits desk jobs."
-              }
-            },
-            {
-              "ask": {
-                "s": "Was ist das Problem in Pflege und Handel?",
-                "zh": "護理和零售業的問題是什麼？",
-                "en": "What is the problem in care and retail?"
-              },
-              "options": [
-                {
-                  "t": "Es fehlt schon jetzt Personal."
-                },
-                {
-                  "t": "Die Löhne sind zu hoch."
-                },
-                {
-                  "t": "Die Arbeit ist zu leicht."
-                }
-              ],
-              "answer": "A",
-              "explain": {
-                "zh": "需要更多人手，而現在就不夠。",
-                "en": "Staff are already lacking."
               }
             }
           ]
