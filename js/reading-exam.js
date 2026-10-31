@@ -211,19 +211,11 @@ function readingExSegs(segs) {
 }
 
 /* a character with its reading: the Taiwan edition's segments carry zhuyin too (a 5th element), as a
-   second ruby around the first; the card's data-zhrd (注音 / 不顯示, reading_tw_rd — the Mainland pages
-   use reading_zh_rd) hides one or both (css/reading.css .rt-py / .rt-zy) */
+   second ruby around the first; the card's data-zhrd (HSK Taiwan rounds always 注音; the reader
+   by reading_zh_rd) hides one or both (css/reading.css .rt-py / .rt-zy) */
 function zhRuby(text, py, zy) {
     return zy ? `<ruby><ruby>${escHtml(text)}<rt class="rt-py">${escHtml(py)}</rt></ruby><rt class="rt-zy">${escHtml(zy)}</rt></ruby>`
         : `<ruby>${escHtml(text)}<rt>${escHtml(py)}</rt></ruby>`;
-}
-
-/* the Taiwan edition's reading switch (注音 / 不顯示, reading_tw_rd), for the reading rounds and 聽解;
-   call is the function that takes the choice (readingSetTwRd / listeningSetZhRd) */
-function zhRdSwitchHtml(call) {
-    const rd = readingTwRd();
-    return `<span class="rd-seg" role="group" aria-label="${escHtml(t('grammar_rd_label'))}">${READING_TW_RD.map(v =>
-        `<button type="button" class="mode-btn${rd === v ? ' mode-btn-active' : ''}" aria-pressed="${rd === v}" onclick="${call}('${v}')">${escHtml(t(v === 'off' ? 'reading_rd_off' : 'grammar_rd_' + v))}</button>`).join('')}</span>`;
 }
 
 /* a field shown with its marks (__underline__, （　） blanks, ㉠–㉣): Japanese from its segments */
@@ -476,10 +468,9 @@ function readingExamHtml(set) {
     }).join('')}</div>` : '';
     // the furigana switch heads the questions' column (above the columns it pushed the text down)
     const tw = set.edition === 'tw';
-    const twRd = tw ? zhRdSwitchHtml('readingSetTwRd') : '';
     const pyKey = k => tw ? k.replace('rdx_py_', 'rdx_zy_') : k;   // the Taiwan edition says 注音
     const tools = lang === 'zh' ? (readingExHasHidden(item, own) ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t(pyKey('rdx_py_all')))}</button>
-            <span class="rd-meta">${escHtml(t(pyKey(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level'), { lv: set.level }))}</span>${twRd}</p>` : twRd ? `<p class="rdx-tools">${twRd}</p>` : '')
+            <span class="rd-meta">${escHtml(t(pyKey(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level'), { lv: set.level }))}</span></p>` : '')
         : lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
             <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : '';
     const firstQ = own[0].i;

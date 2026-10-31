@@ -138,8 +138,8 @@ async function renderListening() {
         return;
     }
     const lv = listeningLevels[listeningLevelId];
-    // the Taiwan edition: Traditional in the TC font, zhuyin or none by reading_tw_rd (css/reading.css)
-    box.dataset.zhrd = lv.edition === 'tw' ? readingTwRd() : readingZhRd();
+    // the Taiwan edition: Traditional in the TC font, always with zhuyin (css/reading.css; no switch, owner 2026-10-31)
+    box.dataset.zhrd = lv.edition === 'tw' ? 'zhuyin' : readingZhRd();
     box.classList.toggle('zh-tw', lv.edition === 'tw');
     if (listeningView === 'quiz' && listeningSession) { box.innerHTML = listeningQuizHtml(lv); listeningPlayerUi(); listeningAutoPlay(); }
     else if (listeningView === 'result' && listeningSession) box.innerHTML = listeningResultHtml(lv);
@@ -167,14 +167,6 @@ function listeningStop() {
     listeningClockStop();
     if (typeof stopSpeech === 'function') stopSpeech();
     listeningMarkPlaying();
-}
-
-/* the Taiwan edition's 注音 / 不顯示 (shared with 閱讀: reading_tw_rd) */
-function listeningSetZhRd(v) {
-    readingSetPref('reading_tw_rd', v);
-    const box = document.getElementById('listening-card');
-    if (box) box.dataset.zhrd = readingTwRd();
-    if (listeningView === 'quiz' && listeningSession) listeningRerender(); else renderListening();
 }
 
 function listeningPickLevel(id) {
@@ -258,7 +250,6 @@ function listeningListHtml(lv) {
     return `<h3>${escHtml(t('listening_title'))}${introInfoBtn('listening_intro')}</h3>
         ${introHtml('listening_intro')}
         ${learnPickerHtml(listeningIndex, lv.id, 'listeningPickLevel', id => learnDoneCount(prog, id, LISTENING_PASS))}
-        ${lv.edition === 'tw' ? `<p class="rdx-tools ls-tw-tools">${zhRdSwitchHtml('listeningSetZhRd')}</p>` : ''}
         ${LISTENING_SOON[lv.lang] ? `<p class="ls-soon">🎙️ ${escHtml(t('listening_soon_rec', { levels: LISTENING_SOON[lv.lang] }))}</p>` : ''}
         <label class="ls-exam">
             <input type="checkbox" ${exam ? 'checked' : ''} onchange="listeningSetPref('listening_exam', this.checked ? '1' : '0'); renderListening()">

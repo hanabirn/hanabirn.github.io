@@ -97,7 +97,9 @@ async function renderReading() {
         return;
     }
     const set = readingSets[readingSetId];
-    box.dataset.zhrd = set && set.edition === 'tw' ? readingTwRd() : readingZhRd();   // which Chinese readings show (css/reading.css)
+    // which Chinese readings show (css/reading.css): the HSK Taiwan edition always zhuyin (owner, 2026-10-31 —
+    // no switch, only 全部顯示注音), the reader by its 拼音 / 注音 / 兩者 / 不顯示
+    box.dataset.zhrd = set && set.edition === 'tw' ? 'zhuyin' : readingZhRd();
     box.classList.toggle('zh-tw', !!set && set.edition === 'tw');   // the HSK Taiwan edition: TC font
     // the reader uses two columns on wide screens (css/reading.css, css/base.css)
     // the list too: its passages and rounds in two columns (owner's layout rule, 2026-10-23)
@@ -215,19 +217,6 @@ function readingZhScript() {
 function readingZhRd() {
     const v = readingPref('reading_zh_rd', 'pinyin');
     return READING_ZH_RD.includes(v) ? v : 'pinyin';
-}
-
-/* the HSK Taiwan edition shows zhuyin or nothing (owner, 2026-10-31): its own setting, apart from the
-   Mainland pages' pinyin / zhuyin / both / none */
-const READING_TW_RD = ['zhuyin', 'off'];
-function readingTwRd() {
-    const v = readingPref('reading_tw_rd', 'zhuyin');
-    return READING_TW_RD.includes(v) ? v : 'zhuyin';
-}
-
-function readingSetTwRd(v) {
-    readingSetPref('reading_tw_rd', v);
-    renderReading();
 }
 
 function readingSetZh(key, v) {
