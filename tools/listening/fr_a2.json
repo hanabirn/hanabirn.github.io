@@ -1,0 +1,648 @@
+{
+  "id": "fr_a2",
+  "lang": "fr",
+  "level": "A2",
+  "order": 2,
+  "unlisted": true,
+  "n_options": 3,
+  "note": "French A2 listening in the DELF A2 format (owner's plan 2026-10-30): Exercice 1 four announcements (en_talk), Exercice 2 a radio programme ×4, Exercice 3 a phone message ×3 (en_q), Exercice 4 five dialogues matched to six functions (en_match). Each recording twice. Original texts. Drafted in tools/.mockups/fr_a2_ls.py.",
+  "types": [
+    "en_talk",
+    "en_q",
+    "en_match"
+  ],
+  "mock_plays": 2,
+  "mock_counts": {
+    "en_talk": 4,
+    "en_q": 7,
+    "en_match": 5
+  },
+  "sets": [
+    {
+      "id": "s1",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un supermarché.",
+              "zh": "你在超市裡。",
+              "en": "You are in a supermarket."
+            },
+            {
+              "who": "F",
+              "s": "Chers clients, profitez aujourd'hui de notre promotion sur les fruits : deux kilos de pommes achetés, le troisième offert ! Rendez-vous au rayon fruits et légumes, au fond du magasin.",
+              "zh": "各位顧客，今天把握水果特價：蘋果買兩公斤送一公斤！請到賣場最裡面的蔬果區。",
+              "en": "Dear customers, make the most of our fruit offer today: buy two kilos of apples, get the third free! Go to the fruit and vegetable section at the back of the shop."
+            }
+          ],
+          "ask": {
+            "s": "Qu'est-ce qui est en promotion ?",
+            "zh": "什麼在特價？",
+            "en": "What is on offer?"
+          },
+          "options": [
+            {
+              "t": "les légumes"
+            },
+            {
+              "t": "les pommes"
+            },
+            {
+              "t": "le pain"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「蘋果買兩公斤送一公斤」。",
+            "en": "Buy two kilos of apples, get the third free."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes à la piscine.",
+              "zh": "你在游泳池。",
+              "en": "You are at the swimming pool."
+            },
+            {
+              "who": "M",
+              "s": "Attention, la piscine va fermer dans quinze minutes. Merci de sortir de l'eau à 19 h 45. Les douches restent ouvertes jusqu'à 20 heures.",
+              "zh": "請注意，游泳池再十五分鐘就要關了。請在 19:45 離開泳池。淋浴間開到晚上 8 點。",
+              "en": "Attention, the pool closes in fifteen minutes. Please get out of the water at 7.45. The showers stay open until 8 p.m."
+            }
+          ],
+          "ask": {
+            "s": "À quelle heure faut-il sortir de l'eau ?",
+            "zh": "幾點要離開泳池？",
+            "en": "What time must people get out of the water?"
+          },
+          "options": [
+            {
+              "t": "à 19 h 30"
+            },
+            {
+              "t": "à 19 h 45"
+            },
+            {
+              "t": "à 20 h"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「請在 19:45 離開泳池」；8 點是淋浴間關門。",
+            "en": "At 7.45; 8 p.m. is when the showers close."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans l'avion.",
+              "zh": "你在飛機上。",
+              "en": "You are on the plane."
+            },
+            {
+              "who": "F",
+              "s": "Mesdames et messieurs, nous allons bientôt atterrir à Montréal. Il est 15 h 20, heure locale, et il fait moins cinq degrés. Merci d'attacher votre ceinture.",
+              "zh": "各位旅客，我們即將降落蒙特婁。當地時間下午 3 點 20 分，氣溫零下五度。請繫好安全帶。",
+              "en": "Ladies and gentlemen, we will soon land in Montreal. It is 3.20 p.m. local time and it is minus five degrees. Please fasten your seat belt."
+            }
+          ],
+          "ask": {
+            "s": "Quel temps fait-il à Montréal ?",
+            "zh": "蒙特婁天氣如何？",
+            "en": "What's the weather like in Montreal?"
+          },
+          "options": [
+            {
+              "t": "Il fait froid."
+            },
+            {
+              "t": "Il fait chaud."
+            },
+            {
+              "t": "Il pleut."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "零下五度：很冷。",
+            "en": "Minus five: cold."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez votre répondeur.",
+              "zh": "你在聽電話答錄機。",
+              "en": "You are listening to your answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Bonjour, ici le garage Dupont. Votre voiture est prête, mais nous fermons à midi le samedi. Vous pouvez venir la chercher lundi à partir de 8 heures.",
+              "zh": "您好，這裡是杜邦修車廠。您的車修好了，不過我們星期六中午就關門。您可以星期一早上 8 點以後來取車。",
+              "en": "Hello, this is the Dupont garage. Your car is ready, but we close at noon on Saturdays. You can come and collect it on Monday from 8 a.m."
+            }
+          ],
+          "ask": {
+            "s": "Le garage téléphone pour dire que…",
+            "zh": "修車廠打來說……",
+            "en": "The garage is calling to say that…"
+          },
+          "options": [
+            {
+              "t": "la voiture est réparée."
+            },
+            {
+              "t": "la réparation coûte cher."
+            },
+            {
+              "t": "le garage est fermé lundi."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「您的車修好了」，星期一可以來拿。",
+            "en": "The car is ready; collect it on Monday."
+          }
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez une émission à la radio.",
+              "zh": "你在聽一個廣播節目。",
+              "en": "You are listening to a radio programme."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour à tous ! Aujourd'hui dans « Bonnes idées », je reçois Antoine, 28 ans. Antoine, vous avez ouvert une boutique un peu spéciale…",
+              "zh": "大家好！今天的《好點子》，我請到 28 歲的安托萬。安托萬，您開了一家有點特別的店……",
+              "en": "Hello everyone! Today on \"Good Ideas\" my guest is Antoine, 28. Antoine, you've opened a rather special shop…"
+            },
+            {
+              "who": "M",
+              "s": "Oui, c'est une boutique où on répare les objets au lieu de les jeter : les lampes, les grille-pain, les vélos… Les clients viennent avec leur objet cassé et on le répare ensemble. Ils apprennent à le faire eux-mêmes. On est ouverts le mercredi et le samedi, et ça coûte 5 euros. Le plus souvent, les gens viennent avec des vélos ! J'ai eu l'idée il y a deux ans, quand mon vieil ordinateur est tombé en panne et que le magasin m'a dit d'en acheter un nouveau.",
+              "zh": "對，這家店是修東西，而不是把東西丟掉：檯燈、烤麵包機、腳踏車……客人帶著壞掉的東西來，我們一起修。他們會學會自己修。我們星期三和星期六營業，費用 5 歐元。最常見的是大家牽腳踏車來！我兩年前想到這個點子，那時候我的舊電腦壞了，店家叫我買一台新的。",
+              "en": "Yes, it's a shop where we repair things instead of throwing them away: lamps, toasters, bikes… Customers come with their broken object and we repair it together. They learn to do it themselves. We're open on Wednesdays and Saturdays, and it costs 5 euros. Most often people come with bikes! I had the idea two years ago, when my old computer broke down and the shop told me to buy a new one."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Dans la boutique d'Antoine, on…",
+                "zh": "在安托萬的店裡，大家……",
+                "en": "In Antoine's shop, people…"
+              },
+              "options": [
+                {
+                  "t": "achète des objets neufs."
+                },
+                {
+                  "t": "répare des objets."
+                },
+                {
+                  "t": "vend des vélos."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「修東西，而不是把東西丟掉」。",
+                "en": "They repair things instead of throwing them away."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les clients…",
+                "zh": "客人……",
+                "en": "The customers…"
+              },
+              "options": [
+                {
+                  "t": "apprennent à réparer."
+                },
+                {
+                  "t": "laissent leur objet une semaine."
+                },
+                {
+                  "t": "ne paient rien."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「他們會學會自己修」；要付 5 歐元。",
+                "en": "They learn to do it themselves; it costs €5."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les gens apportent surtout…",
+                "zh": "大家最常帶來……",
+                "en": "People mostly bring…"
+              },
+              "options": [
+                {
+                  "t": "des lampes."
+                },
+                {
+                  "t": "des ordinateurs."
+                },
+                {
+                  "t": "des vélos."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「最常見的是大家牽腳踏車來」。",
+                "en": "Most often, bikes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Antoine a eu l'idée quand…",
+                "zh": "安托萬是在什麼時候想到這個點子？",
+                "en": "Antoine had the idea when…"
+              },
+              "options": [
+                {
+                  "t": "son ordinateur est tombé en panne."
+                },
+                {
+                  "t": "il a perdu son travail."
+                },
+                {
+                  "t": "il a acheté un vélo."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "他的舊電腦壞了，店家叫他買新的。",
+                "en": "His old computer broke and the shop said to buy a new one."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez un message sur votre téléphone.",
+              "zh": "你在聽手機裡的一則留言。",
+              "en": "You are listening to a message on your phone."
+            },
+            {
+              "who": "F",
+              "s": "Salut, c'est Margaux ! Dis, pour le cours de danse de jeudi, il y a un changement : la salle habituelle est en travaux, donc on va dans la salle du centre culturel, à côté de la mairie. Le cours commence plus tôt, à 18 h 30 au lieu de 19 heures. Et la prof demande d'apporter une bouteille d'eau et une serviette. Si tu veux, je passe te prendre en voiture à 18 heures. Envoie-moi un message !",
+              "zh": "嗨，我是瑪歌！星期四的舞蹈課有變動：平常的教室在施工，所以我們改去市政府旁邊的文化中心教室。上課時間提早，6 點半，不是 7 點。老師請大家帶一瓶水和一條毛巾。你要的話，我 6 點開車去接你。傳訊息給我！",
+              "en": "Hi, it's Margaux! About Thursday's dance class, there's a change: the usual room is being renovated, so we're going to the room at the arts centre next to the town hall. The class starts earlier, at 6.30 instead of 7. And the teacher wants us to bring a bottle of water and a towel. If you like, I'll pick you up in the car at 6. Send me a message!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le cours de danse a lieu…",
+                "zh": "舞蹈課在哪裡上？",
+                "en": "The dance class takes place…"
+              },
+              "options": [
+                {
+                  "t": "dans la salle habituelle."
+                },
+                {
+                  "t": "au centre culturel."
+                },
+                {
+                  "t": "à la mairie."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "改到文化中心教室，在市政府旁邊。",
+                "en": "At the arts centre, next to the town hall."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le cours commence à…",
+                "zh": "幾點開始上課？",
+                "en": "The class starts at…"
+              },
+              "options": [
+                {
+                  "t": "18 h."
+                },
+                {
+                  "t": "18 h 30."
+                },
+                {
+                  "t": "19 h."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「6 點半，不是 7 點」；6 點是瑪歌來接的時間。",
+                "en": "6.30 instead of 7; 6 is when Margaux picks you up."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'est-ce qu'il faut apporter ?",
+                "zh": "要帶什麼？",
+                "en": "What do you need to bring?"
+              },
+              "options": [
+                {
+                  "t": "des chaussures de danse"
+                },
+                {
+                  "t": "de l'eau et une serviette"
+                },
+                {
+                  "t": "de la musique"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「一瓶水和一條毛巾」。",
+                "en": "A bottle of water and a towel."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_match",
+          "n_options": 6,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre cinq dialogues. Pour chaque dialogue, dites ce que fait la deuxième personne.",
+              "zh": "你會聽到五段對話。請選出每段對話中第二個人在做什麼。",
+              "en": "You will hear five dialogues. For each one, say what the second person is doing."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 1",
+              "zh": "對話 1",
+              "en": "Dialogue 1"
+            },
+            {
+              "who": "M",
+              "s": "Tu viens à mon anniversaire samedi ?",
+              "zh": "你星期六要來我的生日會嗎？",
+              "en": "Are you coming to my birthday on Saturday?"
+            },
+            {
+              "who": "F",
+              "s": "Oh, c'est gentil, mais je ne peux pas, je pars chez mes grands-parents ce week-end.",
+              "zh": "喔，你真好，但我不能去，這個週末我要去爺爺奶奶家。",
+              "en": "Oh, that's kind, but I can't — I'm going to my grandparents' this weekend."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 2",
+              "zh": "對話 2",
+              "en": "Dialogue 2"
+            },
+            {
+              "who": "F",
+              "s": "Tu as vu ? Il est déjà 10 heures !",
+              "zh": "你看到了嗎？已經 10 點了！",
+              "en": "Have you seen? It's already ten o'clock!"
+            },
+            {
+              "who": "M",
+              "s": "Je suis vraiment désolé, mon bus est tombé en panne. Ça ne va pas recommencer, promis.",
+              "zh": "真的很抱歉，我的公車拋錨了。不會再這樣了，我保證。",
+              "en": "I'm really sorry, my bus broke down. It won't happen again, I promise."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 3",
+              "zh": "對話 3",
+              "en": "Dialogue 3"
+            },
+            {
+              "who": "M",
+              "s": "Il fait beau dimanche. Qu'est-ce qu'on fait ?",
+              "zh": "星期天天氣很好。我們要做什麼？",
+              "en": "It's going to be nice on Sunday. What shall we do?"
+            },
+            {
+              "who": "F",
+              "s": "Et si on allait faire du vélo au bord du lac ? On peut pique-niquer là-bas.",
+              "zh": "要不要去湖邊騎腳踏車？可以在那裡野餐。",
+              "en": "How about cycling by the lake? We can have a picnic there."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 4",
+              "zh": "對話 4",
+              "en": "Dialogue 4"
+            },
+            {
+              "who": "F",
+              "s": "Monsieur, votre soupe, ça va ?",
+              "zh": "先生，您的湯還好嗎？",
+              "en": "Is your soup all right, sir?"
+            },
+            {
+              "who": "M",
+              "s": "Non, pas du tout. Elle est froide, et j'attends mon plat depuis quarante minutes !",
+              "zh": "一點都不好。湯是冷的，而且我的主菜已經等了四十分鐘！",
+              "en": "No, not at all. It's cold, and I've been waiting forty minutes for my main course!"
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 5",
+              "zh": "對話 5",
+              "en": "Dialogue 5"
+            },
+            {
+              "who": "M",
+              "s": "Voilà, je t'ai rapporté tes livres.",
+              "zh": "來，你的書我帶來還你了。",
+              "en": "Here, I've brought your books back."
+            },
+            {
+              "who": "F",
+              "s": "Merci mille fois ! Et merci aussi pour ton aide hier, sans toi je n'aurais pas fini mon devoir.",
+              "zh": "太謝謝你了！也謝謝你昨天幫忙，沒有你我作業寫不完。",
+              "en": "Thanks a million! And thanks for your help yesterday too — without you I wouldn't have finished my homework."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Dialogue 1",
+                "zh": "對話 1",
+                "en": "Dialogue 1"
+              },
+              "options": [
+                {
+                  "t": "refuser une invitation"
+                },
+                {
+                  "t": "s'excuser"
+                },
+                {
+                  "t": "remercier quelqu'un"
+                },
+                {
+                  "t": "proposer une sortie"
+                },
+                {
+                  "t": "se plaindre"
+                },
+                {
+                  "t": "demander un conseil"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「我不能去」：拒絕邀請。",
+                "en": "\"I can't\": refusing an invitation."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 2",
+                "zh": "對話 2",
+                "en": "Dialogue 2"
+              },
+              "options": [
+                {
+                  "t": "refuser une invitation"
+                },
+                {
+                  "t": "s'excuser"
+                },
+                {
+                  "t": "remercier quelqu'un"
+                },
+                {
+                  "t": "proposer une sortie"
+                },
+                {
+                  "t": "se plaindre"
+                },
+                {
+                  "t": "demander un conseil"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「真的很抱歉」：道歉。",
+                "en": "\"I'm really sorry\": apologising."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 3",
+                "zh": "對話 3",
+                "en": "Dialogue 3"
+              },
+              "options": [
+                {
+                  "t": "refuser une invitation"
+                },
+                {
+                  "t": "s'excuser"
+                },
+                {
+                  "t": "remercier quelqu'un"
+                },
+                {
+                  "t": "proposer une sortie"
+                },
+                {
+                  "t": "se plaindre"
+                },
+                {
+                  "t": "demander un conseil"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "「要不要去湖邊騎腳踏車？」：提議出遊。",
+                "en": "\"How about cycling…?\": suggesting an outing."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 4",
+                "zh": "對話 4",
+                "en": "Dialogue 4"
+              },
+              "options": [
+                {
+                  "t": "refuser une invitation"
+                },
+                {
+                  "t": "s'excuser"
+                },
+                {
+                  "t": "remercier quelqu'un"
+                },
+                {
+                  "t": "proposer une sortie"
+                },
+                {
+                  "t": "se plaindre"
+                },
+                {
+                  "t": "demander un conseil"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "湯是冷的、等了四十分鐘：抱怨。",
+                "en": "Cold soup and a long wait: complaining."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 5",
+                "zh": "對話 5",
+                "en": "Dialogue 5"
+              },
+              "options": [
+                {
+                  "t": "refuser une invitation"
+                },
+                {
+                  "t": "s'excuser"
+                },
+                {
+                  "t": "remercier quelqu'un"
+                },
+                {
+                  "t": "proposer une sortie"
+                },
+                {
+                  "t": "se plaindre"
+                },
+                {
+                  "t": "demander un conseil"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「太謝謝你了」：道謝。F（請教意見）沒有用到。",
+                "en": "\"Thanks a million\": thanking; F is not used."
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
