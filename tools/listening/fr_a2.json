@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "French A2 listening in the DELF A2 format (owner's plan 2026-10-30): Exercice 1 four announcements (en_talk), Exercice 2 a radio programme ×4, Exercice 3 a phone message ×3 (en_q), Exercice 4 five dialogues matched to six functions (en_match). Each recording twice. Original texts. Drafted in tools/.mockups/fr_a2_ls.py.",
+  "note": "French A2 listening in the new DELF A2 format (22 questions): Exercice 1 six announcements (en_talk), Exercice 2 three messages ×3 / ×2 / ×2, Exercice 3 a radio programme ×4 (en_q), Exercice 4 five dialogues matched to six functions (en_match). Each recording twice. Original texts. Drafted in tools/.mockups/fr_a2_ls.py.",
   "types": [
     "en_talk",
     "en_q",
@@ -12,8 +12,8 @@
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_talk": 4,
-    "en_q": 7,
+    "en_talk": 6,
+    "en_q": 11,
     "en_match": 5
   },
   "sets": [
@@ -21,6 +21,7 @@
       "id": "s1",
       "items": [
         {
+          "part": 1,
           "type": "en_talk",
           "lines": [
             {
@@ -59,6 +60,7 @@
           }
         },
         {
+          "part": 1,
           "type": "en_talk",
           "lines": [
             {
@@ -97,6 +99,7 @@
           }
         },
         {
+          "part": 1,
           "type": "en_talk",
           "lines": [
             {
@@ -135,6 +138,7 @@
           }
         },
         {
+          "part": 1,
           "type": "en_talk",
           "lines": [
             {
@@ -173,6 +177,306 @@
           }
         },
         {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un musée.",
+              "zh": "你在博物館裡。",
+              "en": "You are in a museum."
+            },
+            {
+              "who": "M",
+              "s": "Mesdames et messieurs, le musée fermera dans quinze minutes. Merci de vous diriger vers la sortie. La boutique reste ouverte jusqu'à 18 h 30.",
+              "zh": "各位先生女士，博物館將在十五分鐘後關閉。請往出口移動。紀念品店開到 18 點 30 分。",
+              "en": "Ladies and gentlemen, the museum will close in fifteen minutes. Please make your way to the exit. The shop stays open until 6.30 p.m."
+            }
+          ],
+          "ask": {
+            "s": "Qu'est-ce qui reste ouvert après la fermeture du musée ?",
+            "zh": "博物館關門後，什麼還開著？",
+            "en": "What stays open after the museum closes?"
+          },
+          "options": [
+            {
+              "t": "la cafétéria"
+            },
+            {
+              "t": "la boutique"
+            },
+            {
+              "t": "les salles du premier étage"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「紀念品店開到 18 點 30 分」。",
+            "en": "The shop stays open until 6.30."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez la météo à la radio.",
+              "zh": "你在聽廣播的氣象報告。",
+              "en": "You are listening to the weather forecast on the radio."
+            },
+            {
+              "who": "F",
+              "s": "Demain matin, du brouillard dans le nord du pays. L'après-midi, le soleil revient partout, mais attention : il y aura du vent fort sur la côte.",
+              "zh": "明天早上，北部會起霧。下午各地都會出太陽，但請注意：沿海會有強風。",
+              "en": "Tomorrow morning, fog in the north of the country. In the afternoon the sun returns everywhere, but be careful: there will be strong wind on the coast."
+            }
+          ],
+          "ask": {
+            "s": "Demain après-midi, sur la côte, il y aura…",
+            "zh": "明天下午沿海會……",
+            "en": "Tomorrow afternoon on the coast there will be…"
+          },
+          "options": [
+            {
+              "t": "de la pluie."
+            },
+            {
+              "t": "du brouillard."
+            },
+            {
+              "t": "beaucoup de vent."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "下午出太陽，但沿海有強風；霧是早上在北部。",
+            "en": "Sun, but strong wind on the coast; the fog is in the north in the morning."
+          }
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Document 1. Vous écoutez un message sur votre téléphone.",
+              "zh": "文件 1。你在聽手機裡的一則留言。",
+              "en": "Document 1. You are listening to a message on your phone."
+            },
+            {
+              "who": "F",
+              "s": "Salut, c'est Margaux ! Dis, pour le cours de danse de jeudi, il y a un changement : la salle habituelle est en travaux, donc on va dans la salle du centre culturel, à côté de la mairie. Le cours commence plus tôt, à 18 h 30 au lieu de 19 heures. Et la prof demande d'apporter une bouteille d'eau et une serviette. Si tu veux, je passe te prendre en voiture à 18 heures. Envoie-moi un message !",
+              "zh": "嗨，我是瑪歌！星期四的舞蹈課有變動：平常的教室在施工，所以我們改去市政府旁邊的文化中心教室。上課時間提早，6 點半，不是 7 點。老師請大家帶一瓶水和一條毛巾。你要的話，我 6 點開車去接你。傳訊息給我！",
+              "en": "Hi, it's Margaux! About Thursday's dance class, there's a change: the usual room is being renovated, so we're going to the room at the arts centre next to the town hall. The class starts earlier, at 6.30 instead of 7. And the teacher wants us to bring a bottle of water and a towel. If you like, I'll pick you up in the car at 6. Send me a message!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le cours de danse a lieu…",
+                "zh": "舞蹈課在哪裡上？",
+                "en": "The dance class takes place…"
+              },
+              "options": [
+                {
+                  "t": "dans la salle habituelle."
+                },
+                {
+                  "t": "au centre culturel."
+                },
+                {
+                  "t": "à la mairie."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "改到文化中心教室，在市政府旁邊。",
+                "en": "At the arts centre, next to the town hall."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le cours commence à…",
+                "zh": "幾點開始上課？",
+                "en": "The class starts at…"
+              },
+              "options": [
+                {
+                  "t": "18 h."
+                },
+                {
+                  "t": "18 h 30."
+                },
+                {
+                  "t": "19 h."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「6 點半，不是 7 點」；6 點是瑪歌來接的時間。",
+                "en": "6.30 instead of 7; 6 is when Margaux picks you up."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'est-ce qu'il faut apporter ?",
+                "zh": "要帶什麼？",
+                "en": "What do you need to bring?"
+              },
+              "options": [
+                {
+                  "t": "des chaussures de danse"
+                },
+                {
+                  "t": "de l'eau et une serviette"
+                },
+                {
+                  "t": "de la musique"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「一瓶水和一條毛巾」。",
+                "en": "A bottle of water and a towel."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Document 2. Vous écoutez un message sur votre répondeur.",
+              "zh": "文件 2。你在聽電話答錄機的留言。",
+              "en": "Document 2. You are listening to a message on your answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Bonjour, c'est le garage Dupont. Votre voiture est prête, mais nous avons aussi changé les deux pneus avant. Le total fait 320 euros. Vous pouvez passer la chercher demain à partir de 14 heures.",
+              "zh": "您好，這裡是杜邦修車廠。您的車修好了，不過我們也換了兩個前輪胎。總共 320 歐元。您明天下午兩點以後可以來取車。",
+              "en": "Hello, this is Dupont's garage. Your car is ready, but we also changed the two front tyres. The total is 320 euros. You can come and collect it tomorrow from 2 p.m."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le garage a aussi changé…",
+                "zh": "修車廠還換了……",
+                "en": "The garage also changed…"
+              },
+              "options": [
+                {
+                  "t": "les pneus."
+                },
+                {
+                  "t": "les freins."
+                },
+                {
+                  "t": "la batterie."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「也換了兩個前輪胎」。",
+                "en": "The two front tyres."
+              }
+            },
+            {
+              "ask": {
+                "s": "On peut récupérer la voiture…",
+                "zh": "什麼時候可以取車？",
+                "en": "The car can be collected…"
+              },
+              "options": [
+                {
+                  "t": "aujourd'hui."
+                },
+                {
+                  "t": "demain matin."
+                },
+                {
+                  "t": "demain après-midi."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "明天下午兩點以後。",
+                "en": "Tomorrow from 2 p.m."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Document 3. Vous êtes à l'aéroport.",
+              "zh": "文件 3。你在機場。",
+              "en": "Document 3. You are at the airport."
+            },
+            {
+              "who": "F",
+              "s": "Les passagers du vol AF 1520 à destination de Rome sont informés que leur vol est retardé d'une heure. L'embarquement aura lieu à 15 h 10, porte 32, et non porte 28.",
+              "zh": "搭乘 AF 1520 班機前往羅馬的旅客請注意，您的班機延誤一小時。登機時間改為 15 點 10 分，在 32 號登機門，不是 28 號。",
+              "en": "Passengers on flight AF 1520 to Rome are informed that their flight is delayed by one hour. Boarding will take place at 3.10 p.m., gate 32, not gate 28."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le vol pour Rome…",
+                "zh": "飛往羅馬的班機……",
+                "en": "The flight to Rome…"
+              },
+              "options": [
+                {
+                  "t": "est annulé."
+                },
+                {
+                  "t": "a une heure de retard."
+                },
+                {
+                  "t": "part en avance."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「延誤一小時」。",
+                "en": "Delayed by one hour."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'embarquement se fait porte…",
+                "zh": "在幾號登機門登機？",
+                "en": "Boarding is at gate…"
+              },
+              "options": [
+                {
+                  "t": "15."
+                },
+                {
+                  "t": "28."
+                },
+                {
+                  "t": "32."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "32 號，不是 28 號。",
+                "en": "Gate 32, not 28."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
           "type": "en_q",
           "lines": [
             {
@@ -290,94 +594,7 @@
           ]
         },
         {
-          "type": "en_q",
-          "lines": [
-            {
-              "who": "N",
-              "s": "Vous écoutez un message sur votre téléphone.",
-              "zh": "你在聽手機裡的一則留言。",
-              "en": "You are listening to a message on your phone."
-            },
-            {
-              "who": "F",
-              "s": "Salut, c'est Margaux ! Dis, pour le cours de danse de jeudi, il y a un changement : la salle habituelle est en travaux, donc on va dans la salle du centre culturel, à côté de la mairie. Le cours commence plus tôt, à 18 h 30 au lieu de 19 heures. Et la prof demande d'apporter une bouteille d'eau et une serviette. Si tu veux, je passe te prendre en voiture à 18 heures. Envoie-moi un message !",
-              "zh": "嗨，我是瑪歌！星期四的舞蹈課有變動：平常的教室在施工，所以我們改去市政府旁邊的文化中心教室。上課時間提早，6 點半，不是 7 點。老師請大家帶一瓶水和一條毛巾。你要的話，我 6 點開車去接你。傳訊息給我！",
-              "en": "Hi, it's Margaux! About Thursday's dance class, there's a change: the usual room is being renovated, so we're going to the room at the arts centre next to the town hall. The class starts earlier, at 6.30 instead of 7. And the teacher wants us to bring a bottle of water and a towel. If you like, I'll pick you up in the car at 6. Send me a message!"
-            }
-          ],
-          "questions": [
-            {
-              "ask": {
-                "s": "Le cours de danse a lieu…",
-                "zh": "舞蹈課在哪裡上？",
-                "en": "The dance class takes place…"
-              },
-              "options": [
-                {
-                  "t": "dans la salle habituelle."
-                },
-                {
-                  "t": "au centre culturel."
-                },
-                {
-                  "t": "à la mairie."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "改到文化中心教室，在市政府旁邊。",
-                "en": "At the arts centre, next to the town hall."
-              }
-            },
-            {
-              "ask": {
-                "s": "Le cours commence à…",
-                "zh": "幾點開始上課？",
-                "en": "The class starts at…"
-              },
-              "options": [
-                {
-                  "t": "18 h."
-                },
-                {
-                  "t": "18 h 30."
-                },
-                {
-                  "t": "19 h."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "「6 點半，不是 7 點」；6 點是瑪歌來接的時間。",
-                "en": "6.30 instead of 7; 6 is when Margaux picks you up."
-              }
-            },
-            {
-              "ask": {
-                "s": "Qu'est-ce qu'il faut apporter ?",
-                "zh": "要帶什麼？",
-                "en": "What do you need to bring?"
-              },
-              "options": [
-                {
-                  "t": "des chaussures de danse"
-                },
-                {
-                  "t": "de l'eau et une serviette"
-                },
-                {
-                  "t": "de la musique"
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "「一瓶水和一條毛巾」。",
-                "en": "A bottle of water and a towel."
-              }
-            }
-          ]
-        },
-        {
+          "part": 4,
           "type": "en_match",
           "n_options": 6,
           "lines": [
