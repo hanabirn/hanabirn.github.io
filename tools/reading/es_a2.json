@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "Spanish A2 reading rounds in the DELE A2 format (owner's plan 2026-10-30): Tarea 1 a letter ×5, Tarea 2 four messages, Tarea 3 four people's hobbies — who says what ×5 (en_sections); 14 questions. ⚠️ the real paper has 4 tareas, 25 questions. Original texts. Drafted in tools/.mockups/es_a2.py.",
+  "note": "Spanish A2 reading rounds in the DELE A2 format (EXAMS.md): Tarea 1 a letter ×5, Tarea 2 eight messages and notices, Tarea 3 four people's hobbies — who says it ×6, Tarea 4 the Way of St James ×6 — 25 questions. Original texts. Drafted in tools/.mockups/es_a2.py.",
   "sets": [
     {
       "id": "r1",
@@ -169,6 +169,98 @@
           ]
         },
         {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "Piscina municipal: a partir del 1 de junio los niños menores de 10 años deben venir acompañados de un adulto.",
+          "tr": {
+            "zh": "市立游泳池：6 月 1 日起，10 歲以下兒童須由大人陪同。",
+            "en": "Town pool: from 1 June children under 10 must come with an adult."
+          },
+          "questions": [
+            {
+              "q": "Desde junio, un niño de 8 años…",
+              "options": [
+                "no puede entrar.",
+                "tiene que ir con un adulto.",
+                "paga menos."
+              ],
+              "answer": 1,
+              "zh": "10 歲以下要大人陪。",
+              "en": "Under 10 needs an adult."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "Carlos: no encuentro las llaves del coche. ¿Las tienes tú? Si no, voy en metro a la oficina. Laura",
+          "tr": {
+            "zh": "卡洛斯：我找不到車鑰匙。在你那裡嗎？沒有的話我就搭地鐵去辦公室。蘿拉",
+            "en": "Carlos: I can't find the car keys. Have you got them? If not, I'll take the metro to the office. Laura"
+          },
+          "questions": [
+            {
+              "q": "Laura…",
+              "options": [
+                "ha perdido las llaves de casa.",
+                "no sabe dónde están las llaves del coche.",
+                "ha vendido el coche."
+              ],
+              "answer": 1,
+              "zh": "找不到車鑰匙。",
+              "en": "She can't find the car keys."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "Oferta: clases de natación para adultos. Lunes y miércoles de 20 a 21 h. Las dos primeras clases son gratis.",
+          "tr": {
+            "zh": "優惠：成人游泳課。週一和週三 20 到 21 點。前兩堂免費。",
+            "en": "Offer: swimming lessons for adults. Mondays and Wednesdays, 8–9 p.m. The first two lessons are free."
+          },
+          "questions": [
+            {
+              "q": "Las clases de natación…",
+              "options": [
+                "son para niños.",
+                "son por la noche.",
+                "son siempre gratis."
+              ],
+              "answer": 1,
+              "zh": "晚上 20 到 21 點；只有前兩堂免費。",
+              "en": "8–9 p.m.; only the first two are free."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "Restaurante La Huerta: cerrado por vacaciones del 15 al 31 de agosto. Volvemos el 1 de septiembre.",
+          "tr": {
+            "zh": "菜園餐廳：8 月 15 日到 31 日放假休息。9 月 1 日恢復營業。",
+            "en": "La Huerta restaurant: closed for holidays from 15 to 31 August. We are back on 1 September."
+          },
+          "questions": [
+            {
+              "q": "El 20 de agosto el restaurante…",
+              "options": [
+                "está abierto.",
+                "está cerrado.",
+                "abre por la noche."
+              ],
+              "answer": 1,
+              "zh": "15 到 31 日休息。",
+              "en": "Closed 15–31 August."
+            }
+          ]
+        },
+        {
           "type": "en_people",
           "mondai": 3,
           "ask": "en_sections",
@@ -212,6 +304,90 @@
               "answer": "D",
               "zh": "奧斯卡每晚學一小時日文。",
               "en": "Óscar studies every night."
+            },
+            {
+              "q": "¿Quién tiene un objetivo para el próximo año?",
+              "answer": "B",
+              "zh": "迪亞哥明年想跑馬拉松。",
+              "en": "Diego wants to run a marathon next year."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_long",
+          "text": "El Camino de Santiago\nCada año, más de 400 000 personas hacen el Camino de Santiago, una ruta que termina en la catedral de Santiago de Compostela, en el noroeste de España. Hay varios caminos, pero el más famoso es el Camino Francés, que empieza en los Pirineos y tiene unos 800 kilómetros. La mayoría de los peregrinos camina, pero también se puede hacer en bicicleta o a caballo. Para recibir la «Compostela», el certificado oficial, hay que recorrer a pie por lo menos los últimos 100 kilómetros. Por el camino hay albergues baratos donde dormir: cuestan entre 8 y 15 euros por noche. Muchos peregrinos dicen que lo mejor no es llegar a Santiago, sino las personas que conocen por el camino.",
+          "tr": {
+            "zh": "聖雅各之路\n每年有四十多萬人走聖雅各之路，這條路線的終點是西班牙西北部聖地牙哥德孔波斯特拉的大教堂。路線有好幾條，最有名的是「法國之路」，從庇里牛斯山出發，大約 800 公里。大多數朝聖者用走的，但也可以騎腳踏車或騎馬。要拿到官方證書「孔波斯特拉」，至少要走完最後 100 公里。沿路有便宜的庇護所可以住：每晚 8 到 15 歐元。很多朝聖者說，最棒的不是抵達聖地牙哥，而是一路上認識的人。",
+            "en": "The Way of St James\nEvery year more than 400,000 people walk the Way of St James, a route that ends at the cathedral of Santiago de Compostela in north-west Spain. There are several routes, but the most famous is the French Way, which starts in the Pyrenees and is about 800 kilometres long. Most pilgrims walk, but you can also do it by bike or on horseback. To receive the \"Compostela\", the official certificate, you have to walk at least the last 100 kilometres. Along the way there are cheap hostels to sleep in: they cost between 8 and 15 euros a night. Many pilgrims say the best thing is not reaching Santiago but the people they meet on the way."
+          },
+          "questions": [
+            {
+              "q": "El Camino de Santiago termina en…",
+              "options": [
+                "los Pirineos.",
+                "una catedral.",
+                "Francia."
+              ],
+              "answer": 1,
+              "zh": "終點是聖地牙哥的大教堂。",
+              "en": "A cathedral."
+            },
+            {
+              "q": "El Camino Francés…",
+              "options": [
+                "es el más conocido.",
+                "es el más corto.",
+                "empieza en Santiago."
+              ],
+              "answer": 0,
+              "zh": "「最有名的」。",
+              "en": "The most famous."
+            },
+            {
+              "q": "La mayoría de los peregrinos…",
+              "options": [
+                "va en bicicleta.",
+                "va a pie.",
+                "va a caballo."
+              ],
+              "answer": 1,
+              "zh": "大多數用走的。",
+              "en": "Most walk."
+            },
+            {
+              "q": "Para recibir la «Compostela» hay que caminar…",
+              "options": [
+                "800 kilómetros.",
+                "como mínimo 100 kilómetros.",
+                "desde Francia."
+              ],
+              "answer": 1,
+              "zh": "至少最後 100 公里。",
+              "en": "At least the last 100 km."
+            },
+            {
+              "q": "Los albergues…",
+              "options": [
+                "son caros.",
+                "cuestan poco.",
+                "son gratis."
+              ],
+              "answer": 1,
+              "zh": "每晚 8 到 15 歐元：便宜。",
+              "en": "€8–15: cheap."
+            },
+            {
+              "q": "Según muchos peregrinos, lo mejor del Camino es…",
+              "options": [
+                "llegar a la catedral.",
+                "conocer a otras personas.",
+                "el certificado."
+              ],
+              "answer": 1,
+              "zh": "一路上認識的人。",
+              "en": "The people they meet."
             }
           ]
         }
