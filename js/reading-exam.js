@@ -108,6 +108,37 @@ const READING_ASK_FR = {
     en_gapped: 'Des phrases ont été retirées du texte. Choisissez la phrase qui convient pour chaque espace.',
     en_sections: 'Pour chaque question, choisissez la partie du texte (A–D).'
 };
+const READING_ASK_RU = {          // ТРКИ
+    en_notice: 'Прочитайте текст и ответьте на вопросы.',
+    en_match: 'Прочитайте тексты и ответьте на вопросы.',
+    en_long: 'Прочитайте текст и выполните задания.',
+    en_cloze: 'Прочитайте текст и выберите правильный вариант.',
+    en_open: 'Вставьте в каждый пропуск одно слово.',
+    en_people: 'Прочитайте объявления и выберите подходящее для каждого человека.',
+    en_gapped: 'Из текста убраны предложения. Выберите подходящее для каждого пропуска.',
+    en_sections: 'Для каждого вопроса выберите часть текста (A–D).'
+};
+const READING_ASK_DE = {          // Goethe-Zertifikat
+    en_notice: 'Lesen Sie den Text und lösen Sie die Aufgaben.',
+    en_match: 'Lesen Sie die Texte und lösen Sie die Aufgaben.',
+    en_long: 'Lesen Sie den Text und lösen Sie die Aufgaben.',
+    en_cloze: 'Lesen Sie den Text. Welches Wort passt in die Lücke?',
+    en_open: 'Ergänzen Sie in jeder Lücke ein Wort.',
+    en_people: 'Lesen Sie die Anzeigen. Welche Anzeige passt zu welcher Person?',
+    en_gapped: 'Im Text fehlen Sätze. Welcher Satz passt in welche Lücke?',
+    en_sections: 'Zu welchem Abschnitt (A–D) passt die Aussage?'
+};
+const READING_ASK_ES = {          // DELE
+    en_notice: 'Lea el texto y responda a las preguntas.',
+    en_match: 'Lea los textos y responda a las preguntas.',
+    en_long: 'Lea el texto y conteste a las preguntas.',
+    en_cloze: 'Lea el texto y elija la opción correcta para cada hueco.',
+    en_open: 'Complete cada hueco con una sola palabra.',
+    en_people: 'Lea los anuncios y relacione a cada persona con el anuncio adecuado.',
+    en_gapped: 'Faltan fragmentos en el texto. Elija el fragmento adecuado para cada hueco.',
+    en_sections: 'Indique a qué parte del texto (A–D) corresponde cada enunciado.'
+};
+const READING_ASK_CEFR = { fr: READING_ASK_FR, ru: READING_ASK_RU, de: READING_ASK_DE, es: READING_ASK_ES };
 const READING_ASK_EN = {
     en_notice: 'For each question, choose the correct answer.',
     en_match: 'For each question, choose the correct answer.',
@@ -160,7 +191,7 @@ function readingAskText(key) {
     const set = readingSets[readingSetId];
     if (lang === 'zh' && set && set.edition === 'tw') return READING_ASK_ZH_TW[key] || '';
     if (lang === 'en') return READING_ASK_EN[key] || '';
-    if (lang === 'fr') return READING_ASK_FR[key] || READING_ASK_EN[key] || '';
+    if (READING_ASK_CEFR[lang]) return READING_ASK_CEFR[lang][key] || READING_ASK_EN[key] || '';
     return (READING_ASK_ALL[lang] || READING_ASK_KO)[key] || '';
 }
 
