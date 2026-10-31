@@ -41,6 +41,7 @@ const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15
 // levels written but not yet recorded (kept out of data/listening/index.json with "unlisted"): a note under the
 // level picker tells visitors they are coming — drop a language's entry once its levels are published
 const LISTENING_SOON = { zh: 'HSK 3–9' };
+const LISTENING_TX_MIN = 300;        // the transcript box's least height before it moves to the right column (listeningFitTx)
 const LISTENING_Q_PAGED = 4;          // an item with this many questions shows them one at a time on computers (HSK 5–6)
 const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
 const LISTENING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
@@ -151,6 +152,7 @@ async function renderListening() {
     // question and its options fit one 1080p screen without scrolling (owner, 2026-10-24)
     document.body.classList.toggle('listening-wide', listeningView === 'list' || listeningView === 'quiz');
     if (typeof railPlace === 'function') railPlace();
+    listeningFitTx();
 }
 
 function listeningGo(view) {
@@ -535,9 +537,38 @@ function listeningSayLine(idx) {
 }
 
 function listeningMarkPlaying() {
-    document.querySelectorAll('#listening-card .ls-line').forEach(el =>
-        el.classList.toggle('playing', +el.dataset.i === listeningPlaying));
+    document.querySelectorAll('#listening-card .ls-line').forEach(el => {
+        el.classList.toggle('playing', +el.dataset.i === listeningPlaying);
+        // the transcript scrolls inside its box on computers: keep the line being read in view there
+        const box = el.closest('.ls-tx');
+        if (+el.dataset.i === listeningPlaying && box && box.scrollHeight > box.clientHeight) {
+            const top = el.offsetTop - box.offsetTop, bottom = top + el.offsetHeight;
+            if (top < box.scrollTop + 40 || bottom > box.scrollTop + box.clientHeight) box.scrollTop = Math.max(0, top - 40);
+        }
+    });
 }
+
+/* computers: the transcript (and its translation) ends at the bottom of the screen and scrolls inside
+   its box, so a long B2 / C1 recording never makes the page scroll (owner, 2026-10-31); phones keep
+   the page's own scroll */
+function listeningFitTx() {
+    const tx = document.querySelector('#listening-card .ls-txw .ls-tx');
+    const cols = tx && tx.closest('.ls-cols');
+    if (!tx || !cols) return;
+    cols.classList.remove('ls-tx-right');
+    if (!window.matchMedia('(min-width: 1024px)').matches) { tx.style.maxHeight = ''; return; }
+    tx.style.maxHeight = '0px';   // measured as an empty box, so its own length doesn't move the columns
+    const room = () => window.innerHeight - (tx.getBoundingClientRect().top + window.scrollY) - 20;   // with the page at the top
+    // a tall picture fills the left column: then the transcript goes under the questions, on the right,
+    // unless that leaves even less room
+    const left = room();
+    if (left < LISTENING_TX_MIN) {
+        cols.classList.add('ls-tx-right');
+        if (room() < left) cols.classList.remove('ls-tx-right');
+    }
+    tx.style.maxHeight = Math.max(LISTENING_TX_MIN / 3, room()) + 'px';
+}
+window.addEventListener('resize', () => { if (document.body.dataset.page === 'listening') listeningFitTx(); });
 
 /* the player's button, bar, counter and countdown without re-rendering the item */
 function listeningPlayerUi(frac) {
@@ -655,7 +686,9 @@ function listeningQuizHtml(lv) {
     }).join('');
     // four or more questions on one recording (HSK 5–6): one at a time on computers, number tabs above
     // (css/listening.css hides .ls-q-off only ≥1024px; phones list them all), as the 閱讀 rounds do
-    const paged = it.questions.length >= LISTENING_Q_PAGED;
+    // ...and, once answered, any item with two or more: their explanations would push the page past one
+    // screen (owner, 2026-10-31: no scrolling to read a B2 / C1 item's answers and transcript)
+    const paged = it.questions.length >= LISTENING_Q_PAGED || (show && it.questions.length > 1);
     const sub = paged ? Math.min(z.sub || 0, it.questions.length - 1) : 0;
     const qtabs = paged ? `<div class="ls-qtabs" role="tablist">${it.questions.map((q, qn) => {
         const p = z.picks[z.qi][qn];
@@ -703,7 +736,7 @@ function listeningQuizHtml(lv) {
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
-        <div class="ls-cols"><div class="ls-head">
+        <div class="ls-cols${show ? ' ls-shown' : ''}"><div class="ls-head">
         ${lv.instr ? `<div class="ls-kind">${escHtml(listeningRange(lv.sets[z.setNo], z.order[z.qi]))}　${escHtml(t('listening_type_' + it.type))}</div>
         <div class="ls-instr" lang="${lv.lang}">${escHtml(lv.instr[it.type] || '')}</div>
         <div class="ls-how">${escHtml(t('listening_how_' + it.type))}</div>`
@@ -766,6 +799,7 @@ function listeningSub(qn) {
     if (!z) return;
     z.sub = qn;
     document.querySelectorAll('#listening-card .ls-q').forEach(el => el.classList.toggle('ls-q-off', +el.dataset.qn !== qn));
+    listeningFitTx();   // this question may be longer than the last
     document.querySelectorAll('#listening-card .ls-qtab').forEach(b => {
         const on = +b.dataset.qn === qn;
         b.classList.toggle('on', on);
