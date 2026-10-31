@@ -185,6 +185,17 @@ function readingExHasHidden(item, own) {
     const any = segs => (segs || []).some(s => s[1] && s[3]);
     return (item.text_t || []).some(any) || (item.bank_t || []).some(any) || own.some(o => any(o.x.q.q_t));
 }
+/* HSK 1–2 print every reading (as the exam does), so there the button hides them all instead (owner,
+   2026-10-31): on by default, reading_exam_py_off turns it off (.rdx-py-off, css/reading.css) */
+function readingExHasRuby(item, own) {
+    const any = segs => (segs || []).some(s => s[1]);
+    return (item.text_t || []).some(any) || (item.bank_t || []).some(any) || own.some(o => any(o.x.q.q_t));
+}
+function readingExPyOff() { return readingPref('reading_exam_py_off', '') === '1'; }
+function readingExPyOffToggle() {
+    readingSetPref('reading_exam_py_off', readingExPyOff() ? '' : '1');
+    renderReading();
+}
 function readingAskText(key) {
     const lang = readingExLang();
     if (readingExUpper()) return READING_ASK_JA_UPPER[key] || '';
@@ -469,7 +480,11 @@ function readingExamHtml(set) {
     // the furigana switch heads the questions' column (above the columns it pushed the text down)
     const tw = set.edition === 'tw';
     const pyKey = k => tw ? k.replace('rdx_py_', 'rdx_zy_') : k;   // the Taiwan edition says 注音
-    const tools = lang === 'zh' ? (readingExHasHidden(item, own) ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t(pyKey('rdx_py_all')))}</button>
+    const shown = lang === 'zh' && !readingExHasHidden(item, own) && readingExHasRuby(item, own);   // HSK 1–2
+    const pyOff = shown && readingExPyOff();
+    const tools = shown ? `<p class="rdx-tools"><button type="button" class="mode-btn${pyOff ? '' : ' mode-btn-active'}" aria-pressed="${!pyOff}" onclick="readingExPyOffToggle()">${escHtml(t(pyKey('rdx_py_all')))}</button>
+            <span class="rd-meta">${escHtml(t(pyKey(pyOff ? 'rdx_py_off' : 'rdx_py_all_on')))}</span></p>`
+        : lang === 'zh' ? (readingExHasHidden(item, own) ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t(pyKey('rdx_py_all')))}</button>
             <span class="rd-meta">${escHtml(t(pyKey(readingExFuriAll() ? 'rdx_py_all_on' : 'rdx_py_level'), { lv: set.level }))}</span></p>` : '')
         : lang === 'ja' ? `<p class="rdx-tools"><button type="button" class="mode-btn${readingExFuriAll() ? ' mode-btn-active' : ''}" aria-pressed="${readingExFuriAll()}" onclick="readingExFuriToggle()">${escHtml(t('rdx_furi_all'))}</button>
             <span class="rd-meta">${escHtml(t(readingExFuriAll() ? 'rdx_furi_all_on' : 'rdx_furi_level', { lv: set.level }))}</span></p>` : '';
@@ -507,7 +522,7 @@ function readingExamHtml(set) {
         <div class="rdx-ask">${item.mondai ? `<span class="rdx-mondai" lang="${lang}">${readingExMondai(item.mondai)}</span>` : ''}<span lang="${lang}">${own.length > 1 ? `<b>[${own[0].x.n}～${own[own.length - 1].x.n}]</b> ` : ''}${escHtml(asks.length === 1 ? readingAskText(asks[0]) : (readingExUpper() ? '次の文章を読んで、質問に答えなさい。' : READING_ASK_MULTI[lang] || READING_ASK_MULTI.ko))}</span>
             <span class="rdx-ask-tr">${escHtml(asks.length === 1 ? t('reading_ask_' + asks[0]) : t('reading_ask_multi'))}</span></div>
         ${z.resumed && !z.mock ? `<p class="rd-note">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p !== -1).length, m: z.qs.length }))} <button type="button" class="rd-link" onclick="readingExamStart(${z.si}, true)">${escHtml(t('reading_restart'))}</button></p>` : ''}
-        <div class="rdx-cols${readingExUpper() ? ' rdx-flow' : ''}">
+        <div class="rdx-cols${readingExUpper() ? ' rdx-flow' : ''}${pyOff ? ' rdx-py-off' : ''}">
             <div class="rdx-col-text">
                 <div class="rdx-item">
                     <div class="rdx-item-label"><span class="rdx-no">${own.length > 1 ? own[0].x.n + '～' + own[own.length - 1].x.n : own[0].x.n + '.'}</span>${bankItem ? '' : escHtml(t('reading_passage_label'))}</div>
