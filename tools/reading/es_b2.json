@@ -4,7 +4,7 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "Spanish B2 reading rounds in the DELE B2 format (owner's plan 2026-10-30): an article on urban noise ×5, an opinion column ×4; 9 questions. ⚠️ the real paper has 4 tareas, 36 questions. Original texts. Drafted in tools/.mockups/es_b2.py.",
+  "note": "Spanish B2 reading rounds in the DELE B2 format (EXAMS.md: 4 tareas, 36 questions; split per tarea is ours): Tarea 1 urban noise ×6, Tarea 2 four people on phones and children — who says it ×10, Tarea 3 the handwritten letter, six fragments back (two spare), Tarea 4 studying in Salamanca, cloze ×14 — 36 questions. Original texts. Drafted in tools/.mockups/es_b2.py.",
   "sets": [
     {
       "id": "r1",
@@ -29,6 +29,17 @@
               "answer": 1,
               "zh": "僅次於空氣汙染。",
               "en": "Second after air pollution."
+            },
+            {
+              "q": "La exposición al ruido nocturno…",
+              "options": [
+                "puede afectar al corazón.",
+                "mejora el sueño.",
+                "solo afecta a los niños."
+              ],
+              "answer": 0,
+              "zh": "與心血管疾病有關。",
+              "en": "Linked to heart disease."
             },
             {
               "q": "En las «supermanzanas»…",
@@ -77,58 +88,303 @@
           ]
         },
         {
-          "type": "text",
+          "type": "en_people",
           "mondai": 2,
-          "ask": "en_long",
-          "text": "Opinión — Elogio de la carta escrita a mano\nHace poco encontré en un cajón las cartas que mi abuela me enviaba cuando yo estudiaba en el extranjero. Las releí todas en una tarde, y me sorprendió lo vivas que seguían. No me refiero a lo que contaban —el tiempo, los vecinos, la receta de un bizcocho—, sino a la letra, a las tachaduras, a una mancha de café en una esquina.\nNadie defiende seriamente que volvamos a comunicarnos por correo postal: sería absurdo renunciar a la rapidez de un mensaje. Pero creo que hemos perdido algo al dejar de escribir a mano. Un mensaje se escribe en segundos y se olvida igual de rápido; una carta exige tiempo, y precisamente por eso dice al que la recibe: «He pensado en ti». Quizá no se trate de elegir entre una cosa y otra, sino de reservar la carta para lo que de verdad importa. Un cumpleaños, una despedida, un agradecimiento. Lo demás, que lo lleve el teléfono.",
+          "ask": "en_sections",
+          "bank": [
+            "Elena, profesora de secundaria — Desde que los alumnos llevan el móvil a clase, me cuesta mucho más mantener su atención. Este curso el instituto ha prohibido los teléfonos en el aula y, sinceramente, se nota: hablan más entre ellos en el recreo. No creo que la tecnología sea mala, pero hay que enseñar a usarla, y eso no lo hace nadie.",
+            "Rafael, padre de dos hijos — Mis hijos tienen 11 y 14 años y los dos tienen móvil. Al principio no quería, pero era el único medio para saber dónde estaban al salir del colegio. En casa tenemos una norma: nada de pantallas durante la cena. Y la verdad es que la cumplimos todos, también yo.",
+            "Nuria, psicóloga infantil — Recibo cada vez más familias preocupadas porque sus hijos no duermen bien. En muchos casos la causa es el móvil en la habitación por la noche. Prohibir no sirve de mucho si los adultos dan mal ejemplo. Los niños imitan lo que ven.",
+            "Iván, estudiante de 17 años — Los adultos critican mucho el móvil, pero yo lo uso para estudiar, para hablar con mi abuela, que vive en Argentina, y para aprender guitarra con vídeos. Es verdad que a veces pierdo demasiado tiempo en las redes. Estoy intentando controlarlo con una aplicación que me avisa."
+          ],
           "tr": {
-            "zh": "評論——讚美手寫信\n不久前我在抽屜裡找到奶奶在我出國念書時寄給我的信。我一個下午把它們全部重讀了一遍，驚訝於它們依然那麼鮮活。我說的不是信裡寫的事——天氣、鄰居、一個蛋糕的食譜——而是字跡、塗改，以及角落的一塊咖啡漬。\n沒有人會認真主張我們回到用郵寄溝通：放棄訊息的快速是荒謬的。但我認為不再手寫，讓我們失去了一些東西。訊息幾秒就寫好，也同樣很快被忘記；一封信需要時間，正因為如此，它對收信人說：「我想到了你。」\n也許重點不是二選一，而是把信留給真正重要的事。生日、告別、感謝。其他的就交給手機吧。",
-            "en": "Opinion — In praise of the handwritten letter\nRecently I found in a drawer the letters my grandmother sent me when I was studying abroad. I reread them all in one afternoon and was surprised how alive they still were. I don't mean what they said — the weather, the neighbours, a sponge-cake recipe — but the handwriting, the crossings-out, a coffee stain in one corner.\nNobody seriously argues that we should go back to communicating by post: it would be absurd to give up the speed of a message. But I think we have lost something by no longer writing by hand. A message is written in seconds and forgotten just as quickly; a letter takes time, and precisely for that reason it tells the person who receives it: \"I thought of you.\"\nPerhaps it is not about choosing one or the other, but about keeping the letter for what really matters. A birthday, a farewell, a thank-you. Let the phone carry the rest."
+            "zh": "A 艾蓮娜，中學老師：自從學生帶手機上課，我要抓住他們的注意力難多了。這學年學校禁止在教室用手機，老實說效果很明顯：下課時他們彼此聊得比較多。我不認為科技是壞的，但必須教怎麼使用，而這件事沒有人在做。\nB 拉斐爾，兩個孩子的爸爸：我的孩子 11 歲和 14 歲，都有手機。一開始我不想給，但那是他們放學後我能知道他們在哪裡的唯一辦法。家裡有一條規定：吃晚餐時不准看螢幕。說真的我們都遵守，我也是。\nC 努莉亞，兒童心理師：越來越多家庭來找我，擔心孩子睡不好。很多情況是晚上手機放在房間裡。如果大人做壞榜樣，禁止也沒什麼用。孩子會模仿他們看到的。\nD 伊萬，17 歲學生：大人很愛批評手機，但我用它讀書、和住在阿根廷的奶奶講話、看影片學吉他。我承認有時候在社群網站上浪費太多時間。我正試著用一個會提醒我的應用程式控制。",
+            "en": "A Elena, secondary teacher — Since pupils have been bringing their phones to class, it's much harder to keep their attention. This year the school banned phones in the classroom and, honestly, you can tell: they talk to each other more at break. I don't think technology is bad, but you have to teach how to use it, and nobody does that.\nB Rafael, father of two — My children are 11 and 14 and both have a phone. At first I didn't want it, but it was the only way to know where they were after school. At home we have a rule: no screens at dinner. And honestly we all keep it, me too.\nC Nuria, child psychologist — More and more families come to me worried because their children don't sleep well. In many cases the cause is the phone in the bedroom at night. Banning doesn't help much if adults set a bad example. Children copy what they see.\nD Iván, 17-year-old student — Adults criticise the phone a lot, but I use it to study, to talk to my grandmother, who lives in Argentina, and to learn guitar with videos. It's true I sometimes waste too much time on social media. I'm trying to control it with an app that warns me."
           },
           "questions": [
             {
-              "q": "Lo que más impresionó al autor de las cartas fue…",
-              "options": [
-                "su contenido.",
-                "los detalles materiales, como la letra.",
-                "la cantidad."
-              ],
-              "answer": 1,
-              "zh": "字跡、塗改、咖啡漬。",
-              "en": "The handwriting, crossings-out, stain."
+              "q": "¿Quién ha notado un cambio positivo después de una prohibición?",
+              "answer": "A",
+              "zh": "艾蓮娜：禁止後學生下課時聊得比較多。",
+              "en": "Elena: more talk at break."
             },
             {
-              "q": "El autor piensa que volver al correo postal…",
-              "options": [
-                "es necesario.",
-                "no tiene sentido.",
-                "es más rápido."
-              ],
-              "answer": 1,
-              "zh": "「放棄訊息的快速是荒謬的」。",
-              "en": "It would be absurd."
+              "q": "¿Quién aceptó algo que al principio no quería?",
+              "answer": "B",
+              "zh": "拉斐爾一開始不想給孩子手機。",
+              "en": "Rafael did not want phones at first."
             },
             {
-              "q": "Según el texto, una carta transmite que…",
-              "options": [
-                "el remitente tiene mucho tiempo libre.",
-                "alguien ha pensado en el destinatario.",
-                "el teléfono no funciona."
-              ],
-              "answer": 1,
-              "zh": "「我想到了你」。",
-              "en": "\"I thought of you.\""
+              "q": "¿Quién relaciona el móvil con problemas de sueño?",
+              "answer": "C",
+              "zh": "努莉亞：晚上手機放房間，睡不好。",
+              "en": "Nuria: phones at night."
             },
             {
-              "q": "La propuesta final del autor es…",
+              "q": "¿Quién usa el móvil para estar en contacto con un familiar lejano?",
+              "answer": "D",
+              "zh": "伊萬和阿根廷的奶奶講話。",
+              "en": "Iván and his grandmother."
+            },
+            {
+              "q": "¿Quién cree que falta educación sobre el uso de la tecnología?",
+              "answer": "A",
+              "zh": "艾蓮娜：必須教怎麼用，但沒人在做。",
+              "en": "Elena: nobody teaches it."
+            },
+            {
+              "q": "¿Quién insiste en la importancia del ejemplo de los adultos?",
+              "answer": "C",
+              "zh": "努莉亞：孩子模仿大人。",
+              "en": "Nuria: children copy adults."
+            },
+            {
+              "q": "¿Quién reconoce que a veces lo usa demasiado?",
+              "answer": "D",
+              "zh": "伊萬承認在社群網站浪費時間。",
+              "en": "Iván admits it."
+            },
+            {
+              "q": "¿Quién habla de una regla familiar?",
+              "answer": "B",
+              "zh": "拉斐爾：吃晚餐不准看螢幕。",
+              "en": "Rafael: no screens at dinner."
+            },
+            {
+              "q": "¿Quién usa una herramienta para controlar su uso?",
+              "answer": "D",
+              "zh": "伊萬用會提醒的應用程式。",
+              "en": "Iván uses an app."
+            },
+            {
+              "q": "¿Quién trabaja con familias?",
+              "answer": "C",
+              "zh": "努莉亞是兒童心理師，家庭來找她。",
+              "en": "Nuria, the psychologist."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 3,
+          "ask": "en_gapped",
+          "text": "Elogio de la carta escrita a mano\nHace poco encontré en un cajón las cartas que mi abuela me enviaba cuando yo estudiaba en el extranjero. (17) ＿＿＿＿＿ No me refiero a lo que contaban —el tiempo, los vecinos, la receta de un bizcocho—, sino a la letra, a las tachaduras, a una mancha de café en una esquina. (18) ＿＿＿＿＿\nNadie defiende seriamente que volvamos a comunicarnos por correo postal. (19) ＿＿＿＿＿ Pero creo que hemos perdido algo al dejar de escribir a mano. Un mensaje se escribe en segundos y se olvida igual de rápido. (20) ＿＿＿＿＿\nAdemás, una carta se puede guardar. (21) ＿＿＿＿＿ Quizá no se trate de elegir entre una cosa y otra, sino de reservar la carta para lo que de verdad importa. (22) ＿＿＿＿＿",
+          "bank": [
+            "Las releí todas en una tarde, y me sorprendió lo vivas que seguían.",
+            "Esos detalles me devolvían a la persona que las había escrito.",
+            "Sería absurdo renunciar a la rapidez de un mensaje.",
+            "Una carta, en cambio, exige tiempo, y precisamente por eso le dice al que la recibe: «He pensado en ti».",
+            "¿Quién conserva hoy los mensajes de hace diez años, perdidos en un teléfono antiguo?",
+            "Un cumpleaños, una despedida, un agradecimiento. Lo demás, que lo lleve el teléfono.",
+            "Por eso mi abuela nunca aprendió a escribir.",
+            "Los sellos son hoy más baratos que nunca."
+          ],
+          "tr": {
+            "zh": "讚美手寫信\n不久前我在抽屜裡找到奶奶在我出國念書時寄給我的信。（17）我說的不是信裡寫的事——天氣、鄰居、一個蛋糕的食譜——而是字跡、塗改，以及角落的一塊咖啡漬。（18）\n沒有人會認真主張我們回到用郵寄溝通。（19）但我認為不再手寫，讓我們失去了一些東西。訊息幾秒就寫好，也同樣很快被忘記。（20）\n而且信可以保存。（21）也許重點不是二選一，而是把信留給真正重要的事。（22）\nA 我一個下午把它們全部重讀了一遍，驚訝於它們依然那麼鮮活。\nB 那些細節讓我回到寫信的那個人身邊。\nC 放棄訊息的快速是荒謬的。\nD 相反地，一封信需要時間，正因為如此，它對收信人說：「我想到了你。」\nE 今天誰還保存十年前的訊息？它們都消失在舊手機裡了。\nF 生日、告別、感謝。其他的就交給手機吧。\nG 所以我奶奶從沒學會寫字。\nH 郵票現在比以前都便宜。",
+            "en": "In praise of the handwritten letter\nRecently I found in a drawer the letters my grandmother sent me when I was studying abroad. (17) I don't mean what they said — the weather, the neighbours, a sponge-cake recipe — but the handwriting, the crossings-out, a coffee stain in one corner. (18)\nNobody seriously argues that we should go back to communicating by post. (19) But I think we have lost something by no longer writing by hand. A message is written in seconds and forgotten just as quickly. (20)\nBesides, a letter can be kept. (21) Perhaps it is not about choosing one or the other, but about keeping the letter for what really matters. (22)\nA I reread them all in one afternoon and was surprised how alive they still were.\nB Those details brought back the person who had written them.\nC It would be absurd to give up the speed of a message.\nD A letter, on the other hand, takes time, and precisely for that reason it tells the person who receives it: \"I thought of you.\"\nE Who keeps the messages of ten years ago today, lost in an old phone?\nF A birthday, a farewell, a thank-you. Let the phone carry the rest.\nG That is why my grandmother never learnt to write.\nH Stamps are cheaper today than ever."
+          },
+          "questions": [
+            {
+              "q": "(17)",
+              "answer": "A",
+              "zh": "找到信之後：一個下午重讀，驚訝它們很鮮活。",
+              "en": "Found them → reread them."
+            },
+            {
+              "q": "(18)",
+              "answer": "B",
+              "zh": "字跡、咖啡漬這些細節讓人想起寫信的人。",
+              "en": "The details bring back the writer."
+            },
+            {
+              "q": "(19)",
+              "answer": "C",
+              "zh": "沒人主張回到郵寄：放棄訊息的快速很荒謬。",
+              "en": "Giving up speed would be absurd."
+            },
+            {
+              "q": "(20)",
+              "answer": "D",
+              "zh": "訊息很快被忘記；相反地，信需要時間。",
+              "en": "A letter, on the other hand…"
+            },
+            {
+              "q": "(21)",
+              "answer": "E",
+              "zh": "信可以保存；舊訊息卻消失在舊手機裡。",
+              "en": "Letters are kept; old messages are lost."
+            },
+            {
+              "q": "(22)",
+              "answer": "F",
+              "zh": "真正重要的事：生日、告別、感謝。G、H 不符合。",
+              "en": "What matters; G and H do not fit."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_cloze",
+          "text": "Cuando llegué a Salamanca para estudiar, no conocía (23) ＿＿＿＿＿ nadie. Los primeros días (24) ＿＿＿＿＿ muy difíciles: no entendía a los profesores y me perdía (25) ＿＿＿＿＿ la ciudad. Un día, en la biblioteca, una chica me preguntó (26) ＿＿＿＿＿ podía usar mi enchufe. Se llamaba Inés y estudiaba Medicina. Empezamos a hablar y, (27) ＿＿＿＿＿ me di cuenta, ya era de noche. Desde entonces nos vimos casi todos los días. Ella me ayudaba con el español y yo, (28) ＿＿＿＿＿ cambio, le enseñaba japonés. Si no la (29) ＿＿＿＿＿ conocido, creo que habría vuelto a casa (30) ＿＿＿＿＿ el primer mes. Ahora llevo tres años aquí y hablo español (31) ＿＿＿＿＿ fluidez. Inés y yo seguimos siendo amigas, aunque ella (32) ＿＿＿＿＿ trabaja en un hospital de Madrid. Cada vez que vuelve, quedamos en la misma cafetería (33) ＿＿＿＿＿ nos tomamos el primer café. Me alegro mucho de (34) ＿＿＿＿＿ venido a Salamanca. Les recomiendo a todos los que (35) ＿＿＿＿＿ estudiar fuera que no tengan miedo: lo difícil dura poco y lo bueno, (36) ＿＿＿＿＿ la vida.",
+          "tr": {
+            "zh": "我剛到薩拉曼卡念書時，一個人也不認識。頭幾天非常辛苦：我聽不懂老師講課，在城裡老是迷路。有一天在圖書館，一個女生問我能不能用我的插座。她叫伊內絲，念醫學。我們開始聊天，等我發現時，天已經黑了。從那之後我們幾乎天天見面。她幫我練西班牙文，我則教她日文作為交換。如果沒有認識她，我想第一個月我就回家了。現在我在這裡三年了，西班牙文講得很流利。伊內絲和我還是朋友，雖然她現在在馬德里的醫院工作。每次她回來，我們都約在我們喝第一杯咖啡的那家咖啡館。我很高興來了薩拉曼卡。我建議所有想出國念書的人不要害怕：辛苦的只是一下子，美好的會留一輩子。",
+            "en": "When I arrived in Salamanca to study, I didn't know anybody. The first days were very hard: I didn't understand the teachers and I got lost in the city. One day, in the library, a girl asked me if she could use my socket. Her name was Inés and she was studying medicine. We started talking and, before I realised, it was already night. From then on we saw each other almost every day. She helped me with my Spanish and I, in exchange, taught her Japanese. If I hadn't met her, I think I would have gone home in the first month. Now I've been here three years and I speak Spanish fluently. Inés and I are still friends, although she now works in a hospital in Madrid. Every time she comes back, we meet in the same café where we had our first coffee. I'm very glad I came to Salamanca. I advise everyone who wants to study abroad not to be afraid: the hard part is short and the good part lasts a lifetime."
+          },
+          "questions": [
+            {
+              "q": "(23)",
               "options": [
-                "escribir cartas solo en ocasiones importantes.",
-                "dejar de usar el teléfono.",
-                "enseñar caligrafía en las escuelas."
+                "a",
+                "de",
+                "con"
               ],
               "answer": 0,
-              "zh": "把信留給真正重要的事。",
-              "en": "Keep letters for what matters."
+              "zh": "「conocer a alguien」：認識人要加 a。",
+              "en": "conocer a + person."
+            },
+            {
+              "q": "(24)",
+              "options": [
+                "sean",
+                "fueron",
+                "serán"
+              ],
+              "answer": 1,
+              "zh": "講過去的事：fueron muy difíciles。sean 是現在虛擬式，serán 是未來。",
+              "en": "Past: fueron; the others are present subjunctive and future."
+            },
+            {
+              "q": "(25)",
+              "options": [
+                "por",
+                "para",
+                "hasta"
+              ],
+              "answer": 0,
+              "zh": "「perderse por la ciudad」：在城裡（到處）迷路。",
+              "en": "perderse por la ciudad."
+            },
+            {
+              "q": "(26)",
+              "options": [
+                "que",
+                "si",
+                "cuando"
+              ],
+              "answer": 1,
+              "zh": "間接問句「是否」：me preguntó si podía…",
+              "en": "Indirect yes/no question: si."
+            },
+            {
+              "q": "(27)",
+              "options": [
+                "cuando",
+                "antes de que",
+                "después de que"
+              ],
+              "answer": 0,
+              "zh": "「cuando me di cuenta」：等我發現時天已經黑了。antes de que 後面要接虛擬式（diera），después de que 意思不通。",
+              "en": "cuando me di cuenta: by the time I realised; antes de que needs the subjunctive."
+            },
+            {
+              "q": "(28)",
+              "options": [
+                "a",
+                "en",
+                "de"
+              ],
+              "answer": 1,
+              "zh": "「en cambio」作為交換／相反地。",
+              "en": "\"en cambio\"."
+            },
+            {
+              "q": "(29)",
+              "options": [
+                "había",
+                "hubiera",
+                "habría"
+              ],
+              "answer": 1,
+              "zh": "過去非事實條件句：si no la hubiera conocido。",
+              "en": "Past unreal condition: hubiera."
+            },
+            {
+              "q": "(30)",
+              "options": [
+                "en",
+                "por",
+                "a"
+              ],
+              "answer": 0,
+              "zh": "「en el primer mes」：在第一個月內。",
+              "en": "\"en el primer mes\"."
+            },
+            {
+              "q": "(31)",
+              "options": [
+                "de",
+                "con",
+                "en"
+              ],
+              "answer": 1,
+              "zh": "「hablar con fluidez」：流利地說。",
+              "en": "\"con fluidez\"."
+            },
+            {
+              "q": "(32)",
+              "options": [
+                "ya",
+                "nunca",
+                "jamás"
+              ],
+              "answer": 0,
+              "zh": "「ella ya trabaja」：她現在已經在馬德里工作了。nunca／jamás（從不）意思不通。",
+              "en": "\"ya trabaja\": now works."
+            },
+            {
+              "q": "(33)",
+              "options": [
+                "donde",
+                "que",
+                "cuando"
+              ],
+              "answer": 0,
+              "zh": "指地點的關係詞：la cafetería donde…",
+              "en": "Relative of place: donde."
+            },
+            {
+              "q": "(34)",
+              "options": [
+                "haber",
+                "había",
+                "he"
+              ],
+              "answer": 0,
+              "zh": "介系詞 de 後接不定式：de haber venido。",
+              "en": "de + infinitive: haber venido."
+            },
+            {
+              "q": "(35)",
+              "options": [
+                "quieren",
+                "quieran",
+                "querrán"
+              ],
+              "answer": 1,
+              "zh": "對象不確定的關係子句接虛擬式：todos los que quieran。",
+              "en": "Non-specific antecedent: subjunctive."
+            },
+            {
+              "q": "(36)",
+              "options": [
+                "para",
+                "por",
+                "toda"
+              ],
+              "answer": 2,
+              "zh": "「lo bueno, toda la vida」：美好的留一輩子。",
+              "en": "\"toda la vida\"."
             }
           ]
         }
