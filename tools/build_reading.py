@@ -273,6 +273,8 @@ SET_ASKS = {'topic', 'blank', 'wrong', 'match', 'main', 'order', 'insert', 'purp
             # Cambridge English (night queue 2026-10-31): notices / messages, three texts to match,
             # a long text, a multiple-choice cloze (the text's gaps are written (1) … (6))
             'en_notice', 'en_match', 'en_long', 'en_cloze', 'en_open', 'en_people', 'en_gapped',
+            # Cambridge First / Advanced: word formation, key word transformations, sections matched to statements
+            'en_wordform', 'en_transform', 'en_sections',
             # HSK 7–9 (2026-10-30): a long text whose questions are answered in writing (≤ 10 characters)
             'zh_short'}
 
@@ -384,6 +386,7 @@ import opencc as _opencc
 S2TW = _opencc.OpenCC('s2tw')
 T2S = _opencc.OpenCC('t2s')        # the Taiwan edition's answers, typed in Simplified
 SHORT_MAX = 10          # a written answer's characters (HSK 7–9 阅读第三部分)
+SHORT_MAX_EN = 30       # Cambridge key word transformations: two to five words
 ZH_BANK_TYPES = {'zh_pic', 'zh_match', 'zh_bank', 'zh_fill', 'zh_order'}
 # Cambridge B1+: people matched to a bank of texts (en_people), sentences put back into a text (en_gapped) —
 # the bank's letters are the options, each the answer at most once, the bank may hold several spares
@@ -501,7 +504,7 @@ def build_sets(data, name, problems):
             bank = None
             if typ in EN_BANK_TYPES:
                 bank = it.get('bank', [])
-                if len(bank) < len(it.get('questions', [])):
+                if len(bank) < len(it.get('questions', [])) and it.get('ask') != 'en_sections':   # First Part 7 reuses its four sections
                     problems.append(f'{iw}: a bank holds at least as many entries as questions')
             if typ in ZH_BANK_TYPES:
                 pic = it.get('pic') or {}
@@ -533,7 +536,8 @@ def build_sets(data, name, problems):
                     q = dict(q, options=bank)
                     if isinstance(q.get('answer'), str) and q['answer'] in LETTERS:
                         q['answer'] = LETTERS.index(q['answer'])
-                    if q.get('answer') in used_letters:
+                    # a Cambridge bank smaller than its questions (First Part 7: four texts, ten questions) reuses letters
+                    if q.get('answer') in used_letters and not (typ in EN_BANK_TYPES and len(bank) < len(it.get('questions', []))):
                         a = q.get('answer')
                         problems.append(f'{qw}: {LETTERS[a] if isinstance(a, int) and 0 <= a < len(LETTERS) else a} is already the answer of another question')
                     used_letters.add(q.get('answer'))
@@ -544,9 +548,10 @@ def build_sets(data, name, problems):
                     answers = q.get('answers') or []
                     if not q.get('q') or not answers or opts:
                         problems.append(f'{qw}: a {typ} question has "q" and "answers", no options')
+                    limit = SHORT_MAX_EN if typ == 'en_open' else SHORT_MAX
                     for a in answers:
-                        if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > SHORT_MAX:
-                            problems.append(f'{qw}: answer "{a}" is longer than {SHORT_MAX} characters')
+                        if len(re.sub(r'[\s，。、！？；：“”‘’（）]', '', a)) > limit:
+                            problems.append(f'{qw}: answer "{a}" is longer than {limit} characters')
                     for lang in ('zh', 'en'):
                         if not q.get(lang):
                             problems.append(f'{qw}: no {lang} explanation')

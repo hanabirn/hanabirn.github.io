@@ -102,7 +102,10 @@ const READING_ASK_EN = {
     en_cloze: 'Read the text below and choose the correct word for each space.',
     en_open: 'For each question, write the correct answer. Write one word for each gap.',
     en_people: 'The people below all want something. On the left there are eight texts. Decide which one would be the most suitable for each person.',
-    en_gapped: 'Five sentences have been removed from the text. For each question, choose the correct answer. There are three extra sentences which you do not need to use.'
+    en_gapped: 'Sentences have been removed from the text. Choose the sentence which fits each gap. There are extra sentences which you do not need to use.',
+    en_wordform: 'Use the word given in capitals to form a word that fits in the gap.',
+    en_transform: 'Complete the second sentence so that it has a similar meaning to the first, using the word given. Do not change the word given. Use between two and five words.',
+    en_sections: 'For each question, choose from the sections (A–D). The sections may be chosen more than once.'
 };
 const READING_OPT_MARKS = ['①', '②', '③', '④'];
 const READING_OPT_NUMS = ['1', '2', '3', '4'];     // the JLPT numbers its options
@@ -401,7 +404,7 @@ function readingExamHtml(set) {
         // a written answer (HSK 7–9): a box of SHORT_MAX characters; practice sends it with 送出 / Enter,
         // a mock keeps whatever is typed until 交卷
         const written = q.answers ? `<div class="rdx-short">
-                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${lang === 'en' ? 'en' : 'zh-CN'}" maxlength="10" autocomplete="off" spellcheck="false"
+                <input type="text" class="rdx-short-in" id="rdx-in-${o.i}" lang="${lang === 'en' ? 'en' : 'zh-CN'}" maxlength="${lang === 'en' ? 40 : 10}" autocomplete="off" spellcheck="false"
                     value="${escHtml(readingExTyped(pick))}" placeholder="${escHtml(t('rdx_short_ph'))}"${reveal ? ' disabled' : ''}
                     ${z.mock ? `oninput="readingExamType(${o.i}, this.value)"` : `onkeydown="if (event.key === 'Enter') readingExamWrite(${o.i})"`}>
                 ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}
