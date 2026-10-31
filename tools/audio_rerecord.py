@@ -8,7 +8,9 @@ TRIES takes per clip; a clip with no good take keeps its old file and is listed 
 (tools/build_listening.py VOICES), 2026-10-30.
 
   python tools/audio_rerecord.py ja|<fid> zh-TW|<fid> …      (keys as in the check's report)
-  python tools/audio_rerecord.py --from keys.txt [--dry-run]
+  python tools/audio_rerecord.py --from keys.txt [--dry-run] [--update]
+  --update writes the keys that are still wrong back into the --from file (the daily cloud run keeps
+  tools/audio_rerecord_queue.txt that way: what was re-recorded leaves the list, the rest waits a day).
 
 Mark a clip that is fine after all in tools/audio_check_ok.json instead (audio_check.py skips it).
 """
@@ -68,6 +70,7 @@ def main():
     ap.add_argument('keys', nargs='*', help='lang|fid')
     ap.add_argument('--from', dest='src', help='a file with one lang|fid a line')
     ap.add_argument('--dry-run', action='store_true')
+    ap.add_argument('--update', action='store_true', help='rewrite the --from file with the keys still to do')
     args = ap.parse_args()
     keys = list(args.keys)
     if args.src:
@@ -154,6 +157,11 @@ def main():
         if not done:
             failed.append(k)
     print(f'\n{len(keys) - len(failed)} of {len(keys)} re-recorded' + (f'; kept the old file: {", ".join(failed)}' if failed else ''))
+    if args.update and args.src and not args.dry_run:
+        src = Path(args.src)
+        head = [l for l in src.read_text(encoding='utf-8').splitlines() if l.startswith('#')]
+        src.write_text('\n'.join(head + failed) + '\n', encoding='utf-8')
+        print(f'{src}: {len(failed)} left')
 
 
 if __name__ == '__main__':

@@ -31,6 +31,11 @@ def summary(log, code):
         tail = '\n'.join(log.strip().splitlines()[-6:])
         out.append(f'❌ 這次執行失敗了（代碼 {code}），最後幾行：\n```\n{tail[-900:]}\n```')
     out.append(f'今天錄了 **{made}** 句（日文閱讀，Aoede）')
+    # the clips the recording check found wrong, re-recorded first (audio_rerecord.py --update)
+    rr = re.search(r'(\d+) of (\d+) re-recorded', log)
+    if rr:
+        left_rr = re.search(r'audio_rerecord_queue\.txt: (\d+) left', log)
+        out.append(f'重錄：{rr.group(1)} / {rr.group(2)} 句修好了' + (f'，還剩 {left_rr.group(1)} 句明天再試' if left_rr and left_rr.group(1) != '0' else '，重錄清單清空了 ✅'))
     if kept:
         out.append(f'其中 {kept} 句長度不對，先保留舊的聲音，之後會再試')
     if left is not None:

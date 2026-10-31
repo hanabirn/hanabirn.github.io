@@ -46,15 +46,25 @@ jobs:
         run: |
           printf 'GEMINI_TTS_KEY=%s\n' "$GEMINI_TTS_KEY" > tools/.gemini-tts.env
           set +e
-          python -u tools/build_audio.py --gemini --only ja --regemini 3.1-flash-tts-preview 2>&1 | tee record.log
-          echo "code=${PIPESTATUS[0]}" >> "$GITHUB_ENV"
+          # first the clips the recording check found wrong (tools/audio_rerecord_queue.txt, one lang|fid a
+          # line; what is re-recorded leaves the list), then the day's new lines with what quota is left
+          worst=0
+          if grep -qv '^#' tools/audio_rerecord_queue.txt 2>/dev/null; then
+            echo '===== re-record' | tee record.log
+            python -u tools/audio_rerecord.py --from tools/audio_rerecord_queue.txt --update 2>&1 | tee -a record.log
+            [ "${PIPESTATUS[0]}" -ne 0 ] && worst=1
+          fi
+          echo '===== new lines' | tee -a record.log
+          python -u tools/build_audio.py --gemini --only ja --regemini 3.1-flash-tts-preview 2>&1 | tee -a record.log
+          [ "${PIPESTATUS[0]}" -ne 0 ] && worst=1
+          echo "code=$worst" >> "$GITHUB_ENV"
           rm -f tools/.gemini-tts.env
 
       - name: Commit
         run: |
           git config user.name 'hanabi-audio-bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/audio
+          git add data/audio tools/audio_rerecord_queue.txt
           if git diff --cached --quiet; then echo 'nothing new'; exit 0; fi
           git commit -q -m "Gemini recordings $(date -u +%Y-%m-%d) (GitHub Actions)"
           git push origin HEAD:audio-queue
