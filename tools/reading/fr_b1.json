@@ -4,7 +4,7 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "French B1 reading rounds in the DELF B1 format (owner's plan 2026-10-30: each language's own exam). Compréhension des écrits, Exercices 1–2 (five holiday places, four people to match; a long article on the four-day week ×8), 12 questions, three options. Original texts. Drafted in tools/.mockups/fr_b1.py.",
+  "note": "French B1 reading rounds in the DELF B1 format (owner's plan 2026-10-30: each language's own exam). Compréhension des écrits, Exercices 1–3 (five holiday places, four people to match; an article on the four-day week ×8; an article on bottle deposits ×6), 18 questions, three options. Original texts. Drafted in tools/.mockups/fr_b1.py.",
   "sets": [
     {
       "id": "r1",
@@ -148,6 +148,84 @@
               "answer": 1,
               "zh": "六月逐一詢問每位員工，再決定。",
               "en": "It will ask every employee before deciding."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "La consigne fait son retour\nDans les années 1980, nos grands-parents rapportaient leurs bouteilles vides à l'épicerie et récupéraient quelques centimes. Puis le plastique et le verre jetable ont tout remplacé. Aujourd'hui, la consigne revient, et elle séduit de plus en plus de Français.\nEn Alsace, une coopérative collecte déjà plus de deux millions de bouteilles par an dans une centaine de magasins. Le principe est simple : le client paie 20 centimes de plus à l'achat et les récupère en rapportant la bouteille. Celle-ci est ensuite lavée dans une usine de la région et réutilisée jusqu'à cinquante fois. Selon la coopérative, une bouteille réutilisée consomme 75 % d'énergie en moins qu'une bouteille recyclée, car il n'est pas nécessaire de la refondre.\nLes obstacles restent pourtant nombreux. Pour que le système soit rentable, les bouteilles ne doivent pas voyager trop loin : au-delà de 250 kilomètres, le transport annule les bénéfices écologiques. Il faut aussi que les producteurs acceptent d'utiliser des bouteilles standard, toutes de la même forme, ce qui ne plaît pas toujours aux marques qui veulent se distinguer.\nLes consommateurs, eux, semblent prêts. Dans un sondage récent, sept personnes sur dix se disent favorables à la consigne, à condition que les points de collecte soient faciles d'accès. « Les gens veulent bien faire un geste, mais pas un détour », résume le directeur de la coopérative.",
+          "tr": {
+            "zh": "押瓶制度回來了\n1980 年代，我們的祖父母會把空瓶拿回雜貨店，換回幾分錢。後來塑膠和拋棄式玻璃瓶取代了一切。如今，押瓶制度回來了，而且吸引越來越多法國人。\n在阿爾薩斯，一家合作社每年已經在大約一百家商店回收超過兩百萬個瓶子。原則很簡單：顧客買的時候多付 20 分，把瓶子拿回來就能拿回這筆錢。瓶子接著在當地的工廠清洗，最多可重複使用五十次。根據合作社的說法，重複使用的瓶子比回收再製的瓶子少耗 75% 的能源，因為不需要重新熔化。\n不過，障礙仍然很多。要讓這個制度划算，瓶子不能運得太遠：超過 250 公里，運輸就會抵消對環境的好處。生產者也必須接受使用形狀全都一樣的標準瓶，而想要與眾不同的品牌不一定喜歡這樣。\n至於消費者，似乎已經準備好了。最近一項調查中，十個人裡有七個贊成押瓶制度，條件是回收點要方便到達。合作社的經理總結說：「大家願意出一點力，但不想繞遠路。」",
+            "en": "The deposit system is back\nIn the 1980s, our grandparents took their empty bottles back to the grocer's and got a few centimes. Then plastic and single-use glass replaced everything. Today the deposit is coming back, and it is winning over more and more French people.\nIn Alsace, a cooperative already collects more than two million bottles a year in about a hundred shops. The principle is simple: the customer pays 20 centimes more when buying and gets them back by returning the bottle. It is then washed in a factory in the region and reused up to fifty times. According to the cooperative, a reused bottle uses 75% less energy than a recycled one, because it does not need to be melted down again.\nThere are still many obstacles, though. For the system to pay, bottles must not travel too far: beyond 250 kilometres, transport cancels out the environmental benefits. Producers also have to agree to use standard bottles, all the same shape, which brands wanting to stand out do not always like.\nConsumers, for their part, seem ready. In a recent survey, seven people out of ten said they were in favour of the deposit, provided collection points are easy to reach. \"People are happy to make a gesture, but not a detour,\" sums up the cooperative's director."
+          },
+          "questions": [
+            {
+              "q": "Dans les années 1980, les bouteilles…",
+              "options": [
+                "étaient rapportées au magasin contre un peu d'argent.",
+                "étaient toutes en plastique.",
+                "étaient jetées à la poubelle."
+              ],
+              "answer": 0,
+              "zh": "祖父母把空瓶拿回雜貨店換幾分錢。",
+              "en": "Taken back to the shop for a few centimes."
+            },
+            {
+              "q": "Avec la consigne, le client…",
+              "options": [
+                "paie la bouteille deux fois.",
+                "récupère 20 centimes en rapportant la bouteille.",
+                "reçoit une bouteille gratuite."
+              ],
+              "answer": 1,
+              "zh": "多付 20 分，拿回瓶子就退回。",
+              "en": "Pays 20 centimes more and gets them back."
+            },
+            {
+              "q": "Une bouteille réutilisée consomme moins d'énergie parce qu'…",
+              "options": [
+                "elle est plus légère.",
+                "elle est fabriquée en Alsace.",
+                "on n'a pas besoin de la refondre."
+              ],
+              "answer": 2,
+              "zh": "不需要重新熔化。",
+              "en": "It does not need melting down."
+            },
+            {
+              "q": "Au-delà de 250 kilomètres…",
+              "options": [
+                "le système n'est plus écologique.",
+                "les bouteilles se cassent.",
+                "la consigne coûte plus cher au client."
+              ],
+              "answer": 0,
+              "zh": "運輸會抵消對環境的好處。",
+              "en": "Transport cancels the benefits."
+            },
+            {
+              "q": "Certaines marques n'aiment pas…",
+              "options": [
+                "le prix du verre.",
+                "utiliser des bouteilles toutes identiques.",
+                "vendre en Alsace."
+              ],
+              "answer": 1,
+              "zh": "想要與眾不同的品牌不喜歡標準瓶。",
+              "en": "Brands want to stand out."
+            },
+            {
+              "q": "Selon le directeur, les consommateurs…",
+              "options": [
+                "refusent la consigne.",
+                "veulent que ce soit plus écologique.",
+                "acceptent la consigne si elle reste pratique."
+              ],
+              "answer": 2,
+              "zh": "「願意出一點力，但不想繞遠路」：回收點要方便。",
+              "en": "\"A gesture, but not a detour\": it must be convenient."
             }
           ]
         }
