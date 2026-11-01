@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-01',
+      zh: "中文聽解（大陸版）新增 HSK 3、4、5、6、7–9：每級 3 回練習加 1 回模擬考，題型照新版 HSK，全部都有錄音。",
+      'zh-Hans': "中文听解（大陆版）新增 HSK 3、4、5、6、7–9：每级 3 回练习加 1 回模拟考，题型按照新版 HSK，全部都有录音。",
+      en: "Chinese Listening (Mainland edition) adds HSK 3, 4, 5, 6 and 7–9: three practice rounds and a mock exam per level, in the new HSK format, all recorded.",
+      ja: "中国語の聴解（大陸版）に HSK 3・4・5・6・7–9 が加わりました。各レベル練習 3 回と模擬試験 1 回、新しい HSK の形式で、すべて録音つきです。",
+      ko: "중국어 듣기(대륙판)에 HSK 3·4·5·6·7–9가 추가됐어요. 레벨마다 연습 3회와 모의고사 1회, 새 HSK 형식이며 모두 녹음이 있어요.",
+      ru: "В аудировании по китайскому (материковая версия) появились HSK 3, 4, 5, 6 и 7–9: на каждом уровне три тренировочных варианта и пробный экзамен в новом формате HSK, всё озвучено.",
+      fr: "La compréhension orale en chinois (édition continentale) s'enrichit des niveaux HSK 3, 4, 5, 6 et 7–9 : trois séries d'entraînement et un examen blanc par niveau, au nouveau format HSK, tous enregistrés.",
+      es: "La comprensión auditiva de chino (edición continental) suma HSK 3, 4, 5, 6 y 7–9: tres rondas de práctica y un examen de prueba por nivel, con el nuevo formato HSK y todo grabado.",
+      de: "Das Hörverstehen Chinesisch (Festland-Ausgabe) hat jetzt HSK 3, 4, 5, 6 und 7–9: drei Übungsrunden und eine Probeprüfung pro Stufe, im neuen HSK-Format und vollständig vertont." },
+    { date: '2026-11-01',
       zh: "英文、法文、俄文、德文、西班牙文的聽解題目都有真人般的錄音了（每個角色一種聲音：旁白、女生、男生），不再用瀏覽器的語音朗讀。英文是英式口音，跟劍橋英檢一樣；之後會再做一組美式英文的聽解。",
       'zh-Hans': "英语、法语、俄语、德语、西班牙语的听解题目都有自然的录音了（每个角色一种声音：旁白、女生、男生），不再用浏览器的语音朗读。英语是英式口音，和剑桥英语考试一样；之后会再做一组美式英语的听解。",
       en: "The English, French, Russian, German and Spanish listening rounds now have natural recordings (a voice for each role: narrator, woman, man) instead of your browser's voice. English is spoken with a British accent, as in the Cambridge exams; an American-English listening set will follow.",

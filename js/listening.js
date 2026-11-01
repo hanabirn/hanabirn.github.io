@@ -40,7 +40,7 @@ const LISTENING_ANSWER_SECS = { task: 12, point: 12, outline: 12, integrated: 15
     ko2_pic: 12, ko2_next: 10, ko2_act: 12, ko2_same: 15, ko2_main: 15, ko2_pair: 20 };
 // levels written but not yet recorded (kept out of data/listening/index.json with "unlisted"): a note under the
 // level picker tells visitors they are coming — drop a language's entry once its levels are published
-const LISTENING_SOON = { zh: 'HSK 3–9' };
+const LISTENING_SOON = {};   // Mainland HSK 3–9 recorded and published 2026-11-01
 const LISTENING_TX_MIN = 300;        // the transcript box's least height before it moves to the right column (listeningFitTx)
 const LISTENING_Q_PAGED = 4;          // an item with this many questions shows them one at a time on computers (HSK 5–6)
 const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
