@@ -10,7 +10,8 @@ TRIES takes per clip; a clip with no good take keeps its old file and is listed 
   python tools/audio_rerecord.py ja|<fid> zh-TW|<fid> …      (keys as in the check's report)
   python tools/audio_rerecord.py --from keys.txt [--dry-run] [--update]
   --update writes the keys that are still wrong back into the --from file (the daily cloud run keeps
-  tools/audio_rerecord_queue.txt that way: what was re-recorded leaves the list, the rest waits a day).
+  tools/audio_rerecord_queue.txt that way: what was re-recorded leaves the list, the rest waits a day;
+  a clip that failed on build_audio.FAIL_DAYS days becomes a "# gave up …" line and is not tried again).
 
 Mark a clip that is fine after all in tools/audio_check_ok.json instead (audio_check.py skips it).
 """
@@ -80,8 +81,13 @@ def main():
     env = None
     jobs_cache = {}
     failed = []
+    tried = set()                     # keys with at least one real take this run
     for k in keys:
         lang, fid = k.split('|', 1)
+        if args.update and not args.dry_run and ba.gave_up(k):
+            print(f'{k}: failed on {ba.FAIL_DAYS} days — not tried any more')
+            failed.append(k)
+            continue
         item = texts.get(lang, {}).get(fid)
         if not item:
             print(f'{k}: not a text the site speaks — skipped')
@@ -101,6 +107,7 @@ def main():
             done = False
             for attempt in range(TRIES):
                 clip = ba.synthesize(env, code, voices[who], kana)
+                tried.add(k)
                 secs = len(clip) / ba.SR
                 if not ba.loud_enough(clip) or secs > 0.3 * n + 1.5:
                     print(f'   take {attempt + 1}: {secs:.1f}s for {n} letters — too long / quiet')
@@ -133,6 +140,7 @@ def main():
                 except ba.QuotaSpent:
                     print(f'   Gemini is spent for today for {lang} — run again tomorrow')
                     break
+                tried.add(k)
                 if not got:
                     print('   take', attempt + 1, 'wrong length')
                     continue
@@ -141,6 +149,7 @@ def main():
             else:
                 env = env or ba.load_env()
                 clip = google_take(env, lang, text, attempt)
+                tried.add(k)
                 if not clip:
                     print('   take', attempt + 1, 'too short / quiet')
                     continue
@@ -156,12 +165,25 @@ def main():
                 break
         if not done:
             failed.append(k)
+    gave = []
+    if not args.dry_run:
+        for k in keys:
+            if k not in failed:
+                ba.fail_clear(k)
+            elif k in tried:
+                ba.fail_day(k)
+        gave = [k for k in failed if ba.gave_up(k)]
     print(f'\n{len(keys) - len(failed)} of {len(keys)} re-recorded' + (f'; kept the old file: {", ".join(failed)}' if failed else ''))
     if args.update and args.src and not args.dry_run:
         src = Path(args.src)
+        import datetime
         head = [l for l in src.read_text(encoding='utf-8').splitlines() if l.startswith('#')]
-        src.write_text('\n'.join(head + failed) + '\n', encoding='utf-8')
-        print(f'{src}: {len(failed)} left')
+        today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
+        # failed on FAIL_DAYS days: kept as a comment line, so it isn't tried again (a person decides)
+        head += [f'# gave up {today} after {ba.FAIL_DAYS} days: {k}' for k in gave]
+        left = [k for k in failed if k not in gave]
+        src.write_text('\n'.join(head + left) + '\n', encoding='utf-8')
+        print(f'{src}: {len(left)} left' + (f'; gave up on {len(gave)}: {", ".join(gave)}' if gave else ''))
 
 
 if __name__ == '__main__':

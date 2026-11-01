@@ -35,9 +35,20 @@ def summary(log, code):
     rr = re.search(r'(\d+) of (\d+) re-recorded', log)
     if rr:
         left_rr = re.search(r'audio_rerecord_queue\.txt: (\d+) left', log)
-        out.append(f'重錄：{rr.group(1)} / {rr.group(2)} 句修好了' + (f'，還剩 {left_rr.group(1)} 句明天再試' if left_rr and left_rr.group(1) != '0' else '，重錄清單清空了 ✅'))
+        if left_rr and left_rr.group(1) != '0':
+            tail = f'，還剩 {left_rr.group(1)} 句明天再試'
+        elif 'gave up on' in log:          # the rest failed on FAIL_DAYS days: listed below
+            tail = '，其餘的已停止重試'
+        else:
+            tail = '，重錄清單清空了 ✅'
+        out.append(f'重錄：{rr.group(1)} / {rr.group(2)} 句修好了' + tail)
     if kept:
         out.append(f'其中 {kept} 句長度不對，先保留舊的聲音，之後會再試')
+    # clips that failed on build_audio.FAIL_DAYS days stop being tried (owner, 2026-11-01)
+    gave = re.findall(r'gave up after (\d+) days: (\S+)', log)
+    if gave:
+        out.append(f'⚠️ **{len(gave)} 句連續 {gave[0][0]} 天都錄不好，已停止自動重試**（不再花錢）：'
+                   + '、'.join(k for _, k in gave) + '。請跟 Claude 說「處理放棄的錄音」，改用其他方法。')
     if left is not None:
         if left <= 0:
             out.append('✅ **全部錄完了！** 跟 Claude 說「合併錄音」就能上線，然後可以停用這個排程。')

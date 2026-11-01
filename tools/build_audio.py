@@ -133,6 +133,48 @@ def gemini_ja_text(sent):
     return ''.join(seg[1] if seg[0] in GEMINI_JA_KANA and seg[1] else seg[0] for seg in sent['t'])
 REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
+# Paid Gemini clips that keep failing (owner, 2026-11-01): a new line or a queued re-record that
+# fails on FAIL_DAYS different days (UTC dates; a day the quota ran out before it was tried does
+# not count) stops being tried and is reported, so a clip that never comes out right doesn't cost
+# money every day. tools/audio_gemini_fails.json: {"lang|fid": {"days": n, "last": "YYYY-MM-DD"}};
+# delete a key to try that clip again.
+FAIL_DAYS = 3
+FAIL_FILE = ROOT / 'tools' / 'audio_gemini_fails.json'
+
+
+def _fails():
+    try:
+        return json.loads(FAIL_FILE.read_text(encoding='utf-8'))
+    except (OSError, ValueError):
+        return {}
+
+
+def gave_up(key):
+    """True when this lang|fid has failed on FAIL_DAYS days and is no longer tried"""
+    return _fails().get(key, {}).get('days', 0) >= FAIL_DAYS
+
+
+def fail_day(key):
+    """count today as a failed day for lang|fid (once a day); returns the days so far"""
+    import datetime
+    today = datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%d')
+    f = _fails()
+    e = f.setdefault(key, {'days': 0, 'last': ''})
+    new_day = e['last'] != today
+    if new_day:
+        e['days'] += 1
+        e['last'] = today
+    FAIL_FILE.write_text(json.dumps(f, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
+    if new_day and e['days'] == FAIL_DAYS:     # said once, on the day it gives up
+        print(f'  gave up after {FAIL_DAYS} days: {key}', flush=True)
+    return e['days']
+
+
+def fail_clear(key):
+    f = _fails()
+    if key in f:
+        del f[key]
+        FAIL_FILE.write_text(json.dumps(f, ensure_ascii=False, indent=1, sort_keys=True) + '\n', encoding='utf-8')
 GEMINI_VOICES = {
     'zh-TW': ('Aoede', 'Read the following Chinese text aloud in a natural, warm Taiwanese Mandarin '
                        'accent (台灣華語), at a calm, clear pace. Say only the text:\n'),
@@ -729,6 +771,11 @@ def run_gemini(lang, files, aliases, top, limit):
                   if fid not in made and (tiers.get(fid, 2) <= top
                                           or (lang != 'ja' and not (d / f'{fid}.mp3').exists())))
     todo = [(t, fid) for t, _, _, fid in todo]
+    stopped = [fid for _, fid in todo if gave_up(f'{lang}|{fid}')]
+    if stopped:                            # failed on FAIL_DAYS days: no longer tried (see FAIL_FILE)
+        print(f'  {lang}: {len(stopped)} line(s) not tried any more (failed on {FAIL_DAYS} days): '
+              + ', '.join(f'{fid} {files[fid]!r}' for fid in stopped))
+        todo = [(t, fid) for t, fid in todo if fid not in set(stopped)]
     if limit is not None:
         todo = todo[:limit]
     print(f'{lang} (Gemini {GEMINI_VOICES[lang][0]}): {len(todo)} to render '
@@ -786,7 +833,9 @@ def run_gemini(lang, files, aliases, top, limit):
                     break
             if clip is None:
                 print(f'  ! {lang}: {text!r} kept the old voice (length {len(c) / GEMINI_SR:.1f}s)')
+                fail_day(f'{lang}|{fid}')
                 continue
+            fail_clear(f'{lang}|{fid}')
             (d / f'{fid}.mp3').write_bytes(to_mp3(clip, GEMINI_SR))
             made.add(fid)
             declicked.add(fid)             # gemini_say() already cut the click
