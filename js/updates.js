@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-01',
+      zh: "英文、法文、俄文、德文、西班牙文的聽解題目都有真人般的錄音了（每個角色一種聲音：旁白、女生、男生），不再用瀏覽器的語音朗讀。英文是英式口音，跟劍橋英檢一樣；之後會再做一組美式英文的聽解。",
+      'zh-Hans': "英语、法语、俄语、德语、西班牙语的听解题目都有自然的录音了（每个角色一种声音：旁白、女生、男生），不再用浏览器的语音朗读。英语是英式口音，和剑桥英语考试一样；之后会再做一组美式英语的听解。",
+      en: "The English, French, Russian, German and Spanish listening rounds now have natural recordings (a voice for each role: narrator, woman, man) instead of your browser's voice. English is spoken with a British accent, as in the Cambridge exams; an American-English listening set will follow.",
+      ja: "英語・フランス語・ロシア語・ドイツ語・スペイン語の聴解に、自然な録音がつきました（ナレーター・女性・男性、役ごとに別の声）。ブラウザの音声で読み上げることはなくなりました。英語はケンブリッジ英検と同じイギリス英語です。アメリカ英語の聴解もこれから作ります。",
+      ko: "영어·프랑스어·러시아어·독일어·스페인어 듣기 문제에 자연스러운 녹음이 생겼어요(내레이터·여자·남자, 역할마다 다른 목소리). 이제 브라우저 음성으로 읽지 않아요. 영어는 케임브리지 시험처럼 영국식 발음이고, 미국식 영어 듣기도 앞으로 만들 거예요.",
+      ru: "Задания по аудированию на английском, французском, русском, немецком и испанском теперь озвучены естественными голосами (у каждой роли свой голос: диктор, женщина, мужчина) вместо голоса браузера. Английский звучит с британским произношением, как на экзаменах Cambridge; позже появится аудирование на американском английском.",
+      fr: "Les épreuves de compréhension orale en anglais, français, russe, allemand et espagnol ont maintenant de vrais enregistrements (une voix par rôle : narrateur, femme, homme) au lieu de la voix du navigateur. L'anglais a l'accent britannique, comme aux examens Cambridge ; une série en anglais américain suivra.",
+      es: "Las pruebas de comprensión auditiva en inglés, francés, ruso, alemán y español ya tienen grabaciones naturales (una voz para cada papel: narrador, mujer, hombre) en lugar de la voz del navegador. El inglés tiene acento británico, como en los exámenes de Cambridge; más adelante habrá una serie en inglés americano.",
+      de: "Die Hörverstehen-Runden auf Englisch, Französisch, Russisch, Deutsch und Spanisch haben jetzt natürliche Aufnahmen (eine Stimme pro Rolle: Erzählerin, Frau, Mann) statt der Stimme deines Browsers. Englisch wird britisch gesprochen, wie in den Cambridge-Prüfungen; eine Hörverstehen-Reihe auf amerikanischem Englisch folgt." },
     { date: '2026-10-31',
       zh: "新的閱讀、聽解考試題型（中文台灣版 HSK、英、法、俄、德、西）的解說和翻譯，現在也有日文、韓文、俄文、法文、西班牙文、德文了（之前這些語言先顯示英文）。",
       'zh-Hans': "新的阅读、听解考试题型（中文台湾版 HSK、英、法、俄、德、西）的解说和翻译，现在也有日语、韩语、俄语、法语、西班牙语、德语了（之前这些语言先显示英文）。",

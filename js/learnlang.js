@@ -83,7 +83,9 @@ function learnEdition() {
    and the European exams (their A1 exam rounds sit in the A1 files beside the older passages; English A1
    has passages only). A note under the level picker of 閱讀 and 聽解 says what is still coming — drop
    an id here once its level is recorded and translated. */
-const LEARN_PREP = /^(zh_tw\d+|(fr|ru|de|es)_a1|(en|fr|ru|de|es)_(a2|b1|b2|c1))$/;
+// (the en / fr / ru / de / es rounds were recorded 2026-11-01; the Taiwan-edition HSK listening
+// still waits for its Gemini recording)
+const LEARN_PREP = /^zh_tw\d+$/;
 function learnPrepHtml(id) {
     return LEARN_PREP.test(id || '') ? `<p class="ls-soon">🎙️ ${escHtml(t('learn_prep_note'))}</p>` : '';
 }

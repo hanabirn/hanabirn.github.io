@@ -43,7 +43,7 @@ explanation translated, each set's mix of types.
 
 Usage: python tools/build_listening.py [--no-audio]
 """
-import argparse, hashlib, json, re, sys
+import argparse, hashlib, json, re, sys, unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -66,6 +66,19 @@ VOICES = {
     # HSK, Mainland edition: the same three, picked by ear (tools/.mockups/zh_listen_voices.py, 2026-10-30)
     'zh': ('cmn-CN', {'N': 'cmn-CN-Chirp3-HD-Kore', 'F': 'cmn-CN-Chirp3-HD-Erinome', 'M': 'cmn-CN-Chirp3-HD-Charon',
                       'F2': 'cmn-CN-Chirp3-HD-Leda', 'M2': 'cmn-CN-Chirp3-HD-Fenrir'}),
+    # Cambridge / DELF / ТРКИ / Goethe / DELE: N, F, M picked by ear by the owner
+    # (tools/.mockups/eu_listen_voices.py, 2026-11-01); F2 / M2 (a third speaker, rare) chosen by
+    # Claude from the other voices of the audition, for the owner to change. English is British.
+    'en': ('en-GB', {'N': 'en-GB-Chirp3-HD-Leda', 'F': 'en-GB-Chirp3-HD-Aoede', 'M': 'en-GB-Chirp3-HD-Fenrir',
+                     'F2': 'en-GB-Chirp3-HD-Erinome', 'M2': 'en-GB-Chirp3-HD-Charon'}),
+    'fr': ('fr-FR', {'N': 'fr-FR-Chirp3-HD-Leda', 'F': 'fr-FR-Chirp3-HD-Erinome', 'M': 'fr-FR-Chirp3-HD-Charon',
+                     'F2': 'fr-FR-Chirp3-HD-Aoede', 'M2': 'fr-FR-Chirp3-HD-Fenrir'}),
+    'ru': ('ru-RU', {'N': 'ru-RU-Chirp3-HD-Leda', 'F': 'ru-RU-Chirp3-HD-Aoede', 'M': 'ru-RU-Chirp3-HD-Fenrir',
+                     'F2': 'ru-RU-Chirp3-HD-Kore', 'M2': 'ru-RU-Chirp3-HD-Charon'}),
+    'de': ('de-DE', {'N': 'de-DE-Chirp3-HD-Leda', 'F': 'de-DE-Chirp3-HD-Kore', 'M': 'de-DE-Chirp3-HD-Charon',
+                     'F2': 'de-DE-Chirp3-HD-Aoede', 'M2': 'de-DE-Chirp3-HD-Fenrir'}),
+    'es': ('es-ES', {'N': 'es-ES-Chirp3-HD-Leda', 'F': 'es-ES-Chirp3-HD-Aoede', 'M': 'es-ES-Chirp3-HD-Orus',
+                     'F2': 'es-ES-Chirp3-HD-Erinome', 'M2': 'es-ES-Chirp3-HD-Charon'}),
 }
 # TOPIK (Korean) item types, one per instruction group of the paper; every option is printed.
 # TOPIK I: 1–4 answer, 5–6 next, 7–10 place, 11–14 topic, 15–16 pic, 17–21 same, 22–24 main,
@@ -163,7 +176,13 @@ def text_of(s, words, where, problems, lang, short=False):
         lv = hsk_level(CUR.get('level', ''))
         segs, plain = zh_segs(s, where, problems, 1 if lv >= 3 else 0, lv <= 2, words)
         return segs, plain, plain
-    return sentence(s, words, where, problems, lang, short=short)
+    segs, plain, said = sentence(s, words, where, problems, lang, short=short)
+    if lang == 'ru':
+        # Russian is spoken without its stress marks: Google's Chirp3 voices turn each U+0301 into an
+        # extra «с» (Ду́маю → «Дусмаю»; 47 of 75 clips failed the check, 2026-11-01, owner's call);
+        # the page still shows them
+        said = unicodedata.normalize('NFC', unicodedata.normalize('NFD', said).replace('́', ''))
+    return segs, plain, said
 
 
 def hsk_pic(spec, row, problems, where):
@@ -367,6 +386,22 @@ def build(src, problems, jobs):
             'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}), 'sets': sets}
 
 
+def say_long(env, code, voice, text):
+    """ba.synthesize(), but a line Google calls "too long" (it happened on an HSK 4 line of normal
+    length, 2026-11-01 — the limit isn't in characters) is said in two halves split at the comma
+    nearest its middle, joined with a comma's pause"""
+    try:
+        return ba.synthesize(env, code, voice, text)
+    except RuntimeError as e:
+        cuts = [m.end() for m in re.finditer(r'[，,、；;：:]', text) if 0 < m.end() < len(text)]
+        if 'too long' not in str(e) or not cuts:
+            raise
+        at = min(cuts, key=lambda c: abs(c - len(text) / 2))
+        print(f'  ({code}: said in two parts: {text[:at]!r} + {text[at:]!r})')
+        return (list(say_long(env, code, voice, text[:at])) + [0] * int(0.25 * ba.SR)
+                + list(say_long(env, code, voice, text[at:])))
+
+
 def render_audio(lang, jobs):
     if lang not in VOICES:
         print(f'  ! no voices for {lang} yet — audio skipped')
@@ -386,7 +421,7 @@ def render_audio(lang, jobs):
         # about 0.2 s a kana, so 0.3 s + 1.5 s, as tools/audio_rerecord.py, 2026-10-30)
         n = max(1, len(re.findall(r'[^\W_]', kana)))
         for attempt in range(4):
-            clip = ba.synthesize(env, code, voices[who], kana)
+            clip = say_long(env, code, voices[who], kana)
             secs = len(clip) / ba.SR
             if ba.loud_enough(clip) and secs <= 0.3 * n + 1.5:
                 break
@@ -425,7 +460,11 @@ def main():
                           'count': len(data['sets']), 'items': n, 'mocks': mocks,
                           **({'edition': data['edition']} if data.get('edition') else {})})
             print(f'{data["id"]}: {len(data["sets"])} sets ({mocks} mock), {n} items')
-        if not args.no_audio and not problems:
+        if data.get('edition') == 'tw':
+            # Taiwan Mandarin has no Google voice: VOICES['zh'] is Mainland (cmn-CN) and would give
+            # the Taiwan edition the wrong accent — it waits for its Gemini recording (2026-11-01)
+            print(f'  audio {data["id"]}: Taiwan edition — no Google recording')
+        elif not args.no_audio and not problems:
             render_audio(data['lang'], jobs)
     index.sort(key=lambda l: (LANG_ORDER.index(l['lang']) if l['lang'] in LANG_ORDER else 99, l['order']))
     (OUT / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
