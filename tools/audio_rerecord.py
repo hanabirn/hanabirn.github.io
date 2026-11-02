@@ -97,6 +97,13 @@ def main():
             # 聽解: the speaker's Google voice from tools/build_listening.py, no backup voice
             import build_listening as bl
             base = lang.split('/', 1)[1]
+            if base == 'zh' and any(f'"{fid}"' in f.read_text(encoding='utf-8')
+                                    for f in (ac.ROOT / 'data' / 'listening').glob('zh_tw*.json')):
+                # the Taiwan edition is Gemini (build_listening.GEMINI_TW_VOICES), not the Mainland
+                # Google voices below
+                print(f'{k}: Taiwan edition — delete the file and run build_listening.py --gemini-tw N')
+                failed.append(k)
+                continue
             who, kana = listening_line(base, fid)
             code, voices = bl.VOICES[base]
             print(f'{k} (Google, {who}): {item["key"]!r} → says {kana!r}', flush=True)

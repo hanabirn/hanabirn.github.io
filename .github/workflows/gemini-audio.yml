@@ -57,6 +57,12 @@ jobs:
           echo '===== new lines' | tee -a record.log
           python -u tools/build_audio.py --gemini --only ja --regemini 3.1-flash-tts-preview 2>&1 | tee -a record.log
           [ "${PIPESTATUS[0]}" -ne 0 ] && worst=1
+          # then the Taiwan-edition HSK 聽解 (owner, 2026-11-01) with what is left of the same model's
+          # 100 a day; only the audio is committed (the rebuilt data/listening is left alone)
+          echo '===== taiwan listening' | tee -a record.log
+          python -u tools/build_listening.py --gemini-tw 80 2>&1 | tee -a record.log
+          [ "${PIPESTATUS[0]}" -ne 0 ] && worst=1
+          git checkout -- data/listening
           echo "code=$worst" >> "$GITHUB_ENV"
           rm -f tools/.gemini-tts.env
 

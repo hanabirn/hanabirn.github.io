@@ -531,10 +531,10 @@ def gemini_key():
     sys.exit('Put GEMINI_API_KEY in worker/assistant/.dev.vars')
 
 
-def gemini_say(key, lang, text, model=None):
+def gemini_say(key, lang, text, model=None, voice=None):
     """PCM samples (24 kHz) of Gemini TTS saying `text`, trimmed; QuotaSpent when the
-    model's daily quota is used up."""
-    voice, instruction = GEMINI_VOICES[lang]
+    model's daily quota is used up. `voice` overrides the language's voice (聽解 speakers)."""
+    voice, instruction = voice or GEMINI_VOICES[lang][0], GEMINI_VOICES[lang][1]
     body = {'contents': [{'parts': [{'text': instruction + text}]}],
             'generationConfig': {'responseModalities': ['AUDIO'],
                                  'speechConfig': {'voiceConfig': {'prebuiltVoiceConfig': {'voiceName': voice}}}}}

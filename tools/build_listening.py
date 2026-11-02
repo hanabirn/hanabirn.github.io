@@ -429,10 +429,60 @@ def render_audio(lang, jobs):
         (d / f'{aid}.mp3').write_bytes(ba.to_mp3(clip))
 
 
+# Taiwan-edition HSK (zh_tw…): Google has no Taiwan Mandarin, so Gemini TTS with the zh-TW
+# instruction of build_audio.GEMINI_VOICES — paid, and 100 clips a day per model, so only with
+# --gemini-tw N (at most N new clips this run). N, F, M picked by the owner by ear
+# (tools/.mockups/tw_listen_voices.py, 2026-11-01); F2 / M2 chosen by Claude. One model only, so
+# every clip sounds the same (as the Japanese 閱讀).
+GEMINI_TW_VOICES = {'N': 'Leda', 'F': 'Erinome', 'M': 'Fenrir', 'F2': 'Aoede', 'M2': 'Charon'}
+GEMINI_TW_MODEL = 'gemini-3.8-flash-tts'
+GEMINI_TW = {'left': 0, 'made': 0, 'secs': 0.0, 'failed': 0, 'spent': False}
+
+
+def render_gemini_tw(level, jobs):
+    """the Taiwan edition's clips with Gemini, while GEMINI_TW['left'] allows (see above)"""
+    d = AUDIO / 'zh'
+    todo = [(aid, who, said) for aid, (who, said) in jobs.items() if not (d / f'{aid}.mp3').exists()]
+    print(f'  audio {level} (Gemini, Taiwan): {len(jobs)} lines, {len(todo)} to render')
+    if not todo or GEMINI_TW['left'] <= 0 or GEMINI_TW['spent']:
+        return
+    key = ba.gemini_key()
+    for aid, who, said in todo:
+        if GEMINI_TW['left'] <= 0:
+            return
+        clip = None
+        try:
+            # it now and then reads the instruction too (a lone word most often): check the length,
+            # and give a short word alternately as 「word」 / word。 like build_audio's Gemini pass
+            tries = (['「' + said + '」', said + '。'] * 2 + ['「' + said + '」']
+                     if ba.spoken_chars(said) <= 4 else [said] * 4)
+            for text in tries:
+                c = ba.gemini_say(key, 'zh-TW', text, GEMINI_TW_MODEL, voice=GEMINI_TW_VOICES[who])
+                if ba.loud_enough(c) and ba.gemini_length_ok(said, c):
+                    clip = c
+                    break
+                print(f'  ! {aid}: retry ({len(c) / ba.GEMINI_SR:.1f}s)')
+        except ba.QuotaSpent:
+            print(f'  {GEMINI_TW_MODEL} is spent for today — run again tomorrow')
+            GEMINI_TW['spent'] = True
+            return
+        GEMINI_TW['left'] -= 1
+        if clip is None:
+            print(f'  ! {aid}: no good take, left for another day: {said!r}')
+            GEMINI_TW['failed'] += 1
+            continue
+        (d / f'{aid}.mp3').write_bytes(ba.to_mp3(clip, ba.GEMINI_SR))
+        GEMINI_TW['made'] += 1
+        GEMINI_TW['secs'] += len(clip) / ba.GEMINI_SR
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--no-audio', action='store_true')
+    ap.add_argument('--gemini-tw', type=int, default=0, metavar='N',
+                    help='record up to N Taiwan-edition clips with Gemini (paid)')
     args = ap.parse_args()
+    GEMINI_TW['left'] = args.gemini_tw
     import opencc
     from build_grammar import add_hans
     from content_i18n import fill, report_missing
@@ -463,9 +513,17 @@ def main():
         if data.get('edition') == 'tw':
             # Taiwan Mandarin has no Google voice: VOICES['zh'] is Mainland (cmn-CN) and would give
             # the Taiwan edition the wrong accent — it waits for its Gemini recording (2026-11-01)
-            print(f'  audio {data["id"]}: Taiwan edition — no Google recording')
-        elif not args.no_audio and not problems:
+            if args.gemini_tw and not args.no_audio and not problems:
+                render_gemini_tw(data['id'], jobs)
+            else:
+                print(f'  audio {data["id"]}: Taiwan edition — no Google recording (--gemini-tw N records it)')
+        elif not args.no_audio and not problems and not args.gemini_tw:
+            # (with --gemini-tw only the Taiwan clips are made: the cloud run has no Google key)
             render_audio(data['lang'], jobs)
+    if args.gemini_tw:
+        g = GEMINI_TW
+        print(f'Gemini Taiwan: {g["made"]} clips made ({g["secs"]:.0f} s of audio, about '
+              f'US${g["secs"] / 10 * 0.00225:.3f} at US$0.00225 per 10 s), {g["failed"]} without a good take')
     index.sort(key=lambda l: (LANG_ORDER.index(l['lang']) if l['lang'] in LANG_ORDER else 99, l['order']))
     (OUT / 'index.json').write_text(json.dumps(index, ensure_ascii=False, indent=1), encoding='utf-8')
     if problems:
