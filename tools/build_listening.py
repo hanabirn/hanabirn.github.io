@@ -405,6 +405,7 @@ def build(src, problems, jobs):
         sets.append({'id': set_['id'], 'mock': bool(set_.get('mock')), 'items': items})
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
             **({'edition': data['edition']} if data.get('edition') else {}),
+            **({'voices': data['voices']} if data.get('voices') else {}),   # render_audio() needs it (en-US)
             **({'instr': {t: data['instr'][t] for t in types}} if data.get('instr') else {}),
             'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}),
             **({'q_paged': data['q_paged']} if data.get('q_paged') else {}), 'sets': sets}
