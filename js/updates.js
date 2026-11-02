@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-01',
+      zh: "英文聽解新增美式口音的 TOEIC（多益）和 TOEFL（托福）：TOEIC 有照片描述、應答問題、對話、獨白四個部分；TOEFL 照 2026 新制，有選回應、校園對話、公告和學術講課。每段只播一次，跟正式考試一樣。",
+      'zh-Hans': "英语听解新增美式口音的 TOEIC（托业）和 TOEFL（托福）：TOEIC 有照片描述、应答问题、对话、独白四个部分；TOEFL 按照 2026 新制，有选回应、校园对话、公告和学术讲课。每段只播一次，和正式考试一样。",
+      en: "English Listening adds TOEIC and TOEFL rounds with American voices: TOEIC has its four parts (photographs, question–response, conversations, talks), and TOEFL follows the 2026 format (choose a response, campus conversations, announcements, academic talks). Each recording plays once, as in the real tests.",
+      ja: "英語の聴解に、アメリカ英語の TOEIC と TOEFL が加わりました。TOEIC は写真描写・応答問題・会話・説明文の 4 パート、TOEFL は 2026 年の新形式（応答を選ぶ、キャンパスでの会話、アナウンス、講義）です。本番と同じく、音声は 1 回だけ流れます。",
+      ko: "영어 듣기에 미국식 발음의 TOEIC과 TOEFL이 추가됐어요. TOEIC은 사진 묘사·질의응답·대화·담화의 4개 파트, TOEFL은 2026년 새 형식(응답 고르기, 캠퍼스 대화, 공지, 강의)이에요. 실제 시험처럼 음성은 한 번만 나와요.",
+      ru: "В аудировании по английскому появились TOEIC и TOEFL с американским произношением: в TOEIC четыре части (фотографии, вопрос — ответ, диалоги, монологи), TOEFL — в формате 2026 года (выбор ответа, разговоры в кампусе, объявления, лекции). Каждая запись звучит один раз, как на настоящем экзамене.",
+      fr: "La compréhension orale en anglais s'enrichit du TOEIC et du TOEFL, avec des voix américaines : le TOEIC en quatre parties (photographies, questions-réponses, conversations, exposés) et le TOEFL au format 2026 (choisir une réponse, conversations sur le campus, annonces, cours). Chaque enregistrement ne passe qu'une fois, comme à l'examen.",
+      es: "La comprensión auditiva de inglés suma el TOEIC y el TOEFL con voces estadounidenses: el TOEIC con sus cuatro partes (fotografías, pregunta y respuesta, conversaciones, charlas) y el TOEFL con el formato de 2026 (elegir una respuesta, conversaciones en el campus, anuncios, clases). Cada grabación se escucha una sola vez, como en el examen real.",
+      de: "Das Hörverstehen Englisch hat jetzt TOEIC und TOEFL mit amerikanischen Stimmen: TOEIC mit seinen vier Teilen (Fotos, Frage und Antwort, Gespräche, Vorträge) und TOEFL im Format von 2026 (Antwort wählen, Gespräche auf dem Campus, Durchsagen, Vorlesungen). Jede Aufnahme läuft nur einmal, wie in der echten Prüfung." },
+    { date: '2026-11-01',
       zh: "中文聽解（大陸版）新增 HSK 3、4、5、6、7–9：每級 3 回練習加 1 回模擬考，題型照新版 HSK，全部都有錄音。",
       'zh-Hans': "中文听解（大陆版）新增 HSK 3、4、5、6、7–9：每级 3 回练习加 1 回模拟考，题型按照新版 HSK，全部都有录音。",
       en: "Chinese Listening (Mainland edition) adds HSK 3, 4, 5, 6 and 7–9: three practice rounds and a mock exam per level, in the new HSK format, all recorded.",
