@@ -77,6 +77,10 @@ VOICES = {
                      'F2': 'ru-RU-Chirp3-HD-Kore', 'M2': 'ru-RU-Chirp3-HD-Charon'}),
     'de': ('de-DE', {'N': 'de-DE-Chirp3-HD-Leda', 'F': 'de-DE-Chirp3-HD-Kore', 'M': 'de-DE-Chirp3-HD-Charon',
                      'F2': 'de-DE-Chirp3-HD-Aoede', 'M2': 'de-DE-Chirp3-HD-Fenrir'}),
+    # TOEIC / TOEFL (a level's "voices": "en-US"): N Leda, F Aoede, M Orus picked by the owner by ear
+    # (tools/.mockups/us_listen_voices.py, 2026-11-01); F2 Erinome / M2 Charon by Claude
+    'en-US': ('en-US', {'N': 'en-US-Chirp3-HD-Leda', 'F': 'en-US-Chirp3-HD-Aoede', 'M': 'en-US-Chirp3-HD-Orus',
+                        'F2': 'en-US-Chirp3-HD-Erinome', 'M2': 'en-US-Chirp3-HD-Charon'}),
     'es': ('es-ES', {'N': 'es-ES-Chirp3-HD-Leda', 'F': 'es-ES-Chirp3-HD-Aoede', 'M': 'es-ES-Chirp3-HD-Orus',
                      'F2': 'es-ES-Chirp3-HD-Erinome', 'M2': 'es-ES-Chirp3-HD-Charon'}),
 }
@@ -106,13 +110,17 @@ ZH_TYPED_MAX = 10
 # three pictures (a row of a picture, like zh_pic3); en_fill — a talk with printed notes whose gaps are typed; en_q —
 # a longer conversation, printed questions with three options; en_talk — short recordings, one printed question each;
 # en_match — one conversation, people matched to a printed list (A–H, the same options for each). Options lettered.
-EN_TYPES = ('en_pic3', 'en_fill', 'en_q', 'en_talk', 'en_match')
+# American English (TOEIC / TOEFL, owner 2026-11-01): en_photo — TOEIC Part 1, one photograph and four spoken
+# statements (a scene picture, lettered A–D aloud); en_resp — TOEIC Part 2, one line and three spoken responses;
+# en_reply — TOEFL "Listen and Choose a Response", one line and four printed responses. A level may name its
+# voice set ("voices": "en-US") when it isn't VOICES[lang].
+EN_TYPES = ('en_pic3', 'en_fill', 'en_q', 'en_talk', 'en_match', 'en_photo', 'en_resp', 'en_reply')
 TYPES = ('task', 'point', 'outline', 'utterance', 'response', 'integrated') + KO_TYPES + ZH_TYPES + EN_TYPES
 ZH_LETTERS = 'ABCDEFGH'
 HSK_IMG = ROOT / 'data' / 'listening' / 'img' / 'zh'
-CUR = {}          # the level being built: {'level': 'HSK 1'} (Chinese text needs it for the pinyin)
+CUR = {}          # the level being built: {'level': 'HSK 1', 'vset': 'en-US'} (Chinese text needs the level for the pinyin)
 DEFAULT_TYPES = ['task', 'point', 'utterance', 'response']
-SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4}     # types whose options are read aloud
+SPOKEN = {'utterance': 3, 'response': 3, 'outline': 4, 'en_photo': 4, 'en_resp': 3}     # types whose options are read aloud
 SPEAKERS = ('N', 'F', 'M', 'F2', 'M2')
 LANG_ORDER = ['ja', 'ko', 'en', 'zh', 'fr', 'ru', 'es', 'de']
 
@@ -130,8 +138,15 @@ PIC_STYLE_TOPIK = ('Black-and-white line illustration in the style of a Korean l
                    'Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
 
 
+PIC_STYLE_TOEIC = ('A realistic black-and-white photograph like those in a TOEIC test booklet: natural light, ordinary '
+                   'people and places, sharp focus, plain documentary style, no filters. Absolutely no readable text, '
+                   'no letters, no numbers, no signs with writing, no logos anywhere in the image.')
+
+
 def pic_prompt(spec):
     """(prompt, aspect ratio) for one picture description."""
+    if 'photo' in spec:                  # TOEIC Part 1 (2026-11-01)
+        return 'One photograph: ' + spec['photo']['desc'] + '. ' + PIC_STYLE_TOEIC, '4:3'
     style = PIC_STYLE_TOPIK if spec.get('style') == 'topik' else PIC_STYLE
     if 'grid' in spec:
         g = spec['grid']
@@ -155,7 +170,9 @@ def item_pic(key, it, lang, problems):
     if not spec:
         return None
     first = re.sub(r'\{[^}]*\}', '', it['lines'][0]['s'])
-    want = 'grid' if it.get('type') in PIC_TYPES else 'scene' if it.get('type') == 'utterance' else None
+    want = ('grid' if it.get('type') in PIC_TYPES else 'scene' if it.get('type') in ('utterance', 'en_photo') else None)
+    if want == 'scene' and 'photo' in spec:      # TOEIC Part 1: a photograph, no arrow
+        spec = dict(spec, scene=spec['photo'])
     if not first.startswith(spec['first']) or not (want in spec or want == 'grid' and 'chart' in spec):
         problems.append(f'{key}: tools/listening/pics.json describes another item ({spec["first"]!r}, a {want or it.get("type")} is here)')
         return None
@@ -166,7 +183,7 @@ def item_pic(key, it, lang, problems):
 # spoken options are numbered aloud, as in the exam (いち … に … さん …): the narrator
 # says the number as a clip of its own and the page pauses before the option
 # (until 2026-10-22 the number was the start of the option's clip and ran into it)
-NUMBERS = {'ja': ['いち。', 'に。', 'さん。', 'よん。']}
+NUMBERS = {'ja': ['いち。', 'に。', 'さん。', 'よん。'], 'en': ['A.', 'B.', 'C.', 'D.']}
 
 
 def text_of(s, words, where, problems, lang, short=False):
@@ -208,13 +225,14 @@ def spoken(line, where, words, problems, lang, jobs, number=None):
     for k in ('zh', 'en'):
         if not line.get(k):
             problems.append(f'{where}: no {k} translation for {plain}')
-    aid = ba.audio_id(f'{who}|{plain}|{kana}')
+    vs = '|' + CUR['vset'] if CUR.get('vset') else ''    # another voice set: other clips for the same text
+    aid = ba.audio_id(f'{who}|{plain}|{kana}{vs}')
     jobs[aid] = (who, kana)
     out = {'who': who, 't': segs, 'plain': plain, 'kana': kana, 'a': aid,
            'zh': line.get('zh', ''), 'en': line.get('en', '')}
     if number is not None:
         nk = NUMBERS[lang][number]
-        out['na'] = ba.audio_id(f'N|{nk}|{nk}')
+        out['na'] = ba.audio_id(f'N|{nk}|{nk}' + ('|' + CUR['vset'] if CUR.get('vset') else ''))
         out['nk'] = nk
         jobs[out['na']] = ('N', nk)
     return out
@@ -280,6 +298,9 @@ def build(src, problems, jobs):
     data = json.loads(src.read_text(encoding='utf-8'))
     lang = data['lang']
     CUR['level'] = data.get('level', '')
+    CUR['vset'] = data.get('voices', '')
+    if CUR['vset'] and CUR['vset'] not in VOICES:
+        problems.append(f'{src.stem}: no voice set {CUR["vset"]!r} in VOICES')
     ZH_EDITION['now'] = data.get('edition', 'cn')     # 'tw': Traditional, Taiwan readings + zhuyin (build_reading.zh_segs)
     types = data.get('types', DEFAULT_TYPES)
     # a practice round may hold only part of the level's types (Korean 2급: TOPIK I 15–30 in
@@ -329,6 +350,8 @@ def build(src, problems, jobs):
                 n_opts = 2          # 对 / 错, printed under each statement
             elif typ in ZH_TYPES:
                 n_opts = 3 if hsk_level(data.get('level', '')) <= 3 else 4
+            elif typ in SPOKEN:
+                n_opts = SPOKEN[typ]
             elif typ in EN_TYPES:
                 n_opts = it.get('n_options') or data.get('n_options', 3)
             if typ in ZH_TYPES + EN_TYPES and isinstance(it.get('answer'), str):
@@ -349,8 +372,8 @@ def build(src, problems, jobs):
             questions = [build_question(q, typ, f'{where} Q{n + 1}' if len(qs) > 1 else where, words, problems,
                                         lang, jobs, len(qs) > 1, n_opts) for n, q in enumerate(qs)]
             mix[typ] += len(questions)
-            if typ == 'utterance' and not it.get('scene'):
-                problems.append(f'{where}: an utterance item needs a scene')
+            if typ in ('utterance', 'en_photo') and not it.get('scene'):
+                problems.append(f'{where}: an {typ} item needs a scene')
             for k2 in ('zh', 'en'):
                 if it.get('scene') and not it['scene'].get(k2):
                     problems.append(f'{where}: no {k2} scene text')
@@ -383,7 +406,8 @@ def build(src, problems, jobs):
     return {'id': data['id'], 'lang': lang, 'level': data['level'], 'order': data['order'], 'types': types,
             **({'edition': data['edition']} if data.get('edition') else {}),
             **({'instr': {t: data['instr'][t] for t in types}} if data.get('instr') else {}),
-            'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}), 'sets': sets}
+            'mock_plays': plays, **({'mock_minutes': data['mock_minutes']} if data.get('mock_minutes') else {}),
+            **({'q_paged': data['q_paged']} if data.get('q_paged') else {}), 'sets': sets}
 
 
 def say_long(env, code, voice, text):
@@ -402,11 +426,11 @@ def say_long(env, code, voice, text):
                 + list(say_long(env, code, voice, text[at:])))
 
 
-def render_audio(lang, jobs):
-    if lang not in VOICES:
+def render_audio(lang, jobs, vset=''):
+    if (vset or lang) not in VOICES:
         print(f'  ! no voices for {lang} yet — audio skipped')
         return
-    code, voices = VOICES[lang]
+    code, voices = VOICES[vset or lang]
     d = AUDIO / lang
     d.mkdir(parents=True, exist_ok=True)
     todo = [(aid, who, kana) for aid, (who, kana) in jobs.items() if not (d / f'{aid}.mp3').exists()]
@@ -519,7 +543,7 @@ def main():
                 print(f'  audio {data["id"]}: Taiwan edition — no Google recording (--gemini-tw N records it)')
         elif not args.no_audio and not problems and not args.gemini_tw:
             # (with --gemini-tw only the Taiwan clips are made: the cloud run has no Google key)
-            render_audio(data['lang'], jobs)
+            render_audio(data['lang'], jobs, data.get('voices', ''))
     if args.gemini_tw:
         g = GEMINI_TW
         print(f'Gemini Taiwan: {g["made"]} clips made ({g["secs"]:.0f} s of audio, about '

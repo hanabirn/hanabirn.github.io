@@ -657,7 +657,7 @@ function listeningOptionsHtml(lv, it, q, qn, show) {
             : sheet
             ? `<span class="ls-n">${mark}</span>`
             : q.spoken
-            ? `<span class="ls-n">${i + 1}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
+            ? `<span class="ls-n">${mark}</span>${show ? `<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>` : ''}`
             : lv.instr
             ? `<span class="ls-n">${mark}</span><span class="ls-otx"><span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>${show && !z.mock && gText(o) ? `<span class="ls-opt-tr">${escHtml(gText(o))}</span>` : ''}</span>`
             : `<span class="ls-n">${mark}</span>${o.emoji ? `<span class="ls-emoji" aria-hidden="true">${o.emoji}</span>` : ''}<span lang="${lv.lang}">${listeningSegsHtml(o.t, false)}</span>`;
@@ -693,7 +693,8 @@ function listeningQuizHtml(lv) {
     // (css/listening.css hides .ls-q-off only ≥1024px; phones list them all), as the 閱讀 rounds do
     // ...and, once answered, any item with two or more: their explanations would push the page past one
     // screen (owner, 2026-10-31: no scrolling to read a B2 / C1 item's answers and transcript)
-    const paged = it.questions.length >= LISTENING_Q_PAGED || (show && it.questions.length > 1);
+    // (a level with "q_paged" pages from that many: TOEFL shows one question per screen, as the real test)
+    const paged = it.questions.length >= (lv.q_paged || LISTENING_Q_PAGED) || (show && it.questions.length > 1);
     const sub = paged ? Math.min(z.sub || 0, it.questions.length - 1) : 0;
     const qtabs = paged ? `<div class="ls-qtabs" role="tablist">${it.questions.map((q, qn) => {
         const p = z.picks[z.qi][qn];

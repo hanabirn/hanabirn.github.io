@@ -49,9 +49,14 @@ def google_take(env, lang, text, attempt):
     return clip if ba.MIN_CLIP * ba.SR <= len(clip) <= 8 * ba.SR and ba.loud_enough(clip) else None
 
 
+VSET = {}         # the voice set of the level the last listening_line() found (TOEIC / TOEFL: en-US)
+
+
 def listening_line(lang, fid):
     """(who, kana) of the 聽解 clip `fid` in data/listening/ (lang 'ja', 'ko'), or None"""
     for f in sorted((ac.ROOT / 'data' / 'listening').glob(lang + '_*.json')):
+        src = ac.ROOT / 'tools' / 'listening' / f.name
+        VSET['now'] = json.loads(src.read_text(encoding='utf-8')).get('voices', '') if src.exists() else ''
         stack = [json.loads(f.read_text(encoding='utf-8'))]
         while stack:
             x = stack.pop()
@@ -105,7 +110,7 @@ def main():
                 failed.append(k)
                 continue
             who, kana = listening_line(base, fid)
-            code, voices = bl.VOICES[base]
+            code, voices = bl.VOICES[VSET.get('now') or base]
             print(f'{k} (Google, {who}): {item["key"]!r} → says {kana!r}', flush=True)
             if args.dry_run:
                 continue

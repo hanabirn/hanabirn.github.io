@@ -180,6 +180,8 @@
     .ls-cols.ls-tx-right { grid-template-areas: "head qs" "head tx"; grid-template-rows: auto 1fr; }
     .ls-txw .ls-tx > summary { position: sticky; top: -8px; z-index: 1; margin: -8px -12px 0; padding: 8px 12px; background: var(--surface); }
     .ls-cols .ls-scene-img { max-width: 100%; }
+    /* answered: the picture a little shorter, so its caption and the player stay on the screen (TOEIC photos) */
+    .ls-cols.ls-shown .ls-scene-img { max-height: 290px; width: auto; }
     /* a picture grid: four quarters in a square no taller than the screen allows */
     .ls-qs .ls-opts.pics { max-width: 560px; margin: 0 auto; }
     .ls-shown .ls-qs .ls-opts.pics { max-width: none; }   /* answered: the pictures in one row leave room for the explanation */

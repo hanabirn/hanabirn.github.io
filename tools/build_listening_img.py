@@ -63,6 +63,7 @@ def review(items):
         f = IMG / spec_lang(key) / f'{pic_id(spec)}.webp'
         rel = '../../../' + f.relative_to(ROOT).as_posix()
         what = (' / '.join(f'{i + 1} {p}' for i, p in enumerate(spec['grid']['panels'])) if 'grid' in spec
+                else spec['photo']['desc'] + ' (TOEIC photo)' if 'photo' in spec
                 else spec['scene']['desc'] + ' — arrow: ' + spec['scene']['arrow'])
         rows.append(f'<figure><img src="{rel}" alt="" loading="lazy"{"" if f.exists() else " hidden"}>'
                     f'<figcaption><b>{key}</b>　{spec["first"]}<br><small>{what}</small>'
