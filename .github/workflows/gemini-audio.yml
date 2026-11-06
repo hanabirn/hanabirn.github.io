@@ -37,7 +37,8 @@ jobs:
           python-version: '3.12'
 
       - name: Install
-        run: pip install lameenc numpy miniaudio opencc-python-reimplemented
+        # pypinyin: the Taiwan listening step (build_listening.py --gemini-tw → zh_mainland) needs it
+        run: pip install lameenc numpy miniaudio opencc-python-reimplemented pypinyin
 
       - name: Record
         env:
