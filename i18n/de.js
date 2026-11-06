@@ -49,7 +49,7 @@ I18N.de = {
         result_question: 'Frage {n}', result_your_answer: 'Deine Antwort', result_correct_answer: 'Richtige Antwort',
         answer_lang_title: 'Antwortsprache', answer_lang_zh: '🇨🇳 Chinesisch', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Gästebuch', guestbook_title: '✦ Gästebuch ✦', guestbook_name: 'Dein Name', guestbook_message: 'Hinterlasse eine Nachricht...', guestbook_send: 'Senden', guestbook_success: 'Danke für deine Nachricht ✦', nav_feedback: 'Vorschläge', feedback_title: '✦ Vorschläge & Verbesserungen ✦', feedback_hint: 'Denkst du, an der Seite könnte etwas verbessert werden? Sag es mir hier — nur ich kann deine Nachricht sehen, andere Besucher nicht.', feedback_placeholder: 'Schreib deinen Vorschlag...', feedback_submit: 'Senden', feedback_success: 'Deine Nachricht wurde gesendet, danke für dein Feedback!',        bgm_hint: 'Klicken, um Hintergrundmusik abzuspielen',
-        guestbook_loading: 'Laden...', guestbook_empty: 'Noch keine Nachrichten. Sei der Erste!',
+        guestbook_loading: 'Laden...', guestbook_empty: 'Noch keine Nachrichten. Sei der Erste!', guestbook_load_fail: 'Die Nachrichten konnten nicht geladen werden. Prüfe deine Verbindung und versuche es erneut.', guestbook_reload: 'Erneut laden',
         fc_view_mastered: '📋 Erlernte Wörter anzeigen', fc_mastered_title: '📋 Erlernte Wörter', fc_start_flashcard: '📖 Flashcards starten',
         fc_mastered_count: '✅ {n} / {m} erlernt', fc_mastered_empty: 'Noch keine erlernten Wörter',
         fc_view_unknown: '📋 Unbekannte Wörter ansehen', fc_unknown_title: '📋 Unbekannte Wörter',

@@ -50,7 +50,7 @@ I18N.zh = {
         answer_lang_title: '選擇答案語言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '留言板', guestbook_title: '✦ 留言板 ✦', guestbook_name: '你的名字', guestbook_message: '留下你的言語...', guestbook_send: '送出', guestbook_success: '感謝你的留言 ✦', nav_feedback: '建議&改進', feedback_title: '✦ 建議&改進 ✦', feedback_hint: '覺得網站有哪裡可以做得更好嗎？在這裡告訴我，只有我看得到你的訊息，其他訪客不會看見。', feedback_placeholder: '寫下你的建議...', feedback_submit: '送出', feedback_success: '您的回覆訊息已傳送，感謝您的回饋！',
         bgm_hint: '點擊播放背景音樂',
-        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！',
+        guestbook_loading: '載入中...', guestbook_empty: '還沒有留言，成為第一個吧！', guestbook_load_fail: '留言讀取失敗，請檢查網路後再試一次', guestbook_reload: '重新讀取',
         fc_view_mastered: '📋 查看已掌握單字', fc_mastered_title: '已會的字', fc_start_flashcard: '📖 開始閃卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '還沒有標成「會了」的字',
         fc_view_unknown: '📋 查看不認識單字', fc_unknown_title: '還不熟的字',

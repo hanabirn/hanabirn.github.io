@@ -560,10 +560,16 @@ function listeningFitTx() {
     const tx = document.querySelector('#listening-card .ls-txw .ls-tx');
     const cols = tx && tx.closest('.ls-cols');
     if (!tx || !cols) return;
+    const head = cols.querySelector('.ls-head');
+    const pic = head && [...head.children].find(c => !c.matches('.ls-kind, .ls-how, .ls-player') && c.offsetHeight > 150);
+    if (pic) { pic.style.zoom = ''; pic.style.maxWidth = ''; pic.style.marginInline = ''; }   // set again below; measure at full size
     cols.classList.remove('ls-tx-right');
     if (!window.matchMedia('(min-width: 1024px)').matches) { tx.style.maxHeight = ''; return; }
     tx.style.maxHeight = '0px';   // measured as an empty box, so its own length doesn't move the columns
-    const room = () => window.innerHeight - (tx.getBoundingClientRect().top + window.scrollY) - 20;   // with the page at the top
+    // the 上一題 / 下一題 row under the columns has to fit on the screen too (it ended at ~1014px of 940)
+    const nav = document.querySelector('#listening-card > .grammar-nav');
+    const below = () => nav && nav.offsetParent ? Math.max(0, nav.getBoundingClientRect().bottom - cols.getBoundingClientRect().bottom) : 0;
+    const room = () => window.innerHeight - (tx.getBoundingClientRect().top + window.scrollY) - below() - 20;   // with the page at the top
     // a tall picture fills the left column: then the transcript goes under the questions, on the right,
     // unless that leaves even less room
     const left = room();
@@ -572,6 +578,22 @@ function listeningFitTx() {
         if (room() < left) cols.classList.remove('ls-tx-right');
     }
     tx.style.maxHeight = Math.max(LISTENING_TX_MIN / 3, room()) + 'px';
+    // with the transcript moved right, the picture + player alone set the height; shrink the picture
+    // (never under 60% of its height) so the 上一題 / 下一題 row still fits — TOEIC Part 1 ended at 1017px,
+    // the HSK picture sheets at 983px. A sheet with a fixed shape (aspect-ratio, full width) only gets
+    // shorter when it gets narrower, so it takes a max-width; a photo (a capped <img>) takes a zoom.
+    if (pic && nav && cols.classList.contains('ls-tx-right')) {
+        const shaped = getComputedStyle(pic).aspectRatio !== 'auto';
+        const full = pic.getBoundingClientRect();
+        for (let i = 0; i < 3; i++) {   // measured, not predicted
+            const over = nav.getBoundingClientRect().bottom + window.scrollY + 20 - window.innerHeight;
+            const r = pic.getBoundingClientRect();
+            if (over <= 0 || r.height <= full.height * 0.6 + 1) break;
+            const k = Math.max(full.height * 0.6, r.height - over) / r.height;
+            if (shaped) { pic.style.maxWidth = Math.floor(r.width * k) + 'px'; pic.style.marginInline = 'auto'; }
+            else pic.style.zoom = ((parseFloat(pic.style.zoom) || 1) * k).toFixed(3);
+        }
+    }
 }
 window.addEventListener('resize', () => { if (document.body.dataset.page === 'listening') listeningFitTx(); });
 

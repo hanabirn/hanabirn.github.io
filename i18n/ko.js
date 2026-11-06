@@ -49,7 +49,7 @@ I18N.ko = {
         result_question: '제 {n} 문제', result_your_answer: '내 답', result_correct_answer: '정답',
         answer_lang_title: '답변 언어 선택', answer_lang_zh: '🇨🇳 중국어', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '방명록', guestbook_title: '✦ 방명록 ✦', guestbook_name: '이름', guestbook_message: '메시지를 남기세요...', guestbook_send: '보내기', guestbook_success: '메시지 감사합니다 ✦', nav_feedback: '제안&개선', feedback_title: '✦ 제안&개선 ✦', feedback_hint: '사이트에서 개선이 필요한 부분이 있나요? 여기에 알려주세요. 이 메시지는 저만 볼 수 있고 다른 방문자는 볼 수 없습니다.', feedback_placeholder: '제안 사항을 적어주세요...', feedback_submit: '보내기', feedback_success: '메시지가 전송되었습니다. 소중한 의견 감사합니다!',        bgm_hint: '클릭하면 배경음악이 재생됩니다',
-        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!',
+        guestbook_loading: '로딩 중...', guestbook_empty: '아직 메시지가 없습니다. 첫 번째가 되어보세요!', guestbook_load_fail: '메시지를 불러오지 못했습니다. 인터넷 연결을 확인하고 다시 시도하세요.', guestbook_reload: '다시 불러오기',
         fc_view_mastered: '📋 숙달 단어 보기', fc_mastered_title: '📋 숙달된 단어', fc_start_flashcard: '📖 플래시카드 시작',
         fc_mastered_count: '✅ {n} / {m} 숙달됨', fc_mastered_empty: '숙달된 단어가 아직 없습니다',
         fc_view_unknown: '📋 모르는 단어 보기', fc_unknown_title: '📋 모르는 단어',

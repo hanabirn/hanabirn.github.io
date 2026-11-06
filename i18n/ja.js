@@ -49,7 +49,7 @@ I18N.ja = {
         result_question: '第 {n} 問', result_your_answer: 'あなたの答え', result_correct_answer: '正解',
         answer_lang_title: '回答言語を選択', answer_lang_zh: '🇨🇳 中国語', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '掲示板', guestbook_title: '✦ 掲示板 ✦', guestbook_name: '名前', guestbook_message: 'メッセージを残す...', guestbook_send: '送信', guestbook_success: 'メッセージありがとう ✦', nav_feedback: 'ご意見&改善', feedback_title: '✦ ご意見&改善 ✦', feedback_hint: 'サイトで改善できそうな点があれば教えてください。あなたのメッセージは私だけが見ることができ、他の訪問者には表示されません。', feedback_placeholder: 'ご意見を書いてください...', feedback_submit: '送信', feedback_success: 'メッセージを送信しました。フィードバックありがとうございます！',        bgm_hint: 'クリックしてBGMを再生',
-        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！',
+        guestbook_loading: '読み込み中...', guestbook_empty: 'まだメッセージがありません。最初の一人になりましょう！', guestbook_load_fail: 'メッセージを読み込めませんでした。接続を確認して、もう一度お試しください。', guestbook_reload: '再読み込み',
         fc_view_mastered: '📋 習得済み単語を見る', fc_mastered_title: '📋 習得済み単語', fc_start_flashcard: '📖 フラッシュカード開始',
         fc_mastered_count: '✅ {n} / {m} 習得済み', fc_mastered_empty: '習得済みの単語はまだありません',
         fc_view_unknown: '📋 わからない単語を見る', fc_unknown_title: '📋 わからない単語',

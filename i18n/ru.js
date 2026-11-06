@@ -49,7 +49,7 @@ I18N.ru = {
         result_question: 'Вопрос {n}', result_your_answer: 'Ваш ответ', result_correct_answer: 'Правильный ответ',
         answer_lang_title: 'Язык ответа', answer_lang_zh: '🇨🇳 Китайский', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Гостевая', guestbook_title: '✦ Гостевая ✦', guestbook_name: 'Ваше имя', guestbook_message: 'Оставьте сообщение...', guestbook_send: 'Отправить', guestbook_success: 'Спасибо за сообщение ✦', nav_feedback: 'Предложения', feedback_title: '✦ Предложения и улучшения ✦', feedback_hint: 'Думаете, что-то на сайте можно улучшить? Напишите здесь — ваше сообщение увижу только я, другие посетители его не увидят.', feedback_placeholder: 'Напишите ваше предложение...', feedback_submit: 'Отправить', feedback_success: 'Ваше сообщение отправлено, спасибо за отзыв!',        bgm_hint: 'Нажмите, чтобы включить музыку',
-        guestbook_loading: 'Загрузка...', guestbook_empty: 'Пока нет сообщений. Будьте первым!',
+        guestbook_loading: 'Загрузка...', guestbook_empty: 'Пока нет сообщений. Будьте первым!', guestbook_load_fail: 'Не удалось загрузить сообщения. Проверьте подключение и попробуйте ещё раз.', guestbook_reload: 'Повторить',
         fc_view_mastered: '📋 Изученные слова', fc_mastered_title: '📋 Изученные слова', fc_start_flashcard: '📖 Начать карточки',
         fc_mastered_count: '✅ {n} / {m} изучено', fc_mastered_empty: 'Пока нет изученных слов',
         fc_view_unknown: '📋 Посмотреть незнакомые слова', fc_unknown_title: '📋 Незнакомые слова',

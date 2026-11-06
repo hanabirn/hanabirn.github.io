@@ -50,7 +50,7 @@ I18N['zh-Hans'] = {
         answer_lang_title: '选择答案语言', answer_lang_zh: '🇨🇳 中文意思', answer_lang_en: '🇺🇸 English',
         nav_guestbook: '留言板', guestbook_title: '✦ 留言板 ✦', guestbook_name: '你的名字', guestbook_message: '留下你的言语...', guestbook_send: '送出', guestbook_success: '感谢你的留言 ✦', nav_feedback: '建议&改进', feedback_title: '✦ 建议&改进 ✦', feedback_hint: '觉得网站有哪里可以做得更好吗？在这里告诉我，只有我看得到你的消息，其他访客不会看见。', feedback_placeholder: '写下你的建议...', feedback_submit: '送出', feedback_success: '您的回复消息已发送，感谢您的反馈！',
         bgm_hint: '点击播放背景音乐',
-        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！',
+        guestbook_loading: '加载中...', guestbook_empty: '还没有留言，成为第一个吧！', guestbook_load_fail: '留言读取失败，请检查网络后再试一次', guestbook_reload: '重新读取',
         fc_view_mastered: '📋 查看已掌握单词', fc_mastered_title: '已会的词', fc_start_flashcard: '📖 开始闪卡',
         fc_mastered_count: '✅ {n} / {m} 已掌握', fc_mastered_empty: '还没有标成“会了”的词',
         fc_view_unknown: '📋 查看不认识单词', fc_unknown_title: '还不熟的词',

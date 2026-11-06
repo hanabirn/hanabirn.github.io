@@ -1016,7 +1016,14 @@ function quizNavMark() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', () => { renderWords(); updateReviewBadge(); });
+document.addEventListener('DOMContentLoaded', () => {
+    renderWords();
+    updateReviewBadge();
+    // cards keep coming due while the page sits open (a miss is due again in 10 minutes), so
+    // recount every minute and when the tab comes back — it only changed on an answer before
+    setInterval(() => { if (!document.hidden) updateReviewBadge(); }, 60000);
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) updateReviewBadge(); });
+});
 
 // the 複習 tab's badge: cards due now
 function updateReviewBadge() {

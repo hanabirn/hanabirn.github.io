@@ -49,7 +49,7 @@ I18N.fr = {
         result_question: 'Question {n}', result_your_answer: 'Votre réponse', result_correct_answer: 'Bonne réponse',
         answer_lang_title: 'Langue de réponse', answer_lang_zh: '🇨🇳 Chinois', answer_lang_en: '🇺🇸 English',
         nav_guestbook: "Livre d'or", guestbook_title: "✦ Livre d'or ✦", guestbook_name: 'Votre nom', guestbook_message: 'Laissez un message...', guestbook_send: 'Envoyer', guestbook_success: 'Merci pour votre message ✦', nav_feedback: 'Suggestions', feedback_title: '✦ Suggestions et améliorations ✦', feedback_hint: "Vous pensez qu'un aspect du site pourrait être amélioré ? Dites-le-moi ici — seul moi peux voir votre message, les autres visiteurs ne le verront pas.", feedback_placeholder: 'Écrivez votre suggestion...', feedback_submit: 'Envoyer', feedback_success: 'Votre message a été envoyé, merci pour votre retour !',        bgm_hint: 'Cliquez pour jouer la musique de fond',
-        guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !',
+        guestbook_loading: 'Chargement...', guestbook_empty: 'Pas encore de messages. Soyez le premier !', guestbook_load_fail: 'Impossible de charger les messages. Vérifiez votre connexion et réessayez.', guestbook_reload: 'Réessayer',
         fc_view_mastered: '📋 Voir les mots maîtrisés', fc_mastered_title: '📋 Mots maîtrisés', fc_start_flashcard: '📖 Commencer les flashcards',
         fc_mastered_count: '✅ {n} / {m} maîtrisés', fc_mastered_empty: 'Aucun mot maîtrisé pour le moment',
         fc_view_unknown: '📋 Voir les mots inconnus', fc_unknown_title: '📋 Mots inconnus',

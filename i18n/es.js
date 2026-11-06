@@ -49,7 +49,7 @@ I18N.es = {
         result_question: 'Pregunta {n}', result_your_answer: 'Tu respuesta', result_correct_answer: 'Respuesta correcta',
         answer_lang_title: 'Idioma de respuesta', answer_lang_zh: '🇨🇳 Chino', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Libro de visitas', guestbook_title: '✦ Libro de visitas ✦', guestbook_name: 'Tu nombre', guestbook_message: 'Deja un mensaje...', guestbook_send: 'Enviar', guestbook_success: 'Gracias por tu mensaje ✦', nav_feedback: 'Sugerencias', feedback_title: '✦ Sugerencias y mejoras ✦', feedback_hint: '¿Crees que algo en el sitio podría mejorar? Cuéntamelo aquí — solo yo puedo ver tu mensaje, otros visitantes no lo verán.', feedback_placeholder: 'Escribe tu sugerencia...', feedback_submit: 'Enviar', feedback_success: '¡Tu mensaje ha sido enviado, gracias por tu opinión!',        bgm_hint: 'Haz clic para reproducir música de fondo',
-        guestbook_loading: 'Cargando...', guestbook_empty: 'Aún no hay mensajes. ¡Sé el primero!',
+        guestbook_loading: 'Cargando...', guestbook_empty: 'Aún no hay mensajes. ¡Sé el primero!', guestbook_load_fail: 'No se pudieron cargar los mensajes. Revisa tu conexión e inténtalo de nuevo.', guestbook_reload: 'Reintentar',
         fc_view_mastered: '📋 Ver palabras dominadas', fc_mastered_title: '📋 Palabras dominadas', fc_start_flashcard: '📖 Empezar flashcards',
         fc_mastered_count: '✅ {n} / {m} dominadas', fc_mastered_empty: 'Aún no hay palabras dominadas',
         fc_view_unknown: '📋 Ver palabras desconocidas', fc_unknown_title: '📋 Palabras desconocidas',

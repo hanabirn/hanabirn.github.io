@@ -434,9 +434,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // other cards keep 680px, so the rails move in next to them (body.quiz-wide, css/rails.css)
     const wide = ['lang-card', 'path-card', 'lesson-card', 'mistake-card', 'srs-card', 'stats-card', 'flashcard-setup-card'].map(id => document.getElementById(id)).filter(Boolean);
     if (wide.length) {
+        // leaving a wide card can bring the right rail into view; its word of the day was skipped
+        // while it was hidden (renderRailWord), so fill it in then — it showed an empty card
+        let rightShown = railVisible('rail-right');
         const sync = () => {
             document.body.classList.toggle('quiz-wide', wide.some(el => el.style.display !== 'none'));
-            railPlace();
+            const nowShown = railVisible('rail-right');
+            if (nowShown && !rightShown) renderRails();
+            else railPlace();
+            rightShown = nowShown;
         };
         wide.forEach(el => new MutationObserver(sync).observe(el, { attributes: true, attributeFilter: ['style'] }));
         sync();

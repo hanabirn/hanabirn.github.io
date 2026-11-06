@@ -28,6 +28,7 @@ let guestbookVerifySent = false;
 const GUESTBOOK_PAGE_SIZE = 10;
 const GUESTBOOK_CACHE_KEY = 'guestbook_cache_v2';
 let guestbookVisibleCount = GUESTBOOK_PAGE_SIZE;
+let guestbookLoadFailed = false;   // the last fetch failed and nothing was cached: say so, not "no messages yet"
 
 function guestbookUser() {
     return typeof acctUser !== 'undefined' ? acctUser : null;
@@ -62,6 +63,7 @@ async function loadGuestbookMessages() {
         container.innerHTML = `<div class="guestbook-loading">${escapeHtml(t('guestbook_loading'))}</div>`;
     }
 
+    guestbookLoadFailed = false;
     try {
         const res = await fetch(GUESTBOOK_API, { headers: await guestbookAuthHeader() });
         const data = await res.json();
@@ -71,7 +73,7 @@ async function loadGuestbookMessages() {
         try { localStorage.setItem(GUESTBOOK_CACHE_KEY, JSON.stringify(guestbookMessages)); } catch {}
     } catch (e) {
         console.error('Guestbook load failed:', e);
-        if (!cached) guestbookMessages = [];
+        if (!cached) { guestbookMessages = []; guestbookLoadFailed = true; }
     }
     renderGuestbookMessages();
     renderGuestbookGate();
@@ -145,6 +147,11 @@ async function guestbookCheckVerified() {
 
 function renderGuestbookMessages() {
     const container = document.getElementById('guestbook-local');
+    if (guestbookMessages.length === 0 && guestbookLoadFailed) {
+        container.innerHTML = `<div class="guestbook-empty">${escapeHtml(t('guestbook_load_fail'))}
+            <button type="button" class="guestbook-load-more" onclick="loadGuestbookMessages()">${escapeHtml(t('guestbook_reload'))}</button></div>`;
+        return;
+    }
     if (guestbookMessages.length === 0) {
         container.innerHTML = `<div class="guestbook-empty">${escapeHtml(t('guestbook_empty'))}</div>`;
         return;

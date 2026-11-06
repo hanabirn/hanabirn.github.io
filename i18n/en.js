@@ -49,7 +49,7 @@ I18N.en = {
         result_question: 'Question {n}', result_your_answer: 'Your Answer', result_correct_answer: 'Correct Answer',
         answer_lang_title: 'Select Answer Language', answer_lang_zh: '🇨🇳 Chinese', answer_lang_en: '🇺🇸 English',
         nav_guestbook: 'Guestbook', guestbook_title: '✦ Guestbook ✦', guestbook_name: 'Your name', guestbook_message: 'Leave a message...', guestbook_send: 'Send', guestbook_success: 'Thanks for your message ✦', nav_feedback: 'Suggestions', feedback_title: '✦ Suggestions & Improvements ✦', feedback_hint: "Think something on this site could be better? Let me know here — only I can see your message, other visitors can't.", feedback_placeholder: 'Write your suggestion...', feedback_submit: 'Send', feedback_success: 'Your message has been sent — thank you for the feedback!',        bgm_hint: 'Click to play background music',
-        guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!',
+        guestbook_loading: 'Loading...', guestbook_empty: 'No messages yet. Be the first!', guestbook_load_fail: "Couldn't load the messages. Check your connection and try again.", guestbook_reload: 'Try again',
         fc_view_mastered: '📋 View Mastered Words', fc_mastered_title: '📋 Mastered Words', fc_start_flashcard: '📖 Start Flashcards',
         fc_mastered_count: '✅ {n} / {m} Mastered', fc_mastered_empty: 'No mastered words yet',
         fc_view_unknown: '📋 View Unknown Words', fc_unknown_title: '📋 Unknown Words',
