@@ -1,0 +1,65 @@
+# 部署網站 (owner's request 2026-11-06): publishes the site to GitHub Pages (Settings →
+# Pages → Source is "GitHub Actions"). Only the files the site serves go up — tools/,
+# worker/, .claude/, CLAUDE.md, README* and _redirects stay off hanabirn.xyz (they are
+# still visible on github.com: the repo is public). No Jekyll pass, a 30-minute deploy
+# wait instead of the built-in 10 (the 2026-11-06 deploy timed out), and one retry.
+# Pushes that only touch internal files don't deploy.
+name: 部署網站
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'tools/**'
+      - 'worker/**'
+      - '.claude/**'
+      - '**.md'
+      - '.gitignore'
+      - '_redirects'
+      - '.github/workflows/audio-check.yml'
+      - '.github/workflows/gemini-audio.yml'
+      - '.github/workflows/google-audio.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Collect the site files
+        run: |
+          mkdir _site
+          cp -r index.html privacy.html manifest.json service-worker.js robots.txt sitemap.xml CNAME \
+                css js i18n data images icons _site/
+          echo "files: $(find _site -type f | wc -l), size: $(du -sh _site | cut -f1)"
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.retry.outputs.page_url || steps.first.outputs.page_url }}
+    steps:
+      - id: first
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+        with:
+          timeout: 1800000
+      - id: retry
+        if: steps.first.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        with:
+          timeout: 1800000
