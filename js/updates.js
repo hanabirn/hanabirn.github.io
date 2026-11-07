@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增西班牙文 A1：28 個文法點，從 ser／estar、冠詞、現在式到 gustar、反身動詞和時間的說法，每個都有說明、常見錯誤、有錄音的例句和小練習。",
+      'zh-Hans': "语法新增西班牙语 A1：28 个语法点，从 ser／estar、冠词、现在时到 gustar、反身动词和时间的说法，每个都有说明、常见错误、带录音的例句和小练习。",
+      en: "Grammar adds Spanish A1: 28 points, from ser / estar, articles and the present tense to gustar, reflexive verbs and telling the time — each with an explanation, common mistakes, recorded examples and a short practice.",
+      ja: "文法にスペイン語 A1 が加わりました。ser／estar、冠詞、現在形から gustar、再帰動詞、時刻の言い方まで 28 項目。どれも説明・よくある間違い・音声つき例文・ミニ練習つきです。",
+      ko: "문법에 스페인어 A1이 추가됐어요. ser/estar, 관사, 현재형부터 gustar, 재귀동사, 시간 말하기까지 28개 항목이고, 모두 설명, 자주 하는 실수, 녹음된 예문, 짧은 연습이 있어요.",
+      ru: "В грамматике появился испанский A1: 28 тем — от ser / estar, артиклей и настоящего времени до gustar, возвратных глаголов и того, как говорить о времени. В каждой есть объяснение, типичные ошибки, озвученные примеры и короткая практика.",
+      fr: "La grammaire accueille l'espagnol A1 : 28 points, de ser / estar, des articles et du présent jusqu'à gustar, aux verbes pronominaux et à l'heure — chacun avec une explication, des erreurs fréquentes, des exemples enregistrés et un petit exercice.",
+      es: "La gramática incorpora el español A1: 28 puntos, desde ser / estar, los artículos y el presente hasta gustar, los verbos reflexivos y la hora, cada uno con explicación, errores frecuentes, ejemplos grabados y una pequeña práctica.",
+      de: "Die Grammatik hat jetzt Spanisch A1: 28 Themen, von ser / estar, Artikeln und Präsens bis zu gustar, reflexiven Verben und der Uhrzeit – jeweils mit Erklärung, typischen Fehlern, vertonten Beispielen und einer kleinen Übung." },
+    { date: '2026-11-06',
       zh: "字母表新增「拼音」分頁：聲母、韻母（含 i／u／ü 開頭的韻母）和四聲＋輕聲，每張卡都標注音、附例詞和錄音。學中文的人可以在注音和拼音之間切換；選大陸版時拼音排第一，用簡體或大陸口音顯示和發音。",
       'zh-Hans': "字母表新增“拼音”分页：声母、韵母（含 i／u／ü 开头的韵母）和四声＋轻声，每张卡都标注音，附例词和录音。学中文的人可以在注音和拼音之间切换；选大陆版时拼音排第一，用简体和大陆口音显示、发音。",
       en: "The Alphabet chart has a new Pinyin tab: initials, finals (including those starting with i / u / ü) and the four tones plus the neutral tone, each card with its Zhuyin, an example word and a recording. Chinese learners can switch between Zhuyin and Pinyin; with the Mainland edition Pinyin comes first, in Simplified with a Mainland accent.",

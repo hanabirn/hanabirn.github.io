@@ -1,0 +1,690 @@
+{
+  "id": "es_a1",
+  "lang": "es",
+  "level": "A1",
+  "order": 1,
+  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "pronombres",
+      "pattern": "yo・tú・usted …",
+      "title": {"zh": "人稱代名詞（主詞）", "en": "Subject pronouns"},
+      "form": {"zh": "yo 我・tú 你・él／ella 他／她・usted 您・nosotros／nosotras 我們・vosotros／vosotras 你們（西班牙）・ellos／ellas 他們・ustedes 你們／您們", "en": "yo I · tú you · él / ella he / she · usted you (polite) · nosotros / nosotras we · vosotros / vosotras you all (Spain) · ellos / ellas they · ustedes you all"},
+      "explain": {"zh": "西班牙文的動詞會跟著主詞變化，看動詞就知道是誰，所以主詞常常省略：Hablo español.（我說西班牙文。）只有要強調或分清楚是誰時才說出來。", "en": "Spanish verbs change with the subject, so the verb already shows who it is and the pronoun is usually left out: Hablo español (I speak Spanish). Say it only to stress or make clear who."},
+      "notes": [
+        {"zh": "「usted／ustedes」是禮貌的「您／您們」，動詞用第三人稱：¿Usted es profesor?", "en": "usted / ustedes is the polite “you”, with the third-person verb: ¿Usted es profesor?"},
+        {"zh": "拉丁美洲不用 vosotros，「你們」一律說 ustedes。", "en": "Latin America doesn't use vosotros: “you all” is always ustedes."}
+      ],
+      "mistakes": [
+        {"wrong": "Usted eres muy amable.", "right": "Usted es muy amable.", "zh": "usted 雖然是「您」，動詞卻用第三人稱。", "en": "usted means “you” but takes the third-person verb."},
+        {"wrong": "Ella y yo son amigas.", "right": "Ella y yo somos amigas.", "zh": "「她和我」就是「我們」，動詞用 nosotros 的形。", "en": "“She and I” is “we”, so use the nosotros form."}
+      ],
+      "examples": [
+        {"text": "Soy de Taiwán.", "zh": "我來自台灣。", "en": "I'm from Taiwan."},
+        {"text": "¿Usted habla inglés?", "zh": "您會說英文嗎？", "en": "Do you speak English?"},
+        {"text": "Nosotros vivimos aquí, y ellos no.", "zh": "我們住在這裡，他們不是。", "en": "We live here, and they don't."}
+      ],
+      "quiz": [
+        {"q": "（　）y María somos hermanas.", "zh": "我和瑪麗亞是姊妹。", "en": "María and I are sisters.", "options": ["Yo", "Tú", "Ella", "Usted"], "answer": 0},
+        {"q": "Señor García, ¿（　）es médico?", "zh": "賈西亞先生，您是醫生嗎？", "en": "Mr García, are you a doctor?", "options": ["usted", "tú", "vosotros", "yo"], "answer": 0},
+        {"q": "Ana y Luis son de México. （　）hablan español.", "zh": "安娜和路易斯來自墨西哥。他們說西班牙文。", "en": "Ana and Luis are from Mexico. They speak Spanish.", "options": ["Ellos", "Ellas", "Nosotros", "Él"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ser",
+      "pattern": "ser",
+      "title": {"zh": "ser：是（身分、國籍、特徵）", "en": "ser — to be (who or what someone is)"},
+      "form": {"zh": "soy・eres・es・somos・sois・son", "en": "soy · eres · es · somos · sois · son"},
+      "explain": {"zh": "「ser」說的是「是什麼、是誰」：身分、職業、國籍、出身、外表或個性這類不太會變的特徵：Soy estudiante.（我是學生。）Es alta.（她很高。）", "en": "ser says what or who something is: identity, job, nationality, origin, looks and character — things that don't change much: Soy estudiante (I'm a student), Es alta (She's tall)."},
+      "notes": [
+        {"zh": "說職業、國籍時不加冠詞：Es profesora.（她是老師。）", "en": "No article before a job or nationality: Es profesora (She's a teacher)."},
+        {"zh": "「ser de＋地方」表示來自哪裡：Somos de Taipéi.", "en": "ser de + place says where someone is from: Somos de Taipéi."}
+      ],
+      "mistakes": [
+        {"wrong": "Soy un estudiante.", "right": "Soy estudiante.", "zh": "說身分、職業時不加 un／una。", "en": "No un / una before a job or status."},
+        {"wrong": "Nosotros son de Japón.", "right": "Nosotros somos de Japón.", "zh": "nosotros 的形是 somos。", "en": "With nosotros it's somos."}
+      ],
+      "examples": [
+        {"text": "Soy estudiante.", "zh": "我是學生。", "en": "I'm a student."},
+        {"text": "Mi madre es muy simpática.", "zh": "我媽媽人很好。", "en": "My mother is very nice."},
+        {"text": "¿De dónde eres?", "zh": "你是哪裡人？", "en": "Where are you from?"}
+      ],
+      "quiz": [
+        {"q": "Yo（　）de Taiwán.", "zh": "我來自台灣。", "en": "I'm from Taiwan.", "options": ["soy", "es", "eres", "somos"], "answer": 0},
+        {"q": "Ellos（　）médicos.", "zh": "他們是醫生。", "en": "They're doctors.", "options": ["son", "es", "somos", "sois"], "answer": 0},
+        {"q": "¿Tú（　）japonés?", "zh": "你是日本人嗎？", "en": "Are you Japanese?", "options": ["eres", "es", "soy", "son"], "answer": 0}
+      ]
+    },
+    {
+      "id": "estar",
+      "pattern": "estar",
+      "title": {"zh": "estar：在、（狀態）是", "en": "estar — to be (where, how)"},
+      "form": {"zh": "estoy・estás・está・estamos・estáis・están", "en": "estoy · estás · está · estamos · estáis · están"},
+      "explain": {"zh": "「estar」說的是「在哪裡」和「現在怎麼樣」：位置、心情、身體狀況這類會改變的狀態：Estoy en casa.（我在家。）Estoy cansado.（我很累。）", "en": "estar says where something is and how it is now: place, mood, health — states that can change: Estoy en casa (I'm at home), Estoy cansado (I'm tired)."},
+      "notes": [
+        {"zh": "打招呼的「¿Cómo estás?」（你好嗎？）也是用 estar，因為問的是現在的狀況。", "en": "¿Cómo estás? (How are you?) uses estar too: it asks how you are now."}
+      ],
+      "mistakes": [
+        {"wrong": "Madrid es en España.", "right": "Madrid está en España.", "zh": "說地點、位置用 estar。", "en": "Location takes estar."},
+        {"wrong": "Hoy soy muy cansada.", "right": "Hoy estoy muy cansada.", "zh": "「累」是暫時的狀態，用 estar。", "en": "Tired is a passing state, so estar."}
+      ],
+      "examples": [
+        {"text": "¿Dónde está el baño?", "zh": "廁所在哪裡？", "en": "Where's the bathroom?"},
+        {"text": "Estoy muy contento.", "zh": "我很開心。", "en": "I'm very happy."},
+        {"text": "Mis padres están en Kaohsiung.", "zh": "我爸媽在高雄。", "en": "My parents are in Kaohsiung."}
+      ],
+      "quiz": [
+        {"q": "¿Dónde（　）el banco?", "zh": "銀行在哪裡？", "en": "Where's the bank?", "options": ["está", "es", "estoy", "están"], "answer": 0},
+        {"q": "Nosotros（　）en clase.", "zh": "我們在上課。", "en": "We're in class.", "options": ["estamos", "somos", "están", "estáis"], "answer": 0},
+        {"q": "Hoy yo（　）muy bien, gracias.", "zh": "我今天很好，謝謝。", "en": "I'm very well today, thanks.", "options": ["estoy", "soy", "estás", "está"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ser_estar",
+      "pattern": "ser ／ estar",
+      "title": {"zh": "ser 和 estar 怎麼分", "en": "ser or estar?"},
+      "form": {"zh": "ser：身分、國籍、本質、時間　estar：位置、心情、暫時的狀態", "en": "ser: identity, origin, what it's like, time · estar: place, mood, temporary state"},
+      "explain": {"zh": "兩個都翻成「是」，但 ser 說「本來就是這樣」，estar 說「現在處在這個狀態」。同一個形容詞也會因此意思不同：Es aburrido.（他很無趣。）Está aburrido.（他覺得很無聊。）", "en": "Both mean “to be”, but ser says what something is like, estar how it is right now. The same adjective can change meaning: Es aburrido (He's boring), Está aburrido (He's bored)."},
+      "notes": [
+        {"zh": "活動、派對「在哪裡舉行」反而用 ser：La fiesta es en mi casa.", "en": "Where an event takes place uses ser: La fiesta es en mi casa."},
+        {"zh": "時間和日期用 ser：Es lunes.（今天星期一。）", "en": "Time and dates use ser: Es lunes (It's Monday)."}
+      ],
+      "mistakes": [
+        {"wrong": "Mi hermano está médico.", "right": "Mi hermano es médico.", "zh": "職業是身分，用 ser。", "en": "A job is identity: ser."},
+        {"wrong": "La sopa es fría ahora.", "right": "La sopa está fría ahora.", "zh": "湯「現在」涼了，是狀態，用 estar。", "en": "The soup has gone cold now — a state, so estar."}
+      ],
+      "examples": [
+        {"text": "Lucía es alegre, pero hoy está triste.", "zh": "露西亞個性開朗，但今天很難過。", "en": "Lucía is cheerful, but today she's sad."},
+        {"text": "La clase es a las nueve.", "zh": "課是九點。", "en": "The class is at nine."},
+        {"text": "El café está caliente.", "zh": "咖啡很燙。", "en": "The coffee is hot."}
+      ],
+      "quiz": [
+        {"q": "Mi novia（　）enfermera.", "zh": "我女朋友是護理師。", "en": "My girlfriend is a nurse.", "options": ["es", "está", "estoy", "son"], "answer": 0},
+        {"q": "Hoy Carlos（　）enfermo.", "zh": "卡洛斯今天生病了。", "en": "Carlos is ill today.", "options": ["está", "es", "son", "estás"], "answer": 0},
+        {"q": "Las llaves（　）en la mesa.", "zh": "鑰匙在桌上。", "en": "The keys are on the table.", "options": ["están", "son", "es", "está"], "answer": 0}
+      ]
+    },
+    {
+      "id": "articulos_def",
+      "pattern": "el・la・los・las",
+      "title": {"zh": "定冠詞：那個、這個", "en": "The definite article: el, la, los, las"},
+      "form": {"zh": "陽性 el（單）・los（複）　陰性 la（單）・las（複）", "en": "masculine el (sing.) · los (pl.) · feminine la (sing.) · las (pl.)"},
+      "explain": {"zh": "西班牙文的名詞都有性別。說「那個…」或已知的東西時，冠詞要跟名詞的性別和單複數一致：el libro（那本書）、la mesa（那張桌子）、los libros、las mesas。", "en": "Every Spanish noun has a gender. For “the”, the article matches the noun's gender and number: el libro, la mesa, los libros, las mesas."},
+      "notes": [
+        {"zh": "說喜好或一般事物時也加冠詞：Me gusta el café.（我喜歡咖啡。）", "en": "Things in general take the article too: Me gusta el café (I like coffee)."},
+        {"zh": "重音在開頭的 a- 陰性名詞，單數用 el：el agua（水），但複數還是 las aguas。", "en": "Feminine nouns starting with a stressed a- take el in the singular: el agua, but las aguas."}
+      ],
+      "mistakes": [
+        {"wrong": "el casa", "right": "la casa", "zh": "casa 是陰性名詞，用 la。", "en": "casa is feminine: la."},
+        {"wrong": "las libros", "right": "los libros", "zh": "libro 是陽性，複數用 los。", "en": "libro is masculine: los in the plural."}
+      ],
+      "examples": [
+        {"text": "El libro está en la mesa.", "zh": "書在桌上。", "en": "The book is on the table."},
+        {"text": "Las ventanas están abiertas.", "zh": "窗戶開著。", "en": "The windows are open."},
+        {"text": "Me gusta el té verde.", "zh": "我喜歡綠茶。", "en": "I like green tea."}
+      ],
+      "quiz": [
+        {"q": "（　）puerta está cerrada.", "zh": "門關著。", "en": "The door is closed.", "options": ["La", "El", "Los", "Las"], "answer": 0},
+        {"q": "（　）chicos juegan al fútbol.", "zh": "男孩們在踢足球。", "en": "The boys are playing football.", "options": ["Los", "Las", "El", "La"], "answer": 0},
+        {"q": "¿Dónde está（　）tren?", "zh": "火車在哪裡？", "en": "Where's the train?", "options": ["el", "la", "los", "las"], "answer": 0}
+      ]
+    },
+    {
+      "id": "articulos_indef",
+      "pattern": "un・una・unos・unas",
+      "title": {"zh": "不定冠詞：一個、一些", "en": "The indefinite article: un, una, unos, unas"},
+      "form": {"zh": "陽性 un（單）・unos（複）　陰性 una（單）・unas（複）", "en": "masculine un · unos · feminine una · unas"},
+      "explain": {"zh": "第一次提到、不特定的東西用不定冠詞：un perro（一隻狗）、una manzana（一顆蘋果）。複數 unos／unas 是「一些、幾個」。", "en": "Use it for something mentioned for the first time or not specific: un perro (a dog), una manzana (an apple). The plural unos / unas means “some”."},
+      "notes": [
+        {"zh": "「hay」後面常接不定冠詞：Hay un gato en el jardín.", "en": "hay usually takes the indefinite article: Hay un gato en el jardín."}
+      ],
+      "mistakes": [
+        {"wrong": "un manzana", "right": "una manzana", "zh": "manzana 是陰性。", "en": "manzana is feminine."},
+        {"wrong": "Tengo uno coche.", "right": "Tengo un coche.", "zh": "名詞前面用 un，不是 uno。", "en": "Before a noun it's un, not uno."}
+      ],
+      "examples": [
+        {"text": "Tengo un perro y una gata.", "zh": "我有一隻公狗和一隻母貓。", "en": "I have a dog and a cat."},
+        {"text": "Quiero unas galletas.", "zh": "我想要一些餅乾。", "en": "I'd like some biscuits."},
+        {"text": "Es una ciudad muy bonita.", "zh": "那是一座很漂亮的城市。", "en": "It's a very pretty city."}
+      ],
+      "quiz": [
+        {"q": "Vivo en（　）piso pequeño.", "zh": "我住在一間小公寓。", "en": "I live in a small flat.", "options": ["un", "una", "unos", "uno"], "answer": 0},
+        {"q": "Necesito（　）bolígrafos.", "zh": "我需要幾支原子筆。", "en": "I need some pens.", "options": ["unos", "unas", "un", "una"], "answer": 0},
+        {"q": "Hay（　）farmacia cerca.", "zh": "附近有一間藥局。", "en": "There's a chemist's nearby.", "options": ["una", "un", "unas", "uno"], "answer": 0}
+      ]
+    },
+    {
+      "id": "sustantivos",
+      "pattern": "-o／-a・-s／-es",
+      "title": {"zh": "名詞的性別和複數", "en": "Nouns: gender and plural"},
+      "form": {"zh": "多半 -o 陽性、-a 陰性　複數：母音結尾 ＋s，子音結尾 ＋es", "en": "mostly -o masculine, -a feminine · plural: vowel + s, consonant + es"},
+      "explain": {"zh": "以 -o 結尾的名詞多半是陽性（el niño），以 -a 結尾的多半是陰性（la niña）。變複數時，母音結尾加 -s（casas），子音結尾加 -es（ciudades）。", "en": "Nouns in -o are mostly masculine (el niño), nouns in -a mostly feminine (la niña). Plural: add -s after a vowel (casas), -es after a consonant (ciudades)."},
+      "notes": [
+        {"zh": "也有例外：el día（白天）、el mapa（地圖）是陽性；la mano（手）、la foto（照片）是陰性。", "en": "Some break the rule: el día, el mapa are masculine; la mano, la foto feminine."},
+        {"zh": "-ción、-dad 結尾的都是陰性：la estación、la ciudad。", "en": "Nouns in -ción and -dad are feminine: la estación, la ciudad."}
+      ],
+      "mistakes": [
+        {"wrong": "los ciudads", "right": "las ciudades", "zh": "ciudad 是陰性，子音結尾加 -es。", "en": "ciudad is feminine and ends in a consonant: -es."},
+        {"wrong": "la día", "right": "el día", "zh": "día 雖然是 -a 結尾，卻是陽性。", "en": "día ends in -a but is masculine."}
+      ],
+      "examples": [
+        {"text": "Tengo dos hermanos.", "zh": "我有兩個兄弟。", "en": "I have two brothers."},
+        {"text": "Las flores son rojas.", "zh": "花是紅色的。", "en": "The flowers are red."},
+        {"text": "Hay tres universidades en la ciudad.", "zh": "這座城市有三所大學。", "en": "There are three universities in the city."}
+      ],
+      "quiz": [
+        {"q": "Compro dos（　）.", "zh": "我買兩支手機。", "en": "I'm buying two phones.", "options": ["móviles", "móvils", "móvil", "móvilos"], "answer": 0},
+        {"q": "Leo muchos（　）.", "zh": "我讀很多書。", "en": "I read a lot of books.", "options": ["libros", "libroes", "libro", "libras"], "answer": 0},
+        {"q": "（　）mano derecha", "zh": "右手", "en": "the right hand", "options": ["La", "El", "Los", "Las"], "answer": 0}
+      ]
+    },
+    {
+      "id": "adjetivos",
+      "pattern": "形容詞的性別和數量",
+      "title": {"zh": "形容詞要跟名詞一致", "en": "Adjectives agree with the noun"},
+      "form": {"zh": "名詞 ＋ 形容詞：un chico alto・una chica alta・unos chicos altos", "en": "noun + adjective: un chico alto · una chica alta · unos chicos altos"},
+      "explain": {"zh": "形容詞通常放在名詞後面，性別和單複數都要跟名詞一致：un coche rojo（一輛紅車）、una casa roja、dos casas rojas。", "en": "Adjectives usually come after the noun and match it in gender and number: un coche rojo, una casa roja, dos casas rojas."},
+      "notes": [
+        {"zh": "-e 或子音結尾的形容詞男女同形：un libro interesante、una película interesante。", "en": "Adjectives in -e or a consonant have one form for both: un libro interesante, una película interesante."},
+        {"zh": "國籍例外：español → española、inglés → inglesa。", "en": "Nationalities still change: español → española, inglés → inglesa."}
+      ],
+      "mistakes": [
+        {"wrong": "una casa blanco", "right": "una casa blanca", "zh": "casa 是陰性，形容詞也要用陰性。", "en": "casa is feminine, so the adjective is too."},
+        {"wrong": "los ojos azul", "right": "los ojos azules", "zh": "名詞是複數，形容詞也要加 -es。", "en": "A plural noun takes a plural adjective."}
+      ],
+      "examples": [
+        {"text": "Tengo un gato negro.", "zh": "我有一隻黑貓。", "en": "I have a black cat."},
+        {"text": "Mis hermanas son altas.", "zh": "我的姊妹們都很高。", "en": "My sisters are tall."},
+        {"text": "Es una ciudad grande.", "zh": "那是一座大城市。", "en": "It's a big city."}
+      ],
+      "quiz": [
+        {"q": "Llevo una camisa（　）.", "zh": "我穿一件白襯衫。", "en": "I'm wearing a white shirt.", "options": ["blanca", "blanco", "blancos", "blancas"], "answer": 0},
+        {"q": "Son unos zapatos muy（　）.", "zh": "那是一雙很貴的鞋。", "en": "They're very expensive shoes.", "options": ["caros", "caras", "caro", "cara"], "answer": 0},
+        {"q": "Ana es（　）.", "zh": "安娜是西班牙人。", "en": "Ana is Spanish.", "options": ["española", "español", "españoles", "españolas"], "answer": 0}
+      ]
+    },
+    {
+      "id": "presente_ar",
+      "pattern": "-ar 動詞的現在式",
+      "title": {"zh": "-ar 動詞的現在式", "en": "Present tense of -ar verbs"},
+      "form": {"zh": "hablar → hablo・hablas・habla・hablamos・habláis・hablan", "en": "hablar → hablo · hablas · habla · hablamos · habláis · hablan"},
+      "explain": {"zh": "原形以 -ar 結尾的動詞最多。去掉 -ar，再接上主詞的字尾 -o、-as、-a、-amos、-áis、-an：Trabajo en Taipéi.（我在台北工作。）", "en": "Most verbs end in -ar. Drop -ar and add -o, -as, -a, -amos, -áis, -an: Trabajo en Taipéi (I work in Taipei)."},
+      "notes": [
+        {"zh": "現在式也可以表示現在正在做或固定的習慣：Estudio español todos los días.", "en": "The present also covers what you do regularly: Estudio español todos los días."}
+      ],
+      "mistakes": [
+        {"wrong": "Yo habla español.", "right": "Yo hablo español.", "zh": "yo 的字尾是 -o。", "en": "With yo the ending is -o."},
+        {"wrong": "Nosotros trabajan mucho.", "right": "Nosotros trabajamos mucho.", "zh": "nosotros 的字尾是 -amos。", "en": "With nosotros the ending is -amos."}
+      ],
+      "examples": [
+        {"text": "Hablo un poco de español.", "zh": "我會說一點西班牙文。", "en": "I speak a little Spanish."},
+        {"text": "¿Dónde trabajas?", "zh": "你在哪裡工作？", "en": "Where do you work?"},
+        {"text": "Mis amigos escuchan música.", "zh": "我的朋友們在聽音樂。", "en": "My friends are listening to music."}
+      ],
+      "quiz": [
+        {"q": "Yo（　）en un restaurante.", "zh": "我在一家餐廳工作。", "en": "I work in a restaurant.", "options": ["trabajo", "trabaja", "trabajas", "trabajamos"], "answer": 0},
+        {"q": "¿Tú（　）inglés?", "zh": "你會說英文嗎？", "en": "Do you speak English?", "options": ["hablas", "habla", "hablo", "hablan"], "answer": 0},
+        {"q": "Nosotros（　）la tele por la noche.", "zh": "我們晚上看電視。", "en": "We watch TV in the evening.", "options": ["miramos", "miran", "miráis", "miro"], "answer": 0}
+      ]
+    },
+    {
+      "id": "presente_er_ir",
+      "pattern": "-er・-ir 動詞的現在式",
+      "title": {"zh": "-er、-ir 動詞的現在式", "en": "Present tense of -er and -ir verbs"},
+      "form": {"zh": "comer → como・comes・come・comemos・coméis・comen　vivir → vivo・vives・vive・vivimos・vivís・viven", "en": "comer → como · comes · come · comemos · coméis · comen · vivir → vivo · vives · vive · vivimos · vivís · viven"},
+      "explain": {"zh": "-er 和 -ir 動詞的變化幾乎一樣，只有 nosotros 和 vosotros 不同：comemos／coméis，vivimos／vivís。", "en": "-er and -ir verbs change almost the same way; only nosotros and vosotros differ: comemos / coméis, vivimos / vivís."},
+      "notes": [
+        {"zh": "常用的 -er 動詞：comer（吃）、beber（喝）、leer（讀）、aprender（學）；-ir 動詞：vivir（住）、escribir（寫）、abrir（打開）。", "en": "Common -er verbs: comer, beber, leer, aprender; -ir verbs: vivir, escribir, abrir."}
+      ],
+      "mistakes": [
+        {"wrong": "Nosotros vivemos en Taichung.", "right": "Nosotros vivimos en Taichung.", "zh": "-ir 動詞的 nosotros 是 -imos。", "en": "-ir verbs take -imos with nosotros."},
+        {"wrong": "Ella comé pan.", "right": "Ella come pan.", "zh": "come 沒有重音符號。", "en": "come has no accent mark."}
+      ],
+      "examples": [
+        {"text": "Como arroz todos los días.", "zh": "我每天吃米飯。", "en": "I eat rice every day."},
+        {"text": "¿Dónde vives?", "zh": "你住在哪裡？", "en": "Where do you live?"},
+        {"text": "Mi hijo lee mucho.", "zh": "我兒子很愛看書。", "en": "My son reads a lot."}
+      ],
+      "quiz": [
+        {"q": "Yo（　）agua.", "zh": "我喝水。", "en": "I drink water.", "options": ["bebo", "bebe", "bebes", "bebemos"], "answer": 0},
+        {"q": "Nosotros（　）en Tainan.", "zh": "我們住在台南。", "en": "We live in Tainan.", "options": ["vivimos", "vivemos", "viven", "vivís"], "answer": 0},
+        {"q": "Ellos（　）una carta.", "zh": "他們在寫信。", "en": "They're writing a letter.", "options": ["escriben", "escribe", "escribimos", "escribís"], "answer": 0}
+      ]
+    },
+    {
+      "id": "negacion",
+      "pattern": "no ＋ 動詞",
+      "title": {"zh": "否定：no", "en": "Negation with no"},
+      "form": {"zh": "no ＋ 動詞：No hablo francés.", "en": "no + verb: No hablo francés."},
+      "explain": {"zh": "西班牙文的否定很簡單，在動詞前面加「no」就好：No como carne.（我不吃肉。）回答問題時常說兩次：No, no tengo hermanos.", "en": "Just put no before the verb: No como carne (I don't eat meat). Answers often have it twice: No, no tengo hermanos."},
+      "notes": [
+        {"zh": "「nada（什麼都不）、nunca（從不）、nadie（沒有人）」放在動詞後面時，前面還是要有 no：No quiero nada.", "en": "nada, nunca, nadie after the verb still need no before it: No quiero nada."}
+      ],
+      "mistakes": [
+        {"wrong": "Hablo no inglés.", "right": "No hablo inglés.", "zh": "no 放在動詞前面。", "en": "no goes before the verb."},
+        {"wrong": "Quiero nada.", "right": "No quiero nada.", "zh": "nada 在動詞後面時，前面要加 no。", "en": "nada after the verb needs no in front."}
+      ],
+      "examples": [
+        {"text": "No entiendo.", "zh": "我聽不懂。", "en": "I don't understand."},
+        {"text": "Mi padre no bebe café.", "zh": "我爸爸不喝咖啡。", "en": "My father doesn't drink coffee."},
+        {"text": "No, no vivo aquí.", "zh": "不，我不住這裡。", "en": "No, I don't live here."}
+      ],
+      "quiz": [
+        {"q": "（　）tengo tiempo hoy.", "zh": "我今天沒有時間。", "en": "I don't have time today.", "options": ["No", "Nada", "Nadie", "Ni"], "answer": 0},
+        {"q": "Ella（　）habla alemán.", "zh": "她不會說德文。", "en": "She doesn't speak German.", "options": ["no", "nada", "nadie", "ningún"], "answer": 0},
+        {"q": "No veo（　）.", "zh": "我什麼都看不到。", "en": "I can't see anything.", "options": ["nada", "no", "ningún", "nadie"], "answer": 0}
+      ]
+    },
+    {
+      "id": "preguntas",
+      "pattern": "¿qué?・¿dónde?・¿cómo? …",
+      "title": {"zh": "問句和疑問詞", "en": "Questions and question words"},
+      "form": {"zh": "¿Qué? 什麼・¿Quién? 誰・¿Dónde? 哪裡・¿Cuándo? 什麼時候・¿Cómo? 怎麼樣・¿Cuánto? 多少・¿Por qué? 為什麼", "en": "¿Qué? what · ¿Quién? who · ¿Dónde? where · ¿Cuándo? when · ¿Cómo? how · ¿Cuánto? how much · ¿Por qué? why"},
+      "explain": {"zh": "問句前後都要加問號，開頭是倒過來的「¿」。是非問句只要把語調提高：¿Hablas inglés? 疑問詞都有重音符號，放在句首：¿Dónde vives?", "en": "Questions open with ¿ and close with ?. For yes / no questions just raise your voice: ¿Hablas inglés? Question words carry an accent and come first: ¿Dónde vives?"},
+      "notes": [
+        {"zh": "「¿Por qué?」問為什麼，回答用連在一起的「porque」（因為）。", "en": "¿Por qué? asks why; the answer uses porque (because), one word."},
+        {"zh": "¿Cuánto? 要跟名詞一致：¿Cuántos años tienes?、¿Cuántas personas?", "en": "¿Cuánto? agrees with the noun: ¿Cuántos años tienes?, ¿Cuántas personas?"}
+      ],
+      "mistakes": [
+        {"wrong": "¿Donde vives?", "right": "¿Dónde vives?", "zh": "疑問詞要有重音符號。", "en": "Question words take an accent mark."},
+        {"wrong": "¿Cuántos personas?", "right": "¿Cuántas personas?", "zh": "personas 是陰性複數。", "en": "personas is feminine plural."}
+      ],
+      "examples": [
+        {"text": "¿Cómo te llamas?", "zh": "你叫什麼名字？", "en": "What's your name?"},
+        {"text": "¿Cuánto cuesta este libro?", "zh": "這本書多少錢？", "en": "How much is this book?"},
+        {"text": "¿Por qué estudias español?", "zh": "你為什麼學西班牙文？", "en": "Why are you learning Spanish?"}
+      ],
+      "quiz": [
+        {"q": "¿（　）está la estación?", "zh": "車站在哪裡？", "en": "Where's the station?", "options": ["Dónde", "Cuándo", "Quién", "Cuánto"], "answer": 0},
+        {"q": "¿（　）es tu cumpleaños?", "zh": "你的生日是什麼時候？", "en": "When is your birthday?", "options": ["Cuándo", "Dónde", "Cómo", "Quién"], "answer": 0},
+        {"q": "¿（　）es ese chico?", "zh": "那個男生是誰？", "en": "Who's that boy?", "options": ["Quién", "Qué", "Cuánto", "Dónde"], "answer": 0}
+      ]
+    },
+    {
+      "id": "tener",
+      "pattern": "tener",
+      "title": {"zh": "tener：有（tener … años）", "en": "tener — to have (and age)"},
+      "form": {"zh": "tengo・tienes・tiene・tenemos・tenéis・tienen", "en": "tengo · tienes · tiene · tenemos · tenéis · tienen"},
+      "explain": {"zh": "「tener」是「有」，變化不規則。說年紀也用 tener：Tengo veinte años.（我二十歲。）還有一些身體感覺：tener hambre（餓）、tener frío（冷）、tener sueño（睏）。", "en": "tener means “to have” and is irregular. Age uses it too: Tengo veinte años (I'm twenty). So do some feelings: tener hambre (be hungry), tener frío (be cold), tener sueño (be sleepy)."},
+      "notes": [
+        {"zh": "問年紀：¿Cuántos años tienes?", "en": "Asking someone's age: ¿Cuántos años tienes?"}
+      ],
+      "mistakes": [
+        {"wrong": "Soy veinte años.", "right": "Tengo veinte años.", "zh": "年紀用 tener，不用 ser。", "en": "Age takes tener, not ser."},
+        {"wrong": "Estoy hambre.", "right": "Tengo hambre.", "zh": "「餓」是 tener hambre。", "en": "Hungry is tener hambre."}
+      ],
+      "examples": [
+        {"text": "Tengo dos gatos.", "zh": "我有兩隻貓。", "en": "I have two cats."},
+        {"text": "Mi abuela tiene ochenta años.", "zh": "我奶奶八十歲。", "en": "My grandmother is eighty."},
+        {"text": "¿Tienes frío?", "zh": "你會冷嗎？", "en": "Are you cold?"}
+      ],
+      "quiz": [
+        {"q": "Yo（　）un hermano.", "zh": "我有一個哥哥。", "en": "I have a brother.", "options": ["tengo", "tiene", "tienes", "tenemos"], "answer": 0},
+        {"q": "¿Cuántos años（　）tu padre?", "zh": "你爸爸幾歲？", "en": "How old is your father?", "options": ["tiene", "es", "está", "tienen"], "answer": 0},
+        {"q": "Los niños（　）sueño.", "zh": "孩子們想睡了。", "en": "The children are sleepy.", "options": ["tienen", "están", "son", "tiene"], "answer": 0}
+      ]
+    },
+    {
+      "id": "hay",
+      "pattern": "hay",
+      "title": {"zh": "hay：有（存在）", "en": "hay — there is, there are"},
+      "form": {"zh": "hay ＋ 不定冠詞／數字／名詞（單複數都用 hay）", "en": "hay + a / number / noun (the same for singular and plural)"},
+      "explain": {"zh": "說「某個地方有某樣東西」用 hay，單數複數都一樣：Hay un banco aquí.（這裡有一間銀行。）Hay tres sillas.（有三張椅子。）", "en": "To say something exists somewhere, use hay — one form for singular and plural: Hay un banco aquí, Hay tres sillas."},
+      "notes": [
+        {"zh": "hay 後面不接 el／la；說特定東西「在哪裡」要用 estar：El banco está aquí.", "en": "hay doesn't take el / la; to say where a known thing is, use estar: El banco está aquí."}
+      ],
+      "mistakes": [
+        {"wrong": "Hay el supermercado cerca.", "right": "Hay un supermercado cerca.", "zh": "hay 後面用 un／una，不用 el／la。", "en": "hay takes un / una, not el / la."},
+        {"wrong": "Hayn muchas personas.", "right": "Hay muchas personas.", "zh": "複數也是 hay，不會變。", "en": "hay never changes, even for plurals."}
+      ],
+      "examples": [
+        {"text": "Hay un parque cerca de mi casa.", "zh": "我家附近有一座公園。", "en": "There's a park near my house."},
+        {"text": "¿Hay leche en la nevera?", "zh": "冰箱裡有牛奶嗎？", "en": "Is there any milk in the fridge?"},
+        {"text": "En mi clase hay veinte alumnos.", "zh": "我們班有二十個學生。", "en": "There are twenty students in my class."}
+      ],
+      "quiz": [
+        {"q": "（　）muchos turistas en verano.", "zh": "夏天有很多觀光客。", "en": "There are lots of tourists in summer.", "options": ["Hay", "Están", "Son", "Tienen"], "answer": 0},
+        {"q": "Perdón, ¿dónde（　）el museo?", "zh": "請問博物館在哪裡？", "en": "Excuse me, where's the museum?", "options": ["está", "hay", "es", "tiene"], "answer": 0},
+        {"q": "En la mesa hay（　）libro.", "zh": "桌上有一本書。", "en": "There's a book on the table.", "options": ["un", "el", "uno", "la"], "answer": 0}
+      ]
+    },
+    {
+      "id": "posesivos",
+      "pattern": "mi・tu・su・nuestro …",
+      "title": {"zh": "所有格：我的、你的", "en": "Possessives: mi, tu, su …"},
+      "form": {"zh": "mi(s) 我的・tu(s) 你的・su(s) 他的／她的／您的／他們的・nuestro/a(s) 我們的・vuestro/a(s) 你們的", "en": "mi(s) my · tu(s) your · su(s) his / her / your / their · nuestro/a(s) our · vuestro/a(s) your (pl.)"},
+      "explain": {"zh": "所有格放在名詞前面，單複數跟著「被擁有的東西」變：mi libro → mis libros。nuestro、vuestro 還要配合名詞的性別：nuestra casa。", "en": "Possessives go before the noun and change with the thing owned: mi libro → mis libros. nuestro and vuestro also match its gender: nuestra casa."},
+      "notes": [
+        {"zh": "su 可以是「他的、她的、您的、他們的」，不清楚時可以改說 el coche de Ana。", "en": "su can mean his, her, your or their; if unclear, say el coche de Ana."}
+      ],
+      "mistakes": [
+        {"wrong": "mi padres", "right": "mis padres", "zh": "名詞是複數，所有格也要加 -s。", "en": "A plural noun needs mis."},
+        {"wrong": "nuestro familia", "right": "nuestra familia", "zh": "familia 是陰性，用 nuestra。", "en": "familia is feminine: nuestra."}
+      ],
+      "examples": [
+        {"text": "Mi hermana vive en Japón.", "zh": "我姊姊住在日本。", "en": "My sister lives in Japan."},
+        {"text": "¿Cómo se llaman tus padres?", "zh": "你爸媽叫什麼名字？", "en": "What are your parents' names?"},
+        {"text": "Nuestra casa es pequeña.", "zh": "我們的房子很小。", "en": "Our house is small."}
+      ],
+      "quiz": [
+        {"q": "Estos son（　）amigos.", "zh": "這些是我的朋友。", "en": "These are my friends.", "options": ["mis", "mi", "me", "mío"], "answer": 0},
+        {"q": "（　）escuela está lejos.", "zh": "我們的學校很遠。", "en": "Our school is far away.", "options": ["Nuestra", "Nuestro", "Nuestros", "Nosotros"], "answer": 0},
+        {"q": "¿Es（　）móvil, señora?", "zh": "女士，這是您的手機嗎？", "en": "Is this your phone, madam?", "options": ["su", "tu", "sus", "mi"], "answer": 0}
+      ]
+    },
+    {
+      "id": "demostrativos",
+      "pattern": "este・ese・aquel",
+      "title": {"zh": "指示詞：這、那", "en": "Demonstratives: este, ese, aquel"},
+      "form": {"zh": "este／esta／estos／estas 這・ese／esa／esos／esas 那（較近）・aquel／aquella／aquellos／aquellas 那（遠）", "en": "este / esta / estos / estas this · ese / esa / esos / esas that · aquel / aquella / aquellos / aquellas that (far)"},
+      "explain": {"zh": "西班牙文分三種距離：este 在我旁邊，ese 在你旁邊或不遠，aquel 離我們都很遠。要跟名詞的性別、單複數一致：esta camisa、esos zapatos。", "en": "Spanish has three distances: este is near me, ese near you or not far, aquel far from us both. They agree with the noun: esta camisa, esos zapatos."},
+      "notes": [
+        {"zh": "指一件事或不知道是什麼東西時用 esto、eso：¿Qué es esto?", "en": "For an idea or an unknown thing use esto, eso: ¿Qué es esto?"}
+      ],
+      "mistakes": [
+        {"wrong": "este casa", "right": "esta casa", "zh": "casa 是陰性，用 esta。", "en": "casa is feminine: esta."},
+        {"wrong": "estes libros", "right": "estos libros", "zh": "este 的複數是 estos。", "en": "The plural of este is estos."}
+      ],
+      "examples": [
+        {"text": "Este café está muy rico.", "zh": "這杯咖啡很好喝。", "en": "This coffee is delicious."},
+        {"text": "¿Cuánto cuestan esas gafas?", "zh": "那副眼鏡多少錢？", "en": "How much are those glasses?"},
+        {"text": "Aquella montaña es muy alta.", "zh": "那座山很高。", "en": "That mountain over there is very high."}
+      ],
+      "quiz": [
+        {"q": "（　）chaqueta es muy bonita.", "zh": "這件外套很好看。", "en": "This jacket is very nice.", "options": ["Esta", "Este", "Estos", "Esto"], "answer": 0},
+        {"q": "¿Qué es（　）?", "zh": "這是什麼？", "en": "What's this?", "options": ["esto", "este", "esta", "estos"], "answer": 0},
+        {"q": "Me gustan（　）zapatos.", "zh": "我喜歡那雙鞋。", "en": "I like those shoes.", "options": ["esos", "esas", "ese", "esa"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ir",
+      "pattern": "ir・ir a ＋ 原形",
+      "title": {"zh": "ir：去；ir a ＋ 原形：打算", "en": "ir — to go; ir a + infinitive — going to"},
+      "form": {"zh": "voy・vas・va・vamos・vais・van　ir a ＋ 地方／ir a ＋ 動詞原形", "en": "voy · vas · va · vamos · vais · van · ir a + place / ir a + infinitive"},
+      "explain": {"zh": "「ir」是「去」，地方前面加 a：Voy a Japón.（我要去日本。）「ir a＋動詞原形」表示接下來打算做的事：Voy a estudiar.（我要去讀書了。）", "en": "ir means “to go”, with a before the place: Voy a Japón. ir a + infinitive says what you're going to do: Voy a estudiar (I'm going to study)."},
+      "notes": [
+        {"zh": "a 碰到 el 要合成 al：Vamos al cine.", "en": "a + el becomes al: Vamos al cine."}
+      ],
+      "mistakes": [
+        {"wrong": "Voy estudiar mañana.", "right": "Voy a estudiar mañana.", "zh": "ir 和動詞原形中間要有 a。", "en": "ir needs a before the infinitive."},
+        {"wrong": "Vamos a el parque.", "right": "Vamos al parque.", "zh": "a ＋ el 要寫成 al。", "en": "a + el is written al."}
+      ],
+      "examples": [
+        {"text": "Voy al trabajo en metro.", "zh": "我搭捷運上班。", "en": "I go to work by metro."},
+        {"text": "¿Adónde vas?", "zh": "你要去哪裡？", "en": "Where are you going?"},
+        {"text": "Esta noche vamos a cenar en casa.", "zh": "我們今晚要在家吃晚餐。", "en": "We're going to have dinner at home tonight."}
+      ],
+      "quiz": [
+        {"q": "Mañana yo（　）a la playa.", "zh": "我明天要去海邊。", "en": "I'm going to the beach tomorrow.", "options": ["voy", "va", "vamos", "vas"], "answer": 0},
+        {"q": "Ellos van（　）comprar pan.", "zh": "他們要去買麵包。", "en": "They're going to buy bread.", "options": ["a", "de", "en", "por"], "answer": 0},
+        {"q": "¿Vamos（　）cine?", "zh": "我們去看電影好嗎？", "en": "Shall we go to the cinema?", "options": ["al", "a el", "del", "en el"], "answer": 0}
+      ]
+    },
+    {
+      "id": "gustar",
+      "pattern": "me gusta・me gustan",
+      "title": {"zh": "gustar：喜歡", "en": "gustar — to like"},
+      "form": {"zh": "me／te／le／nos／os／les ＋ gusta（單數、動詞原形）／gustan（複數）", "en": "me / te / le / nos / os / les + gusta (one thing, an infinitive) / gustan (several things)"},
+      "explain": {"zh": "「gustar」字面是「讓…喜歡」，喜歡的東西才是主詞，所以動詞跟著東西變：Me gusta el chocolate.（我喜歡巧克力。）Me gustan los perros.（我喜歡狗。）喜歡做某事用 gusta＋原形：Me gusta nadar.", "en": "gustar works like “to please”: the thing liked is the subject, so the verb follows it: Me gusta el chocolate, Me gustan los perros. For activities: gusta + infinitive: Me gusta nadar."},
+      "notes": [
+        {"zh": "要說清楚是誰，可以加 a＋人：A María le gusta bailar.", "en": "To say who, add a + person: A María le gusta bailar."},
+        {"zh": "說不喜歡：No me gusta el frío.", "en": "Not liking: No me gusta el frío."}
+      ],
+      "mistakes": [
+        {"wrong": "Yo gusto el café.", "right": "Me gusta el café.", "zh": "不說 yo gusto，要說 me gusta。", "en": "Not yo gusto — say me gusta."},
+        {"wrong": "Me gusta las fresas.", "right": "Me gustan las fresas.", "zh": "喜歡的東西是複數，用 gustan。", "en": "Several things liked: gustan."}
+      ],
+      "examples": [
+        {"text": "Me gusta mucho la comida taiwanesa.", "zh": "我很喜歡台灣菜。", "en": "I really like Taiwanese food."},
+        {"text": "¿Te gustan los gatos?", "zh": "你喜歡貓嗎？", "en": "Do you like cats?"},
+        {"text": "A mis padres les gusta viajar.", "zh": "我爸媽喜歡旅行。", "en": "My parents like travelling."}
+      ],
+      "quiz": [
+        {"q": "Me（　）las películas de terror.", "zh": "我喜歡恐怖片。", "en": "I like horror films.", "options": ["gustan", "gusta", "gusto", "gustas"], "answer": 0},
+        {"q": "¿（　）gusta cocinar?", "zh": "你喜歡做菜嗎？", "en": "Do you like cooking?", "options": ["Te", "Tú", "Ti", "Tu"], "answer": 0},
+        {"q": "A Pablo（　）gusta el fútbol.", "zh": "巴布羅喜歡足球。", "en": "Pablo likes football.", "options": ["le", "lo", "se", "les"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cambio_raiz",
+      "pattern": "e → ie・o → ue",
+      "title": {"zh": "會變音的動詞：e → ie、o → ue", "en": "Stem-changing verbs: e → ie, o → ue"},
+      "form": {"zh": "querer → quiero・quieres・quiere・queremos・queréis・quieren　poder → puedo・puedes・puede・podemos・podéis・pueden", "en": "querer → quiero · quieres · quiere · queremos · queréis · quieren · poder → puedo · puedes · puede · podemos · podéis · pueden"},
+      "explain": {"zh": "有些動詞的字根母音會變：e 變 ie（querer → quiero）、o 變 ue（dormir → duermo）。只有 nosotros 和 vosotros 不變：queremos、dormimos。", "en": "Some verbs change the vowel in the stem: e → ie (querer → quiero), o → ue (dormir → duermo). nosotros and vosotros keep it: queremos, dormimos."},
+      "notes": [
+        {"zh": "常見的 e → ie：empezar、pensar、preferir、cerrar；o → ue：poder、volver、dormir、costar。", "en": "Common e → ie: empezar, pensar, preferir, cerrar; o → ue: poder, volver, dormir, costar."},
+        {"zh": "jugar 是 u → ue：juego、juegas。", "en": "jugar goes u → ue: juego, juegas."}
+      ],
+      "mistakes": [
+        {"wrong": "Yo quero un café.", "right": "Yo quiero un café.", "zh": "querer 的 yo 是 quiero。", "en": "querer with yo is quiero."},
+        {"wrong": "Nosotros puedemos ir.", "right": "Nosotros podemos ir.", "zh": "nosotros 不變音。", "en": "nosotros keeps the o."}
+      ],
+      "examples": [
+        {"text": "¿A qué hora empieza la película?", "zh": "電影幾點開始？", "en": "What time does the film start?"},
+        {"text": "Duermo ocho horas.", "zh": "我睡八個小時。", "en": "I sleep eight hours."},
+        {"text": "Los domingos jugamos al tenis.", "zh": "我們星期天打網球。", "en": "We play tennis on Sundays."}
+      ],
+      "quiz": [
+        {"q": "Yo（　）a casa a las seis.", "zh": "我六點回家。", "en": "I get home at six.", "options": ["vuelvo", "volvo", "vuelvemos", "volvemos"], "answer": 0},
+        {"q": "¿Cuánto（　）esta camiseta?", "zh": "這件 T 恤多少錢？", "en": "How much is this T-shirt?", "options": ["cuesta", "costa", "cuestan", "custa"], "answer": 0},
+        {"q": "Nosotros（　）el té al café.", "zh": "比起咖啡，我們比較喜歡茶。", "en": "We prefer tea to coffee.", "options": ["preferimos", "prefierimos", "prefieren", "prefiero"], "answer": 0}
+      ]
+    },
+    {
+      "id": "reflexivos",
+      "pattern": "me llamo・me levanto",
+      "title": {"zh": "反身動詞：llamarse、levantarse", "en": "Reflexive verbs: llamarse, levantarse"},
+      "form": {"zh": "me・te・se・nos・os・se ＋ 動詞：me levanto・te levantas・se levanta …", "en": "me · te · se · nos · os · se + verb: me levanto · te levantas · se levanta …"},
+      "explain": {"zh": "原形後面有 -se 的動詞，表示動作回到自己身上：levantarse（起床）、ducharse（洗澡）、llamarse（叫做）。代名詞放在變化好的動詞前面：Me llamo Ana.（我叫安娜。）", "en": "Verbs ending in -se act on yourself: levantarse (get up), ducharse (shower), llamarse (be called). The pronoun goes before the verb: Me llamo Ana."},
+      "notes": [
+        {"zh": "說日常作息時很常用：Me levanto a las siete y me ducho.", "en": "Daily routines use them a lot: Me levanto a las siete y me ducho."}
+      ],
+      "mistakes": [
+        {"wrong": "Yo llamo Pedro.", "right": "Me llamo Pedro.", "zh": "說名字要用 me llamo。", "en": "Saying your name needs me llamo."},
+        {"wrong": "Nosotros se levantamos temprano.", "right": "Nosotros nos levantamos temprano.", "zh": "nosotros 用 nos。", "en": "With nosotros it's nos."}
+      ],
+      "examples": [
+        {"text": "¿Cómo se llama tu perro?", "zh": "你的狗叫什麼名字？", "en": "What's your dog called?"},
+        {"text": "Me levanto a las siete.", "zh": "我七點起床。", "en": "I get up at seven."},
+        {"text": "Los niños se acuestan temprano.", "zh": "孩子們很早睡。", "en": "The children go to bed early."}
+      ],
+      "quiz": [
+        {"q": "Mi hermano（　）llama Diego.", "zh": "我弟弟叫迪耶哥。", "en": "My brother is called Diego.", "options": ["se", "me", "te", "le"], "answer": 0},
+        {"q": "¿A qué hora（　）levantas?", "zh": "你幾點起床？", "en": "What time do you get up?", "options": ["te", "se", "me", "tu"], "answer": 0},
+        {"q": "Yo（　）ducho por la mañana.", "zh": "我早上洗澡。", "en": "I shower in the morning.", "options": ["me", "se", "te", "mi"], "answer": 0}
+      ]
+    },
+    {
+      "id": "preposiciones",
+      "pattern": "a・en・de（al・del）",
+      "title": {"zh": "介系詞 a、en、de", "en": "The prepositions a, en, de"},
+      "form": {"zh": "a 往、到・en 在（裡面、上面）、搭（交通工具）・de 的、從　a ＋ el → al・de ＋ el → del", "en": "a to · en in, on, by (transport) · de of, from · a + el → al · de + el → del"},
+      "explain": {"zh": "「a」表示方向（Voy a Madrid），「en」表示在哪裡或搭什麼車（Estoy en casa、Voy en autobús），「de」表示來自、屬於（Soy de Taiwán、el libro de Juan）。碰到 el 時要合成 al、del。", "en": "a shows direction (Voy a Madrid), en where you are or how you travel (Estoy en casa, Voy en autobús), de origin and belonging (Soy de Taiwán, el libro de Juan). With el they merge into al, del."},
+      "notes": [
+        {"zh": "只有 el 會合在一起，la、los、las 不會：a la playa、de los niños。", "en": "Only el merges: a la playa, de los niños."}
+      ],
+      "mistakes": [
+        {"wrong": "Vengo de el banco.", "right": "Vengo del banco.", "zh": "de ＋ el 要寫成 del。", "en": "de + el is del."},
+        {"wrong": "Voy a autobús.", "right": "Voy en autobús.", "zh": "搭交通工具用 en。", "en": "Transport takes en."}
+      ],
+      "examples": [
+        {"text": "Vamos a Barcelona en tren.", "zh": "我們搭火車去巴塞隆納。", "en": "We're going to Barcelona by train."},
+        {"text": "Es la casa de mis abuelos.", "zh": "那是我爺爺奶奶的家。", "en": "It's my grandparents' house."},
+        {"text": "Salgo del trabajo a las cinco.", "zh": "我五點下班。", "en": "I leave work at five."}
+      ],
+      "quiz": [
+        {"q": "Mi madre está（　）el hospital.", "zh": "我媽媽在醫院。", "en": "My mother is at the hospital.", "options": ["en", "a", "de", "al"], "answer": 0},
+        {"q": "Este es el coche（　）profesor.", "zh": "這是老師的車。", "en": "This is the teacher's car.", "options": ["del", "de el", "al", "en el"], "answer": 0},
+        {"q": "Llegamos（　）aeropuerto a las ocho.", "zh": "我們八點到機場。", "en": "We get to the airport at eight.", "options": ["al", "a el", "del", "en"], "answer": 0}
+      ]
+    },
+    {
+      "id": "muy_mucho",
+      "pattern": "muy ／ mucho",
+      "title": {"zh": "muy 和 mucho：很、很多", "en": "muy or mucho?"},
+      "form": {"zh": "muy ＋ 形容詞／副詞・動詞 ＋ mucho・mucho/a/os/as ＋ 名詞", "en": "muy + adjective / adverb · verb + mucho · mucho/a/os/as + noun"},
+      "explain": {"zh": "「muy」放在形容詞、副詞前面（muy grande、muy bien）；「mucho」放在動詞後面（Trabajo mucho），或放在名詞前面當「很多」，這時要跟名詞一致（muchas personas）。", "en": "muy goes before adjectives and adverbs (muy grande, muy bien); mucho goes after a verb (Trabajo mucho) or before a noun as “a lot of”, agreeing with it (muchas personas)."},
+      "notes": [
+        {"zh": "「Muchas gracias」（非常感謝）就是 mucho ＋ 名詞。", "en": "Muchas gracias (thanks a lot) is mucho + noun."}
+      ],
+      "mistakes": [
+        {"wrong": "Es mucho bonito.", "right": "Es muy bonito.", "zh": "形容詞前面用 muy。", "en": "Before an adjective use muy."},
+        {"wrong": "Tengo mucho amigas.", "right": "Tengo muchas amigas.", "zh": "mucho 放在名詞前時要跟名詞一致。", "en": "Before a noun mucho agrees with it."}
+      ],
+      "examples": [
+        {"text": "Hoy hace mucho calor.", "zh": "今天很熱。", "en": "It's very hot today."},
+        {"text": "Mi profesora habla muy rápido.", "zh": "我的老師說話很快。", "en": "My teacher speaks very fast."},
+        {"text": "Me gusta mucho este barrio.", "zh": "我很喜歡這一區。", "en": "I really like this neighbourhood."}
+      ],
+      "quiz": [
+        {"q": "La película es（　）interesante.", "zh": "這部電影很有趣。", "en": "The film is very interesting.", "options": ["muy", "mucho", "mucha", "muchos"], "answer": 0},
+        {"q": "En Taipéi hay（　）motos.", "zh": "台北有很多機車。", "en": "There are lots of scooters in Taipei.", "options": ["muchas", "muchos", "muy", "mucho"], "answer": 0},
+        {"q": "Mi hermano come（　）.", "zh": "我哥哥吃很多。", "en": "My brother eats a lot.", "options": ["mucho", "muy", "muchos", "mucha"], "answer": 0}
+      ]
+    },
+    {
+      "id": "querer_poder",
+      "pattern": "querer・poder ＋ 原形",
+      "title": {"zh": "querer、poder ＋ 動詞原形：想要、可以", "en": "querer / poder + infinitive — want to, can"},
+      "form": {"zh": "quiero ＋ 原形：想做…　puedo ＋ 原形：可以、能做…", "en": "quiero + infinitive: want to … · puedo + infinitive: can …"},
+      "explain": {"zh": "變化好的 querer 或 poder 後面直接接動詞原形：Quiero aprender español.（我想學西班牙文。）¿Puedo entrar?（我可以進來嗎？）", "en": "Conjugate querer or poder and add the infinitive: Quiero aprender español (I want to learn Spanish), ¿Puedo entrar? (May I come in?)."},
+      "notes": [
+        {"zh": "請別人幫忙：¿Puedes ayudarme?（你可以幫我嗎？）", "en": "Asking for help: ¿Puedes ayudarme? (Can you help me?)"}
+      ],
+      "mistakes": [
+        {"wrong": "Quiero a viajar.", "right": "Quiero viajar.", "zh": "querer 後面直接接原形，不加 a。", "en": "querer takes the infinitive directly, no a."},
+        {"wrong": "No puedo vengo hoy.", "right": "No puedo venir hoy.", "zh": "poder 後面要用原形。", "en": "After poder use the infinitive."}
+      ],
+      "examples": [
+        {"text": "Quiero ir a España.", "zh": "我想去西班牙。", "en": "I want to go to Spain."},
+        {"text": "¿Puedes hablar más despacio?", "zh": "你可以說慢一點嗎？", "en": "Can you speak more slowly?"},
+        {"text": "Hoy no podemos salir.", "zh": "我們今天不能出門。", "en": "We can't go out today."}
+      ],
+      "quiz": [
+        {"q": "Yo no（　）dormir bien.", "zh": "我睡不好。", "en": "I can't sleep well.", "options": ["puedo", "podo", "puede", "pueden"], "answer": 0},
+        {"q": "Ella quiere（　）médica.", "zh": "她想當醫生。", "en": "She wants to be a doctor.", "options": ["ser", "es", "a ser", "está"], "answer": 0},
+        {"q": "Mis amigos（　）ver la película.", "zh": "我的朋友們想看那部電影。", "en": "My friends want to see the film.", "options": ["quieren", "quiere", "queren", "queremos"], "answer": 0}
+      ]
+    },
+    {
+      "id": "tener_que",
+      "pattern": "tener que ＋ 原形",
+      "title": {"zh": "tener que ＋ 原形：必須", "en": "tener que + infinitive — have to"},
+      "form": {"zh": "tengo／tienes／tiene … ＋ que ＋ 動詞原形", "en": "tengo / tienes / tiene … + que + infinitive"},
+      "explain": {"zh": "說「必須、得做…」用 tener que＋動詞原形：Tengo que trabajar mañana.（我明天得上班。）否定 no tener que 是「不必」。", "en": "To say you have to do something: tener que + infinitive: Tengo que trabajar mañana. No tener que means “don't have to”."},
+      "notes": [
+        {"zh": "No tienes que pagar.（你不用付錢。）不是「不准」。", "en": "No tienes que pagar means you don't need to pay, not that you mustn't."}
+      ],
+      "mistakes": [
+        {"wrong": "Tengo estudiar.", "right": "Tengo que estudiar.", "zh": "tener 和原形中間要有 que。", "en": "tener needs que before the infinitive."},
+        {"wrong": "Tengo que voy al médico.", "right": "Tengo que ir al médico.", "zh": "que 後面用動詞原形。", "en": "After que use the infinitive."}
+      ],
+      "examples": [
+        {"text": "Tengo que levantarme temprano.", "zh": "我得早起。", "en": "I have to get up early."},
+        {"text": "Tienes que probar este plato.", "zh": "你一定要吃吃看這道菜。", "en": "You have to try this dish."},
+        {"text": "No tenemos que llevar uniforme.", "zh": "我們不必穿制服。", "en": "We don't have to wear a uniform."}
+      ],
+      "quiz": [
+        {"q": "Mañana tengo（　）ir al dentista.", "zh": "我明天得去看牙醫。", "en": "I have to go to the dentist tomorrow.", "options": ["que", "a", "de", "por"], "answer": 0},
+        {"q": "Los alumnos（　）que hacer los deberes.", "zh": "學生得寫功課。", "en": "The students have to do their homework.", "options": ["tienen", "tiene", "hay", "están"], "answer": 0},
+        {"q": "Tienes que（　）más agua.", "zh": "你得多喝水。", "en": "You have to drink more water.", "options": ["beber", "bebes", "bebe", "bebido"], "answer": 0}
+      ]
+    },
+    {
+      "id": "hora",
+      "pattern": "Es la una・Son las dos",
+      "title": {"zh": "時間的說法", "en": "Telling the time"},
+      "form": {"zh": "Es la una（一點）・Son las ＋ 2–12　y cuarto（十五分）・y media（半）・menos cuarto（差十五分）", "en": "Es la una (one o'clock) · Son las + 2–12 · y cuarto (quarter past) · y media (half past) · menos cuarto (quarter to)"},
+      "explain": {"zh": "問時間說 ¿Qué hora es? 一點用單數 Es la una，其他用複數 Son las dos、Son las tres y media。「在幾點」用 a：La clase empieza a las nueve.", "en": "Ask ¿Qué hora es? One o'clock is singular, Es la una; the rest are plural: Son las dos, Son las tres y media. “At” a time is a: La clase empieza a las nueve."},
+      "notes": [
+        {"zh": "加上一天的時段：de la mañana（早上）、de la tarde（下午）、de la noche（晚上）。", "en": "Parts of the day: de la mañana, de la tarde, de la noche."}
+      ],
+      "mistakes": [
+        {"wrong": "Son la una.", "right": "Es la una.", "zh": "一點是單數，用 es。", "en": "One o'clock is singular: es."},
+        {"wrong": "Abre en las diez.", "right": "Abre a las diez.", "zh": "「在幾點」用 a，不用 en。", "en": "“At” a time is a, not en."}
+      ],
+      "examples": [
+        {"text": "Son las ocho y cuarto.", "zh": "現在八點十五分。", "en": "It's quarter past eight."},
+        {"text": "¿A qué hora cierra la tienda?", "zh": "店幾點關門？", "en": "What time does the shop close?"},
+        {"text": "Ceno a las siete de la tarde.", "zh": "我晚上七點吃晚餐。", "en": "I have dinner at seven in the evening."}
+      ],
+      "quiz": [
+        {"q": "（　）las cuatro y media.", "zh": "現在四點半。", "en": "It's half past four.", "options": ["Son", "Es", "Está", "Hay"], "answer": 0},
+        {"q": "Es（　）una.", "zh": "現在一點。", "en": "It's one o'clock.", "options": ["la", "las", "el", "una"], "answer": 0},
+        {"q": "El tren sale（　）las diez.", "zh": "火車十點開。", "en": "The train leaves at ten.", "options": ["a", "en", "de", "por"], "answer": 0}
+      ]
+    },
+    {
+      "id": "estar_gerundio",
+      "pattern": "estar ＋ -ando／-iendo",
+      "title": {"zh": "estar ＋ 現在分詞：正在…", "en": "estar + gerund — be doing"},
+      "form": {"zh": "estar ＋ 現在分詞：-ar → -ando（hablando）・-er／-ir → -iendo（comiendo、viviendo）", "en": "estar + gerund: -ar → -ando (hablando) · -er / -ir → -iendo (comiendo, viviendo)"},
+      "explain": {"zh": "說「現在正在做」的事，用 estar＋現在分詞：Estoy comiendo.（我正在吃飯。）¿Qué estás haciendo?（你在做什麼？）", "en": "For what is going on right now: estar + gerund: Estoy comiendo (I'm eating), ¿Qué estás haciendo? (What are you doing?)."},
+      "notes": [
+        {"zh": "幾個不規則的：leer → leyendo、dormir → durmiendo。", "en": "Some irregular ones: leer → leyendo, dormir → durmiendo."}
+      ],
+      "mistakes": [
+        {"wrong": "Estoy comer.", "right": "Estoy comiendo.", "zh": "estar 後面用現在分詞。", "en": "After estar use the gerund."},
+        {"wrong": "Soy trabajando.", "right": "Estoy trabajando.", "zh": "「正在」用 estar，不用 ser。", "en": "“Be doing” takes estar, not ser."}
+      ],
+      "examples": [
+        {"text": "Estoy estudiando para el examen.", "zh": "我正在準備考試。", "en": "I'm studying for the exam."},
+        {"text": "¿Qué estás leyendo?", "zh": "你在看什麼書？", "en": "What are you reading?"},
+        {"text": "Está lloviendo mucho.", "zh": "雨下得很大。", "en": "It's raining hard."}
+      ],
+      "quiz": [
+        {"q": "Los niños están（　）en el parque.", "zh": "孩子們正在公園玩。", "en": "The children are playing in the park.", "options": ["jugando", "jugar", "juegan", "juegando"], "answer": 0},
+        {"q": "Ahora（　）cocinando.", "zh": "我現在正在做飯。", "en": "I'm cooking now.", "options": ["estoy", "soy", "tengo", "hago"], "answer": 0},
+        {"q": "Mi abuelo está（　）.", "zh": "我爺爺在睡覺。", "en": "My grandfather is sleeping.", "options": ["durmiendo", "dormiendo", "dormir", "duerme"], "answer": 0}
+      ]
+    },
+    {
+      "id": "tiempo",
+      "pattern": "hace calor・llueve",
+      "title": {"zh": "天氣的說法", "en": "Talking about the weather"},
+      "form": {"zh": "hace ＋ calor／frío／sol／viento・llueve（下雨）・nieva（下雪）・está nublado（陰天）", "en": "hace + calor / frío / sol / viento · llueve (it rains) · nieva (it snows) · está nublado (it's cloudy)"},
+      "explain": {"zh": "說天氣多半用 hacer 的第三人稱 hace：Hace calor.（天氣很熱。）下雨、下雪有自己的動詞：Llueve.、Nieva.。問天氣：¿Qué tiempo hace?", "en": "Weather mostly uses hace: Hace calor (It's hot). Rain and snow have their own verbs: Llueve, Nieva. To ask: ¿Qué tiempo hace?"},
+      "notes": [
+        {"zh": "calor、frío 是名詞，所以「很熱」是 hace mucho calor，不是 muy calor。", "en": "calor and frío are nouns, so “very hot” is hace mucho calor, not muy calor."}
+      ],
+      "mistakes": [
+        {"wrong": "Es calor hoy.", "right": "Hace calor hoy.", "zh": "天氣的冷熱用 hace。", "en": "Hot and cold weather take hace."},
+        {"wrong": "Hace muy frío.", "right": "Hace mucho frío.", "zh": "frío 在這裡是名詞，用 mucho。", "en": "Here frío is a noun: mucho."}
+      ],
+      "examples": [
+        {"text": "En Taiwán hace mucho calor en verano.", "zh": "台灣夏天很熱。", "en": "It's very hot in Taiwan in summer."},
+        {"text": "Hoy llueve y hace viento.", "zh": "今天下雨又颳風。", "en": "It's raining and windy today."},
+        {"text": "¿Qué tiempo hace en Madrid?", "zh": "馬德里天氣怎麼樣？", "en": "What's the weather like in Madrid?"}
+      ],
+      "quiz": [
+        {"q": "Hoy（　）sol.", "zh": "今天出太陽。", "en": "It's sunny today.", "options": ["hace", "es", "está", "hay"], "answer": 0},
+        {"q": "En invierno hace（　）frío.", "zh": "冬天很冷。", "en": "It's very cold in winter.", "options": ["mucho", "muy", "mucha", "muchos"], "answer": 0},
+        {"q": "Llevo paraguas porque（　）.", "zh": "因為下雨，我帶了傘。", "en": "I've brought an umbrella because it's raining.", "options": ["llueve", "hace lluvia", "es lluvia", "lluve"], "answer": 0}
+      ]
+    },
+    {
+      "id": "tambien_tampoco",
+      "pattern": "también ／ tampoco",
+      "title": {"zh": "también、tampoco：也、也不", "en": "también / tampoco — too, neither"},
+      "form": {"zh": "肯定 → también（也是）・否定 → tampoco（也不）", "en": "agreeing with a positive → también · with a negative → tampoco"},
+      "explain": {"zh": "同意別人肯定的話用 también：—Me gusta el té. —A mí también.（我也是。）同意否定的話用 tampoco：—No como carne. —Yo tampoco.（我也不吃。）", "en": "Agree with a positive with también: —Me gusta el té. —A mí también. Agree with a negative with tampoco: —No como carne. —Yo tampoco."},
+      "notes": [
+        {"zh": "跟 gustar 一起用時說 a mí también／a mí tampoco，不說 yo también。", "en": "With gustar say a mí también / a mí tampoco, not yo también."}
+      ],
+      "mistakes": [
+        {"wrong": "—No hablo francés. —Yo también no.", "right": "—No hablo francés. —Yo tampoco.", "zh": "「也不」要說 tampoco。", "en": "“Me neither” is tampoco."},
+        {"wrong": "—Me gusta bailar. —Yo también.", "right": "—Me gusta bailar. —A mí también.", "zh": "gustar 的回應用 a mí。", "en": "Answering gustar takes a mí."}
+      ],
+      "examples": [
+        {"text": "Yo también soy de Taichung.", "zh": "我也是台中人。", "en": "I'm from Taichung too."},
+        {"text": "—No tengo coche. —Yo tampoco.", "zh": "「我沒有車。」「我也沒有。」", "en": "“I don't have a car.” “Neither do I.”"},
+        {"text": "A mi hermana también le gusta el anime.", "zh": "我妹妹也喜歡動畫。", "en": "My sister likes anime too."}
+      ],
+      "quiz": [
+        {"q": "—No me gusta el frío. —A mí（　）.", "zh": "「我不喜歡冷天。」「我也不喜歡。」", "en": "“I don't like the cold.” “Neither do I.”", "options": ["tampoco", "también", "no", "sí"], "answer": 0},
+        {"q": "—Estudio japonés. —Yo（　）.", "zh": "「我在學日文。」「我也是。」", "en": "“I'm learning Japanese.” “Me too.”", "options": ["también", "tampoco", "no", "nada"], "answer": 0},
+        {"q": "—Me encanta la playa. —（　）también.", "zh": "「我超愛海邊。」「我也是。」", "en": "“I love the beach.” “So do I.”", "options": ["A mí", "Yo", "Me", "Mi"], "answer": 0}
+      ]
+    }
+  ]
+}
