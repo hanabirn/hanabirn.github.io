@@ -231,7 +231,7 @@ def judge(batch, lang, key):
             out = json.loads(res['candidates'][0]['content']['parts'][0]['text'])
             return {o['i']: o for o in out if isinstance(o, dict) and 'i' in o}, um
         except urllib.error.HTTPError as e:
-            if e.code in (400, 403):
+            if e.code in (400, 401, 403):  # 401: the key is refused — stop, retrying only burns the 2-hour limit
                 raise
             time.sleep(15 * (attempt + 1))
         except (KeyError, ValueError, urllib.error.URLError, TimeoutError):
@@ -260,7 +260,7 @@ def second_opinion(data, lang, say, key, model=SECOND_MODEL, think=SECOND_THINK)
             v = json.loads(res['candidates'][0]['content']['parts'][0]['text'])
             return bool(v.get('same')), str(v.get('heard', '')), str(v.get('diff', '')), res.get('usageMetadata', {})
         except urllib.error.HTTPError as e:
-            if e.code in (400, 403):
+            if e.code in (400, 401, 403):  # 401: the key is refused — stop, retrying only burns the 2-hour limit
                 raise
             time.sleep(15 * (attempt + 1))
         except (KeyError, ValueError, urllib.error.URLError, TimeoutError):
