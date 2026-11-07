@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增德文 A2：28 個文法點，包括第三格、雙向介系詞、weil／dass／wenn 副句的語序、war／hatte 和情態動詞的過去式、形容詞字尾、比較級和禮貌的 hätte gern／könnten Sie，每個都有說明、常見錯誤、有錄音的例句和小練習。",
+      'zh-Hans': "语法新增德语 A2：28 个语法点，包括第三格、双向介词、weil／dass／wenn 从句的语序、war／hatte 和情态动词的过去时、形容词词尾、比较级和礼貌的 hätte gern／könnten Sie，每个都有说明、常见错误、带录音的例句和小练习。",
+      en: "Grammar adds German A2: 28 points, including the dative, two-way prepositions, word order after weil / dass / wenn, the past of sein, haben and the modals, adjective endings, comparatives and polite hätte gern / könnten Sie — each with an explanation, common mistakes, recorded examples and a short practice.",
+      ja: "文法にドイツ語 A2 が加わりました。3 格、3・4 格支配の前置詞、weil／dass／wenn の副文の語順、war／hatte と話法の助動詞の過去形、形容詞の語尾、比較級、丁寧な hätte gern／könnten Sie など 28 項目。どれも説明・よくある間違い・音声つき例文・ミニ練習つきです。",
+      ko: "문법에 독일어 A2가 추가됐어요. 3격, 3·4격 지배 전치사, weil/dass/wenn 부문장 어순, war/hatte와 화법조동사의 과거형, 형용사 어미, 비교급, 공손한 hätte gern/könnten Sie 등 28개 항목이고, 모두 설명, 자주 하는 실수, 녹음된 예문, 짧은 연습이 있어요.",
+      ru: "В грамматике появился немецкий A2: 28 тем — дательный падеж, предлоги с двумя падежами, порядок слов после weil / dass / wenn, прошедшее время sein, haben и модальных глаголов, окончания прилагательных, сравнительная степень и вежливые hätte gern / könnten Sie. В каждой есть объяснение, типичные ошибки, озвученные примеры и короткая практика.",
+      fr: "La grammaire accueille l'allemand A2 : 28 points, dont le datif, les prépositions mixtes, l'ordre des mots après weil / dass / wenn, le prétérit de sein, haben et des modaux, les terminaisons des adjectifs, le comparatif et les formules polies hätte gern / könnten Sie — chacun avec une explication, des erreurs fréquentes, des exemples enregistrés et un petit exercice.",
+      es: "La gramática incorpora el alemán A2: 28 puntos, entre ellos el dativo, las preposiciones de doble caso, el orden tras weil / dass / wenn, el pretérito de sein, haben y los modales, las terminaciones de los adjetivos, el comparativo y las fórmulas corteses hätte gern / könnten Sie, cada uno con explicación, errores frecuentes, ejemplos grabados y una pequeña práctica.",
+      de: "Die Grammatik hat jetzt Deutsch A2: 28 Themen, darunter Dativ, Wechselpräpositionen, die Wortstellung nach weil / dass / wenn, das Präteritum von sein, haben und den Modalverben, Adjektivendungen, Komparativ und höfliches hätte gern / könnten Sie – jeweils mit Erklärung, typischen Fehlern, vertonten Beispielen und einer kleinen Übung." },
+    { date: '2026-11-06',
       zh: "文法新增西班牙文 A2：30 個文法點，包括兩種過去式和怎麼分、現在完成式、未來式、條件式、命令式、受詞代名詞（lo、le、se lo）、por 和 para 等，每個都有說明、常見錯誤、有錄音的例句和小練習。",
       'zh-Hans': "语法新增西班牙语 A2：30 个语法点，包括两种过去时和怎么区分、现在完成时、将来时、条件式、命令式、宾语代词（lo、le、se lo）、por 和 para 等，每个都有说明、常见错误、带录音的例句和小练习。",
       en: "Grammar adds Spanish A2: 30 points, including the two past tenses and when to use each, the present perfect, the future, the conditional, commands, object pronouns (lo, le, se lo) and por vs para — each with an explanation, common mistakes, recorded examples and a short practice.",
