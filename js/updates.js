@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增德文 A1：28 個文法點，從 sein／haben、der／die／das、動詞在第二位、第四格到情態動詞、可分動詞和現在完成式，每個都有說明、常見錯誤、有錄音的例句和小練習。",
+      'zh-Hans': "语法新增德语 A1：28 个语法点，从 sein／haben、der／die／das、动词第二位、第四格到情态动词、可分动词和现在完成时，每个都有说明、常见错误、带录音的例句和小练习。",
+      en: "Grammar adds German A1: 28 points, from sein / haben, der / die / das, the verb in second place and the accusative to modal verbs, separable verbs and the perfect tense — each with an explanation, common mistakes, recorded examples and a short practice.",
+      ja: "文法にドイツ語 A1 が加わりました。sein／haben、der／die／das、定動詞第 2 位、4 格から話法の助動詞、分離動詞、現在完了まで 28 項目。どれも説明・よくある間違い・音声つき例文・ミニ練習つきです。",
+      ko: "문법에 독일어 A1이 추가됐어요. sein/haben, der/die/das, 동사 2위, 4격부터 화법조동사, 분리동사, 현재완료까지 28개 항목이고, 모두 설명, 자주 하는 실수, 녹음된 예문, 짧은 연습이 있어요.",
+      ru: "В грамматике появился немецкий A1: 28 тем — от sein / haben, der / die / das, глагола на втором месте и винительного падежа до модальных глаголов, глаголов с отделяемыми приставками и перфекта. В каждой есть объяснение, типичные ошибки, озвученные примеры и короткая практика.",
+      fr: "La grammaire accueille l'allemand A1 : 28 points, de sein / haben, der / die / das, le verbe en deuxième position et l'accusatif jusqu'aux verbes de modalité, aux verbes à particule séparable et au parfait — chacun avec une explication, des erreurs fréquentes, des exemples enregistrés et un petit exercice.",
+      es: "La gramática incorpora el alemán A1: 28 puntos, desde sein / haben, der / die / das, el verbo en segunda posición y el acusativo hasta los verbos modales, los verbos separables y el perfecto, cada uno con explicación, errores frecuentes, ejemplos grabados y una pequeña práctica.",
+      de: "Die Grammatik hat jetzt Deutsch A1: 28 Themen, von sein / haben, der / die / das, dem Verb an Position 2 und dem Akkusativ bis zu Modalverben, trennbaren Verben und dem Perfekt – jeweils mit Erklärung, typischen Fehlern, vertonten Beispielen und einer kleinen Übung." },
+    { date: '2026-11-06',
       zh: "文法新增西班牙文 A1：28 個文法點，從 ser／estar、冠詞、現在式到 gustar、反身動詞和時間的說法，每個都有說明、常見錯誤、有錄音的例句和小練習。",
       'zh-Hans': "语法新增西班牙语 A1：28 个语法点，从 ser／estar、冠词、现在时到 gustar、反身动词和时间的说法，每个都有说明、常见错误、带录音的例句和小练习。",
       en: "Grammar adds Spanish A1: 28 points, from ser / estar, articles and the present tense to gustar, reflexive verbs and telling the time — each with an explanation, common mistakes, recorded examples and a short practice.",

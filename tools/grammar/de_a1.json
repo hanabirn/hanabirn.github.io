@@ -1,0 +1,694 @@
+{
+  "id": "de_a1",
+  "lang": "de",
+  "level": "A1",
+  "order": 1,
+  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "pronomen",
+      "pattern": "ich・du・Sie …",
+      "title": {"zh": "人稱代名詞（主詞）", "en": "Subject pronouns"},
+      "form": {"zh": "ich 我・du 你・er／sie／es 他／她／它・wir 我們・ihr 你們・sie 他們・Sie 您（您們）", "en": "ich I · du you · er / sie / es he / she / it · wir we · ihr you all · sie they · Sie you (polite)"},
+      "explain": {"zh": "德文的主詞不能省略，動詞也會跟著主詞變化。對朋友、家人、小孩說 du（你），對陌生人或在正式場合說 Sie（您）。Sie 永遠大寫，動詞跟 sie（他們）一樣。", "en": "German always needs the subject, and the verb changes with it. Use du with friends, family and children, Sie with strangers and in formal settings. Sie is always capitalised and takes the same verb as sie (they)."},
+      "notes": [
+        {"zh": "sie 小寫可能是「她」或「他們」，看動詞分辨：sie ist（她是）、sie sind（他們是）。", "en": "Lower-case sie is “she” or “they” — the verb tells you: sie ist (she is), sie sind (they are)."},
+        {"zh": "東西也有性別，代名詞要配合：der Tisch → er、die Lampe → sie、das Buch → es。", "en": "Things have a gender too: der Tisch → er, die Lampe → sie, das Buch → es."}
+      ],
+      "mistakes": [
+        {"wrong": "Woher kommen sie, Herr Braun?", "right": "Woher kommen Sie, Herr Braun?", "zh": "稱呼「您」的 Sie 要大寫。", "en": "Polite Sie is capitalised."},
+        {"wrong": "Komme aus Taiwan.", "right": "Ich komme aus Taiwan.", "zh": "德文不能省略主詞。", "en": "German can't drop the subject."}
+      ],
+      "examples": [
+        {"text": "Ich komme aus Taiwan.", "zh": "我來自台灣。", "en": "I come from Taiwan."},
+        {"text": "Sprechen Sie Englisch?", "zh": "您會說英文嗎？", "en": "Do you speak English?"},
+        {"text": "Wir wohnen in Berlin.", "zh": "我們住在柏林。", "en": "We live in Berlin."}
+      ],
+      "quiz": [
+        {"q": "Anna und ich lernen Deutsch. （　）lernen jeden Tag.", "zh": "安娜和我在學德文。我們每天都學。", "en": "Anna and I are learning German. We study every day.", "options": ["Wir", "Ihr", "Sie", "Du"], "answer": 0},
+        {"q": "Frau Müller, haben（　）Zeit?", "zh": "穆勒女士，您有空嗎？", "en": "Mrs Müller, do you have time?", "options": ["Sie", "du", "ihr", "sie"], "answer": 0},
+        {"q": "Das Auto ist neu. （　）ist sehr schnell.", "zh": "這輛車是新的，開起來很快。", "en": "The car is new. It's very fast.", "options": ["Es", "Er", "Sie", "Das"], "answer": 0}
+      ]
+    },
+    {
+      "id": "sein",
+      "pattern": "sein",
+      "title": {"zh": "sein：是", "en": "sein — to be"},
+      "form": {"zh": "ich bin・du bist・er/sie/es ist・wir sind・ihr seid・sie/Sie sind", "en": "ich bin · du bist · er/sie/es ist · wir sind · ihr seid · sie/Sie sind"},
+      "explain": {"zh": "「sein」是最基本的動詞「是」，變化完全不規則，要整組背起來：Ich bin Student.（我是學生。）Das ist mein Bruder.（這是我哥哥。）", "en": "sein (to be) is the most basic verb and completely irregular — learn the set: Ich bin Student (I'm a student), Das ist mein Bruder (This is my brother)."},
+      "notes": [
+        {"zh": "說職業、國籍時不加冠詞：Sie ist Lehrerin.（她是老師。）", "en": "No article before a job or nationality: Sie ist Lehrerin (She's a teacher)."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich bin ein Student.", "right": "Ich bin Student.", "zh": "說身分、職業時不加 ein。", "en": "No ein before a job or status."},
+        {"wrong": "Wir seid müde.", "right": "Wir sind müde.", "zh": "wir 的形是 sind，seid 是 ihr 用的。", "en": "With wir it's sind; seid goes with ihr."}
+      ],
+      "examples": [
+        {"text": "Ich bin Studentin.", "zh": "我是大學生。", "en": "I'm a student."},
+        {"text": "Das ist meine Mutter.", "zh": "這是我媽媽。", "en": "This is my mother."},
+        {"text": "Bist du müde?", "zh": "你累了嗎？", "en": "Are you tired?"}
+      ],
+      "quiz": [
+        {"q": "Ich（　）aus Taipeh.", "zh": "我是台北人。", "en": "I'm from Taipei.", "options": ["bin", "bist", "ist", "sind"], "answer": 0},
+        {"q": "Ihr（　）sehr nett.", "zh": "你們人很好。", "en": "You're very nice.", "options": ["seid", "sind", "ist", "bist"], "answer": 0},
+        {"q": "Mein Vater（　）Arzt.", "zh": "我爸爸是醫生。", "en": "My father is a doctor.", "options": ["ist", "bin", "sind", "bist"], "answer": 0}
+      ]
+    },
+    {
+      "id": "haben",
+      "pattern": "haben",
+      "title": {"zh": "haben：有", "en": "haben — to have"},
+      "form": {"zh": "ich habe・du hast・er/sie/es hat・wir haben・ihr habt・sie/Sie haben", "en": "ich habe · du hast · er/sie/es hat · wir haben · ihr habt · sie/Sie haben"},
+      "explain": {"zh": "「haben」是「有」，du 和 er／sie／es 的形不規則：du hast、er hat。有些感覺也用 haben：Ich habe Hunger.（我餓了。）Ich habe Zeit.（我有空。）", "en": "haben means “to have”; du and er / sie / es are irregular: du hast, er hat. Some feelings use it too: Ich habe Hunger (I'm hungry), Ich habe Zeit (I have time)."},
+      "notes": [
+        {"zh": "說年紀不用 haben，用 sein：Ich bin 20 Jahre alt.", "en": "Age uses sein, not haben: Ich bin 20 Jahre alt."}
+      ],
+      "mistakes": [
+        {"wrong": "Er habt einen Hund.", "right": "Er hat einen Hund.", "zh": "er 的形是 hat。", "en": "With er it's hat."},
+        {"wrong": "Ich habe 20 Jahre.", "right": "Ich bin 20 Jahre alt.", "zh": "年紀要說 sein … alt。", "en": "Age is sein … alt."}
+      ],
+      "examples": [
+        {"text": "Ich habe zwei Schwestern.", "zh": "我有兩個姊妹。", "en": "I have two sisters."},
+        {"text": "Hast du heute Zeit?", "zh": "你今天有空嗎？", "en": "Are you free today?"},
+        {"text": "Wir haben Hunger.", "zh": "我們餓了。", "en": "We're hungry."}
+      ],
+      "quiz": [
+        {"q": "Du（　）eine schöne Wohnung.", "zh": "你的公寓很漂亮。", "en": "You have a nice flat.", "options": ["hast", "habt", "hat", "habe"], "answer": 0},
+        {"q": "Lisa（　）heute Geburtstag.", "zh": "麗莎今天生日。", "en": "It's Lisa's birthday today.", "options": ["hat", "hast", "haben", "ist"], "answer": 0},
+        {"q": "Ich bin 25 Jahre（　）.", "zh": "我二十五歲。", "en": "I'm 25 years old.", "options": ["alt", "habe", "bin", "Jahre"], "answer": 0}
+      ]
+    },
+    {
+      "id": "praesens",
+      "pattern": "-e・-st・-t・-en",
+      "title": {"zh": "規則動詞的現在式", "en": "Present tense of regular verbs"},
+      "form": {"zh": "wohnen → ich wohne・du wohnst・er wohnt・wir wohnen・ihr wohnt・sie/Sie wohnen", "en": "wohnen → ich wohne · du wohnst · er wohnt · wir wohnen · ihr wohnt · sie/Sie wohnen"},
+      "explain": {"zh": "把原形的 -en 去掉，再接上 -e、-st、-t、-en、-t、-en：Ich lerne Deutsch.（我學德文。）Er spielt Gitarre.（他彈吉他。）", "en": "Drop -en from the infinitive and add -e, -st, -t, -en, -t, -en: Ich lerne Deutsch, Er spielt Gitarre."},
+      "notes": [
+        {"zh": "字根以 -t、-d 結尾時要多加 e：du arbeitest、er arbeitet。", "en": "Stems ending in -t or -d add an e: du arbeitest, er arbeitet."},
+        {"zh": "德文的現在式也可以說未來的事：Morgen fahre ich nach Hause.", "en": "The present can also talk about the future: Morgen fahre ich nach Hause."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich lernen Deutsch.", "right": "Ich lerne Deutsch.", "zh": "ich 的字尾是 -e。", "en": "With ich the ending is -e."},
+        {"wrong": "Er arbeitt viel.", "right": "Er arbeitet viel.", "zh": "arbeiten 要多加 e：arbeitet。", "en": "arbeiten adds an e: arbeitet."}
+      ],
+      "examples": [
+        {"text": "Ich wohne in Kaohsiung.", "zh": "我住在高雄。", "en": "I live in Kaohsiung."},
+        {"text": "Was machst du am Wochenende?", "zh": "你週末做什麼？", "en": "What are you doing at the weekend?"},
+        {"text": "Meine Eltern arbeiten in einer Bank.", "zh": "我爸媽在銀行工作。", "en": "My parents work at a bank."}
+      ],
+      "quiz": [
+        {"q": "Wir（　）gern Musik.", "zh": "我們喜歡聽音樂。", "en": "We like listening to music.", "options": ["hören", "hört", "höre", "hörst"], "answer": 0},
+        {"q": "Du（　）jeden Tag Deutsch.", "zh": "你每天都學德文。", "en": "You study German every day.", "options": ["lernst", "lernt", "lernen", "lerne"], "answer": 0},
+        {"q": "Paul（　）in einem Café.", "zh": "保羅在咖啡館工作。", "en": "Paul works in a café.", "options": ["arbeitet", "arbeitt", "arbeiten", "arbeitest"], "answer": 0}
+      ]
+    },
+    {
+      "id": "vokalwechsel",
+      "pattern": "e → i(e)・a → ä",
+      "title": {"zh": "會變母音的動詞", "en": "Verbs that change their vowel"},
+      "form": {"zh": "essen → du isst・er isst　sehen → du siehst・er sieht　fahren → du fährst・er fährt", "en": "essen → du isst · er isst · sehen → du siehst · er sieht · fahren → du fährst · er fährt"},
+      "explain": {"zh": "有些常用動詞只有在 du 和 er／sie／es 時會換母音：e → i（sprechen → spricht）、e → ie（lesen → liest）、a → ä（schlafen → schläft）。其他人稱照規則。", "en": "Some common verbs change their vowel only with du and er / sie / es: e → i (sprechen → spricht), e → ie (lesen → liest), a → ä (schlafen → schläft). The rest are regular."},
+      "notes": [
+        {"zh": "常見的還有：geben（gibt）、nehmen（nimmt）、helfen（hilft）、laufen（läuft）、tragen（trägt）。", "en": "Others: geben (gibt), nehmen (nimmt), helfen (hilft), laufen (läuft), tragen (trägt)."}
+      ],
+      "mistakes": [
+        {"wrong": "Er esst Pizza.", "right": "Er isst Pizza.", "zh": "essen 的 er 形是 isst。", "en": "essen with er is isst."},
+        {"wrong": "Wir fähren nach Köln.", "right": "Wir fahren nach Köln.", "zh": "wir 不換母音。", "en": "wir keeps the a."}
+      ],
+      "examples": [
+        {"text": "Mein Bruder liest gern Comics.", "zh": "我弟弟喜歡看漫畫。", "en": "My brother likes reading comics."},
+        {"text": "Fährst du mit dem Bus?", "zh": "你搭公車嗎？", "en": "Are you going by bus?"},
+        {"text": "Sie spricht drei Sprachen.", "zh": "她會說三種語言。", "en": "She speaks three languages."}
+      ],
+      "quiz": [
+        {"q": "Mein Opa（　）viel.", "zh": "我爺爺很常睡覺。", "en": "My grandpa sleeps a lot.", "options": ["schläft", "schlaft", "schlafen", "schläfst"], "answer": 0},
+        {"q": "（　）du Fleisch?", "zh": "你吃肉嗎？", "en": "Do you eat meat?", "options": ["Isst", "Esst", "Essen", "Esse"], "answer": 0},
+        {"q": "Er（　）einen Film.", "zh": "他在看電影。", "en": "He's watching a film.", "options": ["sieht", "seht", "siehst", "sehen"], "answer": 0}
+      ]
+    },
+    {
+      "id": "artikel",
+      "pattern": "der・die・das",
+      "title": {"zh": "定冠詞：der、die、das", "en": "The definite article: der, die, das"},
+      "form": {"zh": "陽性 der・陰性 die・中性 das・複數一律 die", "en": "masculine der · feminine die · neuter das · plural always die"},
+      "explain": {"zh": "德文名詞有三種性別，冠詞會告訴你是哪一種：der Mann（男人）、die Frau（女人）、das Kind（小孩）。性別常常猜不出來，背單字時要連冠詞一起背。名詞第一個字母一律大寫。", "en": "German nouns have three genders, shown by the article: der Mann, die Frau, das Kind. You often can't guess it, so learn each noun with its article. All nouns start with a capital letter."},
+      "notes": [
+        {"zh": "一些規律：-ung、-heit、-keit 結尾的是 die；-chen 結尾的是 das（das Mädchen）。", "en": "Some patterns: -ung, -heit, -keit are die; -chen is das (das Mädchen)."},
+        {"zh": "複合名詞的性別看最後一個字：die Tür ＋ der Schlüssel → der Türschlüssel。", "en": "A compound takes the gender of its last part: der Türschlüssel."}
+      ],
+      "mistakes": [
+        {"wrong": "der Mädchen", "right": "das Mädchen", "zh": "-chen 結尾的名詞是中性。", "en": "Nouns in -chen are neuter."},
+        {"wrong": "ich habe einen hund.", "right": "Ich habe einen Hund.", "zh": "名詞和句首都要大寫。", "en": "Nouns and the first word are capitalised."}
+      ],
+      "examples": [
+        {"text": "Der Kaffee ist heiß.", "zh": "咖啡很燙。", "en": "The coffee is hot."},
+        {"text": "Die Wohnung ist klein.", "zh": "公寓很小。", "en": "The flat is small."},
+        {"text": "Das Wetter ist schön.", "zh": "天氣很好。", "en": "The weather is nice."}
+      ],
+      "quiz": [
+        {"q": "（　）Zeitung liegt auf dem Tisch.", "zh": "報紙在桌上。", "en": "The newspaper is on the table.", "options": ["Die", "Der", "Das", "Den"], "answer": 0},
+        {"q": "（　）Brötchen ist frisch.", "zh": "小圓麵包很新鮮。", "en": "The bread roll is fresh.", "options": ["Das", "Der", "Die", "Dem"], "answer": 0},
+        {"q": "（　）Kinder spielen im Garten.", "zh": "孩子們在花園玩。", "en": "The children are playing in the garden.", "options": ["Die", "Das", "Der", "Den"], "answer": 0}
+      ]
+    },
+    {
+      "id": "unbestimmt",
+      "pattern": "ein・eine",
+      "title": {"zh": "不定冠詞：ein、eine", "en": "The indefinite article: ein, eine"},
+      "form": {"zh": "陽性 ein・陰性 eine・中性 ein・複數沒有冠詞", "en": "masculine ein · feminine eine · neuter ein · no article in the plural"},
+      "explain": {"zh": "第一次提到、不特定的東西用 ein／eine：Das ist ein Hund.（這是一隻狗。）Ich möchte eine Cola.（我想要一杯可樂。）複數直接說名詞：Ich habe Fragen.", "en": "For something mentioned for the first time or not specific: Das ist ein Hund, Ich möchte eine Cola. In the plural just use the noun: Ich habe Fragen."},
+      "notes": [
+        {"zh": "第一次說 ein Haus，之後再提到就用 das Haus。", "en": "First ein Haus, then the same house is das Haus."}
+      ],
+      "mistakes": [
+        {"wrong": "eine Buch", "right": "ein Buch", "zh": "Buch 是中性，用 ein。", "en": "Buch is neuter: ein."},
+        {"wrong": "Ich habe eine Kinder.", "right": "Ich habe Kinder.", "zh": "複數不加不定冠詞。", "en": "No indefinite article in the plural."}
+      ],
+      "examples": [
+        {"text": "Das ist ein Geschenk für dich.", "zh": "這是給你的禮物。", "en": "This is a present for you."},
+        {"text": "Ich suche eine Apotheke.", "zh": "我在找藥局。", "en": "I'm looking for a chemist's."},
+        {"text": "Hier ist ein Supermarkt.", "zh": "這裡有一間超市。", "en": "There's a supermarket here."}
+      ],
+      "quiz": [
+        {"q": "Das ist（　）Katze.", "zh": "這是一隻貓。", "en": "That's a cat.", "options": ["eine", "ein", "einen", "einer"], "answer": 0},
+        {"q": "Hier ist（　）Fahrrad.", "zh": "這裡有一台腳踏車。", "en": "Here's a bike.", "options": ["ein", "eine", "einen", "einem"], "answer": 0},
+        {"q": "Wir haben（　）Hausaufgaben.", "zh": "我們有作業。", "en": "We have homework.", "options": ["viele", "eine", "ein", "einen"], "answer": 0}
+      ]
+    },
+    {
+      "id": "kein_nicht",
+      "pattern": "kein ／ nicht",
+      "title": {"zh": "否定：kein 和 nicht", "en": "Negation: kein or nicht?"},
+      "form": {"zh": "kein／keine ＋ 名詞（取代 ein 或無冠詞）・nicht 否定動詞、形容詞或其他", "en": "kein / keine + noun (instead of ein or no article) · nicht for verbs, adjectives and the rest"},
+      "explain": {"zh": "否定名詞用 kein，等於「沒有一個」：Ich habe kein Auto.（我沒有車。）其他都用 nicht：Ich komme nicht.（我不來。）Das ist nicht teuer.（這不貴。）", "en": "To negate a noun use kein (“no …”): Ich habe kein Auto. Everything else takes nicht: Ich komme nicht, Das ist nicht teuer."},
+      "notes": [
+        {"zh": "kein 的變化跟 ein 一樣，複數是 keine：Ich habe keine Geschwister.", "en": "kein changes like ein; plural keine: Ich habe keine Geschwister."},
+        {"zh": "有 der／die／das 的名詞用 nicht：Das ist nicht der Bus nach Bonn.", "en": "Nouns with der / die / das take nicht: Das ist nicht der Bus nach Bonn."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich habe nicht ein Auto.", "right": "Ich habe kein Auto.", "zh": "否定 ein ＋ 名詞要用 kein。", "en": "ein + noun becomes kein."},
+        {"wrong": "Ich spreche kein gut.", "right": "Ich spreche nicht gut.", "zh": "否定副詞用 nicht。", "en": "Adverbs take nicht."}
+      ],
+      "examples": [
+        {"text": "Ich trinke keinen Kaffee.", "zh": "我不喝咖啡。", "en": "I don't drink coffee."},
+        {"text": "Heute regnet es nicht.", "zh": "今天沒有下雨。", "en": "It's not raining today."},
+        {"text": "Das ist kein Problem.", "zh": "沒問題。", "en": "That's no problem."}
+      ],
+      "quiz": [
+        {"q": "Ich habe（　）Zeit.", "zh": "我沒有時間。", "en": "I don't have time.", "options": ["keine", "nicht", "kein", "keinen"], "answer": 0},
+        {"q": "Das Essen ist（　）scharf.", "zh": "這道菜不辣。", "en": "The food isn't spicy.", "options": ["nicht", "kein", "keine", "nein"], "answer": 0},
+        {"q": "Er hat（　）Hund.", "zh": "他沒有養狗。", "en": "He doesn't have a dog.", "options": ["keinen", "kein", "nicht", "keine"], "answer": 0}
+      ]
+    },
+    {
+      "id": "plural",
+      "pattern": "-e・-en・-er・-s",
+      "title": {"zh": "名詞的複數", "en": "Plural nouns"},
+      "form": {"zh": "-e（der Tag → die Tage）・-(e)n（die Frau → die Frauen）・-er（das Kind → die Kinder）・-s（das Auto → die Autos）・不變（der Lehrer → die Lehrer）", "en": "-e (Tage) · -(e)n (Frauen) · -er (Kinder) · -s (Autos) · no change (Lehrer)"},
+      "explain": {"zh": "德文複數有好幾種字尾，有時母音還會加變音（der Apfel → die Äpfel）。最好背單字時連複數一起背。不論性別，複數冠詞都是 die。", "en": "German plurals have several endings, sometimes with an umlaut (der Apfel → die Äpfel), so learn each noun's plural with it. Whatever the gender, the plural article is die."},
+      "notes": [
+        {"zh": "大部分陰性名詞加 -(e)n：die Lampe → die Lampen。", "en": "Most feminine nouns add -(e)n: die Lampe → die Lampen."},
+        {"zh": "外來字多半加 -s：das Handy → die Handys。", "en": "Loanwords usually add -s: das Handy → die Handys."}
+      ],
+      "mistakes": [
+        {"wrong": "die Kinds", "right": "die Kinder", "zh": "Kind 的複數是 Kinder。", "en": "Kind's plural is Kinder."},
+        {"wrong": "der Bücher", "right": "die Bücher", "zh": "複數冠詞一律是 die。", "en": "Plural nouns always take die."}
+      ],
+      "examples": [
+        {"text": "Ich habe zwei Brüder.", "zh": "我有兩個哥哥。", "en": "I have two brothers."},
+        {"text": "Die Äpfel sind sehr süß.", "zh": "蘋果很甜。", "en": "The apples are very sweet."},
+        {"text": "Wie viele Studenten sind hier?", "zh": "這裡有幾個學生？", "en": "How many students are here?"}
+      ],
+      "quiz": [
+        {"q": "Ich kaufe zwei（　）.", "zh": "我買兩本書。", "en": "I'm buying two books.", "options": ["Bücher", "Buchs", "Buchen", "Buch"], "answer": 0},
+        {"q": "（　）Tische sind neu.", "zh": "桌子是新的。", "en": "The tables are new.", "options": ["Die", "Der", "Das", "Den"], "answer": 0},
+        {"q": "Wir haben drei（　）.", "zh": "我們有三台車。", "en": "We have three cars.", "options": ["Autos", "Auto", "Autoen", "Äutos"], "answer": 0}
+      ]
+    },
+    {
+      "id": "w_fragen",
+      "pattern": "Wer?・Was?・Wo? …",
+      "title": {"zh": "疑問詞問句", "en": "Questions with a question word"},
+      "form": {"zh": "疑問詞 ＋ 動詞 ＋ 主詞：Wo wohnst du?　Wer 誰・Was 什麼・Wo 哪裡・Woher 從哪裡・Wohin 去哪裡・Wann 什麼時候・Wie 怎麼樣・Warum 為什麼", "en": "question word + verb + subject: Wo wohnst du? · Wer who · Was what · Wo where · Woher where from · Wohin where to · Wann when · Wie how · Warum why"},
+      "explain": {"zh": "疑問詞放第一個，動詞緊接在第二個位置，然後才是主詞：Woher kommst du?（你從哪裡來？）Wie heißen Sie?（您叫什麼名字？）", "en": "The question word comes first, the verb second, then the subject: Woher kommst du?, Wie heißen Sie?"},
+      "notes": [
+        {"zh": "wo 問「在哪裡」，wohin 問「去哪裡」，woher 問「從哪裡」。", "en": "wo asks where something is, wohin where to, woher where from."},
+        {"zh": "問數量：Wie viel kostet das?（多少錢？）Wie alt bist du?（你幾歲？）", "en": "Asking amounts: Wie viel kostet das?, Wie alt bist du?"}
+      ],
+      "mistakes": [
+        {"wrong": "Wo du wohnst?", "right": "Wo wohnst du?", "zh": "動詞要緊跟在疑問詞後面。", "en": "The verb follows the question word straight away."},
+        {"wrong": "Wo gehst du?", "right": "Wohin gehst du?", "zh": "問「去哪裡」要用 wohin。", "en": "“Where to” is wohin."}
+      ],
+      "examples": [
+        {"text": "Wie heißt du?", "zh": "你叫什麼名字？", "en": "What's your name?"},
+        {"text": "Wann beginnt der Kurs?", "zh": "課程什麼時候開始？", "en": "When does the course start?"},
+        {"text": "Warum lernst du Deutsch?", "zh": "你為什麼學德文？", "en": "Why are you learning German?"}
+      ],
+      "quiz": [
+        {"q": "（　）kommen Sie? – Aus Japan.", "zh": "「您從哪裡來？」「從日本。」", "en": "“Where are you from?” “From Japan.”", "options": ["Woher", "Wohin", "Wo", "Wer"], "answer": 0},
+        {"q": "（　）ist das? – Das ist mein Lehrer.", "zh": "「那是誰？」「那是我的老師。」", "en": "“Who's that?” “That's my teacher.”", "options": ["Wer", "Was", "Wie", "Wo"], "answer": 0},
+        {"q": "Wo（　）du?", "zh": "你住在哪裡？", "en": "Where do you live?", "options": ["wohnst", "wohnt", "wohnen", "wohne"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ja_nein",
+      "pattern": "Verb ＋ Subjekt …?",
+      "title": {"zh": "是非問句和 ja／nein／doch", "en": "Yes / no questions and ja, nein, doch"},
+      "form": {"zh": "動詞 ＋ 主詞 ＋ …？：Kommst du mit?　回答：ja・nein・doch（回答否定問句的「是」）", "en": "verb + subject + …?: Kommst du mit? · answers: ja · nein · doch (yes to a negative question)"},
+      "explain": {"zh": "是非問句把動詞放在最前面：Hast du Hunger?（你餓嗎？）如果問句是否定的，要回答「有、是」時不用 ja，而是用 doch：Kommst du nicht? – Doch!（你不來嗎？—會啊！）", "en": "A yes / no question starts with the verb: Hast du Hunger? To say “yes” to a negative question, use doch, not ja: Kommst du nicht? – Doch!"},
+      "notes": [
+        {"zh": "回答否定問句的 nein 是「對，不…」：Hast du keine Zeit? – Nein, leider nicht.", "en": "nein to a negative question agrees: Hast du keine Zeit? – Nein, leider nicht."}
+      ],
+      "mistakes": [
+        {"wrong": "Du hast Zeit?", "right": "Hast du Zeit?", "zh": "是非問句動詞放第一個。", "en": "A yes / no question starts with the verb."},
+        {"wrong": "Isst du kein Fleisch? – Ja, ich esse Fleisch.", "right": "Isst du kein Fleisch? – Doch, ich esse Fleisch.", "zh": "否定問句要回答「有」時用 doch。", "en": "Yes to a negative question is doch."}
+      ],
+      "examples": [
+        {"text": "Sprichst du Japanisch?", "zh": "你會說日文嗎？", "en": "Do you speak Japanese?"},
+        {"text": "Ist das Ihr Koffer?", "zh": "這是您的行李箱嗎？", "en": "Is this your suitcase?"},
+        {"text": "Hast du keinen Hunger? – Doch!", "zh": "「你不餓嗎？」「餓啊！」", "en": "“Aren't you hungry?” “Yes, I am!”"}
+      ],
+      "quiz": [
+        {"q": "（　）du heute Abend Zeit?", "zh": "你今天晚上有空嗎？", "en": "Are you free this evening?", "options": ["Hast", "Hat", "Haben", "Habt"], "answer": 0},
+        {"q": "Bist du nicht müde? –（　）, sehr!", "zh": "「你不累嗎？」「累啊，很累！」", "en": "“Aren't you tired?” “Yes, very!”", "options": ["Doch", "Ja", "Nein", "Nicht"], "answer": 0},
+        {"q": "Wohnen Sie in München? –（　）, in Hamburg.", "zh": "「您住在慕尼黑嗎？」「不是，在漢堡。」", "en": "“Do you live in Munich?” “No, in Hamburg.”", "options": ["Nein", "Doch", "Ja", "Kein"], "answer": 0}
+      ]
+    },
+    {
+      "id": "verbposition",
+      "pattern": "動詞放第二位",
+      "title": {"zh": "動詞永遠在第二個位置", "en": "The verb comes second"},
+      "form": {"zh": "第 1 位（主詞、時間、地點…）＋ 動詞 ＋ 其他：Heute gehe ich ins Kino.", "en": "position 1 (subject, time, place …) + verb + the rest: Heute gehe ich ins Kino."},
+      "explain": {"zh": "直述句裡，變化好的動詞一定在第二個位置。第一個位置不一定是主詞，可以是時間或地點，這時主詞就移到動詞後面：Ich lerne heute. → Heute lerne ich.", "en": "In a statement the conjugated verb is always in second place. Position 1 needn't be the subject — it can be a time or place, and then the subject moves after the verb: Ich lerne heute → Heute lerne ich."},
+      "notes": [
+        {"zh": "「第二個位置」指第二個句子成分，不是第二個字：Am Samstag spiele ich Fußball.", "en": "Second place means the second part of the sentence, not the second word: Am Samstag spiele ich Fußball."}
+      ],
+      "mistakes": [
+        {"wrong": "Morgen ich fahre nach Berlin.", "right": "Morgen fahre ich nach Berlin.", "zh": "時間放第一位時，動詞還是第二位，主詞要移到後面。", "en": "With the time first, the verb stays second and the subject follows it."},
+        {"wrong": "Am Abend ich koche.", "right": "Am Abend koche ich.", "zh": "動詞要在第二位。", "en": "The verb goes second."}
+      ],
+      "examples": [
+        {"text": "Am Sonntag besuche ich meine Oma.", "zh": "星期天我去看奶奶。", "en": "On Sunday I'm visiting my grandma."},
+        {"text": "In Taiwan ist es im Sommer sehr heiß.", "zh": "台灣夏天很熱。", "en": "In Taiwan it's very hot in summer."},
+        {"text": "Jetzt habe ich keine Zeit.", "zh": "我現在沒空。", "en": "I don't have time now."}
+      ],
+      "quiz": [
+        {"q": "Heute Abend（　）fern.", "zh": "我今天晚上看電視。", "en": "I'm watching TV this evening.", "options": ["sehe ich", "ich sehe", "sehen ich", "ich sehen"], "answer": 0},
+        {"q": "Am Montag（　）nach Wien.", "zh": "我們星期一去維也納。", "en": "We're going to Vienna on Monday.", "options": ["fahren wir", "wir fahren", "fahrt wir", "wir fahrt"], "answer": 0},
+        {"q": "Im Park（　）viele Kinder.", "zh": "公園裡有很多小孩在玩。", "en": "Lots of children are playing in the park.", "options": ["spielen", "spielt", "Kinder spielen", "spielen sie"], "answer": 0}
+      ]
+    },
+    {
+      "id": "akkusativ",
+      "pattern": "den・einen",
+      "title": {"zh": "受詞（第四格）：den、einen", "en": "The accusative: den, einen"},
+      "form": {"zh": "只有陽性會變：der → den・ein → einen・kein → keinen　die、das、複數不變", "en": "only masculine changes: der → den · ein → einen · kein → keinen · die, das and plurals stay"},
+      "explain": {"zh": "動作的對象（受詞）用第四格。好消息是只有陽性名詞的冠詞會變：Ich sehe den Mann.（我看到那個男人。）Ich kaufe einen Tisch.（我買一張桌子。）陰性、中性和複數都跟主詞一樣。", "en": "The object of an action is in the accusative. Only masculine articles change: Ich sehe den Mann, Ich kaufe einen Tisch. Feminine, neuter and plural stay as they are."},
+      "notes": [
+        {"zh": "很多動詞都接第四格：haben、kaufen、sehen、brauchen、möchten、es gibt。", "en": "Many verbs take it: haben, kaufen, sehen, brauchen, möchten, es gibt."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich habe ein Bruder.", "right": "Ich habe einen Bruder.", "zh": "Bruder 是陽性受詞，ein 要變 einen。", "en": "Bruder is a masculine object: einen."},
+        {"wrong": "Ich kaufe einen Lampe.", "right": "Ich kaufe eine Lampe.", "zh": "Lampe 是陰性，不會變。", "en": "Lampe is feminine and doesn't change."}
+      ],
+      "examples": [
+        {"text": "Ich brauche einen Stift.", "zh": "我需要一支筆。", "en": "I need a pen."},
+        {"text": "Siehst du den Bus?", "zh": "你看到公車了嗎？", "en": "Can you see the bus?"},
+        {"text": "Wir nehmen das Zimmer.", "zh": "我們要這個房間。", "en": "We'll take the room."}
+      ],
+      "quiz": [
+        {"q": "Ich möchte（　）Tee, bitte.", "zh": "我想要一杯茶。", "en": "I'd like a tea, please.", "options": ["einen", "ein", "eine", "einem"], "answer": 0},
+        {"q": "Kennst du（　）Lehrer?", "zh": "你認識那位老師嗎？", "en": "Do you know the teacher?", "options": ["den", "der", "dem", "das"], "answer": 0},
+        {"q": "Ich kaufe（　）Jacke.", "zh": "我買一件外套。", "en": "I'm buying a jacket.", "options": ["eine", "einen", "ein", "einer"], "answer": 0}
+      ]
+    },
+    {
+      "id": "possessiv",
+      "pattern": "mein・dein・sein …",
+      "title": {"zh": "所有格：我的、你的", "en": "Possessives: mein, dein …"},
+      "form": {"zh": "mein 我的・dein 你的・sein 他的／它的・ihr 她的・unser 我們的・euer 你們的・ihr 他們的・Ihr 您的　陰性、複數加 -e：meine", "en": "mein my · dein your · sein his / its · ihr her · unser our · euer your (pl.) · ihr their · Ihr your (polite) · feminine and plural add -e: meine"},
+      "explain": {"zh": "所有格的字尾跟 ein 一樣變化：mein Vater、meine Mutter、mein Kind、meine Eltern。當受詞時，陽性要變成 meinen：Ich besuche meinen Opa.", "en": "Possessives take the same endings as ein: mein Vater, meine Mutter, mein Kind, meine Eltern. As an object, masculine becomes meinen: Ich besuche meinen Opa."},
+      "notes": [
+        {"zh": "ihr 可以是「她的」或「他們的」，大寫的 Ihr 是「您的」。", "en": "ihr is “her” or “their”; capitalised Ihr is polite “your”."}
+      ],
+      "mistakes": [
+        {"wrong": "mein Schwester", "right": "meine Schwester", "zh": "Schwester 是陰性，要加 -e。", "en": "Schwester is feminine: meine."},
+        {"wrong": "Ich liebe mein Hund.", "right": "Ich liebe meinen Hund.", "zh": "陽性受詞要用 meinen。", "en": "A masculine object needs meinen."}
+      ],
+      "examples": [
+        {"text": "Mein Bruder wohnt in Tainan.", "zh": "我哥哥住在台南。", "en": "My brother lives in Tainan."},
+        {"text": "Wie ist Ihre Telefonnummer?", "zh": "您的電話號碼是多少？", "en": "What's your phone number?"},
+        {"text": "Unsere Kinder gehen schon zur Schule.", "zh": "我們的孩子已經上學了。", "en": "Our children already go to school."}
+      ],
+      "quiz": [
+        {"q": "Das ist（　）Freundin Sara.", "zh": "這是我的朋友莎拉。", "en": "This is my friend Sara.", "options": ["meine", "mein", "meinen", "meiner"], "answer": 0},
+        {"q": "Paul sucht（　）Schlüssel.", "zh": "保羅在找他的鑰匙。", "en": "Paul is looking for his key.", "options": ["seinen", "sein", "seiner", "ihren"], "answer": 0},
+        {"q": "Frau Wang, ist das（　）Tasche?", "zh": "王女士，這是您的包包嗎？", "en": "Mrs Wang, is this your bag?", "options": ["Ihre", "deine", "Ihr", "eure"], "answer": 0}
+      ]
+    },
+    {
+      "id": "es_gibt",
+      "pattern": "es gibt",
+      "title": {"zh": "es gibt：有（存在）", "en": "es gibt — there is, there are"},
+      "form": {"zh": "es gibt ＋ 第四格（單複數都一樣）", "en": "es gibt + accusative (the same for singular and plural)"},
+      "explain": {"zh": "說「某處有某樣東西」用 es gibt，後面的名詞用第四格：Hier gibt es einen Park.（這裡有一座公園。）Es gibt viele Restaurants.（有很多餐廳。）", "en": "To say something exists somewhere use es gibt, with the noun in the accusative: Hier gibt es einen Park, Es gibt viele Restaurants."},
+      "notes": [
+        {"zh": "問「有沒有」：Gibt es hier ein Café?", "en": "Asking: Gibt es hier ein Café?"},
+        {"zh": "es gibt 不會變成複數，永遠是 gibt。", "en": "es gibt never becomes plural: always gibt."}
+      ],
+      "mistakes": [
+        {"wrong": "Es gibt ein Bahnhof hier.", "right": "Es gibt einen Bahnhof hier.", "zh": "es gibt 後面用第四格，陽性是 einen。", "en": "es gibt takes the accusative: einen."},
+        {"wrong": "Es geben viele Leute.", "right": "Es gibt viele Leute.", "zh": "複數也說 es gibt。", "en": "Plurals still take es gibt."}
+      ],
+      "examples": [
+        {"text": "In meiner Straße gibt es eine Bäckerei.", "zh": "我家那條街上有一間麵包店。", "en": "There's a bakery on my street."},
+        {"text": "Gibt es hier WLAN?", "zh": "這裡有 Wi-Fi 嗎？", "en": "Is there Wi-Fi here?"},
+        {"text": "Heute gibt es Fisch.", "zh": "今天吃魚。", "en": "There's fish today."}
+      ],
+      "quiz": [
+        {"q": "Im Dorf（　）es keinen Supermarkt.", "zh": "村子裡沒有超市。", "en": "There's no supermarket in the village.", "options": ["gibt", "geben", "ist", "hat"], "answer": 0},
+        {"q": "Es gibt hier（　）Kino.", "zh": "這裡有一間電影院。", "en": "There's a cinema here.", "options": ["ein", "einen", "eine", "einem"], "answer": 0},
+        {"q": "Gibt es（　）Bus zum Flughafen?", "zh": "有到機場的公車嗎？", "en": "Is there a bus to the airport?", "options": ["einen", "ein", "eine", "der"], "answer": 0}
+      ]
+    },
+    {
+      "id": "koennen",
+      "pattern": "können ＋ 原形",
+      "title": {"zh": "情態動詞 können：會、能", "en": "Modal verb können — can"},
+      "form": {"zh": "ich kann・du kannst・er kann・wir können・ihr könnt・sie/Sie können ＋ 句尾的動詞原形", "en": "ich kann · du kannst · er kann · wir können · ihr könnt · sie/Sie können + infinitive at the end"},
+      "explain": {"zh": "情態動詞放在第二位，真正的動作用原形放到句子最後面：Ich kann gut schwimmen.（我很會游泳。）Kannst du mir helfen?（你可以幫我嗎？）", "en": "The modal goes second and the main verb goes to the end in the infinitive: Ich kann gut schwimmen, Kannst du mir helfen?"},
+      "notes": [
+        {"zh": "ich 和 er／sie／es 的形一樣，沒有字尾：ich kann、er kann。", "en": "ich and er / sie / es are the same, with no ending: ich kann, er kann."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich kann spreche Deutsch.", "right": "Ich kann Deutsch sprechen.", "zh": "第二個動詞用原形，放句尾。", "en": "The second verb is an infinitive at the end."},
+        {"wrong": "Er kannt gut kochen.", "right": "Er kann gut kochen.", "zh": "er 的形是 kann，沒有 -t。", "en": "With er it's kann, no -t."}
+      ],
+      "examples": [
+        {"text": "Kannst du Gitarre spielen?", "zh": "你會彈吉他嗎？", "en": "Can you play the guitar?"},
+        {"text": "Hier kann man gut essen.", "zh": "這裡的東西很好吃。", "en": "You can eat well here."},
+        {"text": "Heute kann ich nicht kommen.", "zh": "我今天不能來。", "en": "I can't come today."}
+      ],
+      "quiz": [
+        {"q": "（　）Sie das bitte wiederholen?", "zh": "可以請您再說一次嗎？", "en": "Could you repeat that, please?", "options": ["Können", "Kann", "Kannst", "Könnt"], "answer": 0},
+        {"q": "Mein Sohn kann schon（　）.", "zh": "我兒子已經會讀書了。", "en": "My son can already read.", "options": ["lesen", "liest", "lest", "gelesen"], "answer": 0},
+        {"q": "Du（　）sehr gut tanzen.", "zh": "你很會跳舞。", "en": "You can dance really well.", "options": ["kannst", "kann", "könnt", "können"], "answer": 0}
+      ]
+    },
+    {
+      "id": "modalverben",
+      "pattern": "müssen・wollen・möchten",
+      "title": {"zh": "müssen、wollen、möchten：必須、想要", "en": "müssen, wollen, möchten — must, want, would like"},
+      "form": {"zh": "ich muss・du musst・er muss … ／ ich will・du willst・er will … ／ ich möchte・du möchtest・er möchte …", "en": "ich muss · du musst · er muss … / ich will · du willst · er will … / ich möchte · du möchtest · er möchte …"},
+      "explain": {"zh": "müssen 是「必須」，wollen 是「想要、打算」，möchten 是比較客氣的「想要」。用法跟 können 一樣：情態動詞第二位，原形放最後：Ich muss heute arbeiten.（我今天得上班。）", "en": "müssen is “have to”, wollen “want to”, möchten the polite “would like”. They work like können: modal second, infinitive last: Ich muss heute arbeiten."},
+      "notes": [
+        {"zh": "點餐、買東西常說 Ich möchte …，比 Ich will … 有禮貌。", "en": "Ordering and shopping use Ich möchte …, politer than Ich will …"},
+        {"zh": "nicht müssen 是「不必」：Du musst nicht kommen.", "en": "nicht müssen means “don't have to”: Du musst nicht kommen."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich muss zu arbeiten.", "right": "Ich muss arbeiten.", "zh": "情態動詞後面不加 zu。", "en": "No zu after a modal."},
+        {"wrong": "Er möchtet ein Eis.", "right": "Er möchte ein Eis.", "zh": "er 的形是 möchte。", "en": "With er it's möchte."}
+      ],
+      "examples": [
+        {"text": "Ich möchte einen Kaffee, bitte.", "zh": "我要一杯咖啡，謝謝。", "en": "A coffee, please."},
+        {"text": "Wir müssen morgen früh aufstehen.", "zh": "我們明天得早起。", "en": "We have to get up early tomorrow."},
+        {"text": "Willst du mit ins Kino kommen?", "zh": "你要一起去看電影嗎？", "en": "Do you want to come to the cinema?"}
+      ],
+      "quiz": [
+        {"q": "Du（　）mehr Wasser trinken.", "zh": "你得多喝水。", "en": "You have to drink more water.", "options": ["musst", "muss", "müsst", "müssen"], "answer": 0},
+        {"q": "Was（　）Sie trinken?", "zh": "您想喝點什麼？", "en": "What would you like to drink?", "options": ["möchten", "möchte", "möchtest", "möchtet"], "answer": 0},
+        {"q": "Lea will Ärztin（　）.", "zh": "莉亞想當醫生。", "en": "Lea wants to be a doctor.", "options": ["werden", "wird", "zu werden", "wirst"], "answer": 0}
+      ]
+    },
+    {
+      "id": "trennbar",
+      "pattern": "aufstehen → ich stehe … auf",
+      "title": {"zh": "可分動詞", "en": "Separable verbs"},
+      "form": {"zh": "前綴 ＋ 動詞：auf|stehen → Ich stehe um 7 Uhr auf.", "en": "prefix + verb: auf|stehen → Ich stehe um 7 Uhr auf."},
+      "explain": {"zh": "有些動詞前面有可分開的前綴（auf-、an-、ein-、aus-、mit-、fern-…）。在句子裡，動詞放第二位，前綴跑到句子最後面：einkaufen → Ich kaufe heute ein.（我今天去買東西。）", "en": "Some verbs have a prefix that splits off (auf-, an-, ein-, aus-, mit-, fern- …). The verb goes second and the prefix goes to the end: einkaufen → Ich kaufe heute ein."},
+      "notes": [
+        {"zh": "跟情態動詞一起用時，原形不分開：Ich muss früh aufstehen.", "en": "With a modal the infinitive stays whole: Ich muss früh aufstehen."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich aufstehe um sieben.", "right": "Ich stehe um sieben auf.", "zh": "前綴要分開放到句尾。", "en": "The prefix moves to the end."},
+        {"wrong": "Ich rufe an dich.", "right": "Ich rufe dich an.", "zh": "前綴 an 放在最後面。", "en": "The prefix an goes last."}
+      ],
+      "examples": [
+        {"text": "Der Zug kommt um acht Uhr an.", "zh": "火車八點到。", "en": "The train arrives at eight."},
+        {"text": "Am Samstag kaufe ich ein.", "zh": "我星期六去買東西。", "en": "I go shopping on Saturday."},
+        {"text": "Siehst du oft fern?", "zh": "你常看電視嗎？", "en": "Do you often watch TV?"}
+      ],
+      "quiz": [
+        {"q": "Ich（　）dich morgen an.", "zh": "我明天打電話給你。", "en": "I'll call you tomorrow.", "options": ["rufe", "anrufe", "rufen", "ruft"], "answer": 0},
+        {"q": "Wann stehst du（　）?", "zh": "你幾點起床？", "en": "When do you get up?", "options": ["auf", "an", "aus", "ein"], "answer": 0},
+        {"q": "Ich muss heute（　）.", "zh": "我今天得去買東西。", "en": "I have to go shopping today.", "options": ["einkaufen", "kaufe ein", "ein kaufen", "einkaufe"], "answer": 0}
+      ]
+    },
+    {
+      "id": "imperativ",
+      "pattern": "Komm!・Kommen Sie!",
+      "title": {"zh": "命令式：請…、…吧", "en": "The imperative"},
+      "form": {"zh": "du：去掉 -st（du kommst → Komm!）・ihr：跟現在式一樣（Kommt!）・Sie：動詞 ＋ Sie（Kommen Sie!）", "en": "du: drop -st (du kommst → Komm!) · ihr: like the present (Kommt!) · Sie: verb + Sie (Kommen Sie!)"},
+      "explain": {"zh": "請別人做事時動詞放最前面。對 du 用 du 形去掉 -st 和 du：Hilf mir!（幫我！）對 Sie 說 Warten Sie bitte.（請您稍等。）加上 bitte 比較有禮貌。", "en": "To ask someone to do something, put the verb first. For du, take the du form without -st and without du: Hilf mir! For Sie: Warten Sie bitte. Add bitte to be polite."},
+      "notes": [
+        {"zh": "換母音的 e → i 動詞保留變化：du gibst → Gib!；a → ä 不保留：du fährst → Fahr!", "en": "e → i verbs keep the change (du gibst → Gib!); a → ä verbs don't (du fährst → Fahr!)."},
+        {"zh": "sein 的命令式不規則：Sei ruhig!、Seien Sie pünktlich!", "en": "sein is irregular: Sei ruhig!, Seien Sie pünktlich!"}
+      ],
+      "mistakes": [
+        {"wrong": "Kommst her!", "right": "Komm her!", "zh": "du 的命令式要去掉 -st。", "en": "The du imperative drops -st."},
+        {"wrong": "Sie warten bitte!", "right": "Warten Sie bitte!", "zh": "Sie 的命令式動詞放第一個。", "en": "The Sie imperative starts with the verb."}
+      ],
+      "examples": [
+        {"text": "Mach bitte das Fenster zu!", "zh": "請把窗戶關起來！", "en": "Please close the window!"},
+        {"text": "Nehmen Sie bitte Platz.", "zh": "請坐。", "en": "Please take a seat."},
+        {"text": "Kinder, seid leise!", "zh": "孩子們，安靜一點！", "en": "Children, be quiet!"}
+      ],
+      "quiz": [
+        {"q": "（　）mir bitte das Salz!", "zh": "請把鹽遞給我！", "en": "Pass me the salt, please!", "options": ["Gib", "Gibst", "Geb", "Gebt du"], "answer": 0},
+        {"q": "Frau Schmidt,（　）bitte hier.", "zh": "施密特女士，請在這裡簽名。", "en": "Mrs Schmidt, please sign here.", "options": ["unterschreiben Sie", "Sie unterschreiben", "unterschreib", "unterschreibst"], "answer": 0},
+        {"q": "（　）nicht so laut, Max!", "zh": "麥克斯，別那麼大聲！", "en": "Don't be so loud, Max!", "options": ["Sei", "Bist", "Sein", "Seid"], "answer": 0}
+      ]
+    },
+    {
+      "id": "gern",
+      "pattern": "gern・lieber・am liebsten",
+      "title": {"zh": "gern：喜歡做…", "en": "gern — to like doing"},
+      "form": {"zh": "動詞 ＋ gern（喜歡）・lieber（比較喜歡）・am liebsten（最喜歡）", "en": "verb + gern (like) · lieber (prefer) · am liebsten (like most)"},
+      "explain": {"zh": "德文說「喜歡做某事」，是在動詞後面加 gern：Ich schwimme gern.（我喜歡游泳。）比較用 lieber，最喜歡用 am liebsten：Ich trinke lieber Tee.（我比較喜歡喝茶。）", "en": "To say you like doing something, add gern after the verb: Ich schwimme gern. Compare with lieber, the favourite with am liebsten: Ich trinke lieber Tee."},
+      "notes": [
+        {"zh": "否定是 nicht gern：Ich koche nicht gern.", "en": "Negative: nicht gern: Ich koche nicht gern."},
+        {"zh": "喜歡某樣東西也可以用 mögen：Ich mag Katzen.", "en": "For liking a thing you can use mögen: Ich mag Katzen."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich gern lese.", "right": "Ich lese gern.", "zh": "gern 放在動詞後面。", "en": "gern goes after the verb."},
+        {"wrong": "Ich trinke mehr gern Saft.", "right": "Ich trinke lieber Saft.", "zh": "gern 的比較級是 lieber。", "en": "The comparative of gern is lieber."}
+      ],
+      "examples": [
+        {"text": "Ich spiele gern Videospiele.", "zh": "我喜歡打電動。", "en": "I like playing video games."},
+        {"text": "Isst du lieber Reis oder Nudeln?", "zh": "你比較喜歡吃飯還是麵？", "en": "Do you prefer rice or noodles?"},
+        {"text": "Am liebsten reise ich nach Japan.", "zh": "我最喜歡去日本旅行。", "en": "Most of all I like travelling to Japan."}
+      ],
+      "quiz": [
+        {"q": "Meine Schwester tanzt sehr（　）.", "zh": "我妹妹很喜歡跳舞。", "en": "My sister really likes dancing.", "options": ["gern", "lieber", "liebsten", "mag"], "answer": 0},
+        {"q": "Ich trinke Tee（　）als Kaffee.", "zh": "比起咖啡，我比較喜歡喝茶。", "en": "I prefer tea to coffee.", "options": ["lieber", "gern", "am liebsten", "mehr gern"], "answer": 0},
+        {"q": "（　）esse ich Pizza.", "zh": "我最喜歡吃披薩。", "en": "Pizza is my favourite food.", "options": ["Am liebsten", "Liebsten", "Am lieber", "Gernsten"], "answer": 0}
+      ]
+    },
+    {
+      "id": "uhrzeit",
+      "pattern": "Es ist … Uhr・um … Uhr",
+      "title": {"zh": "時間的說法", "en": "Telling the time"},
+      "form": {"zh": "Wie spät ist es? – Es ist drei Uhr.　Viertel nach（過十五分）・halb vier（三點半）・Viertel vor（差十五分）　在幾點：um", "en": "Wie spät ist es? – Es ist drei Uhr. · Viertel nach (quarter past) · halb vier (half past three) · Viertel vor (quarter to) · at: um"},
+      "explain": {"zh": "問時間說 Wie spät ist es? 或 Wie viel Uhr ist es? 注意「halb」是「差半小時到下一個整點」：halb vier 是三點半，不是四點半。「在幾點」用 um：Der Film beginnt um acht.", "en": "Ask Wie spät ist es? or Wie viel Uhr ist es? Careful: halb means half an hour before the next hour, so halb vier is 3:30. “At” a time is um: Der Film beginnt um acht."},
+      "notes": [
+        {"zh": "火車、廣播用 24 小時制：Der Zug fährt um 18:45 Uhr.（achtzehn Uhr fünfundvierzig）", "en": "Timetables use the 24-hour clock: um 18:45 Uhr (achtzehn Uhr fünfundvierzig)."}
+      ],
+      "mistakes": [
+        {"wrong": "3:30 = halb drei", "right": "3:30 = halb vier", "zh": "halb 是往後一個整點算：3:30 是 halb vier。", "en": "halb counts towards the next hour: 3:30 is halb vier."},
+        {"wrong": "Der Kurs beginnt am neun Uhr.", "right": "Der Kurs beginnt um neun Uhr.", "zh": "幾點用 um。", "en": "Clock times take um."}
+      ],
+      "examples": [
+        {"text": "Es ist Viertel nach zwei.", "zh": "現在兩點十五分。", "en": "It's quarter past two."},
+        {"text": "Um wie viel Uhr isst du zu Mittag?", "zh": "你幾點吃午餐？", "en": "What time do you have lunch?"},
+        {"text": "Der Laden macht um zehn Uhr auf.", "zh": "店十點開門。", "en": "The shop opens at ten."}
+      ],
+      "quiz": [
+        {"q": "Es ist 7:30 Uhr. Es ist（　）acht.", "zh": "現在七點半。", "en": "It's half past seven.", "options": ["halb", "Viertel", "nach", "vor"], "answer": 0},
+        {"q": "Das Konzert beginnt（　）20 Uhr.", "zh": "音樂會晚上八點開始。", "en": "The concert starts at 8 p.m.", "options": ["um", "am", "im", "an"], "answer": 0},
+        {"q": "Es ist 9:45 Uhr. Es ist Viertel（　）zehn.", "zh": "現在九點四十五分。", "en": "It's quarter to ten.", "options": ["vor", "nach", "halb", "um"], "answer": 0}
+      ]
+    },
+    {
+      "id": "zeitpraep",
+      "pattern": "um・am・im",
+      "title": {"zh": "時間介系詞 um、am、im", "en": "Time prepositions: um, am, im"},
+      "form": {"zh": "um ＋ 時刻（um 8 Uhr）・am ＋ 星期、日期、一天的時段（am Montag、am Abend）・im ＋ 月份、季節（im Mai、im Winter）", "en": "um + clock time (um 8 Uhr) · am + day, date, part of day (am Montag, am Abend) · im + month, season (im Mai, im Winter)"},
+      "explain": {"zh": "說「在什麼時候」，要依時間單位選介系詞：幾點用 um，星期幾和早晚用 am，月份和季節用 im：Ich habe am Freitag um drei Uhr einen Termin.", "en": "Choose the preposition by the kind of time: um for clock times, am for days and parts of the day, im for months and seasons: Ich habe am Freitag um drei Uhr einen Termin."},
+      "notes": [
+        {"zh": "例外：in der Nacht（在晚上、夜裡）。", "en": "Exception: in der Nacht (at night)."},
+        {"zh": "說年份不加介系詞：Ich bin 2005 geboren.", "en": "Years need no preposition: Ich bin 2005 geboren."}
+      ],
+      "mistakes": [
+        {"wrong": "im Montag", "right": "am Montag", "zh": "星期幾用 am。", "en": "Days take am."},
+        {"wrong": "am Juli", "right": "im Juli", "zh": "月份用 im。", "en": "Months take im."}
+      ],
+      "examples": [
+        {"text": "Am Wochenende schlafe ich lange.", "zh": "週末我都睡很晚。", "en": "At the weekend I sleep in."},
+        {"text": "Im Sommer fahren wir ans Meer.", "zh": "我們夏天去海邊。", "en": "In summer we go to the seaside."},
+        {"text": "Der Unterricht beginnt um halb neun.", "zh": "課八點半開始。", "en": "Lessons start at half past eight."}
+      ],
+      "quiz": [
+        {"q": "Mein Geburtstag ist（　）Oktober.", "zh": "我的生日在十月。", "en": "My birthday is in October.", "options": ["im", "am", "um", "an"], "answer": 0},
+        {"q": "（　）Morgen trinke ich Tee.", "zh": "我早上喝茶。", "en": "In the morning I drink tea.", "options": ["Am", "Im", "Um", "In"], "answer": 0},
+        {"q": "Wir treffen uns（　）sechs Uhr.", "zh": "我們六點見。", "en": "We're meeting at six.", "options": ["um", "am", "im", "in"], "answer": 0}
+      ]
+    },
+    {
+      "id": "dativ_praep",
+      "pattern": "mit・bei・zu・von・aus・nach",
+      "title": {"zh": "接第三格的介系詞", "en": "Prepositions with the dative"},
+      "form": {"zh": "mit、bei、zu、von、aus、nach、seit ＋ 第三格：dem（陽、中）・der（陰）・den …n（複數）　einem・einer", "en": "mit, bei, zu, von, aus, nach, seit + dative: dem (m., n.) · der (f.) · den …n (pl.) · einem · einer"},
+      "explain": {"zh": "這幾個介系詞後面一定接第三格：Ich fahre mit dem Bus.（我搭公車。）Ich wohne bei meiner Tante.（我住在阿姨家。）縮寫：zu dem → zum、zu der → zur、von dem → vom、bei dem → beim。", "en": "These prepositions always take the dative: Ich fahre mit dem Bus, Ich wohne bei meiner Tante. Short forms: zum, zur, vom, beim."},
+      "notes": [
+        {"zh": "去城市、國家用 nach（nach Berlin），去人家或地方用 zu（zum Arzt）；回家是 nach Hause，在家是 zu Hause。", "en": "To towns and countries: nach (nach Berlin); to people and places: zu (zum Arzt); home is nach Hause, at home zu Hause."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich fahre mit der Zug.", "right": "Ich fahre mit dem Zug.", "zh": "Zug 是陽性，第三格是 dem。", "en": "Zug is masculine: dem."},
+        {"wrong": "Ich gehe nach Supermarkt.", "right": "Ich gehe zum Supermarkt.", "zh": "去店家、地方用 zu。", "en": "To a shop or place: zu."}
+      ],
+      "examples": [
+        {"text": "Ich fahre mit dem Fahrrad zur Arbeit.", "zh": "我騎腳踏車上班。", "en": "I cycle to work."},
+        {"text": "Kommst du aus Taichung?", "zh": "你是台中人嗎？", "en": "Are you from Taichung?"},
+        {"text": "Nach dem Essen gehen wir spazieren.", "zh": "吃完飯我們去散步。", "en": "After the meal we go for a walk."}
+      ],
+      "quiz": [
+        {"q": "Ich gehe heute（　）Arzt.", "zh": "我今天要去看醫生。", "en": "I'm going to the doctor today.", "options": ["zum", "nach", "zur", "bei"], "answer": 0},
+        {"q": "Sie wohnt bei（　）Eltern.", "zh": "她住在爸媽家。", "en": "She lives with her parents.", "options": ["ihren", "ihre", "ihr", "ihrem"], "answer": 0},
+        {"q": "Wir fahren morgen（　）Frankfurt.", "zh": "我們明天去法蘭克福。", "en": "We're going to Frankfurt tomorrow.", "options": ["nach", "zu", "zum", "bei"], "answer": 0}
+      ]
+    },
+    {
+      "id": "wo_dativ",
+      "pattern": "in・an・auf ＋ 第三格（Wo?）",
+      "title": {"zh": "在哪裡：in、an、auf ＋ 第三格", "en": "Where? in, an, auf + dative"},
+      "form": {"zh": "Wo? → in／an／auf ＋ 第三格：im (in dem) Park・in der Küche・am (an dem) Fenster・auf dem Tisch", "en": "Wo? → in / an / auf + dative: im Park · in der Küche · am Fenster · auf dem Tisch"},
+      "explain": {"zh": "說東西或人「在哪裡」（Wo?）時，in（在裡面）、an（在旁邊、靠著）、auf（在上面）後面接第三格：Das Buch liegt auf dem Tisch.（書在桌上。）Ich bin in der Schule.（我在學校。）", "en": "To say where something is (Wo?), in (inside), an (at, by) and auf (on) take the dative: Das Buch liegt auf dem Tisch, Ich bin in der Schule."},
+      "notes": [
+        {"zh": "in dem 縮寫成 im，an dem 縮寫成 am：im Kino、am Bahnhof。", "en": "in dem → im, an dem → am: im Kino, am Bahnhof."},
+        {"zh": "說「去哪裡」（Wohin?）時改用第四格，這留到 A2 再學。", "en": "“Where to” (Wohin?) uses the accusative instead — that comes at A2."}
+      ],
+      "mistakes": [
+        {"wrong": "Die Katze schläft auf das Sofa.", "right": "Die Katze schläft auf dem Sofa.", "zh": "在哪裡（Wo?）用第三格 dem。", "en": "Location (Wo?) takes the dative: dem."},
+        {"wrong": "Ich bin in die Küche.", "right": "Ich bin in der Küche.", "zh": "Küche 陰性，第三格是 der。", "en": "Küche is feminine: der in the dative."}
+      ],
+      "examples": [
+        {"text": "Mein Handy ist in der Tasche.", "zh": "我的手機在包包裡。", "en": "My phone is in the bag."},
+        {"text": "Wir warten am Bahnhof.", "zh": "我們在車站等。", "en": "We're waiting at the station."},
+        {"text": "Das Bild hängt an der Wand.", "zh": "畫掛在牆上。", "en": "The picture is hanging on the wall."}
+      ],
+      "quiz": [
+        {"q": "Die Kinder spielen（　）Garten.", "zh": "孩子們在花園玩。", "en": "The children are playing in the garden.", "options": ["im", "in den", "ins", "in die"], "answer": 0},
+        {"q": "Der Schlüssel liegt auf（　）Tisch.", "zh": "鑰匙在桌上。", "en": "The key is on the table.", "options": ["dem", "den", "der", "das"], "answer": 0},
+        {"q": "Ich arbeite in（　）Bäckerei.", "zh": "我在一間麵包店工作。", "en": "I work in a bakery.", "options": ["einer", "eine", "einem", "einen"], "answer": 0}
+      ]
+    },
+    {
+      "id": "pron_akk",
+      "pattern": "mich・dich・ihn …",
+      "title": {"zh": "受詞代名詞（第四格）", "en": "Object pronouns (accusative)"},
+      "form": {"zh": "ich → mich・du → dich・er → ihn・sie → sie・es → es・wir → uns・ihr → euch・sie/Sie → sie/Sie", "en": "ich → mich · du → dich · er → ihn · sie → sie · es → es · wir → uns · ihr → euch · sie/Sie → sie/Sie"},
+      "explain": {"zh": "代名詞當受詞時要換成第四格：Ich liebe dich.（我愛你。）Kennst du ihn?（你認識他嗎？）只有 ich、du、er、wir、ihr 會變，其他不變。", "en": "As an object a pronoun takes the accusative form: Ich liebe dich, Kennst du ihn? Only ich, du, er, wir and ihr change."},
+      "notes": [
+        {"zh": "東西也一樣：Der Film? Ich finde ihn super.（那部電影？我覺得很棒。）", "en": "Things too: Der Film? Ich finde ihn super."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich besuche er morgen.", "right": "Ich besuche ihn morgen.", "zh": "er 當受詞要變成 ihn。", "en": "er as an object becomes ihn."},
+        {"wrong": "Hörst du ich?", "right": "Hörst du mich?", "zh": "ich 當受詞是 mich。", "en": "ich as an object is mich."}
+      ],
+      "examples": [
+        {"text": "Ich rufe dich heute Abend an.", "zh": "我今晚打給你。", "en": "I'll call you this evening."},
+        {"text": "Der Kuchen ist lecker. Ich nehme ihn.", "zh": "這個蛋糕很好吃，我要買。", "en": "The cake looks tasty. I'll take it."},
+        {"text": "Besuchst du uns am Wochenende?", "zh": "你週末要來找我們嗎？", "en": "Are you visiting us at the weekend?"}
+      ],
+      "quiz": [
+        {"q": "Wo ist Tom? Ich sehe（　）nicht.", "zh": "湯姆在哪裡？我沒看到他。", "en": "Where's Tom? I can't see him.", "options": ["ihn", "er", "ihm", "sein"], "answer": 0},
+        {"q": "Kinder, ich vermisse（　）!", "zh": "孩子們，我好想你們！", "en": "Children, I miss you!", "options": ["euch", "ihr", "uns", "dich"], "answer": 0},
+        {"q": "Kannst du（　）bitte abholen?", "zh": "你可以來接我嗎？", "en": "Can you pick me up, please?", "options": ["mich", "ich", "mir", "mein"], "answer": 0}
+      ]
+    },
+    {
+      "id": "perfekt_haben",
+      "pattern": "haben ＋ ge…t",
+      "title": {"zh": "現在完成式（haben ＋ 過去分詞）", "en": "The perfect tense with haben"},
+      "form": {"zh": "haben（第二位）＋ … ＋ 過去分詞（句尾）　規則：ge＋字根＋t（machen → gemacht）・不規則：ge…en（sehen → gesehen）", "en": "haben (second) + … + past participle (end) · regular: ge + stem + t (gemacht) · irregular: ge … en (gesehen)"},
+      "explain": {"zh": "日常說過去的事多用現在完成式：haben 放第二位，過去分詞放句尾：Ich habe Pizza gegessen.（我吃了披薩。）Was hast du gestern gemacht?（你昨天做了什麼？）", "en": "Spoken German talks about the past with the perfect: haben second, the past participle last: Ich habe Pizza gegessen, Was hast du gestern gemacht?"},
+      "notes": [
+        {"zh": "-ieren 結尾和 be-、ver- 開頭的動詞不加 ge-：telefoniert、besucht、verstanden。", "en": "Verbs in -ieren and with be-, ver- take no ge-: telefoniert, besucht, verstanden."},
+        {"zh": "可分動詞的 ge 放中間：einkaufen → eingekauft。", "en": "Separable verbs put ge in the middle: eingekauft."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich habe gemacht meine Hausaufgaben.", "right": "Ich habe meine Hausaufgaben gemacht.", "zh": "過去分詞放句尾。", "en": "The participle goes last."},
+        {"wrong": "Ich habe gebesucht meine Oma.", "right": "Ich habe meine Oma besucht.", "zh": "be- 開頭的動詞不加 ge-。", "en": "be- verbs take no ge-."}
+      ],
+      "examples": [
+        {"text": "Ich habe gestern lange geschlafen.", "zh": "我昨天睡了很久。", "en": "I slept in yesterday."},
+        {"text": "Hast du den Film schon gesehen?", "zh": "那部電影你看過了嗎？", "en": "Have you seen the film yet?"},
+        {"text": "Wir haben am Abend Karten gespielt.", "zh": "我們晚上玩了撲克牌。", "en": "We played cards in the evening."}
+      ],
+      "quiz": [
+        {"q": "Ich habe ein Buch（　）.", "zh": "我讀了一本書。", "en": "I read a book.", "options": ["gelesen", "gelest", "lesen", "gelesst"], "answer": 0},
+        {"q": "Was（　）ihr am Wochenende gemacht?", "zh": "你們週末做了什麼？", "en": "What did you do at the weekend?", "options": ["habt", "seid", "hat", "haben"], "answer": 0},
+        {"q": "Sie hat mich gestern（　）.", "zh": "她昨天打電話給我。", "en": "She called me yesterday.", "options": ["angerufen", "geanruft", "anruft", "gerufen an"], "answer": 0}
+      ]
+    },
+    {
+      "id": "perfekt_sein",
+      "pattern": "sein ＋ ge…",
+      "title": {"zh": "現在完成式（sein ＋ 過去分詞）", "en": "The perfect tense with sein"},
+      "form": {"zh": "表示移動或狀態改變的動詞用 sein：gehen → ist gegangen・fahren → ist gefahren・kommen → ist gekommen・aufstehen → ist aufgestanden", "en": "verbs of movement or change of state use sein: ist gegangen · ist gefahren · ist gekommen · ist aufgestanden"},
+      "explain": {"zh": "從一個地方到另一個地方（gehen、fahren、fliegen、kommen）或狀態改變（aufstehen、einschlafen）的動詞，完成式用 sein 不用 haben：Ich bin nach Japan geflogen.（我搭飛機去了日本。）", "en": "Verbs of going from A to B (gehen, fahren, fliegen, kommen) or changing state (aufstehen, einschlafen) form the perfect with sein, not haben: Ich bin nach Japan geflogen."},
+      "notes": [
+        {"zh": "sein 和 bleiben 本身也用 sein：Ich bin zu Hause geblieben.", "en": "sein and bleiben use sein too: Ich bin zu Hause geblieben."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich habe nach Hause gegangen.", "right": "Ich bin nach Hause gegangen.", "zh": "gehen 是移動，用 sein。", "en": "gehen is movement: sein."},
+        {"wrong": "Er ist um sieben aufgesteht.", "right": "Er ist um sieben aufgestanden.", "zh": "aufstehen 的過去分詞是 aufgestanden。", "en": "aufstehen's participle is aufgestanden."}
+      ],
+      "examples": [
+        {"text": "Wir sind mit dem Zug gefahren.", "zh": "我們搭火車去的。", "en": "We went by train."},
+        {"text": "Wann bist du nach Hause gekommen?", "zh": "你幾點回到家的？", "en": "When did you get home?"},
+        {"text": "Gestern bin ich zu Hause geblieben.", "zh": "我昨天待在家裡。", "en": "Yesterday I stayed at home."}
+      ],
+      "quiz": [
+        {"q": "Letztes Jahr（　）ich nach Deutschland geflogen.", "zh": "我去年搭飛機去了德國。", "en": "Last year I flew to Germany.", "options": ["bin", "habe", "hat", "ist"], "answer": 0},
+        {"q": "Lena ist früh（　）.", "zh": "莉娜很早就起床了。", "en": "Lena got up early.", "options": ["aufgestanden", "aufgesteht", "geaufstanden", "aufstehen"], "answer": 0},
+        {"q": "Habt ihr gut gegessen? – Ja, und dann（　）wir spazieren gegangen.", "zh": "「你們吃得好嗎？」「很好，然後我們去散步了。」", "en": "“Did you eat well?” “Yes, and then we went for a walk.”", "options": ["sind", "haben", "seid", "habt"], "answer": 0}
+      ]
+    },
+    {
+      "id": "konnektoren",
+      "pattern": "und・aber・oder・denn",
+      "title": {"zh": "連接詞 und、aber、oder、denn", "en": "Joining sentences: und, aber, oder, denn"},
+      "form": {"zh": "句子 ＋ und／aber／oder／denn ＋ 句子（後半句語序不變：主詞 ＋ 動詞）", "en": "sentence + und / aber / oder / denn + sentence (normal word order after it: subject + verb)"},
+      "explain": {"zh": "und（和、而且）、aber（但是）、oder（或是）、denn（因為）連接兩個句子，它們不佔位置，後面照一般語序：Ich bin müde, denn ich habe wenig geschlafen.（我很累，因為我睡得很少。）", "en": "und (and), aber (but), oder (or), denn (because) join two sentences without taking a place, so normal word order follows: Ich bin müde, denn ich habe wenig geschlafen."},
+      "notes": [
+        {"zh": "aber 和 denn 前面要加逗號；und、oder 不用。", "en": "Put a comma before aber and denn; not before und and oder."}
+      ],
+      "mistakes": [
+        {"wrong": "Ich bleibe zu Hause, denn bin ich krank.", "right": "Ich bleibe zu Hause, denn ich bin krank.", "zh": "denn 後面是主詞＋動詞，不倒裝。", "en": "After denn comes subject + verb, no inversion."},
+        {"wrong": "Ich bin krank denn ich habe Fieber.", "right": "Ich bin krank, denn ich habe Fieber.", "zh": "denn 前面要加逗號。", "en": "Put a comma before denn."}
+      ],
+      "examples": [
+        {"text": "Ich lerne Deutsch und mein Freund lernt Japanisch.", "zh": "我學德文，我男朋友學日文。", "en": "I'm learning German and my boyfriend is learning Japanese."},
+        {"text": "Das Hotel ist schön, aber sehr teuer.", "zh": "這間飯店很漂亮，但是很貴。", "en": "The hotel is nice, but very expensive."},
+        {"text": "Trinkst du Tee oder Kaffee?", "zh": "你喝茶還是咖啡？", "en": "Do you drink tea or coffee?"}
+      ],
+      "quiz": [
+        {"q": "Ich komme heute nicht, denn（　）keine Zeit.", "zh": "我今天不來，因為我沒空。", "en": "I'm not coming today because I don't have time.", "options": ["ich habe", "habe ich", "ich", "hast du"], "answer": 0},
+        {"q": "Die Wohnung ist klein,（　）sie ist billig.", "zh": "公寓很小，但是很便宜。", "en": "The flat is small, but it's cheap.", "options": ["aber", "oder", "denn", "und"], "answer": 0},
+        {"q": "Möchtest du Wasser（　）Saft?", "zh": "你要水還是果汁？", "en": "Would you like water or juice?", "options": ["oder", "aber", "denn", "doch"], "answer": 0}
+      ]
+    }
+  ]
+}
