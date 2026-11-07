@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增西班牙文 A2：30 個文法點，包括兩種過去式和怎麼分、現在完成式、未來式、條件式、命令式、受詞代名詞（lo、le、se lo）、por 和 para 等，每個都有說明、常見錯誤、有錄音的例句和小練習。",
+      'zh-Hans': "语法新增西班牙语 A2：30 个语法点，包括两种过去时和怎么区分、现在完成时、将来时、条件式、命令式、宾语代词（lo、le、se lo）、por 和 para 等，每个都有说明、常见错误、带录音的例句和小练习。",
+      en: "Grammar adds Spanish A2: 30 points, including the two past tenses and when to use each, the present perfect, the future, the conditional, commands, object pronouns (lo, le, se lo) and por vs para — each with an explanation, common mistakes, recorded examples and a short practice.",
+      ja: "文法にスペイン語 A2 が加わりました。2 つの過去形とその使い分け、現在完了、未来形、過去未来（条件法）、命令形、目的格代名詞（lo、le、se lo）、por と para など 30 項目。どれも説明・よくある間違い・音声つき例文・ミニ練習つきです。",
+      ko: "문법에 스페인어 A2가 추가됐어요. 두 가지 과거 시제와 구분법, 현재완료, 미래, 조건법, 명령법, 목적격 대명사(lo, le, se lo), por와 para 등 30개 항목이고, 모두 설명, 자주 하는 실수, 녹음된 예문, 짧은 연습이 있어요.",
+      ru: "В грамматике появился испанский A2: 30 тем — два прошедших времени и как их различать, Pretérito Perfecto, будущее время, условное наклонение, повелительное наклонение, местоимения-дополнения (lo, le, se lo), por и para и другое. В каждой есть объяснение, типичные ошибки, озвученные примеры и короткая практика.",
+      fr: "La grammaire accueille l'espagnol A2 : 30 points, dont les deux passés et quand utiliser chacun, le passé composé, le futur, le conditionnel, l'impératif, les pronoms compléments (lo, le, se lo) et por / para — chacun avec une explication, des erreurs fréquentes, des exemples enregistrés et un petit exercice.",
+      es: "La gramática incorpora el español A2: 30 puntos, entre ellos los dos pasados y cuándo usar cada uno, el pretérito perfecto, el futuro, el condicional, el imperativo, los pronombres de objeto (lo, le, se lo) y por / para, cada uno con explicación, errores frecuentes, ejemplos grabados y una pequeña práctica.",
+      de: "Die Grammatik hat jetzt Spanisch A2: 30 Themen, darunter die beiden Vergangenheitsformen und ihr Unterschied, das Perfekt, das Futur, das Konditional, der Imperativ, Objektpronomen (lo, le, se lo) sowie por und para – jeweils mit Erklärung, typischen Fehlern, vertonten Beispielen und einer kleinen Übung." },
+    { date: '2026-11-06',
       zh: "文法新增英文「國中」：31 個文法點，照台灣國中英文的範圍，從 be 動詞、現在式、過去式、未來式、比較級到現在完成式、被動語態、關係代名詞和間接問句，每個都有說明、常見錯誤、有錄音的例句（美式、英式都有）和小練習。",
       'zh-Hans': "语法新增英语“初中”：31 个语法点，按台湾初中英语的范围，从 be 动词、现在时、过去时、将来时、比较级到现在完成时、被动语态、关系代词和间接疑问句，每个都有说明、常见错误、带录音的例句（美式、英式都有）和小练习。",
       en: "Grammar adds English for junior high: 31 points following Taiwan's junior high syllabus, from be, the present, past and future to comparatives, the present perfect, the passive, relative pronouns and indirect questions — each with an explanation, common mistakes, examples recorded in American and British English, and a short practice.",
