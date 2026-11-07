@@ -61,6 +61,9 @@
     gap: 8px;
     max-width: calc(var(--cols, 5) * 132px);
 }
+@media (min-width: 1024px) {
+    .learn-level-grid { grid-template-columns: repeat(var(--cols-wide, var(--cols, 5)), minmax(0, 1fr)); max-width: calc(var(--cols-wide, var(--cols, 5)) * 132px); }
+}
 .mode-btn.grammar-chip.learn-level {
     display: flex;
     flex-direction: column;
@@ -384,6 +387,27 @@
     .grammar-col-main .grammar-notes li { line-height: 1.65; margin-bottom: 2px; }
     .grammar-col-main .grammar-mistakes { gap: 8px; margin-bottom: 8px; }
     .grammar-top-nav { display: flex; gap: 8px; margin-left: auto; margin-right: 10px; }
+    /* grammarFit() (js/grammar.js): tighter steps for a page that would end below the window —
+       long translated texts (ru, fr, de …), 2026-11-06 */
+    .gfit1 .grammar-col-main .grammar-explain { font-size: 0.9rem; line-height: 1.65; }
+    .gfit1 .grammar-notes li { font-size: 0.86rem; line-height: 1.55; }
+    .gfit1 .grammar-mistakes li, .gfit1 .grammar-examples li { padding: 7px 11px; font-size: 0.9rem; }
+    .gfit1 .grammar-mistakes, .gfit1 .grammar-examples { gap: 6px; }
+    .gfit1 .grammar-ex-ja { font-size: 1.05rem; }
+    .gfit1 .grammar-ex-tr { font-size: 0.84rem; }
+    .gfit1 .grammar-item { padding: 9px 12px; }
+    .gfit1 .grammar-item-title { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .gfit2 .grammar-col-main .grammar-explain { font-size: 0.86rem; line-height: 1.55; margin-bottom: 8px; }
+    .gfit2 .grammar-notes li { font-size: 0.82rem; line-height: 1.5; }
+    .gfit2 .grammar-col-main .grammar-notes { margin-bottom: 8px; }
+    .gfit2 .grammar-mistakes li, .gfit2 .grammar-examples li { padding: 5px 10px; font-size: 0.85rem; }
+    .gfit2 .grammar-form { padding-top: 6px; padding-bottom: 6px; }
+    .gfit2 .grammar-list { gap: 7px; }
+    .gfit2 .grammar-item { padding: 7px 12px; }
+    .gfit3 .grammar-col-main .grammar-explain { font-size: 0.82rem; line-height: 1.5; }
+    .gfit3 .grammar-notes li, .gfit3 .grammar-mistakes li, .gfit3 .grammar-examples li { font-size: 0.8rem; line-height: 1.45; }
+    .gfit3 .grammar-ex-ja { font-size: 0.98rem; }
+    .gfit3 .grammar-form { font-size: 0.86rem; margin-bottom: 10px; }
     .grammar-top-nav .mode-btn { padding: 6px 12px; font-size: 0.85rem; }
 }
 

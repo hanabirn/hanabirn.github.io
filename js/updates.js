@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增英文「高中」：30 個文法點，照台灣高中英文的範圍，包括過去完成式、假設語氣、關係子句、分詞構句、倒裝句、強調句和間接引述等。另外，用日、韓、俄、法、西、德文介面看文法時，比較長的說明在電腦上也能一頁看完了。",
+      'zh-Hans': "语法新增英语“高中”：30 个语法点，按台湾高中英语的范围，包括过去完成时、虚拟语气、关系从句、分词结构、倒装句、强调句和间接引语等。另外，用日、韩、俄、法、西、德语界面看语法时，较长的说明在电脑上也能一页看完了。",
+      en: "Grammar adds English for senior high: 30 points following Taiwan's senior high syllabus, including the past perfect, conditionals, relative clauses, participle clauses, inversion, cleft sentences and reported speech. Also, in a Japanese, Korean, Russian, French, Spanish or German interface, the longer grammar texts now fit one screen on a computer.",
+      ja: "文法に英語「高校」レベルが加わりました。台湾の高校英語の範囲に沿った 30 項目で、過去完了・仮定法・関係詞節・分詞構文・倒置・強調構文・話法などを扱います。また、日本語・韓国語・ロシア語・フランス語・スペイン語・ドイツ語の画面でも、長めの文法説明がパソコンで 1 画面に収まるようになりました。",
+      ko: "문법에 영어 '고등학교' 단계가 추가됐어요. 대만 고등학교 영어 범위에 맞춘 30개 항목으로, 과거완료, 가정법, 관계절, 분사구문, 도치, 강조 구문, 간접화법 등이 있어요. 또 일본어·한국어·러시아어·프랑스어·스페인어·독일어 화면에서도 긴 문법 설명이 컴퓨터 한 화면에 들어가요.",
+      ru: "В грамматике появился английский «старшая школа»: 30 тем по программе тайваньской старшей школы — Past Perfect, условные предложения, придаточные определительные, причастные обороты, инверсия, эмфатические конструкции и косвенная речь. Кроме того, в японском, корейском, русском, французском, испанском и немецком интерфейсе длинные объяснения теперь помещаются на один экран компьютера.",
+      fr: "La grammaire accueille l'anglais niveau lycée : 30 points qui suivent le programme du lycée taïwanais, dont le past perfect, les conditionnelles, les relatives, les propositions participiales, l'inversion, la mise en relief et le discours indirect. Par ailleurs, en japonais, coréen, russe, français, espagnol ou allemand, les explications plus longues tiennent désormais sur un écran d'ordinateur.",
+      es: "La gramática incorpora el inglés de bachillerato: 30 puntos según el programa de bachillerato de Taiwán, entre ellos el past perfect, las condicionales, las oraciones de relativo, las construcciones de participio, la inversión, las oraciones escindidas y el estilo indirecto. Además, con la interfaz en japonés, coreano, ruso, francés, español o alemán, las explicaciones más largas ya caben en una pantalla de ordenador.",
+      de: "Die Grammatik hat jetzt Englisch für die Oberstufe: 30 Themen nach dem taiwanischen Oberstufen-Lehrplan, darunter Past Perfect, Bedingungssätze, Relativsätze, Partizipialkonstruktionen, Inversion, Spaltsätze und indirekte Rede. Außerdem passen längere Grammatiktexte in der japanischen, koreanischen, russischen, französischen, spanischen und deutschen Oberfläche jetzt auf einen Computerbildschirm." },
+    { date: '2026-11-06',
       zh: "文法新增德文 A2：28 個文法點，包括第三格、雙向介系詞、weil／dass／wenn 副句的語序、war／hatte 和情態動詞的過去式、形容詞字尾、比較級和禮貌的 hätte gern／könnten Sie，每個都有說明、常見錯誤、有錄音的例句和小練習。",
       'zh-Hans': "语法新增德语 A2：28 个语法点，包括第三格、双向介词、weil／dass／wenn 从句的语序、war／hatte 和情态动词的过去时、形容词词尾、比较级和礼貌的 hätte gern／könnten Sie，每个都有说明、常见错误、带录音的例句和小练习。",
       en: "Grammar adds German A2: 28 points, including the dative, two-way prepositions, word order after weil / dass / wenn, the past of sein, haben and the modals, adjective endings, comparatives and polite hätte gern / könnten Sie — each with an explanation, common mistakes, recorded examples and a short practice.",

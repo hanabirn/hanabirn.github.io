@@ -96,8 +96,10 @@ function learnPickerHtml(index, curId, pick, done) {
         </button>`;
     }).join('');
     // equal columns: up to 5 levels in one row, more in two even rows (6 → 3 + 3)
+    // (computers: up to 8 in one row, css/grammar.css --cols-wide — 2026-11-06, so Korean 1–6級 fit 1080p)
     const cols = levels.length <= 5 ? levels.length : Math.ceil(levels.length / 2);
-    return `${edition}<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols}">${chips}</div></div>`;
+    const wide = levels.length <= 8 ? levels.length : cols;
+    return `${edition}<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols};--cols-wide:${wide}">${chips}</div></div>`;
 }
 
 // items passed in a level, from a progress store keyed "<level>:<item>" ({best, of})
@@ -206,10 +208,27 @@ async function renderGrammar() {
     // the point view uses two columns on wide screens (css/grammar.css, css/base.css)
     document.body.classList.toggle('grammar-wide', grammarView === 'point' || grammarView === 'list');
     if (typeof railPlace === 'function') railPlace();
-    if (grammarView === 'point') { box.innerHTML = grammarPointHtml(set); grammarBalance(box); }
+    box.classList.remove('gfit1', 'gfit2', 'gfit3');
+    if (grammarView === 'point') { box.innerHTML = grammarPointHtml(set); grammarBalance(box); grammarFit(box); }
     else if (grammarView === 'quiz') box.innerHTML = grammarQuizHtml(set);
     else if (grammarView === 'result') box.innerHTML = grammarResultHtml(set);
-    else box.innerHTML = grammarListHtml(set);
+    else { box.innerHTML = grammarListHtml(set); grammarFit(box); }
+}
+
+/* One 1080p screen in every interface language (2026-11-06): the translated texts (ru, fr, de …)
+   are longer than the Chinese the pages were measured with, so a point or list that ends below
+   the window gets tighter text, one step at a time (css/grammar.css .gfit1–3), until it fits. */
+function grammarFit(box) {
+    if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) return;
+    const over = () => box.getBoundingClientRect().bottom + window.scrollY > window.innerHeight - 8;
+    const main = box.querySelector('.grammar-col-main');
+    for (let i = 1; i <= 3 && over(); i++) {
+        // 常見錯誤 back under the explanation, then decide again where it fits better
+        const head = box.querySelector('.grammar-col-side .grammar-mistakes-head');
+        if (head && main) { main.appendChild(head); main.appendChild(box.querySelector('.grammar-col-side .grammar-mistakes')); }
+        box.classList.add('gfit' + i);
+        if (grammarView === 'point') grammarBalance(box);
+    }
 }
 
 function grammarGo(view, point) {

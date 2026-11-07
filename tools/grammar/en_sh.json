@@ -1,0 +1,736 @@
+{
+  "id": "en_sh",
+  "lang": "en",
+  "level": "SH",
+  "order": 2,
+  "note": "Hand-written for the site (explanations and examples are our own), graded like Taiwan's senior high English (owner, 2026-11-06). An example's or question's en is the English sentence itself (the English UI shows no hint). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "past_perfect",
+      "pattern": "had ＋ p.p.",
+      "title": {"zh": "過去完成式", "en": "The past perfect"},
+      "form": {"zh": "had ＋ 過去分詞（所有人稱都一樣）", "en": "had + past participle (the same for every subject)"},
+      "explain": {"zh": "說「過去某個時間點之前已經發生」的事：When I got to the station, the train had already left.（我到車站時，火車已經開走了。）先發生的用過去完成式，後發生的用過去式。", "en": "For something that happened before another past moment: When I got to the station, the train had already left. The earlier event takes the past perfect, the later one the past simple."},
+      "notes": [
+        {"zh": "有 before、after 讓順序很清楚時，也可以兩個都用過去式。", "en": "With before or after making the order clear, the past simple is also fine for both."}
+      ],
+      "mistakes": [
+        {"wrong": "I had visited Tokyo last year.", "right": "I visited Tokyo last year.", "zh": "只有一件過去的事、沒有更早的參考點，用過去式就好。", "en": "With just one past event and no earlier reference point, use the past simple."},
+        {"wrong": "She told me she has lost her key.", "right": "She told me she had lost her key.", "zh": "比「告訴我」更早發生，用 had lost。", "en": "It happened before she told me: had lost."}
+      ],
+      "examples": [
+        {"text": "By the time we arrived, the movie had started.", "zh": "我們到的時候電影已經開始了。", "en": "By the time we arrived, the movie had started."},
+        {"text": "I had never seen snow before I went to Hokkaido.", "zh": "去北海道之前我從來沒看過雪。", "en": "I had never seen snow before I went to Hokkaido."},
+        {"text": "He was tired because he had worked all night.", "zh": "他很累，因為他工作了一整晚。", "en": "He was tired because he had worked all night."}
+      ],
+      "quiz": [
+        {"q": "When the police arrived, the thief（　）.", "zh": "警察到的時候，小偷已經逃走了。", "en": "When the police arrived, the thief had escaped.", "options": ["had escaped", "has escaped", "escapes", "was escape"], "answer": 0},
+        {"q": "She（　）the book before she saw the film.", "zh": "她看電影之前已經讀過那本書了。", "en": "She had read the book before she saw the film.", "options": ["had read", "has read", "have read", "had readed"], "answer": 0},
+        {"q": "I realized I（　）my wallet at home.", "zh": "我發現我把錢包忘在家裡了。", "en": "I realized I had left my wallet at home.", "options": ["had left", "have left", "leave", "had leave"], "answer": 0}
+      ]
+    },
+    {
+      "id": "perfect_continuous",
+      "pattern": "have been V-ing",
+      "title": {"zh": "現在完成進行式", "en": "The present perfect continuous"},
+      "form": {"zh": "have／has been ＋ V-ing　常和 for、since、all day 一起用", "en": "have / has been + verb-ing · often with for, since, all day"},
+      "explain": {"zh": "強調一個動作從過去一直持續到現在（而且可能還在進行）：I have been studying for three hours.（我已經讀了三個小時的書。）It has been raining since this morning.", "en": "For an activity that started in the past and is still going on (or has just stopped): I have been studying for three hours. It has been raining since this morning."},
+      "notes": [
+        {"zh": "強調「持續多久」用完成進行式，強調「完成了多少」用完成式：I've been writing emails all morning. ／ I've written ten emails.", "en": "Stress the duration with the continuous, the result with the simple: I've been writing emails all morning / I've written ten emails."},
+        {"zh": "狀態動詞（know、like、own）不用進行式：I've known her for years.", "en": "State verbs aren't continuous: I've known her for years."}
+      ],
+      "mistakes": [
+        {"wrong": "I am waiting here for an hour.", "right": "I have been waiting here for an hour.", "zh": "持續到現在的一段時間要用完成進行式。", "en": "A duration up to now needs the perfect continuous."},
+        {"wrong": "She has been knowing him since 2019.", "right": "She has known him since 2019.", "zh": "know 是狀態動詞，不用進行式。", "en": "know is a state verb."}
+      ],
+      "examples": [
+        {"text": "How long have you been learning English?", "zh": "你學英文多久了？", "en": "How long have you been learning English?"},
+        {"text": "My legs hurt. I've been walking all day.", "zh": "我腿好痠，走了一整天。", "en": "My legs hurt. I've been walking all day."},
+        {"text": "They have been living in Taichung since 2015.", "zh": "他們從 2015 年起就住在台中。", "en": "They have been living in Taichung since 2015."}
+      ],
+      "quiz": [
+        {"q": "We（　）for the bus for twenty minutes.", "zh": "我們已經等公車等了二十分鐘。", "en": "We have been waiting for the bus for twenty minutes.", "options": ["have been waiting", "are waiting", "had been wait", "waited for"], "answer": 0},
+        {"q": "Your eyes are red. Have you（　）?", "zh": "你眼睛好紅，你一直在哭嗎？", "en": "Your eyes are red. Have you been crying?", "options": ["been crying", "being cried", "be crying", "crying"], "answer": 0},
+        {"q": "He has（　）the guitar since he was ten.", "zh": "他從十歲開始就在彈吉他。", "en": "He has been playing the guitar since he was ten.", "options": ["been playing", "playing", "being played", "be playing"], "answer": 0}
+      ]
+    },
+    {
+      "id": "future_perfect",
+      "pattern": "will be V-ing・will have p.p.",
+      "title": {"zh": "未來進行式和未來完成式", "en": "Future continuous and future perfect"},
+      "form": {"zh": "will be ＋ V-ing（到時候正在…）・will have ＋ 過去分詞（到時候已經…）", "en": "will be + verb-ing (will be doing) · will have + past participle (will have done)"},
+      "explain": {"zh": "未來進行式說未來某個時間點「正在做」：This time tomorrow, I'll be flying to Tokyo. 未來完成式說到某個時間點時「已經完成」：By next June, I will have graduated.（到明年六月我就畢業了。）", "en": "The future continuous is what will be in progress at a future time: This time tomorrow, I'll be flying to Tokyo. The future perfect is what will be finished by then: By next June, I will have graduated."},
+      "notes": [
+        {"zh": "未來完成式常和 by ＋ 時間一起用：by Friday、by the end of the year。", "en": "The future perfect goes with by + time: by Friday, by the end of the year."}
+      ],
+      "mistakes": [
+        {"wrong": "By 2030, I will finish my degree.", "right": "By 2030, I will have finished my degree.", "zh": "by 某時「已經完成」用未來完成式。", "en": "“Done by” a time takes the future perfect."},
+        {"wrong": "At 8 p.m. tonight I will watch the game, so don't call.", "right": "At 8 p.m. tonight I will be watching the game, so don't call.", "zh": "那個時間點「正在」做，用未來進行式。", "en": "In progress at that time: future continuous."}
+      ],
+      "examples": [
+        {"text": "Don't call me at nine. I'll be having dinner.", "zh": "九點別打給我，我會在吃晚餐。", "en": "Don't call me at nine. I'll be having dinner."},
+        {"text": "By the time you get here, we will have eaten.", "zh": "等你到的時候，我們已經吃完了。", "en": "By the time you get here, we will have eaten."},
+        {"text": "Next year, they will have been married for twenty years.", "zh": "明年他們就結婚滿二十年了。", "en": "Next year, they will have been married for twenty years."}
+      ],
+      "quiz": [
+        {"q": "By the end of this month, I（　）this book.", "zh": "到這個月底，我就會讀完這本書。", "en": "By the end of this month, I will have finished this book.", "options": ["will have finished", "will be finish", "have finished", "will finishing"], "answer": 0},
+        {"q": "This time next week, we（　）on the beach in Kenting.", "zh": "下週的這個時候，我們會正躺在墾丁的海灘上。", "en": "This time next week, we will be lying on the beach in Kenting.", "options": ["will be lying", "will have lain", "are lie", "will lying"], "answer": 0},
+        {"q": "The store will（　）by the time we get there.", "zh": "等我們到的時候，店已經關了。", "en": "The store will have closed by the time we get there.", "options": ["have closed", "be close", "closed", "closing"], "answer": 0}
+      ]
+    },
+    {
+      "id": "passive_adv",
+      "pattern": "is being／has been／can be ＋ p.p.",
+      "title": {"zh": "進階被動語態", "en": "The passive: more tenses"},
+      "form": {"zh": "進行：is／are being ＋ p.p.・完成：has／have been ＋ p.p.・助動詞：can／must／should be ＋ p.p.", "en": "continuous: is / are being + p.p. · perfect: has / have been + p.p. · modal: can / must / should be + p.p."},
+      "explain": {"zh": "被動語態可以用在各種時態：The road is being repaired.（路正在整修。）The tickets have been sold out.（票已經賣完了。）This medicine must be taken after meals.（這個藥必須飯後吃。）", "en": "The passive works in every tense: The road is being repaired, The tickets have been sold out, This medicine must be taken after meals."},
+      "notes": [
+        {"zh": "助動詞後面一定是 be ＋ p.p.，be 不變：should be done、can be seen。", "en": "After a modal it's always be + p.p.: should be done, can be seen."}
+      ],
+      "mistakes": [
+        {"wrong": "The house is building now.", "right": "The house is being built now.", "zh": "房子是「被蓋」，進行式被動是 is being built。", "en": "The house is being built — continuous passive."},
+        {"wrong": "The work must finished today.", "right": "The work must be finished today.", "zh": "助動詞被動要有 be。", "en": "A modal passive needs be."}
+      ],
+      "examples": [
+        {"text": "My phone is being repaired, so I can't call you.", "zh": "我的手機在送修，所以沒辦法打給你。", "en": "My phone is being repaired, so I can't call you."},
+        {"text": "Has the package been delivered yet?", "zh": "包裹送到了嗎？", "en": "Has the package been delivered yet?"},
+        {"text": "Plastic bottles should be recycled.", "zh": "塑膠瓶應該回收。", "en": "Plastic bottles should be recycled."}
+      ],
+      "quiz": [
+        {"q": "The meeting room（　）right now.", "zh": "會議室現在正在打掃。", "en": "The meeting room is being cleaned right now.", "options": ["is being cleaned", "is cleaning", "has cleaned", "is been cleaned"], "answer": 0},
+        {"q": "All the cookies have（　）.", "zh": "餅乾全被吃光了。", "en": "All the cookies have been eaten.", "options": ["been eaten", "eaten by", "be eaten", "being eaten"], "answer": 0},
+        {"q": "Phones must（　）off during the exam.", "zh": "考試期間手機必須關機。", "en": "Phones must be turned off during the exam.", "options": ["be turned", "turned", "been turned", "turn"], "answer": 0}
+      ]
+    },
+    {
+      "id": "second_conditional",
+      "pattern": "If I were …, I would …",
+      "title": {"zh": "與現在事實相反的假設", "en": "Unreal present: If I were …, I would …"},
+      "form": {"zh": "If ＋ 主詞 ＋ 過去式（be 一律 were）, 主詞 ＋ would／could／might ＋ 原形", "en": "If + subject + past simple (be → were), subject + would / could / might + verb"},
+      "explain": {"zh": "說「現在不是這樣，如果是的話會…」：If I had more time, I would learn to swim.（如果我有更多時間，就會去學游泳。）實際上我沒有時間。be 動詞不分人稱都用 were：If I were you, I'd apologize.", "en": "For situations that aren't true now: If I had more time, I would learn to swim (but I don't). be is were for every subject: If I were you, I'd apologize."},
+      "notes": [
+        {"zh": "跟「真的可能發生」的條件不同：If it rains, I'll stay home.（有可能下雨）", "en": "Compare a real possibility: If it rains, I'll stay home."}
+      ],
+      "mistakes": [
+        {"wrong": "If I am rich, I would buy a house.", "right": "If I were rich, I would buy a house.", "zh": "與現在事實相反，if 子句用過去式 were。", "en": "Unreal present: were in the if clause."},
+        {"wrong": "If I knew the answer, I will tell you.", "right": "If I knew the answer, I would tell you.", "zh": "主要子句用 would，不用 will。", "en": "The main clause takes would, not will."}
+      ],
+      "examples": [
+        {"text": "If I lived closer to school, I wouldn't have to get up so early.", "zh": "如果我住得離學校近一點，就不用這麼早起了。", "en": "If I lived closer to school, I wouldn't have to get up so early."},
+        {"text": "What would you do if you won the lottery?", "zh": "如果你中了樂透，你會做什麼？", "en": "What would you do if you won the lottery?"},
+        {"text": "If I were you, I would take the job.", "zh": "如果我是你，我會接下那份工作。", "en": "If I were you, I would take the job."}
+      ],
+      "quiz": [
+        {"q": "If I（　）a bird, I would fly around the world.", "zh": "如果我是一隻鳥，我會飛遍全世界。", "en": "If I were a bird, I would fly around the world.", "options": ["were", "am", "will be", "had been"], "answer": 0},
+        {"q": "If she had a car, she（　）drive to work.", "zh": "如果她有車，她就會開車上班。", "en": "If she had a car, she would drive to work.", "options": ["would", "will", "has", "had"], "answer": 0},
+        {"q": "I would call him if I（　）his number.", "zh": "如果我知道他的號碼，我就會打給他。", "en": "I would call him if I knew his number.", "options": ["knew", "know", "will know", "had know"], "answer": 0}
+      ]
+    },
+    {
+      "id": "third_conditional",
+      "pattern": "If I had …, I would have …",
+      "title": {"zh": "與過去事實相反的假設", "en": "Unreal past: If I had …, I would have …"},
+      "form": {"zh": "If ＋ 主詞 ＋ had ＋ p.p., 主詞 ＋ would／could／might have ＋ p.p.", "en": "If + subject + had + p.p., subject + would / could / might have + p.p."},
+      "explain": {"zh": "說「過去沒有發生，如果當時…就會…」：If I had studied harder, I would have passed the exam.（如果我當時更用功，就會通過考試了。）實際上沒有用功，也沒通過。", "en": "For things that didn't happen in the past: If I had studied harder, I would have passed the exam (but I didn't, and I didn't pass)."},
+      "notes": [
+        {"zh": "口語常縮寫：I'd have known、If I'd known。", "en": "Spoken short forms: I'd have known, If I'd known."}
+      ],
+      "mistakes": [
+        {"wrong": "If I knew you were coming, I would have cooked.", "right": "If I had known you were coming, I would have cooked.", "zh": "過去的假設，if 子句用 had ＋ p.p.。", "en": "Unreal past: had + p.p. in the if clause."},
+        {"wrong": "If you had told me, I would help you.", "right": "If you had told me, I would have helped you.", "zh": "主要子句用 would have ＋ p.p.。", "en": "The main clause takes would have + p.p."}
+      ],
+      "examples": [
+        {"text": "If we had left earlier, we wouldn't have missed the train.", "zh": "如果我們早點出門，就不會錯過火車了。", "en": "If we had left earlier, we wouldn't have missed the train."},
+        {"text": "She could have won if she hadn't fallen.", "zh": "如果她沒有跌倒，就可能贏了。", "en": "She could have won if she hadn't fallen."},
+        {"text": "If I had known it was your birthday, I would have bought a gift.", "zh": "如果我知道那天是你生日，就會買禮物了。", "en": "If I had known it was your birthday, I would have bought a gift."}
+      ],
+      "quiz": [
+        {"q": "If he（　）the alarm, he wouldn't have been late.", "zh": "如果他有聽到鬧鐘，就不會遲到了。", "en": "If he had heard the alarm, he wouldn't have been late.", "options": ["had heard", "heard", "has heard", "would hear"], "answer": 0},
+        {"q": "If you had asked me, I（　）you.", "zh": "如果你當時問我，我就會幫你了。", "en": "If you had asked me, I would have helped you.", "options": ["would have helped", "would help", "will have helped", "had helped"], "answer": 0},
+        {"q": "We would have gone to the beach if it（　）.", "zh": "如果那天沒下雨，我們就會去海邊了。", "en": "We would have gone to the beach if it hadn't rained.", "options": ["hadn't rained", "didn't rain", "wouldn't rain", "hasn't rained"], "answer": 0}
+      ]
+    },
+    {
+      "id": "wish",
+      "pattern": "I wish …・If only …",
+      "title": {"zh": "wish 和 If only：但願", "en": "I wish / If only"},
+      "form": {"zh": "對現在：wish ＋ 過去式（were）・對過去：wish ＋ had ＋ p.p.・對未來或希望別人改變：wish ＋ would ＋ 原形", "en": "present: wish + past (were) · past: wish + had + p.p. · wanting change: wish + would + verb"},
+      "explain": {"zh": "wish 表示「但願（但事實不是）」，時態要往過去退一步：I wish I were taller.（真希望我高一點。）I wish I had listened to you.（真希望我當時有聽你的。）If only 意思一樣，語氣更強。", "en": "wish means you'd like things to be different, so the tense moves back: I wish I were taller, I wish I had listened to you. If only means the same, more strongly."},
+      "notes": [
+        {"zh": "對可能實現的希望用 hope：I hope you feel better soon.（不用 wish）", "en": "For real possibilities use hope: I hope you feel better soon."}
+      ],
+      "mistakes": [
+        {"wrong": "I wish I can speak French.", "right": "I wish I could speak French.", "zh": "wish 後面時態往過去退：could。", "en": "After wish, move back a tense: could."},
+        {"wrong": "I wish you pass the exam.", "right": "I hope you pass the exam.", "zh": "有可能實現的希望用 hope。", "en": "A real hope takes hope."}
+      ],
+      "examples": [
+        {"text": "I wish I didn't have to work today.", "zh": "真希望我今天不用上班。", "en": "I wish I didn't have to work today."},
+        {"text": "If only I had brought an umbrella!", "zh": "早知道就帶傘了！", "en": "If only I had brought an umbrella!"},
+        {"text": "I wish my neighbors would stop making noise.", "zh": "真希望鄰居不要再吵了。", "en": "I wish my neighbors would stop making noise."}
+      ],
+      "quiz": [
+        {"q": "I wish I（　）more free time.", "zh": "真希望我有更多空閒時間。", "en": "I wish I had more free time.", "options": ["had", "have", "will have", "having"], "answer": 0},
+        {"q": "I wish I（　）that cake. Now I feel sick.", "zh": "真後悔吃了那塊蛋糕，現在不舒服。", "en": "I wish I hadn't eaten that cake. Now I feel sick.", "options": ["hadn't eaten", "didn't eat", "don't eat", "haven't eaten"], "answer": 0},
+        {"q": "I（　）you have a great trip!", "zh": "祝你旅途愉快！", "en": "I hope you have a great trip!", "options": ["hope", "wish", "would", "want"], "answer": 0}
+      ]
+    },
+    {
+      "id": "as_if_rather",
+      "pattern": "as if・would rather",
+      "title": {"zh": "as if 和 would rather", "en": "as if and would rather"},
+      "form": {"zh": "as if ＋ 過去式（好像…，但其實不是）・would rather ＋ 原形（寧願）・would rather ＋ 主詞 ＋ 過去式（希望別人…）", "en": "as if + past (as though — but not really) · would rather + verb (prefer) · would rather + subject + past (prefer someone else to)"},
+      "explain": {"zh": "as if 說「好像…一樣」，不是事實時用過去式：He talks as if he were the boss.（他說話的樣子好像他是老闆。）would rather 是「寧願」：I'd rather stay home tonight.", "en": "as if means “as though”; for something untrue use the past: He talks as if he were the boss. would rather means “prefer”: I'd rather stay home tonight."},
+      "notes": [
+        {"zh": "比較用 than：I'd rather walk than take the bus.", "en": "Compare with than: I'd rather walk than take the bus."}
+      ],
+      "mistakes": [
+        {"wrong": "I would rather to stay here.", "right": "I would rather stay here.", "zh": "would rather 後面接原形，不加 to。", "en": "would rather takes the bare verb."},
+        {"wrong": "She acts as if she is a queen.", "right": "She acts as if she were a queen.", "zh": "不是事實時，as if 後面用 were。", "en": "For something untrue, use were after as if."}
+      ],
+      "examples": [
+        {"text": "He looked at me as if I were crazy.", "zh": "他看我的樣子好像我瘋了一樣。", "en": "He looked at me as if I were crazy."},
+        {"text": "I'd rather have tea than coffee.", "zh": "我寧願喝茶，不喝咖啡。", "en": "I'd rather have tea than coffee."},
+        {"text": "I'd rather you didn't tell anyone.", "zh": "我希望你不要告訴任何人。", "en": "I'd rather you didn't tell anyone."}
+      ],
+      "quiz": [
+        {"q": "I'd rather（　）at home than go out tonight.", "zh": "今晚我寧願待在家也不想出門。", "en": "I'd rather stay at home than go out tonight.", "options": ["stay", "to stay", "staying", "stayed"], "answer": 0},
+        {"q": "She talks as if she（　）everything.", "zh": "她說話的樣子好像什麼都懂。", "en": "She talks as if she knew everything.", "options": ["knew", "had know", "knows to", "will know"], "answer": 0},
+        {"q": "I'd rather you（　）smoke in the car.", "zh": "我希望你不要在車裡抽菸。", "en": "I'd rather you didn't smoke in the car.", "options": ["didn't", "don't", "won't", "not"], "answer": 0}
+      ]
+    },
+    {
+      "id": "relative_whose",
+      "pattern": "whose・whom・介系詞 ＋ which",
+      "title": {"zh": "關係代名詞 whose、whom、介系詞 ＋ which", "en": "Relative pronouns: whose, whom, preposition + which"},
+      "form": {"zh": "whose ＋ 名詞（…的）・whom（受格的人）・介系詞 ＋ which／whom（the house in which …）", "en": "whose + noun (possessive) · whom (person as object) · preposition + which / whom (the house in which …)"},
+      "explain": {"zh": "whose 表示所有：I have a friend whose father is a pilot.（我有個朋友的爸爸是機師。）whom 是受格的人（正式）：the man whom I met。介系詞可以放在 which／whom 前面：the city in which I was born。", "en": "whose shows possession: I have a friend whose father is a pilot. whom is a person as object (formal): the man whom I met. A preposition can go before which / whom: the city in which I was born."},
+      "notes": [
+        {"zh": "介系詞放前面時不能用 that 或 who：in which，不說 in that。", "en": "After a preposition you can't use that or who: in which, not in that."}
+      ],
+      "mistakes": [
+        {"wrong": "The girl who her bike was stolen called the police.", "right": "The girl whose bike was stolen called the police.", "zh": "「她的腳踏車」用 whose。", "en": "“Her bike” is whose bike."},
+        {"wrong": "This is the room in that I study.", "right": "This is the room in which I study.", "zh": "介系詞後面用 which。", "en": "After a preposition use which."}
+      ],
+      "examples": [
+        {"text": "That's the singer whose song went viral.", "zh": "那就是歌曲爆紅的那位歌手。", "en": "That's the singer whose song went viral."},
+        {"text": "The person to whom I spoke was very helpful.", "zh": "跟我說話的那個人很熱心。", "en": "The person to whom I spoke was very helpful."},
+        {"text": "This is the house in which my grandfather grew up.", "zh": "這是我爺爺從小長大的房子。", "en": "This is the house in which my grandfather grew up."}
+      ],
+      "quiz": [
+        {"q": "I met a woman（　）son goes to my school.", "zh": "我遇見一位女士，她兒子跟我同校。", "en": "I met a woman whose son goes to my school.", "options": ["whose", "who", "whom", "which"], "answer": 0},
+        {"q": "The chair on（　）you are sitting is very old.", "zh": "你坐的那張椅子很老舊。", "en": "The chair on which you are sitting is very old.", "options": ["which", "that", "where", "what"], "answer": 0},
+        {"q": "He is the teacher from（　）I learned the most.", "zh": "他是讓我學到最多的老師。", "en": "He is the teacher from whom I learned the most.", "options": ["whom", "who", "that", "whose"], "answer": 0}
+      ]
+    },
+    {
+      "id": "non_defining",
+      "pattern": "…, which …",
+      "title": {"zh": "非限定關係子句（逗號＋which／who）", "en": "Non-defining relative clauses"},
+      "form": {"zh": "名詞, who／which ＋ 補充說明, …（前後加逗號，不能用 that）・, which 也可以指整句話", "en": "noun, who / which + extra information, … (commas; no that) · , which can refer to a whole clause"},
+      "explain": {"zh": "加逗號的關係子句只是補充說明，拿掉也不影響句意：My sister, who lives in Taipei, is a nurse.（我姊姊住在台北，她是護理師。）, which 也能指前面整句：He passed the exam, which surprised everyone.", "en": "With commas, the clause just adds information and could be dropped: My sister, who lives in Taipei, is a nurse. , which can refer to the whole idea: He passed the exam, which surprised everyone."},
+      "notes": [
+        {"zh": "非限定子句不能用 that，也不能省略關係代名詞。", "en": "Non-defining clauses can't use that or drop the pronoun."}
+      ],
+      "mistakes": [
+        {"wrong": "Taipei 101, that was finished in 2004, is very tall.", "right": "Taipei 101, which was finished in 2004, is very tall.", "zh": "逗號後面不能用 that。", "en": "No that after a comma."},
+        {"wrong": "She lost her phone, what made her upset.", "right": "She lost her phone, which made her upset.", "zh": "指前面整件事用 , which。", "en": "Referring to the whole clause: , which."}
+      ],
+      "examples": [
+        {"text": "Jiufen, which is near Keelung, is popular with tourists.", "zh": "九份靠近基隆，很受觀光客歡迎。", "en": "Jiufen, which is near Keelung, is popular with tourists."},
+        {"text": "My grandmother, who is 90, still walks every day.", "zh": "我奶奶九十歲了，還是每天散步。", "en": "My grandmother, who is 90, still walks every day."},
+        {"text": "The train was late, which meant we missed the show.", "zh": "火車誤點，結果我們錯過了表演。", "en": "The train was late, which meant we missed the show."}
+      ],
+      "quiz": [
+        {"q": "Mr. Wang, （　）teaches history, is retiring this year.", "zh": "王老師教歷史，今年要退休了。", "en": "Mr. Wang, who teaches history, is retiring this year.", "options": ["who", "that", "which", "whom"], "answer": 0},
+        {"q": "It rained all weekend, （　）was disappointing.", "zh": "整個週末都在下雨，真令人失望。", "en": "It rained all weekend, which was disappointing.", "options": ["which", "that", "what", "it"], "answer": 0},
+        {"q": "My phone, （　）I bought last month, has stopped working.", "zh": "我的手機上個月才買，已經壞了。", "en": "My phone, which I bought last month, has stopped working.", "options": ["which", "that", "who", "what"], "answer": 0}
+      ]
+    },
+    {
+      "id": "relative_adverbs",
+      "pattern": "where・when・why",
+      "title": {"zh": "關係副詞 where、when、why", "en": "Relative adverbs: where, when, why"},
+      "form": {"zh": "地方 ＋ where ＋ 子句・時間 ＋ when ＋ 子句・the reason ＋ why ＋ 子句", "en": "place + where + clause · time + when + clause · the reason + why + clause"},
+      "explain": {"zh": "說明地方、時間、原因時用關係副詞：This is the restaurant where we first met.（這是我們第一次見面的餐廳。）I'll never forget the day when I got my results. That's the reason why I quit.", "en": "Use relative adverbs for places, times and reasons: This is the restaurant where we first met. I'll never forget the day when I got my results. That's the reason why I quit."},
+      "notes": [
+        {"zh": "where ＝ in／at which，when ＝ on／in which。", "en": "where = in / at which; when = on / in which."},
+        {"zh": "子句缺受詞時用 which／that，不用 where：the city (that) I visited。", "en": "If the clause lacks an object, use which / that, not where: the city (that) I visited."}
+      ],
+      "mistakes": [
+        {"wrong": "This is the park where I like.", "right": "This is the park (that) I like.", "zh": "like 缺受詞，要用 that／which。", "en": "like needs an object: use that / which."},
+        {"wrong": "I remember the year which we moved here.", "right": "I remember the year when we moved here.", "zh": "子句完整、說時間，用 when。", "en": "The clause is complete and it's a time: when."}
+      ],
+      "examples": [
+        {"text": "Tainan is the city where I was born.", "zh": "台南是我出生的城市。", "en": "Tainan is the city where I was born."},
+        {"text": "Summer is the season when we go camping.", "zh": "夏天是我們去露營的季節。", "en": "Summer is the season when we go camping."},
+        {"text": "Nobody knows the reason why he left.", "zh": "沒有人知道他離開的原因。", "en": "Nobody knows the reason why he left."}
+      ],
+      "quiz": [
+        {"q": "This is the hospital（　）my mother works.", "zh": "這是我媽媽工作的醫院。", "en": "This is the hospital where my mother works.", "options": ["where", "which", "when", "what"], "answer": 0},
+        {"q": "Do you remember the day（　）we first met?", "zh": "你記得我們第一次見面的那天嗎？", "en": "Do you remember the day when we first met?", "options": ["when", "where", "which", "what"], "answer": 0},
+        {"q": "Kyoto is a city（　）I have always wanted to visit.", "zh": "京都是我一直想去的城市。", "en": "Kyoto is a city that I have always wanted to visit.", "options": ["that", "where", "when", "in which"], "answer": 0}
+      ]
+    },
+    {
+      "id": "whatever",
+      "pattern": "whatever・whoever・wherever",
+      "title": {"zh": "複合關係詞 whatever、whoever", "en": "whatever, whoever, wherever"},
+      "form": {"zh": "whatever（任何…的東西／不論什麼）・whoever（任何…的人／不論誰）・wherever（不論哪裡）・whenever（不論何時）・however ＋ 形容詞（不論多…）", "en": "whatever · whoever · wherever · whenever · however + adjective (no matter how)"},
+      "explain": {"zh": "這些字可以當「任何…的」：Take whatever you want.（你想拿什麼就拿。）也可以表示讓步「不論…」：Whatever happens, I'll support you.（不管發生什麼，我都支持你。）＝ No matter what happens …", "en": "They mean “anything that”: Take whatever you want. They also mean “no matter”: Whatever happens, I'll support you (= No matter what happens …)."},
+      "notes": [
+        {"zh": "however 後面接形容詞或副詞：However hard it is, don't give up.", "en": "however takes an adjective or adverb: However hard it is, don't give up."}
+      ],
+      "mistakes": [
+        {"wrong": "You can invite whomever wants to come.", "right": "You can invite whoever wants to come.", "zh": "子句裡當主詞（wants 的主詞）用 whoever。", "en": "It's the subject of wants: whoever."},
+        {"wrong": "No matter how it is hard, keep going.", "right": "No matter how hard it is, keep going.", "zh": "how 後面緊接形容詞。", "en": "how is followed directly by the adjective."}
+      ],
+      "examples": [
+        {"text": "You can sit wherever you like.", "zh": "你想坐哪裡都可以。", "en": "You can sit wherever you like."},
+        {"text": "Whoever finishes first gets a prize.", "zh": "最先完成的人有獎品。", "en": "Whoever finishes first gets a prize."},
+        {"text": "Call me whenever you need help.", "zh": "需要幫忙時隨時打給我。", "en": "Call me whenever you need help."}
+      ],
+      "quiz": [
+        {"q": "（　）you do, don't tell Mom.", "zh": "不管你做什麼，都別跟媽媽說。", "en": "Whatever you do, don't tell Mom.", "options": ["Whatever", "However", "Whoever", "Wherever"], "answer": 0},
+        {"q": "（　）tired I am, I always cook dinner.", "zh": "不論多累，我都會煮晚餐。", "en": "However tired I am, I always cook dinner.", "options": ["However", "Whatever", "Whenever", "How"], "answer": 0},
+        {"q": "Give the ticket to（　）needs it most.", "zh": "把票給最需要的人。", "en": "Give the ticket to whoever needs it most.", "options": ["whoever", "whomever", "whatever", "who"], "answer": 0}
+      ]
+    },
+    {
+      "id": "participle_clauses",
+      "pattern": "V-ing …, ／ p.p. …,",
+      "title": {"zh": "分詞構句", "en": "Participle clauses"},
+      "form": {"zh": "主動：V-ing …, 主句（Walking home, I met Amy.）・被動：p.p. …, 主句（Written in 1900, the book …）・先發生：Having ＋ p.p. …,", "en": "active: V-ing …, main clause · passive: p.p. …, main clause · earlier action: Having + p.p. …,"},
+      "explain": {"zh": "兩個子句主詞相同時，可以把一個子句縮成分詞：When I walked home, I met Amy. → Walking home, I met Amy. 主詞「被」做用過去分詞：Built in 1920, the station is a historic site.", "en": "When both clauses share a subject, one can become a participle: When I walked home, I met Amy → Walking home, I met Amy. If the subject is acted on, use the past participle: Built in 1920, the station is a historic site."},
+      "notes": [
+        {"zh": "分詞的主詞必須跟主句主詞一樣，不然會變成「懸垂分詞」的錯誤。", "en": "The participle's subject must be the main clause's subject, or it “dangles”."}
+      ],
+      "mistakes": [
+        {"wrong": "Walking into the room, the lights went off.", "right": "Walking into the room, I saw the lights go off.", "zh": "走進房間的是「我」，不是燈。", "en": "I walked in, not the lights."},
+        {"wrong": "Writing in simple English, the book is easy to read.", "right": "Written in simple English, the book is easy to read.", "zh": "書是「被寫」，用過去分詞。", "en": "The book was written: past participle."}
+      ],
+      "examples": [
+        {"text": "Feeling tired, she went to bed early.", "zh": "她覺得累，就早早睡了。", "en": "Feeling tired, she went to bed early."},
+        {"text": "Having finished his homework, Tom went out to play.", "zh": "湯姆寫完功課後就出去玩了。", "en": "Having finished his homework, Tom went out to play."},
+        {"text": "Surrounded by mountains, the village is very quiet.", "zh": "那個村子四面環山，非常安靜。", "en": "Surrounded by mountains, the village is very quiet."}
+      ],
+      "quiz": [
+        {"q": "（　）the news, she started to cry.", "zh": "聽到那個消息，她開始哭了。", "en": "Hearing the news, she started to cry.", "options": ["Hearing", "Heard", "To hear", "Hear"], "answer": 0},
+        {"q": "（　）by many tourists, the temple is always crowded.", "zh": "這座廟有很多遊客造訪，總是很擁擠。", "en": "Visited by many tourists, the temple is always crowded.", "options": ["Visited", "Visiting", "Visit", "Having visit"], "answer": 0},
+        {"q": "（　）the report, I sent it to my boss.", "zh": "寫完報告後，我把它寄給老闆。", "en": "Having written the report, I sent it to my boss.", "options": ["Having written", "Written", "Having write", "Wrote"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ing_ed_adj",
+      "pattern": "-ing ／ -ed 形容詞",
+      "title": {"zh": "分詞形容詞：interesting 和 interested", "en": "-ing and -ed adjectives"},
+      "form": {"zh": "-ing：讓人有某種感覺的人事物（boring 令人無聊的）・-ed：人自己的感覺（bored 覺得無聊）", "en": "-ing: what causes the feeling (boring) · -ed: how the person feels (bored)"},
+      "explain": {"zh": "-ing 形容詞描述「讓人覺得…的東西」，-ed 描述「人感到…」：The movie was boring, so I was bored.（電影很無聊，所以我覺得無聊。）I'm interested in history because it's interesting.", "en": "-ing adjectives describe what causes a feeling; -ed adjectives describe how people feel: The movie was boring, so I was bored. I'm interested in history because it's interesting."},
+      "notes": [
+        {"zh": "常見的一組：exciting／excited、tiring／tired、surprising／surprised、confusing／confused。", "en": "Common pairs: exciting / excited, tiring / tired, surprising / surprised, confusing / confused."}
+      ],
+      "mistakes": [
+        {"wrong": "I'm very boring in math class.", "right": "I'm very bored in math class.", "zh": "說自己的感覺用 bored（I'm boring 是「我很無趣」）。", "en": "Your feeling is bored (I'm boring means you're dull)."},
+        {"wrong": "The news was very surprised.", "right": "The news was very surprising.", "zh": "讓人驚訝的消息用 surprising。", "en": "News that surprises is surprising."}
+      ],
+      "examples": [
+        {"text": "The trip was tiring, but we were very excited.", "zh": "旅程很累，但我們很興奮。", "en": "The trip was tiring, but we were very excited."},
+        {"text": "I was confused by the confusing instructions.", "zh": "說明寫得很混亂，讓我看得一頭霧水。", "en": "I was confused by the confusing instructions."},
+        {"text": "Are you interested in joining the club?", "zh": "你有興趣加入社團嗎？", "en": "Are you interested in joining the club?"}
+      ],
+      "quiz": [
+        {"q": "The ending of the story was really（　）.", "zh": "故事的結局真的很令人驚訝。", "en": "The ending of the story was really surprising.", "options": ["surprising", "surprised", "surprise", "surprisingly"], "answer": 0},
+        {"q": "After the long hike, we were all（　）.", "zh": "長途健行後，我們都累壞了。", "en": "After the long hike, we were all exhausted.", "options": ["exhausted", "exhausting", "exhaust", "exhaustion"], "answer": 0},
+        {"q": "It's（　）to hear that you got the job!", "zh": "聽到你得到那份工作真令人興奮！", "en": "It's exciting to hear that you got the job!", "options": ["exciting", "excited", "excite", "excitedly"], "answer": 0}
+      ]
+    },
+    {
+      "id": "causative",
+      "pattern": "make／let／have ＋ O ＋ V",
+      "title": {"zh": "使役動詞 make、let、have、get", "en": "Causatives: make, let, have, get"},
+      "form": {"zh": "make／let／have ＋ 受詞 ＋ 原形・get ＋ 受詞 ＋ to V・have／get ＋ 東西 ＋ p.p.（請人把東西…）", "en": "make / let / have + object + verb · get + object + to verb · have / get + thing + p.p. (have something done)"},
+      "explain": {"zh": "make 是「迫使」，let 是「讓、允許」，have 是「叫（某人做）」，後面都接原形：My mom made me clean my room. Let me help you. 請別人幫你處理東西用 have ＋ 東西 ＋ p.p.：I had my hair cut.（我去剪了頭髮。）", "en": "make means force, let means allow, have means arrange for someone to do it — all with the bare verb: My mom made me clean my room. Let me help you. For services: have + thing + p.p.: I had my hair cut."},
+      "notes": [
+        {"zh": "被動時 make 要加 to：I was made to wait.", "en": "In the passive, make takes to: I was made to wait."}
+      ],
+      "mistakes": [
+        {"wrong": "My boss made me to work late.", "right": "My boss made me work late.", "zh": "make 後面接原形。", "en": "make takes the bare verb."},
+        {"wrong": "I cut my hair at the salon yesterday.", "right": "I had my hair cut at the salon yesterday.", "zh": "請別人剪頭髮用 have ＋ hair ＋ cut。", "en": "Someone else cut it: have my hair cut."}
+      ],
+      "examples": [
+        {"text": "The sad movie made everyone cry.", "zh": "那部悲傷的電影讓大家都哭了。", "en": "The sad movie made everyone cry."},
+        {"text": "My parents let me stay up late on Fridays.", "zh": "我爸媽星期五讓我晚睡。", "en": "My parents let me stay up late on Fridays."},
+        {"text": "We're having our kitchen repainted.", "zh": "我們請人重新粉刷廚房。", "en": "We're having our kitchen repainted."}
+      ],
+      "quiz": [
+        {"q": "The teacher let us（　）early.", "zh": "老師讓我們早點走。", "en": "The teacher let us leave early.", "options": ["leave", "to leave", "leaving", "left"], "answer": 0},
+        {"q": "I need to get my phone（　）.", "zh": "我得把手機送修。", "en": "I need to get my phone repaired.", "options": ["repaired", "repair", "repairing", "to repair"], "answer": 0},
+        {"q": "I finally got my brother（　）me his bike.", "zh": "我終於說服哥哥把腳踏車借我了。", "en": "I finally got my brother to lend me his bike.", "options": ["to lend", "lend", "lent", "lending"], "answer": 0}
+      ]
+    },
+    {
+      "id": "perception",
+      "pattern": "see／hear ＋ O ＋ V／V-ing",
+      "title": {"zh": "感官動詞 see、hear、watch、feel", "en": "Verbs of perception"},
+      "form": {"zh": "see／hear／watch／feel ＋ 受詞 ＋ 原形（看到整個過程）／V-ing（看到正在進行）", "en": "see / hear / watch / feel + object + verb (the whole action) / verb-ing (part of it, in progress)"},
+      "explain": {"zh": "感官動詞後面的動作可以用原形或 V-ing：I saw him cross the street.（看到他過完馬路，整個過程）I saw him crossing the street.（看到他正在過馬路）兩種都對，意思略有不同。", "en": "After perception verbs the action can be a bare verb or -ing: I saw him cross the street (the whole action), I saw him crossing the street (in progress). Both are correct with slightly different meanings."},
+      "notes": [
+        {"zh": "被動時原形要加 to：He was seen to enter the building.", "en": "In the passive the bare verb takes to: He was seen to enter the building."}
+      ],
+      "mistakes": [
+        {"wrong": "I heard someone to call my name.", "right": "I heard someone call my name.", "zh": "感官動詞後面不加 to。", "en": "No to after a perception verb."},
+        {"wrong": "We watched the sun to set.", "right": "We watched the sun set.", "zh": "watch 後面接原形或 V-ing。", "en": "watch takes the bare verb or -ing."}
+      ],
+      "examples": [
+        {"text": "I heard the baby crying in the next room.", "zh": "我聽到寶寶在隔壁房間哭。", "en": "I heard the baby crying in the next room."},
+        {"text": "Did you see anyone leave the building?", "zh": "你有看到任何人離開大樓嗎？", "en": "Did you see anyone leave the building?"},
+        {"text": "She felt the ground shake during the earthquake.", "zh": "地震時她感覺到地面在搖。", "en": "She felt the ground shake during the earthquake."}
+      ],
+      "quiz": [
+        {"q": "I saw a cat（　）up the tree.", "zh": "我看到一隻貓爬上樹。", "en": "I saw a cat climb up the tree.", "options": ["climb", "to climb", "climbed", "climbs"], "answer": 0},
+        {"q": "Can you hear the birds（　）?", "zh": "你聽得到鳥在唱歌嗎？", "en": "Can you hear the birds singing?", "options": ["singing", "to sing", "sang", "sung"], "answer": 0},
+        {"q": "He was seen（　）the store at midnight.", "zh": "有人看到他半夜進了那家店。", "en": "He was seen to enter the store at midnight.", "options": ["to enter", "enter", "entered", "enters"], "answer": 0}
+      ]
+    },
+    {
+      "id": "noun_clauses",
+      "pattern": "that ＋ 子句・what ＋ 子句",
+      "title": {"zh": "名詞子句：that、what、whether", "en": "Noun clauses: that, what, whether"},
+      "form": {"zh": "that ＋ 完整子句（…這件事）・what ＋ 缺東西的子句（…的東西）・whether／if ＋ 子句（是否）", "en": "that + complete clause · what + clause missing something (the thing that) · whether / if + clause"},
+      "explain": {"zh": "一個子句可以當名詞用：That he lied surprised me.（他說謊這件事讓我驚訝。）What you said is true.（你說的是真的。）I don't know whether he'll come. what 等於 the thing that，後面的子句少一個受詞或主詞。", "en": "A clause can work as a noun: That he lied surprised me. What you said is true. I don't know whether he'll come. what = the thing that, and its clause is missing an object or subject."},
+      "notes": [
+        {"zh": "主詞是 that 子句時，常改成 It ... that：It surprised me that he lied.", "en": "A that clause subject is often moved: It surprised me that he lied."}
+      ],
+      "mistakes": [
+        {"wrong": "That you need is a good rest.", "right": "What you need is a good rest.", "zh": "need 缺受詞，用 what。", "en": "need lacks an object: what."},
+        {"wrong": "I can't believe what she won the contest.", "right": "I can't believe that she won the contest.", "zh": "子句完整，用 that。", "en": "The clause is complete: that."}
+      ],
+      "examples": [
+        {"text": "What I really want is a long vacation.", "zh": "我真正想要的是一個長假。", "en": "What I really want is a long vacation."},
+        {"text": "The problem is that we don't have enough time.", "zh": "問題是我們時間不夠。", "en": "The problem is that we don't have enough time."},
+        {"text": "Whether we go or not depends on the weather.", "zh": "要不要去要看天氣。", "en": "Whether we go or not depends on the weather."}
+      ],
+      "quiz": [
+        {"q": "（　）she said made everyone laugh.", "zh": "她說的話讓大家都笑了。", "en": "What she said made everyone laugh.", "options": ["What", "That", "Which", "It"], "answer": 0},
+        {"q": "The truth is（　）I forgot your birthday.", "zh": "事實是我忘了你的生日。", "en": "The truth is that I forgot your birthday.", "options": ["that", "what", "which", "whether that"], "answer": 0},
+        {"q": "I'm not sure（　）the store is open today.", "zh": "我不確定那家店今天有沒有開。", "en": "I'm not sure whether the store is open today.", "options": ["whether", "what", "that", "which"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cleft",
+      "pattern": "It is … that …",
+      "title": {"zh": "強調句 It is … that", "en": "Cleft sentences: It is … that"},
+      "form": {"zh": "It is／was ＋ 要強調的部分 ＋ that ＋ 句子其他部分", "en": "It is / was + the part to stress + that + the rest"},
+      "explain": {"zh": "想強調句子的某一部分，把它放在 It is／was 和 that 之間：Tom broke the window. → It was Tom that broke the window.（打破窗戶的是湯姆。）It was yesterday that I saw her.", "en": "To stress one part of a sentence, put it between It is / was and that: It was Tom that broke the window. It was yesterday that I saw her."},
+      "notes": [
+        {"zh": "強調人時也可以用 who：It was Tom who broke the window.", "en": "For people who also works: It was Tom who broke the window."},
+        {"zh": "It was not until … that …：直到…才…：It was not until midnight that he came home.", "en": "It was not until … that …: It was not until midnight that he came home."}
+      ],
+      "mistakes": [
+        {"wrong": "It was in Paris where I met her.", "right": "It was in Paris that I met her.", "zh": "強調句固定用 that。", "en": "Cleft sentences use that."},
+        {"wrong": "It is my parents that supports me.", "right": "It is my parents that support me.", "zh": "動詞跟著被強調的 parents 用複數。", "en": "The verb agrees with parents."}
+      ],
+      "examples": [
+        {"text": "It was my grandmother who taught me to cook.", "zh": "教我做菜的是我奶奶。", "en": "It was my grandmother who taught me to cook."},
+        {"text": "It is hard work that leads to success.", "zh": "帶來成功的是努力。", "en": "It is hard work that leads to success."},
+        {"text": "It was not until I got home that I noticed my phone was gone.", "zh": "直到回到家，我才發現手機不見了。", "en": "It was not until I got home that I noticed my phone was gone."}
+      ],
+      "quiz": [
+        {"q": "It was at the night market（　）I lost my wallet.", "zh": "我是在夜市弄丟錢包的。", "en": "It was at the night market that I lost my wallet.", "options": ["that", "where", "which", "when"], "answer": 0},
+        {"q": "It was not until ten o'clock（　）the meeting ended.", "zh": "會議直到十點才結束。", "en": "It was not until ten o'clock that the meeting ended.", "options": ["that", "when", "then", "until"], "answer": 0},
+        {"q": "（　）was Edison who invented the light bulb.", "zh": "發明電燈泡的是愛迪生。", "en": "It was Edison who invented the light bulb.", "options": ["It", "That", "This", "There"], "answer": 0}
+      ]
+    },
+    {
+      "id": "so_that",
+      "pattern": "too … to・enough to・so … that・such … that",
+      "title": {"zh": "too … to、enough to、so … that、such … that", "en": "too … to, enough to, so … that, such … that"},
+      "form": {"zh": "too ＋ 形 ＋ to V（太…不能）・形 ＋ enough to V（夠…可以）・so ＋ 形 ／ such (a) ＋ 形 ＋ 名 ＋ that（如此…以致）", "en": "too + adj + to verb · adj + enough to verb · so + adj / such (a) + adj + noun + that"},
+      "explain": {"zh": "說程度和結果：The box is too heavy to lift.（箱子太重搬不動。）She is old enough to drive.（她夠大可以開車了。）It was so hot that we stayed inside. It was such a hot day that we stayed inside.", "en": "For degree and result: The box is too heavy to lift. She is old enough to drive. It was so hot that we stayed inside. It was such a hot day that we stayed inside."},
+      "notes": [
+        {"zh": "enough 放在形容詞後面，名詞前面：tall enough、enough money。", "en": "enough goes after adjectives but before nouns: tall enough, enough money."}
+      ],
+      "mistakes": [
+        {"wrong": "He is enough tall to reach the shelf.", "right": "He is tall enough to reach the shelf.", "zh": "enough 放在形容詞後面。", "en": "enough follows the adjective."},
+        {"wrong": "It was so a good movie that I saw it twice.", "right": "It was such a good movie that I saw it twice.", "zh": "後面有名詞用 such a。", "en": "With a noun use such a."}
+      ],
+      "examples": [
+        {"text": "The tea is too hot to drink.", "zh": "茶太燙了，不能喝。", "en": "The tea is too hot to drink."},
+        {"text": "He was so tired that he fell asleep on the bus.", "zh": "他累到在公車上睡著了。", "en": "He was so tired that he fell asleep on the bus."},
+        {"text": "We don't have enough chairs for everyone.", "zh": "椅子不夠大家坐。", "en": "We don't have enough chairs for everyone."}
+      ],
+      "quiz": [
+        {"q": "This shirt is（　）small for me to wear.", "zh": "這件襯衫太小了，我穿不下。", "en": "This shirt is too small for me to wear.", "options": ["too", "so", "enough", "such"], "answer": 0},
+        {"q": "It was（　）a boring lecture that half the class fell asleep.", "zh": "那場演講太無聊了，半個班都睡著了。", "en": "It was such a boring lecture that half the class fell asleep.", "options": ["such", "so", "too", "very"], "answer": 0},
+        {"q": "Is the water warm（　）to swim in?", "zh": "水夠溫暖可以游泳嗎？", "en": "Is the water warm enough to swim in?", "options": ["enough", "too", "so", "such"], "answer": 0}
+      ]
+    },
+    {
+      "id": "inversion",
+      "pattern": "Never have I …・Not only … but also",
+      "title": {"zh": "倒裝句", "en": "Inversion after negative words"},
+      "form": {"zh": "否定詞放句首 ＋ 助動詞 ＋ 主詞 ＋ 動詞：Never／Rarely／Seldom／Not only／Only then／No sooner … than", "en": "negative word first + auxiliary + subject + verb: Never / Rarely / Seldom / Not only / Only then / No sooner … than"},
+      "explain": {"zh": "否定或限定的字放在句首加強語氣時，後面要像問句一樣倒裝：I have never seen such a view. → Never have I seen such a view.（我從沒看過這麼美的景色。）Not only is she smart, but she is also kind.", "en": "When a negative or limiting word starts the sentence for emphasis, the rest is inverted like a question: Never have I seen such a view. Not only is she smart, but she is also kind."},
+      "notes": [
+        {"zh": "一般動詞要補 do／does／did：Seldom does he eat breakfast.", "en": "Ordinary verbs need do / does / did: Seldom does he eat breakfast."}
+      ],
+      "mistakes": [
+        {"wrong": "Never I have eaten such good food.", "right": "Never have I eaten such good food.", "zh": "Never 在句首要倒裝。", "en": "Never at the start needs inversion."},
+        {"wrong": "Rarely he goes to the movies.", "right": "Rarely does he go to the movies.", "zh": "一般動詞倒裝要加 does，動詞回原形。", "en": "Ordinary verbs need does + bare verb."}
+      ],
+      "examples": [
+        {"text": "Not only did he forget my birthday, but he also forgot our dinner.", "zh": "他不但忘了我的生日，連我們的晚餐約會也忘了。", "en": "Not only did he forget my birthday, but he also forgot our dinner."},
+        {"text": "Seldom do we see such kindness.", "zh": "我們很少看到這樣的善意。", "en": "Seldom do we see such kindness."},
+        {"text": "Only then did I understand what she meant.", "zh": "直到那時我才明白她的意思。", "en": "Only then did I understand what she meant."}
+      ],
+      "quiz": [
+        {"q": "Never（　）such a beautiful sunset.", "zh": "我從沒看過這麼美的夕陽。", "en": "Never have I seen such a beautiful sunset.", "options": ["have I seen", "I have seen", "I saw", "seen I have"], "answer": 0},
+        {"q": "Not only（　）fluent English, but she also speaks Spanish.", "zh": "她不但英文流利，還會說西班牙文。", "en": "Not only does she speak fluent English, but she also speaks Spanish.", "options": ["does she speak", "she speaks", "she does speak", "speaks she"], "answer": 0},
+        {"q": "Rarely（　）late for work.", "zh": "他很少上班遲到。", "en": "Rarely is he late for work.", "options": ["is he", "he is", "does he", "he does"], "answer": 0}
+      ]
+    },
+    {
+      "id": "modal_perfect",
+      "pattern": "must／should／could have ＋ p.p.",
+      "title": {"zh": "助動詞 ＋ have ＋ p.p.：對過去的推測和後悔", "en": "Modal + have + p.p."},
+      "form": {"zh": "must have p.p.（當時一定…）・can't have p.p.（當時不可能…）・should have p.p.（當時應該…卻沒有）・could／might have p.p.（當時可能…）", "en": "must have p.p. (surely did) · can't have p.p. (surely didn't) · should have p.p. (ought to have, but didn't) · could / might have p.p. (possibly did)"},
+      "explain": {"zh": "對過去的事推測或後悔：The ground is wet. It must have rained.（地是濕的，一定下過雨。）I should have brought a jacket.（我早該帶外套的。）He might have missed the bus.", "en": "For guesses and regrets about the past: The ground is wet. It must have rained. I should have brought a jacket. He might have missed the bus."},
+      "notes": [
+        {"zh": "shouldn't have p.p. 是「當時不該…卻做了」：You shouldn't have said that.", "en": "shouldn't have p.p. means you did it but shouldn't have: You shouldn't have said that."}
+      ],
+      "mistakes": [
+        {"wrong": "She must has left already.", "right": "She must have left already.", "zh": "助動詞後面一律用 have。", "en": "After a modal it's always have."},
+        {"wrong": "I should studied harder.", "right": "I should have studied harder.", "zh": "後悔過去的事用 should have ＋ p.p.。", "en": "Past regret: should have + p.p."}
+      ],
+      "examples": [
+        {"text": "You must have been tired after the long flight.", "zh": "長途飛行後你一定很累吧。", "en": "You must have been tired after the long flight."},
+        {"text": "We should have booked the tickets earlier.", "zh": "我們應該早點訂票的。", "en": "We should have booked the tickets earlier."},
+        {"text": "He can't have finished already — he only started an hour ago.", "zh": "他不可能已經做完了，他一小時前才開始。", "en": "He can't have finished already — he only started an hour ago."}
+      ],
+      "quiz": [
+        {"q": "The lights are off. They（　）gone to bed.", "zh": "燈都關了，他們一定已經睡了。", "en": "The lights are off. They must have gone to bed.", "options": ["must have", "must had", "must to have", "must"], "answer": 0},
+        {"q": "I failed the test. I（　）more.", "zh": "我考試不及格，早該多讀一點的。", "en": "I failed the test. I should have studied more.", "options": ["should have studied", "must have studied", "should study", "should studied"], "answer": 0},
+        {"q": "She（　）seen me. She was in Japan at the time.", "zh": "她不可能看到我，她那時在日本。", "en": "She can't have seen me. She was in Japan at the time.", "options": ["can't have", "must have", "should have", "can't"], "answer": 0}
+      ]
+    },
+    {
+      "id": "used_to",
+      "pattern": "used to V・be used to V-ing",
+      "title": {"zh": "used to 和 be used to", "en": "used to and be used to"},
+      "form": {"zh": "used to ＋ 原形（以前常常…，現在不了）・be／get used to ＋ V-ing／名詞（習慣於…）", "en": "used to + verb (did in the past, not now) · be / get used to + verb-ing / noun (be accustomed to)"},
+      "explain": {"zh": "used to ＋ 原形說過去的習慣或狀態：I used to live in Kaohsiung.（我以前住在高雄。）be used to ＋ V-ing 是「已經習慣」：I'm used to getting up early.（我習慣早起了。）get used to 是「漸漸習慣」。", "en": "used to + verb is a past habit or state: I used to live in Kaohsiung. be used to + -ing means “be accustomed to”: I'm used to getting up early. get used to means “become accustomed”."},
+      "notes": [
+        {"zh": "be used to 的 to 是介系詞，後面接 V-ing 或名詞。", "en": "In be used to, to is a preposition: -ing or a noun follows."},
+        {"zh": "否定和疑問：didn't use to、Did you use to …?", "en": "Negatives and questions: didn't use to, Did you use to …?"}
+      ],
+      "mistakes": [
+        {"wrong": "I'm used to drive on the left.", "right": "I'm used to driving on the left.", "zh": "be used to 後面接 V-ing。", "en": "be used to takes -ing."},
+        {"wrong": "She use to play the piano.", "right": "She used to play the piano.", "zh": "肯定句寫成 used to。", "en": "In statements it's used to."}
+      ],
+      "examples": [
+        {"text": "There used to be a cinema on this street.", "zh": "這條街以前有一間電影院。", "en": "There used to be a cinema on this street."},
+        {"text": "It took me months to get used to the cold weather.", "zh": "我花了好幾個月才習慣寒冷的天氣。", "en": "It took me months to get used to the cold weather."},
+        {"text": "Did you use to have long hair?", "zh": "你以前是長頭髮嗎？", "en": "Did you use to have long hair?"}
+      ],
+      "quiz": [
+        {"q": "My dad used to（　）a lot, but he quit.", "zh": "我爸爸以前很常抽菸，但戒了。", "en": "My dad used to smoke a lot, but he quit.", "options": ["smoke", "smoking", "smoked", "smokes"], "answer": 0},
+        {"q": "I'm not used to（　）spicy food.", "zh": "我不習慣吃辣。", "en": "I'm not used to eating spicy food.", "options": ["eating", "eat", "ate", "be eat"], "answer": 0},
+        {"q": "You'll soon get used to（　）in a big city.", "zh": "你很快就會習慣住在大城市。", "en": "You'll soon get used to living in a big city.", "options": ["living", "live", "lived", "lives"], "answer": 0}
+      ]
+    },
+    {
+      "id": "concession",
+      "pattern": "although・despite・in spite of",
+      "title": {"zh": "讓步：although、despite、in spite of", "en": "Contrast: although, despite, in spite of"},
+      "form": {"zh": "although／though／even though ＋ 子句・despite／in spite of ＋ 名詞／V-ing", "en": "although / though / even though + clause · despite / in spite of + noun / verb-ing"},
+      "explain": {"zh": "although 後面接完整的句子：Although it was raining, we went out. despite／in spite of 後面接名詞或 V-ing：Despite the rain, we went out. In spite of feeling sick, she went to school.", "en": "although takes a full clause: Although it was raining, we went out. despite / in spite of take a noun or -ing: Despite the rain, we went out. In spite of feeling sick, she went to school."},
+      "notes": [
+        {"zh": "despite 後面沒有 of；in spite of 要有 of。", "en": "despite has no of; in spite of does."},
+        {"zh": "although 和 but 不一起用。", "en": "Don't use although and but together."}
+      ],
+      "mistakes": [
+        {"wrong": "Despite it was late, he kept working.", "right": "Although it was late, he kept working.", "zh": "後面是完整句子要用 although。", "en": "A full clause needs although."},
+        {"wrong": "Despite of the traffic, we arrived on time.", "right": "Despite the traffic, we arrived on time.", "zh": "despite 不加 of。", "en": "despite has no of."}
+      ],
+      "examples": [
+        {"text": "Even though he's rich, he lives a simple life.", "zh": "他雖然有錢，卻過著簡樸的生活。", "en": "Even though he's rich, he lives a simple life."},
+        {"text": "Despite the high price, the tickets sold out quickly.", "zh": "儘管票價很高，票還是很快就賣完了。", "en": "Despite the high price, the tickets sold out quickly."},
+        {"text": "In spite of being tired, she finished the race.", "zh": "儘管很累，她還是跑完了全程。", "en": "In spite of being tired, she finished the race."}
+      ],
+      "quiz": [
+        {"q": "（　）the bad weather, the concert went on.", "zh": "儘管天氣不好，演唱會照常舉行。", "en": "Despite the bad weather, the concert went on.", "options": ["Despite", "Although", "Despite of", "Even though"], "answer": 0},
+        {"q": "（　）she studied hard, she didn't pass.", "zh": "雖然她很用功，還是沒通過。", "en": "Although she studied hard, she didn't pass.", "options": ["Although", "Despite", "In spite of", "But"], "answer": 0},
+        {"q": "He went to work in spite of（　）a cold.", "zh": "他雖然感冒了，還是去上班。", "en": "He went to work in spite of having a cold.", "options": ["having", "he had", "have", "had"], "answer": 0}
+      ]
+    },
+    {
+      "id": "purpose",
+      "pattern": "so that・in order to",
+      "title": {"zh": "目的：so that、in order to", "en": "Purpose: so that, in order to"},
+      "form": {"zh": "in order to／so as to ＋ 原形・so that ＋ 子句（常有 can／could／will／would）", "en": "in order to / so as to + verb · so that + clause (often with can / could / will / would)"},
+      "explain": {"zh": "說「為了…」：She got up early in order to catch the first train. 主詞不同或要用助動詞時用 so that：I'll speak slowly so that everyone can understand.（我會說慢一點，好讓大家都聽得懂。）", "en": "For purpose: She got up early in order to catch the first train. With a different subject or a modal, use so that: I'll speak slowly so that everyone can understand."},
+      "notes": [
+        {"zh": "否定目的：in order not to ＋ 原形、so that … won't／wouldn't。", "en": "Negative purpose: in order not to + verb, so that … won't / wouldn't."}
+      ],
+      "mistakes": [
+        {"wrong": "I saved money in order buying a laptop.", "right": "I saved money in order to buy a laptop.", "zh": "in order to 後面接原形。", "en": "in order to takes the bare verb."},
+        {"wrong": "Turn off the light so that the baby sleeps can.", "right": "Turn off the light so that the baby can sleep.", "zh": "so that 後面是正常語序的子句。", "en": "so that takes a normal clause."}
+      ],
+      "examples": [
+        {"text": "He wrote it down so that he wouldn't forget.", "zh": "他把它寫下來，免得忘記。", "en": "He wrote it down so that he wouldn't forget."},
+        {"text": "We left early in order to avoid the traffic.", "zh": "我們早點出發，為了避開車潮。", "en": "We left early in order to avoid the traffic."},
+        {"text": "Speak louder so that the people at the back can hear.", "zh": "說大聲一點，讓後面的人也聽得到。", "en": "Speak louder so that the people at the back can hear."}
+      ],
+      "quiz": [
+        {"q": "She whispered（　）not to wake the baby.", "zh": "她小聲說話，以免吵醒寶寶。", "en": "She whispered in order not to wake the baby.", "options": ["in order", "so that", "for", "because"], "answer": 0},
+        {"q": "I'll send you the map so that you（　）find the place.", "zh": "我會把地圖傳給你，讓你找得到地方。", "en": "I'll send you the map so that you can find the place.", "options": ["can", "to", "could to", "for"], "answer": 0},
+        {"q": "He works two jobs in order to（　）his family.", "zh": "他做兩份工作來養家。", "en": "He works two jobs in order to support his family.", "options": ["support", "supporting", "supports", "supported"], "answer": 0}
+      ]
+    },
+    {
+      "id": "reported_speech",
+      "pattern": "He said (that) …",
+      "title": {"zh": "間接引述", "en": "Reported speech"},
+      "form": {"zh": "said／told sb ＋ (that) ＋ 子句：時態往過去退一步（is → was、will → would、did → had done）・asked ＋ if／wh- ＋ 直述句語序・told／asked sb ＋ (not) to V", "en": "said / told sb + (that) + clause: tenses move back (is → was, will → would, did → had done) · asked + if / wh- + statement order · told / asked sb + (not) to verb"},
+      "explain": {"zh": "轉述別人說過的話時，時態通常往過去退一步，代名詞也要換：\"I'm tired,\" she said. → She said (that) she was tired. 轉述問句用直述句語序：He asked me where I lived. 轉述命令用 told ＋ 人 ＋ to V。", "en": "When reporting, tenses usually move back and pronouns change: She said (that) she was tired. Reported questions use statement order: He asked me where I lived. Reported orders: told + person + to verb."},
+      "notes": [
+        {"zh": "say 後面不直接接人，tell 後面要接人：said that … ／ told me that …", "en": "say doesn't take a person directly; tell does: said that … / told me that …"},
+        {"zh": "時間地點也會變：tomorrow → the next day、here → there。", "en": "Time and place words change too: tomorrow → the next day, here → there."}
+      ],
+      "mistakes": [
+        {"wrong": "She said me that she was busy.", "right": "She told me that she was busy.", "zh": "說給某人聽用 told me。", "en": "With a person, use told me."},
+        {"wrong": "He asked me where did I live.", "right": "He asked me where I lived.", "zh": "轉述問句用直述句語序。", "en": "Reported questions use statement order."}
+      ],
+      "examples": [
+        {"text": "He said he would call me later.", "zh": "他說他晚點會打給我。", "en": "He said he would call me later."},
+        {"text": "The teacher told us not to use our phones.", "zh": "老師叫我們不要用手機。", "en": "The teacher told us not to use our phones."},
+        {"text": "She asked me if I had finished the report.", "zh": "她問我報告寫完了沒。", "en": "She asked me if I had finished the report."}
+      ],
+      "quiz": [
+        {"q": "\"I'm hungry,\" said Tim. → Tim said that he（　）hungry.", "zh": "提姆說他餓了。", "en": "Tim said that he was hungry.", "options": ["was", "be", "has been be", "were"], "answer": 0},
+        {"q": "My mom（　）me to clean my room.", "zh": "我媽媽叫我打掃房間。", "en": "My mom told me to clean my room.", "options": ["told", "said", "spoke", "talked"], "answer": 0},
+        {"q": "She asked me what time（　）.", "zh": "她問我現在幾點。", "en": "She asked me what time it was.", "options": ["it was", "was it", "is it", "it is it"], "answer": 0}
+      ]
+    },
+    {
+      "id": "gerund_vs_infinitive",
+      "pattern": "stop／remember／try ＋ to V／V-ing",
+      "title": {"zh": "接 to V 和 V-ing 意思不同的動詞", "en": "Verbs with different meanings with to-verb and -ing"},
+      "form": {"zh": "stop V-ing（停止做）／stop to V（停下來去做）・remember／forget V-ing（記得／忘了做過）／to V（記得／忘了要做）・try V-ing（試試看做）／try to V（努力設法做）", "en": "stop -ing (quit) / stop to (pause in order to) · remember / forget -ing (the past) / to (a task) · try -ing (experiment) / try to (make an effort)"},
+      "explain": {"zh": "有些動詞接 to V 和 V-ing 意思不一樣：He stopped smoking.（他戒菸了。）He stopped to smoke.（他停下來抽根菸。）Remember to lock the door.（記得鎖門。）I remember locking the door.（我記得我鎖過門。）", "en": "Some verbs change meaning: He stopped smoking (quit) / He stopped to smoke (paused to smoke). Remember to lock the door (don't forget) / I remember locking the door (I did it)."},
+      "notes": [
+        {"zh": "regret V-ing 是「後悔做過」，regret to V 是「很遺憾要（告知）」：We regret to inform you …", "en": "regret -ing = be sorry you did; regret to = be sorry to (say): We regret to inform you …"}
+      ],
+      "mistakes": [
+        {"wrong": "Don't forget sending me the photos.", "right": "Don't forget to send me the photos.", "zh": "「別忘了要做」用 to V。", "en": "A task you mustn't forget: to verb."},
+        {"wrong": "I'll never forget to see the ocean for the first time.", "right": "I'll never forget seeing the ocean for the first time.", "zh": "忘不了「做過的事」用 V-ing。", "en": "A memory of something done: -ing."}
+      ],
+      "examples": [
+        {"text": "We stopped to buy some drinks on the way.", "zh": "我們半路停下來買飲料。", "en": "We stopped to buy some drinks on the way."},
+        {"text": "If your computer is slow, try restarting it.", "zh": "電腦很慢的話，試試看重新開機。", "en": "If your computer is slow, try restarting it."},
+        {"text": "I remember meeting her at a concert.", "zh": "我記得在一場演唱會上見過她。", "en": "I remember meeting her at a concert."}
+      ],
+      "quiz": [
+        {"q": "Please stop（　）. I'm trying to sleep.", "zh": "請別再講話了，我想睡覺。", "en": "Please stop talking. I'm trying to sleep.", "options": ["talking", "to talk", "talk", "talked"], "answer": 0},
+        {"q": "Remember（　）the plants while I'm away.", "zh": "我不在時記得要澆花。", "en": "Remember to water the plants while I'm away.", "options": ["to water", "watering", "water", "watered"], "answer": 0},
+        {"q": "I'll never forget（　）the top of Yushan.", "zh": "我永遠忘不了登上玉山頂的那一刻。", "en": "I'll never forget reaching the top of Yushan.", "options": ["reaching", "to reach", "reach", "reached"], "answer": 0}
+      ]
+    },
+    {
+      "id": "the_more",
+      "pattern": "The ＋ 比較級, the ＋ 比較級",
+      "title": {"zh": "越…就越…", "en": "The more …, the more …"},
+      "form": {"zh": "The ＋ 比較級 ＋ 主詞 ＋ 動詞, the ＋ 比較級 ＋ 主詞 ＋ 動詞", "en": "The + comparative + subject + verb, the + comparative + subject + verb"},
+      "explain": {"zh": "說兩件事一起變化：The more you practice, the better you get.（你練得越多，就會越好。）The sooner, the better.（越快越好。）比較級放在 the 後面，句首要有 the。", "en": "For two things that change together: The more you practice, the better you get. The sooner, the better. Each half starts with the + comparative."},
+      "notes": [
+        {"zh": "名詞也可以：The more money he makes, the more he spends.", "en": "Nouns work too: The more money he makes, the more he spends."}
+      ],
+      "mistakes": [
+        {"wrong": "More you read, more you learn.", "right": "The more you read, the more you learn.", "zh": "兩邊都要有 the。", "en": "Both halves need the."},
+        {"wrong": "The harder you work, the more successful you will be more.", "right": "The harder you work, the more successful you will be.", "zh": "比較級只放在 the 後面一次。", "en": "The comparative appears once, after the."}
+      ],
+      "examples": [
+        {"text": "The older I get, the more I appreciate my parents.", "zh": "我年紀越大，越感謝我的爸媽。", "en": "The older I get, the more I appreciate my parents."},
+        {"text": "The earlier we leave, the less traffic there will be.", "zh": "我們越早出發，車就越少。", "en": "The earlier we leave, the less traffic there will be."},
+        {"text": "The more, the merrier!", "zh": "人越多越熱鬧！", "en": "The more, the merrier!"}
+      ],
+      "quiz": [
+        {"q": "The more you exercise, the（　）you will feel.", "zh": "你運動越多，就會覺得越健康。", "en": "The more you exercise, the healthier you will feel.", "options": ["healthier", "healthy", "more health", "healthiest"], "answer": 0},
+        {"q": "（　）hotter it gets, the more water you should drink.", "zh": "天氣越熱，你就應該喝越多水。", "en": "The hotter it gets, the more water you should drink.", "options": ["The", "More", "So", "As"], "answer": 0},
+        {"q": "The（　）I think about it, the less I like the idea.", "zh": "我越想，就越不喜歡這個點子。", "en": "The more I think about it, the less I like the idea.", "options": ["more", "much", "most", "many"], "answer": 0}
+      ]
+    },
+    {
+      "id": "verb_obj_to",
+      "pattern": "ask／tell／want ＋ sb ＋ to V",
+      "title": {"zh": "動詞 ＋ 人 ＋ to V", "en": "Verb + person + to-verb"},
+      "form": {"zh": "ask／tell／want／expect／allow／encourage／remind／advise ＋ 受詞 ＋ (not) to ＋ 原形", "en": "ask / tell / want / expect / allow / encourage / remind / advise + object + (not) to + verb"},
+      "explain": {"zh": "這些動詞後面先接「人」，再接 to ＋ 原形，表示要那個人做的事：My parents want me to be a doctor.（我爸媽希望我當醫生。）The doctor advised him to rest.", "en": "These verbs take a person, then to + verb for what that person should do: My parents want me to be a doctor. The doctor advised him to rest."},
+      "notes": [
+        {"zh": "否定放在 to 前面：She reminded me not to be late.", "en": "The negative goes before to: She reminded me not to be late."},
+        {"zh": "suggest 不能用這個句型：I suggest that he (should) rest.", "en": "suggest doesn't fit this pattern: I suggest that he (should) rest."}
+      ],
+      "mistakes": [
+        {"wrong": "I want that you come to my party.", "right": "I want you to come to my party.", "zh": "want ＋ 人 ＋ to V。", "en": "want + person + to verb."},
+        {"wrong": "She told me don't worry.", "right": "She told me not to worry.", "zh": "否定是 not to ＋ 原形。", "en": "The negative is not to + verb."}
+      ],
+      "examples": [
+        {"text": "The coach encouraged us to keep trying.", "zh": "教練鼓勵我們繼續努力。", "en": "The coach encouraged us to keep trying."},
+        {"text": "Could you remind me to buy milk?", "zh": "你可以提醒我買牛奶嗎？", "en": "Could you remind me to buy milk?"},
+        {"text": "My school doesn't allow students to dye their hair.", "zh": "我們學校不准學生染頭髮。", "en": "My school doesn't allow students to dye their hair."}
+      ],
+      "quiz": [
+        {"q": "The teacher asked us（　）quiet.", "zh": "老師要我們保持安靜。", "en": "The teacher asked us to be quiet.", "options": ["to be", "be", "being", "that be"], "answer": 0},
+        {"q": "My dad told me（　）stay out too late.", "zh": "我爸爸叫我不要在外面待太晚。", "en": "My dad told me not to stay out too late.", "options": ["not to", "to not", "don't", "no to"], "answer": 0},
+        {"q": "I'd like（　）join us for dinner.", "zh": "我想請你跟我們一起吃晚餐。", "en": "I'd like you to join us for dinner.", "options": ["you to", "that you", "you", "for you"], "answer": 0}
+      ]
+    },
+    {
+      "id": "it_takes",
+      "pattern": "It takes …・spend … V-ing",
+      "title": {"zh": "花費時間和金錢：take、spend、cost", "en": "take, spend, cost"},
+      "form": {"zh": "It takes ＋ 人 ＋ 時間 ＋ to V・人 ＋ spend ＋ 時間／錢 ＋ V-ing／on ＋ 名詞・東西 ＋ cost ＋ 人 ＋ 錢", "en": "It takes + person + time + to verb · person + spend + time / money + verb-ing / on + noun · thing + cost + person + money"},
+      "explain": {"zh": "三種說「花」的句型主詞不同：It takes me an hour to get to work.（我通勤要一小時。）I spend an hour commuting every day. This bag cost me 2,000 dollars.（這個包包花了我兩千元。）", "en": "Three ways to say “spend”, each with a different subject: It takes me an hour to get to work. I spend an hour commuting every day. This bag cost me 2,000 dollars."},
+      "notes": [
+        {"zh": "spend 後面接 V-ing 或 on ＋ 名詞，不接 to V。", "en": "spend takes -ing or on + noun, never to + verb."}
+      ],
+      "mistakes": [
+        {"wrong": "I spent two hours to finish the puzzle.", "right": "I spent two hours finishing the puzzle.", "zh": "spend 時間 ＋ V-ing。", "en": "spend time + -ing."},
+        {"wrong": "It took me to clean the house three hours.", "right": "It took me three hours to clean the house.", "zh": "順序是 It takes ＋ 人 ＋ 時間 ＋ to V。", "en": "Order: It takes + person + time + to verb."}
+      ],
+      "examples": [
+        {"text": "How long does it take to walk to the station?", "zh": "走到車站要多久？", "en": "How long does it take to walk to the station?"},
+        {"text": "She spends too much money on clothes.", "zh": "她花太多錢買衣服。", "en": "She spends too much money on clothes."},
+        {"text": "The repairs cost us a fortune.", "zh": "修理花了我們一大筆錢。", "en": "The repairs cost us a fortune."}
+      ],
+      "quiz": [
+        {"q": "It（　）me two days to read this novel.", "zh": "我花了兩天讀完這本小說。", "en": "It took me two days to read this novel.", "options": ["took", "spent", "cost", "used"], "answer": 0},
+        {"q": "He spends hours（　）video games every weekend.", "zh": "他每個週末都花好幾個小時打電動。", "en": "He spends hours playing video games every weekend.", "options": ["playing", "to play", "play", "on play"], "answer": 0},
+        {"q": "How much did your new phone（　）?", "zh": "你的新手機花了多少錢？", "en": "How much did your new phone cost?", "options": ["cost", "spend", "take", "pay"], "answer": 0}
+      ]
+    },
+    {
+      "id": "not_until",
+      "pattern": "not … until・Not until … did …",
+      "title": {"zh": "not … until：直到…才…", "en": "not … until"},
+      "form": {"zh": "主詞 ＋ 否定 ＋ 動詞 ＋ until ＋ 時間／子句・Not until ＋ 時間／子句 ＋ 助動詞 ＋ 主詞 ＋ 動詞（倒裝）", "en": "subject + negative verb + until + time / clause · Not until + time / clause + auxiliary + subject + verb (inverted)"},
+      "explain": {"zh": "英文說「直到…才…」要用否定：I didn't go to bed until midnight.（我直到半夜才睡。）Not until 放句首時，主句要倒裝：Not until midnight did I go to bed.", "en": "English says “didn't … until”: I didn't go to bed until midnight. With Not until at the front, invert the main clause: Not until midnight did I go to bed."},
+      "notes": [
+        {"zh": "也可以說 It was not until midnight that I went to bed.（強調句）", "en": "Also: It was not until midnight that I went to bed (a cleft)."}
+      ],
+      "mistakes": [
+        {"wrong": "I went to bed until midnight.", "right": "I didn't go to bed until midnight.", "zh": "「直到…才」要用否定 didn't … until。", "en": "“Not until” needs didn't … until."},
+        {"wrong": "Not until he left I noticed the gift.", "right": "Not until he left did I notice the gift.", "zh": "Not until 在句首，主句要倒裝。", "en": "Not until at the front needs inversion."}
+      ],
+      "examples": [
+        {"text": "She didn't start learning English until she was twenty.", "zh": "她直到二十歲才開始學英文。", "en": "She didn't start learning English until she was twenty."},
+        {"text": "Not until I lost it did I realize how much I loved it.", "zh": "直到失去了，我才發現自己有多喜歡它。", "en": "Not until I lost it did I realize how much I loved it."},
+        {"text": "The store won't open until ten.", "zh": "那家店要到十點才開。", "en": "The store won't open until ten."}
+      ],
+      "quiz": [
+        {"q": "He（　）home until after midnight.", "zh": "他直到半夜過後才回家。", "en": "He didn't come home until after midnight.", "options": ["didn't come", "came", "doesn't came", "hadn't come to"], "answer": 0},
+        {"q": "Not until the end of the movie（　）who the killer was.", "zh": "直到電影結尾，我才知道兇手是誰。", "en": "Not until the end of the movie did I know who the killer was.", "options": ["did I know", "I knew", "I did know", "knew I"], "answer": 0},
+        {"q": "We can't start（　）everyone arrives.", "zh": "要等大家都到了，我們才能開始。", "en": "We can't start until everyone arrives.", "options": ["until", "by", "since", "after until"], "answer": 0}
+      ]
+    }
+  ]
+}
