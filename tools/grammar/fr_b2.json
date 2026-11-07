@@ -1,0 +1,468 @@
+{
+  "id": "fr_b2",
+  "lang": "fr",
+  "level": "B2",
+  "order": 4,
+  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "subj_passe",
+      "pattern": "subjonctif passé",
+      "title": {"zh": "虛擬式過去時", "en": "The past subjunctive"},
+      "form": {"zh": "avoir／être 的虛擬式 ＋ 過去分詞（que j'aie fini、qu'elle soit partie）", "en": "subjunctive of avoir / être + past participle (que j'aie fini, qu'elle soit partie)"},
+      "explain": {"zh": "需要虛擬式、而且那件事在主要動作之前已經完成時，用虛擬式過去時：Je suis content que tu aies réussi.（你成功了，我很高興。）Il faut que tu aies fini avant midi.（你得在中午前做完。）", "en": "When the subjunctive is needed and the action is already complete, use the past subjunctive: Je suis content que tu aies réussi. Il faut que tu aies fini avant midi."},
+      "notes": [
+        {"zh": "être 當助動詞時，分詞要配合主詞：Je regrette qu'elles soient parties.", "en": "With être the participle agrees: Je regrette qu'elles soient parties."}
+      ],
+      "mistakes": [
+        {"wrong": "Je suis ravi que vous avez pu venir.", "right": "Je suis ravi que vous ayez pu venir.", "zh": "情緒後面要用虛擬式：ayez pu。", "en": "A feeling takes the subjunctive: ayez pu."},
+        {"wrong": "Je regrette qu'il est parti sans dire au revoir.", "right": "Je regrette qu'il soit parti sans dire au revoir.", "zh": "regretter que 後面用虛擬式過去時。", "en": "regretter que takes the past subjunctive."}
+      ],
+      "examples": [
+        {"text": "Je suis désolé que vous ayez attendu si longtemps.", "zh": "很抱歉讓您等了這麼久。", "en": "I'm sorry you've waited so long."},
+        {"text": "C'est dommage qu'il soit parti si tôt.", "zh": "可惜他那麼早就走了。", "en": "It's a shame he left so early."},
+        {"text": "Il faut que tout soit terminé avant lundi.", "zh": "一切必須在星期一前完成。", "en": "Everything must be finished before Monday."}
+      ],
+      "quiz": [
+        {"q": "Je doute qu'elle（　）le message.", "zh": "我懷疑她有收到訊息。", "en": "I doubt she's received the message.", "options": ["ait reçu", "a reçu", "avait reçu", "aura reçu"], "answer": 0},
+        {"q": "Nous sommes heureux que vous（　）venus.", "zh": "很高興你們來了。", "en": "We're happy you've come.", "options": ["soyez", "êtes", "ayez", "seriez"], "answer": 0},
+        {"q": "Bien qu'il（　）beaucoup travaillé, il a échoué.", "zh": "雖然他很努力，還是失敗了。", "en": "Although he worked hard, he failed.", "options": ["ait", "a", "avait", "aurait"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_relative",
+      "pattern": "je cherche quelqu'un qui sache …",
+      "title": {"zh": "關係子句裡的虛擬式", "en": "The subjunctive in relative clauses"},
+      "form": {"zh": "找尋、要求的東西（還不確定存在）＋ qui／que ＋ 虛擬式・最高級、le seul、le premier ＋ que ＋ 虛擬式", "en": "something sought or required (not sure it exists) + qui / que + subjunctive · superlatives, le seul, le premier + que + subjunctive"},
+      "explain": {"zh": "說「我在找一個（不確定有沒有）會…的人」時用虛擬式：Je cherche un appartement qui soit calme. 最高級後面也常用虛擬式：C'est le meilleur film que j'aie vu.（這是我看過最好的電影。）", "en": "For something you're looking for and aren't sure exists, use the subjunctive: Je cherche un appartement qui soit calme. Superlatives often take it too: C'est le meilleur film que j'aie vu."},
+      "notes": [
+        {"zh": "如果確定存在，用直陳式：J'ai trouvé un appartement qui est calme.", "en": "If it definitely exists, use the indicative: J'ai trouvé un appartement qui est calme."}
+      ],
+      "mistakes": [
+        {"wrong": "C'est la seule personne qui peut m'aider.", "right": "C'est la seule personne qui puisse m'aider.", "zh": "le seul 後面的關係子句用虛擬式。", "en": "After le seul the relative clause takes the subjunctive."},
+        {"wrong": "Y a-t-il quelqu'un qui peut m'aider ?", "right": "Y a-t-il quelqu'un qui puisse m'aider ?", "zh": "不確定有沒有這樣的人，用虛擬式。", "en": "Unsure such a person exists: subjunctive."}
+      ],
+      "examples": [
+        {"text": "Nous cherchons un guide qui parle japonais.", "zh": "我們在找會說日文的導遊。", "en": "We're looking for a guide who speaks Japanese."},
+        {"text": "C'est le livre le plus drôle que j'aie lu cette année.", "zh": "這是我今年讀過最好笑的書。", "en": "It's the funniest book I've read this year."},
+        {"text": "Il n'y a personne qui sache réparer ça.", "zh": "沒有人會修這個。", "en": "There's nobody who knows how to fix this."}
+      ],
+      "quiz": [
+        {"q": "Je cherche un collègue qui（　）l'allemand.", "zh": "我在找會說德文的同事。", "en": "I'm looking for a colleague who speaks German.", "options": ["parle", "parlera", "parlait", "parlant"], "answer": 0},
+        {"q": "C'est le seul restaurant qui（　）ouvert le dimanche.", "zh": "這是唯一一家星期天有開的餐廳。", "en": "It's the only restaurant that's open on Sundays.", "options": ["soit", "est été", "serait été", "étant"], "answer": 0},
+        {"q": "Connais-tu quelqu'un qui（　）faire du piano ?", "zh": "你認識會彈鋼琴的人嗎？", "en": "Do you know anyone who can play the piano?", "options": ["sache", "sait faire", "savait de", "sachant"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cond_info",
+      "pattern": "selon …, il y aurait …",
+      "title": {"zh": "條件式表示「據說、未經證實」", "en": "The conditional for unconfirmed information"},
+      "form": {"zh": "selon／d'après ＋ 來源, ＋ 條件式（現在：il y aurait；過去：il y aurait eu）", "en": "selon / d'après + source, + conditional (present: il y aurait; past: il y aurait eu)"},
+      "explain": {"zh": "新聞常用條件式表示消息還沒證實：Selon la police, le voleur serait encore en ville.（據警方表示，小偷可能還在城裡。）L'accident aurait fait trois blessés.（事故據報造成三人受傷。）", "en": "News uses the conditional for unconfirmed facts: Selon la police, le voleur serait encore en ville. L'accident aurait fait trois blessés."},
+      "notes": [
+        {"zh": "這不是「如果」，而是說話者保持距離、不保證是真的。", "en": "It isn't “if” — the speaker is keeping their distance."}
+      ],
+      "mistakes": [
+        {"wrong": "Selon la radio, le président arrivera demain, mais ce n'est pas sûr.", "right": "Selon la radio, le président arriverait demain.", "zh": "不確定的消息用條件式。", "en": "Unconfirmed news takes the conditional."},
+        {"wrong": "D'après les témoins, le feu aurait commencer vers minuit.", "right": "D'après les témoins, le feu aurait commencé vers minuit.", "zh": "條件式過去時是 aurait ＋ 過去分詞。", "en": "The past conditional is aurait + past participle."}
+      ],
+      "examples": [
+        {"text": "D'après ce journal, le prix de l'essence augmenterait encore.", "zh": "根據這份報紙，油價可能還會上漲。", "en": "According to this paper, petrol prices are set to rise again."},
+        {"text": "L'incendie aurait été causé par une cigarette.", "zh": "這場火災據說是菸蒂引起的。", "en": "The fire was reportedly caused by a cigarette."},
+        {"text": "Selon certains experts, il y aurait de l'eau sur cette planète.", "zh": "根據一些專家，這顆行星上可能有水。", "en": "According to some experts, there may be water on this planet."}
+      ],
+      "quiz": [
+        {"q": "Selon les médias, le chanteur（　）malade.", "zh": "據媒體報導，那位歌手生病了。", "en": "According to the media, the singer is ill.", "options": ["serait", "soit", "sera été", "étant"], "answer": 0},
+        {"q": "Le séisme（　）fait des dizaines de victimes.", "zh": "據報這場地震造成數十人傷亡。", "en": "The earthquake reportedly claimed dozens of victims.", "options": ["aurait", "ait", "avait eu", "aura eu"], "answer": 0},
+        {"q": "D'après la météo, il（　）neiger demain.", "zh": "根據氣象預報，明天可能會下雪。", "en": "According to the forecast, it might snow tomorrow.", "options": ["pourrait", "puisse", "pouvait de", "pouvant"], "answer": 0}
+      ]
+    },
+    {
+      "id": "participe_compose",
+      "pattern": "ayant fini・étant parti",
+      "title": {"zh": "完成式分詞：ayant ＋ 過去分詞", "en": "The perfect participle"},
+      "form": {"zh": "ayant ＋ 過去分詞・étant ＋ 過去分詞（配合主詞）", "en": "ayant + past participle · étant + past participle (agreeing)"},
+      "explain": {"zh": "表示在主要動作之前已經完成的事，多用在書面語：Ayant terminé son travail, elle est rentrée.（做完工作後，她回家了。）Étant arrivés en retard, nous avons manqué le début.", "en": "For something completed before the main action, mostly in writing: Ayant terminé son travail, elle est rentrée. Étant arrivés en retard, nous avons manqué le début."},
+      "notes": [
+        {"zh": "口語常用 après avoir ＋ 過去分詞 代替。", "en": "Speech prefers après avoir + participle."}
+      ],
+      "mistakes": [
+        {"wrong": "Ayant arrivé tôt, il a attendu.", "right": "Étant arrivé tôt, il a attendu.", "zh": "arriver 用 être：étant arrivé。", "en": "arriver takes être: étant arrivé."},
+        {"wrong": "Étant partie, nous avons fermé la porte.", "right": "Étant partis, nous avons fermé la porte.", "zh": "分詞要配合主詞 nous。", "en": "The participle agrees with nous."}
+      ],
+      "examples": [
+        {"text": "N'ayant pas reçu de réponse, il a rappelé.", "zh": "因為沒收到回覆，他又打了一次電話。", "en": "Not having received a reply, he called again."},
+        {"text": "Ayant vécu dix ans à Taipei, elle parle bien chinois.", "zh": "在台北住了十年，她中文說得很好。", "en": "Having lived in Taipei for ten years, she speaks good Chinese."},
+        {"text": "Étant née en hiver, elle adore la neige.", "zh": "她在冬天出生，很愛雪。", "en": "Born in winter, she loves snow."}
+      ],
+      "quiz": [
+        {"q": "（　）le film, je peux te raconter la fin.", "zh": "我看過那部電影，可以告訴你結局。", "en": "Having seen the film, I can tell you the ending.", "options": ["Ayant vu", "Étant vu", "Ayant voir", "Avoir vu"], "answer": 0},
+        {"q": "（　）très tard, ils ont dormi jusqu'à midi.", "zh": "他們很晚才回來，所以睡到中午。", "en": "Having come home very late, they slept until noon.", "options": ["Étant rentrés", "Ayant rentrés", "Étant rentré", "Ayant rentré"], "answer": 0},
+        {"q": "N'（　）pas compris, j'ai posé une question.", "zh": "因為沒聽懂，我問了問題。", "en": "Not having understood, I asked a question.", "options": ["ayant", "étant", "avant", "avoir"], "answer": 0}
+      ]
+    },
+    {
+      "id": "se_faire",
+      "pattern": "se faire voler・se faire couper",
+      "title": {"zh": "se faire ＋ 原形：被…、請人…", "en": "se faire + infinitive"},
+      "form": {"zh": "se faire ＋ 原形（被…，多半是不好的事；或請人幫自己做）・se voir ＋ 原形／過去分詞", "en": "se faire + infinitive (suffer something, or have it done for yourself) · se voir + infinitive / participle"},
+      "explain": {"zh": "口語常用 se faire ＋ 原形代替被動語態：Il s'est fait voler son portefeuille.（他的錢包被偷了。）也可以是請人做：Je me suis fait couper les cheveux.", "en": "Speech often uses se faire + infinitive instead of the passive: Il s'est fait voler son portefeuille. Or for having something done: Je me suis fait couper les cheveux."},
+      "notes": [
+        {"zh": "se faire 的過去分詞 fait 不配合：Elle s'est fait arrêter.", "en": "fait doesn't agree here: Elle s'est fait arrêter."}
+      ],
+      "mistakes": [
+        {"wrong": "Elle s'est faite renverser par une voiture.", "right": "Elle s'est fait renverser par une voiture.", "zh": "se faire ＋ 原形時，fait 不加 -e。", "en": "With an infinitive after it, fait doesn't agree."},
+        {"wrong": "J'ai fait voler mon vélo.", "right": "Je me suis fait voler mon vélo.", "zh": "自己「被」偷，用 se faire。", "en": "Something stolen from you: se faire."}
+      ],
+      "examples": [
+        {"text": "Il s'est fait piquer par une abeille.", "zh": "他被蜜蜂叮了。", "en": "He got stung by a bee."},
+        {"text": "Je vais me faire opérer du genou.", "zh": "我要去動膝蓋手術。", "en": "I'm going to have a knee operation."},
+        {"text": "Elle s'est vu refuser l'entrée.", "zh": "她被拒絕入場。", "en": "She was refused entry."}
+      ],
+      "quiz": [
+        {"q": "Mon frère s'est（　）gronder par le prof.", "zh": "我弟弟被老師罵了。", "en": "My brother got told off by the teacher.", "options": ["fait", "faite", "faits", "faire"], "answer": 0},
+        {"q": "Elle（　）fait couper les cheveux hier.", "zh": "她昨天去剪了頭髮。", "en": "She had her hair cut yesterday.", "options": ["s'est", "a", "s'a", "est"], "answer": 0},
+        {"q": "Attention, tu vas（　）attraper !", "zh": "小心，你會被抓到的！", "en": "Careful, you're going to get caught!", "options": ["te faire", "faire te", "te fait", "faire"], "answer": 0}
+      ]
+    },
+    {
+      "id": "avoir_beau",
+      "pattern": "avoir beau ＋ 原形",
+      "title": {"zh": "avoir beau ＋ 原形：再怎麼…也", "en": "avoir beau + infinitive — however much"},
+      "form": {"zh": "主詞 ＋ avoir（變化）＋ beau ＋ 原形, ＋ 結果（沒用）", "en": "subject + avoir (conjugated) + beau + infinitive, + (useless) result"},
+      "explain": {"zh": "表示「再怎麼努力也沒用」：J'ai beau chercher, je ne trouve pas mes clés.（我怎麼找都找不到鑰匙。）語氣比 bien que 更口語、更生動。", "en": "However hard you try, it's no use: J'ai beau chercher, je ne trouve pas mes clés. Livelier than bien que."},
+      "notes": [
+        {"zh": "beau 不變形：Elles ont beau crier …", "en": "beau never changes: Elles ont beau crier …"}
+      ],
+      "mistakes": [
+        {"wrong": "Il a belle courir, il arrive toujours en retard.", "right": "Il a beau courir, il arrive toujours en retard.", "zh": "beau 固定不變。", "en": "beau doesn't change."},
+        {"wrong": "J'ai beau que j'explique, il ne comprend pas.", "right": "J'ai beau expliquer, il ne comprend pas.", "zh": "avoir beau 後面直接接原形。", "en": "avoir beau takes the infinitive directly."}
+      ],
+      "examples": [
+        {"text": "Tu as beau insister, je ne changerai pas d'avis.", "zh": "你再怎麼堅持，我也不會改變主意。", "en": "However much you insist, I won't change my mind."},
+        {"text": "Nous avons eu beau courir, le bus était déjà parti.", "zh": "我們再怎麼跑，公車還是開走了。", "en": "However fast we ran, the bus had already gone."},
+        {"text": "Elle a beau être jeune, elle est très sage.", "zh": "她雖然年輕，卻很懂事。", "en": "Young as she is, she's very wise."}
+      ],
+      "quiz": [
+        {"q": "J'ai（　）dormir dix heures, je suis encore fatigué.", "zh": "我睡了十個小時，還是很累。", "en": "Even though I slept ten hours, I'm still tired.", "options": ["beau", "belle", "beaux", "bien"], "answer": 0},
+        {"q": "Ils ont beau（　）, personne ne les écoute.", "zh": "他們再怎麼喊，也沒人聽。", "en": "However much they shout, nobody listens.", "options": ["crier", "crient", "criant", "crié"], "answer": 0},
+        {"q": "Tu（　）beau dire, c'est trop cher.", "zh": "隨你怎麼說，就是太貴了。", "en": "Whatever you say, it's too expensive.", "options": ["as", "es", "fais", "dis"], "answer": 0}
+      ]
+    },
+    {
+      "id": "quel_que",
+      "pattern": "quel que・quoi que・qui que",
+      "title": {"zh": "quel que soit、quoi que：無論…", "en": "quel que, quoi que, qui que — whatever, whoever"},
+      "form": {"zh": "quel／quelle／quels／quelles que soit ＋ 名詞（不管是什麼樣的…）・quoi que ＋ 虛擬式（不管做什麼）・qui que ＋ 虛擬式（不管是誰）・où que（不管在哪）", "en": "quel / quelle / quels / quelles que soit + noun · quoi que + subjunctive · qui que + subjunctive · où que"},
+      "explain": {"zh": "表示「無論…都」，後面接虛擬式：Quel que soit le prix, je l'achète.（不管價錢多少，我都要買。）Quoi que tu fasses, je t'aiderai.（不管你做什麼，我都會幫你。）", "en": "“Whatever / whoever”, with the subjunctive: Quel que soit le prix, je l'achète. Quoi que tu fasses, je t'aiderai."},
+      "notes": [
+        {"zh": "quoi que（兩個字，不管什麼）≠ quoique（一個字，雖然）。", "en": "quoi que (whatever) ≠ quoique (although)."},
+        {"zh": "quel que 要配合名詞：Quelle que soit la raison …", "en": "quel que agrees with the noun: Quelle que soit la raison …"}
+      ],
+      "mistakes": [
+        {"wrong": "Quel que soit la situation, reste calme.", "right": "Quelle que soit la situation, reste calme.", "zh": "situation 是陰性：quelle。", "en": "situation is feminine: quelle."},
+        {"wrong": "Quoi que tu dis, je ne te crois pas.", "right": "Quoi que tu dises, je ne te crois pas.", "zh": "quoi que 後面用虛擬式。", "en": "quoi que takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Quel que soit le temps, nous partirons demain.", "zh": "不管天氣如何，我們明天都會出發。", "en": "Whatever the weather, we'll leave tomorrow."},
+        {"text": "Où que tu ailles, je te suivrai.", "zh": "不管你去哪裡，我都會跟著你。", "en": "Wherever you go, I'll follow you."},
+        {"text": "Qui que vous soyez, vous devez faire la queue.", "zh": "不管您是誰，都要排隊。", "en": "Whoever you are, you have to queue."}
+      ],
+      "quiz": [
+        {"q": "（　）soient tes raisons, tu dois t'excuser.", "zh": "不管你的理由是什麼，你都得道歉。", "en": "Whatever your reasons, you must apologise.", "options": ["Quelles que", "Quels que", "Quoi que", "Quoique"], "answer": 0},
+        {"q": "Quoi qu'il（　）, ne réponds pas.", "zh": "不管他說什麼，都別回應。", "en": "Whatever he says, don't answer.", "options": ["dise", "dit", "dira", "disait"], "answer": 0},
+        {"q": "（　）le résultat, je suis fier de toi.", "zh": "不管結果如何，我都以你為榮。", "en": "Whatever the result, I'm proud of you.", "options": ["Quel que soit", "Quoi que soit", "Quelle que soit", "Qui que soit"], "answer": 0}
+      ]
+    },
+    {
+      "id": "au_cas_ou",
+      "pattern": "au cas où・pourvu que・à moins que",
+      "title": {"zh": "條件與假設：au cas où、pourvu que", "en": "Conditions: au cas où, pourvu que, à moins que"},
+      "form": {"zh": "au cas où ＋ 條件式（萬一）・pourvu que ＋ 虛擬式（只要、但願）・à moins que ＋ 虛擬式（除非）・à condition de ＋ 原形", "en": "au cas où + conditional (in case) · pourvu que + subjunctive (as long as / let's hope) · à moins que + subjunctive (unless) · à condition de + infinitive"},
+      "explain": {"zh": "au cas où 後面用條件式：Prends un parapluie au cas où il pleuvrait.（帶把傘，萬一下雨。）pourvu que 可以表示「但願」：Pourvu qu'il fasse beau !", "en": "au cas où takes the conditional: Prends un parapluie au cas où il pleuvrait. pourvu que can mean “let's hope”: Pourvu qu'il fasse beau !"},
+      "notes": [
+        {"zh": "à moins que 在書面語常加虛詞 ne：à moins qu'il ne pleuve。", "en": "In writing à moins que often adds an empty ne: à moins qu'il ne pleuve."}
+      ],
+      "mistakes": [
+        {"wrong": "Je te laisse mon numéro au cas où tu as besoin.", "right": "Je te laisse mon numéro au cas où tu aurais besoin.", "zh": "au cas où 後面用條件式。", "en": "au cas où takes the conditional."},
+        {"wrong": "Nous irons à la plage, à moins qu'il pleut.", "right": "Nous irons à la plage, à moins qu'il pleuve.", "zh": "à moins que 後面用虛擬式。", "en": "à moins que takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Garde ce ticket au cas où tu voudrais échanger l'article.", "zh": "收好這張收據，萬一你想換貨。", "en": "Keep this receipt in case you want to exchange the item."},
+        {"text": "Tu peux sortir, pourvu que tu rentres avant minuit.", "zh": "你可以出去，只要半夜前回來。", "en": "You can go out, as long as you're back before midnight."},
+        {"text": "Je viendrai, à moins que mon train soit annulé.", "zh": "我會來，除非火車停駛。", "en": "I'll come, unless my train is cancelled."}
+      ],
+      "quiz": [
+        {"q": "Emporte un pull au cas où il（　）froid.", "zh": "帶件毛衣，萬一會冷。", "en": "Take a jumper in case it gets cold.", "options": ["ferait", "fasse", "fait", "fera"], "answer": 0},
+        {"q": "Pourvu qu'il（　）du soleil demain !", "zh": "但願明天出太陽！", "en": "Let's hope it's sunny tomorrow!", "options": ["y ait", "y a", "y aura", "y aurait"], "answer": 0},
+        {"q": "Tu peux venir à condition（　）discret.", "zh": "你可以來，條件是要低調。", "en": "You can come as long as you're discreet.", "options": ["d'être", "que tu es", "être", "à être"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cause_b2",
+      "pattern": "étant donné que・vu que・faute de",
+      "title": {"zh": "原因（進階）：étant donné que、faute de", "en": "More ways to give a reason"},
+      "form": {"zh": "étant donné que／vu que ＋ 子句（鑑於）・faute de ＋ 名詞／原形（因為缺少）・sous prétexte que（藉口說）・à force de ＋ 原形（由於一再…）", "en": "étant donné que / vu que + clause (given that) · faute de + noun / infinitive (for lack of) · sous prétexte que (on the pretext that) · à force de + infinitive (by dint of)"},
+      "explain": {"zh": "Étant donné que le magasin est fermé, revenons demain.（既然店關了，明天再來吧。）Faute de temps, je n'ai pas pu finir.（因為沒時間，我沒能做完。）À force de s'entraîner, il a gagné.（他一再練習，終於贏了。）", "en": "Étant donné que le magasin est fermé, revenons demain. Faute de temps, je n'ai pas pu finir. À force de s'entraîner, il a gagné."},
+      "notes": [
+        {"zh": "sous prétexte que 帶有不相信對方理由的語氣。", "en": "sous prétexte que suggests you don't believe the reason."}
+      ],
+      "mistakes": [
+        {"wrong": "Faute d'argent qu'il n'a pas, il ne part pas.", "right": "Faute d'argent, il ne part pas en vacances.", "zh": "faute de 後面直接接名詞，不接子句。", "en": "faute de takes a noun, not a clause."},
+        {"wrong": "À force que je répète, j'ai retenu le texte.", "right": "À force de répéter, j'ai retenu le texte.", "zh": "à force de 後面接原形。", "en": "à force de takes an infinitive."}
+      ],
+      "examples": [
+        {"text": "Vu qu'il pleut, le match est reporté.", "zh": "鑑於在下雨，比賽延期了。", "en": "Given that it's raining, the match is postponed."},
+        {"text": "Il n'est pas venu, sous prétexte qu'il était malade.", "zh": "他藉口生病沒來。", "en": "He didn't come, claiming he was ill."},
+        {"text": "À force de lire, elle a beaucoup progressé.", "zh": "她一直讀書，進步很多。", "en": "Through reading so much, she's made great progress."}
+      ],
+      "quiz": [
+        {"q": "（　）preuves, l'accusé a été libéré.", "zh": "因為缺乏證據，被告獲釋了。", "en": "For lack of evidence, the accused was released.", "options": ["Faute de", "Grâce à", "À force de", "Étant donné que"], "answer": 0},
+        {"q": "（　）tu connais bien la ville, sers-nous de guide.", "zh": "既然你很熟悉這座城市，就當我們的導遊吧。", "en": "Since you know the city well, be our guide.", "options": ["Vu que", "Faute de", "À force de", "Grâce à"], "answer": 0},
+        {"q": "À force de（　）, il a fini par réussir.", "zh": "他一再嘗試，終於成功了。", "en": "By trying again and again, he finally succeeded.", "options": ["essayer", "essayé", "qu'il essaie", "essayant"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ne_expletif",
+      "pattern": "avant qu'il ne parte",
+      "title": {"zh": "虛詞 ne（不表示否定）", "en": "The expletive ne"},
+      "form": {"zh": "avant que・à moins que・de peur que・craindre que・plus／moins … que ＋ ne ＋ 動詞（沒有 pas，不是否定）", "en": "avant que · à moins que · de peur que · craindre que · plus / moins … que + ne + verb (no pas — not a negative)"},
+      "explain": {"zh": "書面語在某些連接詞後面加一個不表示否定的 ne：Partez avant qu'il ne pleuve.（在下雨前出發。）J'ai peur qu'il ne soit trop tard.（我怕已經太遲了。）口語常省略。", "en": "Formal French adds a ne that isn't negative after some conjunctions: Partez avant qu'il ne pleuve. J'ai peur qu'il ne soit trop tard. Speech often drops it."},
+      "notes": [
+        {"zh": "比較級也可以：C'est plus difficile que je ne pensais.", "en": "Also after comparisons: C'est plus difficile que je ne pensais."}
+      ],
+      "mistakes": [
+        {"wrong": "Rentrons avant qu'il ne pleuve pas.", "right": "Rentrons avant qu'il ne pleuve.", "zh": "虛詞 ne 不搭配 pas。", "en": "The expletive ne has no pas."},
+        {"wrong": "Je crains qu'il ne vient.", "right": "Je crains qu'il ne vienne.", "zh": "craindre que 後面用虛擬式。", "en": "craindre que takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Range ta chambre avant que ta mère ne rentre.", "zh": "在你媽媽回來前把房間整理好。", "en": "Tidy your room before your mother gets home."},
+        {"text": "Il parle doucement de peur que le bébé ne se réveille.", "zh": "他說話很小聲，怕吵醒寶寶。", "en": "He speaks softly for fear the baby will wake up."},
+        {"text": "Le voyage a coûté plus cher que nous ne l'avions prévu.", "zh": "旅費比我們預計的還貴。", "en": "The trip cost more than we had expected."}
+      ],
+      "quiz": [
+        {"q": "Finissons avant qu'il ne（　）nuit.", "zh": "在天黑前做完吧。", "en": "Let's finish before it gets dark.", "options": ["fasse", "fait", "fera", "fasse pas"], "answer": 0},
+        {"q": "Elle est plus intelligente qu'on ne le（　）.", "zh": "她比大家想的還聰明。", "en": "She's cleverer than people think.", "options": ["croit", "croie pas", "croyant", "croire"], "answer": 0},
+        {"q": "Je crains qu'il ne（　）pas venir.", "zh": "我怕他不能來。", "en": "I'm afraid he can't come.", "options": ["puisse", "peut", "pourra", "pouvait"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nominalisation",
+      "pattern": "construire → la construction",
+      "title": {"zh": "名詞化：把動詞變成名詞", "en": "Nominalisation"},
+      "form": {"zh": "動詞 → 名詞：-tion（construire → la construction）・-ment（changer → le changement）・-age（laver → le lavage）・-ure（ouvrir → l'ouverture）・形容詞 → 名詞（beau → la beauté）", "en": "verb → noun: -tion (construction) · -ment (changement) · -age (lavage) · -ure (ouverture) · adjective → noun (beauté)"},
+      "explain": {"zh": "新聞標題和正式文章常把整句話濃縮成名詞片語：Les prix augmentent. → L'augmentation des prix.（物價上漲）On a ouvert un nouveau musée. → Ouverture d'un nouveau musée.", "en": "Headlines and formal writing condense a sentence into a noun phrase: L'augmentation des prix. Ouverture d'un nouveau musée."},
+      "notes": [
+        {"zh": "-tion、-ure、-té 的名詞是陰性；-ment、-age 多是陽性。", "en": "-tion, -ure, -té are feminine; -ment and -age mostly masculine."}
+      ],
+      "mistakes": [
+        {"wrong": "le construction du pont", "right": "la construction du pont", "zh": "-tion 結尾是陰性。", "en": "-tion nouns are feminine."},
+        {"wrong": "l'arrivement du train", "right": "l'arrivée du train", "zh": "arriver 的名詞是 l'arrivée。", "en": "The noun of arriver is l'arrivée."}
+      ],
+      "examples": [
+        {"text": "La fermeture de l'usine inquiète les habitants.", "zh": "工廠關閉讓居民很擔心。", "en": "The factory's closure worries the residents."},
+        {"text": "Le départ est prévu à six heures.", "zh": "預計六點出發。", "en": "Departure is scheduled for six o'clock."},
+        {"text": "L'amélioration du service a été remarquée.", "zh": "服務的改善大家都注意到了。", "en": "The improvement in service has been noticed."}
+      ],
+      "quiz": [
+        {"q": "Les prix baissent. → La（　）des prix.", "zh": "物價下跌。", "en": "Prices are falling. → The fall in prices.", "options": ["baisse", "baissement", "baissage", "baissure"], "answer": 0},
+        {"q": "On a choisi un nouveau directeur. → Le（　）d'un nouveau directeur.", "zh": "選出新主任。", "en": "The choice of a new director.", "options": ["choix", "choisissement", "choisition", "choisi"], "answer": 0},
+        {"q": "Le pont a été ouvert. → L'（　）du pont.", "zh": "橋梁通車。", "en": "The opening of the bridge.", "options": ["ouverture", "ouvrement", "ouvrage", "ouvrition"], "answer": 0}
+      ]
+    },
+    {
+      "id": "articulateurs",
+      "pattern": "en effet・d'ailleurs・or・quant à",
+      "title": {"zh": "篇章連接詞", "en": "Discourse markers"},
+      "form": {"zh": "en effet（確實、事實上，補充理由）・d'ailleurs（況且、而且）・or（然而，引出關鍵事實）・quant à（至於）・en revanche（相反地）・néanmoins（儘管如此）", "en": "en effet (indeed — gives a reason) · d'ailleurs (besides) · or (yet, now — a key fact) · quant à (as for) · en revanche (on the other hand) · néanmoins (nevertheless)"},
+      "explain": {"zh": "這些詞讓文章的邏輯更清楚：Il est fatigué. En effet, il a travaillé toute la nuit. Moi, j'adore le froid ; quant à mon frère, il préfère l'été.", "en": "These make an argument easier to follow: Il est fatigué. En effet, il a travaillé toute la nuit. Moi, j'adore le froid ; quant à mon frère, il préfère l'été."},
+      "notes": [
+        {"zh": "or 不是「或」（ou），而是「然而」，常在推理中引出轉折的事實。", "en": "or isn't “or” (ou) — it introduces a turning fact in reasoning."}
+      ],
+      "mistakes": [
+        {"wrong": "Il voulait partir ; en effet, il est resté.", "right": "Il voulait partir ; néanmoins, il est resté.", "zh": "前後相反，用 néanmoins 而不是 en effet。", "en": "A contrast takes néanmoins, not en effet."},
+        {"wrong": "Quant à moi je, je préfère le thé.", "right": "Quant à moi, je préfère le thé.", "zh": "quant à moi 後面直接接逗號和句子。", "en": "quant à moi is followed by a comma and the clause."}
+      ],
+      "examples": [
+        {"text": "Ce quartier est calme ; d'ailleurs, il est très bien desservi.", "zh": "這一區很安靜，況且交通也很方便。", "en": "This area is quiet; besides, it's very well served by transport."},
+        {"text": "Il pensait avoir raison. Or, les chiffres montraient le contraire.", "zh": "他以為自己是對的，然而數字顯示的卻相反。", "en": "He thought he was right. Yet the figures showed the opposite."},
+        {"text": "Le film est long ; en revanche, la musique est superbe.", "zh": "電影很長，不過配樂很棒。", "en": "The film is long; on the other hand, the music is superb."}
+      ],
+      "quiz": [
+        {"q": "Je n'ai pas faim. （　）, j'ai déjà mangé.", "zh": "我不餓。事實上，我已經吃過了。", "en": "I'm not hungry. Indeed, I've already eaten.", "options": ["En effet", "Or", "Néanmoins", "Quant à"], "answer": 0},
+        {"q": "Les enfants iront au parc ; （　）nous, nous resterons ici.", "zh": "孩子們去公園，至於我們，就待在這裡。", "en": "The children will go to the park; as for us, we'll stay here.", "options": ["quant à", "en effet", "or", "d'ailleurs"], "answer": 0},
+        {"q": "Il était malade ; （　）, il est venu travailler.", "zh": "他生病了，儘管如此，他還是來上班了。", "en": "He was ill; nevertheless, he came to work.", "options": ["néanmoins", "en effet", "d'ailleurs", "quant à"], "answer": 0}
+      ]
+    },
+    {
+      "id": "accord_pronominal",
+      "pattern": "elles se sont lavé les mains",
+      "title": {"zh": "反身動詞的過去分詞配合", "en": "Participle agreement with pronominal verbs"},
+      "form": {"zh": "se 是直接受詞 → 分詞配合（elle s'est lavée）・se 是間接受詞（後面另有直接受詞，或 se parler／se téléphoner）→ 不配合（elle s'est lavé les mains）", "en": "se is the direct object → agree (elle s'est lavée) · se is indirect (another direct object follows, or se parler / se téléphoner) → no agreement (elle s'est lavé les mains)"},
+      "explain": {"zh": "反身動詞雖然用 être，配合規則卻跟 avoir 一樣，看 se 是不是直接受詞：Elle s'est coupée.（她割傷了自己。）Elle s'est coupé le doigt.（她割傷了手指，直接受詞是 le doigt。）Ils se sont parlé.（parler à：間接）", "en": "Pronominal verbs use être but agree like avoir verbs — it depends on whether se is the direct object: Elle s'est coupée. Elle s'est coupé le doigt (le doigt is the object). Ils se sont parlé (parler à: indirect)."},
+      "notes": [
+        {"zh": "常見的「不配合」：se parler、se téléphoner、se dire、se demander、se sourire。", "en": "Common no-agreement verbs: se parler, se téléphoner, se dire, se demander, se sourire."}
+      ],
+      "mistakes": [
+        {"wrong": "Elles se sont téléphonées hier.", "right": "Elles se sont téléphoné hier.", "zh": "téléphoner à：se 是間接受詞，不配合。", "en": "téléphoner à: se is indirect, no agreement."},
+        {"wrong": "Marie s'est lavée les cheveux.", "right": "Marie s'est lavé les cheveux.", "zh": "後面有直接受詞 les cheveux，分詞不配合。", "en": "les cheveux is the direct object: no agreement."}
+      ],
+      "examples": [
+        {"text": "Elles se sont rencontrées à l'université.", "zh": "她們是在大學認識的。", "en": "They met at university."},
+        {"text": "Nous nous sommes écrit pendant des années.", "zh": "我們通信了好幾年。", "en": "We wrote to each other for years."},
+        {"text": "Elle s'est brossé les dents avant de dormir.", "zh": "她睡前刷了牙。", "en": "She brushed her teeth before going to sleep."}
+      ],
+      "quiz": [
+        {"q": "Ma sœur s'est（　）ce matin.", "zh": "我姊姊今天早上起床了。", "en": "My sister got up this morning.", "options": ["levée", "levé", "levés", "lever"], "answer": 0},
+        {"q": "Ils se sont（　）des cadeaux.", "zh": "他們互送了禮物。", "en": "They gave each other presents.", "options": ["offert", "offerts", "offertes", "offrir"], "answer": 0},
+        {"q": "Les deux amies se sont（　）au téléphone.", "zh": "那兩個朋友在電話裡聊了天。", "en": "The two friends talked on the phone.", "options": ["parlé", "parlées", "parlés", "parlée"], "answer": 0}
+      ]
+    },
+    {
+      "id": "infinitif_passe",
+      "pattern": "regretter d'avoir …",
+      "title": {"zh": "完成式不定式：avoir／être ＋ 過去分詞", "en": "The past infinitive"},
+      "form": {"zh": "avoir／être ＋ 過去分詞：regretter d'avoir dit・être content d'être venu・remercier de／pour avoir aidé", "en": "avoir / être + past participle: regretter d'avoir dit · être content d'être venu · remercier d'avoir aidé"},
+      "explain": {"zh": "不定式表示「已經做過」的事時用完成式：Je regrette d'avoir menti.（我後悔說了謊。）Merci de m'avoir aidé.（謝謝你幫了我。）", "en": "When an infinitive refers to something already done, use the past infinitive: Je regrette d'avoir menti. Merci de m'avoir aidé."},
+      "notes": [
+        {"zh": "être 當助動詞時要配合：Elle est contente d'être partie.", "en": "With être it agrees: Elle est contente d'être partie."},
+        {"zh": "否定時 ne pas 一起放在 avoir 前面：Je regrette de ne pas avoir appelé.", "en": "ne pas both go before avoir: de ne pas avoir appelé."}
+      ],
+      "mistakes": [
+        {"wrong": "Merci de m'aider hier.", "right": "Merci de m'avoir aidé hier.", "zh": "已經發生的事用 avoir ＋ 過去分詞。", "en": "Something done: avoir + participle."},
+        {"wrong": "Je regrette de n'avoir pas pas appelé.", "right": "Je regrette de ne pas avoir appelé.", "zh": "ne pas 一起放在 avoir 前面。", "en": "ne pas both go before avoir."}
+      ],
+      "examples": [
+        {"text": "Je vous remercie de m'avoir écouté.", "zh": "謝謝您聽我說。", "en": "Thank you for listening to me."},
+        {"text": "Il regrette de ne pas être allé au concert.", "zh": "他後悔沒去聽演唱會。", "en": "He regrets not going to the concert."},
+        {"text": "Après s'être reposée, elle a repris la route.", "zh": "休息過後，她又上路了。", "en": "After resting, she set off again."}
+      ],
+      "quiz": [
+        {"q": "Je suis désolé de t'（　）attendre.", "zh": "抱歉讓你等了。", "en": "Sorry to have kept you waiting.", "options": ["avoir fait", "faire", "être fait", "avoir faire"], "answer": 0},
+        {"q": "Elle est fière d'（　）le marathon.", "zh": "她很驕傲自己跑完了馬拉松。", "en": "She's proud to have finished the marathon.", "options": ["avoir terminé", "terminer avant", "être terminée", "terminant"], "answer": 0},
+        {"q": "Ils sont contents d'（　）en France.", "zh": "他們很高興來到了法國。", "en": "They're happy to have come to France.", "options": ["être venus", "avoir venu", "être venu", "avoir venus"], "answer": 0}
+      ]
+    },
+    {
+      "id": "mise_relief_b2",
+      "pattern": "ce qui …, c'est …",
+      "title": {"zh": "強調句：ce qui／ce que …, c'est …", "en": "Emphasis: ce qui / ce que …, c'est …"},
+      "form": {"zh": "Ce qui ＋ 動詞 …, c'est ＋ 重點・Ce que ＋ 主詞 ＋ 動詞 …, c'est ＋ 重點・Ce dont …, c'est …", "en": "Ce qui + verb …, c'est + focus · Ce que + subject + verb …, c'est + focus · Ce dont …, c'est …"},
+      "explain": {"zh": "先說話題再說重點，是口語和寫作中很常用的強調方式：Ce qui me plaît, c'est l'ambiance.（我喜歡的是氣氛。）Ce que je veux, c'est dormir.（我想要的就是睡覺。）", "en": "Topic first, then the point — a common way to stress something: Ce qui me plaît, c'est l'ambiance. Ce que je veux, c'est dormir."},
+      "notes": [
+        {"zh": "重點是複數名詞時可以用 ce sont：Ce que j'aime, ce sont les fleurs.", "en": "With a plural focus: ce sont — Ce que j'aime, ce sont les fleurs."}
+      ],
+      "mistakes": [
+        {"wrong": "Ce que m'énerve, c'est le bruit.", "right": "Ce qui m'énerve, c'est le bruit.", "zh": "當 énerve 的主詞，用 ce qui。", "en": "It's the subject of énerve: ce qui."},
+        {"wrong": "Ce dont je rêve, c'est de voyage.", "right": "Ce dont je rêve, c'est de voyager.", "zh": "rêver de ＋ 原形，de 後面接動詞。", "en": "rêver de + infinitive."}
+      ],
+      "examples": [
+        {"text": "Ce qui compte, c'est d'essayer.", "zh": "重要的是去嘗試。", "en": "What counts is trying."},
+        {"text": "Ce que je n'aime pas, ce sont les mensonges.", "zh": "我不喜歡的是謊言。", "en": "What I don't like is lies."},
+        {"text": "Ce dont il a besoin, c'est de repos.", "zh": "他需要的是休息。", "en": "What he needs is rest."}
+      ],
+      "quiz": [
+        {"q": "（　）m'étonne, c'est son calme.", "zh": "讓我驚訝的是他的冷靜。", "en": "What surprises me is his calm.", "options": ["Ce qui", "Ce que", "Ce dont", "Qui"], "answer": 0},
+        {"q": "（　）je préfère, c'est le printemps.", "zh": "我最喜歡的是春天。", "en": "What I prefer is spring.", "options": ["Ce que", "Ce qui", "Ce dont", "Que"], "answer": 0},
+        {"q": "Ce dont tu parles, c'（　）un vieux problème.", "zh": "你說的那件事，是個老問題了。", "en": "What you're talking about is an old problem.", "options": ["est", "sont", "était de", "a"], "answer": 0}
+      ]
+    },
+    {
+      "id": "adj_sens",
+      "pattern": "un grand homme ／ un homme grand",
+      "title": {"zh": "位置不同、意思不同的形容詞", "en": "Adjectives that change meaning with position"},
+      "form": {"zh": "名詞前（比喻、主觀）／名詞後（字面、客觀）：un grand homme（偉人）／un homme grand（高個子）・mon ancien appartement（以前的）／un appartement ancien（老舊的）・un pauvre homme（可憐的）／un homme pauvre（窮的）", "en": "before (figurative) / after (literal): un grand homme (great) / un homme grand (tall) · mon ancien appartement (former) / un appartement ancien (old) · un pauvre homme (poor thing) / un homme pauvre (penniless)"},
+      "explain": {"zh": "有些形容詞放在名詞前後意思不同。放前面多是比喻或主觀感受，放後面是字面的意思：un cher ami（親愛的朋友）／un restaurant cher（很貴的餐廳）。", "en": "Some adjectives change meaning with their position: before the noun it's figurative or subjective, after it literal: un cher ami (dear friend) / un restaurant cher (expensive restaurant)."},
+      "notes": [
+        {"zh": "其他：propre（自己的／乾淨的）、seul（唯一的／獨自的）、même（同一個／本身）。", "en": "Others: propre (own / clean), seul (only / alone), même (same / itself)."}
+      ],
+      "mistakes": [
+        {"wrong": "C'est mon professeur ancien de piano.", "right": "C'est mon ancien professeur de piano.", "zh": "「以前的」老師，ancien 放在名詞前面。", "en": "“Former” goes before the noun."},
+        {"wrong": "C'est un homme grand de l'histoire.", "right": "C'est un grand homme de l'histoire.", "zh": "「偉大的」放在名詞前面。", "en": "“Great” goes before the noun."}
+      ],
+      "examples": [
+        {"text": "C'est ma propre voiture, pas celle de mon père.", "zh": "這是我自己的車，不是我爸的。", "en": "It's my own car, not my father's."},
+        {"text": "Mets une chemise propre.", "zh": "穿件乾淨的襯衫。", "en": "Put on a clean shirt."},
+        {"text": "Ce pauvre chat n'a rien mangé depuis deux jours.", "zh": "這隻可憐的貓兩天沒吃東西了。", "en": "This poor cat hasn't eaten for two days."}
+      ],
+      "quiz": [
+        {"q": "Victor Hugo était un（　）.", "zh": "雨果是一位偉人。", "en": "Victor Hugo was a great man.", "options": ["grand homme", "homme grand", "homme de grand", "grande homme"], "answer": 0},
+        {"q": "J'ai croisé mon（　）professeur de maths.", "zh": "我遇到了以前的數學老師。", "en": "I ran into my former maths teacher.", "options": ["ancien", "professeur ancien", "ancienne", "vieux ancien"], "answer": 0},
+        {"q": "Ils habitent dans un château（　）.", "zh": "他們住在一座古老的城堡裡。", "en": "They live in an old castle.", "options": ["ancien", "ancienne", "anciennement", "d'ancien"], "answer": 0}
+      ]
+    },
+    {
+      "id": "plus_plus",
+      "pattern": "plus …, plus …",
+      "title": {"zh": "plus … plus：越…就越…", "en": "plus … plus — the more …, the more …"},
+      "form": {"zh": "Plus／Moins ＋ 子句, plus／moins ＋ 子句（不加冠詞）・de plus en plus／de moins en moins（越來越）", "en": "Plus / Moins + clause, plus / moins + clause (no article) · de plus en plus / de moins en moins (more and more)"},
+      "explain": {"zh": "說兩件事一起變化：Plus on travaille, plus on progresse.（越努力，進步越多。）Moins tu dors, plus tu es fatigué. 「越來越」用 de plus en plus：Il fait de plus en plus chaud.", "en": "Two things changing together: Plus on travaille, plus on progresse. Moins tu dors, plus tu es fatigué. For “more and more”: Il fait de plus en plus chaud."},
+      "notes": [
+        {"zh": "法文不加冠詞：不說 le plus …, le plus。", "en": "No article in French: not le plus …, le plus."}
+      ],
+      "mistakes": [
+        {"wrong": "Le plus je lis, le plus j'apprends.", "right": "Plus je lis, plus j'apprends.", "zh": "這個句型不加 le。", "en": "No le in this pattern."},
+        {"wrong": "Il fait plus en plus froid.", "right": "Il fait de plus en plus froid.", "zh": "「越來越」是 de plus en plus。", "en": "“More and more” is de plus en plus."}
+      ],
+      "examples": [
+        {"text": "Plus je te connais, plus je t'apprécie.", "zh": "我越認識你，就越欣賞你。", "en": "The more I get to know you, the more I like you."},
+        {"text": "Moins on mange de sucre, mieux on se porte.", "zh": "糖吃得越少，身體越好。", "en": "The less sugar you eat, the better you feel."},
+        {"text": "Les gens lisent de moins en moins de journaux.", "zh": "大家讀報紙讀得越來越少。", "en": "People read fewer and fewer newspapers."}
+      ],
+      "quiz": [
+        {"q": "Plus il pratique, （　）il joue bien.", "zh": "他練得越多，就彈得越好。", "en": "The more he practises, the better he plays.", "options": ["mieux", "plus bien", "le mieux", "meilleur"], "answer": 0},
+        {"q": "（　）tu attends, plus ce sera difficile.", "zh": "你等得越久，就會越難。", "en": "The longer you wait, the harder it'll be.", "options": ["Plus", "Le plus", "De plus", "Plus de"], "answer": 0},
+        {"q": "La ville devient（　）chère.", "zh": "這座城市變得越來越貴。", "en": "The city is getting more and more expensive.", "options": ["de plus en plus", "plus en plus", "le plus en plus", "plus et plus"], "answer": 0}
+      ]
+    },
+    {
+      "id": "negation_b2",
+      "pattern": "ne … guère・aucun・ni … ni",
+      "title": {"zh": "進階否定：ne … guère、aucun、ni … ni", "en": "More negatives: ne … guère, aucun, ni … ni"},
+      "form": {"zh": "ne … guère（幾乎不）・ne … aucun(e) ＋ 名詞（一個也沒有）・ne … ni … ni（既不…也不）・ne … nulle part（哪裡都沒有）", "en": "ne … guère (hardly) · ne … aucun(e) + noun (not a single) · ne … ni … ni (neither … nor) · ne … nulle part (nowhere)"},
+      "explain": {"zh": "Je n'ai aucune idée.（我完全不知道。）Il ne mange ni viande ni poisson.（他既不吃肉也不吃魚。）Je ne le vois guère.（我幾乎見不到他。）", "en": "Je n'ai aucune idée. Il ne mange ni viande ni poisson. Je ne le vois guère."},
+      "notes": [
+        {"zh": "aucun 要配合名詞的性別，幾乎只用單數：aucune raison。", "en": "aucun agrees in gender and is almost always singular: aucune raison."},
+        {"zh": "ni … ni 後面的名詞通常不加冠詞。", "en": "Nouns after ni … ni usually lose their article."}
+      ],
+      "mistakes": [
+        {"wrong": "Je n'ai aucuns problèmes.", "right": "Je n'ai aucun problème.", "zh": "aucun 用單數。", "en": "aucun is singular."},
+        {"wrong": "Il n'aime pas ni le thé ni le café.", "right": "Il n'aime ni le thé ni le café.", "zh": "ne … ni … ni 不加 pas。", "en": "No pas with ne … ni … ni."}
+      ],
+      "examples": [
+        {"text": "Il n'y a aucun bruit dans ce village.", "zh": "這個村子裡一點聲音也沒有。", "en": "There's no noise at all in this village."},
+        {"text": "Je n'ai ni le temps ni l'envie de sortir.", "zh": "我既沒時間也不想出門。", "en": "I have neither the time nor the wish to go out."},
+        {"text": "J'ai cherché mes lunettes, mais je ne les trouve nulle part.", "zh": "我找了眼鏡，但哪裡都找不到。", "en": "I've looked for my glasses but can't find them anywhere."}
+      ],
+      "quiz": [
+        {"q": "Elle n'a（　）envie de partir.", "zh": "她一點也不想走。", "en": "She has no wish at all to leave.", "options": ["aucune", "aucun", "aucunes", "pas aucune"], "answer": 0},
+        {"q": "Il ne parle ni anglais（　）espagnol.", "zh": "他既不會說英文也不會說西班牙文。", "en": "He speaks neither English nor Spanish.", "options": ["ni", "et", "ou", "pas"], "answer": 0},
+        {"q": "Je ne suis（　）allé cette année.", "zh": "我今年哪裡都沒去。", "en": "I haven't been anywhere this year.", "options": ["nulle part", "aucun", "ni", "guère de"], "answer": 0}
+      ]
+    },
+    {
+      "id": "sens_passif",
+      "pattern": "ça se mange froid",
+      "title": {"zh": "反身動詞表示被動：ça se mange froid", "en": "Pronominal verbs with a passive meaning"},
+      "form": {"zh": "東西 ＋ se ＋ 第三人稱動詞（一般會怎樣被…）：Ce plat se mange froid.・Ça ne se dit pas.", "en": "thing + se + third-person verb (how it's usually done): Ce plat se mange froid. · Ça ne se dit pas."},
+      "explain": {"zh": "用反身動詞說「一般會怎樣被做」或規範：Ce vin se boit frais.（這款酒要冰著喝。）Ça ne se fait pas !（這樣做不禮貌！）Le français se parle dans plusieurs pays.", "en": "A pronominal verb says how something is usually done or what's acceptable: Ce vin se boit frais. Ça ne se fait pas ! Le français se parle dans plusieurs pays."},
+      "notes": [
+        {"zh": "主詞多是東西，動詞用第三人稱。", "en": "The subject is usually a thing, with a third-person verb."}
+      ],
+      "mistakes": [
+        {"wrong": "Ce mot ne s'écrit pas comme ça se.", "right": "Ce mot ne s'écrit pas comme ça.", "zh": "se 只出現一次，放在動詞前面。", "en": "se appears once, before the verb."},
+        {"wrong": "Les crêpes se mange chaudes.", "right": "Les crêpes se mangent chaudes.", "zh": "主詞是複數，動詞也要複數。", "en": "A plural subject takes a plural verb."}
+      ],
+      "examples": [
+        {"text": "Ce gâteau se conserve trois jours au frigo.", "zh": "這個蛋糕可以冷藏保存三天。", "en": "This cake keeps for three days in the fridge."},
+        {"text": "Comment ça se prononce ?", "zh": "這個怎麼唸？", "en": "How do you pronounce that?"},
+        {"text": "Ces chaussures se vendent très bien.", "zh": "這雙鞋賣得很好。", "en": "These shoes sell very well."}
+      ],
+      "quiz": [
+        {"q": "Le champagne（　）bien frais.", "zh": "香檳要冰著喝。", "en": "Champagne is drunk well chilled.", "options": ["se boit", "boit", "se boivent", "est boit"], "answer": 0},
+        {"q": "Ça ne（　）pas de parler la bouche pleine.", "zh": "嘴裡有食物時說話不禮貌。", "en": "You don't talk with your mouth full.", "options": ["se fait", "fait", "se font", "faire"], "answer": 0},
+        {"q": "Ces fruits（　）en été.", "zh": "這些水果在夏天收成。", "en": "These fruits are picked in summer.", "options": ["se cueillent", "se cueille", "cueillent", "sont cueille"], "answer": 0}
+      ]
+    }
+  ]
+}
