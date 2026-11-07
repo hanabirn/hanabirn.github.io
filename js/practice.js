@@ -475,13 +475,15 @@ function renderQuizStats() {
     const streak = calcStreak(recs);
     const avg = recs.length ? Math.round(recs.reduce((s, r) => s + r.pct, 0) / recs.length) + '%' : '—';
 
-    // computers: two columns (css/practice.css .pc-cols) — learned left, activity right
-    let html = practiceHead('tool_stats', 'closeQuizTools()') + `<div class="pc-cols"><div class="pc-col">
-        <div class="pc-tiles">
+    // computers: two columns (css/practice.css .pc-cols) — the learned list and recent
+    // quizzes left; the tiles, the calendar beside this week vs last week and achievements
+    // right (fits 1080p, 2026-11-06). Phones show the tiles first (#stats-content .pc-tiles).
+    const tiles = `<div class="pc-tiles">
             <div class="pc-tile"><b>🔥 ${streak}</b><span>${escHtml(t('stats_streak'))}</span></div>
             <div class="pc-tile"><b>${longestStreak(days)}</b><span>${escHtml(t('stats_longest'))}</span></div>
             <div class="pc-tile"><b>${avg}</b><span>${escHtml(t('stats_avg'))}</span></div>
         </div>`;
+    let html = practiceHead('tool_stats', 'closeQuizTools()') + `<div class="pc-cols"><div class="pc-col">`;
 
     // ----- how much is learned -----
     const bySet = srsWordsBySet();
@@ -511,7 +513,20 @@ function renderQuizStats() {
         });
         html += `<p class="pc-tip">${escHtml(t('stats_mastery_tip'))}</p>`;
     }
-    html += '</section></div><div class="pc-col">';
+    let recent = '';
+    if (recs.length) {
+        const rows = recs.slice(-10).reverse().map(r => {
+            const d = new Date(r.date);
+            const when = `${d.getMonth() + 1}/${d.getDate()} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+            const name = r.lang === 'srs' ? t('tool_srs') : practiceSetName(r.lang);
+            const kind = r.kind === 'listening' ? ' 🎧' : r.review ? ' 🔁' : '';
+            return `<tr class="${r.pct >= 60 ? 'result-correct' : 'result-wrong'}"><td>${when}</td><td>${escHtml(name)}${kind}</td><td>${r.pct}%（${r.correct}/${r.total}）</td></tr>`;
+        }).join('');
+        recent = `<details class="pc-details"><summary>${escHtml(t('stats_recent'))}</summary>
+            <table class="result-table stats-table"><thead><tr><th>${escHtml(t('stats_date'))}</th><th>${escHtml(t('stats_lang'))}</th><th>${escHtml(t('stats_accuracy'))}</th></tr></thead><tbody>${rows}</tbody></table>
+        </details>`;
+    }
+    html += '</section>' + recent + '</div><div class="pc-col">' + tiles + '<div class="st-pair">';
 
     // ----- practice calendar -----
     const today = new Date(); today.setHours(12, 0, 0, 0);
@@ -554,22 +569,10 @@ function renderQuizStats() {
             return `<div><span class="st-week-bars"><i class="prev" style="height:${lastW[i] / max * 100}%" title="${escHtml(t('stats_last_week'))}: ${lastW[i]}"></i><i style="height:${(n || 0) / max * 100}%" title="${escHtml(t('stats_this_week'))}: ${n === null ? '—' : n}"></i></span><small>${escHtml(fmt.format(d))}</small></div>`;
         }).join('')}</div>
         <div class="st-week-legend"><span><i class="prev"></i>${escHtml(t('stats_last_week'))} ${sumLast}</span><span><i></i>${escHtml(t('stats_this_week'))} ${sumThis}</span></div>
-    </section>`;
+    </section></div>`;
 
-    // ----- achievements + recent quizzes -----
+    // ----- achievements -----
     html += `<section class="pc-section">${renderAchievementsHTML()}</section>`;
-    if (recs.length) {
-        const rows = recs.slice(-10).reverse().map(r => {
-            const d = new Date(r.date);
-            const when = `${d.getMonth() + 1}/${d.getDate()} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
-            const name = r.lang === 'srs' ? t('tool_srs') : practiceSetName(r.lang);
-            const kind = r.kind === 'listening' ? ' 🎧' : r.review ? ' 🔁' : '';
-            return `<tr class="${r.pct >= 60 ? 'result-correct' : 'result-wrong'}"><td>${when}</td><td>${escHtml(name)}${kind}</td><td>${r.pct}%（${r.correct}/${r.total}）</td></tr>`;
-        }).join('');
-        html += `<details class="pc-details"><summary>${escHtml(t('stats_recent'))}</summary>
-            <table class="result-table stats-table"><thead><tr><th>${escHtml(t('stats_date'))}</th><th>${escHtml(t('stats_lang'))}</th><th>${escHtml(t('stats_accuracy'))}</th></tr></thead><tbody>${rows}</tbody></table>
-        </details>`;
-    }
     box.innerHTML = html + '</div></div>';
 }
 

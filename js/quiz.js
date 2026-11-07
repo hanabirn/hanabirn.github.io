@@ -1399,18 +1399,15 @@ function showModeSelection() {
 
     const answerContainer = document.getElementById('answer-lang-buttons');
     answerContainer.innerHTML = '';
-    const btnZh = document.createElement('button');
-    btnZh.className = 'mode-btn';
-    btnZh.setAttribute('data-i18n', 'answer_lang_zh');
-    btnZh.innerText = t('answer_lang_zh');
-    btnZh.onclick = function() { selectAnswerLang('zh', this); };
-    answerContainer.appendChild(btnZh);
-    const btnEn = document.createElement('button');
-    btnEn.className = 'mode-btn';
-    btnEn.setAttribute('data-i18n', 'answer_lang_en');
-    btnEn.innerText = t('answer_lang_en');
-    btnEn.onclick = function() { selectAnswerLang('en', this); };
-    answerContainer.appendChild(btnEn);
+    /* flag pictures, not emoji: Windows shows 🇨🇳 / 🇺🇸 as the letters CN / US */
+    const zhFlag = siteLang === 'zh-Hans' ? 'cn' : 'tw';
+    [['zh', zhFlag], ['en', 'gb']].forEach(([code, flag]) => {
+        const btn = document.createElement('button');
+        btn.className = 'mode-btn';
+        btn.innerHTML = `<span class="flag flag--${flag}" aria-hidden="true"></span> <span data-i18n="answer_lang_${code}">${escHtml(t('answer_lang_' + code))}</span>`;
+        btn.onclick = function() { selectAnswerLang(code, this); };
+        answerContainer.appendChild(btn);
+    });
 
     const countContainer = document.getElementById('quiz-count-buttons');
     countContainer.innerHTML = '';
@@ -2061,7 +2058,7 @@ let reviewPool = [];
 let currentReviewEntry = null;
 
 const QUIZ_LANG_FLAGS = {
-    srs: '🔁', jp: '🇯🇵', kr: '🇰🇷', fr: '🇫🇷', en: '🇺🇸', zh: '🇨🇳',
+    srs: '🔁', jp: '📖', kr: '📖', fr: '📖', en: '📘', zh: '📖',   // no flag emoji: Windows draws them as letters
     fr_a1: '📖', fr_a2: '📖', fr_b1: '📖', fr_b2: '📖', fr_c1: '📖',
     es_a1: '📖', es_a2: '📖', es_b1: '📖', es_b2: '📖', es_c1: '📖',
     de_a1: '📖', de_a2: '📖', de_b1: '📖', de_b2: '📖', de_c1: '📖',

@@ -167,6 +167,17 @@
     .pc-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
     .pc-col > :first-child { margin-top: 0; }
     .pc-col + .pc-col { padding-left: 28px; border-left: 1px dashed var(--line); align-self: stretch; }
+    /* 測驗統計: the calendar beside this week vs last week */
+    .st-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 12px; align-items: stretch; }
+    .st-pair > .pc-section { margin-top: 0; }
+    .st-pair .st-week { height: 104px; }
+    .st-pair .pc-section-head { flex-wrap: wrap; row-gap: 0; }
+    .st-pair .st-heat { gap: 2px; }
+    #stats-content .pc-details { margin-top: 8px; }
+    #stats-content .achievement-grid { gap: 8px; }
+    #stats-content .achievement-badge { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 8px; align-items: center; text-align: left; padding: 6px 10px; }
+    #stats-content .achievement-icon { grid-row: span 2; font-size: 1.35rem; }
+    #stats-content .achievement-title { margin-top: 0; }
     .fc-cols { display: grid; grid-template-columns: 340px minmax(0, 1fr); grid-template-rows: auto 1fr;
         grid-template-areas: "opts decks" "lists decks"; gap: 0 28px; align-items: start; }
     .fc-cols-opts { grid-area: opts; }
@@ -406,6 +417,12 @@
 .st-week-legend i { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: var(--primary); margin-right: 4px; vertical-align: -1px; }
 .st-week-legend i.prev { background: var(--track); }
 .pc-section .stats-chart-title { margin-top: 0; }
+/* 測驗統計 on phones: the tiles (in the right column on computers) come first */
+@media (max-width: 1023px) {
+    #stats-content .pc-cols { display: flex; flex-direction: column; }
+    #stats-content .pc-col, #stats-content .st-pair { display: contents; }
+    #stats-content .pc-tiles { order: -1; }
+}
 
 /* ----- 間隔複習 page ----- */
 .srs-talk { display: flex; gap: 10px; align-items: center; }

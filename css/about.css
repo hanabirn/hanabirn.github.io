@@ -103,6 +103,24 @@
 @media (min-width: 1024px) {
     #page-about .about-card { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 24px; align-items: start; max-width: none; }
     #page-about .about-main { position: sticky; top: 16px; }
+    /* the four social links on one line, so the right column fits a 1080p screen (2026-11-06) */
+    #page-about .about-socials { gap: 0.5rem; flex-wrap: nowrap; }
+    #page-about .about-social-link { padding: 0.45rem 0.8rem; }
+    #page-about .about-side .about-section { margin-top: 0.55rem; }
+    #page-about .about-text + .about-socials { margin-top: 0.6rem; }
+    /* the avatar beside the name and tagline, so a long self-introduction (de, fr) still fits */
+    #page-about .about-main { display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 16px; align-items: center; text-align: left; }
+    #page-about .about-avatar-wrap { grid-row: span 2; margin: 0; }
+    #page-about .about-name { align-self: end; margin-bottom: 0; }
+    #page-about .about-tagline { align-self: start; margin-bottom: 0; }
+    #page-about .about-intro { grid-column: 1 / -1; }
+    #page-about .about-intro .about-text { line-height: 1.6; }
+    #page-about .about-tags { gap: 0.35rem; }
+    #page-about .about-tag { padding: 0.3rem 0.6rem; font-size: 0.84rem; gap: 5px; }
+    #page-about .about-side .about-section { padding: 0.6rem 1rem; }
+    #page-about .about-side .about-section h3 { margin-bottom: 0.4rem; }
+    #page-about .about-side .about-section-icon { width: 24px; height: 24px; }
+    #page-about .about-side .about-text { line-height: 1.55; }
 }
 .about-intro .about-text:last-child { margin-bottom: 0; }
 

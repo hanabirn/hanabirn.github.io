@@ -105,9 +105,11 @@ function renderHome() {
 
     // mascot speech bubble
     document.getElementById('home-greet').textContent = t(homeGreetingKey());
+    // say the same as the 今天 card: goal reached but due cards / mistakes left → name them
+    const openSteps = homeTodaySteps(goal, today).filter(x => !x.done).length;
     let msg;
     if (!everPractised) msg = t('home_msg_first');
-    else if (left === 0) msg = t('home_msg_done');
+    else if (left === 0) msg = openSteps ? t('home_msg_done_more', { n: openSteps }) : t('home_msg_done');
     else if (today === 0 && streak > 0) msg = t('home_msg_keep', { n: streak });
     else msg = t('home_msg_left', { n: left });
     document.getElementById('home-msg').textContent = msg;
