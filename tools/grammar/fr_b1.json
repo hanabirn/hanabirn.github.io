@@ -1,0 +1,638 @@
+{
+  "id": "fr_b1",
+  "lang": "fr",
+  "level": "B1",
+  "order": 3,
+  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "subj_forme",
+      "pattern": "subjonctif présent",
+      "title": {"zh": "虛擬式現在時的變化", "en": "Forming the present subjunctive"},
+      "form": {"zh": "ils 的現在式去掉 -ent ＋ -e・-es・-e・-ions・-iez・-ent（parler → que je parle、finir → que je finisse）　不規則：être → sois、avoir → aie、aller → aille、faire → fasse、pouvoir → puisse", "en": "ils present minus -ent + -e · -es · -e · -ions · -iez · -ent (que je parle, que je finisse) · irregular: sois, aie, aille, fasse, puisse"},
+      "explain": {"zh": "虛擬式不是時態，而是一種「語氣」：說的事不是確定的事實，而是希望、必要、情緒或疑問。它幾乎都出現在 que 後面：Il faut que tu viennes.（你一定要來。）", "en": "The subjunctive is a mood, not a tense: it marks what is wished, needed, felt or doubted rather than stated as fact. It almost always follows que: Il faut que tu viennes."},
+      "notes": [
+        {"zh": "nous、vous 的形跟未完成過去式一樣：que nous parlions、que vous finissiez。", "en": "nous and vous look like the imperfect: que nous parlions, que vous finissiez."}
+      ],
+      "mistakes": [
+        {"wrong": "Il faut que tu fais tes devoirs.", "right": "Il faut que tu fasses tes devoirs.", "zh": "il faut que 後面用虛擬式 fasses。", "en": "il faut que takes the subjunctive: fasses."},
+        {"wrong": "Je veux que vous êtes là.", "right": "Je veux que vous soyez là.", "zh": "être 的虛擬式是 soyez。", "en": "être becomes soyez."}
+      ],
+      "examples": [
+        {"text": "Il faut que je parte tôt demain.", "zh": "我明天得早點出發。", "en": "I have to leave early tomorrow."},
+        {"text": "Mes parents veulent que je fasse médecine.", "zh": "我爸媽希望我讀醫科。", "en": "My parents want me to study medicine."},
+        {"text": "Il est important que nous soyons à l'heure.", "zh": "我們準時到很重要。", "en": "It's important that we're on time."}
+      ],
+      "quiz": [
+        {"q": "Il faut que tu（　）ce livre.", "zh": "你一定要讀這本書。", "en": "You must read this book.", "options": ["lises", "lis", "liras", "lisais"], "answer": 0},
+        {"q": "Je voudrais que vous（　）patients.", "zh": "我希望你們有耐心。", "en": "I'd like you to be patient.", "options": ["soyez", "êtes", "serez", "étiez"], "answer": 0},
+        {"q": "Il faut qu'elle（　）à la banque.", "zh": "她得去一趟銀行。", "en": "She has to go to the bank.", "options": ["aille", "va", "ira", "allait"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_volonte",
+      "pattern": "vouloir que・souhaiter que ＋ subj.",
+      "title": {"zh": "虛擬式：希望、要求、必要", "en": "Subjunctive after wishes and necessity"},
+      "form": {"zh": "vouloir／souhaiter／aimer／exiger／demander que・il faut／il est nécessaire／il vaut mieux que ＋ 虛擬式", "en": "vouloir / souhaiter / aimer / exiger / demander que · il faut / il est nécessaire / il vaut mieux que + subjunctive"},
+      "explain": {"zh": "表示「希望別人做」或「必須」的句子，que 後面用虛擬式：Je souhaite que tu réussisses.（祝你成功。）Il vaut mieux que tu prennes un taxi.（你最好搭計程車。）", "en": "After wanting someone to do something, or saying it's necessary, que takes the subjunctive: Je souhaite que tu réussisses. Il vaut mieux que tu prennes un taxi."},
+      "notes": [
+        {"zh": "espérer que 例外，後面用直陳式：J'espère que tu vas bien.", "en": "espérer que is the exception: J'espère que tu vas bien (indicative)."}
+      ],
+      "mistakes": [
+        {"wrong": "J'espère que tu sois content.", "right": "J'espère que tu es content.", "zh": "espérer que 後面用直陳式。", "en": "espérer que takes the indicative."},
+        {"wrong": "Le prof demande que nous rendons le devoir.", "right": "Le prof demande que nous rendions le devoir.", "zh": "demander que 後面用虛擬式 rendions。", "en": "demander que takes the subjunctive: rendions."}
+      ],
+      "examples": [
+        {"text": "Je souhaite que tout se passe bien.", "zh": "希望一切順利。", "en": "I hope everything goes well."},
+        {"text": "Il vaut mieux que tu prennes ton parapluie.", "zh": "你最好帶傘。", "en": "You'd better take your umbrella."},
+        {"text": "Le directeur exige que tout le monde soit présent.", "zh": "主任要求大家都要出席。", "en": "The director insists that everyone be present."}
+      ],
+      "quiz": [
+        {"q": "J'aimerais que tu me（　）la vérité.", "zh": "我希望你跟我說實話。", "en": "I'd like you to tell me the truth.", "options": ["dises", "dis", "diras", "disais"], "answer": 0},
+        {"q": "J'espère que vous（　）un bon voyage.", "zh": "希望你們旅途愉快。", "en": "I hope you have a good trip.", "options": ["ferez", "fassiez", "faire", "fait"], "answer": 0},
+        {"q": "Il est nécessaire que chacun（　）son badge.", "zh": "每個人都必須帶識別證。", "en": "Everyone needs to bring their badge.", "options": ["ait", "a", "aura", "avoir"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_sentiment",
+      "pattern": "être content que・avoir peur que",
+      "title": {"zh": "虛擬式：情緒和懷疑", "en": "Subjunctive after feelings and doubt"},
+      "form": {"zh": "être content／triste／surpris que・avoir peur que・regretter que・douter que・je ne pense pas que ＋ 虛擬式", "en": "être content / triste / surpris que · avoir peur que · regretter que · douter que · je ne pense pas que + subjunctive"},
+      "explain": {"zh": "對某件事表達情緒或懷疑時，que 後面用虛擬式：Je suis content que tu sois là.（你來了我很高興。）否定的 penser／croire 也用虛擬式：Je ne crois pas qu'il vienne.", "en": "Feelings and doubt about something take the subjunctive: Je suis content que tu sois là. Negative penser / croire do too: Je ne crois pas qu'il vienne."},
+      "notes": [
+        {"zh": "肯定的 je pense que、je crois que 用直陳式：Je pense qu'il viendra.", "en": "Positive je pense que, je crois que take the indicative: Je pense qu'il viendra."},
+        {"zh": "主詞相同時改用 de ＋ 原形：Je suis content de te voir.", "en": "With the same subject, use de + infinitive: Je suis content de te voir."}
+      ],
+      "mistakes": [
+        {"wrong": "Je pense qu'il soit malade.", "right": "Je pense qu'il est malade.", "zh": "肯定的 penser que 用直陳式。", "en": "Positive penser que takes the indicative."},
+        {"wrong": "Je suis triste que tu pars.", "right": "Je suis triste que tu partes.", "zh": "情緒後面用虛擬式 partes。", "en": "A feeling takes the subjunctive: partes."}
+      ],
+      "examples": [
+        {"text": "Je suis ravie que tu puisses venir.", "zh": "你能來我好開心。", "en": "I'm delighted you can come."},
+        {"text": "J'ai peur qu'il soit trop tard.", "zh": "我怕已經太遲了。", "en": "I'm afraid it's too late."},
+        {"text": "Je ne pense pas que ce soit une bonne idée.", "zh": "我不覺得這是個好主意。", "en": "I don't think it's a good idea."}
+      ],
+      "quiz": [
+        {"q": "Je regrette que tu ne（　）pas venir.", "zh": "很遺憾你不能來。", "en": "I'm sorry you can't come.", "options": ["puisses", "peux", "pourras", "pouvais"], "answer": 0},
+        {"q": "Je crois qu'elle（　）raison.", "zh": "我覺得她說得對。", "en": "I think she's right.", "options": ["a", "ait", "avoir", "eût"], "answer": 0},
+        {"q": "Nous sommes contents（　）vous voir.", "zh": "我們很高興見到你們。", "en": "We're happy to see you.", "options": ["de", "que", "à", "pour"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_conjonctions",
+      "pattern": "pour que・bien que・avant que",
+      "title": {"zh": "接虛擬式的連接詞", "en": "Conjunctions with the subjunctive"},
+      "form": {"zh": "pour que（為了讓）・bien que（雖然）・avant que（在…之前）・à condition que（只要）・jusqu'à ce que（直到）・sans que（而沒有）＋ 虛擬式", "en": "pour que · bien que · avant que · à condition que · jusqu'à ce que · sans que + subjunctive"},
+      "explain": {"zh": "這些連接詞後面一定接虛擬式：Je t'explique pour que tu comprennes.（我解釋給你聽，好讓你懂。）Bien qu'il pleuve, on sort.（雖然下雨，我們還是出門。）", "en": "These conjunctions always take the subjunctive: Je t'explique pour que tu comprennes. Bien qu'il pleuve, on sort."},
+      "notes": [
+        {"zh": "主詞相同時用介系詞 ＋ 原形：pour partir、avant de partir、sans dire un mot。", "en": "With the same subject use a preposition + infinitive: pour partir, avant de partir, sans dire un mot."},
+        {"zh": "après que 例外，後面用直陳式。", "en": "après que is the exception: it takes the indicative."}
+      ],
+      "mistakes": [
+        {"wrong": "Bien qu'il est fatigué, il travaille.", "right": "Bien qu'il soit fatigué, il travaille.", "zh": "bien que 後面用虛擬式。", "en": "bien que takes the subjunctive."},
+        {"wrong": "Je mange avant que je parte.", "right": "Je mange avant de partir.", "zh": "主詞相同時用 avant de ＋ 原形。", "en": "Same subject: avant de + infinitive."}
+      ],
+      "examples": [
+        {"text": "Parle plus fort pour que tout le monde t'entende.", "zh": "大聲一點，讓大家都聽得到。", "en": "Speak louder so that everyone can hear you."},
+        {"text": "Rentre avant qu'il fasse nuit.", "zh": "天黑前回家。", "en": "Come home before it gets dark."},
+        {"text": "Tu peux sortir à condition que tu finisses tes devoirs.", "zh": "只要寫完功課，你就可以出去。", "en": "You can go out as long as you finish your homework."}
+      ],
+      "quiz": [
+        {"q": "Bien qu'elle（　）malade, elle est venue.", "zh": "雖然她生病了，還是來了。", "en": "Although she was ill, she came.", "options": ["soit", "est", "était", "sera"], "answer": 0},
+        {"q": "Attends ici jusqu'à ce que je（　）.", "zh": "在這裡等，直到我回來。", "en": "Wait here until I come back.", "options": ["revienne", "reviens", "reviendrai", "revenir"], "answer": 0},
+        {"q": "Lave-toi les mains avant（　）manger.", "zh": "吃飯前先洗手。", "en": "Wash your hands before eating.", "options": ["de", "que", "à", "pour"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_infinitif",
+      "pattern": "je veux partir ／ je veux que tu partes",
+      "title": {"zh": "虛擬式還是原形？", "en": "Subjunctive or infinitive?"},
+      "form": {"zh": "主詞相同 → 原形（Je veux partir.）・主詞不同 → que ＋ 虛擬式（Je veux que tu partes.）", "en": "same subject → infinitive (Je veux partir.) · different subject → que + subjunctive (Je veux que tu partes.)"},
+      "explain": {"zh": "要不要用虛擬式，看兩個動作的主詞是不是同一個人。自己想做：Je voudrais sortir. 想要別人做：Je voudrais que tu sortes.", "en": "Whether you need the subjunctive depends on the subjects. Wanting to do it yourself: Je voudrais sortir. Wanting someone else to: Je voudrais que tu sortes."},
+      "notes": [
+        {"zh": "情緒也一樣：Je suis heureux de partir. ／ Je suis heureux que tu partes.", "en": "Same with feelings: Je suis heureux de partir / que tu partes."}
+      ],
+      "mistakes": [
+        {"wrong": "Je veux que je parte.", "right": "Je veux partir.", "zh": "主詞相同用原形。", "en": "Same subject: infinitive."},
+        {"wrong": "Elle veut tu viennes.", "right": "Elle veut que tu viennes.", "zh": "主詞不同要有 que。", "en": "A different subject needs que."}
+      ],
+      "examples": [
+        {"text": "Je préfère rester à la maison.", "zh": "我比較想待在家。", "en": "I'd rather stay at home."},
+        {"text": "Je préfère que tu restes à la maison.", "zh": "我比較希望你待在家。", "en": "I'd rather you stayed at home."},
+        {"text": "Elle a peur de rater son train.", "zh": "她怕趕不上火車。", "en": "She's afraid of missing her train."}
+      ],
+      "quiz": [
+        {"q": "Nous voulons（　）en Bretagne cet été.", "zh": "我們今年夏天想去布列塔尼。", "en": "We want to go to Brittany this summer.", "options": ["aller", "que nous allions", "allions", "allons"], "answer": 0},
+        {"q": "Mon père veut que je（　）le permis.", "zh": "我爸爸希望我去考駕照。", "en": "My father wants me to get my driving licence.", "options": ["passe", "passer", "passerai", "passais"], "answer": 0},
+        {"q": "Je suis désolé（　）retard.", "zh": "抱歉我遲到了。", "en": "I'm sorry I'm late.", "options": ["d'être en", "que je sois en", "être en", "que d'être en"], "answer": 0}
+      ]
+    },
+    {
+      "id": "pqp",
+      "pattern": "plus-que-parfait",
+      "title": {"zh": "愈過去式（過去的過去）", "en": "The pluperfect"},
+      "form": {"zh": "avoir／être 的未完成過去式 ＋ 過去分詞（j'avais fini、elle était partie）", "en": "imperfect of avoir / être + past participle (j'avais fini, elle était partie)"},
+      "explain": {"zh": "說「在過去某件事之前已經發生」的事：Quand je suis arrivé, le film avait déjà commencé.（我到的時候，電影已經開始了。）助動詞的選擇跟複合過去式一樣。", "en": "For something that had already happened before another past event: Quand je suis arrivé, le film avait déjà commencé. avoir / être are chosen as in the passé composé."},
+      "notes": [
+        {"zh": "être 當助動詞時，過去分詞要跟主詞一致：Elles étaient parties.", "en": "With être the participle agrees: Elles étaient parties."}
+      ],
+      "mistakes": [
+        {"wrong": "Il a dit qu'il a perdu ses clés.", "right": "Il a dit qu'il avait perdu ses clés.", "zh": "比「說」更早發生，用愈過去式。", "en": "It happened before he said it: pluperfect."},
+        {"wrong": "J'avais allé au marché.", "right": "J'étais allé au marché.", "zh": "aller 用 être 當助動詞。", "en": "aller takes être."}
+      ],
+      "examples": [
+        {"text": "Elle avait déjà mangé quand je l'ai appelée.", "zh": "我打給她的時候，她已經吃過了。", "en": "She had already eaten when I called her."},
+        {"text": "Je n'étais jamais venu à Lyon avant.", "zh": "我以前從沒來過里昂。", "en": "I had never been to Lyon before."},
+        {"text": "On a trouvé le portefeuille qu'il avait perdu.", "zh": "我們找到了他弄丟的錢包。", "en": "We found the wallet he had lost."}
+      ],
+      "quiz": [
+        {"q": "Quand nous sommes arrivés, le train（　）.", "zh": "我們到的時候，火車已經開走了。", "en": "When we arrived, the train had left.", "options": ["était parti", "avait parti", "est parti", "partait"], "answer": 0},
+        {"q": "Il m'a rendu le livre que je lui（　）prêté.", "zh": "他把我借他的書還給我了。", "en": "He gave back the book I had lent him.", "options": ["avais", "étais", "ai", "aurais"], "answer": 0},
+        {"q": "Elle était triste parce qu'elle（　）son examen.", "zh": "她很難過，因為她考試沒過。", "en": "She was sad because she had failed her exam.", "options": ["avait raté", "était ratée", "a raté", "ratait"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cond_passe",
+      "pattern": "conditionnel passé",
+      "title": {"zh": "條件式過去時：本來會…", "en": "The past conditional"},
+      "form": {"zh": "avoir／être 的條件式 ＋ 過去分詞（j'aurais aimé、il serait venu）", "en": "conditional of avoir / être + past participle (j'aurais aimé, il serait venu)"},
+      "explain": {"zh": "說過去「本來會、本來應該」但沒有發生的事，常帶遺憾或責備：J'aurais aimé venir.（我本來很想來的。）Tu aurais dû me le dire.（你早該跟我說的。）", "en": "For what would have happened but didn't — often a regret or reproach: J'aurais aimé venir. Tu aurais dû me le dire."},
+      "notes": [
+        {"zh": "aurais dû ＋ 原形是「早該…」，aurais pu ＋ 原形是「本來可以…」。", "en": "aurais dû + infinitive = should have; aurais pu + infinitive = could have."}
+      ],
+      "mistakes": [
+        {"wrong": "Tu as dû me prévenir.", "right": "Tu aurais dû me prévenir.", "zh": "「早該…（但沒做）」用 aurais dû。", "en": "“Should have (but didn't)” is aurais dû."},
+        {"wrong": "Elle aurait venu avec nous.", "right": "Elle serait venue avec nous.", "zh": "venir 用 être，分詞要配合 elle。", "en": "venir takes être, and the participle agrees."}
+      ],
+      "examples": [
+        {"text": "J'aurais voulu être musicien.", "zh": "我本來想當音樂家的。", "en": "I would have liked to be a musician."},
+        {"text": "Vous auriez pu m'attendre !", "zh": "你們本來可以等我一下的！", "en": "You could have waited for me!"},
+        {"text": "Sans ton aide, je ne serais jamais arrivé.", "zh": "沒有你的幫忙，我絕對到不了。", "en": "Without your help, I would never have made it."}
+      ],
+      "quiz": [
+        {"q": "Tu（　）prendre un manteau, il fait froid.", "zh": "你早該帶件大衣的，好冷。", "en": "You should have brought a coat — it's cold.", "options": ["aurais dû", "aurais devoir", "devrais avoir", "avais dû"], "answer": 0},
+        {"q": "Nous（　）partir plus tôt.", "zh": "我們本來可以早點出發的。", "en": "We could have left earlier.", "options": ["aurions pu", "avons pu", "pourrions", "serions pu"], "answer": 0},
+        {"q": "Sans le GPS, ils se（　）perdus.", "zh": "要是沒有導航，他們早就迷路了。", "en": "Without the GPS, they would have got lost.", "options": ["seraient", "auraient", "sont", "étaient"], "answer": 0}
+      ]
+    },
+    {
+      "id": "si_pqp",
+      "pattern": "si ＋ plus-que-parfait, conditionnel passé",
+      "title": {"zh": "與過去事實相反的假設", "en": "Unreal past: si + pluperfect"},
+      "form": {"zh": "Si ＋ 愈過去式, 條件式過去時：Si j'avais su, je serais venu.", "en": "Si + pluperfect, past conditional: Si j'avais su, je serais venu."},
+      "explain": {"zh": "說「如果當時…，就會…」但事實上沒有發生：Si tu m'avais appelé, je t'aurais aidé.（如果你當時打給我，我就會幫你了。）si 後面不能用條件式。", "en": "For things that didn't happen: Si tu m'avais appelé, je t'aurais aidé. Never put the conditional right after si."},
+      "notes": [
+        {"zh": "也可以混用，說過去的條件對現在的影響：Si j'avais étudié, je serais médecin aujourd'hui.", "en": "You can mix: Si j'avais étudié, je serais médecin aujourd'hui (past condition, present result)."}
+      ],
+      "mistakes": [
+        {"wrong": "Si j'aurais su, je ne serais pas venu.", "right": "Si j'avais su, je ne serais pas venu.", "zh": "si 後面用愈過去式，不用條件式。", "en": "After si use the pluperfect, not the conditional."},
+        {"wrong": "Si tu avais demandé, je te le donnerais hier.", "right": "Si tu avais demandé, je te l'aurais donné hier.", "zh": "過去沒發生的結果用條件式過去時。", "en": "A past result that didn't happen: past conditional."}
+      ],
+      "examples": [
+        {"text": "Si nous étions partis plus tôt, nous n'aurions pas raté l'avion.", "zh": "如果我們早點出發，就不會錯過飛機了。", "en": "If we had left earlier, we wouldn't have missed the plane."},
+        {"text": "Si j'avais eu le temps, je serais passé te voir.", "zh": "如果我當時有空，就會去看你了。", "en": "If I'd had time, I would have dropped by."},
+        {"text": "Qu'est-ce que tu aurais fait si tu avais gagné ?", "zh": "如果你贏了，你會做什麼？", "en": "What would you have done if you'd won?"}
+      ],
+      "quiz": [
+        {"q": "Si tu m'（　）prévenu, je serais venu te chercher.", "zh": "如果你事先通知我，我就會去接你了。", "en": "If you had told me, I would have come to pick you up.", "options": ["avais", "aurais", "as", "avait"], "answer": 0},
+        {"q": "Si elle avait révisé, elle（　）l'examen.", "zh": "如果她當時有複習，就會通過考試了。", "en": "If she had revised, she would have passed the exam.", "options": ["aurait réussi", "avait réussi", "réussirait eu", "a réussi"], "answer": 0},
+        {"q": "S'il n'avait pas plu, nous（　）à la plage.", "zh": "如果那天沒下雨，我們就會去海邊了。", "en": "If it hadn't rained, we would have gone to the beach.", "options": ["serions allés", "aurions allé", "étions allés", "irions eu"], "answer": 0}
+      ]
+    },
+    {
+      "id": "futur_anterieur",
+      "pattern": "futur antérieur",
+      "title": {"zh": "先未來時：到時候已經…", "en": "The future perfect"},
+      "form": {"zh": "avoir／être 的簡單未來式 ＋ 過去分詞（j'aurai fini、elle sera arrivée）", "en": "future of avoir / être + past participle (j'aurai fini, elle sera arrivée)"},
+      "explain": {"zh": "說未來某個時間點之前「已經完成」的事：Quand tu arriveras, j'aurai préparé le dîner.（等你到的時候，我已經準備好晚餐了。）常和 quand、dès que、après que 一起用。", "en": "For what will be finished before a future moment: Quand tu arriveras, j'aurai préparé le dîner. Often with quand, dès que, après que."},
+      "notes": [
+        {"zh": "法文的 quand、dès que 說未來時要用未來式（英文用現在式）：Dès que j'aurai fini, je t'appellerai.", "en": "Unlike English, quand / dès que take a future tense: Dès que j'aurai fini, je t'appellerai."}
+      ],
+      "mistakes": [
+        {"wrong": "Je t'appelle quand j'ai fini demain.", "right": "Je t'appellerai quand j'aurai fini demain.", "zh": "說未來的事，quand 後面也要用未來的時態。", "en": "For the future, quand takes a future tense too."},
+        {"wrong": "Ils auront parti avant midi.", "right": "Ils seront partis avant midi.", "zh": "partir 用 être。", "en": "partir takes être."}
+      ],
+      "examples": [
+        {"text": "Dans un an, j'aurai terminé mes études.", "zh": "一年後我就畢業了。", "en": "In a year, I'll have finished my studies."},
+        {"text": "Dès que tu auras reçu le colis, préviens-moi.", "zh": "你收到包裹後馬上通知我。", "en": "As soon as you've received the parcel, let me know."},
+        {"text": "Le spectacle aura commencé quand nous arriverons.", "zh": "等我們到的時候，表演已經開始了。", "en": "The show will have started by the time we arrive."}
+      ],
+      "quiz": [
+        {"q": "Quand tu rentreras, j'（　）la cuisine.", "zh": "等你回來時，我已經打掃好廚房了。", "en": "When you get back, I'll have cleaned the kitchen.", "options": ["aurai nettoyé", "ai nettoyé", "avais nettoyé", "serai nettoyé"], "answer": 0},
+        {"q": "Dès que nous（　）, nous t'appellerons.", "zh": "我們一到就打給你。", "en": "As soon as we've arrived, we'll call you.", "options": ["serons arrivés", "aurons arrivé", "arrivons", "sommes arrivés"], "answer": 0},
+        {"q": "À 20 h, elle（　）son travail.", "zh": "晚上八點時，她就會做完工作了。", "en": "By 8 p.m., she'll have finished her work.", "options": ["aura fini", "a fini", "finissait", "sera finie"], "answer": 0}
+      ]
+    },
+    {
+      "id": "discours_indirect",
+      "pattern": "Il a dit que …",
+      "title": {"zh": "間接引述和時態一致", "en": "Reported speech"},
+      "form": {"zh": "說話動詞是過去式時：現在式 → 未完成過去式・複合過去式 → 愈過去式・簡單未來式 → 條件式（je viendrai → il a dit qu'il viendrait）", "en": "with a past reporting verb: present → imperfect · passé composé → pluperfect · future → conditional (je viendrai → il a dit qu'il viendrait)"},
+      "explain": {"zh": "轉述別人說過的話時，代名詞要換，說話動詞在過去時，時態也要往過去退：« Je suis fatiguée », dit-elle. → Elle a dit qu'elle était fatiguée.（她說她很累。）", "en": "When reporting, change the pronouns and, after a past reporting verb, move the tense back: Elle a dit qu'elle était fatiguée."},
+      "notes": [
+        {"zh": "時間詞也要換：demain → le lendemain、hier → la veille、aujourd'hui → ce jour-là。", "en": "Time words change: demain → le lendemain, hier → la veille, aujourd'hui → ce jour-là."},
+        {"zh": "命令句用 de ＋ 原形：Il m'a dit de me taire.", "en": "Orders become de + infinitive: Il m'a dit de me taire."}
+      ],
+      "mistakes": [
+        {"wrong": "Il a dit qu'il viendra le lendemain.", "right": "Il a dit qu'il viendrait le lendemain.", "zh": "說話動詞是過去，未來式要改成條件式。", "en": "After a past reporting verb, the future becomes the conditional."},
+        {"wrong": "Elle m'a dit que je ferme la porte.", "right": "Elle m'a dit de fermer la porte.", "zh": "轉述命令用 de ＋ 原形。", "en": "A reported order is de + infinitive."}
+      ],
+      "examples": [
+        {"text": "Il m'a dit qu'il habitait à Taipei.", "zh": "他跟我說他住在台北。", "en": "He told me he lived in Taipei."},
+        {"text": "Elle a expliqué qu'elle avait raté le bus.", "zh": "她解釋說她錯過了公車。", "en": "She explained that she had missed the bus."},
+        {"text": "Le médecin m'a conseillé de me reposer.", "zh": "醫生建議我休息。", "en": "The doctor advised me to rest."}
+      ],
+      "quiz": [
+        {"q": "Paul a dit qu'il（　）malade.", "zh": "保羅說他生病了。", "en": "Paul said he was ill.", "options": ["était", "soit", "sera", "serait été"], "answer": 0},
+        {"q": "Ils ont promis qu'ils（　）nous voir.", "zh": "他們答應說會來看我們。", "en": "They promised they would come and see us.", "options": ["viendraient", "viendront", "venaient de", "viennent"], "answer": 0},
+        {"q": "Le professeur nous a demandé（　）silence.", "zh": "老師要我們保持安靜。", "en": "The teacher asked us to be quiet.", "options": ["de faire", "que nous faisons", "faire", "à faire"], "answer": 0}
+      ]
+    },
+    {
+      "id": "interrogation_indirecte",
+      "pattern": "si・ce que・ce qui",
+      "title": {"zh": "間接問句：si、ce que、ce qui", "en": "Indirect questions: si, ce que, ce qui"},
+      "form": {"zh": "是非問句 → si・Qu'est-ce que … ? → ce que・Qu'est-ce qui … ? → ce qui・疑問詞（où、quand、comment、pourquoi）保留，語序不倒裝", "en": "yes / no → si · Qu'est-ce que … ? → ce que · Qu'est-ce qui … ? → ce qui · keep où, quand, comment, pourquoi, no inversion"},
+      "explain": {"zh": "把問句放進另一句話時，不倒裝、不用 est-ce que：Est-ce que tu viens ? → Je me demande si tu viens. Qu'est-ce que tu veux ? → Dis-moi ce que tu veux.", "en": "A question inside a sentence loses inversion and est-ce que: Je me demande si tu viens. Dis-moi ce que tu veux."},
+      "notes": [
+        {"zh": "si 遇到 il、ils 縮寫成 s'il、s'ils，遇到 elle 不縮寫。", "en": "si + il / ils → s'il, s'ils; not before elle."}
+      ],
+      "mistakes": [
+        {"wrong": "Je ne sais pas qu'est-ce qu'il veut.", "right": "Je ne sais pas ce qu'il veut.", "zh": "間接問句用 ce que。", "en": "Indirect: ce que."},
+        {"wrong": "Dis-moi où habites-tu.", "right": "Dis-moi où tu habites.", "zh": "間接問句不倒裝。", "en": "No inversion in an indirect question."}
+      ],
+      "examples": [
+        {"text": "Je me demande s'il va pleuvoir.", "zh": "我在想會不會下雨。", "en": "I wonder whether it's going to rain."},
+        {"text": "Explique-moi ce qui s'est passé.", "zh": "跟我說發生了什麼事。", "en": "Tell me what happened."},
+        {"text": "Tu sais à quelle heure le magasin ferme ?", "zh": "你知道那家店幾點關門嗎？", "en": "Do you know what time the shop closes?"}
+      ],
+      "quiz": [
+        {"q": "Je ne sais pas（　）elle viendra ce soir.", "zh": "我不知道她今晚會不會來。", "en": "I don't know whether she'll come tonight.", "options": ["si", "que", "ce que", "qu'est-ce que"], "answer": 0},
+        {"q": "Dis-moi（　）te fait peur.", "zh": "跟我說是什麼讓你害怕。", "en": "Tell me what scares you.", "options": ["ce qui", "ce que", "qu'est-ce qui", "que"], "answer": 0},
+        {"q": "Il m'a demandé（　）je faisais dans la vie.", "zh": "他問我是做什麼工作的。", "en": "He asked me what I did for a living.", "options": ["ce que", "ce qui", "que", "qu'est-ce que"], "answer": 0}
+      ]
+    },
+    {
+      "id": "dont",
+      "pattern": "dont",
+      "title": {"zh": "關係代名詞 dont", "en": "The relative pronoun dont"},
+      "form": {"zh": "dont ＝ de ＋ 先行詞：parler de → le film dont je parle・avoir besoin de → ce dont j'ai besoin・所屬：un ami dont le père est chef", "en": "dont = de + antecedent: le film dont je parle · ce dont j'ai besoin · possession: un ami dont le père est chef"},
+      "explain": {"zh": "動詞或說法後面接 de 時，關係代名詞用 dont：Voici le livre dont je t'ai parlé.（這就是我跟你提過的那本書。）它也可以表示「…的」：une ville dont le nom est difficile。", "en": "When the verb or expression takes de, the relative pronoun is dont: Voici le livre dont je t'ai parlé. It also shows possession: une ville dont le nom est difficile."},
+      "notes": [
+        {"zh": "常見：parler de、avoir besoin de、avoir envie de、se souvenir de、être fier de。", "en": "Common: parler de, avoir besoin de, avoir envie de, se souvenir de, être fier de."}
+      ],
+      "mistakes": [
+        {"wrong": "C'est l'outil que j'ai besoin.", "right": "C'est l'outil dont j'ai besoin.", "zh": "avoir besoin de 用 dont。", "en": "avoir besoin de takes dont."},
+        {"wrong": "La fille dont je connais bien est ici.", "right": "La fille que je connais bien est ici.", "zh": "connaître 直接接受詞，用 que。", "en": "connaître takes a direct object: que."}
+      ],
+      "examples": [
+        {"text": "C'est le restaurant dont tout le monde parle.", "zh": "這就是大家都在討論的那家餐廳。", "en": "It's the restaurant everyone's talking about."},
+        {"text": "J'ai un voisin dont le chien aboie toute la nuit.", "zh": "我有個鄰居，他的狗整晚都在叫。", "en": "I have a neighbour whose dog barks all night."},
+        {"text": "Tout ce dont tu as besoin est dans le sac.", "zh": "你需要的東西都在包包裡。", "en": "Everything you need is in the bag."}
+      ],
+      "quiz": [
+        {"q": "Voici la maison（　）je rêve depuis longtemps.", "zh": "這就是我夢想很久的房子。", "en": "Here's the house I've been dreaming of for ages.", "options": ["dont", "que", "où", "qui"], "answer": 0},
+        {"q": "Le film（　）tu m'as conseillé était super.", "zh": "你推薦我的那部電影很棒。", "en": "The film you recommended was great.", "options": ["que", "dont", "qui", "où"], "answer": 0},
+        {"q": "C'est un artiste（　）les œuvres sont connues partout.", "zh": "他是一位作品舉世聞名的藝術家。", "en": "He's an artist whose works are known everywhere.", "options": ["dont", "que", "qui", "duquel les"], "answer": 0}
+      ]
+    },
+    {
+      "id": "lequel",
+      "pattern": "avec lequel・auquel・duquel",
+      "title": {"zh": "介系詞 ＋ lequel", "en": "Preposition + lequel"},
+      "form": {"zh": "介系詞 ＋ lequel／laquelle／lesquels／lesquelles（東西）・介系詞 ＋ qui（人）　à ＋ lequel → auquel、de ＋ lequel → duquel", "en": "preposition + lequel / laquelle / lesquels / lesquelles (things) · preposition + qui (people) · à + lequel → auquel, de + lequel → duquel"},
+      "explain": {"zh": "介系詞後面的關係代名詞，指東西用 lequel（要配合性別數量），指人用 qui：le stylo avec lequel j'écris（我用來寫字的筆）、l'amie avec qui je voyage（跟我一起旅行的朋友）。", "en": "After a preposition, use lequel (agreeing) for things and qui for people: le stylo avec lequel j'écris, l'amie avec qui je voyage."},
+      "notes": [
+        {"zh": "à 和 de 會跟 lequel 縮合：le projet auquel je pense、le parc près duquel j'habite。", "en": "à and de merge: le projet auquel je pense, le parc près duquel j'habite."}
+      ],
+      "mistakes": [
+        {"wrong": "La table sur que j'ai posé mes clés.", "right": "La table sur laquelle j'ai posé mes clés.", "zh": "介系詞後面指東西用 laquelle。", "en": "After a preposition, a thing takes laquelle."},
+        {"wrong": "Le concours à lequel je participe.", "right": "Le concours auquel je participe.", "zh": "à ＋ lequel 要縮寫成 auquel。", "en": "à + lequel becomes auquel."}
+      ],
+      "examples": [
+        {"text": "C'est la raison pour laquelle je suis parti.", "zh": "這就是我離開的原因。", "en": "That's the reason why I left."},
+        {"text": "Le collègue avec qui je travaille est très drôle.", "zh": "跟我一起工作的同事很有趣。", "en": "The colleague I work with is very funny."},
+        {"text": "Ce sont des questions auxquelles je ne sais pas répondre.", "zh": "這些是我不知道怎麼回答的問題。", "en": "These are questions I don't know how to answer."}
+      ],
+      "quiz": [
+        {"q": "Voici l'ordinateur avec（　）je travaille.", "zh": "這是我工作用的電腦。", "en": "This is the computer I work with.", "options": ["lequel", "laquelle", "qui", "que"], "answer": 0},
+        {"q": "C'est une idée à（　）je n'avais pas pensé.", "zh": "這是我沒想過的點子。", "en": "It's an idea I hadn't thought of.", "options": ["laquelle", "lequel", "que", "quoi"], "answer": 0},
+        {"q": "Le musée près（　）nous habitons est fermé le lundi.", "zh": "我們家附近的博物館星期一休館。", "en": "The museum near which we live is closed on Mondays.", "options": ["duquel", "de lequel", "dont", "auquel"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ce_qui_que",
+      "pattern": "ce qui・ce que・ce dont",
+      "title": {"zh": "ce qui、ce que、ce dont：…的事", "en": "ce qui, ce que, ce dont — what"},
+      "form": {"zh": "ce qui ＋ 動詞（當主詞）・ce que ＋ 主詞 ＋ 動詞（當受詞）・ce dont（de ＋ 東西）", "en": "ce qui + verb (subject) · ce que + subject + verb (object) · ce dont (with de)"},
+      "explain": {"zh": "沒有明確的先行詞、意思是「…的東西／事情」時用 ce ＋ 關係代名詞：Ce qui m'intéresse, c'est l'histoire.（我感興趣的是歷史。）Fais ce que tu veux.（你想做什麼就做什麼。）", "en": "With no noun to refer to, “what” is ce + relative pronoun: Ce qui m'intéresse, c'est l'histoire. Fais ce que tu veux."},
+      "notes": [
+        {"zh": "ce qui 後面直接接動詞，ce que 後面接主詞。", "en": "ce qui is followed by a verb; ce que by a subject."}
+      ],
+      "mistakes": [
+        {"wrong": "Je ne comprends pas ce qui tu dis.", "right": "Je ne comprends pas ce que tu dis.", "zh": "後面有主詞 tu，用 ce que。", "en": "A subject (tu) follows: ce que."},
+        {"wrong": "Ce que me plaît, c'est le calme.", "right": "Ce qui me plaît, c'est le calme.", "zh": "當 plaît 的主詞，用 ce qui。", "en": "It's the subject of plaît: ce qui."}
+      ],
+      "examples": [
+        {"text": "Ce que j'aime à Paris, ce sont les cafés.", "zh": "我喜歡巴黎的地方，是那些咖啡館。", "en": "What I love about Paris is the cafés."},
+        {"text": "Raconte-moi ce qui t'est arrivé.", "zh": "跟我說你發生了什麼事。", "en": "Tell me what happened to you."},
+        {"text": "C'est exactement ce dont je rêvais.", "zh": "這正是我夢寐以求的。", "en": "It's exactly what I was dreaming of."}
+      ],
+      "quiz": [
+        {"q": "（　）est important, c'est ta santé.", "zh": "重要的是你的健康。", "en": "What matters is your health.", "options": ["Ce qui", "Ce que", "Ce dont", "Qu'est-ce qui"], "answer": 0},
+        {"q": "Prends（　）tu veux.", "zh": "你想拿什麼就拿。", "en": "Take what you want.", "options": ["ce que", "ce qui", "que", "qu'est-ce que"], "answer": 0},
+        {"q": "Dis-moi（　）tu as besoin.", "zh": "跟我說你需要什麼。", "en": "Tell me what you need.", "options": ["ce dont", "ce que", "dont", "ce qui"], "answer": 0}
+      ]
+    },
+    {
+      "id": "passif",
+      "pattern": "être ＋ participe passé (par)",
+      "title": {"zh": "被動語態", "en": "The passive"},
+      "form": {"zh": "être（任何時態）＋ 過去分詞（配合主詞）＋ par ＋ 做的人", "en": "être (any tense) + past participle (agreeing) + par + doer"},
+      "explain": {"zh": "強調「被做的東西」時用被動語態：La tour Eiffel a été construite en 1889.（艾菲爾鐵塔建於 1889 年。）être 決定時態，過去分詞要配合主詞。", "en": "Use the passive to focus on what is done: La tour Eiffel a été construite en 1889. être carries the tense; the participle agrees with the subject."},
+      "notes": [
+        {"zh": "法文口語常用 on 代替被動：On a volé mon vélo.（我的腳踏車被偷了。）", "en": "Spoken French often uses on instead: On a volé mon vélo."},
+        {"zh": "表示感情、狀態的動詞常用 de 代替 par：Il est aimé de tous.", "en": "Feelings and states often take de instead of par: Il est aimé de tous."}
+      ],
+      "mistakes": [
+        {"wrong": "La lettre a été écrit par Marie.", "right": "La lettre a été écrite par Marie.", "zh": "分詞要配合陰性的 lettre。", "en": "The participle agrees with feminine lettre."},
+        {"wrong": "Le voleur a arrêté hier.", "right": "Le voleur a été arrêté hier.", "zh": "被動語態要有 être。", "en": "The passive needs être."}
+      ],
+      "examples": [
+        {"text": "Ce roman a été traduit en vingt langues.", "zh": "這本小說被翻成了二十種語言。", "en": "This novel has been translated into twenty languages."},
+        {"text": "Les résultats seront publiés lundi.", "zh": "結果將在星期一公布。", "en": "The results will be published on Monday."},
+        {"text": "La réunion est annulée à cause de la grève.", "zh": "因為罷工，會議取消了。", "en": "The meeting is cancelled because of the strike."}
+      ],
+      "quiz": [
+        {"q": "Ces photos ont été（　）par mon grand-père.", "zh": "這些照片是我爺爺拍的。", "en": "These photos were taken by my grandfather.", "options": ["prises", "pris", "prise", "prendre"], "answer": 0},
+        {"q": "Le pont（　）l'année prochaine.", "zh": "這座橋明年會蓋好。", "en": "The bridge will be built next year.", "options": ["sera construit", "construira", "a construit", "sera construite"], "answer": 0},
+        {"q": "Cette chanteuse est admirée（　）tout le monde.", "zh": "這位歌手受到大家的喜愛。", "en": "This singer is admired by everyone.", "options": ["de", "à", "pour", "avec"], "answer": 0}
+      ]
+    },
+    {
+      "id": "accord_pp",
+      "pattern": "les fleurs que j'ai achetées",
+      "title": {"zh": "avoir 的過去分詞配合", "en": "Participle agreement with avoir"},
+      "form": {"zh": "avoir ＋ 過去分詞：直接受詞放在動詞前面時，分詞要配合它（la robe que j'ai achetée、je les ai vus）", "en": "avoir + participle: it agrees with a direct object placed before the verb (la robe que j'ai achetée, je les ai vus)"},
+      "explain": {"zh": "用 avoir 的複合過去式，平常分詞不變：J'ai acheté une robe. 但直接受詞（que、la、les…）跑到動詞前面時，分詞要配合它：La robe que j'ai achetée est rouge.", "en": "With avoir the participle usually stays put: J'ai acheté une robe. But if the direct object (que, la, les …) comes before the verb, the participle agrees with it: La robe que j'ai achetée est rouge."},
+      "notes": [
+        {"zh": "間接受詞（lui、leur）和 en 不會讓分詞配合。", "en": "Indirect objects (lui, leur) and en never trigger agreement."}
+      ],
+      "mistakes": [
+        {"wrong": "Ces lettres, je les ai écrit hier.", "right": "Ces lettres, je les ai écrites hier.", "zh": "les（＝lettres）在前面，分詞要配合陰性複數。", "en": "les (the letters) comes first: feminine plural."},
+        {"wrong": "Je leur ai téléphonés.", "right": "Je leur ai téléphoné.", "zh": "leur 是間接受詞，分詞不配合。", "en": "leur is indirect: no agreement."}
+      ],
+      "examples": [
+        {"text": "Tu as vu ma veste ? Je l'ai laissée dans la voiture.", "zh": "你有看到我的外套嗎？我把它留在車上了。", "en": "Have you seen my jacket? I left it in the car."},
+        {"text": "Quelles villes as-tu visitées ?", "zh": "你去過哪些城市？", "en": "Which cities did you visit?"},
+        {"text": "Les gâteaux que ma mère a faits sont délicieux.", "zh": "我媽媽做的蛋糕很好吃。", "en": "The cakes my mother made are delicious."}
+      ],
+      "quiz": [
+        {"q": "La chanson que tu as（　）est magnifique.", "zh": "你唱的那首歌好美。", "en": "The song you sang is beautiful.", "options": ["chantée", "chanté", "chantées", "chantés"], "answer": 0},
+        {"q": "Mes clés ? Je les ai（　）.", "zh": "我的鑰匙嗎？我找到了。", "en": "My keys? I've found them.", "options": ["trouvées", "trouvé", "trouvés", "trouvée"], "answer": 0},
+        {"q": "J'ai（　）une lettre à mes parents.", "zh": "我寫了一封信給爸媽。", "en": "I wrote a letter to my parents.", "options": ["écrit", "écrite", "écrits", "écrites"], "answer": 0}
+      ]
+    },
+    {
+      "id": "doubles_pronoms",
+      "pattern": "je le lui donne",
+      "title": {"zh": "兩個受詞代名詞的順序", "en": "Two object pronouns together"},
+      "form": {"zh": "me／te／se／nous／vous → le／la／les → lui／leur → y → en ＋ 動詞", "en": "me / te / se / nous / vous → le / la / les → lui / leur → y → en + verb"},
+      "explain": {"zh": "兩個代名詞一起出現時有固定順序：Il me le prête.（他借給我。）Je le lui donne.（我把它給他。）Il y en a.（那裡有一些。）", "en": "Two pronouns follow a fixed order: Il me le prête. Je le lui donne. Il y en a."},
+      "notes": [
+        {"zh": "肯定命令式時都放在動詞後面，直接受詞在前：Donne-le-moi !", "en": "In positive commands they follow the verb, direct object first: Donne-le-moi !"}
+      ],
+      "mistakes": [
+        {"wrong": "Je lui le donne.", "right": "Je le lui donne.", "zh": "le 放在 lui 前面。", "en": "le goes before lui."},
+        {"wrong": "Tu me en donnes ?", "right": "Tu m'en donnes ?", "zh": "me 遇到 en 要縮寫成 m'en。", "en": "me + en becomes m'en."}
+      ],
+      "examples": [
+        {"text": "Ton vélo ? Je te le rends demain.", "zh": "你的腳踏車？我明天還你。", "en": "Your bike? I'll give it back to you tomorrow."},
+        {"text": "Elle leur en a parlé hier.", "zh": "她昨天跟他們說過這件事了。", "en": "She told them about it yesterday."},
+        {"text": "Ces livres, je vous les recommande.", "zh": "這些書我推薦給你們。", "en": "I recommend these books to you."}
+      ],
+      "quiz": [
+        {"q": "La photo ? Je（　）envoie tout de suite.", "zh": "那張照片？我馬上傳給你。", "en": "The photo? I'll send it to you right away.", "options": ["te l'", "la te", "l'te", "lui la"], "answer": 0},
+        {"q": "Il a demandé du pain et je（　）ai donné.", "zh": "他要麵包，我就給了他一些。", "en": "He asked for bread and I gave him some.", "options": ["lui en", "en lui", "le lui", "lui y"], "answer": 0},
+        {"q": "C'est mon livre. Rends-（　）, s'il te plaît !", "zh": "這是我的書，請還給我！", "en": "It's my book. Give it back to me, please!", "options": ["le-moi", "moi-le", "me-le", "le-me"], "answer": 0}
+      ]
+    },
+    {
+      "id": "participe_present",
+      "pattern": "-ant（participe présent）",
+      "title": {"zh": "現在分詞", "en": "The present participle"},
+      "form": {"zh": "nous 的現在式去掉 -ons ＋ -ant（nous parlons → parlant）　不規則：étant、ayant、sachant", "en": "nous present minus -ons + -ant (parlant) · irregular: étant, ayant, sachant"},
+      "explain": {"zh": "現在分詞多用在書面語，可以代替 qui 子句或說明原因：On cherche une personne parlant chinois.（徵求會說中文的人。）Étant malade, il est resté chez lui.（因為生病，他待在家。）", "en": "Mostly written French: it replaces a qui clause or gives a reason: On cherche une personne parlant chinois. Étant malade, il est resté chez lui."},
+      "notes": [
+        {"zh": "前面加 en 就是副動詞（gérondif），表示同時或方式：en marchant。", "en": "With en it's the gerund (gérondif), for “while / by”: en marchant."},
+        {"zh": "現在分詞不變形，不配合性別數量。", "en": "The present participle doesn't agree."}
+      ],
+      "mistakes": [
+        {"wrong": "Des enfants jouants dans le parc.", "right": "Des enfants jouant dans le parc.", "zh": "現在分詞不加 -s。", "en": "The present participle takes no -s."},
+        {"wrong": "Les étudiants ayants fini peuvent partir.", "right": "Les étudiants ayant fini peuvent partir.", "zh": "ayant 也不變形，不加 -s。", "en": "ayant doesn't agree either: no -s."}
+      ],
+      "examples": [
+        {"text": "N'ayant pas d'argent, il est rentré à pied.", "zh": "因為沒錢，他走路回家。", "en": "Having no money, he walked home."},
+        {"text": "On a vu des touristes prenant des photos.", "zh": "我們看到一些遊客在拍照。", "en": "We saw tourists taking photos."},
+        {"text": "Sachant que tu aimes le thé, je t'en ai acheté.", "zh": "知道你喜歡喝茶，我就買了一些給你。", "en": "Knowing you like tea, I bought you some."}
+      ],
+      "quiz": [
+        {"q": "（　）le temps, elle a lu un roman entier.", "zh": "因為有時間，她讀完了一整本小說。", "en": "Having time, she read a whole novel.", "options": ["Ayant", "Avant", "En ayant eu", "Avoir"], "answer": 0},
+        {"q": "Nous cherchons un étudiant（　）l'anglais.", "zh": "我們在找會說英文的學生。", "en": "We're looking for a student who speaks English.", "options": ["parlant", "parlants", "parlé", "parle"], "answer": 0},
+        {"q": "（　）en retard, il a pris un taxi.", "zh": "因為遲到了，他搭了計程車。", "en": "Being late, he took a taxi.", "options": ["Étant", "Être", "Étais", "En été"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cause",
+      "pattern": "parce que・puisque・comme・grâce à・à cause de",
+      "title": {"zh": "表示原因", "en": "Expressing cause"},
+      "form": {"zh": "parce que（因為）・puisque（既然）・comme（由於，放句首）＋ 句子・grâce à（多虧，好結果）・à cause de（因為，壞結果）＋ 名詞", "en": "parce que · puisque (since — known) · comme (as — at the start) + clause · grâce à (thanks to) · à cause de (because of) + noun"},
+      "explain": {"zh": "parce que 回答 pourquoi；puisque 說對方已經知道的原因；comme 放在句首。名詞前面用 grâce à（正面）或 à cause de（負面）：Grâce à toi, j'ai réussi.、À cause de la pluie, on reste ici.", "en": "parce que answers pourquoi; puisque gives a reason already known; comme opens the sentence. Before a noun: grâce à (good result) or à cause de (bad result)."},
+      "notes": [
+        {"zh": "car 也是「因為」，比較正式，不能放在句首。", "en": "car also means because; it's more formal and can't start a sentence."}
+      ],
+      "mistakes": [
+        {"wrong": "Grâce à la neige, le vol a été annulé.", "right": "À cause de la neige, le vol a été annulé.", "zh": "壞結果用 à cause de。", "en": "A bad result takes à cause de."},
+        {"wrong": "Je reste parce que la pluie.", "right": "Je reste à cause de la pluie.", "zh": "名詞前面用 à cause de，parce que 後面要接句子。", "en": "Before a noun: à cause de; parce que needs a clause."}
+      ],
+      "examples": [
+        {"text": "Comme il faisait beau, nous avons mangé dehors.", "zh": "由於天氣很好，我們在外面吃飯。", "en": "As the weather was nice, we ate outside."},
+        {"text": "Puisque tu es là, aide-moi un peu.", "zh": "既然你在，就幫我一下吧。", "en": "Since you're here, give me a hand."},
+        {"text": "J'ai trouvé ce travail grâce à un ami.", "zh": "多虧一個朋友，我找到了這份工作。", "en": "I found this job thanks to a friend."}
+      ],
+      "quiz": [
+        {"q": "Le match a été annulé（　）l'orage.", "zh": "比賽因為暴風雨取消了。", "en": "The match was cancelled because of the storm.", "options": ["à cause de", "grâce à", "parce que", "puisque"], "answer": 0},
+        {"q": "（　）tu connais la ville, c'est toi qui conduis.", "zh": "既然你熟悉這座城市，就由你開車。", "en": "Since you know the city, you're driving.", "options": ["Puisque", "Pour que", "Grâce à", "Car"], "answer": 0},
+        {"q": "J'ai bien dormi（　）ce nouvel oreiller.", "zh": "多虧這個新枕頭，我睡得很好。", "en": "I slept well thanks to this new pillow.", "options": ["grâce à", "à cause de", "parce que", "comme"], "answer": 0}
+      ]
+    },
+    {
+      "id": "consequence",
+      "pattern": "donc・alors・c'est pourquoi・si bien que",
+      "title": {"zh": "表示結果", "en": "Expressing consequence"},
+      "form": {"zh": "donc・alors（所以）・c'est pourquoi（這就是為什麼）・si bien que（以致於）・tellement … que（太…以致於）", "en": "donc · alors (so) · c'est pourquoi (that's why) · si bien que (so that, with the result that) · tellement … que (so … that)"},
+      "explain": {"zh": "說結果：Il pleuvait, alors on est restés à la maison. 程度造成的結果用 tellement／si ＋ 形容詞 ＋ que：Il était tellement fatigué qu'il s'est endormi.（他累到睡著了。）", "en": "For results: Il pleuvait, alors on est restés à la maison. A result of degree uses tellement / si + adjective + que: Il était tellement fatigué qu'il s'est endormi."},
+      "notes": [
+        {"zh": "名詞前面用 tellement de：Il y avait tellement de monde que …", "en": "Before a noun use tellement de: Il y avait tellement de monde que …"}
+      ],
+      "mistakes": [
+        {"wrong": "Il était tellement fatigué qu'il soit parti.", "right": "Il était tellement fatigué qu'il est parti.", "zh": "結果是事實，用直陳式。", "en": "A result is a fact: indicative."},
+        {"wrong": "Il y avait tellement monde que …", "right": "Il y avait tellement de monde que …", "zh": "名詞前要加 de。", "en": "Before a noun add de."}
+      ],
+      "examples": [
+        {"text": "J'ai raté le bus, donc je suis arrivé en retard.", "zh": "我錯過公車，所以遲到了。", "en": "I missed the bus, so I arrived late."},
+        {"text": "Le film était si drôle que tout le monde riait.", "zh": "電影太好笑了，大家都在笑。", "en": "The film was so funny that everyone was laughing."},
+        {"text": "Elle adore les langues, c'est pourquoi elle étudie le japonais.", "zh": "她很愛語言，這就是她學日文的原因。", "en": "She loves languages — that's why she studies Japanese."}
+      ],
+      "quiz": [
+        {"q": "Il faisait（　）chaud que nous sommes allés nager.", "zh": "天氣熱到我們去游泳了。", "en": "It was so hot that we went swimming.", "options": ["tellement", "tellement de", "beaucoup", "trop de"], "answer": 0},
+        {"q": "J'étais malade,（　）je ne suis pas venu.", "zh": "我生病了，所以沒來。", "en": "I was ill, so I didn't come.", "options": ["donc", "parce que", "puisque", "grâce à"], "answer": 0},
+        {"q": "Il a neigé toute la nuit,（　）les routes étaient bloquées.", "zh": "雪下了一整晚，結果道路都封閉了。", "en": "It snowed all night, so the roads were blocked.", "options": ["si bien que", "bien que", "pour que", "à cause de"], "answer": 0}
+      ]
+    },
+    {
+      "id": "opposition",
+      "pattern": "pourtant・cependant・alors que・même si",
+      "title": {"zh": "表示對比和讓步", "en": "Contrast and concession"},
+      "form": {"zh": "mais・pourtant・cependant（但是、然而）・alors que（而，對比）・même si（即使，＋ 直陳式）・malgré ＋ 名詞（儘管）", "en": "mais · pourtant · cependant (however) · alors que (whereas) · même si (even if, + indicative) · malgré + noun (despite)"},
+      "explain": {"zh": "pourtant、cependant 比 mais 正式：Il est riche, pourtant il n'est pas heureux. alors que 對比兩件事：Moi, j'aime le thé, alors que lui préfère le café. malgré 後面接名詞：malgré la pluie。", "en": "pourtant, cependant are more formal than mais: Il est riche, pourtant il n'est pas heureux. alors que contrasts: j'aime le thé, alors que lui préfère le café. malgré + noun: malgré la pluie."},
+      "notes": [
+        {"zh": "même si 後面用直陳式，bien que 後面用虛擬式。", "en": "même si takes the indicative; bien que the subjunctive."}
+      ],
+      "mistakes": [
+        {"wrong": "Même s'il soit tard, je t'attends.", "right": "Même s'il est tard, je t'attends.", "zh": "même si 後面用直陳式。", "en": "même si takes the indicative."},
+        {"wrong": "Malgré qu'il pleut, on sort.", "right": "Malgré la pluie, on sort.", "zh": "malgré 後面接名詞。", "en": "malgré takes a noun."}
+      ],
+      "examples": [
+        {"text": "Il a beaucoup travaillé ; pourtant, il a échoué.", "zh": "他很努力，但還是失敗了。", "en": "He worked hard; yet he failed."},
+        {"text": "Même si c'est difficile, je ne vais pas abandonner.", "zh": "就算很難，我也不會放棄。", "en": "Even if it's hard, I'm not going to give up."},
+        {"text": "Malgré la fatigue, elle a fini la course.", "zh": "儘管很累，她還是跑完了全程。", "en": "Despite being tired, she finished the race."}
+      ],
+      "quiz": [
+        {"q": "（　）le froid, les enfants jouent dehors.", "zh": "儘管天氣冷，孩子們還在外面玩。", "en": "Despite the cold, the children are playing outside.", "options": ["Malgré", "Même si", "Bien que", "Pourtant"], "answer": 0},
+        {"q": "Je viendrai（　）il pleut.", "zh": "就算下雨我也會來。", "en": "I'll come even if it rains.", "options": ["même s'", "bien qu'", "malgré qu'", "pourtant s'"], "answer": 0},
+        {"q": "Elle est très timide,（　）sa sœur parle à tout le monde.", "zh": "她很害羞，而她妹妹跟誰都聊得來。", "en": "She's very shy, whereas her sister talks to everyone.", "options": ["alors que", "grâce à", "donc", "pour que"], "answer": 0}
+      ]
+    },
+    {
+      "id": "temps_conj",
+      "pattern": "pendant que・dès que・depuis que",
+      "title": {"zh": "時間連接詞", "en": "Time conjunctions"},
+      "form": {"zh": "quand・lorsque（當…時）・pendant que（在…期間）・dès que（一…就）・depuis que（自從）・après que（在…之後，＋ 直陳式）・avant que（＋ 虛擬式）", "en": "quand · lorsque (when) · pendant que (while) · dès que (as soon as) · depuis que (since) · après que (+ indicative) · avant que (+ subjunctive)"},
+      "explain": {"zh": "用這些連接詞說兩件事的時間關係：Dès que j'arrive, je t'écris.（我一到就寫信給你。）Depuis qu'il habite à Paris, il parle mieux français.（自從住在巴黎，他的法文變好了。）", "en": "These link events in time: Dès que j'arrive, je t'écris. Depuis qu'il habite à Paris, il parle mieux français."},
+      "notes": [
+        {"zh": "說未來時，quand、dès que 後面用未來式：Dès que tu seras prêt, on partira.", "en": "For the future, quand / dès que take the future: Dès que tu seras prêt, on partira."}
+      ],
+      "mistakes": [
+        {"wrong": "Je t'appellerai dès que j'arrive à Nice demain.", "right": "Je t'appellerai dès que j'arriverai à Nice demain.", "zh": "未來的事，dès que 後面也用未來式。", "en": "For the future, dès que takes the future."},
+        {"wrong": "Pendant que tu cuisines, je mettre la table.", "right": "Pendant que tu cuisines, je mets la table.", "zh": "主要子句的動詞要變化。", "en": "The main verb must be conjugated."}
+      ],
+      "examples": [
+        {"text": "Pendant que je lisais, le chat dormait sur mes genoux.", "zh": "我在看書時，貓在我腿上睡覺。", "en": "While I was reading, the cat slept on my lap."},
+        {"text": "Depuis que j'ai un chien, je marche beaucoup plus.", "zh": "自從養了狗，我走路走得多了。", "en": "Since I've had a dog, I walk much more."},
+        {"text": "Lorsque le train est entré en gare, il pleuvait.", "zh": "火車進站時正在下雨。", "en": "When the train pulled into the station, it was raining."}
+      ],
+      "quiz": [
+        {"q": "（　）il a déménagé, je ne le vois plus.", "zh": "自從他搬家後，我就再也沒見過他。", "en": "Since he moved, I don't see him any more.", "options": ["Depuis qu'", "Pendant qu'", "Dès qu'", "Avant qu'"], "answer": 0},
+        {"q": "Je partirai dès que la pluie（　）.", "zh": "雨一停我就出發。", "en": "I'll leave as soon as the rain stops.", "options": ["s'arrêtera", "s'arrête demain", "s'arrêtait", "s'arrêterait"], "answer": 0},
+        {"q": "（　）les enfants dorment, nous regardons un film.", "zh": "孩子們睡覺的時候，我們看電影。", "en": "While the children are asleep, we watch a film.", "options": ["Pendant que", "Depuis que", "Dès que", "Après que"], "answer": 0}
+      ]
+    },
+    {
+      "id": "faire_infinitif",
+      "pattern": "faire ＋ 原形",
+      "title": {"zh": "faire ＋ 原形：讓別人做、請人做", "en": "faire + infinitive (causative)"},
+      "form": {"zh": "faire ＋ 原形（＋ 人／東西）・se faire ＋ 原形（請人幫自己…）", "en": "faire + infinitive (+ person / thing) · se faire + infinitive (have something done for yourself)"},
+      "explain": {"zh": "faire ＋ 原形表示「讓、叫別人做」或「請人做」：Ce film me fait rire.（這部電影讓我發笑。）Je fais réparer ma voiture.（我把車送修。）Je me suis fait couper les cheveux.（我去剪了頭髮。）", "en": "faire + infinitive means “make someone do” or “have something done”: Ce film me fait rire. Je fais réparer ma voiture. Je me suis fait couper les cheveux."},
+      "notes": [
+        {"zh": "代名詞放在 faire 前面：Je le fais réparer.", "en": "Pronouns go before faire: Je le fais réparer."}
+      ],
+      "mistakes": [
+        {"wrong": "J'ai réparé mon téléphone chez un technicien.", "right": "J'ai fait réparer mon téléphone chez un technicien.", "zh": "請別人修，用 faire réparer。", "en": "Someone else repaired it: faire réparer."},
+        {"wrong": "Il fait moi rire.", "right": "Il me fait rire.", "zh": "代名詞放在 faire 前面。", "en": "The pronoun goes before faire."}
+      ],
+      "examples": [
+        {"text": "Le professeur nous fait lire un livre par mois.", "zh": "老師要我們每個月讀一本書。", "en": "The teacher makes us read a book a month."},
+        {"text": "On a fait construire une maison à la campagne.", "zh": "我們在鄉下蓋了一棟房子。", "en": "We had a house built in the country."},
+        {"text": "Ne me fais pas attendre !", "zh": "別讓我等！", "en": "Don't keep me waiting!"}
+      ],
+      "quiz": [
+        {"q": "Cette histoire m'a fait（　）.", "zh": "這個故事讓我哭了。", "en": "This story made me cry.", "options": ["pleurer", "pleuré", "pleure", "pleurant"], "answer": 0},
+        {"q": "Je vais（　）nettoyer ma veste au pressing.", "zh": "我要把外套送去乾洗。", "en": "I'm going to have my jacket cleaned.", "options": ["faire", "me faire de", "fais", "fait"], "answer": 0},
+        {"q": "Tes devoirs ? Ta mère（　）fait refaire ?", "zh": "你的功課？你媽媽要你重寫嗎？", "en": "Your homework? Did your mother make you redo it?", "options": ["te les a", "les t'a", "t'a les", "a les te"], "answer": 0}
+      ]
+    },
+    {
+      "id": "ne_que",
+      "pattern": "ne … que",
+      "title": {"zh": "ne … que：只有", "en": "ne … que — only"},
+      "form": {"zh": "ne ＋ 動詞 ＋ que ＋ 被限定的部分（＝ seulement）", "en": "ne + verb + que + what is limited (= seulement)"},
+      "explain": {"zh": "ne … que 看起來像否定，其實意思是「只有」：Je n'ai que dix euros.（我只有十歐元。）que 放在被限定的那個字前面：Il ne travaille que le matin.（他只在早上工作。）", "en": "ne … que looks negative but means “only”: Je n'ai que dix euros. que goes right before what is limited: Il ne travaille que le matin."},
+      "notes": [
+        {"zh": "因為不是真的否定，後面的不定冠詞不變成 de：Je n'ai qu'un frère.", "en": "As it isn't a real negative, un / une don't become de: Je n'ai qu'un frère."}
+      ],
+      "mistakes": [
+        {"wrong": "Je n'ai que de pain.", "right": "Je n'ai que du pain.", "zh": "ne … que 不是否定，部分冠詞不變成 de。", "en": "ne … que isn't negative: du stays."},
+        {"wrong": "Je ne prends un café que.", "right": "Je ne prends qu'un café.", "zh": "que 要放在被限定的「un café」前面。", "en": "que goes right before what is limited: un café."}
+      ],
+      "examples": [
+        {"text": "Il ne reste que deux places.", "zh": "只剩兩個位子了。", "en": "There are only two seats left."},
+        {"text": "Je ne bois que de l'eau le soir.", "zh": "我晚上只喝水。", "en": "I only drink water in the evening."},
+        {"text": "Nous ne sommes arrivés qu'à minuit.", "zh": "我們直到半夜才到。", "en": "We didn't arrive until midnight."}
+      ],
+      "quiz": [
+        {"q": "Je n'ai（　）cinq minutes.", "zh": "我只有五分鐘。", "en": "I only have five minutes.", "options": ["que", "pas", "plus", "rien"], "answer": 0},
+        {"q": "Elle ne parle qu'（　）langue.", "zh": "她只會說一種語言。", "en": "She only speaks one language.", "options": ["une", "de", "d'une", "la"], "answer": 0},
+        {"q": "Le musée（　）ouvre que le week-end.", "zh": "這間博物館只在週末開放。", "en": "The museum only opens at weekends.", "options": ["n'", "ne pas", "pas", "jamais"], "answer": 0}
+      ]
+    },
+    {
+      "id": "verbes_prep",
+      "pattern": "commencer à・arrêter de ＋ 原形",
+      "title": {"zh": "動詞 ＋ à／de ＋ 原形", "en": "Verb + à / de + infinitive"},
+      "form": {"zh": "à：commencer à、apprendre à、réussir à、continuer à、hésiter à　de：arrêter de、décider de、essayer de、oublier de、finir de、refuser de", "en": "à: commencer à, apprendre à, réussir à, continuer à, hésiter à · de: arrêter de, décider de, essayer de, oublier de, finir de, refuser de"},
+      "explain": {"zh": "很多動詞後面接原形時要先加介系詞 à 或 de，沒有規則，要一起背：J'apprends à conduire.（我在學開車。）J'ai décidé de partir.（我決定離開。）", "en": "Many verbs need à or de before an infinitive — no rule, learn them together: J'apprends à conduire. J'ai décidé de partir."},
+      "notes": [
+        {"zh": "aimer、vouloir、pouvoir、devoir、aller 後面直接接原形。", "en": "aimer, vouloir, pouvoir, devoir, aller take the infinitive directly."}
+      ],
+      "mistakes": [
+        {"wrong": "J'ai arrêté à fumer.", "right": "J'ai arrêté de fumer.", "zh": "arrêter 接 de。", "en": "arrêter takes de."},
+        {"wrong": "Il a réussi de trouver un appartement.", "right": "Il a réussi à trouver un appartement.", "zh": "réussir 接 à。", "en": "réussir takes à."}
+      ],
+      "examples": [
+        {"text": "Mon fils a commencé à marcher à un an.", "zh": "我兒子一歲就開始走路了。", "en": "My son started walking at one."},
+        {"text": "N'oublie pas de fermer la fenêtre.", "zh": "別忘了關窗。", "en": "Don't forget to close the window."},
+        {"text": "J'essaie de manger moins de sucre.", "zh": "我試著少吃糖。", "en": "I'm trying to eat less sugar."}
+      ],
+      "quiz": [
+        {"q": "Elle a refusé（　）répondre.", "zh": "她拒絕回答。", "en": "She refused to answer.", "options": ["de", "à", "pour", "en"], "answer": 0},
+        {"q": "J'apprends（　）jouer du piano.", "zh": "我在學彈鋼琴。", "en": "I'm learning to play the piano.", "options": ["à", "de", "pour", "en"], "answer": 0},
+        {"q": "Nous voulons（　）au Japon.", "zh": "我們想去日本旅行。", "en": "We want to travel to Japan.", "options": ["voyager", "de voyager", "à voyager", "pour voyager"], "answer": 0}
+      ]
+    },
+    {
+      "id": "mise_en_relief",
+      "pattern": "c'est … qui・c'est … que",
+      "title": {"zh": "強調句：c'est … qui／que", "en": "Emphasis: c'est … qui / que"},
+      "form": {"zh": "C'est ＋ 主詞 ＋ qui ＋ 動詞・C'est ＋ 其他部分 ＋ que ＋ 句子", "en": "C'est + subject + qui + verb · C'est + other part + que + clause"},
+      "explain": {"zh": "想強調句子的某一部分時用 c'est … qui（強調主詞）或 c'est … que（強調其他）：C'est Marie qui a gagné.（贏的是瑪麗。）C'est demain que je pars.（我是明天出發。）", "en": "To stress one part, use c'est … qui (for the subject) or c'est … que (for anything else): C'est Marie qui a gagné. C'est demain que je pars."},
+      "notes": [
+        {"zh": "強調代名詞要用重讀形：C'est moi qui paie.（動詞跟 moi 一致）", "en": "Pronouns take the stressed form, and the verb agrees: C'est moi qui paie."}
+      ],
+      "mistakes": [
+        {"wrong": "C'est je qui ai raison.", "right": "C'est moi qui ai raison.", "zh": "強調時用重讀代名詞 moi。", "en": "Use the stressed pronoun moi."},
+        {"wrong": "C'est toi qui a gagné.", "right": "C'est toi qui as gagné.", "zh": "動詞要配合 toi：as。", "en": "The verb agrees with toi: as."}
+      ],
+      "examples": [
+        {"text": "C'est mon grand-père qui m'a appris à pêcher.", "zh": "教我釣魚的是我爺爺。", "en": "It was my grandfather who taught me to fish."},
+        {"text": "C'est à Taïwan que j'ai goûté le thé aux perles.", "zh": "我是在台灣喝到珍珠奶茶的。", "en": "It was in Taiwan that I tried bubble tea."},
+        {"text": "Ce sont mes voisins qui font du bruit.", "zh": "在吵的是我的鄰居。", "en": "It's my neighbours who are making noise."}
+      ],
+      "quiz": [
+        {"q": "C'est mon frère（　）a cassé la vitre.", "zh": "打破玻璃的是我弟弟。", "en": "It was my brother who broke the window.", "options": ["qui", "que", "dont", "lequel"], "answer": 0},
+        {"q": "C'est ce film（　）je voulais voir.", "zh": "我想看的就是這部電影。", "en": "It's this film that I wanted to see.", "options": ["que", "qui", "dont", "où"], "answer": 0},
+        {"q": "C'est nous qui（　）raison.", "zh": "說得對的是我們。", "en": "We're the ones who are right.", "options": ["avons", "ont", "a", "avez"], "answer": 0}
+      ]
+    }
+  ]
+}
