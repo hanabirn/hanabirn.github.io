@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-07',
+      zh: "小修正：法文、德文、英文等的撇號和引號（’ “ „）不會再顯示成很寬的全形字，像「c’ est」中間多一格的情形修好了；日文閱讀裡 6 段原本念錯或沒有錄音的句子重新錄好了。",
+      'zh-Hans': "小修正：法语、德语、英语等的撇号和引号（’ “ „）不会再显示成很宽的全角字符，像“c’ est”中间多一格的情况修好了；日语阅读里 6 段原本读错或没有录音的句子重新录好了。",
+      en: "Small fixes: apostrophes and quotation marks in French, German, English and other Western languages (’ “ „) no longer show up extra wide, so “c’est” no longer looks like “c’ est”; and 6 sentences in the Japanese reading passages that were read wrongly or had no recording have been recorded again.",
+      ja: "小さな修正：フランス語・ドイツ語・英語などのアポストロフィや引用符（’ “ „）が全角のように広く表示されなくなり、「c’ est」のように間が空いて見える問題を直しました。また、日本語の読解で読み間違いや音声のなかった 6 文を録り直しました。",
+      ko: "작은 수정: 프랑스어·독일어·영어 등의 아포스트로피와 따옴표(’ “ „)가 더 이상 넓은 전각 문자처럼 보이지 않아요. 'c’ est'처럼 띄어 보이던 문제를 고쳤어요. 또 일본어 읽기에서 잘못 읽었거나 녹음이 없던 6개 문장을 다시 녹음했어요.",
+      ru: "Небольшие исправления: апострофы и кавычки во французском, немецком, английском и других западных языках (’ “ „) больше не отображаются слишком широкими — «c’est» больше не выглядит как «c’ est». Кроме того, 6 предложений в японских текстах для чтения, которые были прочитаны с ошибками или не имели записи, записаны заново.",
+      fr: "Petites corrections : les apostrophes et guillemets en français, allemand, anglais et autres langues occidentales (’ “ „) ne s’affichent plus trop larges — « c’est » ne ressemble plus à « c’ est » ; et 6 phrases des textes de lecture japonais mal lues ou sans enregistrement ont été réenregistrées.",
+      es: "Pequeños arreglos: los apóstrofos y comillas del francés, alemán, inglés y otras lenguas occidentales (’ “ „) ya no se ven demasiado anchos, así que «c’est» ya no parece «c’ est»; y se han vuelto a grabar 6 frases de las lecturas en japonés que estaban mal leídas o no tenían grabación.",
+      de: "Kleine Korrekturen: Apostrophe und Anführungszeichen im Französischen, Deutschen, Englischen und anderen westlichen Sprachen (’ “ „) erscheinen nicht mehr zu breit – „c’est“ sieht nicht mehr aus wie „c’ est“; außerdem wurden 6 Sätze in den japanischen Lesetexten, die falsch gelesen wurden oder keine Aufnahme hatten, neu aufgenommen." },
     { date: '2026-11-06',
       zh: "文法新增英文「高中」：30 個文法點，照台灣高中英文的範圍，包括過去完成式、假設語氣、關係子句、分詞構句、倒裝句、強調句和間接引述等。另外，用日、韓、俄、法、西、德文介面看文法時，比較長的說明在電腦上也能一頁看完了。",
       'zh-Hans': "语法新增英语“高中”：30 个语法点，按台湾高中英语的范围，包括过去完成时、虚拟语气、关系从句、分词结构、倒装句、强调句和间接引语等。另外，用日、韩、俄、法、西、德语界面看语法时，较长的说明在电脑上也能一页看完了。",

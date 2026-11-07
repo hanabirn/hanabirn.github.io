@@ -2,6 +2,20 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Western quotes and apostrophes (’ ‘ “ ” „ ‚): Noto Sans TC draws them full width, so
+   French « c’est » read as "c’ est" and German „Danke“ as „Danke “ (2026-11-06). In a
+   Western interface, and on text marked as a Western language inside a CJK one, these few
+   characters come from the system's Latin font instead (unicode-range: nothing else changes;
+   Simplified Chinese “…” keeps its full-width marks). */
+@font-face { font-family: 'Latin Quotes'; src: local('Segoe UI'), local('SegoeUI'), local('Helvetica Neue'), local('Roboto'), local('Arial'), local('ArialMT'); unicode-range: U+2018-201F; }
+html:not(:lang(zh)):not(:lang(ja)):not(:lang(ko)),
+:is([lang|="en"], [lang|="fr"], [lang|="de"], [lang|="es"], [lang|="ru"]) {
+    --font-sans: 'Latin Quotes', 'Noto Sans TC', 'Noto Sans JP', 'Microsoft JhengHei', sans-serif;
+    --font-serif: 'Latin Quotes', 'Noto Serif TC', 'Noto Serif JP', serif;
+}
+/* (:where: no weight, so a class that sets the serif font still wins) */
+:where([lang|="en"], [lang|="fr"], [lang|="de"], [lang|="es"], [lang|="ru"]):not(html) { font-family: var(--font-sans); }
+
 /* Always reserve space for the vertical scrollbar, on every page, whether
    or not that page actually needs to scroll. Without this, switching to a
    taller tab pushes all content left by the scrollbar's width the instant
