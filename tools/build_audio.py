@@ -404,6 +404,9 @@ def jobs(lang):
         if lang == 'zh-CN':
             import opencc
             tw2s = opencc.OpenCC('tw2s').convert
+        # 拼音 tab (2026-11-06): keyed by the Traditional text in both accents, like the grammar
+        for text in alphabet({'py'}):
+            add(text, text if lang == 'zh-TW' else tw2s(text))
         for f in sorted((ROOT / 'data' / 'grammar').glob('zh_*.json')):
             for point in json.loads(f.read_text(encoding='utf-8'))['points']:
                 for ex in point['examples']:

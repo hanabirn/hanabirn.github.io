@@ -1,7 +1,8 @@
 /* Alphabet chart data, read by js/alphabet.js. Generated once from hand-written
    lists; edit this file directly. Each entry is
    [glyph, reading, text to speak, example word, word reading, emoji,
-    meaning (zh), meaning (zh-Hans), meaning (en)] — an empty example word means
+    meaning (zh), meaning (zh-Hans), meaning (en)] (the 拼音 tab adds the example word in
+   Simplified as a 10th field; its letters and words are keyed by the Traditional text) — an empty example word means
    the letter is rarely used and has none; an empty meaning is not shown. */
 const ALPHABETS = {
     en: { tts: 'en-US', sections: [
@@ -285,6 +286,85 @@ const ALPHABETS = {
             ["ㄤ", "ang", "昂", "糖果", "ㄊㄤˊ ㄍㄨㄛˇ · tángguǒ", "🍬", "", "", "candy"],
             ["ㄥ", "eng", "鞥", "燈", "ㄉㄥ · dēng", "💡", "", "灯", "lamp"],
             ["ㄦ", "er", "兒", "耳朵", "ㄦˇ ㄉㄨㄛ˙ · ěrduo", "👂", "", "", "ear"],
+        ] },
+    ] },
+    py: { tts: 'zh-CN', sections: [
+        { title: 'alpha_sec_zh_initial', items: [
+            ["b", "ㄅ", "玻", "爸爸", "bàba", "👨", "", "", "dad", ""],
+            ["p", "ㄆ", "坡", "蘋果", "píngguǒ", "🍎", "", "", "apple", "苹果"],
+            ["m", "ㄇ", "摸", "貓", "māo", "🐱", "", "", "cat", "猫"],
+            ["f", "ㄈ", "佛", "飛機", "fēijī", "✈️", "", "", "airplane", "飞机"],
+            ["d", "ㄉ", "得", "蛋", "dàn", "🥚", "", "", "egg", ""],
+            ["t", "ㄊ", "特", "兔子", "tùzi", "🐰", "", "", "rabbit", ""],
+            ["n", "ㄋ", "訥", "牛奶", "niúnǎi", "🥛", "", "", "milk", ""],
+            ["l", "ㄌ", "勒", "老虎", "lǎohǔ", "🐯", "", "", "tiger", ""],
+            ["g", "ㄍ", "哥", "狗", "gǒu", "🐶", "", "", "dog", ""],
+            ["k", "ㄎ", "科", "咖啡", "kāfēi", "☕", "", "", "coffee", ""],
+            ["h", "ㄏ", "喝", "花", "huā", "🌸", "", "", "flower", ""],
+            ["j", "ㄐ", "基", "雞", "jī", "🐔", "", "", "chicken", "鸡"],
+            ["q", "ㄑ", "欺", "汽車", "qìchē", "🚗", "", "", "car", "汽车"],
+            ["x", "ㄒ", "希", "西瓜", "xīguā", "🍉", "", "", "watermelon", ""],
+            ["zh", "ㄓ", "知", "豬", "zhū", "🐷", "", "", "pig", "猪"],
+            ["ch", "ㄔ", "吃", "船", "chuán", "⛵", "", "", "boat", ""],
+            ["sh", "ㄕ", "詩", "書", "shū", "📖", "", "", "book", "书"],
+            ["r", "ㄖ", "日", "人", "rén", "🧑", "", "", "person", ""],
+            ["z", "ㄗ", "資", "嘴巴", "zuǐba", "👄", "", "", "mouth", ""],
+            ["c", "ㄘ", "雌", "草莓", "cǎoméi", "🍓", "", "", "strawberry", ""],
+            ["s", "ㄙ", "思", "傘", "sǎn", "☂️", "", "", "umbrella", "伞"],
+        ] },
+        { title: 'alpha_sec_py_simple', items: [
+            ["a", "ㄚ", "啊", "阿姨", "āyí", "👩", "", "", "aunt", ""],
+            ["o", "ㄛ", "喔", "婆婆", "pópo", "👵", "", "", "granny", ""],
+            ["e", "ㄜ", "鵝", "鵝", "é", "🦢", "", "", "goose", "鹅"],
+            ["i", "ㄧ · yi", "衣", "椅子", "yǐzi", "🪑", "", "", "chair", ""],
+            ["u", "ㄨ · wu", "烏", "烏龜", "wūguī", "🐢", "", "", "turtle", "乌龟"],
+            ["ü", "ㄩ · yu", "迂", "魚", "yú", "🐟", "", "", "fish", "鱼"],
+            ["er", "ㄦ", "兒", "耳朵", "ěrduo", "👂", "", "", "ear", ""],
+        ] },
+        { title: 'alpha_sec_py_compound', items: [
+            ["ai", "ㄞ", "哀", "愛心", "àixīn", "❤️", "", "", "heart", "爱心"],
+            ["ei", "ㄟ", "誒", "杯子", "bēizi", "🥤", "", "", "cup", ""],
+            ["ao", "ㄠ", "熬", "帽子", "màozi", "🧢", "", "", "hat", ""],
+            ["ou", "ㄡ", "歐", "手", "shǒu", "✋", "", "", "hand", ""],
+        ] },
+        { title: 'alpha_sec_py_nasal', items: [
+            ["an", "ㄢ", "安", "飯", "fàn", "🍚", "", "", "rice (a meal)", "饭"],
+            ["en", "ㄣ", "恩", "門", "mén", "🚪", "", "", "door", "门"],
+            ["ang", "ㄤ", "昂", "糖果", "tángguǒ", "🍬", "", "", "candy", ""],
+            ["eng", "ㄥ", "鞥", "燈", "dēng", "💡", "", "", "lamp", "灯"],
+            ["ong", "ㄨㄥ", "東", "龍", "lóng", "🐉", "", "", "dragon", "龙"],
+        ] },
+        { title: 'alpha_sec_py_i', items: [
+            ["ia", "ㄧㄚ · ya", "呀", "鴨子", "yāzi", "🦆", "", "", "duck", "鸭子"],
+            ["ie", "ㄧㄝ · ye", "耶", "椰子", "yēzi", "🥥", "", "", "coconut", ""],
+            ["iao", "ㄧㄠ · yao", "腰", "小鳥", "xiǎoniǎo", "🐦", "", "", "little bird", "小鸟"],
+            ["iu", "ㄧㄡ · you", "優", "牛", "niú", "🐮", "", "", "cow", ""],
+            ["ian", "ㄧㄢ · yan", "煙", "麵包", "miànbāo", "🍞", "", "", "bread", "面包"],
+            ["in", "ㄧㄣ · yin", "因", "鋼琴", "gāngqín", "🎹", "", "", "piano", "钢琴"],
+            ["iang", "ㄧㄤ · yang", "央", "香蕉", "xiāngjiāo", "🍌", "", "", "banana", ""],
+            ["ing", "ㄧㄥ · ying", "英", "星星", "xīngxing", "⭐", "", "", "star", ""],
+            ["iong", "ㄩㄥ · yong", "雍", "熊", "xióng", "🐻", "", "", "bear", ""],
+        ] },
+        { title: 'alpha_sec_py_u', items: [
+            ["ua", "ㄨㄚ · wa", "蛙", "襪子", "wàzi", "🧦", "", "", "socks", "袜子"],
+            ["uo", "ㄨㄛ · wo", "窩", "火", "huǒ", "🔥", "", "", "fire", ""],
+            ["uai", "ㄨㄞ · wai", "歪", "筷子", "kuàizi", "🥢", "", "", "chopsticks", ""],
+            ["ui", "ㄨㄟ · wei", "威", "水", "shuǐ", "💧", "", "", "water", ""],
+            ["uan", "ㄨㄢ · wan", "彎", "碗", "wǎn", "🥣", "", "", "bowl", ""],
+            ["un", "ㄨㄣ · wen", "溫", "春天", "chūntiān", "🌱", "", "", "spring", ""],
+            ["uang", "ㄨㄤ · wang", "汪", "黃色", "huángsè", "🟡", "", "", "yellow", "黄色"],
+        ] },
+        { title: 'alpha_sec_py_v', items: [
+            ["üe", "ㄩㄝ · yue", "約", "月亮", "yuèliang", "🌙", "", "", "moon", ""],
+            ["üan", "ㄩㄢ · yuan", "冤", "圓", "yuán", "⭕", "", "", "circle", "圆"],
+            ["ün", "ㄩㄣ · yun", "暈", "裙子", "qúnzi", "👗", "", "", "skirt", ""],
+        ] },
+        { title: 'alpha_sec_py_tone', items: [
+            ["mā", "ㄇㄚ", "媽", "媽媽", "māma", "👩", "", "", "mom", "妈妈"],
+            ["má", "ㄇㄚˊ", "麻", "麻將", "májiàng", "🀄", "", "", "mahjong", "麻将"],
+            ["mǎ", "ㄇㄚˇ", "馬", "馬", "mǎ", "🐴", "", "", "horse", "马"],
+            ["mà", "ㄇㄚˋ", "罵", "罵人", "màrén", "😠", "", "", "to scold", "骂人"],
+            ["ma", "˙ㄇㄚ", "嗎", "好嗎", "hǎo ma", "❓", "", "", "OK?", "好吗"],
         ] },
     ] },
     ru: { tts: 'ru-RU', sections: [

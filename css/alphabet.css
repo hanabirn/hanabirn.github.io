@@ -186,6 +186,19 @@
     .alpha-sec-title { margin: 8px 2px 5px; }
     .alpha-tabs { margin-top: 12px; }
     .alpha-pages { margin-top: 10px; }
+    /* two tabs (注音 / 拼音): the tabs and the small tabs share one row, so a page still fits */
+    #page-alphabet > .mode-card { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; column-gap: 14px; }
+    #alpha-title, #alpha-intro { flex: 0 0 100%; }
+    .alpha-tabs:not([hidden]) { margin-top: 12px; }
+    .alpha-tabs:not([hidden]) + .alpha-pages { margin-top: 12px; padding-left: 14px; border-left: 1px dashed var(--line); }
+    /* the letter and its reading side by side and a smaller word 🔊 (2026-11-06), so a row
+       stays one card high with a long word reading (注音 · pinyin) plus the meaning */
+    #alpha-body .alpha-head { grid-template-columns: auto minmax(0, 1fr) auto; grid-template-rows: auto; column-gap: 10px; }
+    #alpha-body .alpha-reading { grid-column: 2; grid-row: 1; }
+    #alpha-body .alpha-head .alpha-speak { grid-column: 3; grid-row: 1; }
+    #alpha-body .alpha-ex { gap: 6px; padding: 5px 8px 7px 12px; }
+    #alpha-body .alpha-grid { gap: 8px; }
+    #alpha-body .alpha-ex .alpha-speak { width: 26px; height: 26px; font-size: 0.85rem; }
 }
 
 @media (max-width: 480px) {

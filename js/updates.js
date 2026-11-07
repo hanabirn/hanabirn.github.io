@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "字母表新增「拼音」分頁：聲母、韻母（含 i／u／ü 開頭的韻母）和四聲＋輕聲，每張卡都標注音、附例詞和錄音。學中文的人可以在注音和拼音之間切換；選大陸版時拼音排第一，用簡體或大陸口音顯示和發音。",
+      'zh-Hans': "字母表新增“拼音”分页：声母、韵母（含 i／u／ü 开头的韵母）和四声＋轻声，每张卡都标注音，附例词和录音。学中文的人可以在注音和拼音之间切换；选大陆版时拼音排第一，用简体和大陆口音显示、发音。",
+      en: "The Alphabet chart has a new Pinyin tab: initials, finals (including those starting with i / u / ü) and the four tones plus the neutral tone, each card with its Zhuyin, an example word and a recording. Chinese learners can switch between Zhuyin and Pinyin; with the Mainland edition Pinyin comes first, in Simplified with a Mainland accent.",
+      ja: "文字表に「ピンイン」タブが加わりました。声母・韻母（i／u／ü で始まるものも）と四声＋軽声を、注音・例語・音声つきで紹介します。中国語の学習者は注音とピンインを切り替えられ、中国大陸版を選ぶとピンインが先頭に来て、簡体字と大陸の発音になります。",
+      ko: "문자표에 '병음' 탭이 생겼어요. 성모, 운모(i/u/ü로 시작하는 것 포함), 사성과 경성을 주음부호, 예시 단어, 녹음과 함께 보여 줘요. 중국어 학습자는 주음부호와 병음을 오갈 수 있고, 중국 대륙판을 고르면 병음이 먼저 나오고 간체자와 대륙 발음으로 보여 줘요.",
+      ru: "В таблице алфавитов появилась вкладка «Пиньинь»: инициали, финали (в том числе начинающиеся с i / u / ü), четыре тона и нейтральный тон — у каждой карточки чжуинь, пример и запись. Изучающие китайский могут переключаться между чжуинь и пиньинь; в материковой версии пиньинь идёт первым, с упрощёнными иероглифами и материковым произношением.",
+      fr: "Le tableau des alphabets a un nouvel onglet Pinyin : initiales, finales (y compris celles qui commencent par i / u / ü) et les quatre tons plus le ton neutre, chaque carte avec son zhuyin, un mot d'exemple et un enregistrement. On passe du zhuyin au pinyin ; avec l'édition de Chine continentale, le pinyin vient en premier, en caractères simplifiés et avec l'accent continental.",
+      es: "La tabla de alfabetos tiene una nueva pestaña de Pinyin: iniciales, finales (también las que empiezan por i / u / ü) y los cuatro tonos más el neutro, cada tarjeta con su zhuyin, una palabra de ejemplo y una grabación. Quien estudia chino puede alternar entre zhuyin y pinyin; con la edición de China continental el pinyin va primero, en caracteres simplificados y con acento continental.",
+      de: "Die Alphabet-Tabelle hat einen neuen Pinyin-Tab: Anlaute, Auslaute (auch die mit i / u / ü am Anfang) und die vier Töne plus neutralen Ton, jede Karte mit Zhuyin, Beispielwort und Aufnahme. Wer Chinesisch lernt, kann zwischen Zhuyin und Pinyin wechseln; mit der Festland-Ausgabe kommt Pinyin zuerst, in Kurzzeichen und mit Festland-Aussprache." },
+    { date: '2026-11-06',
       zh: "版面調整：在電腦上，「學習統計」、「關於我」和字母表的每一頁都不用往下捲就看得完了；自由練習「選擇答案語言」的國旗在 Windows 上不會再變成「CN」「US」字母；首頁的問候會和「今天」卡片說一樣的話（目標達成但還有複習或錯題時，會告訴你還剩幾件事）。",
       'zh-Hans': "版面调整：在电脑上，“学习统计”、“关于我”和字母表的每一页都不用往下滚就能看完了；自由练习“选择答案语言”的国旗在 Windows 上不会再变成“CN”“US”字母；首页的问候会和“今天”卡片说法一致（目标完成但还有复习或错题时，会告诉你还剩几件事）。",
       en: "Layout tweaks: on a computer, Stats, About and every page of the Alphabet chart now fit without scrolling; the flags on free practice's answer-language buttons no longer turn into the letters CN / US on Windows; and the home greeting now agrees with the Today card (when the goal is done but reviews or mistakes are left, it tells you how many things remain).",

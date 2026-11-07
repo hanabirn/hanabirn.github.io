@@ -3,10 +3,28 @@
    js/alphabet-data.js. Every letter and every example word can be read aloud
    with the browser's speech synthesis. */
 
-const ALPHA_TABS = ['en', 'hira', 'kata', 'ko', 'zh', 'ru', 'fr', 'de', 'es'];
+const ALPHA_TABS = ['en', 'hira', 'kata', 'ko', 'zh', 'py', 'ru', 'fr', 'de', 'es'];
 // language of each tab: the page's lang attribute (picks the right CJK glyph
 // forms) and the UI language whose own meaning would just repeat the word
-const ALPHA_LANG = { en: 'en', hira: 'ja', kata: 'ja', ko: 'ko', zh: 'zh-TW', ru: 'ru', fr: 'fr', de: 'de', es: 'es' };
+const ALPHA_LANG = { en: 'en', hira: 'ja', kata: 'ja', ko: 'ko', zh: 'zh-TW', py: 'zh-CN', ru: 'ru', fr: 'fr', de: 'de', es: 'es' };
+
+/* 拼音 (2026-11-06, owner's request): Simplified on a 简 page, and with a non-Chinese interface
+   when the Mainland edition is picked (js/learnlang.js learnEdition); spoken in the visitor's
+   Chinese accent when chosen (js/speech.js), else the one that goes with that script. 注音 stays
+   Taiwan's. Recordings are keyed by the Traditional text in both accents (tools/build_audio.py). */
+function alphaPySimp() {
+    if (siteLang === 'zh-Hans') return true;
+    if (siteLang === 'zh') return false;
+    return typeof learnEdition === 'function' && learnEdition() === 'cn';
+}
+
+function alphaPageLang(tab) {
+    return tab === 'py' ? (alphaPySimp() ? 'zh-CN' : 'zh-TW') : ALPHA_LANG[tab];
+}
+
+function alphaTts(tab) {
+    return tab === 'py' ? zhAccent(alphaPySimp() ? 'simp' : 'trad') : ALPHABETS[tab].tts;
+}
 let alphaTab = 'en';
 let alphaPage = 0;        // the small tab (page) of alphaTab on screen
 
@@ -62,6 +80,7 @@ function alphaHighlight(word, glyph) {
 
 function alphaCardHtml(item) {
     const [glyph, reading, speak, word, wordReading, emoji] = item;
+    const shown = alphaTab === 'py' && alphaPySimp() && item[9] ? item[9] : word;   // 拼音: Simplified on a 简 page
     const letterBtn = `<button type="button" class="speak-btn alpha-speak" data-text="${escHtml(speak)}" onclick="alphaSay(this)" aria-label="${escHtml(t('alpha_play_letter'))}" title="${escHtml(t('alpha_play_letter'))}">${uiIcon('speaker')}</button>`;
     let ex;
     if (!word) {
@@ -71,7 +90,7 @@ function alphaCardHtml(item) {
         ex = `<div class="alpha-ex">
             <span class="alpha-emoji" aria-hidden="true">${emoji}</span>
             <div class="alpha-ex-text">
-                <div class="alpha-word">${alphaHighlight(word, glyph)}</div>
+                <div class="alpha-word">${alphaHighlight(shown, glyph)}</div>
                 ${wordReading ? `<div class="alpha-word-reading">${escHtml(wordReading)}</div>` : ''}
                 ${meaning ? `<div class="alpha-meaning" lang="${siteLang}">${escHtml(meaning)}</div>` : ''}
             </div>
@@ -123,6 +142,12 @@ function alphaPages(tab) {
 
 /* a page's name: its sections, and the first–last letter of a section cut in parts (A–M, 清音 あ–そ) */
 function alphaPageName(page) {
+    // 注音 / 拼音 (two tabs side by side): the first–last letter (ㄅ–ㄗ, an–ing), so every small tab
+    // and both tabs share one row and a page fits a 1080p screen in every language (2026-11-06)
+    if (alphaTab === 'zh' || alphaTab === 'py') {
+        const items = page.parts.flatMap(p => p.rows.flat());
+        return items[0][0] + '–' + items[items.length - 1][0];
+    }
     return page.parts.map(p => {
         const name = p.title ? t(p.title) : '';
         if (p.whole) return name;
@@ -137,6 +162,8 @@ function alphaPageName(page) {
 function alphaTabsShown() {
     const lang = typeof learnLang === 'function' ? learnLang() : '';
     const mine = ALPHA_TABS.filter(id => ALPHA_LANG[id].split('-')[0] === lang);
+    // Chinese: 拼音 first for the Mainland edition (js/learnlang.js), 注音 first for Taiwan's
+    if (lang === 'zh' && typeof learnEdition === 'function' && learnEdition() === 'cn') mine.reverse();
     return mine.length ? mine : ALPHA_TABS;
 }
 
@@ -161,9 +188,9 @@ function renderAlphabet() {
     alphaPage = Math.min(alphaPage, pages.length - 1);
     const pageBox = document.getElementById('alpha-pages');
     pageBox.innerHTML = pages.length < 2 ? '' : pages.map((pg, i) =>
-        `<button type="button" role="tab" class="alpha-page${i === alphaPage ? ' on' : ''}" aria-selected="${i === alphaPage}" onclick="setAlphaPage(${i})" lang="${ALPHA_LANG[alphaTab]}">${escHtml(alphaPageName(pg))}</button>`).join('');
-    body.setAttribute('lang', ALPHA_LANG[alphaTab]);
-    audioWarm(ALPHABETS[alphaTab].tts);
+        `<button type="button" role="tab" class="alpha-page${i === alphaPage ? ' on' : ''}" aria-selected="${i === alphaPage}" onclick="setAlphaPage(${i})" lang="${alphaPageLang(alphaTab)}">${escHtml(alphaPageName(pg))}</button>`).join('');
+    body.setAttribute('lang', alphaPageLang(alphaTab));
+    audioWarm(alphaTts(alphaTab));
     const parts = pages[alphaPage].parts;
     body.innerHTML = parts.map(p => {
         // kana as a 5-column 五十音 chart on desktop (CSS shows the gaps)
@@ -190,7 +217,7 @@ function setAlphaTab(id) {
 }
 
 function alphaSay(btn) {
-    speakText(btn.dataset.text, ALPHABETS[alphaTab].tts);
+    speakText(btn.dataset.text, alphaTts(alphaTab));
 }
 
 document.addEventListener('DOMContentLoaded', () => {
