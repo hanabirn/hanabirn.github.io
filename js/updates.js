@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-07',
+      zh: "文法新增 9 個等級：法文、西班牙文、德文、俄文的 B1 和 B2（共 163 個文法點，像虛擬式、被動、分詞、轉述、讓步和條件句），以及中文 HSK 4（24 個文法點，附拼音和注音）。另外，中文文法切到「兩者」（拼音＋注音）時，在電腦上也能一頁看完了。",
+      'zh-Hans': "语法新增 9 个等级：法语、西班牙语、德语、俄语的 B1 和 B2（共 163 个语法点，比如虚拟式、被动、分词、转述、让步和条件句），以及中文 HSK 4（24 个语法点，附拼音和注音）。另外，中文语法切到“两者”（拼音＋注音）时，在电脑上也能一页看完了。",
+      en: "Grammar adds 9 levels: B1 and B2 for French, Spanish, German and Russian (163 points in all — subjunctives, passives, participles, reported speech, concession and conditionals) and Chinese HSK 4 (24 points with pinyin and zhuyin). Also, Chinese grammar with both pinyin and zhuyin shown now fits one screen on a computer.",
+      ja: "文法に 9 レベルが加わりました。フランス語・スペイン語・ドイツ語・ロシア語の B1 と B2（計 163 項目：接続法、受動態、分詞、間接話法、譲歩、条件文など）と、中国語 HSK 4（24 項目、ピンインと注音付き）です。また、中国語の文法でピンインと注音を両方表示しても、パソコンで 1 画面に収まるようになりました。",
+      ko: "문법에 9개 단계가 추가됐어요. 프랑스어·스페인어·독일어·러시아어 B1과 B2(모두 163개 항목: 접속법, 수동태, 분사, 간접화법, 양보, 조건문 등)와 중국어 HSK 4(24개 항목, 병음과 주음 포함)예요. 또 중국어 문법에서 병음과 주음을 함께 보여 줘도 컴퓨터 한 화면에 들어가요.",
+      ru: "В грамматике 9 новых уровней: B1 и B2 для французского, испанского, немецкого и русского (всего 163 темы — сослагательное наклонение, пассив, причастия, косвенная речь, уступка и условные предложения) и китайский HSK 4 (24 темы с пиньинем и чжуинем). Кроме того, китайская грамматика с пиньинем и чжуинем одновременно теперь помещается на один экран компьютера.",
+      fr: "La grammaire s’enrichit de 9 niveaux : B1 et B2 pour le français, l’espagnol, l’allemand et le russe (163 points en tout — subjonctif, passif, participes, discours rapporté, concession et conditionnel) et le chinois HSK 4 (24 points avec pinyin et zhuyin). De plus, la grammaire chinoise avec pinyin et zhuyin affichés ensemble tient désormais sur un seul écran d’ordinateur.",
+      es: "La gramática suma 9 niveles: B1 y B2 de francés, español, alemán y ruso (163 puntos en total: subjuntivo, pasiva, participios, estilo indirecto, concesivas y condicionales) y chino HSK 4 (24 puntos con pinyin y zhuyin). Además, la gramática china con pinyin y zhuyin a la vez ya cabe en una sola pantalla de ordenador.",
+      de: "Die Grammatik hat 9 neue Stufen: B1 und B2 für Französisch, Spanisch, Deutsch und Russisch (insgesamt 163 Themen – Konjunktiv, Passiv, Partizipien, indirekte Rede, Konzessiv- und Konditionalsätze) und Chinesisch HSK 4 (24 Themen mit Pinyin und Zhuyin). Außerdem passt die chinesische Grammatik mit Pinyin und Zhuyin zugleich jetzt auf einen Computerbildschirm." },
+    { date: '2026-11-07',
       zh: "小修正：法文、德文、英文等的撇號和引號（’ “ „）不會再顯示成很寬的全形字，像「c’ est」中間多一格的情形修好了；日文閱讀裡 6 段原本念錯或沒有錄音的句子重新錄好了。",
       'zh-Hans': "小修正：法语、德语、英语等的撇号和引号（’ “ „）不会再显示成很宽的全角字符，像“c’ est”中间多一格的情况修好了；日语阅读里 6 段原本读错或没有录音的句子重新录好了。",
       en: "Small fixes: apostrophes and quotation marks in French, German, English and other Western languages (’ “ „) no longer show up extra wide, so “c’est” no longer looks like “c’ est”; and 6 sentences in the Japanese reading passages that were read wrongly or had no recording have been recorded again.",

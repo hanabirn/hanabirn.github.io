@@ -353,6 +353,7 @@
 /* ----- a point on wide screens: explanation left, examples right ----- */
 @media (min-width: 1024px) {
     body.grammar-wide .grammar-card { max-width: none; }
+    .grammar-zh-quiz .grammar-options { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .grammar-cols {
         display: grid;
         grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);   /* the explanation wider: fewer lines (2026-10-24) */

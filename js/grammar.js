@@ -206,7 +206,11 @@ async function renderGrammar() {
     }
     const set = grammarSets[grammarSetId];
     // the point view uses two columns on wide screens (css/grammar.css, css/base.css)
-    document.body.classList.toggle('grammar-wide', grammarView === 'point' || grammarView === 'list');
+    // a Chinese quiz too: with pinyin and zhuyin under the sentence and each option, the answered
+    // question only fits a 1080p screen 1180px wide with the four options in one row
+    const zhQuiz = set.lang === 'zh' && grammarView === 'quiz';
+    document.body.classList.toggle('grammar-wide', grammarView === 'point' || grammarView === 'list' || zhQuiz);
+    box.classList.toggle('grammar-zh-quiz', zhQuiz);
     if (typeof railPlace === 'function') railPlace();
     box.classList.remove('gfit1', 'gfit2', 'gfit3');
     if (grammarView === 'point') { box.innerHTML = grammarPointHtml(set); grammarBalance(box); grammarFit(box); }
