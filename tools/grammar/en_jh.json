@@ -1,0 +1,761 @@
+{
+  "id": "en_jh",
+  "lang": "en",
+  "level": "JH",
+  "order": 1,
+  "note": "Hand-written for the site (explanations and examples are our own), graded like Taiwan's junior high English (owner, 2026-11-06). An example's or question's en is the English sentence itself (the English UI shows no hint). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "be",
+      "pattern": "am・is・are",
+      "title": {"zh": "be 動詞：am、is、are", "en": "The verb be: am, is, are"},
+      "form": {"zh": "I am・you／we／they are・he／she／it is　縮寫：I'm・you're・he's・it's", "en": "I am · you / we / they are · he / she / it is · short forms: I'm, you're, he's, it's"},
+      "explain": {"zh": "be 動詞是「是、在」，跟著主詞變化：I am a student.（我是學生。）She is in the library.（她在圖書館。）否定在後面加 not，疑問句把 be 動詞移到句首：Are you OK?", "en": "be means “is / are” and changes with the subject: I am a student, She is in the library. Add not after it for the negative, and put it first for a question: Are you OK?"},
+      "notes": [
+        {"zh": "複數主詞（包含 A and B）用 are：Tom and I are friends.", "en": "Plural subjects, including A and B, take are: Tom and I are friends."},
+        {"zh": "否定縮寫：isn't、aren't，但 am not 沒有縮寫成 amn't。", "en": "Negative short forms: isn't, aren't — but there's no amn't."}
+      ],
+      "mistakes": [
+        {"wrong": "My brother are tall.", "right": "My brother is tall.", "zh": "my brother 是單數，用 is。", "en": "my brother is singular: is."},
+        {"wrong": "I tired.", "right": "I am tired.", "zh": "形容詞前面不能少了 be 動詞。", "en": "You can't leave out be before an adjective."}
+      ],
+      "examples": [
+        {"text": "I'm from Taiwan.", "zh": "我來自台灣。", "en": "I'm from Taiwan."},
+        {"text": "Is your father a teacher?", "zh": "你爸爸是老師嗎？", "en": "Is your father a teacher?"},
+        {"text": "We aren't late.", "zh": "我們沒有遲到。", "en": "We aren't late."}
+      ],
+      "quiz": [
+        {"q": "Amy and Ben（　）in the same class.", "zh": "艾咪和班在同一班。", "en": "Amy and Ben are in the same class.", "options": ["are", "is", "am", "be"], "answer": 0},
+        {"q": "（　）it cold today?", "zh": "今天冷嗎？", "en": "Is it cold today?", "options": ["Is", "Are", "Am", "Does"], "answer": 0},
+        {"q": "I（　）not hungry.", "zh": "我不餓。", "en": "I am not hungry.", "options": ["am", "is", "are", "do"], "answer": 0}
+      ]
+    },
+    {
+      "id": "present_simple",
+      "pattern": "I play・he plays",
+      "title": {"zh": "現在簡單式（第三人稱單數加 -s）", "en": "The present simple"},
+      "form": {"zh": "I／you／we／they ＋ 原形・he／she／it ＋ 原形-s／-es　（go → goes、study → studies、have → has）", "en": "I / you / we / they + verb · he / she / it + verb-s / -es (go → goes, study → studies, have → has)"},
+      "explain": {"zh": "說習慣、事實用現在簡單式：I walk to school every day.（我每天走路上學。）主詞是第三人稱單數（he、she、it、一個人或東西）時，動詞要加 -s 或 -es：She likes music.", "en": "Use the present simple for habits and facts: I walk to school every day. With he, she, it or one person or thing, add -s or -es: She likes music."},
+      "notes": [
+        {"zh": "-s、-sh、-ch、-x、-o 結尾加 -es：watches、goes；子音＋y 改 -ies：studies。", "en": "After -s, -sh, -ch, -x, -o add -es: watches, goes; consonant + y → -ies: studies."},
+        {"zh": "常和 every day、usually、on Sundays 一起用。", "en": "It often goes with every day, usually, on Sundays."}
+      ],
+      "mistakes": [
+        {"wrong": "He play basketball after school.", "right": "He plays basketball after school.", "zh": "he 是第三人稱單數，動詞要加 -s。", "en": "With he, add -s."},
+        {"wrong": "My mom haves a car.", "right": "My mom has a car.", "zh": "have 的第三人稱單數是 has。", "en": "have becomes has."}
+      ],
+      "examples": [
+        {"text": "My sister gets up at six every morning.", "zh": "我姊姊每天早上六點起床。", "en": "My sister gets up at six every morning."},
+        {"text": "They live near the MRT station.", "zh": "他們住在捷運站附近。", "en": "They live near the MRT station."},
+        {"text": "The sun rises in the east.", "zh": "太陽從東方升起。", "en": "The sun rises in the east."}
+      ],
+      "quiz": [
+        {"q": "Kevin（　）English every day.", "zh": "凱文每天讀英文。", "en": "Kevin studies English every day.", "options": ["studies", "study", "studys", "studying"], "answer": 0},
+        {"q": "My parents（　）TV in the evening.", "zh": "我爸媽晚上看電視。", "en": "My parents watch TV in the evening.", "options": ["watch", "watches", "watchs", "watching"], "answer": 0},
+        {"q": "The store（　）at nine.", "zh": "那家店九點開門。", "en": "The store opens at nine.", "options": ["opens", "open", "opening", "is opens"], "answer": 0}
+      ]
+    },
+    {
+      "id": "do_does",
+      "pattern": "do／does ＋ not・Do … ?",
+      "title": {"zh": "一般動詞的否定和疑問：do、does", "en": "Negatives and questions with do / does"},
+      "form": {"zh": "否定：主詞 ＋ don't／doesn't ＋ 原形　疑問：Do／Does ＋ 主詞 ＋ 原形 …？", "en": "negative: subject + don't / doesn't + verb · question: Do / Does + subject + verb …?"},
+      "explain": {"zh": "一般動詞（不是 be 動詞）要靠 do／does 來變否定和疑問。第三人稱單數用 does，而且後面的動詞要回到原形：She doesn't like coffee.、Does he play the piano?", "en": "Ordinary verbs need do / does for negatives and questions. With he / she / it use does, and the verb goes back to its base form: She doesn't like coffee, Does he play the piano?"},
+      "notes": [
+        {"zh": "簡答：Yes, I do. ／ No, she doesn't.", "en": "Short answers: Yes, I do. / No, she doesn't."}
+      ],
+      "mistakes": [
+        {"wrong": "He doesn't likes fish.", "right": "He doesn't like fish.", "zh": "doesn't 後面用原形，-s 已經在 does 上了。", "en": "After doesn't use the base form — the -s is on does."},
+        {"wrong": "Do she speak Japanese?", "right": "Does she speak Japanese?", "zh": "she 用 does。", "en": "With she it's does."}
+      ],
+      "examples": [
+        {"text": "I don't eat breakfast on weekends.", "zh": "我週末不吃早餐。", "en": "I don't eat breakfast on weekends."},
+        {"text": "Does your brother have a bike?", "zh": "你弟弟有腳踏車嗎？", "en": "Does your brother have a bike?"},
+        {"text": "We don't have class on Saturday.", "zh": "我們星期六不用上課。", "en": "We don't have class on Saturday."}
+      ],
+      "quiz": [
+        {"q": "（　）your cat sleep a lot?", "zh": "你的貓很愛睡嗎？", "en": "Does your cat sleep a lot?", "options": ["Does", "Do", "Is", "Are"], "answer": 0},
+        {"q": "Mr. Lin doesn't（　）meat.", "zh": "林先生不吃肉。", "en": "Mr. Lin doesn't eat meat.", "options": ["eat", "eats", "eating", "ate"], "answer": 0},
+        {"q": "They（　）know the answer.", "zh": "他們不知道答案。", "en": "They don't know the answer.", "options": ["don't", "doesn't", "aren't", "isn't"], "answer": 0}
+      ]
+    },
+    {
+      "id": "nouns",
+      "pattern": "a book・two books・some water",
+      "title": {"zh": "可數名詞、不可數名詞和複數", "en": "Countable and uncountable nouns"},
+      "form": {"zh": "可數：a／an ＋ 單數、複數 -s／-es　不可數：water、milk、money（不加 -s、不加 a）", "en": "countable: a / an + singular, plural -s / -es · uncountable: water, milk, money (no -s, no a)"},
+      "explain": {"zh": "能一個一個數的名詞是可數名詞，單數前面要有 a／an，複數加 -s：a pen、three pens。不可數名詞（液體、材料、抽象的東西）沒有複數，要用單位來數：a glass of milk、two pieces of paper。", "en": "Countable nouns take a / an or -s: a pen, three pens. Uncountable nouns (liquids, materials, ideas) have no plural; count them with units: a glass of milk."},
+      "notes": [
+        {"zh": "some 用在肯定句，any 用在否定句和疑問句：I have some cookies. ／ Do you have any questions?", "en": "some in statements, any in negatives and questions: I have some cookies. / Do you have any questions?"},
+        {"zh": "不規則複數：man → men、child → children、foot → feet、tooth → teeth。", "en": "Irregular plurals: men, children, feet, teeth."}
+      ],
+      "mistakes": [
+        {"wrong": "I need some informations.", "right": "I need some information.", "zh": "information 是不可數名詞，沒有 -s。", "en": "information is uncountable: no -s."},
+        {"wrong": "There are three childs.", "right": "There are three children.", "zh": "child 的複數是 children。", "en": "child's plural is children."}
+      ],
+      "examples": [
+        {"text": "Can I have a glass of water?", "zh": "可以給我一杯水嗎？", "en": "Can I have a glass of water?"},
+        {"text": "She has two dogs and a cat.", "zh": "她有兩隻狗和一隻貓。", "en": "She has two dogs and a cat."},
+        {"text": "We don't have any milk.", "zh": "我們沒有牛奶了。", "en": "We don't have any milk."}
+      ],
+      "quiz": [
+        {"q": "I brush my（　）twice a day.", "zh": "我一天刷兩次牙。", "en": "I brush my teeth twice a day.", "options": ["teeth", "tooths", "toothes", "tooth"], "answer": 0},
+        {"q": "Do you have（　）homework today?", "zh": "你今天有功課嗎？", "en": "Do you have any homework today?", "options": ["any", "a", "many", "an"], "answer": 0},
+        {"q": "Please buy two（　）of bread.", "zh": "請買兩條麵包。", "en": "Please buy two loaves of bread.", "options": ["loaves", "bread", "breads", "loafs"], "answer": 0}
+      ]
+    },
+    {
+      "id": "articles",
+      "pattern": "a・an・the",
+      "title": {"zh": "冠詞 a、an、the", "en": "Articles: a, an, the"},
+      "form": {"zh": "a ＋ 子音開頭（a book）・an ＋ 母音發音開頭（an apple、an hour）・the ＋ 特定的人事物", "en": "a + consonant sound (a book) · an + vowel sound (an apple, an hour) · the + something specific"},
+      "explain": {"zh": "第一次提到、不特定的單數可數名詞用 a／an；說話雙方都知道是哪一個時用 the：I have a cat. The cat is white.（我有一隻貓。那隻貓是白色的。）", "en": "Use a / an for a singular countable noun mentioned for the first time; use the when both of you know which one: I have a cat. The cat is white."},
+      "notes": [
+        {"zh": "a／an 看「發音」不看字母：an hour（h 不發音）、a university（發 /ju/ 的音）。", "en": "a / an follows the sound, not the letter: an hour, a university."},
+        {"zh": "獨一無二的東西加 the：the sun、the moon；樂器也加 the：play the piano。", "en": "Unique things take the: the sun, the moon; so do instruments: play the piano."}
+      ],
+      "mistakes": [
+        {"wrong": "She is a honest girl.", "right": "She is an honest girl.", "zh": "honest 的 h 不發音，母音開頭用 an。", "en": "The h in honest is silent: an."},
+        {"wrong": "I play the basketball.", "right": "I play basketball.", "zh": "球類運動前面不加 the。", "en": "Sports take no article."}
+      ],
+      "examples": [
+        {"text": "I eat an egg every morning.", "zh": "我每天早上吃一顆蛋。", "en": "I eat an egg every morning."},
+        {"text": "The book on the desk is mine.", "zh": "桌上那本書是我的。", "en": "The book on the desk is mine."},
+        {"text": "My sister plays the violin.", "zh": "我妹妹拉小提琴。", "en": "My sister plays the violin."}
+      ],
+      "quiz": [
+        {"q": "He is（　）English teacher.", "zh": "他是英文老師。", "en": "He is an English teacher.", "options": ["an", "a", "the", "any"], "answer": 0},
+        {"q": "Look at（　）moon! It's so bright.", "zh": "看那月亮！好亮。", "en": "Look at the moon! It's so bright.", "options": ["the", "a", "an", "some"], "answer": 0},
+        {"q": "We waited for（　）hour.", "zh": "我們等了一個小時。", "en": "We waited for an hour.", "options": ["an", "a", "the", "one an"], "answer": 0}
+      ]
+    },
+    {
+      "id": "pronouns",
+      "pattern": "I・me・my・mine",
+      "title": {"zh": "代名詞：主格、受格、所有格", "en": "Pronouns: I, me, my, mine"},
+      "form": {"zh": "主格 I／you／he／she／it／we／they　受格 me／you／him／her／it／us／them　所有格 my／your／his／her／its／our／their　所有格代名詞 mine／yours／his／hers／ours／theirs", "en": "subject I … they · object me … them · possessive my … their · possessive pronoun mine … theirs"},
+      "explain": {"zh": "當主詞用主格（She is kind.），放在動詞或介系詞後面用受格（I like her.、with them），名詞前面用所有格（her bag），單獨使用表示「…的東西」用所有格代名詞（The bag is hers.）。", "en": "Use subject pronouns as the subject (She is kind), object pronouns after a verb or preposition (I like her, with them), possessives before a noun (her bag) and possessive pronouns on their own (The bag is hers)."},
+      "notes": [
+        {"zh": "its 是「它的」，it's 是 it is 的縮寫，不要搞混。", "en": "its means “belonging to it”; it's is it is."}
+      ],
+      "mistakes": [
+        {"wrong": "Me and my friend go to school together.", "right": "My friend and I go to school together.", "zh": "當主詞要用 I，而且習慣把自己放後面。", "en": "As a subject use I, and put yourself last."},
+        {"wrong": "This pen is my.", "right": "This pen is mine.", "zh": "單獨使用要用 mine。", "en": "On its own it's mine."}
+      ],
+      "examples": [
+        {"text": "Can you help me?", "zh": "你可以幫我嗎？", "en": "Can you help me?"},
+        {"text": "Their house is bigger than ours.", "zh": "他們家比我們家大。", "en": "Their house is bigger than ours."},
+        {"text": "The dog is wagging its tail.", "zh": "那隻狗在搖尾巴。", "en": "The dog is wagging its tail."}
+      ],
+      "quiz": [
+        {"q": "This is Linda. I often play with（　）.", "zh": "這是琳達，我常常跟她玩。", "en": "This is Linda. I often play with her.", "options": ["her", "she", "hers", "herself"], "answer": 0},
+        {"q": "Is this umbrella（　）? – No, mine is blue.", "zh": "「這把傘是你的嗎？」「不是，我的是藍色的。」", "en": "Is this umbrella yours? – No, mine is blue.", "options": ["yours", "your", "you", "you're"], "answer": 0},
+        {"q": "（　）are my classmates.", "zh": "他們是我的同學。", "en": "They are my classmates.", "options": ["They", "Them", "Their", "Theirs"], "answer": 0}
+      ]
+    },
+    {
+      "id": "there_is",
+      "pattern": "There is・There are",
+      "title": {"zh": "There is／There are：有", "en": "There is / There are"},
+      "form": {"zh": "There is ＋ 單數／不可數名詞・There are ＋ 複數名詞　疑問：Is there …? ／ Are there …?", "en": "There is + singular / uncountable · There are + plural · questions: Is there …? / Are there …?"},
+      "explain": {"zh": "說「某處有某物」用 there is／are，be 動詞跟著後面的名詞變：There is a park near my home.（我家附近有一座公園。）There are thirty students in my class.", "en": "To say something exists somewhere, use there is / are, matching the noun after it: There is a park near my home, There are thirty students in my class."},
+      "notes": [
+        {"zh": "「有」不要用 have 來說存在：There is a cat under the table.，不說 It has a cat under the table。", "en": "Don't use have for existence: There is a cat under the table."}
+      ],
+      "mistakes": [
+        {"wrong": "There is many people here.", "right": "There are many people here.", "zh": "people 是複數，用 are。", "en": "people is plural: are."},
+        {"wrong": "There have a bank near here.", "right": "There is a bank near here.", "zh": "there 後面接 be 動詞，不接 have。", "en": "there is followed by be, not have."}
+      ],
+      "examples": [
+        {"text": "There is a convenience store on the corner.", "zh": "轉角有一間便利商店。", "en": "There is a convenience store on the corner."},
+        {"text": "Are there any eggs in the fridge?", "zh": "冰箱裡有蛋嗎？", "en": "Are there any eggs in the fridge?"},
+        {"text": "There isn't much time.", "zh": "時間不多了。", "en": "There isn't much time."}
+      ],
+      "quiz": [
+        {"q": "There（　）two cats on the sofa.", "zh": "沙發上有兩隻貓。", "en": "There are two cats on the sofa.", "options": ["are", "is", "have", "has"], "answer": 0},
+        {"q": "（　）there a post office near here?", "zh": "這附近有郵局嗎？", "en": "Is there a post office near here?", "options": ["Is", "Are", "Does", "Has"], "answer": 0},
+        {"q": "There is some（　）in the bottle.", "zh": "瓶子裡有一些果汁。", "en": "There is some juice in the bottle.", "options": ["juice", "juices", "a juice", "juice's"], "answer": 0}
+      ]
+    },
+    {
+      "id": "wh_questions",
+      "pattern": "What・Where・When・Who・Why・How",
+      "title": {"zh": "疑問詞問句", "en": "Wh- questions"},
+      "form": {"zh": "疑問詞 ＋ be 動詞 ＋ 主詞…？　疑問詞 ＋ do／does ＋ 主詞 ＋ 原形…？", "en": "question word + be + subject …? · question word + do / does + subject + verb …?"},
+      "explain": {"zh": "疑問詞放句首，後面接一般的疑問句語序：Where is the bathroom?、What do you want for dinner? 常用的還有 How many（多少個）、How much（多少錢）、How old（幾歲）、How often（多常）。", "en": "Put the question word first, then normal question order: Where is the bathroom?, What do you want for dinner? Also: How many, How much, How old, How often."},
+      "notes": [
+        {"zh": "問「誰」當主詞時不用 do：Who lives here?（誰住這裡？）", "en": "When who is the subject, no do: Who lives here?"}
+      ],
+      "mistakes": [
+        {"wrong": "Where you live?", "right": "Where do you live?", "zh": "一般動詞的疑問句要有 do／does。", "en": "Questions with ordinary verbs need do / does."},
+        {"wrong": "How many money do you have?", "right": "How much money do you have?", "zh": "money 不可數，用 how much。", "en": "money is uncountable: how much."}
+      ],
+      "examples": [
+        {"text": "What time does the movie start?", "zh": "電影幾點開始？", "en": "What time does the movie start?"},
+        {"text": "How often do you go swimming?", "zh": "你多久去游泳一次？", "en": "How often do you go swimming?"},
+        {"text": "Why are you so happy today?", "zh": "你今天為什麼這麼開心？", "en": "Why are you so happy today?"}
+      ],
+      "quiz": [
+        {"q": "（　）is your birthday? – It's in May.", "zh": "「你的生日是什麼時候？」「在五月。」", "en": "When is your birthday? – It's in May.", "options": ["When", "Where", "Who", "How"], "answer": 0},
+        {"q": "（　）brothers do you have? – Two.", "zh": "「你有幾個兄弟？」「兩個。」", "en": "How many brothers do you have? – Two.", "options": ["How many", "How much", "How old", "How often"], "answer": 0},
+        {"q": "Where（　）Jenny work?", "zh": "珍妮在哪裡工作？", "en": "Where does Jenny work?", "options": ["does", "do", "is", "are"], "answer": 0}
+      ]
+    },
+    {
+      "id": "present_continuous",
+      "pattern": "be ＋ V-ing",
+      "title": {"zh": "現在進行式：正在…", "en": "The present continuous"},
+      "form": {"zh": "am／is／are ＋ 動詞-ing（make → making、swim → swimming、lie → lying）", "en": "am / is / are + verb-ing (making, swimming, lying)"},
+      "explain": {"zh": "說「現在正在做」的事：be 動詞 ＋ V-ing：I'm doing my homework.（我正在寫功課。）Look! It's raining.（你看！在下雨。）常和 now、right now、Look!、Listen! 一起出現。", "en": "For what is happening now: be + verb-ing: I'm doing my homework, Look! It's raining. Often with now, right now, Look!, Listen!"},
+      "notes": [
+        {"zh": "表示狀態、感覺的動詞通常不用進行式：I know him.（不說 I'm knowing him.）", "en": "State verbs usually aren't continuous: I know him, not I'm knowing him."}
+      ],
+      "mistakes": [
+        {"wrong": "She cooking now.", "right": "She is cooking now.", "zh": "進行式不能少了 be 動詞。", "en": "Don't leave out be."},
+        {"wrong": "They are swiming.", "right": "They are swimming.", "zh": "短母音＋子音結尾要重複子音：swimming。", "en": "Double the consonant after a short vowel: swimming."}
+      ],
+      "examples": [
+        {"text": "Shh! The baby is sleeping.", "zh": "噓！寶寶在睡覺。", "en": "Shh! The baby is sleeping."},
+        {"text": "What are you doing right now?", "zh": "你現在在做什麼？", "en": "What are you doing right now?"},
+        {"text": "We're waiting for the bus.", "zh": "我們在等公車。", "en": "We're waiting for the bus."}
+      ],
+      "quiz": [
+        {"q": "Listen! Someone（　）at the door.", "zh": "你聽！有人在敲門。", "en": "Listen! Someone is knocking at the door.", "options": ["is knocking", "knocks", "are knocking", "knocking"], "answer": 0},
+        {"q": "The children are（　）in the park.", "zh": "孩子們正在公園跑步。", "en": "The children are running in the park.", "options": ["running", "runing", "run", "runs"], "answer": 0},
+        {"q": "（　）your mom working now?", "zh": "你媽媽現在在上班嗎？", "en": "Is your mom working now?", "options": ["Is", "Does", "Are", "Do"], "answer": 0}
+      ]
+    },
+    {
+      "id": "can",
+      "pattern": "can ＋ 原形",
+      "title": {"zh": "助動詞 can：會、能、可以", "en": "can"},
+      "form": {"zh": "主詞 ＋ can／can't ＋ 原形　疑問：Can ＋ 主詞 ＋ 原形…？", "en": "subject + can / can't + verb · question: Can + subject + verb …?"},
+      "explain": {"zh": "can 表示能力（會）、可能或許可（可以）：I can swim.（我會游泳。）Can I use your phone?（我可以用你的手機嗎？）can 後面一律接原形，所有主詞都一樣，不加 -s。", "en": "can expresses ability or permission: I can swim, Can I use your phone? It's followed by the base form and never takes -s."},
+      "notes": [
+        {"zh": "過去式是 could：I could read when I was four.", "en": "The past is could: I could read when I was four."},
+        {"zh": "Could you …? 比 Can you …? 更客氣。", "en": "Could you …? is politer than Can you …?"}
+      ],
+      "mistakes": [
+        {"wrong": "He cans speak French.", "right": "He can speak French.", "zh": "can 不加 -s。", "en": "can never takes -s."},
+        {"wrong": "I can to ride a bike.", "right": "I can ride a bike.", "zh": "can 後面直接接原形，不加 to。", "en": "No to after can."}
+      ],
+      "examples": [
+        {"text": "My grandma can't use a smartphone.", "zh": "我奶奶不會用智慧型手機。", "en": "My grandma can't use a smartphone."},
+        {"text": "Can you play the guitar?", "zh": "你會彈吉他嗎？", "en": "Can you play the guitar?"},
+        {"text": "You can sit here.", "zh": "你可以坐這裡。", "en": "You can sit here."}
+      ],
+      "quiz": [
+        {"q": "Penguins can't（　）.", "zh": "企鵝不會飛。", "en": "Penguins can't fly.", "options": ["fly", "flies", "flying", "to fly"], "answer": 0},
+        {"q": "（　）I borrow your eraser?", "zh": "我可以借你的橡皮擦嗎？", "en": "Can I borrow your eraser?", "options": ["Can", "Do", "Am", "Does"], "answer": 0},
+        {"q": "My little brother（　）read yet.", "zh": "我弟弟還不會認字。", "en": "My little brother can't read yet.", "options": ["can't", "doesn't can", "isn't can", "cannot to"], "answer": 0}
+      ]
+    },
+    {
+      "id": "imperative",
+      "pattern": "Open …・Don't …・Let's …",
+      "title": {"zh": "祈使句和 Let's", "en": "Imperatives and Let's"},
+      "form": {"zh": "原形 ＋ …（Open the door.）・Don't ＋ 原形（Don't run.）・Be ＋ 形容詞（Be quiet.）・Let's ＋ 原形（Let's go.）", "en": "verb + … (Open the door.) · Don't + verb (Don't run.) · Be + adjective (Be quiet.) · Let's + verb (Let's go.)"},
+      "explain": {"zh": "叫別人做事時用動詞原形開頭，不說主詞；不准做就加 Don't。邀請大家一起做用 Let's ＋ 原形。加上 please 比較客氣：Please sit down.", "en": "To tell someone to do something, start with the base form and no subject; Don't for “don't”. Let's + verb invites others to join. please makes it polite: Please sit down."},
+      "notes": [
+        {"zh": "形容詞前面要加 Be：Be careful!、Don't be late!", "en": "Adjectives need Be: Be careful!, Don't be late!"}
+      ],
+      "mistakes": [
+        {"wrong": "Don't noisy!", "right": "Don't be noisy!", "zh": "形容詞前面要有 be。", "en": "An adjective needs be."},
+        {"wrong": "Let's to go home.", "right": "Let's go home.", "zh": "Let's 後面直接接原形。", "en": "Let's takes the base form directly."}
+      ],
+      "examples": [
+        {"text": "Please turn off your phone.", "zh": "請把手機關機。", "en": "Please turn off your phone."},
+        {"text": "Don't touch that!", "zh": "別碰那個！", "en": "Don't touch that!"},
+        {"text": "Let's take a break.", "zh": "我們休息一下吧。", "en": "Let's take a break."}
+      ],
+      "quiz": [
+        {"q": "（　）careful! The floor is wet.", "zh": "小心！地板是濕的。", "en": "Be careful! The floor is wet.", "options": ["Be", "Are", "Do", "Being"], "answer": 0},
+        {"q": "Don't（　）in the library.", "zh": "不要在圖書館吃東西。", "en": "Don't eat in the library.", "options": ["eat", "eating", "eats", "to eat"], "answer": 0},
+        {"q": "Let's（　）a movie tonight.", "zh": "我們今晚去看電影吧。", "en": "Let's see a movie tonight.", "options": ["see", "seeing", "to see", "sees"], "answer": 0}
+      ]
+    },
+    {
+      "id": "frequency",
+      "pattern": "always・usually・often・sometimes・never",
+      "title": {"zh": "頻率副詞", "en": "Adverbs of frequency"},
+      "form": {"zh": "always（總是）> usually（通常）> often（常常）> sometimes（有時）> seldom（很少）> never（從不）　位置：一般動詞前、be 動詞後", "en": "always > usually > often > sometimes > seldom > never · before ordinary verbs, after be"},
+      "explain": {"zh": "頻率副詞放在一般動詞前面（I usually walk to school.），但放在 be 動詞和助動詞後面（She is always late.、I can never remember.）。", "en": "They go before ordinary verbs (I usually walk to school) but after be and helping verbs (She is always late, I can never remember)."},
+      "notes": [
+        {"zh": "never 本身就是否定，不再加 not：I never drink coffee.", "en": "never is already negative: I never drink coffee."}
+      ],
+      "mistakes": [
+        {"wrong": "He goes always to bed late.", "right": "He always goes to bed late.", "zh": "頻率副詞放在一般動詞前面。", "en": "Frequency adverbs go before ordinary verbs."},
+        {"wrong": "I don't never eat breakfast.", "right": "I never eat breakfast.", "zh": "never 不能再和 not 一起用。", "en": "Don't use never with not."}
+      ],
+      "examples": [
+        {"text": "I often read before bed.", "zh": "我常常睡前看書。", "en": "I often read before bed."},
+        {"text": "My dad is never angry.", "zh": "我爸爸從來不生氣。", "en": "My dad is never angry."},
+        {"text": "We sometimes eat at the night market.", "zh": "我們有時候去夜市吃東西。", "en": "We sometimes eat at the night market."}
+      ],
+      "quiz": [
+        {"q": "Tina（　）late for school.", "zh": "蒂娜上學總是遲到。", "en": "Tina is always late for school.", "options": ["is always", "always is", "always", "does always"], "answer": 0},
+        {"q": "I（　）my room on Sundays.", "zh": "我通常星期天打掃房間。", "en": "I usually clean my room on Sundays.", "options": ["usually clean", "clean usually", "usually cleans", "am usually clean"], "answer": 0},
+        {"q": "He（　）eats vegetables. He hates them.", "zh": "他從不吃蔬菜，他討厭蔬菜。", "en": "He never eats vegetables. He hates them.", "options": ["never", "always", "doesn't never", "often"], "answer": 0}
+      ]
+    },
+    {
+      "id": "past_be",
+      "pattern": "was・were",
+      "title": {"zh": "be 動詞的過去式：was、were", "en": "The past of be: was, were"},
+      "form": {"zh": "I／he／she／it ＋ was・you／we／they ＋ were　否定：wasn't、weren't", "en": "I / he / she / it + was · you / we / they + were · negatives: wasn't, weren't"},
+      "explain": {"zh": "說過去「是、在」用 was／were：I was at home yesterday.（我昨天在家。）The test was easy.（考試很簡單。）疑問句把 was／were 移到句首：Were you busy last week?", "en": "For the past of be use was / were: I was at home yesterday, The test was easy. In questions they go first: Were you busy last week?"},
+      "notes": [
+        {"zh": "常和 yesterday、last week、two days ago、in 2020 一起用。", "en": "Often with yesterday, last week, two days ago, in 2020."}
+      ],
+      "mistakes": [
+        {"wrong": "We was in Tainan last summer.", "right": "We were in Tainan last summer.", "zh": "we 用 were。", "en": "With we it's were."},
+        {"wrong": "Did you were tired?", "right": "Were you tired?", "zh": "be 動詞的疑問句不用 did。", "en": "Questions with be don't use did."}
+      ],
+      "examples": [
+        {"text": "The weather was great yesterday.", "zh": "昨天天氣很好。", "en": "The weather was great yesterday."},
+        {"text": "Where were you last night?", "zh": "你昨晚在哪裡？", "en": "Where were you last night?"},
+        {"text": "I wasn't hungry, so I didn't eat.", "zh": "我不餓，所以沒吃。", "en": "I wasn't hungry, so I didn't eat."}
+      ],
+      "quiz": [
+        {"q": "My parents（　）in Japan last month.", "zh": "我爸媽上個月在日本。", "en": "My parents were in Japan last month.", "options": ["were", "was", "are", "did"], "answer": 0},
+        {"q": "（　）the movie interesting?", "zh": "那部電影好看嗎？", "en": "Was the movie interesting?", "options": ["Was", "Were", "Did", "Does"], "answer": 0},
+        {"q": "I（　）at school yesterday. I was sick.", "zh": "我昨天沒去學校，我生病了。", "en": "I wasn't at school yesterday. I was sick.", "options": ["wasn't", "weren't", "didn't", "don't"], "answer": 0}
+      ]
+    },
+    {
+      "id": "past_simple",
+      "pattern": "played・went・did",
+      "title": {"zh": "過去簡單式", "en": "The past simple"},
+      "form": {"zh": "規則動詞 ＋ -ed（play → played、stop → stopped、study → studied）・不規則（go → went、eat → ate、see → saw）　否定：didn't ＋ 原形　疑問：Did ＋ 主詞 ＋ 原形…？", "en": "regular verb + -ed (played, stopped, studied) · irregular (went, ate, saw) · negative: didn't + verb · question: Did + subject + verb …?"},
+      "explain": {"zh": "說過去發生、已經結束的事用過去式：I visited my grandparents last weekend.（我上週末去看爺爺奶奶。）過去式不分人稱。否定和疑問用 did，後面的動詞回到原形。", "en": "For finished past events: I visited my grandparents last weekend. The past is the same for every subject. Negatives and questions use did with the base form."},
+      "notes": [
+        {"zh": "常見不規則動詞：have → had、make → made、buy → bought、take → took、come → came、write → wrote。", "en": "Common irregulars: had, made, bought, took, came, wrote."}
+      ],
+      "mistakes": [
+        {"wrong": "I didn't went to the party.", "right": "I didn't go to the party.", "zh": "didn't 後面用原形。", "en": "After didn't use the base form."},
+        {"wrong": "She buyed a new bag.", "right": "She bought a new bag.", "zh": "buy 的過去式是 bought。", "en": "buy's past is bought."}
+      ],
+      "examples": [
+        {"text": "We watched a movie last night.", "zh": "我們昨晚看了一部電影。", "en": "We watched a movie last night."},
+        {"text": "Did you finish your homework?", "zh": "你功課寫完了嗎？", "en": "Did you finish your homework?"},
+        {"text": "He lost his wallet on the bus.", "zh": "他在公車上弄丟了錢包。", "en": "He lost his wallet on the bus."}
+      ],
+      "quiz": [
+        {"q": "I（　）a cake for my mom yesterday.", "zh": "我昨天為媽媽做了一個蛋糕。", "en": "I made a cake for my mom yesterday.", "options": ["made", "maked", "make", "makes"], "answer": 0},
+        {"q": "Did they（　）the game?", "zh": "他們贏了那場比賽嗎？", "en": "Did they win the game?", "options": ["win", "won", "wins", "winning"], "answer": 0},
+        {"q": "Sam（　）to Kenting two years ago.", "zh": "山姆兩年前去過墾丁。", "en": "Sam went to Kenting two years ago.", "options": ["went", "goes", "has gone", "go"], "answer": 0}
+      ]
+    },
+    {
+      "id": "past_continuous",
+      "pattern": "was／were ＋ V-ing",
+      "title": {"zh": "過去進行式：當時正在…", "en": "The past continuous"},
+      "form": {"zh": "was／were ＋ 動詞-ing　常和 when、while 一起用", "en": "was / were + verb-ing · often with when, while"},
+      "explain": {"zh": "說過去某個時間點「正在做」的事：At eight last night, I was taking a shower.（昨晚八點我正在洗澡。）一件長的事進行中、被另一件短的事打斷：I was sleeping when the phone rang.", "en": "For something in progress at a past moment: At eight last night, I was taking a shower. A longer action interrupted by a short one: I was sleeping when the phone rang."},
+      "notes": [
+        {"zh": "while 後面接進行中的長動作：While I was walking home, it started to rain.", "en": "while introduces the longer action: While I was walking home, it started to rain."}
+      ],
+      "mistakes": [
+        {"wrong": "I was watch TV at nine.", "right": "I was watching TV at nine.", "zh": "was 後面要用 V-ing。", "en": "After was use the -ing form."},
+        {"wrong": "When I was eating, he was calling me.", "right": "When I was eating, he called me.", "zh": "打斷的短動作用過去簡單式。", "en": "The short, interrupting action is past simple."}
+      ],
+      "examples": [
+        {"text": "What were you doing at ten last night?", "zh": "你昨晚十點在做什麼？", "en": "What were you doing at ten last night?"},
+        {"text": "It was raining when we left.", "zh": "我們離開時正在下雨。", "en": "It was raining when we left."},
+        {"text": "While Mom was cooking, I set the table.", "zh": "媽媽在做飯時，我擺好了餐具。", "en": "While Mom was cooking, I set the table."}
+      ],
+      "quiz": [
+        {"q": "They（　）basketball at 4 p.m. yesterday.", "zh": "他們昨天下午四點正在打籃球。", "en": "They were playing basketball at 4 p.m. yesterday.", "options": ["were playing", "was playing", "are playing", "played playing"], "answer": 0},
+        {"q": "I was reading when the lights（　）out.", "zh": "我正在看書時燈突然熄了。", "en": "I was reading when the lights went out.", "options": ["went", "were go", "go", "goes"], "answer": 0},
+        {"q": "（　）she sleeping when you got home?", "zh": "你到家時她在睡覺嗎？", "en": "Was she sleeping when you got home?", "options": ["Was", "Were", "Did", "Is"], "answer": 0}
+      ]
+    },
+    {
+      "id": "future",
+      "pattern": "will・be going to",
+      "title": {"zh": "未來式：will、be going to", "en": "The future: will and be going to"},
+      "form": {"zh": "will ＋ 原形（won't ＋ 原形）・am／is／are going to ＋ 原形", "en": "will + verb (won't + verb) · am / is / are going to + verb"},
+      "explain": {"zh": "說未來的事有兩種：will 常用於當下決定、預測或承諾（I'll help you.）；be going to 用於已經計畫好的事或看得出來的跡象（We're going to visit Hualien next week.、Look at the clouds. It's going to rain.）。", "en": "will is for decisions made now, predictions and promises (I'll help you); be going to is for plans and things you can see coming (We're going to visit Hualien next week, It's going to rain)."},
+      "notes": [
+        {"zh": "will 後面一律原形，不分人稱：She will come.", "en": "will is the same for all subjects, followed by the base form: She will come."}
+      ],
+      "mistakes": [
+        {"wrong": "I will to call you tomorrow.", "right": "I will call you tomorrow.", "zh": "will 後面直接接原形。", "en": "will takes the base form directly."},
+        {"wrong": "He going to buy a car.", "right": "He is going to buy a car.", "zh": "be going to 不能少了 be 動詞。", "en": "be going to needs be."}
+      ],
+      "examples": [
+        {"text": "Don't worry. I'll be there on time.", "zh": "別擔心，我會準時到。", "en": "Don't worry. I'll be there on time."},
+        {"text": "What are you going to do this weekend?", "zh": "你這週末打算做什麼？", "en": "What are you going to do this weekend?"},
+        {"text": "It will be sunny tomorrow.", "zh": "明天會是晴天。", "en": "It will be sunny tomorrow."}
+      ],
+      "quiz": [
+        {"q": "We are going to（　）a party on Friday.", "zh": "我們星期五要辦派對。", "en": "We are going to have a party on Friday.", "options": ["have", "having", "has", "had"], "answer": 0},
+        {"q": "The phone is ringing. – I（　）get it.", "zh": "「電話響了。」「我來接。」", "en": "The phone is ringing. – I will get it.", "options": ["will", "am", "was", "did"], "answer": 0},
+        {"q": "（　）you be home for dinner?", "zh": "你會回家吃晚餐嗎？", "en": "Will you be home for dinner?", "options": ["Will", "Are", "Do", "Going"], "answer": 0}
+      ]
+    },
+    {
+      "id": "comparative",
+      "pattern": "-er than・more … than",
+      "title": {"zh": "比較級", "en": "Comparatives"},
+      "form": {"zh": "短形容詞 ＋ -er（tall → taller、big → bigger、easy → easier）・長形容詞：more ＋ 形容詞（more beautiful）・不規則：good → better、bad → worse　＋ than", "en": "short adjective + -er (taller, bigger, easier) · long: more + adjective (more beautiful) · irregular: better, worse · + than"},
+      "explain": {"zh": "比較兩個人或東西用比較級 ＋ than：Taipei 101 is taller than this building.、Math is more difficult than English for me.", "en": "Compare two things with the comparative + than: Taipei 101 is taller than this building, Math is more difficult than English for me."},
+      "notes": [
+        {"zh": "加強語氣用 much：much bigger（大得多），不用 very。", "en": "Strengthen with much: much bigger, not very bigger."}
+      ],
+      "mistakes": [
+        {"wrong": "My bag is more heavy than yours.", "right": "My bag is heavier than yours.", "zh": "heavy 是短形容詞，改成 heavier。", "en": "heavy is short: heavier."},
+        {"wrong": "This is gooder than that.", "right": "This is better than that.", "zh": "good 的比較級是 better。", "en": "good becomes better."}
+      ],
+      "examples": [
+        {"text": "My brother is taller than my dad.", "zh": "我哥哥比我爸爸高。", "en": "My brother is taller than my dad."},
+        {"text": "This phone is more expensive than that one.", "zh": "這支手機比那支貴。", "en": "This phone is more expensive than that one."},
+        {"text": "I feel much better today.", "zh": "我今天感覺好多了。", "en": "I feel much better today."}
+      ],
+      "quiz": [
+        {"q": "A dog is（　）than a mouse.", "zh": "狗比老鼠大。", "en": "A dog is bigger than a mouse.", "options": ["bigger", "biger", "more big", "biggest"], "answer": 0},
+        {"q": "This book is（　）interesting than that one.", "zh": "這本書比那本有趣。", "en": "This book is more interesting than that one.", "options": ["more", "much", "very", "most"], "answer": 0},
+        {"q": "Your English is（　）than mine.", "zh": "你的英文比我好。", "en": "Your English is better than mine.", "options": ["better", "gooder", "best", "more good"], "answer": 0}
+      ]
+    },
+    {
+      "id": "superlative",
+      "pattern": "the -est・the most …",
+      "title": {"zh": "最高級", "en": "Superlatives"},
+      "form": {"zh": "the ＋ 形容詞-est（the tallest）・the most ＋ 長形容詞（the most popular）・不規則：the best、the worst　常接 in ＋ 地方／團體、of ＋ 複數", "en": "the + adjective-est (the tallest) · the most + long adjective (the most popular) · irregular: the best, the worst · often in + place / group, of + plural"},
+      "explain": {"zh": "三個以上比較、說「最…」用最高級，前面要有 the：He is the tallest boy in our class.（他是我們班最高的男生。）This is the most beautiful beach in Taiwan.", "en": "Use the superlative, with the, for “the most” among three or more: He is the tallest boy in our class, This is the most beautiful beach in Taiwan."},
+      "notes": [
+        {"zh": "範圍是地方或團體用 in（in the world），是一群人或東西用 of（of the three）。", "en": "Use in with a place or group (in the world), of with a set of people or things (of the three)."}
+      ],
+      "mistakes": [
+        {"wrong": "She is most smart student.", "right": "She is the smartest student.", "zh": "smart 是短形容詞加 -est，而且要有 the。", "en": "smart takes -est, and you need the."},
+        {"wrong": "It's the better day of my life.", "right": "It's the best day of my life.", "zh": "最高級是 best。", "en": "The superlative is best."}
+      ],
+      "examples": [
+        {"text": "Yushan is the highest mountain in Taiwan.", "zh": "玉山是台灣最高的山。", "en": "Yushan is the highest mountain in Taiwan."},
+        {"text": "Who is the youngest of the three?", "zh": "三個人裡誰最年輕？", "en": "Who is the youngest of the three?"},
+        {"text": "This is the most delicious beef noodle soup I've ever had.", "zh": "這是我吃過最好吃的牛肉麵。", "en": "This is the most delicious beef noodle soup I've ever had."}
+      ],
+      "quiz": [
+        {"q": "Winter is the（　）season of the year.", "zh": "冬天是一年中最冷的季節。", "en": "Winter is the coldest season of the year.", "options": ["coldest", "colder", "most cold", "cold"], "answer": 0},
+        {"q": "Lisa is the most popular girl（　）our school.", "zh": "麗莎是我們學校最受歡迎的女生。", "en": "Lisa is the most popular girl in our school.", "options": ["in", "on", "than", "at the"], "answer": 0},
+        {"q": "That was the（　）meal I've ever eaten.", "zh": "那是我吃過最難吃的一餐。", "en": "That was the worst meal I've ever eaten.", "options": ["worst", "baddest", "worse", "most bad"], "answer": 0}
+      ]
+    },
+    {
+      "id": "as_as",
+      "pattern": "as … as",
+      "title": {"zh": "as … as：和…一樣", "en": "as … as"},
+      "form": {"zh": "as ＋ 形容詞／副詞原級 ＋ as・not as … as（沒有…那麼…）", "en": "as + adjective / adverb + as · not as … as"},
+      "explain": {"zh": "說兩者「一樣…」用 as ＋ 原級 ＋ as：Tom is as tall as his father.（湯姆跟他爸爸一樣高。）否定 not as … as 是「沒有…那麼」：This movie isn't as good as the book.", "en": "To say two things are equal: as + adjective + as: Tom is as tall as his father. not as … as means “less than”: This movie isn't as good as the book."},
+      "notes": [
+        {"zh": "中間用原級，不用比較級：as fast as，不是 as faster as。", "en": "Use the plain form: as fast as, not as faster as."}
+      ],
+      "mistakes": [
+        {"wrong": "She is as taller as me.", "right": "She is as tall as me.", "zh": "as … as 中間用原級。", "en": "Use the plain form between as … as."},
+        {"wrong": "He runs as fast than you.", "right": "He runs as fast as you.", "zh": "後面是 as，不是 than。", "en": "The second word is as, not than."}
+      ],
+      "examples": [
+        {"text": "My cat is as heavy as a small dog.", "zh": "我的貓跟一隻小狗一樣重。", "en": "My cat is as heavy as a small dog."},
+        {"text": "The test wasn't as hard as I thought.", "zh": "考試沒有我想的那麼難。", "en": "The test wasn't as hard as I thought."},
+        {"text": "Please come as soon as possible.", "zh": "請盡快過來。", "en": "Please come as soon as possible."}
+      ],
+      "quiz": [
+        {"q": "Kaohsiung isn't as（　）as Taipei.", "zh": "高雄沒有台北那麼大。", "en": "Kaohsiung isn't as big as Taipei.", "options": ["big", "bigger", "biggest", "more big"], "answer": 0},
+        {"q": "I'm as old（　）your sister.", "zh": "我跟你姊姊一樣大。", "en": "I'm as old as your sister.", "options": ["as", "than", "like", "so"], "answer": 0},
+        {"q": "He can't sing as（　）as you.", "zh": "他唱歌沒有你好。", "en": "He can't sing as well as you.", "options": ["well", "better", "good", "best"], "answer": 0}
+      ]
+    },
+    {
+      "id": "present_perfect",
+      "pattern": "have／has ＋ p.p.",
+      "title": {"zh": "現在完成式", "en": "The present perfect"},
+      "form": {"zh": "have／has ＋ 過去分詞（visited、eaten、been、done）　常和 already、yet、ever、never、for、since 一起用", "en": "have / has + past participle (visited, eaten, been, done) · often with already, yet, ever, never, for, since"},
+      "explain": {"zh": "現在完成式連接過去和現在：說經驗（I have been to Japan.）、已經完成的事（I have already eaten.）、從過去持續到現在的事（She has lived here for ten years.）。", "en": "The present perfect links past and present: experience (I have been to Japan), something already done (I have already eaten), something that started in the past and continues (She has lived here for ten years)."},
+      "notes": [
+        {"zh": "for ＋ 一段時間（for three years），since ＋ 起點（since 2020）。", "en": "for + a period (for three years), since + a starting point (since 2020)."},
+        {"zh": "有明確的過去時間（yesterday、last year）時用過去式，不用完成式。", "en": "With a finished time (yesterday, last year) use the past simple, not the perfect."}
+      ],
+      "mistakes": [
+        {"wrong": "I have seen him yesterday.", "right": "I saw him yesterday.", "zh": "有 yesterday 這種明確的過去時間，用過去式。", "en": "With yesterday use the past simple."},
+        {"wrong": "She has live here since 2018.", "right": "She has lived here since 2018.", "zh": "has 後面要用過去分詞。", "en": "has needs the past participle."}
+      ],
+      "examples": [
+        {"text": "Have you ever tried stinky tofu?", "zh": "你吃過臭豆腐嗎？", "en": "Have you ever tried stinky tofu?"},
+        {"text": "I haven't finished the report yet.", "zh": "我還沒寫完報告。", "en": "I haven't finished the report yet."},
+        {"text": "We have known each other for five years.", "zh": "我們認識五年了。", "en": "We have known each other for five years."}
+      ],
+      "quiz": [
+        {"q": "My dad（　）been to Europe twice.", "zh": "我爸爸去過歐洲兩次。", "en": "My dad has been to Europe twice.", "options": ["has", "have", "is", "was"], "answer": 0},
+        {"q": "I have studied English（　）I was eight.", "zh": "我從八歲開始學英文。", "en": "I have studied English since I was eight.", "options": ["since", "for", "ago", "from"], "answer": 0},
+        {"q": "Have you（　）your homework yet?", "zh": "你功課寫完了嗎？", "en": "Have you done your homework yet?", "options": ["done", "did", "do", "doing"], "answer": 0}
+      ]
+    },
+    {
+      "id": "must_should",
+      "pattern": "must・have to・should",
+      "title": {"zh": "必須和應該：must、have to、should", "en": "must, have to, should"},
+      "form": {"zh": "must ＋ 原形（必須）・have／has to ＋ 原形（必須、不得不）・should ＋ 原形（應該）　mustn't（不准）・don't have to（不必）", "en": "must + verb · have / has to + verb · should + verb · mustn't (not allowed) · don't have to (not necessary)"},
+      "explain": {"zh": "must 和 have to 都是「必須」：You must wear a helmet.、I have to get up early. should 是建議「應該」：You should drink more water. 注意否定意思不同：You mustn't park here.（這裡不准停車。）You don't have to come.（你不必來。）", "en": "must and have to both mean “need to”: You must wear a helmet, I have to get up early. should gives advice: You should drink more water. The negatives differ: mustn't = not allowed, don't have to = not necessary."},
+      "notes": [
+        {"zh": "must 沒有過去式，過去的「必須」用 had to：I had to wait an hour.", "en": "must has no past; use had to: I had to wait an hour."}
+      ],
+      "mistakes": [
+        {"wrong": "She must to go now.", "right": "She must go now.", "zh": "must 後面直接接原形。", "en": "must takes the base form directly."},
+        {"wrong": "He have to work today.", "right": "He has to work today.", "zh": "he 用 has to。", "en": "With he it's has to."}
+      ],
+      "examples": [
+        {"text": "You should see a doctor.", "zh": "你應該去看醫生。", "en": "You should see a doctor."},
+        {"text": "Students must not use phones in class.", "zh": "學生上課不准用手機。", "en": "Students must not use phones in class."},
+        {"text": "We don't have to wear uniforms on Fridays.", "zh": "我們星期五不必穿制服。", "en": "We don't have to wear uniforms on Fridays."}
+      ],
+      "quiz": [
+        {"q": "It's late. I（　）go home now.", "zh": "很晚了，我現在得回家了。", "en": "It's late. I have to go home now.", "options": ["have to", "has to", "must to", "should to"], "answer": 0},
+        {"q": "You look tired. You（　）go to bed early.", "zh": "你看起來很累，應該早點睡。", "en": "You look tired. You should go to bed early.", "options": ["should", "shouldn't", "don't have to", "mustn't"], "answer": 0},
+        {"q": "Last night I（　）finish a big project.", "zh": "我昨晚得完成一個大報告。", "en": "Last night I had to finish a big project.", "options": ["had to", "must", "have to", "musted"], "answer": 0}
+      ]
+    },
+    {
+      "id": "infinitive",
+      "pattern": "to ＋ 原形",
+      "title": {"zh": "不定詞 to ＋ 原形", "en": "to + verb (the infinitive)"},
+      "form": {"zh": "want／need／hope／decide／plan ＋ to V・目的：to V（為了…）・It is ＋ 形容詞 ＋ to V", "en": "want / need / hope / decide / plan + to verb · purpose: to verb (in order to) · It is + adjective + to verb"},
+      "explain": {"zh": "有些動詞後面接 to ＋ 原形：I want to travel.（我想去旅行。）to V 也可以表示目的：I went to the store to buy milk.（我去商店買牛奶。）還有 It's easy to make friends here.", "en": "Some verbs are followed by to + verb: I want to travel. to + verb also gives a purpose: I went to the store to buy milk. And: It's easy to make friends here."},
+      "notes": [
+        {"zh": "would like to ＋ 原形是有禮貌的「想要」：I'd like to order now.", "en": "would like to is a polite “want to”: I'd like to order now."}
+      ],
+      "mistakes": [
+        {"wrong": "I want go to Japan.", "right": "I want to go to Japan.", "zh": "want 後面要有 to。", "en": "want needs to."},
+        {"wrong": "She went out for buy some bread.", "right": "She went out to buy some bread.", "zh": "表示目的用 to ＋ 原形。", "en": "Purpose is to + verb."}
+      ],
+      "examples": [
+        {"text": "I need to charge my phone.", "zh": "我得幫手機充電。", "en": "I need to charge my phone."},
+        {"text": "He saved money to buy a new computer.", "zh": "他存錢買新電腦。", "en": "He saved money to buy a new computer."},
+        {"text": "It's important to get enough sleep.", "zh": "睡飽很重要。", "en": "It's important to get enough sleep."}
+      ],
+      "quiz": [
+        {"q": "We decided（　）the bus.", "zh": "我們決定搭公車。", "en": "We decided to take the bus.", "options": ["to take", "taking", "take", "took"], "answer": 0},
+        {"q": "I got up early（　）the sunrise.", "zh": "我早起看日出。", "en": "I got up early to see the sunrise.", "options": ["to see", "for see", "seeing", "saw"], "answer": 0},
+        {"q": "It is hard（　）a new language.", "zh": "學一種新語言很難。", "en": "It is hard to learn a new language.", "options": ["to learn", "learn", "learned", "for learn"], "answer": 0}
+      ]
+    },
+    {
+      "id": "gerund",
+      "pattern": "V-ing（動名詞）",
+      "title": {"zh": "動名詞 V-ing", "en": "Gerunds (verb-ing as a noun)"},
+      "form": {"zh": "enjoy／finish／mind／keep／practice ＋ V-ing・介系詞 ＋ V-ing（good at drawing）・V-ing 當主詞（Swimming is fun.）", "en": "enjoy / finish / mind / keep / practice + verb-ing · preposition + verb-ing (good at drawing) · verb-ing as subject (Swimming is fun.)"},
+      "explain": {"zh": "動詞加 -ing 可以當名詞用：Reading is my hobby.（閱讀是我的嗜好。）某些動詞和所有介系詞後面要接 V-ing：I enjoy cooking.、Thank you for helping me.", "en": "A verb + -ing can work as a noun: Reading is my hobby. Some verbs and every preposition are followed by -ing: I enjoy cooking, Thank you for helping me."},
+      "notes": [
+        {"zh": "like、love、start 後面接 to V 或 V-ing 都可以：I like swimming. ＝ I like to swim.", "en": "like, love, start take either: I like swimming = I like to swim."}
+      ],
+      "mistakes": [
+        {"wrong": "I enjoy to listen to music.", "right": "I enjoy listening to music.", "zh": "enjoy 後面接 V-ing。", "en": "enjoy takes -ing."},
+        {"wrong": "He is good at play tennis.", "right": "He is good at playing tennis.", "zh": "介系詞 at 後面接 V-ing。", "en": "After the preposition at, use -ing."}
+      ],
+      "examples": [
+        {"text": "Have you finished cleaning your room?", "zh": "你打掃完房間了嗎？", "en": "Have you finished cleaning your room?"},
+        {"text": "Riding a scooter in the rain is dangerous.", "zh": "下雨天騎機車很危險。", "en": "Riding a scooter in the rain is dangerous."},
+        {"text": "She's interested in learning Korean.", "zh": "她對學韓文有興趣。", "en": "She's interested in learning Korean."}
+      ],
+      "quiz": [
+        {"q": "Would you mind（　）the window?", "zh": "你介意關一下窗嗎？", "en": "Would you mind closing the window?", "options": ["closing", "to close", "close", "closed"], "answer": 0},
+        {"q": "He left without（　）goodbye.", "zh": "他沒說再見就走了。", "en": "He left without saying goodbye.", "options": ["saying", "say", "to say", "said"], "answer": 0},
+        {"q": "Please keep（　）. You're doing great!", "zh": "請繼續努力，你做得很好！", "en": "Please keep trying. You're doing great!", "options": ["trying", "to try", "try", "tried"], "answer": 0}
+      ]
+    },
+    {
+      "id": "conjunctions",
+      "pattern": "and・but・or・so・because",
+      "title": {"zh": "連接詞 and、but、or、so、because", "en": "Conjunctions: and, but, or, so, because"},
+      "form": {"zh": "and（和、而且）・but（但是）・or（或是）・so（所以）・because（因為）", "en": "and · but · or · so · because"},
+      "explain": {"zh": "連接詞把兩個句子連起來：It was raining, so we stayed home.（下雨了，所以我們待在家。）I stayed home because I was sick.（我待在家，因為我生病了。）", "en": "Conjunctions join two sentences: It was raining, so we stayed home. I stayed home because I was sick."},
+      "notes": [
+        {"zh": "英文的 because 和 so 不能同時用在一句裡（中文可以說「因為…所以…」）。", "en": "Don't use because and so in the same sentence — one is enough."}
+      ],
+      "mistakes": [
+        {"wrong": "Because I was tired, so I went to bed.", "right": "Because I was tired, I went to bed.", "zh": "because 和 so 只能選一個。", "en": "Use either because or so, not both."},
+        {"wrong": "Do you want tea and coffee?", "right": "Do you want tea or coffee?", "zh": "二選一用 or。", "en": "A choice between two uses or."}
+      ],
+      "examples": [
+        {"text": "I like dogs, but my sister likes cats.", "zh": "我喜歡狗，但我妹妹喜歡貓。", "en": "I like dogs, but my sister likes cats."},
+        {"text": "Hurry up, or you'll miss the train.", "zh": "快一點，不然你會趕不上火車。", "en": "Hurry up, or you'll miss the train."},
+        {"text": "She studied hard, so she passed the exam.", "zh": "她很用功，所以通過了考試。", "en": "She studied hard, so she passed the exam."}
+      ],
+      "quiz": [
+        {"q": "The shirt is nice,（　）it's too expensive.", "zh": "這件襯衫很好看，但是太貴了。", "en": "The shirt is nice, but it's too expensive.", "options": ["but", "so", "or", "because"], "answer": 0},
+        {"q": "I'm hungry（　）I didn't eat lunch.", "zh": "我很餓，因為我沒吃午餐。", "en": "I'm hungry because I didn't eat lunch.", "options": ["because", "so", "but", "or"], "answer": 0},
+        {"q": "It was very hot,（　）we went swimming.", "zh": "天氣很熱，所以我們去游泳了。", "en": "It was very hot, so we went swimming.", "options": ["so", "because", "or", "but"], "answer": 0}
+      ]
+    },
+    {
+      "id": "time_clauses",
+      "pattern": "when・before・after・if",
+      "title": {"zh": "時間和條件子句：when、before、after、if", "en": "Clauses with when, before, after, if"},
+      "form": {"zh": "when／before／after／if ＋ 句子，＋ 主要句子　未來的事：子句用現在式（If it rains tomorrow, …）", "en": "when / before / after / if + clause, + main clause · for the future the clause uses the present (If it rains tomorrow, …)"},
+      "explain": {"zh": "when（當…時）、before（在…之前）、after（在…之後）、if（如果）帶出一個子句，可以放前面（加逗號）或後面。說未來的事時，子句裡用現在式代替未來式：If it rains tomorrow, we will stay home.", "en": "when, before, after and if start a clause that can go first (with a comma) or second. For the future, the clause uses the present, not will: If it rains tomorrow, we will stay home."},
+      "notes": [
+        {"zh": "主要子句照樣用 will：I'll call you when I arrive.", "en": "The main clause still uses will: I'll call you when I arrive."}
+      ],
+      "mistakes": [
+        {"wrong": "If it will rain tomorrow, we will stay home.", "right": "If it rains tomorrow, we will stay home.", "zh": "if 子句用現在式表示未來。", "en": "The if clause uses the present for the future."},
+        {"wrong": "I'll call you when I will get home.", "right": "I'll call you when I get home.", "zh": "when 子句也用現在式。", "en": "The when clause uses the present too."}
+      ],
+      "examples": [
+        {"text": "Wash your hands before you eat.", "zh": "吃東西前要洗手。", "en": "Wash your hands before you eat."},
+        {"text": "When I was a child, I lived in Hsinchu.", "zh": "我小時候住在新竹。", "en": "When I was a child, I lived in Hsinchu."},
+        {"text": "If you're free tomorrow, let's go hiking.", "zh": "如果你明天有空，我們去爬山吧。", "en": "If you're free tomorrow, let's go hiking."}
+      ],
+      "quiz": [
+        {"q": "If you（　）hard, you will pass the test.", "zh": "如果你用功，就會通過考試。", "en": "If you study hard, you will pass the test.", "options": ["study", "will study", "studied", "studies"], "answer": 0},
+        {"q": "Brush your teeth（　）you go to bed.", "zh": "睡覺前要刷牙。", "en": "Brush your teeth before you go to bed.", "options": ["before", "after", "if", "so"], "answer": 0},
+        {"q": "I will text you when the movie（　）.", "zh": "電影結束時我會傳訊息給你。", "en": "I will text you when the movie ends.", "options": ["ends", "will end", "end", "ending"], "answer": 0}
+      ]
+    },
+    {
+      "id": "passive",
+      "pattern": "be ＋ p.p.",
+      "title": {"zh": "被動語態", "en": "The passive"},
+      "form": {"zh": "be 動詞 ＋ 過去分詞（＋ by …）　現在：is／are made　過去：was／were made", "en": "be + past participle (+ by …) · present: is / are made · past: was / were made"},
+      "explain": {"zh": "強調「被做的東西」而不是做的人時用被動語態：English is spoken in many countries.（很多國家說英文。）This temple was built in 1700.（這座廟建於 1700 年。）要說出是誰做的就加 by：The book was written by J. K. Rowling.", "en": "Use the passive when the thing done matters more than who did it: English is spoken in many countries, This temple was built in 1700. Add by to name the doer: The book was written by J. K. Rowling."},
+      "notes": [
+        {"zh": "be 動詞決定時態，過去分詞不變：is made／was made。", "en": "be shows the tense; the participle stays: is made / was made."}
+      ],
+      "mistakes": [
+        {"wrong": "The window broken by the wind.", "right": "The window was broken by the wind.", "zh": "被動語態不能少了 be 動詞。", "en": "The passive needs be."},
+        {"wrong": "This car was make in Japan.", "right": "This car was made in Japan.", "zh": "be 動詞後面要用過去分詞。", "en": "After be use the past participle."}
+      ],
+      "examples": [
+        {"text": "Bubble tea is loved all over the world.", "zh": "珍珠奶茶受到全世界喜愛。", "en": "Bubble tea is loved all over the world."},
+        {"text": "My bike was stolen last night.", "zh": "我的腳踏車昨晚被偷了。", "en": "My bike was stolen last night."},
+        {"text": "The classroom is cleaned every day.", "zh": "教室每天都有人打掃。", "en": "The classroom is cleaned every day."}
+      ],
+      "quiz": [
+        {"q": "This song was（　）by a famous singer.", "zh": "這首歌是一位有名的歌手寫的。", "en": "This song was written by a famous singer.", "options": ["written", "wrote", "write", "writing"], "answer": 0},
+        {"q": "Rice（　）in many parts of Asia.", "zh": "亞洲很多地方都種稻米。", "en": "Rice is grown in many parts of Asia.", "options": ["is grown", "grows by", "is grow", "grown"], "answer": 0},
+        {"q": "The letters（　）yesterday.", "zh": "信昨天寄出去了。", "en": "The letters were sent yesterday.", "options": ["were sent", "was sent", "are sent", "sent"], "answer": 0}
+      ]
+    },
+    {
+      "id": "tag_questions",
+      "pattern": "…, isn't it?",
+      "title": {"zh": "附加問句", "en": "Tag questions"},
+      "form": {"zh": "肯定句 ＋ 否定附加問句（It's hot, isn't it?）・否定句 ＋ 肯定附加問句（You don't eat pork, do you?）", "en": "positive sentence + negative tag (It's hot, isn't it?) · negative sentence + positive tag (You don't eat pork, do you?)"},
+      "explain": {"zh": "在句子後面加一個短問句來確認：前面肯定、後面就否定，反之亦然。附加問句用前面的助動詞或 be 動詞，一般動詞就用 do／does／did，主詞換成代名詞：Your sister lives in Taichung, doesn't she?", "en": "A short question at the end checks something: a positive sentence takes a negative tag and vice versa. Use the same helping verb or be — or do / does / did — with a pronoun: Your sister lives in Taichung, doesn't she?"},
+      "notes": [
+        {"zh": "I am 的附加問句是 aren't I：I'm right, aren't I?", "en": "I am takes aren't I: I'm right, aren't I?"},
+        {"zh": "Let's … 的附加問句是 shall we：Let's go, shall we?", "en": "Let's … takes shall we: Let's go, shall we?"}
+      ],
+      "mistakes": [
+        {"wrong": "You are a student, are you?", "right": "You are a student, aren't you?", "zh": "前面肯定，附加問句要否定。", "en": "A positive sentence takes a negative tag."},
+        {"wrong": "He likes music, isn't he?", "right": "He likes music, doesn't he?", "zh": "一般動詞用 does 來問。", "en": "An ordinary verb takes does."}
+      ],
+      "examples": [
+        {"text": "It's a beautiful day, isn't it?", "zh": "今天天氣真好，對吧？", "en": "It's a beautiful day, isn't it?"},
+        {"text": "You didn't forget the tickets, did you?", "zh": "你沒忘記帶票吧？", "en": "You didn't forget the tickets, did you?"},
+        {"text": "They can come, can't they?", "zh": "他們可以來，對吧？", "en": "They can come, can't they?"}
+      ],
+      "quiz": [
+        {"q": "Mr. Chen is your teacher,（　）?", "zh": "陳老師是你的老師，對吧？", "en": "Mr. Chen is your teacher, isn't he?", "options": ["isn't he", "is he", "doesn't he", "isn't Mr. Chen"], "answer": 0},
+        {"q": "You won't tell anyone,（　）?", "zh": "你不會告訴別人吧？", "en": "You won't tell anyone, will you?", "options": ["will you", "won't you", "do you", "are you"], "answer": 0},
+        {"q": "Your parents went to Japan,（　）?", "zh": "你爸媽去日本了，對吧？", "en": "Your parents went to Japan, didn't they?", "options": ["didn't they", "weren't they", "don't they", "did they"], "answer": 0}
+      ]
+    },
+    {
+      "id": "exclamations",
+      "pattern": "What a …!・How …!",
+      "title": {"zh": "感嘆句：What、How", "en": "Exclamations with What and How"},
+      "form": {"zh": "What ＋ a／an ＋ 形容詞 ＋ 名詞（＋ 主詞 ＋ 動詞）！・How ＋ 形容詞／副詞（＋ 主詞 ＋ 動詞）！", "en": "What + a / an + adjective + noun (+ subject + verb)! · How + adjective / adverb (+ subject + verb)!"},
+      "explain": {"zh": "表達驚訝、讚嘆時用感嘆句。重點是名詞用 What：What a cute dog!（好可愛的狗！）重點是形容詞或副詞用 How：How cute!、How fast he runs!（他跑得好快！）", "en": "Exclamations show surprise or admiration. Use What when there's a noun: What a cute dog! Use How with just an adjective or adverb: How cute!, How fast he runs!"},
+      "notes": [
+        {"zh": "複數或不可數名詞不加 a：What beautiful flowers!、What nice weather!", "en": "No a with plural or uncountable nouns: What beautiful flowers!, What nice weather!"}
+      ],
+      "mistakes": [
+        {"wrong": "How a beautiful day!", "right": "What a beautiful day!", "zh": "有名詞時用 What。", "en": "With a noun use What."},
+        {"wrong": "What a nice weather!", "right": "What nice weather!", "zh": "weather 不可數，不加 a。", "en": "weather is uncountable: no a."}
+      ],
+      "examples": [
+        {"text": "What a great idea!", "zh": "好棒的點子！", "en": "What a great idea!"},
+        {"text": "How beautiful the night view is!", "zh": "夜景好美！", "en": "How beautiful the night view is!"},
+        {"text": "What delicious dumplings!", "zh": "這些水餃好好吃！", "en": "What delicious dumplings!"}
+      ],
+      "quiz": [
+        {"q": "（　）an interesting story!", "zh": "好有趣的故事！", "en": "What an interesting story!", "options": ["What", "How", "Which", "So"], "answer": 0},
+        {"q": "（　）tall you are!", "zh": "你好高！", "en": "How tall you are!", "options": ["How", "What", "What a", "Which"], "answer": 0},
+        {"q": "（　）cute puppies!", "zh": "好可愛的小狗們！", "en": "What cute puppies!", "options": ["What", "How", "What a", "How a"], "answer": 0}
+      ]
+    },
+    {
+      "id": "prep_time",
+      "pattern": "in・on・at（時間）",
+      "title": {"zh": "時間介系詞 in、on、at", "en": "Time prepositions: in, on, at"},
+      "form": {"zh": "at ＋ 時刻（at 7:00、at night、at noon）・on ＋ 日期、星期（on Monday、on May 5）・in ＋ 月份、季節、年、一天的時段（in July、in 2025、in the morning）", "en": "at + clock time (at 7:00, at night) · on + day, date (on Monday, on May 5) · in + month, season, year, part of day (in July, in 2025, in the morning)"},
+      "explain": {"zh": "範圍越小越精確用 at，一天用 on，比一天長的用 in：I have a meeting at three on Friday.、My birthday is in December.", "en": "at for exact times, on for days, in for anything longer: I have a meeting at three on Friday, My birthday is in December."},
+      "notes": [
+        {"zh": "特定某一天的早上用 on：on Sunday morning。", "en": "A particular day's morning takes on: on Sunday morning."},
+        {"zh": "前面有 this、next、last、every 時不加介系詞：next week、every day。", "en": "No preposition with this, next, last, every: next week, every day."}
+      ],
+      "mistakes": [
+        {"wrong": "in Monday", "right": "on Monday", "zh": "星期幾用 on。", "en": "Days take on."},
+        {"wrong": "I'll see you on next week.", "right": "I'll see you next week.", "zh": "next 前面不加介系詞。", "en": "No preposition before next."}
+      ],
+      "examples": [
+        {"text": "The class starts at 8:10.", "zh": "八點十分上課。", "en": "The class starts at 8:10."},
+        {"text": "We celebrate Mid-Autumn Festival in September or October.", "zh": "我們在九月或十月過中秋節。", "en": "We celebrate Mid-Autumn Festival in September or October."},
+        {"text": "What do you usually do on weekends?", "zh": "你週末通常做什麼？", "en": "What do you usually do on weekends?"}
+      ],
+      "quiz": [
+        {"q": "I was born（　）2011.", "zh": "我在 2011 年出生。", "en": "I was born in 2011.", "options": ["in", "on", "at", "by"], "answer": 0},
+        {"q": "The store closes（　）midnight.", "zh": "那家店半夜十二點關門。", "en": "The store closes at midnight.", "options": ["at", "in", "on", "for"], "answer": 0},
+        {"q": "Let's meet（　）Saturday afternoon.", "zh": "我們星期六下午見。", "en": "Let's meet on Saturday afternoon.", "options": ["on", "in", "at", "for"], "answer": 0}
+      ]
+    },
+    {
+      "id": "relative",
+      "pattern": "who・which・that",
+      "title": {"zh": "關係代名詞 who、which、that", "en": "Relative pronouns: who, which, that"},
+      "form": {"zh": "人 ＋ who／that ＋ …・東西 ＋ which／that ＋ …", "en": "person + who / that + … · thing + which / that + …"},
+      "explain": {"zh": "關係代名詞把兩個句子合成一句，用來說明前面的名詞是哪一個：I have a friend who lives in Canada.（我有一個住在加拿大的朋友。）This is the cake that my mom made.（這是我媽媽做的蛋糕。）", "en": "A relative pronoun joins two sentences to say which person or thing you mean: I have a friend who lives in Canada, This is the cake that my mom made."},
+      "notes": [
+        {"zh": "關係代名詞當受詞時可以省略：This is the cake (that) my mom made.", "en": "When it's the object it can be left out: This is the cake (that) my mom made."}
+      ],
+      "mistakes": [
+        {"wrong": "The man which helped me was kind.", "right": "The man who helped me was kind.", "zh": "說人用 who 或 that，不用 which。", "en": "For people use who or that, not which."},
+        {"wrong": "I like the dress who you bought.", "right": "I like the dress (that) you bought.", "zh": "說東西用 which 或 that。", "en": "For things use which or that."}
+      ],
+      "examples": [
+        {"text": "The girl who sits next to me is from Japan.", "zh": "坐我旁邊的女生是日本人。", "en": "The girl who sits next to me is from Japan."},
+        {"text": "This is the bus that goes to the zoo.", "zh": "這是開往動物園的公車。", "en": "This is the bus that goes to the zoo."},
+        {"text": "I lost the book which you lent me.", "zh": "我把你借我的書弄丟了。", "en": "I lost the book which you lent me."}
+      ],
+      "quiz": [
+        {"q": "Do you know the boy（　）is singing?", "zh": "你認識那個在唱歌的男生嗎？", "en": "Do you know the boy who is singing?", "options": ["who", "which", "what", "where"], "answer": 0},
+        {"q": "This is the phone（　）I bought last week.", "zh": "這是我上週買的手機。", "en": "This is the phone that I bought last week.", "options": ["that", "who", "what", "where"], "answer": 0},
+        {"q": "A dentist is a person（　）takes care of teeth.", "zh": "牙醫是照顧牙齒的人。", "en": "A dentist is a person who takes care of teeth.", "options": ["who", "which", "what", "whose"], "answer": 0}
+      ]
+    },
+    {
+      "id": "indirect_questions",
+      "pattern": "Do you know where … is?",
+      "title": {"zh": "間接問句", "en": "Indirect questions"},
+      "form": {"zh": "Do you know／I don't know／Can you tell me ＋ 疑問詞 ＋ 主詞 ＋ 動詞（直述句語序）・沒有疑問詞時用 if／whether", "en": "Do you know / I don't know / Can you tell me + question word + subject + verb (statement order) · no question word: if / whether"},
+      "explain": {"zh": "問句放在另一個句子裡時，要改成直述句的語序，不再倒裝：Where is the station? → Do you know where the station is? 一般動詞的 do／does 也要拿掉：What does he want? → I don't know what he wants.", "en": "A question inside another sentence goes back to statement order: Where is the station? → Do you know where the station is? Drop do / does too: What does he want? → I don't know what he wants."},
+      "notes": [
+        {"zh": "是非問句改成間接問句用 if：Is she coming? → I'm not sure if she is coming.", "en": "Yes / no questions use if: Is she coming? → I'm not sure if she is coming."}
+      ],
+      "mistakes": [
+        {"wrong": "Do you know where is the bathroom?", "right": "Do you know where the bathroom is?", "zh": "間接問句用直述句語序。", "en": "Indirect questions use statement order."},
+        {"wrong": "I don't know what does she like.", "right": "I don't know what she likes.", "zh": "拿掉 does，動詞加 -s。", "en": "Drop does and add -s to the verb."}
+      ],
+      "examples": [
+        {"text": "Can you tell me how much this costs?", "zh": "可以告訴我這個多少錢嗎？", "en": "Can you tell me how much this costs?"},
+        {"text": "I wonder why he is so quiet today.", "zh": "我在想他今天為什麼這麼安靜。", "en": "I wonder why he is so quiet today."},
+        {"text": "Do you know if the library is open?", "zh": "你知道圖書館有沒有開嗎？", "en": "Do you know if the library is open?"}
+      ],
+      "quiz": [
+        {"q": "Do you know where（　）?", "zh": "你知道他住在哪裡嗎？", "en": "Do you know where he lives?", "options": ["he lives", "does he live", "he live", "lives he"], "answer": 0},
+        {"q": "Could you tell me what time（　）?", "zh": "可以告訴我現在幾點嗎？", "en": "Could you tell me what time it is?", "options": ["it is", "is it", "it", "does it"], "answer": 0},
+        {"q": "I'm not sure（　）she will come.", "zh": "我不確定她會不會來。", "en": "I'm not sure if she will come.", "options": ["if", "what", "that if", "does"], "answer": 0}
+      ]
+    }
+  ]
+}

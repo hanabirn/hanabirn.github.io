@@ -385,6 +385,11 @@ def jobs(lang):
         # forms (a/an, movie/film): said as two words, not "a slash an"
         for word, *_ in list(vocab('en_')) + list(vocab('tp_en_')):
             add(word, word.replace('/', ', '))
+        # 文法 page examples (data/grammar/en_*.json, 2026-11-06), in both accents
+        for f in sorted((ROOT / 'data' / 'grammar').glob('en_*.json')):
+            for point in json.loads(f.read_text(encoding='utf-8'))['points']:
+                for ex in point['examples']:
+                    add(ex['text'], ex['text'])
         # 閱讀 page (data/reading/en_*.json): every sentence and glossary word
         for f in sorted((ROOT / 'data' / 'reading').glob('en_*.json')):
             for p in json.loads(f.read_text(encoding='utf-8'))['passages']:

@@ -39,7 +39,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "{n} 級"
+  "learn_level_n": "{n} 級",
+  "learn_level_jh": "國中",
+  "learn_level_sh": "高中"
  },
  "zhs": {
   "dict_lang_ja": "日语",
@@ -80,7 +82,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "{n} 级"
+  "learn_level_n": "{n} 级",
+  "learn_level_jh": "初中",
+  "learn_level_sh": "高中"
  },
  "en": {
   "dict_lang_ja": "Japanese",
@@ -121,7 +125,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "Level {n}"
+  "learn_level_n": "Level {n}",
+  "learn_level_jh": "Junior high",
+  "learn_level_sh": "Senior high"
  },
  "ja": {
   "dict_lang_ja": "日本語",
@@ -162,7 +168,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "{n}級"
+  "learn_level_n": "{n}級",
+  "learn_level_jh": "中学",
+  "learn_level_sh": "高校"
  },
  "ko": {
   "dict_lang_ja": "일본어",
@@ -203,7 +211,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "{n}급"
+  "learn_level_n": "{n}급",
+  "learn_level_jh": "중학교",
+  "learn_level_sh": "고등학교"
  },
  "ru": {
   "dict_lang_ja": "Японский",
@@ -244,7 +254,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "Уровень {n}"
+  "learn_level_n": "Уровень {n}",
+  "learn_level_jh": "Средняя школа",
+  "learn_level_sh": "Старшая школа"
  },
  "fr": {
   "dict_lang_ja": "Japonais",
@@ -285,7 +297,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "Niveau {n}"
+  "learn_level_n": "Niveau {n}",
+  "learn_level_jh": "Collège",
+  "learn_level_sh": "Lycée"
  },
  "es": {
   "dict_lang_ja": "Japonés",
@@ -326,7 +340,9 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "Nivel {n}"
+  "learn_level_n": "Nivel {n}",
+  "learn_level_jh": "Secundaria",
+  "learn_level_sh": "Bachillerato"
  },
  "de": {
   "dict_lang_ja": "Japanisch",
@@ -367,6 +383,8 @@ export const SITE_STRINGS = {
   "quiz_hsk_5": "HSK 5",
   "quiz_hsk_6": "HSK 6",
   "quiz_hsk_7": "HSK 7–9",
-  "learn_level_n": "Stufe {n}"
+  "learn_level_n": "Stufe {n}",
+  "learn_level_jh": "Mittelstufe",
+  "learn_level_sh": "Oberstufe"
  }
 };

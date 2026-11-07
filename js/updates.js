@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-06',
+      zh: "文法新增英文「國中」：31 個文法點，照台灣國中英文的範圍，從 be 動詞、現在式、過去式、未來式、比較級到現在完成式、被動語態、關係代名詞和間接問句，每個都有說明、常見錯誤、有錄音的例句（美式、英式都有）和小練習。",
+      'zh-Hans': "语法新增英语“初中”：31 个语法点，按台湾初中英语的范围，从 be 动词、现在时、过去时、将来时、比较级到现在完成时、被动语态、关系代词和间接疑问句，每个都有说明、常见错误、带录音的例句（美式、英式都有）和小练习。",
+      en: "Grammar adds English for junior high: 31 points following Taiwan's junior high syllabus, from be, the present, past and future to comparatives, the present perfect, the passive, relative pronouns and indirect questions — each with an explanation, common mistakes, examples recorded in American and British English, and a short practice.",
+      ja: "文法に英語「中学」レベルが加わりました。台湾の中学英語の範囲に沿った 31 項目で、be 動詞・現在形・過去形・未来表現・比較級から現在完了・受動態・関係代名詞・間接疑問文まで。どれも説明・よくある間違い・音声つき例文（アメリカ英語とイギリス英語）・ミニ練習つきです。",
+      ko: "문법에 영어 '중학교' 단계가 추가됐어요. 대만 중학교 영어 범위에 맞춘 31개 항목으로, be동사, 현재·과거·미래 시제, 비교급부터 현재완료, 수동태, 관계대명사, 간접의문문까지 있어요. 모두 설명, 자주 하는 실수, 녹음된 예문(미국식·영국식), 짧은 연습이 있어요.",
+      ru: "В грамматике появился английский «средняя школа»: 31 тема по программе тайваньской средней школы — от be, настоящего, прошедшего и будущего времени и сравнительной степени до Present Perfect, пассива, относительных местоимений и косвенных вопросов. В каждой есть объяснение, типичные ошибки, примеры с озвучкой (американский и британский вариант) и короткая практика.",
+      fr: "La grammaire accueille l'anglais niveau collège : 31 points qui suivent le programme du collège taïwanais, de be, du présent, du passé et du futur aux comparatifs, au present perfect, au passif, aux pronoms relatifs et aux questions indirectes — chacun avec une explication, des erreurs fréquentes, des exemples enregistrés en anglais américain et britannique, et un petit exercice.",
+      es: "La gramática incorpora el inglés de secundaria: 31 puntos según el programa de secundaria de Taiwán, desde be, el presente, el pasado y el futuro hasta los comparativos, el present perfect, la pasiva, los pronombres relativos y las preguntas indirectas, cada uno con explicación, errores frecuentes, ejemplos grabados en inglés americano y británico y una pequeña práctica.",
+      de: "Die Grammatik hat jetzt Englisch für die Mittelstufe: 31 Themen nach dem taiwanischen Mittelstufen-Lehrplan, von be, Präsens, Vergangenheit und Zukunft über Steigerung bis zu Present Perfect, Passiv, Relativpronomen und indirekten Fragen – jeweils mit Erklärung, typischen Fehlern, Beispielen in amerikanischer und britischer Aussprache und einer kleinen Übung." },
+    { date: '2026-11-06',
       zh: "文法新增德文 A1：28 個文法點，從 sein／haben、der／die／das、動詞在第二位、第四格到情態動詞、可分動詞和現在完成式，每個都有說明、常見錯誤、有錄音的例句和小練習。",
       'zh-Hans': "语法新增德语 A1：28 个语法点，从 sein／haben、der／die／das、动词第二位、第四格到情态动词、可分动词和现在完成时，每个都有说明、常见错误、带录音的例句和小练习。",
       en: "Grammar adds German A1: 28 points, from sein / haben, der / die / das, the verb in second place and the accusative to modal verbs, separable verbs and the perfect tense — each with an explanation, common mistakes, recorded examples and a short practice.",

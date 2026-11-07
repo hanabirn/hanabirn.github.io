@@ -48,6 +48,7 @@ export async function grammarLevels(env, ui) {
 /* Korean "1급" … "6급" as the site shows them ("1 級", "Level 1" …) */
 function levelName(ui, level) {
     const m = /^(\d)급$/.exec(level || '');
+    if (level === 'JH' || level === 'SH') return siteT(ui, 'learn_level_' + level.toLowerCase());   // English 國中 / 高中
     return m ? siteT(ui, 'learn_level_n').replace('{n}', m[1]) : level;
 }
 
@@ -71,8 +72,10 @@ function gText(obj, ui) {
 
 /* the translation of a question or example: English for the Chinese lessons in a Chinese
    reply (a Chinese one would repeat the sentence), else in the visitor's language */
+// an English lesson in English: no "translation" (it is the sentence itself and gives the answer away)
 const translation = (lessonLang, obj, ui) =>
-    (lessonLang === 'zh' && (ui === 'zh' || ui === 'zhs') ? obj.en || '' : gText(obj, ui));
+    (lessonLang === 'zh' && (ui === 'zh' || ui === 'zhs') ? obj.en || ''
+        : lessonLang === 'en' && ui === 'en' ? '' : gText(obj, ui));
 
 /* Chinese lesson sentences are written in Traditional: Simplified for zhs visitors */
 const zhText = (lessonLang, text, ui) => (lessonLang === 'zh' && ui === 'zhs' ? toSimplified(text) : text);

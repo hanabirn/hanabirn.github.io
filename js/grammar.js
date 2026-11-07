@@ -52,6 +52,8 @@ function gText(obj) {
    shows the English instead. */
 function gHint(set, obj) {
     if (set && set.lang === 'zh' && (siteLang === 'zh' || siteLang === 'zh-Hans')) return obj.en || gText(obj);
+    // an English lesson in English: the "translation" is the sentence itself (and gives the answer away)
+    if (set && set.lang === 'en' && siteLang === 'en') return '';
     return gText(obj);
 }
 
@@ -150,6 +152,9 @@ function learnLevelName(level) {
     const m = /^(\d)급$/.exec(level || '');
     // the 8 Taiwan passages (Traditional, Taiwan wording) beside the Mainland HSK rounds (2026-10-30)
     if (level === 'TW HSK 1–2') return t('learn_level_tw_reading');
+    // English grammar is graded like Taiwan's schools (owner, 2026-11-06): 國中 / 高中
+    if (level === 'JH') return t('learn_level_jh');
+    if (level === 'SH') return t('learn_level_sh');
     return m ? t('learn_level_n', { n: m[1] }) : level;
 }
 
