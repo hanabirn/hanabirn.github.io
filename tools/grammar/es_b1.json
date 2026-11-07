@@ -1,0 +1,562 @@
+{
+  "id": "es_b1",
+  "lang": "es",
+  "level": "B1",
+  "order": 3,
+  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
+  "points": [
+    {
+      "id": "subj_forma",
+      "pattern": "presente de subjuntivo",
+      "title": {"zh": "虛擬式現在時的變化", "en": "Forming the present subjunctive"},
+      "form": {"zh": "yo 的現在式去掉 -o，換母音：-ar → -e（hable）、-er／-ir → -a（coma、viva）　不規則：ser → sea、ir → vaya、estar → esté、haber → haya、saber → sepa、dar → dé", "en": "yo present minus -o, swap the vowel: -ar → -e (hable), -er / -ir → -a (coma, viva) · irregular: sea, vaya, esté, haya, sepa, dé"},
+      "explain": {"zh": "虛擬式表示希望、情緒、懷疑或還沒發生的事，大多出現在 que 後面。從 yo 的現在式開始變，所以 tener → tengo → tenga、hacer → hago → haga。", "en": "The subjunctive marks wishes, feelings, doubt and things that haven't happened, mostly after que. Build it from the yo form: tener → tengo → tenga, hacer → hago → haga."},
+      "notes": [
+        {"zh": "變音動詞也跟著變：querer → quiera、poder → pueda（nosotros 不變：queramos）。", "en": "Stem changes carry over: quiera, pueda (not in nosotros: queramos)."}
+      ],
+      "mistakes": [
+        {"wrong": "Quiero que tú vienes.", "right": "Quiero que tú vengas.", "zh": "querer que 後面用虛擬式 vengas。", "en": "querer que takes the subjunctive: vengas."},
+        {"wrong": "Espero que sea bien.", "right": "Espero que esté bien.", "zh": "「好不好」的狀態用 estar → esté。", "en": "How someone is takes estar → esté."}
+      ],
+      "examples": [
+        {"text": "Quiero que me digas la verdad.", "zh": "我要你跟我說實話。", "en": "I want you to tell me the truth."},
+        {"text": "Es necesario que todos lleguen a tiempo.", "zh": "大家都必須準時到。", "en": "Everyone needs to arrive on time."},
+        {"text": "Espero que tengas un buen viaje.", "zh": "祝你旅途愉快。", "en": "I hope you have a good trip."}
+      ],
+      "quiz": [
+        {"q": "Mis padres quieren que yo（　）medicina.", "zh": "我爸媽希望我讀醫科。", "en": "My parents want me to study medicine.", "options": ["estudie", "estudio", "estudiaré", "estudiar"], "answer": 0},
+        {"q": "Espero que no（　）frío mañana.", "zh": "希望明天不會冷。", "en": "I hope it won't be cold tomorrow.", "options": ["haga", "hace", "hará", "hizo"], "answer": 0},
+        {"q": "Es importante que（　）la verdad.", "zh": "知道真相很重要。", "en": "It's important that you know the truth.", "options": ["sepas", "sabes", "sabrás", "sepes"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_deseo",
+      "pattern": "querer que・esperar que・ojalá",
+      "title": {"zh": "虛擬式：願望和要求", "en": "Subjunctive after wishes and requests"},
+      "form": {"zh": "querer／esperar／preferir／pedir／necesitar que ＋ 虛擬式・ojalá (que) ＋ 虛擬式", "en": "querer / esperar / preferir / pedir / necesitar que + subjunctive · ojalá (que) + subjunctive"},
+      "explain": {"zh": "想要「別人」做某事，que 後面用虛擬式：Te pido que me ayudes.（我請你幫我。）ojalá 是「但願」：¡Ojalá llueva!（但願會下雨！）", "en": "Wanting someone else to do something takes que + subjunctive: Te pido que me ayudes. ojalá means “let's hope”: ¡Ojalá llueva!"},
+      "notes": [
+        {"zh": "主詞相同時用原形：Quiero salir.（不是 Quiero que yo salga.）", "en": "Same subject: infinitive — Quiero salir, not Quiero que yo salga."}
+      ],
+      "mistakes": [
+        {"wrong": "Quiero que yo aprenda chino.", "right": "Quiero aprender chino.", "zh": "主詞相同用原形。", "en": "Same subject: infinitive."},
+        {"wrong": "Ojalá que hace sol mañana.", "right": "Ojalá que haga sol mañana.", "zh": "ojalá 後面用虛擬式。", "en": "ojalá takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Prefiero que cenemos en casa.", "zh": "我比較希望我們在家吃晚餐。", "en": "I'd rather we had dinner at home."},
+        {"text": "El médico me pide que descanse.", "zh": "醫生要我休息。", "en": "The doctor asks me to rest."},
+        {"text": "¡Ojalá aprobemos el examen!", "zh": "但願我們考試都過！", "en": "Let's hope we pass the exam!"}
+      ],
+      "quiz": [
+        {"q": "Te pido que（　）la puerta.", "zh": "請你關門。", "en": "Please close the door.", "options": ["cierres", "cierras", "cerrar", "cerrarás"], "answer": 0},
+        {"q": "¡Ojalá（　）pronto!", "zh": "但願你早點康復！", "en": "I hope you get better soon!", "options": ["te mejores", "te mejoras", "mejorarte", "te mejorarás"], "answer": 0},
+        {"q": "Necesito（　）un poco.", "zh": "我需要休息一下。", "en": "I need to rest a little.", "options": ["descansar", "que descanse", "descanse", "descanso"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_emocion",
+      "pattern": "me alegra que・me molesta que",
+      "title": {"zh": "虛擬式：情緒", "en": "Subjunctive after feelings"},
+      "form": {"zh": "me alegra／me molesta／me encanta／siento／tengo miedo de que ＋ 虛擬式", "en": "me alegra / me molesta / me encanta / siento / tengo miedo de que + subjunctive"},
+      "explain": {"zh": "對別人的行為或某件事表達情緒時，que 後面用虛擬式：Me alegra que estés aquí.（你在這裡我很高興。）Siento que no puedas venir.（很遺憾你不能來。）", "en": "Feelings about something or someone else take que + subjunctive: Me alegra que estés aquí. Siento que no puedas venir."},
+      "notes": [
+        {"zh": "主詞相同時用原形：Me alegra verte.（見到你我很高興。）", "en": "Same subject: infinitive — Me alegra verte."}
+      ],
+      "mistakes": [
+        {"wrong": "Me molesta que la gente habla en el cine.", "right": "Me molesta que la gente hable en el cine.", "zh": "情緒後面用虛擬式 hable。", "en": "A feeling takes the subjunctive: hable."},
+        {"wrong": "Me encanta que viajar.", "right": "Me encanta viajar.", "zh": "自己做的事直接接原形，不加 que。", "en": "For your own action: infinitive, no que."}
+      ],
+      "examples": [
+        {"text": "Me encanta que mis amigos vengan a casa.", "zh": "我很喜歡朋友來我家。", "en": "I love it when my friends come over."},
+        {"text": "Tengo miedo de que se pierda el perro.", "zh": "我怕狗會走丟。", "en": "I'm afraid the dog will get lost."},
+        {"text": "Siento mucho que estés enfermo.", "zh": "聽說你生病了，真遺憾。", "en": "I'm so sorry you're ill."}
+      ],
+      "quiz": [
+        {"q": "Me alegra que（　）bien.", "zh": "很高興你一切都好。", "en": "I'm glad you're well.", "options": ["estés", "estás", "estarás", "estar"], "answer": 0},
+        {"q": "Me molesta que mi hermano no（　）su cuarto.", "zh": "我很受不了我弟弟不整理房間。", "en": "It bothers me that my brother doesn't tidy his room.", "options": ["ordene", "ordena", "ordenar", "ordenará"], "answer": 0},
+        {"q": "Nos alegra（　）aquí con vosotros.", "zh": "很高興能在這裡跟你們在一起。", "en": "We're glad to be here with you.", "options": ["estar", "que estemos", "estemos", "que estamos"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_duda",
+      "pattern": "no creo que・dudo que",
+      "title": {"zh": "虛擬式：懷疑和否定的看法", "en": "Subjunctive after doubt and negative opinions"},
+      "form": {"zh": "no creo／no pienso que・dudo que・no es verdad que ＋ 虛擬式　（肯定的 creo que、pienso que ＋ 直陳式）", "en": "no creo / no pienso que · dudo que · no es verdad que + subjunctive (positive creo que, pienso que + indicative)"},
+      "explain": {"zh": "否定的看法和懷疑用虛擬式：No creo que llueva hoy.（我不認為今天會下雨。）肯定的看法用直陳式：Creo que va a llover.", "en": "Negative opinions and doubt take the subjunctive: No creo que llueva hoy. Positive opinions take the indicative: Creo que va a llover."},
+      "notes": [
+        {"zh": "es verdad que、está claro que 這種「確定」的說法用直陳式。", "en": "Certainty (es verdad que, está claro que) takes the indicative."}
+      ],
+      "mistakes": [
+        {"wrong": "Creo que sea una buena idea.", "right": "Creo que es una buena idea.", "zh": "肯定的 creo que 用直陳式。", "en": "Positive creo que takes the indicative."},
+        {"wrong": "No pienso que tiene razón.", "right": "No pienso que tenga razón.", "zh": "否定的看法用虛擬式。", "en": "A negative opinion takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Dudo que lleguemos a tiempo.", "zh": "我懷疑我們能準時到。", "en": "I doubt we'll arrive on time."},
+        {"text": "No creo que sea tan difícil.", "zh": "我不覺得有那麼難。", "en": "I don't think it's that hard."},
+        {"text": "Está claro que necesitamos ayuda.", "zh": "很明顯我們需要幫忙。", "en": "It's clear we need help."}
+      ],
+      "quiz": [
+        {"q": "No creo que Juan（　）la respuesta.", "zh": "我不覺得胡安知道答案。", "en": "I don't think Juan knows the answer.", "options": ["sepa", "sabe", "sabrá", "saber"], "answer": 0},
+        {"q": "Pienso que（　）una película muy buena.", "zh": "我覺得那是一部很好的電影。", "en": "I think it's a very good film.", "options": ["es", "sea", "fuera", "ser"], "answer": 0},
+        {"q": "Dudo que el tren（　）a la hora.", "zh": "我懷疑火車會準時到。", "en": "I doubt the train will arrive on time.", "options": ["llegue", "llega", "llegará", "llegar"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_impersonal",
+      "pattern": "es importante que・es mejor que",
+      "title": {"zh": "虛擬式：es ＋ 形容詞 ＋ que", "en": "Subjunctive after es + adjective + que"},
+      "form": {"zh": "es importante／necesario／mejor／normal／posible／una pena que ＋ 虛擬式　（一般性的說法 ＋ 原形：Es importante dormir bien.）", "en": "es importante / necesario / mejor / normal / posible / una pena que + subjunctive (general: + infinitive — Es importante dormir bien.)"},
+      "explain": {"zh": "評價或必要性指向特定的人時，用 que ＋ 虛擬式：Es mejor que vayas en metro.（你最好搭地鐵去。）泛指所有人時用原形：Es mejor ir en metro.", "en": "When a judgement is about someone in particular, use que + subjunctive: Es mejor que vayas en metro. In general, the infinitive: Es mejor ir en metro."},
+      "notes": [
+        {"zh": "es cierto／evidente／seguro que 表示確定，用直陳式。", "en": "es cierto / evidente / seguro que show certainty: indicative."}
+      ],
+      "mistakes": [
+        {"wrong": "Es posible que va a llover.", "right": "Es posible que llueva.", "zh": "es posible que 後面用虛擬式。", "en": "es posible que takes the subjunctive."},
+        {"wrong": "Es una pena que no vienes.", "right": "Es una pena que no vengas.", "zh": "es una pena que 後面用虛擬式。", "en": "es una pena que takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Es normal que estés nervioso antes del examen.", "zh": "考試前緊張是正常的。", "en": "It's normal for you to be nervous before the exam."},
+        {"text": "Es posible que lleguen tarde.", "zh": "他們可能會遲到。", "en": "They may arrive late."},
+        {"text": "Es importante beber mucha agua en verano.", "zh": "夏天多喝水很重要。", "en": "It's important to drink lots of water in summer."}
+      ],
+      "quiz": [
+        {"q": "Es mejor que（　）un taxi, es tarde.", "zh": "已經很晚了，你最好搭計程車。", "en": "You'd better take a taxi, it's late.", "options": ["tomes", "tomas", "tomar", "tomarás"], "answer": 0},
+        {"q": "Es evidente que el equipo（　）mejor este año.", "zh": "很明顯球隊今年表現比較好。", "en": "It's obvious the team is playing better this year.", "options": ["juega", "juegue", "jugara", "jugar"], "answer": 0},
+        {"q": "Es necesario（　）el pasaporte para viajar.", "zh": "出國旅行需要護照。", "en": "You need a passport to travel.", "options": ["tener", "que tengas", "tengas", "tienes"], "answer": 0}
+      ]
+    },
+    {
+      "id": "subj_finalidad",
+      "pattern": "para que・antes de que",
+      "title": {"zh": "接虛擬式的連接詞：para que、antes de que", "en": "para que, antes de que + subjunctive"},
+      "form": {"zh": "para que（為了讓）・antes de que（在…之前）・sin que（而沒有）・a no ser que（除非）＋ 虛擬式", "en": "para que (so that) · antes de que (before) · sin que (without) · a no ser que (unless) + subjunctive"},
+      "explain": {"zh": "這些連接詞後面一定接虛擬式：Te lo explico para que lo entiendas.（我解釋給你聽，好讓你懂。）主詞相同時用原形：Estudio para aprobar.", "en": "These always take the subjunctive: Te lo explico para que lo entiendas. With the same subject, use the infinitive: Estudio para aprobar."},
+      "notes": [
+        {"zh": "después de que 說未來或習慣時也用虛擬式。", "en": "después de que also takes the subjunctive for the future."}
+      ],
+      "mistakes": [
+        {"wrong": "Hablo despacio para que me entiendes.", "right": "Hablo despacio para que me entiendas.", "zh": "para que 後面用虛擬式。", "en": "para que takes the subjunctive."},
+        {"wrong": "Llámame antes de que sales.", "right": "Llámame antes de salir.", "zh": "主詞相同用 antes de ＋ 原形。", "en": "Same subject: antes de + infinitive."}
+      ],
+      "examples": [
+        {"text": "Te dejo mi coche para que vayas a la boda.", "zh": "我把車借你，讓你去參加婚禮。", "en": "I'll lend you my car so you can go to the wedding."},
+        {"text": "Vamos a limpiar antes de que lleguen los invitados.", "zh": "我們在客人到之前打掃一下。", "en": "Let's clean up before the guests arrive."},
+        {"text": "Salió sin que nadie lo viera.", "zh": "他在沒有人看到的情況下離開了。", "en": "He left without anyone seeing him."}
+      ],
+      "quiz": [
+        {"q": "Te escribo la dirección para que no te（　）.", "zh": "我把地址寫給你，免得你迷路。", "en": "I'll write down the address so you don't get lost.", "options": ["pierdas", "pierdes", "perder", "perderás"], "answer": 0},
+        {"q": "Recoge la ropa antes de que（　）.", "zh": "在下雨前把衣服收進來。", "en": "Bring the washing in before it rains.", "options": ["llueva", "llueve", "lloverá", "llover"], "answer": 0},
+        {"q": "Ahorro dinero para（　）un coche.", "zh": "我存錢買車。", "en": "I'm saving to buy a car.", "options": ["comprar", "que compre", "compre", "compro"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cuando_subj",
+      "pattern": "cuando ＋ subjuntivo",
+      "title": {"zh": "cuando ＋ 虛擬式：等…的時候", "en": "cuando + subjunctive for the future"},
+      "form": {"zh": "說未來：cuando／en cuanto／hasta que ＋ 虛擬式・說習慣或過去：＋ 直陳式", "en": "future: cuando / en cuanto / hasta que + subjunctive · habits or past: + indicative"},
+      "explain": {"zh": "西班牙文說「等…的時候（未來）」，cuando 後面用虛擬式，不用未來式：Cuando llegues, llámame.（你到了就打給我。）說習慣用直陳式：Cuando llego a casa, ceno.", "en": "For a future “when”, cuando takes the subjunctive, never the future: Cuando llegues, llámame. For habits, the indicative: Cuando llego a casa, ceno."},
+      "notes": [
+        {"zh": "問句的 ¿cuándo? 後面用直陳式或未來式：¿Cuándo vendrás?", "en": "Question ¿cuándo? takes the indicative or future: ¿Cuándo vendrás?"}
+      ],
+      "mistakes": [
+        {"wrong": "Cuando tendré tiempo, te visitaré.", "right": "Cuando tenga tiempo, te visitaré.", "zh": "cuando 說未來用虛擬式，不用未來式。", "en": "Future cuando takes the subjunctive, not the future."},
+        {"wrong": "Espera aquí hasta que vuelvo.", "right": "Espera aquí hasta que vuelva.", "zh": "還沒發生的事，hasta que 用虛擬式。", "en": "Not yet happened: hasta que + subjunctive."}
+      ],
+      "examples": [
+        {"text": "Cuando sea mayor, quiero vivir en el campo.", "zh": "等我長大，我想住在鄉下。", "en": "When I grow up, I want to live in the country."},
+        {"text": "En cuanto termine, te ayudo.", "zh": "我一做完就幫你。", "en": "As soon as I finish, I'll help you."},
+        {"text": "Cuando era niño, iba a la playa cada verano.", "zh": "我小時候每年夏天都去海邊。", "en": "When I was a child, I went to the beach every summer."}
+      ],
+      "quiz": [
+        {"q": "Cuando（　）a Madrid, visitaré el Prado.", "zh": "等我去馬德里時，會去參觀普拉多美術館。", "en": "When I go to Madrid, I'll visit the Prado.", "options": ["vaya", "voy", "iré", "fuera"], "answer": 0},
+        {"q": "Siempre me ducho cuando（　）del gimnasio.", "zh": "我從健身房回來都會洗澡。", "en": "I always shower when I get back from the gym.", "options": ["vuelvo", "vuelva", "volveré", "volviera"], "answer": 0},
+        {"q": "No me voy hasta que me（　）la verdad.", "zh": "你不跟我說實話，我就不走。", "en": "I'm not leaving until you tell me the truth.", "options": ["digas", "dices", "dirás", "decir"], "answer": 0}
+      ]
+    },
+    {
+      "id": "pluscuamperfecto",
+      "pattern": "había hecho",
+      "title": {"zh": "愈過去完成式：過去的過去", "en": "The pluperfect"},
+      "form": {"zh": "haber 的未完成過去式（había・habías・había・habíamos・habíais・habían）＋ 過去分詞", "en": "imperfect of haber (había · habías · había · habíamos · habíais · habían) + past participle"},
+      "explain": {"zh": "說「在過去某件事之前已經發生」的事：Cuando llegué, la película ya había empezado.（我到的時候，電影已經開始了。）", "en": "For something that had already happened before another past event: Cuando llegué, la película ya había empezado."},
+      "notes": [
+        {"zh": "常和 ya（已經）、nunca antes（以前從沒）一起用。", "en": "Often with ya and nunca antes."}
+      ],
+      "mistakes": [
+        {"wrong": "Me dijo que perdió las llaves antes de salir.", "right": "Me dijo que había perdido las llaves antes de salir.", "zh": "比「說」更早發生，用愈過去完成式。", "en": "It happened before he said it: pluperfect."},
+        {"wrong": "Nunca había estuvo en Japón.", "right": "Nunca había estado en Japón.", "zh": "había 後面接過去分詞 estado。", "en": "había takes the participle: estado."}
+      ],
+      "examples": [
+        {"text": "Nunca había visto tanta nieve.", "zh": "我從來沒看過這麼多雪。", "en": "I had never seen so much snow."},
+        {"text": "Cuando llamé, ya se habían ido.", "zh": "我打電話時，他們已經走了。", "en": "When I called, they had already left."},
+        {"text": "Encontré el libro que habías perdido.", "zh": "我找到你弄丟的那本書了。", "en": "I found the book you had lost."}
+      ],
+      "quiz": [
+        {"q": "Cuando llegamos, el tren ya（　）.", "zh": "我們到的時候，火車已經開走了。", "en": "When we arrived, the train had already left.", "options": ["había salido", "ha salido", "salía", "habría salido"], "answer": 0},
+        {"q": "Antes de este viaje, nunca（　）en avión.", "zh": "這次旅行之前，我從沒坐過飛機。", "en": "Before this trip, I had never flown.", "options": ["había volado", "volaba", "he volado", "había volé"], "answer": 0},
+        {"q": "Estaba cansada porque（　）toda la noche.", "zh": "她很累，因為她工作了一整晚。", "en": "She was tired because she had worked all night.", "options": ["había trabajado", "ha trabajado", "trabaja", "habrá trabajado"], "answer": 0}
+      ]
+    },
+    {
+      "id": "imperf_subj",
+      "pattern": "imperfecto de subjuntivo",
+      "title": {"zh": "虛擬式過去時的變化", "en": "Forming the imperfect subjunctive"},
+      "form": {"zh": "ellos 的簡單過去式去掉 -ron ＋ -ra・-ras・-ra・-ramos・-rais・-ran（hablaron → hablara、tuvieron → tuviera、fueron → fuera）", "en": "ellos preterite minus -ron + -ra · -ras · -ra · -ramos · -rais · -ran (hablara, tuviera, fuera)"},
+      "explain": {"zh": "虛擬式過去時用在過去的願望、要求，以及「如果…」的假設：Quería que vinieras.（我那時希望你來。）從 ellos 的簡單過去式變出來，所以不規則的也一樣：dijeron → dijera。", "en": "Used for past wishes and requests, and for unreal conditions: Quería que vinieras. It comes from the ellos preterite, irregulars included: dijeron → dijera."},
+      "notes": [
+        {"zh": "nosotros 的形要加重音：habláramos、tuviéramos。", "en": "nosotros takes an accent: habláramos, tuviéramos."},
+        {"zh": "主句是過去式時，que 後面的虛擬式也用過去時：Me pidió que lo ayudara.", "en": "After a past main verb, the subjunctive goes past too: Me pidió que lo ayudara."}
+      ],
+      "mistakes": [
+        {"wrong": "Quería que vengas a mi fiesta.", "right": "Quería que vinieras a mi fiesta.", "zh": "主句是過去式，用虛擬式過去時。", "en": "A past main verb takes the imperfect subjunctive."},
+        {"wrong": "Me pidió que lo hacera.", "right": "Me pidió que lo hiciera.", "zh": "hacer → hicieron → hiciera。", "en": "hacer → hicieron → hiciera."}
+      ],
+      "examples": [
+        {"text": "Mi madre me pidió que comprara pan.", "zh": "我媽媽叫我去買麵包。", "en": "My mother asked me to buy bread."},
+        {"text": "No creía que fuera tan fácil.", "zh": "我沒想到會這麼簡單。", "en": "I didn't think it would be so easy."},
+        {"text": "El profesor quería que leyéramos más.", "zh": "老師希望我們多讀書。", "en": "The teacher wanted us to read more."}
+      ],
+      "quiz": [
+        {"q": "Te dije que（　）temprano.", "zh": "我跟你說過要早點來。", "en": "I told you to come early.", "options": ["vinieras", "vengas", "vienes", "venías"], "answer": 0},
+        {"q": "Me alegró que（　）el premio.", "zh": "你得獎讓我很高興。", "en": "I was glad you won the prize.", "options": ["ganaras", "ganes", "ganas", "ganarías"], "answer": 0},
+        {"q": "Nos pidieron que（　）silencio.", "zh": "他們要我們保持安靜。", "en": "They asked us to keep quiet.", "options": ["hiciéramos", "hagamos", "hacíamos", "hiciéramos de"], "answer": 0}
+      ]
+    },
+    {
+      "id": "si_imperf",
+      "pattern": "si tuviera …, …ría",
+      "title": {"zh": "與現在事實相反的假設", "en": "Unreal conditions: si + imperfect subjunctive"},
+      "form": {"zh": "si ＋ 虛擬式過去時, 條件式：Si tuviera tiempo, viajaría más.", "en": "si + imperfect subjunctive, conditional: Si tuviera tiempo, viajaría más."},
+      "explain": {"zh": "說「如果是這樣的話就會…」但現在不是或不太可能：Si fuera rico, compraría una isla.（如果我有錢，就會買一座島。）si 後面不能用條件式。", "en": "For unreal or unlikely situations: Si fuera rico, compraría una isla. Never put the conditional right after si."},
+      "notes": [
+        {"zh": "可能發生的條件用 si ＋ 現在式：Si tengo tiempo, iré.", "en": "Real possibilities use si + present: Si tengo tiempo, iré."}
+      ],
+      "mistakes": [
+        {"wrong": "Si tendría dinero, viajaría.", "right": "Si tuviera dinero, viajaría.", "zh": "si 後面用虛擬式過去時，不用條件式。", "en": "After si: imperfect subjunctive, not conditional."},
+        {"wrong": "Si yo era tú, lo haría.", "right": "Si yo fuera tú, lo haría.", "zh": "假設用 fuera，不用 era。", "en": "Unreal conditions take fuera, not era."}
+      ],
+      "examples": [
+        {"text": "Si viviera cerca del mar, nadaría todos los días.", "zh": "如果我住在海邊，就會每天游泳。", "en": "If I lived near the sea, I'd swim every day."},
+        {"text": "¿Qué harías si ganaras la lotería?", "zh": "如果你中了樂透，你會做什麼？", "en": "What would you do if you won the lottery?"},
+        {"text": "Si yo fuera tú, hablaría con ella.", "zh": "如果我是你，我會去跟她談談。", "en": "If I were you, I'd talk to her."}
+      ],
+      "quiz": [
+        {"q": "Si（　）más tiempo, aprendería japonés.", "zh": "如果我有更多時間，就會學日文。", "en": "If I had more time, I'd learn Japanese.", "options": ["tuviera", "tendría", "tengo", "tenía"], "answer": 0},
+        {"q": "Si hiciera buen tiempo, （　）a la playa.", "zh": "如果天氣好，我們就會去海邊。", "en": "If the weather were good, we'd go to the beach.", "options": ["iríamos", "iremos", "fuéramos", "vamos"], "answer": 0},
+        {"q": "Si（　）tú, no compraría ese coche.", "zh": "如果我是你，我不會買那台車。", "en": "If I were you, I wouldn't buy that car.", "options": ["fuera", "era", "sería", "soy"], "answer": 0}
+      ]
+    },
+    {
+      "id": "futuro_probabilidad",
+      "pattern": "estará en casa",
+      "title": {"zh": "未來式表示猜測", "en": "The future for guessing"},
+      "form": {"zh": "未來式 ＝ 對現在的猜測（estará、tendrá、serán）・條件式 ＝ 對過去的猜測（estaría、serían）", "en": "future = a guess about the present (estará, tendrá, serán) · conditional = a guess about the past (estaría, serían)"},
+      "explain": {"zh": "西班牙文常用未來式猜測現在的情況：¿Dónde está Ana? – Estará en el trabajo.（她大概在上班吧。）猜過去的事用條件式：Serían las diez cuando llegó.（他到的時候大概十點吧。）", "en": "Spanish often uses the future to guess about now: ¿Dónde está Ana? – Estará en el trabajo. For a guess about the past, the conditional: Serían las diez cuando llegó."},
+      "notes": [
+        {"zh": "也常用來表示疑惑：¿Qué hora será?（現在幾點了呢？）", "en": "It also wonders: ¿Qué hora será?"}
+      ],
+      "mistakes": [
+        {"wrong": "No sé dónde está Ana. Estaría en casa ahora.", "right": "No sé dónde está Ana. Estará en casa.", "zh": "猜現在用未來式，條件式是猜過去。", "en": "A guess about now takes the future; the conditional guesses about the past."},
+        {"wrong": "¿Cuántos años tendrá ayer?", "right": "¿Cuántos años tendría entonces?", "zh": "猜過去的事用條件式。", "en": "A guess about the past takes the conditional."}
+      ],
+      "examples": [
+        {"text": "Tendrá unos cuarenta años.", "zh": "他大概四十歲左右吧。", "en": "He must be about forty."},
+        {"text": "¿Quién será a estas horas?", "zh": "這麼晚了會是誰啊？", "en": "Who could it be at this hour?"},
+        {"text": "Estaría cansado, por eso no vino.", "zh": "他大概是累了，所以沒來。", "en": "He was probably tired — that's why he didn't come."}
+      ],
+      "quiz": [
+        {"q": "Llaman a la puerta. ¿Quién（　）?", "zh": "有人在敲門，會是誰呢？", "en": "Someone's at the door. Who could it be?", "options": ["será", "sea", "fuera", "ser"], "answer": 0},
+        {"q": "No ha venido. （　）enfermo.", "zh": "他沒來，大概是生病了。", "en": "He hasn't come. He must be ill.", "options": ["Estará", "Esté", "Estaba de", "Estar"], "answer": 0},
+        {"q": "Cuando nos conocimos,（　）veinte años.", "zh": "我們認識的時候，我大概二十歲吧。", "en": "When we met, I'd have been about twenty.", "options": ["tendría", "tendré", "tenga", "tuviera"], "answer": 0}
+      ]
+    },
+    {
+      "id": "estilo_indirecto",
+      "pattern": "Dijo que …",
+      "title": {"zh": "間接引述", "en": "Reported speech"},
+      "form": {"zh": "說話動詞是過去式時：現在式 → 未完成過去式・簡單過去式 → 愈過去完成式・未來式 → 條件式・命令式 → que ＋ 虛擬式過去時", "en": "with a past reporting verb: present → imperfect · preterite → pluperfect · future → conditional · command → que + imperfect subjunctive"},
+      "explain": {"zh": "轉述別人說過的話時，時態要往過去退：«Estoy cansada» → Dijo que estaba cansada. 轉述命令用 que ＋ 虛擬式：«Ven» → Me dijo que fuera.", "en": "When reporting, the tense moves back: Dijo que estaba cansada. Reported orders take que + subjunctive: Me dijo que fuera."},
+      "notes": [
+        {"zh": "時間詞也要換：mañana → al día siguiente、hoy → ese día、aquí → allí。", "en": "Time words change: mañana → al día siguiente, hoy → ese día, aquí → allí."}
+      ],
+      "mistakes": [
+        {"wrong": "Me dijo que vendrá mañana.", "right": "Me dijo que vendría al día siguiente.", "zh": "說話是過去式，未來式改成條件式。", "en": "After a past verb, the future becomes the conditional."},
+        {"wrong": "La profesora nos dijo que estudiamos más.", "right": "La profesora nos dijo que estudiáramos más.", "zh": "轉述命令用虛擬式。", "en": "A reported order takes the subjunctive."}
+      ],
+      "examples": [
+        {"text": "Ana me contó que se había mudado a Sevilla.", "zh": "安娜跟我說她搬到塞維亞了。", "en": "Ana told me she had moved to Seville."},
+        {"text": "Dijeron que llegarían tarde.", "zh": "他們說會晚到。", "en": "They said they'd arrive late."},
+        {"text": "Mi padre me pidió que no llegara tarde.", "zh": "我爸爸要我別太晚回家。", "en": "My father asked me not to be late."}
+      ],
+      "quiz": [
+        {"q": "Luis dijo que（　）hambre.", "zh": "路易斯說他餓了。", "en": "Luis said he was hungry.", "options": ["tenía", "tenga", "tendrá", "tuviera de"], "answer": 0},
+        {"q": "Me prometió que me（　）.", "zh": "他答應會打電話給我。", "en": "He promised he would call me.", "options": ["llamaría", "llamará", "llame", "llamara de"], "answer": 0},
+        {"q": "El médico me dijo que（　）más.", "zh": "醫生叫我多休息。", "en": "The doctor told me to rest more.", "options": ["descansara", "descansaba", "descanso", "descansaré"], "answer": 0}
+      ]
+    },
+    {
+      "id": "relativos_lo_que",
+      "pattern": "lo que・el que・quien",
+      "title": {"zh": "關係詞 lo que、el que、quien", "en": "Relatives: lo que, el que, quien"},
+      "form": {"zh": "lo que（…的事／東西）・el／la／los／las que（…的那個人／那個）・介系詞 ＋ quien（人）／el que（人或物）", "en": "lo que (what, the thing that) · el / la / los / las que (the one that) · preposition + quien (people) / el que (people or things)"},
+      "explain": {"zh": "lo que 表示「…的事」：No entiendo lo que dices.（我不懂你說的。）el que 指前面提過或說話雙方都知道的人事物：Mi coche es el que está allí.（我的車是停在那裡的那台。）介系詞後面常用 el que／quien：la chica con la que salgo。", "en": "lo que means “what”: No entiendo lo que dices. el que is “the one that”: Mi coche es el que está allí. After prepositions use el que / quien: la chica con la que salgo."},
+      "notes": [
+        {"zh": "lo que 也可以指前面整句話：Llegó tarde, lo que molestó a todos.", "en": "lo que can refer to a whole clause: Llegó tarde, lo que molestó a todos."}
+      ],
+      "mistakes": [
+        {"wrong": "Haz que quieras.", "right": "Haz lo que quieras.", "zh": "「…的事」要用 lo que。", "en": "“What(ever)” is lo que."},
+        {"wrong": "El chico con que hablé es mi primo.", "right": "El chico con el que hablé es mi primo.", "zh": "介系詞後面用 el que 或 quien。", "en": "After a preposition: el que or quien."}
+      ],
+      "examples": [
+        {"text": "Lo que más me gusta de Taiwán es la comida.", "zh": "我最喜歡台灣的就是食物。", "en": "What I like most about Taiwan is the food."},
+        {"text": "Los que quieran venir, que levanten la mano.", "zh": "想來的人請舉手。", "en": "Those who want to come, raise your hand."},
+        {"text": "Es la amiga de quien te hablé.", "zh": "這就是我跟你提過的那位朋友。", "en": "She's the friend I told you about."}
+      ],
+      "quiz": [
+        {"q": "No me gusta（　）has hecho.", "zh": "我不喜歡你做的事。", "en": "I don't like what you've done.", "options": ["lo que", "que", "el que", "cual"], "answer": 0},
+        {"q": "Esta es la casa en（　）nací.", "zh": "這是我出生的房子。", "en": "This is the house I was born in.", "options": ["la que", "lo que", "quien", "el cual que"], "answer": 0},
+        {"q": "El profesor con（　）estudio es de Chile.", "zh": "教我的那位老師是智利人。", "en": "The teacher I study with is from Chile.", "options": ["quien", "que", "lo que", "cual"], "answer": 0}
+      ]
+    },
+    {
+      "id": "cuyo",
+      "pattern": "cuyo・cuya",
+      "title": {"zh": "關係形容詞 cuyo：…的", "en": "The relative cuyo — whose"},
+      "form": {"zh": "名詞 ＋ cuyo／cuya／cuyos／cuyas ＋ 被擁有的東西（cuyo 配合後面的名詞）", "en": "noun + cuyo / cuya / cuyos / cuyas + what is owned (cuyo agrees with what follows)"},
+      "explain": {"zh": "cuyo 表示「…的」，連接擁有者和被擁有的東西：Tengo un amigo cuya madre es piloto.（我有個朋友，他媽媽是機師。）cuyo 的性別數量跟後面的名詞一致，不是跟擁有者。", "en": "cuyo means “whose”: Tengo un amigo cuya madre es piloto. It agrees with the thing owned, not with the owner."},
+      "notes": [
+        {"zh": "口語常改說 que su …，但書面語要用 cuyo。", "en": "Speech sometimes says que su …, but writing needs cuyo."}
+      ],
+      "mistakes": [
+        {"wrong": "Es un escritor cuyo novelas son famosas.", "right": "Es un escritor cuyas novelas son famosas.", "zh": "cuyo 配合後面的 novelas：cuyas。", "en": "cuyo agrees with novelas: cuyas."},
+        {"wrong": "El niño cuyo el perro se perdió.", "right": "El niño cuyo perro se perdió.", "zh": "cuyo 後面不加冠詞。", "en": "No article after cuyo."}
+      ],
+      "examples": [
+        {"text": "Es una ciudad cuyo centro histórico es precioso.", "zh": "那是一座舊城區很美的城市。", "en": "It's a city whose old town is beautiful."},
+        {"text": "Conocí a una chica cuyos padres son de Taiwán.", "zh": "我認識一個女生，她爸媽是台灣人。", "en": "I met a girl whose parents are from Taiwan."},
+        {"text": "El autor, cuya obra estudiamos, vivió en México.", "zh": "我們研究的那位作者住過墨西哥。", "en": "The author, whose work we study, lived in Mexico."}
+      ],
+      "quiz": [
+        {"q": "Es un pintor（　）cuadros están en el museo.", "zh": "他是一位作品收藏在博物館的畫家。", "en": "He's a painter whose paintings are in the museum.", "options": ["cuyos", "cuyo", "cuyas", "que sus los"], "answer": 0},
+        {"q": "La empresa,（　）director es japonés, abrió una oficina aquí.", "zh": "那家公司的主管是日本人，在這裡開了辦公室。", "en": "The company, whose director is Japanese, opened an office here.", "options": ["cuyo", "cuya", "la cual", "que el"], "answer": 0},
+        {"q": "Ayudé a una señora（　）maleta era muy pesada.", "zh": "我幫了一位行李很重的女士。", "en": "I helped a lady whose suitcase was very heavy.", "options": ["cuya", "cuyo", "cuyas", "la que su"], "answer": 0}
+      ]
+    },
+    {
+      "id": "lo_adjetivo",
+      "pattern": "lo bueno・lo importante",
+      "title": {"zh": "lo ＋ 形容詞：…的地方、…的是", "en": "lo + adjective"},
+      "form": {"zh": "lo ＋ 形容詞（陽性單數）＝ 抽象的「…的事／部分」：lo bueno、lo malo、lo importante、lo mejor", "en": "lo + masculine singular adjective = the … thing / part: lo bueno, lo malo, lo importante, lo mejor"},
+      "explain": {"zh": "lo 加上形容詞，把它變成一個抽象的概念：Lo bueno de vivir aquí es la tranquilidad.（住在這裡的好處是安靜。）Lo importante es participar.（重要的是參與。）", "en": "lo + adjective turns it into an idea: Lo bueno de vivir aquí es la tranquilidad. Lo importante es participar."},
+      "notes": [
+        {"zh": "lo ＋ 形容詞 ＋ que 表示「多麼…」：No sabes lo difícil que es.（你不知道那有多難。）", "en": "lo + adjective + que means “how …”: No sabes lo difícil que es."}
+      ],
+      "mistakes": [
+        {"wrong": "El importante es la salud.", "right": "Lo importante es la salud.", "zh": "抽象的「重要的事」用 lo。", "en": "The abstract “important thing” takes lo."},
+        {"wrong": "Lo buena de este piso es la luz.", "right": "Lo bueno de este piso es la luz.", "zh": "lo 後面的形容詞用陽性單數。", "en": "After lo, the adjective is masculine singular."}
+      ],
+      "examples": [
+        {"text": "Lo malo es que no tenemos tiempo.", "zh": "糟糕的是我們沒有時間。", "en": "The bad thing is that we don't have time."},
+        {"text": "Lo mejor del viaje fue la comida.", "zh": "這趟旅行最棒的是食物。", "en": "The best thing about the trip was the food."},
+        {"text": "No te imaginas lo cansada que estoy.", "zh": "你想像不到我有多累。", "en": "You can't imagine how tired I am."}
+      ],
+      "quiz": [
+        {"q": "（　）difícil es empezar.", "zh": "困難的是開始。", "en": "The hard part is getting started.", "options": ["Lo", "El", "La", "Le"], "answer": 0},
+        {"q": "Lo（　）de esta ciudad es el clima.", "zh": "這座城市最好的地方是氣候。", "en": "The best thing about this city is the climate.", "options": ["mejor", "mejores", "más bien", "bueno más"], "answer": 0},
+        {"q": "No sabes lo（　）que es mi abuela.", "zh": "你不知道我奶奶有多可愛。", "en": "You don't know how sweet my grandmother is.", "options": ["simpática", "simpático", "simpáticas", "simpatía"], "answer": 0}
+      ]
+    },
+    {
+      "id": "pasiva",
+      "pattern": "ser ＋ participio・se vende",
+      "title": {"zh": "被動語態：ser ＋ 過去分詞和 se", "en": "The passive: ser + participle and se"},
+      "form": {"zh": "ser（任何時態）＋ 過去分詞（配合主詞）＋ por ＋ 做的人・口語多用 se ＋ 第三人稱動詞（se construyó）", "en": "ser (any tense) + participle (agreeing) + por + doer · in speech, se + third-person verb (se construyó)"},
+      "explain": {"zh": "強調被做的東西時用被動語態：El puente fue construido en 1900.（這座橋建於 1900 年。）說出做的人用 por。日常不說是誰做的時，更常用 se：Se construyó en 1900.", "en": "Use the passive to focus on what was done: El puente fue construido en 1900. Name the doer with por. When the doer doesn't matter, se is more common: Se construyó en 1900."},
+      "notes": [
+        {"zh": "estar ＋ 過去分詞表示結果的狀態：La tienda está cerrada.（店是關著的。）", "en": "estar + participle shows the resulting state: La tienda está cerrada."}
+      ],
+      "mistakes": [
+        {"wrong": "La novela fue escrito por García Márquez.", "right": "La novela fue escrita por García Márquez.", "zh": "分詞要配合陰性的 novela。", "en": "The participle agrees with feminine novela."},
+        {"wrong": "Se vende pisos.", "right": "Se venden pisos.", "zh": "pisos 是複數，動詞用複數。", "en": "pisos is plural: the verb is too."}
+      ],
+      "examples": [
+        {"text": "América fue descubierta por los europeos en 1492.", "zh": "美洲在 1492 年被歐洲人發現。", "en": "America was discovered by Europeans in 1492."},
+        {"text": "Los resultados serán publicados mañana.", "zh": "結果明天公布。", "en": "The results will be published tomorrow."},
+        {"text": "En esta tienda se reparan móviles.", "zh": "這家店修手機。", "en": "Phones are repaired in this shop."}
+      ],
+      "quiz": [
+        {"q": "Estas fotos fueron（　）por mi abuelo.", "zh": "這些照片是我爺爺拍的。", "en": "These photos were taken by my grandfather.", "options": ["hechas", "hechos", "hecha", "hacer"], "answer": 0},
+        {"q": "El ladrón fue detenido（　）la policía.", "zh": "小偷被警察逮捕了。", "en": "The thief was arrested by the police.", "options": ["por", "para", "de", "con"], "answer": 0},
+        {"q": "Aquí（　）las entradas para el concierto.", "zh": "演唱會門票在這裡賣。", "en": "Tickets for the concert are sold here.", "options": ["se venden", "se vende", "venden se", "es vendido"], "answer": 0}
+      ]
+    },
+    {
+      "id": "verbos_cambio",
+      "pattern": "ponerse・volverse・hacerse・quedarse",
+      "title": {"zh": "表示「變得」的動詞", "en": "Verbs of change: become"},
+      "form": {"zh": "ponerse ＋ 形容詞（暫時的情緒、狀態）・volverse（性格大變）・hacerse ＋ 名詞／形容詞（靠努力或漸漸變成）・quedarse（結果、留下的狀態）", "en": "ponerse + adjective (passing mood / state) · volverse (deep change) · hacerse (through effort, gradually) · quedarse (resulting state)"},
+      "explain": {"zh": "中文都說「變得」，西班牙文分得很細：Se puso nervioso.（他緊張起來了。）Se hizo médico.（他成為醫生。）Se quedó sin dinero.（他沒錢了。）Se volvió muy egoísta.（他變得很自私。）", "en": "Spanish has several verbs for “become”: Se puso nervioso. Se hizo médico. Se quedó sin dinero. Se volvió muy egoísta."},
+      "notes": [
+        {"zh": "臉色、心情這種一下子的變化最常用 ponerse：ponerse rojo、ponerse triste。", "en": "Quick changes of colour or mood: ponerse rojo, ponerse triste."}
+      ],
+      "mistakes": [
+        {"wrong": "Se puso abogado después de estudiar.", "right": "Se hizo abogado después de estudiar.", "zh": "靠努力成為某種職業用 hacerse。", "en": "Becoming a professional through effort: hacerse."},
+        {"wrong": "Cuando lo vio, se hizo rojo.", "right": "Cuando lo vio, se puso rojo.", "zh": "臉一下子紅了用 ponerse。", "en": "Blushing is a quick change: ponerse."}
+      ],
+      "examples": [
+        {"text": "Me pongo nerviosa antes de hablar en público.", "zh": "我在公開說話前會緊張。", "en": "I get nervous before speaking in public."},
+        {"text": "Mi abuelo se quedó ciego a los ochenta.", "zh": "我爺爺八十歲時失明了。", "en": "My grandfather went blind at eighty."},
+        {"text": "Con los años se ha vuelto más tranquilo.", "zh": "隨著年紀增長，他變得比較沉穩了。", "en": "Over the years he's become calmer."}
+      ],
+      "quiz": [
+        {"q": "Cuando oyó la noticia, se（　）muy triste.", "zh": "聽到消息時，他變得很難過。", "en": "When he heard the news, he became very sad.", "options": ["puso", "hizo", "quedó de", "volvió a"], "answer": 0},
+        {"q": "Después de muchos años de trabajo, se（　）rico.", "zh": "經過多年努力，他變有錢了。", "en": "After years of work, he became rich.", "options": ["hizo", "puso", "quedó de", "pone"], "answer": 0},
+        {"q": "Nos（　）sin batería en medio del viaje.", "zh": "旅途中我們的手機沒電了。", "en": "Our batteries ran out in the middle of the trip.", "options": ["quedamos", "pusimos", "hicimos", "volvimos"], "answer": 0}
+      ]
+    },
+    {
+      "id": "se_accidental",
+      "pattern": "se me olvidó・se le cayó",
+      "title": {"zh": "非故意的 se：se me olvidó", "en": "Accidental se: se me olvidó"},
+      "form": {"zh": "se ＋ me／te／le／nos／os／les ＋ 動詞（跟著東西變）：se me olvidó、se le cayeron、se nos rompió", "en": "se + me / te / le / nos / os / les + verb (agrees with the thing): se me olvidó, se le cayeron, se nos rompió"},
+      "explain": {"zh": "說「不小心發生在某人身上」的事，西班牙文讓東西當主詞：Se me olvidaron las llaves.（我把鑰匙忘了。）Se le rompió el móvil.（他的手機摔壞了。）這樣聽起來不是故意的。", "en": "For things that happen to you by accident, the thing becomes the subject: Se me olvidaron las llaves. Se le rompió el móvil. It sounds unintentional."},
+      "notes": [
+        {"zh": "常見：olvidarse、caerse、romperse、perderse、acabarse、quemarse。", "en": "Common: olvidarse, caerse, romperse, perderse, acabarse, quemarse."}
+      ],
+      "mistakes": [
+        {"wrong": "Se me olvidó las entradas.", "right": "Se me olvidaron las entradas.", "zh": "動詞跟著 entradas 用複數。", "en": "The verb agrees with entradas."},
+        {"wrong": "Me se cayó el vaso.", "right": "Se me cayó el vaso.", "zh": "se 放在最前面。", "en": "se comes first."}
+      ],
+      "examples": [
+        {"text": "Se me olvidó tu cumpleaños, ¡lo siento!", "zh": "我忘了你的生日，抱歉！", "en": "I forgot your birthday — sorry!"},
+        {"text": "Se nos acabó la leche.", "zh": "我們的牛奶喝完了。", "en": "We've run out of milk."},
+        {"text": "A mi hijo se le cayó un diente.", "zh": "我兒子掉了一顆牙。", "en": "My son lost a tooth."}
+      ],
+      "quiz": [
+        {"q": "Se me（　）las gafas en el tren.", "zh": "我把眼鏡忘在火車上了。", "en": "I left my glasses on the train.", "options": ["olvidaron", "olvidó", "olvidé", "olvidamos"], "answer": 0},
+        {"q": "¡Cuidado! Se te（　）a caer el plato.", "zh": "小心！盤子快掉了。", "en": "Careful! You're going to drop the plate.", "options": ["va", "vas", "van", "voy"], "answer": 0},
+        {"q": "A Laura（　）rompió la pantalla del móvil.", "zh": "蘿拉的手機螢幕摔破了。", "en": "Laura's phone screen broke.", "options": ["se le", "le se", "se la", "la se"], "answer": 0}
+      ]
+    },
+    {
+      "id": "aunque",
+      "pattern": "aunque ＋ indicativo／subjuntivo",
+      "title": {"zh": "aunque：雖然／即使", "en": "aunque — although / even if"},
+      "form": {"zh": "aunque ＋ 直陳式（雖然，事實）・aunque ＋ 虛擬式（即使，不確定或不重要）", "en": "aunque + indicative (although — a fact) · aunque + subjunctive (even if — unknown or doesn't matter)"},
+      "explain": {"zh": "aunque 後面用直陳式表示確定的事實：Aunque llueve, salimos.（雖然在下雨，我們還是出門。）用虛擬式表示不確定：Aunque llueva, saldremos.（即使下雨，我們也會出門。）", "en": "With the indicative it states a fact: Aunque llueve, salimos. With the subjunctive it's “even if”: Aunque llueva, saldremos."},
+      "notes": [
+        {"zh": "aunque 和 pero 不一起用。", "en": "Don't use aunque and pero together."}
+      ],
+      "mistakes": [
+        {"wrong": "Aunque estoy cansado, pero voy a ir.", "right": "Aunque estoy cansado, voy a ir.", "zh": "aunque 和 pero 只能選一個。", "en": "Use either aunque or pero."},
+        {"wrong": "Aunque me lo pidas mil veces ayer, no lo hice.", "right": "Aunque me lo pediste mil veces, no lo hice.", "zh": "過去已經發生的事實用直陳式。", "en": "A past fact takes the indicative."}
+      ],
+      "examples": [
+        {"text": "Aunque es caro, vale la pena.", "zh": "雖然貴，但很值得。", "en": "Although it's expensive, it's worth it."},
+        {"text": "No te lo diré aunque me lo preguntes.", "zh": "就算你問我，我也不會說。", "en": "I won't tell you even if you ask me."},
+        {"text": "Aunque no lo creas, nunca he comido sushi.", "zh": "也許你不信，我從沒吃過壽司。", "en": "Believe it or not, I've never had sushi."}
+      ],
+      "quiz": [
+        {"q": "Aunque（　）mañana, iremos de excursión.", "zh": "即使明天下雨，我們也會去郊遊。", "en": "Even if it rains tomorrow, we'll go on the trip.", "options": ["llueva", "lloverá", "llovía", "llover"], "answer": 0},
+        {"q": "Aunque（　）mucho, no aprobó.", "zh": "雖然他很用功，還是沒通過。", "en": "Although he studied a lot, he didn't pass.", "options": ["estudió", "estudie", "estudiara de", "estudiar"], "answer": 0},
+        {"q": "Iré a la fiesta（　）no me inviten.", "zh": "就算他們沒邀請我，我也要去派對。", "en": "I'll go to the party even if they don't invite me.", "options": ["aunque", "porque", "pero", "si no"], "answer": 0}
+      ]
+    },
+    {
+      "id": "conectores_b1",
+      "pattern": "sin embargo・por lo tanto・además・en cambio",
+      "title": {"zh": "連接詞：然而、因此、而且、相反地", "en": "Connectors: however, therefore, also, on the other hand"},
+      "form": {"zh": "sin embargo（然而）・por lo tanto／por eso（因此）・además（而且）・en cambio（相反地）・es decir（也就是說）・por un lado … por otro（一方面…另一方面）", "en": "sin embargo · por lo tanto / por eso · además · en cambio · es decir · por un lado … por otro"},
+      "explain": {"zh": "這些詞讓文章段落更清楚，常放在句首、後面加逗號：El hotel era caro; sin embargo, la habitación era pequeña. Mi hermano es tímido; en cambio, yo hablo con todos.", "en": "These make paragraphs clearer and usually start the sentence with a comma: El hotel era caro; sin embargo, la habitación era pequeña. Mi hermano es tímido; en cambio, yo hablo con todos."},
+      "notes": [
+        {"zh": "por eso 比較口語，por lo tanto 比較正式。", "en": "por eso is everyday; por lo tanto more formal."}
+      ],
+      "mistakes": [
+        {"wrong": "Estudié mucho. Sin embargo, aprobé con buena nota.", "right": "Estudié mucho. Por eso, aprobé con buena nota.", "zh": "前後是因果，不是轉折，用 por eso。", "en": "It's cause and effect, not contrast: por eso."},
+        {"wrong": "Es barato, además es malo.", "right": "Es barato; sin embargo, es malo.", "zh": "前後意思相反，用 sin embargo。", "en": "Opposite ideas take sin embargo."}
+      ],
+      "examples": [
+        {"text": "Me gusta la ciudad; además, la gente es muy amable.", "zh": "我喜歡這座城市，而且人很友善。", "en": "I like the city; also, the people are very friendly."},
+        {"text": "No tenía dinero; por lo tanto, no pudo viajar.", "zh": "他沒錢，因此沒辦法旅行。", "en": "He had no money; therefore, he couldn't travel."},
+        {"text": "En invierno hace frío; en cambio, el verano es muy húmedo.", "zh": "冬天很冷，相反地，夏天很潮濕。", "en": "Winter is cold; summer, on the other hand, is very humid."}
+      ],
+      "quiz": [
+        {"q": "El examen era difícil;（　）, todos aprobaron.", "zh": "考試很難，然而大家都過了。", "en": "The exam was hard; however, everyone passed.", "options": ["sin embargo", "por lo tanto", "además", "es decir"], "answer": 0},
+        {"q": "Perdí el autobús;（　）, llegué tarde.", "zh": "我錯過公車，因此遲到了。", "en": "I missed the bus; therefore, I was late.", "options": ["por lo tanto", "en cambio", "sin embargo", "aunque"], "answer": 0},
+        {"q": "Yo prefiero la montaña; mi novia,（　）, prefiere el mar.", "zh": "我比較喜歡山，我女朋友則比較喜歡海。", "en": "I prefer the mountains; my girlfriend, on the other hand, prefers the sea.", "options": ["en cambio", "además", "por eso", "es decir"], "answer": 0}
+      ]
+    },
+    {
+      "id": "verbos_prep_es",
+      "pattern": "pensar en・soñar con・depender de",
+      "title": {"zh": "搭配介系詞的動詞", "en": "Verbs with prepositions"},
+      "form": {"zh": "pensar en・soñar con・depender de・acordarse de・enamorarse de・casarse con・confiar en・tratar de ＋ 原形", "en": "pensar en · soñar con · depender de · acordarse de · enamorarse de · casarse con · confiar en · tratar de + infinitive"},
+      "explain": {"zh": "很多動詞固定搭配某個介系詞，跟中文、英文都不一樣，要一起背：Pienso en ti.（我在想你。）Sueño con viajar.（我夢想去旅行。）Depende del tiempo.（要看天氣。）", "en": "Many verbs take a fixed preposition — learn them together: Pienso en ti. Sueño con viajar. Depende del tiempo."},
+      "notes": [
+        {"zh": "介系詞後面接動詞時用原形：Trato de dormir.", "en": "After a preposition the verb is an infinitive: Trato de dormir."}
+      ],
+      "mistakes": [
+        {"wrong": "Me casé a Pedro en 2020.", "right": "Me casé con Pedro en 2020.", "zh": "「跟某人結婚」是 casarse con。", "en": "“Marry someone” is casarse con."},
+        {"wrong": "No me acuerdo su nombre.", "right": "No me acuerdo de su nombre.", "zh": "acordarse 要接 de。", "en": "acordarse takes de."}
+      ],
+      "examples": [
+        {"text": "Siempre sueño con mi casa de la infancia.", "zh": "我常夢到小時候的家。", "en": "I often dream about my childhood home."},
+        {"text": "¿Puedo confiar en ti?", "zh": "我可以相信你嗎？", "en": "Can I trust you?"},
+        {"text": "Trata de llegar antes de las ocho.", "zh": "盡量八點前到。", "en": "Try to arrive before eight."}
+      ],
+      "quiz": [
+        {"q": "¿En qué（　）pensando?", "zh": "你在想什麼？", "en": "What are you thinking about?", "options": ["estás", "piensas", "es", "eres"], "answer": 0},
+        {"q": "El precio depende（　）la temporada.", "zh": "價格要看季節。", "en": "The price depends on the season.", "options": ["de", "en", "con", "a"], "answer": 0},
+        {"q": "Se enamoró（　）una chica de Valencia.", "zh": "他愛上了一個瓦倫西亞的女生。", "en": "He fell in love with a girl from Valencia.", "options": ["de", "con", "en", "a"], "answer": 0}
+      ]
+    },
+    {
+      "id": "al_infinitivo",
+      "pattern": "al ＋ 原形",
+      "title": {"zh": "al ＋ 原形：一…就、在…的時候", "en": "al + infinitive — on / when doing"},
+      "form": {"zh": "al ＋ 動詞原形 ＝ cuando ＋ 變化的動詞（主詞通常相同）", "en": "al + infinitive = cuando + conjugated verb (usually the same subject)"},
+      "explain": {"zh": "al ＋ 原形表示「在…的時候、一…就」，比 cuando 子句簡潔：Al llegar a casa, me di cuenta de que no tenía las llaves.（一到家，我就發現沒帶鑰匙。）", "en": "al + infinitive means “on doing / when”, shorter than a cuando clause: Al llegar a casa, me di cuenta de que no tenía las llaves."},
+      "notes": [
+        {"zh": "反身動詞的代名詞接在原形後面：al levantarme。", "en": "Reflexive pronouns attach: al levantarme."}
+      ],
+      "mistakes": [
+        {"wrong": "Al llegué, cené.", "right": "Al llegar, cené.", "zh": "al 後面用原形。", "en": "al takes the infinitive."},
+        {"wrong": "Al me levantar, tomo café.", "right": "Al levantarme, tomo café.", "zh": "代名詞接在原形後面。", "en": "The pronoun attaches to the infinitive."}
+      ],
+      "examples": [
+        {"text": "Al salir del cine, empezó a llover.", "zh": "我們一走出電影院就開始下雨了。", "en": "As we left the cinema, it started to rain."},
+        {"text": "Apaga la luz al salir, por favor.", "zh": "離開時請關燈。", "en": "Please turn off the light when you leave."},
+        {"text": "Al verme, sonrió.", "zh": "他一看到我就笑了。", "en": "When he saw me, he smiled."}
+      ],
+      "quiz": [
+        {"q": "Al（　）la noticia, se puso a llorar.", "zh": "一聽到消息，她就哭了。", "en": "On hearing the news, she started crying.", "options": ["oír", "oyó", "oye", "oyendo"], "answer": 0},
+        {"q": "（　）, me lavo los dientes.", "zh": "我一起床就刷牙。", "en": "When I get up, I brush my teeth.", "options": ["Al levantarme", "Al me levanto", "Al levanto me", "A levantarme"], "answer": 0},
+        {"q": "Cierra la puerta（　）entrar.", "zh": "進來時把門關上。", "en": "Close the door when you come in.", "options": ["al", "a la", "en", "por"], "answer": 0}
+      ]
+    },
+    {
+      "id": "quizas",
+      "pattern": "quizás・tal vez・a lo mejor",
+      "title": {"zh": "表示「也許」：quizás、tal vez、a lo mejor", "en": "Maybe: quizás, tal vez, a lo mejor"},
+      "form": {"zh": "quizás／tal vez ＋ 虛擬式（比較不確定）或直陳式・a lo mejor ＋ 直陳式（口語）", "en": "quizás / tal vez + subjunctive (less sure) or indicative · a lo mejor + indicative (spoken)"},
+      "explain": {"zh": "quizás、tal vez 後面可以用虛擬式或直陳式，用虛擬式比較沒把握：Quizás venga mañana.（他也許明天會來。）a lo mejor 後面只能用直陳式：A lo mejor viene mañana.", "en": "quizás and tal vez take either mood — the subjunctive sounds less sure: Quizás venga mañana. a lo mejor takes only the indicative: A lo mejor viene mañana."},
+      "notes": [
+        {"zh": "放在動詞後面時用直陳式：Viene quizás mañana.", "en": "After the verb, use the indicative: Viene quizás mañana."}
+      ],
+      "mistakes": [
+        {"wrong": "A lo mejor llueva esta tarde.", "right": "A lo mejor llueve esta tarde.", "zh": "a lo mejor 後面用直陳式。", "en": "a lo mejor takes the indicative."},
+        {"wrong": "Tal vez que vengan.", "right": "Tal vez vengan.", "zh": "tal vez 後面不加 que。", "en": "No que after tal vez."}
+      ],
+      "examples": [
+        {"text": "Tal vez tengas razón.", "zh": "也許你說得對。", "en": "Maybe you're right."},
+        {"text": "A lo mejor nos vemos en la fiesta.", "zh": "說不定我們會在派對上見面。", "en": "Maybe we'll see each other at the party."},
+        {"text": "Quizás sea mejor esperar.", "zh": "也許等一下比較好。", "en": "Perhaps it's better to wait."}
+      ],
+      "quiz": [
+        {"q": "A lo mejor（　）tarde.", "zh": "他們說不定會遲到。", "en": "They might be late.", "options": ["llegan", "lleguen", "llegar", "llegaran de"], "answer": 0},
+        {"q": "Tal vez（　）un error.", "zh": "也許那是個錯誤。", "en": "Perhaps it's a mistake.", "options": ["sea", "que sea", "a ser", "ser"], "answer": 0},
+        {"q": "（　）vaya al cine esta noche, no sé.", "zh": "我今晚也許會去看電影，還不確定。", "en": "Maybe I'll go to the cinema tonight, I don't know.", "options": ["Quizás", "A lo mejor", "Tal vez que", "Si"], "answer": 0}
+      ]
+    }
+  ]
+}
