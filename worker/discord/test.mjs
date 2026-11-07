@@ -212,7 +212,8 @@ try {
     }
     check(buttons((await press(buttons(r.edited).find(b => b.custom_id?.startsWith('ta:')).custom_id, '902')).edited).length > 0, 'its answers work');
     r = await sub('grammar', 'study', { language: 'en' }, '903');
-    check(/準備中/.test(r.edited.content), 'a language without grammar: ' + r.edited.content);
+    // every language has grammar since English 國中 (2026-11-06): its level shows as 國中, not JH
+    check(/國中/.test(JSON.stringify(r.edited)) && !/JH/.test(JSON.stringify(r.edited)), 'English grammar: the level is called 國中');
 
     for (const [word, language] of [['agua', 'es'], ['食べる', undefined], ['house', undefined], ['學生', undefined], ['qwxzv', 'fr']]) {
         r = await command('dictionary', language ? { word, language } : { word });
