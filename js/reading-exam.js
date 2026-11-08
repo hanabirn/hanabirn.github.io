@@ -465,6 +465,9 @@ function readingExamHtml(set) {
         const subNext = own.length > 1 && j < own.length - 1 && (reveal || pick !== -1)
             ? `<p class="rdx-sub-next"><button type="button" class="btn back-btn" onclick="readingExamSub(${own[j + 1].i})">${escHtml(t('rdx_next_sub', { n: own[j + 1].x.n }))}</button></p>` : '';
         const ok = readingExOk(q, pick);
+        // answered: 下一小題 sits in the 答對了 / 答案是 row, not in its own row under the explanation (2026-11-08 —
+        // a German / Japanese explanation pushed C1's long-text questions to 970px at 1080p)
+        const fbRow = fb => subNext ? `<div class="rdx-fb-row">${fb}${subNext}</div>` : fb;
         // a written answer (HSK 7–9): a box of SHORT_MAX characters; practice sends it with 送出 / Enter,
         // a mock keeps whatever is typed until 交卷
         const written = q.answers ? `<div class="rdx-short">
@@ -474,17 +477,17 @@ function readingExamHtml(set) {
                 ${!z.mock && !reveal ? `<button type="button" class="btn next-btn rdx-short-go" onclick="readingExamWrite(${o.i})">${escHtml(t('rdx_short_send'))}</button>` : ''}
             </div>` : '';
         const feedback = !reveal ? '' : q.answers
-            ? `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('rdx_short_ref', { a: q.answers[0] }))}</p>
+            ? `${fbRow(`<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('rdx_short_ref', { a: q.answers[0] }))}</p>`)}
                 ${ok && pick && typeof pick === 'object' && pick.self ? `<p class="rd-meta">${escHtml(t('rdx_short_ref', { a: q.answers[0] }))}</p>` : ''}
                 ${!ok && !z.mock && pick !== -1 ? `<p class="rdx-self"><button type="button" class="mode-btn" onclick="readingExamSelf(${o.i})">${escHtml(t('rdx_short_self'))}</button></p>` : ''}
                 <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`
-            : `<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('listening_wrong', { n: lang === 'zh' || READING_CEFR.includes(lang) ? marks[q.answer] : q.answer + 1 }))}</p>
+            : `${fbRow(`<p class="grammar-feedback ${ok ? 'ok' : 'no'}">${escHtml(ok ? t('correct') : t('listening_wrong', { n: lang === 'zh' || READING_CEFR.includes(lang) ? marks[q.answer] : q.answer + 1 }))}</p>`)}
                 <div class="ls-why">${escHtml(readingExWhy(set, q))}</div>`;
         return `<div class="rdx-q${j === sub ? '' : ' rdx-q-off'}">
             ${own.length > 1 || q.q ? `<div class="rdx-qhead"><span class="rdx-no">${o.x.n}.</span>${own.length > 1 && asks.length > 1 ? `<span lang="${lang}">${escHtml(readingAskText(q.ask))}</span>` : ''}${q.q ? `<span lang="${lang}">${item.type === 'zh_text' ? '★ ' : ''}${readingExField(q.q, q.q_t)}</span>` : ''}</div>` : ''}
             ${q.answers ? written : `<div class="rdx-opts${bankItem ? ' rdx-opts-letters' : short && q.options.length === 3 ? ' rdx-opts-3' : short ? ' rdx-opts-2' : ''}">${opts}</div>`}
             ${feedback}
-            ${subNext}
+            ${reveal ? '' : subNext}
         </div>`;
     }).join('');
     const subTabs = own.length > 1 ? `<div class="rdx-subtabs" role="tablist">${own.map((o, j) => {

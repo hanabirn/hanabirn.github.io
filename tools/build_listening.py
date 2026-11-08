@@ -202,7 +202,7 @@ def text_of(s, words, where, problems, lang, short=False):
     return segs, plain, said
 
 
-def hsk_pic(spec, row, problems, where):
+def hsk_pic(spec, row, problems, where, lang='zh'):
     """an HSK picture (cols × rows panels, drawn like the reading ones; build_reading.hsk_pic_prompt):
     its file id, size, the row whose panels are this item's options (zh_pic3), captions, drawn or not"""
     n = spec.get('cols', 0) * spec.get('rows', 0)
@@ -211,7 +211,7 @@ def hsk_pic(spec, row, problems, where):
         return None
     f = hsk_pic_id(spec)
     return {'f': f, 'kind': 'cells' if row is not None else 'sheet', 'cols': spec['cols'], 'rows': spec['rows'],
-            **({'row': row} if row is not None else {}), 'cap': spec['cap'], 'drawn': (HSK_IMG / f'{f}.webp').exists()}
+            **({'row': row} if row is not None else {}), 'cap': spec['cap'], 'drawn': (HSK_IMG.parent / lang / f'{f}.webp').exists()}
 
 
 def spoken(line, where, words, problems, lang, jobs, number=None):
@@ -338,7 +338,9 @@ def build(src, problems, jobs):
                 if not spec:
                     problems.append(f'{where}: {typ} needs "pic": {{"name": …}} of the set\'s "pics"')
                 else:
-                    zpic = hsk_pic(spec, ref.get('row') if typ in ('zh_pic3', 'en_pic3') else None, problems, where)
+                    if typ == 'en_pic3':
+                        spec = dict(spec, style='en')      # British look, files in img/en
+                    zpic = hsk_pic(spec, ref.get('row') if typ in ('zh_pic3', 'en_pic3') else None, problems, where, lang)
                     if typ in ('zh_pic3', 'en_pic3') and not (zpic and 0 <= ref.get('row', -1) < spec['rows'] and spec['cols'] == 3):
                         problems.append(f'{where}: zh_pic3 takes a row of a picture 3 panels wide')
             n_opts = None

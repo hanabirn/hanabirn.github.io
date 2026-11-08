@@ -31,7 +31,8 @@ PRICE_IMG_BATCH = 30 / 1e6
 PRICE_IN_BATCH = 0.25 / 1e6
 WORK = ROOT / 'tools' / '.mockups' / 'hsk_pics'
 JOB = WORK / 'batch.json'
-DIRS = {'reading': ROOT / 'data' / 'reading' / 'img' / 'zh', 'listening': ROOT / 'data' / 'listening' / 'img' / 'zh'}
+DIRS = {'reading': ROOT / 'data' / 'reading' / 'img' / 'zh', 'listening': ROOT / 'data' / 'listening' / 'img' / 'zh',
+        'listening-en': ROOT / 'data' / 'listening' / 'img' / 'en'}
 API = 'https://generativelanguage.googleapis.com/v1beta/'
 
 
@@ -48,6 +49,12 @@ def pictures():
         for st in json.loads(f.read_text(encoding='utf-8')).get('sets', []):
             for name, pic in (st.get('pics') or {}).items():
                 out.append((hsk_pic_id(pic), 'listening', f'{f.stem}/{st["id"]} {name}', pic))
+    # Cambridge English Part 1 (en_pic3) pictures, British look (2026-11-08)
+    for f in sorted((ROOT / 'tools' / 'listening').glob('en_*.json')):
+        for st in json.loads(f.read_text(encoding='utf-8')).get('sets', []):
+            for name, pic in (st.get('pics') or {}).items():
+                pic = dict(pic, style='en')
+                out.append((hsk_pic_id(pic), 'listening-en', f'{f.stem}/{st["id"]} {name}', pic))
     uniq = []
     for p in out:
         if p[0] not in seen:

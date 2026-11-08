@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-08',
+      zh: "英文 A2、B1、B2、C1（劍橋考試格式）的閱讀和聽力各加了第 2、3 回，現在每個級別都有 3 回，聽力全部有錄音，解說也有日、韓、俄、法、西、德文。A2 和 B1 聽力第 1 部分的看圖題也畫好圖了，不用再看文字說明。",
+      'zh-Hans': "英语 A2、B1、B2、C1（剑桥考试格式）的阅读和听力各加了第 2、3 回，现在每个级别都有 3 回，听力全部有录音，解说也有日、韩、俄、法、西、德语。A2 和 B1 听力第 1 部分的看图题也画好图了，不用再看文字说明。",
+      en: "English A2, B1, B2 and C1 (Cambridge exam format) reading and listening each add rounds 2 and 3, so every level now has 3 rounds, with every listening recording in place and explanations also in Japanese, Korean, Russian, French, Spanish and German. The picture questions in Part 1 of A2 and B1 listening now have drawn pictures instead of text descriptions.",
+      ja: "英語 A2・B1・B2・C1（ケンブリッジ試験形式）の読解と聴解に第 2・3 回を追加し、各レベル 3 回分になりました。聴解はすべて音声付きで、解説は日本語・韓国語・ロシア語・フランス語・スペイン語・ドイツ語でも読めます。A2 と B1 の聴解 Part 1 の絵の問題にもイラストが付き、文字の説明ではなくなりました。",
+      ko: "영어 A2·B1·B2·C1(케임브리지 시험 형식) 읽기와 듣기에 2·3회가 추가되어, 이제 모든 단계가 3회분이에요. 듣기는 모두 녹음이 있고, 해설은 일본어·한국어·러시아어·프랑스어·스페인어·독일어로도 볼 수 있어요. A2와 B1 듣기 Part 1의 그림 문제에도 그림이 생겨서 글 설명 대신 그림을 보면 돼요.",
+      ru: "В английском A2, B1, B2 и C1 (формат кембриджских экзаменов) к чтению и аудированию добавлены варианты 2 и 3 — теперь на каждом уровне по 3 варианта, все записи на месте, а пояснения есть и на японском, корейском, русском, французском, испанском и немецком. В заданиях с картинками в части 1 аудирования A2 и B1 теперь нарисованы картинки вместо текстовых описаний.",
+      fr: "La lecture et l’écoute en anglais A2, B1, B2 et C1 (format des examens de Cambridge) gagnent les séries 2 et 3 : chaque niveau en compte désormais 3, avec tous les enregistrements et des explications aussi en japonais, coréen, russe, français, espagnol et allemand. Les questions à images de la partie 1 de l’écoute A2 et B1 ont maintenant de vrais dessins au lieu de descriptions.",
+      es: "La lectura y la comprensión auditiva de inglés A2, B1, B2 y C1 (formato de los exámenes de Cambridge) suman las rondas 2 y 3: cada nivel tiene ya 3 rondas, con todas las grabaciones y explicaciones también en japonés, coreano, ruso, francés, español y alemán. Las preguntas con imágenes de la parte 1 de audición de A2 y B1 ya tienen dibujos en lugar de descripciones.",
+      de: "Lesen und Hören für Englisch A2, B1, B2 und C1 (Format der Cambridge-Prüfungen) haben jetzt Durchgang 2 und 3 – jede Stufe hat damit 3 Durchgänge, alle Aufnahmen sind vorhanden, und die Erklärungen gibt es auch auf Japanisch, Koreanisch, Russisch, Französisch, Spanisch und Deutsch. Die Bildaufgaben in Teil 1 des Hörens A2 und B1 haben jetzt gezeichnete Bilder statt Textbeschreibungen." },
     { date: '2026-11-07',
       zh: "俄文 B2、C1 的閱讀和聽力照官方 ТРКИ-2／ТРКИ-3 範例卷的格式補齊了：各有 3 回，每回閱讀 25 題、聽力 25 題，聽力全部有錄音，每個字都標了重音，解說也有日、韓、法、西、德文。另外，小題很多的閱讀題，題號在電腦上會排成一行，作答後也能一頁看完。",
       'zh-Hans': "俄语 B2、C1 的阅读和听力按官方 ТРКИ-2／ТРКИ-3 样卷的格式补齐了：各有 3 回，每回阅读 25 题、听力 25 题，听力全部有录音，每个词都标了重音，解说也有日、韩、法、西、德语。另外，小题很多的阅读题，题号在电脑上会排成一行，作答后也能一页看完。",

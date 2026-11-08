@@ -407,6 +407,11 @@ LETTERS = 'ABCDEFGHIJ'       # G: HSK 7–9's seven sentences; H: Cambridge B1's
 HSK_PIC_STYLE = ('Black-and-white line illustration in the style of a Chinese language proficiency test booklet (HSK): '
                  'clean even ink outlines, light gray flat shading only, simple friendly people of everyday modern China, '
                  'plain white background. Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
+# Cambridge English Part 1 pictures (en_pic3, 2026-11-08): the same layout, a British test-booklet look —
+# a spec with "style": "en" (added by build_listening.py and build_hsk_pics.py, not written in the source)
+EN_PIC_STYLE = ('Black-and-white line illustration in the style of a Cambridge English exam booklet: '
+                'clean even ink outlines, light gray flat shading only, simple friendly people of everyday modern Britain, '
+                'plain white background. Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
 HSK_PIC_DIR = ROOT / 'data' / 'reading' / 'img' / 'zh'
 
 
@@ -418,7 +423,8 @@ def hsk_pic_prompt(pic):
     where = [('Center' if d == 'Middle-' and a == 'Middle' else d + a.lower() if d else a) for d in down for a in across]
     grid = (f'A {cols}x{rows} grid of {cols * rows} equal panels' if rows > 1 else f'{cols} equal panels side by side in one row')
     return (grid + ' separated by thin black lines, with a thin black frame around each panel. '
-            + ' '.join(f'{w}: {p}.' for w, p in zip(where, pic['panels'])) + ' ' + HSK_PIC_STYLE,
+            + ' '.join(f'{w}: {p}.' for w, p in zip(where, pic['panels'])) + ' '
+            + (EN_PIC_STYLE if pic.get('style') == 'en' else HSK_PIC_STYLE),
             {(3, 3): '1:1', (3, 2): '3:2', (3, 1): '21:9', (2, 2): '1:1', (2, 1): '16:9'}.get((cols, rows), '1:1'))
 
 
