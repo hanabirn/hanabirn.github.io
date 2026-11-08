@@ -3,7 +3,1391 @@
   "lang": "zh",
   "level": "HSK 2",
   "order": 3,
-  "note": "HSK 2 reading rounds in the 新版HSK (2025-12) format, Mainland edition (Simplified, Mainland wording; owner's plan 2026-10-30): 第一部分 看句子配图 ×5, 第二部分 选词填空 ×5, 第三部分 上下句配对 ×10 (two groups of 5, six sentences each), 第四部分 读句子回答问题 (3 options) ×5; the mock exam is 25 minutes. Original texts, words within HSK 1–2. Pictures: data/reading/img/zh/<id>.webp, drawn by tools/build_hsk_pics.py.",
+  "note": "HSK 2 reading rounds in the 新版HSK (2025-12) format, Mainland edition (Simplified, Mainland wording; owner's plan 2026-10-30): 第一部分 看句子配图 ×5, 第二部分 选词填空 ×5, 第三部分 上下句配对 ×10 (two groups of 5, six sentences each), 第四部分 读句子回答问题 (3 options) ×5; the mock exam is 25 minutes. Original texts, words within HSK 1–2. Pictures: data/reading/img/zh/<id>.webp, drawn by tools/build_hsk_pics.py. Short passages: tools/.mockups/zh_hsk2_passages.py (add_passages.py; rerun it after regenerating the sets).",
+  "passages_simplified": true,
+  "passages": [
+    {
+      "id": "new-flat",
+      "topic": "home",
+      "title": {
+        "text": "搬家",
+        "zh": "",
+        "en": "Moving house"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "上个星期我们搬家了。",
+            "新家离我的学校很近，走路只要十分钟。"
+          ],
+          "zh": "",
+          "en": "Last week we moved. Our new home is very close to my school — only ten minutes on foot."
+        },
+        {
+          "s": [
+            "新家比旧家大，有两个房间是朝南的，所以很亮。",
+            "我的房间在左边，窗户外面能看到一个小公园。"
+          ],
+          "zh": "",
+          "en": "The new home is bigger than the old one; two rooms face south, so they are bright. My room is on the left, and from the window you can see a small park."
+        },
+        {
+          "s": [
+            "搬家那天很累，可是邻居们都来帮忙。",
+            "晚上我们请他们吃了饭。"
+          ],
+          "zh": "",
+          "en": "Moving day was tiring, but the neighbours all came to help. In the evening we invited them to dinner."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "搬家",
+          "r": "",
+          "zh": "",
+          "en": "to move house"
+        },
+        {
+          "w": "离",
+          "r": "",
+          "zh": "",
+          "en": "away from"
+        },
+        {
+          "w": "走路",
+          "r": "",
+          "zh": "",
+          "en": "to walk"
+        },
+        {
+          "w": "旧",
+          "r": "",
+          "zh": "",
+          "en": "old (not new)"
+        },
+        {
+          "w": "亮",
+          "r": "",
+          "zh": "",
+          "en": "bright"
+        },
+        {
+          "w": "左边",
+          "r": "",
+          "zh": "",
+          "en": "left side"
+        },
+        {
+          "w": "累",
+          "r": "",
+          "zh": "",
+          "en": "tired"
+        },
+        {
+          "w": "邻居",
+          "r": "",
+          "zh": "",
+          "en": "neighbour",
+          "m": [
+            "邻居们"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "新家离学校怎么样？",
+          "options": [
+            "很远",
+            "很近",
+            "在学校里",
+            "不知道"
+          ],
+          "answer": 1,
+          "zh": "「離我的學校很近」。",
+          "en": "Very close."
+        },
+        {
+          "q": "走路到学校要多长时间？",
+          "options": [
+            "五分钟",
+            "十分钟",
+            "半个小时",
+            "一个小时"
+          ],
+          "answer": 1,
+          "zh": "「只要十分鐘」。",
+          "en": "Ten minutes."
+        },
+        {
+          "q": "为什么两个房间很亮？",
+          "options": [
+            "朝南",
+            "有很多灯",
+            "很大",
+            "是新的"
+          ],
+          "answer": 0,
+          "zh": "「朝南的，所以很亮」。",
+          "en": "They face south."
+        },
+        {
+          "q": "从他的窗户能看到什么？",
+          "options": [
+            "学校",
+            "医院",
+            "商店",
+            "一个小公园"
+          ],
+          "answer": 3,
+          "zh": "「能看到一個小公園」。",
+          "en": "A small park."
+        },
+        {
+          "q": "搬家那天谁来帮忙了？",
+          "options": [
+            "同学们",
+            "老师",
+            "邻居们",
+            "没有人"
+          ],
+          "answer": 2,
+          "zh": "「鄰居們都來幫忙」。",
+          "en": "The neighbours."
+        }
+      ],
+      "tf": [
+        {
+          "s": "新家比旧家小。",
+          "answer": false,
+          "zh": "×：比舊家大。",
+          "en": "False: bigger."
+        },
+        {
+          "s": "搬家那天他很累。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "晚上他们请邻居吃饭了。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "noodles",
+      "topic": "food",
+      "title": {
+        "text": "一碗面条",
+        "zh": "",
+        "en": "A bowl of noodles"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我家附近有一个小饭馆，那儿的牛肉面特别好吃。",
+            "老板是一位五十多岁的叔叔。"
+          ],
+          "zh": "",
+          "en": "There's a small restaurant near my home whose beef noodles are especially good. The owner is a man in his fifties."
+        },
+        {
+          "s": [
+            "他每天早上五点就开始做面条，所以面条又新鲜又香。",
+            "一碗面只要十五块钱，学生们都很喜欢。"
+          ],
+          "zh": "",
+          "en": "He starts making noodles at five every morning, so they are fresh and fragrant. A bowl costs only fifteen yuan, and the students love it."
+        },
+        {
+          "s": [
+            "上个月饭馆关门了一个星期，因为叔叔生病了。",
+            "他回来的那天，饭馆门口排了很长的队。"
+          ],
+          "zh": "",
+          "en": "Last month the restaurant closed for a week because the owner was ill. On the day he came back there was a long queue outside."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "附近",
+          "r": "",
+          "zh": "",
+          "en": "nearby"
+        },
+        {
+          "w": "饭馆",
+          "r": "",
+          "zh": "",
+          "en": "small restaurant"
+        },
+        {
+          "w": "特别",
+          "r": "",
+          "zh": "",
+          "en": "especially"
+        },
+        {
+          "w": "老板",
+          "r": "",
+          "zh": "",
+          "en": "boss, owner"
+        },
+        {
+          "w": "新鲜",
+          "r": "",
+          "zh": "",
+          "en": "fresh"
+        },
+        {
+          "w": "香",
+          "r": "",
+          "zh": "",
+          "en": "fragrant"
+        },
+        {
+          "w": "关门",
+          "r": "",
+          "zh": "",
+          "en": "to close",
+          "m": [
+            "关门了"
+          ]
+        },
+        {
+          "w": "排队",
+          "r": "",
+          "zh": "",
+          "en": "to queue",
+          "m": [
+            "排了很长的队"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "饭馆的什么特别好吃？",
+          "options": [
+            "饺子",
+            "牛肉面",
+            "米饭",
+            "包子"
+          ],
+          "answer": 1,
+          "zh": "「牛肉麵特別好吃」。",
+          "en": "Beef noodles."
+        },
+        {
+          "q": "老板每天几点开始做面条？",
+          "options": [
+            "四点",
+            "五点",
+            "六点",
+            "七点"
+          ],
+          "answer": 1,
+          "zh": "「早上五點」。",
+          "en": "Five."
+        },
+        {
+          "q": "一碗面多少钱？",
+          "options": [
+            "五块",
+            "十块",
+            "十五块",
+            "五十块"
+          ],
+          "answer": 2,
+          "zh": "「十五塊錢」。",
+          "en": "15 yuan."
+        },
+        {
+          "q": "饭馆为什么关门了？",
+          "options": [
+            "老板去旅游了",
+            "没有客人",
+            "在休息",
+            "老板生病了"
+          ],
+          "answer": 3,
+          "zh": "「因為叔叔生病了」。",
+          "en": "The owner was ill."
+        },
+        {
+          "q": "老板回来那天怎么样？",
+          "options": [
+            "门口排了很长的队",
+            "没有人来",
+            "饭馆很安静",
+            "面条卖完了"
+          ],
+          "answer": 0,
+          "zh": "「排了很長的隊」。",
+          "en": "A long queue."
+        }
+      ],
+      "tf": [
+        {
+          "s": "老板二十多岁。",
+          "answer": false,
+          "zh": "×：五十多歲。",
+          "en": "False."
+        },
+        {
+          "s": "学生们很喜欢这个饭馆。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "饭馆关门了一个月。",
+          "answer": false,
+          "zh": "×：一個星期。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "xian-trip",
+      "topic": "travel",
+      "title": {
+        "text": "西安旅游",
+        "zh": "",
+        "en": "A trip to Xi'an"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "今年五一，我和爸爸妈妈去西安旅游。",
+            "我们是坐高铁去的，比坐飞机便宜，也很舒服。"
+          ],
+          "zh": "",
+          "en": "This May Day holiday I travelled to Xi'an with my parents. We took the high-speed train, which was cheaper than flying and very comfortable."
+        },
+        {
+          "s": [
+            "西安是一个很老的城市，有很多有名的地方。",
+            "我们去看了兵马俑，那儿的人非常多。"
+          ],
+          "zh": "",
+          "en": "Xi'an is a very old city with many famous places. We went to see the Terracotta Warriors; it was incredibly crowded."
+        },
+        {
+          "s": [
+            "西安的小吃也很好吃，我最喜欢那里的面条。",
+            "回家以后，我还常常想起那里的味道。"
+          ],
+          "zh": "",
+          "en": "Xi'an's snacks are delicious too; my favourite was the noodles there. Since coming home I often think of the taste."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "旅游",
+          "r": "",
+          "zh": "",
+          "en": "to travel"
+        },
+        {
+          "w": "高铁",
+          "r": "",
+          "zh": "",
+          "en": "high-speed train"
+        },
+        {
+          "w": "便宜",
+          "r": "",
+          "zh": "",
+          "en": "cheap"
+        },
+        {
+          "w": "城市",
+          "r": "",
+          "zh": "",
+          "en": "city"
+        },
+        {
+          "w": "有名",
+          "r": "",
+          "zh": "",
+          "en": "famous"
+        },
+        {
+          "w": "小吃",
+          "r": "",
+          "zh": "",
+          "en": "snack"
+        },
+        {
+          "w": "面条",
+          "r": "",
+          "zh": "",
+          "en": "noodles"
+        },
+        {
+          "w": "味道",
+          "r": "",
+          "zh": "",
+          "en": "taste"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他们什么时候去西安？",
+          "options": [
+            "春节",
+            "五一",
+            "十一",
+            "周末"
+          ],
+          "answer": 1,
+          "zh": "「今年五一」。",
+          "en": "May Day."
+        },
+        {
+          "q": "他们怎么去西安？",
+          "options": [
+            "坐飞机",
+            "开车",
+            "坐高铁",
+            "坐公共汽车"
+          ],
+          "answer": 2,
+          "zh": "「坐高鐵去的」。",
+          "en": "By high-speed train."
+        },
+        {
+          "q": "坐高铁比坐飞机怎么样？",
+          "options": [
+            "便宜",
+            "贵",
+            "慢很多",
+            "不舒服"
+          ],
+          "answer": 0,
+          "zh": "「比坐飛機便宜」。",
+          "en": "Cheaper."
+        },
+        {
+          "q": "兵马俑那儿怎么样？",
+          "options": [
+            "很安静",
+            "人很少",
+            "关门了",
+            "人很多"
+          ],
+          "answer": 3,
+          "zh": "「那兒的人非常多」。",
+          "en": "Very crowded."
+        },
+        {
+          "q": "他最喜欢什么小吃？",
+          "options": [
+            "面条",
+            "饺子",
+            "米饭",
+            "包子"
+          ],
+          "answer": 0,
+          "zh": "「我最喜歡那裡的麵條」。",
+          "en": "The noodles."
+        }
+      ],
+      "tf": [
+        {
+          "s": "西安是一个新城市。",
+          "answer": false,
+          "zh": "×：很老的城市。",
+          "en": "False."
+        },
+        {
+          "s": "他是和父母一起去的。",
+          "answer": true,
+          "zh": "○：和爸爸媽媽。",
+          "en": "True."
+        },
+        {
+          "s": "回家以后他常常想起西安的味道。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "first-snow",
+      "topic": "weather",
+      "title": {
+        "text": "第一场雪",
+        "zh": "",
+        "en": "The first snow"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "昨天晚上下了今年的第一场雪。",
+            "早上起床的时候，外面都变白了。"
+          ],
+          "zh": "",
+          "en": "Last night the first snow of the year fell. When I got up in the morning, everything outside had turned white."
+        },
+        {
+          "s": [
+            "弟弟高兴得跳了起来，马上穿好衣服跑到楼下。",
+            "我们在雪里玩了一个多小时，还做了一个雪人。"
+          ],
+          "zh": "",
+          "en": "My younger brother jumped for joy, put on his clothes at once and ran downstairs. We played in the snow for over an hour and made a snowman."
+        },
+        {
+          "s": [
+            "可是路上的车开得很慢，爸爸上班迟到了。",
+            "他说下雪天开车要特别小心。"
+          ],
+          "zh": "",
+          "en": "But the cars on the road drove slowly, and Dad was late for work. He said you must be extra careful driving in snow."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "场",
+          "r": "",
+          "zh": "",
+          "en": "measure word for events (snow, rain)",
+          "m": [
+            "一场雪"
+          ]
+        },
+        {
+          "w": "变",
+          "r": "",
+          "zh": "",
+          "en": "to change, to become",
+          "m": [
+            "变白了"
+          ]
+        },
+        {
+          "w": "弟弟",
+          "r": "",
+          "zh": "",
+          "en": "younger brother"
+        },
+        {
+          "w": "跳",
+          "r": "",
+          "zh": "",
+          "en": "to jump",
+          "m": [
+            "跳了起来"
+          ]
+        },
+        {
+          "w": "马上",
+          "r": "",
+          "zh": "",
+          "en": "at once"
+        },
+        {
+          "w": "楼下",
+          "r": "",
+          "zh": "",
+          "en": "downstairs"
+        },
+        {
+          "w": "迟到",
+          "r": "",
+          "zh": "",
+          "en": "to be late"
+        },
+        {
+          "w": "小心",
+          "r": "",
+          "zh": "",
+          "en": "careful"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "什么时候下的雪？",
+          "options": [
+            "昨天晚上",
+            "今天早上",
+            "昨天下午",
+            "前天"
+          ],
+          "answer": 0,
+          "zh": "「昨天晚上」。",
+          "en": "Last night."
+        },
+        {
+          "q": "早上外面怎么样？",
+          "options": [
+            "下雨了",
+            "都变白了",
+            "很热",
+            "很黑"
+          ],
+          "answer": 1,
+          "zh": "「外面都變白了」。",
+          "en": "All white."
+        },
+        {
+          "q": "弟弟做了什么？",
+          "options": [
+            "继续睡觉",
+            "看电视",
+            "跑到楼下",
+            "去上学"
+          ],
+          "answer": 2,
+          "zh": "「跑到樓下」。",
+          "en": "Ran downstairs."
+        },
+        {
+          "q": "他们在雪里玩了多长时间？",
+          "options": [
+            "十分钟",
+            "半个小时",
+            "三个小时",
+            "一个多小时"
+          ],
+          "answer": 3,
+          "zh": "「一個多小時」。",
+          "en": "Over an hour."
+        },
+        {
+          "q": "爸爸为什么迟到了？",
+          "options": [
+            "路上的车开得很慢",
+            "起床晚了",
+            "车坏了",
+            "他生病了"
+          ],
+          "answer": 0,
+          "zh": "「車開得很慢」。",
+          "en": "Traffic was slow."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他们做了一个雪人。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "爸爸上班没有迟到。",
+          "answer": false,
+          "zh": "×：遲到了。",
+          "en": "False."
+        },
+        {
+          "s": "爸爸说下雪天开车要小心。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "online-shopping",
+      "topic": "shopping",
+      "title": {
+        "text": "网上买东西",
+        "zh": "",
+        "en": "Shopping online"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "现在很多人喜欢在网上买东西。",
+            "我妈妈以前不会用手机买东西，上个月我教会了她。"
+          ],
+          "zh": "",
+          "en": "Now many people like shopping online. My mum couldn't shop on her phone before; last month I taught her."
+        },
+        {
+          "s": [
+            "她第一次买了一双运动鞋，第二天就送到家了。",
+            "鞋子很好看，可是有点儿小，她又换了一双。"
+          ],
+          "zh": "",
+          "en": "The first time she bought a pair of trainers, and they arrived the next day. They looked nice but were a bit small, so she exchanged them."
+        },
+        {
+          "s": [
+            "现在妈妈每个星期都在网上买水果和菜。",
+            "她说又方便又便宜，不用再去超市排队了。"
+          ],
+          "zh": "",
+          "en": "Now Mum buys fruit and vegetables online every week. She says it's convenient and cheap, and she no longer has to queue at the supermarket."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "网上",
+          "r": "",
+          "zh": "",
+          "en": "online"
+        },
+        {
+          "w": "以前",
+          "r": "",
+          "zh": "",
+          "en": "before"
+        },
+        {
+          "w": "教",
+          "r": "",
+          "zh": "",
+          "en": "to teach",
+          "m": [
+            "教会了"
+          ]
+        },
+        {
+          "w": "双",
+          "r": "",
+          "zh": "",
+          "en": "pair",
+          "m": [
+            "一双"
+          ]
+        },
+        {
+          "w": "运动鞋",
+          "r": "",
+          "zh": "",
+          "en": "trainers"
+        },
+        {
+          "w": "换",
+          "r": "",
+          "zh": "",
+          "en": "to exchange",
+          "m": [
+            "换了"
+          ]
+        },
+        {
+          "w": "方便",
+          "r": "",
+          "zh": "",
+          "en": "convenient"
+        },
+        {
+          "w": "超市",
+          "r": "",
+          "zh": "",
+          "en": "supermarket"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "谁教妈妈用手机买东西？",
+          "options": [
+            "爸爸",
+            "朋友",
+            "他自己",
+            "老师"
+          ],
+          "answer": 2,
+          "zh": "「我教會了她」。",
+          "en": "He did."
+        },
+        {
+          "q": "妈妈第一次买了什么？",
+          "options": [
+            "一双运动鞋",
+            "一件衣服",
+            "水果",
+            "一本书"
+          ],
+          "answer": 0,
+          "zh": "「一雙運動鞋」。",
+          "en": "Trainers."
+        },
+        {
+          "q": "鞋子什么时候送到？",
+          "options": [
+            "那天",
+            "第二天",
+            "一个星期以后",
+            "还没到"
+          ],
+          "answer": 1,
+          "zh": "「第二天就送到家了」。",
+          "en": "The next day."
+        },
+        {
+          "q": "鞋子有什么问题？",
+          "options": [
+            "太贵了",
+            "颜色不好",
+            "太大了",
+            "有点儿小"
+          ],
+          "answer": 3,
+          "zh": "「有點兒小」。",
+          "en": "A bit small."
+        },
+        {
+          "q": "妈妈现在每个星期在网上买什么？",
+          "options": [
+            "衣服",
+            "水果和菜",
+            "书",
+            "鞋"
+          ],
+          "answer": 1,
+          "zh": "「水果和菜」。",
+          "en": "Fruit and vegetables."
+        }
+      ],
+      "tf": [
+        {
+          "s": "妈妈以前就会在网上买东西。",
+          "answer": false,
+          "zh": "×：以前不會。",
+          "en": "False."
+        },
+        {
+          "s": "鞋子很好看。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "妈妈觉得网上买东西很方便。",
+          "answer": true,
+          "zh": "○：又方便又便宜。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "exam",
+      "topic": "school",
+      "title": {
+        "text": "考试",
+        "zh": "",
+        "en": "The exam"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "下个星期我们有汉语考试。",
+            "这几天我每天晚上都复习两个小时。"
+          ],
+          "zh": "",
+          "en": "Next week we have a Chinese exam. These days I revise for two hours every evening."
+        },
+        {
+          "s": [
+            "我觉得听力不太难，可是写汉字很难。",
+            "有的字我常常写错，所以我把它们写了很多遍。"
+          ],
+          "zh": "",
+          "en": "I don't find listening too hard, but writing characters is difficult. I often get some characters wrong, so I write them out many times."
+        },
+        {
+          "s": [
+            "同学小明汉字写得很好，他说可以帮我。",
+            "星期六我们打算一起去图书馆学习。"
+          ],
+          "zh": "",
+          "en": "My classmate Xiaoming writes characters well and says he can help me. We plan to study together at the library on Saturday."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "考试",
+          "r": "",
+          "zh": "",
+          "en": "exam"
+        },
+        {
+          "w": "复习",
+          "r": "",
+          "zh": "",
+          "en": "to revise"
+        },
+        {
+          "w": "听力",
+          "r": "",
+          "zh": "",
+          "en": "listening"
+        },
+        {
+          "w": "难",
+          "r": "",
+          "zh": "",
+          "en": "difficult"
+        },
+        {
+          "w": "汉字",
+          "r": "",
+          "zh": "",
+          "en": "Chinese character"
+        },
+        {
+          "w": "错",
+          "r": "",
+          "zh": "",
+          "en": "wrong",
+          "m": [
+            "写错"
+          ]
+        },
+        {
+          "w": "遍",
+          "r": "",
+          "zh": "",
+          "en": "time (from start to finish)",
+          "m": [
+            "很多遍"
+          ]
+        },
+        {
+          "w": "打算",
+          "r": "",
+          "zh": "",
+          "en": "to plan"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "考试是什么时候？",
+          "options": [
+            "今天",
+            "明天",
+            "下个星期",
+            "下个月"
+          ],
+          "answer": 2,
+          "zh": "「下個星期」。",
+          "en": "Next week."
+        },
+        {
+          "q": "他每天晚上复习多长时间？",
+          "options": [
+            "半个小时",
+            "一个小时",
+            "两个小时",
+            "三个小时"
+          ],
+          "answer": 2,
+          "zh": "「兩個小時」。",
+          "en": "Two hours."
+        },
+        {
+          "q": "他觉得什么很难？",
+          "options": [
+            "听力",
+            "写汉字",
+            "说汉语",
+            "读书"
+          ],
+          "answer": 1,
+          "zh": "「寫漢字很難」。",
+          "en": "Writing characters."
+        },
+        {
+          "q": "为什么他把字写了很多遍？",
+          "options": [
+            "老师让他写",
+            "他喜欢写字",
+            "他的字很好看",
+            "他常常写错"
+          ],
+          "answer": 3,
+          "zh": "「常常寫錯」。",
+          "en": "He often gets them wrong."
+        },
+        {
+          "q": "星期六他们打算去哪儿？",
+          "options": [
+            "图书馆",
+            "公园",
+            "电影院",
+            "小明家"
+          ],
+          "answer": 0,
+          "zh": "「去圖書館學習」。",
+          "en": "The library."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他觉得听力不太难。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "小明汉字写得不好。",
+          "answer": false,
+          "zh": "×：寫得很好。",
+          "en": "False."
+        },
+        {
+          "s": "考试是英语考试。",
+          "answer": false,
+          "zh": "×：漢語考試。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "subway",
+      "topic": "transport",
+      "title": {
+        "text": "坐地铁",
+        "zh": "",
+        "en": "Taking the subway"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我每天坐地铁去上班。",
+            "从我家到公司要换一次车，一共四十分钟。"
+          ],
+          "zh": "",
+          "en": "I take the subway to work every day. From my home to the office I change once; it takes forty minutes in all."
+        },
+        {
+          "s": [
+            "早上八点左右地铁里的人最多，常常没有座位。",
+            "所以我七点就出门，这时候人比较少。"
+          ],
+          "zh": "",
+          "en": "Around eight in the morning the subway is most crowded, and there are often no seats. So I leave at seven, when there are fewer people."
+        },
+        {
+          "s": [
+            "在地铁上我喜欢听音乐或者看新闻。",
+            "我觉得坐地铁比开车好，不用担心堵车。"
+          ],
+          "zh": "",
+          "en": "On the subway I like listening to music or reading the news. I think the subway is better than driving: no worrying about traffic jams."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "地铁",
+          "r": "",
+          "zh": "",
+          "en": "subway"
+        },
+        {
+          "w": "换车",
+          "r": "",
+          "zh": "",
+          "en": "to change trains",
+          "m": [
+            "换一次车"
+          ]
+        },
+        {
+          "w": "一共",
+          "r": "",
+          "zh": "",
+          "en": "in total"
+        },
+        {
+          "w": "左右",
+          "r": "",
+          "zh": "",
+          "en": "around, about"
+        },
+        {
+          "w": "座位",
+          "r": "",
+          "zh": "",
+          "en": "seat"
+        },
+        {
+          "w": "出门",
+          "r": "",
+          "zh": "",
+          "en": "to go out"
+        },
+        {
+          "w": "新闻",
+          "r": "",
+          "zh": "",
+          "en": "news"
+        },
+        {
+          "w": "堵车",
+          "r": "",
+          "zh": "",
+          "en": "traffic jam"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他从家到公司要多长时间？",
+          "options": [
+            "二十分钟",
+            "三十分钟",
+            "四十分钟",
+            "一个小时"
+          ],
+          "answer": 2,
+          "zh": "「一共四十分鐘」。",
+          "en": "Forty minutes."
+        },
+        {
+          "q": "他要换几次车？",
+          "options": [
+            "一次",
+            "两次",
+            "三次",
+            "不用换"
+          ],
+          "answer": 0,
+          "zh": "「換一次車」。",
+          "en": "Once."
+        },
+        {
+          "q": "地铁里什么时候人最多？",
+          "options": [
+            "早上七点",
+            "早上八点左右",
+            "中午",
+            "晚上十点"
+          ],
+          "answer": 1,
+          "zh": "「八點左右」。",
+          "en": "Around eight."
+        },
+        {
+          "q": "他为什么七点出门？",
+          "options": [
+            "公司七点上班",
+            "他起得早",
+            "他要吃早饭",
+            "人比较少"
+          ],
+          "answer": 3,
+          "zh": "「這時候人比較少」。",
+          "en": "Fewer people."
+        },
+        {
+          "q": "他觉得坐地铁比开车好的原因是什么？",
+          "options": [
+            "不用担心堵车",
+            "地铁很便宜",
+            "地铁很新",
+            "他没有车"
+          ],
+          "answer": 0,
+          "zh": "「不用擔心堵車」。",
+          "en": "No traffic jams."
+        }
+      ],
+      "tf": [
+        {
+          "s": "八点左右地铁里常常没有座位。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他在地铁上喜欢睡觉。",
+          "answer": false,
+          "zh": "×：聽音樂或看新聞。",
+          "en": "False."
+        },
+        {
+          "s": "他每天开车上班。",
+          "answer": false,
+          "zh": "×：坐地鐵。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "running",
+      "topic": "health",
+      "title": {
+        "text": "跑步",
+        "zh": "",
+        "en": "Running"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "以前我很少运动，身体也不太好。",
+            "去年医生让我多锻炼，我就开始每天跑步。"
+          ],
+          "zh": "",
+          "en": "I used to exercise very little and wasn't very healthy. Last year the doctor told me to exercise more, so I started running every day."
+        },
+        {
+          "s": [
+            "刚开始的时候，我跑十分钟就很累。",
+            "后来我慢慢地能跑三十分钟了。"
+          ],
+          "zh": "",
+          "en": "At first I was exhausted after ten minutes. Later I gradually managed thirty minutes."
+        },
+        {
+          "s": [
+            "现在我早上跑步，晚上早点儿睡觉，很少感冒了。",
+            "我还认识了几个一起跑步的朋友。"
+          ],
+          "zh": "",
+          "en": "Now I run in the mornings and go to bed early in the evenings, and I seldom catch colds. I've also got to know some friends I run with."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "运动",
+          "r": "",
+          "zh": "",
+          "en": "to exercise"
+        },
+        {
+          "w": "锻炼",
+          "r": "",
+          "zh": "",
+          "en": "to work out"
+        },
+        {
+          "w": "跑步",
+          "r": "",
+          "zh": "",
+          "en": "to run"
+        },
+        {
+          "w": "刚",
+          "r": "",
+          "zh": "",
+          "en": "just",
+          "m": [
+            "刚开始"
+          ]
+        },
+        {
+          "w": "后来",
+          "r": "",
+          "zh": "",
+          "en": "later"
+        },
+        {
+          "w": "慢慢",
+          "r": "",
+          "zh": "",
+          "en": "slowly, gradually",
+          "m": [
+            "慢慢地"
+          ]
+        },
+        {
+          "w": "感冒",
+          "r": "",
+          "zh": "",
+          "en": "to catch a cold"
+        },
+        {
+          "w": "认识",
+          "r": "",
+          "zh": "",
+          "en": "to get to know",
+          "m": [
+            "认识了"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "以前他的身体怎么样？",
+          "options": [
+            "很好",
+            "不太好",
+            "非常好",
+            "没有问题"
+          ],
+          "answer": 1,
+          "zh": "「身體也不太好」。",
+          "en": "Not very good."
+        },
+        {
+          "q": "谁让他多锻炼？",
+          "options": [
+            "医生",
+            "妈妈",
+            "老师",
+            "朋友"
+          ],
+          "answer": 0,
+          "zh": "「醫生讓我多鍛鍊」。",
+          "en": "The doctor."
+        },
+        {
+          "q": "刚开始他能跑多长时间？",
+          "options": [
+            "五分钟",
+            "十分钟",
+            "三十分钟",
+            "一个小时"
+          ],
+          "answer": 1,
+          "zh": "「跑十分鐘就很累」。",
+          "en": "Ten minutes."
+        },
+        {
+          "q": "现在他什么时候跑步？",
+          "options": [
+            "晚上",
+            "中午",
+            "下午",
+            "早上"
+          ],
+          "answer": 3,
+          "zh": "「早上跑步」。",
+          "en": "In the morning."
+        },
+        {
+          "q": "跑步以后有什么变化？",
+          "options": [
+            "很少感冒了",
+            "常常生病",
+            "没有朋友了",
+            "睡得很晚"
+          ],
+          "answer": 0,
+          "zh": "「很少感冒了」。",
+          "en": "He seldom catches colds."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他是去年开始跑步的。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "现在他晚上很晚睡觉。",
+          "answer": false,
+          "zh": "×：早點兒睡覺。",
+          "en": "False."
+        },
+        {
+          "s": "他一个人跑步，没有朋友。",
+          "answer": false,
+          "zh": "×：認識了一起跑步的朋友。",
+          "en": "False."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",
