@@ -4,7 +4,7 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "English B1 reading rounds in the Cambridge B1 Preliminary format (owner's plan 2026-10-30). Parts 1–6: five short texts (3 options), five people matched to eight texts (en_people), a long text (4 options), a gapped text — five of eight sentences (en_gapped), a multiple-choice cloze (4 options), an open cloze (en_open, typed). Original texts. Drafted in tools/.mockups/en_b1.py.",
+  "note": "English B1 reading rounds in the Cambridge B1 Preliminary format (owner's plan 2026-10-30). Parts 1–6: five short texts (3 options), five people matched to eight texts (en_people), a long text (4 options), a gapped text — five of eight sentences (en_gapped), a multiple-choice cloze (4 options), an open cloze (en_open, typed). Original texts. Drafted in tools/.mockups/en_b1.py (rounds 2–3: en_b1_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -428,6 +428,864 @@
               ],
               "zh": "「comes in … to check」：來是為了檢查，表示目的用 to。",
               "en": "to check — purpose."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "TENNIS CLUB MEMBERS\nThe courts will be closed from Monday to Wednesday next week while new lights are put in. Lessons will take place at the Park Road courts instead.",
+          "tr": {
+            "zh": "網球社會員請注意\n下週一到週三球場裝新燈，暫停開放。課程改在公園路的球場上。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "Lessons are cancelled next week.",
+                "New courts are being built.",
+                "Lessons will be held somewhere else for a few days."
+              ],
+              "answer": 2,
+              "zh": "球場關三天，課程「改在公園路的球場上」：換地方，不是取消。",
+              "en": "Three days at the Park Road courts instead; not cancelled."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Sara —\nI can't find the recipe you lent me. Could you send me a photo of it? I want to make the soup for Dad's birthday tomorrow. Thanks!\nAna",
+          "tr": {
+            "zh": "莎拉：\n我找不到你借我的食譜了。可以拍張照片傳給我嗎？我明天爸爸生日想煮那道湯。謝啦！\n安娜"
+          },
+          "questions": [
+            {
+              "q": "Why has Ana written?",
+              "options": [
+                "to ask Sara for a copy of a recipe",
+                "to invite Sara to a birthday meal",
+                "to return something Sara lent her"
+              ],
+              "answer": 0,
+              "zh": "食譜找不到了，請莎拉「拍張照片傳給我」。",
+              "en": "She asks for a photo of the recipe."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Keep in the fridge after opening and use within five days.\nNot suitable for freezing.",
+          "tr": {
+            "zh": "開封後請冷藏，並於五天內食用完畢。\n不適合冷凍。"
+          },
+          "questions": [
+            {
+              "q": "What does the label say?",
+              "options": [
+                "You should freeze any you do not use.",
+                "It will not stay fresh for long once it is open.",
+                "It must be kept in the fridge before opening."
+              ],
+              "answer": 1,
+              "zh": "開封後「五天內食用完畢」：開了就放不久；不能冷凍，冷藏是開封後才需要。",
+              "en": "Use within five days of opening; no freezing."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Hi all,\nThe history homework is now due on 12 May, not 5 May, because of the school trip. Please hand it in to Mr Shaw, as I'll be away that week.\nMs Green",
+          "tr": {
+            "zh": "各位同學：\n因為校外教學，歷史作業改成五月十二日交，不是五月五日。那週我不在，請交給蕭老師。\n葛林老師"
+          },
+          "questions": [
+            {
+              "q": "What is Ms Green telling the students?",
+              "options": [
+                "They should give their homework to her.",
+                "They have more time to do the homework.",
+                "The school trip has been moved."
+              ],
+              "answer": 1,
+              "zh": "截止日從五日延到十二日：多了一週；作業要交給蕭老師。",
+              "en": "Due a week later; hand it to Mr Shaw."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Lost property is kept at the main reception for one month. After that, items are given to charity.\nPlease bring ID when collecting valuable items.",
+          "tr": {
+            "zh": "失物在主櫃台保管一個月，之後會捐給慈善機構。\n領取貴重物品時請攜帶身分證件。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "Valuable items are given to charity immediately.",
+                "You must show ID to collect anything.",
+                "Unclaimed items will be given away after a month."
+              ],
+              "answer": 2,
+              "zh": "保管一個月，「之後會捐給慈善機構」；證件只有領貴重物品才要。",
+              "en": "After a month they go to charity; ID only for valuables."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 2,
+          "ask": "en_people",
+          "bank": [
+            "Seaview Cottage — A small cottage right on the beach that sleeps two. No pets. Perfect for a quiet, romantic weekend. Ten minutes' walk from the nearest shop.",
+            "Mountain Lodge — Sleeps up to twelve, with a huge kitchen and a games room. Close to ski slopes and walking paths. Dogs welcome.",
+            "City Studio — A modern flat in the old town, minutes from museums, theatres and restaurants. Sleeps two. Fast Wi-Fi and a desk for working.",
+            "Farm Barn — Stay on a working farm and help feed the animals every morning. Sleeps six. Children love it! Pets not allowed.",
+            "Lakeside Cabin — Sleeps four. Canoes and fishing equipment are free to use. The nearest town is 20 km away, so bring food.",
+            "River Hotel — Family rooms, an indoor pool and a restaurant serving local food. Close to the railway station, so you don't need a car.",
+            "Forest Treehouse — A treehouse for two, high up among the trees, with no electricity — just candles and stars. Not suitable for children.",
+            "Harbour Apartment — Sleeps four, above a busy fish market. Lively bars and cafés nearby. Parking available."
+          ],
+          "tr": {
+            "zh": "A 海景小屋：就在海灘上的小屋，可住兩人，不能帶寵物，適合安靜浪漫的週末，走路十分鐘到最近的商店。\nB 山間小屋：最多住十二人，有超大廚房和遊戲室，靠近滑雪場和步道，歡迎帶狗。\nC 城市套房：舊城區的現代公寓，走幾分鐘就到博物館、劇院和餐廳，可住兩人，有高速網路和工作用的書桌。\nD 農場穀倉：住在運作中的農場，每天早上幫忙餵動物，可住六人，孩子們都很喜歡！不能帶寵物。\nE 湖邊木屋：可住四人，獨木舟和釣具免費使用，最近的小鎮在二十公里外，請自備食物。\nF 河畔飯店：有家庭房、室內游泳池和供應在地料理的餐廳，靠近火車站，不需要開車。\nG 森林樹屋：兩人住的樹屋，高高在樹林間，沒有電，只有蠟燭和星星，不適合孩子。\nH 港口公寓：可住四人，在熱鬧的魚市場樓上，附近有熱鬧的酒吧和咖啡館，有停車位。"
+          },
+          "questions": [
+            {
+              "q": "The Wilsons have three young children and want a holiday where the children can learn about animals. They do not have a pet.",
+              "answer": "D",
+              "zh": "五口之家、孩子想認識動物：D 農場可住六人，每天幫忙餵動物。",
+              "en": "Farm Barn: sleeps six, feeding the animals."
+            },
+            {
+              "q": "Kate and her husband want to escape modern life for a few days. They'd like to be among trees and don't mind having no electricity.",
+              "answer": "G",
+              "zh": "想遠離現代生活、在樹林裡、不介意沒電：G 樹屋；A 雖然安靜，但在海邊。",
+              "en": "Forest Treehouse: among trees, no electricity."
+            },
+            {
+              "q": "A group of ten friends want to go walking in the hills together and bring their two dogs.",
+              "answer": "B",
+              "zh": "十個人、爬山、帶狗：B 最多住十二人、靠近步道、歡迎帶狗。",
+              "en": "Mountain Lodge: twelve people, paths, dogs welcome."
+            },
+            {
+              "q": "Mark is a writer who needs to work during his trip. In the evenings he wants to go to shows and eat out.",
+              "answer": "C",
+              "zh": "要工作、晚上看表演吃飯：C 有書桌和網路，靠近劇院和餐廳。",
+              "en": "City Studio: a desk, theatres and restaurants."
+            },
+            {
+              "q": "The Lopez family don't drive. They want somewhere their children can swim, even if it rains.",
+              "answer": "F",
+              "zh": "不開車、下雨也能游泳：F 靠近火車站、有室內游泳池。",
+              "en": "River Hotel: near the station, indoor pool."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "A year without new clothes\nLast January, nineteen-year-old student Amy Chen made a decision that surprised her friends: for a whole year, she would not buy a single new piece of clothing. 'I used to go shopping every weekend,' she says. 'I had a wardrobe full of things I'd worn once or never. Then I read an article about how much water it takes to make one pair of jeans, and I felt terrible.'\nThe first few months were the hardest. 'Whenever I walked past a shop window, I wanted to go in,' Amy admits. 'So I stopped going into town on Saturdays and found other things to do, like volunteering at an animal shelter.' She also learned to repair her clothes. 'My grandmother taught me to sew. Before that, if a button came off, I'd just throw the shirt away.'\nAmy did allow herself one exception: second-hand clothes. She and some friends started a monthly swap party, where everyone brings clothes they no longer wear and takes home something different. 'The first one had six people. Now we get over fifty, and the clothes nobody takes go to a charity shop.'\nBy December, Amy had saved more than a thousand pounds. But she says the money isn't the most important thing. 'I think more carefully now. Before I get anything, I ask myself if I'll still want it in a year.' Will she go back to her old habits? 'Never,' she laughs. 'Although I might buy some new running shoes — mine have a hole in them!'",
+          "tr": {
+            "zh": "一整年不買新衣服\n去年一月，十九歲的大學生陳艾咪做了一個讓朋友驚訝的決定：整整一年，她一件新衣服都不買。「我以前每個週末都去逛街，」她說，「衣櫃裡塞滿只穿過一次或從沒穿過的東西。後來我讀到一篇文章，講做一條牛仔褲要用多少水，我覺得很糟糕。」\n頭幾個月最難熬。「每次經過櫥窗，我都想進去，」艾咪承認，「所以我星期六不再進城，改做別的事，像是去動物收容所當志工。」她也學會了補衣服。「奶奶教我縫紉。以前掉一顆扣子，我就直接把襯衫丟了。」\n艾咪給自己留了一個例外：二手衣。她和幾個朋友每個月辦一次換衣派對，每個人帶自己不穿的衣服來，再帶走不一樣的。「第一次只有六個人，現在超過五十人，沒人要的衣服就送到慈善二手店。」\n到了十二月，艾咪存了一千多英鎊。但她說錢不是最重要的。「我現在想得比較仔細。買任何東西之前，我會問自己一年後還會不會想要。」她會回到以前的習慣嗎？「絕對不會，」她笑著說，「不過我可能會買雙新的跑鞋，我的破了一個洞！」"
+          },
+          "questions": [
+            {
+              "q": "Why did Amy decide to stop buying clothes?",
+              "options": [
+                "Her friends asked her to.",
+                "She read about the effect on the environment.",
+                "She had no money.",
+                "Her wardrobe was too small."
+              ],
+              "answer": 1,
+              "zh": "讀到「做一條牛仔褲要用多少水」的文章，覺得很糟糕：環境的影響。",
+              "en": "An article on the water used to make jeans."
+            },
+            {
+              "q": "How did Amy deal with wanting to go shopping?",
+              "options": [
+                "She asked her grandmother for help.",
+                "She only went shopping with friends.",
+                "She shopped online instead.",
+                "She avoided going into town at weekends."
+              ],
+              "answer": 3,
+              "zh": "「我星期六不再進城，改做別的事」。",
+              "en": "She stopped going into town on Saturdays."
+            },
+            {
+              "q": "What did Amy's grandmother do?",
+              "options": [
+                "taught her how to repair clothes",
+                "gave her some old clothes",
+                "bought her a new shirt",
+                "helped at the animal shelter"
+              ],
+              "answer": 0,
+              "zh": "「奶奶教我縫紉」：教她補衣服。",
+              "en": "She taught Amy to sew."
+            },
+            {
+              "q": "What do we learn about the swap parties?",
+              "options": [
+                "They are held every week.",
+                "Only six people come.",
+                "They have grown a lot.",
+                "Clothes are sold there."
+              ],
+              "answer": 2,
+              "zh": "從六個人變成「超過五十人」；是每個月一次，衣服是交換不是賣。",
+              "en": "From six people to over fifty; monthly, and nothing is sold."
+            },
+            {
+              "q": "What does Amy say at the end?",
+              "options": [
+                "She has spent all her savings.",
+                "She thinks differently about buying things now.",
+                "She will start shopping every weekend again.",
+                "She has stopped running."
+              ],
+              "answer": 1,
+              "zh": "「我現在想得比較仔細」，買東西前會問自己一年後還想不想要。",
+              "en": "She thinks more carefully before buying."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 4,
+          "ask": "en_gapped",
+          "text": "My first job interview\nLast spring I applied for a summer job at a busy outdoor activity centre. I was excited when they invited me for an interview, but also very nervous. (16) ＿＿＿＿＿\nThe night before, I prepared answers to all the questions I thought they might ask. I even practised in front of the mirror. (17) ＿＿＿＿＿\nOn the day, I arrived twenty minutes early and waited in reception. There were four other people there, all older than me. (18) ＿＿＿＿＿ But then I remembered my mum's advice: just be yourself.\nThe interview itself was not what I expected. Instead of sitting at a desk, the manager took me outside and asked me to help a group of children put up a tent. (19) ＿＿＿＿＿ Luckily, I had been camping many times with my family.\nA week later, I got a phone call offering me the job. (20) ＿＿＿＿＿ It was the best summer of my life, and they've invited me back again this year.",
+          "bank": [
+            "They all looked much more confident than me.",
+            "The manager said I was too young for the job.",
+            "I had never had an interview before.",
+            "I was so happy that I danced around the kitchen.",
+            "My little brother thought I looked very funny.",
+            "I had to wear a uniform every day.",
+            "I realised it was a test of how I worked with people.",
+            "I decided to stay at home and forget the whole thing."
+          ],
+          "tr": {
+            "zh": "我的第一次面試\n去年春天，我應徵一家熱鬧的戶外活動中心的暑期工作。他們通知我去面試時，我很興奮，也很緊張。我以前從來沒面試過。\n前一晚，我把他們可能會問的問題都準備好答案，甚至對著鏡子練習。我弟弟覺得我的樣子很好笑。\n當天我提早二十分鐘到，在接待處等。那裡還有另外四個人，都比我大。他們看起來都比我有自信得多。不過我想起媽媽的建議：做自己就好。\n面試本身和我想的不一樣。經理沒有讓我坐在桌前，而是帶我到戶外，請我幫一群孩子搭帳篷。我發現這是在測試我怎麼和人合作。幸好我跟家人露營過很多次。\n一週後，我接到電話說錄取了。我高興得在廚房裡跳起舞來。那是我人生中最棒的夏天，今年他們又邀我回去。"
+          },
+          "questions": [
+            {
+              "answer": "C",
+              "zh": "很緊張，因為「我以前從來沒面試過」。",
+              "en": "Nervous because it was her first interview."
+            },
+            {
+              "answer": "E",
+              "zh": "對著鏡子練習，弟弟覺得「我的樣子很好笑」。",
+              "en": "Practising in the mirror looked funny to her brother."
+            },
+            {
+              "answer": "A",
+              "zh": "其他人都比較大，「看起來都比我有自信得多」，接著 But 想起媽媽的話。",
+              "en": "They looked more confident — then \"But\" she remembered the advice."
+            },
+            {
+              "answer": "G",
+              "zh": "經理要她帶孩子搭帳篷：她發現是在測試和人合作的能力。",
+              "en": "The tent task was a test of working with people."
+            },
+            {
+              "answer": "D",
+              "zh": "接到錄取電話，高興得跳舞。B、F、H 和文章不合，是多出來的。",
+              "en": "Offered the job, she danced. B, F and H are extra."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_cloze",
+          "n_options": 4,
+          "text": "The history of chocolate\nChocolate comes (21) ＿＿＿＿＿ the seeds of the cacao tree, which grows in hot countries. Thousands of years ago, people in Central America (22) ＿＿＿＿＿ a bitter drink from these seeds. When the drink arrived in Europe in the 1500s, people added sugar to make it (23) ＿＿＿＿＿ sweeter. For a long time, chocolate was so expensive that only rich people could (24) ＿＿＿＿＿ it. Solid chocolate bars were not (25) ＿＿＿＿＿ until the 1800s. Today, chocolate is one of the most popular sweets in the world, and some people even say they could not (26) ＿＿＿＿＿ without it.",
+          "tr": {
+            "zh": "巧克力的歷史\n巧克力來自可可樹的種子，可可樹生長在炎熱的國家。幾千年前，中美洲的人用這些種子做成一種苦的飲料。這種飲料在十六世紀傳到歐洲後，人們加了糖讓它甜得多。很長一段時間，巧克力貴到只有有錢人買得起。固體巧克力棒直到十九世紀才被發明。現在，巧克力是全世界最受歡迎的甜食之一，有些人甚至說沒有它活不下去。"
+          },
+          "questions": [
+            {
+              "q": "(21)",
+              "options": [
+                "by",
+                "of",
+                "from",
+                "out"
+              ],
+              "answer": 2,
+              "zh": "「come from」：來自。",
+              "en": "comes from."
+            },
+            {
+              "q": "(22)",
+              "options": [
+                "made",
+                "did",
+                "built",
+                "cooked"
+              ],
+              "answer": 0,
+              "zh": "「make a drink from …」：用……做飲料。",
+              "en": "made a drink from the seeds."
+            },
+            {
+              "q": "(23)",
+              "options": [
+                "many",
+                "more",
+                "most",
+                "much"
+              ],
+              "answer": 3,
+              "zh": "比較級前加強語氣用 much：much sweeter；more sweeter 是錯的。",
+              "en": "much sweeter; \"more sweeter\" is wrong."
+            },
+            {
+              "q": "(24)",
+              "options": [
+                "pay",
+                "afford",
+                "spend",
+                "cost"
+              ],
+              "answer": 1,
+              "zh": "「can afford it」：買得起。",
+              "en": "could afford it."
+            },
+            {
+              "q": "(25)",
+              "options": [
+                "thought",
+                "imagined",
+                "learned",
+                "invented"
+              ],
+              "answer": 3,
+              "zh": "巧克力棒到十九世紀才「被發明」：invented。",
+              "en": "not invented until the 1800s."
+            },
+            {
+              "q": "(26)",
+              "options": [
+                "stay",
+                "keep",
+                "live",
+                "last"
+              ],
+              "answer": 2,
+              "zh": "「could not live without it」：沒有它活不下去。",
+              "en": "could not live without it."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 6,
+          "ask": "en_open",
+          "text": "A new start\nTwo years ago, my family moved to Canada from Brazil. At first, everything was strange. I didn't know anyone at school, and I couldn't understand (27) ＿＿＿＿＿ the teachers were saying because they spoke so fast. The weather was also a shock — I had (28) ＿＿＿＿＿ seen snow before! But slowly things got better. I joined the school football team, (29) ＿＿＿＿＿ helped me make friends. My English improved too, because I practised (30) ＿＿＿＿＿ day. Now I feel at home here, although I still miss my grandparents. We speak on the phone every week, and they're coming to visit us (31) ＿＿＿＿＿ summer. I can't wait to show them (32) ＿＿＿＿＿ my new life looks like.",
+          "tr": {
+            "zh": "新的開始\n兩年前，我們全家從巴西搬到加拿大。一開始什麼都很陌生。我在學校誰也不認識，老師講話太快，我聽不懂他們在說什麼。天氣也讓我嚇一跳，我以前從沒看過雪！不過慢慢就好了。我加入學校足球隊，這讓我交到朋友。我的英文也進步了，因為我每天都練習。現在我覺得這裡就是家，雖然還是很想爺爺奶奶。我們每週通電話，今年夏天他們要來看我們。我等不及讓他們看看我的新生活是什麼樣子。"
+          },
+          "questions": [
+            {
+              "q": "(27)",
+              "answers": [
+                "what"
+              ],
+              "zh": "「understand what the teachers were saying」：聽懂老師在說「什麼」。",
+              "en": "what the teachers were saying."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "never"
+              ],
+              "zh": "「I had never seen snow before」：以前從沒看過雪。",
+              "en": "had never seen snow."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "which"
+              ],
+              "zh": "「…, which helped me …」：which 指加入足球隊這件事。",
+              "en": ", which helped me — the whole idea of joining."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "every"
+              ],
+              "zh": "「every day」：每天。",
+              "en": "every day."
+            },
+            {
+              "q": "(31)",
+              "answers": [
+                "this",
+                "next",
+                "in",
+                "in the"
+              ],
+              "zh": "「this / next summer」：今年 / 明年夏天。",
+              "en": "this (next) summer."
+            },
+            {
+              "q": "(32)",
+              "answers": [
+                "what"
+              ],
+              "zh": "「what my new life looks like」：新生活「是什麼樣子」。",
+              "en": "what my new life looks like."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "CAFÉ CUSTOMERS\nOur toilets are being repaired today. Please use the ones in the shopping centre opposite. We are sorry for any problems.",
+          "tr": {
+            "zh": "咖啡館顧客請注意\n本店廁所今天維修中，請使用對面購物中心的廁所。造成不便，敬請見諒。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "The café is closed today.",
+                "Customers must go somewhere else to use a toilet.",
+                "The shopping centre toilets are closed."
+              ],
+              "answer": 1,
+              "zh": "店裡廁所維修，請「使用對面購物中心的廁所」；咖啡館照常營業。",
+              "en": "Use the toilets in the shopping centre opposite."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Leo —\nBand practice is still at 6 tonight, but we're meeting at Jack's house because the school hall is booked. Bring your guitar!\nMia",
+          "tr": {
+            "zh": "里歐：\n樂團今晚還是六點練，不過學校禮堂被借走了，所以改在傑克家。記得帶吉他！\n米亞"
+          },
+          "questions": [
+            {
+              "q": "What is Mia telling Leo?",
+              "options": [
+                "The practice will start later.",
+                "Practice has been cancelled.",
+                "The practice will be in a different place."
+              ],
+              "answer": 2,
+              "zh": "時間「還是六點」，地點改到傑克家。",
+              "en": "Still at 6, but at Jack's house."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "SWIMMING POOL\nChildren under 8 must be with an adult in the water at all times.",
+          "tr": {
+            "zh": "游泳池\n八歲以下兒童在水中必須全程有大人陪同。"
+          },
+          "questions": [
+            {
+              "q": "What does the sign say?",
+              "options": [
+                "Young children cannot swim without an adult beside them.",
+                "Children under 8 are not allowed in the pool.",
+                "Adults must stay out of the water."
+              ],
+              "answer": 0,
+              "zh": "八歲以下「在水中必須全程有大人陪同」。",
+              "en": "An adult must be with them in the water."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Dear Mr Hall,\nThank you for your order. Unfortunately, the blue jacket is out of stock until March. Would you like a refund, or shall we send the jacket in March?\nBest wishes,\nSports World",
+          "tr": {
+            "zh": "霍爾先生您好：\n感謝您的訂購。很抱歉，藍色外套要到三月才有貨。請問您要退款，還是等三月再寄外套給您？\n運動世界 敬上"
+          },
+          "questions": [
+            {
+              "q": "What does Mr Hall need to do?",
+              "options": [
+                "collect his jacket from the shop",
+                "pay more for the jacket",
+                "choose what he wants to happen"
+              ],
+              "answer": 2,
+              "zh": "店家問他「要退款，還是等三月再寄」：要他做選擇。",
+              "en": "Choose: a refund or the jacket in March."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Student card holders get 20% off all books.\nOffer not valid on magazines or sale items.",
+          "tr": {
+            "zh": "持學生證購買書籍一律八折。\n雜誌及特價品不適用。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "Students can get a discount on books.",
+                "Magazines are 20% cheaper.",
+                "Sale items cost 20% less for everyone."
+              ],
+              "answer": 0,
+              "zh": "學生證買書八折；雜誌和特價品「不適用」。",
+              "en": "20% off books for students; not magazines or sale items."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 2,
+          "ask": "en_people",
+          "bank": [
+            "Science Discovery Centre — Hands-on experiments for all ages, and a show about the stars and planets every hour. Café and gift shop. Open daily.",
+            "Toy Museum — Toys from the last 200 years. Most of them are behind glass, so it is best for adults and older children. Closed on Mondays.",
+            "Steam Railway — Ride a real steam train through the countryside. The journey takes two hours, and lunch is served on board.",
+            "City Art Gallery — Paintings from around the world. Free entry. Open late, until 10 p.m., on Fridays.",
+            "Castle Ruins — Walk around the walls of a 900-year-old castle and enjoy the views. Outdoors only, so dress for the weather.",
+            "Wildlife Park — Drive through the park and see lions, giraffes and zebras from your car. Not open to walkers.",
+            "Ocean Aquarium — See sharks, turtles and thousands of fish. Feeding time is at 2 p.m. Everything is indoors.",
+            "Craft Village — Watch glass-blowers and potters at work, then make something yourself to take home. Booking needed."
+          ],
+          "tr": {
+            "zh": "A 科學探索中心：適合各年齡的動手實驗，每小時一場星星和行星的表演，有咖啡館和禮品店，每天開放。\nB 玩具博物館：過去兩百年的玩具，大多放在玻璃後面，最適合大人和大一點的孩子，週一休館。\nC 蒸汽火車：搭真正的蒸汽火車穿越鄉間，車程兩小時，車上供應午餐。\nD 市立美術館：世界各地的畫作，免費入場，週五開到晚上十點。\nE 城堡遺跡：沿著九百年古堡的城牆散步、欣賞風景，全在戶外，請依天氣穿著。\nF 野生動物園：開車進園，從車裡看獅子、長頸鹿和斑馬，不開放步行。\nG 海洋水族館：看鯊魚、海龜和成千上萬的魚，下午兩點餵食，全在室內。\nH 手工藝村：看玻璃工匠和陶藝師工作，再自己做一件帶回家，需要預約。"
+          },
+          "questions": [
+            {
+              "q": "Paul wants to see wild animals, but he doesn't have a car. It might rain, so he'd like to be inside.",
+              "answer": "G",
+              "zh": "想看動物、沒車、要在室內：G 水族館全在室內；F 要開車。",
+              "en": "Ocean Aquarium: indoors; the Wildlife Park needs a car."
+            },
+            {
+              "q": "Sofia wants to make something with her hands and take it home with her.",
+              "answer": "H",
+              "zh": "想自己動手做、帶回家：H 手工藝村「自己做一件帶回家」。",
+              "en": "Craft Village: make something to take home."
+            },
+            {
+              "q": "Jamal and his friends want to look at pictures. They have no money and can only go on a Friday evening.",
+              "answer": "D",
+              "zh": "看畫、沒錢、只有週五晚上：D 美術館免費、週五開到十點。",
+              "en": "City Art Gallery: free, open late on Fridays."
+            },
+            {
+              "q": "The Browns want a day out where their young children can touch things and learn about the stars.",
+              "answer": "A",
+              "zh": "小孩能動手、認識星星：A 科學中心有動手實驗和星星表演；B 玩具都在玻璃後面。",
+              "en": "Science Discovery Centre: hands-on, the stars; toys are behind glass."
+            },
+            {
+              "q": "Ellen loves history and old buildings, and she wants to be outside enjoying the views.",
+              "answer": "E",
+              "zh": "喜歡歷史和古建築、想在戶外看風景：E 城堡遺跡。",
+              "en": "Castle Ruins: history, outdoors, views."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "Rescue on the mountain\nTom Baker, 34, is a teacher by day. But several times a month his phone rings in the middle of the night, and he has to leave his warm bed to help someone in trouble on the mountains near his home. Tom is one of forty volunteers in the local mountain rescue team.\n'I grew up walking in these hills with my father,' he explains. 'When I was twenty, a friend of mine broke her leg up here, and the rescue team carried her down in the dark. I joined the next year because I wanted to give something back.'\nTraining takes at least a year. Volunteers learn first aid, how to use maps and radios, and how to carry a person safely down steep ground. 'The hardest part isn't the physical work,' Tom says. 'It's staying calm when someone is frightened or badly hurt.'\nMost of the people the team helps are walkers who have got lost or been caught by bad weather. 'People often look at a sunny sky in the morning and don't take warm clothes,' says Tom. 'But up here, the weather can change in twenty minutes.' He advises walkers to always tell someone their plans and to carry a fully charged phone.\nThe team is not paid, and it depends on gifts from the public to buy equipment. Last year local people raised enough money for a new vehicle. 'It's a hard job,' Tom says, 'but when you bring someone home safely, there's no better feeling.'",
+          "tr": {
+            "zh": "山上的救援\n三十四歲的湯姆·貝克白天是老師。但每個月有好幾次，他的手機會在半夜響起，他得離開溫暖的床，去家附近的山上幫助遇到麻煩的人。湯姆是當地山難救援隊四十位志工之一。\n「我從小跟爸爸在這些山裡健行，」他說，「我二十歲那年，一個朋友在山上摔斷了腿，救援隊在黑暗中把她抬下山。第二年我就加入了，因為我想回饋。」\n訓練至少要一年。志工要學急救、看地圖和用無線電，還有怎麼把人安全地從陡坡抬下來。「最難的不是體力活，」湯姆說，「而是在對方害怕或傷得很重時保持冷靜。」\n救援隊幫助的大多是迷路或碰上壞天氣的登山客。「很多人早上看天空晴朗，就不帶保暖衣物，」湯姆說，「可是在山上，天氣二十分鐘就能變。」他建議登山客一定要把計畫告訴別人，並帶著充飽電的手機。\n救援隊沒有薪水，靠民眾捐款買裝備。去年當地居民募到了足夠買一台新車的錢。「這工作很辛苦，」湯姆說，「但把人平安帶回家，沒有比這更好的感覺了。」"
+          },
+          "questions": [
+            {
+              "q": "Why did Tom join the rescue team?",
+              "options": [
+                "His father was a member.",
+                "He wanted to help after a friend was rescued.",
+                "His school asked him to.",
+                "He needed a second job."
+              ],
+              "answer": 1,
+              "zh": "朋友摔斷腿被救下山，「我想回饋」。",
+              "en": "After his friend was rescued, he wanted to give something back."
+            },
+            {
+              "q": "What does Tom find most difficult?",
+              "options": [
+                "carrying people",
+                "using radios",
+                "keeping calm in difficult situations",
+                "getting up at night"
+              ],
+              "answer": 2,
+              "zh": "最難的「是在對方害怕或傷得很重時保持冷靜」，不是體力活。",
+              "en": "Staying calm, not the physical work."
+            },
+            {
+              "q": "Why do walkers often get into trouble?",
+              "options": [
+                "They walk at night.",
+                "They don't know the paths.",
+                "Their phones don't work in the mountains.",
+                "They don't prepare for changes in the weather."
+              ],
+              "answer": 3,
+              "zh": "早上天晴就不帶保暖衣物，但山上天氣二十分鐘就變。",
+              "en": "Sunny mornings, no warm clothes, sudden changes."
+            },
+            {
+              "q": "What advice does Tom give walkers?",
+              "options": [
+                "Let someone know where you are going.",
+                "Never walk alone.",
+                "Only walk in the morning.",
+                "Buy a map before you go."
+              ],
+              "answer": 0,
+              "zh": "「一定要把計畫告訴別人」，還要帶充飽電的手機。",
+              "en": "Tell someone their plans."
+            },
+            {
+              "q": "How does the team get its equipment?",
+              "options": [
+                "The government pays for it.",
+                "Volunteers buy their own.",
+                "Members of the public give money.",
+                "Walkers pay for rescues."
+              ],
+              "answer": 2,
+              "zh": "「靠民眾捐款買裝備」。",
+              "en": "Gifts from the public."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 4,
+          "ask": "en_gapped",
+          "text": "Growing up with a twin\nPeople often ask me what it's like to have a twin sister. The truth is, I don't know what it's like not to have one! (16) ＿＿＿＿＿\nWhen we were small, our parents dressed us in the same clothes, and even our teachers mixed us up. (17) ＿＿＿＿＿ We used to swap places in class to confuse them, although we always got caught in the end.\nAs we got older, we started to want different things. Lucy loved sport, while I preferred art and music. (18) ＿＿＿＿＿ For the first time, we had different friends and spent our weekends apart.\nAt sixteen, Lucy decided to go to a sports college in another city. (19) ＿＿＿＿＿ I missed her terribly, but it also helped me discover who I was on my own.\nNow we're twenty-five and live in different countries, but we talk almost every day. (20) ＿＿＿＿＿ And whenever we meet, it feels as if we've never been apart.",
+          "bank": [
+            "This was difficult for both of us at first.",
+            "Lucy has always been taller than me.",
+            "It was quite funny, and we took advantage of it.",
+            "We still wear the same clothes today.",
+            "Sometimes we even say the same thing at the same moment.",
+            "We've been together since before we were born.",
+            "Our house was always very quiet.",
+            "It was the first time we had lived apart."
+          ],
+          "tr": {
+            "zh": "和雙胞胎一起長大\n常有人問我有雙胞胎姊妹是什麼感覺。老實說，我不知道沒有雙胞胎是什麼感覺！我們還沒出生就在一起了。\n小時候爸媽讓我們穿一樣的衣服，連老師都會把我們搞混。這很好笑，我們也趁機利用了這點：我們會在課堂上互換位置，讓老師搞不清楚，不過最後總是被抓到。\n長大一點，我們開始想要不同的東西。露西喜歡運動，我比較喜歡藝術和音樂。一開始這對我們兩個都很難。我們第一次有了不同的朋友，週末也各過各的。\n十六歲時，露西決定去另一個城市讀體育學校。那是我們第一次分開住。我非常想她，但這也讓我發現自己一個人是什麼樣子。\n現在我們二十五歲，住在不同的國家，但幾乎每天都聊天。有時候我們甚至會同時說出一樣的話。每次見面，都覺得好像從來沒分開過。"
+          },
+          "questions": [
+            {
+              "answer": "F",
+              "zh": "不知道沒有雙胞胎是什麼感覺，因為「我們還沒出生就在一起了」。",
+              "en": "Together since before they were born."
+            },
+            {
+              "answer": "C",
+              "zh": "連老師都搞混，「這很好笑，我們也趁機利用了這點」：接著說互換位置。",
+              "en": "Funny, and they took advantage — by swapping places."
+            },
+            {
+              "answer": "A",
+              "zh": "開始想要不同的東西，「一開始這對我們兩個都很難」。",
+              "en": "Wanting different things was hard at first."
+            },
+            {
+              "answer": "H",
+              "zh": "露西去另一個城市讀書：「那是我們第一次分開住」。",
+              "en": "The first time they lived apart."
+            },
+            {
+              "answer": "E",
+              "zh": "幾乎每天聊天，有時還「同時說出一樣的話」。B、D、G 是多出來的。",
+              "en": "They even say the same thing at once. B, D and G are extra."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_cloze",
+          "n_options": 4,
+          "text": "Sleep and teenagers\nScientists say that teenagers need about nine hours of sleep a night, but most of them get much (21) ＿＿＿＿＿ than that. One reason is that teenagers' bodies naturally want to go to bed later. Another is that many teenagers use their phones in bed, and the light from the screen can (22) ＿＿＿＿＿ it harder to fall asleep. Not getting enough sleep can (23) ＿＿＿＿＿ concentration at school and even affect people's moods. Some schools have decided to (24) ＿＿＿＿＿ the school day later, and teachers say students are more awake in lessons. Experts suggest (25) ＿＿＿＿＿ phones out of the bedroom and going to bed at the same time every night, (26) ＿＿＿＿＿ at weekends.",
+          "tr": {
+            "zh": "睡眠與青少年\n科學家說，青少年每晚大約需要九小時的睡眠，但大多數人睡得遠比這少。原因之一是青少年的身體天生就想晚點睡。另一個原因是很多青少年在床上用手機，螢幕的光會讓人更難入睡。睡眠不足會降低上課時的專注力，甚至影響情緒。有些學校決定把上課時間往後延，老師說學生上課時比較清醒。專家建議不要把手機放在臥室，而且每晚同一時間上床，連週末也一樣。"
+          },
+          "questions": [
+            {
+              "q": "(21)",
+              "options": [
+                "fewer",
+                "less",
+                "lower",
+                "smaller"
+              ],
+              "answer": 1,
+              "zh": "睡眠是不可數的量，「much less than」：少得多；fewer 用在可數名詞。",
+              "en": "much less — sleep is uncountable."
+            },
+            {
+              "q": "(22)",
+              "options": [
+                "do",
+                "have",
+                "make",
+                "get"
+              ],
+              "answer": 2,
+              "zh": "「make it harder to …」：讓……更難。",
+              "en": "make it harder."
+            },
+            {
+              "q": "(23)",
+              "options": [
+                "reduce",
+                "drop",
+                "fall",
+                "lose"
+              ],
+              "answer": 0,
+              "zh": "「reduce concentration」：降低專注力；drop / fall 不接受詞。",
+              "en": "reduce concentration; drop and fall take no object here."
+            },
+            {
+              "q": "(24)",
+              "options": [
+                "go",
+                "come",
+                "run",
+                "start"
+              ],
+              "answer": 3,
+              "zh": "「start the school day later」：上課時間往後延。",
+              "en": "start the school day later."
+            },
+            {
+              "q": "(25)",
+              "options": [
+                "staying",
+                "keeping",
+                "having",
+                "holding"
+              ],
+              "answer": 1,
+              "zh": "「keep phones out of the bedroom」：不讓手機進臥室。",
+              "en": "keeping phones out of the bedroom."
+            },
+            {
+              "q": "(26)",
+              "options": [
+                "still",
+                "yet",
+                "even",
+                "already"
+              ],
+              "answer": 2,
+              "zh": "「even at weekends」：連週末也一樣。",
+              "en": "even at weekends."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 6,
+          "ask": "en_open",
+          "text": "The Great Library Book Sale\nEvery year our town library holds a book sale to raise money for new books. This year it will take place (27) ＿＿＿＿＿ Saturday 14th October, from 10 a.m. to 4 p.m. There will be thousands of books for sale, and most of them cost (28) ＿＿＿＿＿ than a pound. If you have any books (29) ＿＿＿＿＿ you no longer want, please bring them to the library before the 10th. We are also looking for volunteers to help on the day. You don't need any experience — just a smile! Anyone who would (30) ＿＿＿＿＿ to help should speak to Mrs Owen at the front desk. Last year we raised over £2,000, (31) ＿＿＿＿＿ we hope to do even better this year. See you (32) ＿＿＿＿＿!",
+          "tr": {
+            "zh": "圖書館大書展\n我們鎮立圖書館每年都會辦書展，為買新書募款。今年的書展在十月十四日星期六，早上十點到下午四點。會有好幾千本書出售，大部分不到一英鎊。如果你有不想要的書，請在十日前拿到圖書館。我們也在招募當天幫忙的志工。不需要任何經驗，只要帶著笑容！想幫忙的人請到服務台找歐文太太。去年我們募到超過兩千英鎊，希望今年做得更好。到時候見！"
+          },
+          "questions": [
+            {
+              "q": "(27)",
+              "answers": [
+                "on"
+              ],
+              "zh": "日期和星期幾前面用 on：on Saturday 14th October。",
+              "en": "on Saturday 14th October."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "less"
+              ],
+              "zh": "後面有 than：「less than a pound」不到一英鎊。",
+              "en": "less than a pound."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "that",
+                "which"
+              ],
+              "zh": "「books that / which you no longer want」：關係代名詞指書。",
+              "en": "books that (which) you no longer want."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "like"
+              ],
+              "zh": "「would like to help」：想要幫忙。",
+              "en": "would like to help."
+            },
+            {
+              "q": "(31)",
+              "answers": [
+                "and",
+                "so"
+              ],
+              "zh": "連接兩個子句：「…, and we hope …」。",
+              "en": ", and (so) we hope."
+            },
+            {
+              "q": "(32)",
+              "answers": [
+                "there",
+                "then"
+              ],
+              "zh": "「See you there / then!」：到時候見。",
+              "en": "See you there (then)!"
             }
           ]
         }
