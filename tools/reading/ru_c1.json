@@ -4,7 +4,7 @@
   "level": "C1",
   "order": 5,
   "n_options": 3,
-  "note": "Russian C1 reading rounds in the ТРКИ-3 format (owner's plan 2026-10-30): a long essay on slow reading ×9, three options. ⚠️ ТРКИ-3 spec not checked. Stress marks from tools/.mockups/ru_stress.py. Original text. Drafted in tools/.mockups/ru_c1.py.",
+  "note": "Russian C1 reading rounds in the ТРКИ-3 format (official ТРКИ-3 sample test, EXAMS.md 2026-11-07: 60 min, 25 questions): part 1 a long essay on slow reading ×10; part 2 an interview whose questions were taken out ×7 (en_gapped, nine questions in the bank); part 3 three documents, pick the paragraph on what happens when the rules are broken ×3 (four options); part 4 a literary passage ×5. Stress marks from tools/.mockups/ru_stress.py, answers spread by ru_spread.py. Original texts. Drafted in tools/.mockups/ru_c1.py + ru_c1_r1.py.",
   "sets": [
     {
       "id": "r1",
@@ -33,22 +33,33 @@
             {
               "q": "Чте́ние «зигза́гом» подхо́дит для…",
               "options": [
-                "рома́нов.",
                 "по́иска информа́ции.",
+                "рома́нов.",
                 "изуче́ния языко́в."
               ],
-              "answer": 1,
+              "answer": 0,
               "zh": "很適合找資訊，不適合小說。",
               "en": "Finding information, not novels."
             },
             {
-              "q": "Где, по слова́м а́втора, рожда́ется смысл рома́на?",
+              "q": "Заче́м а́втор упомина́ет иссле́дователей, следя́щих за движе́нием глаз?",
               "options": [
-                "в отде́льных слова́х",
-                "в па́узах ме́жду фра́зами",
-                "в назва́нии"
+                "что́бы поспо́рить с ни́ми",
+                "что́бы подтверди́ть свою́ мысль фа́ктами",
+                "что́бы перейти́ к друго́й те́ме"
               ],
               "answer": 1,
+              "zh": "眼動研究證明螢幕上的視線是「之」字形跳著讀，用事實支持作者的論點。",
+              "en": "Eye-tracking research backs his point with facts."
+            },
+            {
+              "q": "Где, по слова́м а́втора, рожда́ется смысл рома́на?",
+              "options": [
+                "в па́узах ме́жду фра́зами",
+                "в отде́льных слова́х",
+                "в назва́нии"
+              ],
+              "answer": 0,
               "zh": "在句子之間的停頓中。",
               "en": "In the pauses between phrases."
             },
@@ -66,11 +77,11 @@
             {
               "q": "Почему́ лю́дям тру́дно чита́ть серьёзную кни́гу?",
               "options": [
-                "Им не хвата́ет вре́мени.",
                 "Мозг привы́к к бы́строй награ́де.",
+                "Им не хвата́ет вре́мени.",
                 "Кни́ги ста́ли сложне́е."
               ],
-              "answer": 1,
+              "answer": 0,
               "zh": "習慣快速獎賞的大腦在重新調整。",
               "en": "The brain is used to quick rewards."
             },
@@ -78,10 +89,10 @@
               "q": "Что предлага́ют сторо́нники ме́дленного чте́ния?",
               "options": [
                 "отказа́ться от телефо́на навсегда́",
-                "чита́ть бума́жную кни́гу два́дцать мину́т в день",
-                "чита́ть то́лько кла́ссику"
+                "чита́ть то́лько кла́ссику",
+                "чита́ть бума́жную кни́гу два́дцать мину́т в день"
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "每天二十分鐘紙本書，房間不放手機。",
               "en": "Twenty minutes a day with a paper book."
             },
@@ -89,21 +100,21 @@
               "q": "Как а́втор отно́сится к э́тому сове́ту?",
               "options": [
                 "Счита́ет его́ бесполе́зным.",
-                "Признаёт, что он звучи́т наи́вно, но рабо́тает.",
-                "Счита́ет его́ опа́сным."
+                "Счита́ет его́ опа́сным.",
+                "Признаёт, что он звучи́т наи́вно, но рабо́тает."
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "「聽起來很天真」，但一個月後有效。",
               "en": "Naive-sounding but effective."
             },
             {
               "q": "Сравне́ние с бе́гом и прогу́лкой ну́жно а́втору, что́бы показа́ть, что…",
               "options": [
-                "бег поле́знее прогу́лки.",
                 "о́ба спо́соба чте́ния нужны́ и вы́бор до́лжен быть осо́знанным.",
+                "бег поле́знее прогу́лки.",
                 "цифрово́е чте́ние лу́чше."
               ],
-              "answer": 1,
+              "answer": 0,
               "zh": "保留兩種模式，有意識地選擇。",
               "en": "Keep both modes and choose consciously."
             },
@@ -111,12 +122,193 @@
               "q": "Како́е выска́зывание отража́ет пози́цию а́втора?",
               "options": [
                 "Цифрово́е чте́ние ну́жно запрети́ть.",
-                "Уме́ние до́лго уде́рживать внима́ние ва́жно для понима́ния ми́ра.",
-                "Литерату́ра никому́ не нужна́."
+                "Литерату́ра никому́ не нужна́.",
+                "Уме́ние до́лго уде́рживать внима́ние ва́жно для понима́ния ми́ра."
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "能長時間專注是理解複雜世界所需要的。",
               "en": "Sustained attention matters for understanding the world."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 2,
+          "ask": "en_gapped",
+          "text": "Фрагме́нт интервью́\nОтве́ты шеф-по́вара А́нны Вороно́вой корреспонде́нту журна́ла. Вопро́сы корреспонде́нта пропу́щены.\n(11) ＿＿＿＿＿\n— Соверше́нно случа́йно. Я учи́лась на юри́ста и подраба́тывала официа́нткой, что́бы плати́ть за общежи́тие. Одна́жды заболе́л по́вар, и меня́ попроси́ли помо́чь на ку́хне. Че́рез ме́сяц я забрала́ докуме́нты из университе́та.\n(12) ＿＿＿＿＿\n— Снача́ла бы́ли в у́жасе, коне́чно. Па́па полго́да со мной почти́ не разгова́ривал. Помири́лись мы, когда́ он впервы́е пришёл в мой рестора́н и мо́лча съел две по́рции.\n(13) ＿＿＿＿＿\n— Из того́, что растёт в ра́диусе двухсо́т киломе́тров. Никаки́х авока́до и ма́нго. Зимо́й э́то сло́жно: остаю́тся корнепло́ды, капу́ста, грибы́, кото́рые мы су́шим с о́сени. Но и́менно ограниче́ния заставля́ют приду́мывать.\n(14) ＿＿＿＿＿\n— Не ду́маю. Мо́да — э́то когда́ все де́лают одно́ и то же, а пото́м все броса́ют. На́ши ба́бушки гото́вили из ме́стных проду́ктов не потому́, что э́то мо́дно, а потому́, что други́х не бы́ло.\n(15) ＿＿＿＿＿\n— Терпе́ние. Тала́нтливых люде́й мно́го, но ма́ло кто гото́в три ме́сяца чи́стить о́вощи, пре́жде чем ему́ дове́рят со́ус.\n(16) ＿＿＿＿＿\n— Быва́ет, и ча́сто. Вчера́, наприме́р, гость верну́л суп, сказа́в, что он сли́шком солёный. Я попро́бовала — он был прав. Ошиба́ются все; ва́жно не де́лать вид, что оши́бки не бы́ло.\n(17) ＿＿＿＿＿\n— Откры́ть ма́ленькую кулина́рную шко́лу для подро́стков из де́тских домо́в. Профе́ссия по́вара дала́ мне опо́ру в жи́зни, и я хочу́ переда́ть её да́льше.",
+          "bank": [
+            "Како́е ка́чество вы бо́льше всего́ цени́те в молоды́х повара́х?",
+            "Как вы ста́ли по́варом?",
+            "О чём вы мечта́ете?",
+            "Из каки́х проду́ктов вы гото́вите?",
+            "Ско́лько сто́ит у́жин в ва́шем рестора́не?",
+            "Как отнесли́сь к ва́шему реше́нию роди́тели?",
+            "Случа́ется ли, что го́сти недово́льны?",
+            "Где вы учи́лись гото́вить за грани́цей?",
+            "Не ка́жется ли вам, что «ме́стная ку́хня» — э́то про́сто мо́да?"
+          ],
+          "tr": {
+            "zh": "訪談節錄\n主廚安娜‧沃羅諾娃回答雜誌記者的話。記者的問題被拿掉了。\n（11）——完全是偶然。我當時念法律，兼差當服務生付宿舍費。有一天廚師生病了，他們請我去廚房幫忙。一個月後，我就把學籍從大學辦走了。\n（12）——一開始當然嚇壞了。爸爸半年幾乎不跟我說話。我們和好，是他第一次來我的餐廳，默默吃了兩份的時候。\n（13）——用方圓兩百公里內長出來的東西。不用酪梨，也不用芒果。冬天很難：只剩根莖類、高麗菜，還有我們從秋天曬乾的菇。但正是限制逼人去發明。\n（14）——我不這麼想。流行是大家都做同一件事，然後大家都不做了。我們的祖母用在地食材做菜，不是因為流行，而是因為沒有別的。\n（15）——耐心。有才華的人很多，但很少人願意削三個月的菜，才被交付醬汁。\n（16）——有，而且常常。例如昨天有位客人把湯退回來，說太鹹。我嚐了——他說得對。每個人都會犯錯；重要的是別假裝沒犯錯。\n（17）——開一間小小的烹飪學校，給育幼院的青少年。廚師這一行給了我人生的支柱，我想把它傳下去。\nA 您最看重年輕廚師的哪一種特質？\nB 您是怎麼成為廚師的？\nC 您的夢想是什麼？\nD 您用哪些食材做菜？\nE 在您的餐廳吃一頓晚餐多少錢？\nF 您父母對您的決定有什麼反應？\nG 會有客人不滿意嗎？\nH 您在國外哪裡學做菜？\nI 您不覺得「在地料理」只是一種流行嗎？",
+            "en": "Extract from an interview\nChef Anna Voronova's answers to a magazine journalist. The journalist's questions have been left out.\n(11) — Completely by chance. I was studying law and working part-time as a waitress to pay for my hall of residence. One day the cook fell ill and they asked me to help in the kitchen. A month later I withdrew from university.\n(12) — They were horrified at first, of course. Dad hardly spoke to me for six months. We made up when he came to my restaurant for the first time and silently ate two portions.\n(13) — From what grows within two hundred kilometres. No avocados or mangoes. In winter it's hard: what's left is root vegetables, cabbage, and mushrooms we dry from the autumn. But it's precisely the limits that make you invent.\n(14) — I don't think so. A fashion is when everyone does the same thing and then everyone drops it. Our grandmothers cooked with local produce not because it was fashionable but because there was nothing else.\n(15) — Patience. There are many talented people, but few are ready to peel vegetables for three months before they're trusted with a sauce.\n(16) — It happens, and often. Yesterday, for example, a guest sent back the soup, saying it was too salty. I tasted it — he was right. Everyone makes mistakes; what matters is not to pretend there was no mistake.\n(17) — To open a small cookery school for teenagers from children's homes. Being a cook gave me something to stand on in life, and I want to pass it on.\nA What quality do you value most in young cooks?\nB How did you become a cook?\nC What do you dream of?\nD What produce do you cook with?\nE How much does dinner at your restaurant cost?\nF How did your parents react to your decision?\nG Does it happen that guests are unhappy?\nH Where abroad did you learn to cook?\nI Don't you think \"local cuisine\" is just a fashion?"
+          },
+          "questions": [
+            {
+              "q": "(11)",
+              "answer": "B",
+              "zh": "「完全是偶然」，接著講她怎麼進廚房：她怎麼成為廚師。",
+              "en": "\"By chance\" and how she got into the kitchen: how she became a cook."
+            },
+            {
+              "q": "(12)",
+              "answer": "F",
+              "zh": "爸爸半年不跟她說話：父母對她的決定的反應。",
+              "en": "Her father's silence: her parents' reaction."
+            },
+            {
+              "q": "(13)",
+              "answer": "D",
+              "zh": "方圓兩百公里內的食材：她用什麼做菜。",
+              "en": "Produce from within 200 km."
+            },
+            {
+              "q": "(14)",
+              "answer": "I",
+              "zh": "「我不這麼想。流行是……」回答的是「在地料理只是流行嗎」。",
+              "en": "\"I don't think so. A fashion is…\" answers the fashion question."
+            },
+            {
+              "q": "(15)",
+              "answer": "A",
+              "zh": "「耐心」是她看重年輕廚師的特質。",
+              "en": "Patience: the quality she values."
+            },
+            {
+              "q": "(16)",
+              "answer": "G",
+              "zh": "客人把湯退回來：會不會有客人不滿意。E 價錢、H 國外都沒有對應的回答。",
+              "en": "A guest sent back the soup; E and H have no answer."
+            },
+            {
+              "q": "(17)",
+              "answer": "C",
+              "zh": "想開烹飪學校：她的夢想。",
+              "en": "A cookery school: her dream."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "Прочита́йте три те́кста. В ка́ждом те́ксте вы́берите пункт, в кото́ром говори́тся о том, что ждёт челове́ка, нару́шившего пра́вила.\nТекст 3. Из пра́вил по́льзования городско́й библиоте́кой\n1. Чита́телем библиоте́ки мо́жет стать любо́й челове́к ста́рше четы́рнадцати лет, предъяви́вший па́спорт.\n2. Кни́ги выдаю́тся на срок до тридцати́ дней. Срок мо́жно оди́н раз продли́ть по телефо́ну и́ли на са́йте библиоте́ки.\n3. Чита́тель, верну́вший кни́гу с опозда́нием и́ли в повреждённом ви́де, на три ме́сяца лиша́ется пра́ва брать кни́ги на дом; уте́рянную кни́гу он обя́зан замени́ть тако́й же и́ли равноце́нной.\n4. Ре́дкие изда́ния выдаю́тся то́лько в чита́льном за́ле.\nТекст 4. Из догово́ра аре́нды кварти́ры\n1. Аренда́тор вно́сит пла́ту не поздне́е пя́того числа́ ка́ждого ме́сяца.\n2. Владе́лец обя́зан предупрежда́ть аренда́тора о своём визи́те не ме́нее чем за су́тки.\n3. Аренда́тор не впра́ве сдава́ть кварти́ру тре́тьим ли́цам и держа́ть в ней дома́шних живо́тных без пи́сьменного согла́сия владе́льца.\n4. При наруше́нии усло́вий пу́нкта 3 владе́лец впра́ве досро́чно расто́ргнуть догово́р; зало́г в э́том слу́чае аренда́тору не возвраща́ется.\nТекст 5. Из положе́ния о ко́нкурсе молоды́х перево́дчиков\n1. В ко́нкурсе мо́гут уча́ствовать перево́дчики в во́зрасте до тридцати́ пяти́ лет.\n2. Рабо́ты принима́ются до пе́рвого ма́рта по электро́нной по́чте.\n3. Рабо́та, в кото́рой обнару́жено испо́льзование маши́нного перево́да, снима́ется с ко́нкурса, а её а́втор не допуска́ется к уча́стию в сле́дующем году́.\n4. Победи́тели получа́ют де́нежную пре́мию, а их перево́ды публику́ются в журна́ле.",
+          "tr": {
+            "zh": "請讀三篇文字。每篇選出說明違規者會有什麼後果的那一條。\n文 3　市立圖書館使用規則（節錄）\n1. 年滿十四歲、出示護照者，都可成為圖書館讀者。\n2. 書籍借期最長三十天。可透過電話或圖書館網站續借一次。\n3. 逾期歸還或歸還時有損壞的讀者，三個月內不得外借書籍；遺失的書須以相同或同等的書賠償。\n4. 珍本只能在閱覽室閱讀。\n文 4　房屋租賃契約（節錄）\n1. 承租人最遲於每月五日繳納租金。\n2. 屋主來訪須至少提前一天通知承租人。\n3. 未經屋主書面同意，承租人不得將房屋轉租第三人，也不得在屋內飼養寵物。\n4. 違反第 3 條規定時，屋主有權提前解約；此時押金不予退還。\n文 5　青年譯者競賽辦法（節錄）\n1. 三十五歲以下的譯者可參加競賽。\n2. 作品以電子郵件收件，截止日為三月一日。\n3. 經查使用機器翻譯的作品取消參賽資格，作者次年不得參加。\n4. 優勝者獲得獎金，譯作刊登於雜誌。",
+            "en": "Read three texts. In each, choose the point that says what awaits someone who breaks the rules.\nText 3. From the rules of the city library\n1. Anyone over fourteen who shows a passport may become a reader.\n2. Books are lent for up to thirty days. The loan may be extended once by phone or on the library website.\n3. A reader who returns a book late or damaged loses the right to take books home for three months; a lost book must be replaced with the same or an equivalent one.\n4. Rare editions are available only in the reading room.\nText 4. From a flat rental agreement\n1. The tenant pays the rent no later than the fifth of each month.\n2. The owner must notify the tenant of a visit at least a day in advance.\n3. The tenant may not sublet the flat to third parties or keep pets in it without the owner's written consent.\n4. If the terms of point 3 are broken, the owner may terminate the agreement early; the deposit is then not returned.\nText 5. From the rules of a young translators' competition\n1. Translators up to the age of thirty-five may take part.\n2. Entries are accepted by email until 1 March.\n3. An entry found to use machine translation is withdrawn from the competition, and its author may not take part the following year.\n4. The winners receive a cash prize, and their translations are published in a magazine."
+          },
+          "questions": [
+            {
+              "q": "Текст 3 (библиоте́ка):",
+              "options": [
+                "пункт 1",
+                "пункт 2",
+                "пункт 3",
+                "пункт 4"
+              ],
+              "answer": 2,
+              "zh": "第 3 條：逾期或損壞，三個月不得外借。第 2 條只講借期。",
+              "en": "Point 3: late or damaged books, three months without loans; point 2 is only the loan period."
+            },
+            {
+              "q": "Текст 4 (аре́нда):",
+              "options": [
+                "пункт 1",
+                "пункт 2",
+                "пункт 3",
+                "пункт 4"
+              ],
+              "answer": 3,
+              "zh": "第 4 條：違反第 3 條就可解約、不退押金。第 3 條只說不准做什麼，沒說後果。",
+              "en": "Point 4: termination and the deposit kept; point 3 only states the rule."
+            },
+            {
+              "q": "Текст 5 (ко́нкурс):",
+              "options": [
+                "пункт 1",
+                "пункт 2",
+                "пункт 3",
+                "пункт 4"
+              ],
+              "answer": 2,
+              "zh": "第 3 條：用機器翻譯就取消資格、次年不得參加。",
+              "en": "Point 3: disqualified and barred the next year."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_long",
+          "text": "Прочита́йте отры́вок из расска́за и отве́тьте на вопро́сы.\nПо́езд опа́здывал уже́ на со́рок мину́т, и в за́ле ожида́ния, жа́рко нато́пленном и пропа́хшем мо́крыми шу́бами, станови́лось всё тесне́е. Ве́ра Никола́евна сиде́ла у о́кна, держа́ на коле́нях небольшо́й свёрток, перевя́занный бечёвкой, и вре́мя от вре́мени погля́дывала на часы́, хотя́ прекра́сно зна́ла, кото́рый час.\nОна́ ждала́ сы́на, кото́рого не ви́дела шесть лет. За э́ти го́ды она́ успе́ла вы́йти на пе́нсию, похорони́ть сестру́ и научи́ться говори́ть о нём с сосе́дками споко́йно, почти́ равноду́шно: «Рабо́тает в Новосиби́рске, у него́ семья́, ему́ не́когда». Сосе́дки кива́ли и не расспра́шивали, и она́ была́ им за э́то благода́рна.\nВ свёртке лежа́л шарф, кото́рый она́ вяза́ла всю о́сень. Два́жды она́ распуска́ла его́, недово́льная узо́ром, и тепе́рь, гля́дя на мелька́ющие за окно́м огни́, вдруг поду́мала, что сын, должно́ быть, давно́ не но́сит таки́х веще́й и, пожа́луй, улыбнётся из ве́жливости.\nКогда́ наконе́ц объяви́ли по́езд, она́ не вста́ла сра́зу, а ещё с мину́ту сиде́ла, бу́дто боя́лась, что, подня́вшись, спугнёт что-то хру́пкое. Пото́м попра́вила плато́к, взяла́ свёрток и пошла́ к вы́ходу — неторопли́во, как ходи́ла всю жизнь, когда́ шла на уро́к в класс, где её жда́ли.",
+          "tr": {
+            "zh": "請讀一段小說節錄，回答問題。\n火車已經誤點四十分鐘了，暖氣燒得很熱、滿是濕毛皮大衣味道的候車室越來越擠。薇拉‧尼古拉耶夫娜坐在窗邊，膝上放著一個用細繩綁好的小包裹，時不時看一眼錶，雖然她很清楚現在幾點。\n她在等兒子，六年沒見了。這些年裡，她退休了，送走了姊姊，也學會了跟鄰居平靜地、幾乎是無所謂地談起他：「在新西伯利亞工作，有家庭了，他很忙。」鄰居們點點頭，不多問，她很感謝她們這一點。\n包裹裡是一條她織了一整個秋天的圍巾。她嫌花樣不好，拆掉重織了兩次；現在望著窗外閃過的燈火，她忽然想到，兒子大概早就不戴這種東西了，也許會出於禮貌笑一笑。\n終於廣播火車到站時，她沒有馬上站起來，又坐了一分鐘左右，好像怕一站起來，就會把某種脆弱的東西嚇跑。然後她整了整頭巾，拿起包裹，朝出口走去——不慌不忙，就像她一輩子走進有人在等她的教室去上課時那樣。",
+            "en": "Read an extract from a story and answer the questions.\nThe train was already forty minutes late, and the waiting room, overheated and smelling of wet fur coats, was getting more and more crowded. Vera Nikolaevna sat by the window, holding on her knees a small parcel tied with string, and every now and then glanced at the clock, although she knew perfectly well what time it was.\nShe was waiting for her son, whom she had not seen for six years. In those years she had retired, buried her sister and learnt to speak of him to the neighbours calmly, almost indifferently: \"He works in Novosibirsk, he has a family, he's busy.\" The neighbours nodded and asked no more, and she was grateful to them for that.\nIn the parcel lay a scarf she had been knitting all autumn. Twice she had unravelled it, unhappy with the pattern, and now, watching the lights flashing past outside the window, she suddenly thought that her son had probably long stopped wearing such things and would perhaps smile out of politeness.\nWhen the train was finally announced, she did not stand up at once but sat for another minute or so, as if afraid that by rising she would frighten away something fragile. Then she straightened her headscarf, took the parcel and walked to the exit — unhurriedly, the way she had walked all her life when going to a lesson in a classroom where they were waiting for her."
+          },
+          "questions": [
+            {
+              "q": "Ве́ра Никола́евна ждёт…",
+              "options": [
+                "сестру́.",
+                "сосе́дку.",
+                "сы́на, кото́рого давно́ не ви́дела."
+              ],
+              "answer": 2,
+              "zh": "等六年沒見的兒子；姊姊已經過世了。",
+              "en": "Her son, unseen for six years; her sister has died."
+            },
+            {
+              "q": "Как она́ говори́т о сы́не с сосе́дками?",
+              "options": [
+                "споко́йно, почти́ равноду́шно",
+                "с го́рдостью и подро́бно",
+                "с оби́дой и слеза́ми"
+              ],
+              "answer": 0,
+              "zh": "「平靜地、幾乎是無所謂地」——這是她「學會」的，不是真的不在乎。",
+              "en": "\"Calmly, almost indifferently\" — something she learnt, not what she feels."
+            },
+            {
+              "q": "За что она́ благода́рна сосе́дкам?",
+              "options": [
+                "за по́мощь с ша́рфом",
+                "за то, что они́ не задаю́т вопро́сов",
+                "за то, что они́ пришли́ на вокза́л"
+              ],
+              "answer": 1,
+              "zh": "鄰居不多問，她很感謝。",
+              "en": "They ask no more questions."
+            },
+            {
+              "q": "Что она́ вдруг поду́мала о ша́рфе?",
+              "options": [
+                "что он сли́шком коро́ткий",
+                "что сын, мо́жет быть, не ста́нет его́ носи́ть",
+                "что его́ ну́жно распусти́ть ещё раз"
+              ],
+              "answer": 1,
+              "zh": "兒子大概早就不戴這種東西，也許只是出於禮貌笑一笑。拆掉重織是以前的事。",
+              "en": "Her son may no longer wear such things; the unravelling was earlier."
+            },
+            {
+              "q": "После́дняя фра́за отры́вка пока́зывает, что Ве́ра Никола́евна…",
+              "options": [
+                "бои́тся опозда́ть на по́езд.",
+                "рабо́тает на вокза́ле.",
+                "всю жизнь рабо́тала учи́тельницей."
+              ],
+              "answer": 2,
+              "zh": "她一輩子「走進有人在等她的教室去上課」：她以前是老師。",
+              "en": "All her life she walked to lessons in a classroom: she was a teacher."
             }
           ]
         }

@@ -4,7 +4,7 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "Russian B2 reading rounds in the ТРКИ-2 format (owner's plan 2026-10-30): a popular-science article on how we feel time ×6, a teacher's essay on classics at school ×6; 12 questions, three options. ⚠️ after the mock papers (the real paper has 25). Stress marks from tools/.mockups/ru_stress.py. Original texts. Drafted in tools/.mockups/ru_b2.py.",
+  "note": "Russian B2 reading rounds in the ТРКИ-2 format (official ТРКИ-2 sample test, EXAMS.md 2026-11-07: 60 min, 25 questions, three options — part 1 texts 1 and 2 (1–8, 9–15), part 2 a literary text (16–25)): a popular-science article on how we feel time ×8, a teacher's essay on classics at school ×7, a short story ×10. Stress marks from tools/.mockups/ru_stress.py, answers spread by ru_spread.py. Original texts. Drafted in tools/.mockups/ru_b2.py.",
   "sets": [
     {
       "id": "r1",
@@ -34,21 +34,43 @@
               "q": "Пери́од с больши́м коли́чеством но́вой информа́ции в воспомина́ниях ка́жется…",
               "options": [
                 "коро́че.",
-                "длинне́е.",
-                "скучне́е."
+                "скучне́е.",
+                "длинне́е."
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "記下更多資訊，回憶裡顯得比較長。",
               "en": "Longer."
             },
             {
+              "q": "Выраже́ние «ме́сяцы слива́ются в одно́ пятно́» зна́чит, что ме́сяцы…",
+              "options": [
+                "в па́мяти стано́вятся одни́м це́лым.",
+                "ка́жутся неприя́тными.",
+                "прохо́дят о́чень ме́дленно."
+              ],
+              "answer": 0,
+              "zh": "日子太像，大腦「節省」記憶，好幾個月在回憶裡融成一團。",
+              "en": "Days are alike, so in memory the months merge into one."
+            },
+            {
+              "q": "Почему́ в де́тстве вре́мя ка́жется длинне́е?",
+              "options": [
+                "Де́ти бо́льше спят.",
+                "У дете́й нет расписа́ния.",
+                "Почти́ всё происхо́дит впервы́е."
+              ],
+              "answer": 2,
+              "zh": "小時候幾乎一切都是第一次。",
+              "en": "Almost everything happens for the first time."
+            },
+            {
               "q": "Почему́ взро́слым ка́жется, что вре́мя идёт быстре́е?",
               "options": [
-                "Они́ бо́льше рабо́тают.",
                 "В их жи́зни ме́ньше но́вого.",
+                "Они́ бо́льше рабо́тают.",
                 "Они́ ме́ньше спят."
               ],
-              "answer": 1,
+              "answer": 0,
               "zh": "大人照習慣作息，新事件少得多。",
               "en": "Fewer new events."
             },
@@ -56,10 +78,10 @@
               "q": "Что́бы «заме́длить» вре́мя, а́втор сове́тует…",
               "options": [
                 "обяза́тельно путеше́ствовать далеко́.",
-                "меня́ть привы́чки и узнава́ть но́вое.",
-                "бо́льше отдыха́ть до́ма."
+                "бо́льше отдыха́ть до́ма.",
+                "меня́ть привы́чки и узнава́ть но́вое."
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "不一定要去天涯海角，改變路線、學新東西就夠。",
               "en": "Change routines, learn new things; no need to go far."
             },
@@ -67,10 +89,10 @@
               "q": "Что а́втор говори́т о стре́ссе?",
               "options": [
                 "Он ускоря́ет вре́мя.",
-                "Он то́же замедля́ет вре́мя, но э́то неприя́тно.",
-                "Он помога́ет запомина́ть."
+                "Он помога́ет запомина́ть.",
+                "Он то́же замедля́ет вре́мя, но э́то неприя́тно."
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "壓力時時間也顯得沒有盡頭，但沒有人想要。",
               "en": "Time also seems endless, but nobody wants that."
             },
@@ -100,11 +122,11 @@
             {
               "q": "А́втор те́кста —",
               "options": [
-                "шко́льник.",
                 "учи́тель литерату́ры.",
+                "шко́льник.",
                 "писа́тель."
               ],
-              "answer": 1,
+              "answer": 0,
               "zh": "「我教文學二十年了」。",
               "en": "She has taught literature for twenty years."
             },
@@ -131,13 +153,24 @@
               "en": "To give a key to culture."
             },
             {
-              "q": "Почему́ кла́ссику называ́ют «о́бщим языко́м поколе́ний»?",
+              "q": "Что, по мне́нию а́втора, оста́нется непоня́тным без зна́ния кла́ссики?",
               "options": [
-                "Её чита́ют лю́ди ра́зного во́зраста.",
-                "Она́ напи́сана просты́м языко́м.",
-                "Её изуча́ют во всех стра́нах."
+                "мно́гие разгово́ры, фи́льмы и шу́тки",
+                "шко́льные экза́мены",
+                "совреме́нные кни́ги"
               ],
               "answer": 0,
+              "zh": "沒有這把鑰匙，很多談話、電影甚至笑話都會聽不懂。",
+              "en": "Many conversations, films and even jokes."
+            },
+            {
+              "q": "Почему́ кла́ссику называ́ют «о́бщим языко́м поколе́ний»?",
+              "options": [
+                "Она́ напи́сана просты́м языко́м.",
+                "Её чита́ют лю́ди ра́зного во́зраста.",
+                "Её изуча́ют во всех стра́нах."
+              ],
+              "answer": 1,
               "zh": "讀過同一本書，孫子和爺爺能一起討論。",
               "en": "Grandson and grandfather can discuss the same book."
             },
@@ -145,10 +178,10 @@
               "q": "Како́й ме́тод а́втор крити́кует?",
               "options": [
                 "сравне́ние геро́ев с совреме́нными людьми́",
-                "зау́чивание того́, что «хоте́л сказа́ть а́втор»",
-                "чте́ние совреме́нных книг"
+                "чте́ние совреме́нных книг",
+                "зау́чивание того́, что «хоте́л сказа́ть а́втор»"
               ],
-              "answer": 1,
+              "answer": 2,
               "zh": "死背「作者想說什麼」會扼殺興趣。",
               "en": "Learning \"what the author meant\" by heart."
             },
@@ -162,6 +195,128 @@
               "answer": 1,
               "zh": "「允許學生不同意作家」。",
               "en": "Letting pupils disagree with the writer."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "После́дний сни́мок (расска́з)\nМастерска́я Семёна Ильича́ помеща́лась в полуподва́ле на углу́ Садо́вой у́лицы, и, что́бы попа́сть в неё, ну́жно бы́ло спусти́ться на четы́ре ступе́ньки. В де́тстве Андре́ю каза́лось, что за э́той две́рью начина́ется друго́й мир: па́хло химика́тами, на стена́х висе́ли чёрно-бе́лые ли́ца, а сам фото́граф, высо́кий и суту́лый, говори́л так ти́хо, что к нему́ приходи́лось наклоня́ться.\nПрошло́ два́дцать лет. Андре́й прие́хал в родно́й го́род на два дня — прода́ть кварти́ру ма́тери — и, проходя́ по Садо́вой, с удивле́нием уви́дел знако́мую вы́веску. Бу́квы вы́цвели, одна́ совсе́м отвали́лась, но дверь была́ откры́та.\nСемён Ильи́ч почти́ не измени́лся, то́лько стал ещё ти́ше. Он узна́л Андре́я не сра́зу, а когда́ узна́л, до́лго держа́л его́ ру́ку в свое́й и молча́л.\n— Сейча́с все снима́ют телефо́нами, — сказа́л он наконе́ц, без вся́кой оби́ды. — Ко мне прихо́дят раз в неде́лю, на докуме́нты. А я всё равно́ открыва́ю ка́ждое у́тро. Привы́чка.\nАндре́й хоте́л сказа́ть что-то утеши́тельное, но не нашёл слов. Вме́сто э́того он спроси́л, сохрани́лись ли ста́рые негати́вы. Стари́к оживи́лся. Из-под стола́ появи́лись коро́бки, подпи́санные аккура́тным по́черком: го́ды, у́лицы, фами́лии. Че́рез полчаса́ Андре́й держа́л в рука́х сни́мок, кото́рого никогда́ не ви́дел: мать, совсе́м молода́я, смеётся, закрыва́я лицо́ ладо́нью от со́лнца.\n— Она́ не хоте́ла фотографи́роваться, — сказа́л Семён Ильи́ч. — Говори́ла, что пло́хо получа́ется. А я щёлкнул, когда́ она́ не смотре́ла. Са́мые лу́чшие сни́мки всегда́ так и получа́ются.\nАндре́й заплати́л бы за э́ту фотогра́фию лю́бые де́ньги, но стари́к де́нег не взял. Он попроси́л то́лько об одно́м: что́бы Андре́й пришёл за́втра и сфотографи́ровался сам — «на па́мять, по-настоя́щему, а не в телефо́н».\nНа сле́дующее у́тро Андре́й пришёл. Он сиде́л на ста́ром сту́ле под горяче́й ла́мпой, и ему́ сно́ва бы́ло де́сять лет. Кварти́ру он так и не про́дал — реши́л, что прие́дет ещё.",
+          "tr": {
+            "zh": "最後一張照片（短篇小說）\n謝苗‧伊里奇的照相館在花園街轉角的半地下室，要進去得往下走四階。小時候安德烈覺得那扇門後是另一個世界：有藥水的味道，牆上掛著黑白的臉孔，攝影師本人又高又駝背，說話小聲到得湊過去才聽得到。\n二十年過去了。安德烈回故鄉兩天，要賣掉母親的房子；走過花園街時，他驚訝地看見熟悉的招牌。字褪色了，有一個字母整個掉了，但門開著。\n謝苗‧伊里奇幾乎沒變，只是更安靜了。他沒有馬上認出安德烈，認出來以後，握著他的手很久，一句話也沒說。\n「現在大家都用手機拍了，」他終於說，一點也沒有埋怨的意思。「一週有人來一次，拍證件照。但我還是每天早上開門。習慣了。」\n安德烈想說點安慰的話，卻找不到字眼。他改問老底片還在不在。老人一下子有了精神。桌子底下搬出一個個箱子，上面用工整的字寫著年份、街名、姓氏。半小時後，安德烈手裡拿著一張他從沒看過的照片：母親很年輕，笑著用手掌遮住臉擋太陽。\n「她不想拍照，」謝苗‧伊里奇說。「說自己拍起來不好看。我是趁她沒在看的時候按下快門的。最好的照片總是這樣拍出來的。」\n安德烈願意為這張照片付任何價錢，但老人不收錢。他只要求一件事：安德烈明天來，自己拍一張——「留作紀念，真正的照片，不是手機拍的」。\n第二天早上安德烈來了。他坐在熱燙的燈下那張舊椅子上，又變回十歲。房子他終究沒有賣——他決定還要再回來。",
+            "en": "The last photograph (a story)\nSemyon Ilyich's studio was in a semi-basement on the corner of Sadovaya Street, and to get in you had to go down four steps. As a child Andrei felt that another world began behind that door: it smelt of chemicals, black-and-white faces hung on the walls, and the photographer himself, tall and stooping, spoke so quietly that you had to lean towards him.\nTwenty years passed. Andrei came to his home town for two days — to sell his mother's flat — and, walking along Sadovaya, was surprised to see the familiar sign. The letters had faded, one had fallen off completely, but the door was open.\nSemyon Ilyich had hardly changed, only grown even quieter. He did not recognise Andrei at once, and when he did, he held his hand in his own for a long time and said nothing.\n\"Everyone takes pictures with their phones now,\" he said at last, without any resentment. \"People come to me once a week, for documents. But I still open every morning. Habit.\"\nAndrei wanted to say something comforting but could not find the words. Instead he asked whether the old negatives had survived. The old man brightened. Boxes appeared from under the table, labelled in neat handwriting: years, streets, surnames. Half an hour later Andrei was holding a photograph he had never seen: his mother, very young, laughing and shielding her face from the sun with her palm.\n\"She didn't want to be photographed,\" said Semyon Ilyich. \"She said she didn't come out well. I clicked when she wasn't looking. The best pictures always come out like that.\"\nAndrei would have paid any money for that photograph, but the old man would not take any. He asked only one thing: that Andrei come tomorrow and have his own picture taken — \"as a keepsake, a real one, not on a phone\".\nThe next morning Andrei came. He sat on the old chair under the hot lamp, and he was ten years old again. He never did sell the flat — he decided he would come back."
+          },
+          "questions": [
+            {
+              "q": "Мастерска́я фото́графа находи́лась…",
+              "options": [
+                "в полуподва́ле.",
+                "на второ́м этаже́.",
+                "на гла́вной пло́щади."
+              ],
+              "answer": 0,
+              "zh": "在花園街轉角的半地下室，要往下走四階。",
+              "en": "In a semi-basement, four steps down."
+            },
+            {
+              "q": "В де́тстве мастерска́я каза́лась Андре́ю…",
+              "options": [
+                "ску́чной.",
+                "други́м ми́ром.",
+                "стра́шной."
+              ],
+              "answer": 1,
+              "zh": "「門後是另一個世界」。",
+              "en": "\"Another world began behind that door.\""
+            },
+            {
+              "q": "Андре́й прие́хал в родно́й го́род, что́бы…",
+              "options": [
+                "навести́ть фото́графа.",
+                "прода́ть кварти́ру ма́тери.",
+                "найти́ рабо́ту."
+              ],
+              "answer": 1,
+              "zh": "他回來兩天，要賣掉母親的房子；看到照相館是意外。",
+              "en": "To sell his mother's flat; finding the studio was a surprise."
+            },
+            {
+              "q": "Вы́веска мастерско́й…",
+              "options": [
+                "вы́цвела, одна́ бу́ква отвали́лась.",
+                "была́ совсе́м но́вой.",
+                "исче́зла."
+              ],
+              "answer": 0,
+              "zh": "字褪色了，一個字母掉了。",
+              "en": "The letters had faded and one had fallen off."
+            },
+            {
+              "q": "Как Семён Ильи́ч говори́т о том, что все снима́ют телефо́нами?",
+              "options": [
+                "с оби́дой",
+                "споко́йно, без оби́ды",
+                "с ра́достью"
+              ],
+              "answer": 1,
+              "zh": "「一點也沒有埋怨的意思」。",
+              "en": "\"Without any resentment.\""
+            },
+            {
+              "q": "Почему́ фото́граф ка́ждое у́тро открыва́ет мастерску́ю?",
+              "options": [
+                "У него́ мно́го клие́нтов.",
+                "Э́того тре́бует хозя́ин зда́ния.",
+                "По привы́чке."
+              ],
+              "answer": 2,
+              "zh": "一週才一個客人，他說「習慣了」。",
+              "en": "One customer a week; he says \"habit\"."
+            },
+            {
+              "q": "На на́йденном сни́мке мать…",
+              "options": [
+                "пози́рует пе́ред ка́мерой.",
+                "сто́ит у вхо́да в мастерску́ю.",
+                "смеётся и закрыва́ет лицо́ от со́лнца."
+              ],
+              "answer": 2,
+              "zh": "母親笑著用手掌遮臉擋太陽。她不想拍，所以不是在擺姿勢。",
+              "en": "Laughing, shielding her face; she did not pose — she did not want to be photographed."
+            },
+            {
+              "q": "По слова́м фото́графа, лу́чшие сни́мки получа́ются, когда́…",
+              "options": [
+                "челове́к не смо́трит в ка́меру.",
+                "челове́к до́лго гото́вится.",
+                "гори́т я́ркая ла́мпа."
+              ],
+              "answer": 0,
+              "zh": "「我趁她沒在看的時候按快門，最好的照片總是這樣拍出來的」。",
+              "en": "When the person is not looking."
+            },
+            {
+              "q": "Что фото́граф попроси́л вме́сто де́нег?",
+              "options": [
+                "прийти́ и сфотографи́роваться",
+                "верну́ть ему́ негати́вы",
+                "рассказа́ть о нём в газе́те"
+              ],
+              "answer": 0,
+              "zh": "要安德烈明天來，自己拍一張真正的照片。",
+              "en": "That Andrei come and have his picture taken."
+            },
+            {
+              "q": "Чем зака́нчивается расска́з?",
+              "options": [
+                "Андре́й реша́ет не продава́ть кварти́ру.",
+                "Андре́й продаёт кварти́ру и уезжа́ет.",
+                "Фото́граф закрыва́ет мастерску́ю."
+              ],
+              "answer": 0,
+              "zh": "「房子他終究沒有賣——他決定還要再回來」。",
+              "en": "He never sold the flat; he decided to come back."
             }
           ]
         }

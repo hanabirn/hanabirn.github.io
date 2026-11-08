@@ -4,19 +4,608 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "Russian B2 listening in the ТРКИ-2 format (owner's plan 2026-10-30): an interview with an architect ×6, a news report ×3 (en_q); played once in the real exam. ⚠️ after the mock papers. Original texts. Drafted in tools/.mockups/ru_b2_ls.py.",
+  "note": "Russian B2 listening in the ТРКИ-2 format (official ТРКИ-2 sample test, EXAMS.md 2026-11-07: 35 min, 25 questions in five parts of 5, every recording played once, three options): one speaker's turn in a dialogue, an advert, a dialogue scene, a news item, an interview (en_q, items name their part). Original texts. Drafted in tools/.mockups/ru_b2_ls.py + ru_b2_ls_r1.py.",
   "types": [
     "en_q"
   ],
   "mock_plays": 1,
   "mock_counts": {
-    "en_q": 9
+    "en_q": 25
   },
   "sets": [
     {
       "id": "s1",
       "items": [
         {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте ре́плику одного́ из уча́стников диало́га.",
+              "zh": "請聽對話中其中一人說的一段話。",
+              "en": "Listen to one speaker's turn in a dialogue."
+            },
+            {
+              "who": "F",
+              "s": "Слу́шай, ты всё ещё е́здишь на рабо́ту на маши́не? А я ме́сяц наза́д пересе́ла на велосипе́д — и, че́стно, не понима́ю, почему́ не сде́лала э́того ра́ньше. Снача́ла бы́ло тяжело́, осо́бенно в го́ру, но́ги боле́ли ужа́сно. Зато́ тепе́рь я приезжа́ю в о́фис бо́драя, а не зла́я по́сле про́бок. Дождь, коне́чно, неприя́тен, но у нас в о́фисе есть душ. Попро́буй хотя́ бы раз в неде́лю — ты же сам жа́ловался, что спина́ боли́т от сиде́ния.",
+              "zh": "欸，你還是開車上班嗎？我一個月前改騎腳踏車了——老實說，我不懂自己為什麼沒早點這麼做。一開始很辛苦，尤其是上坡，腳痛得要命。但現在我到辦公室時精神很好，而不是塞完車一肚子火。下雨當然不舒服，不過我們辦公室有淋浴間。你至少一週試一次吧——你自己不是也抱怨久坐背痛嗎。",
+              "en": "Listen, are you still driving to work? A month ago I switched to a bike — and honestly, I don't understand why I didn't do it sooner. At first it was hard, especially uphill; my legs ached terribly. But now I arrive at the office full of energy, not angry after the traffic jams. Rain is unpleasant, of course, but we have a shower at the office. Try it at least once a week — you complained yourself that your back hurts from sitting."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Говоря́щая сейча́с е́здит на рабо́ту…",
+                "zh": "說話的女生現在怎麼上班？",
+                "en": "How does the speaker get to work now?"
+              },
+              "options": [
+                {
+                  "t": "на велосипе́де."
+                },
+                {
+                  "t": "на маши́не."
+                },
+                {
+                  "t": "на авто́бусе."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "一個月前改騎腳踏車；開車的是聽話的人。",
+                "en": "By bike since a month ago; the listener is the one who drives."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что бы́ло тру́дно снача́ла?",
+                "zh": "一開始什麼很難？",
+                "en": "What was hard at first?"
+              },
+              "options": [
+                {
+                  "t": "найти́ хоро́ший велосипе́д"
+                },
+                {
+                  "t": "е́здить в го́ру"
+                },
+                {
+                  "t": "е́здить под дождём"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "一開始上坡很辛苦，腳很痛。下雨只是「不舒服」，不是一開始的困難。",
+                "en": "Going uphill; rain is only \"unpleasant\"."
+              }
+            },
+            {
+              "ask": {
+                "s": "Чем говоря́щая дово́льна тепе́рь?",
+                "zh": "她現在對什麼滿意？",
+                "en": "What is she pleased about now?"
+              },
+              "options": [
+                {
+                  "t": "Она́ тра́тит ме́ньше де́нег."
+                },
+                {
+                  "t": "Она́ приезжа́ет на рабо́ту бо́дрой."
+                },
+                {
+                  "t": "Она́ быстре́е доезжа́ет до о́фиса."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "到辦公室時精神很好，不再塞車生氣。錢和速度沒提到。",
+                "en": "She arrives full of energy; money and speed are not mentioned."
+              }
+            },
+            {
+              "ask": {
+                "s": "Почему́ дождь для неё — не больша́я пробле́ма?",
+                "zh": "為什麼下雨對她不是大問題？",
+                "en": "Why isn't rain a big problem for her?"
+              },
+              "options": [
+                {
+                  "t": "В о́фисе есть душ."
+                },
+                {
+                  "t": "В дождь она́ е́здит на маши́не."
+                },
+                {
+                  "t": "В её го́роде ре́дко идёт дождь."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "辦公室有淋浴間。",
+                "en": "There is a shower at the office."
+              }
+            },
+            {
+              "ask": {
+                "s": "Говоря́щая и слу́шающий…",
+                "zh": "說話的人和聽的人……",
+                "en": "The speaker and the listener…"
+              },
+              "options": [
+                {
+                  "t": "хорошо́ знако́мы друг с дру́гом."
+                },
+                {
+                  "t": "ма́ло знако́мы друг с дру́гом."
+                },
+                {
+                  "t": "встре́тились впервы́е."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "她用「你」（ты），還記得對方抱怨過背痛：兩人很熟。",
+                "en": "She says ты and remembers his back pain: they know each other well."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте рекла́мную информа́цию.",
+              "zh": "請聽一則廣告。",
+              "en": "Listen to the advert."
+            },
+            {
+              "who": "M",
+              "s": "Языкова́я шко́ла «Полигло́т» объявля́ет набо́р на зи́мние ку́рсы италья́нского и испа́нского языко́в. Заня́тия прохо́дят два ра́за в неде́лю по вечера́м, в гру́ппах не бо́льше восьми́ челове́к. Кро́ме обы́чных уро́ков, раз в ме́сяц носи́тели языка́ прово́дят разгово́рный клуб — беспла́тно для всех слу́шателей. Тех, кто запи́шется до пятна́дцатого декабря́, ждёт ски́дка два́дцать проце́нтов. По оконча́нии ку́рса вы полу́чите сертифика́т шко́лы. Пе́рвое заня́тие — про́бное и беспла́тное. Звони́те и́ли запи́сывайтесь на на́шем са́йте!",
+              "zh": "「多語者」語言學校開始招收冬季義大利語和西班牙語課程。每週兩次晚上上課，每班不超過八人。除了一般課程，每月一次由母語人士帶的會話俱樂部——所有學員免費參加。十二月十五日前報名可享八折優惠。課程結束後可拿到學校的證書。第一堂課是免費試聽。歡迎來電或上我們的網站報名！",
+              "en": "The Polyglot language school is enrolling for its winter courses in Italian and Spanish. Classes are twice a week in the evenings, in groups of no more than eight. Besides ordinary lessons, once a month native speakers run a conversation club — free for all students. Those who sign up before 15 December get a twenty per cent discount. At the end of the course you receive the school's certificate. The first lesson is a free trial. Call or sign up on our website!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Шко́ла предлага́ет ку́рсы…",
+                "zh": "學校開什麼課？",
+                "en": "The school offers courses in…"
+              },
+              "options": [
+                {
+                  "t": "англи́йского и неме́цкого языко́в."
+                },
+                {
+                  "t": "францу́зского языка́."
+                },
+                {
+                  "t": "италья́нского и испа́нского языко́в."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "冬季義大利語和西班牙語課程。",
+                "en": "Italian and Spanish."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько челове́к в гру́ппе?",
+                "zh": "每班幾個人？",
+                "en": "How many people are in a group?"
+              },
+              "options": [
+                {
+                  "t": "ро́вно де́сять"
+                },
+                {
+                  "t": "не бо́льше восьми́"
+                },
+                {
+                  "t": "до пятна́дцати"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "每班不超過八人。「十五」是報名截止日。",
+                "en": "No more than eight; fifteen is the date."
+              }
+            },
+            {
+              "ask": {
+                "s": "Разгово́рный клуб прово́дят…",
+                "zh": "會話俱樂部由誰帶？",
+                "en": "The conversation club is run by…"
+              },
+              "options": [
+                {
+                  "t": "носи́тели языка́ раз в ме́сяц."
+                },
+                {
+                  "t": "преподава́тели шко́лы ка́ждую неде́лю."
+                },
+                {
+                  "t": "са́ми слу́шатели."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "每月一次，由母語人士帶。",
+                "en": "Native speakers, once a month."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ски́дку полу́чат те, кто…",
+                "zh": "誰能拿到折扣？",
+                "en": "Who gets the discount?"
+              },
+              "options": [
+                {
+                  "t": "приведёт дру́га."
+                },
+                {
+                  "t": "запла́тит сра́зу за год."
+                },
+                {
+                  "t": "запи́шется до пятна́дцатого декабря́."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "十二月十五日前報名打八折。",
+                "en": "Those who sign up before 15 December."
+              }
+            },
+            {
+              "ask": {
+                "s": "По́сле оконча́ния ку́рса слу́шатели получа́ют…",
+                "zh": "課程結束後學員拿到什麼？",
+                "en": "At the end of the course students receive…"
+              },
+              "options": [
+                {
+                  "t": "сертифика́т шко́лы."
+                },
+                {
+                  "t": "дипло́м университе́та."
+                },
+                {
+                  "t": "беспла́тное заня́тие."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "學校的證書。免費的是第一堂試聽課。",
+                "en": "The school's certificate; the free lesson is the first one."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте диало́г.",
+              "zh": "請聽一段對話。",
+              "en": "Listen to the dialogue."
+            },
+            {
+              "who": "M",
+              "s": "Ну что, ты прочита́ла письмо́? Они́ ждут отве́та до пя́тницы.",
+              "zh": "怎麼樣，信你看了嗎？他們等我們星期五前回覆。",
+              "en": "Well, have you read the letter? They want an answer by Friday."
+            },
+            {
+              "who": "F",
+              "s": "Прочита́ла. Зарпла́та хоро́шая, ничего́ не ска́жешь. Но, Ми́ша, э́то же Каза́нь! У нас здесь всё: рабо́та, друзья́, ма́ма ря́дом.",
+              "zh": "看了。薪水很好，沒話說。可是米沙，那是喀山耶！我們在這裡什麼都有：工作、朋友，媽媽也在附近。",
+              "en": "I have. The salary's good, no denying it. But Misha, it's Kazan! We have everything here: work, friends, Mum nearby."
+            },
+            {
+              "who": "M",
+              "s": "Ма́ма ря́дом — э́то аргуме́нт, согла́сен. Но поду́май: здесь я пять лет сижу́ на одно́й до́лжности, и ничего́ не меня́ется. А там мне предлага́ют руководи́ть отде́лом.",
+              "zh": "媽媽在附近，這是個理由，我同意。可是你想想：我在這裡同一個職位坐了五年，什麼都沒變。那邊要我去當部門主管。",
+              "en": "Mum being nearby is an argument, I agree. But think: I've been in the same position here for five years and nothing changes. There they're offering me a department to run."
+            },
+            {
+              "who": "F",
+              "s": "А мне что там де́лать? Я двена́дцать лет преподаю́ в э́той шко́ле. Ученики́, колле́ги…",
+              "zh": "那我去那裡做什麼？我在這所學校教了十二年。學生、同事……",
+              "en": "And what would I do there? I've taught at this school for twelve years. My pupils, my colleagues…"
+            },
+            {
+              "who": "M",
+              "s": "Учителя́ нужны́ везде́. Я узнава́л: в Каза́ни сейча́с открыва́ют три но́вые шко́лы.",
+              "zh": "哪裡都需要老師。我打聽過了：喀山現在要開三所新學校。",
+              "en": "Teachers are needed everywhere. I've asked around: three new schools are opening in Kazan right now."
+            },
+            {
+              "who": "F",
+              "s": "Узнава́л он… А меня́ ты спроси́ть не хоте́л, пре́жде чем узнава́ть?",
+              "zh": "你還打聽過……那你打聽之前，不想先問問我嗎？",
+              "en": "Asked around, have you… And you didn't want to ask me before asking around?"
+            },
+            {
+              "who": "M",
+              "s": "Я и спра́шиваю. Поэ́тому и говорю́ с тобо́й, а не отвеча́ю им сам.",
+              "zh": "我現在就是在問你啊。所以我才跟你談，而不是自己回覆他們。",
+              "en": "I am asking you. That's why I'm talking to you instead of answering them myself."
+            },
+            {
+              "who": "F",
+              "s": "Ла́дно. Дава́й так: съе́здим туда́ на выходны́е, посмо́трим го́род, шко́лы. Е́сли мне не понра́вится — ты отка́жешься. Договори́лись?",
+              "zh": "好吧。這樣吧：週末我們去那裡一趟，看看城市、看看學校。如果我不喜歡，你就拒絕。說好了？",
+              "en": "All right. Let's do this: we'll go there for the weekend and look at the city and the schools. If I don't like it, you'll turn it down. Deal?"
+            },
+            {
+              "who": "M",
+              "s": "Договори́лись. Я сего́дня же куплю́ биле́ты.",
+              "zh": "說好了。我今天就去買票。",
+              "en": "Deal. I'll buy the tickets today."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Мужчи́не предлага́ют…",
+                "zh": "男的收到什麼邀約？",
+                "en": "The man is offered…"
+              },
+              "options": [
+                {
+                  "t": "учи́ться в Каза́ни."
+                },
+                {
+                  "t": "рабо́ту в шко́ле."
+                },
+                {
+                  "t": "руководи́ть отде́лом в Каза́ни."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "喀山那邊要他當部門主管。去學校的是女的工作。",
+                "en": "To run a department in Kazan; the school is her job."
+              }
+            },
+            {
+              "ask": {
+                "s": "Почему́ же́нщина сомнева́ется?",
+                "zh": "女的為什麼猶豫？",
+                "en": "Why does the woman hesitate?"
+              },
+              "options": [
+                {
+                  "t": "Зарпла́та ма́ленькая."
+                },
+                {
+                  "t": "Здесь у неё рабо́та, друзья́ и ма́ма."
+                },
+                {
+                  "t": "Она́ уже́ была́ в Каза́ни, и ей не понра́вилось."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "這裡有工作、朋友，媽媽也在附近。她說薪水很好。",
+                "en": "Work, friends and her mother are here; she says the salary is good."
+              }
+            },
+            {
+              "ask": {
+                "s": "Почему́ мужчи́на хо́чет перее́хать?",
+                "zh": "男的為什麼想搬？",
+                "en": "Why does the man want to move?"
+              },
+              "options": [
+                {
+                  "t": "Он не лю́бит свой го́род."
+                },
+                {
+                  "t": "В Каза́ни живу́т его́ друзья́."
+                },
+                {
+                  "t": "Здесь он пять лет на одно́й до́лжности."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "他在同一個職位坐了五年，什麼都沒變。",
+                "en": "Five years in the same position with no change."
+              }
+            },
+            {
+              "ask": {
+                "s": "Же́нщина недово́льна тем, что муж…",
+                "zh": "女的不高興的是先生……",
+                "en": "The woman is unhappy that her husband…"
+              },
+              "options": [
+                {
+                  "t": "уже́ купи́л биле́ты."
+                },
+                {
+                  "t": "узнава́л о шко́лах, не спроси́в её."
+                },
+                {
+                  "t": "уже́ отве́тил на письмо́."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「你打聽之前不想先問我嗎？」他還沒回覆，票是之後才要買。",
+                "en": "\"You didn't want to ask me first?\" He hasn't answered, and buys tickets only later."
+              }
+            },
+            {
+              "ask": {
+                "s": "О чём они́ договори́лись?",
+                "zh": "他們說好了什麼？",
+                "en": "What do they agree on?"
+              },
+              "options": [
+                {
+                  "t": "съе́здить в Каза́нь на выходны́е"
+                },
+                {
+                  "t": "сра́зу перее́хать"
+                },
+                {
+                  "t": "отказа́ться от предложе́ния"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "週末去喀山看看，她不喜歡就拒絕。",
+                "en": "To visit Kazan for the weekend; if she doesn't like it, he'll refuse."
+              }
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте но́вость.",
+              "zh": "請聽一則新聞。",
+              "en": "Listen to the news item."
+            },
+            {
+              "who": "M",
+              "s": "С пе́рвого сентября́ в сорока́ шко́лах Новосиби́рской о́бласти прохо́дит экспериме́нт: дома́шние зада́ния для ученико́в мла́дших кла́ссов отменены́. Вме́сто э́того де́ти бо́льше чита́ют на уро́ках и реша́ют зада́чи в гру́ппах. Роди́тели раздели́лись: одни́ ра́ды, что ве́чером у семьи́ появи́лось свобо́дное вре́мя, други́е боя́тся, что де́ти начну́т ху́же учи́ться. Учителя́ пока́ отмеча́ют одно́: к концу́ неде́ли де́ти устаю́т заме́тно ме́ньше, чем ра́ньше. Ито́ги экспериме́нта подведу́т в конце́ уче́бного го́да, по́сле чего́ министе́рство реши́т, распространя́ть ли его́ на всю страну́.",
+              "zh": "從九月一日起，新西伯利亞州四十所學校進行一項實驗：取消低年級學生的回家作業。孩子們改成在課堂上多閱讀、分組解題。家長意見分歧：有些人高興家裡晚上多了空閒時間，有些人怕孩子成績變差。老師們目前只注意到一點：到了週末，孩子明顯比以前不累。實驗結果將在學年末檢討，之後教育部再決定是否推廣到全國。",
+              "en": "Since 1 September, forty schools in the Novosibirsk region have been running an experiment: homework for primary pupils has been abolished. Instead, children read more in lessons and solve problems in groups. Parents are divided: some are glad the family now has free time in the evening, others fear children will start doing worse. So far teachers note one thing: by the end of the week children are noticeably less tired than before. The results will be reviewed at the end of the school year, after which the ministry will decide whether to extend it to the whole country."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Ско́лько школ уча́ствует в экспериме́нте?",
+                "zh": "有幾所學校參加實驗？",
+                "en": "How many schools take part?"
+              },
+              "options": [
+                {
+                  "t": "четы́ре"
+                },
+                {
+                  "t": "со́рок"
+                },
+                {
+                  "t": "все шко́лы стра́ны"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "新西伯利亞州的四十所學校。",
+                "en": "Forty schools in the region."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что пока́ заме́тили учителя́?",
+                "zh": "老師們目前注意到什麼？",
+                "en": "What have teachers noticed so far?"
+              },
+              "options": [
+                {
+                  "t": "Де́ти ста́ли ху́же чита́ть."
+                },
+                {
+                  "t": "Роди́тели ча́ще прихо́дят в шко́лу."
+                },
+                {
+                  "t": "Де́ти ме́ньше устаю́т к концу́ неде́ли."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "到週末孩子明顯比以前不累。",
+                "en": "Children are less tired by the end of the week."
+              }
+            },
+            {
+              "ask": {
+                "s": "Экспериме́нт каса́ется…",
+                "zh": "實驗涉及……",
+                "en": "The experiment concerns…"
+              },
+              "options": [
+                {
+                  "t": "всех шко́льников стра́ны."
+                },
+                {
+                  "t": "студе́нтов."
+                },
+                {
+                  "t": "ученико́в мла́дших кла́ссов."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "新西伯利亞州的低年級學生。",
+                "en": "Primary pupils in the region."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что ду́мают роди́тели?",
+                "zh": "家長怎麼想？",
+                "en": "What do parents think?"
+              },
+              "options": [
+                {
+                  "t": "Все дово́льны."
+                },
+                {
+                  "t": "Мне́ния ра́зные."
+                },
+                {
+                  "t": "Все про́тив."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「家長意見分歧」。",
+                "en": "They are divided."
+              }
+            },
+            {
+              "ask": {
+                "s": "Когда́ реша́т, продолжа́ть ли экспериме́нт?",
+                "zh": "什麼時候決定要不要繼續？",
+                "en": "When will they decide whether to continue?"
+              },
+              "options": [
+                {
+                  "t": "че́рез ме́сяц"
+                },
+                {
+                  "t": "пе́рвого сентября́"
+                },
+                {
+                  "t": "в конце́ уче́бного го́да"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "學年末檢討後決定。",
+                "en": "At the end of the school year."
+              }
+            }
+          ]
+        },
+        {
+          "part": 5,
           "type": "en_q",
           "lines": [
             {
@@ -74,13 +663,13 @@
                   "t": "стро́ит но́вые заво́ды."
                 },
                 {
-                  "t": "превраща́ет заво́ды в жилы́е до́ма."
+                  "t": "сно́сит ста́рые зда́ния."
                 },
                 {
-                  "t": "сно́сит ста́рые зда́ния."
+                  "t": "превраща́ет заво́ды в жилы́е до́ма."
                 }
               ],
-              "answer": "B",
+              "answer": "C",
               "explain": {
                 "zh": "把老工廠改造成住宅。",
                 "en": "Turns factories into housing."
@@ -94,16 +683,16 @@
               },
               "options": [
                 {
-                  "t": "Э́то запрещено́ зако́ном."
+                  "t": "Э́то до́рого, и они́ часть исто́рии."
                 },
                 {
-                  "t": "Э́то до́рого, и они́ часть исто́рии."
+                  "t": "Э́то запрещено́ зако́ном."
                 },
                 {
                   "t": "В них ещё рабо́тают лю́ди."
                 }
               ],
-              "answer": "B",
+              "answer": "A",
               "explain": {
                 "zh": "拆很貴，也是城市歷史的一部分。",
                 "en": "Expensive, and part of history."
@@ -117,16 +706,16 @@
               },
               "options": [
                 {
-                  "t": "загрязнённая земля́."
+                  "t": "ма́ленькие о́кна."
                 },
                 {
-                  "t": "ма́ленькие о́кна."
+                  "t": "загрязнённая земля́."
                 },
                 {
                   "t": "нехва́тка архите́кторов."
                 }
               ],
-              "answer": "A",
+              "answer": "B",
               "explain": {
                 "zh": "最大的是環境：土地受汙染。",
                 "en": "Polluted land."
@@ -140,42 +729,19 @@
               },
               "options": [
                 {
-                  "t": "высо́ких цен"
+                  "t": "шу́ма и про́бок"
                 },
                 {
-                  "t": "шу́ма и про́бок"
+                  "t": "высо́ких цен"
                 },
                 {
                   "t": "но́вых сосе́дей"
                 }
               ],
-              "answer": "B",
+              "answer": "A",
               "explain": {
                 "zh": "怕帶來噪音和塞車。",
                 "en": "Noise and traffic jams."
-              }
-            },
-            {
-              "ask": {
-                "s": "Что бюро́ де́лает в нача́ле ка́ждого прое́кта?",
-                "zh": "事務所每個案子一開始做什麼？",
-                "en": "What does the firm do at the start of each project?"
-              },
-              "options": [
-                {
-                  "t": "прово́дит откры́тые встре́чи"
-                },
-                {
-                  "t": "покупа́ет зе́млю"
-                },
-                {
-                  "t": "сно́сит зда́ние"
-                }
-              ],
-              "answer": "A",
-              "explain": {
-                "zh": "先辦公開座談。",
-                "en": "It holds open meetings."
               }
             },
             {
@@ -199,94 +765,6 @@
               "explain": {
                 "zh": "屋頂是共同花園；工作室和幼兒園在樓裡。",
                 "en": "A shared garden; studios and nursery are inside."
-              }
-            }
-          ]
-        },
-        {
-          "type": "en_q",
-          "lines": [
-            {
-              "who": "N",
-              "s": "Послу́шайте но́вость.",
-              "zh": "請聽一則新聞。",
-              "en": "Listen to the news item."
-            },
-            {
-              "who": "M",
-              "s": "С пе́рвого сентября́ в шко́лах Новосиби́рской о́бласти прохо́дит экспериме́нт: дома́шние зада́ния для ученико́в мла́дших кла́ссов отменены́. Вме́сто э́того де́ти бо́льше чита́ют на уро́ках и реша́ют зада́чи в гру́ппах. Роди́тели раздели́лись: одни́ ра́ды, что ве́чером у семьи́ появи́лось свобо́дное вре́мя, други́е боя́тся, что де́ти начну́т ху́же учи́ться. Ито́ги экспериме́нта подведу́т в конце́ уче́бного го́да, по́сле чего́ министе́рство реши́т, распространя́ть ли его́ на всю страну́.",
-              "zh": "從九月一日起，新西伯利亞州的學校進行一項實驗：取消低年級學生的回家作業。孩子們改成在課堂上多閱讀、分組解題。家長意見分歧：有些人高興家裡晚上多了空閒時間，有些人怕孩子成績變差。實驗結果將在學年末檢討，之後教育部再決定是否推廣到全國。",
-              "en": "Since 1 September, schools in the Novosibirsk region have been running an experiment: homework for primary pupils has been abolished. Instead, children read more in lessons and solve problems in groups. Parents are divided: some are glad the family now has free time in the evening, others fear children will start doing worse. The results will be reviewed at the end of the school year, after which the ministry will decide whether to extend it to the whole country."
-            }
-          ],
-          "questions": [
-            {
-              "ask": {
-                "s": "Экспериме́нт каса́ется…",
-                "zh": "實驗涉及……",
-                "en": "The experiment concerns…"
-              },
-              "options": [
-                {
-                  "t": "всех шко́льников стра́ны."
-                },
-                {
-                  "t": "ученико́в мла́дших кла́ссов."
-                },
-                {
-                  "t": "студе́нтов."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "新西伯利亞州的低年級學生。",
-                "en": "Primary pupils in the region."
-              }
-            },
-            {
-              "ask": {
-                "s": "Что ду́мают роди́тели?",
-                "zh": "家長怎麼想？",
-                "en": "What do parents think?"
-              },
-              "options": [
-                {
-                  "t": "Все дово́льны."
-                },
-                {
-                  "t": "Мне́ния ра́зные."
-                },
-                {
-                  "t": "Все про́тив."
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "「家長意見分歧」。",
-                "en": "They are divided."
-              }
-            },
-            {
-              "ask": {
-                "s": "Когда́ реша́т, продолжа́ть ли экспериме́нт?",
-                "zh": "什麼時候決定要不要繼續？",
-                "en": "When will they decide whether to continue?"
-              },
-              "options": [
-                {
-                  "t": "че́рез ме́сяц"
-                },
-                {
-                  "t": "в конце́ уче́бного го́да"
-                },
-                {
-                  "t": "пе́рвого сентября́"
-                }
-              ],
-              "answer": "B",
-              "explain": {
-                "zh": "學年末檢討後決定。",
-                "en": "At the end of the school year."
               }
             }
           ]
