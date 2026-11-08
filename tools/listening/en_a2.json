@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "English A2 listening in the Cambridge A2 Key format (owner's plan 2026-10-30): Part 1 three pictures ×5 (en_pic3, pictures described, not drawn), Part 2 notes ×5 (en_fill, typed), Part 3 a conversation ×5 (en_q), Part 4 short recordings ×5 (en_talk), Part 5 matching ×5 (en_match, eight options). Each recording twice in the mock. Original texts. Drafted in tools/.mockups/en_a2_ls.py.",
+  "note": "English A2 listening in the Cambridge A2 Key format (owner's plan 2026-10-30): Part 1 three pictures ×5 (en_pic3, pictures described, not drawn), Part 2 notes ×5 (en_fill, typed), Part 3 a conversation ×5 (en_q), Part 4 short recordings ×5 (en_talk), Part 5 matching ×5 (en_match, eight options). Each recording twice in the mock. Original texts. Drafted in tools/.mockups/en_a2_ls.py (rounds 2–3: en_a2_r23.py).",
   "types": [
     "en_pic3",
     "en_fill",
@@ -1000,6 +1000,2007 @@
               "explain": {
                 "zh": "「艾拉說她要幫大家做三明治」；麵包和起司是女的要帶的。",
                 "en": "Sandwiches; the bread and cheese are the woman's."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "pics": {
+        "p1": {
+          "cols": 3,
+          "rows": 3,
+          "panels": [
+            "a sandwich on a plate",
+            "a pizza on a plate",
+            "a bowl of salad",
+            "a cinema with rows of seats and a big screen; no writing, no numbers anywhere",
+            "an indoor swimming pool",
+            "a green park with trees and a bench",
+            "a cat sitting",
+            "a dog sitting",
+            "a rabbit sitting"
+          ],
+          "cap": [
+            "a sandwich",
+            "a pizza",
+            "a salad",
+            "the cinema",
+            "the swimming pool",
+            "the park",
+            "a cat",
+            "a dog",
+            "a rabbit"
+          ]
+        },
+        "p2": {
+          "cols": 3,
+          "rows": 2,
+          "panels": [
+            "a guitar",
+            "a piano",
+            "a violin with its bow",
+            "a boy riding a bike",
+            "a boy walking along a pavement with a school bag",
+            "a boy sitting in the back of a car"
+          ],
+          "cap": [
+            "the guitar",
+            "the piano",
+            "the violin",
+            "by bike",
+            "on foot",
+            "by car"
+          ]
+        }
+      },
+      "items": [
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "What did you have for lunch at the new café?",
+              "zh": "你在新開的咖啡館午餐吃了什麼？",
+              "en": "What did you have for lunch at the new café?"
+            },
+            {
+              "who": "M",
+              "s": "I wanted a sandwich, but they'd sold them all. The salads looked nice, but I was really hungry, so I had a pizza.",
+              "zh": "我想吃三明治，可是賣完了。沙拉看起來不錯，但我實在太餓了，所以吃了披薩。",
+              "en": "I wanted a sandwich, but they'd sold them all. The salads looked nice, but I was really hungry, so I had a pizza."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What did the man have for lunch?",
+            "zh": "男的午餐吃了什麼？",
+            "en": "What did the man have for lunch?"
+          },
+          "options": [
+            {
+              "t": "a sandwich"
+            },
+            {
+              "t": "a pizza"
+            },
+            {
+              "t": "a salad"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "三明治賣完、沙拉不夠飽，「所以吃了披薩」。",
+            "en": "Sandwiches sold out, too hungry for salad: a pizza."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Shall we go to the cinema this afternoon?",
+              "zh": "我們今天下午去看電影好嗎？",
+              "en": "Shall we go to the cinema this afternoon?"
+            },
+            {
+              "who": "F",
+              "s": "It's too nice to sit inside. Let's take a picnic to the park. We can go swimming tomorrow if it's hot.",
+              "zh": "天氣這麼好，待在室內太可惜了。我們帶野餐去公園吧。如果明天很熱，再去游泳。",
+              "en": "It's too nice to sit inside. Let's take a picnic to the park. We can go swimming tomorrow if it's hot."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "Where will they go this afternoon?",
+            "zh": "他們今天下午會去哪裡？",
+            "en": "Where will they go this afternoon?"
+          },
+          "options": [
+            {
+              "t": "the cinema"
+            },
+            {
+              "t": "the swimming pool"
+            },
+            {
+              "t": "the park"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「我們帶野餐去公園吧」；游泳是明天。",
+            "en": "A picnic in the park; swimming is tomorrow."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 2
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Has your brother got a pet?",
+              "zh": "你哥哥有養寵物嗎？",
+              "en": "Has your brother got a pet?"
+            },
+            {
+              "who": "M",
+              "s": "He's always wanted a dog, but our flat is too small. He's got a cat now — and he wants a rabbit next!",
+              "zh": "他一直想養狗，可是我們家公寓太小。他現在養了一隻貓，下一個還想養兔子！",
+              "en": "He's always wanted a dog, but our flat is too small. He's got a cat now — and he wants a rabbit next!"
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What pet has the boy's brother got?",
+            "zh": "男孩的哥哥養了什麼寵物？",
+            "en": "What pet has the boy's brother got?"
+          },
+          "options": [
+            {
+              "t": "a cat"
+            },
+            {
+              "t": "a dog"
+            },
+            {
+              "t": "a rabbit"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「他現在養了一隻貓」；狗是想養但不行，兔子是以後。",
+            "en": "A cat now; the dog and rabbit are only wishes."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Are you still having piano lessons?",
+              "zh": "你還在上鋼琴課嗎？",
+              "en": "Are you still having piano lessons?"
+            },
+            {
+              "who": "F",
+              "s": "No, I stopped last year. I play the violin now. My sister plays the guitar, so sometimes we play together.",
+              "zh": "沒有，去年停了。我現在拉小提琴。我姊姊彈吉他，所以有時候我們一起演奏。",
+              "en": "No, I stopped last year. I play the violin now. My sister plays the guitar, so sometimes we play together."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What instrument does the girl play now?",
+            "zh": "女孩現在演奏什麼樂器？",
+            "en": "What instrument does the girl play now?"
+          },
+          "options": [
+            {
+              "t": "the guitar"
+            },
+            {
+              "t": "the piano"
+            },
+            {
+              "t": "the violin"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "鋼琴去年停了，「我現在拉小提琴」；吉他是姊姊的。",
+            "en": "She plays the violin now; the guitar is her sister's."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "How do you get to school? By bike?",
+              "zh": "你怎麼去上學？騎腳踏車嗎？",
+              "en": "How do you get to school? By bike?"
+            },
+            {
+              "who": "M",
+              "s": "I used to, but someone stole my bike. Dad drives past the school, but he leaves too early, so I walk now.",
+              "zh": "以前是，可是我的腳踏車被偷了。爸爸開車會經過學校，但他出門太早，所以我現在走路。",
+              "en": "I used to, but someone stole my bike. Dad drives past the school, but he leaves too early, so I walk now."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "How does the boy get to school now?",
+            "zh": "男孩現在怎麼去上學？",
+            "en": "How does the boy get to school now?"
+          },
+          "options": [
+            {
+              "t": "by bike"
+            },
+            {
+              "t": "on foot"
+            },
+            {
+              "t": "by car"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "腳踏車被偷、爸爸太早出門，「所以我現在走路」。",
+            "en": "His bike was stolen and Dad leaves too early: he walks."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Hi, everyone. I'm going to give you some information about the summer sports camp. The camp starts on Monday the third of August and lasts for two weeks. It's at Hillside School — not at the sports centre like last year. Every day starts at nine o'clock and finishes at four. You can choose from football, tennis and basketball. The cost is forty-five pounds a week. Please bring a packed lunch, because there's no café. And remember to bring a water bottle — it gets very hot. To book a place, phone Mr Dixon — that's D-I-X-O-N.",
+              "zh": "大家好。我來說明暑期運動營的資訊。營隊八月三日星期一開始，為期兩週，地點在山坡學校，不是像去年在運動中心。每天九點開始，四點結束。可以選足球、網球或籃球。費用每週四十五英鎊。請自備午餐，因為那裡沒有餐廳。也記得帶水壺，天氣會很熱。報名請打電話給迪克森老師，拼法是 D-I-X-O-N。",
+              "en": "Hi, everyone. I'm going to give you some information about the summer sports camp. The camp starts on Monday the third of August and lasts for two weeks. It's at Hillside School — not at the sports centre like last year. Every day starts at nine o'clock and finishes at four. You can choose from football, tennis and basketball. The cost is forty-five pounds a week. Please bring a packed lunch, because there's no café. And remember to bring a water bottle — it gets very hot. To book a place, phone Mr Dixon — that's D-I-X-O-N."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Starts: Monday ＿＿＿＿＿ August",
+                "zh": "開始：八月＿＿日星期一",
+                "en": "Starts: Monday ＿＿＿＿＿ August"
+              },
+              "answers": [
+                "3rd",
+                "3",
+                "third",
+                "the third",
+                "3 rd"
+              ],
+              "explain": {
+                "zh": "「八月三日星期一開始」。",
+                "en": "Monday the third of August."
+              }
+            },
+            {
+              "ask": {
+                "s": "Place: ＿＿＿＿＿ School",
+                "zh": "地點：＿＿學校",
+                "en": "Place: ＿＿＿＿＿ School"
+              },
+              "answers": [
+                "Hillside"
+              ],
+              "explain": {
+                "zh": "「在山坡學校」（Hillside），不是運動中心。",
+                "en": "Hillside School, not the sports centre."
+              }
+            },
+            {
+              "ask": {
+                "s": "Cost per week: £＿＿＿＿＿",
+                "zh": "每週費用：＿＿英鎊",
+                "en": "Cost per week: £＿＿＿＿＿"
+              },
+              "answers": [
+                "45",
+                "forty-five",
+                "forty five"
+              ],
+              "explain": {
+                "zh": "「每週四十五英鎊」。",
+                "en": "Forty-five pounds a week."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bring: a packed lunch and a ＿＿＿＿＿",
+                "zh": "要帶：午餐和＿＿",
+                "en": "Bring: a packed lunch and a ＿＿＿＿＿"
+              },
+              "answers": [
+                "water bottle",
+                "bottle of water",
+                "bottle",
+                "drinks bottle"
+              ],
+              "explain": {
+                "zh": "「也記得帶水壺」。",
+                "en": "A water bottle."
+              }
+            },
+            {
+              "ask": {
+                "s": "To book, phone: Mr ＿＿＿＿＿",
+                "zh": "報名請打給：＿＿老師",
+                "en": "To book, phone: Mr ＿＿＿＿＿"
+              },
+              "answers": [
+                "Dixon"
+              ],
+              "explain": {
+                "zh": "「迪克森老師，拼法是 D-I-X-O-N」。",
+                "en": "Mr Dixon — D-I-X-O-N."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Hi Zoe. You weren't at school yesterday. Were you ill?",
+              "zh": "嗨，柔伊。你昨天沒來學校，生病了嗎？",
+              "en": "Hi Zoe. You weren't at school yesterday. Were you ill?"
+            },
+            {
+              "who": "F",
+              "s": "No, I was at a swimming competition in Manchester. I was there for two days.",
+              "zh": "沒有，我去曼徹斯特參加游泳比賽，在那裡待了兩天。",
+              "en": "No, I was at a swimming competition in Manchester. I was there for two days."
+            },
+            {
+              "who": "M",
+              "s": "Wow! How did you do?",
+              "zh": "哇！成績怎麼樣？",
+              "en": "Wow! How did you do?"
+            },
+            {
+              "who": "F",
+              "s": "I came second in the hundred metres. I was a bit disappointed, because I came first last year.",
+              "zh": "我一百公尺拿第二。有點失望，因為去年我是第一。",
+              "en": "I came second in the hundred metres. I was a bit disappointed, because I came first last year."
+            },
+            {
+              "who": "M",
+              "s": "Second is still great! How often do you train?",
+              "zh": "第二名還是很棒啊！你多久練一次？",
+              "en": "Second is still great! How often do you train?"
+            },
+            {
+              "who": "F",
+              "s": "Five mornings a week, before school. I get up at half past five.",
+              "zh": "一週五個早上，上學前。我五點半起床。",
+              "en": "Five mornings a week, before school. I get up at half past five."
+            },
+            {
+              "who": "M",
+              "s": "That's so early! Do you have a coach?",
+              "zh": "好早！你有教練嗎？",
+              "en": "That's so early! Do you have a coach?"
+            },
+            {
+              "who": "F",
+              "s": "Yes, my coach is called Ruth. She swam for the national team when she was younger.",
+              "zh": "有，我的教練叫露絲。她年輕的時候是國家隊的游泳選手。",
+              "en": "Yes, my coach is called Ruth. She swam for the national team when she was younger."
+            },
+            {
+              "who": "M",
+              "s": "What's next for you?",
+              "zh": "接下來呢？",
+              "en": "What's next for you?"
+            },
+            {
+              "who": "F",
+              "s": "There's a competition in London in June. I need to swim faster before then, so I'm going to train on Saturdays too.",
+              "zh": "六月在倫敦有比賽。在那之前我要游得更快，所以星期六也要練習。",
+              "en": "There's a competition in London in June. I need to swim faster before then, so I'm going to train on Saturdays too."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Why wasn't Zoe at school yesterday?",
+                "zh": "柔伊昨天為什麼沒來學校？",
+                "en": "Why wasn't Zoe at school yesterday?"
+              },
+              "options": [
+                {
+                  "t": "She was ill."
+                },
+                {
+                  "t": "She was training."
+                },
+                {
+                  "t": "She was at a competition."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「我去曼徹斯特參加游泳比賽」，不是生病。",
+                "en": "She was at a swimming competition."
+              }
+            },
+            {
+              "ask": {
+                "s": "How did Zoe feel about her result?",
+                "zh": "柔伊對成績有什麼感覺？",
+                "en": "How did Zoe feel about her result?"
+              },
+              "options": [
+                {
+                  "t": "a little unhappy"
+                },
+                {
+                  "t": "very proud"
+                },
+                {
+                  "t": "surprised"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "拿第二，「有點失望」，因為去年是第一。",
+                "en": "A bit disappointed: she won last year."
+              }
+            },
+            {
+              "ask": {
+                "s": "When does Zoe train?",
+                "zh": "柔伊什麼時候練習？",
+                "en": "When does Zoe train?"
+              },
+              "options": [
+                {
+                  "t": "in the evenings"
+                },
+                {
+                  "t": "before school"
+                },
+                {
+                  "t": "at lunchtime"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「一週五個早上，上學前」。",
+                "en": "Five mornings a week, before school."
+              }
+            },
+            {
+              "ask": {
+                "s": "What do we learn about Ruth?",
+                "zh": "關於露絲，我們知道什麼？",
+                "en": "What do we learn about Ruth?"
+              },
+              "options": [
+                {
+                  "t": "She is Zoe's sister."
+                },
+                {
+                  "t": "She is in the national team now."
+                },
+                {
+                  "t": "She used to be a swimmer."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "她「年輕的時候」是國家隊選手，現在是教練。",
+                "en": "She swam for the national team when younger."
+              }
+            },
+            {
+              "ask": {
+                "s": "What will Zoe do before June?",
+                "zh": "六月前柔伊會做什麼？",
+                "en": "What will Zoe do before June?"
+              },
+              "options": [
+                {
+                  "t": "train more"
+                },
+                {
+                  "t": "move to London"
+                },
+                {
+                  "t": "find a new coach"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「星期六也要練習」：練更多。",
+                "en": "She will train on Saturdays too."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a girl talking about a film.",
+              "zh": "你會聽到一個女孩談一部電影。",
+              "en": "You will hear a girl talking about a film."
+            },
+            {
+              "who": "F",
+              "s": "Everyone said the film was funny, but I didn't laugh once. The music was good, though, and the actors were great.",
+              "zh": "大家都說那部電影很好笑，可是我一次都沒笑。不過音樂很好聽，演員也很棒。",
+              "en": "Everyone said the film was funny, but I didn't laugh once. The music was good, though, and the actors were great."
+            }
+          ],
+          "ask": {
+            "s": "What did the girl like about the film?",
+            "zh": "女孩喜歡這部電影的什麼？",
+            "en": "What did the girl like about the film?"
+          },
+          "options": [
+            {
+              "t": "the jokes"
+            },
+            {
+              "t": "the music"
+            },
+            {
+              "t": "the story"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "她「一次都沒笑」，但「音樂很好聽」。",
+            "en": "She didn't laugh, but the music was good."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man phoning a shop.",
+              "zh": "你會聽到一位男士打電話到商店。",
+              "en": "You will hear a man phoning a shop."
+            },
+            {
+              "who": "M",
+              "s": "Hello, I bought a lamp from you yesterday, but it doesn't work. Can I bring it back and get my money back, please?",
+              "zh": "你好，我昨天在你們店裡買了一盞檯燈，可是不會亮。我可以拿回去退錢嗎？",
+              "en": "Hello, I bought a lamp from you yesterday, but it doesn't work. Can I bring it back and get my money back, please?"
+            }
+          ],
+          "ask": {
+            "s": "What does the man want?",
+            "zh": "男士想要什麼？",
+            "en": "What does the man want?"
+          },
+          "options": [
+            {
+              "t": "his money back"
+            },
+            {
+              "t": "a different lamp"
+            },
+            {
+              "t": "someone to repair the lamp"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「拿回去退錢」。",
+            "en": "He wants his money back."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a teacher talking to her class.",
+              "zh": "你會聽到一位老師對班上說話。",
+              "en": "You will hear a teacher talking to her class."
+            },
+            {
+              "who": "F",
+              "s": "Tomorrow we're going to the theatre, so there's no maths lesson. Please be at the front gate at ten. Don't bring any food — we'll have lunch at school when we get back.",
+              "zh": "明天我們要去劇院，所以沒有數學課。請十點在學校大門集合。不要帶食物，回來後在學校吃午餐。",
+              "en": "Tomorrow we're going to the theatre, so there's no maths lesson. Please be at the front gate at ten. Don't bring any food — we'll have lunch at school when we get back."
+            }
+          ],
+          "ask": {
+            "s": "Where should the students meet tomorrow?",
+            "zh": "學生明天要在哪裡集合？",
+            "en": "Where should the students meet tomorrow?"
+          },
+          "options": [
+            {
+              "t": "in the classroom"
+            },
+            {
+              "t": "at the theatre"
+            },
+            {
+              "t": "at the school gate"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「十點在學校大門集合」。",
+            "en": "At the front gate at ten."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear two friends talking about a present.",
+              "zh": "你會聽到兩個朋友談一份禮物。",
+              "en": "You will hear two friends talking about a present."
+            },
+            {
+              "who": "M",
+              "s": "Shall we buy Lisa a book for her birthday?",
+              "zh": "我們買一本書送麗莎當生日禮物好嗎？",
+              "en": "Shall we buy Lisa a book for her birthday?"
+            },
+            {
+              "who": "F",
+              "s": "She's got hundreds! She said she wants a plant for her room.",
+              "zh": "她的書有好幾百本了！她說想要一盆植物放房間。",
+              "en": "She's got hundreds! She said she wants a plant for her room."
+            },
+            {
+              "who": "M",
+              "s": "OK, let's get her that.",
+              "zh": "好，那就買那個。",
+              "en": "OK, let's get her that."
+            }
+          ],
+          "ask": {
+            "s": "What will they buy Lisa?",
+            "zh": "他們會買什麼給麗莎？",
+            "en": "What will they buy Lisa?"
+          },
+          "options": [
+            {
+              "t": "a book"
+            },
+            {
+              "t": "a plant"
+            },
+            {
+              "t": "a lamp"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "書太多了，她「想要一盆植物」，他們就買那個。",
+            "en": "She has hundreds of books; she wants a plant."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a boy talking about his weekend.",
+              "zh": "你會聽到一個男孩談他的週末。",
+              "en": "You will hear a boy talking about his weekend."
+            },
+            {
+              "who": "M",
+              "s": "I was going to play football on Saturday, but it rained all day. So I stayed at home and made a cake with my brother. It was delicious!",
+              "zh": "我星期六本來要踢足球，可是下了一整天雨。所以我待在家，和弟弟一起做蛋糕，很好吃！",
+              "en": "I was going to play football on Saturday, but it rained all day. So I stayed at home and made a cake with my brother. It was delicious!"
+            }
+          ],
+          "ask": {
+            "s": "What did the boy do on Saturday?",
+            "zh": "男孩星期六做了什麼？",
+            "en": "What did the boy do on Saturday?"
+          },
+          "options": [
+            {
+              "t": "He cooked."
+            },
+            {
+              "t": "He played football."
+            },
+            {
+              "t": "He went shopping."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "下雨沒踢球，「和弟弟一起做蛋糕」。",
+            "en": "Rain stopped football; he made a cake."
+          }
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "F",
+              "s": "Have you got everyone's jobs for the school fair, Mr Ross?",
+              "zh": "羅斯老師，園遊會每個人的工作都排好了嗎？",
+              "en": "Have you got everyone's jobs for the school fair, Mr Ross?"
+            },
+            {
+              "who": "M",
+              "s": "Nearly. Amir is going to sell plants — his dad has a garden centre.",
+              "zh": "快好了。阿米爾要賣植物，他爸爸開園藝店。",
+              "en": "Nearly. Amir is going to sell plants — his dad has a garden centre."
+            },
+            {
+              "who": "F",
+              "s": "Great. And Becky? She's good at art.",
+              "zh": "太好了。那貝琪呢？她很會畫畫。",
+              "en": "Great. And Becky? She's good at art."
+            },
+            {
+              "who": "M",
+              "s": "I asked her to do the face painting, but she wants to make cakes with her mum, so she's doing that.",
+              "zh": "我請她負責臉部彩繪，可是她想和媽媽一起做蛋糕，所以就讓她做蛋糕。",
+              "en": "I asked her to do the face painting, but she wants to make cakes with her mum, so she's doing that."
+            },
+            {
+              "who": "F",
+              "s": "OK. Who's selling tickets at the door?",
+              "zh": "好。誰在門口賣票？",
+              "en": "OK. Who's selling tickets at the door?"
+            },
+            {
+              "who": "M",
+              "s": "Callum. He's very good with numbers.",
+              "zh": "卡倫，他算數很好。",
+              "en": "Callum. He's very good with numbers."
+            },
+            {
+              "who": "F",
+              "s": "What about Daisy? She brought her music speakers last year.",
+              "zh": "黛西呢？她去年帶了音響來。",
+              "en": "What about Daisy? She brought her music speakers last year."
+            },
+            {
+              "who": "M",
+              "s": "This year she's organising games for the little children. Ethan's going to play music instead.",
+              "zh": "今年她負責帶小朋友玩遊戲。改由伊森放音樂。",
+              "en": "This year she's organising games for the little children. Ethan's going to play music instead."
+            },
+            {
+              "who": "F",
+              "s": "And who's taking photos?",
+              "zh": "那誰拍照？",
+              "en": "And who's taking photos?"
+            },
+            {
+              "who": "M",
+              "s": "I'll do that myself.",
+              "zh": "我自己來。",
+              "en": "I'll do that myself."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Amir",
+                "zh": "阿米爾",
+                "en": "Amir"
+              },
+              "options": [
+                {
+                  "t": "cakes"
+                },
+                {
+                  "t": "face painting"
+                },
+                {
+                  "t": "games"
+                },
+                {
+                  "t": "music"
+                },
+                {
+                  "t": "photos"
+                },
+                {
+                  "t": "plants"
+                },
+                {
+                  "t": "tickets"
+                },
+                {
+                  "t": "toys"
+                }
+              ],
+              "answer": "F",
+              "explain": {
+                "zh": "「阿米爾要賣植物」。",
+                "en": "Amir will sell plants."
+              }
+            },
+            {
+              "ask": {
+                "s": "Becky",
+                "zh": "貝琪",
+                "en": "Becky"
+              },
+              "options": [
+                {
+                  "t": "cakes"
+                },
+                {
+                  "t": "face painting"
+                },
+                {
+                  "t": "games"
+                },
+                {
+                  "t": "music"
+                },
+                {
+                  "t": "photos"
+                },
+                {
+                  "t": "plants"
+                },
+                {
+                  "t": "tickets"
+                },
+                {
+                  "t": "toys"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "本來請她做臉部彩繪，但她「想和媽媽一起做蛋糕」。",
+                "en": "Not face painting: cakes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Callum",
+                "zh": "卡倫",
+                "en": "Callum"
+              },
+              "options": [
+                {
+                  "t": "cakes"
+                },
+                {
+                  "t": "face painting"
+                },
+                {
+                  "t": "games"
+                },
+                {
+                  "t": "music"
+                },
+                {
+                  "t": "photos"
+                },
+                {
+                  "t": "plants"
+                },
+                {
+                  "t": "tickets"
+                },
+                {
+                  "t": "toys"
+                }
+              ],
+              "answer": "G",
+              "explain": {
+                "zh": "在門口賣票的是卡倫。",
+                "en": "Callum sells tickets."
+              }
+            },
+            {
+              "ask": {
+                "s": "Daisy",
+                "zh": "黛西",
+                "en": "Daisy"
+              },
+              "options": [
+                {
+                  "t": "cakes"
+                },
+                {
+                  "t": "face painting"
+                },
+                {
+                  "t": "games"
+                },
+                {
+                  "t": "music"
+                },
+                {
+                  "t": "photos"
+                },
+                {
+                  "t": "plants"
+                },
+                {
+                  "t": "tickets"
+                },
+                {
+                  "t": "toys"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "黛西「今年負責帶小朋友玩遊戲」；音樂是伊森。",
+                "en": "Daisy organises games; Ethan does music."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ethan",
+                "zh": "伊森",
+                "en": "Ethan"
+              },
+              "options": [
+                {
+                  "t": "cakes"
+                },
+                {
+                  "t": "face painting"
+                },
+                {
+                  "t": "games"
+                },
+                {
+                  "t": "music"
+                },
+                {
+                  "t": "photos"
+                },
+                {
+                  "t": "plants"
+                },
+                {
+                  "t": "tickets"
+                },
+                {
+                  "t": "toys"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "「改由伊森放音樂」。",
+                "en": "Ethan plays music."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "pics": {
+        "p1": {
+          "cols": 3,
+          "rows": 3,
+          "panels": [
+            "a plain T-shirt",
+            "a pair of trainers",
+            "a sun hat",
+            "a big museum building with columns; no writing, no numbers anywhere",
+            "an outdoor market with fruit stalls; no writing, no numbers anywhere",
+            "a restaurant table by a river with plates and glasses",
+            "a round cake",
+            "a plate of biscuits",
+            "a bowl of ice cream"
+          ],
+          "cap": [
+            "a T-shirt",
+            "shoes",
+            "a hat",
+            "at the museum",
+            "at the market",
+            "at the restaurant",
+            "a cake",
+            "biscuits",
+            "ice cream"
+          ]
+        },
+        "p2": {
+          "cols": 3,
+          "rows": 2,
+          "panels": [
+            "a girl holding a game controller in front of a screen",
+            "a girl reading a book on a sofa",
+            "a girl painting at an easel",
+            "a tent next to a lake",
+            "a hotel building; no writing, no numbers anywhere",
+            "a caravan parked among trees"
+          ],
+          "cap": [
+            "plays computer games",
+            "reads",
+            "paints",
+            "in a tent",
+            "in a hotel",
+            "in a caravan"
+          ]
+        }
+      },
+      "items": [
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Did you buy anything in town?",
+              "zh": "你在市區有買東西嗎？",
+              "en": "Did you buy anything in town?"
+            },
+            {
+              "who": "M",
+              "s": "I looked at some shoes, but they didn't have my size. I didn't need a hat, so I just got a T-shirt.",
+              "zh": "我看了幾雙鞋，可是沒有我的尺寸。我不需要帽子，所以只買了一件 T 恤。",
+              "en": "I looked at some shoes, but they didn't have my size. I didn't need a hat, so I just got a T-shirt."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What did the boy buy?",
+            "zh": "男孩買了什麼？",
+            "en": "What did the boy buy?"
+          },
+          "options": [
+            {
+              "t": "a T-shirt"
+            },
+            {
+              "t": "shoes"
+            },
+            {
+              "t": "a hat"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "鞋子沒尺寸、不需要帽子，「只買了一件 T 恤」。",
+            "en": "No shoes in his size, no need for a hat: a T-shirt."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Where are you meeting your cousins tomorrow? At the museum?",
+              "zh": "你明天在哪裡跟表兄弟姊妹見面？博物館嗎？",
+              "en": "Where are you meeting your cousins tomorrow? At the museum?"
+            },
+            {
+              "who": "F",
+              "s": "We were going to, but it's closed on Mondays. We'll meet at the restaurant by the river, and then maybe go to the market.",
+              "zh": "本來是，可是博物館星期一休館。我們會在河邊的餐廳見面，之後也許去市集。",
+              "en": "We were going to, but it's closed on Mondays. We'll meet at the restaurant by the river, and then maybe go to the market."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "Where will the girl meet her cousins?",
+            "zh": "女孩會在哪裡和表兄弟姊妹見面？",
+            "en": "Where will the girl meet her cousins?"
+          },
+          "options": [
+            {
+              "t": "at the museum"
+            },
+            {
+              "t": "at the market"
+            },
+            {
+              "t": "at the restaurant"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "博物館休館，「在河邊的餐廳見面」；市集是之後。",
+            "en": "The museum is closed; they meet at the restaurant."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 2
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Shall I make a cake for the class party?",
+              "zh": "我要不要為班上的派對做一個蛋糕？",
+              "en": "Shall I make a cake for the class party?"
+            },
+            {
+              "who": "M",
+              "s": "Someone's already bringing one. And ice cream would melt. Can you make some biscuits?",
+              "zh": "已經有人要帶了。冰淇淋又會融化。你可以做一些餅乾嗎？",
+              "en": "Someone's already bringing one. And ice cream would melt. Can you make some biscuits?"
+            },
+            {
+              "who": "F",
+              "s": "OK, no problem.",
+              "zh": "好，沒問題。",
+              "en": "OK, no problem."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What will the girl make?",
+            "zh": "女孩會做什麼？",
+            "en": "What will the girl make?"
+          },
+          "options": [
+            {
+              "t": "a cake"
+            },
+            {
+              "t": "biscuits"
+            },
+            {
+              "t": "ice cream"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "蛋糕已經有人帶、冰淇淋會融化，她答應做「餅乾」。",
+            "en": "A cake is coming, ice cream would melt: biscuits."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "What do you do when you get home from school?",
+              "zh": "你放學回家後做什麼？",
+              "en": "What do you do when you get home from school?"
+            },
+            {
+              "who": "F",
+              "s": "My brother plays computer games, but I always read for an hour. I paint at the weekend.",
+              "zh": "我弟弟打電動，但我都會看一小時的書。畫畫是週末。",
+              "en": "My brother plays computer games, but I always read for an hour. I paint at the weekend."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What does the girl do after school?",
+            "zh": "女孩放學後做什麼？",
+            "en": "What does the girl do after school?"
+          },
+          "options": [
+            {
+              "t": "plays computer games"
+            },
+            {
+              "t": "reads"
+            },
+            {
+              "t": "paints"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我都會看一小時的書」；打電動的是弟弟，畫畫是週末。",
+            "en": "She reads; her brother plays games; she paints at weekends."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Are you staying in a hotel on holiday?",
+              "zh": "你們度假住飯店嗎？",
+              "en": "Are you staying in a hotel on holiday?"
+            },
+            {
+              "who": "M",
+              "s": "No, they're too expensive. We wanted to go camping, but Mum hates tents, so we've rented a caravan.",
+              "zh": "不是，飯店太貴了。我們本來想露營，可是媽媽討厭帳篷，所以租了一台露營車。",
+              "en": "No, they're too expensive. We wanted to go camping, but Mum hates tents, so we've rented a caravan."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "Where will the family stay?",
+            "zh": "這家人會住哪裡？",
+            "en": "Where will the family stay?"
+          },
+          "options": [
+            {
+              "t": "in a tent"
+            },
+            {
+              "t": "in a hotel"
+            },
+            {
+              "t": "in a caravan"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "飯店太貴、媽媽討厭帳篷，「租了一台露營車」。",
+            "en": "Hotels too expensive, Mum hates tents: a caravan."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Hello and welcome to Riverside Art Club. Let me tell you how the club works. We meet every Wednesday, from half past four until six, in Room 8. Each week we try something different — this month it's painting animals. The club costs two pounds each week, and you pay at the start of each lesson. We give you paper and paints, but please bring an old shirt to wear, because it can get messy. At the end of term we're having an exhibition in the town library. If you need to talk to me, my name's Miss Hart — H-A-R-T.",
+              "zh": "大家好，歡迎來到河畔美術社。我來說明社團怎麼進行。我們每個星期三四點半到六點在 8 號教室聚會。每週嘗試不同的東西，這個月是畫動物。社費每週兩英鎊，每堂課開始時付。我們提供紙和顏料，但請帶一件舊襯衫來穿，因為會弄髒。學期末我們會在鎮立圖書館辦展覽。有事要找我的話，我是哈特老師，拼法是 H-A-R-T。",
+              "en": "Hello and welcome to Riverside Art Club. Let me tell you how the club works. We meet every Wednesday, from half past four until six, in Room 8. Each week we try something different — this month it's painting animals. The club costs two pounds each week, and you pay at the start of each lesson. We give you paper and paints, but please bring an old shirt to wear, because it can get messy. At the end of term we're having an exhibition in the town library. If you need to talk to me, my name's Miss Hart — H-A-R-T."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Day: ＿＿＿＿＿",
+                "zh": "星期：＿＿",
+                "en": "Day: ＿＿＿＿＿"
+              },
+              "answers": [
+                "Wednesday",
+                "Wednesdays"
+              ],
+              "explain": {
+                "zh": "「每個星期三」。",
+                "en": "Every Wednesday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Club finishes at: ＿＿＿＿＿ p.m.",
+                "zh": "社團結束時間：下午＿＿",
+                "en": "Club finishes at: ＿＿＿＿＿ p.m."
+              },
+              "answers": [
+                "6",
+                "6.00",
+                "6:00",
+                "six",
+                "six o'clock"
+              ],
+              "explain": {
+                "zh": "「四點半到六點」：六點結束。",
+                "en": "From 4.30 until six."
+              }
+            },
+            {
+              "ask": {
+                "s": "Cost each week: £＿＿＿＿＿",
+                "zh": "每週費用：＿＿英鎊",
+                "en": "Cost each week: £＿＿＿＿＿"
+              },
+              "answers": [
+                "2",
+                "two"
+              ],
+              "explain": {
+                "zh": "「社費每週兩英鎊」。",
+                "en": "Two pounds a week."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bring: an old ＿＿＿＿＿",
+                "zh": "要帶：一件舊＿＿",
+                "en": "Bring: an old ＿＿＿＿＿"
+              },
+              "answers": [
+                "shirt"
+              ],
+              "explain": {
+                "zh": "「請帶一件舊襯衫來穿」；紙和顏料社團提供。",
+                "en": "An old shirt; paper and paints are given."
+              }
+            },
+            {
+              "ask": {
+                "s": "Exhibition at the town ＿＿＿＿＿",
+                "zh": "展覽地點：鎮立＿＿",
+                "en": "Exhibition at the town ＿＿＿＿＿"
+              },
+              "answers": [
+                "library"
+              ],
+              "explain": {
+                "zh": "「在鎮立圖書館辦展覽」。",
+                "en": "In the town library."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Hi Grace! How was your trip to Paris?",
+              "zh": "嗨，葛蕾絲！巴黎之旅怎麼樣？",
+              "en": "Hi Grace! How was your trip to Paris?"
+            },
+            {
+              "who": "F",
+              "s": "Amazing, thanks. We went for five days with my school.",
+              "zh": "超棒的，謝謝。我們跟學校去了五天。",
+              "en": "Amazing, thanks. We went for five days with my school."
+            },
+            {
+              "who": "M",
+              "s": "Did you go up the Eiffel Tower?",
+              "zh": "你們有上艾菲爾鐵塔嗎？",
+              "en": "Did you go up the Eiffel Tower?"
+            },
+            {
+              "who": "F",
+              "s": "We wanted to, but the queue was really long, so we went on a boat on the river instead. You can see the tower from the boat too.",
+              "zh": "本來想去，可是排隊的人超多，所以改去河上搭船。從船上也看得到鐵塔。",
+              "en": "We wanted to, but the queue was really long, so we went on a boat on the river instead. You can see the tower from the boat too."
+            },
+            {
+              "who": "M",
+              "s": "What was the food like?",
+              "zh": "食物怎麼樣？",
+              "en": "What was the food like?"
+            },
+            {
+              "who": "F",
+              "s": "Lovely. The bread was the best thing — I ate it every day! I didn't like the cheese much, though.",
+              "zh": "很好吃。麵包最棒，我每天都吃！不過起司我不太喜歡。",
+              "en": "Lovely. The bread was the best thing — I ate it every day! I didn't like the cheese much, though."
+            },
+            {
+              "who": "M",
+              "s": "Did you speak French?",
+              "zh": "你有說法文嗎？",
+              "en": "Did you speak French?"
+            },
+            {
+              "who": "F",
+              "s": "A little. I ordered food in French, and the waiters understood me. I was really pleased.",
+              "zh": "說了一點。我用法文點餐，服務生聽得懂，我很開心。",
+              "en": "A little. I ordered food in French, and the waiters understood me. I was really pleased."
+            },
+            {
+              "who": "M",
+              "s": "Would you go back?",
+              "zh": "你會想再去嗎？",
+              "en": "Would you go back?"
+            },
+            {
+              "who": "F",
+              "s": "Definitely. My mum says we can go together next year for her birthday.",
+              "zh": "當然。我媽說明年她生日時我們可以一起去。",
+              "en": "Definitely. My mum says we can go together next year for her birthday."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Who did Grace go to Paris with?",
+                "zh": "葛蕾絲和誰去巴黎？",
+                "en": "Who did Grace go to Paris with?"
+              },
+              "options": [
+                {
+                  "t": "her family"
+                },
+                {
+                  "t": "her school"
+                },
+                {
+                  "t": "her friends"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我們跟學校去了五天」。",
+                "en": "With her school."
+              }
+            },
+            {
+              "ask": {
+                "s": "Why didn't they go up the Eiffel Tower?",
+                "zh": "他們為什麼沒上艾菲爾鐵塔？",
+                "en": "Why didn't they go up the Eiffel Tower?"
+              },
+              "options": [
+                {
+                  "t": "It was closed."
+                },
+                {
+                  "t": "It was too expensive."
+                },
+                {
+                  "t": "There were too many people waiting."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「排隊的人超多」。",
+                "en": "The queue was really long."
+              }
+            },
+            {
+              "ask": {
+                "s": "What food did Grace like best?",
+                "zh": "葛蕾絲最喜歡什麼食物？",
+                "en": "What food did Grace like best?"
+              },
+              "options": [
+                {
+                  "t": "the bread"
+                },
+                {
+                  "t": "the cheese"
+                },
+                {
+                  "t": "the cakes"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「麵包最棒」；起司她不太喜歡。",
+                "en": "The bread; she didn't like the cheese."
+              }
+            },
+            {
+              "ask": {
+                "s": "How did Grace feel about speaking French?",
+                "zh": "葛蕾絲說法文的感覺如何？",
+                "en": "How did Grace feel about speaking French?"
+              },
+              "options": [
+                {
+                  "t": "nervous"
+                },
+                {
+                  "t": "happy"
+                },
+                {
+                  "t": "bored"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "服務生聽得懂，「我很開心」。",
+                "en": "She was really pleased."
+              }
+            },
+            {
+              "ask": {
+                "s": "When might Grace go back to Paris?",
+                "zh": "葛蕾絲可能什麼時候再去巴黎？",
+                "en": "When might Grace go back to Paris?"
+              },
+              "options": [
+                {
+                  "t": "next month"
+                },
+                {
+                  "t": "in the summer"
+                },
+                {
+                  "t": "next year"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「明年她生日時我們可以一起去」。",
+                "en": "Next year, for her mum's birthday."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a woman talking about her new neighbour.",
+              "zh": "你會聽到一位女士談她的新鄰居。",
+              "en": "You will hear a woman talking about her new neighbour."
+            },
+            {
+              "who": "F",
+              "s": "My new neighbour is very nice, but he plays the drums every evening! I've asked him to stop at nine o'clock, and he's agreed.",
+              "zh": "我的新鄰居人很好，可是他每天晚上都打鼓！我請他九點以後別打了，他答應了。",
+              "en": "My new neighbour is very nice, but he plays the drums every evening! I've asked him to stop at nine o'clock, and he's agreed."
+            }
+          ],
+          "ask": {
+            "s": "What does the woman say about her neighbour?",
+            "zh": "女士怎麼說她的鄰居？",
+            "en": "What does the woman say about her neighbour?"
+          },
+          "options": [
+            {
+              "t": "He is unfriendly."
+            },
+            {
+              "t": "He has a dog."
+            },
+            {
+              "t": "He makes a lot of noise."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "他人很好，但「每天晚上都打鼓」：很吵。",
+            "en": "Nice, but he plays the drums every evening."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a boy asking about a bus.",
+              "zh": "你會聽到一個男孩問公車的事。",
+              "en": "You will hear a boy asking about a bus."
+            },
+            {
+              "who": "M",
+              "s": "Excuse me, does this bus go to the stadium?",
+              "zh": "請問這班公車有到體育場嗎？",
+              "en": "Excuse me, does this bus go to the stadium?"
+            },
+            {
+              "who": "F",
+              "s": "No, you need the number twelve. It stops over there, opposite the bank.",
+              "zh": "沒有，你要搭 12 號。它停在那邊，銀行對面。",
+              "en": "No, you need the number twelve. It stops over there, opposite the bank."
+            }
+          ],
+          "ask": {
+            "s": "Where should the boy wait?",
+            "zh": "男孩應該在哪裡等車？",
+            "en": "Where should the boy wait?"
+          },
+          "options": [
+            {
+              "t": "opposite the bank"
+            },
+            {
+              "t": "next to the stadium"
+            },
+            {
+              "t": "outside the station"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "12 號公車「停在銀行對面」。",
+            "en": "The number 12 stops opposite the bank."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a girl talking about a book.",
+              "zh": "你會聽到一個女孩談一本書。",
+              "en": "You will hear a girl talking about a book."
+            },
+            {
+              "who": "F",
+              "s": "The book has six hundred pages, so I thought it would take me months. But it was so exciting that I finished it in a week.",
+              "zh": "那本書有六百頁，我以為要看好幾個月。可是太精彩了，我一個星期就看完了。",
+              "en": "The book has six hundred pages, so I thought it would take me months. But it was so exciting that I finished it in a week."
+            }
+          ],
+          "ask": {
+            "s": "How long did it take the girl to read the book?",
+            "zh": "女孩花了多久看完這本書？",
+            "en": "How long did it take the girl to read the book?"
+          },
+          "options": [
+            {
+              "t": "a day"
+            },
+            {
+              "t": "a week"
+            },
+            {
+              "t": "a month"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我一個星期就看完了」；好幾個月只是她原本以為的。",
+            "en": "A week; months was only what she expected."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man talking about a sports centre.",
+              "zh": "你會聽到一位男士談一間運動中心。",
+              "en": "You will hear a man talking about a sports centre."
+            },
+            {
+              "who": "M",
+              "s": "The new sports centre has a great pool and a gym, but the café is terrible. The sandwiches are old and the coffee is cold.",
+              "zh": "新的運動中心有很棒的游泳池和健身房，可是餐廳很糟。三明治不新鮮，咖啡是冷的。",
+              "en": "The new sports centre has a great pool and a gym, but the café is terrible. The sandwiches are old and the coffee is cold."
+            }
+          ],
+          "ask": {
+            "s": "What doesn't the man like?",
+            "zh": "男士不喜歡什麼？",
+            "en": "What doesn't the man like?"
+          },
+          "options": [
+            {
+              "t": "the pool"
+            },
+            {
+              "t": "the gym"
+            },
+            {
+              "t": "the café"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「餐廳很糟」；游泳池和健身房他覺得很棒。",
+            "en": "The café is terrible; the pool and gym are great."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a mother talking to her daughter.",
+              "zh": "你會聽到一位媽媽對女兒說話。",
+              "en": "You will hear a mother talking to her daughter."
+            },
+            {
+              "who": "F",
+              "s": "Your room is a mess, Kate! Before your friends come, please put your clothes away. You can do your homework later.",
+              "zh": "凱特，你的房間好亂！朋友來之前，請把衣服收好。功課可以晚點再寫。",
+              "en": "Your room is a mess, Kate! Before your friends come, please put your clothes away. You can do your homework later."
+            }
+          ],
+          "ask": {
+            "s": "What does the mother want Kate to do?",
+            "zh": "媽媽要凱特做什麼？",
+            "en": "What does the mother want Kate to do?"
+          },
+          "options": [
+            {
+              "t": "tidy her room"
+            },
+            {
+              "t": "do her homework"
+            },
+            {
+              "t": "phone her friends"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「朋友來之前，請把衣服收好」；功課晚點寫。",
+            "en": "Put her clothes away first; homework later."
+          }
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "M",
+              "s": "So, what did you bring back from Scotland for everyone?",
+              "zh": "那你從蘇格蘭帶了什麼回來給大家？",
+              "en": "So, what did you bring back from Scotland for everyone?"
+            },
+            {
+              "who": "F",
+              "s": "For Mum, I wanted to get a scarf, but she's got lots, so I bought her a mug with a picture of a castle.",
+              "zh": "給媽媽的，本來想買圍巾，可是她已經很多了，所以買了一個印著城堡的馬克杯。",
+              "en": "For Mum, I wanted to get a scarf, but she's got lots, so I bought her a mug with a picture of a castle."
+            },
+            {
+              "who": "M",
+              "s": "She'll love that. What about Grandpa?",
+              "zh": "她會很喜歡。爺爺呢？",
+              "en": "She'll love that. What about Grandpa?"
+            },
+            {
+              "who": "F",
+              "s": "He's always cold, so I got him some warm socks.",
+              "zh": "他總是很怕冷，所以我買了保暖的襪子。",
+              "en": "He's always cold, so I got him some warm socks."
+            },
+            {
+              "who": "M",
+              "s": "Good idea. And Uncle Joe?",
+              "zh": "好主意。喬叔叔呢？",
+              "en": "Good idea. And Uncle Joe?"
+            },
+            {
+              "who": "F",
+              "s": "He likes sweet things, so chocolates. I nearly got him a game, but he never plays games.",
+              "zh": "他喜歡甜的，所以買巧克力。本來差點買桌遊，可是他從來不玩。",
+              "en": "He likes sweet things, so chocolates. I nearly got him a game, but he never plays games."
+            },
+            {
+              "who": "M",
+              "s": "And Aunt Sue?",
+              "zh": "蘇阿姨呢？",
+              "en": "And Aunt Sue?"
+            },
+            {
+              "who": "F",
+              "s": "A little plant for her kitchen. And for Tim, a jumper with a sheep on it — he'll think it's funny.",
+              "zh": "一盆放廚房的小植物。給提姆的是一件有綿羊圖案的毛衣，他一定覺得很好笑。",
+              "en": "A little plant for her kitchen. And for Tim, a jumper with a sheep on it — he'll think it's funny."
+            },
+            {
+              "who": "M",
+              "s": "And nothing for me?",
+              "zh": "那我沒有嗎？",
+              "en": "And nothing for me?"
+            },
+            {
+              "who": "F",
+              "s": "Of course there's something for you, Dad — but it's a surprise!",
+              "zh": "當然有你的，爸，不過是驚喜！",
+              "en": "Of course there's something for you, Dad — but it's a surprise!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Mum",
+                "zh": "媽媽",
+                "en": "Mum"
+              },
+              "options": [
+                {
+                  "t": "a camera"
+                },
+                {
+                  "t": "a game"
+                },
+                {
+                  "t": "a jumper"
+                },
+                {
+                  "t": "a mug"
+                },
+                {
+                  "t": "a plant"
+                },
+                {
+                  "t": "a scarf"
+                },
+                {
+                  "t": "chocolates"
+                },
+                {
+                  "t": "socks"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "圍巾她很多了，所以「買了一個印著城堡的馬克杯」。",
+                "en": "Not a scarf: a mug."
+              }
+            },
+            {
+              "ask": {
+                "s": "Grandpa",
+                "zh": "爺爺",
+                "en": "Grandpa"
+              },
+              "options": [
+                {
+                  "t": "a camera"
+                },
+                {
+                  "t": "a game"
+                },
+                {
+                  "t": "a jumper"
+                },
+                {
+                  "t": "a mug"
+                },
+                {
+                  "t": "a plant"
+                },
+                {
+                  "t": "a scarf"
+                },
+                {
+                  "t": "chocolates"
+                },
+                {
+                  "t": "socks"
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "他怕冷，「買了保暖的襪子」。",
+                "en": "Warm socks."
+              }
+            },
+            {
+              "ask": {
+                "s": "Uncle Joe",
+                "zh": "喬叔叔",
+                "en": "Uncle Joe"
+              },
+              "options": [
+                {
+                  "t": "a camera"
+                },
+                {
+                  "t": "a game"
+                },
+                {
+                  "t": "a jumper"
+                },
+                {
+                  "t": "a mug"
+                },
+                {
+                  "t": "a plant"
+                },
+                {
+                  "t": "a scarf"
+                },
+                {
+                  "t": "chocolates"
+                },
+                {
+                  "t": "socks"
+                }
+              ],
+              "answer": "G",
+              "explain": {
+                "zh": "喜歡甜的，「所以買巧克力」；桌遊他不玩。",
+                "en": "Chocolates; he never plays games."
+              }
+            },
+            {
+              "ask": {
+                "s": "Aunt Sue",
+                "zh": "蘇阿姨",
+                "en": "Aunt Sue"
+              },
+              "options": [
+                {
+                  "t": "a camera"
+                },
+                {
+                  "t": "a game"
+                },
+                {
+                  "t": "a jumper"
+                },
+                {
+                  "t": "a mug"
+                },
+                {
+                  "t": "a plant"
+                },
+                {
+                  "t": "a scarf"
+                },
+                {
+                  "t": "chocolates"
+                },
+                {
+                  "t": "socks"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "「一盆放廚房的小植物」。",
+                "en": "A plant for her kitchen."
+              }
+            },
+            {
+              "ask": {
+                "s": "Tim",
+                "zh": "提姆",
+                "en": "Tim"
+              },
+              "options": [
+                {
+                  "t": "a camera"
+                },
+                {
+                  "t": "a game"
+                },
+                {
+                  "t": "a jumper"
+                },
+                {
+                  "t": "a mug"
+                },
+                {
+                  "t": "a plant"
+                },
+                {
+                  "t": "a scarf"
+                },
+                {
+                  "t": "chocolates"
+                },
+                {
+                  "t": "socks"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「一件有綿羊圖案的毛衣」。",
+                "en": "A jumper with a sheep on it."
               }
             }
           ]

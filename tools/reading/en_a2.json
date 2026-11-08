@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "English A2 reading rounds in the Cambridge A2 Key format (owner's plan 2026-10-30: each language's own exam). Parts 1–5 (6 notices / messages, 7 questions on three texts, a long text × 5, a multiple-choice cloze × 6, an open cloze × 6 with typed one-word answers, en_open). Three options. Original texts. Drafted in tools/.mockups/en_a2.py.",
+  "note": "English A2 reading rounds in the Cambridge A2 Key format (owner's plan 2026-10-30: each language's own exam). Parts 1–5 (6 notices / messages, 7 questions on three texts, a long text × 5, a multiple-choice cloze × 6, an open cloze × 6 with typed one-word answers, en_open). Three options. Original texts. Drafted in tools/.mockups/en_a2.py (rounds 2–3: en_a2_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -432,6 +432,867 @@
               ],
               "zh": "「Let me know if you can come」：告訴我你能不能來。",
               "en": "Let me know if (whether) you can come."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "PARK CAFÉ\nOpen every day, 9 a.m. – 5 p.m.\nDogs welcome at the outside tables only.",
+          "tr": {
+            "zh": "公園咖啡館\n每天營業，早上九點到下午五點。\n狗狗只能在戶外座位。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "You can bring your dog inside.",
+                "You can sit outside with your dog.",
+                "The café closes at 9 p.m."
+              ],
+              "answer": 1,
+              "zh": "狗狗「只能在戶外座位」，所以可以帶狗坐外面。",
+              "en": "Dogs are welcome at the outside tables."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Dad,\nI've taken your umbrella because mine is at school. I'll bring it back after my dance class at 7.\nAmy",
+          "tr": {
+            "zh": "爸：\n我拿了你的雨傘，因為我的放在學校。七點舞蹈課結束後會拿回來。\n艾咪"
+          },
+          "questions": [
+            {
+              "q": "Why is Amy writing?",
+              "options": [
+                "to ask for a new umbrella",
+                "to say her dance class has changed",
+                "to explain where Dad's umbrella is"
+              ],
+              "answer": 2,
+              "zh": "她說明自己「拿了你的雨傘」，七點後還。",
+              "en": "She tells Dad she has taken his umbrella."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "SALE\nAll T-shirts half price this weekend.\nShoes: buy one pair, get a second pair free.",
+          "tr": {
+            "zh": "特賣\n本週末所有 T 恤半價。\n鞋子：買一雙，第二雙免費。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "You can get two pairs of shoes for the price of one.",
+                "T-shirts are free this weekend.",
+                "The sale is for one day only."
+              ],
+              "answer": 0,
+              "zh": "「買一雙，第二雙免費」：一雙的價錢買兩雙；T 恤是半價，不是免費。",
+              "en": "Buy one, get one free; T-shirts are half price."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Mr Brown's science class on Wednesday will be in Room 12, not the lab.\nPlease bring your homework.",
+          "tr": {
+            "zh": "布朗老師星期三的自然課改在 12 號教室，不在實驗室。\n請帶作業來。"
+          },
+          "questions": [
+            {
+              "q": "On Wednesday, students should",
+              "options": [
+                "go to the lab.",
+                "give their homework to Mr Brown on Tuesday.",
+                "go to a different room."
+              ],
+              "answer": 2,
+              "zh": "「改在 12 號教室，不在實驗室」：換了教室。",
+              "en": "Room 12, not the lab."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Jack,\nThe concert tickets go on sale on Friday. They sell out fast, so shall I buy yours too? You can pay me later.\nOllie",
+          "tr": {
+            "zh": "傑克：\n演唱會的票星期五開賣，很快就會賣光，要不要我也幫你買？錢之後再給我就好。\n奧利"
+          },
+          "questions": [
+            {
+              "q": "What does Ollie offer to do?",
+              "options": [
+                "buy a ticket for Jack",
+                "lend Jack some money",
+                "go to the concert on Friday"
+              ],
+              "answer": 0,
+              "zh": "「要不要我也幫你買？」：他要幫傑克買票；星期五是開賣日。",
+              "en": "He offers to buy Jack's ticket."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "TRAIN PASSENGERS\nThe 10.15 to Bristol will leave from Platform 4 today.\nPlease do not use the lift — it is out of order.",
+          "tr": {
+            "zh": "火車旅客請注意\n今天 10:15 開往布里斯托的列車在第 4 月台發車。\n電梯故障，請勿使用。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "The train to Bristol is late.",
+                "Passengers must take the stairs.",
+                "The lift is on Platform 4."
+              ],
+              "answer": 1,
+              "zh": "電梯「故障，請勿使用」，只能走樓梯；沒有說火車誤點。",
+              "en": "The lift is out of order."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "text": "A  Dan\nI study at the city library. It's very quiet, and there are big tables where I can put all my books. It's open until nine in the evening, so I go there after school. The only thing I don't like is that you can't eat or drink inside.\nB  Ella\nI like studying at my grandmother's flat because she makes me tea and cakes. She lives near my school, so I can walk there in five minutes. Her cat sometimes sits on my books, which is funny but not very helpful!\nC  Finn\nI study in my bedroom with music on. My parents say I can't concentrate with music, but I disagree — it helps me. I've got a desk by the window, and I can see the park. I study best early in the morning, before breakfast.",
+          "tr": {
+            "zh": "A 丹：我在市立圖書館讀書。那裡很安靜，有大桌子可以放我所有的書。開到晚上九點，所以我放學後去。唯一不喜歡的是裡面不能吃東西、喝飲料。\nB 艾拉：我喜歡在奶奶的公寓讀書，因為她會幫我泡茶、拿蛋糕。她住在學校附近，我走路五分鐘就到。她的貓有時候會坐在我的書上，很好笑，但沒什麼幫助！\nC 芬恩：我在房間裡開著音樂讀書。爸媽說聽音樂沒辦法專心，但我不同意，音樂對我有幫助。我的書桌在窗邊，看得到公園。我在早上吃早餐前讀書效果最好。"
+          },
+          "questions": [
+            {
+              "q": "Who has an animal near them while they study?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 1,
+              "zh": "艾拉說奶奶的「貓有時候會坐在我的書上」。",
+              "en": "Grandma's cat sits on Ella's books."
+            },
+            {
+              "q": "Who studies before eating in the morning?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 2,
+              "zh": "芬恩「在早上吃早餐前」讀書。",
+              "en": "Finn studies before breakfast."
+            },
+            {
+              "q": "Who would like to have a snack while studying?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 0,
+              "zh": "丹不喜歡圖書館「不能吃東西、喝飲料」。",
+              "en": "Dan doesn't like that he can't eat there."
+            },
+            {
+              "q": "Who studies very close to school?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 1,
+              "zh": "奶奶住學校附近，艾拉「走路五分鐘就到」。",
+              "en": "Five minutes from school."
+            },
+            {
+              "q": "Who studies in a public place?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 0,
+              "zh": "丹在「市立圖書館」讀書。",
+              "en": "Dan uses the city library."
+            },
+            {
+              "q": "Whose family doesn't agree with how they study?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 2,
+              "zh": "芬恩「爸媽說聽音樂沒辦法專心」。",
+              "en": "Finn's parents dislike the music."
+            },
+            {
+              "q": "Who goes somewhere that closes in the evening?",
+              "options": [
+                "Dan",
+                "Ella",
+                "Finn"
+              ],
+              "answer": 0,
+              "zh": "圖書館「開到晚上九點」。",
+              "en": "The library is open until nine."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "My summer job at the zoo\nLast summer I worked as a helper at Westfield Zoo for six weeks. I wanted the job because I'm planning to study animal science at university. My first job every morning was to clean the penguins' area. It started at seven, so I had to get up at six — not easy for me! After that I helped to prepare food for the animals. The giraffes eat leaves, which we cut from trees in the zoo's garden.\nMy favourite part of the day was the talk at two o'clock. One of the keepers told visitors about the elephants, and after two weeks she asked me to do it. I was very nervous the first time, but the visitors asked lots of questions, and I enjoyed answering them.\nThe job wasn't well paid, but I learned a lot. The keepers have invited me to come back next summer, and I've already said yes. — Hannah",
+          "tr": {
+            "zh": "我在動物園的暑期打工\n去年暑假，我在西田動物園當了六個星期的小幫手。我想做這份工作，是因為我打算上大學讀動物學。每天早上第一件工作是打掃企鵝區，七點開始，所以我六點就得起床——對我來說可不容易！之後我幫忙準備動物的食物。長頸鹿吃樹葉，是我們從動物園花園的樹上剪下來的。\n我一天中最喜歡的是兩點的解說。一位飼育員會向遊客介紹大象，兩週後她請我來講。第一次我非常緊張，但遊客問了很多問題，我很喜歡回答。\n這份工作薪水不高，但我學到很多。飼育員邀我明年暑假再回來，我已經答應了。——漢娜"
+          },
+          "questions": [
+            {
+              "q": "Why did Hannah want the job?",
+              "options": [
+                "She needed money.",
+                "Her friend worked there.",
+                "It will help with her future studies."
+              ],
+              "answer": 2,
+              "zh": "她「打算上大學讀動物學」；薪水其實不高。",
+              "en": "She plans to study animal science; the pay was low."
+            },
+            {
+              "q": "What was difficult for Hannah?",
+              "options": [
+                "getting up early",
+                "cleaning the penguin area",
+                "cutting leaves"
+              ],
+              "answer": 0,
+              "zh": "「六點就得起床——對我來說可不容易」。",
+              "en": "Getting up at six was not easy."
+            },
+            {
+              "q": "What did the giraffes eat?",
+              "options": [
+                "food from a shop",
+                "leaves from the zoo's trees",
+                "fruit from visitors"
+              ],
+              "answer": 1,
+              "zh": "樹葉「是從動物園花園的樹上剪下來的」。",
+              "en": "Leaves cut from the zoo's trees."
+            },
+            {
+              "q": "How did Hannah feel the first time she gave the talk?",
+              "options": [
+                "worried",
+                "bored",
+                "excited"
+              ],
+              "answer": 0,
+              "zh": "「第一次我非常緊張」。",
+              "en": "She was very nervous."
+            },
+            {
+              "q": "What will Hannah do next summer?",
+              "options": [
+                "study at university",
+                "work at a different zoo",
+                "work at Westfield Zoo again"
+              ],
+              "answer": 2,
+              "zh": "飼育員邀她回來，「我已經答應了」。",
+              "en": "She has agreed to come back."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_cloze",
+          "text": "The Longest Bike Ride\nLast year, a sixteen-year-old boy called Sam Price rode his bike (19) ＿＿＿＿＿ the north of Scotland to the south of England. The journey (20) ＿＿＿＿＿ him three weeks. He slept in tents and small hotels, and his dad drove a car behind him (21) ＿＿＿＿＿ the food and clothes. Sam did the ride (22) ＿＿＿＿＿ collect money for a children's hospital. He hoped to get £1,000, but people gave him (23) ＿＿＿＿＿ than £5,000! 'I was tired every day,' Sam says, '(24) ＿＿＿＿＿ I'd love to do it again.'",
+          "tr": {
+            "zh": "最長的單車之旅\n去年，一個叫山姆·普萊斯的十六歲男孩，騎單車從蘇格蘭北部騎到英格蘭南部。這趟旅程花了他三個星期。他睡帳篷和小旅館，爸爸開車跟在他後面，載著食物和衣服。山姆騎這一趟是為了替一家兒童醫院募款。他原本希望募到一千英鎊，結果大家捐了超過五千英鎊！山姆說：「我每天都很累，但我很想再騎一次。」"
+          },
+          "questions": [
+            {
+              "q": "(19)",
+              "options": [
+                "from",
+                "at",
+                "on"
+              ],
+              "answer": 0,
+              "zh": "「from … to …」：從某地到某地。",
+              "en": "from the north … to the south."
+            },
+            {
+              "q": "(20)",
+              "options": [
+                "spent",
+                "made",
+                "took"
+              ],
+              "answer": 2,
+              "zh": "「The journey took him three weeks」：花了他三週；spent 的主詞要是人。",
+              "en": "It took him three weeks; \"spent\" needs a person as subject."
+            },
+            {
+              "q": "(21)",
+              "options": [
+                "at",
+                "with",
+                "by"
+              ],
+              "answer": 1,
+              "zh": "開車跟著，車上「帶著」食物和衣服：with。",
+              "en": "drove … with the food and clothes."
+            },
+            {
+              "q": "(22)",
+              "options": [
+                "for",
+                "because",
+                "to"
+              ],
+              "answer": 2,
+              "zh": "表示目的「為了募款」：to + 原形動詞 collect。",
+              "en": "to collect: purpose."
+            },
+            {
+              "q": "(23)",
+              "options": [
+                "more",
+                "most",
+                "much"
+              ],
+              "answer": 0,
+              "zh": "後面有 than，用比較級「more than」。",
+              "en": "more than £5,000."
+            },
+            {
+              "q": "(24)",
+              "options": [
+                "so",
+                "but",
+                "because"
+              ],
+              "answer": 1,
+              "zh": "很累「但」還想再騎：前後相反，用 but。",
+              "en": "Tired, but he wants to do it again."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 5,
+          "ask": "en_open",
+          "text": "Hi Jo,\nI'm (25) ＿＿＿＿＿ holiday in Spain with my family at the moment. We're staying in a small hotel near (26) ＿＿＿＿＿ beach. The weather is hot and sunny, so we go swimming every morning. Yesterday we visited an old castle. It was (27) ＿＿＿＿＿ interesting, but there were lots of steps! Tonight we're going (28) ＿＿＿＿＿ eat at a fish restaurant. I've bought you a present, but I won't tell you what it is. (29) ＿＿＿＿＿ you doing anything fun this week? Write soon and tell me (30) ＿＿＿＿＿ your news!\nKate",
+          "tr": {
+            "zh": "裘你好：\n我現在和家人在西班牙度假。我們住在海灘附近的一家小旅館。天氣又熱又晴朗，所以我們每天早上都去游泳。昨天我們參觀了一座古堡，很有意思，不過階梯好多！今晚我們要去一家海鮮餐廳吃飯。我買了禮物給你，但不告訴你是什麼。你這週有做什麼好玩的事嗎？快回信，把你的近況都告訴我！\n凱特"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "on"
+              ],
+              "zh": "「on holiday」：在度假，固定用 on。",
+              "en": "on holiday."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "the",
+                "a"
+              ],
+              "zh": "名詞 beach 前要加冠詞：near the beach。",
+              "en": "near the beach."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "very",
+                "really",
+                "quite",
+                "so"
+              ],
+              "zh": "形容詞前加程度副詞：very / really interesting。",
+              "en": "very (really, quite) interesting."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "to"
+              ],
+              "zh": "「be going to + 原形動詞」：打算做某事。",
+              "en": "we're going to eat."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "Are"
+              ],
+              "zh": "現在進行式問句：Are you doing …?",
+              "en": "Are you doing anything fun?"
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "all",
+                "about"
+              ],
+              "zh": "「tell me all your news」或「tell me about your news」。",
+              "en": "tell me all (about) your news."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "LIBRARY\nYou can borrow up to six books for three weeks.\nDVDs: one week only.",
+          "tr": {
+            "zh": "圖書館\n書最多可以借六本，借期三週。\nDVD：只能借一週。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "DVDs must come back sooner than books.",
+                "You can borrow six DVDs.",
+                "Books must be returned after one week."
+              ],
+              "answer": 0,
+              "zh": "DVD 只能借「一週」，書是三週，所以 DVD 要早點還。",
+              "en": "DVDs: one week; books: three weeks."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Hi Gran,\nThank you for the birthday money! I'm going to spend it on a new phone case and some art pencils. Can I come and show you on Sunday?\nLily",
+          "tr": {
+            "zh": "奶奶好：\n謝謝您給的生日紅包！我要用來買新的手機殼和一些美術色鉛筆。星期天可以去給您看嗎？\n莉莉"
+          },
+          "questions": [
+            {
+              "q": "Why is Lily writing?",
+              "options": [
+                "to ask for money for a phone",
+                "to invite Gran to her party",
+                "to thank Gran for a present"
+              ],
+              "answer": 2,
+              "zh": "開頭就是「謝謝您給的生日紅包」。",
+              "en": "To thank Gran for the birthday money."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "SPORTS CENTRE\nYoga classes are now on Tuesday evenings instead of Monday.\nThe price is the same.",
+          "tr": {
+            "zh": "運動中心\n瑜伽課從星期一晚上改到星期二晚上。\n價格不變。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "Yoga costs more now.",
+                "Yoga classes have moved to a different day.",
+                "There are no more yoga classes on Tuesday."
+              ],
+              "answer": 1,
+              "zh": "「改到星期二晚上」：換了日子；價格不變。",
+              "en": "Moved from Monday to Tuesday; same price."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Max,\nI'm at the dentist until 4. Your dinner is in the fridge — just put it in the microwave for two minutes.\nMum",
+          "tr": {
+            "zh": "麥克斯：\n我在看牙醫，四點才結束。你的晚餐在冰箱裡，放進微波爐熱兩分鐘就好。\n媽媽"
+          },
+          "questions": [
+            {
+              "q": "What does Max need to do?",
+              "options": [
+                "go to the dentist",
+                "heat his food",
+                "buy dinner"
+              ],
+              "answer": 1,
+              "zh": "「放進微波爐熱兩分鐘」：要把飯熱一熱；看牙醫的是媽媽。",
+              "en": "Microwave his dinner; Mum is at the dentist."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "FOR SALE\nGirl's bike, blue, 2 years old. Perfect for ages 8–11.\n£40 or best offer. Call Helen after 6 p.m.",
+          "tr": {
+            "zh": "出售\n女童腳踏車，藍色，用了兩年，適合 8 到 11 歲。\n40 英鎊，可議價。晚上六點後請打給海倫。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "The bike is new.",
+                "Helen wants exactly £40.",
+                "You should phone in the evening."
+              ],
+              "answer": 2,
+              "zh": "「晚上六點後請打給海倫」；車用了兩年，價格可議。",
+              "en": "Call after 6 p.m.; the price can change."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Students: please do not leave bags in the corridor. Use your lockers.\nBags in the corridor will be taken to the office.",
+          "tr": {
+            "zh": "同學們：請勿把書包放在走廊，請使用置物櫃。\n放在走廊的書包會被拿到辦公室。"
+          },
+          "questions": [
+            {
+              "q": "What does the notice say?",
+              "options": [
+                "Bags left in the corridor will be moved.",
+                "Students must take their bags to the office.",
+                "There are no lockers for students."
+              ],
+              "answer": 0,
+              "zh": "放在走廊的書包「會被拿到辦公室」：會被移走。",
+              "en": "They will be taken to the office."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "text": "A  Grace\nEvery Saturday morning I go to a cooking club at the community centre. We learn to make food from different countries — last week it was an Indian curry. We eat everything we cook at the end, so I never need lunch afterwards! It costs £5 each time.\nB  Harry\nI'm in a chess club that meets on Sunday afternoons in a café. Most of the members are older than me — some are over seventy! — but they're very kind. I've won three games this month. The club is free, but we all buy a drink from the café.\nC  Isla\nI go to a climbing club at an indoor wall in the town centre. We meet on Saturday and Sunday mornings. I was scared at first, but now I can climb to the top. Next month the club is going to a real mountain in Wales, and I can't wait.",
+          "tr": {
+            "zh": "A 葛蕾絲：我每個星期六早上去社區中心的烹飪社。我們學做各國的菜，上週是印度咖哩。最後會把做的東西全部吃掉，所以之後我都不用吃午餐！每次五英鎊。\nB 哈利：我參加一個西洋棋社，星期天下午在一家咖啡館聚會。大部分社員都比我大，有些超過七十歲！但他們人很好。這個月我贏了三盤。社團免費，不過大家都會跟咖啡館買一杯飲料。\nC 艾拉：我參加市中心一間室內攀岩場的攀岩社，星期六和星期天早上都有聚會。一開始我很害怕，現在已經能爬到頂了。下個月社團要去威爾斯爬真正的山，我等不及了。"
+          },
+          "questions": [
+            {
+              "q": "Who is going on a trip with their club soon?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 2,
+              "zh": "艾拉的社團「下個月要去威爾斯爬山」。",
+              "en": "Isla's club goes to Wales next month."
+            },
+            {
+              "q": "Who doesn't have lunch after their club?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 0,
+              "zh": "葛蕾絲說「之後我都不用吃午餐」。",
+              "en": "Grace never needs lunch afterwards."
+            },
+            {
+              "q": "Who is younger than most people in their club?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 1,
+              "zh": "哈利說「大部分社員都比我大」。",
+              "en": "Most members are older than Harry."
+            },
+            {
+              "q": "Who goes to their club twice a weekend?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 2,
+              "zh": "艾拉「星期六和星期天早上」都去。",
+              "en": "Isla goes on Saturday and Sunday."
+            },
+            {
+              "q": "Whose club doesn't cost anything?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 1,
+              "zh": "哈利的「社團免費」，只是自己買飲料。",
+              "en": "Harry's club is free."
+            },
+            {
+              "q": "Who learns about food from abroad?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 0,
+              "zh": "葛蕾絲「學做各國的菜」。",
+              "en": "Grace cooks food from different countries."
+            },
+            {
+              "q": "Who was frightened when they started?",
+              "options": [
+                "Grace",
+                "Harry",
+                "Isla"
+              ],
+              "answer": 2,
+              "zh": "艾拉「一開始我很害怕」。",
+              "en": "Isla was scared at first."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "The day I met my favourite writer\nI have loved Rosa Grey's books since I was eight. Last spring my aunt read on the internet that Rosa was coming to a bookshop in our town to sign her new book. I didn't believe it at first, because she lives in Canada and doesn't often travel.\nOn the day, my aunt and I arrived an hour early, but there was already a long line outside the shop. We waited for two hours! When it was finally my turn, I was so excited that I forgot what I wanted to say. Rosa smiled and asked me which of her books I liked best. I told her it was The Silver Door, and she wrote a message to me in my copy of it.\nNow I'm writing my own story, about a girl who finds a secret garden. Rosa told me to write a little every day, and that's what I do. — Ben",
+          "tr": {
+            "zh": "我見到最喜歡的作家的那一天\n我從八歲就喜歡蘿莎·葛雷的書。去年春天，我阿姨在網路上看到蘿莎要來我們鎮上的書店幫新書簽名。一開始我不相信，因為她住在加拿大，很少出遠門。\n那天我和阿姨提早一小時到，可是店外已經排了長長的隊。我們等了兩個小時！終於輪到我時，我興奮到忘了要說什麼。蘿莎笑著問我最喜歡她哪一本書。我說是《銀色的門》，她就在我那本書上寫了一段話給我。\n現在我在寫自己的故事，講一個女孩發現秘密花園。蘿莎叫我每天寫一點，我也真的這樣做。——班"
+          },
+          "questions": [
+            {
+              "q": "How did Ben find out about the event?",
+              "options": [
+                "He saw a poster in the bookshop.",
+                "His aunt read about it online.",
+                "Rosa Grey sent him an email."
+              ],
+              "answer": 1,
+              "zh": "「我阿姨在網路上看到」。",
+              "en": "His aunt read about it on the internet."
+            },
+            {
+              "q": "Why was Ben surprised?",
+              "options": [
+                "The bookshop was very small.",
+                "His aunt liked the books too.",
+                "Rosa Grey does not often leave her country."
+              ],
+              "answer": 2,
+              "zh": "「她住在加拿大，很少出遠門」。",
+              "en": "She lives in Canada and rarely travels."
+            },
+            {
+              "q": "What happened when Ben met Rosa?",
+              "options": [
+                "He couldn't remember what to say.",
+                "He gave her a copy of his story.",
+                "She asked him to read aloud."
+              ],
+              "answer": 0,
+              "zh": "「我興奮到忘了要說什麼」。",
+              "en": "He forgot what he wanted to say."
+            },
+            {
+              "q": "Where did Rosa write a message?",
+              "options": [
+                "in her new book",
+                "in Ben's copy of The Silver Door",
+                "in Ben's notebook"
+              ],
+              "answer": 1,
+              "zh": "他說最喜歡《銀色的門》，她「在我那本書上」寫給他。",
+              "en": "In Ben's copy of The Silver Door."
+            },
+            {
+              "q": "What advice did Rosa give Ben?",
+              "options": [
+                "to write every day",
+                "to read more books",
+                "to visit a garden"
+              ],
+              "answer": 0,
+              "zh": "「蘿莎叫我每天寫一點」。",
+              "en": "Write a little every day."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_cloze",
+          "text": "Penguins\nPenguins are birds, but they cannot fly. (19) ＿＿＿＿＿, they are excellent swimmers. Some penguins can swim (20) ＿＿＿＿＿ fast as 35 kilometres an hour. Most penguins live in the south of the world, and many of them live in very cold places. They have thick feathers (21) ＿＿＿＿＿ keep them warm. Penguins eat fish, which they (22) ＿＿＿＿＿ catch under the water. A mother penguin usually lays one or two eggs, and the father often (23) ＿＿＿＿＿ care of them. Today some kinds of penguin are in danger, (24) ＿＿＿＿＿ the seas are getting warmer.",
+          "tr": {
+            "zh": "企鵝\n企鵝是鳥，但不會飛。不過牠們很會游泳，有些企鵝每小時能游到三十五公里。大部分企鵝住在地球南邊，很多住在非常冷的地方。牠們有厚厚的羽毛保暖。企鵝吃魚，會在水裡抓魚。企鵝媽媽通常下一到兩顆蛋，常常由企鵝爸爸照顧蛋。現在有些種類的企鵝面臨危險，因為海水越來越暖。"
+          },
+          "questions": [
+            {
+              "q": "(19)",
+              "options": [
+                "Also",
+                "However",
+                "Because"
+              ],
+              "answer": 1,
+              "zh": "不會飛，「不過」很會游泳：前後對比，用 However。",
+              "en": "Contrast: however."
+            },
+            {
+              "q": "(20)",
+              "options": [
+                "as",
+                "so",
+                "more"
+              ],
+              "answer": 0,
+              "zh": "「as fast as …」：快到……的程度。",
+              "en": "as fast as."
+            },
+            {
+              "q": "(21)",
+              "options": [
+                "what",
+                "who",
+                "which"
+              ],
+              "answer": 2,
+              "zh": "指前面的 feathers（東西），關係代名詞用 which。",
+              "en": "feathers which keep them warm."
+            },
+            {
+              "q": "(22)",
+              "options": [
+                "can",
+                "are",
+                "have"
+              ],
+              "answer": 0,
+              "zh": "「can catch」：能抓；are / have 後面不能直接接原形動詞。",
+              "en": "they can catch."
+            },
+            {
+              "q": "(23)",
+              "options": [
+                "makes",
+                "takes",
+                "does"
+              ],
+              "answer": 1,
+              "zh": "「take care of」：照顧，固定用 take。",
+              "en": "takes care of them."
+            },
+            {
+              "q": "(24)",
+              "options": [
+                "so",
+                "although",
+                "because"
+              ],
+              "answer": 2,
+              "zh": "海水變暖是企鵝有危險的「原因」：because。",
+              "en": "because the seas are warmer."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 5,
+          "ask": "en_open",
+          "text": "Dear Mr Lee,\nI am writing (25) ＿＿＿＿＿ ask about the summer art course. My friend did it last year, and she said it was great. I would like to know how much it costs and (26) ＿＿＿＿＿ long each class is. I am fourteen years old, and I have been painting (27) ＿＿＿＿＿ I was ten. Is the course for people of my age? Also, do I need to bring (28) ＿＿＿＿＿ own paints and brushes, or (29) ＿＿＿＿＿ you give them to students? I hope to hear from you (30) ＿＿＿＿＿.\nYours sincerely,\nRuby Ford",
+          "tr": {
+            "zh": "李先生您好：\n我寫信是想詢問暑期美術課程。我朋友去年上過，她說很棒。我想知道費用多少，以及每堂課多長。我今年十四歲，從十歲就開始畫畫。這個課程適合我這個年紀嗎？另外，我需要自己帶顏料和畫筆，還是你們會提供給學生？希望很快收到您的回覆。\n敬上\n露比·福特"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "to"
+              ],
+              "zh": "「I am writing to ask …」：寫信的目的，to + 原形動詞。",
+              "en": "writing to ask."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "how"
+              ],
+              "zh": "「how long」：多長時間。",
+              "en": "how long each class is."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "since"
+              ],
+              "zh": "現在完成進行式 + 「since I was ten」：從十歲起。",
+              "en": "since I was ten."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "my"
+              ],
+              "zh": "「my own paints」：我自己的顏料。",
+              "en": "my own paints."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "do",
+                "will",
+                "can"
+              ],
+              "zh": "一般問句：do / will you give …?",
+              "en": "do (will, can) you give them?"
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "soon"
+              ],
+              "zh": "「hear from you soon」：很快收到回覆，信件常用結尾。",
+              "en": "hear from you soon."
             }
           ]
         }
