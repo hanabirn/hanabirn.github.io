@@ -4,7 +4,7 @@
   "level": "B2",
   "order": 4,
   "n_options": 4,
-  "note": "English B2 reading rounds in the Cambridge B2 First format (Reading and Use of English; owner's plan 2026-10-30). Parts 1–7: multiple-choice cloze ×8, open cloze ×8 (typed), word formation ×8 (typed), key word transformations ×6 (typed, two to five words), a long text ×6, a gapped text (six of seven sentences), multiple matching ×10 (four sections). Original texts. Drafted in tools/.mockups/en_b2.py.",
+  "note": "English B2 reading rounds in the Cambridge B2 First format (Reading and Use of English; owner's plan 2026-10-30). Parts 1–7: multiple-choice cloze ×8, open cloze ×8 (typed), word formation ×8 (typed), key word transformations ×6 (typed, two to five words), a long text ×6, a gapped text (six of seven sentences), multiple matching ×10 (four sections). Original texts. Drafted in tools/.mockups/en_b2.py (rounds 2–3: en_b2_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -541,6 +541,1092 @@
               "answer": "A",
               "zh": "莉莉的建議：「聽客人的話」。",
               "en": "Lily: listen to your customers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "text": "City bees\nBeekeeping has (1) ＿＿＿＿＿ off in cities in recent years. Hives can now be found on the roofs of offices, hotels and even famous museums. City bees often (2) ＿＿＿＿＿ better than their country cousins, because parks and gardens offer a wide (3) ＿＿＿＿＿ of flowers, while farmland may contain only one crop. However, experts warn that the trend may have gone too far. In some areas there are now so many hives that there is not (4) ＿＿＿＿＿ food for all the bees, and wild bees are (5) ＿＿＿＿＿ out. Beekeepers are therefore being (6) ＿＿＿＿＿ to plant more flowers before adding new hives. As one scientist (7) ＿＿＿＿＿ it, 'Keeping bees is not the same as saving them.' Anyone thinking of starting should (8) ＿＿＿＿＿ advice from a local beekeeping club first.",
+          "tr": {
+            "zh": "城市裡的蜜蜂\n近年來，養蜂在城市裡流行起來。現在辦公大樓、飯店，甚至知名博物館的屋頂上都看得到蜂箱。城市的蜜蜂常常比鄉下的同類過得好，因為公園和花園有各式各樣的花，農地卻可能只種一種作物。不過專家警告，這股風潮可能過頭了。有些地區蜂箱多到食物不夠所有蜜蜂吃，野生蜜蜂因此吃虧。所以養蜂人被呼籲先多種花，再增加新蜂箱。就像一位科學家說的：「養蜜蜂不等於拯救蜜蜂。」想開始養蜂的人，最好先向當地的養蜂社請教。"
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "got",
+                "taken",
+                "gone",
+                "set"
+              ],
+              "answer": 1,
+              "zh": "「take off」：（事物）開始流行、起飛。",
+              "en": "take off = become popular."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "make",
+                "have",
+                "do",
+                "go"
+              ],
+              "answer": 2,
+              "zh": "「do better」：過得更好、表現更好。",
+              "en": "do better."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "range",
+                "number",
+                "amount",
+                "size"
+              ],
+              "answer": 0,
+              "zh": "「a wide range of」：各式各樣的。",
+              "en": "a wide range of flowers."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "plenty",
+                "several",
+                "lots",
+                "enough"
+              ],
+              "answer": 3,
+              "zh": "「not enough food」：食物不夠；plenty / lots 要加 of。",
+              "en": "not enough food; plenty and lots need \"of\"."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "missing",
+                "losing",
+                "falling",
+                "running"
+              ],
+              "answer": 1,
+              "zh": "「lose out」：吃虧、處於不利。",
+              "en": "lose out = be at a disadvantage."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "urged",
+                "insisted",
+                "demanded",
+                "suggested"
+              ],
+              "answer": 0,
+              "zh": "「be urged to do」：被呼籲做某事；insist / demand / suggest 不能用「人 + to do」。",
+              "en": "urged to plant; the others do not take \"someone to do\"."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "says",
+                "tells",
+                "speaks",
+                "puts"
+              ],
+              "answer": 3,
+              "zh": "「As one scientist puts it」：就像一位科學家說的。",
+              "en": "As one scientist puts it."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "look",
+                "search",
+                "seek",
+                "find"
+              ],
+              "answer": 2,
+              "zh": "「seek advice」：徵求建議。",
+              "en": "seek advice."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 2,
+          "ask": "en_open",
+          "text": "Taking a short nap\nIn many countries, sleeping during the day is seen as a sign of laziness. (9) ＿＿＿＿＿, research suggests that a short afternoon nap can actually make us more productive. A sleep of (10) ＿＿＿＿＿ more than twenty minutes can improve memory and concentration (11) ＿＿＿＿＿ leaving us feeling tired afterwards. Sleeping for longer, on the other hand, can make it harder to wake (12) ＿＿＿＿＿ properly. Some companies have even set up special rooms (13) ＿＿＿＿＿ employees can rest during their lunch break. Not everyone is convinced, (14) ＿＿＿＿＿. Critics argue that if people need to sleep at work, it is because they are not getting enough sleep at night. (15) ＿＿＿＿＿ the case, a short rest is certainly better (16) ＿＿＿＿＿ a third cup of coffee.",
+          "tr": {
+            "zh": "小睡片刻\n在很多國家，白天睡覺被看成懶惰的表現。不過研究顯示，下午短暫小睡其實能讓我們更有效率。睡不超過二十分鐘，就能改善記憶力和專注力，醒來也不會覺得累。相反地，睡太久反而更難完全清醒。有些公司甚至設了專門的房間，讓員工午休時休息。不過並不是每個人都認同。批評者認為，如果人需要在上班時睡覺，那是因為晚上睡得不夠。無論如何，短暫休息肯定比第三杯咖啡好。"
+          },
+          "questions": [
+            {
+              "q": "(9)",
+              "answers": [
+                "however",
+                "yet",
+                "nevertheless"
+              ],
+              "zh": "前一句說午睡被當成懶惰，接著說研究顯示午睡有好處：轉折用 However。",
+              "en": "However — a contrast."
+            },
+            {
+              "q": "(10)",
+              "answers": [
+                "no"
+              ],
+              "zh": "「no more than twenty minutes」：不超過二十分鐘。",
+              "en": "no more than = at most."
+            },
+            {
+              "q": "(11)",
+              "answers": [
+                "without"
+              ],
+              "zh": "「without leaving us feeling tired」：不會讓我們覺得累。",
+              "en": "without leaving us tired."
+            },
+            {
+              "q": "(12)",
+              "answers": [
+                "up"
+              ],
+              "zh": "「wake up」：醒來。",
+              "en": "wake up."
+            },
+            {
+              "q": "(13)",
+              "answers": [
+                "where",
+                "in which"
+              ],
+              "zh": "「rooms where employees can rest」：指地點的關係副詞 where。",
+              "en": "rooms where they can rest."
+            },
+            {
+              "q": "(14)",
+              "answers": [
+                "though",
+                "however"
+              ],
+              "zh": "句尾的「though / however」：不過。",
+              "en": "Not everyone is convinced, though."
+            },
+            {
+              "q": "(15)",
+              "answers": [
+                "whatever"
+              ],
+              "zh": "「Whatever the case」：無論如何。",
+              "en": "Whatever the case."
+            },
+            {
+              "q": "(16)",
+              "answers": [
+                "than"
+              ],
+              "zh": "「better than」：比……好。",
+              "en": "better than."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 3,
+          "ask": "en_wordform",
+          "text": "Working holidays\nEach year, thousands of young people spend their summer (17) ＿＿＿＿＿ (VOLUNTEER) on projects abroad, from building schools to protecting turtles. For many, it is an (18) ＿＿＿＿＿ (FORGET) experience. However, some organisations have been criticised for charging (19) ＿＿＿＿＿ (REASON) high fees, while the work itself is not always (20) ＿＿＿＿＿ (EFFECT). Before signing up, it is (21) ＿＿＿＿＿ (ADVICE) to find out exactly where your money goes. A good organisation will be happy to provide this (22) ＿＿＿＿＿ (INFORM). It is also worth asking about the (23) ＿＿＿＿＿ (QUALIFY) of the people who will supervise you. Above all, remember that the most (24) ＿＿＿＿＿ (SUCCEED) projects are those planned together with the local community.",
+          "tr": {
+            "zh": "海外志工假期\n每年都有成千上萬的年輕人，利用暑假到國外參加志工計畫，從蓋學校到保護海龜都有。對很多人來說，那是難忘的經驗。不過，有些機構因為收費高得不合理而受到批評，而工作本身也不一定有成效。報名之前，最好先弄清楚你的錢到底用在哪裡。好的機構會很樂意提供這些資訊。也值得問問負責督導你的人有什麼資格。最重要的是記住：最成功的計畫，都是和當地社區一起規劃的。"
+          },
+          "questions": [
+            {
+              "q": "(17)",
+              "answers": [
+                "volunteering"
+              ],
+              "zh": "spend time + V-ing：「spend their summer volunteering」。",
+              "en": "spend time doing → volunteering."
+            },
+            {
+              "q": "(18)",
+              "answers": [
+                "unforgettable"
+              ],
+              "zh": "FORGET → unforgettable：難忘的（un- + -able）。",
+              "en": "unforgettable."
+            },
+            {
+              "q": "(19)",
+              "answers": [
+                "unreasonably"
+              ],
+              "zh": "修飾形容詞 high 要用副詞，而且是「不合理地」高：unreasonably。",
+              "en": "unreasonably high — a negative adverb."
+            },
+            {
+              "q": "(20)",
+              "answers": [
+                "effective"
+              ],
+              "zh": "EFFECT → effective：有成效的（be 動詞後用形容詞）。",
+              "en": "effective — an adjective."
+            },
+            {
+              "q": "(21)",
+              "answers": [
+                "advisable"
+              ],
+              "zh": "ADVICE → advisable：「it is advisable to …」最好……",
+              "en": "it is advisable to."
+            },
+            {
+              "q": "(22)",
+              "answers": [
+                "information"
+              ],
+              "zh": "INFORM → information（名詞，this information）。",
+              "en": "this information."
+            },
+            {
+              "q": "(23)",
+              "answers": [
+                "qualifications"
+              ],
+              "zh": "QUALIFY → qualifications：資格（the … of，複數）。",
+              "en": "the qualifications of."
+            },
+            {
+              "q": "(24)",
+              "answers": [
+                "successful"
+              ],
+              "zh": "SUCCEED → successful：最成功的（the most + 形容詞）。",
+              "en": "the most successful."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 4,
+          "ask": "en_transform",
+          "text": "(25) I'm sure she didn't take your phone.\n      CAN'T\n      She ＿＿＿＿＿ your phone.\n(26) Nobody in my class is taller than me.\n      TALLEST\n      I ＿＿＿＿＿ in my class.\n(27) They will build a new hospital next year.\n      BE\n      A new hospital ＿＿＿＿＿ next year.\n(28) Could you open the window, please?\n      MIND\n      Would you ＿＿＿＿＿ the window, please?\n(29) I didn't go to the party because I was ill.\n      IF\n      I would have gone to the party ＿＿＿＿＿ ill.\n(30) He started learning Japanese three years ago.\n      BEEN\n      He ＿＿＿＿＿ Japanese for three years.",
+          "tr": {
+            "zh": "(25) 我確定她沒拿你的手機。→ She ___ your phone.（CAN'T）\n(26) 班上沒有人比我高。→ I ___ in my class.（TALLEST）\n(27) 他們明年要蓋一間新醫院。→ A new hospital ___ next year.（BE）\n(28) 可以請你開窗嗎？→ Would you ___ the window, please?（MIND）\n(29) 我因為生病沒去派對。→ I would have gone to the party ___ ill.（IF）\n(30) 他三年前開始學日文。→ He ___ Japanese for three years.（BEEN）"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "can't have taken",
+                "cannot have taken",
+                "can not have taken"
+              ],
+              "zh": "對過去的肯定否定推測：「can't have + 過去分詞」不可能拿了。",
+              "en": "can't have taken — certain it didn't happen."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "am the tallest",
+                "'m the tallest",
+                "am the tallest person",
+                "am the tallest student",
+                "am the tallest one"
+              ],
+              "zh": "沒人比我高 = 我是班上最高的：am the tallest。",
+              "en": "am the tallest."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "will be built",
+                "'ll be built"
+              ],
+              "zh": "未來式被動：will be + 過去分詞。",
+              "en": "will be built — future passive."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "mind opening"
+              ],
+              "zh": "「Would you mind + V-ing」：請你……好嗎？",
+              "en": "mind opening."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "if i had not been",
+                "if i hadn't been",
+                "if i'd not been"
+              ],
+              "zh": "與過去事實相反的條件句：if + had + 過去分詞。",
+              "en": "if I hadn't been — third conditional."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "has been learning",
+                "'s been learning",
+                "has been studying",
+                "'s been studying"
+              ],
+              "zh": "從過去持續到現在：現在完成進行式 has been learning。",
+              "en": "has been learning — still going on."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "The summer I worked in a bookshop\nWhen I was seventeen, I was desperate for a summer job, but every café and clothes shop in town had already taken on students. In the end, the only place that would have me was Hargreaves Books, a dusty second-hand bookshop that most people walked past without noticing. I accepted the job without enthusiasm, assuming I would spend two months bored out of my mind.\nMr Hargreaves himself did little to change my mind on the first day. He was a tall, silent man in his seventies who seemed to communicate mainly by pointing. He pointed at the shelves that needed dusting, at the boxes that needed unpacking and, at five o'clock, at the door. I went home convinced I had made a terrible mistake.\nThings began to change in my second week, when a customer asked for a book I had never heard of. Before I could apologise, Mr Hargreaves appeared beside me, walked straight to a shelf at the back of the shop and took down the very copy she wanted. 'Every book in here,' he told me afterwards, 'is somewhere for a reason.' It was the longest sentence he had spoken to me.\nFrom then on, he began to explain his system — if 'system' is the right word. Books were not arranged by author or subject, but according to connections that only he understood: a novel about the sea beside a cookery book from Portugal, a history of clocks next to a collection of poems about time. At first I found it maddening. By August, I could find almost anything.\nOn my last day, Mr Hargreaves handed me a parcel wrapped in brown paper. Inside was a book I had picked up dozens of times but never bought, because I couldn't afford it. Inside the cover he had written: 'For the only assistant who ever learnt where things are.' I still have it on my desk.",
+          "tr": {
+            "zh": "我在書店打工的那個夏天\n我十七歲時非常想找暑期工作，可是鎮上每家咖啡店、服飾店都已經找好學生了。最後唯一肯用我的，是哈格里夫斯書店，一家灰撲撲的二手書店，大多數人經過都不會注意到。我勉強接下這份工作，以為接下來兩個月會無聊得要命。\n第一天，哈格里夫斯先生本人也沒讓我改觀。他是七十多歲、又高又沉默的男人，好像主要靠用手指來溝通。他指著要撢灰的書架、要拆的箱子，五點鐘時指著門。我回家時深信自己犯了大錯。\n第二週情況開始改變。有位客人要找一本我聽都沒聽過的書。我還來不及道歉，哈格里夫斯先生就出現在我旁邊，直接走到書店後面的一個書架，拿下了她要的那一本。「這裡的每一本書，」他事後對我說，「放在哪裡都有原因。」那是他對我說過最長的一句話。\n從那之後，他開始向我解釋他的系統——如果那算得上系統的話。書不是照作者或主題排，而是照只有他懂的關聯：一本關於大海的小說旁邊放葡萄牙的食譜，一本時鐘史旁邊放一本關於時間的詩集。一開始我快被逼瘋了。到了八月，我幾乎什麼都找得到。\n最後一天，哈格里夫斯先生遞給我一個用牛皮紙包著的包裹。裡面是一本我拿起來看過幾十次、卻因為買不起而從沒買的書。封面內頁他寫著：「給唯一學會東西放在哪裡的店員。」那本書到現在還在我的書桌上。"
+          },
+          "questions": [
+            {
+              "q": "Why did the writer take the job at the bookshop?",
+              "options": [
+                "He had always loved old books.",
+                "He had no other choice.",
+                "A friend recommended it.",
+                "It paid better than a café."
+              ],
+              "answer": 1,
+              "zh": "其他店都找好學生了，「唯一肯用我的」就是這家書店。",
+              "en": "It was the only place that would have him."
+            },
+            {
+              "q": "What was the writer's impression of Mr Hargreaves on the first day?",
+              "options": [
+                "He was friendly but busy.",
+                "He was strict about rules.",
+                "He said very little.",
+                "He did not want an assistant."
+              ],
+              "answer": 2,
+              "zh": "「又高又沉默」，主要靠用手指溝通。",
+              "en": "Silent, communicating by pointing."
+            },
+            {
+              "q": "What surprised the writer in his second week?",
+              "options": [
+                "how quickly Mr Hargreaves found a book",
+                "how few customers came in",
+                "how angry the customer was",
+                "how much the book cost"
+              ],
+              "answer": 0,
+              "zh": "老闆「直接走到」書架，拿下客人要的那一本。",
+              "en": "Mr Hargreaves went straight to the right book."
+            },
+            {
+              "q": "What does the writer suggest with the words 'if \"system\" is the right word'?",
+              "options": [
+                "He often changed his mind.",
+                "The shop was badly organised.",
+                "The writer never understood it.",
+                "The books were not in the usual order."
+              ],
+              "answer": 3,
+              "zh": "書不按作者或主題排，而是照老闆自己的關聯。",
+              "en": "Not by author or subject, but by his own links."
+            },
+            {
+              "q": "How did the writer feel about the arrangement at first?",
+              "options": [
+                "amused",
+                "impressed",
+                "frustrated",
+                "bored"
+              ],
+              "answer": 2,
+              "zh": "「一開始我快被逼瘋了」（maddening）：很挫折。",
+              "en": "\"Maddening\" — frustrated."
+            },
+            {
+              "q": "What does the final paragraph show?",
+              "options": [
+                "The writer bought the book with his wages.",
+                "Mr Hargreaves had noticed which book the writer liked.",
+                "Mr Hargreaves wanted him to stay.",
+                "The writer had stopped reading."
+              ],
+              "answer": 1,
+              "zh": "送他的正是他「拿起來看過幾十次」卻買不起的書：老闆注意到了。",
+              "en": "The gift was the book he had picked up dozens of times."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 6,
+          "ask": "en_gapped",
+          "text": "Living without a car\nThree years ago, my husband and I sold our car. It wasn't an easy decision. (37) ＿＿＿＿＿ But the car was costing us a fortune, and we were using it less and less.\nThe first few weeks were a challenge. Shopping, in particular, needed a complete rethink. (38) ＿＿＿＿＿ Now we buy smaller amounts more often, mostly from the shops within walking distance, and we waste far less food.\nWe had expected the children to complain, but they adapted faster than we did. (39) ＿＿＿＿＿ Our daughter, who is fourteen, says she likes being able to go where she wants without asking us for a lift.\nThere are, of course, times when we miss having a car. (40) ＿＿＿＿＿ On those occasions, we use a car-sharing scheme, which lets us rent a car by the hour from a street near our flat.\nPerhaps the biggest change has been to our health. (41) ＿＿＿＿＿ Neither of us has been to the gym since we sold the car, and yet we are both fitter than we have been for years.\nI'm not saying that everyone could live like this. (42) ＿＿＿＿＿ But for us, giving up the car has been one of the best decisions we've ever made.",
+          "bank": [
+            "We both walk or cycle at least an hour a day without really thinking about it.",
+            "Visiting my parents, who live in a village with one bus a day, is the obvious example.",
+            "We had both been driving since we were teenagers.",
+            "We used to do one enormous trip to the supermarket every Saturday.",
+            "They soon discovered that the bus was more fun than the back seat.",
+            "People in the countryside, or with small children, may find it impossible.",
+            "The car was eventually sold to a neighbour."
+          ],
+          "tr": {
+            "zh": "沒有車的生活\n三年前，我和先生把車賣了。那不是容易的決定。我們兩個從青少年時期就開車了。可是那輛車花了我們好多錢，而且我們用得越來越少。\n頭幾個星期很有挑戰。尤其是買東西，得整個重新想過。我們以前每個星期六都去超市大採購一次。現在我們少量多次地買，大多在走路就到的商店，浪費的食物也少多了。\n我們本來以為孩子會抱怨，結果他們比我們還快適應。他們很快就發現搭公車比坐後座好玩。我們十四歲的女兒說，她喜歡想去哪就去哪，不用拜託我們載。\n當然也有懷念有車的時候。去看我爸媽就是最明顯的例子，他們住的村子一天只有一班公車。遇到這種時候，我們就用共享汽車，在我們公寓附近的街上按小時租車。\n也許最大的改變是我們的健康。我們兩個每天都會走路或騎車至少一小時，幾乎不用刻意去想。賣車之後我們都沒去過健身房，卻比這些年來任何時候都健康。\n我不是說每個人都能這樣生活。住在鄉下或有小小孩的人，可能就做不到。但對我們來說，放棄開車是我們做過最好的決定之一。"
+          },
+          "questions": [
+            {
+              "answer": "C",
+              "zh": "不容易的決定，因為「我們兩個從青少年時期就開車了」；後面的 But 接著說車太花錢。",
+              "en": "Driving since their teens — \"But\" the cost."
+            },
+            {
+              "answer": "D",
+              "zh": "買東西要重新想過：以前每週六大採購，對照後面的「現在」少量多次。",
+              "en": "One big Saturday shop before; smaller trips now."
+            },
+            {
+              "answer": "E",
+              "zh": "孩子比大人快適應：發現公車比坐後座好玩。",
+              "en": "The children found the bus more fun."
+            },
+            {
+              "answer": "B",
+              "zh": "懷念有車的時候：去看住在只有一班公車的村子的爸媽；後面 On those occasions 接著說租車。",
+              "en": "Visiting her parents — \"on those occasions\" they rent a car."
+            },
+            {
+              "answer": "A",
+              "zh": "健康的改變：每天走路或騎車一小時，接著說不用去健身房也更健康。",
+              "en": "An hour of walking or cycling a day."
+            },
+            {
+              "answer": "F",
+              "zh": "不是每個人都能這樣：鄉下或有小小孩的人可能做不到。G 放哪裡都不合，是多出來的。",
+              "en": "Some people could not do it. G is the extra sentence."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 7,
+          "ask": "en_sections",
+          "bank": [
+            "Marco, 45 — I started Japanese when my company moved me to Osaka. I had lessons twice a week, but honestly I learnt most from my neighbours, an elderly couple who invited me for dinner every Friday. Reading is still a struggle — there are so many characters — but I can hold a conversation about almost anything now.",
+            "Hannah, 38 — I chose Spanish simply because I'd always loved the sound of it. I used an app every morning on the train for two years, but it was only when I spent a month in Mexico that I could actually speak. I was embarrassed to make mistakes at first, but people were so patient.",
+            "Raj, 52 — My daughter married a German man, and I wanted to be able to talk to his family. I'm not a natural language learner — I failed French at school — so I hired a private tutor. It's expensive, but I need someone to push me. Last Christmas I gave a short speech in German, and everybody cried.",
+            "Sofia, 41 — I got into Korean through TV dramas. At first I just wanted to understand them without subtitles, but then I became interested in the culture and history. I've joined an online group where learners practise together, and I've made friends all over the world. I'm planning my first trip to Seoul next spring."
+          ],
+          "tr": {
+            "zh": "A 馬可（45 歲）：公司把我調到大阪，我才開始學日文。我一週上兩次課，不過老實說，我學最多的是從鄰居那裡，一對每個星期五都請我吃晚餐的老夫婦。閱讀還是很吃力，字太多了，但現在我幾乎什麼話題都能聊。\nB 漢娜（38 歲）：我選西班牙文，只是因為一直很喜歡它的聲音。我兩年來每天早上在火車上用 App 學，但直到在墨西哥待了一個月，才真的開得了口。一開始我很怕說錯，可是大家都好有耐心。\nC 拉吉（52 歲）：我女兒嫁給一個德國人，我想能和他的家人說話。我不是天生會學語言的人，在學校法文還被當過，所以我請了家教。很貴，但我需要有人督促我。去年聖誕節我用德文說了一段簡短的致詞，大家都哭了。\nD 蘇菲亞（41 歲）：我是看韓劇開始學韓文的。一開始只是想不看字幕也能懂，後來開始對文化和歷史有興趣。我加入了一個學習者一起練習的線上社群，交到了世界各地的朋友。我正在計畫明年春天第一次去首爾。"
+          },
+          "questions": [
+            {
+              "q": "Which person learned mainly through people they met socially?",
+              "answer": "A",
+              "zh": "馬可「學最多的是從鄰居那裡」，每週五一起吃晚餐。",
+              "en": "Marco learnt most from his neighbours."
+            },
+            {
+              "q": "Which person felt uncomfortable about making mistakes?",
+              "answer": "B",
+              "zh": "漢娜「一開始我很怕說錯」。",
+              "en": "Hannah was embarrassed to make mistakes."
+            },
+            {
+              "q": "Which person was motivated by a family connection?",
+              "answer": "C",
+              "zh": "拉吉的女兒嫁給德國人，他想和親家說話。",
+              "en": "Raj wanted to talk to his daughter's in-laws."
+            },
+            {
+              "q": "Which person started learning because of entertainment?",
+              "answer": "D",
+              "zh": "蘇菲亞「是看韓劇開始學韓文的」。",
+              "en": "Sofia started through TV dramas."
+            },
+            {
+              "q": "Which person admits they found languages difficult in the past?",
+              "answer": "C",
+              "zh": "拉吉「在學校法文還被當過」。",
+              "en": "Raj failed French at school."
+            },
+            {
+              "q": "Which person still finds one skill particularly hard?",
+              "answer": "A",
+              "zh": "馬可「閱讀還是很吃力」。",
+              "en": "Reading is still a struggle for Marco."
+            },
+            {
+              "q": "Which person has made international friendships through learning?",
+              "answer": "D",
+              "zh": "蘇菲亞「交到了世界各地的朋友」。",
+              "en": "Sofia has friends all over the world."
+            },
+            {
+              "q": "Which person made a breakthrough during a trip abroad?",
+              "answer": "B",
+              "zh": "漢娜「直到在墨西哥待了一個月，才真的開得了口」。",
+              "en": "Hannah could speak after a month in Mexico."
+            },
+            {
+              "q": "Which person pays for one-to-one lessons?",
+              "answer": "C",
+              "zh": "拉吉「請了家教」，而且很貴。",
+              "en": "Raj hired a private tutor."
+            },
+            {
+              "q": "Which person has not yet visited the country whose language they are learning?",
+              "answer": "D",
+              "zh": "蘇菲亞「正在計畫明年春天第一次去首爾」。",
+              "en": "Sofia is planning her first trip."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "text": "Back in the groove\nTwenty years ago, few people would have (1) ＿＿＿＿＿ that vinyl records would make a comeback. Music fans had (2) ＿＿＿＿＿ to CDs and then to downloads, and record shops were closing (3) ＿＿＿＿＿ the country. Yet sales of vinyl have risen every year for more than a decade. So what (4) ＿＿＿＿＿ for this surprising trend? Many buyers say they enjoy the (5) ＿＿＿＿＿ experience of owning music: the large artwork, the ritual of putting a record on, even the occasional crackle. Others simply like the way it sounds, (6) ＿＿＿＿＿ experts disagree about whether vinyl is really better. Interestingly, a large (7) ＿＿＿＿＿ of the people buying records are under thirty, and some of them do not even own a record player. For them, it seems, a record is (8) ＿＿＿＿＿ an object to display as a way to listen to music.",
+          "tr": {
+            "zh": "黑膠回來了\n二十年前，很少人會預料到黑膠唱片會捲土重來。樂迷先改用 CD，後來又改用下載，全國各地的唱片行一家家關門。然而十多年來，黑膠的銷量年年上升。這個令人意外的趨勢該怎麼解釋？很多買家說，他們喜歡擁有音樂的實體感受：大幅的封面藝術、放唱片的儀式感，甚至偶爾的劈啪聲。也有人就是喜歡它的聲音，雖然專家對黑膠是否真的比較好聽看法不一。有趣的是，買唱片的人有很大比例不到三十歲，其中有些人甚至沒有唱盤。對他們來說，唱片似乎既是拿來聽音樂的，也是拿來展示的物品。"
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "predicted",
+                "announced",
+                "reported",
+                "informed"
+              ],
+              "answer": 0,
+              "zh": "「few people would have predicted that …」：很少人會預料到。",
+              "en": "predicted = expected in advance."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "replaced",
+                "switched",
+                "exchanged",
+                "swapped"
+              ],
+              "answer": 1,
+              "zh": "「switch to」：改用；replace / exchange 後面不接 to 表示改用。",
+              "en": "switched to CDs."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "along",
+                "through",
+                "over",
+                "across"
+              ],
+              "answer": 3,
+              "zh": "「across the country」：全國各地。",
+              "en": "across the country."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "causes",
+                "explains",
+                "accounts",
+                "results"
+              ],
+              "answer": 2,
+              "zh": "「account for」：解釋、說明原因；explain 不加 for。",
+              "en": "accounts for = explains."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "physical",
+                "bodily",
+                "solid",
+                "material"
+              ],
+              "answer": 0,
+              "zh": "「the physical experience」：實體的感受（拿在手上、放唱片）。",
+              "en": "the physical experience."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "despite",
+                "although",
+                "however",
+                "even"
+              ],
+              "answer": 1,
+              "zh": "後面是完整子句 experts disagree…，要用連接詞 although；despite 後接名詞。",
+              "en": "although + clause; despite needs a noun."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "amount",
+                "quantity",
+                "deal",
+                "proportion"
+              ],
+              "answer": 3,
+              "zh": "「a large proportion of the people」：很大比例的人；amount / quantity / deal 不用在人。",
+              "en": "a large proportion of people."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "so much",
+                "more",
+                "as much",
+                "rather"
+              ],
+              "answer": 2,
+              "zh": "「as much A as B」：既是 A 也是 B。",
+              "en": "as much an object … as a way to listen."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 2,
+          "ask": "en_open",
+          "text": "Why cats purr\nMost people assume that cats purr because they are happy. While this is often true, it is not the (9) ＿＿＿＿＿ explanation. Cats also purr when they are frightened, injured or even giving birth. Some scientists believe that purring may (10) ＿＿＿＿＿ cats to heal: the vibrations are at frequencies that are known to strengthen bones. This could explain (11) ＿＿＿＿＿ cats seem to recover from injuries so quickly. Kittens begin purring when they are (12) ＿＿＿＿＿ a few days old, probably to let their mother know that all is well. Interestingly, some cats have learnt to use a special purr (13) ＿＿＿＿＿ they want food. This sound contains a cry (14) ＿＿＿＿＿ is similar to that of a human baby, which makes it very hard for owners to ignore. In other words, your cat may (15) ＿＿＿＿＿ be as innocent as it looks — it may be training you, (16) ＿＿＿＿＿ than the other way round!",
+          "tr": {
+            "zh": "貓為什麼會呼嚕\n大多數人以為貓呼嚕是因為開心。這雖然常常沒錯，卻不是唯一的解釋。貓在害怕、受傷甚至生產時也會呼嚕。有些科學家認為，呼嚕可能有助於貓療傷：這種振動的頻率已知能強化骨骼。這也許能解釋為什麼貓受傷後好像恢復得特別快。小貓出生才幾天就開始呼嚕，大概是要告訴媽媽一切都好。有趣的是，有些貓學會了在想要食物時，用一種特別的呼嚕聲。這種聲音裡夾著一種像人類嬰兒的哭聲，讓主人很難不理。換句話說，你的貓可能沒有看起來那麼無辜——可能是牠在訓練你，而不是你在訓練牠！"
+          },
+          "questions": [
+            {
+              "q": "(9)",
+              "answers": [
+                "only"
+              ],
+              "zh": "「not the only explanation」：不是唯一的解釋。",
+              "en": "not the only explanation."
+            },
+            {
+              "q": "(10)",
+              "answers": [
+                "help",
+                "allow",
+                "enable"
+              ],
+              "zh": "「help / allow / enable cats to heal」：幫助貓療傷。",
+              "en": "help (allow, enable) cats to heal."
+            },
+            {
+              "q": "(11)",
+              "answers": [
+                "why"
+              ],
+              "zh": "「explain why …」：解釋為什麼。",
+              "en": "explain why."
+            },
+            {
+              "q": "(12)",
+              "answers": [
+                "only",
+                "just"
+              ],
+              "zh": "「only / just a few days old」：才幾天大。",
+              "en": "only (just) a few days old."
+            },
+            {
+              "q": "(13)",
+              "answers": [
+                "when",
+                "whenever",
+                "if"
+              ],
+              "zh": "「when they want food」：想要食物的時候。",
+              "en": "when they want food."
+            },
+            {
+              "q": "(14)",
+              "answers": [
+                "that",
+                "which"
+              ],
+              "zh": "「a cry that / which is similar to …」：關係代名詞指 cry。",
+              "en": "a cry that (which) is similar."
+            },
+            {
+              "q": "(15)",
+              "answers": [
+                "not"
+              ],
+              "zh": "「may not be as innocent as it looks」：可能沒有看起來那麼無辜。",
+              "en": "may not be as innocent."
+            },
+            {
+              "q": "(16)",
+              "answers": [
+                "rather"
+              ],
+              "zh": "「rather than the other way round」：而不是反過來。",
+              "en": "rather than the other way round."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 3,
+          "ask": "en_wordform",
+          "text": "Living small\nA growing number of people are choosing to live in 'tiny houses' — homes with an area of less than forty square metres. For some, the (17) ＿＿＿＿＿ (ATTRACT) is mainly financial: a tiny house costs (18) ＿＿＿＿＿ (CONSIDER) less than a normal home. Others are motivated by environmental (19) ＿＿＿＿＿ (AWARE). Living in a small space forces you to reduce your (20) ＿＿＿＿＿ (POSSESS) and use less energy. However, life in a tiny house is not without its (21) ＿＿＿＿＿ (DIFFICULT). Finding land can be (22) ＿＿＿＿＿ (SURPRISE) hard, and in many areas tiny houses are not (23) ＿＿＿＿＿ (OFFICE) allowed as permanent homes. Owners also admit that sharing such a small space can test even the strongest (24) ＿＿＿＿＿ (RELATE).",
+          "tr": {
+            "zh": "住小一點\n越來越多人選擇住在「迷你屋」，也就是面積不到四十平方公尺的房子。對有些人來說，吸引力主要在錢：迷你屋比一般房子便宜得多。也有人是出於環保意識。住在小空間會逼你減少家當，也用更少的能源。不過，住迷你屋也不是沒有困難。找土地可能出乎意料地難，而且很多地區並不正式允許把迷你屋當永久住所。屋主也承認，共享這麼小的空間，連最穩固的感情都會受到考驗。"
+          },
+          "questions": [
+            {
+              "q": "(17)",
+              "answers": [
+                "attraction"
+              ],
+              "zh": "ATTRACT → attraction（名詞，the …）：吸引力。",
+              "en": "the attraction — a noun."
+            },
+            {
+              "q": "(18)",
+              "answers": [
+                "considerably"
+              ],
+              "zh": "修飾 less 要用副詞：considerably less 便宜得多。",
+              "en": "considerably less — an adverb."
+            },
+            {
+              "q": "(19)",
+              "answers": [
+                "awareness"
+              ],
+              "zh": "AWARE → awareness：意識（environmental awareness 環保意識）。",
+              "en": "environmental awareness."
+            },
+            {
+              "q": "(20)",
+              "answers": [
+                "possessions"
+              ],
+              "zh": "POSSESS → possessions：擁有的東西、家當（複數）。",
+              "en": "your possessions."
+            },
+            {
+              "q": "(21)",
+              "answers": [
+                "difficulties"
+              ],
+              "zh": "DIFFICULT → difficulties（its + 名詞，複數）。",
+              "en": "its difficulties."
+            },
+            {
+              "q": "(22)",
+              "answers": [
+                "surprisingly"
+              ],
+              "zh": "修飾形容詞 hard 用副詞：surprisingly hard 出乎意料地難。",
+              "en": "surprisingly hard."
+            },
+            {
+              "q": "(23)",
+              "answers": [
+                "officially"
+              ],
+              "zh": "OFFICE → officially：正式地（修飾 allowed）。",
+              "en": "officially allowed."
+            },
+            {
+              "q": "(24)",
+              "answers": [
+                "relationships"
+              ],
+              "zh": "RELATE → relationships：感情、關係（the strongest + 複數名詞）。",
+              "en": "the strongest relationships."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 4,
+          "ask": "en_transform",
+          "text": "(25) 'Don't touch the paintings,' the guide told us.\n      NOT\n      The guide told us ＿＿＿＿＿ the paintings.\n(26) It was such a boring film that I fell asleep.\n      SO\n      The film ＿＿＿＿＿ that I fell asleep.\n(27) Someone stole my bike last night.\n      HAD\n      I ＿＿＿＿＿ last night.\n(28) It's possible that Tom missed the train.\n      MAY\n      Tom ＿＿＿＿＿ the train.\n(29) Although it was raining, we went for a walk.\n      DESPITE\n      We went for a walk ＿＿＿＿＿ was raining.\n(30) I'd prefer to stay at home tonight.\n      RATHER\n      I ＿＿＿＿＿ at home tonight.",
+          "tr": {
+            "zh": "(25) 導覽員對我們說：「不要碰畫。」→ The guide told us ___ the paintings.（NOT）\n(26) 那部電影無聊到我睡著了。→ The film ___ that I fell asleep.（SO）\n(27) 我的腳踏車昨晚被偷了。→ I ___ last night.（HAD）\n(28) 湯姆可能錯過了火車。→ Tom ___ the train.（MAY）\n(29) 雖然在下雨，我們還是去散步了。→ We went for a walk ___ was raining.（DESPITE）\n(30) 我今晚比較想待在家。→ I ___ at home tonight.（RATHER）"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "not to touch"
+              ],
+              "zh": "否定的命令轉成間接引語：told us not to + 原形動詞。",
+              "en": "told us not to touch."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "was so boring"
+              ],
+              "zh": "「so + 形容詞 + that」：如此……以致於。",
+              "en": "was so boring that."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "had my bike stolen"
+              ],
+              "zh": "「have something + 過去分詞」：（不好的事）發生在自己的東西上。",
+              "en": "had my bike stolen."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "may have missed"
+              ],
+              "zh": "對過去的推測：may have + 過去分詞。",
+              "en": "may have missed."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "despite the fact that it",
+                "despite the fact it"
+              ],
+              "zh": "despite 後面不能直接接子句，要說「despite the fact (that) + 子句」。",
+              "en": "despite the fact (that) it was raining."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "would rather stay",
+                "'d rather stay"
+              ],
+              "zh": "「would rather + 原形動詞」：寧願、比較想。",
+              "en": "would rather stay."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "Why I gave up my phone for a month\nIt began as a joke. Over dinner, my sister bet me that I couldn't last a week without my smartphone. I was offended — I'm a journalist, not a teenager — and announced that I could manage a month. It was only on the way home, checking my messages for the tenth time that evening, that I began to suspect I might have made a mistake.\nThe first three days were genuinely uncomfortable. I kept reaching for my pocket, the way people who have lost a tooth keep touching the gap with their tongue. Without a map app, I got lost twice. Without a train timetable, I spent forty minutes on a cold platform. I also realised how often I had used the phone simply to avoid being bored: in queues, in waiting rooms, even during adverts on television.\nBy the second week, though, something had shifted. Boredom, I discovered, is not as painful as I had feared. On the bus I watched people, or looked out of the window, or simply thought. Ideas for articles came to me in a way they hadn't for years. I read three novels — more than I had read in the previous twelve months.\nNot everything improved. Some friends found me harder to reach and stopped trying; I missed two parties because the invitations were sent by message. Work was more complicated too, since my editor expected instant replies. 'It's very admirable,' she said, in a tone that suggested it wasn't.\nWhen the month ended, I switched the phone back on and watched hundreds of notifications arrive. I felt not relief but a kind of tiredness. I haven't gone back to how I was. The phone now lives in a drawer in the evenings, and the map app is the only one I've reinstalled without hesitation.",
+          "tr": {
+            "zh": "我為什麼戒手機一個月\n一開始只是開玩笑。吃晚餐時，我姊姊跟我打賭，說我沒辦法一週不用智慧型手機。我覺得被冒犯了——我是記者，又不是青少年——就宣布我能撐一個月。直到回家路上，那晚第十次查看訊息時，我才開始懷疑自己可能犯了錯。\n頭三天真的很難受。我一直伸手去摸口袋，就像掉了牙的人一直用舌頭去碰那個缺口。沒有地圖 App，我迷路兩次。沒有火車時刻表，我在冷冰冰的月台上等了四十分鐘。我也發現自己有多常只是為了不無聊而拿手機：排隊時、在候診室，甚至看電視廣告時。\n不過到了第二週，有些東西變了。我發現無聊並沒有我原本怕的那麼難受。在公車上，我看看人、看看窗外，或只是想事情。寫文章的點子以多年未有的方式冒出來。我看了三本小說，比過去十二個月看的還多。\n也不是每件事都變好。有些朋友覺得我比較難聯絡，就不再找我了；有兩場派對因為邀請是用訊息傳的，我錯過了。工作也變得更複雜，因為我的主編期待立刻回覆。「真是令人佩服，」她說，語氣卻聽得出並非如此。\n一個月結束後，我重新開機，看著幾百則通知湧進來。我感到的不是解脫，而是一種疲倦。我沒有回到以前的樣子。現在晚上手機都放在抽屜裡，地圖 App 是我唯一毫不猶豫重新安裝的。"
+          },
+          "questions": [
+            {
+              "q": "Why did the writer accept the challenge?",
+              "options": [
+                "He wanted to win money.",
+                "He felt his pride had been hurt.",
+                "His editor suggested it.",
+                "He was worried about his health."
+              ],
+              "answer": 1,
+              "zh": "「我覺得被冒犯了——我是記者，又不是青少年」：自尊受傷才誇口撐一個月。",
+              "en": "He was offended and wanted to prove himself."
+            },
+            {
+              "q": "What does the comparison with a lost tooth show?",
+              "options": [
+                "He felt physical pain.",
+                "He wanted to buy a new phone.",
+                "He kept automatically reaching for the phone.",
+                "He was embarrassed."
+              ],
+              "answer": 2,
+              "zh": "像舌頭一直去碰缺牙處：他一直不自覺地伸手摸口袋找手機。",
+              "en": "He kept reaching for his pocket without thinking."
+            },
+            {
+              "q": "What did the writer realise in the first few days?",
+              "options": [
+                "He was good at reading maps.",
+                "Trains were usually late.",
+                "He watched too much television.",
+                "He had used his phone to fill empty moments."
+              ],
+              "answer": 3,
+              "zh": "「我有多常只是為了不無聊而拿手機」：排隊、候診、看廣告。",
+              "en": "He used it to avoid being bored."
+            },
+            {
+              "q": "What does the writer say about boredom?",
+              "options": [
+                "It was less unpleasant than he had expected.",
+                "It made his work harder.",
+                "It made him read less.",
+                "It was worst on buses."
+              ],
+              "answer": 0,
+              "zh": "「無聊並沒有我原本怕的那麼難受」，還多了點子、看了三本小說。",
+              "en": "It was not as painful as he had feared."
+            },
+            {
+              "q": "What does the editor's comment suggest?",
+              "options": [
+                "She wanted to try it herself.",
+                "She thought he should stop at once.",
+                "She did not really approve.",
+                "She admired his courage."
+              ],
+              "answer": 2,
+              "zh": "嘴上說「令人佩服」，但「語氣卻聽得出並非如此」：她其實不贊成。",
+              "en": "Her tone suggested it was not admirable."
+            },
+            {
+              "q": "How does the writer feel about his phone now?",
+              "options": [
+                "relieved to have it back",
+                "determined never to use one again",
+                "annoyed with his friends",
+                "more careful about how he uses it"
+              ],
+              "answer": 3,
+              "zh": "沒有回到以前：晚上把手機放抽屜，只重新安裝地圖 App。",
+              "en": "The phone lives in a drawer in the evenings."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 6,
+          "ask": "en_gapped",
+          "text": "The boat in the garden\nWhen my father retired, he surprised us all by buying an old wooden sailing boat. It had been lying in a farmer's field for twenty years. (37) ＿＿＿＿＿ My mother asked, reasonably enough, where he intended to keep it. The answer turned out to be our back garden.\nFor the first year, the boat sat under a plastic sheet while Dad read every book he could find about wooden boats. (38) ＿＿＿＿＿ He has always believed in understanding a job completely before starting it.\nThe real work began the following spring. Much of the wood was rotten and had to be replaced, piece by piece, using traditional methods. (39) ＿＿＿＿＿ In the end, Dad found an elderly boat-builder in the next village who was happy to share his knowledge in exchange for company and cups of tea.\nProgress was slow. There were months when nothing seemed to happen, and the neighbours began making jokes about it. (40) ＿＿＿＿＿ But Dad simply smiled and carried on.\nSix years after he bought it, the boat was finally finished. (41) ＿＿＿＿＿ We hired a truck to take it to the coast, and half the street came to watch it leave.\nLast summer Dad sailed it along the coast with my brother. (42) ＿＿＿＿＿ He says he's already looking for his next project, which is exactly what my mother was afraid of.",
+          "bank": [
+            "This was a skill that very few people still had.",
+            "One of them asked whether he was building it for the next flood.",
+            "Its paint had gone and there were holes in the bottom.",
+            "It was the first time it had been on the water for over a quarter of a century.",
+            "It looked even more beautiful than any of us had imagined.",
+            "Not once did he pick up a tool.",
+            "It took him less than a week to finish the job."
+          ],
+          "tr": {
+            "zh": "院子裡的船\n我爸退休時買了一艘老木帆船，讓我們全都嚇一跳。那艘船在農夫的田裡躺了二十年。船漆都掉光了，船底還有破洞。我媽很合理地問他打算把船放哪裡。答案是我們家後院。\n第一年，船蓋著塑膠布擺在那裡，爸爸則把找得到的木船書都讀了一遍。他連一次工具都沒拿起來過。他一向相信，開工前要先把一件事完全弄懂。\n真正的工作從隔年春天開始。很多木頭都爛了，得用傳統方法一塊一塊換掉。這是一門已經很少人會的手藝。最後爸爸在隔壁村找到一位老造船師傅，他很樂意分享所學，只要有人陪他聊天、喝茶。\n進度很慢。有好幾個月好像什麼進展都沒有，鄰居開始拿這件事開玩笑。有一個人問他是不是在為下一次大洪水造船。但爸爸只是笑笑，繼續做下去。\n買船六年後，船終於完成了。它比我們任何人想像的都還要漂亮。我們租了一台卡車把船載到海邊，半條街的人都來看它離開。\n去年夏天，爸爸和我哥開著它沿海岸航行。那是它二十五年多來第一次下水。他說他已經在找下一個計畫了——這正是我媽最怕的。"
+          },
+          "questions": [
+            {
+              "answer": "C",
+              "zh": "在田裡躺了二十年：「船漆都掉光了，船底還有破洞」。",
+              "en": "Twenty years in a field: no paint, holes in the bottom."
+            },
+            {
+              "answer": "F",
+              "zh": "第一年只讀書，「連一次工具都沒拿起來過」；後面說他相信先完全弄懂再開工。",
+              "en": "Only reading the first year — not a tool picked up."
+            },
+            {
+              "answer": "A",
+              "zh": "用傳統方法換木頭：「這是一門已經很少人會的手藝」，所以才要找老師傅。",
+              "en": "Few people still had the skill — hence the old boat-builder."
+            },
+            {
+              "answer": "B",
+              "zh": "鄰居開玩笑：有人問他是不是在為大洪水造船。",
+              "en": "A neighbour joked about the next flood."
+            },
+            {
+              "answer": "E",
+              "zh": "船終於完成：比想像中還漂亮，接著半條街都來看。",
+              "en": "More beautiful than they had imagined."
+            },
+            {
+              "answer": "D",
+              "zh": "去年夏天出海：二十五年多來第一次下水。G 和文章矛盾（花了六年），是多出來的。",
+              "en": "Its first time on water in over 25 years. G contradicts the six years."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 7,
+          "ask": "en_sections",
+          "bank": [
+            "Paul, 48 — I spent twenty years in banking and earned a lot of money, but I never felt I had made anything real. When my company cut jobs, I took the payment and trained as a carpenter. I earn far less now, and my family had to move to a smaller house, but I go to work every morning looking forward to it.",
+            "Leila, 35 — Being a lawyer was exciting at first, but I was working seventy-hour weeks and hardly saw my children. Teaching isn't easy either — the marking never stops — but my evenings are mine again. The hardest part was going back to university at thirty-two, surrounded by people ten years younger.",
+            "Dev, 29 — I'd always cooked for friends, and people kept telling me I should open a restaurant. I didn't take them seriously until I lost my job as an engineer. Now I run a small kitchen serving food from my grandmother's recipes. My parents still ask when I'm going to get a proper job, which hurts a little.",
+            "Anna, 52 — I loved nursing, but after a back injury I couldn't do the physical work any more. Painting had always been my hobby, so I took a course, and to my amazement my first exhibition sold out. I still volunteer at the hospital once a week — I couldn't give it up completely."
+          ],
+          "tr": {
+            "zh": "A 保羅（48 歲）：我在銀行業待了二十年，賺了很多錢，卻從來不覺得自己做出過什麼實在的東西。公司裁員時，我拿了資遣費去學木工。現在我賺得少很多，全家也得搬到比較小的房子，但我每天早上都很期待去上班。\nB 萊拉（35 歲）：當律師一開始很刺激，可是我一週工作七十小時，幾乎見不到孩子。教書也不輕鬆，改不完的作業，但我的晚上又屬於自己了。最難的是三十二歲回大學念書，身邊都是小我十歲的人。\nC 戴夫（29 歲）：我一直都會做菜請朋友吃，大家老是說我應該開餐廳。直到我丟了工程師的工作，才當真。現在我經營一間小廚房，賣我奶奶食譜上的菜。我爸媽還是會問我什麼時候要找份正經工作，這讓我有點受傷。\nD 安娜（52 歲）：我很喜歡當護理師，但背受傷後就做不了體力活了。畫畫一直是我的嗜好，所以我去上了課，沒想到第一次展覽作品就全賣光了。我現在每週還會去醫院當一次志工，實在沒辦法完全放下。"
+          },
+          "questions": [
+            {
+              "q": "Which person changed career because of a physical problem?",
+              "answer": "D",
+              "zh": "安娜「背受傷後就做不了體力活了」。",
+              "en": "Anna hurt her back."
+            },
+            {
+              "q": "Which person's family is not fully supportive of the change?",
+              "answer": "C",
+              "zh": "戴夫的爸媽「還是會問我什麼時候要找份正經工作」。",
+              "en": "Dev's parents ask about a proper job."
+            },
+            {
+              "q": "Which person has less money now?",
+              "answer": "A",
+              "zh": "保羅「現在我賺得少很多」，還搬到比較小的房子。",
+              "en": "Paul earns far less."
+            },
+            {
+              "q": "Which person found it hard to study among younger people?",
+              "answer": "B",
+              "zh": "萊拉三十二歲回大學，「身邊都是小我十歲的人」。",
+              "en": "Leila studied with people ten years younger."
+            },
+            {
+              "q": "Which person still does some of their old work?",
+              "answer": "D",
+              "zh": "安娜「每週還會去醫院當一次志工」。",
+              "en": "Anna still volunteers at the hospital."
+            },
+            {
+              "q": "Which person used to feel their work produced nothing real?",
+              "answer": "A",
+              "zh": "保羅「從來不覺得自己做出過什麼實在的東西」。",
+              "en": "Paul never felt he made anything real."
+            },
+            {
+              "q": "Which person wanted more time with their family?",
+              "answer": "B",
+              "zh": "萊拉當律師時「幾乎見不到孩子」。",
+              "en": "Leila hardly saw her children."
+            },
+            {
+              "q": "Which person was encouraged by friends?",
+              "answer": "C",
+              "zh": "朋友「老是說我應該開餐廳」。",
+              "en": "Friends told Dev to open a restaurant."
+            },
+            {
+              "q": "Which person was surprised by early success?",
+              "answer": "D",
+              "zh": "安娜「沒想到第一次展覽作品就全賣光了」。",
+              "en": "Anna's first exhibition sold out."
+            },
+            {
+              "q": "Which person's new work is connected to a family member?",
+              "answer": "C",
+              "zh": "戴夫賣的是「我奶奶食譜上的菜」。",
+              "en": "Dev cooks his grandmother's recipes."
             }
           ]
         }

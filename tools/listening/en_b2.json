@@ -4,7 +4,7 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "English B2 listening in the Cambridge B2 First format (owner's plan 2026-10-30): Part 1 short extracts ×8 (en_talk), Part 2 sentence completion ×10 (en_fill, typed), Part 3 five speakers matched to eight statements (en_match), Part 4 an interview ×7 (en_q). Each recording twice in the mock. Original texts. Drafted in tools/.mockups/en_b2_ls.py.",
+  "note": "English B2 listening in the Cambridge B2 First format (owner's plan 2026-10-30): Part 1 short extracts ×8 (en_talk), Part 2 sentence completion ×10 (en_fill, typed), Part 3 five speakers matched to eight statements (en_match), Part 4 an interview ×7 (en_q). Each recording twice in the mock. Original texts. Drafted in tools/.mockups/en_b2_ls.py (rounds 2–3: en_b2_ls_r23.py).",
   "types": [
     "en_talk",
     "en_fill",
@@ -977,6 +977,1984 @@
               "explain": {
                 "zh": "「我最希望大家質疑自己以為知道的事」。",
                 "en": "Question what they think they know."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about working from home.",
+              "zh": "你聽到一位男士談在家工作。",
+              "en": "You hear a man talking about working from home."
+            },
+            {
+              "who": "M",
+              "s": "Everyone warned me that working from home would be lonely, and I was prepared for that. What I wasn't ready for was how hard it is to stop. My office is my kitchen table, so I end up answering emails at ten at night.",
+              "zh": "大家都警告我在家工作會很孤單，這我有心理準備。我沒料到的是停下來有多難。我的辦公室就是廚房的餐桌，所以我常常晚上十點還在回信。",
+              "en": "Everyone warned me that working from home would be lonely, and I was prepared for that. What I wasn't ready for was how hard it is to stop. My office is my kitchen table, so I end up answering emails at ten at night."
+            }
+          ],
+          "ask": {
+            "s": "What has he found difficult?",
+            "zh": "他覺得什麼很難？",
+            "en": "What has he found difficult?"
+          },
+          "options": [
+            {
+              "t": "feeling lonely"
+            },
+            {
+              "t": "knowing when to finish work"
+            },
+            {
+              "t": "having no space to work"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "孤單他早有準備，沒料到的是「停下來有多難」，晚上十點還在回信。",
+            "en": "He was ready for loneliness; stopping work is the problem."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two friends talking about a film.",
+              "zh": "你聽到兩個朋友談一部電影。",
+              "en": "You hear two friends talking about a film."
+            },
+            {
+              "who": "F",
+              "s": "I thought the ending was a bit disappointing.",
+              "zh": "我覺得結局有點讓人失望。",
+              "en": "I thought the ending was a bit disappointing."
+            },
+            {
+              "who": "M",
+              "s": "Really? I thought it was the best part. It's the beginning that drags — nothing happens for forty minutes.",
+              "zh": "真的嗎？我覺得那是最精彩的部分。拖戲的是開頭，前四十分鐘什麼事都沒發生。",
+              "en": "Really? I thought it was the best part. It's the beginning that drags — nothing happens for forty minutes."
+            },
+            {
+              "who": "F",
+              "s": "Hmm, that's fair.",
+              "zh": "嗯，這倒是。",
+              "en": "Hmm, that's fair."
+            }
+          ],
+          "ask": {
+            "s": "What do they agree about?",
+            "zh": "他們對什麼看法一致？",
+            "en": "What do they agree about?"
+          },
+          "options": [
+            {
+              "t": "The ending was excellent."
+            },
+            {
+              "t": "The film was too short."
+            },
+            {
+              "t": "The start of the film was slow."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "結局兩人看法不同；男的說開頭拖戲，女的回「這倒是」：同意開頭太慢。",
+            "en": "They disagree on the ending; she agrees the start drags."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman talking about a hotel.",
+              "zh": "你聽到一位女士談一家飯店。",
+              "en": "You hear a woman talking about a hotel."
+            },
+            {
+              "who": "F",
+              "s": "The room itself was tiny, but that didn't bother me — I was hardly in it. What made the stay was the staff. Nothing was too much trouble; they even found me a doctor at midnight when I was ill.",
+              "zh": "房間本身很小，不過我不在意，我幾乎都不在房裡。讓這次住宿加分的是員工。什麼要求都不嫌麻煩，我半夜生病時他們甚至幫我找了醫生。",
+              "en": "The room itself was tiny, but that didn't bother me — I was hardly in it. What made the stay was the staff. Nothing was too much trouble; they even found me a doctor at midnight when I was ill."
+            }
+          ],
+          "ask": {
+            "s": "What did she value most about the hotel?",
+            "zh": "她最看重這家飯店的什麼？",
+            "en": "What did she value most about the hotel?"
+          },
+          "options": [
+            {
+              "t": "the helpful staff"
+            },
+            {
+              "t": "the size of the room"
+            },
+            {
+              "t": "its location"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「讓這次住宿加分的是員工」，半夜還幫她找醫生。",
+            "en": "The staff made the stay."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about learning to swim as an adult.",
+              "zh": "你聽到一位男士談成年後學游泳。",
+              "en": "You hear a man talking about learning to swim as an adult."
+            },
+            {
+              "who": "M",
+              "s": "I'd always told people I didn't like water. The truth is, I was embarrassed. When I finally booked lessons, I chose an early-morning class so that nobody I knew would see me.",
+              "zh": "我一直跟別人說我不喜歡水。其實是我覺得丟臉。我終於報名上課時，選了一大早的班，這樣就不會被認識的人看到。",
+              "en": "I'd always told people I didn't like water. The truth is, I was embarrassed. When I finally booked lessons, I chose an early-morning class so that nobody I knew would see me."
+            }
+          ],
+          "ask": {
+            "s": "Why did he choose an early-morning class?",
+            "zh": "他為什麼選一大早的班？",
+            "en": "Why did he choose an early-morning class?"
+          },
+          "options": [
+            {
+              "t": "It was cheaper."
+            },
+            {
+              "t": "It fitted in with his work."
+            },
+            {
+              "t": "He didn't want to be seen."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "選早班是「這樣就不會被認識的人看到」。",
+            "en": "So nobody he knew would see him."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a student talking to her teacher about a project.",
+              "zh": "你聽到一個學生和老師談作業。",
+              "en": "You hear a student talking to her teacher about a project."
+            },
+            {
+              "who": "F",
+              "s": "I've finished the research, but I'm struggling to organise it. I've got far too much information, and I don't know what to leave out.",
+              "zh": "我已經查完資料了，可是不知道怎麼整理。我的資料太多了，不知道該刪掉哪些。",
+              "en": "I've finished the research, but I'm struggling to organise it. I've got far too much information, and I don't know what to leave out."
+            }
+          ],
+          "ask": {
+            "s": "What is her problem?",
+            "zh": "她的問題是什麼？",
+            "en": "What is her problem?"
+          },
+          "options": [
+            {
+              "t": "She hasn't found enough information."
+            },
+            {
+              "t": "She can't decide what to include."
+            },
+            {
+              "t": "She has missed the deadline."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "資料太多，「不知道該刪掉哪些」：決定不了要放什麼。",
+            "en": "Too much information; she cannot decide what to leave out."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman talking about the restaurant she owns.",
+              "zh": "你聽到一位女士談她開的餐廳。",
+              "en": "You hear a woman talking about the restaurant she owns."
+            },
+            {
+              "who": "F",
+              "s": "When we opened, we tried to please everybody — pizza, curry, burgers. It was a disaster. Now we serve twelve dishes, all from my mother's region of Italy, and we're full every night.",
+              "zh": "剛開的時候我們想討好每個人，披薩、咖哩、漢堡都賣，結果一團糟。現在我們只賣十二道菜，全是我媽媽家鄉義大利那一區的菜，每天晚上都客滿。",
+              "en": "When we opened, we tried to please everybody — pizza, curry, burgers. It was a disaster. Now we serve twelve dishes, all from my mother's region of Italy, and we're full every night."
+            }
+          ],
+          "ask": {
+            "s": "What led to the restaurant's success?",
+            "zh": "餐廳成功的原因是什麼？",
+            "en": "What led to the restaurant's success?"
+          },
+          "options": [
+            {
+              "t": "offering fewer, more focused dishes"
+            },
+            {
+              "t": "lowering its prices"
+            },
+            {
+              "t": "advertising online"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "什麼都賣很失敗，改成只賣十二道家鄉菜後天天客滿。",
+            "en": "Twelve dishes from one region instead of everything."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two colleagues talking about a meeting.",
+              "zh": "你聽到兩位同事談一場會議。",
+              "en": "You hear two colleagues talking about a meeting."
+            },
+            {
+              "who": "M",
+              "s": "That meeting was a waste of time.",
+              "zh": "那場會議根本是浪費時間。",
+              "en": "That meeting was a waste of time."
+            },
+            {
+              "who": "F",
+              "s": "I know. We spent an hour discussing the problem and didn't agree on a single solution.",
+              "zh": "我知道。討論問題花了一個小時，連一個解決辦法都沒談定。",
+              "en": "I know. We spent an hour discussing the problem and didn't agree on a single solution."
+            },
+            {
+              "who": "M",
+              "s": "Next time, someone should prepare some options beforehand.",
+              "zh": "下次應該有人事先準備幾個方案。",
+              "en": "Next time, someone should prepare some options beforehand."
+            }
+          ],
+          "ask": {
+            "s": "What does the man suggest?",
+            "zh": "男的建議什麼？",
+            "en": "What does the man suggest?"
+          },
+          "options": [
+            {
+              "t": "holding shorter meetings"
+            },
+            {
+              "t": "having proposals ready in advance"
+            },
+            {
+              "t": "inviting fewer people"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「下次應該有人事先準備幾個方案」。",
+            "en": "Prepare options beforehand."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about a novel he has read.",
+              "zh": "你聽到一位男士談他讀過的一本小說。",
+              "en": "You hear a man talking about a novel he has read."
+            },
+            {
+              "who": "M",
+              "s": "I almost gave up after the first chapter — the writing seemed so plain. But gradually I realised that was the point. The simple language makes the terrible events even more powerful.",
+              "zh": "看完第一章我差點放棄，文字顯得太平淡了。可是慢慢地我發現那正是重點：簡單的文字讓那些可怕的事件更有力量。",
+              "en": "I almost gave up after the first chapter — the writing seemed so plain. But gradually I realised that was the point. The simple language makes the terrible events even more powerful."
+            }
+          ],
+          "ask": {
+            "s": "What does he say about the writing?",
+            "zh": "他怎麼說這本書的文字？",
+            "en": "What does he say about the writing?"
+          },
+          "options": [
+            {
+              "t": "It was too complicated."
+            },
+            {
+              "t": "It was dull all the way through."
+            },
+            {
+              "t": "Its simplicity made the story stronger."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「簡單的文字讓那些可怕的事件更有力量」。",
+            "en": "The plain language makes the events more powerful."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Hi, I'm Freya, and for the last six years I've worked as a guide on volcanoes in Iceland. People often think I must have studied geology, but in fact my degree was in history. I started as a summer assistant at a hotel and was asked to help on a tour when one of the guides fell ill. The tours usually last about five hours, and most of that time is spent walking across lava fields. The most important piece of equipment isn't a helmet — it's a good pair of boots, because the rock is incredibly sharp. Before every tour, we check readings from the national weather office, since gas levels can change quickly. The hardest part of the job is actually the wind, which can be strong enough to knock you over. The best moment, for me, is when visitors see the glow of lava for the first time — most of them go completely silent. In winter there are fewer tours, so I spend those months teaching first aid. Next year I'm hoping to start my own small company, offering tours for photographers.",
+              "zh": "大家好，我是芙蕾雅，過去六年在冰島當火山嚮導。大家常以為我一定是讀地質的，其實我的學位是歷史。我一開始在一家飯店當暑期助理，有一次一位嚮導生病，他們請我幫忙帶團。行程通常大約五個小時，大部分時間都在熔岩原上走。最重要的裝備不是安全帽，而是一雙好鞋，因為岩石非常尖銳。每次出團前，我們都會查看國家氣象局的數據，因為氣體濃度變化很快。這份工作最難的其實是風，強到能把人吹倒。對我來說最棒的時刻，是遊客第一次看到熔岩發出的紅光，大部分人都會完全安靜下來。冬天行程比較少，所以那幾個月我教急救。明年我希望開一家自己的小公司，專門帶攝影師的團。",
+              "en": "Hi, I'm Freya, and for the last six years I've worked as a guide on volcanoes in Iceland. People often think I must have studied geology, but in fact my degree was in history. I started as a summer assistant at a hotel and was asked to help on a tour when one of the guides fell ill. The tours usually last about five hours, and most of that time is spent walking across lava fields. The most important piece of equipment isn't a helmet — it's a good pair of boots, because the rock is incredibly sharp. Before every tour, we check readings from the national weather office, since gas levels can change quickly. The hardest part of the job is actually the wind, which can be strong enough to knock you over. The best moment, for me, is when visitors see the glow of lava for the first time — most of them go completely silent. In winter there are fewer tours, so I spend those months teaching first aid. Next year I'm hoping to start my own small company, offering tours for photographers."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Freya's degree was in ＿＿＿＿＿.",
+                "zh": "芙蕾雅的學位是＿＿。",
+                "en": "Freya's degree was in ＿＿＿＿＿."
+              },
+              "answers": [
+                "history"
+              ],
+              "explain": {
+                "zh": "「其實我的學位是歷史」，不是地質。",
+                "en": "History, not geology."
+              }
+            },
+            {
+              "ask": {
+                "s": "She first worked at a ＿＿＿＿＿.",
+                "zh": "她一開始在＿＿工作。",
+                "en": "She first worked at a ＿＿＿＿＿."
+              },
+              "answers": [
+                "hotel"
+              ],
+              "explain": {
+                "zh": "「在一家飯店當暑期助理」。",
+                "en": "A summer assistant at a hotel."
+              }
+            },
+            {
+              "ask": {
+                "s": "Tours usually last about ＿＿＿＿＿ hours.",
+                "zh": "行程通常大約＿＿小時。",
+                "en": "Tours usually last about ＿＿＿＿＿ hours."
+              },
+              "answers": [
+                "five",
+                "5"
+              ],
+              "explain": {
+                "zh": "「通常大約五個小時」。",
+                "en": "About five hours."
+              }
+            },
+            {
+              "ask": {
+                "s": "Most of the tour is spent walking across ＿＿＿＿＿.",
+                "zh": "大部分時間都在＿＿上走。",
+                "en": "Most of the tour is spent walking across ＿＿＿＿＿."
+              },
+              "answers": [
+                "lava fields",
+                "lava",
+                "lava field"
+              ],
+              "explain": {
+                "zh": "「大部分時間都在熔岩原上走」。",
+                "en": "Lava fields."
+              }
+            },
+            {
+              "ask": {
+                "s": "The most important equipment is a good pair of ＿＿＿＿＿.",
+                "zh": "最重要的裝備是一雙好＿＿。",
+                "en": "The most important equipment is a good pair of ＿＿＿＿＿."
+              },
+              "answers": [
+                "boots"
+              ],
+              "explain": {
+                "zh": "「不是安全帽，而是一雙好鞋」。",
+                "en": "Boots, not a helmet."
+              }
+            },
+            {
+              "ask": {
+                "s": "Guides check readings from the national ＿＿＿＿＿ office.",
+                "zh": "嚮導會查看國家＿＿局的數據。",
+                "en": "Guides check readings from the national ＿＿＿＿＿ office."
+              },
+              "answers": [
+                "weather"
+              ],
+              "explain": {
+                "zh": "「國家氣象局的數據」。",
+                "en": "The national weather office."
+              }
+            },
+            {
+              "ask": {
+                "s": "The hardest part of the job is the ＿＿＿＿＿.",
+                "zh": "這份工作最難的是＿＿。",
+                "en": "The hardest part of the job is the ＿＿＿＿＿."
+              },
+              "answers": [
+                "wind"
+              ],
+              "explain": {
+                "zh": "「最難的其實是風」。",
+                "en": "The wind."
+              }
+            },
+            {
+              "ask": {
+                "s": "When they first see the lava glow, most visitors go ＿＿＿＿＿.",
+                "zh": "第一次看到熔岩紅光，大部分遊客會變得＿＿。",
+                "en": "When they first see the lava glow, most visitors go ＿＿＿＿＿."
+              },
+              "answers": [
+                "silent",
+                "completely silent",
+                "quiet"
+              ],
+              "explain": {
+                "zh": "「大部分人都會完全安靜下來」。",
+                "en": "Completely silent."
+              }
+            },
+            {
+              "ask": {
+                "s": "In winter she teaches ＿＿＿＿＿.",
+                "zh": "冬天她教＿＿。",
+                "en": "In winter she teaches ＿＿＿＿＿."
+              },
+              "answers": [
+                "first aid"
+              ],
+              "explain": {
+                "zh": "「那幾個月我教急救」。",
+                "en": "First aid."
+              }
+            },
+            {
+              "ask": {
+                "s": "She plans to offer tours for ＿＿＿＿＿.",
+                "zh": "她打算帶＿＿的團。",
+                "en": "She plans to offer tours for ＿＿＿＿＿."
+              },
+              "answers": [
+                "photographers"
+              ],
+              "explain": {
+                "zh": "「專門帶攝影師的團」。",
+                "en": "Photographers."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Speaker 1",
+              "zh": "說話者 1",
+              "en": "Speaker 1"
+            },
+            {
+              "who": "F",
+              "s": "I moved to Lisbon for a job, and the first month was miserable. It rained every day, my flat was cold, and I didn't know a soul. I'd actually booked a flight home when a colleague invited me to a party, and everything changed after that.",
+              "zh": "我為了工作搬到里斯本，第一個月過得很悲慘。每天下雨，公寓很冷，一個人也不認識。我其實都訂好回家的機票了，結果一位同事邀我去派對，從那之後一切都變了。",
+              "en": "I moved to Lisbon for a job, and the first month was miserable. It rained every day, my flat was cold, and I didn't know a soul. I'd actually booked a flight home when a colleague invited me to a party, and everything changed after that."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 2",
+              "zh": "說話者 2",
+              "en": "Speaker 2"
+            },
+            {
+              "who": "M",
+              "s": "I went to Japan to teach English for a year, planning to come back and work in finance. But I became so interested in teaching that I did a master's in education instead. I've been a teacher ever since.",
+              "zh": "我去日本教一年英文，本來打算回來做金融業。可是我對教書太有興趣，就改讀了教育碩士。之後就一直當老師。",
+              "en": "I went to Japan to teach English for a year, planning to come back and work in finance. But I became so interested in teaching that I did a master's in education instead. I've been a teacher ever since."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 3",
+              "zh": "說話者 3",
+              "en": "Speaker 3"
+            },
+            {
+              "who": "F",
+              "s": "When I arrived in Mexico, the couple who lived downstairs more or less adopted me. They showed me where to shop, corrected my Spanish and invited me for lunch every Sunday.",
+              "zh": "我到墨西哥時，住樓下的一對夫婦幾乎把我當自己的孩子照顧。他們帶我去買東西、糾正我的西班牙文，每個星期天都請我吃午餐。",
+              "en": "When I arrived in Mexico, the couple who lived downstairs more or less adopted me. They showed me where to shop, corrected my Spanish and invited me for lunch every Sunday."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 4",
+              "zh": "說話者 4",
+              "en": "Speaker 4"
+            },
+            {
+              "who": "M",
+              "s": "I spent six months in Norway as a student. It went so fast. I'd only just started to feel at home when it was time to leave, and I've regretted not extending my stay ever since.",
+              "zh": "我當學生時在挪威待了六個月，時間過得好快。我才剛開始覺得像家，就得離開了，從那之後我一直後悔沒有延長。",
+              "en": "I spent six months in Norway as a student. It went so fast. I'd only just started to feel at home when it was time to leave, and I've regretted not extending my stay ever since."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 5",
+              "zh": "說話者 5",
+              "en": "Speaker 5"
+            },
+            {
+              "who": "F",
+              "s": "I'd studied German for years at school, so I thought I'd be fine in Berlin. But people spoke so fast, and used so much slang, that I could barely follow a conversation for the first six months.",
+              "zh": "我在學校學了好幾年德文，以為到柏林沒問題。可是大家講話好快，又一堆俚語，前六個月我幾乎跟不上對話。",
+              "en": "I'd studied German for years at school, so I thought I'd be fine in Berlin. But people spoke so fast, and used so much slang, that I could barely follow a conversation for the first six months."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Speaker 1",
+                "zh": "說話者 1",
+                "en": "Speaker 1"
+              },
+              "options": [
+                {
+                  "t": "I found the language harder than I expected."
+                },
+                {
+                  "t": "I was helped by a local family."
+                },
+                {
+                  "t": "I nearly went home after a few weeks."
+                },
+                {
+                  "t": "The food was the biggest change."
+                },
+                {
+                  "t": "It changed my career plans."
+                },
+                {
+                  "t": "I missed my friends more than my family."
+                },
+                {
+                  "t": "I still keep in touch with people I met there."
+                },
+                {
+                  "t": "I wish I had stayed longer."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "都訂好回家的機票了：差點回家。",
+                "en": "She had booked a flight home."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 2",
+                "zh": "說話者 2",
+                "en": "Speaker 2"
+              },
+              "options": [
+                {
+                  "t": "I found the language harder than I expected."
+                },
+                {
+                  "t": "I was helped by a local family."
+                },
+                {
+                  "t": "I nearly went home after a few weeks."
+                },
+                {
+                  "t": "The food was the biggest change."
+                },
+                {
+                  "t": "It changed my career plans."
+                },
+                {
+                  "t": "I missed my friends more than my family."
+                },
+                {
+                  "t": "I still keep in touch with people I met there."
+                },
+                {
+                  "t": "I wish I had stayed longer."
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "本來要做金融業，結果改讀教育、當了老師。",
+                "en": "Finance plans became a teaching career."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 3",
+                "zh": "說話者 3",
+                "en": "Speaker 3"
+              },
+              "options": [
+                {
+                  "t": "I found the language harder than I expected."
+                },
+                {
+                  "t": "I was helped by a local family."
+                },
+                {
+                  "t": "I nearly went home after a few weeks."
+                },
+                {
+                  "t": "The food was the biggest change."
+                },
+                {
+                  "t": "It changed my career plans."
+                },
+                {
+                  "t": "I missed my friends more than my family."
+                },
+                {
+                  "t": "I still keep in touch with people I met there."
+                },
+                {
+                  "t": "I wish I had stayed longer."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "樓下夫婦帶她買東西、教西班牙文、請吃飯。",
+                "en": "The couple downstairs looked after her."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 4",
+                "zh": "說話者 4",
+                "en": "Speaker 4"
+              },
+              "options": [
+                {
+                  "t": "I found the language harder than I expected."
+                },
+                {
+                  "t": "I was helped by a local family."
+                },
+                {
+                  "t": "I nearly went home after a few weeks."
+                },
+                {
+                  "t": "The food was the biggest change."
+                },
+                {
+                  "t": "It changed my career plans."
+                },
+                {
+                  "t": "I missed my friends more than my family."
+                },
+                {
+                  "t": "I still keep in touch with people I met there."
+                },
+                {
+                  "t": "I wish I had stayed longer."
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "「一直後悔沒有延長」：希望待久一點。",
+                "en": "He regrets not staying longer."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 5",
+                "zh": "說話者 5",
+                "en": "Speaker 5"
+              },
+              "options": [
+                {
+                  "t": "I found the language harder than I expected."
+                },
+                {
+                  "t": "I was helped by a local family."
+                },
+                {
+                  "t": "I nearly went home after a few weeks."
+                },
+                {
+                  "t": "The food was the biggest change."
+                },
+                {
+                  "t": "It changed my career plans."
+                },
+                {
+                  "t": "I missed my friends more than my family."
+                },
+                {
+                  "t": "I still keep in touch with people I met there."
+                },
+                {
+                  "t": "I wish I had stayed longer."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "學了好幾年德文，還是跟不上：比預期難。",
+                "en": "Years of German, yet she could barely follow."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "M",
+              "s": "My guest today is Jade Okafor, whose mobile game about looking after a forest has been downloaded ten million times. Jade, where did the idea come from?",
+              "zh": "今天的來賓是潔德·奧卡福，她做的照顧森林手機遊戲已經被下載一千萬次。潔德，點子是從哪來的？",
+              "en": "My guest today is Jade Okafor, whose mobile game about looking after a forest has been downloaded ten million times. Jade, where did the idea come from?"
+            },
+            {
+              "who": "F",
+              "s": "From my little brother, actually. He was obsessed with games where you destroy things, and I wondered whether a game about growing things could be just as exciting. I made the first version for him as a birthday present.",
+              "zh": "其實是我弟弟。他超迷那種破壞東西的遊戲，我就想，一個讓東西成長的遊戲能不能一樣刺激。第一版是做給他當生日禮物的。",
+              "en": "From my little brother, actually. He was obsessed with games where you destroy things, and I wondered whether a game about growing things could be just as exciting. I made the first version for him as a birthday present."
+            },
+            {
+              "who": "M",
+              "s": "Did you have any training in game design?",
+              "zh": "你受過遊戲設計的訓練嗎？",
+              "en": "Did you have any training in game design?"
+            },
+            {
+              "who": "F",
+              "s": "Not really. I studied mathematics, which helped more than you'd think — a lot of game design is about balancing numbers. Everything else I learnt from online videos.",
+              "zh": "其實沒有。我讀數學，這比你想的更有幫助，遊戲設計很多是在平衡數字。其他的都是看網路影片學的。",
+              "en": "Not really. I studied mathematics, which helped more than you'd think — a lot of game design is about balancing numbers. Everything else I learnt from online videos."
+            },
+            {
+              "who": "M",
+              "s": "The game has no adverts, which is unusual. Why is that?",
+              "zh": "這個遊戲沒有廣告，很少見。為什麼？",
+              "en": "The game has no adverts, which is unusual. Why is that?"
+            },
+            {
+              "who": "F",
+              "s": "I hate being interrupted when I'm playing. Instead, players can pay a small amount for extra trees, but you can finish the whole game without spending anything.",
+              "zh": "我玩遊戲時最討厭被打斷。所以玩家可以花一點錢買額外的樹，不過一毛不花也能破完整個遊戲。",
+              "en": "I hate being interrupted when I'm playing. Instead, players can pay a small amount for extra trees, but you can finish the whole game without spending anything."
+            },
+            {
+              "who": "M",
+              "s": "What surprised you most after it came out?",
+              "zh": "遊戲推出後，最讓你意外的是什麼？",
+              "en": "What surprised you most after it came out?"
+            },
+            {
+              "who": "F",
+              "s": "How many older people play it. I'd assumed the players would be teenagers, but a third of them are over sixty. Lots of them write to me about their real gardens.",
+              "zh": "有那麼多年紀大的人在玩。我原本以為玩家會是青少年，結果有三分之一超過六十歲。很多人寫信跟我聊他們真正的花園。",
+              "en": "How many older people play it. I'd assumed the players would be teenagers, but a third of them are over sixty. Lots of them write to me about their real gardens."
+            },
+            {
+              "who": "M",
+              "s": "Has success changed your life?",
+              "zh": "成功改變了你的生活嗎？",
+              "en": "Has success changed your life?"
+            },
+            {
+              "who": "F",
+              "s": "I've been able to hire four people, which is wonderful. But I still work from my kitchen table — I'm not ready for a proper office yet.",
+              "zh": "我請得起四個人了，這很棒。不過我還是在廚房餐桌上工作，還沒準備好要有正式的辦公室。",
+              "en": "I've been able to hire four people, which is wonderful. But I still work from my kitchen table — I'm not ready for a proper office yet."
+            },
+            {
+              "who": "M",
+              "s": "What's next?",
+              "zh": "接下來呢？",
+              "en": "What's next?"
+            },
+            {
+              "who": "F",
+              "s": "A game about the ocean. Part of the money it makes will go to groups that clean up beaches.",
+              "zh": "一個關於海洋的遊戲。它賺的錢有一部分會捐給淨灘團體。",
+              "en": "A game about the ocean. Part of the money it makes will go to groups that clean up beaches."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Where did the idea for the game come from?",
+                "zh": "遊戲的點子從哪來？",
+                "en": "Where did the idea for the game come from?"
+              },
+              "options": [
+                {
+                  "t": "a game she played as a child"
+                },
+                {
+                  "t": "her brother's taste in games"
+                },
+                {
+                  "t": "a school project"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "弟弟迷破壞東西的遊戲，她想做一個讓東西成長的遊戲給他。",
+                "en": "Her brother loved games about destroying things."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Jade say about her studies?",
+                "zh": "潔德怎麼說她讀的科系？",
+                "en": "What does Jade say about her studies?"
+              },
+              "options": [
+                {
+                  "t": "They were useful for designing games."
+                },
+                {
+                  "t": "She studied game design."
+                },
+                {
+                  "t": "She left university early."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "讀數學「比你想的更有幫助」，遊戲設計很多是平衡數字。",
+                "en": "Mathematics helped with balancing numbers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Why doesn't the game have adverts?",
+                "zh": "遊戲為什麼沒有廣告？",
+                "en": "Why doesn't the game have adverts?"
+              },
+              "options": [
+                {
+                  "t": "They cost too much."
+                },
+                {
+                  "t": "She dislikes being interrupted."
+                },
+                {
+                  "t": "Players complained about them."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我玩遊戲時最討厭被打斷」。",
+                "en": "She hates being interrupted."
+              }
+            },
+            {
+              "ask": {
+                "s": "How does the game make money?",
+                "zh": "遊戲怎麼賺錢？",
+                "en": "How does the game make money?"
+              },
+              "options": [
+                {
+                  "t": "Players pay to download it."
+                },
+                {
+                  "t": "A company sponsors it."
+                },
+                {
+                  "t": "Players can buy extra items."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「玩家可以花一點錢買額外的樹」。",
+                "en": "Players can pay for extra trees."
+              }
+            },
+            {
+              "ask": {
+                "s": "What surprised Jade?",
+                "zh": "什麼讓潔德意外？",
+                "en": "What surprised Jade?"
+              },
+              "options": [
+                {
+                  "t": "the age of many players"
+                },
+                {
+                  "t": "the number of downloads"
+                },
+                {
+                  "t": "the cost of making the game"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "以為玩家是青少年，結果「三分之一超過六十歲」。",
+                "en": "A third of players are over sixty."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Jade say about her work now?",
+                "zh": "潔德怎麼說她現在的工作？",
+                "en": "What does Jade say about her work now?"
+              },
+              "options": [
+                {
+                  "t": "She has moved into an office."
+                },
+                {
+                  "t": "She still works at home."
+                },
+                {
+                  "t": "She works alone."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我還是在廚房餐桌上工作」；她請了四個人，所以不是一個人。",
+                "en": "Still at her kitchen table; she has four staff."
+              }
+            },
+            {
+              "ask": {
+                "s": "What will happen with the ocean game?",
+                "zh": "海洋遊戲會怎樣？",
+                "en": "What will happen with the ocean game?"
+              },
+              "options": [
+                {
+                  "t": "It will be free."
+                },
+                {
+                  "t": "It will be made for teenagers."
+                },
+                {
+                  "t": "Some of its money will support beach clean-ups."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「賺的錢有一部分會捐給淨灘團體」。",
+                "en": "Part of the money goes to beach clean-ups."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman talking about a museum visit.",
+              "zh": "你聽到一位女士談參觀博物館。",
+              "en": "You hear a woman talking about a museum visit."
+            },
+            {
+              "who": "F",
+              "s": "I'd gone to see the famous paintings, but honestly, the rooms were so crowded I could hardly see them. What I'll remember is the small exhibition of children's drawings downstairs — nobody else was there, and they were wonderful.",
+              "zh": "我是去看那些名畫的，可是老實說展間擠到我幾乎看不到。我會記得的是樓下一個兒童畫的小展覽，沒有別人在，那些畫很棒。",
+              "en": "I'd gone to see the famous paintings, but honestly, the rooms were so crowded I could hardly see them. What I'll remember is the small exhibition of children's drawings downstairs — nobody else was there, and they were wonderful."
+            }
+          ],
+          "ask": {
+            "s": "What did she enjoy most?",
+            "zh": "她最喜歡什麼？",
+            "en": "What did she enjoy most?"
+          },
+          "options": [
+            {
+              "t": "an exhibition few people visited"
+            },
+            {
+              "t": "the famous paintings"
+            },
+            {
+              "t": "the guided tour"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "名畫太擠看不到，她會記得的是「沒有別人在」的兒童畫展。",
+            "en": "The quiet exhibition of children's drawings."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two friends talking about a concert.",
+              "zh": "你聽到兩個朋友談一場演唱會。",
+              "en": "You hear two friends talking about a concert."
+            },
+            {
+              "who": "M",
+              "s": "The band sounded great, but the tickets were ridiculous.",
+              "zh": "樂團的聲音很棒，可是票價太誇張了。",
+              "en": "The band sounded great, but the tickets were ridiculous."
+            },
+            {
+              "who": "F",
+              "s": "They were expensive, yes. My problem was the venue — we were so far from the stage.",
+              "zh": "是很貴沒錯。我的問題是場地，我們離舞台好遠。",
+              "en": "They were expensive, yes. My problem was the venue — we were so far from the stage."
+            },
+            {
+              "who": "M",
+              "s": "True, we could barely see anything.",
+              "zh": "對，我們幾乎什麼都看不到。",
+              "en": "True, we could barely see anything."
+            }
+          ],
+          "ask": {
+            "s": "What do they both complain about?",
+            "zh": "他們兩個都抱怨什麼？",
+            "en": "What do they both complain about?"
+          },
+          "options": [
+            {
+              "t": "the sound"
+            },
+            {
+              "t": "the price of the tickets"
+            },
+            {
+              "t": "their view of the stage"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "女的說離舞台太遠，男的附和「幾乎什麼都看不到」。票價只有男的提。",
+            "en": "Both say they could barely see; only he mentions the price."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about giving up sugar.",
+              "zh": "你聽到一位男士談戒糖。",
+              "en": "You hear a man talking about giving up sugar."
+            },
+            {
+              "who": "M",
+              "s": "Everyone said I'd feel more energetic, and maybe I do a bit. But what I didn't expect was that fruit would start tasting so sweet. An apple is like a dessert now.",
+              "zh": "大家都說我會更有精神，也許有一點吧。但我沒料到水果會變得這麼甜。現在一顆蘋果就像甜點一樣。",
+              "en": "Everyone said I'd feel more energetic, and maybe I do a bit. But what I didn't expect was that fruit would start tasting so sweet. An apple is like a dessert now."
+            }
+          ],
+          "ask": {
+            "s": "What surprised him?",
+            "zh": "什麼讓他意外？",
+            "en": "What surprised him?"
+          },
+          "options": [
+            {
+              "t": "He had more energy."
+            },
+            {
+              "t": "Fruit tasted much sweeter."
+            },
+            {
+              "t": "He lost weight quickly."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我沒料到水果會變得這麼甜」；更有精神是大家早就說過的。",
+            "en": "Fruit tasting so sweet; the energy was expected."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman leaving a phone message.",
+              "zh": "你聽到一位女士留電話留言。",
+              "en": "You hear a woman leaving a phone message."
+            },
+            {
+              "who": "F",
+              "s": "Hi Sam, it's Kate from the dentist's. Your appointment on Thursday is still at ten, but Dr Lewis is away, so you'll be seeing Dr Patel instead. No need to call back.",
+              "zh": "山姆你好，我是牙醫診所的凱特。你星期四的預約還是十點，不過路易斯醫師不在，所以會改由帕特爾醫師看診。不用回電。",
+              "en": "Hi Sam, it's Kate from the dentist's. Your appointment on Thursday is still at ten, but Dr Lewis is away, so you'll be seeing Dr Patel instead. No need to call back."
+            }
+          ],
+          "ask": {
+            "s": "Why is she calling?",
+            "zh": "她為什麼打電話？",
+            "en": "Why is she calling?"
+          },
+          "options": [
+            {
+              "t": "to tell Sam about a change of dentist"
+            },
+            {
+              "t": "to change the time of an appointment"
+            },
+            {
+              "t": "to cancel an appointment"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "時間「還是十點」，只是改由另一位醫師看診。",
+            "en": "Same time, a different dentist."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a teacher talking to a class.",
+              "zh": "你聽到一位老師對全班說話。",
+              "en": "You hear a teacher talking to a class."
+            },
+            {
+              "who": "M",
+              "s": "Before you hand in your essays, check them once more. I'm not worried about your ideas — they're good — but some of you are still writing very long sentences that are hard to follow.",
+              "zh": "交作文之前再檢查一次。我不擔心你們的想法，想法都不錯，可是有些人還是寫很長、很難讀懂的句子。",
+              "en": "Before you hand in your essays, check them once more. I'm not worried about your ideas — they're good — but some of you are still writing very long sentences that are hard to follow."
+            }
+          ],
+          "ask": {
+            "s": "What does the teacher want them to improve?",
+            "zh": "老師希望他們改進什麼？",
+            "en": "What does the teacher want them to improve?"
+          },
+          "options": [
+            {
+              "t": "their ideas"
+            },
+            {
+              "t": "their spelling"
+            },
+            {
+              "t": "the length of their sentences"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "想法不錯，問題是「很長、很難讀懂的句子」。",
+            "en": "Their very long sentences."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about a holiday.",
+              "zh": "你聽到一位男士談一次假期。",
+              "en": "You hear a man talking about a holiday."
+            },
+            {
+              "who": "M",
+              "s": "We'd booked a beach holiday, but there was a storm the whole week. So we hired a car and explored the mountains instead. Honestly, it was better than the beach would have been.",
+              "zh": "我們訂的是海灘假期，結果整週都是暴風雨。所以我們租了車去山裡玩。老實說，比待在海灘還好。",
+              "en": "We'd booked a beach holiday, but there was a storm the whole week. So we hired a car and explored the mountains instead. Honestly, it was better than the beach would have been."
+            }
+          ],
+          "ask": {
+            "s": "How does he feel about the holiday?",
+            "zh": "他對這次假期有什麼感覺？",
+            "en": "How does he feel about the holiday?"
+          },
+          "options": [
+            {
+              "t": "disappointed by the weather"
+            },
+            {
+              "t": "pleased with how it turned out"
+            },
+            {
+              "t": "sorry that he hired a car"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「比待在海灘還好」：結果令他滿意。",
+            "en": "Better than the beach would have been."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two students talking about a group project.",
+              "zh": "你聽到兩個學生談小組作業。",
+              "en": "You hear two students talking about a group project."
+            },
+            {
+              "who": "F",
+              "s": "I've done my part. Has Jack finished his yet?",
+              "zh": "我的部分做完了。傑克的做完了嗎？",
+              "en": "I've done my part. Has Jack finished his yet?"
+            },
+            {
+              "who": "M",
+              "s": "He says he'll do it tonight, but he said that last week.",
+              "zh": "他說今晚會做，可是上週他也這樣說。",
+              "en": "He says he'll do it tonight, but he said that last week."
+            },
+            {
+              "who": "F",
+              "s": "Then we should tell the teacher.",
+              "zh": "那我們應該跟老師說。",
+              "en": "Then we should tell the teacher."
+            }
+          ],
+          "ask": {
+            "s": "What does the woman want to do?",
+            "zh": "女的想怎麼做？",
+            "en": "What does the woman want to do?"
+          },
+          "options": [
+            {
+              "t": "report the problem to the teacher"
+            },
+            {
+              "t": "do Jack's work themselves"
+            },
+            {
+              "t": "give Jack more time"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「那我們應該跟老師說」。",
+            "en": "Tell the teacher."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman talking about her new bicycle.",
+              "zh": "你聽到一位女士談她的新腳踏車。",
+              "en": "You hear a woman talking about her new bicycle."
+            },
+            {
+              "who": "F",
+              "s": "It wasn't cheap, and I was worried I'd regret it. But I've used it every day for three months, and I've already saved more on bus fares than it cost.",
+              "zh": "它不便宜，我還擔心會後悔。可是三個月來我每天騎，省下的公車錢已經超過車價了。",
+              "en": "It wasn't cheap, and I was worried I'd regret it. But I've used it every day for three months, and I've already saved more on bus fares than it cost."
+            }
+          ],
+          "ask": {
+            "s": "What does she say about the bike?",
+            "zh": "她怎麼說這台腳踏車？",
+            "en": "What does she say about the bike?"
+          },
+          "options": [
+            {
+              "t": "She regrets buying it."
+            },
+            {
+              "t": "It was cheaper than she expected."
+            },
+            {
+              "t": "It has already paid for itself."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「省下的公車錢已經超過車價了」：已經回本。",
+            "en": "The bus fares saved are more than it cost."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Hello, I'm Dan Price, and I run Riverside Radio, a community station run entirely by volunteers. We started in a garage twelve years ago, and now we broadcast from the old fire station in the town centre. We've got about sixty volunteers; the youngest is fourteen and the oldest is eighty-seven. Our most popular programme is the Sunday morning show, where listeners phone in with gardening questions. Surprisingly, the show with the most younger listeners is one about local history. Every new volunteer starts by working on the news desk, because that teaches you to write clearly and quickly. Training takes about six weeks. The station is paid for by local businesses, who pay to have their adverts read out. The biggest challenge we face is finding people to work at night. This year we're celebrating our anniversary with a live concert in the park in July. And if you'd like to get involved, you don't need any experience — just enthusiasm.",
+              "zh": "大家好，我是丹·普萊斯，經營河畔電台，一個完全由志工經營的社區電台。我們十二年前從一間車庫起家，現在在市中心的舊消防局播音。我們大約有六十位志工，最年輕的十四歲，最年長的八十七歲。最受歡迎的節目是星期天早上的節目，聽眾打電話進來問園藝問題。出乎意料的是，年輕聽眾最多的節目是講地方歷史的。每位新志工都從新聞台開始，因為那能訓練你寫得清楚又快。訓練大約要六週。電台的經費來自當地商家，他們付錢請我們播他們的廣告。我們最大的挑戰是找人值夜班。今年我們七月會在公園辦一場現場音樂會慶祝週年。想參與的話，不需要任何經驗，只要有熱情。",
+              "en": "Hello, I'm Dan Price, and I run Riverside Radio, a community station run entirely by volunteers. We started in a garage twelve years ago, and now we broadcast from the old fire station in the town centre. We've got about sixty volunteers; the youngest is fourteen and the oldest is eighty-seven. Our most popular programme is the Sunday morning show, where listeners phone in with gardening questions. Surprisingly, the show with the most younger listeners is one about local history. Every new volunteer starts by working on the news desk, because that teaches you to write clearly and quickly. Training takes about six weeks. The station is paid for by local businesses, who pay to have their adverts read out. The biggest challenge we face is finding people to work at night. This year we're celebrating our anniversary with a live concert in the park in July. And if you'd like to get involved, you don't need any experience — just enthusiasm."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "The station began in a ＿＿＿＿＿.",
+                "zh": "電台從一間＿＿起家。",
+                "en": "The station began in a ＿＿＿＿＿."
+              },
+              "answers": [
+                "garage"
+              ],
+              "explain": {
+                "zh": "「十二年前從一間車庫起家」。",
+                "en": "A garage."
+              }
+            },
+            {
+              "ask": {
+                "s": "It now broadcasts from the old ＿＿＿＿＿.",
+                "zh": "現在在舊＿＿播音。",
+                "en": "It now broadcasts from the old ＿＿＿＿＿."
+              },
+              "answers": [
+                "fire station"
+              ],
+              "explain": {
+                "zh": "「在市中心的舊消防局播音」。",
+                "en": "The old fire station."
+              }
+            },
+            {
+              "ask": {
+                "s": "The youngest volunteer is ＿＿＿＿＿ years old.",
+                "zh": "最年輕的志工＿＿歲。",
+                "en": "The youngest volunteer is ＿＿＿＿＿ years old."
+              },
+              "answers": [
+                "fourteen",
+                "14"
+              ],
+              "explain": {
+                "zh": "「最年輕的十四歲」；八十七是最年長的。",
+                "en": "Fourteen; 87 is the oldest."
+              }
+            },
+            {
+              "ask": {
+                "s": "In the most popular programme, listeners ask about ＿＿＿＿＿.",
+                "zh": "最受歡迎的節目裡，聽眾問的是＿＿問題。",
+                "en": "In the most popular programme, listeners ask about ＿＿＿＿＿."
+              },
+              "answers": [
+                "gardening"
+              ],
+              "explain": {
+                "zh": "「聽眾打電話進來問園藝問題」。",
+                "en": "Gardening."
+              }
+            },
+            {
+              "ask": {
+                "s": "Many younger listeners enjoy a programme about local ＿＿＿＿＿.",
+                "zh": "很多年輕聽眾喜歡講地方＿＿的節目。",
+                "en": "Many younger listeners enjoy a programme about local ＿＿＿＿＿."
+              },
+              "answers": [
+                "history"
+              ],
+              "explain": {
+                "zh": "「年輕聽眾最多的節目是講地方歷史的」。",
+                "en": "Local history."
+              }
+            },
+            {
+              "ask": {
+                "s": "New volunteers start on the ＿＿＿＿＿ desk.",
+                "zh": "新志工從＿＿台開始。",
+                "en": "New volunteers start on the ＿＿＿＿＿ desk."
+              },
+              "answers": [
+                "news"
+              ],
+              "explain": {
+                "zh": "「每位新志工都從新聞台開始」。",
+                "en": "The news desk."
+              }
+            },
+            {
+              "ask": {
+                "s": "Training takes about ＿＿＿＿＿.",
+                "zh": "訓練大約要＿＿。",
+                "en": "Training takes about ＿＿＿＿＿."
+              },
+              "answers": [
+                "six weeks",
+                "6 weeks"
+              ],
+              "explain": {
+                "zh": "「訓練大約要六週」。",
+                "en": "About six weeks."
+              }
+            },
+            {
+              "ask": {
+                "s": "The station is paid for by local ＿＿＿＿＿.",
+                "zh": "電台的經費來自當地＿＿。",
+                "en": "The station is paid for by local ＿＿＿＿＿."
+              },
+              "answers": [
+                "businesses",
+                "business"
+              ],
+              "explain": {
+                "zh": "「經費來自當地商家」。",
+                "en": "Local businesses."
+              }
+            },
+            {
+              "ask": {
+                "s": "It is hardest to find people to work at ＿＿＿＿＿.",
+                "zh": "最難找到人在＿＿工作。",
+                "en": "It is hardest to find people to work at ＿＿＿＿＿."
+              },
+              "answers": [
+                "night",
+                "nights"
+              ],
+              "explain": {
+                "zh": "「最大的挑戰是找人值夜班」。",
+                "en": "At night."
+              }
+            },
+            {
+              "ask": {
+                "s": "The anniversary will be celebrated with a ＿＿＿＿＿ in the park.",
+                "zh": "週年會在公園辦一場＿＿慶祝。",
+                "en": "The anniversary will be celebrated with a ＿＿＿＿＿ in the park."
+              },
+              "answers": [
+                "concert",
+                "live concert"
+              ],
+              "explain": {
+                "zh": "「在公園辦一場現場音樂會」。",
+                "en": "A live concert."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Speaker 1",
+              "zh": "說話者 1",
+              "en": "Speaker 1"
+            },
+            {
+              "who": "M",
+              "s": "I was sitting next to an old man on a train, and we started chatting. When I told him I was unhappy in my job, he said, 'Life's too short to wait for Friday.' I never even learnt his name, but I handed in my notice a month later.",
+              "zh": "有一次火車上我坐在一位老先生旁邊，我們聊了起來。我說我工作不開心，他說：「人生太短，不該只為了等星期五。」我連他的名字都不知道，但一個月後我就遞了辭呈。",
+              "en": "I was sitting next to an old man on a train, and we started chatting. When I told him I was unhappy in my job, he said, 'Life's too short to wait for Friday.' I never even learnt his name, but I handed in my notice a month later."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 2",
+              "zh": "說話者 2",
+              "en": "Speaker 2"
+            },
+            {
+              "who": "F",
+              "s": "My first manager told me to deal with the hardest task first thing every morning. Now I never start the day by checking emails. It's made me far more productive.",
+              "zh": "我的第一個主管叫我每天早上先處理最難的工作。現在我從不一早就先看信，效率高多了。",
+              "en": "My first manager told me to deal with the hardest task first thing every morning. Now I never start the day by checking emails. It's made me far more productive."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 3",
+              "zh": "說話者 3",
+              "en": "Speaker 3"
+            },
+            {
+              "who": "M",
+              "s": "When my father died, a friend told me to write down one good thing every evening, however small. Some days it was just 'the coffee was nice', but it kept me going through those months.",
+              "zh": "我父親過世時，一個朋友叫我每天晚上寫下一件好事，再小都好。有些天只寫得出「咖啡很好喝」，但它讓我撐過了那幾個月。",
+              "en": "When my father died, a friend told me to write down one good thing every evening, however small. Some days it was just 'the coffee was nice', but it kept me going through those months."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 4",
+              "zh": "說話者 4",
+              "en": "Speaker 4"
+            },
+            {
+              "who": "F",
+              "s": "My aunt kept saying I should learn to drive. I laughed — I lived in the city, why would I need a car? Then I got a job in the countryside, and suddenly I understood.",
+              "zh": "我阿姨一直說我應該學開車。我都笑她，我住在城市，要車幹嘛？後來我在鄉下找到工作，突然就懂了。",
+              "en": "My aunt kept saying I should learn to drive. I laughed — I lived in the city, why would I need a car? Then I got a job in the countryside, and suddenly I understood."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 5",
+              "zh": "說話者 5",
+              "en": "Speaker 5"
+            },
+            {
+              "who": "M",
+              "s": "A teacher once told me to listen more than I talk. I was a terrible listener. Since I started really trying, my friendships have got much closer, and my wife says I'm easier to live with.",
+              "zh": "有位老師曾叫我多聽少說。我以前很不會聽人說話。自從我真的開始努力，我的友誼更親密了，太太也說我比較好相處了。",
+              "en": "A teacher once told me to listen more than I talk. I was a terrible listener. Since I started really trying, my friendships have got much closer, and my wife says I'm easier to live with."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Speaker 1",
+                "zh": "說話者 1",
+                "en": "Speaker 1"
+              },
+              "options": [
+                {
+                  "t": "I didn't take the advice seriously at first."
+                },
+                {
+                  "t": "The advice came from someone I didn't know."
+                },
+                {
+                  "t": "I have passed the advice on to others."
+                },
+                {
+                  "t": "Following it cost me money."
+                },
+                {
+                  "t": "It helped me through a difficult time."
+                },
+                {
+                  "t": "I disagreed with it at the time."
+                },
+                {
+                  "t": "It improved my relationships."
+                },
+                {
+                  "t": "It changed the way I work."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "建議來自火車上的陌生老先生，「連他的名字都不知道」。",
+                "en": "A stranger on a train."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 2",
+                "zh": "說話者 2",
+                "en": "Speaker 2"
+              },
+              "options": [
+                {
+                  "t": "I didn't take the advice seriously at first."
+                },
+                {
+                  "t": "The advice came from someone I didn't know."
+                },
+                {
+                  "t": "I have passed the advice on to others."
+                },
+                {
+                  "t": "Following it cost me money."
+                },
+                {
+                  "t": "It helped me through a difficult time."
+                },
+                {
+                  "t": "I disagreed with it at the time."
+                },
+                {
+                  "t": "It improved my relationships."
+                },
+                {
+                  "t": "It changed the way I work."
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "先做最難的工作，「效率高多了」：改變了工作方式。",
+                "en": "Hardest task first — more productive."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 3",
+                "zh": "說話者 3",
+                "en": "Speaker 3"
+              },
+              "options": [
+                {
+                  "t": "I didn't take the advice seriously at first."
+                },
+                {
+                  "t": "The advice came from someone I didn't know."
+                },
+                {
+                  "t": "I have passed the advice on to others."
+                },
+                {
+                  "t": "Following it cost me money."
+                },
+                {
+                  "t": "It helped me through a difficult time."
+                },
+                {
+                  "t": "I disagreed with it at the time."
+                },
+                {
+                  "t": "It improved my relationships."
+                },
+                {
+                  "t": "It changed the way I work."
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "父親過世後每晚寫一件好事，「讓我撐過了那幾個月」。",
+                "en": "It kept him going after his father died."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 4",
+                "zh": "說話者 4",
+                "en": "Speaker 4"
+              },
+              "options": [
+                {
+                  "t": "I didn't take the advice seriously at first."
+                },
+                {
+                  "t": "The advice came from someone I didn't know."
+                },
+                {
+                  "t": "I have passed the advice on to others."
+                },
+                {
+                  "t": "Following it cost me money."
+                },
+                {
+                  "t": "It helped me through a difficult time."
+                },
+                {
+                  "t": "I disagreed with it at the time."
+                },
+                {
+                  "t": "It improved my relationships."
+                },
+                {
+                  "t": "It changed the way I work."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "阿姨叫她學開車，她「都笑她」，後來才懂：一開始沒當真。",
+                "en": "She laughed at first."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 5",
+                "zh": "說話者 5",
+                "en": "Speaker 5"
+              },
+              "options": [
+                {
+                  "t": "I didn't take the advice seriously at first."
+                },
+                {
+                  "t": "The advice came from someone I didn't know."
+                },
+                {
+                  "t": "I have passed the advice on to others."
+                },
+                {
+                  "t": "Following it cost me money."
+                },
+                {
+                  "t": "It helped me through a difficult time."
+                },
+                {
+                  "t": "I disagreed with it at the time."
+                },
+                {
+                  "t": "It improved my relationships."
+                },
+                {
+                  "t": "It changed the way I work."
+                }
+              ],
+              "answer": "G",
+              "explain": {
+                "zh": "多聽少說後，友誼更親密，太太說他比較好相處。",
+                "en": "Closer friendships, an easier marriage."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "M",
+              "s": "My guest is Maya Collins, who spent a year as the cook at a research station in Antarctica. Maya, why did you apply?",
+              "zh": "今天的來賓是瑪雅·柯林斯，她在南極一個研究站當了一年廚師。瑪雅，你為什麼去應徵？",
+              "en": "My guest is Maya Collins, who spent a year as the cook at a research station in Antarctica. Maya, why did you apply?"
+            },
+            {
+              "who": "F",
+              "s": "I'd been running a busy restaurant in London for ten years, and I was exhausted. I saw the advert on a friend's social media and thought: that's the opposite of my life. I applied the same evening.",
+              "zh": "我在倫敦經營一家很忙的餐廳十年了，累壞了。我在朋友的社群上看到徵人廣告，心想：那跟我的生活完全相反。當天晚上我就應徵了。",
+              "en": "I'd been running a busy restaurant in London for ten years, and I was exhausted. I saw the advert on a friend's social media and thought: that's the opposite of my life. I applied the same evening."
+            },
+            {
+              "who": "M",
+              "s": "What was the biggest challenge in the kitchen?",
+              "zh": "在廚房裡最大的挑戰是什麼？",
+              "en": "What was the biggest challenge in the kitchen?"
+            },
+            {
+              "who": "F",
+              "s": "Planning. Fresh supplies arrive once a year, on a ship, so I had to work out exactly how much flour, rice and tinned food twenty people would need for twelve months. If I got it wrong, there was no shop to run to.",
+              "zh": "規劃。補給一年才來一次，用船運來，所以我得精確算出二十個人十二個月要多少麵粉、米和罐頭。算錯了，可沒有商店可以跑。",
+              "en": "Planning. Fresh supplies arrive once a year, on a ship, so I had to work out exactly how much flour, rice and tinned food twenty people would need for twelve months. If I got it wrong, there was no shop to run to."
+            },
+            {
+              "who": "M",
+              "s": "What about fresh vegetables?",
+              "zh": "那新鮮蔬菜呢？",
+              "en": "What about fresh vegetables?"
+            },
+            {
+              "who": "F",
+              "s": "We had a small greenhouse with lights, and I grew lettuce and herbs. Nothing tastes as good as a salad in the middle of the Antarctic winter.",
+              "zh": "我們有一間有燈的小溫室，我在裡面種萵苣和香草。在南極的冬天吃一盤沙拉，沒有什麼比這更美味了。",
+              "en": "We had a small greenhouse with lights, and I grew lettuce and herbs. Nothing tastes as good as a salad in the middle of the Antarctic winter."
+            },
+            {
+              "who": "M",
+              "s": "How did people cope with the dark months?",
+              "zh": "大家怎麼度過那幾個月的黑暗？",
+              "en": "How did people cope with the dark months?"
+            },
+            {
+              "who": "F",
+              "s": "Routine was everything. Having meals at exactly the same times became really important — it gave the day a shape. I also started a weekly 'restaurant night' where everyone dressed up, and it became the highlight of the week.",
+              "zh": "規律就是一切。每天固定時間吃飯變得非常重要，讓一天有個樣子。我還辦了每週一次的「餐廳之夜」，大家都盛裝打扮，那成了一週的高潮。",
+              "en": "Routine was everything. Having meals at exactly the same times became really important — it gave the day a shape. I also started a weekly 'restaurant night' where everyone dressed up, and it became the highlight of the week."
+            },
+            {
+              "who": "M",
+              "s": "Was there anything you didn't enjoy?",
+              "zh": "有什麼是你不喜歡的嗎？",
+              "en": "Was there anything you didn't enjoy?"
+            },
+            {
+              "who": "F",
+              "s": "Honestly, the lack of privacy. You can't go for a walk on your own when it's minus forty. That was harder than the cold.",
+              "zh": "老實說是沒有隱私。零下四十度的時候，你沒辦法一個人去散步。那比寒冷還難熬。",
+              "en": "Honestly, the lack of privacy. You can't go for a walk on your own when it's minus forty. That was harder than the cold."
+            },
+            {
+              "who": "M",
+              "s": "And now?",
+              "zh": "那現在呢？",
+              "en": "And now?"
+            },
+            {
+              "who": "F",
+              "s": "I've opened a small café rather than another big restaurant. I learnt that I'm happier cooking for people I know.",
+              "zh": "我開了一家小咖啡館，而不是再開一家大餐廳。我發現為認識的人做菜，我比較快樂。",
+              "en": "I've opened a small café rather than another big restaurant. I learnt that I'm happier cooking for people I know."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Why did Maya apply for the job?",
+                "zh": "瑪雅為什麼去應徵？",
+                "en": "Why did Maya apply for the job?"
+              },
+              "options": [
+                {
+                  "t": "She wanted a complete change from her life."
+                },
+                {
+                  "t": "A friend asked her to apply."
+                },
+                {
+                  "t": "She had always wanted to see Antarctica."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "累壞了，覺得那份工作「跟我的生活完全相反」。",
+                "en": "It was the opposite of her exhausting life."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does she say was hardest about cooking there?",
+                "zh": "她說在那裡做菜最難的是什麼？",
+                "en": "What does she say was hardest about cooking there?"
+              },
+              "options": [
+                {
+                  "t": "the lack of equipment"
+                },
+                {
+                  "t": "planning food for a whole year"
+                },
+                {
+                  "t": "cooking for so many people"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "最大的挑戰是「規劃」：算出二十人一年的食物。",
+                "en": "Planning a year of supplies."
+              }
+            },
+            {
+              "ask": {
+                "s": "How did she get fresh vegetables?",
+                "zh": "她怎麼有新鮮蔬菜？",
+                "en": "How did she get fresh vegetables?"
+              },
+              "options": [
+                {
+                  "t": "They arrived by ship."
+                },
+                {
+                  "t": "She did without them."
+                },
+                {
+                  "t": "She grew them indoors."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「有燈的小溫室」裡種萵苣和香草。",
+                "en": "In a small greenhouse with lights."
+              }
+            },
+            {
+              "ask": {
+                "s": "What helped people during the dark months?",
+                "zh": "什麼幫大家度過黑暗的月份？",
+                "en": "What helped people during the dark months?"
+              },
+              "options": [
+                {
+                  "t": "regular routines"
+                },
+                {
+                  "t": "long walks"
+                },
+                {
+                  "t": "phone calls home"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「規律就是一切」，固定時間吃飯讓一天有樣子。",
+                "en": "Routine was everything."
+              }
+            },
+            {
+              "ask": {
+                "s": "What was 'restaurant night'?",
+                "zh": "「餐廳之夜」是什麼？",
+                "en": "What was 'restaurant night'?"
+              },
+              "options": [
+                {
+                  "t": "a chance to cook for visitors"
+                },
+                {
+                  "t": "a weekly event where people dressed up"
+                },
+                {
+                  "t": "a competition between cooks"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「每週一次」、「大家都盛裝打扮」。",
+                "en": "A weekly dressed-up dinner."
+              }
+            },
+            {
+              "ask": {
+                "s": "What did Maya find most difficult?",
+                "zh": "瑪雅覺得最難熬的是什麼？",
+                "en": "What did Maya find most difficult?"
+              },
+              "options": [
+                {
+                  "t": "the cold"
+                },
+                {
+                  "t": "being alone"
+                },
+                {
+                  "t": "never having time to herself"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「沒有隱私」，沒辦法一個人去散步，「比寒冷還難熬」。",
+                "en": "No privacy — harder than the cold."
+              }
+            },
+            {
+              "ask": {
+                "s": "What has she done since returning?",
+                "zh": "她回來後做了什麼？",
+                "en": "What has she done since returning?"
+              },
+              "options": [
+                {
+                  "t": "opened another large restaurant"
+                },
+                {
+                  "t": "opened a smaller business"
+                },
+                {
+                  "t": "stopped cooking"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「開了一家小咖啡館，而不是再開一家大餐廳」。",
+                "en": "A small café, not a big restaurant."
               }
             }
           ]
