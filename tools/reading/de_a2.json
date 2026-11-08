@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "German A2 reading rounds in the Goethe-Zertifikat A2 format (owner's plan 2026-10-30). Lesen Teil 1 an article ×5, Teil 2 a department-store guide ×5, Teil 3 an e-mail ×5, Teil 4 six ads for five people (en_people); 20 questions, three options. Original texts. Drafted in tools/.mockups/de_a2.py.",
+  "note": "German A2 reading rounds in the Goethe-Zertifikat A2 format (owner's plan 2026-10-30). Lesen Teil 1 an article ×5, Teil 2 a department-store guide ×5, Teil 3 an e-mail ×5, Teil 4 six ads for five people (en_people); 20 questions, three options. Original texts. Drafted in tools/.mockups/de_a2.py (rounds 2–3: de_a2_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -256,6 +256,516 @@
               "answer": "B",
               "zh": "星期六、8 歲女兒：B 兒童城市導覽。",
               "en": "Saturday, an 8-year-old: the children's tour."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_long",
+          "text": "Ein Hotel für Bücher\nIn einem kleinen Dorf an der Ostsee steht seit drei Jahren ein besonderes Hotel: Jedes Zimmer hat den Namen einer Schriftstellerin oder eines Schriftstellers, und in jedem Zimmer gibt es ein Regal mit seinen Büchern. Die Besitzerin, Helga Brandt, war früher Bibliothekarin. „Ich wollte, dass die Gäste wieder Zeit zum Lesen haben“, sagt sie. Deshalb gibt es in den Zimmern keinen Fernseher. Das Internet funktioniert nur im Frühstücksraum. Am Anfang hatten viele Leute Angst vor dieser Idee, aber heute ist das Hotel im Sommer fast immer voll. Viele Gäste kommen jedes Jahr wieder. Einmal im Monat liest ein Autor im Garten aus seinem neuen Buch — dann kommen auch die Leute aus dem Dorf.",
+          "tr": {
+            "zh": "書的旅館\n在波羅的海邊一個小村子裡，三年前開了一家特別的旅館：每個房間都以一位作家命名，房裡有一個書架擺著他的書。老闆赫爾嘉‧布蘭特以前是圖書館員。她說：「我希望客人重新有時間讀書。」所以房間裡沒有電視。網路只有在早餐室能用。一開始很多人對這個點子有點怕，但現在旅館夏天幾乎總是客滿。很多客人每年都回來。每個月有一次，會有作家在花園朗讀他的新書——那時候村裡的人也會來。",
+            "en": "A hotel for books\nFor three years a special hotel has stood in a small village on the Baltic: every room is named after a writer, and in every room there is a shelf of their books. The owner, Helga Brandt, used to be a librarian. \"I wanted guests to have time to read again,\" she says. That's why there is no TV in the rooms. The internet only works in the breakfast room. At first many people were wary of the idea, but today the hotel is almost always full in summer. Many guests come back every year. Once a month an author reads from their new book in the garden — then the villagers come too."
+          },
+          "questions": [
+            {
+              "q": "Was ist besonders an dem Hotel?",
+              "options": [
+                "Es ist sehr alt.",
+                "Jedes Zimmer gehört zu einem Schriftsteller.",
+                "Es liegt in einer großen Stadt."
+              ],
+              "answer": 1,
+              "zh": "每個房間都以一位作家命名、放他的書。",
+              "en": "Each room is named after a writer."
+            },
+            {
+              "q": "Was war Frau Brandt früher von Beruf?",
+              "options": [
+                "Bibliothekarin",
+                "Schriftstellerin",
+                "Lehrerin"
+              ],
+              "answer": 0,
+              "zh": "「以前是圖書館員」。",
+              "en": "She was a librarian."
+            },
+            {
+              "q": "Wo kann man ins Internet gehen?",
+              "options": [
+                "in jedem Zimmer",
+                "im Garten",
+                "im Frühstücksraum"
+              ],
+              "answer": 2,
+              "zh": "網路只有在早餐室能用。",
+              "en": "Only in the breakfast room."
+            },
+            {
+              "q": "Wie ist das Hotel heute?",
+              "options": [
+                "Im Sommer kommen nur wenige Gäste.",
+                "Im Sommer ist es fast immer voll.",
+                "Es ist nur im Winter offen."
+              ],
+              "answer": 1,
+              "zh": "「夏天幾乎總是客滿」。",
+              "en": "\"Almost always full in summer.\""
+            },
+            {
+              "q": "Wer kommt zu den Lesungen im Garten?",
+              "options": [
+                "nur die Hotelgäste",
+                "nur Schriftsteller",
+                "auch Leute aus dem Dorf"
+              ],
+              "answer": 2,
+              "zh": "「村裡的人也會來」。",
+              "en": "\"The villagers come too.\""
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "VOLKSHOCHSCHULE — Kurse im Herbst\nRaum 101: Englisch für Anfänger\nRaum 102: Computer: E-Mails und Internet\nRaum 201: Kochen: Gesund und schnell\nRaum 202: Fotografieren mit dem Handy\nRaum 301: Gitarre für Erwachsene\nRaum 302: Erste Hilfe\nBüro (Erdgeschoss): Anmeldung, Bezahlung, Informationen",
+          "tr": {
+            "zh": "社區大學——秋季課程\n101 室：初級英文\n102 室：電腦：電子郵件與網路\n201 室：烹飪：健康又快速\n202 室：用手機攝影\n301 室：成人吉他\n302 室：急救\n辦公室（一樓）：報名、繳費、詢問",
+            "en": "ADULT EDUCATION CENTRE — Autumn courses\nRoom 101: English for beginners\nRoom 102: Computers: e-mail and the internet\nRoom 201: Cooking: healthy and quick\nRoom 202: Taking photos with your phone\nRoom 301: Guitar for adults\nRoom 302: First aid\nOffice (ground floor): registration, payment, information"
+          },
+          "questions": [
+            {
+              "q": "Sie möchten lernen, wie man E-Mails schreibt.",
+              "options": [
+                "Raum 101",
+                "Raum 102",
+                "Raum 202"
+              ],
+              "answer": 1,
+              "zh": "電子郵件與網路：102 室。",
+              "en": "E-mail and internet: room 102."
+            },
+            {
+              "q": "Sie möchten den Kurs bezahlen.",
+              "options": [
+                "im Büro",
+                "in Raum 101",
+                "in Raum 302"
+              ],
+              "answer": 0,
+              "zh": "繳費在辦公室。",
+              "en": "Payment: the office."
+            },
+            {
+              "q": "Sie möchten wissen, was man bei einem Unfall tun muss.",
+              "options": [
+                "Raum 201",
+                "Raum 301",
+                "Raum 302"
+              ],
+              "answer": 2,
+              "zh": "出意外怎麼辦：302 室急救。",
+              "en": "Accidents: first aid, room 302."
+            },
+            {
+              "q": "Sie möchten schöne Bilder von Ihrem Urlaub machen.",
+              "options": [
+                "Raum 102",
+                "Raum 202",
+                "Raum 301"
+              ],
+              "answer": 1,
+              "zh": "拍照：202 室用手機攝影。",
+              "en": "Photos: room 202."
+            },
+            {
+              "q": "Sie möchten für Ihre Familie gesünder kochen.",
+              "options": [
+                "Raum 201",
+                "Raum 202",
+                "im Büro"
+              ],
+              "answer": 0,
+              "zh": "健康烹飪：201 室。",
+              "en": "Healthy cooking: room 201."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Lieber Markus,\nvielen Dank für deine Einladung zur Hochzeit! Natürlich komme ich gern. Leider kann meine Freundin Sofia nicht mitkommen, weil sie an dem Wochenende arbeiten muss. Ich komme also allein. Ich fahre mit dem Zug und bin am Freitag gegen 20 Uhr in Leipzig. Kannst du mir ein Hotel in der Nähe von der Kirche empfehlen? Es soll nicht zu teuer sein. Und noch eine Frage: Was wünscht ihr euch zur Hochzeit? Ich möchte euch gern etwas Schönes schenken, vielleicht etwas für die neue Wohnung. Schreib mir bitte bald!\nViele Grüße\nDaniel",
+          "tr": {
+            "zh": "親愛的馬庫斯：\n謝謝你邀請我參加婚禮！我當然很樂意去。可惜我女朋友蘇菲亞不能一起來，因為那個週末她要上班。所以我自己一個人去。我搭火車，星期五晚上 8 點左右到萊比錫。你可以推薦教堂附近的旅館嗎？不要太貴的。還有一個問題：你們結婚想要什麼禮物？我想送你們一點好東西，也許是給新家的。請快點回信給我！\n祝好\n丹尼爾",
+            "en": "Dear Markus,\nthank you for inviting me to the wedding! Of course I'd love to come. Unfortunately my girlfriend Sofia can't come with me, because she has to work that weekend. So I'll come alone. I'm taking the train and will be in Leipzig at around 8 p.m. on Friday. Can you recommend a hotel near the church? It shouldn't be too expensive. And one more question: what would you like for the wedding? I'd like to give you something nice, perhaps something for the new flat. Please write soon!\nBest wishes\nDaniel"
+          },
+          "questions": [
+            {
+              "q": "Daniel schreibt, weil…",
+              "options": [
+                "er heiratet.",
+                "er zur Hochzeit kommt.",
+                "er nicht kommen kann."
+              ],
+              "answer": 1,
+              "zh": "他回覆婚禮邀請：「我當然很樂意去」。",
+              "en": "He is replying that he will come."
+            },
+            {
+              "q": "Warum kommt Sofia nicht mit?",
+              "options": [
+                "Sie ist krank.",
+                "Sie hat keine Lust.",
+                "Sie muss arbeiten."
+              ],
+              "answer": 2,
+              "zh": "「那個週末她要上班」。",
+              "en": "\"She has to work that weekend.\""
+            },
+            {
+              "q": "Wie reist Daniel nach Leipzig?",
+              "options": [
+                "mit dem Zug",
+                "mit dem Auto",
+                "mit dem Bus"
+              ],
+              "answer": 0,
+              "zh": "「我搭火車」。",
+              "en": "\"I'm taking the train.\""
+            },
+            {
+              "q": "Was für ein Hotel sucht Daniel?",
+              "options": [
+                "ein Hotel am Bahnhof",
+                "ein billiges Hotel in der Nähe der Kirche",
+                "ein großes Hotel im Zentrum"
+              ],
+              "answer": 1,
+              "zh": "教堂附近、不要太貴。",
+              "en": "Near the church, not too expensive."
+            },
+            {
+              "q": "Was möchte Daniel wissen?",
+              "options": [
+                "wann die Hochzeit beginnt",
+                "wo die neue Wohnung ist",
+                "was sich das Paar wünscht"
+              ],
+              "answer": 2,
+              "zh": "「你們結婚想要什麼禮物？」",
+              "en": "\"What would you like for the wedding?\""
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_people",
+          "bank": [
+            "Flohmarkt im Stadtpark — Kleidung, Bücher, Spielzeug. Jeden ersten Sonntag im Monat, 8–14 Uhr.",
+            "Hundeschule „Pfote“ — Kurse für junge Hunde. Mittwochs 17 Uhr. Erste Stunde gratis.",
+            "Deutsch-Spanisch-Tandem — Ich (Carmen, 28) suche jemanden zum Sprechen. Einmal pro Woche im Café.",
+            "Laufgruppe für Anfänger — Wir laufen langsam! Montag und Donnerstag, 19 Uhr, Treffpunkt Sportplatz.",
+            "Kinderbetreuung — Erfahrene Studentin passt abends auf Ihre Kinder auf. 12 € pro Stunde.",
+            "Umzugshilfe — Zwei starke Männer mit Transporter. Am Wochenende auch kurzfristig."
+          ],
+          "tr": {
+            "zh": "A 市立公園跳蚤市場：衣服、書、玩具。每月第一個星期日，8–14 點。\nB「腳掌」狗狗學校：幼犬課程。每週三 17 點。第一堂免費。\nC 德西語言交換：我（卡門，28 歲）想找人聊天。每週一次在咖啡館。\nD 初學者跑步團：我們跑得很慢！星期一和四 19 點，在運動場集合。\nE 托育：有經驗的大學生晚上幫您照顧小孩。每小時 12 歐元。\nF 搬家幫手：兩個壯漢加貨車。週末臨時找也可以。",
+            "en": "A Flea market in the town park: clothes, books, toys. First Sunday of every month, 8–2.\nB \"Paw\" dog school: courses for young dogs. Wednesdays 5 p.m. First lesson free.\nC German–Spanish tandem: I (Carmen, 28) am looking for someone to talk to. Once a week in a café.\nD Running group for beginners: we run slowly! Monday and Thursday, 7 p.m., meet at the sports ground.\nE Childcare: an experienced student looks after your children in the evening. €12 an hour.\nF Removal help: two strong men with a van. At weekends, also at short notice."
+          },
+          "questions": [
+            {
+              "q": "Herr und Frau Weiß möchten am Samstagabend ins Theater gehen. Ihre Kinder sind 3 und 5.",
+              "answer": "E",
+              "zh": "晚上出門、孩子還小：E 晚上托育。",
+              "en": "An evening out with small children: the childcare."
+            },
+            {
+              "q": "Tim hat einen jungen Hund. Der Hund hört nicht gut.",
+              "answer": "B",
+              "zh": "幼犬不聽話：B 狗狗學校。",
+              "en": "A young dog that doesn't listen: the dog school."
+            },
+            {
+              "q": "Petra möchte Spanisch sprechen üben.",
+              "answer": "C",
+              "zh": "練習說西班牙文：C 語言交換。",
+              "en": "Practising Spanish: the tandem."
+            },
+            {
+              "q": "Familie Kraus zieht nächsten Samstag in eine neue Wohnung.",
+              "answer": "F",
+              "zh": "星期六搬家：F 搬家幫手。",
+              "en": "Moving on Saturday: the removal help."
+            },
+            {
+              "q": "Ali möchte fit werden, aber er ist nicht sportlich.",
+              "answer": "D",
+              "zh": "想運動但不擅長：D 慢跑的初學者跑步團。",
+              "en": "Not sporty: the slow beginners' running group."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_long",
+          "text": "Schule ohne Handy\nAn der Goethe-Schule in Kassel dürfen die Schülerinnen und Schüler seit diesem Jahr ihr Handy in der Schule nicht mehr benutzen. Am Morgen legen sie es in einen Schrank im Klassenzimmer, nach dem Unterricht bekommen sie es zurück. Die Idee kam nicht von den Lehrern, sondern von den Eltern. „Die Kinder haben in den Pausen nur noch auf ihr Handy geschaut und nicht mehr miteinander gesprochen“, sagt die Direktorin, Frau Yilmaz. Am Anfang waren viele Schüler sauer. Jetzt spielen sie in den Pausen wieder Fußball oder Karten. Der 15-jährige Noah sagt: „Ich vermisse mein Handy manchmal, aber ich habe jetzt mehr Freunde.“ Wenn es ein Problem gibt, können die Kinder im Sekretariat ihre Eltern anrufen.",
+          "tr": {
+            "zh": "沒有手機的學校\n卡塞爾的歌德學校從今年起，學生在學校不能再用手機。早上他們把手機放進教室的櫃子，下課後再拿回來。這個點子不是老師想的，而是家長提出的。校長伊爾馬茲女士說：「孩子們下課時只盯著手機，彼此都不說話了。」一開始很多學生很不高興。現在他們下課又開始踢足球、打牌了。15 歲的諾亞說：「我有時候會想念手機，但我現在朋友比較多。」有問題的時候，孩子們可以在學校辦公室打電話給父母。",
+            "en": "School without mobiles\nSince this year, pupils at the Goethe School in Kassel may no longer use their phones at school. In the morning they put them in a cupboard in the classroom, and they get them back after lessons. The idea came not from the teachers but from the parents. \"In the breaks the children only looked at their phones and no longer talked to each other,\" says the head teacher, Ms Yilmaz. At first many pupils were cross. Now they play football or cards in the breaks again. Noah, 15, says: \"I sometimes miss my phone, but I have more friends now.\" If there's a problem, the children can call their parents from the school office."
+          },
+          "questions": [
+            {
+              "q": "Wo sind die Handys während des Unterrichts?",
+              "options": [
+                "zu Hause",
+                "in einem Schrank",
+                "im Sekretariat"
+              ],
+              "answer": 1,
+              "zh": "早上放進教室的櫃子。",
+              "en": "In a cupboard in the classroom."
+            },
+            {
+              "q": "Von wem kam die Idee?",
+              "options": [
+                "von den Eltern",
+                "von den Lehrern",
+                "von den Schülern"
+              ],
+              "answer": 0,
+              "zh": "「不是老師想的，而是家長」。",
+              "en": "From the parents, not the teachers."
+            },
+            {
+              "q": "Was war vorher das Problem?",
+              "options": [
+                "Die Schüler haben im Unterricht telefoniert.",
+                "Die Handys waren zu teuer.",
+                "Die Schüler haben in den Pausen nicht miteinander gesprochen."
+              ],
+              "answer": 2,
+              "zh": "下課只看手機、彼此不說話。",
+              "en": "They didn't talk to each other in the breaks."
+            },
+            {
+              "q": "Was sagt Noah?",
+              "options": [
+                "Er hat jetzt mehr Freunde.",
+                "Er findet die Regel schlecht.",
+                "Er braucht kein Handy mehr."
+              ],
+              "answer": 0,
+              "zh": "「我現在朋友比較多」；他有時還是會想念手機。",
+              "en": "\"I have more friends now\"; he still misses it sometimes."
+            },
+            {
+              "q": "Was können die Schüler tun, wenn sie ihre Eltern sprechen müssen?",
+              "options": [
+                "ihr Handy holen",
+                "eine E-Mail schreiben",
+                "im Sekretariat telefonieren"
+              ],
+              "answer": 2,
+              "zh": "在學校辦公室打電話。",
+              "en": "Phone from the school office."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "STADTKRANKENHAUS — Wegweiser\n4. Stock: Kinderstation, Geburtsstation\n3. Stock: Chirurgie, Orthopädie (Knochen)\n2. Stock: Innere Medizin, Labor\n1. Stock: Röntgen, Augenklinik\nErdgeschoss: Notaufnahme, Anmeldung, Cafeteria, Kiosk\nUntergeschoss: Parkhaus, Physiotherapie",
+          "tr": {
+            "zh": "市立醫院——樓層指南\n4 樓：兒科病房、產房\n3 樓：外科、骨科\n2 樓：內科、檢驗室\n1 樓：X 光、眼科\n地面層：急診、掛號、餐廳、小賣部\n地下層：停車場、物理治療",
+            "en": "CITY HOSPITAL — Guide\n4th floor: children's ward, maternity ward\n3rd floor: surgery, orthopaedics (bones)\n2nd floor: internal medicine, laboratory\n1st floor: X-ray, eye clinic\nGround floor: A&E, reception, cafeteria, kiosk\nBasement: car park, physiotherapy"
+          },
+          "questions": [
+            {
+              "q": "Ihre Schwester hat ein Baby bekommen. Sie möchten sie besuchen.",
+              "options": [
+                "1. Stock",
+                "3. Stock",
+                "4. Stock"
+              ],
+              "answer": 2,
+              "zh": "剛生寶寶：4 樓產房。",
+              "en": "A new baby: maternity, 4th floor."
+            },
+            {
+              "q": "Sie sehen schlecht und haben einen Termin beim Augenarzt.",
+              "options": [
+                "1. Stock",
+                "2. Stock",
+                "Erdgeschoss"
+              ],
+              "answer": 0,
+              "zh": "眼科在 1 樓。",
+              "en": "Eye clinic: 1st floor."
+            },
+            {
+              "q": "Sie möchten eine Zeitung und Blumen kaufen.",
+              "options": [
+                "Untergeschoss",
+                "Erdgeschoss",
+                "4. Stock"
+              ],
+              "answer": 1,
+              "zh": "小賣部在地面層。",
+              "en": "The kiosk: ground floor."
+            },
+            {
+              "q": "Ihr Arm ist gebrochen. Der Arzt schickt Sie zur Orthopädie.",
+              "options": [
+                "2. Stock",
+                "3. Stock",
+                "Untergeschoss"
+              ],
+              "answer": 1,
+              "zh": "骨科在 3 樓。",
+              "en": "Orthopaedics: 3rd floor."
+            },
+            {
+              "q": "Nach der Operation brauchen Sie Übungen für Ihr Knie.",
+              "options": [
+                "Untergeschoss",
+                "1. Stock",
+                "3. Stock"
+              ],
+              "answer": 0,
+              "zh": "膝蓋復健：地下層物理治療。",
+              "en": "Exercises: physiotherapy in the basement."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Hallo Frau Berger,\nich bin Ihre neue Nachbarin aus der Wohnung im zweiten Stock. Mein Name ist Lina Petrović. Ich bin am Wochenende eingezogen und möchte mich kurz vorstellen. Ich bin Krankenpflegerin und arbeite oft nachts, deshalb schlafe ich manchmal am Vormittag. Am Samstag feiere ich eine kleine Einweihungsparty mit ein paar Freunden. Es wird vielleicht ein bisschen laut, aber um 23 Uhr ist Schluss — versprochen! Sie sind natürlich herzlich eingeladen. Und noch eine Frage: Wissen Sie, an welchem Tag hier der Müll abgeholt wird?\nViele Grüße\nLina Petrović",
+          "tr": {
+            "zh": "柏格女士您好：\n我是住二樓的新鄰居，我叫莉娜‧佩特羅維奇。我週末剛搬進來，想簡單自我介紹一下。我是護理師，常常值夜班，所以有時候上午在睡覺。星期六我要和幾個朋友辦一個小小的喬遷派對。可能會有點吵，但 23 點就結束——我保證！當然也誠摯邀請您來。還有一個問題：您知道這裡星期幾收垃圾嗎？\n祝好\n莉娜‧佩特羅維奇",
+            "en": "Hello Ms Berger,\nI'm your new neighbour from the flat on the second floor. My name is Lina Petrović. I moved in at the weekend and would like to introduce myself briefly. I'm a nurse and often work nights, so I sometimes sleep in the morning. On Saturday I'm having a small house-warming party with a few friends. It may get a little loud, but it will finish at 11 p.m. — I promise! You are of course warmly invited. And one more question: do you know which day the rubbish is collected here?\nBest wishes\nLina Petrović"
+          },
+          "questions": [
+            {
+              "q": "Warum schreibt Lina?",
+              "options": [
+                "Sie möchte sich als Nachbarin vorstellen.",
+                "Sie sucht eine Wohnung.",
+                "Sie möchte sich beschweren."
+              ],
+              "answer": 0,
+              "zh": "新鄰居「想簡單自我介紹」。",
+              "en": "She introduces herself as the new neighbour."
+            },
+            {
+              "q": "Warum schläft Lina manchmal am Vormittag?",
+              "options": [
+                "Sie ist oft krank.",
+                "Sie arbeitet oft in der Nacht.",
+                "Sie studiert abends."
+              ],
+              "answer": 1,
+              "zh": "護理師、常值夜班。",
+              "en": "She often works nights."
+            },
+            {
+              "q": "Was passiert am Samstag?",
+              "options": [
+                "Lina zieht ein.",
+                "Lina arbeitet.",
+                "Lina macht eine Party."
+              ],
+              "answer": 2,
+              "zh": "辦喬遷派對；搬家是上週末。",
+              "en": "A house-warming party; she moved in at the weekend."
+            },
+            {
+              "q": "Bis wann dauert die Party?",
+              "options": [
+                "bis 22 Uhr",
+                "bis 23 Uhr",
+                "bis Mitternacht"
+              ],
+              "answer": 1,
+              "zh": "「23 點就結束」。",
+              "en": "\"It will finish at 11 p.m.\""
+            },
+            {
+              "q": "Was möchte Lina von Frau Berger wissen?",
+              "options": [
+                "wann der Müll abgeholt wird",
+                "wo der Supermarkt ist",
+                "ob Frau Berger zur Party kommt"
+              ],
+              "answer": 0,
+              "zh": "「星期幾收垃圾？」",
+              "en": "\"Which day is the rubbish collected?\""
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_people",
+          "bank": [
+            "Ferienwohnung am Bodensee — 2 Zimmer, Blick auf den See, Haustiere erlaubt. Ab 70 € pro Nacht.",
+            "Gesucht: Babysitter für Zwillinge (2 Jahre), zweimal pro Woche nachmittags. Gute Bezahlung.",
+            "Malkurs für Senioren — Aquarell, langsam und mit viel Spaß. Donnerstag 10–12 Uhr.",
+            "Verkaufe Schreibtisch und Bürostuhl — wie neu, zusammen 90 €.",
+            "Fahrradtour an der Donau — 5 Tage, Gepäcktransport inklusive, Hotels gebucht.",
+            "Computerhilfe zu Hause — Ich installiere Programme und erkläre alles in Ruhe. Auch für ältere Menschen."
+          ],
+          "tr": {
+            "zh": "A 波登湖度假公寓：兩房，看得到湖，可帶寵物。每晚 70 歐元起。\nB 徵保母：照顧兩歲雙胞胎，每週兩個下午。待遇優。\nC 長者畫畫課：水彩，慢慢畫、很好玩。星期四 10–12 點。\nD 出售書桌和辦公椅：跟新的一樣，兩件 90 歐元。\nE 多瑙河單車之旅：5 天，含行李運送，旅館已訂好。\nF 到府電腦協助：我幫您安裝程式，慢慢解釋一切。年長者也歡迎。",
+            "en": "A Holiday flat on Lake Constance: 2 rooms, lake view, pets allowed. From €70 a night.\nB Wanted: babysitter for twins (2), two afternoons a week. Good pay.\nC Painting class for seniors: watercolour, slowly and with lots of fun. Thursday 10–12.\nD Desk and office chair for sale: as new, €90 together.\nE Cycling tour along the Danube: 5 days, luggage transport included, hotels booked.\nF Computer help at home: I install programs and explain everything calmly. Older people welcome too."
+          },
+          "questions": [
+            {
+              "q": "Herr Roth (72) hat einen neuen Laptop und versteht ihn nicht.",
+              "answer": "F",
+              "zh": "不會用新筆電：F 到府電腦協助，歡迎年長者。",
+              "en": "A new laptop he doesn't understand: home computer help."
+            },
+            {
+              "q": "Familie Neumann möchte mit ihrem Hund Urlaub machen.",
+              "answer": "A",
+              "zh": "帶狗度假：A 可帶寵物的度假公寓。",
+              "en": "A holiday with the dog: the flat that allows pets."
+            },
+            {
+              "q": "Clara (20) studiert und sucht einen Job für den Nachmittag.",
+              "answer": "B",
+              "zh": "找下午的工作：B 徵保母。",
+              "en": "An afternoon job: the babysitting."
+            },
+            {
+              "q": "Herr Ahmadi arbeitet jetzt von zu Hause und braucht Möbel fürs Büro.",
+              "answer": "D",
+              "zh": "在家工作要辦公家具：D 書桌和椅子。",
+              "en": "Office furniture: the desk and chair."
+            },
+            {
+              "q": "Frau Lehmann ist Rentnerin und möchte etwas Kreatives lernen.",
+              "answer": "C",
+              "zh": "退休、想學有創意的東西：C 長者畫畫課。",
+              "en": "Something creative for a pensioner: the painting class."
             }
           ]
         }

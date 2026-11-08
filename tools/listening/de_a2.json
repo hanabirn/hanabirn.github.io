@@ -4,7 +4,7 @@
   "level": "A2",
   "order": 2,
   "n_options": 3,
-  "note": "German A2 listening in the Goethe-Zertifikat A2 format (owner's plan 2026-10-30): Teil 1 five announcements, Teil 2 a conversation matching five days to eight activities (en_match), Teil 3 five dialogues, Teil 4 an interview Ja / Nein ×5; 20 questions. Original texts. Drafted in tools/.mockups/de_a2_ls.py.",
+  "note": "German A2 listening in the Goethe-Zertifikat A2 format (owner's plan 2026-10-30): Teil 1 five announcements, Teil 2 a conversation matching five days to eight activities (en_match), Teil 3 five dialogues, Teil 4 an interview Ja / Nein ×5; 20 questions. Original texts. Drafted in tools/.mockups/de_a2_ls.py (rounds 2–3: de_a2_r23.py).",
   "types": [
     "en_talk",
     "en_match",
@@ -792,6 +792,1550 @@
               "explain": {
                 "zh": "「每次都額滿」。",
                 "en": "\"Always full.\""
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "F",
+              "s": "Wegen Bauarbeiten fährt die Straßenbahn Linie 4 ab Montag zwei Wochen lang nicht. Bitte nehmen Sie den Bus 14.",
+              "zh": "因為施工，4 號電車從星期一起停駛兩週。請改搭 14 號公車。",
+              "en": "Because of building work, tram line 4 will not run for two weeks from Monday. Please take bus 14."
+            }
+          ],
+          "ask": {
+            "s": "Was sollen die Fahrgäste ab Montag tun?",
+            "zh": "從星期一起乘客應該怎麼做？",
+            "en": "What should passengers do from Monday?"
+          },
+          "options": [
+            {
+              "t": "mit dem Bus fahren"
+            },
+            {
+              "t": "die Linie 4 nehmen"
+            },
+            {
+              "t": "zu Fuß gehen"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "電車停駛，改搭 14 號公車。",
+            "en": "The tram isn't running: take bus 14."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Guten Tag, hier ist die Bücherei. Das Buch, das Sie bestellt haben, ist jetzt da. Sie können es bis Freitag abholen.",
+              "zh": "您好，這裡是圖書館。您預約的書到了。星期五以前可以來取。",
+              "en": "Good day, this is the library. The book you ordered has arrived. You can collect it until Friday."
+            }
+          ],
+          "ask": {
+            "s": "Bis wann kann man das Buch abholen?",
+            "zh": "最晚什麼時候可以取書？",
+            "en": "Until when can the book be collected?"
+          },
+          "options": [
+            {
+              "t": "bis Mittwoch"
+            },
+            {
+              "t": "bis Donnerstag"
+            },
+            {
+              "t": "bis Freitag"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「星期五以前」。",
+            "en": "\"Until Friday.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Kaufhaus.",
+              "zh": "在百貨公司。",
+              "en": "In the department store."
+            },
+            {
+              "who": "F",
+              "s": "Liebe Kunden, nur heute: Alle Sportschuhe im zweiten Stock kosten die Hälfte!",
+              "zh": "各位顧客，只有今天：二樓所有運動鞋半價！",
+              "en": "Dear customers, today only: all sports shoes on the second floor are half price!"
+            }
+          ],
+          "ask": {
+            "s": "Was ist heute billiger?",
+            "zh": "今天什麼比較便宜？",
+            "en": "What is cheaper today?"
+          },
+          "options": [
+            {
+              "t": "Sportkleidung"
+            },
+            {
+              "t": "Sportschuhe"
+            },
+            {
+              "t": "alle Schuhe"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "只有運動鞋半價。",
+            "en": "Only sports shoes are half price."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "M",
+              "s": "Das Stadtfest am Wochenende findet trotz Regen statt. Die Konzerte sind aber nicht auf dem Marktplatz, sondern in der Stadthalle.",
+              "zh": "週末的城市節不管下雨照常舉行。不過音樂會不在市集廣場，改在市政廳大廳。",
+              "en": "The town festival at the weekend will go ahead despite the rain. But the concerts will not be on the market square but in the town hall."
+            }
+          ],
+          "ask": {
+            "s": "Wo sind die Konzerte?",
+            "zh": "音樂會在哪裡？",
+            "en": "Where are the concerts?"
+          },
+          "options": [
+            {
+              "t": "auf dem Marktplatz"
+            },
+            {
+              "t": "im Park"
+            },
+            {
+              "t": "in der Stadthalle"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "改到市政廳大廳。",
+            "en": "Moved to the town hall."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Jonas, hier ist Mama. Oma kommt morgen schon um zehn, nicht um zwölf. Kannst du sie bitte am Bahnhof abholen?",
+              "zh": "約納斯，我是媽媽。奶奶明天十點就到，不是十二點。你可以去車站接她嗎？",
+              "en": "Hi Jonas, it's Mum. Grandma is arriving at ten tomorrow, not at twelve. Could you pick her up at the station, please?"
+            }
+          ],
+          "ask": {
+            "s": "Was soll Jonas machen?",
+            "zh": "約納斯要做什麼？",
+            "en": "What should Jonas do?"
+          },
+          "options": [
+            {
+              "t": "die Oma anrufen"
+            },
+            {
+              "t": "die Oma vom Bahnhof abholen"
+            },
+            {
+              "t": "um zwölf zu Hause sein"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "去車站接奶奶，十點。",
+            "en": "Pick grandma up at the station at ten."
+          }
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Was macht Mira wann? Sie hören ein Gespräch.",
+              "zh": "米拉什麼時候做什麼？你會聽到一段對話。",
+              "en": "What is Mira doing when? You will hear a conversation."
+            },
+            {
+              "who": "M",
+              "s": "Mira, hast du diese Woche mal Zeit für einen Kaffee?",
+              "zh": "米拉，妳這週有空喝杯咖啡嗎？",
+              "en": "Mira, have you got time for a coffee this week?"
+            },
+            {
+              "who": "F",
+              "s": "Puh, die Woche ist voll. Montag habe ich meine Mathe-Prüfung, danach bin ich tot.",
+              "zh": "唉，這週好滿。星期一我有數學考試，考完我就累死了。",
+              "en": "Phew, the week is full. On Monday I have my maths exam, after that I'm dead."
+            },
+            {
+              "who": "M",
+              "s": "Und Dienstag?",
+              "zh": "那星期二？",
+              "en": "And Tuesday?"
+            },
+            {
+              "who": "F",
+              "s": "Dienstag muss ich zum Zahnarzt — endlich. Mittwoch helfe ich meinem Bruder beim Umzug, er hat eine neue Wohnung.",
+              "zh": "星期二我得去看牙醫——終於。星期三我幫我哥搬家，他有新公寓了。",
+              "en": "Tuesday I have to go to the dentist — at last. Wednesday I'm helping my brother move, he's got a new flat."
+            },
+            {
+              "who": "M",
+              "s": "Donnerstag gehe ich ins Theater. Kommst du mit?",
+              "zh": "星期四我要去看戲。妳要一起來嗎？",
+              "en": "Thursday I'm going to the theatre. Do you want to come?"
+            },
+            {
+              "who": "F",
+              "s": "Gern, aber Donnerstag ist mein Yoga-Kurs. Und Freitag fahre ich zu meinen Eltern. Vielleicht nächste Woche?",
+              "zh": "很想，但星期四是我的瑜伽課。星期五我要去我爸媽家。也許下週？",
+              "en": "I'd love to, but Thursday is my yoga class. And on Friday I'm going to my parents'. Maybe next week?"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Montag",
+                "zh": "星期一",
+                "en": "Monday"
+              },
+              "options": [
+                {
+                  "t": "Zahnarzt"
+                },
+                {
+                  "t": "Kino"
+                },
+                {
+                  "t": "Umzug helfen"
+                },
+                {
+                  "t": "Yoga"
+                },
+                {
+                  "t": "Theater"
+                },
+                {
+                  "t": "Eltern besuchen"
+                },
+                {
+                  "t": "Schwimmen"
+                },
+                {
+                  "t": "Prüfung"
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "數學考試。",
+                "en": "Her maths exam."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dienstag",
+                "zh": "星期二",
+                "en": "Tuesday"
+              },
+              "options": [
+                {
+                  "t": "Zahnarzt"
+                },
+                {
+                  "t": "Kino"
+                },
+                {
+                  "t": "Umzug helfen"
+                },
+                {
+                  "t": "Yoga"
+                },
+                {
+                  "t": "Theater"
+                },
+                {
+                  "t": "Eltern besuchen"
+                },
+                {
+                  "t": "Schwimmen"
+                },
+                {
+                  "t": "Prüfung"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "看牙醫。",
+                "en": "The dentist."
+              }
+            },
+            {
+              "ask": {
+                "s": "Mittwoch",
+                "zh": "星期三",
+                "en": "Wednesday"
+              },
+              "options": [
+                {
+                  "t": "Zahnarzt"
+                },
+                {
+                  "t": "Kino"
+                },
+                {
+                  "t": "Umzug helfen"
+                },
+                {
+                  "t": "Yoga"
+                },
+                {
+                  "t": "Theater"
+                },
+                {
+                  "t": "Eltern besuchen"
+                },
+                {
+                  "t": "Schwimmen"
+                },
+                {
+                  "t": "Prüfung"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "幫哥哥搬家。",
+                "en": "Helping her brother move."
+              }
+            },
+            {
+              "ask": {
+                "s": "Donnerstag",
+                "zh": "星期四",
+                "en": "Thursday"
+              },
+              "options": [
+                {
+                  "t": "Zahnarzt"
+                },
+                {
+                  "t": "Kino"
+                },
+                {
+                  "t": "Umzug helfen"
+                },
+                {
+                  "t": "Yoga"
+                },
+                {
+                  "t": "Theater"
+                },
+                {
+                  "t": "Eltern besuchen"
+                },
+                {
+                  "t": "Schwimmen"
+                },
+                {
+                  "t": "Prüfung"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "她的瑜伽課；去看戲的是男的。",
+                "en": "Her yoga class; the theatre is his plan."
+              }
+            },
+            {
+              "ask": {
+                "s": "Freitag",
+                "zh": "星期五",
+                "en": "Friday"
+              },
+              "options": [
+                {
+                  "t": "Zahnarzt"
+                },
+                {
+                  "t": "Kino"
+                },
+                {
+                  "t": "Umzug helfen"
+                },
+                {
+                  "t": "Yoga"
+                },
+                {
+                  "t": "Theater"
+                },
+                {
+                  "t": "Eltern besuchen"
+                },
+                {
+                  "t": "Schwimmen"
+                },
+                {
+                  "t": "Prüfung"
+                }
+              ],
+              "answer": "F",
+              "explain": {
+                "zh": "去爸媽家。",
+                "en": "Visiting her parents."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Was möchtest du zum Geburtstag haben?",
+              "zh": "妳生日想要什麼？",
+              "en": "What would you like for your birthday?"
+            },
+            {
+              "who": "F",
+              "s": "Bücher habe ich genug, und Blumen sind so schnell kaputt. Vielleicht Karten für ein Konzert?",
+              "zh": "書我已經夠多了，花又很快就謝。也許音樂會的票？",
+              "en": "I've got enough books, and flowers die so quickly. Maybe tickets for a concert?"
+            }
+          ],
+          "ask": {
+            "s": "Was wünscht sich die Frau?",
+            "zh": "女的想要什麼？",
+            "en": "What does the woman want?"
+          },
+          "options": [
+            {
+              "t": "Bücher"
+            },
+            {
+              "t": "Blumen"
+            },
+            {
+              "t": "Konzertkarten"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "書夠了、花會謝：要音樂會的票。",
+            "en": "Enough books, flowers die: concert tickets."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Wann kommt der Techniker?",
+              "zh": "技師什麼時候來？",
+              "en": "When is the technician coming?"
+            },
+            {
+              "who": "M",
+              "s": "Er wollte heute kommen, aber er ist krank. Jetzt kommt er erst am Montag.",
+              "zh": "他本來今天要來，但他生病了。現在要星期一才來。",
+              "en": "He wanted to come today, but he's ill. Now he isn't coming until Monday."
+            }
+          ],
+          "ask": {
+            "s": "Wann kommt der Techniker?",
+            "zh": "技師什麼時候來？",
+            "en": "When is the technician coming?"
+          },
+          "options": [
+            {
+              "t": "am Montag"
+            },
+            {
+              "t": "heute"
+            },
+            {
+              "t": "morgen"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "今天生病，星期一才來。",
+            "en": "Not today: Monday."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Hast du ein neues Handy?",
+              "zh": "妳換新手機了？",
+              "en": "Have you got a new phone?"
+            },
+            {
+              "who": "F",
+              "s": "Nein, das ist das alte von meiner Schwester. Meins ist ins Wasser gefallen.",
+              "zh": "不是，這是我姊姊的舊手機。我的掉進水裡了。",
+              "en": "No, it's my sister's old one. Mine fell into the water."
+            }
+          ],
+          "ask": {
+            "s": "Was ist mit dem Handy der Frau passiert?",
+            "zh": "女的手機怎麼了？",
+            "en": "What happened to the woman's phone?"
+          },
+          "options": [
+            {
+              "t": "Es wurde gestohlen."
+            },
+            {
+              "t": "Es ist ins Wasser gefallen."
+            },
+            {
+              "t": "Ihre Schwester hat es."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我的掉進水裡了」。",
+            "en": "\"Mine fell into the water.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Wo wollen wir uns treffen? Vor dem Kino?",
+              "zh": "我們要約在哪裡？電影院前面？",
+              "en": "Where shall we meet? In front of the cinema?"
+            },
+            {
+              "who": "M",
+              "s": "Da ist es immer so voll. Lieber im Café gegenüber, da können wir noch etwas trinken.",
+              "zh": "那裡總是好多人。不如在對面的咖啡館，還可以先喝點東西。",
+              "en": "It's always so crowded there. Better in the café opposite, then we can have a drink first."
+            }
+          ],
+          "ask": {
+            "s": "Wo treffen sie sich?",
+            "zh": "他們在哪裡見面？",
+            "en": "Where are they meeting?"
+          },
+          "options": [
+            {
+              "t": "vor dem Kino"
+            },
+            {
+              "t": "im Café"
+            },
+            {
+              "t": "an der Haltestelle"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "對面的咖啡館。",
+            "en": "In the café opposite."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Wie war dein erster Tag im neuen Job?",
+              "zh": "妳新工作的第一天怎麼樣？",
+              "en": "How was your first day in the new job?"
+            },
+            {
+              "who": "F",
+              "s": "Die Kollegen sind sehr nett, aber der Weg ist lang. Ich brauche fast eine Stunde.",
+              "zh": "同事人都很好，但路程很遠。我要花將近一個小時。",
+              "en": "The colleagues are very nice, but it's a long way. It takes me almost an hour."
+            }
+          ],
+          "ask": {
+            "s": "Was gefällt der Frau nicht?",
+            "zh": "女的不喜歡什麼？",
+            "en": "What does the woman not like?"
+          },
+          "options": [
+            {
+              "t": "die Kollegen"
+            },
+            {
+              "t": "die Arbeit"
+            },
+            {
+              "t": "der lange Weg"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "同事很好，只有路程很遠。",
+            "en": "The colleagues are nice; the journey is long."
+          }
+        },
+        {
+          "type": "en_q",
+          "n_options": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Interview im Radio.",
+              "zh": "你會聽到一段廣播訪談。",
+              "en": "You will hear a radio interview."
+            },
+            {
+              "who": "F",
+              "s": "Frau Schulte, Sie haben einen Garten mitten in der Stadt, auf dem Dach eines Supermarkts. Wie kam es dazu?",
+              "zh": "舒爾特女士，您在市中心有一座花園，就在一家超市的屋頂上。怎麼會這樣？",
+              "en": "Ms Schulte, you have a garden in the middle of the city, on the roof of a supermarket. How did that happen?"
+            },
+            {
+              "who": "F2",
+              "s": "Ich wohne in einer kleinen Wohnung ohne Balkon. Ich wollte aber unbedingt Gemüse anbauen. Der Supermarkt hat uns das Dach gegeben.",
+              "zh": "我住在沒有陽台的小公寓。但我很想種菜。超市就把屋頂給我們用了。",
+              "en": "I live in a small flat without a balcony. But I really wanted to grow vegetables. The supermarket gave us the roof."
+            },
+            {
+              "who": "F",
+              "s": "Sie sagen „uns“ — sind Sie nicht allein?",
+              "zh": "您說「我們」——您不是一個人嗎？",
+              "en": "You say \"us\" — you're not on your own?"
+            },
+            {
+              "who": "F2",
+              "s": "Nein, wir sind etwa dreißig Leute aus der Nachbarschaft. Jeder hat ein kleines Beet.",
+              "zh": "不是，我們大約有三十個街坊鄰居。每個人有一小塊菜圃。",
+              "en": "No, there are about thirty of us from the neighbourhood. Everyone has a small bed."
+            },
+            {
+              "who": "F",
+              "s": "Und was passiert mit dem Gemüse?",
+              "zh": "那些菜怎麼處理？",
+              "en": "And what happens to the vegetables?"
+            },
+            {
+              "who": "F2",
+              "s": "Das meiste essen wir selbst. Aber einen Teil verkauft der Supermarkt unten im Laden — das ist das frischeste Gemüse der Stadt!",
+              "zh": "大部分我們自己吃。但有一部分由樓下的超市在店裡賣——那是全市最新鮮的菜！",
+              "en": "We eat most of it ourselves. But the supermarket sells some of it in the shop downstairs — it's the freshest vegetables in town!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Schulte hat einen Balkon.",
+                "zh": "舒爾特女士有陽台。",
+                "en": "Ms Schulte has a balcony."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "她住「沒有陽台的小公寓」。",
+                "en": "A small flat without a balcony."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Garten ist auf einem Dach.",
+                "zh": "花園在屋頂上。",
+                "en": "The garden is on a roof."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "在超市屋頂上。",
+                "en": "On the supermarket roof."
+              }
+            },
+            {
+              "ask": {
+                "s": "Frau Schulte arbeitet allein im Garten.",
+                "zh": "舒爾特女士一個人在花園工作。",
+                "en": "Ms Schulte works in the garden alone."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "大約三十個鄰居。",
+                "en": "About thirty neighbours."
+              }
+            },
+            {
+              "ask": {
+                "s": "Jede Person hat ein eigenes kleines Beet.",
+                "zh": "每個人有自己的一小塊菜圃。",
+                "en": "Everyone has their own small bed."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「每個人有一小塊菜圃」。",
+                "en": "\"Everyone has a small bed.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Man kann das Gemüse im Supermarkt kaufen.",
+                "zh": "在超市可以買到這些菜。",
+                "en": "You can buy the vegetables in the supermarket."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "一部分由樓下超市販售。",
+                "en": "The supermarket sells some of it."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Am Bahnhof.",
+              "zh": "在火車站。",
+              "en": "At the station."
+            },
+            {
+              "who": "M",
+              "s": "Information zum ICE nach Berlin: Wegen eines technischen Problems fällt der Zug heute aus. Bitte nehmen Sie den nächsten Zug um 14.12 Uhr.",
+              "zh": "開往柏林城際特快的消息：因技術問題，本班車今天停駛。請搭下一班 14:12 的車。",
+              "en": "Information about the ICE to Berlin: because of a technical problem the train is cancelled today. Please take the next train at 2.12 p.m."
+            }
+          ],
+          "ask": {
+            "s": "Was ist mit dem Zug nach Berlin?",
+            "zh": "開往柏林的火車怎麼了？",
+            "en": "What about the train to Berlin?"
+          },
+          "options": [
+            {
+              "t": "Er fährt heute nicht."
+            },
+            {
+              "t": "Er hat Verspätung."
+            },
+            {
+              "t": "Er fährt von einem anderen Gleis."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「本班車今天停駛」。",
+            "en": "\"The train is cancelled today.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Herr Wagner, hier ist das Autohaus Berg. Wir haben einen kleinen Fehler gefunden. Die Reparatur dauert bis Mittwoch. Sie bekommen ein Ersatzauto.",
+              "zh": "華格納先生您好，這裡是貝格車行。我們發現一個小故障。維修要到星期三。我們會給您一輛代步車。",
+              "en": "Hello Mr Wagner, this is Berg car dealership. We found a small fault. The repair will take until Wednesday. You will get a replacement car."
+            }
+          ],
+          "ask": {
+            "s": "Was bekommt Herr Wagner?",
+            "zh": "華格納先生會拿到什麼？",
+            "en": "What will Mr Wagner get?"
+          },
+          "options": [
+            {
+              "t": "eine Rechnung"
+            },
+            {
+              "t": "ein anderes Auto"
+            },
+            {
+              "t": "einen neuen Termin"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「給您一輛代步車」。",
+            "en": "\"A replacement car.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "F",
+              "s": "Heute Abend im Programm: Um 20 Uhr ein Interview mit der Sängerin Lea Mai, danach um 21 Uhr die Nachrichten.",
+              "zh": "今晚節目：20 點專訪歌手莉亞‧邁，接著 21 點是新聞。",
+              "en": "Tonight's programme: at 8 p.m. an interview with the singer Lea Mai, followed by the news at 9."
+            }
+          ],
+          "ask": {
+            "s": "Was kommt um 20 Uhr?",
+            "zh": "20 點播什麼？",
+            "en": "What is on at 8 p.m.?"
+          },
+          "options": [
+            {
+              "t": "die Nachrichten"
+            },
+            {
+              "t": "ein Konzert"
+            },
+            {
+              "t": "ein Interview"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "20 點是專訪；新聞 21 點。",
+            "en": "An interview at 8; the news at 9."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Zoo.",
+              "zh": "在動物園。",
+              "en": "At the zoo."
+            },
+            {
+              "who": "M",
+              "s": "Liebe Besucher, in zehn Minuten füttern wir die Pinguine. Kommen Sie zum Wasserhaus neben dem Eingang!",
+              "zh": "各位遊客，十分鐘後我們要餵企鵝。請到入口旁邊的水族館來！",
+              "en": "Dear visitors, in ten minutes we're feeding the penguins. Come to the water house next to the entrance!"
+            }
+          ],
+          "ask": {
+            "s": "Was passiert in zehn Minuten?",
+            "zh": "十分鐘後會發生什麼？",
+            "en": "What happens in ten minutes?"
+          },
+          "options": [
+            {
+              "t": "Die Pinguine bekommen Futter."
+            },
+            {
+              "t": "Der Zoo schließt."
+            },
+            {
+              "t": "Eine Führung beginnt am Eingang."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "餵企鵝。",
+            "en": "The penguins are fed."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Lisa, hier ist Tom. Das Grillen am Samstag machen wir nicht im Park, sondern bei mir im Garten. Bring bitte einen Salat mit!",
+              "zh": "嗨，麗莎，我是湯姆。星期六的烤肉不在公園，改在我家花園。請帶一份沙拉來！",
+              "en": "Hi Lisa, it's Tom. We're not having the barbecue on Saturday in the park but in my garden. Please bring a salad!"
+            }
+          ],
+          "ask": {
+            "s": "Wo ist das Grillen?",
+            "zh": "烤肉在哪裡？",
+            "en": "Where is the barbecue?"
+          },
+          "options": [
+            {
+              "t": "im Park"
+            },
+            {
+              "t": "bei Lisa"
+            },
+            {
+              "t": "in Toms Garten"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "改在湯姆家花園。",
+            "en": "In Tom's garden."
+          }
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Was machen Frau und Herr Lorenz in Hamburg? Sie hören ein Gespräch.",
+              "zh": "羅倫茲夫婦在漢堡做什麼？你會聽到一段對話。",
+              "en": "What are Mr and Mrs Lorenz doing in Hamburg? You will hear a conversation."
+            },
+            {
+              "who": "F",
+              "s": "Also, wir sind von Montag bis Freitag in Hamburg. Am Montag kommen wir erst abends an — da gehen wir nur schön essen.",
+              "zh": "好，我們星期一到五在漢堡。星期一晚上才到——那天我們只去好好吃一頓。",
+              "en": "So, we're in Hamburg from Monday to Friday. On Monday we don't arrive until the evening — we'll just go out for a nice meal."
+            },
+            {
+              "who": "M",
+              "s": "Und am Dienstag die Hafenrundfahrt?",
+              "zh": "那星期二坐船遊港？",
+              "en": "And the harbour tour on Tuesday?"
+            },
+            {
+              "who": "F",
+              "s": "Nein, am Dienstag soll es regnen. Da gehen wir lieber ins Museum. Die Hafenrundfahrt machen wir am Mittwoch.",
+              "zh": "不，星期二會下雨。那天我們還是去博物館。遊港我們星期三去。",
+              "en": "No, it's supposed to rain on Tuesday. We'd better go to the museum. We'll do the harbour tour on Wednesday."
+            },
+            {
+              "who": "M",
+              "s": "Gut. Und Donnerstag? Ich hätte Lust auf eine Fahrradtour.",
+              "zh": "好。那星期四？我想騎單車。",
+              "en": "Fine. And Thursday? I'd like a bike tour."
+            },
+            {
+              "who": "F",
+              "s": "Am Donnerstag habe ich schon Karten für ein Konzert in der Elbphilharmonie gekauft! Die Fahrradtour geht am Freitag, bevor wir zurückfahren.",
+              "zh": "星期四我已經買了易北愛樂廳的音樂會票！單車星期五去，在我們回家之前。",
+              "en": "On Thursday I've already bought tickets for a concert in the Elbphilharmonie! The bike tour can be on Friday, before we go back."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Montag",
+                "zh": "星期一",
+                "en": "Monday"
+              },
+              "options": [
+                {
+                  "t": "Einkaufen"
+                },
+                {
+                  "t": "Museum"
+                },
+                {
+                  "t": "Restaurant"
+                },
+                {
+                  "t": "Hafenrundfahrt"
+                },
+                {
+                  "t": "Konzert"
+                },
+                {
+                  "t": "Zoo"
+                },
+                {
+                  "t": "Stadtführung"
+                },
+                {
+                  "t": "Fahrradtour"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "晚上到，只去吃飯。",
+                "en": "They arrive in the evening and eat out."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dienstag",
+                "zh": "星期二",
+                "en": "Tuesday"
+              },
+              "options": [
+                {
+                  "t": "Einkaufen"
+                },
+                {
+                  "t": "Museum"
+                },
+                {
+                  "t": "Restaurant"
+                },
+                {
+                  "t": "Hafenrundfahrt"
+                },
+                {
+                  "t": "Konzert"
+                },
+                {
+                  "t": "Zoo"
+                },
+                {
+                  "t": "Stadtführung"
+                },
+                {
+                  "t": "Fahrradtour"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "下雨，改去博物館。",
+                "en": "Rain: the museum."
+              }
+            },
+            {
+              "ask": {
+                "s": "Mittwoch",
+                "zh": "星期三",
+                "en": "Wednesday"
+              },
+              "options": [
+                {
+                  "t": "Einkaufen"
+                },
+                {
+                  "t": "Museum"
+                },
+                {
+                  "t": "Restaurant"
+                },
+                {
+                  "t": "Hafenrundfahrt"
+                },
+                {
+                  "t": "Konzert"
+                },
+                {
+                  "t": "Zoo"
+                },
+                {
+                  "t": "Stadtführung"
+                },
+                {
+                  "t": "Fahrradtour"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "遊港移到星期三。",
+                "en": "The harbour tour moves to Wednesday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Donnerstag",
+                "zh": "星期四",
+                "en": "Thursday"
+              },
+              "options": [
+                {
+                  "t": "Einkaufen"
+                },
+                {
+                  "t": "Museum"
+                },
+                {
+                  "t": "Restaurant"
+                },
+                {
+                  "t": "Hafenrundfahrt"
+                },
+                {
+                  "t": "Konzert"
+                },
+                {
+                  "t": "Zoo"
+                },
+                {
+                  "t": "Stadtführung"
+                },
+                {
+                  "t": "Fahrradtour"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "已買了音樂會的票。",
+                "en": "Concert tickets already bought."
+              }
+            },
+            {
+              "ask": {
+                "s": "Freitag",
+                "zh": "星期五",
+                "en": "Friday"
+              },
+              "options": [
+                {
+                  "t": "Einkaufen"
+                },
+                {
+                  "t": "Museum"
+                },
+                {
+                  "t": "Restaurant"
+                },
+                {
+                  "t": "Hafenrundfahrt"
+                },
+                {
+                  "t": "Konzert"
+                },
+                {
+                  "t": "Zoo"
+                },
+                {
+                  "t": "Stadtführung"
+                },
+                {
+                  "t": "Fahrradtour"
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "回家前騎單車。",
+                "en": "The bike tour before going back."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Fährst du dieses Jahr wieder nach Italien?",
+              "zh": "你今年又要去義大利嗎？",
+              "en": "Are you going to Italy again this year?"
+            },
+            {
+              "who": "M",
+              "s": "Nein, dieses Mal fliegen wir nach Portugal. Nach Italien fahren wir vielleicht nächstes Jahr wieder.",
+              "zh": "不，這次我們飛葡萄牙。義大利也許明年再去。",
+              "en": "No, this time we're flying to Portugal. We'll maybe go to Italy again next year."
+            }
+          ],
+          "ask": {
+            "s": "Wohin fährt der Mann dieses Jahr?",
+            "zh": "男的今年去哪裡？",
+            "en": "Where is the man going this year?"
+          },
+          "options": [
+            {
+              "t": "nach Italien"
+            },
+            {
+              "t": "nach Portugal"
+            },
+            {
+              "t": "nach Spanien"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "今年葡萄牙；義大利是明年。",
+            "en": "Portugal this year; Italy next year."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Kannst du mir bitte dein Auto leihen?",
+              "zh": "可以借我妳的車嗎？",
+              "en": "Could you lend me your car, please?"
+            },
+            {
+              "who": "F",
+              "s": "Heute brauche ich es leider selbst. Aber morgen geht es — ab drei Uhr.",
+              "zh": "今天我自己要用。不過明天可以——三點以後。",
+              "en": "I need it myself today, I'm afraid. But tomorrow is fine — from three o'clock."
+            }
+          ],
+          "ask": {
+            "s": "Wann kann der Mann das Auto haben?",
+            "zh": "男的什麼時候可以用車？",
+            "en": "When can the man have the car?"
+          },
+          "options": [
+            {
+              "t": "heute"
+            },
+            {
+              "t": "morgen Vormittag"
+            },
+            {
+              "t": "morgen Nachmittag"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "明天三點以後：下午。",
+            "en": "Tomorrow from three: the afternoon."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Was ist denn los? Du siehst müde aus.",
+              "zh": "怎麼了？你看起來好累。",
+              "en": "What's wrong? You look tired."
+            },
+            {
+              "who": "M",
+              "s": "Die Nachbarn hatten bis drei Uhr nachts eine Party. Ich konnte nicht schlafen.",
+              "zh": "鄰居開派對開到半夜三點。我睡不著。",
+              "en": "The neighbours had a party until three in the morning. I couldn't sleep."
+            }
+          ],
+          "ask": {
+            "s": "Warum ist der Mann müde?",
+            "zh": "男的為什麼累？",
+            "en": "Why is the man tired?"
+          },
+          "options": [
+            {
+              "t": "Er hat lange gearbeitet."
+            },
+            {
+              "t": "Er war auf einer Party."
+            },
+            {
+              "t": "Die Nachbarn waren laut."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "鄰居開派對，他睡不著；去派對的不是他。",
+            "en": "The neighbours' party kept him awake; he wasn't at it."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Wie viele Leute kommen morgen zum Essen?",
+              "zh": "明天有幾個人來吃飯？",
+              "en": "How many people are coming to dinner tomorrow?"
+            },
+            {
+              "who": "F",
+              "s": "Wir waren sechs, aber Paul und Anna können nicht. Also nur vier.",
+              "zh": "本來六個，但保羅和安娜不能來。所以只有四個。",
+              "en": "There were six of us, but Paul and Anna can't come. So only four."
+            }
+          ],
+          "ask": {
+            "s": "Wie viele Personen kommen?",
+            "zh": "有幾個人來？",
+            "en": "How many people are coming?"
+          },
+          "options": [
+            {
+              "t": "vier"
+            },
+            {
+              "t": "sechs"
+            },
+            {
+              "t": "acht"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "六個減兩個：四個。",
+            "en": "Six minus two: four."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Ich möchte diese Hose umtauschen. Sie ist zu kurz.",
+              "zh": "我想換這條褲子。太短了。",
+              "en": "I'd like to exchange these trousers. They're too short."
+            },
+            {
+              "who": "M",
+              "s": "Haben Sie den Kassenbon? Dann bekommen Sie eine längere oder Ihr Geld zurück.",
+              "zh": "您有收據嗎？那您可以換長一點的，或者退錢。",
+              "en": "Have you got the receipt? Then you can have a longer pair or your money back."
+            }
+          ],
+          "ask": {
+            "s": "Was braucht die Frau?",
+            "zh": "女的需要什麼？",
+            "en": "What does the woman need?"
+          },
+          "options": [
+            {
+              "t": "eine Tüte"
+            },
+            {
+              "t": "den Kassenbon"
+            },
+            {
+              "t": "ihren Ausweis"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "要有收據才能換或退。",
+            "en": "She needs the receipt."
+          }
+        },
+        {
+          "type": "en_q",
+          "n_options": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Interview im Radio.",
+              "zh": "你會聽到一段廣播訪談。",
+              "en": "You will hear a radio interview."
+            },
+            {
+              "who": "F",
+              "s": "Herr Becker, Sie sind Busfahrer — und Sie singen für Ihre Fahrgäste. Stimmt das?",
+              "zh": "貝克先生，您是公車司機——而且您會為乘客唱歌。是真的嗎？",
+              "en": "Mr Becker, you're a bus driver — and you sing for your passengers. Is that true?"
+            },
+            {
+              "who": "M",
+              "s": "Ja, aber nur am Morgen auf der ersten Fahrt. Um sechs Uhr sind alle so müde und schlecht gelaunt. Ich wollte sie ein bisschen wach machen.",
+              "zh": "是的，不過只在早上第一班車。六點的時候大家都好累、心情不好。我想讓他們清醒一點。",
+              "en": "Yes, but only in the morning on the first trip. At six o'clock everyone is so tired and grumpy. I wanted to wake them up a bit."
+            },
+            {
+              "who": "F",
+              "s": "Und wie finden das die Fahrgäste?",
+              "zh": "乘客覺得怎麼樣？",
+              "en": "And what do the passengers think?"
+            },
+            {
+              "who": "M",
+              "s": "Am Anfang haben sie komisch geguckt. Aber heute singen manche mit! Und eine Frau bringt mir jeden Freitag Kekse.",
+              "zh": "一開始他們表情很怪。但現在有些人會跟著唱！還有一位女士每週五帶餅乾給我。",
+              "en": "At first they looked at me strangely. But now some of them sing along! And one woman brings me biscuits every Friday."
+            },
+            {
+              "who": "F",
+              "s": "Hat Ihr Chef nichts dagegen?",
+              "zh": "您的老闆不反對嗎？",
+              "en": "Doesn't your boss mind?"
+            },
+            {
+              "who": "M",
+              "s": "Doch, zuerst schon. Aber dann haben viele Leute E-Mails an die Firma geschrieben, wie toll sie das finden. Jetzt darf ich weitersingen.",
+              "zh": "一開始是反對。但後來很多人寫電子郵件給公司，說他們覺得很棒。現在我可以繼續唱。",
+              "en": "He did at first. But then lots of people wrote e-mails to the company saying how great they thought it was. Now I'm allowed to keep singing."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Herr Becker singt den ganzen Tag im Bus.",
+                "zh": "貝克先生整天在公車上唱歌。",
+                "en": "Mr Becker sings on the bus all day."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "只在早上第一班車。",
+                "en": "Only on the first trip in the morning."
+              }
+            },
+            {
+              "ask": {
+                "s": "Am frühen Morgen sind die Fahrgäste oft müde.",
+                "zh": "一大早乘客常常很累。",
+                "en": "Early in the morning the passengers are often tired."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「六點的時候大家都好累」。",
+                "en": "\"At six everyone is so tired.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Heute singen einige Fahrgäste mit.",
+                "zh": "現在有些乘客會跟著唱。",
+                "en": "Now some passengers sing along."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「有些人會跟著唱」。",
+                "en": "\"Some of them sing along.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Becker bringt jeden Freitag Kekse mit.",
+                "zh": "貝克先生每週五帶餅乾。",
+                "en": "Mr Becker brings biscuits every Friday."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "是一位女乘客帶餅乾給他。",
+                "en": "A woman brings him biscuits."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Chef war am Anfang gegen das Singen.",
+                "zh": "老闆一開始反對唱歌。",
+                "en": "The boss was against the singing at first."
+              },
+              "options": [
+                {
+                  "t": "Ja"
+                },
+                {
+                  "t": "Nein"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「一開始是反對」，後來才同意。",
+                "en": "At first, yes; later he agreed."
               }
             }
           ]

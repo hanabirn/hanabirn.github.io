@@ -4,7 +4,7 @@
   "level": "B2",
   "order": 4,
   "n_options": 3,
-  "note": "German B2 reading rounds in the Goethe-Zertifikat B2 format, as the official Modellsatz (EXAMS.md): Teil 1 four people on their careers, who says it ×9; Teil 2 the history of the bicycle, six sentences put back (two spare); Teil 3 repair cafés ×6; Teil 4 digital nomads, opinions for six headings; Teil 5 a study regulation, three paragraphs for seven headings — 30 questions. Original texts. Drafted in tools/.mockups/de_b2.py.",
+  "note": "German B2 reading rounds in the Goethe-Zertifikat B2 format, as the official Modellsatz (EXAMS.md): Teil 1 four people on their careers, who says it ×9; Teil 2 the history of the bicycle, six sentences put back (two spare); Teil 3 repair cafés ×6; Teil 4 digital nomads, opinions for six headings; Teil 5 a study regulation, three paragraphs for seven headings — 30 questions. Original texts. Drafted in tools/.mockups/de_b2.py (rounds 2–3: de_b2_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -307,6 +307,618 @@
               "answer": "G",
               "zh": "在企業待十二週：實習。E 海外學期不對。",
               "en": "Twelve weeks in a company: internship."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "en_people",
+          "mondai": 1,
+          "ask": "en_sections",
+          "bank": [
+            "Lukas, 24, Student — Ich wohne in einer WG mit fünf Leuten. Natürlich gibt es manchmal Streit, wer den Müll runterbringt. Aber allein zu wohnen könnte ich mir gar nicht leisten, die Mieten in München sind verrückt. Und ehrlich gesagt mag ich es, abends nach Hause zu kommen und nicht allein zu sein. Meine Eltern haben anfangs befürchtet, dass ich vor lauter Partys nicht lerne.",
+            "Monika, 52, Steuerberaterin — Nach der Scheidung habe ich zum ersten Mal in meinem Leben allein gewohnt. Am Anfang war die Stille schrecklich. Heute genieße ich sie. Ich kann essen, wann ich will, und niemand stellt mir Fragen. Gegen die Einsamkeit hilft mein Chor, mit dem ich zweimal pro Woche probe.",
+            "Hakan, 38, Koch — Wir wohnen zu dritt mit meinen Schwiegereltern in einem Haus. Viele Freunde halten das für altmodisch. Für uns ist es praktisch: Die Großeltern holen die Kinder von der Schule ab, und ich kann abends im Restaurant arbeiten. Klar, Platz für sich hat man wenig, aber wir haben feste Regeln für die Küche.",
+            "Gerda, 79, Rentnerin — Nach dem Tod meines Mannes wollte ich nicht ins Altenheim. Jetzt lebe ich in einem Mehrgenerationenhaus: Jede Familie hat ihre eigene Wohnung, aber es gibt einen gemeinsamen Garten und einen Raum für Feste. Ich lese den Kindern aus dem Haus vor, und ein junger Nachbar trägt mir die Einkäufe hoch."
+          ],
+          "tr": {
+            "zh": "A 盧卡斯，24 歲，大學生：我和五個人合租。當然有時會為誰倒垃圾吵架。但我根本負擔不起一個人住，慕尼黑的房租太誇張了。老實說，我喜歡晚上回家時不是一個人。我爸媽一開始擔心我整天開派對不念書。\nB 莫妮卡，52 歲，稅務顧問：離婚後我人生第一次一個人住。一開始安靜得可怕。現在我很享受。我想什麼時候吃就什麼時候吃，沒人問東問西。對抗孤單靠我的合唱團，每週練兩次。\nC 哈坎，38 歲，廚師：我們一家三口和岳父母住在一棟房子裡。很多朋友覺得這很老派。對我們來說很實際：外公外婆接孩子放學，我晚上就能在餐廳工作。當然個人空間很少，但我們對廚房有固定規則。\nD 葛爾妲，79 歲，退休：丈夫過世後我不想進養老院。現在我住在多代同堂的公寓：每家有自己的住處，但有共用的花園和一間辦活動的房間。我念故事給樓裡的孩子聽，一位年輕鄰居幫我把買的東西扛上樓。",
+            "en": "A Lukas, 24, student — I live in a flat share with five people. Of course there are sometimes arguments about who takes the rubbish down. But I couldn't afford to live alone; the rents in Munich are crazy. And honestly, I like coming home in the evening and not being alone. At first my parents feared I'd be too busy partying to study.\nB Monika, 52, tax adviser — After my divorce I lived alone for the first time in my life. At first the silence was terrible. Now I enjoy it. I can eat when I like and nobody asks me questions. My choir, which rehearses twice a week, helps against loneliness.\nC Hakan, 38, cook — The three of us live in a house with my parents-in-law. Many friends think that's old-fashioned. For us it's practical: the grandparents pick the children up from school, and I can work at the restaurant in the evening. Of course you have little space of your own, but we have fixed rules for the kitchen.\nD Gerda, 79, pensioner — After my husband died I didn't want to go into a home. Now I live in a multi-generation house: every family has its own flat, but there's a shared garden and a room for parties. I read to the children in the house, and a young neighbour carries my shopping upstairs."
+          },
+          "questions": [
+            {
+              "q": "Wer wohnt aus finanziellen Gründen mit anderen zusammen?",
+              "answer": "A",
+              "zh": "A：負擔不起一個人住。",
+              "en": "A can't afford to live alone."
+            },
+            {
+              "q": "Wer musste sich an eine neue Wohnsituation erst gewöhnen?",
+              "answer": "B",
+              "zh": "B：一開始安靜得可怕，現在享受。",
+              "en": "B found the silence terrible at first."
+            },
+            {
+              "q": "Wessen Wohnform wird von Bekannten kritisch gesehen?",
+              "answer": "C",
+              "zh": "C：朋友覺得和岳父母住很老派。",
+              "en": "C: friends think it old-fashioned."
+            },
+            {
+              "q": "Wer bekommt Hilfe von jüngeren Mitbewohnern?",
+              "answer": "D",
+              "zh": "D：年輕鄰居幫她扛東西。",
+              "en": "D: a young neighbour carries her shopping."
+            },
+            {
+              "q": "Wer kann dank der Wohnsituation abends arbeiten?",
+              "answer": "C",
+              "zh": "C：外公外婆接孩子，他晚上能工作。",
+              "en": "C works evenings thanks to the grandparents."
+            },
+            {
+              "q": "Wer schätzt es, über den eigenen Tagesablauf frei zu bestimmen?",
+              "answer": "B",
+              "zh": "B：想什麼時候吃就什麼時候吃。",
+              "en": "B eats when she likes."
+            },
+            {
+              "q": "Wessen Familie hatte Sorgen wegen des Studiums?",
+              "answer": "A",
+              "zh": "A：爸媽擔心他開派對不念書。",
+              "en": "A's parents feared he wouldn't study."
+            },
+            {
+              "q": "Wer hat eine Lösung gegen das Alleinsein außerhalb der Wohnung gefunden?",
+              "answer": "B",
+              "zh": "B：靠合唱團對抗孤單。",
+              "en": "B's choir helps against loneliness."
+            },
+            {
+              "q": "Wer gibt in der Hausgemeinschaft selbst auch etwas?",
+              "answer": "D",
+              "zh": "D：她念故事給孩子聽。",
+              "en": "D reads to the children."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 2,
+          "ask": "en_gapped",
+          "text": "Kaffee — eine kurze Geschichte\nDer Legende nach entdeckte ein Hirte in Äthiopien den Kaffee, weil seine Ziegen nach dem Fressen bestimmter Beeren nicht schlafen wollten. (10) ＿＿＿＿＿ Von Arabien aus verbreitete sich das Getränk im 16. Jahrhundert ins Osmanische Reich. In Istanbul entstanden die ersten Kaffeehäuser. (11) ＿＿＿＿＿ Nach Europa kam der Kaffee über Venedig. Nicht alle waren begeistert: (12) ＿＿＿＿＿ In Wien eröffnete 1685 das erste Kaffeehaus der Stadt. (13) ＿＿＿＿＿ Lange blieb Kaffee teuer. Erst im 19. Jahrhundert wurde er durch große Plantagen in Südamerika für breite Schichten bezahlbar. (14) ＿＿＿＿＿ Heute trinken die Deutschen durchschnittlich rund 160 Liter Kaffee pro Jahr — mehr als Bier oder Mineralwasser. (15) ＿＿＿＿＿",
+          "bank": [
+            "Dort trafen sich Männer, um zu diskutieren, Schach zu spielen und Neuigkeiten auszutauschen.",
+            "Manche Geistliche nannten ihn das „Getränk des Teufels“.",
+            "Ob die Geschichte stimmt, weiß niemand, aber sicher ist, dass Kaffee zuerst im Jemen angebaut wurde.",
+            "Die Arbeit dort machten allerdings oft Sklaven unter schrecklichen Bedingungen.",
+            "Daraus entwickelte sich eine Kultur, die heute zum Weltkulturerbe gehört.",
+            "Ein wachsender Trend sind dabei kleine Röstereien, die Bohnen direkt von Bauern kaufen.",
+            "Deshalb trinken die Deutschen heute vor allem Tee.",
+            "Kaffee wurde damals nur als Medizin in Apotheken verkauft."
+          ],
+          "tr": {
+            "zh": "咖啡——簡史\n傳說衣索比亞一個牧羊人發現了咖啡，因為他的山羊吃了某種果子後不肯睡覺。（10）16 世紀，這種飲料從阿拉伯傳到鄂圖曼帝國。伊斯坦堡出現了最早的咖啡館。（11）咖啡經由威尼斯傳到歐洲。不是所有人都很熱衷：（12）1685 年，維也納第一家咖啡館開張。（13）咖啡長期都很貴。直到 19 世紀南美洲的大農園出現，一般人才喝得起。（14）今天德國人平均每年喝約 160 公升咖啡——比啤酒或礦泉水還多。（15）\nA 男人們在那裡聚會、辯論、下棋、交換消息。\nB 有些神職人員稱它為「魔鬼的飲料」。\nC 這故事是不是真的沒人知道，但可以確定咖啡最早是在葉門種植的。\nD 不過那裡的工作常常是由奴隸在可怕的條件下做的。\nE 由此發展出一種今天屬於世界文化遺產的文化。\nF 其中一個成長中的趨勢是直接向農民買豆子的小型烘焙坊。\nG 所以德國人今天主要喝茶。\nH 咖啡當時只在藥局當藥賣。",
+            "en": "Coffee — a short history\nLegend has it that a shepherd in Ethiopia discovered coffee because his goats wouldn't sleep after eating certain berries. (10) From Arabia the drink spread to the Ottoman Empire in the 16th century. The first coffee houses appeared in Istanbul. (11) Coffee reached Europe via Venice. Not everyone was enthusiastic: (12) In 1685 the city's first coffee house opened in Vienna. (13) For a long time coffee remained expensive. Only in the 19th century did large plantations in South America make it affordable for ordinary people. (14) Today Germans drink around 160 litres of coffee a year on average — more than beer or mineral water. (15)\nA There men met to debate, play chess and exchange news.\nB Some clergymen called it the \"devil's drink\".\nC Nobody knows whether the story is true, but it is certain that coffee was first grown in Yemen.\nD The work there, however, was often done by slaves in terrible conditions.\nE From this grew a culture that is now part of world heritage.\nF A growing trend is small roasteries that buy beans directly from farmers.\nG That's why Germans today mainly drink tea.\nH At the time coffee was only sold in pharmacies as medicine."
+          },
+          "questions": [
+            {
+              "q": "(10)",
+              "answer": "C",
+              "zh": "傳說之後：「沒人知道真假，但最早在葉門種」，接下一句「從阿拉伯」。",
+              "en": "After the legend: first grown in Yemen, then \"from Arabia\"."
+            },
+            {
+              "q": "(11)",
+              "answer": "A",
+              "zh": "最早的咖啡館：男人在那裡聚會下棋。",
+              "en": "The first coffee houses: men met there."
+            },
+            {
+              "q": "(12)",
+              "answer": "B",
+              "zh": "「不是所有人都很熱衷」：魔鬼的飲料。",
+              "en": "\"Not everyone was enthusiastic\": the devil's drink."
+            },
+            {
+              "q": "(13)",
+              "answer": "E",
+              "zh": "維也納咖啡館文化成為世界遺產。",
+              "en": "Vienna's coffee-house culture became world heritage."
+            },
+            {
+              "q": "(14)",
+              "answer": "D",
+              "zh": "南美大農園：工作常由奴隸做。",
+              "en": "The plantations: slave labour."
+            },
+            {
+              "q": "(15)",
+              "answer": "F",
+              "zh": "今天的趨勢：小型烘焙坊。G 喝茶、H 藥局都不符合。",
+              "en": "Today's trend: small roasteries; G and H don't fit."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Die Vier-Tage-Woche im Praxistest\nIn Großbritannien haben 2022 rund 60 Unternehmen ein halbes Jahr lang die Vier-Tage-Woche getestet — bei vollem Lohn. Die Ergebnisse überraschten selbst Skeptiker: Die Umsätze blieben stabil, in vielen Firmen stiegen sie sogar leicht. Gleichzeitig meldeten sich die Beschäftigten deutlich seltener krank, und weniger von ihnen kündigten.\nDer Grund liegt nach Ansicht der Forscher nicht darin, dass die Menschen an vier Tagen schneller arbeiteten. Vielmehr hätten die Firmen überflüssige Besprechungen gestrichen und Abläufe vereinfacht. „Viele Meetings waren reine Gewohnheit“, sagt die Organisationspsychologin Dr. Hanna Lenz.\nDoch das Modell passt nicht überall. In Krankenhäusern, Schulen oder im Handel muss jemand da sein, wenn Patienten, Schüler oder Kunden kommen. Dort würde ein freier Tag mehr Personal erfordern — und das ist in vielen Branchen schon heute knapp. Lenz rät deshalb zu flexiblen Lösungen: „Nicht jeder braucht denselben freien Tag. Entscheidend ist, dass die Arbeit neu organisiert wird, statt sie nur zu verdichten.“ Andernfalls drohe mehr Stress statt mehr Erholung.",
+          "tr": {
+            "zh": "每週工作四天的實際測試\n2022 年，英國約 60 家公司試行每週四天工作半年——薪水照領。結果連懷疑者都意外：營業額維持穩定，很多公司甚至略有成長。同時員工請病假明顯變少，離職的人也變少了。\n研究人員認為，原因不在於大家四天內做得比較快，而是公司刪掉了多餘的會議、簡化了流程。組織心理學家漢娜‧倫茲博士說：「很多會議純粹是習慣。」\n但這個模式不是到處都適用。醫院、學校或零售業在病人、學生或顧客來的時候必須有人在。在那裡多放一天假就需要更多人手——而很多行業現在就已經缺人。所以倫茲建議彈性的做法：「不是每個人都需要同一天休假。關鍵是重新安排工作，而不只是把工作塞得更緊。」否則壓力反而更大，休息沒變多。",
+            "en": "The four-day week put to the test\nIn 2022 around 60 companies in Britain tested the four-day week for six months — on full pay. The results surprised even sceptics: turnover remained stable and in many firms even rose slightly. At the same time employees called in sick much less often, and fewer of them resigned.\nAccording to the researchers, the reason is not that people worked faster on four days. Rather, the firms cut unnecessary meetings and simplified processes. \"Many meetings were pure habit,\" says organisational psychologist Dr Hanna Lenz.\nBut the model doesn't fit everywhere. In hospitals, schools or retail someone has to be there when patients, pupils or customers come. There a day off would require more staff — and in many sectors staff are already scarce. Lenz therefore advises flexible solutions: \"Not everyone needs the same day off. What matters is that work is reorganised instead of just being compressed.\" Otherwise there is a risk of more stress instead of more rest."
+          },
+          "questions": [
+            {
+              "q": "Wie verlief der Test in Großbritannien wirtschaftlich?",
+              "options": [
+                "Die Firmen verloren viel Geld.",
+                "Die Umsätze blieben gleich oder stiegen.",
+                "Die Löhne wurden gekürzt."
+              ],
+              "answer": 1,
+              "zh": "營業額穩定，甚至略有成長；薪水照領。",
+              "en": "Turnover stable or slightly up; full pay."
+            },
+            {
+              "q": "Was änderte sich bei den Beschäftigten?",
+              "options": [
+                "Sie waren seltener krank.",
+                "Sie arbeiteten länger.",
+                "Sie wechselten öfter die Stelle."
+              ],
+              "answer": 0,
+              "zh": "請病假明顯變少，離職也變少。",
+              "en": "Fewer sick days and resignations."
+            },
+            {
+              "q": "Warum funktionierte das Modell laut den Forschern?",
+              "options": [
+                "Die Menschen arbeiteten schneller.",
+                "Es wurden mehr Leute eingestellt.",
+                "Unnötige Besprechungen fielen weg."
+              ],
+              "answer": 2,
+              "zh": "不是做得比較快，而是刪掉多餘的會議。",
+              "en": "Not faster work but fewer meetings."
+            },
+            {
+              "q": "Was meint Dr. Lenz mit „reine Gewohnheit“?",
+              "options": [
+                "Meetings waren oft nicht nötig.",
+                "Die Mitarbeiter mochten Meetings.",
+                "Meetings fanden immer zur selben Zeit statt."
+              ],
+              "answer": 0,
+              "zh": "很多會議只是習慣，其實不需要。",
+              "en": "Many meetings were not really needed."
+            },
+            {
+              "q": "Warum ist das Modell in Schulen schwierig?",
+              "options": [
+                "Die Lehrer wollen es nicht.",
+                "Man bräuchte zusätzliches Personal.",
+                "Die Schüler hätten zu viel frei."
+              ],
+              "answer": 1,
+              "zh": "多放一天假需要更多人手，而現在就缺人。",
+              "en": "A day off would need more staff."
+            },
+            {
+              "q": "Was empfiehlt Dr. Lenz?",
+              "options": [
+                "dieselbe Arbeit in vier statt fünf Tagen zu erledigen",
+                "die Vier-Tage-Woche nur im Sommer",
+                "die Arbeit anders zu organisieren und flexible freie Tage"
+              ],
+              "answer": 2,
+              "zh": "重新安排工作、不必同一天休假；只把工作塞緊會更有壓力。",
+              "en": "Reorganise work, flexible days off; not just compress it."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_headings",
+          "bank": [
+            "Ich bin Lehrerin und sehe jeden Tag, dass Kinder ohne Frühstück in die Schule kommen. Ein kostenloses Schulessen wäre ein echter Fortschritt.",
+            "Fast Food ist billiger als frisches Gemüse. Wer wenig Geld hat, kann sich gesundes Essen oft gar nicht leisten.",
+            "Seit wir zu Hause gemeinsam kochen, essen meine Kinder sogar Brokkoli. Sie wollen probieren, was sie selbst gemacht haben.",
+            "Auf jeder Packung sollte groß und deutlich stehen, wie viel Zucker drin ist. Die kleinen Tabellen auf der Rückseite liest doch niemand.",
+            "Ich habe zehn Kilo abgenommen, ohne auf etwas zu verzichten — nur durch kleinere Teller.",
+            "Werbung für Süßigkeiten richtet sich gezielt an Kinder. Im Kinderfernsehen sollte sie verboten werden.",
+            "Bei uns in der Firma gibt es jetzt jeden Tag frisches Obst. Seitdem holt sich mittags kaum noch jemand Pommes."
+          ],
+          "tr": {
+            "zh": "關於「健康飲食」的意見\nA 我是老師，每天都看到孩子沒吃早餐就來上學。免費的學校餐點會是真正的進步。\nB 速食比新鮮蔬菜便宜。錢少的人常常根本吃不起健康的食物。\nC 自從我們在家一起做飯，我的孩子連花椰菜都吃。他們想嘗嘗自己做的東西。\nD 每個包裝上都應該大大清楚地寫出含多少糖。背面的小表格根本沒人看。\nE 我瘦了十公斤，什麼都沒戒——只是換了小盤子。\nF 糖果廣告專門鎖定兒童。兒童節目裡應該禁止。\nG 我們公司現在每天都有新鮮水果。從那之後，中午幾乎沒人去買薯條了。",
+            "en": "Opinions on \"healthy eating\"\nA I'm a teacher and see every day that children come to school without breakfast. Free school meals would be real progress.\nB Fast food is cheaper than fresh vegetables. People with little money often can't afford healthy food at all.\nC Since we've been cooking together at home, my children even eat broccoli. They want to try what they've made themselves.\nD Every packet should say in big clear letters how much sugar is in it. Nobody reads the little tables on the back.\nE I lost ten kilos without giving anything up — just by using smaller plates.\nF Sweet adverts deliberately target children. They should be banned in children's TV.\nG At our firm there is now fresh fruit every day. Since then hardly anyone gets chips at lunchtime."
+          },
+          "questions": [
+            {
+              "q": "Gesundes Essen ist eine Frage des Geldes",
+              "answer": "B",
+              "zh": "B：速食比蔬菜便宜。",
+              "en": "B: fast food is cheaper."
+            },
+            {
+              "q": "Klare Informationen für Käufer",
+              "answer": "D",
+              "zh": "D：包裝上清楚寫出含糖量。",
+              "en": "D: sugar content in big letters."
+            },
+            {
+              "q": "Selbst kochen weckt Neugier",
+              "answer": "C",
+              "zh": "C：孩子想嘗自己做的菜。",
+              "en": "C: children try what they made."
+            },
+            {
+              "q": "Schutz der Jüngsten vor Werbung",
+              "answer": "F",
+              "zh": "F：兒童節目禁止糖果廣告。",
+              "en": "F: ban sweet adverts for children."
+            },
+            {
+              "q": "Der Arbeitgeber hilft mit",
+              "answer": "G",
+              "zh": "G：公司每天提供水果。",
+              "en": "G: fruit at work."
+            },
+            {
+              "q": "Die Schule als Ort für eine Mahlzeit",
+              "answer": "A",
+              "zh": "A：免費學校餐點。E 沒有對應的標題。",
+              "en": "A: free school meals; E has no heading."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 5,
+          "ask": "en_titles",
+          "bank": [
+            "Kündigung",
+            "Haustiere",
+            "Schönheitsreparaturen",
+            "Mietzahlung",
+            "Untervermietung",
+            "Lärm",
+            "Kaution"
+          ],
+          "tr": {
+            "zh": "租約條款的標題：A 終止租約　B 寵物　C 室內粉刷修繕　D 繳租　E 轉租　F 噪音　G 押金",
+            "en": "Headings from the tenancy agreement: A Notice  B Pets  C Decorating repairs  D Paying the rent  E Subletting  F Noise  G Deposit"
+          },
+          "questions": [
+            {
+              "q": "§ 4 — Die Miete ist monatlich im Voraus, spätestens am dritten Werktag, auf das Konto des Vermieters zu überweisen.",
+              "answer": "D",
+              "zh": "每月預先、最晚第三個工作日匯款：繳租。",
+              "en": "Monthly in advance by the third working day: paying the rent."
+            },
+            {
+              "q": "§ 8 — Der Mieter darf die Wohnung oder Teile davon nur mit schriftlicher Erlaubnis des Vermieters an Dritte überlassen.",
+              "answer": "E",
+              "zh": "把房子給第三人用要書面同意：轉租。",
+              "en": "Letting to third parties needs permission: subletting."
+            },
+            {
+              "q": "§ 12 — Bei Einzug zahlt der Mieter drei Nettokaltmieten als Sicherheit. Der Betrag wird nach dem Auszug zurückgezahlt, wenn keine Schäden vorhanden sind.",
+              "answer": "G",
+              "zh": "入住付三個月租金當擔保：押金。A 終止租約不對。",
+              "en": "Three months' rent as security: the deposit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "en_people",
+          "mondai": 1,
+          "ask": "en_sections",
+          "bank": [
+            "Clara, 31, Architektin — Ich bin vor zwei Jahren aufs Land gezogen, in ein Dorf mit 400 Einwohnern. Ins Büro nach Frankfurt fahre ich nur noch zweimal pro Woche. Die Ruhe und der Garten sind wunderbar. Schwierig ist nur, dass der nächste Arzt 20 Kilometer entfernt ist. Ohne Auto geht hier nichts.",
+            "Ole, 27, Musiker — Ich brauche die Großstadt. Jeden Abend gibt es irgendwo ein Konzert, und hier treffe ich die Leute, mit denen ich Musik mache. Meine Wohnung ist winzig und laut, aber das stört mich nicht. Auf dem Land würde ich mich nach einer Woche langweilen.",
+            "Birgit, 58, Krankenschwester — Ich bin in der Stadt geboren und wollte nie weg. Inzwischen überlege ich aber, ob ich nach der Rente in die Kleinstadt meiner Schwester ziehe. Die Mieten hier sind so gestiegen, dass mir von meiner Rente kaum etwas bleiben würde.",
+            "Yusuf, 44, Landwirt — Den Hof habe ich von meinem Vater übernommen. Meine Kinder sagen schon heute, dass sie ihn nicht weiterführen wollen; sie studieren beide in Berlin. Das macht mich traurig, aber ich verstehe sie. Deshalb habe ich angefangen, Ferienwohnungen auf dem Hof zu vermieten."
+          ],
+          "tr": {
+            "zh": "A 克拉拉，31 歲，建築師：兩年前我搬到鄉下，一個 400 人的村子。我現在每週只去法蘭克福的辦公室兩次。寧靜和花園很美好。唯一困難的是最近的醫生在 20 公里外。這裡沒有車什麼都不行。\nB 歐勒，27 歲，音樂人：我需要大城市。每天晚上總有地方有音樂會，在這裡我能遇到一起玩音樂的人。我的公寓又小又吵，但我不在意。在鄉下我一週就會無聊。\nC 碧姬特，58 歲，護理師：我在城市出生，從沒想過離開。但現在我在考慮退休後搬到我姊姊住的小鎮。這裡房租漲到我的退休金幾乎會所剩無幾。\nD 尤素夫，44 歲，農夫：農場是從我父親那裡接手的。我的孩子現在就說他們不想接；他們兩個都在柏林念大學。這讓我難過，但我理解他們。所以我開始在農場出租度假公寓。",
+            "en": "A Clara, 31, architect — Two years ago I moved to the country, to a village of 400 people. I only go to the office in Frankfurt twice a week now. The peace and the garden are wonderful. The only difficulty is that the nearest doctor is 20 kilometres away. You can't do anything here without a car.\nB Ole, 27, musician — I need the big city. Every evening there's a concert somewhere, and here I meet the people I make music with. My flat is tiny and noisy, but that doesn't bother me. In the country I'd be bored after a week.\nC Birgit, 58, nurse — I was born in the city and never wanted to leave. But now I'm thinking about moving to my sister's small town after I retire. Rents here have risen so much that I'd have hardly anything left of my pension.\nD Yusuf, 44, farmer — I took over the farm from my father. My children already say they don't want to carry it on; they're both studying in Berlin. That makes me sad, but I understand them. That's why I've started letting holiday flats on the farm."
+          },
+          "questions": [
+            {
+              "q": "Wer arbeitet teilweise von zu Hause?",
+              "answer": "A",
+              "zh": "A：每週只去辦公室兩次。",
+              "en": "A goes to the office only twice a week."
+            },
+            {
+              "q": "Wer nimmt schlechte Wohnbedingungen in Kauf?",
+              "answer": "B",
+              "zh": "B：公寓又小又吵也不在意。",
+              "en": "B doesn't mind a tiny, noisy flat."
+            },
+            {
+              "q": "Wer denkt aus finanziellen Gründen über einen Umzug nach?",
+              "answer": "C",
+              "zh": "C：房租太高，考慮退休後搬走。",
+              "en": "C: rents too high for her pension."
+            },
+            {
+              "q": "Wer hat sich eine neue Einnahmequelle gesucht?",
+              "answer": "D",
+              "zh": "D：出租度假公寓。",
+              "en": "D lets holiday flats."
+            },
+            {
+              "q": "Wer findet die medizinische Versorgung schwierig?",
+              "answer": "A",
+              "zh": "A：最近的醫生在 20 公里外。",
+              "en": "A: the doctor is 20 km away."
+            },
+            {
+              "q": "Wer hat Verständnis für die Pläne der nächsten Generation?",
+              "answer": "D",
+              "zh": "D：孩子不接農場，他難過但理解。",
+              "en": "D understands his children."
+            },
+            {
+              "q": "Wer braucht für seinen Beruf das Stadtleben?",
+              "answer": "B",
+              "zh": "B：在城市遇到一起玩音樂的人、每晚有音樂會。",
+              "en": "B meets fellow musicians in the city."
+            },
+            {
+              "q": "Wer hat seine Meinung über den Wohnort geändert?",
+              "answer": "C",
+              "zh": "C：從沒想過離開，現在在考慮。",
+              "en": "C never wanted to leave, now she's thinking about it."
+            },
+            {
+              "q": "Wer kann sich ein Leben ohne Fahrzeug nicht vorstellen?",
+              "answer": "A",
+              "zh": "A：「這裡沒有車什麼都不行」。",
+              "en": "A: \"nothing works without a car\"."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 2,
+          "ask": "en_gapped",
+          "text": "Der Siegeszug der Jeans\nDie Jeans wurde 1873 in San Francisco erfunden, und zwar von einem Deutschen: Levi Strauss aus Franken. (10) ＿＿＿＿＿ Gemeinsam mit dem Schneider Jacob Davis ließ er sich Hosen mit Nieten an den Taschen patentieren. (11) ＿＿＿＿＿ Jahrzehntelang trugen vor allem Bergleute, Cowboys und Bauern die robuste Hose. (12) ＿＿＿＿＿ In den 1950er-Jahren änderte sich das: Filmstars wie James Dean trugen Jeans auf der Leinwand. (13) ＿＿＿＿＿ In manchen Schulen war die Hose deshalb sogar verboten. In der DDR waren Jeans aus dem Westen lange begehrte Schmuggelware. (14) ＿＿＿＿＿ Heute steht die Jeans in der Kritik: Für eine einzige Hose werden bis zu 7 000 Liter Wasser verbraucht. (15) ＿＿＿＿＿",
+          "bank": [
+            "Die Metallnieten sollten verhindern, dass die Taschen bei schwerer Arbeit rissen.",
+            "Wer ein Paar aus einem Westpaket bekam, konnte damit auf dem Schulhof angeben.",
+            "Er war mit 18 Jahren nach Amerika ausgewandert und verkaufte dort Stoffe an Goldgräber.",
+            "Einige Hersteller setzen deshalb auf neue Färbeverfahren und recycelte Baumwolle.",
+            "In der Stadt galt sie als Arbeitskleidung, die man in der Freizeit nicht anzog.",
+            "Deshalb trug Levi Strauss selbst nie eine Jeans.",
+            "Für viele Jugendliche wurde sie so zum Zeichen der Rebellion gegen die Eltern.",
+            "Die erste Jeans war rot und aus Seide."
+          ],
+          "tr": {
+            "zh": "牛仔褲的勝利\n牛仔褲 1873 年在舊金山被發明，而且是由一個德國人：來自法蘭肯的李維‧史特勞斯。（10）他和裁縫雅各‧戴維斯一起為口袋上有鉚釘的褲子申請了專利。（11）幾十年來，穿這種耐穿褲子的主要是礦工、牛仔和農夫。（12）1950 年代情況改變了：詹姆斯‧狄恩等電影明星在銀幕上穿牛仔褲。（13）所以有些學校甚至禁止穿這種褲子。在東德，西方的牛仔褲長期是搶手的走私貨。（14）今天牛仔褲受到批評：一條褲子要用掉多達 7000 公升的水。（15）\nA 金屬鉚釘是為了讓口袋在粗重工作時不會裂開。\nB 從西德包裹裡拿到一條的人，可以在學校操場上炫耀。\nC 他 18 歲移民到美國，在那裡賣布料給淘金客。\nD 因此有些廠商改用新的染色方法和回收棉。\nE 在城市裡它被當成工作服，休閒時不會穿。\nF 所以李維‧史特勞斯自己從來不穿牛仔褲。\nG 對很多年輕人來說，它就這樣成了反抗父母的象徵。\nH 第一條牛仔褲是紅色的絲綢做的。",
+            "en": "The triumph of jeans\nJeans were invented in San Francisco in 1873 — by a German: Levi Strauss from Franconia. (10) Together with the tailor Jacob Davis he patented trousers with rivets on the pockets. (11) For decades the tough trousers were worn mainly by miners, cowboys and farmers. (12) In the 1950s that changed: film stars like James Dean wore jeans on screen. (13) Some schools even banned the trousers for that reason. In the GDR, jeans from the West were for a long time coveted contraband. (14) Today jeans are criticised: up to 7,000 litres of water are used for a single pair. (15)\nA The metal rivets were meant to stop the pockets tearing during heavy work.\nB Anyone who got a pair in a parcel from the West could show off in the playground.\nC He had emigrated to America at 18 and sold cloth to gold-diggers there.\nD Some manufacturers are therefore turning to new dyeing methods and recycled cotton.\nE In town they were seen as work clothes you didn't wear in your free time.\nF That's why Levi Strauss himself never wore jeans.\nG For many young people they thus became a sign of rebellion against their parents.\nH The first jeans were red and made of silk."
+          },
+          "questions": [
+            {
+              "q": "(10)",
+              "answer": "C",
+              "zh": "介紹李維‧史特勞斯：18 歲移民、賣布給淘金客。",
+              "en": "Who Levi Strauss was."
+            },
+            {
+              "q": "(11)",
+              "answer": "A",
+              "zh": "專利的鉚釘：防止口袋裂開。",
+              "en": "The rivets: stop pockets tearing."
+            },
+            {
+              "q": "(12)",
+              "answer": "E",
+              "zh": "工人穿的褲子：在城市被當工作服。",
+              "en": "Workers' trousers: work clothes in town."
+            },
+            {
+              "q": "(13)",
+              "answer": "G",
+              "zh": "明星穿 → 年輕人反抗的象徵 → 學校禁止。",
+              "en": "Film stars → rebellion → schools banned them."
+            },
+            {
+              "q": "(14)",
+              "answer": "B",
+              "zh": "東德走私貨：拿到的人可以炫耀。",
+              "en": "GDR contraband: something to show off."
+            },
+            {
+              "q": "(15)",
+              "answer": "D",
+              "zh": "耗水的批評：廠商改用回收棉。F、H 不符合。",
+              "en": "Water criticism: recycled cotton; F and H don't fit."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Warum wir Dinge aufschieben\nFast jeder kennt es: Die Steuererklärung liegt seit Wochen auf dem Schreibtisch, doch statt sie zu erledigen, räumt man lieber die Küche auf. Psychologen nennen dieses Verhalten Prokrastination. Lange galt es als Zeichen von Faulheit oder schlechter Zeitplanung. Neuere Studien zeichnen ein anderes Bild.\n„Prokrastination ist vor allem ein Problem mit Gefühlen, nicht mit Zeit“, erklärt der Psychologe Dr. Martin Reuter von der Universität Münster. Menschen schöben vor allem Aufgaben auf, die unangenehme Gefühle auslösen — Langeweile, Unsicherheit oder Angst zu versagen. Das Aufräumen der Küche bringt dagegen sofort ein gutes Gefühl.\nRatschläge wie „Mach einfach einen Plan“ helfen deshalb oft wenig. Wirksamer sei es, die Aufgabe so klein zu machen, dass sie keine Angst mehr auslöst: nicht „die Steuererklärung machen“, sondern „fünf Minuten die Belege sortieren“. Wer erst einmal angefangen hat, macht meistens weiter. Auch Selbstvorwürfe seien kontraproduktiv, betont Reuter. Studierende, die sich nach einer verschobenen Prüfung selbst verziehen, schoben beim nächsten Mal deutlich weniger auf.",
+          "tr": {
+            "zh": "我們為什麼拖延\n幾乎每個人都有過這種經驗：報稅單在桌上放了好幾週，但你寧可去整理廚房也不去處理它。心理學家把這種行為叫做拖延。長期以來它被當成懶惰或時間規劃差的表現。較新的研究描繪出不同的樣貌。\n明斯特大學的心理學家馬丁‧羅伊特博士解釋：「拖延主要是情緒的問題，不是時間的問題。」人們主要會拖延那些引起不愉快情緒的任務——無聊、不確定，或害怕失敗。整理廚房反而能立刻帶來好心情。\n所以「訂個計畫就好」這種建議常常沒什麼用。比較有效的是把任務變小，小到不再引起恐懼：不是「報稅」，而是「花五分鐘整理收據」。一旦開始了，大多會繼續做下去。羅伊特強調，自責也會適得其反。在一次延後考試後原諒自己的大學生，下次拖延的情況明顯少了。",
+            "en": "Why we put things off\nAlmost everyone knows it: the tax return has been lying on the desk for weeks, but instead of doing it you'd rather tidy the kitchen. Psychologists call this behaviour procrastination. For a long time it was seen as a sign of laziness or poor time management. Newer studies paint a different picture.\n\"Procrastination is above all a problem with feelings, not with time,\" explains psychologist Dr Martin Reuter of the University of Münster. People mainly put off tasks that trigger unpleasant feelings — boredom, uncertainty or fear of failing. Tidying the kitchen, on the other hand, brings a good feeling straight away.\nAdvice like \"just make a plan\" therefore often helps little. It is more effective to make the task so small that it no longer causes fear: not \"do the tax return\" but \"sort the receipts for five minutes\". Once you've started, you usually carry on. Self-reproach is also counter-productive, Reuter stresses. Students who forgave themselves after putting off an exam procrastinated much less the next time."
+          },
+          "questions": [
+            {
+              "q": "Wie hat man Prokrastination früher erklärt?",
+              "options": [
+                "als Krankheit",
+                "als Faulheit oder schlechte Planung",
+                "als Zeichen von Intelligenz"
+              ],
+              "answer": 1,
+              "zh": "被當成懶惰或時間規劃差。",
+              "en": "Laziness or poor time management."
+            },
+            {
+              "q": "Laut Dr. Reuter ist Prokrastination vor allem…",
+              "options": [
+                "ein Zeitproblem.",
+                "ein Gefühlsproblem.",
+                "ein Problem junger Menschen."
+              ],
+              "answer": 1,
+              "zh": "「主要是情緒的問題，不是時間」。",
+              "en": "\"A problem with feelings, not time.\""
+            },
+            {
+              "q": "Warum räumt man lieber die Küche auf?",
+              "options": [
+                "Es macht sofort ein gutes Gefühl.",
+                "Die Küche ist wichtiger.",
+                "Man hat dafür mehr Zeit."
+              ],
+              "answer": 0,
+              "zh": "整理廚房立刻帶來好心情。",
+              "en": "It brings a good feeling straight away."
+            },
+            {
+              "q": "Was hilft laut dem Text gegen das Aufschieben?",
+              "options": [
+                "ein genauer Wochenplan",
+                "eine Belohnung am Ende",
+                "mit einem sehr kleinen Schritt anfangen"
+              ],
+              "answer": 2,
+              "zh": "把任務變小：「花五分鐘整理收據」。",
+              "en": "Make the task small: five minutes of sorting."
+            },
+            {
+              "q": "Was passiert meistens, wenn man angefangen hat?",
+              "options": [
+                "Man hört schnell wieder auf.",
+                "Man arbeitet weiter.",
+                "Man macht Fehler."
+              ],
+              "answer": 1,
+              "zh": "「一旦開始了，大多會繼續做下去」。",
+              "en": "\"Once you've started, you usually carry on.\""
+            },
+            {
+              "q": "Was zeigt die Studie mit den Studierenden?",
+              "options": [
+                "Sich selbst zu verzeihen hilft.",
+                "Strenge Regeln helfen.",
+                "Prüfungen sollte man verschieben."
+              ],
+              "answer": 0,
+              "zh": "原諒自己的學生下次拖延較少。",
+              "en": "Those who forgave themselves procrastinated less."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_headings",
+          "bank": [
+            "Im Urlaub schalte ich mein Diensthandy komplett aus. Mein Team weiß, dass ich zwei Wochen nicht erreichbar bin — und es klappt.",
+            "Ich habe zwei Jahre lang kaum Urlaub genommen, bis ich zusammengebrochen bin. Heute weiß ich: Pausen sind keine Schwäche.",
+            "Statt ans Meer zu fliegen, fahre ich mit dem Zug in die Berge. Die Anreise ist schon ein Teil der Erholung.",
+            "In unserer Firma darf jeder so viel Urlaub nehmen, wie er will. Komischerweise nehmen die Leute jetzt weniger als vorher.",
+            "Mit drei kleinen Kindern ist Urlaub für mich keine Erholung. Erholen kann ich mich erst, wenn ich wieder im Büro bin.",
+            "Für mich ist ein Urlaub nur gut, wenn ich etwas Neues lerne — einen Kochkurs in Italien oder Surfen in Portugal.",
+            "Ich bleibe im Urlaub am liebsten zu Hause, schlafe aus und entdecke meine eigene Stadt neu."
+          ],
+          "tr": {
+            "zh": "關於「休假」的意見\nA 休假時我把公務手機完全關掉。我的團隊知道我兩週聯絡不到——而且行得通。\nB 我有兩年幾乎沒休假，直到我累垮了。現在我知道：休息不是軟弱。\nC 我不搭飛機去海邊，而是搭火車去山上。旅程本身就是放鬆的一部分。\nD 我們公司每個人想休多少假就休多少。奇怪的是，大家現在休得比以前少。\nE 有三個小孩，休假對我來說不是休息。我要回到辦公室才能休息。\nF 對我來說，只有學到新東西的假期才是好假期——在義大利上烹飪課或在葡萄牙衝浪。\nG 休假時我最喜歡待在家，睡到自然醒，重新發現自己的城市。",
+            "en": "Opinions on \"holidays\"\nA On holiday I switch my work phone off completely. My team knows I can't be reached for two weeks — and it works.\nB For two years I hardly took any holiday, until I collapsed. Now I know: breaks are not a weakness.\nC Instead of flying to the sea, I take the train to the mountains. The journey is already part of the rest.\nD At our firm everyone may take as much holiday as they want. Strangely, people now take less than before.\nE With three small children, holiday is no rest for me. I can only relax once I'm back at the office.\nF For me a holiday is only good if I learn something new — a cooking course in Italy or surfing in Portugal.\nG On holiday I like best to stay at home, sleep in and rediscover my own city."
+          },
+          "questions": [
+            {
+              "q": "Eine unerwartete Wirkung von Freiheit",
+              "answer": "D",
+              "zh": "D：想休多少都可以，結果休得更少。",
+              "en": "D: unlimited leave, yet people take less."
+            },
+            {
+              "q": "Erholung zu Hause",
+              "answer": "G",
+              "zh": "G：待在家、重新發現城市。",
+              "en": "G: staying at home."
+            },
+            {
+              "q": "Aus einem Fehler gelernt",
+              "answer": "B",
+              "zh": "B：累垮之後才知道休息不是軟弱。",
+              "en": "B: learnt after collapsing."
+            },
+            {
+              "q": "Der Weg ist das Ziel",
+              "answer": "C",
+              "zh": "C：旅程本身就是放鬆。",
+              "en": "C: the journey is part of the rest."
+            },
+            {
+              "q": "Wirklich abschalten",
+              "answer": "A",
+              "zh": "A：公務手機完全關機。",
+              "en": "A: work phone off."
+            },
+            {
+              "q": "Familienurlaub ist anstrengend",
+              "answer": "E",
+              "zh": "E：三個小孩，休假不是休息。F 沒有對應的標題。",
+              "en": "E: small children; F has no heading."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 5,
+          "ask": "en_titles",
+          "bank": [
+            "Öffnungszeiten",
+            "Haftung",
+            "Mitgliedsbeitrag",
+            "Kündigung der Mitgliedschaft",
+            "Hausordnung",
+            "Probetraining",
+            "Persönliche Trainer"
+          ],
+          "tr": {
+            "zh": "健身房會員規章的標題：A 營業時間　B 責任　C 會費　D 終止會員資格　E 館內規則　F 試用訓練　G 私人教練",
+            "en": "Headings from the gym membership terms: A Opening hours  B Liability  C Membership fee  D Cancelling membership  E House rules  F Trial session  G Personal trainers"
+          },
+          "questions": [
+            {
+              "q": "§ 5 — Die Mitgliedschaft kann mit einer Frist von einem Monat zum Ende der Mindestlaufzeit schriftlich beendet werden.",
+              "answer": "D",
+              "zh": "一個月前書面終止：終止會員資格。",
+              "en": "Ending membership with a month's notice."
+            },
+            {
+              "q": "§ 6 — Für Wertsachen, die in den Umkleideräumen gestohlen werden, übernimmt das Studio keine Verantwortung.",
+              "answer": "B",
+              "zh": "更衣室失竊不負責：責任。",
+              "en": "No responsibility for theft: liability."
+            },
+            {
+              "q": "§ 2 — Vor Vertragsabschluss kann jeder Interessent einmal kostenlos und unverbindlich trainieren.",
+              "answer": "F",
+              "zh": "簽約前免費試一次：試用訓練。",
+              "en": "One free session before signing: trial."
             }
           ]
         }

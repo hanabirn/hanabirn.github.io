@@ -4,7 +4,7 @@
   "level": "B1",
   "order": 3,
   "n_options": 3,
-  "note": "German B1 reading rounds in the Goethe-Zertifikat B1 format, as the official Übungssatz (EXAMS.md): Teil 1 a blog Richtig / Falsch ×6, Teil 2 two press texts ×3, Teil 3 seven situations / ten ads, Teil 4 seven readers' letters Ja / Nein, Teil 5 house rules ×4 — 30 questions. Original texts. Drafted in tools/.mockups/de_b1.py.",
+  "note": "German B1 reading rounds in the Goethe-Zertifikat B1 format, as the official Übungssatz (EXAMS.md): Teil 1 a blog Richtig / Falsch ×6, Teil 2 two press texts ×3, Teil 3 seven situations / ten ads, Teil 4 seven readers' letters Ja / Nein, Teil 5 house rules ×4 — 30 questions. Original texts. Drafted in tools/.mockups/de_b1.py (rounds 2–3: de_b1_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -373,6 +373,750 @@
               "answer": 1,
               "zh": "腳踏車放地下室；房子後面是回收箱。",
               "en": "In the cellar; the bins are behind the house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_long",
+          "text": "Zwei Wochen ohne Handy — ein Blog von Mareike\nAngefangen hat alles mit einer Wette. Meine Schwester meinte, ich könne keine zwei Tage ohne mein Handy leben. Ich habe zwei Wochen daraus gemacht. Die ersten Tage waren schlimm: Ich habe ständig in meine Tasche gegriffen, obwohl gar nichts drin war. Einen Wecker musste ich mir extra kaufen. Nach etwa vier Tagen wurde es besser. Ich habe abends wieder Bücher gelesen und bin früher eingeschlafen. Schwierig war nur die Arbeit: Meine Kollegen schicken sich Informationen über eine Chat-Gruppe, und ich habe zweimal eine Besprechung verpasst. Jetzt habe ich mein Handy wieder, aber am Wochenende bleibt es in der Schublade.",
+          "tr": {
+            "zh": "兩週沒有手機——瑪萊克的部落格\n一切從一個賭注開始。我姊姊說我連兩天沒有手機都活不下去。我把它變成了兩週。頭幾天很糟：我一直伸手去摸包包，雖然裡面根本沒東西。我還得特地買一個鬧鐘。大約四天後情況好轉了。我晚上又開始看書，也比較早睡著。只有工作很麻煩：同事們用聊天群組傳消息，我錯過了兩次會議。現在我又有手機了，但週末它會待在抽屜裡。",
+            "en": "Two weeks without a phone — a blog by Mareike\nIt all started with a bet. My sister said I couldn't live two days without my phone. I made it two weeks. The first days were awful: I kept reaching into my bag even though there was nothing in it. I had to buy an alarm clock specially. After about four days it got better. I read books again in the evening and fell asleep earlier. Only work was difficult: my colleagues send each other information in a chat group, and I missed a meeting twice. Now I have my phone again, but at weekends it stays in the drawer."
+          },
+          "questions": [
+            {
+              "q": "Mareikes Schwester hat ihr die Idee gegeben.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "姊姊說她兩天都撐不過，她才打賭。",
+              "en": "Her sister's bet started it."
+            },
+            {
+              "q": "Mareike war zwei Tage ohne Handy.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "她做到了兩週；兩天是姊姊說的。",
+              "en": "Two weeks; two days was her sister's claim."
+            },
+            {
+              "q": "Am Anfang war es für Mareike leicht.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "「頭幾天很糟」。",
+              "en": "\"The first days were awful.\""
+            },
+            {
+              "q": "Ohne Handy hat sie abends mehr gelesen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "晚上又開始看書。",
+              "en": "She read books again in the evening."
+            },
+            {
+              "q": "Bei der Arbeit gab es keine Probleme.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "錯過了兩次會議。",
+              "en": "She missed two meetings."
+            },
+            {
+              "q": "Am Wochenende benutzt Mareike ihr Handy jetzt nicht.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "週末手機待在抽屜裡。",
+              "en": "It stays in the drawer at weekends."
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Essen retten\nIn Deutschland landen jedes Jahr Millionen Tonnen Lebensmittel im Müll. Eine Gruppe von Studierenden in Göttingen will das ändern. Jeden Abend holen sie bei Bäckereien und Supermärkten Brot, Obst und Gemüse ab, das am nächsten Tag nicht mehr verkauft werden darf. Die Lebensmittel bringen sie in einen Raum der Universität, wo jeder kostenlos etwas mitnehmen kann. „Die meisten Sachen sind völlig in Ordnung, nur nicht mehr ganz frisch“, sagt Organisatorin Lea Sommer. Die Geschäfte machen gern mit: Sie müssen weniger für die Müllabfuhr bezahlen. Probleme gibt es nur im Sommer, weil manche Produkte bei Hitze schnell schlecht werden.",
+          "tr": {
+            "zh": "拯救食物\n德國每年有數百萬噸食物被丟進垃圾桶。哥廷根一群大學生想改變這件事。他們每天晚上到麵包店和超市，收走隔天不能再賣的麵包、水果和蔬菜。他們把食物帶到大學的一個房間，任何人都可以免費拿。召集人莉亞‧索默說：「大部分東西完全沒問題，只是不那麼新鮮了。」商店都很樂意配合：這樣他們付的垃圾清運費比較少。只有夏天會有問題，因為有些東西在高溫下很快就壞了。",
+            "en": "Saving food\nEvery year in Germany millions of tonnes of food end up in the bin. A group of students in Göttingen wants to change that. Every evening they collect bread, fruit and vegetables from bakeries and supermarkets that may no longer be sold the next day. They take the food to a room at the university where anyone can take something for free. \"Most things are perfectly fine, just not quite fresh any more,\" says organiser Lea Sommer. The shops are happy to take part: they pay less for rubbish collection. There are only problems in summer, because some products go off quickly in the heat."
+          },
+          "questions": [
+            {
+              "q": "Die Studierenden holen Lebensmittel ab, die…",
+              "options": [
+                "schon kaputt sind.",
+                "die Geschäfte nicht mehr verkaufen dürfen.",
+                "sehr teuer sind."
+              ],
+              "answer": 1,
+              "zh": "收走「隔天不能再賣」的食物。",
+              "en": "Food that may no longer be sold."
+            },
+            {
+              "q": "Wer darf die Lebensmittel mitnehmen?",
+              "options": [
+                "nur Studierende",
+                "nur arme Familien",
+                "alle Leute"
+              ],
+              "answer": 2,
+              "zh": "「任何人都可以免費拿」。",
+              "en": "\"Anyone can take something.\""
+            },
+            {
+              "q": "Warum machen die Geschäfte mit?",
+              "options": [
+                "Sie sparen Geld.",
+                "Sie bekommen Werbung.",
+                "Die Stadt verlangt es."
+              ],
+              "answer": 0,
+              "zh": "垃圾清運費比較少。",
+              "en": "They pay less for rubbish collection."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Ein Dorf kauft seine Kneipe\nAls die letzte Gaststätte in Oberried schließen sollte, wollten die Einwohner das nicht akzeptieren. Über 200 der 900 Dorfbewohner haben Anteile gekauft — jeder mindestens 100 Euro — und die Kneipe gemeinsam übernommen. Ein Koch wurde fest angestellt, die Bedienung übernehmen Freiwillige aus dem Dorf. Inzwischen ist die „Dorflinde“ mehr als ein Restaurant: Montags treffen sich dort die Senioren zum Kartenspielen, freitags gibt es Musik. Gewinn macht die Kneipe kaum, aber das ist auch nicht das Ziel. „Wir wollten einen Ort, an dem man sich trifft“, sagt Bürgermeister Hans Keller.",
+          "tr": {
+            "zh": "一個村子買下自己的酒館\n奧伯里德最後一家餐館要關門時，居民不願接受。900 位村民中有 200 多人買了股份——每人至少 100 歐元——一起接手了這家酒館。他們正式聘了一位廚師，外場服務則由村裡的志工負責。現在「村菩提樹」不只是一家餐廳：星期一長者在那裡打牌，星期五有音樂。酒館幾乎不賺錢，但那也不是目的。村長漢斯‧凱勒說：「我們想要一個大家可以碰面的地方。」",
+            "en": "A village buys its pub\nWhen the last inn in Oberried was due to close, the residents wouldn't accept it. Over 200 of the 900 villagers bought shares — each at least 100 euros — and took over the pub together. A cook was employed permanently; volunteers from the village do the serving. Now the \"Dorflinde\" is more than a restaurant: on Mondays the pensioners meet there to play cards, on Fridays there is music. The pub hardly makes a profit, but that isn't the aim either. \"We wanted a place where people meet,\" says mayor Hans Keller."
+          },
+          "questions": [
+            {
+              "q": "Die Dorfbewohner haben die Kneipe…",
+              "options": [
+                "geschlossen.",
+                "gemeinsam gekauft.",
+                "an einen Koch verkauft."
+              ],
+              "answer": 1,
+              "zh": "200 多人買股份，一起接手。",
+              "en": "They bought it together with shares."
+            },
+            {
+              "q": "Wer bedient die Gäste?",
+              "options": [
+                "Leute aus dem Dorf ohne Bezahlung",
+                "der Koch",
+                "Studenten aus der Stadt"
+              ],
+              "answer": 0,
+              "zh": "外場由村裡的志工負責。",
+              "en": "Volunteers from the village."
+            },
+            {
+              "q": "Was ist das wichtigste Ziel der Kneipe?",
+              "options": [
+                "viel Geld verdienen",
+                "Touristen anziehen",
+                "ein Treffpunkt für das Dorf sein"
+              ],
+              "answer": 2,
+              "zh": "「我們想要一個大家可以碰面的地方」。",
+              "en": "\"A place where people meet.\""
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 3,
+          "ask": "en_people",
+          "bank": [
+            "Nachhilfe Chemie und Physik — Lehrerin im Ruhestand, auch für die Abiturvorbereitung. 25 € pro Stunde.",
+            "Wohnungsauflösung — Wir räumen Ihre Wohnung schnell und günstig, Möbel nehmen wir mit.",
+            "Tanzschule Rhythmus — Kurse für Paare: Walzer, Tango, Salsa. Einstieg jeden Monat möglich.",
+            "Kleiner Hund sucht Spaziergänger — Ich bin den ganzen Tag im Büro. Wer geht mittags mit Bello raus? 10 € pro Tag.",
+            "Fotokurs am Wochenende — Mit der eigenen Kamera bessere Bilder machen. Sa + So, 10–16 Uhr.",
+            "Stadtbibliothek — Neu: Sprachkurse auf DVD und online kostenlos für alle Mitglieder.",
+            "Zimmer frei — WG mit drei Studentinnen sucht Mitbewohnerin, 18 m², 380 € warm, ab sofort.",
+            "Gartenhilfe gesucht — Rentnerpaar sucht jemanden, der zweimal im Monat den Rasen mäht. Gute Bezahlung.",
+            "Laufschuhe-Test — Das Sportgeschäft Pulsschlag verleiht Laufschuhe eine Woche zum Testen.",
+            "Second-Hand-Brautkleider — Traumkleider zu kleinen Preisen. Termin nach Vereinbarung."
+          ],
+          "tr": {
+            "zh": "A 化學物理家教：退休老師，也幫忙準備高中畢業考。每小時 25 歐元。\nB 清空住宅：快速又便宜地幫您清空房子，家具我們帶走。\nC 律動舞蹈學校：雙人課程：華爾滋、探戈、騷莎。每月都可加入。\nD 小狗找遛狗人：我整天在辦公室。誰中午帶貝洛出去走走？每天 10 歐元。\nE 週末攝影課：用自己的相機拍出更好的照片。週六日 10–16 點。\nF 市立圖書館：新服務——會員免費使用 DVD 和線上語言課程。\nG 雅房出租：三位女大學生的合租公寓徵女室友，18 平方公尺，含暖氣 380 歐元，即可入住。\nH 徵園藝幫手：退休夫婦找人每月割兩次草。待遇好。\nI 跑鞋試穿：脈搏運動用品店出借跑鞋試穿一週。\nJ 二手婚紗：夢想中的禮服，小小的價格。請預約。",
+            "en": "A Chemistry and physics tutoring: retired teacher, also for A-level preparation. €25 an hour.\nB House clearance: we clear your flat quickly and cheaply and take the furniture.\nC Rhythm dance school: courses for couples — waltz, tango, salsa. Join any month.\nD Small dog seeks walker: I'm at the office all day. Who will take Bello out at lunchtime? €10 a day.\nE Weekend photo course: take better pictures with your own camera. Sat + Sun, 10–4.\nF Town library: new — language courses on DVD and online, free for all members.\nG Room free: flat share with three female students seeks a flatmate, 18 m², €380 incl. heating, available now.\nH Garden help wanted: retired couple seeks someone to mow the lawn twice a month. Good pay.\nI Running-shoe test: the Pulsschlag sports shop lends running shoes for a week to try.\nJ Second-hand wedding dresses: dream dresses at small prices. By appointment."
+          },
+          "questions": [
+            {
+              "q": "Herr Braun möchte mit seiner Frau ein neues Hobby anfangen, das sie zu zweit machen können.",
+              "answer": "C",
+              "zh": "夫妻倆一起的新嗜好：C 雙人舞蹈課。",
+              "en": "A hobby for two: the couples' dance course."
+            },
+            {
+              "q": "Svenja (19) beginnt im Oktober ihr Studium und sucht eine Unterkunft.",
+              "answer": "G",
+              "zh": "開學要找住處：G 合租公寓的房間。",
+              "en": "Somewhere to live: the room in the flat share."
+            },
+            {
+              "q": "Murat hat schlechte Noten in Physik und macht nächstes Jahr Abitur.",
+              "answer": "A",
+              "zh": "物理差、要考畢業考：A 家教。",
+              "en": "Physics and the Abitur: the tutoring."
+            },
+            {
+              "q": "Frau Nowak heiratet im Mai, hat aber nicht viel Geld.",
+              "answer": "J",
+              "zh": "要結婚、錢不多：J 二手婚紗。",
+              "en": "Wedding on a budget: the second-hand dresses."
+            },
+            {
+              "q": "Tobias arbeitet von zu Hause und möchte sich mittags bewegen und dabei etwas verdienen.",
+              "answer": "D",
+              "zh": "中午活動又能賺錢：D 遛狗。",
+              "en": "Moving at lunchtime and earning: walking the dog."
+            },
+            {
+              "q": "Die Kinder von Frau Lang müssen die Wohnung ihrer verstorbenen Mutter leer machen.",
+              "answer": "B",
+              "zh": "要清空過世母親的房子：B 清空住宅。",
+              "en": "Clearing their late mother's flat: the clearance service."
+            },
+            {
+              "q": "Anna möchte mit dem Joggen anfangen, weiß aber nicht, welche Schuhe sie braucht.",
+              "answer": "I",
+              "zh": "開始慢跑、不知道買哪雙：I 跑鞋試穿。",
+              "en": "Unsure which shoes: the shoe test."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_long",
+          "text": "Leserbriefe zum Thema: Sollte man in der Innenstadt Autos verbieten?\nKarin, 45: Ich wohne an einer großen Straße und kann nachts wegen des Verkehrs kaum schlafen. Eine Innenstadt ohne Autos wäre ein Traum.\nWerner, 67: Ich kann nicht mehr gut laufen. Ohne Auto komme ich nicht zum Arzt in der Altstadt. Ein Verbot wäre für mich eine Katastrophe.\nMelanie, 29: In Kopenhagen habe ich gesehen, wie schön eine Stadt ohne Autos sein kann. Die Menschen sitzen draußen, die Kinder spielen auf der Straße.\nStefan, 52: Ich habe ein Möbelgeschäft in der Fußgängerzone. Wenn meine Kunden nicht mehr vor dem Laden parken können, kaufen sie im Internet.\nJana, 34: Busse und Bahnen sind bei uns schon jetzt gut. Wenn die Autos weg sind, kann die Stadt noch mehr Fahrradwege bauen.\nDieter, 58: Ich fahre jeden Tag 40 Kilometer zur Arbeit. Einen Bus gibt es in meinem Dorf nur zweimal am Tag. Wie soll das gehen?\nLaura, 22: Die Luft in der Stadt ist so schlecht, dass meine kleine Schwester Asthma hat. Wir müssen etwas tun, und zwar sofort.",
+          "tr": {
+            "zh": "讀者來信：市中心應該禁止汽車嗎？\n卡琳，45 歲：我住在大馬路旁，晚上因為車流幾乎睡不著。沒有車的市中心會是夢想。\n維爾納，67 歲：我已經不太能走路了。沒有車我到不了老城的醫生那裡。禁車對我會是災難。\n梅蘭妮，29 歲：我在哥本哈根看過沒有車的城市可以多美。大家坐在戶外，孩子在街上玩。\n史蒂芬，52 歲：我在行人徒步區開家具店。如果客人不能在店門口停車，他們就會上網買。\n雅娜，34 歲：我們這裡的公車和電車已經很好了。如果車子沒了，城市可以蓋更多自行車道。\n迪特，58 歲：我每天開 40 公里去上班。我村子的公車一天只有兩班。這要怎麼辦？\n蘿拉，22 歲：市區空氣差到我妹妹得了氣喘。我們必須做點什麼，而且要馬上。",
+            "en": "Readers' letters: Should cars be banned from the city centre?\nKarin, 45: I live on a main road and can hardly sleep at night because of the traffic. A city centre without cars would be a dream.\nWerner, 67: I can't walk well any more. Without a car I can't get to the doctor in the old town. A ban would be a disaster for me.\nMelanie, 29: In Copenhagen I saw how lovely a city without cars can be. People sit outside, children play in the street.\nStefan, 52: I have a furniture shop in the pedestrian zone. If my customers can no longer park in front of the shop, they'll buy online.\nJana, 34: Buses and trains are already good here. If the cars are gone, the city can build even more cycle lanes.\nDieter, 58: I drive 40 kilometres to work every day. There are only two buses a day in my village. How is that supposed to work?\nLaura, 22: The air in the city is so bad that my little sister has asthma. We have to do something, and right now."
+          },
+          "questions": [
+            {
+              "q": "Ist Karin für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "沒有車的市中心「會是夢想」。",
+              "en": "It would be a dream."
+            },
+            {
+              "q": "Ist Werner für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "他需要開車去看醫生，禁車是災難。",
+              "en": "A disaster for him."
+            },
+            {
+              "q": "Ist Melanie für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "在哥本哈根看到無車城市很美。",
+              "en": "Copenhagen showed her how lovely it is."
+            },
+            {
+              "q": "Ist Stefan für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "客人不能停車就會上網買。",
+              "en": "His customers would buy online."
+            },
+            {
+              "q": "Ist Jana für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "可以蓋更多自行車道。",
+              "en": "More cycle lanes."
+            },
+            {
+              "q": "Ist Dieter für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "公車一天兩班，他沒辦法。",
+              "en": "Two buses a day: it can't work for him."
+            },
+            {
+              "q": "Ist Laura für ein Autoverbot?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "空氣差，「必須馬上做點什麼」。",
+              "en": "\"We have to do something right now.\""
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "text": "Benutzerordnung — Stadtbibliothek Neustadt\n1. Ausweis: Den Bibliotheksausweis bekommen Sie mit Ihrem Personalausweis an der Information. Für Kinder unter 14 Jahren muss ein Elternteil unterschreiben.\n2. Ausleihe: Bücher können Sie vier Wochen ausleihen, DVDs eine Woche. Sie können zweimal online verlängern, wenn niemand das Medium vorbestellt hat.\n3. Gebühren: Für jeden Tag zu spät bezahlen Sie 0,50 € pro Medium.\n4. Lesesaal: Im Lesesaal bitte nicht telefonieren. Getränke in geschlossenen Flaschen sind erlaubt, Essen nicht.",
+          "tr": {
+            "zh": "使用規則——新城市立圖書館\n1. 借書證：請帶身分證到服務台辦理借書證。14 歲以下兒童須由一位家長簽名。\n2. 借閱：書可借四週，DVD 一週。若沒有人預約，可上網續借兩次。\n3. 費用：每逾期一天，每件付 0.50 歐元。\n4. 閱覽室：閱覽室內請勿講電話。可以帶有蓋的瓶裝飲料，不可飲食。",
+            "en": "User rules — Neustadt town library\n1. Card: you get a library card at the information desk with your identity card. For children under 14 a parent must sign.\n2. Loans: books can be borrowed for four weeks, DVDs for one week. You can renew twice online if nobody has reserved the item.\n3. Fees: for each day late you pay €0.50 per item.\n4. Reading room: please don't make phone calls in the reading room. Drinks in closed bottles are allowed, food is not."
+          },
+          "questions": [
+            {
+              "q": "Ihr Sohn ist 12 und möchte einen Ausweis. Was brauchen Sie?",
+              "options": [
+                "nichts",
+                "die Unterschrift eines Elternteils",
+                "ein Foto"
+              ],
+              "answer": 1,
+              "zh": "14 歲以下要一位家長簽名。",
+              "en": "A parent's signature for under-14s."
+            },
+            {
+              "q": "Wie lange darf man eine DVD behalten?",
+              "options": [
+                "eine Woche",
+                "zwei Wochen",
+                "vier Wochen"
+              ],
+              "answer": 0,
+              "zh": "DVD 一週；四週是書。",
+              "en": "One week; four weeks is for books."
+            },
+            {
+              "q": "Wann kann man ein Buch nicht verlängern?",
+              "options": [
+                "wenn man schon einmal verlängert hat",
+                "wenn man nicht online ist",
+                "wenn eine andere Person es reserviert hat"
+              ],
+              "answer": 2,
+              "zh": "有人預約就不能續借；可續借兩次。",
+              "en": "Not if someone has reserved it; two renewals are allowed."
+            },
+            {
+              "q": "Was ist im Lesesaal erlaubt?",
+              "options": [
+                "ein Brötchen essen",
+                "Wasser aus einer Flasche trinken",
+                "kurz telefonieren"
+              ],
+              "answer": 1,
+              "zh": "可帶有蓋的瓶裝飲料；不可飲食、不可講電話。",
+              "en": "Drinks in closed bottles; no food, no calls."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_long",
+          "text": "Mein Ehrenamt im Tierheim — ein Blog von Jakob\nSeit einem Jahr arbeite ich jeden Samstag im Tierheim. Eigentlich wollte ich nur mit den Hunden spazieren gehen, aber man braucht mich überall: Ich putze Käfige, bringe Futter und helfe bei der Vermittlung. Am schönsten ist es, wenn ein Tier, das lange niemand wollte, endlich eine Familie findet. Letzten Monat ist Max, ein alter Schäferhund, nach drei Jahren ausgezogen — ich habe fast geweint. Bezahlt werde ich nicht, aber ich bekomme etwas anderes: Ich habe viele nette Leute kennengelernt. Ein eigenes Tier habe ich übrigens nicht, meine Wohnung ist zu klein.",
+          "tr": {
+            "zh": "我在動物收容所當志工——雅各的部落格\n一年來我每週六都在動物收容所工作。本來我只想帶狗散步，但到處都需要我：我清籠子、送飼料，也幫忙送養。最棒的是一隻很久沒人要的動物終於找到家。上個月，老牧羊犬馬克斯在三年後被領養了——我差點哭出來。我沒有拿薪水，但我得到別的東西：我認識了很多好人。順帶一提，我自己沒有養寵物，我的公寓太小了。",
+            "en": "My volunteer work at the animal shelter — a blog by Jakob\nFor a year I've been working at the animal shelter every Saturday. Actually I only wanted to walk the dogs, but they need me everywhere: I clean cages, bring food and help with rehoming. The best thing is when an animal nobody wanted for a long time finally finds a family. Last month Max, an old German shepherd, left after three years — I almost cried. I'm not paid, but I get something else: I've met lots of nice people. By the way, I don't have a pet of my own; my flat is too small."
+          },
+          "questions": [
+            {
+              "q": "Jakob arbeitet einmal pro Woche im Tierheim.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "每週六去。",
+              "en": "Every Saturday."
+            },
+            {
+              "q": "Jakob geht im Tierheim nur mit Hunden spazieren.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "他清籠子、送飼料、幫忙送養。",
+              "en": "He cleans, feeds and helps with rehoming too."
+            },
+            {
+              "q": "Max hat drei Jahre im Tierheim gelebt.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「三年後被領養」。",
+              "en": "\"Left after three years.\""
+            },
+            {
+              "q": "Jakob war traurig, dass Max ein neues Zuhause gefunden hat.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "他是感動得差點哭，這是最棒的時刻。",
+              "en": "He was moved; it is the best moment for him."
+            },
+            {
+              "q": "Für seine Arbeit bekommt Jakob kein Geld.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「我沒有拿薪水」。",
+              "en": "\"I'm not paid.\""
+            },
+            {
+              "q": "Jakob hat zu Hause einen Hund.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "「我自己沒有養寵物」。",
+              "en": "\"I don't have a pet of my own.\""
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Lernen im Altenheim\nIm Seniorenheim „Abendsonne“ in Erfurt sitzen seit einem Jahr jeden Dienstag Kinder und alte Menschen an einem Tisch. Die Grundschule nebenan schickt eine Klasse, die Kinder lesen den Senioren vor, und die Senioren erzählen, wie das Leben früher war. „Viele unserer Bewohner bekommen selten Besuch“, sagt Pflegeleiterin Ines Hartmann. „Seit die Kinder kommen, lachen sie viel mehr.“ Auch die Lehrerin ist zufrieden: Die Kinder lesen besser, weil sie vor Publikum üben. Ein Problem ist der Platz: Der Raum ist zu klein, deshalb kann immer nur die Hälfte der Klasse mitkommen.",
+          "tr": {
+            "zh": "在養老院學習\n一年來，艾爾福特「夕陽」養老院每週二都有孩子和老人坐在同一張桌子旁。隔壁的小學派一個班過來，孩子們念書給長者聽，長者則講以前的生活是怎樣的。照護主任伊妮絲‧哈特曼說：「我們很多住民很少有人來看。自從孩子們來了，他們笑得多了。」老師也很滿意：孩子們在觀眾面前練習，所以念得更好了。唯一的問題是空間：房間太小，所以每次只有半個班能來。",
+            "en": "Learning at the old people's home\nFor a year, children and old people have sat at one table every Tuesday at the \"Abendsonne\" care home in Erfurt. The primary school next door sends a class; the children read to the residents, and the residents tell them what life used to be like. \"Many of our residents rarely get visitors,\" says head of care Ines Hartmann. \"Since the children started coming, they laugh much more.\" The teacher is happy too: the children read better because they practise in front of an audience. One problem is space: the room is too small, so only half the class can come at a time."
+          },
+          "questions": [
+            {
+              "q": "Was machen die Kinder im Altenheim?",
+              "options": [
+                "Sie helfen beim Essen.",
+                "Sie lesen den Senioren etwas vor.",
+                "Sie machen dort Hausaufgaben."
+              ],
+              "answer": 1,
+              "zh": "孩子們念書給長者聽。",
+              "en": "They read to the residents."
+            },
+            {
+              "q": "Was hat sich für die Senioren verändert?",
+              "options": [
+                "Sie sind fröhlicher.",
+                "Sie gehen öfter spazieren.",
+                "Sie bekommen mehr Besuch von ihrer Familie."
+              ],
+              "answer": 0,
+              "zh": "「他們笑得多了」；家人來訪沒有變。",
+              "en": "\"They laugh much more\"; family visits haven't changed."
+            },
+            {
+              "q": "Warum kommt nicht die ganze Klasse?",
+              "options": [
+                "Die Senioren möchten es so.",
+                "Die Lehrerin hat keine Zeit.",
+                "Der Raum ist zu klein."
+              ],
+              "answer": 2,
+              "zh": "房間太小，每次只能來一半。",
+              "en": "The room is too small."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Reparieren statt wegwerfen\nEin kaputter Toaster, ein Radio ohne Ton, eine Hose mit Loch: Im Repair-Café in Kiel bekommen solche Dinge eine zweite Chance. Einmal im Monat treffen sich dort Menschen, die gern reparieren, und Menschen, die etwas Kaputtes mitbringen. Die Reparatur ist kostenlos, nur Ersatzteile muss man selbst bezahlen. Wichtig ist den Organisatoren, dass die Besucher nicht nur warten, sondern mitarbeiten und dabei lernen. „Etwa zwei von drei Geräten können wir retten“, erzählt Elektriker Bernd Ohlsen, 66. Für ihn ist das Repair-Café auch ein Mittel gegen die Langeweile im Ruhestand.",
+          "tr": {
+            "zh": "修理而不是丟掉\n壞掉的烤麵包機、沒聲音的收音機、破洞的褲子：在基爾的修理咖啡館，這些東西有第二次機會。每個月一次，喜歡修東西的人和帶著壞東西來的人在那裡碰面。修理是免費的，只有零件要自己付錢。主辦人很重視一件事：來的人不只是等，而是一起動手、邊做邊學。66 歲的電工伯恩德‧歐爾森說：「大約三台裡我們能救回兩台。」對他來說，修理咖啡館也是對抗退休無聊的方法。",
+            "en": "Repair instead of throwing away\nA broken toaster, a radio with no sound, trousers with a hole: at the Repair Café in Kiel such things get a second chance. Once a month people who like repairing things meet people who bring something broken. The repair is free; only spare parts must be paid for. The organisers think it important that visitors don't just wait but work along and learn. \"We can save about two out of three devices,\" says electrician Bernd Ohlsen, 66. For him the Repair Café is also a remedy for boredom in retirement."
+          },
+          "questions": [
+            {
+              "q": "Was muss man im Repair-Café bezahlen?",
+              "options": [
+                "die Reparatur",
+                "den Eintritt",
+                "neue Teile"
+              ],
+              "answer": 2,
+              "zh": "修理免費，零件自己付。",
+              "en": "Repairs are free; spare parts are not."
+            },
+            {
+              "q": "Was sollen die Besucher tun?",
+              "options": [
+                "bei der Reparatur helfen",
+                "draußen warten",
+                "Kuchen mitbringen"
+              ],
+              "answer": 0,
+              "zh": "「不只是等，而是一起動手」。",
+              "en": "\"Not just wait but work along.\""
+            },
+            {
+              "q": "Warum macht Herr Ohlsen mit?",
+              "options": [
+                "Er verdient damit Geld.",
+                "Er möchte im Ruhestand etwas zu tun haben.",
+                "Er lernt dort reparieren."
+              ],
+              "answer": 1,
+              "zh": "對抗退休的無聊。",
+              "en": "Against boredom in retirement."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 3,
+          "ask": "en_people",
+          "bank": [
+            "Babyschwimmen — Für Babys ab 4 Monaten mit Mama oder Papa. Donnerstags 10 Uhr, Hallenbad Nord.",
+            "Umzugskartons gratis — Nach unserem Umzug haben wir 30 Kartons übrig. Bitte selbst abholen.",
+            "Deutschkurs B2 am Abend — Zur Vorbereitung auf die Prüfung, Mo + Mi 18:30–20:45.",
+            "Gitarrenunterricht — Erfahrener Musiker unterrichtet Anfänger und Fortgeschrittene, auch bei Ihnen zu Hause.",
+            "Wanderwochenende im Harz — Für Singles zwischen 30 und 45. Übernachtung im Gasthof, Anmeldung bis 10. Mai.",
+            "Computerkurs für Senioren — Fotos verschicken, Videoanrufe, Online-Banking. Kleine Gruppen, viel Geduld.",
+            "Reparaturservice für Handys und Tablets — Displaywechsel in 30 Minuten, ohne Termin.",
+            "Vegetarischer Kochabend — Wir kochen zusammen ein Menü ohne Fleisch. Freitag, 19 Uhr, 25 €.",
+            "Hausaufgabenhilfe — Studentinnen helfen Grundschulkindern nach der Schule, montags bis donnerstags.",
+            "Nachmieter gesucht — 3-Zimmer-Wohnung mit Garten, ideal für Familien, ab 1. Juli."
+          ],
+          "tr": {
+            "zh": "A 嬰兒游泳：4 個月以上嬰兒由爸爸或媽媽陪同。每週四 10 點，北區室內泳池。\nB 免費搬家紙箱：我們搬完家剩 30 個紙箱。請自取。\nC 晚間德文 B2 課：準備考試，週一、三 18:30–20:45。\nD 吉他課：有經驗的樂手教初學者和進階者，也可到府。\nE 哈茨山健行週末：給 30 到 45 歲的單身者。住鄉村旅館，5 月 10 日前報名。\nF 長者電腦課：傳照片、視訊、網路銀行。小班、很有耐心。\nG 手機平板維修：30 分鐘換螢幕，不必預約。\nH 素食烹飪之夜：一起煮一套沒有肉的餐。星期五 19 點，25 歐元。\nI 課業輔導：女大學生在放學後幫小學生，星期一到四。\nJ 徵接手房客：三房附花園公寓，適合家庭，7 月 1 日起。",
+            "en": "A Baby swimming: for babies from 4 months with mum or dad. Thursdays 10 a.m., North indoor pool.\nB Free moving boxes: after our move we have 30 boxes left. Please collect.\nC Evening German course B2: exam preparation, Mon + Wed 6.30–8.45 p.m.\nD Guitar lessons: an experienced musician teaches beginners and advanced players, also at your home.\nE Hiking weekend in the Harz: for singles aged 30–45. Overnight in an inn, register by 10 May.\nF Computer course for seniors: sending photos, video calls, online banking. Small groups, lots of patience.\nG Repair service for phones and tablets: screen replacement in 30 minutes, no appointment.\nH Vegetarian cooking evening: we cook a meat-free menu together. Friday 7 p.m., €25.\nI Homework help: female students help primary-school children after school, Monday to Thursday.\nJ New tenant wanted: 3-room flat with garden, ideal for families, from 1 July."
+          },
+          "questions": [
+            {
+              "q": "Familie Peters wird größer und braucht eine Wohnung mit mehr Platz.",
+              "answer": "J",
+              "zh": "家庭要更大的房子：J 三房附花園。",
+              "en": "More space for the family: the 3-room flat."
+            },
+            {
+              "q": "Herr Okafor arbeitet tagsüber und möchte sich auf die Deutschprüfung vorbereiten.",
+              "answer": "C",
+              "zh": "白天上班、準備德文考試：C 晚間 B2 課。",
+              "en": "Working by day, exam preparation: the evening course."
+            },
+            {
+              "q": "Frau Wolf (74) möchte ihren Enkeln in Australien Fotos schicken.",
+              "answer": "F",
+              "zh": "74 歲想傳照片給孫子：F 長者電腦課。",
+              "en": "Sending photos at 74: the seniors' computer course."
+            },
+            {
+              "q": "Martina ist 38, lebt allein und möchte in der Natur neue Leute treffen.",
+              "answer": "E",
+              "zh": "38 歲單身、在大自然認識人：E 單身健行週末。",
+              "en": "Single, 38, outdoors: the hiking weekend."
+            },
+            {
+              "q": "Paul ist auf seinem Handy ausgerutscht — jetzt ist der Bildschirm kaputt.",
+              "answer": "G",
+              "zh": "螢幕壞了：G 換螢幕。",
+              "en": "A broken screen: the repair service."
+            },
+            {
+              "q": "Lisas Baby ist ein halbes Jahr alt. Sie sucht eine Aktivität, die sie zusammen machen können.",
+              "answer": "A",
+              "zh": "半歲的寶寶、一起做的活動：A 嬰兒游泳（4 個月以上）。",
+              "en": "A six-month-old: baby swimming (from 4 months)."
+            },
+            {
+              "q": "Thomas zieht nächste Woche um und hat noch nichts eingepackt.",
+              "answer": "B",
+              "zh": "下週搬家：B 免費紙箱。",
+              "en": "Moving next week: the free boxes."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_long",
+          "text": "Leserbriefe zum Thema: Sollen Kinder schon in der Grundschule ein Handy haben?\nSabine, 41: Meine Tochter fährt allein mit dem Bus zur Schule. Mit dem Handy kann sie mich anrufen, wenn etwas passiert. Das beruhigt mich.\nKlaus, 50: Kinder sollen draußen spielen und nicht auf einen Bildschirm schauen. Ein Handy brauchen sie frühestens mit zwölf.\nAylin, 36: In der Klasse meines Sohnes haben schon alle ein Handy. Ohne wäre er ein Außenseiter. Natürlich nur mit klaren Regeln.\nHerbert, 69: Wir hatten früher auch keins und sind gut groß geworden. Ich verstehe die Aufregung nicht.\nNina, 28: Ich bin Grundschullehrerin. Seit die Kinder Handys haben, gibt es mehr Streit in den Chat-Gruppen — und den bringen sie mit in die Klasse.\nMarkus, 44: Es gibt einfache Handys nur zum Telefonieren, ohne Internet. So eins finde ich für Grundschulkinder sinnvoll.\nPetra, 55: Ich arbeite als Kinderärztin. Viele Kinder schlafen schlecht, weil sie abends noch spielen. Ich rate Eltern, damit zu warten.",
+          "tr": {
+            "zh": "讀者來信：小學生就該有手機嗎？\n莎賓娜，41 歲：我女兒自己搭公車上學。有手機的話，出事時她可以打給我。這讓我安心。\n克勞斯，50 歲：孩子應該到外面玩，而不是盯著螢幕。最早十二歲才需要手機。\n艾琳，36 歲：我兒子班上大家都已經有手機了。沒有的話他會被排擠。當然要有清楚的規則。\n赫伯特，69 歲：我們以前也沒有，還不是好好長大了。我不懂大家在緊張什麼。\n妮娜，28 歲：我是小學老師。自從孩子們有了手機，聊天群組裡的吵架變多了——而且他們會把吵架帶進教室。\n馬庫斯，44 歲：有那種只能打電話、不能上網的簡單手機。我覺得給小學生用這種很合理。\n佩特拉，55 歲：我是兒科醫師。很多孩子睡不好，因為晚上還在玩。我建議家長等一等再說。",
+            "en": "Readers' letters: Should children have a mobile phone at primary school?\nSabine, 41: My daughter takes the bus to school on her own. With a phone she can call me if something happens. That reassures me.\nKlaus, 50: Children should play outside and not stare at a screen. They need a phone at twelve at the earliest.\nAylin, 36: Everyone in my son's class already has a phone. Without one he'd be an outsider. Only with clear rules, of course.\nHerbert, 69: We didn't have one either and grew up fine. I don't understand the fuss.\nNina, 28: I'm a primary teacher. Since the children got phones, there are more arguments in the chat groups — and they bring them into the classroom.\nMarkus, 44: There are simple phones just for calling, without internet. I think one of those makes sense for primary-school children.\nPetra, 55: I'm a paediatrician. Many children sleep badly because they're still playing in the evening. I advise parents to wait."
+          },
+          "questions": [
+            {
+              "q": "Ist Sabine für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "有手機女兒能打給她，讓她安心。",
+              "en": "It reassures her."
+            },
+            {
+              "q": "Ist Klaus für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "最早十二歲。",
+              "en": "Twelve at the earliest."
+            },
+            {
+              "q": "Ist Aylin für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "沒有會被排擠，但要有規則。",
+              "en": "Without one he'd be left out."
+            },
+            {
+              "q": "Ist Herbert für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "以前沒有也好好長大。",
+              "en": "They grew up fine without."
+            },
+            {
+              "q": "Ist Nina für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "手機帶來更多吵架。",
+              "en": "Phones bring more arguments."
+            },
+            {
+              "q": "Ist Markus für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 0,
+              "zh": "只能打電話的簡單手機很合理。",
+              "en": "A simple phone makes sense."
+            },
+            {
+              "q": "Ist Petra für ein Handy für Grundschulkinder?",
+              "options": [
+                "Ja",
+                "Nein"
+              ],
+              "answer": 1,
+              "zh": "她建議家長等一等。",
+              "en": "She advises waiting."
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "text": "Teilnahmebedingungen — Volkshochschule Lindau\n1. Anmeldung: Melden Sie sich online oder im Büro an. Die Anmeldung gilt erst, wenn die Kursgebühr bezahlt ist.\n2. Abmeldung: Bis eine Woche vor Kursbeginn bekommen Sie das ganze Geld zurück. Danach erstatten wir nichts mehr, außer bei Krankheit mit ärztlichem Attest.\n3. Ermäßigung: Schüler, Studierende und Rentner zahlen 20 % weniger. Bitte bringen Sie einen Nachweis mit.\n4. Ausfall: Wenn weniger als sechs Personen angemeldet sind, findet der Kurs nicht statt. Sie werden dann per E-Mail informiert.",
+          "tr": {
+            "zh": "參加須知——林道社區大學\n1. 報名：請上網或到辦公室報名。繳清學費後報名才算成立。\n2. 取消：開課前一週以前取消可全額退費。之後不再退費，除非生病並附醫師證明。\n3. 優惠：學生、大學生和退休人士少付 20%。請帶證明來。\n4. 停開：報名不足六人時，課程不開。我們會用電子郵件通知您。",
+            "en": "Terms of participation — Lindau adult education centre\n1. Registration: register online or at the office. Registration only counts once the course fee has been paid.\n2. Cancellation: up to one week before the course starts you get all your money back. After that we refund nothing, except for illness with a doctor's certificate.\n3. Reduction: pupils, students and pensioners pay 20% less. Please bring proof.\n4. Cancellation of courses: if fewer than six people have registered, the course does not take place. You will be informed by e-mail."
+          },
+          "questions": [
+            {
+              "q": "Wann ist Ihre Anmeldung gültig?",
+              "options": [
+                "wenn Sie das Formular abgeben",
+                "wenn Sie bezahlt haben",
+                "wenn der Kurs beginnt"
+              ],
+              "answer": 1,
+              "zh": "繳清學費後才算成立。",
+              "en": "Once the fee is paid."
+            },
+            {
+              "q": "Sie melden sich drei Tage vor Kursbeginn ab, weil Sie krank sind. Was bekommen Sie zurück?",
+              "options": [
+                "nichts",
+                "die Hälfte",
+                "das Geld, wenn Sie ein Attest haben"
+              ],
+              "answer": 2,
+              "zh": "一週內不退費，生病附醫師證明除外。",
+              "en": "Nothing, unless you are ill with a certificate."
+            },
+            {
+              "q": "Wer bezahlt weniger?",
+              "options": [
+                "eine Rentnerin mit Nachweis",
+                "alle Einwohner von Lindau",
+                "wer online bucht"
+              ],
+              "answer": 0,
+              "zh": "退休人士少付 20%，要帶證明。",
+              "en": "Pensioners pay 20% less with proof."
+            },
+            {
+              "q": "Was passiert, wenn sich nur vier Leute anmelden?",
+              "options": [
+                "Der Kurs wird kürzer.",
+                "Der Kurs fällt aus.",
+                "Der Kurs wird teurer."
+              ],
+              "answer": 1,
+              "zh": "不足六人就不開課。",
+              "en": "Fewer than six: no course."
             }
           ]
         }

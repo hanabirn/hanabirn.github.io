@@ -4,7 +4,7 @@
   "level": "A1",
   "order": 1,
   "n_options": 3,
-  "note": "German A1 listening in the Goethe-Zertifikat A1 format (owner's plan 2026-10-30): Teil 1 six dialogues (three options, twice), Teil 2 four announcements (Richtig / Falsch, once), Teil 3 five phone messages (three options, twice); 15 questions, all en_talk. Original texts. Drafted in tools/.mockups/de_a1_ls.py.",
+  "note": "German A1 listening in the Goethe-Zertifikat A1 format (owner's plan 2026-10-30): Teil 1 six dialogues (three options, twice), Teil 2 four announcements (Richtig / Falsch, once), Teil 3 five phone messages (three options, twice); 15 questions, all en_talk. Original texts. Drafted in tools/.mockups/de_a1_ls.py (rounds 2–3: de_a1_r23.py).",
   "types": [
     "en_talk"
   ],
@@ -588,6 +588,1146 @@
           "explain": {
             "zh": "生病了，今天不能來；改提議星期五。",
             "en": "She's ill and not coming today; she suggests Friday."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Wie viele Äpfel möchten Sie?",
+              "zh": "您要幾個蘋果？",
+              "en": "How many apples would you like?"
+            },
+            {
+              "who": "F",
+              "s": "Ein Kilo, bitte. Und drei Bananen.",
+              "zh": "一公斤，謝謝。還有三根香蕉。",
+              "en": "A kilo, please. And three bananas."
+            }
+          ],
+          "ask": {
+            "s": "Was kauft die Frau?",
+            "zh": "女的買什麼？",
+            "en": "What does the woman buy?"
+          },
+          "options": [
+            {
+              "t": "nur Äpfel"
+            },
+            {
+              "t": "Äpfel und Bananen"
+            },
+            {
+              "t": "Bananen und Orangen"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "一公斤蘋果和三根香蕉。",
+            "en": "A kilo of apples and three bananas."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Wann beginnt der Film?",
+              "zh": "電影幾點開始？",
+              "en": "When does the film start?"
+            },
+            {
+              "who": "M",
+              "s": "Um Viertel nach acht. Wir treffen uns um acht vor dem Kino.",
+              "zh": "八點十五分。我們八點在電影院前面見。",
+              "en": "At quarter past eight. We're meeting at eight in front of the cinema."
+            }
+          ],
+          "ask": {
+            "s": "Wann beginnt der Film?",
+            "zh": "電影幾點開始？",
+            "en": "When does the film start?"
+          },
+          "options": [
+            {
+              "t": "um 8.00 Uhr"
+            },
+            {
+              "t": "um 8.15 Uhr"
+            },
+            {
+              "t": "um 8.45 Uhr"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「Viertel nach acht」＝8:15；8 點是見面時間。",
+            "en": "\"Viertel nach acht\" is 8.15; 8.00 is when they meet."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Wo sind meine Schlüssel? Auf dem Tisch sind sie nicht.",
+              "zh": "我的鑰匙在哪？不在桌上。",
+              "en": "Where are my keys? They aren't on the table."
+            },
+            {
+              "who": "F",
+              "s": "Schau mal in deiner Jacke. Ach nein, da sind sie ja — neben dem Fernseher.",
+              "zh": "看看你外套裡。啊不對，在那裡——在電視旁邊。",
+              "en": "Have a look in your jacket. Oh no, there they are — next to the TV."
+            }
+          ],
+          "ask": {
+            "s": "Wo sind die Schlüssel?",
+            "zh": "鑰匙在哪裡？",
+            "en": "Where are the keys?"
+          },
+          "options": [
+            {
+              "t": "auf dem Tisch"
+            },
+            {
+              "t": "in der Jacke"
+            },
+            {
+              "t": "neben dem Fernseher"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "最後找到在電視旁邊。",
+            "en": "In the end: next to the TV."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Was möchtest du trinken? Tee oder Kaffee?",
+              "zh": "你想喝什麼？茶還是咖啡？",
+              "en": "What would you like to drink? Tea or coffee?"
+            },
+            {
+              "who": "M",
+              "s": "Keinen Kaffee, danke. Ein Wasser, bitte.",
+              "zh": "不要咖啡，謝謝。給我一杯水。",
+              "en": "No coffee, thanks. A water, please."
+            }
+          ],
+          "ask": {
+            "s": "Was trinkt der Mann?",
+            "zh": "男的喝什麼？",
+            "en": "What does the man drink?"
+          },
+          "options": [
+            {
+              "t": "Wasser"
+            },
+            {
+              "t": "Tee"
+            },
+            {
+              "t": "Kaffee"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「給我一杯水」。",
+            "en": "\"A water, please.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Was bist du von Beruf?",
+              "zh": "你做什麼工作？",
+              "en": "What do you do for a living?"
+            },
+            {
+              "who": "F",
+              "s": "Ich bin Krankenschwester. Mein Mann ist Lehrer.",
+              "zh": "我是護理師。我先生是老師。",
+              "en": "I'm a nurse. My husband is a teacher."
+            }
+          ],
+          "ask": {
+            "s": "Was ist die Frau von Beruf?",
+            "zh": "女的做什麼工作？",
+            "en": "What is the woman's job?"
+          },
+          "options": [
+            {
+              "t": "Lehrerin"
+            },
+            {
+              "t": "Ärztin"
+            },
+            {
+              "t": "Krankenschwester"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "她是護理師；老師是她先生。",
+            "en": "She's a nurse; her husband is the teacher."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Fährst du mit dem Bus zur Arbeit?",
+              "zh": "你搭公車上班嗎？",
+              "en": "Do you take the bus to work?"
+            },
+            {
+              "who": "M",
+              "s": "Nein, im Sommer fahre ich mit dem Fahrrad, im Winter mit der U-Bahn.",
+              "zh": "不，夏天騎腳踏車，冬天搭地鐵。",
+              "en": "No, in summer I cycle, in winter I take the underground."
+            }
+          ],
+          "ask": {
+            "s": "Wie fährt der Mann im Winter zur Arbeit?",
+            "zh": "男的冬天怎麼上班？",
+            "en": "How does the man get to work in winter?"
+          },
+          "options": [
+            {
+              "t": "mit dem Bus"
+            },
+            {
+              "t": "mit der U-Bahn"
+            },
+            {
+              "t": "mit dem Fahrrad"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "冬天搭地鐵；腳踏車是夏天。",
+            "en": "Underground in winter; bike in summer."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Supermarkt.",
+              "zh": "在超市。",
+              "en": "In the supermarket."
+            },
+            {
+              "who": "M",
+              "s": "Liebe Kunden, unser Supermarkt schließt in fünfzehn Minuten. Bitte kommen Sie zur Kasse.",
+              "zh": "各位顧客，本超市再十五分鐘打烊。請到收銀台結帳。",
+              "en": "Dear customers, our supermarket closes in fifteen minutes. Please come to the checkout."
+            }
+          ],
+          "ask": {
+            "s": "Der Supermarkt schließt bald.",
+            "zh": "超市快要關門了。",
+            "en": "The supermarket is closing soon."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "再十五分鐘打烊。",
+            "en": "It closes in fifteen minutes."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Am Bahnhof.",
+              "zh": "在火車站。",
+              "en": "At the station."
+            },
+            {
+              "who": "F",
+              "s": "Der Regionalzug nach Bonn fährt heute nicht von Gleis 2, sondern von Gleis 5.",
+              "zh": "開往波昂的區間車今天不從 2 號月台，改從 5 號月台發車。",
+              "en": "The regional train to Bonn leaves today not from platform 2 but from platform 5."
+            }
+          ],
+          "ask": {
+            "s": "Der Zug nach Bonn fährt von Gleis 2.",
+            "zh": "往波昂的火車從 2 號月台發車。",
+            "en": "The train to Bonn leaves from platform 2."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "今天改 5 號月台。",
+            "en": "Platform 5 today."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "M",
+              "s": "Achtung, Autofahrer: Auf der A3 bei Frankfurt gibt es nach einem Unfall zehn Kilometer Stau.",
+              "zh": "駕駛人請注意：A3 公路法蘭克福附近發生車禍，回堵十公里。",
+              "en": "Attention, drivers: on the A3 near Frankfurt there is a ten-kilometre traffic jam after an accident."
+            }
+          ],
+          "ask": {
+            "s": "Auf der A3 gibt es einen Stau.",
+            "zh": "A3 公路塞車。",
+            "en": "There is a traffic jam on the A3."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "車禍後塞十公里。",
+            "en": "A ten-kilometre jam after an accident."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Kaufhaus.",
+              "zh": "在百貨公司。",
+              "en": "In the department store."
+            },
+            {
+              "who": "F",
+              "s": "Der kleine Max sucht seine Mutter. Er wartet an der Information im Erdgeschoss.",
+              "zh": "小馬克斯在找媽媽。他在一樓服務台等。",
+              "en": "Little Max is looking for his mother. He is waiting at the information desk on the ground floor."
+            }
+          ],
+          "ask": {
+            "s": "Max wartet im ersten Stock.",
+            "zh": "馬克斯在二樓等。",
+            "en": "Max is waiting on the first floor."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "在一樓（Erdgeschoss）服務台；德國的 erster Stock 是二樓。",
+            "en": "On the ground floor, not the first floor."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Sara, hier ist Paul. Ich habe zwei Karten für das Konzert am Samstag. Kommst du mit? Ruf mich bitte an!",
+              "zh": "嗨，莎拉，我是保羅。我有兩張星期六音樂會的票。妳要一起去嗎？請打給我！",
+              "en": "Hi Sara, it's Paul. I've got two tickets for the concert on Saturday. Will you come? Please call me!"
+            }
+          ],
+          "ask": {
+            "s": "Was möchte Paul?",
+            "zh": "保羅想做什麼？",
+            "en": "What does Paul want?"
+          },
+          "options": [
+            {
+              "t": "mit Sara ins Konzert gehen"
+            },
+            {
+              "t": "Karten kaufen"
+            },
+            {
+              "t": "am Samstag arbeiten"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "他有兩張票，約莎拉一起去。",
+            "en": "He has two tickets and asks her to come."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Guten Tag, hier ist die Praxis Dr. Roth. Ihr Termin morgen um 10 Uhr geht leider nicht. Können Sie um 11.30 Uhr kommen?",
+              "zh": "您好，這裡是羅特醫師診所。您明天 10 點的預約很抱歉不行。11 點半可以來嗎？",
+              "en": "Hello, this is Dr Roth's surgery. I'm afraid your appointment tomorrow at 10 isn't possible. Can you come at 11.30?"
+            }
+          ],
+          "ask": {
+            "s": "Wann ist der neue Termin?",
+            "zh": "新的時間是幾點？",
+            "en": "When is the new appointment?"
+          },
+          "options": [
+            {
+              "t": "um 10.00 Uhr"
+            },
+            {
+              "t": "um 10.30 Uhr"
+            },
+            {
+              "t": "um 11.30 Uhr"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "10 點不行，改 11 點半。",
+            "en": "Not 10; 11.30."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Schatz, ich komme heute später nach Hause. Der Zug hat Verspätung. Fangt schon mal mit dem Essen an!",
+              "zh": "親愛的，我今天會晚點到家。火車誤點了。你們先開始吃吧！",
+              "en": "Hi darling, I'll be home later today. The train is late. Start eating without me!"
+            }
+          ],
+          "ask": {
+            "s": "Warum kommt der Mann später?",
+            "zh": "男的為什麼晚回家？",
+            "en": "Why is the man late?"
+          },
+          "options": [
+            {
+              "t": "Er muss lange arbeiten."
+            },
+            {
+              "t": "Der Zug ist zu spät."
+            },
+            {
+              "t": "Er kauft noch ein."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "火車誤點。",
+            "en": "The train is late."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hallo, hier ist Nina aus deinem Deutschkurs. Ich habe dein Heft. Du hast es gestern im Klassenzimmer vergessen.",
+              "zh": "嗨，我是你德文課的妮娜。我拿到你的本子了。你昨天忘在教室裡。",
+              "en": "Hi, it's Nina from your German course. I've got your exercise book. You left it in the classroom yesterday."
+            }
+          ],
+          "ask": {
+            "s": "Was hat Nina?",
+            "zh": "妮娜手上有什麼？",
+            "en": "What has Nina got?"
+          },
+          "options": [
+            {
+              "t": "ein Buch"
+            },
+            {
+              "t": "ein Heft"
+            },
+            {
+              "t": "eine Tasche"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我拿到你的本子了」。",
+            "en": "\"I've got your exercise book.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Guten Tag, hier ist das Möbelhaus Krone. Wir bringen Ihr Sofa am Donnerstag zwischen 14 und 16 Uhr.",
+              "zh": "您好，這裡是皇冠家具行。我們星期四下午 2 點到 4 點之間把您的沙發送過去。",
+              "en": "Good day, this is Krone furniture store. We will deliver your sofa on Thursday between 2 and 4 p.m."
+            }
+          ],
+          "ask": {
+            "s": "Wann kommt das Sofa?",
+            "zh": "沙發什麼時候送到？",
+            "en": "When will the sofa come?"
+          },
+          "options": [
+            {
+              "t": "am Donnerstagnachmittag"
+            },
+            {
+              "t": "am Dienstagnachmittag"
+            },
+            {
+              "t": "am Donnerstagvormittag"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "星期四下午 2–4 點。",
+            "en": "Thursday, 2–4 p.m."
+          }
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Hast du Geschwister?",
+              "zh": "你有兄弟姊妹嗎？",
+              "en": "Have you got any brothers or sisters?"
+            },
+            {
+              "who": "M",
+              "s": "Ja, eine Schwester. Sie ist zwei Jahre älter als ich und wohnt in Berlin.",
+              "zh": "有，一個姊姊。她比我大兩歲，住在柏林。",
+              "en": "Yes, a sister. She's two years older than me and lives in Berlin."
+            }
+          ],
+          "ask": {
+            "s": "Was sagt der Mann über seine Schwester?",
+            "zh": "男的說了他姊姊什麼？",
+            "en": "What does the man say about his sister?"
+          },
+          "options": [
+            {
+              "t": "Sie ist jünger als er."
+            },
+            {
+              "t": "Sie wohnt in Berlin."
+            },
+            {
+              "t": "Sie hat zwei Kinder."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "她住在柏林，比他大兩歲。",
+            "en": "She lives in Berlin and is two years older."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Was kostet die Jacke?",
+              "zh": "這件外套多少錢？",
+              "en": "How much is the jacket?"
+            },
+            {
+              "who": "F",
+              "s": "Sie kostet 80 Euro, aber heute gibt es 20 Euro Rabatt.",
+              "zh": "80 歐元，但今天折 20 歐元。",
+              "en": "It costs 80 euros, but today there's 20 euros off."
+            }
+          ],
+          "ask": {
+            "s": "Wie viel kostet die Jacke heute?",
+            "zh": "外套今天多少錢？",
+            "en": "How much is the jacket today?"
+          },
+          "options": [
+            {
+              "t": "20 €"
+            },
+            {
+              "t": "60 €"
+            },
+            {
+              "t": "80 €"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "80 減 20：60 歐元。",
+            "en": "80 minus 20: 60."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Wie ist das Wetter morgen?",
+              "zh": "明天天氣怎樣？",
+              "en": "What's the weather like tomorrow?"
+            },
+            {
+              "who": "M",
+              "s": "Am Vormittag regnet es, aber am Nachmittag scheint die Sonne.",
+              "zh": "上午下雨，但下午出太陽。",
+              "en": "It rains in the morning, but in the afternoon the sun shines."
+            }
+          ],
+          "ask": {
+            "s": "Wie ist das Wetter morgen am Nachmittag?",
+            "zh": "明天下午天氣怎樣？",
+            "en": "What's the weather like tomorrow afternoon?"
+          },
+          "options": [
+            {
+              "t": "Es regnet."
+            },
+            {
+              "t": "Es schneit."
+            },
+            {
+              "t": "Es ist sonnig."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "下午出太陽；下雨是上午。",
+            "en": "Sun in the afternoon; rain in the morning."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Entschuldigung, wo finde ich die Toiletten?",
+              "zh": "不好意思，廁所在哪裡？",
+              "en": "Excuse me, where are the toilets?"
+            },
+            {
+              "who": "F",
+              "s": "Im Keller. Nehmen Sie die Treppe dort rechts.",
+              "zh": "在地下室。走右邊那個樓梯。",
+              "en": "In the basement. Take the stairs over there on the right."
+            }
+          ],
+          "ask": {
+            "s": "Wo sind die Toiletten?",
+            "zh": "廁所在哪裡？",
+            "en": "Where are the toilets?"
+          },
+          "options": [
+            {
+              "t": "im Keller"
+            },
+            {
+              "t": "im ersten Stock"
+            },
+            {
+              "t": "rechts neben dem Eingang"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「在地下室」，右邊是樓梯。",
+            "en": "In the basement; the stairs are on the right."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Wann hast du Geburtstag?",
+              "zh": "你生日是什麼時候？",
+              "en": "When is your birthday?"
+            },
+            {
+              "who": "M",
+              "s": "Am zwölften Juni. Und du?",
+              "zh": "六月十二日。妳呢？",
+              "en": "On the twelfth of June. And you?"
+            },
+            {
+              "who": "F",
+              "s": "Am zwanzigsten Juli.",
+              "zh": "七月二十日。",
+              "en": "On the twentieth of July."
+            }
+          ],
+          "ask": {
+            "s": "Wann hat der Mann Geburtstag?",
+            "zh": "男的生日是什麼時候？",
+            "en": "When is the man's birthday?"
+          },
+          "options": [
+            {
+              "t": "am 12. Juni"
+            },
+            {
+              "t": "am 20. Juni"
+            },
+            {
+              "t": "am 20. Juli"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "他六月十二日；七月二十日是女的。",
+            "en": "His is 12 June; 20 July is hers."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Spielst du ein Instrument?",
+              "zh": "妳會演奏樂器嗎？",
+              "en": "Do you play an instrument?"
+            },
+            {
+              "who": "F",
+              "s": "Früher habe ich Klavier gespielt. Jetzt lerne ich Geige.",
+              "zh": "以前彈鋼琴。現在在學小提琴。",
+              "en": "I used to play the piano. Now I'm learning the violin."
+            }
+          ],
+          "ask": {
+            "s": "Was lernt die Frau jetzt?",
+            "zh": "女的現在在學什麼？",
+            "en": "What is the woman learning now?"
+          },
+          "options": [
+            {
+              "t": "Klavier"
+            },
+            {
+              "t": "Gitarre"
+            },
+            {
+              "t": "Geige"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "現在學小提琴；鋼琴是以前。",
+            "en": "Violin now; piano before."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Zug.",
+              "zh": "在火車上。",
+              "en": "On the train."
+            },
+            {
+              "who": "F",
+              "s": "Meine Damen und Herren, in wenigen Minuten erreichen wir Stuttgart Hauptbahnhof. Dieser Zug endet dort.",
+              "zh": "各位旅客，再過幾分鐘就到斯圖加特總站。本列車在該站終點。",
+              "en": "Ladies and gentlemen, in a few minutes we will reach Stuttgart main station. This train terminates there."
+            }
+          ],
+          "ask": {
+            "s": "Der Zug fährt nach Stuttgart weiter.",
+            "zh": "火車過了斯圖加特還會繼續開。",
+            "en": "The train goes on after Stuttgart."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "本列車在斯圖加特終點。",
+            "en": "The train ends in Stuttgart."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "M",
+              "s": "Heute ist es in ganz Deutschland warm, bis zu 28 Grad. Am Abend kann es Gewitter geben.",
+              "zh": "今天全德國都很溫暖，最高 28 度。晚上可能有雷雨。",
+              "en": "Today it's warm all over Germany, up to 28 degrees. In the evening there may be thunderstorms."
+            }
+          ],
+          "ask": {
+            "s": "Heute wird es sehr kalt.",
+            "zh": "今天會很冷。",
+            "en": "It will be very cold today."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "最高 28 度，很溫暖。",
+            "en": "Up to 28 degrees — warm."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Im Schwimmbad.",
+              "zh": "在游泳池。",
+              "en": "At the swimming pool."
+            },
+            {
+              "who": "F",
+              "s": "Liebe Gäste, das Schwimmbad schließt heute schon um 18 Uhr. Bitte verlassen Sie das Wasser um 17.30 Uhr.",
+              "zh": "各位來賓，游泳池今天 18 點就關門。請在 17:30 離開水池。",
+              "en": "Dear guests, the pool closes at 6 p.m. today. Please leave the water at 5.30."
+            }
+          ],
+          "ask": {
+            "s": "Man muss um 17.30 Uhr aus dem Wasser gehen.",
+            "zh": "17:30 要離開水池。",
+            "en": "You must get out of the water at 5.30."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「請在 17:30 離開水池」。",
+            "en": "\"Please leave the water at 5.30.\""
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Am Flughafen.",
+              "zh": "在機場。",
+              "en": "At the airport."
+            },
+            {
+              "who": "M",
+              "s": "Information zum Flug LH 456 nach Madrid: Der Flug hat eine Stunde Verspätung. Neue Abflugzeit: 15.40 Uhr.",
+              "zh": "往馬德里 LH 456 班機的消息：班機延誤一小時。新的起飛時間：15:40。",
+              "en": "Information on flight LH 456 to Madrid: the flight is one hour late. New departure time: 3.40 p.m."
+            }
+          ],
+          "ask": {
+            "s": "Der Flug nach Madrid fliegt eine Stunde später.",
+            "zh": "往馬德里的班機晚一小時起飛。",
+            "en": "The flight to Madrid leaves an hour later."
+          },
+          "options": [
+            {
+              "t": "Richtig"
+            },
+            {
+              "t": "Falsch"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "延誤一小時。",
+            "en": "It is one hour late."
+          },
+          "n_options": 2
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Herr Fischer, hier ist Frau Klein von der Hausverwaltung. Morgen kommt der Elektriker um 9 Uhr. Bitte seien Sie zu Hause.",
+              "zh": "費雪先生您好，我是物業管理處的克萊因。明天 9 點電工會來。請您在家。",
+              "en": "Hello Mr Fischer, this is Ms Klein from the property management. Tomorrow the electrician is coming at 9. Please be at home."
+            }
+          ],
+          "ask": {
+            "s": "Was soll Herr Fischer morgen tun?",
+            "zh": "費雪先生明天要做什麼？",
+            "en": "What should Mr Fischer do tomorrow?"
+          },
+          "options": [
+            {
+              "t": "den Elektriker anrufen"
+            },
+            {
+              "t": "um 9 Uhr zu Hause sein"
+            },
+            {
+              "t": "zur Hausverwaltung gehen"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "電工 9 點來，請他在家。",
+            "en": "The electrician comes at 9; he should be at home."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Anna, hier ist Ben. Das Fußballspiel heute ist leider abgesagt — der Platz ist zu nass. Wir spielen nächsten Sonntag.",
+              "zh": "嗨，安娜，我是班。今天的足球賽取消了——球場太濕。我們下星期天再踢。",
+              "en": "Hi Anna, it's Ben. Today's football match is cancelled, I'm afraid — the pitch is too wet. We'll play next Sunday."
+            }
+          ],
+          "ask": {
+            "s": "Warum gibt es heute kein Spiel?",
+            "zh": "為什麼今天沒有比賽？",
+            "en": "Why is there no match today?"
+          },
+          "options": [
+            {
+              "t": "Es ist zu kalt."
+            },
+            {
+              "t": "Der Platz ist zu nass."
+            },
+            {
+              "t": "Ben ist krank."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「球場太濕」。",
+            "en": "\"The pitch is too wet.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Guten Tag, hier ist das Reisebüro Sonnenschein. Ihre Tickets für Mallorca sind da. Sie können sie ab Montag abholen.",
+              "zh": "您好，這裡是陽光旅行社。您去馬略卡島的機票到了。星期一起可以來拿。",
+              "en": "Good day, this is Sonnenschein travel agency. Your tickets for Majorca are here. You can collect them from Monday."
+            }
+          ],
+          "ask": {
+            "s": "Was kann man ab Montag abholen?",
+            "zh": "星期一起可以拿什麼？",
+            "en": "What can be collected from Monday?"
+          },
+          "options": [
+            {
+              "t": "die Tickets"
+            },
+            {
+              "t": "den Koffer"
+            },
+            {
+              "t": "den Pass"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "機票到了。",
+            "en": "The tickets have arrived."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Mama, ich bleibe heute bei Felix. Wir machen zusammen Hausaufgaben. Ich bin um acht zu Hause.",
+              "zh": "媽，我今天待在菲力克斯家。我們一起寫功課。我八點到家。",
+              "en": "Hi Mum, I'm staying at Felix's today. We're doing homework together. I'll be home at eight."
+            }
+          ],
+          "ask": {
+            "s": "Was macht der Junge bei Felix?",
+            "zh": "男孩在菲力克斯家做什麼？",
+            "en": "What is the boy doing at Felix's?"
+          },
+          "options": [
+            {
+              "t": "Er spielt Fußball."
+            },
+            {
+              "t": "Er isst zu Abend."
+            },
+            {
+              "t": "Er macht Hausaufgaben."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「一起寫功課」。",
+            "en": "\"We're doing homework together.\""
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Auf dem Anrufbeantworter.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Thomas, hier ist Julia. Ich kann heute leider nicht ins Kino kommen. Ich muss bis neun arbeiten. Gehen wir morgen?",
+              "zh": "嗨，湯瑪斯，我是茱莉亞。我今天沒辦法去看電影。我要工作到九點。我們明天去好嗎？",
+              "en": "Hi Thomas, it's Julia. I can't come to the cinema today, I'm afraid. I have to work until nine. Shall we go tomorrow?"
+            }
+          ],
+          "ask": {
+            "s": "Was möchte Julia?",
+            "zh": "茱莉亞想怎樣？",
+            "en": "What does Julia want?"
+          },
+          "options": [
+            {
+              "t": "heute ins Kino gehen"
+            },
+            {
+              "t": "morgen ins Kino gehen"
+            },
+            {
+              "t": "bis neun arbeiten"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "今天要上班，提議明天去。",
+            "en": "She works today and suggests tomorrow."
           }
         }
       ]

@@ -1803,6 +1803,524 @@
           ]
         }
       ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Hallo Jonas,\nwie geht es dir? Ich bin seit Samstag mit meiner Familie in Österreich. Wir wohnen in einem Hotel in den Bergen. Das Wetter ist super, wir wandern jeden Tag. Nur mein kleiner Bruder ist müde und schläft viel. Am Freitag fahren wir wieder nach Hause.\nBis bald!\nMia",
+          "tr": {
+            "zh": "嗨，約納斯：\n你好嗎？我從星期六開始和家人在奧地利。我們住在山上的一家旅館。天氣超好，我們每天都去健行。只有我弟弟很累，一直在睡覺。星期五我們就回家了。\n回頭見！\n米亞",
+            "en": "Hi Jonas,\nhow are you? I've been in Austria with my family since Saturday. We're staying in a hotel in the mountains. The weather is great, we go hiking every day. Only my little brother is tired and sleeps a lot. On Friday we go home again.\nSee you soon!\nMia"
+          },
+          "questions": [
+            {
+              "q": "Mia ist mit ihrer Familie im Urlaub.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「和家人在奧地利」，住旅館、每天健行。",
+              "en": "She is in Austria with her family."
+            },
+            {
+              "q": "Das Wetter in Österreich ist schlecht.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "天氣「超好」。",
+              "en": "The weather is great."
+            },
+            {
+              "q": "Mia fährt am Samstag nach Hause.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "星期六是出發的日子；回家是星期五。",
+              "en": "They arrived on Saturday; they go home on Friday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Liebe Kolleginnen und Kollegen,\nam Mittwoch hat unsere Chefin Geburtstag. Wir möchten ihr Blumen und ein Buch schenken. Bitte bringen Sie bis Dienstag 5 Euro zu mir in Zimmer 204.\nDanke!\nKarin Vogt",
+          "tr": {
+            "zh": "各位同事：\n星期三是我們主管的生日。我們想送她花和一本書。請在星期二以前拿 5 歐元到 204 號辦公室給我。\n謝謝！\n卡琳‧佛格特",
+            "en": "Dear colleagues,\non Wednesday it's our boss's birthday. We'd like to give her flowers and a book. Please bring 5 euros to me in room 204 by Tuesday.\nThank you!\nKarin Vogt"
+          },
+          "questions": [
+            {
+              "q": "Die Kollegen kaufen ein Geschenk für die Chefin.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "要送主管花和書。",
+              "en": "Flowers and a book for the boss."
+            },
+            {
+              "q": "Man soll das Geld am Mittwoch bringen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "「星期二以前」拿來；星期三是生日。",
+              "en": "By Tuesday; Wednesday is the birthday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "n_options": 2,
+          "text": "Lesen Sie die Situationen. Welche Anzeige passt: a oder b?",
+          "tr": {
+            "zh": "閱讀情境。哪一則廣告符合：a 還是 b？",
+            "en": "Read the situations. Which ad fits: a or b?"
+          },
+          "questions": [
+            {
+              "q": "Sie möchten am Abend Sport machen. Sie arbeiten bis 18 Uhr.",
+              "options": [
+                "Fitnessstudio Aktiv: Mo–Fr 6–23 Uhr",
+                "Yoga im Park: Di und Do 9–10 Uhr"
+              ],
+              "answer": 0,
+              "zh": "下班後 6 點以後：a 開到晚上 11 點；b 在早上。",
+              "en": "After work: a is open until 11 p.m.; b is in the morning."
+            },
+            {
+              "q": "Ihr Sohn ist 8 Jahre alt. Er möchte Gitarre lernen.",
+              "options": [
+                "Musikschule Klang: Gitarre für Kinder ab 7 Jahren",
+                "Gitarrenkurs für Erwachsene, Volkshochschule"
+              ],
+              "answer": 0,
+              "zh": "a 給 7 歲以上的孩子；b 給大人。",
+              "en": "a is for children from 7; b is for adults."
+            },
+            {
+              "q": "Sie haben keinen Kühlschrank. Sie möchten einen billigen kaufen.",
+              "options": [
+                "Elektro Huber: neue Kühlschränke ab 499 €",
+                "Kleinanzeige: Kühlschrank, 2 Jahre alt, 60 €"
+              ],
+              "answer": 1,
+              "zh": "便宜的：b 二手 60 歐元。",
+              "en": "Cheap: b, second-hand for €60."
+            },
+            {
+              "q": "Sie möchten mit dem Zug von Köln nach Hamburg fahren.",
+              "options": [
+                "Fernbus Köln–Hamburg: 19,90 €",
+                "Bahn: ICE Köln–Hamburg, Sparpreis ab 29,90 €"
+              ],
+              "answer": 1,
+              "zh": "要搭火車：b 是城際特快；a 是長途巴士。",
+              "en": "By train: b is the ICE; a is a coach."
+            },
+            {
+              "q": "Sie sind neu in der Stadt und möchten Leute kennenlernen.",
+              "options": [
+                "Café International: Jeden Freitag Treffen für Neue in der Stadt",
+                "Stadtbibliothek: Bücher und Filme ausleihen"
+              ],
+              "answer": 0,
+              "zh": "認識新朋友：a 每週五給新來的人聚會。",
+              "en": "Meeting people: a has a meeting for newcomers every Friday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Bäckerei Sonne: Am Montag, den 3. Oktober, ist die Bäckerei geschlossen.",
+          "tr": {
+            "zh": "太陽麵包店：10 月 3 日星期一，麵包店不營業。",
+            "en": "Sonne bakery: On Monday 3 October the bakery is closed."
+          },
+          "questions": [
+            {
+              "q": "Am 3. Oktober kann man bei Bäckerei Sonne kein Brot kaufen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "那天麵包店不開。",
+              "en": "The bakery is closed that day."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Hotel Rheinblick: Frühstück im Restaurant von 6:30 bis 10:00 Uhr. Am Wochenende bis 11:00 Uhr.",
+          "tr": {
+            "zh": "萊茵景旅館：早餐在餐廳，6:30 到 10:00。週末到 11:00。",
+            "en": "Hotel Rheinblick: Breakfast in the restaurant from 6.30 to 10.00. At weekends until 11.00."
+          },
+          "questions": [
+            {
+              "q": "Am Sonntag gibt es bis 11 Uhr Frühstück.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "週末到 11 點；星期日是週末。",
+              "en": "At weekends until 11; Sunday is the weekend."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Bitte nicht rauchen! Rauchen nur im Garten hinter dem Haus.",
+          "tr": {
+            "zh": "請勿吸菸！只能在房子後面的花園吸菸。",
+            "en": "No smoking, please! Smoking only in the garden behind the house."
+          },
+          "questions": [
+            {
+              "q": "Man darf im Haus rauchen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "只能在後面花園抽。",
+              "en": "Only in the garden."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Deutschkurs A1 — neuer Kurs ab 10. Januar. Anmeldung im Büro, Raum 3, Mo–Do 14–17 Uhr.",
+          "tr": {
+            "zh": "德文 A1 課程——1 月 10 日開新班。在 3 號辦公室報名，星期一到四 14–17 點。",
+            "en": "German course A1 — new course from 10 January. Register at the office, room 3, Mon–Thu 2–5 p.m."
+          },
+          "questions": [
+            {
+              "q": "Man kann sich am Freitag im Büro anmelden.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "報名是星期一到四。",
+              "en": "Registration is Monday to Thursday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Liebe Mieter, am Dienstag kommt der Techniker. Von 8 bis 12 Uhr gibt es kein warmes Wasser.",
+          "tr": {
+            "zh": "各位房客，星期二技師會來。8 點到 12 點沒有熱水。",
+            "en": "Dear tenants, on Tuesday the technician is coming. There will be no hot water from 8 to 12."
+          },
+          "questions": [
+            {
+              "q": "Am Dienstagnachmittag gibt es wieder warmes Wasser.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "只有 8 到 12 點沒熱水，下午就有了。",
+              "en": "No hot water only from 8 to 12; in the afternoon it is back."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Liebe Oma,\nvielen Dank für das Paket! Der Pullover ist wunderschön und passt gut. Die Schokolade habe ich schon gegessen. In der Schule ist alles gut, nur Mathe ist schwer. In den Ferien komme ich zu dir. Ich freue mich!\nDein Leon",
+          "tr": {
+            "zh": "親愛的奶奶：\n謝謝您寄來的包裹！毛衣好漂亮，也很合身。巧克力我已經吃掉了。學校一切都好，只有數學很難。放假的時候我會去看您。好期待！\n您的萊昂",
+            "en": "Dear Grandma,\nthank you so much for the parcel! The jumper is beautiful and fits well. I've already eaten the chocolate. Everything is fine at school, only maths is hard. I'll come to you in the holidays. I'm looking forward to it!\nYour Leon"
+          },
+          "questions": [
+            {
+              "q": "Der Pullover ist zu klein.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "毛衣「很合身」。",
+              "en": "The jumper fits well."
+            },
+            {
+              "q": "Leon findet Mathe schwer.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「只有數學很難」。",
+              "en": "\"Only maths is hard.\""
+            },
+            {
+              "q": "Leon besucht die Oma in den Ferien.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "「放假的時候我會去看您」。",
+              "en": "\"I'll come to you in the holidays.\""
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Sehr geehrte Frau Schneider,\nIhre neue Brille ist da. Sie können sie ab Donnerstag bei uns abholen. Wir sind Montag bis Freitag von 9 bis 18 Uhr und am Samstag bis 13 Uhr da.\nIhr Optiker Lange",
+          "tr": {
+            "zh": "施奈德女士您好：\n您的新眼鏡到了。星期四起可以來取。我們星期一到五 9 點到 18 點、星期六到 13 點營業。\n朗格眼鏡行",
+            "en": "Dear Ms Schneider,\nyour new glasses have arrived. You can collect them from us from Thursday. We are open Monday to Friday from 9 to 6 and on Saturday until 1.\nYour optician Lange"
+          },
+          "questions": [
+            {
+              "q": "Frau Schneider kann die Brille am Mittwoch abholen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "星期四起才能取。",
+              "en": "From Thursday."
+            },
+            {
+              "q": "Der Optiker ist am Samstagnachmittag geschlossen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "星期六只到下午 1 點。",
+              "en": "Saturday only until 1 p.m."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_match",
+          "n_options": 2,
+          "text": "Lesen Sie die Situationen. Welche Anzeige passt: a oder b?",
+          "tr": {
+            "zh": "閱讀情境。哪一則廣告符合：a 還是 b？",
+            "en": "Read the situations. Which ad fits: a or b?"
+          },
+          "questions": [
+            {
+              "q": "Sie möchten am Samstag mit Ihren Kindern ins Museum gehen.",
+              "options": [
+                "Naturkundemuseum: Di–So 10–18 Uhr, Kinder frei",
+                "Kunstmuseum: Mo–Fr 10–17 Uhr"
+              ],
+              "answer": 0,
+              "zh": "星期六：a 星期二到日開，孩子免費；b 週末不開。",
+              "en": "Saturday: a is open Tue–Sun; b is closed at weekends."
+            },
+            {
+              "q": "Sie suchen eine Wohnung mit Balkon.",
+              "options": [
+                "2-Zimmer-Wohnung, 3. Stock, Aufzug, 650 €",
+                "2-Zimmer-Wohnung mit großem Balkon, 700 €"
+              ],
+              "answer": 1,
+              "zh": "有陽台的是 b。",
+              "en": "b has a balcony."
+            },
+            {
+              "q": "Ihr Handy ist kaputt.",
+              "options": [
+                "Handy-Doktor: Reparatur in einer Stunde",
+                "Handyladen Max: neue Verträge, günstig"
+              ],
+              "answer": 0,
+              "zh": "手機壞了：a 一小時修好。",
+              "en": "Broken phone: a repairs in an hour."
+            },
+            {
+              "q": "Sie möchten chinesisch essen.",
+              "options": [
+                "Restaurant Bella Italia: Pizza und Pasta",
+                "Restaurant Peking: Spezialitäten aus China"
+              ],
+              "answer": 1,
+              "zh": "中國菜：b 北京餐廳；a 是義大利菜。",
+              "en": "Chinese food: b; a is Italian."
+            },
+            {
+              "q": "Sie möchten im Sommer an einem See zelten.",
+              "options": [
+                "Campingplatz Waldsee: direkt am See, Mai–September",
+                "Jugendherberge am Bahnhof: Zimmer ab 22 €"
+              ],
+              "answer": 0,
+              "zh": "湖邊露營：a 就在湖邊。",
+              "en": "Camping by a lake: a."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Liebe Eltern, am Freitag ist kein Unterricht. Die Lehrer haben eine Konferenz.",
+          "tr": {
+            "zh": "各位家長，星期五不上課。老師要開會。",
+            "en": "Dear parents, there are no lessons on Friday. The teachers have a meeting."
+          },
+          "questions": [
+            {
+              "q": "Die Kinder müssen am Freitag nicht in die Schule.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "星期五不上課。",
+              "en": "No lessons on Friday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Parkplatz nur für Kunden. Maximal 2 Stunden.",
+          "tr": {
+            "zh": "停車場只供顧客使用。最多 2 小時。",
+            "en": "Car park for customers only. Maximum 2 hours."
+          },
+          "questions": [
+            {
+              "q": "Alle können hier den ganzen Tag parken.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "只給顧客，最多 2 小時。",
+              "en": "Customers only, at most 2 hours."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Apotheke am Markt: Heute Notdienst bis 22 Uhr.",
+          "tr": {
+            "zh": "市場藥局：今天值班到晚上 10 點。",
+            "en": "Pharmacy at the market: emergency service today until 10 p.m."
+          },
+          "questions": [
+            {
+              "q": "Die Apotheke ist heute am Abend geöffnet.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "今天值班到晚上 10 點。",
+              "en": "Open until 10 p.m. today."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Achtung! Der Aufzug ist kaputt. Bitte benutzen Sie die Treppe.",
+          "tr": {
+            "zh": "注意！電梯故障。請走樓梯。",
+            "en": "Attention! The lift is broken. Please use the stairs."
+          },
+          "questions": [
+            {
+              "q": "Sie müssen zu Fuß nach oben gehen.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 0,
+              "zh": "電梯壞了，要走樓梯。",
+              "en": "The lift is broken: take the stairs."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "n_options": 2,
+          "text": "Stadtbücherei: Bücher können Sie auch online verlängern: www.buecherei-stadt.de",
+          "tr": {
+            "zh": "市立圖書館：書也可以上網續借。",
+            "en": "Town library: You can also renew books online."
+          },
+          "questions": [
+            {
+              "q": "Man muss in die Bücherei gehen, wenn man ein Buch länger behalten möchte.",
+              "options": [
+                "Richtig",
+                "Falsch"
+              ],
+              "answer": 1,
+              "zh": "也可以上網續借。",
+              "en": "You can renew online."
+            }
+          ]
+        }
+      ]
     }
   ],
   "n_options": 2
