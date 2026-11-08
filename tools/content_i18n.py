@@ -19,7 +19,7 @@ example translated into Japanese is the sentence again, and a hint would give th
 answer away): the page shows English there. The key is the paid one used for the
 recordings (tools/.gemini-tts.env).
 """
-import argparse, hashlib, json, sys, threading, time, urllib.error, urllib.request
+import argparse, hashlib, json, os, sys, threading, time, urllib.error, urllib.request
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -73,7 +73,20 @@ def store(lang):
 def save_store(lang):
     STORE.mkdir(parents=True, exist_ok=True)
     data = dict(sorted(store(lang).items()))
-    (STORE / f'{lang}.json').write_text(json.dumps(data, ensure_ascii=False, indent=0), encoding='utf-8')
+    text = json.dumps(data, ensure_ascii=False, indent=0)
+    # Windows sometimes refuses the write for a moment (Errno 22 while another program has the file open,
+    # 2026-11-08): write a temp file, swap it in, retry a few times
+    import time
+    for tries in range(8):
+        try:
+            tmp = STORE / f'{lang}.json.tmp'
+            tmp.write_text(text, encoding='utf-8')
+            os.replace(tmp, STORE / f'{lang}.json')
+            return
+        except OSError:
+            if tries == 7:
+                raise
+            time.sleep(0.5 * (tries + 1))
 
 
 def fill(data):
