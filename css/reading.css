@@ -336,6 +336,12 @@
     .rdx-col-q .rdx-tools { margin-bottom: 8px; }
     .rdx-col-q .rdx-subtabs { margin-bottom: 10px; }
 }
+/* a mouse: ten number tabs on one row (2026-11-07 — ru_c1's 10-question essay wrapped them to two rows,
+   87px, and a German / French / Japanese explanation then pushed the answered card past 940px) */
+@media (min-width: 1024px) and (pointer: fine) {
+    .rdx-col-q .rdx-subtabs { gap: 4px; }
+    .rdx-col-q .rdx-subtab { min-width: 38px; padding: 5px 7px; }
+}
 @media (max-width: 1023.98px) {
     .rdx-subtabs, .rdx-sub-next, .rdx-mock-top { display: none; }
 }
