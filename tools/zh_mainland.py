@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧': 'ba', '着': 'zhe', '们': 'men', '啊': 'a',
            '过': 'guo'}   # alone 过 is the aspect particle (看过); 过来 / 过去 / 过年 are list words
 # words the lists lack or read differently from the papers (add as they turn up in review)
-WORDS = {'长久': 'cháng jiǔ', '场马拉松': 'chǎng mǎ lā sōng', '班长': 'bān zhǎng', '大汗': 'dà hàn', '用不着': 'yòng bu zháo', '走一走': 'zǒu yi zǒu', '多待': 'duō dāi', '家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '面条': 'miàn tiáo', '下雪': 'xià xuě', '晴天': 'qíng tiān', '玩儿': 'wán r', '长大': 'zhǎng dà', '妻子': 'qī zi',
+WORDS = {'无处': 'wú chù', '转化为': 'zhuǎn huà wéi', '沦为': 'lún wéi', '为代表': 'wéi dài biǎo', '长久': 'cháng jiǔ', '场马拉松': 'chǎng mǎ lā sōng', '班长': 'bān zhǎng', '大汗': 'dà hàn', '用不着': 'yòng bu zháo', '走一走': 'zǒu yi zǒu', '多待': 'duō dāi', '家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '面条': 'miàn tiáo', '下雪': 'xià xuě', '晴天': 'qíng tiān', '玩儿': 'wán r', '长大': 'zhǎng dà', '妻子': 'qī zi',
          # a reduplicated verb's second syllable is neutral (HSK 3: 试试, 问问 …); 长得 is zhǎng (grow)
          '试试': 'shì shi', '问问': 'wèn wen', '尝尝': 'cháng chang', '找找': 'zhǎo zhao', '打打': 'dǎ da',
          '想想': 'xiǎng xiang', '听听': 'tīng ting', '说说': 'shuō shuo', '等等': 'děng deng', '玩玩': 'wán wan',

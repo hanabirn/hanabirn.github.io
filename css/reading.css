@@ -368,3 +368,8 @@
 [data-zhrd="off"] .rt-py, [data-zhrd="off"] .rt-zy { display: none; }
 .rt-zy { letter-spacing: -0.04em; }
 .learn-edition { margin: 0 0 10px; }
+/* the Chinese reading list (大陸版 / 台灣版 row + 8 passages + 4 rounds = three rows) ended 5px below a 1080p
+   window (945px, 2026-11-08): a tighter credit line on computers */
+@media (min-width: 1024px) {
+    #page-reading .grammar-credit { margin-top: 8px; }
+}
