@@ -42,7 +42,7 @@ const SYNC_KEYS = {
     quiz_mistakes: { empty: [], merge: (a, b) => {
         const m = new Map();
         [].concat(a, b).forEach(x => {
-            if (!x || !x.id) return;
+            if (!x || !x.id || (typeof isTestRow === 'function' && isTestRow(x))) return;
             const p = m.get(x.id);
             if (!p) { m.set(x.id, x); return; }
             const newer = (x.last || 0) >= (p.last || 0) ? x : p;
@@ -54,6 +54,7 @@ const SYNC_KEYS = {
     srs_quiz: { empty: {}, merge: (a, b) => {
         const o = Object.assign({}, a);
         Object.entries(b).forEach(([k, c]) => { if (c && (!o[k] || (c.seen || 0) > (o[k].seen || 0))) o[k] = c; });
+        if (typeof isTestRow === 'function') Object.keys(o).forEach(k => { if (isTestRow(o[k])) delete o[k]; });
         return o;
     } },
     quiz_records: { empty: [], merge: (a, b) => {

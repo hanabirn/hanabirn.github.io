@@ -2079,8 +2079,19 @@ function escQ(s) {
     return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 }
 
+/* Test rows a layout check once wrote into the live site's storage (owner's report 2026-11-07:
+   牛乳2 / 空港1 in the mistake book, 語15 in a review) and the account sync spread: SRS cards whose id
+   isn't lang|word|group (real ones always are) and mistakes stamped at …745 ms on the test words.
+   Dropped when read and when merged, so the cloud copy and every device are cleaned. */
+const TEST_ROW_WORD = /^(食べる|学校|運動|牛乳|空港|학교|운동|apple|abandon|朋友|le chat|雨|猫)\d*$/;
+function isTestRow(e) {
+    if (!e || typeof e !== 'object') return false;
+    if (e.id && e.lang && e.word && e.group && e.id !== e.lang + '|' + e.word + '|' + e.group) return true;
+    return e.last % 1000 === 745 && e.group === 'reading' && TEST_ROW_WORD.test(e.word || '');
+}
+
 function getMistakes() {
-    try { return JSON.parse(localStorage.getItem('quiz_mistakes')) || []; }
+    try { return (JSON.parse(localStorage.getItem('quiz_mistakes')) || []).filter(m => !isTestRow(m)); }
     catch { return []; }
 }
 
@@ -2686,7 +2697,11 @@ const SRS_QUIZ_MAX_CARDS = 4000;
 let reviewSource = ''; // 'mistakes' | 'srs' while reviewMode is on
 
 function getSrsQuizCards() {
-    try { return JSON.parse(localStorage.getItem('srs_quiz')) || {}; } catch { return {}; }
+    try {
+        const cards = JSON.parse(localStorage.getItem('srs_quiz')) || {};
+        Object.keys(cards).forEach(id => { if (isTestRow(cards[id])) delete cards[id]; });
+        return cards;
+    } catch { return {}; }
 }
 
 function saveSrsQuizCards(cards) {
