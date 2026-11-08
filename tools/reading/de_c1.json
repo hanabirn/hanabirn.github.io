@@ -4,7 +4,7 @@
   "level": "C1",
   "order": 5,
   "n_options": 3,
-  "note": "German C1 reading rounds in the Goethe-Zertifikat C1 format (2024 handbook, EXAMS.md): Teil 1 a press text with eight gaps, four options; Teil 2 a long article on forgetting ×7; Teil 3 a commentary on the four-day week, eight sentences back (two spare); Teil 4 four experts on online shopping, who says it ×7 (E = nobody) — 30 questions. Original texts. Drafted in tools/.mockups/de_c1.py.",
+  "note": "German C1 reading rounds in the Goethe-Zertifikat C1 format (2024 handbook, EXAMS.md): Teil 1 a press text with eight gaps, four options; Teil 2 a long article on forgetting ×7; Teil 3 a commentary on the four-day week, eight sentences back (two spare); Teil 4 four experts on online shopping, who says it ×7 (E = nobody) — 30 questions. Original texts. Drafted in tools/.mockups/de_c1.py (rounds 2–3: de_c1_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -337,6 +337,678 @@
               "answer": "E",
               "zh": "沒有人提到電動送貨車；B 說的是包裹站和貨運腳踏車。",
               "en": "Nobody mentions electric vans; B talks of parcel stations and cargo bikes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "n_options": 4,
+          "text": "Die Rückkehr der Nachtzüge\nNoch vor wenigen Jahren schienen Nachtzüge in Europa ein Auslaufmodell zu sein. Viele Verbindungen wurden (1) ＿＿＿＿＿ mangelnder Rentabilität eingestellt. Inzwischen erleben sie eine erstaunliche Renaissance. Vor allem jüngere Reisende, die (2) ＿＿＿＿＿ des Klimas auf Flüge verzichten wollen, sorgen für ausgebuchte Schlafwagen. Die Österreichischen Bundesbahnen haben als erste (3) ＿＿＿＿＿ Chance erkannt und neue Strecken eröffnet. Allerdings ist das Geschäft alles andere als einfach: Die Wagen werden nur einmal pro Nacht genutzt, und die Gebühren für die Nutzung der Schienen fallen in jedem Land (4) ＿＿＿＿＿ an. Hinzu kommt, dass die Fahrzeiten oft deutlich länger sind, (5) ＿＿＿＿＿ man es von Hochgeschwindigkeitszügen gewohnt ist. Trotzdem nehmen viele Fahrgäste dies gern (6) ＿＿＿＿＿ Kauf: Wer schläft, verliert keine Zeit. Ob sich der Trend (7) ＿＿＿＿＿ durchsetzt, hängt nicht zuletzt davon ab, ob die Politik bereit ist, die Bahn gegenüber dem Flugzeug finanziell (8) ＿＿＿＿＿ zu stellen.",
+          "tr": {
+            "zh": "夜車的回歸\n幾年前，夜車在歐洲似乎是要被淘汰的模式。很多路線因為（1）獲利不足而停駛。現在它們卻經歷驚人的復興。特別是（2）為了氣候而想放棄搭飛機的年輕旅客，讓臥鋪車廂一位難求。奧地利聯邦鐵路最早（3）看出這個機會，開了新路線。不過這門生意一點也不簡單：車廂每晚只用一次，而且使用鐵軌的費用在每個國家都（4）另外要付。此外，車程往往比大家習慣的高速列車（5）長得多。儘管如此，很多旅客還是樂於（6）接受：睡覺的人不會浪費時間。這個趨勢能否（7）長久持續，很大程度取決於政府是否願意讓鐵路在財務上和飛機（8）處於平等地位。",
+            "en": "The return of night trains\nOnly a few years ago night trains in Europe seemed to be a dying model. Many connections were (1) discontinued because of a lack of profitability. Now they are experiencing an astonishing renaissance. Above all younger travellers who want to give up flying (2) for the sake of the climate are filling the sleeping cars. Austrian Federal Railways were the first to recognise (3) this opportunity and opened new routes. But the business is anything but easy: the carriages are used only once a night, and the fees for using the tracks are charged (4) separately in each country. In addition, journey times are often much longer (5) than people are used to from high-speed trains. Nevertheless many passengers are happy to (6) accept this: whoever sleeps loses no time. Whether the trend (7) prevails in the long term depends not least on whether politicians are willing to put rail (8) on an equal footing with air travel financially."
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "wegen",
+                "trotz",
+                "statt",
+                "während"
+              ],
+              "answer": 0,
+              "zh": "「wegen mangelnder Rentabilität」：因為獲利不足而停駛。trotz（儘管）意思相反。",
+              "en": "\"wegen\" — because of the lack of profit; \"trotz\" means the opposite."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "anstelle",
+                "zuliebe",
+                "außerhalb",
+                "zugunsten"
+              ],
+              "answer": 3,
+              "zh": "「zugunsten des Klimas」：為了氣候（＋第二格）。zuliebe 要放在名詞後面接第三格（dem Klima zuliebe）。",
+              "en": "\"zugunsten des Klimas\" — for the sake of the climate (+ genitive); \"zuliebe\" follows a dative."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "diese",
+                "dieser",
+                "diesen",
+                "dieses"
+              ],
+              "answer": 0,
+              "zh": "erkennen 接第四格，die Chance 陰性：diese Chance。",
+              "en": "erkennen takes the accusative: diese Chance."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "gemeinsam",
+                "zusammen",
+                "gesondert",
+                "kostenlos"
+              ],
+              "answer": 2,
+              "zh": "「gesondert anfallen」：在每個國家另外收費。",
+              "en": "\"gesondert\" — charged separately in each country."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "wie",
+                "als",
+                "dass",
+                "ob"
+              ],
+              "answer": 1,
+              "zh": "比較級 länger 後面接 als。",
+              "en": "A comparative takes \"als\"."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "an",
+                "zum",
+                "auf",
+                "in"
+              ],
+              "answer": 3,
+              "zh": "「etwas in Kauf nehmen」：甘願接受，固定說法。",
+              "en": "\"etwas in Kauf nehmen\" — to accept something."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "dauerhaft",
+                "vorläufig",
+                "kurzfristig",
+                "einmalig"
+              ],
+              "answer": 0,
+              "zh": "「長久」持續：dauerhaft。其他都表示短暫。",
+              "en": "\"dauerhaft\" — for good; the others mean short-term."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "gleich",
+                "fest",
+                "ab",
+                "vor"
+              ],
+              "answer": 0,
+              "zh": "「gleichstellen」：讓…處於平等地位。feststellen（確認）、abstellen（關掉）、vorstellen（介紹）都不通。",
+              "en": "\"gleichstellen\" — to put on an equal footing."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "n_options": 3,
+          "text": "Lob der Langeweile\nLangeweile hat einen schlechten Ruf. Kaum entsteht eine Lücke im Tagesablauf — an der Bushaltestelle, im Wartezimmer, in der Schlange an der Kasse —, greifen die meisten von uns zum Smartphone. Dabei deuten neuere Studien darauf hin, dass wir uns damit um etwas Wertvolles bringen.\nIn einem viel zitierten Experiment mussten Versuchspersonen zunächst eine stumpfsinnige Aufgabe erledigen: Sie schrieben eine Viertelstunde lang Telefonnummern ab. Anschließend sollten sie sich möglichst viele Verwendungen für einen Plastikbecher ausdenken. Diejenigen, die sich vorher gelangweilt hatten, kamen auf deutlich originellere Ideen als eine Vergleichsgruppe. Die Forscherinnen erklären das damit, dass das Gehirn in Phasen ohne äußere Reize zu „wandern“ beginnt und dabei unerwartete Verbindungen herstellt.\nDas heißt nicht, dass jede Form der Langeweile förderlich wäre. Wer über Monate hinweg in einer unterfordernden Tätigkeit feststeckt, riskiert Unzufriedenheit bis hin zu Erschöpfung — Psychologen sprechen vom „Boreout“. Entscheidend ist offenbar, ob die Langeweile vorübergehend ist und ob man ihr Raum lässt, statt sie sofort zu bekämpfen.\nFür Eltern ergibt sich daraus eine unbequeme Empfehlung: Kinder müssen nicht rund um die Uhr beschäftigt werden. Wer sich langweilt, erfindet Spiele, baut Höhlen aus Decken oder beginnt zu zeichnen. Die Aufgabe der Erwachsenen bestünde dann vor allem darin, das Quengeln auszuhalten.",
+          "tr": {
+            "zh": "讚美無聊\n無聊的名聲不好。日程中一出現空檔——在公車站、在候診室、在收銀台排隊——我們大多數人就會拿起手機。但較新的研究顯示，我們這樣做反而失去了某種寶貴的東西。\n在一個常被引用的實驗中，受試者先要完成一件枯燥的工作：花十五分鐘抄寫電話號碼。接著他們要盡量想出塑膠杯的各種用途。事前覺得無聊的人，想出的點子明顯比對照組更有創意。研究人員解釋，大腦在沒有外在刺激的時候會開始「漫遊」，並建立意想不到的連結。\n這不表示每種無聊都有益。好幾個月卡在大材小用的工作裡的人，可能會不滿甚至耗竭——心理學家稱為「無聊倦怠」。關鍵顯然在於無聊是不是暫時的，以及我們是否給它空間，而不是馬上對抗它。\n對父母來說，這帶出一個令人不太舒服的建議：孩子不必一天到晚都有事做。覺得無聊的孩子會發明遊戲、用毯子搭洞穴，或開始畫畫。大人的任務主要就是忍受孩子的哼哼唧唧。",
+            "en": "In praise of boredom\nBoredom has a bad reputation. As soon as there's a gap in the day — at the bus stop, in the waiting room, in the queue at the checkout — most of us reach for our smartphones. Yet newer studies suggest that in doing so we deprive ourselves of something valuable.\nIn a much-cited experiment, participants first had to do a mind-numbing task: they copied out telephone numbers for a quarter of an hour. Then they were asked to think of as many uses for a plastic cup as possible. Those who had been bored beforehand came up with much more original ideas than a comparison group. The researchers explain this by saying that in phases without external stimuli the brain begins to \"wander\" and makes unexpected connections.\nThat doesn't mean every kind of boredom is beneficial. Anyone stuck in an under-challenging job for months risks dissatisfaction or even exhaustion — psychologists speak of \"boreout\". What matters, apparently, is whether the boredom is temporary and whether we give it room instead of fighting it immediately.\nFor parents this leads to an uncomfortable recommendation: children don't have to be kept busy round the clock. Children who are bored invent games, build dens out of blankets or start drawing. The adults' task would then be mainly to put up with the whining."
+          },
+          "questions": [
+            {
+              "q": "Was tun viele Menschen, wenn sie kurz warten müssen?",
+              "options": [
+                "Sie lesen ein Buch.",
+                "Sie schauen auf ihr Handy.",
+                "Sie sprechen mit anderen."
+              ],
+              "answer": 1,
+              "zh": "一有空檔就拿起手機。",
+              "en": "They reach for their smartphones."
+            },
+            {
+              "q": "Was sollten die Versuchspersonen zuerst tun?",
+              "options": [
+                "eine langweilige Aufgabe erledigen",
+                "Plastikbecher sortieren",
+                "sich entspannen"
+              ],
+              "answer": 0,
+              "zh": "先花十五分鐘抄電話號碼。",
+              "en": "First copy out phone numbers."
+            },
+            {
+              "q": "Was zeigte das Experiment?",
+              "options": [
+                "Langeweile macht müde.",
+                "Die Vergleichsgruppe war kreativer.",
+                "Wer sich gelangweilt hatte, war kreativer."
+              ],
+              "answer": 2,
+              "zh": "事前無聊的人想出更有創意的點子。",
+              "en": "The bored group had more original ideas."
+            },
+            {
+              "q": "Wie erklären die Forscherinnen das Ergebnis?",
+              "options": [
+                "Das Gehirn verknüpft ohne Reize Gedanken neu.",
+                "Langweilige Aufgaben trainieren das Gedächtnis.",
+                "Die Versuchspersonen waren besonders intelligent."
+              ],
+              "answer": 0,
+              "zh": "沒有外在刺激時大腦會「漫遊」並建立新連結。",
+              "en": "Without stimuli the brain wanders and makes new connections."
+            },
+            {
+              "q": "Was ist mit „Boreout“ gemeint?",
+              "options": [
+                "eine kurze Pause",
+                "Erschöpfung durch dauerhafte Unterforderung",
+                "ein neues Freizeitangebot"
+              ],
+              "answer": 1,
+              "zh": "長期大材小用導致的不滿甚至耗竭。",
+              "en": "Exhaustion from long under-challenge."
+            },
+            {
+              "q": "Wann ist Langeweile nützlich?",
+              "options": [
+                "wenn sie Monate dauert",
+                "wenn man sie schnell beendet",
+                "wenn sie vorübergehend ist und man sie zulässt"
+              ],
+              "answer": 2,
+              "zh": "暫時的、而且給它空間。",
+              "en": "When temporary and given room."
+            },
+            {
+              "q": "Was sollen Eltern laut dem Text tun?",
+              "options": [
+                "ihren Kindern mehr Angebote machen",
+                "die Klagen der Kinder ertragen",
+                "mit den Kindern Höhlen bauen"
+              ],
+              "answer": 1,
+              "zh": "大人的任務是忍受孩子的哼哼唧唧。",
+              "en": "Put up with the whining."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 3,
+          "ask": "en_gapped",
+          "text": "Kommentar: Brauchen wir ein soziales Pflichtjahr?\nImmer wieder wird gefordert, alle jungen Menschen sollten nach der Schule ein Jahr lang im sozialen Bereich arbeiten. (16) ＿＿＿＿＿ Die Argumente der Befürworter klingen überzeugend. (17) ＿＿＿＿＿ Junge Leute aus unterschiedlichen Milieus würden einander begegnen, und Pflegeheime oder Kitas bekämen dringend benötigte Unterstützung. Doch genau hier liegt das erste Problem. (18) ＿＿＿＿＿ Unmotivierte Helfer können mehr schaden als nützen, gerade im Umgang mit Kranken oder Kindern. (19) ＿＿＿＿＿ Hinzu kommen verfassungsrechtliche Bedenken: Das Grundgesetz verbietet Zwangsarbeit ausdrücklich. (20) ＿＿＿＿＿ Ein weiterer Einwand betrifft die Kosten. (21) ＿＿＿＿＿ Statt einer Pflicht wäre es daher klüger, die bestehenden Freiwilligendienste attraktiver zu machen. (22) ＿＿＿＿＿ Wer gute Bedingungen bietet, muss niemanden zwingen. (23) ＿＿＿＿＿",
+          "bank": [
+            "Eine Pflicht würde Menschen in Einrichtungen bringen, die dort gar nicht sein wollen.",
+            "Die Debatte flammt meist dann auf, wenn von mangelndem Zusammenhalt in der Gesellschaft die Rede ist.",
+            "Sie würde also eine Änderung der Verfassung erfordern — eine hohe Hürde.",
+            "Unterkunft, Verpflegung und Betreuung von rund 700 000 jungen Menschen pro Jahr würden Milliarden kosten.",
+            "Ein solches Jahr, heißt es, stärke das Verantwortungsbewusstsein und den Zusammenhalt.",
+            "Ein angemessenes Taschengeld, kostenlose Bahntickets und die Anerkennung für das Studium wären ein Anfang.",
+            "Fachkräfte müssten zudem viel Zeit in die Einarbeitung stecken, die ihnen dann im Alltag fehlt.",
+            "Die Erfahrung zeigt, dass Menschen sich gern engagieren, wenn man es ihnen leicht macht.",
+            "Deshalb haben fast alle europäischen Länder ein solches Jahr bereits eingeführt.",
+            "Die meisten jungen Menschen lehnen jede Form von Engagement ab."
+          ],
+          "tr": {
+            "zh": "評論：我們需要社會服務義務年嗎？\n一再有人主張，所有年輕人畢業後都應該在社福領域工作一年。（16）支持者的論點聽起來很有說服力。（17）來自不同背景的年輕人會彼此相遇，養老院或托兒所也能得到急需的支援。但問題就出在這裡。（18）沒有動力的幫手可能弊大於利，尤其是在面對病人或孩子時。（19）此外還有憲法上的疑慮：基本法明文禁止強迫勞動。（20）另一個反對理由和費用有關。（21）因此，與其強制，不如讓現有的志願服務更有吸引力。（22）提供好條件的人就不必強迫任何人。（23）\nA 義務會把人帶進他們根本不想待的機構。\nB 這個討論通常是在談到社會缺乏凝聚力時又被點燃。\nC 所以這需要修憲——門檻很高。\nD 每年約七十萬年輕人的住宿、伙食和輔導要花費數十億。\nE 據說這樣的一年能增強責任感和凝聚力。\nF 合理的零用金、免費火車票和對升學的認可會是個開始。\nG 此外，專業人員還得花很多時間帶新人，日常工作就少了這些時間。\nH 經驗顯示，只要讓事情變容易，人們就樂於投入。\nI 所以幾乎所有歐洲國家都已經實施這樣的一年。\nJ 大多數年輕人拒絕任何形式的投入。",
+            "en": "Commentary: Do we need a compulsory social year?\nTime and again it is demanded that all young people should work in the social sector for a year after school. (16) The supporters' arguments sound convincing. (17) Young people from different backgrounds would meet each other, and care homes or nurseries would get urgently needed support. But this is exactly where the first problem lies. (18) Unmotivated helpers can do more harm than good, especially with sick people or children. (19) There are also constitutional concerns: the Basic Law expressly forbids forced labour. (20) A further objection concerns the costs. (21) Instead of an obligation it would therefore be wiser to make the existing voluntary services more attractive. (22) Whoever offers good conditions doesn't have to force anyone. (23)\nA An obligation would bring people into institutions where they don't want to be at all.\nB The debate usually flares up when there is talk of a lack of cohesion in society.\nC It would therefore require a change to the constitution — a high hurdle.\nD Accommodation, food and supervision for around 700,000 young people a year would cost billions.\nE Such a year, it is said, strengthens the sense of responsibility and cohesion.\nF Reasonable pocket money, free train tickets and recognition for university studies would be a start.\nG Professionals would also have to spend a lot of time on training them, time they then lack in everyday work.\nH Experience shows that people like to get involved if you make it easy for them.\nI That's why almost all European countries have already introduced such a year.\nJ Most young people reject any form of engagement."
+          },
+          "questions": [
+            {
+              "q": "(16)",
+              "answer": "B",
+              "zh": "一再有人主張：這個討論在談到社會缺乏凝聚力時被點燃。",
+              "en": "The demand recurs: the debate flares up when cohesion is discussed."
+            },
+            {
+              "q": "(17)",
+              "answer": "E",
+              "zh": "支持者的論點：增強責任感和凝聚力。",
+              "en": "The supporters' argument."
+            },
+            {
+              "q": "(18)",
+              "answer": "A",
+              "zh": "「問題就出在這裡」：義務會把不想去的人帶進機構，接下一句「沒有動力的幫手」。",
+              "en": "The problem: unwilling people, then \"unmotivated helpers\"."
+            },
+            {
+              "q": "(19)",
+              "answer": "G",
+              "zh": "對機構的另一個負擔：專業人員得花時間帶新人。",
+              "en": "A further burden: training time."
+            },
+            {
+              "q": "(20)",
+              "answer": "C",
+              "zh": "基本法禁止強迫勞動 → 需要修憲。",
+              "en": "Forced labour is banned → a constitutional change."
+            },
+            {
+              "q": "(21)",
+              "answer": "D",
+              "zh": "費用：數十億。",
+              "en": "The cost: billions."
+            },
+            {
+              "q": "(22)",
+              "answer": "F",
+              "zh": "讓志願服務更有吸引力：零用金、車票、升學認可。",
+              "en": "Making voluntary service attractive: the concrete offers."
+            },
+            {
+              "q": "(23)",
+              "answer": "H",
+              "zh": "結論：讓事情變容易，人們就樂於投入。I、J 與文意不符。",
+              "en": "Conclusion: people engage when it's easy; I and J don't fit."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_who",
+          "bank": [
+            "Dr. Lea Hofmann, Bildungsforscherin — Schülerinnen und Schüler nutzen KI-Programme längst, ob die Schule es erlaubt oder nicht. Ein Verbot wäre daher naiv. Wir müssen stattdessen Aufgaben stellen, bei denen die Maschine nicht weiterhilft — etwa mündliche Prüfungen oder Projekte, bei denen der Arbeitsprozess bewertet wird.",
+            "Prof. Martin Seidel, Informatiker — Viele überschätzen, was diese Programme können. Sie formulieren elegant, liegen aber oft sachlich daneben. Wer das nicht weiß, übernimmt Fehler. Deshalb gehört in jeden Lehrplan, wie man Quellen prüft und Ergebnisse kritisch hinterfragt.",
+            "Sabine Okonkwo, Schulleiterin — An meiner Schule sehe ich vor allem eine Chance für schwächere Schüler. Wer zu Hause keine Hilfe bekommt, kann sich jetzt Aufgaben geduldig erklären lassen. Sorgen macht mir eher, dass die Lehrkräfte kaum fortgebildet werden.",
+            "Jan Petersen, Philosoph — Schreiben ist Denken. Wer seine Texte von einer Maschine verfassen lässt, verzichtet auf diesen Prozess. Ich fürchte, dass eine Generation heranwächst, die zwar gut formulierte Antworten hat, aber keine eigenen Gedanken mehr entwickelt.",
+            "Keine der vier Personen äußert das."
+          ],
+          "tr": {
+            "zh": "人工智慧在學校——四位專家的意見\nA 莉亞‧霍夫曼博士，教育研究者：不管學校允不允許，學生早就在用 AI 程式了。所以禁止很天真。我們反而要出機器幫不上忙的作業——例如口試，或評量工作過程的專題。\nB 馬丁‧賽德爾教授，資訊學家：很多人高估了這些程式的能力。它們措辭漂亮，但內容常常不對。不知道這點的人就會照抄錯誤。所以每份課綱都應該教怎麼查證資料來源、批判地檢視結果。\nC 莎賓娜‧奧孔克沃，校長：在我的學校，我主要看到的是給程度較弱學生的機會。在家得不到幫助的人，現在可以讓程式耐心地解釋作業。我比較擔心的是老師幾乎沒有接受進修。\nD 楊‧彼得森，哲學家：寫作就是思考。讓機器替自己寫文章的人，就放棄了這個過程。我擔心會長成一代人，雖然有措辭漂亮的答案，卻不再發展自己的想法。\nE 四個人都沒有這麼說。",
+            "en": "AI at school — four experts\nA Dr Lea Hofmann, education researcher — Pupils have long been using AI programs, whether the school allows it or not. A ban would therefore be naive. Instead we must set tasks where the machine doesn't help — oral exams, for instance, or projects in which the working process is assessed.\nB Prof. Martin Seidel, computer scientist — Many overestimate what these programs can do. They phrase things elegantly but are often factually wrong. Anyone who doesn't know that takes over mistakes. So every curriculum should include how to check sources and question results critically.\nC Sabine Okonkwo, head teacher — At my school I see above all an opportunity for weaker pupils. Those who get no help at home can now have tasks explained patiently. What worries me more is that teachers hardly receive any training.\nD Jan Petersen, philosopher — Writing is thinking. Anyone who lets a machine write their texts gives up this process. I fear that a generation is growing up that has well-phrased answers but no longer develops its own thoughts.\nE None of the four says this."
+          },
+          "questions": [
+            {
+              "q": "Ein Verbot von KI an Schulen ist unrealistisch.",
+              "answer": "A",
+              "zh": "A：學生早就在用，禁止很天真。",
+              "en": "A: a ban would be naive."
+            },
+            {
+              "q": "Die Programme machen oft inhaltliche Fehler.",
+              "answer": "B",
+              "zh": "B：措辭漂亮，內容常常不對。",
+              "en": "B: often factually wrong."
+            },
+            {
+              "q": "Benachteiligte Schüler könnten profitieren.",
+              "answer": "C",
+              "zh": "C：在家沒人幫的學生有機會。",
+              "en": "C: help for pupils without support at home."
+            },
+            {
+              "q": "KI sollte in Prüfungen ausdrücklich erlaubt werden.",
+              "answer": "E",
+              "zh": "沒有人這麼說；A 反而建議出機器幫不上忙的考試。",
+              "en": "Nobody says this; A suggests exams where AI can't help."
+            },
+            {
+              "q": "Durch KI könnte das selbstständige Denken verloren gehen.",
+              "answer": "D",
+              "zh": "D：寫作就是思考，擔心不再有自己的想法。",
+              "en": "D: writing is thinking."
+            },
+            {
+              "q": "Lehrerinnen und Lehrer müssten besser geschult werden.",
+              "answer": "C",
+              "zh": "C：擔心老師幾乎沒受進修。",
+              "en": "C: teachers hardly get training."
+            },
+            {
+              "q": "Schüler sollten lernen, Informationen zu überprüfen.",
+              "answer": "B",
+              "zh": "B：課綱應教怎麼查證資料來源。",
+              "en": "B: checking sources in every curriculum."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "n_options": 4,
+          "text": "Grüne Lungen unter Druck\nStadtbäume sind weit mehr als Dekoration. An heißen Tagen kann es unter einer großen Linde bis zu zehn Grad kühler sein (1) ＿＿＿＿＿ auf einem asphaltierten Platz in der Nähe. Doch gerade die Bäume, auf (2) ＿＿＿＿＿ die Städte in Zeiten des Klimawandels angewiesen sind, leiden selbst unter Hitze und Trockenheit. In Berlin mussten in den vergangenen Sommern Tausende abgestorbene Straßenbäume (3) ＿＿＿＿＿ werden. Viele Kommunen setzen deshalb inzwischen auf Arten aus Südeuropa, die mit wenig Wasser (4) ＿＿＿＿＿ kommen. Experten warnen allerdings davor, sich allein auf diese Strategie zu (5) ＿＿＿＿＿: Fremde Arten bieten heimischen Insekten oft kaum Nahrung. (6) ＿＿＿＿＿ wichtiger sei es, den Bäumen mehr Platz für ihre Wurzeln zu geben. In engen Straßen konkurrieren sie mit Leitungen und Kabeln, (7) ＿＿＿＿＿ sie selten älter als vierzig Jahre werden. Manche Städte rufen ihre Bürger mittlerweile dazu auf, im Sommer einen Baum vor dem Haus zu gießen — eine kleine Geste mit (8) ＿＿＿＿＿ Wirkung.",
+          "tr": {
+            "zh": "承受壓力的綠肺\n行道樹遠不只是裝飾。炎熱的日子裡，一棵大椴樹下可能比附近的柏油廣場（1）涼十度。但正是氣候變遷時代城市所（2）依賴的這些樹，自己也受高溫和乾旱所苦。過去幾個夏天，柏林有數千棵枯死的行道樹必須被（3）砍除。因此現在很多市鎮改種來自南歐、用很少的水就能（4）存活的樹種。不過專家警告不要只（5）依賴這個策略：外來樹種常常幾乎無法給本地昆蟲提供食物。（6）更重要的是給樹的根更多空間。在狹窄的街道上，它們要和管線、電纜搶空間，（7）因此很少活過四十年。有些城市現在呼籲市民夏天給家門前的樹澆水——一個小動作，卻有（8）很大的效果。",
+            "en": "Green lungs under pressure\nCity trees are far more than decoration. On hot days it can be up to ten degrees cooler under a large lime tree (1) than on an asphalted square nearby. But the very trees on (2) which cities depend in times of climate change are themselves suffering from heat and drought. In Berlin thousands of dead street trees had to be (3) felled in recent summers. Many municipalities are therefore turning to species from southern Europe that (4) get by with little water. Experts warn, however, against (5) relying on this strategy alone: foreign species often offer native insects hardly any food. (6) It is even more important to give trees more room for their roots. In narrow streets they compete with pipes and cables, (7) so that they rarely live beyond forty. Some cities now call on residents to water a tree in front of their house in summer — a small gesture with (8) a big effect."
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "wie",
+                "als",
+                "wenn",
+                "so"
+              ],
+              "answer": 1,
+              "zh": "比較級 kühler 後接 als。",
+              "en": "A comparative takes \"als\"."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "denen",
+                "die",
+                "deren",
+                "welchen"
+              ],
+              "answer": 1,
+              "zh": "angewiesen sein auf ＋第四格：auf die（Bäume）。",
+              "en": "\"angewiesen auf\" + accusative: auf die."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "gepflanzt",
+                "gegossen",
+                "gefällt",
+                "gefallen"
+              ],
+              "answer": 2,
+              "zh": "枯死的樹必須被「砍除」：gefällt（fällen）。gefallen 是「掉落」，不能接 werden；枯樹不必澆水或種植。",
+              "en": "\"gefällt\" — felled; \"gefallen\" is \"fallen\"."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "an",
+                "mit",
+                "zurecht",
+                "aus"
+              ],
+              "answer": 3,
+              "zh": "「mit wenig Wasser auskommen」：用很少的水就能過活。",
+              "en": "\"auskommen mit\" — to manage with."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "vertrauen",
+                "beziehen",
+                "verlassen",
+                "berufen"
+              ],
+              "answer": 2,
+              "zh": "「sich auf etwas verlassen」：依賴。vertrauen 不用 sich；beziehen（涉及）、berufen（援引）意思不通。",
+              "en": "\"sich verlassen auf\" — to rely on."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "Schon",
+                "Sehr",
+                "Gar",
+                "Noch"
+              ],
+              "answer": 3,
+              "zh": "「Noch wichtiger」：更重要。",
+              "en": "\"Noch wichtiger\" — even more important."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "damit",
+                "sodass",
+                "obwohl",
+                "falls"
+              ],
+              "answer": 1,
+              "zh": "結果：因此很少活過四十年。sodass 表結果。",
+              "en": "\"sodass\" introduces the result."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "großer",
+                "große",
+                "großen",
+                "großes"
+              ],
+              "answer": 0,
+              "zh": "mit ＋第三格，陰性 Wirkung：mit großer Wirkung。",
+              "en": "mit + dative feminine: großer."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "n_options": 3,
+          "text": "Die Macht der Gewohnheit\nRund 40 Prozent unserer täglichen Handlungen, so schätzen Psychologen, führen wir nicht aufgrund bewusster Entscheidungen aus, sondern aus Gewohnheit. Wir putzen uns die Zähne, nehmen denselben Weg zur Arbeit und greifen abends zur Fernbedienung, ohne darüber nachzudenken. Das ist kein Zeichen von Bequemlichkeit, sondern eine kluge Einrichtung des Gehirns: Es spart Energie, die es für neue, schwierige Aufgaben braucht.\nProblematisch wird es, wenn wir eine Gewohnheit ändern wollen. Gute Vorsätze scheitern meist nicht an mangelndem Willen, sondern daran, dass die alte Routine durch Auslöser in der Umgebung immer wieder aktiviert wird. Wer jeden Abend auf dem Sofa Chips isst, verbindet irgendwann das Sofa selbst mit Chips. Die Forschung empfiehlt deshalb, nicht gegen die Gewohnheit anzukämpfen, sondern die Umgebung zu verändern — etwa die Chips gar nicht erst zu kaufen.\nEin günstiger Moment für Veränderungen sind Umbrüche im Leben: ein Umzug, ein neuer Job, die Geburt eines Kindes. In solchen Phasen lösen sich alte Muster ohnehin auf. Wer dann gezielt neue Routinen etabliert, hat bessere Chancen.\nDie viel zitierte Faustregel, eine neue Gewohnheit sei nach 21 Tagen gefestigt, hält der Überprüfung übrigens nicht stand. Eine britische Studie kam auf durchschnittlich 66 Tage — mit enormen Unterschieden je nach Person und Verhalten.",
+          "tr": {
+            "zh": "習慣的力量\n心理學家估計，我們每天約 40% 的行為不是出於有意識的決定，而是出於習慣。我們刷牙、走同一條路上班、晚上伸手拿遙控器，都不加思索。這不是懶惰的表現，而是大腦聰明的設計：它省下能量，留給新的、困難的任務。\n想改變習慣時就麻煩了。好的決心通常不是敗在意志不足，而是敗在環境裡的觸發因素一再啟動舊的慣例。每天晚上在沙發上吃洋芋片的人，到後來會把沙發本身和洋芋片連在一起。所以研究建議不要和習慣對抗，而是改變環境——例如乾脆不要買洋芋片。\n生活中的轉變是改變的好時機：搬家、新工作、孩子出生。在這種階段，舊的模式本來就會鬆動。這時有意識地建立新慣例的人，成功機會比較大。\n順帶一提，常被引用的「21 天養成新習慣」經驗法則經不起檢驗。一項英國研究得出的平均是 66 天——而且因人、因行為差異極大。",
+            "en": "The power of habit\nAround 40 per cent of our daily actions, psychologists estimate, are carried out not because of conscious decisions but out of habit. We brush our teeth, take the same route to work and reach for the remote control in the evening without thinking about it. That is not a sign of laziness but a clever arrangement of the brain: it saves energy that it needs for new, difficult tasks.\nIt becomes problematic when we want to change a habit. Good resolutions usually fail not because of a lack of will but because the old routine is activated again and again by triggers in the environment. Anyone who eats crisps on the sofa every evening eventually links the sofa itself with crisps. Research therefore recommends not fighting the habit but changing the environment — for example, not buying the crisps in the first place.\nTurning points in life are a good moment for change: a move, a new job, the birth of a child. In such phases old patterns dissolve anyway. Anyone who deliberately establishes new routines then has better chances.\nThe much-quoted rule of thumb that a new habit is established after 21 days doesn't stand up to scrutiny, by the way. A British study arrived at an average of 66 days — with enormous differences depending on the person and the behaviour."
+          },
+          "questions": [
+            {
+              "q": "Wie viele unserer täglichen Handlungen sind Gewohnheit?",
+              "options": [
+                "fast alle",
+                "etwa vier von zehn",
+                "nur wenige"
+              ],
+              "answer": 1,
+              "zh": "約 40%。",
+              "en": "About 40 per cent."
+            },
+            {
+              "q": "Warum hat das Gehirn Gewohnheiten?",
+              "options": [
+                "um Energie zu sparen",
+                "weil Menschen bequem sind",
+                "um Fehler zu vermeiden"
+              ],
+              "answer": 0,
+              "zh": "省下能量留給新任務；不是懶惰。",
+              "en": "To save energy; not laziness."
+            },
+            {
+              "q": "Warum scheitern gute Vorsätze oft?",
+              "options": [
+                "Den Menschen fehlt der Wille.",
+                "Die Ziele sind zu hoch.",
+                "Die Umgebung löst die alte Routine aus."
+              ],
+              "answer": 2,
+              "zh": "不是意志不足，而是環境觸發舊慣例。",
+              "en": "Triggers in the environment, not weak will."
+            },
+            {
+              "q": "Was bedeutet das Beispiel mit dem Sofa?",
+              "options": [
+                "Ein Ort kann zum Auslöser werden.",
+                "Sofas sind ungesund.",
+                "Man sollte abends nicht essen."
+              ],
+              "answer": 0,
+              "zh": "沙發本身變成和洋芋片連在一起的觸發因素。",
+              "en": "A place becomes a trigger."
+            },
+            {
+              "q": "Was empfiehlt die Forschung?",
+              "options": [
+                "jeden Tag gegen die Gewohnheit zu kämpfen",
+                "die Umgebung zu verändern",
+                "sich zu belohnen"
+              ],
+              "answer": 1,
+              "zh": "不要對抗，而是改變環境。",
+              "en": "Change the environment instead of fighting."
+            },
+            {
+              "q": "Wann lassen sich Gewohnheiten leichter ändern?",
+              "options": [
+                "im Urlaub",
+                "wenn sich im Leben viel verändert",
+                "am Anfang des Jahres"
+              ],
+              "answer": 1,
+              "zh": "搬家、新工作、孩子出生等轉變期。",
+              "en": "At turning points in life."
+            },
+            {
+              "q": "Was sagt der Text über die 21-Tage-Regel?",
+              "options": [
+                "Sie stimmt für die meisten Menschen.",
+                "Sie gilt nur für einfache Gewohnheiten.",
+                "Sie ist wissenschaftlich nicht haltbar."
+              ],
+              "answer": 2,
+              "zh": "「經不起檢驗」，研究平均 66 天。",
+              "en": "It doesn't stand up; the average is 66 days."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 3,
+          "ask": "en_gapped",
+          "text": "Kommentar: Ein Tempolimit auf Autobahnen — endlich?\nDeutschland ist eines der letzten Länder der Welt ohne generelles Tempolimit auf Autobahnen. (16) ＿＿＿＿＿ Für viele ist das ein Stück Freiheit, für andere ein Anachronismus. Die Fakten sind eigentlich eindeutig. (17) ＿＿＿＿＿ Hinzu kommt die Sicherheit: Auf Abschnitten mit Begrenzung gibt es nachweislich weniger schwere Unfälle. (18) ＿＿＿＿＿ Warum also hält sich der Widerstand so hartnäckig? (19) ＿＿＿＿＿ Das schnelle Fahren ist für manche Teil der eigenen Identität, und die Autoindustrie wirbt bis heute mit Höchstgeschwindigkeiten. (20) ＿＿＿＿＿ Dabei fahren schon jetzt die meisten Autofahrer selten schneller als 130. (21) ＿＿＿＿＿ Wer ein Tempolimit einführen will, sollte daher nicht mit Verboten argumentieren, sondern mit Gelassenheit. (22) ＿＿＿＿＿ Vielleicht ist das am Ende das überzeugendste Argument. (23) ＿＿＿＿＿",
+          "bank": [
+            "Ein Limit von 130 km/h würde den CO₂-Ausstoß im Verkehr spürbar senken, ohne dass es etwas kostet.",
+            "Auf etwa zwei Dritteln des Netzes darf man so schnell fahren, wie man will.",
+            "Die Antwort hat weniger mit Vernunft zu tun als mit Gefühlen.",
+            "Wer mit gleichmäßigem Tempo fährt, kommt entspannter an — und oft kaum später.",
+            "Auch der Verkehr fließt gleichmäßiger, weil weniger stark gebremst werden muss.",
+            "Ein Gesetz würde für sie also kaum etwas ändern.",
+            "Wer daran rüttelt, scheint den Menschen etwas wegnehmen zu wollen.",
+            "Denn eine Mehrheit der Bevölkerung ist laut Umfragen längst dafür.",
+            "Deshalb hat die Regierung das Tempolimit im vergangenen Jahr eingeführt.",
+            "Auf Landstraßen gibt es in Deutschland ebenfalls kein Limit."
+          ],
+          "tr": {
+            "zh": "評論：高速公路限速——終於要來了？\n德國是世界上最後幾個高速公路沒有全面限速的國家之一。（16）對很多人來說這是一種自由，對另一些人則是時代錯置。事實其實很明確。（17）此外還有安全：有限速的路段，重大車禍經證實比較少。（18）那為什麼反對聲浪如此頑強？（19）對某些人來說，開快車是自我認同的一部分，汽車業至今還在用最高時速打廣告。（20）其實現在大部分駕駛人本來就很少開超過 130。（21）所以想推動限速的人，不該用禁令來論述，而要用從容。（22）也許這最終才是最有說服力的論點。（23）\nA 每小時 130 公里的限速會明顯降低交通的二氧化碳排放，而且不花一毛錢。\nB 在大約三分之二的路網上，想開多快就開多快。\nC 答案和理性的關係比較小，和情緒的關係比較大。\nD 以穩定速度開車的人到達時比較放鬆——而且往往不會晚多少。\nE 車流也比較順，因為不必那麼常急煞。\nF 所以一條法律對他們幾乎不會改變什麼。\nG 誰去動它，就好像要從人們手中拿走什麼東西。\nH 因為根據民調，大多數民眾早就贊成了。\nI 所以政府去年已經實施限速了。\nJ 德國的鄉間道路也沒有限速。",
+            "en": "Commentary: A speed limit on motorways — at last?\nGermany is one of the last countries in the world without a general speed limit on motorways. (16) For many that is a piece of freedom, for others an anachronism. The facts are actually clear. (17) Then there is safety: on sections with a limit there are demonstrably fewer serious accidents. (18) So why does the resistance persist so stubbornly? (19) Driving fast is part of some people's identity, and the car industry still advertises top speeds today. (20) Yet most drivers already rarely go faster than 130. (21) Anyone who wants to introduce a speed limit should therefore argue not with bans but with calm. (22) Perhaps that is in the end the most convincing argument. (23)\nA A limit of 130 km/h would noticeably reduce CO₂ emissions from traffic without costing anything.\nB On about two thirds of the network you may drive as fast as you like.\nC The answer has less to do with reason than with feelings.\nD Those who drive at a steady speed arrive more relaxed — and often hardly any later.\nE Traffic also flows more evenly because there is less heavy braking.\nF So a law would hardly change anything for them.\nG Anyone who touches it seems to want to take something away from people.\nH For according to polls a majority of the population has long been in favour.\nI That's why the government introduced the speed limit last year.\nJ There is no limit on country roads in Germany either."
+          },
+          "questions": [
+            {
+              "q": "(16)",
+              "answer": "B",
+              "zh": "沒有全面限速：三分之二路網想開多快都行。",
+              "en": "No general limit: two thirds of the network is unrestricted."
+            },
+            {
+              "q": "(17)",
+              "answer": "A",
+              "zh": "「事實很明確」：降低排放，不花錢。",
+              "en": "\"The facts are clear\": lower emissions at no cost."
+            },
+            {
+              "q": "(18)",
+              "answer": "E",
+              "zh": "安全之外：車流更順。",
+              "en": "Besides safety: smoother traffic."
+            },
+            {
+              "q": "(19)",
+              "answer": "C",
+              "zh": "為什麼還有反對？答案和情緒有關。",
+              "en": "Why the resistance? Feelings, not reason."
+            },
+            {
+              "q": "(20)",
+              "answer": "G",
+              "zh": "自我認同與廣告 → 動它就像要拿走東西。",
+              "en": "Identity and advertising → it feels like taking something away."
+            },
+            {
+              "q": "(21)",
+              "answer": "F",
+              "zh": "大部分人本來就很少超過 130 → 法律幾乎沒改變什麼。",
+              "en": "Most rarely exceed 130 → a law changes little for them."
+            },
+            {
+              "q": "(22)",
+              "answer": "D",
+              "zh": "用從容論述：穩定速度、放鬆到達。",
+              "en": "Argue with calm: arriving relaxed."
+            },
+            {
+              "q": "(23)",
+              "answer": "H",
+              "zh": "最後：大多數民眾早就贊成。I、J 與事實不符。",
+              "en": "Finally: most people already agree; I and J are false."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 4,
+          "ask": "en_who",
+          "bank": [
+            "Prof. Karin Vogel, Ernährungswissenschaftlerin — Aus gesundheitlicher Sicht spricht nichts gegen gelegentlichen Fleischkonsum. Problematisch ist die Menge: Die meisten Deutschen essen etwa doppelt so viel, wie empfohlen wird. Weniger, aber besseres Fleisch wäre ein vernünftiger Weg.",
+            "Dr. Tobias Lang, Agrarökonom — Billiges Fleisch ist nur deshalb billig, weil die Folgekosten — für Umwelt, Klima und Tierschutz — nicht im Preis stecken. Eine Abgabe auf tierische Produkte, deren Einnahmen Landwirten beim Umbau der Ställe helfen, halte ich für unvermeidlich.",
+            "Melanie Brandt, Köchin — In meinem Restaurant ist das vegetarische Menü inzwischen das beliebteste. Die Gäste vermissen nichts, wenn das Gemüse gut zubereitet ist. Das Problem ist eher, dass in der Ausbildung von Köchen pflanzliche Küche kaum vorkommt.",
+            "Henrik Meyer, Landwirt — Viele Verbraucher sagen in Umfragen, sie würden mehr für Fleisch aus artgerechter Haltung zahlen. Im Supermarkt greifen sie dann doch zum günstigsten Angebot. Solange das so ist, können wir Bauern die Ställe nicht umbauen.",
+            "Keine der vier Personen äußert das."
+          ],
+          "tr": {
+            "zh": "肉類消費的未來——四位專家的意見\nA 卡琳‧佛格爾教授，營養學家：從健康角度看，偶爾吃肉沒什麼不好。問題在於量：大多數德國人吃的大約是建議量的兩倍。少一點但好一點的肉會是合理的做法。\nB 托比亞斯‧朗博士，農業經濟學家：便宜的肉之所以便宜，只是因為後續成本——對環境、氣候和動物保護——沒有算在價格裡。我認為對動物產品課稅、用稅收幫農民改建畜舍是無可避免的。\nC 梅蘭妮‧布蘭特，廚師：在我的餐廳，素食套餐現在是最受歡迎的。只要蔬菜料理得好，客人什麼也不會想念。問題比較在於廚師的養成教育裡幾乎沒有植物性料理。\nD 亨利克‧邁爾，農民：很多消費者在民調裡說，他們願意為符合動物福利飼養的肉多付錢。但在超市他們還是拿最便宜的。只要情況是這樣，我們農民就沒辦法改建畜舍。\nE 四個人都沒有這麼說。",
+            "en": "The future of meat consumption — four experts\nA Prof. Karin Vogel, nutritionist — From a health point of view there is nothing against eating meat occasionally. The problem is the amount: most Germans eat about twice as much as is recommended. Less but better meat would be a sensible way.\nB Dr Tobias Lang, agricultural economist — Cheap meat is only cheap because the consequential costs — for the environment, climate and animal welfare — are not included in the price. I consider a levy on animal products, whose revenue helps farmers convert their barns, unavoidable.\nC Melanie Brandt, chef — In my restaurant the vegetarian menu is now the most popular. Guests miss nothing when the vegetables are well prepared. The problem is rather that plant-based cooking hardly features in chefs' training.\nD Henrik Meyer, farmer — Many consumers say in surveys that they would pay more for meat from humane husbandry. In the supermarket they still reach for the cheapest offer. As long as that's so, we farmers can't convert our barns.\nE None of the four says this."
+          },
+          "questions": [
+            {
+              "q": "Der Preis von Fleisch spiegelt nicht die wahren Kosten wider.",
+              "answer": "B",
+              "zh": "B：後續成本沒算在價格裡。",
+              "en": "B: the consequential costs aren't in the price."
+            },
+            {
+              "q": "Die Kunden handeln anders, als sie sagen.",
+              "answer": "D",
+              "zh": "D：民調說願意多付，超市還是買最便宜的。",
+              "en": "D: they say one thing and buy another."
+            },
+            {
+              "q": "Fleisch sollte ganz verboten werden.",
+              "answer": "E",
+              "zh": "沒有人主張禁止；A 甚至說偶爾吃沒問題。",
+              "en": "Nobody wants a ban; A says occasional meat is fine."
+            },
+            {
+              "q": "Die Deutschen essen zu viel Fleisch.",
+              "answer": "A",
+              "zh": "A：吃的是建議量的兩倍。",
+              "en": "A: twice the recommended amount."
+            },
+            {
+              "q": "Fleischlose Gerichte sind bei den Gästen beliebt.",
+              "answer": "C",
+              "zh": "C：素食套餐最受歡迎。",
+              "en": "C: the vegetarian menu is most popular."
+            },
+            {
+              "q": "Landwirte brauchen finanzielle Hilfe für bessere Ställe.",
+              "answer": "B",
+              "zh": "B：用稅收幫農民改建畜舍。",
+              "en": "B: a levy to help farmers convert barns."
+            },
+            {
+              "q": "Die Ausbildung in Gastronomieberufen sollte sich ändern.",
+              "answer": "C",
+              "zh": "C：廚師教育幾乎沒有植物性料理。",
+              "en": "C: chefs' training lacks plant-based cooking."
             }
           ]
         }

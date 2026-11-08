@@ -4,7 +4,7 @@
   "level": "C1",
   "order": 5,
   "n_options": 3,
-  "note": "German C1 listening in the Goethe-Zertifikat C1 format (2024 handbook, EXAMS.md): Teil 1 a podcast on three books, which book ×6 (once); Teil 2 an interview on handwriting, stimmt / stimmt nicht / nicht gesagt ×9 (twice); Teil 3 a discussion on housing in four sections ×2 (once each); Teil 4 a lecture on language change ×7 (twice) — 30 questions; items name their part and plays. Original texts. Drafted in tools/.mockups/de_c1_ls.py.",
+  "note": "German C1 listening in the Goethe-Zertifikat C1 format (2024 handbook, EXAMS.md): Teil 1 a podcast on three books, which book ×6 (once); Teil 2 an interview on handwriting, stimmt / stimmt nicht / nicht gesagt ×9 (twice); Teil 3 a discussion on housing in four sections ×2 (once each); Teil 4 a lecture on language change ×7 (twice) — 30 questions; items name their part and plays. Original texts. Drafted in tools/.mockups/de_c1_ls.py (rounds 2–3: de_c1_ls_r23.py).",
   "types": [
     "en_match",
     "en_q",
@@ -930,6 +930,1860 @@
               "explain": {
                 "zh": "學校和行政需要有約束力的形式。",
                 "en": "Needed in schools and administration."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "type": "en_match",
+          "part": 1,
+          "plays": 1,
+          "n_options": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Podcast über aktuelle Ausstellungen.",
+              "zh": "你會聽到一集介紹近期展覽的 podcast。",
+              "en": "You will hear a podcast about current exhibitions."
+            },
+            {
+              "who": "M",
+              "s": "Willkommen bei „Kultur kompakt“. Drei Ausstellungen habe ich mir in dieser Woche angesehen. Die erste, „Licht und Schatten“ im Kunstmuseum, zeigt Fotografien aus den Zwanzigerjahren. Viele der Bilder waren noch nie öffentlich zu sehen; sie stammen aus dem Nachlass einer Fotografin, die zu Lebzeiten völlig unbekannt war. Ein Wermutstropfen: Die Räume sind so dunkel, dass man die kleinen Abzüge kaum erkennt.",
+              "zh": "歡迎收聽《文化精華》。這週我看了三個展覽。第一個是美術館的《光與影》，展出 1920 年代的攝影作品。很多照片從沒公開過；它們來自一位生前完全默默無聞的女攝影師的遺物。美中不足的是：展間暗到幾乎看不清那些小張的相片。",
+              "en": "Welcome to \"Culture Compact\". I visited three exhibitions this week. The first, \"Light and Shadow\" at the art museum, shows photographs from the 1920s. Many of the pictures have never been on public display; they come from the estate of a photographer who was completely unknown during her lifetime. One drawback: the rooms are so dark that you can hardly make out the small prints."
+            },
+            {
+              "who": "M",
+              "s": "Ganz anders „Die Erfindung des Alltags“ im Technikmuseum. Hier geht es um Gegenstände, die wir für selbstverständlich halten — den Reißverschluss, den Kühlschrank, die Konservendose. Besonders Familien werden ihren Spaß haben: Fast alles darf man anfassen und ausprobieren. Wer allerdings tiefere historische Hintergründe sucht, wird enttäuscht.",
+              "zh": "技術博物館的《日常的發明》則完全不同。展的是我們視為理所當然的東西——拉鍊、冰箱、罐頭。特別是家庭會玩得很開心：幾乎每樣東西都可以摸、可以試。不過想找更深入歷史背景的人會失望。",
+              "en": "Quite different is \"The Invention of Everyday Life\" at the technology museum. It's about objects we take for granted — the zip, the fridge, the tin can. Families especially will enjoy it: you may touch and try out almost everything. Anyone looking for deeper historical background, however, will be disappointed."
+            },
+            {
+              "who": "M",
+              "s": "Die dritte Ausstellung, „Grenzgänger“, erzählt die Geschichten von Menschen, die nach 1945 zwischen Ost und West pendelten. Hörstationen mit Originalinterviews machen sie lebendig. Die Ausstellung ist klein, aber bewegend — und sie wandert: Ab Herbst ist sie in Leipzig und Dresden zu sehen.",
+              "zh": "第三個展覽《越界者》講述 1945 年後往返東西德之間的人的故事。有原始訪談的聆聽站讓這些故事鮮活起來。展覽不大，但很動人——而且會巡迴：秋天起會在萊比錫和德勒斯登展出。",
+              "en": "The third exhibition, \"Border Crossers\", tells the stories of people who commuted between East and West after 1945. Listening stations with original interviews bring them to life. The exhibition is small but moving — and it travels: from autumn it can be seen in Leipzig and Dresden."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Werke einer zu Lebzeiten unbekannten Künstlerin werden gezeigt.",
+                "zh": "展出一位生前默默無聞的藝術家的作品。",
+                "en": "The works of an artist unknown in her lifetime are shown."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "第一個展覽：女攝影師生前完全無名。",
+                "en": "Exhibition 1."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Besucher können Exponate berühren.",
+                "zh": "參觀者可以觸摸展品。",
+                "en": "Visitors can touch the exhibits."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「幾乎每樣東西都可以摸」。",
+                "en": "Exhibition 2."
+              }
+            },
+            {
+              "ask": {
+                "s": "Man hört Zeitzeugen sprechen.",
+                "zh": "可以聽到見證者說話。",
+                "en": "You hear contemporary witnesses speak."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "有原始訪談的聆聽站。",
+                "en": "Exhibition 3: original interviews."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Beleuchtung ist nicht optimal.",
+                "zh": "照明不理想。",
+                "en": "The lighting is not ideal."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "展間暗到看不清相片。",
+                "en": "Exhibition 1: too dark."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Ausstellung wird später in anderen Städten gezeigt.",
+                "zh": "展覽之後會在其他城市展出。",
+                "en": "The exhibition will later be shown in other cities."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "秋天起在萊比錫和德勒斯登。",
+                "en": "Exhibition 3 travels."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wer viel Hintergrundwissen erwartet, kommt nicht auf seine Kosten.",
+                "zh": "期待深入背景知識的人會失望。",
+                "en": "Those expecting background knowledge won't get their money's worth."
+              },
+              "options": [
+                {
+                  "t": "Ausstellung 1 – „Licht und Schatten“"
+                },
+                {
+                  "t": "Ausstellung 2 – „Die Erfindung des Alltags“"
+                },
+                {
+                  "t": "Ausstellung 3 – „Grenzgänger“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "想找深入歷史背景的人會失望。",
+                "en": "Exhibition 2."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Radiointerview mit der Schlafforscherin Dr. Ruth Albers über das Thema Mittagsschlaf.",
+              "zh": "你會聽到一段廣播訪談，對象是睡眠研究者露絲‧阿爾貝斯博士，主題是午睡。",
+              "en": "You will hear a radio interview with sleep researcher Dr Ruth Albers about napping."
+            },
+            {
+              "who": "M",
+              "s": "Frau Dr. Albers, in Spanien gehört die Siesta zur Kultur, in Deutschland gilt ein Mittagsschlaf oft als faul. Zu Recht?",
+              "zh": "阿爾貝斯博士，在西班牙午睡是文化的一部分，在德國午睡常被認為是懶惰。這樣說對嗎？",
+              "en": "Dr Albers, in Spain the siesta is part of the culture; in Germany a nap is often considered lazy. Rightly?"
+            },
+            {
+              "who": "F",
+              "s": "Nein. Unser Körper hat am frühen Nachmittag ein natürliches Leistungstief — unabhängig davon, ob wir zu Mittag gegessen haben. Ein kurzer Schlaf von zehn bis zwanzig Minuten verbessert danach nachweislich die Konzentration und die Stimmung.",
+              "zh": "不對。我們的身體在下午稍早有一個自然的低潮——不管有沒有吃午餐。睡個十到二十分鐘的短覺，之後的專注力和心情都會明顯改善。",
+              "en": "No. Our body has a natural dip in performance in the early afternoon — regardless of whether we've had lunch. A short sleep of ten to twenty minutes demonstrably improves concentration and mood afterwards."
+            },
+            {
+              "who": "M",
+              "s": "Und wenn man länger schläft?",
+              "zh": "那如果睡久一點呢？",
+              "en": "And if you sleep longer?"
+            },
+            {
+              "who": "F",
+              "s": "Dann gerät man in den Tiefschlaf und wacht benommen auf. Das ist der Grund, warum viele Menschen glauben, ein Mittagsschlaf tue ihnen nicht gut. Mein Tipp: Trinken Sie vorher einen Kaffee. Das Koffein wirkt erst nach etwa zwanzig Minuten — genau dann, wenn Sie aufwachen sollten.",
+              "zh": "那就會進入深層睡眠，醒來時昏昏沉沉。這就是為什麼很多人認為午睡對自己不好。我的建議：睡前喝一杯咖啡。咖啡因大約二十分鐘後才發揮作用——剛好是該醒來的時候。",
+              "en": "Then you fall into deep sleep and wake up groggy. That's why many people think a nap doesn't do them good. My tip: drink a coffee beforehand. The caffeine only takes effect after about twenty minutes — exactly when you should wake up."
+            },
+            {
+              "who": "M",
+              "s": "Sollten Firmen Ruheräume einrichten?",
+              "zh": "公司應該設置休息室嗎？",
+              "en": "Should companies set up rest rooms?"
+            },
+            {
+              "who": "F",
+              "s": "Einige tun das bereits, vor allem in der IT-Branche. Ich halte es für sinnvoll, aber es ersetzt keinen ausreichenden Nachtschlaf. Wer nachts regelmäßig nur fünf Stunden schläft, kann das mittags nicht ausgleichen.",
+              "zh": "有些公司已經這麼做了，特別是資訊業。我認為這很有意義，但它不能取代夜裡充足的睡眠。夜裡經常只睡五小時的人，中午補不回來。",
+              "en": "Some already do, especially in IT. I think it makes sense, but it doesn't replace enough sleep at night. Anyone who regularly sleeps only five hours a night can't make up for it at lunchtime."
+            },
+            {
+              "who": "M",
+              "s": "Machen Sie selbst Mittagsschlaf?",
+              "zh": "您自己午睡嗎？",
+              "en": "Do you take a nap yourself?"
+            },
+            {
+              "who": "F",
+              "s": "Jeden Tag, auf dem Sofa in meinem Büro. Meine Kollegen haben sich längst daran gewöhnt.",
+              "zh": "每天，在我辦公室的沙發上。同事們早就習慣了。",
+              "en": "Every day, on the sofa in my office. My colleagues got used to it long ago."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Albers hält einen Mittagsschlaf für ein Zeichen von Faulheit.",
+                "zh": "阿爾貝斯認為午睡是懶惰的表現。",
+                "en": "Dr Albers thinks a nap is a sign of laziness."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "她說「不對」。",
+                "en": "She says no."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Leistungstief am Nachmittag hängt vom Mittagessen ab.",
+                "zh": "下午的低潮和午餐有關。",
+                "en": "The afternoon dip depends on lunch."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「不管有沒有吃午餐」。",
+                "en": "\"Regardless of lunch.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein kurzer Schlaf verbessert die Laune.",
+                "zh": "短暫的睡眠能改善心情。",
+                "en": "A short sleep improves mood."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "專注力和心情都會改善。",
+                "en": "Concentration and mood improve."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein langer Mittagsschlaf kann müde machen.",
+                "zh": "午睡太久可能讓人疲倦。",
+                "en": "A long nap can make you tired."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "進入深層睡眠，醒來昏沉。",
+                "en": "You wake up groggy."
+              }
+            },
+            {
+              "ask": {
+                "s": "Kaffee vor dem Schlafen verhindert das Einschlafen.",
+                "zh": "睡前喝咖啡會讓人睡不著。",
+                "en": "Coffee before sleeping stops you falling asleep."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "咖啡因二十分鐘後才作用，剛好叫醒你。",
+                "en": "Caffeine only acts after twenty minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "In der IT-Branche gibt es schon Ruheräume.",
+                "zh": "資訊業已經有休息室了。",
+                "en": "The IT sector already has rest rooms."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「有些公司已經這麼做了，特別是資訊業」。",
+                "en": "Some IT firms do."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ruheräume erhöhen die Produktivität um zwanzig Prozent.",
+                "zh": "休息室讓生產力提高百分之二十。",
+                "en": "Rest rooms increase productivity by twenty per cent."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "訪談沒有提到具體數字。",
+                "en": "No figure is mentioned."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein Mittagsschlaf kann zu wenig Schlaf in der Nacht ausgleichen.",
+                "zh": "午睡可以彌補夜裡睡不夠。",
+                "en": "A nap can make up for too little sleep at night."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「中午補不回來」。",
+                "en": "\"Can't make up for it.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Kollegen von Frau Albers machen ebenfalls Mittagsschlaf.",
+                "zh": "阿爾貝斯的同事也午睡。",
+                "en": "Dr Albers's colleagues nap too."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "只說同事習慣了，沒說他們也午睡。",
+                "en": "Only that they got used to it."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch über die Zukunft des Lesens. Abschnitt 1.",
+              "zh": "你會聽到一段關於閱讀未來的對談。第一段。",
+              "en": "You will hear a conversation about the future of reading. Section 1."
+            },
+            {
+              "who": "F",
+              "s": "Herr Dr. Brandt, Sie leiten eine Stadtbibliothek. Lesen die Menschen heute weniger als früher?",
+              "zh": "布蘭特博士，您主持一家市立圖書館。現在的人讀得比以前少嗎？",
+              "en": "Dr Brandt, you run a city library. Do people read less today than they used to?"
+            },
+            {
+              "who": "M",
+              "s": "Sie lesen anders. Die Zahl der Bücher, die pro Kopf gelesen werden, ist leicht gesunken. Aber wir lesen den ganzen Tag — Nachrichten, Mails, Beiträge in sozialen Medien. Was abnimmt, ist das lange, konzentrierte Lesen.",
+              "zh": "是讀法不同了。每人讀的書數略微下降。但我們整天都在讀——新聞、郵件、社群媒體的貼文。減少的是長時間、專注的閱讀。",
+              "en": "They read differently. The number of books read per person has fallen slightly. But we read all day — news, e-mails, posts on social media. What is declining is long, concentrated reading."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Laut Herrn Brandt…",
+                "zh": "根據布蘭特的說法……",
+                "en": "According to Dr Brandt…"
+              },
+              "options": [
+                {
+                  "t": "lesen die Menschen gar keine Bücher mehr."
+                },
+                {
+                  "t": "lesen die Menschen mehr Bücher als früher."
+                },
+                {
+                  "t": "nimmt vor allem das konzentrierte Lesen ab."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "減少的是長時間專注的閱讀。",
+                "en": "Long, concentrated reading is declining."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was lesen die Menschen heute viel?",
+                "zh": "現在的人大量閱讀什麼？",
+                "en": "What do people read a lot today?"
+              },
+              "options": [
+                {
+                  "t": "kurze Texte im Internet"
+                },
+                {
+                  "t": "Zeitungen auf Papier"
+                },
+                {
+                  "t": "Fachbücher"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "新聞、郵件、社群貼文。",
+                "en": "News, mails, social-media posts."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 2.",
+              "zh": "第二段。",
+              "en": "Section 2."
+            },
+            {
+              "who": "F",
+              "s": "Frau Professor Wendt, Sie erforschen, wie Kinder lesen lernen. Macht Ihnen diese Entwicklung Sorgen?",
+              "zh": "溫特教授，您研究孩子怎麼學閱讀。這個發展讓您擔心嗎？",
+              "en": "Professor Wendt, you research how children learn to read. Does this development worry you?"
+            },
+            {
+              "who": "F2",
+              "s": "Teilweise. Studien zeigen, dass wir Texte auf dem Bildschirm schneller, aber oberflächlicher lesen. Bei schwierigen Sachtexten verstehen Schüler auf Papier mehr. Für Unterhaltung spielt das Medium dagegen kaum eine Rolle.",
+              "zh": "部分會。研究顯示，我們在螢幕上讀得比較快，但比較膚淺。遇到困難的說明文，學生讀紙本理解得比較多。至於娛樂性的閱讀，媒介就幾乎沒有影響。",
+              "en": "Partly. Studies show that we read texts on screen faster but more superficially. With difficult non-fiction texts, pupils understand more on paper. For entertainment, on the other hand, the medium hardly matters."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was zeigen die Studien von Frau Wendt?",
+                "zh": "溫特的研究顯示什麼？",
+                "en": "What do Professor Wendt's studies show?"
+              },
+              "options": [
+                {
+                  "t": "Am Bildschirm liest man genauer."
+                },
+                {
+                  "t": "Bei schweren Sachtexten ist Papier besser."
+                },
+                {
+                  "t": "Kinder lesen am liebsten digital."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "困難的說明文讀紙本理解較多。",
+                "en": "Paper is better for difficult non-fiction."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bei Unterhaltungsliteratur…",
+                "zh": "娛樂性的讀物……",
+                "en": "With light fiction…"
+              },
+              "options": [
+                {
+                  "t": "ist das Medium fast egal."
+                },
+                {
+                  "t": "ist Papier deutlich besser."
+                },
+                {
+                  "t": "lesen Kinder schneller auf Papier."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "媒介幾乎沒有影響。",
+                "en": "The medium hardly matters."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 3.",
+              "zh": "第三段。",
+              "en": "Section 3."
+            },
+            {
+              "who": "M",
+              "s": "Wir Bibliotheken reagieren darauf. Wir verleihen E-Books, aber wir veranstalten auch Lesenächte für Jugendliche — ohne Handys. Die sind jedes Mal ausgebucht.",
+              "zh": "我們圖書館有因應。我們出借電子書，但也為青少年辦閱讀之夜——不帶手機。每次都額滿。",
+              "en": "We libraries are responding. We lend e-books, but we also hold reading nights for teenagers — without phones. They're booked out every time."
+            },
+            {
+              "who": "F2",
+              "s": "Das finde ich großartig. Entscheidend ist, dass Lesen nicht nur als Pflicht erlebt wird. Wer in der Schule nur Texte analysiert, verliert die Lust.",
+              "zh": "我覺得這太棒了。關鍵是閱讀不能只被當成義務。在學校只分析文章的人會失去興趣。",
+              "en": "I think that's great. What matters is that reading isn't experienced only as a duty. Those who only analyse texts at school lose the desire."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was bietet die Bibliothek für Jugendliche an?",
+                "zh": "圖書館為青少年提供什麼？",
+                "en": "What does the library offer teenagers?"
+              },
+              "options": [
+                {
+                  "t": "Kurse zu sozialen Medien"
+                },
+                {
+                  "t": "Abende zum Lesen ohne Handy"
+                },
+                {
+                  "t": "kostenlose Tablets"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "不帶手機的閱讀之夜。",
+                "en": "Phone-free reading nights."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum verlieren manche Schüler die Lust am Lesen?",
+                "zh": "為什麼有些學生失去閱讀興趣？",
+                "en": "Why do some pupils lose the desire to read?"
+              },
+              "options": [
+                {
+                  "t": "Sie haben keine Zeit."
+                },
+                {
+                  "t": "Die Bücher sind zu teuer."
+                },
+                {
+                  "t": "Lesen ist für sie nur eine Pflicht."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "只被當成義務、只分析文章。",
+                "en": "Reading feels only like a duty."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 4.",
+              "zh": "第四段。",
+              "en": "Section 4."
+            },
+            {
+              "who": "F",
+              "s": "Zum Schluss: Wird es in zwanzig Jahren noch gedruckte Bücher geben?",
+              "zh": "最後：二十年後還會有紙本書嗎？",
+              "en": "Finally: will there still be printed books in twenty years?"
+            },
+            {
+              "who": "M",
+              "s": "Ganz sicher. Das Buch hat schon das Radio, das Fernsehen und das Internet überlebt. Es wird vielleicht teurer und schöner gestaltet — ein Objekt, das man gern besitzt.",
+              "zh": "一定會。書已經熬過了廣播、電視和網路。它也許會變得比較貴、設計得更漂亮——一個大家樂於擁有的物品。",
+              "en": "Certainly. The book has already survived radio, television and the internet. It may become more expensive and more beautifully designed — an object people like to own."
+            },
+            {
+              "who": "F2",
+              "s": "Ich bin vorsichtiger. Für Schulbücher und Nachschlagewerke sehe ich auf Papier wenig Zukunft. Aber der Roman auf Papier wird bleiben.",
+              "zh": "我比較保守。教科書和工具書我不太看好紙本的未來。但紙本小說會留下來。",
+              "en": "I'm more cautious. For school books and reference works I see little future on paper. But the novel on paper will remain."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wie sieht Herr Brandt die Zukunft des gedruckten Buches?",
+                "zh": "布蘭特怎麼看紙本書的未來？",
+                "en": "How does Dr Brandt see the future of the printed book?"
+              },
+              "options": [
+                {
+                  "t": "Es wird ein besonderes, wertvolles Objekt."
+                },
+                {
+                  "t": "Es verschwindet bald."
+                },
+                {
+                  "t": "Es wird billiger."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "會變得比較貴、更漂亮，大家樂於擁有。",
+                "en": "More expensive and beautiful, something to own."
+              }
+            },
+            {
+              "ask": {
+                "s": "Frau Wendt glaubt, dass auf Papier…",
+                "zh": "溫特認為紙本……",
+                "en": "Professor Wendt believes that on paper…"
+              },
+              "options": [
+                {
+                  "t": "alle Bücher verschwinden."
+                },
+                {
+                  "t": "vor allem Romane überleben."
+                },
+                {
+                  "t": "nur Schulbücher bleiben."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "教科書沒什麼前景，小說會留下。",
+                "en": "Novels will remain; school books won't."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Ausschnitt aus einer Vorlesung über die Geschichte der Zeitmessung.",
+              "zh": "你會聽到一段關於計時史的課程節錄。",
+              "en": "You will hear an extract from a lecture on the history of timekeeping."
+            },
+            {
+              "who": "F",
+              "s": "Meine Damen und Herren, dass in ganz Deutschland zur selben Zeit zwölf Uhr ist, erscheint uns selbstverständlich. Bis ins späte 19. Jahrhundert war das nicht so. Jede Stadt richtete sich nach ihrer eigenen Sonnenzeit: Wenn es in Berlin Mittag war, zeigten die Uhren in München noch einige Minuten vor zwölf. Solange man mit der Kutsche reiste, störte das niemanden.",
+              "zh": "各位女士先生，全德國同時是十二點，在我們看來理所當然。但直到 19 世紀末都不是這樣。每座城市都依自己的太陽時間：柏林是正午時，慕尼黑的鐘還差幾分鐘才到十二點。只要大家還坐馬車旅行，就沒有人在意。",
+              "en": "Ladies and gentlemen, that it is twelve o'clock at the same time throughout Germany seems obvious to us. Until the late 19th century it was not so. Every town went by its own solar time: when it was noon in Berlin, clocks in Munich still showed a few minutes to twelve. As long as people travelled by coach, nobody minded."
+            },
+            {
+              "who": "F",
+              "s": "Erst die Eisenbahn machte das Durcheinander zum Problem. Fahrpläne mussten mit Dutzenden Ortszeiten rechnen, und Zusammenstöße auf eingleisigen Strecken waren die Folge. Die Bahngesellschaften führten deshalb eigene, einheitliche Bahnzeiten ein — zunächst nur für den internen Betrieb. An vielen Bahnhöfen hingen daher zwei Uhren. 1893 schließlich wurde die mitteleuropäische Zeit gesetzlich für das ganze Reich eingeführt. Interessant ist, dass es dagegen Widerstand gab: Manche Bürger empfanden es als Anmaßung, dass Berlin ihnen die Uhrzeit vorschreiben wollte. Heute stehen wir mit der Debatte um die Sommerzeit vor einer ähnlichen Frage: Wem gehört eigentlich die Zeit?",
+              "zh": "直到鐵路出現，這種混亂才成了問題。時刻表得算進幾十個地方時間，結果在單軌路段上發生了撞車。因此鐵路公司開始採用自己統一的鐵路時間——起初只用於內部營運。所以很多車站掛著兩個鐘。1893 年，中歐時間終於依法在全帝國實施。有趣的是當時有人反對：有些市民覺得柏林要規定他們幾點，是一種傲慢。今天在夏令時間的爭論中，我們也面對類似的問題：時間到底屬於誰？",
+              "en": "Only the railway turned the confusion into a problem. Timetables had to reckon with dozens of local times, and collisions on single-track lines were the result. The railway companies therefore introduced their own uniform railway times — at first only for internal operations. That's why many stations had two clocks. In 1893 Central European Time was finally introduced by law for the whole empire. Interestingly, there was resistance: some citizens felt it was presumptuous of Berlin to prescribe their time. Today, with the debate about summer time, we face a similar question: who does time actually belong to?"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wie war es bis ins späte 19. Jahrhundert?",
+                "zh": "直到 19 世紀末是怎樣的？",
+                "en": "What was it like until the late 19th century?"
+              },
+              "options": [
+                {
+                  "t": "Jede Stadt hatte ihre eigene Zeit."
+                },
+                {
+                  "t": "Ganz Deutschland hatte eine Zeit."
+                },
+                {
+                  "t": "Es gab keine öffentlichen Uhren."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "每座城市依自己的太陽時間。",
+                "en": "Each town had its own solar time."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum störten die Unterschiede zunächst niemanden?",
+                "zh": "為什麼起初這些差異沒人在意？",
+                "en": "Why did the differences bother nobody at first?"
+              },
+              "options": [
+                {
+                  "t": "Die Menschen hatten keine Uhren."
+                },
+                {
+                  "t": "Man reiste langsam."
+                },
+                {
+                  "t": "Die Unterschiede waren sehr groß."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "大家還坐馬車旅行。",
+                "en": "People travelled by coach."
+              }
+            },
+            {
+              "ask": {
+                "s": "Welches Problem brachte die Eisenbahn?",
+                "zh": "鐵路帶來什麼問題？",
+                "en": "What problem did the railway bring?"
+              },
+              "options": [
+                {
+                  "t": "Die Züge waren zu langsam."
+                },
+                {
+                  "t": "Die Fahrkarten waren zu teuer."
+                },
+                {
+                  "t": "Es kam zu Unfällen."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "單軌路段發生撞車。",
+                "en": "Collisions on single-track lines."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Bahnzeit galt zunächst…",
+                "zh": "鐵路時間起初……",
+                "en": "Railway time at first applied…"
+              },
+              "options": [
+                {
+                  "t": "für das ganze Land."
+                },
+                {
+                  "t": "nur innerhalb der Bahn."
+                },
+                {
+                  "t": "nur in Berlin."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「起初只用於內部營運」。",
+                "en": "\"At first only for internal operations.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum hingen an Bahnhöfen zwei Uhren?",
+                "zh": "為什麼車站掛兩個鐘？",
+                "en": "Why were there two clocks at stations?"
+              },
+              "options": [
+                {
+                  "t": "für die Bahnzeit und die Ortszeit"
+                },
+                {
+                  "t": "für Sommer- und Winterzeit"
+                },
+                {
+                  "t": "für Ankunft und Abfahrt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "鐵路時間只用於內部，所以和當地時間並存。",
+                "en": "Railway time and local time side by side."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie reagierten manche Bürger auf die einheitliche Zeit?",
+                "zh": "有些市民對統一時間有什麼反應？",
+                "en": "How did some citizens react to the uniform time?"
+              },
+              "options": [
+                {
+                  "t": "begeistert"
+                },
+                {
+                  "t": "gleichgültig"
+                },
+                {
+                  "t": "ablehnend"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "覺得柏林規定時間是傲慢。",
+                "en": "They found it presumptuous."
+              }
+            },
+            {
+              "ask": {
+                "s": "Womit vergleicht die Rednerin die damalige Diskussion?",
+                "zh": "演講者把當時的討論比作什麼？",
+                "en": "What does the speaker compare the debate of the time with?"
+              },
+              "options": [
+                {
+                  "t": "mit dem Streit um die Sommerzeit"
+                },
+                {
+                  "t": "mit dem Bau neuer Bahnstrecken"
+                },
+                {
+                  "t": "mit der Erfindung der Armbanduhr"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "今天夏令時間的爭論。",
+                "en": "Today's debate about summer time."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "type": "en_match",
+          "part": 1,
+          "plays": 1,
+          "n_options": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Podcast über neue Dokumentarfilme.",
+              "zh": "你會聽到一集介紹新紀錄片的 podcast。",
+              "en": "You will hear a podcast about new documentary films."
+            },
+            {
+              "who": "F",
+              "s": "Hallo und willkommen bei „Filmriss“. Heute geht es um drei neue Dokumentarfilme. „Der letzte Sommer“ begleitet eine Bauernfamilie in Brandenburg im Jahr, bevor sie ihren Hof aufgibt. Der Regisseur verzichtet völlig auf Kommentare — die Bilder sprechen für sich. Manchen wird das zu langsam sein, mich hat es tief berührt.",
+              "zh": "哈囉，歡迎收聽《斷片》。今天要談三部新紀錄片。《最後的夏天》記錄了布蘭登堡一個農家在放棄農場前的那一年。導演完全不用旁白——畫面自己會說話。有些人會覺得太慢，我則深受感動。",
+              "en": "Hello and welcome to \"Filmriss\". Today it's about three new documentaries. \"The Last Summer\" follows a farming family in Brandenburg in the year before they give up their farm. The director does without any commentary at all — the pictures speak for themselves. Some will find it too slow; it moved me deeply."
+            },
+            {
+              "who": "F",
+              "s": "„Unter Strom“ ist das Gegenteil: schnell geschnitten, mit viel Musik. Der Film untersucht, wie viel Energie das Internet verbraucht — vom Videostreaming bis zu riesigen Rechenzentren. Die Zahlen sind erschreckend, werden aber leider kaum eingeordnet. Am Ende war ich mehr verwirrt als informiert.",
+              "zh": "《通電中》正好相反：剪接快、音樂多。這部片探討網路耗費多少能源——從影音串流到巨大的資料中心。數字很驚人，可惜幾乎沒有加以解釋。看完我比較困惑，而不是比較了解。",
+              "en": "\"Live Wire\" is the opposite: fast cuts and lots of music. The film looks at how much energy the internet uses — from video streaming to huge data centres. The figures are alarming but unfortunately hardly put into context. At the end I was more confused than informed."
+            },
+            {
+              "who": "F",
+              "s": "Und schließlich „Die Wanderin“: Eine 74-jährige Frau läuft zu Fuß von Hamburg nach Rom. Unterwegs trifft sie Menschen, die sie einladen, bei ihnen zu übernachten. Der Film ist warmherzig und oft komisch. Gedreht hat ihn übrigens ihr Enkel — mit einer einfachen Handkamera.",
+              "zh": "最後是《徒步的她》：一位 74 歲的女士從漢堡走路到羅馬。沿途她遇到邀請她留宿的人。這部片溫暖又常常很好笑。順帶一提，拍攝的是她的孫子——用一台簡單的手持攝影機。",
+              "en": "And finally \"The Walker\": a 74-year-old woman walks from Hamburg to Rome. On the way she meets people who invite her to stay the night. The film is warm-hearted and often funny. It was shot, by the way, by her grandson — with a simple handheld camera."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Ein Familienmitglied hat den Film gedreht.",
+                "zh": "這部片是家人拍的。",
+                "en": "A family member made the film."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "孫子用手持攝影機拍的。",
+                "en": "Film 3: her grandson."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Film kommt ohne Erklärungen aus dem Off aus.",
+                "zh": "這部片沒有旁白。",
+                "en": "The film has no voice-over."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「完全不用旁白」。",
+                "en": "Film 1."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Informationen werden nicht ausreichend erklärt.",
+                "zh": "資訊沒有充分解釋。",
+                "en": "The information is not explained enough."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "數字幾乎沒有加以解釋。",
+                "en": "Film 2."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Film hat ein hohes Tempo.",
+                "zh": "這部片節奏很快。",
+                "en": "The film has a fast pace."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "剪接快、音樂多。",
+                "en": "Film 2."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Film bringt die Zuschauer auch zum Lachen.",
+                "zh": "這部片也會讓觀眾發笑。",
+                "en": "The film also makes viewers laugh."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「常常很好笑」。",
+                "en": "Film 3."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Film zeigt das Ende einer Lebensweise.",
+                "zh": "這部片呈現一種生活方式的終結。",
+                "en": "The film shows the end of a way of life."
+              },
+              "options": [
+                {
+                  "t": "Film 1 – „Der letzte Sommer“"
+                },
+                {
+                  "t": "Film 2 – „Unter Strom“"
+                },
+                {
+                  "t": "Film 3 – „Die Wanderin“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "農家放棄農場前的最後一年。",
+                "en": "Film 1: giving up the farm."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Radiointerview mit dem Ökonomen Prof. Felix Hartung über Bargeld.",
+              "zh": "你會聽到一段廣播訪談，對象是經濟學家菲力克斯‧哈東教授，主題是現金。",
+              "en": "You will hear a radio interview with economist Prof. Felix Hartung about cash."
+            },
+            {
+              "who": "F",
+              "s": "Herr Professor Hartung, die Deutschen gelten als Bargeld-Liebhaber. Stimmt das noch?",
+              "zh": "哈東教授，德國人被認為很愛用現金。現在還是這樣嗎？",
+              "en": "Professor Hartung, Germans are considered cash lovers. Is that still true?"
+            },
+            {
+              "who": "M",
+              "s": "Weniger als früher. Seit der Pandemie zahlen viele mit Karte oder Handy, selbst beim Bäcker. Trotzdem wird in Deutschland immer noch etwa die Hälfte aller Einkäufe im Geschäft bar bezahlt — in Schweden sind es nur noch wenige Prozent.",
+              "zh": "比以前少了。疫情以來很多人用卡或手機付款，連在麵包店也是。不過德國還是有大約一半的店內消費用現金支付——在瑞典只剩幾個百分點。",
+              "en": "Less than before. Since the pandemic many people pay by card or phone, even at the baker's. Still, about half of all purchases in shops in Germany are paid in cash — in Sweden it's only a few per cent."
+            },
+            {
+              "who": "F",
+              "s": "Warum hängen die Deutschen so am Bargeld?",
+              "zh": "為什麼德國人這麼依戀現金？",
+              "en": "Why are Germans so attached to cash?"
+            },
+            {
+              "who": "M",
+              "s": "Ein wichtiger Grund ist der Datenschutz. Wer bar zahlt, hinterlässt keine Spuren. Viele Menschen wollen nicht, dass Banken oder Firmen wissen, wofür sie ihr Geld ausgeben. Außerdem hilft Bargeld beim Haushalten: Man sieht, wie das Portemonnaie leerer wird.",
+              "zh": "一個重要原因是資料保護。付現金不會留下痕跡。很多人不希望銀行或公司知道他們把錢花在哪裡。此外，現金有助於管理家計：你看得到錢包變空。",
+              "en": "An important reason is data protection. Paying cash leaves no traces. Many people don't want banks or companies to know what they spend their money on. Cash also helps with budgeting: you see your purse getting emptier."
+            },
+            {
+              "who": "F",
+              "s": "Sollte Bargeld abgeschafft werden?",
+              "zh": "應該廢除現金嗎？",
+              "en": "Should cash be abolished?"
+            },
+            {
+              "who": "M",
+              "s": "Davon halte ich nichts. Ältere Menschen und Menschen ohne Bankkonto wären ausgeschlossen. Und bei einem Stromausfall oder einem Cyberangriff wäre Bargeld das einzige Zahlungsmittel, das noch funktioniert. Ich selbst zahle übrigens fast alles mit Karte — aber ich habe immer fünfzig Euro dabei.",
+              "zh": "我不贊成。年長者和沒有銀行帳戶的人會被排除在外。而且遇到停電或網路攻擊時，現金會是唯一還能用的支付方式。順帶一提，我自己幾乎都用卡付款——但我身上總是帶著五十歐元。",
+              "en": "I don't think much of that. Older people and people without a bank account would be excluded. And in a power cut or a cyber attack, cash would be the only means of payment still working. By the way, I pay for almost everything by card myself — but I always carry fifty euros."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Seit der Pandemie wird in Deutschland mehr mit Karte bezahlt.",
+                "zh": "疫情以來德國更多人用卡付款。",
+                "en": "Since the pandemic more people in Germany pay by card."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「很多人用卡或手機付款」。",
+                "en": "\"Many pay by card or phone.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "In Deutschland wird nur noch selten bar bezahlt.",
+                "zh": "德國現在很少用現金了。",
+                "en": "Cash is now rarely used in Germany."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "還有大約一半用現金；很少的是瑞典。",
+                "en": "About half still cash; \"rarely\" is Sweden."
+              }
+            },
+            {
+              "ask": {
+                "s": "In Schweden ist Bargeld verboten.",
+                "zh": "瑞典禁止現金。",
+                "en": "Cash is banned in Sweden."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "只說瑞典比例很低，沒說禁止。",
+                "en": "Only that it is rare there."
+              }
+            },
+            {
+              "ask": {
+                "s": "Viele Deutsche möchten nicht, dass ihre Ausgaben bekannt werden.",
+                "zh": "很多德國人不希望自己的花費被知道。",
+                "en": "Many Germans don't want their spending known."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "資料保護：不想讓銀行或公司知道。",
+                "en": "Data protection."
+              }
+            },
+            {
+              "ask": {
+                "s": "Mit Bargeld behält man den Überblick über seine Ausgaben leichter.",
+                "zh": "用現金比較容易掌握花費。",
+                "en": "With cash it is easier to keep track of spending."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「看得到錢包變空」。",
+                "en": "\"You see your purse getting emptier.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Hartung möchte Bargeld abschaffen.",
+                "zh": "哈東想廢除現金。",
+                "en": "Prof. Hartung wants to abolish cash."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我不贊成」。",
+                "en": "\"I don't think much of that.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Bei einem Stromausfall wäre Bargeld nützlich.",
+                "zh": "停電時現金會很有用。",
+                "en": "Cash would be useful in a power cut."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "唯一還能用的支付方式。",
+                "en": "The only means still working."
+              }
+            },
+            {
+              "ask": {
+                "s": "Banken verdienen an Kartenzahlungen viel Geld.",
+                "zh": "銀行從刷卡賺很多錢。",
+                "en": "Banks earn a lot from card payments."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "訪談沒有談到銀行的收入。",
+                "en": "Not mentioned."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Hartung zahlt selbst meistens bar.",
+                "zh": "哈東自己大多付現金。",
+                "en": "Prof. Hartung mostly pays cash himself."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "他幾乎都用卡，只是身上帶五十歐元。",
+                "en": "He pays almost everything by card."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch über Ehrenamt. Abschnitt 1.",
+              "zh": "你會聽到一段關於志工服務的對談。第一段。",
+              "en": "You will hear a conversation about volunteering. Section 1."
+            },
+            {
+              "who": "M",
+              "s": "Frau Dr. Engel, Sie forschen zum Thema Ehrenamt. Engagieren sich die Deutschen weniger als früher?",
+              "zh": "恩格爾博士，您研究志工服務。德國人參與得比以前少嗎？",
+              "en": "Dr Engel, you research volunteering. Are Germans less engaged than before?"
+            },
+            {
+              "who": "F",
+              "s": "Nein, aber anders. Fast vierzig Prozent engagieren sich freiwillig. Was zurückgeht, ist die Bereitschaft, sich für Jahre an einen Verein zu binden. Viele helfen lieber bei einzelnen Projekten.",
+              "zh": "沒有，但方式不同了。將近百分之四十的人投入志工。減少的是願意長年綁在一個協會的意願。很多人比較喜歡參與單一專案。",
+              "en": "No, but differently. Almost forty per cent volunteer. What is declining is the willingness to commit to an association for years. Many prefer to help with individual projects."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Laut Frau Engel…",
+                "zh": "根據恩格爾的說法……",
+                "en": "According to Dr Engel…"
+              },
+              "options": [
+                {
+                  "t": "engagieren sich immer weniger Menschen."
+                },
+                {
+                  "t": "binden sich weniger Menschen langfristig an Vereine."
+                },
+                {
+                  "t": "arbeiten die meisten Menschen in Vereinen."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "減少的是長年綁在協會的意願。",
+                "en": "Fewer commit to associations long-term."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie engagieren sich viele heute lieber?",
+                "zh": "現在很多人比較喜歡怎麼參與？",
+                "en": "How do many prefer to get involved today?"
+              },
+              "options": [
+                {
+                  "t": "in zeitlich begrenzten Projekten"
+                },
+                {
+                  "t": "nur online"
+                },
+                {
+                  "t": "gar nicht"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "參與單一專案。",
+                "en": "In individual projects."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 2.",
+              "zh": "第二段。",
+              "en": "Section 2."
+            },
+            {
+              "who": "M",
+              "s": "Herr Yıldız, Sie sind Vorsitzender eines Sportvereins. Spüren Sie das?",
+              "zh": "耶爾德茲先生，您是一個運動協會的主席。您有感覺到嗎？",
+              "en": "Mr Yıldız, you chair a sports club. Do you notice that?"
+            },
+            {
+              "who": "M2",
+              "s": "Sehr. Trainer für die Kinder finden wir noch, aber für den Vorstand will niemand mehr kandidieren. Die Verantwortung schreckt ab — und die Bürokratie: Datenschutz, Steuern, Versicherungen.",
+              "zh": "非常有感。我們還找得到孩子的教練，但已經沒有人想參選理事了。責任讓人卻步——還有官僚手續：資料保護、稅務、保險。",
+              "en": "Very much. We still find coaches for the children, but nobody wants to stand for the board any more. The responsibility puts people off — and the bureaucracy: data protection, taxes, insurance."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was ist im Verein von Herrn Yıldız schwierig?",
+                "zh": "耶爾德茲的協會有什麼困難？",
+                "en": "What is difficult in Mr Yıldız's club?"
+              },
+              "options": [
+                {
+                  "t": "Trainer zu finden"
+                },
+                {
+                  "t": "Mitglieder für die Leitung zu finden"
+                },
+                {
+                  "t": "Kinder zu gewinnen"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "沒有人想參選理事。",
+                "en": "Nobody wants to join the board."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was hält die Leute davon ab?",
+                "zh": "什麼讓人卻步？",
+                "en": "What puts people off?"
+              },
+              "options": [
+                {
+                  "t": "zu wenig Anerkennung"
+                },
+                {
+                  "t": "zu lange Trainingszeiten"
+                },
+                {
+                  "t": "Verantwortung und Formalitäten"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "責任和官僚手續。",
+                "en": "Responsibility and bureaucracy."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 3.",
+              "zh": "第三段。",
+              "en": "Section 3."
+            },
+            {
+              "who": "F",
+              "s": "Das bestätigt unsere Daten. Vereine müssten Ämter teilen: zwei oder drei Personen für eine Aufgabe, jeweils für zwei Jahre. Dann wirkt die Last kleiner.",
+              "zh": "這證實了我們的資料。協會應該分擔職務：一項工作由兩三個人負責，每次兩年。這樣負擔看起來就小一些。",
+              "en": "That confirms our data. Clubs should share offices: two or three people for one task, each for two years. Then the burden seems smaller."
+            },
+            {
+              "who": "M2",
+              "s": "Das versuchen wir gerade. Und wir bieten Kurse an, in denen neue Vorstandsmitglieder lernen, was sie wissen müssen. Seitdem haben sich zwei junge Leute gemeldet.",
+              "zh": "我們正在嘗試。我們也開課，讓新理事學習他們需要知道的事。從那之後，有兩個年輕人報名了。",
+              "en": "We're trying that right now. And we offer courses in which new board members learn what they need to know. Since then two young people have come forward."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was schlägt Frau Engel vor?",
+                "zh": "恩格爾建議什麼？",
+                "en": "What does Dr Engel suggest?"
+              },
+              "options": [
+                {
+                  "t": "Ämter auf mehrere Personen zu verteilen"
+                },
+                {
+                  "t": "Vorstände zu bezahlen"
+                },
+                {
+                  "t": "Vereine zusammenzulegen"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "一項工作兩三個人分擔。",
+                "en": "Share offices among several people."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was hat der Verein von Herrn Yıldız erreicht?",
+                "zh": "耶爾德茲的協會有什麼成果？",
+                "en": "What has Mr Yıldız's club achieved?"
+              },
+              "options": [
+                {
+                  "t": "Er hat mehr Geld bekommen."
+                },
+                {
+                  "t": "Es gibt neue junge Interessenten."
+                },
+                {
+                  "t": "Die Bürokratie ist weniger geworden."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "有兩個年輕人報名了。",
+                "en": "Two young people came forward."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 4.",
+              "zh": "第四段。",
+              "en": "Section 4."
+            },
+            {
+              "who": "M",
+              "s": "Und was kann die Politik tun?",
+              "zh": "那政府能做什麼？",
+              "en": "And what can politicians do?"
+            },
+            {
+              "who": "F",
+              "s": "Vor allem die Regeln vereinfachen. Ein kleiner Verein sollte nicht dieselben Formulare ausfüllen müssen wie ein Unternehmen.",
+              "zh": "最重要的是簡化規定。一個小協會不該和一家公司填一樣的表格。",
+              "en": "Above all simplify the rules. A small club shouldn't have to fill in the same forms as a company."
+            },
+            {
+              "who": "M2",
+              "s": "Und Anerkennung. Bei uns zählt ein Ehrenamt bei Bewerbungen kaum. Das sollte sich ändern — wer einen Verein leitet, lernt Organisation und Verantwortung.",
+              "zh": "還有認可。在我們這裡，志工經歷在求職時幾乎不算數。這應該改變——領導一個協會的人學到的是組織能力和責任感。",
+              "en": "And recognition. Here, volunteering hardly counts in job applications. That should change — anyone who runs a club learns organisation and responsibility."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Engel fordert von der Politik…",
+                "zh": "恩格爾要求政府……",
+                "en": "Dr Engel demands that politicians…"
+              },
+              "options": [
+                {
+                  "t": "mehr Geld für Vereine."
+                },
+                {
+                  "t": "einfachere Vorschriften."
+                },
+                {
+                  "t": "eine Pflicht zum Ehrenamt."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "簡化規定，不該和公司填一樣的表。",
+                "en": "Simpler rules."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Yıldız wünscht sich, dass ein Ehrenamt…",
+                "zh": "耶爾德茲希望志工經歷……",
+                "en": "Mr Yıldız would like volunteering to…"
+              },
+              "options": [
+                {
+                  "t": "bei Bewerbungen mehr zählt."
+                },
+                {
+                  "t": "bezahlt wird."
+                },
+                {
+                  "t": "in der Schule Pflicht wird."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "在求職時被認可。",
+                "en": "Count in job applications."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Ausschnitt aus einer Vorlesung über die Psychologie des Entscheidens.",
+              "zh": "你會聽到一段關於決策心理學的課程節錄。",
+              "en": "You will hear an extract from a lecture on the psychology of decision-making."
+            },
+            {
+              "who": "M",
+              "s": "Meine Damen und Herren, man könnte meinen: Je mehr Auswahl wir haben, desto glücklicher sind wir. In einem berühmten Experiment wurden in einem Supermarkt an einem Tag 24 Sorten Marmelade zum Probieren angeboten, an einem anderen nur sechs. Am Stand mit 24 Sorten blieben mehr Kunden stehen — gekauft haben aber zehnmal mehr Menschen am Stand mit nur sechs Sorten.",
+              "zh": "各位女士先生，有人可能會以為：選擇越多，我們就越快樂。在一個著名的實驗中，超市某一天提供 24 種果醬試吃，另一天只有六種。24 種的攤位前停下來的客人比較多——但在只有六種的攤位買的人多了十倍。",
+              "en": "Ladies and gentlemen, you might think: the more choice we have, the happier we are. In a famous experiment, a supermarket offered 24 kinds of jam for tasting on one day and only six on another. More customers stopped at the stand with 24 kinds — but ten times as many people bought at the stand with only six."
+            },
+            {
+              "who": "M",
+              "s": "Man spricht vom „Paradox der Wahl“. Zu viele Möglichkeiten überfordern uns; wir schieben die Entscheidung auf oder treffen gar keine. Und wenn wir uns entscheiden, sind wir oft unzufriedener, weil wir an all die anderen Optionen denken, die wir nicht gewählt haben. Allerdings — und das wird oft vergessen — konnten spätere Studien den Effekt nicht immer bestätigen. Er tritt vor allem dann auf, wenn wir uns in einem Bereich wenig auskennen. Experten hingegen schätzen eine große Auswahl. Was folgt daraus? Für Alltagsentscheidungen empfehle ich, sich vorher Kriterien festzulegen und die erste Option zu nehmen, die sie erfüllt — statt nach der perfekten zu suchen.",
+              "zh": "這叫做「選擇的悖論」。太多選擇會讓我們不知所措；我們延後決定，或乾脆不做決定。而當我們做了決定，又常常比較不滿意，因為會想到所有沒選的其他選項。不過——這點常被忘記——後來的研究並非總能證實這個效應。它主要出現在我們對某個領域不太了解的時候。相反地，內行人很重視選擇多。這說明了什麼？日常的決定，我建議事先定好標準，選第一個符合標準的選項——而不是去找完美的那個。",
+              "en": "This is called the \"paradox of choice\". Too many options overwhelm us; we postpone the decision or don't make one at all. And when we do decide, we are often less satisfied because we think of all the other options we didn't choose. However — and this is often forgotten — later studies could not always confirm the effect. It occurs mainly when we know little about an area. Experts, on the other hand, value a large choice. What follows? For everyday decisions I recommend setting criteria beforehand and taking the first option that meets them — instead of looking for the perfect one."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was geschah beim Stand mit 24 Sorten?",
+                "zh": "24 種果醬的攤位發生了什麼？",
+                "en": "What happened at the stand with 24 kinds?"
+              },
+              "options": [
+                {
+                  "t": "Mehr Menschen kauften dort."
+                },
+                {
+                  "t": "Mehr Menschen blieben stehen, aber weniger kauften."
+                },
+                {
+                  "t": "Niemand interessierte sich dafür."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "停下來的多，買的少。",
+                "en": "More stopped, fewer bought."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was bedeutet das „Paradox der Wahl“?",
+                "zh": "「選擇的悖論」是什麼意思？",
+                "en": "What does the \"paradox of choice\" mean?"
+              },
+              "options": [
+                {
+                  "t": "Zu viel Auswahl kann Entscheidungen erschweren."
+                },
+                {
+                  "t": "Menschen wählen immer das Teuerste."
+                },
+                {
+                  "t": "Wenig Auswahl macht unglücklich."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "太多選擇讓人不知所措、延後決定。",
+                "en": "Too much choice overwhelms us."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum ist man nach einer Entscheidung oft unzufrieden?",
+                "zh": "為什麼做了決定後常常不滿意？",
+                "en": "Why are people often dissatisfied after deciding?"
+              },
+              "options": [
+                {
+                  "t": "Das Produkt war schlecht."
+                },
+                {
+                  "t": "Man hat zu lange gewartet."
+                },
+                {
+                  "t": "Man denkt an die anderen Möglichkeiten."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "會想到沒選的其他選項。",
+                "en": "They think of the options not chosen."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was sagt der Redner über spätere Studien?",
+                "zh": "講者怎麼說後來的研究？",
+                "en": "What does the speaker say about later studies?"
+              },
+              "options": [
+                {
+                  "t": "Sie bestätigten den Effekt immer."
+                },
+                {
+                  "t": "Sie konnten den Effekt nicht immer zeigen."
+                },
+                {
+                  "t": "Es gab keine weiteren Studien."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「並非總能證實這個效應」。",
+                "en": "\"Could not always confirm the effect.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Wann tritt der Effekt vor allem auf?",
+                "zh": "這個效應主要什麼時候出現？",
+                "en": "When does the effect mainly occur?"
+              },
+              "options": [
+                {
+                  "t": "wenn man sich in einem Bereich wenig auskennt"
+                },
+                {
+                  "t": "wenn man Experte ist"
+                },
+                {
+                  "t": "wenn man wenig Zeit hat"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "對某個領域不太了解的時候。",
+                "en": "When we know little about an area."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie stehen Experten zu großer Auswahl?",
+                "zh": "內行人怎麼看選擇多？",
+                "en": "How do experts feel about a large choice?"
+              },
+              "options": [
+                {
+                  "t": "Sie lehnen sie ab."
+                },
+                {
+                  "t": "Sie ist ihnen egal."
+                },
+                {
+                  "t": "Sie schätzen sie."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「內行人很重視選擇多」。",
+                "en": "\"Experts value a large choice.\""
+              }
+            },
+            {
+              "ask": {
+                "s": "Was empfiehlt der Redner für den Alltag?",
+                "zh": "講者對日常決定有什麼建議？",
+                "en": "What does the speaker recommend for everyday life?"
+              },
+              "options": [
+                {
+                  "t": "so lange zu suchen, bis man das Beste findet"
+                },
+                {
+                  "t": "vorher Kriterien festzulegen und die erste passende Option zu wählen"
+                },
+                {
+                  "t": "andere entscheiden zu lassen"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "先定標準，選第一個符合的。",
+                "en": "Set criteria, take the first option that fits."
               }
             }
           ]
