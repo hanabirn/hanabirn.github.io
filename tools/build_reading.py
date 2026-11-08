@@ -38,7 +38,9 @@ LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jl
               ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_'], ('zh', 'TW HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_'],
               ('fr', 'A1'): ['fr_a1', 'tp_fr_'], ('ru', 'A1'): ['ru_a1', 'tp_ru_'],
               ('es', 'A1'): ['es_a1', 'tp_es_'], ('de', 'A1'): ['de_a1', 'tp_de_'], ('de', 'A2'): ['de_a1', 'de_a2', 'tp_de_'], ('de', 'B1'): ['de_a1', 'de_a2', 'de_b1', 'tp_de_'], ('de', 'B2'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'tp_de_'],
-              ('de', 'C1'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'de_c1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_']}
+              ('de', 'C1'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'de_c1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_'],
+              ('en', 'A2'): ['en_jh', 'tp_en_'], ('en', 'B1'): ['en_jh', 'en_sh', 'tp_en_'], ('en', 'B2'): ['en_jh', 'en_sh', 'tp_en_'],
+              ('en', 'C1'): ['en_jh', 'en_sh', 'tp_en_']}
 # a passage's length: characters in Japanese / Korean / Chinese, words elsewhere
 # (l'école, aujourd'hui and week-end count as one; js/reading.js READING_CHAR_LANGS)
 CHAR_LANGS = ('ja', 'ko', 'zh')
