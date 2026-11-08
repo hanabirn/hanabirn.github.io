@@ -4,7 +4,1342 @@
   "level": "HSK 3",
   "order": 4,
   "edition": "tw",
-  "note": "HSK 3 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 句子配對 ×10, 第二部分 選詞填空 ×10 (41–45 sentences, 46–50 dialogues), 第三部分 讀短文回答問題 ×10 (six texts × 1, two × 2); 3 options, pinyin / zhuyin hidden as on the paper; mock 30 minutes. Original texts. Drafted in tools/.mockups/tw3_rd.py.",
+  "note": "HSK 3 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 句子配對 ×10, 第二部分 選詞填空 ×10 (41–45 sentences, 46–50 dialogues), 第三部分 讀短文回答問題 ×10 (six texts × 1, two × 2); 3 options, pinyin / zhuyin hidden as on the paper; mock 30 minutes. Original texts. Drafted in tools/.mockups/tw3_rd.py. Short passages: tools/.mockups/zh_tw3_passages.py (add_passages.py; rerun it after regenerating the sets).",
+  "passages": [
+    {
+      "id": "tw-old-apartment",
+      "topic": "home",
+      "title": {
+        "text": "老公寓",
+        "zh": "",
+        "en": "The old apartment"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我家住在一棟四十年的老公寓，一共五層樓，沒有電梯。",
+            "我們住在五樓，每天上下樓梯就像做運動一樣。"
+          ],
+          "zh": "",
+          "en": "My family lives in a forty-year-old apartment block: five floors and no lift. We live on the fifth floor, so going up and down the stairs every day is like exercise."
+        },
+        {
+          "s": [
+            "雖然房子很舊，但是鄰居們都很熟。",
+            "誰家出遠門，大家就幫忙收信、餵貓。",
+            "過年的時候，樓下的伯伯還會送我們自己包的水餃。"
+          ],
+          "zh": "",
+          "en": "The building is old, but the neighbours all know each other well. When a family goes away, everyone helps collect the post and feed the cat. At New Year the old man downstairs even gives us dumplings he wrapped himself."
+        },
+        {
+          "s": [
+            "爸爸說以後想搬到有電梯的大樓，可是我有點捨不得這裡。"
+          ],
+          "zh": "",
+          "en": "Dad says he'd like to move to a building with a lift one day, but I'd be a bit sad to leave."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "公寓",
+          "r": "",
+          "zh": "",
+          "en": "apartment block"
+        },
+        {
+          "w": "層",
+          "r": "",
+          "zh": "",
+          "en": "floor, storey",
+          "m": [
+            "五層樓"
+          ]
+        },
+        {
+          "w": "電梯",
+          "r": "",
+          "zh": "",
+          "en": "lift, elevator"
+        },
+        {
+          "w": "樓梯",
+          "r": "",
+          "zh": "",
+          "en": "stairs"
+        },
+        {
+          "w": "鄰居",
+          "r": "",
+          "zh": "",
+          "en": "neighbour",
+          "m": [
+            "鄰居們"
+          ]
+        },
+        {
+          "w": "熟",
+          "r": "",
+          "zh": "",
+          "en": "familiar, well acquainted"
+        },
+        {
+          "w": "餵",
+          "r": "",
+          "zh": "",
+          "en": "to feed"
+        },
+        {
+          "w": "捨不得",
+          "r": "",
+          "zh": "",
+          "en": "to be reluctant to part with"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他家住的公寓有幾層樓？",
+          "options": [
+            "三層",
+            "四層",
+            "五層",
+            "六層"
+          ],
+          "answer": 2,
+          "zh": "「一共五層樓」。",
+          "en": "Five."
+        },
+        {
+          "q": "他為什麼說上下樓梯像做運動？",
+          "options": [
+            "因為他住在五樓，沒有電梯",
+            "因為他喜歡跑步",
+            "因為樓梯很短",
+            "因為電梯壞了"
+          ],
+          "answer": 0,
+          "zh": "住五樓又「沒有電梯」。",
+          "en": "Fifth floor, no lift."
+        },
+        {
+          "q": "鄰居出遠門的時候，大家會做什麼？",
+          "options": [
+            "幫忙收信、餵貓",
+            "幫忙打掃",
+            "幫忙做飯",
+            "幫忙搬家"
+          ],
+          "answer": 0,
+          "zh": "「大家就幫忙收信、餵貓」。",
+          "en": "Collect post, feed the cat."
+        },
+        {
+          "q": "過年的時候伯伯送他們什麼？",
+          "options": [
+            "水果",
+            "紅包",
+            "自己包的水餃",
+            "年糕"
+          ],
+          "answer": 2,
+          "zh": "「送我們自己包的水餃」。",
+          "en": "Home-made dumplings."
+        },
+        {
+          "q": "他對搬家有什麼感覺？",
+          "options": [
+            "很高興",
+            "有點捨不得",
+            "無所謂",
+            "很生氣"
+          ],
+          "answer": 1,
+          "zh": "「我有點捨不得這裡」。",
+          "en": "Reluctant to leave."
+        }
+      ],
+      "tf": [
+        {
+          "s": "這棟公寓有電梯。",
+          "answer": false,
+          "zh": "×：沒有電梯。",
+          "en": "False."
+        },
+        {
+          "s": "鄰居們都很熟。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "爸爸想搬到有電梯的大樓。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-beef-noodles",
+      "topic": "food",
+      "title": {
+        "text": "牛肉麵",
+        "zh": "",
+        "en": "Beef noodle soup"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "很多外國朋友來臺灣，第一個想吃的就是牛肉麵。",
+            "牛肉麵有紅燒和清燉兩種，",
+            "紅燒的味道比較重，清燉的比較清淡。"
+          ],
+          "zh": "",
+          "en": "When foreign friends come to Taiwan, the first thing many want to eat is beef noodle soup. It comes in two kinds, braised and clear-stewed: braised has a stronger flavour, clear-stewed is lighter."
+        },
+        {
+          "s": [
+            "我最喜歡學校後面那家老店的紅燒牛肉麵。",
+            "湯是老闆每天早上花五個小時煮的，牛肉又大塊又軟。",
+            "雖然一碗要一百八十塊，但是我覺得很值得。"
+          ],
+          "zh": "",
+          "en": "My favourite is the braised beef noodle soup at the old shop behind our school. The owner spends five hours every morning making the broth, and the beef comes in big, tender chunks. A bowl costs 180 dollars, but I think it's well worth it."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "外國",
+          "r": "",
+          "zh": "",
+          "en": "foreign country"
+        },
+        {
+          "w": "紅燒",
+          "r": "",
+          "zh": "",
+          "en": "braised in soy sauce"
+        },
+        {
+          "w": "味道",
+          "r": "",
+          "zh": "",
+          "en": "taste, flavour"
+        },
+        {
+          "w": "清淡",
+          "r": "",
+          "zh": "",
+          "en": "light (food)"
+        },
+        {
+          "w": "湯",
+          "r": "",
+          "zh": "",
+          "en": "soup, broth"
+        },
+        {
+          "w": "煮",
+          "r": "",
+          "zh": "",
+          "en": "to boil, cook"
+        },
+        {
+          "w": "軟",
+          "r": "",
+          "zh": "",
+          "en": "soft, tender"
+        },
+        {
+          "w": "值得",
+          "r": "",
+          "zh": "",
+          "en": "to be worth it"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "牛肉麵有哪兩種？",
+          "options": [
+            "紅燒和清燉",
+            "大碗和小碗",
+            "冷的和熱的",
+            "辣的和甜的"
+          ],
+          "answer": 0,
+          "zh": "「有紅燒和清燉兩種」。",
+          "en": "Braised and clear-stewed."
+        },
+        {
+          "q": "哪一種味道比較重？",
+          "options": [
+            "清燉",
+            "紅燒",
+            "兩種一樣",
+            "原文沒說"
+          ],
+          "answer": 1,
+          "zh": "「紅燒的味道比較重」。",
+          "en": "Braised."
+        },
+        {
+          "q": "那家老店在哪裡？",
+          "options": [
+            "學校前面",
+            "學校後面",
+            "夜市裡",
+            "捷運站旁邊"
+          ],
+          "answer": 1,
+          "zh": "「學校後面那家老店」。",
+          "en": "Behind the school."
+        },
+        {
+          "q": "老闆每天花多長時間煮湯？",
+          "options": [
+            "一個小時",
+            "三個小時",
+            "五個小時",
+            "十個小時"
+          ],
+          "answer": 2,
+          "zh": "「花五個小時煮的」。",
+          "en": "Five hours."
+        },
+        {
+          "q": "一碗牛肉麵多少錢？",
+          "options": [
+            "八十塊",
+            "一百塊",
+            "一百五十塊",
+            "一百八十塊"
+          ],
+          "answer": 3,
+          "zh": "「一碗要一百八十塊」。",
+          "en": "180 dollars."
+        }
+      ],
+      "tf": [
+        {
+          "s": "清燉牛肉麵的味道比較清淡。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "那家店的牛肉很硬。",
+          "answer": false,
+          "zh": "×：牛肉又大塊又軟。",
+          "en": "False: tender."
+        },
+        {
+          "s": "他覺得一百八十塊太貴，不值得。",
+          "answer": false,
+          "zh": "×：我覺得很值得。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-jiufen",
+      "topic": "travel",
+      "title": {
+        "text": "九份老街",
+        "zh": "",
+        "en": "Jiufen Old Street"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "上個週末，我帶日本來的朋友去九份。",
+            "我們從臺北坐公車去，大概一個小時就到了。",
+            "九份在山上，老街兩邊有很多賣小吃和紀念品的商店。"
+          ],
+          "zh": "",
+          "en": "Last weekend I took a friend from Japan to Jiufen. We went by bus from Taipei and got there in about an hour. Jiufen is on a hillside, and the old street is lined with shops selling snacks and souvenirs."
+        },
+        {
+          "s": [
+            "朋友說這裡很像她看過的一部電影，一直拿手機拍照。",
+            "我們在一家茶館喝茶，從窗戶就能看到遠遠的海。",
+            "可惜下午開始起霧，我們只好早一點下山。"
+          ],
+          "zh": "",
+          "en": "My friend said it looked just like a film she'd seen, and kept taking photos on her phone. We had tea at a teahouse where you can see the sea in the distance from the window. Unfortunately fog came in during the afternoon, so we had to come down a bit early."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "週末",
+          "r": "",
+          "zh": "",
+          "en": "weekend"
+        },
+        {
+          "w": "老街",
+          "r": "",
+          "zh": "",
+          "en": "old street"
+        },
+        {
+          "w": "小吃",
+          "r": "",
+          "zh": "",
+          "en": "snack"
+        },
+        {
+          "w": "紀念品",
+          "r": "",
+          "zh": "",
+          "en": "souvenir"
+        },
+        {
+          "w": "拍照",
+          "r": "",
+          "zh": "",
+          "en": "to take photos"
+        },
+        {
+          "w": "茶館",
+          "r": "",
+          "zh": "",
+          "en": "teahouse"
+        },
+        {
+          "w": "可惜",
+          "r": "",
+          "zh": "",
+          "en": "it's a pity"
+        },
+        {
+          "w": "霧",
+          "r": "",
+          "zh": "",
+          "en": "fog",
+          "m": [
+            "起霧"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他和誰去九份？",
+          "options": [
+            "家人",
+            "同事",
+            "日本來的朋友",
+            "同學"
+          ],
+          "answer": 2,
+          "zh": "「我帶日本來的朋友去九份」。",
+          "en": "A friend from Japan."
+        },
+        {
+          "q": "他們怎麼去九份？",
+          "options": [
+            "坐火車",
+            "坐公車",
+            "開車",
+            "騎機車"
+          ],
+          "answer": 1,
+          "zh": "「從臺北坐公車去」。",
+          "en": "By bus."
+        },
+        {
+          "q": "老街的商店賣什麼？",
+          "options": [
+            "衣服和鞋子",
+            "小吃和紀念品",
+            "書和文具",
+            "電腦和手機"
+          ],
+          "answer": 1,
+          "zh": "「賣小吃和紀念品的商店」。",
+          "en": "Snacks and souvenirs."
+        },
+        {
+          "q": "朋友為什麼一直拍照？",
+          "options": [
+            "手機是新的",
+            "這裡很像她看過的電影",
+            "老闆請她拍",
+            "她是攝影師"
+          ],
+          "answer": 1,
+          "zh": "「這裡很像她看過的一部電影」。",
+          "en": "It looked like a film."
+        },
+        {
+          "q": "他們為什麼早一點下山？",
+          "options": [
+            "下雨了",
+            "起霧了",
+            "太累了",
+            "商店關門了"
+          ],
+          "answer": 1,
+          "zh": "「下午開始起霧」。",
+          "en": "Fog came in."
+        }
+      ],
+      "tf": [
+        {
+          "s": "九份在海邊。",
+          "answer": false,
+          "zh": "×：九份在山上。",
+          "en": "False: on a hill."
+        },
+        {
+          "s": "從茶館能看到海。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他們坐公車去了三個小時。",
+          "answer": false,
+          "zh": "×：大概一個小時。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-typhoon-day",
+      "topic": "weather",
+      "title": {
+        "text": "颱風假",
+        "zh": "",
+        "en": "A typhoon day off"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "昨天晚上新聞說，颱風明天會經過臺灣北部。",
+            "十點左右，市政府宣布明天不用上班上課。",
+            "弟弟聽到以後高興得跳了起來。"
+          ],
+          "zh": "",
+          "en": "Last night the news said a typhoon would pass over northern Taiwan the next day. Around ten, the city government announced there would be no work or school. My little brother jumped for joy when he heard."
+        },
+        {
+          "s": [
+            "可是今天早上起來一看，外面只下了一點小雨，風也不大。",
+            "很多人在網路上開玩笑，說這是「颱風假」最常見的樣子。"
+          ],
+          "zh": "",
+          "en": "But when we got up this morning, there was only light rain outside and not much wind. Lots of people joked online that this is what a \"typhoon day off\" usually looks like."
+        },
+        {
+          "s": [
+            "媽媽說，雖然沒什麼風雨，安全還是最重要的，",
+            "所以我們一整天都待在家裡看電影。"
+          ],
+          "zh": "",
+          "en": "Mom said that even without much wind and rain, safety comes first, so we stayed home all day watching films."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "新聞",
+          "r": "",
+          "zh": "",
+          "en": "news"
+        },
+        {
+          "w": "颱風",
+          "r": "",
+          "zh": "",
+          "en": "typhoon"
+        },
+        {
+          "w": "經過",
+          "r": "",
+          "zh": "",
+          "en": "to pass through"
+        },
+        {
+          "w": "左右",
+          "r": "",
+          "zh": "",
+          "en": "about, around"
+        },
+        {
+          "w": "宣布",
+          "r": "",
+          "zh": "",
+          "en": "to announce"
+        },
+        {
+          "w": "開玩笑",
+          "r": "",
+          "zh": "",
+          "en": "to joke"
+        },
+        {
+          "w": "常見",
+          "r": "",
+          "zh": "",
+          "en": "common"
+        },
+        {
+          "w": "安全",
+          "r": "",
+          "zh": "",
+          "en": "safety; safe"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "颱風會經過臺灣哪裡？",
+          "options": [
+            "北部",
+            "南部",
+            "東部",
+            "中部"
+          ],
+          "answer": 0,
+          "zh": "「經過臺灣北部」。",
+          "en": "The north."
+        },
+        {
+          "q": "市政府宣布了什麼？",
+          "options": [
+            "明天要早一點上班",
+            "明天不用上班上課",
+            "明天會停電",
+            "明天要下大雪"
+          ],
+          "answer": 1,
+          "zh": "「明天不用上班上課」。",
+          "en": "No work or school."
+        },
+        {
+          "q": "弟弟聽到以後怎麼樣？",
+          "options": [
+            "很害怕",
+            "很生氣",
+            "高興得跳了起來",
+            "馬上去睡覺"
+          ],
+          "answer": 2,
+          "zh": "「高興得跳了起來」。",
+          "en": "He jumped for joy."
+        },
+        {
+          "q": "今天早上的天氣怎麼樣？",
+          "options": [
+            "風雨很大",
+            "只下了一點小雨",
+            "出太陽了",
+            "下雪了"
+          ],
+          "answer": 1,
+          "zh": "「只下了一點小雨，風也不大」。",
+          "en": "Only light rain."
+        },
+        {
+          "q": "他們今天做了什麼？",
+          "options": [
+            "去上學",
+            "去公園",
+            "在家看電影",
+            "去買東西"
+          ],
+          "answer": 2,
+          "zh": "「一整天都待在家裡看電影」。",
+          "en": "Watched films at home."
+        }
+      ],
+      "tf": [
+        {
+          "s": "今天的風很大。",
+          "answer": false,
+          "zh": "×：風也不大。",
+          "en": "False."
+        },
+        {
+          "s": "媽媽覺得安全最重要。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "網路上很多人開颱風假的玩笑。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-anniversary-sale",
+      "topic": "shopping",
+      "title": {
+        "text": "週年慶",
+        "zh": "",
+        "en": "The anniversary sale"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "每年十月，臺北的百貨公司都會舉辦週年慶。",
+            "這個時候很多東西都打七折，買滿三千塊還送禮券。",
+            "所以百貨公司一開門，門口就排滿了人。"
+          ],
+          "zh": "",
+          "en": "Every October Taipei's department stores hold their anniversary sales. Lots of things are 30% off, and spend three thousand and you get a gift voucher. So the moment the stores open, there's a long line at the door."
+        },
+        {
+          "s": [
+            "今年我也跟姊姊去了，本來只想買一瓶洗面乳，",
+            "最後卻提了三大袋回家。",
+            "回家算一算，花的錢比上個月的薪水還多。",
+            "我決定明年要先寫好購物清單再去。"
+          ],
+          "zh": "",
+          "en": "This year I went with my older sister. I only meant to buy a bottle of face wash, but ended up carrying three big bags home. When I added it up at home, I'd spent more than last month's salary. I've decided next year I'll write a shopping list first."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "百貨公司",
+          "r": "",
+          "zh": "",
+          "en": "department store"
+        },
+        {
+          "w": "舉辦",
+          "r": "",
+          "zh": "",
+          "en": "to hold (an event)"
+        },
+        {
+          "w": "打折",
+          "r": "",
+          "zh": "",
+          "en": "to discount",
+          "m": [
+            "打七折"
+          ]
+        },
+        {
+          "w": "禮券",
+          "r": "",
+          "zh": "",
+          "en": "gift voucher"
+        },
+        {
+          "w": "排",
+          "r": "",
+          "zh": "",
+          "en": "to line up",
+          "m": [
+            "排滿"
+          ]
+        },
+        {
+          "w": "本來",
+          "r": "",
+          "zh": "",
+          "en": "originally"
+        },
+        {
+          "w": "薪水",
+          "r": "",
+          "zh": "",
+          "en": "salary"
+        },
+        {
+          "w": "清單",
+          "r": "",
+          "zh": "",
+          "en": "list",
+          "m": [
+            "購物清單"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "週年慶在幾月？",
+          "options": [
+            "八月",
+            "九月",
+            "十月",
+            "十二月"
+          ],
+          "answer": 2,
+          "zh": "「每年十月」。",
+          "en": "October."
+        },
+        {
+          "q": "買滿三千塊會怎麼樣？",
+          "options": [
+            "打五折",
+            "送禮券",
+            "送一瓶洗面乳",
+            "免費停車"
+          ],
+          "answer": 1,
+          "zh": "「買滿三千塊還送禮券」。",
+          "en": "A gift voucher."
+        },
+        {
+          "q": "她本來想買什麼？",
+          "options": [
+            "衣服",
+            "鞋子",
+            "一瓶洗面乳",
+            "包包"
+          ],
+          "answer": 2,
+          "zh": "「本來只想買一瓶洗面乳」。",
+          "en": "A bottle of face wash."
+        },
+        {
+          "q": "她最後提了幾袋回家？",
+          "options": [
+            "一袋",
+            "兩袋",
+            "三大袋",
+            "五袋"
+          ],
+          "answer": 2,
+          "zh": "「提了三大袋回家」。",
+          "en": "Three big bags."
+        },
+        {
+          "q": "她明年打算怎麼做？",
+          "options": [
+            "不去週年慶",
+            "先寫好購物清單",
+            "一個人去",
+            "只買打折的東西"
+          ],
+          "answer": 1,
+          "zh": "「明年要先寫好購物清單再去」。",
+          "en": "Write a list first."
+        }
+      ],
+      "tf": [
+        {
+          "s": "週年慶的時候很多東西打七折。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "她是跟媽媽去的。",
+          "answer": false,
+          "zh": "×：跟姊姊去。",
+          "en": "False: her sister."
+        },
+        {
+          "s": "她花的錢比上個月的薪水少。",
+          "answer": false,
+          "zh": "×：比上個月的薪水還多。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-cram-school",
+      "topic": "school",
+      "title": {
+        "text": "補習班",
+        "zh": "",
+        "en": "Cram school"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我讀國中的時候，每天放學以後還要去補習班上課。",
+            "補習班在火車站附近，常常上到晚上九點才下課。",
+            "回家吃完晚餐，還要寫學校的作業，常常十二點才睡覺。"
+          ],
+          "zh": "",
+          "en": "In junior high, I had to go to cram school every day after school. It was near the train station, and classes often ran until nine at night. After dinner at home I still had school homework, and often only got to bed at midnight."
+        },
+        {
+          "s": [
+            "那時候我覺得很累，也不太明白為什麼要這麼辛苦。",
+            "現在上了大學，我才發現，",
+            "補習班的老師教我的不只是考試的方法，",
+            "還有怎麼安排時間。"
+          ],
+          "zh": "",
+          "en": "At the time I was exhausted and didn't really understand why it had to be so hard. Now that I'm at university, I've realised that what the cram-school teachers taught me wasn't just exam techniques but also how to organise my time."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "國中",
+          "r": "",
+          "zh": "",
+          "en": "junior high school"
+        },
+        {
+          "w": "放學",
+          "r": "",
+          "zh": "",
+          "en": "to finish school"
+        },
+        {
+          "w": "補習班",
+          "r": "",
+          "zh": "",
+          "en": "cram school"
+        },
+        {
+          "w": "作業",
+          "r": "",
+          "zh": "",
+          "en": "homework"
+        },
+        {
+          "w": "明白",
+          "r": "",
+          "zh": "",
+          "en": "to understand"
+        },
+        {
+          "w": "辛苦",
+          "r": "",
+          "zh": "",
+          "en": "hard, toilsome"
+        },
+        {
+          "w": "發現",
+          "r": "",
+          "zh": "",
+          "en": "to discover"
+        },
+        {
+          "w": "安排",
+          "r": "",
+          "zh": "",
+          "en": "to arrange, organise"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他什麼時候去補習班？",
+          "options": [
+            "上學以前",
+            "放學以後",
+            "週末早上",
+            "寒假"
+          ],
+          "answer": 1,
+          "zh": "「每天放學以後還要去補習班」。",
+          "en": "After school."
+        },
+        {
+          "q": "補習班在哪裡？",
+          "options": [
+            "學校裡",
+            "他家樓下",
+            "火車站附近",
+            "夜市旁邊"
+          ],
+          "answer": 2,
+          "zh": "「補習班在火車站附近」。",
+          "en": "Near the station."
+        },
+        {
+          "q": "他那時候常常幾點睡覺？",
+          "options": [
+            "十點",
+            "十一點",
+            "十二點",
+            "兩點"
+          ],
+          "answer": 2,
+          "zh": "「常常十二點才睡覺」。",
+          "en": "Midnight."
+        },
+        {
+          "q": "那時候他覺得怎麼樣？",
+          "options": [
+            "很輕鬆",
+            "很累，不明白為什麼這麼辛苦",
+            "很有趣",
+            "很想多上課"
+          ],
+          "answer": 1,
+          "zh": "「我覺得很累，也不太明白」。",
+          "en": "Tired and puzzled."
+        },
+        {
+          "q": "現在他發現補習班老師還教了他什麼？",
+          "options": [
+            "怎麼交朋友",
+            "怎麼安排時間",
+            "怎麼做飯",
+            "怎麼說英文"
+          ],
+          "answer": 1,
+          "zh": "「還有怎麼安排時間」。",
+          "en": "Time management."
+        }
+      ],
+      "tf": [
+        {
+          "s": "補習班常常上到晚上九點。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他讀國中的時候很早睡覺。",
+          "answer": false,
+          "zh": "×：常常十二點才睡。",
+          "en": "False."
+        },
+        {
+          "s": "他覺得補習班只教考試的方法。",
+          "answer": false,
+          "zh": "×：不只是考試的方法。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-youbike",
+      "topic": "transport",
+      "title": {
+        "text": "騎YouBike",
+        "zh": "",
+        "en": "Riding YouBike"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "臺北街上到處都能看到黃色的YouBike。",
+            "只要用悠遊卡一刷，就可以把車騎走，",
+            "騎到別的站再還車。"
+          ],
+          "zh": "",
+          "en": "Yellow YouBikes are everywhere on Taipei's streets. Just tap an EasyCard and you can ride one away, then return it at another station."
+        },
+        {
+          "s": [
+            "我住的地方離捷運站有點遠，走路要十五分鐘。",
+            "自從有了YouBike，",
+            "我每天早上都騎車去捷運站，五分鐘就到了。"
+          ],
+          "zh": "",
+          "en": "Where I live is a bit far from the MRT station — fifteen minutes on foot. Since YouBike came along I ride to the station every morning, and it takes five minutes."
+        },
+        {
+          "s": [
+            "不過下班的時候，捷運站旁邊的車常常被借光了，",
+            "有時候要等好幾分鐘才有空位還車。"
+          ],
+          "zh": "",
+          "en": "But at the end of the working day the bikes by the station have often all been taken, and sometimes you have to wait several minutes for a free dock to return one."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "到處",
+          "r": "",
+          "zh": "",
+          "en": "everywhere"
+        },
+        {
+          "w": "悠遊卡",
+          "r": "",
+          "zh": "",
+          "en": "EasyCard (transit card)"
+        },
+        {
+          "w": "刷",
+          "r": "",
+          "zh": "",
+          "en": "to swipe, tap"
+        },
+        {
+          "w": "還車",
+          "r": "",
+          "zh": "",
+          "en": "to return (a bike)"
+        },
+        {
+          "w": "有點",
+          "r": "",
+          "zh": "",
+          "en": "a little"
+        },
+        {
+          "w": "自從",
+          "r": "",
+          "zh": "",
+          "en": "since"
+        },
+        {
+          "w": "借",
+          "r": "",
+          "zh": "",
+          "en": "to borrow",
+          "m": [
+            "借光"
+          ]
+        },
+        {
+          "w": "空位",
+          "r": "",
+          "zh": "",
+          "en": "vacant spot"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "YouBike是什麼顏色的？",
+          "options": [
+            "紅色",
+            "藍色",
+            "黃色",
+            "白色"
+          ],
+          "answer": 2,
+          "zh": "「黃色的YouBike」。",
+          "en": "Yellow."
+        },
+        {
+          "q": "怎麼借YouBike？",
+          "options": [
+            "打電話",
+            "用悠遊卡刷一下",
+            "去商店買票",
+            "給司機錢"
+          ],
+          "answer": 1,
+          "zh": "「只要用悠遊卡一刷」。",
+          "en": "Tap an EasyCard."
+        },
+        {
+          "q": "他家走路到捷運站要多長時間？",
+          "options": [
+            "五分鐘",
+            "十分鐘",
+            "十五分鐘",
+            "三十分鐘"
+          ],
+          "answer": 2,
+          "zh": "「走路要十五分鐘」。",
+          "en": "15 minutes."
+        },
+        {
+          "q": "現在他騎車到捷運站要多長時間？",
+          "options": [
+            "五分鐘",
+            "十分鐘",
+            "十五分鐘",
+            "二十分鐘"
+          ],
+          "answer": 0,
+          "zh": "「五分鐘就到了」。",
+          "en": "Five minutes."
+        },
+        {
+          "q": "下班的時候常常有什麼問題？",
+          "options": [
+            "下雨",
+            "車被借光了",
+            "捷運停了",
+            "悠遊卡沒錢"
+          ],
+          "answer": 1,
+          "zh": "「車常常被借光了」。",
+          "en": "The bikes are all taken."
+        }
+      ],
+      "tf": [
+        {
+          "s": "YouBike一定要在同一個站還車。",
+          "answer": false,
+          "zh": "×：騎到別的站再還車。",
+          "en": "False."
+        },
+        {
+          "s": "他家離捷運站有點遠。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "還車的時候有時候要等。",
+          "answer": true,
+          "zh": "○：「要等好幾分鐘才有空位還車」。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-health-check",
+      "topic": "health",
+      "title": {
+        "text": "健康檢查",
+        "zh": "",
+        "en": "A health check-up"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我爸爸今年五十歲，公司每年都讓員工去醫院做健康檢查。",
+            "上個月的報告出來以後，",
+            "醫生說他的血壓有點高，體重也太重了。"
+          ],
+          "zh": "",
+          "en": "My dad is fifty this year, and his company sends staff for a hospital check-up every year. When last month's report came out, the doctor said his blood pressure was a bit high and he was overweight."
+        },
+        {
+          "s": [
+            "從那天開始，媽媽做菜少放鹽，也不再買飲料和零食。",
+            "爸爸每天晚上吃完飯都去河邊散步一個小時，",
+            "週末還去爬山。",
+            "三個月以後，他瘦了五公斤，血壓也正常了。"
+          ],
+          "zh": "",
+          "en": "From that day on, Mom used less salt in her cooking and stopped buying drinks and snacks. Every evening after dinner Dad walks by the river for an hour, and at weekends he goes hiking. Three months later he had lost five kilos and his blood pressure was normal."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "員工",
+          "r": "",
+          "zh": "",
+          "en": "employee"
+        },
+        {
+          "w": "健康檢查",
+          "r": "",
+          "zh": "",
+          "en": "health check-up"
+        },
+        {
+          "w": "報告",
+          "r": "",
+          "zh": "",
+          "en": "report"
+        },
+        {
+          "w": "血壓",
+          "r": "",
+          "zh": "",
+          "en": "blood pressure"
+        },
+        {
+          "w": "體重",
+          "r": "",
+          "zh": "",
+          "en": "body weight"
+        },
+        {
+          "w": "零食",
+          "r": "",
+          "zh": "",
+          "en": "snacks"
+        },
+        {
+          "w": "散步",
+          "r": "",
+          "zh": "",
+          "en": "to take a walk"
+        },
+        {
+          "w": "正常",
+          "r": "",
+          "zh": "",
+          "en": "normal"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "爸爸今年幾歲？",
+          "options": [
+            "四十歲",
+            "四十五歲",
+            "五十歲",
+            "六十歲"
+          ],
+          "answer": 2,
+          "zh": "「我爸爸今年五十歲」。",
+          "en": "Fifty."
+        },
+        {
+          "q": "醫生說爸爸有什麼問題？",
+          "options": [
+            "血壓有點高、太重了",
+            "眼睛不好",
+            "睡得不好",
+            "吃得太少"
+          ],
+          "answer": 0,
+          "zh": "「血壓有點高，體重也太重了」。",
+          "en": "High blood pressure, overweight."
+        },
+        {
+          "q": "媽媽做菜有什麼改變？",
+          "options": [
+            "多放糖",
+            "少放鹽",
+            "多放油",
+            "不做菜了"
+          ],
+          "answer": 1,
+          "zh": "「媽媽做菜少放鹽」。",
+          "en": "Less salt."
+        },
+        {
+          "q": "爸爸晚上吃完飯做什麼？",
+          "options": [
+            "看電視",
+            "去河邊散步",
+            "去健身房",
+            "去爬山"
+          ],
+          "answer": 1,
+          "zh": "「去河邊散步一個小時」。",
+          "en": "Walks by the river."
+        },
+        {
+          "q": "三個月以後爸爸怎麼樣？",
+          "options": [
+            "胖了五公斤",
+            "瘦了五公斤，血壓正常了",
+            "血壓更高了",
+            "換了工作"
+          ],
+          "answer": 1,
+          "zh": "「瘦了五公斤，血壓也正常了」。",
+          "en": "Lost 5 kg, normal blood pressure."
+        }
+      ],
+      "tf": [
+        {
+          "s": "爸爸的公司每年讓員工做健康檢查。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "媽媽還是常常買零食。",
+          "answer": false,
+          "zh": "×：不再買飲料和零食。",
+          "en": "False."
+        },
+        {
+          "s": "爸爸週末去爬山。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",

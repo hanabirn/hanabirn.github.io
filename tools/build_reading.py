@@ -147,9 +147,53 @@ def sentence_zh_cn(marked, glossary, where, problems):
     return segs, trad, trad
 
 
+# Taiwan-edition HSK passages (zh_tw*, 2026-11-08): written in Traditional with Taiwan wording, read by
+# tools/zh_taiwan.py like that edition's rounds (垃圾 lèsè, 期 qí …); the Simplified slot from OpenCC t2s on the
+# whole sentence. Set by build() from the file's "edition".
+PASSAGE_TW = {'now': False}
+
+
+def sentence_zh_tw(marked, glossary, where, problems):
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import zh_taiwan
+    t2s = zh_tools().setdefault('tw2s', _opencc.OpenCC('tw2s'))   # Taiwan forms: 著 → 着
+    src, given = (marked['t'], marked.get('p')) if isinstance(marked, dict) else (marked, None)
+    try:
+        words = zh_taiwan.reading(src, given)
+    except ValueError as e:
+        problems.append(f'{where}: {e}')
+        return [[src, None, None, None, src]], src, src
+    if not given:
+        ZH_REVIEW.append(f'{where}: {src}  →  {zh_taiwan.pinyin_line(src)}')
+    simp = t2s.convert(src)
+    if len(simp) != len(src):
+        simp = ''.join(t2s.convert(c) if len(t2s.convert(c)) == 1 else c for c in src)
+    gloss = [None] * len(src)
+    for gi, g in enumerate(glossary or []):
+        for form in g.get('m') or [g['w']]:
+            for m in re.finditer(re.escape(form), src):
+                if all(gloss[i] is None for i in range(m.start(), m.end())):
+                    for i in range(m.start(), m.end()):
+                        gloss[i] = gi
+    segs, pos = [], 0
+    for w, sy in words:
+        for ch, py in zip(w, sy):
+            if py:
+                segs.append([ch, py, gloss[pos], zh_bopomofo(py), simp[pos]])
+            elif segs and segs[-1][1] is None and segs[-1][2] == gloss[pos]:
+                segs[-1][0] += ch
+                segs[-1][4] += simp[pos]
+            else:
+                segs.append([ch, None, gloss[pos], None, simp[pos]])
+            pos += 1
+    return segs, src, src
+
+
 def sentence_zh(marked, glossary, where, problems, short):
     if PASSAGE_CN['now']:
         return sentence_zh_cn(marked, glossary, where, problems)
+    if PASSAGE_TW['now']:
+        return sentence_zh_tw(marked, glossary, where, problems)
     t = zh_tools()
     text, given = (marked['t'], marked.get('p')) if isinstance(marked, dict) else (marked, None)
     pinyin = given or t['zr'].reading(text, sentence=not short)
@@ -190,6 +234,9 @@ def zh_glossary(g, where, problems):
         sylls = zh_syllables(g['w'], g['r'], where + ' glossary ' + g['w'], problems) or []
         return {'w': s2t.convert(g['w']), 'r': g['r'], 'simp': g['w'],
                 'zy': ' '.join(zh_bopomofo(x) for x in sylls), 'zh': g.get('zh', ''), 'en': g.get('en', '')}
+    if PASSAGE_TW['now'] and not g.get('r'):     # Taiwan edition: pinyin made by zh_taiwan when empty
+        import zh_taiwan
+        g = dict(g, r=''.join(py for _, sy in zh_taiwan.reading(g['w']) for py in sy if py))
     sylls = zh_syllables(g['w'], g['r'], where + ' glossary ' + g['w'], problems) or []
     return {'w': g['w'], 'r': g['r'], 'simp': ''.join(t['cc'].convert(c) for c in g['w']),
             'zy': ' '.join(zh_bopomofo(x) for x in sylls), 'zh': g.get('zh', ''), 'en': g.get('en', '')}
@@ -740,6 +787,7 @@ def build(src, problems):
     out = {k: data[k] for k in ('id', 'lang', 'level', 'order')}
     ZH_EDITION['now'] = data.get('edition', 'cn')
     PASSAGE_CN['now'] = bool(data.get('passages_simplified'))
+    PASSAGE_TW['now'] = data.get('edition') == 'tw'
     if data.get('edition'):
         out['edition'] = data['edition']        # 'tw': the Taiwan edition of the HSK rounds
     out['passages'] = []

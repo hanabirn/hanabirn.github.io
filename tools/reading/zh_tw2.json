@@ -4,7 +4,1293 @@
   "level": "HSK 2",
   "order": 3,
   "edition": "tw",
-  "note": "HSK 2 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 看句子配圖 ×5, 第二部分 選詞填空 ×5, 第三部分 上下句配對 ×10, 第四部分 讀句子回答問題 ×5; mock 25 minutes. Original texts. Drafted in tools/.mockups/tw2.py.",
+  "note": "HSK 2 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 看句子配圖 ×5, 第二部分 選詞填空 ×5, 第三部分 上下句配對 ×10, 第四部分 讀句子回答問題 ×5; mock 25 minutes. Original texts. Drafted in tools/.mockups/tw2.py. Short passages: tools/.mockups/zh_tw2_passages.py (add_passages.py; rerun it after regenerating the sets).",
+  "passages": [
+    {
+      "id": "tw-new-room",
+      "topic": "home",
+      "title": {
+        "text": "新房間",
+        "zh": "",
+        "en": "A new room"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "上個月我開始在臺中上大學，在學校附近租了一個房間。",
+            "房間不大，但是有冷氣，也有一個小陽臺。"
+          ],
+          "zh": "",
+          "en": "Last month I started university in Taichung and rented a room near campus. It isn't big, but it has air conditioning and a small balcony."
+        },
+        {
+          "s": [
+            "房東是一位六十多歲的阿姨，她每個星期都送水果給我。",
+            "晚上我常在陽臺上看書，可以看到很遠的山。",
+            "我覺得住在這裡很快樂。"
+          ],
+          "zh": "",
+          "en": "The landlady is in her sixties and brings me fruit every week. In the evening I often read on the balcony, and I can see the mountains far away. I'm very happy living here."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "大學",
+          "r": "",
+          "zh": "",
+          "en": "university"
+        },
+        {
+          "w": "附近",
+          "r": "",
+          "zh": "",
+          "en": "nearby"
+        },
+        {
+          "w": "租",
+          "r": "",
+          "zh": "",
+          "en": "to rent"
+        },
+        {
+          "w": "冷氣",
+          "r": "",
+          "zh": "",
+          "en": "air conditioning"
+        },
+        {
+          "w": "陽臺",
+          "r": "",
+          "zh": "",
+          "en": "balcony"
+        },
+        {
+          "w": "房東",
+          "r": "",
+          "zh": "",
+          "en": "landlord, landlady"
+        },
+        {
+          "w": "阿姨",
+          "r": "",
+          "zh": "",
+          "en": "auntie (an older woman)"
+        },
+        {
+          "w": "快樂",
+          "r": "",
+          "zh": "",
+          "en": "happy"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他在哪裡上大學？",
+          "options": [
+            "臺北",
+            "臺中",
+            "臺南",
+            "高雄"
+          ],
+          "answer": 1,
+          "zh": "「在臺中上大學」。",
+          "en": "Taichung."
+        },
+        {
+          "q": "他的房間有什麼？",
+          "options": [
+            "冷氣和小陽臺",
+            "電視和沙發",
+            "廚房",
+            "兩張床"
+          ],
+          "answer": 0,
+          "zh": "「有冷氣，也有一個小陽臺」。",
+          "en": "Air conditioning and a balcony."
+        },
+        {
+          "q": "房東多大？",
+          "options": [
+            "四十多歲",
+            "五十多歲",
+            "六十多歲",
+            "七十多歲"
+          ],
+          "answer": 2,
+          "zh": "「六十多歲的阿姨」。",
+          "en": "In her sixties."
+        },
+        {
+          "q": "房東每個星期送他什麼？",
+          "options": [
+            "蛋糕",
+            "水果",
+            "花",
+            "書"
+          ],
+          "answer": 1,
+          "zh": "「每個星期都送水果給我」。",
+          "en": "Fruit."
+        },
+        {
+          "q": "他在陽臺上可以看到什麼？",
+          "options": [
+            "海",
+            "學校",
+            "很遠的山",
+            "夜市"
+          ],
+          "answer": 2,
+          "zh": "「可以看到很遠的山」。",
+          "en": "Mountains far away."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他的房間很大。",
+          "answer": false,
+          "zh": "×：房間不大。",
+          "en": "False."
+        },
+        {
+          "s": "他晚上常在陽臺上看書。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他不喜歡住在這裡。",
+          "answer": false,
+          "zh": "×：住在這裡很快樂。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-night-market",
+      "topic": "food",
+      "title": {
+        "text": "逛夜市",
+        "zh": "",
+        "en": "Going round the night market"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "週末晚上，我常常和同學去逛夜市。",
+            "夜市裡的東西又多又便宜，人也很多。"
+          ],
+          "zh": "",
+          "en": "On weekend evenings I often go round the night market with classmates. There's lots there, it's cheap, and it's crowded."
+        },
+        {
+          "s": [
+            "我最喜歡吃雞排和蚵仔煎，同學喜歡喝木瓜牛奶。",
+            "吃完以後，我們還會玩一些小遊戲。",
+            "上次我玩了三次，拿到一個很大的熊。"
+          ],
+          "zh": "",
+          "en": "My favourites are fried chicken cutlet and oyster omelette; my classmate likes papaya milk. After eating we play some little games too. Last time I played three times and won a huge teddy bear."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "週末",
+          "r": "",
+          "zh": "",
+          "en": "weekend"
+        },
+        {
+          "w": "逛",
+          "r": "",
+          "zh": "",
+          "en": "to stroll, browse"
+        },
+        {
+          "w": "便宜",
+          "r": "",
+          "zh": "",
+          "en": "cheap"
+        },
+        {
+          "w": "雞排",
+          "r": "",
+          "zh": "",
+          "en": "fried chicken cutlet"
+        },
+        {
+          "w": "蚵仔煎",
+          "r": "",
+          "zh": "",
+          "en": "oyster omelette"
+        },
+        {
+          "w": "木瓜牛奶",
+          "r": "",
+          "zh": "",
+          "en": "papaya milk"
+        },
+        {
+          "w": "遊戲",
+          "r": "",
+          "zh": "",
+          "en": "game"
+        },
+        {
+          "w": "熊",
+          "r": "",
+          "zh": "",
+          "en": "bear"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他們什麼時候去夜市？",
+          "options": [
+            "週末早上",
+            "週末晚上",
+            "每天中午",
+            "星期一"
+          ],
+          "answer": 1,
+          "zh": "「週末晚上」。",
+          "en": "Weekend evenings."
+        },
+        {
+          "q": "夜市的東西怎麼樣？",
+          "options": [
+            "又少又貴",
+            "又多又便宜",
+            "很好看但很貴",
+            "都不好吃"
+          ],
+          "answer": 1,
+          "zh": "「又多又便宜」。",
+          "en": "Plentiful and cheap."
+        },
+        {
+          "q": "同學喜歡喝什麼？",
+          "options": [
+            "珍珠奶茶",
+            "木瓜牛奶",
+            "咖啡",
+            "果汁"
+          ],
+          "answer": 1,
+          "zh": "「同學喜歡喝木瓜牛奶」。",
+          "en": "Papaya milk."
+        },
+        {
+          "q": "吃完以後他們做什麼？",
+          "options": [
+            "回家",
+            "玩小遊戲",
+            "看電影",
+            "買衣服"
+          ],
+          "answer": 1,
+          "zh": "「還會玩一些小遊戲」。",
+          "en": "Play games."
+        },
+        {
+          "q": "上次他拿到了什麼？",
+          "options": [
+            "一隻小狗",
+            "一個很大的熊",
+            "一杯飲料",
+            "一本書"
+          ],
+          "answer": 1,
+          "zh": "「拿到一個很大的熊」。",
+          "en": "A big bear."
+        }
+      ],
+      "tf": [
+        {
+          "s": "夜市裡的人很少。",
+          "answer": false,
+          "zh": "×：人也很多。",
+          "en": "False: crowded."
+        },
+        {
+          "s": "他喜歡吃雞排。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "上次他玩了五次遊戲。",
+          "answer": false,
+          "zh": "×：玩了三次。",
+          "en": "False: three."
+        }
+      ]
+    },
+    {
+      "id": "tw-hualien",
+      "topic": "travel",
+      "title": {
+        "text": "花蓮旅行",
+        "zh": "",
+        "en": "A trip to Hualien"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "今年春假，我跟家人去花蓮玩了三天。",
+            "我們坐火車去，路上可以看到藍藍的海，非常漂亮。"
+          ],
+          "zh": "",
+          "en": "This spring break I spent three days in Hualien with my family. We went by train and could see the blue sea along the way — beautiful."
+        },
+        {
+          "s": [
+            "第一天我們去太魯閣，那裡的山又高又美。",
+            "第二天爸爸租了腳踏車，我們沿著海邊騎了兩個小時。",
+            "雖然很累，但是大家都很開心。"
+          ],
+          "zh": "",
+          "en": "On the first day we went to Taroko; the mountains there are tall and lovely. On the second day Dad rented bikes and we rode along the coast for two hours. It was tiring, but everyone was happy."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "春假",
+          "r": "",
+          "zh": "",
+          "en": "spring break"
+        },
+        {
+          "w": "家人",
+          "r": "",
+          "zh": "",
+          "en": "family members"
+        },
+        {
+          "w": "火車",
+          "r": "",
+          "zh": "",
+          "en": "train"
+        },
+        {
+          "w": "漂亮",
+          "r": "",
+          "zh": "",
+          "en": "beautiful"
+        },
+        {
+          "w": "美",
+          "r": "",
+          "zh": "",
+          "en": "beautiful"
+        },
+        {
+          "w": "腳踏車",
+          "r": "",
+          "zh": "",
+          "en": "bicycle"
+        },
+        {
+          "w": "沿著",
+          "r": "",
+          "zh": "",
+          "en": "along"
+        },
+        {
+          "w": "雖然",
+          "r": "",
+          "zh": "",
+          "en": "although"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他們在花蓮玩了幾天？",
+          "options": [
+            "一天",
+            "兩天",
+            "三天",
+            "五天"
+          ],
+          "answer": 2,
+          "zh": "「去花蓮玩了三天」。",
+          "en": "Three days."
+        },
+        {
+          "q": "他們怎麼去花蓮？",
+          "options": [
+            "坐飛機",
+            "坐火車",
+            "開車",
+            "坐船"
+          ],
+          "answer": 1,
+          "zh": "「我們坐火車去」。",
+          "en": "By train."
+        },
+        {
+          "q": "在火車上可以看到什麼？",
+          "options": [
+            "藍藍的海",
+            "高樓",
+            "夜市",
+            "大學"
+          ],
+          "answer": 0,
+          "zh": "「可以看到藍藍的海」。",
+          "en": "The blue sea."
+        },
+        {
+          "q": "第一天他們去了哪裡？",
+          "options": [
+            "海邊",
+            "太魯閣",
+            "夜市",
+            "飯店"
+          ],
+          "answer": 1,
+          "zh": "「第一天我們去太魯閣」。",
+          "en": "Taroko."
+        },
+        {
+          "q": "第二天他們做了什麼？",
+          "options": [
+            "爬山",
+            "騎腳踏車",
+            "游泳",
+            "買東西"
+          ],
+          "answer": 1,
+          "zh": "「沿著海邊騎了兩個小時」。",
+          "en": "Rode bikes."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他是跟朋友去花蓮的。",
+          "answer": false,
+          "zh": "×：跟家人去。",
+          "en": "False: with family."
+        },
+        {
+          "s": "太魯閣的山又高又美。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "騎完腳踏車大家都不開心。",
+          "answer": false,
+          "zh": "×：大家都很開心。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-plum-rain",
+      "topic": "weather",
+      "title": {
+        "text": "梅雨季",
+        "zh": "",
+        "en": "The plum-rain season"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "每年五月到六月是臺灣的梅雨季。",
+            "這個時候常常下雨，有時候一下就是一個星期。"
+          ],
+          "zh": "",
+          "en": "Every year May to June is Taiwan's plum-rain season. It rains a lot then — sometimes for a whole week at a time."
+        },
+        {
+          "s": [
+            "衣服洗了以後很難乾，房間裡也很溼。",
+            "媽媽每天都要開除溼機，不然牆上會長東西。",
+            "我不喜歡梅雨季，因為不能出去打球。"
+          ],
+          "zh": "",
+          "en": "Washed clothes are slow to dry and the rooms are damp. Mom has to run the dehumidifier every day, or things grow on the walls. I don't like the plum-rain season because I can't go out to play ball."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "梅雨季",
+          "r": "",
+          "zh": "",
+          "en": "plum-rain season"
+        },
+        {
+          "w": "有時候",
+          "r": "",
+          "zh": "",
+          "en": "sometimes"
+        },
+        {
+          "w": "衣服",
+          "r": "",
+          "zh": "",
+          "en": "clothes"
+        },
+        {
+          "w": "乾",
+          "r": "",
+          "zh": "",
+          "en": "dry"
+        },
+        {
+          "w": "溼",
+          "r": "",
+          "zh": "",
+          "en": "damp, wet"
+        },
+        {
+          "w": "除溼機",
+          "r": "",
+          "zh": "",
+          "en": "dehumidifier"
+        },
+        {
+          "w": "不然",
+          "r": "",
+          "zh": "",
+          "en": "otherwise"
+        },
+        {
+          "w": "打球",
+          "r": "",
+          "zh": "",
+          "en": "to play ball"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "臺灣的梅雨季是幾月？",
+          "options": [
+            "三月到四月",
+            "五月到六月",
+            "七月到八月",
+            "十月到十一月"
+          ],
+          "answer": 1,
+          "zh": "「每年五月到六月」。",
+          "en": "May to June."
+        },
+        {
+          "q": "梅雨季有時候會下多久的雨？",
+          "options": [
+            "一個小時",
+            "一天",
+            "一個星期",
+            "一個月"
+          ],
+          "answer": 2,
+          "zh": "「一下就是一個星期」。",
+          "en": "A week."
+        },
+        {
+          "q": "梅雨季的時候衣服怎麼樣？",
+          "options": [
+            "很快就乾",
+            "很難乾",
+            "會變小",
+            "會變白"
+          ],
+          "answer": 1,
+          "zh": "「衣服洗了以後很難乾」。",
+          "en": "Slow to dry."
+        },
+        {
+          "q": "媽媽為什麼每天開除溼機？",
+          "options": [
+            "因為太熱",
+            "不然牆上會長東西",
+            "因為很吵",
+            "因為要洗衣服"
+          ],
+          "answer": 1,
+          "zh": "「不然牆上會長東西」。",
+          "en": "Or things grow on the walls."
+        },
+        {
+          "q": "他為什麼不喜歡梅雨季？",
+          "options": [
+            "不能出去打球",
+            "不能上學",
+            "要寫很多功課",
+            "沒有冷氣"
+          ],
+          "answer": 0,
+          "zh": "「因為不能出去打球」。",
+          "en": "He can't play ball."
+        }
+      ],
+      "tf": [
+        {
+          "s": "梅雨季常常下雨。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "梅雨季房間裡很乾。",
+          "answer": false,
+          "zh": "×：房間裡也很溼。",
+          "en": "False: damp."
+        },
+        {
+          "s": "他很喜歡梅雨季。",
+          "answer": false,
+          "zh": "×：我不喜歡梅雨季。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-online-order",
+      "topic": "shopping",
+      "title": {
+        "text": "網路買東西",
+        "zh": "",
+        "en": "Buying online"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "現在我很少去商店買衣服，大部分都在網路上買。",
+            "在網路上買東西很方便，晚上在家就可以看。"
+          ],
+          "zh": "",
+          "en": "These days I rarely buy clothes in shops; I buy most of them online. It's convenient — I can browse at home in the evening."
+        },
+        {
+          "s": [
+            "買好以後，東西會送到我家附近的便利商店，",
+            "我下班順便去拿。",
+            "可是上次我買的褲子太長了，只好再寄回去換。",
+            "所以現在我買以前都會先看清楚大小。"
+          ],
+          "zh": "",
+          "en": "Once ordered, things are delivered to the convenience store near my home, and I pick them up on my way back from work. But last time the trousers I bought were too long, so I had to post them back to exchange. So now I check the size carefully before I buy."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "商店",
+          "r": "",
+          "zh": "",
+          "en": "shop"
+        },
+        {
+          "w": "大部分",
+          "r": "",
+          "zh": "",
+          "en": "most"
+        },
+        {
+          "w": "網路",
+          "r": "",
+          "zh": "",
+          "en": "the internet"
+        },
+        {
+          "w": "順便",
+          "r": "",
+          "zh": "",
+          "en": "on the way, conveniently"
+        },
+        {
+          "w": "褲子",
+          "r": "",
+          "zh": "",
+          "en": "trousers"
+        },
+        {
+          "w": "只好",
+          "r": "",
+          "zh": "",
+          "en": "to have no choice but to"
+        },
+        {
+          "w": "寄",
+          "r": "",
+          "zh": "",
+          "en": "to send, post",
+          "m": [
+            "寄回去"
+          ]
+        },
+        {
+          "w": "清楚",
+          "r": "",
+          "zh": "",
+          "en": "clear"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他現在大部分的衣服在哪裡買？",
+          "options": [
+            "商店",
+            "網路上",
+            "夜市",
+            "朋友那裡"
+          ],
+          "answer": 1,
+          "zh": "「大部分都在網路上買」。",
+          "en": "Online."
+        },
+        {
+          "q": "東西會送到哪裡？",
+          "options": [
+            "他的公司",
+            "他家附近的便利商店",
+            "他的學校",
+            "他朋友家"
+          ],
+          "answer": 1,
+          "zh": "「送到我家附近的便利商店」。",
+          "en": "A convenience store near his home."
+        },
+        {
+          "q": "他什麼時候去拿東西？",
+          "options": [
+            "早上上班以前",
+            "下班的時候",
+            "週末",
+            "中午"
+          ],
+          "answer": 1,
+          "zh": "「我下班順便去拿」。",
+          "en": "After work."
+        },
+        {
+          "q": "上次的褲子有什麼問題？",
+          "options": [
+            "太短了",
+            "太長了",
+            "顏色不對",
+            "太貴了"
+          ],
+          "answer": 1,
+          "zh": "「褲子太長了」。",
+          "en": "Too long."
+        },
+        {
+          "q": "現在他買以前會做什麼？",
+          "options": [
+            "問朋友",
+            "先看清楚大小",
+            "去商店試穿",
+            "打電話"
+          ],
+          "answer": 1,
+          "zh": "「先看清楚大小」。",
+          "en": "Check the size."
+        }
+      ],
+      "tf": [
+        {
+          "s": "他常常去商店買衣服。",
+          "answer": false,
+          "zh": "×：很少去商店買。",
+          "en": "False: rarely."
+        },
+        {
+          "s": "上次的褲子他寄回去換了。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "在網路上買東西很不方便。",
+          "answer": false,
+          "zh": "×：很方便。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-exam-week",
+      "topic": "school",
+      "title": {
+        "text": "考試週",
+        "zh": "",
+        "en": "Exam week"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "下個星期是期中考，所以這幾天大家都很忙。",
+            "我每天下課以後都去圖書館讀書，讀到晚上九點才回家。"
+          ],
+          "zh": "",
+          "en": "Next week is midterms, so everyone is busy these days. Every day after class I study in the library and only go home at nine in the evening."
+        },
+        {
+          "s": [
+            "我的數學不太好，所以請同學幫我。",
+            "他教得很清楚，我現在比以前懂多了。",
+            "考完試以後，我想請他吃一頓飯。"
+          ],
+          "zh": "",
+          "en": "My maths isn't very good, so I asked a classmate to help. He explains very clearly, and now I understand much more than before. After the exams I want to treat him to a meal."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "期中考",
+          "r": "",
+          "zh": "",
+          "en": "midterm exam"
+        },
+        {
+          "w": "忙",
+          "r": "",
+          "zh": "",
+          "en": "busy"
+        },
+        {
+          "w": "圖書館",
+          "r": "",
+          "zh": "",
+          "en": "library"
+        },
+        {
+          "w": "讀書",
+          "r": "",
+          "zh": "",
+          "en": "to study"
+        },
+        {
+          "w": "數學",
+          "r": "",
+          "zh": "",
+          "en": "maths"
+        },
+        {
+          "w": "幫",
+          "r": "",
+          "zh": "",
+          "en": "to help"
+        },
+        {
+          "w": "教",
+          "r": "",
+          "zh": "",
+          "en": "to teach"
+        },
+        {
+          "w": "懂",
+          "r": "",
+          "zh": "",
+          "en": "to understand"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "下個星期有什麼？",
+          "options": [
+            "期中考",
+            "期末考",
+            "運動會",
+            "春假"
+          ],
+          "answer": 0,
+          "zh": "「下個星期是期中考」。",
+          "en": "Midterms."
+        },
+        {
+          "q": "他下課以後去哪裡？",
+          "options": [
+            "回家",
+            "圖書館",
+            "夜市",
+            "朋友家"
+          ],
+          "answer": 1,
+          "zh": "「去圖書館讀書」。",
+          "en": "The library."
+        },
+        {
+          "q": "他幾點回家？",
+          "options": [
+            "七點",
+            "八點",
+            "九點",
+            "十點"
+          ],
+          "answer": 2,
+          "zh": "「讀到晚上九點才回家」。",
+          "en": "Nine."
+        },
+        {
+          "q": "他哪一科不太好？",
+          "options": [
+            "英文",
+            "中文",
+            "數學",
+            "歷史"
+          ],
+          "answer": 2,
+          "zh": "「我的數學不太好」。",
+          "en": "Maths."
+        },
+        {
+          "q": "考完試以後他想做什麼？",
+          "options": [
+            "去旅行",
+            "請同學吃飯",
+            "睡覺",
+            "買新書"
+          ],
+          "answer": 1,
+          "zh": "「想請他吃一頓飯」。",
+          "en": "Treat his classmate to a meal."
+        }
+      ],
+      "tf": [
+        {
+          "s": "這幾天大家都很輕鬆。",
+          "answer": false,
+          "zh": "×：大家都很忙。",
+          "en": "False: busy."
+        },
+        {
+          "s": "同學教得很清楚。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他現在還是完全不懂數學。",
+          "answer": false,
+          "zh": "×：比以前懂多了。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-scooter",
+      "topic": "transport",
+      "title": {
+        "text": "騎機車",
+        "zh": "",
+        "en": "Riding a scooter"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "在臺灣，很多人騎機車上班、上學。",
+            "我爸爸也騎機車，他每天早上先送我去學校，再去公司。"
+          ],
+          "zh": "",
+          "en": "In Taiwan many people ride scooters to work and school. My dad rides one too: every morning he takes me to school first, then goes to the office."
+        },
+        {
+          "s": [
+            "騎機車比開車快，也比較好停車。",
+            "可是下雨的時候要穿雨衣，很不方便。",
+            "爸爸說騎車一定要戴安全帽，也不能騎太快。"
+          ],
+          "zh": "",
+          "en": "A scooter is faster than a car and easier to park. But when it rains you have to wear a raincoat, which is a nuisance. Dad says you must always wear a helmet and never ride too fast."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "機車",
+          "r": "",
+          "zh": "",
+          "en": "scooter, motorbike"
+        },
+        {
+          "w": "上班",
+          "r": "",
+          "zh": "",
+          "en": "to go to work"
+        },
+        {
+          "w": "送",
+          "r": "",
+          "zh": "",
+          "en": "to take (someone somewhere)"
+        },
+        {
+          "w": "比較",
+          "r": "",
+          "zh": "",
+          "en": "relatively"
+        },
+        {
+          "w": "停車",
+          "r": "",
+          "zh": "",
+          "en": "to park"
+        },
+        {
+          "w": "雨衣",
+          "r": "",
+          "zh": "",
+          "en": "raincoat"
+        },
+        {
+          "w": "一定",
+          "r": "",
+          "zh": "",
+          "en": "must, certainly"
+        },
+        {
+          "w": "安全帽",
+          "r": "",
+          "zh": "",
+          "en": "helmet"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "爸爸每天早上先做什麼？",
+          "options": [
+            "去公司",
+            "送他去學校",
+            "吃早餐",
+            "去買東西"
+          ],
+          "answer": 1,
+          "zh": "「先送我去學校，再去公司」。",
+          "en": "Takes him to school."
+        },
+        {
+          "q": "騎機車有什麼好處？",
+          "options": [
+            "比開車快，好停車",
+            "比較安全",
+            "不怕下雨",
+            "不用錢"
+          ],
+          "answer": 0,
+          "zh": "「比開車快，也比較好停車」。",
+          "en": "Fast and easy to park."
+        },
+        {
+          "q": "下雨的時候要穿什麼？",
+          "options": [
+            "外套",
+            "雨衣",
+            "大衣",
+            "運動服"
+          ],
+          "answer": 1,
+          "zh": "「要穿雨衣」。",
+          "en": "A raincoat."
+        },
+        {
+          "q": "爸爸說騎車一定要做什麼？",
+          "options": [
+            "戴安全帽",
+            "開燈",
+            "帶手機",
+            "騎很快"
+          ],
+          "answer": 0,
+          "zh": "「一定要戴安全帽」。",
+          "en": "Wear a helmet."
+        },
+        {
+          "q": "他覺得下雨天騎機車怎麼樣？",
+          "options": [
+            "很好玩",
+            "很不方便",
+            "很快",
+            "很舒服"
+          ],
+          "answer": 1,
+          "zh": "「很不方便」。",
+          "en": "A nuisance."
+        }
+      ],
+      "tf": [
+        {
+          "s": "在臺灣騎機車的人很少。",
+          "answer": false,
+          "zh": "×：很多人騎機車。",
+          "en": "False."
+        },
+        {
+          "s": "騎機車比較好停車。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "爸爸說騎車可以騎很快。",
+          "answer": false,
+          "zh": "×：也不能騎太快。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-swimming",
+      "topic": "health",
+      "title": {
+        "text": "學游泳",
+        "zh": "",
+        "en": "Learning to swim"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "我小時候很怕水，所以一直沒有學游泳。",
+            "去年夏天，我終於報名了游泳課，每個星期上兩次。"
+          ],
+          "zh": "",
+          "en": "I was afraid of water as a child, so I never learned to swim. Last summer I finally signed up for swimming lessons, twice a week."
+        },
+        {
+          "s": [
+            "教練非常有耐心，第一堂課只讓我們在水裡走路。",
+            "一個月以後，我已經可以游二十五公尺了。",
+            "現在游泳是我最喜歡的運動，身體也比以前好。"
+          ],
+          "zh": "",
+          "en": "The coach is very patient; in the first lesson he only had us walk in the water. A month later I could already swim twenty-five metres. Now swimming is my favourite sport, and I'm healthier than before."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "怕",
+          "r": "",
+          "zh": "",
+          "en": "to be afraid of"
+        },
+        {
+          "w": "游泳",
+          "r": "",
+          "zh": "",
+          "en": "to swim"
+        },
+        {
+          "w": "終於",
+          "r": "",
+          "zh": "",
+          "en": "finally"
+        },
+        {
+          "w": "報名",
+          "r": "",
+          "zh": "",
+          "en": "to sign up"
+        },
+        {
+          "w": "教練",
+          "r": "",
+          "zh": "",
+          "en": "coach"
+        },
+        {
+          "w": "耐心",
+          "r": "",
+          "zh": "",
+          "en": "patience"
+        },
+        {
+          "w": "公尺",
+          "r": "",
+          "zh": "",
+          "en": "metre"
+        },
+        {
+          "w": "運動",
+          "r": "",
+          "zh": "",
+          "en": "sport, exercise"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "他小時候為什麼沒有學游泳？",
+          "options": [
+            "沒有時間",
+            "很怕水",
+            "沒有錢",
+            "家裡沒有游泳池"
+          ],
+          "answer": 1,
+          "zh": "「我小時候很怕水」。",
+          "en": "He was afraid of water."
+        },
+        {
+          "q": "游泳課一個星期上幾次？",
+          "options": [
+            "一次",
+            "兩次",
+            "三次",
+            "每天"
+          ],
+          "answer": 1,
+          "zh": "「每個星期上兩次」。",
+          "en": "Twice."
+        },
+        {
+          "q": "第一堂課他們做什麼？",
+          "options": [
+            "游一百公尺",
+            "在水裡走路",
+            "看影片",
+            "跑步"
+          ],
+          "answer": 1,
+          "zh": "「只讓我們在水裡走路」。",
+          "en": "Walk in the water."
+        },
+        {
+          "q": "一個月以後他可以游多遠？",
+          "options": [
+            "十公尺",
+            "二十五公尺",
+            "五十公尺",
+            "一百公尺"
+          ],
+          "answer": 1,
+          "zh": "「可以游二十五公尺了」。",
+          "en": "25 metres."
+        },
+        {
+          "q": "現在他最喜歡什麼運動？",
+          "options": [
+            "跑步",
+            "打球",
+            "游泳",
+            "騎車"
+          ],
+          "answer": 2,
+          "zh": "「現在游泳是我最喜歡的運動」。",
+          "en": "Swimming."
+        }
+      ],
+      "tf": [
+        {
+          "s": "教練很有耐心。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "他是今年春天開始學游泳的。",
+          "answer": false,
+          "zh": "×：去年夏天。",
+          "en": "False: last summer."
+        },
+        {
+          "s": "學游泳以後他的身體比以前好。",
+          "answer": true,
+          "zh": "○：「身體也比以前好」。",
+          "en": "True."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",

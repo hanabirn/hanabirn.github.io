@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-08',
+      zh: "中文台灣版 HSK 1 到 HSK 7–9 也各加了 8 篇短文閱讀，用繁體字、台灣用語和台灣讀音寫成，內容是捷運、夜市、颱風假、健保這些台灣生活的話題，都有錄音、注音、生字和題目。",
+      'zh-Hans': "中文台湾版 HSK 1 到 HSK 7–9 也各加了 8 篇短文阅读，用繁体字、台湾用语和台湾读音写成，内容是捷运、夜市、台风假、健保这些台湾生活的话题，都有录音、注音、生词和题目。",
+      en: "Chinese (Taiwan edition) HSK 1 to HSK 7–9 also get 8 short reading passages each, written in Traditional characters with Taiwan wording and readings, on everyday Taiwan topics such as the MRT, night markets, typhoon days off and the national health insurance — each with recordings, zhuyin, a word list and questions.",
+      ja: "中国語（台湾版）HSK 1〜HSK 7–9 にも各 8 編の短文読解を追加しました。繁体字・台湾の言い回しと読み方で書かれていて、MRT、夜市、台風休み、健康保険など台湾の暮らしの話題です。どれも音声・注音・単語リスト・問題付きです。",
+      ko: "중국어(대만판) HSK 1~HSK 7–9에도 단계마다 짧은 글 8편이 추가되었어요. 번체자와 대만식 표현·발음으로 썼고, MRT, 야시장, 태풍 휴일, 건강보험 같은 대만 생활 이야기예요. 모두 녹음·주음부호·단어 목록·문제가 있어요.",
+      ru: "В китайском (тайваньское издание) на уровнях HSK 1 — HSK 7–9 тоже появилось по 8 коротких текстов для чтения: полными иероглифами, с тайваньской лексикой и произношением, на темы тайваньской жизни — метро, ночные рынки, «тайфунные» выходные, медстраховка. Все с записями, чжуинем, словарём и вопросами.",
+      fr: "Le chinois (édition taïwanaise) HSK 1 à HSK 7–9 reçoit aussi 8 textes courts par niveau, en caractères traditionnels avec le vocabulaire et la prononciation de Taïwan, sur la vie à Taïwan — métro, marchés de nuit, jours de congé pour typhon, assurance maladie — chacun avec enregistrements, zhuyin, lexique et questions.",
+      es: "El chino (edición de Taiwán) HSK 1 a HSK 7–9 también suma 8 lecturas cortas por nivel, en caracteres tradicionales con el vocabulario y la pronunciación de Taiwán, sobre la vida allí — el metro, los mercados nocturnos, los días libres por tifón, el seguro de salud —, todas con grabaciones, zhuyin, vocabulario y preguntas.",
+      de: "Chinesisch (Taiwan-Ausgabe) HSK 1 bis HSK 7–9 bekommt ebenfalls je 8 kurze Lesetexte, in Langzeichen mit taiwanischem Wortschatz und taiwanischer Aussprache, über den Alltag in Taiwan – MRT, Nachtmärkte, Taifun-Freitage, Krankenversicherung –, alle mit Aufnahmen, Zhuyin, Wortliste und Fragen." },
+    { date: '2026-11-08',
       zh: "短文閱讀擴充到更多級別：英文、法文、西班牙文、俄文的 A2 到 C1，韓文 2 到 6 級，以及中文大陸版 HSK 1 到 HSK 7–9，每個級別各 8 篇，越高級越長、越難，都有錄音、生字和題目。中文大陸版的短文用簡體字和大陸拼音，錄音有台灣和大陸兩種口音。",
       'zh-Hans': "短文阅读扩充到更多级别：英语、法语、西班牙语、俄语的 A2 到 C1，韩语 2 到 6 级，以及中文大陆版 HSK 1 到 HSK 7–9，每个级别各 8 篇，级别越高越长、越难，都有录音、生词和题目。中文大陆版的短文用简体字和大陆拼音，录音有台湾和大陆两种口音。",
       en: "Short reading passages now cover many more levels: English, French, Spanish and Russian A2 to C1, Korean levels 2 to 6, and Chinese (Mainland edition) HSK 1 to HSK 7–9 — 8 passages a level, longer and harder as the level rises, each with recordings, a word list and questions. The Mainland Chinese passages are in Simplified characters with Mainland pinyin, recorded in both Taiwan and Mainland accents.",

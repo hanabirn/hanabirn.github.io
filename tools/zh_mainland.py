@@ -24,7 +24,7 @@ ROOT = Path(__file__).resolve().parent.parent
 NEUTRAL = {'的': 'de', '得': 'de', '了': 'le', '吗': 'ma', '呢': 'ne', '吧': 'ba', '着': 'zhe', '们': 'men', '啊': 'a',
            '过': 'guo'}   # alone 过 is the aspect particle (看过); 过来 / 过去 / 过年 are list words
 # words the lists lack or read differently from the papers (add as they turn up in review)
-WORDS = {'无处': 'wú chù', '转化为': 'zhuǎn huà wéi', '沦为': 'lún wéi', '为代表': 'wéi dài biǎo', '长久': 'cháng jiǔ', '场马拉松': 'chǎng mǎ lā sōng', '班长': 'bān zhǎng', '大汗': 'dà hàn', '用不着': 'yòng bu zháo', '走一走': 'zǒu yi zǒu', '多待': 'duō dāi', '家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '面条': 'miàn tiáo', '下雪': 'xià xuě', '晴天': 'qíng tiān', '玩儿': 'wán r', '长大': 'zhǎng dà', '妻子': 'qī zi',
+WORDS = {'台北': 'Tái běi', '台中': 'Tái zhōng', '台南': 'Tái nán', '无处': 'wú chù', '转化为': 'zhuǎn huà wéi', '沦为': 'lún wéi', '为代表': 'wéi dài biǎo', '长久': 'cháng jiǔ', '场马拉松': 'chǎng mǎ lā sōng', '班长': 'bān zhǎng', '大汗': 'dà hàn', '用不着': 'yòng bu zháo', '走一走': 'zǒu yi zǒu', '多待': 'duō dāi', '家里': 'jiā li', '点儿': 'diǎn r', '看看': 'kàn kan', '每天': 'měi tiān', '告诉': 'gào su', '多长': 'duō cháng', '孩子们': 'hái zi men', '走走': 'zǒu zou', '面条': 'miàn tiáo', '下雪': 'xià xuě', '晴天': 'qíng tiān', '玩儿': 'wán r', '长大': 'zhǎng dà', '妻子': 'qī zi',
          # a reduplicated verb's second syllable is neutral (HSK 3: 试试, 问问 …); 长得 is zhǎng (grow)
          '试试': 'shì shi', '问问': 'wèn wen', '尝尝': 'cháng chang', '找找': 'zhǎo zhao', '打打': 'dǎ da',
          '想想': 'xiǎng xiang', '听听': 'tīng ting', '说说': 'shuō shuo', '等等': 'děng deng', '玩玩': 'wán wan',
@@ -75,7 +75,7 @@ WORDS = {'无处': 'wú chù', '转化为': 'zhuǎn huà wéi', '沦为': 'lún 
 SINGLE = {'谁': 'shéi', '没': 'méi', '脏': 'zāng', '更': 'gèng', '弹': 'tán', '王': 'Wáng', '长': 'cháng', '都': 'dōu', '教': 'jiāo', '觉': 'jiào'}   # 教 alone teaches (教室 is a word); 觉 alone is sleep (觉得 is a word)   # 王 alone is the surname (姓王); 长 alone is long (长大 is a word)
 # list words that split simpler sentences wrongly: 三个人 is 三 / 个 / 人, not 三 / 个人 (an individual);
 # 四十分钟 is 四十 / 分钟, not 四 / 十分 (very) / 钟 — read the same, so a real 十分 loses only its grouping
-NOT_WORDS = {'个人', '十分', '只要', '有时', '新手', '要不', '不满', '才能', '看中', '学会', '来回', '都会', '也好', '大多', '把手',
+NOT_WORDS = {'水和', '个人', '十分', '只要', '有时', '新手', '要不', '不满', '才能', '看中', '学会', '来回', '都会', '也好', '大多', '把手',
              '有机', '下手', '人家', '人选', '和平', '时差', '好心', '只得', '得了', '家用', '有意', '人为', '不安', '写作', '车主', '大会', '人身', '不容', '不适', '别看', '人种', '没收', '对白', '天才', '人手', '要好', '出自', '会面', '次要', '出手'}   # 只要五分钟 is 只 / 要 (only takes); 有时间 is 有 / 时间; 新手机 is 新 / 手机;
 # 要不要, 不满意, 只有…才能, 看中国, 学会了 (HSK 3): the words 要不 / 不满 / 才能 / 看中 / 学会 cut them wrongly
 # (我来回答, 都会去, 对身体也好, 大多了, 把手机 likewise)

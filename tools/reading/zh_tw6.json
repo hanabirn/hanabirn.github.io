@@ -4,7 +4,1396 @@
   "level": "HSK 6",
   "order": 7,
   "edition": "tw",
-  "note": "HSK 6 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 完形填空 ×10 (two passages × 5), 第二部分 段落填句 ×10 (two passages, six sentences each), 第三部分 長文閱讀 ×20 (five texts × 4); 4 options, pinyin / zhuyin hidden; mock 40 minutes. Original texts. Drafted in tools/.mockups/tw6_rd.py.",
+  "note": "HSK 6 reading, Taiwan edition (Traditional, Taiwan wording and readings; owner's plan 2026-10-30): the Mainland edition's format — 第一部分 完形填空 ×10 (two passages × 5), 第二部分 段落填句 ×10 (two passages, six sentences each), 第三部分 長文閱讀 ×20 (five texts × 4); 4 options, pinyin / zhuyin hidden; mock 40 minutes. Original texts. Drafted in tools/.mockups/tw6_rd.py. Short passages: tools/.mockups/zh_tw6_passages.py (add_passages.py; rerun it after regenerating the sets).",
+  "passages": [
+    {
+      "id": "tw-housing-prices",
+      "topic": "home",
+      "title": {
+        "text": "買不起的房子",
+        "zh": "",
+        "en": "Homes out of reach"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "在臺北，一間普通的公寓動輒兩、三千萬，",
+            "以一般上班族的薪水來算，不吃不喝也要存二十年以上。",
+            "「買房」對許多年輕人來說，已經成了遙不可及的夢想。"
+          ],
+          "zh": "",
+          "en": "In Taipei an ordinary flat easily costs twenty or thirty million dollars; on an average office worker's salary, you'd have to save for over twenty years without eating or drinking. For many young people, \"buying a home\" has become an unattainable dream."
+        },
+        {
+          "s": [
+            "於是，有人選擇搬到房價較低的桃園、新竹，",
+            "每天花兩小時通勤；",
+            "也有人乾脆放棄買房，",
+            "把錢拿去旅行、進修，享受當下的生活。"
+          ],
+          "zh": "",
+          "en": "So some choose to move to cheaper Taoyuan or Hsinchu and commute two hours a day; others simply give up on buying and spend the money on travel and further study, enjoying life in the present."
+        },
+        {
+          "s": [
+            "與其把買不起房視為失敗，不如重新思考：",
+            "一個家的價值，究竟在於擁有房子，",
+            "還是在於住在裡面的人？"
+          ],
+          "zh": "",
+          "en": "Rather than seeing not being able to afford a home as failure, it's better to reconsider: does the value of a home lie in owning a house, or in the people who live in it?"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "動輒",
+          "r": "",
+          "zh": "",
+          "en": "easily, at every turn"
+        },
+        {
+          "w": "上班族",
+          "r": "",
+          "zh": "",
+          "en": "office workers"
+        },
+        {
+          "w": "遙不可及",
+          "r": "",
+          "zh": "",
+          "en": "out of reach"
+        },
+        {
+          "w": "通勤",
+          "r": "",
+          "zh": "",
+          "en": "to commute"
+        },
+        {
+          "w": "乾脆",
+          "r": "",
+          "zh": "",
+          "en": "simply, just"
+        },
+        {
+          "w": "進修",
+          "r": "",
+          "zh": "",
+          "en": "further study"
+        },
+        {
+          "w": "當下",
+          "r": "",
+          "zh": "",
+          "en": "the present moment"
+        },
+        {
+          "w": "視為",
+          "r": "",
+          "zh": "",
+          "en": "to regard as"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "在臺北，一間普通公寓大概多少錢？",
+          "options": [
+            "幾百萬",
+            "兩、三千萬",
+            "一億以上",
+            "五百萬"
+          ],
+          "answer": 1,
+          "zh": "「動輒兩、三千萬」。",
+          "en": "Twenty to thirty million."
+        },
+        {
+          "q": "「不吃不喝也要存二十年以上」說明什麼？",
+          "options": [
+            "薪水很高",
+            "房價跟薪水比起來非常高",
+            "上班族很會存錢",
+            "房子很大"
+          ],
+          "answer": 1,
+          "zh": "用存錢的時間說明房價之高。",
+          "en": "Prices are far beyond salaries."
+        },
+        {
+          "q": "有些年輕人為什麼搬到桃園、新竹？",
+          "options": [
+            "工作在那裡",
+            "房價比較低",
+            "空氣比較好",
+            "父母住在那裡"
+          ],
+          "answer": 1,
+          "zh": "「搬到房價較低的桃園、新竹」。",
+          "en": "Cheaper housing."
+        },
+        {
+          "q": "放棄買房的人把錢用在哪裡？",
+          "options": [
+            "買車",
+            "旅行、進修",
+            "投資股票",
+            "存起來"
+          ],
+          "answer": 1,
+          "zh": "「把錢拿去旅行、進修」。",
+          "en": "Travel and study."
+        },
+        {
+          "q": "作者最後提出了什麼問題？",
+          "options": [
+            "房價什麼時候會下降",
+            "家的價值在於房子還是住在裡面的人",
+            "要不要搬到南部",
+            "應該租房還是買房"
+          ],
+          "answer": 1,
+          "zh": "「究竟在於擁有房子，還是在於住在裡面的人」。",
+          "en": "House or people?"
+        }
+      ],
+      "tf": [
+        {
+          "s": "對很多年輕人來說，買房是很容易的事。",
+          "answer": false,
+          "zh": "×：已經成了遙不可及的夢想。",
+          "en": "False."
+        },
+        {
+          "s": "有些人每天花兩小時通勤。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "作者認為買不起房就是失敗。",
+          "answer": false,
+          "zh": "×：與其視為失敗，不如重新思考。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-breakfast-culture",
+      "topic": "food",
+      "title": {
+        "text": "早餐店文化",
+        "zh": "",
+        "en": "Breakfast shop culture"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "臺灣的早餐選擇之多，在世界上可說是數一數二。",
+            "從傳統的燒餅油條、飯糰豆漿，到西式的漢堡、三明治，",
+            "走出家門不到五分鐘，幾乎都能找到一家早餐店。"
+          ],
+          "zh": "",
+          "en": "Taiwan's choice of breakfasts must rank among the widest in the world. From traditional sesame flatbread with fried dough sticks and rice balls with soy milk to Western-style burgers and sandwiches, you can find a breakfast shop within five minutes of almost any front door."
+        },
+        {
+          "s": [
+            "早餐店不只是吃飯的地方，也是社區的人情中心。",
+            "老闆往往記得熟客的口味，",
+            "一句「老樣子嗎？」就能讓人倍感溫暖。"
+          ],
+          "zh": "",
+          "en": "A breakfast shop isn't just a place to eat; it's also the heart of neighbourhood warmth. The owner often remembers the regulars' orders, and a simple \"The usual?\" can make you feel deeply cared for."
+        },
+        {
+          "s": [
+            "然而，隨著連鎖咖啡店和便利商店搶攻早餐市場，",
+            "不少傳統小店面臨經營困難。",
+            "若有一天它們消失了，失去的恐怕不只是一頓早餐。"
+          ],
+          "zh": "",
+          "en": "However, as coffee chains and convenience stores compete for the breakfast market, many small traditional shops are struggling. If they disappear one day, what we lose may be more than just a breakfast."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "數一數二",
+          "r": "",
+          "zh": "",
+          "en": "among the very best"
+        },
+        {
+          "w": "傳統",
+          "r": "",
+          "zh": "",
+          "en": "traditional"
+        },
+        {
+          "w": "人情",
+          "r": "",
+          "zh": "",
+          "en": "human warmth, kindness"
+        },
+        {
+          "w": "熟客",
+          "r": "",
+          "zh": "",
+          "en": "regular customer"
+        },
+        {
+          "w": "倍感",
+          "r": "",
+          "zh": "",
+          "en": "to feel all the more",
+          "m": [
+            "倍感溫暖"
+          ]
+        },
+        {
+          "w": "連鎖",
+          "r": "",
+          "zh": "",
+          "en": "chain (of stores)"
+        },
+        {
+          "w": "面臨",
+          "r": "",
+          "zh": "",
+          "en": "to face"
+        },
+        {
+          "w": "經營",
+          "r": "",
+          "zh": "",
+          "en": "to run (a business)"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "「數一數二」在文中的意思是：",
+          "options": [
+            "數量很少",
+            "名列前茅、非常突出",
+            "要數兩次",
+            "價格便宜"
+          ],
+          "answer": 1,
+          "zh": "表示在世界上排名前一、二名。",
+          "en": "Among the very top."
+        },
+        {
+          "q": "下面哪一項是傳統的臺灣早餐？",
+          "options": [
+            "漢堡",
+            "三明治",
+            "燒餅油條",
+            "鬆餅"
+          ],
+          "answer": 2,
+          "zh": "「從傳統的燒餅油條、飯糰豆漿」。",
+          "en": "Shaobing and youtiao."
+        },
+        {
+          "q": "為什麼說早餐店是社區的人情中心？",
+          "options": [
+            "價格便宜",
+            "老闆記得熟客的口味，讓人覺得溫暖",
+            "營業時間很長",
+            "有很多座位"
+          ],
+          "answer": 1,
+          "zh": "「一句『老樣子嗎？』就能讓人倍感溫暖」。",
+          "en": "Owners know their regulars."
+        },
+        {
+          "q": "傳統早餐店面臨什麼問題？",
+          "options": [
+            "找不到員工",
+            "連鎖咖啡店和便利商店搶市場",
+            "房租下降",
+            "客人太多"
+          ],
+          "answer": 1,
+          "zh": "「隨著連鎖咖啡店和便利商店搶攻早餐市場」。",
+          "en": "Competition from chains."
+        },
+        {
+          "q": "最後一句的意思是：",
+          "options": [
+            "早餐很貴",
+            "早餐店消失會失去人情味",
+            "應該多開連鎖店",
+            "早餐不重要"
+          ],
+          "answer": 1,
+          "zh": "失去的不只是一頓早餐，還有人情。",
+          "en": "We'd lose the human warmth too."
+        }
+      ],
+      "tf": [
+        {
+          "s": "臺灣的早餐選擇很少。",
+          "answer": false,
+          "zh": "×：選擇之多，數一數二。",
+          "en": "False."
+        },
+        {
+          "s": "老闆往往記得熟客的口味。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "不少傳統早餐店面臨經營困難。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-mountain-rescue",
+      "topic": "travel",
+      "title": {
+        "text": "登山熱潮",
+        "zh": "",
+        "en": "The hiking boom"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "近年來，臺灣掀起了一股登山熱潮，",
+            "政府也開放許多過去需要申請的山林，",
+            "鼓勵民眾親近大自然。",
+            "假日的步道上，常常可以看到全家大小一起出遊。"
+          ],
+          "zh": "",
+          "en": "In recent years Taiwan has seen a hiking boom, and the government has opened up many mountain areas that used to require permits, encouraging people to get close to nature. On holiday trails you often see whole families out together."
+        },
+        {
+          "s": [
+            "然而，登山人口快速增加，山難事件也隨之增多。",
+            "有些人準備不足，穿著拖鞋就上山；",
+            "有些人為了拍照，擅自離開步道而迷路。",
+            "每一次搜救，都要動用大量人力，",
+            "甚至讓救難人員冒著生命危險。"
+          ],
+          "zh": "",
+          "en": "But as the number of hikers has soared, mountain accidents have risen too. Some go unprepared, climbing in flip-flops; others leave the trail without permission for photos and get lost. Every search and rescue takes huge manpower and can even put rescuers' lives at risk."
+        },
+        {
+          "s": [
+            "山是開放的，責任卻要自己承擔。",
+            "做好功課、量力而為，才是對大自然真正的尊重。"
+          ],
+          "zh": "",
+          "en": "The mountains are open, but the responsibility is your own. Doing your homework and knowing your limits is true respect for nature."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "熱潮",
+          "r": "",
+          "zh": "",
+          "en": "craze, boom"
+        },
+        {
+          "w": "親近",
+          "r": "",
+          "zh": "",
+          "en": "to be close to"
+        },
+        {
+          "w": "步道",
+          "r": "",
+          "zh": "",
+          "en": "trail, footpath"
+        },
+        {
+          "w": "山難",
+          "r": "",
+          "zh": "",
+          "en": "mountain accident"
+        },
+        {
+          "w": "擅自",
+          "r": "",
+          "zh": "",
+          "en": "without permission"
+        },
+        {
+          "w": "搜救",
+          "r": "",
+          "zh": "",
+          "en": "search and rescue"
+        },
+        {
+          "w": "承擔",
+          "r": "",
+          "zh": "",
+          "en": "to bear, shoulder"
+        },
+        {
+          "w": "量力而為",
+          "r": "",
+          "zh": "",
+          "en": "to act within one's means"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "政府為什麼開放山林？",
+          "options": [
+            "增加收入",
+            "鼓勵民眾親近大自然",
+            "方便蓋房子",
+            "減少遊客"
+          ],
+          "answer": 1,
+          "zh": "「鼓勵民眾親近大自然」。",
+          "en": "To encourage contact with nature."
+        },
+        {
+          "q": "登山人口增加帶來了什麼問題？",
+          "options": [
+            "步道變寬",
+            "山難事件增多",
+            "門票漲價",
+            "山變矮了"
+          ],
+          "answer": 1,
+          "zh": "「山難事件也隨之增多」。",
+          "en": "More mountain accidents."
+        },
+        {
+          "q": "下面哪一項是文中提到的不當行為？",
+          "options": [
+            "帶太多水",
+            "穿拖鞋上山",
+            "提早出發",
+            "結伴同行"
+          ],
+          "answer": 1,
+          "zh": "「穿著拖鞋就上山」。",
+          "en": "Climbing in flip-flops."
+        },
+        {
+          "q": "搜救工作有什麼代價？",
+          "options": [
+            "需要大量人力，救難人員冒生命危險",
+            "費用由政府全部負擔",
+            "很快就能完成",
+            "不需要任何人"
+          ],
+          "answer": 0,
+          "zh": "「動用大量人力，甚至讓救難人員冒著生命危險」。",
+          "en": "Manpower and risk to rescuers."
+        },
+        {
+          "q": "作者認為怎樣才是尊重大自然？",
+          "options": [
+            "不要去爬山",
+            "做好功課、量力而為",
+            "多拍照",
+            "只走熱門步道"
+          ],
+          "answer": 1,
+          "zh": "「做好功課、量力而為」。",
+          "en": "Prepare and know your limits."
+        }
+      ],
+      "tf": [
+        {
+          "s": "現在假日步道上常有全家一起出遊。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "作者認為登山的責任應該由政府承擔。",
+          "answer": false,
+          "zh": "×：責任卻要自己承擔。",
+          "en": "False."
+        },
+        {
+          "s": "有些人為了拍照而迷路。",
+          "answer": true,
+          "zh": "○：「為了拍照，擅自離開步道而迷路」。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-air-quality",
+      "topic": "weather",
+      "title": {
+        "text": "看不見的空汙",
+        "zh": "",
+        "en": "Invisible air pollution"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "每到秋冬，臺灣中南部的天空常常灰濛濛的。",
+            "除了東北季風把境外的汙染物吹過來，",
+            "本地的工廠、火力發電廠和大量機車排放的廢氣，",
+            "也是造成空汙的重要原因。"
+          ],
+          "zh": "",
+          "en": "Every autumn and winter the skies over central and southern Taiwan are often grey and hazy. Besides the north-east monsoon blowing in pollutants from abroad, emissions from local factories, coal-fired power stations and huge numbers of scooters are major causes too."
+        },
+        {
+          "s": [
+            "細懸浮微粒小到肉眼看不見，卻能深入肺部，",
+            "長期吸入會增加罹患肺癌和心血管疾病的風險。",
+            "因此，許多家長每天出門前，",
+            "都會先查看空氣品質指數，再決定讓孩子戴不戴口罩。"
+          ],
+          "zh": "",
+          "en": "Fine particulate matter is too small to see, yet it can penetrate deep into the lungs, and long-term exposure raises the risk of lung cancer and cardiovascular disease. So many parents check the air quality index before going out each day to decide whether their children should wear masks."
+        },
+        {
+          "s": [
+            "改善空汙無法一蹴而就，需要政府與民眾一起努力。"
+          ],
+          "zh": "",
+          "en": "Improving air pollution can't be done overnight; it needs the government and the public working together."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "灰濛濛",
+          "r": "",
+          "zh": "",
+          "en": "grey and hazy"
+        },
+        {
+          "w": "季風",
+          "r": "",
+          "zh": "",
+          "en": "monsoon",
+          "m": [
+            "東北季風"
+          ]
+        },
+        {
+          "w": "汙染",
+          "r": "",
+          "zh": "",
+          "en": "pollution",
+          "m": [
+            "汙染物"
+          ]
+        },
+        {
+          "w": "排放",
+          "r": "",
+          "zh": "",
+          "en": "to emit"
+        },
+        {
+          "w": "肺",
+          "r": "",
+          "zh": "",
+          "en": "lung",
+          "m": [
+            "肺部",
+            "肺癌"
+          ]
+        },
+        {
+          "w": "罹患",
+          "r": "",
+          "zh": "",
+          "en": "to contract (a disease)"
+        },
+        {
+          "w": "風險",
+          "r": "",
+          "zh": "",
+          "en": "risk"
+        },
+        {
+          "w": "一蹴而就",
+          "r": "",
+          "zh": "",
+          "en": "to succeed at one stroke"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "什麼時候中南部的天空常常灰濛濛的？",
+          "options": [
+            "春夏",
+            "秋冬",
+            "只有夏天",
+            "一整年"
+          ],
+          "answer": 1,
+          "zh": "「每到秋冬」。",
+          "en": "Autumn and winter."
+        },
+        {
+          "q": "下面哪一項不是文中提到的空汙原因？",
+          "options": [
+            "東北季風帶來的境外汙染",
+            "火力發電廠",
+            "機車排放的廢氣",
+            "森林火災"
+          ],
+          "answer": 3,
+          "zh": "原文沒有提到森林火災。",
+          "en": "Forest fires weren't mentioned."
+        },
+        {
+          "q": "細懸浮微粒有什麼危害？",
+          "options": [
+            "讓人變胖",
+            "能深入肺部，增加疾病風險",
+            "讓眼睛變好",
+            "沒有危害"
+          ],
+          "answer": 1,
+          "zh": "「能深入肺部……增加罹患肺癌和心血管疾病的風險」。",
+          "en": "Lung and heart risks."
+        },
+        {
+          "q": "許多家長出門前會做什麼？",
+          "options": [
+            "看天氣預報",
+            "查看空氣品質指數",
+            "準備雨傘",
+            "打電話給學校"
+          ],
+          "answer": 1,
+          "zh": "「先查看空氣品質指數」。",
+          "en": "Check the air quality index."
+        },
+        {
+          "q": "作者認為改善空汙需要什麼？",
+          "options": [
+            "只靠政府",
+            "政府與民眾一起努力",
+            "只靠民眾",
+            "等季風改變"
+          ],
+          "answer": 1,
+          "zh": "「需要政府與民眾一起努力」。",
+          "en": "Government and public together."
+        }
+      ],
+      "tf": [
+        {
+          "s": "細懸浮微粒用肉眼就能看見。",
+          "answer": false,
+          "zh": "×：小到肉眼看不見。",
+          "en": "False."
+        },
+        {
+          "s": "空汙只是境外吹來的。",
+          "answer": false,
+          "zh": "×：本地的排放也是重要原因。",
+          "en": "False."
+        },
+        {
+          "s": "改善空汙不能很快完成。",
+          "answer": true,
+          "zh": "○：「無法一蹴而就」。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-lucky-bags",
+      "topic": "shopping",
+      "title": {
+        "text": "福袋與盲盒",
+        "zh": "",
+        "en": "Lucky bags and blind boxes"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "每逢新年，百貨公司推出的福袋總是供不應求，",
+            "有人甚至前一天晚上就來排隊。",
+            "近年流行的盲盒也是同樣的道理：",
+            "打開之前，你永遠不知道裡面裝的是哪一款公仔。"
+          ],
+          "zh": "",
+          "en": "Every New Year the lucky bags launched by department stores are always in short supply, and some people even queue from the night before. The blind boxes popular in recent years work the same way: until you open one, you never know which figure is inside."
+        },
+        {
+          "s": [
+            "心理學家指出，這種「不確定性」會刺激大腦分泌多巴胺，",
+            "帶來期待與興奮的感覺，",
+            "因此讓人一買再買，欲罷不能。",
+            "有些收藏家為了湊齊一整套，花了好幾萬塊也在所不惜。"
+          ],
+          "zh": "",
+          "en": "Psychologists point out that this \"uncertainty\" stimulates the brain to release dopamine, bringing feelings of anticipation and excitement, so people buy again and again and can't stop. Some collectors spend tens of thousands of dollars without hesitation to complete a full set."
+        },
+        {
+          "s": [
+            "適度的驚喜無傷大雅，",
+            "但若讓一時的刺激主導消費，就得不償失了。"
+          ],
+          "zh": "",
+          "en": "A moderate surprise does no harm, but if a momentary thrill takes charge of your spending, you lose more than you gain."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "供不應求",
+          "r": "",
+          "zh": "",
+          "en": "demand exceeds supply"
+        },
+        {
+          "w": "盲盒",
+          "r": "",
+          "zh": "",
+          "en": "blind box"
+        },
+        {
+          "w": "公仔",
+          "r": "",
+          "zh": "",
+          "en": "figurine"
+        },
+        {
+          "w": "刺激",
+          "r": "",
+          "zh": "",
+          "en": "to stimulate; thrill"
+        },
+        {
+          "w": "欲罷不能",
+          "r": "",
+          "zh": "",
+          "en": "unable to stop"
+        },
+        {
+          "w": "收藏家",
+          "r": "",
+          "zh": "",
+          "en": "collector"
+        },
+        {
+          "w": "在所不惜",
+          "r": "",
+          "zh": "",
+          "en": "not to hesitate at any cost"
+        },
+        {
+          "w": "得不償失",
+          "r": "",
+          "zh": "",
+          "en": "the loss outweighs the gain"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "「供不應求」說明福袋怎麼樣？",
+          "options": [
+            "賣不出去",
+            "非常受歡迎，不夠賣",
+            "很便宜",
+            "品質很差"
+          ],
+          "answer": 1,
+          "zh": "供給趕不上需求，表示很搶手。",
+          "en": "Very popular."
+        },
+        {
+          "q": "盲盒的特點是什麼？",
+          "options": [
+            "價格很高",
+            "打開前不知道裡面是哪一款",
+            "只在新年賣",
+            "每盒都一樣"
+          ],
+          "answer": 1,
+          "zh": "「打開之前，你永遠不知道裡面裝的是哪一款公仔」。",
+          "en": "You don't know what's inside."
+        },
+        {
+          "q": "為什麼盲盒讓人一買再買？",
+          "options": [
+            "朋友推薦",
+            "不確定性刺激大腦帶來興奮感",
+            "價格越來越低",
+            "商店打折"
+          ],
+          "answer": 1,
+          "zh": "「刺激大腦分泌多巴胺，帶來期待與興奮的感覺」。",
+          "en": "Uncertainty triggers excitement."
+        },
+        {
+          "q": "有些收藏家為什麼花好幾萬塊？",
+          "options": [
+            "為了轉賣賺錢",
+            "為了湊齊一整套",
+            "為了送人",
+            "為了參加比賽"
+          ],
+          "answer": 1,
+          "zh": "「為了湊齊一整套」。",
+          "en": "To complete a set."
+        },
+        {
+          "q": "作者的看法是：",
+          "options": [
+            "盲盒應該禁止",
+            "適度可以，但不能讓刺激主導消費",
+            "應該多買福袋",
+            "收藏是浪費"
+          ],
+          "answer": 1,
+          "zh": "「適度的驚喜無傷大雅，但若讓一時的刺激主導消費，就得不償失了」。",
+          "en": "Fine in moderation."
+        }
+      ],
+      "tf": [
+        {
+          "s": "有人前一天晚上就去排隊買福袋。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "打開盲盒之前就知道裡面是什麼。",
+          "answer": false,
+          "zh": "×：永遠不知道。",
+          "en": "False."
+        },
+        {
+          "s": "作者認為適度的驚喜沒有什麼害處。",
+          "answer": true,
+          "zh": "○：「無傷大雅」。",
+          "en": "True."
+        }
+      ]
+    },
+    {
+      "id": "tw-low-birthrate",
+      "topic": "school",
+      "title": {
+        "text": "少子化與學校",
+        "zh": "",
+        "en": "Falling birth rates and schools"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "由於少子化，臺灣每年的新生兒人數不斷減少，",
+            "許多偏鄉小學一個年級只剩下幾個學生，",
+            "甚至面臨廢校的危機。",
+            "有些大學招不到學生，只能被迫停招或合併。"
+          ],
+          "zh": "",
+          "en": "Because of the falling birth rate, the number of newborns in Taiwan drops every year; many rural primary schools have only a few pupils per grade and even face closure. Some universities can't recruit enough students and are forced to stop admissions or merge."
+        },
+        {
+          "s": [
+            "然而，危機也可能是轉機。",
+            "班級人數少了，老師可以更照顧到每個孩子的需要；",
+            "一些偏鄉學校結合在地文化，發展出獨特的課程，",
+            "反而吸引城市的家長把孩子送來就讀。"
+          ],
+          "zh": "",
+          "en": "Yet a crisis can also be a turning point. With smaller classes, teachers can better attend to each child's needs; some rural schools have drawn on local culture to develop distinctive curricula, actually attracting city parents to send their children there."
+        },
+        {
+          "s": [
+            "教育的價值不在於學校的規模，",
+            "而在於能否培養出有能力、有溫度的人。"
+          ],
+          "zh": "",
+          "en": "The value of education lies not in a school's size but in whether it can nurture capable, caring people."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "少子化",
+          "r": "",
+          "zh": "",
+          "en": "falling birth rate"
+        },
+        {
+          "w": "偏鄉",
+          "r": "",
+          "zh": "",
+          "en": "remote rural area"
+        },
+        {
+          "w": "廢校",
+          "r": "",
+          "zh": "",
+          "en": "school closure"
+        },
+        {
+          "w": "危機",
+          "r": "",
+          "zh": "",
+          "en": "crisis"
+        },
+        {
+          "w": "合併",
+          "r": "",
+          "zh": "",
+          "en": "to merge"
+        },
+        {
+          "w": "轉機",
+          "r": "",
+          "zh": "",
+          "en": "turning point (for the better)"
+        },
+        {
+          "w": "獨特",
+          "r": "",
+          "zh": "",
+          "en": "distinctive, unique"
+        },
+        {
+          "w": "規模",
+          "r": "",
+          "zh": "",
+          "en": "scale, size"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "為什麼偏鄉小學的學生很少？",
+          "options": [
+            "交通不方便",
+            "少子化",
+            "學費太貴",
+            "老師太少"
+          ],
+          "answer": 1,
+          "zh": "「由於少子化」。",
+          "en": "Falling birth rate."
+        },
+        {
+          "q": "有些大學面臨什麼情況？",
+          "options": [
+            "學生太多",
+            "招不到學生，被迫停招或合併",
+            "老師不夠",
+            "經費太多"
+          ],
+          "answer": 1,
+          "zh": "「只能被迫停招或合併」。",
+          "en": "Closing or merging."
+        },
+        {
+          "q": "「危機也可能是轉機」是什麼意思？",
+          "options": [
+            "危機一定會發生",
+            "壞事也可能帶來好的改變",
+            "應該換工作",
+            "要小心危險"
+          ],
+          "answer": 1,
+          "zh": "危機中也有好的機會。",
+          "en": "Bad times can bring good change."
+        },
+        {
+          "q": "一些偏鄉學校怎麼吸引城市家長？",
+          "options": [
+            "降低學費",
+            "結合在地文化發展獨特課程",
+            "蓋新大樓",
+            "送禮物"
+          ],
+          "answer": 1,
+          "zh": "「結合在地文化，發展出獨特的課程」。",
+          "en": "Distinctive local-culture curricula."
+        },
+        {
+          "q": "作者認為教育的價值在於什麼？",
+          "options": [
+            "學校規模大",
+            "培養有能力、有溫度的人",
+            "考試成績高",
+            "學生人數多"
+          ],
+          "answer": 1,
+          "zh": "「能否培養出有能力、有溫度的人」。",
+          "en": "Capable, caring people."
+        }
+      ],
+      "tf": [
+        {
+          "s": "臺灣每年的新生兒人數不斷增加。",
+          "answer": false,
+          "zh": "×：不斷減少。",
+          "en": "False."
+        },
+        {
+          "s": "班級人數少，老師更能照顧每個孩子。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "作者認為學校規模越大越好。",
+          "answer": false,
+          "zh": "×：不在於學校的規模。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-scooter-transition",
+      "topic": "transport",
+      "title": {
+        "text": "機車王國的轉型",
+        "zh": "",
+        "en": "A scooter kingdom in transition"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "臺灣被稱為「機車王國」，",
+            "登記的機車超過一千四百萬輛，平均不到兩個人就有一輛。",
+            "機車靈活方便，卻也帶來了噪音、廢氣和交通安全問題。"
+          ],
+          "zh": "",
+          "en": "Taiwan is called the \"kingdom of scooters\": over fourteen million are registered, about one for every two people. Scooters are nimble and convenient, but they also bring noise, exhaust fumes and road-safety problems."
+        },
+        {
+          "s": [
+            "為了減少汙染，政府推廣電動機車，在路口設置換電站，",
+            "騎士只要幾十秒就能換好電池。",
+            "不過，許多年長的騎士習慣了傳統機車，",
+            "對電動車的續航力和價格仍有疑慮。"
+          ],
+          "zh": "",
+          "en": "To cut pollution, the government is promoting electric scooters and has installed battery-swap stations at junctions, where riders can swap a battery in a few dozen seconds. But many older riders, used to traditional scooters, still have doubts about electric models' range and price."
+        },
+        {
+          "s": [
+            "轉型從來不是一朝一夕的事，",
+            "唯有讓新技術真正貼近民眾的需求，",
+            "才能說服大家改變習慣。"
+          ],
+          "zh": "",
+          "en": "Transition never happens overnight; only by bringing new technology truly close to people's needs can everyone be persuaded to change their habits."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "登記",
+          "r": "",
+          "zh": "",
+          "en": "to register"
+        },
+        {
+          "w": "靈活",
+          "r": "",
+          "zh": "",
+          "en": "nimble, flexible"
+        },
+        {
+          "w": "噪音",
+          "r": "",
+          "zh": "",
+          "en": "noise"
+        },
+        {
+          "w": "設置",
+          "r": "",
+          "zh": "",
+          "en": "to install, set up"
+        },
+        {
+          "w": "換電站",
+          "r": "",
+          "zh": "",
+          "en": "battery-swap station"
+        },
+        {
+          "w": "續航力",
+          "r": "",
+          "zh": "",
+          "en": "range (of a vehicle)"
+        },
+        {
+          "w": "疑慮",
+          "r": "",
+          "zh": "",
+          "en": "doubts, misgivings"
+        },
+        {
+          "w": "一朝一夕",
+          "r": "",
+          "zh": "",
+          "en": "overnight, in a short time"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "為什麼臺灣被稱為「機車王國」？",
+          "options": [
+            "機車很貴",
+            "機車數量非常多",
+            "機車都是臺灣製造的",
+            "只有臺灣有機車"
+          ],
+          "answer": 1,
+          "zh": "「登記的機車超過一千四百萬輛」。",
+          "en": "There are so many scooters."
+        },
+        {
+          "q": "機車帶來了哪些問題？",
+          "options": [
+            "噪音、廢氣和交通安全",
+            "停車太方便",
+            "價格太低",
+            "速度太慢"
+          ],
+          "answer": 0,
+          "zh": "「帶來了噪音、廢氣和交通安全問題」。",
+          "en": "Noise, fumes and safety."
+        },
+        {
+          "q": "政府怎麼推廣電動機車？",
+          "options": [
+            "禁止騎機車",
+            "在路口設置換電站",
+            "免費送電動車",
+            "提高油價"
+          ],
+          "answer": 1,
+          "zh": "「在路口設置換電站」。",
+          "en": "Battery-swap stations."
+        },
+        {
+          "q": "許多年長騎士對電動車有什麼疑慮？",
+          "options": [
+            "顏色不好看",
+            "續航力和價格",
+            "太安靜",
+            "太輕"
+          ],
+          "answer": 1,
+          "zh": "「對電動車的續航力和價格仍有疑慮」。",
+          "en": "Range and price."
+        },
+        {
+          "q": "作者認為怎樣才能讓大家改變習慣？",
+          "options": [
+            "用法律強迫",
+            "讓新技術貼近民眾需求",
+            "降低油價",
+            "多蓋馬路"
+          ],
+          "answer": 1,
+          "zh": "「讓新技術真正貼近民眾的需求」。",
+          "en": "Meet people's real needs."
+        }
+      ],
+      "tf": [
+        {
+          "s": "換電池只要幾十秒。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "所有騎士都已經接受電動機車。",
+          "answer": false,
+          "zh": "×：許多年長的騎士仍有疑慮。",
+          "en": "False."
+        },
+        {
+          "s": "作者認為轉型很快就能完成。",
+          "answer": false,
+          "zh": "×：從來不是一朝一夕的事。",
+          "en": "False."
+        }
+      ]
+    },
+    {
+      "id": "tw-aging",
+      "topic": "health",
+      "title": {
+        "text": "長照",
+        "zh": "",
+        "en": "Long-term care"
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "臺灣已經進入超高齡社會，",
+            "每五個人之中就有一位是六十五歲以上的長者。",
+            "許多家庭面臨「長照」的難題：",
+            "子女要上班，無法全天照顧行動不便的父母，",
+            "只好請外籍看護或送到安養機構。"
+          ],
+          "zh": "",
+          "en": "Taiwan has become a super-aged society, with one in every five people aged sixty-five or over. Many families face the dilemma of long-term care: the children work and can't look after parents with limited mobility all day, so they hire a foreign caregiver or send them to a care home."
+        },
+        {
+          "s": [
+            "為了減輕家庭的負擔，政府推動長照服務，",
+            "提供居家照顧、日間照顧和交通接送等協助。",
+            "然而，專業人力不足、城鄉資源不均，",
+            "仍是亟待解決的問題。"
+          ],
+          "zh": "",
+          "en": "To ease the burden on families, the government promotes long-term care services, offering home care, day care and transport. Yet a shortage of professionals and uneven resources between town and country remain problems urgently needing solutions."
+        },
+        {
+          "s": [
+            "照顧長者不只是一個家庭的責任，",
+            "更考驗著整個社會的智慧與溫度。"
+          ],
+          "zh": "",
+          "en": "Caring for the elderly isn't just one family's responsibility; it tests the wisdom and warmth of the whole society."
+        }
+      ],
+      "glossary": [
+        {
+          "w": "超高齡社會",
+          "r": "",
+          "zh": "",
+          "en": "super-aged society"
+        },
+        {
+          "w": "長者",
+          "r": "",
+          "zh": "",
+          "en": "senior, elder"
+        },
+        {
+          "w": "長照",
+          "r": "",
+          "zh": "",
+          "en": "long-term care"
+        },
+        {
+          "w": "看護",
+          "r": "",
+          "zh": "",
+          "en": "caregiver",
+          "m": [
+            "外籍看護"
+          ]
+        },
+        {
+          "w": "機構",
+          "r": "",
+          "zh": "",
+          "en": "institution",
+          "m": [
+            "安養機構"
+          ]
+        },
+        {
+          "w": "減輕",
+          "r": "",
+          "zh": "",
+          "en": "to lighten, ease"
+        },
+        {
+          "w": "專業",
+          "r": "",
+          "zh": "",
+          "en": "professional"
+        },
+        {
+          "w": "亟待",
+          "r": "",
+          "zh": "",
+          "en": "to urgently need"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "臺灣大約多少人是六十五歲以上？",
+          "options": [
+            "十個人中一位",
+            "五個人中一位",
+            "三個人中一位",
+            "兩個人中一位"
+          ],
+          "answer": 1,
+          "zh": "「每五個人之中就有一位」。",
+          "en": "One in five."
+        },
+        {
+          "q": "子女為什麼無法全天照顧父母？",
+          "options": [
+            "住得太遠",
+            "要上班",
+            "不願意",
+            "生病了"
+          ],
+          "answer": 1,
+          "zh": "「子女要上班」。",
+          "en": "They work."
+        },
+        {
+          "q": "下面哪一項是政府提供的長照服務？",
+          "options": [
+            "免費旅遊",
+            "居家照顧和交通接送",
+            "發放現金",
+            "蓋新醫院"
+          ],
+          "answer": 1,
+          "zh": "「提供居家照顧、日間照顧和交通接送等協助」。",
+          "en": "Home care and transport."
+        },
+        {
+          "q": "長照仍有什麼問題？",
+          "options": [
+            "服務太多",
+            "專業人力不足、城鄉資源不均",
+            "費用太低",
+            "長者太少"
+          ],
+          "answer": 1,
+          "zh": "「專業人力不足、城鄉資源不均」。",
+          "en": "Staff shortages and uneven resources."
+        },
+        {
+          "q": "作者最後的看法是：",
+          "options": [
+            "照顧長者只是家庭的責任",
+            "照顧長者考驗整個社會",
+            "應該多請外籍看護",
+            "長照不重要"
+          ],
+          "answer": 1,
+          "zh": "「更考驗著整個社會的智慧與溫度」。",
+          "en": "It tests the whole society."
+        }
+      ],
+      "tf": [
+        {
+          "s": "臺灣已經是超高齡社會。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        },
+        {
+          "s": "長照的專業人力非常充足。",
+          "answer": false,
+          "zh": "×：專業人力不足。",
+          "en": "False."
+        },
+        {
+          "s": "有些家庭會請外籍看護。",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",
