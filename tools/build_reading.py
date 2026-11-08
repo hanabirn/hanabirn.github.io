@@ -112,7 +112,7 @@ def sentence_zh_cn(marked, glossary, where, problems):
     sys.path.insert(0, str(Path(__file__).resolve().parent))
     import zh_mainland
     t = zh_tools()
-    s2t = t.setdefault('s2t', _opencc.OpenCC('s2t'))
+    s2t = t.setdefault('s2tw', _opencc.OpenCC('s2tw'))   # Taiwan forms: 吃 麵 裡, not 喫 麪 裏
     src, given = (marked['t'], marked.get('p')) if isinstance(marked, dict) else (marked, None)
     try:
         words = zh_mainland.reading(src, given)
@@ -128,11 +128,14 @@ def sentence_zh_cn(marked, glossary, where, problems):
                 if all(gloss[i] is None for i in range(m.start(), m.end())):
                     for i in range(m.start(), m.end()):
                         gloss[i] = gi
+    full = s2t.convert(src)     # the whole sentence at once: character by character gave 公裏, 分鍾
+    if len(full) != len(src):
+        full = ''.join(s2t.convert(c) if len(s2t.convert(c)) == 1 else c for c in src)
     segs, pos = [], 0
     for w, sy in words:
         for ch, py in zip(w, sy):
             if py:
-                trad = s2t.convert(ch)
+                trad = full[pos]
                 segs.append([trad if len(trad) == 1 else ch, py, gloss[pos], zh_bopomofo(py), ch])
             elif segs and segs[-1][1] is None and segs[-1][2] == gloss[pos]:
                 segs[-1][0] += ch
@@ -180,7 +183,7 @@ def zh_glossary(g, where, problems):
     """a glossary word with its Simplified form and zhuyin"""
     t = zh_tools()
     if PASSAGE_CN['now']:       # w written in Simplified, r its Mainland pinyin (made by zh_mainland when empty)
-        s2t = t.setdefault('s2t', _opencc.OpenCC('s2t'))
+        s2t = t.setdefault('s2tw', _opencc.OpenCC('s2tw'))   # Taiwan forms: 吃 麵 裡, not 喫 麪 裏
         if not g.get('r'):
             import zh_mainland
             g = dict(g, r=''.join(py for _, sy in zh_mainland.reading(g['w']) for py in sy if py))
