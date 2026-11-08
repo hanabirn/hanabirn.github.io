@@ -40,7 +40,19 @@ LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jl
               ('es', 'A1'): ['es_a1', 'tp_es_'], ('de', 'A1'): ['de_a1', 'tp_de_'], ('de', 'A2'): ['de_a1', 'de_a2', 'tp_de_'], ('de', 'B1'): ['de_a1', 'de_a2', 'de_b1', 'tp_de_'], ('de', 'B2'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'tp_de_'],
               ('de', 'C1'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'de_c1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_'],
               ('en', 'A2'): ['en_jh', 'tp_en_'], ('en', 'B1'): ['en_jh', 'en_sh', 'tp_en_'], ('en', 'B2'): ['en_jh', 'en_sh', 'tp_en_'],
-              ('en', 'C1'): ['en_jh', 'en_sh', 'tp_en_']}
+              ('en', 'C1'): ['en_jh', 'en_sh', 'tp_en_'],
+              ('fr', 'A2'): ['fr_a1', 'fr_a2', 'tp_fr_'],
+              ('fr', 'B1'): ['fr_a1', 'fr_a2', 'fr_b1', 'tp_fr_'],
+              ('fr', 'B2'): ['fr_a1', 'fr_a2', 'fr_b1', 'fr_b2', 'tp_fr_'],
+              ('fr', 'C1'): ['fr_a1', 'fr_a2', 'fr_b1', 'fr_b2', 'fr_c1', 'tp_fr_'],
+              ('es', 'A2'): ['es_a1', 'es_a2', 'tp_es_'],
+              ('es', 'B1'): ['es_a1', 'es_a2', 'es_b1', 'tp_es_'],
+              ('es', 'B2'): ['es_a1', 'es_a2', 'es_b1', 'es_b2', 'tp_es_'],
+              ('es', 'C1'): ['es_a1', 'es_a2', 'es_b1', 'es_b2', 'es_c1', 'tp_es_'],
+              ('ru', 'A2'): ['ru_a1', 'ru_a2', 'tp_ru_'],
+              ('ru', 'B1'): ['ru_a1', 'ru_a2', 'ru_b1', 'tp_ru_'],
+              ('ru', 'B2'): ['ru_a1', 'ru_a2', 'ru_b1', 'ru_b2', 'tp_ru_'],
+              ('ru', 'C1'): ['ru_a1', 'ru_a2', 'ru_b1', 'ru_b2', 'ru_c1', 'tp_ru_']}
 # a passage's length: characters in Japanese / Korean / Chinese, words elsewhere
 # (l'école, aujourd'hui and week-end count as one; js/reading.js READING_CHAR_LANGS)
 CHAR_LANGS = ('ja', 'ko', 'zh')
