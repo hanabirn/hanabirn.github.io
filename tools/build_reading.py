@@ -38,7 +38,8 @@ LEVEL_SETS = {('ja', 'N5'): ['jlpt_n5', 'tp_ja_'], ('ja', 'N4'): ['jlpt_n5', 'jl
               ('ko', 'TOPIK I'): ['topik_1', 'topik_2', 'tp_ko_'], ('ko', '1급'): ['topik_1', 'topik_2', 'tp_ko_'],
               ('ko', '2급'): ['topik_1', 'topik_2', 'tp_ko_'], ('ko', '3급'): ['topik_1', 'topik_2', 'topik_3', 'tp_ko_'],
               ('ko', '4급'): ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'tp_ko_'], ('ko', '5급'): ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'tp_ko_'],
-              ('ko', '6급'): ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'tp_ko_'], ('zh', 'TW HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_'],
+              ('ko', '6급'): ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'tp_ko_'],
+              ('zh', 'HSK 1'): ['hsk_1'], ('zh', 'HSK 2'): ['hsk_1', 'hsk_2'], ('zh', 'HSK 3'): ['hsk_1', 'hsk_2', 'hsk_3'], ('zh', 'HSK 4'): ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4'], ('zh', 'HSK 5'): ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5'], ('zh', 'HSK 6'): ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6'], ('zh', 'HSK 7–9'): ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'], ('zh', 'TW HSK 1–2'): ['hsk_1', 'hsk_2', 'tp_zh_'],
               ('fr', 'A1'): ['fr_a1', 'tp_fr_'], ('ru', 'A1'): ['ru_a1', 'tp_ru_'],
               ('es', 'A1'): ['es_a1', 'tp_es_'], ('de', 'A1'): ['de_a1', 'tp_de_'], ('de', 'A2'): ['de_a1', 'de_a2', 'tp_de_'], ('de', 'B1'): ['de_a1', 'de_a2', 'de_b1', 'tp_de_'], ('de', 'B2'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'tp_de_'],
               ('de', 'C1'): ['de_a1', 'de_a2', 'de_b1', 'de_b2', 'de_c1', 'tp_de_'], ('en', 'A1'): ['en_jh', 'tp_en_'],
@@ -101,7 +102,51 @@ def zh_syllables(text, pinyin, where, problems):
         return None
 
 
+# Mainland HSK passages (2026-11-08): a file with "passages_simplified": true writes its passages in Simplified
+# with Mainland wording; pinyin comes from zh_mainland (as the HSK rounds), the Traditional slot from a
+# character-by-character s2t so the reader's 繁 / 简 switch still works. Set by build().
+PASSAGE_CN = {'now': False}
+
+
+def sentence_zh_cn(marked, glossary, where, problems):
+    sys.path.insert(0, str(Path(__file__).resolve().parent))
+    import zh_mainland
+    t = zh_tools()
+    s2t = t.setdefault('s2t', _opencc.OpenCC('s2t'))
+    src, given = (marked['t'], marked.get('p')) if isinstance(marked, dict) else (marked, None)
+    try:
+        words = zh_mainland.reading(src, given)
+    except ValueError as e:
+        problems.append(f'{where}: {e}')
+        return [[src, None, None, None, src]], src, src
+    if not given:
+        ZH_REVIEW.append(f'{where}: {src}  →  {zh_mainland.pinyin_line(src)}')
+    gloss = [None] * len(src)
+    for gi, g in enumerate(glossary or []):
+        for form in g.get('m') or [g['w']]:
+            for m in re.finditer(re.escape(form), src):
+                if all(gloss[i] is None for i in range(m.start(), m.end())):
+                    for i in range(m.start(), m.end()):
+                        gloss[i] = gi
+    segs, pos = [], 0
+    for w, sy in words:
+        for ch, py in zip(w, sy):
+            if py:
+                trad = s2t.convert(ch)
+                segs.append([trad if len(trad) == 1 else ch, py, gloss[pos], zh_bopomofo(py), ch])
+            elif segs and segs[-1][1] is None and segs[-1][2] == gloss[pos]:
+                segs[-1][0] += ch
+                segs[-1][4] += ch
+            else:
+                segs.append([ch, None, gloss[pos], None, ch])
+            pos += 1
+    trad = ''.join(sg[0] for sg in segs)
+    return segs, trad, trad
+
+
 def sentence_zh(marked, glossary, where, problems, short):
+    if PASSAGE_CN['now']:
+        return sentence_zh_cn(marked, glossary, where, problems)
     t = zh_tools()
     text, given = (marked['t'], marked.get('p')) if isinstance(marked, dict) else (marked, None)
     pinyin = given or t['zr'].reading(text, sentence=not short)
@@ -134,6 +179,14 @@ def sentence_zh(marked, glossary, where, problems, short):
 def zh_glossary(g, where, problems):
     """a glossary word with its Simplified form and zhuyin"""
     t = zh_tools()
+    if PASSAGE_CN['now']:       # w written in Simplified, r its Mainland pinyin (made by zh_mainland when empty)
+        s2t = t.setdefault('s2t', _opencc.OpenCC('s2t'))
+        if not g.get('r'):
+            import zh_mainland
+            g = dict(g, r=''.join(py for _, sy in zh_mainland.reading(g['w']) for py in sy if py))
+        sylls = zh_syllables(g['w'], g['r'], where + ' glossary ' + g['w'], problems) or []
+        return {'w': s2t.convert(g['w']), 'r': g['r'], 'simp': g['w'],
+                'zy': ' '.join(zh_bopomofo(x) for x in sylls), 'zh': g.get('zh', ''), 'en': g.get('en', '')}
     sylls = zh_syllables(g['w'], g['r'], where + ' glossary ' + g['w'], problems) or []
     return {'w': g['w'], 'r': g['r'], 'simp': ''.join(t['cc'].convert(c) for c in g['w']),
             'zy': ' '.join(zh_bopomofo(x) for x in sylls), 'zh': g.get('zh', ''), 'en': g.get('en', '')}
@@ -683,6 +736,7 @@ def build(src, problems):
         problems.append(f'{name}: no "passages" or "sets"')
     out = {k: data[k] for k in ('id', 'lang', 'level', 'order')}
     ZH_EDITION['now'] = data.get('edition', 'cn')
+    PASSAGE_CN['now'] = bool(data.get('passages_simplified'))
     if data.get('edition'):
         out['edition'] = data['edition']        # 'tw': the Taiwan edition of the HSK rounds
     out['passages'] = []
