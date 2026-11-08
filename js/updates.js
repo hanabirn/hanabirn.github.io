@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-08',
+      zh: "德文 A1 到 C1（歌德學院考試格式）的閱讀和聽力各加了第 2、3 回，現在每個級別都有 3 回，聽力全部有錄音，解說也有日、韓、俄、法、西文。德文 A2 到 C1 也各加了 8 篇短文閱讀，跟日文一樣有錄音、生字和題目。",
+      'zh-Hans': "德语 A1 到 C1（歌德学院考试格式）的阅读和听力各加了第 2、3 回，现在每个级别都有 3 回，听力全部有录音，解说也有日、韩、俄、法、西语。德语 A2 到 C1 也各加了 8 篇短文阅读，跟日语一样有录音、生词和题目。",
+      en: "German A1 to C1 (Goethe-Institut exam format) reading and listening each add rounds 2 and 3, so every level now has 3 rounds, with every listening recording in place and explanations also in Japanese, Korean, Russian, French and Spanish. German A2 to C1 also get 8 short reading passages each, with recordings, glossaries and questions, just like Japanese.",
+      ja: "ドイツ語 A1〜C1（ゲーテ・インスティトゥート試験形式）の読解と聴解に第 2・3 回を追加し、各レベル 3 回分になりました。聴解はすべて音声付きで、解説は日本語・韓国語・ロシア語・フランス語・スペイン語でも読めます。ドイツ語 A2〜C1 には、日本語と同じく音声・語彙・問題付きの短い読み物も各 8 編加わりました。",
+      ko: "독일어 A1~C1(괴테 인스티투트 시험 형식) 읽기와 듣기에 2·3회가 추가되어, 이제 모든 단계가 3회분이에요. 듣기는 모두 녹음이 있고, 해설은 일본어·한국어·러시아어·프랑스어·스페인어로도 볼 수 있어요. 독일어 A2~C1에는 일본어처럼 녹음·단어·문제가 있는 짧은 읽기 글도 단계마다 8편씩 생겼어요.",
+      ru: "В немецком A1–C1 (формат экзаменов Гёте-института) к чтению и аудированию добавлены варианты 2 и 3 — теперь на каждом уровне по 3 варианта, все записи на месте, а пояснения есть и на японском, корейском, русском, французском и испанском. Кроме того, на уровнях A2–C1 появилось по 8 коротких текстов для чтения с озвучкой, словариком и вопросами, как в японском.",
+      fr: "La lecture et l’écoute en allemand A1 à C1 (format des examens du Goethe-Institut) gagnent les séries 2 et 3 : chaque niveau en compte désormais 3, avec tous les enregistrements et des explications aussi en japonais, coréen, russe, français et espagnol. L’allemand A2 à C1 reçoit aussi 8 courts textes de lecture par niveau, avec audio, glossaire et questions, comme pour le japonais.",
+      es: "La lectura y la comprensión auditiva de alemán A1 a C1 (formato de los exámenes del Goethe-Institut) suman las rondas 2 y 3: cada nivel tiene ya 3 rondas, con todas las grabaciones y explicaciones también en japonés, coreano, ruso, francés y español. El alemán A2 a C1 también recibe 8 textos cortos de lectura por nivel, con audio, glosario y preguntas, igual que el japonés.",
+      de: "Lesen und Hören für Deutsch A1 bis C1 (Format der Prüfungen des Goethe-Instituts) haben jetzt Durchgang 2 und 3 – jede Stufe hat damit 3 Durchgänge, alle Aufnahmen sind vorhanden, und die Erklärungen gibt es auch auf Japanisch, Koreanisch, Russisch, Französisch und Spanisch. Deutsch A2 bis C1 bekommt außerdem je 8 kurze Lesetexte mit Audio, Wortliste und Fragen, wie beim Japanischen." },
+    { date: '2026-11-08',
       zh: "英文 A2、B1、B2、C1（劍橋考試格式）的閱讀和聽力各加了第 2、3 回，現在每個級別都有 3 回，聽力全部有錄音，解說也有日、韓、俄、法、西、德文。A2 和 B1 聽力第 1 部分的看圖題也畫好圖了，不用再看文字說明。",
       'zh-Hans': "英语 A2、B1、B2、C1（剑桥考试格式）的阅读和听力各加了第 2、3 回，现在每个级别都有 3 回，听力全部有录音，解说也有日、韩、俄、法、西、德语。A2 和 B1 听力第 1 部分的看图题也画好图了，不用再看文字说明。",
       en: "English A2, B1, B2 and C1 (Cambridge exam format) reading and listening each add rounds 2 and 3, so every level now has 3 rounds, with every listening recording in place and explanations also in Japanese, Korean, Russian, French, Spanish and German. The picture questions in Part 1 of A2 and B1 listening now have drawn pictures instead of text descriptions.",
