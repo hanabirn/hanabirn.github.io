@@ -4,7 +4,7 @@
   "level": "C1",
   "order": 5,
   "n_options": 4,
-  "note": "English C1 reading rounds in the Cambridge C1 Advanced format (Reading and Use of English; owner's plan 2026-10-30). Parts 1–8: multiple-choice cloze ×8, open cloze ×8, word formation ×8, key word transformations ×6 (typed), a long text ×6, cross-text matching ×4 (four reviewers), a gapped text (six of seven paragraphs), multiple matching ×10. Original texts. Drafted in tools/.mockups/en_c1.py.",
+  "note": "English C1 reading rounds in the Cambridge C1 Advanced format (Reading and Use of English; owner's plan 2026-10-30). Parts 1–8: multiple-choice cloze ×8, open cloze ×8, word formation ×8, key word transformations ×6 (typed), a long text ×6, cross-text matching ×4 (four reviewers), a gapped text (six of seven paragraphs), multiple matching ×10. Original texts. Drafted in tools/.mockups/en_c1.py (rounds 2–3: en_c1_r23.py).",
   "sets": [
     {
       "id": "r1",
@@ -580,6 +580,1186 @@
               "answer": "B",
               "zh": "一位資深同事說服湯姆發表。",
               "en": "A senior colleague persuaded Tom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "text": "In praise of boredom\nFor most of us, boredom is something to be avoided at all (1) ＿＿＿＿＿. The moment we find ourselves with nothing to do, we reach for our phones. Yet a growing (2) ＿＿＿＿＿ of research suggests that boredom may serve a useful purpose. When the mind is left to wander, it tends to make unexpected connections, which can (3) ＿＿＿＿＿ to creative ideas. In one well-known study, participants who had first completed a deliberately dull task went on to (4) ＿＿＿＿＿ better on a test of creativity than those who had not. Psychologists caution, however, against drawing too many (5) ＿＿＿＿＿ from such experiments. Chronic boredom, they point out, is (6) ＿＿＿＿＿ linked to anxiety and depression. The key, it seems, lies in the difference between brief periods of idleness and a life that (7) ＿＿＿＿＿ meaning. Allowing ourselves the occasional dull afternoon may be no bad thing; it is when boredom becomes a (8) ＿＿＿＿＿ state that it should concern us.",
+          "tr": {
+            "zh": "為無聊說句好話\n對大多數人來說，無聊是無論如何都要避免的。一發現自己沒事做，我們就伸手拿手機。然而越來越多的研究顯示，無聊可能有它的用處。心思放空時，往往會產生意想不到的連結，進而帶來有創意的點子。在一項有名的研究中，先做完一項刻意設計得很無聊的工作的受試者，在創意測驗上的得分比沒做的人高。不過心理學家提醒，不要從這類實驗推出太多結論。他們指出，長期的無聊和焦慮、憂鬱密切相關。關鍵似乎在於短暫的閒散和缺乏意義的人生之間的差別。偶爾允許自己度過一個無聊的下午也許不是壞事；當無聊變成一種永久的狀態時，才值得擔心。"
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "prices",
+                "costs",
+                "means",
+                "rates"
+              ],
+              "answer": 1,
+              "zh": "「at all costs」：無論如何、不惜代價（固定說法）。",
+              "en": "at all costs."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "mass",
+                "heap",
+                "body",
+                "bulk"
+              ],
+              "answer": 2,
+              "zh": "「a growing body of research」：越來越多的研究。",
+              "en": "a growing body of research."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "lead",
+                "bring",
+                "result",
+                "cause"
+              ],
+              "answer": 0,
+              "zh": "「lead to」：導致、帶來；result 要用 result in。",
+              "en": "lead to; \"result\" needs \"in\"."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "achieve",
+                "win",
+                "gain",
+                "score"
+              ],
+              "answer": 3,
+              "zh": "「score better on a test」：測驗得分較高。",
+              "en": "score better on a test."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "decisions",
+                "conclusions",
+                "judgements",
+                "results"
+              ],
+              "answer": 1,
+              "zh": "「draw conclusions」：得出結論。",
+              "en": "draw conclusions."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "heavily",
+                "deeply",
+                "strongly",
+                "firmly"
+              ],
+              "answer": 2,
+              "zh": "「strongly linked to」：密切相關。",
+              "en": "strongly linked to."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "lacks",
+                "misses",
+                "fails",
+                "loses"
+              ],
+              "answer": 0,
+              "zh": "「a life that lacks meaning」：缺乏意義的人生。",
+              "en": "lacks meaning."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "durable",
+                "eternal",
+                "solid",
+                "permanent"
+              ],
+              "answer": 3,
+              "zh": "「a permanent state」：永久的狀態。",
+              "en": "a permanent state."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 2,
+          "ask": "en_open",
+          "text": "Night trains\nNot so long ago, night trains seemed to be heading for extinction. Faced (9) ＿＿＿＿＿ competition from budget airlines, rail companies across Europe cancelled one sleeper service (10) ＿＿＿＿＿ another. Recently, however, the trend has begun to reverse. Several new routes have been launched, and demand has (11) ＿＿＿＿＿ some operators by surprise. Part of the appeal is environmental: a train produces a fraction of the emissions of a plane. But (12) ＿＿＿＿＿ really sets night trains apart is the experience itself. Passengers fall asleep in one country and wake up in another, (13) ＿＿＿＿＿ having wasted a day in airports. That is not to say the service is perfect. Tickets can cost as (14) ＿＿＿＿＿ as a flight, and cabins are often cramped. Nevertheless, (15) ＿＿＿＿＿ long as travellers value comfort and sustainability, the night train looks (16) ＿＿＿＿＿ to stay.",
+          "tr": {
+            "zh": "夜車\n不久以前，夜車似乎正走向消失。面對廉價航空的競爭，歐洲各地的鐵路公司一條接一條地取消臥鋪列車。不過最近這個趨勢開始逆轉。好幾條新路線開通了，需求之大讓一些業者措手不及。部分吸引力在於環保：火車的排放量只有飛機的一小部分。但真正讓夜車與眾不同的是體驗本身。乘客在一個國家睡著，在另一個國家醒來，不必在機場浪費一整天。這不是說夜車很完美：票價可能和機票一樣貴，車廂也常常很擠。儘管如此，只要旅客重視舒適和永續，夜車看來會繼續存在。"
+          },
+          "questions": [
+            {
+              "q": "(9)",
+              "answers": [
+                "with"
+              ],
+              "zh": "「Faced with …」：面對……",
+              "en": "Faced with competition."
+            },
+            {
+              "q": "(10)",
+              "answers": [
+                "after"
+              ],
+              "zh": "「one … after another」：一個接一個。",
+              "en": "one service after another."
+            },
+            {
+              "q": "(11)",
+              "answers": [
+                "taken",
+                "caught"
+              ],
+              "zh": "「take / catch someone by surprise」：讓人措手不及。",
+              "en": "taken (caught) by surprise."
+            },
+            {
+              "q": "(12)",
+              "answers": [
+                "what"
+              ],
+              "zh": "「What really sets … apart is …」：真正讓……與眾不同的是……",
+              "en": "What really sets them apart."
+            },
+            {
+              "q": "(13)",
+              "answers": [
+                "without"
+              ],
+              "zh": "「without having wasted a day」：不必浪費一整天。",
+              "en": "without having wasted a day."
+            },
+            {
+              "q": "(14)",
+              "answers": [
+                "much"
+              ],
+              "zh": "「as much as a flight」：和機票一樣多（錢）。",
+              "en": "cost as much as a flight."
+            },
+            {
+              "q": "(15)",
+              "answers": [
+                "as",
+                "so"
+              ],
+              "zh": "「as / so long as」：只要。",
+              "en": "as (so) long as."
+            },
+            {
+              "q": "(16)",
+              "answers": [
+                "set",
+                "likely",
+                "certain",
+                "sure"
+              ],
+              "zh": "「looks set to stay」：看來會繼續存在。",
+              "en": "looks set (likely) to stay."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 3,
+          "ask": "en_wordform",
+          "text": "Science for everyone\nCitizen science projects invite members of the public to take part in genuine research, from counting birds to (17) ＿＿＿＿＿ (CLASS) distant galaxies. Their (18) ＿＿＿＿＿ (POPULAR) has grown enormously with the spread of smartphones. For scientists, the benefits are obvious: volunteers can gather data on a scale that would otherwise be (19) ＿＿＿＿＿ (CONCEIVE). Critics have questioned the (20) ＿＿＿＿＿ (RELY) of data collected by amateurs, but studies suggest that with clear instructions, volunteers can be (21) ＿＿＿＿＿ (REMARK) accurate. Participants, meanwhile, report a better (22) ＿＿＿＿＿ (UNDERSTAND) of the scientific method and a sense of (23) ＿＿＿＿＿ (ACHIEVE). Perhaps most importantly, such projects help to close the gap between researchers and the wider public, (24) ＿＿＿＿＿ (STRONG) trust in science at a time when it is badly needed.",
+          "tr": {
+            "zh": "人人都能做科學\n公民科學計畫邀請一般民眾參與真正的研究，從數鳥到替遙遠的星系分類都有。隨著智慧型手機普及，這類計畫越來越受歡迎。對科學家來說，好處很明顯：志工能收集到規模大得難以想像的資料。批評者質疑業餘人士收集的資料是否可靠，但研究顯示，只要說明清楚，志工可以準確得驚人。參與者則表示，他們更了解科學方法，也有成就感。也許最重要的是，這類計畫有助於拉近研究人員和大眾的距離，在最需要的時候加強大眾對科學的信任。"
+          },
+          "questions": [
+            {
+              "q": "(17)",
+              "answers": [
+                "classifying"
+              ],
+              "zh": "from counting … to + V-ing：CLASS → classifying（分類）。",
+              "en": "from counting … to classifying."
+            },
+            {
+              "q": "(18)",
+              "answers": [
+                "popularity"
+              ],
+              "zh": "POPULAR → popularity（名詞，Their …）。",
+              "en": "Their popularity."
+            },
+            {
+              "q": "(19)",
+              "answers": [
+                "inconceivable",
+                "unconceivable"
+              ],
+              "zh": "CONCEIVE → inconceivable：難以想像的（否定字首 in-）。",
+              "en": "inconceivable — unimaginable."
+            },
+            {
+              "q": "(20)",
+              "answers": [
+                "reliability"
+              ],
+              "zh": "RELY → reliability：可靠性（the … of）。",
+              "en": "the reliability of."
+            },
+            {
+              "q": "(21)",
+              "answers": [
+                "remarkably"
+              ],
+              "zh": "修飾形容詞 accurate 用副詞：remarkably accurate 準確得驚人。",
+              "en": "remarkably accurate."
+            },
+            {
+              "q": "(22)",
+              "answers": [
+                "understanding"
+              ],
+              "zh": "UNDERSTAND → understanding（名詞，a better … of）。",
+              "en": "a better understanding of."
+            },
+            {
+              "q": "(23)",
+              "answers": [
+                "achievement",
+                "accomplishment"
+              ],
+              "zh": "ACHIEVE → achievement：a sense of achievement 成就感。",
+              "en": "a sense of achievement."
+            },
+            {
+              "q": "(24)",
+              "answers": [
+                "strengthening"
+              ],
+              "zh": "STRONG → strengthen → strengthening（分詞構句，加強……）。",
+              "en": "strengthening trust."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 4,
+          "ask": "en_transform",
+          "text": "(25) It's possible that she didn't receive my message.\n      MIGHT\n      She ＿＿＿＿＿ my message.\n(26) The company's profits fell sharply last year.\n      SHARP\n      There ＿＿＿＿＿ the company's profits last year.\n(27) I'd never seen such a beautiful sunset before.\n      EVER\n      It was the most beautiful sunset ＿＿＿＿＿ seen.\n(28) They postponed the meeting because the manager was ill.\n      PUT\n      The meeting ＿＿＿＿＿ because of the manager's illness.\n(29) You can borrow my car as long as you return it by six.\n      CONDITION\n      You can borrow my car ＿＿＿＿＿ return it by six.\n(30) She succeeded in finishing the marathon despite her injury.\n      MANAGED\n      Despite her injury, she ＿＿＿＿＿ the marathon.",
+          "tr": {
+            "zh": "(25) 她可能沒收到我的訊息。→ She ___ my message.（MIGHT）\n(26) 公司去年獲利大幅下滑。→ There ___ the company's profits last year.（SHARP）\n(27) 我從沒看過這麼美的夕陽。→ It was the most beautiful sunset ___ seen.（EVER）\n(28) 因為經理生病，他們把會議延期了。→ The meeting ___ because of …（PUT）\n(29) 只要六點前還車，你就可以借我的車。→ You can borrow my car ___ return it by six.（CONDITION）\n(30) 她儘管受傷還是跑完了馬拉松。→ Despite her injury, she ___ the marathon.（MANAGED）"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "might not have received",
+                "mightn't have received",
+                "might not have got",
+                "might not have gotten"
+              ],
+              "zh": "對過去的推測：might not have + 過去分詞。",
+              "en": "might not have received."
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "was a sharp fall in",
+                "was a sharp drop in",
+                "was a sharp decline in",
+                "was a sharp decrease in"
+              ],
+              "zh": "動詞 fell sharply 改成名詞片語：There was a sharp fall in …",
+              "en": "There was a sharp fall in."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "i had ever",
+                "i'd ever"
+              ],
+              "zh": "「the most … I had ever seen」：我看過最……的。",
+              "en": "the most beautiful sunset I had ever seen."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "was put off",
+                "had to be put off",
+                "was put back",
+                "had been put off"
+              ],
+              "zh": "「put off」：延期；被動 was put off。",
+              "en": "was put off."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "on condition that you",
+                "on the condition that you"
+              ],
+              "zh": "「on condition that」：條件是、只要。",
+              "en": "on condition that you."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "managed to finish",
+                "managed to complete"
+              ],
+              "zh": "「manage to do」：成功做到某事。",
+              "en": "managed to finish."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "Going back\nThere is a particular kind of disappointment reserved for people who return to the town where they grew up. I felt it last autumn, walking along the high street of the small coastal town I left at eighteen. The bakery where I bought sugared buns after school had become a phone shop; the cinema was now a car park. None of this should have surprised me — I had followed the town's decline in the local paper for years — and yet I found myself absurdly upset, as if the place had been obliged to wait for me.\nWhat I was mourning, I eventually realised, was not the town but my younger self. The streets had become a kind of museum of my childhood, and every change felt like a theft from the collection. This is, I suspect, a common error. We treat the places of our past as fixed backdrops to our own stories, forgetting that other people have been living their lives there all along, with no obligation to preserve the scenery.\nFor those who stayed, the changes looked entirely different. An old school friend, now running a café near the harbour, was cheerfully unsentimental. The cinema, she reminded me, had been half empty for years; the car park brought in tourists who spent money in her café. 'You remember it the way it was on your best days,' she said. 'We had to live with it on all the others.'\nHer remark stayed with me. Nostalgia, it occurs to me, is a luxury available mainly to those who leave. It depends on distance — in time and in space — and on a selective memory that edits out boredom, bad weather and the limited choices that drove many of us away in the first place.\nI don't want to dismiss the feeling entirely. There is something valuable in the ache of return; it reminds us that we, too, have changed. But I have decided to visit the town more often, and to see it as it is: not a museum, but a place where people are trying, as everyone does, to make a living.",
+          "tr": {
+            "zh": "回去\n回到從小長大的小鎮的人，會有一種特別的失望。去年秋天我就有這種感覺，走在我十八歲離開的海邊小鎮大街上。放學後我買糖霜麵包的麵包店變成了手機行；電影院成了停車場。這些都不該讓我意外——多年來我一直在地方報紙上看著小鎮沒落——可是我卻難過得近乎荒謬，彷彿這個地方有義務等我回來。\n我最後才明白，我哀悼的不是小鎮，而是年輕時的自己。那些街道成了我童年的博物館，每一個改變都像是館藏被偷走。我猜這是很常見的錯誤。我們把過去的地方當成自己故事裡固定不變的背景，忘了其他人一直在那裡過日子，沒有義務保存那些布景。\n對留下來的人來說，這些改變看起來完全不同。一位老同學現在在港口附近開咖啡館，她一點也不感傷。她提醒我，電影院多年來都是半空的；停車場帶來了觀光客，他們會在她的咖啡館花錢。「你記得的是它最好的日子，」她說，「其他的日子都是我們在過。」\n她的話一直留在我心裡。我想到，懷舊是一種主要屬於離開者的奢侈。它仰賴距離——時間上和空間上的——也仰賴選擇性的記憶，把無聊、壞天氣，以及當初讓我們很多人離開的有限選擇都剪掉了。\n我不想完全否定這種感受。回鄉時的心痛有它的價值，它提醒我們，自己也改變了。但我決定更常回去，並且看見它現在的樣子：不是博物館，而是一個人們像大家一樣努力謀生的地方。"
+          },
+          "questions": [
+            {
+              "q": "What does the writer suggest about her reaction?",
+              "options": [
+                "It was unreasonable, given what she knew.",
+                "It was caused by the weather.",
+                "Other visitors shared it.",
+                "It surprised local people."
+              ],
+              "answer": 0,
+              "zh": "她早知道小鎮沒落，卻難過得「近乎荒謬」。",
+              "en": "She knew, yet was \"absurdly upset\"."
+            },
+            {
+              "q": "What 'common error' does the writer describe?",
+              "options": [
+                "believing that every town will decline",
+                "assuming that places should stay as we remember them",
+                "forgetting our own childhood",
+                "preferring museums to real places"
+              ],
+              "answer": 1,
+              "zh": "把過去的地方當成「固定不變的背景」，忘了別人一直在那裡生活。",
+              "en": "Treating places as fixed backdrops to our stories."
+            },
+            {
+              "q": "The writer's friend suggests that people who left the town",
+              "options": [
+                "are responsible for its decline.",
+                "should move back.",
+                "remember only its good side.",
+                "are no longer welcome."
+              ],
+              "answer": 2,
+              "zh": "「你記得的是它最好的日子」，其他日子是留下來的人在過。",
+              "en": "\"You remember it the way it was on your best days.\""
+            },
+            {
+              "q": "What does the friend say about the car park?",
+              "options": [
+                "It is usually empty.",
+                "It has helped her business.",
+                "It spoils the harbour.",
+                "It replaced her café."
+              ],
+              "answer": 1,
+              "zh": "停車場帶來觀光客，「會在她的咖啡館花錢」。",
+              "en": "It brings tourists who spend money in her café."
+            },
+            {
+              "q": "According to the writer, nostalgia depends partly on",
+              "options": [
+                "having a good memory.",
+                "staying in one place.",
+                "being away from a place.",
+                "visiting often."
+              ],
+              "answer": 2,
+              "zh": "懷舊「仰賴距離——時間上和空間上的」。",
+              "en": "It depends on distance in time and space."
+            },
+            {
+              "q": "What has the writer decided by the end?",
+              "options": [
+                "to stop visiting the town",
+                "to move back to the town",
+                "to write about the town's history",
+                "to accept the town as it is now"
+              ],
+              "answer": 3,
+              "zh": "決定更常回去，「看見它現在的樣子」。",
+              "en": "To see it as it is."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 6,
+          "ask": "en_sections",
+          "bank": [
+            "Writer A — The research shows clearly that homework at primary level has little measurable effect on achievement. But that does not mean it should be abolished: reading with parents, for instance, has benefits beyond test scores, including closer family relationships. The problem is not homework itself but the sheer quantity of pointless worksheets that schools send home.",
+            "Writer B — The evidence on homework for young children is mixed at best, and I am wary of anyone who claims it proves anything conclusively. What concerns me more is fairness. Children whose parents have the time and education to help them gain an advantage, while others fall further behind. For that reason, I would remove homework from primary schools altogether.",
+            "Writer C — Studies consistently find little academic benefit from homework before the age of eleven, and schools should take this seriously. However, I believe some regular practice at home — ten minutes of reading or times tables — builds habits of independent study that pay off later. Abolishing homework entirely would throw away that advantage.",
+            "Writer D — It is simply not true that research shows homework to be useless for young children; several well-designed studies find modest gains, particularly in mathematics. The debate is too often driven by parents' frustration rather than evidence. That said, I agree that homework must be short and purposeful, and that some schools set far too much."
+          ],
+          "tr": {
+            "zh": "四位學者談小學該不該廢除回家作業\nA：研究清楚顯示，小學的回家作業對成績幾乎沒有可測量的影響。但這不代表該廢除：例如和父母一起閱讀，好處不只在分數，還能讓家人更親近。問題不在作業本身，而在學校送回家的那一大堆毫無意義的學習單。\nB：關於幼童回家作業的證據頂多只能說好壞參半，我很懷疑任何宣稱它能證明什麼的人。我更擔心的是公平。父母有時間、有學歷幫忙的孩子佔了優勢，其他孩子則越落越後。因此我主張小學完全取消回家作業。\nC：研究一再發現，十一歲以前的回家作業在學業上幾乎沒有好處，學校應該認真看待。不過我相信在家固定練習——十分鐘閱讀或背九九乘法——能培養日後受用的自主學習習慣。完全廢除作業會丟掉這個好處。\nD：說研究證明幼童的回家作業沒用，根本不是事實；好幾項設計嚴謹的研究都發現有小幅進步，尤其是數學。這場辯論常常是由家長的挫折感、而不是證據推動的。話雖如此，我同意作業必須簡短、有目的，而且有些學校出得太多了。"
+          },
+          "questions": [
+            {
+              "q": "Which writer shares writer A's view of what the research shows?",
+              "answer": "C",
+              "zh": "A 說研究清楚顯示「幾乎沒有可測量的影響」；C 也說研究「一再發現幾乎沒有好處」。",
+              "en": "C also says studies find little benefit."
+            },
+            {
+              "q": "Which writer has a different view from the others on what the research shows?",
+              "answer": "D",
+              "zh": "D 說研究發現「有小幅進步」，說作業沒用「根本不是事實」；其他人都說效果小或不確定。",
+              "en": "Only D says the research shows gains."
+            },
+            {
+              "q": "Which writer takes a different position from the others on whether homework should be abolished?",
+              "answer": "B",
+              "zh": "B 主張「完全取消」；A、C、D 都認為應該保留，只是要改進。",
+              "en": "Only B would abolish it."
+            },
+            {
+              "q": "Which writer agrees with writer D that some schools set too much homework?",
+              "answer": "A",
+              "zh": "D 說「有些學校出得太多了」；A 也批評「那一大堆」毫無意義的學習單。",
+              "en": "A objects to the sheer quantity of worksheets."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 7,
+          "ask": "en_gapped",
+          "text": "Learning the cello at forty\nI had wanted to play the cello since I was a child, when I heard one played at my uncle's wedding. For reasons that now seem feeble — lack of money, lack of time, a vague belief that it was too late — I never did anything about it. Then, on my fortieth birthday, my partner gave me a voucher for ten lessons.\n(41) ＿＿＿＿＿\nMy teacher, a softly spoken woman in her sixties called Ruth, seemed entirely unsurprised by my age. Most of her students, she told me, were adults. Children were sent by their parents; adults came because they had wanted to for years.\n(42) ＿＿＿＿＿\nThat first month was humbling. My bow slid across the strings producing sounds that made the cat leave the room. I had expected my adult brain to give me an advantage, but in some ways it was the opposite.\n(43) ＿＿＿＿＿\nRuth's response to my frustration was to make me play a single note, over and over, for five minutes at the start of every lesson. It seemed pointless at first. Gradually, I came to see it as a kind of meditation.\n(44) ＿＿＿＿＿\nBy the end of the first year, I could play simple pieces with something resembling a tune. More surprisingly, the cello had begun to change other parts of my life. I was sleeping better, and I had become noticeably more patient at work.\n(45) ＿＿＿＿＿\nLast month, I played in public for the first time, at a small concert for Ruth's students in a local church. My hands shook so badly that I almost dropped the bow.\n(46) ＿＿＿＿＿\nI still have a very long way to go. But I no longer think of it as something I started too late. I think of it as something I am lucky to have started at all.",
+          "bank": [
+            "Listening to the sound change as I adjusted my arm, I found that the worries of the day simply fell away. It was the only half hour of the week when I thought about nothing else.",
+            "Then something strange happened. Somewhere in the second piece, I stopped thinking about the audience, and for a few bars I was simply playing music.",
+            "I nearly didn't use it. The voucher sat on my desk for three months while I invented reasons to put it off. In the end, it was the thought of the money being wasted, rather than any sudden courage, that made me book the first lesson.",
+            "Ruth had warned me that most adult beginners give up within a few weeks, and she was clearly expecting me to do the same.",
+            "Children, Ruth explained, are not embarrassed by sounding terrible. Adults are, and they tend to analyse every mistake instead of simply trying again. I recognised myself immediately.",
+            "This, she said, was their great strength. They practised because they wanted to, not because they were told to — and that made up for a great deal.",
+            "Colleagues remarked on it. One asked whether I had been on holiday. I told her I had simply been spending an hour a day learning to fail more gracefully."
+          ],
+          "tr": {
+            "zh": "四十歲學大提琴\n我從小就想拉大提琴，那是在叔叔的婚禮上聽到的。因為一些現在看來很站不住腳的理由——沒錢、沒時間、隱約覺得太晚了——我始終沒行動。後來在我四十歲生日那天，伴侶送我一張十堂課的課程券。\n我差點沒用。那張券在我桌上放了三個月，我一直編理由拖延。最後讓我預約第一堂課的，不是突然鼓起勇氣，而是想到錢會浪費掉。\n我的老師露絲是位說話輕柔的六十多歲女士，她對我的年紀一點也不意外。她說她大部分的學生都是大人。孩子是被父母送來的；大人來，是因為他們想學很多年了。\n她說，這正是大人最大的優勢。他們練習是因為想練，不是被叫去練——這能彌補很多不足。\n第一個月很讓人謙卑。我的弓在弦上滑過，發出的聲音讓貓都離開了房間。我原本以為大人的腦袋會給我優勢，但某些方面正好相反。\n露絲解釋，孩子不會因為拉得很難聽而尷尬。大人會，而且往往會分析每一個錯誤，而不是直接再試一次。我立刻認出那就是我。\n露絲對我的挫折的回應，是每堂課一開始讓我一遍又一遍拉同一個音，拉五分鐘。一開始這似乎毫無意義。慢慢地，我開始把它當成一種冥想。\n聽著聲音隨著手臂的調整而變化，我發現一天的煩惱就這麼消失了。那是我一週中唯一什麼都不想的半小時。\n第一年結束時，我已經能拉一些簡單的曲子，聽起來有點像旋律了。更讓我意外的是，大提琴開始改變我生活的其他部分。我睡得比較好，在工作上也明顯變得更有耐心。\n同事們都注意到了。有一位問我是不是去度假了。我告訴她，我只是每天花一小時學習怎麼更優雅地失敗。\n上個月，我第一次在大家面前演奏，是在當地教堂裡為露絲的學生辦的小型音樂會。我的手抖得好厲害，差點把弓弄掉。\n接著奇怪的事發生了。在第二首曲子的某個地方，我不再想著觀眾，有那麼幾個小節，我單純就是在演奏音樂。\n我還有很長的路要走。但我不再覺得這是一件開始得太晚的事。我覺得能開始，就已經很幸運了。"
+          },
+          "questions": [
+            {
+              "answer": "C",
+              "zh": "收到課程券後，接著說「我差點沒用」，拖了三個月才預約。",
+              "en": "The voucher she nearly didn't use."
+            },
+            {
+              "answer": "F",
+              "zh": "前面說大人來是因為想學很多年，接著「這正是他們最大的優勢」。",
+              "en": "\"This\" = adults wanting to learn."
+            },
+            {
+              "answer": "E",
+              "zh": "前面說大人的腦袋某些方面反而是劣勢，接著解釋大人會因拉得難聽而尷尬。",
+              "en": "Why being an adult was a disadvantage."
+            },
+            {
+              "answer": "A",
+              "zh": "把拉同一個音當成冥想，接著描寫一天的煩惱消失。",
+              "en": "The single note as meditation."
+            },
+            {
+              "answer": "G",
+              "zh": "在工作上更有耐心，接著「同事們都注意到了」。",
+              "en": "Colleagues noticed the change."
+            },
+            {
+              "answer": "B",
+              "zh": "第一次公開演奏手在抖，接著「奇怪的事發生了」，她忘了觀眾。D 和前面「一點也不意外」矛盾，是多出來的。",
+              "en": "Then she forgot the audience. D contradicts the text."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 8,
+          "ask": "en_sections",
+          "bank": [
+            "Helen Brooke — I write from five until nine every morning, before the rest of the house wakes. I learnt the habit when my children were small and those hours were the only ones I had; now I couldn't work any other way. I never plan a plot in advance. I begin with a single image and follow it to see where it leads, which means I throw away a great deal — perhaps half of what I write.",
+            "Samuel Ade — I treat writing like an office job: nine to five, with an hour for lunch. People find that disappointing, I think — they want writers to wait for inspiration. But I spent fifteen years as a journalist, writing to deadlines, and that discipline has stayed with me. Before I write a single sentence of a novel, I know exactly how it will end.",
+            "Mira Kovač — I can't write at home; there are too many distractions. Instead I rent a tiny room above a launderette, with no internet connection. I write by hand first, then type it up in the evening, which is when most of my revisions happen. I show early drafts to nobody — not even my editor — until I'm sure the shape of the book is right.",
+            "Tom Grieve — My routine changes with every book. For my last novel, set on a fishing boat, I spent two months at sea with a crew in the North Sea, taking notes. I wrote most of it in cafés, surrounded by noise, which oddly helps me concentrate. I rely heavily on my wife's opinion: she reads every chapter as soon as it's finished."
+          ],
+          "tr": {
+            "zh": "A 海倫·布魯克：我每天早上五點寫到九點，在家裡其他人醒來之前。這個習慣是孩子還小時養成的，那時只有這幾個小時是屬於我的；現在我已經沒辦法用別的方式工作了。我從不事先規劃情節，而是從一個畫面開始，跟著它看會走到哪裡，所以我丟掉的東西很多——大概寫的一半。\nB 塞繆爾·阿德：我把寫作當成上班：朝九晚五，午休一小時。我想大家會覺得很掃興，他們希望作家是等靈感的。但我當了十五年記者，習慣趕截稿，這種紀律一直跟著我。寫小說的第一句之前，我就已經清楚知道結局。\nC 米拉·科瓦奇：我沒辦法在家寫，太多干擾了。所以我在一家洗衣店樓上租了一個沒有網路的小房間。我先手寫，晚上再打字，大部分的修改都在那時進行。早期的稿子我不給任何人看——連編輯也不給——直到我確定書的架構對了。\nD 湯姆·葛里夫：我的作息每本書都不一樣。上一本小說以一艘漁船為背景，我跟著船員在北海待了兩個月，邊做筆記。大部分是在咖啡館寫的，周圍很吵，奇怪的是這反而幫我專心。我很依賴太太的意見：每寫完一章她就馬上讀。"
+          },
+          "questions": [
+            {
+              "q": "Which writer developed their routine because of family responsibilities?",
+              "answer": "A",
+              "zh": "海倫的習慣是「孩子還小時養成的」。",
+              "en": "Helen's routine began when her children were small."
+            },
+            {
+              "q": "Which writer makes sure they cannot go online while working?",
+              "answer": "C",
+              "zh": "米拉租了「沒有網路的小房間」。",
+              "en": "Mira's room has no internet."
+            },
+            {
+              "q": "Which writer researches a book by living in the place where it is set?",
+              "answer": "D",
+              "zh": "湯姆跟船員在北海待了兩個月。",
+              "en": "Tom spent two months at sea."
+            },
+            {
+              "q": "Which writer knows how a novel will end before starting it?",
+              "answer": "B",
+              "zh": "塞繆爾寫第一句前「就已經清楚知道結局」。",
+              "en": "Samuel knows the ending first."
+            },
+            {
+              "q": "Which writer discards a large part of what they produce?",
+              "answer": "A",
+              "zh": "海倫「丟掉的東西很多——大概寫的一半」。",
+              "en": "Helen throws away about half."
+            },
+            {
+              "q": "Which writer finds background noise helpful?",
+              "answer": "D",
+              "zh": "湯姆在吵雜的咖啡館寫，「反而幫我專心」。",
+              "en": "Noise helps Tom concentrate."
+            },
+            {
+              "q": "Which writer's previous career influenced how they work?",
+              "answer": "B",
+              "zh": "塞繆爾當過十五年記者，紀律一直跟著他。",
+              "en": "Samuel's years as a journalist."
+            },
+            {
+              "q": "Which writer does most of their revising at a particular time of day?",
+              "answer": "C",
+              "zh": "米拉晚上打字，「大部分的修改都在那時進行」。",
+              "en": "Mira revises in the evening."
+            },
+            {
+              "q": "Which writer shares their work with someone close to them as they go along?",
+              "answer": "D",
+              "zh": "湯姆的太太「每寫完一章就馬上讀」。",
+              "en": "Tom's wife reads every chapter."
+            },
+            {
+              "q": "Which writer suspects that others find their approach unromantic?",
+              "answer": "B",
+              "zh": "塞繆爾說大家會覺得「很掃興」，希望作家是等靈感的。",
+              "en": "Samuel thinks people find it disappointing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_cloze",
+          "text": "Dogs at work\nA (1) ＿＿＿＿＿ number of companies now allow employees to bring their dogs to the office. Supporters of the policy (2) ＿＿＿＿＿ that the presence of animals reduces stress and encourages colleagues to talk to one another. Some firms even (3) ＿＿＿＿＿ a point of mentioning dog-friendly offices in job advertisements, believing that they help to attract young talent. However, the trend has (4) ＿＿＿＿＿ some concerns. Not everyone is comfortable around animals, and for people with allergies, a dog at the next desk can be a serious problem. There is also the question of who should (5) ＿＿＿＿＿ the cost if a dog damages property. Companies that have (6) ＿＿＿＿＿ the idea successfully tend to have clear rules: dogs must be well behaved, owners must (7) ＿＿＿＿＿ responsibility for them at all times, and anyone can object. Without such rules, what begins as a perk can quickly (8) ＿＿＿＿＿ a source of conflict.",
+          "tr": {
+            "zh": "狗狗上班\n現在有相當多的公司允許員工帶狗進辦公室。支持這項政策的人主張，有動物在能減輕壓力，也能讓同事彼此多聊天。有些公司甚至特地在徵才廣告中提到辦公室對狗友善，認為這有助於吸引年輕人才。不過這股風潮也引發了一些疑慮。不是每個人都習慣和動物相處，對過敏的人來說，隔壁桌有隻狗可能是嚴重的問題。還有一個問題是，如果狗損壞了財物，費用該由誰負擔。成功推行這個做法的公司通常有清楚的規定：狗必須守規矩、飼主必須隨時對牠負責，而且任何人都可以提出反對。少了這些規定，原本的福利可能很快就變成衝突的來源。"
+          },
+          "questions": [
+            {
+              "q": "(1)",
+              "options": [
+                "heavy",
+                "substantial",
+                "wide",
+                "strong"
+              ],
+              "answer": 1,
+              "zh": "「a substantial number of」：相當多的。",
+              "en": "a substantial number of."
+            },
+            {
+              "q": "(2)",
+              "options": [
+                "maintain",
+                "sustain",
+                "retain",
+                "obtain"
+              ],
+              "answer": 0,
+              "zh": "「maintain that …」：主張、堅稱。",
+              "en": "maintain that = claim."
+            },
+            {
+              "q": "(3)",
+              "options": [
+                "do",
+                "take",
+                "make",
+                "have"
+              ],
+              "answer": 2,
+              "zh": "「make a point of doing」：特地、刻意做某事。",
+              "en": "make a point of mentioning."
+            },
+            {
+              "q": "(4)",
+              "options": [
+                "risen",
+                "arisen",
+                "grown",
+                "raised"
+              ],
+              "answer": 3,
+              "zh": "「raise concerns」：引發疑慮；rise / arise 不接受詞。",
+              "en": "raised concerns; rise and arise take no object."
+            },
+            {
+              "q": "(5)",
+              "options": [
+                "bear",
+                "hold",
+                "support",
+                "lift"
+              ],
+              "answer": 0,
+              "zh": "「bear the cost」：負擔費用。",
+              "en": "bear the cost."
+            },
+            {
+              "q": "(6)",
+              "options": [
+                "performed",
+                "implemented",
+                "operated",
+                "conducted"
+              ],
+              "answer": 1,
+              "zh": "「implement an idea」：實行、推行一個做法。",
+              "en": "implemented the idea."
+            },
+            {
+              "q": "(7)",
+              "options": [
+                "make",
+                "give",
+                "take",
+                "have"
+              ],
+              "answer": 2,
+              "zh": "「take responsibility for」：對……負責。",
+              "en": "take responsibility."
+            },
+            {
+              "q": "(8)",
+              "options": [
+                "turn",
+                "grow",
+                "change",
+                "become"
+              ],
+              "answer": 3,
+              "zh": "「become a source of conflict」：變成衝突的來源；turn 要說 turn into。",
+              "en": "become; \"turn\" needs \"into\"."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 2,
+          "ask": "en_open",
+          "text": "Learning to say no\nMany of us find it surprisingly difficult to turn (9) ＿＿＿＿＿ requests, even when we have neither the time nor the desire to help. We agree to extra work, attend events we would rather avoid and lend money we can ill afford, all for fear of (10) ＿＿＿＿＿ seen as unkind. Psychologists say this tendency is particularly common (11) ＿＿＿＿＿ people who were praised as children for being helpful. The irony is that constantly saying yes can make us (12) ＿＿＿＿＿ useful, not more, since we end up spreading ourselves too thin. Learning to refuse politely is a skill like any (13) ＿＿＿＿＿. Experts recommend keeping explanations brief: the (14) ＿＿＿＿＿ reasons you give, the more opportunity the other person has to argue. It also helps to offer an alternative, (15) ＿＿＿＿＿ as suggesting someone else who might help. (16) ＿＿＿＿＿ all, they stress, saying no to one thing means saying yes to something else.",
+          "tr": {
+            "zh": "學會說不\n我們很多人發現拒絕別人的請求出奇地難，即使我們既沒時間也不想幫忙。我們答應額外的工作、參加寧願避開的活動、借出自己負擔不起的錢，全是因為怕被看成不夠好心。心理學家說，這種傾向在小時候因為樂於助人而被稱讚的人身上特別常見。諷刺的是，總是說好反而可能讓我們更沒用，而不是更有用，因為最後會分身乏術。學會禮貌地拒絕，和其他技能一樣是可以學的。專家建議解釋要簡短：你給的理由越多，對方就越有機會反駁。提出替代方案也有幫助，例如推薦其他可能幫得上忙的人。他們強調，畢竟對一件事說不，就是對另一件事說好。"
+          },
+          "questions": [
+            {
+              "q": "(9)",
+              "answers": [
+                "down"
+              ],
+              "zh": "「turn down」：拒絕。",
+              "en": "turn down requests."
+            },
+            {
+              "q": "(10)",
+              "answers": [
+                "being"
+              ],
+              "zh": "「for fear of being seen as …」：怕被看成……（介系詞後接 V-ing，被動 being seen）。",
+              "en": "for fear of being seen."
+            },
+            {
+              "q": "(11)",
+              "answers": [
+                "among",
+                "in",
+                "amongst"
+              ],
+              "zh": "「common among / in people who …」：在……人身上常見。",
+              "en": "common among (in) people."
+            },
+            {
+              "q": "(12)",
+              "answers": [
+                "less"
+              ],
+              "zh": "「less useful, not more」：更沒用，而不是更有用。",
+              "en": "less useful, not more."
+            },
+            {
+              "q": "(13)",
+              "answers": [
+                "other"
+              ],
+              "zh": "「a skill like any other」：和其他任何技能一樣。",
+              "en": "like any other."
+            },
+            {
+              "q": "(14)",
+              "answers": [
+                "more"
+              ],
+              "zh": "「the more …, the more …」：越……就越……",
+              "en": "the more reasons …, the more opportunity."
+            },
+            {
+              "q": "(15)",
+              "answers": [
+                "such"
+              ],
+              "zh": "「such as」：例如。",
+              "en": "such as suggesting."
+            },
+            {
+              "q": "(16)",
+              "answers": [
+                "after",
+                "above"
+              ],
+              "zh": "「After all」：畢竟；「Above all」：最重要的是。",
+              "en": "After (Above) all."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 3,
+          "ask": "en_wordform",
+          "text": "On foot\nWalking may be the most (17) ＿＿＿＿＿ (ESTIMATE) form of exercise. It requires no special (18) ＿＿＿＿＿ (EQUIP), is suitable for people of almost any age, and carries a very low risk of (19) ＿＿＿＿＿ (INJURE). Regular walking has been shown to lower blood pressure and improve the (20) ＿＿＿＿＿ (FLEXIBLE) of joints. Its effects on mental health are, if anything, even more (21) ＿＿＿＿＿ (IMPRESS). Many people find that a walk helps them to think more (22) ＿＿＿＿＿ (CREATE), and philosophers and writers have long been (23) ＿＿＿＿＿ (PASSION) walkers. For anyone who finds the gym (24) ＿＿＿＿＿ (APPEAL), walking offers a simple and free alternative.",
+          "tr": {
+            "zh": "用腳走\n走路可能是最被低估的運動。它不需要特殊裝備，幾乎任何年齡的人都適合，受傷的風險也很低。研究顯示，規律走路能降低血壓、改善關節的柔軟度。它對心理健康的效果，甚至可說更令人印象深刻。很多人發現散步能幫自己更有創意地思考，哲學家和作家也一向熱愛走路。對覺得健身房沒有吸引力的人來說，走路是簡單又免費的選擇。"
+          },
+          "questions": [
+            {
+              "q": "(17)",
+              "answers": [
+                "underestimated"
+              ],
+              "zh": "ESTIMATE → underestimated：被低估的（the most + 形容詞）。",
+              "en": "the most underestimated."
+            },
+            {
+              "q": "(18)",
+              "answers": [
+                "equipment"
+              ],
+              "zh": "EQUIP → equipment：裝備（不可數名詞）。",
+              "en": "no special equipment."
+            },
+            {
+              "q": "(19)",
+              "answers": [
+                "injury",
+                "injuries"
+              ],
+              "zh": "INJURE → injury：受傷（a risk of injury）。",
+              "en": "a risk of injury."
+            },
+            {
+              "q": "(20)",
+              "answers": [
+                "flexibility"
+              ],
+              "zh": "FLEXIBLE → flexibility：柔軟度（the … of）。",
+              "en": "the flexibility of joints."
+            },
+            {
+              "q": "(21)",
+              "answers": [
+                "impressive"
+              ],
+              "zh": "IMPRESS → impressive：令人印象深刻的（even more + 形容詞）。",
+              "en": "even more impressive."
+            },
+            {
+              "q": "(22)",
+              "answers": [
+                "creatively"
+              ],
+              "zh": "修飾 think 用副詞：think more creatively。",
+              "en": "think more creatively — an adverb."
+            },
+            {
+              "q": "(23)",
+              "answers": [
+                "passionate"
+              ],
+              "zh": "PASSION → passionate：熱愛的（修飾 walkers）。",
+              "en": "passionate walkers."
+            },
+            {
+              "q": "(24)",
+              "answers": [
+                "unappealing"
+              ],
+              "zh": "APPEAL → unappealing：沒有吸引力的（覺得健身房不吸引人，才選走路）。",
+              "en": "unappealing — the negative."
+            }
+          ]
+        },
+        {
+          "type": "en_open",
+          "mondai": 4,
+          "ask": "en_transform",
+          "text": "(25) I didn't recognise him until he spoke.\n      ONLY\n      It was ＿＿＿＿＿ that I recognised him.\n(26) We were not allowed to take photographs in the museum.\n      PERMITTED\n      Photography ＿＿＿＿＿ in the museum.\n(27) There's no point in arguing with him.\n      WORTH\n      It ＿＿＿＿＿ with him.\n(28) She was very sorry that she had been rude to her friend.\n      REGRETTED\n      She ＿＿＿＿＿ to her friend.\n(29) Few people expected the team to win the final.\n      CAME\n      The team's victory in the final ＿＿＿＿＿ most people.\n(30) I'd be grateful if you didn't mention this to anyone.\n      RATHER\n      I'd ＿＿＿＿＿ mention this to anyone.",
+          "tr": {
+            "zh": "(25) 直到他開口我才認出他。→ It was ___ that I recognised him.（ONLY）\n(26) 我們在博物館裡不能拍照。→ Photography ___ in the museum.（PERMITTED）\n(27) 跟他爭論沒有意義。→ It ___ with him.（WORTH）\n(28) 她很後悔對朋友沒禮貌。→ She ___ to her friend.（REGRETTED）\n(29) 很少人料到這支隊伍會贏得決賽。→ The team's victory in the final ___ most people.（CAME）\n(30) 希望你不要跟任何人提這件事。→ I'd ___ mention this to anyone.（RATHER）"
+          },
+          "questions": [
+            {
+              "q": "(25)",
+              "answers": [
+                "only when he spoke",
+                "only once he spoke",
+                "only when he started speaking",
+                "only when he started to speak",
+                "only after he spoke"
+              ],
+              "zh": "「It was only when … that …」：直到……才……（強調句）。",
+              "en": "It was only when he spoke that …"
+            },
+            {
+              "q": "(26)",
+              "answers": [
+                "was not permitted",
+                "wasn't permitted"
+              ],
+              "zh": "「be permitted」：被允許；否定 was not permitted。",
+              "en": "was not permitted."
+            },
+            {
+              "q": "(27)",
+              "answers": [
+                "is not worth arguing",
+                "isn't worth arguing",
+                "'s not worth arguing"
+              ],
+              "zh": "「It is not worth + V-ing」：不值得做某事。",
+              "en": "isn't worth arguing."
+            },
+            {
+              "q": "(28)",
+              "answers": [
+                "regretted being rude",
+                "deeply regretted being rude",
+                "regretted having been rude",
+                "deeply regretted having been rude",
+                "regretted that she had been rude",
+                "regretted she had been rude"
+              ],
+              "zh": "「regret being / having been …」：後悔（過去）做了某事。",
+              "en": "regretted being (having been) rude."
+            },
+            {
+              "q": "(29)",
+              "answers": [
+                "came as a surprise to",
+                "came as a shock to",
+                "came as a big surprise to"
+              ],
+              "zh": "「come as a surprise to someone」：出乎某人意料。",
+              "en": "came as a surprise to."
+            },
+            {
+              "q": "(30)",
+              "answers": [
+                "rather you did not",
+                "rather you didn't"
+              ],
+              "zh": "「I'd rather you + 過去式」：希望你（不要）……",
+              "en": "I'd rather you didn't."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 5,
+          "ask": "en_long",
+          "n_options": 4,
+          "text": "In defence of amateurs\nThe word 'amateur' has come down in the world. Originally it described someone who did something for love — from the Latin amator, a lover — and carried no suggestion of incompetence. Today, to call someone's work amateurish is an insult. Somewhere along the way, we came to assume that anything worth doing is worth doing professionally, and that doing something badly is a waste of time.\nI have been thinking about this since I joined a community choir two years ago. I am, by any objective standard, a mediocre singer. I read music slowly, my range is limited, and I occasionally come in a beat too early. Yet singing with forty other people on a Tuesday evening has become one of the most satisfying parts of my week. The pleasure has very little to do with the quality of the result.\nThis is not a fashionable thing to admit. We live in an age that measures everything, and hobbies have not escaped. Runners track their times, home cooks photograph their dinners for strangers, and anyone who takes up painting is soon asked whether they plan to sell their work. The question is usually well meant, but it reveals an assumption that an activity only becomes serious when it produces something others will pay for.\nThere is a cost to this way of thinking. If every pastime must eventually become a side business, many people will never start at all, put off by the gap between their first clumsy efforts and the polished work they see online. Children, in particular, may learn to abandon anything at which they do not quickly excel.\nNone of this is an argument against excellence. The professionals I admire most tend to speak about their work with the same enthusiasm my fellow choir members bring to rehearsals. But they also remember that they started as amateurs, and that the love came first. Perhaps we would all be happier if we allowed ourselves to do a few things badly — and to enjoy them anyway.",
+          "tr": {
+            "zh": "為業餘者辯護\n「業餘」這個詞的地位下降了。它原本指出於熱愛而做某件事的人——來自拉丁文 amator，意思是「愛人」——完全沒有不夠格的意思。如今說一個人的作品很業餘，是一種侮辱。不知從何時起，我們開始認定值得做的事就值得做到專業，而做得不好就是浪費時間。\n兩年前加入社區合唱團後，我一直在想這件事。用任何客觀標準來看，我都是個平庸的歌手。我讀譜很慢、音域有限，偶爾還會早一拍進。可是每個星期二晚上和其他四十個人一起唱歌，已經成了我一週中最令人滿足的時光之一。這份快樂和成果的好壞幾乎沒有關係。\n承認這一點並不時髦。我們活在一個凡事都要衡量的時代，嗜好也逃不掉。跑步的人記錄時間，在家做菜的人把晚餐拍給陌生人看，任何開始畫畫的人很快就會被問打不打算賣畫。這個問題通常是好意，但它透露出一種假設：一項活動要能產出別人願意付錢的東西，才算認真。\n這種想法是有代價的。如果每個消遣最後都必須變成副業，很多人根本不會開始，因為自己笨拙的第一步和網路上看到的精美作品差距太大而卻步。尤其是孩子，可能會學到凡是沒辦法很快出色的事就放棄。\n這些都不是在反對追求卓越。我最欣賞的專業人士，談起工作時往往和我的合唱團夥伴參加排練時一樣熱情。但他們也記得自己是從業餘開始的，而熱愛先於一切。也許我們如果允許自己把幾件事做得不好——而且照樣樂在其中——大家都會更快樂。"
+          },
+          "questions": [
+            {
+              "q": "What point does the writer make about the word 'amateur' in the first paragraph?",
+              "options": [
+                "Its meaning has become more negative.",
+                "It is often used incorrectly.",
+                "It has always been an insult.",
+                "It comes from a word meaning skill."
+              ],
+              "answer": 0,
+              "zh": "原本指出於熱愛，「如今說一個人的作品很業餘，是一種侮辱」。",
+              "en": "It once meant a lover; now it is an insult."
+            },
+            {
+              "q": "How does the writer describe her own singing?",
+              "options": [
+                "as steadily improving",
+                "as better than she admits",
+                "as unremarkable",
+                "as embarrassingly bad"
+              ],
+              "answer": 2,
+              "zh": "「用任何客觀標準來看，我都是個平庸的歌手」。",
+              "en": "A mediocre singer."
+            },
+            {
+              "q": "What does the writer suggest about the question of whether people plan to sell their work?",
+              "options": [
+                "It is usually meant to be rude.",
+                "It reflects a common belief about what makes an activity worthwhile.",
+                "It encourages people to improve.",
+                "It is asked mainly by professionals."
+              ],
+              "answer": 1,
+              "zh": "它透露一種假設：活動要能產出別人願意付錢的東西才算認真。",
+              "en": "It reveals an assumption about what counts as serious."
+            },
+            {
+              "q": "According to the writer, what may happen if hobbies are expected to become businesses?",
+              "options": [
+                "Professionals will lose work.",
+                "People will spend more on hobbies.",
+                "Online content will improve.",
+                "Some people will be discouraged from trying new things."
+              ],
+              "answer": 3,
+              "zh": "「很多人根本不會開始」，因為差距太大而卻步。",
+              "en": "Many people will never start at all."
+            },
+            {
+              "q": "What does the writer say about children?",
+              "options": [
+                "They may give up activities they are not good at.",
+                "They enjoy hobbies more than adults do.",
+                "They should be taught by professionals.",
+                "They spend too much time online."
+              ],
+              "answer": 0,
+              "zh": "孩子「可能會學到凡是沒辦法很快出色的事就放棄」。",
+              "en": "They may abandon what they do not quickly excel at."
+            },
+            {
+              "q": "What does the writer say about professionals in the final paragraph?",
+              "options": [
+                "They often look down on amateurs.",
+                "They began, like everyone else, by doing things for love.",
+                "They rarely enjoy their work.",
+                "They should teach more amateurs."
+              ],
+              "answer": 1,
+              "zh": "「他們也記得自己是從業餘開始的，而熱愛先於一切」。",
+              "en": "They started as amateurs; the love came first."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 6,
+          "ask": "en_sections",
+          "bank": [
+            "Writer A — Few would now defend the methods by which many museum collections were assembled; much was taken by force or under unequal agreements. Returning such objects is therefore a matter of justice. I accept that some receiving countries may lack the facilities to conserve them, but that is a problem to be solved with funding and expertise, not an excuse for inaction.",
+            "Writer B — Arguments about how objects were acquired matter, but they should not be the only consideration. Great museums allow millions of people to see the art of many cultures side by side, which encourages understanding. Rather than following any blanket rule, each request for return should be judged on its own merits.",
+            "Writer C — The claim that objects are safer in Western museums no longer stands up; museums in many countries of origin are now very well equipped. The real obstacle is pride, and the fear of empty galleries. Museums should return objects that were wrongly taken, and they may find that sharing collections through long-term loans is more rewarding than guarding them.",
+            "Writer D — The idea that every object belongs to a single modern nation is too simple: borders have changed, and many of the cultures that produced these objects no longer exist in any recognisable form. Museums should be open about the history of their collections, but wholesale returns risk creating as many injustices as they correct. A case-by-case approach is the only sensible one."
+          ],
+          "tr": {
+            "zh": "四位作者談博物館該不該歸還文物\nA：如今很少人會為許多博物館收藏的取得方式辯護；很多是強取或在不平等的協議下拿走的。因此歸還這些文物是正義的問題。我承認有些接收國可能缺乏保存設施，但這是要用經費和專業去解決的問題，不是什麼都不做的藉口。\nB：文物如何取得的爭論很重要，但不該是唯一的考量。偉大的博物館讓數以百萬計的人能看到不同文化的藝術並列，這能促進理解。與其遵循一刀切的規定，每一件歸還要求都應該個別依其是非來判斷。\nC：說文物放在西方博物館比較安全，這種說法已經站不住腳了；很多原屬國的博物館現在設備都很好。真正的障礙是面子，以及怕展廳空掉。博物館應該歸還不當取得的文物，而且可能會發現透過長期出借分享收藏，比死守著更有收穫。\nD：認為每件文物都屬於某一個現代國家的想法太簡單了：國界變過，很多創造這些文物的文化也早已不以可辨認的形式存在。博物館應該公開收藏的歷史，但全面歸還可能製造的不公和糾正的一樣多。唯一合理的做法是逐案處理。"
+          },
+          "questions": [
+            {
+              "q": "Which writer shares writer A's view that wrongly taken objects should be returned?",
+              "answer": "C",
+              "zh": "A 說歸還是「正義的問題」；C 也說「應該歸還不當取得的文物」。",
+              "en": "C: museums should return objects wrongly taken."
+            },
+            {
+              "q": "Which writer shares writer B's view that each case should be considered separately?",
+              "answer": "D",
+              "zh": "B 說「每一件要求都應該個別判斷」；D 也說「唯一合理的做法是逐案處理」。",
+              "en": "D: case by case."
+            },
+            {
+              "q": "Which writer, like writer C, discusses whether returned objects would be properly cared for?",
+              "answer": "A",
+              "zh": "C 說西方比較安全的說法站不住腳；A 也提到接收國可能缺乏保存設施。",
+              "en": "A also discusses conservation facilities."
+            },
+            {
+              "q": "Which writer, unlike writer D, suggests that returning objects could benefit museums themselves?",
+              "answer": "C",
+              "zh": "C 說長期出借分享收藏「比死守著更有收穫」；D 認為全面歸還會製造不公。",
+              "en": "C: sharing may be more rewarding."
+            }
+          ]
+        },
+        {
+          "type": "en_gapped",
+          "mondai": 7,
+          "ask": "en_gapped",
+          "text": "Learning the sky\nI grew up in a city where the night sky was a dull orange glow. I knew the Moon, and could occasionally pick out what I assumed was a star but was probably an aeroplane. It was not until my late thirties, on a work trip to the Atacama Desert in Chile, that I saw the sky properly for the first time.\n(41) ＿＿＿＿＿\nI came home determined to learn more, and bought a pair of second-hand binoculars and a star chart. My first attempts were frustrating. From my garden, even on clear nights, I could see only a handful of the brightest stars.\n(42) ＿＿＿＿＿\nThe local astronomy club met once a month in a village hall, and its members ranged from a retired engineer with a telescope he had built himself to a twelve-year-old who seemed to know the name of every crater on the Moon. Nobody seemed to mind how little I knew.\n(43) ＿＿＿＿＿\nPatience, I discovered, is the astronomer's most important tool. Your eyes take at least twenty minutes to adjust fully to the dark, and a single glance at a phone screen undoes the effect.\n(44) ＿＿＿＿＿\nAfter two years, I can find my way around the major constellations without a chart, and I have seen the rings of Saturn through a telescope — an experience that made me gasp out loud.\n(45) ＿＿＿＿＿\nBut the most lasting change has been in how I think about my own life. Looking at light that left distant stars before humans existed has a way of putting everyday worries in their place.\n(46) ＿＿＿＿＿\nI now spend part of every summer helping the club run free evenings for local families. Watching children see the mountains of the Moon for the first time, I am reminded of that night in the desert.",
+          "bank": [
+            "Over the following months they lent me equipment, answered endless questions and, most importantly, took me with them to their observing sites.",
+            "Problems at work that once kept me awake seem less overwhelming when set against the age of the universe.",
+            "Lying on my back outside the observatory, I could see the Milky Way stretching from one horizon to the other. I had not known that the sky could hold so many stars.",
+            "I decided that astronomy was not for me and gave the binoculars to my nephew.",
+            "It was a neighbour who suggested I join a club. Light pollution, she explained, was the problem, and the club organised trips to darker sites in the hills.",
+            "Yet the moments I treasure most are not the rare sights but the ordinary ones: watching the same familiar stars rise each autumn, like old friends returning.",
+            "I learnt to sit still in the cold for long periods, to wait for clouds to pass, and to look slightly to one side of a faint object, which makes it easier to see."
+          ],
+          "tr": {
+            "zh": "學看天空\n我在一個夜空總是一片暗橘色的城市長大。我認得月亮，偶爾能指出一顆我以為是星星、但大概是飛機的東西。直到快四十歲，我到智利阿塔卡馬沙漠出差，才第一次真正看見天空。\n躺在天文台外，我看見銀河從一邊地平線延伸到另一邊。我從不知道天空能容納這麼多星星。\n回家後我決心多學一點，買了一副二手望遠鏡和一張星圖。頭幾次嘗試令人沮喪。在我家院子，就算晴朗的夜晚，也只看得到幾顆最亮的星。\n是一位鄰居建議我加入社團的。她解釋，問題出在光害，而社團會安排到山上比較暗的地方觀星。\n當地天文社每個月在村裡的禮堂聚會一次，成員從一位自己做望遠鏡的退休工程師，到一個好像知道月球上每個坑名字的十二歲孩子都有。似乎沒有人在意我懂得多少。\n接下來幾個月，他們借我器材、回答我沒完沒了的問題，最重要的是帶我一起去觀測地點。\n我發現，耐心是天文愛好者最重要的工具。眼睛至少要二十分鐘才能完全適應黑暗，而看一眼手機螢幕就前功盡棄。\n我學會在寒冷中長時間坐著不動、等雲飄過，還有看暗淡的天體時稍微往旁邊看，會比較容易看見。\n兩年後，我不用星圖也能找到主要的星座，還用望遠鏡看過土星環——那經驗讓我忍不住驚呼出聲。\n不過我最珍惜的時刻不是那些難得的景象，而是平凡的：每年秋天看著同樣熟悉的星星升起，像老朋友回來一樣。\n但最持久的改變，是我怎麼看待自己的人生。看著在人類出現之前就從遙遠星星發出的光，會讓日常的煩惱回到它應有的位置。\n那些曾經讓我失眠的工作問題，放在宇宙的年紀面前，就顯得沒那麼難以承受了。\n現在每年夏天，我都會花些時間幫社團為當地家庭辦免費的觀星晚會。看著孩子們第一次看到月球上的山，我就會想起沙漠裡的那個夜晚。"
+          },
+          "questions": [
+            {
+              "answer": "C",
+              "zh": "第一次真正看見天空，接著描寫在天文台外看見銀河。",
+              "en": "The Milky Way in the desert."
+            },
+            {
+              "answer": "E",
+              "zh": "在院子只看得到幾顆星，接著鄰居說問題是光害、建議加入社團；下一段介紹天文社。",
+              "en": "Light pollution — the neighbour suggests the club."
+            },
+            {
+              "answer": "A",
+              "zh": "社員不在意他懂得少，接著「他們」借器材、帶他去觀測。",
+              "en": "\"They\" = the club members."
+            },
+            {
+              "answer": "G",
+              "zh": "耐心最重要，接著說學會在寒冷中久坐、等雲飄過。",
+              "en": "Learning patience in practice."
+            },
+            {
+              "answer": "F",
+              "zh": "看到土星環的驚呼，接著 Yet 說最珍惜的反而是平凡的時刻。",
+              "en": "\"Yet\" — ordinary moments over rare ones."
+            },
+            {
+              "answer": "B",
+              "zh": "日常煩惱回到應有位置，接著說工作問題沒那麼難以承受。D 和後文矛盾（他繼續學了），是多出來的。",
+              "en": "Worries at work shrink. D contradicts the text."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 8,
+          "ask": "en_sections",
+          "bank": [
+            "Fiona, Orkney — I moved here from Edinburgh for a teaching job, intending to stay two years. That was eighteen years ago. What keeps me here is the sense of community: when my house was damaged in a storm, neighbours I barely knew turned up with tools. The ferry is the island's lifeline, and when bad weather cancels it for days, the shop shelves empty fast.",
+            "Nikos, a small Greek island — I was born here and left at eighteen for university in Athens, like almost everyone my age. I came back ten years later to run my father's fishing business. The island empties in winter, and the quiet can be hard to bear, but summer brings so many tourists that we earn most of the year's money in three months.",
+            "Aiko, a small Japanese island — I came here as a researcher studying seabirds, knowing that I wanted to live somewhere remote. The island has no doctor, which worried me at first; a nurse visits once a week, and serious cases go to the mainland by helicopter. What I love is the pace of life. Nobody hurries, and I've learnt to fix almost anything myself because there's no one else to call.",
+            "Ben, the Hebrides — I work remotely for a software company, so as long as the internet works, I can live anywhere. The connection used to be terrible, but a new cable has transformed things. Housing is the island's biggest problem: so many houses are now holiday homes that young families can't afford to stay."
+          ],
+          "tr": {
+            "zh": "A 費歐娜（奧克尼）：我從愛丁堡搬來教書，原本打算待兩年。那是十八年前的事了。讓我留下來的是社區的感覺：我家被暴風雨損壞時，幾乎不認識的鄰居都帶著工具來幫忙。渡輪是島上的命脈，壞天氣讓它停駛好幾天時，商店的貨架很快就空了。\nB 尼可斯（希臘小島）：我在這裡出生，十八歲時和幾乎所有同齡人一樣離開，去雅典讀大學。十年後我回來經營爸爸的漁業生意。島上冬天人都走光了，那份安靜有時很難熬，但夏天來的觀光客多到我們一年的收入大多在三個月內賺到。\nC 愛子（日本小島）：我是來研究海鳥的研究員，早就知道自己想住在偏遠的地方。島上沒有醫生，一開始讓我很擔心；護理師每週來一次，重症要用直升機送到本島。我喜歡這裡的生活步調。沒有人匆忙，我也學會了幾乎什麼都自己修，因為沒有別人可以叫。\nD 班（赫布里底群島）：我遠距為一家軟體公司工作，所以只要網路通，住哪裡都行。以前網路很糟，但新的海底電纜讓一切改觀。房子是島上最大的問題：太多房子變成度假屋，年輕家庭負擔不起，留不下來。"
+          },
+          "questions": [
+            {
+              "q": "Which person has stayed much longer than they originally planned?",
+              "answer": "A",
+              "zh": "費歐娜原本「打算待兩年」，結果待了十八年。",
+              "en": "Fiona planned two years and stayed eighteen."
+            },
+            {
+              "q": "Which person mentions that bad weather can cut the island off?",
+              "answer": "A",
+              "zh": "壞天氣讓渡輪「停駛好幾天」，貨架很快就空了。",
+              "en": "Storms cancel the ferry for days."
+            },
+            {
+              "q": "Which person returned to the place where they grew up?",
+              "answer": "B",
+              "zh": "尼可斯在島上出生，十年後回來。",
+              "en": "Nikos was born there and came back."
+            },
+            {
+              "q": "Which person's work depends on modern technology?",
+              "answer": "D",
+              "zh": "班遠距工作，「只要網路通，住哪裡都行」。",
+              "en": "Ben works remotely online."
+            },
+            {
+              "q": "Which person has become more practical since moving?",
+              "answer": "C",
+              "zh": "愛子「學會了幾乎什麼都自己修」。",
+              "en": "Aiko learnt to fix almost anything."
+            },
+            {
+              "q": "Which person describes a seasonal pattern in the island's economy?",
+              "answer": "B",
+              "zh": "一年的收入「大多在三個月內賺到」。",
+              "en": "Most income comes in summer."
+            },
+            {
+              "q": "Which person was helped by other residents in difficult circumstances?",
+              "answer": "A",
+              "zh": "房子被暴風雨損壞時，鄰居帶著工具來幫忙。",
+              "en": "Neighbours helped after the storm."
+            },
+            {
+              "q": "Which person mentions the lack of medical services?",
+              "answer": "C",
+              "zh": "島上「沒有醫生」，護理師每週才來一次。",
+              "en": "No doctor on the island."
+            },
+            {
+              "q": "Which person is concerned that local people are being priced out?",
+              "answer": "D",
+              "zh": "太多度假屋，「年輕家庭負擔不起」。",
+              "en": "Young families cannot afford to stay."
+            },
+            {
+              "q": "Which person finds one part of the year difficult?",
+              "answer": "B",
+              "zh": "冬天「那份安靜有時很難熬」。",
+              "en": "The quiet winters are hard."
             }
           ]
         }
