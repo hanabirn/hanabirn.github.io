@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-10',
+      zh: "法文 A2–C1（DELF / DALF）和西班牙文 A1–C1（DELE）的閱讀和聽力也都加了第 2、3 回，題型和題數跟第 1 回一樣照考試格式，聽力全部有錄音，解說也有網站的其他語言版本。",
+      'zh-Hans': "法语 A2–C1（DELF / DALF）和西班牙语 A1–C1（DELE）的阅读和听力也都加了第 2、3 回，题型和题数跟第 1 回一样按考试格式，听力全部有录音，解说也有网站的其他语言版本。",
+      en: "French A2–C1 (DELF / DALF) and Spanish A1–C1 (DELE) reading and listening also add rounds 2 and 3, in the same exam format and question counts as round 1, with every listening recording in place and explanations in the site's other languages too.",
+      ja: "フランス語 A2〜C1（DELF / DALF）とスペイン語 A1〜C1（DELE）の読解と聴解にも第 2・3 回を追加しました。形式と問題数は第 1 回と同じく試験に合わせてあり、聴解はすべて音声付き、解説はサイトのほかの言語でも読めます。",
+      ko: "프랑스어 A2~C1(DELF / DALF)과 스페인어 A1~C1(DELE)의 읽기와 듣기에도 2·3회가 추가되었어요. 유형과 문제 수는 1회와 같이 시험 형식을 따르고, 듣기는 모두 녹음이 있으며 해설은 사이트의 다른 언어로도 볼 수 있어요.",
+      ru: "Во французском A2–C1 (DELF / DALF) и испанском A1–C1 (DELE) к чтению и аудированию тоже добавлены варианты 2 и 3 — в том же формате экзамена и с тем же числом заданий, что и вариант 1; все записи на месте, а объяснения есть и на других языках сайта.",
+      fr: "La lecture et l’écoute en français A2–C1 (DELF / DALF) et en espagnol A1–C1 (DELE) gagnent elles aussi les séries 2 et 3, au même format d’examen et avec le même nombre de questions que la série 1 : tous les enregistrements sont présents et les explications existent aussi dans les autres langues du site.",
+      es: "La lectura y la comprensión auditiva de francés A2–C1 (DELF / DALF) y de español A1–C1 (DELE) suman también las rondas 2 y 3, con el mismo formato de examen y el mismo número de preguntas que la ronda 1: todas las grabaciones listas y explicaciones también en los demás idiomas del sitio.",
+      de: "Lesen und Hören für Französisch A2–C1 (DELF / DALF) und Spanisch A1–C1 (DELE) haben jetzt ebenfalls Durchgang 2 und 3 – im selben Prüfungsformat und mit derselben Fragenzahl wie Durchgang 1, alle Aufnahmen vorhanden und Erklärungen auch in den anderen Sprachen der Seite." },
+    { date: '2026-11-10',
       zh: "法文 A1（DELF A1 考試格式）的閱讀和聽力各加了第 2、3 回，題數照官方最新範例卷：閱讀 20 題、聽力 17 題，聽力全部有錄音，解說也有日、韓、俄、西、德文。另外，網站的錄音改放到專用的空間，載入更穩定。",
       'zh-Hans': "法语 A1（DELF A1 考试格式）的阅读和听力各加了第 2、3 回，题数按官方最新样卷：阅读 20 题、听力 17 题，听力全部有录音，解说也有日、韩、俄、西、德语。另外，网站的录音改放到专用的空间，加载更稳定。",
       en: "French A1 (DELF A1 exam format) reading and listening each add rounds 2 and 3, in the question counts of the latest official sample papers: 20 reading and 17 listening questions, every listening recording in place, and explanations also in Japanese, Korean, Russian, Spanish and German. The site's recordings also moved to their own storage, so they load more reliably.",
