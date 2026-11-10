@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-10',
+      zh: "法文 A1（DELF A1 考試格式）的閱讀和聽力各加了第 2、3 回，題數照官方最新範例卷：閱讀 20 題、聽力 17 題，聽力全部有錄音，解說也有日、韓、俄、西、德文。另外，網站的錄音改放到專用的空間，載入更穩定。",
+      'zh-Hans': "法语 A1（DELF A1 考试格式）的阅读和听力各加了第 2、3 回，题数按官方最新样卷：阅读 20 题、听力 17 题，听力全部有录音，解说也有日、韩、俄、西、德语。另外，网站的录音改放到专用的空间，加载更稳定。",
+      en: "French A1 (DELF A1 exam format) reading and listening each add rounds 2 and 3, in the question counts of the latest official sample papers: 20 reading and 17 listening questions, every listening recording in place, and explanations also in Japanese, Korean, Russian, Spanish and German. The site's recordings also moved to their own storage, so they load more reliably.",
+      ja: "フランス語 A1（DELF A1 試験形式）の読解と聴解に第 2・3 回を追加しました。問題数は最新の公式サンプルに合わせて読解 20 問・聴解 17 問、聴解はすべて音声付きで、解説は日本語・韓国語・ロシア語・スペイン語・ドイツ語でも読めます。また、サイトの音声を専用の保存先に移したので、読み込みが安定しました。",
+      ko: "프랑스어 A1(DELF A1 시험 형식) 읽기와 듣기에 2·3회가 추가되었어요. 문제 수는 최신 공식 샘플에 맞춰 읽기 20문제·듣기 17문제이고, 듣기는 모두 녹음이 있으며 해설은 일본어·한국어·러시아어·스페인어·독일어로도 볼 수 있어요. 또한 사이트의 녹음을 전용 저장 공간으로 옮겨서 더 안정적으로 불러와요.",
+      ru: "Во французском A1 (формат экзамена DELF A1) к чтению и аудированию добавлены варианты 2 и 3 — по числу заданий последних официальных образцов: 20 по чтению и 17 по аудированию, все записи на месте, а объяснения есть и на японском, корейском, русском, испанском и немецком. Кроме того, записи сайта переехали в отдельное хранилище и загружаются надёжнее.",
+      fr: "La lecture et l’écoute en français A1 (format du DELF A1) gagnent les séries 2 et 3, avec le nombre de questions des derniers sujets d’exemple officiels : 20 en lecture et 17 en écoute, tous les enregistrements présents et des explications aussi en japonais, coréen, russe, espagnol et allemand. Les enregistrements du site ont aussi rejoint un stockage dédié et se chargent plus sûrement.",
+      es: "La lectura y la comprensión auditiva de francés A1 (formato del DELF A1) suman las rondas 2 y 3, con el número de preguntas de los últimos modelos oficiales: 20 de lectura y 17 de audición, todas las grabaciones listas y explicaciones también en japonés, coreano, ruso, español y alemán. Además, las grabaciones del sitio pasaron a un almacenamiento propio y cargan de forma más fiable.",
+      de: "Lesen und Hören für Französisch A1 (Format des DELF A1) haben jetzt Durchgang 2 und 3 – mit der Fragenzahl der neuesten offiziellen Modellprüfungen: 20 Lese- und 17 Hörfragen, alle Aufnahmen vorhanden und Erklärungen auch auf Japanisch, Koreanisch, Russisch, Spanisch und Deutsch. Außerdem liegen die Aufnahmen der Seite jetzt in einem eigenen Speicher und laden zuverlässiger." },
     { date: '2026-11-08',
       zh: "中文台灣版 HSK 1 到 HSK 7–9 也各加了 8 篇短文閱讀，用繁體字、台灣用語和台灣讀音寫成，內容是捷運、夜市、颱風假、健保這些台灣生活的話題，都有錄音、注音、生字和題目。",
       'zh-Hans': "中文台湾版 HSK 1 到 HSK 7–9 也各加了 8 篇短文阅读，用繁体字、台湾用语和台湾读音写成，内容是捷运、夜市、台风假、健保这些台湾生活的话题，都有录音、注音、生词和题目。",
