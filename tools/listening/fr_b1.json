@@ -598,6 +598,1146 @@
           ]
         }
       ]
+    },
+    {
+      "id": "s2",
+      "items": [
+        {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une conversation entre deux collègues.",
+              "zh": "你會聽到兩個同事的對話。",
+              "en": "You will hear a conversation between two colleagues."
+            },
+            {
+              "who": "F",
+              "s": "Dis donc, Hugo, tu as l'air fatigué. Ça ne va pas ?",
+              "zh": "欸，雨果，你看起來好累。怎麼了？",
+              "en": "Hey, Hugo, you look tired. What's wrong?"
+            },
+            {
+              "who": "M",
+              "s": "Je viens de déménager, et mon nouvel appartement est à une heure d'ici en bus. Je me lève à six heures tous les matins.",
+              "zh": "我剛搬家，新公寓離這裡要坐一小時公車。我每天早上六點起床。",
+              "en": "I've just moved, and my new flat is an hour from here by bus. I get up at six every morning."
+            },
+            {
+              "who": "F",
+              "s": "Pourquoi tu ne viens pas à vélo ? Il y a une nouvelle piste cyclable le long du canal.",
+              "zh": "你為什麼不騎腳踏車來？運河邊有一條新的自行車道。",
+              "en": "Why don't you cycle? There's a new cycle path along the canal."
+            },
+            {
+              "who": "M",
+              "s": "J'y ai pensé, mais je n'ai pas de vélo, et un vélo électrique, c'est cher.",
+              "zh": "我想過，但我沒有腳踏車，電動腳踏車又很貴。",
+              "en": "I've thought about it, but I don't have a bike, and an electric bike is expensive."
+            },
+            {
+              "who": "F",
+              "s": "La mairie donne une aide de deux cents euros pour en acheter un. Moi, je l'ai eue l'année dernière. Il suffit de remplir un formulaire en ligne.",
+              "zh": "市政府有補助兩百歐元讓人買電動腳踏車。我去年就申請到了。只要上網填一張表就好。",
+              "en": "The town hall gives a grant of two hundred euros to buy one. I got it last year. You just fill in a form online."
+            },
+            {
+              "who": "M",
+              "s": "Ah bon ? Je ne savais pas. Je regarde ça ce soir, merci !",
+              "zh": "真的嗎？我都不知道。我今晚就去看，謝謝！",
+              "en": "Really? I didn't know. I'll look at it tonight, thanks!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Pourquoi Hugo est-il fatigué ?",
+                "zh": "雨果為什麼很累？",
+                "en": "Why is Hugo tired?"
+              },
+              "options": [
+                {
+                  "t": "Il travaille trop."
+                },
+                {
+                  "t": "Il est malade."
+                },
+                {
+                  "t": "Il habite loin du travail."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "新公寓離公司坐公車要一小時，六點就得起床。",
+                "en": "He lives an hour away."
+              }
+            },
+            {
+              "ask": {
+                "s": "Comment Hugo vient-il au travail ?",
+                "zh": "雨果怎麼上班？",
+                "en": "How does Hugo get to work?"
+              },
+              "options": [
+                {
+                  "t": "en voiture"
+                },
+                {
+                  "t": "à pied"
+                },
+                {
+                  "t": "en bus"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「坐一小時公車」。",
+                "en": "By bus."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que propose sa collègue ?",
+                "zh": "同事建議什麼？",
+                "en": "What does his colleague suggest?"
+              },
+              "options": [
+                {
+                  "t": "de déménager encore"
+                },
+                {
+                  "t": "de venir à vélo"
+                },
+                {
+                  "t": "de partir plus tard"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「你為什麼不騎腳踏車來？」",
+                "en": "Cycling."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quel problème Hugo mentionne-t-il ?",
+                "zh": "雨果提到什麼問題？",
+                "en": "What problem does Hugo mention?"
+              },
+              "options": [
+                {
+                  "t": "Il n'y a pas de piste cyclable."
+                },
+                {
+                  "t": "Il n'a pas de vélo."
+                },
+                {
+                  "t": "Il ne sait pas faire du vélo."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我沒有腳踏車」。",
+                "en": "He has no bike."
+              }
+            },
+            {
+              "ask": {
+                "s": "Combien la mairie donne-t-elle ?",
+                "zh": "市政府補助多少？",
+                "en": "How much does the town hall give?"
+              },
+              "options": [
+                {
+                  "t": "100 €"
+                },
+                {
+                  "t": "200 €"
+                },
+                {
+                  "t": "300 €"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「補助兩百歐元」。",
+                "en": "€200."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pour obtenir cette aide, il faut…",
+                "zh": "要申請這筆補助，需要……",
+                "en": "To get this grant, you need to…"
+              },
+              "options": [
+                {
+                  "t": "remplir un formulaire en ligne."
+                },
+                {
+                  "t": "aller à la mairie."
+                },
+                {
+                  "t": "acheter un vélo d'occasion."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「上網填一張表」。",
+                "en": "Fill in an online form."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une annonce dans une entreprise.",
+              "zh": "你會聽到一則公司內部的廣播。",
+              "en": "You will hear an announcement in a company."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour à tous. Je vous rappelle que, à partir du lundi 4 mars, notre cantine sera fermée pendant trois semaines pour des travaux de rénovation. Pendant cette période, un food truck sera installé dans la cour, du lundi au vendredi, de 11 h 30 à 14 h. Les menus coûteront le même prix qu'à la cantine : six euros cinquante. Vous pourrez manger à l'intérieur, dans la salle de réunion du rez-de-chaussée, qui sera transformée en salle à manger. Attention : le paiement par carte de cantine ne fonctionnera pas, il faudra payer par carte bancaire. Si vous avez un régime particulier, merci d'envoyer un e-mail à Mme Petit avant vendredi. À la réouverture, vous découvrirez une cantine plus grande, avec un coin végétarien. Bon appétit !",
+              "zh": "大家好。提醒各位，從 3 月 4 日星期一起，員工餐廳要整修，關閉三個星期。這段期間，庭院會有一輛餐車，星期一到星期五 11:30 到 14:00。套餐價格跟餐廳一樣：6.5 歐元。可以在室內用餐，一樓的會議室會改成用餐區。注意：餐廳卡不能用，要用銀行卡付款。如果您有特殊飲食需求，請在星期五前寄電子郵件給佩蒂女士。重新開放後，餐廳會更大，還有素食區。祝用餐愉快！",
+              "en": "Hello everyone. A reminder that from Monday 4 March our canteen will be closed for three weeks for renovation. During this period, a food truck will be set up in the courtyard, Monday to Friday, 11.30 a.m. to 2 p.m. Meals will cost the same as at the canteen: six euros fifty. You can eat inside, in the ground-floor meeting room, which will become a dining room. Note: canteen cards won't work; you'll have to pay by bank card. If you have a special diet, please e-mail Mrs Petit before Friday. When it reopens you'll find a bigger canteen with a vegetarian corner. Enjoy your meal!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Pendant combien de temps la cantine sera-t-elle fermée ?",
+                "zh": "餐廳會關多久？",
+                "en": "How long will the canteen be closed?"
+              },
+              "options": [
+                {
+                  "t": "trois semaines"
+                },
+                {
+                  "t": "une semaine"
+                },
+                {
+                  "t": "un mois"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「關閉三個星期」。",
+                "en": "Three weeks."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pourquoi la cantine ferme-t-elle ?",
+                "zh": "餐廳為什麼關閉？",
+                "en": "Why is the canteen closing?"
+              },
+              "options": [
+                {
+                  "t": "pour des travaux"
+                },
+                {
+                  "t": "à cause d'une grève"
+                },
+                {
+                  "t": "pour les vacances"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「要整修」。",
+                "en": "Renovation work."
+              }
+            },
+            {
+              "ask": {
+                "s": "Où sera le food truck ?",
+                "zh": "餐車會在哪裡？",
+                "en": "Where will the food truck be?"
+              },
+              "options": [
+                {
+                  "t": "dans la rue"
+                },
+                {
+                  "t": "dans la cour"
+                },
+                {
+                  "t": "au parking"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「庭院」。",
+                "en": "In the courtyard."
+              }
+            },
+            {
+              "ask": {
+                "s": "Combien coûtera un menu ?",
+                "zh": "套餐多少錢？",
+                "en": "How much will a meal cost?"
+              },
+              "options": [
+                {
+                  "t": "6,50 €"
+                },
+                {
+                  "t": "5,50 €"
+                },
+                {
+                  "t": "7,50 €"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「6.5 歐元」。",
+                "en": "€6.50."
+              }
+            },
+            {
+              "ask": {
+                "s": "Où pourra-t-on manger ?",
+                "zh": "可以在哪裡用餐？",
+                "en": "Where can people eat?"
+              },
+              "options": [
+                {
+                  "t": "dans son bureau"
+                },
+                {
+                  "t": "dans le food truck"
+                },
+                {
+                  "t": "dans la salle de réunion"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「一樓的會議室會改成用餐區」。",
+                "en": "In the meeting room."
+              }
+            },
+            {
+              "ask": {
+                "s": "Comment faudra-t-il payer ?",
+                "zh": "要怎麼付款？",
+                "en": "How will people pay?"
+              },
+              "options": [
+                {
+                  "t": "avec la carte de cantine"
+                },
+                {
+                  "t": "en espèces seulement"
+                },
+                {
+                  "t": "par carte bancaire"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「要用銀行卡付款」。",
+                "en": "By bank card."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'y aura-t-il de nouveau dans la cantine rénovée ?",
+                "zh": "整修後的餐廳有什麼新東西？",
+                "en": "What will be new in the renovated canteen?"
+              },
+              "options": [
+                {
+                  "t": "une terrasse"
+                },
+                {
+                  "t": "un coin végétarien"
+                },
+                {
+                  "t": "un café"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「還有素食區」。",
+                "en": "A vegetarian corner."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un reportage à la radio.",
+              "zh": "你會聽到一段電台報導。",
+              "en": "You will hear a radio report."
+            },
+            {
+              "who": "M",
+              "s": "Dans le petit village de Lagrasse, dans l'Aude, la dernière épicerie avait fermé il y a dix ans. Les habitants, surtout les personnes âgées, devaient prendre la voiture pour faire leurs courses à vingt kilomètres. Il y a un an, quinze habitants ont décidé de réagir : ils ont créé une épicerie coopérative. Chacun a donné cent euros pour commencer, et tout le monde travaille bénévolement trois heures par mois. L'épicerie vend surtout des produits locaux : le pain du boulanger voisin, les légumes des fermes alentour, le fromage de chèvre d'un producteur du village. Aujourd'hui, la coopérative compte quatre-vingts membres et le magasin est ouvert six jours sur sept. « Ce n'est pas seulement un magasin, c'est devenu un lieu de rencontre », explique Mireille, l'une des fondatrices. Prochain projet : ouvrir un petit café à côté de l'épicerie.",
+              "zh": "在奧德省的小村拉格拉斯，最後一家雜貨店十年前就關了。居民，特別是老人家，得開車到二十公里外買東西。一年前，十五位居民決定採取行動：他們成立了一家合作社雜貨店。每個人先出一百歐元，大家每個月義務幫忙三個小時。雜貨店主要賣本地產品：隔壁麵包店的麵包、附近農場的蔬菜、村裡一位生產者的山羊起司。現在合作社有八十位成員，店一週開六天。創辦人之一米海耶說：「這不只是一家店，也變成了大家見面的地方。」下一個計畫：在雜貨店旁邊開一家小咖啡館。",
+              "en": "In the small village of Lagrasse, in the Aude, the last grocery had closed ten years ago. Residents, especially the elderly, had to drive twenty kilometres to do their shopping. A year ago, fifteen residents decided to act: they created a cooperative grocery. Each gave a hundred euros to start, and everyone volunteers three hours a month. The shop sells mainly local products: bread from the neighbouring baker, vegetables from the surrounding farms, goat's cheese from a producer in the village. Today the cooperative has eighty members and the shop is open six days a week. \"It's not just a shop — it's become a meeting place,\" explains Mireille, one of the founders. Next project: opening a little café next to the grocery."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Depuis combien de temps n'y avait-il plus d'épicerie ?",
+                "zh": "村裡沒有雜貨店多久了？",
+                "en": "How long had there been no grocery?"
+              },
+              "options": [
+                {
+                  "t": "un an"
+                },
+                {
+                  "t": "cinq ans"
+                },
+                {
+                  "t": "dix ans"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「最後一家雜貨店十年前就關了」。",
+                "en": "Ten years."
+              }
+            },
+            {
+              "ask": {
+                "s": "Avant, pour faire leurs courses, les habitants…",
+                "zh": "以前居民買東西要……",
+                "en": "Before, to do their shopping, residents…"
+              },
+              "options": [
+                {
+                  "t": "allaient en voiture à vingt kilomètres."
+                },
+                {
+                  "t": "commandaient sur Internet."
+                },
+                {
+                  "t": "prenaient le train."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開車到二十公里外」。",
+                "en": "Drove twenty kilometres."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qui a créé l'épicerie ?",
+                "zh": "誰成立了雜貨店？",
+                "en": "Who created the grocery?"
+              },
+              "options": [
+                {
+                  "t": "quinze habitants"
+                },
+                {
+                  "t": "la mairie"
+                },
+                {
+                  "t": "un supermarché"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「十五位居民」。",
+                "en": "Fifteen residents."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les membres de la coopérative…",
+                "zh": "合作社成員……",
+                "en": "Members of the cooperative…"
+              },
+              "options": [
+                {
+                  "t": "sont payés."
+                },
+                {
+                  "t": "travaillent bénévolement."
+                },
+                {
+                  "t": "ne travaillent pas au magasin."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「每個月義務幫忙三個小時」。",
+                "en": "Volunteer."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'est-ce que l'épicerie vend surtout ?",
+                "zh": "雜貨店主要賣什麼？",
+                "en": "What does the grocery mainly sell?"
+              },
+              "options": [
+                {
+                  "t": "des produits importés"
+                },
+                {
+                  "t": "des produits locaux"
+                },
+                {
+                  "t": "des produits surgelés"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「主要賣本地產品」。",
+                "en": "Local products."
+              }
+            },
+            {
+              "ask": {
+                "s": "Combien de membres a la coopérative aujourd'hui ?",
+                "zh": "現在合作社有多少成員？",
+                "en": "How many members does it have today?"
+              },
+              "options": [
+                {
+                  "t": "15"
+                },
+                {
+                  "t": "100"
+                },
+                {
+                  "t": "80"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「八十位成員」。",
+                "en": "Eighty."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quel est le prochain projet ?",
+                "zh": "下一個計畫是什麼？",
+                "en": "What is the next project?"
+              },
+              "options": [
+                {
+                  "t": "ouvrir un café"
+                },
+                {
+                  "t": "ouvrir une boulangerie"
+                },
+                {
+                  "t": "agrandir le magasin"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開一家小咖啡館」。",
+                "en": "A café."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "s3",
+      "items": [
+        {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une conversation entre deux amies.",
+              "zh": "你會聽到兩個朋友的對話。",
+              "en": "You will hear a conversation between two friends."
+            },
+            {
+              "who": "F",
+              "s": "Alors, ce nouveau travail à Marseille, ça se passe bien ?",
+              "zh": "那麼，馬賽的新工作還順利嗎？",
+              "en": "So, how is the new job in Marseille going?"
+            },
+            {
+              "who": "F",
+              "s": "Oui, très bien ! L'équipe est sympa et le travail est intéressant. Mais c'est difficile de trouver un appartement : les loyers sont très chers.",
+              "zh": "很順利！同事人很好，工作也很有趣。可是很難找到公寓：房租很貴。",
+              "en": "Yes, very well! The team is nice and the work is interesting. But it's hard to find a flat: rents are very expensive."
+            },
+            {
+              "who": "F",
+              "s": "Tu habites où, en attendant ?",
+              "zh": "那你現在暫時住哪裡？",
+              "en": "Where are you living in the meantime?"
+            },
+            {
+              "who": "F",
+              "s": "Chez ma cousine, dans son salon. Elle est très gentille, mais je ne veux pas rester trop longtemps. J'ai une visite samedi, pour une colocation près du port.",
+              "zh": "住我表姊家的客廳。她人很好，但我不想住太久。星期六我要去看一間港口附近的合租。",
+              "en": "At my cousin's, in her living room. She's very kind, but I don't want to stay too long. I have a viewing on Saturday for a flat-share near the port."
+            },
+            {
+              "who": "F",
+              "s": "Une colocation ? Toi qui aimes tant le calme !",
+              "zh": "合租？妳不是最喜歡安靜嗎！",
+              "en": "A flat-share? You, who love peace and quiet so much!"
+            },
+            {
+              "who": "F",
+              "s": "Je sais… Mais c'est deux fois moins cher qu'un studio. Et puis, ça m'aidera à rencontrer des gens, je ne connais personne ici.",
+              "zh": "我知道……可是比套房便宜一半。而且可以幫我認識新朋友，我在這裡誰都不認識。",
+              "en": "I know… but it's half the price of a studio. And it'll help me meet people — I don't know anyone here."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Que pense la femme de son nouveau travail ?",
+                "zh": "她覺得新工作怎麼樣？",
+                "en": "What does the woman think of her new job?"
+              },
+              "options": [
+                {
+                  "t": "Elle l'aime bien."
+                },
+                {
+                  "t": "Elle le trouve ennuyeux."
+                },
+                {
+                  "t": "Elle veut le quitter."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「同事人很好，工作也很有趣」。",
+                "en": "She likes it."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quel est son problème ?",
+                "zh": "她的問題是什麼？",
+                "en": "What is her problem?"
+              },
+              "options": [
+                {
+                  "t": "trouver des collègues"
+                },
+                {
+                  "t": "apprendre la langue"
+                },
+                {
+                  "t": "trouver un logement"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「很難找到公寓」。",
+                "en": "Finding a flat."
+              }
+            },
+            {
+              "ask": {
+                "s": "Où habite-t-elle en ce moment ?",
+                "zh": "她現在住哪裡？",
+                "en": "Where is she living now?"
+              },
+              "options": [
+                {
+                  "t": "chez sa cousine"
+                },
+                {
+                  "t": "à l'hôtel"
+                },
+                {
+                  "t": "dans un studio"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「住我表姊家的客廳」。",
+                "en": "At her cousin's."
+              }
+            },
+            {
+              "ask": {
+                "s": "Samedi, elle va…",
+                "zh": "星期六她要……",
+                "en": "On Saturday she will…"
+              },
+              "options": [
+                {
+                  "t": "déménager."
+                },
+                {
+                  "t": "rentrer chez ses parents."
+                },
+                {
+                  "t": "visiter une colocation."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「去看一間合租」。",
+                "en": "View a flat-share."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pourquoi son amie est-elle surprise ?",
+                "zh": "朋友為什麼驚訝？",
+                "en": "Why is her friend surprised?"
+              },
+              "options": [
+                {
+                  "t": "Elle déteste la mer."
+                },
+                {
+                  "t": "Elle a déjà un appartement."
+                },
+                {
+                  "t": "Elle aime le calme."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「妳不是最喜歡安靜嗎」。",
+                "en": "She loves quiet."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pourquoi choisit-elle une colocation ?",
+                "zh": "她為什麼選合租？",
+                "en": "Why does she choose a flat-share?"
+              },
+              "options": [
+                {
+                  "t": "C'est moins cher et elle veut rencontrer des gens."
+                },
+                {
+                  "t": "C'est plus grand et près du travail."
+                },
+                {
+                  "t": "Sa cousine y habite."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「比套房便宜一半」，而且「可以幫我認識新朋友」。",
+                "en": "Cheaper, and a way to meet people."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une interview à la radio.",
+              "zh": "你會聽到一段電台訪談。",
+              "en": "You will hear a radio interview."
+            },
+            {
+              "who": "M",
+              "s": "Bonjour, Sandrine Blanc. Vous êtes responsable d'une agence pour l'emploi. Les entreprises cherchent-elles toujours les mêmes qualités ?",
+              "zh": "珊德琳‧布朗您好。您是一家就業服務處的主管。企業找的特質還是一樣嗎？",
+              "en": "Hello, Sandrine Blanc. You run an employment agency. Are companies still looking for the same qualities?"
+            },
+            {
+              "who": "F",
+              "s": "Pas vraiment. Il y a vingt ans, on regardait surtout les diplômes. Aujourd'hui, les recruteurs s'intéressent beaucoup aux « compétences douces » : savoir travailler en équipe, communiquer, s'adapter. Un candidat qui a fait du bénévolat ou un long voyage a souvent un avantage.",
+              "zh": "不太一樣。二十年前主要看學歷。現在招募者很重視「軟實力」：懂得團隊合作、溝通、適應。做過志工或長途旅行的應徵者常常比較有優勢。",
+              "en": "Not really. Twenty years ago people looked mainly at qualifications. Today recruiters are very interested in 'soft skills': working in a team, communicating, adapting. A candidate who has volunteered or travelled for a long time often has an advantage."
+            },
+            {
+              "who": "M",
+              "s": "Et le CV, il est toujours important ?",
+              "zh": "那履歷還重要嗎？",
+              "en": "And is the CV still important?"
+            },
+            {
+              "who": "F",
+              "s": "Oui, mais il doit être court : une page maximum. Les recruteurs passent en moyenne trente secondes sur un CV ! Je conseille aussi de l'adapter à chaque offre, au lieu d'envoyer le même partout.",
+              "zh": "重要，但要短：最多一頁。招募者平均只花三十秒看一份履歷！我也建議針對每個職缺調整，不要到處寄同一份。",
+              "en": "Yes, but it must be short: one page at most. Recruiters spend thirty seconds on a CV on average! I also advise adapting it to each job offer instead of sending the same one everywhere."
+            },
+            {
+              "who": "M",
+              "s": "Un dernier conseil pour l'entretien ?",
+              "zh": "面試有什麼最後的建議？",
+              "en": "One last tip for the interview?"
+            },
+            {
+              "who": "F",
+              "s": "Se renseigner sur l'entreprise avant, et préparer des questions à poser. Un candidat qui ne pose aucune question donne l'impression de ne pas être intéressé.",
+              "zh": "事先了解公司，並準備要問的問題。一個問題都不問的應徵者，會讓人覺得他沒興趣。",
+              "en": "Find out about the company beforehand and prepare questions to ask. A candidate who asks nothing gives the impression of not being interested."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Que fait Sandrine Blanc ?",
+                "zh": "珊德琳‧布朗做什麼工作？",
+                "en": "What does Sandrine Blanc do?"
+              },
+              "options": [
+                {
+                  "t": "Elle dirige une agence pour l'emploi."
+                },
+                {
+                  "t": "Elle est journaliste."
+                },
+                {
+                  "t": "Elle est professeure."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「就業服務處的主管」。",
+                "en": "She runs an employment agency."
+              }
+            },
+            {
+              "ask": {
+                "s": "Il y a vingt ans, les recruteurs regardaient surtout…",
+                "zh": "二十年前招募者主要看……",
+                "en": "Twenty years ago recruiters mainly looked at…"
+              },
+              "options": [
+                {
+                  "t": "l'âge."
+                },
+                {
+                  "t": "les diplômes."
+                },
+                {
+                  "t": "l'expérience à l'étranger."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「主要看學歷」。",
+                "en": "Qualifications."
+              }
+            },
+            {
+              "ask": {
+                "s": "Aujourd'hui, ils s'intéressent aussi à…",
+                "zh": "現在他們也重視……",
+                "en": "Today they're also interested in…"
+              },
+              "options": [
+                {
+                  "t": "la tenue vestimentaire."
+                },
+                {
+                  "t": "la capacité à travailler en équipe."
+                },
+                {
+                  "t": "la voiture du candidat."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「懂得團隊合作」。",
+                "en": "Teamwork."
+              }
+            },
+            {
+              "ask": {
+                "s": "Un CV doit faire…",
+                "zh": "履歷應該……",
+                "en": "A CV should be…"
+              },
+              "options": [
+                {
+                  "t": "deux pages."
+                },
+                {
+                  "t": "une page au maximum."
+                },
+                {
+                  "t": "trois pages."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「最多一頁」。",
+                "en": "One page at most."
+              }
+            },
+            {
+              "ask": {
+                "s": "Combien de temps un recruteur lit-il un CV ?",
+                "zh": "招募者看一份履歷多久？",
+                "en": "How long does a recruiter read a CV?"
+              },
+              "options": [
+                {
+                  "t": "30 secondes"
+                },
+                {
+                  "t": "10 secondes"
+                },
+                {
+                  "t": "3 minutes"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「平均只花三十秒」。",
+                "en": "Thirty seconds."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que conseille-t-elle pour le CV ?",
+                "zh": "她對履歷有什麼建議？",
+                "en": "What does she advise for the CV?"
+              },
+              "options": [
+                {
+                  "t": "ajouter une photo"
+                },
+                {
+                  "t": "l'adapter à chaque offre"
+                },
+                {
+                  "t": "l'écrire à la main"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「針對每個職缺調整」。",
+                "en": "Adapt it to each offer."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pendant l'entretien, il est important de…",
+                "zh": "面試時重要的是……",
+                "en": "In the interview it's important to…"
+              },
+              "options": [
+                {
+                  "t": "parler de son salaire."
+                },
+                {
+                  "t": "poser des questions."
+                },
+                {
+                  "t": "arriver en avance d'une heure."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「準備要問的問題」。",
+                "en": "Ask questions."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un reportage à la radio.",
+              "zh": "你會聽到一段電台報導。",
+              "en": "You will hear a radio report."
+            },
+            {
+              "who": "F",
+              "s": "À Strasbourg, depuis septembre, les élèves de l'école Pasteur ont cours dehors une demi-journée par semaine. Mathématiques dans le parc, sciences au bord de la rivière, lecture sous les arbres : c'est « l'école du dehors ». L'idée vient des pays scandinaves, où elle est pratiquée depuis longtemps. Les enseignants ont constaté que les enfants sont plus calmes et plus concentrés après ces matinées en plein air. « Ils posent plus de questions, ils observent mieux », explique Mme Weber, institutrice. Même quand il pleut, la classe sort : les parents ont simplement dû acheter des bottes et un imperméable. Certains parents étaient inquiets au début, ils avaient peur que leurs enfants tombent malades. Mais selon l'école, il n'y a pas eu plus d'absences que d'habitude. L'année prochaine, trois autres écoles de la ville vont essayer.",
+              "zh": "在史特拉斯堡，從九月開始，巴斯德小學的學生每週有半天在戶外上課。在公園上數學、在河邊上自然、在樹下閱讀：這就是「戶外學校」。這個點子來自北歐國家，那裡已經實行很久了。老師們發現，在戶外上完一個早上後，孩子比較安靜、比較專心。韋伯老師說：「他們問更多問題，觀察得更仔細。」就算下雨，全班也照樣出去：家長只需要買雨靴和雨衣。有些家長一開始很擔心，怕孩子生病。但根據學校的說法，缺席的人數沒有比平常多。明年市內還有三所學校要試試看。",
+              "en": "In Strasbourg, since September, pupils at the Pasteur school have had lessons outdoors half a day a week. Maths in the park, science by the river, reading under the trees: it's 'outdoor school'. The idea comes from the Scandinavian countries, where it has long been practised. Teachers have noticed that children are calmer and more focused after these mornings in the open air. \"They ask more questions, they observe better,\" explains Mrs Weber, a teacher. Even when it rains the class goes out: parents simply had to buy boots and a raincoat. Some parents were worried at first, afraid their children would get ill. But according to the school there have been no more absences than usual. Next year three other schools in the city will try it."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Combien de temps les élèves ont-ils cours dehors ?",
+                "zh": "學生多久在戶外上課？",
+                "en": "How long do pupils have lessons outdoors?"
+              },
+              "options": [
+                {
+                  "t": "tous les jours"
+                },
+                {
+                  "t": "une demi-journée par semaine"
+                },
+                {
+                  "t": "une fois par mois"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「每週有半天」。",
+                "en": "Half a day a week."
+              }
+            },
+            {
+              "ask": {
+                "s": "D'où vient l'idée ?",
+                "zh": "這個點子來自哪裡？",
+                "en": "Where does the idea come from?"
+              },
+              "options": [
+                {
+                  "t": "des États-Unis"
+                },
+                {
+                  "t": "des pays scandinaves"
+                },
+                {
+                  "t": "d'Allemagne"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「來自北歐國家」。",
+                "en": "Scandinavia."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'ont remarqué les enseignants ?",
+                "zh": "老師們發現什麼？",
+                "en": "What have teachers noticed?"
+              },
+              "options": [
+                {
+                  "t": "Les enfants sont plus calmes."
+                },
+                {
+                  "t": "Les enfants sont plus fatigués."
+                },
+                {
+                  "t": "Les enfants lisent moins."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「比較安靜、比較專心」。",
+                "en": "Children are calmer."
+              }
+            },
+            {
+              "ask": {
+                "s": "Selon Mme Weber, les enfants…",
+                "zh": "韋伯老師說孩子們……",
+                "en": "According to Mrs Weber, the children…"
+              },
+              "options": [
+                {
+                  "t": "parlent moins."
+                },
+                {
+                  "t": "veulent rester en classe."
+                },
+                {
+                  "t": "observent mieux."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「觀察得更仔細」。",
+                "en": "Observe better."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quand il pleut, …",
+                "zh": "下雨時……",
+                "en": "When it rains…"
+              },
+              "options": [
+                {
+                  "t": "la classe sort quand même."
+                },
+                {
+                  "t": "la classe reste à l'intérieur."
+                },
+                {
+                  "t": "les cours sont annulés."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「就算下雨，全班也照樣出去」。",
+                "en": "The class still goes out."
+              }
+            },
+            {
+              "ask": {
+                "s": "De quoi certains parents avaient-ils peur ?",
+                "zh": "有些家長擔心什麼？",
+                "en": "What were some parents afraid of?"
+              },
+              "options": [
+                {
+                  "t": "que les enfants se perdent"
+                },
+                {
+                  "t": "que les notes baissent"
+                },
+                {
+                  "t": "que les enfants tombent malades"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「怕孩子生病」。",
+                "en": "Illness."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'année prochaine, …",
+                "zh": "明年……",
+                "en": "Next year…"
+              },
+              "options": [
+                {
+                  "t": "l'école Pasteur arrête."
+                },
+                {
+                  "t": "toutes les écoles de France vont commencer."
+                },
+                {
+                  "t": "trois autres écoles vont essayer."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「還有三所學校要試試看」。",
+                "en": "Three more schools will try."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }

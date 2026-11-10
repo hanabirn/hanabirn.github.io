@@ -1769,6 +1769,718 @@
           ]
         }
       ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Vous cherchez une salle de sport pour vous et votre famille. Vos critères : 1) ouverte le dimanche, 2) cours pour enfants, 3) abonnement de moins de 40 € par mois, 4) piscine.\n\nA. FORME PLUS — Ouvert 7 jours sur 7 de 6 h à 23 h. Musculation, yoga, vélo. Abonnement 29 € par mois. Pas de cours pour les moins de 16 ans.\nB. AQUA CENTER — Grande piscine, sauna, cours d'aquagym. Cours de natation pour enfants dès 4 ans. Fermé le dimanche. 45 € par mois.\nC. LE CLUB DES FAMILLES — Du lundi au dimanche, 8 h–20 h. Piscine et salle de sport. Ateliers sportifs pour enfants le mercredi et le samedi. 38 € par mois.\nD. ÉNERGIE CENTRE-VILLE — Ouvert en semaine et le samedi. Danse, boxe, cours de gym pour les 8–14 ans. 35 € par mois. Pas de piscine.",
+          "tr": {
+            "zh": "你在為自己和家人找健身中心。條件：1）星期日有開，2）有兒童課程，3）月費低於 40 歐元，4）有游泳池。\n\nA. 健身加：每天 6 點到 23 點。重訓、瑜伽、飛輪。月費 29 歐元。16 歲以下沒有課。\nB. 水上中心：大游泳池、三溫暖、水中有氧。4 歲起的兒童游泳課。星期日休息。月費 45 歐元。\nC. 家庭俱樂部：週一到週日 8 點到 20 點。游泳池和健身房。星期三和星期六有兒童運動工作坊。月費 38 歐元。\nD. 市中心能量：平日和星期六營業。舞蹈、拳擊、8 到 14 歲體操課。月費 35 歐元。沒有游泳池。",
+            "en": "You are looking for a gym for yourself and your family. Your criteria: 1) open on Sundays, 2) classes for children, 3) membership under €40 a month, 4) a pool.\n\nA. FORME PLUS — Open 7 days a week, 6 a.m.–11 p.m. Weights, yoga, cycling. €29 a month. No classes for under-16s.\nB. AQUA CENTER — Big pool, sauna, aqua-aerobics. Swimming lessons for children from age 4. Closed on Sundays. €45 a month.\nC. LE CLUB DES FAMILLES — Monday to Sunday, 8 a.m.–8 p.m. Pool and gym. Sports workshops for children on Wednesdays and Saturdays. €38 a month.\nD. ÉNERGIE CENTRE-VILLE — Open weekdays and Saturdays. Dance, boxing, gym classes for 8–14-year-olds. €35 a month. No pool."
+          },
+          "questions": [
+            {
+              "q": "A — ouvert le dimanche ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "A 每天營業：是。",
+              "en": "A is open 7 days: yes."
+            },
+            {
+              "q": "A — cours pour enfants ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "A 16 歲以下沒有課：否。",
+              "en": "A: no classes for under-16s."
+            },
+            {
+              "q": "A — moins de 40 € par mois ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "A 29 歐元：是。",
+              "en": "A: €29, yes."
+            },
+            {
+              "q": "A — piscine ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "A 沒提到游泳池：否。",
+              "en": "A: no pool mentioned."
+            },
+            {
+              "q": "B — ouvert le dimanche ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "B 星期日休息：否。",
+              "en": "B: closed on Sundays."
+            },
+            {
+              "q": "B — cours pour enfants ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "B 有兒童游泳課：是。",
+              "en": "B: children's swimming lessons."
+            },
+            {
+              "q": "B — moins de 40 € par mois ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "B 45 歐元：否。",
+              "en": "B: €45."
+            },
+            {
+              "q": "B — piscine ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "B 大游泳池：是。",
+              "en": "B: a big pool."
+            },
+            {
+              "q": "C — ouvert le dimanche ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 週一到週日：是。",
+              "en": "C: Monday to Sunday."
+            },
+            {
+              "q": "C — cours pour enfants ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 兒童運動工作坊：是。",
+              "en": "C: children's workshops."
+            },
+            {
+              "q": "C — moins de 40 € par mois ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 38 歐元：是。",
+              "en": "C: €38."
+            },
+            {
+              "q": "C — piscine ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 有游泳池：是。",
+              "en": "C: a pool."
+            },
+            {
+              "q": "D — ouvert le dimanche ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "D 平日和星期六：否。",
+              "en": "D: weekdays and Saturdays only."
+            },
+            {
+              "q": "D — cours pour enfants ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 8 到 14 歲體操課：是。",
+              "en": "D: gym classes for 8–14s."
+            },
+            {
+              "q": "D — moins de 40 € par mois ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 35 歐元：是。",
+              "en": "D: €35."
+            },
+            {
+              "q": "D — piscine ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "D 沒有游泳池：否。",
+              "en": "D: no pool."
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Travailler quatre jours par semaine : le pari d'une PME bretonne\nDepuis janvier, les quarante salariés de Kerlan, une entreprise de Rennes qui fabrique des meubles, ne travaillent plus que du lundi au jeudi. Leur salaire, lui, n'a pas changé. « Nous avons réorganisé les horaires : les journées sont un peu plus longues, mais tout le monde a ses vendredis libres », explique la directrice, Anne Le Goff. Au début, certains clients avaient peur de ne plus pouvoir joindre l'entreprise. Pour les rassurer, un standard téléphonique reste ouvert le vendredi matin. Six mois plus tard, le bilan est positif : il y a moins d'absences pour maladie, et l'entreprise reçoit deux fois plus de candidatures qu'avant. Tout n'est pas parfait pour autant : certains parents trouvent difficile de récupérer leurs enfants à l'école avec des journées qui finissent à 18 h 30. La direction réfléchit à des horaires plus souples pour eux.",
+          "tr": {
+            "zh": "每週工作四天：布列塔尼一家中小企業的賭注\n從一月起，雷恩一家做家具的公司凱爾朗的四十名員工，只從星期一工作到星期四，薪水不變。總經理安妮‧勒戈夫說：「我們重新安排了工時：每天稍微長一點，但大家星期五都休假。」一開始有些客戶擔心聯絡不到公司。為了讓他們放心，星期五早上仍有總機接電話。六個月後成效不錯：病假變少，應徵人數是以前的兩倍。不過也不是完美的：有些家長覺得工作到 18:30 才結束，很難去學校接孩子。公司正在考慮為他們安排更有彈性的工時。",
+            "en": "Working four days a week: a Breton SME's gamble\nSince January, the forty employees of Kerlan, a furniture maker in Rennes, have only worked Monday to Thursday. Their pay hasn't changed. \"We've reorganised the hours: the days are a little longer, but everyone has Fridays off,\" explains the director, Anne Le Goff. At first some customers were afraid they wouldn't be able to reach the company. To reassure them, a switchboard stays open on Friday mornings. Six months on, the results are positive: there are fewer sick days, and the company receives twice as many applications as before. Not everything is perfect, though: some parents find it hard to collect their children from school with days ending at 6.30 p.m. Management is thinking about more flexible hours for them."
+          },
+          "questions": [
+            {
+              "q": "L'entreprise Kerlan fabrique…",
+              "options": [
+                "des vêtements.",
+                "des meubles.",
+                "des voitures."
+              ],
+              "answer": 1,
+              "zh": "「做家具的公司」。",
+              "en": "Furniture."
+            },
+            {
+              "q": "Avec la semaine de quatre jours, le salaire…",
+              "options": [
+                "a baissé.",
+                "est resté le même.",
+                "a augmenté."
+              ],
+              "answer": 1,
+              "zh": "「薪水不變」。",
+              "en": "It stayed the same."
+            },
+            {
+              "q": "Pour travailler quatre jours, les salariés…",
+              "options": [
+                "travaillent le samedi.",
+                "ont moins de travail.",
+                "font des journées plus longues."
+              ],
+              "answer": 2,
+              "zh": "「每天稍微長一點」。",
+              "en": "Longer days."
+            },
+            {
+              "q": "Que craignaient certains clients ?",
+              "options": [
+                "ne plus pouvoir contacter l'entreprise",
+                "des prix plus élevés",
+                "des meubles de moins bonne qualité"
+              ],
+              "answer": 0,
+              "zh": "「擔心聯絡不到公司」。",
+              "en": "Not being able to reach the company."
+            },
+            {
+              "q": "Le vendredi matin, …",
+              "options": [
+                "l'usine est ouverte.",
+                "un standard téléphonique répond.",
+                "les salariés font des formations."
+              ],
+              "answer": 1,
+              "zh": "「星期五早上仍有總機接電話」。",
+              "en": "A switchboard answers."
+            },
+            {
+              "q": "Quel résultat positif l'article mentionne-t-il ?",
+              "options": [
+                "plus de clients",
+                "moins d'absences pour maladie",
+                "des salaires plus hauts"
+              ],
+              "answer": 1,
+              "zh": "「病假變少」。",
+              "en": "Fewer sick days."
+            },
+            {
+              "q": "Quel problème reste à régler ?",
+              "options": [
+                "Les clients sont partis.",
+                "L'usine est trop petite.",
+                "Les parents ont du mal à aller chercher leurs enfants."
+              ],
+              "answer": 2,
+              "zh": "「工作到 18:30 才結束，很難去學校接孩子」。",
+              "en": "Parents struggle to collect their children."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Les « boîtes à livres » se multiplient\nUne cabine téléphonique transformée en petite bibliothèque, une vieille armoire posée sur une place : partout en France, les boîtes à livres se multiplient. Le principe est simple : chacun peut prendre un livre gratuitement, ou en déposer un qu'il a déjà lu. Il n'y a ni inscription ni date de retour. Dans la petite ville de Saint-Rémy, la première boîte a été installée par une institutrice à la retraite, Mme Faure. « Au début, je venais tous les jours vérifier qu'elle n'était pas vide. Aujourd'hui, ce sont les habitants qui s'en occupent », sourit-elle. Les livres pour enfants partent le plus vite. Seul souci : certaines personnes y laissent des livres abîmés ou des vieux magazines. La mairie a donc ajouté un petit panneau : « Donnez les livres que vous aimeriez recevoir. »",
+          "tr": {
+            "zh": "「書箱」越來越多\n電話亭改成小圖書館、廣場上放一個舊衣櫃：法國各地的書箱越來越多。原則很簡單：每個人都可以免費拿一本書，或放一本自己讀過的書。不用登記，也沒有歸還日期。在小城聖雷米，第一個書箱是退休小學老師福爾女士放的。她笑著說：「一開始我每天都來檢查是不是空了。現在是居民們自己在照顧它。」童書被拿走得最快。唯一的問題：有些人會放破損的書或舊雜誌。所以市政府加了一個小牌子：「請放您自己也想收到的書。」",
+            "en": "\"Book boxes\" are multiplying\nA phone box turned into a little library, an old wardrobe standing on a square: all over France, book boxes are multiplying. The principle is simple: anyone can take a book for free, or leave one they've already read. There's no registration and no return date. In the small town of Saint-Rémy, the first box was set up by a retired primary teacher, Mrs Faure. \"At first I came every day to check it wasn't empty. Now the residents look after it,\" she says with a smile. Children's books go fastest. The only problem: some people leave damaged books or old magazines. So the town hall added a little sign: \"Give the books you'd like to receive.\""
+          },
+          "questions": [
+            {
+              "q": "Une boîte à livres, c'est…",
+              "options": [
+                "une librairie.",
+                "un endroit où l'on échange des livres gratuitement.",
+                "une bibliothèque municipale."
+              ],
+              "answer": 1,
+              "zh": "「免費拿一本書，或放一本自己讀過的書」。",
+              "en": "A place to swap books for free."
+            },
+            {
+              "q": "Pour prendre un livre, il faut…",
+              "options": [
+                "rien de spécial.",
+                "s'inscrire.",
+                "payer un euro."
+              ],
+              "answer": 0,
+              "zh": "「不用登記，也沒有歸還日期」。",
+              "en": "Nothing special."
+            },
+            {
+              "q": "À Saint-Rémy, la première boîte a été installée par…",
+              "options": [
+                "la mairie.",
+                "une ancienne institutrice.",
+                "une librairie."
+              ],
+              "answer": 1,
+              "zh": "「退休小學老師福爾女士」。",
+              "en": "A retired teacher."
+            },
+            {
+              "q": "Au début, Mme Faure…",
+              "options": [
+                "vendait des livres.",
+                "ne voulait pas de la boîte.",
+                "venait vérifier la boîte chaque jour."
+              ],
+              "answer": 2,
+              "zh": "「每天都來檢查」。",
+              "en": "She checked it every day."
+            },
+            {
+              "q": "Aujourd'hui, qui s'occupe de la boîte ?",
+              "options": [
+                "les habitants",
+                "Mme Faure seule",
+                "les enfants de l'école"
+              ],
+              "answer": 0,
+              "zh": "「現在是居民們自己在照顧它」。",
+              "en": "The residents."
+            },
+            {
+              "q": "Quels livres partent le plus vite ?",
+              "options": [
+                "les romans policiers",
+                "les livres pour enfants",
+                "les livres de cuisine"
+              ],
+              "answer": 1,
+              "zh": "「童書被拿走得最快」。",
+              "en": "Children's books."
+            },
+            {
+              "q": "Que demande le panneau de la mairie ?",
+              "options": [
+                "de donner des livres en bon état",
+                "de ne pas prendre trop de livres",
+                "de rendre les livres en une semaine"
+              ],
+              "answer": 0,
+              "zh": "「請放您自己也想收到的書」：放狀況好的書。",
+              "en": "To give books in good condition."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Vous cherchez une colonie de vacances pour votre fils de 12 ans. Vos critères : 1) en juillet, 2) activités dans la nature, 3) moins de 500 € la semaine, 4) au moins une partie en anglais.\n\nA. MONTAGNE ET AVENTURE — Du 5 au 26 juillet, dans les Alpes. Randonnée, escalade, nuit sous la tente. 9–14 ans. 520 € la semaine.\nB. SURF CAMP — En août, sur la côte basque. Cours de surf tous les matins avec des moniteurs anglais, en anglais et en français. 12–16 ans. 450 € la semaine.\nC. LES PETITS SCIENTIFIQUES — En juillet, à Lyon. Expériences, robots, visites de laboratoires. 8–13 ans. 380 € la semaine.\nD. FERME ÉQUESTRE — Juillet et août, en Normandie. Chevaux, soins aux animaux, promenades en forêt. Animateurs bilingues français-anglais. 10–15 ans. 470 € la semaine.",
+          "tr": {
+            "zh": "你在為 12 歲的兒子找夏令營。條件：1）在七月，2）有大自然活動，3）每週低於 500 歐元，4）至少一部分用英文。\n\nA. 山林探險：7 月 5 日到 26 日，在阿爾卑斯山。健行、攀岩、帳篷過夜。9 到 14 歲。每週 520 歐元。\nB. 衝浪營：八月，在巴斯克海岸。每天早上和英國教練上衝浪課，用英文和法文。12 到 16 歲。每週 450 歐元。\nC. 小小科學家：七月，在里昂。實驗、機器人、參觀實驗室。8 到 13 歲。每週 380 歐元。\nD. 騎馬農場：七月和八月，在諾曼第。騎馬、照顧動物、森林散步。法英雙語輔導員。10 到 15 歲。每週 470 歐元。",
+            "en": "You're looking for a summer camp for your 12-year-old son. Your criteria: 1) in July, 2) nature activities, 3) under €500 a week, 4) at least part in English.\n\nA. MOUNTAIN AND ADVENTURE — 5–26 July, in the Alps. Hiking, climbing, nights in a tent. Ages 9–14. €520 a week.\nB. SURF CAMP — In August, on the Basque coast. Surf lessons every morning with English instructors, in English and French. Ages 12–16. €450 a week.\nC. THE LITTLE SCIENTISTS — In July, in Lyon. Experiments, robots, lab visits. Ages 8–13. €380 a week.\nD. RIDING FARM — July and August, in Normandy. Horses, caring for animals, forest rides. Bilingual French–English leaders. Ages 10–15. €470 a week."
+          },
+          "questions": [
+            {
+              "q": "A — en juillet ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "A 7 月 5 日到 26 日：是。",
+              "en": "A: 5–26 July."
+            },
+            {
+              "q": "A — activités dans la nature ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "A 健行、攀岩：是。",
+              "en": "A: hiking and climbing."
+            },
+            {
+              "q": "A — moins de 500 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "A 520 歐元：否。",
+              "en": "A: €520."
+            },
+            {
+              "q": "A — en anglais ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "A 沒提到英文：否。",
+              "en": "A: no English mentioned."
+            },
+            {
+              "q": "B — en juillet ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "B 在八月：否。",
+              "en": "B: in August."
+            },
+            {
+              "q": "B — activités dans la nature ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "B 海邊衝浪：是。",
+              "en": "B: surfing by the sea."
+            },
+            {
+              "q": "B — moins de 500 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "B 450 歐元：是。",
+              "en": "B: €450."
+            },
+            {
+              "q": "B — en anglais ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "B 英國教練、英文：是。",
+              "en": "B: English instructors."
+            },
+            {
+              "q": "C — en juillet ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 七月：是。",
+              "en": "C: July."
+            },
+            {
+              "q": "C — activités dans la nature ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "C 實驗、機器人：否。",
+              "en": "C: experiments and robots."
+            },
+            {
+              "q": "C — moins de 500 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "C 380 歐元：是。",
+              "en": "C: €380."
+            },
+            {
+              "q": "C — en anglais ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "C 沒提到英文：否。",
+              "en": "C: no English mentioned."
+            },
+            {
+              "q": "D — en juillet ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 七月和八月：是。",
+              "en": "D: July and August."
+            },
+            {
+              "q": "D — activités dans la nature ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 騎馬、森林散步：是。",
+              "en": "D: horses and forest rides."
+            },
+            {
+              "q": "D — moins de 500 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 470 歐元：是。",
+              "en": "D: €470."
+            },
+            {
+              "q": "D — en anglais ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "D 法英雙語輔導員：是。",
+              "en": "D: bilingual leaders."
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Le train de nuit fait son retour\nIl y a quelques années, on pensait que le train de nuit allait disparaître : trop lent, pas assez rentable. Pourtant, depuis 2021, de nouvelles lignes ouvrent, comme Paris–Nice ou Paris–Vienne. Pourquoi ce succès ? D'abord pour l'environnement : un voyage en train produit beaucoup moins de CO₂ qu'en avion. Ensuite pour le temps : « Je pars le soir après le travail, je dors, et j'arrive le matin en pleine forme, sans payer d'hôtel », explique Julie, une habituée. Les compagnies ont aussi modernisé les wagons : couchettes plus confortables, prises électriques, petit-déjeuner servi à bord. Mais tout n'est pas rose. Les billets restent assez chers, surtout pendant les vacances, et les retards sont fréquents. Pour beaucoup de voyageurs, l'avion à bas prix reste donc plus attractif.",
+          "tr": {
+            "zh": "夜車回來了\n幾年前，大家以為夜車會消失：太慢、不賺錢。但從 2021 年起，新的路線陸續開通，像是巴黎—尼斯、巴黎—維也納。為什麼會成功？首先是為了環境：搭火車產生的二氧化碳比搭飛機少很多。再來是時間：常搭的茱莉說：「我下班後晚上出發，睡一覺，早上精神飽滿地抵達，還不用付旅館錢。」鐵路公司也把車廂現代化了：臥鋪更舒服、有插座、車上供應早餐。但也不是一切都好。車票還是滿貴的，特別是假期期間，而且常常誤點。所以對很多旅客來說，廉價航空還是比較吸引人。",
+            "en": "The night train is back\nA few years ago people thought the night train would disappear: too slow, not profitable enough. Yet since 2021 new lines have opened, such as Paris–Nice and Paris–Vienna. Why this success? First, the environment: a train journey produces far less CO₂ than a flight. Then time: \"I leave in the evening after work, I sleep, and I arrive in the morning feeling great, without paying for a hotel,\" explains Julie, a regular. The companies have also modernised the carriages: more comfortable couchettes, power sockets, breakfast served on board. But it's not all rosy. Tickets are still quite expensive, especially in the holidays, and delays are frequent. For many travellers, low-cost flights therefore remain more attractive."
+          },
+          "questions": [
+            {
+              "q": "Il y a quelques années, le train de nuit…",
+              "options": [
+                "semblait condamné à disparaître.",
+                "était très populaire.",
+                "était gratuit."
+              ],
+              "answer": 0,
+              "zh": "「大家以為夜車會消失」。",
+              "en": "It seemed doomed."
+            },
+            {
+              "q": "Depuis 2021, …",
+              "options": [
+                "des lignes ferment.",
+                "de nouvelles lignes ouvrent.",
+                "les prix ont baissé."
+              ],
+              "answer": 1,
+              "zh": "「新的路線陸續開通」。",
+              "en": "New lines are opening."
+            },
+            {
+              "q": "Premier avantage du train de nuit selon l'article :",
+              "options": [
+                "il est plus rapide.",
+                "il est moins polluant que l'avion.",
+                "il est moins cher."
+              ],
+              "answer": 1,
+              "zh": "「二氧化碳比搭飛機少很多」。",
+              "en": "Less polluting than flying."
+            },
+            {
+              "q": "Pour Julie, le train de nuit permet…",
+              "options": [
+                "de travailler pendant le voyage.",
+                "de voir les paysages.",
+                "d'économiser une nuit d'hôtel."
+              ],
+              "answer": 2,
+              "zh": "「不用付旅館錢」。",
+              "en": "Saving a hotel night."
+            },
+            {
+              "q": "Qu'est-ce qui a été modernisé ?",
+              "options": [
+                "les wagons",
+                "les gares",
+                "les horaires"
+              ],
+              "answer": 0,
+              "zh": "「把車廂現代化了」。",
+              "en": "The carriages."
+            },
+            {
+              "q": "Quel est un défaut du train de nuit ?",
+              "options": [
+                "l'absence de petit-déjeuner",
+                "les retards fréquents",
+                "le manque de couchettes"
+              ],
+              "answer": 1,
+              "zh": "「常常誤點」。",
+              "en": "Frequent delays."
+            },
+            {
+              "q": "Selon l'article, beaucoup de voyageurs préfèrent encore…",
+              "options": [
+                "la voiture.",
+                "l'avion à bas prix.",
+                "le bus."
+              ],
+              "answer": 1,
+              "zh": "「廉價航空還是比較吸引人」。",
+              "en": "Low-cost flights."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Apprendre une langue avec un « tandem »\nClara, 27 ans, est française et veut améliorer son espagnol. Miguel, 30 ans, est espagnol et apprend le français. Depuis six mois, ils se retrouvent chaque mardi dans un café de Toulouse : une heure en français, une heure en espagnol. C'est le principe du tandem linguistique. « Les cours, c'est bien pour la grammaire, mais ici j'apprends les expressions de tous les jours », raconte Clara. L'association Langues Sans Frontières met en contact les personnes intéressées ; l'inscription coûte dix euros par an. Elle organise aussi une soirée mensuelle où chacun cuisine un plat de son pays. Pour Miguel, le plus important n'est pas de parler sans fautes : « Au début, j'avais honte de faire des erreurs. Maintenant, je sais que c'est normal. Et puis, j'ai gagné une amie ! »",
+          "tr": {
+            "zh": "用「語言交換」學外語\n27 歲的克拉拉是法國人，想加強西班牙文。30 歲的米格爾是西班牙人，在學法文。六個月來，他們每週二在土魯斯的一家咖啡館碰面：一小時說法文，一小時說西班牙文。這就是語言交換的原則。克拉拉說：「上課學文法很好，但在這裡我學到的是日常用語。」「無國界語言」協會幫有興趣的人配對；報名費每年十歐元。協會也每個月辦一次晚會，每個人做一道自己國家的菜。對米格爾來說，最重要的不是說得完全沒錯：「一開始我很怕犯錯，覺得丟臉。現在我知道那很正常。而且，我多了一個朋友！」",
+            "en": "Learning a language with a \"tandem\"\nClara, 27, is French and wants to improve her Spanish. Miguel, 30, is Spanish and is learning French. For six months they've met every Tuesday in a café in Toulouse: an hour in French, an hour in Spanish. That's the principle of a language tandem. \"Classes are fine for grammar, but here I learn everyday expressions,\" says Clara. The association Langues Sans Frontières puts interested people in touch; membership costs ten euros a year. It also holds a monthly evening where everyone cooks a dish from their country. For Miguel the most important thing isn't speaking without mistakes: \"At first I was ashamed of making errors. Now I know it's normal. And besides, I've made a friend!\""
+          },
+          "questions": [
+            {
+              "q": "Clara et Miguel se voient…",
+              "options": [
+                "tous les jours.",
+                "une fois par mois.",
+                "une fois par semaine."
+              ],
+              "answer": 2,
+              "zh": "「每週二」。",
+              "en": "Once a week."
+            },
+            {
+              "q": "Pendant leurs rencontres, ils parlent…",
+              "options": [
+                "seulement français.",
+                "seulement espagnol.",
+                "les deux langues."
+              ],
+              "answer": 2,
+              "zh": "「一小時法文，一小時西班牙文」。",
+              "en": "Both languages."
+            },
+            {
+              "q": "Selon Clara, le tandem lui permet surtout d'apprendre…",
+              "options": [
+                "les expressions de la vie quotidienne.",
+                "la grammaire.",
+                "à écrire."
+              ],
+              "answer": 0,
+              "zh": "「學到的是日常用語」。",
+              "en": "Everyday expressions."
+            },
+            {
+              "q": "Que fait l'association Langues Sans Frontières ?",
+              "options": [
+                "Elle met des personnes en contact.",
+                "Elle donne des cours de grammaire.",
+                "Elle vend des livres."
+              ],
+              "answer": 0,
+              "zh": "「幫有興趣的人配對」。",
+              "en": "It puts people in touch."
+            },
+            {
+              "q": "Combien coûte l'inscription ?",
+              "options": [
+                "10 € par an",
+                "rien",
+                "10 € par mois"
+              ],
+              "answer": 0,
+              "zh": "「每年十歐元」。",
+              "en": "€10 a year."
+            },
+            {
+              "q": "Chaque mois, l'association organise…",
+              "options": [
+                "un voyage.",
+                "une soirée cuisine.",
+                "un examen."
+              ],
+              "answer": 1,
+              "zh": "「每個人做一道自己國家的菜」。",
+              "en": "A cooking evening."
+            },
+            {
+              "q": "Aujourd'hui, que pense Miguel des erreurs ?",
+              "options": [
+                "Il en a honte.",
+                "Il n'en fait plus.",
+                "C'est normal d'en faire."
+              ],
+              "answer": 2,
+              "zh": "「現在我知道那很正常」。",
+              "en": "They're normal."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
