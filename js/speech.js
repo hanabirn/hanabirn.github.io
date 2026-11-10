@@ -32,6 +32,12 @@ const TTS_SAMPLE = {
 };
 
 // recordings per language: directory under data/audio/
+// The mp3s live in Cloudflare R2 at audio.hanabirn.xyz since 2026-11-08 (the site had grown to 860 MB / 114 000
+// files and GitHub Pages deploys stalled; tools/r2_sync.py uploads them); index.json stays on the site. Anywhere
+// but hanabirn.xyz (localhost) plays the local copies in data/audio/.
+// (?audio=r2 makes any host use R2 — to test the live setup on localhost)
+const AUDIO_BASE = /(^|\.)hanabirn\.xyz$/.test(location.hostname) || /[?&]audio=r2(&|$)/.test(location.search)
+    ? 'https://audio.hanabirn.xyz/' : 'data/audio/';
 const AUDIO_DIRS = { 'ja-JP': 'ja', 'ko-KR': 'ko', 'zh-CN': 'zh-CN', 'zh-TW': 'zh-TW',
     'fr-FR': 'fr', 'ru-RU': 'ru', 'de-DE': 'de', 'es-ES': 'es', 'en-US': 'en-US', 'en-GB': 'en-GB' };
 const audioIndexes = {};
@@ -168,7 +174,7 @@ function speakText(text, lang, opts) {
             from = AUDIO_DIRS[other];
         }
         if (!id) return speakWithVoice(text, lang, slow, onend);
-        const a = new Audio('data/audio/' + from + '/' + id + '.mp3');
+        const a = new Audio(AUDIO_BASE + from + '/' + id + '.mp3');
         if (slow) a.playbackRate = TTS_SLOW_FACTOR;
         audioPlaying = a;
         a.addEventListener('ended', () => {

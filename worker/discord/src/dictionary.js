@@ -84,7 +84,8 @@ async function pronunciation(env, matches, ui) {
     const find = await audioIndex(env, dir).catch(() => null);
     const id = find && keys.map(k => k && find(audioId(k))).find(Boolean);
     if (!id) return null;
-    const res = await fetch(`${env.SITE}/data/audio/${dir}/${id}.mp3`, { cf: { cacheTtl: 86400, cacheEverything: true } });
+    const res = await fetch(`https://audio.hanabirn.xyz/${dir}/${id}.mp3`,   // the mp3s are in R2 since 2026-11-08
+        { cf: { cacheTtl: 86400, cacheEverything: true } });
     if (!res.ok) return null;
     const name = String(m.c.word).replace(/[\\/:*?"<>|\s]+/g, '_').slice(0, 40) || 'word';
     return { name: name + '.mp3', type: 'audio/mpeg', data: await res.arrayBuffer() };

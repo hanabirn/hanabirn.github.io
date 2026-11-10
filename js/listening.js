@@ -516,7 +516,7 @@ function listeningSkipRead() {
 /* one line: its recording, or the browser voice when it is missing */
 function listeningSay(lv, line, done) {
     if (typeof stopSpeech === 'function') stopSpeech();
-    const a = new Audio('data/audio/listening/' + lv.lang + '/' + line.a + '.mp3');
+    const a = new Audio(AUDIO_BASE + 'listening/' + lv.lang + '/' + line.a + '.mp3');   // AUDIO_BASE: js/speech.js
     a.playbackRate = listeningSlow() ? 0.8 : 1;
     let finished = false;
     const end = () => { if (!finished) { finished = true; if (done) done(); } };
