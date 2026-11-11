@@ -1,0 +1,787 @@
+{
+  "id": "en_toefl",
+  "lang": "en",
+  "level": "TOEFL",
+  "order": 11,
+  "note": "TOEFL iBT Reading in the 2026 format (gap fill 2026-11-11): Complete the Words (the second half of ten words in an academic paragraph, typed — the ending or the whole word counts), Read in Daily Life (a notice, an e-mail), Read an Academic Passage; 20 a round. Original texts. Drafted in tools/.mockups/us_rd.py. Edit this file, then run: python tools/build_reading.py",
+  "n_options": 4,
+  "sets": [
+    {
+      "id": "r1",
+      "items": [
+        {
+          "type": "en_open",
+          "mondai": 1,
+          "ask": "en_open",
+          "text": "Honeybees are among the most important pollinators in the world. As they trav(1)＿＿＿ from flower to flower collecting nectar, they car(2)＿＿＿ pollen that allows plants to prod(3)＿＿＿ seeds and fruit. Scientists estim(4)＿＿＿ that about one third of the food we eat dep(5)＿＿＿＿ on pollination by bees. In rec(6)＿＿＿ years, however, bee populations have decl(7)＿＿＿＿ in many coun(8)＿＿＿＿＿. Possible causes include disease, pesticides and the lo(9)＿＿＿ of wild habitats, and researchers are working to prot(10)＿＿＿ these insects.",
+          "tr": {
+            "zh": "蜜蜂是世界上最重要的授粉者之一。牠們從一朵花飛到另一朵採集花蜜時，攜帶花粉，讓植物能結種子和果實。科學家估計，我們吃的食物約三分之一依賴蜜蜂授粉。然而近年來，許多國家的蜜蜂數量下降。可能原因包括疾病、農藥和野生棲地的喪失，研究人員正努力保護這些昆蟲。"
+          },
+          "questions": [
+            {
+              "q": "(1) trav…",
+              "answers": [
+                "el",
+                "travel"
+              ],
+              "zh": "travel：移動。",
+              "en": "travel."
+            },
+            {
+              "q": "(2) car…",
+              "answers": [
+                "ry",
+                "carry"
+              ],
+              "zh": "carry：攜帶。",
+              "en": "carry."
+            },
+            {
+              "q": "(3) prod…",
+              "answers": [
+                "uce",
+                "produce"
+              ],
+              "zh": "produce：產生。",
+              "en": "produce."
+            },
+            {
+              "q": "(4) estim…",
+              "answers": [
+                "ate",
+                "estimate"
+              ],
+              "zh": "estimate：估計。",
+              "en": "estimate."
+            },
+            {
+              "q": "(5) dep…",
+              "answers": [
+                "ends",
+                "depends"
+              ],
+              "zh": "depends：依賴（第三人稱單數）。",
+              "en": "depends."
+            },
+            {
+              "q": "(6) rec…",
+              "answers": [
+                "ent",
+                "recent"
+              ],
+              "zh": "recent：最近的。",
+              "en": "recent."
+            },
+            {
+              "q": "(7) decl…",
+              "answers": [
+                "ined",
+                "declined"
+              ],
+              "zh": "declined：下降（現在完成式用過去分詞）。",
+              "en": "declined."
+            },
+            {
+              "q": "(8) coun…",
+              "answers": [
+                "tries",
+                "countries"
+              ],
+              "zh": "countries：國家（複數）。",
+              "en": "countries."
+            },
+            {
+              "q": "(9) lo…",
+              "answers": [
+                "ss",
+                "loss"
+              ],
+              "zh": "loss：喪失。",
+              "en": "loss."
+            },
+            {
+              "q": "(10) prot…",
+              "answers": [
+                "ect",
+                "protect"
+              ],
+              "zh": "protect：保護。",
+              "en": "protect."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "CAMPUS RECREATION CENTER\nNew hours starting September 5:\nMonday–Friday: 6:00 a.m. – 11:00 p.m.\nSaturday–Sunday: 8:00 a.m. – 8:00 p.m.\nThe swimming pool closes one hour before the center. Students must show a valid ID at the entrance. Towels are no longer provided; please bring your own.",
+          "tr": {
+            "zh": "校園休閒中心\n9 月 5 日起新開放時間：\n週一至週五：上午 6 點至晚上 11 點\n週六、週日：上午 8 點至晚上 8 點\n游泳池比中心提早一小時關閉。學生入場須出示有效學生證。不再提供毛巾，請自備。"
+          },
+          "questions": [
+            {
+              "q": "When does the pool close on Saturdays?",
+              "options": [
+                "At 10:00 p.m.",
+                "At 11:00 p.m.",
+                "At 7:00 p.m.",
+                "At 8:00 p.m."
+              ],
+              "answer": 2,
+              "zh": "週六中心 8 點關，游泳池提早一小時：7 點。",
+              "en": "One hour before 8 p.m."
+            },
+            {
+              "q": "What change is mentioned?",
+              "options": [
+                "Towels are no longer supplied.",
+                "Students no longer need an ID.",
+                "The pool is closed on Sundays.",
+                "The center is open later on weekends."
+              ],
+              "answer": 0,
+              "zh": "「不再提供毛巾」。",
+              "en": "No towels."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "From: Prof. Elena Ruiz\nTo: BIO 210 students\nSubject: Field trip on Friday\n\nHi all,\nOur field trip to Pine Lake is still on for Friday. The bus will leave from the front of the science building at 8:00 a.m. sharp, so please arrive ten minutes early. Wear boots, since the trail may be muddy after this week's rain. We'll collect water samples in the morning and analyze them in the lab next Tuesday. If you can't attend, e-mail me by Thursday so I can give you an alternative assignment.\n\nProf. Ruiz",
+          "tr": {
+            "zh": "寄件人：魯伊斯教授\n收件人：BIO 210 學生\n主旨：星期五的戶外教學\n\n大家好：\n星期五去松湖的戶外教學照常舉行。巴士早上 8 點整從理學大樓前出發，請提早十分鐘到。請穿靴子，這週下過雨，步道可能很泥濘。我們上午採水樣，下星期二在實驗室分析。如果不能參加，請在星期四前寄信給我，我會給你替代作業。\n\n魯伊斯教授"
+          },
+          "questions": [
+            {
+              "q": "Why should students wear boots?",
+              "options": [
+                "They will walk in the lake.",
+                "The lab requires them.",
+                "It will snow on Friday.",
+                "The path may be muddy."
+              ],
+              "answer": 3,
+              "zh": "「這週下過雨，步道可能很泥濘」。",
+              "en": "A muddy trail."
+            },
+            {
+              "q": "What will happen next Tuesday?",
+              "options": [
+                "The bus will be repaired.",
+                "The class will go to Pine Lake.",
+                "An exam will be given.",
+                "Students will analyze samples."
+              ],
+              "answer": 3,
+              "zh": "「下星期二在實驗室分析」。",
+              "en": "Lab analysis."
+            },
+            {
+              "q": "What should a student who cannot attend do?",
+              "options": [
+                "Ask a classmate for samples",
+                "Write a report on Friday",
+                "Take a later bus",
+                "Contact the professor by Thursday"
+              ],
+              "answer": 3,
+              "zh": "「請在星期四前寄信給我」。",
+              "en": "E-mail by Thursday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "The Invention of the Printing Press\nBefore the fifteenth century, books in Europe were copied by hand. A single book could take months to produce, so books were rare and expensive, and few people outside churches and universities could read. Around 1450, Johannes Gutenberg developed a printing press that used movable metal type. Individual letters could be arranged to form a page, inked and pressed onto paper, and then rearranged for the next page.\nThe effects were dramatic. Within fifty years, millions of books had been printed across Europe. As books became cheaper, more people learned to read, and new ideas in science and religion spread far faster than before. Some historians argue that the printing press made possible the scientific revolution of the following centuries, because scientists could share and check one another's results.\nGutenberg himself did not become rich. He borrowed heavily to build his workshop, and a dispute with his business partner cost him much of his equipment.",
+          "tr": {
+            "zh": "印刷機的發明\n十五世紀以前，歐洲的書是手抄的。一本書可能要花幾個月才能完成，所以書既稀少又昂貴，教會和大學以外的人很少識字。大約 1450 年，古騰堡發展出使用活字金屬字模的印刷機。一個個字母可以排成一頁，上墨後壓印到紙上，再重新排列印下一頁。\n影響十分巨大。五十年內，歐洲各地印了數百萬本書。書變便宜後，更多人學會識字，科學和宗教的新思想傳播得比以前快得多。有些歷史學家認為，印刷機促成了之後幾個世紀的科學革命，因為科學家能分享並檢驗彼此的成果。\n古騰堡本人並沒有致富。他為了建工坊借了大筆錢，和生意夥伴的糾紛又讓他失去許多設備。"
+          },
+          "questions": [
+            {
+              "q": "Why were books rare before the fifteenth century?",
+              "options": [
+                "Churches did not allow them.",
+                "They took a long time to copy.",
+                "Few languages were written.",
+                "Paper had not been invented."
+              ],
+              "answer": 1,
+              "zh": "「一本書可能要花幾個月」。",
+              "en": "Copying by hand was slow."
+            },
+            {
+              "q": "What was special about Gutenberg's press?",
+              "options": [
+                "Its letters could be rearranged.",
+                "It needed no ink.",
+                "It printed in color.",
+                "It was made of wood."
+              ],
+              "answer": 0,
+              "zh": "活字可以「重新排列」。",
+              "en": "Movable type."
+            },
+            {
+              "q": "The word \"dramatic\" in paragraph 2 is closest in meaning to",
+              "options": [
+                "temporary",
+                "very large",
+                "very sad",
+                "theatrical"
+              ],
+              "answer": 1,
+              "zh": "dramatic effects：巨大的影響。",
+              "en": "striking, very large."
+            },
+            {
+              "q": "Why does the author mention the scientific revolution?",
+              "options": [
+                "To show a long-term effect of printing",
+                "To criticize historians",
+                "To compare two inventions",
+                "To explain how Gutenberg built the press"
+              ],
+              "answer": 0,
+              "zh": "說明印刷機的長遠影響。",
+              "en": "A long-term effect."
+            },
+            {
+              "q": "What can be inferred about Gutenberg?",
+              "options": [
+                "He opened many universities.",
+                "He had financial problems.",
+                "He became a famous scientist.",
+                "He worked alone all his life."
+              ],
+              "answer": 1,
+              "zh": "借了大筆錢、失去設備：財務困難。",
+              "en": "Money trouble."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r2",
+      "items": [
+        {
+          "type": "en_open",
+          "mondai": 1,
+          "ask": "en_open",
+          "text": "Coral reefs cover less than one percent of the ocean floor, yet they sup(1)＿＿＿＿ about a quarter of all marine species. A reef is bu(2)＿＿＿ by tiny animals called coral polyps, which prod(3)＿＿＿ hard skeletons of calcium carbonate. Over thous(4)＿＿＿＿ of years, these skeletons form large struc(5)＿＿＿＿＿. Corals li(6)＿＿＿ in partnership with algae, which give them food and their bright col(7)＿＿＿. When the water becomes too wa(8)＿＿＿, the corals push out the algae and turn white, a process kno(9)＿＿＿ as bleaching. If the water does not cool, the corals may d(10)＿＿＿.",
+          "tr": {
+            "zh": "珊瑚礁覆蓋的海底不到百分之一，卻支撐了約四分之一的海洋物種。珊瑚礁是由叫做珊瑚蟲的小動物建造的，牠們會產生碳酸鈣的硬骨骼。經過數千年，這些骨骼形成巨大的結構。珊瑚和藻類共生，藻類提供食物和鮮豔的顏色。當海水太熱，珊瑚會把藻類排出而變白，這個過程稱為白化。如果海水沒有降溫，珊瑚可能會死亡。"
+          },
+          "questions": [
+            {
+              "q": "(1) sup…",
+              "answers": [
+                "port",
+                "support"
+              ],
+              "zh": "support：支撐。",
+              "en": "support."
+            },
+            {
+              "q": "(2) bu…",
+              "answers": [
+                "ilt",
+                "built"
+              ],
+              "zh": "built：建造（被動）。",
+              "en": "built."
+            },
+            {
+              "q": "(3) prod…",
+              "answers": [
+                "uce",
+                "produce"
+              ],
+              "zh": "produce：產生。",
+              "en": "produce."
+            },
+            {
+              "q": "(4) thous…",
+              "answers": [
+                "ands",
+                "thousands"
+              ],
+              "zh": "thousands：數千。",
+              "en": "thousands."
+            },
+            {
+              "q": "(5) struc…",
+              "answers": [
+                "tures",
+                "structures"
+              ],
+              "zh": "structures：結構（複數）。",
+              "en": "structures."
+            },
+            {
+              "q": "(6) li…",
+              "answers": [
+                "ve",
+                "live"
+              ],
+              "zh": "live：生活。",
+              "en": "live."
+            },
+            {
+              "q": "(7) col…",
+              "answers": [
+                "ors",
+                "colors"
+              ],
+              "zh": "colors：顏色（複數）。",
+              "en": "colors."
+            },
+            {
+              "q": "(8) wa…",
+              "answers": [
+                "rm",
+                "warm"
+              ],
+              "zh": "warm：溫暖。",
+              "en": "warm."
+            },
+            {
+              "q": "(9) kno…",
+              "answers": [
+                "wn",
+                "known"
+              ],
+              "zh": "known：被稱為（known as）。",
+              "en": "known."
+            },
+            {
+              "q": "(10) d…",
+              "answers": [
+                "ie",
+                "die"
+              ],
+              "zh": "die：死亡。",
+              "en": "die."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "LOST AND FOUND\nItems left in the library are kept at the circulation desk for two weeks. After that, unclaimed items are given to charity. Phones, laptops and wallets are sent to the campus police office the same day. To claim an item, you must describe it and show your student ID.",
+          "tr": {
+            "zh": "失物招領\n遺留在圖書館的物品會在借還書櫃台保管兩週。之後無人認領的物品會捐給慈善機構。手機、筆電和皮夾會在當天送到校警室。認領時必須描述物品並出示學生證。"
+          },
+          "questions": [
+            {
+              "q": "Where should a student go to find a lost laptop?",
+              "options": [
+                "The circulation desk",
+                "The campus police office",
+                "A charity shop",
+                "The student center"
+              ],
+              "answer": 1,
+              "zh": "筆電「當天送到校警室」。",
+              "en": "Campus police."
+            },
+            {
+              "q": "What happens to unclaimed items after two weeks?",
+              "options": [
+                "They are sent to the police.",
+                "They are sold.",
+                "They are thrown away.",
+                "They are donated."
+              ],
+              "answer": 3,
+              "zh": "「捐給慈善機構」。",
+              "en": "Given to charity."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "From: Housing Office\nTo: All residents of Maple Hall\nSubject: Fire alarm test\n\nDear residents,\nThe annual fire alarm test will take place on Wednesday, October 15, between 10:00 a.m. and noon. The alarm will sound several times. You do not need to leave the building during the test. However, if you hear the alarm at any other time, you must leave immediately by the nearest stairs. Students with hearing difficulties may request a flashing-light alarm by contacting this office.\n\nHousing Office",
+          "tr": {
+            "zh": "寄件人：宿舍組\n收件人：楓樹宿舍全體住宿生\n主旨：火災警報測試\n\n各位住宿生：\n年度火災警報測試將在 10 月 15 日星期三上午 10 點到中午舉行，警報會響好幾次。測試期間不需要離開大樓。但若在其他時間聽到警報，必須立刻走最近的樓梯離開。聽力有困難的同學可聯絡本組申請閃光警報器。\n\n宿舍組"
+          },
+          "questions": [
+            {
+              "q": "What is the purpose of the e-mail?",
+              "options": [
+                "To announce new rules for visitors",
+                "To ask students to move out",
+                "To inform residents about a test",
+                "To report a fire"
+              ],
+              "answer": 2,
+              "zh": "通知警報測試。",
+              "en": "A test notice."
+            },
+            {
+              "q": "What should residents do during the test?",
+              "options": [
+                "Open their windows",
+                "Stay in the building",
+                "Call the housing office",
+                "Use the stairs"
+              ],
+              "answer": 1,
+              "zh": "「測試期間不需要離開大樓」。",
+              "en": "They can stay."
+            },
+            {
+              "q": "What can students with hearing difficulties request?",
+              "options": [
+                "A different room",
+                "A test schedule",
+                "A ride to class",
+                "A special alarm"
+              ],
+              "answer": 3,
+              "zh": "「申請閃光警報器」。",
+              "en": "A flashing-light alarm."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "How Cities Shape Bird Songs\nBirds use songs to attract mates and defend territories, so it matters that other birds can hear them. In cities, however, songs must compete with traffic and construction noise, which is mostly low in pitch. Researchers studying great tits in several European cities found that urban birds sang at a higher pitch than birds of the same species in nearby forests.\nOne explanation is that higher notes are easier to hear above low-pitched noise. Some urban birds also sing louder, and others sing earlier in the morning, before traffic begins.\nThese changes may have costs. Female birds of some species prefer low-pitched songs, which may signal a larger, healthier male. A city male that sings higher may therefore be heard more easily but chosen less often. Scientists are still studying whether such changes are learned by young birds or are becoming part of their genes.",
+          "tr": {
+            "zh": "城市如何改變鳥鳴\n鳥用歌聲吸引配偶、保衛地盤，所以讓其他鳥聽得到很重要。但在城市裡，歌聲必須和交通、施工噪音競爭，而這些噪音大多是低音。研究人員觀察歐洲幾個城市的大山雀，發現城市裡的鳥比附近森林的同種鳥唱得更高。\n一種解釋是高音比較容易在低沉的噪音中被聽見。有些城市鳥也唱得更大聲，有些則在交通開始前、更早的清晨唱歌。\n這些改變可能有代價。有些鳥種的雌鳥偏好低音歌聲，因為那可能代表雄鳥較大、較健康。因此，唱得較高的城市雄鳥也許比較容易被聽到，卻比較少被選上。科學家仍在研究這些改變是幼鳥學來的，還是正成為基因的一部分。"
+          },
+          "questions": [
+            {
+              "q": "What is the passage mainly about?",
+              "options": [
+                "How birds build nests",
+                "How noise affects the way city birds sing",
+                "Why birds leave cities",
+                "Which birds live longest"
+              ],
+              "answer": 1,
+              "zh": "噪音如何改變城市鳥的歌聲。",
+              "en": "Noise and bird song."
+            },
+            {
+              "q": "What did researchers find about urban great tits?",
+              "options": [
+                "They sang less often.",
+                "They sang at a higher pitch.",
+                "They stopped singing at night.",
+                "They were larger than forest birds."
+              ],
+              "answer": 1,
+              "zh": "「唱得更高」。",
+              "en": "Higher pitch."
+            },
+            {
+              "q": "Why do some birds sing earlier in the morning?",
+              "options": [
+                "To avoid traffic noise",
+                "To follow other birds",
+                "To keep warm",
+                "To find food"
+              ],
+              "answer": 0,
+              "zh": "「在交通開始前」唱。",
+              "en": "Before the traffic."
+            },
+            {
+              "q": "The word \"signal\" in paragraph 3 is closest in meaning to",
+              "options": [
+                "indicate",
+                "hide",
+                "repeat",
+                "prevent"
+              ],
+              "answer": 0,
+              "zh": "signal：表示、暗示 = indicate。",
+              "en": "indicate."
+            },
+            {
+              "q": "What does the author say is still unknown?",
+              "options": [
+                "Whether the changes are learned or genetic",
+                "Where great tits live",
+                "Why birds sing at all",
+                "How loud traffic is"
+              ],
+              "answer": 0,
+              "zh": "「仍在研究是學來的還是基因」。",
+              "en": "Learned or genetic."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "r3",
+      "items": [
+        {
+          "type": "en_open",
+          "mondai": 1,
+          "ask": "en_open",
+          "text": "Sleep is not simply a period of rest. While we sleep, the brain rem(1)＿＿＿＿ very active. It sor(2)＿＿＿ the information we rece(3)＿＿＿＿ during the day and stor(4)＿＿＿ important memories. Sleep also helps the body rep(5)＿＿＿ muscles and fi(6)＿＿＿ infections. Most adults ne(7)＿＿＿ seven to nine hours of sleep each night, but many get far le(8)＿＿＿. Studies show that people who sleep too little make more mist(9)＿＿＿＿ and have tro(10)＿＿＿＿ concentrating.",
+          "tr": {
+            "zh": "睡眠不只是休息的時間。我們睡覺時，大腦仍非常活躍。它整理白天接收到的資訊，並儲存重要的記憶。睡眠也幫助身體修復肌肉、對抗感染。大多數成人每晚需要七到九小時的睡眠，但很多人睡得少很多。研究顯示，睡太少的人犯更多錯，而且難以專心。"
+          },
+          "questions": [
+            {
+              "q": "(1) rem…",
+              "answers": [
+                "ains",
+                "remains"
+              ],
+              "zh": "remains：保持。",
+              "en": "remains."
+            },
+            {
+              "q": "(2) sor…",
+              "answers": [
+                "ts",
+                "sorts"
+              ],
+              "zh": "sorts：整理。",
+              "en": "sorts."
+            },
+            {
+              "q": "(3) rece…",
+              "answers": [
+                "ived",
+                "received"
+              ],
+              "zh": "received：接收（過去式）。",
+              "en": "received."
+            },
+            {
+              "q": "(4) stor…",
+              "answers": [
+                "es",
+                "stores"
+              ],
+              "zh": "stores：儲存。",
+              "en": "stores."
+            },
+            {
+              "q": "(5) rep…",
+              "answers": [
+                "air",
+                "repair"
+              ],
+              "zh": "repair：修復。",
+              "en": "repair."
+            },
+            {
+              "q": "(6) fi…",
+              "answers": [
+                "ght",
+                "fight"
+              ],
+              "zh": "fight：對抗。",
+              "en": "fight."
+            },
+            {
+              "q": "(7) ne…",
+              "answers": [
+                "ed",
+                "need"
+              ],
+              "zh": "need：需要。",
+              "en": "need."
+            },
+            {
+              "q": "(8) le…",
+              "answers": [
+                "ss",
+                "less"
+              ],
+              "zh": "less：較少。",
+              "en": "less."
+            },
+            {
+              "q": "(9) mist…",
+              "answers": [
+                "akes",
+                "mistakes"
+              ],
+              "zh": "mistakes：錯誤（複數）。",
+              "en": "mistakes."
+            },
+            {
+              "q": "(10) tro…",
+              "answers": [
+                "uble",
+                "trouble"
+              ],
+              "zh": "trouble：困難（have trouble -ing）。",
+              "en": "trouble."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "STUDY ROOM RESERVATIONS\nGroup study rooms on the third floor can be reserved online for up to two hours a day. Groups must have at least three students. If your group does not arrive within fifteen minutes of the start time, the room will be released to others. Food is not allowed, but covered drinks are fine.",
+          "tr": {
+            "zh": "自習室預約\n三樓的小組自習室可在線上預約，每天最多兩小時。小組至少要有三位學生。若在開始時間後十五分鐘內沒到，房間會釋出給其他人。不可帶食物，但有蓋的飲料可以。"
+          },
+          "questions": [
+            {
+              "q": "What is required to reserve a study room?",
+              "options": [
+                "A payment",
+                "A group of three or more students",
+                "A visit to the front desk",
+                "A professor's permission"
+              ],
+              "answer": 1,
+              "zh": "「小組至少要有三位學生」。",
+              "en": "At least three students."
+            },
+            {
+              "q": "What happens if a group is twenty minutes late?",
+              "options": [
+                "It must pay a fee.",
+                "It may lose the room.",
+                "It gets an extra hour.",
+                "It must reserve again online."
+              ],
+              "answer": 1,
+              "zh": "超過十五分鐘沒到，房間會釋出。",
+              "en": "The room is released."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "From: Career Services\nTo: Graduating seniors\nSubject: Résumé workshop\n\nHello,\nCareer Services is holding a résumé workshop on Thursday at 4:00 p.m. in Room 110 of the student union. An adviser will explain what employers look for and give tips on writing a cover letter. Please bring a printed copy of your current résumé; we will review it with you in small groups. Space is limited to thirty students, so sign up on our website.\n\nCareer Services",
+          "tr": {
+            "zh": "寄件人：職涯中心\n收件人：應屆畢業生\n主旨：履歷工作坊\n\n大家好：\n職涯中心星期四下午 4 點在學生會 110 室舉辦履歷工作坊。輔導員會說明雇主重視什麼，並提供寫求職信的訣竅。請帶一份印出來的現有履歷，我們會分小組和你一起檢視。名額限三十人，請上網報名。\n\n職涯中心"
+          },
+          "questions": [
+            {
+              "q": "Who is the e-mail intended for?",
+              "options": [
+                "University employers",
+                "Career advisers",
+                "Students who are about to graduate",
+                "New first-year students"
+              ],
+              "answer": 2,
+              "zh": "收件人是「應屆畢業生」。",
+              "en": "Graduating seniors."
+            },
+            {
+              "q": "What should students bring?",
+              "options": [
+                "A laptop",
+                "A printed résumé",
+                "A letter of recommendation",
+                "A cover letter"
+              ],
+              "answer": 1,
+              "zh": "「帶一份印出來的現有履歷」。",
+              "en": "A printed résumé."
+            },
+            {
+              "q": "Why should students sign up?",
+              "options": [
+                "The adviser needs their names.",
+                "The room may change.",
+                "The number of places is limited.",
+                "The workshop costs money."
+              ],
+              "answer": 2,
+              "zh": "「名額限三十人」。",
+              "en": "Limited space."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "The Domestication of Wheat\nAbout 10,000 years ago, people in the region known as the Fertile Crescent, in what is now the Middle East, began to grow wheat instead of only gathering it from the wild. This change was one of the most important steps in human history, because farming allowed people to stay in one place and build permanent villages.\nWild wheat has a problem for farmers: when its seeds are ripe, the head of the plant breaks apart and the seeds fall to the ground. This helps the plant spread, but it makes harvesting difficult. Occasionally, however, a plant had a mutation that kept its seeds attached. When early farmers harvested, they naturally collected more seeds from these plants and planted them the next year.\nOver many generations, this unintentional selection produced wheat that kept its seeds until it was cut. Archaeologists can recognize domesticated wheat because the remains of its seed heads show a rough break, made by people threshing the grain, rather than the smooth break of wild wheat.",
+          "tr": {
+            "zh": "小麥的馴化\n大約一萬年前，在今日中東一帶稱為「肥沃月彎」的地區，人們開始種植小麥，而不只是從野外採集。這個改變是人類史上最重要的一步之一，因為農耕讓人們能定居一地，建立永久的村落。\n野生小麥對農夫來說有個問題：種子成熟時，麥穗會散開，種子掉到地上。這有助於植物散播，卻讓收割很困難。不過偶爾會有植株發生突變，讓種子留在穗上。早期農夫收割時，自然會從這些植株收集到較多種子，隔年再種下。\n經過許多世代，這種無意的選擇產生了收割前種子不會掉落的小麥。考古學家能辨認出馴化的小麥，因為其麥穗殘骸是人們脫粒造成的粗糙斷面，而不是野生小麥的平滑斷面。"
+          },
+          "questions": [
+            {
+              "q": "Why was growing wheat an important step in history?",
+              "options": [
+                "It replaced the need for water.",
+                "It ended trade between regions.",
+                "It made people travel more.",
+                "It let people live in permanent villages."
+              ],
+              "answer": 3,
+              "zh": "「農耕讓人們能定居一地」。",
+              "en": "Settled villages."
+            },
+            {
+              "q": "What problem did wild wheat cause for farmers?",
+              "options": [
+                "It grew too slowly.",
+                "Its seeds fell off when ripe.",
+                "Its seeds were poisonous.",
+                "It needed too much water."
+              ],
+              "answer": 1,
+              "zh": "「種子成熟時會掉到地上」。",
+              "en": "Seeds fall off."
+            },
+            {
+              "q": "The word \"unintentional\" in paragraph 3 is closest in meaning to",
+              "options": [
+                "scientific",
+                "not planned",
+                "very careful",
+                "quick"
+              ],
+              "answer": 1,
+              "zh": "unintentional：無意的 = not planned。",
+              "en": "not planned."
+            },
+            {
+              "q": "According to the passage, how do archaeologists identify domesticated wheat?",
+              "options": [
+                "By the rough break on its seed heads",
+                "By the color of its seeds",
+                "By the tools found near it",
+                "By its height"
+              ],
+              "answer": 0,
+              "zh": "「粗糙斷面」。",
+              "en": "The rough break."
+            },
+            {
+              "q": "What can be inferred about early farmers?",
+              "options": [
+                "They understood genetics well.",
+                "They preferred wild wheat.",
+                "They lived only in cities.",
+                "They did not deliberately breed wheat."
+              ],
+              "answer": 3,
+              "zh": "選擇是「無意的」：他們不是刻意育種。",
+              "en": "The selection was unintentional."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
