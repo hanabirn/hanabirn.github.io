@@ -366,7 +366,7 @@ const HSK_SHEETS = {
 const BUNDLED_SETS = {
     en_jh: 'en', en_sh: 'en', en_toeic: 'en', en_toefl: 'en',
     jlpt_n5: 'ja', jlpt_n4: 'ja', jlpt_n3: 'ja', jlpt_n2: 'ja', jlpt_n1: 'ja',
-    topik_1: 'ko', topik_2: 'ko', topik_3: 'ko', topik_4: 'ko',
+    topik_1: 'ko', topik_2: 'ko', topik_3: 'ko', topik_4: 'ko', topik_5: 'ko', topik_6: 'ko',
     hsk_1: 'zh', hsk_2: 'zh', hsk_3: 'zh', hsk_4: 'zh', hsk_5: 'zh', hsk_6: 'zh', hsk_7: 'zh'
 };
 
@@ -444,7 +444,7 @@ function wordSetName(id) {
 const WORD_SET_FAMILIES = {
     en: ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'].concat(topicSetIds('en')),
     jp: ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'].concat(topicSetIds('ja')),
-    kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4'].concat(topicSetIds('ko')),
+    kr: ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'topik_5', 'topik_6'].concat(topicSetIds('ko')),
     zh: ['hsk_1', 'hsk_2', 'hsk_3', 'hsk_4', 'hsk_5', 'hsk_6', 'hsk_7'].concat(topicSetIds('zh')),
     fr: cefrSetIds('fr').concat(topicSetIds('fr')),
     ru: cefrSetIds('ru').concat(topicSetIds('ru')),
@@ -2065,7 +2065,7 @@ const QUIZ_LANG_FLAGS = {
     ru_a1: '📖', ru_a2: '📖', ru_b1: '📖', ru_b2: '📖', ru_c1: '📖',
     en_jh: '📘', en_sh: '📘', en_toeic: '📘', en_toefl: '📘',
     jlpt_n5: '📖', jlpt_n4: '📖', jlpt_n3: '📖', jlpt_n2: '📖', jlpt_n1: '📖',
-    topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖',
+    topik_1: '📖', topik_2: '📖', topik_3: '📖', topik_4: '📖', topik_5: '📖', topik_6: '📖',
     hsk_1: '📖', hsk_2: '📖', hsk_3: '📖', hsk_4: '📖', hsk_5: '📖', hsk_6: '📖', hsk_7: '📖'
 };
 Object.keys(BUNDLED_SETS).forEach(id => { const tp = topicOf(id); if (tp) QUIZ_LANG_FLAGS[id] = TOPIC_EMOJI[tp.topic]; });

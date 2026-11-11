@@ -46,7 +46,7 @@ const LISTENING_Q_PAGED = 4;          // an item with this many questions shows 
 const LISTENING_REPLAY_GAP_MS = 2500;  // a mock exam that plays an item twice (TOPIK): the pause between
 const LISTENING_TTS = { ja: 'ja-JP', ko: 'ko-KR', en: 'en-US', zh: 'zh-TW', fr: 'fr-FR', ru: 'ru-RU', de: 'de-DE', es: 'es-ES' };
 const LISTENING_WORD_SET = { ja_n5: 'jlpt_n5', ja_n4: 'jlpt_n4', ja_n3: 'jlpt_n3', ja_n2: 'jlpt_n2', ja_n1: 'jlpt_n1',
-    ko_1: 'topik_1', ko_2: 'topik_2', ko_3: 'topik_3', ko_4: 'topik_4', ko_5: 'topik_4', ko_6: 'topik_4' };
+    ko_1: 'topik_1', ko_2: 'topik_2', ko_3: 'topik_3', ko_4: 'topik_4', ko_5: 'topik_5', ko_6: 'topik_6' };
 const LISTENING_DEFAULT_TYPES = ['task', 'point', 'utterance', 'response'];
 
 let listeningIndex = null;

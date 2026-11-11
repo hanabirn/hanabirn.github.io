@@ -621,6 +621,106 @@ def build_sheets(args):
         write_set(set_id, "ko", words, "Hanabi 整理的 TOPIK 單字表（依詞頻排序）", "© Hanabi")
 
 
+# ------------------------------------------------------------------ TOPIK 5–6 (gap fill 2026-11-11)
+# The owner's sheets stop at TOPIK 4. The advanced words come from the National Institute of the Korean
+# Language's 「한국어 교육 어휘 내용 개발(4단계)」 (2015; 초급 / 중급 / 고급, its "어휘 정보" workbook, a public
+# download from korean.go.kr): the 고급 entries that aren't in topik_1…4, affixes left out, an entry's senses
+# merged (their 길잡이말 example phrases guide the meaning). Most frequent half (wordfreq, ko_freq) → topik_5,
+# the rest → topik_6. Chinese (Taiwan) and English meanings by Gemini on the free key (gemini_ko_adv, cached
+# per word in tools/.vocab-cache/gemini_ko_adv.json); fix a meaning in KO_FIX like the sheets' words.
+NIKL4_XLSX = ("https://www.korean.go.kr/common/download.do?file_path=reportData&c_file_name="
+              "d893a36e-5103-4ba1-85ba-a516131440a8_0.xlsx&o_file_name=nikl4.xlsx")
+
+
+def ko_adv_items(offline):
+    path = os.path.join(CACHE, "ko_public", "nikl4.xlsx")
+    if not os.path.exists(path):
+        if offline:
+            raise SystemExit("no cached nikl4.xlsx")
+        os.makedirs(os.path.dirname(path), exist_ok=True)
+        urllib.request.urlretrieve(NIKL4_XLSX, path)
+    import openpyxl
+    rows = list(openpyxl.load_workbook(path, read_only=True).worksheets[0].iter_rows(values_only=True))[2:]
+    have = set()
+    for i in range(1, 5):
+        with open(os.path.join(OUT, f"topik_{i}.json"), encoding="utf-8") as f:
+            have |= {w[0] for w in json.load(f)["words"]}
+    items = {}
+    for r in rows:
+        if r[0] != "고급" or not r[1]:
+            continue
+        word = re.sub(r"\d+$", "", re.split(r"[/∙]", str(r[1]).strip())[0]).strip()
+        if not word or word.startswith("-") or word.endswith("-") or word in have or " " in word:
+            continue
+        it = items.setdefault(word, {"w": word, "pos": re.split(r"[/∙]", str(r[2] or "").strip())[0].strip(), "eg": []})
+        eg = str(r[3] or "").strip()
+        if eg and eg not in it["eg"] and len(it["eg"]) < 3:
+            it["eg"].append(eg)
+    return list(items.values())
+
+
+def gemini_ko_adv(items):
+    """{word: (zh, en)} for the advanced Korean words, asking only for uncached ones."""
+    path = os.path.join(CACHE, "gemini_ko_adv.json")
+    cache = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {}
+    todo = [it for it in items if it["w"] not in cache]
+    for start in range(0, len(todo), 250):
+        batch = todo[start:start + 250]
+        ask = [{"id": i, "word": it["w"], "pos": it["pos"], "examples": it["eg"]} for i, it in enumerate(batch)]
+        prompt = ("You are writing a Korean vocabulary list (TOPIK 5–6, advanced) for learners in Taiwan.\n"
+                  "For each item give its meaning in Traditional Chinese as used in Taiwan (台灣用語) and in English. "
+                  "The example phrases show the sense(s) meant; give those senses, at most 2.\n"
+                  "zh: at most 12 characters, senses separated by \"；\"; no pinyin, labels, explanations or quotation marks; "
+                  "a verb as a Chinese verb, an adjective as an adjective (…的 only when needed). "
+                  "Sino-Korean words: the modern Taiwan word for the meaning, not the hanja copied when Taiwan says it differently.\n"
+                  "en: short dictionary glosses, at most 40 characters, senses separated by \"/\".\n"
+                  "Answer with a JSON array of {\"id\", \"zh\", \"en\"}, one per item, same ids.\nItems:\n"
+                  + json.dumps(ask, ensure_ascii=False))
+        got = {}
+        for model in GEMINI_MODELS:
+            for attempt in range(3):
+                try:
+                    answer = json.loads(gemini_call(model, prompt, ("zh", "en")))
+                    got = {int(a["id"]): (str(a["zh"]).strip(), str(a["en"]).strip()) for a in answer
+                           if str(a.get("zh", "")).strip() and str(a.get("en", "")).strip()}
+                except (urllib.error.URLError, OSError, ValueError, KeyError, TypeError) as e:
+                    print(f"  gemini {model}: {getattr(e, 'code', '')} {str(e)[:100]}", flush=True)
+                    time.sleep(65 if getattr(e, "code", 0) == 429 else 5)
+                    continue
+                if len(got) >= len(batch) * 0.95:
+                    break
+            if len(got) >= len(batch) * 0.95:
+                break
+        for i, it in enumerate(batch):
+            if i in got:
+                cache[it["w"]] = got[i]
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(cache, f, ensure_ascii=False, indent=0)
+        print(f"  gemini ko_adv: {min(start + 250, len(todo))}/{len(todo)} asked, {len(got)} answered", flush=True)
+        if len(got) < len(batch) * 0.95:
+            raise SystemExit("Gemini stopped answering (quota?) — run again later; answers so far are cached")
+        time.sleep(8)
+    return cache
+
+
+def build_ko_adv(args):
+    items = ko_adv_items(args.offline)
+    if args.items:
+        from collections import Counter
+        print(len(items), Counter(it["pos"] for it in items).most_common(8))
+        return
+    mean = gemini_ko_adv(items)
+    words = [[it["w"], "", KO_FIX.get(it["w"], mean[it["w"]][0]), re.sub(r"\s*/\s*", "/", mean[it["w"]][1])]
+             for it in items if it["w"] in mean]
+    words = freq_sorted(words, ko_freq)
+    # one-syllable entries (의 義, 고 故) match particles and endings in running text: last, in topik_6
+    words = [w for w in words if len(w[0]) > 1] + [w for w in words if len(w[0]) == 1]
+    half = (len(words) + 1) // 2
+    src = "國立國語院《한국어 교육 어휘 내용 개발(4단계)》（2015）高級詞彙，TOPIK 1–4 以外的詞（依詞頻排序）"
+    write_set("topik_5", "ko", words[:half], src, "國立國語院公開資料")
+    write_set("topik_6", "ko", words[half:], src, "國立國語院公開資料")
+
+
 # ------------------------------------------------------------------ HSK 3.0
 RARE_SENSE = re.compile(r"^(surname|variant of|old variant|archaic variant|ancient variant|"
                         r"japanese variant|erhua variant|abbr\.|abbr for|see |used in |also written|"
@@ -839,11 +939,11 @@ def gemini_key():
     return key
 
 
-def gemini_call(model, prompt):
+def gemini_call(model, prompt, fields=("zh",)):
     # a schema keeps the answer to exactly one JSON array (no trailing text)
     config = {"responseMimeType": "application/json", "temperature": 0.2,
-              "responseSchema": {"type": "ARRAY", "items": {"type": "OBJECT", "required": ["id", "zh"],
-                                 "properties": {"id": {"type": "INTEGER"}, "zh": {"type": "STRING"}}}}}
+              "responseSchema": {"type": "ARRAY", "items": {"type": "OBJECT", "required": ["id", *fields],
+                                 "properties": {"id": {"type": "INTEGER"}, **{f: {"type": "STRING"} for f in fields}}}}}
     if "lite" not in model:
         config["thinkingConfig"] = {"thinkingBudget": 0}   # answers in seconds, not minutes (lite rejects it)
     body = json.dumps({"contents": [{"parts": [{"text": prompt}]}], "generationConfig": config}).encode()
@@ -1470,7 +1570,7 @@ def build_german(args):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
-    ap.add_argument("--only", choices=["en", "sheets", "hsk", "topics", "fr", "ru", "es", "de"])
+    ap.add_argument("--only", choices=["en", "sheets", "ko56", "hsk", "topics", "fr", "ru", "es", "de"])
     ap.add_argument("--items", action="store_true", help="with --only es / de: list the kept words and stop (no Gemini)")
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
@@ -1478,6 +1578,8 @@ def main():
         print("English"); build_english(args)
     if args.only in (None, "sheets"):
         print("JLPT / TOPIK"); build_sheets(args)
+    if args.only in (None, "sheets", "ko56"):
+        print("TOPIK 5–6 (NIKL)"); build_ko_adv(args)
     if args.only in (None, "hsk"):
         print("HSK 3.0"); build_hsk(args)
     if args.only in (None, "topics"):
