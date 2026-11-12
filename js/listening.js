@@ -157,6 +157,9 @@ async function renderListening() {
     document.body.classList.toggle('listening-wide', listeningView === 'list' || listeningView === 'quiz');
     if (typeof railPlace === 'function') railPlace();
     listeningFitTx();
+    // a picture not yet loaded has no height, so fit again once it arrives (a TOEIC photo on a first
+    // visit pushed 上一題 / 下一題 to 993px until the window was resized, 2026-11-12)
+    box.querySelectorAll('img').forEach(img => { if (!img.complete) img.addEventListener('load', listeningFitTx, { once: true }); });
 }
 
 function listeningGo(view) {

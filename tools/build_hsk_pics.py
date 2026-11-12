@@ -39,15 +39,19 @@ API = 'https://generativelanguage.googleapis.com/v1beta/'
 def pictures():
     """[(id, page, where, spec)] of every HSK picture described, each id once"""
     out, seen = [], set()
-    for f in sorted((ROOT / 'tools' / 'reading').glob('zh_hsk*.json')):
+    # the Taiwan edition (zh_tw*, 2026-11-12) gets "style": "tw" like in the builds
+    tw = lambda f, pic: dict(pic, style='tw') if f.stem.startswith('zh_tw') else pic
+    for f in sorted((ROOT / 'tools' / 'reading').glob('zh_*.json')):
         for st in json.loads(f.read_text(encoding='utf-8')).get('sets', []):
             for k, it in enumerate(st.get('items', [])):
                 pic = it.get('pic') or {}
                 if it.get('type') == 'zh_pic' and 'panels' in pic:
+                    pic = tw(f, pic)
                     out.append((hsk_pic_id(pic), 'reading', f'{f.stem}/{st["id"]} #{k + 1}', pic))
-    for f in sorted((ROOT / 'tools' / 'listening').glob('zh_hsk*.json')):
+    for f in sorted((ROOT / 'tools' / 'listening').glob('zh_*.json')):
         for st in json.loads(f.read_text(encoding='utf-8')).get('sets', []):
             for name, pic in (st.get('pics') or {}).items():
+                pic = tw(f, pic)
                 out.append((hsk_pic_id(pic), 'listening', f'{f.stem}/{st["id"]} {name}', pic))
     # Cambridge English Part 1 (en_pic3) pictures, British look (2026-11-08)
     for f in sorted((ROOT / 'tools' / 'listening').glob('en_*.json')):

@@ -533,6 +533,11 @@ HSK_PIC_STYLE = ('Black-and-white line illustration in the style of a Chinese la
 EN_PIC_STYLE = ('Black-and-white line illustration in the style of a Cambridge English exam booklet: '
                 'clean even ink outlines, light gray flat shading only, simple friendly people of everyday modern Britain, '
                 'plain white background. Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
+# Taiwan-edition pictures (zh_tw*, 2026-11-12): the same layout with everyday Taiwan — "style": "tw", added by
+# the builds and build_hsk_pics.py for a file whose "edition" is "tw" (not written in the source)
+TW_PIC_STYLE = ('Black-and-white line illustration in the style of a Chinese language proficiency test booklet (TOCFL / HSK): '
+                'clean even ink outlines, light gray flat shading only, simple friendly people of everyday modern Taiwan, '
+                'plain white background. Absolutely no text, no letters, no numbers, no captions, no speech bubbles anywhere in the image.')
 HSK_PIC_DIR = ROOT / 'data' / 'reading' / 'img' / 'zh'
 
 
@@ -545,7 +550,7 @@ def hsk_pic_prompt(pic):
     grid = (f'A {cols}x{rows} grid of {cols * rows} equal panels' if rows > 1 else f'{cols} equal panels side by side in one row')
     return (grid + ' separated by thin black lines, with a thin black frame around each panel. '
             + ' '.join(f'{w}: {p}.' for w, p in zip(where, pic['panels'])) + ' '
-            + (EN_PIC_STYLE if pic.get('style') == 'en' else HSK_PIC_STYLE),
+            + (EN_PIC_STYLE if pic.get('style') == 'en' else TW_PIC_STYLE if pic.get('style') == 'tw' else HSK_PIC_STYLE),
             {(3, 3): '1:1', (3, 2): '3:2', (3, 1): '21:9', (2, 2): '1:1', (2, 1): '16:9'}.get((cols, rows), '1:1'))
 
 
@@ -708,6 +713,8 @@ def build_sets(data, name, problems):
                     item[key] = it[key]
             if typ == 'zh_pic' and it.get('pic'):
                 pic = it['pic']
+                if ZH_EDITION['now'] == 'tw' and 'panels' in pic:
+                    pic = dict(pic, style='tw')        # everyday Taiwan
                 n_panels = pic.get('cols', 0) * pic.get('rows', 0)
                 if 'panels' in pic and (len(pic['panels']) != n_panels or len(pic.get('cap', [])) != n_panels):
                     problems.append(f'{iw}: a picture of {n_panels} panels needs {n_panels} "panels" and "cap"')

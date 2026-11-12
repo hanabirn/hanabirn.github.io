@@ -340,6 +340,8 @@ def build(src, problems, jobs):
                 else:
                     if typ == 'en_pic3':
                         spec = dict(spec, style='en')      # British look, files in img/en
+                    elif ZH_EDITION['now'] == 'tw':
+                        spec = dict(spec, style='tw')      # everyday Taiwan
                     zpic = hsk_pic(spec, ref.get('row') if typ in ('zh_pic3', 'en_pic3') else None, problems, where, lang)
                     if typ in ('zh_pic3', 'en_pic3') and not (zpic and 0 <= ref.get('row', -1) < spec['rows'] and spec['cols'] == 3):
                         problems.append(f'{where}: zh_pic3 takes a row of a picture 3 panels wide')

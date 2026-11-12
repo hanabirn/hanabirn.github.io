@@ -131,6 +131,7 @@ def gemini_ja_text(sent):
     if not any(seg[0] in GEMINI_JA_KANA and seg[1] for seg in sent.get('t', [])):
         return sent['plain']
     return ''.join(seg[1] if seg[0] in GEMINI_JA_KANA and seg[1] else seg[0] for seg in sent['t'])
+GEMINI_TIER = None     # --gemini-tier N: only that tier (1 = the 文法 examples), e.g. new grammar levels alone
 REGEMINI = ''          # --regemini: files made by this model (index.json "gm") count as not made
 GEMINI_SPENT = set()   # models whose daily quota ran out during this run
 # Paid Gemini clips that keep failing (owner, 2026-11-01): a new line or a queued re-record that
@@ -776,8 +777,8 @@ def run_gemini(lang, files, aliases, top, limit):
     # words), so each day leaves whole passages done rather than scattered lines
     seq = {fid: i for i, fid in enumerate(files)}
     todo = sorted((tiers.get(fid, 2), GEMINI_RANK.get((lang, fid), 0), seq[fid], fid) for fid in files
-                  if fid not in made and (tiers.get(fid, 2) <= top
-                                          or (lang != 'ja' and not (d / f'{fid}.mp3').exists())))
+                  if fid not in made and (GEMINI_TIER is None or tiers.get(fid, 2) == GEMINI_TIER)
+                  and (tiers.get(fid, 2) <= top or (lang != 'ja' and not (d / f'{fid}.mp3').exists())))
     todo = [(t, fid) for t, _, _, fid in todo]
     stopped = [fid for _, fid in todo if gave_up(f'{lang}|{fid}')]
     if stopped:                            # failed on FAIL_DAYS days: no longer tried (see FAIL_FILE)
@@ -907,6 +908,7 @@ def main():
     ap.add_argument('--workers', type=int, default=WORKERS, help='requests in parallel')
     ap.add_argument('--rpm', type=int, default=None, help='requests per minute')
     ap.add_argument('--gemini', action='store_true', help='(re-)render Chinese with Gemini TTS (zh-TW / zh-CN), and the Japanese 閱讀 levels in GEMINI_JA_READING')
+    ap.add_argument('--gemini-tier', type=int, help='with --gemini: only that tier (0 閱讀, 1 文法, 2 the rest)')
     ap.add_argument('--gemini-all', action='store_true', help='with --gemini: also the words, alphabet and samples')
     ap.add_argument('--fix-clicks', action='store_true',
                     help='cut the end click from the Gemini files already made (no requests)')
@@ -917,8 +919,9 @@ def main():
                     help='with --only: re-render every file with the current voice (into tools/.audio-redo/ '
                          'first; the site keeps the old files until all are made, then they are replaced)')
     args = ap.parse_args()
-    global REGEMINI
+    global REGEMINI, GEMINI_TIER
     REGEMINI = args.regemini or ''
+    GEMINI_TIER = args.gemini_tier
     if args.redo and (not args.only or args.only.startswith('zh')):
         sys.exit('--redo needs --only <lang>, and not zh-TW / zh-CN (their Gemini files would be lost)')
     langs = [args.only] if args.only else list(LANGS)
