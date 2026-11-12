@@ -45,13 +45,13 @@ TOPICS = {
 }
 LEVEL_SETS = {          # easiest first, as on the 單字 page's 檢定等級 tab
     'ja': ['jlpt_n5', 'jlpt_n4', 'jlpt_n3', 'jlpt_n2', 'jlpt_n1'],
-    'ko': ['topik_1', 'topik_2', 'topik_3', 'topik_4'],
+    'ko': ['topik_1', 'topik_2', 'topik_3', 'topik_4', 'topik_5', 'topik_6'],
     'zh': [f'hsk_{n}' for n in range(1, 8)],
     'en': ['en_jh', 'en_sh', 'en_toeic', 'en_toefl'],
     **{l: [f'{l}_{c}' for c in ('a1', 'a2', 'b1', 'b2', 'c1')] for l in ('fr', 'ru', 'es', 'de')},
 }
 LEVEL_NAMES = {'jlpt_n5': 'N5', 'jlpt_n4': 'N4', 'jlpt_n3': 'N3', 'jlpt_n2': 'N2', 'jlpt_n1': 'N1',
-               **{f'topik_{n}': f'TOPIK {n}' for n in range(1, 5)},
+               **{f'topik_{n}': f'TOPIK {n}' for n in range(1, 7)},
                **{f'hsk_{n}': f'HSK {n}' for n in range(1, 7)}, 'hsk_7': 'HSK 7–9',
                'en_jh': '國中', 'en_sh': '高中', 'en_toeic': '多益', 'en_toefl': '托福',
                **{f'{l}_{c}': c.upper() for l in ('fr', 'ru', 'es', 'de') for c in ('a1', 'a2', 'b1', 'b2', 'c1')}}
