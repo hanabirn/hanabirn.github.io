@@ -2786,6 +2786,937 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht auf dem Anrufbeantworter.",
+              "zh": "你會聽到一則答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Guten Tag, Herr Lehmann, hier ist die Praxis Dr. Albers. Leider muss Ihr Termin am Mittwoch ausfallen, die Ärztin ist krank. Wir können Ihnen Freitag um 8 Uhr 30 anbieten. Bitte rufen Sie uns zurück und bringen Sie Ihre Versichertenkarte mit.",
+              "zh": "萊曼先生您好，這裡是阿爾伯斯醫師診所。很抱歉您星期三的預約要取消，醫生生病了。我們可以安排星期五 8:30。請回電，並帶健保卡。",
+              "en": "Hello Mr Lehmann, this is Dr Albers' practice. Unfortunately your appointment on Wednesday has to be cancelled; the doctor is ill. We can offer you Friday at 8.30. Please call us back and bring your insurance card."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Der Termin am Mittwoch findet statt.",
+                "zh": "星期三的預約照常。",
+                "en": "Wednesday's appointment takes place."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "取消了，醫生生病。",
+                "en": "Cancelled: the doctor's ill."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was soll Herr Lehmann mitbringen?",
+                "zh": "萊曼先生要帶什麼？",
+                "en": "What should Mr Lehmann bring?"
+              },
+              "options": [
+                {
+                  "t": "eine Überweisung"
+                },
+                {
+                  "t": "seine Medikamente"
+                },
+                {
+                  "t": "seine Versichertenkarte"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "帶健保卡。",
+                "en": "His insurance card."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Durchsage im Kaufhaus.",
+              "zh": "你會聽到百貨公司的廣播。",
+              "en": "You will hear an announcement in a department store."
+            },
+            {
+              "who": "M",
+              "s": "Liebe Kundinnen und Kunden, wegen einer technischen Störung sind die Rolltreppen im Moment außer Betrieb. Bitte benutzen Sie die Aufzüge oder das Treppenhaus neben dem Haupteingang. Unser Restaurant im vierten Stock ist wie gewohnt geöffnet.",
+              "zh": "各位顧客，因技術故障，手扶梯目前停止運轉。請使用電梯或正門旁的樓梯。五樓的餐廳照常營業。",
+              "en": "Dear customers, because of a technical fault the escalators are currently out of service. Please use the lifts or the stairs next to the main entrance. Our restaurant on the fourth floor is open as usual."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Rolltreppen funktionieren nicht.",
+                "zh": "手扶梯故障。",
+                "en": "The escalators aren't working."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "停止運轉。",
+                "en": "Out of service."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was ist mit dem Restaurant?",
+                "zh": "餐廳怎麼樣？",
+                "en": "What about the restaurant?"
+              },
+              "options": [
+                {
+                  "t": "Es ist geschlossen."
+                },
+                {
+                  "t": "Es ist umgezogen."
+                },
+                {
+                  "t": "Es ist normal geöffnet."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "照常營業。",
+                "en": "Open as usual."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören den Wetterbericht.",
+              "zh": "你會聽到天氣預報。",
+              "en": "You will hear the weather forecast."
+            },
+            {
+              "who": "F",
+              "s": "Am Wochenende wird es in ganz Deutschland deutlich kühler. Im Norden regnet es am Samstag kräftig, im Süden bleibt es trocken, aber windig. Am Sonntag kommt dann auch im Süden Regen, und in den Alpen kann es oberhalb von 1500 Metern schneien.",
+              "zh": "週末全德國明顯轉涼。星期六北部大雨，南部乾燥但風大。星期日南部也會下雨，阿爾卑斯山 1500 公尺以上可能下雪。",
+              "en": "At the weekend it will get noticeably cooler all over Germany. In the north it will rain heavily on Saturday; in the south it stays dry but windy. On Sunday rain reaches the south too, and in the Alps it may snow above 1,500 metres."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Am Samstag regnet es im Süden.",
+                "zh": "星期六南部下雨。",
+                "en": "On Saturday it rains in the south."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "星期六南部乾燥但有風。",
+                "en": "Dry but windy."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Wo kann es schneien?",
+                "zh": "哪裡可能下雪？",
+                "en": "Where might it snow?"
+              },
+              "options": [
+                {
+                  "t": "im Norden"
+                },
+                {
+                  "t": "überall"
+                },
+                {
+                  "t": "in den Alpen"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "阿爾卑斯山 1500 公尺以上。",
+                "en": "In the Alps."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht im Radio.",
+              "zh": "你會聽到一則廣播新聞。",
+              "en": "You will hear a news item on the radio."
+            },
+            {
+              "who": "M",
+              "s": "Ab dem ersten März können Schülerinnen und Schüler in Bremen kostenlos Bus und Bahn fahren. Das gilt auch am Wochenende und in den Ferien. Den Ausweis bekommt man ab sofort im Sekretariat der Schule.",
+              "zh": "從 3 月 1 日起，不來梅的學生可以免費搭公車和火車。週末和假期也適用。證件即日起可在學校辦公室領取。",
+              "en": "From 1 March pupils in Bremen can travel free on buses and trains. This also applies at weekends and in the holidays. The pass is available now from the school office."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Das Angebot gilt nur an Schultagen.",
+                "zh": "只適用於上學日。",
+                "en": "The offer applies only on school days."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "週末和假期也適用。",
+                "en": "Weekends and holidays too."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Wo bekommt man den Ausweis?",
+                "zh": "在哪裡領證件？",
+                "en": "Where do you get the pass?"
+              },
+              "options": [
+                {
+                  "t": "am Bahnhof"
+                },
+                {
+                  "t": "im Internet"
+                },
+                {
+                  "t": "in der Schule"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "學校辦公室。",
+                "en": "The school office."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht auf dem Anrufbeantworter.",
+              "zh": "你會聽到一則答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Sophie, hier ist Daniel. Ich stehe im Stau und schaffe es nicht pünktlich zum Kino. Geh doch schon mal rein, ich habe die Karten auf dein Handy geschickt. Ich komme so in zwanzig Minuten. Und kauf bitte schon mal Popcorn!",
+              "zh": "嗨，蘇菲，我是丹尼爾。我塞在路上，趕不上電影。妳先進去吧，我把票傳到妳手機了。我大概二十分鐘後到。還有請先買爆米花！",
+              "en": "Hi Sophie, it's Daniel. I'm stuck in traffic and won't make the cinema on time. Go in already; I've sent the tickets to your phone. I'll be there in about twenty minutes. And please buy popcorn!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Daniel kommt zu spät.",
+                "zh": "丹尼爾會遲到。",
+                "en": "Daniel will be late."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "塞車，二十分鐘後到。",
+                "en": "Stuck in traffic."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was soll Sophie tun?",
+                "zh": "蘇菲要做什麼？",
+                "en": "What should Sophie do?"
+              },
+              "options": [
+                {
+                  "t": "auf Daniel vor dem Kino warten"
+                },
+                {
+                  "t": "Karten kaufen"
+                },
+                {
+                  "t": "schon ins Kino gehen"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「妳先進去吧」；票已傳到她手機。",
+                "en": "Go in; the tickets are on her phone."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Führung durch eine Schokoladenfabrik.",
+              "zh": "你會聽到一段巧克力工廠導覽。",
+              "en": "You will hear a tour of a chocolate factory."
+            },
+            {
+              "who": "F",
+              "s": "Herzlich willkommen in der Schokoladenfabrik Kakaoweg! Mein Name ist Frau Busch. Unsere Führung dauert ungefähr eine Stunde. Die Firma wurde 1923 von zwei Brüdern gegründet; heute arbeiten hier 180 Menschen. Den Kakao bekommen wir hauptsächlich aus Ghana und Ecuador. Zuerst sehen wir, wie die Kakaobohnen geröstet werden. Bitte setzen Sie dort die Haarnetze auf, die ich Ihnen gleich gebe — Fotografieren ist in der Produktion leider nicht erlaubt. Danach dürfen Sie in unserer Probierstube fünf Sorten testen. Am Ende können Sie im Fabrikladen einkaufen. Mit Ihrer Eintrittskarte bekommen Sie dort zehn Prozent Rabatt.",
+              "zh": "歡迎來到可可之路巧克力工廠！我是布許女士。導覽大約一小時。公司 1923 年由兩兄弟創立；現在有 180 人在這裡工作。可可主要來自迦納和厄瓜多。首先我們看可可豆怎麼烘焙。請戴上我等一下發給各位的髮網——生產區很抱歉不能拍照。之後各位可以在試吃室試吃五種口味。最後可以在工廠商店購物。憑門票可以打九折。",
+              "en": "Welcome to the Kakaoweg chocolate factory! My name is Ms Busch. Our tour takes about an hour. The company was founded in 1923 by two brothers; today 180 people work here. We get our cocoa mainly from Ghana and Ecuador. First we'll see how the cocoa beans are roasted. Please put on the hairnets I'll give you there — photography is unfortunately not allowed in production. Afterwards you may try five varieties in our tasting room. At the end you can shop in the factory shop. With your ticket you get ten per cent off there."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wer hat die Firma gegründet?",
+                "zh": "誰創立了公司？",
+                "en": "Who founded the company?"
+              },
+              "options": [
+                {
+                  "t": "eine Familie aus Ghana"
+                },
+                {
+                  "t": "Frau Busch"
+                },
+                {
+                  "t": "zwei Brüder"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "兩兄弟。",
+                "en": "Two brothers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Woher kommt der Kakao vor allem?",
+                "zh": "可可主要來自哪裡？",
+                "en": "Where does the cocoa mainly come from?"
+              },
+              "options": [
+                {
+                  "t": "aus Ghana und Ecuador"
+                },
+                {
+                  "t": "aus Brasilien"
+                },
+                {
+                  "t": "aus der Region"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "迦納和厄瓜多。",
+                "en": "Ghana and Ecuador."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was ist in der Produktion verboten?",
+                "zh": "生產區禁止什麼？",
+                "en": "What is forbidden in production?"
+              },
+              "options": [
+                {
+                  "t": "Haarnetze"
+                },
+                {
+                  "t": "Sprechen"
+                },
+                {
+                  "t": "Fotos machen"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "不能拍照。",
+                "en": "Taking photos."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie viele Sorten kann man probieren?",
+                "zh": "可以試吃幾種？",
+                "en": "How many varieties can you try?"
+              },
+              "options": [
+                {
+                  "t": "fünf"
+                },
+                {
+                  "t": "drei"
+                },
+                {
+                  "t": "zehn"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "五種。",
+                "en": "Five."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was bekommt man mit der Eintrittskarte?",
+                "zh": "憑門票可以得到什麼？",
+                "en": "What do you get with the ticket?"
+              },
+              "options": [
+                {
+                  "t": "Rabatt im Laden"
+                },
+                {
+                  "t": "eine Tafel Schokolade"
+                },
+                {
+                  "t": "einen Kaffee"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "商店九折。",
+                "en": "A discount."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch zwischen zwei Nachbarinnen.",
+              "zh": "你會聽到兩位鄰居的對話。",
+              "en": "You will hear a conversation between two neighbours."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Frau Simon! Sie sehen aber erholt aus. Waren Sie im Urlaub?",
+              "zh": "西蒙女士您好！您看起來精神很好。去度假了嗎？",
+              "en": "Hello Mrs Simon! You look rested. Were you on holiday?"
+            },
+            {
+              "who": "F2",
+              "s": "Ja, zwei Wochen an der Nordsee, auf Föhr. Wir waren zum ersten Mal dort.",
+              "zh": "對，在北海的弗爾島兩週。我們第一次去。",
+              "en": "Yes, two weeks on the North Sea, on Föhr. It was our first time there."
+            },
+            {
+              "who": "F",
+              "s": "Und das Wetter? Hier hat es ja fast jeden Tag geregnet.",
+              "zh": "天氣呢？這裡幾乎天天下雨。",
+              "en": "And the weather? It rained here almost every day."
+            },
+            {
+              "who": "F2",
+              "s": "Dort auch, ehrlich gesagt. Aber wir sind trotzdem jeden Tag Rad gefahren. Mein Mann hat sogar im kalten Meer gebadet!",
+              "zh": "說實話那裡也是。但我們還是每天騎腳踏車。我先生甚至在冰冷的海裡游泳！",
+              "en": "There too, to be honest. But we still cycled every day. My husband even swam in the cold sea!"
+            },
+            {
+              "who": "F",
+              "s": "Und haben Sie in einem Hotel gewohnt?",
+              "zh": "你們住旅館嗎？",
+              "en": "Did you stay in a hotel?"
+            },
+            {
+              "who": "F2",
+              "s": "Nein, in einer Ferienwohnung. Das war billiger, und wir konnten selbst kochen. Nur das Bett war furchtbar hart.",
+              "zh": "不，住度假公寓。比較便宜，可以自己煮。只是床硬得可怕。",
+              "en": "No, in a holiday flat. It was cheaper and we could cook for ourselves. Only the bed was terribly hard."
+            },
+            {
+              "who": "F",
+              "s": "Danke übrigens, dass Sie meine Blumen gegossen haben, als ich weg war. Ach nein, das war ja Ihre Tochter.",
+              "zh": "對了，謝謝您在我不在時幫我澆花。啊不對，那是您女兒澆的。",
+              "en": "Thanks for watering my flowers while I was away, by the way. Oh no, that was your daughter."
+            },
+            {
+              "who": "F2",
+              "s": "Genau, Lena hat das gern gemacht. Nächstes Jahr wollen wir übrigens wieder hin — dann aber im Juli.",
+              "zh": "對，莉娜很樂意。順帶一提，明年我們想再去——不過是七月。",
+              "en": "That's right, Lena was glad to. Next year we want to go again, by the way — but in July."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Frau Simon war schon oft auf Föhr.",
+                "zh": "西蒙女士常去弗爾島。",
+                "en": "Mrs Simon has often been to Föhr."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "第一次去。",
+                "en": "First time."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Auf Föhr war das Wetter schlecht.",
+                "zh": "弗爾島天氣不好。",
+                "en": "The weather on Föhr was bad."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「那裡也是」下雨。",
+                "en": "It rained there too."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Frau Simon und ihr Mann sind viel Rad gefahren.",
+                "zh": "西蒙夫婦常騎腳踏車。",
+                "en": "They cycled a lot."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "每天騎。",
+                "en": "Every day."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Frau Simon hat im Meer gebadet.",
+                "zh": "西蒙女士在海裡游泳。",
+                "en": "Mrs Simon swam in the sea."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "游泳的是她先生。",
+                "en": "Her husband did."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Sie haben in einem Hotel gewohnt.",
+                "zh": "他們住旅館。",
+                "en": "They stayed in a hotel."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "度假公寓。",
+                "en": "A holiday flat."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Lena hat die Blumen gegossen.",
+                "zh": "莉娜澆了花。",
+                "en": "Lena watered the flowers."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "是女兒莉娜。",
+                "en": "Her daughter Lena."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Die Familie möchte nächstes Jahr wieder nach Föhr fahren.",
+                "zh": "這家人明年想再去弗爾島。",
+                "en": "The family wants to go back next year."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "明年七月再去。",
+                "en": "In July."
+              },
+              "n_options": 2
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit Herrn Jansen und Frau Krüger über das Thema „Ehrenamt“.",
+              "zh": "你會聽到一段廣播討論。主持人和楊森先生、克呂格女士討論「志願服務」。",
+              "en": "You will hear a radio discussion. The presenter talks to Mr Jansen and Ms Krüger about volunteering."
+            },
+            {
+              "who": "F",
+              "s": "Fast jeder dritte Deutsche arbeitet ehrenamtlich, zum Beispiel im Sportverein oder bei der Feuerwehr. Herr Jansen, Sie sind seit dreißig Jahren dabei.",
+              "zh": "將近三分之一的德國人做志工，例如在運動俱樂部或消防隊。楊森先生，您已經做了三十年。",
+              "en": "Almost one in three Germans volunteers, for example at a sports club or the fire brigade. Mr Jansen, you have been doing it for thirty years."
+            },
+            {
+              "who": "M",
+              "s": "Ja, ich trainiere eine Kinder-Fußballmannschaft. Das macht mir unglaublich viel Freude. Wenn die Kinder ein Tor schießen, vergesse ich jeden Stress.",
+              "zh": "對，我訓練一支兒童足球隊。這給我無比的快樂。孩子們進球時，我什麼壓力都忘了。",
+              "en": "Yes, I coach a children's football team. It gives me incredible joy. When the children score, I forget all my stress."
+            },
+            {
+              "who": "F2",
+              "s": "Das verstehe ich gut. Ich helfe in einer Tafel, wo Lebensmittel an arme Familien verteilt werden. Aber ich muss sagen: Es werden immer weniger Helfer, besonders junge Leute fehlen.",
+              "zh": "我很能理解。我在食物銀行幫忙，把食物分給貧困家庭。但我必須說：志工越來越少，特別缺年輕人。",
+              "en": "I understand that well. I help at a food bank where food is given to poor families. But I must say: there are fewer and fewer helpers; young people in particular are missing."
+            },
+            {
+              "who": "F",
+              "s": "Woran liegt das?",
+              "zh": "原因是什麼？",
+              "en": "Why is that?"
+            },
+            {
+              "who": "M",
+              "s": "Die jungen Leute haben einfach weniger Zeit — Schule bis nachmittags, dann Hausaufgaben.",
+              "zh": "年輕人就是時間比較少——上學到下午，然後寫功課。",
+              "en": "Young people simply have less time — school until the afternoon, then homework."
+            },
+            {
+              "who": "F2",
+              "s": "Das stimmt, aber ich glaube, viele wissen auch gar nicht, wie man helfen kann. Man müsste mehr in den Schulen informieren.",
+              "zh": "沒錯，但我覺得很多人也根本不知道怎麼幫忙。應該多在學校宣導。",
+              "en": "True, but I think many don't even know how they can help. There should be more information in schools."
+            },
+            {
+              "who": "F",
+              "s": "Sollte der Staat Ehrenamtliche bezahlen?",
+              "zh": "國家應該付錢給志工嗎？",
+              "en": "Should the state pay volunteers?"
+            },
+            {
+              "who": "M",
+              "s": "Nein, dann ist es kein Ehrenamt mehr. Aber kostenlose Fahrkarten für Helfer fände ich eine gute Idee.",
+              "zh": "不，那就不是志工了。不過給志工免費車票我覺得是好主意。",
+              "en": "No, then it isn't volunteering any more. But free travel passes for helpers would be a good idea."
+            },
+            {
+              "who": "F2",
+              "s": "Ich wünsche mir vor allem mehr Anerkennung. Ein Danke ist oft wichtiger als Geld.",
+              "zh": "我最希望的是更多的肯定。一聲謝謝常常比錢更重要。",
+              "en": "Above all I'd like more recognition. A thank-you is often more important than money."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Viele Deutsche arbeiten ehrenamtlich.",
+                "zh": "很多德國人做志工。",
+                "en": "Many Germans volunteer."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "主持人開場：將近三分之一。",
+                "en": "The presenter."
+              }
+            },
+            {
+              "ask": {
+                "s": "Beim Ehrenamt vergisst man den Stress.",
+                "zh": "做志工會忘記壓力。",
+                "en": "Volunteering makes you forget stress."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "楊森：孩子進球時忘了壓力。",
+                "en": "Mr Jansen."
+              }
+            },
+            {
+              "ask": {
+                "s": "Es gibt immer weniger Helfer.",
+                "zh": "志工越來越少。",
+                "en": "There are fewer and fewer helpers."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "克呂格：志工越來越少。",
+                "en": "Ms Krüger."
+              }
+            },
+            {
+              "ask": {
+                "s": "Junge Leute haben wenig Zeit.",
+                "zh": "年輕人時間很少。",
+                "en": "Young people have little time."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "楊森：上學到下午再寫功課。",
+                "en": "Mr Jansen."
+              }
+            },
+            {
+              "ask": {
+                "s": "In den Schulen sollte man mehr informieren.",
+                "zh": "應該多在學校宣導。",
+                "en": "Schools should give more information."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "克呂格。",
+                "en": "Ms Krüger."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bezahlte Helfer sind keine Ehrenamtlichen mehr.",
+                "zh": "有薪水的就不是志工了。",
+                "en": "Paid helpers are no longer volunteers."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "楊森：那就不是志工了。",
+                "en": "Mr Jansen."
+              }
+            },
+            {
+              "ask": {
+                "s": "Freie Fahrt für Helfer wäre gut.",
+                "zh": "給志工免費搭車很好。",
+                "en": "Free travel for helpers would be good."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "楊森：免費車票是好主意。",
+                "en": "Mr Jansen."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein Dankeschön ist oft wichtiger als Geld.",
+                "zh": "一聲謝謝常比錢重要。",
+                "en": "A thank-you is often worth more than money."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Jansen"
+                },
+                {
+                  "t": "Frau Krüger"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "克呂格。",
+                "en": "Ms Krüger."
+              }
+            }
+          ],
+          "keep_order": true
+        }
+      ]
     }
   ]
 }
