@@ -2738,6 +2738,919 @@
           }
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En una estación de tren.",
+              "zh": "在火車站。",
+              "en": "At a train station."
+            },
+            {
+              "who": "M",
+              "s": "El tren con destino a Zaragoza sale con veinte minutos de retraso por problemas técnicos.",
+              "zh": "開往薩拉戈薩的火車因技術問題延誤二十分鐘出發。",
+              "en": "The train to Zaragoza is leaving twenty minutes late because of technical problems."
+            }
+          ],
+          "ask": {
+            "s": "¿Por qué sale tarde el tren?",
+            "zh": "火車為什麼晚開？",
+            "en": "Why is the train late?"
+          },
+          "options": [
+            {
+              "t": "por la nieve"
+            },
+            {
+              "t": "por una huelga"
+            },
+            {
+              "t": "por problemas técnicos"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「因技術問題」。",
+            "en": "Technical problems."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En el contestador.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Hola, Jaime. Soy Laura. La cena de esta noche es en mi casa, no en el restaurante. ¡Hasta luego!",
+              "zh": "嗨，海梅，我是蘿拉。今晚的晚餐在我家，不在餐廳。待會見！",
+              "en": "Hi Jaime. It's Laura. Tonight's dinner is at my place, not the restaurant. See you!"
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde es la cena?",
+            "zh": "晚餐在哪裡？",
+            "en": "Where is the dinner?"
+          },
+          "options": [
+            {
+              "t": "en un restaurante"
+            },
+            {
+              "t": "en casa de Jaime"
+            },
+            {
+              "t": "en casa de Laura"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「在我家」。",
+            "en": "At Laura's."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En unos grandes almacenes.",
+              "zh": "在百貨公司。",
+              "en": "In a department store."
+            },
+            {
+              "who": "F",
+              "s": "Les recordamos que hoy el centro cierra a las ocho, una hora antes de lo habitual.",
+              "zh": "提醒您，今天本中心八點打烊，比平常早一小時。",
+              "en": "Please remember that today the centre closes at eight, an hour earlier than usual."
+            }
+          ],
+          "ask": {
+            "s": "¿A qué hora cierra hoy?",
+            "zh": "今天幾點打烊？",
+            "en": "When does it close today?"
+          },
+          "options": [
+            {
+              "t": "a las 9"
+            },
+            {
+              "t": "a las 8"
+            },
+            {
+              "t": "a las 10"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「今天……八點打烊」。",
+            "en": "At eight."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En la radio.",
+              "zh": "廣播。",
+              "en": "On the radio."
+            },
+            {
+              "who": "M",
+              "s": "Mañana, en el norte, lluvias por la mañana; por la tarde, sol en todo el país.",
+              "zh": "明天北部上午下雨，下午全國晴朗。",
+              "en": "Tomorrow, rain in the north in the morning; sun across the country in the afternoon."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué tiempo hará mañana por la tarde?",
+            "zh": "明天下午天氣如何？",
+            "en": "What will the weather be tomorrow afternoon?"
+          },
+          "options": [
+            {
+              "t": "lluvia"
+            },
+            {
+              "t": "nieve"
+            },
+            {
+              "t": "sol"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「下午全國晴朗」。",
+            "en": "Sun."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En un hospital.",
+              "zh": "在醫院。",
+              "en": "In a hospital."
+            },
+            {
+              "who": "F",
+              "s": "Las visitas a los pacientes son de cuatro a ocho de la tarde. Máximo dos personas por habitación.",
+              "zh": "探病時間下午四點到八點，每間病房最多兩人。",
+              "en": "Visiting hours are 4 to 8 pm. Maximum two people per room."
+            }
+          ],
+          "ask": {
+            "s": "¿Cuántas personas pueden visitar a la vez?",
+            "zh": "一次可以幾人探病？",
+            "en": "How many can visit at once?"
+          },
+          "options": [
+            {
+              "t": "una"
+            },
+            {
+              "t": "dos"
+            },
+            {
+              "t": "cuatro"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「每間病房最多兩人」。",
+            "en": "Two."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "En el contestador.",
+              "zh": "電話答錄機。",
+              "en": "On the answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Buenos días, le llamo de la autoescuela. Su clase práctica del lunes se cambia al miércoles a la misma hora.",
+              "zh": "早安，這裡是駕訓班。您星期一的實習課改到星期三同一時間。",
+              "en": "Good morning, I'm calling from the driving school. Your Monday practical lesson moves to Wednesday at the same time."
+            }
+          ],
+          "ask": {
+            "s": "¿Cuándo es ahora la clase?",
+            "zh": "現在課在什麼時候？",
+            "en": "When is the lesson now?"
+          },
+          "options": [
+            {
+              "t": "el lunes"
+            },
+            {
+              "t": "el viernes"
+            },
+            {
+              "t": "el miércoles"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「改到星期三」。",
+            "en": "Wednesday."
+          }
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar un programa de radio.",
+              "zh": "你會聽到一段廣播節目。",
+              "en": "You will hear a radio programme."
+            },
+            {
+              "who": "F",
+              "s": "Buenas tardes. Hoy hablamos de los viajes en tren nocturno, que vuelven a estar de moda. Muchos jóvenes los prefieren al avión porque contaminan menos y te ahorras una noche de hotel. El tren más largo de España sale de Barcelona y llega a Vigo en unas trece horas. Los billetes en litera cuestan desde cuarenta euros. Nuestra oyente Raquel lo probó el mes pasado: dice que durmió bien, aunque el tren hacía algo de ruido, y que lo mejor fue despertarse viendo el paisaje de Galicia. Su consejo: llevar tapones para los oídos.",
+              "zh": "午安。今天談再度流行的夜車旅行。許多年輕人比起飛機更喜歡夜車，因為汙染較少，還能省一晚旅館錢。西班牙最長的火車從巴塞隆納開到維戈，大約十三小時。臥鋪票四十歐元起。我們的聽眾拉蔻兒上個月試搭：她說睡得不錯，雖然火車有點吵，最棒的是醒來看到加利西亞的風景。她的建議：帶耳塞。",
+              "en": "Good afternoon. Today we talk about night trains, which are fashionable again. Many young people prefer them to planes because they pollute less and save a hotel night. Spain's longest train leaves Barcelona and reaches Vigo in about thirteen hours. Couchette tickets start at forty euros. Our listener Raquel tried it last month: she slept well, though the train was a bit noisy, and the best part was waking up to the Galician landscape. Her tip: take earplugs."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "El programa habla de…",
+                "zh": "節目談……",
+                "en": "The programme is about…"
+              },
+              "options": [
+                {
+                  "t": "los aviones baratos."
+                },
+                {
+                  "t": "los trenes nocturnos."
+                },
+                {
+                  "t": "los hoteles."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「夜車旅行」。",
+                "en": "Night trains."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Por qué los prefieren muchos jóvenes?",
+                "zh": "為什麼很多年輕人更喜歡？",
+                "en": "Why do many young people prefer them?"
+              },
+              "options": [
+                {
+                  "t": "Son más rápidos."
+                },
+                {
+                  "t": "Tienen wifi."
+                },
+                {
+                  "t": "Contaminan menos."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「汙染較少」。",
+                "en": "Less pollution."
+              }
+            },
+            {
+              "ask": {
+                "s": "El tren más largo llega a…",
+                "zh": "最長的火車開到……",
+                "en": "The longest train goes to…"
+              },
+              "options": [
+                {
+                  "t": "Vigo."
+                },
+                {
+                  "t": "Sevilla."
+                },
+                {
+                  "t": "Madrid."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開到維戈」。",
+                "en": "Vigo."
+              }
+            },
+            {
+              "ask": {
+                "s": "El viaje dura unas…",
+                "zh": "旅程約……",
+                "en": "The journey takes about…"
+              },
+              "options": [
+                {
+                  "t": "tres horas."
+                },
+                {
+                  "t": "trece horas."
+                },
+                {
+                  "t": "treinta horas."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「大約十三小時」。",
+                "en": "Thirteen hours."
+              }
+            },
+            {
+              "ask": {
+                "s": "Según Raquel, lo mejor fue…",
+                "zh": "拉蔻兒說最棒的是……",
+                "en": "For Raquel the best part was…"
+              },
+              "options": [
+                {
+                  "t": "la comida."
+                },
+                {
+                  "t": "el precio."
+                },
+                {
+                  "t": "despertarse con el paisaje."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「醒來看到……風景」。",
+                "en": "Waking to the landscape."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué aconseja Raquel?",
+                "zh": "拉蔻兒建議什麼？",
+                "en": "What does Raquel advise?"
+              },
+              "options": [
+                {
+                  "t": "llevar tapones"
+                },
+                {
+                  "t": "llevar comida"
+                },
+                {
+                  "t": "reservar pronto"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「帶耳塞」。",
+                "en": "Earplugs."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre dos compañeros de trabajo.",
+              "zh": "你會聽到兩位同事的對話。",
+              "en": "You will hear a conversation between two colleagues."
+            },
+            {
+              "who": "M",
+              "s": "Elena, ¿vienes a la comida de Navidad de la empresa?",
+              "zh": "艾蓮娜，妳要來公司的聖誕午餐嗎？",
+              "en": "Elena, are you coming to the company Christmas lunch?"
+            },
+            {
+              "who": "F",
+              "s": "Sí, claro. ¿Dónde es este año?",
+              "zh": "當然。今年在哪裡？",
+              "en": "Yes, of course. Where is it this year?"
+            },
+            {
+              "who": "M",
+              "s": "En un restaurante del puerto. Es el viernes veinte, a las dos.",
+              "zh": "在港口的一家餐廳，二十號星期五兩點。",
+              "en": "At a restaurant by the harbour. Friday the twentieth, at two."
+            },
+            {
+              "who": "F",
+              "s": "¿Hay que pagar algo?",
+              "zh": "要付錢嗎？",
+              "en": "Do we have to pay anything?"
+            },
+            {
+              "who": "M",
+              "s": "La empresa paga la comida, pero las bebidas son aparte.",
+              "zh": "公司付餐費，但飲料另外付。",
+              "en": "The company pays for the food, but drinks are extra."
+            },
+            {
+              "who": "F",
+              "s": "Vale. Oye, ¿y el regalo para el jefe? ¿Quién lo compra?",
+              "zh": "好。對了，給老闆的禮物誰買？",
+              "en": "OK. And the present for the boss? Who's buying it?"
+            },
+            {
+              "who": "M",
+              "s": "Lo compro yo. Habíamos pensado en un libro de cocina, porque le encanta cocinar.",
+              "zh": "我買。我們想送一本食譜，因為他很愛做菜。",
+              "en": "I am. We thought of a cookbook, because he loves cooking."
+            },
+            {
+              "who": "F",
+              "s": "Perfecto. Yo pongo diez euros.",
+              "zh": "太好了，我出十歐元。",
+              "en": "Perfect. I'll put in ten euros."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Dónde es la comida?",
+                "zh": "午餐在哪裡？",
+                "en": "Where is the lunch?"
+              },
+              "options": [
+                {
+                  "t": "en la oficina"
+                },
+                {
+                  "t": "en un restaurante del puerto"
+                },
+                {
+                  "t": "en casa del jefe"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「港口的一家餐廳」。",
+                "en": "A harbour restaurant."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Cuándo es?",
+                "zh": "什麼時候？",
+                "en": "When is it?"
+              },
+              "options": [
+                {
+                  "t": "el sábado 20"
+                },
+                {
+                  "t": "el viernes 20"
+                },
+                {
+                  "t": "el viernes 12"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「二十號星期五」。",
+                "en": "Friday the 20th."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿A qué hora?",
+                "zh": "幾點？",
+                "en": "What time?"
+              },
+              "options": [
+                {
+                  "t": "a la una"
+                },
+                {
+                  "t": "a las tres"
+                },
+                {
+                  "t": "a las dos"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「兩點」。",
+                "en": "Two."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué tienen que pagar los trabajadores?",
+                "zh": "員工要付什麼？",
+                "en": "What do staff pay for?"
+              },
+              "options": [
+                {
+                  "t": "las bebidas"
+                },
+                {
+                  "t": "la comida"
+                },
+                {
+                  "t": "nada"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「飲料另外付」。",
+                "en": "Drinks."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué van a regalar al jefe?",
+                "zh": "要送老闆什麼？",
+                "en": "What will they give the boss?"
+              },
+              "options": [
+                {
+                  "t": "un libro de cocina"
+                },
+                {
+                  "t": "una botella de vino"
+                },
+                {
+                  "t": "una corbata"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「一本食譜」。",
+                "en": "A cookbook."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Cuánto pone Elena?",
+                "zh": "艾蓮娜出多少？",
+                "en": "How much does Elena put in?"
+              },
+              "options": [
+                {
+                  "t": "cinco euros"
+                },
+                {
+                  "t": "diez euros"
+                },
+                {
+                  "t": "veinte euros"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我出十歐元」。",
+                "en": "Ten euros."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 1.",
+              "zh": "對話 1。",
+              "en": "Dialogue 1."
+            },
+            {
+              "who": "F",
+              "s": "¿Me pone un café con leche y una tostada?",
+              "zh": "請給我一杯拿鐵和一片吐司。",
+              "en": "A white coffee and a slice of toast, please."
+            },
+            {
+              "who": "M",
+              "s": "Ahora mismo.",
+              "zh": "馬上來。",
+              "en": "Right away."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde están?",
+            "zh": "他們在哪裡？",
+            "en": "Where are they?"
+          },
+          "options": [
+            {
+              "t": "en una cafetería"
+            },
+            {
+              "t": "en una farmacia"
+            },
+            {
+              "t": "en un banco"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "點咖啡和吐司：咖啡館。",
+            "en": "A café."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 2.",
+              "zh": "對話 2。",
+              "en": "Dialogue 2."
+            },
+            {
+              "who": "M",
+              "s": "Me duele mucho la garganta desde ayer.",
+              "zh": "我從昨天喉嚨就很痛。",
+              "en": "My throat has hurt a lot since yesterday."
+            },
+            {
+              "who": "F",
+              "s": "Tome este jarabe tres veces al día.",
+              "zh": "這個糖漿一天喝三次。",
+              "en": "Take this syrup three times a day."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué le pasa al hombre?",
+            "zh": "男士怎麼了？",
+            "en": "What's wrong with the man?"
+          },
+          "options": [
+            {
+              "t": "Le duele la garganta."
+            },
+            {
+              "t": "Le duele la cabeza."
+            },
+            {
+              "t": "Tiene fiebre."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「喉嚨很痛」。",
+            "en": "A sore throat."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 3.",
+              "zh": "對話 3。",
+              "en": "Dialogue 3."
+            },
+            {
+              "who": "F",
+              "s": "¿Puedo pagar con tarjeta?",
+              "zh": "可以刷卡嗎？",
+              "en": "Can I pay by card?"
+            },
+            {
+              "who": "M",
+              "s": "Lo siento, la máquina no funciona. Solo efectivo.",
+              "zh": "抱歉，機器壞了，只收現金。",
+              "en": "Sorry, the machine isn't working. Cash only."
+            }
+          ],
+          "ask": {
+            "s": "¿Cómo tiene que pagar la mujer?",
+            "zh": "女士要怎麼付？",
+            "en": "How must she pay?"
+          },
+          "options": [
+            {
+              "t": "con tarjeta"
+            },
+            {
+              "t": "por internet"
+            },
+            {
+              "t": "en efectivo"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「只收現金」。",
+            "en": "Cash."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 4.",
+              "zh": "對話 4。",
+              "en": "Dialogue 4."
+            },
+            {
+              "who": "M",
+              "s": "¿Sabes dónde está mi chaqueta azul?",
+              "zh": "妳知道我的藍色外套在哪嗎？",
+              "en": "Do you know where my blue jacket is?"
+            },
+            {
+              "who": "F",
+              "s": "Está en el armario de la entrada.",
+              "zh": "在玄關的衣櫃裡。",
+              "en": "It's in the hall cupboard."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde está la chaqueta?",
+            "zh": "外套在哪裡？",
+            "en": "Where is the jacket?"
+          },
+          "options": [
+            {
+              "t": "en el armario de la entrada"
+            },
+            {
+              "t": "en el dormitorio"
+            },
+            {
+              "t": "en el coche"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「在玄關的衣櫃裡」。",
+            "en": "In the hall cupboard."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 5.",
+              "zh": "對話 5。",
+              "en": "Dialogue 5."
+            },
+            {
+              "who": "F",
+              "s": "¿Quieres venir a la playa el domingo?",
+              "zh": "星期天要不要去海邊？",
+              "en": "Want to come to the beach on Sunday?"
+            },
+            {
+              "who": "M",
+              "s": "No puedo, tengo que estudiar para un examen.",
+              "zh": "不行，我要準備考試。",
+              "en": "I can't, I have to study for an exam."
+            }
+          ],
+          "ask": {
+            "s": "¿Por qué no va el chico a la playa?",
+            "zh": "男生為什麼不去海邊？",
+            "en": "Why isn't he going?"
+          },
+          "options": [
+            {
+              "t": "Está enfermo."
+            },
+            {
+              "t": "Tiene que estudiar."
+            },
+            {
+              "t": "Trabaja."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我要準備考試」。",
+            "en": "He has to study."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 6.",
+              "zh": "對話 6。",
+              "en": "Dialogue 6."
+            },
+            {
+              "who": "M",
+              "s": "Buenas tardes, tengo una reserva a nombre de García.",
+              "zh": "午安，我有預約，名字是加西亞。",
+              "en": "Good afternoon, I have a reservation under García."
+            },
+            {
+              "who": "F",
+              "s": "Sí, una habitación doble para tres noches.",
+              "zh": "是的，雙人房三晚。",
+              "en": "Yes, a double room for three nights."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde están?",
+            "zh": "他們在哪裡？",
+            "en": "Where are they?"
+          },
+          "options": [
+            {
+              "t": "en un hotel"
+            },
+            {
+              "t": "en un restaurante"
+            },
+            {
+              "t": "en un cine"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「雙人房三晚」：飯店。",
+            "en": "A hotel."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Diálogo 7.",
+              "zh": "對話 7。",
+              "en": "Dialogue 7."
+            },
+            {
+              "who": "F",
+              "s": "Perdone, ¿para ir al museo?",
+              "zh": "不好意思，去博物館怎麼走？",
+              "en": "Excuse me, how do I get to the museum?"
+            },
+            {
+              "who": "M",
+              "s": "Siga recto y gire a la derecha en el segundo semáforo.",
+              "zh": "直走，第二個紅綠燈右轉。",
+              "en": "Go straight on and turn right at the second traffic light."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué pide la mujer?",
+            "zh": "女士問什麼？",
+            "en": "What is she asking for?"
+          },
+          "options": [
+            {
+              "t": "la hora"
+            },
+            {
+              "t": "un precio"
+            },
+            {
+              "t": "una dirección"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「去博物館怎麼走？」：問路。",
+            "en": "Directions."
+          }
+        }
+      ]
     }
   ]
 }
