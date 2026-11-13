@@ -1235,6 +1235,396 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Мари́на, ты пойдёшь за́втра на конце́рт?",
+              "zh": "瑪麗娜，妳明天去音樂會嗎？",
+              "en": "Marina, are you going to the concert tomorrow?"
+            },
+            {
+              "who": "F",
+              "s": "Хоте́ла, но биле́тов уже́ нет. Пойду́ в сле́дующий раз.",
+              "zh": "本來想去，但票已經沒了。下次再去。",
+              "en": "I wanted to, but there are no tickets left. I'll go next time."
+            }
+          ],
+          "ask": {
+            "s": "Почему́ Мари́на не пойдёт на конце́рт?",
+            "zh": "瑪麗娜為什麼不去音樂會？",
+            "en": "Why isn't Marina going?"
+          },
+          "options": [
+            {
+              "t": "Она́ боле́ет."
+            },
+            {
+              "t": "Она́ рабо́тает."
+            },
+            {
+              "t": "Биле́тов нет."
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "票沒了。",
+            "en": "No tickets."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Прости́те, э́тот авто́бус идёт до вокза́ла?",
+              "zh": "請問這班公車到火車站嗎？",
+              "en": "Excuse me, does this bus go to the station?"
+            },
+            {
+              "who": "M",
+              "s": "Нет, вам ну́жен двена́дцатый. Остано́вка на той стороне́ у́лицы.",
+              "zh": "不，您要搭 12 號。站牌在街的另一邊。",
+              "en": "No, you need the number twelve. The stop is across the street."
+            }
+          ],
+          "ask": {
+            "s": "Како́й авто́бус идёт до вокза́ла?",
+            "zh": "哪班公車到火車站？",
+            "en": "Which bus goes to the station?"
+          },
+          "options": [
+            {
+              "t": "двена́дцатый"
+            },
+            {
+              "t": "второ́й"
+            },
+            {
+              "t": "двадца́тый"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "12 號。",
+            "en": "Number twelve."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Что подари́ть ма́ме на день рожде́ния? Цветы́?",
+              "zh": "媽媽生日送什麼？花嗎？",
+              "en": "What shall we give Mum for her birthday? Flowers?"
+            },
+            {
+              "who": "F",
+              "s": "Цветы́ у неё всегда́ есть. Дава́й ку́пим ей шарф — она́ давно́ хоте́ла.",
+              "zh": "她總是有花。我們買圍巾給她吧——她想要很久了。",
+              "en": "She always has flowers. Let's buy her a scarf — she's wanted one for ages."
+            }
+          ],
+          "ask": {
+            "s": "Что они́ пода́рят ма́ме?",
+            "zh": "他們要送媽媽什麼？",
+            "en": "What will they give Mum?"
+          },
+          "options": [
+            {
+              "t": "цветы́"
+            },
+            {
+              "t": "шарф"
+            },
+            {
+              "t": "кни́гу"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "買圍巾。",
+            "en": "A scarf."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "F",
+              "s": "Ты уже́ был в но́вом бассе́йне?",
+              "zh": "你去過新的游泳池了嗎？",
+              "en": "Have you been to the new pool yet?"
+            },
+            {
+              "who": "M",
+              "s": "Да, вчера́. Вода́ тёплая, но люде́й о́чень мно́го.",
+              "zh": "去了，昨天。水很溫暖，但人很多。",
+              "en": "Yes, yesterday. The water is warm, but there are lots of people."
+            }
+          ],
+          "ask": {
+            "s": "Что ему́ не понра́вилось?",
+            "zh": "他不喜歡什麼？",
+            "en": "What didn't he like?"
+          },
+          "options": [
+            {
+              "t": "холо́дная вода́"
+            },
+            {
+              "t": "дороги́е биле́ты"
+            },
+            {
+              "t": "мно́го люде́й"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "人很多。",
+            "en": "The crowds."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "M",
+              "s": "Де́вушка, мо́жно заплати́ть ка́ртой?",
+              "zh": "小姐，可以刷卡嗎？",
+              "en": "Can I pay by card?"
+            },
+            {
+              "who": "F",
+              "s": "К сожале́нию, термина́л не рабо́тает. То́лько нали́чными.",
+              "zh": "很抱歉，刷卡機壞了。只收現金。",
+              "en": "Unfortunately the terminal isn't working. Cash only."
+            }
+          ],
+          "ask": {
+            "s": "Как мо́жно заплати́ть?",
+            "zh": "可以怎麼付錢？",
+            "en": "How can you pay?"
+          },
+          "options": [
+            {
+              "t": "нали́чными"
+            },
+            {
+              "t": "ка́ртой"
+            },
+            {
+              "t": "по телефо́ну"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "只收現金。",
+            "en": "Cash."
+          }
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте объявле́ние.",
+              "zh": "請聽一則公告。",
+              "en": "Listen to the announcement."
+            },
+            {
+              "who": "F",
+              "s": "Уважа́емые покупа́тели! Сего́дня в на́шем магази́не больша́я распрода́жа. На всю зи́мнюю оде́жду ски́дка три́дцать проце́нтов. А́кция де́йствует до восьми́ часо́в ве́чера. Отде́л зи́мней оде́жды нахо́дится на второ́м этаже́, ря́дом с кафе́.",
+              "zh": "各位顧客！今天本店大拍賣。所有冬季服裝七折。活動到晚上八點。冬季服裝部在二樓，咖啡館旁邊。",
+              "en": "Dear customers! Today there's a big sale in our shop. Thirty per cent off all winter clothing. The offer is valid until eight in the evening. The winter clothing department is on the first floor, next to the café."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Кака́я ски́дка на зи́мнюю оде́жду?",
+                "zh": "冬季服裝打幾折？",
+                "en": "What's the discount on winter clothes?"
+              },
+              "options": [
+                {
+                  "t": "10 %"
+                },
+                {
+                  "t": "30 %"
+                },
+                {
+                  "t": "20 %"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "七折＝30%。",
+                "en": "30%."
+              }
+            },
+            {
+              "ask": {
+                "s": "До кото́рого ча́са де́йствует а́кция?",
+                "zh": "活動到幾點？",
+                "en": "Until when is the offer valid?"
+              },
+              "options": [
+                {
+                  "t": "до шести́"
+                },
+                {
+                  "t": "до десяти́"
+                },
+                {
+                  "t": "до восьми́"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "晚上八點。",
+                "en": "Until eight."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где нахо́дится отде́л?",
+                "zh": "部門在哪？",
+                "en": "Where is the department?"
+              },
+              "options": [
+                {
+                  "t": "на второ́м этаже́"
+                },
+                {
+                  "t": "на пе́рвом этаже́"
+                },
+                {
+                  "t": "в подва́ле"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "二樓，咖啡館旁。",
+                "en": "Second floor."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте диало́г.",
+              "zh": "請聽一段對話。",
+              "en": "Listen to the dialogue."
+            },
+            {
+              "who": "M",
+              "s": "Алло́, Ле́на? Э́то Серге́й. Слу́шай, дава́й в воскресе́нье пое́дем за го́род, на о́зеро?",
+              "zh": "喂，蓮娜？我是謝爾蓋。欸，星期天我們去郊外的湖邊好嗎？",
+              "en": "Hello, Lena? It's Sergei. Listen, shall we go out of town to the lake on Sunday?"
+            },
+            {
+              "who": "F",
+              "s": "С удово́льствием! А на чём пое́дем? У меня́ маши́на в ремо́нте.",
+              "zh": "很樂意！那我們怎麼去？我的車在修。",
+              "en": "With pleasure! But how will we get there? My car is being repaired."
+            },
+            {
+              "who": "M",
+              "s": "Пое́дем на электри́чке. Она́ идёт от Ку́рского вокза́ла в де́вять утра́.",
+              "zh": "搭郊區火車。九點從庫爾斯克車站發車。",
+              "en": "We'll take the suburban train. It leaves Kursky station at nine in the morning."
+            },
+            {
+              "who": "F",
+              "s": "Отли́чно. Я возьму́ бутербро́ды и чай.",
+              "zh": "太好了。我帶三明治和茶。",
+              "en": "Great. I'll bring sandwiches and tea."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Куда́ они́ пое́дут?",
+                "zh": "他們要去哪？",
+                "en": "Where will they go?"
+              },
+              "options": [
+                {
+                  "t": "в лес"
+                },
+                {
+                  "t": "на о́зеро"
+                },
+                {
+                  "t": "на да́чу"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "湖邊。",
+                "en": "To the lake."
+              }
+            },
+            {
+              "ask": {
+                "s": "На чём они́ пое́дут?",
+                "zh": "他們怎麼去？",
+                "en": "How will they travel?"
+              },
+              "options": [
+                {
+                  "t": "на маши́не"
+                },
+                {
+                  "t": "на авто́бусе"
+                },
+                {
+                  "t": "на электри́чке"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "郊區火車；她的車在修。",
+                "en": "By suburban train."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что возьмёт Ле́на?",
+                "zh": "蓮娜要帶什麼？",
+                "en": "What will Lena bring?"
+              },
+              "options": [
+                {
+                  "t": "бутербро́ды и чай"
+                },
+                {
+                  "t": "фру́кты"
+                },
+                {
+                  "t": "ничего́"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "三明治和茶。",
+                "en": "Sandwiches and tea."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
