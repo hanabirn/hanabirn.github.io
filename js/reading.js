@@ -106,7 +106,7 @@ async function renderReading() {
     document.body.classList.toggle('reading-wide', ['read', 'exam', 'list'].includes(readingView));
     if (typeof railPlace === 'function') railPlace();
     if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
-    if (readingView === 'read') box.innerHTML = readingReaderHtml(set);
+    if (readingView === 'read') { box.innerHTML = readingReaderHtml(set); readingFit(document.getElementById('rd-panel')); }
     else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
     else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);
     else if (readingView === 'mocknote' && set.sets && set.sets[readingMockNote]) box.innerHTML = readingMockNoteHtml(set);
@@ -641,12 +641,22 @@ function readingQPage(d) {
     readingRenderPanel(true);
 }
 
+/* computers: a question panel whose content runs past its box (a two-line question with a long translated
+   explanation pushed the pager below 940px, 2026-11-13) gets tighter, step by step (.rfit1–2, css/reading.css) */
+function readingFit(box) {
+    if (!box) return;
+    box.classList.remove('rfit1', 'rfit2');
+    if (!window.matchMedia || !window.matchMedia('(min-width: 1024px)').matches) return;
+    for (let i = 1; i <= 2 && box.scrollHeight > box.clientHeight + 1; i++) box.classList.add('rfit' + i);
+}
+
 /* redraw only the side panel, so the text (and where it is scrolled) stays as it is */
 function readingRenderPanel(toTop) {
     const box = document.getElementById('rd-panel');
     const set = readingSets[readingSetId];
     if (!box || !set) { renderReading(); return; }
     box.innerHTML = readingPanelHtml(set, set.passages[readingNo]);
+    readingFit(box);
     if (toTop && box.getBoundingClientRect().top < 0) box.scrollIntoView({ block: 'start' });
 }
 
