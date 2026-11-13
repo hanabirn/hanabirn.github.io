@@ -732,7 +732,9 @@ function readingPanelHtml(set, p) {
         ${note}
         ${tabs}
         <div class="rd-qs ${readingFuri() ? '' : 'no-furi'}">${qs}</div>
-        ${pages > 1 ? `<div class="rd-pager">
+        ${pages > 1 && per === 1 ? (z.picks[from] >= 0 && from < total - 1 ? `<div class="rd-pager rd-pager-one">
+            <button type="button" class="btn next-btn" onclick="readingQGo(${from + 1})">${escHtml(t('grammar_next_q'))}</button>
+        </div>` : '') : pages > 1 ? `<div class="rd-pager">
             <button type="button" class="btn back-btn" onclick="readingQPage(-1)"${z.page === 0 ? ' disabled' : ''}>${escHtml(t('mistake_prev'))}</button>
             <span>${escHtml(t('updates_page', { n: z.page + 1, m: pages }))}</span>
             <button type="button" class="btn back-btn" onclick="readingQPage(1)"${z.page >= pages - 1 ? ' disabled' : ''}>${escHtml(t('mistake_next'))}</button>

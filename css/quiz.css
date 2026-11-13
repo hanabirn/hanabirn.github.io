@@ -602,9 +602,9 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
-/* computers: under the header, not over a result screen's buttons (2026-11-13) */
+/* computers: in the empty middle of the header's top row, not over a result screen's buttons or title (2026-11-13) */
 @media (min-width: 1024px) {
-    .share-toast { top: 210px; bottom: auto; transform: translateX(-50%) translateY(-20px); }
+    .share-toast { top: 12px; bottom: auto; transform: translateX(-50%) translateY(-20px); }
     .share-toast.show { transform: translateX(-50%) translateY(0); }
 }
 
@@ -680,3 +680,11 @@
 .listening-input:disabled {
     opacity: 0.6;
 }
+
+/* result screen: line icons instead of 🔄 / 📱 in the labels (2026-11-13, controls use line icons) */
+#quiz-again-btn[data-i18n="quiz_again"]::before, #quiz-again-btn[data-i18n="lesson_retry"]::before, .share-btn[data-i18n="share_score"]::before {
+    content: ''; display: inline-block; width: 1.1em; height: 1.1em; margin-right: 6px; vertical-align: -0.18em;
+    background: currentColor; -webkit-mask: var(--btn-icon) center / contain no-repeat; mask: var(--btn-icon) center / contain no-repeat;
+}
+#quiz-again-btn { --btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m15 15 6-6m0 0-6-6m6 6H9a6 6 0 0 0 0 12h3'/%3E%3C/svg%3E"); }
+.share-btn[data-i18n="share_score"] { --btn-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5m-13.5-9L12 3m0 0 4.5 4.5M12 3v13.5'/%3E%3C/svg%3E"); }

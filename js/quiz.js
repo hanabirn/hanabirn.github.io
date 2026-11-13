@@ -849,6 +849,7 @@ function setResultAgainLabel(key) {
     if (!b) return;
     b.setAttribute('data-i18n', key);
     b.innerHTML = t(key);
+    resultButtonsRank();
 }
 
 /* ----- Languages by region -----
@@ -899,12 +900,14 @@ function renderWords() {
         `<button type="button" role="tab" class="words-tab${wordsTab === id ? ' on' : ''}" aria-selected="${wordsTab === id}" onclick="setWordsTab('${id}')">${escHtml(t(key))}</button>`).join('');
     if (wordsTab === 'levels') {
         body.innerHTML = `<div class="words-levels">${wordsLevelIds(code).map(id => {
-                const sum = pathSummary(id);
+                // the word count from js/vocab-counts.js until the list has been loaded on this device (2026-11-13)
+                const words = typeof VOCAB_COUNTS !== 'undefined' ? VOCAB_COUNTS[id] : 0;
+                const sum = pathSummary(id) || (words ? { levels: levelCountFor(words), done: Math.min(getSetProgress(id).done, levelCountFor(words)) } : null);
                 const done = sum ? sum.done : getSetProgress(id).done;
                 const finished = sum && done >= sum.levels;
                 return `<button type="button" class="words-level${finished ? ' done' : ''}" onclick="selectWordSet('${id}')">
                     <span class="words-level-name">${escHtml(wordSetName(id))}</span>
-                    <span class="words-level-state">${sum ? (finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: sum.levels }))) : ''}</span>
+                    <span class="words-level-state">${words ? escHtml(t('topic_words', { n: words.toLocaleString() })) + ' · ' : ''}${sum ? (finished ? '✓ ' + escHtml(t('topic_done')) : escHtml(t('topic_levels', { n: done, m: sum.levels }))) : ''}</span>
                     ${sum ? `<span class="topic-bar" aria-hidden="true"><i style="width:${Math.round(done / sum.levels * 100)}%"></i></span>` : ''}
                     <span class="words-level-go" aria-hidden="true">›</span>
                 </button>`;
@@ -1993,6 +1996,19 @@ function showResults() {
         retry.style.display = wrongEntries.size ? '' : 'none';
         retry.textContent = t('result_retry_wrong', { n: wrongEntries.size });
     }
+    resultButtonsRank();
+}
+
+/* one vermilion button a result screen (2026-11-13): 再練錯的字 when there are misses, else 再來一次 /
+   下一關; the others turn paper-coloured (.btn-quiet, css/practice.css). 分享成績 is always quiet. */
+function resultButtonsRank() {
+    const retry = document.getElementById('retry-wrong-btn');
+    const again = document.getElementById('quiz-again-btn');
+    if (!again) return;
+    const retryShown = retry && retry.style.display !== 'none';
+    const key = again.getAttribute('data-i18n');
+    again.classList.toggle('btn-quiet', !!retryShown && (key === 'quiz_again' || key === 'lesson_retry'));
+    if (retry) retry.classList.toggle('btn-quiet', !!retryShown && key === 'lesson_next');
 }
 
 function backToLanguage() {

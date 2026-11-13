@@ -357,8 +357,7 @@ function listeningType(qn, v) {
     const z = listeningSession;
     if (!z || !z.mock || z.reviewing) return;
     z.picks[z.qi][qn] = v.trim() ? v.trim() : -1;
-    const next = document.querySelector('#listening-card .grammar-nav .next-btn');
-    if (next) next.disabled = !listeningAnswered();
+    document.querySelectorAll('#listening-card .grammar-nav .next-btn, #listening-card .ls-top-next').forEach(b => { b.disabled = !listeningAnswered(); b.classList.toggle('mode-btn-active', listeningAnswered()); });
 }
 
 /* practice: the visitor's answer means the same — count it right */
@@ -764,6 +763,10 @@ function listeningQuizHtml(lv) {
             <button type="button" class="btn back-btn grammar-back" onclick="${z.reviewing ? "listeningGo('result')" : "listeningGo('list')"}">${escHtml(t(z.reviewing ? 'listening_back_result' : 'listening_back_list'))}</button>
             <span class="ls-dots" aria-hidden="true">${dots}</span>
             <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.qi + 1, m: z.order.length }))}</span>
+            <span class="ls-top-nav">
+                <button type="button" class="mode-btn" onclick="listeningMove(-1)"${z.qi === 0 || lockedMock ? ' disabled' : ''}>${escHtml(t('listening_prev_q'))}</button>
+                <button type="button" class="mode-btn ls-top-next${canNext ? ' mode-btn-active' : ''}" onclick="${nextCall}"${canNext ? '' : ' disabled'}>${escHtml(t(nextLabel))}</button>
+            </span>
         </div>
         ${z.mock ? `<div class="ls-mock-tag">📝 ${escHtml(t(z.reviewing ? 'listening_mock_review' : 'listening_mock'))}</div>` : ''}
         ${z.resumed && !z.mock ? `<p class="rd-note ls-resumed">${escHtml(t('reading_resumed', { n: z.picks.filter(p => p.every(x => x !== -1)).length, m: z.order.length }))} <button type="button" class="rd-link" onclick="listeningStart(${z.setNo}, null, 'fresh')">${escHtml(t('reading_restart'))}</button></p>` : ''}
@@ -875,8 +878,7 @@ function listeningAnswer(qn, i) {
         // a mock exam: the pick can change until the item is left; no answer shown
         z.picks[z.qi][qn] = i;
         document.querySelectorAll(`#listening-card .ls-q[data-qn="${qn}"] .option-btn`).forEach((b, k) => b.classList.toggle('ls-picked', k === i));
-        const next = document.querySelector('#listening-card .grammar-nav .next-btn');
-        if (next) next.disabled = !listeningAnswered();
+        document.querySelectorAll('#listening-card .grammar-nav .next-btn, #listening-card .ls-top-next').forEach(b => { b.disabled = !listeningAnswered(); b.classList.toggle('mode-btn-active', listeningAnswered()); });
         listeningSubNext(qn);
         return;
     }

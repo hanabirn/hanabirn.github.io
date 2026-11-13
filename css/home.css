@@ -322,3 +322,18 @@
 
 @media (prefers-reduced-motion: reduce) {
 }
+
+/* 每日一字 on the page (homeWordRender, js/home.js, 2026-11-13): shown when the right rail isn't */
+.home-word { display: flex; align-items: center; gap: 12px; }
+.home-word[hidden] { display: none; }
+.home-word-main { flex: 1; min-width: 0; }
+.home-word-w { font-family: var(--font-serif); font-size: 1.35rem; font-weight: 700; line-height: 1.35; overflow-wrap: anywhere; }
+.home-word-w small { font-family: var(--font-sans); font-size: 0.85rem; font-weight: 500; color: var(--text-secondary); }
+.home-word .speak-btn { flex: none; }
+.home-word .home-review-btn { flex: none; max-width: 40%; white-space: normal; }
+
+/* 從這裡開始 (homeStartHtml): a first visit's way into each part of the site */
+.home-start-sum { margin: -4px 0 10px; color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6; }
+.home-start-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.home-start .learn-choose { margin: 0; }
+#page-home .home-courses[hidden], #page-home .home-section-title[hidden], #home-beginner[hidden] { display: none; }

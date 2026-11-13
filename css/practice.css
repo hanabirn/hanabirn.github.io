@@ -739,3 +739,13 @@ button.rs-hook:hover { background: var(--primary-soft); }
     .ls-play::after, .rs-confetti i { animation: none; }
     .fc-card, .fc-card.flying { transition: none; }
 }
+/* a result screen has one vermilion button (resultButtonsRank, js/quiz.js); the rest are paper (2026-11-13) */
+.rs-actions .btn-quiet, .rs-actions .share-btn {
+    background: var(--surface);
+    color: var(--text);
+    border-color: var(--line);
+    box-shadow: 0 4px 0 var(--edge);
+}
+@media (hover: hover) and (pointer: fine) {
+    .rs-actions .btn-quiet:hover, .rs-actions .share-btn:hover { filter: none; background: var(--bg-option-hover); }
+}

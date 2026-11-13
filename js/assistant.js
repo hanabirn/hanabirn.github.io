@@ -285,7 +285,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const hint = document.getElementById('assistant-hint');
     if (hint) hint.hidden = seen;
     // phones: the 有問題問我！ bubble sits over the page, so it says it once and goes (2026-10-25)
-    if (hint && !seen && window.matchMedia('(max-width: 768px)').matches) setTimeout(() => { hint.hidden = true; }, 8000);
+    if (hint && !seen && window.matchMedia('(max-width: 768px)').matches) setTimeout(() => { hint.hidden = true; }, 4000);   // 4 s since 2026-11-13: it covered the first home card
     if (fab) {
         fab.addEventListener('pointerdown', fabDragStart);
         fab.addEventListener('pointermove', fabDragMove);

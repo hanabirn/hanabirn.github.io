@@ -190,6 +190,9 @@
                 <button class="next-btn home-continue" id="home-continue" onclick="homeTodayGo()"></button>
             </section>
 
+            <!-- before any practice: 從這裡開始 — words, a passage, a listening round, the alphabet (js/home.js) -->
+            <div id="home-beginner"></div>
+
             <section class="home-card home-friends" id="home-friends-card" hidden>
                 <span class="home-account-icon" aria-hidden="true">📣</span>
                 <div class="home-review-text">
@@ -208,16 +211,12 @@
                 <button class="back-btn home-review-btn" onclick="openAccount()" data-i18n="acct_signin">登入</button>
             </section>
 
-            <h3 class="home-section-title" data-i18n="home_continue_title">繼續上次的</h3>
+            <!-- 每日一字 on the page itself when the right rail isn't shown (js/home.js, 2026-11-13) -->
+            <section class="home-card home-word" id="home-word" hidden></section>
+
+            <h3 class="home-section-title" id="home-recent-title" data-i18n="home_continue_title">繼續上次的</h3>
             <div class="home-courses" id="home-recent"></div>
 
-            <div id="home-beginner">
-            <h3 class="home-section-title" data-i18n="home_beginner">剛開始學？</h3>
-            <div class="home-courses">
-                <button class="lang-btn home-course" onclick="switchPage('alphabet', null)"><span class="home-course-badge">Aa</span><span class="home-course-name" data-i18n="home_alphabet_btn">字母表：從發音開始</span></button>
-            </div>
-
-            </div>
         </div>
 
         <div id="page-quiz" style="display: none;">
@@ -369,8 +368,8 @@
                 <div id="result-detail" class="result-detail"></div>
                 <div class="action-buttons rs-actions">
                     <button class="btn next-btn" id="retry-wrong-btn" onclick="retryWrongWords()" style="display:none">再練錯的字</button>
-                    <button class="btn next-btn" id="quiz-again-btn" onclick="quizAgain()" data-i18n="quiz_again">&#x1F504; &#x518D;&#x4F86;&#x4E00;&#x6B21;</button>
-                    <button class="btn share-btn" onclick="shareScoreCard()" data-i18n="share_score">&#x1F4F1; &#x5206;&#x4EAB;&#x6210;&#x7E93;</button>
+                    <button class="btn next-btn" id="quiz-again-btn" onclick="quizAgain()" data-i18n="quiz_again">&#x518D;&#x4F86;&#x4E00;&#x6B21;</button>
+                    <button class="btn share-btn" onclick="shareScoreCard()" data-i18n="share_score">&#x5206;&#x4EAB;&#x6210;&#x7E93;</button>
                     <button class="btn back-btn" onclick="backToLanguage()" data-i18n="quiz_back">&#x2190; &#x8FD4;&#x56DE;&#x9078;&#x64C7;&#x8A9E;&#x8A00;</button>
                 </div>
             </div>
@@ -763,6 +762,7 @@
     <script src="i18n/de.js"></script>
     <script src="js/speech.js"></script>
     <script src="js/topic-levels-data.js"></script>
+    <script src="js/vocab-counts.js"></script>
     <script src="js/quiz.js"></script>
     <script src="js/learnlang.js"></script>
     <script src="js/path.js"></script>

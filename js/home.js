@@ -160,8 +160,76 @@ function renderHome() {
             : typeof r.pct === 'number' ? r.pct + '%' : '';
         return homeCourseHtml(`homeOpenSet('${r.lang}')`, homeSetBadge(r.lang), wordSetName(r.lang), fill, note);
     });
-    recentEl.innerHTML = sets.concat(homeLearnChips()).join('') || `<p class="home-empty">${escHtml(t('home_recent_empty'))}</p>`;
-    document.getElementById('home-beginner').hidden = everPractised;
+    const recentHtml = sets.concat(homeLearnChips()).join('');
+    recentEl.innerHTML = recentHtml || `<p class="home-empty">${escHtml(t('home_recent_empty'))}</p>`;
+    // a first visit: nothing to continue yet, so 從這裡開始 takes the place (2026-11-13, the site review)
+    const showRecent = everPractised || !!recentHtml;
+    recentEl.hidden = !showRecent;
+    document.getElementById('home-recent-title').hidden = !showRecent;
+    const beginner = document.getElementById('home-beginner');
+    beginner.hidden = everPractised;
+    if (!everPractised) beginner.innerHTML = homeStartHtml();
+    homeWordRender();
+}
+
+/* 從這裡開始 (2026-11-13): no learning language yet → pick one; else one tap into each part of the site,
+   at the language's first level */
+function homeStartHtml() {
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    if (!lang) return `<section class="home-card home-start">${learnChooseHtml()}</section>`;
+    const tile = (onclick, badge, key) => `<button class="lang-btn home-course home-start-tile" onclick="${onclick}"><span class="home-course-badge">${badge}</span><span class="home-course-name">${escHtml(t(key))}</span></button>`;
+    return `<h3 class="home-section-title">${escHtml(t('home_start_title', { lang: learnLangName(lang) }))}</h3>
+        <p class="home-start-sum">${escHtml(t('home_start_sum'))}</p>
+        <div class="home-courses home-start-tiles">
+            ${tile('homeContinue()', '單', 'home_start_words')}
+            ${tile("homeStartLearn('reading')", '讀', 'home_start_read')}
+            ${tile("homeStartLearn('listening')", '聽', 'home_start_listen')}
+            ${tile("switchPage('alphabet', null)", 'Aa', 'home_alphabet_btn')}
+        </div>`;
+}
+
+/* open the learning language's first reading passage / listening round */
+async function homeStartLearn(page) {
+    const lang = learnLang();
+    const p = HOME_LEARN_PAGES.find(x => x.page === page);
+    if (!p.index()) { try { p.set(await fetch(p.url).then(r => r.json())); } catch { switchPage(page, null); return; } }
+    const levels = learnLevelsOf(p.index(), lang).slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+    const first = levels.find(s => page !== 'reading' || s.count) || levels[0];
+    if (!first) { switchPage(page, null); return; }
+    learnRememberLevel(page, first);
+    switchPage(page, null);
+    const loaded = () => (page === 'reading' ? readingSets : listeningLevels)[first.id];
+    for (let i = 0; i < 40 && !loaded(); i++) await new Promise(r => setTimeout(r, 100));
+    if (!loaded()) return;
+    if (page === 'reading') {
+        if (readingSetId !== first.id) readingPickSet(first.id);
+        if ((loaded().passages || []).length) readingGo('read', 0);
+    } else {
+        if (listeningLevelId !== first.id) listeningPickLevel(first.id);
+        const si = (loaded().sets || []).findIndex(x => !x.mock);
+        if (si >= 0) listeningStart(si, null, 'fresh');
+    }
+}
+
+/* 每日一字 on the home page when the right rail (js/rails.js) isn't showing it */
+function homeWordRender() {
+    const box = document.getElementById('home-word');
+    if (!box || typeof railTodayWord !== 'function') return;
+    const lang = railWordLang();
+    if (!lang || railVisible('rail-right')) { box.hidden = true; return; }
+    railTodayWord(lang).then(({ id, topic, row }) => {
+        if (railWordLang() !== lang || !row) { box.hidden = true; return; }
+        const v = railWordView(lang, row);
+        railWordNow = { lang, id, topic, view: v };
+        box.hidden = false;
+        box.innerHTML = `<div class="home-word-main">
+                <div class="home-label">${escHtml(t('rail_word_title'))}</div>
+                <div class="home-word-w" lang="${v.htmlLang}">${escHtml(v.word)}${v.reading ? ` <small lang="${v.htmlLang}">${escHtml(v.reading)}</small>` : ''}</div>
+                <div class="home-muted">${escHtml(v.meaning)}</div>
+            </div>
+            <button type="button" class="speak-btn" onclick="railSpeak()" aria-label="${escHtml(t('alpha_play_word'))}" title="${escHtml(t('alpha_play_word'))}">${uiIcon('speaker')}</button>
+            <button type="button" class="back-btn home-review-btn" onclick="railOpenTopic()">${escHtml(t('rail_word_go', { topic: t('topic_' + topic) }))}</button>`;
+    }).catch(() => { box.hidden = true; });
 }
 
 function homeCourseHtml(onclick, badge, name, fill, note) {
