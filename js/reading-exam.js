@@ -649,6 +649,7 @@ function readingExamFinish(timeUp) {
         if (typeof storeSet === 'function') storeSet('reading_progress', JSON.stringify(prog));
     }
     if (z.mock && typeof logDailyActivity === 'function') logDailyActivity(z.picks.filter(p => p !== -1).length);
+    if (z.mock && typeof mockHistoryAdd === 'function') mockHistoryAdd('reading', set.id, st.id, right, z.qs.length);
     readingGo('examresult');
 }
 

@@ -5,6 +5,14 @@ applyLang(siteLang);
    dropped, biggest first, keeping the set in use, until the write fits — so a full
    storage never loses progress or throws in the middle of a result screen.
    Returns whether the value was stored. */
+/* a finished mock exam, kept for the home page's exam card (js/home.js); synced as mock_history */
+function mockHistoryAdd(page, level, set, right, of) {
+    let all = [];
+    try { all = JSON.parse(localStorage.getItem('mock_history')) || []; } catch {}
+    all.push({ at: Date.now(), page, level, set, right, of });
+    storeSet('mock_history', JSON.stringify(all.slice(-300)));
+}
+
 function storeSet(key, value) {
     try { localStorage.setItem(key, value); return true; } catch {}
     try {

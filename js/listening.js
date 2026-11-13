@@ -928,6 +928,7 @@ function listeningFinish() {
     if (z.mock) {
         // the answers count toward the day's practice once the exam is over
         if (typeof logDailyActivity === 'function') z.picks.forEach(p => p.forEach(x => { if (x >= 0) logDailyActivity(); }));
+        if (!z.retry && typeof mockHistoryAdd === 'function') mockHistoryAdd('listening', lv.id, lv.sets[z.setNo].id, right, total);
     }
     // a full set only (a retry of the missed items doesn't count as the set's score)
     if (!z.retry) {

@@ -123,7 +123,15 @@ const SYNC_KEYS = {
     daily_goal: { raw: true },
     last_quiz_set: { raw: true },
     // the header's 我在學 language (js/learnlang.js), so a new device opens in it
-    learn_lang: { raw: true }
+    learn_lang: { raw: true },
+    // every mock exam taken ({at, page, level, set, right, of}), for the exam card's trend (2026-11-13)
+    mock_history: { empty: [], merge: (a, b) => {
+        const m = new Map();
+        [].concat(a, b).forEach(r => { if (r && r.at) m.set(r.at + '|' + r.page + '|' + r.level, r); });
+        return [...m.values()].sort((x, y) => x.at - y.at).slice(-300);
+    } },
+    // the exam the visitor is preparing for ({lang, level, date, set}); the newer choice wins
+    exam_goal: { empty: {}, merge: (a, b) => ((b && b.set || 0) > (a && a.set || 0) ? b : a) }
 };
 
 function notesSyncMerge(a, b) {

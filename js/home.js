@@ -170,6 +170,194 @@ function renderHome() {
     beginner.hidden = everPractised;
     if (!everPractised) beginner.innerHTML = homeStartHtml();
     homeWordRender();
+    homeWeeklyRender();
+    homeExamRender(everPractised);
+}
+
+/* ----- 上週回顧 (2026-11-13, site review item 4) -----
+   The first time the home page opens in a new week (Monday–Sunday), last week's numbers: words practised,
+   days, reading / listening rounds, mock exams — and how the words compare with the week before.
+   Shown until 知道了 (week_review_seen, this device). */
+function homeWeekStart(ms) {
+    const d = new Date(ms);
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - (d.getDay() + 6) % 7);
+    return d.getTime();
+}
+
+function homeWeekStats(from, to) {
+    const act = getDailyActivity();
+    let words = 0, days = 0;
+    for (let ms = from; ms < to; ms += 86400000) {
+        const n = act[activityDayKey(ms + 43200000)] || 0;   // noon: safe across a DST change
+        words += n;
+        if (n) days++;
+    }
+    const inWeek = at => at >= from && at < to;
+    const rounds = [readingProgress(), listeningProgress()].reduce((k, prog) =>
+        k + Object.values(prog).filter(r => r && inWeek(r.at || 0)).length, 0);
+    let mocks = 0;
+    try { mocks = (JSON.parse(localStorage.getItem('mock_history')) || []).filter(r => inWeek(r.at)).length; } catch {}
+    return { words, days, rounds, mocks };
+}
+
+function homeWeeklyRender() {
+    const box = document.getElementById('home-weekly');
+    if (!box) return;
+    const thisWeek = homeWeekStart(Date.now());
+    let seen = '';
+    try { seen = localStorage.getItem('week_review_seen') || ''; } catch {}
+    const last = homeWeekStats(thisWeek - 7 * 86400000, thisWeek);
+    if (seen === String(thisWeek) || !last.words && !last.rounds && !last.mocks) { box.hidden = true; return; }
+    const before = homeWeekStats(thisWeek - 14 * 86400000, thisWeek - 7 * 86400000);
+    const diff = before.words ? Math.round((last.words - before.words) / before.words * 100) : 0;
+    const stat = (n, key) => `<div class="home-weekly-stat"><b>${n}</b><span>${escHtml(t(key))}</span></div>`;
+    box.hidden = false;
+    box.innerHTML = `<div class="home-weekly-head">
+            <div class="home-label">${escHtml(t('week_title'))}</div>
+            <button type="button" class="page-intro-ok" onclick="homeWeeklyDone()">${escHtml(t('intro_ok'))}</button>
+        </div>
+        <div class="home-weekly-stats">
+            ${stat(last.words, 'week_words')}${stat(last.days + '/7', 'week_days')}${stat(last.rounds, 'week_rounds')}${stat(last.mocks, 'week_mocks')}
+        </div>
+        ${before.words && diff ? `<p class="home-muted">${escHtml(t(diff > 0 ? 'week_more' : 'week_less', { n: Math.abs(diff) }))}</p>` : ''}`;
+}
+
+function homeWeeklyDone() {
+    try { localStorage.setItem('week_review_seen', String(homeWeekStart(Date.now()))); } catch {}
+    homeWeeklyRender();
+}
+
+/* ----- 我的考試 (2026-11-13, site review item 4) -----
+   exam_goal = {lang, level: a reading level id, date: 'YYYY-MM-DD', set: when chosen} (synced). The card
+   counts down, gives this week's plan by the days left, and shows the level's last mock exam scores
+   (mock_history, written by js/reading-exam.js and js/listening.js). Shown once the visitor has practised. */
+let homeExamEditing = false;
+
+function homeExamGoal() {
+    try { const g = JSON.parse(localStorage.getItem('exam_goal')); return g && g.level ? g : null; } catch { return null; }
+}
+
+function homeExamLevels() {
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    const p = HOME_LEARN_PAGES.find(x => x.page === 'reading');
+    if (!lang || !p.index()) return [];
+    return learnLevelsOf(p.index(), lang).filter(s => s.level !== 'TW HSK 1–2')
+        .slice().sort((a, b) => (a.order || 0) - (b.order || 0));
+}
+
+/* the listening level that matches a reading level (same language, level name and edition) */
+function homeExamListening(set) {
+    const lp = HOME_LEARN_PAGES.find(x => x.page === 'listening');
+    return set && (lp.index() || []).find(s => s.lang === set.lang && s.level === set.level && (s.edition || '') === (set.edition || ''));
+}
+
+function homeExamRender(everPractised) {
+    const box = document.getElementById('home-exam');
+    if (!box) return;
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    const goal = homeExamGoal();
+    if (!lang || (!everPractised && !goal)) { box.hidden = true; return; }
+    const rp = HOME_LEARN_PAGES.find(x => x.page === 'reading');
+    const lp = HOME_LEARN_PAGES.find(x => x.page === 'listening');
+    if (!rp.index() || !lp.index()) {
+        if (!homeLearnFetching) {
+            homeLearnFetching = true;
+            Promise.all([rp, lp].filter(p => !p.index()).map(p => fetch(p.url).then(r => r.json()).then(v => { if (!p.index()) p.set(v); }).catch(() => {})))
+                .then(() => { homeLearnFetching = false; renderHome(); });
+        }
+        return;
+    }
+    box.hidden = false;
+    if (homeExamEditing) { box.classList.remove('home-exam-empty'); box.innerHTML = homeExamFormHtml(goal); return; }
+    if (!goal) {
+        box.classList.add('home-exam-empty');
+        box.innerHTML = `<span class="home-account-icon" aria-hidden="true">📅</span>
+            <div class="home-review-text">
+                <div class="home-big">${escHtml(t('exam_card_title'))}</div>
+                <div class="home-muted">${escHtml(t('exam_none_text'))}</div>
+            </div>
+            <button type="button" class="back-btn home-review-btn" onclick="homeExamEdit(true)">${escHtml(t('exam_set_btn'))}</button>`;
+        return;
+    }
+    box.classList.remove('home-exam-empty');
+    const set = (rp.index() || []).find(s => s.id === goal.level);
+    const name = set ? learnLangName(set.lang) + ' ' + learnLevelName(set.level) : goal.level;
+    const day = new Date(goal.date + 'T00:00:00');
+    const today = new Date(); today.setHours(0, 0, 0, 0);
+    const left = Math.round((day - today) / 86400000);
+    const when = left > 0 ? t('exam_days_left', { n: left }) : left === 0 ? t('exam_today') : t('exam_past');
+    const plan = left < 0 ? '' : left <= 60 ? 'exam_plan_near' : left <= 180 ? 'exam_plan_mid' : 'exam_plan_far';
+    let hist = [];
+    try { hist = JSON.parse(localStorage.getItem('mock_history')) || []; } catch {}
+    const lset = homeExamListening(set);
+    const trend = (page, id) => {
+        const rows = hist.filter(r => r.page === page && r.level === id).slice(-4);
+        return rows.length ? `<div class="home-exam-trend"><span>${escHtml(t('nav_' + page))}</span>${rows.map(r => `<b>${Math.round(r.right / r.of * 100)}%</b>`).join('<i aria-hidden="true">→</i>')}</div>` : '';
+    };
+    const trends = trend('reading', goal.level) + (lset ? trend('listening', lset.id) : '');
+    box.innerHTML = `<div class="home-exam-head">
+            <div>
+                <div class="home-label">${escHtml(t('exam_card_title'))}</div>
+                <div class="home-big">${escHtml(name)}</div>
+            </div>
+            <div class="home-exam-count${left < 0 ? ' past' : ''}">${escHtml(when)}<small>${escHtml(goal.date.replace(/-/g, '/'))}</small></div>
+        </div>
+        ${plan ? `<p class="home-exam-plan">${escHtml(t(plan))}</p>` : ''}
+        <div class="home-label">${escHtml(t('exam_mock_trend'))}</div>
+        <div class="home-exam-trends">${trends || `<span class="home-muted">${escHtml(t('exam_mock_none'))}</span>`}</div>
+        <div class="home-exam-actions">
+            <button type="button" class="back-btn" onclick="homeExamGo('reading')">${escHtml(t('nav_reading'))}</button>
+            ${lset ? `<button type="button" class="back-btn" onclick="homeExamGo('listening')">${escHtml(t('nav_listening'))}</button>` : ''}
+            <button type="button" class="pc-link home-exam-edit" onclick="homeExamEdit(true)">${escHtml(t('exam_edit'))}</button>
+        </div>`;
+}
+
+function homeExamFormHtml(goal) {
+    const levels = homeExamLevels();
+    const cur = goal && levels.some(s => s.id === goal.level) ? goal.level : (levels[0] || {}).id;
+    const d = new Date();
+    const min = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    return `<div class="home-label">${escHtml(t('exam_card_title'))}</div>
+        <div class="home-exam-form">
+            <label>${escHtml(t('exam_level'))}
+                <select id="home-exam-level">${levels.map(s => `<option value="${s.id}"${s.id === cur ? ' selected' : ''}>${escHtml(learnLevelName(s.level))}</option>`).join('')}</select></label>
+            <label>${escHtml(t('exam_date'))}
+                <input type="date" id="home-exam-date" min="${min}" value="${goal && goal.date ? goal.date : ''}"></label>
+        </div>
+        <div class="home-exam-actions">
+            <button type="button" class="next-btn" onclick="homeExamSave()">${escHtml(t('exam_save'))}</button>
+            <button type="button" class="back-btn" onclick="homeExamEdit(false)">${escHtml(t('exam_cancel'))}</button>
+            ${goal ? `<button type="button" class="pc-link home-exam-edit" onclick="homeExamClear()">${escHtml(t('exam_clear'))}</button>` : ''}
+        </div>`;
+}
+
+function homeExamEdit(on) { homeExamEditing = on; renderHome(); }
+
+function homeExamSave() {
+    const level = (document.getElementById('home-exam-level') || {}).value;
+    const dateEl = document.getElementById('home-exam-date');
+    const date = dateEl ? dateEl.value : '';
+    if (!level || !/^\d{4}-\d{2}-\d{2}$/.test(date)) { if (dateEl) dateEl.focus(); return; }
+    storeSet('exam_goal', JSON.stringify({ lang: learnLang(), level, date, set: Date.now() }));
+    homeExamEditing = false;
+    renderHome();
+}
+
+function homeExamClear() {
+    storeSet('exam_goal', JSON.stringify({ set: Date.now() }));   // an empty goal that still wins the merge
+    homeExamEditing = false;
+    renderHome();
+}
+
+/* 閱讀 / 聽力 from the exam card: that level's list */
+function homeExamGo(page) {
+    const goal = homeExamGoal();
+    const rp = HOME_LEARN_PAGES.find(x => x.page === 'reading');
+    const set = goal && (rp.index() || []).find(s => s.id === goal.level);
+    const target = page === 'reading' ? set : homeExamListening(set);
+    if (target) learnRememberLevel(page, target);
+    switchPage(page, null);
 }
 
 /* 從這裡開始 (2026-11-13): no learning language yet → pick one; else one tap into each part of the site,
