@@ -803,6 +803,272 @@
           "explain": {"zh": "「我買了兩個杯子」。", "en": "\"Two.\""}
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "pics": {
+        "p1": {"cols": 3, "rows": 3, "panels": ["a plate of dumplings", "a glass of milk", "a bowl of noodles", "a woman reading a book", "a woman writing a letter", "a woman watching television", "a bus at a bus stop; the bus is plain, with no letters, no numbers and no route sign", "an airplane in the sky", "a train"], "cap": ["餃子", "牛奶", "麵", "看書", "寫信", "看電視", "公車", "飛機", "火車"]},
+        "p2": {"cols": 3, "rows": 2, "panels": ["a cat sitting on a sofa", "a small dog running", "a goldfish in a bowl", "a desk with a computer", "a bed", "a chair"], "cap": ["貓", "狗", "魚", "電腦", "床", "椅子"]},
+        "p3": {"cols": 3, "rows": 2, "panels": ["a girl and her grandmother looking at photos together on a sofa", "a man at a fruit stand holding up a bunch of bananas", "two people at a bus stop looking at their watches", "a boy lying in bed with a thermometer in his mouth, his mother beside him", "a woman giving a small gift box to a smiling friend", "two students looking at an open book together at a desk"], "cap": ["看照片", "買香蕉", "等公車", "他病了", "送禮物", "一起看書"]}
+      },
+      "items": [
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 0},
+          "lines": [
+            {"who": "N", "s": "餃子", "zh": "餃子", "en": "dumplings"}
+          ],
+          "options": [
+            {"t": "餃子"},
+            {"t": "牛奶"},
+            {"t": "麵"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "聽到「餃子」：A。", "en": "You hear 餃子, dumplings: A."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 1},
+          "lines": [
+            {"who": "N", "s": "看電視", "zh": "看電視", "en": "to watch TV"}
+          ],
+          "options": [
+            {"t": "看書"},
+            {"t": "寫信"},
+            {"t": "看電視"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "聽到「看電視」：C。", "en": "You hear 看電視: C."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 2},
+          "lines": [
+            {"who": "N", "s": "飛機", "zh": "飛機", "en": "airplane"}
+          ],
+          "options": [
+            {"t": "公車"},
+            {"t": "飛機"},
+            {"t": "火車"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "聽到「飛機」：B。", "en": "You hear 飛機, airplane: B."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p2", "row": 0},
+          "lines": [
+            {"who": "N", "s": "狗", "zh": "狗", "en": "dog"}
+          ],
+          "options": [
+            {"t": "貓"},
+            {"t": "狗"},
+            {"t": "魚"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "聽到「狗」：B。", "en": "You hear 狗, dog: B."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p2", "row": 1},
+          "lines": [
+            {"who": "N", "s": "椅子", "zh": "椅子", "en": "chair"}
+          ],
+          "options": [
+            {"t": "電腦"},
+            {"t": "床"},
+            {"t": "椅子"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "聽到「椅子」：C。", "en": "You hear 椅子, chair: C."}
+        },
+        {
+          "type": "zh_reply",
+          "lines": [
+            {"who": "M", "s": "你今年多大？", "zh": "你今年多大？", "en": "How old are you this year?"}
+          ],
+          "options": [
+            {"t": "我很高興。"},
+            {"t": "我十八歲。"},
+            {"t": "我在學校。"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "問「多大」，回答年齡。", "en": "He asks your age."}
+        },
+        {
+          "type": "zh_reply",
+          "lines": [
+            {"who": "F", "s": "你喜歡喝茶嗎？", "zh": "你喜歡喝茶嗎？", "en": "Do you like tea?"}
+          ],
+          "options": [
+            {"t": "喜歡，我每天都喝。"},
+            {"t": "我會開車。"},
+            {"t": "在桌子上。"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "問「喜歡……嗎」，回答喜歡。", "en": "She asks if you like tea."}
+        },
+        {
+          "type": "zh_reply",
+          "lines": [
+            {"who": "M", "s": "現在幾點？", "zh": "現在幾點？", "en": "What time is it?"}
+          ],
+          "options": [
+            {"t": "星期三。"},
+            {"t": "八月。"},
+            {"t": "十點十分。"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "問「幾點」，回答時間。", "en": "He asks the time."}
+        },
+        {
+          "type": "zh_reply",
+          "lines": [
+            {"who": "F", "s": "你住在哪裡？", "zh": "你住在哪裡？", "en": "Where do you live?"}
+          ],
+          "options": [
+            {"t": "我住在桃園。"},
+            {"t": "我住了兩年。"},
+            {"t": "我很喜歡。"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "問住在哪裡，回答地點。", "en": "She asks where you live."}
+        },
+        {
+          "type": "zh_reply",
+          "lines": [
+            {"who": "M", "s": "再見！", "zh": "再見！", "en": "Goodbye!"}
+          ],
+          "options": [
+            {"t": "不客氣！"},
+            {"t": "再見！"},
+            {"t": "沒關係！"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "別人說「再見」，也說「再見」。", "en": "\"Goodbye!\" — \"Goodbye!\""}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "F", "s": "奶奶，這是誰？", "zh": "奶奶，這是誰？", "en": "Grandma, who is this?"},
+            {"who": "M", "s": "這是你爸爸，那時候他八歲。", "zh": "這是你爸爸，那時候他八歲。", "en": "That's your dad — he was eight then."}
+          ],
+          "answer": "A",
+          "explain": {"zh": "一起看照片：A。", "en": "Looking at photos: A."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "M", "s": "你怎麼了？", "zh": "你怎麼了？", "en": "What's wrong?"},
+            {"who": "F", "s": "我有點熱，不想吃飯。", "zh": "我有點熱，不想吃飯。", "en": "I feel a bit hot and don't want to eat."}
+          ],
+          "answer": "D",
+          "explain": {"zh": "他病了，在床上：D。", "en": "Ill in bed: D."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "F", "s": "公車怎麼還沒來？", "zh": "公車怎麼還沒來？", "en": "Why hasn't the bus come yet?"},
+            {"who": "M", "s": "我們再等五分鐘吧。", "zh": "我們再等五分鐘吧。", "en": "Let's wait five more minutes."}
+          ],
+          "answer": "C",
+          "explain": {"zh": "在公車站等公車：C。", "en": "Waiting at the bus stop: C."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "M", "s": "這是給你的，生日快樂！", "zh": "這是給你的，生日快樂！", "en": "This is for you — happy birthday!"},
+            {"who": "F", "s": "謝謝，你太好了！", "zh": "謝謝，你太好了！", "en": "Thanks, you're so kind!"}
+          ],
+          "answer": "E",
+          "explain": {"zh": "送禮物：E。", "en": "Giving a present: E."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "F", "s": "這個字是什麼意思？", "zh": "這個字是什麼意思？", "en": "What does this character mean?"},
+            {"who": "M", "s": "我看看，是「朋友」。", "zh": "我看看，是「朋友」。", "en": "Let me see — it means \"friend\"."}
+          ],
+          "answer": "F",
+          "explain": {"zh": "兩個學生一起看書：F。B 是多出來的。", "en": "Two students reading together: F. B is the spare."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "我昨天在商店買了一個電腦。", "zh": "我昨天在商店買了一個電腦。", "en": "I bought a computer at the shop yesterday."}
+          ],
+          "q": {"who": "N", "s": "他買了什麼？", "zh": "他買了什麼？", "en": "What did he buy?"},
+          "options": [
+            {"t": "手機"},
+            {"t": "電腦"},
+            {"t": "衣服"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「買了一個電腦」。", "en": "\"A computer.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "我們家的貓很喜歡在椅子上睡覺。", "zh": "我們家的貓很喜歡在椅子上睡覺。", "en": "Our cat loves sleeping on the chair."}
+          ],
+          "q": {"who": "N", "s": "貓喜歡在哪裡睡覺？", "zh": "貓喜歡在哪裡睡覺？", "en": "Where does the cat like to sleep?"},
+          "options": [
+            {"t": "椅子上"},
+            {"t": "床上"},
+            {"t": "桌子下面"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「喜歡在椅子上睡覺」。", "en": "\"On the chair.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "今天下午我要去醫院看朋友。", "zh": "今天下午我要去醫院看朋友。", "en": "This afternoon I'm going to the hospital to see a friend."}
+          ],
+          "q": {"who": "N", "s": "他下午去哪裡？", "zh": "他下午去哪裡？", "en": "Where is he going this afternoon?"},
+          "options": [
+            {"t": "學校"},
+            {"t": "飯館"},
+            {"t": "醫院"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「去醫院看朋友」。", "en": "\"The hospital.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "這件衣服兩百塊，不太貴。", "zh": "這件衣服兩百塊，不太貴。", "en": "This garment is two hundred dollars — not too expensive."}
+          ],
+          "q": {"who": "N", "s": "這件衣服多少錢？", "zh": "這件衣服多少錢？", "en": "How much is it?"},
+          "options": [
+            {"t": "一百塊"},
+            {"t": "兩百塊"},
+            {"t": "三百塊"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「這件衣服兩百塊」。", "en": "\"Two hundred.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "明天我和同學去台南玩。", "zh": "明天我和同學去台南玩。", "en": "Tomorrow my classmates and I are going to Tainan."}
+          ],
+          "q": {"who": "N", "s": "他明天和誰去台南？", "zh": "他明天和誰去台南？", "en": "Who is he going to Tainan with?"},
+          "options": [
+            {"t": "同學"},
+            {"t": "爸爸"},
+            {"t": "女兒"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「我和同學去台南玩」。", "en": "\"His classmates.\""}
+        }
+      ]
     }
   ]
 }

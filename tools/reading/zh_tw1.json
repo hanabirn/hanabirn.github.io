@@ -537,6 +537,102 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 20,
+      "items": [
+        {
+          "type": "zh_pic",
+          "mondai": 1,
+          "ask": "zh_pic",
+          "pic": {"cols": 3, "rows": 2, "panels": ["a girl drinking a glass of milk at a kitchen table", "a man reading a newspaper on a park bench", "a boy sleeping in bed", "a woman opening the door of a small shop", "two students sitting in a classroom listening to a teacher", "a family eating dumplings at a round table"], "cap": ["女孩在喝牛奶", "爸爸在看報紙", "男孩在睡覺", "她開了商店的門", "學生在上課", "一家人吃餃子"]},
+          "questions": [
+            {"q": "我們在上課，老師在說話。", "answer": "E", "zh": "「在上課」：E 是在教室聽老師說話的學生。", "en": "\"We are in class\": E."},
+            {"q": "我兒子九點就睡覺了。", "answer": "C", "zh": "「睡覺」：C 是在床上睡覺的男孩。", "en": "\"My son went to bed at nine\": C."},
+            {"q": "她每天早上喝牛奶。", "answer": "A", "zh": "「喝牛奶」：A。", "en": "\"She drinks milk every morning\": A."},
+            {"q": "今天是星期天，我們一家人一起吃飯。", "answer": "F", "zh": "「一家人一起吃飯」：F。", "en": "\"Our family eats together\": F."},
+            {"q": "爸爸喜歡在外面看報紙。", "answer": "B", "zh": "「在外面看報紙」：B 是在公園長椅上看報紙的男人。D 是多出來的。", "en": "\"Dad likes reading the paper outside\": B. D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 2,
+          "ask": "zh_match",
+          "bank": ["在學校前面。", "我坐計程車去。", "是我的。", "七點半。", "我們都很好。", "一杯茶。"],
+          "questions": [
+            {"q": "這本書是誰的？", "answer": "C", "zh": "問「是誰的」，回答「是我的。」", "en": "\"Whose book is this?\" — \"Mine.\""},
+            {"q": "你想喝什麼？", "answer": "F", "zh": "問想喝什麼，回答「一杯茶。」", "en": "\"What would you like to drink?\" — \"A cup of tea.\""},
+            {"q": "你怎麼去機場？", "answer": "B", "zh": "問「怎麼去」，回答「坐計程車去。」", "en": "\"How are you getting to the airport?\" — \"By taxi.\""},
+            {"q": "你們家的人好嗎？", "answer": "E", "zh": "問家人好不好，回答「我們都很好。」", "en": "\"How is your family?\" — \"We're all well.\""},
+            {"q": "那家商店在哪裡？", "answer": "A", "zh": "問「在哪裡」，回答「在學校前面。」D 是多出來的。", "en": "\"Where is that shop?\" — \"In front of the school.\" D is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 3,
+          "ask": "zh_bank",
+          "bank": ["嗎", "個", "坐", "會", "沒有", "少"],
+          "questions": [
+            {"q": "你是台灣人（　）？", "answer": "A", "zh": "是非問句句尾加「嗎」。", "en": "嗎 ends a yes-no question."},
+            {"q": "我們（　）火車去花蓮吧。", "answer": "C", "zh": "「坐火車」：坐＋交通工具。", "en": "坐 + a vehicle: take the train."},
+            {"q": "這個蘋果多（　）錢？", "answer": "F", "zh": "「多少錢」：問價錢。", "en": "多少錢 asks the price."},
+            {"q": "我家有三（　）房間。", "answer": "B", "zh": "房間的量詞用「個」。", "en": "個 is the measure word here."},
+            {"q": "我弟弟（　）開車。", "answer": "D", "zh": "「會開車」：學過、能做。「沒有」是多出來的。", "en": "會, can (learnt): can drive. 沒有 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我叫陳大明，今年二十歲，我住在新竹。",
+          "tr": {"en": "My name is Chen Daming; I'm twenty and live in Hsinchu."},
+          "questions": [
+            {"q": "陳大明住在哪裡？", "options": ["台北", "新竹", "台中"], "answer": 1, "zh": "「我住在新竹」。", "en": "\"In Hsinchu.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "媽媽在醫院工作，她是醫生。",
+          "tr": {"en": "Mum works at a hospital; she is a doctor."},
+          "questions": [
+            {"q": "媽媽做什麼工作？", "options": ["醫生", "老師", "學生"], "answer": 0, "zh": "「她是醫生」。", "en": "\"A doctor.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "今天很冷，你多穿一件衣服吧。",
+          "tr": {"en": "It's cold today — put on another layer."},
+          "questions": [
+            {"q": "今天天氣怎麼樣？", "options": ["很熱", "下雨了", "很冷"], "answer": 2, "zh": "「今天很冷」。", "en": "\"Very cold.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我星期一到星期五上學，星期六和星期天在家。",
+          "tr": {"en": "I go to school Monday to Friday and stay home at the weekend."},
+          "questions": [
+            {"q": "他星期六在哪裡？", "options": ["在學校", "在家", "在商店"], "answer": 1, "zh": "「星期六和星期天在家」。", "en": "\"At home.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我買了三本書，一本是中文書。",
+          "tr": {"en": "I bought three books; one is in Chinese."},
+          "questions": [
+            {"q": "他買了幾本書？", "options": ["三本", "一本", "兩本"], "answer": 0, "zh": "「我買了三本書」。", "en": "\"Three.\""}
+          ]
+        }
+      ]
     }
   ]
 }
