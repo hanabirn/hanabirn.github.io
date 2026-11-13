@@ -2789,6 +2789,929 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_match",
+          "part": 1,
+          "plays": 1,
+          "n_options": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Podcast über drei neue Romane.",
+              "zh": "你會聽到一集介紹三本新小說的 podcast。",
+              "en": "You will hear a podcast about three new novels."
+            },
+            {
+              "who": "F",
+              "s": "Willkommen bei „Seitenweise“. Ich stelle Ihnen heute drei Neuerscheinungen vor. Beginnen wir mit „Das stille Haus“, dem Debüt einer jungen Autorin aus Leipzig. Erzählt wird die Geschichte einer Familie, die nach dem Tod der Großmutter deren Haus ausräumt — und dabei auf ein Geheimnis stößt. Das Buch ist leise, genau beobachtet, manchmal fast zu langsam. Wer Spannung sucht, wird enttäuscht sein.",
+              "zh": "歡迎收聽《一頁頁》。今天我介紹三本新書。先從《寂靜之屋》開始，這是一位萊比錫年輕女作家的處女作。故事講一個家庭在祖母過世後清理她的房子——並發現了一個祕密。這本書很安靜、觀察入微，有時幾乎太慢。想找刺激的人會失望。",
+              "en": "Welcome to 'Page by Page'. Today I'm presenting three new releases. Let's start with 'The Silent House', the debut of a young author from Leipzig. It tells of a family clearing out the grandmother's house after her death — and coming across a secret. The book is quiet, precisely observed, sometimes almost too slow. Anyone looking for suspense will be disappointed."
+            },
+            {
+              "who": "F",
+              "s": "Ganz anders „Nordlicht“: ein Thriller, der auf einer Forschungsstation in der Arktis spielt. Der Autor war selbst Polarforscher, und das merkt man — die Beschreibungen von Kälte und Isolation sind beklemmend echt. Die Figuren bleiben allerdings blass. Das Buch ist bereits verfilmt worden; die Serie startet im Frühjahr.",
+              "zh": "截然不同的是《北極光》：一部在北極研究站發生的驚悚小說。作者本人曾是極地研究員，讀得出來——寒冷和孤立的描寫真實得令人窒息。不過人物比較平板。這本書已經改編成影集，春天開播。",
+              "en": "Quite different is 'Northern Light': a thriller set at a research station in the Arctic. The author was a polar researcher himself, and it shows — the descriptions of cold and isolation are oppressively real. The characters remain pale, though. The book has already been adapted; the series starts in spring."
+            },
+            {
+              "who": "F",
+              "s": "Und schließlich „Die Rechnung“, ein satirischer Roman über einen Unternehmensberater, der plötzlich selbst wegrationalisiert wird. Ich habe selten so gelacht. Unter dem Humor steckt eine scharfe Kritik an der Arbeitswelt. Mit fast 600 Seiten ist das Buch allerdings ziemlich umfangreich — für den Urlaub eher etwas für den Koffer als für die Handtasche.",
+              "zh": "最後是《帳單》，一部諷刺小說，講一位企管顧問突然自己被裁掉。我很少笑得這麼厲害。幽默底下藏著對職場的尖銳批判。不過將近 600 頁，相當厚——度假時比較適合放行李箱，不適合放手提包。",
+              "en": "And finally 'The Bill', a satirical novel about a management consultant who is suddenly rationalised away himself. I've rarely laughed so much. Beneath the humour lies sharp criticism of the working world. At almost 600 pages, though, the book is rather long — for holidays, more one for the suitcase than the handbag."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Das Buch hat einen hohen Unterhaltungswert.",
+                "zh": "這本書娛樂性很高。",
+                "en": "The book is very entertaining."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "《帳單》：很少笑得這麼厲害。",
+                "en": "'The Bill'."
+              }
+            },
+            {
+              "ask": {
+                "s": "Der Autor kennt den Schauplatz aus eigener Erfahrung.",
+                "zh": "作者親身了解故事場景。",
+                "en": "The author knows the setting first-hand."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "曾是極地研究員。",
+                "en": "'Northern Light'."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Erzähltempo ist sehr gemächlich.",
+                "zh": "敘事節奏很慢。",
+                "en": "The pace is very leisurely."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "有時幾乎太慢。",
+                "en": "'The Silent House'."
+              }
+            },
+            {
+              "ask": {
+                "s": "Es gibt das Buch bald auch auf dem Bildschirm.",
+                "zh": "這本書很快會上螢幕。",
+                "en": "It will soon be on screen."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "春天開播影集。",
+                "en": "'Northern Light'."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Buch ist sehr lang.",
+                "zh": "這本書很厚。",
+                "en": "The book is very long."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "將近 600 頁。",
+                "en": "'The Bill'."
+              }
+            },
+            {
+              "ask": {
+                "s": "Es handelt sich um das erste Buch der Autorin.",
+                "zh": "這是作者的第一本書。",
+                "en": "It's the author's first book."
+              },
+              "options": [
+                {
+                  "t": "„Das stille Haus“"
+                },
+                {
+                  "t": "„Nordlicht“"
+                },
+                {
+                  "t": "„Die Rechnung“"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "處女作。",
+                "en": "'The Silent House'."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Interview mit einem Bergführer.",
+              "zh": "你會聽到一段訪問登山嚮導的內容。",
+              "en": "You will hear an interview with a mountain guide."
+            },
+            {
+              "who": "F",
+              "s": "Herr Gruber, Sie sind seit dreißig Jahren Bergführer in den Alpen. Was hat sich verändert?",
+              "zh": "格魯伯先生，您在阿爾卑斯山當登山嚮導三十年了。有什麼改變？",
+              "en": "Mr Gruber, you have been a mountain guide in the Alps for thirty years. What has changed?"
+            },
+            {
+              "who": "M",
+              "s": "Vor allem das Gelände. Gletscher, über die ich früher Gruppen geführt habe, gibt es heute nicht mehr. Und durch das Auftauen des Permafrosts lösen sich immer öfter Steine. Manche klassischen Routen sind im Sommer inzwischen zu gefährlich.",
+              "zh": "主要是地形。以前我帶隊走過的冰川，現在已經不存在了。永凍層融化，落石越來越頻繁。有些經典路線夏天已經太危險了。",
+              "en": "Above all the terrain. Glaciers I used to lead groups across no longer exist. And as the permafrost thaws, rocks come loose more and more often. Some classic routes are now too dangerous in summer."
+            },
+            {
+              "who": "F",
+              "s": "Und die Gäste?",
+              "zh": "那客人呢？",
+              "en": "And the clients?"
+            },
+            {
+              "who": "M",
+              "s": "Die sind fitter als früher, das muss man sagen. Viele trainieren gezielt. Aber die Erfahrung fehlt. Sie kennen die Berge aus Videos und unterschätzen, wie schnell das Wetter umschlagen kann.",
+              "zh": "他們比以前更健壯，這不得不說。很多人有計畫地訓練。但是缺乏經驗。他們從影片認識山，低估了天氣變化有多快。",
+              "en": "They're fitter than before, I must say. Many train specifically. But they lack experience. They know the mountains from videos and underestimate how quickly the weather can turn."
+            },
+            {
+              "who": "F",
+              "s": "Haben Sie selbst einmal einen schweren Unfall erlebt?",
+              "zh": "您自己經歷過嚴重的意外嗎？",
+              "en": "Have you ever had a serious accident yourself?"
+            },
+            {
+              "who": "M",
+              "s": "Zum Glück nicht. Aber ich habe Touren abgebrochen, zwei, drei Mal im Jahr. Das gehört dazu. Ein guter Bergführer ist nicht der, der jeden Gipfel erreicht, sondern der, der jeden Gast heil zurückbringt.",
+              "zh": "幸好沒有。但我中止過行程，一年兩三次。這是工作的一部分。好的嚮導不是每座山頂都登上的人，而是把每位客人平安帶回來的人。",
+              "en": "Luckily not. But I've called off tours, two or three times a year. That's part of it. A good guide isn't the one who reaches every summit but the one who brings every client back safely."
+            },
+            {
+              "who": "F",
+              "s": "Würden Sie jungen Leuten den Beruf empfehlen?",
+              "zh": "您會推薦年輕人做這行嗎？",
+              "en": "Would you recommend the job to young people?"
+            },
+            {
+              "who": "M",
+              "s": "Wenn sie ihn lieben, ja. Reich wird man nicht, und die Ausbildung dauert drei Jahre. Meine Tochter macht sie gerade. Ich bin stolz, aber ehrlich gesagt auch ein bisschen besorgt.",
+              "zh": "如果他們熱愛，會。這行發不了財，訓練要三年。我女兒正在受訓。我很驕傲，但老實說也有點擔心。",
+              "en": "If they love it, yes. You don't get rich, and the training takes three years. My daughter is doing it right now. I'm proud, but honestly a little worried too."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Einige Gletscher sind verschwunden.",
+                "zh": "有些冰川消失了。",
+                "en": "Some glaciers have disappeared."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "以前走過的冰川不存在了。",
+                "en": "They no longer exist."
+              }
+            },
+            {
+              "ask": {
+                "s": "Alle klassischen Routen sind gesperrt.",
+                "zh": "所有經典路線都封閉了。",
+                "en": "All classic routes are closed."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "只是「有些」夏天太危險。",
+                "en": "Only some."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Gäste sind körperlich besser vorbereitet als früher.",
+                "zh": "客人體能比以前好。",
+                "en": "Clients are fitter than before."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "比以前更健壯。",
+                "en": "Fitter."
+              }
+            },
+            {
+              "ask": {
+                "s": "Viele Gäste nehmen an Erste-Hilfe-Kursen teil.",
+                "zh": "很多客人上急救課。",
+                "en": "Many clients take first-aid courses."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "沒提到。",
+                "en": "Not mentioned."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Gäste unterschätzen das Wetter.",
+                "zh": "客人低估天氣。",
+                "en": "Clients underestimate the weather."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "低估天氣變化。",
+                "en": "They do."
+              }
+            },
+            {
+              "ask": {
+                "s": "Herr Gruber hatte einen schweren Unfall.",
+                "zh": "格魯伯先生出過嚴重意外。",
+                "en": "Mr Gruber had a serious accident."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "幸好沒有。",
+                "en": "No."
+              }
+            },
+            {
+              "ask": {
+                "s": "Er bricht jedes Jahr einige Touren ab.",
+                "zh": "他每年會中止幾次行程。",
+                "en": "He calls off some tours every year."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "一年兩三次。",
+                "en": "Two or three a year."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bergführer verdienen sehr gut.",
+                "zh": "登山嚮導收入很好。",
+                "en": "Guides earn very well."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "發不了財。",
+                "en": "You don't get rich."
+              }
+            },
+            {
+              "ask": {
+                "s": "Seine Tochter möchte im Ausland arbeiten.",
+                "zh": "他女兒想去國外工作。",
+                "en": "His daughter wants to work abroad."
+              },
+              "options": [
+                {
+                  "t": "stimmt"
+                },
+                {
+                  "t": "stimmt nicht"
+                },
+                {
+                  "t": "dazu wird nichts gesagt"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "只說她在受訓，沒提國外。",
+                "en": "Not mentioned."
+              }
+            }
+          ],
+          "keep_order": true
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Gespräch über die Zukunft der Arbeit. Abschnitt 1.",
+              "zh": "你會聽到一段關於工作未來的對談。第一段。",
+              "en": "You will hear a conversation about the future of work. Section 1."
+            },
+            {
+              "who": "M",
+              "s": "Frau Dr. Seidel, Sie erforschen, wie künstliche Intelligenz den Arbeitsmarkt verändert. Werden viele Jobs verschwinden?",
+              "zh": "塞德爾博士，您研究人工智慧如何改變就業市場。很多工作會消失嗎？",
+              "en": "Dr Seidel, you research how AI is changing the labour market. Will many jobs disappear?"
+            },
+            {
+              "who": "F",
+              "s": "Weniger, als oft behauptet wird. Was verschwindet, sind eher einzelne Aufgaben innerhalb eines Berufs. Eine Steuerberaterin wird nicht ersetzt, aber sie wird weniger Zeit mit dem Sortieren von Belegen verbringen.",
+              "zh": "比常說的少。消失的比較是一個職業裡的個別任務。稅務顧問不會被取代，但她整理收據的時間會減少。",
+              "en": "Fewer than is often claimed. What disappears are rather individual tasks within a job. A tax adviser won't be replaced, but she'll spend less time sorting receipts."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was erwartet Dr. Seidel?",
+                "zh": "塞德爾博士預期什麼？",
+                "en": "What does Dr Seidel expect?"
+              },
+              "options": [
+                {
+                  "t": "massenhaften Jobverlust"
+                },
+                {
+                  "t": "dass Steuerberater überflüssig werden"
+                },
+                {
+                  "t": "dass sich Tätigkeiten innerhalb von Berufen ändern"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "消失的是個別任務。",
+                "en": "Tasks within jobs change."
+              }
+            },
+            {
+              "ask": {
+                "s": "Das Beispiel der Steuerberaterin zeigt, dass…",
+                "zh": "稅務顧問的例子說明……",
+                "en": "The tax adviser example shows that…"
+              },
+              "options": [
+                {
+                  "t": "der Beruf ausstirbt."
+                },
+                {
+                  "t": "mehr Belege anfallen."
+                },
+                {
+                  "t": "Routinearbeit abnimmt."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "整理收據時間減少。",
+                "en": "Routine work decreases."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 2.",
+              "zh": "第二段。",
+              "en": "Section 2."
+            },
+            {
+              "who": "M",
+              "s": "Wer profitiert denn von dieser Entwicklung?",
+              "zh": "那誰會從這個發展中受益？",
+              "en": "Who benefits from this development?"
+            },
+            {
+              "who": "F",
+              "s": "Interessanterweise nicht unbedingt die Hochqualifizierten. Studien zeigen, dass gerade Berufseinsteiger mit KI-Unterstützung schneller auf das Niveau erfahrener Kollegen kommen. Der Abstand verringert sich.",
+              "zh": "有趣的是，不一定是高學歷的人。研究顯示，正是職場新人在 AI 輔助下，能更快達到資深同事的水準。差距縮小了。",
+              "en": "Interestingly, not necessarily the highly qualified. Studies show that newcomers in particular reach the level of experienced colleagues faster with AI support. The gap narrows."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wer profitiert laut Studien besonders?",
+                "zh": "研究說誰特別受益？",
+                "en": "Who benefits most according to studies?"
+              },
+              "options": [
+                {
+                  "t": "erfahrene Fachkräfte"
+                },
+                {
+                  "t": "Berufsanfänger"
+                },
+                {
+                  "t": "Führungskräfte"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "職場新人。",
+                "en": "Newcomers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was passiert mit dem Unterschied zwischen Anfängern und Erfahrenen?",
+                "zh": "新手和老手的差距會怎樣？",
+                "en": "What happens to the gap?"
+              },
+              "options": [
+                {
+                  "t": "Er wird größer."
+                },
+                {
+                  "t": "Er bleibt gleich."
+                },
+                {
+                  "t": "Er wird kleiner."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "差距縮小。",
+                "en": "It narrows."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 3.",
+              "zh": "第三段。",
+              "en": "Section 3."
+            },
+            {
+              "who": "M",
+              "s": "Klingt fast zu schön. Wo sehen Sie Risiken?",
+              "zh": "聽起來好得不像真的。您看到哪些風險？",
+              "en": "Sounds almost too good. Where do you see risks?"
+            },
+            {
+              "who": "F",
+              "s": "Bei der Kontrolle. Wenn Unternehmen KI einsetzen, um Leistung zu messen — wie schnell jemand tippt, wie lange er Pause macht —, entsteht ein enormer Druck. Hier brauchen wir klare Regeln, und zwar bevor sich solche Praktiken durchsetzen.",
+              "zh": "在監控方面。如果公司用 AI 衡量績效——打字多快、休息多久——就會產生巨大壓力。這裡需要明確的規則，而且要在這種做法普及之前。",
+              "en": "In monitoring. If companies use AI to measure performance — how fast someone types, how long their breaks are — enormous pressure arises. We need clear rules here, and before such practices become established."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Welches Risiko nennt Dr. Seidel?",
+                "zh": "塞德爾博士提到什麼風險？",
+                "en": "Which risk does she name?"
+              },
+              "options": [
+                {
+                  "t": "zu hohe Kosten"
+                },
+                {
+                  "t": "Überwachung der Beschäftigten"
+                },
+                {
+                  "t": "technische Fehler"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "用 AI 衡量績效、監控。",
+                "en": "Monitoring staff."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wann sollten Regeln geschaffen werden?",
+                "zh": "規則應該什麼時候制定？",
+                "en": "When should rules be made?"
+              },
+              "options": [
+                {
+                  "t": "wenn Probleme auftreten"
+                },
+                {
+                  "t": "erst nach weiteren Studien"
+                },
+                {
+                  "t": "möglichst früh"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "在普及之前。",
+                "en": "Early."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Abschnitt 4.",
+              "zh": "第四段。",
+              "en": "Section 4."
+            },
+            {
+              "who": "M",
+              "s": "Was raten Sie jungen Menschen, die heute einen Beruf wählen?",
+              "zh": "您會給今天選職業的年輕人什麼建議？",
+              "en": "What do you advise young people choosing a career today?"
+            },
+            {
+              "who": "F",
+              "s": "Nicht nach dem vermeintlich sicheren Beruf zu suchen — den gibt es nicht. Wichtiger ist die Fähigkeit, ein Leben lang dazuzulernen. Und Fähigkeiten wie Empathie oder Verhandlungsgeschick, die Maschinen schwer nachahmen können, werden eher an Wert gewinnen.",
+              "zh": "不要找所謂安全的職業——那不存在。更重要的是終身學習的能力。而且像同理心或談判技巧這種機器難以模仿的能力，價值反而會提高。",
+              "en": "Not to look for the supposedly safe job — it doesn't exist. More important is the ability to keep learning throughout life. And skills like empathy or negotiation, which machines find hard to imitate, will tend to gain value."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was hält Dr. Seidel von „sicheren Berufen“?",
+                "zh": "她怎麼看「安全的職業」？",
+                "en": "What does she think of \"safe jobs\"?"
+              },
+              "options": [
+                {
+                  "t": "Es gibt sie nicht."
+                },
+                {
+                  "t": "Man sollte sie wählen."
+                },
+                {
+                  "t": "Sie liegen im Handwerk."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "那不存在。",
+                "en": "They don't exist."
+              }
+            },
+            {
+              "ask": {
+                "s": "Welche Fähigkeiten werden wichtiger?",
+                "zh": "哪些能力會更重要？",
+                "en": "Which skills become more important?"
+              },
+              "options": [
+                {
+                  "t": "Programmieren"
+                },
+                {
+                  "t": "zwischenmenschliche Fähigkeiten"
+                },
+                {
+                  "t": "schnelles Tippen"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "同理心、談判。",
+                "en": "Interpersonal skills."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Vortrag über Mehrsprachigkeit bei Kindern.",
+              "zh": "你會聽到一場關於兒童多語能力的演講。",
+              "en": "You will hear a lecture on multilingualism in children."
+            },
+            {
+              "who": "F",
+              "s": "Meine Damen und Herren, lange Zeit galt Mehrsprachigkeit bei Kindern als Risiko. Eltern wurde geraten, mit ihren Kindern nur eine Sprache zu sprechen, um sie nicht zu verwirren. Diese Empfehlung ist heute widerlegt. Kinder können von Geburt an mehrere Sprachen gleichzeitig erwerben, ohne dass eine darunter leidet. Zwar beginnen manche etwas später zu sprechen, doch dieser Rückstand ist nach wenigen Jahren aufgeholt. Ein häufig beobachtetes Phänomen ist das Mischen von Sprachen innerhalb eines Satzes. Viele Eltern sind darüber beunruhigt. Tatsächlich zeigt es aber, dass das Kind beide Systeme beherrscht und gezielt kombiniert — Erwachsene in mehrsprachigen Familien tun genau dasselbe. Entscheidend für den Erfolg ist nicht eine bestimmte Methode, sondern die Menge und Qualität des Kontakts. Eine Sprache, die das Kind nur eine Stunde pro Woche hört, wird es kaum aktiv sprechen. Ein besonderes Problem ist die Pubertät. Viele Jugendliche lehnen die Familiensprache plötzlich ab, weil sie nicht anders sein wollen als ihre Freunde. Hier hilft kein Druck, wohl aber der Kontakt zu Gleichaltrigen, die dieselbe Sprache sprechen, etwa in Ferienlagern. Und schließlich: Mehrsprachigkeit ist kein Privileg gebildeter Familien. In Deutschland wachsen Hunderttausende Kinder mit Türkisch, Arabisch oder Polnisch auf. Dass ihre Sprachen in der Schule kaum anerkannt werden, ist eine verpasste Chance.",
+              "zh": "各位女士先生，長期以來兒童多語被視為一種風險。家長被建議只跟孩子說一種語言，以免混淆。這個建議如今已被推翻。孩子從出生起就能同時習得多種語言，任何一種都不會因此受損。雖然有些孩子開口說話比較晚，但這種落後幾年內就趕上了。一個常見的現象是在一句話裡混用語言。很多家長為此擔心。但事實上這顯示孩子掌握了兩個系統，並有意地組合——多語家庭的大人也是這樣。成功的關鍵不是特定的方法，而是接觸的量和質。孩子每週只聽一小時的語言，幾乎不會主動說。一個特別的問題是青春期。很多青少年突然排斥家庭語言，因為不想和朋友不一樣。這時施壓沒有用，但和說同樣語言的同齡人接觸會有幫助，例如夏令營。最後：多語不是受過教育家庭的特權。在德國有數十萬兒童在土耳其語、阿拉伯語或波蘭語中長大。他們的語言在學校幾乎不被承認，這是錯失的機會。",
+              "en": "Ladies and gentlemen, for a long time multilingualism in children was considered a risk. Parents were advised to speak only one language with their children so as not to confuse them. This advice has since been disproved. Children can acquire several languages simultaneously from birth without any of them suffering. Some do start speaking a little later, but this delay is made up within a few years. A frequently observed phenomenon is mixing languages within a sentence. Many parents are worried by this. In fact, it shows that the child masters both systems and combines them deliberately — adults in multilingual families do exactly the same. What matters for success is not a particular method but the amount and quality of contact. A language the child hears only one hour a week will hardly be spoken actively. A particular problem is puberty. Many teenagers suddenly reject the family language because they don't want to be different from their friends. Pressure doesn't help here, but contact with peers who speak the same language does, for example at holiday camps. And finally: multilingualism is not a privilege of educated families. In Germany hundreds of thousands of children grow up with Turkish, Arabic or Polish. That their languages are hardly recognised at school is a missed opportunity."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Was wurde Eltern früher geraten?",
+                "zh": "以前家長被建議什麼？",
+                "en": "What were parents advised before?"
+              },
+              "options": [
+                {
+                  "t": "früh Englisch zu lernen"
+                },
+                {
+                  "t": "Sprachkurse zu besuchen"
+                },
+                {
+                  "t": "nur eine Sprache zu sprechen"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "只說一種語言。",
+                "en": "One language only."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was gilt für den späteren Sprechbeginn mancher Kinder?",
+                "zh": "有些孩子較晚開口說話，怎麼看？",
+                "en": "What about some children starting to speak later?"
+              },
+              "options": [
+                {
+                  "t": "Er wird bald ausgeglichen."
+                },
+                {
+                  "t": "Er bleibt dauerhaft."
+                },
+                {
+                  "t": "Er betrifft alle Kinder."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "幾年內就趕上。",
+                "en": "Soon made up."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie bewertet die Rednerin das Mischen von Sprachen?",
+                "zh": "講者怎麼評價混用語言？",
+                "en": "How does she view language mixing?"
+              },
+              "options": [
+                {
+                  "t": "als Zeichen von Kompetenz"
+                },
+                {
+                  "t": "als Warnsignal"
+                },
+                {
+                  "t": "als schlechte Gewohnheit"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "顯示孩子掌握兩個系統。",
+                "en": "A sign of competence."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was ist für den Spracherwerb entscheidend?",
+                "zh": "習得語言的關鍵是什麼？",
+                "en": "What is decisive for acquisition?"
+              },
+              "options": [
+                {
+                  "t": "eine bestimmte Methode"
+                },
+                {
+                  "t": "Menge und Qualität des Kontakts"
+                },
+                {
+                  "t": "das Alter der Eltern"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "接觸的量和質。",
+                "en": "Amount and quality of contact."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum lehnen Jugendliche oft die Familiensprache ab?",
+                "zh": "青少年為什麼常排斥家庭語言？",
+                "en": "Why do teenagers often reject the family language?"
+              },
+              "options": [
+                {
+                  "t": "Sie ist zu schwer."
+                },
+                {
+                  "t": "Die Eltern zwingen sie."
+                },
+                {
+                  "t": "Sie wollen sich nicht von Freunden unterscheiden."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "不想和朋友不一樣。",
+                "en": "Not to be different."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was hilft in dieser Phase?",
+                "zh": "這個階段什麼有幫助？",
+                "en": "What helps in this phase?"
+              },
+              "options": [
+                {
+                  "t": "Kontakt zu Gleichaltrigen mit derselben Sprache"
+                },
+                {
+                  "t": "mehr Druck der Eltern"
+                },
+                {
+                  "t": "Nachhilfeunterricht"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "同齡人、夏令營。",
+                "en": "Peers who speak it."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was kritisiert die Rednerin am Ende?",
+                "zh": "講者最後批評什麼？",
+                "en": "What does she criticise at the end?"
+              },
+              "options": [
+                {
+                  "t": "dass zu viele Kinder mehrsprachig sind"
+                },
+                {
+                  "t": "dass Familiensprachen in der Schule kaum anerkannt werden"
+                },
+                {
+                  "t": "dass gebildete Familien bevorzugt werden"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "在學校幾乎不被承認。",
+                "en": "Lack of recognition at school."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
