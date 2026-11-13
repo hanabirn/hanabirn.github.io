@@ -499,7 +499,6 @@ function dismissUpdateBanner() {
 document.addEventListener('DOMContentLoaded', () => {
     initBgm();
     initNavMenus();
-    initVisitorCounter();
 });
 
 /* ===================== Splash screen ===================== */

@@ -37,7 +37,6 @@ function applyLang(lang) {
         const code = currentPill.dataset.flag;
         if (/^[a-z]{2}$/.test(code || '')) currentLabel.innerHTML = `<span class="flag flag--${code}"></span>`;
     }
-    if (typeof renderVisitorCount === 'function') renderVisitorCount();
     if (typeof updateClock === 'function') updateClock();
     // the browser tab / search result: the name plus what the site is (doc_title, 2026-10-25)
     if (t.doc_title || t.title) document.title = t.doc_title || t.title;

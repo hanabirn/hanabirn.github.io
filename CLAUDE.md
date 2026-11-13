@@ -48,7 +48,7 @@ For any non-trivial dev request, work through these stages in order:
 
 | File | Covers |
 |---|---|
-| `ui-shell.md` | page shell and navigation, header, ☰ / phone sheets, learning-language pill, side rails, 小花火 mascot, site tour, tooltips, widgets / BGM, changelog, theme details, PWA and install, update banner, visitor counter, Netlify `_redirects` |
+| `ui-shell.md` | page shell and navigation, header, ☰ / phone sheets, learning-language pill, side rails, 小花火 mascot, site tour, tooltips, widgets / BGM, changelog, theme details, PWA and install, update banner, Netlify `_redirects` |
 | `vocab.md` | word sets (`data/vocab`, `tools/build_vocab.py`), JLPT / TOPIK / HSK / CEFR lists, topic sets and topic ladders |
 | `quiz-practice.md` | quiz engine, SRS (`srs_quiz`), mistake book, practice hub, flashcards, stats, word listening quiz, result screens, home dashboard, learning path, UI icons, page intros |
 | `grammar.md` | grammar pages and `tools/grammar/` lessons, hard / ordering questions |
