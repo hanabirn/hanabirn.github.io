@@ -52,6 +52,9 @@ async function initVisitorCounter() {
     const today = d.getFullYear() + '-' + (d.getMonth() + 1) + '-' + d.getDate();
     let counted = false;
     try { counted = localStorage.getItem('visit_counted_day') === today; } catch {}
+    // a local copy (python -m http.server, the measuring scripts' fresh profiles) only reads the count —
+    // headless test runs added about 20 visits on 2026-11-13
+    if (/^(localhost|127\.0\.0\.1|\[::1\])$/.test(location.hostname)) counted = true;
     try {
         const res = await fetch(`https://api.counterapi.dev/v2/hanabirn/daily-visitors${counted ? '' : '/up'}?t=${Date.now()}`);
         if (!counted && res.ok) { try { localStorage.setItem('visit_counted_day', today); } catch {} }
