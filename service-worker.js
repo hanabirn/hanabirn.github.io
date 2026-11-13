@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hanabi-v48';
+const CACHE_NAME = 'hanabi-v49';
 const ASSETS = [
   '/',
   '/index.html',

@@ -752,14 +752,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
     <script src="js/i18n.js"></script>
     <script src="i18n/zh.js"></script>
-    <script src="i18n/zh-Hans.js"></script>
-    <script src="i18n/en.js"></script>
-    <script src="i18n/ja.js"></script>
-    <script src="i18n/ko.js"></script>
-    <script src="i18n/ru.js"></script>
-    <script src="i18n/fr.js"></script>
-    <script src="i18n/es.js"></script>
-    <script src="i18n/de.js"></script>
+    <!-- only the interface language's dictionary besides zh (the fallback), ~80 KB instead of ~710 KB (2026-11-13);
+         another language is fetched when picked (setSiteLang in js/i18n.js) -->
+    <script>(function () { var l; try { l = localStorage.getItem('site_lang'); } catch (e) {}
+        if (/^(zh-Hans|en|ja|ko|ru|fr|es|de)$/.test(l || '')) document.write('<script src="i18n/' + l + '.js"><\/script>'); })();</script>
     <script src="js/speech.js"></script>
     <script src="js/topic-levels-data.js"></script>
     <script src="js/vocab-counts.js"></script>

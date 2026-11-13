@@ -45,8 +45,14 @@ function applyLang(lang) {
 }
 
 
+/* index.html loads only zh.js and the saved language's file; any other one is fetched when picked */
 function setSiteLang(lang) {
-    applyLang(lang);
+    if (I18N[lang] || lang === 'zh') { applyLang(lang); return; }
+    const s = document.createElement('script');
+    s.src = 'i18n/' + lang + '.js';
+    s.onload = () => applyLang(I18N[lang] ? lang : 'zh');
+    s.onerror = () => applyLang(siteLang);   // offline and not cached: stay as it is
+    document.head.appendChild(s);
 }
 
 /* ===== i18n helpers for dynamic content ===== */
