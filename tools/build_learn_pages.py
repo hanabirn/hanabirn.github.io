@@ -82,6 +82,7 @@ def page(title, desc, canonical, body, lang='zh-Hant'):
 {body}
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
+<script>if (location.hostname === 'hanabirn.xyz') {{ var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{{"token": "9994498e5ef14bf8a536876efc098de7"}}'); document.body.appendChild(cfb); }}</script>
 </body>
 </html>
 """

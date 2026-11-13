@@ -123,6 +123,7 @@
             <tr><td data-p="r1_service">Google Apps Script / Google 試算表</td><td data-p="r1_purpose">「建議&改進」的儲存</td><td data-p="r1_data">你主動填寫的建議內容</td></tr>
             <tr><td>Google Firebase（Authentication / Firestore）</td><td data-p="r7_purpose">帳號登入與學習進度的雲端同步（只限有登入的使用者）</td><td data-p="r7_data">Email、顯示名稱、大頭貼網址與學習進度（見第四節）</td></tr>
             <tr><td>Cloudflare Workers / Google Gemini</td><td data-p="r8_purpose">AI 小幫手「小花火」的對話，以及留言板的儲存與自動審核</td><td data-p="r8_data">你傳給小花火的訊息；留言的暱稱、內容與帳號 ID（帳號 ID 不公開）</td></tr>
+            <tr><td>Cloudflare Web Analytics</td><td data-p="r9_purpose">統計網站的瀏覽次數（只有站長看得到，不使用 cookie）</td><td data-p="r9_data">匿名的瀏覽資料：看了哪一頁、來源網站、瀏覽器與國家（不記錄可辨識個人的資料）</td></tr>
             <tr><td>Ko-fi</td><td data-p="r6_purpose">贊助／小額支持連結</td><td data-p="r6_data">僅在你主動點擊贊助按鈕、離開本網站前往 ko-fi.com 後才適用，由 Ko-fi 自行處理</td></tr>
         </table>
 
@@ -139,5 +140,8 @@
         <p data-p="s8_p">若對本政策有任何疑問，歡迎寄信給我：<a href="mailto:azusawakohane12@gmail.com">azusawakohane12@gmail.com</a></p>
     </div>
     <script src="js/privacy.js"></script>
+<!-- Cloudflare Web Analytics (owner, 2026-11-13): cookieless page-view counts, seen only by the owner in the
+     Cloudflare dashboard; loaded on hanabirn.xyz only, so local tests are not counted -->
+<script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>
 </body>
 </html>
