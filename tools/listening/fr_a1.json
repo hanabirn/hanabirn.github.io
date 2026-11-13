@@ -11,7 +11,7 @@
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_q": 16,
+    "en_q": 12,
     "en_match": 5
   },
   "sets": [
@@ -2023,6 +2023,638 @@
               "explain": {
                 "zh": "兩張電影票、3 號廳：電影院。剩下的 F（火車站）沒有用到。",
                 "en": "Film tickets: the cinema; F is not used."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un message sur un répondeur.",
+              "zh": "你會聽到一則電話答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour Thomas, c'est Julie. Le cinéma ce soir, c'est à 20 heures 30, pas à 20 heures. On se retrouve devant le cinéma Rex, à côté de la gare. J'ai déjà acheté les billets, tu me donnes 9 euros. À ce soir !",
+              "zh": "湯瑪，你好，我是茱莉。今晚的電影是 20 點 30 分，不是 20 點。我們在火車站旁的雷克斯電影院門口碰面。票我已經買了，你給我 9 歐元就好。晚上見！",
+              "en": "Hi Thomas, it's Julie. The film tonight is at 8.30, not 8. Let's meet in front of the Rex cinema, next to the station. I've already bought the tickets, you give me 9 euros. See you tonight!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le film commence à…",
+                "zh": "電影……開始。",
+                "en": "The film starts at…"
+              },
+              "options": [
+                {
+                  "t": "20 h."
+                },
+                {
+                  "t": "21 h."
+                },
+                {
+                  "t": "20 h 30."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「20 點 30 分，不是 20 點」。",
+                "en": "8.30."
+              }
+            },
+            {
+              "ask": {
+                "s": "Où est le cinéma ?",
+                "zh": "電影院在哪裡？",
+                "en": "Where is the cinema?"
+              },
+              "options": [
+                {
+                  "t": "à côté de la gare"
+                },
+                {
+                  "t": "en face de la poste"
+                },
+                {
+                  "t": "près du parc"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「火車站旁」。",
+                "en": "Next to the station."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qui a acheté les billets ?",
+                "zh": "誰買了票？",
+                "en": "Who bought the tickets?"
+              },
+              "options": [
+                {
+                  "t": "Thomas"
+                },
+                {
+                  "t": "Julie"
+                },
+                {
+                  "t": "personne"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「票我已經買了」。",
+                "en": "Julie."
+              }
+            },
+            {
+              "ask": {
+                "s": "Thomas doit donner…",
+                "zh": "湯瑪要給……",
+                "en": "Thomas must give…"
+              },
+              "options": [
+                {
+                  "t": "6 euros."
+                },
+                {
+                  "t": "19 euros."
+                },
+                {
+                  "t": "9 euros."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「你給我 9 歐元」。",
+                "en": "9 euros."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans une gare. Vous entendez cette annonce.",
+              "zh": "你在火車站，聽到這則廣播。",
+              "en": "You are at a station. You hear this announcement."
+            },
+            {
+              "who": "M",
+              "s": "Mesdames et messieurs, le train numéro 6512 à destination de Marseille partira avec 15 minutes de retard. Il partira du quai numéro 4, et non du quai numéro 2. La voiture-bar se trouve au milieu du train. Nous vous remercions de votre patience.",
+              "zh": "各位旅客，開往馬賽的 6512 次列車將延誤 15 分鐘出發，改由 4 號月台發車，不是 2 號月台。餐車位於列車中段。感謝您的耐心。",
+              "en": "Ladies and gentlemen, train 6512 to Marseille will leave 15 minutes late. It will leave from platform 4, not platform 2. The buffet car is in the middle of the train. Thank you for your patience."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le train va à…",
+                "zh": "列車開往……",
+                "en": "The train is going to…"
+              },
+              "options": [
+                {
+                  "t": "Marseille."
+                },
+                {
+                  "t": "Paris."
+                },
+                {
+                  "t": "Lyon."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開往馬賽」。",
+                "en": "Marseille."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le train a… de retard.",
+                "zh": "列車延誤……",
+                "en": "The train is… late."
+              },
+              "options": [
+                {
+                  "t": "5 minutes"
+                },
+                {
+                  "t": "15 minutes"
+                },
+                {
+                  "t": "50 minutes"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「延誤 15 分鐘」。",
+                "en": "15 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le train part du quai…",
+                "zh": "列車從……號月台發車。",
+                "en": "The train leaves from platform…"
+              },
+              "options": [
+                {
+                  "t": "2."
+                },
+                {
+                  "t": "6."
+                },
+                {
+                  "t": "4."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「改由 4 號月台」。",
+                "en": "4."
+              }
+            },
+            {
+              "ask": {
+                "s": "La voiture-bar est…",
+                "zh": "餐車在……",
+                "en": "The buffet car is…"
+              },
+              "options": [
+                {
+                  "t": "au milieu du train."
+                },
+                {
+                  "t": "au début du train."
+                },
+                {
+                  "t": "à la fin du train."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「位於列車中段」。",
+                "en": "In the middle."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous entendez cette conversation dans un magasin.",
+              "zh": "你在商店裡聽到這段對話。",
+              "en": "You hear this conversation in a shop."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour, je cherche un cadeau pour mon père. C'est son anniversaire dimanche.",
+              "zh": "您好，我在找給我爸爸的禮物，星期天是他生日。",
+              "en": "Hello, I'm looking for a present for my father. It's his birthday on Sunday."
+            },
+            {
+              "who": "M",
+              "s": "Il aime quoi ? La musique, le sport ?",
+              "zh": "他喜歡什麼？音樂、運動？",
+              "en": "What does he like? Music, sport?"
+            },
+            {
+              "who": "F",
+              "s": "Il adore le jardin. Il a beaucoup de fleurs.",
+              "zh": "他很愛園藝，種了很多花。",
+              "en": "He loves the garden. He has lots of flowers."
+            },
+            {
+              "who": "M",
+              "s": "Alors, ces gants de jardin, peut-être ? Ils coûtent 15 euros.",
+              "zh": "那這副園藝手套怎麼樣？15 歐元。",
+              "en": "Then these gardening gloves, perhaps? They cost 15 euros."
+            },
+            {
+              "who": "F",
+              "s": "Parfait ! Vous pouvez faire un paquet cadeau ?",
+              "zh": "太好了！可以幫我包裝嗎？",
+              "en": "Perfect! Can you gift-wrap them?"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "La femme cherche un cadeau pour…",
+                "zh": "女士在找禮物給……",
+                "en": "The woman is looking for a present for…"
+              },
+              "options": [
+                {
+                  "t": "sa mère."
+                },
+                {
+                  "t": "son père."
+                },
+                {
+                  "t": "son fils."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「給我爸爸的禮物」。",
+                "en": "Her father."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'anniversaire est…",
+                "zh": "生日在……",
+                "en": "The birthday is…"
+              },
+              "options": [
+                {
+                  "t": "samedi."
+                },
+                {
+                  "t": "lundi."
+                },
+                {
+                  "t": "dimanche."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「星期天是他生日」。",
+                "en": "Sunday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Il aime…",
+                "zh": "他喜歡……",
+                "en": "He likes…"
+              },
+              "options": [
+                {
+                  "t": "le jardin."
+                },
+                {
+                  "t": "le sport."
+                },
+                {
+                  "t": "la musique."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「他很愛園藝」。",
+                "en": "Gardening."
+              }
+            },
+            {
+              "ask": {
+                "s": "Elle achète…",
+                "zh": "她買了……",
+                "en": "She buys…"
+              },
+              "options": [
+                {
+                  "t": "des fleurs."
+                },
+                {
+                  "t": "des gants."
+                },
+                {
+                  "t": "un livre."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「這副園藝手套」，她說「太好了」。",
+                "en": "Gloves."
+              }
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "type": "en_match",
+          "n_options": 6,
+          "keep_order": true,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre cinq dialogues. Associez chaque dialogue à une situation.",
+              "zh": "你會聽到五段對話，請把每段對話和一個情境配對。",
+              "en": "You will hear five dialogues. Match each dialogue to a situation."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 1",
+              "zh": "對話 1",
+              "en": "Dialogue 1"
+            },
+            {
+              "who": "M",
+              "s": "Excusez-moi, la poste, s'il vous plaît ?",
+              "zh": "不好意思，請問郵局在哪？",
+              "en": "Excuse me, the post office, please?"
+            },
+            {
+              "who": "F",
+              "s": "Tout droit, puis à gauche.",
+              "zh": "直走，然後左轉。",
+              "en": "Straight on, then left."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 2",
+              "zh": "對話 2",
+              "en": "Dialogue 2"
+            },
+            {
+              "who": "F",
+              "s": "Je voudrais un kilo de pommes.",
+              "zh": "我要一公斤蘋果。",
+              "en": "I'd like a kilo of apples."
+            },
+            {
+              "who": "M",
+              "s": "Voilà, 3 euros, s'il vous plaît.",
+              "zh": "好了，3 歐元。",
+              "en": "Here you are, 3 euros, please."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 3",
+              "zh": "對話 3",
+              "en": "Dialogue 3"
+            },
+            {
+              "who": "M",
+              "s": "Allô, je voudrais réserver une table pour deux, ce soir.",
+              "zh": "喂，我想訂今晚兩人的位子。",
+              "en": "Hello, I'd like to book a table for two tonight."
+            },
+            {
+              "who": "F",
+              "s": "À quelle heure, monsieur ?",
+              "zh": "先生，幾點呢？",
+              "en": "At what time, sir?"
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 4",
+              "zh": "對話 4",
+              "en": "Dialogue 4"
+            },
+            {
+              "who": "F",
+              "s": "Joyeux anniversaire, Paul ! C'est pour toi.",
+              "zh": "保羅，生日快樂！這是給你的。",
+              "en": "Happy birthday, Paul! It's for you."
+            },
+            {
+              "who": "M",
+              "s": "Oh, merci beaucoup !",
+              "zh": "喔，非常謝謝！",
+              "en": "Oh, thank you very much!"
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 5",
+              "zh": "對話 5",
+              "en": "Dialogue 5"
+            },
+            {
+              "who": "M",
+              "s": "J'ai mal à la tête depuis trois jours.",
+              "zh": "我頭痛三天了。",
+              "en": "I've had a headache for three days."
+            },
+            {
+              "who": "F",
+              "s": "Je vais vous examiner.",
+              "zh": "我幫您檢查一下。",
+              "en": "I'll examine you."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Dialogue 1",
+                "zh": "對話 1",
+                "en": "Dialogue 1"
+              },
+              "options": [
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "acheter des fruits"
+                },
+                {
+                  "t": "réserver au restaurant"
+                },
+                {
+                  "t": "offrir un cadeau"
+                },
+                {
+                  "t": "chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「請問郵局在哪？」：問路。",
+                "en": "Asking the way."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 2",
+                "zh": "對話 2",
+                "en": "Dialogue 2"
+              },
+              "options": [
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "acheter des fruits"
+                },
+                {
+                  "t": "réserver au restaurant"
+                },
+                {
+                  "t": "offrir un cadeau"
+                },
+                {
+                  "t": "chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我要一公斤蘋果」：買水果。",
+                "en": "Buying fruit."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 3",
+                "zh": "對話 3",
+                "en": "Dialogue 3"
+              },
+              "options": [
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "acheter des fruits"
+                },
+                {
+                  "t": "réserver au restaurant"
+                },
+                {
+                  "t": "offrir un cadeau"
+                },
+                {
+                  "t": "chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「想訂……兩人的位子」：餐廳訂位。",
+                "en": "Booking a table."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 4",
+                "zh": "對話 4",
+                "en": "Dialogue 4"
+              },
+              "options": [
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "acheter des fruits"
+                },
+                {
+                  "t": "réserver au restaurant"
+                },
+                {
+                  "t": "offrir un cadeau"
+                },
+                {
+                  "t": "chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "「這是給你的」：送禮物。",
+                "en": "Giving a present."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 5",
+                "zh": "對話 5",
+                "en": "Dialogue 5"
+              },
+              "options": [
+                {
+                  "t": "demander son chemin"
+                },
+                {
+                  "t": "acheter des fruits"
+                },
+                {
+                  "t": "réserver au restaurant"
+                },
+                {
+                  "t": "offrir un cadeau"
+                },
+                {
+                  "t": "chez le médecin"
+                },
+                {
+                  "t": "acheter un billet de train"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "「我幫您檢查一下」：看醫生。F 是多出來的。",
+                "en": "At the doctor. F is the spare."
               }
             }
           ]

@@ -2514,6 +2514,281 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 30,
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Salut Chloé !\nJe suis malade, je ne peux pas aller au cours de danse ce soir. Tu peux dire au professeur que je suis absente ? Et tu peux prendre mes chaussures de danse ? Elles sont dans mon casier, numéro 12. Je te donne la clé demain à l'école.\nMerci !\nInès",
+          "tr": {
+            "zh": "嗨，克蘿伊！\n我生病了，今晚不能去上舞蹈課。妳可以跟老師說我缺席嗎？還有妳可以幫我拿舞鞋嗎？在我的置物櫃，12 號。明天在學校我把鑰匙給妳。\n謝謝！\n伊內絲",
+            "en": "Hi Chloé!\nI'm ill and can't go to dance class tonight. Can you tell the teacher I'm absent? And can you get my dance shoes? They're in my locker, number 12. I'll give you the key tomorrow at school.\nThanks!\nInès"
+          },
+          "questions": [
+            {
+              "q": "Pourquoi Inès écrit à Chloé ?",
+              "options": [
+                "Elle a perdu sa clé.",
+                "Elle veut changer de cours.",
+                "Elle est malade."
+              ],
+              "answer": 2,
+              "zh": "「我生病了」。",
+              "en": "She's ill."
+            },
+            {
+              "q": "Inès ne peut pas aller…",
+              "options": [
+                "au cours de danse.",
+                "à l'école.",
+                "chez Chloé."
+              ],
+              "answer": 0,
+              "zh": "「今晚不能去上舞蹈課」。",
+              "en": "To dance class."
+            },
+            {
+              "q": "Qu'est-ce que Chloé doit dire au professeur ?",
+              "options": [
+                "Inès arrive en retard.",
+                "Inès arrête la danse.",
+                "Inès est absente."
+              ],
+              "answer": 2,
+              "zh": "「跟老師說我缺席」。",
+              "en": "That Inès is absent."
+            },
+            {
+              "q": "Les chaussures sont…",
+              "options": [
+                "dans le casier numéro 12.",
+                "chez Inès.",
+                "à la salle de danse."
+              ],
+              "answer": 0,
+              "zh": "「在我的置物櫃，12 號」。",
+              "en": "In locker 12."
+            },
+            {
+              "q": "Quand Inès donne la clé à Chloé ?",
+              "options": [
+                "ce soir",
+                "demain",
+                "samedi"
+              ],
+              "answer": 1,
+              "zh": "「明天在學校我把鑰匙給妳」。",
+              "en": "Tomorrow."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "MÉDIATHÈQUE MUNICIPALE\nHoraires : du mardi au samedi, de 10 h à 18 h. Fermée le dimanche et le lundi.\nVous pouvez emprunter 5 livres et 2 films pour 3 semaines.\nLa carte est gratuite pour les enfants et coûte 10 € par an pour les adultes.\nMercredi après-midi : heure du conte pour les 4-8 ans (gratuit, sans inscription).",
+          "tr": {
+            "zh": "市立多媒體圖書館\n開放時間：星期二到星期六 10 點到 18 點，星期日和星期一休館。\n可借 5 本書和 2 部影片，借期 3 週。\n借書證兒童免費，成人每年 10 歐元。\n星期三下午：4–8 歲說故事時間（免費，不必報名）。",
+            "en": "MUNICIPAL MEDIA LIBRARY\nOpening hours: Tuesday to Saturday, 10 am to 6 pm. Closed Sunday and Monday.\nYou can borrow 5 books and 2 films for 3 weeks.\nThe card is free for children and costs €10 a year for adults.\nWednesday afternoon: story time for 4–8-year-olds (free, no booking)."
+          },
+          "questions": [
+            {
+              "q": "La médiathèque est fermée…",
+              "options": [
+                "le samedi.",
+                "le mercredi.",
+                "le lundi."
+              ],
+              "answer": 2,
+              "zh": "「星期日和星期一休館」。",
+              "en": "On Mondays."
+            },
+            {
+              "q": "On peut emprunter combien de films ?",
+              "options": [
+                "2",
+                "3",
+                "5"
+              ],
+              "answer": 0,
+              "zh": "「2 部影片」。",
+              "en": "Two."
+            },
+            {
+              "q": "On garde les livres…",
+              "options": [
+                "une semaine.",
+                "trois semaines.",
+                "deux semaines."
+              ],
+              "answer": 1,
+              "zh": "「借期 3 週」。",
+              "en": "Three weeks."
+            },
+            {
+              "q": "Pour un adulte, la carte…",
+              "options": [
+                "est gratuite.",
+                "coûte 10 € par mois.",
+                "coûte 10 € par an."
+              ],
+              "answer": 2,
+              "zh": "「成人每年 10 歐元」。",
+              "en": "€10 a year."
+            },
+            {
+              "q": "L'heure du conte est pour…",
+              "options": [
+                "les petits enfants.",
+                "les adultes.",
+                "tout le monde."
+              ],
+              "answer": 0,
+              "zh": "「4–8 歲說故事時間」。",
+              "en": "Young children."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_notice",
+          "text": "FÊTE DU QUARTIER — samedi 14 juin\n11 h : marché de fruits et légumes sur la place\n13 h : repas pour tous dans le parc (apportez un plat !)\n15 h : jeux pour les enfants\n17 h : concert de musique africaine\n20 h : bal sous les arbres\nEn cas de pluie, la fête a lieu dans la salle des sports.",
+          "tr": {
+            "zh": "社區節慶——6 月 14 日星期六\n11 點：廣場上的蔬果市集\n13 點：公園裡的大家一起吃（請帶一道菜！）\n15 點：兒童遊戲\n17 點：非洲音樂會\n20 點：樹下舞會\n若下雨，節慶改在體育館舉行。",
+            "en": "NEIGHBOURHOOD FESTIVAL — Saturday 14 June\n11 am: fruit and vegetable market on the square\n1 pm: meal for everyone in the park (bring a dish!)\n3 pm: games for children\n5 pm: African music concert\n8 pm: dance under the trees\nIf it rains, the festival is in the sports hall."
+          },
+          "questions": [
+            {
+              "q": "Le repas est à…",
+              "options": [
+                "11 heures.",
+                "13 heures.",
+                "15 heures."
+              ],
+              "answer": 1,
+              "zh": "「13 點：……一起吃」。",
+              "en": "1 pm."
+            },
+            {
+              "q": "Pour le repas, il faut apporter…",
+              "options": [
+                "de la musique.",
+                "un plat.",
+                "des fruits."
+              ],
+              "answer": 1,
+              "zh": "「請帶一道菜！」",
+              "en": "A dish."
+            },
+            {
+              "q": "À 15 heures, il y a quelque chose pour…",
+              "options": [
+                "les musiciens.",
+                "les grands-parents.",
+                "les enfants."
+              ],
+              "answer": 2,
+              "zh": "「15 點：兒童遊戲」。",
+              "en": "Children."
+            },
+            {
+              "q": "Le concert commence à…",
+              "options": [
+                "17 heures.",
+                "18 heures.",
+                "20 heures."
+              ],
+              "answer": 0,
+              "zh": "「17 點：非洲音樂會」。",
+              "en": "5 pm."
+            },
+            {
+              "q": "S'il pleut, la fête est…",
+              "options": [
+                "annulée.",
+                "dans la salle des sports.",
+                "le dimanche."
+              ],
+              "answer": 1,
+              "zh": "「若下雨，節慶改在體育館」。",
+              "en": "In the sports hall."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_notice",
+          "text": "Chère Mamie,\nJe suis à Nice avec mes amis de l'université. Nous sommes dans un petit hôtel près de la mer. Il fait très beau et chaud. Le matin, nous nageons, et l'après-midi, nous visitons la vieille ville. Hier, nous avons mangé une salade niçoise dans un petit restaurant. Je rentre à Paris dimanche soir, en train. Je viens te voir mardi avec des photos !\nGros bisous,\nThéo",
+          "tr": {
+            "zh": "親愛的奶奶：\n我和大學的朋友在尼斯。我們住在海邊的一家小旅館。天氣晴朗又熱。早上我們游泳，下午參觀老城。昨天我們在一家小餐館吃了尼斯沙拉。我星期天晚上搭火車回巴黎。星期二帶照片去看您！\n親親，\n提歐",
+            "en": "Dear Grandma,\nI'm in Nice with my university friends. We're in a small hotel near the sea. The weather is fine and hot. In the morning we swim, and in the afternoon we visit the old town. Yesterday we ate a salade niçoise in a little restaurant. I'm going back to Paris on Sunday evening by train. I'll come and see you on Tuesday with photos!\nLots of love,\nThéo"
+          },
+          "questions": [
+            {
+              "q": "Théo est à Nice avec…",
+              "options": [
+                "sa famille.",
+                "sa grand-mère.",
+                "ses amis."
+              ],
+              "answer": 2,
+              "zh": "「和大學的朋友」。",
+              "en": "His friends."
+            },
+            {
+              "q": "Où est l'hôtel ?",
+              "options": [
+                "près de la mer",
+                "à la montagne",
+                "dans le centre de Paris"
+              ],
+              "answer": 0,
+              "zh": "「海邊的一家小旅館」。",
+              "en": "Near the sea."
+            },
+            {
+              "q": "L'après-midi, ils…",
+              "options": [
+                "nagent.",
+                "visitent la vieille ville.",
+                "dorment."
+              ],
+              "answer": 1,
+              "zh": "「下午參觀老城」。",
+              "en": "Visit the old town."
+            },
+            {
+              "q": "Théo rentre à Paris…",
+              "options": [
+                "en avion.",
+                "en voiture.",
+                "en train."
+              ],
+              "answer": 2,
+              "zh": "「搭火車回巴黎」。",
+              "en": "By train."
+            },
+            {
+              "q": "Mardi, Théo va…",
+              "options": [
+                "voir sa grand-mère.",
+                "retourner à Nice.",
+                "commencer les cours."
+              ],
+              "answer": 0,
+              "zh": "「星期二……去看您」。",
+              "en": "See his grandmother."
+            }
+          ]
+        }
+      ]
     }
   ],
   "n_options": 3
