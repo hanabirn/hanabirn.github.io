@@ -2858,6 +2858,945 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht auf der Mailbox.",
+              "zh": "你會聽到一則語音信箱留言。",
+              "en": "You will hear a voicemail message."
+            },
+            {
+              "who": "F",
+              "s": "Hallo Herr Wagner, hier ist Julia Hertz von der Hausverwaltung. Am Donnerstag wird bei Ihnen im Haus das Wasser abgestellt, von neun bis etwa vierzehn Uhr, weil die Leitungen im Keller erneuert werden. Wenn Sie an dem Tag nicht zu Hause sind, ist das kein Problem — der Handwerker braucht keinen Zugang zu Ihrer Wohnung.",
+              "zh": "華格納先生您好，我是物業管理處的茱莉亞‧赫茲。星期四您那棟樓會停水，從九點到大約十四點，因為要更換地下室的水管。如果您那天不在家也沒關係——工人不需要進您的住處。",
+              "en": "Hello Mr Wagner, this is Julia Hertz from the property management. On Thursday the water in your building will be turned off from nine until about two because the pipes in the cellar are being replaced. If you're not at home that day, that's no problem — the workman doesn't need access to your flat."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Am Donnerstag gibt es mehrere Stunden kein Wasser.",
+                "zh": "星期四停水幾個小時。",
+                "en": "There will be no water for several hours on Thursday."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "九點到十四點。",
+                "en": "Nine to two."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was muss Herr Wagner tun?",
+                "zh": "華格納先生要做什麼？",
+                "en": "What must Mr Wagner do?"
+              },
+              "options": [
+                {
+                  "t": "zu Hause bleiben"
+                },
+                {
+                  "t": "den Schlüssel abgeben"
+                },
+                {
+                  "t": "nichts Besonderes"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "不在家也沒關係，工人不需進門。",
+                "en": "Nothing special."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Meldung im Radio.",
+              "zh": "你會聽到一則廣播消息。",
+              "en": "You will hear a radio report."
+            },
+            {
+              "who": "M",
+              "s": "Die Stadtbibliothek Leipzig verleiht seit Montag nicht nur Bücher, sondern auch Werkzeuge: Bohrmaschinen, Leitern, sogar Nähmaschinen. Das Angebot ist für Mitglieder kostenlos. Weil die Nachfrage riesig ist, muss man die Geräte allerdings im Voraus online reservieren.",
+              "zh": "萊比錫市立圖書館從星期一起不只借書，也借工具：電鑽、梯子，甚至縫紉機。會員免費。由於需求非常大，工具必須事先上網預約。",
+              "en": "Since Monday Leipzig city library has been lending not only books but also tools: drills, ladders, even sewing machines. The service is free for members. Because demand is huge, though, you have to reserve the items online in advance."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Bibliothek verkauft Werkzeuge.",
+                "zh": "圖書館賣工具。",
+                "en": "The library sells tools."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "是出借，不是賣。",
+                "en": "It lends them."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was muss man beachten?",
+                "zh": "要注意什麼？",
+                "en": "What must you note?"
+              },
+              "options": [
+                {
+                  "t": "Man muss vorher reservieren."
+                },
+                {
+                  "t": "Man zahlt eine Gebühr."
+                },
+                {
+                  "t": "Nur Studenten dürfen leihen."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "必須事先上網預約。",
+                "en": "Reserve in advance."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Durchsage am Flughafen.",
+              "zh": "你會聽到機場的廣播。",
+              "en": "You will hear an announcement at an airport."
+            },
+            {
+              "who": "F",
+              "s": "Passagiere des Fluges LH 2034 nach Lissabon: Wegen eines Streiks des Bodenpersonals in Portugal verzögert sich der Abflug um voraussichtlich drei Stunden. Gegen Vorlage Ihrer Bordkarte erhalten Sie an den Schaltern im Terminal B einen Gutschein für ein Essen.",
+              "zh": "飛往里斯本的 LH 2034 班機旅客請注意：因葡萄牙地勤人員罷工，起飛預計延後三小時。憑登機證可在 B 航廈櫃台領取一張餐券。",
+              "en": "Passengers on flight LH 2034 to Lisbon: because of a ground-staff strike in Portugal, departure will be delayed by about three hours. On presentation of your boarding pass you will receive a meal voucher at the desks in Terminal B."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Der Flug nach Lissabon ist gestrichen.",
+                "zh": "飛往里斯本的班機取消了。",
+                "en": "The flight to Lisbon is cancelled."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "延後三小時，不是取消。",
+                "en": "Delayed, not cancelled."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was bekommen die Passagiere?",
+                "zh": "旅客會得到什麼？",
+                "en": "What do passengers get?"
+              },
+              "options": [
+                {
+                  "t": "ein Hotelzimmer"
+                },
+                {
+                  "t": "einen Essensgutschein"
+                },
+                {
+                  "t": "einen anderen Flug"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "一張餐券。",
+                "en": "A meal voucher."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Tipp im Radio.",
+              "zh": "你會聽到一則廣播小提醒。",
+              "en": "You will hear a tip on the radio."
+            },
+            {
+              "who": "M",
+              "s": "Viele Menschen werfen Brot weg, sobald es hart wird. Dabei lässt es sich gut weiterverwenden: als Semmelbrösel, für Knödel oder als Croutons im Salat. Und wer Brot einfriert, sollte es vorher in Scheiben schneiden — dann kann man immer nur so viel auftauen, wie man braucht.",
+              "zh": "很多人麵包一變硬就丟掉。其實它很好再利用：做麵包粉、做丸子，或做沙拉裡的麵包丁。要冷凍麵包的人應該先切片——這樣每次只需解凍需要的量。",
+              "en": "Many people throw bread away as soon as it goes hard. Yet it can easily be reused: as breadcrumbs, for dumplings or as croutons in a salad. And if you freeze bread, slice it first — then you can always thaw only as much as you need."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Hartes Brot kann man noch verwenden.",
+                "zh": "硬掉的麵包還能用。",
+                "en": "Hard bread can still be used."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "做麵包粉、丸子、麵包丁。",
+                "en": "Breadcrumbs, dumplings, croutons."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was soll man vor dem Einfrieren tun?",
+                "zh": "冷凍前要做什麼？",
+                "en": "What should you do before freezing?"
+              },
+              "options": [
+                {
+                  "t": "das Brot toasten"
+                },
+                {
+                  "t": "es in Papier wickeln"
+                },
+                {
+                  "t": "es in Scheiben schneiden"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "先切片。",
+                "en": "Slice it."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Nachricht auf der Mailbox.",
+              "zh": "你會聽到一則語音信箱留言。",
+              "en": "You will hear a voicemail message."
+            },
+            {
+              "who": "M",
+              "s": "Hallo Katrin, hier ist Felix. Wegen Samstag: Die Wanderung findet statt, aber wir nehmen die kürzere Route, weil am Nachmittag Gewitter angesagt sind. Treffpunkt ist deshalb schon um sieben statt um acht am Parkplatz. Denk an Regenjacke und genug Wasser!",
+              "zh": "嗨，卡特琳，我是菲利克斯。關於星期六：健行照常，但我們走比較短的路線，因為下午預報有雷雨。所以集合時間提早到七點，不是八點，在停車場。記得帶雨衣和足夠的水！",
+              "en": "Hi Katrin, it's Felix. About Saturday: the hike is on, but we'll take the shorter route because thunderstorms are forecast for the afternoon. So we're meeting at the car park at seven instead of eight. Remember your rain jacket and enough water!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Die Wanderung wird abgesagt.",
+                "zh": "健行取消了。",
+                "en": "The hike is cancelled."
+              },
+              "options": [
+                {
+                  "t": "Richtig"
+                },
+                {
+                  "t": "Falsch"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "照常，只是路線較短。",
+                "en": "It's on, shorter route."
+              },
+              "n_options": 2
+            },
+            {
+              "ask": {
+                "s": "Was ändert sich?",
+                "zh": "什麼改變了？",
+                "en": "What changes?"
+              },
+              "options": [
+                {
+                  "t": "die Uhrzeit des Treffens"
+                },
+                {
+                  "t": "der Treffpunkt"
+                },
+                {
+                  "t": "das Datum"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "七點而不是八點。",
+                "en": "The meeting time."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören ein Interview im Radio mit einer Imkerin.",
+              "zh": "你會聽到一段訪問養蜂人的廣播。",
+              "en": "You will hear a radio interview with a beekeeper."
+            },
+            {
+              "who": "M",
+              "s": "Frau Lindner, Sie halten Bienen mitten in Berlin, auf dem Dach eines Hotels. Wie kam es dazu?",
+              "zh": "林德納女士，您在柏林市中心一家飯店的屋頂上養蜂。怎麼會這樣？",
+              "en": "Ms Lindner, you keep bees in the middle of Berlin, on a hotel roof. How did that happen?"
+            },
+            {
+              "who": "F",
+              "s": "Ich bin eigentlich Lehrerin. Vor acht Jahren habe ich einen Imkerkurs gemacht, eher aus Neugier. Der Hoteldirektor hat davon gehört und mich gefragt, ob ich nicht auf seinem Dach Bienen halten möchte. Der Honig wird jetzt beim Frühstück serviert.",
+              "zh": "我其實是老師。八年前我上了養蜂課，比較是出於好奇。飯店經理聽說了，問我想不想在他的屋頂養蜂。現在蜂蜜在早餐時供應。",
+              "en": "I'm actually a teacher. Eight years ago I did a beekeeping course, more out of curiosity. The hotel director heard about it and asked if I'd like to keep bees on his roof. The honey is now served at breakfast."
+            },
+            {
+              "who": "M",
+              "s": "Finden die Bienen in der Stadt überhaupt genug Nahrung?",
+              "zh": "蜜蜂在城市裡找得到足夠的食物嗎？",
+              "en": "Do bees even find enough food in the city?"
+            },
+            {
+              "who": "F",
+              "s": "Mehr als auf dem Land, das überrascht viele. In der Stadt gibt es Parks, Balkone, Straßenbäume — und kaum Pestizide. Auf dem Land dagegen gibt es oft riesige Felder mit nur einer Pflanze.",
+              "zh": "比鄉下還多，這讓很多人驚訝。城市有公園、陽台、行道樹——而且幾乎沒有農藥。相反地，鄉下常常是只種一種作物的大片田地。",
+              "en": "More than in the country, which surprises many. The city has parks, balconies, street trees — and hardly any pesticides. In the country, by contrast, there are often huge fields of a single crop."
+            },
+            {
+              "who": "M",
+              "s": "Gibt es auch Probleme?",
+              "zh": "也有問題嗎？",
+              "en": "Are there problems too?"
+            },
+            {
+              "who": "F",
+              "s": "Ja, inzwischen gibt es fast zu viele Hobby-Imker in Berlin. Die Honigbienen nehmen den Wildbienen das Futter weg. Ich rate deshalb jedem, der etwas für Insekten tun will, lieber Blumen zu pflanzen, statt selbst Bienen zu halten.",
+              "zh": "有，現在柏林的業餘養蜂人幾乎太多了。蜜蜂搶走了野蜂的食物。所以我建議想為昆蟲做點什麼的人，與其自己養蜂，不如種花。",
+              "en": "Yes, there are now almost too many hobby beekeepers in Berlin. Honeybees take food away from wild bees. So I advise anyone who wants to do something for insects to plant flowers rather than keep bees themselves."
+            },
+            {
+              "who": "M",
+              "s": "Und die Gäste des Hotels — haben sie keine Angst?",
+              "zh": "那飯店的客人不怕嗎？",
+              "en": "And the hotel guests — aren't they afraid?"
+            },
+            {
+              "who": "F",
+              "s": "Das Dach ist für Gäste gesperrt. Aber einmal im Monat biete ich eine Führung an, mit Schutzanzug. Die ist meistens wochenlang ausgebucht.",
+              "zh": "屋頂不開放給客人。但我每個月辦一次導覽，穿防護衣。通常好幾週前就額滿了。",
+              "en": "The roof is closed to guests. But once a month I offer a tour, with protective suits. It's usually booked up weeks ahead."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wie wurde Frau Lindner Imkerin?",
+                "zh": "林德納女士怎麼成為養蜂人？",
+                "en": "How did she become a beekeeper?"
+              },
+              "options": [
+                {
+                  "t": "Sie hat es von ihren Eltern gelernt."
+                },
+                {
+                  "t": "Sie hat aus Interesse einen Kurs besucht."
+                },
+                {
+                  "t": "Das Hotel hat sie eingestellt."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "出於好奇上了課。",
+                "en": "A course out of curiosity."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was passiert mit dem Honig?",
+                "zh": "蜂蜜怎麼處理？",
+                "en": "What happens to the honey?"
+              },
+              "options": [
+                {
+                  "t": "Er wird auf dem Markt verkauft."
+                },
+                {
+                  "t": "Sie verschenkt ihn an Schüler."
+                },
+                {
+                  "t": "Er wird im Hotel gegessen."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "早餐時供應。",
+                "en": "Served at breakfast."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum finden Bienen in der Stadt viel Nahrung?",
+                "zh": "為什麼蜜蜂在城市找得到很多食物？",
+                "en": "Why do bees find a lot of food in the city?"
+              },
+              "options": [
+                {
+                  "t": "Es gibt viele verschiedene Pflanzen."
+                },
+                {
+                  "t": "Es gibt große Felder."
+                },
+                {
+                  "t": "Die Imker füttern sie."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "公園、陽台、行道樹，少農藥。",
+                "en": "Many different plants."
+              }
+            },
+            {
+              "ask": {
+                "s": "Welches Problem nennt Frau Lindner?",
+                "zh": "林德納女士提到什麼問題？",
+                "en": "Which problem does she mention?"
+              },
+              "options": [
+                {
+                  "t": "Die Bienen sterben im Winter."
+                },
+                {
+                  "t": "Die Nachbarn beschweren sich."
+                },
+                {
+                  "t": "Honigbienen verdrängen Wildbienen."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "蜜蜂搶走野蜂的食物。",
+                "en": "Honeybees push out wild bees."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was empfiehlt sie Menschen, die Insekten helfen wollen?",
+                "zh": "她建議想幫助昆蟲的人做什麼？",
+                "en": "What does she recommend?"
+              },
+              "options": [
+                {
+                  "t": "Blumen zu pflanzen"
+                },
+                {
+                  "t": "einen Imkerkurs"
+                },
+                {
+                  "t": "Honig zu kaufen"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "種花。",
+                "en": "Plant flowers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie können Hotelgäste die Bienen sehen?",
+                "zh": "飯店客人怎麼看蜜蜂？",
+                "en": "How can guests see the bees?"
+              },
+              "options": [
+                {
+                  "t": "jederzeit auf dem Dach"
+                },
+                {
+                  "t": "gar nicht"
+                },
+                {
+                  "t": "bei einer monatlichen Führung"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "每月一次導覽。",
+                "en": "A monthly tour."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "plays": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören eine Diskussion im Radio. Die Moderatorin spricht mit Herrn Brandt und Frau Weiß über das Thema „Hausaufgaben abschaffen?“.",
+              "zh": "你會聽到一段廣播討論。主持人和布蘭特先生、懷斯女士討論「廢除功課？」",
+              "en": "You will hear a radio discussion. The presenter talks to Mr Brandt and Ms Weiß about abolishing homework."
+            },
+            {
+              "who": "F",
+              "s": "Einige Schulen in Deutschland verzichten inzwischen ganz auf Hausaufgaben. Herr Brandt, Sie leiten eine solche Schule.",
+              "zh": "德國有些學校已經完全不出功課了。布蘭特先生，您主持的就是這樣的學校。",
+              "en": "Some schools in Germany have now dropped homework altogether. Mr Brandt, you run such a school."
+            },
+            {
+              "who": "M",
+              "s": "Ja, seit drei Jahren. Stattdessen haben wir mehr Übungszeit im Unterricht, wo die Lehrer helfen können. Zu Hause hatten viele Kinder niemanden, der ihnen etwas erklärt.",
+              "zh": "對，三年了。取而代之的是課堂上有更多練習時間，老師可以幫忙。在家很多孩子沒有人可以解釋給他們聽。",
+              "en": "Yes, for three years. Instead we have more practice time in lessons, where teachers can help. At home many children had nobody to explain things."
+            },
+            {
+              "who": "F2",
+              "s": "Das verstehe ich, aber ich bin skeptisch. Als Mutter sehe ich bei den Hausaufgaben, was mein Sohn in der Schule macht. Ohne sie wüsste ich gar nichts.",
+              "zh": "我理解，但我很懷疑。身為母親，我從功課看到兒子在學校做什麼。沒有功課我什麼都不知道。",
+              "en": "I understand, but I'm sceptical. As a mother I can see from the homework what my son does at school. Without it I wouldn't know anything."
+            },
+            {
+              "who": "M",
+              "s": "Dafür gibt es bei uns jede Woche einen kurzen Bericht an die Eltern. Und die Noten sind übrigens nicht schlechter geworden.",
+              "zh": "為此我們每週給家長一份簡短報告。順帶一提，成績也沒有變差。",
+              "en": "That's why we send parents a short report every week. And the marks haven't got worse, by the way."
+            },
+            {
+              "who": "F2",
+              "s": "Trotzdem: Selbstständig lernen muss man auch üben. Später an der Uni sitzt auch niemand daneben.",
+              "zh": "但是：自主學習也需要練習。以後上大學也沒有人坐在旁邊。",
+              "en": "Still: learning independently has to be practised too. Later at university nobody sits next to you either."
+            },
+            {
+              "who": "F",
+              "s": "Ein guter Punkt. Wäre ein Kompromiss denkbar?",
+              "zh": "很好的論點。有可能折衷嗎？",
+              "en": "A good point. Is a compromise conceivable?"
+            },
+            {
+              "who": "M",
+              "s": "Freiwillige Aufgaben für die, die mehr üben wollen — das bieten wir an.",
+              "zh": "給想多練習的人選擇性的作業——我們有提供。",
+              "en": "Optional tasks for those who want to practise more — we offer that."
+            },
+            {
+              "who": "F2",
+              "s": "Damit könnte ich leben, wenn es nicht nur eine Pflicht für die Guten wird.",
+              "zh": "這我可以接受，只要不會變成只是好學生的義務。",
+              "en": "I could live with that, as long as it doesn't become just a duty for the good pupils."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Manche Schulen geben keine Hausaufgaben mehr.",
+                "zh": "有些學校不再出功課。",
+                "en": "Some schools no longer give homework."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "主持人開場。",
+                "en": "The presenter."
+              }
+            },
+            {
+              "ask": {
+                "s": "Viele Kinder bekommen zu Hause keine Hilfe.",
+                "zh": "很多孩子在家得不到幫助。",
+                "en": "Many children get no help at home."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "布蘭特。",
+                "en": "Mr Brandt."
+              }
+            },
+            {
+              "ask": {
+                "s": "Hausaufgaben zeigen den Eltern, was im Unterricht passiert.",
+                "zh": "功課讓家長知道課堂上發生什麼。",
+                "en": "Homework shows parents what happens in class."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "懷斯。",
+                "en": "Ms Weiß."
+              }
+            },
+            {
+              "ask": {
+                "s": "Die Leistungen der Schüler sind gleich geblieben.",
+                "zh": "學生的成績維持不變。",
+                "en": "Pupils' results have stayed the same."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "布蘭特：成績沒有變差。",
+                "en": "Mr Brandt."
+              }
+            },
+            {
+              "ask": {
+                "s": "Man muss lernen, allein zu arbeiten.",
+                "zh": "必須學會獨立作業。",
+                "en": "You have to learn to work alone."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "懷斯：以後上大學沒人在旁邊。",
+                "en": "Ms Weiß."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ein Kompromiss ist unter Bedingungen akzeptabel.",
+                "zh": "在某些條件下折衷可以接受。",
+                "en": "A compromise is acceptable under conditions."
+              },
+              "options": [
+                {
+                  "t": "die Moderatorin"
+                },
+                {
+                  "t": "Herr Brandt"
+                },
+                {
+                  "t": "Frau Weiß"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "懷斯：只要不變成好學生的義務。",
+                "en": "Ms Weiß."
+              }
+            }
+          ],
+          "keep_order": true
+        },
+        {
+          "type": "en_q",
+          "part": 4,
+          "plays": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Sie hören einen Vortrag über Schlaf und Arbeit.",
+              "zh": "你會聽到一場關於睡眠和工作的演講。",
+              "en": "You will hear a talk about sleep and work."
+            },
+            {
+              "who": "M",
+              "s": "Guten Abend, meine Damen und Herren. Ich möchte heute über ein Thema sprechen, das in vielen Firmen noch tabu ist: den Mittagsschlaf. Studien zeigen, dass ein kurzer Schlaf von zehn bis zwanzig Minuten die Konzentration am Nachmittag deutlich verbessert. Wer länger schläft, gerät allerdings in den Tiefschlaf und ist danach eher benommen. In Japan ist das Nickerchen am Arbeitsplatz längst akzeptiert; es gilt sogar als Zeichen dafür, dass jemand sehr fleißig ist. In Deutschland dagegen fürchten viele, als faul zu gelten. Einige Unternehmen haben inzwischen Ruheräume eingerichtet. Die Erfahrungen sind positiv: Die Fehlerquote sinkt, und die Mitarbeiter sind zufriedener. Die Kosten sind gering — ein abgedunkelter Raum und eine Liege genügen. Das größere Hindernis ist die Einstellung der Führungskräfte. Wenn der Chef selbst nie eine Pause macht, traut sich auch niemand im Team. Mein Rat an Sie: Probieren Sie es aus, am besten zwischen 13 und 15 Uhr, wenn der Körper ohnehin ein Leistungstief hat. Und trinken Sie vorher einen Kaffee — er wirkt erst nach etwa zwanzig Minuten, also genau dann, wenn Sie aufwachen.",
+              "zh": "各位晚安。今天我想談一個在很多公司仍是禁忌的話題：午睡。研究顯示，十到二十分鐘的短暫睡眠能明顯提升下午的專注力。不過睡更久的人會進入深層睡眠，醒來反而昏沉。在日本，在辦公室打盹早已被接受，甚至被視為非常勤奮的表現。相反地，在德國很多人怕被當成懶惰。有些公司已經設了休息室。經驗很正面：錯誤率下降，員工也更滿意。成本很低——一間暗一點的房間和一張躺椅就夠了。比較大的障礙是主管的態度。如果老闆自己從不休息，團隊裡也沒人敢。我給各位的建議：試試看，最好在 13 點到 15 點之間，那時身體本來就處於低潮。睡前喝杯咖啡——它大約二十分鐘後才發揮作用，正好是你醒來的時候。",
+              "en": "Good evening, ladies and gentlemen. Today I want to talk about a subject that is still taboo in many companies: the afternoon nap. Studies show that a short sleep of ten to twenty minutes clearly improves concentration in the afternoon. Anyone who sleeps longer, though, falls into deep sleep and is rather groggy afterwards. In Japan napping at work has long been accepted; it is even seen as a sign that someone is very hard-working. In Germany, by contrast, many fear being thought lazy. Some companies have now set up rest rooms. The experience is positive: the error rate falls and staff are more satisfied. The costs are low — a darkened room and a lounger are enough. The bigger obstacle is managers' attitudes. If the boss never takes a break, nobody in the team dares to. My advice: try it, ideally between 1 and 3 p.m., when the body has a dip anyway. And drink a coffee beforehand — it only takes effect after about twenty minutes, just when you wake up."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Wie lange sollte ein Mittagsschlaf idealerweise dauern?",
+                "zh": "午睡最好多長？",
+                "en": "How long should a nap ideally last?"
+              },
+              "options": [
+                {
+                  "t": "eine Stunde"
+                },
+                {
+                  "t": "zehn bis zwanzig Minuten"
+                },
+                {
+                  "t": "bis zum Tiefschlaf"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "十到二十分鐘。",
+                "en": "10–20 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was passiert, wenn man zu lange schläft?",
+                "zh": "睡太久會怎樣？",
+                "en": "What happens if you sleep too long?"
+              },
+              "options": [
+                {
+                  "t": "Man ist besonders konzentriert."
+                },
+                {
+                  "t": "Man schläft nachts besser."
+                },
+                {
+                  "t": "Man fühlt sich danach benommen."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "醒來昏沉。",
+                "en": "Groggy."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wie wird das Nickerchen in Japan gesehen?",
+                "zh": "在日本打盹被怎麼看？",
+                "en": "How is napping seen in Japan?"
+              },
+              "options": [
+                {
+                  "t": "als Zeichen von Fleiß"
+                },
+                {
+                  "t": "als unhöflich"
+                },
+                {
+                  "t": "als Krankheit"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "非常勤奮的表現。",
+                "en": "A sign of diligence."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was befürchten viele Deutsche?",
+                "zh": "很多德國人怕什麼？",
+                "en": "What do many Germans fear?"
+              },
+              "options": [
+                {
+                  "t": "für faul gehalten zu werden"
+                },
+                {
+                  "t": "ihre Stelle zu verlieren"
+                },
+                {
+                  "t": "zu wenig zu verdienen"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "怕被當成懶惰。",
+                "en": "Being thought lazy."
+              }
+            },
+            {
+              "ask": {
+                "s": "Welche Erfahrungen machen Firmen mit Ruheräumen?",
+                "zh": "公司對休息室的經驗如何？",
+                "en": "What is firms' experience with rest rooms?"
+              },
+              "options": [
+                {
+                  "t": "Die Kosten sind sehr hoch."
+                },
+                {
+                  "t": "Es gibt weniger Fehler."
+                },
+                {
+                  "t": "Die Mitarbeiter schlafen zu lange."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "錯誤率下降。",
+                "en": "Fewer errors."
+              }
+            },
+            {
+              "ask": {
+                "s": "Was ist laut Redner das größte Hindernis?",
+                "zh": "講者說最大的障礙是什麼？",
+                "en": "What is the biggest obstacle?"
+              },
+              "options": [
+                {
+                  "t": "das Geld"
+                },
+                {
+                  "t": "der fehlende Platz"
+                },
+                {
+                  "t": "die Haltung der Chefs"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "主管的態度。",
+                "en": "Managers' attitudes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Wann sollte man den Mittagsschlaf machen?",
+                "zh": "什麼時候午睡最好？",
+                "en": "When should you nap?"
+              },
+              "options": [
+                {
+                  "t": "zwischen 13 und 15 Uhr"
+                },
+                {
+                  "t": "direkt nach dem Aufstehen"
+                },
+                {
+                  "t": "am späten Abend"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "13 點到 15 點。",
+                "en": "1–3 p.m."
+              }
+            },
+            {
+              "ask": {
+                "s": "Warum empfiehlt der Redner einen Kaffee vor dem Schlaf?",
+                "zh": "講者為什麼建議睡前喝咖啡？",
+                "en": "Why coffee before the nap?"
+              },
+              "options": [
+                {
+                  "t": "Er hilft beim Einschlafen."
+                },
+                {
+                  "t": "Er wirkt erst beim Aufwachen."
+                },
+                {
+                  "t": "Er ersetzt das Mittagessen."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "二十分鐘後才發揮作用。",
+                "en": "It kicks in on waking."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
