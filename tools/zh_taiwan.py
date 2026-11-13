@@ -29,7 +29,7 @@ TW_WORDS = {'過勞': 'guò láo', '為人口': 'wèi rén kǒu', '為例': 'wé
             '休息': 'xiū xí', '衣服': 'yī fú', '豆腐': 'dòu fǔ', '星期': 'xīng qí', '認識': 'rèn shì',
             '台灣': 'Tái wān', '臺灣': 'Tái wān', '台北': 'Tái běi', '臺北': 'Tái běi', '高雄': 'Gāo xióng', '台中': 'Tái zhōng',
             '台南': 'Tái nán', '花蓮': 'Huā lián', '捷運': 'jié yùn', '垃圾': 'lè sè', '禮拜': 'lǐ bài', '包括': 'bāo kuò',
-            '頻率': 'pín lǜ', '部分': 'bù fèn', '種出來': 'zhòng chū lái', '種回': 'zhòng huí', '也種咖啡': 'yě zhòng kā fēi', '種咖啡大約': 'zhòng kā fēi dà yuē', '種父母': 'zhòng fù mǔ', '種出不用': 'zhòng chū bú yòng', '自己種的': 'zì jǐ zhòng de', '我種的': 'wǒ zhòng de', '他種的': 'tā zhòng de', '台灣種的': 'Tái wān zhòng de', '能種出': 'néng zhòng chū', '期待': 'qí dài', '暫時': 'zhàn shí', '研究': 'yán jiù', '企業': 'qì yè', '亞洲': 'Yǎ zhōu'}
+            '頻率': 'pín lǜ', '部分': 'bù fèn', '種出來': 'zhòng chū lái', '種回': 'zhòng huí', '也種咖啡': 'yě zhòng kā fēi', '種咖啡大約': 'zhòng kā fēi dà yuē', '種父母': 'zhòng fù mǔ', '種出不用': 'zhòng chū bú yòng', '自己種的': 'zì jǐ zhòng de', '我種的': 'wǒ zhòng de', '他種的': 'tā zhòng de', '台灣種的': 'Tái wān zhòng de', '能種出': 'néng zhòng chū', '船長': 'chuán zhǎng', '期待': 'qí dài', '暫時': 'zhàn shí', '研究': 'yán jiù', '企業': 'qì yè', '亞洲': 'Yǎ zhōu'}
 TW_WORDS = {k: v for k, v in TW_WORDS.items() if v}
 # the house style of the Taiwan passages and grammar (zh_reading.WORDS: 沒關係 méi guānxi, 東西 dōngxi …)
 for _w, _r in zh_reading.WORDS.items():
