@@ -3,7 +3,7 @@
  "lang": "zh",
  "level": "HSK 5",
  "order": 4,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk5.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk5.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_zh_hsk5_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "jiran",
@@ -1277,7 +1277,7 @@
     },
     {
      "text": "網路一方面很方便，另一方面也有問題。",
-     "reading": "Wǎng lù yì fāngmiàn hěn fāngbiàn, lìng yì fāngmiàn yě yǒu wèntí.",
+     "reading": "Wǎnglù yì fāngmiàn hěn fāngbiàn, lìng yì fāngmiàn yě yǒu wèntí.",
      "zh": "網路一方面很方便，另一方面也有問題。",
      "en": "The internet is convenient, but it brings problems too."
     }
@@ -1598,6 +1598,758 @@
       "不買",
       "買過",
       "沒買"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "budebu",
+   "pattern": "不得不 ＋ 動詞",
+   "title": {
+    "zh": "不得不：不想做也只能做",
+    "en": "不得不 — have no choice but to"
+   },
+   "form": {
+    "zh": "主詞 ＋ 不得不 ＋ 動詞（片語）",
+    "en": "subject + 不得不 + verb (phrase)"
+   },
+   "explain": {
+    "zh": "雙重否定，表示因為客觀情況，雖然不願意也只能這麼做：雨太大了，比賽不得不延期。語氣比「只好」更強，更正式。",
+    "en": "A double negative: circumstances force you to do something you would rather not: 雨太大了，比賽不得不延期. Stronger and more formal than 只好."
+   },
+   "notes": [
+    {
+     "zh": "「不得不」後面直接接動詞，不加「要」。",
+     "en": "不得不 takes the verb directly; no 要."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "我不得不要加班。",
+     "right": "我不得不加班。",
+     "zh": "「不得不」後面不加「要」。",
+     "en": "No 要 after 不得不."
+    },
+    {
+     "wrong": "因為生病，他得不得請假。",
+     "right": "因為生病，他不得不請假。",
+     "zh": "固定說法是「不得不」。",
+     "en": "The fixed form is 不得不."
+    }
+   ],
+   "examples": [
+    {
+     "text": "末班車開走了，我們不得不叫計程車。",
+     "reading": "Mò bān chē kāi zǒu le, wǒmen bùdébú jiào jìchéngchē.",
+     "zh": "末班車開走了，我們不得不叫計程車。",
+     "en": "The last bus had gone, so we had to take a taxi."
+    },
+    {
+     "text": "為了照顧媽媽，她不得不辭掉工作。",
+     "reading": "Wèile zhàogù māma, tā bùdébù cí diào gōngzuò.",
+     "zh": "為了照顧媽媽，她不得不辭掉工作。",
+     "en": "To look after her mother she had to quit her job."
+    },
+    {
+     "text": "時間不夠，我們不得不改變計畫。",
+     "reading": "Shíjiān búgòu, wǒmen bùdébù gǎibiàn jìhuà.",
+     "zh": "時間不夠，我們不得不改變計畫。",
+     "en": "There was not enough time, so we had to change our plans."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "颱風要來了，活動（　）取消。",
+     "zh": "颱風要來了，活動不得不取消。",
+     "en": "A typhoon is coming, so the event has to be cancelled.",
+     "options": [
+      "不得不",
+      "不得",
+      "不不得",
+      "得不得"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "錢包被偷了，他不得不（　）朋友借錢。",
+     "zh": "錢包被偷了，他不得不向朋友借錢。",
+     "en": "His wallet was stolen, so he had to borrow money from a friend.",
+     "options": [
+      "向",
+      "要向",
+      "得向",
+      "被"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "班機延誤了，我們（　）在機場過夜。",
+     "zh": "班機延誤了，我們不得不在機場過夜。",
+     "en": "The flight was delayed, so we had to spend the night at the airport.",
+     "options": [
+      "不得不",
+      "不必",
+      "不用",
+      "不見得"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zongzhi",
+   "pattern": "總之",
+   "title": {
+    "zh": "總之：總而言之",
+    "en": "總之 — in short, anyway"
+   },
+   "form": {
+    "zh": "前面列出幾點，「總之，」＋ 總結或結論",
+    "en": "list some points, then 總之, + a summary or conclusion"
+   },
+   "explain": {
+    "zh": "用來歸納前面說過的話，或省略細節直接下結論：有的說好，有的說不好，總之，大家的意見不一樣。正式一點可以說「總而言之」。",
+    "en": "Sums up what has been said, or skips the details for the conclusion: 有的說好，有的說不好，總之，大家的意見不一樣. More formal: 總而言之."
+   },
+   "notes": [
+    {
+     "zh": "口語中也表示「反正」：不管怎麼樣，總之你要早點回來。",
+     "en": "In speech it can mean \"anyway\": 不管怎麼樣，總之你要早點回來."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "總之，首先我們先來看第一點。",
+     "right": "首先，我們先來看第一點。",
+     "zh": "「總之」用在總結，不用在開頭列點。",
+     "en": "總之 sums up; it does not introduce the first point."
+    },
+    {
+     "wrong": "這家店便宜、好吃，總之服務也很好。",
+     "right": "這家店便宜、好吃，服務也很好，總之很值得去。",
+     "zh": "「總之」後面要是結論，不是再加一點。",
+     "en": "What follows 總之 must be a conclusion, not another point."
+    }
+   ],
+   "examples": [
+    {
+     "text": "天氣不好、交通也亂，總之，今天別出門了。",
+     "reading": "Tiānqì bù hǎo, jiāotōng yě luàn, zǒngzhī, jīntiān bié chūmén le.",
+     "zh": "天氣不好、交通也亂，總之，今天別出門了。",
+     "en": "The weather is bad and traffic is chaotic; in short, do not go out today."
+    },
+    {
+     "text": "我說了很多，總之，就是希望你能好好休息。",
+     "reading": "Wǒ shuō le hěn duō, zǒngzhī, jiùshì xīwàng nǐ néng hǎohǎo xiūxí.",
+     "zh": "我說了很多，總之，就是希望你能好好休息。",
+     "en": "I have said a lot, but basically I hope you get some proper rest."
+    },
+    {
+     "text": "不管你信不信，總之事情就是這樣。",
+     "reading": "Bùguǎn nǐ xìn bú xìn, zǒngzhī shìqíng jiùshì zhèyàng.",
+     "zh": "不管你信不信，總之事情就是這樣。",
+     "en": "Believe it or not, that is how it is."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "房間小、離車站遠，（　），我不推薦這家旅館。",
+     "zh": "房間小、離車站遠，總之，我不推薦這家旅館。",
+     "en": "The rooms are small and it is far from the station; in short, I do not recommend this hotel.",
+     "options": [
+      "總之",
+      "首先",
+      "何況",
+      "否則"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "不管你怎麼想，（　）明天八點要到。",
+     "zh": "不管你怎麼想，總之明天八點要到。",
+     "en": "Whatever you think, anyway, be there at eight tomorrow.",
+     "options": [
+      "總之",
+      "總是",
+      "畢竟",
+      "從而"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "總（　）言之，這次活動很成功。",
+     "zh": "總而言之，這次活動很成功。",
+     "en": "All in all, the event was a success.",
+     "options": [
+      "而",
+      "之",
+      "的",
+      "以"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "chenzhe",
+   "pattern": "趁（著）",
+   "title": {
+    "zh": "趁著：利用時機",
+    "en": "趁 — take the chance while …"
+   },
+   "form": {
+    "zh": "趁（著）＋ 時機／條件, 動作；趁 ＋ 名詞／子句",
+    "en": "趁(著) + a chance or condition, action; 趁 + noun / clause"
+   },
+   "explain": {
+    "zh": "利用某個有利的時間或條件去做事：趁天氣好，我們去爬山吧。（趁著天氣好去爬山。）常用在建議或描述及時的行動。",
+    "en": "Uses a favourable moment or condition to do something: 趁天氣好，我們去爬山吧. Common in suggestions or describing timely actions."
+   },
+   "notes": [
+    {
+     "zh": "常見搭配：趁熱（吃）、趁年輕、趁機會、趁現在。",
+     "en": "Common: 趁熱(吃), 趁年輕, 趁機會, 趁現在."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "趁下雨，我們去公園吧。",
+     "right": "趁還沒下雨，我們去公園吧。",
+     "zh": "「趁」後面要是有利的時機。",
+     "en": "What follows 趁 must be a favourable moment."
+    },
+    {
+     "wrong": "湯要趁熱著喝。",
+     "right": "湯要趁熱喝。",
+     "zh": "固定說法是「趁熱喝」。",
+     "en": "The set phrase is 趁熱喝."
+    }
+   ],
+   "examples": [
+    {
+     "text": "趁年輕，多出去看看世界。",
+     "reading": "Chèn niánqīng, duō chūqù kànkan shìjiè.",
+     "zh": "趁年輕，多出去看看世界。",
+     "en": "See the world while you are young."
+    },
+    {
+     "text": "飯菜趁熱吃比較好吃。",
+     "reading": "Fàn cài chèn rè chī bǐjiào hǎochī.",
+     "zh": "飯菜趁熱吃比較好吃。",
+     "en": "Food tastes better eaten hot."
+    },
+    {
+     "text": "他趁著午休時間去銀行辦事。",
+     "reading": "Tā chènzhe wǔxiū shíjiān qù yínháng bànshì.",
+     "zh": "他趁著午休時間去銀行辦事。",
+     "en": "He went to the bank during his lunch break."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）週末有空，我想把房間整理一下。",
+     "zh": "趁週末有空，我想把房間整理一下。",
+     "en": "I want to tidy my room while I am free at the weekend.",
+     "options": [
+      "趁",
+      "連",
+      "隨",
+      "靠"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "包子剛出爐，快趁（　）吃吧！",
+     "zh": "包子剛出爐，快趁熱吃吧！",
+     "en": "The buns are fresh from the oven, eat them while they are hot!",
+     "options": [
+      "熱",
+      "燙",
+      "暖",
+      "燒"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "小偷（　）大家不注意，拿走了錢包。",
+     "zh": "小偷趁大家不注意，拿走了錢包。",
+     "en": "The thief took the wallet while nobody was looking.",
+     "options": [
+      "趁",
+      "當",
+      "於",
+      "在於"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "bujiande",
+   "pattern": "不見得",
+   "title": {
+    "zh": "不見得：不一定",
+    "en": "不見得 — not necessarily"
+   },
+   "form": {
+    "zh": "主詞 ＋ 不見得 ＋ 動詞／形容詞",
+    "en": "subject + 不見得 + verb / adjective"
+   },
+   "explain": {
+    "zh": "委婉地表示懷疑或否定別人的看法：貴的東西不見得好。（貴的不一定好。）語氣比「不一定」更帶有反駁的意思。",
+    "en": "Gently doubts or disagrees with a view: 貴的東西不見得好. More of a rebuttal than 不一定."
+   },
+   "notes": [
+    {
+     "zh": "也可以單獨回答：「他會來嗎？」「不見得。」",
+     "en": "It can stand alone as a reply: 「他會來嗎？」「不見得。」"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他不見得不會來，因為他說一定來。",
+     "right": "他說一定會來，但我覺得不見得。",
+     "zh": "「不見得」表示懷疑，前後意思要一致。",
+     "en": "不見得 casts doubt; the sentence must fit that."
+    },
+    {
+     "wrong": "這個方法不看得有用。",
+     "right": "這個方法不見得有用。",
+     "zh": "是「不見得」。",
+     "en": "It is 不見得."
+    }
+   ],
+   "examples": [
+    {
+     "text": "名牌大學畢業的人不見得比較會做事。",
+     "reading": "Míngpái dàxué bìyè de rén bújiànde bǐjiào huì zuò shì.",
+     "zh": "名牌大學畢業的人不見得比較會做事。",
+     "en": "Graduates of famous universities are not necessarily better at the job."
+    },
+    {
+     "text": "網路上的消息不見得都是真的。",
+     "reading": "Wǎnglù shàng de xiāoxī bújiànde dōu shì zhēn de.",
+     "zh": "網路上的消息不見得都是真的。",
+     "en": "Not everything online is necessarily true."
+    },
+    {
+     "text": "「明天會下雨嗎？」「不見得，預報常常不準。」",
+     "reading": "\"Míngtiān huì xiàyǔ ma?\" \"Bújiànde, yùbào chángcháng bù zhǔn.\"",
+     "zh": "「明天會下雨嗎？」「不見得，預報常常不準。」",
+     "en": "\"Will it rain tomorrow?\" \"Not necessarily, the forecast is often wrong.\""
+    }
+   ],
+   "quiz": [
+    {
+     "q": "工作時間長，效率（　）高。",
+     "zh": "工作時間長，效率不見得高。",
+     "en": "Long hours do not necessarily mean high efficiency.",
+     "options": [
+      "不見得",
+      "不得不",
+      "不至於",
+      "不見了"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他雖然很有錢，但（　）很快樂。",
+     "zh": "他雖然很有錢，但不見得很快樂。",
+     "en": "He is rich, but not necessarily happy.",
+     "options": [
+      "不見得",
+      "何必",
+      "果然",
+      "難怪"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "「這部電影一定很好看吧？」「不（　）。」",
+     "zh": "「這部電影一定很好看吧？」「不見得。」",
+     "en": "\"This film must be good?\" \"Not necessarily.\"",
+     "options": [
+      "見得",
+      "一定得",
+      "得了",
+      "至於"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "jianzhi",
+   "pattern": "簡直",
+   "title": {
+    "zh": "簡直：幾乎完全是",
+    "en": "簡直 — simply, practically"
+   },
+   "form": {
+    "zh": "簡直 ＋ 是／像 ＋ 名詞；簡直 ＋ 形容詞／動詞（＋ 了）",
+    "en": "簡直 + 是 / 像 + noun; 簡直 + adjective / verb (+ 了)"
+   },
+   "explain": {
+    "zh": "用誇張的語氣強調程度非常高：這裡的風景簡直像畫一樣。他的中文好得簡直跟台灣人一樣。常帶有驚訝或不滿的情緒。",
+    "en": "Exaggerates to stress a very high degree: 這裡的風景簡直像畫一樣. 他的中文好得簡直跟台灣人一樣. Often surprised or annoyed."
+   },
+   "notes": [
+    {
+     "zh": "常見：簡直太……了、簡直不敢相信、簡直是浪費時間。",
+     "en": "Common: 簡直太…了, 簡直不敢相信, 簡直是浪費時間."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "今天簡直有點熱。",
+     "right": "今天簡直熱死了。",
+     "zh": "「簡直」表示誇張的極高程度，不跟「有點」連用。",
+     "en": "簡直 marks an extreme; it does not go with 有點."
+    },
+    {
+     "wrong": "他簡單是天才。",
+     "right": "他簡直是天才。",
+     "zh": "是「簡直」，不是「簡單」。",
+     "en": "It is 簡直, not 簡單."
+    }
+   ],
+   "examples": [
+    {
+     "text": "這個價錢簡直太便宜了！",
+     "reading": "Zhè ge jiàqián jiǎnzhí tài piányí le!",
+     "zh": "這個價錢簡直太便宜了！",
+     "en": "This price is unbelievably cheap!"
+    },
+    {
+     "text": "等了兩個小時，簡直是浪費時間。",
+     "reading": "Děng le liǎng ge xiǎoshí, jiǎnzhí shì làngfèi shíjiān.",
+     "zh": "等了兩個小時，簡直是浪費時間。",
+     "en": "We waited two hours; it was a total waste of time."
+    },
+    {
+     "text": "我簡直不敢相信自己的眼睛。",
+     "reading": "Wǒ jiǎnzhí bù gǎn xiāngxìn zìjǐ de yǎnjīng.",
+     "zh": "我簡直不敢相信自己的眼睛。",
+     "en": "I could hardly believe my eyes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "房間亂得（　）像垃圾場。",
+     "zh": "房間亂得簡直像垃圾場。",
+     "en": "The room is so messy it is practically a dump.",
+     "options": [
+      "簡直",
+      "簡單",
+      "直接",
+      "一直"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他做的菜（　）比餐廳還好吃。",
+     "zh": "他做的菜簡直比餐廳還好吃。",
+     "en": "His cooking is practically better than a restaurant’s.",
+     "options": [
+      "簡直",
+      "有點",
+      "稍微",
+      "不見得"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "這種態度簡直（　）人生氣。",
+     "zh": "這種態度簡直讓人生氣。",
+     "en": "This attitude is simply infuriating.",
+     "options": [
+      "讓",
+      "被",
+      "把",
+      "對"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "daoshi",
+   "pattern": "倒是",
+   "title": {
+    "zh": "倒是：出乎意料、轉折或讓步",
+    "en": "倒是 — contrary to expectation; though"
+   },
+   "form": {
+    "zh": "主詞 ＋ 倒是 ＋ 動詞／形容詞",
+    "en": "subject + 倒是 + verb / adjective"
+   },
+   "explain": {
+    "zh": "表示跟預期或跟前面說的不一樣：大家都很緊張，他倒是很輕鬆。（別人緊張，他反而輕鬆。）也可以表示讓步「……是……，不過」：這件衣服好看倒是好看，就是太貴了。",
+    "en": "Contrary to expectation or to what was said: 大家都很緊張，他倒是很輕鬆. Also a concession, \"it is … but\": 這件衣服好看倒是好看，就是太貴了."
+   },
+   "notes": [
+    {
+     "zh": "「倒是」語氣比「反而」輕，口語常用。",
+     "en": "倒是 is milder than 反而 and common in speech."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他倒是很輕鬆，大家倒是很緊張。",
+     "right": "大家都很緊張，他倒是很輕鬆。",
+     "zh": "「倒是」用在跟前面不同的那一句。",
+     "en": "倒是 goes in the clause that contrasts with the first."
+    },
+    {
+     "wrong": "好吃倒是好吃，所以太鹹了。",
+     "right": "好吃倒是好吃，就是太鹹了。",
+     "zh": "讓步句後面用「就是／不過」。",
+     "en": "After the concession use 就是 / 不過."
+    }
+   ],
+   "examples": [
+    {
+     "text": "平常很吵的弟弟，今天倒是很安靜。",
+     "reading": "Píngcháng hěn chǎo de dìdi, jīntiān dàoshì hěn ānjìng.",
+     "zh": "平常很吵的弟弟，今天倒是很安靜。",
+     "en": "My usually noisy brother is surprisingly quiet today."
+    },
+    {
+     "text": "這個辦法倒是不錯，我們試試看。",
+     "reading": "Zhè ge bànfǎ dàoshì búcuò, wǒmen shìshi kàn.",
+     "zh": "這個辦法倒是不錯，我們試試看。",
+     "en": "That is actually a good idea; let us try it."
+    },
+    {
+     "text": "房子大倒是大，就是離公司太遠。",
+     "reading": "Fángzi dà dàoshì dà, jiùshì lí gōngsī tài yuǎn.",
+     "zh": "房子大倒是大，就是離公司太遠。",
+     "en": "The house is big, sure, but it is too far from the office."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "我以為他會生氣，沒想到他（　）笑了。",
+     "zh": "我以為他會生氣，沒想到他倒是笑了。",
+     "en": "I thought he would get angry, but he actually laughed.",
+     "options": [
+      "倒是",
+      "果然",
+      "難怪",
+      "總之"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "這件外套漂亮倒是漂亮，（　）有點貴。",
+     "zh": "這件外套漂亮倒是漂亮，就是有點貴。",
+     "en": "This coat is pretty, sure, but a bit expensive.",
+     "options": [
+      "就是",
+      "所以",
+      "因此",
+      "而且"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "你說的（　）有道理。",
+     "zh": "你說的倒是有道理。",
+     "en": "What you say does make sense, actually.",
+     "options": [
+      "倒是",
+      "倒了",
+      "到是",
+      "倒不"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zaishuo",
+   "pattern": "再說",
+   "title": {
+    "zh": "再說：而且、況且（補充理由）",
+    "en": "再說 — besides, what is more"
+   },
+   "form": {
+    "zh": "理由一，再說 ＋ 理由二；也用在「以後再說」（以後再考慮）",
+    "en": "reason one, 再說 + reason two; also 以後再說 (deal with it later)"
+   },
+   "explain": {
+    "zh": "補充另一個理由，加強前面的說法，口語常用：今天太晚了，再說外面還在下雨，明天再去吧。另一個用法是「（以後／明天）再說」，表示先不處理。",
+    "en": "Adds another reason to support the point, common in speech: 今天太晚了，再說外面還在下雨，明天再去吧. Also (以後 / 明天)再說: put it off for now."
+   },
+   "notes": [
+    {
+     "zh": "跟「況且」意思相近，「況且」比較書面。",
+     "en": "Close to 況且, which is more written."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "這件衣服太貴，再說我很喜歡它。",
+     "right": "這件衣服太貴，再說我也不缺衣服。",
+     "zh": "「再說」補充的理由要支持同一個結論。",
+     "en": "The added reason must support the same conclusion."
+    },
+    {
+     "wrong": "這件事明天再說話吧。",
+     "right": "這件事明天再說吧。",
+     "zh": "「再說」表示以後再處理，不加「話」。",
+     "en": "再說 here means \"deal with it later\"; no 話."
+    }
+   ],
+   "examples": [
+    {
+     "text": "我不想去，再說我也沒時間。",
+     "reading": "Wǒ bù xiǎng qù, zàishuō wǒ yě méi shíjiān.",
+     "zh": "我不想去，再說我也沒時間。",
+     "en": "I do not want to go, and besides, I have no time."
+    },
+    {
+     "text": "現在買房子太貴了，再說我們也不急。",
+     "reading": "Xiànzài mǎi fángzi tài guì le, zàishuō wǒmen yě bù jí.",
+     "zh": "現在買房子太貴了，再說我們也不急。",
+     "en": "Buying a flat now is too expensive, and anyway we are not in a hurry."
+    },
+    {
+     "text": "這件事先別決定，等他回來再說。",
+     "reading": "Zhè jiàn shì xiān bié juédìng, děng tā huílái zàishuō.",
+     "zh": "這件事先別決定，等他回來再說。",
+     "en": "Let us not decide yet; we will see when he is back."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "別買了，家裡已經有很多，（　）這個也不好用。",
+     "zh": "別買了，家裡已經有很多，再說這個也不好用。",
+     "en": "Do not buy it, we have plenty at home, and besides, this one is no good.",
+     "options": [
+      "再說",
+      "所以",
+      "然後",
+      "總算"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "現在太晚了，這件事明天（　）吧。",
+     "zh": "現在太晚了，這件事明天再說吧。",
+     "en": "It is too late now; let us deal with this tomorrow.",
+     "options": [
+      "再說",
+      "說再",
+      "還說",
+      "才說"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他不會來的，再說，他（　）不知道地址。",
+     "zh": "他不會來的，再說，他也不知道地址。",
+     "en": "He will not come; besides, he does not know the address.",
+     "options": [
+      "也",
+      "才",
+      "就",
+      "倒"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "haoburongyi",
+   "pattern": "好不容易",
+   "title": {
+    "zh": "好不容易：非常不容易才……",
+    "en": "好不容易 — only with great difficulty"
+   },
+   "form": {
+    "zh": "好不容易（才）＋ 動詞（＋ 了）",
+    "en": "好不容易(才) + verb (+ 了)"
+   },
+   "explain": {
+    "zh": "「好不容易」的意思其實是「很不容易」，表示費了很大功夫才做到：我好不容易才買到票。也可以說「好容易」，意思一樣。",
+    "en": "好不容易 actually means \"with great difficulty\": 我好不容易才買到票. 好容易 means the same thing."
+   },
+   "notes": [
+    {
+     "zh": "後面常有「才」，前面不能再加「很」。",
+     "en": "It is often followed by 才; do not add 很 before it."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "這次考試很好不容易。",
+     "right": "這次考試很不容易。",
+     "zh": "「好不容易」後面接動作，不單獨當形容詞用。",
+     "en": "好不容易 is followed by an action; it is not a plain adjective."
+    },
+    {
+     "wrong": "我好不容易就找到工作。",
+     "right": "我好不容易才找到工作。",
+     "zh": "後面搭配「才」，不搭配「就」。",
+     "en": "It pairs with 才, not 就."
+    }
+   ],
+   "examples": [
+    {
+     "text": "我們好不容易才找到停車位。",
+     "reading": "Wǒmen hǎo bù róngyì cái zhǎo dào tíngchē wèi.",
+     "zh": "我們好不容易才找到停車位。",
+     "en": "We finally found a parking space after a long search."
+    },
+    {
+     "text": "他好不容易存了一筆錢，結果全花光了。",
+     "reading": "Tā hǎo bù róngyì cún le yì bǐ qián, jiéguǒ quán huā guāng le.",
+     "zh": "他好不容易存了一筆錢，結果全花光了。",
+     "en": "He managed with great effort to save some money, then spent it all."
+    },
+    {
+     "text": "好不容易放假，你就好好休息吧。",
+     "reading": "Hǎo bù róngyì fàngjià, nǐ jiù hǎohǎo xiūxí ba.",
+     "zh": "好不容易放假，你就好好休息吧。",
+     "en": "You finally have a holiday, so get some proper rest."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "排了三個小時，我（　）才買到演唱會的票。",
+     "zh": "排了三個小時，我好不容易才買到演唱會的票。",
+     "en": "After queuing three hours, I finally got concert tickets.",
+     "options": [
+      "好不容易",
+      "很容易",
+      "不容易",
+      "容易"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "孩子好不容易睡著了，你小聲（　）。",
+     "zh": "孩子好不容易睡著了，你小聲一點。",
+     "en": "The child has finally fallen asleep, keep your voice down.",
+     "options": [
+      "一點",
+      "有點",
+      "一些了",
+      "點一"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他找了很久，好不容易（　）找到那家店。",
+     "zh": "他找了很久，好不容易才找到那家店。",
+     "en": "He looked for a long time and only just found the shop.",
+     "options": [
+      "才",
+      "就",
+      "都",
+      "也"
      ],
      "answer": 0
     }

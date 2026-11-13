@@ -1,1560 +1,2288 @@
 {
-  "id": "de_b2",
-  "lang": "de",
-  "level": "B2",
-  "order": 4,
-  "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py",
-  "points": [
+ "id": "de_b2",
+ "lang": "de",
+ "level": "B2",
+ "order": 4,
+ "note": "Hand-written for the site (explanations and examples are our own). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_de_b2_more.py (gram_gen.py --more).",
+ "points": [
+  {
+   "id": "konj1",
+   "pattern": "er sagt, er sei …",
+   "title": {
+    "zh": "第一虛擬式：轉述別人的話",
+    "en": "Konjunktiv I: reported speech"
+   },
+   "form": {
+    "zh": "原形字根 ＋ -e・-est・-e・-en・-et・-en（er komme、er habe）　sein：ich sei・du sei(e)st・er sei・wir seien・sie seien",
+    "en": "infinitive stem + -e · -est · -e · -en · -et · -en (er komme, er habe) · sein: ich sei · er sei · wir seien · sie seien"
+   },
+   "explain": {
+    "zh": "新聞和報導轉述別人的話時用第一虛擬式，表示「這是他說的，不是我說的」：Der Minister sagte, er habe keine Zeit.（部長說他沒有時間。）",
+    "en": "News and reports use Konjunktiv I to pass on what someone said without vouching for it: Der Minister sagte, er habe keine Zeit."
+   },
+   "notes": [
     {
-      "id": "konj1",
-      "pattern": "er sagt, er sei …",
-      "title": {
-        "zh": "第一虛擬式：轉述別人的話",
-        "en": "Konjunktiv I: reported speech"
-      },
-      "form": {
-        "zh": "原形字根 ＋ -e・-est・-e・-en・-et・-en（er komme、er habe）　sein：ich sei・du sei(e)st・er sei・wir seien・sie seien",
-        "en": "infinitive stem + -e · -est · -e · -en · -et · -en (er komme, er habe) · sein: ich sei · er sei · wir seien · sie seien"
-      },
-      "explain": {
-        "zh": "新聞和報導轉述別人的話時用第一虛擬式，表示「這是他說的，不是我說的」：Der Minister sagte, er habe keine Zeit.（部長說他沒有時間。）",
-        "en": "News and reports use Konjunktiv I to pass on what someone said without vouching for it: Der Minister sagte, er habe keine Zeit."
-      },
-      "notes": [
-        {
-          "zh": "最常用的是第三人稱單數：er sei、er habe、er könne、er komme。",
-          "en": "The third person singular is by far the commonest: er sei, er habe, er könne, er komme."
-        },
-        {
-          "zh": "過去的事：er habe … gemacht／er sei … gegangen。",
-          "en": "For the past: er habe … gemacht / er sei … gegangen."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Er sagt, er ist krank sei.",
-          "right": "Er sagt, er sei krank.",
-          "zh": "第一虛擬式直接用 sei 代替 ist。",
-          "en": "Use sei instead of ist."
-        },
-        {
-          "wrong": "Sie erklärte, sie habe den Brief nicht bekommt.",
-          "right": "Sie erklärte, sie habe den Brief nicht bekommen.",
-          "zh": "bekommen 的過去分詞是 bekommen。",
-          "en": "bekommen's participle is bekommen."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Die Polizei teilte mit, der Täter sei geflohen.",
-          "zh": "警方表示，犯人已經逃走了。",
-          "en": "The police said the culprit had fled."
-        },
-        {
-          "text": "Er behauptet, er habe nichts gewusst.",
-          "zh": "他聲稱自己什麼都不知道。",
-          "en": "He claims he knew nothing."
-        },
-        {
-          "text": "Die Firma erklärte, sie könne keine Auskunft geben.",
-          "zh": "公司表示無法提供資訊。",
-          "en": "The company said it could give no information."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Der Sprecher sagte, die Lage（　）unter Kontrolle.",
-          "zh": "發言人說情況已經控制住了。",
-          "en": "The spokesman said the situation was under control.",
-          "options": [
-            "sei",
-            "ist sei",
-            "wäre ist",
-            "seid"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Sie meint, sie（　）morgen keine Zeit.",
-          "zh": "她說她明天沒空。",
-          "en": "She says she has no time tomorrow.",
-          "options": [
-            "habe",
-            "habest",
-            "habt",
-            "hab"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er berichtete, er（　）gestern in Wien gewesen.",
-          "zh": "他說他昨天在維也納。",
-          "en": "He reported that he had been in Vienna yesterday.",
-          "options": [
-            "sei",
-            "habe",
-            "wäre gewesen",
-            "hat"
-          ],
-          "answer": 0
-        }
-      ]
+     "zh": "最常用的是第三人稱單數：er sei、er habe、er könne、er komme。",
+     "en": "The third person singular is by far the commonest: er sei, er habe, er könne, er komme."
     },
     {
-      "id": "konj1_konj2",
-      "pattern": "sie hätten・sie würden",
-      "title": {
-        "zh": "轉述時第一、第二虛擬式的選擇",
-        "en": "Konjunktiv I or II in reported speech?"
-      },
-      "form": {
-        "zh": "第一虛擬式跟直陳式一樣時（多半是複數、ich）→ 改用第二虛擬式：sie haben → sie hätten・sie kommen → sie würden kommen／kämen",
-        "en": "if Konjunktiv I looks like the indicative (mostly plural, ich) → use Konjunktiv II: sie haben → sie hätten · sie kommen → sie würden kommen / kämen"
-      },
-      "explain": {
-        "zh": "第一虛擬式的複數常跟直陳式一模一樣（sie haben），看不出是轉述，這時改用第二虛擬式：Die Studenten sagen, sie hätten keine Zeit.（學生們說他們沒空。）",
-        "en": "Plural Konjunktiv I often looks just like the indicative (sie haben), so Konjunktiv II steps in: Die Studenten sagen, sie hätten keine Zeit."
-      },
-      "notes": [
-        {
-          "zh": "口語轉述常直接用直陳式或 würde ＋ 原形。",
-          "en": "Speech often just uses the indicative or würde + infinitive."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Die Kinder sagen, sie haben Hunger gehabt hätten.",
-          "right": "Die Kinder sagen, sie hätten Hunger.",
-          "zh": "複數轉述用 hätten 就好。",
-          "en": "For the plural just use hätten."
-        },
-        {
-          "wrong": "Sie erzählen, sie kommen würden morgen.",
-          "right": "Sie erzählen, sie würden morgen kommen.",
-          "zh": "würde 放第二位，原形放最後。",
-          "en": "würde second, infinitive last."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Die Nachbarn behaupten, sie hätten nichts gehört.",
-          "zh": "鄰居們聲稱什麼都沒聽到。",
-          "en": "The neighbours claim they heard nothing."
-        },
-        {
-          "text": "Die Experten meinen, die Preise würden weiter steigen.",
-          "zh": "專家們認為物價會繼續上漲。",
-          "en": "Experts think prices will keep rising."
-        },
-        {
-          "text": "Meine Eltern schreiben, sie seien gut angekommen.",
-          "zh": "我爸媽寫信說他們平安抵達了。",
-          "en": "My parents write that they arrived safely."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Die Schüler sagen, sie（　）die Aufgabe nicht verstanden.",
-          "zh": "學生們說他們沒看懂題目。",
-          "en": "The pupils say they didn't understand the task.",
-          "options": [
-            "hätten",
-            "haben hätten",
-            "habe",
-            "hatten gehabt"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Die Gäste meinten, sie（　）später kommen.",
-          "zh": "客人們說他們會晚點到。",
-          "en": "The guests said they would come later.",
-          "options": [
-            "würden",
-            "werden würden",
-            "wurden",
-            "würde"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er sagt, er（　）krank.",
-          "zh": "他說他生病了。",
-          "en": "He says he's ill.",
-          "options": [
-            "sei",
-            "seien",
-            "wären",
-            "seist"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "zustandspassiv",
-      "pattern": "ist geöffnet",
-      "title": {
-        "zh": "狀態被動：sein ＋ 過去分詞",
-        "en": "The stative passive: sein + participle"
-      },
-      "form": {
-        "zh": "sein ＋ 過去分詞（結果的狀態）・werden ＋ 過去分詞（過程）",
-        "en": "sein + participle (the resulting state) · werden + participle (the process)"
-      },
-      "explain": {
-        "zh": "werden 被動說的是「正在被做」，sein 被動說的是「被做完之後的狀態」：Das Geschäft wird um 9 Uhr geöffnet.（商店九點開門，動作）Das Geschäft ist bis 20 Uhr geöffnet.（商店營業到晚上八點，狀態）",
-        "en": "werden describes the action, sein the resulting state: Das Geschäft wird um 9 Uhr geöffnet (action). Das Geschäft ist bis 20 Uhr geöffnet (state)."
-      },
-      "notes": [
-        {
-          "zh": "告示上很常見：Geschlossen、Reserviert、Besetzt。",
-          "en": "Common on signs: Geschlossen, Reserviert, Besetzt."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Der Tisch wird schon reserviert, du kannst dich setzen.",
-          "right": "Der Tisch ist schon reserviert.",
-          "zh": "已經訂好的狀態用 sein ＋ 過去分詞。",
-          "en": "An already-reserved state takes sein + participle."
-        },
-        {
-          "wrong": "Die Tür ist gerade von meinem Vater geschlossen.",
-          "right": "Die Tür wird gerade von meinem Vater geschlossen.",
-          "zh": "「正在被關」是動作，用 werden。",
-          "en": "Being closed right now is an action: werden."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Die Bank ist am Samstag geschlossen.",
-          "zh": "銀行星期六不營業。",
-          "en": "The bank is closed on Saturdays."
-        },
-        {
-          "text": "Das Problem ist inzwischen gelöst.",
-          "zh": "問題現在已經解決了。",
-          "en": "The problem has been solved by now."
-        },
-        {
-          "text": "Der Platz ist leider schon besetzt.",
-          "zh": "可惜這個位子已經有人坐了。",
-          "en": "Sorry, this seat is already taken."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Keine Sorge, alles（　）schon vorbereitet.",
-          "zh": "別擔心，一切都準備好了。",
-          "en": "Don't worry, everything is already prepared.",
-          "options": [
-            "ist",
-            "werden",
-            "hat",
-            "sind"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Die Brücke（　）gerade repariert, wir müssen warten.",
-          "zh": "橋正在修，我們得等一下。",
-          "en": "The bridge is being repaired right now; we'll have to wait.",
-          "options": [
-            "wird",
-            "ist",
-            "hat",
-            "sei"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Das Museum ist montags（　）.",
-          "zh": "博物館星期一休館。",
-          "en": "The museum is closed on Mondays.",
-          "options": [
-            "geschlossen",
-            "schließen",
-            "schließt",
-            "schloss"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "passiversatz",
-      "pattern": "lässt sich … ・ist zu … ・-bar",
-      "title": {
-        "zh": "被動的替代說法",
-        "en": "Alternatives to the passive"
-      },
-      "form": {
-        "zh": "sich lassen ＋ 原形（可以被…）・sein ＋ zu ＋ 原形（可以／必須被…）・形容詞 -bar（lösbar：可解決的）",
-        "en": "sich lassen + infinitive (can be done) · sein + zu + infinitive (can / must be done) · adjective -bar (lösbar: solvable)"
-      },
-      "explain": {
-        "zh": "Das Problem lässt sich leicht lösen.（＝ kann leicht gelöst werden）Der Antrag ist bis Freitag abzugeben.（＝ muss abgegeben werden）Das Wasser ist trinkbar.（＝ kann getrunken werden）",
-        "en": "Das Problem lässt sich leicht lösen (= kann gelöst werden). Der Antrag ist bis Freitag abzugeben (= muss abgegeben werden). Das Wasser ist trinkbar (= kann getrunken werden)."
-      },
-      "notes": [
-        {
-          "zh": "sein ＋ zu 可能是「可以」也可能是「必須」，看上下文。",
-          "en": "sein + zu means “can” or “must” depending on context."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Das Fenster lässt sich nicht zu öffnen.",
-          "right": "Das Fenster lässt sich nicht öffnen.",
-          "zh": "sich lassen 後面直接接原形，不加 zu。",
-          "en": "sich lassen takes the bare infinitive."
-        },
-        {
-          "wrong": "Die Regeln sind beachten.",
-          "right": "Die Regeln sind zu beachten.",
-          "zh": "sein ＋ zu ＋ 原形，不能少了 zu。",
-          "en": "sein needs zu before the infinitive."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Dieser Fleck lässt sich nicht entfernen.",
-          "zh": "這塊污漬洗不掉。",
-          "en": "This stain can't be removed."
-        },
-        {
-          "text": "Die Hausaufgaben sind bis morgen zu erledigen.",
-          "zh": "作業必須在明天前完成。",
-          "en": "The homework is to be done by tomorrow."
-        },
-        {
-          "text": "Die Schrift ist kaum lesbar.",
-          "zh": "這字跡幾乎看不懂。",
-          "en": "The handwriting is barely legible."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Das Rätsel lässt sich einfach（　）.",
-          "zh": "這個謎題很容易解開。",
-          "en": "The puzzle can easily be solved.",
-          "options": [
-            "lösen",
-            "zu lösen",
-            "gelöst",
-            "löst"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Die Formulare sind vollständig（　）.",
-          "zh": "表格必須完整填寫。",
-          "en": "The forms are to be filled in completely.",
-          "options": [
-            "auszufüllen",
-            "ausfüllen",
-            "ausgefüllt zu",
-            "zu ausfüllen"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Diese Pilze sind nicht（　）.",
-          "zh": "這些菇不能吃。",
-          "en": "These mushrooms aren't edible.",
-          "options": [
-            "essbar",
-            "essen",
-            "gegessen",
-            "zu essen bar"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "partizipialattribut",
-      "pattern": "der seit Jahren leer stehende Bau",
-      "title": {
-        "zh": "擴展的分詞定語",
-        "en": "Extended participle phrases"
-      },
-      "form": {
-        "zh": "冠詞 ＋ 補充說明 ＋ 分詞（加形容詞字尾）＋ 名詞：das von meiner Oma gebackene Brot",
-        "en": "article + extra detail + participle (with adjective ending) + noun: das von meiner Oma gebackene Brot"
-      },
-      "explain": {
-        "zh": "書面語常把關係子句濃縮放在名詞前面：das Brot, das meine Oma gebacken hat → das von meiner Oma gebackene Brot（我奶奶烤的麵包）。讀的時候先找冠詞和名詞，中間就是說明。",
-        "en": "Formal German packs a relative clause in front of the noun: das von meiner Oma gebackene Brot. To read it, find the article and noun first — everything between describes the noun."
-      },
-      "notes": [
-        {
-          "zh": "現在分詞表示主動、同時：die im Park spielenden Kinder。",
-          "en": "A present participle is active and simultaneous: die im Park spielenden Kinder."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "der gestern angekommen Zug",
-          "right": "der gestern angekommene Zug",
-          "zh": "分詞要加形容詞字尾。",
-          "en": "The participle needs an adjective ending."
-        },
-        {
-          "wrong": "die lachende im Garten Kinder",
-          "right": "die im Garten lachenden Kinder",
-          "zh": "補充說明放在分詞前面，分詞緊靠名詞。",
-          "en": "Extra detail goes before the participle, which stays next to the noun."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Die im letzten Jahr eröffnete Bibliothek ist sehr modern.",
-          "zh": "去年開幕的圖書館非常現代化。",
-          "en": "The library that opened last year is very modern."
-        },
-        {
-          "text": "Der seit Wochen angekündigte Streik beginnt morgen.",
-          "zh": "宣布了好幾週的罷工明天開始。",
-          "en": "The strike announced weeks ago begins tomorrow."
-        },
-        {
-          "text": "Wir sahen die über den Fluss fliegenden Vögel.",
-          "zh": "我們看到飛過河面的鳥。",
-          "en": "We saw the birds flying over the river."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Das von ihm（　）Buch wurde ein Bestseller.",
-          "zh": "他寫的書成了暢銷書。",
-          "en": "The book he wrote became a bestseller.",
-          "options": [
-            "geschriebene",
-            "geschrieben",
-            "schreibende",
-            "geschriebenen ist"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Die laut（　）Musik störte die Nachbarn.",
-          "zh": "大聲播放的音樂吵到了鄰居。",
-          "en": "The loudly playing music bothered the neighbours.",
-          "options": [
-            "spielende",
-            "gespielt",
-            "spielend",
-            "spielenden ist"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Der gestern（　）Vertrag ist gültig.",
-          "zh": "昨天簽的合約有效。",
-          "en": "The contract signed yesterday is valid.",
-          "options": [
-            "unterschriebene",
-            "unterschrieben",
-            "unterschreibende",
-            "unterschreiben"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "nvv",
-      "pattern": "eine Entscheidung treffen・in Frage kommen",
-      "title": {
-        "zh": "名詞＋動詞的固定搭配",
-        "en": "Noun–verb phrases"
-      },
-      "form": {
-        "zh": "eine Entscheidung treffen（做決定）・eine Frage stellen（提問）・Kritik üben（批評）・in Frage kommen（可以考慮）・zur Verfügung stehen（可供使用）・Bescheid sagen（通知）",
-        "en": "eine Entscheidung treffen · eine Frage stellen · Kritik üben · in Frage kommen · zur Verfügung stehen · Bescheid sagen"
-      },
-      "explain": {
-        "zh": "書面語常用名詞加固定動詞代替一個動詞：entscheiden → eine Entscheidung treffen。動詞是固定的，不能換：不說 eine Entscheidung machen。",
-        "en": "Formal German often uses a noun + a fixed verb instead of a single verb: entscheiden → eine Entscheidung treffen. The verb is fixed — not eine Entscheidung machen."
-      },
-      "notes": [
-        {
-          "zh": "背的時候要連動詞和介系詞一起背。",
-          "en": "Learn them with their verb and preposition."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Wir müssen bald eine Entscheidung machen.",
-          "right": "Wir müssen bald eine Entscheidung treffen.",
-          "zh": "「做決定」是 eine Entscheidung treffen。",
-          "en": "“Make a decision” is eine Entscheidung treffen."
-        },
-        {
-          "wrong": "Darf ich eine Frage fragen?",
-          "right": "Darf ich eine Frage stellen?",
-          "zh": "「提問」是 eine Frage stellen。",
-          "en": "“Ask a question” is eine Frage stellen."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Der Raum steht allen Studierenden zur Verfügung.",
-          "zh": "這個空間開放給所有學生使用。",
-          "en": "The room is available to all students."
-        },
-        {
-          "text": "Sag mir bitte Bescheid, wenn du ankommst.",
-          "zh": "你到了請跟我說一聲。",
-          "en": "Please let me know when you arrive."
-        },
-        {
-          "text": "Dieser Termin kommt für mich nicht in Frage.",
-          "zh": "這個時間我不考慮。",
-          "en": "This date is out of the question for me."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Der Chef hat eine wichtige Entscheidung（　）.",
-          "zh": "老闆做了一個重要的決定。",
-          "en": "The boss has made an important decision.",
-          "options": [
-            "getroffen",
-            "gemacht",
-            "gegeben",
-            "genommen"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Nach dem Vortrag dürfen Sie Fragen（　）.",
-          "zh": "演講後您可以提問。",
-          "en": "You may ask questions after the talk.",
-          "options": [
-            "stellen",
-            "fragen",
-            "machen",
-            "sagen"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Mein Auto steht dir gern zur（　）.",
-          "zh": "我的車隨時可以借你用。",
-          "en": "My car is at your disposal.",
-          "options": [
-            "Verfügung",
-            "Frage",
-            "Hilfe",
-            "Benutzung"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "genitiv_praep_b2",
-      "pattern": "aufgrund・infolge・angesichts・mithilfe",
-      "title": {
-        "zh": "書面語的第二格介系詞",
-        "en": "Formal prepositions with the genitive"
-      },
-      "form": {
-        "zh": "aufgrund（基於、由於）・infolge（因為…的結果）・angesichts（鑑於）・mithilfe（藉助）・hinsichtlich（關於）・anlässlich（值…之際）＋ 第二格",
-        "en": "aufgrund (because of) · infolge (as a result of) · angesichts (in view of) · mithilfe (with the help of) · hinsichtlich (regarding) · anlässlich (on the occasion of) + genitive"
-      },
-      "explain": {
-        "zh": "這些介系詞多用在新聞、報告：Aufgrund des Sturms wurde der Flug gestrichen.（因為暴風雨，航班取消了。）Mithilfe einer App lernt sie Vokabeln.",
-        "en": "These are typical of news and reports: Aufgrund des Sturms wurde der Flug gestrichen. Mithilfe einer App lernt sie Vokabeln."
-      },
-      "notes": [
-        {
-          "zh": "aufgrund 和 mithilfe 也可以拆開寫：auf Grund、mit Hilfe。",
-          "en": "aufgrund and mithilfe can also be written auf Grund, mit Hilfe."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Aufgrund dem schlechten Wetter …",
-          "right": "Aufgrund des schlechten Wetters …",
-          "zh": "aufgrund 接第二格。",
-          "en": "aufgrund takes the genitive."
-        },
-        {
-          "wrong": "Mithilfe eines Wörterbuch habe ich es verstanden.",
-          "right": "Mithilfe eines Wörterbuchs habe ich es verstanden.",
-          "zh": "中性名詞第二格加 -s。",
-          "en": "Neuter genitive adds -s."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Infolge des Unfalls war die Straße gesperrt.",
-          "zh": "由於那場事故，道路封閉了。",
-          "en": "As a result of the accident, the road was closed."
-        },
-        {
-          "text": "Angesichts der hohen Kosten wurde das Projekt gestoppt.",
-          "zh": "鑑於成本太高，計畫被叫停了。",
-          "en": "In view of the high costs, the project was stopped."
-        },
-        {
-          "text": "Anlässlich ihres Geburtstags gab es ein Fest.",
-          "zh": "為了慶祝她的生日，辦了一場慶祝會。",
-          "en": "There was a party on the occasion of her birthday."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "（　）des Streiks fielen viele Züge aus.",
-          "zh": "由於罷工，許多班次的火車停駛。",
-          "en": "Because of the strike, many trains were cancelled.",
-          "options": [
-            "Aufgrund",
-            "Mithilfe",
-            "Anlässlich",
-            "Hinsichtlich"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Mithilfe（　）Freundes fand ich eine Wohnung.",
-          "zh": "在一個朋友的幫助下，我找到了公寓。",
-          "en": "With the help of a friend, I found a flat.",
-          "options": [
-            "eines",
-            "einem",
-            "einen",
-            "ein"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Angesichts（　）Lage bleiben wir zu Hause.",
-          "zh": "鑑於目前的情況，我們待在家裡。",
-          "en": "In view of the situation, we're staying at home.",
-          "options": [
-            "der",
-            "die",
-            "dem",
-            "den"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "als_ob",
-      "pattern": "als ob ＋ Konjunktiv II",
-      "title": {
-        "zh": "als ob：好像…一樣",
-        "en": "als ob — as if"
-      },
-      "form": {
-        "zh": "…, als ob ＋ 主詞 ＋ … ＋ 第二虛擬式（動詞在最後）・…, als ＋ 第二虛擬式 ＋ 主詞（als 後面動詞緊接）",
-        "en": "…, als ob + subject + … + Konjunktiv II (verb last) · …, als + Konjunktiv II + subject (verb straight after als)"
-      },
-      "explain": {
-        "zh": "說「好像…（其實不是）」：Er tut so, als ob er nichts wüsste.（他裝作好像什麼都不知道。）也可以省略 ob，動詞直接放在 als 後面：Er tut so, als wüsste er nichts.",
-        "en": "For “as if” (but not really): Er tut so, als ob er nichts wüsste. Or drop ob and put the verb right after als: Er tut so, als wüsste er nichts."
-      },
-      "notes": [
-        {
-          "zh": "過去：als ob er es gesehen hätte。",
-          "en": "Past: als ob er es gesehen hätte."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Sie sieht aus, als ob sie ist müde.",
-          "right": "Sie sieht aus, als ob sie müde wäre.",
-          "zh": "als ob 用第二虛擬式，動詞在最後。",
-          "en": "als ob takes Konjunktiv II with the verb last."
-        },
-        {
-          "wrong": "Er redet, als er wäre der Chef.",
-          "right": "Er redet, als wäre er der Chef.",
-          "zh": "省略 ob 時，動詞緊接在 als 後面。",
-          "en": "Without ob, the verb comes right after als."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Es sieht aus, als ob es gleich regnen würde.",
-          "zh": "看起來好像快下雨了。",
-          "en": "It looks as if it's about to rain."
-        },
-        {
-          "text": "Er lief, als wäre ein Hund hinter ihm.",
-          "zh": "他跑得好像後面有狗在追。",
-          "en": "He ran as if a dog were after him."
-        },
-        {
-          "text": "Sie tat so, als hätte sie mich nicht gesehen.",
-          "zh": "她裝作沒看到我。",
-          "en": "She acted as if she hadn't seen me."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Er isst, als ob er seit Tagen nichts gegessen（　）.",
-          "zh": "他吃得好像好幾天沒吃東西一樣。",
-          "en": "He eats as if he hadn't eaten for days.",
-          "options": [
-            "hätte",
-            "hätten",
-            "wäre",
-            "hättest"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Du tust so, als（　）du alles.",
-          "zh": "你裝得好像什麼都懂。",
-          "en": "You act as if you knew everything.",
-          "options": [
-            "wüsstest",
-            "weißt",
-            "ob wüsstest",
-            "wusstest"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Sie lächelte, als ob nichts passiert（　）.",
-          "zh": "她笑著，好像什麼事都沒發生。",
-          "en": "She smiled as if nothing had happened.",
-          "options": [
-            "wäre",
-            "wären",
-            "hätte",
-            "würde"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "sodass_indem",
-      "pattern": "sodass・indem・dadurch, dass",
-      "title": {
-        "zh": "結果與方式：sodass、indem",
-        "en": "Result and means: sodass, indem"
-      },
-      "form": {
-        "zh": "sodass／so …, dass（以致於）・indem（藉由…）・dadurch, dass（透過…）＋ 副句（動詞在最後）",
-        "en": "sodass / so …, dass (so that, with the result) · indem (by doing) · dadurch, dass (by the fact that) + clause (verb last)"
-      },
-      "explain": {
-        "zh": "Es regnete stark, sodass das Spiel abgesagt wurde.（雨下得很大，以致比賽取消了。）Man lernt eine Sprache, indem man sie spricht.（藉由說來學一種語言。）",
-        "en": "Es regnete stark, sodass das Spiel abgesagt wurde. Man lernt eine Sprache, indem man sie spricht."
-      },
-      "notes": [
-        {
-          "zh": "indem 回答 wie?（怎麼做到的），不是 wann?（什麼時候）。",
-          "en": "indem answers “how?”, not “when?”."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Er war so müde, sodass er sofort einschlief.",
-          "right": "Er war so müde, dass er sofort einschlief.",
-          "zh": "前面有 so ＋ 形容詞，後面只用 dass。",
-          "en": "With so + adjective, use just dass."
-        },
-        {
-          "wrong": "Sie hat abgenommen, indem sie hat mehr Sport gemacht.",
-          "right": "Sie hat abgenommen, indem sie mehr Sport gemacht hat.",
-          "zh": "indem 子句的動詞放最後。",
-          "en": "The indem clause has the verb last."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Der Bus hatte Verspätung, sodass ich den Zug verpasste.",
-          "zh": "公車誤點，結果我錯過了火車。",
-          "en": "The bus was late, so I missed the train."
-        },
-        {
-          "text": "Du kannst Strom sparen, indem du das Licht ausmachst.",
-          "zh": "你可以藉由關燈來省電。",
-          "en": "You can save electricity by turning off the light."
-        },
-        {
-          "text": "Er wurde gesund, dadurch dass er viel schlief.",
-          "zh": "他靠著多睡覺恢復了健康。",
-          "en": "He got better by sleeping a lot."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Die Musik war so laut, （　）wir nichts hörten.",
-          "zh": "音樂太大聲，我們什麼都聽不到。",
-          "en": "The music was so loud that we couldn't hear anything.",
-          "options": [
-            "dass",
-            "sodass dass",
-            "indem",
-            "damit"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Man kann Fehler vermeiden, （　）man genau liest.",
-          "zh": "仔細閱讀就能避免錯誤。",
-          "en": "You can avoid mistakes by reading carefully.",
-          "options": [
-            "indem",
-            "sodass",
-            "damit",
-            "weil dass"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Es schneite stark, （　）die Schulen geschlossen blieben.",
-          "zh": "雪下得很大，以致學校停課。",
-          "en": "It snowed heavily, so the schools stayed closed.",
-          "options": [
-            "sodass",
-            "indem",
-            "obwohl",
-            "damit"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "falls",
-      "pattern": "falls・sofern・im Falle",
-      "title": {
-        "zh": "條件：falls、sofern",
-        "en": "Conditions: falls, sofern"
-      },
-      "form": {
-        "zh": "falls（萬一、如果）・sofern（只要、前提是）＋ 副句・im Falle ＋ 第二格・bei ＋ 第三格（bei Regen）",
-        "en": "falls (in case, if) · sofern (provided that) + clause · im Falle + genitive · bei + dative (bei Regen)"
-      },
-      "explain": {
-        "zh": "falls 比 wenn 更強調「可能性不高」：Falls du Hilfe brauchst, ruf mich an. sofern 是「只要、在…的前提下」：Wir kommen, sofern das Wetter gut ist. 名詞形式：Bei Regen fällt das Konzert aus.",
-        "en": "falls stresses a possibility: Falls du Hilfe brauchst, ruf mich an. sofern means “provided that”: Wir kommen, sofern das Wetter gut ist. With a noun: Bei Regen fällt das Konzert aus."
-      },
-      "notes": [
-        {
-          "zh": "falls 子句也可以放後面：Ruf mich an, falls du Hilfe brauchst.",
-          "en": "The falls clause can come second: Ruf mich an, falls du Hilfe brauchst."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Falls es regnet, wir bleiben zu Hause.",
-          "right": "Falls es regnet, bleiben wir zu Hause.",
-          "zh": "副句在前，主句動詞緊接逗號。",
-          "en": "After a front clause, the main verb comes first."
-        },
-        {
-          "wrong": "Bei regnet fällt das Fest aus.",
-          "right": "Bei Regen fällt das Fest aus.",
-          "zh": "bei 後面接名詞 Regen。",
-          "en": "bei takes a noun: Regen."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Falls ich mich verspäte, fangt ohne mich an.",
-          "zh": "萬一我遲到，你們先開始。",
-          "en": "If I'm late, start without me."
-        },
-        {
-          "text": "Sofern nichts dazwischenkommt, sehen wir uns am Freitag.",
-          "zh": "只要沒有意外，我們星期五見。",
-          "en": "Provided nothing comes up, we'll see each other on Friday."
-        },
-        {
-          "text": "Im Falle eines Feuers benutzen Sie bitte die Treppe.",
-          "zh": "萬一發生火災，請走樓梯。",
-          "en": "In case of fire, please use the stairs."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "（　）du Zeit hast, komm doch vorbei.",
-          "zh": "如果你有空，就過來坐坐。",
-          "en": "If you have time, do drop by.",
-          "options": [
-            "Falls",
-            "Bei",
-            "Im Falle",
-            "Damit"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "（　）Glatteis bleiben die Schulen geschlossen.",
-          "zh": "路面結冰時學校停課。",
-          "en": "In icy conditions the schools stay closed.",
-          "options": [
-            "Bei",
-            "Falls",
-            "Sofern",
-            "Wenn"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Wir fahren morgen, sofern das Auto repariert（　）.",
-          "zh": "只要車修好了，我們明天就出發。",
-          "en": "We'll leave tomorrow, provided the car is repaired.",
-          "options": [
-            "ist",
-            "ist es",
-            "sein",
-            "sei ist"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "modal_subjektiv",
-      "pattern": "soll … haben・will … haben",
-      "title": {
-        "zh": "情態動詞表示傳聞、聲稱",
-        "en": "Modal verbs for reports and claims"
-      },
-      "form": {
-        "zh": "sollen（據說）・wollen（他自己聲稱）＋ 原形／完成式不定式（gesehen haben）",
-        "en": "sollen (is said to) · wollen (claims to) + infinitive / perfect infinitive (gesehen haben)"
-      },
-      "explain": {
-        "zh": "sollen 表示「據說、聽說」：Das Restaurant soll sehr gut sein.（據說那家餐廳很好。）wollen 表示「他自己說，但我不太信」：Er will den Täter gesehen haben.（他聲稱看到了犯人。）",
-        "en": "sollen means “is said to”: Das Restaurant soll sehr gut sein. wollen means “claims to (but I doubt it)”: Er will den Täter gesehen haben."
-      },
-      "notes": [
-        {
-          "zh": "說過去的傳聞用完成式不定式：Er soll reich gewesen sein.",
-          "en": "For a past report use the perfect infinitive: Er soll reich gewesen sein."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Er soll gestern im Krankenhaus war.",
-          "right": "Er soll gestern im Krankenhaus gewesen sein.",
-          "zh": "傳聞過去的事用 gewesen sein。",
-          "en": "A past report takes gewesen sein."
-        },
-        {
-          "wrong": "Sie will das allein gemacht hat.",
-          "right": "Sie will das allein gemacht haben.",
-          "zh": "wollen 後面用 gemacht haben。",
-          "en": "wollen takes gemacht haben."
-        }
-      ],
-      "examples": [
-        {
-          "text": "In diesem Haus soll Goethe gewohnt haben.",
-          "zh": "據說歌德住過這棟房子。",
-          "en": "Goethe is said to have lived in this house."
-        },
-        {
-          "text": "Der Film soll sehr spannend sein.",
-          "zh": "聽說那部電影很精彩。",
-          "en": "The film is supposed to be very exciting."
-        },
-        {
-          "text": "Er will nie zu spät gekommen sein.",
-          "zh": "他聲稱自己從來沒遲到過。",
-          "en": "He claims never to have been late."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Die neue Chefin（　）sehr streng sein.",
-          "zh": "據說新主管很嚴格。",
-          "en": "The new boss is said to be very strict.",
-          "options": [
-            "soll",
-            "sollt",
-            "muss es",
-            "darf"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er（　）das Geld gefunden haben – ich glaube ihm nicht.",
-          "zh": "他聲稱撿到了錢——我才不信。",
-          "en": "He claims to have found the money — I don't believe him.",
-          "options": [
-            "will",
-            "wollt",
-            "kann es",
-            "darf"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Der Sänger soll früher Lehrer（　）sein.",
-          "zh": "據說那位歌手以前是老師。",
-          "en": "The singer is said to have been a teacher.",
-          "options": [
-            "gewesen",
-            "sein",
-            "war",
-            "wäre"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "futur2",
-      "pattern": "wird … gemacht haben",
-      "title": {
-        "zh": "未來完成式（Futur II）",
-        "en": "The future perfect (Futur II)"
-      },
-      "form": {
-        "zh": "werden ＋ … ＋ 過去分詞 ＋ haben／sein（句尾）",
-        "en": "werden + … + past participle + haben / sein (end)"
-      },
-      "explain": {
-        "zh": "說未來某時已經完成的事：Bis Juni werde ich die Prüfung bestanden haben. 更常用來猜測過去：Er wird den Zug verpasst haben.（他大概錯過火車了。）",
-        "en": "For something done by a future time: Bis Juni werde ich die Prüfung bestanden haben. More often it guesses about the past: Er wird den Zug verpasst haben."
-      },
-      "notes": [
-        {
-          "zh": "口語常用完成式加時間詞代替：Bis Juni habe ich die Prüfung bestanden.",
-          "en": "Speech often uses the perfect instead: Bis Juni habe ich die Prüfung bestanden."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Er wird schon angekommen haben.",
-          "right": "Er wird schon angekommen sein.",
-          "zh": "ankommen 用 sein：angekommen sein。",
-          "en": "ankommen takes sein: angekommen sein."
-        },
-        {
-          "wrong": "Bis morgen werde ich fertig geworden.",
-          "right": "Bis morgen werde ich fertig geworden sein.",
-          "zh": "Futur II 最後要有 sein 或 haben。",
-          "en": "Futur II ends with sein or haben."
-        }
-      ],
-      "examples": [
-        {
-          "text": "In zehn Jahren wird sich die Stadt stark verändert haben.",
-          "zh": "十年後這座城市會有很大的變化。",
-          "en": "In ten years the city will have changed a lot."
-        },
-        {
-          "text": "Sie antwortet nicht; sie wird schon eingeschlafen sein.",
-          "zh": "她沒回應，大概已經睡著了。",
-          "en": "She's not answering — she'll have fallen asleep."
-        },
-        {
-          "text": "Bis du kommst, werde ich das Essen gekocht haben.",
-          "zh": "等你來的時候，我就煮好飯了。",
-          "en": "By the time you come, I'll have cooked dinner."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Er wird den Schlüssel verloren（　）.",
-          "zh": "他大概把鑰匙弄丟了。",
-          "en": "He'll have lost the key.",
-          "options": [
-            "haben",
-            "sein",
-            "hat",
-            "ist"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Bis Freitag werden die Gäste（　）sein.",
-          "zh": "到星期五客人都已經走了。",
-          "en": "By Friday the guests will have left.",
-          "options": [
-            "abgereist",
-            "abreisen",
-            "abgereist haben",
-            "abreist"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Sie（　）die Nachricht wohl schon gelesen haben.",
-          "zh": "她大概已經看過訊息了。",
-          "en": "She'll probably have read the message already.",
-          "options": [
-            "wird",
-            "würde es",
-            "hat",
-            "ist"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "relativ_was_wo",
-      "pattern": "alles, was・das Beste, was・wo",
-      "title": {
-        "zh": "關係詞 was、wo",
-        "en": "Relative was and wo"
-      },
-      "form": {
-        "zh": "alles／nichts／etwas／vieles／das ＋ 最高級 ＋ was …・整句話 ＋ , was …・地點 ＋ wo …・時間 ＋ wo／als",
-        "en": "alles / nichts / etwas / vieles / das + superlative + was … · a whole clause + , was … · places + wo … · times + wo / als"
-      },
-      "explain": {
-        "zh": "不定代名詞和中性最高級後面用 was：Das ist alles, was ich weiß.（這就是我知道的全部。）Das Beste, was du tun kannst … 指前面整句話也用 was：Er kam zu spät, was mich ärgerte.",
-        "en": "After indefinites and neuter superlatives use was: Das ist alles, was ich weiß. Das Beste, was du tun kannst … It also refers back to a whole clause: Er kam zu spät, was mich ärgerte."
-      },
-      "notes": [
-        {
-          "zh": "城市、國家名後面用 wo：Berlin, wo ich studiert habe。",
-          "en": "After names of places use wo: Berlin, wo ich studiert habe."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Das ist alles, das ich habe.",
-          "right": "Das ist alles, was ich habe.",
-          "zh": "alles 後面用 was。",
-          "en": "After alles use was."
-        },
-        {
-          "wrong": "Sie hat die Prüfung bestanden, das mich freut.",
-          "right": "Sie hat die Prüfung bestanden, was mich freut.",
-          "zh": "指前面整件事用 was。",
-          "en": "Referring to the whole clause: was."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Es gibt nichts, was er nicht isst.",
-          "zh": "沒有什麼是他不吃的。",
-          "en": "There's nothing he won't eat."
-        },
-        {
-          "text": "Das war das Schönste, was ich je erlebt habe.",
-          "zh": "這是我經歷過最美好的事。",
-          "en": "That was the most beautiful thing I've ever experienced."
-        },
-        {
-          "text": "Ich besuche Tainan, wo meine Großeltern wohnen.",
-          "zh": "我要去台南，我爺爺奶奶住在那裡。",
-          "en": "I'm visiting Tainan, where my grandparents live."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Ich glaube nicht alles, （　）in der Zeitung steht.",
-          "zh": "我不相信報上寫的所有東西。",
-          "en": "I don't believe everything that's in the paper.",
-          "options": [
-            "was",
-            "das",
-            "der",
-            "wo"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er hat sich nicht entschuldigt, （　）ich unhöflich finde.",
-          "zh": "他沒道歉，我覺得很沒禮貌。",
-          "en": "He didn't apologise, which I find rude.",
-          "options": [
-            "was",
-            "das",
-            "den",
-            "wo"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Das ist die Stadt, （　）ich aufgewachsen bin.",
-          "zh": "這是我長大的城市。",
-          "en": "That's the city where I grew up.",
-          "options": [
-            "wo",
-            "was",
-            "die wo",
-            "wohin"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "korrelat_es",
-      "pattern": "Es freut mich, dass …",
-      "title": {
-        "zh": "es 和 da(r)- 當預告詞",
-        "en": "es and da(r)- as placeholders"
-      },
-      "form": {
-        "zh": "Es ＋ 動詞 ＋ …, dass／zu ＋ 原形（Es freut mich, dass …）・動詞 ＋ da(r) ＋ 介系詞, dass／zu …（Ich freue mich darauf, dass …）",
-        "en": "Es + verb + …, dass / zu + infinitive (Es freut mich, dass …) · verb + da(r) + preposition, dass / zu … (Ich freue mich darauf, dass …)"
-      },
-      "explain": {
-        "zh": "子句當主詞時，常先用 es 佔位：Es ist wichtig, pünktlich zu sein. 動詞要接介系詞時，用 da(r)- 先預告後面的子句：Ich warte darauf, dass du anrufst.（我在等你打電話。）",
-        "en": "When a clause is the subject, es often holds its place: Es ist wichtig, pünktlich zu sein. With a prepositional verb, da(r)- announces the clause: Ich warte darauf, dass du anrufst."
-      },
-      "notes": [
-        {
-          "zh": "子句放在句首時，es 就省略：Dass du kommst, freut mich.",
-          "en": "If the clause comes first, es disappears: Dass du kommst, freut mich."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Ich freue mich, dass auf die Ferien.",
-          "right": "Ich freue mich auf die Ferien.／Ich freue mich darauf, dass bald Ferien sind.",
-          "zh": "接子句時用 darauf, dass。",
-          "en": "Before a clause use darauf, dass."
-        },
-        {
-          "wrong": "Es ist schön, dass du hier bist, es.",
-          "right": "Es ist schön, dass du hier bist.",
-          "zh": "es 只在句首出現一次。",
-          "en": "es appears once, at the start."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Es ist nicht leicht, eine Wohnung zu finden.",
-          "zh": "要找到公寓不容易。",
-          "en": "It isn't easy to find a flat."
-        },
-        {
-          "text": "Ich habe nicht damit gerechnet, dass so viele kommen.",
-          "zh": "我沒料到會來這麼多人。",
-          "en": "I didn't expect so many people to come."
-        },
-        {
-          "text": "Er besteht darauf, die Rechnung zu bezahlen.",
-          "zh": "他堅持要付帳。",
-          "en": "He insists on paying the bill."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "（　）tut mir leid, dass ich zu spät bin.",
-          "zh": "很抱歉我遲到了。",
-          "en": "I'm sorry I'm late.",
-          "options": [
-            "Es",
-            "Das es",
-            "Da",
-            "Dafür"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Wir freuen uns（　）, euch bald wiederzusehen.",
-          "zh": "我們很期待很快能再見到你們。",
-          "en": "We're looking forward to seeing you again soon.",
-          "options": [
-            "darauf",
-            "darüber auf",
-            "worauf",
-            "dafür auf"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Sie hat sich（　）beschwert, dass es zu laut war.",
-          "zh": "她抱怨說太吵了。",
-          "en": "She complained that it was too loud.",
-          "options": [
-            "darüber",
-            "darauf",
-            "dafür",
-            "daran"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "adj_praep",
-      "pattern": "stolz auf・abhängig von",
-      "title": {
-        "zh": "搭配介系詞的形容詞",
-        "en": "Adjectives with prepositions"
-      },
-      "form": {
-        "zh": "stolz auf ＋ 4・abhängig von ＋ 3・zufrieden mit ＋ 3・interessiert an ＋ 3・bekannt für ＋ 4・verantwortlich für ＋ 4・neugierig auf ＋ 4",
-        "en": "stolz auf + acc · abhängig von + dat · zufrieden mit + dat · interessiert an + dat · bekannt für + acc · verantwortlich für + acc · neugierig auf + acc"
-      },
-      "explain": {
-        "zh": "有些形容詞固定搭配某個介系詞，要跟格一起背：Ich bin stolz auf dich.（我以你為傲。）Er ist mit seiner Arbeit zufrieden. Die Stadt ist bekannt für ihr Bier.",
-        "en": "Some adjectives take a fixed preposition — learn the case too: Ich bin stolz auf dich. Er ist mit seiner Arbeit zufrieden. Die Stadt ist bekannt für ihr Bier."
-      },
-      "notes": [
-        {
-          "zh": "接子句時用 da(r)-：Ich bin stolz darauf, dass du es geschafft hast.",
-          "en": "Before a clause use da(r)-: Ich bin stolz darauf, dass du es geschafft hast."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Sie ist stolz über ihren Sohn.",
-          "right": "Sie ist stolz auf ihren Sohn.",
-          "zh": "「以…為傲」是 stolz auf。",
-          "en": "“Proud of” is stolz auf."
-        },
-        {
-          "wrong": "Ich bin interessiert für Kunst.",
-          "right": "Ich bin an Kunst interessiert.",
-          "zh": "interessiert 搭配 an ＋ 第三格。",
-          "en": "interessiert takes an + dative."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Taiwan ist bekannt für seine Nachtmärkte.",
-          "zh": "台灣以夜市聞名。",
-          "en": "Taiwan is famous for its night markets."
-        },
-        {
-          "text": "Der Erfolg ist abhängig vom Wetter.",
-          "zh": "成敗取決於天氣。",
-          "en": "Success depends on the weather."
-        },
-        {
-          "text": "Bist du neugierig auf das Geschenk?",
-          "zh": "你好奇禮物是什麼嗎？",
-          "en": "Are you curious about the present?"
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Wir sind mit dem Hotel sehr（　）.",
-          "zh": "我們對飯店很滿意。",
-          "en": "We're very satisfied with the hotel.",
-          "options": [
-            "zufrieden",
-            "stolz",
-            "interessiert",
-            "abhängig"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Wer ist（　）diesen Fehler verantwortlich?",
-          "zh": "誰要為這個錯誤負責？",
-          "en": "Who is responsible for this mistake?",
-          "options": [
-            "für",
-            "an",
-            "mit",
-            "von"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er ist sehr stolz（　）seine Tochter.",
-          "zh": "他非常以女兒為傲。",
-          "en": "He's very proud of his daughter.",
-          "options": [
-            "auf",
-            "über",
-            "an",
-            "für"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "inf_perfekt",
-      "pattern": "froh, es geschafft zu haben",
-      "title": {
-        "zh": "完成式不定式：zu ＋ … haben／sein",
-        "en": "The perfect infinitive with zu"
-      },
-      "form": {
-        "zh": "過去分詞 ＋ zu ＋ haben／sein（gesehen zu haben、gekommen zu sein）",
-        "en": "past participle + zu + haben / sein (gesehen zu haben, gekommen zu sein)"
-      },
-      "explain": {
-        "zh": "zu 不定式說的是已經完成的事時用完成式：Ich bin froh, die Prüfung bestanden zu haben.（我很高興通過了考試。）Er behauptet, nichts gesehen zu haben.",
-        "en": "When a zu-infinitive refers to something already done, use the perfect: Ich bin froh, die Prüfung bestanden zu haben. Er behauptet, nichts gesehen zu haben."
-      },
-      "notes": [
-        {
-          "zh": "移動動詞用 sein：Sie bedauert, nicht mitgekommen zu sein.",
-          "en": "Verbs of movement use sein: Sie bedauert, nicht mitgekommen zu sein."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Ich freue mich, dich kennenzulernen zu haben.",
-          "right": "Ich freue mich, dich kennengelernt zu haben.",
-          "zh": "完成式不定式用過去分詞 kennengelernt。",
-          "en": "The perfect infinitive uses the participle: kennengelernt."
-        },
-        {
-          "wrong": "Er ist froh, rechtzeitig angekommen zu haben.",
-          "right": "Er ist froh, rechtzeitig angekommen zu sein.",
-          "zh": "ankommen 用 sein。",
-          "en": "ankommen takes sein."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Es tut mir leid, dich geweckt zu haben.",
-          "zh": "抱歉把你吵醒了。",
-          "en": "I'm sorry to have woken you."
-        },
-        {
-          "text": "Sie erinnert sich, ihn schon einmal getroffen zu haben.",
-          "zh": "她記得以前見過他。",
-          "en": "She remembers having met him before."
-        },
-        {
-          "text": "Wir bereuen nicht, nach Taiwan gezogen zu sein.",
-          "zh": "我們不後悔搬到台灣。",
-          "en": "We don't regret moving to Taiwan."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Ich bin stolz, den Marathon geschafft zu（　）.",
-          "zh": "我很驕傲自己跑完了馬拉松。",
-          "en": "I'm proud to have completed the marathon.",
-          "options": [
-            "haben",
-            "sein",
-            "werden",
-            "hatten"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Er bedauert, so früh gegangen zu（　）.",
-          "zh": "他後悔那麼早就走了。",
-          "en": "He regrets having left so early.",
-          "options": [
-            "sein",
-            "haben",
-            "werden",
-            "gewesen"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Sie glaubt, die Tür（　）zu haben.",
-          "zh": "她以為自己已經鎖了門。",
-          "en": "She thinks she locked the door.",
-          "options": [
-            "abgeschlossen",
-            "abschließen",
-            "abzuschließen",
-            "abgeschloss"
-          ],
-          "answer": 0
-        }
-      ]
-    },
-    {
-      "id": "einerseits",
-      "pattern": "einerseits … andererseits",
-      "title": {
-        "zh": "einerseits … andererseits：一方面…另一方面",
-        "en": "einerseits … andererseits — on the one hand … on the other"
-      },
-      "form": {
-        "zh": "Einerseits ＋ 動詞 ＋ 主詞 …, andererseits ＋ 動詞 ＋ 主詞 …（兩邊都佔第一位）",
-        "en": "Einerseits + verb + subject …, andererseits + verb + subject … (each takes position 1)"
-      },
-      "explain": {
-        "zh": "比較一件事的兩面：Einerseits ist die Stadt teuer, andererseits gibt es viele Jobs.（一方面城市很貴，另一方面工作機會很多。）兩個詞都算第一位，動詞緊跟在後。",
-        "en": "Weighs two sides: Einerseits ist die Stadt teuer, andererseits gibt es viele Jobs. Each word counts as position 1, so the verb follows."
-      },
-      "notes": [
-        {
-          "zh": "也可以放在句中：Ich möchte einerseits reisen, andererseits Geld sparen.",
-          "en": "They can also go mid-sentence: Ich möchte einerseits reisen, andererseits Geld sparen."
-        }
-      ],
-      "mistakes": [
-        {
-          "wrong": "Einerseits das Auto ist praktisch, andererseits es ist teuer.",
-          "right": "Einerseits ist das Auto praktisch, andererseits ist es teuer.",
-          "zh": "einerseits、andererseits 後面動詞緊接著。",
-          "en": "The verb comes right after einerseits / andererseits."
-        },
-        {
-          "wrong": "Einerseits ist es gut, aber andererseits auf der anderen Seite schlecht.",
-          "right": "Einerseits ist es gut, andererseits ist es schlecht.",
-          "zh": "andererseits 已經是「另一方面」，不再重複。",
-          "en": "andererseits already means “on the other hand”."
-        }
-      ],
-      "examples": [
-        {
-          "text": "Einerseits liebe ich die Stadt, andererseits vermisse ich die Natur.",
-          "zh": "一方面我很愛這座城市，另一方面我又想念大自然。",
-          "en": "On the one hand I love the city, on the other I miss nature."
-        },
-        {
-          "text": "Homeoffice ist einerseits bequem, andererseits manchmal einsam.",
-          "zh": "在家工作一方面很方便，另一方面有時很孤單。",
-          "en": "Working from home is convenient but sometimes lonely."
-        },
-        {
-          "text": "Einerseits will er sparen, andererseits kauft er ständig neue Spiele.",
-          "zh": "他一方面想存錢，另一方面又一直買新遊戲。",
-          "en": "On the one hand he wants to save, on the other he keeps buying new games."
-        }
-      ],
-      "quiz": [
-        {
-          "q": "Einerseits（　）der Job gut bezahlt, andererseits ist er stressig.",
-          "zh": "這份工作一方面薪水好，另一方面壓力大。",
-          "en": "On the one hand the job pays well, on the other it's stressful.",
-          "options": [
-            "ist",
-            "der Job ist",
-            "sei",
-            "war es"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Einerseits möchte ich reisen, （　）habe ich wenig Geld.",
-          "zh": "我一方面想去旅行，另一方面錢不多。",
-          "en": "On the one hand I'd like to travel, on the other I have little money.",
-          "options": [
-            "andererseits",
-            "einerseits",
-            "sondern",
-            "deshalb"
-          ],
-          "answer": 0
-        },
-        {
-          "q": "Andererseits（　）viele Menschen auf dem Land glücklicher.",
-          "zh": "另一方面，很多人在鄉下比較快樂。",
-          "en": "On the other hand, many people are happier in the country.",
-          "options": [
-            "sind",
-            "viele sind",
-            "seien es",
-            "werden sind"
-          ],
-          "answer": 0
-        }
-      ]
+     "zh": "過去的事：er habe … gemacht／er sei … gegangen。",
+     "en": "For the past: er habe … gemacht / er sei … gegangen."
     }
-  ]
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er sagt, er ist krank sei.",
+     "right": "Er sagt, er sei krank.",
+     "zh": "第一虛擬式直接用 sei 代替 ist。",
+     "en": "Use sei instead of ist."
+    },
+    {
+     "wrong": "Sie erklärte, sie habe den Brief nicht bekommt.",
+     "right": "Sie erklärte, sie habe den Brief nicht bekommen.",
+     "zh": "bekommen 的過去分詞是 bekommen。",
+     "en": "bekommen's participle is bekommen."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Polizei teilte mit, der Täter sei geflohen.",
+     "zh": "警方表示，犯人已經逃走了。",
+     "en": "The police said the culprit had fled."
+    },
+    {
+     "text": "Er behauptet, er habe nichts gewusst.",
+     "zh": "他聲稱自己什麼都不知道。",
+     "en": "He claims he knew nothing."
+    },
+    {
+     "text": "Die Firma erklärte, sie könne keine Auskunft geben.",
+     "zh": "公司表示無法提供資訊。",
+     "en": "The company said it could give no information."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Der Sprecher sagte, die Lage（　）unter Kontrolle.",
+     "zh": "發言人說情況已經控制住了。",
+     "en": "The spokesman said the situation was under control.",
+     "options": [
+      "sei",
+      "ist sei",
+      "wäre ist",
+      "seid"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie meint, sie（　）morgen keine Zeit.",
+     "zh": "她說她明天沒空。",
+     "en": "She says she has no time tomorrow.",
+     "options": [
+      "habe",
+      "habest",
+      "habt",
+      "hab"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er berichtete, er（　）gestern in Wien gewesen.",
+     "zh": "他說他昨天在維也納。",
+     "en": "He reported that he had been in Vienna yesterday.",
+     "options": [
+      "sei",
+      "habe",
+      "wäre gewesen",
+      "hat"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "konj1_konj2",
+   "pattern": "sie hätten・sie würden",
+   "title": {
+    "zh": "轉述時第一、第二虛擬式的選擇",
+    "en": "Konjunktiv I or II in reported speech?"
+   },
+   "form": {
+    "zh": "第一虛擬式跟直陳式一樣時（多半是複數、ich）→ 改用第二虛擬式：sie haben → sie hätten・sie kommen → sie würden kommen／kämen",
+    "en": "if Konjunktiv I looks like the indicative (mostly plural, ich) → use Konjunktiv II: sie haben → sie hätten · sie kommen → sie würden kommen / kämen"
+   },
+   "explain": {
+    "zh": "第一虛擬式的複數常跟直陳式一模一樣（sie haben），看不出是轉述，這時改用第二虛擬式：Die Studenten sagen, sie hätten keine Zeit.（學生們說他們沒空。）",
+    "en": "Plural Konjunktiv I often looks just like the indicative (sie haben), so Konjunktiv II steps in: Die Studenten sagen, sie hätten keine Zeit."
+   },
+   "notes": [
+    {
+     "zh": "口語轉述常直接用直陳式或 würde ＋ 原形。",
+     "en": "Speech often just uses the indicative or würde + infinitive."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Die Kinder sagen, sie haben Hunger gehabt hätten.",
+     "right": "Die Kinder sagen, sie hätten Hunger.",
+     "zh": "複數轉述用 hätten 就好。",
+     "en": "For the plural just use hätten."
+    },
+    {
+     "wrong": "Sie erzählen, sie kommen würden morgen.",
+     "right": "Sie erzählen, sie würden morgen kommen.",
+     "zh": "würde 放第二位，原形放最後。",
+     "en": "würde second, infinitive last."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Nachbarn behaupten, sie hätten nichts gehört.",
+     "zh": "鄰居們聲稱什麼都沒聽到。",
+     "en": "The neighbours claim they heard nothing."
+    },
+    {
+     "text": "Die Experten meinen, die Preise würden weiter steigen.",
+     "zh": "專家們認為物價會繼續上漲。",
+     "en": "Experts think prices will keep rising."
+    },
+    {
+     "text": "Meine Eltern schreiben, sie seien gut angekommen.",
+     "zh": "我爸媽寫信說他們平安抵達了。",
+     "en": "My parents write that they arrived safely."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Die Schüler sagen, sie（　）die Aufgabe nicht verstanden.",
+     "zh": "學生們說他們沒看懂題目。",
+     "en": "The pupils say they didn't understand the task.",
+     "options": [
+      "hätten",
+      "haben hätten",
+      "habe",
+      "hatten gehabt"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Gäste meinten, sie（　）später kommen.",
+     "zh": "客人們說他們會晚點到。",
+     "en": "The guests said they would come later.",
+     "options": [
+      "würden",
+      "werden würden",
+      "wurden",
+      "würde"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er sagt, er（　）krank.",
+     "zh": "他說他生病了。",
+     "en": "He says he's ill.",
+     "options": [
+      "sei",
+      "seien",
+      "wären",
+      "seist"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zustandspassiv",
+   "pattern": "ist geöffnet",
+   "title": {
+    "zh": "狀態被動：sein ＋ 過去分詞",
+    "en": "The stative passive: sein + participle"
+   },
+   "form": {
+    "zh": "sein ＋ 過去分詞（結果的狀態）・werden ＋ 過去分詞（過程）",
+    "en": "sein + participle (the resulting state) · werden + participle (the process)"
+   },
+   "explain": {
+    "zh": "werden 被動說的是「正在被做」，sein 被動說的是「被做完之後的狀態」：Das Geschäft wird um 9 Uhr geöffnet.（商店九點開門，動作）Das Geschäft ist bis 20 Uhr geöffnet.（商店營業到晚上八點，狀態）",
+    "en": "werden describes the action, sein the resulting state: Das Geschäft wird um 9 Uhr geöffnet (action). Das Geschäft ist bis 20 Uhr geöffnet (state)."
+   },
+   "notes": [
+    {
+     "zh": "告示上很常見：Geschlossen、Reserviert、Besetzt。",
+     "en": "Common on signs: Geschlossen, Reserviert, Besetzt."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Der Tisch wird schon reserviert, du kannst dich setzen.",
+     "right": "Der Tisch ist schon reserviert.",
+     "zh": "已經訂好的狀態用 sein ＋ 過去分詞。",
+     "en": "An already-reserved state takes sein + participle."
+    },
+    {
+     "wrong": "Die Tür ist gerade von meinem Vater geschlossen.",
+     "right": "Die Tür wird gerade von meinem Vater geschlossen.",
+     "zh": "「正在被關」是動作，用 werden。",
+     "en": "Being closed right now is an action: werden."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Bank ist am Samstag geschlossen.",
+     "zh": "銀行星期六不營業。",
+     "en": "The bank is closed on Saturdays."
+    },
+    {
+     "text": "Das Problem ist inzwischen gelöst.",
+     "zh": "問題現在已經解決了。",
+     "en": "The problem has been solved by now."
+    },
+    {
+     "text": "Der Platz ist leider schon besetzt.",
+     "zh": "可惜這個位子已經有人坐了。",
+     "en": "Sorry, this seat is already taken."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Keine Sorge, alles（　）schon vorbereitet.",
+     "zh": "別擔心，一切都準備好了。",
+     "en": "Don't worry, everything is already prepared.",
+     "options": [
+      "ist",
+      "werden",
+      "hat",
+      "sind"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Brücke（　）gerade repariert, wir müssen warten.",
+     "zh": "橋正在修，我們得等一下。",
+     "en": "The bridge is being repaired right now; we'll have to wait.",
+     "options": [
+      "wird",
+      "ist",
+      "hat",
+      "sei"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Das Museum ist montags（　）.",
+     "zh": "博物館星期一休館。",
+     "en": "The museum is closed on Mondays.",
+     "options": [
+      "geschlossen",
+      "schließen",
+      "schließt",
+      "schloss"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "passiversatz",
+   "pattern": "lässt sich … ・ist zu … ・-bar",
+   "title": {
+    "zh": "被動的替代說法",
+    "en": "Alternatives to the passive"
+   },
+   "form": {
+    "zh": "sich lassen ＋ 原形（可以被…）・sein ＋ zu ＋ 原形（可以／必須被…）・形容詞 -bar（lösbar：可解決的）",
+    "en": "sich lassen + infinitive (can be done) · sein + zu + infinitive (can / must be done) · adjective -bar (lösbar: solvable)"
+   },
+   "explain": {
+    "zh": "Das Problem lässt sich leicht lösen.（＝ kann leicht gelöst werden）Der Antrag ist bis Freitag abzugeben.（＝ muss abgegeben werden）Das Wasser ist trinkbar.（＝ kann getrunken werden）",
+    "en": "Das Problem lässt sich leicht lösen (= kann gelöst werden). Der Antrag ist bis Freitag abzugeben (= muss abgegeben werden). Das Wasser ist trinkbar (= kann getrunken werden)."
+   },
+   "notes": [
+    {
+     "zh": "sein ＋ zu 可能是「可以」也可能是「必須」，看上下文。",
+     "en": "sein + zu means “can” or “must” depending on context."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Das Fenster lässt sich nicht zu öffnen.",
+     "right": "Das Fenster lässt sich nicht öffnen.",
+     "zh": "sich lassen 後面直接接原形，不加 zu。",
+     "en": "sich lassen takes the bare infinitive."
+    },
+    {
+     "wrong": "Die Regeln sind beachten.",
+     "right": "Die Regeln sind zu beachten.",
+     "zh": "sein ＋ zu ＋ 原形，不能少了 zu。",
+     "en": "sein needs zu before the infinitive."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Dieser Fleck lässt sich nicht entfernen.",
+     "zh": "這塊污漬洗不掉。",
+     "en": "This stain can't be removed."
+    },
+    {
+     "text": "Die Hausaufgaben sind bis morgen zu erledigen.",
+     "zh": "作業必須在明天前完成。",
+     "en": "The homework is to be done by tomorrow."
+    },
+    {
+     "text": "Die Schrift ist kaum lesbar.",
+     "zh": "這字跡幾乎看不懂。",
+     "en": "The handwriting is barely legible."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Das Rätsel lässt sich einfach（　）.",
+     "zh": "這個謎題很容易解開。",
+     "en": "The puzzle can easily be solved.",
+     "options": [
+      "lösen",
+      "zu lösen",
+      "gelöst",
+      "löst"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Formulare sind vollständig（　）.",
+     "zh": "表格必須完整填寫。",
+     "en": "The forms are to be filled in completely.",
+     "options": [
+      "auszufüllen",
+      "ausfüllen",
+      "ausgefüllt zu",
+      "zu ausfüllen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Diese Pilze sind nicht（　）.",
+     "zh": "這些菇不能吃。",
+     "en": "These mushrooms aren't edible.",
+     "options": [
+      "essbar",
+      "essen",
+      "gegessen",
+      "zu essen bar"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "partizipialattribut",
+   "pattern": "der seit Jahren leer stehende Bau",
+   "title": {
+    "zh": "擴展的分詞定語",
+    "en": "Extended participle phrases"
+   },
+   "form": {
+    "zh": "冠詞 ＋ 補充說明 ＋ 分詞（加形容詞字尾）＋ 名詞：das von meiner Oma gebackene Brot",
+    "en": "article + extra detail + participle (with adjective ending) + noun: das von meiner Oma gebackene Brot"
+   },
+   "explain": {
+    "zh": "書面語常把關係子句濃縮放在名詞前面：das Brot, das meine Oma gebacken hat → das von meiner Oma gebackene Brot（我奶奶烤的麵包）。讀的時候先找冠詞和名詞，中間就是說明。",
+    "en": "Formal German packs a relative clause in front of the noun: das von meiner Oma gebackene Brot. To read it, find the article and noun first — everything between describes the noun."
+   },
+   "notes": [
+    {
+     "zh": "現在分詞表示主動、同時：die im Park spielenden Kinder。",
+     "en": "A present participle is active and simultaneous: die im Park spielenden Kinder."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "der gestern angekommen Zug",
+     "right": "der gestern angekommene Zug",
+     "zh": "分詞要加形容詞字尾。",
+     "en": "The participle needs an adjective ending."
+    },
+    {
+     "wrong": "die lachende im Garten Kinder",
+     "right": "die im Garten lachenden Kinder",
+     "zh": "補充說明放在分詞前面，分詞緊靠名詞。",
+     "en": "Extra detail goes before the participle, which stays next to the noun."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die im letzten Jahr eröffnete Bibliothek ist sehr modern.",
+     "zh": "去年開幕的圖書館非常現代化。",
+     "en": "The library that opened last year is very modern."
+    },
+    {
+     "text": "Der seit Wochen angekündigte Streik beginnt morgen.",
+     "zh": "宣布了好幾週的罷工明天開始。",
+     "en": "The strike announced weeks ago begins tomorrow."
+    },
+    {
+     "text": "Wir sahen die über den Fluss fliegenden Vögel.",
+     "zh": "我們看到飛過河面的鳥。",
+     "en": "We saw the birds flying over the river."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Das von ihm（　）Buch wurde ein Bestseller.",
+     "zh": "他寫的書成了暢銷書。",
+     "en": "The book he wrote became a bestseller.",
+     "options": [
+      "geschriebene",
+      "geschrieben",
+      "schreibende",
+      "geschriebenen ist"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die laut（　）Musik störte die Nachbarn.",
+     "zh": "大聲播放的音樂吵到了鄰居。",
+     "en": "The loudly playing music bothered the neighbours.",
+     "options": [
+      "spielende",
+      "gespielt",
+      "spielend",
+      "spielenden ist"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Der gestern（　）Vertrag ist gültig.",
+     "zh": "昨天簽的合約有效。",
+     "en": "The contract signed yesterday is valid.",
+     "options": [
+      "unterschriebene",
+      "unterschrieben",
+      "unterschreibende",
+      "unterschreiben"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nvv",
+   "pattern": "eine Entscheidung treffen・in Frage kommen",
+   "title": {
+    "zh": "名詞＋動詞的固定搭配",
+    "en": "Noun–verb phrases"
+   },
+   "form": {
+    "zh": "eine Entscheidung treffen（做決定）・eine Frage stellen（提問）・Kritik üben（批評）・in Frage kommen（可以考慮）・zur Verfügung stehen（可供使用）・Bescheid sagen（通知）",
+    "en": "eine Entscheidung treffen · eine Frage stellen · Kritik üben · in Frage kommen · zur Verfügung stehen · Bescheid sagen"
+   },
+   "explain": {
+    "zh": "書面語常用名詞加固定動詞代替一個動詞：entscheiden → eine Entscheidung treffen。動詞是固定的，不能換：不說 eine Entscheidung machen。",
+    "en": "Formal German often uses a noun + a fixed verb instead of a single verb: entscheiden → eine Entscheidung treffen. The verb is fixed — not eine Entscheidung machen."
+   },
+   "notes": [
+    {
+     "zh": "背的時候要連動詞和介系詞一起背。",
+     "en": "Learn them with their verb and preposition."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Wir müssen bald eine Entscheidung machen.",
+     "right": "Wir müssen bald eine Entscheidung treffen.",
+     "zh": "「做決定」是 eine Entscheidung treffen。",
+     "en": "“Make a decision” is eine Entscheidung treffen."
+    },
+    {
+     "wrong": "Darf ich eine Frage fragen?",
+     "right": "Darf ich eine Frage stellen?",
+     "zh": "「提問」是 eine Frage stellen。",
+     "en": "“Ask a question” is eine Frage stellen."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Der Raum steht allen Studierenden zur Verfügung.",
+     "zh": "這個空間開放給所有學生使用。",
+     "en": "The room is available to all students."
+    },
+    {
+     "text": "Sag mir bitte Bescheid, wenn du ankommst.",
+     "zh": "你到了請跟我說一聲。",
+     "en": "Please let me know when you arrive."
+    },
+    {
+     "text": "Dieser Termin kommt für mich nicht in Frage.",
+     "zh": "這個時間我不考慮。",
+     "en": "This date is out of the question for me."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Der Chef hat eine wichtige Entscheidung（　）.",
+     "zh": "老闆做了一個重要的決定。",
+     "en": "The boss has made an important decision.",
+     "options": [
+      "getroffen",
+      "gemacht",
+      "gegeben",
+      "genommen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Nach dem Vortrag dürfen Sie Fragen（　）.",
+     "zh": "演講後您可以提問。",
+     "en": "You may ask questions after the talk.",
+     "options": [
+      "stellen",
+      "fragen",
+      "machen",
+      "sagen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Mein Auto steht dir gern zur（　）.",
+     "zh": "我的車隨時可以借你用。",
+     "en": "My car is at your disposal.",
+     "options": [
+      "Verfügung",
+      "Frage",
+      "Hilfe",
+      "Benutzung"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "genitiv_praep_b2",
+   "pattern": "aufgrund・infolge・angesichts・mithilfe",
+   "title": {
+    "zh": "書面語的第二格介系詞",
+    "en": "Formal prepositions with the genitive"
+   },
+   "form": {
+    "zh": "aufgrund（基於、由於）・infolge（因為…的結果）・angesichts（鑑於）・mithilfe（藉助）・hinsichtlich（關於）・anlässlich（值…之際）＋ 第二格",
+    "en": "aufgrund (because of) · infolge (as a result of) · angesichts (in view of) · mithilfe (with the help of) · hinsichtlich (regarding) · anlässlich (on the occasion of) + genitive"
+   },
+   "explain": {
+    "zh": "這些介系詞多用在新聞、報告：Aufgrund des Sturms wurde der Flug gestrichen.（因為暴風雨，航班取消了。）Mithilfe einer App lernt sie Vokabeln.",
+    "en": "These are typical of news and reports: Aufgrund des Sturms wurde der Flug gestrichen. Mithilfe einer App lernt sie Vokabeln."
+   },
+   "notes": [
+    {
+     "zh": "aufgrund 和 mithilfe 也可以拆開寫：auf Grund、mit Hilfe。",
+     "en": "aufgrund and mithilfe can also be written auf Grund, mit Hilfe."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Aufgrund dem schlechten Wetter …",
+     "right": "Aufgrund des schlechten Wetters …",
+     "zh": "aufgrund 接第二格。",
+     "en": "aufgrund takes the genitive."
+    },
+    {
+     "wrong": "Mithilfe eines Wörterbuch habe ich es verstanden.",
+     "right": "Mithilfe eines Wörterbuchs habe ich es verstanden.",
+     "zh": "中性名詞第二格加 -s。",
+     "en": "Neuter genitive adds -s."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Infolge des Unfalls war die Straße gesperrt.",
+     "zh": "由於那場事故，道路封閉了。",
+     "en": "As a result of the accident, the road was closed."
+    },
+    {
+     "text": "Angesichts der hohen Kosten wurde das Projekt gestoppt.",
+     "zh": "鑑於成本太高，計畫被叫停了。",
+     "en": "In view of the high costs, the project was stopped."
+    },
+    {
+     "text": "Anlässlich ihres Geburtstags gab es ein Fest.",
+     "zh": "為了慶祝她的生日，辦了一場慶祝會。",
+     "en": "There was a party on the occasion of her birthday."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）des Streiks fielen viele Züge aus.",
+     "zh": "由於罷工，許多班次的火車停駛。",
+     "en": "Because of the strike, many trains were cancelled.",
+     "options": [
+      "Aufgrund",
+      "Mithilfe",
+      "Anlässlich",
+      "Hinsichtlich"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Mithilfe（　）Freundes fand ich eine Wohnung.",
+     "zh": "在一個朋友的幫助下，我找到了公寓。",
+     "en": "With the help of a friend, I found a flat.",
+     "options": [
+      "eines",
+      "einem",
+      "einen",
+      "ein"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Angesichts（　）Lage bleiben wir zu Hause.",
+     "zh": "鑑於目前的情況，我們待在家裡。",
+     "en": "In view of the situation, we're staying at home.",
+     "options": [
+      "der",
+      "die",
+      "dem",
+      "den"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "als_ob",
+   "pattern": "als ob ＋ Konjunktiv II",
+   "title": {
+    "zh": "als ob：好像…一樣",
+    "en": "als ob — as if"
+   },
+   "form": {
+    "zh": "…, als ob ＋ 主詞 ＋ … ＋ 第二虛擬式（動詞在最後）・…, als ＋ 第二虛擬式 ＋ 主詞（als 後面動詞緊接）",
+    "en": "…, als ob + subject + … + Konjunktiv II (verb last) · …, als + Konjunktiv II + subject (verb straight after als)"
+   },
+   "explain": {
+    "zh": "說「好像…（其實不是）」：Er tut so, als ob er nichts wüsste.（他裝作好像什麼都不知道。）也可以省略 ob，動詞直接放在 als 後面：Er tut so, als wüsste er nichts.",
+    "en": "For “as if” (but not really): Er tut so, als ob er nichts wüsste. Or drop ob and put the verb right after als: Er tut so, als wüsste er nichts."
+   },
+   "notes": [
+    {
+     "zh": "過去：als ob er es gesehen hätte。",
+     "en": "Past: als ob er es gesehen hätte."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Sie sieht aus, als ob sie ist müde.",
+     "right": "Sie sieht aus, als ob sie müde wäre.",
+     "zh": "als ob 用第二虛擬式，動詞在最後。",
+     "en": "als ob takes Konjunktiv II with the verb last."
+    },
+    {
+     "wrong": "Er redet, als er wäre der Chef.",
+     "right": "Er redet, als wäre er der Chef.",
+     "zh": "省略 ob 時，動詞緊接在 als 後面。",
+     "en": "Without ob, the verb comes right after als."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Es sieht aus, als ob es gleich regnen würde.",
+     "zh": "看起來好像快下雨了。",
+     "en": "It looks as if it's about to rain."
+    },
+    {
+     "text": "Er lief, als wäre ein Hund hinter ihm.",
+     "zh": "他跑得好像後面有狗在追。",
+     "en": "He ran as if a dog were after him."
+    },
+    {
+     "text": "Sie tat so, als hätte sie mich nicht gesehen.",
+     "zh": "她裝作沒看到我。",
+     "en": "She acted as if she hadn't seen me."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Er isst, als ob er seit Tagen nichts gegessen（　）.",
+     "zh": "他吃得好像好幾天沒吃東西一樣。",
+     "en": "He eats as if he hadn't eaten for days.",
+     "options": [
+      "hätte",
+      "hätten",
+      "wäre",
+      "hättest"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Du tust so, als（　）du alles.",
+     "zh": "你裝得好像什麼都懂。",
+     "en": "You act as if you knew everything.",
+     "options": [
+      "wüsstest",
+      "weißt",
+      "ob wüsstest",
+      "wusstest"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie lächelte, als ob nichts passiert（　）.",
+     "zh": "她笑著，好像什麼事都沒發生。",
+     "en": "She smiled as if nothing had happened.",
+     "options": [
+      "wäre",
+      "wären",
+      "hätte",
+      "würde"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "sodass_indem",
+   "pattern": "sodass・indem・dadurch, dass",
+   "title": {
+    "zh": "結果與方式：sodass、indem",
+    "en": "Result and means: sodass, indem"
+   },
+   "form": {
+    "zh": "sodass／so …, dass（以致於）・indem（藉由…）・dadurch, dass（透過…）＋ 副句（動詞在最後）",
+    "en": "sodass / so …, dass (so that, with the result) · indem (by doing) · dadurch, dass (by the fact that) + clause (verb last)"
+   },
+   "explain": {
+    "zh": "Es regnete stark, sodass das Spiel abgesagt wurde.（雨下得很大，以致比賽取消了。）Man lernt eine Sprache, indem man sie spricht.（藉由說來學一種語言。）",
+    "en": "Es regnete stark, sodass das Spiel abgesagt wurde. Man lernt eine Sprache, indem man sie spricht."
+   },
+   "notes": [
+    {
+     "zh": "indem 回答 wie?（怎麼做到的），不是 wann?（什麼時候）。",
+     "en": "indem answers “how?”, not “when?”."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er war so müde, sodass er sofort einschlief.",
+     "right": "Er war so müde, dass er sofort einschlief.",
+     "zh": "前面有 so ＋ 形容詞，後面只用 dass。",
+     "en": "With so + adjective, use just dass."
+    },
+    {
+     "wrong": "Sie hat abgenommen, indem sie hat mehr Sport gemacht.",
+     "right": "Sie hat abgenommen, indem sie mehr Sport gemacht hat.",
+     "zh": "indem 子句的動詞放最後。",
+     "en": "The indem clause has the verb last."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Der Bus hatte Verspätung, sodass ich den Zug verpasste.",
+     "zh": "公車誤點，結果我錯過了火車。",
+     "en": "The bus was late, so I missed the train."
+    },
+    {
+     "text": "Du kannst Strom sparen, indem du das Licht ausmachst.",
+     "zh": "你可以藉由關燈來省電。",
+     "en": "You can save electricity by turning off the light."
+    },
+    {
+     "text": "Er wurde gesund, dadurch dass er viel schlief.",
+     "zh": "他靠著多睡覺恢復了健康。",
+     "en": "He got better by sleeping a lot."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Die Musik war so laut, （　）wir nichts hörten.",
+     "zh": "音樂太大聲，我們什麼都聽不到。",
+     "en": "The music was so loud that we couldn't hear anything.",
+     "options": [
+      "dass",
+      "sodass dass",
+      "indem",
+      "damit"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Man kann Fehler vermeiden, （　）man genau liest.",
+     "zh": "仔細閱讀就能避免錯誤。",
+     "en": "You can avoid mistakes by reading carefully.",
+     "options": [
+      "indem",
+      "sodass",
+      "damit",
+      "weil dass"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Es schneite stark, （　）die Schulen geschlossen blieben.",
+     "zh": "雪下得很大，以致學校停課。",
+     "en": "It snowed heavily, so the schools stayed closed.",
+     "options": [
+      "sodass",
+      "indem",
+      "obwohl",
+      "damit"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "falls",
+   "pattern": "falls・sofern・im Falle",
+   "title": {
+    "zh": "條件：falls、sofern",
+    "en": "Conditions: falls, sofern"
+   },
+   "form": {
+    "zh": "falls（萬一、如果）・sofern（只要、前提是）＋ 副句・im Falle ＋ 第二格・bei ＋ 第三格（bei Regen）",
+    "en": "falls (in case, if) · sofern (provided that) + clause · im Falle + genitive · bei + dative (bei Regen)"
+   },
+   "explain": {
+    "zh": "falls 比 wenn 更強調「可能性不高」：Falls du Hilfe brauchst, ruf mich an. sofern 是「只要、在…的前提下」：Wir kommen, sofern das Wetter gut ist. 名詞形式：Bei Regen fällt das Konzert aus.",
+    "en": "falls stresses a possibility: Falls du Hilfe brauchst, ruf mich an. sofern means “provided that”: Wir kommen, sofern das Wetter gut ist. With a noun: Bei Regen fällt das Konzert aus."
+   },
+   "notes": [
+    {
+     "zh": "falls 子句也可以放後面：Ruf mich an, falls du Hilfe brauchst.",
+     "en": "The falls clause can come second: Ruf mich an, falls du Hilfe brauchst."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Falls es regnet, wir bleiben zu Hause.",
+     "right": "Falls es regnet, bleiben wir zu Hause.",
+     "zh": "副句在前，主句動詞緊接逗號。",
+     "en": "After a front clause, the main verb comes first."
+    },
+    {
+     "wrong": "Bei regnet fällt das Fest aus.",
+     "right": "Bei Regen fällt das Fest aus.",
+     "zh": "bei 後面接名詞 Regen。",
+     "en": "bei takes a noun: Regen."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Falls ich mich verspäte, fangt ohne mich an.",
+     "zh": "萬一我遲到，你們先開始。",
+     "en": "If I'm late, start without me."
+    },
+    {
+     "text": "Sofern nichts dazwischenkommt, sehen wir uns am Freitag.",
+     "zh": "只要沒有意外，我們星期五見。",
+     "en": "Provided nothing comes up, we'll see each other on Friday."
+    },
+    {
+     "text": "Im Falle eines Feuers benutzen Sie bitte die Treppe.",
+     "zh": "萬一發生火災，請走樓梯。",
+     "en": "In case of fire, please use the stairs."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）du Zeit hast, komm doch vorbei.",
+     "zh": "如果你有空，就過來坐坐。",
+     "en": "If you have time, do drop by.",
+     "options": [
+      "Falls",
+      "Bei",
+      "Im Falle",
+      "Damit"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）Glatteis bleiben die Schulen geschlossen.",
+     "zh": "路面結冰時學校停課。",
+     "en": "In icy conditions the schools stay closed.",
+     "options": [
+      "Bei",
+      "Falls",
+      "Sofern",
+      "Wenn"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Wir fahren morgen, sofern das Auto repariert（　）.",
+     "zh": "只要車修好了，我們明天就出發。",
+     "en": "We'll leave tomorrow, provided the car is repaired.",
+     "options": [
+      "ist",
+      "ist es",
+      "sein",
+      "sei ist"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "modal_subjektiv",
+   "pattern": "soll … haben・will … haben",
+   "title": {
+    "zh": "情態動詞表示傳聞、聲稱",
+    "en": "Modal verbs for reports and claims"
+   },
+   "form": {
+    "zh": "sollen（據說）・wollen（他自己聲稱）＋ 原形／完成式不定式（gesehen haben）",
+    "en": "sollen (is said to) · wollen (claims to) + infinitive / perfect infinitive (gesehen haben)"
+   },
+   "explain": {
+    "zh": "sollen 表示「據說、聽說」：Das Restaurant soll sehr gut sein.（據說那家餐廳很好。）wollen 表示「他自己說，但我不太信」：Er will den Täter gesehen haben.（他聲稱看到了犯人。）",
+    "en": "sollen means “is said to”: Das Restaurant soll sehr gut sein. wollen means “claims to (but I doubt it)”: Er will den Täter gesehen haben."
+   },
+   "notes": [
+    {
+     "zh": "說過去的傳聞用完成式不定式：Er soll reich gewesen sein.",
+     "en": "For a past report use the perfect infinitive: Er soll reich gewesen sein."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er soll gestern im Krankenhaus war.",
+     "right": "Er soll gestern im Krankenhaus gewesen sein.",
+     "zh": "傳聞過去的事用 gewesen sein。",
+     "en": "A past report takes gewesen sein."
+    },
+    {
+     "wrong": "Sie will das allein gemacht hat.",
+     "right": "Sie will das allein gemacht haben.",
+     "zh": "wollen 後面用 gemacht haben。",
+     "en": "wollen takes gemacht haben."
+    }
+   ],
+   "examples": [
+    {
+     "text": "In diesem Haus soll Goethe gewohnt haben.",
+     "zh": "據說歌德住過這棟房子。",
+     "en": "Goethe is said to have lived in this house."
+    },
+    {
+     "text": "Der Film soll sehr spannend sein.",
+     "zh": "聽說那部電影很精彩。",
+     "en": "The film is supposed to be very exciting."
+    },
+    {
+     "text": "Er will nie zu spät gekommen sein.",
+     "zh": "他聲稱自己從來沒遲到過。",
+     "en": "He claims never to have been late."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Die neue Chefin（　）sehr streng sein.",
+     "zh": "據說新主管很嚴格。",
+     "en": "The new boss is said to be very strict.",
+     "options": [
+      "soll",
+      "sollt",
+      "muss es",
+      "darf"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er（　）das Geld gefunden haben – ich glaube ihm nicht.",
+     "zh": "他聲稱撿到了錢——我才不信。",
+     "en": "He claims to have found the money — I don't believe him.",
+     "options": [
+      "will",
+      "wollt",
+      "kann es",
+      "darf"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Der Sänger soll früher Lehrer（　）sein.",
+     "zh": "據說那位歌手以前是老師。",
+     "en": "The singer is said to have been a teacher.",
+     "options": [
+      "gewesen",
+      "sein",
+      "war",
+      "wäre"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "futur2",
+   "pattern": "wird … gemacht haben",
+   "title": {
+    "zh": "未來完成式（Futur II）",
+    "en": "The future perfect (Futur II)"
+   },
+   "form": {
+    "zh": "werden ＋ … ＋ 過去分詞 ＋ haben／sein（句尾）",
+    "en": "werden + … + past participle + haben / sein (end)"
+   },
+   "explain": {
+    "zh": "說未來某時已經完成的事：Bis Juni werde ich die Prüfung bestanden haben. 更常用來猜測過去：Er wird den Zug verpasst haben.（他大概錯過火車了。）",
+    "en": "For something done by a future time: Bis Juni werde ich die Prüfung bestanden haben. More often it guesses about the past: Er wird den Zug verpasst haben."
+   },
+   "notes": [
+    {
+     "zh": "口語常用完成式加時間詞代替：Bis Juni habe ich die Prüfung bestanden.",
+     "en": "Speech often uses the perfect instead: Bis Juni habe ich die Prüfung bestanden."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er wird schon angekommen haben.",
+     "right": "Er wird schon angekommen sein.",
+     "zh": "ankommen 用 sein：angekommen sein。",
+     "en": "ankommen takes sein: angekommen sein."
+    },
+    {
+     "wrong": "Bis morgen werde ich fertig geworden.",
+     "right": "Bis morgen werde ich fertig geworden sein.",
+     "zh": "Futur II 最後要有 sein 或 haben。",
+     "en": "Futur II ends with sein or haben."
+    }
+   ],
+   "examples": [
+    {
+     "text": "In zehn Jahren wird sich die Stadt stark verändert haben.",
+     "zh": "十年後這座城市會有很大的變化。",
+     "en": "In ten years the city will have changed a lot."
+    },
+    {
+     "text": "Sie antwortet nicht; sie wird schon eingeschlafen sein.",
+     "zh": "她沒回應，大概已經睡著了。",
+     "en": "She's not answering — she'll have fallen asleep."
+    },
+    {
+     "text": "Bis du kommst, werde ich das Essen gekocht haben.",
+     "zh": "等你來的時候，我就煮好飯了。",
+     "en": "By the time you come, I'll have cooked dinner."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Er wird den Schlüssel verloren（　）.",
+     "zh": "他大概把鑰匙弄丟了。",
+     "en": "He'll have lost the key.",
+     "options": [
+      "haben",
+      "sein",
+      "hat",
+      "ist"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Bis Freitag werden die Gäste（　）sein.",
+     "zh": "到星期五客人都已經走了。",
+     "en": "By Friday the guests will have left.",
+     "options": [
+      "abgereist",
+      "abreisen",
+      "abgereist haben",
+      "abreist"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie（　）die Nachricht wohl schon gelesen haben.",
+     "zh": "她大概已經看過訊息了。",
+     "en": "She'll probably have read the message already.",
+     "options": [
+      "wird",
+      "würde es",
+      "hat",
+      "ist"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "relativ_was_wo",
+   "pattern": "alles, was・das Beste, was・wo",
+   "title": {
+    "zh": "關係詞 was、wo",
+    "en": "Relative was and wo"
+   },
+   "form": {
+    "zh": "alles／nichts／etwas／vieles／das ＋ 最高級 ＋ was …・整句話 ＋ , was …・地點 ＋ wo …・時間 ＋ wo／als",
+    "en": "alles / nichts / etwas / vieles / das + superlative + was … · a whole clause + , was … · places + wo … · times + wo / als"
+   },
+   "explain": {
+    "zh": "不定代名詞和中性最高級後面用 was：Das ist alles, was ich weiß.（這就是我知道的全部。）Das Beste, was du tun kannst … 指前面整句話也用 was：Er kam zu spät, was mich ärgerte.",
+    "en": "After indefinites and neuter superlatives use was: Das ist alles, was ich weiß. Das Beste, was du tun kannst … It also refers back to a whole clause: Er kam zu spät, was mich ärgerte."
+   },
+   "notes": [
+    {
+     "zh": "城市、國家名後面用 wo：Berlin, wo ich studiert habe。",
+     "en": "After names of places use wo: Berlin, wo ich studiert habe."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Das ist alles, das ich habe.",
+     "right": "Das ist alles, was ich habe.",
+     "zh": "alles 後面用 was。",
+     "en": "After alles use was."
+    },
+    {
+     "wrong": "Sie hat die Prüfung bestanden, das mich freut.",
+     "right": "Sie hat die Prüfung bestanden, was mich freut.",
+     "zh": "指前面整件事用 was。",
+     "en": "Referring to the whole clause: was."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Es gibt nichts, was er nicht isst.",
+     "zh": "沒有什麼是他不吃的。",
+     "en": "There's nothing he won't eat."
+    },
+    {
+     "text": "Das war das Schönste, was ich je erlebt habe.",
+     "zh": "這是我經歷過最美好的事。",
+     "en": "That was the most beautiful thing I've ever experienced."
+    },
+    {
+     "text": "Ich besuche Tainan, wo meine Großeltern wohnen.",
+     "zh": "我要去台南，我爺爺奶奶住在那裡。",
+     "en": "I'm visiting Tainan, where my grandparents live."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich glaube nicht alles, （　）in der Zeitung steht.",
+     "zh": "我不相信報上寫的所有東西。",
+     "en": "I don't believe everything that's in the paper.",
+     "options": [
+      "was",
+      "das",
+      "der",
+      "wo"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er hat sich nicht entschuldigt, （　）ich unhöflich finde.",
+     "zh": "他沒道歉，我覺得很沒禮貌。",
+     "en": "He didn't apologise, which I find rude.",
+     "options": [
+      "was",
+      "das",
+      "den",
+      "wo"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Das ist die Stadt, （　）ich aufgewachsen bin.",
+     "zh": "這是我長大的城市。",
+     "en": "That's the city where I grew up.",
+     "options": [
+      "wo",
+      "was",
+      "die wo",
+      "wohin"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "korrelat_es",
+   "pattern": "Es freut mich, dass …",
+   "title": {
+    "zh": "es 和 da(r)- 當預告詞",
+    "en": "es and da(r)- as placeholders"
+   },
+   "form": {
+    "zh": "Es ＋ 動詞 ＋ …, dass／zu ＋ 原形（Es freut mich, dass …）・動詞 ＋ da(r) ＋ 介系詞, dass／zu …（Ich freue mich darauf, dass …）",
+    "en": "Es + verb + …, dass / zu + infinitive (Es freut mich, dass …) · verb + da(r) + preposition, dass / zu … (Ich freue mich darauf, dass …)"
+   },
+   "explain": {
+    "zh": "子句當主詞時，常先用 es 佔位：Es ist wichtig, pünktlich zu sein. 動詞要接介系詞時，用 da(r)- 先預告後面的子句：Ich warte darauf, dass du anrufst.（我在等你打電話。）",
+    "en": "When a clause is the subject, es often holds its place: Es ist wichtig, pünktlich zu sein. With a prepositional verb, da(r)- announces the clause: Ich warte darauf, dass du anrufst."
+   },
+   "notes": [
+    {
+     "zh": "子句放在句首時，es 就省略：Dass du kommst, freut mich.",
+     "en": "If the clause comes first, es disappears: Dass du kommst, freut mich."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ich freue mich, dass auf die Ferien.",
+     "right": "Ich freue mich auf die Ferien.／Ich freue mich darauf, dass bald Ferien sind.",
+     "zh": "接子句時用 darauf, dass。",
+     "en": "Before a clause use darauf, dass."
+    },
+    {
+     "wrong": "Es ist schön, dass du hier bist, es.",
+     "right": "Es ist schön, dass du hier bist.",
+     "zh": "es 只在句首出現一次。",
+     "en": "es appears once, at the start."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Es ist nicht leicht, eine Wohnung zu finden.",
+     "zh": "要找到公寓不容易。",
+     "en": "It isn't easy to find a flat."
+    },
+    {
+     "text": "Ich habe nicht damit gerechnet, dass so viele kommen.",
+     "zh": "我沒料到會來這麼多人。",
+     "en": "I didn't expect so many people to come."
+    },
+    {
+     "text": "Er besteht darauf, die Rechnung zu bezahlen.",
+     "zh": "他堅持要付帳。",
+     "en": "He insists on paying the bill."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）tut mir leid, dass ich zu spät bin.",
+     "zh": "很抱歉我遲到了。",
+     "en": "I'm sorry I'm late.",
+     "options": [
+      "Es",
+      "Das es",
+      "Da",
+      "Dafür"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Wir freuen uns（　）, euch bald wiederzusehen.",
+     "zh": "我們很期待很快能再見到你們。",
+     "en": "We're looking forward to seeing you again soon.",
+     "options": [
+      "darauf",
+      "darüber auf",
+      "worauf",
+      "dafür auf"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie hat sich（　）beschwert, dass es zu laut war.",
+     "zh": "她抱怨說太吵了。",
+     "en": "She complained that it was too loud.",
+     "options": [
+      "darüber",
+      "darauf",
+      "dafür",
+      "daran"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "adj_praep",
+   "pattern": "stolz auf・abhängig von",
+   "title": {
+    "zh": "搭配介系詞的形容詞",
+    "en": "Adjectives with prepositions"
+   },
+   "form": {
+    "zh": "stolz auf ＋ 4・abhängig von ＋ 3・zufrieden mit ＋ 3・interessiert an ＋ 3・bekannt für ＋ 4・verantwortlich für ＋ 4・neugierig auf ＋ 4",
+    "en": "stolz auf + acc · abhängig von + dat · zufrieden mit + dat · interessiert an + dat · bekannt für + acc · verantwortlich für + acc · neugierig auf + acc"
+   },
+   "explain": {
+    "zh": "有些形容詞固定搭配某個介系詞，要跟格一起背：Ich bin stolz auf dich.（我以你為傲。）Er ist mit seiner Arbeit zufrieden. Die Stadt ist bekannt für ihr Bier.",
+    "en": "Some adjectives take a fixed preposition — learn the case too: Ich bin stolz auf dich. Er ist mit seiner Arbeit zufrieden. Die Stadt ist bekannt für ihr Bier."
+   },
+   "notes": [
+    {
+     "zh": "接子句時用 da(r)-：Ich bin stolz darauf, dass du es geschafft hast.",
+     "en": "Before a clause use da(r)-: Ich bin stolz darauf, dass du es geschafft hast."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Sie ist stolz über ihren Sohn.",
+     "right": "Sie ist stolz auf ihren Sohn.",
+     "zh": "「以…為傲」是 stolz auf。",
+     "en": "“Proud of” is stolz auf."
+    },
+    {
+     "wrong": "Ich bin interessiert für Kunst.",
+     "right": "Ich bin an Kunst interessiert.",
+     "zh": "interessiert 搭配 an ＋ 第三格。",
+     "en": "interessiert takes an + dative."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Taiwan ist bekannt für seine Nachtmärkte.",
+     "zh": "台灣以夜市聞名。",
+     "en": "Taiwan is famous for its night markets."
+    },
+    {
+     "text": "Der Erfolg ist abhängig vom Wetter.",
+     "zh": "成敗取決於天氣。",
+     "en": "Success depends on the weather."
+    },
+    {
+     "text": "Bist du neugierig auf das Geschenk?",
+     "zh": "你好奇禮物是什麼嗎？",
+     "en": "Are you curious about the present?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Wir sind mit dem Hotel sehr（　）.",
+     "zh": "我們對飯店很滿意。",
+     "en": "We're very satisfied with the hotel.",
+     "options": [
+      "zufrieden",
+      "stolz",
+      "interessiert",
+      "abhängig"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Wer ist（　）diesen Fehler verantwortlich?",
+     "zh": "誰要為這個錯誤負責？",
+     "en": "Who is responsible for this mistake?",
+     "options": [
+      "für",
+      "an",
+      "mit",
+      "von"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er ist sehr stolz（　）seine Tochter.",
+     "zh": "他非常以女兒為傲。",
+     "en": "He's very proud of his daughter.",
+     "options": [
+      "auf",
+      "über",
+      "an",
+      "für"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "inf_perfekt",
+   "pattern": "froh, es geschafft zu haben",
+   "title": {
+    "zh": "完成式不定式：zu ＋ … haben／sein",
+    "en": "The perfect infinitive with zu"
+   },
+   "form": {
+    "zh": "過去分詞 ＋ zu ＋ haben／sein（gesehen zu haben、gekommen zu sein）",
+    "en": "past participle + zu + haben / sein (gesehen zu haben, gekommen zu sein)"
+   },
+   "explain": {
+    "zh": "zu 不定式說的是已經完成的事時用完成式：Ich bin froh, die Prüfung bestanden zu haben.（我很高興通過了考試。）Er behauptet, nichts gesehen zu haben.",
+    "en": "When a zu-infinitive refers to something already done, use the perfect: Ich bin froh, die Prüfung bestanden zu haben. Er behauptet, nichts gesehen zu haben."
+   },
+   "notes": [
+    {
+     "zh": "移動動詞用 sein：Sie bedauert, nicht mitgekommen zu sein.",
+     "en": "Verbs of movement use sein: Sie bedauert, nicht mitgekommen zu sein."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ich freue mich, dich kennenzulernen zu haben.",
+     "right": "Ich freue mich, dich kennengelernt zu haben.",
+     "zh": "完成式不定式用過去分詞 kennengelernt。",
+     "en": "The perfect infinitive uses the participle: kennengelernt."
+    },
+    {
+     "wrong": "Er ist froh, rechtzeitig angekommen zu haben.",
+     "right": "Er ist froh, rechtzeitig angekommen zu sein.",
+     "zh": "ankommen 用 sein。",
+     "en": "ankommen takes sein."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Es tut mir leid, dich geweckt zu haben.",
+     "zh": "抱歉把你吵醒了。",
+     "en": "I'm sorry to have woken you."
+    },
+    {
+     "text": "Sie erinnert sich, ihn schon einmal getroffen zu haben.",
+     "zh": "她記得以前見過他。",
+     "en": "She remembers having met him before."
+    },
+    {
+     "text": "Wir bereuen nicht, nach Taiwan gezogen zu sein.",
+     "zh": "我們不後悔搬到台灣。",
+     "en": "We don't regret moving to Taiwan."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich bin stolz, den Marathon geschafft zu（　）.",
+     "zh": "我很驕傲自己跑完了馬拉松。",
+     "en": "I'm proud to have completed the marathon.",
+     "options": [
+      "haben",
+      "sein",
+      "werden",
+      "hatten"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er bedauert, so früh gegangen zu（　）.",
+     "zh": "他後悔那麼早就走了。",
+     "en": "He regrets having left so early.",
+     "options": [
+      "sein",
+      "haben",
+      "werden",
+      "gewesen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie glaubt, die Tür（　）zu haben.",
+     "zh": "她以為自己已經鎖了門。",
+     "en": "She thinks she locked the door.",
+     "options": [
+      "abgeschlossen",
+      "abschließen",
+      "abzuschließen",
+      "abgeschloss"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "einerseits",
+   "pattern": "einerseits … andererseits",
+   "title": {
+    "zh": "einerseits … andererseits：一方面…另一方面",
+    "en": "einerseits … andererseits — on the one hand … on the other"
+   },
+   "form": {
+    "zh": "Einerseits ＋ 動詞 ＋ 主詞 …, andererseits ＋ 動詞 ＋ 主詞 …（兩邊都佔第一位）",
+    "en": "Einerseits + verb + subject …, andererseits + verb + subject … (each takes position 1)"
+   },
+   "explain": {
+    "zh": "比較一件事的兩面：Einerseits ist die Stadt teuer, andererseits gibt es viele Jobs.（一方面城市很貴，另一方面工作機會很多。）兩個詞都算第一位，動詞緊跟在後。",
+    "en": "Weighs two sides: Einerseits ist die Stadt teuer, andererseits gibt es viele Jobs. Each word counts as position 1, so the verb follows."
+   },
+   "notes": [
+    {
+     "zh": "也可以放在句中：Ich möchte einerseits reisen, andererseits Geld sparen.",
+     "en": "They can also go mid-sentence: Ich möchte einerseits reisen, andererseits Geld sparen."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Einerseits das Auto ist praktisch, andererseits es ist teuer.",
+     "right": "Einerseits ist das Auto praktisch, andererseits ist es teuer.",
+     "zh": "einerseits、andererseits 後面動詞緊接著。",
+     "en": "The verb comes right after einerseits / andererseits."
+    },
+    {
+     "wrong": "Einerseits ist es gut, aber andererseits auf der anderen Seite schlecht.",
+     "right": "Einerseits ist es gut, andererseits ist es schlecht.",
+     "zh": "andererseits 已經是「另一方面」，不再重複。",
+     "en": "andererseits already means “on the other hand”."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Einerseits liebe ich die Stadt, andererseits vermisse ich die Natur.",
+     "zh": "一方面我很愛這座城市，另一方面我又想念大自然。",
+     "en": "On the one hand I love the city, on the other I miss nature."
+    },
+    {
+     "text": "Homeoffice ist einerseits bequem, andererseits manchmal einsam.",
+     "zh": "在家工作一方面很方便，另一方面有時很孤單。",
+     "en": "Working from home is convenient but sometimes lonely."
+    },
+    {
+     "text": "Einerseits will er sparen, andererseits kauft er ständig neue Spiele.",
+     "zh": "他一方面想存錢，另一方面又一直買新遊戲。",
+     "en": "On the one hand he wants to save, on the other he keeps buying new games."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Einerseits（　）der Job gut bezahlt, andererseits ist er stressig.",
+     "zh": "這份工作一方面薪水好，另一方面壓力大。",
+     "en": "On the one hand the job pays well, on the other it's stressful.",
+     "options": [
+      "ist",
+      "der Job ist",
+      "sei",
+      "war es"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Einerseits möchte ich reisen, （　）habe ich wenig Geld.",
+     "zh": "我一方面想去旅行，另一方面錢不多。",
+     "en": "On the one hand I'd like to travel, on the other I have little money.",
+     "options": [
+      "andererseits",
+      "einerseits",
+      "sondern",
+      "deshalb"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Andererseits（　）viele Menschen auf dem Land glücklicher.",
+     "zh": "另一方面，很多人在鄉下比較快樂。",
+     "en": "On the other hand, many people are happier in the country.",
+     "options": [
+      "sind",
+      "viele sind",
+      "seien es",
+      "werden sind"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "nicht_nur",
+   "pattern": "nicht nur …, sondern auch …",
+   "title": {
+    "zh": "不但……而且……",
+    "en": "Not only … but also"
+   },
+   "form": {
+    "zh": "nicht nur ＋ A, sondern auch ＋ B（sondern 後面語序不變）",
+    "en": "nicht nur + A, sondern auch + B (sondern does not change word order)"
+   },
+   "explain": {
+    "zh": "把兩件事並列，強調第二件：Sie spricht nicht nur Englisch, sondern auch Japanisch.（她不但會英文，還會日文。）nicht nur 放在要強調的成分前面。",
+    "en": "Links two things and stresses the second: Sie spricht nicht nur Englisch, sondern auch Japanisch. Put nicht nur right before the element it concerns."
+   },
+   "notes": [
+    {
+     "zh": "連接兩個句子時，sondern 後面是正常語序：Er hat nicht nur gekocht, sondern er hat auch abgewaschen.",
+     "en": "Joining two clauses, sondern keeps normal word order: Er hat nicht nur gekocht, sondern er hat auch abgewaschen."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er ist nicht nur klug, aber auch fleißig.",
+     "right": "Er ist nicht nur klug, sondern auch fleißig.",
+     "zh": "固定搭配是 nicht nur … sondern auch。",
+     "en": "The pair is nicht nur … sondern auch."
+    },
+    {
+     "wrong": "Nicht nur sie spielt Klavier, sondern auch Geige.",
+     "right": "Sie spielt nicht nur Klavier, sondern auch Geige.",
+     "zh": "nicht nur 放在被強調的 Klavier 前。",
+     "en": "nicht nur goes before Klavier, the element stressed."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Das Hotel war nicht nur teuer, sondern auch laut.",
+     "zh": "那家飯店不但貴，而且吵。",
+     "en": "The hotel was not only expensive but also noisy."
+    },
+    {
+     "text": "Nicht nur die Kinder, sondern auch die Eltern hatten Spaß.",
+     "zh": "不只孩子，連家長也玩得很開心。",
+     "en": "Not only the children but also the parents had fun."
+    },
+    {
+     "text": "Sport ist nicht nur gesund, sondern macht auch Spaß.",
+     "zh": "運動不但健康，而且有趣。",
+     "en": "Sport is not only healthy, it is also fun."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Er hat nicht nur das Auto gewaschen,（　）auch den Garten gepflegt.",
+     "zh": "他不但洗了車，還整理了花園。",
+     "en": "He not only washed the car but also tended the garden.",
+     "options": [
+      "sondern",
+      "aber",
+      "oder",
+      "denn"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Wohnung ist（　）groß, sondern auch hell.",
+     "zh": "公寓不但大，而且明亮。",
+     "en": "The flat is not only big but also bright.",
+     "options": [
+      "nicht nur",
+      "nur nicht",
+      "weder",
+      "nicht mal"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Nicht nur in Berlin,（　）auch in München wurde gestreikt.",
+     "zh": "不只柏林，慕尼黑也有罷工。",
+     "en": "There were strikes not only in Berlin but also in Munich.",
+     "options": [
+      "sondern",
+      "sowie",
+      "aber",
+      "jedoch"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "je_nachdem",
+   "pattern": "je nachdem, ob／wie／wann …",
+   "title": {
+    "zh": "視……而定",
+    "en": "Depending on (je nachdem)"
+   },
+   "form": {
+    "zh": "je nachdem, ob／wie／wann／wo … ＋ 動詞在句尾；也可單用 je nachdem",
+    "en": "je nachdem, ob / wie / wann / wo … + verb at the end; also on its own: je nachdem"
+   },
+   "explain": {
+    "zh": "表示結果取決於某個條件：Wir gehen spazieren oder bleiben zu Hause, je nachdem, wie das Wetter ist.（散步還是待在家，要看天氣。）回答問題時可以只說 Je nachdem.（看情況。）",
+    "en": "Says the outcome depends on something: Wir gehen spazieren oder bleiben zu Hause, je nachdem, wie das Wetter ist. As a reply, Je nachdem. means \"it depends\"."
+   },
+   "notes": [
+    {
+     "zh": "後面是從句，動詞放在句尾。",
+     "en": "It introduces a subordinate clause: verb at the end."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Je nachdem wie das Wetter ist morgen, fahren wir.",
+     "right": "Je nachdem, wie das Wetter morgen ist, fahren wir.",
+     "zh": "從句動詞放句尾。",
+     "en": "Verb at the end of the clause."
+    },
+    {
+     "wrong": "Je nachdem dass er Zeit hat, kommt er.",
+     "right": "Je nachdem, ob er Zeit hat, kommt er.",
+     "zh": "是否的問題用 ob，不用 dass。",
+     "en": "Yes/no questions take ob, not dass."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Der Preis ändert sich je nachdem, wann man bucht.",
+     "zh": "價格會依訂購時間而變。",
+     "en": "The price changes depending on when you book."
+    },
+    {
+     "text": "Je nachdem, ob es regnet, essen wir drinnen oder draußen.",
+     "zh": "看會不會下雨，我們在室內或室外吃。",
+     "en": "Depending on whether it rains, we eat inside or outside."
+    },
+    {
+     "text": "„Kommst du mit?“ – „Je nachdem.“",
+     "zh": "「你要一起來嗎？」「看情況。」",
+     "en": "\"Are you coming?\" – \"It depends.\""
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Wir fahren mit dem Zug oder dem Auto, je nachdem, was billiger（　）.",
+     "zh": "我們搭火車或開車，看哪個便宜。",
+     "en": "We go by train or car, depending on which is cheaper.",
+     "options": [
+      "ist",
+      "ist es",
+      "sein",
+      "war es"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Je nachdem,（　）du Zeit hast, können wir uns treffen.",
+     "zh": "看你有沒有空，我們可以見面。",
+     "en": "Depending on whether you have time, we can meet.",
+     "options": [
+      "ob",
+      "dass",
+      "wenn ob",
+      "als"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "„Wie lange dauert die Fahrt?“ – „（　）, eine oder zwei Stunden.“",
+     "zh": "「車程多久？」「看情況，一兩個小時。」",
+     "en": "\"How long is the journey?\" – \"It depends, one or two hours.\"",
+     "options": [
+      "Je nachdem",
+      "Je desto",
+      "Nachdem",
+      "Je mehr"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "worauf",
+   "pattern": "worauf・womit・wofür",
+   "title": {
+    "zh": "wo(r)＋介系詞：問句與關係詞",
+    "en": "wo(r) + preposition (questions and relatives)"
+   },
+   "form": {
+    "zh": "wo ＋ 介系詞（母音開頭加 r）：wofür, womit, worauf, worüber, woran；指事物，不指人",
+    "en": "wo + preposition (an r before a vowel): wofür, womit, worauf, worüber, woran; for things, not people"
+   },
+   "explain": {
+    "zh": "問「跟什麼……」時，動詞需要的介系詞跟 wo 合在一起：Worauf wartest du?（你在等什麼？）也可以當關係詞指整個前句：Er hat bestanden, worüber sich alle freuen.（他通過了，大家都為此高興。）",
+    "en": "Asking about a thing with a prepositional verb, wo fuses with the preposition: Worauf wartest du? It also refers back to a whole clause: Er hat bestanden, worüber sich alle freuen."
+   },
+   "notes": [
+    {
+     "zh": "問人時用介系詞 ＋ 疑問詞：Auf wen wartest du?（你在等誰？）",
+     "en": "For people use preposition + question word: Auf wen wartest du?"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Auf was wartest du?",
+     "right": "Worauf wartest du?",
+     "zh": "標準書面語問事物用 worauf（auf was 是口語）。",
+     "en": "Standard German uses worauf for things (auf was is colloquial)."
+    },
+    {
+     "wrong": "Worauf wartest du? – Auf meinen Bruder.",
+     "right": "Auf wen wartest du? – Auf meinen Bruder.",
+     "zh": "問人要用 auf wen。",
+     "en": "For a person ask auf wen."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Wofür interessierst du dich?",
+     "zh": "你對什麼有興趣？",
+     "en": "What are you interested in?"
+    },
+    {
+     "text": "Womit schreibst du am liebsten?",
+     "zh": "你最喜歡用什麼寫字？",
+     "en": "What do you prefer writing with?"
+    },
+    {
+     "text": "Er kam zu spät, worüber sich der Chef ärgerte.",
+     "zh": "他遲到了，老闆為此很生氣。",
+     "en": "He came late, which annoyed the boss."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）denkst du gerade?",
+     "zh": "你現在在想什麼？",
+     "en": "What are you thinking about?",
+     "options": [
+      "Woran",
+      "Wodran",
+      "An was für",
+      "Wovon an"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）habt ihr gesprochen? – Über den Urlaub.",
+     "zh": "你們在聊什麼？――聊度假。",
+     "en": "What did you talk about? – The holiday.",
+     "options": [
+      "Worüber",
+      "Woüber",
+      "Über wen",
+      "Was über"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie hat die Prüfung bestanden,（　）sie sehr stolz ist.",
+     "zh": "她考試及格了，她為此很自豪。",
+     "en": "She passed the exam, which she is very proud of.",
+     "options": [
+      "worauf",
+      "woran",
+      "was",
+      "auf das"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "darauf_dass",
+   "pattern": "sich freuen darauf, dass …",
+   "title": {
+    "zh": "da(r)＋介系詞 帶出從句",
+    "en": "da(r) + preposition introducing a clause"
+   },
+   "form": {
+    "zh": "動詞 ＋ da(r)＋介系詞, dass／zu ＋ 不定式：sich darauf freuen, dass …；Ich warte darauf, dass …",
+    "en": "verb + da(r)+preposition, dass / zu-infinitive: sich darauf freuen, dass …; Ich warte darauf, dass …"
+   },
+   "explain": {
+    "zh": "動詞的介系詞受詞是一整個子句時，主句裡用 da(r)＋介系詞 先佔位，再接 dass 子句或 zu 不定式：Ich freue mich darauf, dich zu sehen.（我很期待見到你。）",
+    "en": "When a prepositional object is a whole clause, da(r)+preposition holds its place in the main clause, followed by a dass-clause or zu-infinitive: Ich freue mich darauf, dich zu sehen."
+   },
+   "notes": [
+    {
+     "zh": "主詞相同時常用 zu 不定式；不同時用 dass。",
+     "en": "Same subject: usually a zu-infinitive; different subject: dass."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ich warte, dass du anrufst.",
+     "right": "Ich warte darauf, dass du anrufst.",
+     "zh": "warten auf 的介系詞要用 darauf 保留。",
+     "en": "warten auf needs darauf."
+    },
+    {
+     "wrong": "Er ist stolz auf, dass er gewonnen hat.",
+     "right": "Er ist stolz darauf, dass er gewonnen hat.",
+     "zh": "介系詞不能單獨留下，要變成 darauf。",
+     "en": "The preposition cannot stand alone: darauf."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Wir freuen uns darauf, euch bald wiederzusehen.",
+     "zh": "我們很期待很快再見到你們。",
+     "en": "We look forward to seeing you again soon."
+    },
+    {
+     "text": "Es kommt darauf an, wie viel Zeit wir haben.",
+     "zh": "這要看我們有多少時間。",
+     "en": "It depends on how much time we have."
+    },
+    {
+     "text": "Sie hat sich daran gewöhnt, früh aufzustehen.",
+     "zh": "她已經習慣早起了。",
+     "en": "She has got used to getting up early."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich bin（　）angewiesen, dass du mir hilfst.",
+     "zh": "我需要你的幫忙。",
+     "en": "I depend on you helping me.",
+     "options": [
+      "darauf",
+      "dafür",
+      "davon",
+      "daran"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er denkt nicht（　）, sein Auto zu verkaufen.",
+     "zh": "他沒想要賣車。",
+     "en": "He has no thought of selling his car.",
+     "options": [
+      "daran",
+      "darauf",
+      "darüber",
+      "davon"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Wir haben uns（　）beschwert, dass es so laut war.",
+     "zh": "我們抱怨太吵了。",
+     "en": "We complained that it was so loud.",
+     "options": [
+      "darüber",
+      "darauf",
+      "daran",
+      "dafür"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "folglich",
+   "pattern": "dennoch・folglich・somit・außerdem",
+   "title": {
+    "zh": "副詞性連接詞（動詞在第二位）",
+    "en": "Linking adverbs (verb second)"
+   },
+   "form": {
+    "zh": "dennoch（然而）、folglich／somit（因此）、außerdem（此外）、trotzdem（儘管如此）放句首 → 動詞緊接其後",
+    "en": "dennoch (yet), folglich / somit (therefore), außerdem (besides), trotzdem (nevertheless) at the start → the verb follows at once"
+   },
+   "explain": {
+    "zh": "這些是副詞，不是連接詞，放在句首時佔第一位，動詞在第二位：Er war krank, dennoch ging er zur Arbeit.（他生病了，但還是去上班。）書面報告、論說文很常用。",
+    "en": "These are adverbs, not conjunctions: at the start they fill the first slot, so the verb comes second: Er war krank, dennoch ging er zur Arbeit. Very common in reports and essays."
+   },
+   "notes": [
+    {
+     "zh": "跟 und、aber、denn（位置 0，不影響語序）不同。",
+     "en": "Unlike und, aber, denn (position zero, no effect on word order)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Es regnete, folglich wir blieben zu Hause.",
+     "right": "Es regnete, folglich blieben wir zu Hause.",
+     "zh": "folglich 佔第一位，動詞 blieben 緊接。",
+     "en": "folglich takes first place; the verb follows."
+    },
+    {
+     "wrong": "Er ist müde, denn er arbeitet trotzdem weiter.",
+     "right": "Er ist müde, trotzdem arbeitet er weiter.",
+     "zh": "「儘管如此」用 trotzdem，動詞在第二位。",
+     "en": "\"Nevertheless\" is trotzdem, verb second."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Preise sind gestiegen, folglich kaufen die Leute weniger.",
+     "zh": "物價上漲，因此大家買得比較少。",
+     "en": "Prices have risen; consequently people buy less."
+    },
+    {
+     "text": "Das Angebot ist günstig, außerdem ist die Lieferung kostenlos.",
+     "zh": "這個優惠很划算，此外運費免費。",
+     "en": "The offer is good value; besides, delivery is free."
+    },
+    {
+     "text": "Die Arbeit war schwer, dennoch hat sie Spaß gemacht.",
+     "zh": "工作很辛苦，然而很有趣。",
+     "en": "The work was hard, yet it was fun."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Der Zug hatte Verspätung, somit（　）den Termin.",
+     "zh": "火車誤點，所以我們錯過了約會。",
+     "en": "The train was late, so we missed the appointment.",
+     "options": [
+      "verpassten wir",
+      "wir verpassten",
+      "wir verpasst",
+      "verpassen wir es"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er hat viel geübt,（　）hat er die Prüfung nicht bestanden.",
+     "zh": "他練了很多，然而考試還是沒過。",
+     "en": "He practised a lot, yet he did not pass the exam.",
+     "options": [
+      "dennoch",
+      "denn",
+      "deshalb",
+      "außerdem"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Wohnung ist zentral,（　）ist sie nicht teuer.",
+     "zh": "這間公寓位置好，此外也不貴。",
+     "en": "The flat is central; besides, it is not expensive.",
+     "options": [
+      "außerdem",
+      "aber",
+      "und",
+      "folglich"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "genitivattribut",
+   "pattern": "das Auto meines Vaters ／ von meinem Vater",
+   "title": {
+    "zh": "屬格修飾語與 von ＋ 與格",
+    "en": "Genitive attribute vs von + dative"
+   },
+   "form": {
+    "zh": "名詞 ＋ 屬格名詞片語（des／der ＋ -(e)s）；口語或沒有冠詞時用 von ＋ 與格",
+    "en": "noun + genitive phrase (des / der + -(e)s); in speech or without an article: von + dative"
+   },
+   "explain": {
+    "zh": "書面語用屬格表示所屬：die Meinung des Lehrers（老師的意見）。沒有冠詞或形容詞時只能用 von：der Preis von Kaffee。口語也常用 von 代替屬格。",
+    "en": "Written German shows possession with the genitive: die Meinung des Lehrers. Without an article or adjective only von works: der Preis von Kaffee. Speech often uses von instead of the genitive."
+   },
+   "notes": [
+    {
+     "zh": "人名直接加 -s，不加撇號：Annas Buch、Peters Auto。",
+     "en": "Names add -s with no apostrophe: Annas Buch, Peters Auto."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "das Haus von dem Nachbar",
+     "right": "das Haus des Nachbarn",
+     "zh": "書面語用屬格；Nachbar 是 n-變格，屬格是 Nachbarn。",
+     "en": "Written German: genitive; Nachbar is an n-noun: des Nachbarn."
+    },
+    {
+     "wrong": "Anna’s Fahrrad",
+     "right": "Annas Fahrrad",
+     "zh": "德文人名屬格不加撇號。",
+     "en": "German name genitives take no apostrophe."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Farbe des Kleides gefällt mir.",
+     "zh": "我喜歡那件洋裝的顏色。",
+     "en": "I like the colour of the dress."
+    },
+    {
+     "text": "Das ist die Wohnung meiner Eltern.",
+     "zh": "這是我父母的公寓。",
+     "en": "This is my parents’ flat."
+    },
+    {
+     "text": "Der Verkauf von Alkohol ist hier verboten.",
+     "zh": "這裡禁止販賣酒類。",
+     "en": "The sale of alcohol is forbidden here."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Das ist das Ende（　）Films.",
+     "zh": "這是電影的結局。",
+     "en": "That is the end of the film.",
+     "options": [
+      "des",
+      "dem",
+      "der",
+      "den"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Zahl（　）wächst jedes Jahr.",
+     "zh": "學生人數每年增加。",
+     "en": "The number of students grows every year.",
+     "options": [
+      "der Studenten",
+      "die Studenten",
+      "den Studenten",
+      "des Studentes"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Der Duft（　）frischem Brot ist herrlich.",
+     "zh": "新鮮麵包的香味好棒。",
+     "en": "The smell of fresh bread is wonderful.",
+     "options": [
+      "von",
+      "des",
+      "aus",
+      "mit"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "tekamolo",
+   "pattern": "Te-Ka-Mo-Lo",
+   "title": {
+    "zh": "狀語的順序：時間・原因・方式・地點",
+    "en": "Adverbial order: time, cause, manner, place"
+   },
+   "form": {
+    "zh": "中場的狀語順序通常是：temporal（何時）– kausal（為何）– modal（如何）– lokal（何處）",
+    "en": "In the middle field adverbials usually run: temporal (when) – kausal (why) – modal (how) – lokal (where)"
+   },
+   "explain": {
+    "zh": "Er fährt morgen wegen des Streiks mit dem Fahrrad zur Arbeit.（他明天因為罷工騎腳踏車上班。）這是中性的順序；想強調某一項時可以把它放到句首。",
+    "en": "Er fährt morgen wegen des Streiks mit dem Fahrrad zur Arbeit. This is the neutral order; to stress one element, move it to the front."
+   },
+   "notes": [
+    {
+     "zh": "代名詞受詞比狀語更靠前：Ich gebe es dir morgen.",
+     "en": "Pronoun objects come before the adverbials: Ich gebe es dir morgen."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ich fahre zur Arbeit morgen mit dem Bus.",
+     "right": "Ich fahre morgen mit dem Bus zur Arbeit.",
+     "zh": "時間在前、地點在後。",
+     "en": "Time first, place last."
+    },
+    {
+     "wrong": "Sie ging nach Hause wegen des Regens schnell.",
+     "right": "Sie ging wegen des Regens schnell nach Hause.",
+     "zh": "原因 → 方式 → 地點。",
+     "en": "Cause → manner → place."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Wir sind gestern wegen des Verkehrs zu Fuß ins Kino gegangen.",
+     "zh": "我們昨天因為塞車走路去電影院。",
+     "en": "Yesterday we walked to the cinema because of the traffic."
+    },
+    {
+     "text": "Er arbeitet seit Jahren mit großer Freude in diesem Café.",
+     "zh": "他多年來很開心地在這家咖啡館工作。",
+     "en": "He has worked happily in this café for years."
+    },
+    {
+     "text": "Morgen fahre ich aus Zeitmangel mit dem Taxi zum Flughafen.",
+     "zh": "明天我因為時間不夠搭計程車去機場。",
+     "en": "Tomorrow I am taking a taxi to the airport for lack of time."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich gehe（　）ins Büro.",
+     "zh": "我明天走路去辦公室。",
+     "en": "Tomorrow I am walking to the office.",
+     "options": [
+      "morgen zu Fuß",
+      "zu Fuß morgen",
+      "ins Büro morgen",
+      "morgen ins Büro zu Fuß"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie ist（　）nach Hause gefahren.",
+     "zh": "她昨天因為生病很早就回家了。",
+     "en": "Yesterday she went home early because she was ill.",
+     "options": [
+      "gestern wegen Krankheit früh",
+      "früh gestern wegen Krankheit",
+      "wegen Krankheit gestern früh",
+      "gestern früh nach Hause wegen Krankheit"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Wir treffen uns（　）.",
+     "zh": "我們今晚在餐廳碰面。",
+     "en": "We are meeting at the restaurant this evening.",
+     "options": [
+      "heute Abend im Restaurant",
+      "im Restaurant heute Abend",
+      "Restaurant heute im Abend",
+      "heute im Restaurant Abend"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "es_platzhalter",
+   "pattern": "Es kamen viele Leute.",
+   "title": {
+    "zh": "句首的 es（佔位）",
+    "en": "Es as a place-holder at the start"
+   },
+   "form": {
+    "zh": "Es ＋ 動詞 ＋ 真正的主詞（動詞跟真正的主詞配合）",
+    "en": "Es + verb + the real subject (the verb agrees with the real subject)"
+   },
+   "explain": {
+    "zh": "為了把新的、重要的主詞放到後面，句首用 es 佔位：Es kamen viele Gäste.（來了很多客人。）es 只能在第一位，一旦別的成分放句首，es 就消失：Gestern kamen viele Gäste.",
+    "en": "To put a new, important subject later, es fills the first slot: Es kamen viele Gäste. This es only stands in first place; with another element first it disappears: Gestern kamen viele Gäste."
+   },
+   "notes": [
+    {
+     "zh": "動詞跟後面的主詞配合：Es war ein Mann / Es waren zwei Männer.",
+     "en": "The verb agrees with the real subject: Es war ein Mann / Es waren zwei Männer."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Es kam viele Leute.",
+     "right": "Es kamen viele Leute.",
+     "zh": "動詞跟 viele Leute（複數）配合。",
+     "en": "The verb agrees with viele Leute (plural)."
+    },
+    {
+     "wrong": "Gestern es haben zwei Kinder geklingelt.",
+     "right": "Gestern haben zwei Kinder geklingelt.",
+     "zh": "別的成分在句首時，佔位的 es 要拿掉。",
+     "en": "With something else first, drop the place-holder es."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Es fehlen noch drei Unterschriften.",
+     "zh": "還缺三個簽名。",
+     "en": "Three signatures are still missing."
+    },
+    {
+     "text": "Es meldeten sich über hundert Freiwillige.",
+     "zh": "有超過一百位志工報名。",
+     "en": "Over a hundred volunteers came forward."
+    },
+    {
+     "text": "Es lebte einmal ein König …",
+     "zh": "從前有一位國王……",
+     "en": "Once upon a time there lived a king …"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Es（　）zwei Briefe für dich gekommen.",
+     "zh": "有兩封你的信寄來了。",
+     "en": "Two letters have come for you.",
+     "options": [
+      "sind",
+      "ist",
+      "hat",
+      "haben"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Heute（　）viele Touristen in die Stadt.",
+     "zh": "今天很多觀光客來到城裡。",
+     "en": "Many tourists are coming to town today.",
+     "options": [
+      "kommen",
+      "kommen es",
+      "es kommen",
+      "kommt es"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Es（　）heute niemand im Büro.",
+     "zh": "今天辦公室裡沒有人。",
+     "en": "There is nobody in the office today.",
+     "options": [
+      "ist",
+      "sind",
+      "gibt",
+      "hat"
+     ],
+     "answer": 0
+    }
+   ]
+  }
+ ]
 }

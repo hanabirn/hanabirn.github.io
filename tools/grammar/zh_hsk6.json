@@ -3,7 +3,7 @@
  "lang": "zh",
  "level": "HSK 6",
  "order": 5,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk6.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk6.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_zh_hsk6_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "guran",
@@ -1692,6 +1692,664 @@
       "務必",
       "勢必",
       "未免"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "jiu_eryan",
+   "pattern": "就 ～ 而言",
+   "title": {
+    "zh": "就……而言：從……方面來說",
+    "en": "就 … 而言 — as far as … is concerned"
+   },
+   "form": {
+    "zh": "就 ＋ 名詞（方面、對象）＋ 而言，＋ 評論",
+    "en": "就 + noun (aspect or subject) + 而言, + comment"
+   },
+   "explain": {
+    "zh": "限定談論的範圍或角度，書面語：就價格而言，這款手機很有競爭力。口語可以說「從……來說」「對……來說」。",
+    "en": "Limits the scope or angle of a statement, written style: 就價格而言，這款手機很有競爭力. In speech: 從…來說 / 對…來說."
+   },
+   "notes": [
+    {
+     "zh": "也可以說「就 ～ 來說」，語氣稍微口語一點。",
+     "en": "Also 就 … 來說, slightly more colloquial."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "就而言價格，這家比較便宜。",
+     "right": "就價格而言，這家比較便宜。",
+     "zh": "名詞放在「就」和「而言」中間。",
+     "en": "The noun goes between 就 and 而言."
+    },
+    {
+     "wrong": "對價格而言來說，這家比較便宜。",
+     "right": "就價格而言，這家比較便宜。",
+     "zh": "「而言」和「來說」不要重複。",
+     "en": "Do not stack 而言 and 來說."
+    }
+   ],
+   "examples": [
+    {
+     "text": "就經驗而言，他比其他人更適合這個工作。",
+     "reading": "Jiù jīngyàn ér yán, tā bǐ qítā rén gèng shìhé zhè ge gōngzuò.",
+     "zh": "就經驗而言，他比其他人更適合這個工作。",
+     "en": "In terms of experience he is better suited to the job than the others."
+    },
+    {
+     "text": "就我個人而言，我比較喜歡安靜的地方。",
+     "reading": "Jiù wǒ gèrén ér yán, wǒ bǐjiào xǐhuān ānjìng de dìfāng.",
+     "zh": "就我個人而言，我比較喜歡安靜的地方。",
+     "en": "Personally, I prefer quiet places."
+    },
+    {
+     "text": "就目前的情況而言，我們還不能做決定。",
+     "reading": "Jiù mùqián de qíngkuàng ér yán, wǒmen hái bù néng zuò juédìng.",
+     "zh": "就目前的情況而言，我們還不能做決定。",
+     "en": "As things stand, we cannot decide yet."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）交通而言，住在市中心最方便。",
+     "zh": "就交通而言，住在市中心最方便。",
+     "en": "As far as transport goes, living downtown is most convenient.",
+     "options": [
+      "就",
+      "對於",
+      "關於",
+      "至於"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "就品質（　），這家工廠的產品是最好的。",
+     "zh": "就品質而言，這家工廠的產品是最好的。",
+     "en": "In terms of quality, this factory’s products are the best.",
+     "options": [
+      "而言",
+      "而且",
+      "而已",
+      "言而"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "就（　）而言，我不贊成這個計畫。",
+     "zh": "就我而言，我不贊成這個計畫。",
+     "en": "For my part, I do not support this plan.",
+     "options": [
+      "我",
+      "我的",
+      "對我",
+      "我們的"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "shier",
+   "pattern": "時而 ～ 時而 ～",
+   "title": {
+    "zh": "時而……時而……：一會兒……一會兒……",
+    "en": "時而 … 時而 — now … now …"
+   },
+   "form": {
+    "zh": "時而 ＋ A，時而 ＋ B（A、B 是相對或不同的狀態）",
+    "en": "時而 + A, 時而 + B (A and B are contrasting states)"
+   },
+   "explain": {
+    "zh": "描寫交替出現的不同情況，書面語：天氣時而晴朗，時而下雨。口語可以說「一會兒……一會兒……」。",
+    "en": "Describes alternating states, written style: 天氣時而晴朗，時而下雨. In speech: 一會兒…一會兒…."
+   },
+   "notes": [
+    {
+     "zh": "單獨一個「時而」表示「有時候、偶爾」：他時而會打電話回家。",
+     "en": "A single 時而 means \"now and then\": 他時而會打電話回家."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他時而高興，又時而難過。",
+     "right": "他時而高興，時而難過。",
+     "zh": "兩個「時而」直接對稱，不加「又」。",
+     "en": "The two 時而 balance each other; no 又."
+    },
+    {
+     "wrong": "時而時而下雨。",
+     "right": "時而下雨，時而出太陽。",
+     "zh": "每個「時而」後面要接一種情況。",
+     "en": "Each 時而 needs its own state."
+    }
+   ],
+   "examples": [
+    {
+     "text": "音樂時而輕快，時而低沉。",
+     "reading": "Yīnyuè shí'ér qīngkuài, shí'ér dīchén.",
+     "zh": "音樂時而輕快，時而低沉。",
+     "en": "The music is now light and lively, now low and sombre."
+    },
+    {
+     "text": "病人的體溫時而升高，時而下降。",
+     "reading": "Bìngrén de tǐwēn shí'ér shēng gāo, shí'ér xiàjiàng.",
+     "zh": "病人的體溫時而升高，時而下降。",
+     "en": "The patient’s temperature keeps rising and falling."
+    },
+    {
+     "text": "她坐在窗邊，時而看書，時而望著窗外。",
+     "reading": "Tā zuò zài chuāng biān, shí'ér kàn shū, shí'ér wàng zhe chuāng wài.",
+     "zh": "她坐在窗邊，時而看書，時而望著窗外。",
+     "en": "She sat by the window, now reading, now gazing outside."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "山上的天氣（　）晴，時而雨。",
+     "zh": "山上的天氣時而晴，時而雨。",
+     "en": "The weather on the mountain is sometimes sunny, sometimes rainy.",
+     "options": [
+      "時而",
+      "時候",
+      "時時",
+      "同時"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "孩子們時而大笑，（　）大叫。",
+     "zh": "孩子們時而大笑，時而大叫。",
+     "en": "The children now laugh, now shout.",
+     "options": [
+      "時而",
+      "而且",
+      "然而",
+      "從而"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他（　）會來看我，但不常來。",
+     "zh": "他時而會來看我，但不常來。",
+     "en": "He visits me now and then, but not often.",
+     "options": [
+      "時而",
+      "時時刻刻",
+      "從來",
+      "一直"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "weibi",
+   "pattern": "未必",
+   "title": {
+    "zh": "未必：不一定",
+    "en": "未必 — not necessarily"
+   },
+   "form": {
+    "zh": "主詞 ＋ 未必 ＋ 動詞／形容詞",
+    "en": "subject + 未必 + verb / adjective"
+   },
+   "explain": {
+    "zh": "表示「不一定」，語氣比較書面、委婉：有經驗的人未必做得好。跟「不見得」意思相近；「未必」也可以單獨回答。",
+    "en": "Means \"not necessarily\", in a formal, gentle tone: 有經驗的人未必做得好. Close to 不見得; 未必 can also stand alone as a reply."
+   },
+   "notes": [
+    {
+     "zh": "不要跟「勢必」（一定會）搞混。",
+     "en": "Do not confuse it with 勢必 (bound to)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他未必一定會來。",
+     "right": "他未必會來。",
+     "zh": "「未必」已經是「不一定」，不加「一定」。",
+     "en": "未必 already means \"not necessarily\"; drop 一定."
+    },
+    {
+     "wrong": "這次比賽我們勢必會輸，所以還有機會。",
+     "right": "這次比賽我們未必會輸，還有機會。",
+     "zh": "要表示「不一定輸」用「未必」。",
+     "en": "\"Not necessarily lose\" is 未必."
+    }
+   ],
+   "examples": [
+    {
+     "text": "考試成績好的學生，未必最有創意。",
+     "reading": "Kǎoshì chéngjì hǎo de xuéshēng, wèibì zuì yǒu chuàngyì.",
+     "zh": "考試成績好的學生，未必最有創意。",
+     "en": "Students with good grades are not necessarily the most creative."
+    },
+    {
+     "text": "他說的話未必是真的。",
+     "reading": "Tā shuō de huà wèibì shì zhēn de.",
+     "zh": "他說的話未必是真的。",
+     "en": "What he says is not necessarily true."
+    },
+    {
+     "text": "便宜的東西未必品質就差。",
+     "reading": "Piányí de dōngxi wèibì pǐnzhí jiù chà.",
+     "zh": "便宜的東西未必品質就差。",
+     "en": "Cheap things are not necessarily poor quality."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "名氣大的餐廳（　）好吃。",
+     "zh": "名氣大的餐廳未必好吃。",
+     "en": "Famous restaurants are not necessarily good.",
+     "options": [
+      "未必",
+      "勢必",
+      "務必",
+      "何必"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "「他會同意嗎？」「（　）。」",
+     "zh": "「他會同意嗎？」「未必。」",
+     "en": "\"Will he agree?\" \"Not necessarily.\"",
+     "options": [
+      "未必",
+      "必然",
+      "務必",
+      "不必了"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "努力的人未必成功，但成功的人（　）努力過。",
+     "zh": "努力的人未必成功，但成功的人一定努力過。",
+     "en": "Hard workers do not always succeed, but the successful have always worked hard.",
+     "options": [
+      "一定",
+      "未必",
+      "不見得",
+      "何嘗"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "bukui",
+   "pattern": "不愧（是／為）",
+   "title": {
+    "zh": "不愧是：名副其實",
+    "en": "不愧 — worthy of the name"
+   },
+   "form": {
+    "zh": "主詞 ＋ 不愧是／不愧為 ＋ 名詞（身分、稱號）",
+    "en": "subject + 不愧是 / 不愧為 + noun (role or title)"
+   },
+   "explain": {
+    "zh": "稱讚某人的表現跟他的身分或名聲相符：他不愧是冠軍，表現得非常穩定。（真不愧是冠軍。）常加「真」：真不愧是老師！",
+    "en": "Praises someone for living up to their role or name: 他不愧是冠軍，表現得非常穩定. Often with 真: 真不愧是老師！"
+   },
+   "notes": [
+    {
+     "zh": "「不愧」只用在稱讚，不用在批評。",
+     "en": "不愧 is only used for praise."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他不愧是新手，常常出錯。",
+     "right": "他畢竟是新手，常常出錯也正常。",
+     "zh": "「不愧」只用來稱讚，不用在負面評價。",
+     "en": "不愧 is praise only; use 畢竟 for excuses."
+    },
+    {
+     "wrong": "她不愧了是好醫生。",
+     "right": "她不愧是好醫生。",
+     "zh": "「不愧」後面接「是」，不加「了」。",
+     "en": "不愧 is followed by 是, not 了."
+    }
+   ],
+   "examples": [
+    {
+     "text": "這道菜真好吃，不愧是名廚做的。",
+     "reading": "Zhè dào cài zhēn hǎochī, búkuì shì míng chú zuò de.",
+     "zh": "這道菜真好吃，不愧是名廚做的。",
+     "en": "This dish is delicious – a true master chef’s work."
+    },
+    {
+     "text": "他三個月就學會開車，不愧是運動員，反應很快。",
+     "reading": "Tā sān ge yuè jiù xué huì kāichē, búkuì shì yùndòngyuán, fǎnyìng hěn kuài.",
+     "zh": "他三個月就學會開車，不愧是運動員，反應很快。",
+     "en": "He learnt to drive in three months – a real athlete, his reflexes are quick."
+    },
+    {
+     "text": "這座城市不愧為文化古都。",
+     "reading": "Zhè zuò chéngshì búkuì wéi wénhuà gǔdū.",
+     "zh": "這座城市不愧為文化古都。",
+     "en": "This city truly lives up to its name as an ancient cultural capital."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她一次就考過了，（　）是學霸。",
+     "zh": "她一次就考過了，不愧是學霸。",
+     "en": "She passed first time – a real star student.",
+     "options": [
+      "不愧",
+      "不見得",
+      "未必",
+      "不免"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "這家店的牛肉麵真不愧（　）全市第一。",
+     "zh": "這家店的牛肉麵真不愧是全市第一。",
+     "en": "This shop’s beef noodles truly deserve to be called the best in town.",
+     "options": [
+      "是",
+      "了",
+      "的",
+      "得"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他（　）是專家，一看就知道問題在哪裡。",
+     "zh": "他不愧是專家，一看就知道問題在哪裡。",
+     "en": "He is a true expert; he spotted the problem at a glance.",
+     "options": [
+      "不愧",
+      "居然",
+      "難怪",
+      "畢竟"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "guoyu",
+   "pattern": "過於",
+   "title": {
+    "zh": "過於：太、過分",
+    "en": "過於 — excessively"
+   },
+   "form": {
+    "zh": "過於 ＋ 形容詞／心理動詞（多為雙音節）",
+    "en": "過於 + adjective / mental verb (usually two syllables)"
+   },
+   "explain": {
+    "zh": "表示程度超過合適的範圍，書面語，常帶批評：你過於擔心了。（你太擔心了。）這個計畫過於複雜。後面一般接雙音節詞。",
+    "en": "Says a degree goes beyond what is fitting, written and often critical: 你過於擔心了. 這個計畫過於複雜. Usually followed by a two-syllable word."
+   },
+   "notes": [
+    {
+     "zh": "口語用「太」：太複雜了。",
+     "en": "In speech use 太: 太複雜了."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "這件衣服過於大。",
+     "right": "這件衣服太大了。",
+     "zh": "單音節形容詞用「太」較自然；「過於」接雙音節詞。",
+     "en": "With a one-syllable adjective 太 is natural; 過於 takes two syllables."
+    },
+    {
+     "wrong": "他過於了緊張，說錯話了。",
+     "right": "他過於緊張，說錯話了。",
+     "zh": "「過於」後面直接接形容詞。",
+     "en": "過於 is followed directly by the adjective."
+    }
+   ],
+   "examples": [
+    {
+     "text": "父母不應該過於保護孩子。",
+     "reading": "Fùmǔ bù yīnggāi guòyú bǎohù háizi.",
+     "zh": "父母不應該過於保護孩子。",
+     "en": "Parents should not be overprotective."
+    },
+    {
+     "text": "這篇報告過於簡單，需要補充資料。",
+     "reading": "Zhè piān bàogào guòyú jiǎndān, xūyào bǔchōng zīliào.",
+     "zh": "這篇報告過於簡單，需要補充資料。",
+     "en": "This report is too brief and needs more data."
+    },
+    {
+     "text": "你不要過於在意別人的看法。",
+     "reading": "Nǐ búyào guòyú zàiyì biérén de kànfǎ.",
+     "zh": "你不要過於在意別人的看法。",
+     "en": "Do not care too much about what others think."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "這個設計（　）複雜，使用者看不懂。",
+     "zh": "這個設計過於複雜，使用者看不懂。",
+     "en": "This design is overly complex; users cannot understand it.",
+     "options": [
+      "過於",
+      "於是",
+      "至於",
+      "在於"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他對自己的要求過於（　），常常很累。",
+     "zh": "他對自己的要求過於嚴格，常常很累。",
+     "en": "He is too strict with himself and is often exhausted.",
+     "options": [
+      "嚴格",
+      "嚴",
+      "嚴格了",
+      "很嚴格"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "別（　）相信網路上的評論。",
+     "zh": "別過於相信網路上的評論。",
+     "en": "Do not put too much faith in online reviews.",
+     "options": [
+      "過於",
+      "過去",
+      "超過",
+      "通過"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zongsuan",
+   "pattern": "總算",
+   "title": {
+    "zh": "總算：終於（經過努力或等待）",
+    "en": "總算 — at last, finally"
+   },
+   "form": {
+    "zh": "主詞 ＋ 總算 ＋ 動詞（＋ 了）；總算 ＋ 還（勉強過得去）",
+    "en": "subject + 總算 + verb (+ 了); 總算 + 還 (passable, at least)"
+   },
+   "explain": {
+    "zh": "表示經過一段時間或努力，期待的事終於實現，帶有鬆一口氣的感覺：等了一個月，總算收到了。也可以表示「大致上還算」：這次考試總算還可以。",
+    "en": "Something long awaited or worked for finally happens, with relief: 等了一個月，總算收到了. Also \"on the whole, passable\": 這次考試總算還可以."
+   },
+   "notes": [
+    {
+     "zh": "跟「終於」相近，「總算」更強調等待或辛苦。",
+     "en": "Close to 終於, but 總算 stresses the wait or effort."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他總算考試不及格了。",
+     "right": "他這次總算考試及格了。",
+     "zh": "「總算」用在期待的好結果。",
+     "en": "總算 is for a hoped-for result."
+    },
+    {
+     "wrong": "等了很久，總算公車來了。",
+     "right": "等了很久，公車總算來了。",
+     "zh": "「總算」放在主詞後面、動詞前面。",
+     "en": "總算 goes after the subject, before the verb."
+    }
+   ],
+   "examples": [
+    {
+     "text": "修了三天，電腦總算好了。",
+     "reading": "Xiū le sān tiān, diànnǎo zǒngsuàn hǎo le.",
+     "zh": "修了三天，電腦總算好了。",
+     "en": "After three days of repairs the computer is finally working."
+    },
+    {
+     "text": "雨總算停了，我們出發吧。",
+     "reading": "Yǔ zǒngsuàn tíng le, wǒmen chūfā ba.",
+     "zh": "雨總算停了，我們出發吧。",
+     "en": "The rain has stopped at last; let us go."
+    },
+    {
+     "text": "雖然有點小錯，總算順利完成了。",
+     "reading": "Suīrán yǒu diǎn xiǎo cuò, zǒngsuàn shùnlì wánchéng le.",
+     "zh": "雖然有點小錯，總算順利完成了。",
+     "en": "Despite a few small mistakes, it was finished smoothly in the end."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "找了半天，我（　）找到鑰匙了。",
+     "zh": "找了半天，我總算找到鑰匙了。",
+     "en": "After searching for ages I finally found my keys.",
+     "options": [
+      "總算",
+      "總之",
+      "總是",
+      "總共"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "論文寫了一年，總算（　）了。",
+     "zh": "論文寫了一年，總算完成了。",
+     "en": "After a year of writing, the thesis is finally done.",
+     "options": [
+      "完成",
+      "完成過",
+      "在完成",
+      "完成著"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "天氣雖然不好，旅行（　）順利。",
+     "zh": "天氣雖然不好，旅行總算順利。",
+     "en": "The weather was bad, but the trip went smoothly enough.",
+     "options": [
+      "總算",
+      "終究不",
+      "未必",
+      "不至於"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "yi_weiyou",
+   "pattern": "以 ～ 為由",
+   "title": {
+    "zh": "以……為由：用……當理由",
+    "en": "以 … 為由 — on the grounds of"
+   },
+   "form": {
+    "zh": "以 ＋ 名詞／子句 ＋ 為由，＋ 動作",
+    "en": "以 + noun / clause + 為由, + action"
+   },
+   "explain": {
+    "zh": "說明某人提出的理由（常是藉口），書面語：他以身體不舒服為由，沒來上班。新聞常用：政府以安全為由，關閉了這條路。",
+    "en": "Gives the reason someone states (often an excuse), written style: 他以身體不舒服為由，沒來上班. Common in news: 政府以安全為由，關閉了這條路."
+   },
+   "notes": [
+    {
+     "zh": "「由」是「理由」的意思，不能換成「因為」。",
+     "en": "由 means \"reason\" here; it cannot become 因為."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他為由太忙，拒絕了邀請。",
+     "right": "他以太忙為由，拒絕了邀請。",
+     "zh": "結構是「以……為由」。",
+     "en": "The pattern is 以…為由."
+    },
+    {
+     "wrong": "以下雨為理由為由，比賽延期。",
+     "right": "以下雨為由，比賽延期。",
+     "zh": "不要重複「理由」。",
+     "en": "Do not repeat 理由."
+    }
+   ],
+   "examples": [
+    {
+     "text": "他以工作太忙為由，好幾次沒參加聚會。",
+     "reading": "Tā yǐ gōngzuò tài máng wéi yóu, hǎo jǐ cì méi cānjiā jùhuì.",
+     "zh": "他以工作太忙為由，好幾次沒參加聚會。",
+     "en": "He skipped several gatherings, saying he was too busy at work."
+    },
+    {
+     "text": "公司以成本太高為由，取消了這個計畫。",
+     "reading": "Gōngsī yǐ chéngběn tài gāo wéi yóu, qǔxiāo le zhè ge jìhuà.",
+     "zh": "公司以成本太高為由，取消了這個計畫。",
+     "en": "The company cancelled the project on the grounds of high costs."
+    },
+    {
+     "text": "房東以要整修為由，要求房客搬走。",
+     "reading": "Fángdōng yǐ yào zhěng xiū wéi yóu, yāoqiú fáng kè bān zǒu.",
+     "zh": "房東以要整修為由，要求房客搬走。",
+     "en": "The landlord asked the tenants to move out, citing renovations."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "她（　）家裡有事為由，提早離開了。",
+     "zh": "她以家裡有事為由，提早離開了。",
+     "en": "She left early, saying something had come up at home.",
+     "options": [
+      "以",
+      "為",
+      "由",
+      "因"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "學校以天氣惡劣（　），宣布停課。",
+     "zh": "學校以天氣惡劣為由，宣布停課。",
+     "en": "The school cancelled classes on the grounds of severe weather.",
+     "options": [
+      "為由",
+      "為了",
+      "由於",
+      "而已"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他以「沒時間」為由，（　）了我的請求。",
+     "zh": "他以「沒時間」為由，拒絕了我的請求。",
+     "en": "He turned down my request, saying he had no time.",
+     "options": [
+      "拒絕",
+      "接受了被",
+      "答應",
+      "同意"
      ],
      "answer": 0
     }

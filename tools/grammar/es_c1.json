@@ -3,7 +3,7 @@
  "lang": "es",
  "level": "C1",
  "order": 5,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_es_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_es_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_es_c1_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "imperf_subj",
@@ -1365,6 +1365,916 @@
       "puso",
       "hizo",
       "llegó"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "futuro_subj",
+   "pattern": "futuro de subjuntivo (quien fuere)",
+   "title": {
+    "zh": "虛擬式未來時（認讀）",
+    "en": "The future subjunctive (recognition)"
+   },
+   "form": {
+    "zh": "從簡單過去時第三人稱複數去掉 -ron ＋ -re：hablare、fuere、tuviere、hiciere",
+    "en": "Third-person plural preterite minus -ron + -re: hablare, fuere, tuviere, hiciere"
+   },
+   "explain": {
+    "zh": "現代口語已經不用，只留在法律條文、正式文件和固定說法裡：Adonde fueres, haz lo que vieres.（入境隨俗。）Sea lo que fuere（無論如何）。C1 要能看懂，不需要自己使用。",
+    "en": "Gone from modern speech; it survives in legal texts, formal documents and set phrases: Adonde fueres, haz lo que vieres (when in Rome…), Sea lo que fuere. At C1 you should recognise it, not use it."
+   },
+   "notes": [
+    {
+     "zh": "今天說話時用現在虛擬式代替：quien sea, lo que haga。",
+     "en": "Today the present subjunctive replaces it: quien sea, lo que haga."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Mañana, si lloviere, no saldremos.",
+     "right": "Mañana, si llueve, no saldremos.",
+     "zh": "日常說話用 si ＋ 現在式；llovere 只見於法律文字。",
+     "en": "Everyday speech uses si + present; lloviere is legal style only."
+    },
+    {
+     "wrong": "El que no cumpliere será sancionado. (en una conversación)",
+     "right": "El que no cumpla será sancionado.",
+     "zh": "對話中用現在虛擬式。",
+     "en": "In conversation use the present subjunctive."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Quien infringiere esta norma será sancionado.",
+     "zh": "違反本規定者將受處罰。",
+     "en": "Whoever breaks this rule shall be penalised."
+    },
+    {
+     "text": "Adonde fueres, haz lo que vieres.",
+     "zh": "入境隨俗。",
+     "en": "When in Rome, do as the Romans do."
+    },
+    {
+     "text": "Sea lo que fuere, tenemos que decidir hoy.",
+     "zh": "無論如何，我們今天得做決定。",
+     "en": "Be that as it may, we must decide today."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "En el texto legal «el que（　）» equivale hoy a «el que sea».",
+     "zh": "法律條文裡的 el que fuere，今天等於 el que sea。",
+     "en": "In legal texts el que fuere equals today’s el que sea.",
+     "options": [
+      "fuere",
+      "fuera",
+      "fuese",
+      "será"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "La forma actual de «si hubiere dudas» sería «si（　）dudas».",
+     "zh": "「si hubiere dudas」的現代說法是「si hay dudas」。",
+     "en": "The modern form of si hubiere dudas is si hay dudas.",
+     "options": [
+      "hay",
+      "hubiere",
+      "habría",
+      "haya habido"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sea lo que（　）, no pienso rendirme.",
+     "zh": "無論如何，我都不打算放棄。",
+     "en": "Be that as it may, I do not intend to give up.",
+     "options": [
+      "fuere",
+      "fue",
+      "será",
+      "era"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "como_subj",
+   "pattern": "como ＋ subj.（條件・威脅）",
+   "title": {
+    "zh": "要是……的話（警告）",
+    "en": "If … (como + subjunctive, warning)"
+   },
+   "form": {
+    "zh": "como ＋ 現在虛擬式, 主句（未來或命令）；como ＋ 過去完成虛擬式 ＝ 過去的假設",
+    "en": "como + present subjunctive, main clause (future or command); como + pluperfect subjunctive = a past hypothesis"
+   },
+   "explain": {
+    "zh": "como 接虛擬式時等於「要是……」，常帶警告或威脅的語氣：Como llegues tarde, me voy.（你要是遲到，我就走了。）接直陳式則是「因為」：Como llegaste tarde, me fui.",
+    "en": "With the subjunctive como means \"if\", often a warning or threat: Como llegues tarde, me voy. With the indicative it means \"since\": Como llegaste tarde, me fui."
+   },
+   "notes": [
+    {
+     "zh": "這種 como 一般放在句首。",
+     "en": "This como usually opens the sentence."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Como no estudias, vas a suspender.",
+     "right": "Como no estudies, vas a suspender.",
+     "zh": "要表示「要是不讀書」的警告，用虛擬式。",
+     "en": "A warning \"if you do not study\" takes the subjunctive."
+    },
+    {
+     "wrong": "Como lo vuelves a hacer, me enfado.",
+     "right": "Como lo vuelvas a hacer, me enfado.",
+     "zh": "警告用虛擬式。",
+     "en": "A warning takes the subjunctive."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Como no te abrigues, te vas a resfriar.",
+     "zh": "你要是不穿暖一點，就會感冒。",
+     "en": "If you do not wrap up, you will catch a cold."
+    },
+    {
+     "text": "Como se lo cuentes a alguien, no te hablo más.",
+     "zh": "你要是跟別人說，我就不理你了。",
+     "en": "If you tell anyone, I will never speak to you again."
+    },
+    {
+     "text": "Como hubiera sabido la verdad, no habría firmado.",
+     "zh": "要是我早知道真相，就不會簽了。",
+     "en": "Had I known the truth, I would not have signed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Como（　）tarde otra vez, te quedas sin postre.",
+     "zh": "你要是再晚回來，就沒甜點吃。",
+     "en": "If you come home late again, no dessert for you.",
+     "options": [
+      "vuelvas",
+      "vuelves",
+      "volverás",
+      "volvías"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Como（　）enfermo, no fue a trabajar.",
+     "zh": "因為他生病，所以沒去上班。",
+     "en": "As he was ill, he did not go to work.",
+     "options": [
+      "estaba",
+      "estuviera",
+      "esté",
+      "estará"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Como no me（　）caso, se lo diré a tu madre.",
+     "zh": "你要是不聽我的，我就告訴你媽。",
+     "en": "If you do not listen to me, I will tell your mother.",
+     "options": [
+      "hagas",
+      "haces",
+      "harás",
+      "hacías"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "por_si",
+   "pattern": "por si (acaso)",
+   "title": {
+    "zh": "以防萬一",
+    "en": "Just in case (por si)"
+   },
+   "form": {
+    "zh": "por si ＋ 直陳式現在式／虛擬式過去式；por si acaso（單獨使用）",
+    "en": "por si + present indicative / imperfect subjunctive; por si acaso (on its own)"
+   },
+   "explain": {
+    "zh": "說明做某件事是為了預防某種可能：Llévate el paraguas por si llueve.（帶傘吧，以防下雨。）可能性小的時候用虛擬式過去式：por si lloviera。句尾單獨說 por si acaso 也很常見。",
+    "en": "Says something is done as a precaution: Llévate el paraguas por si llueve. For a remoter chance use the imperfect subjunctive: por si lloviera. On its own at the end: por si acaso."
+   },
+   "notes": [
+    {
+     "zh": "por si 後面不用現在虛擬式：✗ por si llueva。",
+     "en": "Never the present subjunctive after por si: ✗ por si llueva."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Te dejo mi número por si me necesites.",
+     "right": "Te dejo mi número por si me necesitas.",
+     "zh": "por si 後接直陳式現在式（或虛擬式過去式），不接現在虛擬式。",
+     "en": "por si takes the present indicative (or imperfect subjunctive), not the present subjunctive."
+    },
+    {
+     "wrong": "Llevo agua por acaso.",
+     "right": "Llevo agua por si acaso.",
+     "zh": "固定說法是 por si acaso。",
+     "en": "The set phrase is por si acaso."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Guarda el recibo por si tienes que devolverlo.",
+     "zh": "把收據留著，以防要退貨。",
+     "en": "Keep the receipt in case you have to return it."
+    },
+    {
+     "text": "Compré más pan por si venían más invitados.",
+     "zh": "我多買了麵包，以防更多客人來。",
+     "en": "I bought more bread in case more guests came."
+    },
+    {
+     "text": "No creo que haga frío, pero llévate una chaqueta por si acaso.",
+     "zh": "我不覺得會冷，但還是帶件外套以防萬一。",
+     "en": "I do not think it will be cold, but take a jacket just in case."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Apunta mi dirección por si te（　）.",
+     "zh": "把我的地址記下來，以防你迷路。",
+     "en": "Write down my address in case you get lost.",
+     "options": [
+      "pierdes",
+      "pierdas",
+      "perderás",
+      "perderías"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Cerré la ventana por si（　）a llover.",
+     "zh": "我把窗戶關了，以防開始下雨。",
+     "en": "I closed the window in case it started to rain.",
+     "options": [
+      "empezaba",
+      "empiece",
+      "empezará",
+      "empezase de"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "No sé si lo necesitaremos, pero lo traigo por si（　）.",
+     "zh": "不知道會不會用到，但我帶來以防萬一。",
+     "en": "I do not know if we will need it, but I am bringing it just in case.",
+     "options": [
+      "acaso",
+      "caso",
+      "acaso que",
+      "en caso"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "ni_siquiera",
+   "pattern": "ni siquiera・siquiera",
+   "title": {
+    "zh": "連……都不、至少",
+    "en": "Not even / at least (ni siquiera, siquiera)"
+   },
+   "form": {
+    "zh": "ni (siquiera) ＋ 動詞／名詞；siquiera（肯定句：至少）",
+    "en": "ni (siquiera) + verb / noun; siquiera (positive: at least)"
+   },
+   "explain": {
+    "zh": "ni siquiera 強調否定到極點：Ni siquiera me saludó.（他連招呼都沒跟我打。）放在動詞後要加 no：No me saludó ni siquiera.（較少用）。siquiera 單用於肯定句是「至少」：Dame siquiera una pista.",
+    "en": "ni siquiera stresses an extreme negative: Ni siquiera me saludó. After the verb it needs no: No me saludó ni siquiera (less common). siquiera alone in a positive sentence means \"at least\": Dame siquiera una pista."
+   },
+   "notes": [
+    {
+     "zh": "ni siquiera 放在動詞前時，不再加 no：✗ Ni siquiera no me llamó。",
+     "en": "Before the verb ni siquiera needs no no: ✗ Ni siquiera no me llamó."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ni siquiera no tuvo tiempo de comer.",
+     "right": "Ni siquiera tuvo tiempo de comer.",
+     "zh": "否定已經由 ni siquiera 表達，不再加 no。",
+     "en": "ni siquiera already negates; drop no."
+    },
+    {
+     "wrong": "Siquiera me llamó.",
+     "right": "Ni siquiera me llamó.",
+     "zh": "「連……都沒有」要說 ni siquiera。",
+     "en": "\"Not even\" is ni siquiera."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Estaba tan cansado que ni siquiera cenó.",
+     "zh": "他累到連晚餐都沒吃。",
+     "en": "He was so tired he did not even have dinner."
+    },
+    {
+     "text": "No tengo ni siquiera un euro.",
+     "zh": "我連一歐元都沒有。",
+     "en": "I do not have even one euro."
+    },
+    {
+     "text": "Si no puedes venir, llama siquiera para avisar.",
+     "zh": "如果你不能來，至少打電話說一聲。",
+     "en": "If you cannot come, at least call to let us know."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Se fue sin despedirse;（　）nos miró.",
+     "zh": "他沒道別就走了，連看都沒看我們一眼。",
+     "en": "He left without saying goodbye; he did not even look at us.",
+     "options": [
+      "ni siquiera",
+      "siquiera",
+      "ni siquiera no",
+      "tampoco no"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "No sabe（　）freír un huevo.",
+     "zh": "他連煎個蛋都不會。",
+     "en": "He cannot even fry an egg.",
+     "options": [
+      "ni siquiera",
+      "siquiera no",
+      "tampoco",
+      "aún"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Ya que no vienes, mándame（　）un mensaje.",
+     "zh": "既然你不來，至少傳個訊息給我。",
+     "en": "Since you are not coming, at least send me a message.",
+     "options": [
+      "siquiera",
+      "ni siquiera",
+      "apenas",
+      "tampoco"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "quisiera",
+   "pattern": "quisiera・debiera・pudiera",
+   "title": {
+    "zh": "委婉的虛擬式過去式",
+    "en": "The polite -ra subjunctive (quisiera, debiera)"
+   },
+   "form": {
+    "zh": "querer／deber／poder 的虛擬式過去式（-ra 形）用在獨立句：quisiera, debieras, pudiera",
+    "en": "imperfect subjunctive (-ra form) of querer / deber / poder in a main clause: quisiera, debieras, pudiera"
+   },
+   "explain": {
+    "zh": "這三個動詞的 -ra 形可以代替條件式，表示禮貌或委婉：Quisiera reservar una mesa.（我想訂位。）Debieras descansar más.（你應該多休息。）比 quiero／debes 客氣。",
+    "en": "The -ra form of these three verbs can replace the conditional to sound polite or soft: Quisiera reservar una mesa. Debieras descansar más. Softer than quiero / debes."
+   },
+   "notes": [
+    {
+     "zh": "只有 querer、deber、poder（以及 haber）可以這樣用；其他動詞要用條件式：Me gustaría…",
+     "en": "Only querer, deber, poder (and haber) work this way; other verbs need the conditional: Me gustaría…"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Quisiese un café, por favor.",
+     "right": "Quisiera un café, por favor.",
+     "zh": "委婉用法只用 -ra 形，不用 -se 形。",
+     "en": "The polite use takes the -ra form, not -se."
+    },
+    {
+     "wrong": "Tuviera una pregunta.",
+     "right": "Tendría una pregunta.",
+     "zh": "只有 querer、deber、poder 能用 -ra 形表示委婉。",
+     "en": "Only querer, deber, poder can be softened with -ra."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Quisiera hablar con el director, por favor.",
+     "zh": "我想跟主任談談，麻煩了。",
+     "en": "I would like to speak to the director, please."
+    },
+    {
+     "text": "Debieras pensarlo dos veces antes de aceptar.",
+     "zh": "你接受之前應該三思。",
+     "en": "You ought to think twice before accepting."
+    },
+    {
+     "text": "¿Pudiera usted repetirlo más despacio?",
+     "zh": "您可以再說慢一點嗎？",
+     "en": "Could you repeat it more slowly?"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Buenos días,（　）cambiar estos zapatos.",
+     "zh": "您好，我想換這雙鞋。",
+     "en": "Good morning, I would like to exchange these shoes.",
+     "options": [
+      "quisiera",
+      "quiera",
+      "quisiese",
+      "querré"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "No（　）hablar así de tus compañeros.",
+     "zh": "你不應該那樣說你的同事。",
+     "en": "You should not talk about your colleagues like that.",
+     "options": [
+      "debieras",
+      "debas",
+      "debiste de",
+      "deberás de"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Si me lo permite, le（　）una pregunta.",
+     "zh": "如果您允許，我想問一個問題。",
+     "en": "If you allow me, I would ask you a question.",
+     "options": [
+      "haría",
+      "hiciera",
+      "hiciese",
+      "hago de"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "que_yo_sepa",
+   "pattern": "que yo sepa・que yo recuerde",
+   "title": {
+    "zh": "據我所知、就我記得",
+    "en": "As far as I know (que yo sepa)"
+   },
+   "form": {
+    "zh": "que ＋ 主詞代名詞 ＋ 虛擬式現在式：que yo sepa, que yo recuerde, que nosotros sepamos",
+    "en": "que + subject pronoun + present subjunctive: que yo sepa, que yo recuerde, que nosotros sepamos"
+   },
+   "explain": {
+    "zh": "插入句子中，限定說話的範圍：Que yo sepa, no ha llamado nadie.（據我所知，沒有人打來。）表示「我知道的不一定是全部」。",
+    "en": "Inserted to limit what you claim: Que yo sepa, no ha llamado nadie. It admits your knowledge may be incomplete."
+   },
+   "notes": [
+    {
+     "zh": "也有 que yo vea（就我看到的）、que se sepa（就大家所知）。",
+     "en": "Also que yo vea (as far as I can see), que se sepa (as far as anyone knows)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Que yo sé, la tienda abre a las nueve.",
+     "right": "Que yo sepa, la tienda abre a las nueve.",
+     "zh": "固定說法用虛擬式 sepa。",
+     "en": "The set phrase takes the subjunctive sepa."
+    },
+    {
+     "wrong": "Que yo recuerdo, nunca estuvo aquí.",
+     "right": "Que yo recuerde, nunca estuvo aquí.",
+     "zh": "用虛擬式 recuerde。",
+     "en": "Use the subjunctive recuerde."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Que yo sepa, el museo está cerrado los lunes.",
+     "zh": "據我所知，博物館週一休館。",
+     "en": "As far as I know, the museum is closed on Mondays."
+    },
+    {
+     "text": "Que yo recuerde, nunca te he prometido eso.",
+     "zh": "就我記得，我從來沒答應過你那件事。",
+     "en": "As far as I remember, I never promised you that."
+    },
+    {
+     "text": "No hay, que se sepa, ningún testigo.",
+     "zh": "就目前所知，沒有任何證人。",
+     "en": "As far as anyone knows, there are no witnesses."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Que yo（　）, el examen es el martes.",
+     "zh": "據我所知，考試在星期二。",
+     "en": "As far as I know, the exam is on Tuesday.",
+     "options": [
+      "sepa",
+      "sé",
+      "supiera",
+      "sabré"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）recuerde, nunca hemos hablado de eso.",
+     "zh": "就我記得，我們從來沒談過那件事。",
+     "en": "As far as I remember, we have never talked about that.",
+     "options": [
+      "Que yo",
+      "Como yo",
+      "Si yo",
+      "Lo que yo"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Que nosotros（　）, nadie ha protestado.",
+     "zh": "據我們所知，沒有人抗議。",
+     "en": "As far as we know, nobody has complained.",
+     "options": [
+      "sepamos",
+      "sabemos",
+      "supimos",
+      "sabremos"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "mientras_subj",
+   "pattern": "mientras ＋ subj.・mientras que",
+   "title": {
+    "zh": "只要……（條件）／而……（對比）",
+    "en": "As long as / whereas (mientras, mientras que)"
+   },
+   "form": {
+    "zh": "mientras ＋ 直陳式（同時）；mientras ＋ 虛擬式（只要）；mientras que ＋ 直陳式（對比：而）",
+    "en": "mientras + indicative (while); mientras + subjunctive (as long as); mientras que + indicative (whereas)"
+   },
+   "explain": {
+    "zh": "mientras 接直陳式是「在……的同時」；接虛擬式變成條件「只要」：Mientras tengas salud, todo irá bien.（只要你健康，一切都會好。）mientras que 表示對比：Él trabaja, mientras que ella estudia.",
+    "en": "mientras + indicative is \"while\"; + subjunctive it becomes a condition, \"as long as\": Mientras tengas salud, todo irá bien. mientras que contrasts: Él trabaja, mientras que ella estudia."
+   },
+   "notes": [
+    {
+     "zh": "「只要」也可以說 siempre que ＋ 虛擬式。",
+     "en": "\"As long as\" can also be siempre que + subjunctive."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Mientras vives en mi casa, seguirás mis reglas.",
+     "right": "Mientras vivas en mi casa, seguirás mis reglas.",
+     "zh": "表示條件「只要」用虛擬式。",
+     "en": "As a condition, \"as long as\" takes the subjunctive."
+    },
+    {
+     "wrong": "Yo prefiero el mar, mientras que tú prefieras la montaña.",
+     "right": "Yo prefiero el mar, mientras que tú prefieres la montaña.",
+     "zh": "mientras que 表示對比，用直陳式。",
+     "en": "mientras que (contrast) takes the indicative."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Mientras no llueva, jugaremos en el parque.",
+     "zh": "只要不下雨，我們就在公園玩。",
+     "en": "As long as it does not rain, we will play in the park."
+    },
+    {
+     "text": "Mientras cocinaba, escuchaba la radio.",
+     "zh": "他一邊煮飯，一邊聽收音機。",
+     "en": "While he was cooking, he listened to the radio."
+    },
+    {
+     "text": "En el norte llueve mucho, mientras que el sur es seco.",
+     "zh": "北部雨多，而南部很乾燥。",
+     "en": "It rains a lot in the north, whereas the south is dry."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Mientras（　）cuidado, no pasará nada.",
+     "zh": "只要你小心，就不會有事。",
+     "en": "As long as you are careful, nothing will happen.",
+     "options": [
+      "tengas",
+      "tienes",
+      "tendrás",
+      "tenías"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Mi hermano es alto,（　）yo soy bajo.",
+     "zh": "我哥哥很高，而我很矮。",
+     "en": "My brother is tall, whereas I am short.",
+     "options": [
+      "mientras que",
+      "mientras",
+      "aunque que",
+      "sino que"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Mientras（　）el desayuno, sonó el teléfono.",
+     "zh": "我在準備早餐的時候，電話響了。",
+     "en": "While I was making breakfast, the phone rang.",
+     "options": [
+      "preparaba",
+      "preparara",
+      "prepare",
+      "prepararé"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "lo_adj_que",
+   "pattern": "lo ＋ adj./adv. ＋ que",
+   "title": {
+    "zh": "有多麼……（強調程度）",
+    "en": "How … (lo + adjective + que)"
+   },
+   "form": {
+    "zh": "lo ＋ 形容詞（跟名詞配合）／副詞 ＋ que ＋ 動詞：lo cansada que estoy, lo bien que canta",
+    "en": "lo + adjective (agreeing) / adverb + que + verb: lo cansada que estoy, lo bien que canta"
+   },
+   "explain": {
+    "zh": "放在 saber、ver、imaginar 等動詞後，或感嘆句裡，強調程度：No sabes lo difícil que es.（你不知道那有多難。）形容詞要跟它描述的名詞配合，lo 不變。",
+    "en": "After verbs such as saber, ver, imaginar, or in exclamations, it stresses degree: No sabes lo difícil que es. The adjective agrees with what it describes; lo never changes."
+   },
+   "notes": [
+    {
+     "zh": "意思接近 qué tan／cuán，但 lo … que 在口語中更常用。",
+     "en": "Close to qué tan / cuán, but lo … que is far more common in speech."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "No te imaginas lo cansado que está mi madre.",
+     "right": "No te imaginas lo cansada que está mi madre.",
+     "zh": "形容詞跟 mi madre 配合，用陰性。",
+     "en": "The adjective agrees with mi madre: feminine."
+    },
+    {
+     "wrong": "¡Mira la alta que es tu hija!",
+     "right": "¡Mira lo alta que es tu hija!",
+     "zh": "這裡固定用中性的 lo。",
+     "en": "This pattern always uses neuter lo."
+    }
+   ],
+   "examples": [
+    {
+     "text": "No sabes lo mucho que te he echado de menos.",
+     "zh": "你不知道我有多想你。",
+     "en": "You do not know how much I have missed you."
+    },
+    {
+     "text": "Me sorprendió lo bien que habla español.",
+     "zh": "他西班牙文說得那麼好，讓我很驚訝。",
+     "en": "I was surprised at how well he speaks Spanish."
+    },
+    {
+     "text": "¡Lo caros que están los pisos en esta ciudad!",
+     "zh": "這個城市的公寓真是貴得要命！",
+     "en": "How expensive flats are in this city!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ya verás lo（　）que son estas galletas.",
+     "zh": "你會知道這些餅乾有多好吃。",
+     "en": "You will see how tasty these biscuits are.",
+     "options": [
+      "ricas",
+      "rico",
+      "ricos",
+      "rica"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "No te imaginas（　）rápido que conduce.",
+     "zh": "你無法想像他開車有多快。",
+     "en": "You cannot imagine how fast he drives.",
+     "options": [
+      "lo",
+      "el",
+      "qué",
+      "cuanto"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Me di cuenta de lo（　）que estaban los niños.",
+     "zh": "我發現孩子們有多累。",
+     "en": "I realised how tired the children were.",
+     "options": [
+      "cansados",
+      "cansado",
+      "cansadas",
+      "cansadamente"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "tener_participio",
+   "pattern": "tener ＋ participio",
+   "title": {
+    "zh": "已經……好了（結果狀態）",
+    "en": "To have something done (tener + participle)"
+   },
+   "form": {
+    "zh": "tener ＋ 受詞 ＋ 過去分詞（跟受詞配合）：Tengo escritas tres páginas.",
+    "en": "tener + object + past participle (agreeing with the object): Tengo escritas tres páginas."
+   },
+   "explain": {
+    "zh": "強調動作完成後的結果或累積的數量：Tengo vistas todas sus películas.（他的電影我全看過了。）跟 haber ＋ 分詞不同，分詞要跟受詞的性數配合。",
+    "en": "Stresses the result or the amount achieved: Tengo vistas todas sus películas. Unlike haber + participle, the participle agrees with the object."
+   },
+   "notes": [
+    {
+     "zh": "常見：tener pensado（打算）、tener entendido（聽說）、tener prohibido（被禁止）：Tengo entendido que se casa.",
+     "en": "Common: tener pensado (to plan), tener entendido (to understand that), tener prohibido: Tengo entendido que se casa."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Tengo escrito dos capítulos.",
+     "right": "Tengo escritos dos capítulos.",
+     "zh": "分詞跟 capítulos 配合，用複數。",
+     "en": "The participle agrees with capítulos: plural."
+    },
+    {
+     "wrong": "He entendido que te mudas. (= 聽說)",
+     "right": "Tengo entendido que te mudas.",
+     "zh": "「我聽說」的固定說法是 tener entendido。",
+     "en": "\"I understand that\" is tener entendido."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Ya tengo preparadas las maletas.",
+     "zh": "我已經把行李準備好了。",
+     "en": "I have already got my bags packed."
+    },
+    {
+     "text": "¿Tienes pensado qué vas a hacer este verano?",
+     "zh": "你想好今年夏天要做什麼了嗎？",
+     "en": "Have you planned what you will do this summer?"
+    },
+    {
+     "text": "Tengo entendido que el museo reabre en mayo.",
+     "zh": "我聽說博物館五月重新開放。",
+     "en": "I understand the museum reopens in May."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ya tengo（　）todas las invitaciones.",
+     "zh": "我已經把所有邀請函寄出去了。",
+     "en": "I have already sent out all the invitations.",
+     "options": [
+      "enviadas",
+      "enviado",
+      "enviados",
+      "enviada"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Tengo（　）que la reunión se ha cancelado.",
+     "zh": "我聽說會議取消了。",
+     "en": "I understand the meeting has been cancelled.",
+     "options": [
+      "entendido",
+      "entendida",
+      "entender",
+      "entendiendo"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "El médico le tiene（　）el azúcar.",
+     "zh": "醫生禁止他吃糖。",
+     "en": "The doctor has forbidden him sugar.",
+     "options": [
+      "prohibido",
+      "prohibida",
+      "prohibidos",
+      "prohibir"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "apenas",
+   "pattern": "apenas・no bien ＋ 過去",
+   "title": {
+    "zh": "一……就……；幾乎不",
+    "en": "Hardly / no sooner (apenas, no bien)"
+   },
+   "form": {
+    "zh": "apenas／no bien ＋ 簡單過去時, 主句；apenas ＋ 動詞（幾乎不）",
+    "en": "apenas / no bien + preterite, main clause; apenas + verb (hardly)"
+   },
+   "explain": {
+    "zh": "apenas 放在子句開頭表示「一……就……」：Apenas llegó, se puso a trabajar.（他一到就開始工作。）放在動詞前則是「幾乎不」：Apenas duerme.（他幾乎不睡。）no bien 是較書面的「一……就……」。",
+    "en": "Opening a clause apenas means \"no sooner\": Apenas llegó, se puso a trabajar. Before a verb it means \"hardly\": Apenas duerme. no bien is a more literary \"no sooner\"."
+   },
+   "notes": [
+    {
+     "zh": "講未來的事時，apenas 跟 en cuanto 一樣接虛擬式：Apenas llegues, llámame.",
+     "en": "For the future apenas, like en cuanto, takes the subjunctive: Apenas llegues, llámame."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Apenas no dormí anoche.",
+     "right": "Apenas dormí anoche.",
+     "zh": "apenas 本身已經是否定意思，不加 no。",
+     "en": "apenas is already negative; no no."
+    },
+    {
+     "wrong": "Apenas llegarás, avísame.",
+     "right": "Apenas llegues, avísame.",
+     "zh": "未來的事用虛擬式。",
+     "en": "A future event takes the subjunctive."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Apenas salimos de casa, empezó a llover.",
+     "zh": "我們一出門就開始下雨。",
+     "en": "No sooner had we left the house than it started to rain."
+    },
+    {
+     "text": "No bien terminó el discurso, el público aplaudió.",
+     "zh": "他一講完，觀眾就鼓掌。",
+     "en": "As soon as he finished the speech, the audience applauded."
+    },
+    {
+     "text": "Habla tan bajo que apenas se le oye.",
+     "zh": "他說話太小聲，幾乎聽不到。",
+     "en": "He speaks so quietly you can hardly hear him."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Apenas（　）el avión, apagaron las luces.",
+     "zh": "飛機一起飛，燈就關了。",
+     "en": "No sooner had the plane taken off than the lights went out.",
+     "options": [
+      "despegó",
+      "despegue",
+      "despegará",
+      "despegaba de"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Estoy tan nervioso que（　）puedo comer.",
+     "zh": "我緊張到幾乎吃不下。",
+     "en": "I am so nervous I can hardly eat.",
+     "options": [
+      "apenas",
+      "apenas no",
+      "no apenas",
+      "ni apenas no"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Apenas（　）los resultados, te los mando.",
+     "zh": "我一拿到結果就寄給你。",
+     "en": "As soon as I get the results, I will send them to you.",
+     "options": [
+      "tenga",
+      "tengo",
+      "tendré",
+      "tuve"
      ],
      "answer": 0
     }

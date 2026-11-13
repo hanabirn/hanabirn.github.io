@@ -3,7 +3,7 @@
  "lang": "zh",
  "level": "HSK 7–9",
  "order": 6,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk79.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_zh_hsk79.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_zh_hsk79_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "qibushi",
@@ -1692,6 +1692,664 @@
       "尾",
       "頭",
       "根"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "wei_suo",
+   "pattern": "為 ～ 所 ～",
+   "title": {
+    "zh": "為……所……：書面被動句",
+    "en": "為 … 所 … — the written passive"
+   },
+   "form": {
+    "zh": "主詞 ＋ 為 ＋ 施事者 ＋ 所 ＋ 動詞（多為雙音節）",
+    "en": "subject + 為 + agent + 所 + verb (usually two syllables)"
+   },
+   "explain": {
+    "zh": "古典的被動結構，常見於正式文章、新聞和成語：這位作家的作品為大家所喜愛。（被大家喜愛。）「所」後面的動詞一般是雙音節。",
+    "en": "A classical passive, common in formal writing, news and idioms: 這位作家的作品為大家所喜愛. The verb after 所 is usually two syllables."
+   },
+   "notes": [
+    {
+     "zh": "常見：為人所知、為世人所稱道、不為所動（不被打動）。",
+     "en": "Common: 為人所知, 為世人所稱道, 不為所動 (unmoved)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "這件事被大家所知道。",
+     "right": "這件事為大家所知。",
+     "zh": "「被」和「所」通常不搭配，用「為……所……」。",
+     "en": "被 and 所 do not usually pair; use 為…所…."
+    },
+    {
+     "wrong": "他的研究為學界所了。",
+     "right": "他的研究為學界所重視。",
+     "zh": "「所」後面要有動詞。",
+     "en": "所 needs a verb after it."
+    }
+   ],
+   "examples": [
+    {
+     "text": "這種傳統工藝已經很少為年輕人所了解。",
+     "reading": "Zhè zhǒng chuántǒng gōngyì yǐjīng hěn shǎo wéi niánqīng rén suǒ liǎojiě.",
+     "zh": "這種傳統工藝已經很少為年輕人所了解。",
+     "en": "Few young people now understand this traditional craft."
+    },
+    {
+     "text": "他的意見不為主管所接受。",
+     "reading": "Tā de yìjiàn bù wéi zhǔguǎn suǒ jiēshòu.",
+     "zh": "他的意見不為主管所接受。",
+     "en": "His opinion was not accepted by his manager."
+    },
+    {
+     "text": "無論別人怎麼勸，他都不為所動。",
+     "reading": "Wúlùn biérén zěnme quàn, tā dōu bù wéi suǒ dòng.",
+     "zh": "無論別人怎麼勸，他都不為所動。",
+     "en": "However much others urged him, he was unmoved."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "這座古城的美景（　）世人所讚嘆。",
+     "zh": "這座古城的美景為世人所讚嘆。",
+     "en": "The beauty of this ancient town is admired by the world.",
+     "options": [
+      "為",
+      "被",
+      "讓",
+      "給"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "這個秘密長期不為外人（　）知。",
+     "zh": "這個秘密長期不為外人所知。",
+     "en": "This secret was long unknown to outsiders.",
+     "options": [
+      "所",
+      "而",
+      "之",
+      "以"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他提出的方案為多數委員所（　）。",
+     "zh": "他提出的方案為多數委員所支持。",
+     "en": "His proposal was supported by most committee members.",
+     "options": [
+      "支持",
+      "支持了",
+      "支",
+      "被支持"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "juxi",
+   "pattern": "據悉・據 ～ 稱",
+   "title": {
+    "zh": "據悉：根據得到的消息",
+    "en": "據悉 — it is reported that"
+   },
+   "form": {
+    "zh": "據悉，＋ 消息；據 ＋ 來源 ＋ 稱／表示，＋ 消息",
+    "en": "據悉, + news; 據 + source + 稱 / 表示, + news"
+   },
+   "explain": {
+    "zh": "新聞報導用語，引出消息但不一定說出來源：據悉，這條捷運線將在明年通車。說出來源時用「據……稱／表示／報導」：據警方表示，無人受傷。",
+    "en": "News language: introduces information without necessarily naming the source: 據悉，這條捷運線將在明年通車. To name it: 據…稱 / 表示 / 報導: 據警方表示，無人受傷."
+   },
+   "notes": [
+    {
+     "zh": "「據悉」本身已經是「據說得知」，後面不再加「說」。",
+     "en": "據悉 already means \"it is learnt that\"; do not add 說."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "據悉說，明天會下大雨。",
+     "right": "據悉，明天會有大雨。",
+     "zh": "「據悉」後面不再加「說」。",
+     "en": "No 說 after 據悉."
+    },
+    {
+     "wrong": "據警方說稱，嫌犯已經被捕。",
+     "right": "據警方稱，嫌犯已經被捕。",
+     "zh": "「說」和「稱」不要重複。",
+     "en": "Do not stack 說 and 稱."
+    }
+   ],
+   "examples": [
+    {
+     "text": "據悉，這家公司將在下個月裁員。",
+     "reading": "Jùxī, zhè jiā gōngsī jiāng zài xià ge yuè cáiyuán.",
+     "zh": "據悉，這家公司將在下個月裁員。",
+     "en": "It is reported that the company will cut jobs next month."
+    },
+    {
+     "text": "據氣象局表示，颱風明天登陸。",
+     "reading": "Jù qìxiàng jú biǎoshì, táifēng míngtiān dēnglù.",
+     "zh": "據氣象局表示，颱風明天登陸。",
+     "en": "According to the weather bureau, the typhoon will make landfall tomorrow."
+    },
+    {
+     "text": "據統計，去年來台旅客超過八百萬人次。",
+     "reading": "Jù tǒngjì, qùnián lái Tái lǚkè chāoguò bābǎiwàn réncì.",
+     "zh": "據統計，去年來台旅客超過八百萬人次。",
+     "en": "According to statistics, over eight million visitors came to Taiwan last year."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　），雙方已經初步達成協議。",
+     "zh": "據悉，雙方已經初步達成協議。",
+     "en": "It is reported that the two sides have reached a preliminary agreement.",
+     "options": [
+      "據悉",
+      "據說是悉",
+      "悉據",
+      "據知道"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "據目擊者（　），車子是從右邊開過來的。",
+     "zh": "據目擊者稱，車子是從右邊開過來的。",
+     "en": "According to witnesses, the car came from the right.",
+     "options": [
+      "稱",
+      "說稱",
+      "悉",
+      "所"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）調查，七成民眾支持這項政策。",
+     "zh": "據調查，七成民眾支持這項政策。",
+     "en": "According to a survey, seventy per cent of people support the policy.",
+     "options": [
+      "據",
+      "依據說",
+      "根",
+      "按說"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "yigai",
+   "pattern": "一概",
+   "title": {
+    "zh": "一概：全部、毫無例外",
+    "en": "一概 — without exception"
+   },
+   "form": {
+    "zh": "一概 ＋ 動詞（多為否定或處理方式）",
+    "en": "一概 + verb (often negative or a way of dealing)"
+   },
+   "explain": {
+    "zh": "表示對所有的人或事都一樣處理，沒有例外，語氣堅決：本店商品一概不退換。（所有商品都不退換。）常用在規定或態度。",
+    "en": "Treats everyone or everything the same way, firmly and without exception: 本店商品一概不退換. Common in rules and stated attitudes."
+   },
+   "notes": [
+    {
+     "zh": "「一概而論」是「用同一個標準看所有情況」，常說「不能一概而論」。",
+     "en": "一概而論 means judging all cases alike; often 不能一概而論 (one cannot generalise)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "一概的商品都打八折。",
+     "right": "所有商品一概打八折。",
+     "zh": "「一概」是副詞，放在動詞前，不修飾名詞。",
+     "en": "一概 is an adverb before the verb, not a noun modifier."
+    },
+    {
+     "wrong": "這個問題不能一概地論。",
+     "right": "這個問題不能一概而論。",
+     "zh": "固定說法是「一概而論」。",
+     "en": "The set phrase is 一概而論."
+    }
+   ],
+   "examples": [
+    {
+     "text": "過期的申請一概不受理。",
+     "reading": "Guòqí de shēnqǐng yígài bú shòulǐ.",
+     "zh": "過期的申請一概不受理。",
+     "en": "Late applications will not be accepted under any circumstances."
+    },
+    {
+     "text": "他對別人的批評一概不理。",
+     "reading": "Tā duì biérén de pīpíng yígài bù lǐ.",
+     "zh": "他對別人的批評一概不理。",
+     "en": "He ignores all criticism."
+    },
+    {
+     "text": "每個人的情況不同，不能一概而論。",
+     "reading": "Měi ge rén de qíngkuàng bùtóng, bù néng yígài'érlùn.",
+     "zh": "每個人的情況不同，不能一概而論。",
+     "en": "Everyone’s situation is different; you cannot generalise."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "會議期間，手機（　）關機。",
+     "zh": "會議期間，手機一概關機。",
+     "en": "During the meeting all phones are to be switched off.",
+     "options": [
+      "一概",
+      "一下",
+      "一律的",
+      "大概"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "不同地區的習慣不一樣，不能一概（　）。",
+     "zh": "不同地區的習慣不一樣，不能一概而論。",
+     "en": "Customs differ by region; you cannot generalise.",
+     "options": [
+      "而論",
+      "論而",
+      "而言",
+      "所論"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "私人物品（　）不得帶入考場。",
+     "zh": "私人物品一概不得帶入考場。",
+     "en": "No personal items may be taken into the exam room.",
+     "options": [
+      "一概",
+      "概括",
+      "大概",
+      "一般"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "bumian",
+   "pattern": "不免",
+   "title": {
+    "zh": "不免：免不了、難免",
+    "en": "不免 — cannot help (being)"
+   },
+   "form": {
+    "zh": "主詞 ＋ 不免 ＋ 動詞／形容詞（多為不好的結果或情緒）",
+    "en": "subject + 不免 + verb / adjective (usually an unwelcome result or feeling)"
+   },
+   "explain": {
+    "zh": "表示在某種情況下，自然會產生某種結果，很難避免：第一次上台，不免有點緊張。跟「難免」相近，但「不免」只能放在動詞前。",
+    "en": "Says that in the situation a certain result naturally follows and is hard to avoid: 第一次上台，不免有點緊張. Close to 難免, but 不免 only goes before the verb."
+   },
+   "notes": [
+    {
+     "zh": "「難免」可以說「這是難免的」，「不免」不行。",
+     "en": "You can say 這是難免的, but not ✗ 這是不免的."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "犯錯是不免的。",
+     "right": "犯錯是難免的。",
+     "zh": "「不免」不能當謂語單用，要用「難免」。",
+     "en": "不免 cannot stand as a predicate; use 難免."
+    },
+    {
+     "wrong": "看到老照片，他不免高高興興。",
+     "right": "看到老照片，他不免有些感傷。",
+     "zh": "「不免」多接自然產生的情緒，常是不好的。",
+     "en": "不免 usually precedes a feeling that arises naturally, often a sad one."
+    }
+   ],
+   "examples": [
+    {
+     "text": "一個人在國外生活，不免會想家。",
+     "reading": "Yí ge rén zài guówài shēnghuó, bùmiǎn huì xiǎng jiā.",
+     "zh": "一個人在國外生活，不免會想家。",
+     "en": "Living alone abroad, you cannot help missing home."
+    },
+    {
+     "text": "聽到這個消息，大家不免有些失望。",
+     "reading": "Tīng dào zhè ge xiāoxī, dàjiā bùmiǎn yǒuxiē shīwàng.",
+     "zh": "聽到這個消息，大家不免有些失望。",
+     "en": "Hearing the news, everyone was a little disappointed."
+    },
+    {
+     "text": "時間這麼緊，不免出一些小錯。",
+     "reading": "Shíjiān zhème jǐn, bùmiǎn chū yìxiē xiǎo cuò.",
+     "zh": "時間這麼緊，不免出一些小錯。",
+     "en": "With time so tight, a few small mistakes are bound to happen."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "第一次見對方父母，他（　）有些緊張。",
+     "zh": "第一次見對方父母，他不免有些緊張。",
+     "en": "Meeting her parents for the first time, he could not help being a little nervous.",
+     "options": [
+      "不免",
+      "不必",
+      "不愧",
+      "不料"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "剛開始工作，出錯是（　）的。",
+     "zh": "剛開始工作，出錯是難免的。",
+     "en": "When you start a job, mistakes are inevitable.",
+     "options": [
+      "難免",
+      "不免",
+      "免得",
+      "以免"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "看著孩子離家，母親不免（　）。",
+     "zh": "看著孩子離家，母親不免難過。",
+     "en": "Watching her child leave home, the mother could not help feeling sad.",
+     "options": [
+      "難過",
+      "難過了得",
+      "難過嗎",
+      "的難過"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "hezhi",
+   "pattern": "何止",
+   "title": {
+    "zh": "何止：豈止、不只",
+    "en": "何止 — far more than"
+   },
+   "form": {
+    "zh": "何止 ＋ 數量／程度（＋ 反問）；何止 A，B 也 ……",
+    "en": "何止 + amount or degree (+ rhetorical); 何止 A, B 也 …"
+   },
+   "explain": {
+    "zh": "用反問的語氣表示「遠遠不止」：這種情況何止一次？（何止一次，發生很多次了。）也可以說「何止……，連……也……」來遞進。",
+    "en": "A rhetorical way to say \"far more than\": 這種情況何止一次？ It can also build up: 何止…，連…也…."
+   },
+   "notes": [
+    {
+     "zh": "意思跟「豈止」「不止」相近，「何止」更書面、語氣更強。",
+     "en": "Close to 豈止 and 不止; 何止 is more literary and emphatic."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他何止有一點累，他只是一點累。",
+     "right": "他何止有一點累，簡直累壞了。",
+     "zh": "「何止」表示遠遠超過，後面的意思要更強。",
+     "en": "何止 means \"far beyond\"; what follows must be stronger."
+    },
+    {
+     "wrong": "來的人何止一百多人沒有。",
+     "right": "來的人何止一百。",
+     "zh": "「何止」本身就是反問，不再加否定。",
+     "en": "何止 is already rhetorical; no extra negation."
+    }
+   ],
+   "examples": [
+    {
+     "text": "這部電影我何止看過一次，至少看了五遍。",
+     "reading": "Zhè bù diànyǐng wǒ hé zhǐ kàn guo yí cì, zhìshǎo kàn le wǔ biàn.",
+     "zh": "這部電影我何止看過一次，至少看了五遍。",
+     "en": "I have seen this film far more than once – at least five times."
+    },
+    {
+     "text": "他的貢獻何止這些？",
+     "reading": "Tā de gòngxiàn hé zhǐ zhèxiē?",
+     "zh": "他的貢獻何止這些？",
+     "en": "His contributions go far beyond these."
+    },
+    {
+     "text": "漲價的何止是水電，連菜價也漲了。",
+     "reading": "Zhǎngjià de hé zhǐ shì shuǐ diàn, lián cài jià yě zhǎng le.",
+     "zh": "漲價的何止是水電，連菜價也漲了。",
+     "en": "It is not just water and power that went up; even vegetables are dearer."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "這種錯誤他（　）犯過一兩次？",
+     "zh": "這種錯誤他何止犯過一兩次？",
+     "en": "He has made this mistake far more than once or twice.",
+     "options": [
+      "何止",
+      "何必",
+      "何嘗",
+      "何況"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "喜歡這首歌的何止年輕人，（　）老人也愛聽。",
+     "zh": "喜歡這首歌的何止年輕人，連老人也愛聽。",
+     "en": "It is not only young people who like this song; even the elderly love it.",
+     "options": [
+      "連",
+      "就",
+      "才",
+      "而"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "那裡的風景何止（　），簡直美得像畫一樣。",
+     "zh": "那裡的風景何止漂亮，簡直美得像畫一樣。",
+     "en": "The scenery there is beyond pretty – it is like a painting.",
+     "options": [
+      "漂亮",
+      "不漂亮",
+      "漂亮嗎",
+      "的漂亮"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "kewei",
+   "pattern": "可謂",
+   "title": {
+    "zh": "可謂：可以說是",
+    "en": "可謂 — may well be called"
+   },
+   "form": {
+    "zh": "主詞 ＋ 可謂 ＋ 評價（名詞、形容詞或四字詞）",
+    "en": "subject + 可謂 + an evaluation (noun, adjective or four-character phrase)"
+   },
+   "explain": {
+    "zh": "書面語，給出一個很高（或很重）的評價：這次比賽可謂精彩萬分。（可以說非常精彩。）後面常是四字詞或帶「是」的名詞：可謂是一大突破。",
+    "en": "Written style that gives a strong judgement: 這次比賽可謂精彩萬分. Often followed by a four-character phrase or 是 + noun: 可謂是一大突破."
+   },
+   "notes": [
+    {
+     "zh": "口語可以說「可以說（是）」。",
+     "en": "In speech: 可以說(是)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他可謂說是最好的老師。",
+     "right": "他可謂最好的老師。",
+     "zh": "「可謂」就是「可以說」，不再加「說」。",
+     "en": "可謂 already means \"can be said\"; drop 說."
+    },
+    {
+     "wrong": "這次失敗可謂一點點。",
+     "right": "這次失敗可謂損失慘重。",
+     "zh": "「可謂」後面接有分量的評價。",
+     "en": "可謂 introduces a weighty judgement."
+    }
+   ],
+   "examples": [
+    {
+     "text": "他在這個領域的研究可謂首屈一指。",
+     "reading": "Tā zài zhè ge lǐngyù de yánjiù kěwèi shǒu qū yì zhǐ.",
+     "zh": "他在這個領域的研究可謂首屈一指。",
+     "en": "His research in this field can be called second to none."
+    },
+    {
+     "text": "這座橋的建成，可謂是當地的一大喜事。",
+     "reading": "Zhè zuò qiáo de jiàn chéng, kěwèi shì dāngdì de yí dà xǐshì.",
+     "zh": "這座橋的建成，可謂是當地的一大喜事。",
+     "en": "The completion of this bridge may well be called a great event for the area."
+    },
+    {
+     "text": "今年的雨量可謂歷年最少。",
+     "reading": "Jīnnián de yǔ liàng kěwèi lì nián zuì shǎo.",
+     "zh": "今年的雨量可謂歷年最少。",
+     "en": "This year’s rainfall is arguably the lowest on record."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "這次改革（　）是一大進步。",
+     "zh": "這次改革可謂是一大進步。",
+     "en": "This reform may well be called a great step forward.",
+     "options": [
+      "可謂",
+      "可能",
+      "可以說說",
+      "可見"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "她一個人完成這麼多工作，可謂（　）。",
+     "zh": "她一個人完成這麼多工作，可謂能幹。",
+     "en": "Doing so much work alone, she can truly be called capable.",
+     "options": [
+      "能幹",
+      "能幹嗎",
+      "不能幹",
+      "能幹了沒"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "這位歌手的人氣（　）如日中天。",
+     "zh": "這位歌手的人氣可謂如日中天。",
+     "en": "This singer’s popularity can be said to be at its peak.",
+     "options": [
+      "可謂",
+      "何以",
+      "姑且",
+      "不免"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zhongjiu",
+   "pattern": "終究",
+   "title": {
+    "zh": "終究：畢竟、最終還是",
+    "en": "終究 — after all, in the end"
+   },
+   "form": {
+    "zh": "主詞 ＋ 終究 ＋ 動詞／是 ＋ 名詞",
+    "en": "subject + 終究 + verb / 是 + noun"
+   },
+   "explain": {
+    "zh": "強調事物的本質或最後的結果不會改變：謊話終究會被拆穿。孩子終究是孩子。（孩子畢竟是孩子。）語氣比「最後」更有「無論如何」的意思。",
+    "en": "Stresses that the nature of things or the final outcome will not change: 謊話終究會被拆穿. 孩子終究是孩子. Stronger than 最後, with a sense of \"no matter what\"."
+   },
+   "notes": [
+    {
+     "zh": "跟「畢竟」相近；「終究」更強調最後的結果。",
+     "en": "Close to 畢竟; 終究 stresses the eventual outcome."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "他終究了沒來。",
+     "right": "他終究沒來。",
+     "zh": "「終究」後面直接接動詞，不加「了」。",
+     "en": "終究 is followed directly by the verb."
+    },
+    {
+     "wrong": "我們終究明天見面。",
+     "right": "我們明天見面。",
+     "zh": "「終究」不是單純表示時間，用在強調必然的結果。",
+     "en": "終究 is not a time word; it stresses an inevitable outcome."
+    }
+   ],
+   "examples": [
+    {
+     "text": "再怎麼隱瞞，真相終究會被發現。",
+     "reading": "Zài zěnme yǐnmán, zhēnxiàng zhōngjiù huì bèi fāxiàn.",
+     "zh": "再怎麼隱瞞，真相終究會被發現。",
+     "en": "However hard you hide it, the truth will come out in the end."
+    },
+    {
+     "text": "他努力了很久，終究還是失敗了。",
+     "reading": "Tā nǔlì le hěn jiǔ, zhōngjiù háishì shībài le.",
+     "zh": "他努力了很久，終究還是失敗了。",
+     "en": "He tried for a long time, but in the end he failed."
+    },
+    {
+     "text": "機器終究代替不了人的判斷。",
+     "reading": "Jīqì zhōngjiù dàitì bù le rén de pànduàn.",
+     "zh": "機器終究代替不了人的判斷。",
+     "en": "A machine can never truly replace human judgement."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "小孩子（　）是小孩子，別要求太高。",
+     "zh": "小孩子終究是小孩子，別要求太高。",
+     "en": "Children are children after all; do not expect too much.",
+     "options": [
+      "終究",
+      "終於了",
+      "最終的",
+      "究竟"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "不管怎麼準備，該來的（　）會來。",
+     "zh": "不管怎麼準備，該來的終究會來。",
+     "en": "However you prepare, what must come will come.",
+     "options": [
+      "終究",
+      "居然",
+      "竟然",
+      "何止"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "他到底來不來？（　）是怎麼回事？",
+     "zh": "他到底來不來？究竟是怎麼回事？",
+     "en": "Is he coming or not? What is going on?",
+     "options": [
+      "究竟",
+      "終究",
+      "畢竟",
+      "總之"
      ],
      "answer": 0
     }

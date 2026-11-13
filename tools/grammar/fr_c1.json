@@ -3,7 +3,7 @@
  "lang": "fr",
  "level": "C1",
  "order": 5,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_fr_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_fr_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_fr_c1_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "passe_simple",
@@ -1456,6 +1456,825 @@
       "trouveriez",
       "aviez trouvé",
       "avez trouvé"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "quil_ou_quil",
+   "pattern": "qu’il pleuve ou qu’il vente",
+   "title": {
+    "zh": "不管……還是……",
+    "en": "Whether … or … (que … ou que)"
+   },
+   "form": {
+    "zh": "que ＋ 虛擬式 ＋ ou que ＋ 虛擬式, 主句；或 que ＋ 虛擬式 ＋ ou non",
+    "en": "que + subjunctive + ou que + subjunctive, main clause; or que + subjunctive + ou non"
+   },
+   "explain": {
+    "zh": "放在句首，表示兩種情況下結果都一樣：Qu’il pleuve ou qu’il fasse beau, nous partirons.（不管下雨還是晴天，我們都會出發。）也可以說 Que tu le veuilles ou non（不管你願不願意）。",
+    "en": "At the head of the sentence: the outcome is the same either way: Qu’il pleuve ou qu’il fasse beau, nous partirons. Also Que tu le veuilles ou non (whether you like it or not)."
+   },
+   "notes": [
+    {
+     "zh": "跟 soit … soit 不同：這裡是讓步，不是二選一。",
+     "en": "Unlike soit … soit, this is a concession, not a choice of two."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Qu’il pleut ou qu’il fait beau, je cours.",
+     "right": "Qu’il pleuve ou qu’il fasse beau, je cours.",
+     "zh": "兩個 que 後面都用虛擬式。",
+     "en": "Both que clauses take the subjunctive."
+    },
+    {
+     "wrong": "Que tu veux ou non, tu viendras.",
+     "right": "Que tu le veuilles ou non, tu viendras.",
+     "zh": "要用虛擬式 veuilles，通常加 le。",
+     "en": "Subjunctive veuilles, usually with le."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Qu’on l’aime ou qu’on le déteste, ce film ne laisse personne indifférent.",
+     "zh": "不管喜不喜歡，這部電影都不會讓人無感。",
+     "en": "Love it or hate it, this film leaves no one indifferent."
+    },
+    {
+     "text": "Que vous soyez d’accord ou non, la décision est prise.",
+     "zh": "不管你們同不同意，決定已經做了。",
+     "en": "Whether you agree or not, the decision has been made."
+    },
+    {
+     "text": "Qu’il soit riche ou pauvre, chacun a droit au respect.",
+     "zh": "不論貧富，每個人都應受到尊重。",
+     "en": "Rich or poor, everyone deserves respect."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Qu’il（　）ou non, il devra payer.",
+     "zh": "不管他想不想，都得付錢。",
+     "en": "Whether he wants to or not, he will have to pay.",
+     "options": [
+      "le veuille",
+      "le veut",
+      "le voudra",
+      "le voudrait"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）tu partes ou que tu restes, je te soutiendrai.",
+     "zh": "不管你走還是留，我都支持你。",
+     "en": "Whether you go or stay, I will back you.",
+     "options": [
+      "Que",
+      "Si",
+      "Soit",
+      "Qu’importe"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Qu’il fasse chaud ou qu’il（　）froid, elle nage tous les jours.",
+     "zh": "不管冷熱，她每天都游泳。",
+     "en": "Hot or cold, she swims every day.",
+     "options": [
+      "fasse",
+      "fait",
+      "fera",
+      "ferait"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "si_adj_que",
+   "pattern": "si／pour ＋ adj. ＋ que ＋ subj.",
+   "title": {
+    "zh": "無論多麼……",
+    "en": "However … (si / pour + adjective + que)"
+   },
+   "form": {
+    "zh": "si (aussi / pour) ＋ 形容詞或副詞 ＋ que ＋ 虛擬式",
+    "en": "si (aussi / pour) + adjective or adverb + que + subjunctive"
+   },
+   "explain": {
+    "zh": "讓步：即使程度再高，結果也不變。Si riche qu’il soit, il n’est pas heureux.（他再有錢也不快樂。）pour … que 更文雅。",
+    "en": "A concession: however great the degree, the result stands. Si riche qu’il soit, il n’est pas heureux. pour … que is more literary."
+   },
+   "notes": [
+    {
+     "zh": "也可以倒裝主詞代名詞：Si intelligent soit-il, il a échoué.",
+     "en": "The pronoun may invert instead: Si intelligent soit-il, il a échoué."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Si difficile que c’est, on y arrivera.",
+     "right": "Si difficile que ce soit, on y arrivera.",
+     "zh": "que 後面用虛擬式。",
+     "en": "que takes the subjunctive."
+    },
+    {
+     "wrong": "Très fort qu’il soit, il a perdu.",
+     "right": "Si fort qu’il soit, il a perdu.",
+     "zh": "這個句型用 si／aussi／pour，不用 très。",
+     "en": "The pattern uses si / aussi / pour, not très."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Si étrange que cela paraisse, c’est vrai.",
+     "zh": "雖然聽起來很奇怪，但是真的。",
+     "en": "Strange as it may seem, it is true."
+    },
+    {
+     "text": "Pour intelligent qu’il soit, il manque d’expérience.",
+     "zh": "他再聰明，也缺乏經驗。",
+     "en": "However clever he is, he lacks experience."
+    },
+    {
+     "text": "Si vite qu’elle coure, elle n’attrapera pas le bus.",
+     "zh": "她再怎麼跑也趕不上公車。",
+     "en": "However fast she runs, she will not catch the bus."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Si gentil qu’il（　）, je ne lui fais pas confiance.",
+     "zh": "他再和善，我也不信任他。",
+     "en": "However kind he is, I do not trust him.",
+     "options": [
+      "soit",
+      "est",
+      "sera",
+      "serait"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）grande que soit la maison, elle est trop chère.",
+     "zh": "房子再大也太貴了。",
+     "en": "However big the house is, it is too expensive.",
+     "options": [
+      "Si",
+      "Très",
+      "Tant",
+      "Bien"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Si fatigués（　）, ils ont fini le travail.",
+     "zh": "他們再累，也把工作做完了。",
+     "en": "Tired as they were, they finished the work.",
+     "options": [
+      "qu’ils soient",
+      "qu’ils sont",
+      "ils soient",
+      "que soient"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "tout_que",
+   "pattern": "tout ＋ adj. ＋ que ＋ indicatif",
+   "title": {
+    "zh": "雖然確實……",
+    "en": "Although indeed … (tout … que)"
+   },
+   "form": {
+    "zh": "tout（toute／toutes）＋ 形容詞 ＋ que ＋ 直陳式（也可用虛擬式）",
+    "en": "tout (toute / toutes) + adjective + que + indicative (subjunctive possible)"
+   },
+   "explain": {
+    "zh": "承認一個事實，再說出相反的結果：Tout riche qu’il est, il vit simplement.（他雖然有錢，生活卻很簡單。）跟 si … que 不同，這裡承認的是事實，所以傳統上用直陳式。",
+    "en": "Grants a fact, then states a contrasting result: Tout riche qu’il est, il vit simplement. Unlike si … que it concedes a real fact, so traditionally the indicative."
+   },
+   "notes": [
+    {
+     "zh": "tout 在以子音開頭的陰性形容詞前要配合：Toute petite qu’elle est … ；母音前不變：Tout intelligente qu’elle est …",
+     "en": "Before a feminine adjective starting with a consonant tout agrees: Toute petite qu’elle est …; before a vowel it stays tout: Tout intelligente qu’elle est …"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Tout petite qu’elle est, elle porte des sacs lourds.",
+     "right": "Toute petite qu’elle est, elle porte des sacs lourds.",
+     "zh": "petite 是子音開頭的陰性形容詞，tout 要變 toute。",
+     "en": "Feminine adjective with a consonant: toute."
+    },
+    {
+     "wrong": "Tout malade qu’il, il est venu.",
+     "right": "Tout malade qu’il est, il est venu.",
+     "zh": "que 後面要有完整的子句（il est）。",
+     "en": "que needs a full clause (il est)."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Tout jeune qu’il est, il dirige déjà une équipe.",
+     "zh": "他雖然年輕，已經在帶一個團隊了。",
+     "en": "Young as he is, he already leads a team."
+    },
+    {
+     "text": "Toute fatiguée qu’elle était, elle a continué à travailler.",
+     "zh": "她雖然很累，還是繼續工作。",
+     "en": "Tired as she was, she kept working."
+    },
+    {
+     "text": "Tout simple qu’il paraît, ce problème est délicat.",
+     "zh": "這個問題看似簡單，其實很棘手。",
+     "en": "Simple as it looks, this problem is tricky."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）timides qu’elles sont, elles ont chanté sur scène.",
+     "zh": "她們雖然害羞，還是上台唱歌了。",
+     "en": "Shy as they are, they sang on stage.",
+     "options": [
+      "Toutes",
+      "Tout",
+      "Tous",
+      "Toute"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Tout savant qu’il（　）, il ignore la réponse.",
+     "zh": "他雖然學問淵博，卻不知道答案。",
+     "en": "Learned as he is, he does not know the answer.",
+     "options": [
+      "est",
+      "soit d’",
+      "être",
+      "fût-il"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Tout（　）qu’elle est, elle n’a pas compris.",
+     "zh": "她雖然聰明，卻沒聽懂。",
+     "en": "Clever as she is, she did not understand.",
+     "options": [
+      "intelligente",
+      "intelligent",
+      "intelligemment",
+      "intelligence"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "participe_absolu",
+   "pattern": "La nuit tombée, …",
+   "title": {
+    "zh": "獨立分詞句（分詞構句）",
+    "en": "The absolute participle construction"
+   },
+   "form": {
+    "zh": "名詞 ＋ 過去分詞（或現在分詞）, 主句：Le travail terminé, ils sont partis.",
+    "en": "noun + past participle (or present participle), main clause: Le travail terminé, ils sont partis."
+   },
+   "explain": {
+    "zh": "分詞片語有自己的主詞（不是主句的主詞），表示時間、原因：La nuit tombée, nous sommes rentrés.（天黑之後，我們回家了。）多見於書面語。",
+    "en": "The participle phrase has its own subject, different from the main clause, and gives time or cause: La nuit tombée, nous sommes rentrés. Mostly written French."
+   },
+   "notes": [
+    {
+     "zh": "過去分詞要跟它的名詞配合：Les valises faites, … ；La décision prise, …",
+     "en": "The past participle agrees with its noun: Les valises faites, … ; La décision prise, …"
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "La porte fermé, il est parti.",
+     "right": "La porte fermée, il est parti.",
+     "zh": "分詞跟 la porte 配合，用陰性 fermée。",
+     "en": "The participle agrees with la porte: fermée."
+    },
+    {
+     "wrong": "Le repas fini, nous avons fini le repas et sommes sortis.",
+     "right": "Le repas fini, nous sommes sortis.",
+     "zh": "分詞片語已經說了「吃完飯」，主句不要重複。",
+     "en": "The phrase already says the meal is over; do not repeat it."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Les invités partis, elle a fait la vaisselle.",
+     "zh": "客人走後，她洗了碗。",
+     "en": "Once the guests had gone, she washed up."
+    },
+    {
+     "text": "Le contrat signé, les travaux pourront commencer.",
+     "zh": "合約簽好後，工程就能開始。",
+     "en": "Once the contract is signed, the work can start."
+    },
+    {
+     "text": "Le temps aidant, il a fini par oublier.",
+     "zh": "隨著時間過去，他終於忘了。",
+     "en": "With time helping, he eventually forgot."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Les devoirs（　）, les enfants sont allés jouer.",
+     "zh": "功課做完後，孩子們去玩了。",
+     "en": "Homework done, the children went to play.",
+     "options": [
+      "terminés",
+      "terminé",
+      "terminées",
+      "terminant"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "La décision（　）, il n’y avait plus rien à dire.",
+     "zh": "決定一做出，就沒什麼好說的了。",
+     "en": "Once the decision was made, there was nothing more to say.",
+     "options": [
+      "prise",
+      "pris",
+      "prenant",
+      "prendre"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Le soleil（　）, nous avons quitté la plage.",
+     "zh": "太陽下山後，我們離開了海灘。",
+     "en": "The sun having set, we left the beach.",
+     "options": [
+      "couché",
+      "couchée",
+      "coucher",
+      "se couchant de"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "passe_anterieur",
+   "pattern": "quand il eut fini",
+   "title": {
+    "zh": "先過去時（認讀）",
+    "en": "The passé antérieur (recognition)"
+   },
+   "form": {
+    "zh": "avoir／être 的簡單過去時 ＋ 過去分詞：il eut fini、elle fut partie；常在 quand, lorsque, dès que, après que, à peine … que 之後",
+    "en": "passé simple of avoir / être + past participle: il eut fini, elle fut partie; mostly after quand, lorsque, dès que, après que, à peine … que"
+   },
+   "explain": {
+    "zh": "書面敘事中，表示在另一個簡單過去時之前「剛剛完成」的動作：Dès qu’il eut fini, il sortit.（他一做完就出去了。）口語相對應的是 passé surcomposé 或直接用複合過去時。",
+    "en": "In written narrative it marks an action completed just before another in the passé simple: Dès qu’il eut fini, il sortit. Speech uses the passé composé instead."
+   },
+   "notes": [
+    {
+     "zh": "主句通常是簡單過去時；跟愈過去時（il avait fini）不同，先過去時強調「緊接著」。",
+     "en": "The main clause is usually in the passé simple; unlike the pluperfect it stresses \"immediately after\"."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Dès qu’il avait fini, il sortit.",
+     "right": "Dès qu’il eut fini, il sortit.",
+     "zh": "書面敘事中「一……就」配簡單過去時，用先過去時。",
+     "en": "In narrative with a passé simple, use the passé antérieur."
+    },
+    {
+     "wrong": "Quand elle eut partie, il pleura.",
+     "right": "Quand elle fut partie, il pleura.",
+     "zh": "partir 用 être 作助動詞：fut partie。",
+     "en": "partir takes être: fut partie."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Lorsqu’il eut lu la lettre, il la brûla.",
+     "zh": "他讀完信就把它燒了。",
+     "en": "When he had read the letter, he burnt it."
+    },
+    {
+     "text": "À peine fut-elle arrivée qu’on l’appela.",
+     "zh": "她一到，就有人叫她。",
+     "en": "No sooner had she arrived than she was called."
+    },
+    {
+     "text": "Après qu’ils eurent dîné, ils se promenèrent.",
+     "zh": "吃過晚飯後，他們去散步。",
+     "en": "After they had dined, they went for a walk."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Dès qu’elle（　）la nouvelle, elle partit.",
+     "zh": "她一聽到消息就走了。",
+     "en": "As soon as she had heard the news, she left.",
+     "options": [
+      "eut appris",
+      "avait appris",
+      "a appris",
+      "apprenait"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Quand ils（　）, la fête commença.",
+     "zh": "他們一到，派對就開始了。",
+     "en": "When they had arrived, the party began.",
+     "options": [
+      "furent arrivés",
+      "eurent arrivé",
+      "étaient arrivés de",
+      "arrivèrent eu"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Après qu’il（　）son discours, on applaudit.",
+     "zh": "他講完話後，大家鼓掌。",
+     "en": "After he had finished his speech, people applauded.",
+     "options": [
+      "eut terminé",
+      "eût terminé",
+      "a terminé",
+      "terminera"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "encore_que",
+   "pattern": "encore que ＋ subj.",
+   "title": {
+    "zh": "雖然……（不過）",
+    "en": "Although (encore que)"
+   },
+   "form": {
+    "zh": "主句, encore que ＋ 虛擬式；也可以單獨接名詞片語或省略動詞",
+    "en": "main clause, encore que + subjunctive; also with a reduced clause"
+   },
+   "explain": {
+    "zh": "放在主句後面，補上一個保留或修正：C’est une bonne idée, encore qu’elle soit un peu chère.（是個好主意，雖然有點貴。）比 bien que 更書面，語氣是「話雖如此」。",
+    "en": "Added after the main clause to qualify it: C’est une bonne idée, encore qu’elle soit un peu chère. More literary than bien que, with the feel of \"mind you\"."
+   },
+   "notes": [
+    {
+     "zh": "也可以省略動詞：Il est sympathique, encore qu’un peu bavard.",
+     "en": "The verb can be dropped: Il est sympathique, encore qu’un peu bavard."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Le film est bon, encore qu’il est trop long.",
+     "right": "Le film est bon, encore qu’il soit trop long.",
+     "zh": "encore que 接虛擬式。",
+     "en": "encore que takes the subjunctive."
+    },
+    {
+     "wrong": "Encore que, il fait beau.",
+     "right": "Il fait beau, encore que le vent soit froid.",
+     "zh": "encore que 引導一個子句，不單獨當連接副詞用。",
+     "en": "encore que introduces a clause; it is not a stand-alone adverb here."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Je viendrai, encore que je ne sois pas sûr d’être libre.",
+     "zh": "我會來，不過我不確定有沒有空。",
+     "en": "I will come, though I am not sure I will be free."
+    },
+    {
+     "text": "Le résultat est correct, encore qu’on puisse faire mieux.",
+     "zh": "結果還可以，雖然還能更好。",
+     "en": "The result is fair, though we could do better."
+    },
+    {
+     "text": "C’est un bon hôtel, encore qu’un peu bruyant.",
+     "zh": "是間好旅館，雖然有點吵。",
+     "en": "It is a good hotel, if a little noisy."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Il a raison, encore qu’il（　）un peu.",
+     "zh": "他是對的，不過有點誇張。",
+     "en": "He is right, though he exaggerates a little.",
+     "options": [
+      "exagère",
+      "exagère pas",
+      "exagérera",
+      "exagérait"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "L’appartement est agréable,（　）un peu sombre.",
+     "zh": "公寓很舒服，雖然有點暗。",
+     "en": "The flat is pleasant, if a bit dark.",
+     "options": [
+      "encore qu’",
+      "encore que d’",
+      "alors qu’",
+      "pourvu qu’"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Elle accepte, encore qu’elle n’en（　）pas très envie.",
+     "zh": "她答應了，雖然不太想。",
+     "en": "She agrees, though she does not really want to.",
+     "options": [
+      "ait",
+      "a",
+      "aura",
+      "avait"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "faire_en_sorte",
+   "pattern": "faire en sorte que ＋ subj.・veiller à ce que",
+   "title": {
+    "zh": "設法使……、確保……",
+    "en": "To make sure that (faire en sorte que / veiller à ce que)"
+   },
+   "form": {
+    "zh": "faire en sorte que ＋ 虛擬式；faire en sorte de ＋ 原形；veiller à ce que ＋ 虛擬式；veiller à ＋ 原形",
+    "en": "faire en sorte que + subjunctive; faire en sorte de + infinitive; veiller à ce que + subjunctive; veiller à + infinitive"
+   },
+   "explain": {
+    "zh": "表示採取行動確保某個結果：Faites en sorte que tout soit prêt à huit heures.（請確保八點前一切就緒。）veiller à ce que 語氣更正式，常見於規定和公文。",
+    "en": "Says you act to secure a result: Faites en sorte que tout soit prêt à huit heures. veiller à ce que is more formal, common in rules and official writing."
+   },
+   "notes": [
+    {
+     "zh": "主詞相同用原形：Je ferai en sorte d’arriver à l’heure.",
+     "en": "Same subject: Je ferai en sorte d’arriver à l’heure."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Faites en sorte que les enfants sont rentrés avant la nuit.",
+     "right": "Faites en sorte que les enfants soient rentrés avant la nuit.",
+     "zh": "faire en sorte que 接虛擬式。",
+     "en": "faire en sorte que takes the subjunctive."
+    },
+    {
+     "wrong": "Veillez que la porte soit fermée.",
+     "right": "Veillez à ce que la porte soit fermée.",
+     "zh": "veiller 後面要 à ce que。",
+     "en": "veiller needs à ce que."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Nous ferons en sorte que chacun puisse s’exprimer.",
+     "zh": "我們會確保每個人都能發言。",
+     "en": "We will make sure everyone can speak."
+    },
+    {
+     "text": "Le professeur veille à ce que personne ne triche.",
+     "zh": "老師確保沒有人作弊。",
+     "en": "The teacher makes sure nobody cheats."
+    },
+    {
+     "text": "Fais en sorte de ne pas oublier tes clés.",
+     "zh": "想辦法別忘了你的鑰匙。",
+     "en": "Make sure you do not forget your keys."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Il faut faire en sorte que le public（　）le message.",
+     "zh": "要設法讓大眾理解這個訊息。",
+     "en": "We must make sure the public understands the message.",
+     "options": [
+      "comprenne",
+      "comprend",
+      "comprendra",
+      "comprendrait"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Veillez（　）toutes les lumières soient éteintes.",
+     "zh": "請確保所有燈都關了。",
+     "en": "Make sure all the lights are off.",
+     "options": [
+      "à ce que",
+      "que",
+      "à que",
+      "de ce que"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Je ferai en sorte（　）à l’heure.",
+     "zh": "我會設法準時到。",
+     "en": "I will make sure I arrive on time.",
+     "options": [
+      "d’arriver",
+      "que j’arrive de",
+      "à arriver",
+      "arriver"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "sen_prendre",
+   "pattern": "s’en prendre à・s’en tenir à・s’en remettre à",
+   "title": {
+    "zh": "含 s’en 的進階動詞",
+    "en": "Advanced verbs with s’en"
+   },
+   "form": {
+    "zh": "s’en prendre à qqn（責怪、攻擊某人）、s’en tenir à qqch（只限於、堅持）、s’en remettre à qqn（交給某人決定）、s’en faire（擔心）",
+    "en": "s’en prendre à sb (to lay into, blame), s’en tenir à sth (to stick to), s’en remettre à sb (to leave it to sb), s’en faire (to worry)"
+   },
+   "explain": {
+    "zh": "en 在這些說法裡沒有具體指稱，只是動詞的一部分；複合時態用 être：Il s’en est pris à son frère.（他把氣出在弟弟身上。）Ne t’en fais pas.（別擔心。）",
+    "en": "Here en refers to nothing in particular; it is part of the verb. Compound tenses take être: Il s’en est pris à son frère. Ne t’en fais pas."
+   },
+   "notes": [
+    {
+     "zh": "s’en tenir à 常用來說「就照……做，不多說」：Tenons-nous-en aux faits.（我們只談事實。）",
+     "en": "s’en tenir à often means sticking to something and nothing more: Tenons-nous-en aux faits."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Il a pris à son collègue.",
+     "right": "Il s’en est pris à son collègue.",
+     "zh": "要有 s’en，複合時態用 être。",
+     "en": "It needs s’en, and être in compound tenses."
+    },
+    {
+     "wrong": "Ne te fais pas.",
+     "right": "Ne t’en fais pas.",
+     "zh": "「別擔心」是 s’en faire，en 不能省。",
+     "en": "\"Do not worry\" is s’en faire; keep en."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Ne t’en prends pas à moi, je n’y suis pour rien !",
+     "zh": "別怪我，這跟我無關！",
+     "en": "Do not take it out on me, it has nothing to do with me!"
+    },
+    {
+     "text": "Je m’en tiendrai à ce que nous avons décidé.",
+     "zh": "我會照我們決定的去做。",
+     "en": "I will stick to what we decided."
+    },
+    {
+     "text": "Je m’en remets à votre jugement.",
+     "zh": "我交給您判斷。",
+     "en": "I leave it to your judgement."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ce n’est pas grave, ne t’en（　）pas.",
+     "zh": "沒關係，別擔心。",
+     "en": "It does not matter, do not worry.",
+     "options": [
+      "fais",
+      "prends",
+      "tiens",
+      "remets"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Les manifestants s’en sont（　）au gouvernement.",
+     "zh": "示威者把矛頭指向政府。",
+     "en": "The protesters turned on the government.",
+     "options": [
+      "pris",
+      "tenus",
+      "remis",
+      "faits"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Pour l’instant, tenons-nous-en（　）plan initial.",
+     "zh": "目前我們就照原定計畫。",
+     "en": "For now let us stick to the original plan.",
+     "options": [
+      "au",
+      "du",
+      "le",
+      "sur le"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "navoir_qua",
+   "pattern": "n’avoir qu’à・il n’y a qu’à",
+   "title": {
+    "zh": "只要……就好",
+    "en": "All you have to do is (n’avoir qu’à)"
+   },
+   "form": {
+    "zh": "主詞 ＋ n’avoir qu’à ＋ 原形；il n’y a qu’à ＋ 原形（口語常說 y a qu’à）",
+    "en": "subject + n’avoir qu’à + infinitive; il n’y a qu’à + infinitive (spoken y a qu’à)"
+   },
+   "explain": {
+    "zh": "提出很簡單的解決辦法：Tu n’as qu’à lui demander.（你問他就好了。）語氣有時帶點不耐煩或責備：Tu n’avais qu’à faire attention !（你當初小心一點不就好了！）",
+    "en": "Offers a simple solution: Tu n’as qu’à lui demander. Sometimes impatient or reproachful: Tu n’avais qu’à faire attention ! (you only had to be careful)."
+   },
+   "notes": [
+    {
+     "zh": "il n’y a qu’à 常被用來諷刺「說得簡單」：« Il n’y a qu’à baisser les impôts », comme si c’était facile.",
+     "en": "il n’y a qu’à is often mocked as \"easier said than done\"."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Tu n’as que demander.",
+     "right": "Tu n’as qu’à demander.",
+     "zh": "要說 n’avoir qu’à（加 à）。",
+     "en": "It is n’avoir qu’à, with à."
+    },
+    {
+     "wrong": "Vous avez qu’à attendre.",
+     "right": "Vous n’avez qu’à attendre.",
+     "zh": "書面要有 ne：n’avez qu’à。",
+     "en": "Written French keeps ne: n’avez qu’à."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Si tu as froid, tu n’as qu’à mettre un pull.",
+     "zh": "你冷的話，穿件毛衣就好。",
+     "en": "If you are cold, just put on a jumper."
+    },
+    {
+     "text": "Il n’y a qu’à suivre les panneaux.",
+     "zh": "只要跟著指標走就行了。",
+     "en": "You just have to follow the signs."
+    },
+    {
+     "text": "Tu n’avais qu’à me le dire plus tôt !",
+     "zh": "你早點跟我說不就好了！",
+     "en": "You only had to tell me sooner!"
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Vous êtes perdus ? Vous（　）demander à quelqu’un.",
+     "zh": "你們迷路了？問人就好了。",
+     "en": "Lost? Just ask someone.",
+     "options": [
+      "n’avez qu’à",
+      "n’avez que",
+      "avez à",
+      "n’êtes qu’à"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Pour réussir, il n’y（　）travailler.",
+     "zh": "要成功，只要努力就好。",
+     "en": "To succeed you only need to work.",
+     "options": [
+      "a qu’à",
+      "a que",
+      "est qu’à",
+      "a à"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Elle（　）partir plus tôt, elle n’aurait pas raté le train.",
+     "zh": "她早點出發就好了，就不會錯過火車。",
+     "en": "She only had to leave earlier and she would not have missed the train.",
+     "options": [
+      "n’avait qu’à",
+      "n’a qu’à",
+      "n’aura qu’à",
+      "avait que"
      ],
      "answer": 0
     }

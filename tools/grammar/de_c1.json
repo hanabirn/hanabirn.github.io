@@ -3,7 +3,7 @@
  "lang": "de",
  "level": "C1",
  "order": 5,
- "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_de_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py",
+ "note": "Hand-written for the site (explanations and examples are our own). Drafted in tools/.mockups/gram_de_c1.py (gram_gen.py). Edit this file, then run: python tools/build_grammar.py More points (2026-11-13) drafted in tools/.mockups/gram_de_c1_more.py (gram_gen.py --more).",
  "points": [
   {
    "id": "gerundiv",
@@ -1365,6 +1365,916 @@
       "wurde",
       "werde",
       "wäre"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "genitivverben",
+   "pattern": "bedürfen・gedenken・sich enthalten ＋ Gen.",
+   "title": {
+    "zh": "接屬格的動詞",
+    "en": "Verbs with a genitive object"
+   },
+   "form": {
+    "zh": "bedürfen（需要）、gedenken（紀念）、sich enthalten（放棄、不參與）、sich vergewissern（確認）、jemanden einer Sache beschuldigen（指控某人某事）＋ 屬格",
+    "en": "bedürfen (to need), gedenken (to commemorate), sich enthalten (to abstain from), sich vergewissern (to make sure of), jemanden einer Sache beschuldigen (to accuse sb of sth) + genitive"
+   },
+   "explain": {
+    "zh": "少數正式動詞的受詞用屬格，多見於書面語、新聞和法律文字：Die Sache bedarf einer genauen Prüfung.（這件事需要仔細審查。）口語通常換成別的說法（brauchen、sich erinnern an）。",
+    "en": "A few formal verbs take a genitive object, mostly in writing, news and legal texts: Die Sache bedarf einer genauen Prüfung. Speech usually rephrases (brauchen, sich erinnern an)."
+   },
+   "notes": [
+    {
+     "zh": "sich enthalten 在投票時是「棄權」：Sie enthielt sich der Stimme.",
+     "en": "In voting sich enthalten means to abstain: Sie enthielt sich der Stimme."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Das bedarf eine Erklärung.",
+     "right": "Das bedarf einer Erklärung.",
+     "zh": "bedürfen 接屬格：einer Erklärung。",
+     "en": "bedürfen takes the genitive: einer Erklärung."
+    },
+    {
+     "wrong": "Man beschuldigte ihn den Diebstahl.",
+     "right": "Man beschuldigte ihn des Diebstahls.",
+     "zh": "被指控的事用屬格。",
+     "en": "The charge is in the genitive."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Am Sonntag gedenkt die Stadt der Opfer des Krieges.",
+     "zh": "週日全市紀念戰爭的犧牲者。",
+     "en": "On Sunday the town commemorates the victims of the war."
+    },
+    {
+     "text": "Vor der Abfahrt vergewisserte er sich des Weges.",
+     "zh": "出發前他先確認了路線。",
+     "en": "Before setting off he made sure of the way."
+    },
+    {
+     "text": "Dieser Vorschlag bedarf noch einiger Änderungen.",
+     "zh": "這個提案還需要一些修改。",
+     "en": "This proposal still needs some changes."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Bei der Abstimmung enthielten sich drei Abgeordnete（　）Stimme.",
+     "zh": "投票時有三位議員棄權。",
+     "en": "Three members abstained in the vote.",
+     "options": [
+      "der",
+      "die",
+      "den",
+      "dem"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Der Patient bedarf（　）Ruhe.",
+     "zh": "病人需要安靜休養。",
+     "en": "The patient needs rest.",
+     "options": [
+      "absoluter",
+      "absolute",
+      "absoluten Ruhe von",
+      "absolut"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Man beschuldigte die Firma（　）.",
+     "zh": "有人指控這家公司詐欺。",
+     "en": "The company was accused of fraud.",
+     "options": [
+      "des Betrugs",
+      "den Betrug",
+      "dem Betrug",
+      "vom Betrug"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "partizipialsatz",
+   "pattern": "Im Büro angekommen, …",
+   "title": {
+    "zh": "分詞片語當句首成分",
+    "en": "Participle clauses at the start of a sentence"
+   },
+   "form": {
+    "zh": "過去分詞（或現在分詞）＋ 補語, 動詞 ＋ 主詞 …：Zu Hause angekommen, rief sie ihre Mutter an.",
+    "en": "past (or present) participle + complements, verb + subject …: Zu Hause angekommen, rief sie ihre Mutter an."
+   },
+   "explain": {
+    "zh": "分詞片語的邏輯主詞跟主句主詞相同，用來精簡地表示時間、原因或方式：Von der Reise erschöpft, ging er sofort ins Bett.（旅途勞頓，他馬上就去睡了。）整個片語算第一位，動詞緊接在後。",
+    "en": "The participle phrase shares the main clause’s subject and compactly gives time, cause or manner: Von der Reise erschöpft, ging er sofort ins Bett. The whole phrase fills first place, so the verb follows."
+   },
+   "notes": [
+    {
+     "zh": "分詞片語的主詞必須跟主句一樣，否則句子不通。",
+     "en": "Its subject must be the main clause’s subject, or the sentence breaks."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Am Bahnhof angekommen, er nahm ein Taxi.",
+     "right": "Am Bahnhof angekommen, nahm er ein Taxi.",
+     "zh": "分詞片語佔第一位，動詞 nahm 要緊接。",
+     "en": "The phrase is in first place, so nahm follows directly."
+    },
+    {
+     "wrong": "Im Garten spielend, die Sonne schien.",
+     "right": "Im Garten spielend, bemerkten die Kinder die Sonne nicht.",
+     "zh": "分詞片語的主詞要跟主句一致（孩子在玩，不是太陽）。",
+     "en": "The phrase’s subject must match the main clause (the children are playing, not the sun)."
+    }
+   ],
+   "examples": [
+    {
+     "text": "In Berlin angekommen, suchten wir sofort ein Hotel.",
+     "zh": "一到柏林，我們馬上找了飯店。",
+     "en": "Once in Berlin, we immediately looked for a hotel."
+    },
+    {
+     "text": "Laut singend, lief das Kind durch den Park.",
+     "zh": "孩子大聲唱著歌跑過公園。",
+     "en": "Singing loudly, the child ran through the park."
+    },
+    {
+     "text": "Vom Lärm geweckt, stand sie auf und schloss das Fenster.",
+     "zh": "她被噪音吵醒，起來關了窗。",
+     "en": "Woken by the noise, she got up and closed the window."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Zu Hause angekommen,（　）ich gleich unter die Dusche.",
+     "zh": "一到家，我馬上去沖澡。",
+     "en": "Once home, I went straight into the shower.",
+     "options": [
+      "ging",
+      "ich ging",
+      "bin gegangen ich",
+      "gehe ich zu"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）, verließ er das Zimmer.",
+     "zh": "他很生氣地離開了房間。",
+     "en": "Angry, he left the room.",
+     "options": [
+      "Verärgert",
+      "Verärgernd",
+      "Ärger",
+      "Verärgerte"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Von allen（　）, gab er sein Amt auf.",
+     "zh": "在眾人批評下，他辭職了。",
+     "en": "Criticised by everyone, he gave up his post.",
+     "options": [
+      "kritisiert",
+      "kritisierend",
+      "kritisieren",
+      "zu kritisieren"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "sei_es",
+   "pattern": "sei es …, sei es … ／ ob … oder …",
+   "title": {
+    "zh": "無論是……還是……",
+    "en": "Whether … or … (sei es … sei es)"
+   },
+   "form": {
+    "zh": "sei es ＋ A, sei es ＋ B（或 sei es A oder B）；ob A oder B（從句，動詞在句尾）",
+    "en": "sei es + A, sei es + B (or sei es A oder B); ob A oder B (clause, verb at the end)"
+   },
+   "explain": {
+    "zh": "列出幾種情況，表示「不論哪一種」：Jeder kann mitmachen, sei es als Spieler oder als Zuschauer.（每個人都能參加，不論是當選手還是觀眾。）sei es 是 Konjunktiv I 的固定用法，較書面。",
+    "en": "Lists cases to say \"whichever\": Jeder kann mitmachen, sei es als Spieler oder als Zuschauer. sei es is a set Konjunktiv I phrase, somewhat formal."
+   },
+   "notes": [
+    {
+     "zh": "用從句時說 ob … oder：Ob jung oder alt, alle hatten Spaß.",
+     "en": "With a clause use ob … oder: Ob jung oder alt, alle hatten Spaß."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ist es heute, ist es morgen – wir müssen entscheiden.",
+     "right": "Sei es heute, sei es morgen – wir müssen entscheiden.",
+     "zh": "固定用 Konjunktiv I 的 sei es。",
+     "en": "The set phrase uses Konjunktiv I sei es."
+    },
+    {
+     "wrong": "Ob es regnet oder nicht, wir fahren los. (sei es) → Sei es regnet …",
+     "right": "Ob es regnet oder nicht, wir fahren los.",
+     "zh": "接整個從句時用 ob，不用 sei es。",
+     "en": "With a full clause use ob, not sei es."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Sie hilft immer, sei es mit Geld, sei es mit Zeit.",
+     "zh": "她總是幫忙，不論是出錢還是出時間。",
+     "en": "She always helps, whether with money or with time."
+    },
+    {
+     "text": "Ob im Sommer oder im Winter, er schwimmt jeden Tag.",
+     "zh": "不論夏天冬天，他每天都游泳。",
+     "en": "Summer or winter, he swims every day."
+    },
+    {
+     "text": "Jede Kritik, sei sie noch so klein, nimmt er ernst.",
+     "zh": "任何批評，不論多小，他都認真看待。",
+     "en": "He takes every criticism seriously, however small."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Man kann bar zahlen,（　）mit Karte.",
+     "zh": "可以付現，也可以刷卡。",
+     "en": "You can pay cash or by card.",
+     "options": [
+      "sei es",
+      "ist es",
+      "wäre es",
+      "sei"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）du willst oder nicht, du musst mitkommen.",
+     "zh": "不論你想不想，你都得一起來。",
+     "en": "Whether you want to or not, you have to come.",
+     "options": [
+      "Ob",
+      "Sei es",
+      "Wenn",
+      "Ob es"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Alle Gäste,（　）Kinder oder Erwachsene, bekamen ein Geschenk.",
+     "zh": "所有客人，不論大人小孩，都拿到禮物。",
+     "en": "All guests, children or adults, got a present.",
+     "options": [
+      "seien es",
+      "sei es von",
+      "sind es",
+      "wären sie"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "geschweige_denn",
+   "pattern": "geschweige denn",
+   "title": {
+    "zh": "更不用說……",
+    "en": "Let alone (geschweige denn)"
+   },
+   "form": {
+    "zh": "否定句, geschweige denn ＋ 片語／dass 子句",
+    "en": "negative sentence, geschweige denn + phrase / dass-clause"
+   },
+   "explain": {
+    "zh": "放在否定句後面，表示「連前面那件都做不到，更不用說後面這件」：Er kann kaum laufen, geschweige denn rennen.（他連走都很難，更別說跑了。）前一句必須是否定或接近否定的意思。",
+    "en": "After a negative sentence it means \"if not even that, then certainly not this\": Er kann kaum laufen, geschweige denn rennen. The first part must be negative or nearly so."
+   },
+   "notes": [
+    {
+     "zh": "後面接從句時用 dass：Ich habe keine Zeit zu lesen, geschweige denn, dass ich schreibe.",
+     "en": "With a clause it takes dass: Ich habe keine Zeit zu lesen, geschweige denn, dass ich schreibe."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er spricht gut Englisch, geschweige denn Deutsch.",
+     "right": "Er spricht kaum Englisch, geschweige denn Deutsch.",
+     "zh": "前一句要是否定或接近否定。",
+     "en": "The first part must be negative."
+    },
+    {
+     "wrong": "Ich habe kein Auto, geschweige denn ich habe ein Haus.",
+     "right": "Ich habe kein Auto, geschweige denn ein Haus.",
+     "zh": "後面直接接片語，或用 dass 子句。",
+     "en": "Follow it with a phrase or a dass-clause."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Ich habe nicht einmal Zeit zum Essen, geschweige denn zum Schlafen.",
+     "zh": "我連吃飯的時間都沒有，更別說睡覺了。",
+     "en": "I do not even have time to eat, let alone sleep."
+    },
+    {
+     "text": "Sie kann keinen Kuchen backen, geschweige denn eine Torte.",
+     "zh": "她連蛋糕都不會烤，更不用說大蛋糕了。",
+     "en": "She cannot bake a cake, let alone a gateau."
+    },
+    {
+     "text": "Er hat den Brief nicht gelesen, geschweige denn beantwortet.",
+     "zh": "他連信都沒讀，更不用說回了。",
+     "en": "He has not read the letter, let alone answered it."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich verstehe kein Wort Russisch,（　）einen ganzen Satz.",
+     "zh": "我連一個俄文字都不懂，更別說一整句。",
+     "en": "I do not understand a word of Russian, let alone a whole sentence.",
+     "options": [
+      "geschweige denn",
+      "sondern auch",
+      "sowie",
+      "nicht nur"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er konnte kaum stehen, geschweige denn（　）.",
+     "zh": "他幾乎站不起來，更別說走路了。",
+     "en": "He could barely stand, let alone walk.",
+     "options": [
+      "gehen",
+      "er ging",
+      "ging er",
+      "zu gegangen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）hat sie nie ein Wort gesagt, geschweige denn gelächelt.",
+     "zh": "她從沒說過一句話，更別說笑了。",
+     "en": "She never said a word to me, let alone smiled.",
+     "options": [
+      "Mir",
+      "Mich",
+      "Ich",
+      "Mein"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "muss_gewesen",
+   "pattern": "muss … gewesen sein・dürfte … haben",
+   "title": {
+    "zh": "對過去的推測",
+    "en": "Guessing about the past (muss … gewesen sein)"
+   },
+   "form": {
+    "zh": "情態動詞（現在式）＋ 完成式不定式（過去分詞 ＋ haben／sein）：Er muss krank gewesen sein. Sie dürfte es vergessen haben.",
+    "en": "modal verb (present) + perfect infinitive (past participle + haben / sein): Er muss krank gewesen sein. Sie dürfte es vergessen haben."
+   },
+   "explain": {
+    "zh": "用情態動詞的現在式表示「現在對過去的猜測」，把握程度：muss（一定）＞ dürfte（應該）＞ kann／könnte（可能）：Das muss teuer gewesen sein.（那一定很貴。）",
+    "en": "The modal in the present expresses a present guess about the past, by certainty: muss (must) > dürfte (probably) > kann / könnte (may): Das muss teuer gewesen sein."
+   },
+   "notes": [
+    {
+     "zh": "不要跟「過去必須」混淆：Er musste arbeiten.（他當時必須工作）≠ Er muss gearbeitet haben.（他想必工作過）。",
+     "en": "Do not confuse it with past obligation: Er musste arbeiten ≠ Er muss gearbeitet haben."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Er musste den Zug verpasst haben.",
+     "right": "Er muss den Zug verpasst haben.",
+     "zh": "推測過去用情態動詞的現在式。",
+     "en": "A guess about the past uses the modal in the present."
+    },
+    {
+     "wrong": "Sie kann schon gegangen haben.",
+     "right": "Sie kann schon gegangen sein.",
+     "zh": "gehen 的完成式用 sein：gegangen sein。",
+     "en": "gehen forms its perfect with sein."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Straßen sind nass – es muss geregnet haben.",
+     "zh": "路面濕了，一定下過雨。",
+     "en": "The streets are wet – it must have rained."
+    },
+    {
+     "text": "Er dürfte die Nachricht inzwischen bekommen haben.",
+     "zh": "他現在應該已經收到消息了。",
+     "en": "He has probably got the message by now."
+    },
+    {
+     "text": "Sie könnte den Termin vergessen haben.",
+     "zh": "她可能忘了約會。",
+     "en": "She may have forgotten the appointment."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Er ist nicht da. Er（　）schon nach Hause gegangen sein.",
+     "zh": "他不在，應該已經回家了。",
+     "en": "He is not here. He must have gone home already.",
+     "options": [
+      "muss",
+      "musste",
+      "hat müssen",
+      "müsste haben"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Das Paket ist nicht angekommen. Es（　）verloren gegangen sein.",
+     "zh": "包裹沒到，可能弄丟了。",
+     "en": "The parcel has not arrived. It may have got lost.",
+     "options": [
+      "könnte",
+      "konnte",
+      "kann haben",
+      "könnte haben"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie sieht müde aus. Sie muss schlecht（　）.",
+     "zh": "她看起來很累，一定沒睡好。",
+     "en": "She looks tired. She must have slept badly.",
+     "options": [
+      "geschlafen haben",
+      "geschlafen sein",
+      "schlafen haben",
+      "geschlafen"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "verberst",
+   "pattern": "Sollte es regnen, … ／ Hätte ich das gewusst, …",
+   "title": {
+    "zh": "省略 wenn 的條件句（動詞開頭）",
+    "en": "Conditions without wenn (verb first)"
+   },
+   "form": {
+    "zh": "動詞（sollte、hätte、wäre、Konjunktiv II）放句首 ＋ 主詞 …, (so／dann) 主句",
+    "en": "verb (sollte, hätte, wäre, Konjunktiv II) first + subject …, (so / dann) main clause"
+   },
+   "explain": {
+    "zh": "書面語常省略 wenn，把動詞放到最前面：Sollten Sie Fragen haben, rufen Sie uns an.（如有任何問題，請來電。）Hätte ich das gewusst, wäre ich gekommen.（早知道我就來了。）主句前常加 so 或 dann。",
+    "en": "Written German often drops wenn and puts the verb first: Sollten Sie Fragen haben, rufen Sie uns an. Hätte ich das gewusst, wäre ich gekommen. The main clause often starts with so or dann."
+   },
+   "notes": [
+    {
+     "zh": "sollte ＋ 不定式 在這裡表示「萬一」，常見於商務信件。",
+     "en": "sollte + infinitive here means \"should it happen that\", common in business letters."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Wenn hätte ich Zeit, käme ich.",
+     "right": "Hätte ich Zeit, käme ich.",
+     "zh": "省略 wenn 時動詞放第一位；有 wenn 時動詞在句尾。",
+     "en": "Without wenn the verb comes first; with wenn it goes last."
+    },
+    {
+     "wrong": "Sollten Sie Fragen haben, Sie rufen uns an.",
+     "right": "Sollten Sie Fragen haben, rufen Sie uns an.",
+     "zh": "主句動詞緊接在條件子句之後。",
+     "en": "The main-clause verb follows the conditional clause directly."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Sollte der Zug Verspätung haben, nehmen wir ein Taxi.",
+     "zh": "萬一火車誤點，我們就搭計程車。",
+     "en": "Should the train be late, we will take a taxi."
+    },
+    {
+     "text": "Wäre das Wetter besser gewesen, hätten wir gegrillt.",
+     "zh": "要是天氣好一點，我們就烤肉了。",
+     "en": "Had the weather been better, we would have had a barbecue."
+    },
+    {
+     "text": "Hätten wir mehr Geld, so würden wir ein Haus kaufen.",
+     "zh": "要是我們錢多一點，就會買房子。",
+     "en": "If we had more money, we would buy a house."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）Sie verhindert sein, sagen Sie bitte rechtzeitig ab.",
+     "zh": "萬一您不能來，請及早取消。",
+     "en": "Should you be unable to come, please cancel in good time.",
+     "options": [
+      "Sollten",
+      "Wenn",
+      "Sollen",
+      "Falls sollten"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Hätte ich früher angefangen,（　）ich jetzt fertig.",
+     "zh": "要是我早點開始，現在就做完了。",
+     "en": "Had I started earlier, I would be finished now.",
+     "options": [
+      "wäre",
+      "bin",
+      "ich wäre",
+      "würde"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）du mich gefragt, hätte ich dir geholfen.",
+     "zh": "要是你問我，我就會幫你。",
+     "en": "Had you asked me, I would have helped you.",
+     "options": [
+      "Hättest",
+      "Hast",
+      "Wenn hättest",
+      "Würdest"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "zufolge",
+   "pattern": "zufolge・gemäß・entsprechend・laut",
+   "title": {
+    "zh": "根據……（書面介系詞）",
+    "en": "According to (zufolge, gemäß, laut)"
+   },
+   "form": {
+    "zh": "名詞（與格）＋ zufolge（後置）；gemäß／entsprechend ＋ 與格（可前可後）；laut ＋ 與格／屬格",
+    "en": "noun (dative) + zufolge (after the noun); gemäß / entsprechend + dative (before or after); laut + dative / genitive"
+   },
+   "explain": {
+    "zh": "書面報導常用來引用來源或依據：Dem Bericht zufolge sind die Preise gestiegen.（根據報告，物價上漲了。）gemäß 多用在規定：gemäß Paragraf 3（依第 3 條）。",
+    "en": "Reports use them to cite a source or basis: Dem Bericht zufolge sind die Preise gestiegen. gemäß is typical of rules: gemäß Paragraf 3."
+   },
+   "notes": [
+    {
+     "zh": "zufolge 放在名詞後面；放前面時要接屬格（較少見）。",
+     "en": "zufolge follows its noun; before it, it takes the genitive (rare)."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Zufolge dem Bericht ist alles in Ordnung.",
+     "right": "Dem Bericht zufolge ist alles in Ordnung.",
+     "zh": "zufolge 放在與格名詞後面。",
+     "en": "zufolge comes after a dative noun."
+    },
+    {
+     "wrong": "Gemäß des Vertrages müssen Sie zahlen.",
+     "right": "Gemäß dem Vertrag müssen Sie zahlen.",
+     "zh": "gemäß 接與格。",
+     "en": "gemäß takes the dative."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Laut Wetterbericht wird es morgen schneien.",
+     "zh": "根據氣象報告，明天會下雪。",
+     "en": "According to the forecast it will snow tomorrow."
+    },
+    {
+     "text": "Den Angaben der Polizei zufolge gab es keine Verletzten.",
+     "zh": "根據警方說法，無人受傷。",
+     "en": "According to the police nobody was injured."
+    },
+    {
+     "text": "Die Gebühren werden der Einkommenshöhe entsprechend berechnet.",
+     "zh": "費用依收入高低計算。",
+     "en": "Fees are calculated according to income."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "（　）zufolge ist der Minister zurückgetreten.",
+     "zh": "根據媒體報導，部長辭職了。",
+     "en": "According to media reports the minister has resigned.",
+     "options": [
+      "Medienberichten",
+      "Medienberichte",
+      "Den Medienberichte",
+      "Von Medienberichten"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Die Lieferung erfolgt gemäß（　）Vereinbarung.",
+     "zh": "依照我們的協議交貨。",
+     "en": "Delivery is made in accordance with our agreement.",
+     "options": [
+      "unserer",
+      "unsere",
+      "unseres",
+      "unser"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）Statistik leben hier 3 000 Menschen.",
+     "zh": "根據統計，這裡住了三千人。",
+     "en": "According to statistics 3,000 people live here.",
+     "options": [
+      "Laut",
+      "Zufolge",
+      "Gemäß des",
+      "Nach laut"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "stellung_nicht",
+   "pattern": "Stellung von nicht",
+   "title": {
+    "zh": "nicht 的位置",
+    "en": "Where nicht goes"
+   },
+   "form": {
+    "zh": "否定整句：nicht 盡量放後（在受詞、時間之後，但在方式、地點、補語之前）；否定某個成分：nicht 放在該成分前",
+    "en": "Negating the clause: nicht as late as possible (after objects and time, before manner, place, complements); negating one element: nicht right before it"
+   },
+   "explain": {
+    "zh": "Ich kenne den Mann nicht.（否定整句）／Ich fahre nicht nach Berlin.（nicht 在地點補語前）／Nicht ich habe das gesagt, sondern er.（只否定 ich）。位置不同，否定的範圍就不同。",
+    "en": "Ich kenne den Mann nicht (whole clause). Ich fahre nicht nach Berlin (before the place complement). Nicht ich habe das gesagt, sondern er (only ich). The position decides what is negated."
+   },
+   "notes": [
+    {
+     "zh": "nicht 放在分離動詞前綴、不定式、分詞之前：Ich rufe ihn nicht an. Er hat nicht geschlafen.",
+     "en": "nicht comes before a separable prefix, infinitive or participle: Ich rufe ihn nicht an. Er hat nicht geschlafen."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Ich habe nicht das Buch gelesen.",
+     "right": "Ich habe das Buch nicht gelesen.",
+     "zh": "否定整句時 nicht 在受詞後、分詞前。",
+     "en": "For the whole clause nicht follows the object and precedes the participle."
+    },
+    {
+     "wrong": "Er wohnt in Hamburg nicht.",
+     "right": "Er wohnt nicht in Hamburg.",
+     "zh": "nicht 放在地點補語前。",
+     "en": "nicht goes before a place complement."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Wir haben den Film gestern nicht gesehen.",
+     "zh": "我們昨天沒看那部電影。",
+     "en": "We did not see the film yesterday."
+    },
+    {
+     "text": "Sie ist nicht pünktlich gekommen.",
+     "zh": "她沒有準時來。",
+     "en": "She did not come on time."
+    },
+    {
+     "text": "Nicht der Preis, sondern die Qualität ist entscheidend.",
+     "zh": "關鍵不是價格，而是品質。",
+     "en": "It is not the price but the quality that matters."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Ich rufe dich morgen（　）.",
+     "zh": "我明天不打給你。",
+     "en": "I will not call you tomorrow.",
+     "options": [
+      "nicht an",
+      "an nicht",
+      "nicht",
+      "anrufen nicht"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er ist（　）zur Arbeit gegangen.",
+     "zh": "他沒去上班。",
+     "en": "He did not go to work.",
+     "options": [
+      "nicht",
+      "kein",
+      "keine",
+      "nichts"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Sie hat（　）gestern gekauft, sondern heute.",
+     "zh": "她不是昨天買的，而是今天。",
+     "en": "She did not buy it yesterday but today.",
+     "options": [
+      "es nicht",
+      "nicht es",
+      "es kein",
+      "nichts es"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "modal_passiv_perfekt",
+   "pattern": "hat … werden müssen",
+   "title": {
+    "zh": "情態動詞＋被動的完成式",
+    "en": "Modal + passive in the perfect"
+   },
+   "form": {
+    "zh": "haben ＋ … ＋ 過去分詞 ＋ werden ＋ 情態動詞不定式（雙不定式）：Das Haus hat renoviert werden müssen.",
+    "en": "haben + … + past participle + werden + modal infinitive (double infinitive): Das Haus hat renoviert werden müssen."
+   },
+   "explain": {
+    "zh": "情態動詞的完成式用「雙不定式」，被動時句尾有三個動詞：Der Termin hat verschoben werden müssen.（約會不得不延期。）口語常改用過去式：Der Termin musste verschoben werden.",
+    "en": "The perfect of a modal uses the double infinitive; in the passive three verbs end the clause: Der Termin hat verschoben werden müssen. Speech prefers the simple past: Der Termin musste verschoben werden."
+   },
+   "notes": [
+    {
+     "zh": "從句中 hat 放在三個動詞前面：…, weil das Haus hat renoviert werden müssen.",
+     "en": "In a subordinate clause hat goes before the three verbs: …, weil das Haus hat renoviert werden müssen."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Das Auto hat repariert werden gemusst.",
+     "right": "Das Auto hat repariert werden müssen.",
+     "zh": "雙不定式：用 müssen，不用 gemusst。",
+     "en": "Double infinitive: müssen, not gemusst."
+    },
+    {
+     "wrong": "…, weil der Flug verschoben werden müssen hat.",
+     "right": "…, weil der Flug hat verschoben werden müssen.",
+     "zh": "從句裡 hat 放在動詞群前面。",
+     "en": "In the clause hat comes before the verb cluster."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Die Brücke hat gesperrt werden müssen.",
+     "zh": "那座橋不得不封閉。",
+     "en": "The bridge had to be closed."
+    },
+    {
+     "text": "Das Problem hat nicht gelöst werden können.",
+     "zh": "這個問題沒能解決。",
+     "en": "The problem could not be solved."
+    },
+    {
+     "text": "Ich weiß nicht, warum der Vertrag hat geändert werden sollen.",
+     "zh": "我不知道為什麼合約要修改。",
+     "en": "I do not know why the contract was supposed to be changed."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Die Veranstaltung hat leider abgesagt（　）.",
+     "zh": "活動很遺憾地不得不取消。",
+     "en": "Unfortunately the event had to be cancelled.",
+     "options": [
+      "werden müssen",
+      "worden müssen",
+      "werden gemusst",
+      "müssen werden"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Der Fehler hat nicht gefunden werden（　）.",
+     "zh": "錯誤沒能找到。",
+     "en": "The error could not be found.",
+     "options": [
+      "können",
+      "gekonnt",
+      "konnte",
+      "kann"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Er erklärte, dass die Straße（　）gesperrt werden müssen.",
+     "zh": "他解釋說，那條路不得不封閉。",
+     "en": "He explained that the road had had to be closed.",
+     "options": [
+      "hat",
+      "ist",
+      "wird",
+      "habe ist"
+     ],
+     "answer": 0
+    }
+   ]
+  },
+  {
+   "id": "kaum_dass",
+   "pattern": "kaum dass・kaum …, als …",
+   "title": {
+    "zh": "剛一……就……",
+    "en": "Hardly … when (kaum dass)"
+   },
+   "form": {
+    "zh": "Kaum dass ＋ 從句（動詞在句尾）, 主句；或 Kaum ＋ 動詞 ＋ 主詞 …, als ＋ 從句",
+    "en": "Kaum dass + clause (verb last), main clause; or Kaum + verb + subject …, als + clause"
+   },
+   "explain": {
+    "zh": "表示一件事剛發生，另一件就接著發生：Kaum dass er angekommen war, fing es an zu regnen.（他一到就開始下雨。）也可以說 Kaum war er angekommen, als es zu regnen anfing.",
+    "en": "One thing has barely happened when the next follows: Kaum dass er angekommen war, fing es an zu regnen. Also: Kaum war er angekommen, als es zu regnen anfing."
+   },
+   "notes": [
+    {
+     "zh": "前一件事常用過去完成式。",
+     "en": "The first event is often in the pluperfect."
+    }
+   ],
+   "mistakes": [
+    {
+     "wrong": "Kaum dass er war angekommen, rief er an.",
+     "right": "Kaum dass er angekommen war, rief er an.",
+     "zh": "kaum dass 是從句，動詞放句尾。",
+     "en": "kaum dass introduces a clause: verb last."
+    },
+    {
+     "wrong": "Kaum war sie eingeschlafen, dass das Telefon klingelte.",
+     "right": "Kaum war sie eingeschlafen, als das Telefon klingelte.",
+     "zh": "Kaum … 動詞第一位的句型後面接 als。",
+     "en": "After Kaum + verb, continue with als."
+    }
+   ],
+   "examples": [
+    {
+     "text": "Kaum dass wir losgefahren waren, gab es einen Stau.",
+     "zh": "我們一出發就塞車了。",
+     "en": "We had hardly set off when there was a traffic jam."
+    },
+    {
+     "text": "Kaum hatte ich mich hingesetzt, als es an der Tür klingelte.",
+     "zh": "我才剛坐下，門鈴就響了。",
+     "en": "I had barely sat down when the doorbell rang."
+    },
+    {
+     "text": "Kaum dass der Film begonnen hatte, schlief er ein.",
+     "zh": "電影一開始他就睡著了。",
+     "en": "No sooner had the film started than he fell asleep."
+    }
+   ],
+   "quiz": [
+    {
+     "q": "Kaum dass sie das Haus（　）, fing es an zu schneien.",
+     "zh": "她一出門就開始下雪。",
+     "en": "She had hardly left the house when it began to snow.",
+     "options": [
+      "verlassen hatte",
+      "hatte verlassen",
+      "verließ hatte",
+      "verlassen"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "Kaum war er zu Hause,（　）seine Frau anrief.",
+     "zh": "他一到家，太太就打電話來。",
+     "en": "He was hardly home when his wife called.",
+     "options": [
+      "als",
+      "dass",
+      "wenn",
+      "wie"
+     ],
+     "answer": 0
+    },
+    {
+     "q": "（　）hatte der Unterricht begonnen, als der Alarm losging.",
+     "zh": "才剛開始上課，警報就響了。",
+     "en": "The lesson had barely begun when the alarm went off.",
+     "options": [
+      "Kaum",
+      "Kaum dass",
+      "Sobald dass",
+      "Nicht kaum"
      ],
      "answer": 0
     }
