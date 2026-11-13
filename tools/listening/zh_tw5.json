@@ -1592,6 +1592,533 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你怎麼又買了一雙球鞋？", "zh": "你怎麼又買了一雙球鞋？", "en": "You've bought another pair of trainers?"},
+            {"who": "M", "s": "舊的那雙已經穿壞了，下個月要跑馬拉松。", "zh": "舊的那雙已經穿壞了，下個月要跑馬拉松。", "en": "My old pair is worn out, and I'm running a marathon next month."}
+          ],
+          "q": {"who": "N", "s": "男的為什麼買新球鞋？", "zh": "男的為什麼買新球鞋？", "en": "Why did the man buy new trainers?"},
+          "options": [
+            {"t": "打折很便宜"},
+            {"t": "送給朋友"},
+            {"t": "舊的壞了"},
+            {"t": "顏色好看"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「舊的那雙已經穿壞了」。", "en": "The old ones are worn out."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這份資料明天早上給你可以嗎？", "zh": "這份資料明天早上給你可以嗎？", "en": "Can I give you this report tomorrow morning?"},
+            {"who": "F", "s": "不行，經理下午就要看，你最好中午以前給我。", "zh": "不行，經理下午就要看，你最好中午以前給我。", "en": "No — the manager wants it this afternoon; better give it to me before noon."}
+          ],
+          "q": {"who": "N", "s": "女的希望男的什麼時候給資料？", "zh": "女的希望男的什麼時候給資料？", "en": "When does she want the report?"},
+          "options": [
+            {"t": "中午以前"},
+            {"t": "明天早上"},
+            {"t": "下午"},
+            {"t": "下班以前"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「你最好中午以前給我」。", "en": "Before noon."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你最近怎麼都不開車了？", "zh": "你最近怎麼都不開車了？", "en": "Why don't you drive any more?"},
+            {"who": "M", "s": "油價太貴了，而且市區停車很難找位子。", "zh": "油價太貴了，而且市區停車很難找位子。", "en": "Petrol is too expensive, and parking downtown is hard to find."}
+          ],
+          "q": {"who": "N", "s": "男的為什麼不開車？", "zh": "男的為什麼不開車？", "en": "Why doesn't the man drive?"},
+          "options": [
+            {"t": "車壞了"},
+            {"t": "不會開車"},
+            {"t": "搬到鄉下了"},
+            {"t": "油貴、停車難"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「油價太貴了，而且……停車很難找位子」。", "en": "Fuel and parking."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這次的比賽你們班拿到第幾名？", "zh": "這次的比賽你們班拿到第幾名？", "en": "What place did your class get in the competition?"},
+            {"who": "F", "s": "第二名，只比第一名少了兩分。", "zh": "第二名，只比第一名少了兩分。", "en": "Second — just two points behind first."}
+          ],
+          "q": {"who": "N", "s": "女的班拿到第幾名？", "zh": "女的班拿到第幾名？", "en": "What place did her class get?"},
+          "options": [
+            {"t": "第一名"},
+            {"t": "第二名"},
+            {"t": "第三名"},
+            {"t": "最後一名"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「第二名」。", "en": "Second."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "這附近有什麼好吃的？", "zh": "這附近有什麼好吃的？", "en": "Anything good to eat around here?"},
+            {"who": "M", "s": "巷子口那家牛肉麵很有名，不過常常要排隊。", "zh": "巷子口那家牛肉麵很有名，不過常常要排隊。", "en": "The beef noodles at the end of the lane are famous, but there's often a queue."}
+          ],
+          "q": {"who": "N", "s": "關於那家牛肉麵店，可以知道什麼？", "zh": "關於那家牛肉麵店，可以知道什麼？", "en": "What do we learn about the noodle shop?"},
+          "options": [
+            {"t": "很便宜"},
+            {"t": "剛開幕"},
+            {"t": "很有名、要排隊"},
+            {"t": "只賣早餐"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「很有名，不過常常要排隊」。", "en": "Famous, with queues."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你的腳還痛嗎？", "zh": "你的腳還痛嗎？", "en": "Does your foot still hurt?"},
+            {"who": "F", "s": "好多了，醫生說再休息一個星期就可以跑步了。", "zh": "好多了，醫生說再休息一個星期就可以跑步了。", "en": "Much better — the doctor says another week's rest and I can run."}
+          ],
+          "q": {"who": "N", "s": "女的什麼時候可以跑步？", "zh": "女的什麼時候可以跑步？", "en": "When can she run?"},
+          "options": [
+            {"t": "一個星期以後"},
+            {"t": "明天"},
+            {"t": "一個月以後"},
+            {"t": "現在"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「再休息一個星期就可以跑步了」。", "en": "In a week."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你怎麼會選這家公司？", "zh": "你怎麼會選這家公司？", "en": "Why did you choose this company?"},
+            {"who": "M", "s": "薪水雖然不是最高的，但是有很多學習的機會。", "zh": "薪水雖然不是最高的，但是有很多學習的機會。", "en": "The pay isn't the highest, but there are lots of chances to learn."}
+          ],
+          "q": {"who": "N", "s": "男的為什麼選這家公司？", "zh": "男的為什麼選這家公司？", "en": "Why did the man choose the company?"},
+          "options": [
+            {"t": "薪水最高"},
+            {"t": "學習機會多"},
+            {"t": "離家很近"},
+            {"t": "朋友在這裡"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「有很多學習的機會」。", "en": "Learning opportunities."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你看起來很開心，有什麼好事？", "zh": "你看起來很開心，有什麼好事？", "en": "You look happy — good news?"},
+            {"who": "F", "s": "我申請的獎學金通過了，明年可以去日本交換。", "zh": "我申請的獎學金通過了，明年可以去日本交換。", "en": "My scholarship came through — I can go to Japan on exchange next year."}
+          ],
+          "q": {"who": "N", "s": "女的為什麼很開心？", "zh": "女的為什麼很開心？", "en": "Why is she happy?"},
+          "options": [
+            {"t": "找到工作了"},
+            {"t": "要結婚了"},
+            {"t": "考試考得好"},
+            {"t": "獎學金通過了"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「我申請的獎學金通過了」。", "en": "The scholarship."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "這個週末要不要去陽明山？", "zh": "這個週末要不要去陽明山？", "en": "Shall we go to Yangmingshan this weekend?"},
+            {"who": "M", "s": "聽說週末會下大雨，我們改天再去吧。", "zh": "聽說週末會下大雨，我們改天再去吧。", "en": "I hear it'll pour this weekend — let's go another day."}
+          ],
+          "q": {"who": "N", "s": "他們為什麼不去陽明山？", "zh": "他們為什麼不去陽明山？", "en": "Why aren't they going?"},
+          "options": [
+            {"t": "週末會下大雨"},
+            {"t": "男的要加班"},
+            {"t": "山上太冷"},
+            {"t": "車子壞了"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「聽說週末會下大雨」。", "en": "Heavy rain."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你家的冷氣怎麼一直開著？", "zh": "你家的冷氣怎麼一直開著？", "en": "Why is your air conditioner always on?"},
+            {"who": "F", "s": "我媽媽怕熱，晚上不開冷氣就睡不著。", "zh": "我媽媽怕熱，晚上不開冷氣就睡不著。", "en": "My mum can't stand the heat; she can't sleep without it at night."}
+          ],
+          "q": {"who": "N", "s": "為什麼一直開冷氣？", "zh": "為什麼一直開冷氣？", "en": "Why is the air conditioning always on?"},
+          "options": [
+            {"t": "家裡太潮濕"},
+            {"t": "冷氣壞了"},
+            {"t": "媽媽怕熱"},
+            {"t": "有客人"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「我媽媽怕熱」。", "en": "Mum hates the heat."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "先生，您要寄到哪裡？", "zh": "先生，您要寄到哪裡？", "en": "Where would you like to send this, sir?"},
+            {"who": "M", "s": "寄到台東，裡面是一些水果。", "zh": "寄到台東，裡面是一些水果。", "en": "To Taitung — it's some fruit."},
+            {"who": "F", "s": "水果的話，建議您寄冷藏的，比較不會壞。", "zh": "水果的話，建議您寄冷藏的，比較不會壞。", "en": "For fruit I'd suggest chilled delivery so it doesn't spoil."},
+            {"who": "M", "s": "好，那多少錢？", "zh": "好，那多少錢？", "en": "OK — how much?"},
+            {"who": "F", "s": "一共兩百五十塊，明天下午會到。", "zh": "一共兩百五十塊，明天下午會到。", "en": "Two hundred and fifty in all; it'll arrive tomorrow afternoon."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "男的要寄什麼？", "zh": "男的要寄什麼？", "en": "What is he sending?"},
+              "options": [
+                {"t": "衣服"},
+                {"t": "水果"},
+                {"t": "書"},
+                {"t": "電腦"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「裡面是一些水果」。", "en": "Fruit."}
+            },
+            {
+              "q": {"who": "N", "s": "包裹什麼時候會到？", "zh": "包裹什麼時候會到？", "en": "When will the parcel arrive?"},
+              "options": [
+                {"t": "今天晚上"},
+                {"t": "明天早上"},
+                {"t": "後天"},
+                {"t": "明天下午"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「明天下午會到」。", "en": "Tomorrow afternoon."}
+            }
+          ]
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "小林，聽說你要搬家了？", "zh": "小林，聽說你要搬家了？", "en": "Xiao Lin, I hear you're moving?"},
+            {"who": "F", "s": "對，房東要把房子賣掉，我只好搬走。", "zh": "對，房東要把房子賣掉，我只好搬走。", "en": "Yes, the landlord is selling the place, so I have to move."},
+            {"who": "M", "s": "找到新的地方了嗎？", "zh": "找到新的地方了嗎？", "en": "Found somewhere new?"},
+            {"who": "F", "s": "找到了，在公司附近，雖然小一點，但是走路就能上班。", "zh": "找到了，在公司附近，雖然小一點，但是走路就能上班。", "en": "Yes — near the office; smaller, but I can walk to work."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "女的為什麼要搬家？", "zh": "女的為什麼要搬家？", "en": "Why is she moving?"},
+              "options": [
+                {"t": "房東要賣房子"},
+                {"t": "房租太貴"},
+                {"t": "換了工作"},
+                {"t": "要結婚"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「房東要把房子賣掉」。", "en": "The landlord is selling."}
+            },
+            {
+              "q": {"who": "N", "s": "新的地方有什麼好處？", "zh": "新的地方有什麼好處？", "en": "What is good about the new place?"},
+              "options": [
+                {"t": "比較大"},
+                {"t": "比較便宜"},
+                {"t": "走路就能上班"},
+                {"t": "有花園"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「走路就能上班」。", "en": "She can walk to work."}
+            }
+          ]
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "王經理，下個月的展覽準備得怎麼樣了？", "zh": "王經理，下個月的展覽準備得怎麼樣了？", "en": "Manager Wang, how are preparations for next month's exhibition?"},
+            {"who": "M", "s": "場地已經訂好了，可是宣傳的海報還沒做。", "zh": "場地已經訂好了，可是宣傳的海報還沒做。", "en": "The venue is booked, but the posters aren't done."},
+            {"who": "F", "s": "海報交給小陳吧，他以前學過設計。", "zh": "海報交給小陳吧，他以前學過設計。", "en": "Give the posters to Xiao Chen — he studied design."},
+            {"who": "M", "s": "好主意，我等一下就跟他說。", "zh": "好主意，我等一下就跟他說。", "en": "Good idea — I'll tell him shortly."},
+            {"who": "F", "s": "另外，邀請客人的名單也要在這個星期五以前決定。", "zh": "另外，邀請客人的名單也要在這個星期五以前決定。", "en": "Also, the guest list must be decided by this Friday."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "展覽還有什麼沒準備好？", "zh": "展覽還有什麼沒準備好？", "en": "What isn't ready yet?"},
+              "options": [
+                {"t": "場地"},
+                {"t": "海報"},
+                {"t": "客人的禮物"},
+                {"t": "電腦"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「宣傳的海報還沒做」。", "en": "The posters."}
+            },
+            {
+              "q": {"who": "N", "s": "誰會負責做海報？", "zh": "誰會負責做海報？", "en": "Who will make the posters?"},
+              "options": [
+                {"t": "王經理"},
+                {"t": "女的"},
+                {"t": "設計公司"},
+                {"t": "小陳"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「海報交給小陳吧」。", "en": "Xiao Chen."}
+            },
+            {
+              "q": {"who": "N", "s": "名單什麼時候以前要決定？", "zh": "名單什麼時候以前要決定？", "en": "By when must the list be decided?"},
+              "options": [
+                {"t": "這個星期五"},
+                {"t": "下個月"},
+                {"t": "明天"},
+                {"t": "下個星期一"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「這個星期五以前決定」。", "en": "This Friday."}
+            }
+          ]
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "妳最近怎麼常常去圖書館？", "zh": "妳最近怎麼常常去圖書館？", "en": "Why are you at the library so often lately?"},
+            {"who": "F", "s": "我在準備研究所的考試，在家容易分心。", "zh": "我在準備研究所的考試，在家容易分心。", "en": "I'm preparing for the graduate school exam; I get distracted at home."},
+            {"who": "M", "s": "考試是什麼時候？", "zh": "考試是什麼時候？", "en": "When is the exam?"},
+            {"who": "F", "s": "三月初，還有兩個月。", "zh": "三月初，還有兩個月。", "en": "Early March — two months away."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "女的為什麼去圖書館？", "zh": "女的為什麼去圖書館？", "en": "Why does she go to the library?"},
+              "options": [
+                {"t": "要借很多書"},
+                {"t": "家裡太小"},
+                {"t": "在家容易分心"},
+                {"t": "圖書館有冷氣"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「在家容易分心」。", "en": "Distractions at home."}
+            },
+            {
+              "q": {"who": "N", "s": "考試大概還有多久？", "zh": "考試大概還有多久？", "en": "How long until the exam?"},
+              "options": [
+                {"t": "一個月"},
+                {"t": "兩個月"},
+                {"t": "三個月"},
+                {"t": "一個星期"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「還有兩個月」。", "en": "Two months."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "各位同學，下個星期三學校要舉辦運動會，當天不用上課。請大家早上八點以前到操場集合，記得穿運動服、帶水。如果下雨，運動會就改到下個星期五。比賽的項目有跑步、跳遠和拔河，每個班至少要派十個人參加。", "zh": "各位同學，下個星期三學校要舉辦運動會，當天不用上課。請大家早上八點以前到操場集合，記得穿運動服、帶水。如果下雨，運動會就改到下個星期五。比賽的項目有跑步、跳遠和拔河，每個班至少要派十個人參加。", "en": "Students, the school sports day is next Wednesday, with no classes that day. Gather on the field before eight a.m., wear sports clothes and bring water. If it rains, it moves to next Friday. Events include running, long jump and tug-of-war; each class must enter at least ten people."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "運動會那天學生要幾點到？", "zh": "運動會那天學生要幾點到？", "en": "What time must students arrive?"},
+              "options": [
+                {"t": "八點以前"},
+                {"t": "九點以前"},
+                {"t": "七點以前"},
+                {"t": "十點以前"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「早上八點以前到操場集合」。", "en": "Before eight."}
+            },
+            {
+              "q": {"who": "N", "s": "如果下雨會怎麼樣？", "zh": "如果下雨會怎麼樣？", "en": "What happens if it rains?"},
+              "options": [
+                {"t": "取消"},
+                {"t": "在教室舉行"},
+                {"t": "改到下個星期五"},
+                {"t": "照常舉行"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「如果下雨，運動會就改到下個星期五」。", "en": "Moved to Friday."}
+            },
+            {
+              "q": {"who": "N", "s": "比賽項目中沒有提到的是：", "zh": "比賽項目中沒有提到的是：", "en": "Which event is not mentioned?"},
+              "options": [
+                {"t": "跑步"},
+                {"t": "跳遠"},
+                {"t": "拔河"},
+                {"t": "游泳"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "只提到跑步、跳遠和拔河。", "en": "Swimming isn't mentioned."}
+            },
+            {
+              "q": {"who": "N", "s": "每個班至少要有幾個人參加？", "zh": "每個班至少要有幾個人參加？", "en": "At least how many per class?"},
+              "options": [
+                {"t": "五個"},
+                {"t": "十個"},
+                {"t": "二十個"},
+                {"t": "全班"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「每個班至少要派十個人參加」。", "en": "Ten."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "我在一家科技公司工作了十年，每天加班到很晚。去年我決定辭職，回到南投老家種茶。剛開始很辛苦，因為我什麼都不懂，只好跟村子裡的老農夫學。現在我種的茶已經可以賣了，雖然收入比以前少很多，但是每天都很快樂。", "zh": "我在一家科技公司工作了十年，每天加班到很晚。去年我決定辭職，回到南投老家種茶。剛開始很辛苦，因為我什麼都不懂，只好跟村子裡的老農夫學。現在我種的茶已經可以賣了，雖然收入比以前少很多，但是每天都很快樂。", "en": "I worked at a tech company for ten years, working late every day. Last year I resigned and went back to my family home in Nantou to grow tea. It was hard at first because I knew nothing, so I learnt from old farmers in the village. Now my tea is good enough to sell; I earn much less than before, but I'm happy every day."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "說話人以前做什麼工作？", "zh": "說話人以前做什麼工作？", "en": "What did the speaker do before?"},
+              "options": [
+                {"t": "當農夫"},
+                {"t": "在科技公司上班"},
+                {"t": "開茶店"},
+                {"t": "當老師"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「我在一家科技公司工作了十年」。", "en": "At a tech company."}
+            },
+            {
+              "q": {"who": "N", "s": "他是跟誰學種茶的？", "zh": "他是跟誰學種茶的？", "en": "Who did he learn from?"},
+              "options": [
+                {"t": "他爸爸"},
+                {"t": "網路影片"},
+                {"t": "大學老師"},
+                {"t": "村子裡的老農夫"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「只好跟村子裡的老農夫學」。", "en": "Old village farmers."}
+            },
+            {
+              "q": {"who": "N", "s": "他現在的生活怎麼樣？", "zh": "他現在的生活怎麼樣？", "en": "What is his life like now?"},
+              "options": [
+                {"t": "收入少，可是很快樂"},
+                {"t": "收入多，很忙"},
+                {"t": "很後悔"},
+                {"t": "很無聊"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「雖然收入比以前少很多，但是每天都很快樂」。", "en": "Less money, more happiness."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "很多人以為多喝水對身體一定好，其實水喝得太多也不行。一般來說，一個成年人一天喝兩千毫升左右的水就夠了。運動或天氣熱的時候可以多喝一點。最好的方法是一次喝一點，分好幾次喝，不要一口氣喝很多。", "zh": "很多人以為多喝水對身體一定好，其實水喝得太多也不行。一般來說，一個成年人一天喝兩千毫升左右的水就夠了。運動或天氣熱的時候可以多喝一點。最好的方法是一次喝一點，分好幾次喝，不要一口氣喝很多。", "en": "Many think drinking more water is always good, but too much isn't either. Generally about two thousand millilitres a day is enough for an adult. You can drink more when exercising or in hot weather. The best way is a little at a time, several times, rather than a lot at once."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "一個成年人一天大概喝多少水就夠了？", "zh": "一個成年人一天大概喝多少水就夠了？", "en": "How much water is enough for an adult a day?"},
+              "options": [
+                {"t": "一千毫升"},
+                {"t": "五千毫升"},
+                {"t": "兩千毫升"},
+                {"t": "五百毫升"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「一天喝兩千毫升左右的水就夠了」。", "en": "About 2,000 ml."}
+            },
+            {
+              "q": {"who": "N", "s": "什麼時候可以多喝一點水？", "zh": "什麼時候可以多喝一點水？", "en": "When can you drink more?"},
+              "options": [
+                {"t": "運動或天氣熱的時候"},
+                {"t": "吃飯的時候"},
+                {"t": "睡覺以前"},
+                {"t": "早上起床"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「運動或天氣熱的時候可以多喝一點」。", "en": "Exercise or heat."}
+            },
+            {
+              "q": {"who": "N", "s": "喝水最好的方法是：", "zh": "喝水最好的方法是：", "en": "What is the best way to drink?"},
+              "options": [
+                {"t": "一口氣喝很多"},
+                {"t": "分好幾次喝"},
+                {"t": "只在口渴時喝"},
+                {"t": "只喝熱水"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「一次喝一點，分好幾次喝」。", "en": "A little, often."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "各位旅客，歡迎搭乘本班次。本列車開往台東，中途停靠新竹、台中、彰化和嘉義。列車上有餐車，在第五節車廂，供應便當和飲料。另外提醒您，車上全面禁止吸菸，下車時請記得帶好您的行李。", "zh": "各位旅客，歡迎搭乘本班次。本列車開往台東，中途停靠新竹、台中、彰化和嘉義。列車上有餐車，在第五節車廂，供應便當和飲料。另外提醒您，車上全面禁止吸菸，下車時請記得帶好您的行李。", "en": "Welcome aboard. This train is bound for Taitung, calling at Hsinchu, Taichung, Changhua and Chiayi. There is a dining car in carriage five serving lunch boxes and drinks. Smoking is banned throughout the train; please remember your luggage when you get off."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "這班車開往哪裡？", "zh": "這班車開往哪裡？", "en": "Where is the train going?"},
+              "options": [
+                {"t": "嘉義"},
+                {"t": "台中"},
+                {"t": "新竹"},
+                {"t": "台東"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「本列車開往台東」。", "en": "Taitung."}
+            },
+            {
+              "q": {"who": "N", "s": "餐車在第幾節車廂？", "zh": "餐車在第幾節車廂？", "en": "Which carriage is the dining car?"},
+              "options": [
+                {"t": "第五節"},
+                {"t": "第三節"},
+                {"t": "第一節"},
+                {"t": "最後一節"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「在第五節車廂」。", "en": "Carriage five."}
+            },
+            {
+              "q": {"who": "N", "s": "下面哪一個是對的？", "zh": "下面哪一個是對的？", "en": "Which is true?"},
+              "options": [
+                {"t": "餐車只賣飲料"},
+                {"t": "火車不停台中"},
+                {"t": "車上不能吸菸"},
+                {"t": "這是最後一班車"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「車上全面禁止吸菸」。", "en": "No smoking."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "我奶奶七十歲才開始學用智慧型手機。一開始她連打電話都不會，常常按錯。後來孫子們每個週末教她一點，現在她不但會傳訊息、看影片，還會在網路上買菜。她說，學會用手機以後，跟住在國外的孩子聯絡方便多了，好像他們就在身邊一樣。", "zh": "我奶奶七十歲才開始學用智慧型手機。一開始她連打電話都不會，常常按錯。後來孫子們每個週末教她一點，現在她不但會傳訊息、看影片，還會在網路上買菜。她說，學會用手機以後，跟住在國外的孩子聯絡方便多了，好像他們就在身邊一樣。", "en": "My grandma only started using a smartphone at seventy. At first she couldn't even make calls and kept pressing the wrong thing. Her grandchildren taught her a little each weekend, and now she sends messages, watches videos and even buys groceries online. She says that since learning to use it, keeping in touch with her children abroad is much easier — as if they were right beside her."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "奶奶幾歲開始學用手機？", "zh": "奶奶幾歲開始學用手機？", "en": "When did Grandma start?"},
+              "options": [
+                {"t": "六十歲"},
+                {"t": "七十歲"},
+                {"t": "八十歲"},
+                {"t": "五十歲"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「我奶奶七十歲才開始學用智慧型手機」。", "en": "At seventy."}
+            },
+            {
+              "q": {"who": "N", "s": "誰教奶奶用手機？", "zh": "誰教奶奶用手機？", "en": "Who taught her?"},
+              "options": [
+                {"t": "孫子們"},
+                {"t": "她的朋友"},
+                {"t": "手機店員"},
+                {"t": "她的孩子"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「孫子們每個週末教她一點」。", "en": "Her grandchildren."}
+            },
+            {
+              "q": {"who": "N", "s": "奶奶覺得學會用手機最大的好處是：", "zh": "奶奶覺得學會用手機最大的好處是：", "en": "What does she see as the biggest benefit?"},
+              "options": [
+                {"t": "可以看影片"},
+                {"t": "可以買便宜的菜"},
+                {"t": "可以玩遊戲"},
+                {"t": "跟國外的孩子聯絡方便"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「跟住在國外的孩子聯絡方便多了」。", "en": "Keeping in touch abroad."}
+            }
+          ]
+        }
+      ]
     }
   ]
 }
