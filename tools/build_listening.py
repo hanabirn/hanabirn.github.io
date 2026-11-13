@@ -400,8 +400,9 @@ def build(src, problems, jobs):
             got = {t: n for t, n in mix.items() if n}
             if want and got != want:
                 problems.append(f'{src.stem}/{set_["id"]}: a mock set should have {want} questions, has {got}')
-            # exam order: all of 問題1, then 問題2, ...
-            seq = [types.index(i['type']) for i in items]
+            # exam order: all of 問題1, then 問題2, ... — by an item's own part first where the level numbers its parts
+            # (DELE A1 puts short recordings, a conversation, then short recordings again, 2026-11-13)
+            seq = [(i.get('part') or 0, types.index(i['type'])) for i in items]
             if seq != sorted(seq):
                 problems.append(f'{src.stem}/{set_["id"]}: a mock set must keep the types in exam order')
         elif any(mix[t] == 0 for t in practice_types) or any(mix[t] for t in types if t not in practice_types):
