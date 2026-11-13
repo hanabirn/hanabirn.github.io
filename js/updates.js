@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-13',
+      zh: "英文（A1 到 C1、TOEIC、TOEFL）、法文、西班牙文、德文和俄文的每個級數，閱讀和聽力都有模擬考了。題型、題數和作答時間照各自的檢定（劍橋、DELF / DALF、DELE、歌德、ТРКИ），全部是新寫的題目，聽力都有錄音。",
+      'zh-Hans': "英语（A1 到 C1、TOEIC、TOEFL）、法语、西班牙语、德语和俄语的每个级别，阅读和听力都有模拟考了。题型、题数和作答时间按照各自的考试（剑桥、DELF / DALF、DELE、歌德、ТРКИ），全部是新写的题目，听力都有录音。",
+      en: "Every level of English (A1 to C1, TOEIC, TOEFL), French, Spanish, German and Russian now has a reading and a listening mock exam. Task types, question counts and time limits follow each exam (Cambridge, DELF / DALF, DELE, Goethe, ТРКИ); all questions are newly written and every listening has recordings.",
+      ja: "英語（A1〜C1、TOEIC、TOEFL）、フランス語、スペイン語、ドイツ語、ロシア語のすべてのレベルに、読解と聴解の模擬試験ができました。問題形式・問題数・制限時間はそれぞれの試験（ケンブリッジ、DELF / DALF、DELE、ゲーテ、ТРКИ）に合わせ、問題はすべて新しく作り、聴解には音声があります。",
+      ko: "영어(A1~C1, TOEIC, TOEFL), 프랑스어, 스페인어, 독일어, 러시아어의 모든 레벨에 읽기와 듣기 모의고사가 생겼어요. 문제 유형, 문제 수, 제한 시간은 각 시험(케임브리지, DELF / DALF, DELE, 괴테, ТРКИ)을 따랐고, 문제는 모두 새로 썼으며 듣기에는 음성이 있어요.",
+      ru: "Для каждого уровня английского (A1–C1, TOEIC, TOEFL), французского, испанского, немецкого и русского появились пробные экзамены по чтению и аудированию. Типы заданий, число вопросов и время — как на соответствующем экзамене (Cambridge, DELF / DALF, DELE, Goethe, ТРКИ); все задания написаны заново, у аудирования есть записи.",
+      fr: "Chaque niveau d’anglais (A1 à C1, TOEIC, TOEFL), de français, d’espagnol, d’allemand et de russe a désormais un examen blanc de lecture et d’écoute. Types d’épreuves, nombre de questions et durée suivent chaque examen (Cambridge, DELF / DALF, DELE, Goethe, ТРКИ) ; toutes les questions sont inédites et chaque écoute est enregistrée.",
+      es: "Cada nivel de inglés (A1 a C1, TOEIC, TOEFL), francés, español, alemán y ruso ya tiene un examen de prueba de lectura y de audición. Los tipos de tarea, el número de preguntas y el tiempo siguen cada examen (Cambridge, DELF / DALF, DELE, Goethe, ТРКИ); todas las preguntas son nuevas y cada audición tiene grabaciones.",
+      de: "Jede Stufe von Englisch (A1 bis C1, TOEIC, TOEFL), Französisch, Spanisch, Deutsch und Russisch hat jetzt eine Probeprüfung für Lesen und Hören. Aufgabentypen, Fragenzahl und Zeit folgen der jeweiligen Prüfung (Cambridge, DELF / DALF, DELE, Goethe, ТРКИ); alle Aufgaben sind neu geschrieben, und jedes Hören hat Aufnahmen." },
+    { date: '2026-11-13',
       zh: "中文台灣版 HSK 1 到 HSK 7–9 的閱讀和聽力都有模擬考了，題數和時間跟大陸版的模擬考一樣，聽力每段播兩次。韓文 TOPIK 5、6 級的單字也加進了 Discord 機器人。另外修正了台灣版幾個字的讀音（例如「種菜」的種、「船長」的長）。",
       'zh-Hans': "中文台湾版 HSK 1 到 HSK 7–9 的阅读和听力都有模拟考了，题数和时间跟大陆版的模拟考一样，听力每段播两次。韩语 TOPIK 5、6 级的单词也加进了 Discord 机器人。另外修正了台湾版几个字的读音（例如“种菜”的种、“船长”的长）。",
       en: "Chinese (Taiwan edition) HSK 1 to HSK 7–9 now have reading and listening mock exams, with the same question counts and times as the Mainland mocks; each listening recording plays twice. The Discord bot now has the TOPIK 5 and 6 words, and a few Taiwan-edition readings were corrected (種 in 種菜, 長 in 船長).",
