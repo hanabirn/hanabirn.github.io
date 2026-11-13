@@ -1181,6 +1181,398 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "zh_tf",
+          "lines": [
+            {"who": "N", "s": "台灣的捷運系統目前有台北、桃園、台中和高雄四個城市。其中台北捷運最早通車，路線也最多，每天載運超過兩百萬人次。為了鼓勵民眾搭乘大眾運輸，台北推出了每月定額的通勤月票，可以在一個月內無限次搭乘捷運和公車，對每天通勤的上班族和學生來說相當划算。", "zh": "台灣的捷運系統目前有台北、桃園、台中和高雄四個城市。其中台北捷運最早通車，路線也最多，每天載運超過兩百萬人次。為了鼓勵民眾搭乘大眾運輸，台北推出了每月定額的通勤月票，可以在一個月內無限次搭乘捷運和公車，對每天通勤的上班族和學生來說相當划算。", "en": "Taiwan currently has metro systems in four cities: Taipei, Taoyuan, Taichung and Kaohsiung. Taipei's opened first, has the most lines and carries over two million passenger trips a day. To encourage public transport, Taipei offers a fixed-price monthly commuter pass with unlimited MRT and bus rides — good value for daily commuters and students."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "台灣目前有四個城市有捷運。", "zh": "台灣目前有四個城市有捷運。", "en": "Four cities in Taiwan have a metro."},
+              "answer": true,
+              "explain": {"zh": "「目前有台北、桃園、台中和高雄四個城市」。", "en": "Stated."}
+            },
+            {
+              "ask": {"s": "高雄捷運是最早通車的。", "zh": "高雄捷運是最早通車的。", "en": "Kaohsiung's metro opened first."},
+              "answer": false,
+              "explain": {"zh": "「其中台北捷運最早通車」。", "en": "Taipei was first."}
+            },
+            {
+              "ask": {"s": "台北捷運每天載運超過兩百萬人次。", "zh": "台北捷運每天載運超過兩百萬人次。", "en": "Taipei's MRT carries over two million trips a day."},
+              "answer": true,
+              "explain": {"zh": "「每天載運超過兩百萬人次」。", "en": "Stated."}
+            },
+            {
+              "ask": {"s": "通勤月票只能搭乘捷運。", "zh": "通勤月票只能搭乘捷運。", "en": "The monthly pass is for the MRT only."},
+              "answer": false,
+              "explain": {"zh": "「可以在一個月內無限次搭乘捷運和公車」。", "en": "Buses too."}
+            },
+            {
+              "ask": {"s": "通勤月票對每天通勤的人很划算。", "zh": "通勤月票對每天通勤的人很划算。", "en": "The pass is good value for daily commuters."},
+              "answer": true,
+              "explain": {"zh": "「對每天通勤的上班族和學生來說相當划算」。", "en": "Stated."}
+            }
+          ]
+        },
+        {
+          "type": "zh_tf",
+          "lines": [
+            {"who": "N", "s": "研究顯示，養寵物對老年人的身心健康有正面影響。每天帶狗散步，可以增加活動量；照顧寵物的責任感，也能讓長者覺得自己被需要。不過，專家提醒，老人在選擇寵物時，應該考慮自己的體力，例如體型太大、精力旺盛的狗，可能並不適合。此外，也要事先安排好，萬一自己生病住院，寵物由誰照顧。", "zh": "研究顯示，養寵物對老年人的身心健康有正面影響。每天帶狗散步，可以增加活動量；照顧寵物的責任感，也能讓長者覺得自己被需要。不過，專家提醒，老人在選擇寵物時，應該考慮自己的體力，例如體型太大、精力旺盛的狗，可能並不適合。此外，也要事先安排好，萬一自己生病住院，寵物由誰照顧。", "en": "Research shows pets benefit older people's physical and mental health. Walking a dog daily increases activity; the responsibility of caring for a pet makes older people feel needed. Experts warn that older people should consider their own strength when choosing a pet — a large, energetic dog may not suit. They should also arrange in advance who will care for the pet if they fall ill and go to hospital."}
+          ],
+          "questions": [
+            {
+              "ask": {"s": "養寵物對老年人的健康有好處。", "zh": "養寵物對老年人的健康有好處。", "en": "Pets are good for older people's health."},
+              "answer": true,
+              "explain": {"zh": "「養寵物對老年人的身心健康有正面影響」。", "en": "Stated."}
+            },
+            {
+              "ask": {"s": "照顧寵物能讓長者覺得自己被需要。", "zh": "照顧寵物能讓長者覺得自己被需要。", "en": "Caring for a pet makes them feel needed."},
+              "answer": true,
+              "explain": {"zh": "「也能讓長者覺得自己被需要」。", "en": "Stated."}
+            },
+            {
+              "ask": {"s": "專家建議老人養體型大的狗。", "zh": "專家建議老人養體型大的狗。", "en": "Experts recommend large dogs for older people."},
+              "answer": false,
+              "explain": {"zh": "「體型太大、精力旺盛的狗，可能並不適合」。", "en": "They may not suit."}
+            },
+            {
+              "ask": {"s": "選擇寵物時不必考慮自己的體力。", "zh": "選擇寵物時不必考慮自己的體力。", "en": "Strength need not be considered."},
+              "answer": false,
+              "explain": {"zh": "「應該考慮自己的體力」。", "en": "It should be."}
+            },
+            {
+              "ask": {"s": "老人應該先安排生病時誰照顧寵物。", "zh": "老人應該先安排生病時誰照顧寵物。", "en": "They should arrange who cares for the pet if they fall ill."},
+              "answer": true,
+              "explain": {"zh": "「要事先安排好，萬一自己生病住院，寵物由誰照顧」。", "en": "Stated."}
+            }
+          ]
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "張先生，您在澎湖經營海洋教育中心已經八年了，為什麼會選擇回到家鄉？", "zh": "張先生，您在澎湖經營海洋教育中心已經八年了，為什麼會選擇回到家鄉？", "en": "Mr Zhang, you've run a marine education centre in Penghu for eight years. Why did you come back home?"},
+            {"who": "M", "s": "我大學讀的是海洋生物，畢業後在台北的研究機構工作了五年。有一次回澎湖，發現小時候常見的珊瑚和魚少了很多，心裡很難過，就決定回來做點事。", "zh": "我大學讀的是海洋生物，畢業後在台北的研究機構工作了五年。有一次回澎湖，發現小時候常見的珊瑚和魚少了很多，心裡很難過，就決定回來做點事。", "en": "I studied marine biology and worked at a research institute in Taipei for five years after graduating. On a visit home I found far fewer of the corals and fish I'd known as a child. It saddened me, so I decided to come back and do something."},
+            {"who": "F", "s": "中心主要做哪些事情？", "zh": "中心主要做哪些事情？", "en": "What does the centre mainly do?"},
+            {"who": "M", "s": "我們帶學生和遊客浮潛、認識潮間帶的生物，也教漁民用比較環保的方式捕魚。每年夏天大約有一萬人參加我們的活動。", "zh": "我們帶學生和遊客浮潛、認識潮間帶的生物，也教漁民用比較環保的方式捕魚。每年夏天大約有一萬人參加我們的活動。", "en": "We take students and visitors snorkelling and introduce them to tidal-zone life, and teach fishermen greener ways of fishing. About ten thousand people join our activities each summer."},
+            {"who": "F", "s": "漁民一開始願意接受嗎？", "zh": "漁民一開始願意接受嗎？", "en": "Were the fishermen willing at first?"},
+            {"who": "M", "s": "一開始很困難，他們擔心收入會減少。後來我們證明，保護海洋以後，魚反而變多了，現在大部分的漁民都很支持。", "zh": "一開始很困難，他們擔心收入會減少。後來我們證明，保護海洋以後，魚反而變多了，現在大部分的漁民都很支持。", "en": "It was hard at first; they worried about losing income. Then we showed that protecting the sea actually brought more fish, and now most fishermen support us."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "張先生大學讀的是什麼？", "zh": "張先生大學讀的是什麼？", "en": "What did Mr Zhang study?"},
+              "options": [
+                {"t": "觀光管理"},
+                {"t": "漁業經濟"},
+                {"t": "海洋生物"},
+                {"t": "環境工程"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「我大學讀的是海洋生物」。", "en": "Marine biology."}
+            },
+            {
+              "ask": {"s": "他在台北的研究機構工作了（　）年。", "zh": "他在台北的研究機構工作了（　）年。", "en": "He worked in Taipei for ( ) years."},
+              "answers": ["五", "5"],
+              "explain": {"zh": "「在台北的研究機構工作了五年」。", "en": "Five."}
+            },
+            {
+              "q": {"who": "N", "s": "他為什麼決定回澎湖？", "zh": "他為什麼決定回澎湖？", "en": "Why did he return to Penghu?"},
+              "options": [
+                {"t": "發現珊瑚和魚少了很多"},
+                {"t": "父母需要照顧"},
+                {"t": "台北的工作太累"},
+                {"t": "想開民宿"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「發現小時候常見的珊瑚和魚少了很多」。", "en": "Fewer corals and fish."}
+            },
+            {
+              "q": {"who": "N", "s": "下面哪一個不是中心的活動？", "zh": "下面哪一個不是中心的活動？", "en": "Which is not one of the centre's activities?"},
+              "options": [
+                {"t": "帶人浮潛"},
+                {"t": "認識潮間帶的生物"},
+                {"t": "教漁民環保捕魚"},
+                {"t": "賣海鮮"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "提到浮潛、潮間帶、教漁民，沒有提到賣海鮮。", "en": "Selling seafood isn't mentioned."}
+            },
+            {
+              "ask": {"s": "每年夏天大約有（　）人參加中心的活動。", "zh": "每年夏天大約有（　）人參加中心的活動。", "en": "About ( ) people join each summer."},
+              "answers": ["一萬", "10000", "1萬"],
+              "explain": {"zh": "「每年夏天大約有一萬人參加」。", "en": "Ten thousand."}
+            },
+            {
+              "q": {"who": "N", "s": "漁民後來為什麼支持？", "zh": "漁民後來為什麼支持？", "en": "Why did the fishermen come round?"},
+              "options": [
+                {"t": "政府給他們錢"},
+                {"t": "保護海洋後魚變多了"},
+                {"t": "他們換了工作"},
+                {"t": "遊客買他們的魚"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「保護海洋以後，魚反而變多了」。", "en": "More fish."}
+            }
+          ]
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "李老師，您寫的繪本最近在國外得了獎，可以談談創作的經過嗎？", "zh": "李老師，您寫的繪本最近在國外得了獎，可以談談創作的經過嗎？", "en": "Ms Li, your picture book recently won an award abroad. Could you talk about how you made it?"},
+            {"who": "F", "s": "這本書講的是我奶奶的故事。她在嘉義的鄉下種了一輩子的稻子，我小時候每個暑假都回去陪她。我想把那段記憶畫下來，留給下一代。", "zh": "這本書講的是我奶奶的故事。她在嘉義的鄉下種了一輩子的稻子，我小時候每個暑假都回去陪她。我想把那段記憶畫下來，留給下一代。", "en": "It's my grandmother's story. She grew rice all her life in the Chiayi countryside, and I spent every summer holiday with her as a child. I wanted to draw those memories and leave them for the next generation."},
+            {"who": "M", "s": "畫這本書花了多久時間？", "zh": "畫這本書花了多久時間？", "en": "How long did it take?"},
+            {"who": "F", "s": "前後花了三年。光是到田裡觀察稻子在不同季節的顏色，就跑了十幾趟。", "zh": "前後花了三年。光是到田裡觀察稻子在不同季節的顏色，就跑了十幾趟。", "en": "Three years in all. I went to the fields more than a dozen times just to observe the rice's colours in different seasons."},
+            {"who": "M", "s": "您希望讀者從書中得到什麼？", "zh": "您希望讀者從書中得到什麼？", "en": "What do you hope readers take from it?"},
+            {"who": "F", "s": "我希望孩子們知道，我們吃的每一粒米都得來不易，也希望大人們能想起自己和長輩之間的感情。", "zh": "我希望孩子們知道，我們吃的每一粒米都得來不易，也希望大人們能想起自己和長輩之間的感情。", "en": "I hope children learn that every grain of rice we eat is hard-won, and that adults remember their own bonds with their elders."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "這本繪本講的是誰的故事？", "zh": "這本繪本講的是誰的故事？", "en": "Whose story does the book tell?"},
+              "options": [
+                {"t": "她的奶奶"},
+                {"t": "她的媽媽"},
+                {"t": "她自己"},
+                {"t": "她的學生"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「這本書講的是我奶奶的故事」。", "en": "Her grandmother."}
+            },
+            {
+              "ask": {"s": "奶奶住在（　）的鄉下。", "zh": "奶奶住在（　）的鄉下。", "en": "Grandma lived in the ( ) countryside."},
+              "answers": ["嘉義"],
+              "explain": {"zh": "「她在嘉義的鄉下種了一輩子的稻子」。", "en": "Chiayi."}
+            },
+            {
+              "q": {"who": "N", "s": "李老師小時候什麼時候回去陪奶奶？", "zh": "李老師小時候什麼時候回去陪奶奶？", "en": "When did she visit as a child?"},
+              "options": [
+                {"t": "每個週末"},
+                {"t": "每年過年"},
+                {"t": "每個暑假"},
+                {"t": "每個寒假"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「我小時候每個暑假都回去陪她」。", "en": "Every summer holiday."}
+            },
+            {
+              "ask": {"s": "畫這本書前後花了（　）年。", "zh": "畫這本書前後花了（　）年。", "en": "The book took ( ) years."},
+              "answers": ["三", "3"],
+              "explain": {"zh": "「前後花了三年」。", "en": "Three."}
+            },
+            {
+              "q": {"who": "N", "s": "她為什麼去田裡十幾趟？", "zh": "她為什麼去田裡十幾趟？", "en": "Why did she visit the fields a dozen times?"},
+              "options": [
+                {"t": "幫奶奶種稻"},
+                {"t": "拍電影"},
+                {"t": "找出版社"},
+                {"t": "觀察稻子在不同季節的顏色"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「到田裡觀察稻子在不同季節的顏色」。", "en": "To observe the rice's colours."}
+            },
+            {
+              "q": {"who": "N", "s": "她希望孩子們從書中知道：", "zh": "她希望孩子們從書中知道：", "en": "What does she hope children learn?"},
+              "options": [
+                {"t": "怎麼種稻子"},
+                {"t": "每一粒米都得來不易"},
+                {"t": "怎麼畫畫"},
+                {"t": "鄉下比城市好"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「我們吃的每一粒米都得來不易」。", "en": "Rice is hard-won."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "N", "s": "各位聽眾大家好，今天要介紹的是台灣的「森林療癒」。所謂森林療癒，是指透過在森林中散步、深呼吸、靜坐等活動，讓身心得到放鬆和恢復。這個概念最早源自日本，近年來在台灣也越來越受歡迎。研究發現，森林中的樹木會釋放一種叫做芬多精的物質，能幫助降低壓力荷爾蒙，讓人的心跳和血壓趨於穩定。一項針對上班族的實驗顯示，參加者在森林中待兩天之後，焦慮的程度平均下降了三成。目前台灣已經有十多處森林遊樂區提供專業的療癒課程，由受過訓練的引導員帶領。不過，專家也提醒，森林療癒並不能取代醫療，如果有嚴重的身心問題，還是應該尋求醫生的協助。", "zh": "各位聽眾大家好，今天要介紹的是台灣的「森林療癒」。所謂森林療癒，是指透過在森林中散步、深呼吸、靜坐等活動，讓身心得到放鬆和恢復。這個概念最早源自日本，近年來在台灣也越來越受歡迎。研究發現，森林中的樹木會釋放一種叫做芬多精的物質，能幫助降低壓力荷爾蒙，讓人的心跳和血壓趨於穩定。一項針對上班族的實驗顯示，參加者在森林中待兩天之後，焦慮的程度平均下降了三成。目前台灣已經有十多處森林遊樂區提供專業的療癒課程，由受過訓練的引導員帶領。不過，專家也提醒，森林療癒並不能取代醫療，如果有嚴重的身心問題，還是應該尋求醫生的協助。", "en": "Hello, listeners. Today: Taiwan's \"forest therapy\" — relaxing and restoring body and mind by walking, breathing deeply and sitting quietly in forests. The idea began in Japan and is increasingly popular in Taiwan. Research shows trees release substances called phytoncides that help lower stress hormones and steady heart rate and blood pressure. In an experiment with office workers, anxiety fell by an average of thirty per cent after two days in a forest. More than ten forest recreation areas in Taiwan now offer professional therapy courses led by trained guides. Experts note, however, that forest therapy can't replace medical care; serious problems still need a doctor."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "森林療癒的概念最早源自哪裡？", "zh": "森林療癒的概念最早源自哪裡？", "en": "Where did forest therapy begin?"},
+              "options": [
+                {"t": "台灣"},
+                {"t": "日本"},
+                {"t": "德國"},
+                {"t": "美國"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「這個概念最早源自日本」。", "en": "Japan."}
+            },
+            {
+              "q": {"who": "N", "s": "芬多精對人有什麼作用？", "zh": "芬多精對人有什麼作用？", "en": "What do phytoncides do?"},
+              "options": [
+                {"t": "讓人變瘦"},
+                {"t": "讓人睡不著"},
+                {"t": "增加食欲"},
+                {"t": "降低壓力荷爾蒙"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「能幫助降低壓力荷爾蒙」。", "en": "Lower stress hormones."}
+            },
+            {
+              "ask": {"s": "參加者在森林中待（　）天之後，焦慮下降了。", "zh": "參加者在森林中待（　）天之後，焦慮下降了。", "en": "After ( ) days in the forest, anxiety fell."},
+              "answers": ["兩", "二", "2"],
+              "explain": {"zh": "「參加者在森林中待兩天之後」。", "en": "Two."}
+            },
+            {
+              "ask": {"s": "焦慮的程度平均下降了（　）。", "zh": "焦慮的程度平均下降了（　）。", "en": "Anxiety fell on average by ( )."},
+              "answers": ["三成", "30%", "百分之三十"],
+              "explain": {"zh": "「焦慮的程度平均下降了三成」。", "en": "Thirty per cent."}
+            },
+            {
+              "q": {"who": "N", "s": "台灣的森林療癒課程由誰帶領？", "zh": "台灣的森林療癒課程由誰帶領？", "en": "Who leads the courses in Taiwan?"},
+              "options": [
+                {"t": "受過訓練的引導員"},
+                {"t": "醫生"},
+                {"t": "學校老師"},
+                {"t": "森林警察"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「由受過訓練的引導員帶領」。", "en": "Trained guides."}
+            },
+            {
+              "q": {"who": "N", "s": "專家提醒大家：", "zh": "專家提醒大家：", "en": "What do experts remind people?"},
+              "options": [
+                {"t": "每天都要去森林"},
+                {"t": "不要去森林"},
+                {"t": "森林療癒不能取代醫療"},
+                {"t": "森林療癒比看醫生好"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「森林療癒並不能取代醫療」。", "en": "It can't replace medicine."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "N", "s": "今天的講座要談的是「食物里程」。食物里程指的是食物從產地到餐桌所運送的距離。距離越長，運輸過程中消耗的燃料越多，排放的二氧化碳也越多。舉例來說，一顆從國外空運來台的蘋果，它的食物里程可能是本地水果的上百倍。因此，越來越多人提倡「在地消費」，也就是盡量購買附近生產的食材。這樣做的好處不只是減少碳排放，也能幫助本地的農民，並且吃到更新鮮、更符合季節的食物。在台灣，許多城市都有假日的農夫市集，消費者可以直接向農民購買蔬果，還能了解食物是怎麼種出來的。不過，也有人指出，食物里程並不是判斷環保與否的唯一標準，例如在溫室中種植的本地作物，耗費的能源可能比進口的還多。所以，選擇食物時，最好綜合考量季節、產地和生產方式。", "zh": "今天的講座要談的是「食物里程」。食物里程指的是食物從產地到餐桌所運送的距離。距離越長，運輸過程中消耗的燃料越多，排放的二氧化碳也越多。舉例來說，一顆從國外空運來台的蘋果，它的食物里程可能是本地水果的上百倍。因此，越來越多人提倡「在地消費」，也就是盡量購買附近生產的食材。這樣做的好處不只是減少碳排放，也能幫助本地的農民，並且吃到更新鮮、更符合季節的食物。在台灣，許多城市都有假日的農夫市集，消費者可以直接向農民購買蔬果，還能了解食物是怎麼種出來的。不過，也有人指出，食物里程並不是判斷環保與否的唯一標準，例如在溫室中種植的本地作物，耗費的能源可能比進口的還多。所以，選擇食物時，最好綜合考量季節、產地和生產方式。", "en": "Today's talk is about \"food miles\" — the distance food travels from farm to table. The longer the distance, the more fuel used in transport and the more carbon dioxide emitted. An apple air-freighted to Taiwan may have a hundred times the food miles of local fruit. So more people advocate buying local, purchasing ingredients produced nearby. It cuts carbon emissions, supports local farmers and gives fresher, more seasonal food. Many Taiwanese cities hold weekend farmers' markets where shoppers buy directly from farmers and learn how food is grown. Some point out, though, that food miles aren't the only measure: local crops grown in greenhouses may use more energy than imports. So it's best to weigh season, origin and production method together."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "「食物里程」指的是：", "zh": "「食物里程」指的是：", "en": "What are \"food miles\"?"},
+              "options": [
+                {"t": "食物的價格"},
+                {"t": "食物的熱量"},
+                {"t": "農民走的路"},
+                {"t": "食物從產地到餐桌的距離"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「食物從產地到餐桌所運送的距離」。", "en": "The distance from farm to table."}
+            },
+            {
+              "q": {"who": "N", "s": "食物里程越長會怎麼樣？", "zh": "食物里程越長會怎麼樣？", "en": "What happens when food miles are longer?"},
+              "options": [
+                {"t": "排放的二氧化碳越多"},
+                {"t": "食物越便宜"},
+                {"t": "食物越新鮮"},
+                {"t": "農民收入越高"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「排放的二氧化碳也越多」。", "en": "More CO2."}
+            },
+            {
+              "ask": {"s": "空運來台的蘋果，食物里程可能是本地水果的上（　）倍。", "zh": "空運來台的蘋果，食物里程可能是本地水果的上（　）倍。", "en": "An air-freighted apple may have ( )s of times the miles."},
+              "answers": ["百", "一百", "100"],
+              "explain": {"zh": "「可能是本地水果的上百倍」。", "en": "A hundred."}
+            },
+            {
+              "q": {"who": "N", "s": "下面哪一個不是在地消費的好處？", "zh": "下面哪一個不是在地消費的好處？", "en": "Which is not a benefit of buying local?"},
+              "options": [
+                {"t": "減少碳排放"},
+                {"t": "價格一定比較便宜"},
+                {"t": "幫助本地農民"},
+                {"t": "吃到更新鮮的食物"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "文中提到減碳、幫助農民、新鮮，沒有說一定比較便宜。", "en": "Cheaper prices aren't claimed."}
+            },
+            {
+              "ask": {"s": "在（　）裡，消費者可以直接向農民購買蔬果。", "zh": "在（　）裡，消費者可以直接向農民購買蔬果。", "en": "At ( ), shoppers buy directly from farmers."},
+              "answers": ["農夫市集", "假日的農夫市集"],
+              "explain": {"zh": "「許多城市都有假日的農夫市集」。", "en": "Farmers' markets."}
+            },
+            {
+              "q": {"who": "N", "s": "說話人最後建議選擇食物時：", "zh": "說話人最後建議選擇食物時：", "en": "What is the final advice?"},
+              "options": [
+                {"t": "只買本地的"},
+                {"t": "只看價格"},
+                {"t": "綜合考量季節、產地和生產方式"},
+                {"t": "只買溫室種植的"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「最好綜合考量季節、產地和生產方式」。", "en": "Weigh everything together."}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "N", "s": "大家好，今天想跟各位分享台灣的「鐵道文化保存」。台灣的鐵路已經有一百多年的歷史，沿線留下了許多老車站、舊隧道和蒸汽火車頭。過去，這些設施在停用以後，常常被拆除或荒廢。直到二十多年前，社會開始重視文化資產，鐵道保存才逐漸受到關注。以彰化的扇形車庫為例，它是台灣目前唯一還在使用的扇形車庫，可以同時停放十二輛火車頭，每年吸引數萬名鐵道迷前來參觀。另外，有些廢棄的鐵道被改造成自行車道，讓民眾可以一邊騎車，一邊欣賞沿途的風景。鐵道局也會在特定節日推出蒸汽火車的復駛活動，讓年輕一代體驗過去搭火車的感覺。專家認為，鐵道保存的意義，不只是留下舊的建築，更是保存一段屬於大家的共同記憶。", "zh": "大家好，今天想跟各位分享台灣的「鐵道文化保存」。台灣的鐵路已經有一百多年的歷史，沿線留下了許多老車站、舊隧道和蒸汽火車頭。過去，這些設施在停用以後，常常被拆除或荒廢。直到二十多年前，社會開始重視文化資產，鐵道保存才逐漸受到關注。以彰化的扇形車庫為例，它是台灣目前唯一還在使用的扇形車庫，可以同時停放十二輛火車頭，每年吸引數萬名鐵道迷前來參觀。另外，有些廢棄的鐵道被改造成自行車道，讓民眾可以一邊騎車，一邊欣賞沿途的風景。鐵道局也會在特定節日推出蒸汽火車的復駛活動，讓年輕一代體驗過去搭火車的感覺。專家認為，鐵道保存的意義，不只是留下舊的建築，更是保存一段屬於大家的共同記憶。", "en": "Hello everyone. Today I'll talk about railway heritage in Taiwan. Taiwan's railways are over a century old, leaving many old stations, tunnels and steam locomotives along the lines. In the past these were often demolished or abandoned once out of use. Only about twenty years ago, as society began to value cultural heritage, did railway preservation gain attention. Take the Changhua roundhouse: Taiwan's only working fan-shaped roundhouse, it can hold twelve locomotives and draws tens of thousands of rail fans a year. Some disused lines have become cycle paths where people can ride and enjoy the scenery. The railway also runs steam trains again on certain holidays so young people can experience old-style travel. Experts say preservation isn't just about keeping old buildings but about keeping a shared memory that belongs to everyone."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "過去鐵路設施停用以後常常怎麼樣？", "zh": "過去鐵路設施停用以後常常怎麼樣？", "en": "What often happened to disused railway facilities?"},
+              "options": [
+                {"t": "變成博物館"},
+                {"t": "被拆除或荒廢"},
+                {"t": "賣給國外"},
+                {"t": "改成住宅"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「常常被拆除或荒廢」。", "en": "Demolished or abandoned."}
+            },
+            {
+              "ask": {"s": "鐵道保存大約在（　）多年前開始受到關注。", "zh": "鐵道保存大約在（　）多年前開始受到關注。", "en": "Preservation gained attention about ( )-odd years ago."},
+              "answers": ["二十", "20"],
+              "explain": {"zh": "「直到二十多年前」。", "en": "Twenty."}
+            },
+            {
+              "q": {"who": "N", "s": "彰化的扇形車庫有什麼特別的？", "zh": "彰化的扇形車庫有什麼特別的？", "en": "What is special about the Changhua roundhouse?"},
+              "options": [
+                {"t": "台灣最新的"},
+                {"t": "只能停一輛火車"},
+                {"t": "不開放參觀"},
+                {"t": "台灣唯一還在使用的"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「台灣目前唯一還在使用的扇形車庫」。", "en": "The only one still in use."}
+            },
+            {
+              "ask": {"s": "扇形車庫可以同時停放（　）輛火車頭。", "zh": "扇形車庫可以同時停放（　）輛火車頭。", "en": "It can hold ( ) locomotives at once."},
+              "answers": ["十二", "12"],
+              "explain": {"zh": "「可以同時停放十二輛火車頭」。", "en": "Twelve."}
+            },
+            {
+              "q": {"who": "N", "s": "有些廢棄的鐵道被改造成了什麼？", "zh": "有些廢棄的鐵道被改造成了什麼？", "en": "What have some disused lines become?"},
+              "options": [
+                {"t": "自行車道"},
+                {"t": "停車場"},
+                {"t": "公園"},
+                {"t": "商店街"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「被改造成自行車道」。", "en": "Cycle paths."}
+            },
+            {
+              "q": {"who": "N", "s": "專家認為鐵道保存的意義是：", "zh": "專家認為鐵道保存的意義是：", "en": "What do experts see as the point of preservation?"},
+              "options": [
+                {"t": "賺觀光收入"},
+                {"t": "增加火車班次"},
+                {"t": "保存共同的記憶"},
+                {"t": "取代高鐵"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「更是保存一段屬於大家的共同記憶」。", "en": "A shared memory."}
+            }
+          ]
+        }
+      ]
     }
   ]
 }
