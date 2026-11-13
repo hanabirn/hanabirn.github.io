@@ -779,6 +779,180 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 30,
+      "items": [
+        {
+          "type": "zh_bank",
+          "mondai": 1,
+          "ask": "zh_bank",
+          "bank": ["提醒", "仔細", "估計", "連", "輕鬆"],
+          "questions": [
+            {"q": "這份合約很重要，簽名以前要（　）看清楚。", "answer": "B", "zh": "「仔細看」：一點一點認真地看。", "en": "仔细, carefully."},
+            {"q": "放假的時候，我只想在家（　）一下。", "answer": "E", "zh": "「輕鬆一下」：放鬆。", "en": "轻松, relax."},
+            {"q": "照這個速度，我（　）十點以前能做完。", "answer": "C", "zh": "「估計」：大概算一算。", "en": "估计, reckon."},
+            {"q": "他太忙了，（　）吃飯的時間都沒有。", "answer": "D", "zh": "「連……都……」：強調。", "en": "连…都…, not even."},
+            {"q": "媽媽每天都（　）我出門要帶鑰匙。", "answer": "A", "zh": "「提醒」：讓人別忘了。", "en": "提醒, remind."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 1,
+          "ask": "zh_bank",
+          "bank": ["不得不", "按照", "恐怕", "總算", "擔心"],
+          "questions": [
+            {"q": "A：明天的會你能參加嗎？\nB：（　）不行，我要出差。", "answer": "C", "zh": "「恐怕」：委婉地說可能不行。", "en": "恐怕, I'm afraid."},
+            {"q": "A：你的報告寫完了嗎？\nB：寫了一個星期，（　）寫完了。", "answer": "D", "zh": "「總算」：花了很多時間，終於。", "en": "总算, finally."},
+            {"q": "A：這個菜怎麼做？\nB：你（　）書上的方法做就好。", "answer": "B", "zh": "「按照」方法做。", "en": "按照, according to."},
+            {"q": "A：你怎麼這麼晚還在公司？\nB：工作做不完，（　）加班。", "answer": "A", "zh": "「不得不」：沒有別的選擇。", "en": "不得不, have to."},
+            {"q": "A：孩子一個人去旅行，你不（　）嗎？\nB：他已經十八歲了，我很放心。", "answer": "E", "zh": "「擔心」和「放心」相反。", "en": "担心, worry."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "台灣的機車很多，早上上班的時候，十字路口常常停滿了機車，等綠燈一亮，大家一起出發，非常壯觀。",
+          "tr": {"en": "Taiwan has lots of scooters; in the morning rush, crossroads fill with them, and when the light turns green they all set off together — quite a sight."},
+          "questions": [
+            {"q": "早上的十字路口常常有什麼？", "options": ["很多機車", "很多公車", "很多行人", "很多警察"], "answer": 0, "zh": "「十字路口常常停滿了機車」。", "en": "\"Lots of scooters.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "很多人以為晚上不吃飯就能變瘦，其實這樣容易讓人半夜餓醒，第二天反而吃得更多。",
+          "tr": {"en": "Many think skipping dinner will make them thin, but it can wake you up hungry at night and make you eat more the next day."},
+          "questions": [
+            {"q": "晚上不吃飯可能會怎麼樣？", "options": ["睡得更好", "變得很瘦", "第二天吃得更多", "精神更好"], "answer": 2, "zh": "「第二天反而吃得更多」。", "en": "\"Eat more the next day.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "這間民宿雖然離車站有點遠，但是老闆會開車來接客人，房間也乾淨舒服，所以客人的評價都很好。",
+          "tr": {"en": "This B&B is a bit far from the station, but the owner picks guests up by car and the rooms are clean and comfortable, so the reviews are good."},
+          "questions": [
+            {"q": "客人為什麼喜歡這間民宿？", "options": ["離車站很近", "老闆接送、房間舒服", "價錢很便宜", "早餐很好吃"], "answer": 1, "zh": "「老闆會開車來接客人，房間也乾淨舒服」。", "en": "\"Pick-ups and comfortable rooms.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "我本來想買一台新手機，後來發現舊的只是電池有問題，換了電池以後就跟新的一樣了。",
+          "tr": {"en": "I meant to buy a new phone, then found only the battery was faulty; with a new battery it's as good as new."},
+          "questions": [
+            {"q": "他最後做了什麼？", "options": ["買了新手機", "把手機送人", "修了螢幕", "換了電池"], "answer": 3, "zh": "「換了電池以後就跟新的一樣了」。", "en": "\"Replaced the battery.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "學校規定，學生上課的時候不能用手機。如果有急事，可以先跟老師說一聲，再到教室外面打電話。",
+          "tr": {"en": "School rules forbid phones in class; in an emergency, tell the teacher first, then make the call outside the classroom."},
+          "questions": [
+            {"q": "有急事要打電話，應該怎麼做？", "options": ["先跟老師說，到外面打", "直接在教室打", "下課再說", "請同學幫忙"], "answer": 0, "zh": "「先跟老師說一聲，再到教室外面打電話」。", "en": "\"Tell the teacher, then call outside.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "這個城市的公車都有免費的網路，乘客坐車的時候可以上網看新聞或者聽音樂，很受年輕人歡迎。",
+          "tr": {"en": "This city's buses all have free internet; passengers can read news or listen to music on the way, which young people love."},
+          "questions": [
+            {"q": "這個城市的公車有什麼特別的？", "options": ["不用買票", "二十四小時開", "有免費的網路", "座位很多"], "answer": 2, "zh": "「都有免費的網路」。", "en": "\"Free internet.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "我姐姐是護士，常常要上夜班。她說最辛苦的不是工作很忙，而是白天要睡覺，作息跟家人完全相反。",
+          "tr": {"en": "My older sister is a nurse and often works nights. She says the hardest part isn't the workload but sleeping by day, on the opposite schedule to her family."},
+          "questions": [
+            {"q": "姐姐覺得最辛苦的是什麼？", "options": ["工作很忙", "作息跟家人相反", "收入太少", "醫院太遠"], "answer": 1, "zh": "「而是白天要睡覺，作息跟家人完全相反」。", "en": "\"Living the opposite hours to her family.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_text",
+          "text": "最近很多人喜歡在家裡養一些小植物，因為植物不但讓房間看起來更舒服，還能讓人的心情變好。",
+          "tr": {"en": "Lately many people like keeping small plants at home, because plants make a room feel nicer and lift your mood."},
+          "questions": [
+            {"q": "人們為什麼在家養植物？", "options": ["可以賣錢", "可以吃", "不用打掃", "房間舒服、心情變好"], "answer": 3, "zh": "「不但讓房間看起來更舒服，還能讓人的心情變好」。", "en": "\"Nicer rooms and better mood.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_passage",
+          "text": "阿芳在一家旅行社工作了三年，幫很多客人安排過出國旅行，可是她自己還沒有出過國。今年她終於請了十天假，要去歐洲看看。",
+          "tr": {"en": "A-Fang has worked at a travel agency for three years and arranged many trips abroad, yet she has never been abroad herself. This year she finally took ten days off to see Europe."},
+          "questions": [
+            {"q": "阿芳做什麼工作？", "options": ["當導遊", "在機場工作", "在旅行社工作", "當老師"], "answer": 2, "zh": "「在一家旅行社工作了三年」。", "en": "\"At a travel agency.\""},
+            {"q": "阿芳今年要做什麼？", "options": ["去歐洲旅行", "換工作", "搬家", "結婚"], "answer": 0, "zh": "「要去歐洲看看」。", "en": "\"Travel to Europe.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_passage",
+          "text": "我們家附近的市場每天早上六點就開始營業，賣的菜和水果都是當天早上從農家送來的，所以特別新鮮。很多老人家習慣一大早就來買菜，順便跟老闆聊聊天。",
+          "tr": {"en": "The market near us opens at six; its vegetables and fruit come from farms that morning, so they're very fresh. Many older people come first thing to shop and chat with the stallholders."},
+          "questions": [
+            {"q": "市場的菜為什麼特別新鮮？", "options": ["價錢便宜", "當天早上從農家送來", "是從國外來的", "放在冰箱裡"], "answer": 1, "zh": "「都是當天早上從農家送來的」。", "en": "\"Delivered from farms that morning.\""},
+            {"q": "老人家早上去市場還會做什麼？", "options": ["運動", "吃早餐", "賣菜", "跟老闆聊天"], "answer": 3, "zh": "「順便跟老闆聊聊天」。", "en": "\"Chat with the stallholders.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 2,
+          "ask": "zh_passage",
+          "text": "現在越來越多人選擇騎腳踏車上班。一方面是因為城市裡的腳踏車道越來越多，騎車比較安全；另一方面，騎車可以運動，又不會塞車。不過下雨天就比較麻煩，很多人只好改坐捷運。",
+          "tr": {"en": "More and more people cycle to work: cities have more cycle lanes, so it's safer; and cycling is exercise without traffic jams. Rainy days are a problem, though, and many switch to the MRT."},
+          "questions": [
+            {"q": "騎腳踏車上班變多的原因之一是：", "options": ["腳踏車道變多了", "捷運太貴", "公司給錢", "天氣變好了"], "answer": 0, "zh": "「城市裡的腳踏車道越來越多」。", "en": "\"More cycle lanes.\""},
+            {"q": "下雨天很多人會怎麼做？", "options": ["在家上班", "還是騎車", "改坐捷運", "開車"], "answer": 2, "zh": "「很多人只好改坐捷運」。", "en": "\"Take the MRT.\""},
+            {"q": "這段話主要說的是：", "options": ["捷運的歷史", "騎腳踏車上班的情況", "怎麼買腳踏車", "城市的天氣"], "answer": 1, "zh": "整段說騎車上班的原因和問題。", "en": "Cycling to work."}
+          ]
+        },
+        {
+          "type": "zh_fill",
+          "mondai": 3,
+          "ask": "zh_fill",
+          "text": "我第一次一個人坐高鐵去台南的時候很緊張。上車以後，（　）。一位阿姨看我找不到，（　）。到了台南，（　），我才放心。",
+          "tr": {"en": "The first time I took the high-speed rail to Tainan alone I was nervous. On board I couldn't find my seat. An auntie saw me looking and showed me which carriage it was. In Tainan my cousin was waiting at the station, and only then did I relax."},
+          "bank": ["表哥已經在車站等我了", "我怎麼也找不到自己的位子", "就告訴我位子在幾號車廂"],
+          "questions": [
+            {"answer": "B", "zh": "上車以後的問題：找不到位子。", "en": "On board: no seat found."},
+            {"answer": "C", "zh": "阿姨幫忙：告訴他位子在幾號車廂。", "en": "The auntie helps."},
+            {"answer": "A", "zh": "到了台南，有表哥在等，他才放心。", "en": "His cousin was waiting."}
+          ]
+        },
+        {
+          "type": "zh_fill",
+          "mondai": 3,
+          "ask": "zh_fill",
+          "text": "上個週末，我們全家去宜蘭泡溫泉。（　），一路上看到了很多稻田。到了溫泉飯店，（　）。泡完溫泉，（　）。這次旅行雖然只有兩天，（　）。",
+          "tr": {"en": "Last weekend our family went to Yilan for the hot springs. We went by car and saw lots of rice fields on the way. At the hotel we first had a big meal. After the springs everyone felt relaxed. The trip was only two days, but we really enjoyed it."},
+          "bank": ["大家都覺得全身都放鬆了", "我們是開車去的", "但是我們玩得非常開心", "我們先吃了一頓大餐"],
+          "questions": [
+            {"answer": "B", "zh": "先說怎麼去：開車，一路上看到稻田。", "en": "How they went: by car."},
+            {"answer": "D", "zh": "到了飯店先做的事：吃大餐。", "en": "First at the hotel: a big meal."},
+            {"answer": "A", "zh": "泡完溫泉的感覺：放鬆。", "en": "After the springs: relaxed."},
+            {"answer": "C", "zh": "「雖然只有兩天，但是……」：玩得很開心。", "en": "\"Only two days, but…\": they had fun."}
+          ]
+        }
+      ]
     }
   ]
 }

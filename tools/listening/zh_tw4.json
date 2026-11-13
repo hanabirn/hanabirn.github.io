@@ -1535,6 +1535,516 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你怎麼一直打噴嚏？", "zh": "你怎麼一直打噴嚏？", "en": "Why do you keep sneezing?"},
+            {"who": "M", "s": "可能是天氣變冷，有點感冒了。", "zh": "可能是天氣變冷，有點感冒了。", "en": "Maybe the weather's turned cold — I've got a slight cold."}
+          ],
+          "q": {"who": "N", "s": "男的怎麼了？", "zh": "男的怎麼了？", "en": "What's wrong with the man?"},
+          "options": [
+            {"t": "吃壞肚子"},
+            {"t": "有點感冒"},
+            {"t": "太累了"},
+            {"t": "頭受傷了"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「有點感冒了」。", "en": "\"A slight cold.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這台電視打折以後多少錢？", "zh": "這台電視打折以後多少錢？", "en": "How much is this TV after the discount?"},
+            {"who": "F", "s": "原來兩萬，現在一萬五。", "zh": "原來兩萬，現在一萬五。", "en": "It was twenty thousand; now fifteen."}
+          ],
+          "q": {"who": "N", "s": "電視現在多少錢？", "zh": "電視現在多少錢？", "en": "How much is the TV now?"},
+          "options": [
+            {"t": "兩萬"},
+            {"t": "五千"},
+            {"t": "一萬"},
+            {"t": "一萬五"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「現在一萬五」。", "en": "\"Fifteen thousand.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你明天怎麼去台中？", "zh": "你明天怎麼去台中？", "en": "How are you getting to Taichung tomorrow?"},
+            {"who": "M", "s": "朋友開車來接我，我們一起去。", "zh": "朋友開車來接我，我們一起去。", "en": "A friend is picking me up by car; we'll go together."}
+          ],
+          "q": {"who": "N", "s": "男的明天怎麼去台中？", "zh": "男的明天怎麼去台中？", "en": "How will the man get to Taichung?"},
+          "options": [
+            {"t": "朋友開車"},
+            {"t": "坐高鐵"},
+            {"t": "坐客運"},
+            {"t": "騎機車"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「朋友開車來接我」。", "en": "\"His friend drives.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你這次考試考得怎麼樣？", "zh": "你這次考試考得怎麼樣？", "en": "How did your exam go?"},
+            {"who": "F", "s": "比我想的好，數學考了九十分。", "zh": "比我想的好，數學考了九十分。", "en": "Better than I expected — ninety in maths."}
+          ],
+          "q": {"who": "N", "s": "女的數學考了多少分？", "zh": "女的數學考了多少分？", "en": "What did she get in maths?"},
+          "options": [
+            {"t": "八十分"},
+            {"t": "一百分"},
+            {"t": "九十分"},
+            {"t": "七十分"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「數學考了九十分」。", "en": "\"Ninety.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "這附近有停車的地方嗎？", "zh": "這附近有停車的地方嗎？", "en": "Is there anywhere to park near here?"},
+            {"who": "M", "s": "前面路口右轉就有一個停車場。", "zh": "前面路口右轉就有一個停車場。", "en": "Turn right at the junction ahead and there's a car park."}
+          ],
+          "q": {"who": "N", "s": "停車場在哪裡？", "zh": "停車場在哪裡？", "en": "Where is the car park?"},
+          "options": [
+            {"t": "前面路口左轉"},
+            {"t": "前面路口右轉"},
+            {"t": "學校後面"},
+            {"t": "捷運站旁邊"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「前面路口右轉就有一個停車場」。", "en": "\"Right at the junction.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你怎麼不吃牛肉？", "zh": "你怎麼不吃牛肉？", "en": "Why don't you eat beef?"},
+            {"who": "F", "s": "我奶奶家拜觀音，我們全家都不吃牛肉。", "zh": "我奶奶家拜觀音，我們全家都不吃牛肉。", "en": "My grandma's family worships Guanyin; none of us eat beef."}
+          ],
+          "q": {"who": "N", "s": "女的為什麼不吃牛肉？", "zh": "女的為什麼不吃牛肉？", "en": "Why doesn't she eat beef?"},
+          "options": [
+            {"t": "家裡的習慣"},
+            {"t": "對身體不好"},
+            {"t": "太貴了"},
+            {"t": "不好吃"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "她們家的習慣。", "en": "A family custom."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你最近怎麼常常很晚睡？", "zh": "你最近怎麼常常很晚睡？", "en": "Why are you going to bed so late lately?"},
+            {"who": "M", "s": "我在學寫程式，每天晚上練習到一點。", "zh": "我在學寫程式，每天晚上練習到一點。", "en": "I'm learning to code and practise till one every night."}
+          ],
+          "q": {"who": "N", "s": "男的最近晚上在做什麼？", "zh": "男的最近晚上在做什麼？", "en": "What does the man do at night lately?"},
+          "options": [
+            {"t": "看電影"},
+            {"t": "加班"},
+            {"t": "打電話"},
+            {"t": "學寫程式"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「我在學寫程式」。", "en": "\"Learning to code.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "請問，這個包裹寄到花蓮要幾天？", "zh": "請問，這個包裹寄到花蓮要幾天？", "en": "How long does this parcel take to Hualien?"},
+            {"who": "F", "s": "一般兩天，週末不送。", "zh": "一般兩天，週末不送。", "en": "Usually two days; no deliveries at weekends."},
+            {"who": "M", "s": "今天星期四，那星期一能到嗎？", "zh": "今天星期四，那星期一能到嗎？", "en": "It's Thursday — will it arrive by Monday?"},
+            {"who": "F", "s": "應該可以，最晚星期一會到。", "zh": "應該可以，最晚星期一會到。", "en": "It should — Monday at the latest."}
+          ],
+          "q": {"who": "N", "s": "包裹最晚什麼時候到？", "zh": "包裹最晚什麼時候到？", "en": "When will the parcel arrive at the latest?"},
+          "options": [
+            {"t": "星期六"},
+            {"t": "星期五"},
+            {"t": "星期一"},
+            {"t": "星期二"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「最晚星期一會到」。", "en": "\"Monday.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你們公司今年的旅行要去哪裡？", "zh": "你們公司今年的旅行要去哪裡？", "en": "Where is your company's trip this year?"},
+            {"who": "M", "s": "本來說去日本，後來決定去墾丁。", "zh": "本來說去日本，後來決定去墾丁。", "en": "Japan at first, then they decided on Kenting."},
+            {"who": "F", "s": "為什麼改了？", "zh": "為什麼改了？", "en": "Why the change?"},
+            {"who": "M", "s": "很多同事的護照過期了，來不及辦。", "zh": "很多同事的護照過期了，來不及辦。", "en": "Many colleagues' passports had expired, with no time to renew."}
+          ],
+          "q": {"who": "N", "s": "公司為什麼改去墾丁？", "zh": "公司為什麼改去墾丁？", "en": "Why did the company switch to Kenting?"},
+          "options": [
+            {"t": "日本太貴"},
+            {"t": "很多人護照過期了"},
+            {"t": "天氣不好"},
+            {"t": "老闆喜歡墾丁"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「很多同事的護照過期了」。", "en": "\"Expired passports.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這間房子你覺得怎麼樣？", "zh": "這間房子你覺得怎麼樣？", "en": "What do you think of this flat?"},
+            {"who": "F", "s": "房間很大，也很亮。", "zh": "房間很大，也很亮。", "en": "The rooms are big and bright."},
+            {"who": "M", "s": "就是離捷運站遠了一點。", "zh": "就是離捷運站遠了一點。", "en": "It's just a bit far from the MRT."},
+            {"who": "F", "s": "沒關係，我可以騎機車。", "zh": "沒關係，我可以騎機車。", "en": "That's fine — I can ride my scooter."}
+          ],
+          "q": {"who": "N", "s": "這間房子有什麼缺點？", "zh": "這間房子有什麼缺點？", "en": "What is the flat's drawback?"},
+          "options": [
+            {"t": "離捷運站遠"},
+            {"t": "房間太小"},
+            {"t": "太暗了"},
+            {"t": "太貴了"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「就是離捷運站遠了一點」。", "en": "\"Far from the MRT.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你看起來很累，昨天沒睡好嗎？", "zh": "你看起來很累，昨天沒睡好嗎？", "en": "You look tired — bad night?"},
+            {"who": "M", "s": "隔壁在裝修，一直很吵。", "zh": "隔壁在裝修，一直很吵。", "en": "The neighbours are renovating — it was noisy all the time."},
+            {"who": "F", "s": "要裝修多久？", "zh": "要裝修多久？", "en": "How long will it take?"},
+            {"who": "M", "s": "聽說還要一個月。", "zh": "聽說還要一個月。", "en": "Another month, apparently."}
+          ],
+          "q": {"who": "N", "s": "男的為什麼沒睡好？", "zh": "男的為什麼沒睡好？", "en": "Why didn't the man sleep well?"},
+          "options": [
+            {"t": "工作太多"},
+            {"t": "生病了"},
+            {"t": "喝了咖啡"},
+            {"t": "隔壁在裝修"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「隔壁在裝修，一直很吵」。", "en": "\"Renovation noise.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你的中文說得真好，學了多久？", "zh": "你的中文說得真好，學了多久？", "en": "Your Chinese is great — how long have you studied?"},
+            {"who": "F", "s": "在學校學了兩年，來台灣以後又學了一年。", "zh": "在學校學了兩年，來台灣以後又學了一年。", "en": "Two years at school and another year since coming to Taiwan."},
+            {"who": "M", "s": "那一共三年了。", "zh": "那一共三年了。", "en": "So three years in all."},
+            {"who": "F", "s": "對，不過還有很多不懂的地方。", "zh": "對，不過還有很多不懂的地方。", "en": "Yes, but there's still lots I don't understand."}
+          ],
+          "q": {"who": "N", "s": "女的一共學了幾年中文？", "zh": "女的一共學了幾年中文？", "en": "How long has she studied Chinese in all?"},
+          "options": [
+            {"t": "兩年"},
+            {"t": "三年"},
+            {"t": "一年"},
+            {"t": "四年"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「那一共三年了」。", "en": "\"Three years.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "這個蛋糕是你自己做的嗎？", "zh": "這個蛋糕是你自己做的嗎？", "en": "Did you make this cake yourself?"},
+            {"who": "M", "s": "是啊，我照著網路上的影片做的。", "zh": "是啊，我照著網路上的影片做的。", "en": "Yes — I followed an online video."},
+            {"who": "F", "s": "看起來跟店裡賣的一樣。", "zh": "看起來跟店裡賣的一樣。", "en": "It looks like one from a shop."},
+            {"who": "M", "s": "謝謝，不過味道還要再改進。", "zh": "謝謝，不過味道還要再改進。", "en": "Thanks, though the taste needs work."}
+          ],
+          "q": {"who": "N", "s": "男的是怎麼學做蛋糕的？", "zh": "男的是怎麼學做蛋糕的？", "en": "How did the man learn to make the cake?"},
+          "options": [
+            {"t": "上課"},
+            {"t": "問媽媽"},
+            {"t": "看網路影片"},
+            {"t": "看書"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「我照著網路上的影片做的」。", "en": "\"From an online video.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "明天的會議幾點開始？", "zh": "明天的會議幾點開始？", "en": "What time does tomorrow's meeting start?"},
+            {"who": "F", "s": "本來是九點，改到十點半了。", "zh": "本來是九點，改到十點半了。", "en": "It was nine; it's moved to half past ten."},
+            {"who": "M", "s": "為什麼改了？", "zh": "為什麼改了？", "en": "Why the change?"},
+            {"who": "F", "s": "經理的飛機晚到。", "zh": "經理的飛機晚到。", "en": "The manager's flight is late."}
+          ],
+          "q": {"who": "N", "s": "會議現在幾點開始？", "zh": "會議現在幾點開始？", "en": "When does the meeting start now?"},
+          "options": [
+            {"t": "十點半"},
+            {"t": "九點"},
+            {"t": "十點"},
+            {"t": "十一點"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「改到十點半了」。", "en": "\"Half past ten.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "很多外國朋友第一次吃臭豆腐都不敢吃，可是吃過一次以後，常常就愛上了這個味道。", "zh": "很多外國朋友第一次吃臭豆腐都不敢吃，可是吃過一次以後，常常就愛上了這個味道。", "en": "Many foreign friends are scared to try stinky tofu the first time, but after one taste they often love it."}
+          ],
+          "q": {"who": "N", "s": "外國朋友吃過臭豆腐以後常常怎麼樣？", "zh": "外國朋友吃過臭豆腐以後常常怎麼樣？", "en": "What often happens after foreigners try stinky tofu?"},
+          "options": [
+            {"t": "再也不吃了"},
+            {"t": "覺得太辣"},
+            {"t": "肚子不舒服"},
+            {"t": "愛上這個味道"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「常常就愛上了這個味道」。", "en": "\"They love it.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "我們圖書館從下個月開始，週末也開到晚上九點，方便上班的人來借書。", "zh": "我們圖書館從下個月開始，週末也開到晚上九點，方便上班的人來借書。", "en": "From next month our library stays open till nine on weekends too, so working people can borrow books."}
+          ],
+          "q": {"who": "N", "s": "圖書館為什麼延長時間？", "zh": "圖書館為什麼延長時間？", "en": "Why is the library staying open later?"},
+          "options": [
+            {"t": "學生要考試"},
+            {"t": "方便上班的人"},
+            {"t": "書變多了"},
+            {"t": "有新的老闆"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「方便上班的人來借書」。", "en": "\"For working people.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "這家店的珍珠奶茶可以選甜度和冰塊，我習慣點半糖少冰。", "zh": "這家店的珍珠奶茶可以選甜度和冰塊，我習慣點半糖少冰。", "en": "At this shop you can choose the sweetness and ice for your bubble tea; I usually order half sugar, light ice."}
+          ],
+          "q": {"who": "N", "s": "他習慣怎麼點珍珠奶茶？", "zh": "他習慣怎麼點珍珠奶茶？", "en": "How does he usually order?"},
+          "options": [
+            {"t": "半糖少冰"},
+            {"t": "全糖去冰"},
+            {"t": "無糖多冰"},
+            {"t": "熱的"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「我習慣點半糖少冰」。", "en": "\"Half sugar, light ice.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "我原來以為當老師很輕鬆，自己當了老師才知道，下課以後還要改作業、準備上課，比上班族還忙。", "zh": "我原來以為當老師很輕鬆，自己當了老師才知道，下課以後還要改作業、準備上課，比上班族還忙。", "en": "I thought teaching was easy; only as a teacher did I learn there's marking and preparation after class — busier than an office job."}
+          ],
+          "q": {"who": "N", "s": "她現在覺得當老師怎麼樣？", "zh": "她現在覺得當老師怎麼樣？", "en": "What does she think of teaching now?"},
+          "options": [
+            {"t": "很輕鬆"},
+            {"t": "收入很高"},
+            {"t": "比上班族還忙"},
+            {"t": "很無聊"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「比上班族還忙」。", "en": "\"Busier than office work.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "每年過年前，台灣人都會把家裡打掃得乾乾淨淨，表示把舊的一年的不好都掃出去。", "zh": "每年過年前，台灣人都會把家裡打掃得乾乾淨淨，表示把舊的一年的不好都掃出去。", "en": "Before Lunar New Year, Taiwanese clean their homes thoroughly, to sweep out the bad luck of the old year."}
+          ],
+          "q": {"who": "N", "s": "過年前打掃家裡表示什麼？", "zh": "過年前打掃家裡表示什麼？", "en": "What does cleaning before New Year mean?"},
+          "options": [
+            {"t": "要請客人來"},
+            {"t": "要搬家"},
+            {"t": "要賣房子"},
+            {"t": "把不好的掃出去"}
+          ],
+          "answer": "D",
+          "explain": {"zh": "「表示把舊的一年的不好都掃出去」。", "en": "\"Sweeping out bad luck.\""}
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "我弟弟大學畢業以後，沒有馬上找工作，而是先去澳洲打工度假一年。他在農場摘過水果，也在餐廳洗過碗。他說這一年讓他學會了怎麼照顧自己。", "zh": "我弟弟大學畢業以後，沒有馬上找工作，而是先去澳洲打工度假一年。他在農場摘過水果，也在餐廳洗過碗。他說這一年讓他學會了怎麼照顧自己。", "en": "After university my younger brother didn't look for work straight away; he went on a working holiday in Australia for a year, picking fruit on farms and washing dishes in restaurants. He says the year taught him to look after himself."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "弟弟畢業以後先做了什麼？", "zh": "弟弟畢業以後先做了什麼？", "en": "What did her brother do first after graduating?"},
+              "options": [
+                {"t": "馬上找工作"},
+                {"t": "去澳洲打工度假"},
+                {"t": "繼續讀書"},
+                {"t": "在家休息"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「先去澳洲打工度假一年」。", "en": "\"A working holiday in Australia.\""}
+            },
+            {
+              "q": {"who": "N", "s": "弟弟覺得這一年讓他學會了什麼？", "zh": "弟弟覺得這一年讓他學會了什麼？", "en": "What does he say he learnt?"},
+              "options": [
+                {"t": "照顧自己"},
+                {"t": "說英文"},
+                {"t": "做菜"},
+                {"t": "開車"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「讓他學會了怎麼照顧自己」。", "en": "\"To look after himself.\""}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "各位旅客請注意，開往高雄的自強號因為前面的路段有問題，會晚二十分鐘到站。要去台中的旅客可以改坐五號月台的區間車。", "zh": "各位旅客請注意，開往高雄的自強號因為前面的路段有問題，會晚二十分鐘到站。要去台中的旅客可以改坐五號月台的區間車。", "en": "Attention please: the Tze-Chiang express to Kaohsiung will arrive twenty minutes late because of a problem on the line ahead. Passengers for Taichung may take the local train at platform 5."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "自強號會晚多久？", "zh": "自強號會晚多久？", "en": "How late is the express?"},
+              "options": [
+                {"t": "五分鐘"},
+                {"t": "十分鐘"},
+                {"t": "二十分鐘"},
+                {"t": "一個小時"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「會晚二十分鐘到站」。", "en": "\"Twenty minutes.\""}
+            },
+            {
+              "q": {"who": "N", "s": "去台中的旅客可以怎麼做？", "zh": "去台中的旅客可以怎麼做？", "en": "What can passengers for Taichung do?"},
+              "options": [
+                {"t": "坐高鐵"},
+                {"t": "在車站等"},
+                {"t": "退票"},
+                {"t": "改坐五號月台的區間車"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「可以改坐五號月台的區間車」。", "en": "\"Take the local train at platform 5.\""}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "很多人喜歡在網路上買東西，因為不用出門，價錢也比較便宜。不過網路上的照片跟真的東西常常不太一樣，所以買衣服的時候最好先看看別人的評價。", "zh": "很多人喜歡在網路上買東西，因為不用出門，價錢也比較便宜。不過網路上的照片跟真的東西常常不太一樣，所以買衣服的時候最好先看看別人的評價。", "en": "Many people like shopping online: no going out and lower prices. But online photos often differ from the real thing, so when buying clothes it's best to read other people's reviews first."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "網路購物有什麼好處？", "zh": "網路購物有什麼好處？", "en": "What is an advantage of shopping online?"},
+              "options": [
+                {"t": "不用出門、比較便宜"},
+                {"t": "東西比較好"},
+                {"t": "送貨很快"},
+                {"t": "可以試穿"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「不用出門，價錢也比較便宜」。", "en": "\"No going out, lower prices.\""}
+            },
+            {
+              "q": {"who": "N", "s": "買衣服的時候最好先做什麼？", "zh": "買衣服的時候最好先做什麼？", "en": "What should you do first when buying clothes?"},
+              "options": [
+                {"t": "問店家"},
+                {"t": "看別人的評價"},
+                {"t": "去實體店"},
+                {"t": "比較價錢"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「最好先看看別人的評價」。", "en": "\"Read reviews.\""}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "我們社區每個月第一個星期天都有一次跳蚤市場，大家把不用的東西拿出來賣或者換。上次我用一本舊書換到了一盆很漂亮的花。", "zh": "我們社區每個月第一個星期天都有一次跳蚤市場，大家把不用的東西拿出來賣或者換。上次我用一本舊書換到了一盆很漂亮的花。", "en": "Our neighbourhood holds a flea market on the first Sunday of every month, where people sell or swap things they no longer use. Last time I swapped an old book for a lovely pot plant."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "跳蚤市場什麼時候舉辦？", "zh": "跳蚤市場什麼時候舉辦？", "en": "When is the flea market held?"},
+              "options": [
+                {"t": "每個星期六"},
+                {"t": "每天晚上"},
+                {"t": "每年一次"},
+                {"t": "每個月第一個星期天"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "「每個月第一個星期天」。", "en": "\"The first Sunday of each month.\""}
+            },
+            {
+              "q": {"who": "N", "s": "他上次換到了什麼？", "zh": "他上次換到了什麼？", "en": "What did he get last time?"},
+              "options": [
+                {"t": "一本書"},
+                {"t": "一件衣服"},
+                {"t": "一盆花"},
+                {"t": "一個杯子"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「換到了一盆很漂亮的花」。", "en": "\"A pot plant.\""}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "F", "s": "我的手機昨天掉進水裡了，拿去修理，店員說裡面的東西都壞了，修理的錢差不多可以買一支新的。我想了想，決定還是買新的。", "zh": "我的手機昨天掉進水裡了，拿去修理，店員說裡面的東西都壞了，修理的錢差不多可以買一支新的。我想了想，決定還是買新的。", "en": "Yesterday my phone fell into water; at the repair shop they said the inside was ruined and the repair would cost about as much as a new one. After thinking it over, I decided to buy a new one."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "她的手機怎麼了？", "zh": "她的手機怎麼了？", "en": "What happened to her phone?"},
+              "options": [
+                {"t": "掉進水裡了"},
+                {"t": "被偷了"},
+                {"t": "摔壞了螢幕"},
+                {"t": "沒有電了"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「我的手機昨天掉進水裡了」。", "en": "\"It fell in water.\""}
+            },
+            {
+              "q": {"who": "N", "s": "她最後決定怎麼做？", "zh": "她最後決定怎麼做？", "en": "What did she decide?"},
+              "options": [
+                {"t": "修理"},
+                {"t": "買新的"},
+                {"t": "用舊的"},
+                {"t": "借朋友的"}
+              ],
+              "answer": "B",
+              "explain": {"zh": "「決定還是買新的」。", "en": "\"Buy a new one.\""}
+            }
+          ]
+        },
+        {
+          "type": "zh_talk",
+          "lines": [
+            {"who": "M", "s": "研究發現，每天走路三十分鐘，對身體有很大的幫助，不但能讓心臟更健康，還能讓人睡得比較好。所以專家建議，上下班的時候可以提早一站下車，多走一段路。", "zh": "研究發現，每天走路三十分鐘，對身體有很大的幫助，不但能讓心臟更健康，還能讓人睡得比較好。所以專家建議，上下班的時候可以提早一站下車，多走一段路。", "en": "Research shows walking thirty minutes a day helps a lot: it strengthens the heart and helps you sleep better. Experts suggest getting off one stop early on the way to and from work."}
+          ],
+          "questions": [
+            {
+              "q": {"who": "N", "s": "每天走路三十分鐘有什麼好處？", "zh": "每天走路三十分鐘有什麼好處？", "en": "What does a daily 30-minute walk do?"},
+              "options": [
+                {"t": "變得很瘦"},
+                {"t": "不會感冒"},
+                {"t": "心臟更健康、睡得好"},
+                {"t": "精神變差"}
+              ],
+              "answer": "C",
+              "explain": {"zh": "「讓心臟更健康，還能讓人睡得比較好」。", "en": "\"Healthier heart, better sleep.\""}
+            },
+            {
+              "q": {"who": "N", "s": "專家建議上下班的時候：", "zh": "專家建議上下班的時候：", "en": "What do experts suggest on the commute?"},
+              "options": [
+                {"t": "提早一站下車走路"},
+                {"t": "騎腳踏車"},
+                {"t": "開車"},
+                {"t": "坐計程車"}
+              ],
+              "answer": "A",
+              "explain": {"zh": "「可以提早一站下車，多走一段路」。", "en": "\"Get off a stop early.\""}
+            },
+            {
+              "q": {"who": "N", "s": "這段話主要說的是：", "zh": "這段話主要說的是：", "en": "What is the talk mainly about?"},
+              "options": [
+                {"t": "怎麼上班"},
+                {"t": "睡覺的方法"},
+                {"t": "心臟病"},
+                {"t": "走路對身體的好處"}
+              ],
+              "answer": "D",
+              "explain": {"zh": "整段在說走路的好處。", "en": "The benefits of walking."}
+            }
+          ]
+        }
+      ]
     }
   ]
 }
