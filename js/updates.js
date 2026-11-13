@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-13',
+      zh: "中文台灣版 HSK 1 到 HSK 7–9 的閱讀和聽力都有模擬考了，題數和時間跟大陸版的模擬考一樣，聽力每段播兩次。韓文 TOPIK 5、6 級的單字也加進了 Discord 機器人。另外修正了台灣版幾個字的讀音（例如「種菜」的種、「船長」的長）。",
+      'zh-Hans': "中文台湾版 HSK 1 到 HSK 7–9 的阅读和听力都有模拟考了，题数和时间跟大陆版的模拟考一样，听力每段播两次。韩语 TOPIK 5、6 级的单词也加进了 Discord 机器人。另外修正了台湾版几个字的读音（例如“种菜”的种、“船长”的长）。",
+      en: "Chinese (Taiwan edition) HSK 1 to HSK 7–9 now have reading and listening mock exams, with the same question counts and times as the Mainland mocks; each listening recording plays twice. The Discord bot now has the TOPIK 5 and 6 words, and a few Taiwan-edition readings were corrected (種 in 種菜, 長 in 船長).",
+      ja: "中国語（台湾版）HSK 1〜HSK 7–9 の読解と聴解に模擬試験ができました。問題数と時間は大陸版の模擬試験と同じで、聴解の音声は 2 回流れます。Discord ボットに TOPIK 5・6 級の単語を追加し、台湾版のいくつかの読み（「種菜」の種、「船長」の長など）を直しました。",
+      ko: "중국어(대만판) HSK 1~HSK 7–9의 읽기와 듣기에 모의고사가 생겼어요. 문제 수와 시간은 대륙판 모의고사와 같고, 듣기 음성은 두 번 나와요. Discord 봇에 TOPIK 5·6급 단어가 추가됐고, 대만판의 몇몇 글자 발음(「種菜」의 種, 「船長」의 長 등)도 고쳤어요.",
+      ru: "В китайском (тайваньское издание) HSK 1 — HSK 7–9 появились пробные экзамены по чтению и аудированию — с тем же числом заданий и временем, что и в материковом издании; каждая запись звучит дважды. В Discord-боте появились слова TOPIK 5 и 6, а несколько чтений в тайваньском издании исправлены (種 в 種菜, 長 в 船長).",
+      fr: "Le chinois (édition taïwanaise) HSK 1 à HSK 7–9 a désormais des examens blancs de lecture et d’écoute, avec le même nombre de questions et la même durée que l’édition continentale ; chaque enregistrement passe deux fois. Le bot Discord propose les mots des TOPIK 5 et 6, et quelques lectures de l’édition taïwanaise ont été corrigées (種 dans 種菜, 長 dans 船長).",
+      es: "El chino (edición de Taiwán) HSK 1 a HSK 7–9 ya tiene exámenes de prueba de lectura y audición, con el mismo número de preguntas y tiempo que los de la edición continental; cada grabación se oye dos veces. El bot de Discord suma las palabras de TOPIK 5 y 6, y se corrigieron algunas lecturas de la edición de Taiwán (種 en 種菜, 長 en 船長).",
+      de: "Chinesisch (Taiwan-Ausgabe) HSK 1 bis HSK 7–9 hat jetzt Probeprüfungen für Lesen und Hören – mit derselben Fragenzahl und Zeit wie die Festland-Ausgabe; jede Aufnahme läuft zweimal. Der Discord-Bot kennt jetzt die Wörter von TOPIK 5 und 6, und einige Lesungen der Taiwan-Ausgabe wurden korrigiert (種 in 種菜, 長 in 船長)." },
     { date: '2026-11-12',
       zh: "上次新增的內容都補齊了：解說也有日、韓、俄、法、西、德文版本，新文法每個選項都有說明；TOEIC 照片題、英文 A1 和台灣版 HSK 1–3 的看圖題都畫好了圖；HSK 5–9 文法例句的台灣腔換成更自然的錄音；TOPIK 5、6 級的單字也分進了各個主題。",
       'zh-Hans': "上次新增的内容都补齐了：解说也有日、韩、俄、法、西、德语版本，新语法每个选项都有说明；TOEIC 照片题、英语 A1 和台湾版 HSK 1–3 的看图题都画好了图；HSK 5–9 语法例句的台湾腔换成了更自然的录音；TOPIK 5、6 级的单词也分进了各个主题。",
