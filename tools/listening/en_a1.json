@@ -2075,6 +2075,696 @@
           }
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "pics": {
+        "p1": {
+          "cols": 3,
+          "rows": 3,
+          "panels": [
+            "a black cat sitting on a chair",
+            "a small brown dog",
+            "a white rabbit",
+            "a boy swimming in a pool",
+            "a boy playing football in a park",
+            "a boy riding a bike",
+            "a cup of hot tea",
+            "a glass of milk",
+            "a glass of orange juice"
+          ],
+          "cap": [
+            "a cat",
+            "a dog",
+            "a rabbit",
+            "swimming",
+            "playing football",
+            "riding a bike",
+            "tea",
+            "milk",
+            "orange juice"
+          ]
+        },
+        "p2": {
+          "cols": 3,
+          "rows": 2,
+          "panels": [
+            "a kitchen with a woman cooking",
+            "a bedroom with a boy reading on the bed",
+            "a garden with a man watering flowers",
+            "a pair of trainers on a floor",
+            "a school bag on a chair; no writing, no numbers anywhere",
+            "a coat hanging on a hook"
+          ],
+          "cap": [
+            "in the kitchen",
+            "in the bedroom",
+            "in the garden",
+            "trainers",
+            "a school bag",
+            "a coat"
+          ]
+        }
+      },
+      "items": [
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Have you got a pet, Emma?",
+              "zh": "艾瑪，妳有寵物嗎？",
+              "en": "Have you got a pet, Emma?"
+            },
+            {
+              "who": "F",
+              "s": "Yes, I have a rabbit. She is white and very small.",
+              "zh": "有，我有一隻兔子，白色的，很小。",
+              "en": "Yes, I have a rabbit. She is white and very small."
+            }
+          ],
+          "options": [
+            {
+              "t": "a cat"
+            },
+            {
+              "t": "a dog"
+            },
+            {
+              "t": "a rabbit"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「我有一隻兔子」。",
+            "en": "A rabbit."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Do you like swimming, Dan?",
+              "zh": "丹，你喜歡游泳嗎？",
+              "en": "Do you like swimming, Dan?"
+            },
+            {
+              "who": "M",
+              "s": "Not really. I play football in the park every day.",
+              "zh": "不太喜歡。我每天在公園踢足球。",
+              "en": "Not really. I play football in the park every day."
+            }
+          ],
+          "options": [
+            {
+              "t": "swimming"
+            },
+            {
+              "t": "playing football"
+            },
+            {
+              "t": "riding a bike"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我每天在公園踢足球」。",
+            "en": "Football."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 2
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "What would you like to drink?",
+              "zh": "妳想喝什麼？",
+              "en": "What would you like to drink?"
+            },
+            {
+              "who": "F",
+              "s": "Tea, please. I don't like milk.",
+              "zh": "請給我茶。我不喜歡牛奶。",
+              "en": "Tea, please. I don't like milk."
+            }
+          ],
+          "options": [
+            {
+              "t": "tea"
+            },
+            {
+              "t": "milk"
+            },
+            {
+              "t": "orange juice"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「請給我茶」。",
+            "en": "Tea."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Where is Dad?",
+              "zh": "爸爸在哪裡？",
+              "en": "Where is Dad?"
+            },
+            {
+              "who": "M",
+              "s": "He's in the garden. He's watering the flowers.",
+              "zh": "他在花園裡澆花。",
+              "en": "He's in the garden. He's watering the flowers."
+            }
+          ],
+          "options": [
+            {
+              "t": "in the kitchen"
+            },
+            {
+              "t": "in the bedroom"
+            },
+            {
+              "t": "in the garden"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「他在花園裡」。",
+            "en": "In the garden."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Mum, I can't find my school bag!",
+              "zh": "媽，我找不到我的書包！",
+              "en": "Mum, I can't find my school bag!"
+            },
+            {
+              "who": "F",
+              "s": "It's on the chair, next to your coat.",
+              "zh": "在椅子上，你的外套旁邊。",
+              "en": "It's on the chair, next to your coat."
+            }
+          ],
+          "options": [
+            {
+              "t": "trainers"
+            },
+            {
+              "t": "a school bag"
+            },
+            {
+              "t": "a coat"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「找不到我的書包」。",
+            "en": "The school bag."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man talking about a new swimming club.",
+              "zh": "你會聽到一位男士介紹新的游泳社。",
+              "en": "You will hear a man talking about a new swimming club."
+            },
+            {
+              "who": "M",
+              "s": "Hello, everyone. There's a new swimming club for children at the sports centre. It's on Tuesday afternoons, from four to five. It's for children from six to ten years old. Please bring a towel. The club costs three pounds each week. Our teacher's name is Mr Green.",
+              "zh": "大家好。運動中心有一個新的兒童游泳社，在星期二下午四點到五點，給六到十歲的孩子參加。請帶毛巾。每週三英鎊。老師是格林先生。",
+              "en": "Hello, everyone. There's a new swimming club for children at the sports centre. It's on Tuesday afternoons, from four to five. It's for children from six to ten years old. Please bring a towel. The club costs three pounds each week. Our teacher's name is Mr Green."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Day: ＿＿＿＿＿",
+                "zh": "星期：＿＿",
+                "en": "Day: ＿＿＿＿＿"
+              },
+              "answers": [
+                "Tuesday"
+              ],
+              "explain": {
+                "zh": "「在星期二下午」。",
+                "en": "Tuesday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ends at: ＿＿＿＿＿ o'clock",
+                "zh": "結束：＿＿點",
+                "en": "Ends at: ＿＿＿＿＿ o'clock"
+              },
+              "answers": [
+                "5",
+                "five"
+              ],
+              "explain": {
+                "zh": "「四點到五點」。",
+                "en": "Five."
+              }
+            },
+            {
+              "ask": {
+                "s": "Age: 6 to ＿＿＿＿＿",
+                "zh": "年齡：6 到＿＿歲",
+                "en": "Age: 6 to ＿＿＿＿＿"
+              },
+              "answers": [
+                "10",
+                "ten"
+              ],
+              "explain": {
+                "zh": "「六到十歲」。",
+                "en": "Ten."
+              }
+            },
+            {
+              "ask": {
+                "s": "Bring a ＿＿＿＿＿",
+                "zh": "要帶：＿＿",
+                "en": "Bring a ＿＿＿＿＿"
+              },
+              "answers": [
+                "towel"
+              ],
+              "explain": {
+                "zh": "「請帶毛巾」。",
+                "en": "A towel."
+              }
+            },
+            {
+              "ask": {
+                "s": "Teacher: Mr ＿＿＿＿＿",
+                "zh": "老師：＿＿先生",
+                "en": "Teacher: Mr ＿＿＿＿＿"
+              },
+              "answers": [
+                "Green"
+              ],
+              "explain": {
+                "zh": "「老師是格林先生」。",
+                "en": "Mr Green."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear Amy talking to her friend Max about a party.",
+              "zh": "你會聽到艾咪和朋友麥克斯談一個派對。",
+              "en": "You will hear Amy talking to her friend Max about a party."
+            },
+            {
+              "who": "F",
+              "s": "Max, it's my birthday on Saturday. Can you come to my party?",
+              "zh": "麥克斯，星期六是我生日，你能來我的派對嗎？",
+              "en": "Max, it's my birthday on Saturday. Can you come to my party?"
+            },
+            {
+              "who": "M",
+              "s": "Yes, I can! Where is it?",
+              "zh": "可以！在哪裡？",
+              "en": "Yes, I can! Where is it?"
+            },
+            {
+              "who": "F",
+              "s": "It's at my house. It starts at two o'clock.",
+              "zh": "在我家，兩點開始。",
+              "en": "It's at my house. It starts at two o'clock."
+            },
+            {
+              "who": "M",
+              "s": "Great. What do you want for your birthday?",
+              "zh": "太好了。妳生日想要什麼？",
+              "en": "Great. What do you want for your birthday?"
+            },
+            {
+              "who": "F",
+              "s": "I love books. Or you can make me a card!",
+              "zh": "我喜歡書。或者你可以做張卡片給我！",
+              "en": "I love books. Or you can make me a card!"
+            },
+            {
+              "who": "M",
+              "s": "OK. Can my sister come too? She's eight.",
+              "zh": "好。我妹妹也能來嗎？她八歲。",
+              "en": "OK. Can my sister come too? She's eight."
+            },
+            {
+              "who": "F",
+              "s": "Of course! My mum is making pizza for everyone.",
+              "zh": "當然！我媽媽要幫大家做披薩。",
+              "en": "Of course! My mum is making pizza for everyone."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "When is the party?",
+                "zh": "派對是哪天？",
+                "en": "When is the party?"
+              },
+              "options": [
+                {
+                  "t": "on Friday"
+                },
+                {
+                  "t": "on Saturday"
+                },
+                {
+                  "t": "on Sunday"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「星期六是我生日」。",
+                "en": "Saturday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Where is the party?",
+                "zh": "派對在哪裡？",
+                "en": "Where is the party?"
+              },
+              "options": [
+                {
+                  "t": "at Amy's house"
+                },
+                {
+                  "t": "at school"
+                },
+                {
+                  "t": "in a café"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「在我家」。",
+                "en": "At Amy's house."
+              }
+            },
+            {
+              "ask": {
+                "s": "What time does the party start?",
+                "zh": "派對幾點開始？",
+                "en": "What time does the party start?"
+              },
+              "options": [
+                {
+                  "t": "at 12"
+                },
+                {
+                  "t": "at 1"
+                },
+                {
+                  "t": "at 2"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「兩點開始」。",
+                "en": "At two."
+              }
+            },
+            {
+              "ask": {
+                "s": "How old is Max's sister?",
+                "zh": "麥克斯的妹妹幾歲？",
+                "en": "How old is Max's sister?"
+              },
+              "options": [
+                {
+                  "t": "six"
+                },
+                {
+                  "t": "seven"
+                },
+                {
+                  "t": "eight"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「她八歲」。",
+                "en": "Eight."
+              }
+            },
+            {
+              "ask": {
+                "s": "What is Amy's mum making?",
+                "zh": "艾咪的媽媽要做什麼？",
+                "en": "What is Amy's mum making?"
+              },
+              "options": [
+                {
+                  "t": "pizza"
+                },
+                {
+                  "t": "a cake"
+                },
+                {
+                  "t": "sandwiches"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「我媽媽要幫大家做披薩」。",
+                "en": "Pizza."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a boy talking about his teacher.",
+              "zh": "你會聽到一個男孩談他的老師。",
+              "en": "You will hear a boy talking about his teacher."
+            },
+            {
+              "who": "M",
+              "s": "My teacher is Miss Hill. She's tall and she has long red hair. She's very funny.",
+              "zh": "我的老師是希爾小姐，她很高，有一頭紅色長髮，很有趣。",
+              "en": "My teacher is Miss Hill. She's tall and she has long red hair. She's very funny."
+            }
+          ],
+          "ask": {
+            "s": "What colour is Miss Hill's hair?",
+            "zh": "希爾小姐的頭髮是什麼顏色？",
+            "en": "What colour is Miss Hill's hair?"
+          },
+          "options": [
+            {
+              "t": "brown"
+            },
+            {
+              "t": "black"
+            },
+            {
+              "t": "red"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「紅色長髮」。",
+            "en": "Red."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a woman at a train station.",
+              "zh": "你會聽到一位女士在火車站。",
+              "en": "You will hear a woman at a train station."
+            },
+            {
+              "who": "F",
+              "s": "One ticket to London, please. Return. Is that eighteen pounds? Thank you.",
+              "zh": "一張到倫敦的票，來回票。十八英鎊嗎？謝謝。",
+              "en": "One ticket to London, please. Return. Is that eighteen pounds? Thank you."
+            }
+          ],
+          "ask": {
+            "s": "Where is the woman going?",
+            "zh": "女士要去哪裡？",
+            "en": "Where is the woman going?"
+          },
+          "options": [
+            {
+              "t": "London"
+            },
+            {
+              "t": "Oxford"
+            },
+            {
+              "t": "Leeds"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「到倫敦的票」。",
+            "en": "London."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a girl talking about her weekend.",
+              "zh": "你會聽到一個女孩談她的週末。",
+              "en": "You will hear a girl talking about her weekend."
+            },
+            {
+              "who": "F",
+              "s": "On Sunday I went to the park with my dad. We had a picnic and played tennis.",
+              "zh": "星期天我和爸爸去公園，我們野餐還打網球。",
+              "en": "On Sunday I went to the park with my dad. We had a picnic and played tennis."
+            }
+          ],
+          "ask": {
+            "s": "Who did the girl go to the park with?",
+            "zh": "女孩和誰去公園？",
+            "en": "Who did the girl go to the park with?"
+          },
+          "options": [
+            {
+              "t": "her mum"
+            },
+            {
+              "t": "her dad"
+            },
+            {
+              "t": "her friend"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我和爸爸去公園」。",
+            "en": "Her dad."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man talking about his breakfast.",
+              "zh": "你會聽到一位男士談他的早餐。",
+              "en": "You will hear a man talking about his breakfast."
+            },
+            {
+              "who": "M",
+              "s": "I always have eggs and toast for breakfast. I don't drink coffee in the morning.",
+              "zh": "我早餐總是吃蛋和吐司，早上不喝咖啡。",
+              "en": "I always have eggs and toast for breakfast. I don't drink coffee in the morning."
+            }
+          ],
+          "ask": {
+            "s": "What does the man eat for breakfast?",
+            "zh": "男士早餐吃什麼？",
+            "en": "What does the man eat for breakfast?"
+          },
+          "options": [
+            {
+              "t": "cereal"
+            },
+            {
+              "t": "fruit"
+            },
+            {
+              "t": "eggs and toast"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「吃蛋和吐司」。",
+            "en": "Eggs and toast."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a girl talking to her brother.",
+              "zh": "你會聽到一個女孩和哥哥說話。",
+              "en": "You will hear a girl talking to her brother."
+            },
+            {
+              "who": "F",
+              "s": "It's very cold today, Paul. Take your scarf and your gloves!",
+              "zh": "保羅，今天很冷，帶你的圍巾和手套！",
+              "en": "It's very cold today, Paul. Take your scarf and your gloves!"
+            }
+          ],
+          "ask": {
+            "s": "What's the weather like today?",
+            "zh": "今天天氣怎樣？",
+            "en": "What's the weather like today?"
+          },
+          "options": [
+            {
+              "t": "cold"
+            },
+            {
+              "t": "hot"
+            },
+            {
+              "t": "windy"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「今天很冷」。",
+            "en": "Cold."
+          }
+        }
+      ]
     }
   ]
 }
