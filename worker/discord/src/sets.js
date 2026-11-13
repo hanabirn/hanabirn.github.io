@@ -18,7 +18,7 @@ const CEFR = ['a1', 'a2', 'b1', 'b2', 'c1'];
 /* [id, label(ui), label includes the language?] */
 const GRADED = {
     ja: ['n5', 'n4', 'n3', 'n2', 'n1'].map(l => ['jlpt_' + l, ui => siteT(ui, 'quiz_jlpt_' + l)]),
-    ko: [1, 2, 3, 4].map(l => ['topik_' + l, ui => siteT(ui, 'quiz_topik_' + l)]),
+    ko: [1, 2, 3, 4, 5, 6].map(l => ['topik_' + l, ui => siteT(ui, 'quiz_topik_' + l)]),
     en: ['jh', 'sh', 'toeic', 'toefl'].map(l => ['en_' + l, ui => siteT(ui, 'quiz_en_' + l), true]),
     zh: [1, 2, 3, 4, 5, 6, 7].map(l => ['hsk_' + l, ui => siteT(ui, 'quiz_hsk_' + l)]),
     fr: CEFR.map(l => ['fr_' + l, () => l.toUpperCase()]),
