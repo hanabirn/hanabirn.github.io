@@ -1001,6 +1001,338 @@
           "explain": {"zh": "「常常跟朋友去打籃球」。", "en": "\"Basketball with friends.\""}
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "pics": {
+        "p1": {"cols": 3, "rows": 3, "panels": ["a man playing the guitar", "a woman swimming in a pool", "a boy flying a kite in a park", "a girl eating a bowl of rice", "a girl eating a slice of watermelon", "a girl drinking a cup of hot soup", "a woman sitting on a sofa reading a book", "a woman cleaning a window", "a woman sleeping on a sofa"], "cap": ["彈吉他", "游泳", "放風箏", "吃飯", "吃西瓜", "喝湯", "看書", "擦窗戶", "睡覺"]},
+        "p2": {"cols": 3, "rows": 2, "panels": ["a man riding a scooter on a street", "a man walking with an umbrella", "a man running to catch a bus; the bus is plain with no letters or numbers", "a clock showing seven o'clock", "a clock showing half past seven", "a clock showing eight o'clock"], "cap": ["騎機車", "撐傘走路", "跑去搭公車", "七點", "七點半", "八點"]},
+        "p3": {"cols": 3, "rows": 2, "panels": ["a woman at a bank counter handing money to a clerk", "a man showing a waiter the bill, looking surprised", "two friends hugging at an airport arrival gate", "a boy doing homework while his mother points at the page", "a man carrying a large plant into a new flat", "a girl buying a train ticket at a machine"], "cap": ["在銀行", "帳單不對", "在機場見面", "寫功課", "搬家", "買車票"]},
+        "p4": {"cols": 3, "rows": 2, "panels": ["a woman trying on a hat in a shop mirror", "a man washing his car", "a grandfather and grandson fishing by a river", "two students running on a sports ground", "a woman putting a cake into an oven", "a man looking for his keys in his bag"], "cap": ["試帽子", "洗車", "釣魚", "跑步", "做蛋糕", "找鑰匙"]}
+      },
+      "items": [
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 0},
+          "lines": [
+            {"who": "N", "s": "我哥哥每個週末都去游泳。", "zh": "我哥哥每個週末都去游泳。", "en": "My older brother goes swimming every weekend."}
+          ],
+          "options": [
+            {"t": "彈吉他"},
+            {"t": "游泳"},
+            {"t": "放風箏"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「去游泳」：B。", "en": "Swimming: B."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 1},
+          "lines": [
+            {"who": "N", "s": "夏天到了，吃西瓜最好了。", "zh": "夏天到了，吃西瓜最好了。", "en": "Summer's here — watermelon is the best."}
+          ],
+          "options": [
+            {"t": "吃飯"},
+            {"t": "吃西瓜"},
+            {"t": "喝湯"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「吃西瓜」：B。", "en": "Watermelon: B."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p1", "row": 2},
+          "lines": [
+            {"who": "N", "s": "媽媽太累了，在沙發上睡著了。", "zh": "媽媽太累了，在沙發上睡著了。", "en": "Mum was so tired she fell asleep on the sofa."}
+          ],
+          "options": [
+            {"t": "看書"},
+            {"t": "擦窗戶"},
+            {"t": "睡覺"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「在沙發上睡著了」：C。", "en": "Asleep on the sofa: C."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p2", "row": 0},
+          "lines": [
+            {"who": "N", "s": "他每天騎機車上班。", "zh": "他每天騎機車上班。", "en": "He rides his scooter to work every day."}
+          ],
+          "options": [
+            {"t": "騎機車"},
+            {"t": "撐傘走路"},
+            {"t": "跑去搭公車"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「騎機車上班」：A。", "en": "Scooter: A."}
+        },
+        {
+          "type": "zh_pic3",
+          "pic": {"name": "p2", "row": 1},
+          "lines": [
+            {"who": "N", "s": "現在七點半，我們該走了。", "zh": "現在七點半，我們該走了。", "en": "It's half past seven — we should go."}
+          ],
+          "options": [
+            {"t": "七點"},
+            {"t": "七點半"},
+            {"t": "八點"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「現在七點半」：B。", "en": "Half past seven: B."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "M", "s": "您好，我想換一些日本錢。", "zh": "您好，我想換一些日本錢。", "en": "Hello, I'd like to change some money into yen."},
+            {"who": "F", "s": "好的，請等一下。", "zh": "好的，請等一下。", "en": "Certainly, one moment."}
+          ],
+          "answer": "A",
+          "explain": {"zh": "在銀行換錢：A。", "en": "At the bank: A."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "F", "s": "你怎麼又不會寫了？", "zh": "你怎麼又不會寫了？", "en": "You can't do it again?"},
+            {"who": "M", "s": "這個字太難了。", "zh": "這個字太難了。", "en": "This character is too hard."}
+          ],
+          "answer": "D",
+          "explain": {"zh": "寫功課：D。", "en": "Homework: D."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "M", "s": "這台機器怎麼用？", "zh": "這台機器怎麼用？", "en": "How does this machine work?"},
+            {"who": "F", "s": "先選你要去的地方，再放錢。", "zh": "先選你要去的地方，再放錢。", "en": "Choose where you're going first, then put the money in."}
+          ],
+          "answer": "F",
+          "explain": {"zh": "用機器買車票：F。", "en": "Ticket machine: F."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "F", "s": "好久不見！你到了！", "zh": "好久不見！你到了！", "en": "Long time no see! You're here!"},
+            {"who": "M", "s": "對啊，飛機晚了一個小時。", "zh": "對啊，飛機晚了一個小時。", "en": "Yes, the plane was an hour late."}
+          ],
+          "answer": "C",
+          "explain": {"zh": "在機場見面：C。", "en": "Meeting at the airport: C."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p3"},
+          "lines": [
+            {"who": "M", "s": "這張帳單好像不對，我們沒點這個菜。", "zh": "這張帳單好像不對，我們沒點這個菜。", "en": "This bill looks wrong — we didn't order this dish."},
+            {"who": "F", "s": "對不起，我馬上看一下。", "zh": "對不起，我馬上看一下。", "en": "Sorry, I'll check right away."}
+          ],
+          "answer": "B",
+          "explain": {"zh": "帳單不對：B。E 是多出來的。", "en": "A wrong bill: B. E is the spare."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p4"},
+          "lines": [
+            {"who": "F", "s": "這頂帽子怎麼樣？", "zh": "這頂帽子怎麼樣？", "en": "How is this hat?"},
+            {"who": "M", "s": "很好看，你戴起來很漂亮。", "zh": "很好看，你戴起來很漂亮。", "en": "Lovely — it looks great on you."}
+          ],
+          "answer": "A",
+          "explain": {"zh": "試帽子：A。", "en": "Trying on a hat: A."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p4"},
+          "lines": [
+            {"who": "M", "s": "爺爺，魚怎麼還不來？", "zh": "爺爺，魚怎麼還不來？", "en": "Grandpa, why aren't the fish coming?"},
+            {"who": "F", "s": "別急，再等一下。", "zh": "別急，再等一下。", "en": "Don't rush — wait a bit longer."}
+          ],
+          "answer": "C",
+          "explain": {"zh": "釣魚：C。", "en": "Fishing: C."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p4"},
+          "lines": [
+            {"who": "F", "s": "我的鑰匙呢？剛才還在包裡。", "zh": "我的鑰匙呢？剛才還在包裡。", "en": "Where are my keys? They were in my bag a moment ago."},
+            {"who": "M", "s": "你看看桌子上。", "zh": "你看看桌子上。", "en": "Look on the table."}
+          ],
+          "answer": "F",
+          "explain": {"zh": "找鑰匙：F。", "en": "Looking for keys: F."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p4"},
+          "lines": [
+            {"who": "M", "s": "你的車真乾淨。", "zh": "你的車真乾淨。", "en": "Your car is so clean."},
+            {"who": "F", "s": "我每個星期天都洗一次。", "zh": "我每個星期天都洗一次。", "en": "I wash it every Sunday."}
+          ],
+          "answer": "B",
+          "explain": {"zh": "洗車：B。", "en": "Washing the car: B."}
+        },
+        {
+          "type": "zh_match",
+          "pic": {"name": "p4"},
+          "lines": [
+            {"who": "F", "s": "再跑一圈就休息。", "zh": "再跑一圈就休息。", "en": "One more lap, then a rest."},
+            {"who": "M", "s": "好，我快跑不動了。", "zh": "好，我快跑不動了。", "en": "OK — I can hardly run any more."}
+          ],
+          "answer": "D",
+          "explain": {"zh": "在操場跑步：D。E 是多出來的。", "en": "Running on the field: D. E is the spare."}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你週末做了什麼？", "zh": "你週末做了什麼？", "en": "What did you do at the weekend?"},
+            {"who": "M", "s": "我去淡水看朋友，還吃了很多好吃的。", "zh": "我去淡水看朋友，還吃了很多好吃的。", "en": "I went to Tamsui to see a friend and ate lots of good food."}
+          ],
+          "q": {"who": "N", "s": "男的週末去了哪裡？", "zh": "男的週末去了哪裡？", "en": "Where did the man go at the weekend?"},
+          "options": [
+            {"t": "淡水"},
+            {"t": "台中"},
+            {"t": "花蓮"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「我去淡水看朋友」。", "en": "\"Tamsui.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你為什麼不吃了？", "zh": "你為什麼不吃了？", "en": "Why have you stopped eating?"},
+            {"who": "F", "s": "太辣了，我不能吃辣的。", "zh": "太辣了，我不能吃辣的。", "en": "It's too spicy — I can't eat spicy food."}
+          ],
+          "q": {"who": "N", "s": "女的為什麼不吃了？", "zh": "女的為什麼不吃了？", "en": "Why has the woman stopped eating?"},
+          "options": [
+            {"t": "吃飽了"},
+            {"t": "太貴了"},
+            {"t": "太辣了"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「太辣了」。", "en": "\"Too spicy.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你的新工作怎麼樣？", "zh": "你的新工作怎麼樣？", "en": "How is your new job?"},
+            {"who": "M", "s": "同事都很好，就是每天要很早起床。", "zh": "同事都很好，就是每天要很早起床。", "en": "My colleagues are nice; it's just that I have to get up very early."}
+          ],
+          "q": {"who": "N", "s": "男的覺得新工作怎麼樣？", "zh": "男的覺得新工作怎麼樣？", "en": "What does the man think of the new job?"},
+          "options": [
+            {"t": "工作太累"},
+            {"t": "同事很好"},
+            {"t": "離家太遠"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「同事都很好」。", "en": "\"The colleagues are nice.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這本書你看完了嗎？", "zh": "這本書你看完了嗎？", "en": "Have you finished this book?"},
+            {"who": "F", "s": "還沒有，我才看了一半。", "zh": "還沒有，我才看了一半。", "en": "Not yet — I've only read half."}
+          ],
+          "q": {"who": "N", "s": "女的看了多少？", "zh": "女的看了多少？", "en": "How much has she read?"},
+          "options": [
+            {"t": "一半"},
+            {"t": "全部"},
+            {"t": "一點也沒看"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「我才看了一半」。", "en": "\"Half.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "我們坐捷運還是坐公車？", "zh": "我們坐捷運還是坐公車？", "en": "Shall we take the MRT or the bus?"},
+            {"who": "M", "s": "坐捷運吧，比較快。", "zh": "坐捷運吧，比較快。", "en": "The MRT — it's faster."}
+          ],
+          "q": {"who": "N", "s": "他們怎麼去？", "zh": "他們怎麼去？", "en": "How will they go?"},
+          "options": [
+            {"t": "坐公車"},
+            {"t": "走路"},
+            {"t": "坐捷運"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「坐捷運吧」。", "en": "\"By MRT.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你的生日是幾月幾號？", "zh": "你的生日是幾月幾號？", "en": "When is your birthday?"},
+            {"who": "F", "s": "十二月二十五號，就是聖誕節那天。", "zh": "十二月二十五號，就是聖誕節那天。", "en": "December the 25th — Christmas Day."}
+          ],
+          "q": {"who": "N", "s": "女的生日是哪一天？", "zh": "女的生日是哪一天？", "en": "When is the woman's birthday?"},
+          "options": [
+            {"t": "十二月二十號"},
+            {"t": "十二月二十五號"},
+            {"t": "十一月二十五號"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「十二月二十五號」。", "en": "\"December 25th.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "外面風好大，你要出去嗎？", "zh": "外面風好大，你要出去嗎？", "en": "It's very windy — are you going out?"},
+            {"who": "M", "s": "不去了，我在家休息。", "zh": "不去了，我在家休息。", "en": "No, I'll rest at home."}
+          ],
+          "q": {"who": "N", "s": "男的要做什麼？", "zh": "男的要做什麼？", "en": "What will the man do?"},
+          "options": [
+            {"t": "在家休息"},
+            {"t": "出去走走"},
+            {"t": "去公司"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「我在家休息」。", "en": "\"Rest at home.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "這個房間一個月多少錢？", "zh": "這個房間一個月多少錢？", "en": "How much is this room a month?"},
+            {"who": "F", "s": "八千塊，水電另外算。", "zh": "八千塊，水電另外算。", "en": "Eight thousand; water and electricity are extra."}
+          ],
+          "q": {"who": "N", "s": "房間一個月多少錢？", "zh": "房間一個月多少錢？", "en": "How much is the room a month?"},
+          "options": [
+            {"t": "六千塊"},
+            {"t": "一萬塊"},
+            {"t": "八千塊"}
+          ],
+          "answer": "C",
+          "explain": {"zh": "「八千塊」。", "en": "\"Eight thousand.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "F", "s": "你哥哥會說日文嗎？", "zh": "你哥哥會說日文嗎？", "en": "Can your older brother speak Japanese?"},
+            {"who": "M", "s": "會，他在東京住過兩年。", "zh": "會，他在東京住過兩年。", "en": "Yes, he lived in Tokyo for two years."}
+          ],
+          "q": {"who": "N", "s": "男的哥哥在東京住了多久？", "zh": "男的哥哥在東京住了多久？", "en": "How long did his brother live in Tokyo?"},
+          "options": [
+            {"t": "一年"},
+            {"t": "兩年"},
+            {"t": "三年"}
+          ],
+          "answer": "B",
+          "explain": {"zh": "「他在東京住過兩年」。", "en": "\"Two years.\""}
+        },
+        {
+          "type": "zh_q",
+          "lines": [
+            {"who": "M", "s": "你看起來很累，怎麼了？", "zh": "你看起來很累，怎麼了？", "en": "You look tired — what's wrong?"},
+            {"who": "F", "s": "昨天晚上我準備考試，只睡了四個小時。", "zh": "昨天晚上我準備考試，只睡了四個小時。", "en": "I was preparing for an exam last night and slept only four hours."}
+          ],
+          "q": {"who": "N", "s": "女的昨天晚上睡了幾個小時？", "zh": "女的昨天晚上睡了幾個小時？", "en": "How many hours did she sleep?"},
+          "options": [
+            {"t": "四個小時"},
+            {"t": "六個小時"},
+            {"t": "八個小時"}
+          ],
+          "answer": "A",
+          "explain": {"zh": "「只睡了四個小時」。", "en": "\"Four hours.\""}
+        }
+      ]
     }
   ]
 }

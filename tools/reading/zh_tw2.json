@@ -576,6 +576,115 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 25,
+      "items": [
+        {
+          "type": "zh_pic",
+          "mondai": 1,
+          "ask": "zh_pic",
+          "pic": {"cols": 3, "rows": 2, "panels": ["a woman taking a photo of a temple with her phone", "a man fixing a bicycle tyre", "a girl singing on a small stage", "two people sharing an umbrella on a rainy street", "a boy feeding a cat outside a house", "a waiter writing down an order at a restaurant table"], "cap": ["拍照", "修腳踏車", "唱歌", "一起撐傘", "餵貓", "點菜"]},
+          "questions": [
+            {"q": "外面下雨了，我們一起走吧。", "answer": "D", "zh": "「下雨了，一起走」：D 是兩個人撐一把傘。", "en": "\"It's raining — let's walk together\": D."},
+            {"q": "我的腳踏車壞了，爸爸正在幫我修。", "answer": "B", "zh": "「腳踏車壞了，在修」：B。", "en": "\"My bike broke; Dad is fixing it\": B."},
+            {"q": "您好，請問要吃點什麼？", "answer": "F", "zh": "服務員問要吃什麼：F 是在記下點菜的服務員。", "en": "\"What would you like to eat?\": F."},
+            {"q": "這個廟很有名，我想拍幾張照片。", "answer": "A", "zh": "「拍幾張照片」：A 是在拍廟的女人。", "en": "\"A famous temple; I'd like some photos\": A."},
+            {"q": "每天下午，弟弟都會給門外的小貓一點吃的。", "answer": "E", "zh": "「給小貓吃的」：E。C 是多出來的。", "en": "\"Every afternoon my brother feeds the kitten outside\": E. C is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["正在", "離", "還", "得", "介紹", "別"],
+          "questions": [
+            {"q": "我家（　）公司不遠，走路十分鐘。", "answer": "B", "zh": "「A 離 B 不遠」：說距離。", "en": "离 gives distance: not far from the office."},
+            {"q": "你（　）說話，寶寶在睡覺。", "answer": "F", "zh": "「別說話」：叫人不要做。", "en": "别, don't: don't talk, the baby's asleep."},
+            {"q": "她跑（　）很快，每次都是第一。", "answer": "D", "zh": "「跑得很快」：動詞＋得＋怎麼樣。", "en": "得 links a verb and how it is done: runs fast."},
+            {"q": "我給你（　）一下，這是我的同學小林。", "answer": "E", "zh": "「介紹一下」：讓人認識。", "en": "介绍, introduce: let me introduce my classmate."},
+            {"q": "你給我打電話的時候，我（　）洗澡。", "answer": "A", "zh": "「正在洗澡」：那時候在做的事。「還」是多出來的。", "en": "正在, in the middle of. 还 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 3,
+          "ask": "zh_next",
+          "bank": ["我們叫計程車去吧。", "所以她今天沒來上課。", "你可以用我的。", "就在銀行旁邊。", "可是我還想再看一會兒。", "他每天都練習一個小時。"],
+          "questions": [
+            {"q": "姐姐昨天晚上生病了，", "answer": "B", "zh": "生病的結果：「所以她今天沒來上課。」", "en": "Ill, so she didn't come to class today."},
+            {"q": "我的筆找不到了。", "answer": "C", "zh": "筆找不到，對方說「你可以用我的。」", "en": "Lost pen: \"You can use mine.\""},
+            {"q": "已經十一點了，", "answer": "E", "zh": "很晚了，「可是我還想再看一會兒。」", "en": "It's late, but he wants to read a bit more."},
+            {"q": "請問，郵局在哪裡？", "answer": "D", "zh": "問郵局在哪裡，回答「就在銀行旁邊。」", "en": "Where the post office is."},
+            {"q": "他的鋼琴彈得很好，因為", "answer": "F", "zh": "彈得好的原因：「每天都練習一個小時。」A 是多出來的。", "en": "Plays well because he practises daily. A is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 3,
+          "ask": "zh_next",
+          "bank": ["我已經買好票了。", "我們去看看吧。", "你最好多穿一點。", "她是我們的新老師。", "我想去，可是我要上班。", "因為我們家的人都愛吃魚。"],
+          "questions": [
+            {"q": "山上比較冷，", "answer": "C", "zh": "山上冷，「你最好多穿一點。」", "en": "Cold up the mountain: wear more."},
+            {"q": "那個穿紅衣服的人是誰？", "answer": "D", "zh": "問是誰，回答「她是我們的新老師。」", "en": "Who she is."},
+            {"q": "電影八點開始，別擔心，", "answer": "A", "zh": "別擔心，「我已經買好票了。」", "en": "Don't worry — tickets are bought."},
+            {"q": "聽說那家新開的書店很大，", "answer": "B", "zh": "書店很大，「我們去看看吧。」", "en": "A big new bookshop — let's go and see."},
+            {"q": "媽媽每個星期都買魚，", "answer": "F", "zh": "常買魚的原因：「我們家的人都愛吃魚。」E 是多出來的。", "en": "Why she buys fish. E is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我姐姐在高雄工作，她每個月回家一次。",
+          "tr": {"en": "My older sister works in Kaohsiung and comes home once a month."},
+          "questions": [
+            {"q": "姐姐多久回家一次？", "options": ["一週一次", "一年一次", "一個月一次"], "answer": 2, "zh": "「她每個月回家一次」。", "en": "\"Once a month.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "這家咖啡店的咖啡不太好喝，可是這裡很安靜，我常常在這裡看書。",
+          "tr": {"en": "The coffee here isn't great, but it's quiet, so I often read here."},
+          "questions": [
+            {"q": "他為什麼常常去這家咖啡店？", "options": ["很安靜", "咖啡很好喝", "離家很近"], "answer": 0, "zh": "「可是這裡很安靜」。", "en": "\"It's quiet.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "我妹妹比我高，可是她比我小三歲。",
+          "tr": {"en": "My younger sister is taller than me, but three years younger."},
+          "questions": [
+            {"q": "下面哪一個是對的？", "options": ["妹妹比他大", "妹妹比他高", "他比妹妹高"], "answer": 1, "zh": "「我妹妹比我高」。", "en": "\"Taller than him.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "明天是星期六，我和同學要去動物園，你也一起來吧。",
+          "tr": {"en": "Tomorrow is Saturday; my classmates and I are going to the zoo — come with us."},
+          "questions": [
+            {"q": "他們星期六要去哪裡？", "options": ["學校", "電影院", "動物園"], "answer": 2, "zh": "「要去動物園」。", "en": "\"The zoo.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 4,
+          "ask": "zh_text",
+          "text": "老師說，考試的時候不能看手機，也不能說話。",
+          "tr": {"en": "The teacher said no looking at phones and no talking during the exam."},
+          "questions": [
+            {"q": "考試的時候不能做什麼？", "options": ["看手機", "寫字", "喝水"], "answer": 0, "zh": "「不能看手機，也不能說話」。", "en": "\"Look at phones.\""}
+          ]
+        }
+      ]
     }
   ]
 }
