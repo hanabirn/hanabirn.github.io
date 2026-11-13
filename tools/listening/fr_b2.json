@@ -1908,6 +1908,617 @@
           "plays": 1
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_q",
+          "part": 1,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une interview. Vous l'entendrez deux fois.",
+              "zh": "你會聽到一段訪問，播兩次。",
+              "en": "You will hear an interview twice."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour Thomas Bernard. Vous êtes urbaniste et vous défendez la « ville du quart d'heure ». De quoi s'agit-il ?",
+              "zh": "湯瑪．貝爾納您好，您是都市規劃師，主張「十五分鐘城市」。那是什麼？",
+              "en": "Hello Thomas Bernard. You're an urban planner and you champion the 'fifteen-minute city'. What is it?"
+            },
+            {
+              "who": "M",
+              "s": "L'idée est simple : chaque habitant devrait pouvoir accéder à pied ou à vélo, en quinze minutes, à tout ce dont il a besoin au quotidien — école, médecin, commerces, parcs. Aujourd'hui, beaucoup de gens passent plus d'une heure par jour dans les transports, ce qui est épuisant et polluant.",
+              "zh": "想法很簡單：每位居民都應該能在十五分鐘內走路或騎車到達日常所需的一切——學校、醫生、商店、公園。如今很多人每天通勤超過一小時，既累又汙染。",
+              "en": "The idea is simple: everyone should be able to reach everything they need daily — school, doctor, shops, parks — within fifteen minutes on foot or by bike. Today many people spend over an hour a day commuting, which is exhausting and polluting."
+            },
+            {
+              "who": "F",
+              "s": "Concrètement, comment une ville peut-elle changer ?",
+              "zh": "具體來說，城市要怎麼改變？",
+              "en": "In practice, how can a city change?"
+            },
+            {
+              "who": "M",
+              "s": "Il faut d'abord utiliser mieux les bâtiments existants. Une cour d'école peut devenir un parc le week-end, une salle de sport peut accueillir des associations le soir. Ensuite, il faut aider les petits commerces à s'installer dans les quartiers où il n'y en a plus.",
+              "zh": "首先要更善用既有建築。校園週末可以變公園，體育館晚上可以給社團使用。再來要幫小商店進駐已經沒有商店的社區。",
+              "en": "First, make better use of existing buildings. A school yard can become a park at weekends; a gym can host associations in the evening. Then help small shops open in neighbourhoods that no longer have any."
+            },
+            {
+              "who": "F",
+              "s": "Certains disent que ce modèle ne marche que pour les centres-villes riches.",
+              "zh": "有人說這個模式只適用於富裕的市中心。",
+              "en": "Some say this model only works for rich city centres."
+            },
+            {
+              "who": "M",
+              "s": "C'est la critique la plus juste. Dans les banlieues éloignées, il faudra des investissements importants, notamment dans les transports en commun. Mais justement, ce sont ces quartiers qui ont le plus à gagner.",
+              "zh": "這是最中肯的批評。在偏遠的郊區需要大量投資，尤其是大眾運輸。但正是這些社區能得到最多好處。",
+              "en": "That's the fairest criticism. Distant suburbs will need major investment, especially in public transport. But those are precisely the areas with the most to gain."
+            },
+            {
+              "who": "F",
+              "s": "Paris a commencé à appliquer cette idée. Quel bilan ?",
+              "zh": "巴黎已開始實施這個想法，成果如何？",
+              "en": "Paris has begun applying the idea. What are the results?"
+            },
+            {
+              "who": "M",
+              "s": "Encourageant, mais il est trop tôt pour conclure. Ce qui est sûr, c'est que l'usage du vélo a fortement augmenté.",
+              "zh": "令人鼓舞，但現在下結論還太早。可以確定的是，單車使用大幅增加。",
+              "en": "Encouraging, but too early to conclude. What's certain is that cycling has risen sharply."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Selon la « ville du quart d'heure », on devrait accéder aux services…",
+                "zh": "依「十五分鐘城市」，應該能……到達服務。",
+                "en": "In the fifteen-minute city, services should be reached…"
+              },
+              "options": [
+                {
+                  "t": "en voiture."
+                },
+                {
+                  "t": "en transport en commun en une heure."
+                },
+                {
+                  "t": "à pied ou à vélo en quinze minutes."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「十五分鐘內走路或騎車」。",
+                "en": "On foot or by bike in 15 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Aujourd'hui, beaucoup de gens…",
+                "zh": "如今很多人……",
+                "en": "Today many people…"
+              },
+              "options": [
+                {
+                  "t": "travaillent à domicile."
+                },
+                {
+                  "t": "vivent à la campagne."
+                },
+                {
+                  "t": "passent plus d'une heure dans les transports."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「每天通勤超過一小時」。",
+                "en": "Commute over an hour."
+              }
+            },
+            {
+              "ask": {
+                "s": "Une cour d'école pourrait devenir…",
+                "zh": "校園可以變成……",
+                "en": "A school yard could become…"
+              },
+              "options": [
+                {
+                  "t": "un parking."
+                },
+                {
+                  "t": "un parc le week-end."
+                },
+                {
+                  "t": "un marché."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「週末可以變公園」。",
+                "en": "A weekend park."
+              }
+            },
+            {
+              "ask": {
+                "s": "Il faut aussi aider…",
+                "zh": "也要幫助……",
+                "en": "It is also necessary to help…"
+              },
+              "options": [
+                {
+                  "t": "les petits commerces."
+                },
+                {
+                  "t": "les grandes entreprises."
+                },
+                {
+                  "t": "les écoles privées."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「幫小商店進駐」。",
+                "en": "Small shops."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que pense Thomas Bernard de la critique sur les centres riches ?",
+                "zh": "他對「只適用富裕市中心」的批評怎麼看？",
+                "en": "What does he think of the criticism?"
+              },
+              "options": [
+                {
+                  "t": "Il la rejette totalement."
+                },
+                {
+                  "t": "Il la trouve juste."
+                },
+                {
+                  "t": "Il ne la connaît pas."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「這是最中肯的批評」。",
+                "en": "He finds it fair."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les banlieues éloignées auront besoin…",
+                "zh": "偏遠郊區需要……",
+                "en": "Distant suburbs will need…"
+              },
+              "options": [
+                {
+                  "t": "de moins de commerces."
+                },
+                {
+                  "t": "de nouvelles autoroutes."
+                },
+                {
+                  "t": "d'investissements dans les transports."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「需要大量投資，尤其是大眾運輸」。",
+                "en": "Transport investment."
+              }
+            },
+            {
+              "ask": {
+                "s": "À Paris, on a constaté…",
+                "zh": "在巴黎已看到……",
+                "en": "In Paris it has been observed that…"
+              },
+              "options": [
+                {
+                  "t": "une forte hausse du vélo."
+                },
+                {
+                  "t": "une baisse des loyers."
+                },
+                {
+                  "t": "moins de touristes."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「單車使用大幅增加」。",
+                "en": "Much more cycling."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un document radiophonique. Vous l'entendrez deux fois.",
+              "zh": "你會聽到一段廣播，播兩次。",
+              "en": "You will hear a radio document twice."
+            },
+            {
+              "who": "F",
+              "s": "Dans notre série sur les métiers d'avenir, nous nous intéressons aujourd'hui aux réparateurs de smartphones. En France, plus de vingt millions de téléphones dorment dans des tiroirs, souvent pour une simple batterie usée ou un écran fissuré. Depuis 2021, un « indice de réparabilité » est affiché sur les appareils : une note sur dix qui indique s'il est facile de les réparer. Les fabricants l'ont d'abord critiqué, mais beaucoup ont depuis amélioré leurs modèles pour obtenir une meilleure note. Pour les réparateurs indépendants, l'activité est en pleine croissance. Karim, qui a ouvert sa boutique à Lille il y a quatre ans, emploie désormais trois personnes. Il explique que ses clients viennent surtout pour l'écologie, mais aussi pour l'économie : une réparation coûte en moyenne trois fois moins cher qu'un appareil neuf. Le métier n'est cependant pas sans difficulté : les pièces détachées sont parfois difficiles à obtenir, et certains fabricants les vendent très cher. L'État a annoncé une aide financière pour les clients qui font réparer leurs appareils plutôt que d'en acheter de nouveaux.",
+              "zh": "在我們的未來職業系列中，今天談手機維修師。在法國，有兩千多萬支手機躺在抽屜裡，常常只是電池老化或螢幕裂了。從 2021 年起，裝置上會標示「可修復指數」：一個十分制的分數，表示好不好修。製造商起初批評它，但許多後來改良了機型以拿到更好的分數。對獨立維修師來說，這一行正蓬勃發展。四年前在里爾開店的卡里姆現在雇了三個人。他說客人主要是為了環保，也為了省錢：維修平均比買新機便宜三倍。不過這一行也有困難：零件有時很難取得，有些製造商賣得很貴。國家宣布要補助送修而不買新機的顧客。",
+              "en": "In our series on jobs of the future, today: smartphone repairers. In France over twenty million phones lie in drawers, often just for a worn battery or a cracked screen. Since 2021 a 'repairability index' has been displayed on devices: a mark out of ten showing how easy they are to repair. Manufacturers criticised it at first, but many have since improved their models to score better. For independent repairers business is booming. Karim, who opened his shop in Lille four years ago, now employs three people. His customers come mainly for the environment, but also to save money: a repair costs on average three times less than a new device. The job has difficulties: spare parts can be hard to get, and some manufacturers sell them very dear. The state has announced financial help for customers who have devices repaired rather than buying new ones."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Combien de téléphones sont inutilisés en France ?",
+                "zh": "法國有多少手機沒在用？",
+                "en": "How many phones are unused in France?"
+              },
+              "options": [
+                {
+                  "t": "plus de deux millions"
+                },
+                {
+                  "t": "plus de vingt millions"
+                },
+                {
+                  "t": "deux cents millions"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「兩千多萬支」。",
+                "en": "Over twenty million."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'indice de réparabilité est…",
+                "zh": "可修復指數是……",
+                "en": "The repairability index is…"
+              },
+              "options": [
+                {
+                  "t": "une note sur dix."
+                },
+                {
+                  "t": "un prix."
+                },
+                {
+                  "t": "une garantie."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「十分制的分數」。",
+                "en": "A mark out of ten."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les fabricants ont d'abord…",
+                "zh": "製造商起初……",
+                "en": "Manufacturers at first…"
+              },
+              "options": [
+                {
+                  "t": "soutenu l'indice."
+                },
+                {
+                  "t": "ignoré l'indice."
+                },
+                {
+                  "t": "critiqué l'indice."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「起初批評它」。",
+                "en": "Criticised it."
+              }
+            },
+            {
+              "ask": {
+                "s": "Karim a ouvert sa boutique il y a…",
+                "zh": "卡里姆……前開店。",
+                "en": "Karim opened his shop…"
+              },
+              "options": [
+                {
+                  "t": "quatre ans."
+                },
+                {
+                  "t": "deux ans."
+                },
+                {
+                  "t": "dix ans."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「四年前」。",
+                "en": "Four years ago."
+              }
+            },
+            {
+              "ask": {
+                "s": "Une réparation coûte en moyenne…",
+                "zh": "維修平均……",
+                "en": "A repair costs on average…"
+              },
+              "options": [
+                {
+                  "t": "autant qu'un appareil neuf."
+                },
+                {
+                  "t": "trois fois moins cher."
+                },
+                {
+                  "t": "deux fois plus cher."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「便宜三倍」。",
+                "en": "Three times cheaper."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quelle difficulté rencontrent les réparateurs ?",
+                "zh": "維修師遇到什麼困難？",
+                "en": "What difficulty do repairers face?"
+              },
+              "options": [
+                {
+                  "t": "le manque de clients"
+                },
+                {
+                  "t": "les horaires"
+                },
+                {
+                  "t": "les pièces détachées"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「零件有時很難取得」。",
+                "en": "Spare parts."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'État va aider…",
+                "zh": "國家將補助……",
+                "en": "The state will help…"
+              },
+              "options": [
+                {
+                  "t": "les clients qui font réparer."
+                },
+                {
+                  "t": "les fabricants."
+                },
+                {
+                  "t": "les magasins neufs."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「補助送修……的顧客」。",
+                "en": "Customers who repair."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un document. Vous ne l'entendrez qu'une seule fois.",
+              "zh": "你會聽到一段錄音，只播一次。",
+              "en": "You will hear a recording. You will hear it only once."
+            },
+            {
+              "who": "M",
+              "s": "Information trafic : en raison d'un accident, l'autoroute A7 est fermée entre Valence et Montélimar dans le sens nord-sud. Une déviation est mise en place par la nationale 7. Prévoyez au moins quarante minutes de retard.",
+              "zh": "交通資訊：由於事故，A7 高速公路瓦朗斯到蒙特利馬南下段封閉。改道國道 7 號，預計至少延誤四十分鐘。",
+              "en": "Traffic news: because of an accident, the A7 motorway is closed between Valence and Montélimar southbound. A diversion is in place via the N7. Expect at least forty minutes' delay."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Pourquoi l'autoroute est-elle fermée ?",
+                "zh": "高速公路為什麼封閉？",
+                "en": "Why is the motorway closed?"
+              },
+              "options": [
+                {
+                  "t": "des travaux"
+                },
+                {
+                  "t": "un accident"
+                },
+                {
+                  "t": "la neige"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「由於事故」。",
+                "en": "An accident."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le retard prévu est d'au moins…",
+                "zh": "預計至少延誤……",
+                "en": "The expected delay is at least…"
+              },
+              "options": [
+                {
+                  "t": "15 minutes."
+                },
+                {
+                  "t": "1 heure 40."
+                },
+                {
+                  "t": "40 minutes."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「至少延誤四十分鐘」。",
+                "en": "40 minutes."
+              }
+            }
+          ],
+          "plays": 1
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un document. Vous ne l'entendrez qu'une seule fois.",
+              "zh": "你會聽到一段錄音，只播一次。",
+              "en": "You will hear a recording. You will hear it only once."
+            },
+            {
+              "who": "F",
+              "s": "Le festival de jazz de Vienne recherche des bénévoles pour l'accueil du public et la buvette. Il faut avoir au moins dix-huit ans et être disponible quatre soirées. Les bénévoles assistent gratuitement aux concerts.",
+              "zh": "維埃納爵士音樂節徵求志工，負責接待觀眾和飲料攤。須年滿十八歲，能空出四個晚上。志工可以免費看音樂會。",
+              "en": "The Vienne jazz festival is looking for volunteers for front-of-house and the bar. You must be at least eighteen and available for four evenings. Volunteers attend the concerts for free."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Pour être bénévole, il faut…",
+                "zh": "要當志工必須……",
+                "en": "To volunteer you must…"
+              },
+              "options": [
+                {
+                  "t": "avoir au moins 18 ans."
+                },
+                {
+                  "t": "jouer d'un instrument."
+                },
+                {
+                  "t": "parler anglais."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「須年滿十八歲」。",
+                "en": "Be 18+."
+              }
+            },
+            {
+              "ask": {
+                "s": "En échange, les bénévoles…",
+                "zh": "作為回報，志工……",
+                "en": "In return, volunteers…"
+              },
+              "options": [
+                {
+                  "t": "sont payés."
+                },
+                {
+                  "t": "voient les concerts gratuitement."
+                },
+                {
+                  "t": "sont logés."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「免費看音樂會」。",
+                "en": "Free concerts."
+              }
+            }
+          ],
+          "plays": 1
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un document. Vous ne l'entendrez qu'une seule fois.",
+              "zh": "你會聽到一段錄音，只播一次。",
+              "en": "You will hear a recording. You will hear it only once."
+            },
+            {
+              "who": "M",
+              "s": "À partir du 1er janvier, les sacs en plastique seront interdits sur tous les marchés de la ville. Les commerçants pourront proposer des sacs en papier, mais la mairie conseille aux clients d'apporter leur propre panier.",
+              "zh": "從一月一日起，全市市集禁用塑膠袋。攤商可以提供紙袋，但市政府建議顧客自備籃子。",
+              "en": "From 1 January, plastic bags will be banned at all the town's markets. Stallholders may offer paper bags, but the town hall advises customers to bring their own basket."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Que sera interdit sur les marchés ?",
+                "zh": "市集將禁止什麼？",
+                "en": "What will be banned at markets?"
+              },
+              "options": [
+                {
+                  "t": "les sacs en papier"
+                },
+                {
+                  "t": "les paniers"
+                },
+                {
+                  "t": "les sacs en plastique"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「禁用塑膠袋」。",
+                "en": "Plastic bags."
+              }
+            },
+            {
+              "ask": {
+                "s": "La mairie conseille de…",
+                "zh": "市政府建議……",
+                "en": "The town hall advises…"
+              },
+              "options": [
+                {
+                  "t": "venir avec son panier."
+                },
+                {
+                  "t": "acheter des sacs en papier."
+                },
+                {
+                  "t": "faire ses courses en ligne."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「建議顧客自備籃子」。",
+                "en": "Bring a basket."
+              }
+            }
+          ],
+          "plays": 1
+        }
+      ]
     }
   ]
 }
