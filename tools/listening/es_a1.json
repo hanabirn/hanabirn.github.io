@@ -2768,6 +2768,927 @@
           }
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "¿Quieres un café?",
+              "zh": "妳要咖啡嗎？",
+              "en": "Do you want a coffee?"
+            },
+            {
+              "who": "F",
+              "s": "No, gracias. Prefiero un zumo de naranja.",
+              "zh": "不用，謝謝。我比較想喝柳橙汁。",
+              "en": "No thanks. I prefer an orange juice."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué quiere tomar la chica?",
+            "zh": "女生想喝什麼？",
+            "en": "What does the girl want?"
+          },
+          "options": [
+            {
+              "t": "un café"
+            },
+            {
+              "t": "un zumo"
+            },
+            {
+              "t": "agua"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我比較想喝柳橙汁」。",
+            "en": "A juice."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "F",
+              "s": "¿Dónde está tu hermano?",
+              "zh": "你哥哥在哪裡？",
+              "en": "Where is your brother?"
+            },
+            {
+              "who": "M",
+              "s": "Está en la biblioteca. Tiene un examen mañana.",
+              "zh": "他在圖書館，明天有考試。",
+              "en": "He's at the library. He has an exam tomorrow."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde está el hermano?",
+            "zh": "哥哥在哪裡？",
+            "en": "Where is the brother?"
+          },
+          "options": [
+            {
+              "t": "en casa"
+            },
+            {
+              "t": "en el colegio"
+            },
+            {
+              "t": "en la biblioteca"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「他在圖書館」。",
+            "en": "At the library."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "¿A qué hora empieza la película?",
+              "zh": "電影幾點開始？",
+              "en": "What time does the film start?"
+            },
+            {
+              "who": "F",
+              "s": "A las nueve y media.",
+              "zh": "九點半。",
+              "en": "At half past nine."
+            }
+          ],
+          "ask": {
+            "s": "¿A qué hora empieza la película?",
+            "zh": "電影幾點開始？",
+            "en": "What time does the film start?"
+          },
+          "options": [
+            {
+              "t": "a las 9:30"
+            },
+            {
+              "t": "a las 9:00"
+            },
+            {
+              "t": "a las 10:30"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「九點半」。",
+            "en": "9.30."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "F",
+              "s": "¿Cómo vas al trabajo?",
+              "zh": "你怎麼去上班？",
+              "en": "How do you get to work?"
+            },
+            {
+              "who": "M",
+              "s": "En bicicleta. Está muy cerca.",
+              "zh": "騎腳踏車，很近。",
+              "en": "By bike. It's very close."
+            }
+          ],
+          "ask": {
+            "s": "¿Cómo va el chico al trabajo?",
+            "zh": "男生怎麼去上班？",
+            "en": "How does he get to work?"
+          },
+          "options": [
+            {
+              "t": "en coche"
+            },
+            {
+              "t": "en metro"
+            },
+            {
+              "t": "en bicicleta"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「騎腳踏車」。",
+            "en": "By bike."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 1,
+          "lines": [
+            {
+              "who": "M",
+              "s": "¿Qué tiempo hace hoy en Barcelona?",
+              "zh": "今天巴塞隆納天氣怎樣？",
+              "en": "What's the weather like in Barcelona today?"
+            },
+            {
+              "who": "F",
+              "s": "Llueve mucho y hace frío.",
+              "zh": "雨下很大，而且很冷。",
+              "en": "It's raining a lot and it's cold."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué tiempo hace?",
+            "zh": "天氣怎樣？",
+            "en": "What's the weather like?"
+          },
+          "options": [
+            {
+              "t": "lluvia"
+            },
+            {
+              "t": "sol"
+            },
+            {
+              "t": "nieve"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「雨下很大」。",
+            "en": "Rain."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escuchas este anuncio en un supermercado.",
+              "zh": "你在超市聽到這則廣播。",
+              "en": "You hear this in a supermarket."
+            },
+            {
+              "who": "F",
+              "s": "Hoy, las naranjas están a un euro el kilo.",
+              "zh": "今天柳橙一公斤一歐元。",
+              "en": "Today oranges are one euro a kilo."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué producto está en oferta?",
+            "zh": "什麼在特價？",
+            "en": "What is on offer?"
+          },
+          "options": [
+            {
+              "t": "las manzanas"
+            },
+            {
+              "t": "el pan"
+            },
+            {
+              "t": "las naranjas"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「柳橙一公斤一歐元」。",
+            "en": "Oranges."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escuchas este anuncio en una estación.",
+              "zh": "你在車站聽到這則廣播。",
+              "en": "You hear this at a station."
+            },
+            {
+              "who": "M",
+              "s": "El tren a Toledo sale del andén número tres.",
+              "zh": "開往托雷多的火車從 3 號月台出發。",
+              "en": "The train to Toledo leaves from platform three."
+            }
+          ],
+          "ask": {
+            "s": "¿De qué andén sale el tren?",
+            "zh": "火車從幾號月台出發？",
+            "en": "Which platform?"
+          },
+          "options": [
+            {
+              "t": "3"
+            },
+            {
+              "t": "1"
+            },
+            {
+              "t": "5"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「3 號月台」。",
+            "en": "Three."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escuchas este anuncio en un museo.",
+              "zh": "你在博物館聽到這則廣播。",
+              "en": "You hear this in a museum."
+            },
+            {
+              "who": "F",
+              "s": "El museo cierra en quince minutos. Gracias por su visita.",
+              "zh": "博物館十五分鐘後關門，謝謝您的參觀。",
+              "en": "The museum closes in fifteen minutes. Thank you for your visit."
+            }
+          ],
+          "ask": {
+            "s": "¿Cuándo cierra el museo?",
+            "zh": "博物館什麼時候關門？",
+            "en": "When does the museum close?"
+          },
+          "options": [
+            {
+              "t": "en cinco minutos"
+            },
+            {
+              "t": "en una hora"
+            },
+            {
+              "t": "en quince minutos"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「十五分鐘後關門」。",
+            "en": "In fifteen minutes."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escuchas este anuncio en un colegio.",
+              "zh": "你在學校聽到這則廣播。",
+              "en": "You hear this at a school."
+            },
+            {
+              "who": "M",
+              "s": "Mañana no hay clase de música. El profesor está enfermo.",
+              "zh": "明天沒有音樂課，老師生病了。",
+              "en": "There's no music class tomorrow. The teacher is ill."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué clase no hay mañana?",
+            "zh": "明天沒有什麼課？",
+            "en": "Which class is cancelled?"
+          },
+          "options": [
+            {
+              "t": "música"
+            },
+            {
+              "t": "inglés"
+            },
+            {
+              "t": "matemáticas"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「明天沒有音樂課」。",
+            "en": "Music."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 2,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Escuchas este anuncio en un avión.",
+              "zh": "你在飛機上聽到這則廣播。",
+              "en": "You hear this on a plane."
+            },
+            {
+              "who": "F",
+              "s": "Vamos a llegar a Málaga a las cinco de la tarde. Hace sol y veinticinco grados.",
+              "zh": "我們將在下午五點抵達馬拉加，天氣晴朗，二十五度。",
+              "en": "We'll arrive in Málaga at five pm. It's sunny and twenty-five degrees."
+            }
+          ],
+          "ask": {
+            "s": "¿A qué hora llega el avión?",
+            "zh": "飛機幾點抵達？",
+            "en": "When does the plane arrive?"
+          },
+          "options": [
+            {
+              "t": "a las 3"
+            },
+            {
+              "t": "a las 5"
+            },
+            {
+              "t": "a las 7"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「下午五點抵達」。",
+            "en": "At five."
+          }
+        },
+        {
+          "type": "en_q",
+          "part": 3,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vas a escuchar una conversación entre dos amigos.",
+              "zh": "你會聽到兩個朋友的對話。",
+              "en": "You will hear a conversation between two friends."
+            },
+            {
+              "who": "F",
+              "s": "Hola, Daniel. ¿Qué haces en verano?",
+              "zh": "嗨，丹尼爾。你暑假做什麼？",
+              "en": "Hi, Daniel. What are you doing in the summer?"
+            },
+            {
+              "who": "M",
+              "s": "Voy a trabajar en un hotel en Mallorca. Empiezo el uno de julio.",
+              "zh": "我要去馬約卡島的一家飯店工作，七月一日開始。",
+              "en": "I'm going to work in a hotel in Mallorca. I start on 1 July."
+            },
+            {
+              "who": "F",
+              "s": "¡Qué bien! ¿Qué vas a hacer en el hotel?",
+              "zh": "真好！你在飯店做什麼？",
+              "en": "Great! What will you do at the hotel?"
+            },
+            {
+              "who": "M",
+              "s": "Voy a trabajar en la recepción. Hablo inglés y alemán, y eso es importante allí.",
+              "zh": "我在櫃台工作。我會說英文和德文，那裡這很重要。",
+              "en": "I'll work at reception. I speak English and German, and that's important there."
+            },
+            {
+              "who": "F",
+              "s": "¿Y dónde vas a vivir?",
+              "zh": "那你住哪？",
+              "en": "And where will you live?"
+            },
+            {
+              "who": "M",
+              "s": "En un piso con otros dos compañeros del hotel. Está a cinco minutos de la playa.",
+              "zh": "和兩個飯店同事住一間公寓，離海灘五分鐘。",
+              "en": "In a flat with two other colleagues from the hotel. It is five minutes from the beach."
+            },
+            {
+              "who": "F",
+              "s": "Yo voy a estar en Granada con mi familia en agosto. Mi abuela cumple ochenta años.",
+              "zh": "我八月要和家人去格拉納達，我奶奶滿八十歲。",
+              "en": "I'll be in Granada with my family in August. My grandmother turns eighty."
+            },
+            {
+              "who": "M",
+              "s": "¡Felicidades a tu abuela! ¿Y en julio?",
+              "zh": "恭喜妳奶奶！那七月呢？",
+              "en": "Congratulations to your grandmother! And in July?"
+            },
+            {
+              "who": "F",
+              "s": "En julio hago un curso de fotografía aquí, en Valencia.",
+              "zh": "七月我在瓦倫西亞這裡上攝影課。",
+              "en": "In July I'm doing a photography course here in Valencia."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "¿Dónde va a trabajar Daniel?",
+                "zh": "丹尼爾要在哪裡工作？",
+                "en": "Where will Daniel work?"
+              },
+              "options": [
+                {
+                  "t": "en una tienda"
+                },
+                {
+                  "t": "en un restaurante"
+                },
+                {
+                  "t": "en un hotel"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「去……一家飯店工作」。",
+                "en": "In a hotel."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Cuándo empieza?",
+                "zh": "什麼時候開始？",
+                "en": "When does he start?"
+              },
+              "options": [
+                {
+                  "t": "el 1 de julio"
+                },
+                {
+                  "t": "el 1 de junio"
+                },
+                {
+                  "t": "el 1 de agosto"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「七月一日開始」。",
+                "en": "1 July."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué va a hacer en el hotel?",
+                "zh": "他在飯店做什麼？",
+                "en": "What will he do there?"
+              },
+              "options": [
+                {
+                  "t": "cocinar"
+                },
+                {
+                  "t": "trabajar en la recepción"
+                },
+                {
+                  "t": "limpiar"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我在櫃台工作」。",
+                "en": "Reception."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué idiomas habla Daniel?",
+                "zh": "丹尼爾會說什麼語言？",
+                "en": "Which languages does he speak?"
+              },
+              "options": [
+                {
+                  "t": "inglés y francés"
+                },
+                {
+                  "t": "alemán e italiano"
+                },
+                {
+                  "t": "inglés y alemán"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「英文和德文」。",
+                "en": "English and German."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Con quién va a vivir?",
+                "zh": "他和誰住？",
+                "en": "Who will he live with?"
+              },
+              "options": [
+                {
+                  "t": "con dos compañeros"
+                },
+                {
+                  "t": "con su familia"
+                },
+                {
+                  "t": "solo"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「和兩個飯店同事」。",
+                "en": "Two colleagues."
+              }
+            },
+            {
+              "ask": {
+                "s": "El piso está…",
+                "zh": "公寓……",
+                "en": "The flat is…"
+              },
+              "options": [
+                {
+                  "t": "en el centro."
+                },
+                {
+                  "t": "cerca de la playa."
+                },
+                {
+                  "t": "en el hotel."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「離海灘五分鐘」。",
+                "en": "Near the beach."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Por qué va la chica a Granada?",
+                "zh": "女生為什麼去格拉納達？",
+                "en": "Why is she going to Granada?"
+              },
+              "options": [
+                {
+                  "t": "por un curso"
+                },
+                {
+                  "t": "por trabajo"
+                },
+                {
+                  "t": "por el cumpleaños de su abuela"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「奶奶滿八十歲」。",
+                "en": "Her grandmother's birthday."
+              }
+            },
+            {
+              "ask": {
+                "s": "¿Qué hace la chica en julio?",
+                "zh": "女生七月做什麼？",
+                "en": "What does she do in July?"
+              },
+              "options": [
+                {
+                  "t": "trabaja en un hotel"
+                },
+                {
+                  "t": "un curso de fotografía"
+                },
+                {
+                  "t": "viaja a Mallorca"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「上攝影課」。",
+                "en": "A photography course."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 1",
+              "zh": "留言 1",
+              "en": "Message 1"
+            },
+            {
+              "who": "F",
+              "s": "Hola, Pedro, soy Elena. ¿Puedes comprar pan? Yo compro la leche.",
+              "zh": "嗨，佩德羅，我是艾蓮娜。你可以買麵包嗎？我買牛奶。",
+              "en": "Hi Pedro, it's Elena. Can you buy bread? I'll buy the milk."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué tiene que comprar Pedro?",
+            "zh": "佩德羅要買什麼？",
+            "en": "What must Pedro buy?"
+          },
+          "options": [
+            {
+              "t": "pan"
+            },
+            {
+              "t": "leche"
+            },
+            {
+              "t": "fruta"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「你可以買麵包嗎？」",
+            "en": "Bread."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 2",
+              "zh": "留言 2",
+              "en": "Message 2"
+            },
+            {
+              "who": "M",
+              "s": "Hola, mamá. Llego tarde a cenar, a las diez. Estoy en casa de Javier.",
+              "zh": "嗨，媽媽。我晚餐會晚到，十點。我在哈維爾家。",
+              "en": "Hi Mum. I'll be late for dinner, at ten. I'm at Javier's house."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde está el chico?",
+            "zh": "男孩在哪裡？",
+            "en": "Where is the boy?"
+          },
+          "options": [
+            {
+              "t": "en el colegio"
+            },
+            {
+              "t": "en casa de un amigo"
+            },
+            {
+              "t": "en el cine"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我在哈維爾家」。",
+            "en": "At a friend's."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 3",
+              "zh": "留言 3",
+              "en": "Message 3"
+            },
+            {
+              "who": "F",
+              "s": "Buenos días, le llamo de la clínica. Su cita con la doctora es el martes a las once.",
+              "zh": "早安，這裡是診所。您和醫生的預約是星期二十一點。",
+              "en": "Good morning, I'm calling from the clinic. Your appointment with the doctor is on Tuesday at eleven."
+            }
+          ],
+          "ask": {
+            "s": "¿Cuándo es la cita?",
+            "zh": "預約是什麼時候？",
+            "en": "When is the appointment?"
+          },
+          "options": [
+            {
+              "t": "el lunes"
+            },
+            {
+              "t": "el jueves"
+            },
+            {
+              "t": "el martes"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「星期二十一點」。",
+            "en": "Tuesday."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 4",
+              "zh": "留言 4",
+              "en": "Message 4"
+            },
+            {
+              "who": "M",
+              "s": "Hola, Laura. La fiesta de Ana es el sábado, en su casa. Tienes que llevar algo de beber.",
+              "zh": "嗨，蘿拉。安娜的派對在星期六，在她家。妳要帶點喝的。",
+              "en": "Hi Laura. Ana's party is on Saturday, at her house. You have to bring something to drink."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué tiene que llevar Laura?",
+            "zh": "蘿拉要帶什麼？",
+            "en": "What must Laura bring?"
+          },
+          "options": [
+            {
+              "t": "comida"
+            },
+            {
+              "t": "bebida"
+            },
+            {
+              "t": "un regalo"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「要帶點喝的」。",
+            "en": "A drink."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 5",
+              "zh": "留言 5",
+              "en": "Message 5"
+            },
+            {
+              "who": "F",
+              "s": "Hola, soy tu profesora de inglés. Mañana la clase es en el aula 8, no en la 4.",
+              "zh": "嗨，我是你的英文老師。明天的課在 8 號教室，不是 4 號。",
+              "en": "Hi, it's your English teacher. Tomorrow's class is in room 8, not room 4."
+            }
+          ],
+          "ask": {
+            "s": "¿Dónde es la clase mañana?",
+            "zh": "明天的課在哪裡？",
+            "en": "Where is the class tomorrow?"
+          },
+          "options": [
+            {
+              "t": "en el aula 8"
+            },
+            {
+              "t": "en el aula 4"
+            },
+            {
+              "t": "en la biblioteca"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「在 8 號教室」。",
+            "en": "Room 8."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 6",
+              "zh": "留言 6",
+              "en": "Message 6"
+            },
+            {
+              "who": "M",
+              "s": "Hola, soy Raúl. No puedo ir al partido hoy porque estoy enfermo. Lo siento.",
+              "zh": "嗨，我是拉烏爾。我生病了，今天不能去比賽，抱歉。",
+              "en": "Hi, it's Raúl. I can't go to the match today because I'm ill. Sorry."
+            }
+          ],
+          "ask": {
+            "s": "¿Por qué no va Raúl al partido?",
+            "zh": "拉烏爾為什麼不去比賽？",
+            "en": "Why isn't Raúl going?"
+          },
+          "options": [
+            {
+              "t": "Tiene que trabajar."
+            },
+            {
+              "t": "Está enfermo."
+            },
+            {
+              "t": "No tiene entrada."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「我生病了」。",
+            "en": "He's ill."
+          }
+        },
+        {
+          "type": "en_talk",
+          "part": 4,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Mensaje 7",
+              "zh": "留言 7",
+              "en": "Message 7"
+            },
+            {
+              "who": "F",
+              "s": "Hola, le llamo de la tienda. Su ordenador ya está reparado. Puede venir a buscarlo esta tarde.",
+              "zh": "您好，這裡是電腦店。您的電腦修好了，今天下午可以來拿。",
+              "en": "Hello, I'm calling from the shop. Your computer is repaired. You can collect it this afternoon."
+            }
+          ],
+          "ask": {
+            "s": "¿Qué está reparado?",
+            "zh": "什麼修好了？",
+            "en": "What has been repaired?"
+          },
+          "options": [
+            {
+              "t": "el móvil"
+            },
+            {
+              "t": "la bicicleta"
+            },
+            {
+              "t": "el ordenador"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「您的電腦修好了」。",
+            "en": "The computer."
+          }
+        }
+      ]
     }
   ]
 }

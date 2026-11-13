@@ -2649,6 +2649,376 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 45,
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_long",
+          "text": "Hola, Pablo:\n¿Cómo estás? Te escribo desde Madrid. Estoy aquí con mi hermana para visitar a nuestros abuelos. Ellos viven en un piso grande en el centro. Por las mañanas paseamos por el parque del Retiro y por las tardes vamos a museos. Ayer visitamos el Museo del Prado: ¡es enorme! El domingo volvemos a Bilbao en autobús. ¿Quieres venir a mi casa el lunes? Podemos jugar al tenis.\nUn abrazo,\nLucía",
+          "tr": {
+            "zh": "嗨，帕布羅：\n你好嗎？我從馬德里寫信給你。我和妹妹來這裡看爺爺奶奶。他們住在市中心的一間大公寓。早上我們在麗池公園散步，下午去博物館。昨天我們參觀了普拉多美術館：好大！星期天我們搭巴士回畢爾包。星期一你要來我家嗎？我們可以打網球。\n擁抱，\n露西亞",
+            "en": "Hi Pablo,\nHow are you? I'm writing from Madrid. I'm here with my sister visiting our grandparents. They live in a big flat in the centre. In the mornings we walk in the Retiro park and in the afternoons we go to museums. Yesterday we visited the Prado: it's huge! On Sunday we go back to Bilbao by bus. Do you want to come to my house on Monday? We can play tennis.\nHugs,\nLucía"
+          },
+          "questions": [
+            {
+              "q": "Lucía está en Madrid con…",
+              "options": [
+                "sus padres.",
+                "Pablo.",
+                "su hermana."
+              ],
+              "answer": 2,
+              "zh": "「我和妹妹來這裡」。",
+              "en": "Her sister."
+            },
+            {
+              "q": "Los abuelos viven…",
+              "options": [
+                "en una casa en el campo.",
+                "en un piso en el centro.",
+                "en Bilbao."
+              ],
+              "answer": 1,
+              "zh": "「住在市中心的一間大公寓」。",
+              "en": "A flat in the centre."
+            },
+            {
+              "q": "Por las tardes, Lucía…",
+              "options": [
+                "va a museos.",
+                "pasea por el parque.",
+                "juega al tenis."
+              ],
+              "answer": 0,
+              "zh": "「下午去博物館」。",
+              "en": "Goes to museums."
+            },
+            {
+              "q": "Lucía vuelve a Bilbao…",
+              "options": [
+                "en tren.",
+                "en avión.",
+                "en autobús."
+              ],
+              "answer": 2,
+              "zh": "「搭巴士回畢爾包」。",
+              "en": "By bus."
+            },
+            {
+              "q": "El lunes, Lucía quiere…",
+              "options": [
+                "jugar al tenis con Pablo.",
+                "ir al museo.",
+                "visitar a sus abuelos."
+              ],
+              "answer": 0,
+              "zh": "「我們可以打網球」。",
+              "en": "Play tennis with Pablo."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "BIBLIOTECA\nSilencio, por favor.\nNo se puede comer ni beber en las salas de lectura.",
+          "tr": {
+            "zh": "圖書館\n請保持安靜。\n閱覽室內禁止飲食。",
+            "en": "LIBRARY\nSilence, please.\nNo eating or drinking in the reading rooms."
+          },
+          "questions": [
+            {
+              "q": "En la biblioteca no se puede…",
+              "options": [
+                "leer.",
+                "comer.",
+                "estudiar."
+              ],
+              "answer": 1,
+              "zh": "「禁止飲食」。",
+              "en": "Eat."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "PISCINA MUNICIPAL\nNiños menores de 6 años: gratis.\nAdultos: 4 €.",
+          "tr": {
+            "zh": "市立游泳池\n6 歲以下兒童免費。\n成人 4 歐元。",
+            "en": "MUNICIPAL POOL\nChildren under 6: free.\nAdults: €4."
+          },
+          "questions": [
+            {
+              "q": "¿Cuánto paga un niño de 4 años?",
+              "options": [
+                "2 €",
+                "4 €",
+                "nada"
+              ],
+              "answer": 2,
+              "zh": "「6 歲以下兒童免費」。",
+              "en": "Nothing."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "SE ALQUILA HABITACIÓN\nPiso compartido con dos estudiantes. Cerca de la universidad. 300 € al mes.",
+          "tr": {
+            "zh": "雅房出租\n和兩位學生合租，靠近大學，每月 300 歐元。",
+            "en": "ROOM TO RENT\nFlat shared with two students. Near the university. €300 a month."
+          },
+          "questions": [
+            {
+              "q": "El anuncio es para…",
+              "options": [
+                "alquilar una habitación.",
+                "comprar un piso.",
+                "trabajar en la universidad."
+              ],
+              "answer": 0,
+              "zh": "「雅房出租」。",
+              "en": "Renting a room."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "TIENDA DE ROPA\nRebajas: del 7 de enero al 28 de febrero.",
+          "tr": {
+            "zh": "服飾店\n特價：1 月 7 日到 2 月 28 日。",
+            "en": "CLOTHES SHOP\nSales: 7 January to 28 February."
+          },
+          "questions": [
+            {
+              "q": "Las rebajas son en…",
+              "options": [
+                "verano.",
+                "invierno.",
+                "primavera."
+              ],
+              "answer": 1,
+              "zh": "「1 月 7 日到 2 月 28 日」：冬天。",
+              "en": "Winter."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "RESTAURANTE EL PATIO\nMenú del día: 12 €. De lunes a viernes, de 13:00 a 16:00.",
+          "tr": {
+            "zh": "庭院餐廳\n今日套餐 12 歐元。星期一到五，13:00–16:00。",
+            "en": "EL PATIO RESTAURANT\nSet menu: €12. Monday to Friday, 1–4 pm."
+          },
+          "questions": [
+            {
+              "q": "El menú del día es…",
+              "options": [
+                "por la noche.",
+                "los fines de semana.",
+                "a mediodía."
+              ],
+              "answer": 2,
+              "zh": "「13:00–16:00」：中午。",
+              "en": "At midday."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_notice",
+          "text": "AUTOBÚS 15\nEl domingo no hay servicio. Use la línea 22.",
+          "tr": {
+            "zh": "15 路公車\n星期日停駛，請搭 22 路。",
+            "en": "BUS 15\nNo service on Sunday. Use line 22."
+          },
+          "questions": [
+            {
+              "q": "El domingo hay que tomar…",
+              "options": [
+                "el autobús 22.",
+                "el autobús 15.",
+                "un taxi."
+              ],
+              "answer": 0,
+              "zh": "「請搭 22 路」。",
+              "en": "Bus 22."
+            }
+          ]
+        },
+        {
+          "type": "en_people",
+          "mondai": 3,
+          "ask": "en_people",
+          "bank": [
+            "Floristería Jardín — Flores para regalar. Envío a domicilio.",
+            "Gimnasio Activa — Abierto de 7:00 a 23:00. Clases de yoga.",
+            "Librería Letras — Libros en español e inglés. Café para leer.",
+            "Taller Rueda — Reparamos coches y motos. Precios económicos.",
+            "Academia Idiomas Ya — Clases de inglés y francés para adultos.",
+            "Óptica Mirar — Gafas y lentillas. Examen de la vista gratis.",
+            "Agencia de viajes Sol — Viajes a la playa y a la montaña.",
+            "Juguetería Peque — Juguetes para niños de 0 a 12 años.",
+            "Tienda de deportes Gol — Balones, zapatillas y ropa de deporte."
+          ],
+          "tr": {
+            "zh": "A 花園花店：送禮用花，可宅配。\nB 活力健身房：7:00 到 23:00，有瑜伽課。\nC 文字書店：西班牙文和英文書，附咖啡座。\nD 輪子修車廠：修汽車和機車，價格便宜。\nE 立刻語言學校：成人英文和法文課。\nF 看見眼鏡行：眼鏡和隱形眼鏡，免費驗光。\nG 陽光旅行社：海邊和山上的旅行。\nH 小不點玩具店：0 到 12 歲兒童玩具。\nI 進球運動用品店：球、運動鞋和運動服。",
+            "en": "A Jardín florist — Flowers as gifts. Home delivery.\nB Activa gym — Open 7 am–11 pm. Yoga classes.\nC Letras bookshop — Books in Spanish and English. Café for reading.\nD Rueda garage — We repair cars and motorbikes. Cheap prices.\nE Idiomas Ya academy — English and French classes for adults.\nF Mirar optician — Glasses and contact lenses. Free eye test.\nG Sol travel agency — Trips to the beach and mountains.\nH Peque toyshop — Toys for children 0–12.\nI Gol sports shop — Balls, trainers and sportswear."
+          },
+          "questions": [
+            {
+              "q": "Carmen no ve bien y necesita gafas nuevas.",
+              "answer": "F",
+              "zh": "看不清楚、需要新眼鏡：F 眼鏡行。",
+              "en": "The optician."
+            },
+            {
+              "q": "Jorge quiere hacer deporte después del trabajo, a las diez de la noche.",
+              "answer": "B",
+              "zh": "晚上十點運動：B 健身房開到 23:00。",
+              "en": "The gym open late."
+            },
+            {
+              "q": "Sara quiere enviar flores a su madre.",
+              "answer": "A",
+              "zh": "送花給媽媽：A 花店可宅配。",
+              "en": "The florist."
+            },
+            {
+              "q": "El coche de Miguel no funciona.",
+              "answer": "D",
+              "zh": "車子壞了：D 修車廠。",
+              "en": "The garage."
+            },
+            {
+              "q": "Paula quiere aprender inglés.",
+              "answer": "E",
+              "zh": "學英文：E 語言學校。",
+              "en": "The language school."
+            },
+            {
+              "q": "Luis busca un regalo para su hijo de cinco años.",
+              "answer": "H",
+              "zh": "送五歲兒子禮物：H 玩具店。",
+              "en": "The toyshop."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 4,
+          "ask": "en_long",
+          "text": "CENTRO CULTURAL — Programa de actividades (octubre)\nLunes: clase de pintura para adultos, de 18:00 a 20:00. Precio: 10 €.\nMartes: cine en versión original con subtítulos, a las 19:30. Entrada gratuita.\nMiércoles: taller de cocina mexicana, de 17:00 a 19:00. Plazas limitadas: 12 personas.\nJueves: club de lectura para jóvenes de 14 a 18 años, a las 17:30.\nViernes: concierto de guitarra flamenca, a las 21:00. Entrada: 8 €.\nSábado: excursión al campo. Salida a las 9:00 desde la puerta del centro. Hay que llevar comida.\nInscripciones en la recepción o en www.centrocultural.es.",
+          "tr": {
+            "zh": "文化中心——十月活動\n星期一：成人繪畫課，18:00–20:00，10 歐元。\n星期二：原文電影附字幕，19:30，免費入場。\n星期三：墨西哥料理工作坊，17:00–19:00，限 12 人。\n星期四：14 到 18 歲青少年讀書會，17:30。\n星期五：佛朗明哥吉他音樂會，21:00，8 歐元。\n星期六：郊外遠足，9:00 從中心門口出發，要自備食物。\n請在櫃台或 www.centrocultural.es 報名。",
+            "en": "CULTURAL CENTRE — October programme\nMonday: painting class for adults, 6–8 pm. €10.\nTuesday: original-language film with subtitles, 7.30 pm. Free.\nWednesday: Mexican cooking workshop, 5–7 pm. Limited to 12 people.\nThursday: book club for 14–18-year-olds, 5.30 pm.\nFriday: flamenco guitar concert, 9 pm. €8.\nSaturday: country outing. Leaves 9 am from the centre door. Bring food.\nSign up at reception or www.centrocultural.es."
+          },
+          "questions": [
+            {
+              "q": "La clase de pintura es…",
+              "options": [
+                "el martes.",
+                "el lunes.",
+                "el jueves."
+              ],
+              "answer": 1,
+              "zh": "「星期一：成人繪畫課」。",
+              "en": "Monday."
+            },
+            {
+              "q": "¿Qué actividad es gratis?",
+              "options": [
+                "la clase de pintura",
+                "el concierto",
+                "el cine"
+              ],
+              "answer": 2,
+              "zh": "「原文電影……免費入場」。",
+              "en": "The cinema."
+            },
+            {
+              "q": "En el taller de cocina pueden participar…",
+              "options": [
+                "12 personas.",
+                "20 personas.",
+                "todas las personas."
+              ],
+              "answer": 0,
+              "zh": "「限 12 人」。",
+              "en": "12 people."
+            },
+            {
+              "q": "El club de lectura es para…",
+              "options": [
+                "niños pequeños.",
+                "jóvenes.",
+                "adultos."
+              ],
+              "answer": 1,
+              "zh": "「14 到 18 歲青少年」。",
+              "en": "Young people."
+            },
+            {
+              "q": "El concierto empieza a las…",
+              "options": [
+                "19:30.",
+                "17:30.",
+                "21:00."
+              ],
+              "answer": 2,
+              "zh": "「21:00」。",
+              "en": "9 pm."
+            },
+            {
+              "q": "La excursión es…",
+              "options": [
+                "el sábado.",
+                "el viernes.",
+                "el domingo."
+              ],
+              "answer": 0,
+              "zh": "「星期六：郊外遠足」。",
+              "en": "Saturday."
+            },
+            {
+              "q": "Para la excursión hay que llevar…",
+              "options": [
+                "dinero.",
+                "comida.",
+                "una bicicleta."
+              ],
+              "answer": 1,
+              "zh": "「要自備食物」。",
+              "en": "Food."
+            },
+            {
+              "q": "¿Dónde puedes inscribirte?",
+              "options": [
+                "solo en internet",
+                "por teléfono",
+                "en la recepción o en internet"
+              ],
+              "answer": 2,
+              "zh": "「請在櫃台或網站報名」。",
+              "en": "Reception or online."
+            }
+          ]
+        }
+      ]
     }
   ],
   "n_options": 3
