@@ -2775,6 +2775,912 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте диало́г.",
+              "zh": "請聽一段對話。",
+              "en": "Listen to the dialogue."
+            },
+            {
+              "who": "M",
+              "s": "Ка́тя, приве́т! Ты не зна́ешь, где мо́жно снять кварти́ру недалеко́ от университе́та?",
+              "zh": "卡佳，嗨！妳知道哪裡能在大學附近租到公寓嗎？",
+              "en": "Katya, hi! Do you know where I could rent a flat near the university?"
+            },
+            {
+              "who": "F",
+              "s": "Попро́буй поиска́ть на са́йте. Но ря́дом с университе́том до́рого — ты́сяч со́рок в ме́сяц.",
+              "zh": "試試網站。但大學附近很貴——一個月四萬左右。",
+              "en": "Try a website. But near the university it's expensive — about forty thousand a month."
+            },
+            {
+              "who": "M",
+              "s": "Э́то сли́шком до́рого для меня́. Я могу́ плати́ть ма́ксимум два́дцать пять.",
+              "zh": "對我太貴了。我最多只能付兩萬五。",
+              "en": "That's too expensive for me. I can pay twenty-five at most."
+            },
+            {
+              "who": "F",
+              "s": "Тогда́ ищи́ в райо́не Ботани́ческого са́да. Отту́да два́дцать мину́т на трамва́е. Мой брат там живёт, ему́ нра́вится.",
+              "zh": "那就找植物園那一區。從那裡搭電車二十分鐘。我哥住那裡，他很喜歡。",
+              "en": "Then look around the Botanical Garden. It's twenty minutes from there by tram. My brother lives there and likes it."
+            },
+            {
+              "who": "M",
+              "s": "Отли́чно, спаси́бо! А мо́жно взять телефо́н твоего́ бра́та? Я спрошу́ у него́ про хозя́ев.",
+              "zh": "太好了，謝謝！可以給我妳哥的電話嗎？我問他房東的事。",
+              "en": "Great, thanks! Could I have your brother's number? I'll ask him about landlords."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Что и́щет молодо́й челове́к?",
+                "zh": "年輕人在找什麼？",
+                "en": "What is the young man looking for?"
+              },
+              "options": [
+                {
+                  "t": "рабо́ту"
+                },
+                {
+                  "t": "кварти́ру"
+                },
+                {
+                  "t": "университе́т"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "租公寓。",
+                "en": "A flat."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько он мо́жет плати́ть?",
+                "zh": "他能付多少？",
+                "en": "How much can he pay?"
+              },
+              "options": [
+                {
+                  "t": "40 ты́сяч"
+                },
+                {
+                  "t": "20 ты́сяч"
+                },
+                {
+                  "t": "не бо́льше 25 ты́сяч"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "最多兩萬五。",
+                "en": "At most 25,000."
+              }
+            },
+            {
+              "ask": {
+                "s": "Како́й райо́н сове́тует Ка́тя?",
+                "zh": "卡佳建議哪一區？",
+                "en": "Which area does Katya suggest?"
+              },
+              "options": [
+                {
+                  "t": "райо́н Ботани́ческого са́да"
+                },
+                {
+                  "t": "центр"
+                },
+                {
+                  "t": "райо́н ря́дом с университе́том"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "植物園一區。",
+                "en": "The Botanical Garden area."
+              }
+            },
+            {
+              "ask": {
+                "s": "Как отту́да добра́ться до университе́та?",
+                "zh": "從那裡怎麼去大學？",
+                "en": "How to get to the university from there?"
+              },
+              "options": [
+                {
+                  "t": "на метро́"
+                },
+                {
+                  "t": "пешко́м"
+                },
+                {
+                  "t": "на трамва́е"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "搭電車二十分鐘。",
+                "en": "By tram."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что он хо́чет узна́ть у бра́та Ка́ти?",
+                "zh": "他想向卡佳的哥哥打聽什麼？",
+                "en": "What does he want to ask Katya's brother?"
+              },
+              "options": [
+                {
+                  "t": "о хозя́евах кварти́р"
+                },
+                {
+                  "t": "где рабо́та"
+                },
+                {
+                  "t": "ско́лько сто́ит трамва́й"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "問房東的事。",
+                "en": "About landlords."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте интервью́.",
+              "zh": "請聽一段訪談。",
+              "en": "Listen to the interview."
+            },
+            {
+              "who": "F",
+              "s": "Сего́дня у нас в гостя́х Алексе́й Смирно́в, кото́рый прошёл пешко́м от Москвы́ до Байка́ла. Алексе́й, ско́лько вре́мени э́то за́няло?",
+              "zh": "今天的來賓是阿列克謝．斯米爾諾夫，他從莫斯科徒步走到貝加爾湖。阿列克謝，花了多少時間？",
+              "en": "Today our guest is Alexei Smirnov, who walked from Moscow to Baikal. Alexei, how long did it take?"
+            },
+            {
+              "who": "M",
+              "s": "Почти́ во́семь ме́сяцев. Я вы́шел в ма́рте, а пришёл в ноябре́, когда́ уже́ лежа́л снег.",
+              "zh": "將近八個月。我三月出發，十一月到，那時已經下雪了。",
+              "en": "Almost eight months. I set off in March and arrived in November, when there was already snow."
+            },
+            {
+              "who": "F",
+              "s": "Где вы ночева́ли?",
+              "zh": "您在哪裡過夜？",
+              "en": "Where did you sleep?"
+            },
+            {
+              "who": "M",
+              "s": "Ча́ще всего́ в пала́тке. Но в деревня́х лю́ди ча́сто приглаша́ли меня́ к себе́ домо́й, корми́ли, дава́ли ба́ню. Э́то са́мое лу́чшее воспомина́ние — доброта́ незнако́мых люде́й.",
+              "zh": "大多在帳篷裡。但在村子裡人們常邀我到家裡，請我吃飯，讓我洗蒸汽浴。這是最美好的回憶——陌生人的善意。",
+              "en": "Mostly in a tent. But in villages people often invited me home, fed me and let me use the bathhouse. That's the best memory — the kindness of strangers."
+            },
+            {
+              "who": "F",
+              "s": "А что бы́ло са́мым тру́дным?",
+              "zh": "最困難的是什麼？",
+              "en": "And what was hardest?"
+            },
+            {
+              "who": "M",
+              "s": "Не хо́лод и не уста́лость, а одино́чество. Иногда́ я неде́лю ни с кем не разгова́ривал. Тогда́ я звони́л ма́ме.",
+              "zh": "不是冷也不是累，而是孤獨。有時我一個星期沒跟任何人說話。那時我就打電話給媽媽。",
+              "en": "Not the cold or the tiredness but loneliness. Sometimes I didn't talk to anyone for a week. Then I phoned my mother."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Ско́лько дли́лось путеше́ствие?",
+                "zh": "旅程多久？",
+                "en": "How long was the journey?"
+              },
+              "options": [
+                {
+                  "t": "год"
+                },
+                {
+                  "t": "три ме́сяца"
+                },
+                {
+                  "t": "о́коло восьми́ ме́сяцев"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "將近八個月。",
+                "en": "About eight months."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где Алексе́й ночева́л ча́ще всего́?",
+                "zh": "阿列克謝大多在哪過夜？",
+                "en": "Where did he usually sleep?"
+              },
+              "options": [
+                {
+                  "t": "в пала́тке"
+                },
+                {
+                  "t": "в гости́ницах"
+                },
+                {
+                  "t": "в поезда́х"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "帳篷。",
+                "en": "In a tent."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что Алексе́й вспомина́ет лу́чше всего́?",
+                "zh": "阿列克謝最好的回憶是什麼？",
+                "en": "What is his best memory?"
+              },
+              "options": [
+                {
+                  "t": "приро́ду Байка́ла"
+                },
+                {
+                  "t": "снег в ноябре́"
+                },
+                {
+                  "t": "доброту́ люде́й"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "陌生人的善意。",
+                "en": "Kindness of strangers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что бы́ло для него́ са́мым тру́дным?",
+                "zh": "對他最難的是什麼？",
+                "en": "What was hardest for him?"
+              },
+              "options": [
+                {
+                  "t": "одино́чество"
+                },
+                {
+                  "t": "хо́лод"
+                },
+                {
+                  "t": "уста́лость"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "孤獨。",
+                "en": "Loneliness."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте но́вость.",
+              "zh": "請聽一則新聞。",
+              "en": "Listen to the news item."
+            },
+            {
+              "who": "M",
+              "s": "В Ни́жнем Но́вгороде откры́лась пе́рвая в Росси́и библиоте́ка для слепы́х дете́й, где все кни́ги мо́жно не то́лько чита́ть па́льцами, но и слу́шать. В библиоте́ке рабо́тают волонтёры — студе́нты педагоги́ческого университе́та. Они́ запи́сывают аудиокни́ги и прово́дят заня́тия. Вход беспла́тный, библиоте́ка рабо́тает ка́ждый день, кро́ме понеде́льника.",
+              "zh": "下諾夫哥羅德開了俄羅斯第一座給盲童的圖書館，所有書不只能用手指讀，還能聽。圖書館裡有志工——師範大學的學生。他們錄有聲書、帶活動。免費入場，除了星期一每天開放。",
+              "en": "In Nizhny Novgorod Russia's first library for blind children has opened, where all books can be not only read with the fingers but listened to. Volunteers — students of the teacher-training university — work there, recording audiobooks and running sessions. Entry is free; it is open every day except Monday."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Для кого́ откры́лась библиоте́ка?",
+                "zh": "圖書館是給誰的？",
+                "en": "Who is the library for?"
+              },
+              "options": [
+                {
+                  "t": "для студе́нтов"
+                },
+                {
+                  "t": "для слепы́х дете́й"
+                },
+                {
+                  "t": "для пенсионе́ров"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "盲童。",
+                "en": "Blind children."
+              }
+            },
+            {
+              "ask": {
+                "s": "Кто рабо́тает в библиоте́ке?",
+                "zh": "誰在圖書館工作？",
+                "en": "Who works there?"
+              },
+              "options": [
+                {
+                  "t": "учителя́ шко́лы"
+                },
+                {
+                  "t": "писа́тели"
+                },
+                {
+                  "t": "студе́нты-волонтёры"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "師範大學學生志工。",
+                "en": "Student volunteers."
+              }
+            },
+            {
+              "ask": {
+                "s": "Когда́ библиоте́ка не рабо́тает?",
+                "zh": "圖書館什麼時候不開？",
+                "en": "When is it closed?"
+              },
+              "options": [
+                {
+                  "t": "в понеде́льник"
+                },
+                {
+                  "t": "в воскресе́нье"
+                },
+                {
+                  "t": "в суббо́ту"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "星期一。",
+                "en": "Monday."
+              }
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте объявле́ние по ра́дио.",
+              "zh": "請聽一則廣播公告。",
+              "en": "Listen to a radio announcement."
+            },
+            {
+              "who": "F",
+              "s": "Уважа́емые жи́тели! С пятна́дцатого по тридца́тое ию́ня в на́шем райо́не бу́дет проходи́ть фестива́ль «Бе́лые но́чи». На гла́вной пло́щади ка́ждый ве́чер с семи́ часо́в бу́дут выступа́ть музыка́льные гру́ппы. В суббо́ту, двадца́того ию́ня, в па́рке пройдёт я́рмарка: ме́стные мастера́ бу́дут продава́ть посу́ду, игру́шки и оде́жду ручно́й рабо́ты. Для дете́й в библиоте́ке организу́ют ма́стер-кла́ссы по рисова́нию — ну́жно зара́нее записа́ться по телефо́ну. Обрати́те внима́ние: во вре́мя фестива́ля у́лица Пу́шкина бу́дет закры́та для маши́н. Авто́бусы но́мер три и семь пойду́т по у́лице Гага́рина. Все мероприя́тия беспла́тные. Подро́бная програ́мма — на са́йте администра́ции райо́на.",
+              "zh": "各位居民！6 月 15 日到 30 日，本區將舉辦「白夜」節。每晚七點起主廣場有樂團演出。6 月 20 日星期六公園有市集：當地工匠販賣手工餐具、玩具和衣服。圖書館為孩子辦繪畫工作坊——需事先電話報名。請注意：節慶期間普希金街禁止車輛通行。3 號和 7 號公車改走加加林街。所有活動免費。詳細節目表請見區公所網站。",
+              "en": "Dear residents! From 15 to 30 June our district will host the White Nights festival. Bands will play on the main square every evening from seven. On Saturday 20 June there will be a fair in the park: local craftspeople will sell handmade tableware, toys and clothes. The library will run drawing workshops for children — sign up in advance by phone. Please note: during the festival Pushkin Street will be closed to cars. Buses 3 and 7 will run along Gagarin Street. All events are free. The full programme is on the district administration website."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Ско́лько дней бу́дет идти́ фестива́ль?",
+                "zh": "節慶持續多久？",
+                "en": "How long is the festival?"
+              },
+              "options": [
+                {
+                  "t": "неде́лю"
+                },
+                {
+                  "t": "о́коло двух неде́ль"
+                },
+                {
+                  "t": "ме́сяц"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "15 日到 30 日。",
+                "en": "About two weeks."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что бу́дет на гла́вной пло́щади?",
+                "zh": "主廣場有什麼？",
+                "en": "What will be on the main square?"
+              },
+              "options": [
+                {
+                  "t": "я́рмарка"
+                },
+                {
+                  "t": "ма́стер-кла́ссы"
+                },
+                {
+                  "t": "конце́рты"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "樂團演出。",
+                "en": "Concerts."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что мо́жно купи́ть на я́рмарке?",
+                "zh": "市集可以買什麼？",
+                "en": "What can you buy at the fair?"
+              },
+              "options": [
+                {
+                  "t": "ве́щи ручно́й рабо́ты"
+                },
+                {
+                  "t": "проду́кты"
+                },
+                {
+                  "t": "кни́ги"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "手工製品。",
+                "en": "Handmade things."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что ну́жно сде́лать, что́бы ребёнок попа́л на ма́стер-класс?",
+                "zh": "孩子要參加工作坊需要做什麼？",
+                "en": "What must you do for the workshop?"
+              },
+              "options": [
+                {
+                  "t": "купи́ть биле́т"
+                },
+                {
+                  "t": "записа́ться по телефо́ну"
+                },
+                {
+                  "t": "прийти́ в суббо́ту"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "電話報名。",
+                "en": "Sign up by phone."
+              }
+            },
+            {
+              "ask": {
+                "s": "Кака́я у́лица бу́дет закры́та?",
+                "zh": "哪條街會封閉？",
+                "en": "Which street will be closed?"
+              },
+              "options": [
+                {
+                  "t": "у́лица Гага́рина"
+                },
+                {
+                  "t": "гла́вная пло́щадь"
+                },
+                {
+                  "t": "у́лица Пу́шкина"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "普希金街。",
+                "en": "Pushkin Street."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько стоя́т мероприя́тия?",
+                "zh": "活動多少錢？",
+                "en": "How much are the events?"
+              },
+              "options": [
+                {
+                  "t": "они́ беспла́тные"
+                },
+                {
+                  "t": "сто рубле́й"
+                },
+                {
+                  "t": "зави́сит от дня"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "全部免費。",
+                "en": "Free."
+              }
+            }
+          ]
+        },
+        {
+          "part": 5,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте диало́г.",
+              "zh": "請聽一段對話。",
+              "en": "Listen to the dialogue."
+            },
+            {
+              "who": "F",
+              "s": "Ми́ша, ты уже́ реши́л, куда́ пое́дешь ле́том?",
+              "zh": "米沙，你決定夏天去哪了嗎？",
+              "en": "Misha, have you decided where you're going this summer?"
+            },
+            {
+              "who": "M",
+              "s": "Ду́маю о Калинингра́де. Я там никогда́ не был, а говоря́т, там краси́вое мо́ре и ста́рые неме́цкие до́ма.",
+              "zh": "我在考慮加里寧格勒。我從沒去過，聽說那裡海很美，還有德國老房子。",
+              "en": "I'm thinking of Kaliningrad. I've never been, and they say the sea is beautiful and there are old German houses."
+            },
+            {
+              "who": "F",
+              "s": "Я была́ там два го́да наза́д. Мо́ре холо́дное, купа́ться мо́жно то́лько в ию́ле. Но го́род о́чень интере́сный.",
+              "zh": "我兩年前去過。海很冷，只有七月能游泳。但城市很有趣。",
+              "en": "I was there two years ago. The sea is cold; you can only swim in July. But the city is very interesting."
+            },
+            {
+              "who": "M",
+              "s": "Я как раз в ию́ле и собира́юсь. На по́езде и́ли на самолёте лу́чше?",
+              "zh": "我正好打算七月去。搭火車還是飛機比較好？",
+              "en": "July is exactly when I'm going. Is the train or the plane better?"
+            },
+            {
+              "who": "F",
+              "s": "На самолёте. На по́езде нужна́ ви́за, потому́ что он идёт че́рез Литву́, э́то сло́жно.",
+              "zh": "搭飛機。火車要簽證，因為它經過立陶宛，很麻煩。",
+              "en": "By plane. The train needs a visa because it goes through Lithuania; that's complicated."
+            },
+            {
+              "who": "M",
+              "s": "Поня́тно. А где ты жила́?",
+              "zh": "了解。妳住哪裡？",
+              "en": "I see. Where did you stay?"
+            },
+            {
+              "who": "F",
+              "s": "В ма́ленькой гости́нице в Зеленогра́дске, э́то куро́рт недалеко́ от го́рода. Могу́ дать тебе́ а́дрес. И обяза́тельно попро́буй копчёную ры́бу!",
+              "zh": "住澤列諾格勒斯克的一家小旅館，那是城外不遠的度假地。我可以給你地址。一定要嚐嚐燻魚！",
+              "en": "In a small hotel in Zelenogradsk, a resort not far from the city. I can give you the address. And be sure to try the smoked fish!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Куда́ хо́чет пое́хать Ми́ша?",
+                "zh": "米沙想去哪？",
+                "en": "Where does Misha want to go?"
+              },
+              "options": [
+                {
+                  "t": "в Литву́"
+                },
+                {
+                  "t": "в Калинингра́д"
+                },
+                {
+                  "t": "в Герма́нию"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "加里寧格勒。",
+                "en": "Kaliningrad."
+              }
+            },
+            {
+              "ask": {
+                "s": "Был ли Ми́ша там ра́ньше?",
+                "zh": "米沙以前去過嗎？",
+                "en": "Has Misha been there before?"
+              },
+              "options": [
+                {
+                  "t": "да, два го́да наза́д"
+                },
+                {
+                  "t": "да, в про́шлом ию́ле"
+                },
+                {
+                  "t": "нет, никогда́"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "從沒去過。",
+                "en": "Never."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что де́вушка говори́т о мо́ре?",
+                "zh": "女生怎麼說海？",
+                "en": "What does she say about the sea?"
+              },
+              "options": [
+                {
+                  "t": "Оно́ холо́дное, купа́ться мо́жно в ию́ле."
+                },
+                {
+                  "t": "Оно́ тёплое весь год."
+                },
+                {
+                  "t": "Там нельзя́ купа́ться."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "只有七月能游泳。",
+                "en": "Swimming only in July."
+              }
+            },
+            {
+              "ask": {
+                "s": "Почему́ лу́чше лете́ть на самолёте?",
+                "zh": "為什麼搭飛機比較好？",
+                "en": "Why is flying better?"
+              },
+              "options": [
+                {
+                  "t": "Э́то деше́вле."
+                },
+                {
+                  "t": "Для по́езда нужна́ ви́за."
+                },
+                {
+                  "t": "По́езд идёт три дня."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "火車要簽證。",
+                "en": "The train needs a visa."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где жила́ де́вушка?",
+                "zh": "女生住哪？",
+                "en": "Where did she stay?"
+              },
+              "options": [
+                {
+                  "t": "в Калинингра́де у друзе́й"
+                },
+                {
+                  "t": "в гости́нице на куро́рте"
+                },
+                {
+                  "t": "в пала́тке"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "度假地的小旅館。",
+                "en": "A resort hotel."
+              }
+            },
+            {
+              "ask": {
+                "s": "Что она́ сове́тует попро́бовать?",
+                "zh": "她建議嚐什麼？",
+                "en": "What does she recommend trying?"
+              },
+              "options": [
+                {
+                  "t": "неме́цкое пи́во"
+                },
+                {
+                  "t": "ме́стный сыр"
+                },
+                {
+                  "t": "копчёную ры́бу"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "燻魚。",
+                "en": "Smoked fish."
+              }
+            }
+          ]
+        },
+        {
+          "part": 6,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Послу́шайте расска́з о жи́зни изве́стного челове́ка.",
+              "zh": "請聽一段名人生平的故事。",
+              "en": "Listen to the story of a famous person's life."
+            },
+            {
+              "who": "M",
+              "s": "Валенти́на Терешко́ва — пе́рвая в ми́ре же́нщина-космона́вт. Она́ родила́сь в 1937 году́ в дере́вне под Яросла́влем, в просто́й семье́. Оте́ц поги́б на войне́, когда́ Ва́ле бы́ло два го́да. По́сле шко́лы она́ рабо́тала на тексти́льной фа́брике и одновре́менно учи́лась зао́чно. Её гла́вным увлече́нием был парашю́тный спорт: она́ соверши́ла бо́льше ста шести́десяти прыжко́в. И́менно э́то помогло́ ей попа́сть в гру́ппу же́нщин, кото́рых гото́вили к полёту в ко́смос. Из пяти́ кандида́ток вы́брали её. Шестна́дцатого ию́ня 1963 го́да Терешко́ва полете́ла в ко́смос на корабле́ «Восто́к-6». Полёт дли́лся почти́ тро́е су́ток — до́льше, чем все полёты америка́нских астрона́втов того́ вре́мени вме́сте. По́сле полёта она́ око́нчила акаде́мию, ста́ла инжене́ром, а по́зже занима́лась поли́тикой. Её позывно́й «Ча́йка» зна́ет в Росси́и ка́ждый шко́льник.",
+              "zh": "瓦蓮汀娜．捷列什科娃是世界第一位女太空人。她 1937 年生於雅羅斯拉夫爾附近的村子，家境普通。她兩歲時父親在戰爭中陣亡。畢業後她在紡織廠工作，同時函授進修。她最大的愛好是跳傘：跳了一百六十多次。正是這點讓她進入準備上太空的女性小組。五位候選人中選了她。1963 年 6 月 16 日捷列什科娃搭「東方 6 號」上太空。飛行將近三天——比當時美國太空人所有飛行加起來還長。飛行後她念完學院，成為工程師，後來從政。她的呼號「海鷗」俄國每個學生都知道。",
+              "en": "Valentina Tereshkova was the world's first woman cosmonaut. She was born in 1937 in a village near Yaroslavl, to a simple family. Her father was killed in the war when Valya was two. After school she worked at a textile factory while studying by correspondence. Her main passion was parachuting: she made over 160 jumps. That is what got her into the group of women being trained for spaceflight. Of five candidates, she was chosen. On 16 June 1963 Tereshkova flew into space aboard Vostok 6. The flight lasted almost three days — longer than all American astronauts' flights of the time combined. Afterwards she graduated from an academy, became an engineer and later went into politics. Every Russian schoolchild knows her call sign, 'Chaika' (Seagull)."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Где родила́сь Терешко́ва?",
+                "zh": "捷列什科娃生在哪？",
+                "en": "Where was she born?"
+              },
+              "options": [
+                {
+                  "t": "в Москве́"
+                },
+                {
+                  "t": "в дере́вне под Яросла́влем"
+                },
+                {
+                  "t": "в Яросла́вле"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "雅羅斯拉夫爾附近的村子。",
+                "en": "A village near Yaroslavl."
+              }
+            },
+            {
+              "ask": {
+                "s": "Где она́ рабо́тала по́сле шко́лы?",
+                "zh": "畢業後她在哪工作？",
+                "en": "Where did she work after school?"
+              },
+              "options": [
+                {
+                  "t": "на фа́брике"
+                },
+                {
+                  "t": "в шко́ле"
+                },
+                {
+                  "t": "в аэропорту́"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "紡織廠。",
+                "en": "At a factory."
+              }
+            },
+            {
+              "ask": {
+                "s": "Чем она́ увлека́лась?",
+                "zh": "她愛好什麼？",
+                "en": "What was her hobby?"
+              },
+              "options": [
+                {
+                  "t": "пла́ванием"
+                },
+                {
+                  "t": "парашю́тным спо́ртом"
+                },
+                {
+                  "t": "му́зыкой"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "跳傘。",
+                "en": "Parachuting."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько бы́ло кандида́ток?",
+                "zh": "候選人有幾位？",
+                "en": "How many candidates?"
+              },
+              "options": [
+                {
+                  "t": "три"
+                },
+                {
+                  "t": "шестна́дцать"
+                },
+                {
+                  "t": "пять"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "五位。",
+                "en": "Five."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ско́лько дли́лся её полёт?",
+                "zh": "她的飛行多久？",
+                "en": "How long was her flight?"
+              },
+              "options": [
+                {
+                  "t": "почти́ три дня"
+                },
+                {
+                  "t": "не́сколько часо́в"
+                },
+                {
+                  "t": "неде́лю"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "將近三天。",
+                "en": "Almost three days."
+              }
+            },
+            {
+              "ask": {
+                "s": "Чем она́ занима́лась по́сле полёта?",
+                "zh": "飛行後她做什麼？",
+                "en": "What did she do after the flight?"
+              },
+              "options": [
+                {
+                  "t": "рабо́тала на фа́брике"
+                },
+                {
+                  "t": "ста́ла инжене́ром, пото́м поли́тиком"
+                },
+                {
+                  "t": "ста́ла учи́тельницей"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "工程師、從政。",
+                "en": "Engineer, then politics."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
