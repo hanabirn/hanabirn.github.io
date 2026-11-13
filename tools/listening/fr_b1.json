@@ -10,7 +10,7 @@
   ],
   "mock_plays": 2,
   "mock_counts": {
-    "en_q": 19
+    "en_q": 20
   },
   "sets": [
     {
@@ -1733,6 +1733,604 @@
               "explain": {
                 "zh": "「還有三所學校要試試看」。",
                 "en": "Three more schools will try."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "part": 1,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une conversation entre deux amis.",
+              "zh": "你會聽到兩個朋友的對話。",
+              "en": "You will hear a conversation between two friends."
+            },
+            {
+              "who": "F",
+              "s": "Alors Julien, ce nouveau travail à Bordeaux, ça se passe bien ?",
+              "zh": "朱利安，波爾多的新工作還順利嗎？",
+              "en": "So Julien, how is the new job in Bordeaux going?"
+            },
+            {
+              "who": "M",
+              "s": "Très bien ! Mes collègues sont sympas, et le travail est plus intéressant que l'ancien. Le seul problème, c'est le logement.",
+              "zh": "很好！同事人很好，工作也比以前有趣。唯一的問題是住的地方。",
+              "en": "Very well! My colleagues are nice and the work is more interesting than before. The only problem is housing."
+            },
+            {
+              "who": "F",
+              "s": "Ah bon ? Tu n'as pas trouvé d'appartement ?",
+              "zh": "是喔？你還沒找到公寓？",
+              "en": "Really? You haven't found a flat?"
+            },
+            {
+              "who": "M",
+              "s": "Si, mais il est à quarante minutes du bureau en tram. Et les loyers sont très chers au centre.",
+              "zh": "找到了，但搭電車到公司要四十分鐘，而且市中心房租很貴。",
+              "en": "Yes, but it's forty minutes from the office by tram. And rents in the centre are very expensive."
+            },
+            {
+              "who": "F",
+              "s": "Tu pourrais faire une colocation ? Ma cousine cherche justement quelqu'un.",
+              "zh": "你可以合租啊？我表妹正好在找人。",
+              "en": "You could share a flat? My cousin is looking for someone."
+            },
+            {
+              "who": "M",
+              "s": "Pourquoi pas ! Tu peux me donner son numéro ?",
+              "zh": "好啊！妳可以給我她的電話嗎？",
+              "en": "Why not! Can you give me her number?"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Julien travaille maintenant à…",
+                "zh": "朱利安現在在……工作。",
+                "en": "Julien now works in…"
+              },
+              "options": [
+                {
+                  "t": "Toulouse."
+                },
+                {
+                  "t": "Lyon."
+                },
+                {
+                  "t": "Bordeaux."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「波爾多的新工作」。",
+                "en": "Bordeaux."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que pense Julien de son nouveau travail ?",
+                "zh": "朱利安覺得新工作怎樣？",
+                "en": "What does Julien think of his new job?"
+              },
+              "options": [
+                {
+                  "t": "Il est trop difficile."
+                },
+                {
+                  "t": "Il est plus intéressant."
+                },
+                {
+                  "t": "Il est mal payé."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「工作也比以前有趣」。",
+                "en": "More interesting."
+              }
+            },
+            {
+              "ask": {
+                "s": "Quel est son problème ?",
+                "zh": "他的問題是什麼？",
+                "en": "What is his problem?"
+              },
+              "options": [
+                {
+                  "t": "ses collègues"
+                },
+                {
+                  "t": "son salaire"
+                },
+                {
+                  "t": "son logement"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「唯一的問題是住的地方」。",
+                "en": "Housing."
+              }
+            },
+            {
+              "ask": {
+                "s": "Pour aller au bureau, il met…",
+                "zh": "他去公司要花……",
+                "en": "Getting to the office takes him…"
+              },
+              "options": [
+                {
+                  "t": "40 minutes."
+                },
+                {
+                  "t": "20 minutes."
+                },
+                {
+                  "t": "1 heure."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「四十分鐘」。",
+                "en": "40 minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que propose son amie ?",
+                "zh": "他朋友提議什麼？",
+                "en": "What does his friend suggest?"
+              },
+              "options": [
+                {
+                  "t": "acheter une voiture"
+                },
+                {
+                  "t": "partager un appartement"
+                },
+                {
+                  "t": "changer de travail"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「你可以合租啊？」",
+                "en": "Sharing a flat."
+              }
+            },
+            {
+              "ask": {
+                "s": "Julien demande…",
+                "zh": "朱利安要……",
+                "en": "Julien asks for…"
+              },
+              "options": [
+                {
+                  "t": "l'adresse de l'appartement."
+                },
+                {
+                  "t": "un rendez-vous."
+                },
+                {
+                  "t": "le numéro de la cousine."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「妳可以給我她的電話嗎？」",
+                "en": "The cousin's number."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une interview à la radio.",
+              "zh": "你會聽到一段廣播訪問。",
+              "en": "You will hear a radio interview."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour Ahmed. Vous avez créé une épicerie solidaire à Marseille. De quoi s'agit-il ?",
+              "zh": "阿默德您好，您在馬賽創立了一家互助雜貨店。那是什麼？",
+              "en": "Hello Ahmed. You founded a community grocery in Marseille. What is it?"
+            },
+            {
+              "who": "M",
+              "s": "C'est un magasin où les familles qui ont peu d'argent peuvent acheter des produits de qualité à 20 % du prix normal.",
+              "zh": "那是一家讓收入少的家庭能用一般價格兩成買到優質商品的店。",
+              "en": "It's a shop where families with little money can buy quality products at 20% of the normal price."
+            },
+            {
+              "who": "F",
+              "s": "Comment choisissez-vous les clients ?",
+              "zh": "您怎麼選擇顧客？",
+              "en": "How do you choose the customers?"
+            },
+            {
+              "who": "M",
+              "s": "Ce sont les services sociaux de la ville qui nous les envoient. Ils peuvent venir pendant six mois maximum.",
+              "zh": "是市政府的社會服務單位轉介的，他們最多能來六個月。",
+              "en": "The city's social services send them to us. They can come for six months at most."
+            },
+            {
+              "who": "F",
+              "s": "Et d'où viennent les produits ?",
+              "zh": "商品從哪裡來？",
+              "en": "And where do the products come from?"
+            },
+            {
+              "who": "M",
+              "s": "Surtout des supermarchés, qui nous donnent les produits proches de la date limite, et de petits producteurs de la région.",
+              "zh": "主要是超市捐出快到期的商品，還有本地的小農。",
+              "en": "Mostly from supermarkets, which give us products near their sell-by date, and from small local producers."
+            },
+            {
+              "who": "F",
+              "s": "Vous avez besoin d'aide ?",
+              "zh": "您需要幫忙嗎？",
+              "en": "Do you need help?"
+            },
+            {
+              "who": "M",
+              "s": "Oui ! Nous cherchons des bénévoles, surtout le samedi matin, pour ranger les livraisons.",
+              "zh": "需要！我們在找志工，特別是星期六上午整理進貨。",
+              "en": "Yes! We're looking for volunteers, especially on Saturday mornings, to sort the deliveries."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "L'épicerie solidaire est à…",
+                "zh": "互助雜貨店在……",
+                "en": "The community grocery is in…"
+              },
+              "options": [
+                {
+                  "t": "Marseille."
+                },
+                {
+                  "t": "Nice."
+                },
+                {
+                  "t": "Lyon."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「在馬賽」。",
+                "en": "Marseille."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les produits coûtent…",
+                "zh": "商品價格是……",
+                "en": "The products cost…"
+              },
+              "options": [
+                {
+                  "t": "la moitié du prix."
+                },
+                {
+                  "t": "20 % du prix normal."
+                },
+                {
+                  "t": "le prix normal."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「一般價格兩成」。",
+                "en": "20%."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qui envoie les clients ?",
+                "zh": "誰轉介顧客？",
+                "en": "Who sends the customers?"
+              },
+              "options": [
+                {
+                  "t": "les écoles"
+                },
+                {
+                  "t": "les supermarchés"
+                },
+                {
+                  "t": "les services sociaux"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「市政府的社會服務單位」。",
+                "en": "Social services."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les clients peuvent venir…",
+                "zh": "顧客可以來……",
+                "en": "Customers can come…"
+              },
+              "options": [
+                {
+                  "t": "six mois maximum."
+                },
+                {
+                  "t": "un mois."
+                },
+                {
+                  "t": "sans limite."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「最多能來六個月」。",
+                "en": "Six months at most."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les supermarchés donnent des produits…",
+                "zh": "超市捐的商品是……",
+                "en": "Supermarkets give products…"
+              },
+              "options": [
+                {
+                  "t": "abîmés."
+                },
+                {
+                  "t": "proches de la date limite."
+                },
+                {
+                  "t": "trop chers."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「快到期的商品」。",
+                "en": "Near the sell-by date."
+              }
+            },
+            {
+              "ask": {
+                "s": "L'épicerie travaille aussi avec…",
+                "zh": "雜貨店也和……合作。",
+                "en": "The grocery also works with…"
+              },
+              "options": [
+                {
+                  "t": "des restaurants."
+                },
+                {
+                  "t": "des écoles."
+                },
+                {
+                  "t": "de petits producteurs."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「本地的小農」。",
+                "en": "Small producers."
+              }
+            },
+            {
+              "ask": {
+                "s": "On cherche des bénévoles…",
+                "zh": "在找志工……",
+                "en": "Volunteers are wanted…"
+              },
+              "options": [
+                {
+                  "t": "le samedi matin."
+                },
+                {
+                  "t": "le dimanche."
+                },
+                {
+                  "t": "le soir."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「特別是星期六上午」。",
+                "en": "Saturday mornings."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un reportage à la radio.",
+              "zh": "你會聽到一段廣播報導。",
+              "en": "You will hear a radio report."
+            },
+            {
+              "who": "M",
+              "s": "Depuis septembre, le collège Jean-Moulin, à Nantes, interdit les téléphones portables dans toute l'école, même pendant les récréations. Les élèves doivent les laisser éteints dans leur sac. Six mois plus tard, le bilan est plutôt positif. Selon le directeur, les élèves jouent davantage ensemble dans la cour et il y a moins de disputes. Les professeurs remarquent aussi que les élèves sont plus concentrés en classe. Mais tout le monde n'est pas d'accord. Certains parents regrettent de ne pas pouvoir joindre leurs enfants en cas de problème. Le collège a donc installé un téléphone à l'accueil, que les élèves peuvent utiliser à tout moment. D'autres établissements de la région souhaitent maintenant suivre l'exemple, et le collège organisera une réunion d'information en mai.",
+              "zh": "從九月起，南特的尚穆蘭中學禁止整個校園使用手機，連下課時間也不行。學生必須把手機關機放在書包裡。六個月後，成果相當正面。校長說，學生在操場上更常一起玩，爭吵也變少了。老師也發現學生上課更專心。但不是每個人都同意。有些家長遺憾出問題時聯絡不到孩子。所以學校在接待處裝了一支電話，學生隨時可以用。該地區其他學校現在也想效法，學校將在五月舉辦說明會。",
+              "en": "Since September, the Jean-Moulin secondary school in Nantes has banned mobile phones throughout the school, even at break. Pupils must leave them switched off in their bags. Six months on, the results are fairly positive. According to the head, pupils play together more in the playground and there are fewer arguments. Teachers also notice pupils are more focused in class. But not everyone agrees: some parents regret not being able to reach their children if there's a problem. So the school has installed a phone at reception that pupils can use at any time. Other schools in the region now want to follow the example, and the school will hold an information meeting in May."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le reportage parle d'un collège à…",
+                "zh": "報導談的是……的一所中學。",
+                "en": "The report is about a school in…"
+              },
+              "options": [
+                {
+                  "t": "Rennes."
+                },
+                {
+                  "t": "Nantes."
+                },
+                {
+                  "t": "Paris."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「南特的尚穆蘭中學」。",
+                "en": "Nantes."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les téléphones sont interdits…",
+                "zh": "手機禁止……",
+                "en": "Phones are banned…"
+              },
+              "options": [
+                {
+                  "t": "seulement en classe."
+                },
+                {
+                  "t": "le matin."
+                },
+                {
+                  "t": "dans toute l'école."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「整個校園……連下課時間也不行」。",
+                "en": "Everywhere in school."
+              }
+            },
+            {
+              "ask": {
+                "s": "Selon le directeur, dans la cour, il y a…",
+                "zh": "校長說操場上……",
+                "en": "According to the head, in the playground there are…"
+              },
+              "options": [
+                {
+                  "t": "moins de disputes."
+                },
+                {
+                  "t": "plus d'accidents."
+                },
+                {
+                  "t": "moins d'élèves."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「爭吵也變少了」。",
+                "en": "Fewer arguments."
+              }
+            },
+            {
+              "ask": {
+                "s": "Les professeurs trouvent les élèves…",
+                "zh": "老師覺得學生……",
+                "en": "Teachers find pupils…"
+              },
+              "options": [
+                {
+                  "t": "plus fatigués."
+                },
+                {
+                  "t": "plus concentrés."
+                },
+                {
+                  "t": "plus bruyants."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「上課更專心」。",
+                "en": "More focused."
+              }
+            },
+            {
+              "ask": {
+                "s": "Que regrettent certains parents ?",
+                "zh": "有些家長遺憾什麼？",
+                "en": "What do some parents regret?"
+              },
+              "options": [
+                {
+                  "t": "le prix des téléphones"
+                },
+                {
+                  "t": "les nouvelles règles du sport"
+                },
+                {
+                  "t": "ne pas pouvoir joindre leurs enfants"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「聯絡不到孩子」。",
+                "en": "Not reaching their children."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qu'a fait le collège pour les parents ?",
+                "zh": "學校為家長做了什麼？",
+                "en": "What has the school done for parents?"
+              },
+              "options": [
+                {
+                  "t": "installé un téléphone à l'accueil"
+                },
+                {
+                  "t": "donné un téléphone à chaque élève"
+                },
+                {
+                  "t": "changé le règlement"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「在接待處裝了一支電話」。",
+                "en": "A phone at reception."
+              }
+            },
+            {
+              "ask": {
+                "s": "En mai, le collège va…",
+                "zh": "五月學校將……",
+                "en": "In May the school will…"
+              },
+              "options": [
+                {
+                  "t": "organiser une réunion."
+                },
+                {
+                  "t": "fermer."
+                },
+                {
+                  "t": "changer de directeur."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「舉辦說明會」。",
+                "en": "Hold a meeting."
               }
             }
           ]

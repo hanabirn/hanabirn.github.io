@@ -2481,6 +2481,364 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 45,
+      "items": [
+        {
+          "type": "text",
+          "mondai": 1,
+          "ask": "en_notice",
+          "text": "Vous cherchez un logement pour vos vacances d'été en Bretagne avec deux amis. Vos critères : 1) trois chambres, 2) près de la mer (moins de 1 km), 3) moins de 900 € la semaine, 4) animaux acceptés (vous avez un chien).\n\nA. VILLA LES DUNES — Grande maison de quatre chambres, avec jardin, à 300 m de la plage. Animaux bienvenus. 1 100 € la semaine.\nB. GÎTE DU PHARE — Maison de trois chambres au bord de la mer, vue sur le port. Animaux non acceptés. 850 € la semaine.\nC. LA MAISON DES PINS — Trois chambres, à 800 m de la plage, dans un calme village. Les chiens sont acceptés. 780 € la semaine.\nD. APPARTEMENT CENTRE-VILLE — Deux chambres, au cœur de Quimper, à 20 km de la mer. Animaux acceptés. 600 € la semaine.",
+          "tr": {
+            "zh": "你和兩個朋友在找布列塔尼的暑假住處。條件：1）三間臥室，2）靠海（1 公里內），3）每週低於 900 歐元，4）可帶寵物（你有一隻狗）。\n\nA. 沙丘別墅：四間臥室的大房子，有花園，離海灘 300 公尺。歡迎寵物。每週 1100 歐元。\nB. 燈塔民宿：三間臥室，就在海邊，看得到港口。不接受寵物。每週 850 歐元。\nC. 松樹之家：三間臥室，離海灘 800 公尺，在安靜的村子裡。接受狗。每週 780 歐元。\nD. 市中心公寓：兩間臥室，在坎佩爾市中心，離海 20 公里。接受寵物。每週 600 歐元。",
+            "en": "You are looking for summer holiday accommodation in Brittany with two friends. Criteria: 1) three bedrooms, 2) near the sea (under 1 km), 3) under €900 a week, 4) pets allowed (you have a dog).\n\nA. VILLA LES DUNES — Big four-bedroom house with a garden, 300 m from the beach. Pets welcome. €1,100 a week.\nB. GÎTE DU PHARE — Three-bedroom house by the sea, harbour view. No pets. €850 a week.\nC. LA MAISON DES PINS — Three bedrooms, 800 m from the beach, in a quiet village. Dogs accepted. €780 a week.\nD. CITY-CENTRE FLAT — Two bedrooms, in the heart of Quimper, 20 km from the sea. Pets accepted. €600 a week."
+          },
+          "questions": [
+            {
+              "q": "A — trois chambres ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "A 有四間，夠三人住：是。",
+              "en": "Four bedrooms: enough."
+            },
+            {
+              "q": "A — près de la mer ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "離海灘 300 公尺：是。",
+              "en": "300 m: yes."
+            },
+            {
+              "q": "A — moins de 900 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "每週 1100 歐元：否。",
+              "en": "€1,100: no."
+            },
+            {
+              "q": "A — animaux acceptés ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "「歡迎寵物」：是。",
+              "en": "Pets welcome."
+            },
+            {
+              "q": "B — trois chambres ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "三間臥室：是。",
+              "en": "Three bedrooms."
+            },
+            {
+              "q": "B — près de la mer ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "「就在海邊」：是。",
+              "en": "By the sea."
+            },
+            {
+              "q": "B — moins de 900 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "850 歐元：是。",
+              "en": "€850."
+            },
+            {
+              "q": "B — animaux acceptés ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "「不接受寵物」：否。",
+              "en": "No pets."
+            },
+            {
+              "q": "C — trois chambres ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "三間臥室：是。",
+              "en": "Three bedrooms."
+            },
+            {
+              "q": "C — près de la mer ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "800 公尺，少於 1 公里：是。",
+              "en": "800 m."
+            },
+            {
+              "q": "C — moins de 900 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "780 歐元：是。",
+              "en": "€780."
+            },
+            {
+              "q": "C — animaux acceptés ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "「接受狗」：是。C 全部符合。",
+              "en": "Dogs accepted — C fits all."
+            },
+            {
+              "q": "D — trois chambres ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "只有兩間：否。",
+              "en": "Two bedrooms."
+            },
+            {
+              "q": "D — près de la mer ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 1,
+              "zh": "離海 20 公里：否。",
+              "en": "20 km."
+            },
+            {
+              "q": "D — moins de 900 € ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "600 歐元：是。",
+              "en": "€600."
+            },
+            {
+              "q": "D — animaux acceptés ?",
+              "options": [
+                "Oui",
+                "Non"
+              ],
+              "answer": 0,
+              "zh": "「接受寵物」：是。",
+              "en": "Pets accepted."
+            }
+          ],
+          "n_options": 2
+        },
+        {
+          "type": "text",
+          "mondai": 2,
+          "ask": "en_long",
+          "text": "Le retour des cafés-réparation\nDans de nombreuses villes françaises, des « cafés-réparation » ouvrent leurs portes un samedi par mois. Le principe est simple : les habitants apportent un objet cassé — une lampe, un grille-pain, un vêtement — et des bénévoles les aident à le réparer gratuitement. « Nous ne réparons pas à la place des gens, nous leur apprenons à le faire », explique Martine, ancienne électricienne et bénévole à Lille.\nLe premier café-réparation est né aux Pays-Bas en 2009. Aujourd'hui, il en existe plus de deux mille dans le monde. Pour les organisateurs, l'objectif est double : réduire les déchets et créer du lien entre les habitants d'un même quartier. Beaucoup de visiteurs restent d'ailleurs pour boire un café et discuter, même après avoir réparé leur objet.\nCependant, tout ne peut pas être réparé. Certains appareils modernes sont fabriqués de manière à ce qu'on ne puisse pas les ouvrir, ce que les bénévoles regrettent. Ils demandent aux fabricants de penser davantage à la réparation dès la conception des produits.",
+          "tr": {
+            "zh": "修理咖啡館回來了\n在許多法國城市，「修理咖啡館」每月開放一個星期六。原則很簡單：居民帶來壞掉的東西——檯燈、烤麵包機、衣服——志工免費幫他們修。里爾的志工、前電工瑪蒂娜說：「我們不是代替大家修，而是教他們自己修。」\n第一家修理咖啡館 2009 年誕生於荷蘭，如今全世界有兩千多家。主辦者的目標有二：減少垃圾，並讓同一社區的居民建立連結。許多訪客修好東西後還會留下來喝咖啡聊天。\n不過，不是什麼都修得好。有些現代電器的設計讓人根本打不開，志工對此很遺憾。他們要求製造商在設計產品時就多考慮維修。",
+            "en": "The return of repair cafés\nIn many French towns, 'repair cafés' open one Saturday a month. Residents bring a broken object — a lamp, a toaster, a garment — and volunteers help them fix it for free. 'We don't repair things for people; we teach them to do it,' explains Martine, a former electrician and volunteer in Lille.\nThe first repair café was born in the Netherlands in 2009; today there are over two thousand worldwide. Organisers have two aims: to cut waste and to connect people in the same neighbourhood. Many visitors stay for a coffee and a chat after their repair.\nNot everything can be fixed, though. Some modern devices are made so they can't be opened, which volunteers regret. They ask manufacturers to think about repair when designing products."
+          },
+          "questions": [
+            {
+              "q": "Les cafés-réparation ouvrent…",
+              "options": [
+                "tous les jours.",
+                "une fois par an.",
+                "une fois par mois."
+              ],
+              "answer": 2,
+              "zh": "「每月開放一個星期六」。",
+              "en": "Once a month."
+            },
+            {
+              "q": "Les réparations sont…",
+              "options": [
+                "payantes.",
+                "faites par des professionnels payés.",
+                "gratuites."
+              ],
+              "answer": 2,
+              "zh": "「志工免費幫他們修」。",
+              "en": "Free."
+            },
+            {
+              "q": "Selon Martine, les bénévoles…",
+              "options": [
+                "réparent seuls les objets.",
+                "vendent des objets neufs.",
+                "apprennent aux gens à réparer."
+              ],
+              "answer": 2,
+              "zh": "「教他們自己修」。",
+              "en": "Teach people."
+            },
+            {
+              "q": "Le premier café-réparation a été créé…",
+              "options": [
+                "en France.",
+                "en Belgique.",
+                "aux Pays-Bas."
+              ],
+              "answer": 2,
+              "zh": "「誕生於荷蘭」。",
+              "en": "In the Netherlands."
+            },
+            {
+              "q": "L'un des objectifs est de…",
+              "options": [
+                "gagner de l'argent.",
+                "vendre du café.",
+                "réduire les déchets."
+              ],
+              "answer": 2,
+              "zh": "「減少垃圾」。",
+              "en": "Cutting waste."
+            },
+            {
+              "q": "Beaucoup de visiteurs…",
+              "options": [
+                "partent tout de suite.",
+                "reviennent chaque semaine.",
+                "restent pour discuter."
+              ],
+              "answer": 2,
+              "zh": "「留下來喝咖啡聊天」。",
+              "en": "Stay and chat."
+            },
+            {
+              "q": "Les bénévoles regrettent que…",
+              "options": [
+                "les gens viennent trop nombreux.",
+                "certains appareils ne puissent pas être ouverts.",
+                "le café soit trop cher."
+              ],
+              "answer": 1,
+              "zh": "「有些……讓人根本打不開」。",
+              "en": "Devices that cannot be opened."
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "mondai": 3,
+          "ask": "en_long",
+          "text": "Apprendre une langue avec un « tandem »\nTrouver quelqu'un pour pratiquer une langue étrangère n'est pas toujours facile. C'est pourquoi les tandems linguistiques connaissent un grand succès. Le principe : deux personnes de langues maternelles différentes se retrouvent régulièrement et parlent la moitié du temps dans chaque langue.\nClara, étudiante à Toulouse, fait un tandem avec Diego, un Espagnol, depuis un an. « On se voit chaque jeudi dans un café. La première heure, on parle français, la deuxième, espagnol. J'ai fait plus de progrès qu'en trois ans de cours au lycée ! » Selon elle, le plus important n'est pas la grammaire mais la confiance : « Avec Diego, je n'ai plus peur de faire des fautes. »\nLes universités et les associations organisent souvent des soirées pour aider les gens à trouver un partenaire. Il existe aussi des applications, mais Clara préfère les rencontres en personne : « Sur une application, les gens abandonnent vite. En vrai, on devient amis. » Seul conseil : choisir un partenaire qui a à peu près le même niveau que vous.",
+          "tr": {
+            "zh": "用「語言交換」學外語\n要找人練外語不一定容易，所以語言交換大受歡迎。原則是：兩個母語不同的人定期見面，一半時間說各自的語言。\n土魯斯的學生克拉拉和西班牙人迪亞哥交換一年了。「我們每週四在咖啡館見面。第一個小時說法語，第二個小時說西班牙語。我的進步比高中三年的課還多！」她認為最重要的不是文法，而是自信：「跟迪亞哥在一起，我不再怕犯錯。」\n大學和協會常辦晚會幫人找夥伴。也有應用程式，但克拉拉比較喜歡面對面：「在應用程式上大家很快就放棄；實際見面會變成朋友。」唯一的建議：選一個程度跟你差不多的夥伴。",
+            "en": "Learning a language with a 'tandem'\nFinding someone to practise a foreign language with isn't always easy, which is why language tandems are so popular. Two people with different mother tongues meet regularly and speak half the time in each language.\nClara, a student in Toulouse, has been doing a tandem with Diego, a Spaniard, for a year. 'We meet every Thursday in a café. The first hour we speak French, the second Spanish. I've made more progress than in three years of classes at school!' For her the key isn't grammar but confidence: 'With Diego, I'm no longer afraid of making mistakes.'\nUniversities and associations often hold evenings to help people find a partner. There are apps too, but Clara prefers meeting in person: 'On an app, people give up quickly. In real life, you become friends.' One piece of advice: choose a partner at about your level."
+          },
+          "questions": [
+            {
+              "q": "Dans un tandem, les deux personnes…",
+              "options": [
+                "parlent seulement français.",
+                "suivent un cours ensemble.",
+                "parlent dans les deux langues."
+              ],
+              "answer": 2,
+              "zh": "「一半時間說各自的語言」。",
+              "en": "Both languages."
+            },
+            {
+              "q": "Clara et Diego se voient…",
+              "options": [
+                "le week-end.",
+                "le jeudi.",
+                "chaque jour."
+              ],
+              "answer": 1,
+              "zh": "「每週四在咖啡館見面」。",
+              "en": "On Thursdays."
+            },
+            {
+              "q": "Depuis combien de temps font-ils un tandem ?",
+              "options": [
+                "un mois",
+                "un an",
+                "trois ans"
+              ],
+              "answer": 1,
+              "zh": "「交換一年了」。",
+              "en": "A year."
+            },
+            {
+              "q": "Selon Clara, ses progrès sont…",
+              "options": [
+                "moins importants qu'au lycée.",
+                "les mêmes qu'au lycée.",
+                "plus importants qu'au lycée."
+              ],
+              "answer": 2,
+              "zh": "「比高中三年的課還多」。",
+              "en": "Greater than at school."
+            },
+            {
+              "q": "Pour Clara, le plus important, c'est…",
+              "options": [
+                "la grammaire.",
+                "la confiance.",
+                "le vocabulaire."
+              ],
+              "answer": 1,
+              "zh": "「最重要的……是自信」。",
+              "en": "Confidence."
+            },
+            {
+              "q": "Clara préfère…",
+              "options": [
+                "les applications.",
+                "les cours en ligne.",
+                "les rencontres en personne."
+              ],
+              "answer": 2,
+              "zh": "「比較喜歡面對面」。",
+              "en": "Meeting in person."
+            },
+            {
+              "q": "Quel conseil donne l'article ?",
+              "options": [
+                "choisir un partenaire de même niveau",
+                "parler seulement sa langue",
+                "changer souvent de partenaire"
+              ],
+              "answer": 0,
+              "zh": "「選一個程度跟你差不多的夥伴」。",
+              "en": "A partner at your level."
+            }
+          ]
+        }
+      ]
     }
   ]
 }
