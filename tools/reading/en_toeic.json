@@ -3,8 +3,1431 @@
   "lang": "en",
   "level": "TOEIC",
   "order": 10,
-  "note": "TOEIC Reading (gap fill 2026-11-11), American spelling: Part 5 incomplete sentences, Part 6 text completion, Part 7 single passages (e-mail, notice, text-message chat, article); 25 a round (the real test 30 + 16 + 54). Original texts. Drafted in tools/.mockups/us_rd.py. Edit this file, then run: python tools/build_reading.py",
+  "note": "TOEIC Reading (gap fill 2026-11-11), American spelling: Part 5 incomplete sentences, Part 6 text completion, Part 7 single passages (e-mail, notice, text-message chat, article); 25 a round (the real test 30 + 16 + 54). Original texts. Drafted in tools/.mockups/us_rd.py. Edit this file, then run: python tools/build_reading.py Short passages: tools/.mockups/en_toeic_passages.py (add_passages.py; rerun it after regenerating the sets).",
   "n_options": 4,
+  "passages": [
+    {
+      "id": "lobby-renovation",
+      "topic": "home",
+      "title": {
+        "text": "Notice to Residents: Lobby Renovation",
+        "zh": "住戶通知：大廳整修",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Starting Monday, May 6, the lobby of Parkview Apartments will be closed for renovation.",
+            "The work is expected to take about three weeks."
+          ],
+          "zh": "自五月六日星期一起，公園景公寓的大廳將因整修而關閉。工程預計約需三週。"
+        },
+        {
+          "s": [
+            "During this time, residents should use the side entrance on Elm Street.",
+            "Mail will be delivered to temporary mailboxes next to the elevators."
+          ],
+          "zh": "這段期間，住戶請使用榆樹街的側門。郵件將投遞到電梯旁的臨時信箱。"
+        },
+        {
+          "s": [
+            "Work will take place on weekdays between 9 a.m. and 5 p.m., so some noise is unavoidable.",
+            "No work will be done on weekends."
+          ],
+          "zh": "工程於平日上午九點至下午五點進行，因此難免會有一些噪音。週末不施工。"
+        },
+        {
+          "s": [
+            "We apologize for any inconvenience.",
+            "If you have questions, please contact the management office at extension 210."
+          ],
+          "zh": "造成不便，敬請見諒。如有疑問，請撥分機 210 聯絡管理室。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "renovation",
+          "r": "",
+          "zh": "整修",
+          "en": "the work of repairing and improving a building"
+        },
+        {
+          "w": "resident",
+          "r": "",
+          "zh": "住戶",
+          "en": "a person who lives in a place",
+          "m": [
+            "residents"
+          ]
+        },
+        {
+          "w": "deliver",
+          "r": "",
+          "zh": "投遞",
+          "en": "to bring to a person or place",
+          "m": [
+            "delivered"
+          ]
+        },
+        {
+          "w": "temporary",
+          "r": "",
+          "zh": "臨時的",
+          "en": "lasting only for a short time"
+        },
+        {
+          "w": "unavoidable",
+          "r": "",
+          "zh": "無法避免的",
+          "en": "impossible to prevent"
+        },
+        {
+          "w": "apologize",
+          "r": "",
+          "zh": "道歉",
+          "en": "to say you are sorry"
+        },
+        {
+          "w": "inconvenience",
+          "r": "",
+          "zh": "不便",
+          "en": "trouble or difficulty"
+        },
+        {
+          "w": "extension",
+          "r": "",
+          "zh": "分機",
+          "en": "a phone line inside a building"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What is the purpose of the notice?",
+          "options": [
+            "To announce a rent increase",
+            "To inform residents about work in the lobby",
+            "To welcome new residents",
+            "To advertise an apartment"
+          ],
+          "answer": 1,
+          "zh": "通知住戶大廳將整修。",
+          "en": "It tells residents the lobby will be renovated."
+        },
+        {
+          "q": "How long will the work probably last?",
+          "options": [
+            "About three days",
+            "About one week",
+            "About three weeks",
+            "About three months"
+          ],
+          "answer": 2,
+          "zh": "「expected to take about three weeks」。",
+          "en": "\"The work is expected to take about three weeks.\""
+        },
+        {
+          "q": "How should residents enter the building?",
+          "options": [
+            "Through the main lobby",
+            "Through the parking garage",
+            "Through the back door",
+            "Through the side entrance on Elm Street"
+          ],
+          "answer": 3,
+          "zh": "請使用榆樹街的側門。",
+          "en": "They should use the side entrance on Elm Street."
+        },
+        {
+          "q": "Where will mail be delivered?",
+          "options": [
+            "To temporary mailboxes near the elevators",
+            "To the management office",
+            "To each apartment door",
+            "To the post office"
+          ],
+          "answer": 0,
+          "zh": "投遞到電梯旁的臨時信箱。",
+          "en": "To temporary mailboxes next to the elevators."
+        },
+        {
+          "q": "The word \"unavoidable\" in paragraph 3 is closest in meaning to",
+          "options": [
+            "very loud",
+            "impossible to prevent",
+            "not allowed",
+            "easy to fix"
+          ],
+          "answer": 1,
+          "zh": "unavoidable＝無法避免的。",
+          "en": "\"Unavoidable\" means impossible to prevent."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Work will be done on Saturdays.",
+          "answer": false,
+          "zh": "×：週末不施工。",
+          "en": "False: no work will be done on weekends."
+        },
+        {
+          "s": "The management office can be reached at extension 210.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The lobby will close on a Monday.",
+          "answer": true,
+          "zh": "○：五月六日星期一起關閉。",
+          "en": "True: starting Monday, May 6."
+        }
+      ]
+    },
+    {
+      "id": "catering-order",
+      "topic": "food",
+      "title": {
+        "text": "Re: Catering for the Sales Conference",
+        "zh": "回覆：業務會議的外燴餐點",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Thank you for choosing Green Table Catering for your sales conference on June 12.",
+            "I am writing to confirm the details of your order."
+          ],
+          "zh": "感謝您為六月十二日的業務會議選擇綠桌外燴。特此來信確認您訂單的細節。"
+        },
+        {
+          "s": [
+            "We will provide lunch for eighty guests, including twelve vegetarian meals.",
+            "Our staff will arrive at 11 a.m. to set up the tables."
+          ],
+          "zh": "我們將為八十位來賓提供午餐，其中包括十二份素食餐點。我們的工作人員會在上午十一點抵達布置餐桌。"
+        },
+        {
+          "s": [
+            "As you requested, coffee and tea will also be served during the afternoon break.",
+            "Because your order is over seventy meals, the drinks are free of charge."
+          ],
+          "zh": "如您所要求，下午休息時間也會供應咖啡和茶。由於您的訂單超過七十份餐點，飲料免費提供。"
+        },
+        {
+          "s": [
+            "Please let me know the final number of guests by June 5.",
+            "Changes made after that date may not be possible."
+          ],
+          "zh": "請於六月五日前告知最終來賓人數。該日期之後的更改可能無法受理。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "catering",
+          "r": "",
+          "zh": "外燴",
+          "en": "providing food and drinks for events",
+          "m": [
+            "Catering"
+          ]
+        },
+        {
+          "w": "confirm",
+          "r": "",
+          "zh": "確認",
+          "en": "to say that something is certain"
+        },
+        {
+          "w": "provide",
+          "r": "",
+          "zh": "提供",
+          "en": "to give or supply"
+        },
+        {
+          "w": "vegetarian",
+          "r": "",
+          "zh": "素食的",
+          "en": "without meat"
+        },
+        {
+          "w": "set up",
+          "r": "",
+          "zh": "布置",
+          "en": "to prepare for use"
+        },
+        {
+          "w": "request",
+          "r": "",
+          "zh": "要求",
+          "en": "to ask for",
+          "m": [
+            "requested"
+          ]
+        },
+        {
+          "w": "free of charge",
+          "r": "",
+          "zh": "免費",
+          "en": "costing nothing"
+        },
+        {
+          "w": "final",
+          "r": "",
+          "zh": "最終的",
+          "en": "last; not going to change"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "Why was the e-mail written?",
+          "options": [
+            "To confirm a catering order",
+            "To cancel a conference",
+            "To apply for a job",
+            "To complain about a meal"
+          ],
+          "answer": 0,
+          "zh": "「to confirm the details of your order」。",
+          "en": "To confirm the details of the order."
+        },
+        {
+          "q": "How many vegetarian meals were ordered?",
+          "options": [
+            "Eight",
+            "Eighty",
+            "Seventy",
+            "Twelve"
+          ],
+          "answer": 3,
+          "zh": "八十份中有十二份素食。",
+          "en": "Twelve of the eighty meals are vegetarian."
+        },
+        {
+          "q": "What time will the staff arrive?",
+          "options": [
+            "At 9 a.m.",
+            "At 11 a.m.",
+            "At noon",
+            "At 5 p.m."
+          ],
+          "answer": 1,
+          "zh": "上午十一點抵達布置。",
+          "en": "At 11 a.m., to set up the tables."
+        },
+        {
+          "q": "Why are the drinks free?",
+          "options": [
+            "The conference was moved",
+            "The customer is new",
+            "The order is over seventy meals",
+            "The coffee machine is broken"
+          ],
+          "answer": 2,
+          "zh": "訂單超過七十份。",
+          "en": "Because the order is over seventy meals."
+        },
+        {
+          "q": "What should the customer do by June 5?",
+          "options": [
+            "Pay the bill",
+            "Choose a menu",
+            "Visit the restaurant",
+            "Give the final number of guests"
+          ],
+          "answer": 3,
+          "zh": "六月五日前告知最終人數。",
+          "en": "Give the final number of guests."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Lunch will be served to eighty guests.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: lunch for eighty guests."
+        },
+        {
+          "s": "The conference will take place on June 5.",
+          "answer": false,
+          "zh": "×：會議是六月十二日；六月五日是告知人數的期限。",
+          "en": "False: it is on June 12; June 5 is the deadline for the number."
+        },
+        {
+          "s": "Coffee and tea will be served in the afternoon.",
+          "answer": true,
+          "zh": "○：下午休息時間供應。",
+          "en": "True: during the afternoon break."
+        }
+      ]
+    },
+    {
+      "id": "trade-fair-trip",
+      "topic": "travel",
+      "title": {
+        "text": "Your Trip to the Chicago Trade Fair",
+        "zh": "您的芝加哥商展行程",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Your flight to Chicago leaves on Tuesday at 7:40 a.m.",
+            "Please arrive at the airport at least ninety minutes before departure."
+          ],
+          "zh": "您飛往芝加哥的班機於星期二上午七點四十分起飛。請至少在起飛前九十分鐘抵達機場。"
+        },
+        {
+          "s": [
+            "A driver from the hotel will meet you at the arrivals gate and take you directly to the convention center.",
+            "Your booth must be ready by 2 p.m."
+          ],
+          "zh": "飯店的司機會在入境大廳接您，直接送您到會展中心。您的攤位必須在下午兩點前布置完成。"
+        },
+        {
+          "s": [
+            "You will stay at the Lakeside Hotel for three nights.",
+            "Breakfast is included, but dinners should be paid for with your company card."
+          ],
+          "zh": "您將在湖畔飯店住三晚。房價含早餐，但晚餐請用公司卡支付。"
+        },
+        {
+          "s": [
+            "Keep all receipts and submit them to the accounting department within a week of your return."
+          ],
+          "zh": "請保留所有收據，並在回來後一週內交給會計部。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "departure",
+          "r": "",
+          "zh": "起飛；出發",
+          "en": "the act of leaving"
+        },
+        {
+          "w": "arrivals",
+          "r": "",
+          "zh": "入境處",
+          "en": "the place where passengers come in"
+        },
+        {
+          "w": "directly",
+          "r": "",
+          "zh": "直接地",
+          "en": "without stopping"
+        },
+        {
+          "w": "convention center",
+          "r": "",
+          "zh": "會展中心",
+          "en": "a large building for meetings and shows"
+        },
+        {
+          "w": "booth",
+          "r": "",
+          "zh": "攤位",
+          "en": "a small area for showing products"
+        },
+        {
+          "w": "include",
+          "r": "",
+          "zh": "包含",
+          "en": "to have as part of something",
+          "m": [
+            "included"
+          ]
+        },
+        {
+          "w": "receipt",
+          "r": "",
+          "zh": "收據",
+          "en": "a paper showing you paid",
+          "m": [
+            "receipts"
+          ]
+        },
+        {
+          "w": "submit",
+          "r": "",
+          "zh": "提交",
+          "en": "to give for checking"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "When does the flight leave?",
+          "options": [
+            "On Monday evening",
+            "On Tuesday morning",
+            "On Tuesday afternoon",
+            "On Wednesday morning"
+          ],
+          "answer": 1,
+          "zh": "星期二上午七點四十分。",
+          "en": "On Tuesday at 7:40 a.m."
+        },
+        {
+          "q": "What will the driver do?",
+          "options": [
+            "Take the traveler to the convention center",
+            "Wait at the hotel",
+            "Bring the booth materials",
+            "Drive the traveler home"
+          ],
+          "answer": 0,
+          "zh": "直接送到會展中心。",
+          "en": "Take the traveler directly to the convention center."
+        },
+        {
+          "q": "By what time must the booth be ready?",
+          "options": [
+            "7:40 a.m.",
+            "9 a.m.",
+            "2 p.m.",
+            "5 p.m."
+          ],
+          "answer": 2,
+          "zh": "下午兩點前。",
+          "en": "By 2 p.m."
+        },
+        {
+          "q": "How should dinners be paid for?",
+          "options": [
+            "In cash",
+            "By the hotel",
+            "By the trade fair",
+            "With the company card"
+          ],
+          "answer": 3,
+          "zh": "晚餐用公司卡支付。",
+          "en": "With the company card."
+        },
+        {
+          "q": "What should the traveler do after returning?",
+          "options": [
+            "Write a report",
+            "Call the hotel",
+            "Submit receipts to accounting",
+            "Book the next trip"
+          ],
+          "answer": 2,
+          "zh": "一週內把收據交給會計部。",
+          "en": "Submit the receipts to the accounting department."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The traveler will stay at the hotel for three nights.",
+          "answer": true,
+          "zh": "○：住三晚。",
+          "en": "True: three nights."
+        },
+        {
+          "s": "Breakfast costs extra at the hotel.",
+          "answer": false,
+          "zh": "×：房價含早餐。",
+          "en": "False: breakfast is included."
+        },
+        {
+          "s": "Receipts must be submitted within a month.",
+          "answer": false,
+          "zh": "×：一週內。",
+          "en": "False: within a week."
+        }
+      ]
+    },
+    {
+      "id": "picnic-indoors",
+      "topic": "weather",
+      "title": {
+        "text": "Company Picnic Moved Indoors",
+        "zh": "公司野餐移到室內",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Because heavy rain is forecast for Saturday, this year's picnic will no longer be held at Riverside Park.",
+            "Instead, it will take place in the cafeteria on the first floor."
+          ],
+          "zh": "由於預報星期六將有大雨，今年的野餐不在河濱公園舉行，改在一樓員工餐廳舉辦。"
+        },
+        {
+          "s": [
+            "The start time remains the same, 11:30 a.m.",
+            "Lunch, games and the prize drawing will all go ahead as planned."
+          ],
+          "zh": "開始時間不變，仍是上午十一點半。午餐、遊戲和抽獎都會照原定計畫進行。"
+        },
+        {
+          "s": [
+            "Unfortunately, the boat ride on the river has been canceled.",
+            "Employees who paid for tickets will receive a full refund next week."
+          ],
+          "zh": "很遺憾，河上遊船活動已取消。已付費購票的員工下週會收到全額退款。"
+        },
+        {
+          "s": [
+            "Family members are still welcome.",
+            "Please tell Human Resources by Thursday how many people you will bring."
+          ],
+          "zh": "仍歡迎家人參加。請在星期四前告知人資部您會帶幾位。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "forecast",
+          "r": "",
+          "zh": "預報",
+          "en": "to say what will probably happen"
+        },
+        {
+          "w": "no longer",
+          "r": "",
+          "zh": "不再",
+          "en": "not any more"
+        },
+        {
+          "w": "cafeteria",
+          "r": "",
+          "zh": "員工餐廳",
+          "en": "a restaurant in a workplace"
+        },
+        {
+          "w": "remain",
+          "r": "",
+          "zh": "保持",
+          "en": "to stay the same",
+          "m": [
+            "remains"
+          ]
+        },
+        {
+          "w": "drawing",
+          "r": "",
+          "zh": "抽獎",
+          "en": "choosing winners by chance"
+        },
+        {
+          "w": "go ahead",
+          "r": "",
+          "zh": "照常進行",
+          "en": "to happen as planned"
+        },
+        {
+          "w": "cancel",
+          "r": "",
+          "zh": "取消",
+          "en": "to stop a planned event",
+          "m": [
+            "canceled"
+          ]
+        },
+        {
+          "w": "refund",
+          "r": "",
+          "zh": "退款",
+          "en": "money given back"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "Why was the picnic moved?",
+          "options": [
+            "The park was closed",
+            "Rain is expected",
+            "Too many people signed up",
+            "The cafeteria is new"
+          ],
+          "answer": 1,
+          "zh": "預報星期六有大雨。",
+          "en": "Heavy rain is forecast for Saturday."
+        },
+        {
+          "q": "Where will the picnic be held?",
+          "options": [
+            "At Riverside Park",
+            "On a boat",
+            "In the first-floor cafeteria",
+            "At a hotel"
+          ],
+          "answer": 2,
+          "zh": "改在一樓員工餐廳。",
+          "en": "In the cafeteria on the first floor."
+        },
+        {
+          "q": "What has changed about the start time?",
+          "options": [
+            "It is earlier",
+            "It is later",
+            "It is not decided yet",
+            "Nothing has changed"
+          ],
+          "answer": 3,
+          "zh": "「The start time remains the same」。",
+          "en": "The start time remains the same."
+        },
+        {
+          "q": "What will happen to people who bought boat tickets?",
+          "options": [
+            "They will get their money back",
+            "They can ride next month",
+            "They will get extra prizes",
+            "They must call the boat company"
+          ],
+          "answer": 0,
+          "zh": "下週全額退款。",
+          "en": "They will receive a full refund."
+        },
+        {
+          "q": "What should employees tell Human Resources?",
+          "options": [
+            "Which games they like",
+            "How many people they will bring",
+            "What food they want",
+            "Whether they can drive"
+          ],
+          "answer": 1,
+          "zh": "星期四前告知會帶幾位。",
+          "en": "How many people they will bring."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The prize drawing has been canceled.",
+          "answer": false,
+          "zh": "×：抽獎照常進行；取消的是遊船。",
+          "en": "False: the drawing goes ahead; the boat ride is canceled."
+        },
+        {
+          "s": "Employees may bring family members.",
+          "answer": true,
+          "zh": "○：「Family members are still welcome」。",
+          "en": "True: family members are still welcome."
+        },
+        {
+          "s": "The picnic starts at 11:30 a.m.",
+          "answer": true,
+          "zh": "○：開始時間仍是十一點半。",
+          "en": "True: the start time is still 11:30 a.m."
+        }
+      ]
+    },
+    {
+      "id": "headphones-return",
+      "topic": "shopping",
+      "title": {
+        "text": "Reply from Customer Service",
+        "zh": "客服回覆",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Thank you for contacting Brightway Electronics about the headphones you ordered online.",
+            "We are sorry to hear that the left speaker stopped working."
+          ],
+          "zh": "感謝您就網購的耳機聯絡亮途電子。很抱歉得知左邊的耳機不響了。"
+        },
+        {
+          "s": [
+            "Since you bought the item less than thirty days ago, you may return it for a replacement or a full refund."
+          ],
+          "zh": "由於您購買不到三十天，可以退回並換新品或全額退款。"
+        },
+        {
+          "s": [
+            "Simply print the attached shipping label and take the package to any post office.",
+            "You will not be charged for shipping."
+          ],
+          "zh": "只要列印附上的寄件標籤，把包裹拿到任何一間郵局即可。您不需支付運費。"
+        },
+        {
+          "s": [
+            "Once we receive the headphones, a replacement will be sent within three business days.",
+            "Refunds usually take five to seven days to appear on your card."
+          ],
+          "zh": "我們收到耳機後，會在三個工作天內寄出新品。退款通常需要五到七天才會出現在您的卡上。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "contact",
+          "r": "",
+          "zh": "聯絡",
+          "en": "to call or write to",
+          "m": [
+            "contacting"
+          ]
+        },
+        {
+          "w": "replacement",
+          "r": "",
+          "zh": "替換品",
+          "en": "a new thing that takes the place of an old one"
+        },
+        {
+          "w": "refund",
+          "r": "",
+          "zh": "退款",
+          "en": "money given back",
+          "m": [
+            "Refunds",
+            "refund"
+          ]
+        },
+        {
+          "w": "attach",
+          "r": "",
+          "zh": "附上",
+          "en": "to add to an e-mail or letter",
+          "m": [
+            "attached"
+          ]
+        },
+        {
+          "w": "shipping label",
+          "r": "",
+          "zh": "寄件標籤",
+          "en": "a paper with the address for a package"
+        },
+        {
+          "w": "package",
+          "r": "",
+          "zh": "包裹",
+          "en": "a box sent by mail"
+        },
+        {
+          "w": "charge",
+          "r": "",
+          "zh": "收費",
+          "en": "to ask for money",
+          "m": [
+            "charged"
+          ]
+        },
+        {
+          "w": "business day",
+          "r": "",
+          "zh": "工作天",
+          "en": "a day when offices are open",
+          "m": [
+            "business days"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What problem does the customer have?",
+          "options": [
+            "The headphones arrived late",
+            "The wrong color was sent",
+            "One speaker stopped working",
+            "The price was too high"
+          ],
+          "answer": 2,
+          "zh": "左邊耳機不響了。",
+          "en": "The left speaker stopped working."
+        },
+        {
+          "q": "Why can the customer return the item?",
+          "options": [
+            "It was bought less than thirty days ago",
+            "It was on sale",
+            "The store sent the wrong order",
+            "The customer is a member"
+          ],
+          "answer": 0,
+          "zh": "購買不到三十天。",
+          "en": "It was bought less than thirty days ago."
+        },
+        {
+          "q": "What should the customer print?",
+          "options": [
+            "A receipt",
+            "A shipping label",
+            "A coupon",
+            "A user guide"
+          ],
+          "answer": 1,
+          "zh": "列印附上的寄件標籤。",
+          "en": "The attached shipping label."
+        },
+        {
+          "q": "How much will the customer pay for shipping?",
+          "options": [
+            "Five dollars",
+            "Half the cost",
+            "The full cost",
+            "Nothing"
+          ],
+          "answer": 3,
+          "zh": "「You will not be charged for shipping」。",
+          "en": "Nothing: shipping is not charged."
+        },
+        {
+          "q": "How long does a refund usually take to appear?",
+          "options": [
+            "Five to seven days",
+            "One day",
+            "Three business days",
+            "Thirty days"
+          ],
+          "answer": 0,
+          "zh": "退款通常五到七天。",
+          "en": "Usually five to seven days."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The customer bought the headphones in a store.",
+          "answer": false,
+          "zh": "×：在網路上訂購。",
+          "en": "False: they were ordered online."
+        },
+        {
+          "s": "A replacement will be sent within three business days of receiving the headphones.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The package can be taken to any post office.",
+          "answer": true,
+          "zh": "○：任何一間郵局都可以。",
+          "en": "True: any post office."
+        }
+      ]
+    },
+    {
+      "id": "presentation-workshop",
+      "topic": "school",
+      "title": {
+        "text": "Free Workshop: Presentation Skills",
+        "zh": "免費講座：簡報技巧",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "The Training Department is offering a free workshop on presentation skills for all staff.",
+            "It will be held in Conference Room B on Wednesday, March 20, from 2 to 4 p.m."
+          ],
+          "zh": "訓練部將為全體員工舉辦一場免費的簡報技巧講座。時間是三月二十日星期三下午兩點到四點，地點在 B 會議室。"
+        },
+        {
+          "s": [
+            "Participants will learn how to organize their ideas, design clear slides and speak with confidence.",
+            "Each person will also give a short practice talk."
+          ],
+          "zh": "參加者將學習如何整理想法、設計清楚的投影片，以及有自信地說話。每個人也會做一段簡短的練習演講。"
+        },
+        {
+          "s": [
+            "Space is limited to twenty people, so early registration is recommended.",
+            "To sign up, complete the online form on the company website."
+          ],
+          "zh": "名額限二十人，建議儘早報名。報名請填寫公司網站上的線上表單。"
+        },
+        {
+          "s": [
+            "Managers are encouraged to let their team members attend during working hours."
+          ],
+          "zh": "鼓勵主管讓組員在上班時間參加。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "workshop",
+          "r": "",
+          "zh": "講座；研習",
+          "en": "a meeting for learning a skill"
+        },
+        {
+          "w": "participant",
+          "r": "",
+          "zh": "參加者",
+          "en": "a person who takes part",
+          "m": [
+            "Participants"
+          ]
+        },
+        {
+          "w": "organize",
+          "r": "",
+          "zh": "整理",
+          "en": "to put in order"
+        },
+        {
+          "w": "slide",
+          "r": "",
+          "zh": "投影片",
+          "en": "one page of a presentation",
+          "m": [
+            "slides"
+          ]
+        },
+        {
+          "w": "confidence",
+          "r": "",
+          "zh": "自信",
+          "en": "belief in yourself"
+        },
+        {
+          "w": "registration",
+          "r": "",
+          "zh": "報名",
+          "en": "the act of signing up"
+        },
+        {
+          "w": "recommend",
+          "r": "",
+          "zh": "建議",
+          "en": "to say something is a good idea",
+          "m": [
+            "recommended"
+          ]
+        },
+        {
+          "w": "encourage",
+          "r": "",
+          "zh": "鼓勵",
+          "en": "to try to make someone do something",
+          "m": [
+            "encouraged"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "Who can attend the workshop?",
+          "options": [
+            "Only managers",
+            "All staff",
+            "Only new employees",
+            "Customers"
+          ],
+          "answer": 1,
+          "zh": "「for all staff」：全體員工。",
+          "en": "It is for all staff."
+        },
+        {
+          "q": "How long is the workshop?",
+          "options": [
+            "Two hours",
+            "One hour",
+            "Three hours",
+            "All day"
+          ],
+          "answer": 0,
+          "zh": "下午兩點到四點，共兩小時。",
+          "en": "From 2 to 4 p.m.: two hours."
+        },
+        {
+          "q": "What will each participant do?",
+          "options": [
+            "Write a report",
+            "Lead a team",
+            "Take a test",
+            "Give a short practice talk"
+          ],
+          "answer": 3,
+          "zh": "每人做一段簡短的練習演講。",
+          "en": "Each person will give a short practice talk."
+        },
+        {
+          "q": "Why is early registration recommended?",
+          "options": [
+            "The price will rise",
+            "The room is far away",
+            "Only twenty people can join",
+            "Registration closes today"
+          ],
+          "answer": 2,
+          "zh": "名額限二十人。",
+          "en": "Space is limited to twenty people."
+        },
+        {
+          "q": "How can staff sign up?",
+          "options": [
+            "By calling the Training Department",
+            "By filling in an online form",
+            "By e-mailing a manager",
+            "By visiting Conference Room B"
+          ],
+          "answer": 1,
+          "zh": "填寫公司網站上的線上表單。",
+          "en": "By completing the online form on the company website."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The workshop costs twenty dollars.",
+          "answer": false,
+          "zh": "×：免費。",
+          "en": "False: it is free."
+        },
+        {
+          "s": "Participants will learn to design slides.",
+          "answer": true,
+          "zh": "○：「design clear slides」。",
+          "en": "True: \"design clear slides\"."
+        },
+        {
+          "s": "The workshop takes place on a Wednesday.",
+          "answer": true,
+          "zh": "○：三月二十日星期三。",
+          "en": "True: Wednesday, March 20."
+        }
+      ]
+    },
+    {
+      "id": "employee-shuttle",
+      "topic": "transport",
+      "title": {
+        "text": "New Shuttle Bus for Employees",
+        "zh": "員工專用接駁車",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Starting next month, a free shuttle bus will run between Central Station and our office park.",
+            "The service is part of our effort to reduce traffic and parking problems."
+          ],
+          "zh": "從下個月起，一班免費接駁車將往返中央車站與我們的辦公園區。這項服務是我們減少交通與停車問題的措施之一。"
+        },
+        {
+          "s": [
+            "Buses will leave the station every twenty minutes from 7 to 10 a.m.",
+            "In the evening, they will return from 4:30 to 7:30 p.m."
+          ],
+          "zh": "早上七點到十點，每二十分鐘從車站發一班車。傍晚四點半到七點半則有回程車。"
+        },
+        {
+          "s": [
+            "To ride the shuttle, simply show your employee ID card to the driver.",
+            "Visitors must ask the front desk for a guest pass."
+          ],
+          "zh": "搭乘接駁車只要向司機出示員工證即可。訪客必須向櫃台索取訪客證。"
+        },
+        {
+          "s": [
+            "A full timetable will be posted on the staff website next week."
+          ],
+          "zh": "完整時刻表將於下週公布在員工網站上。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "shuttle",
+          "r": "",
+          "zh": "接駁車",
+          "en": "a bus that goes back and forth between two places"
+        },
+        {
+          "w": "office park",
+          "r": "",
+          "zh": "辦公園區",
+          "en": "an area with many office buildings"
+        },
+        {
+          "w": "effort",
+          "r": "",
+          "zh": "努力；措施",
+          "en": "an attempt to do something"
+        },
+        {
+          "w": "reduce",
+          "r": "",
+          "zh": "減少",
+          "en": "to make smaller or less"
+        },
+        {
+          "w": "employee ID card",
+          "r": "",
+          "zh": "員工證",
+          "en": "a card showing you work for a company"
+        },
+        {
+          "w": "front desk",
+          "r": "",
+          "zh": "櫃台",
+          "en": "the place where visitors are welcomed"
+        },
+        {
+          "w": "guest pass",
+          "r": "",
+          "zh": "訪客證",
+          "en": "a card that lets a visitor enter"
+        },
+        {
+          "w": "timetable",
+          "r": "",
+          "zh": "時刻表",
+          "en": "a list of times when buses leave"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What is the purpose of the shuttle bus?",
+          "options": [
+            "To take employees to the airport",
+            "To reduce traffic and parking problems",
+            "To carry visitors on tours",
+            "To replace company cars"
+          ],
+          "answer": 1,
+          "zh": "減少交通與停車問題。",
+          "en": "To reduce traffic and parking problems."
+        },
+        {
+          "q": "How often do morning buses leave the station?",
+          "options": [
+            "Every ten minutes",
+            "Every fifteen minutes",
+            "Every hour",
+            "Every twenty minutes"
+          ],
+          "answer": 3,
+          "zh": "每二十分鐘一班。",
+          "en": "Every twenty minutes."
+        },
+        {
+          "q": "What must employees show to the driver?",
+          "options": [
+            "A ticket",
+            "A timetable",
+            "Their employee ID card",
+            "A guest pass"
+          ],
+          "answer": 2,
+          "zh": "出示員工證。",
+          "en": "Their employee ID card."
+        },
+        {
+          "q": "How can visitors ride the shuttle?",
+          "options": [
+            "By getting a guest pass from the front desk",
+            "By paying the driver",
+            "By booking online",
+            "By showing a passport"
+          ],
+          "answer": 0,
+          "zh": "向櫃台索取訪客證。",
+          "en": "They must ask the front desk for a guest pass."
+        },
+        {
+          "q": "Where will the full timetable be posted?",
+          "options": [
+            "At Central Station",
+            "On the staff website",
+            "On the bus",
+            "At the front desk"
+          ],
+          "answer": 1,
+          "zh": "公布在員工網站上。",
+          "en": "On the staff website."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The shuttle costs two dollars a ride.",
+          "answer": false,
+          "zh": "×：免費。",
+          "en": "False: it is free."
+        },
+        {
+          "s": "Evening buses run from 4:30 to 7:30 p.m.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The shuttle service has already started.",
+          "answer": false,
+          "zh": "×：從下個月起。",
+          "en": "False: it starts next month."
+        }
+      ]
+    },
+    {
+      "id": "wellness-program",
+      "topic": "health",
+      "title": {
+        "text": "Our New Wellness Program",
+        "zh": "我們的新健康計畫",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "This spring, Hartley Insurance is launching a wellness program to help employees stay healthy.",
+            "Participation is voluntary, but we hope many of you will join."
+          ],
+          "zh": "今年春天，哈特利保險推出一項健康計畫，幫助員工保持健康。參加與否自由，但我們希望很多人加入。"
+        },
+        {
+          "s": [
+            "The program includes weekly yoga classes, free health checks and advice from a nutritionist.",
+            "Yoga classes are held in the training room every Tuesday at lunchtime."
+          ],
+          "zh": "計畫內容包括每週瑜伽課、免費健康檢查和營養師的建議。瑜伽課每週二午餐時間在訓練室上課。"
+        },
+        {
+          "s": [
+            "Employees who attend at least ten classes will receive a gift card worth fifty dollars."
+          ],
+          "zh": "參加至少十堂課的員工將獲得價值五十美元的禮物卡。"
+        },
+        {
+          "s": [
+            "Studies show that healthy workers take fewer sick days and feel more satisfied with their jobs.",
+            "We believe the program will benefit everyone."
+          ],
+          "zh": "研究顯示，健康的員工請病假較少，對工作也更滿意。我們相信這項計畫對每個人都有益。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "launch",
+          "r": "",
+          "zh": "推出",
+          "en": "to start something new",
+          "m": [
+            "launching"
+          ]
+        },
+        {
+          "w": "wellness",
+          "r": "",
+          "zh": "健康",
+          "en": "the state of being healthy"
+        },
+        {
+          "w": "voluntary",
+          "r": "",
+          "zh": "自願的",
+          "en": "done because you want to"
+        },
+        {
+          "w": "nutritionist",
+          "r": "",
+          "zh": "營養師",
+          "en": "an expert on food and health"
+        },
+        {
+          "w": "worth",
+          "r": "",
+          "zh": "價值…的",
+          "en": "having a value of"
+        },
+        {
+          "w": "sick day",
+          "r": "",
+          "zh": "病假",
+          "en": "a day off because you are ill",
+          "m": [
+            "sick days"
+          ]
+        },
+        {
+          "w": "satisfied",
+          "r": "",
+          "zh": "滿意的",
+          "en": "pleased"
+        },
+        {
+          "w": "benefit",
+          "r": "",
+          "zh": "對…有益",
+          "en": "to be good for"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What is the main purpose of the program?",
+          "options": [
+            "To help employees stay healthy",
+            "To sell insurance",
+            "To hire new staff",
+            "To shorten lunch breaks"
+          ],
+          "answer": 0,
+          "zh": "幫助員工保持健康。",
+          "en": "To help employees stay healthy."
+        },
+        {
+          "q": "The word \"voluntary\" in paragraph 1 is closest in meaning to",
+          "options": [
+            "required",
+            "expensive",
+            "not decided",
+            "done by choice"
+          ],
+          "answer": 3,
+          "zh": "voluntary＝自願的。",
+          "en": "\"Voluntary\" means done by choice."
+        },
+        {
+          "q": "When are yoga classes held?",
+          "options": [
+            "Every morning",
+            "Every Tuesday at lunchtime",
+            "On weekends",
+            "Every Friday evening"
+          ],
+          "answer": 1,
+          "zh": "每週二午餐時間。",
+          "en": "Every Tuesday at lunchtime."
+        },
+        {
+          "q": "What will employees get for attending ten classes?",
+          "options": [
+            "A day off",
+            "A free health check",
+            "A fifty-dollar gift card",
+            "A new yoga mat"
+          ],
+          "answer": 2,
+          "zh": "價值五十美元的禮物卡。",
+          "en": "A gift card worth fifty dollars."
+        },
+        {
+          "q": "According to studies, what is true of healthy workers?",
+          "options": [
+            "They work longer hours",
+            "They earn more",
+            "They change jobs often",
+            "They take fewer sick days"
+          ],
+          "answer": 3,
+          "zh": "請病假較少。",
+          "en": "They take fewer sick days."
+        }
+      ],
+      "tf": [
+        {
+          "s": "All employees must join the program.",
+          "answer": false,
+          "zh": "×：參加是自願的。",
+          "en": "False: participation is voluntary."
+        },
+        {
+          "s": "Free health checks are part of the program.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "Yoga classes take place in the training room.",
+          "answer": true,
+          "zh": "○：在訓練室上課。",
+          "en": "True: in the training room."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",

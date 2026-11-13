@@ -3,8 +3,1468 @@
   "lang": "en",
   "level": "TOEFL",
   "order": 11,
-  "note": "TOEFL iBT Reading in the 2026 format (gap fill 2026-11-11): Complete the Words (the second half of ten words in an academic paragraph, typed — the ending or the whole word counts), Read in Daily Life (a notice, an e-mail), Read an Academic Passage; 20 a round. Original texts. Drafted in tools/.mockups/us_rd.py. Edit this file, then run: python tools/build_reading.py",
+  "note": "TOEFL iBT Reading in the 2026 format (gap fill 2026-11-11): Complete the Words (the second half of ten words in an academic paragraph, typed — the ending or the whole word counts), Read in Daily Life (a notice, an e-mail), Read an Academic Passage; 20 a round. Original texts. Drafted in tools/.mockups/us_rd.py. Edit this file, then run: python tools/build_reading.py Short passages: tools/.mockups/en_toefl_passages.py (add_passages.py; rerun it after regenerating the sets).",
   "n_options": 4,
+  "passages": [
+    {
+      "id": "sod-houses",
+      "topic": "home",
+      "title": {
+        "text": "Houses Made of Earth",
+        "zh": "用泥土蓋的房子",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "When settlers moved onto the Great Plains of North America in the nineteenth century, they faced a serious problem.",
+            "There were very few trees, so wood for building was scarce and expensive."
+          ],
+          "zh": "十九世紀拓荒者遷入北美大平原時，面臨一個嚴重的問題：那裡樹木很少，建屋用的木材稀少又昂貴。"
+        },
+        {
+          "s": [
+            "Their solution was to build with the ground itself.",
+            "They cut thick blocks of sod, soil held together by grass roots, and stacked them like bricks."
+          ],
+          "zh": "他們的解決辦法是直接用土地本身蓋房子。他們切下厚厚的草皮塊——由草根緊緊抓住的泥土——像磚塊一樣堆疊起來。"
+        },
+        {
+          "s": [
+            "These sod houses had clear advantages.",
+            "Their thick walls kept them warm in winter and cool in summer, and they rarely burned."
+          ],
+          "zh": "這種草皮屋有明顯的優點。厚牆使屋內冬暖夏涼，而且很少著火。"
+        },
+        {
+          "s": [
+            "However, they also leaked during heavy rain, and insects often lived in the walls.",
+            "As railroads made lumber cheaper, most families replaced them with wooden homes."
+          ],
+          "zh": "不過，下大雨時會漏水，牆裡也常住著昆蟲。隨著鐵路使木材變便宜，大多數家庭都改住木屋。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "settler",
+          "r": "",
+          "zh": "拓荒者",
+          "en": "a person who goes to live in a new area",
+          "m": [
+            "settlers"
+          ]
+        },
+        {
+          "w": "scarce",
+          "r": "",
+          "zh": "稀少的",
+          "en": "not easy to find"
+        },
+        {
+          "w": "solution",
+          "r": "",
+          "zh": "解決辦法",
+          "en": "a way to solve a problem"
+        },
+        {
+          "w": "sod",
+          "r": "",
+          "zh": "草皮",
+          "en": "a layer of soil with grass growing in it"
+        },
+        {
+          "w": "stack",
+          "r": "",
+          "zh": "堆疊",
+          "en": "to put things on top of each other",
+          "m": [
+            "stacked"
+          ]
+        },
+        {
+          "w": "advantage",
+          "r": "",
+          "zh": "優點",
+          "en": "a good feature",
+          "m": [
+            "advantages"
+          ]
+        },
+        {
+          "w": "leak",
+          "r": "",
+          "zh": "漏水",
+          "en": "to let water in through a hole",
+          "m": [
+            "leaked"
+          ]
+        },
+        {
+          "w": "lumber",
+          "r": "",
+          "zh": "木材",
+          "en": "wood cut for building"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "Why did the settlers need another material?",
+          "options": [
+            "Wood was scarce and expensive",
+            "Stone was too heavy",
+            "The law banned wooden houses",
+            "They preferred modern designs"
+          ],
+          "answer": 0,
+          "zh": "樹木很少，木材稀少又昂貴。",
+          "en": "There were few trees, so wood was scarce and expensive."
+        },
+        {
+          "q": "According to the passage, what is sod?",
+          "options": [
+            "A kind of brick made in factories",
+            "Soil held together by grass roots",
+            "A type of tree bark",
+            "Clay mixed with sand"
+          ],
+          "answer": 1,
+          "zh": "由草根抓住的泥土。",
+          "en": "Soil held together by grass roots."
+        },
+        {
+          "q": "Which was an advantage of sod houses?",
+          "options": [
+            "They never leaked",
+            "They were easy to move",
+            "They stayed warm in winter",
+            "They had no insects"
+          ],
+          "answer": 2,
+          "zh": "厚牆使屋內冬暖夏涼。",
+          "en": "Their thick walls kept them warm in winter."
+        },
+        {
+          "q": "The word \"scarce\" in paragraph 1 is closest in meaning to",
+          "options": [
+            "strong",
+            "cheap",
+            "heavy",
+            "hard to find"
+          ],
+          "answer": 3,
+          "zh": "scarce＝稀少的、難找到的。",
+          "en": "\"Scarce\" means hard to find."
+        },
+        {
+          "q": "Why did most families eventually replace their sod houses?",
+          "options": [
+            "The government paid them to move",
+            "Sod became too expensive",
+            "Railroads made lumber cheaper",
+            "The weather became warmer"
+          ],
+          "answer": 2,
+          "zh": "鐵路使木材變便宜。",
+          "en": "Railroads made lumber cheaper."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Sod houses often caught fire.",
+          "answer": false,
+          "zh": "×：很少著火。",
+          "en": "False: they rarely burned."
+        },
+        {
+          "s": "The walls of sod houses were thick.",
+          "answer": true,
+          "zh": "○：「Their thick walls」。",
+          "en": "True: \"their thick walls\"."
+        },
+        {
+          "s": "Insects sometimes lived inside the walls.",
+          "answer": true,
+          "zh": "○：牆裡常住著昆蟲。",
+          "en": "True: insects often lived in the walls."
+        }
+      ]
+    },
+    {
+      "id": "maize-origins",
+      "topic": "food",
+      "title": {
+        "text": "From Wild Grass to Corn",
+        "zh": "從野草到玉米",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Corn, or maize, is one of the most important crops in the world, yet it does not grow wild anywhere.",
+            "For a long time, its origin puzzled scientists."
+          ],
+          "zh": "玉米是世界上最重要的作物之一，但它在任何地方都不會野生生長。長久以來，它的起源令科學家困惑。"
+        },
+        {
+          "s": [
+            "Genetic studies have now shown that maize developed from a wild grass called teosinte, which grows in southern Mexico.",
+            "Teosinte looks very different from modern corn."
+          ],
+          "zh": "基因研究現已證實，玉米是由一種生長在墨西哥南部、名叫大芻草的野草演變而來。大芻草的樣子和現代玉米很不一樣。"
+        },
+        {
+          "s": [
+            "Its ears are tiny and hold only about a dozen hard seeds.",
+            "Over thousands of years, farmers kept seeds from the plants with the largest and softest ears."
+          ],
+          "zh": "它的穗很小，只有十幾顆堅硬的種子。數千年來，農民一直保留穗最大、最軟的植株的種子。"
+        },
+        {
+          "s": [
+            "This careful selection began around nine thousand years ago.",
+            "Slowly, it turned a wild grass into a crop that now feeds billions."
+          ],
+          "zh": "這種細心的選種大約從九千年前開始，慢慢把一種野草變成了今天養活數十億人的作物。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "crop",
+          "r": "",
+          "zh": "作物",
+          "en": "a plant grown for food",
+          "m": [
+            "crops",
+            "crop"
+          ]
+        },
+        {
+          "w": "origin",
+          "r": "",
+          "zh": "起源",
+          "en": "where something comes from"
+        },
+        {
+          "w": "puzzle",
+          "r": "",
+          "zh": "使困惑",
+          "en": "to make someone unable to understand",
+          "m": [
+            "puzzled"
+          ]
+        },
+        {
+          "w": "genetic",
+          "r": "",
+          "zh": "基因的",
+          "en": "about genes",
+          "m": [
+            "Genetic"
+          ]
+        },
+        {
+          "w": "develop",
+          "r": "",
+          "zh": "演變",
+          "en": "to grow or change slowly",
+          "m": [
+            "developed"
+          ]
+        },
+        {
+          "w": "ear",
+          "r": "",
+          "zh": "穗",
+          "en": "the part of a grain plant that holds the seeds",
+          "m": [
+            "ears"
+          ]
+        },
+        {
+          "w": "dozen",
+          "r": "",
+          "zh": "一打；十二個",
+          "en": "twelve"
+        },
+        {
+          "w": "selection",
+          "r": "",
+          "zh": "選擇",
+          "en": "the act of choosing"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What is unusual about maize?",
+          "options": [
+            "It grows only in deserts",
+            "It does not grow wild anywhere",
+            "It has no seeds",
+            "It was discovered recently"
+          ],
+          "answer": 1,
+          "zh": "它在任何地方都不會野生生長。",
+          "en": "It does not grow wild anywhere."
+        },
+        {
+          "q": "What did genetic studies show?",
+          "options": [
+            "Maize came from a wild grass",
+            "Maize came from Asia",
+            "Maize is related to rice",
+            "Maize cannot be improved"
+          ],
+          "answer": 0,
+          "zh": "玉米由野草大芻草演變而來。",
+          "en": "Maize developed from a wild grass, teosinte."
+        },
+        {
+          "q": "How is teosinte described?",
+          "options": [
+            "It has large, soft ears",
+            "It grows in northern Canada",
+            "It has small ears with hard seeds",
+            "It is a kind of tree"
+          ],
+          "answer": 2,
+          "zh": "穗很小，只有十幾顆堅硬的種子。",
+          "en": "Its ears are tiny and hold about a dozen hard seeds."
+        },
+        {
+          "q": "According to the passage, how did farmers change the plant?",
+          "options": [
+            "By adding chemicals",
+            "By planting it in water",
+            "By crossing it with wheat",
+            "By keeping seeds from plants with the best ears"
+          ],
+          "answer": 3,
+          "zh": "保留穗最大、最軟的植株的種子。",
+          "en": "They kept seeds from the plants with the largest and softest ears."
+        },
+        {
+          "q": "The word \"puzzled\" in paragraph 1 is closest in meaning to",
+          "options": [
+            "confused",
+            "pleased",
+            "angered",
+            "ignored"
+          ],
+          "answer": 0,
+          "zh": "puzzled＝使困惑。",
+          "en": "\"Puzzled\" means confused."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Teosinte grows in southern Mexico.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The change from teosinte to maize happened in a few years.",
+          "answer": false,
+          "zh": "×：歷經數千年。",
+          "en": "False: it took thousands of years."
+        },
+        {
+          "s": "Maize now feeds billions of people.",
+          "answer": true,
+          "zh": "○：「a crop that now feeds billions」。",
+          "en": "True: it now feeds billions."
+        }
+      ]
+    },
+    {
+      "id": "monarch-journey",
+      "topic": "travel",
+      "title": {
+        "text": "The Long Journey of the Monarch",
+        "zh": "帝王斑蝶的漫長旅程",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Every autumn, millions of monarch butterflies leave Canada and the northern United States and fly south to central Mexico.",
+            "Some travel more than four thousand kilometers."
+          ],
+          "zh": "每年秋天，數百萬隻帝王斑蝶離開加拿大和美國北部，向南飛到墨西哥中部。有些飛行超過四千公里。"
+        },
+        {
+          "s": [
+            "What makes this journey remarkable is that no single butterfly has made it before.",
+            "The monarchs that fly south are the great-grandchildren of those that left Mexico the previous spring."
+          ],
+          "zh": "這趟旅程令人驚奇之處在於：沒有一隻蝴蝶曾經飛過這條路。往南飛的帝王斑蝶，是前一年春天離開墨西哥那批蝴蝶的曾孫輩。"
+        },
+        {
+          "s": [
+            "Scientists believe the butterflies use the position of the sun to find their direction.",
+            "An internal clock lets them adjust for the sun's movement across the sky."
+          ],
+          "zh": "科學家認為，蝴蝶是靠太陽的位置來辨別方向。體內的生理時鐘讓牠們能依太陽在天空中的移動來調整。"
+        },
+        {
+          "s": [
+            "In recent decades, their numbers have fallen sharply, mainly because the milkweed plants their young depend on are disappearing."
+          ],
+          "zh": "近幾十年來，牠們的數量大幅減少，主要是因為幼蟲賴以為生的馬利筋植物正在消失。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "remarkable",
+          "r": "",
+          "zh": "非凡的",
+          "en": "unusual and surprising"
+        },
+        {
+          "w": "great-grandchild",
+          "r": "",
+          "zh": "曾孫",
+          "en": "the child of your grandchild",
+          "m": [
+            "great-grandchildren"
+          ]
+        },
+        {
+          "w": "previous",
+          "r": "",
+          "zh": "先前的",
+          "en": "coming before"
+        },
+        {
+          "w": "position",
+          "r": "",
+          "zh": "位置",
+          "en": "the place where something is"
+        },
+        {
+          "w": "internal",
+          "r": "",
+          "zh": "內部的",
+          "en": "inside"
+        },
+        {
+          "w": "adjust",
+          "r": "",
+          "zh": "調整",
+          "en": "to change a little"
+        },
+        {
+          "w": "decade",
+          "r": "",
+          "zh": "十年",
+          "en": "ten years",
+          "m": [
+            "decades"
+          ]
+        },
+        {
+          "w": "depend on",
+          "r": "",
+          "zh": "依賴",
+          "en": "to need"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "Where do the monarchs fly in autumn?",
+          "options": [
+            "To Canada",
+            "To central Mexico",
+            "To South America",
+            "To the northern United States"
+          ],
+          "answer": 1,
+          "zh": "向南飛到墨西哥中部。",
+          "en": "South to central Mexico."
+        },
+        {
+          "q": "What makes the journey remarkable?",
+          "options": [
+            "The butterflies fly at night",
+            "The butterflies fly in pairs",
+            "No butterfly has made the journey before",
+            "The journey takes only a week"
+          ],
+          "answer": 2,
+          "zh": "沒有一隻蝴蝶曾經飛過這條路。",
+          "en": "No single butterfly has made it before."
+        },
+        {
+          "q": "According to the passage, how do monarchs probably find their direction?",
+          "options": [
+            "By following rivers",
+            "By smelling flowers",
+            "By following older butterflies",
+            "By using the position of the sun"
+          ],
+          "answer": 3,
+          "zh": "靠太陽的位置辨別方向。",
+          "en": "They use the position of the sun."
+        },
+        {
+          "q": "Why have monarch numbers fallen?",
+          "options": [
+            "Milkweed plants are disappearing",
+            "Winters have become colder",
+            "Birds eat more of them",
+            "They fly too far"
+          ],
+          "answer": 0,
+          "zh": "幼蟲依賴的馬利筋正在消失。",
+          "en": "The milkweed plants their young depend on are disappearing."
+        },
+        {
+          "q": "The word \"remarkable\" in paragraph 2 is closest in meaning to",
+          "options": [
+            "dangerous",
+            "ordinary",
+            "surprising",
+            "short"
+          ],
+          "answer": 2,
+          "zh": "remarkable＝非凡的、令人驚奇的。",
+          "en": "\"Remarkable\" means surprising."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Some monarchs fly more than four thousand kilometers.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The same butterflies return to Mexico every year.",
+          "answer": false,
+          "zh": "×：往南飛的是曾孫輩，不是同一批。",
+          "en": "False: the ones flying south are the great-grandchildren."
+        },
+        {
+          "s": "Young monarchs depend on milkweed plants.",
+          "answer": true,
+          "zh": "○：幼蟲賴以為生。",
+          "en": "True: their young depend on milkweed."
+        }
+      ]
+    },
+    {
+      "id": "heat-islands",
+      "topic": "weather",
+      "title": {
+        "text": "Why Cities Are Warmer",
+        "zh": "為什麼城市比較熱",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "On a summer evening, the center of a large city can be several degrees warmer than the countryside around it.",
+            "This effect is known as an urban heat island."
+          ],
+          "zh": "夏天傍晚，大城市的市中心可能比周圍鄉村熱上好幾度。這種現象稱為「都市熱島」。"
+        },
+        {
+          "s": [
+            "The main cause is the materials cities are built from.",
+            "Asphalt and concrete absorb heat during the day and release it slowly after sunset."
+          ],
+          "zh": "主要原因在於城市的建材。柏油和混凝土白天吸收熱量，日落後再慢慢釋放出來。"
+        },
+        {
+          "s": [
+            "In addition, cities have fewer trees, which cool the air by releasing water through their leaves.",
+            "Air conditioners and cars add even more heat."
+          ],
+          "zh": "此外，城市的樹木比較少，而樹木會透過葉子釋出水分來使空氣降溫。冷氣機和汽車又帶來更多熱量。"
+        },
+        {
+          "s": [
+            "To reduce the problem, some cities are planting trees, painting roofs white and creating rooftop gardens."
+          ],
+          "zh": "為了減輕這個問題，有些城市正在種樹、把屋頂漆成白色，並打造屋頂花園。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "countryside",
+          "r": "",
+          "zh": "鄉村",
+          "en": "land outside towns"
+        },
+        {
+          "w": "urban",
+          "r": "",
+          "zh": "都市的",
+          "en": "of a city"
+        },
+        {
+          "w": "material",
+          "r": "",
+          "zh": "材料",
+          "en": "what something is made of",
+          "m": [
+            "materials"
+          ]
+        },
+        {
+          "w": "asphalt",
+          "r": "",
+          "zh": "柏油",
+          "en": "a black material used on roads",
+          "m": [
+            "Asphalt"
+          ]
+        },
+        {
+          "w": "concrete",
+          "r": "",
+          "zh": "混凝土",
+          "en": "a hard building material"
+        },
+        {
+          "w": "absorb",
+          "r": "",
+          "zh": "吸收",
+          "en": "to take in"
+        },
+        {
+          "w": "release",
+          "r": "",
+          "zh": "釋放",
+          "en": "to let out",
+          "m": [
+            "releasing",
+            "release"
+          ]
+        },
+        {
+          "w": "rooftop",
+          "r": "",
+          "zh": "屋頂的",
+          "en": "on the top of a building"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "According to the passage, what is an urban heat island?",
+          "options": [
+            "A city that is warmer than the area around it",
+            "A hot island near a city",
+            "A building that stores heat",
+            "A park in the city center"
+          ],
+          "answer": 0,
+          "zh": "市中心比周圍鄉村熱好幾度。",
+          "en": "A city center several degrees warmer than the countryside around it."
+        },
+        {
+          "q": "What do asphalt and concrete do?",
+          "options": [
+            "Reflect all sunlight",
+            "Absorb heat and release it slowly",
+            "Keep cities cool at night",
+            "Produce water"
+          ],
+          "answer": 1,
+          "zh": "白天吸熱，日落後慢慢釋放。",
+          "en": "They absorb heat during the day and release it slowly."
+        },
+        {
+          "q": "How do trees cool the air?",
+          "options": [
+            "By blocking the wind",
+            "By absorbing asphalt",
+            "By releasing water through their leaves",
+            "By making clouds"
+          ],
+          "answer": 2,
+          "zh": "透過葉子釋出水分。",
+          "en": "By releasing water through their leaves."
+        },
+        {
+          "q": "Which is NOT mentioned as a way to reduce the problem?",
+          "options": [
+            "Planting trees",
+            "Painting roofs white",
+            "Creating rooftop gardens",
+            "Building more roads"
+          ],
+          "answer": 3,
+          "zh": "文中沒提到多蓋道路。",
+          "en": "Building more roads is not mentioned."
+        },
+        {
+          "q": "The word \"release\" in paragraph 2 is closest in meaning to",
+          "options": [
+            "let out",
+            "hold",
+            "break",
+            "buy"
+          ],
+          "answer": 0,
+          "zh": "release＝釋放。",
+          "en": "\"Release\" means let out."
+        }
+      ],
+      "tf": [
+        {
+          "s": "City centers can be several degrees warmer than the countryside.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "Cars and air conditioners help cool cities.",
+          "answer": false,
+          "zh": "×：它們帶來更多熱量。",
+          "en": "False: they add even more heat."
+        },
+        {
+          "s": "Cities usually have more trees than the countryside.",
+          "answer": false,
+          "zh": "×：城市的樹比較少。",
+          "en": "False: cities have fewer trees."
+        }
+      ]
+    },
+    {
+      "id": "first-coins",
+      "topic": "shopping",
+      "title": {
+        "text": "The Invention of Coins",
+        "zh": "錢幣的發明",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Before coins existed, people traded goods directly or used objects such as shells and grain as money.",
+            "These systems worked, but they had limits."
+          ],
+          "zh": "在錢幣出現以前，人們直接以物易物，或用貝殼、穀物等物品當作錢。這些方法行得通，但有其限制。"
+        },
+        {
+          "s": [
+            "Grain could spoil, and it was hard to agree on the value of a cow compared with a pot."
+          ],
+          "zh": "穀物會腐壞，而且一頭牛和一個陶罐各值多少，也很難談妥。"
+        },
+        {
+          "s": [
+            "The first true coins appeared in Lydia, in what is now Turkey, around 2,600 years ago.",
+            "They were made of electrum, a natural mixture of gold and silver, and stamped with an official mark."
+          ],
+          "zh": "最早真正的錢幣大約在兩千六百年前出現於呂底亞，也就是今天的土耳其一帶。它們以琥珀金——一種天然的金銀混合物——製成，並蓋上官方印記。"
+        },
+        {
+          "s": [
+            "The mark guaranteed the coin's weight, so people no longer needed to weigh metal at every sale.",
+            "Trade became faster, and the idea soon spread to Greece and beyond."
+          ],
+          "zh": "這個印記保證了錢幣的重量，人們不必再在每次買賣時秤量金屬。交易變得更快，這個點子很快就傳到希臘及更遠的地方。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "exist",
+          "r": "",
+          "zh": "存在",
+          "en": "to be real",
+          "m": [
+            "existed"
+          ]
+        },
+        {
+          "w": "trade",
+          "r": "",
+          "zh": "交易",
+          "en": "to buy, sell or exchange",
+          "m": [
+            "traded",
+            "Trade"
+          ]
+        },
+        {
+          "w": "grain",
+          "r": "",
+          "zh": "穀物",
+          "en": "seeds of plants like wheat and rice",
+          "m": [
+            "Grain",
+            "grain"
+          ]
+        },
+        {
+          "w": "spoil",
+          "r": "",
+          "zh": "腐壞",
+          "en": "to become bad to eat"
+        },
+        {
+          "w": "value",
+          "r": "",
+          "zh": "價值",
+          "en": "how much something is worth"
+        },
+        {
+          "w": "mixture",
+          "r": "",
+          "zh": "混合物",
+          "en": "things mixed together"
+        },
+        {
+          "w": "stamp",
+          "r": "",
+          "zh": "蓋印",
+          "en": "to press a mark onto",
+          "m": [
+            "stamped"
+          ]
+        },
+        {
+          "w": "guarantee",
+          "r": "",
+          "zh": "保證",
+          "en": "to promise that something is true",
+          "m": [
+            "guaranteed"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What did people use as money before coins?",
+          "options": [
+            "Paper notes",
+            "Shells and grain",
+            "Credit cards",
+            "Only iron bars"
+          ],
+          "answer": 1,
+          "zh": "用貝殼、穀物等物品當錢。",
+          "en": "Objects such as shells and grain."
+        },
+        {
+          "q": "What was one problem with using grain as money?",
+          "options": [
+            "It could spoil",
+            "It was too light",
+            "It was too valuable",
+            "It was illegal"
+          ],
+          "answer": 0,
+          "zh": "穀物會腐壞。",
+          "en": "Grain could spoil."
+        },
+        {
+          "q": "According to the passage, where did the first true coins appear?",
+          "options": [
+            "In Greece",
+            "In Egypt",
+            "In China",
+            "In Lydia"
+          ],
+          "answer": 3,
+          "zh": "出現於呂底亞（今土耳其）。",
+          "en": "In Lydia, in what is now Turkey."
+        },
+        {
+          "q": "Why was the official mark important?",
+          "options": [
+            "It made coins beautiful",
+            "It showed the king's face",
+            "It guaranteed the coin's weight",
+            "It made coins heavier"
+          ],
+          "answer": 2,
+          "zh": "印記保證了錢幣的重量。",
+          "en": "The mark guaranteed the coin's weight."
+        },
+        {
+          "q": "The word \"spoil\" in paragraph 2 is closest in meaning to",
+          "options": [
+            "grow",
+            "go bad",
+            "become expensive",
+            "disappear"
+          ],
+          "answer": 1,
+          "zh": "spoil＝腐壞。",
+          "en": "\"Spoil\" means go bad."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The first coins were made of pure gold.",
+          "answer": false,
+          "zh": "×：琥珀金，是天然的金銀混合物。",
+          "en": "False: electrum, a mixture of gold and silver."
+        },
+        {
+          "s": "Lydia was in what is now Turkey.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "Coins made trade faster.",
+          "answer": true,
+          "zh": "○：「Trade became faster」。",
+          "en": "True: trade became faster."
+        }
+      ]
+    },
+    {
+      "id": "spacing-effect",
+      "topic": "school",
+      "title": {
+        "text": "Why Cramming Fails",
+        "zh": "為什麼臨時抱佛腳沒用",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "Many students study by reading the same material again and again the night before a test.",
+            "This feels effective, but research suggests it is one of the least efficient ways to learn."
+          ],
+          "zh": "許多學生的讀書方式，是在考試前一晚反覆讀同樣的內容。這感覺很有效，但研究顯示，這是最沒效率的學習方法之一。"
+        },
+        {
+          "s": [
+            "In the 1880s, the German psychologist Hermann Ebbinghaus found that people quickly forget new information unless they review it.",
+            "He also found that reviews spread over several days work far better than one long session."
+          ],
+          "zh": "1880 年代，德國心理學家艾賓浩斯發現，新資訊若不複習，人們很快就會忘記。他也發現，分散在幾天內的複習，效果遠比一次長時間的學習好。"
+        },
+        {
+          "s": [
+            "This is called the spacing effect.",
+            "Each time we recall something after a delay, the memory becomes stronger and lasts longer."
+          ],
+          "zh": "這叫做「間隔效應」。每次隔一段時間再回想某件事，記憶就會更牢固、維持得更久。"
+        },
+        {
+          "s": [
+            "Many language apps now use this idea, showing each word again just before the learner is likely to forget it."
+          ],
+          "zh": "現在許多語言學習 app 都運用這個概念，在學習者快要忘記某個單字之前，再讓它出現一次。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "material",
+          "r": "",
+          "zh": "學習內容",
+          "en": "information to study"
+        },
+        {
+          "w": "effective",
+          "r": "",
+          "zh": "有效的",
+          "en": "working well"
+        },
+        {
+          "w": "efficient",
+          "r": "",
+          "zh": "有效率的",
+          "en": "not wasting time or effort"
+        },
+        {
+          "w": "psychologist",
+          "r": "",
+          "zh": "心理學家",
+          "en": "a scientist who studies the mind"
+        },
+        {
+          "w": "review",
+          "r": "",
+          "zh": "複習",
+          "en": "to study again",
+          "m": [
+            "reviews",
+            "review"
+          ]
+        },
+        {
+          "w": "session",
+          "r": "",
+          "zh": "一段時間",
+          "en": "a period of time for an activity"
+        },
+        {
+          "w": "recall",
+          "r": "",
+          "zh": "回想",
+          "en": "to remember"
+        },
+        {
+          "w": "delay",
+          "r": "",
+          "zh": "一段間隔",
+          "en": "a period of waiting"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What is true of rereading the night before a test?",
+          "options": [
+            "It is the best method",
+            "It feels effective but is inefficient",
+            "It is required by teachers",
+            "It only works for languages"
+          ],
+          "answer": 1,
+          "zh": "感覺有效，但是最沒效率的方法之一。",
+          "en": "It feels effective but is one of the least efficient ways."
+        },
+        {
+          "q": "What did Ebbinghaus discover?",
+          "options": [
+            "People remember everything they read",
+            "Sleep is not important",
+            "People quickly forget new information without review",
+            "Long sessions are best"
+          ],
+          "answer": 2,
+          "zh": "新資訊若不複習很快就會忘記。",
+          "en": "People quickly forget new information unless they review it."
+        },
+        {
+          "q": "According to the passage, what makes a memory stronger?",
+          "options": [
+            "Reading faster",
+            "Studying with friends",
+            "Writing in color",
+            "Recalling it after a delay"
+          ],
+          "answer": 3,
+          "zh": "隔一段時間再回想。",
+          "en": "Recalling something after a delay."
+        },
+        {
+          "q": "How do many language apps use the spacing effect?",
+          "options": [
+            "They show words just before learners are likely to forget them",
+            "They show all words at once",
+            "They test learners only once",
+            "They remove difficult words"
+          ],
+          "answer": 0,
+          "zh": "在快要忘記之前再出現一次。",
+          "en": "They show each word again just before the learner is likely to forget it."
+        },
+        {
+          "q": "The word \"efficient\" in paragraph 1 is closest in meaning to",
+          "options": [
+            "difficult",
+            "popular",
+            "productive without waste",
+            "expensive"
+          ],
+          "answer": 2,
+          "zh": "efficient＝有效率的。",
+          "en": "\"Efficient\" means productive without waste."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Ebbinghaus was a German psychologist.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "One long study session works better than several short reviews.",
+          "answer": false,
+          "zh": "×：分散的複習效果好得多。",
+          "en": "False: spread-out reviews work far better."
+        },
+        {
+          "s": "Ebbinghaus made his discovery in the 1980s.",
+          "answer": false,
+          "zh": "×：1880 年代。",
+          "en": "False: in the 1880s."
+        }
+      ]
+    },
+    {
+      "id": "erie-canal",
+      "topic": "transport",
+      "title": {
+        "text": "The Erie Canal",
+        "zh": "伊利運河",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "In the early 1800s, moving goods across the United States was slow and costly.",
+            "Wagons on rough roads could carry only small loads."
+          ],
+          "zh": "十九世紀初，在美國境內運送貨物又慢又貴。在崎嶇道路上行駛的馬車只能載少量貨物。"
+        },
+        {
+          "s": [
+            "In 1825, the state of New York completed the Erie Canal, a waterway about 580 kilometers long.",
+            "It connected the Hudson River with the Great Lakes."
+          ],
+          "zh": "1825 年，紐約州完成了伊利運河。這條水道長約五百八十公里，連接哈德遜河與五大湖。"
+        },
+        {
+          "s": [
+            "Boats pulled by horses walking along the bank could carry heavy cargo at a fraction of the former cost.",
+            "Shipping prices dropped by about ninety percent."
+          ],
+          "zh": "由沿著河岸行走的馬匹拉動的船，能用過去一小部分的成本運送沉重的貨物。運費下降了大約九成。"
+        },
+        {
+          "s": [
+            "The canal helped New York City become the country's leading port.",
+            "Within a few decades, however, railroads began to replace canals as the main way to move goods."
+          ],
+          "zh": "運河幫助紐約市成為全國首要的港口。然而不到幾十年，鐵路就開始取代運河，成為運送貨物的主要方式。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "costly",
+          "r": "",
+          "zh": "昂貴的",
+          "en": "expensive"
+        },
+        {
+          "w": "wagon",
+          "r": "",
+          "zh": "馬車",
+          "en": "a vehicle pulled by horses",
+          "m": [
+            "Wagons"
+          ]
+        },
+        {
+          "w": "load",
+          "r": "",
+          "zh": "載貨量",
+          "en": "what is carried",
+          "m": [
+            "loads"
+          ]
+        },
+        {
+          "w": "waterway",
+          "r": "",
+          "zh": "水道",
+          "en": "a river or canal boats use"
+        },
+        {
+          "w": "connect",
+          "r": "",
+          "zh": "連接",
+          "en": "to join",
+          "m": [
+            "connected"
+          ]
+        },
+        {
+          "w": "cargo",
+          "r": "",
+          "zh": "貨物",
+          "en": "goods carried by a ship or vehicle"
+        },
+        {
+          "w": "fraction",
+          "r": "",
+          "zh": "一小部分",
+          "en": "a small part"
+        },
+        {
+          "w": "port",
+          "r": "",
+          "zh": "港口",
+          "en": "a town where ships load and unload"
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What was the problem before the canal was built?",
+          "options": [
+            "There were too many boats",
+            "Moving goods was slow and costly",
+            "Roads were closed in winter",
+            "The Great Lakes were frozen"
+          ],
+          "answer": 1,
+          "zh": "運送貨物又慢又貴。",
+          "en": "Moving goods was slow and costly."
+        },
+        {
+          "q": "What did the Erie Canal connect?",
+          "options": [
+            "Two oceans",
+            "New York and Canada",
+            "The Hudson River and the Great Lakes",
+            "Two railroads"
+          ],
+          "answer": 2,
+          "zh": "連接哈德遜河與五大湖。",
+          "en": "The Hudson River with the Great Lakes."
+        },
+        {
+          "q": "According to the passage, how were canal boats moved?",
+          "options": [
+            "By engines",
+            "By wind",
+            "By people rowing",
+            "By horses walking along the bank"
+          ],
+          "answer": 3,
+          "zh": "由沿岸行走的馬匹拉動。",
+          "en": "They were pulled by horses walking along the bank."
+        },
+        {
+          "q": "What happened to shipping prices?",
+          "options": [
+            "They fell by about ninety percent",
+            "They doubled",
+            "They stayed the same",
+            "They rose slightly"
+          ],
+          "answer": 0,
+          "zh": "運費下降約九成。",
+          "en": "They dropped by about ninety percent."
+        },
+        {
+          "q": "The word \"fraction\" in paragraph 3 is closest in meaning to",
+          "options": [
+            "a double amount",
+            "a small part",
+            "a total",
+            "a fee"
+          ],
+          "answer": 1,
+          "zh": "fraction＝一小部分。",
+          "en": "\"Fraction\" means a small part."
+        }
+      ],
+      "tf": [
+        {
+          "s": "The Erie Canal was completed in 1825.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "The canal made New York City less important.",
+          "answer": false,
+          "zh": "×：使紐約成為首要港口。",
+          "en": "False: it made New York the leading port."
+        },
+        {
+          "s": "Railroads later replaced canals as the main way to move goods.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        }
+      ]
+    },
+    {
+      "id": "sleeping-brain",
+      "topic": "health",
+      "title": {
+        "text": "What the Sleeping Brain Does",
+        "zh": "睡眠中的大腦在做什麼",
+        "en": ""
+      },
+      "paragraphs": [
+        {
+          "s": [
+            "For centuries, sleep was seen as a time when the brain simply rested.",
+            "Modern research has shown that this view is wrong."
+          ],
+          "zh": "幾個世紀以來，睡眠一直被視為大腦單純休息的時間。現代研究已證明這種看法是錯的。"
+        },
+        {
+          "s": [
+            "During sleep, the brain is busy sorting and storing the information gathered during the day.",
+            "Important memories are strengthened, while unimportant details are allowed to fade."
+          ],
+          "zh": "睡眠期間，大腦忙著整理並儲存白天收集到的資訊。重要的記憶會被強化，不重要的細節則任其淡去。"
+        },
+        {
+          "s": [
+            "In experiments, people who slept after learning a task performed better the next day than those who stayed awake."
+          ],
+          "zh": "實驗中，學完一項任務後去睡覺的人，隔天的表現比整晚沒睡的人好。"
+        },
+        {
+          "s": [
+            "Sleep also appears to clear waste products from the brain.",
+            "This may explain why long-term lack of sleep is linked to memory problems and illness."
+          ],
+          "zh": "睡眠似乎也能清除大腦中的廢物。這或許能解釋為什麼長期睡眠不足會和記憶問題及疾病有關。"
+        }
+      ],
+      "glossary": [
+        {
+          "w": "century",
+          "r": "",
+          "zh": "世紀",
+          "en": "a hundred years",
+          "m": [
+            "centuries"
+          ]
+        },
+        {
+          "w": "sort",
+          "r": "",
+          "zh": "整理；分類",
+          "en": "to put in groups",
+          "m": [
+            "sorting"
+          ]
+        },
+        {
+          "w": "store",
+          "r": "",
+          "zh": "儲存",
+          "en": "to keep for later",
+          "m": [
+            "storing"
+          ]
+        },
+        {
+          "w": "gather",
+          "r": "",
+          "zh": "收集",
+          "en": "to collect",
+          "m": [
+            "gathered"
+          ]
+        },
+        {
+          "w": "strengthen",
+          "r": "",
+          "zh": "強化",
+          "en": "to make stronger",
+          "m": [
+            "strengthened"
+          ]
+        },
+        {
+          "w": "fade",
+          "r": "",
+          "zh": "淡去",
+          "en": "to slowly disappear"
+        },
+        {
+          "w": "experiment",
+          "r": "",
+          "zh": "實驗",
+          "en": "a scientific test",
+          "m": [
+            "experiments"
+          ]
+        },
+        {
+          "w": "waste product",
+          "r": "",
+          "zh": "廢物",
+          "en": "something left over that the body does not need",
+          "m": [
+            "waste products"
+          ]
+        }
+      ],
+      "mcq": [
+        {
+          "q": "What was the old view of sleep?",
+          "options": [
+            "The brain simply rested",
+            "The brain worked harder",
+            "Sleep caused illness",
+            "Sleep was not necessary"
+          ],
+          "answer": 0,
+          "zh": "大腦單純休息。",
+          "en": "The brain simply rested."
+        },
+        {
+          "q": "What does the brain do with unimportant details during sleep?",
+          "options": [
+            "Strengthens them",
+            "Allows them to fade",
+            "Turns them into dreams",
+            "Stores them forever"
+          ],
+          "answer": 1,
+          "zh": "任其淡去。",
+          "en": "It allows them to fade."
+        },
+        {
+          "q": "What did the experiments show?",
+          "options": [
+            "Staying awake improves memory",
+            "Sleep has no effect on learning",
+            "People who slept performed better",
+            "Tasks are easier at night"
+          ],
+          "answer": 2,
+          "zh": "睡過的人隔天表現較好。",
+          "en": "People who slept performed better the next day."
+        },
+        {
+          "q": "According to the passage, what else does sleep appear to do?",
+          "options": [
+            "Make the brain larger",
+            "Lower body weight",
+            "Improve eyesight",
+            "Clear waste products from the brain"
+          ],
+          "answer": 3,
+          "zh": "清除大腦中的廢物。",
+          "en": "Clear waste products from the brain."
+        },
+        {
+          "q": "The word \"fade\" in paragraph 2 is closest in meaning to",
+          "options": [
+            "grow",
+            "return",
+            "slowly disappear",
+            "become clear"
+          ],
+          "answer": 2,
+          "zh": "fade＝淡去、慢慢消失。",
+          "en": "\"Fade\" means slowly disappear."
+        }
+      ],
+      "tf": [
+        {
+          "s": "Modern research agrees that the brain simply rests during sleep.",
+          "answer": false,
+          "zh": "×：研究證明這種看法是錯的。",
+          "en": "False: research has shown this view is wrong."
+        },
+        {
+          "s": "Long-term lack of sleep is linked to memory problems.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        },
+        {
+          "s": "Important memories are strengthened during sleep.",
+          "answer": true,
+          "zh": "○：原文這樣說。",
+          "en": "True: the text says so."
+        }
+      ]
+    }
+  ],
   "sets": [
     {
       "id": "r1",
