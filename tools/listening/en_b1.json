@@ -2813,6 +2813,928 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "pics": {
+        "p1": {
+          "cols": 3,
+          "rows": 3,
+          "panels": [
+            "a tablet on a sofa",
+            "a laptop computer on a desk",
+            "a mobile phone in a hand",
+            "a woman jogging in a park",
+            "a woman swimming in a pool",
+            "a woman doing yoga on a mat",
+            "a slice of chocolate cake",
+            "a bowl of fruit salad",
+            "an ice cream in a cone"
+          ],
+          "cap": [
+            "a tablet",
+            "a laptop",
+            "a phone",
+            "running",
+            "swimming",
+            "yoga",
+            "chocolate cake",
+            "fruit salad",
+            "ice cream"
+          ]
+        },
+        "p2": {
+          "cols": 3,
+          "rows": 3,
+          "panels": [
+            "a man waiting at a bus stop in the rain; no writing, no numbers anywhere",
+            "a man waiting on a train platform; no writing, no numbers anywhere",
+            "a man standing by a taxi rank; no writing, no numbers anywhere",
+            "a pair of black boots",
+            "a pair of brown sandals",
+            "a pair of white trainers",
+            "a mountain with snow on top",
+            "a sandy beach with palm trees",
+            "a busy city street with tall buildings; no writing, no numbers anywhere"
+          ],
+          "cap": [
+            "the bus stop",
+            "the train",
+            "a taxi",
+            "boots",
+            "sandals",
+            "trainers",
+            "the mountains",
+            "the beach",
+            "the city"
+          ]
+        },
+        "p3": {
+          "cols": 3,
+          "rows": 1,
+          "panels": [
+            "a clock on a wall showing a quarter past eight; the clock face has no numbers, only marks",
+            "a clock on a wall showing half past eight; the clock face has no numbers, only marks",
+            "a clock on a wall showing nine o'clock; the clock face has no numbers, only marks"
+          ],
+          "cap": [
+            "8.15",
+            "8.30",
+            "9.00"
+          ]
+        }
+      },
+      "items": [
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "Did you watch the match on your phone?",
+              "zh": "你用手機看比賽嗎？",
+              "en": "Did you watch the match on your phone?"
+            },
+            {
+              "who": "M",
+              "s": "The screen's too small. I wanted to use my laptop, but my sister had it, so I used the tablet.",
+              "zh": "螢幕太小了。我想用筆電，可是被我妹拿走了，所以用平板。",
+              "en": "The screen's too small. I wanted to use my laptop, but my sister had it, so I used the tablet."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What did the man use to watch the match?",
+            "zh": "男的用什麼看比賽？",
+            "en": "What did the man use to watch the match?"
+          },
+          "options": [
+            {
+              "t": "a tablet"
+            },
+            {
+              "t": "a laptop"
+            },
+            {
+              "t": "a phone"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "筆電被拿走，「所以用平板」。",
+            "en": "The tablet."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Are you still going running every morning?",
+              "zh": "妳還每天早上跑步嗎？",
+              "en": "Are you still going running every morning?"
+            },
+            {
+              "who": "F",
+              "s": "Not since I hurt my knee. The doctor said swimming is better for it, but I find yoga more relaxing, so that's what I do now.",
+              "zh": "膝蓋受傷後就沒了。醫生說游泳比較好，但我覺得瑜伽更放鬆，所以現在做瑜伽。",
+              "en": "Not since I hurt my knee. The doctor said swimming is better for it, but I find yoga more relaxing, so that's what I do now."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What exercise does the woman do now?",
+            "zh": "女的現在做什麼運動？",
+            "en": "What exercise does the woman do now?"
+          },
+          "options": [
+            {
+              "t": "running"
+            },
+            {
+              "t": "swimming"
+            },
+            {
+              "t": "yoga"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「所以現在做瑜伽」。",
+            "en": "Yoga."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p1",
+            "row": 2
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "What would you like for dessert? There's chocolate cake.",
+              "zh": "甜點想吃什麼？有巧克力蛋糕。",
+              "en": "What would you like for dessert? There's chocolate cake."
+            },
+            {
+              "who": "M",
+              "s": "I'd love some, but I'm trying to eat less sugar. The fruit salad, please.",
+              "zh": "很想吃，但我在減糖。請給我水果沙拉。",
+              "en": "I'd love some, but I'm trying to eat less sugar. The fruit salad, please."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What does the man choose?",
+            "zh": "男的選什麼？",
+            "en": "What does the man choose?"
+          },
+          "options": [
+            {
+              "t": "chocolate cake"
+            },
+            {
+              "t": "fruit salad"
+            },
+            {
+              "t": "ice cream"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「請給我水果沙拉」。",
+            "en": "Fruit salad."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Shall I meet you at the bus stop?",
+              "zh": "我在公車站等妳好嗎？",
+              "en": "Shall I meet you at the bus stop?"
+            },
+            {
+              "who": "F",
+              "s": "The buses are on strike today. I'll get a taxi from my house — meet me at the station and we'll take the train together.",
+              "zh": "公車今天罷工，我從家裡搭計程車，你在車站等我，我們一起搭火車。",
+              "en": "The buses are on strike today. I'll get a taxi from my house — meet me at the station and we'll take the train together."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "Where will the man meet the woman?",
+            "zh": "男的會在哪裡和女的碰面？",
+            "en": "Where will the man meet the woman?"
+          },
+          "options": [
+            {
+              "t": "the bus stop"
+            },
+            {
+              "t": "the train"
+            },
+            {
+              "t": "a taxi"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「你在車站等我，我們一起搭火車」。",
+            "en": "At the train."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 1
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "You can't wear sandals for the walk.",
+              "zh": "健行不能穿涼鞋。",
+              "en": "You can't wear sandals for the walk."
+            },
+            {
+              "who": "M",
+              "s": "I know. My boots are too heavy, though, so I'll wear my trainers.",
+              "zh": "我知道。不過靴子太重了，我穿運動鞋。",
+              "en": "I know. My boots are too heavy, though, so I'll wear my trainers."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What will the man wear?",
+            "zh": "男的會穿什麼？",
+            "en": "What will the man wear?"
+          },
+          "options": [
+            {
+              "t": "boots"
+            },
+            {
+              "t": "sandals"
+            },
+            {
+              "t": "trainers"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「我穿運動鞋」。",
+            "en": "Trainers."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p2",
+            "row": 2
+          },
+          "lines": [
+            {
+              "who": "M",
+              "s": "Where are you going on holiday this year? The beach again?",
+              "zh": "今年去哪度假？又去海邊嗎？",
+              "en": "Where are you going on holiday this year? The beach again?"
+            },
+            {
+              "who": "F",
+              "s": "No, we're going to the mountains. We'll spend one night in the city first, though.",
+              "zh": "不，我們要去山上。不過會先在城市待一晚。",
+              "en": "No, we're going to the mountains. We'll spend one night in the city first, though."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "Where will the woman spend most of her holiday?",
+            "zh": "女的假期大部分在哪裡度過？",
+            "en": "Where will the woman spend most of her holiday?"
+          },
+          "options": [
+            {
+              "t": "the mountains"
+            },
+            {
+              "t": "the beach"
+            },
+            {
+              "t": "the city"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「我們要去山上」；城市只待一晚。",
+            "en": "The mountains."
+          }
+        },
+        {
+          "type": "en_pic3",
+          "pic": {
+            "name": "p3",
+            "row": 0
+          },
+          "lines": [
+            {
+              "who": "F",
+              "s": "What time does the meeting start? Nine?",
+              "zh": "會議幾點開始？九點嗎？",
+              "en": "What time does the meeting start? Nine?"
+            },
+            {
+              "who": "M",
+              "s": "It was going to be at nine, but it's been moved to half past eight. Try to get there by quarter past.",
+              "zh": "本來九點，改到八點半了。盡量八點十五分到。",
+              "en": "It was going to be at nine, but it's been moved to half past eight. Try to get there by quarter past."
+            }
+          ],
+          "q": {
+            "who": "N",
+            "s": "What time does the meeting start?",
+            "zh": "會議幾點開始？",
+            "en": "What time does the meeting start?"
+          },
+          "options": [
+            {
+              "t": "8.15"
+            },
+            {
+              "t": "8.30"
+            },
+            {
+              "t": "9.00"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「改到八點半了」。",
+            "en": "Half past eight."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear two friends talking about a concert.",
+              "zh": "你會聽到兩個朋友談一場演唱會。",
+              "en": "You will hear two friends talking about a concert."
+            },
+            {
+              "who": "M",
+              "s": "The band was amazing, but the tickets cost a fortune.",
+              "zh": "樂團很棒，可是票貴得要命。",
+              "en": "The band was amazing, but the tickets cost a fortune."
+            },
+            {
+              "who": "F",
+              "s": "I know. And we were so far back I could hardly see them!",
+              "zh": "對啊，而且我們坐得太後面，幾乎看不到他們！",
+              "en": "I know. And we were so far back I could hardly see them!"
+            }
+          ],
+          "ask": {
+            "s": "What do they agree about?",
+            "zh": "他們同意什麼？",
+            "en": "What do they agree about?"
+          },
+          "options": [
+            {
+              "t": "The tickets were expensive."
+            },
+            {
+              "t": "The band was disappointing."
+            },
+            {
+              "t": "They had good seats."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "男的說票很貴，女的「對啊」。",
+            "en": "Expensive tickets."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a woman telling a friend about a course.",
+              "zh": "你會聽到一位女士告訴朋友一門課。",
+              "en": "You will hear a woman telling a friend about a course."
+            },
+            {
+              "who": "F",
+              "s": "The photography course was good, but I expected more practical work. We spent most of the time listening to the teacher.",
+              "zh": "攝影課不錯，但我期待更多實作，大部分時間都在聽老師講。",
+              "en": "The photography course was good, but I expected more practical work. We spent most of the time listening to the teacher."
+            }
+          ],
+          "ask": {
+            "s": "How did the woman feel about the course?",
+            "zh": "女士對這門課的感覺？",
+            "en": "How did the woman feel about the course?"
+          },
+          "options": [
+            {
+              "t": "It was too difficult."
+            },
+            {
+              "t": "It was too theoretical."
+            },
+            {
+              "t": "It was too short."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「期待更多實作」：太多講課。",
+            "en": "Too much theory."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man talking about his new flat.",
+              "zh": "你會聽到一位男士談他的新公寓。",
+              "en": "You will hear a man talking about his new flat."
+            },
+            {
+              "who": "M",
+              "s": "It's smaller than my old place and further from work, but I don't mind. I can see the sea from my kitchen window!",
+              "zh": "比舊家小、離公司也更遠，但我不在意。從廚房窗戶就看得到海！",
+              "en": "It's smaller than my old place and further from work, but I don't mind. I can see the sea from my kitchen window!"
+            }
+          ],
+          "ask": {
+            "s": "What does the man like about his new flat?",
+            "zh": "男士喜歡新公寓的什麼？",
+            "en": "What does the man like about his new flat?"
+          },
+          "options": [
+            {
+              "t": "its size"
+            },
+            {
+              "t": "its location near work"
+            },
+            {
+              "t": "the view"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「從廚房窗戶就看得到海」。",
+            "en": "The view."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a girl talking to her teacher.",
+              "zh": "你會聽到一個女孩和老師說話。",
+              "en": "You will hear a girl talking to her teacher."
+            },
+            {
+              "who": "F",
+              "s": "I'm sorry I haven't finished my project. My computer broke last night. Could I give it to you on Monday?",
+              "zh": "抱歉我還沒做完專題，我的電腦昨晚壞了。可以星期一交嗎？",
+              "en": "I'm sorry I haven't finished my project. My computer broke last night. Could I give it to you on Monday?"
+            }
+          ],
+          "ask": {
+            "s": "What does the girl want?",
+            "zh": "女孩想要什麼？",
+            "en": "What does the girl want?"
+          },
+          "options": [
+            {
+              "t": "more time"
+            },
+            {
+              "t": "a new computer"
+            },
+            {
+              "t": "help with her project"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「可以星期一交嗎？」",
+            "en": "More time."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear two colleagues talking about a meeting.",
+              "zh": "你會聽到兩位同事談一場會議。",
+              "en": "You will hear two colleagues talking about a meeting."
+            },
+            {
+              "who": "M",
+              "s": "That meeting went on far too long.",
+              "zh": "那場會開太久了。",
+              "en": "That meeting went on far too long."
+            },
+            {
+              "who": "F",
+              "s": "It did, but at least we finally decided on the budget. That's been waiting for months.",
+              "zh": "是啊，但至少終於定了預算，那已經拖好幾個月了。",
+              "en": "It did, but at least we finally decided on the budget. That's been waiting for months."
+            }
+          ],
+          "ask": {
+            "s": "What does the woman think about the meeting?",
+            "zh": "女士對會議的看法？",
+            "en": "What does the woman think about the meeting?"
+          },
+          "options": [
+            {
+              "t": "It was a waste of time."
+            },
+            {
+              "t": "Something important was agreed."
+            },
+            {
+              "t": "It was too short."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「至少終於定了預算」。",
+            "en": "The budget was agreed."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a man talking about a restaurant.",
+              "zh": "你會聽到一位男士談一家餐廳。",
+              "en": "You will hear a man talking about a restaurant."
+            },
+            {
+              "who": "M",
+              "s": "The food at that new place was nothing special, but the staff were so friendly that I'll definitely go back.",
+              "zh": "那家新餐廳的菜沒什麼特別，但店員好親切，我一定會再去。",
+              "en": "The food at that new place was nothing special, but the staff were so friendly that I'll definitely go back."
+            }
+          ],
+          "ask": {
+            "s": "Why will the man go back to the restaurant?",
+            "zh": "男士為什麼會再去那家餐廳？",
+            "en": "Why will the man go back to the restaurant?"
+          },
+          "options": [
+            {
+              "t": "the food"
+            },
+            {
+              "t": "the prices"
+            },
+            {
+              "t": "the staff"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「店員好親切，我一定會再去」。",
+            "en": "The staff."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a guide talking to a group of visitors at a castle.",
+              "zh": "你會聽到一位導覽員對城堡的遊客說話。",
+              "en": "You will hear a guide talking to a group of visitors at a castle."
+            },
+            {
+              "who": "F",
+              "s": "Welcome to Ashford Castle. The castle was built in 1250, and for three hundred years it belonged to the Grey family. Our tour today lasts ninety minutes. We'll start in the great hall, where you can see a huge painting of a battle, and finish in the kitchen, which still has its original oven. Please don't take photos inside — you're welcome to take as many as you like in the gardens. The gift shop is next to the main gate, and it closes at half past five. If you're hungry after the tour, our café serves homemade soup.",
+              "zh": "歡迎來到阿什福德城堡。城堡建於一二五〇年，三百年來屬於格雷家族。今天的導覽九十分鐘。我們從大廳開始，那裡有一幅巨大的戰爭畫，最後到廚房，那裡還保留著原本的烤爐。室內請勿拍照，花園裡歡迎盡情拍。紀念品店在大門旁，五點半關門。導覽後如果餓了，我們的咖啡館有自製湯品。",
+              "en": "Welcome to Ashford Castle. The castle was built in 1250, and for three hundred years it belonged to the Grey family. Our tour today lasts ninety minutes. We'll start in the great hall, where you can see a huge painting of a battle, and finish in the kitchen, which still has its original oven. Please don't take photos inside — you're welcome to take as many as you like in the gardens. The gift shop is next to the main gate, and it closes at half past five. If you're hungry after the tour, our café serves homemade soup."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Built in: ＿＿＿＿＿",
+                "zh": "建造年份：＿＿",
+                "en": "Built in: ＿＿＿＿＿"
+              },
+              "answers": [
+                "1250"
+              ],
+              "explain": {
+                "zh": "「建於一二五〇年」。",
+                "en": "1250."
+              }
+            },
+            {
+              "ask": {
+                "s": "Owned by the ＿＿＿＿＿ family",
+                "zh": "屬於＿＿家族",
+                "en": "Owned by the ＿＿＿＿＿ family"
+              },
+              "answers": [
+                "Grey",
+                "Gray"
+              ],
+              "explain": {
+                "zh": "「屬於格雷家族」。",
+                "en": "The Grey family."
+              }
+            },
+            {
+              "ask": {
+                "s": "Length of tour: ＿＿＿＿＿ minutes",
+                "zh": "導覽時間：＿＿分鐘",
+                "en": "Length of tour: ＿＿＿＿＿ minutes"
+              },
+              "answers": [
+                "90",
+                "ninety"
+              ],
+              "explain": {
+                "zh": "「九十分鐘」。",
+                "en": "Ninety minutes."
+              }
+            },
+            {
+              "ask": {
+                "s": "In the great hall: a large ＿＿＿＿＿",
+                "zh": "大廳裡：一幅大＿＿",
+                "en": "In the great hall: a large ＿＿＿＿＿"
+              },
+              "answers": [
+                "painting",
+                "picture"
+              ],
+              "explain": {
+                "zh": "「一幅巨大的戰爭畫」。",
+                "en": "A painting."
+              }
+            },
+            {
+              "ask": {
+                "s": "Photos allowed in the ＿＿＿＿＿",
+                "zh": "可以拍照的地方：＿＿",
+                "en": "Photos allowed in the ＿＿＿＿＿"
+              },
+              "answers": [
+                "gardens",
+                "garden"
+              ],
+              "explain": {
+                "zh": "「花園裡歡迎盡情拍」。",
+                "en": "The gardens."
+              }
+            },
+            {
+              "ask": {
+                "s": "Café sells homemade ＿＿＿＿＿",
+                "zh": "咖啡館賣自製＿＿",
+                "en": "Café sells homemade ＿＿＿＿＿"
+              },
+              "answers": [
+                "soup",
+                "soups"
+              ],
+              "explain": {
+                "zh": "「自製湯品」。",
+                "en": "Soup."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear an interview with a young woman called Grace who runs a dog-walking business.",
+              "zh": "你會聽到一段訪問，受訪者葛蕾絲經營遛狗事業。",
+              "en": "You will hear an interview with a young woman called Grace who runs a dog-walking business."
+            },
+            {
+              "who": "M",
+              "s": "Grace, how did your business start?",
+              "zh": "葛蕾絲，妳的事業怎麼開始的？",
+              "en": "Grace, how did your business start?"
+            },
+            {
+              "who": "F",
+              "s": "By accident, really. I was a student and needed some extra money. My neighbour was in hospital, so I offered to walk her dog. Then her friends asked me too.",
+              "zh": "其實是意外。我那時是學生，想多賺點錢。鄰居住院，我主動幫她遛狗，後來她的朋友也來找我。",
+              "en": "By accident, really. I was a student and needed some extra money. My neighbour was in hospital, so I offered to walk her dog. Then her friends asked me too."
+            },
+            {
+              "who": "M",
+              "s": "How many dogs do you walk now?",
+              "zh": "妳現在遛幾隻狗？",
+              "en": "How many dogs do you walk now?"
+            },
+            {
+              "who": "F",
+              "s": "About twenty a day, but never more than four at the same time. More than that isn't safe.",
+              "zh": "一天大約二十隻，但同時絕不超過四隻，再多就不安全了。",
+              "en": "About twenty a day, but never more than four at the same time. More than that isn't safe."
+            },
+            {
+              "who": "M",
+              "s": "What's the hardest part of the job?",
+              "zh": "這份工作最難的是什麼？",
+              "en": "What's the hardest part of the job?"
+            },
+            {
+              "who": "F",
+              "s": "People think it's the weather, but I don't mind rain. It's the paperwork — I hate doing accounts in the evening.",
+              "zh": "大家以為是天氣，但我不怕下雨。最難的是文書，我討厭晚上記帳。",
+              "en": "People think it's the weather, but I don't mind rain. It's the paperwork — I hate doing accounts in the evening."
+            },
+            {
+              "who": "M",
+              "s": "And what's next for you?",
+              "zh": "接下來呢？",
+              "en": "And what's next for you?"
+            },
+            {
+              "who": "F",
+              "s": "I'm hoping to open a small day centre where owners can leave their dogs while they're at work.",
+              "zh": "我希望開一間小型日托中心，讓飼主上班時把狗寄放。",
+              "en": "I'm hoping to open a small day centre where owners can leave their dogs while they're at work."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "How did Grace start her business?",
+                "zh": "葛蕾絲怎麼開始的？",
+                "en": "How did Grace start her business?"
+              },
+              "options": [
+                {
+                  "t": "She helped a neighbour."
+                },
+                {
+                  "t": "She studied animal care."
+                },
+                {
+                  "t": "She lost her job."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "鄰居住院，她「主動幫她遛狗」。",
+                "en": "Helping a neighbour."
+              }
+            },
+            {
+              "ask": {
+                "s": "Why did Grace want the work at first?",
+                "zh": "葛蕾絲一開始為什麼想做？",
+                "en": "Why did Grace want the work at first?"
+              },
+              "options": [
+                {
+                  "t": "She loved dogs."
+                },
+                {
+                  "t": "She needed money."
+                },
+                {
+                  "t": "Her friends asked her."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「想多賺點錢」。",
+                "en": "For money."
+              }
+            },
+            {
+              "ask": {
+                "s": "How many dogs does Grace walk at the same time?",
+                "zh": "她同時遛幾隻？",
+                "en": "How many dogs does Grace walk at the same time?"
+              },
+              "options": [
+                {
+                  "t": "up to four"
+                },
+                {
+                  "t": "about twenty"
+                },
+                {
+                  "t": "only one"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「同時絕不超過四隻」。",
+                "en": "Up to four."
+              }
+            },
+            {
+              "ask": {
+                "s": "Why does she limit the number?",
+                "zh": "為什麼限制數量？",
+                "en": "Why does she limit the number?"
+              },
+              "options": [
+                {
+                  "t": "Owners prefer it."
+                },
+                {
+                  "t": "It's safer."
+                },
+                {
+                  "t": "The parks are small."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「再多就不安全了」。",
+                "en": "For safety."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Grace find hardest?",
+                "zh": "她覺得最難的是什麼？",
+                "en": "What does Grace find hardest?"
+              },
+              "options": [
+                {
+                  "t": "bad weather"
+                },
+                {
+                  "t": "difficult dogs"
+                },
+                {
+                  "t": "doing paperwork"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「最難的是文書」。",
+                "en": "Paperwork."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Grace plan to do?",
+                "zh": "葛蕾絲打算做什麼？",
+                "en": "What does Grace plan to do?"
+              },
+              "options": [
+                {
+                  "t": "open a place to look after dogs"
+                },
+                {
+                  "t": "train dogs for shows"
+                },
+                {
+                  "t": "go back to university"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「開一間小型日托中心」。",
+                "en": "A day centre."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
