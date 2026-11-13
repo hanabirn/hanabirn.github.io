@@ -213,6 +213,8 @@ async function renderGrammar() {
     box.classList.toggle('grammar-zh-quiz', zhQuiz);
     if (typeof railPlace === 'function') railPlace();
     box.classList.remove('gfit1', 'gfit2', 'gfit3');
+    if (document.body.dataset.page === 'grammar' && typeof learnSetUrl === 'function')
+        learnSetUrl('grammar', grammarView === 'point' && set.points[grammarPoint] ? set.id + '/' + set.points[grammarPoint].id : '');
     if (grammarView === 'point') { box.innerHTML = grammarPointHtml(set); grammarBalance(box); grammarFit(box); }
     else if (grammarView === 'quiz') box.innerHTML = grammarQuizHtml(set);
     else if (grammarView === 'result') box.innerHTML = grammarResultHtml(set);

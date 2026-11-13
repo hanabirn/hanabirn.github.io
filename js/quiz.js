@@ -149,6 +149,7 @@ function switchPage(page, el) {
     // the 檢定 page became the 單字 page's 檢定等級 tab (2026-10-17)
     if (page === 'examquiz') { openWords('levels'); return; }
     pageTarget = page;
+    if (typeof learnSetUrl === 'function') learnSetUrl();   // a ?g= / ?r= / ?l= link belongs to the page it opened
     document.querySelectorAll('.nav-btn').forEach(b => {
         const on = b.dataset.tab === page;
         b.classList.toggle('active', on);

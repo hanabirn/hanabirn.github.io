@@ -227,3 +227,62 @@ function learnEmptyHtml(index, pageNameKey) {
 }
 
 document.addEventListener('DOMContentLoaded', renderLearnPill);
+
+/* ----- Shareable links (2026-11-13, site review item 5) -----
+   ?g=<level>/<point id> a grammar point, ?r=<level>/<passage id> a reading passage, ?l=<level>/<set id> a
+   listening round. The address bar follows what is on screen (learnSetUrl, from the three pages' renders;
+   switchPage clears it), so it can be copied and shared; learnOpenFromUrl() opens such a link on load —
+   it also switches the learning language (and the Chinese edition) to the link's. The static pages under
+   learn/ (tools/build_learn_pages.py) link here. */
+const LEARN_URL_KEYS = { grammar: 'g', reading: 'r', listening: 'l' };
+
+function learnSetUrl(page, value) {
+    if (!window.history || !history.replaceState) return;
+    const p = new URLSearchParams(location.search);
+    Object.values(LEARN_URL_KEYS).forEach(k => p.delete(k));
+    if (page && value && LEARN_URL_KEYS[page]) p.set(LEARN_URL_KEYS[page], value);
+    const q = p.toString().replace(/%2F/g, '/');
+    const url = location.pathname + (q ? '?' + q : '') + location.hash;
+    if (url !== location.pathname + location.search + location.hash) history.replaceState(null, '', url);
+}
+
+const LEARN_URL_PAGES = {
+    grammar: { index: () => grammarIndex, setIndex: v => { grammarIndex = v; }, sets: () => grammarSets },
+    reading: { index: () => readingIndex, setIndex: v => { readingIndex = v; }, sets: () => readingSets },
+    listening: { index: () => listeningIndex, setIndex: v => { listeningIndex = v; }, sets: () => listeningLevels },
+};
+
+async function learnOpenFromUrl() {
+    const p = new URLSearchParams(location.search);
+    const page = Object.keys(LEARN_URL_KEYS).find(k => p.get(LEARN_URL_KEYS[k]));
+    if (!page) return;
+    const [levelId, itemId] = (p.get(LEARN_URL_KEYS[page]) || '').split('/');
+    const P = LEARN_URL_PAGES[page];
+    if (!P.index()) {
+        try { P.setIndex(await fetch('data/' + page + '/index.json').then(r => r.json())); } catch { return; }
+    }
+    const level = (P.index() || []).find(s => s.id === levelId);
+    if (!level) { learnSetUrl(); return; }
+    if (level.lang === 'zh' && learnHasEditions(P.index(), 'zh')) { try { localStorage.setItem('zh_edition', level.edition === 'tw' ? 'tw' : 'cn'); } catch {} }
+    setLearnLang(level.lang);
+    learnRememberLevel(page, level);
+    switchPage(page, null);
+    for (let i = 0; i < 50 && !P.sets()[levelId]; i++) await new Promise(r => setTimeout(r, 100));
+    const set = P.sets()[levelId];
+    if (!set) return;
+    if (page === 'grammar') {
+        if (grammarSetId !== levelId) grammarPickSet(levelId);
+        const i = (set.points || []).findIndex(x => x.id === itemId);
+        if (i >= 0) grammarGo('point', i);
+    } else if (page === 'reading') {
+        if (readingSetId !== levelId) readingPickSet(levelId);
+        const i = (set.passages || []).findIndex(x => x.id === itemId);
+        if (i >= 0) readingGo('read', i);
+    } else {
+        if (listeningLevelId !== levelId) listeningPickLevel(levelId);
+        const i = (set.sets || []).findIndex(x => x.id === itemId);
+        if (i >= 0 && !set.sets[i].mock) listeningStart(i, null, 'fresh');
+    }
+}
+
+document.addEventListener('DOMContentLoaded', () => setTimeout(learnOpenFromUrl, 300));

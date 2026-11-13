@@ -106,6 +106,8 @@ async function renderReading() {
     document.body.classList.toggle('reading-wide', ['read', 'exam', 'list'].includes(readingView));
     if (typeof railPlace === 'function') railPlace();
     if ((readingView === 'exam' || readingView === 'examresult') && !readingExam) readingView = 'list';
+    if (document.body.dataset.page === 'reading' && typeof learnSetUrl === 'function')
+        learnSetUrl('reading', readingView === 'read' && set && (set.passages || [])[readingNo] ? set.id + '/' + set.passages[readingNo].id : '');
     if (readingView === 'read') { box.innerHTML = readingReaderHtml(set); readingFit(document.getElementById('rd-panel')); }
     else if (readingView === 'exam') box.innerHTML = readingExamHtml(set);          // js/reading-exam.js
     else if (readingView === 'examresult') box.innerHTML = readingExamResultHtml(set);

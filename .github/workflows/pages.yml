@@ -39,7 +39,7 @@ jobs:
         run: |
           mkdir _site
           cp -r index.html privacy.html manifest.json service-worker.js robots.txt sitemap.xml CNAME \
-                css js i18n data images icons _site/
+                css js i18n data images icons learn _site/
           # the recordings' mp3s are served from Cloudflare R2 (audio.hanabirn.xyz, tools/r2_sync.py) since
           # 2026-11-08 — with them the site was 860 MB / 114 000 files and deploys stalled; index.json stays
           find _site/data/audio -name '*.mp3' -delete

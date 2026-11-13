@@ -206,6 +206,9 @@ function endTour() {
 function tourIsFirstVisit() {
     try {
         if (localStorage.getItem('tour_done')) return false;
+        // a shared link or a search result (?g= / ?r= / ?l=, js/learnlang.js) opens that lesson, not the tour;
+        // the tour comes on the next visit to the home page
+        if (/[?&][grl]=/.test(location.search)) return false;
         return !['daily_activity', 'quiz_records', 'quiz_mistakes', 'path_progress_v2', 'srs_quiz']
             .some(k => localStorage.getItem(k));
     } catch { return false; }

@@ -146,6 +146,10 @@ async function renderListening() {
     // the Taiwan edition: Traditional in the TC font, always with zhuyin (css/reading.css; no switch, owner 2026-10-31)
     box.dataset.zhrd = lv.edition === 'tw' ? 'zhuyin' : readingZhRd();
     box.classList.toggle('zh-tw', lv.edition === 'tw');
+    if (document.body.dataset.page === 'listening' && typeof learnSetUrl === 'function') {
+        const st = listeningView === 'quiz' && listeningSession && lv.sets[listeningSession.setNo];
+        learnSetUrl('listening', st && !st.mock ? lv.id + '/' + st.id : '');
+    }
     if (listeningView === 'quiz' && listeningSession) { box.innerHTML = listeningQuizHtml(lv); listeningPlayerUi(); listeningAutoPlay(); }
     else if (listeningView === 'result' && listeningSession) box.innerHTML = listeningResultHtml(lv);
     else if (listeningView === 'review' && listeningReview) box.innerHTML = listeningReviewHtml(lv);
