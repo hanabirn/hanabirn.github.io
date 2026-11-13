@@ -2960,6 +2960,995 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman talking about a new gym.",
+              "zh": "你聽到一位女士談一家新健身房。",
+              "en": "You hear a woman talking about a new gym."
+            },
+            {
+              "who": "F",
+              "s": "Everyone said it would be packed in January, and it was — but that's not what put me off. The changing rooms were filthy, and when I complained, nobody seemed to care.",
+              "zh": "大家都說一月會很擠，確實很擠，但那不是我不想去的原因。更衣室髒得要命，我去投訴，好像沒人在乎。",
+              "en": "Everyone said it would be packed in January, and it was — but that's not what put me off. The changing rooms were filthy, and when I complained, nobody seemed to care."
+            }
+          ],
+          "ask": {
+            "s": "Why did she stop going to the gym?",
+            "zh": "她為什麼不去那家健身房了？",
+            "en": "Why did she stop going to the gym?"
+          },
+          "options": [
+            {
+              "t": "It was too crowded."
+            },
+            {
+              "t": "The facilities were dirty."
+            },
+            {
+              "t": "It was too expensive."
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "擠不是原因，是「更衣室髒得要命」。",
+            "en": "Dirty changing rooms, not crowds."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two colleagues talking about a training day.",
+              "zh": "你聽到兩位同事談一場培訓。",
+              "en": "You hear two colleagues talking about a training day."
+            },
+            {
+              "who": "M",
+              "s": "I thought the trainer knew her stuff.",
+              "zh": "我覺得講師很專業。",
+              "en": "I thought the trainer knew her stuff."
+            },
+            {
+              "who": "F",
+              "s": "She did, but we could've done the whole thing in half the time. Most of it was repeating what's in the handbook.",
+              "zh": "是很專業，但整個內容一半時間就能講完，大部分是在重複手冊裡的東西。",
+              "en": "She did, but we could've done the whole thing in half the time. Most of it was repeating what's in the handbook."
+            }
+          ],
+          "ask": {
+            "s": "What does the woman think of the training day?",
+            "zh": "女士對培訓的看法？",
+            "en": "What does the woman think of the training day?"
+          },
+          "options": [
+            {
+              "t": "It was too long."
+            },
+            {
+              "t": "The trainer was poorly prepared."
+            },
+            {
+              "t": "The handbook was unclear."
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「一半時間就能講完」：太長了。",
+            "en": "Too long."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about learning the piano.",
+              "zh": "你聽到一位男士談學鋼琴。",
+              "en": "You hear a man talking about learning the piano."
+            },
+            {
+              "who": "M",
+              "s": "I'd always assumed I was too old to start. Actually, the theory came quite easily — it's my fingers that won't do what I tell them!",
+              "zh": "我一直以為自己年紀太大不能開始。其實樂理學得還挺快，是我的手指不聽使喚！",
+              "en": "I'd always assumed I was too old to start. Actually, the theory came quite easily — it's my fingers that won't do what I tell them!"
+            }
+          ],
+          "ask": {
+            "s": "What does he find difficult?",
+            "zh": "他覺得什麼很難？",
+            "en": "What does he find difficult?"
+          },
+          "options": [
+            {
+              "t": "understanding the theory"
+            },
+            {
+              "t": "finding time to practise"
+            },
+            {
+              "t": "the physical skill"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "樂理學得快，「是我的手指不聽使喚」。",
+            "en": "His fingers — the physical side."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a woman phoning a hotel.",
+              "zh": "你聽到一位女士打電話到飯店。",
+              "en": "You hear a woman phoning a hotel."
+            },
+            {
+              "who": "F",
+              "s": "Hello, I'm calling about my booking for next weekend. I don't want to cancel — I just need to arrive a day later than planned. Is that possible without paying extra?",
+              "zh": "你好，我打來是關於下週末的訂房。我不想取消，只是要晚一天到。不用多付錢可以嗎？",
+              "en": "Hello, I'm calling about my booking for next weekend. I don't want to cancel — I just need to arrive a day later than planned. Is that possible without paying extra?"
+            }
+          ],
+          "ask": {
+            "s": "Why is she calling?",
+            "zh": "她為什麼打電話？",
+            "en": "Why is she calling?"
+          },
+          "options": [
+            {
+              "t": "to cancel a booking"
+            },
+            {
+              "t": "to change her arrival date"
+            },
+            {
+              "t": "to ask about prices"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「不想取消，只是要晚一天到」。",
+            "en": "To arrive a day later."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear two friends talking about a novel.",
+              "zh": "你聽到兩個朋友談一本小說。",
+              "en": "You hear two friends talking about a novel."
+            },
+            {
+              "who": "F",
+              "s": "I couldn't put it down, but the ending was a real letdown.",
+              "zh": "我一拿起來就放不下，可是結局真讓人失望。",
+              "en": "I couldn't put it down, but the ending was a real letdown."
+            },
+            {
+              "who": "M",
+              "s": "Really? I thought it was the best part. Everything finally made sense.",
+              "zh": "真的嗎？我覺得那是最精彩的部分，一切終於都說得通了。",
+              "en": "Really? I thought it was the best part. Everything finally made sense."
+            }
+          ],
+          "ask": {
+            "s": "What do they disagree about?",
+            "zh": "他們對什麼意見不同？",
+            "en": "What do they disagree about?"
+          },
+          "options": [
+            {
+              "t": "the ending"
+            },
+            {
+              "t": "the characters"
+            },
+            {
+              "t": "the length"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "女的覺得結局失望，男的覺得最精彩。",
+            "en": "The ending."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about his commute.",
+              "zh": "你聽到一位男士談通勤。",
+              "en": "You hear a man talking about his commute."
+            },
+            {
+              "who": "M",
+              "s": "Since I started cycling to work, I've saved a fortune on train fares. I thought the main benefit would be fitness, but it's actually how much clearer my head is when I arrive.",
+              "zh": "自從騎車上班，我省了一大筆火車票錢。我以為最大的好處會是健身，結果其實是到公司時頭腦清楚多了。",
+              "en": "Since I started cycling to work, I've saved a fortune on train fares. I thought the main benefit would be fitness, but it's actually how much clearer my head is when I arrive."
+            }
+          ],
+          "ask": {
+            "s": "What has he found to be the biggest benefit?",
+            "zh": "他覺得最大的好處是什麼？",
+            "en": "What has he found to be the biggest benefit?"
+          },
+          "options": [
+            {
+              "t": "saving money"
+            },
+            {
+              "t": "getting fitter"
+            },
+            {
+              "t": "feeling mentally fresher"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「其實是到公司時頭腦清楚多了」。",
+            "en": "A clearer head."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a teacher talking to a student.",
+              "zh": "你聽到一位老師對學生說話。",
+              "en": "You hear a teacher talking to a student."
+            },
+            {
+              "who": "F",
+              "s": "Your essay has some excellent ideas, but you haven't supported them with any evidence. Next time, include examples from the texts we've read.",
+              "zh": "你的論文有些很棒的想法，但沒有用任何證據支持。下次要加入我們讀過的文本中的例子。",
+              "en": "Your essay has some excellent ideas, but you haven't supported them with any evidence. Next time, include examples from the texts we've read."
+            }
+          ],
+          "ask": {
+            "s": "What does the teacher want the student to do?",
+            "zh": "老師要學生做什麼？",
+            "en": "What does the teacher want the student to do?"
+          },
+          "options": [
+            {
+              "t": "write more clearly"
+            },
+            {
+              "t": "use examples to support points"
+            },
+            {
+              "t": "choose a different topic"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「加入……例子」來支持想法。",
+            "en": "Support ideas with examples."
+          }
+        },
+        {
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You hear a man talking about a holiday.",
+              "zh": "你聽到一位男士談一次度假。",
+              "en": "You hear a man talking about a holiday."
+            },
+            {
+              "who": "M",
+              "s": "The hotel was fine and the weather was perfect, but I'd never go on a package tour again. Being told when to eat and where to go every day drove me mad.",
+              "zh": "飯店還行，天氣完美，但我再也不參加套裝行程了。每天被規定什麼時候吃、去哪裡，快把我逼瘋。",
+              "en": "The hotel was fine and the weather was perfect, but I'd never go on a package tour again. Being told when to eat and where to go every day drove me mad."
+            }
+          ],
+          "ask": {
+            "s": "What did he dislike about the holiday?",
+            "zh": "他不喜歡這次度假的什麼？",
+            "en": "What did he dislike about the holiday?"
+          },
+          "options": [
+            {
+              "t": "the lack of freedom"
+            },
+            {
+              "t": "the hotel"
+            },
+            {
+              "t": "the weather"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「每天被規定什麼時候吃、去哪裡」：沒有自由。",
+            "en": "No freedom."
+          }
+        },
+        {
+          "type": "en_fill",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear a woman called Rosa Clarke talking about her work restoring old furniture.",
+              "zh": "你會聽到一位叫蘿莎·克拉克的女士談她修復老家具的工作。",
+              "en": "You will hear a woman called Rosa Clarke talking about her work restoring old furniture."
+            },
+            {
+              "who": "F",
+              "s": "I got into furniture restoration almost by accident. After university I worked in a bank, and in my spare time I started repairing an old chair I'd found in a skip. It took me three months, but I was hooked. I left the bank two years later and did a course in traditional woodwork. The most common job I get is repairing chairs — people sit on them, lean back, and the joints come loose. Tables are less common, but they're often the most valuable pieces. The material I find hardest to work with is oak, because it's so heavy and hard. Pine is much easier, and that's what I recommend to beginners. One thing I never do is use modern glue on antique furniture; I use animal glue, which can be removed later without damaging the wood. My favourite project was a cabinet that had been in a fire. The owners thought it was ruined, but after eight months it looked almost new. These days I also run weekend workshops, and the people who come are mostly retired teachers and nurses. My advice to anyone starting out is to buy good tools, even if you only buy a few.",
+              "zh": "我進入家具修復幾乎是意外。大學畢業後我在銀行上班，空閒時開始修一張從垃圾箱撿來的舊椅子。花了三個月，但我就此著迷。兩年後我離開銀行，去上傳統木工課。我最常接的工作是修椅子，人們坐在上面往後靠，接頭就鬆了。桌子比較少，但常常是最有價值的。我覺得最難處理的材料是橡木，因為又重又硬。松木容易多了，我推薦給初學者。我絕不在古董家具上用現代膠，我用動物膠，日後可以去除而不傷木頭。我最喜歡的作品是一個遭過火災的櫃子，主人以為毀了，八個月後它幾乎像新的。現在我也辦週末工作坊，來的大多是退休的老師和護理師。我給新手的建議是買好工具，就算只買幾樣。",
+              "en": "I got into furniture restoration almost by accident. After university I worked in a bank, and in my spare time I started repairing an old chair I'd found in a skip. It took me three months, but I was hooked. I left the bank two years later and did a course in traditional woodwork. The most common job I get is repairing chairs — people sit on them, lean back, and the joints come loose. Tables are less common, but they're often the most valuable pieces. The material I find hardest to work with is oak, because it's so heavy and hard. Pine is much easier, and that's what I recommend to beginners. One thing I never do is use modern glue on antique furniture; I use animal glue, which can be removed later without damaging the wood. My favourite project was a cabinet that had been in a fire. The owners thought it was ruined, but after eight months it looked almost new. These days I also run weekend workshops, and the people who come are mostly retired teachers and nurses. My advice to anyone starting out is to buy good tools, even if you only buy a few."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Before restoration, Rosa worked in a ＿＿＿＿＿.",
+                "zh": "修復家具前，蘿莎在＿＿工作。",
+                "en": "Before restoration, Rosa worked in a ＿＿＿＿＿."
+              },
+              "answers": [
+                "bank"
+              ],
+              "explain": {
+                "zh": "「在銀行上班」。",
+                "en": "A bank."
+              }
+            },
+            {
+              "ask": {
+                "s": "Her first project was a ＿＿＿＿＿ she found in a skip.",
+                "zh": "她的第一件作品是從垃圾箱撿來的＿＿。",
+                "en": "Her first project was a ＿＿＿＿＿ she found in a skip."
+              },
+              "answers": [
+                "chair",
+                "an old chair",
+                "old chair"
+              ],
+              "explain": {
+                "zh": "「修一張……舊椅子」。",
+                "en": "A chair."
+              }
+            },
+            {
+              "ask": {
+                "s": "Her first project took ＿＿＿＿＿ months.",
+                "zh": "第一件作品花了＿＿個月。",
+                "en": "Her first project took ＿＿＿＿＿ months."
+              },
+              "answers": [
+                "three",
+                "3"
+              ],
+              "explain": {
+                "zh": "「花了三個月」。",
+                "en": "Three."
+              }
+            },
+            {
+              "ask": {
+                "s": "The most valuable items she works on are often ＿＿＿＿＿.",
+                "zh": "她修的東西裡最有價值的常是＿＿。",
+                "en": "The most valuable items she works on are often ＿＿＿＿＿."
+              },
+              "answers": [
+                "tables"
+              ],
+              "explain": {
+                "zh": "「桌子……常常是最有價值的」。",
+                "en": "Tables."
+              }
+            },
+            {
+              "ask": {
+                "s": "The hardest wood to work with is ＿＿＿＿＿.",
+                "zh": "最難處理的木材是＿＿。",
+                "en": "The hardest wood to work with is ＿＿＿＿＿."
+              },
+              "answers": [
+                "oak"
+              ],
+              "explain": {
+                "zh": "「最難處理的材料是橡木」。",
+                "en": "Oak."
+              }
+            },
+            {
+              "ask": {
+                "s": "She recommends ＿＿＿＿＿ to beginners.",
+                "zh": "她推薦初學者用＿＿。",
+                "en": "She recommends ＿＿＿＿＿ to beginners."
+              },
+              "answers": [
+                "pine"
+              ],
+              "explain": {
+                "zh": "「松木……我推薦給初學者」。",
+                "en": "Pine."
+              }
+            },
+            {
+              "ask": {
+                "s": "She only uses ＿＿＿＿＿ glue on antiques.",
+                "zh": "她在古董上只用＿＿膠。",
+                "en": "She only uses ＿＿＿＿＿ glue on antiques."
+              },
+              "answers": [
+                "animal"
+              ],
+              "explain": {
+                "zh": "「我用動物膠」。",
+                "en": "Animal glue."
+              }
+            },
+            {
+              "ask": {
+                "s": "Her favourite project was a cabinet damaged by ＿＿＿＿＿.",
+                "zh": "她最喜歡的作品是被＿＿損壞的櫃子。",
+                "en": "Her favourite project was a cabinet damaged by ＿＿＿＿＿."
+              },
+              "answers": [
+                "fire",
+                "a fire"
+              ],
+              "explain": {
+                "zh": "「遭過火災的櫃子」。",
+                "en": "Fire."
+              }
+            },
+            {
+              "ask": {
+                "s": "Most people at her workshops are retired teachers and ＿＿＿＿＿.",
+                "zh": "工作坊的人大多是退休老師和＿＿。",
+                "en": "Most people at her workshops are retired teachers and ＿＿＿＿＿."
+              },
+              "answers": [
+                "nurses"
+              ],
+              "explain": {
+                "zh": "「退休的老師和護理師」。",
+                "en": "Nurses."
+              }
+            },
+            {
+              "ask": {
+                "s": "Her advice is to buy good ＿＿＿＿＿.",
+                "zh": "她的建議是買好的＿＿。",
+                "en": "Her advice is to buy good ＿＿＿＿＿."
+              },
+              "answers": [
+                "tools"
+              ],
+              "explain": {
+                "zh": "「買好工具」。",
+                "en": "Tools."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_match",
+          "n_options": 8,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Speaker 1",
+              "zh": "說話者 1",
+              "en": "Speaker 1"
+            },
+            {
+              "who": "F",
+              "s": "I'd read so much about how hard it is to make friends in Copenhagen that I was dreading it. But my neighbours invited me round in the first week, and within a month I felt completely at home.",
+              "zh": "我讀過很多關於在哥本哈根很難交朋友的文章，所以很害怕。但第一週鄰居就邀我去家裡，一個月內我就完全像在家一樣。",
+              "en": "I'd read so much about how hard it is to make friends in Copenhagen that I was dreading it. But my neighbours invited me round in the first week, and within a month I felt completely at home."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 2",
+              "zh": "說話者 2",
+              "en": "Speaker 2"
+            },
+            {
+              "who": "M",
+              "s": "I went to Singapore on a six-month contract. That was eight years ago! The job kept growing, and then I met my wife, so going home never really came up.",
+              "zh": "我拿六個月的合約去新加坡，那是八年前的事了！工作越做越多，後來又遇到我太太，回家這件事就再也沒提過。",
+              "en": "I went to Singapore on a six-month contract. That was eight years ago! The job kept growing, and then I met my wife, so going home never really came up."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 3",
+              "zh": "說話者 3",
+              "en": "Speaker 3"
+            },
+            {
+              "who": "F",
+              "s": "Everyone in Tokyo was incredibly kind, but I couldn't read a menu or ask for directions. I wish I'd taken lessons before going instead of trying to pick it up there.",
+              "zh": "東京每個人都非常友善，但我看不懂菜單，也不會問路。真希望出發前就上課，而不是到那裡才想學。",
+              "en": "Everyone in Tokyo was incredibly kind, but I couldn't read a menu or ask for directions. I wish I'd taken lessons before going instead of trying to pick it up there."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 4",
+              "zh": "說話者 4",
+              "en": "Speaker 4"
+            },
+            {
+              "who": "M",
+              "s": "In Berlin, meetings started exactly on time and nobody stayed late. At home we'd all work until eight to show we were committed. It took me ages to adjust.",
+              "zh": "在柏林，會議準時開始，沒人加班。在我們國家，大家都工作到八點表示投入。我花了好久才適應。",
+              "en": "In Berlin, meetings started exactly on time and nobody stayed late. At home we'd all work until eight to show we were committed. It took me ages to adjust."
+            },
+            {
+              "who": "N",
+              "s": "Speaker 5",
+              "zh": "說話者 5",
+              "en": "Speaker 5"
+            },
+            {
+              "who": "F",
+              "s": "I didn't know anyone in Montreal, and at first the evenings were long. But I started going to the cinema on my own, walking for hours, and I discovered I actually liked my own company.",
+              "zh": "我在蒙特婁誰也不認識，一開始晚上很漫長。但我開始一個人看電影、走好幾小時的路，發現自己其實喜歡獨處。",
+              "en": "I didn't know anyone in Montreal, and at first the evenings were long. But I started going to the cinema on my own, walking for hours, and I discovered I actually liked my own company."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Speaker 1",
+                "zh": "說話者 1",
+                "en": "Speaker 1"
+              },
+              "options": [
+                {
+                  "t": "I was surprised by how quickly I settled in."
+                },
+                {
+                  "t": "I regret not learning the language before I left."
+                },
+                {
+                  "t": "The cost of living was higher than I expected."
+                },
+                {
+                  "t": "I found the work culture very different."
+                },
+                {
+                  "t": "I made a friend who changed my plans."
+                },
+                {
+                  "t": "I missed the food from home more than anything."
+                },
+                {
+                  "t": "I learned to enjoy spending time alone."
+                },
+                {
+                  "t": "I ended up staying much longer than I had planned."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "原本害怕交不到朋友，結果「一個月內就完全像在家一樣」：很快適應。",
+                "en": "Settled in quickly."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 2",
+                "zh": "說話者 2",
+                "en": "Speaker 2"
+              },
+              "options": [
+                {
+                  "t": "I was surprised by how quickly I settled in."
+                },
+                {
+                  "t": "I regret not learning the language before I left."
+                },
+                {
+                  "t": "The cost of living was higher than I expected."
+                },
+                {
+                  "t": "I found the work culture very different."
+                },
+                {
+                  "t": "I made a friend who changed my plans."
+                },
+                {
+                  "t": "I missed the food from home more than anything."
+                },
+                {
+                  "t": "I learned to enjoy spending time alone."
+                },
+                {
+                  "t": "I ended up staying much longer than I had planned."
+                }
+              ],
+              "answer": "H",
+              "explain": {
+                "zh": "六個月的合約變成八年：待得比計畫久很多。",
+                "en": "Stayed far longer."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 3",
+                "zh": "說話者 3",
+                "en": "Speaker 3"
+              },
+              "options": [
+                {
+                  "t": "I was surprised by how quickly I settled in."
+                },
+                {
+                  "t": "I regret not learning the language before I left."
+                },
+                {
+                  "t": "The cost of living was higher than I expected."
+                },
+                {
+                  "t": "I found the work culture very different."
+                },
+                {
+                  "t": "I made a friend who changed my plans."
+                },
+                {
+                  "t": "I missed the food from home more than anything."
+                },
+                {
+                  "t": "I learned to enjoy spending time alone."
+                },
+                {
+                  "t": "I ended up staying much longer than I had planned."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「真希望出發前就上課」：後悔沒先學語言。",
+                "en": "Regrets not learning the language."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 4",
+                "zh": "說話者 4",
+                "en": "Speaker 4"
+              },
+              "options": [
+                {
+                  "t": "I was surprised by how quickly I settled in."
+                },
+                {
+                  "t": "I regret not learning the language before I left."
+                },
+                {
+                  "t": "The cost of living was higher than I expected."
+                },
+                {
+                  "t": "I found the work culture very different."
+                },
+                {
+                  "t": "I made a friend who changed my plans."
+                },
+                {
+                  "t": "I missed the food from home more than anything."
+                },
+                {
+                  "t": "I learned to enjoy spending time alone."
+                },
+                {
+                  "t": "I ended up staying much longer than I had planned."
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "準時開會、不加班：工作文化很不一樣。",
+                "en": "Different work culture."
+              }
+            },
+            {
+              "ask": {
+                "s": "Speaker 5",
+                "zh": "說話者 5",
+                "en": "Speaker 5"
+              },
+              "options": [
+                {
+                  "t": "I was surprised by how quickly I settled in."
+                },
+                {
+                  "t": "I regret not learning the language before I left."
+                },
+                {
+                  "t": "The cost of living was higher than I expected."
+                },
+                {
+                  "t": "I found the work culture very different."
+                },
+                {
+                  "t": "I made a friend who changed my plans."
+                },
+                {
+                  "t": "I missed the food from home more than anything."
+                },
+                {
+                  "t": "I learned to enjoy spending time alone."
+                },
+                {
+                  "t": "I ended up staying much longer than I had planned."
+                }
+              ],
+              "answer": "G",
+              "explain": {
+                "zh": "一個人看電影、散步，「發現自己其實喜歡獨處」。",
+                "en": "Learned to enjoy being alone."
+              }
+            }
+          ]
+        },
+        {
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "You will hear an interview with a mountain guide called Ben Carter.",
+              "zh": "你會聽到一段登山嚮導班·卡特的訪問。",
+              "en": "You will hear an interview with a mountain guide called Ben Carter."
+            },
+            {
+              "who": "F",
+              "s": "Ben, how did you become a mountain guide?",
+              "zh": "班，你是怎麼成為登山嚮導的？",
+              "en": "Ben, how did you become a mountain guide?"
+            },
+            {
+              "who": "M",
+              "s": "My parents took me walking every weekend as a child, so I always loved the mountains. But I trained as an engineer and only became a guide at thirty, after I was made redundant. It turned out to be the best thing that ever happened to me.",
+              "zh": "小時候爸媽每個週末都帶我健行，所以我一直很愛山。但我學的是工程，三十歲被裁員後才當嚮導，結果那是我人生中最好的事。",
+              "en": "My parents took me walking every weekend as a child, so I always loved the mountains. But I trained as an engineer and only became a guide at thirty, after I was made redundant. It turned out to be the best thing that ever happened to me."
+            },
+            {
+              "who": "F",
+              "s": "What's the biggest danger in the mountains?",
+              "zh": "山上最大的危險是什麼？",
+              "en": "What's the biggest danger in the mountains?"
+            },
+            {
+              "who": "M",
+              "s": "People expect me to say storms or falling rocks, but it's actually overconfidence. Most accidents happen to experienced walkers who think they don't need to check the weather.",
+              "zh": "大家以為我會說暴風雨或落石，其實是過度自信。大多數意外發生在有經驗、覺得不必查天氣的健行者身上。",
+              "en": "People expect me to say storms or falling rocks, but it's actually overconfidence. Most accidents happen to experienced walkers who think they don't need to check the weather."
+            },
+            {
+              "who": "F",
+              "s": "Do you ever turn back before reaching the top?",
+              "zh": "你會在登頂前折返嗎？",
+              "en": "Do you ever turn back before reaching the top?"
+            },
+            {
+              "who": "M",
+              "s": "Often. Clients sometimes get annoyed — they've paid a lot and want to reach the summit. But I'd rather have an unhappy client than an injured one.",
+              "zh": "常常。客人有時會不高興，他們付了很多錢想登頂。但我寧可客人不開心，也不要客人受傷。",
+              "en": "Often. Clients sometimes get annoyed — they've paid a lot and want to reach the summit. But I'd rather have an unhappy client than an injured one."
+            },
+            {
+              "who": "F",
+              "s": "How has the job changed?",
+              "zh": "這份工作有什麼改變？",
+              "en": "How has the job changed?"
+            },
+            {
+              "who": "M",
+              "s": "Mobile phones have made people feel safer than they are. Signal disappears quickly in the valleys, and batteries die in the cold. I always carry a paper map.",
+              "zh": "手機讓人覺得比實際安全。山谷裡訊號很快就沒了，電池在寒冷中也會沒電。我總是帶紙本地圖。",
+              "en": "Mobile phones have made people feel safer than they are. Signal disappears quickly in the valleys, and batteries die in the cold. I always carry a paper map."
+            },
+            {
+              "who": "F",
+              "s": "What do you enjoy most?",
+              "zh": "你最喜歡的是什麼？",
+              "en": "What do you enjoy most?"
+            },
+            {
+              "who": "M",
+              "s": "Not the views, surprisingly. It's watching someone who was nervous at the start of the day realise what they're capable of.",
+              "zh": "出乎意料，不是風景，而是看著一早很緊張的人發現自己有多大能耐。",
+              "en": "Not the views, surprisingly. It's watching someone who was nervous at the start of the day realise what they're capable of."
+            },
+            {
+              "who": "F",
+              "s": "Any advice for beginners?",
+              "zh": "給初學者的建議？",
+              "en": "Any advice for beginners?"
+            },
+            {
+              "who": "M",
+              "s": "Join a club. You'll learn more from walking with experienced people than from any book.",
+              "zh": "加入社團。和有經驗的人一起走，學到的比任何書都多。",
+              "en": "Join a club. You'll learn more from walking with experienced people than from any book."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "How did Ben become a mountain guide?",
+                "zh": "班怎麼成為嚮導的？",
+                "en": "How did Ben become a mountain guide?"
+              },
+              "options": [
+                {
+                  "t": "He trained straight after school."
+                },
+                {
+                  "t": "He changed career after losing his job."
+                },
+                {
+                  "t": "His parents were guides."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「三十歲被裁員後才當嚮導」。",
+                "en": "After redundancy."
+              }
+            },
+            {
+              "ask": {
+                "s": "According to Ben, what causes most accidents?",
+                "zh": "班說大多數意外的原因是？",
+                "en": "According to Ben, what causes most accidents?"
+              },
+              "options": [
+                {
+                  "t": "bad weather"
+                },
+                {
+                  "t": "falling rocks"
+                },
+                {
+                  "t": "people being too confident"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「其實是過度自信」。",
+                "en": "Overconfidence."
+              }
+            },
+            {
+              "ask": {
+                "s": "How does Ben feel about turning back?",
+                "zh": "班怎麼看折返？",
+                "en": "How does Ben feel about turning back?"
+              },
+              "options": [
+                {
+                  "t": "He'd rather disappoint clients than risk injury."
+                },
+                {
+                  "t": "He avoids it because clients complain."
+                },
+                {
+                  "t": "He only does it in storms."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「寧可客人不開心，也不要客人受傷」。",
+                "en": "Safety first."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Ben say about mobile phones?",
+                "zh": "班對手機的看法？",
+                "en": "What does Ben say about mobile phones?"
+              },
+              "options": [
+                {
+                  "t": "They have made walking much safer."
+                },
+                {
+                  "t": "They give people a false sense of security."
+                },
+                {
+                  "t": "Guides should always carry two."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「手機讓人覺得比實際安全」。",
+                "en": "False security."
+              }
+            },
+            {
+              "ask": {
+                "s": "Why does Ben carry a paper map?",
+                "zh": "班為什麼帶紙本地圖？",
+                "en": "Why does Ben carry a paper map?"
+              },
+              "options": [
+                {
+                  "t": "Phones may not work in the mountains."
+                },
+                {
+                  "t": "Clients expect it."
+                },
+                {
+                  "t": "It is required by law."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "訊號會沒、電池會沒電。",
+                "en": "Phones can fail."
+              }
+            },
+            {
+              "ask": {
+                "s": "What does Ben enjoy most about his job?",
+                "zh": "班最喜歡工作的什麼？",
+                "en": "What does Ben enjoy most about his job?"
+              },
+              "options": [
+                {
+                  "t": "the views from the top"
+                },
+                {
+                  "t": "seeing clients gain confidence"
+                },
+                {
+                  "t": "meeting people from other countries"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「看著一早很緊張的人發現自己有多大能耐」。",
+                "en": "Clients discovering their ability."
+              }
+            },
+            {
+              "ask": {
+                "s": "What is Ben's advice to beginners?",
+                "zh": "班給初學者的建議？",
+                "en": "What is Ben's advice to beginners?"
+              },
+              "options": [
+                {
+                  "t": "read guidebooks"
+                },
+                {
+                  "t": "buy good equipment"
+                },
+                {
+                  "t": "walk with a group"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「加入社團」，和有經驗的人一起走。",
+                "en": "Join a club."
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
 }
