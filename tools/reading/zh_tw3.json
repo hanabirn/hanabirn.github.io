@@ -675,6 +675,147 @@
           ]
         }
       ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "minutes": 30,
+      "items": [
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你今天怎麼這麼晚才到？", "這家店的東西貴不貴？", "你最近在忙什麼？", "你的頭髮怎麼變短了？", "要不要幫你拿？", "你們學校大不大？"],
+          "questions": [
+            {"q": "不用了，不太重。", "answer": "E", "zh": "對方要幫忙拿東西，回答「不用了」。", "en": "\"Shall I carry it?\" — \"No need, it's not heavy.\""},
+            {"q": "路上車太多了，對不起。", "answer": "A", "zh": "問怎麼這麼晚，回答原因。", "en": "\"Why so late?\" — \"Too much traffic, sorry.\""},
+            {"q": "昨天剛剪的，好看嗎？", "answer": "D", "zh": "問頭髮怎麼變短，回答剛剪。", "en": "\"Your hair's shorter?\" — \"Cut yesterday.\""},
+            {"q": "不大，走一圈只要十分鐘。", "answer": "F", "zh": "問學校大不大，回答「不大」。", "en": "\"Is your school big?\" — \"No, ten minutes to walk round.\""},
+            {"q": "我在準備下個月的考試。", "answer": "C", "zh": "問最近忙什麼，回答準備考試。B 是多出來的。", "en": "\"What are you busy with?\" — \"Next month's exam.\" B is the spare."}
+          ]
+        },
+        {
+          "type": "zh_match",
+          "mondai": 1,
+          "ask": "zh_match",
+          "bank": ["你喜歡住在城市還是鄉下？", "這支手機用了多久了？", "你為什麼不參加比賽？", "晚上一起去夜市好嗎？", "你會做菜嗎？", "你們班有多少學生？"],
+          "questions": [
+            {"q": "會一點，最拿手的是番茄炒蛋。", "answer": "E", "zh": "問會不會做菜，回答「會一點」。", "en": "\"Can you cook?\" — \"A little; my best is tomato and egg.\""},
+            {"q": "二十五個，男生比女生多。", "answer": "F", "zh": "問多少學生，回答人數。", "en": "\"How many students in your class?\" — \"Twenty-five.\""},
+            {"q": "鄉下，空氣比較好。", "answer": "A", "zh": "問城市還是鄉下，選一個。", "en": "\"City or countryside?\" — \"The countryside: better air.\""},
+            {"q": "好啊，我想吃大腸包小腸。", "answer": "D", "zh": "邀請去夜市，回答「好啊」。", "en": "\"Night market tonight?\" — \"Sure.\""},
+            {"q": "因為我的腳受傷了。", "answer": "C", "zh": "問為什麼不參加，回答原因。B 是多出來的。", "en": "\"Why aren't you competing?\" — \"I hurt my foot.\" B is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["習慣", "容易", "突然", "特別", "需要", "而且"],
+          "questions": [
+            {"q": "剛來台灣的時候，我不太（　）這裡的天氣。", "answer": "A", "zh": "「習慣」：適應了。", "en": "习惯, be used to."},
+            {"q": "這家店的蛋糕（　）好吃，每天都賣完。", "answer": "D", "zh": "「特別好吃」：非常。", "en": "特别, especially."},
+            {"q": "我正在上課，手機（　）響了。", "answer": "C", "zh": "「突然」：沒想到的時候發生。", "en": "突然, suddenly."},
+            {"q": "這個問題很（　），大家都會。", "answer": "B", "zh": "「很容易」：不難。", "en": "容易, easy."},
+            {"q": "他的房間很大，（　）很乾淨。", "answer": "F", "zh": "「……，而且……」：再加一點。E「需要」是多出來的。", "en": "而且, and also. E 需要 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_bank",
+          "mondai": 2,
+          "ask": "zh_bank",
+          "bank": ["只好", "一邊", "檢查", "願意", "當然", "記得"],
+          "questions": [
+            {"q": "A：你（　）帶護照了嗎？\nB：帶了，在包裡。", "answer": "F", "zh": "「記得」：沒忘。", "en": "记得, remember."},
+            {"q": "A：你能來參加我的生日會嗎？\nB：（　）能，我一定去。", "answer": "E", "zh": "「當然」：一定是這樣。", "en": "当然, of course."},
+            {"q": "A：你怎麼走路來的？\nB：沒有公車了，我（　）走路。", "answer": "A", "zh": "「只好」：沒有別的辦法。", "en": "只好, have no choice but to."},
+            {"q": "A：小林在做什麼？\nB：他（　）聽音樂一邊寫作業。", "answer": "B", "zh": "「一邊……一邊……」：同時做兩件事。", "en": "一边…一边…, while."},
+            {"q": "A：醫生，我的眼睛不太舒服。\nB：我幫你（　）一下。", "answer": "C", "zh": "「檢查一下」。D「願意」是多出來的。", "en": "检查, examine. D 愿意 is the spare."}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我們家附近新開了一家早午餐店，週末的時候很多年輕人去那裡，一坐就是一個上午。",
+          "tr": {"en": "A new brunch place has opened near us; at weekends lots of young people go and sit there the whole morning."},
+          "questions": [
+            {"q": "週末去那家店的大多是：", "options": ["老人", "年輕人", "學生的父母"], "answer": 1, "zh": "「很多年輕人去那裡」。", "en": "\"Young people.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "小陳每天下班以後都去學日文，因為他明年要去日本工作兩年。",
+          "tr": {"en": "Every day after work Xiao Chen studies Japanese, because next year he is going to work in Japan for two years."},
+          "questions": [
+            {"q": "小陳為什麼學日文？", "options": ["要去日本工作", "喜歡日本電影", "公司要他教日文"], "answer": 0, "zh": "「因為他明年要去日本工作」。", "en": "\"He'll work in Japan.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "這間教室的冷氣壞了，今天下午的課改到三樓的大教室上。",
+          "tr": {"en": "The air conditioning in this classroom is broken, so this afternoon's class moves to the big room on the third floor."},
+          "questions": [
+            {"q": "下午的課為什麼換教室？", "options": ["學生太多", "老師生病了", "冷氣壞了"], "answer": 2, "zh": "「這間教室的冷氣壞了」。", "en": "\"The air conditioning broke.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "我妹妹很喜歡畫畫，她每個星期六上午都去上畫畫課，已經學了三年了。",
+          "tr": {"en": "My younger sister loves drawing; she has gone to an art class every Saturday morning for three years."},
+          "questions": [
+            {"q": "妹妹什麼時候上畫畫課？", "options": ["星期天下午", "星期六上午", "每天晚上"], "answer": 1, "zh": "「每個星期六上午都去上畫畫課」。", "en": "\"Saturday morning.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "去九份的人很多，假日的時候公車上常常沒有位子，所以最好平常的日子去。",
+          "tr": {"en": "Lots of people visit Jiufen; on holidays the buses are often full, so it's best to go on an ordinary weekday."},
+          "questions": [
+            {"q": "去九份最好什麼時候去？", "options": ["平常的日子", "假日", "晚上"], "answer": 0, "zh": "「所以最好平常的日子去」。", "en": "\"On a weekday.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_text",
+          "text": "爸爸以前每天都喝很多咖啡，醫生說對身體不好，現在他改喝茶了。",
+          "tr": {"en": "Dad used to drink lots of coffee every day; the doctor said it was bad for him, and now he drinks tea instead."},
+          "questions": [
+            {"q": "爸爸現在喝什麼？", "options": ["咖啡", "果汁", "茶"], "answer": 2, "zh": "「現在他改喝茶了」。", "en": "\"Tea.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "我住的大樓有一個小花園，住在這裡的人常常在花園裡種菜。上個月我也種了一些番茄，現在已經可以吃了。這些番茄雖然不大，可是很甜。",
+          "tr": {"en": "My building has a small garden where residents often grow vegetables. Last month I planted some tomatoes too, and now they're ready. They aren't big, but they're sweet."},
+          "questions": [
+            {"q": "住在大樓裡的人常常在花園裡：", "options": ["跑步", "種菜", "開會"], "answer": 1, "zh": "「常常在花園裡種菜」。", "en": "\"Grow vegetables.\""},
+            {"q": "他覺得這些番茄怎麼樣？", "options": ["很甜", "很大", "不好吃"], "answer": 0, "zh": "「雖然不大，可是很甜」。", "en": "\"Sweet.\""}
+          ]
+        },
+        {
+          "type": "zh_text",
+          "mondai": 3,
+          "ask": "zh_passage",
+          "text": "王先生是一位公車司機，他開公車已經十五年了。他說，開公車最難的是遇到下大雨的時候，因為路上很滑，車子也比較多。不過他很喜歡這個工作，因為每天都能遇到很多不一樣的人。",
+          "tr": {"en": "Mr Wang has driven a bus for fifteen years. He says the hardest part is heavy rain, when the roads are slippery and there's more traffic. Still, he loves the job because he meets so many different people every day."},
+          "questions": [
+            {"q": "王先生覺得開公車最難的時候是：", "options": ["早上很早的時候", "過年的時候", "下大雨的時候"], "answer": 2, "zh": "「最難的是遇到下大雨的時候」。", "en": "\"In heavy rain.\""},
+            {"q": "王先生為什麼喜歡這個工作？", "options": ["錢很多", "能遇到很多人", "工作時間短"], "answer": 1, "zh": "「每天都能遇到很多不一樣的人」。", "en": "\"He meets many people.\""}
+          ]
+        }
+      ]
     }
   ]
 }
