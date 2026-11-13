@@ -13,7 +13,7 @@
   "mock_plays": 2,
   "mock_counts": {
     "en_talk": 6,
-    "en_q": 11,
+    "en_q": 12,
     "en_match": 5
   },
   "sets": [
@@ -2634,6 +2634,910 @@
               "explain": {
                 "zh": "寄包裹到西班牙：寄東西。剩下的 F（租車）沒有用到。",
                 "en": "Sending a parcel; F is not used."
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "m1",
+      "mock": true,
+      "items": [
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un aéroport.",
+              "zh": "你在機場。",
+              "en": "You are at an airport."
+            },
+            {
+              "who": "F",
+              "s": "Les passagers du vol AF 712 pour Rome sont priés de se présenter à la porte 23. L'embarquement commence dans dix minutes.",
+              "zh": "搭乘 AF712 班機前往羅馬的旅客，請到 23 號登機門，十分鐘後開始登機。",
+              "en": "Passengers on flight AF 712 to Rome are asked to go to gate 23. Boarding starts in ten minutes."
+            }
+          ],
+          "ask": {
+            "s": "Où doivent aller les passagers ?",
+            "zh": "旅客要去哪裡？",
+            "en": "Where must the passengers go?"
+          },
+          "options": [
+            {
+              "t": "au guichet"
+            },
+            {
+              "t": "à la porte 12"
+            },
+            {
+              "t": "à la porte 23"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「請到 23 號登機門」。",
+            "en": "Gate 23."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un supermarché.",
+              "zh": "你在超市。",
+              "en": "You are in a supermarket."
+            },
+            {
+              "who": "M",
+              "s": "Aujourd'hui seulement, toutes les glaces sont à moitié prix au rayon surgelés.",
+              "zh": "僅限今天，冷凍區所有冰淇淋半價。",
+              "en": "Today only, all ice creams are half price in the frozen section."
+            }
+          ],
+          "ask": {
+            "s": "Quel produit est en promotion ?",
+            "zh": "什麼商品在特價？",
+            "en": "What is on offer?"
+          },
+          "options": [
+            {
+              "t": "les glaces"
+            },
+            {
+              "t": "le pain"
+            },
+            {
+              "t": "le café"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「所有冰淇淋半價」。",
+            "en": "Ice cream."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous écoutez la radio.",
+              "zh": "你在聽廣播。",
+              "en": "You are listening to the radio."
+            },
+            {
+              "who": "F",
+              "s": "Demain, il va pleuvoir le matin dans le nord, mais l'après-midi le soleil revient partout.",
+              "zh": "明天北部早上會下雨，但下午各地都會放晴。",
+              "en": "Tomorrow it will rain in the morning in the north, but in the afternoon the sun returns everywhere."
+            }
+          ],
+          "ask": {
+            "s": "Quel temps fera-t-il demain après-midi ?",
+            "zh": "明天下午天氣如何？",
+            "en": "What will the weather be like tomorrow afternoon?"
+          },
+          "options": [
+            {
+              "t": "de la pluie"
+            },
+            {
+              "t": "du soleil"
+            },
+            {
+              "t": "de la neige"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「下午各地都會放晴」。",
+            "en": "Sunny."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un musée.",
+              "zh": "你在博物館。",
+              "en": "You are in a museum."
+            },
+            {
+              "who": "M",
+              "s": "Le musée fermera exceptionnellement à 16 heures aujourd'hui. Nous vous invitons à vous diriger vers la sortie.",
+              "zh": "博物館今天特別在 16 點閉館，請往出口移動。",
+              "en": "The museum will close exceptionally at 4 pm today. Please make your way to the exit."
+            }
+          ],
+          "ask": {
+            "s": "À quelle heure ferme le musée aujourd'hui ?",
+            "zh": "博物館今天幾點閉館？",
+            "en": "When does the museum close today?"
+          },
+          "options": [
+            {
+              "t": "à 18 heures"
+            },
+            {
+              "t": "à 14 heures"
+            },
+            {
+              "t": "à 16 heures"
+            }
+          ],
+          "answer": "C",
+          "explain": {
+            "zh": "「今天特別在 16 點閉館」。",
+            "en": "4 pm."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un train.",
+              "zh": "你在火車上。",
+              "en": "You are on a train."
+            },
+            {
+              "who": "F",
+              "s": "Prochain arrêt : Dijon. Attention, ce train ne s'arrête pas à Beaune aujourd'hui en raison de travaux.",
+              "zh": "下一站：第戎。注意，因為施工，本列車今天不停博恩。",
+              "en": "Next stop: Dijon. Please note this train does not stop at Beaune today because of works."
+            }
+          ],
+          "ask": {
+            "s": "Pourquoi le train ne s'arrête pas à Beaune ?",
+            "zh": "列車為什麼不停博恩？",
+            "en": "Why doesn't the train stop at Beaune?"
+          },
+          "options": [
+            {
+              "t": "à cause de travaux"
+            },
+            {
+              "t": "à cause de la neige"
+            },
+            {
+              "t": "parce qu'il est en retard"
+            }
+          ],
+          "answer": "A",
+          "explain": {
+            "zh": "「因為施工」。",
+            "en": "Works."
+          }
+        },
+        {
+          "part": 1,
+          "type": "en_talk",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous êtes dans un magasin de vêtements.",
+              "zh": "你在服飾店。",
+              "en": "You are in a clothes shop."
+            },
+            {
+              "who": "M",
+              "s": "Chers clients, les cabines d'essayage du premier étage sont fermées. Merci d'utiliser celles du rez-de-chaussée.",
+              "zh": "各位顧客，二樓試衣間關閉，請使用一樓的試衣間。",
+              "en": "Dear customers, the fitting rooms on the first floor are closed. Please use those on the ground floor."
+            }
+          ],
+          "ask": {
+            "s": "Où sont les cabines ouvertes ?",
+            "zh": "開放的試衣間在哪裡？",
+            "en": "Where are the open fitting rooms?"
+          },
+          "options": [
+            {
+              "t": "au premier étage"
+            },
+            {
+              "t": "au rez-de-chaussée"
+            },
+            {
+              "t": "au deuxième étage"
+            }
+          ],
+          "answer": "B",
+          "explain": {
+            "zh": "「請使用一樓的試衣間」。",
+            "en": "Ground floor."
+          }
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un message sur un répondeur.",
+              "zh": "你會聽到一則電話答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Bonjour Madame Roux, ici le cabinet du docteur Blanc. Votre rendez-vous de jeudi est déplacé à vendredi, à la même heure, 15 heures. Si ce n'est pas possible, rappelez-nous au 04 72 18 35 60.",
+              "zh": "胡太太您好，這裡是布朗醫師診所。您星期四的預約改到星期五同一時間，15 點。如果不行，請回電 04 72 18 35 60。",
+              "en": "Hello Mrs Roux, this is Dr Blanc's surgery. Your Thursday appointment has moved to Friday at the same time, 3 pm. If that's not possible, call us back on 04 72 18 35 60."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Le rendez-vous est maintenant…",
+                "zh": "預約現在改在……",
+                "en": "The appointment is now…"
+              },
+              "options": [
+                {
+                  "t": "jeudi."
+                },
+                {
+                  "t": "samedi."
+                },
+                {
+                  "t": "vendredi."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「改到星期五」。",
+                "en": "Friday."
+              }
+            },
+            {
+              "ask": {
+                "s": "À quelle heure ?",
+                "zh": "幾點？",
+                "en": "At what time?"
+              },
+              "options": [
+                {
+                  "t": "15 heures"
+                },
+                {
+                  "t": "13 heures"
+                },
+                {
+                  "t": "17 heures"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「同一時間，15 點」。",
+                "en": "3 pm."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un message sur un répondeur.",
+              "zh": "你會聽到一則電話答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "F",
+              "s": "Salut Antoine, c'est Clara. Pour le pique-nique de dimanche, j'apporte les salades et les boissons. Toi, tu peux prendre du pain et un gâteau ? On se retrouve à midi au lac.",
+              "zh": "嗨，安托萬，我是克拉拉。星期天的野餐我帶沙拉和飲料。你可以帶麵包和蛋糕嗎？我們中午在湖邊碰面。",
+              "en": "Hi Antoine, it's Clara. For Sunday's picnic I'm bringing the salads and drinks. Can you bring bread and a cake? Let's meet at noon at the lake."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Antoine doit apporter…",
+                "zh": "安托萬要帶……",
+                "en": "Antoine must bring…"
+              },
+              "options": [
+                {
+                  "t": "les boissons."
+                },
+                {
+                  "t": "du pain et un gâteau."
+                },
+                {
+                  "t": "les salades."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「你可以帶麵包和蛋糕嗎？」",
+                "en": "Bread and a cake."
+              }
+            },
+            {
+              "ask": {
+                "s": "Ils se retrouvent…",
+                "zh": "他們在……碰面。",
+                "en": "They meet…"
+              },
+              "options": [
+                {
+                  "t": "au parc."
+                },
+                {
+                  "t": "chez Clara."
+                },
+                {
+                  "t": "au lac."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「中午在湖邊碰面」。",
+                "en": "At the lake."
+              }
+            }
+          ]
+        },
+        {
+          "part": 2,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre un message sur un répondeur.",
+              "zh": "你會聽到一則電話答錄機留言。",
+              "en": "You will hear a message on an answering machine."
+            },
+            {
+              "who": "M",
+              "s": "Bonjour, ici l'agence Immo-Sud. L'appartement de la rue Victor-Hugo est toujours libre. La visite est possible mercredi à 18 heures. Le loyer est de 650 euros par mois, charges comprises.",
+              "zh": "您好，這裡是南方房屋仲介。雨果街的公寓還空著，星期三 18 點可以看房。房租每月 650 歐元，含管理費。",
+              "en": "Hello, this is the Immo-Sud agency. The flat on rue Victor-Hugo is still free. A visit is possible on Wednesday at 6 pm. The rent is 650 euros a month including charges."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Quand peut-on visiter l'appartement ?",
+                "zh": "什麼時候可以看房？",
+                "en": "When can the flat be visited?"
+              },
+              "options": [
+                {
+                  "t": "mercredi"
+                },
+                {
+                  "t": "mardi"
+                },
+                {
+                  "t": "jeudi"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「星期三 18 點可以看房」。",
+                "en": "Wednesday."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le loyer est de…",
+                "zh": "房租是……",
+                "en": "The rent is…"
+              },
+              "options": [
+                {
+                  "t": "560 euros."
+                },
+                {
+                  "t": "650 euros."
+                },
+                {
+                  "t": "750 euros."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「每月 650 歐元」。",
+                "en": "650 euros."
+              }
+            }
+          ]
+        },
+        {
+          "part": 3,
+          "type": "en_q",
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre une interview à la radio.",
+              "zh": "你會聽到一段廣播訪問。",
+              "en": "You will hear a radio interview."
+            },
+            {
+              "who": "F",
+              "s": "Bonjour Paul, vous êtes boulanger depuis quarante ans et vous partez à la retraite. Comment avez-vous commencé ?",
+              "zh": "保羅您好，您當了四十年麵包師傅，要退休了。您是怎麼開始的？",
+              "en": "Hello Paul, you've been a baker for forty years and you're retiring. How did you start?"
+            },
+            {
+              "who": "M",
+              "s": "À quinze ans, je travaillais chez mon oncle, qui était boulanger à Lyon. J'ai adoré tout de suite l'odeur du pain chaud.",
+              "zh": "十五歲時我在我叔叔那裡工作，他是里昂的麵包師傅。我一下子就愛上熱麵包的香味。",
+              "en": "At fifteen I worked for my uncle, a baker in Lyon. I immediately loved the smell of warm bread."
+            },
+            {
+              "who": "F",
+              "s": "Quel est le plus difficile dans ce métier ?",
+              "zh": "這一行最難的是什麼？",
+              "en": "What is the hardest thing in this job?"
+            },
+            {
+              "who": "M",
+              "s": "Les horaires ! Je me lève à trois heures du matin, même le dimanche.",
+              "zh": "工作時間！我凌晨三點起床，連星期天也是。",
+              "en": "The hours! I get up at 3 am, even on Sundays."
+            },
+            {
+              "who": "F",
+              "s": "Et votre pain préféré ?",
+              "zh": "您最喜歡的麵包是？",
+              "en": "And your favourite bread?"
+            },
+            {
+              "who": "M",
+              "s": "Le pain aux noix. Les clients l'adorent aussi.",
+              "zh": "核桃麵包，客人也很愛。",
+              "en": "Walnut bread. The customers love it too."
+            },
+            {
+              "who": "F",
+              "s": "Qu'allez-vous faire maintenant ?",
+              "zh": "您接下來要做什麼？",
+              "en": "What will you do now?"
+            },
+            {
+              "who": "M",
+              "s": "Je vais voyager avec ma femme. Mais ma fille reprend la boulangerie, donc je viendrai l'aider le samedi !",
+              "zh": "我要和太太去旅行。不過我女兒接手麵包店，所以星期六我會來幫忙！",
+              "en": "I'm going to travel with my wife. But my daughter is taking over the bakery, so I'll come and help on Saturdays!"
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Paul est boulanger depuis…",
+                "zh": "保羅當麵包師傅……",
+                "en": "Paul has been a baker for…"
+              },
+              "options": [
+                {
+                  "t": "quinze ans."
+                },
+                {
+                  "t": "trente ans."
+                },
+                {
+                  "t": "quarante ans."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「當了四十年麵包師傅」。",
+                "en": "Forty years."
+              }
+            },
+            {
+              "ask": {
+                "s": "Il a commencé chez…",
+                "zh": "他在……那裡開始。",
+                "en": "He started at…"
+              },
+              "options": [
+                {
+                  "t": "son oncle."
+                },
+                {
+                  "t": "son père."
+                },
+                {
+                  "t": "un ami."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「在我叔叔那裡工作」。",
+                "en": "His uncle's."
+              }
+            },
+            {
+              "ask": {
+                "s": "Il a aimé tout de suite…",
+                "zh": "他一下子就愛上……",
+                "en": "He immediately loved…"
+              },
+              "options": [
+                {
+                  "t": "le travail de nuit."
+                },
+                {
+                  "t": "l'odeur du pain."
+                },
+                {
+                  "t": "parler aux clients."
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「熱麵包的香味」。",
+                "en": "The smell of bread."
+              }
+            },
+            {
+              "ask": {
+                "s": "Le plus difficile, pour Paul, ce sont…",
+                "zh": "對保羅來說最難的是……",
+                "en": "The hardest thing for Paul is…"
+              },
+              "options": [
+                {
+                  "t": "les clients."
+                },
+                {
+                  "t": "les prix."
+                },
+                {
+                  "t": "les horaires."
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「工作時間！」",
+                "en": "The hours."
+              }
+            },
+            {
+              "ask": {
+                "s": "Son pain préféré est…",
+                "zh": "他最喜歡的麵包是……",
+                "en": "His favourite bread is…"
+              },
+              "options": [
+                {
+                  "t": "le pain aux noix."
+                },
+                {
+                  "t": "la baguette."
+                },
+                {
+                  "t": "le pain au chocolat."
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「核桃麵包」。",
+                "en": "Walnut bread."
+              }
+            },
+            {
+              "ask": {
+                "s": "Qui va s'occuper de la boulangerie ?",
+                "zh": "誰會接手麵包店？",
+                "en": "Who will run the bakery?"
+              },
+              "options": [
+                {
+                  "t": "sa femme"
+                },
+                {
+                  "t": "sa fille"
+                },
+                {
+                  "t": "son neveu"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「我女兒接手麵包店」。",
+                "en": "His daughter."
+              }
+            }
+          ]
+        },
+        {
+          "part": 4,
+          "type": "en_match",
+          "n_options": 6,
+          "keep_order": true,
+          "lines": [
+            {
+              "who": "N",
+              "s": "Vous allez entendre cinq dialogues. Associez chaque dialogue à une situation.",
+              "zh": "你會聽到五段對話。請把每段對話配上一個情境。",
+              "en": "You will hear five dialogues. Match each dialogue to a situation."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 1",
+              "zh": "對話 1",
+              "en": "Dialogue 1"
+            },
+            {
+              "who": "F",
+              "s": "Pardon, vous avez l'heure ?",
+              "zh": "不好意思，請問幾點了？",
+              "en": "Excuse me, have you got the time?"
+            },
+            {
+              "who": "M",
+              "s": "Oui, il est trois heures et quart.",
+              "zh": "有，三點十五分。",
+              "en": "Yes, it's quarter past three."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 2",
+              "zh": "對話 2",
+              "en": "Dialogue 2"
+            },
+            {
+              "who": "M",
+              "s": "Je voudrais envoyer ce colis en Belgique.",
+              "zh": "我想把這個包裹寄到比利時。",
+              "en": "I'd like to send this parcel to Belgium."
+            },
+            {
+              "who": "F",
+              "s": "En normal ou en express ?",
+              "zh": "普通還是快遞？",
+              "en": "Standard or express?"
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 3",
+              "zh": "對話 3",
+              "en": "Dialogue 3"
+            },
+            {
+              "who": "F",
+              "s": "Félicitations pour ton nouveau travail !",
+              "zh": "恭喜你找到新工作！",
+              "en": "Congratulations on your new job!"
+            },
+            {
+              "who": "M",
+              "s": "Merci ! Je commence lundi.",
+              "zh": "謝謝！我星期一開始上班。",
+              "en": "Thanks! I start on Monday."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 4",
+              "zh": "對話 4",
+              "en": "Dialogue 4"
+            },
+            {
+              "who": "M",
+              "s": "Ce plat est froid, je peux en avoir un autre ?",
+              "zh": "這道菜是冷的，可以換一份嗎？",
+              "en": "This dish is cold, can I have another?"
+            },
+            {
+              "who": "F",
+              "s": "Excusez-moi, je vous le change tout de suite.",
+              "zh": "抱歉，馬上幫您換。",
+              "en": "I'm sorry, I'll change it right away."
+            },
+            {
+              "who": "N",
+              "s": "Dialogue 5",
+              "zh": "對話 5",
+              "en": "Dialogue 5"
+            },
+            {
+              "who": "F",
+              "s": "On va au cinéma samedi ?",
+              "zh": "星期六去看電影好嗎？",
+              "en": "Shall we go to the cinema on Saturday?"
+            },
+            {
+              "who": "M",
+              "s": "Bonne idée ! On se retrouve à 20 heures.",
+              "zh": "好主意！20 點見。",
+              "en": "Good idea! Let's meet at 8."
+            }
+          ],
+          "questions": [
+            {
+              "ask": {
+                "s": "Dialogue 1",
+                "zh": "對話 1",
+                "en": "Dialogue 1"
+              },
+              "options": [
+                {
+                  "t": "demander l'heure"
+                },
+                {
+                  "t": "à la poste"
+                },
+                {
+                  "t": "féliciter quelqu'un"
+                },
+                {
+                  "t": "se plaindre au restaurant"
+                },
+                {
+                  "t": "faire une proposition"
+                },
+                {
+                  "t": "réserver un hôtel"
+                }
+              ],
+              "answer": "A",
+              "explain": {
+                "zh": "「請問幾點了？」：問時間。",
+                "en": "Asking the time."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 2",
+                "zh": "對話 2",
+                "en": "Dialogue 2"
+              },
+              "options": [
+                {
+                  "t": "demander l'heure"
+                },
+                {
+                  "t": "à la poste"
+                },
+                {
+                  "t": "féliciter quelqu'un"
+                },
+                {
+                  "t": "se plaindre au restaurant"
+                },
+                {
+                  "t": "faire une proposition"
+                },
+                {
+                  "t": "réserver un hôtel"
+                }
+              ],
+              "answer": "B",
+              "explain": {
+                "zh": "「寄到比利時」：在郵局。",
+                "en": "At the post office."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 3",
+                "zh": "對話 3",
+                "en": "Dialogue 3"
+              },
+              "options": [
+                {
+                  "t": "demander l'heure"
+                },
+                {
+                  "t": "à la poste"
+                },
+                {
+                  "t": "féliciter quelqu'un"
+                },
+                {
+                  "t": "se plaindre au restaurant"
+                },
+                {
+                  "t": "faire une proposition"
+                },
+                {
+                  "t": "réserver un hôtel"
+                }
+              ],
+              "answer": "C",
+              "explain": {
+                "zh": "「恭喜你」：祝賀。",
+                "en": "Congratulating."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 4",
+                "zh": "對話 4",
+                "en": "Dialogue 4"
+              },
+              "options": [
+                {
+                  "t": "demander l'heure"
+                },
+                {
+                  "t": "à la poste"
+                },
+                {
+                  "t": "féliciter quelqu'un"
+                },
+                {
+                  "t": "se plaindre au restaurant"
+                },
+                {
+                  "t": "faire une proposition"
+                },
+                {
+                  "t": "réserver un hôtel"
+                }
+              ],
+              "answer": "D",
+              "explain": {
+                "zh": "「這道菜是冷的」：在餐廳抱怨。",
+                "en": "Complaining in a restaurant."
+              }
+            },
+            {
+              "ask": {
+                "s": "Dialogue 5",
+                "zh": "對話 5",
+                "en": "Dialogue 5"
+              },
+              "options": [
+                {
+                  "t": "demander l'heure"
+                },
+                {
+                  "t": "à la poste"
+                },
+                {
+                  "t": "féliciter quelqu'un"
+                },
+                {
+                  "t": "se plaindre au restaurant"
+                },
+                {
+                  "t": "faire une proposition"
+                },
+                {
+                  "t": "réserver un hôtel"
+                }
+              ],
+              "answer": "E",
+              "explain": {
+                "zh": "「星期六去看電影好嗎？」：提議。F 是多出來的。",
+                "en": "Making a suggestion. F is the spare."
               }
             }
           ]
