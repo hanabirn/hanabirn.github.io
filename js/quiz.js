@@ -2325,7 +2325,7 @@ function checkAchievements() {
     if (newly.length) {
         storeSet('quiz_achievements', JSON.stringify([...unlocked]));
         newly.forEach((a, i) => {
-            setTimeout(() => showShareToast(`${a.icon} ${t('ach_unlocked')}: ${t(a.titleKey)}`), i * 1200);
+            setTimeout(() => showShareToast(`${a.icon} ${t('ach_unlocked')}${/^(zh|ja)/.test(siteLang) ? '：' : ': '}${t(a.titleKey)}`), i * 1200);
         });
     }
     return unlocked;

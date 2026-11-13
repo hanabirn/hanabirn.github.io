@@ -602,6 +602,11 @@
     opacity: 1;
     transform: translateX(-50%) translateY(0);
 }
+/* computers: under the header, not over a result screen's buttons (2026-11-13) */
+@media (min-width: 1024px) {
+    .share-toast { top: 210px; bottom: auto; transform: translateX(-50%) translateY(-20px); }
+    .share-toast.show { transform: translateX(-50%) translateY(0); }
+}
 
 /* ===== Timer ===== */
 .timer-display {
