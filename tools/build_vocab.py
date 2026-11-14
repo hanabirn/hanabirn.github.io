@@ -1013,6 +1013,98 @@ def gemini_meanings(lang, items):
     return cache
 
 
+# ---------- learner English (and Chinese) checked by Gemini ----------
+# Wiktionary's first sense is often not the one a learner needs (hallo: "used to
+# express bewilderment", das Englisch: a children's game), so the English shown to
+# quiz-takers with a non-Chinese interface was often wrong (a German friend of the
+# owner's spotted hallo, 2026-11-14). With --review-glosses Gemini sees each word with
+# its part of speech, the current English and Chinese and Wiktionary's senses, and
+# gives the learner's English (and corrects the Chinese when it followed a wrong
+# sense). Answers are cached per "word|pos" in tools/.vocab-cache/gloss_<lang>.json
+# and applied on every build (also --offline); EN_FIX_* / ZH_FIX_* still win. Free
+# key and GEMINI_MODELS, like gemini_meanings.
+GLOSS_BATCH = 150
+
+
+def gloss_prompt(lang, items):
+    return (
+        f"You are checking a {GEMINI_LANG_NAMES[lang]} vocabulary list for learners. Each item has the word (nouns with "
+        "their article), its part of speech, the current English answer \"en\", the current Traditional Chinese answer "
+        "\"zh\" and Wiktionary's senses.\n"
+        "For each item give:\n"
+        "- \"en\": what a learner should see as the English meaning: the most common everyday meaning first, at most 2 "
+        "meanings separated by \"; \", at most 40 characters, plain words a dictionary would give (hallo -> hello, "
+        "das Englisch -> English, ach -> oh; alas), never a description (not \"used to express ...\", \"expresses ...\", "
+        "\"a word for ...\"), no brackets, no leading \"a\" / \"an\", verbs with \"to\". Keep the current en if it "
+        "already is that.\n"
+        "- \"zh\": the Chinese meaning in Taiwan usage (台灣用語), at most 2 meanings separated by \"；\", at most 12 "
+        "characters. Keep the current zh exactly unless it is wrong, follows a rare or wrong sense, or is mainland wording.\n"
+        "Answer with a JSON array of objects {\"id\": <id>, \"en\": \"...\", \"zh\": \"...\"}, one per item, same ids.\n"
+        "Items:\n" + json.dumps(items, ensure_ascii=False))
+
+
+def gloss_review(lang, levels, ask, en_fixed, zh_fixed):
+    """levels: {lv: [(key, row, glosses)]}, row = [shown, reading, zh, en]. Applies the cached
+    review to the rows in place; with ask, first asks Gemini for the words not yet cached."""
+    path = os.path.join(CACHE, f"gloss_{lang}.json")
+    cache = json.load(open(path, encoding="utf-8")) if os.path.exists(path) else {}
+    entries = [x for lv in CEFR_LEVELS for x in levels.get(lv, [])]
+    if ask:
+        seen, todo = set(), []
+        for key, row, glosses in entries:
+            if key not in cache and key not in seen and not (key in en_fixed and key in zh_fixed):
+                seen.add(key)
+                todo.append((key, row, glosses))
+        spent = set()
+        for start in range(0, len(todo), GLOSS_BATCH):
+            batch = todo[start:start + GLOSS_BATCH]
+            items = [{"id": i, "word": row[0], "pos": key.rsplit("|", 1)[1], "en": row[3], "zh": row[2],
+                      "senses": [g[:120] for g in glosses[:4]]} for i, (key, row, glosses) in enumerate(batch)]
+            got = {}
+            for model in GEMINI_MODELS:
+                if model in spent:
+                    continue
+                limited = 0
+                for attempt in range(4):
+                    try:
+                        answer = json.loads(gemini_call(model, gloss_prompt(lang, items), fields=("en", "zh")))
+                        got = {int(a["id"]): {"en": str(a["en"]).strip(), "zh": str(a["zh"]).strip()}
+                               for a in answer if str(a.get("en", "")).strip() and str(a.get("zh", "")).strip()}
+                    except (urllib.error.URLError, OSError, ValueError, KeyError, TypeError) as e:
+                        print(f"  gemini {model}: {getattr(e, 'code', '')} {str(e)[:100]}", flush=True)
+                        if getattr(e, "code", 0) == 429:
+                            limited += 1
+                            if limited == 2:
+                                spent.add(model)               # still limited: this model's day is spent
+                                break
+                            time.sleep(65)
+                        else:
+                            time.sleep(5)
+                        continue
+                    if len(got) >= len(batch) * 0.95:
+                        break
+                if len(got) >= len(batch) * 0.95:
+                    break
+            for i, (key, row, glosses) in enumerate(batch):
+                if i in got:
+                    cache[key] = got[i]
+            with open(path, "w", encoding="utf-8") as f:
+                json.dump(cache, f, ensure_ascii=False, indent=0)
+            print(f"  gloss review {lang}: {min(start + GLOSS_BATCH, len(todo))}/{len(todo)} asked, "
+                  f"{len(got)} answered", flush=True)
+            if len(got) < len(batch) * 0.95:
+                raise SystemExit("Gemini stopped answering (quota?) — run again later; answers so far are cached")
+            time.sleep(8)
+    for key, row, glosses in entries:
+        r = cache.get(key)
+        if not r:
+            continue
+        if key not in zh_fixed and len(r["zh"]) <= 24:
+            row[2] = r["zh"]
+        if key not in en_fixed and len(r["en"]) <= 60 and not re.search(r"[()\[\]]", r["en"]):
+            row[3] = r["en"]
+
+
 # ---------- French: FLELex (CEFRLex, UCLouvain), CC BY-NC-SA 4.0 ----------
 # The "Beacco" version gives every lemma a CEFR level. Kept: A1–C1, words that
 # Wiktionary knows in that part of speech (drops tagging noise such as participles
@@ -1048,11 +1140,20 @@ FR_SKIP = {"zoé", "oublie", "bis", "ben", "pers", "rabat", "muser"}
 def short_gloss(glosses, limit=40):
     """Up to two English senses, without the bracketed notes, cut at a word."""
     def clean(text):
-        return re.sub(r"\s*(\([^)]*\)?|\[[^\]]*\]?)", "", text).strip(" ,.:")
+        # innermost brackets first, so "I (first-person (subject) pronoun)" loses all of it
+        while True:
+            t = re.sub(r"\s*(\([^()]*\)|\[[^\[\]]*\])", "", text)
+            if t == text:
+                break
+            text = t
+        # a bracket the sense split or a cut left open: drop from it on / up to it
+        text = re.sub(r"\s*[(\[].*$", "", text)
+        text = re.sub(r"^[^()\[\]]*[)\]]\s*", "", text)
+        return text.strip(" ,.:")
 
     out = []
     for g in glosses:
-        for part in g.split(";"):
+        for part in re.split(r";(?![^()\[\]]*[)\]])", g):
             p = clean(part)
             if len(p) > limit:
                 p = p.split(",")[0].strip()
@@ -1063,8 +1164,9 @@ def short_gloss(glosses, limit=40):
         if len(out) == 2:
             break
     if not out:
-        first = next((clean(g) for g in glosses if clean(g)), "")
-        out = [first if len(first) <= limit else first[:limit].rsplit(" ", 1)[0]] if first else []
+        first = next((clean(g) for g in glosses if clean(g)), "") \
+            or next((re.sub(r"\s+", " ", re.sub(r"[()\[\]]", "", g)).strip(" ,.:") for g in glosses if g.strip()), "")
+        out =[first if len(first) <= limit else first[:limit].rsplit(" ", 1)[0]] if first else []
     return "; ".join(out)
 
 
@@ -1168,15 +1270,16 @@ def build_french(args):
     if missing:
         raise SystemExit(f"{len(missing)} French words still lack a meaning; run again")
     kk = kaikki_extract("fr", [it["w"] for it in items], True)
+    levels = {lv: [] for lv in CEFR_LEVELS}
+    for it in items:
+        e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
+        g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
+        key = f"{it['w']}|{it['pos']}"
+        levels[it["level"]].append((key, [fr_shown(it["w"], it["pos"], it["gender"]), g, zh[key],
+                                          EN_FIX_FR.get(key) or short_gloss(e["glosses"])], e["glosses"]))
+    gloss_review("fr", levels, args.review_glosses, EN_FIX_FR, ZH_FIX_FR)
     for lv in CEFR_LEVELS:
-        words = []
-        for it in items:
-            if it["level"] != lv:
-                continue
-            e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
-            g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
-            key = f"{it['w']}|{it['pos']}"
-            words.append([fr_shown(it["w"], it["pos"], it["gender"]), g, zh[key], EN_FIX_FR.get(key) or short_gloss(e["glosses"])])
+        words = [row for _, row, _ in levels[lv]]
         write_set(f"fr_{lv.lower()}", "fr", words,
                   f"FLELex（CEFRLex, UCLouvain）{lv}；英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "FLELex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
 
@@ -1201,6 +1304,7 @@ EN_FIX_RU = {
     "те|pron": "those", "ту|pron": "that (feminine, accusative)", "та|pron": "that (feminine)",
     "эта|pron": "this (feminine)", "немка|noun": "German woman", "полька|noun": "Polish woman",
     "хоккей|noun": "ice hockey", "мандарин|noun": "mandarin orange", "что|conj": "what; that",
+    "тоже|particle": "also, too",
 }
 
 
@@ -1237,10 +1341,14 @@ def build_russian(args):
     missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
     if missing:
         raise SystemExit(f"{len(missing)} Russian words still lack a meaning; run again")
+    levels = {lv: [] for lv in CEFR_LEVELS}
+    for it in items:
+        key = f"{it['w']}|{it['pos']}"
+        levels[it["level"]].append((key, [it["w"], it["stressed"], zh[key], EN_FIX_RU.get(key) or short_gloss(it["glosses"])],
+                                    it["glosses"]))
+    gloss_review("ru", levels, args.review_glosses, EN_FIX_RU, ZH_FIX_RU)
     for lv in CEFR_LEVELS:
-        words = [[it["w"], it["stressed"], zh[f"{it['w']}|{it['pos']}"],
-                  EN_FIX_RU.get(f"{it['w']}|{it['pos']}") or short_gloss(it["glosses"])]
-                 for it in items if it["level"] == lv]
+        words = [row for _, row, _ in levels[lv]]
         write_set(f"ru_{lv.lower()}", "ru", words,
                   f"Kelly 俄文詞表（Kelly project, Leeds）{lv}；重音與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "Kelly CC BY-NC-SA 2.0；Wiktionary CC BY-SA")
 
@@ -1406,19 +1514,22 @@ def build_spanish(args):
     # the words "alternative form of X" points to, in a cache of their own (re-streaming
     # the main one could change the lists)
     alt = dict(kk, **kaikki_extract("es", form_of_targets("es", items, kk), args.offline, name="kaikki_es_alt"))
+    levels = {lv: [] for lv in CEFR_LEVELS}
+    en_fixed = dict(EN_FIX_ES)
+    for it in items:
+        g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
+        key = f"{it['w']}|{it['pos']}"
+        if it["w"] in ES_NUMBERS:
+            en, glosses = ES_NUMBERS[it["w"]][1], []
+            en_fixed[key] = en
+        else:
+            e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
+            glosses = learner_glosses("es", e["glosses"], it["pos"], alt)
+            en = EN_FIX_ES.get(key) or short_gloss(glosses)
+        levels[it["level"]].append((key, [es_shown(it["w"], it["pos"], it["gender"]), g, zh[key], en], glosses))
+    gloss_review("es", levels, args.review_glosses, en_fixed, fixed)
     for lv in CEFR_LEVELS:
-        words = []
-        for it in items:
-            if it["level"] != lv:
-                continue
-            g = {"m": "m.", "f": "f.", "m/f": "m./f."}.get(it["gender"], "")
-            key = f"{it['w']}|{it['pos']}"
-            if it["w"] in ES_NUMBERS:
-                en = ES_NUMBERS[it["w"]][1]
-            else:
-                e = next(x for x in kk[it["w"]] if x["pos"] == it["pos"] and x["glosses"])
-                en = EN_FIX_ES.get(key) or short_gloss(learner_glosses("es", e["glosses"], it["pos"], alt))
-            words.append([es_shown(it["w"], it["pos"], it["gender"]), g, zh[key], en])
+        words = [row for _, row, _ in levels[lv]]
         write_set(f"es_{lv.lower()}", "es", words,
                   f"ELELex（CEFRLex, UCLouvain）{lv}；英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "ELELex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
 
@@ -1440,12 +1551,15 @@ ZH_FIX_DE = {
     "dass|conj": "（引導子句）…這件事；以便", "allerdings|adv": "不過；的確", "überhaupt|adv": "根本；到底",
     "eher|adv": "寧可；比較早", "Knochen|noun": "骨頭", "gemäß|adj": "依照；根據", "Verkehr|noun": "交通；往來",
     "Gras|noun": "草",
+    # a German friend of the owner's, 2026-11-14 (Greetings A1): Wiktionary's first sense was a rare one
+    "Englisch|noun": "英語", "Nein|noun": "不；拒絕",
 }
 EN_FIX_DE = {"Verkehr|noun": "traffic; dealings", "Knochen|noun": "bone", "gemäß|adj": "according to",
              "Gras|noun": "grass", "darauf|adv": "on it; after that", "West|noun": "the west", "Nord|noun": "the north",
              "Ost|noun": "the east", "Geburtstagskind|noun": "birthday boy / girl", "Bierglas|noun": "beer glass",
              "Erfinderin|noun": "inventor (woman)", "Kanzlerin|noun": "chancellor (woman)", "Mist|noun": "manure; rubbish",
-             "dies|pron": "this"}
+             "dies|pron": "this", "hallo|intj": "hello", "Nein|noun": "no", "ach|intj": "oh; alas", "ah|intj": "ah; oh",
+             "äh|intj": "uh, um", "Englisch|noun": "English", "Würstchen|noun": "small sausage", "Schachtel|noun": "box"}
 # tagging noise found when reviewing: inflected forms filed as their own words, "ein"
 # as the adverb "on", a nominalised adjective (die Rote)
 DE_SKIP = {"einen", "tagen", "weißen", "arten", "gleichen", "grenzen", "Einer", "Soll", "Habe", "Muss", "Tage", "Fort",
@@ -1559,10 +1673,15 @@ def build_german(args):
     missing = [it["w"] for it in items if f"{it['w']}|{it['pos']}" not in zh]
     if missing:
         raise SystemExit(f"{len(missing)} German words still lack a meaning; run again")
+    levels = {lv: [] for lv in CEFR_LEVELS}
+    for it in items:
+        key = f"{it['w']}|{it['pos']}"
+        levels[it["level"]].append((key, [de_shown(it["w"], it["pos"], it["gender"]),
+                                          de_reading(it["pos"], it["gender"], it["plural"]), zh[key],
+                                          EN_FIX_DE.get(key) or short_gloss(it["glosses"])], it["glosses"]))
+    gloss_review("de", levels, args.review_glosses, EN_FIX_DE, ZH_FIX_DE)
     for lv in CEFR_LEVELS:
-        words = [[de_shown(it["w"], it["pos"], it["gender"]), de_reading(it["pos"], it["gender"], it["plural"]),
-                  zh[f"{it['w']}|{it['pos']}"], EN_FIX_DE.get(f"{it['w']}|{it['pos']}") or short_gloss(it["glosses"])]
-                 for it in items if it["level"] == lv]
+        words = [row for _, row, _ in levels[lv]]
         write_set(f"de_{lv.lower()}", "de", words,
                   f"DAFlex（CEFRLex, UCLouvain）{lv}；性別、複數與英文釋義 Wiktionary；中文釋義 Gemini 撰寫", "DAFlex CC BY-NC-SA 4.0；Wiktionary CC BY-SA")
 
@@ -1571,6 +1690,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
     ap.add_argument("--only", choices=["en", "sheets", "ko56", "hsk", "topics", "fr", "ru", "es", "de"])
+    ap.add_argument("--review-glosses", action="store_true",
+                    help="with fr / ru / es / de: have Gemini check the English (and Chinese) of words not yet reviewed")
     ap.add_argument("--items", action="store_true", help="with --only es / de: list the kept words and stop (no Gemini)")
     args = ap.parse_args()
     os.makedirs(CACHE, exist_ok=True)
