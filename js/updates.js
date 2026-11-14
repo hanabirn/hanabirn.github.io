@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-14',
+      zh: "網頁最下面的「文法總覽」改成「學習總覽」：除了文法，現在每篇閱讀短文和每回聽力練習也都有自己的介紹頁（文章、翻譯、生詞，聽力附逐字稿），用 Google 也搜得到，點按鈕就能回到網站練習。",
+      'zh-Hans': "网页最下面的「语法总览」改成了「学习总览」：除了语法，现在每篇阅读短文和每回听力练习也都有自己的介绍页（文章、翻译、生词，听力附逐字稿），用 Google 也能搜到，点按钮就能回到网站练习。",
+      en: "The “All grammar” link at the bottom of the page is now “Lessons”: besides grammar, every reading passage and every listening round has its own page (the text, translation and new words; transcripts for listening) that shows up in Google search, with a button back into the site to practise.",
+      ja: "ページ下の「文法一覧」が「学習コンテンツ一覧」になりました。文法に加えて、読解の文章と聴解の各回にもそれぞれ紹介ページ（本文・訳・新出語、聴解はスクリプトつき）ができ、Google 検索にも出ます。ボタンからサイトに戻って練習できます。",
+      ko: "페이지 아래의 '문법 전체 보기'가 '학습 자료 모음'으로 바뀌었어요. 문법뿐 아니라 읽기 글과 듣기 회차마다 소개 페이지(본문, 번역, 새 단어, 듣기는 대본 포함)가 생겨 Google 검색에도 나와요. 버튼을 누르면 사이트로 돌아와 연습할 수 있어요.",
+      ru: "Ссылка «Вся грамматика» внизу страницы теперь называется «Все материалы»: кроме грамматики, у каждого текста для чтения и каждого раунда аудирования есть своя страница (текст, перевод, новые слова, для аудирования — расшифровка), которую находит Google; кнопка ведёт обратно на сайт к упражнениям.",
+      fr: "Le lien « Toute la grammaire » en bas de page devient « Tous les contenus » : en plus de la grammaire, chaque texte de lecture et chaque série d’écoute a sa propre page (texte, traduction, nouveaux mots, transcription pour l’écoute), visible dans Google, avec un bouton pour revenir s’entraîner sur le site.",
+      es: "El enlace «Toda la gramática» al pie de la página ahora es «Todo el contenido»: además de la gramática, cada texto de lectura y cada ronda de audición tiene su propia página (texto, traducción, palabras nuevas y, en audición, la transcripción) que aparece en Google, con un botón para volver al sitio a practicar.",
+      de: "Der Link „Alle Grammatik“ unten auf der Seite heißt jetzt „Alle Inhalte“: Neben der Grammatik hat jetzt auch jeder Lesetext und jede Hörrunde eine eigene Seite (Text, Übersetzung, neue Wörter, beim Hören das Transkript), die man über Google findet – mit einem Knopf zurück zur Website zum Üben." },
     { date: '2026-11-13',
       zh: "法文、西班牙文、德文、俄文的 B2 和 C1，以及中文 HSK 5、6、7–9 的文法都增加到每級 25 個重點（共多了 92 個），每個都有說明、常見錯誤、有錄音的例句和練習。另外，現在網址會跟著畫面變，文法點、短文和聽力回都能直接複製網址分享給朋友；頁尾的「文法總覽」可以一次瀏覽所有語言的文法。",
       'zh-Hans': "法语、西班牙语、德语、俄语的 B2 和 C1，以及中文 HSK 5、6、7–9 的语法都增加到每级 25 个重点（共多了 92 个），每个都有说明、常见错误、带录音的例句和练习。另外，现在网址会跟着画面变，语法点、短文和听力回都能直接复制网址分享给朋友；页脚的「语法总览」可以一次浏览所有语言的语法。",
