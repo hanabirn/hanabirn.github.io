@@ -66,6 +66,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 .item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
 .main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
 .side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+.langs{columns:4 230px;column-gap:16px}.lang{break-inside:avoid;padding-bottom:6px}.lang h2{margin-top:10px}
+.cols{columns:4 230px;column-gap:24px}.cols a{break-inside:avoid}.cols a,.langs .list a{padding:3px 0;font-size:.93rem;line-height:1.55}
+.cols a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cols a span{color:var(--muted);font-size:.88rem}.main-col.wide{max-width:none}
 @media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
 .side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
 .items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
@@ -74,9 +77,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}"""
 
 
-def page(title, desc, canonical, body, lang='zh-Hant', side=''):
+def page(title, desc, canonical, body, lang='zh-Hant', side='', wide=False):
     body = f'<div class="layout"><div class="main-col">{body}</div><aside class="side"><div class="card">{side}</div></aside></div>' if side \
-        else f'<div class="main-col">{body}</div>'
+        else f'<div class="main-col{" wide" if wide else ""}">{body}</div>'
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -158,28 +161,35 @@ def level_page(level, points):
     url = f"{SITE}/learn/grammar/{level['id']}/"
     title = f"{LANG_ZH[lang]} {lv_zh} 文法 {len(points)} 個重點｜Hanabiの小天地"
     desc = f"{LANG_ZH[lang]} {lv_zh} 的 {len(points)} 個文法重點：接續、說明、常見錯誤和例句，每個都能到網站練習。" + '、'.join(p['pattern'] for p in points[:6])
-    items = ''.join(f'<a href="{p["id"]}.html"><b lang="{HTML_LANG[lang]}">{e(p["pattern"])}</b>　{e(zh(p["title"]))}</a>' for p in points)
+    items = ''.join(f'<a href="{p["id"]}.html" title="{e(p["pattern"])}　{e(zh(p["title"]))}"><b lang="{HTML_LANG[lang]}">{e(p["pattern"])}</b>　<span>{e(zh(p["title"]))}</span></a>' for p in points)
     body = (f'<div class="crumbs"><a href="/learn/grammar/">文法</a> › {e(LANG_ZH[lang])} {e(lv_zh)}</div>'
             f'<section class="card"><h1>{e(LANG_ZH[lang])} {e(lv_zh)} 文法</h1>'
             f'<p class="en">{e(LANG_EN[lang])} grammar, {e(level_en(level["level"]))} — {len(points)} points</p>'
-            f'<div class="list">{items}</div></section>')
-    return url, page(title, desc, url, body)
+            f'<div class="list cols">{items}</div></section>')
+    return url, page(title, desc, url, body, wide=True)
 
 
 LEVEL_KIND = {'grammar': '文法', 'reading': '閱讀', 'listening': '聽力'}
 WHO = {'N': '旁白', 'F': '女', 'M': '男', 'F2': '女 2', 'M2': '男 2'}
 
 
+def is_tw(level):
+    """Taiwan edition; zh_hsk12 ('TW HSK 1–2', the 台灣短文) has no edition flag but is Traditional too."""
+    return level.get('edition') == 'tw' or str(level.get('level', '')).startswith('TW')
+
+
 def zh_level_name(level):
     """HSK levels exist twice (the Mainland edition in Simplified, the Taiwan one in Traditional)."""
+    if level['lang'] == 'zh' and str(level['level']).startswith('TW'):
+        return '台灣短文'
     name = level_zh(level['level'])
     if level['lang'] == 'zh':
-        name += '（台灣版）' if level.get('edition') == 'tw' else '（大陸版）'
+        name += '（台灣版）' if is_tw(level) else '（大陸版）'
     return name
 
 
 def is_simp(level):
-    return level['lang'] == 'zh' and level.get('edition') != 'tw'
+    return level['lang'] == 'zh' and not is_tw(level)
 
 
 def text_lang(level):
@@ -347,7 +357,7 @@ def build_kind(kind):
         lv = zh_level_name(level)
         lname = LANG_ZH[level['lang']]
         if kind == 'reading':
-            lst = ''.join(f'<a href="{x["id"]}.html"><b lang="{text_lang(level)}">{e(read_title(level, x))}</b>　{e(title_tr(level, x))}</a>' for x in items)
+            lst = ''.join(f'<a href="{x["id"]}.html" title="{e(read_title(level, x))}　{e(title_tr(level, x))}"><b lang="{text_lang(level)}">{e(read_title(level, x))}</b>　<span>{e(title_tr(level, x))}</span></a>' for x in items)
             what = f'{len(items)} 篇文章'
         else:
             lst = ''.join(f'<a href="{x["id"]}.html"><b>{e(x["_name"])}</b>　{len(x["items"])} 段錄音</a>' for x in items)
@@ -355,22 +365,24 @@ def build_kind(kind):
         url = f"{SITE}/learn/{kind}/{level['id']}/"
         body = (f'<div class="crumbs"><a href="/learn/{kind}/">{kz}</a> › {e(lname)} {e(lv)}</div>'
                 f'<section class="card"><h1>{e(lname)} {e(lv)} {kz}</h1>'
-                f'<p class="en">{e(LANG_EN[level["lang"]])} {kind}, {e(level_en(level["level"]))} — {what}</p><div class="list">{lst}</div></section>')
+                f'<p class="en">{e(LANG_EN[level["lang"]])} {kind}, {e(level_en(level["level"]))} — {what}</p><div class="list cols">{lst}</div></section>')
         (d / 'index.html').write_text(page(f"{lname} {lv} {kz}練習 {what}｜Hanabiの小天地",
-                                           f"{lname} {lv} 的{kz}練習：{what}，有母語錄音和翻譯，都能到網站作答。", url, body), encoding='utf-8')
+                                           f"{lname} {lv} 的{kz}練習：{what}，有母語錄音和翻譯，都能到網站作答。", url, body, wide=True), encoding='utf-8')
         urls.append(url)
         rows.append((level, what))
     by_lang = {}
     for level, what in rows:
-        by_lang.setdefault(level['lang'], []).append((level, what))
-    body = f'<section class="card"><h1>{kz}總覽</h1><p>8 種語言、各級別的{kz}練習，都是 Hanabiの小天地自己寫的內容，配上母語錄音和翻譯。</p>'
+        key = level['lang'] + ('_tw' if level['lang'] == 'zh' and is_tw(level) else '')
+        by_lang.setdefault(key, []).append((level, what))
+    body = f'<section class="card"><h1>{kz}總覽</h1><p>8 種語言、各級別的{kz}練習，都是 Hanabiの小天地自己寫的內容，配上母語錄音和翻譯。</p><div class="langs">'
     for lang, rs in by_lang.items():
-        body += f'<h2>{e(LANG_ZH[lang])}</h2><div class="list">' + ''.join(
-            f'<a href="{lv["id"]}/"><b>{e(zh_level_name(lv))}</b>　{e(w)}</a>' for lv, w in rs) + '</div>'
-    body += '</section>'
+        head = LANG_ZH[lang[:2]] + ({'zh': '（大陸版）', 'zh_tw': '（台灣版）'}.get(lang, ''))
+        body += f'<div class="lang"><h2>{e(head)}</h2><div class="list">' + ''.join(
+            f'<a href="{lv["id"]}/"><b>{e(zh_level_name(lv).split("（")[0])}</b>　{e(w)}</a>' for lv, w in rs) + '</div></div>'
+    body += '</div></section>'
     (out / 'index.html').write_text(page(f'{kz}總覽：日文、韓文、中文、英文、法文、俄文、西班牙文、德文｜Hanabiの小天地',
                                          f'8 種語言、各級別的{kz}練習，有母語錄音和翻譯，每一份都能到網站作答。',
-                                         f'{SITE}/learn/{kind}/', body), encoding='utf-8')
+                                         f'{SITE}/learn/{kind}/', body, wide=True), encoding='utf-8')
     return [f'{SITE}/learn/{kind}/'] + urls
 
 
@@ -408,14 +420,14 @@ def main():
     by_lang = {}
     for level, n in all_rows:
         by_lang.setdefault(level['lang'], []).append((level, n))
-    body = '<section class="card"><h1>文法總覽</h1><p>8 種語言、各級別的文法重點，全部是 Hanabiの小天地自己寫的說明和例句。</p>'
+    body = '<section class="card"><h1>文法總覽</h1><p>8 種語言、各級別的文法重點，全部是 Hanabiの小天地自己寫的說明和例句。</p><div class="langs">'
     for lang, rows in by_lang.items():
-        body += f'<h2>{e(LANG_ZH[lang])}</h2><div class="list">' + ''.join(
-            f'<a href="{lv["id"]}/"><b>{e(level_zh(lv["level"]))}</b>　{n} 個重點</a>' for lv, n in rows) + '</div>'
-    body += '</section>'
+        body += f'<div class="lang"><h2>{e(LANG_ZH[lang])}</h2><div class="list">' + ''.join(
+            f'<a href="{lv["id"]}/"><b>{e(level_zh(lv["level"]))}</b>　{n} 個重點</a>' for lv, n in rows) + '</div></div>'
+    body += '</div></section>'
     (OUT / 'index.html').write_text(page('文法總覽：日文、韓文、中文、英文、法文、俄文、西班牙文、德文｜Hanabiの小天地',
                                          '8 種語言、各級別的文法重點：接續、說明、常見錯誤和例句，每個都能到網站練習。',
-                                         f'{SITE}/learn/grammar/', body), encoding='utf-8')
+                                         f'{SITE}/learn/grammar/', body, wide=True), encoding='utf-8')
     urls.insert(0, f'{SITE}/learn/grammar/')
     urls = [hub_page()] + urls + build_kind('reading') + build_kind('listening')
     # sitemap: the site, the privacy page, then the grammar pages

@@ -33,6 +33,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 .item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
 .main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
 .side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+.langs{columns:4 230px;column-gap:16px}.lang{break-inside:avoid;padding-bottom:6px}.lang h2{margin-top:10px}
+.cols{columns:4 230px;column-gap:24px}.cols a{break-inside:avoid}.cols a,.langs .list a{padding:3px 0;font-size:.93rem;line-height:1.55}
+.cols a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cols a span{color:var(--muted);font-size:.88rem}.main-col.wide{max-width:none}
 @media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
 .side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
 .items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
@@ -43,7 +46,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</st
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › 中文 HSK 1（大陸版）</div><section class="card"><h1>中文 HSK 1（大陸版） 閱讀</h1><p class="en">Chinese reading, HSK 1 — 8 篇文章</p><div class="list"><a href="my-home.html"><b lang="zh-Hans">我的家</b>　My home</a><a href="breakfast.html"><b lang="zh-Hans">早饭</b>　Breakfast</a><a href="shanghai.html"><b lang="zh-Hans">去上海</b>　Going to Shanghai</a><a href="rainy-day.html"><b lang="zh-Hans">下雨天</b>　A rainy day</a><a href="new-clothes.html"><b lang="zh-Hans">买衣服</b>　Buying clothes</a><a href="new-teacher.html"><b lang="zh-Hans">新老师</b>　The new teacher</a><a href="taxi.html"><b lang="zh-Hans">坐出租车</b>　Taking a taxi</a><a href="sick-day.html"><b lang="zh-Hans">生病了</b>　Feeling ill</a></div></section></div>
+<div class="main-col wide"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › 中文 HSK 1（大陸版）</div><section class="card"><h1>中文 HSK 1（大陸版） 閱讀</h1><p class="en">Chinese reading, HSK 1 — 8 篇文章</p><div class="list cols"><a href="my-home.html" title="我的家　My home"><b lang="zh-Hans">我的家</b>　<span>My home</span></a><a href="breakfast.html" title="早饭　Breakfast"><b lang="zh-Hans">早饭</b>　<span>Breakfast</span></a><a href="shanghai.html" title="去上海　Going to Shanghai"><b lang="zh-Hans">去上海</b>　<span>Going to Shanghai</span></a><a href="rainy-day.html" title="下雨天　A rainy day"><b lang="zh-Hans">下雨天</b>　<span>A rainy day</span></a><a href="new-clothes.html" title="买衣服　Buying clothes"><b lang="zh-Hans">买衣服</b>　<span>Buying clothes</span></a><a href="new-teacher.html" title="新老师　The new teacher"><b lang="zh-Hans">新老师</b>　<span>The new teacher</span></a><a href="taxi.html" title="坐出租车　Taking a taxi"><b lang="zh-Hans">坐出租车</b>　<span>Taking a taxi</span></a><a href="sick-day.html" title="生病了　Feeling ill"><b lang="zh-Hans">生病了</b>　<span>Feeling ill</span></a></div></section></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

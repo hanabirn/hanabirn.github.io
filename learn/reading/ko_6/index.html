@@ -33,6 +33,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 .item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
 .main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
 .side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+.langs{columns:4 230px;column-gap:16px}.lang{break-inside:avoid;padding-bottom:6px}.lang h2{margin-top:10px}
+.cols{columns:4 230px;column-gap:24px}.cols a{break-inside:avoid}.cols a,.langs .list a{padding:3px 0;font-size:.93rem;line-height:1.55}
+.cols a{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cols a span{color:var(--muted);font-size:.88rem}.main-col.wide{max-width:none}
 @media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
 .side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
 .items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
@@ -43,7 +46,7 @@ footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</st
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › 韓文 6 級</div><section class="card"><h1>韓文 6 級 閱讀</h1><p class="en">Korean reading, Level 6 — 8 篇文章</p><div class="list"><a href="apartment-republic.html"><b lang="ko">아파트 공화국</b>　公寓共和國</a><a href="k-food-global.html"><b lang="ko">세계로 간 한식</b>　走向世界的韓食</a><a href="slow-travel.html"><b lang="ko">느리게 여행하기</b>　慢慢旅行</a><a href="climate-anxiety.html"><b lang="ko">기후 우울</b>　氣候憂鬱</a><a href="nudge-shopping.html"><b lang="ko">보이지 않는 손짓</b>　看不見的手勢</a><a href="ai-education.html"><b lang="ko">인공지능 시대의 교육</b>　人工智慧時代的教育</a><a href="elderly-drivers.html"><b lang="ko">고령 운전자 문제</b>　高齡駕駛問題</a><a href="sleep-debt.html"><b lang="ko">잠을 빚지는 사회</b>　欠睡的社會</a></div></section></div>
+<div class="main-col wide"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › 韓文 6 級</div><section class="card"><h1>韓文 6 級 閱讀</h1><p class="en">Korean reading, Level 6 — 8 篇文章</p><div class="list cols"><a href="apartment-republic.html" title="아파트 공화국　公寓共和國"><b lang="ko">아파트 공화국</b>　<span>公寓共和國</span></a><a href="k-food-global.html" title="세계로 간 한식　走向世界的韓食"><b lang="ko">세계로 간 한식</b>　<span>走向世界的韓食</span></a><a href="slow-travel.html" title="느리게 여행하기　慢慢旅行"><b lang="ko">느리게 여행하기</b>　<span>慢慢旅行</span></a><a href="climate-anxiety.html" title="기후 우울　氣候憂鬱"><b lang="ko">기후 우울</b>　<span>氣候憂鬱</span></a><a href="nudge-shopping.html" title="보이지 않는 손짓　看不見的手勢"><b lang="ko">보이지 않는 손짓</b>　<span>看不見的手勢</span></a><a href="ai-education.html" title="인공지능 시대의 교육　人工智慧時代的教育"><b lang="ko">인공지능 시대의 교육</b>　<span>人工智慧時代的教育</span></a><a href="elderly-drivers.html" title="고령 운전자 문제　高齡駕駛問題"><b lang="ko">고령 운전자 문제</b>　<span>高齡駕駛問題</span></a><a href="sleep-debt.html" title="잠을 빚지는 사회　欠睡的社會"><b lang="ko">잠을 빚지는 사회</b>　<span>欠睡的社會</span></a></div></section></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>
