@@ -1035,8 +1035,9 @@ def gloss_prompt(lang, items):
         "- \"en\": what a learner should see as the English meaning: the most common everyday meaning first, at most 2 "
         "meanings separated by \"; \", at most 40 characters, plain words a dictionary would give (hallo -> hello, "
         "das Englisch -> English, ach -> oh; alas), never a description (not \"used to express ...\", \"expresses ...\", "
-        "\"a word for ...\"), no brackets, no leading \"a\" / \"an\", verbs with \"to\". Keep the current en if it "
-        "already is that.\n"
+        "\"a word for ...\"), no brackets, no leading \"a\" / \"an\", verbs with \"to\". Add a second meaning only "
+        "when it is another common meaning of the word (never an opposite or a guess: hier is just \"here\"); "
+        "when in doubt give one. Keep the current en if it already is that.\n"
         "- \"zh\": the Chinese meaning in Taiwan usage (台灣用語), at most 2 meanings separated by \"；\", at most 12 "
         "characters. Keep the current zh exactly unless it is wrong, follows a rare or wrong sense, or is mainland wording.\n"
         "Answer with a JSON array of objects {\"id\": <id>, \"en\": \"...\", \"zh\": \"...\"}, one per item, same ids.\n"
@@ -1099,7 +1100,9 @@ def gloss_review(lang, levels, ask, en_fixed, zh_fixed):
         r = cache.get(key)
         if not r:
             continue
-        if key not in zh_fixed and len(r["zh"]) <= 24:
+        # an answer that only appends a second Chinese sense mostly added a rare one
+        # (la isla 島嶼 + 街區, груша 梨子 + 沙袋): keep the old Chinese then
+        if key not in zh_fixed and len(r["zh"]) <= 24 and not r["zh"].startswith(row[2] + "；"):
             row[2] = r["zh"]
         if key not in en_fixed and len(r["en"]) <= 60 and not re.search(r"[()\[\]]", r["en"]):
             row[3] = r["en"]
@@ -1376,6 +1379,8 @@ ES_GENDER = {"arte": "m", "mar": "m", "azúcar": "m", "internet": "m"}
 ES_NO_ARTICLE = set("enero febrero marzo abril mayo junio julio agosto septiembre octubre noviembre diciembre "
                     "lunes martes miércoles jueves viernes sábado domingo".split())
 ZH_FIX_ES = {
+    # the 2026-11-14 gloss review picked a rare sense for these
+    "comodidad|noun": "舒適；便利", "movimiento|noun": "運動；移動", "soda|noun": "蘇打；汽水", "pizarra|noun": "黑板；白板",
     "el|article": "（定冠詞，陽性）", "uno|article": "一個；（不定冠詞）", "lo|pron": "他；它（受詞）",
     "la|pron": "她；它（受詞）", "le|pron": "給他；給她", "se|pron": "自己（反身代名詞）",
     "que|conj": "（引導子句）；比", "que|pron": "（關係代名詞）…的",
@@ -1389,7 +1394,8 @@ ZH_FIX_ES = {
     "leño|noun": "木頭；木柴", "chica|noun": "女孩", "navidad|noun": "聖誕節", "través|noun": "（a través de）穿過；透過",
     "respecto|noun": "（con respecto a）關於",
 }
-EN_FIX_ES = {"novia|noun": "girlfriend; bride", "queso|noun": "cheese", "carta|noun": "letter; menu",
+EN_FIX_ES = {"comodidad|noun": "comfort; convenience", "movimiento|noun": "movement", "soda|noun": "soda",
+             "pizarra|noun": "blackboard; whiteboard", "novia|noun": "girlfriend; bride", "queso|noun": "cheese", "carta|noun": "letter; menu",
              "técnico|noun": "technician", "través|noun": "(a través de) through", "respecto|noun": "(con respecto a) about",
              "ó|conj": "or", "sida|noun": "AIDS", "medioambiente|noun": "environment", "hierbabuena|noun": "mint",
              "mu|noun": "mu (Greek letter)", "porfa|adv": "please", "navidad|noun": "Christmas", "chica|noun": "girl",
@@ -1552,14 +1558,15 @@ ZH_FIX_DE = {
     "eher|adv": "寧可；比較早", "Knochen|noun": "骨頭", "gemäß|adj": "依照；根據", "Verkehr|noun": "交通；往來",
     "Gras|noun": "草",
     # a German friend of the owner's, 2026-11-14 (Greetings A1): Wiktionary's first sense was a rare one
-    "Englisch|noun": "英語", "Nein|noun": "不；拒絕",
+    "Englisch|noun": "英語", "Nein|noun": "不；拒絕", "Fußballspiel|noun": "足球賽",
 }
 EN_FIX_DE = {"Verkehr|noun": "traffic; dealings", "Knochen|noun": "bone", "gemäß|adj": "according to",
              "Gras|noun": "grass", "darauf|adv": "on it; after that", "West|noun": "the west", "Nord|noun": "the north",
              "Ost|noun": "the east", "Geburtstagskind|noun": "birthday boy / girl", "Bierglas|noun": "beer glass",
              "Erfinderin|noun": "inventor (woman)", "Kanzlerin|noun": "chancellor (woman)", "Mist|noun": "manure; rubbish",
              "dies|pron": "this", "hallo|intj": "hello", "Nein|noun": "no", "ach|intj": "oh; alas", "ah|intj": "ah; oh",
-             "äh|intj": "uh, um", "Englisch|noun": "English", "Würstchen|noun": "small sausage", "Schachtel|noun": "box"}
+             "äh|intj": "uh, um", "Englisch|noun": "English", "Würstchen|noun": "small sausage", "Schachtel|noun": "box",
+             "Fußballspiel|noun": "football match"}
 # tagging noise found when reviewing: inflected forms filed as their own words, "ein"
 # as the adverb "on", a nominalised adjective (die Rote)
 DE_SKIP = {"einen", "tagen", "weißen", "arten", "gleichen", "grenzen", "Einer", "Soll", "Habe", "Muss", "Tage", "Fort",
