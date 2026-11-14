@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-14',
+      zh: "修正德文、法文、西班牙文、俄文單字的英文答案：有些字原本用了冷門或錯誤的意思（例如德文 hallo 顯示成「表示困惑」，現在是 hello），也去掉了答案後面多出來的括號。謝謝幫忙回報的朋友！",
+      'zh-Hans': "修正德语、法语、西班牙语、俄语单词的英文答案：有些词原本用了冷门或错误的意思（例如德语 hallo 显示成「表示困惑」，现在是 hello），也去掉了答案后面多出来的括号。谢谢帮忙反馈的朋友！",
+      en: "Fixed the English answers for German, French, Spanish and Russian words: some used a rare or wrong sense (German hallo showed “used to express bewilderment” — it is now “hello”), and stray brackets at the end of answers are gone. Thanks to the friend who reported it!",
+      ja: "ドイツ語・フランス語・スペイン語・ロシア語の単語の英語の答えを直しました。まれな意味や間違った意味になっていた語がありました（ドイツ語の hallo が「困惑を表す」になっていたのを hello に）。答えの最後に残っていたかっこも消しました。報告してくれた友だちに感謝！",
+      ko: "독일어·프랑스어·스페인어·러시아어 단어의 영어 정답을 고쳤어요. 드물거나 틀린 뜻으로 나오던 단어가 있었어요(독일어 hallo가 '당황을 나타냄'으로 나오던 것을 hello로). 정답 끝에 남던 괄호도 없앴어요. 알려 준 친구에게 고마워요!",
+      ru: "Исправлены английские ответы для немецких, французских, испанских и русских слов: у некоторых было редкое или неверное значение (немецкое hallo показывалось как «выражает недоумение», теперь — «hello»), а лишние скобки в конце ответов убраны. Спасибо другу, который сообщил об этом!",
+      fr: "Correction des réponses en anglais pour les mots allemands, français, espagnols et russes : certains avaient un sens rare ou faux (l’allemand hallo affichait « used to express bewilderment », c’est maintenant « hello »), et les parenthèses en trop à la fin des réponses ont disparu. Merci à l’ami qui l’a signalé !",
+      es: "Corregidas las respuestas en inglés de las palabras en alemán, francés, español y ruso: algunas tenían un sentido raro o equivocado (el alemán hallo mostraba «used to express bewilderment»; ahora es «hello»), y ya no quedan paréntesis sueltos al final. ¡Gracias al amigo que lo avisó!",
+      de: "Die englischen Antworten für deutsche, französische, spanische und russische Wörter sind korrigiert: Manche hatten eine seltene oder falsche Bedeutung (hallo zeigte „used to express bewilderment“ – jetzt „hello“), und überzählige Klammern am Ende der Antworten sind weg. Danke an den Freund, der es gemeldet hat!" },
+    { date: '2026-11-14',
       zh: "網頁最下面的「文法總覽」改成「學習總覽」：除了文法，現在每篇閱讀短文和每回聽力練習也都有自己的介紹頁（文章、翻譯、生詞，聽力附逐字稿），用 Google 也搜得到，點按鈕就能回到網站練習。",
       'zh-Hans': "网页最下面的「语法总览」改成了「学习总览」：除了语法，现在每篇阅读短文和每回听力练习也都有自己的介绍页（文章、翻译、生词，听力附逐字稿），用 Google 也能搜到，点按钮就能回到网站练习。",
       en: "The “All grammar” link at the bottom of the page is now “Lessons”: besides grammar, every reading passage and every listening round has its own page (the text, translation and new words; transcripts for listening) that shows up in Google search, with a button back into the site to practise.",
