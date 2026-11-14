@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/de_a2/">德文 A2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/de_a2/">德文 A2</a></div>
 <article class="card">
 <h1>德文 A2 聽力練習 第 1 回</h1>
 <p class="en">German listening practice, A2, round 1 — 12 recordings, 20 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=de_a2/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　廣播。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="de">Im Radio.</span><div class="en">廣播。</div></div><div class="ln"><span class="who">男</span><span lang="de">Achtung, Autofahrer: Auf der A5 zwischen Frankfurt und Darmstadt gibt es einen Unfall. Bitte fahren Sie über die B3.</span><div class="en">駕駛人請注意：A5 公路法蘭克福到達姆施塔特之間發生車禍。請改走 B3。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　電話答錄機。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="de">Auf dem Anrufbeantworter.</span><div class="en">電話答錄機。</div></div><div class="ln"><span class="who">女</span><span lang="de">Hallo, hier ist Praxis Dr. Hahn. Ihr Termin morgen um 9 Uhr muss leider ausfallen. Bitte rufen Sie uns für einen neuen Termin an.</span><div class="en">您好，這裡是哈恩醫師診所。您明天 9 點的預約必須取消。請打電話來重新預約。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　在超市。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="de">Im Supermarkt.</span><div class="en">在超市。</div></div><div class="ln"><span class="who">女</span><span lang="de">Liebe Kunden, unser Markt schließt heute schon um 18 Uhr. Morgen sind wir wieder ab 7 Uhr für Sie da.</span><div class="en">各位顧客，本店今天 18 點就打烊。明天 7 點起照常營業。</div></div></details></div>
@@ -54,8 +61,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 10 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="de">Entschuldigung, ich suche das Rathaus.</span><div class="en">不好意思，我在找市政廳。</div></div><div class="ln"><span class="who">女</span><span lang="de">Das ist nicht weit. Gehen Sie hier über die Brücke, dann sehen Sie es rechts, gegenüber der Kirche.</span><div class="en">不遠。從這裡過橋，就會在右邊看到，教堂對面。</div></div></details></div>
 <div class="item"><b>第 11 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="de">Wie lange dauert der Deutschkurs?</span><div class="en">德文課上多久？</div></div><div class="ln"><span class="who">男</span><span lang="de">Er geht drei Monate, von September bis November. Jeden Dienstag und Donnerstag.</span><div class="en">三個月，九月到十一月。每週二和週四。</div></div></details></div>
 <div class="item"><b>第 12 段</b>　你會聽到一段廣播訪談。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="de">Sie hören ein Interview im Radio.</span><div class="en">你會聽到一段廣播訪談。</div></div><div class="ln"><span class="who">女</span><span lang="de">Herr Kaya, Sie haben vor zwei Jahren einen Fahrradladen aufgemacht. Warum?</span><div class="en">卡亞先生，您兩年前開了一家腳踏車店。為什麼？</div></div><div class="ln"><span class="who">男</span><span lang="de">Ich war früher Ingenieur bei einer Autofirma. Aber ich wollte etwas Eigenes machen, und Fahrräder sind mein Hobby.</span><div class="en">我以前在汽車公司當工程師。但我想做點自己的事，腳踏車又是我的嗜好。</div></div><div class="ln"><span class="who">女</span><span lang="de">Verkaufen Sie nur neue Räder?</span><div class="en">您只賣新車嗎？</div></div><div class="ln"><span class="who">男</span><span lang="de">Nein, vor allem gebrauchte. Und wir reparieren viel. Die Leute bringen ihr altes Rad, und wir machen es wieder fit.</span><div class="en">不，主要是二手的。我們也做很多維修。大家把舊車帶來，我們把它修好。</div></div><div class="ln"><span class="who">女</span><span lang="de">Und das Geschäft läuft gut?</span><div class="en">生意好嗎？</div></div><div class="ln"><span class="who">男</span><span lang="de">Im Sommer sehr gut, im Winter ist es ruhiger. Dann gebe ich Reparaturkurse — die sind immer voll!</span><div class="en">夏天很好，冬天比較冷清。那時候我開維修課——每次都額滿！</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=de_a2/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>12 段母語錄音、20 題。</p><a class="cta" href="/?l=de_a2/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

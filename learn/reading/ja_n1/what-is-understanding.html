@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n1/">日文 N1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n1/">日文 N1</a></div>
 <article class="card">
 <h1 lang="ja">「わかる」とはどういうことか</h1>
 <p class="sub">「懂」是怎麼一回事</p>
@@ -49,10 +57,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">誤解のないように言っておくと、わたしは暗記が無駄だと言いたいのではない。基本的な知識がなければ、それらを結びつけることもできないからだ。問題は、暗記した段階で学びが終わったと考えてしまうことにある。</div><div class="rd" lang="ja">ごかいのないようにいっておくと、わたしはあんきがむだだといいたいのではない。きほんてきなちしきがなければ、それらをむすびつけることもできないからだ。もんだいは、あんきしただんかいでまなびがおわったとかんがえてしまうことにある。</div><div class="tl">為了避免誤會先說清楚，我並不是說背誦沒用。因為沒有基本的知識，就連把它們連結起來都做不到。問題在於，以為背完了學習就結束了。</div></div>
 <div class="para"><div lang="ja">では、「わかる」ためには何が必要なのか。わたしが大切だと思うのは、「わからない」という状態にしばらくとどまる勇気である。すぐに答えを調べたり人に聞いたりするのではなく、もやもやした気持ちを抱えたまま考え続ける。その時間は一見無駄に思えるが、実は知識と知識が結びつくための準備期間なのだ。</div><div class="rd" lang="ja">では、「わかる」ためにはなにがひつようなのか。わたしがたいせつだとおもうのは、「わからない」というじょうたいにしばらくとどまるゆうきである。すぐにこたえをしらべたりひとにきいたりするのではなく、もやもやしたきもちをかかえたままかんがえつづける。そのじかんはいっけんむだにおもえるが、じつはちしきとちしきがむすびつくためのじゅんびきかんなのだ。</div><div class="tl">那麼，要「懂」需要什麼呢？我認為重要的是，在「不懂」的狀態中停留一陣子的勇氣。不是馬上查答案或問別人，而是抱著模糊不清的感覺繼續思考。那段時間乍看之下像是浪費，其實是知識與知識連結起來的準備期。</div></div>
 <div class="para"><div lang="ja">「わかった」と感じる瞬間の喜びは、この「わからない」時間が長ければ長いほど大きい。そして、その喜びを一度でも味わった人は、次の「わからない」に出会ったとき、それを恐れるのではなく、むしろ楽しめるようになる。学ぶ力とは、結局のところ、そうした姿勢のことではないだろうか。</div><div class="rd" lang="ja">「わかった」とかんじるしゅんかんのよろこびは、この「わからない」じかんがながければながいほどおおきい。そして、そのよろこびをいちどでもあじわったひとは、つぎの「わからない」にであったとき、それをおそれるのではなく、むしろたのしめるようになる。まなぶちからとは、けっきょくのところ、そうしたしせいのことではないだろうか。</div><div class="tl">感覺到「懂了」那一瞬間的喜悅，這段「不懂」的時間越長就越大。而只要體會過一次那種喜悅的人，下次遇到「不懂」時，就不會害怕，反而能樂在其中。所謂學習的能力，說到底不就是這樣的態度嗎？</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">改めて</b> <span class="en">あらためて</span>　重新</div><div><b lang="ja">窮する</b> <span class="en">きゅうする</span>　窮於；困於</div><div><b lang="ja">手がかり</b> <span class="en">てがかり</span>　線索</div><div><b lang="ja">沸騰</b> <span class="en">ふっとう</span>　沸騰</div><div><b lang="ja">筋の通った</b> <span class="en">すじのとおった</span>　條理分明的</div><div><b lang="ja">腑に落ちる</b> <span class="en">ふにおちる</span>　打從心底明白</div><div><b lang="ja">応用がきく</b> <span class="en">おうようがきく</span>　能應用</div><div><b lang="ja">単元</b> <span class="en">たんげん</span>　單元</div><div><b lang="ja">考え抜く</b> <span class="en">かんがえぬく</span>　想透</div><div><b lang="ja">思い込む</b> <span class="en">おもいこむ</span>　深信；以為</div><div><b lang="ja">暗記</b> <span class="en">あんき</span>　背誦</div><div><b lang="ja">とどまる</b> <span class="en">とどまる</span>　停留</div><div><b lang="ja">もやもや</b> <span class="en">もやもや</span>　模糊不清；悶悶的</div><div><b lang="ja">姿勢</b> <span class="en">しせい</span>　態度；姿態</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/what-is-understanding">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">改めて</b> <span class="en">あらためて</span>　重新</div><div><b lang="ja">窮する</b> <span class="en">きゅうする</span>　窮於；困於</div><div><b lang="ja">手がかり</b> <span class="en">てがかり</span>　線索</div><div><b lang="ja">沸騰</b> <span class="en">ふっとう</span>　沸騰</div><div><b lang="ja">筋の通った</b> <span class="en">すじのとおった</span>　條理分明的</div><div><b lang="ja">腑に落ちる</b> <span class="en">ふにおちる</span>　打從心底明白</div><div><b lang="ja">応用がきく</b> <span class="en">おうようがきく</span>　能應用</div><div><b lang="ja">単元</b> <span class="en">たんげん</span>　單元</div><div><b lang="ja">考え抜く</b> <span class="en">かんがえぬく</span>　想透</div><div><b lang="ja">思い込む</b> <span class="en">おもいこむ</span>　深信；以為</div><div><b lang="ja">暗記</b> <span class="en">あんき</span>　背誦</div><div><b lang="ja">とどまる</b> <span class="en">とどまる</span>　停留</div><div><b lang="ja">もやもや</b> <span class="en">もやもや</span>　模糊不清；悶悶的</div><div><b lang="ja">姿勢</b> <span class="en">しせい</span>　態度；姿態</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/what-is-understanding">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="languages-in-the-ai-age.html">AI翻訳の時代に外国語を学ぶ意味 →</a></div>
+<div class="nav"><span></span><a href="languages-in-the-ai-age.html">AI翻訳の時代に外国語を学ぶ意味 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/what-is-understanding">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="languages-in-the-ai-age.html">AI翻訳の時代に外国語を学ぶ意味 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">改めて</b> <span class="en">あらためて</span>　重新</div><div><b lang="ja">窮する</b> <span class="en">きゅうする</span>　窮於；困於</div><div><b lang="ja">手がかり</b> <span class="en">てがかり</span>　線索</div><div><b lang="ja">沸騰</b> <span class="en">ふっとう</span>　沸騰</div><div><b lang="ja">筋の通った</b> <span class="en">すじのとおった</span>　條理分明的</div><div><b lang="ja">腑に落ちる</b> <span class="en">ふにおちる</span>　打從心底明白</div><div><b lang="ja">応用がきく</b> <span class="en">おうようがきく</span>　能應用</div><div><b lang="ja">単元</b> <span class="en">たんげん</span>　單元</div><div><b lang="ja">考え抜く</b> <span class="en">かんがえぬく</span>　想透</div><div><b lang="ja">思い込む</b> <span class="en">おもいこむ</span>　深信；以為</div><div><b lang="ja">暗記</b> <span class="en">あんき</span>　背誦</div><div><b lang="ja">とどまる</b> <span class="en">とどまる</span>　停留</div><div><b lang="ja">もやもや</b> <span class="en">もやもや</span>　模糊不清；悶悶的</div><div><b lang="ja">姿勢</b> <span class="en">しせい</span>　態度；姿態</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

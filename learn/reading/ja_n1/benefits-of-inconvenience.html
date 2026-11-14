@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n1/">日文 N1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n1/">日文 N1</a></div>
 <article class="card">
 <h1 lang="ja">不便がもたらすもの</h1>
 <p class="sub">不便帶來的東西</p>
@@ -50,10 +58,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">この考え方を研究する工学の分野では、あえて手間のかかる仕組みを設計する試みも行われている。たとえば、何度も通った道ほど画面の地図が薄れて見えにくくなり、自分の記憶に頼らざるを得なくなるナビの試作品もあるという。便利さを少しだけ引くことで、使う人の力を引き出そうというわけだ。</div><div class="rd" lang="ja">このかんがえかたをけんきゅうするこうがくのぶんやでは、あえててまのかかるしくみをせっけいするこころみもおこなわれている。たとえば、なんどもとおったみちほどがめんのちずがうすれてみえにくくなり、じぶんのきおくにたよらざるをえなくなるナビのしさくひんもあるという。べんりさをすこしだけひくことで、つかうひとのちからをひきだそうというわけだ。</div><div class="tl">在研究這種想法的工程學領域，也有人嘗試刻意設計費工夫的機制。例如，據說有一種導航的試作品，走過越多次的路，畫面上的地圖就越淡越看不清楚，使用者不得不依靠自己的記憶。也就是透過稍微減少一點便利，來激發使用者的能力。</div></div>
 <div class="para"><div lang="ja">もちろん、不便であればあるほどよいというわけではない。体の不自由な人やお年寄りにとって、便利な道具は生活を支える欠かせない存在である。不便益の考え方は、便利さそのものを否定するものではない。</div><div class="rd" lang="ja">もちろん、ふべんであればあるほどよいというわけではない。からだのふじゆうなひとやおとしよりにとって、べんりなどうぐはせいかつをささえるかかせないそんざいである。ふべんえきのかんがえかたは、べんりさそのものをひていするものではない。</div><div class="tl">當然，並不是越不方便越好。對身體不方便的人和老人家來說，方便的工具是支撐生活不可或缺的存在。不便益的想法，並不是要否定便利本身。</div></div>
 <div class="para"><div lang="ja">大切なのは、便利さと引き換えに、自分が何を手放しているのかに目を向けることだろう。何もかもを便利にする前に、一度立ち止まって考えてみる。そうすれば、あえて不便を選ぶことが、かえって暮らしを豊かにする場面もあることに気づくはずだ。</div><div class="rd" lang="ja">たいせつなのは、べんりさとひきかえに、じぶんがなにをてばなしているのかにめをむけることだろう。なにもかもをべんりにするまえに、いちどたちどまってかんがえてみる。そうすれば、あえてふべんをえらぶことが、かえってくらしをゆたかにするばめんもあることにきづくはずだ。</div><div class="tl">重要的是，要注意自己用便利換掉了什麼吧。在把一切都變方便之前，先停下來想一想。這樣一來，應該就會發現，刻意選擇不便，反而有讓生活變豐富的時候。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">追い求める</b> <span class="en">おいもとめる</span>　追求</div><div><b lang="ja">余裕</b> <span class="en">よゆう</span>　餘裕</div><div><b lang="ja">常識</b> <span class="en">じょうしき</span>　常識</div><div><b lang="ja">投げかける</b> <span class="en">なげかける</span>　提出（疑問）</div><div><b lang="ja">不便益</b> <span class="en">ふべんえき</span>　不便帶來的好處</div><div><b lang="ja">すなわち</b> <span class="en">すなわち</span>　也就是</div><div><b lang="ja">指示</b> <span class="en">しじ</span>　指示</div><div><b lang="ja">たどり着く</b> <span class="en">たどりつく</span>　好不容易到達</div><div><b lang="ja">幼稚園</b> <span class="en">ようちえん</span>　幼稚園</div><div><b lang="ja">でこぼこ</b> <span class="en">でこぼこ</span>　凹凸不平</div><div><b lang="ja">挽く</b> <span class="en">ひく</span>　磨（豆子）</div><div><b lang="ja">愛着</b> <span class="en">あいちゃく</span>　感情；眷戀</div><div><b lang="ja">過程</b> <span class="en">かてい</span>　過程</div><div><b lang="ja">引き換え</b> <span class="en">ひきかえ</span>　交換</div><div><b lang="ja">手放す</b> <span class="en">てばなす</span>　放手；捨棄</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/benefits-of-inconvenience">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">追い求める</b> <span class="en">おいもとめる</span>　追求</div><div><b lang="ja">余裕</b> <span class="en">よゆう</span>　餘裕</div><div><b lang="ja">常識</b> <span class="en">じょうしき</span>　常識</div><div><b lang="ja">投げかける</b> <span class="en">なげかける</span>　提出（疑問）</div><div><b lang="ja">不便益</b> <span class="en">ふべんえき</span>　不便帶來的好處</div><div><b lang="ja">すなわち</b> <span class="en">すなわち</span>　也就是</div><div><b lang="ja">指示</b> <span class="en">しじ</span>　指示</div><div><b lang="ja">たどり着く</b> <span class="en">たどりつく</span>　好不容易到達</div><div><b lang="ja">幼稚園</b> <span class="en">ようちえん</span>　幼稚園</div><div><b lang="ja">でこぼこ</b> <span class="en">でこぼこ</span>　凹凸不平</div><div><b lang="ja">挽く</b> <span class="en">ひく</span>　磨（豆子）</div><div><b lang="ja">愛着</b> <span class="en">あいちゃく</span>　感情；眷戀</div><div><b lang="ja">過程</b> <span class="en">かてい</span>　過程</div><div><b lang="ja">引き換え</b> <span class="en">ひきかえ</span>　交換</div><div><b lang="ja">手放す</b> <span class="en">てばなす</span>　放手；捨棄</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/benefits-of-inconvenience">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="reading-the-air.html">← 「空気を読む」ということ</a><a href="chance-of-rain.html">「降水確率30%」をどう受け止めるか →</a></div>
+<div class="nav"><a href="reading-the-air.html">← 「空気を読む」ということ</a><a href="chance-of-rain.html">「降水確率30%」をどう受け止めるか →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n1/benefits-of-inconvenience">到網站讀這篇、做題目 →</a><div class="nav"><a href="reading-the-air.html">← 「空気を読む」ということ</a><a href="chance-of-rain.html">「降水確率30%」をどう受け止めるか →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">追い求める</b> <span class="en">おいもとめる</span>　追求</div><div><b lang="ja">余裕</b> <span class="en">よゆう</span>　餘裕</div><div><b lang="ja">常識</b> <span class="en">じょうしき</span>　常識</div><div><b lang="ja">投げかける</b> <span class="en">なげかける</span>　提出（疑問）</div><div><b lang="ja">不便益</b> <span class="en">ふべんえき</span>　不便帶來的好處</div><div><b lang="ja">すなわち</b> <span class="en">すなわち</span>　也就是</div><div><b lang="ja">指示</b> <span class="en">しじ</span>　指示</div><div><b lang="ja">たどり着く</b> <span class="en">たどりつく</span>　好不容易到達</div><div><b lang="ja">幼稚園</b> <span class="en">ようちえん</span>　幼稚園</div><div><b lang="ja">でこぼこ</b> <span class="en">でこぼこ</span>　凹凸不平</div><div><b lang="ja">挽く</b> <span class="en">ひく</span>　磨（豆子）</div><div><b lang="ja">愛着</b> <span class="en">あいちゃく</span>　感情；眷戀</div><div><b lang="ja">過程</b> <span class="en">かてい</span>　過程</div><div><b lang="ja">引き換え</b> <span class="en">ひきかえ</span>　交換</div><div><b lang="ja">手放す</b> <span class="en">てばなす</span>　放手；捨棄</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

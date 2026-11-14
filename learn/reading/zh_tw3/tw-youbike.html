@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw3/">中文 HSK 3（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw3/">中文 HSK 3（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">騎YouBike</h1>
 <p class="en">Riding YouBike — Chinese reading, HSK 3</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">臺北街上到處都能看到黃色的YouBike。只要用悠遊卡一刷，就可以把車騎走，騎到別的站再還車。</div><div class="rd" lang="zh-Hant">Tái běi jiē shàng dào chù dōu néng kàn dào huáng sè de zhǐ yào yòng yōu yóu kǎ yì shuā jiù kě yǐ bǎ chē qí zǒu qí dào bié de zhàn zài huán chē</div><div class="tl">Yellow YouBikes are everywhere on Taipei&#x27;s streets. Just tap an EasyCard and you can ride one away, then return it at another station.</div></div>
 <div class="para"><div lang="zh-Hant">我住的地方離捷運站有點遠，走路要十五分鐘。自從有了YouBike，我每天早上都騎車去捷運站，五分鐘就到了。</div><div class="rd" lang="zh-Hant">wǒ zhù de dì fāng lí jié yùn zhàn yǒu diǎn yuǎn zǒu lù yào shí wǔ fēn zhōng zì cóng yǒu le wǒ měi tiān zǎo shàng dōu qí chē qù jié yùn zhàn wǔ fēn zhōng jiù dào le</div><div class="tl">Where I live is a bit far from the MRT station — fifteen minutes on foot. Since YouBike came along I ride to the station every morning, and it takes five minutes.</div></div>
 <div class="para"><div lang="zh-Hant">不過下班的時候，捷運站旁邊的車常常被借光了，有時候要等好幾分鐘才有空位還車。</div><div class="rd" lang="zh-Hant">bú guò xià bān de shí hòu jié yùn zhàn páng biān de chē cháng cháng bèi jiè guāng le yǒu shí hòu yào děng hǎo jǐ fēn zhōng cái yǒu kòng wèi huán chē</div><div class="tl">But at the end of the working day the bikes by the station have often all been taken, and sometimes you have to wait several minutes for a free dock to return one.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">到處</b> <span class="en">dàochù</span>　everywhere</div><div><b lang="zh-Hant">悠遊卡</b> <span class="en">yōuyóukǎ</span>　EasyCard (transit card)</div><div><b lang="zh-Hant">刷</b> <span class="en">shuā</span>　to swipe, tap</div><div><b lang="zh-Hant">還車</b> <span class="en">huánchē</span>　to return (a bike)</div><div><b lang="zh-Hant">有點</b> <span class="en">yǒudiǎn</span>　a little</div><div><b lang="zh-Hant">自從</b> <span class="en">zìcóng</span>　since</div><div><b lang="zh-Hant">借</b> <span class="en">jiè</span>　to borrow</div><div><b lang="zh-Hant">空位</b> <span class="en">kòngwèi</span>　vacant spot</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw3/tw-youbike">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">到處</b> <span class="en">dàochù</span>　everywhere</div><div><b lang="zh-Hant">悠遊卡</b> <span class="en">yōuyóukǎ</span>　EasyCard (transit card)</div><div><b lang="zh-Hant">刷</b> <span class="en">shuā</span>　to swipe, tap</div><div><b lang="zh-Hant">還車</b> <span class="en">huánchē</span>　to return (a bike)</div><div><b lang="zh-Hant">有點</b> <span class="en">yǒudiǎn</span>　a little</div><div><b lang="zh-Hant">自從</b> <span class="en">zìcóng</span>　since</div><div><b lang="zh-Hant">借</b> <span class="en">jiè</span>　to borrow</div><div><b lang="zh-Hant">空位</b> <span class="en">kòngwèi</span>　vacant spot</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw3/tw-youbike">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="tw-cram-school.html">← 補習班</a><a href="tw-health-check.html">健康檢查 →</a></div>
+<div class="nav"><a href="tw-cram-school.html">← 補習班</a><a href="tw-health-check.html">健康檢查 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw3/tw-youbike">到網站讀這篇、做題目 →</a><div class="nav"><a href="tw-cram-school.html">← 補習班</a><a href="tw-health-check.html">健康檢查 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">到處</b> <span class="en">dàochù</span>　everywhere</div><div><b lang="zh-Hant">悠遊卡</b> <span class="en">yōuyóukǎ</span>　EasyCard (transit card)</div><div><b lang="zh-Hant">刷</b> <span class="en">shuā</span>　to swipe, tap</div><div><b lang="zh-Hant">還車</b> <span class="en">huánchē</span>　to return (a bike)</div><div><b lang="zh-Hant">有點</b> <span class="en">yǒudiǎn</span>　a little</div><div><b lang="zh-Hant">自從</b> <span class="en">zìcóng</span>　since</div><div><b lang="zh-Hant">借</b> <span class="en">jiè</span>　to borrow</div><div><b lang="zh-Hant">空位</b> <span class="en">kòngwèi</span>　vacant spot</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

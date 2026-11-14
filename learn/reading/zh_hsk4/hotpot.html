@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk4/">中文 HSK 4（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk4/">中文 HSK 4（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">吃火锅</h1>
 <p class="en">Eating hotpot — Chinese reading, HSK 4</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">重庆人特别喜欢吃火锅，不管是夏天还是冬天，街上的火锅店总是坐满了客人。我第一次去重庆的时候，朋友带我去了一家很有名的老店。</div><div class="rd" lang="zh-Hans">Chóng qìng rén tè bié xǐ huan chī huǒ guō bù guǎn shì xià tiān hái shi dōng tiān jiē shàng de huǒ guō diàn zǒng shì zuò mǎn le kè rén wǒ dì yī cì qù Chóng qìng de shí hou péng you dài wǒ qù le yì jiā hěn yǒu míng de lǎo diàn</div><div class="tl">People in Chongqing love hotpot; summer or winter, the hotpot restaurants on the street are always full. The first time I went to Chongqing, a friend took me to a famous old restaurant.</div></div>
 <div class="para"><div lang="zh-Hans">服务员问我们要什么辣度，朋友说当然要“特辣”。结果我吃了第一口就开始流眼泪，连着喝了三杯冰水。朋友却吃得满头大汗，看起来非常享受。</div><div class="rd" lang="zh-Hans">fú wù yuán wèn wǒ men yào shén me là dù péng you shuō dāng rán yào tè là jié guǒ wǒ chī le dì yī kǒu jiù kāi shǐ liú yǎn lèi lián zhe hē le sān bēi bīng shuǐ péng you què chī de mǎn tóu dà hàn kàn qi lai fēi cháng xiǎng shòu</div><div class="tl">The waiter asked how spicy we wanted it, and my friend said &quot;extra hot&quot;, of course. As a result, my eyes started watering at the first bite and I drank three glasses of iced water in a row. My friend, though, ate dripping with sweat and looked thoroughly delighted.</div></div>
 <div class="para"><div lang="zh-Hans">后来我才知道，本地人还会准备一碗香油，用来让辣味变得没那么重。现在我也能吃一点儿辣了，不过还是只敢点“微辣”。</div><div class="rd" lang="zh-Hans">hòu lái wǒ cái zhī dào běn dì rén hái huì zhǔn bèi yì wǎn xiāng yóu yòng lái ràng là wèi biàn de méi nà me zhòng xiàn zài wǒ yě néng chī yì diǎn r là le bú guò hái shi zhǐ gǎn diǎn wēi là</div><div class="tl">Only later did I learn that locals prepare a bowl of sesame oil to tone down the heat. Now I can handle a bit of spice too, but I still only dare order &quot;mild&quot;.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">火锅</b> <span class="en">huǒguō</span>　hotpot</div><div><b lang="zh-Hans">不管</b> <span class="en">bùguǎn</span>　no matter</div><div><b lang="zh-Hans">服务员</b> <span class="en">fúwùyuán</span>　waiter</div><div><b lang="zh-Hans">辣</b> <span class="en">là</span>　spicy</div><div><b lang="zh-Hans">结果</b> <span class="en">jiéguǒ</span>　as a result</div><div><b lang="zh-Hans">流眼泪</b> <span class="en">liúyǎnlèi</span>　to shed tears</div><div><b lang="zh-Hans">享受</b> <span class="en">xiǎngshòu</span>　to enjoy</div><div><b lang="zh-Hans">敢</b> <span class="en">gǎn</span>　to dare</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/hotpot">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">火锅</b> <span class="en">huǒguō</span>　hotpot</div><div><b lang="zh-Hans">不管</b> <span class="en">bùguǎn</span>　no matter</div><div><b lang="zh-Hans">服务员</b> <span class="en">fúwùyuán</span>　waiter</div><div><b lang="zh-Hans">辣</b> <span class="en">là</span>　spicy</div><div><b lang="zh-Hans">结果</b> <span class="en">jiéguǒ</span>　as a result</div><div><b lang="zh-Hans">流眼泪</b> <span class="en">liúyǎnlèi</span>　to shed tears</div><div><b lang="zh-Hans">享受</b> <span class="en">xiǎngshòu</span>　to enjoy</div><div><b lang="zh-Hans">敢</b> <span class="en">gǎn</span>　to dare</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/hotpot">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="renting.html">← 租房子</a><a href="solo-trip.html">一个人旅行 →</a></div>
+<div class="nav"><a href="renting.html">← 租房子</a><a href="solo-trip.html">一个人旅行 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/hotpot">到網站讀這篇、做題目 →</a><div class="nav"><a href="renting.html">← 租房子</a><a href="solo-trip.html">一个人旅行 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">火锅</b> <span class="en">huǒguō</span>　hotpot</div><div><b lang="zh-Hans">不管</b> <span class="en">bùguǎn</span>　no matter</div><div><b lang="zh-Hans">服务员</b> <span class="en">fúwùyuán</span>　waiter</div><div><b lang="zh-Hans">辣</b> <span class="en">là</span>　spicy</div><div><b lang="zh-Hans">结果</b> <span class="en">jiéguǒ</span>　as a result</div><div><b lang="zh-Hans">流眼泪</b> <span class="en">liúyǎnlèi</span>　to shed tears</div><div><b lang="zh-Hans">享受</b> <span class="en">xiǎngshòu</span>　to enjoy</div><div><b lang="zh-Hans">敢</b> <span class="en">gǎn</span>　to dare</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

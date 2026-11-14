@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
 <article class="card">
 <h1 lang="ja">「住めば都」——地方に移り住んで</h1>
 <p class="sub">「住久了就是好地方」——搬到鄉下之後</p>
@@ -48,10 +56,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">考えが変わったのは、最初の冬に大雪が降ったときだ。車が出せずに困っていると、隣のおじいさんが朝早くから雪かきをしてくれた。おじいさんの家の前にも、わたしの家以上に雪が積もっていたのに、である。お礼を言うと、「お互い様だよ」と笑うだけだった。そのとき初めて、玄関の野菜も毎朝のあいさつも、見張られていたのではなく、気にかけてもらっていたのだと気づいた。</div><div class="rd" lang="ja">かんがえがかわったのは、さいしょのふゆにおおゆきがふったときだ。くるまがだせずにこまっていると、となりのおじいさんがあさはやくからゆきかきをしてくれた。おじいさんのいえのまえにも、わたしのいえいじょうにゆきがつもっていたのに、である。おれいをいうと、「おたがいさまだよ」とわらうだけだった。そのときはじめて、げんかんのやさいもまいあさのあいさつも、みはられていたのではなく、きにかけてもらっていたのだときづいた。</div><div class="tl">想法改變，是在第一個冬天下大雪的時候。我的車開不出去正發愁，隔壁的爺爺一大早就幫我鏟雪——明明他家門前的積雪比我家還多。我道謝，他只笑著說「彼此彼此啦」。那時我才第一次發現，玄關的蔬菜和每天早上的招呼，都不是在監視我，而是在關心我。</div></div>
 <div class="para"><div lang="ja">今では、わたしも町の祭りの準備を手伝い、庭の畑で取れた野菜を近所に配っている。不便なことは今も多いが、週末にまとめて買い物をする暮らしにも、すっかり慣れた。今年の冬は、春に引っ越してきた若い夫婦の家の雪かきを、わたしが手伝うつもりだ。移住を考えている人から相談を受けることもあるが、わたしはいつも「最初の一年は我慢の年だと思って」と伝えている。</div><div class="rd" lang="ja">いまでは、わたしもまちのまつりのじゅんびをてつだい、にわのはたけでとれたやさいをきんじょにくばっている。ふべんなことはいまもおおいが、しゅうまつにまとめてかいものをするくらしにも、すっかりなれた。ことしのふゆは、はるにひっこしてきたわかいふうふのいえのゆきかきを、わたしがてつだうつもりだ。いじゅうをかんがえているひとからそうだんをうけることもあるが、わたしはいつも「さいしょのいちねんはがまんのとしだとおもって」とつたえている。</div><div class="tl">現在，我也會幫忙準備鎮上的祭典，把院子菜園種出來的蔬菜分給鄰居。不方便的地方現在也還很多，但週末一次買齊東西的生活，我也已經完全習慣了。今年冬天，我打算去幫春天剛搬來的年輕夫婦家鏟雪。也有考慮移居的人來找我商量，我總是告訴他們：「把第一年當成忍耐的一年吧。」</div></div>
 <div class="para"><div lang="ja">「住めば都」という言葉がある。どんな場所でも、住み慣れればそこがいちばん住みやすい所になる、という意味だ。ただ、今のわたしは、こう付け加えたい。ある場所を都にするのは、便利さでも景色でもなく、そこに住む人との関係なのだ、と。</div><div class="rd" lang="ja">「すめばみやこ」ということばがある。どんなばしょでも、すみなれればそこがいちばんすみやすいところになる、といういみだ。ただ、いまのわたしは、こうつけくわえたい。あるばしょをみやこにするのは、べんりさでもけしきでもなく、そこにすむひととのかんけいなのだ、と。</div><div class="tl">有句話叫「住めば都（住久了就是好地方）」。意思是不管什麼地方，住習慣了，那裡就會變成最好住的地方。不過，現在的我想補充一句：讓一個地方變成好地方的，不是便利，也不是風景，而是和住在那裡的人之間的關係。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">囲む</b> <span class="en">かこむ</span>　環繞</div><div><b lang="ja">後悔</b> <span class="en">こうかい</span>　後悔</div><div><b lang="ja">辺り</b> <span class="en">あたり</span>　附近；四周</div><div><b lang="ja">戸惑う</b> <span class="en">とまどう</span>　不知所措</div><div><b lang="ja">留守</b> <span class="en">るす</span>　不在家</div><div><b lang="ja">玄関</b> <span class="en">げんかん</span>　玄關</div><div><b lang="ja">珍しい</b> <span class="en">めずらしい</span>　稀奇</div><div><b lang="ja">見張る</b> <span class="en">みはる</span>　監視</div><div><b lang="ja">雪かき</b> <span class="en">ゆきかき</span>　鏟雪</div><div><b lang="ja">お互い様</b> <span class="en">おたがいさま</span>　彼此彼此</div><div><b lang="ja">気にかける</b> <span class="en">きにかける</span>　關心；掛念</div><div><b lang="ja">付け加える</b> <span class="en">つけくわえる</span>　補充</div><div><b lang="ja">関係</b> <span class="en">かんけい</span>　關係</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/home-is-where-you-live">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">囲む</b> <span class="en">かこむ</span>　環繞</div><div><b lang="ja">後悔</b> <span class="en">こうかい</span>　後悔</div><div><b lang="ja">辺り</b> <span class="en">あたり</span>　附近；四周</div><div><b lang="ja">戸惑う</b> <span class="en">とまどう</span>　不知所措</div><div><b lang="ja">留守</b> <span class="en">るす</span>　不在家</div><div><b lang="ja">玄関</b> <span class="en">げんかん</span>　玄關</div><div><b lang="ja">珍しい</b> <span class="en">めずらしい</span>　稀奇</div><div><b lang="ja">見張る</b> <span class="en">みはる</span>　監視</div><div><b lang="ja">雪かき</b> <span class="en">ゆきかき</span>　鏟雪</div><div><b lang="ja">お互い様</b> <span class="en">おたがいさま</span>　彼此彼此</div><div><b lang="ja">気にかける</b> <span class="en">きにかける</span>　關心；掛念</div><div><b lang="ja">付け加える</b> <span class="en">つけくわえる</span>　補充</div><div><b lang="ja">関係</b> <span class="en">かんけい</span>　關係</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/home-is-where-you-live">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="more-haste-less-speed.html">← 「急がば回れ」</a><a href="kindness-comes-back.html">「情けは人のためならず」の本当の意味 →</a></div>
+<div class="nav"><a href="more-haste-less-speed.html">← 「急がば回れ」</a><a href="kindness-comes-back.html">「情けは人のためならず」の本当の意味 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/home-is-where-you-live">到網站讀這篇、做題目 →</a><div class="nav"><a href="more-haste-less-speed.html">← 「急がば回れ」</a><a href="kindness-comes-back.html">「情けは人のためならず」の本当の意味 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">囲む</b> <span class="en">かこむ</span>　環繞</div><div><b lang="ja">後悔</b> <span class="en">こうかい</span>　後悔</div><div><b lang="ja">辺り</b> <span class="en">あたり</span>　附近；四周</div><div><b lang="ja">戸惑う</b> <span class="en">とまどう</span>　不知所措</div><div><b lang="ja">留守</b> <span class="en">るす</span>　不在家</div><div><b lang="ja">玄関</b> <span class="en">げんかん</span>　玄關</div><div><b lang="ja">珍しい</b> <span class="en">めずらしい</span>　稀奇</div><div><b lang="ja">見張る</b> <span class="en">みはる</span>　監視</div><div><b lang="ja">雪かき</b> <span class="en">ゆきかき</span>　鏟雪</div><div><b lang="ja">お互い様</b> <span class="en">おたがいさま</span>　彼此彼此</div><div><b lang="ja">気にかける</b> <span class="en">きにかける</span>　關心；掛念</div><div><b lang="ja">付け加える</b> <span class="en">つけくわえる</span>　補充</div><div><b lang="ja">関係</b> <span class="en">かんけい</span>　關係</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

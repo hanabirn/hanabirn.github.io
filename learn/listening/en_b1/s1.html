@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_b1/">英文 B1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_b1/">英文 B1</a></div>
 <article class="card">
 <h1>英文 B1 聽力練習 第 1 回</h1>
 <p class="en">English listening practice, B1, round 1 — 15 recordings, 25 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=en_b1/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Shall we meet in the café before the film?</span><div class="en">看電影前我們在咖啡店見好嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">It&#x27;ll be really crowded on a Saturday. Let&#x27;s just meet outside the cinema at seven. The bus station is too far for you.</span><div class="en">星期六那裡會很擠。我們七點直接在電影院外面見吧，公車站對你來說太遠了。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">My torch isn&#x27;t working.</span><div class="en">我的手電筒壞了。</div></div><div class="ln"><span class="who">女</span><span lang="en">Have you changed the batteries?</span><div class="en">你換電池了嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">Yes, yesterday. I think it&#x27;s the bulb. I&#x27;ll get a new one tomorrow.</span><div class="en">換了，昨天換的。我想是燈泡的問題，明天去買個新的。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Are you still playing volleyball?</span><div class="en">你還在打排球嗎？</div></div><div class="ln"><span class="who">女</span><span lang="en">No, I stopped last year. I&#x27;ve just joined a climbing club instead. My brother wants me to try tennis, but I&#x27;m not sure.</span><div class="en">沒有，去年就不打了。我剛加入攀岩社。我哥想要我試試網球，但我還不確定。</div></div></details></div>
@@ -57,8 +64,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 13 段</b>　你會聽到兩個朋友談一家運動中心。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">You will hear two friends talking about a sports centre.</span><div class="en">你會聽到兩個朋友談一家運動中心。</div></div><div class="ln"><span class="who">女</span><span lang="en">Have you been to the new sports centre? The pool&#x27;s lovely, but it&#x27;s so expensive.</span><div class="en">你去過新的運動中心嗎？游泳池很棒，可是好貴。</div></div><div class="ln"><span class="who">男</span><span lang="en">It is — but students get half price on weekdays, so I go on Wednesdays.</span><div class="en">是很貴，不過學生平日半價，所以我星期三去。</div></div></details></div>
 <div class="item"><b>第 14 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Good morning, and welcome to this week&#x27;s arts programme. This summer the Riverside Festival is back for its tenth year. It runs for three days, from the eighteenth to the twentieth of July, in Victoria Park. As always, there&#x27;ll be music from local bands, but this year there&#x27;s something new: a comedy tent, which will have shows every evening. Tickets cost twenty-five pounds for a day, or sixty for the whole weekend, and children under twelve go free. The organisers are asking people not to drive, because there&#x27;s very little parking — instead, there&#x27;ll be free buses from the railway station. If you&#x27;d like to help, they&#x27;re still looking for volunteers, especially people who can work in the information tent. You can find out more on the festival website.</span><div class="en">早安，歡迎收聽本週的藝文節目。今年夏天，河畔音樂節迎來第十年。活動為期三天，七月十八日到二十日，在維多利亞公園舉行。和往年一樣有本地樂團的演出，不過今年有新東西：一個喜劇帳篷，每天晚上都有表演。單日票二十五英鎊，整個週末六十英鎊，十二歲以下兒童免費。主辦單位請大家不要開車，因為停車位很少；會有從火車站出發的免費接駁公車。想幫忙的話，他們還在招募志工，特別是能在服務帳篷工作的人。詳情請上音樂節網站。</div></div></details></div>
 <div class="item"><b>第 15 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">My guest today is Leo Grant, who at just twenty-three runs his own restaurant. Leo, when did you first get interested in cooking?</span><div class="en">今天的來賓是李歐·葛蘭特，他才二十三歲就經營自己的餐廳。李歐，你什麼時候開始對做菜有興趣的？</div></div><div class="ln"><span class="who">男</span><span lang="en">When I was about ten. My mum worked late, so I often made dinner for my younger brothers. At first it was just pasta, but I started experimenting.</span><div class="en">大概十歲的時候。我媽媽工作到很晚，所以我常幫弟弟們做晚餐。一開始只會煮義大利麵，後來開始嘗試各種做法。</div></div><div class="ln"><span class="who">女</span><span lang="en">Did you go to cooking school?</span><div class="en">你讀過廚藝學校嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">No. I started a business course at university, but I left after a year and got a job in a hotel kitchen. I learnt far more there than I would have in a classroom.</span><div class="en">沒有。我在大學讀過商科，但讀了一年就休學，到飯店廚房工作。我在那裡學到的比在教室裡多得多。</div></div><div class="ln"><span class="who">女</span><span lang="en">What&#x27;s the hardest thing about running a restaurant?</span><div class="en">經營餐廳最難的是什麼？</div></div><div class="ln"><span class="who">男</span><span lang="en">Finding good staff, definitely. The cooking is the easy part. And the hours are very long — I rarely get home before midnight.</span><div class="en">一定是找到好員工。做菜反而是簡單的部分。還有工時很長，我很少半夜前到家。</div></div><div class="ln"><span class="who">女</span><span lang="en">What&#x27;s next for you?</span><div class="en">你接下來有什麼計畫？</div></div><div class="ln"><span class="who">男</span><span lang="en">I&#x27;d like to write a cookbook for young people who are learning to cook for themselves, like I did.</span><div class="en">我想寫一本食譜，給像我當年那樣、正在學自己做飯的年輕人。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=en_b1/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>15 段母語錄音、25 題。</p><a class="cta" href="/?l=en_b1/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

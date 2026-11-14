@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw6/">中文 HSK 6（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw6/">中文 HSK 6（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">少子化與學校</h1>
 <p class="en">Falling birth rates and schools — Chinese reading, HSK 6</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">由於少子化，臺灣每年的新生兒人數不斷減少，許多偏鄉小學一個年級只剩下幾個學生，甚至面臨廢校的危機。有些大學招不到學生，只能被迫停招或合併。</div><div class="rd" lang="zh-Hant">yóu yú shǎo zǐ huà Tái wān měi nián de xīn shēng ér rén shù bú duàn jiǎn shǎo xǔ duō piān xiāng xiǎo xué yí gè nián jí zhǐ shèng xià jǐ gè xué shēng shèn zhì miàn lín fèi xiào de wéi jī yǒu xiē dà xué zhāo bú dào xué shēng zhǐ néng bèi pò tíng zhāo huò hé bìng</div><div class="tl">Because of the falling birth rate, the number of newborns in Taiwan drops every year; many rural primary schools have only a few pupils per grade and even face closure. Some universities can&#x27;t recruit enough students and are forced to stop admissions or merge.</div></div>
 <div class="para"><div lang="zh-Hant">然而，危機也可能是轉機。班級人數少了，老師可以更照顧到每個孩子的需要；一些偏鄉學校結合在地文化，發展出獨特的課程，反而吸引城市的家長把孩子送來就讀。</div><div class="rd" lang="zh-Hant">rán ér wéi jī yě kě néng shì zhuǎn jī bān jí rén shù shǎo le lǎo shī kě yǐ gèng zhào gù dào měi gè hái zi de xū yào yì xiē piān xiāng xué xiào jié hé zài dì wén huà fā zhǎn chū dú tè de kè chéng fǎn ér xī yǐn chéng shì de jiā zhǎng bǎ hái zi sòng lái jiù dú</div><div class="tl">Yet a crisis can also be a turning point. With smaller classes, teachers can better attend to each child&#x27;s needs; some rural schools have drawn on local culture to develop distinctive curricula, actually attracting city parents to send their children there.</div></div>
 <div class="para"><div lang="zh-Hant">教育的價值不在於學校的規模，而在於能否培養出有能力、有溫度的人。</div><div class="rd" lang="zh-Hant">jiào yù de jià zhí bú zài yú xué xiào de guī mó ér zài yú néng fǒu péi yǎng chū yǒu néng lì yǒu wēn dù de rén</div><div class="tl">The value of education lies not in a school&#x27;s size but in whether it can nurture capable, caring people.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">少子化</b> <span class="en">shǎozǐhuà</span>　falling birth rate</div><div><b lang="zh-Hant">偏鄉</b> <span class="en">piānxiāng</span>　remote rural area</div><div><b lang="zh-Hant">廢校</b> <span class="en">fèixiào</span>　school closure</div><div><b lang="zh-Hant">危機</b> <span class="en">wéijī</span>　crisis</div><div><b lang="zh-Hant">合併</b> <span class="en">hébìng</span>　to merge</div><div><b lang="zh-Hant">轉機</b> <span class="en">zhuǎnjī</span>　turning point (for the better)</div><div><b lang="zh-Hant">獨特</b> <span class="en">dútè</span>　distinctive, unique</div><div><b lang="zh-Hant">規模</b> <span class="en">guīmó</span>　scale, size</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw6/tw-low-birthrate">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">少子化</b> <span class="en">shǎozǐhuà</span>　falling birth rate</div><div><b lang="zh-Hant">偏鄉</b> <span class="en">piānxiāng</span>　remote rural area</div><div><b lang="zh-Hant">廢校</b> <span class="en">fèixiào</span>　school closure</div><div><b lang="zh-Hant">危機</b> <span class="en">wéijī</span>　crisis</div><div><b lang="zh-Hant">合併</b> <span class="en">hébìng</span>　to merge</div><div><b lang="zh-Hant">轉機</b> <span class="en">zhuǎnjī</span>　turning point (for the better)</div><div><b lang="zh-Hant">獨特</b> <span class="en">dútè</span>　distinctive, unique</div><div><b lang="zh-Hant">規模</b> <span class="en">guīmó</span>　scale, size</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw6/tw-low-birthrate">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="tw-lucky-bags.html">← 福袋與盲盒</a><a href="tw-scooter-transition.html">機車王國的轉型 →</a></div>
+<div class="nav"><a href="tw-lucky-bags.html">← 福袋與盲盒</a><a href="tw-scooter-transition.html">機車王國的轉型 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw6/tw-low-birthrate">到網站讀這篇、做題目 →</a><div class="nav"><a href="tw-lucky-bags.html">← 福袋與盲盒</a><a href="tw-scooter-transition.html">機車王國的轉型 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">少子化</b> <span class="en">shǎozǐhuà</span>　falling birth rate</div><div><b lang="zh-Hant">偏鄉</b> <span class="en">piānxiāng</span>　remote rural area</div><div><b lang="zh-Hant">廢校</b> <span class="en">fèixiào</span>　school closure</div><div><b lang="zh-Hant">危機</b> <span class="en">wéijī</span>　crisis</div><div><b lang="zh-Hant">合併</b> <span class="en">hébìng</span>　to merge</div><div><b lang="zh-Hant">轉機</b> <span class="en">zhuǎnjī</span>　turning point (for the better)</div><div><b lang="zh-Hant">獨特</b> <span class="en">dútè</span>　distinctive, unique</div><div><b lang="zh-Hant">規模</b> <span class="en">guīmó</span>　scale, size</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

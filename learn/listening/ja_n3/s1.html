@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n3/">日文 N3</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n3/">日文 N3</a></div>
 <article class="card">
 <h1>日文 N3 聽力練習 第 1 回</h1>
 <p class="en">Japanese listening practice, N3, round 1 — 10 recordings, 10 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ja_n3/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　男生和櫃台人員在運動俱樂部說話。男生今天接下來要做什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">スポーツクラブで男の人と受付の人が話しています。男の人は今日このあと何をしますか。</span><div class="en">男生和櫃台人員在運動俱樂部說話。男生今天接下來要做什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ja">こちらに入会したいんですが。</span><div class="en">我想加入這裡的會員。</div></div><div class="ln"><span class="who">女</span><span lang="ja">ありがとうございます。この用紙にご記入いただいて、身分証を見せてください。お支払いはカードでも大丈夫です。</span><div class="en">謝謝您。請填寫這張表格，並出示身分證件。付款也可以刷卡。</div></div><div class="ln"><span class="who">男</span><span lang="ja">あ、身分証、今日は持ってないんです。</span><div class="en">啊，我今天沒帶身分證件。</div></div><div class="ln"><span class="who">女</span><span lang="ja">では、今日は無料の体験レッスンだけ受けて、入会の手続きは次回になさいますか。</span><div class="en">那今天要不要先上免費體驗課，入會手續下次再辦？</div></div><div class="ln"><span class="who">男</span><span lang="ja">はい、そうします。</span><div class="en">好，就這樣。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">男の人は今日このあと何をしますか。</span><div class="en">男生今天接下來要做什麼？</div></div></details></div>
 <div class="item"><b>第 2 段</b>　男生和女生在公司說話。女生接下來首先要做什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">会社で男の人と女の人が話しています。女の人はこのあとまず何をしますか。</span><div class="en">男生和女生在公司說話。女生接下來首先要做什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ja">そのメール、お客さんに送る前に課長に見てもらった？</span><div class="en">那封信寄給客戶之前，有給課長看過嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ja">まだです。</span><div class="en">還沒。</div></div><div class="ln"><span class="who">男</span><span lang="ja">課長は午後いないから、今のうちに見てもらったほうがいいよ。あ、でもその前に、資料が付いてないよ。</span><div class="en">課長下午不在，最好趁現在給他看。啊，不過在那之前，資料沒附上喔。</div></div><div class="ln"><span class="who">女</span><span lang="ja">あ、本当だ。すみません。</span><div class="en">啊，真的耶。抱歉。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">女の人はこのあとまず何をしますか。</span><div class="en">女生接下來首先要做什麼？</div></div></details></div>
 <div class="item"><b>第 3 段</b>　男生和女生在說話。女生為什麼剪頭髮？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">男の人と女の人が話しています。女の人はどうして髪を切りましたか。</span><div class="en">男生和女生在說話。女生為什麼剪頭髮？</div></div><div class="ln"><span class="who">男</span><span lang="ja">髪、切ったんだ。何かあったの？</span><div class="en">你剪頭髮了啊。發生什麼事了嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ja">よく「夏だから？」って聞かれるんだけど、そうじゃないの。来月から新しい仕事で、短いほうがいいって言われたんだ。</span><div class="en">常被問「是因為夏天嗎？」，但不是。下個月開始新工作，被說短一點比較好。</div></div><div class="ln"><span class="who">男</span><span lang="ja">へえ、似合ってるよ。</span><div class="en">喔，很適合你喔。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">女の人はどうして髪を切りましたか。</span><div class="en">女生為什麼剪頭髮？</div></div></details></div>
@@ -52,8 +59,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 8 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ja">これ、つまらないものですが。</span><div class="en">這是一點小東西。</div></div></details></div>
 <div class="item"><b>第 9 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ja">もう少しゆっくり話してもらえますか。</span><div class="en">可以說慢一點嗎？</div></div></details></div>
 <div class="item"><b>第 10 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ja">最近、仕事はどう？</span><div class="en">最近工作怎麼樣？</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ja_n3/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>10 段母語錄音、10 題。</p><a class="cta" href="/?l=ja_n3/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

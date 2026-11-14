@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_6/">韓文 6 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_6/">韓文 6 級</a></div>
 <article class="card">
 <h1 lang="ko">인공지능 시대의 교육</h1>
 <p class="sub">人工智慧時代的教育</p>
@@ -45,10 +53,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ko">그러나 금지만이 능사는 아니다. 계산기가 등장했을 때 수학 교육이 사라지지 않았듯이 교육의 목표가 달라질 뿐이다.</div><div class="tl">然而禁止並不是萬能的。就像計算機出現時數學教育並沒有消失一樣，只是教育的目標改變了而已。</div></div>
 <div class="para"><div lang="ko">정답을 찾는 능력보다 좋은 질문을 던지는 능력이 중요해질 것은 두말할 나위 없다. 결국 기계가 대신할 수 없는 사고력을 기르는 것이 교육의 몫이다.</div><div class="tl">比起找到正確答案的能力，提出好問題的能力將變得更重要，這是毋庸置疑的。說到底，培養機器無法取代的思考力，才是教育的責任。</div></div>
 <div class="para"><div lang="ko">교사의 역할 역시 지식을 전달하는 사람에서 생각을 이끌어 주는 사람으로 바뀌어야 한다. 변화에 맞서기보다 변화를 이끄는 교육이 필요한 때다.</div><div class="tl">老師的角色也必須從傳授知識的人，轉變為引導思考的人。現在需要的不是對抗變化，而是引領變化的教育。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ko">등장하다</b>　登場；出現</div><div><b lang="ko">술렁이다</b>　騷動</div><div><b lang="ko">가려내다</b>　分辨</div><div><b lang="ko">능사</b>　萬能之策</div><div><b lang="ko">사라지다</b>　消失</div><div><b lang="ko">두말할 나위 없다</b>　毋庸置疑</div><div><b lang="ko">사고력</b>　思考力</div><div><b lang="ko">몫</b>　責任；份</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/ai-education">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ko">등장하다</b>　登場；出現</div><div><b lang="ko">술렁이다</b>　騷動</div><div><b lang="ko">가려내다</b>　分辨</div><div><b lang="ko">능사</b>　萬能之策</div><div><b lang="ko">사라지다</b>　消失</div><div><b lang="ko">두말할 나위 없다</b>　毋庸置疑</div><div><b lang="ko">사고력</b>　思考力</div><div><b lang="ko">몫</b>　責任；份</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/ai-education">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="nudge-shopping.html">← 보이지 않는 손짓</a><a href="elderly-drivers.html">고령 운전자 문제 →</a></div>
+<div class="nav"><a href="nudge-shopping.html">← 보이지 않는 손짓</a><a href="elderly-drivers.html">고령 운전자 문제 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/ai-education">到網站讀這篇、做題目 →</a><div class="nav"><a href="nudge-shopping.html">← 보이지 않는 손짓</a><a href="elderly-drivers.html">고령 운전자 문제 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ko">등장하다</b>　登場；出現</div><div><b lang="ko">술렁이다</b>　騷動</div><div><b lang="ko">가려내다</b>　分辨</div><div><b lang="ko">능사</b>　萬能之策</div><div><b lang="ko">사라지다</b>　消失</div><div><b lang="ko">두말할 나위 없다</b>　毋庸置疑</div><div><b lang="ko">사고력</b>　思考力</div><div><b lang="ko">몫</b>　責任；份</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

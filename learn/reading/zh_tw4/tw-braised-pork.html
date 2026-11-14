@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw4/">中文 HSK 4（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw4/">中文 HSK 4（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">一碗滷肉飯</h1>
 <p class="en">A bowl of braised pork rice — Chinese reading, HSK 4</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">如果要選一道最能代表臺灣的小吃，很多人會說是滷肉飯。一碗白飯上面放著滷得香香的豬肉，再加一顆滷蛋，簡單卻讓人吃得很滿足。</div><div class="rd" lang="zh-Hant">rú guǒ yào xuǎn yí dào zuì néng dài biǎo Tái wān de xiǎo chī hěn duō rén huì shuō shì lǔ ròu fàn yì wǎn bái fàn shàng miàn fàng zhe lǔ de xiāng xiāng de zhū ròu zài jiā yì kē lǔ dàn jiǎn dān què ràng rén chī de hěn mǎn zú</div><div class="tl">If you had to pick one snack that best represents Taiwan, many people would say braised pork rice. A bowl of white rice topped with fragrant braised pork, plus a braised egg — simple, yet very satisfying.</div></div>
 <div class="para"><div lang="zh-Hant">我外婆滷肉的時候，一定要用醬油、冰糖和紅蔥頭，小火慢慢煮兩三個小時。她說，好吃的祕密就是耐心，急不來。</div><div class="rd" lang="zh-Hant">wǒ wài pó lǔ ròu de shí hòu yí dìng yào yòng jiàng yóu bīng táng hé hóng cōng tóu xiǎo huǒ màn màn zhǔ liǎng sān gè xiǎo shí tā shuō hǎo chī de mì mì jiù shì nài xīn jí bù lái</div><div class="tl">When my grandmother braises pork, she always uses soy sauce, rock sugar and shallots and simmers it on a low flame for two or three hours. She says the secret of good flavour is patience — you can&#x27;t rush it.</div></div>
 <div class="para"><div lang="zh-Hant">現在外面的滷肉飯一碗只要三、四十塊，但是對我來說，外婆做的味道是任何店都比不上的。</div><div class="rd" lang="zh-Hant">xiàn zài wài miàn de lǔ ròu fàn yì wǎn zhǐ yào sān sì shí kuài dàn shì duì wǒ lái shuō wài pó zuò de wèi dào shì rèn hé diàn dōu bǐ bú shàng de</div><div class="tl">Now a bowl outside costs only thirty or forty dollars, but for me no shop can match the taste of my grandmother&#x27;s.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">代表</b> <span class="en">dàibiǎo</span>　to represent</div><div><b lang="zh-Hant">滷肉</b> <span class="en">lǔròu</span>　braised pork</div><div><b lang="zh-Hant">滿足</b> <span class="en">mǎnzú</span>　satisfied</div><div><b lang="zh-Hant">外婆</b> <span class="en">wàipó</span>　grandmother (mother&#x27;s mother)</div><div><b lang="zh-Hant">醬油</b> <span class="en">jiàngyóu</span>　soy sauce</div><div><b lang="zh-Hant">祕密</b> <span class="en">mìmì</span>　secret</div><div><b lang="zh-Hant">耐心</b> <span class="en">nàixīn</span>　patience</div><div><b lang="zh-Hant">任何</b> <span class="en">rènhé</span>　any</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-braised-pork">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">代表</b> <span class="en">dàibiǎo</span>　to represent</div><div><b lang="zh-Hant">滷肉</b> <span class="en">lǔròu</span>　braised pork</div><div><b lang="zh-Hant">滿足</b> <span class="en">mǎnzú</span>　satisfied</div><div><b lang="zh-Hant">外婆</b> <span class="en">wàipó</span>　grandmother (mother&#x27;s mother)</div><div><b lang="zh-Hant">醬油</b> <span class="en">jiàngyóu</span>　soy sauce</div><div><b lang="zh-Hant">祕密</b> <span class="en">mìmì</span>　secret</div><div><b lang="zh-Hant">耐心</b> <span class="en">nàixīn</span>　patience</div><div><b lang="zh-Hant">任何</b> <span class="en">rènhé</span>　any</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-braised-pork">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="tw-share-flat.html">← 跟室友合租</a><a href="tw-round-island.html">環島 →</a></div>
+<div class="nav"><a href="tw-share-flat.html">← 跟室友合租</a><a href="tw-round-island.html">環島 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-braised-pork">到網站讀這篇、做題目 →</a><div class="nav"><a href="tw-share-flat.html">← 跟室友合租</a><a href="tw-round-island.html">環島 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">代表</b> <span class="en">dàibiǎo</span>　to represent</div><div><b lang="zh-Hant">滷肉</b> <span class="en">lǔròu</span>　braised pork</div><div><b lang="zh-Hant">滿足</b> <span class="en">mǎnzú</span>　satisfied</div><div><b lang="zh-Hant">外婆</b> <span class="en">wàipó</span>　grandmother (mother&#x27;s mother)</div><div><b lang="zh-Hant">醬油</b> <span class="en">jiàngyóu</span>　soy sauce</div><div><b lang="zh-Hant">祕密</b> <span class="en">mìmì</span>　secret</div><div><b lang="zh-Hant">耐心</b> <span class="en">nàixīn</span>　patience</div><div><b lang="zh-Hant">任何</b> <span class="en">rènhé</span>　any</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

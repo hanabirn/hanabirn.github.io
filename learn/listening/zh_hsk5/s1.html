@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
 <article class="card">
 <h1>中文 HSK 5（大陸版） 聽力練習 第 1 回</h1>
 <p class="en">Chinese listening practice, HSK 5, round 1 — 19 recordings, 35 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=zh_hsk5/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="zh-Hans">你最近怎么总是加班？是不是工作太多了？</span><div class="en">Why are you always working late lately? Too much work?</div></div><div class="ln"><span class="who">女</span><span lang="zh-Hans">不是，我们部门新来了两个人，我得带带他们，等他们熟悉了就好了。</span><div class="en">No — two new people joined our department and I have to show them the ropes. Once they know their way around it&#x27;ll be fine.</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="zh-Hans">这家饭馆的菜味道一般，价格却挺贵的。</span><div class="en">The food here is ordinary, yet it&#x27;s pretty expensive.</div></div><div class="ln"><span class="who">男</span><span lang="zh-Hans">是啊，要不是离公司近，我才不来呢。</span><div class="en">Yes — if it weren&#x27;t near the office I&#x27;d never come.</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="zh-Hans">小王，听说你要去上海工作了？</span><div class="en">Xiao Wang, I hear you&#x27;re going to work in Shanghai?</div></div><div class="ln"><span class="who">女</span><span lang="zh-Hans">还没定呢，我还在考虑，主要是舍不得离开父母。</span><div class="en">Nothing&#x27;s decided; I&#x27;m still thinking it over — mainly I can&#x27;t bear to leave my parents.</div></div></details></div>
@@ -61,8 +68,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 17 段</b>　From next month, the city museum will stay open until nine in the evening on Fridays and Saturdays. The person in charge says many young people work during the day and only have time in the evenings and at weekends; the longer hours are meant for them. During evening visits the museum will also hold special events such as talks by experts and small concerts. In addition, students can visit free with a student card.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">从下个月开始，市博物馆每周五和周六的开放时间将延长到晚上九点。博物馆的负责人说，很多年轻人白天要上班，只有晚上和周末才有时间，延长开放时间就是为了方便他们。晚上参观的时候，博物馆还会举办一些特别的活动，比如专家讲座和小型音乐会。另外，学生拿学生证可以免费参观。</span><div class="en">From next month, the city museum will stay open until nine in the evening on Fridays and Saturdays. The person in charge says many young people work during the day and only have time in the evenings and at weekends; the longer hours are meant for them. During evening visits the museum will also hold special events such as talks by experts and small concerts. In addition, students can visit free with a student card.</div></div></details></div>
 <div class="item"><b>第 18 段</b>　People are more and more used to typing on computers and phones, and have fewer and fewer chances to write by hand. A survey found that many young people, picking up a pen, suddenly can&#x27;t remember how to write a character — known as &quot;picking up the pen and forgetting the character&quot;. Experts think it&#x27;s because typing only needs the pinyin, not every stroke of the character. To keep from forgetting, some people write a diary every day, and some have taken up calligraphy.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">现在，人们越来越习惯用电脑和手机打字，用笔写字的机会越来越少。有调查发现，很多年轻人拿起笔的时候，常常会突然想不起来一个字怎么写，这种情况被叫作“提笔忘字”。专家认为，这是因为打字的时候只需要知道拼音，不需要记住汉字的每一笔。为了不让自己忘记怎么写字，有的人每天坚持写日记，还有的人开始练习书法。</span><div class="en">People are more and more used to typing on computers and phones, and have fewer and fewer chances to write by hand. A survey found that many young people, picking up a pen, suddenly can&#x27;t remember how to write a character — known as &quot;picking up the pen and forgetting the character&quot;. Experts think it&#x27;s because typing only needs the pinyin, not every stroke of the character. To keep from forgetting, some people write a diary every day, and some have taken up calligraphy.</div></div></details></div>
 <div class="item"><b>第 19 段</b>　Many think clever children must do well at school. But an education expert who studied several hundred children found that those who do well are not necessarily the cleverest; most of them share one trait: patience, and no fear of difficulty. Faced with a hard problem they don&#x27;t give up at once but try all kinds of ways to solve it. The expert suggests parents shouldn&#x27;t always praise children for being clever but praise their effort, so they&#x27;ll be more willing to take on hard problems.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">很多人都觉得，聪明的孩子学习一定好。可是一位教育专家在研究了几百个孩子以后发现，学习好的孩子不一定最聪明，但他们大多有一个共同的特点：做事有耐心，不怕困难。遇到难题的时候，他们不会马上放弃，而是会想各种办法去解决。专家建议，家长不要总是表扬孩子聪明，而应该多表扬孩子的努力，这样孩子会更愿意去挑战难的问题。</span><div class="en">Many think clever children must do well at school. But an education expert who studied several hundred children found that those who do well are not necessarily the cleverest; most of them share one trait: patience, and no fear of difficulty. Faced with a hard problem they don&#x27;t give up at once but try all kinds of ways to solve it. The expert suggests parents shouldn&#x27;t always praise children for being clever but praise their effort, so they&#x27;ll be more willing to take on hard problems.</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=zh_hsk5/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>19 段母語錄音、35 題。</p><a class="cta" href="/?l=zh_hsk5/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

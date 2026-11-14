@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk6/">中文 HSK 6（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk6/">中文 HSK 6（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">“双十一”的冷思考</h1>
 <p class="en">Second thoughts on Singles&#x27; Day — Chinese reading, HSK 6</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">每年的“双十一”，各大购物网站都会推出满减、预售、抢红包等各种优惠活动，规则复杂得让人眼花缭乱。不少人熬夜等到零点下单，生怕错过了“最低价”。</div><div class="rd" lang="zh-Hans">měi nián de shuāng shí yī gè dà gòu wù wǎng zhàn dōu huì tuī chū mǎn jiǎn yù shòu qiǎng hóng bāo děng gè zhǒng yōu huì huó dòng guī zé fù zá de ràng rén yǎn huā liáo luàn bù shǎo rén áo yè děng dào líng diǎn xià dān shēng pà cuò guò le zuì dī jià</div><div class="tl">Every &quot;Double Eleven&quot;, the big shopping sites roll out spend-and-save offers, presales, red-packet grabs and every other kind of deal, with rules so complicated they make your head spin. Many stay up until midnight to order, terrified of missing the &quot;lowest price&quot;.</div></div>
 <div class="para"><div lang="zh-Hans">然而，冷静下来算一算就会发现，有些商品的价格其实和平时差不多，甚至先涨价再打折。更常见的情况是，为了凑够满减的金额，人们买了一堆根本用不上的东西。</div><div class="rd" lang="zh-Hans">rán ér lěng jìng xià lai suàn yí suàn jiù huì fā xiàn yǒu xiē shāng pǐn de jià gé qí shí hé píng shí chà bu duō shèn zhì xiān zhǎng jià zài dǎ zhé gèng cháng jiàn de qíng kuàng shì wèi le còu gòu mǎn jiǎn de jīn é rén men mǎi le yì duī gēn běn yòng bú shàng de dōng xi</div><div class="tl">Yet calm down and do the sums, and you find some prices are about the same as usual — some are even raised first and then discounted. More common still, to reach the spend threshold people buy piles of things they&#x27;ll never use.</div></div>
 <div class="para"><div lang="zh-Hans">购物节本身无可厚非，关键在于消费者能否保持理性。列一张购物清单，只买真正需要的东西，才算是真正的“省钱”。</div><div class="rd" lang="zh-Hans">gòu wù jié běn shēn wú kě hòu fēi guān jiàn zài yú xiāo fèi zhě néng fǒu bǎo chí lǐ xìng liè yì zhāng gòu wù qīng dān zhǐ mǎi zhēn zhèng xū yào de dōng xi cái suàn shì zhēn zhèng de shěng qián</div><div class="tl">There&#x27;s nothing wrong with a shopping festival as such; the key is whether shoppers can stay rational. Making a shopping list and buying only what you truly need is what really counts as &quot;saving money&quot;.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">优惠</b> <span class="en">yōuhuì</span>　discount, offer</div><div><b lang="zh-Hans">眼花缭乱</b> <span class="en">yǎnhuāliáoluàn</span>　dazzled, bewildered</div><div><b lang="zh-Hans">熬夜</b> <span class="en">áoyè</span>　to stay up late</div><div><b lang="zh-Hans">生怕</b> <span class="en">shēngpà</span>　for fear that</div><div><b lang="zh-Hans">涨价</b> <span class="en">zhǎngjià</span>　to raise prices</div><div><b lang="zh-Hans">凑</b> <span class="en">còu</span>　to make up (an amount)</div><div><b lang="zh-Hans">无可厚非</b> <span class="en">wúkěhòufēi</span>　beyond reproach, understandable</div><div><b lang="zh-Hans">理性</b> <span class="en">lǐxìng</span>　rational</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/impulse-buying">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">优惠</b> <span class="en">yōuhuì</span>　discount, offer</div><div><b lang="zh-Hans">眼花缭乱</b> <span class="en">yǎnhuāliáoluàn</span>　dazzled, bewildered</div><div><b lang="zh-Hans">熬夜</b> <span class="en">áoyè</span>　to stay up late</div><div><b lang="zh-Hans">生怕</b> <span class="en">shēngpà</span>　for fear that</div><div><b lang="zh-Hans">涨价</b> <span class="en">zhǎngjià</span>　to raise prices</div><div><b lang="zh-Hans">凑</b> <span class="en">còu</span>　to make up (an amount)</div><div><b lang="zh-Hans">无可厚非</b> <span class="en">wúkěhòufēi</span>　beyond reproach, understandable</div><div><b lang="zh-Hans">理性</b> <span class="en">lǐxìng</span>　rational</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/impulse-buying">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="heatwave.html">← 高温天气</a><a href="double-reduction.html">补习班 →</a></div>
+<div class="nav"><a href="heatwave.html">← 高温天气</a><a href="double-reduction.html">补习班 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/impulse-buying">到網站讀這篇、做題目 →</a><div class="nav"><a href="heatwave.html">← 高温天气</a><a href="double-reduction.html">补习班 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">优惠</b> <span class="en">yōuhuì</span>　discount, offer</div><div><b lang="zh-Hans">眼花缭乱</b> <span class="en">yǎnhuāliáoluàn</span>　dazzled, bewildered</div><div><b lang="zh-Hans">熬夜</b> <span class="en">áoyè</span>　to stay up late</div><div><b lang="zh-Hans">生怕</b> <span class="en">shēngpà</span>　for fear that</div><div><b lang="zh-Hans">涨价</b> <span class="en">zhǎngjià</span>　to raise prices</div><div><b lang="zh-Hans">凑</b> <span class="en">còu</span>　to make up (an amount)</div><div><b lang="zh-Hans">无可厚非</b> <span class="en">wúkěhòufēi</span>　beyond reproach, understandable</div><div><b lang="zh-Hans">理性</b> <span class="en">lǐxìng</span>　rational</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

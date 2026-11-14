@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
 <article class="card">
 <h1>中文 HSK 5（大陸版） 聽力練習 第 2 回</h1>
 <p class="en">Chinese listening practice, HSK 5, round 2 — 19 recordings, 35 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=zh_hsk5/s2">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="zh-Hans">你怎么还在看那本书？不是说上个星期就能看完吗？</span><div class="en">Why are you still reading that book? Didn&#x27;t you say you&#x27;d finish it last week?</div></div><div class="ln"><span class="who">男</span><span lang="zh-Hans">本来是快看完了，可是这几天太忙，一直没时间看。</span><div class="en">I nearly had, but I&#x27;ve been so busy these last few days I haven&#x27;t had time.</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="zh-Hans">请问，去火车站坐几路公共汽车？</span><div class="en">Excuse me, which bus goes to the railway station?</div></div><div class="ln"><span class="who">女</span><span lang="zh-Hans">坐十五路就可以。不过现在是下班时间，路上很堵，你还是坐地铁吧。</span><div class="en">The number fifteen. But it&#x27;s rush hour and the roads are jammed — you&#x27;d better take the metro.</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="zh-Hans">这套房子的阳台真大，可以种不少花。</span><div class="en">This flat has a really big balcony — you could grow lots of flowers.</div></div><div class="ln"><span class="who">男</span><span lang="zh-Hans">是啊，我就是因为这个阳台才买的。</span><div class="en">Yes, it&#x27;s exactly because of the balcony that I bought it.</div></div></details></div>
@@ -61,8 +68,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 17 段</b>　There are many Chinese surnames, but only a few are really common. According to surveys, Wang, Li, Zhang, Liu and Chen are the most common; together those five account for nearly a third of the population. Chinese people put the surname before the given name, and children mostly take their father&#x27;s surname. But now more and more children take their mother&#x27;s, and some have both parents&#x27; surnames in their names.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">中国人的姓很多，但是最常见的只有几个。根据调查，姓王、李、张、刘、陈的人最多，这五个姓的人加起来，差不多占了全国人口的三分之一。中国人一般把姓放在名字的前面，而且孩子大多跟爸爸姓。不过，现在也有越来越多的孩子跟妈妈姓，还有的孩子的名字里，同时有爸爸和妈妈的姓。</span><div class="en">There are many Chinese surnames, but only a few are really common. According to surveys, Wang, Li, Zhang, Liu and Chen are the most common; together those five account for nearly a third of the population. Chinese people put the surname before the given name, and children mostly take their father&#x27;s surname. But now more and more children take their mother&#x27;s, and some have both parents&#x27; surnames in their names.</div></div></details></div>
 <div class="item"><b>第 18 段</b>　Did you know? A cat sleeps twelve to sixteen hours a day — about two-thirds of its day. Cats sleep so much because, living outdoors, they depend on catching small animals, which takes a lot of energy, so they sleep to save their strength. Also, although cats sleep a lot, they don&#x27;t sleep deeply: at the slightest sound they wake at once. So when a cat is sleeping, it&#x27;s best not to disturb it.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">你知道吗？猫一天要睡十二到十六个小时，差不多是一天时间的三分之二。猫睡得这么多，是因为在外面生活的时候，猫要靠抓小动物生活，抓东西需要很多力气，所以它们要用睡觉来保存力气。另外，猫虽然睡得多，但睡得并不深，一有声音就会马上醒来。所以，猫睡觉的时候，最好不要打扰它。</span><div class="en">Did you know? A cat sleeps twelve to sixteen hours a day — about two-thirds of its day. Cats sleep so much because, living outdoors, they depend on catching small animals, which takes a lot of energy, so they sleep to save their strength. Also, although cats sleep a lot, they don&#x27;t sleep deeply: at the slightest sound they wake at once. So when a cat is sleeping, it&#x27;s best not to disturb it.</div></div></details></div>
 <div class="item"><b>第 19 段</b>　Many people are polite to outsiders but seldom say &quot;thank you&quot; to their family. Mum cooks every day and we think that&#x27;s only right; Dad fixes our bike and we think that&#x27;s normal. In fact everything our family does for us deserves a &quot;thank you&quot;. A simple word of thanks not only lets them feel their effort is noticed but also makes relationships at home better. Starting today, try saying &quot;thank you&quot; to your family more often.<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="zh-Hans">在家里，很多人对外人很客气，却很少对家人说“谢谢”。妈妈每天做饭，我们觉得是应该的；爸爸帮我们修好了自行车，我们也觉得很正常。其实，家人为我们做的每一件事，都值得说一声“谢谢”。一句简单的感谢，不但能让家人觉得自己的努力被看到了，也能让家里的关系变得更好。从今天开始，试着对家人多说一声“谢谢”吧。</span><div class="en">Many people are polite to outsiders but seldom say &quot;thank you&quot; to their family. Mum cooks every day and we think that&#x27;s only right; Dad fixes our bike and we think that&#x27;s normal. In fact everything our family does for us deserves a &quot;thank you&quot;. A simple word of thanks not only lets them feel their effort is noticed but also makes relationships at home better. Starting today, try saying &quot;thank you&quot; to your family more often.</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=zh_hsk5/s2">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div>
+<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>19 段母語錄音、35 題。</p><a class="cta" href="/?l=zh_hsk5/s2">到網站聽這一回 →</a><div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw4/">中文 HSK 4（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw4/">中文 HSK 4（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">跟室友合租</h1>
 <p class="en">Sharing a flat — Chinese reading, HSK 4</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">大學畢業以後，我在臺北找到工作，因為房租太貴，只好跟兩個朋友合租一間三房的公寓。一開始大家都很客氣，可是住久了，問題就慢慢出現了。</div><div class="rd" lang="zh-Hant">dà xué bì yè yǐ hòu wǒ zài Tái běi zhǎo dào gōng zuò yīn wèi fáng zū tài guì zhǐ hǎo gēn liǎng gè péng yǒu hé zū yì jiān sān fáng de gōng yù yì kāi shǐ dà jiā dōu hěn kè qì kě shì zhù jiǔ le wèn tí jiù màn màn chū xiàn le</div><div class="tl">After graduating I found a job in Taipei; because rent was so expensive, I had to share a three-bedroom flat with two friends. At first everyone was polite, but as time went on problems slowly appeared.</div></div>
 <div class="para"><div lang="zh-Hant">有人洗完碗不擦乾，有人半夜還在客廳打電動。後來我們開了一次會，決定把打掃的工作輪流分配，晚上十一點以後說話也要小聲一點。</div><div class="rd" lang="zh-Hant">yǒu rén xǐ wán wǎn bù cā gàn yǒu rén bàn yè hái zài kè tīng dǎ diàn dòng hòu lái wǒ men kāi le yí cì huì jué dìng bǎ dǎ sǎo de gōng zuò lún liú fēn pèi wǎn shàng shí yī diǎn yǐ hòu shuō huà yě yào xiǎo shēng yì diǎn</div><div class="tl">Someone would wash up without drying, someone else would play video games in the living room in the middle of the night. Later we held a meeting and decided to take turns with the cleaning, and to keep our voices down after eleven.</div></div>
 <div class="para"><div lang="zh-Hant">現在大家相處得很愉快，週末還常常一起煮火鍋。我覺得，住在一起最重要的是互相體諒。</div><div class="rd" lang="zh-Hant">xiàn zài dà jiā xiāng chǔ de hěn yú kuài zhōu mò hái cháng cháng yì qǐ zhǔ huǒ guō wǒ jué de zhù zài yì qǐ zuì zhòng yào de shì hù xiāng tǐ liàng</div><div class="tl">Now we get on very well and often make hotpot together at weekends. I think the most important thing about living together is being considerate of each other.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">合租</b> <span class="en">hézū</span>　to share rent</div><div><b lang="zh-Hant">客氣</b> <span class="en">kèqì</span>　polite</div><div><b lang="zh-Hant">出現</b> <span class="en">chūxiàn</span>　to appear</div><div><b lang="zh-Hant">打電動</b> <span class="en">dǎdiàndòng</span>　to play video games</div><div><b lang="zh-Hant">輪流</b> <span class="en">lúnliú</span>　to take turns</div><div><b lang="zh-Hant">分配</b> <span class="en">fēnpèi</span>　to allocate</div><div><b lang="zh-Hant">相處</b> <span class="en">xiāngchǔ</span>　to get along</div><div><b lang="zh-Hant">體諒</b> <span class="en">tǐliàng</span>　to be understanding</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-share-flat">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">合租</b> <span class="en">hézū</span>　to share rent</div><div><b lang="zh-Hant">客氣</b> <span class="en">kèqì</span>　polite</div><div><b lang="zh-Hant">出現</b> <span class="en">chūxiàn</span>　to appear</div><div><b lang="zh-Hant">打電動</b> <span class="en">dǎdiàndòng</span>　to play video games</div><div><b lang="zh-Hant">輪流</b> <span class="en">lúnliú</span>　to take turns</div><div><b lang="zh-Hant">分配</b> <span class="en">fēnpèi</span>　to allocate</div><div><b lang="zh-Hant">相處</b> <span class="en">xiāngchǔ</span>　to get along</div><div><b lang="zh-Hant">體諒</b> <span class="en">tǐliàng</span>　to be understanding</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-share-flat">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="tw-braised-pork.html">一碗滷肉飯 →</a></div>
+<div class="nav"><span></span><a href="tw-braised-pork.html">一碗滷肉飯 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw4/tw-share-flat">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="tw-braised-pork.html">一碗滷肉飯 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">合租</b> <span class="en">hézū</span>　to share rent</div><div><b lang="zh-Hant">客氣</b> <span class="en">kèqì</span>　polite</div><div><b lang="zh-Hant">出現</b> <span class="en">chūxiàn</span>　to appear</div><div><b lang="zh-Hant">打電動</b> <span class="en">dǎdiàndòng</span>　to play video games</div><div><b lang="zh-Hant">輪流</b> <span class="en">lúnliú</span>　to take turns</div><div><b lang="zh-Hant">分配</b> <span class="en">fēnpèi</span>　to allocate</div><div><b lang="zh-Hant">相處</b> <span class="en">xiāngchǔ</span>　to get along</div><div><b lang="zh-Hant">體諒</b> <span class="en">tǐliàng</span>　to be understanding</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

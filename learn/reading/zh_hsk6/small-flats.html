@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk6/">中文 HSK 6（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk6/">中文 HSK 6（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">小户型的大学问</h1>
 <p class="en">Small flats, big ideas — Chinese reading, HSK 6</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">在大城市，越来越多的年轻人选择住在三四十平方米的小户型里。面积虽小，但经过精心设计，客厅、卧室、厨房一应俱全：床可以收进墙里，餐桌能折叠，楼梯下面也藏着柜子。</div><div class="rd" lang="zh-Hans">zài dà chéng shì yuè lái yuè duō de nián qīng rén xuǎn zé zhù zài sān sì shí píng fāng mǐ de xiǎo hù xíng lǐ miàn jī suī xiǎo dàn jīng guò jīng xīn shè jì kè tīng wò shì chú fáng yì yīng jù quán chuáng kě yǐ shōu jìn qiáng lǐ cān zhuō néng zhé dié lóu tī xià miàn yě cáng zhe guì zi</div><div class="tl">In big cities more and more young people choose to live in small flats of thirty or forty square metres. The space is small, but with careful design it has everything — living room, bedroom, kitchen: the bed folds into the wall, the dining table folds away, and there are cupboards hidden under the stairs.</div></div>
 <div class="para"><div lang="zh-Hans">有人认为，住小房子是无奈之举，说到底还是因为房价太高。这种说法固然有道理，却忽视了另一面：空间有限，反而促使人们重新思考哪些东西是真正必需的。</div><div class="rd" lang="zh-Hans">yǒu rén rèn wéi zhù xiǎo fáng zi shì wú nài zhī jǔ shuō dào dǐ hái shi yīn wèi fáng jià tài gāo zhè zhǒng shuō fa gù rán yǒu dào li què hū shì le lìng yí miàn kōng jiān yǒu xiàn fǎn ér cù shǐ rén men chóng xīn sī kǎo nǎ xiē dōng xi shì zhēn zhèng bì xū de</div><div class="tl">Some think living in a small flat is a last resort, ultimately down to high house prices. There&#x27;s certainly truth in that, but it overlooks the other side: limited space actually pushes people to rethink what they truly need.</div></div>
 <div class="para"><div lang="zh-Hans">不少住户表示，搬进小房子以后，买东西更理性了，打扫也省事了。可见，居住的质量并不完全取决于面积的大小。</div><div class="rd" lang="zh-Hans">bù shǎo zhù hù biǎo shì bān jìn xiǎo fáng zi yǐ hòu mǎi dōng xi gèng lǐ xìng le dǎ sǎo yě shěng shì le kě jiàn jū zhù de zhì liàng bìng bù wán quán qǔ jué yú miàn jī de dà xiǎo</div><div class="tl">Many residents say that since moving into a small flat they shop more rationally and cleaning is less work. Evidently, the quality of one&#x27;s living doesn&#x27;t depend entirely on the size of the space.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">户型</b> <span class="en">hùxíng</span>　flat layout</div><div><b lang="zh-Hans">面积</b> <span class="en">miànjī</span>　floor area</div><div><b lang="zh-Hans">精心</b> <span class="en">jīngxīn</span>　meticulous</div><div><b lang="zh-Hans">一应俱全</b> <span class="en">yìyīngjùquán</span>　everything one needs is there</div><div><b lang="zh-Hans">折叠</b> <span class="en">zhédié</span>　to fold</div><div><b lang="zh-Hans">无奈</b> <span class="en">wúnài</span>　helpless, having no choice</div><div><b lang="zh-Hans">忽视</b> <span class="en">hūshì</span>　to overlook</div><div><b lang="zh-Hans">取决于</b> <span class="en">qǔjuéyú</span>　to depend on</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/small-flats">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">户型</b> <span class="en">hùxíng</span>　flat layout</div><div><b lang="zh-Hans">面积</b> <span class="en">miànjī</span>　floor area</div><div><b lang="zh-Hans">精心</b> <span class="en">jīngxīn</span>　meticulous</div><div><b lang="zh-Hans">一应俱全</b> <span class="en">yìyīngjùquán</span>　everything one needs is there</div><div><b lang="zh-Hans">折叠</b> <span class="en">zhédié</span>　to fold</div><div><b lang="zh-Hans">无奈</b> <span class="en">wúnài</span>　helpless, having no choice</div><div><b lang="zh-Hans">忽视</b> <span class="en">hūshì</span>　to overlook</div><div><b lang="zh-Hans">取决于</b> <span class="en">qǔjuéyú</span>　to depend on</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/small-flats">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="food-waste.html">光盘行动 →</a></div>
+<div class="nav"><span></span><a href="food-waste.html">光盘行动 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk6/small-flats">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="food-waste.html">光盘行动 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">户型</b> <span class="en">hùxíng</span>　flat layout</div><div><b lang="zh-Hans">面积</b> <span class="en">miànjī</span>　floor area</div><div><b lang="zh-Hans">精心</b> <span class="en">jīngxīn</span>　meticulous</div><div><b lang="zh-Hans">一应俱全</b> <span class="en">yìyīngjùquán</span>　everything one needs is there</div><div><b lang="zh-Hans">折叠</b> <span class="en">zhédié</span>　to fold</div><div><b lang="zh-Hans">无奈</b> <span class="en">wúnài</span>　helpless, having no choice</div><div><b lang="zh-Hans">忽视</b> <span class="en">hūshì</span>　to overlook</div><div><b lang="zh-Hans">取决于</b> <span class="en">qǔjuéyú</span>　to depend on</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

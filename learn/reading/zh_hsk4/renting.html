@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk4/">中文 HSK 4（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk4/">中文 HSK 4（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">租房子</h1>
 <p class="en">Renting a flat — Chinese reading, HSK 4</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">大学毕业以后，我来到北京工作，第一件麻烦事就是找房子。公司附近的房租太贵了，我只好在离公司一个小时远的地方租了一个小房间。</div><div class="rd" lang="zh-Hans">dà xué bì yè yǐ hòu wǒ lái dào Běi jīng gōng zuò dì yī jiàn má fan shì jiù shì zhǎo fáng zi gōng sī fù jìn de fáng zū tài guì le wǒ zhǐ hǎo zài lí gōng sī yí gè xiǎo shí yuǎn de dì fang zū le yí gè xiǎo fáng jiān</div><div class="tl">After graduating I came to Beijing to work, and the first headache was finding somewhere to live. Rents near the office were too high, so I had to rent a small room an hour away.</div></div>
 <div class="para"><div lang="zh-Hans">房间虽然不大，但是很干净，房东阿姨也很热情。她知道我一个人在外地，常常给我送饺子，有时候还提醒我天冷了要多穿衣服。</div><div class="rd" lang="zh-Hans">fáng jiān suī rán bú dà dàn shì hěn gān jìng fáng dōng ā yí yě hěn rè qíng tā zhī dào wǒ yí gè rén zài wài dì cháng cháng gěi wǒ sòng jiǎo zi yǒu shí hou hái tí xǐng wǒ tiān lěng le yào duō chuān yī fu</div><div class="tl">The room isn&#x27;t big, but it&#x27;s clean, and the landlady is very warm. Knowing I&#x27;m on my own far from home, she often brings me dumplings and sometimes reminds me to wrap up when it gets cold.</div></div>
 <div class="para"><div lang="zh-Hans">每天在地铁上花两个小时确实很累，可是我已经习惯了，还利用这段时间读完了好几本书。对我来说，这儿已经像半个家了。</div><div class="rd" lang="zh-Hans">měi tiān zài dì tiě shàng huā liǎng gè xiǎo shí què shí hěn lèi kě shì wǒ yǐ jīng xí guàn le hái lì yòng zhè duàn shí jiān dú wán le hǎo jǐ běn shū duì wǒ lái shuō zhè r yǐ jīng xiàng bàn gè jiā le</div><div class="tl">Spending two hours a day on the metro is certainly tiring, but I&#x27;ve got used to it, and I&#x27;ve used the time to finish quite a few books. For me this place already feels like half a home.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">毕业</b> <span class="en">bìyè</span>　to graduate</div><div><b lang="zh-Hans">房租</b> <span class="en">fángzū</span>　rent</div><div><b lang="zh-Hans">只好</b> <span class="en">zhǐhǎo</span>　to have no choice but to</div><div><b lang="zh-Hans">房东</b> <span class="en">fángdōng</span>　landlord, landlady</div><div><b lang="zh-Hans">热情</b> <span class="en">rèqíng</span>　warm, enthusiastic</div><div><b lang="zh-Hans">提醒</b> <span class="en">tíxǐng</span>　to remind</div><div><b lang="zh-Hans">确实</b> <span class="en">quèshí</span>　indeed</div><div><b lang="zh-Hans">利用</b> <span class="en">lìyòng</span>　to make use of</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/renting">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">毕业</b> <span class="en">bìyè</span>　to graduate</div><div><b lang="zh-Hans">房租</b> <span class="en">fángzū</span>　rent</div><div><b lang="zh-Hans">只好</b> <span class="en">zhǐhǎo</span>　to have no choice but to</div><div><b lang="zh-Hans">房东</b> <span class="en">fángdōng</span>　landlord, landlady</div><div><b lang="zh-Hans">热情</b> <span class="en">rèqíng</span>　warm, enthusiastic</div><div><b lang="zh-Hans">提醒</b> <span class="en">tíxǐng</span>　to remind</div><div><b lang="zh-Hans">确实</b> <span class="en">quèshí</span>　indeed</div><div><b lang="zh-Hans">利用</b> <span class="en">lìyòng</span>　to make use of</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/renting">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="hotpot.html">吃火锅 →</a></div>
+<div class="nav"><span></span><a href="hotpot.html">吃火锅 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk4/renting">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="hotpot.html">吃火锅 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">毕业</b> <span class="en">bìyè</span>　to graduate</div><div><b lang="zh-Hans">房租</b> <span class="en">fángzū</span>　rent</div><div><b lang="zh-Hans">只好</b> <span class="en">zhǐhǎo</span>　to have no choice but to</div><div><b lang="zh-Hans">房东</b> <span class="en">fángdōng</span>　landlord, landlady</div><div><b lang="zh-Hans">热情</b> <span class="en">rèqíng</span>　warm, enthusiastic</div><div><b lang="zh-Hans">提醒</b> <span class="en">tíxǐng</span>　to remind</div><div><b lang="zh-Hans">确实</b> <span class="en">quèshí</span>　indeed</div><div><b lang="zh-Hans">利用</b> <span class="en">lìyòng</span>　to make use of</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

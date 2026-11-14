@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
 <article class="card">
 <h1 lang="ja">「旬」を味わう</h1>
 <p class="sub">品嚐「當季」</p>
@@ -48,10 +56,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">旬の食材には、いくつもの利点がある。たくさん取れる時期なので値段が安く、温室を暖めるような余計なエネルギーを使わずに育てられるため、環境への負担も小さい。また、夏の野菜には体を冷やすもの、冬の野菜には体を温めるものが多いと言われ、季節に合った体づくりにも役立つ。</div><div class="rd" lang="ja">しゅんのしょくざいには、いくつものりてんがある。たくさんとれるじきなのでねだんがやすく、おんしつをあたためるようなよけいなエネルギーをつかわずにそだてられるため、かんきょうへのふたんもちいさい。また、なつのやさいにはからだをひやすもの、ふゆのやさいにはからだをあたためるものがおおいといわれ、きせつにあったからだづくりにもやくだつ。</div><div class="tl">當季食材有好幾個優點。因為是大量收成的時期，價格便宜；又不必花加熱溫室之類的多餘能源就能種出來，對環境的負擔也小。另外，據說夏天的蔬菜多半能讓身體降溫，冬天的蔬菜多半能讓身體暖和，也有助於調養適合季節的身體。</div></div>
 <div class="para"><div lang="ja">日本にはもう一つ、食べ方についての古い知恵がある。「腹八分目に医者いらず」だ。おなかがいっぱいになる手前、八割ぐらいで食べるのをやめておけば、病気になりにくいという意味である。食べすぎを避けることが健康によいことは、現代の研究でも確かめられつつある。おいしい旬の料理を前にすると、ついはしが進んでしまうが、そこで少し控えるのが健康の秘訣というわけだ。</div><div class="rd" lang="ja">にほんにはもうひとつ、たべかたについてのふるいちえがある。「はらはちぶんめにいしゃいらず」だ。おなかがいっぱいになるてまえ、はちわりぐらいでたべるのをやめておけば、びょうきになりにくいといういみである。たべすぎをさけることがけんこうによいことは、げんだいのけんきゅうでもたしかめられつつある。おいしいしゅんのりょうりをまえにすると、ついはしがすすんでしまうが、そこですこしひかえるのがけんこうのひけつというわけだ。</div><div class="tl">日本還有另一個關於飲食方式的古老智慧：「腹八分目に医者いらず（吃八分飽，不用看醫生）」。意思是在吃到飽之前、大約八分飽就停下來，就不容易生病。避免吃太多對健康有益，現代的研究也逐漸證實了這一點。面對美味的當季料理，筷子總是忍不住一直動，但在那時稍微節制，就是健康的秘訣。</div></div>
 <div class="para"><div lang="ja">何でもいつでも手に入る時代だからこそ、旬を知り、季節を味わいながら、ほどほどに食べる。そんな昔ながらの食卓を、もう一度見直してみてはどうだろうか。</div><div class="rd" lang="ja">なんでもいつでもてにはいるじだいだからこそ、しゅんをしり、きせつをあじわいながら、ほどほどにたべる。そんなむかしながらのしょくたくを、もういちどみなおしてみてはどうだろうか。</div><div class="tl">正因為是什麼都隨時買得到的時代，才更要了解當季、一邊品味季節一邊適量地吃。要不要重新審視一下這樣傳統的餐桌呢？</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">旬</b> <span class="en">しゅん</span>　當季；產季</div><div><b lang="ja">栄養</b> <span class="en">えいよう</span>　營養</div><div><b lang="ja">豊富</b> <span class="en">ほうふ</span>　豐富</div><div><b lang="ja">移り変わり</b> <span class="en">うつりかわり</span>　變遷</div><div><b lang="ja">初物</b> <span class="en">はつもの</span>　當年第一批收成</div><div><b lang="ja">寿命</b> <span class="en">じゅみょう</span>　壽命</div><div><b lang="ja">栽培</b> <span class="en">さいばい</span>　栽培</div><div><b lang="ja">輸入</b> <span class="en">ゆにゅう</span>　進口</div><div><b lang="ja">食材</b> <span class="en">しょくざい</span>　食材</div><div><b lang="ja">負担</b> <span class="en">ふたん</span>　負擔</div><div><b lang="ja">知恵</b> <span class="en">ちえ</span>　智慧</div><div><b lang="ja">腹八分目</b> <span class="en">はらはちぶんめ</span>　八分飽</div><div><b lang="ja">控える</b> <span class="en">ひかえる</span>　節制</div><div><b lang="ja">秘訣</b> <span class="en">ひけつ</span>　秘訣</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/eating-in-season">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">旬</b> <span class="en">しゅん</span>　當季；產季</div><div><b lang="ja">栄養</b> <span class="en">えいよう</span>　營養</div><div><b lang="ja">豊富</b> <span class="en">ほうふ</span>　豐富</div><div><b lang="ja">移り変わり</b> <span class="en">うつりかわり</span>　變遷</div><div><b lang="ja">初物</b> <span class="en">はつもの</span>　當年第一批收成</div><div><b lang="ja">寿命</b> <span class="en">じゅみょう</span>　壽命</div><div><b lang="ja">栽培</b> <span class="en">さいばい</span>　栽培</div><div><b lang="ja">輸入</b> <span class="en">ゆにゅう</span>　進口</div><div><b lang="ja">食材</b> <span class="en">しょくざい</span>　食材</div><div><b lang="ja">負担</b> <span class="en">ふたん</span>　負擔</div><div><b lang="ja">知恵</b> <span class="en">ちえ</span>　智慧</div><div><b lang="ja">腹八分目</b> <span class="en">はらはちぶんめ</span>　八分飽</div><div><b lang="ja">控える</b> <span class="en">ひかえる</span>　節制</div><div><b lang="ja">秘訣</b> <span class="en">ひけつ</span>　秘訣</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/eating-in-season">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="kindness-comes-back.html">← 「情けは人のためならず」の本当の意味</a><a href="cashless-society.html">現金を使わない社会 →</a></div>
+<div class="nav"><a href="kindness-comes-back.html">← 「情けは人のためならず」の本当の意味</a><a href="cashless-society.html">現金を使わない社会 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/eating-in-season">到網站讀這篇、做題目 →</a><div class="nav"><a href="kindness-comes-back.html">← 「情けは人のためならず」の本当の意味</a><a href="cashless-society.html">現金を使わない社会 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">旬</b> <span class="en">しゅん</span>　當季；產季</div><div><b lang="ja">栄養</b> <span class="en">えいよう</span>　營養</div><div><b lang="ja">豊富</b> <span class="en">ほうふ</span>　豐富</div><div><b lang="ja">移り変わり</b> <span class="en">うつりかわり</span>　變遷</div><div><b lang="ja">初物</b> <span class="en">はつもの</span>　當年第一批收成</div><div><b lang="ja">寿命</b> <span class="en">じゅみょう</span>　壽命</div><div><b lang="ja">栽培</b> <span class="en">さいばい</span>　栽培</div><div><b lang="ja">輸入</b> <span class="en">ゆにゅう</span>　進口</div><div><b lang="ja">食材</b> <span class="en">しょくざい</span>　食材</div><div><b lang="ja">負担</b> <span class="en">ふたん</span>　負擔</div><div><b lang="ja">知恵</b> <span class="en">ちえ</span>　智慧</div><div><b lang="ja">腹八分目</b> <span class="en">はらはちぶんめ</span>　八分飽</div><div><b lang="ja">控える</b> <span class="en">ひかえる</span>　節制</div><div><b lang="ja">秘訣</b> <span class="en">ひけつ</span>　秘訣</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

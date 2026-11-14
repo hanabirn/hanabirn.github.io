@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/es_b1/">西班牙文 B1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/es_b1/">西班牙文 B1</a></div>
 <article class="card">
 <h1>西班牙文 B1 聽力練習 第 3 回</h1>
 <p class="en">Spanish listening practice, B1, round 3 — 15 recordings, 30 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=es_b1/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="es">¿Vamos a cenar al italiano de la esquina?</span><div class="en">我們去轉角那家義大利餐廳吃晚餐好嗎？</div></div><div class="ln"><span class="who">女</span><span lang="es">Han cerrado por vacaciones hasta el lunes. Podemos ir al mexicano.</span><div class="en">他們休假關到星期一。我們可以去墨西哥餐廳。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="es">¿Has llamado al fontanero?</span><div class="en">你打給水電工了嗎？</div></div><div class="ln"><span class="who">男</span><span lang="es">Sí, viene mañana a las ocho, antes de que me vaya a trabajar.</span><div class="en">打了，他明天八點來，在我出門上班前。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="es">Me han ofrecido un trabajo en Londres, pero no sé si aceptarlo.</span><div class="en">有人給我倫敦的工作，可是我不知道要不要接受。</div></div><div class="ln"><span class="who">女</span><span lang="es">¿Por qué? ¿Es por el sueldo?</span><div class="en">為什麼？是因為薪水嗎？</div></div><div class="ln"><span class="who">男</span><span lang="es">No, el sueldo es muy bueno. Es que mi mujer no quiere mudarse.</span><div class="en">不是，薪水很好。是我太太不想搬家。</div></div></details></div>
@@ -57,8 +64,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 13 段</b>　新聞 6。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="es">Noticia 6.</span><div class="en">新聞 6。</div></div><div class="ln"><span class="who">男</span><span lang="es">Mañana el cielo estará nublado en casi toda la península, con lluvias débiles en el oeste.</span><div class="en">明天半島大部分地區多雲，西部有小雨。</div></div></details></div>
 <div class="item"><b>第 14 段</b>　你會聽到六個人說自己的近況。請把每個人配上一句敘述。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="es">Vas a escuchar a seis personas que cuentan novedades de su vida. Relaciona cada persona con un enunciado.</span><div class="en">你會聽到六個人說自己的近況。請把每個人配上一句敘述。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 1</span><div class="en">第 1 個人</div></div><div class="ln"><span class="who">女</span><span lang="es">Después de cuarenta años dando clase, el viernes fue mi último día en el colegio. Ahora tengo todo el tiempo del mundo.</span><div class="en">教了四十年書，星期五是我在學校的最後一天。現在我有用不完的時間。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 2</span><div class="en">第 2 個人</div></div><div class="ln"><span class="who">男</span><span lang="es">Me rompí la pierna esquiando y llevo un mes en casa con muletas.</span><div class="en">我滑雪摔斷了腿，已經拄著拐杖在家一個月了。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 3</span><div class="en">第 3 個人</div></div><div class="ln"><span class="who">女</span><span lang="es">Con el alquiler tan caro, he tenido que volver a mi habitación de cuando era niña, en casa de mis padres.</span><div class="en">房租太貴，我只好搬回爸媽家，住我小時候的房間。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 4</span><div class="en">第 4 個人</div></div><div class="ln"><span class="who">男</span><span lang="es">Por fin he aprobado el último examen de la carrera. En julio me dan el título.</span><div class="en">我終於通過大學的最後一場考試了。七月拿到學位。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 5</span><div class="en">第 5 個人</div></div><div class="ln"><span class="who">女</span><span lang="es">Nos conocimos en una boda en Granada. Ya llevamos seis meses juntos.</span><div class="en">我們是在格拉納達的一場婚禮上認識的。已經在一起六個月了。</div></div><div class="ln"><span class="who">旁白</span><span lang="es">Persona 6</span><div class="en">第 6 個人</div></div><div class="ln"><span class="who">男</span><span lang="es">Mi hermano y yo hemos abierto una tienda de bicicletas en el barrio.</span><div class="en">我和我弟弟在社區開了一家腳踏車店。</div></div></details></div>
 <div class="item"><b>第 15 段</b>　你會聽到兩位同事帕布羅和伊蓮娜的對話。請指出每句話是誰說的。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="es">Vas a escuchar una conversación entre dos compañeros de trabajo, Pablo e Irene. Indica quién dice cada cosa.</span><div class="en">你會聽到兩位同事帕布羅和伊蓮娜的對話。請指出每句話是誰說的。</div></div><div class="ln"><span class="who">男</span><span lang="es">Irene, ¿qué te parece la propuesta de trabajar desde casa dos días a la semana?</span><div class="en">伊蓮娜，妳覺得每週在家上班兩天的提案怎麼樣？</div></div><div class="ln"><span class="who">女</span><span lang="es">A mí me viene genial. Tardo una hora en llegar a la oficina, así que ganaría dos horas al día.</span><div class="en">對我來說太好了。我到公司要一個小時，這樣每天可以多出兩小時。</div></div><div class="ln"><span class="who">男</span><span lang="es">Yo no lo tengo tan claro. En casa me distraigo mucho, con los niños y el perro.</span><div class="en">我就不太確定了。在家我很容易分心，有小孩又有狗。</div></div><div class="ln"><span class="who">女</span><span lang="es">Pues yo me concentro mejor en casa. Aquí hay demasiado ruido.</span><div class="en">我倒是在家比較能專心。這裡太吵了。</div></div><div class="ln"><span class="who">男</span><span lang="es">Lo que sí echaría de menos es tomar café con los compañeros.</span><div class="en">我會懷念的是跟同事一起喝咖啡。</div></div><div class="ln"><span class="who">女</span><span lang="es">Eso es verdad. Podríamos quedar los viernes para comer todos juntos.</span><div class="en">這倒是。我們可以星期五約大家一起吃午餐。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=es_b1/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>15 段母語錄音、30 題。</p><a class="cta" href="/?l=es_b1/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

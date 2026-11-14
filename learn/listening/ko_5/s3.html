@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,25 +30,33 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_5/">韓文 5 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_5/">韓文 5 級</a></div>
 <article class="card">
 <h1>韓文 5 級 聽力練習 第 3 回</h1>
 <p class="en">Korean listening practice, Level 5, round 3 — 5 recordings, 10 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ko_5/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">번역기 성능이 좋아지면서 이제 외국어를 배울 필요가 없다는 의견도 나오는데요.</span><div class="en">隨著翻譯機性能變好，也出現了「現在不需要學外語」的意見。</div></div><div class="ln"><span class="who">男</span><span lang="ko">저는 그렇게 생각하지 않습니다. 번역기는 말의 뜻을 옮겨 줄 수는 있지만, 그 말에 담긴 문화나 말하는 사람의 감정까지 정확하게 전달하지는 못합니다.</span><div class="en">我不這麼認為。翻譯機雖然能轉換話語的意思，卻沒辦法準確傳達話裡包含的文化，或說話者的情感。</div></div><div class="ln"><span class="who">女</span><span lang="ko">그래도 여행이나 간단한 업무에는 충분하지 않을까요?</span><div class="en">不過用在旅行或簡單的工作上，應該就夠了吧？</div></div><div class="ln"><span class="who">男</span><span lang="ko">간단한 상황에서는 편리하겠지요. 하지만 사람과 깊은 관계를 맺으려면 직접 그 사람의 언어로 이야기하는 것만큼 좋은 방법은 없다고 봅니다.</span><div class="en">在簡單的情況下是很方便吧。但要跟人建立深厚的關係，我認為沒有比直接用對方的語言交談更好的方法了。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">비가 온 뒤에 나는 흙냄새, 여러분도 맡아 보셨지요? 이 냄새에는 &#x27;페트리코&#x27;라는 이름이 있습니다.</span><div class="en">下過雨後的泥土味，大家也聞過吧？這種味道有個名字叫「潮土油」。</div></div><div class="ln"><span class="who">女</span><span lang="ko">비가 오지 않는 동안 식물에서 나온 기름과 흙 속 미생물이 만든 물질이 땅에 쌓여 있다가, 빗방울이 떨어지면서 공기 중으로 퍼져 나오는 것입니다.</span><div class="en">沒下雨的期間，植物分泌的油和土裡微生物產生的物質會累積在地面上，等雨滴落下時就擴散到空氣中。</div></div><div class="ln"><span class="who">女</span><span lang="ko">사람의 코는 이 물질에 매우 민감해서 아주 적은 양도 알아챌 수 있습니다. 과학자들은 먼 옛날 사람들이 이 냄새로 물이 있는 곳을 찾았기 때문에 이런 능력이 발달했다고 보고 있습니다.</span><div class="en">人的鼻子對這種物質非常敏感，就算量非常少也聞得出來。科學家認為，這是因為很久以前的人靠這種味道找水源，所以這種能力才發展出來。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">존경하는 직원 여러분, 오늘은 우리 회사가 창립 30주년을 맞는 뜻깊은 날입니다.</span><div class="en">敬愛的各位同仁，今天是本公司創立三十週年的重要日子。</div></div><div class="ln"><span class="who">男</span><span lang="ko">작은 사무실에서 직원 다섯 명으로 시작한 회사가 이제는 해외 열 개 나라에 제품을 수출하는 기업으로 성장했습니다. 이 모든 것은 어려운 시기마다 서로를 믿고 함께 버텨 준 여러분 덕분입니다.</span><div class="en">在小辦公室裡、從五名員工起步的公司，如今已成長為出口產品到海外十個國家的企業。這一切都要歸功於各位在每個困難時期互相信任、一起撐過來。</div></div><div class="ln"><span class="who">男</span><span lang="ko">앞으로의 30년도 여러분과 함께 새로운 역사를 써 나가겠습니다. 감사합니다.</span><div class="en">未來的三十年，我也會和各位一起寫下新的歷史。謝謝大家。</div></div></details></div>
 <div class="item"><b>第 4 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">요즘은 혼자서 밥을 먹는 사람들이 많아졌는데요.</span><div class="en">最近一個人吃飯的人變多了。</div></div><div class="ln"><span class="who">女</span><span lang="ko">네, 1인 가구가 늘면서 혼자 식사하는 사람이 많아졌습니다. 그런데 혼자 먹을 때는 휴대폰을 보면서 빨리 먹거나 간단한 음식으로 대충 때우는 경우가 많습니다. 이런 식습관이 계속되면 영양이 부족해지기 쉽지요.</span><div class="en">是的，隨著單人家庭增加，一個人用餐的人變多了。不過一個人吃飯時，常常邊看手機邊快速吃完，或是用簡單的食物隨便打發。這種飲食習慣持續下去，很容易營養不良。</div></div><div class="ln"><span class="who">女</span><span lang="ko">혼자 먹더라도 채소를 곁들인 식사를 천천히 하는 것이 중요합니다. 식사 시간만큼은 자신을 위한 시간이라고 생각해 보세요.</span><div class="en">就算一個人吃，搭配蔬菜慢慢吃也很重要。至少把吃飯時間當作是為自己而留的時間吧。</div></div></details></div>
 <div class="item"><b>第 5 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">그렇다면 그 다리가 관광 명소가 된 건 밤마다 바뀌는 조명 덕분이군요.</span><div class="en">這麼說來，那座橋會成為觀光景點，是多虧了每天晚上變換的燈光啊。</div></div><div class="ln"><span class="who">男</span><span lang="ko">네. 처음 다리를 지을 때는 단순히 강 양쪽을 연결하는 교통 시설이었습니다. 그런데 몇 년 전 계절과 날씨에 따라 색이 바뀌는 조명을 설치하면서 사진을 찍으러 오는 사람들이 크게 늘었습니다.</span><div class="en">是的。剛建橋時，它只是連接河兩岸的交通設施。可是幾年前裝了會隨季節和天氣變色的燈光後，來拍照的人大幅增加。</div></div><div class="ln"><span class="who">男</span><span lang="ko">하지만 밤늦게까지 사람이 몰리면서 주변 주민들이 소음 때문에 불편을 겪고 있어서, 조명 시간을 조정하는 방안을 논의하고 있습니다.</span><div class="en">不過人潮一直聚集到深夜，附近居民因為噪音而困擾，所以正在討論調整燈光時間的方案。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ko_5/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>5 段母語錄音、10 題。</p><a class="cta" href="/?l=ko_5/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

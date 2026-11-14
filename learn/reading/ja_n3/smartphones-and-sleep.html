@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n3/">日文 N3</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n3/">日文 N3</a></div>
 <article class="card">
 <h1 lang="ja">スマートフォンと睡眠</h1>
 <p class="sub">智慧型手機與睡眠</p>
@@ -46,10 +54,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">もう一つの理由は、内容である。SNSのメッセージや動画、ゲームなどは、頭を興奮させる。寝る直前に仕事のメールを読んでしまい、心配で眠れなくなったという人もいる。「あと五分だけ」のつもりが、気がつくと一時間も過ぎていた、という経験がある人も少なくないはずだ。</div><div class="rd" lang="ja">もうひとつのりゆうは、ないようである。SNSのメッセージやどうが、ゲームなどは、あたまをこうふんさせる。ねるちょくぜんにしごとのメールをよんでしまい、しんぱいでねむれなくなったというひともいる。「あとごふんだけ」のつもりが、きがつくといちじかんもすぎていた、というけいけんがあるひともすくなくないはずだ。</div><div class="tl">另一個原因是內容。社群訊息、影片、遊戲等會讓頭腦興奮。也有人在睡前看了工作的郵件，擔心得睡不著。本來打算「只再五分鐘」，回過神來卻已經過了一個小時，有這種經驗的人應該不少。</div></div>
 <div class="para"><div lang="ja">睡眠が足りないと、次の日に集中力が下がったり、いらいらしやすくなったりする。長く続けば、体の健康にも影響が出るおそれがある。特に成長期の子どもにとって、睡眠は体と心を育てるために欠かせないものだ。</div><div class="rd" lang="ja">すいみんがたりないと、つぎのひにしゅうちゅうりょくがさがったり、いらいらしやすくなったりする。ながくつづけば、からだのけんこうにもえいきょうがでるおそれがある。とくにせいちょうきのこどもにとって、すいみんはからだとこころをそだてるためにかかせないものだ。</div><div class="tl">睡眠不足的話，隔天專注力會下降，也容易煩躁。長期下去，身體健康也可能受到影響。特別是對成長期的孩子來說，睡眠是培育身心不可或缺的。</div></div>
 <div class="para"><div lang="ja">では、どうすればいいのだろうか。専門家は、寝る一時間前にはスマートフォンを使うのをやめ、寝室に持ち込まないことをすすめている。目覚まし時計の代わりにスマートフォンを使っている人は、昔ながらの時計を使うのも一つの方法だ。便利な道具だからこそ、上手に距離をとることが大切なのではないだろうか。</div><div class="rd" lang="ja">では、どうすればいいのだろうか。せんもんかは、ねるいちじかんまえにはスマートフォンをつかうのをやめ、しんしつにもちこまないことをすすめている。めざましどけいのかわりにスマートフォンをつかっているひとは、むかしながらのとけいをつかうのもひとつのほうほうだ。べんりなどうぐだからこそ、じょうずにきょりをとることがたいせつなのではないだろうか。</div><div class="tl">那麼該怎麼辦呢？專家建議睡前一小時就停止使用手機，也不要帶進臥室。用手機當鬧鐘的人，改用傳統的時鐘也是一個方法。正因為是方便的工具，懂得和它保持適當的距離才重要，不是嗎？</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">睡眠</b> <span class="en">すいみん</span>　睡眠</div><div><b lang="ja">影響</b> <span class="en">えいきょう</span>　影響</div><div><b lang="ja">与える</b> <span class="en">あたえる</span>　給予；造成</div><div><b lang="ja">画面</b> <span class="en">がめん</span>　螢幕畫面</div><div><b lang="ja">勘違い</b> <span class="en">かんちがい</span>　誤會；誤以為</div><div><b lang="ja">内容</b> <span class="en">ないよう</span>　內容</div><div><b lang="ja">興奮</b> <span class="en">こうふん</span>　興奮</div><div><b lang="ja">集中力</b> <span class="en">しゅうちゅうりょく</span>　專注力</div><div><b lang="ja">いらいら</b> <span class="en">いらいら</span>　煩躁</div><div><b lang="ja">専門家</b> <span class="en">せんもんか</span>　專家</div><div><b lang="ja">寝室</b> <span class="en">しんしつ</span>　臥室</div><div><b lang="ja">持ち込む</b> <span class="en">もちこむ</span>　帶進</div><div><b lang="ja">距離</b> <span class="en">きょり</span>　距離</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/smartphones-and-sleep">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">睡眠</b> <span class="en">すいみん</span>　睡眠</div><div><b lang="ja">影響</b> <span class="en">えいきょう</span>　影響</div><div><b lang="ja">与える</b> <span class="en">あたえる</span>　給予；造成</div><div><b lang="ja">画面</b> <span class="en">がめん</span>　螢幕畫面</div><div><b lang="ja">勘違い</b> <span class="en">かんちがい</span>　誤會；誤以為</div><div><b lang="ja">内容</b> <span class="en">ないよう</span>　內容</div><div><b lang="ja">興奮</b> <span class="en">こうふん</span>　興奮</div><div><b lang="ja">集中力</b> <span class="en">しゅうちゅうりょく</span>　專注力</div><div><b lang="ja">いらいら</b> <span class="en">いらいら</span>　煩躁</div><div><b lang="ja">専門家</b> <span class="en">せんもんか</span>　專家</div><div><b lang="ja">寝室</b> <span class="en">しんしつ</span>　臥室</div><div><b lang="ja">持ち込む</b> <span class="en">もちこむ</span>　帶進</div><div><b lang="ja">距離</b> <span class="en">きょり</span>　距離</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/smartphones-and-sleep">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="city-marathon.html">← みどり市民マラソン大会のご案内</a><span></span></div>
+<div class="nav"><a href="city-marathon.html">← みどり市民マラソン大会のご案内</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/smartphones-and-sleep">到網站讀這篇、做題目 →</a><div class="nav"><a href="city-marathon.html">← みどり市民マラソン大会のご案内</a><span></span></div><h2>生詞</h2><div class="gl"><div><b lang="ja">睡眠</b> <span class="en">すいみん</span>　睡眠</div><div><b lang="ja">影響</b> <span class="en">えいきょう</span>　影響</div><div><b lang="ja">与える</b> <span class="en">あたえる</span>　給予；造成</div><div><b lang="ja">画面</b> <span class="en">がめん</span>　螢幕畫面</div><div><b lang="ja">勘違い</b> <span class="en">かんちがい</span>　誤會；誤以為</div><div><b lang="ja">内容</b> <span class="en">ないよう</span>　內容</div><div><b lang="ja">興奮</b> <span class="en">こうふん</span>　興奮</div><div><b lang="ja">集中力</b> <span class="en">しゅうちゅうりょく</span>　專注力</div><div><b lang="ja">いらいら</b> <span class="en">いらいら</span>　煩躁</div><div><b lang="ja">専門家</b> <span class="en">せんもんか</span>　專家</div><div><b lang="ja">寝室</b> <span class="en">しんしつ</span>　臥室</div><div><b lang="ja">持ち込む</b> <span class="en">もちこむ</span>　帶進</div><div><b lang="ja">距離</b> <span class="en">きょり</span>　距離</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

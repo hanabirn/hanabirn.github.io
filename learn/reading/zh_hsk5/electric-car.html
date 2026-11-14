@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">买电动车</h1>
 <p class="en">Buying an electric car — Chinese reading, HSK 5</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">去年我家换了一辆电动汽车。当时家里人意见不一：我觉得电动车环保，用电比加油便宜得多；爸爸却担心电池不耐用，跑长途的时候找不到地方充电。</div><div class="rd" lang="zh-Hans">qù nián wǒ jiā huàn le yí liàng diàn dòng qì chē dāng shí jiā li rén yì jiàn bù yī wǒ jué de diàn dòng chē huán bǎo yòng diàn bǐ jiā yóu pián yi de duō bà ba què dān xīn diàn chí bú nài yòng pǎo cháng tú de shí hou zhǎo bú dào dì fang chōng diàn</div><div class="tl">Last year my family switched to an electric car. At the time we disagreed: I thought electric cars were green and that electricity was much cheaper than petrol; Dad worried the battery wouldn&#x27;t last and that on long trips we couldn&#x27;t find anywhere to charge.</div></div>
 <div class="para"><div lang="zh-Hans">开了一年以后，事实证明我们俩说的都有道理。在城市里，电动车确实又安静又省钱，每个月的费用还不到原来的三分之一。可是国庆节开车回老家，高速公路服务区的充电桩前排起了长队，我们等了一个多小时。</div><div class="rd" lang="zh-Hans">kāi le yì nián yǐ hòu shì shí zhèng míng wǒ men liǎ shuō de dōu yǒu dào li zài chéng shì lǐ diàn dòng chē què shí yòu ān jìng yòu shěng qián měi gè yuè de fèi yòng hái bú dào yuán lái de sān fēn zhī yī kě shì Guó qìng jié kāi chē huí lǎo jiā gāo sù gōng lù fú wù qū de chōng diàn zhuāng qián pái qǐ le cháng duì wǒ men děng le yí gè duō xiǎo shí</div><div class="tl">After a year of driving it, the facts showed we were both right. In the city the electric car really is quiet and cheap — less than a third of what we used to spend each month. But driving home for National Day, there were long queues at the motorway service-area chargers, and we waited over an hour.</div></div>
 <div class="para"><div lang="zh-Hans">看来，新技术带来方便的同时，相关的设施也要跟上才行。</div><div class="rd" lang="zh-Hans">kàn lai xīn jì shù dài lái fāng biàn de tóng shí xiāng guān de shè shī yě yào gēn shàng cái xíng</div><div class="tl">It seems that when new technology brings convenience, the facilities that go with it have to keep up too.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电动</b> <span class="en">diàndòng</span>　electric</div><div><b lang="zh-Hans">环保</b> <span class="en">huánbǎo</span>　environmentally friendly</div><div><b lang="zh-Hans">电池</b> <span class="en">diànchí</span>　battery</div><div><b lang="zh-Hans">耐用</b> <span class="en">nàiyòng</span>　durable</div><div><b lang="zh-Hans">长途</b> <span class="en">chángtú</span>　long-distance</div><div><b lang="zh-Hans">证明</b> <span class="en">zhèngmíng</span>　to prove</div><div><b lang="zh-Hans">充电桩</b> <span class="en">chōngdiànzhuāng</span>　charging point</div><div><b lang="zh-Hans">设施</b> <span class="en">shèshī</span>　facilities</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/electric-car">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电动</b> <span class="en">diàndòng</span>　electric</div><div><b lang="zh-Hans">环保</b> <span class="en">huánbǎo</span>　environmentally friendly</div><div><b lang="zh-Hans">电池</b> <span class="en">diànchí</span>　battery</div><div><b lang="zh-Hans">耐用</b> <span class="en">nàiyòng</span>　durable</div><div><b lang="zh-Hans">长途</b> <span class="en">chángtú</span>　long-distance</div><div><b lang="zh-Hans">证明</b> <span class="en">zhèngmíng</span>　to prove</div><div><b lang="zh-Hans">充电桩</b> <span class="en">chōngdiànzhuāng</span>　charging point</div><div><b lang="zh-Hans">设施</b> <span class="en">shèshī</span>　facilities</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/electric-car">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="gap-year.html">← 考研还是工作</a><a href="square-dance.html">广场舞 →</a></div>
+<div class="nav"><a href="gap-year.html">← 考研还是工作</a><a href="square-dance.html">广场舞 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/electric-car">到網站讀這篇、做題目 →</a><div class="nav"><a href="gap-year.html">← 考研还是工作</a><a href="square-dance.html">广场舞 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电动</b> <span class="en">diàndòng</span>　electric</div><div><b lang="zh-Hans">环保</b> <span class="en">huánbǎo</span>　environmentally friendly</div><div><b lang="zh-Hans">电池</b> <span class="en">diànchí</span>　battery</div><div><b lang="zh-Hans">耐用</b> <span class="en">nàiyòng</span>　durable</div><div><b lang="zh-Hans">长途</b> <span class="en">chángtú</span>　long-distance</div><div><b lang="zh-Hans">证明</b> <span class="en">zhèngmíng</span>　to prove</div><div><b lang="zh-Hans">充电桩</b> <span class="en">chōngdiànzhuāng</span>　charging point</div><div><b lang="zh-Hans">设施</b> <span class="en">shèshī</span>　facilities</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

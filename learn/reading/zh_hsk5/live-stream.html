@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">直播带货</h1>
 <p class="en">Live-stream selling — Chinese reading, HSK 5</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">这两年，直播带货越来越流行。主播在镜头前介绍商品，一边试用一边讲解，观众看中了就能马上下单，价格往往比商店还便宜。</div><div class="rd" lang="zh-Hans">zhè liǎng nián zhí bō dài huò yuè lái yuè liú xíng zhǔ bō zài jìng tóu qián jiè shào shāng pǐn yì biān shì yòng yì biān jiǎng jiě guān zhòng kàn zhòng le jiù néng mǎ shàng xià dān jià gé wǎng wǎng bǐ shāng diàn hái pián yi</div><div class="tl">Live-stream selling has become more and more popular these past two years. Hosts introduce products on camera, trying them out while explaining, and viewers who like something can order on the spot, often at prices lower than in shops.</div></div>
 <div class="para"><div lang="zh-Hans">我妈妈就是一位忠实的观众。她说看直播像跟朋友聊天，很有意思。可是上个月，她买的一件羽绒服到货后发现质量很差，跟直播里看到的完全不一样，退货也花了好几天。</div><div class="rd" lang="zh-Hans">wǒ mā ma jiù shì yí wèi zhōng shí de guān zhòng tā shuō kàn zhí bō xiàng gēn péng you liáo tiān hěn yǒu yì si kě shì shàng gè yuè tā mǎi de yí jiàn yǔ róng fú dào huò hòu fā xiàn zhì liàng hěn chà gēn zhí bō lǐ kàn dào de wán quán bù yí yàng tuì huò yě huā le hǎo jǐ tiān</div><div class="tl">My mum is a loyal viewer. She says watching is like chatting with friends — great fun. But last month a down jacket she bought turned out to be poor quality, nothing like what she saw on the stream, and returning it took days.</div></div>
 <div class="para"><div lang="zh-Hans">直播购物方便又有趣，但是主播的话不能全信。买之前最好看看其他买家的评价，冷静地想一想自己是不是真的需要。</div><div class="rd" lang="zh-Hans">zhí bō gòu wù fāng biàn yòu yǒu qù dàn shì zhǔ bō de huà bù néng quán xìn mǎi zhī qián zuì hǎo kàn kan qí tā mǎi jiā de píng jià lěng jìng de xiǎng yì xiǎng zì jǐ shì bú shì zhēn de xū yào</div><div class="tl">Live-stream shopping is convenient and fun, but you can&#x27;t believe everything the hosts say. Before buying, it&#x27;s best to read other buyers&#x27; reviews and think calmly about whether you really need it.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">直播</b> <span class="en">zhíbō</span>　live stream</div><div><b lang="zh-Hans">主播</b> <span class="en">zhǔbō</span>　stream host</div><div><b lang="zh-Hans">商品</b> <span class="en">shāngpǐn</span>　goods, product</div><div><b lang="zh-Hans">往往</b> <span class="en">wǎngwǎng</span>　often, usually</div><div><b lang="zh-Hans">忠实</b> <span class="en">zhōngshí</span>　loyal</div><div><b lang="zh-Hans">质量</b> <span class="en">zhìliàng</span>　quality</div><div><b lang="zh-Hans">退货</b> <span class="en">tuìhuò</span>　to return goods</div><div><b lang="zh-Hans">评价</b> <span class="en">píngjià</span>　review, evaluation</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/live-stream">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">直播</b> <span class="en">zhíbō</span>　live stream</div><div><b lang="zh-Hans">主播</b> <span class="en">zhǔbō</span>　stream host</div><div><b lang="zh-Hans">商品</b> <span class="en">shāngpǐn</span>　goods, product</div><div><b lang="zh-Hans">往往</b> <span class="en">wǎngwǎng</span>　often, usually</div><div><b lang="zh-Hans">忠实</b> <span class="en">zhōngshí</span>　loyal</div><div><b lang="zh-Hans">质量</b> <span class="en">zhìliàng</span>　quality</div><div><b lang="zh-Hans">退货</b> <span class="en">tuìhuò</span>　to return goods</div><div><b lang="zh-Hans">评价</b> <span class="en">píngjià</span>　review, evaluation</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/live-stream">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="haze.html">← 雾霾</a><a href="gap-year.html">考研还是工作 →</a></div>
+<div class="nav"><a href="haze.html">← 雾霾</a><a href="gap-year.html">考研还是工作 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/live-stream">到網站讀這篇、做題目 →</a><div class="nav"><a href="haze.html">← 雾霾</a><a href="gap-year.html">考研还是工作 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">直播</b> <span class="en">zhíbō</span>　live stream</div><div><b lang="zh-Hans">主播</b> <span class="en">zhǔbō</span>　stream host</div><div><b lang="zh-Hans">商品</b> <span class="en">shāngpǐn</span>　goods, product</div><div><b lang="zh-Hans">往往</b> <span class="en">wǎngwǎng</span>　often, usually</div><div><b lang="zh-Hans">忠实</b> <span class="en">zhōngshí</span>　loyal</div><div><b lang="zh-Hans">质量</b> <span class="en">zhìliàng</span>　quality</div><div><b lang="zh-Hans">退货</b> <span class="en">tuìhuò</span>　to return goods</div><div><b lang="zh-Hans">评价</b> <span class="en">píngjià</span>　review, evaluation</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

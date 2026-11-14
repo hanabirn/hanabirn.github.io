@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_4/">韓文 4 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_4/">韓文 4 級</a></div>
 <article class="card">
 <h1 lang="ko">혼밥 문화</h1>
 <p class="sub">一個人吃飯的文化</p>
@@ -45,10 +53,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ko">혼자 앉을 수 있는 1인석을 만든 식당도 많아졌고, 메뉴를 1인분으로 파는 곳도 늘었다. 사람들은 다른 사람을 신경 쓰지 않고 편하게 식사할 수 있어서 좋다고 말한다.</div><div class="tl">設置單人座位的餐廳變多了，以一人份販售菜單的地方也增加了。人們說能不在意別人、自在地用餐，所以很好。</div></div>
 <div class="para"><div lang="ko">다만 전문가들은 혼자 먹을수록 식사를 빨리 하거나 대충 하기 쉬우니 주의해야 한다고 조언한다.</div><div class="tl">不過專家建議，一個人吃飯越容易吃得快或隨便吃，所以要多注意。</div></div>
 <div class="para"><div lang="ko">혼밥이 자연스러워진 것은 개인의 시간을 소중히 여기는 사회 분위기와도 관련이 있다. 앞으로 이런 변화는 더욱 빨라질 것으로 보인다.</div><div class="tl">一個人吃飯變得自然，也和重視個人時間的社會氣氛有關。這種變化今後似乎還會更快。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ko">이상하다</b>　奇怪</div><div><b lang="ko">자연스럽다</b>　自然</div><div><b lang="ko">1인석</b>　單人座位</div><div><b lang="ko">신경 쓰다</b>　在意</div><div><b lang="ko">식사하다</b>　用餐</div><div><b lang="ko">전문가</b>　專家</div><div><b lang="ko">대충</b>　隨便地</div><div><b lang="ko">조언하다</b>　建議</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_4/honbap">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ko">이상하다</b>　奇怪</div><div><b lang="ko">자연스럽다</b>　自然</div><div><b lang="ko">1인석</b>　單人座位</div><div><b lang="ko">신경 쓰다</b>　在意</div><div><b lang="ko">식사하다</b>　用餐</div><div><b lang="ko">전문가</b>　專家</div><div><b lang="ko">대충</b>　隨便地</div><div><b lang="ko">조언하다</b>　建議</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_4/honbap">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="single-households.html">← 늘어나는 1인 가구</a><a href="workation.html">일하면서 여행하는 워케이션 →</a></div>
+<div class="nav"><a href="single-households.html">← 늘어나는 1인 가구</a><a href="workation.html">일하면서 여행하는 워케이션 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_4/honbap">到網站讀這篇、做題目 →</a><div class="nav"><a href="single-households.html">← 늘어나는 1인 가구</a><a href="workation.html">일하면서 여행하는 워케이션 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ko">이상하다</b>　奇怪</div><div><b lang="ko">자연스럽다</b>　自然</div><div><b lang="ko">1인석</b>　單人座位</div><div><b lang="ko">신경 쓰다</b>　在意</div><div><b lang="ko">식사하다</b>　用餐</div><div><b lang="ko">전문가</b>　專家</div><div><b lang="ko">대충</b>　隨便地</div><div><b lang="ko">조언하다</b>　建議</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

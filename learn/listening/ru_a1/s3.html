@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,26 +30,34 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ru_a1/">俄文 A1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ru_a1/">俄文 A1</a></div>
 <article class="card">
 <h1>俄文 A1 聽力練習 第 3 回</h1>
 <p class="en">Russian listening practice, A1, round 3 — 6 recordings, 10 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ru_a1/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ru">О́ля, где ты была́ вчера́?</span><div class="en">奧莉亞，妳昨天去哪裡了？</div></div><div class="ln"><span class="who">女</span><span lang="ru">Я была́ у врача́. У меня́ боле́ла голова́.</span><div class="en">我去看醫生了。我頭痛。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ru">Како́й сего́дня день?</span><div class="en">今天星期幾？</div></div><div class="ln"><span class="who">男</span><span lang="ru">Сего́дня четве́рг, а за́втра пя́тница.</span><div class="en">今天星期四，明天星期五。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ru">Ты живёшь далеко́ от университе́та?</span><div class="en">妳住得離大學遠嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ru">Нет, бли́зко. Я хожу́ пешко́м, де́сять мину́т.</span><div class="en">不，很近。我走路去，十分鐘。</div></div></details></div>
 <div class="item"><b>第 4 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ru">Что ты купи́л на ры́нке?</span><div class="en">你在市場買了什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ru">Я́блоки и помидо́ры. Огурцо́в не бы́ло.</span><div class="en">蘋果和番茄。沒有小黃瓜。</div></div></details></div>
 <div class="item"><b>第 5 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ru">Алло́, э́то гости́ница «Москва́»?</span><div class="en">喂，請問是「莫斯科」飯店嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ru">Да. Слу́шаю вас.</span><div class="en">是的，請說。</div></div><div class="ln"><span class="who">男</span><span lang="ru">Я хочу́ заказа́ть но́мер на три дня, с понеде́льника.</span><div class="en">我想訂一間房，從星期一起住三天。</div></div></details></div>
 <div class="item"><b>第 6 段</b>　請聽一段敘述。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ru">Послу́шайте расска́з.</span><div class="en">請聽一段敘述。</div></div><div class="ln"><span class="who">女</span><span lang="ru">До́брый день! Меня́ зову́т Мари́на. Мне три́дцать лет. Я живу́ в Со́чи, э́то го́род на Чёрном мо́ре. Я рабо́таю в гости́нице администра́тором. Ка́ждый день я говорю́ с тури́стами по-англи́йски и по-неме́цки. Мой муж — по́вар, он рабо́тает в рестора́не. У нас дво́е дете́й: сын и дочь. Ле́том в Со́чи жа́рко, и мы ча́сто пла́ваем в мо́ре. А зимо́й мы е́здим в го́ры ката́ться на лы́жах. Я о́чень люблю́ свой го́род и не хочу́ жить в дру́гом ме́сте.</span><div class="en">午安！我叫瑪麗娜。我三十歲。我住在索契，那是黑海邊的一座城市。我在飯店當櫃台人員。我每天用英文和德文跟觀光客說話。我丈夫是廚師，在餐廳工作。我們有兩個孩子：一個兒子和一個女兒。夏天索契很熱，我們常去海裡游泳。冬天我們去山上滑雪。我很愛我的城市，不想住在別的地方。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ru_a1/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>6 段母語錄音、10 題。</p><a class="cta" href="/?l=ru_a1/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

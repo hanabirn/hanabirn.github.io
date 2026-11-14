@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n1/">日文 N1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n1/">日文 N1</a></div>
 <article class="card">
 <h1>日文 N1 聽力練習 第 2 回</h1>
 <p class="en">Japanese listening practice, N1, round 2 — 10 recordings, 11 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ja_n1/s2">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　護理師和女生在醫院說話。女生接下來首先要去哪裡？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">病院で看護師と女の人が話しています。女の人はこのあとまずどこへ行きますか。</span><div class="en">護理師和女生在醫院說話。女生接下來首先要去哪裡？</div></div><div class="ln"><span class="who">男</span><span lang="ja">退院の手続きですが、まず一階の会計で精算をお願いします。</span><div class="en">出院手續方面，請先到一樓的櫃台結帳。</div></div><div class="ln"><span class="who">女</span><span lang="ja">お薬は？</span><div class="en">藥呢？</div></div><div class="ln"><span class="who">男</span><span lang="ja">お薬は、会計が済んでから、薬局でお受け取りください。次回の外来の予約は、お薬をもらう前でも後でも結構です。</span><div class="en">藥請在結完帳之後到藥局領取。下次門診的預約，在領藥前後都可以。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">女の人はこのあとまずどこへ行きますか。</span><div class="en">女生接下來首先要去哪裡？</div></div></details></div>
 <div class="item"><b>第 2 段</b>　公寓管理委員會的女生和男生在說話。男生在大會前要做什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">マンションの管理組合で女の人と男の人が話しています。男の人は総会までに何をしますか。</span><div class="en">公寓管理委員會的女生和男生在說話。男生在大會前要做什麼？</div></div><div class="ln"><span class="who">女</span><span lang="ja">来月の総会ですが、議題の資料はわたしが作ります。去年の議事録はコピーして配ればいいですね。</span><div class="en">下個月的大會，議題資料我來做。去年的會議紀錄影印發下去就好吧。</div></div><div class="ln"><span class="who">女</span><span lang="ja">工事の見積もりは管理会社に頼んであるので、届いたら転送します。</span><div class="en">工程的報價已經請管理公司提供，收到後我會轉寄。</div></div><div class="ln"><span class="who">女</span><span lang="ja">佐藤さんには、住民アンケートの集計をお願いできますか。</span><div class="en">佐藤先生，可以麻煩您統計住戶問卷嗎？</div></div><div class="ln"><span class="who">男</span><span lang="ja">わかりました。</span><div class="en">好的。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">男の人は総会までに何をしますか。</span><div class="en">男生在大會前要做什麼？</div></div></details></div>
 <div class="item"><b>第 3 段</b>　男生和女生在說話。女生拒絕調職最主要的理由是什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">男の人と女の人が話しています。女の人が転勤を断ったいちばんの理由は何ですか。</span><div class="en">男生和女生在說話。女生拒絕調職最主要的理由是什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ja">大阪への転勤、断ったんだって？お子さんの学校のこと？</span><div class="en">聽說你拒絕調去大阪？是因為孩子學校的事嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ja">それも心配だったけど、いちばんは、近くに住んでいる母の介護があるからなの。</span><div class="en">那個也很擔心，但最主要是要照顧住在附近的母親。</div></div><div class="ln"><span class="who">男</span><span lang="ja">そうか、それは離れられないね。</span><div class="en">這樣啊，那確實走不開呢。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">女の人が転勤を断ったいちばんの理由は何ですか。</span><div class="en">女生拒絕調職最主要的理由是什麼？</div></div></details></div>
@@ -52,8 +59,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 8 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ja">彼の提案、聞けば聞くほど穴だらけだね。</span><div class="en">他的提案越聽越覺得漏洞百出。</div></div></details></div>
 <div class="item"><b>第 9 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ja">その話、ここだけの話にしておいてくださいね。</span><div class="en">那件事請只在這裡說說就好。</div></div></details></div>
 <div class="item"><b>第 10 段</b>　夫妻聽了旅行社人員的說明後在討論。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">旅行会社の人の説明を聞いて、夫婦が話しています。</span><div class="en">夫妻聽了旅行社人員的說明後在討論。</div></div><div class="ln"><span class="who">女 2</span><span lang="ja">現地でお申し込みいただけるツアーは四つです。午前中の市内観光、一泊の温泉ツアー、体力に自信のある方向けの日帰り山登り、それから夜の食べ歩きツアーです。</span><div class="en">當地可以報名的行程有四個：上午的市區觀光、一晚的溫泉行程、給體力有自信者的一日登山，還有晚上的美食巡禮。</div></div><div class="ln"><span class="who">男</span><span lang="ja">足を痛めているから、山登りは無理だな。温泉に泊まるほど時間もないし……。おいしいものが食べたいから、夜のにするよ。</span><div class="en">我腳受傷了，登山不行。也沒有時間在溫泉住一晚……我想吃好吃的，就選晚上的。</div></div><div class="ln"><span class="who">女</span><span lang="ja">わたしは、夜は友だちと会う約束があるの。昼間のうちに町を見ておきたいし、朝のツアーにする。</span><div class="en">我晚上和朋友有約。想趁白天看看城市，就選早上的行程。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">質問は二つです。</span><div class="en">問題有兩個。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ja_n1/s2">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div>
+<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>10 段母語錄音、11 題。</p><a class="cta" href="/?l=ja_n1/s2">到網站聽這一回 →</a><div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_6/">韓文 6 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ko_6/">韓文 6 級</a></div>
 <article class="card">
 <h1 lang="ko">기후 우울</h1>
 <p class="sub">氣候憂鬱</p>
@@ -45,10 +53,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ko">전문가들은 이러한 불안이 지극히 정상적인 반응이라고 말한다. 다만 무력감에 빠지기보다 행동으로 옮길 때 불안이 줄어든다고 조언한다.</div><div class="tl">專家說這種不安是非常正常的反應。不過他們建議，與其陷入無力感，不如付諸行動，這樣不安會減少。</div></div>
 <div class="para"><div lang="ko">작은 실천이 세상을 당장 바꾸지는 못하더라도 스스로를 지키는 힘이 될 수 있다.</div><div class="tl">小小的實踐即使無法馬上改變世界，也能成為守護自己的力量。</div></div>
 <div class="para"><div lang="ko">같은 고민을 가진 사람들과 이야기를 나누는 것도 도움이 된다. 혼자가 아니라는 사실을 아는 것만으로도 마음의 짐이 한결 가벼워지기 때문이다.</div><div class="tl">和有同樣煩惱的人聊聊也有幫助。因為光是知道自己並不孤單，心裡的重擔就會輕鬆許多。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ko">폭염</b>　熱浪</div><div><b lang="ko">일상</b>　日常</div><div><b lang="ko">마당</b>　（…的）情況下</div><div><b lang="ko">기후 위기</b>　氣候危機</div><div><b lang="ko">지극히</b>　極為</div><div><b lang="ko">무력감</b>　無力感</div><div><b lang="ko">옮기다</b>　轉移；付諸</div><div><b lang="ko">실천</b>　實踐</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/climate-anxiety">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ko">폭염</b>　熱浪</div><div><b lang="ko">일상</b>　日常</div><div><b lang="ko">마당</b>　（…的）情況下</div><div><b lang="ko">기후 위기</b>　氣候危機</div><div><b lang="ko">지극히</b>　極為</div><div><b lang="ko">무력감</b>　無力感</div><div><b lang="ko">옮기다</b>　轉移；付諸</div><div><b lang="ko">실천</b>　實踐</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/climate-anxiety">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="slow-travel.html">← 느리게 여행하기</a><a href="nudge-shopping.html">보이지 않는 손짓 →</a></div>
+<div class="nav"><a href="slow-travel.html">← 느리게 여행하기</a><a href="nudge-shopping.html">보이지 않는 손짓 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ko_6/climate-anxiety">到網站讀這篇、做題目 →</a><div class="nav"><a href="slow-travel.html">← 느리게 여행하기</a><a href="nudge-shopping.html">보이지 않는 손짓 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ko">폭염</b>　熱浪</div><div><b lang="ko">일상</b>　日常</div><div><b lang="ko">마당</b>　（…的）情況下</div><div><b lang="ko">기후 위기</b>　氣候危機</div><div><b lang="ko">지극히</b>　極為</div><div><b lang="ko">무력감</b>　無力感</div><div><b lang="ko">옮기다</b>　轉移；付諸</div><div><b lang="ko">실천</b>　實踐</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw5/">中文 HSK 5（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw5/">中文 HSK 5（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">自備環保杯</h1>
 <p class="en">Bring your own cup — Chinese reading, HSK 5</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">臺灣人愛喝手搖飲料，據說一年要喝掉十幾億杯。這麼多杯子和吸管，用一次就丟，對環境造成了很大的負擔。</div><div class="rd" lang="zh-Hant">Tái wān rén ài hē shǒu yáo yǐn liào jù shuō yì nián yào hē diào shí jǐ yì bēi zhè me duō bēi zi hé xī guǎn yòng yí cì jiù diū duì huán jìng zào chéng le hěn dà de fù dān</div><div class="tl">Taiwanese love hand-shaken drinks — reportedly more than a billion cups a year. So many cups and straws, used once and thrown away, put a heavy burden on the environment.</div></div>
 <div class="para"><div lang="zh-Hant">為了減少垃圾，政府規定店家不能再提供塑膠吸管，很多飲料店也推出優惠：自己帶杯子來，就可以折五塊錢。一開始很多人嫌麻煩，現在卻越來越多人包包裡隨時放著一個環保杯。</div><div class="rd" lang="zh-Hant">wèi le jiǎn shǎo lè sè zhèng fǔ guī dìng diàn jiā bù néng zài tí gōng sù jiāo xī guǎn hěn duō yǐn liào diàn yě tuī chū yōu huì zì jǐ dài bēi zi lái jiù kě yǐ zhé wǔ kuài qián yì kāi shǐ hěn duō rén xián má fán xiàn zài què yuè lái yuè duō rén bāo bāo lǐ suí shí fàng zhe yí gè huán bǎo bēi</div><div class="tl">To reduce rubbish, the government banned shops from giving out plastic straws, and many drinks shops offer a discount: bring your own cup and get five dollars off. At first lots of people thought it a hassle, but now more and more people carry a reusable cup in their bag all the time.</div></div>
 <div class="para"><div lang="zh-Hant">五塊錢看起來不多，但是只要大家都願意改變一點點習慣，就能為地球少製造很多垃圾。</div><div class="rd" lang="zh-Hant">wǔ kuài qián kàn qǐ lái bù duō dàn shì zhǐ yào dà jiā dōu yuàn yì gǎi biàn yì diǎn diǎn xí guàn jiù néng wèi dì qiú shǎo zhì zào hěn duō lè sè</div><div class="tl">Five dollars doesn&#x27;t look like much, but if everyone is willing to change their habits just a little, we can create far less rubbish for the planet.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">手搖飲料</b> <span class="en">shǒuyáoyǐnliào</span>　hand-shaken drink</div><div><b lang="zh-Hant">據說</b> <span class="en">jùshuō</span>　reportedly</div><div><b lang="zh-Hant">吸管</b> <span class="en">xīguǎn</span>　straw</div><div><b lang="zh-Hant">負擔</b> <span class="en">fùdān</span>　burden</div><div><b lang="zh-Hant">規定</b> <span class="en">guīdìng</span>　to stipulate</div><div><b lang="zh-Hant">塑膠</b> <span class="en">sùjiāo</span>　plastic</div><div><b lang="zh-Hant">嫌</b> <span class="en">xián</span>　to dislike, find fault</div><div><b lang="zh-Hant">製造</b> <span class="en">zhìzào</span>　to produce</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw5/tw-reusable-cups">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">手搖飲料</b> <span class="en">shǒuyáoyǐnliào</span>　hand-shaken drink</div><div><b lang="zh-Hant">據說</b> <span class="en">jùshuō</span>　reportedly</div><div><b lang="zh-Hant">吸管</b> <span class="en">xīguǎn</span>　straw</div><div><b lang="zh-Hant">負擔</b> <span class="en">fùdān</span>　burden</div><div><b lang="zh-Hant">規定</b> <span class="en">guīdìng</span>　to stipulate</div><div><b lang="zh-Hant">塑膠</b> <span class="en">sùjiāo</span>　plastic</div><div><b lang="zh-Hant">嫌</b> <span class="en">xián</span>　to dislike, find fault</div><div><b lang="zh-Hant">製造</b> <span class="en">zhìzào</span>　to produce</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw5/tw-reusable-cups">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="tw-drought.html">← 缺水的春天</a><a href="tw-gap-year.html">空檔年 →</a></div>
+<div class="nav"><a href="tw-drought.html">← 缺水的春天</a><a href="tw-gap-year.html">空檔年 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw5/tw-reusable-cups">到網站讀這篇、做題目 →</a><div class="nav"><a href="tw-drought.html">← 缺水的春天</a><a href="tw-gap-year.html">空檔年 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">手搖飲料</b> <span class="en">shǒuyáoyǐnliào</span>　hand-shaken drink</div><div><b lang="zh-Hant">據說</b> <span class="en">jùshuō</span>　reportedly</div><div><b lang="zh-Hant">吸管</b> <span class="en">xīguǎn</span>　straw</div><div><b lang="zh-Hant">負擔</b> <span class="en">fùdān</span>　burden</div><div><b lang="zh-Hant">規定</b> <span class="en">guīdìng</span>　to stipulate</div><div><b lang="zh-Hant">塑膠</b> <span class="en">sùjiāo</span>　plastic</div><div><b lang="zh-Hant">嫌</b> <span class="en">xián</span>　to dislike, find fault</div><div><b lang="zh-Hant">製造</b> <span class="en">zhìzào</span>　to produce</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

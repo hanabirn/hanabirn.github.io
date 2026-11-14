@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk5/">中文 HSK 5（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">老房子</h1>
 <p class="en">The old house — Chinese reading, HSK 5</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">爷爷奶奶住的是一套三十多年的老房子，没有电梯，楼道也很窄。这几年，我爸爸一直劝他们搬到新小区去，那里交通方便，环境也好。</div><div class="rd" lang="zh-Hans">yé ye nǎi nai zhù de shì yí tào sān shí duō nián de lǎo fáng zi méi yǒu diàn tī lóu dào yě hěn zhǎi zhè jǐ nián wǒ bà ba yì zhí quàn tā men bān dào xīn xiǎo qū qù nà li jiāo tōng fāng biàn huán jìng yě hǎo</div><div class="tl">My grandparents live in a flat over thirty years old, with no lift and a narrow stairwell. For years my father has been urging them to move to a new estate, where transport is convenient and the surroundings are pleasant.</div></div>
 <div class="para"><div lang="zh-Hans">可是爷爷每次都摇头。他说，楼下的邻居认识了几十年，谁家有事大家都会主动帮忙；搬到新地方，连对门住的是谁都不知道。</div><div class="rd" lang="zh-Hans">kě shì yé ye měi cì dōu yáo tóu tā shuō lóu xià de lín jū rèn shi le jǐ shí nián shéi jiā yǒu shì dà jiā dōu huì zhǔ dòng bāng máng bān dào xīn dì fang lián duì mén zhù de shì shéi dōu bù zhī dào</div><div class="tl">But Grandpa shakes his head every time. He says the neighbours downstairs have known each other for decades, and when any family has trouble everyone offers to help; move somewhere new and you don&#x27;t even know who lives across the hall.</div></div>
 <div class="para"><div lang="zh-Hans">以前我觉得爷爷太固执，现在慢慢理解了。对老人来说，房子不只是住的地方，更是几十年的回忆和熟悉的生活。新房子再舒适，也代替不了这些。</div><div class="rd" lang="zh-Hans">yǐ qián wǒ jué de yé ye tài gù zhí xiàn zài màn màn lǐ jiě le duì lǎo rén lái shuō fáng zi bù zhǐ shì zhù de dì fang gèng shì jǐ shí nián de huí yì hé shú xī de shēng huó xīn fáng zi zài shū shì yě dài tì bù le zhè xiē</div><div class="tl">I used to think Grandpa was too stubborn, but now I gradually understand. For old people a home isn&#x27;t just a place to live; it&#x27;s decades of memories and a familiar way of life. However comfortable a new flat is, it can&#x27;t replace that.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电梯</b> <span class="en">diàntī</span>　lift, elevator</div><div><b lang="zh-Hans">窄</b> <span class="en">zhǎi</span>　narrow</div><div><b lang="zh-Hans">劝</b> <span class="en">quàn</span>　to urge, persuade</div><div><b lang="zh-Hans">小区</b> <span class="en">xiǎoqū</span>　housing estate</div><div><b lang="zh-Hans">主动</b> <span class="en">zhǔdòng</span>　on one&#x27;s own initiative</div><div><b lang="zh-Hans">固执</b> <span class="en">gùzhí</span>　stubborn</div><div><b lang="zh-Hans">回忆</b> <span class="en">huíyì</span>　memory, recollection</div><div><b lang="zh-Hans">代替</b> <span class="en">dàitì</span>　to replace</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/old-house">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电梯</b> <span class="en">diàntī</span>　lift, elevator</div><div><b lang="zh-Hans">窄</b> <span class="en">zhǎi</span>　narrow</div><div><b lang="zh-Hans">劝</b> <span class="en">quàn</span>　to urge, persuade</div><div><b lang="zh-Hans">小区</b> <span class="en">xiǎoqū</span>　housing estate</div><div><b lang="zh-Hans">主动</b> <span class="en">zhǔdòng</span>　on one&#x27;s own initiative</div><div><b lang="zh-Hans">固执</b> <span class="en">gùzhí</span>　stubborn</div><div><b lang="zh-Hans">回忆</b> <span class="en">huíyì</span>　memory, recollection</div><div><b lang="zh-Hans">代替</b> <span class="en">dàitì</span>　to replace</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/old-house">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="takeaway.html">外卖时代 →</a></div>
+<div class="nav"><span></span><a href="takeaway.html">外卖时代 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk5/old-house">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="takeaway.html">外卖时代 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">电梯</b> <span class="en">diàntī</span>　lift, elevator</div><div><b lang="zh-Hans">窄</b> <span class="en">zhǎi</span>　narrow</div><div><b lang="zh-Hans">劝</b> <span class="en">quàn</span>　to urge, persuade</div><div><b lang="zh-Hans">小区</b> <span class="en">xiǎoqū</span>　housing estate</div><div><b lang="zh-Hans">主动</b> <span class="en">zhǔdòng</span>　on one&#x27;s own initiative</div><div><b lang="zh-Hans">固执</b> <span class="en">gùzhí</span>　stubborn</div><div><b lang="zh-Hans">回忆</b> <span class="en">huíyì</span>　memory, recollection</div><div><b lang="zh-Hans">代替</b> <span class="en">dàitì</span>　to replace</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

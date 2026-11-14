@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/ja_n3/">日文 N3</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/ja_n3/">日文 N3</a></div>
 <article class="card">
 <h1 lang="ja">V て もらえませんか／いただけませんか</h1>
 <p class="sub">可以請您～嗎？（客氣請求）</p><p class="en">could you please …? — Japanese grammar, N3</p>
@@ -44,9 +52,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <h2>注意事項</h2><ul><li>否定疑問（～ませんか）比肯定（～ますか）更客氣。<div class="en">The negative question is politer than ～ますか.</div></li></ul>
 <h2>常見錯誤</h2><ul><li><span class="wrong" lang="ja">✗ ゆっくり 話す いただけませんか。</span><br><span class="right" lang="ja">✓ ゆっくり 話して いただけませんか。</span><br>前面用て形。<div class="en">It takes the て form.</div></li><li><span class="wrong" lang="ja">✗ 先生、この 本を 貸して もらうか。</span><br><span class="right" lang="ja">✓ 先生、この 本を 貸して いただけませんか。</span><br>對長輩要用客氣的「いただけませんか」。<div class="en">To a superior use いただけませんか.</div></li></ul>
 <h2>例句</h2><div class="ex"><div class="t" lang="ja">すみません、もう少しゆっくり話していただけませんか。</div><div class="r" lang="ja">すみません、もう すこし ゆっくり はなして いただけませんか。</div><div>不好意思，可以請您說慢一點嗎？</div><div class="en">Excuse me, could you speak a little more slowly?</div></div><div class="ex"><div class="t" lang="ja">この書類を明日までに見てもらえませんか。</div><div class="r" lang="ja">この しょるいを あしたまでに みて もらえませんか。</div><div>可以請你明天前看一下這份文件嗎？</div><div class="en">Could you look over this document by tomorrow?</div></div><div class="ex"><div class="t" lang="ja">写真を撮っていただけませんか。</div><div class="r" lang="ja">しゃしんを とって いただけませんか。</div><div>可以請您幫我拍照嗎？</div><div class="en">Would you mind taking a photo for us?</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 6 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ja_n3/te-itadakemasenka">到網站練習這個文法 →</a>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 6 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ja_n3/te-itadakemasenka">到網站練習這個文法 →</a></div>
 </article>
-<div class="nav"><a href="sasete-kudasai.html">← V（使役て形）＋ ください／いただけませんか</a><a href="ni-yoru-to.html">N に よると／に よれば →</a></div>
+<div class="nav"><a href="sasete-kudasai.html">← V（使役て形）＋ ください／いただけませんか</a><a href="ni-yoru-to.html">N に よると／に よれば →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 6 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ja_n3/te-itadakemasenka">到網站練習這個文法 →</a><div class="nav"><a href="sasete-kudasai.html">← V（使役て形）＋ ください／いただけませんか</a><a href="ni-yoru-to.html">N に よると／に よれば →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk12/">中文 TW HSK 1–2（大陸版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_hsk12/">中文 TW HSK 1–2（大陸版）</a></div>
 <article class="card">
 <h1 lang="zh-Hans">明天考试</h1>
 <p class="en">A test tomorrow — Chinese reading, TW HSK 1–2</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hans">明天有中文考试，我有一点紧张。下课以后，我和同学小明一起去图书馆。</div><div class="rd" lang="zh-Hans">Míng tiān yǒu zhōng wén kǎo shì wǒ yǒu yì diǎn jǐn zhāng Xià kè yǐ hòu wǒ hé tóng xué Xiǎo míng yì qǐ qù tú shū guǎn</div><div class="tl">There&#x27;s a Chinese test tomorrow, and I&#x27;m a bit nervous. After class my classmate Xiaoming and I went to the library.</div></div>
 <div class="para"><div lang="zh-Hans">我们在图书馆准备了三个小时。小明很会写汉字，他教我写难的字。我说得比较好，所以我帮他练习说话。</div><div class="rd" lang="zh-Hans">Wǒ men zài tú shū guǎn zhǔn bèi le sān ge xiǎo shí Xiǎo míng hěn huì xiě hàn zì tā jiāo wǒ xiě nán de zì Wǒ shuō de bǐ jiào hǎo suǒ yǐ wǒ bāng tā liàn xí shuō huà</div><div class="tl">We studied in the library for three hours. Xiaoming is good at writing characters, so he taught me the hard ones. I speak better, so I helped him practise speaking.</div></div>
 <div class="para"><div lang="zh-Hans">晚上九点我们才离开图书馆。我觉得明天的考试没问题了！</div><div class="rd" lang="zh-Hans">Wǎn shàng jiǔ diǎn wǒ men cái lí kāi tú shū guǎn Wǒ jué de míng tiān de kǎo shì méi wèn tí le</div><div class="tl">We didn&#x27;t leave the library until nine in the evening. I think tomorrow&#x27;s test will be fine!</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">考试</b> <span class="en">kǎoshì</span>　test, exam</div><div><b lang="zh-Hans">紧张</b> <span class="en">jǐnzhāng</span>　nervous</div><div><b lang="zh-Hans">同学</b> <span class="en">tóngxué</span>　classmate</div><div><b lang="zh-Hans">图书馆</b> <span class="en">túshūguǎn</span>　library</div><div><b lang="zh-Hans">准备</b> <span class="en">zhǔnbèi</span>　to prepare</div><div><b lang="zh-Hans">教</b> <span class="en">jiāo</span>　to teach</div><div><b lang="zh-Hans">练习</b> <span class="en">liànxí</span>　to practise</div><div><b lang="zh-Hans">离开</b> <span class="en">líkāi</span>　to leave</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk12/exam-tomorrow">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">考试</b> <span class="en">kǎoshì</span>　test, exam</div><div><b lang="zh-Hans">紧张</b> <span class="en">jǐnzhāng</span>　nervous</div><div><b lang="zh-Hans">同学</b> <span class="en">tóngxué</span>　classmate</div><div><b lang="zh-Hans">图书馆</b> <span class="en">túshūguǎn</span>　library</div><div><b lang="zh-Hans">准备</b> <span class="en">zhǔnbèi</span>　to prepare</div><div><b lang="zh-Hans">教</b> <span class="en">jiāo</span>　to teach</div><div><b lang="zh-Hans">练习</b> <span class="en">liànxí</span>　to practise</div><div><b lang="zh-Hans">离开</b> <span class="en">líkāi</span>　to leave</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk12/exam-tomorrow">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="mothers-day.html">← 母亲节的礼物</a><a href="bike-to-work.html">骑脚踏车上班 →</a></div>
+<div class="nav"><a href="mothers-day.html">← 母亲节的礼物</a><a href="bike-to-work.html">骑脚踏车上班 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_hsk12/exam-tomorrow">到網站讀這篇、做題目 →</a><div class="nav"><a href="mothers-day.html">← 母亲节的礼物</a><a href="bike-to-work.html">骑脚踏车上班 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hans">考试</b> <span class="en">kǎoshì</span>　test, exam</div><div><b lang="zh-Hans">紧张</b> <span class="en">jǐnzhāng</span>　nervous</div><div><b lang="zh-Hans">同学</b> <span class="en">tóngxué</span>　classmate</div><div><b lang="zh-Hans">图书馆</b> <span class="en">túshūguǎn</span>　library</div><div><b lang="zh-Hans">准备</b> <span class="en">zhǔnbèi</span>　to prepare</div><div><b lang="zh-Hans">教</b> <span class="en">jiāo</span>　to teach</div><div><b lang="zh-Hans">练习</b> <span class="en">liànxí</span>　to practise</div><div><b lang="zh-Hans">离开</b> <span class="en">líkāi</span>　to leave</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

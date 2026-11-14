@@ -48,8 +48,8 @@ def en(x):
 CSS = """:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -63,10 +63,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}"""
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}"""
 
 
-def page(title, desc, canonical, body, lang='zh-Hant'):
+def page(title, desc, canonical, body, lang='zh-Hant', side=''):
+    body = f'<div class="layout"><div class="main-col">{body}</div><aside class="side"><div class="card">{side}</div></aside></div>' if side \
+        else f'<div class="main-col">{body}</div>'
     return f"""<!doctype html>
 <html lang="{lang}">
 <head>
@@ -133,14 +143,13 @@ def point_page(level, point, prev, nxt):
     if point.get('examples'):
         parts.append('<h2>例句</h2>' + ''.join(example_html(lang, x) for x in point['examples']))
     n = len(point.get('quiz') or [])
-    parts.append(f'<h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 {n} 題練習，答對 2/3 就算學會，進度會記下來。</p>'
-                 f'<a class="cta" href="/?g={level["id"]}/{point["id"]}">到網站練習這個文法 →</a>')
+    practice = f'<p>在 Hanabiの小天地 聽例句的錄音、做 {n} 題練習，答對 2/3 就算學會，進度會記下來。</p>'
+    cta = f'<a class="cta" href="/?g={level["id"]}/{point["id"]}">到網站練習這個文法 →</a>'
+    parts.append(f'<div class="cta-main"><h2>練習</h2>{practice}{cta}</div>')
     parts.append('</article>')
-    nav = '<div class="nav">'
-    nav += f'<a href="{prev["id"]}.html">← {e(prev["pattern"])}</a>' if prev else '<span></span>'
-    nav += f'<a href="{nxt["id"]}.html">{e(nxt["pattern"])} →</a>' if nxt else '<span></span>'
-    parts.append(nav + '</div>')
-    return url, page(title, desc, url, '\n'.join(parts))
+    nav = nav_html(prev, nxt, lambda x: x['pattern'])
+    parts.append(nav)
+    return url, page(title, desc, url, '\n'.join(parts), side=f'<h2>練習</h2>{practice}{cta}{nav}')
 
 
 def level_page(level, points):
@@ -251,17 +260,22 @@ def reading_page(level, p, prev, nxt):
         if tr(para, lang):
             h += f'<div class="tl">{e(tr(para, lang))}</div>'
         parts.append(h + '</div>')
+    gl = ''
     if p.get('glossary'):
-        parts.append('<h2>生詞</h2><div class="gl">' + ''.join(
+        gl = ('<h2>生詞</h2><div class="gl">' + ''.join(
             f'<div><b lang="{tl}">{e(g.get("simp") if is_simp(level) and g.get("simp") else g.get("w"))}</b>'
             + (f' <span class="en">{e(g.get("r"))}</span>' if g.get('r') else '') + f'　{e(tr(g, lang))}</div>'
             for g in p['glossary']) + '</div>')
+        parts.append(f'<div class="gl-main">{gl}</div>')
     n = len(p.get('mcq') or []) + len(p.get('tf') or [])
-    parts.append(f'<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 {n} 題閱讀測驗（選擇題和是非題）。</p>'
-                 f'<a class="cta" href="/?r={level["id"]}/{p["id"]}">到網站讀這篇、做題目 →</a>')
+    practice = f'<p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 {n} 題閱讀測驗（選擇題和是非題）。</p>'
+    cta = f'<a class="cta" href="/?r={level["id"]}/{p["id"]}">到網站讀這篇、做題目 →</a>'
+    parts.append(f'<div class="cta-main"><h2>練習</h2>{practice}{cta}</div>')
     parts.append('</article>')
-    parts.append(nav_html(prev, nxt, lambda x: read_title(level, x)))
-    return url, page(f"{title_t}｜{LANG_ZH[lang]} {lv} 閱讀｜Hanabiの小天地", desc, url, '\n'.join(parts))
+    nav = nav_html(prev, nxt, lambda x: read_title(level, x))
+    parts.append(nav)
+    return url, page(f"{title_t}｜{LANG_ZH[lang]} {lv} 閱讀｜Hanabiの小天地", desc, url, '\n'.join(parts),
+                     side=f'<h2>練習</h2>{practice}{cta}{nav}{gl}')
 
 
 def listening_page(level, st, prev, nxt):
@@ -278,8 +292,7 @@ def listening_page(level, st, prev, nxt):
     parts = [f'<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/{level["id"]}/">{e(LANG_ZH[lang])} {e(lv)}</a></div>',
              '<article class="card">', f'<h1>{e(LANG_ZH[lang])} {e(lv)} 聽力練習 {e(name)}</h1>',
              f'<p class="en">{e(LANG_EN[lang])} listening practice, {e(level_en(level["level"]))}, round {st["_n"]} — {n_items} recordings, {n_q} questions</p>',
-             '<p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>',
-             f'<a class="cta" href="/?l={level["id"]}/{st["id"]}">到網站聽這一回 →</a>', '<h2>內容</h2>']
+             '<p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>', '<h2>內容</h2><div class="items">']
     for i, (it, about) in enumerate(zip(st['items'], abouts)):
         lines = it.get('lines') or []
         h = f'<div class="item"><b>第 {i + 1} 段</b>　{e(about)}'
@@ -292,9 +305,13 @@ def listening_page(level, st, prev, nxt):
                             + (f'<div class="en">{e(t2)}</div>' if t2 and t2 != txt else '') + '</div>')
             h += '<details><summary>逐字稿（聽完再看）</summary>' + ''.join(rows) + '</details>'
         parts.append(h + '</div>')
+    cta = f'<a class="cta" href="/?l={level["id"]}/{st["id"]}">到網站聽這一回 →</a>'
+    parts.append(f'</div><div class="cta-main"><h2>練習</h2>{cta}</div>')
     parts.append('</article>')
-    parts.append(nav_html(prev, nxt, lambda x: x['_name']))
-    return url, page(f"{LANG_ZH[lang]} {lv} 聽力練習 {name}｜Hanabiの小天地", desc, url, '\n'.join(parts))
+    nav = nav_html(prev, nxt, lambda x: x['_name'])
+    parts.append(nav)
+    return url, page(f"{LANG_ZH[lang]} {lv} 聽力練習 {name}｜Hanabiの小天地", desc, url, '\n'.join(parts),
+                     side=f'<h2>練習</h2><p>{n_items} 段母語錄音、{n_q} 題。</p>{cta}{nav}')
 
 
 def build_kind(kind):

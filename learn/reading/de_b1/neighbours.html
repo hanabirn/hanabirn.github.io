@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/de_b1/">德文 B1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/de_b1/">德文 B1</a></div>
 <article class="card">
 <h1 lang="de">Nachbarn, die man kennt</h1>
 <p class="sub">認識的鄰居</p>
@@ -45,10 +53,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="de">Das änderte sich während eines langen Winters, in dem die Heizung zwei Wochen lang kaputt war. Die alte Frau Becker aus dem Erdgeschoss lud alle Nachbarn zu sich ein, weil sie als Einzige einen Kamin hatte.</div><div class="tl">在一個漫長的冬天，暖氣壞了兩個星期，情況就此改變。住一樓的老貝克太太把所有鄰居請到她家，因為只有她有壁爐。</div></div>
 <div class="para"><div lang="de">Seitdem treffen wir uns einmal im Monat zum Essen, abwechselnd in einer anderen Wohnung. Wir haben auch eine Chatgruppe, in der man fragen kann, ob jemand eine Bohrmaschine oder ein paar Eier hat.</div><div class="tl">從那之後，我們每個月聚餐一次，輪流在不同的公寓。我們也有一個聊天群組，可以在裡面問誰有電鑽或幾顆蛋。</div></div>
 <div class="para"><div lang="de">Frau Becker ist inzwischen 88 Jahre alt. Wenn sie Hilfe braucht, ist immer jemand da — so wie sie damals für uns da war.</div><div class="tl">貝克太太現在 88 歲了。她需要幫忙時，總是有人在——就像當年她在我們身邊一樣。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="de">das Treppenhaus</b>　樓梯間</div><div><b lang="de">die Heizung</b>　暖氣</div><div><b lang="de">einladen</b>　邀請</div><div><b lang="de">der Kamin</b>　壁爐</div><div><b lang="de">abwechselnd</b>　輪流</div><div><b lang="de">die Bohrmaschine</b>　電鑽</div><div><b lang="de">inzwischen</b>　如今</div><div><b lang="de">damals</b>　當時</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=de_b1/neighbours">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="de">das Treppenhaus</b>　樓梯間</div><div><b lang="de">die Heizung</b>　暖氣</div><div><b lang="de">einladen</b>　邀請</div><div><b lang="de">der Kamin</b>　壁爐</div><div><b lang="de">abwechselnd</b>　輪流</div><div><b lang="de">die Bohrmaschine</b>　電鑽</div><div><b lang="de">inzwischen</b>　如今</div><div><b lang="de">damals</b>　當時</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=de_b1/neighbours">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><span></span><a href="bakery.html">Die letzte Bäckerei im Dorf →</a></div>
+<div class="nav"><span></span><a href="bakery.html">Die letzte Bäckerei im Dorf →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=de_b1/neighbours">到網站讀這篇、做題目 →</a><div class="nav"><span></span><a href="bakery.html">Die letzte Bäckerei im Dorf →</a></div><h2>生詞</h2><div class="gl"><div><b lang="de">das Treppenhaus</b>　樓梯間</div><div><b lang="de">die Heizung</b>　暖氣</div><div><b lang="de">einladen</b>　邀請</div><div><b lang="de">der Kamin</b>　壁爐</div><div><b lang="de">abwechselnd</b>　輪流</div><div><b lang="de">die Bohrmaschine</b>　電鑽</div><div><b lang="de">inzwischen</b>　如今</div><div><b lang="de">damals</b>　當時</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

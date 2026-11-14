@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw79/">中文 HSK 7–9（台灣版）</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/zh_tw79/">中文 HSK 7–9（台灣版）</a></div>
 <article class="card">
 <h1 lang="zh-Hant">夜市的未來</h1>
 <p class="en">The future of night markets — Chinese reading, HSK 7–9</p>
@@ -43,10 +51,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="zh-Hant">夜市曾是臺灣最具代表性的庶民文化，也是觀光客必訪的景點。然而，近年來不少老牌夜市人潮銳減，攤商紛紛歇業。究其原因，除了外送平臺興起、年輕人消費習慣改變，部分夜市衛生不佳、價格虛高、商品千篇一律，也讓人望而卻步。</div><div class="rd" lang="zh-Hant">yè shì céng shì Tái wān zuì jù dài biǎo xìng de shù mín wén huà yě shì guān guāng kè bì fǎng de jǐng diǎn rán ér jìn nián lái bù shǎo lǎo pái yè shì rén cháo ruì jiǎn tān shāng fēn fēn xiē yè jiù qí yuán yīn chú le wài sòng píng tái xīng qǐ nián qīng rén xiāo fèi xí guàn gǎi biàn bù fèn yè shì wèi shēng bù jiā jià gé xū gāo shāng pǐn qiān piān yí lǜ yě ràng rén wàng ér què bù</div><div class="tl">Night markets were once the most representative popular culture in Taiwan and a must-see for tourists. Yet in recent years crowds at many long-established markets have plummeted and stallholders have shut up shop one after another. Looking into the causes: besides the rise of delivery apps and young people&#x27;s changing habits, poor hygiene, inflated prices and identical goods at some markets also put people off.</div></div>
 <div class="para"><div lang="zh-Hant">面對困境，一些夜市開始轉型：引進行動支付、設置用餐區、推動減塑，甚至邀請年輕創業者推出結合在地食材的創意小吃。</div><div class="rd" lang="zh-Hant">miàn duì kùn jìng yì xiē yè shì kāi shǐ zhuǎn xíng yǐn jìn xíng dòng zhī fù shè zhì yòng cān qū tuī dòng jiǎn sù shèn zhì yāo qǐng nián qīng chuàng yè zhě tuī chū jié hé zài dì shí cái de chuàng yì xiǎo chī</div><div class="tl">Facing these difficulties, some markets have begun to transform: introducing mobile payment, setting up dining areas, cutting plastic use, and even inviting young entrepreneurs to create inventive snacks using local ingredients.</div></div>
 <div class="para"><div lang="zh-Hant">傳統若要延續，終究不能只靠懷舊，而必須與時俱進。</div><div class="rd" lang="zh-Hant">chuán tǒng ruò yào yán xù zhōng jiù bù néng zhǐ kào huái jiù ér bì xū yǔ shí jù jìn</div><div class="tl">If a tradition is to continue, it can&#x27;t rely on nostalgia alone in the end — it must move with the times.</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">庶民</b> <span class="en">shùmín</span>　common people</div><div><b lang="zh-Hant">銳減</b> <span class="en">ruìjiǎn</span>　to drop sharply</div><div><b lang="zh-Hant">歇業</b> <span class="en">xiēyè</span>　to close down</div><div><b lang="zh-Hant">虛高</b> <span class="en">xūgāo</span>　inflated</div><div><b lang="zh-Hant">望而卻步</b> <span class="en">wàngérquèbù</span>　to be put off</div><div><b lang="zh-Hant">困境</b> <span class="en">kùnjìng</span>　predicament</div><div><b lang="zh-Hant">懷舊</b> <span class="en">huáijiù</span>　nostalgia</div><div><b lang="zh-Hant">與時俱進</b> <span class="en">yǔshíjùjìn</span>　to keep up with the times</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw79/tw-night-market-future">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">庶民</b> <span class="en">shùmín</span>　common people</div><div><b lang="zh-Hant">銳減</b> <span class="en">ruìjiǎn</span>　to drop sharply</div><div><b lang="zh-Hant">歇業</b> <span class="en">xiēyè</span>　to close down</div><div><b lang="zh-Hant">虛高</b> <span class="en">xūgāo</span>　inflated</div><div><b lang="zh-Hant">望而卻步</b> <span class="en">wàngérquèbù</span>　to be put off</div><div><b lang="zh-Hant">困境</b> <span class="en">kùnjìng</span>　predicament</div><div><b lang="zh-Hant">懷舊</b> <span class="en">huáijiù</span>　nostalgia</div><div><b lang="zh-Hant">與時俱進</b> <span class="en">yǔshíjùjìn</span>　to keep up with the times</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw79/tw-night-market-future">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="tw-social-housing.html">← 社會住宅</a><a href="tw-overtourism.html">網美景點 →</a></div>
+<div class="nav"><a href="tw-social-housing.html">← 社會住宅</a><a href="tw-overtourism.html">網美景點 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=zh_tw79/tw-night-market-future">到網站讀這篇、做題目 →</a><div class="nav"><a href="tw-social-housing.html">← 社會住宅</a><a href="tw-overtourism.html">網美景點 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="zh-Hant">庶民</b> <span class="en">shùmín</span>　common people</div><div><b lang="zh-Hant">銳減</b> <span class="en">ruìjiǎn</span>　to drop sharply</div><div><b lang="zh-Hant">歇業</b> <span class="en">xiēyè</span>　to close down</div><div><b lang="zh-Hant">虛高</b> <span class="en">xūgāo</span>　inflated</div><div><b lang="zh-Hant">望而卻步</b> <span class="en">wàngérquèbù</span>　to be put off</div><div><b lang="zh-Hant">困境</b> <span class="en">kùnjìng</span>　predicament</div><div><b lang="zh-Hant">懷舊</b> <span class="en">huáijiù</span>　nostalgia</div><div><b lang="zh-Hant">與時俱進</b> <span class="en">yǔshíjùjìn</span>　to keep up with the times</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

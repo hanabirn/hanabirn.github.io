@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n2/">日文 N2</a></div>
 <article class="card">
 <h1 lang="ja">「情けは人のためならず」の本当の意味</h1>
 <p class="sub">「好心有好報」的真正意思</p>
@@ -48,10 +56,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">先日、こんなことがあった。駅の階段で重い荷物を運んでいたお年寄りを手伝ったところ、何度も頭を下げてお礼を言われた。その数日後、今度はわたしが知らない町で道に迷い、見知らぬ学生に駅まで案内してもらった。もちろん、二つの出来事には何の関係もない。それでも、親切は形を変えて世の中を回っているのだと、感じずにはいられなかった。</div><div class="rd" lang="ja">せんじつ、こんなことがあった。えきのかいだんでおもいにもつをはこんでいたおとしよりをてつだったところ、なんどもあたまをさげておれいをいわれた。そのすうじつご、こんどはわたしがしらないまちでみちにまよい、みしらぬがくせいにえきまであんないしてもらった。もちろん、ふたつのできごとにはなんのかんけいもない。それでも、しんせつはかたちをかえてよのなかをまわっているのだと、かんじずにはいられなかった。</div><div class="tl">前幾天發生了這樣的事。我在車站樓梯幫了一位搬重物的老人家，對方一再低頭向我道謝。幾天後，這次換我在陌生的城鎮迷了路，一個素不相識的學生帶我走到車站。當然，這兩件事毫無關係。即使如此，我還是忍不住覺得，善意會換個形式在世上流轉。</div></div>
 <div class="para"><div lang="ja">人を思いやる心が、回り回って自分を助けることになる。こうした考え方は日本だけのものではなく、世界の多くの国のことわざにも見られるという。人間は昔から、助け合うことで生き延びてきたからなのかもしれない。</div><div class="rd" lang="ja">ひとをおもいやるこころが、まわりまわってじぶんをたすけることになる。こうしたかんがえかたはにほんだけのものではなく、せかいのおおくのくにのことわざにもみられるという。にんげんはむかしから、たすけあうことでいきのびてきたからなのかもしれない。</div><div class="tl">體貼他人的心意，最後會輾轉幫助到自己。據說這種想法不只日本才有，世界上很多國家的諺語裡都看得到。也許是因為人類自古以來就是靠互相幫助才存活下來的吧。</div></div>
 <div class="para"><div lang="ja">言葉の意味は時代とともに変わるものであり、新しい使い方を一概に誤りだと決めつけるつもりはない。ただ、見返りを期待しない小さな親切が、いつかだれかを通して自分に返ってくる。この古いことわざに込められた考え方は、今の時代にこそ大切にしたいと思う。</div><div class="rd" lang="ja">ことばのいみはじだいとともにかわるものであり、あたらしいつかいかたをいちがいにあやまりだときめつけるつもりはない。ただ、みかえりをきたいしないちいさなしんせつが、いつかだれかをとおしてじぶんにかえってくる。このふるいことわざにこめられたかんがえかたは、いまのじだいにこそたいせつにしたいとおもう。</div><div class="tl">詞語的意思會隨時代改變，我無意一概斷定新的用法就是錯的。只是，不求回報的小小善意，總有一天會透過某個人回到自己身上。這句老諺語裡的想法，我認為正是現在這個時代更應該珍惜的。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">情け</b> <span class="en">なさけ</span>　同情；善意</div><div><b lang="ja">本来</b> <span class="en">ほんらい</span>　本來</div><div><b lang="ja">巡り巡って</b> <span class="en">めぐりめぐって</span>　輾轉</div><div><b lang="ja">甘やかす</b> <span class="en">あまやかす</span>　寵；溺愛</div><div><b lang="ja">半々</b> <span class="en">はんはん</span>　各半</div><div><b lang="ja">誤解</b> <span class="en">ごかい</span>　誤解</div><div><b lang="ja">現代</b> <span class="en">げんだい</span>　現代</div><div><b lang="ja">責任</b> <span class="en">せきにん</span>　責任</div><div><b lang="ja">自立</b> <span class="en">じりつ</span>　自立</div><div><b lang="ja">妨げる</b> <span class="en">さまたげる</span>　妨礙</div><div><b lang="ja">見知らぬ</b> <span class="en">みしらぬ</span>　素不相識的</div><div><b lang="ja">一概に</b> <span class="en">いちがいに</span>　一概</div><div><b lang="ja">決めつける</b> <span class="en">きめつける</span>　斷定</div><div><b lang="ja">見返り</b> <span class="en">みかえり</span>　回報</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/kindness-comes-back">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">情け</b> <span class="en">なさけ</span>　同情；善意</div><div><b lang="ja">本来</b> <span class="en">ほんらい</span>　本來</div><div><b lang="ja">巡り巡って</b> <span class="en">めぐりめぐって</span>　輾轉</div><div><b lang="ja">甘やかす</b> <span class="en">あまやかす</span>　寵；溺愛</div><div><b lang="ja">半々</b> <span class="en">はんはん</span>　各半</div><div><b lang="ja">誤解</b> <span class="en">ごかい</span>　誤解</div><div><b lang="ja">現代</b> <span class="en">げんだい</span>　現代</div><div><b lang="ja">責任</b> <span class="en">せきにん</span>　責任</div><div><b lang="ja">自立</b> <span class="en">じりつ</span>　自立</div><div><b lang="ja">妨げる</b> <span class="en">さまたげる</span>　妨礙</div><div><b lang="ja">見知らぬ</b> <span class="en">みしらぬ</span>　素不相識的</div><div><b lang="ja">一概に</b> <span class="en">いちがいに</span>　一概</div><div><b lang="ja">決めつける</b> <span class="en">きめつける</span>　斷定</div><div><b lang="ja">見返り</b> <span class="en">みかえり</span>　回報</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/kindness-comes-back">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="home-is-where-you-live.html">← 「住めば都」——地方に移り住んで</a><a href="eating-in-season.html">「旬」を味わう →</a></div>
+<div class="nav"><a href="home-is-where-you-live.html">← 「住めば都」——地方に移り住んで</a><a href="eating-in-season.html">「旬」を味わう →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n2/kindness-comes-back">到網站讀這篇、做題目 →</a><div class="nav"><a href="home-is-where-you-live.html">← 「住めば都」——地方に移り住んで</a><a href="eating-in-season.html">「旬」を味わう →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">情け</b> <span class="en">なさけ</span>　同情；善意</div><div><b lang="ja">本来</b> <span class="en">ほんらい</span>　本來</div><div><b lang="ja">巡り巡って</b> <span class="en">めぐりめぐって</span>　輾轉</div><div><b lang="ja">甘やかす</b> <span class="en">あまやかす</span>　寵；溺愛</div><div><b lang="ja">半々</b> <span class="en">はんはん</span>　各半</div><div><b lang="ja">誤解</b> <span class="en">ごかい</span>　誤解</div><div><b lang="ja">現代</b> <span class="en">げんだい</span>　現代</div><div><b lang="ja">責任</b> <span class="en">せきにん</span>　責任</div><div><b lang="ja">自立</b> <span class="en">じりつ</span>　自立</div><div><b lang="ja">妨げる</b> <span class="en">さまたげる</span>　妨礙</div><div><b lang="ja">見知らぬ</b> <span class="en">みしらぬ</span>　素不相識的</div><div><b lang="ja">一概に</b> <span class="en">いちがいに</span>　一概</div><div><b lang="ja">決めつける</b> <span class="en">きめつける</span>　斷定</div><div><b lang="ja">見返り</b> <span class="en">みかえり</span>　回報</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

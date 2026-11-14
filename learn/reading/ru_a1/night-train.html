@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ru_a1/">俄文 A1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ru_a1/">俄文 A1</a></div>
 <article class="card">
 <h1 lang="ru">Ночно́й по́езд в Петербу́рг</h1>
 <p class="sub">開往聖彼得堡的夜車</p>
@@ -45,10 +53,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ru">Ве́чером я сел в по́езд, а у́тром был уже́ в Петербу́рге. Э́то о́чень удо́бно!</div><div class="tl">晚上上車，早上就已經到聖彼得堡了。真的很方便！</div></div>
 <div class="para"><div lang="ru">Днём я ходи́л в Эрмита́ж. Э́то огро́мный музе́й, и я ви́дел там карти́ны Рембра́ндта.</div><div class="tl">白天我去了冬宮博物館（艾米塔吉）。那是一座很大的博物館，我在那裡看到了林布蘭的畫。</div></div>
 <div class="para"><div lang="ru">В ию́не там бе́лые но́чи: на у́лице светло́ всю ночь. Я гуля́л у Невы́ до двух часо́в но́чи.</div><div class="tl">六月那裡有「白夜」：外面整晚都是亮的。我在涅瓦河邊散步到半夜兩點。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ru">ездить</b> <span class="en">е́здить</span>　（搭車）去</div><div><b lang="ru">ночной</b> <span class="en">ночно́й</span>　夜間的</div><div><b lang="ru">удобно</b> <span class="en">удо́бно</span>　方便</div><div><b lang="ru">огромный</b> <span class="en">огро́мный</span>　巨大的</div><div><b lang="ru">музей</b> <span class="en">музе́й</span>　博物館</div><div><b lang="ru">картина</b> <span class="en">карти́на</span>　畫</div><div><b lang="ru">светло</b> <span class="en">светло́</span>　亮</div><div><b lang="ru">гулять</b> <span class="en">гуля́ть</span>　散步</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ru_a1/night-train">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ru">ездить</b> <span class="en">е́здить</span>　（搭車）去</div><div><b lang="ru">ночной</b> <span class="en">ночно́й</span>　夜間的</div><div><b lang="ru">удобно</b> <span class="en">удо́бно</span>　方便</div><div><b lang="ru">огромный</b> <span class="en">огро́мный</span>　巨大的</div><div><b lang="ru">музей</b> <span class="en">музе́й</span>　博物館</div><div><b lang="ru">картина</b> <span class="en">карти́на</span>　畫</div><div><b lang="ru">светло</b> <span class="en">светло́</span>　亮</div><div><b lang="ru">гулять</b> <span class="en">гуля́ть</span>　散步</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ru_a1/night-train">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="blini.html">← Блины́ на Ма́сленицу</a><a href="real-winter.html">Настоя́щая зима́ →</a></div>
+<div class="nav"><a href="blini.html">← Блины́ на Ма́сленицу</a><a href="real-winter.html">Настоя́щая зима́ →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ru_a1/night-train">到網站讀這篇、做題目 →</a><div class="nav"><a href="blini.html">← Блины́ на Ма́сленицу</a><a href="real-winter.html">Настоя́щая зима́ →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ru">ездить</b> <span class="en">е́здить</span>　（搭車）去</div><div><b lang="ru">ночной</b> <span class="en">ночно́й</span>　夜間的</div><div><b lang="ru">удобно</b> <span class="en">удо́бно</span>　方便</div><div><b lang="ru">огромный</b> <span class="en">огро́мный</span>　巨大的</div><div><b lang="ru">музей</b> <span class="en">музе́й</span>　博物館</div><div><b lang="ru">картина</b> <span class="en">карти́на</span>　畫</div><div><b lang="ru">светло</b> <span class="en">светло́</span>　亮</div><div><b lang="ru">гулять</b> <span class="en">гуля́ть</span>　散步</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

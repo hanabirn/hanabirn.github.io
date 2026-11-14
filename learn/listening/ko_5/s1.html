@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,25 +30,33 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_5/">韓文 5 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_5/">韓文 5 級</a></div>
 <article class="card">
 <h1>韓文 5 級 聽力練習 第 1 回</h1>
 <p class="en">Korean listening practice, Level 5, round 1 — 5 recordings, 10 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ko_5/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">요즘 재택근무를 줄이고 다시 사무실 출근을 늘리는 회사가 많은데요. 어떻게 보십니까?</span><div class="en">最近很多公司減少居家上班，又增加到辦公室上班的天數。您怎麼看？</div></div><div class="ln"><span class="who">男</span><span lang="ko">저는 재택근무를 무조건 줄이는 것은 바람직하지 않다고 봅니다. 출퇴근 시간이 줄어든 만큼 직원들이 업무에 더 집중할 수 있다는 조사 결과도 있고요.</span><div class="en">我認為一味減少居家上班並不理想。也有調查結果顯示，通勤時間省下來，員工更能專心工作。</div></div><div class="ln"><span class="who">女</span><span lang="ko">하지만 얼굴을 보지 않으면 소통이 어렵다는 의견도 많지 않습니까?</span><div class="en">可是不是也有很多人說，不見面就很難溝通嗎？</div></div><div class="ln"><span class="who">男</span><span lang="ko">물론 그런 문제도 있습니다. 그래서 일주일에 하루나 이틀만 사무실에 나와서 회의를 하고 나머지는 집에서 일하는 방식이 현실적인 대안이 될 수 있다고 생각합니다.</span><div class="en">當然也有那樣的問題。所以我認為，一週只進辦公室一兩天開會，其餘時間在家工作，是比較實際的替代方案。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">여러분, 우리는 왜 하품을 할까요? 보통 하품은 졸리거나 지루할 때 나온다고 생각하지만, 최근 연구에 따르면 하품은 뇌의 온도를 낮추는 역할을 한다고 합니다.</span><div class="en">各位，我們為什麼會打哈欠呢？一般以為哈欠是睏了或無聊時才打的，但根據最近的研究，打哈欠有降低大腦溫度的作用。</div></div><div class="ln"><span class="who">女</span><span lang="ko">차가운 공기를 크게 들이마시면서 뜨거워진 뇌를 식혀 주는 것이지요. 실제로 기온이 너무 높거나 낮은 날보다 적당히 따뜻한 날에 하품을 더 자주 한다는 실험 결과도 있습니다.</span><div class="en">也就是大口吸進冷空氣，讓變熱的大腦降溫。實際上也有實驗結果顯示，比起太熱或太冷的日子，在溫度適中的日子裡更常打哈欠。</div></div><div class="ln"><span class="who">女</span><span lang="ko">또 다른 사람이 하품하는 것을 보면 따라서 하품을 하게 되는데, 이것은 상대방의 감정에 공감하는 능력과 관련이 있다고 합니다.</span><div class="en">另外，看到別人打哈欠，自己也會跟著打，據說這跟能體會對方情緒的同理能力有關。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">안녕하십니까. 오늘 우리 시의 첫 번째 시민 정원을 여는 자리에 함께해 주신 여러분께 진심으로 감사드립니다. 이곳은 원래 오랫동안 비어 있던 공장 부지였습니다.</span><div class="en">大家好。衷心感謝各位今天出席本市第一座市民花園的開幕。這裡原本是一塊閒置很久的工廠用地。</div></div><div class="ln"><span class="who">男</span><span lang="ko">지난 2년 동안 시민 여러분이 직접 나무를 심고 길을 만들어 주신 덕분에 이렇게 아름다운 정원으로 다시 태어났습니다.</span><div class="en">多虧過去兩年來市民們親手種樹、鋪路，這裡才重生為如此美麗的花園。</div></div><div class="ln"><span class="who">男</span><span lang="ko">앞으로 이 정원이 아이들에게는 자연을 배우는 교실이 되고, 어르신들께는 편안한 쉼터가 되기를 바랍니다. 정원을 가꾸는 일에도 계속 관심을 가져 주시기 바랍니다.</span><div class="en">希望這座花園今後成為孩子們認識自然的教室，也成為長輩們舒適的休憩處。也請大家繼續關心花園的照顧。</div></div></details></div>
 <div class="item"><b>第 4 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">박사님, 요즘 &#x27;디지털 디톡스&#x27;라는 말을 자주 듣는데요.</span><div class="en">博士，最近常聽到「數位排毒」這個詞。</div></div><div class="ln"><span class="who">女</span><span lang="ko">네, 일정 시간 동안 스마트폰 같은 디지털 기기를 멀리하는 것을 말합니다. 많은 분들이 하루 종일 휴대폰을 손에서 놓지 못하시는데요. 이렇게 끊임없이 정보를 받다 보면 뇌가 쉴 틈이 없어서 오히려 집중력과 기억력이 떨어질 수 있습니다.</span><div class="en">是的，指的是在一段時間內遠離智慧型手機等數位裝置。很多人整天手機不離手。像這樣不斷接收資訊，大腦沒有休息的空檔，專注力和記憶力反而可能下降。</div></div><div class="ln"><span class="who">女</span><span lang="ko">거창하게 시작할 필요는 없습니다. 잠들기 한 시간 전에만 휴대폰을 꺼 두어도 뇌가 충분히 쉴 수 있습니다. 작은 습관부터 바꿔 보시기 바랍니다.</span><div class="en">不需要大張旗鼓地開始。只要睡前一小時把手機關掉，大腦就能充分休息。請從小習慣開始改變看看。</div></div></details></div>
 <div class="item"><b>第 5 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">그러니까 이번에 새로 생긴 제도 덕분에 동네 작은 가게들도 배달 앱을 저렴하게 이용할 수 있게 된 거군요.</span><div class="en">所以說，多虧這次新推出的制度，社區的小店家也能便宜地使用外送 App 了。</div></div><div class="ln"><span class="who">男</span><span lang="ko">네, 그렇습니다. 지금까지는 가게 주인들이 주문 한 건마다 높은 수수료를 내야 해서 부담이 컸는데요. 시에서 직접 만든 공공 배달 앱은 수수료가 기존 앱의 3분의 1 수준입니다.</span><div class="en">是的。到目前為止，店家每接一筆訂單都得付很高的手續費，負擔很重。市政府自己做的公共外送 App，手續費只有現有 App 的三分之一左右。</div></div><div class="ln"><span class="who">男</span><span lang="ko">다만 아직 이용자가 많지 않다는 점이 과제인데요. 앞으로 할인 쿠폰 같은 혜택을 늘려서 시민들의 참여를 이끌어 낼 계획입니다.</span><div class="en">不過使用者還不多是個課題。今後計畫增加折價券之類的優惠，吸引市民參與。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ko_5/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>5 段母語錄音、10 題。</p><a class="cta" href="/?l=ko_5/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

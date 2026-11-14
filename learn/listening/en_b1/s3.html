@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_b1/">英文 B1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_b1/">英文 B1</a></div>
 <article class="card">
 <h1>英文 B1 聽力練習 第 3 回</h1>
 <p class="en">English listening practice, B1, round 3 — 15 recordings, 25 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=en_b1/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">What are you having for lunch?</span><div class="en">你午餐要吃什麼？</div></div><div class="ln"><span class="who">女</span><span lang="en">I&#x27;d love some pasta, but it takes too long, and the soup&#x27;s finished. I&#x27;ll just have a cheese sandwich.</span><div class="en">我很想吃義大利麵，可是要煮太久，湯也賣完了。我就吃個起司三明治吧。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Is your sister still learning the guitar?</span><div class="en">你妹妹還在學吉他嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">She gave up — her fingers hurt too much. Now she sings in a band. She wanted to play the drums, but our neighbours would complain.</span><div class="en">她放棄了，手指太痛。現在她在一個樂團唱歌。她想打鼓，可是鄰居會抱怨。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">What are you taking on holiday? Your surfboard?</span><div class="en">你度假要帶什麼？衝浪板嗎？</div></div><div class="ln"><span class="who">女</span><span lang="en">No, we&#x27;re going to the mountains. There&#x27;s loads of snow this year, so I&#x27;m taking my skis. I&#x27;ll leave my bike at home.</span><div class="en">不是，我們要去山上。今年雪很多，所以我帶滑雪板。腳踏車就留在家。</div></div></details></div>
@@ -57,8 +64,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 13 段</b>　你會聽到兩個學生談一場考試。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">You will hear two students talking about an exam.</span><div class="en">你會聽到兩個學生談一場考試。</div></div><div class="ln"><span class="who">女</span><span lang="en">How did the maths exam go?</span><div class="en">數學考得怎麼樣？</div></div><div class="ln"><span class="who">男</span><span lang="en">Better than I expected. I didn&#x27;t finish the last question, but I think I got everything else right.</span><div class="en">比我預期的好。最後一題沒寫完，不過其他的我應該都對了。</div></div></details></div>
 <div class="item"><b>第 14 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">And now some local news. From next Monday, the city&#x27;s new bike-hire scheme opens to the public. There will be three hundred bikes at forty stations around the city centre. To use the bikes, you&#x27;ll first need to download the City Bikes app. The first thirty minutes of every ride are free, and after that it costs one pound for each hour. The bikes are electric, so they&#x27;re easy to ride up the hills on the north side of the city. Riders must be at least sixteen years old. Helmets aren&#x27;t provided, so please bring your own. The council hopes the scheme will reduce traffic, and if it&#x27;s popular, more stations will open next spring.</span><div class="en">接下來是地方新聞。從下週一開始，市區新的租借單車計畫開放民眾使用。市中心四十個站點共有三百輛單車。要使用單車，得先下載「城市單車」App。每次騎乘前三十分鐘免費，之後每小時一英鎊。單車是電動的，騎上城北的山坡也很輕鬆。騎乘者至少要十六歲。不提供安全帽，請自備。市議會希望這個計畫能減少車流，如果受歡迎，明年春天會再開更多站點。</div></div></details></div>
 <div class="item"><b>第 15 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Today I&#x27;m talking to Nina Shah, who started a repair café in her town two years ago. Nina, what exactly is a repair café?</span><div class="en">今天我要訪問妮娜·夏，她兩年前在她住的小鎮開了一間「修理咖啡館」。妮娜，修理咖啡館到底是什麼？</div></div><div class="ln"><span class="who">女</span><span lang="en">It&#x27;s a free event where people bring broken things — lamps, toasters, clothes, bikes — and volunteers help them fix them. The idea is that you learn to repair things yourself, not just watch.</span><div class="en">是一個免費的活動，大家帶壞掉的東西來，像檯燈、烤麵包機、衣服、腳踏車，志工幫他們修。重點是你自己學會修，不是只在旁邊看。</div></div><div class="ln"><span class="who">男</span><span lang="en">How did it start?</span><div class="en">是怎麼開始的？</div></div><div class="ln"><span class="who">女</span><span lang="en">My laptop broke while I was at university, and the shop said it would be cheaper to buy a new one. My uncle, who&#x27;s an engineer, fixed it in twenty minutes. I thought: how many things do we throw away that only need a small repair?</span><div class="en">我讀大學時筆電壞了，店家說買新的還比較便宜。我舅舅是工程師，二十分鐘就修好了。我心想：我們丟掉了多少只要小修一下的東西？</div></div><div class="ln"><span class="who">男</span><span lang="en">Who are the volunteers?</span><div class="en">志工是哪些人？</div></div><div class="ln"><span class="who">女</span><span lang="en">Mostly retired people with practical skills — a former electrician, a tailor, a bike mechanic. They love sharing what they know.</span><div class="en">大多是有實用技能的退休人士，像以前的電工、裁縫、腳踏車技師。他們很喜歡分享所學。</div></div><div class="ln"><span class="who">男</span><span lang="en">What&#x27;s the most unusual thing anyone has brought?</span><div class="en">有人帶來過最特別的東西是什麼？</div></div><div class="ln"><span class="who">女</span><span lang="en">A hundred-year-old clock that belonged to a man&#x27;s great-grandmother. It took three months, but it works again now.</span><div class="en">一個一百年的老時鐘，是一位男士曾祖母的。花了三個月，不過現在又能走了。</div></div><div class="ln"><span class="who">男</span><span lang="en">What&#x27;s your plan for the future?</span><div class="en">你未來有什麼計畫？</div></div><div class="ln"><span class="who">女</span><span lang="en">At the moment we meet once a month in the town hall. I&#x27;d like to have a permanent workshop that&#x27;s open every weekend.</span><div class="en">目前我們每個月在鎮公所聚一次。我希望有一間固定的工作坊，每個週末都開。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=en_b1/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>15 段母語錄音、25 題。</p><a class="cta" href="/?l=en_b1/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

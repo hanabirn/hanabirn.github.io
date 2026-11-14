@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_toefl/">英文 TOEFL</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_toefl/">英文 TOEFL</a></div>
 <article class="card">
 <h1>英文 TOEFL 聽力練習 第 2 回</h1>
 <p class="en">English listening practice, TOEFL, round 2 — 15 recordings, 24 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=en_toefl/s2">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Are you going to the career fair this afternoon?</span><div class="en">你今天下午要去就業博覽會嗎？</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">I can&#x27;t find the reading list for the history course.</span><div class="en">我找不到歷史課的閱讀書單。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Would you mind lending me your notes from Tuesday&#x27;s lecture?</span><div class="en">你介意借我星期二講課的筆記嗎？</div></div></details></div>
@@ -57,8 +64,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 13 段</b>　請聽一段課堂上的宣布。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to an announcement in a class.</span><div class="en">請聽一段課堂上的宣布。</div></div><div class="ln"><span class="who">男</span><span lang="en">Before we start, a reminder about your group projects. Each group should send me a one-page proposal by Thursday at noon. Next week we&#x27;ll meet in the computer lab instead of this room, so you can work on your data together. And don&#x27;t forget to bring your student ID — you&#x27;ll need it to log in.</span><div class="en">開始之前，提醒大家小組報告的事。每組要在星期四中午前寄給我一頁的提案。下週我們改在電腦教室上課，不在這間，方便大家一起處理資料。別忘了帶學生證，登入要用。</div></div></details></div>
 <div class="item"><b>第 14 段</b>　請聽一段環境科學課的講課。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to part of a lecture in an environmental science class.</span><div class="en">請聽一段環境科學課的講課。</div></div><div class="ln"><span class="who">女</span><span lang="en">Let&#x27;s talk about urban heat islands. Cities are often several degrees warmer than the countryside around them. Why? Dark surfaces such as asphalt and roofs absorb sunlight during the day and release that heat slowly at night. Cities also have fewer trees, and trees cool the air by releasing water from their leaves. Some cities are fighting back by painting roofs white and planting rooftop gardens. In one study, a white roof stayed about thirty degrees cooler than a dark one on a summer afternoon.</span><div class="en">我們來談城市熱島。城市常常比周圍的鄉村熱好幾度。為什麼？柏油路和屋頂這類深色表面白天吸收陽光，晚上慢慢把熱放出來。城市的樹也比較少，而樹會透過葉子釋放水分讓空氣變涼。有些城市開始反擊，把屋頂漆成白色、種屋頂花園。一項研究中，夏天下午白色屋頂比深色屋頂涼了大約三十度。</div></div></details></div>
 <div class="item"><b>第 15 段</b>　請聽一段心理學課的講課。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to part of a lecture in a psychology class.</span><div class="en">請聽一段心理學課的講課。</div></div><div class="ln"><span class="who">男</span><span lang="en">Today&#x27;s topic is memory and sleep. For a long time, people thought sleep was simply rest for the brain. We now know the brain is very active during sleep. In one experiment, students learned a list of words, then half of them slept and half stayed awake. The next day, those who slept remembered far more. Researchers believe that during deep sleep the brain replays what we learned and moves it into long-term memory. So staying up all night before an exam may actually hurt your score.</span><div class="en">今天的主題是記憶與睡眠。長久以來大家以為睡覺只是讓大腦休息。現在我們知道睡眠時大腦非常活躍。一項實驗中，學生學一串單字，之後一半睡覺、一半熬夜。隔天睡覺的那組記得多得多。研究者認為深層睡眠時，大腦會重播學過的東西，把它轉進長期記憶。所以考前熬夜其實可能讓分數變差。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=en_toefl/s2">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div>
+<div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>15 段母語錄音、24 題。</p><a class="cta" href="/?l=en_toefl/s2">到網站聽這一回 →</a><div class="nav"><a href="s1.html">← 第 1 回</a><a href="s3.html">第 3 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

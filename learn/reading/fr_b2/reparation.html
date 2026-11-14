@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/fr_b2/">法文 B2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/fr_b2/">法文 B2</a></div>
 <article class="card">
 <h1 lang="fr">L&#x27;indice de réparabilité</h1>
 <p class="sub">可修復性指數</p>
@@ -44,10 +52,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="fr">Depuis 2021, une note sur dix doit être affichée sur certains appareils vendus en France, comme les smartphones ou les lave-linge. Elle indique s&#x27;ils sont faciles à réparer.</div><div class="tl">自二〇二一年起，在法國販售的某些電器，例如智慧型手機或洗衣機，都必須標示一個滿分十分的分數，顯示它們是否容易修理。</div></div>
 <div class="para"><div lang="fr">L&#x27;objectif est que les consommateurs choisissent des produits plus durables. Les fabricants, de leur côté, sont incités à fournir des pièces détachées plus longtemps.</div><div class="tl">目的是讓消費者選擇更耐用的產品。而製造商這邊，則被鼓勵延長供應備用零件的時間。</div></div>
 <div class="para"><div lang="fr">Selon une enquête, la moitié des acheteurs tiennent désormais compte de cette note. Certains experts regrettent cependant que les fabricants calculent eux-mêmes leur score.</div><div class="tl">根據一項調查，現在有一半的買家會考慮這個分數。不過有些專家感到遺憾的是，分數是由製造商自己計算的。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="fr">afficher</b>　標示；展示</div><div><b lang="fr">l&#x27;appareil</b>　電器；裝置</div><div><b lang="fr">durable</b>　耐用的</div><div><b lang="fr">le fabricant</b>　製造商</div><div><b lang="fr">inciter</b>　鼓勵；促使</div><div><b lang="fr">la pièce détachée</b>　備用零件</div><div><b lang="fr">tenir compte de</b>　考慮</div><div><b lang="fr">cependant</b>　然而</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=fr_b2/reparation">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="fr">afficher</b>　標示；展示</div><div><b lang="fr">l&#x27;appareil</b>　電器；裝置</div><div><b lang="fr">durable</b>　耐用的</div><div><b lang="fr">le fabricant</b>　製造商</div><div><b lang="fr">inciter</b>　鼓勵；促使</div><div><b lang="fr">la pièce détachée</b>　備用零件</div><div><b lang="fr">tenir compte de</b>　考慮</div><div><b lang="fr">cependant</b>　然而</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=fr_b2/reparation">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="secheresse.html">← Quand l&#x27;eau manque</a><a href="telephones-ecole.html">Les téléphones interdits →</a></div>
+<div class="nav"><a href="secheresse.html">← Quand l&#x27;eau manque</a><a href="telephones-ecole.html">Les téléphones interdits →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=fr_b2/reparation">到網站讀這篇、做題目 →</a><div class="nav"><a href="secheresse.html">← Quand l&#x27;eau manque</a><a href="telephones-ecole.html">Les téléphones interdits →</a></div><h2>生詞</h2><div class="gl"><div><b lang="fr">afficher</b>　標示；展示</div><div><b lang="fr">l&#x27;appareil</b>　電器；裝置</div><div><b lang="fr">durable</b>　耐用的</div><div><b lang="fr">le fabricant</b>　製造商</div><div><b lang="fr">inciter</b>　鼓勵；促使</div><div><b lang="fr">la pièce détachée</b>　備用零件</div><div><b lang="fr">tenir compte de</b>　考慮</div><div><b lang="fr">cependant</b>　然而</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

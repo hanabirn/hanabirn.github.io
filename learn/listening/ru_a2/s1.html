@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ru_a2/">俄文 A2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ru_a2/">俄文 A2</a></div>
 <article class="card">
 <h1>俄文 A2 聽力練習 第 1 回</h1>
 <p class="en">Russian listening practice, A2, round 1 — 7 recordings, 11 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ru_a2/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ru">Ди́ма, ты не зна́ешь, где мои́ ключи́?</span><div class="en">季馬，你知道我的鑰匙在哪裡嗎？</div></div><div class="ln"><span class="who">男</span><span lang="ru">У́тром они́ бы́ли на столе́, а сейча́с, по-моему́, они́ в твое́й су́мке.</span><div class="en">早上在桌上，現在我覺得在妳的包包裡。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ru">Два биле́та на фильм в во́семь, пожа́луйста.</span><div class="en">兩張八點的電影票，謝謝。</div></div><div class="ln"><span class="who">女</span><span lang="ru">На во́семь биле́тов нет. Есть на де́сять.</span><div class="en">八點的沒有了。有十點的。</div></div><div class="ln"><span class="who">男</span><span lang="ru">Хорошо́, дава́йте на де́сять.</span><div class="en">好，那就十點的。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ru">Что ты пода́ришь Ле́не на день рожде́ния?</span><div class="en">妳要送蓮娜什麼生日禮物？</div></div><div class="ln"><span class="who">男</span><span lang="ru">Я хоте́л подари́ть цветы́, но она́ лю́бит чита́ть. Куплю́ ей кни́гу.</span><div class="en">我本來想送花，但她喜歡看書。我要買書給她。</div></div></details></div>
@@ -49,8 +56,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 5 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ru">Алло́, э́то поликли́ника? Я хочу́ записа́ться к врачу́ на за́втра.</span><div class="en">喂，是診所嗎？我想預約明天看醫生。</div></div><div class="ln"><span class="who">男</span><span lang="ru">За́втра всё за́нято. Мо́жно в пя́тницу у́тром.</span><div class="en">明天都滿了。星期五早上可以。</div></div></details></div>
 <div class="item"><b>第 6 段</b>　請聽一則公告。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ru">Послу́шайте объявле́ние.</span><div class="en">請聽一則公告。</div></div><div class="ln"><span class="who">女</span><span lang="ru">Уважа́емые пассажи́ры! По́езд но́мер 32 Москва́ — Каза́нь отправля́ется с тре́тьего пути́ в 21 час 15 мину́т. Вре́мя в пути́ — двена́дцать часо́в. Ваго́н-рестора́н нахо́дится в середи́не по́езда, в пя́том ваго́не. Про́сим пассажи́ров заня́ть свои́ места́. Счастли́вого пути́!</span><div class="en">各位旅客！莫斯科—喀山 32 次列車 21 點 15 分從第三軌道出發。行車時間十二小時。餐車在列車中段的第五節車廂。請旅客就座。祝您旅途愉快！</div></div></details></div>
 <div class="item"><b>第 7 段</b>　請聽一段對話。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ru">Послу́шайте диало́г.</span><div class="en">請聽一段對話。</div></div><div class="ln"><span class="who">男</span><span lang="ru">Та́ня, приве́т! Что бу́дешь де́лать в суббо́ту?</span><div class="en">塔妮亞，嗨！星期六妳要做什麼？</div></div><div class="ln"><span class="who">女</span><span lang="ru">У́тром у меня́ уро́к испа́нского, а пото́м свобо́дна. А что?</span><div class="en">早上我有西班牙文課，之後就有空了。怎麼了？</div></div><div class="ln"><span class="who">男</span><span lang="ru">В па́рке Го́рького бу́дет фестива́ль еды́. Пойдём вме́сте?</span><div class="en">高爾基公園有美食節。要一起去嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ru">С удово́льствием! Дава́й встре́тимся в два ча́са у вхо́да в парк.</span><div class="en">好啊！我們兩點在公園門口見吧。</div></div><div class="ln"><span class="who">男</span><span lang="ru">Отли́чно. То́лько возьми́ зонт — обеща́ют дождь.</span><div class="en">太好了。不過帶把傘，聽說會下雨。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ru_a2/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>7 段母語錄音、11 題。</p><a class="cta" href="/?l=ru_a2/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

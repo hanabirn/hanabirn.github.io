@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_3/">韓文 3 級</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ko_3/">韓文 3 級</a></div>
 <article class="card">
 <h1>韓文 3 級 聽力練習 第 3 回</h1>
 <p class="en">Korean listening practice, Level 3, round 3 — 12 recordings, 12 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ko_3/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">이 소포를 미국으로 보내려고 하는데요.</span><div class="en">我想把這個包裹寄到美國。</div></div><div class="ln"><span class="who">男</span><span lang="ko">네, 무게를 재야 하니까 여기 저울 위에 올려 주세요.</span><div class="en">好的，要秤重量，請放到這個秤上。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">여기 이 버튼을 누르면 표가 나와요.</span><div class="en">按這個按鈕，票就會出來。</div></div><div class="ln"><span class="who">女</span><span lang="ko">아, 이렇게 하는 거군요. 감사합니다.</span><div class="en">啊，原來是這樣弄的。謝謝。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">우리나라 성인이 1년 동안 읽는 책이 계속 줄고 있습니다. 2015년에는 평균 9권이었는데 2020년에는 7권, 2025년에는 5권으로 줄었습니다.</span><div class="en">我國成人一年閱讀的書本數持續減少。2015 年平均 9 本，2020 年 7 本，2025 年減少到 5 本。</div></div><div class="ln"><span class="who">男</span><span lang="ko">책을 읽지 않는 이유로는 &#x27;시간이 없어서&#x27;가 가장 많았습니다.</span><div class="en">不讀書的原因中，「沒有時間」最多。</div></div></details></div>
@@ -54,8 +61,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 10 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">이 냉장고는 언제 배달돼요?</span><div class="en">這台冰箱什麼時候送到？</div></div><div class="ln"><span class="who">男</span><span lang="ko">내일 오후에 가능합니다. 주소를 여기에 써 주시겠어요?</span><div class="en">明天下午可以。可以請您把地址寫在這裡嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ko">네. 그리고 쓰던 냉장고도 가져가 주실 수 있어요?</span><div class="en">好。另外可以把舊冰箱也收走嗎？</div></div><div class="ln"><span class="who">男</span><span lang="ko">네, 그럼요.</span><div class="en">可以，當然。</div></div></details></div>
 <div class="item"><b>第 11 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ko">이번 주 토요일 봉사 활동 신청했어요?</span><div class="en">這週六的志工活動你報名了嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ko">아니요, 아직이요. 어떻게 신청해요?</span><div class="en">還沒。要怎麼報名？</div></div><div class="ln"><span class="who">男</span><span lang="ko">학교 홈페이지에서 신청서를 내려받아서 사무실에 내면 돼요.</span><div class="en">從學校網站下載申請表，交到辦公室就可以了。</div></div><div class="ln"><span class="who">女</span><span lang="ko">그렇군요. 지금 홈페이지에 들어가 볼게요.</span><div class="en">原來如此。我現在上網站看看。</div></div></details></div>
 <div class="item"><b>第 12 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ko">손님, 주문하신 케이크 나왔습니다.</span><div class="en">先生，您訂的蛋糕好了。</div></div><div class="ln"><span class="who">男</span><span lang="ko">감사합니다. 그런데 초는 안 주시나요?</span><div class="en">謝謝。不過沒有附蠟燭嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ko">아, 죄송합니다. 몇 개 드릴까요?</span><div class="en">啊，對不起。要給您幾根？</div></div><div class="ln"><span class="who">男</span><span lang="ko">큰 거 세 개 주세요.</span><div class="en">請給我三根大的。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ko_3/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>12 段母語錄音、12 題。</p><a class="cta" href="/?l=ko_3/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

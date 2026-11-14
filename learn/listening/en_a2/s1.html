@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_a2/">英文 A2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_a2/">英文 A2</a></div>
 <article class="card">
 <h1>英文 A2 聽力練習 第 1 回</h1>
 <p class="en">English listening practice, A2, round 1 — 13 recordings, 25 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=en_a2/s1">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Did you get a present for your sister?</span><div class="en">你買到送你妹妹的禮物了嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">Yes. I was going to buy her a book, but she&#x27;s got so many. Then I saw a lovely scarf, but it was too expensive, so I got her a necklace in the end.</span><div class="en">買了。本來想買書給她，可是她書太多了。後來看到一條很漂亮的圍巾，但太貴了，所以最後買了一條項鍊。</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Are you taking a taxi to the airport?</span><div class="en">你要搭計程車去機場嗎？</div></div><div class="ln"><span class="who">女</span><span lang="en">No, they&#x27;re too expensive. I&#x27;ll get the train — it&#x27;s quicker than the bus.</span><div class="en">不要，太貴了。我搭火車，比公車快。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">Shall we go to the beach on Saturday?</span><div class="en">我們星期六去海邊好嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">The forecast says it&#x27;ll rain in the morning, but it&#x27;ll be sunny all afternoon.</span><div class="en">氣象預報說早上會下雨，但整個下午都是晴天。</div></div><div class="ln"><span class="who">女</span><span lang="en">Great — let&#x27;s go after lunch, then.</span><div class="en">太好了，那我們吃完午飯再去。</div></div></details></div>
@@ -55,8 +62,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 11 段</b>　你會聽到兩個朋友談一個派對。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">You will hear two friends talking about a party.</span><div class="en">你會聽到兩個朋友談一個派對。</div></div><div class="ln"><span class="who">女</span><span lang="en">Are you going to Tom&#x27;s party?</span><div class="en">你要去湯姆的派對嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">I&#x27;d love to, but my grandparents are visiting that weekend, so I have to stay at home.</span><div class="en">很想去，可是那個週末我爺爺奶奶要來，所以得待在家。</div></div></details></div>
 <div class="item"><b>第 12 段</b>　你會聽到一個女孩談她的新嗜好。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">You will hear a girl talking about her new hobby.</span><div class="en">你會聽到一個女孩談她的新嗜好。</div></div><div class="ln"><span class="who">女</span><span lang="en">I started taking photos last year. I mostly take pictures of animals, especially birds. Next month I&#x27;m entering a competition.</span><div class="en">我去年開始拍照，大多拍動物，尤其是鳥。下個月我要參加比賽。</div></div></details></div>
 <div class="item"><b>第 13 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">So, what&#x27;s everyone bringing to the picnic on Sunday?</span><div class="en">那麼，星期天的野餐大家要帶什麼？</div></div><div class="ln"><span class="who">男</span><span lang="en">Well, Anna said she&#x27;d bake a cake — she&#x27;s really good at that.</span><div class="en">安娜說她要烤蛋糕，她很會烤。</div></div><div class="ln"><span class="who">女</span><span lang="en">Lovely. What about Ben? He usually brings drinks.</span><div class="en">太好了。班呢？他通常帶飲料。</div></div><div class="ln"><span class="who">男</span><span lang="en">Not this time. He&#x27;s going to the market on Saturday, so he&#x27;ll get some fruit.</span><div class="en">這次不是。他星期六要去市場，所以會買水果。</div></div><div class="ln"><span class="who">女</span><span lang="en">OK. And Chloe?</span><div class="en">好。克蘿伊呢？</div></div><div class="ln"><span class="who">男</span><span lang="en">Chloe wanted to bring ice cream, but it would melt, so she&#x27;s making a big salad instead.</span><div class="en">克蘿伊本來想帶冰淇淋，可是會融化，所以改做一大盤沙拉。</div></div><div class="ln"><span class="who">女</span><span lang="en">Good idea. Is David bringing the drinks, then?</span><div class="en">好主意。那大衛帶飲料嗎？</div></div><div class="ln"><span class="who">男</span><span lang="en">Yes — lemonade and water. And Ella said she&#x27;d make sandwiches for everyone.</span><div class="en">對，檸檬汽水和水。艾拉說她要幫大家做三明治。</div></div><div class="ln"><span class="who">女</span><span lang="en">Great. Then I&#x27;ll bring some bread and cheese.</span><div class="en">太好了，那我帶麵包和起司。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=en_a2/s1">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div>
+<div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>13 段母語錄音、25 題。</p><a class="cta" href="/?l=en_a2/s1">到網站聽這一回 →</a><div class="nav"><span></span><a href="s2.html">第 2 回 →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

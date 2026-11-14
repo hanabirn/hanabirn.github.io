@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/zh_hsk12/">中文 HSK 1–2</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/zh_hsk12/">中文 HSK 1–2</a></div>
 <article class="card">
 <h1 lang="zh-Hant">句尾的了（變化、新情況）</h1>
 <p class="sub">了：情況改變了</p><p class="en">了 at the end — a change — Chinese grammar, HSK 1–2</p>
@@ -44,9 +52,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <h2>注意事項</h2><ul><li>「太～了」也用這個「了」：太好了！<div class="en">太～了 uses this 了 too: 太好了！</div></li></ul>
 <h2>常見錯誤</h2><ul><li><span class="wrong" lang="zh-Hant">✗ 下雨。</span><br><span class="right" lang="zh-Hant">✓ 下雨了。</span><br>說「開始下雨了」要加「了」表示變化。<div class="en">“It&#x27;s started raining” needs 了 for the change.</div></li><li><span class="wrong" lang="zh-Hant">✗ 我不去。</span><br><span class="right" lang="zh-Hant">✓ 我不去了。</span><br>本來要去，後來改變主意：改變主意要加「了」。<div class="en">A change of plan needs 了.</div></li></ul>
 <h2>例句</h2><div class="ex"><div class="t" lang="zh-Hant">下雨了。</div><div class="r" lang="zh-Hant">Xià yǔ le.</div><div class="en">It&#x27;s started raining.</div></div><div class="ex"><div class="t" lang="zh-Hant">我餓了，我們去吃飯吧。</div><div class="r" lang="zh-Hant">Wǒ è le, wǒmen qù chīfàn ba.</div><div class="en">I&#x27;m hungry — let&#x27;s go and eat.</div></div><div class="ex"><div class="t" lang="zh-Hant">太晚了，我不去了。</div><div class="r" lang="zh-Hant">Tài wǎn le, wǒ bú qù le.</div><div class="en">It&#x27;s too late — I&#x27;m not going after all.</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=zh_hsk12/le-change">到網站練習這個文法 →</a>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=zh_hsk12/le-change">到網站練習這個文法 →</a></div>
 </article>
-<div class="nav"><a href="le-done.html">← 動詞 ＋ 了（完成）</a><a href="guo.html">動詞 ＋ 過（經驗） →</a></div>
+<div class="nav"><a href="le-done.html">← 動詞 ＋ 了（完成）</a><a href="guo.html">動詞 ＋ 過（經驗） →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=zh_hsk12/le-change">到網站練習這個文法 →</a><div class="nav"><a href="le-done.html">← 動詞 ＋ 了（完成）</a><a href="guo.html">動詞 ＋ 過（經驗） →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

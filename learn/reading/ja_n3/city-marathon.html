@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n3/">日文 N3</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/reading/">閱讀</a> › <a href="/learn/reading/ja_n3/">日文 N3</a></div>
 <article class="card">
 <h1 lang="ja">みどり市民マラソン大会のご案内</h1>
 <p class="sub">綠市市民馬拉松大會報名須知</p>
@@ -47,10 +55,10 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="para"><div lang="ja">申し込みは、10月1日から10月31日までです。市のホームページから申し込むことができます。定員は各種目三百人で、定員になり次第締め切ります。参加費は、申し込みから一週間以内にお支払いください。お支払いがない場合は、申し込みが取り消されますのでご注意ください。</div><div class="rd" lang="ja">もうしこみは、10がつ1ついたちから10がつ31にちまでです。しのホームページからもうしこむことができます。ていいんはかくしゅもくさんびゃくにんで、ていいんになりしだいしめきります。さんかひは、もうしこみからいっしゅうかんいないにおしはらいください。おしはらいがないばあいは、もうしこみがとりけされますのでごちゅういください。</div><div class="tl">報名期間是 10 月 1 日到 10 月 31 日，可以從市政府網站報名。名額每個項目三百人，額滿即截止。報名費請在報名後一週內支付。未付款者，報名將被取消，請注意。</div></div>
 <div class="para"><div lang="ja">コースの途中には、給水所を三か所用意します。また、10キロの部には制限時間があり、スタートから1時間30分を過ぎた方には、途中でもコースから出ていただきます。ご自分の体調に合わせて、無理をせずに走ってください。</div><div class="rd" lang="ja">コースのとちゅうには、きゅうすいじょをさんかしょよういします。また、10キロのぶにはせいげんじかんがあり、スタートから1じかん30ぷんをすぎたかたには、とちゅうでもコースからでていただきます。ごじぶんのたいちょうにあわせて、むりをせずにはしってください。</div><div class="tl">跑道途中設有三處補水站。另外，10 公里組有時間限制，起跑後超過 1 小時 30 分的人，即使還在途中也請離開跑道。請配合自己的身體狀況，不要勉強。</div></div>
 <div class="para"><div lang="ja">当日は、午前8時から市民運動場で受付を行います。10キロの部は9時、5キロの部は9時半、親子2キロの部は10時にスタートします。完走した人全員に記念のタオルを差し上げます。駐車場はありませんので、電車かバスでお越しください。</div><div class="rd" lang="ja">とうじつは、ごぜん8じからしみんうんどうじょうでうけつけをおこないます。10キロのぶは9じ、5キロのぶは9じはん、おやこ2キロのぶは10じにスタートします。かんそうしたひとぜんいんにきねんのタオルをさしあげます。ちゅうしゃじょうはありませんので、でんしゃかバスでおこしください。</div><div class="tl">當天上午 8 點起在市民運動場受理報到。10 公里組 9 點、5 公里組 9 點半、親子 2 公里組 10 點起跑。跑完全程的人每人都會獲贈紀念毛巾。現場沒有停車場，請搭電車或公車前來。</div></div>
-<h2>生詞</h2><div class="gl"><div><b lang="ja">開催</b> <span class="en">かいさい</span>　舉辦</div><div><b lang="ja">中止</b> <span class="en">ちゅうし</span>　取消；中止</div><div><b lang="ja">種目</b> <span class="en">しゅもく</span>　比賽項目</div><div><b lang="ja">対象</b> <span class="en">たいしょう</span>　對象</div><div><b lang="ja">参加費</b> <span class="en">さんかひ</span>　報名費</div><div><b lang="ja">保護者</b> <span class="en">ほごしゃ</span>　家長；監護人</div><div><b lang="ja">一組</b> <span class="en">ひとくみ</span>　一組</div><div><b lang="ja">定員</b> <span class="en">ていいん</span>　名額</div><div><b lang="ja">締め切る</b> <span class="en">しめきる</span>　截止</div><div><b lang="ja">運動場</b> <span class="en">うんどうじょう</span>　運動場</div><div><b lang="ja">完走</b> <span class="en">かんそう</span>　跑完全程</div><div><b lang="ja">記念</b> <span class="en">きねん</span>　紀念</div><div><b lang="ja">駐車場</b> <span class="en">ちゅうしゃじょう</span>　停車場</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/city-marathon">到網站讀這篇、做題目 →</a>
+<div class="gl-main"><h2>生詞</h2><div class="gl"><div><b lang="ja">開催</b> <span class="en">かいさい</span>　舉辦</div><div><b lang="ja">中止</b> <span class="en">ちゅうし</span>　取消；中止</div><div><b lang="ja">種目</b> <span class="en">しゅもく</span>　比賽項目</div><div><b lang="ja">対象</b> <span class="en">たいしょう</span>　對象</div><div><b lang="ja">参加費</b> <span class="en">さんかひ</span>　報名費</div><div><b lang="ja">保護者</b> <span class="en">ほごしゃ</span>　家長；監護人</div><div><b lang="ja">一組</b> <span class="en">ひとくみ</span>　一組</div><div><b lang="ja">定員</b> <span class="en">ていいん</span>　名額</div><div><b lang="ja">締め切る</b> <span class="en">しめきる</span>　截止</div><div><b lang="ja">運動場</b> <span class="en">うんどうじょう</span>　運動場</div><div><b lang="ja">完走</b> <span class="en">かんそう</span>　跑完全程</div><div><b lang="ja">記念</b> <span class="en">きねん</span>　紀念</div><div><b lang="ja">駐車場</b> <span class="en">ちゅうしゃじょう</span>　停車場</div></div></div>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/city-marathon">到網站讀這篇、做題目 →</a></div>
 </article>
-<div class="nav"><a href="interview-failure.html">← 面接での失敗</a><a href="smartphones-and-sleep.html">スマートフォンと睡眠 →</a></div>
+<div class="nav"><a href="interview-failure.html">← 面接での失敗</a><a href="smartphones-and-sleep.html">スマートフォンと睡眠 →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽整篇文章的錄音、點生詞看意思，再做 8 題閱讀測驗（選擇題和是非題）。</p><a class="cta" href="/?r=ja_n3/city-marathon">到網站讀這篇、做題目 →</a><div class="nav"><a href="interview-failure.html">← 面接での失敗</a><a href="smartphones-and-sleep.html">スマートフォンと睡眠 →</a></div><h2>生詞</h2><div class="gl"><div><b lang="ja">開催</b> <span class="en">かいさい</span>　舉辦</div><div><b lang="ja">中止</b> <span class="en">ちゅうし</span>　取消；中止</div><div><b lang="ja">種目</b> <span class="en">しゅもく</span>　比賽項目</div><div><b lang="ja">対象</b> <span class="en">たいしょう</span>　對象</div><div><b lang="ja">参加費</b> <span class="en">さんかひ</span>　報名費</div><div><b lang="ja">保護者</b> <span class="en">ほごしゃ</span>　家長；監護人</div><div><b lang="ja">一組</b> <span class="en">ひとくみ</span>　一組</div><div><b lang="ja">定員</b> <span class="en">ていいん</span>　名額</div><div><b lang="ja">締め切る</b> <span class="en">しめきる</span>　截止</div><div><b lang="ja">運動場</b> <span class="en">うんどうじょう</span>　運動場</div><div><b lang="ja">完走</b> <span class="en">かんそう</span>　跑完全程</div><div><b lang="ja">記念</b> <span class="en">きねん</span>　紀念</div><div><b lang="ja">駐車場</b> <span class="en">ちゅうしゃじょう</span>　停車場</div></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

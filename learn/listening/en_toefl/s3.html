@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_toefl/">英文 TOEFL</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/en_toefl/">英文 TOEFL</a></div>
 <article class="card">
 <h1>英文 TOEFL 聽力練習 第 3 回</h1>
 <p class="en">English listening practice, TOEFL, round 3 — 15 recordings, 24 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=en_toefl/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Is the writing center open on weekends?</span><div class="en">寫作中心週末有開嗎？</div></div></details></div>
 <div class="item"><b>第 2 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="en">I missed the bus, so I&#x27;ll be late for our study group.</span><div class="en">我錯過公車了，所以讀書會會遲到。</div></div></details></div>
 <div class="item"><b>第 3 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="en">Which section of chemistry are you taking?</span><div class="en">你上哪一班的化學？</div></div></details></div>
@@ -57,8 +64,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 13 段</b>　請聽一段課堂上的宣布。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to an announcement in a class.</span><div class="en">請聽一段課堂上的宣布。</div></div><div class="ln"><span class="who">女</span><span lang="en">One quick thing before we begin. The midterm exam has been moved from Monday to Wednesday because of the university holiday. It will still be in this room, and it will cover the same chapters. I&#x27;ll also hold an extra review session on Tuesday evening at seven in the library.</span><div class="en">開始之前說一件事。因為校定假日，期中考從星期一改到星期三，還是在這間教室，範圍一樣。我也會在星期二晚上七點於圖書館加開一次複習課。</div></div></details></div>
 <div class="item"><b>第 14 段</b>　請聽一段藝術史課的講課。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to part of a lecture in an art history class.</span><div class="en">請聽一段藝術史課的講課。</div></div><div class="ln"><span class="who">男</span><span lang="en">When we look at old paintings, we often see colors that seem dull. But many of them were once much brighter. Some pigments used by painters, like certain yellows and reds, fade when exposed to light over centuries. Others change color because of chemical reactions with the air. Today, museums protect paintings by keeping the lights low and controlling the humidity. Scientists can even use X-rays to discover the original colors hidden underneath.</span><div class="en">我們看古畫時，常常覺得顏色很暗淡。但很多畫以前鮮豔得多。畫家用的某些顏料，例如某些黃色和紅色，經過幾世紀照光就會褪色；另一些則因為和空氣起化學反應而變色。現在博物館用低亮度的燈光和控制濕度來保護畫作。科學家甚至能用 X 光找出底下原本的顏色。</div></div></details></div>
 <div class="item"><b>第 15 段</b>　請聽一段商業課的講課。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="en">Listen to part of a lecture in a business class.</span><div class="en">請聽一段商業課的講課。</div></div><div class="ln"><span class="who">女</span><span lang="en">Let&#x27;s discuss why some small businesses succeed where large companies fail. Take local bookstores. Ten years ago, many people predicted online retailers would close them all. Instead, a lot of independent bookstores are doing well. Why? They offer something online shops can&#x27;t: personal recommendations from staff, author events and a sense of community. In other words, they stopped competing on price and started competing on experience.</span><div class="en">我們來討論為什麼有些小商家能在大公司失敗的地方成功。以在地書店為例。十年前很多人預測網路零售商會讓書店全部倒閉。結果很多獨立書店經營得很好。為什麼？它們提供網路商店做不到的東西：店員的個人推薦、作家活動和社群感。換句話說，它們不再拚價格，而是拚體驗。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=en_toefl/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>15 段母語錄音、24 題。</p><a class="cta" href="/?l=en_toefl/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

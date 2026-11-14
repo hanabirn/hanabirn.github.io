@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,12 +30,20 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/ru_a1/">俄文 A1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/grammar/">文法</a> › <a href="/learn/grammar/ru_a1/">俄文 A1</a></div>
 <article class="card">
 <h1 lang="ru">он・она・оно（名詞的性別）</h1>
 <p class="sub">名詞的三種性別</p><p class="en">The three genders of nouns — Russian grammar, A1</p>
@@ -44,9 +52,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <h2>注意事項</h2><ul><li>以 -ь 結尾的名詞可能是陽性（день）也可能是陰性（ночь），要個別記。<div class="en">Nouns in -ь can be masculine (день) or feminine (ночь) — learn them.</div></li><li>папа（爸爸）、дедушка（爺爺）雖然是 -а 結尾，但是男性，所以當陽性。<div class="en">папа and дедушка end in -а but are masculine.</div></li></ul>
 <h2>常見錯誤</h2><ul><li><span class="wrong" lang="ru">✗ Где книга? — Он здесь.</span><br><span class="right" lang="ru">✓ Где книга? — Она здесь.</span><br>книга 是陰性，要用 она。<div class="en">книга is feminine: она.</div></li><li><span class="wrong" lang="ru">✗ Где окно? — Она там.</span><br><span class="right" lang="ru">✓ Где окно? — Оно там.</span><br>окно 是中性，用 оно。<div class="en">окно is neuter: оно.</div></li></ul>
 <h2>例句</h2><div class="ex"><div class="t" lang="ru">Где стол? — Он здесь.</div><div>桌子在哪裡？—在這裡。</div><div class="en">Where&#x27;s the table? — Here.</div></div><div class="ex"><div class="t" lang="ru">Где книга? — Она там.</div><div class="r" lang="ru">Где кни́га? — Она́ там.</div><div>書在哪裡？—在那裡。</div><div class="en">Where&#x27;s the book? — There.</div></div><div class="ex"><div class="t" lang="ru">Это окно. Оно большое.</div><div class="r" lang="ru">Э́то окно́. Оно́ большо́е.</div><div>這是窗戶。它很大。</div><div class="en">This is a window. It&#x27;s big.</div></div>
-<h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ru_a1/gender">到網站練習這個文法 →</a>
+<div class="cta-main"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ru_a1/gender">到網站練習這個文法 →</a></div>
 </article>
-<div class="nav"><span></span><a href="eto-no-be.html">Это …／Я студент（現在式沒有「是」） →</a></div>
+<div class="nav"><span></span><a href="eto-no-be.html">Это …／Я студент（現在式沒有「是」） →</a></div></div><aside class="side"><div class="card"><h2>練習</h2><p>在 Hanabiの小天地 聽例句的錄音、做 3 題練習，答對 2/3 就算學會，進度會記下來。</p><a class="cta" href="/?g=ru_a1/gender">到網站練習這個文法 →</a><div class="nav"><span></span><a href="eto-no-be.html">Это …／Я студент（現在式沒有「是」） →</a></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>

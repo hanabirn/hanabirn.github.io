@@ -15,8 +15,8 @@
 <style>:root{--paper:#f6f1e7;--surface:#fbf8f2;--ink:#2b2724;--muted:#6b625a;--line:#e4dccb;--primary:#c8442f}
 @media (prefers-color-scheme:dark){:root{--paper:#1e1b18;--surface:#272320;--ink:#efe7d8;--muted:#b3a99b;--line:#3a342d;--primary:#e0654e}}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.75 "Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif}
-main{max-width:860px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
-header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:860px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
+main{max-width:1180px;margin:0 auto;padding:20px 16px 48px}a{color:var(--primary)}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:1180px;margin:0 auto;padding:14px 16px;border-bottom:2px solid var(--primary)}
 header a.brand{font:900 1.3rem/1.2 "Noto Serif TC",serif;color:var(--ink);text-decoration:none}
 .crumbs{font-size:.85rem;color:var(--muted);margin-bottom:8px}.card{background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--primary);border-radius:14px;padding:20px 22px;margin:14px 0}
 h1{font:700 1.7rem/1.4 "Noto Serif TC",serif;margin:0}.sub{font-size:1.1rem;margin:4px 0 0}.en{color:var(--muted);font-size:.92rem}
@@ -30,18 +30,25 @@ h2{font:700 1.05rem/1.4 "Noto Serif TC",serif;border-left:4px solid var(--primar
 .para{margin:0 0 14px}.para .tl{color:var(--muted);font-size:.93rem;margin-top:2px}.para .rd{color:var(--muted);font-size:.85rem}
 .gl{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:4px 16px}.gl div{border-bottom:1px dashed var(--line);padding:4px 0}
 details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)}.ln{padding:4px 0}.ln .who{display:inline-block;min-width:3.2em;color:var(--muted);font-size:.85rem}
-.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
+.item{border-bottom:1px dashed var(--line);padding:10px 0}.item:last-child{border-bottom:0}
+.main-col{max-width:860px;margin:0 auto}.side .cta{display:block;text-align:center;margin:0}.side .nav{flex-direction:column;gap:6px;margin-top:12px}
+.side h2{margin-top:16px}.side p{margin:0 0 10px;font-size:.92rem}.side .gl{grid-template-columns:1fr}
+@media (min-width:1024px){.layout{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:24px;align-items:start}.main-col{max-width:none}
+.side{position:sticky;top:12px;margin-top:14px}.side .card{margin:0;max-height:calc(100vh - 24px);overflow:auto}
+.items{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.main-col .gl-main,.main-col .cta-main,.main-col>.nav{display:none}}
+@media (max-width:1023px){.side{position:sticky;bottom:0;padding:10px 0 12px;background:var(--paper)}.side .card{border:0;padding:0;margin:0;background:none}
+.side .card>:not(.cta){display:none}}
+footer{text-align:center;color:var(--muted);font-size:.8rem;margin-top:30px}</style>
 </head>
 <body>
 <header><a class="brand" href="/">Hanabiの小天地</a><nav class="top"><a href="/learn/grammar/">文法</a><a href="/learn/reading/">閱讀</a><a href="/learn/listening/">聽力</a></nav></header>
 <main>
-<div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n1/">日文 N1</a></div>
+<div class="layout"><div class="main-col"><div class="crumbs"><a href="/learn/listening/">聽力</a> › <a href="/learn/listening/ja_n1/">日文 N1</a></div>
 <article class="card">
 <h1>日文 N1 聽力練習 第 3 回</h1>
 <p class="en">Japanese listening practice, N1, round 3 — 10 recordings, 11 questions</p>
 <p>每一段都是母語錄音。建議先到網站聽、作答，再回來看逐字稿。</p>
-<a class="cta" href="/?l=ja_n1/s3">到網站聽這一回 →</a>
-<h2>內容</h2>
+<h2>內容</h2><div class="items">
 <div class="item"><b>第 1 段</b>　部長和女生在公司說話。女生接下來首先要做什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">会社で部長と女の人が話しています。女の人はこのあとまず何をしますか。</span><div class="en">部長和女生在公司說話。女生接下來首先要做什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ja">来月の新商品発表会の件だけど、会場はもう押さえてあるんだよね。</span><div class="en">下個月新產品發表會的事，場地已經訂好了吧。</div></div><div class="ln"><span class="who">女</span><span lang="ja">はい、ホテルの宴会場を予約してあります。招待状は来週発送する予定です。</span><div class="en">是的，已經預約了飯店的宴會廳。邀請函預定下週寄出。</div></div><div class="ln"><span class="who">男</span><span lang="ja">そのことなんだけど、取引先の数が去年より増えてるから、会場の広さが足りるかどうか、まず確かめてもらえるかな。招待状はそれからでいいから。</span><div class="en">關於這件事，客戶的數量比去年多，可以先確認一下場地夠不夠大嗎？邀請函等確認之後再寄就好。</div></div><div class="ln"><span class="who">女</span><span lang="ja">承知しました。では、出席予定者の人数をもう一度数え直して……。</span><div class="en">明白了。那我再重新算一次預定出席的人數……</div></div><div class="ln"><span class="who">男</span><span lang="ja">ああ、人数は営業部がもう出してくれてるから、それを使って。</span><div class="en">啊，人數業務部已經提供了，用那個就好。</div></div><div class="ln"><span class="who">女</span><span lang="ja">わかりました。では、その人数でホテルに問い合わせます。</span><div class="en">知道了。那我用那個人數去問飯店。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">女の人はこのあとまず何をしますか。</span><div class="en">女生接下來首先要做什麼？</div></div></details></div>
 <div class="item"><b>第 2 段</b>　男學生和職員在大學辦公室說話。男學生為了申請獎學金，必須準備什麼？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">大学の事務室で男の学生と職員が話しています。男の学生は奨学金の申請のために、何を用意しなければなりませんか。</span><div class="en">男學生和職員在大學辦公室說話。男學生為了申請獎學金，必須準備什麼？</div></div><div class="ln"><span class="who">男</span><span lang="ja">奨学金の申請をしたいんですが、必要な書類を教えていただけますか。</span><div class="en">我想申請獎學金，可以告訴我需要哪些文件嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ja">申請書と成績証明書、それから推薦状です。成績証明書はこちらで発行して審査の担当に直接回しますので、ご自分で用意していただく必要はありません。</span><div class="en">申請書、成績證明書，還有推薦信。成績證明書由我們這邊發行，直接轉交給審查負責人，所以不需要您自己準備。</div></div><div class="ln"><span class="who">男</span><span lang="ja">推薦状は、指導教員にお願いすればいいんでしょうか。</span><div class="en">推薦信是拜託指導教授寫就可以了嗎？</div></div><div class="ln"><span class="who">女</span><span lang="ja">ええ。ただ、今年から推薦状は先生から事務室に直接送っていただくことになりました。学生さんは申請書だけ出してください。</span><div class="en">是的。不過從今年開始，推薦信改成由老師直接寄到辦公室。學生只要交申請書就好。</div></div><div class="ln"><span class="who">男</span><span lang="ja">わかりました。じゃあ、先生にはお願いだけしておけばいいんですね。</span><div class="en">知道了。那我只要先拜託老師就好了吧。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">男の学生は奨学金の申請のために、何を用意しなければなりませんか。</span><div class="en">男學生為了申請獎學金，必須準備什麼？</div></div></details></div>
 <div class="item"><b>第 3 段</b>　女生和男生在說話。男生最欣賞這部電影的哪一點？<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">女の人と男の人が話しています。男の人は、この映画のどんな点をいちばん評価していますか。</span><div class="en">女生和男生在說話。男生最欣賞這部電影的哪一點？</div></div><div class="ln"><span class="who">女</span><span lang="ja">昨日、話題の映画を見たんでしょう？どうだった？</span><div class="en">你昨天看了那部很紅的電影吧？怎麼樣？</div></div><div class="ln"><span class="who">男</span><span lang="ja">映像は確かに見事だったし、主演の俳優の演技も評判どおりだったよ。ただ、ストーリーは正直、先が読めてしまってね。</span><div class="en">影像確實很精彩，主角的演技也跟評價一樣好。不過老實說，劇情可以猜到後面。</div></div><div class="ln"><span class="who">女</span><span lang="ja">じゃあ、いまいちだったの？</span><div class="en">那是不怎麼樣囉？</div></div><div class="ln"><span class="who">男</span><span lang="ja">いや、それでも見てよかったと思うよ。何より、台詞が少ないのに、登場人物の気持ちが音楽だけで伝わってくるんだ。あれはほかの映画ではなかなか味わえないよ。</span><div class="en">不，我還是覺得看了很值得。最重要的是，明明台詞很少，角色的心情卻只靠音樂就傳達出來了。那是在其他電影很難體會到的。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">男の人は、この映画のどんな点をいちばん評価していますか。</span><div class="en">男生最欣賞這部電影的哪一點？</div></div></details></div>
@@ -52,8 +59,9 @@ details{margin:6px 0}summary{cursor:pointer;font-weight:600;color:var(--primary)
 <div class="item"><b>第 8 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">女</span><span lang="ja">課長、この企画書、もう少し練り直したほうがいいでしょうか。</span><div class="en">課長，這份企劃書是不是再修改一下比較好？</div></div></details></div>
 <div class="item"><b>第 9 段</b>　<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">男</span><span lang="ja">山田さんって、あんな大事な会議でも、まったく物怖じしないね。</span><div class="en">山田在那麼重要的會議上也完全不怯場呢。</div></div></details></div>
 <div class="item"><b>第 10 段</b>　夫妻在房屋仲介聽了店員的說明後在討論。<details><summary>逐字稿（聽完再看）</summary><div class="ln"><span class="who">旁白</span><span lang="ja">不動産屋で、店員の説明を聞いて、夫婦が話しています。</span><div class="en">夫妻在房屋仲介聽了店員的說明後在討論。</div></div><div class="ln"><span class="who">女 2</span><span lang="ja">ご希望に合う物件は四つございます。Aは駅から徒歩三分ですが、部屋は少し狭めです。Bは広くて日当たりもいいんですが、駅からバスで十五分かかります。</span><div class="en">符合您需求的物件有四間。A 離車站走路三分鐘，不過房間有點小。B 寬敞、採光也好，但從車站搭公車要十五分鐘。</div></div><div class="ln"><span class="who">女 2</span><span lang="ja">Cは駅から徒歩十分で広さも十分ですが、築三十年と古めです。Dは新築で駅にも近いんですが、家賃がご予算を少し超えてしまいます。</span><div class="en">C 離車站走路十分鐘，空間也夠大，但屋齡三十年，比較舊。D 是新屋、離車站也近，但房租會稍微超出您的預算。</div></div><div class="ln"><span class="who">男</span><span lang="ja">ぼくは毎朝早いから、駅に近いのは譲れないな。予算オーバーは困るし、狭くても我慢するよ。</span><div class="en">我每天早上很早出門，離車站近這點不能讓步。超出預算也不行，就算小一點我也能忍。</div></div><div class="ln"><span class="who">女</span><span lang="ja">二人で住むなら、狭いのはちょっとね……。古くても中はきれいに直してあるって言ってたし、歩いて十分なら通えるでしょう？わたしはそこがいいと思う。</span><div class="en">兩個人住的話，小的有點……。她說就算舊，裡面也整修得很漂亮，走路十分鐘也能通勤吧？我覺得那間不錯。</div></div><div class="ln"><span class="who">男</span><span lang="ja">うーん、確かに、十分ならなんとかなるか。じゃあ、そうしよう。</span><div class="en">嗯……確實，十分鐘的話還可以吧。那就這樣吧。</div></div><div class="ln"><span class="who">旁白</span><span lang="ja">質問は二つです。</span><div class="en">問題有兩個。</div></div></details></div>
+</div><div class="cta-main"><h2>練習</h2><a class="cta" href="/?l=ja_n1/s3">到網站聽這一回 →</a></div>
 </article>
-<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div>
+<div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div><aside class="side"><div class="card"><h2>練習</h2><p>10 段母語錄音、11 題。</p><a class="cta" href="/?l=ja_n1/s3">到網站聽這一回 →</a><div class="nav"><a href="s2.html">← 第 2 回</a><span></span></div></div></aside></div>
 <footer>說明與例句都是 Hanabiの小天地自己寫的 · <a href="/">hanabirn.xyz</a></footer>
 </main>
 <script>if (location.hostname === 'hanabirn.xyz') { var cfb = document.createElement('script'); cfb.defer = true; cfb.src = 'https://static.cloudflareinsights.com/beacon.min.js'; cfb.setAttribute('data-cf-beacon', '{"token": "9994498e5ef14bf8a536876efc098de7"}'); document.body.appendChild(cfb); }</script>
