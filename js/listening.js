@@ -534,6 +534,16 @@ function listeningSay(lv, line, done) {
     });
 }
 
+/* 跟讀 (js/shadow.js) from a transcript line: ‹ › go through the item's lines */
+function listeningShadow(idx) {
+    const lv = listeningLevels[listeningLevelId];
+    const lines = listeningLinesOf(listeningItem(lv));
+    if (!lines[idx] || typeof shadowOpen !== 'function') return;
+    listeningStop();
+    shadowOpen({ lines: lines.map(x => ({ text: x.line.plain || '', lang: lv.lang })), at: idx,
+                 say: (k, onend) => listeningSay(lv, lines[k].line, onend) });
+}
+
 /* 🔊 beside a transcript line (only once the item is answered or peeked at) */
 function listeningSayLine(idx) {
     const lv = listeningLevels[listeningLevelId];
@@ -755,6 +765,7 @@ function listeningQuizHtml(lv) {
                     <div><div class="ls-ja" lang="${lv.lang}">${listeningSegsHtml(x.line.t, true)}</div>
                         <div class="ls-zh">${escHtml(gText(x.line))}</div></div>
                     <button type="button" class="ls-say" onclick="listeningSayLine(${x.idx})" aria-label="🔊">${uiIcon('speaker')}</button>
+                    <button type="button" class="ls-say shadow-btn" onclick="listeningShadow(${x.idx})" title="${escHtml(t('shadow_btn'))}" aria-label="${escHtml(t('shadow_btn'))}">${uiIcon('mic')}</button>
                 </div>`).join('')}
             ${it.words && it.words.length ? `<div class="ls-words">📘 ${it.words.map(w => `<span><b lang="${lv.lang}">${escHtml(w.w)}</b>${w.r && w.r !== w.w ? `（${escHtml(w.r)}）` : ''} ${escHtml(gText(w))}</span>`).join('')}</div>` : ''}
             <div class="ls-note-row"><button type="button" class="note-add" onclick="listeningNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>${typeof reportBtnHtml === 'function'

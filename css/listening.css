@@ -220,3 +220,33 @@
     .ls-top-nav .mode-btn { padding: 6px 12px; font-size: 0.85rem; }
     #listening-card > .grammar-nav { display: none; }
 }
+
+/* ===== 跟讀 shadowing (js/shadow.js): the 🎤 beside 🔊, and its dialog (#shadow-overlay) ===== */
+.ls-line:has(.shadow-btn) { grid-template-columns: 2.6em 1fr auto auto; }
+.ls-say.shadow-btn { color: var(--text-muted); }
+.ls-say.shadow-btn:hover, .speak-btn.shadow-btn:hover { color: var(--primary); }
+.speak-btn.shadow-btn { color: var(--text-muted); }
+.mode-btn.rd-shadow { display: inline-flex; align-items: center; gap: 4px; }
+.mode-btn.rd-shadow .ui-icon { width: 15px; height: 15px; }
+.shadow-panel { max-width: 520px; }
+.shadow-head { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 4px; }
+.shadow-head h3 { display: flex; align-items: center; gap: 6px; margin: 0; }
+.shadow-head h3 .ui-icon { width: 20px; height: 20px; }
+.shadow-nav { display: inline-flex; align-items: center; gap: 8px; font-size: .85rem; color: var(--text-secondary); }
+.shadow-nav .mode-btn { min-width: 36px; padding: 2px 10px; margin: 0; }
+.shadow-from { margin: 0 0 6px; font-size: .85rem; color: var(--text-muted); }
+.shadow-text { margin: 6px 0 10px; padding: 14px 16px; border-left: 3px solid var(--primary); border-radius: 8px;
+    background: var(--surface); font-size: 1.2rem; line-height: 1.7; overflow-wrap: anywhere; }
+.shadow-status { min-height: 1.5em; margin: 0 0 12px; display: flex; align-items: center; gap: 8px; color: var(--text-secondary); font-weight: 700; }
+.shadow-status.rec { color: var(--primary); }
+.shadow-status.no { color: var(--primary); }
+.shadow-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--primary); animation: shadow-blink 1s infinite; flex: none; }
+@keyframes shadow-blink { 50% { opacity: .25; } }
+@media (prefers-reduced-motion: reduce) { .shadow-dot { animation: none; } }
+.shadow-btns { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+@media (max-width: 420px) { .shadow-btns { gap: 6px; } .shadow-btns .mode-btn { padding-left: 4px; padding-right: 4px; font-size: .88rem; } .shadow-btns .mode-btn .ui-icon { display: none; } }
+.shadow-btns .mode-btn, .shadow-btns .next-btn { width: 100%; min-width: 0; max-width: none; box-sizing: border-box; white-space: normal; margin: 0; display: inline-flex; align-items: center; justify-content: center; gap: 6px; }
+.shadow-btns .ui-icon { width: 16px; height: 16px; }
+.shadow-btns .shadow-main { order: -1; grid-column: 1 / -1; }
+.shadow-private { margin: 12px 0 10px; font-size: .8rem; color: var(--text-muted); }
+.shadow-close { width: 100%; margin: 0; }

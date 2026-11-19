@@ -358,6 +358,7 @@ function readingReaderHtml(set) {
                     ${set.lang === 'ru' ? `<button type="button" class="mode-btn${readingStress() ? ' mode-btn-active' : ''}" aria-pressed="${readingStress()}" onclick="readingToggle('reading_stress')">${escHtml(t('reading_stress'))}</button>` : ''}
                     <button type="button" class="mode-btn${tr ? ' mode-btn-active' : ''}" aria-pressed="${tr}" onclick="readingToggle('reading_tr')">${escHtml(t('reading_tr'))}</button>
                     <button type="button" class="mode-btn${readingAllState === 'playing' ? ' mode-btn-active' : ''}" id="rd-all" onclick="readingSayAll()">${readingAllLabel()}</button>
+                    <button type="button" class="mode-btn rd-shadow" onclick="readingShadow()" title="${escHtml(t('shadow_title'))}">${uiIcon('mic')}${escHtml(t('shadow_btn'))}</button>
                     <span class="rd-font" role="group" aria-label="${escHtml(t('reading_font'))}">
                         <button type="button" class="mode-btn" onclick="readingFontStep(-1)"${readingFont() === 0 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} −">A−</button>
                         <button type="button" class="mode-btn" onclick="readingFontStep(1)"${readingFont() === READING_FONTS.length - 1 ? ' disabled' : ''} aria-label="${escHtml(t('reading_font'))} +">A+</button>
@@ -393,6 +394,21 @@ function readingSpeak(s, done) {
         return;
     }
     speakText(s.plain, READING_TTS[set.lang] || set.lang, Object.assign(set.lang === 'ja' && s.kana && s.kana !== s.plain ? { reading: s.kana } : {}, done ? { onend: done } : {}));
+}
+
+/* 跟讀 (js/shadow.js): the passage sentence by sentence, from the one read-all stopped at */
+function readingShadow() {
+    const set = readingSets[readingSetId];
+    const sents = readingSentences();
+    if (!sents.length || typeof shadowOpen !== 'function') return;
+    readingAllRun = 0;                                 // like a tapped sentence, it ends read-all
+    readingAllState = 'idle';
+    readingAllBtn();
+    readingMark(-1);
+    const simp = set.lang === 'zh' && readingZhScript() === 'simp';
+    shadowOpen({ lines: sents.map(s => ({ text: simp ? s.t.map(sg => sg[4] || sg[0]).join('') : s.plain, lang: set.lang })),
+                 at: Math.min(readingAllAt || 0, sents.length - 1), title: readingPlain(set.passages[readingNo].title.t),
+                 say: (k, onend) => readingSpeak(sents[k], onend) });
 }
 
 function readingMark(i) {

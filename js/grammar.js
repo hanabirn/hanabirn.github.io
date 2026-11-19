@@ -376,6 +376,7 @@ function grammarPointHtml(set) {
                 <div class="grammar-ex-line">
                     <span class="grammar-ex-ja" lang="${set.lang}">${escHtml(exText(ex))}</span>
                     <button type="button" class="speak-btn" onclick="grammarSay(${i})" title="${escHtml(t('tts_try'))}" aria-label="${escHtml(t('tts_try'))}">${uiIcon('speaker')}</button>
+                    <button type="button" class="speak-btn shadow-btn" onclick="grammarShadow(${i})" title="${escHtml(t('shadow_btn'))}" aria-label="${escHtml(t('shadow_btn'))}">${uiIcon('mic')}</button>
                     <button type="button" class="note-add" onclick="grammarNote(${i})" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
                 </div>
                 ${exReadingHtml(set, ex)}
@@ -465,14 +466,24 @@ function exReadingHtml(set, ex) {
     return r && r.replace(/\s/g, '') !== exText(ex).replace(/\s/g, '') ? `<div class="grammar-ex-kana" lang="${set.lang}">${escHtml(r)}</div>` : '';
 }
 
-function grammarSay(i) {
+function grammarSay(i, onend) {
     const set = grammarSets[grammarSetId];
     const ex = set && set.points[grammarPoint].examples[i];
     if (!ex) return;
+    const end = onend ? { onend } : {};
     // Chinese: both accents' recordings are keyed by the Traditional sentence
-    if (set.lang === 'zh') return speakChinese(exText(ex), exText(ex), zhUiScript());
+    if (set.lang === 'zh') return speakChinese(exText(ex), exText(ex), zhUiScript(), onend ? end : undefined);
     // recordings of examples are keyed "sentence|kana" (tools/build_audio.py)
-    speakText(exText(ex), GRAMMAR_LANG_TTS[set.lang] || set.lang, exReading(ex) ? { reading: exReading(ex) } : undefined);
+    speakText(exText(ex), GRAMMAR_LANG_TTS[set.lang] || set.lang, Object.assign(exReading(ex) ? { reading: exReading(ex) } : {}, end));
+}
+
+/* 跟讀 (js/shadow.js) from an example: ‹ › go through the point's examples */
+function grammarShadow(i) {
+    const set = grammarSets[grammarSetId];
+    const p = set && set.points[grammarPoint];
+    if (!p || typeof shadowOpen !== 'function') return;
+    shadowOpen({ lines: p.examples.map(ex => ({ text: exText(ex), lang: set.lang })), at: i, title: p.pattern,
+                 say: (k, onend) => grammarSay(k, onend) });
 }
 
 function grammarShuffle(a) {

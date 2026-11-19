@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-19',
+      zh: "新增「跟讀練習」：文法例句和聽力原文旁邊的 🎤，以及閱讀文章上方的「跟讀」。先播原音，接著換你說並錄下來，再按「對照」比較你跟原音哪裡不一樣。錄音只留在你的瀏覽器裡，不會上傳。",
+      'zh-Hans': "新增「跟读练习」：语法例句和听力原文旁边的 🎤，以及阅读文章上方的「跟读」。先播原音，接着换你说并录下来，再按「对照」比较你跟原音哪里不一样。录音只留在你的浏览器里，不会上传。",
+      en: "New shadowing practice: the 🎤 beside grammar examples and listening transcripts, and Shadow above reading passages. The original plays, then you say it and it's recorded — press Compare to hear the difference. Recordings stay in your browser and are never uploaded.",
+      ja: "「シャドーイング練習」を追加しました。文法の例文と聴解スクリプトの横の 🎤、読解の文章の上の「シャドーイング」から使えます。お手本のあとにあなたの声を録音し、「聞き比べ」で違いを確かめられます。録音はブラウザの中だけで、アップロードはしません。",
+      ko: "'따라 말하기 연습'이 생겼어요. 문법 예문과 듣기 대본 옆의 🎤, 읽기 글 위의 '따라 말하기'로 쓸 수 있어요. 원음이 나온 뒤 내 목소리를 녹음하고 '비교하기'로 차이를 들어 봐요. 녹음은 브라우저 안에만 있고 업로드하지 않아요.",
+      ru: "Новое: повторение за диктором. 🎤 рядом с примерами грамматики и расшифровками аудирования, а над текстами для чтения — «Повторить». Сначала звучит оригинал, потом вы говорите, и голос записывается; «Сравнить» покажет разницу. Записи остаются в браузере и никуда не отправляются.",
+      fr: "Nouveau : le shadowing. Le 🎤 à côté des exemples de grammaire et des transcriptions d’écoute, et « Répéter » au-dessus des textes de lecture. L’original passe, puis vous parlez et c’est enregistré ; « Comparer » fait entendre la différence. Les enregistrements restent dans votre navigateur.",
+      es: "Nuevo: práctica de shadowing. El 🎤 junto a los ejemplos de gramática y las transcripciones de audición, y «Repetir» sobre los textos de lectura. Suena el original, luego hablas tú y se graba; «Comparar» te deja oír la diferencia. Las grabaciones se quedan en tu navegador.",
+      de: "Neu: Nachsprechen (Shadowing). Das 🎤 neben Grammatikbeispielen und Hörtranskripten und „Nachsprechen“ über Lesetexten. Erst kommt das Original, dann sprichst du und wirst aufgenommen; „Vergleichen“ zeigt den Unterschied. Aufnahmen bleiben in deinem Browser." },
+    { date: '2026-11-19',
       zh: "新增「連續天數保護」：每連續練習 7 天得到一個 🛡️（最多 2 個），哪天忘了練習會自動用掉一個，連續天數不會中斷。另外，中文台灣版的每一級都標出了大約對應的 TOCFL 等級。",
       'zh-Hans': "新增「连续天数保护」：每连续练习 7 天得到一个 🛡️（最多 2 个），哪天忘了练习会自动用掉一个，连续天数不会中断。另外，中文台湾版的每一级都标出了大约对应的 TOCFL 等级。",
       en: "New streak shields: every 7 days in a row earns a 🛡️ (up to 2). Miss a day and one is used up automatically, so your streak keeps going. Also, each Taiwan-edition Chinese level now shows the TOCFL band it roughly matches.",

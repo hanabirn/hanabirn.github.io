@@ -660,6 +660,11 @@
     </div>
 
     <!-- "we moved" notice for visitors still on the old hanabirn.netlify.app app (js/widgets.js) -->
+    <!-- 跟讀: shadowing a sentence, recorded on this device only (js/shadow.js) -->
+    <div class="updates-overlay" id="shadow-overlay" onclick="if(event.target===this) shadowClose()">
+        <div class="updates-panel shadow-panel" id="shadow-panel" role="dialog" aria-modal="true" aria-labelledby="shadow-title"></div>
+    </div>
+
     <!-- 這裡有錯: report a wrong word / grammar point / passage / listening line (js/feedback.js) -->
     <div class="updates-overlay" id="report-overlay" onclick="if(event.target===this) reportClose()">
         <div class="updates-panel report-panel" id="report-panel" role="dialog" aria-modal="true" aria-labelledby="report-title"></div>
@@ -781,6 +786,7 @@
     <script src="js/reading.js"></script>
     <script src="js/reading-exam.js"></script>
     <script src="js/listening.js"></script>
+    <script src="js/shadow.js"></script>
     <script src="js/updates.js"></script>
     <script src="js/tour.js"></script>
     <script src="js/rails.js"></script>
