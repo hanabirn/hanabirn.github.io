@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-19',
+      zh: "新增「連續天數保護」：每連續練習 7 天得到一個 🛡️（最多 2 個），哪天忘了練習會自動用掉一個，連續天數不會中斷。另外，中文台灣版的每一級都標出了大約對應的 TOCFL 等級。",
+      'zh-Hans': "新增「连续天数保护」：每连续练习 7 天得到一个 🛡️（最多 2 个），哪天忘了练习会自动用掉一个，连续天数不会中断。另外，中文台湾版的每一级都标出了大约对应的 TOCFL 等级。",
+      en: "New streak shields: every 7 days in a row earns a 🛡️ (up to 2). Miss a day and one is used up automatically, so your streak keeps going. Also, each Taiwan-edition Chinese level now shows the TOCFL band it roughly matches.",
+      ja: "「連続記録の保護」を追加しました。7 日続けて練習するごとに 🛡️ が 1 つ（最大 2 つ）。練習を忘れた日は自動で 1 つ使われ、連続記録は途切れません。また、中国語の台湾版の各レベルに、おおよそ対応する TOCFL の等級を表示しました。",
+      ko: "'연속 기록 보호'가 생겼어요. 7일 연속 연습할 때마다 🛡️ 1개(최대 2개)를 받고, 하루 빠지면 자동으로 하나가 쓰여서 연속 기록이 끊기지 않아요. 그리고 중국어 대만판 각 레벨에 대략 해당하는 TOCFL 등급을 표시했어요.",
+      ru: "Новая защита серии: за каждые 7 дней подряд — 🛡️ (до двух). Пропустили день — защита расходуется сама, и серия не прерывается. А у каждого уровня тайваньского китайского теперь указан примерный уровень TOCFL.",
+      fr: "Nouvelles protections de série : chaque série de 7 jours rapporte un 🛡️ (2 max.). Un jour manqué en utilise une automatiquement et la série continue. De plus, chaque niveau de chinois édition Taïwan indique le niveau TOCFL correspondant à peu près.",
+      es: "Nueva protección de racha: cada 7 días seguidos ganas un 🛡️ (hasta 2). Si un día no practicas, se usa uno automáticamente y la racha sigue. Además, cada nivel de chino edición Taiwán muestra el nivel TOCFL aproximado.",
+      de: "Neu: Serienschutz. Alle 7 Tage am Stück gibt es einen 🛡️ (höchstens 2). Verpasst du einen Tag, wird einer automatisch verbraucht und die Serie läuft weiter. Außerdem zeigt jede Stufe der Taiwan-Ausgabe für Chinesisch die ungefähr passende TOCFL-Stufe." },
+    { date: '2026-11-19',
       zh: "新增「文法複習」：學會的文法會在 1、3、7、14、30、60 天後回來複習，每個文法出一題，答對就隔久一點，答錯明天再來。到期時文法列表和首頁的「今天」都會提醒你。",
       'zh-Hans': "新增「语法复习」：学会的语法会在 1、3、7、14、30、60 天后回来复习，每个语法出一题，答对就隔久一点，答错明天再来。到期时语法列表和首页的「今天」都会提醒你。",
       en: "New grammar review: grammar points you've learned come back after 1, 3, 7, 14, 30 and 60 days — one question each; a right answer waits longer, a wrong one comes back tomorrow. The grammar list and Today on the home page tell you when some are due.",

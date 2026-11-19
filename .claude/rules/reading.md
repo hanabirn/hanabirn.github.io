@@ -40,3 +40,5 @@ paths:
 **One question at a time (computers, 2026-11-13):** with number tabs the panel no longer shows 上一頁 / 第 n / m 頁 / 下一頁; after an answer a 下一題 → button (`.rd-pager-one`) moves on.
 
 **Static pages (2026-11-14):** after changing data/reading/, rerun `python tools/build_learn_pages.py` — it writes `learn/reading/` and the sitemap (details in grammar.md).
+
+**TOCFL bands on the Taiwan edition (2026-11-19, owner's pick #7):** `LEARN_TOCFL` / `learnTocflHtml()` (js/grammar.js) put a small line under each Taiwan level's name in the 閱讀 / 聽解 level picker — zh_tw1 準備級 (Novice), tw2 入門級 (A1), tw3 基礎級 (A2), tw4 進階級 (B1), tw5 高階級 (B2), tw6 流利級 (C1), tw79 精通級 (C2): approximate, through the CEFR bands TOCFL is aligned with (`learn_tocfl_note` says so on hover). Chinese UIs and ja show the Chinese band names, the others the CEFR code (`tocfl_*`); on phones the line wraps as "TOCFL / 準備級". Taiwan lists ≤ 886px at 1920 (ru UI), nothing sideways.

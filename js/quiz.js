@@ -2284,22 +2284,46 @@ function logDailyActivity() {
 
 /* A day counts toward the streak if a quiz was finished OR any word was
    practised (daily_activity), so answering a few questions keeps it alive. */
-function calcStreak(recs) {
+/* 連續天數保護 (2026-11-19, owner's pick #7 of the site review): every STREAK_SHIELD_EVERY
+   practised days in a row earn a shield (at most STREAK_SHIELD_MAX); a missed day uses one up and
+   the streak goes on (the missed day itself doesn't count). Worked out from the practice days
+   alone (daily_activity + quiz records, both synced), oldest first, so every device agrees and
+   there is nothing new to store. Today only counts once practised — until then it can't break
+   anything. Returns { streak, shields, used: [day keys a shield covered] }. */
+const STREAK_SHIELD_EVERY = 7;
+const STREAK_SHIELD_MAX = 2;
+
+function calcStreakInfo(recs) {
     const dayKey = activityDayKey;
     const days = new Set((recs || []).map(r => dayKey(r.date)));
     Object.entries(getDailyActivity()).forEach(([k, n]) => { if (n > 0) days.add(k); });
-    if (days.size === 0) return 0;
-    const cursor = new Date();
-    cursor.setHours(0, 0, 0, 0);
-    if (!days.has(dayKey(cursor.getTime()))) {
-        cursor.setDate(cursor.getDate() - 1);
+    if (days.size === 0) return { streak: 0, shields: 0, used: [] };
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    // start at the earliest practice day the data still holds (daily_activity keeps 120 days)
+    const first = new Date(Math.min(...[...days].map(k => { const [y, m, d] = k.split('-').map(Number); return new Date(y, m - 1, d).getTime(); })));
+    first.setHours(0, 0, 0, 0);
+    let run = 0, shields = 0, used = [];
+    for (const cur = new Date(first); cur <= today; cur.setDate(cur.getDate() + 1)) {
+        const key = dayKey(cur.getTime());
+        if (days.has(key)) {
+            run++;
+            if (run % STREAK_SHIELD_EVERY === 0 && shields < STREAK_SHIELD_MAX) shields++;
+        } else if (cur.getTime() === today.getTime()) {
+            break;                                  // today isn't over yet
+        } else if (run > 0 && shields > 0) {
+            shields--;
+            used.push(key);
+        } else {
+            run = 0;
+            used = [];
+        }
     }
-    let streak = 0;
-    while (days.has(dayKey(cursor.getTime()))) {
-        streak++;
-        cursor.setDate(cursor.getDate() - 1);
-    }
-    return streak;
+    return { streak: run, shields, used };
+}
+
+function calcStreak(recs) {
+    return calcStreakInfo(recs).streak;
 }
 
 function updateStreakBadge() {

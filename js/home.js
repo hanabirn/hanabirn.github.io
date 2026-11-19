@@ -99,7 +99,11 @@ function renderHome() {
     const goal = getDailyGoal();
     const today = homeTodayCount();
     const left = Math.max(goal - today, 0);
-    const streak = calcStreak(getQuizRecords());
+    const streakInfo = calcStreakInfo(getQuizRecords());
+    const streak = streakInfo.streak;
+    // a shield used up yesterday (連續天數保護, js/quiz.js) — say so while today is still open
+    const yest = new Date(); yest.setHours(0, 0, 0, 0); yest.setDate(yest.getDate() - 1);
+    const shieldYesterday = streakInfo.used.includes(activityDayKey(yest.getTime()));
     const everPractised = today > 0 || streak > 0 || getQuizRecords().length > 0
         || Object.keys(getDailyActivity()).length > 0;
 
@@ -110,6 +114,7 @@ function renderHome() {
     let msg;
     if (!everPractised) msg = t('home_msg_first');
     else if (left === 0) msg = openSteps ? t('home_msg_done_more', { n: openSteps }) : t('home_msg_done');
+    else if (today === 0 && streak > 0 && shieldYesterday) msg = t('home_msg_shield_used', { n: streak });
     else if (today === 0 && streak > 0) msg = t('home_msg_keep', { n: streak });
     else msg = t('home_msg_left', { n: left });
     document.getElementById('home-msg').textContent = msg;
@@ -126,6 +131,13 @@ function renderHome() {
     // streak chip
     document.getElementById('home-streak-n').textContent = streak;
     document.getElementById('home-streak').classList.toggle('cold', streak === 0);
+    const shield = document.getElementById('home-shield');
+    if (shield) {
+        shield.hidden = !streakInfo.shields;
+        document.getElementById('home-shield-n').textContent = streakInfo.shields;
+        document.getElementById('home-streak').title = t('home_streak_title')
+            + (streakInfo.shields ? ' · ' + t('streak_shield_title', { n: streakInfo.shields, e: STREAK_SHIELD_EVERY, m: STREAK_SHIELD_MAX }) : '');
+    }
 
     // 今天: the ring, the steps and one button to the first one not done
     const ring = document.getElementById('home-ring');

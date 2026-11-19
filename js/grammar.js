@@ -92,7 +92,7 @@ function learnPickerHtml(index, curId, pick, done) {
     const chips = levels.map(s => {
         const n = done(s.id), m = s.count || 0;
         return `<button type="button" class="mode-btn grammar-chip learn-level${s.id === cur.id ? ' mode-btn-active' : ''}" aria-pressed="${s.id === cur.id}" onclick="${pick}('${s.id}')">
-            <b>${escHtml(learnLevelName(s.level))}</b><span class="learn-level-meta"><span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small></span>
+            <b>${escHtml(learnLevelName(s.level))}</b>${learnTocflHtml(s.id)}<span class="learn-level-meta"><span class="learn-bar" aria-hidden="true"><i style="width:${m ? Math.round(n / m * 100) : 0}%"></i></span><small>${n}/${m}</small></span>
         </button>`;
     }).join('');
     // equal columns: up to 5 levels in one row, more in two even rows (6 → 3 + 3)
@@ -100,6 +100,17 @@ function learnPickerHtml(index, curId, pick, done) {
     const cols = levels.length <= 5 ? levels.length : Math.ceil(levels.length / 2);
     const wide = levels.length <= 8 ? levels.length : cols;
     return `${edition}<div class="learn-levels" role="group" aria-label="${escHtml(t('learn_levels'))}"><div class="learn-level-grid" style="--cols:${cols};--cols-wide:${wide}">${chips}</div></div>`;
+}
+
+/* Taiwan edition: the TOCFL band each level is about (2026-11-19, owner's pick #7 — in Taiwan people sit
+   the TOCFL, not the HSK). Approximate, through the CEFR bands TOCFL is aligned with. */
+const LEARN_TOCFL = { zh_tw1: 'nov', zh_tw2: '1', zh_tw3: '2', zh_tw4: '3', zh_tw5: '4', zh_tw6: '5', zh_tw79: '6' };
+
+function learnTocflHtml(id) {
+    const b = LEARN_TOCFL[id];
+    // the band name stays whole when the phone's narrow button wraps the line ("TOCFL" / "準備級")
+    return b ? `<small class="learn-tocfl" title="${escHtml(t('learn_tocfl_note'))}">${escHtml(t('learn_tocfl', { x: '\u0000' }))
+        .replace('\u0000', `<span>${escHtml(t('tocfl_' + b))}</span>`)}</small>` : '';
 }
 
 // items passed in a level, from a progress store keyed "<level>:<item>" ({best, of})

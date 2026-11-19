@@ -74,6 +74,12 @@
 }
 .learn-level b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .learn-level-meta { display: flex; align-items: center; gap: 5px; }
+/* Taiwan edition: the TOCFL band under the level name (js/grammar.js learnTocflHtml) */
+.learn-level small.learn-tocfl { margin-top: -4px; font-size: 0.72rem; font-weight: 700; opacity: 1; color: var(--text-muted);
+    overflow: hidden; text-overflow: ellipsis; }
+.mode-btn-active small.learn-tocfl { color: inherit; }
+.learn-tocfl span { white-space: nowrap; }
+@media (max-width: 600px) { .learn-level small.learn-tocfl { white-space: normal; line-height: 1.2; } }
 .learn-level small { font-size: 0.75rem; font-weight: 400; opacity: 0.8; white-space: nowrap; }
 .learn-bar { flex: 1; min-width: 12px; height: 4px; border-radius: 2px; background: var(--track); overflow: hidden; }
 .learn-bar i { display: block; height: 100%; background: var(--success); }
