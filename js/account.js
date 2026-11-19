@@ -90,6 +90,15 @@ const SYNC_KEYS = {
         });
         return typeof grammarMoveKo === 'function' ? grammarMoveKo(o) : o;   // old Korean level ids
     } },
+    // 文法複習 cards (js/grammar.js): per point the newer grading wins
+    grammar_srs: { empty: {}, merge: (a, b) => {
+        const o = Object.assign({}, a);
+        Object.entries(b).forEach(([k, c]) => {
+            const q = o[k];
+            if (c && (!q || (c.at || 0) > (q.at || 0))) o[k] = c;
+        });
+        return o;
+    } },
     // listening sets: the better score of each (js/listening.js)
     listening_progress: { empty: {}, merge: (a, b) => {
         const o = Object.assign({}, a);

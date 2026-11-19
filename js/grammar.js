@@ -263,6 +263,7 @@ function grammarListHtml(set) {
         <div class="grammar-progress">
             <span>${escHtml(t('grammar_learned_n', { n: done, m: set.points.length }))}</span>
             <span class="grammar-bar" aria-hidden="true"><i style="width:${pct}%"></i></span>
+            ${grammarReviewBtnHtml(set)}
         </div>
         <ol class="grammar-list learn-list-grid" start="${grammarPage * grammarPerPage() + 1}">
             ${set.points.slice(grammarPage * grammarPerPage(), (grammarPage + 1) * grammarPerPage()).map((p, k) => {
@@ -503,8 +504,9 @@ function grammarQuizHtml(set) {
     const tags = (it.q.hard ? `<span class="grammar-tag hard">${escHtml(t('grammar_hard'))}</span>` : '')
         + (it.q.type === 'order' ? `<span class="grammar-tag">${escHtml(t('grammar_order'))}</span>` : '');
     const top = `<div class="grammar-top">
-            <button type="button" class="btn back-btn grammar-back" onclick="grammarGo('point')">${escHtml(t('grammar_back_point'))}</button>
-            <span class="grammar-count">${escHtml(t('grammar_q_n', { n: z.i + 1, m: z.items.length }))}${tags}</span>
+            ${z.review ? `<button type="button" class="btn back-btn grammar-back" onclick="grammarReviewBack()">${escHtml(t('grammar_back_list'))}</button>`
+                : `<button type="button" class="btn back-btn grammar-back" onclick="grammarGo('point')">${escHtml(t('grammar_back_point'))}</button>`}
+            <span class="grammar-count">${z.review ? `<span class="grammar-tag review">${escHtml(t('grammar_review_title'))}</span>` : ''}${escHtml(t('grammar_q_n', { n: z.i + 1, m: z.items.length }))}${tags}</span>
         </div>`;
     if (it.q.type === 'order') return top + grammarOrderHtml(set, it, answered, ok);
     return top + `
@@ -632,6 +634,10 @@ function grammarAnswer(i) {
     if (!z || z.picked >= 0) return;
     z.picked = i;
     if (i === z.items[z.i].answer) z.right++;
+    if (z.review) {   // 文法複習: grade the point's card right away
+        z.items[z.i].ok = i === z.items[z.i].answer;
+        grammarSrsGrade(z.items[z.i].key, z.items[z.i].ok);
+    }
     if (typeof logDailyActivity === 'function') logDailyActivity();
     if (i !== z.items[z.i].answer && typeof railReact === 'function') railReact('wrong');
     renderGrammar();
@@ -642,7 +648,13 @@ function grammarNextQ() {
     if (z.i + 1 < z.items.length) {
         z.i++;
         z.picked = -1;
+        if (z.review) grammarPoint = z.items[z.i].pi;
         renderGrammar();
+        return;
+    }
+    if (z.review) {   // 文法複習: the cards were graded as they were answered
+        if (typeof railReact === 'function') railReact('result', Math.round(z.right / z.items.length * 100));
+        grammarGo('result');
         return;
     }
     // keep the best score of this point
@@ -653,12 +665,124 @@ function grammarNextQ() {
     if (!old || z.right / z.items.length >= old.best / (old.of || 1)) prog[key] = { best: z.right, of: z.items.length, at: Date.now() };
     if (typeof storeSet === 'function') storeSet('grammar_progress', JSON.stringify(prog));
     else try { localStorage.setItem('grammar_progress', JSON.stringify(prog)); } catch {}
+    grammarSrsSeed();   // a point passed for the first time becomes a 文法複習 card
     if (typeof railReact === 'function') railReact('result', Math.round(z.right / z.items.length * 100));
     grammarGo('result');
 }
 
+/* ===== 文法複習 — spaced review of learned points (2026-11-19, owner's pick #6 of the site review) =====
+   A point becomes a card the first time it is passed (points learned before this get one too,
+   first due a day after they were learned). A review asks one random question of each due point
+   of the level (up to GRAMMAR_REVIEW_MAX), on the normal quiz screen: right moves the card up a box
+   (GRAMMAR_SRS_DAYS), wrong brings it back tomorrow. grammar_srs = {"<set>:<point>": {box, due, at}},
+   synced (account.js: per key the newer `at` wins). */
+const GRAMMAR_SRS_DAYS = [1, 3, 7, 14, 30, 60];
+const GRAMMAR_REVIEW_MAX = 10;
+const GRAMMAR_DAY_MS = 86400000;
+
+function grammarSrs() {
+    try { return JSON.parse(localStorage.getItem('grammar_srs')) || {}; } catch { return {}; }
+}
+
+function grammarSrsSave(srs) {
+    if (typeof storeSet === 'function') storeSet('grammar_srs', JSON.stringify(srs));
+    else try { localStorage.setItem('grammar_srs', JSON.stringify(srs)); } catch {}
+}
+
+/* Learned points without a card get one; returns the cards. Seeded from the progress entry's
+   time, so two devices make the same card and the sync has nothing to fight over. */
+function grammarSrsSeed() {
+    const srs = grammarSrs();
+    let added = false;
+    Object.entries(grammarProgress()).forEach(([k, p]) => {
+        if (srs[k] || !p || !(p.of > 0) || p.best / p.of < GRAMMAR_PASS) return;
+        const at = p.at || Date.now();
+        srs[k] = { box: 0, due: at + GRAMMAR_SRS_DAYS[0] * GRAMMAR_DAY_MS, at };
+        added = true;
+    });
+    if (added) grammarSrsSave(srs);
+    return srs;
+}
+
+/* due card keys, oldest first; setId limits them to one level, lang to one language */
+function grammarSrsDue(setId, lang) {
+    const now = Date.now();
+    return Object.entries(grammarSrsSeed())
+        .filter(([k, c]) => c && c.due <= now && (!setId || k.startsWith(setId + ':')) && (!lang || k.split('_')[0] === lang))
+        .sort((a, b) => a[1].due - b[1].due).map(([k]) => k);
+}
+
+function grammarSrsGrade(key, right) {
+    const srs = grammarSrs();
+    const c = srs[key] || { box: 0 };
+    const now = Date.now();
+    const box = right ? Math.min((c.box || 0) + 1, GRAMMAR_SRS_DAYS.length - 1) : 0;
+    srs[key] = { box, due: now + (right ? GRAMMAR_SRS_DAYS[box] : 1) * GRAMMAR_DAY_MS, at: now };
+    grammarSrsSave(srs);
+    return srs[key];
+}
+
+async function grammarReviewStart(setId) {
+    if (setId && setId !== grammarSetId) {
+        grammarSetId = setId;
+        try { localStorage.setItem('grammar_set', setId); } catch {}
+    }
+    if (!await grammarLoad()) return;
+    const set = grammarSets[grammarSetId];
+    const keys = grammarSrsDue(set.id).slice(0, GRAMMAR_REVIEW_MAX);
+    const items = [];
+    keys.forEach(key => {
+        const pi = set.points.findIndex(p => set.id + ':' + p.id === key);
+        if (pi < 0 || !(set.points[pi].quiz || []).length) return;
+        const quiz = set.points[pi].quiz;
+        const q = quiz[Math.floor(Math.random() * quiz.length)];
+        const order = grammarShuffle(q.options.map((_, i) => i));
+        const arrange = q.type === 'order' && (q.style || set.order_style) === 'arrange';
+        items.push({ q, order, options: order.map(i => q.options[i]), answer: order.indexOf(q.answer), arrange, built: [], pi, key });
+    });
+    if (!items.length) { grammarGo('list'); return; }
+    grammarQuiz = { items, i: 0, right: 0, picked: -1, review: true, back: grammarPoint };
+    grammarPoint = items[0].pi;
+    grammarGo('quiz');
+}
+
+/* the button on a level's list: the due points of this level */
+function grammarReviewBtnHtml(set) {
+    const n = grammarSrsDue(set.id).length;
+    return n ? `<button type="button" class="btn next-btn grammar-review-btn" onclick="grammarReviewStart()">${uiIcon('redo')} ${escHtml(t('grammar_review_btn', { n: Math.min(n, GRAMMAR_REVIEW_MAX) }))}</button>` : '';
+}
+
+function grammarReviewResultHtml(set) {
+    const z = grammarQuiz;
+    const srs = grammarSrs();
+    const more = grammarSrsDue(set.id).length;
+    const rows = z.items.map(it => {
+        const c = srs[it.key];
+        const days = c ? Math.max(1, Math.round((c.due - Date.now()) / GRAMMAR_DAY_MS)) : 1;
+        return `<li class="${it.ok ? 'ok' : 'no'}"><span aria-hidden="true">${it.ok ? '✓' : '✗'}</span>
+            <span class="grammar-pattern" lang="${set.lang}">${escHtml(set.points[it.pi].pattern)}</span>
+            <span class="grammar-review-when">${escHtml(days <= 1 ? t('grammar_review_tomorrow') : t('grammar_review_in', { n: days }))}</span></li>`;
+    }).join('');
+    return `<div class="grammar-result">
+            <div class="grammar-result-mascot">${typeof mascotHtml === 'function' ? mascotHtml('bust') : ''}</div>
+            <div class="grammar-big">${escHtml(t('grammar_review_title'))}</div>
+            <p class="grammar-score">${escHtml(t('grammar_result', { n: z.right, m: z.items.length }))}</p>
+        </div>
+        <ul class="grammar-review-list">${rows}</ul>
+        <div class="grammar-result-btns">
+            ${more ? `<button type="button" class="btn next-btn" onclick="grammarReviewStart()">${escHtml(t('grammar_review_more', { n: Math.min(more, GRAMMAR_REVIEW_MAX) }))}</button>` : ''}
+            <button type="button" class="btn ${more ? 'back-btn' : 'next-btn'}" onclick="grammarReviewBack()">${escHtml(t('grammar_back_list'))}</button>
+        </div>`;
+}
+
+function grammarReviewBack() {
+    if (grammarQuiz && grammarQuiz.review) grammarPoint = grammarQuiz.back || 0;
+    grammarGo('list');
+}
+
 function grammarResultHtml(set) {
     const z = grammarQuiz;
+    if (z.review) return grammarReviewResultHtml(set);
     const pass = z.right / z.items.length >= GRAMMAR_PASS;
     const last = grammarPoint >= set.points.length - 1;
     setTimeout(() => {

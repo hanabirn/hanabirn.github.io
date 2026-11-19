@@ -453,10 +453,26 @@ function homeTodaySteps(goal, today) {
         : { title: t('home_step_goal_done'), done: true });
     const mistakes = getActiveMistakes().length;   // repaired ones don't count
     if (mistakes > 0) steps.push({ title: t('home_step_mistakes'), sub: t('home_step_mistakes_sub', { n: mistakes }), go: homeOpenMistakes });
+    // 文法複習: learned grammar points of the learning language that are due (js/grammar.js)
+    const lang = typeof learnLang === 'function' ? learnLang() : '';
+    const gdue = lang && typeof grammarSrsDue === 'function' ? grammarSrsDue('', lang) : [];
+    if (gdue.length) steps.push({ title: t('home_step_grammar', { n: Math.min(gdue.length, GRAMMAR_REVIEW_MAX) }), sub: t('home_step_grammar_sub'),
+        go: () => homeOpenGrammarReview(gdue) });
     // starred notes due for another look (js/notes.js)
     const notes = typeof notesDueCount === 'function' ? notesDueCount() : 0;
     if (notes > 0) steps.push({ title: t('home_step_notes', { n: notes }), sub: t('home_step_notes_sub'), go: () => { switchPage('notes'); notesStartReview(); } });
     return steps;
+}
+
+/* the level with the most due grammar points, straight into its review */
+function homeOpenGrammarReview(due) {
+    const n = {};
+    due.forEach(k => { const s = k.split(':')[0]; n[s] = (n[s] || 0) + 1; });
+    const setId = Object.keys(n).sort((a, b) => n[b] - n[a])[0];
+    grammarSetId = setId;
+    try { localStorage.setItem('grammar_set', setId); } catch {}
+    switchPage('grammar', null);
+    grammarReviewStart(setId);
 }
 
 function homeTodayGo() {

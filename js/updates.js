@@ -5,6 +5,16 @@
 
 const SITE_UPDATES = [
     { date: '2026-11-19',
+      zh: "新增「文法複習」：學會的文法會在 1、3、7、14、30、60 天後回來複習，每個文法出一題，答對就隔久一點，答錯明天再來。到期時文法列表和首頁的「今天」都會提醒你。",
+      'zh-Hans': "新增「语法复习」：学会的语法会在 1、3、7、14、30、60 天后回来复习，每个语法出一题，答对就隔久一点，答错明天再来。到期时语法列表和首页的「今天」都会提醒你。",
+      en: "New grammar review: grammar points you've learned come back after 1, 3, 7, 14, 30 and 60 days — one question each; a right answer waits longer, a wrong one comes back tomorrow. The grammar list and Today on the home page tell you when some are due.",
+      ja: "「文法の復習」を追加しました。覚えた文法が 1・3・7・14・30・60 日後に戻ってきて、1 問ずつ出題されます。正解なら間隔が延び、間違えたら翌日にもう一度。期限が来ると文法一覧とホームの「今日」でお知らせします。",
+      ko: "'문법 복습'이 생겼어요. 배운 문법이 1·3·7·14·30·60일 뒤에 다시 나오고, 문법마다 한 문제씩 풀어요. 맞히면 간격이 길어지고 틀리면 내일 다시 나와요. 복습할 때가 되면 문법 목록과 홈의 '오늘'에서 알려 줘요.",
+      ru: "Новое повторение грамматики: выученные темы возвращаются через 1, 3, 7, 14, 30 и 60 дней — по одному вопросу; верный ответ откладывает тему дольше, ошибка возвращает её завтра. Список грамматики и «Сегодня» на главной подскажут, когда пора.",
+      fr: "Nouvelle révision de grammaire : les points appris reviennent après 1, 3, 7, 14, 30 et 60 jours, une question chacun ; une bonne réponse espace la suivante, une erreur la ramène demain. La liste de grammaire et « Aujourd’hui » sur l’accueil vous préviennent.",
+      es: "Nuevo repaso de gramática: los puntos aprendidos vuelven a los 1, 3, 7, 14, 30 y 60 días, con una pregunta cada uno; si aciertas, tarda más en volver; si fallas, vuelve mañana. La lista de gramática y «Hoy» en el inicio te avisan.",
+      de: "Neu: Grammatik-Wiederholung. Gelernte Grammatikpunkte kommen nach 1, 3, 7, 14, 30 und 60 Tagen wieder, je eine Frage; richtig verlängert den Abstand, falsch bringt sie morgen zurück. Die Grammatikliste und „Heute“ auf der Startseite sagen Bescheid." },
+    { date: '2026-11-19',
       zh: "新增「有錯」按鈕：在文法、閱讀文章、聽力原文旁邊，以及單字測驗結果的每一題後面，發現意思、錄音或題目有錯時，點一下選類型就能回報，會自動附上是哪一題。",
       'zh-Hans': "新增「有错」按钮：在语法、阅读文章、听力原文旁边，以及单词测验结果的每一题后面，发现意思、录音或题目有错时，点一下选类型就能反馈，会自动附上是哪一题。",
       en: "New “Report” button: next to grammar points, reading passages, listening transcripts and every question in the word-quiz results. Spotted a wrong meaning, recording or answer? Tap it, pick what's wrong, and it's sent along with which item it was.",
