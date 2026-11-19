@@ -4,6 +4,16 @@
    button lights up until the visitor has opened the popup since the newest date. */
 
 const SITE_UPDATES = [
+    { date: '2026-11-19',
+      zh: "新增「有錯」按鈕：在文法、閱讀文章、聽力原文旁邊，以及單字測驗結果的每一題後面，發現意思、錄音或題目有錯時，點一下選類型就能回報，會自動附上是哪一題。",
+      'zh-Hans': "新增「有错」按钮：在语法、阅读文章、听力原文旁边，以及单词测验结果的每一题后面，发现意思、录音或题目有错时，点一下选类型就能反馈，会自动附上是哪一题。",
+      en: "New “Report” button: next to grammar points, reading passages, listening transcripts and every question in the word-quiz results. Spotted a wrong meaning, recording or answer? Tap it, pick what's wrong, and it's sent along with which item it was.",
+      ja: "「報告」ボタンを追加しました。文法・読解の文章・聴解のスクリプトの横と、単語クイズの結果の各問題にあります。意味・音声・問題の間違いに気づいたら、タップして種類を選ぶだけで、どの問題かも一緒に送られます。",
+      ko: "'신고' 버튼이 생겼어요. 문법, 읽기 글, 듣기 대본 옆과 단어 퀴즈 결과의 각 문제에 있어요. 뜻이나 녹음, 문제가 틀렸다면 눌러서 종류만 고르면 어느 문제인지도 함께 보내져요.",
+      ru: "Новая кнопка «Ошибка»: рядом с грамматикой, текстами для чтения, расшифровками аудирования и у каждого вопроса в результатах словарного теста. Заметили неверное значение, запись или ответ? Нажмите, выберите тип — и мы получим сообщение вместе с указанием задания.",
+      fr: "Nouveau bouton « Signaler » : à côté des points de grammaire, des textes de lecture, des transcriptions d’écoute et de chaque question des résultats du quiz de vocabulaire. Un sens, un enregistrement ou une réponse faux ? Touchez-le, choisissez le type, et l’élément concerné est envoyé avec.",
+      es: "Nuevo botón «Reportar»: junto a la gramática, los textos de lectura, las transcripciones de audición y cada pregunta de los resultados del quiz de vocabulario. ¿Ves un significado, un audio o una respuesta mal? Tócalo, elige el tipo y se envía junto con el elemento.",
+      de: "Neuer „Melden“-Knopf: neben Grammatikpunkten, Lesetexten, Hörtranskripten und bei jeder Frage in den Ergebnissen des Vokabelquiz. Falsche Bedeutung, Aufnahme oder Antwort entdeckt? Antippen, Art wählen – die betroffene Stelle wird automatisch mitgeschickt." },
     { date: '2026-11-14',
       zh: "修正德文、法文、西班牙文、俄文單字的英文答案：有些字原本用了冷門或錯誤的意思（例如德文 hallo 顯示成「表示困惑」，現在是 hello），也去掉了答案後面多出來的括號。謝謝幫忙回報的朋友！",
       'zh-Hans': "修正德语、法语、西班牙语、俄语单词的英文答案：有些词原本用了冷门或错误的意思（例如德语 hallo 显示成「表示困惑」，现在是 hello），也去掉了答案后面多出来的括号。谢谢帮忙反馈的朋友！",

@@ -676,6 +676,28 @@
 .mb-note:hover { color: var(--primary); background: var(--primary-soft); }
 .mb-note .ui-icon { width: 17px; height: 17px; }
 
+/* ----- 這裡有錯 (js/feedback.js): a quiet button beside ＋筆記, and its dialog ----- */
+.note-add.report-btn { border-color: var(--line); background: none; color: var(--text-muted); margin-left: 6px; }
+.note-add.report-btn:hover { border-color: var(--primary); background: var(--primary-soft); color: var(--primary); }
+.rd-tools .note-add.report-btn { margin-left: 6px; }
+.result-note-cell { white-space: nowrap; }
+.result-note-cell .mb-note { display: inline-grid; vertical-align: middle; }
+.report-panel { max-width: 460px; }
+.report-panel h3 { display: flex; align-items: center; gap: 6px; }
+.report-panel h3 .ui-icon { width: 20px; height: 20px; }
+.report-about { margin: 0 0 12px; padding: 8px 12px; border-left: 3px solid var(--primary); background: var(--surface);
+    border-radius: 6px; font-weight: 700; overflow-wrap: anywhere; }
+.report-q { margin: 0 0 8px; font-weight: 700; }
+.report-types { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-bottom: 12px; }
+.report-types .mode-btn { width: 100%; margin: 0; white-space: normal; }
+.report-types .mode-btn:last-child { grid-column: 1 / -1; }
+.report-note { display: block; width: 100%; box-sizing: border-box; padding: 10px; border: 1px solid var(--line);
+    border-radius: 10px; background: var(--surface); color: var(--ink); font: inherit; resize: vertical; }
+.report-msg { min-height: 1.3em; margin: 6px 0; color: var(--danger, var(--primary)); font-size: 0.9rem; }
+.report-actions { display: flex; gap: 10px; justify-content: flex-end; flex-wrap: wrap; }
+.report-actions .back-btn, .report-actions .next-btn { margin: 0; }
+.report-done { margin: 8px 0 4px; font-size: 1.05rem; font-weight: 700; color: var(--success, var(--primary)); }
+
 /* the "saved" toast, with an 打開 button */
 .notes-toast {
     position: fixed;

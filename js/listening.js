@@ -757,7 +757,8 @@ function listeningQuizHtml(lv) {
                     <button type="button" class="ls-say" onclick="listeningSayLine(${x.idx})" aria-label="🔊">${uiIcon('speaker')}</button>
                 </div>`).join('')}
             ${it.words && it.words.length ? `<div class="ls-words">📘 ${it.words.map(w => `<span><b lang="${lv.lang}">${escHtml(w.w)}</b>${w.r && w.r !== w.w ? `（${escHtml(w.r)}）` : ''} ${escHtml(gText(w))}</span>`).join('')}</div>` : ''}
-            <div class="ls-note-row"><button type="button" class="note-add" onclick="listeningNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button></div>
+            <div class="ls-note-row"><button type="button" class="note-add" onclick="listeningNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>${typeof reportBtnHtml === 'function'
+                ? reportBtnHtml(`listening ${lv.id} set ${z.setNo} item ${z.order[z.qi]}`, `${t('nav_listening')} ${learnLevelName(lv.level)}・${t('listening_type_' + it.type)} ${z.qi + 1}`) : ''}</div>
         </details>` : '';
     const last = z.qi >= z.order.length - 1;
     const canNext = listeningAnswered();

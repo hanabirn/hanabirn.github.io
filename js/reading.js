@@ -364,6 +364,7 @@ function readingReaderHtml(set) {
                     </span>
                     <span class="rd-timer" id="rd-timer" title="${escHtml(t('reading_timer'))}">⏱ ${readingClock(readingElapsed())}</span>
                     <button type="button" class="note-add" onclick="readingNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
+                    ${typeof reportBtnHtml === 'function' ? reportBtnHtml(`reading ${set.id}/${p.id}`, `${t('nav_reading')} ${learnLevelName(set.level)}・${readingPlain(p.title.t)}`) : ''}
                 </div>
                 <div class="rd-text${furi ? '' : ' no-furi'}" style="font-size:${READING_FONTS[readingFont()]}rem">${paras}</div>
                 <p class="rd-help">${escHtml(t('reading_help'))}</p>

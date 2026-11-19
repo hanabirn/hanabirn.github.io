@@ -330,6 +330,7 @@ function grammarPointHtml(set) {
                 <button type="button" class="mode-btn" onclick="grammarGo('point', ${grammarPoint + 1})"${grammarPoint >= n - 1 ? ' disabled' : ''}>${escHtml(t('grammar_next'))}</button>
             </span>
             <button type="button" class="note-add" onclick="grammarNote()" title="${escHtml(t('notes_add'))}" aria-label="${escHtml(t('notes_add'))}">${uiIcon('plus')}<span>${escHtml(t('notes_add_short'))}</span></button>
+            ${typeof reportBtnHtml === 'function' ? reportBtnHtml(`grammar ${set.id}/${p.id}`, `${t('nav_grammar')} ${learnLevelName(set.level)}・${p.pattern}`) : ''}
         </div>
         <div class="grammar-cols">
         <div class="grammar-col-main">

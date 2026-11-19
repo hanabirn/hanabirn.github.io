@@ -660,6 +660,11 @@
     </div>
 
     <!-- "we moved" notice for visitors still on the old hanabirn.netlify.app app (js/widgets.js) -->
+    <!-- 這裡有錯: report a wrong word / grammar point / passage / listening line (js/feedback.js) -->
+    <div class="updates-overlay" id="report-overlay" onclick="if(event.target===this) reportClose()">
+        <div class="updates-panel report-panel" id="report-panel" role="dialog" aria-modal="true" aria-labelledby="report-title"></div>
+    </div>
+
     <div class="updates-overlay" id="moved-overlay" onclick="if(event.target===this) closeMovedNotice()">
         <div class="updates-panel install-panel" role="dialog" aria-modal="true" aria-labelledby="moved-title">
             <div class="install-hero">
